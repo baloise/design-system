@@ -20,6 +20,7 @@
   },
   "scripts": {
     "deploy": "now",
+    "lint": "tslint -c tslint.json 'src/**/*.ts' --format stylish",
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
@@ -37,7 +38,8 @@
     "jest": "24.9.0",
     "jest-cli": "24.9.0",
     "puppeteer": "1.20.0",
-    "semantic-release": "^15.13.24"
+    "semantic-release": "^15.13.24",
+    "tslint": "^5.20.0"
   },
   "license": "MIT",
   "repository": {
