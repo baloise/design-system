@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/hirsch88/bal-ui-library.svg?branch=master)](https://travis-ci.org/hirsch88/bal-ui-library)
 
-# Stencil Component Starter
+# Stencil Component Starter Home
 
 This is a starter project for building a standalone Web Component using Stencil.
 

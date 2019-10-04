@@ -6,3 +6,7 @@ Lightweight UI-Component Library for Baloise
 
 [GitHub](https://github.com/hirsch88/bal-ui-library)
 [Get Started](docs/quick-start.md)
+
+<!-- background color -->
+
+![color](#002f9f)
