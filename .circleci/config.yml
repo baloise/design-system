@@ -54,6 +54,8 @@ jobs:
       - checkout
       - restore_cache:
           key: *cache_key
+      - restore_cache:
+          key: *dist_key
       - run:
           name: test
           command: npm run test
@@ -80,7 +82,7 @@ workflows:
             - install
       - build:
           requires:
-            - lint
+            - install
       - test:
           requires:
             - install
