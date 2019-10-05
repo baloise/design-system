@@ -5,7 +5,7 @@
 
 - **Compontens**
 
-  - [my-component](components/my-component/my-component.md)
+  - [my-component](components/my-component/readme.md)
 
   <!-- - [Button](components/bal-button/readme.md)
   - [Spinner](components/bal-spinner/readme.md)
