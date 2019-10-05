@@ -19,13 +19,12 @@
     "npm": ">=6.0.0"
   },
   "scripts": {
-    "deploy": "now",
+    "serve": "stencil build --dev --watch --serve",
+    "generate": "stencil generate",
     "lint": "tslint -c tslint.json 'src/**/*.ts' --format stylish",
     "build": "stencil build --docs",
-    "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate",
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
