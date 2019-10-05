@@ -1,6 +1,5 @@
 (function() {
   function SnippetPlugin(hook, vm) {
-
     hook.beforeEach(function(content) {
       let result = "";
       let markdown = content;
@@ -11,16 +10,17 @@
       if (markdown.indexOf(prefix) >= 0) {
         while (markdown.indexOf(prefix) >= 0) {
           const startIndex = markdown.indexOf(prefix);
-          const endIndex = markdown.indexOf(suffix);
+          const endIndex =
+            startIndex + markdown.substring(startIndex).indexOf(suffix);
 
           const codeBlock = markdown.substring(
             startIndex + prefix.length,
-            endIndex
+            endIndex,
           );
 
           result = result + markdown.substring(0, startIndex);
           result = result + lineBreak;
-          result = result + codeBlock;
+          result = result + `<section class="bal-app">${codeBlock}</section>`;
           result = result + lineBreak + lineBreak;
           result = result + prefix;
           result = result + codeBlock;
@@ -28,7 +28,7 @@
 
           markdown = markdown.substring(
             endIndex + suffix.length,
-            markdown.length
+            markdown.length,
           );
         }
 

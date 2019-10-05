@@ -1,2 +1,4 @@
-README.md
-yarn.lock
+.stencil/
+dist/
+loader/
+node_modules/

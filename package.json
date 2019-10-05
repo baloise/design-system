@@ -1,7 +1,7 @@
 {
   "name": "bal-ui-library",
   "version": "0.0.0-development",
-  "description": "Stencil Component Starter",
+  "description": "Lightweight UI-Component Library for Baloise Applications",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
@@ -12,7 +12,8 @@
   "unpkg": "dist/bal-ui-library/bal-ui-library.js",
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "src/scss/"
   ],
   "engines": {
     "node": ">=10.0.0",

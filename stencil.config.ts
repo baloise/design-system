@@ -11,7 +11,10 @@ export const config: Config = {
       src: "**/*.md",
     },
     {
-      src: "docs/*.css",
+      src: "docs/**/*.css",
+    },
+    {
+      src: "docs/**/*.js",
     },
   ],
   plugins: [
