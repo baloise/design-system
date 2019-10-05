@@ -13,15 +13,3 @@ Just give it a try and add it to your project.
 ```bash
 npm install bal-ui-library
 ```
-
-!> **Time** is money, my friend!
-
-?> _TODO_ unit test
-
-```html
-<div class="bal-app">
-  <div class="has-background-info">
-    <p>Hello World!</p>
-  </div>
-</div>
-```

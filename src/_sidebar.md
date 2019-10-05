@@ -1,6 +1,6 @@
 - **Essentials**
 
-  - [Installation](docs/essentials/installation.md)
+  - [Get Started](docs/essentials/get-started.md)
   - [Styling](docs/essentials/styling.md)
 
 - **Elements**
