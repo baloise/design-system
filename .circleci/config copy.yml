@@ -57,9 +57,6 @@ jobs:
       - restore_cache:
           key: *dist_key
       - run:
-          name: build
-          command: npm run build
-      - run:
           name: test
           command: npm run test
 
