@@ -8,27 +8,30 @@ export const config: Config = {
   globalStyle: "src/scss/bal-ui-library.scss",
   copy: [
     {
-      src: "**/*.md"
-    }
+      src: "**/*.md",
+    },
+    {
+      src: "docs/*.css",
+    },
   ],
   plugins: [
     sass(),
     postcss({
-      plugins: [autoprefixer()]
-    })
+      plugins: [autoprefixer()],
+    }),
   ],
   outputTargets: [
     {
       type: "dist",
-      esmLoaderPath: "../loader"
+      esmLoaderPath: "../loader",
     },
     {
-      type: "docs-readme"
+      type: "docs-readme",
     },
     {
       type: "www",
       dir: "public",
-      serviceWorker: null // disable service workers
-    }
-  ]
+      serviceWorker: null, // disable service workers
+    },
+  ],
 };
