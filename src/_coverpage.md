@@ -1,6 +1,6 @@
 # Bal UI Library
 
-Lightweight UI-Component Library for Baloise
+> Lightweight UI-Component Library for Baloise
 
 <a href="https://badge.fury.io/js/bal-ui-library"><img src="https://badge.fury.io/js/bal-ui-library.svg" alt="npm version" height="18"></a>
 

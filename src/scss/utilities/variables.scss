@@ -1,0 +1,69 @@
+/**
+ * Colors
+ */
+$blue: #003399;
+$cyan: #009ee7;
+$green: #67d3a1;
+$orange: #ff9900;
+$red: #ff3366;
+
+$primary: $cyan;
+$info: $blue;
+$link: $cyan;
+$warning: $orange;
+$danger: $red;
+
+$primary-invert: #fff;
+
+/**
+ * Typography
+ */
+$family-sans-serif: MetaPro, Arial, sans-serif;
+$family-primary: $family-sans-serif;
+$title-family: $family-sans-serif;
+$body-family: $family-sans-serif;
+
+$weight-light: 300;
+$weight-normal: 400;
+$weight-medium: 400;
+$weight-semibold: 700;
+$weight-bold: 700;
+
+$size-1: 2.75rem;
+$size-2: 2rem;
+$size-3: 1.375rem;
+$size-4: 1.125rem;
+$size-5: 0.9375rem;
+$size-6: 0.8125rem;
+$size-7: 0.8125rem;
+
+$size-small: $size-5;
+$size-normal: $size-4;
+$size-medium: $size-3;
+$size-large: $size-2;
+
+$title-color: $blue;
+$subtitle-color: $blue;
+
+/**
+ * Radius
+ */
+$radius-small: 4px;
+
+/**
+ * Link
+ */
+$link: $primary;
+$link-invert: $blue;
+$link-visited: $primary;
+$link-hover: $blue;
+$link-hover-border: $blue;
+$link-focus: $blue;
+$link-focus-border: $blue;
+$link-active: $blue;
+$link-active-border: $blue;
+
+/**
+ * Animation
+ */
+$easing: ease-out;
