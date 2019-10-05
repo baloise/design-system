@@ -11,18 +11,17 @@
 
     <link rel="stylesheet" href="/docs/baloise.css" />
     <link rel="stylesheet" href="/build/bal-ui-library.css" />
-
-    <!-- <script src="//unpkg.com/css-vars-ponyfill@2.1.2/dist/css-vars-ponyfill.min.js"></script> -->
-    <!-- <script src="//unpkg.com/mermaid/dist/mermaid.min.js"></script> -->
-
 </head>
 
 <body>
     <div id="app"></div>
+    <script src="//unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
     <script>
-        // var num = 0;
-        // mermaid.initialize({ startOnLoad: false });
+        var num = 0;
+        if (window.mermaid) {
+            window.mermaid.initialize({ startOnLoad: false });
+        }
         window.$docsify = {
             name: 'Bal UI Library',
             repo: 'https://github.com/hirsch88/bal-ui-library',
@@ -36,7 +35,7 @@
             markdown: {
                 renderer: {
                     code: function (code, lang) {
-                        if (lang === "mermaid") {
+                        if (lang === "mermaid" && window.mermaid) {
                             return (
                                 '<div class="mermaid">' + mermaid.render('mermaid-svg-' + num++, code) + "</div>"
                             );
