@@ -1,0 +1,4 @@
+.stencil/
+dist/
+loader/
+node_modules/
