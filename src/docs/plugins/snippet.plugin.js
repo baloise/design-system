@@ -10,7 +10,8 @@
       if (markdown.indexOf(prefix) >= 0) {
         while (markdown.indexOf(prefix) >= 0) {
           const startIndex = markdown.indexOf(prefix);
-          const endIndex = markdown.indexOf(suffix);
+          const endIndex =
+            startIndex + markdown.substring(startIndex).indexOf(suffix);
 
           const codeBlock = markdown.substring(
             startIndex + prefix.length,

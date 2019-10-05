@@ -1,9 +1,10 @@
 # my-component
 
-
+```html
+<my-component first="Bruce" last="Wayne"></my-component>
+```
 
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -13,7 +14,6 @@
 | `last`   | `last`    | The last name   | `string` | `undefined` |
 | `middle` | `middle`  | The middle name | `string` | `undefined` |
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_

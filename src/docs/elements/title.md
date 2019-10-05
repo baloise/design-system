@@ -7,7 +7,7 @@
 <h2 class="subtitle">Subtitle</h2>
 ```
 
-## Sizes
+## Sizes {docsify-ignore}
 
 ```html
 <h1 class="title is-1">Title 1</h1>

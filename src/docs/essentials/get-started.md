@@ -25,19 +25,17 @@ Then you can use the element anywhere in your template, JSX, html etc
 <script src='node_modules/bal-ui-library/dist/bal-ui-library.js'></script>
 ```
 
-## Styling
-
-### Direct Include
-
 Put the below style reference in the head of your index.html.
+
+<!-- The snippet.plugin looks for the html lang, so to avoid that we use xml here -->
 
 ```xml
 <link rel="stylesheet" href="node_modules/bal-ui-library/dist/bal-ui-library/bal-ui-library.css" />
 ```
 
-### Sass Include
+## Sass
 
-Put the below import into your main sass file.
+Instead of the above css import you can use the sass files directly. Just put the below import into your main sass file.
 
 ```scss
 @import "node_modules/bal-ui-library/src/scss/bal-ui-library.scss";
