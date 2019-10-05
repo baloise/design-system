@@ -12,17 +12,5 @@ script:
   - npm run lint
   - npm run build
   - npm run test
+  - ls
   - npm run semantic-release
-
-# jobs:
-#   include:
-#     - stage: build
-#       script:
-#         - npm run lint
-#         - npm run build
-#         - npm run test
-
-#     - stage: release
-#       # node_js: lts/*
-#       script:
-#         - npm run semantic-release
