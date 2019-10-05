@@ -8,13 +8,15 @@ node_js:
 
 jobs:
   include:
-    - stage: build
+    - stage: test
       script:
         - npm run lint
+      script:
         - npm run build
         - npm run test
 
     - stage: release
       node_js: lts/*
       script:
+        - npm run build
         - npm run semantic-release
