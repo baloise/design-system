@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/build/bal-ui-library.css" />
 
     <script src="//unpkg.com/css-vars-ponyfill@2.1.2/dist/css-vars-ponyfill.min.js"></script>
+    <script src="//unpkg.com/mermaid/dist/mermaid.min.js"></script>
 
 </head>
 
@@ -20,6 +21,8 @@
     <div id="app"></div>
     <script>
         cssVars({});
+        var num = 0;
+        mermaid.initialize({ startOnLoad: false });
         window.$docsify = {
             name: 'Bal UI Library',
             repo: 'https://github.com/hirsch88/bal-ui-library',
@@ -30,9 +33,28 @@
             auto2top: true,
             homepage: 'home.md',
             executeScript: true,
+            markdown: {
+                renderer: {
+                    code: function (code, lang) {
+                        if (lang === "mermaid") {
+                            return (
+                                '<div class="mermaid">' + mermaid.render('mermaid-svg-' + num++, code) + "</div>"
+                            );
+                        }
+                        return this.origin.code.apply(this, arguments);
+                    }
+                }
+            }
         }
     </script>
     <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/external-script.min.js"></script>
+    <script src="//unpkg.com/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+
+    <script src="/docs/plugins/snippet.plugin.js"></script>
+    <script src="/docs/plugins/props.plugin.js"></script>
 </body>
 
 </html>
