@@ -1,13 +1,90 @@
 version: 2
+
+job_defaults: &job_defaults
+  docker:
+    - image: circleci/node:latest
+  working_directory: ~/project/repo
+
+cache_key: &cache_key bal-ui-library-deps-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}
+dist_key: &dist_key bal-ui-library-dist-{{ .Revision }}
+
 jobs:
-  build:
-    docker:
-      - image: 'circleci/node:latest'
+  install:
+    <<: *job_defaults
     steps:
       - checkout
+      - restore_cache:
+          key: *cache_key
       - run:
-          name: install
-          command: npm install
+          name: install-dependencies
+          command: npm ci
+      - save_cache:
+          key: *cache_key
+          paths:
+            - node_modules
+
+  lint:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: *cache_key
+      - run:
+          name: lint
+          command: npm run lint
+
+  build:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: *cache_key
+      - run:
+          name: build
+          command: npm run build
+      - save_cache:
+          key: *dist_key
+          paths:
+            - dist
+            - loader
+
+  test:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: *cache_key
+      - run:
+          name: test
+          command: npm run test
+
+  release:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: *cache_key
+      - restore_cache:
+          key: *dist_key
       - run:
           name: release
           command: npm run semantic-release || true
+
+workflows:
+  version: 2
+  build-test-release:
+    jobs:
+      - install
+      - lint:
+          requires:
+            - install
+      - build:
+          requires:
+            - lint
+      - test:
+          requires:
+            - install
+            - build
+      - release:
+          requires:
+            - test
