@@ -29,7 +29,7 @@ div#app:empty:before {
   vertical-align: middle;
 }
 .progress {
-  background-color: var(--theme-color, #42b983);
+  background-color: #009fee;
   height: 2px;
   left: 0;
   position: fixed;
@@ -41,7 +41,7 @@ div#app:empty:before {
 }
 .search .search-keyword,
 .search a:hover {
-  color: var(--theme-color, #42b983);
+  color: #009fee;
 }
 .search .search-keyword {
   font-style: normal;
@@ -113,10 +113,10 @@ li input[type="checkbox"] {
 }
 .app-nav a.active,
 .app-nav a:hover {
-  color: var(--theme-color, #42b983);
+  color: #009fee;
 }
 .app-nav a.active {
-  border-bottom: 2px solid var(--theme-color, #42b983);
+  border-bottom: 2px solid #009fee;
 }
 .app-nav li {
   display: inline-block;
@@ -173,7 +173,7 @@ li input[type="checkbox"] {
 }
 .github-corner svg {
   color: #fff;
-  fill: var(--theme-color, #42b983);
+  fill: #009fee;
   height: 80px;
   width: 80px;
 }
@@ -281,7 +281,7 @@ main.hidden {
   opacity: 0.4;
 }
 .sidebar-toggle span {
-  background-color: var(--theme-color, #42b983);
+  background-color: #009fee;
   display: block;
   margin-bottom: 4px;
   width: 16px;
@@ -552,7 +552,7 @@ section.cover .cover-main > p:last-child a {
   border: 1px solid white;
   border-radius: 2rem;
   box-sizing: border-box;
-  color: var(--theme-color, #42b983);
+  color: #009fee;
   display: inline-block;
   font-size: 1.05rem;
   letter-spacing: 0.1rem;
@@ -564,8 +564,8 @@ section.cover .cover-main > p:last-child a {
   color: #fff;
 }
 section.cover .cover-main > p:last-child a:last-child {
-  background-color: var(--theme-color, #42b983);
-  border: 1px solid var(--theme-color, #42b983);
+  background-color: #009fee;
+  border: 1px solid #009fee;
   color: #fff;
 }
 section.cover .cover-main > p:last-child a:last-child:hover {
@@ -578,11 +578,11 @@ section.cover .cover-main > p:last-child a:hover {
   background: #002b82;
 }
 section.cover blockquote > p > a {
-  border-bottom: 2px solid var(--theme-color, #42b983);
+  border-bottom: 2px solid #009fee;
   transition: color 0.3s;
 }
 section.cover blockquote > p > a:hover {
-  color: var(--theme-color, #42b983);
+  color: #009fee;
 }
 .sidebar,
 body {
@@ -611,7 +611,7 @@ body {
 }
 .sidebar ul li.active > a {
   border-right: 2px solid;
-  color: var(--theme-color, #42b983);
+  color: #009fee;
   font-weight: 600;
 }
 .app-sub-sidebar li:before {
@@ -628,7 +628,7 @@ body {
   font-weight: 600;
 }
 .markdown-section a {
-  color: var(--theme-color, #42b983);
+  color: #009fee;
   font-weight: 600;
 }
 .markdown-section h1 {
@@ -668,7 +668,7 @@ body {
   padding-left: 1.5rem;
 }
 .markdown-section blockquote {
-  border-left: 4px solid var(--theme-color, #42b983);
+  border-left: 4px solid #009fee;
   color: #858585;
   margin: 2em 0;
   padding-left: 20px;
@@ -729,7 +729,7 @@ body {
   color: #2973b7;
 }
 .token.string {
-  color: var(--theme-color, #42b983);
+  color: #009fee;
 }
 .token.selector {
   color: #6679cc;
@@ -747,7 +747,7 @@ body {
 .token.control,
 .token.directive,
 .token.unit {
-  color: var(--theme-color, #42b983);
+  color: #009fee;
 }
 .token.function,
 .token.keyword {
