@@ -1,3 +1,4 @@
 {
-  "lowercaseTypes": true
+  "lowercaseTypes": true,
+  "emoji": true
 }
