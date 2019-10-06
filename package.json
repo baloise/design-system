@@ -20,7 +20,7 @@
     "npm": ">=6.0.0"
   },
   "scripts": {
-    "serve": "stencil build --dev --watch --serve",
+    "serve": "stencil build --dev --docs --watch --serve",
     "generate": "stencil generate",
     "lint": "tslint -c tslint.json 'src/**/*.ts' --format stylish",
     "build": "stencil build --docs",

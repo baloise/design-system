@@ -12,11 +12,7 @@
 
 - **Components**
 
-  - [my-component](components/my-component/readme.md)
-
-  <!-- - [Button](components/bal-button/readme.md)
   - [Spinner](components/bal-spinner/readme.md)
-  - [Toast](components/bal-toast/readme.md) -->
 
 - **Development**
 
