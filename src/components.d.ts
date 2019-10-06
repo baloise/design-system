@@ -9,27 +9,53 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface BalSpinner {}
+  interface MyComponent {
+    /**
+    * The first name
+    */
+    'first': string;
+    /**
+    * The last name
+    */
+    'last': string;
+    /**
+    * The middle name
+    */
+    'middle': string;
+  }
 }
 
 declare global {
 
 
-  interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {}
-  var HTMLBalSpinnerElement: {
-    prototype: HTMLBalSpinnerElement;
-    new (): HTMLBalSpinnerElement;
+  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
+  var HTMLMyComponentElement: {
+    prototype: HTMLMyComponentElement;
+    new (): HTMLMyComponentElement;
   };
   interface HTMLElementTagNameMap {
-    'bal-spinner': HTMLBalSpinnerElement;
+    'my-component': HTMLMyComponentElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface BalSpinner {}
+  interface MyComponent {
+    /**
+    * The first name
+    */
+    'first'?: string;
+    /**
+    * The last name
+    */
+    'last'?: string;
+    /**
+    * The middle name
+    */
+    'middle'?: string;
+  }
 
   interface IntrinsicElements {
-    'bal-spinner': BalSpinner;
+    'my-component': MyComponent;
   }
 }
 
@@ -39,7 +65,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
+      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
     }
   }
 }
