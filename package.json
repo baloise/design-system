@@ -48,7 +48,6 @@
     "url": "https://github.com/hirsch88/bal-ui-library.git"
   },
   "dependencies": {
-    "bulma": "^0.7.5",
-    "conventional-changelog-atom": "^2.0.1"
+    "bulma": "^0.7.5"
   }
 }
