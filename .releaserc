@@ -3,8 +3,7 @@
     [
       "@semantic-release/commit-analyzer",
       {
-        "preset": "angular",
-        "releaseRules": [{ "type": ":sparkles:", "release": "minor" }]
+        "preset": "atom"
       }
     ],
     "@semantic-release/github",
