@@ -1,26 +1,29 @@
+"use strict";
+
 (function() {
   function SnippetPlugin(hook, vm) {
     hook.beforeEach(function(content) {
-      let result = "";
-      let markdown = content;
-      const lineBreak = "\n";
-      const prefix = "```html" + lineBreak;
-      const suffix = "```" + lineBreak;
+      var result = "";
+      var markdown = content;
+      var lineBreak = "\n";
+      var prefix = "```html" + lineBreak;
+      var suffix = "```" + lineBreak;
 
       if (markdown.indexOf(prefix) >= 0) {
         while (markdown.indexOf(prefix) >= 0) {
-          const startIndex = markdown.indexOf(prefix);
-          const endIndex =
+          var startIndex = markdown.indexOf(prefix);
+          var endIndex =
             startIndex + markdown.substring(startIndex).indexOf(suffix);
 
-          const codeBlock = markdown.substring(
+          var codeBlock = markdown.substring(
             startIndex + prefix.length,
             endIndex,
           );
 
           result = result + markdown.substring(0, startIndex);
           result = result + lineBreak;
-          result = result + `<section class="bal-app">${codeBlock}</section>`;
+          result =
+            result + ('<section class="bal-app">' + codeBlock + "</section>");
           result = result + lineBreak + lineBreak;
           result = result + prefix;
           result = result + codeBlock;
