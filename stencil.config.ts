@@ -33,7 +33,7 @@ export const config: Config = {
     },
     {
       type: "www",
-      dir: "public",
+      dir: "www",
       serviceWorker: null, // disable service workers
     },
   ],
