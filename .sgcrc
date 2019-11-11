@@ -1,3 +1,5 @@
 {
-  "lowercaseTypes": true
+  "lowercaseTypes": true,
+  "addScopeSpace": false,
+  "scope": true
 }
