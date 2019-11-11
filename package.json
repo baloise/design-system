@@ -21,7 +21,7 @@
 		"npm": ">=6.0.0"
 	},
 	"scripts": {
-		"start": "docsify start . -c ssr.config.js",
+		"start": "docsify start",
 		"serve": "stencil build  --docs --dev --watch --serve",
 		"generate": "stencil generate",
 		"lint": "tslint -c tslint.json 'src/**/*.ts' --format stylish",
