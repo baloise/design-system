@@ -12,13 +12,14 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 export namespace Components {
   interface BalBadge {
     /**
-    * The theme type of the badge.
+    * The theme type of the badge. Given by bulma our css framework.
     */
-    'type': | "is-light"
-    | "is-primary"
+    'type': | "is-primary"
+    | "is-info"
     | "is-success"
     | "is-warning"
-    | "is-danger";
+    | "is-danger"
+    | "is-light";
   }
   interface BalButton {
     /**
@@ -72,13 +73,14 @@ declare global {
 declare namespace LocalJSX {
   interface BalBadge {
     /**
-    * The theme type of the badge.
+    * The theme type of the badge. Given by bulma our css framework.
     */
-    'type'?: | "is-light"
-    | "is-primary"
+    'type'?: | "is-primary"
+    | "is-info"
     | "is-success"
     | "is-warning"
-    | "is-danger";
+    | "is-danger"
+    | "is-light";
   }
   interface BalButton {
     /**

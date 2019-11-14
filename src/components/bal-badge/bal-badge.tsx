@@ -7,14 +7,15 @@ import {Component, h, Host, Prop} from '@stencil/core';
 })
 export class BalBadge {
   /**
-   * The theme type of the badge.
+   * The theme type of the badge. Given by bulma our css framework.
    */
   @Prop() type:
-    | "is-light"
     | "is-primary"
+    | "is-info"
     | "is-success"
     | "is-warning"
-    | "is-danger" = "is-light";
+    | "is-danger"
+    | "is-light" = "is-light";
 
   render() {
     return (
