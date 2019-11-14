@@ -14,7 +14,7 @@
     "interface-name": false,
     "quotemark": [
       true,
-      "single"
+      "double"
     ]
   },
   "rulesDirectory": []
