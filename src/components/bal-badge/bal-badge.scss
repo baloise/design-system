@@ -1,0 +1,14 @@
+@import "../../scss/utilities/all";
+@import "../../../node_modules/bulma/sass/elements/tag";
+
+:host {
+  .tag {
+    border-radius: 100px;
+    height: 25px;
+    padding: 0 20px;
+
+    &.is-primary {
+      background-color: $brand;
+    }
+  }
+}
