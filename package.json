@@ -11,6 +11,8 @@
 	"collection:main": "dist/collection/index.js",
 	"unpkg": "dist/bal-ui-library/bal-ui-library.js",
 	"files": [
+		"components.d.ts",
+		"components.json",
 		"dist/",
 		"loader/",
 		"www/",
@@ -25,7 +27,7 @@
 		"serve": "stencil build  --docs --dev --watch --serve",
 		"generate": "stencil generate",
 		"lint": "tslint -c tslint.json 'src/**/*.ts' --format stylish",
-		"build": "stencil build --docs --docs-json dist/docs.json",
+		"build": "stencil build --docs --docs-json components.json",
 		"test": "stencil test --spec --e2e",
 		"test.watch": "stencil test --spec --e2e --watchAll",
 		"semantic-release": "semantic-release"
