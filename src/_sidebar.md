@@ -14,6 +14,7 @@
 
   - [Button](components/bal-button/readme.md)
   - [Spinner](components/bal-spinner/readme.md)
+  - [Badge](components/bal-badge/readme.md)
 
 - **Development**
 

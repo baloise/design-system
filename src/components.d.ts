@@ -10,6 +10,17 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
+  interface BalBadge {
+    /**
+    * The theme type of the badge. Given by bulma our css framework.
+    */
+    'type': | "is-primary"
+    | "is-info"
+    | "is-success"
+    | "is-warning"
+    | "is-danger"
+    | "is-light";
+  }
   interface BalButton {
     /**
     * If `true` the button is disabled
@@ -35,6 +46,12 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLBalBadgeElement extends Components.BalBadge, HTMLStencilElement {}
+  var HTMLBalBadgeElement: {
+    prototype: HTMLBalBadgeElement;
+    new (): HTMLBalBadgeElement;
+  };
+
   interface HTMLBalButtonElement extends Components.BalButton, HTMLStencilElement {}
   var HTMLBalButtonElement: {
     prototype: HTMLBalButtonElement;
@@ -47,12 +64,24 @@ declare global {
     new (): HTMLBalSpinnerElement;
   };
   interface HTMLElementTagNameMap {
+    'bal-badge': HTMLBalBadgeElement;
     'bal-button': HTMLBalButtonElement;
     'bal-spinner': HTMLBalSpinnerElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface BalBadge {
+    /**
+    * The theme type of the badge. Given by bulma our css framework.
+    */
+    'type'?: | "is-primary"
+    | "is-info"
+    | "is-success"
+    | "is-warning"
+    | "is-danger"
+    | "is-light";
+  }
   interface BalButton {
     /**
     * If `true` the button is disabled
@@ -75,6 +104,7 @@ declare namespace LocalJSX {
   interface BalSpinner {}
 
   interface IntrinsicElements {
+    'bal-badge': BalBadge;
     'bal-button': BalButton;
     'bal-spinner': BalSpinner;
   }
@@ -86,6 +116,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'bal-badge': LocalJSX.BalBadge & JSXBase.HTMLAttributes<HTMLBalBadgeElement>;
       'bal-button': LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
       'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
     }
