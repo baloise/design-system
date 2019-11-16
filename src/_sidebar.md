@@ -2,6 +2,7 @@
 
   - [Get Started](docs/essentials/get-started.md)
   - [Styling](docs/essentials/styling.md)
+  - [Colors](docs/essentials/colors.md)
 
 - **Elements**
 

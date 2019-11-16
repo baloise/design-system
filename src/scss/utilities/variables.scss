@@ -1,19 +1,65 @@
 /**
  * Colors
  */
+$blue-light: #D3DBEA;
 $blue: #003399;
+$blue-dark: #002B82;
 $cyan: #009ee7;
 $green: #67d3a1;
-$orange: #ff9900;
+$yellow: #ff9900;
+$orange: #ff8304;
 $red: #ff3366;
 
+$black: #000000;
+$black-bis: #121212;
+$black-ter: #242424;
+
+$grey-darkest: #444444;
+$grey-darker: #7e7e7e;
+$grey-dark: #cecfd0;
+$grey: #d8d9d9;
+$grey-light: #e2e3e3;
+$grey-lighter: #ebecec;
+
+$white: #ffffff;
+$white-bis: #fafafa;
+$white-ter: #f5f5f6;
+
+$primary-shadow: #99d0e9;
+$primary-shadow-light: #b2dcef;
+$primary-shadow-lighter: #cce8f4;
+$primary-shadow-lightest: #e5f3f9;
+
+$dark: $blue;
+$light: $grey;
 $primary: $cyan;
+$info-light: $blue-light;
 $info: $blue;
+$info-dark: $blue-dark;
 $link: $cyan;
-$warning: $orange;
+$warning: $yellow;
 $danger: $red;
 
-$primary-invert: #fff;
+$primary-invert: $white;
+$success-invert: $white;
+
+$shades: (
+  "black-bis": $black-bis,
+  "black-ter": $black-ter,
+  "grey-darker": $grey-darker,
+  "grey-dark": $grey-dark,
+  "grey": $grey,
+  "grey-light": $grey-light,
+  "grey-lighter": $grey-lighter,
+  "white-ter": $white-ter,
+  "white-bis": $white-bis,
+  "primary-shadow": $primary-shadow,
+  "primary-shadow-light": $primary-shadow-light,
+  "primary-shadow-lighter": $primary-shadow-lighter,
+  "primary-shadow-lightest":$primary-shadow-lightest,
+);
+
+$form-background: $white-bis;
 
 /**
  * Typography
