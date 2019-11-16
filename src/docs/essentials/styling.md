@@ -2,6 +2,14 @@
 
 This project is build on top of the [Bulma CSS framework](https://bulma.io/).
 
+```xml
+...
+<body class="bal-app">
+  <!-- Use helpers & elements here -->
+</body>
+...
+```
+
 ## Use helpers & elements
 
 To use the helpers and elements add the css class `bal-app` to the body element or any other root element.
@@ -11,14 +19,6 @@ To use the helpers and elements add the css class `bal-app` to the body element 
 <!-- The snippet.plugin looks for the html lang, so to avoid that we use xml here -->
 
 ## Responsive helpers
-
-```xml
-...
-<body class="bal-app">
-  <!-- Use helpers & elements here -->
-</body>
-...
-```
 
 [Go to the Bulma documentation](https://bulma.io/documentation/modifiers/responsive-helpers/).
 
