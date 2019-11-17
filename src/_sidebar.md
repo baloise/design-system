@@ -13,15 +13,17 @@
 
 - **Components**
 
+  - [Badge](components/bal-badge/readme.md)
   - [Button](components/bal-button/readme.md)
   - [Spinner](components/bal-spinner/readme.md)
-  - [Badge](components/bal-badge/readme.md)
+  - [Toast](components/bal-toast/readme.md)
 
 - **Development**
 
   - [Prerequisites](docs/development/prerequisites.md)
-  - [Start](docs/development/start.md)
-  - [Write your own Component](docs/development/write-your-own-component.md)
+  - [Setup](docs/development/setup.md)
+  - [Write your own Component](docs/development/component.md)
+  - [Write your own Controller](docs/development/controller.md)
 
 - [Github](https://github.com/hirsch88/bal-ui-library)
 - [Changelog](https://github.com/hirsch88/bal-ui-library/releases)

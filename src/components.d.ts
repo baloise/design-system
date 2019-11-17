@@ -41,6 +41,24 @@ export namespace Components {
     | "is-link";
   }
   interface BalSpinner {}
+  interface BalToast {
+    /**
+    * Closes this toast
+    */
+    'close': () => Promise<void>;
+    /**
+    * Message text
+    */
+    'message': string;
+    /**
+    * The theme type of the toast. Given by bulma our css framework.
+    */
+    'type': | "is-primary"
+    | "is-info"
+    | "is-success"
+    | "is-warning"
+    | "is-danger";
+  }
 }
 
 declare global {
@@ -63,10 +81,17 @@ declare global {
     prototype: HTMLBalSpinnerElement;
     new (): HTMLBalSpinnerElement;
   };
+
+  interface HTMLBalToastElement extends Components.BalToast, HTMLStencilElement {}
+  var HTMLBalToastElement: {
+    prototype: HTMLBalToastElement;
+    new (): HTMLBalToastElement;
+  };
   interface HTMLElementTagNameMap {
     'bal-badge': HTMLBalBadgeElement;
     'bal-button': HTMLBalButtonElement;
     'bal-spinner': HTMLBalSpinnerElement;
+    'bal-toast': HTMLBalToastElement;
   }
 }
 
@@ -102,11 +127,26 @@ declare namespace LocalJSX {
     | "is-link";
   }
   interface BalSpinner {}
+  interface BalToast {
+    /**
+    * Message text
+    */
+    'message'?: string;
+    /**
+    * The theme type of the toast. Given by bulma our css framework.
+    */
+    'type'?: | "is-primary"
+    | "is-info"
+    | "is-success"
+    | "is-warning"
+    | "is-danger";
+  }
 
   interface IntrinsicElements {
     'bal-badge': BalBadge;
     'bal-button': BalButton;
     'bal-spinner': BalSpinner;
+    'bal-toast': BalToast;
   }
 }
 
@@ -119,6 +159,7 @@ declare module "@stencil/core" {
       'bal-badge': LocalJSX.BalBadge & JSXBase.HTMLAttributes<HTMLBalBadgeElement>;
       'bal-button': LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
       'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
+      'bal-toast': LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
     }
   }
 }
