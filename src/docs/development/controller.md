@@ -14,7 +14,7 @@ interface ComponentOptions {
   // Define your options here
 }
 
-const createBalComponentController = () => {
+const createComponentController = () => {
 
   const method = (options: ComponentOptions): HTMLBalComponentElement => {
     // Define your method logic here
@@ -25,7 +25,7 @@ const createBalComponentController = () => {
   };
 };
 
-export const balComponentController = createBalComponentController();
+export const componentController = createComponentController();
 ```
 
 ## Link controller to the Project
@@ -35,15 +35,15 @@ To register the controller globally we have to add it to the `src/controllers.ts
 ```typescript
 // src/controllers.ts
 
-import {balComponentController} from "./components/bal-component/bal-component.controller";
+import {componentController} from "./components/bal-component/bal-component.controller";
 
-(window as any).balComponentController = balComponentController;
-```
-
-To make the controller accessible from the library we have to add it to the `src/index.ts` too.
-
-```typescript
-// src/index.ts
-
-export {balToastController} from "./components/bal-compontent/bal-compontent.controller";
+export default () => {
+  const win = window;
+  const BalUILibrary = (win as any).BalUILibrary = (win as any).BalUILibrary || {};
+  /**
+   * Place your controllers here ...
+   */
+  BalUILibrary.componentController = componentController;
+  ...
+};
 ```

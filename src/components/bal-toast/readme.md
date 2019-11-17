@@ -25,19 +25,19 @@ Toast can also be created with the `balToastController`.
 
 <script type="text/javascript">
     document.getElementById('toast-default').onclick = function() {
-      window.balToastController.create({ message: 'Hi I am a default Toast!' });
+      window.BalUILibrary.toastController.create({ message: 'Hi I am a default Toast!' });
     };
     document.getElementById('toast-danger').onclick = function() {
-      window.balToastController.create({ message: 'Danger zone!', type: 'is-danger' });
+      window.BalUILibrary.toastController.create({ message: 'Danger zone!', type: 'is-danger' });
     };
 </script>
 
 ```typescript
 document.getElementById('toast-default').onclick = function() {
-  window.balToastController.create({ message: 'Hi I am a default Toast!' });
+  window.BalUILibrary.toastController.create({ message: 'Hi I am a default Toast!' });
 };
 document.getElementById('toast-danger').onclick = function() {
-  window.balToastController.create({ message: 'Danger zone!', type: 'is-danger' });
+  window.BalUILibrary.toastController.create({ message: 'Danger zone!', type: 'is-danger' });
 };
 ```
 

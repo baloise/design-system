@@ -1,4 +1,4 @@
-import {balToastController} from "./components/bal-toast/bal-toast.controller";
+import {toastController} from "./components/bal-toast/bal-toast.controller";
 
 /**
  * Global Script
@@ -9,9 +9,11 @@ import {balToastController} from "./components/bal-toast/bal-toast.controller";
  * https://stenciljs.com/docs/config#globalscript
  */
 
-export default function main() {
+export default () => {
+  const win = window;
+  const BalUILibrary = (win as any).BalUILibrary = (win as any).BalUILibrary || {};
   /**
    * Place your controllers here ...
    */
-  (window as any).balToastController = balToastController;
-}
+  BalUILibrary.toastController = toastController;
+};
