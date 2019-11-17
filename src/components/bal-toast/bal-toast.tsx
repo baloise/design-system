@@ -27,7 +27,8 @@ export class BalToast {
   /**
    * Closes this toast
    */
-  @Method() close() {
+  @Method()
+  async close(): Promise<void> {
     this.animationClass = "fadeOut";
     setTimeout(() => {
       this.element.remove();
