@@ -1,4 +1,4 @@
-# Start
+# Setup
 
 To start building a new web component using Stencil, clone this repo to a new directory:
 

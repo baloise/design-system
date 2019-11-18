@@ -15,7 +15,8 @@
     "quotemark": [
       true,
       "double"
-    ]
+    ],
+    "curly": false
   },
   "rulesDirectory": []
 }
