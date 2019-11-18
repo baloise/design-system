@@ -1,4 +1,4 @@
-import {toastController as balToastController} from "./components/bal-toast/bal-toast.controller";
+// import {toastController as balToastController} from "./components/bal-toast/bal-toast.controller";
 
 /**
  * Global Script
@@ -10,10 +10,10 @@ import {toastController as balToastController} from "./components/bal-toast/bal-
  */
 
 export default () => {
-  const win = window;
-  const BalUILibrary = (win as any).BalUILibrary = (win as any).BalUILibrary || {};
+  // const win = window;
+  // const BalUILibrary = (win as any).BalUILibrary = (win as any).BalUILibrary || {};
   /**
    * Place your controllers here ...
    */
-  BalUILibrary.toastController = balToastController;
+  // BalUILibrary.toastController = balToastController;
 };
