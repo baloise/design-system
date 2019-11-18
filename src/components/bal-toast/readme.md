@@ -24,6 +24,7 @@ Toast can also be created with the `balToastController`.
 <bal-button id="toast-danger" type="is-danger">Show danger Toast</bal-button>
 
 <script type="text/javascript">
+console.log('toastController', toastController);
     document.getElementById('toast-default').onclick = function() {
       window.BalUILibrary.toastController.create({ message: 'Hi I am a default Toast!' });
     };

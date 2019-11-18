@@ -1,4 +1,4 @@
-import {toastController} from "./components/bal-toast/bal-toast.controller";
+import {toastController as balToastController} from "./components/bal-toast/bal-toast.controller";
 
 /**
  * Global Script
@@ -15,5 +15,5 @@ export default () => {
   /**
    * Place your controllers here ...
    */
-  BalUILibrary.toastController = toastController;
+  BalUILibrary.toastController = balToastController;
 };
