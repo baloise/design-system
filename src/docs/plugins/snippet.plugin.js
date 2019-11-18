@@ -26,10 +26,7 @@
           result = result + codeBlock;
           result = result + suffix + lineBreak;
 
-          markdown = markdown.substring(
-            endIndex + suffix.length,
-            markdown.length,
-          );
+          markdown = markdown.substring(endIndex + suffix.length, markdown.length);
         }
 
         return result + markdown;
