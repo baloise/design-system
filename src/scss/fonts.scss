@@ -1,0 +1,23 @@
+$meta-font-path: "/assets/fonts";
+
+@font-face {
+  font-family: MetaPro;
+  font-style: normal;
+  font-weight: normal;
+  src: local("MetaStd Normal"),
+  local("MetaStd-Normal"),
+  url("#{$meta-font-path}/MetaStd-Normal.woff2") format("woff2"),
+  url("#{$meta-font-path}/MetaStd-Normal.woff") format("woff"),
+  url("#{$meta-font-path}/MetaStd-Normal.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: MetaPro;
+  font-style: normal;
+  font-weight: bold;
+  src: local("MetaStd Medium"),
+  local("MetaStd-Medium"),
+  url("#{$meta-font-path}/MetaStd-Medium.woff2") format("woff2"),
+  url("#{$meta-font-path}/MetaStd-Medium.woff") format("woff"),
+  url("#{$meta-font-path}/MetaStd-Medium.ttf") format("truetype");
+}
