@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from "@stencil/core";
+import {Component, Host, h, Prop} from "@stencil/core";
 
 @Component({
   tag: "bal-button",
@@ -36,8 +36,8 @@ export class BalButton {
           ) : (
             ""
           )}
-          <span style={{ display: this.loading ? "none" : "inline-block" }}>
-            <slot />
+          <span style={{display: this.loading ? "none" : "inline-block"}}>
+            <slot/>
           </span>
         </button>
       </Host>
