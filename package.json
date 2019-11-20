@@ -35,7 +35,7 @@
 		"@stencil/postcss": "1.0.1",
 		"@stencil/sass": "1.0.1",
 		"@types/jest": "24.0.19",
-		"@types/puppeteer": "1.20.2",
+		"@types/puppeteer": "2.0.0",
 		"autoprefixer": "9.7.0",
 		"docsify-cli": "^4.3.0",
 		"jest": "24.8.0",
