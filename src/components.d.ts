@@ -47,6 +47,10 @@ export namespace Components {
     */
     'close': () => Promise<void>;
     /**
+    * Closes the toast after the given duration in ms
+    */
+    'closeIn': (duration: number) => Promise<void>;
+    /**
     * Message text
     */
     'message': string;

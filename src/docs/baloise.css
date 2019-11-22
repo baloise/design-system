@@ -1007,3 +1007,8 @@ pre:after {
 pre[data-lang="mermaid"] {
   display: none;
 }
+
+.markdown-section h3 code {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
