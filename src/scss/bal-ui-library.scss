@@ -1,23 +1,15 @@
-@charset "utf-8";
-
-@import "fonts";
+@import "utilities/all";
+@import "base/all";
 
 .bal-app {
-  @import "utilities/all";
-  @import "base/all";
-
   @import "node_modules/bulma/sass/grid/_all.sass";
   @import "node_modules/bulma/sass/layout/_all.sass";
+
   @import "node_modules/bulma/sass/elements/box.sass";
   @import "node_modules/bulma/sass/elements/content.sass";
   @import "node_modules/bulma/sass/elements/image.sass";
   @import "node_modules/bulma/sass/elements/title.sass";
   @import "node_modules/bulma/sass/elements/notification.sass";
-
-  * {
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
-  }
 
 }
 
