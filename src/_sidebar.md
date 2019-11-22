@@ -13,9 +13,9 @@
 
 - **Components**
 
-  - [Badge](components/bal-badge/readme.md)
   - [Button](components/bal-button/readme.md)
   - [Spinner](components/bal-spinner/readme.md)
+  - [Tag](components/bal-tag/readme.md)
   - [Toast](components/bal-toast/readme.md)
 
 - **Development**

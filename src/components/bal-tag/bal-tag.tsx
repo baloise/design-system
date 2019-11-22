@@ -1,13 +1,13 @@
-import {Component, h, Host, Prop} from '@stencil/core';
+import {Component, h, Host, Prop} from "@stencil/core";
 
 @Component({
-  tag: 'bal-badge',
-  styleUrl: 'bal-badge.scss',
-  shadow: true
+  tag: "bal-tag",
+  styleUrl: "bal-tag.scss",
+  shadow: true,
 })
-export class BalBadge {
+export class BalTag {
   /**
-   * The theme type of the badge. Given by bulma our css framework.
+   * The theme type of the tag. Given by bulma our css framework.
    */
   @Prop() type:
     | "is-primary"

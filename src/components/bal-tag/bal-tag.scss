@@ -1,11 +1,10 @@
-@import "../../scss/bal-ui-library.globals";
-
+@import "bal-tag.vars";
 @import "node_modules/bulma/sass/elements/tag";
 
 :host {
   .tag {
-    border-radius: 100px;
     height: 25px;
     padding: 0 20px;
+    align-items: baseline;
   }
 }
