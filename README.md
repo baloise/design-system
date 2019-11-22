@@ -20,3 +20,4 @@ The [documentation](https://bal-ui-library.hirsch.now.sh) is published on now.sh
 ## License
 
 [MIT](/LICENSE)
+
