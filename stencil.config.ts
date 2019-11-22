@@ -17,9 +17,6 @@ export const config: Config = {
       src: "docs/**/*.js",
     },
     {
-      src: "assets/**/*",
-    },
-    {
       src: "components.d.ts",
     },
   ],

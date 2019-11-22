@@ -1,12 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Source+Sans+Pro:300,400,600");
 
 * {
-  -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-text-size-adjust: none;
   -webkit-touch-callout: none;
-  box-sizing: border-box;
 }
 
 body:not(.ready) {
@@ -364,13 +362,8 @@ body.sticky .sidebar-toggle {
 .markdown-section {
   margin: 0 auto;
   max-width: 800px;
-  padding: 30px 15px 40px;
+  padding: 0 15px 30px 40px;
   position: relative;
-}
-
-.markdown-section > * {
-  box-sizing: border-box;
-  font-size: inherit;
 }
 
 .markdown-section > :first-child {
@@ -578,6 +571,7 @@ section.cover {
   background-size: cover;
   height: 100vh;
   display: none;
+  background: #039 !important;
 }
 
 section.cover.show {
@@ -998,4 +992,9 @@ pre:after {
   height: 24px;
   margin-right: 8px;
   width: 24px;
+}
+
+#graph,
+pre[data-lang="mermaid"] {
+  display: none;
 }
