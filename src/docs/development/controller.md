@@ -10,22 +10,19 @@ Replace the `Component` placeholder with your component name.
 ```typescript
 // src/components/bal-component/bal-component.controller.ts
 
-interface ComponentOptions {
+interface BalComponentOptions {
   // Define your options here
 }
 
-const createComponentController = () => {
+class BalComponentController {
 
-  const method = (options: ComponentOptions): HTMLBalComponentElement => {
+  method(options: BalComponentOptions): HTMLBalComponentElement {
     // Define your method logic here
-  };
+  }
 
-  return {
-    method,
-  };
-};
+}
 
-export const componentController = createComponentController();
+export const balComponentController = new BalComponentController();
 ```
 
 ## Link controller to the Project
@@ -33,17 +30,30 @@ export const componentController = createComponentController();
 To register the controller globally we have to add it to the `src/controllers.ts` file.
 
 ```typescript
-// src/controllers.ts
+// src/index.ts
 
-import {componentController} from "./components/bal-component/bal-component.controller";
+...
+export {balComponentController} from "./components/bal-component/bal-component.controller";
 
-export default () => {
-  const win = window;
-  const BalUILibrary = (win as any).BalUILibrary = (win as any).BalUILibrary || {};
-  /**
-   * Place your controllers here ...
-   */
-  BalUILibrary.componentController = componentController;
-  ...
-};
 ```
+
+## Link controller to the Documentation
+
+To use your controller in your component documentation we have to expose it to the window object.
+Just import your controller in the index.html and add it to the window object.
+
+```xml
+<!-- src/index.html -->
+
+...
+<script type="module">
+    import {balComponentController} from '/build/index.esm.js';
+
+    window.balComponentController = balComponentController;
+</script>
+...
+```
+
+## Examples
+
+  - [Toast](components/bal-toast/readme.md)

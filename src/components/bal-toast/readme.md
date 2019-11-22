@@ -24,21 +24,22 @@ Toast can also be created with the `balToastController`.
 <bal-button id="toast-danger" type="is-danger">Show danger Toast</bal-button>
 
 <script type="text/javascript">
-console.log('toastController', toastController);
     document.getElementById('toast-default').onclick = function() {
-      window.BalUILibrary.toastController.create({ message: 'Hi I am a default Toast!' });
+        balToastController.create({ message: 'Hi I am a default Toast!' });
     };
     document.getElementById('toast-danger').onclick = function() {
-      window.BalUILibrary.toastController.create({ message: 'Danger zone!', type: 'is-danger' });
+        balToastController.create({ message: 'Danger zone!', type: 'is-danger' });
     };
 </script>
 
 ```typescript
+import {balToastController} from 'bal-ui-library';
+
 document.getElementById('toast-default').onclick = function() {
-  window.BalUILibrary.toastController.create({ message: 'Hi I am a default Toast!' });
+  balToastController.create({ message: 'Hi I am a default Toast!' });
 };
 document.getElementById('toast-danger').onclick = function() {
-  window.BalUILibrary.toastController.create({ message: 'Danger zone!', type: 'is-danger' });
+  balToastController.create({ message: 'Danger zone!', type: 'is-danger' });
 };
 ```
 

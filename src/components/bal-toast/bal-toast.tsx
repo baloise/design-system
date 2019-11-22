@@ -6,8 +6,8 @@ import {Component, Host, h, Prop, Method, Element, State} from "@stencil/core";
   shadow: true,
 })
 export class BalToast {
-  @State() animationClass = "fadeInDown";
   @Element() element: HTMLBalToastElement;
+  @State() animationClass = "fadeInDown";
 
   /**
    * Message text
@@ -38,7 +38,9 @@ export class BalToast {
   render() {
     return (
       <Host>
-        <div role="alert" class={`toast ${this.animationClass} ${this.type}`}>
+        <div role="alert"
+             onClick={() => this.close()}
+             class={`toast ${this.animationClass} ${this.type}`}>
           {this.message}
         </div>
       </Host>
