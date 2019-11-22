@@ -3,7 +3,6 @@ const createNoticesUtils = () => {
   const DURATION = 5000;
 
   let container: HTMLDivElement;
-  let timer: NodeJS.Timeout;
 
   const shouldQueue = () => {
     return container.childElementCount > 0;
@@ -28,23 +27,9 @@ const createNoticesUtils = () => {
       setTimeout(() => showNotice(element), 250);
       return;
     }
+
     container.insertAdjacentElement("afterbegin", element);
-    timer = setTimeout(() => close(element), DURATION);
-  };
-
-  const removeElement = (element: HTMLBalToastElement) => {
-    if (typeof element.close !== "undefined") {
-      element.close();
-    } else if (typeof element.remove !== "undefined") {
-      element.remove();
-    } else if (typeof element.parentNode !== "undefined") {
-      element.parentNode.removeChild(element);
-    }
-  };
-
-  const close = (element: HTMLBalToastElement) => {
-    clearTimeout(timer);
-    removeElement(element);
+    element.closeIn(DURATION);
   };
 
   setupContainer();

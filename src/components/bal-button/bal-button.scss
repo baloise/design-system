@@ -7,10 +7,6 @@
   user-select: none;
   min-height: 50px;
 
-  bal-spinner > div {
-    background: red !important;
-  }
-
   &::-moz-focus-inner {
     border: 0;
   }
@@ -190,4 +186,5 @@
     line-height: 1.25rem;
     font-weight: 600;
   }
+
 }

@@ -67,6 +67,16 @@ Type: `Promise<void>`
 
 
 
+### `closeIn(duration: number) => Promise<void>`
+
+Closes the toast after the given duration in ms
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 
 ----------------------------------------------
 

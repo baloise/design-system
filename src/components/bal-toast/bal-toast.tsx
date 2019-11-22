@@ -6,6 +6,7 @@ import {Component, Host, h, Prop, Method, Element, State} from "@stencil/core";
   shadow: true,
 })
 export class BalToast {
+  timer: NodeJS.Timer;
   @Element() element: HTMLBalToastElement;
   @State() animationClass = "fadeInDown";
 
@@ -25,13 +26,23 @@ export class BalToast {
     | "is-danger" = "is-primary";
 
   /**
+   * Closes the toast after the given duration in ms
+   */
+  @Method()
+  async closeIn(duration: number): Promise<void> {
+    this.timer = setTimeout(() => this.close(), duration);
+  }
+
+  /**
    * Closes this toast
    */
   @Method()
   async close(): Promise<void> {
+    clearTimeout(this.timer);
     this.animationClass = "fadeOut";
-    setTimeout(() => {
+    this.timer = setTimeout(() => {
       this.element.remove();
+      clearTimeout(this.timer);
     }, 150);
   }
 

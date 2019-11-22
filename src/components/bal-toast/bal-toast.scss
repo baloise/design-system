@@ -1,10 +1,10 @@
-@import "../../scss/utilities/all";
-@import "../../scss/base/all";
+@import "../../scss/bal-ui-library.globals";
 
 :host {
   display: inline-flex;
   position: relative;
   align-self: center;
+  cursor: pointer;
 
   .toast {
     align-self: center;

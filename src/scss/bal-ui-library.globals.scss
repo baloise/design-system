@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+@import "utilities/all";
+@import "base/all";
+
+* {
+  box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}
