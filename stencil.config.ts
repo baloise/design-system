@@ -6,7 +6,6 @@ import autoprefixer from "autoprefixer";
 export const config: Config = {
   namespace: "bal-ui-library",
   globalStyle: "src/scss/bal-ui-library.scss",
-  globalScript: "src/controllers.ts",
   copy: [
     {
       src: "**/*.md",

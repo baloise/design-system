@@ -14,4 +14,9 @@ Change the extension of the generated `bal-component.css` file to `bal-component
 
 ## My first component
 
-[Go to the Stencil documentation](https://stenciljs.com/docs/my-first-component).
+[Go to the Stencil Documentation](https://stenciljs.com/docs/my-first-component).
+
+## Style Guide
+
+[Go to the Stencil Style Guide](https://stenciljs.com/docs/style-guide).
+
