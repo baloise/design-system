@@ -571,6 +571,7 @@ section.cover {
   background-size: cover;
   height: 100vh;
   display: none;
+  background: #039 !important;
 }
 
 section.cover.show {
