@@ -18,7 +18,7 @@ Toast have five different types.
 
 ## In Action
 
-Toast can also be created with the `balToastController`.
+Toast can be created with the `balToastController`.
 
 <bal-button id="toast-default">Show default Toast</bal-button>
 <bal-button id="toast-danger" type="is-danger">Show danger Toast</bal-button>
