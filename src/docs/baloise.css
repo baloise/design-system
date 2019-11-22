@@ -992,3 +992,8 @@ pre:after {
   margin-right: 8px;
   width: 24px;
 }
+
+#graph,
+pre[data-lang="mermaid"] {
+  display: none;
+}
