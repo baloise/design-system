@@ -1,0 +1,17 @@
+@import "../../scss/bal-ui-library.globals";
+@import "../../scss/elements/icon";
+@import "node_modules/bulma/sass/form/all";
+@import "node_modules/bulma/sass/elements/icon.sass";
+
+
+:host {
+  display: block;
+}
+
+.form > .label {
+  font-size: $size-5 !important;
+}
+
+.help {
+  min-height: 22.5px;
+}

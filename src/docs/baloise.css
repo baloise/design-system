@@ -1012,3 +1012,9 @@ pre[data-lang="mermaid"] {
   font-size: 1.3rem;
   font-weight: 600;
 }
+
+.docsify-copy-code-button span.label {
+  color: white !important;
+  display: inline-block !important;
+  margin: 0 !important;
+}

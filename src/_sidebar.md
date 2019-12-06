@@ -18,6 +18,7 @@
 - **Components**
 
   - [Button](components/bal-button/readme.md)
+  - [Field](components/bal-field/readme.md)
   - [Spinner](components/bal-spinner/readme.md)
   - [Tag](components/bal-tag/readme.md)
   - [Toast](components/bal-toast/readme.md)
