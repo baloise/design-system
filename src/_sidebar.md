@@ -10,6 +10,7 @@
   - [Content](docs/elements/content.md)
   - [Input](docs/elements/input.md)
   - [Image](docs/elements/image.md)
+  - [Radio](docs/elements/radio.md)
   - [Title](docs/elements/title.md)
 
 - **Components**
