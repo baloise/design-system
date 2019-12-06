@@ -29,6 +29,7 @@ export namespace Components {
     | "is-danger"
     | "is-link";
   }
+  interface BalDropdown {}
   interface BalSpinner {}
   interface BalTag {
     /**
@@ -74,6 +75,12 @@ declare global {
     new (): HTMLBalButtonElement;
   };
 
+  interface HTMLBalDropdownElement extends Components.BalDropdown, HTMLStencilElement {}
+  var HTMLBalDropdownElement: {
+    prototype: HTMLBalDropdownElement;
+    new (): HTMLBalDropdownElement;
+  };
+
   interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {}
   var HTMLBalSpinnerElement: {
     prototype: HTMLBalSpinnerElement;
@@ -93,6 +100,7 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'bal-button': HTMLBalButtonElement;
+    'bal-dropdown': HTMLBalDropdownElement;
     'bal-spinner': HTMLBalSpinnerElement;
     'bal-tag': HTMLBalTagElement;
     'bal-toast': HTMLBalToastElement;
@@ -119,6 +127,7 @@ declare namespace LocalJSX {
     | "is-danger"
     | "is-link";
   }
+  interface BalDropdown {}
   interface BalSpinner {}
   interface BalTag {
     /**
@@ -148,6 +157,7 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'bal-button': BalButton;
+    'bal-dropdown': BalDropdown;
     'bal-spinner': BalSpinner;
     'bal-tag': BalTag;
     'bal-toast': BalToast;
@@ -161,6 +171,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'bal-button': LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
+      'bal-dropdown': LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
       'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
       'bal-tag': LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
       'bal-toast': LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;

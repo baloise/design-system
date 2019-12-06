@@ -1,0 +1,7 @@
+@import "../../scss/bal-ui-library.globals";
+@import "node_modules/bulma/sass/components/dropdown.sass";
+@import "node_modules/bulma/sass/elements/button.sass";
+
+:host {
+  display: block;
+}
