@@ -4,6 +4,14 @@
 
 ```html
 <div class="box">
-  <p>Box Content</p>
+  Box Content
 </div>
+```
+
+## Clickable Box
+
+```html
+<a class="box">
+  Box Content
+</a>
 ```
