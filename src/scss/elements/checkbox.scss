@@ -36,12 +36,6 @@ div.bal-checkbox {
     display: inline-block;
     position: absolute;
 
-    left: 0px;
-    top: 0px;
-
-    height: 24px;
-    width: 24px;
-
     background-color: transparent;
     background-position: center;
     background-repeat: no-repeat;
@@ -50,12 +44,35 @@ div.bal-checkbox {
 
   label::before {
     content: "";
-    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" %3E%3Cpath fill="none" fill-rule="evenodd" stroke="%2399ADD6" d="M.5.5h23v23H.5z"/%3E%3C/svg%3E') no-repeat;
+
+    left: 0px;
+    top: 0px;
+
+    height: 24px;
+    width: 24px;
+
+    border: 1px solid $light-text-blue-neg;
   }
 
   label::after {
     content: none;
-    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cpath stroke="%2399ADD6" d="M.5.5h23v23H.5z"/%3E%3Cpath stroke="%23039" stroke-width="2" d="M7 12.366l3.22 3.135L16.72 9"/%3E%3C/g%3E%3C/svg%3E') no-repeat;
+
+    left: 9px;
+    top: 6px;
+
+    width: 6px;
+    height: 10px;
+
+    border-bottom: 2px solid $bal_brand_blue;
+    border-right: 2px solid $bal_brand_blue;
+    border-top: 0;
+    border-left: 0;
+
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
   }
 
   input[type="checkbox"]:disabled + label {
@@ -63,16 +80,11 @@ div.bal-checkbox {
     opacity: 0.5;
   }
 
-  input[type="checkbox"]:checked + label::before {
-    content: none;
-  }
-
   input[type="checkbox"]:checked + label::after {
     content: "";
   }
 
-  input[type="checkbox"]:focus + label::before,
-  input[type="checkbox"]:focus + label::after {
+  input[type="checkbox"]:focus + label::before {
     outline: 1px dashed $cyan !important;
   }
 }
