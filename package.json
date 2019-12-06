@@ -22,7 +22,7 @@
 	},
 	"scripts": {
 		"start": "docsify start",
-		"serve": "stencil build  --docs --dev --watch --serve",
+		"serve": "stencil build --docs --dev --watch --serve",
 		"generate": "stencil generate",
 		"lint": "tslint -c tslint.json 'src/**/*.ts' --format stylish",
 		"build": "stencil build --docs --docs-json dist/docs.json",
