@@ -1,0 +1,90 @@
+div.bal-checkbox {
+  position: relative;
+
+  padding-right: 25px;
+  padding-bottom: 15px;
+
+  input[type="checkbox"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    outline: 0;
+  }
+
+  input[type="checkbox"] + label {
+    cursor: pointer;
+    padding-left: 34px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  label {
+    padding-left: 34px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  label::before,
+  label::after {
+    display: inline-block;
+    position: absolute;
+
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+  }
+
+  label::before {
+    content: "";
+
+    left: 0px;
+    top: 0px;
+
+    height: 24px;
+    width: 24px;
+
+    border: 1px solid $light-text-blue-neg;
+  }
+
+  label::after {
+    content: none;
+
+    left: 9px;
+    top: 6px;
+
+    width: 6px;
+    height: 10px;
+
+    border-bottom: 2px solid $bal_brand_blue;
+    border-right: 2px solid $bal_brand_blue;
+    border-top: 0;
+    border-left: 0;
+
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  input[type="checkbox"]:disabled + label {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  input[type="checkbox"]:checked + label::after {
+    content: "";
+  }
+
+  input[type="checkbox"]:focus + label::before {
+    outline: 1px dashed $cyan !important;
+  }
+}

@@ -1,0 +1,68 @@
+div.bal-radio {
+  display: inline-block;
+  position: relative;
+
+  padding-right: 25px;
+  padding-bottom: 15px;
+
+  input[type="radio"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    outline: 0;
+  }
+
+  input[type="radio"] + label {
+    cursor: pointer;
+    padding-left: 34px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  input[type="radio"] + label::before,
+  input[type="radio"] + label::after {
+    display: inline-block;
+    position: absolute;
+
+    left: 0px;
+    top: 0px;
+
+    height: 24px;
+    width: 24px;
+
+    border-radius: 50%;
+  }
+
+  input[type="radio"] + label:before {
+    content: "";
+    border: 1px solid $bal_line_blue;
+  }
+
+  input[type="radio"] + label:after {
+    content: none;
+    background: $bal_brand_blue;
+    transform: scale(.4);
+  }
+
+  input[type="radio"]:disabled + label {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  input[type="radio"]:checked + label::after {
+    content: "";
+  }
+
+  input[type="radio"]:hover:not([disabled]) + label:before {
+    border-color: $bal_brand_blue;
+  }
+
+  input[type="radio"]:focus + label::before {
+    outline: 1px dashed $cyan !important;
+  }
+}
