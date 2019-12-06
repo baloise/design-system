@@ -4,6 +4,9 @@ import {postcss} from "@stencil/postcss";
 import autoprefixer from "autoprefixer";
 
 export const config: Config = {
+  devServer: {
+    reloadStrategy: "pageReload",
+  },
   namespace: "bal-ui-library",
   globalStyle: "src/scss/bal-ui-library.scss",
   copy: [
