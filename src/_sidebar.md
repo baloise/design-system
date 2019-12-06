@@ -8,6 +8,7 @@
 
   - [Box](docs/elements/box.md)
   - [Content](docs/elements/content.md)
+  - [Icons](docs/elements/icon.md)
   - [Input](docs/elements/input.md)
   - [Image](docs/elements/image.md)
   - [Radio](docs/elements/radio.md)
