@@ -29,6 +29,28 @@ export namespace Components {
     | "is-danger"
     | "is-link";
   }
+  interface BalField {
+    /**
+    * Baloise icon for the left side of the input
+    */
+    'iconLeft': string;
+    /**
+    * Baloise icon for the right side of the input
+    */
+    'iconRight': string;
+    /**
+    * Label text
+    */
+    'label': string;
+    /**
+    * If `true` a asterix (*) is added to the label text
+    */
+    'required': boolean;
+    /**
+    * Validation message text
+    */
+    'validationMessage': string;
+  }
   interface BalSpinner {}
   interface BalTag {
     /**
@@ -74,6 +96,12 @@ declare global {
     new (): HTMLBalButtonElement;
   };
 
+  interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {}
+  var HTMLBalFieldElement: {
+    prototype: HTMLBalFieldElement;
+    new (): HTMLBalFieldElement;
+  };
+
   interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {}
   var HTMLBalSpinnerElement: {
     prototype: HTMLBalSpinnerElement;
@@ -93,6 +121,7 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'bal-button': HTMLBalButtonElement;
+    'bal-field': HTMLBalFieldElement;
     'bal-spinner': HTMLBalSpinnerElement;
     'bal-tag': HTMLBalTagElement;
     'bal-toast': HTMLBalToastElement;
@@ -118,6 +147,28 @@ declare namespace LocalJSX {
     | "is-warning"
     | "is-danger"
     | "is-link";
+  }
+  interface BalField {
+    /**
+    * Baloise icon for the left side of the input
+    */
+    'iconLeft'?: string;
+    /**
+    * Baloise icon for the right side of the input
+    */
+    'iconRight'?: string;
+    /**
+    * Label text
+    */
+    'label'?: string;
+    /**
+    * If `true` a asterix (*) is added to the label text
+    */
+    'required'?: boolean;
+    /**
+    * Validation message text
+    */
+    'validationMessage'?: string;
   }
   interface BalSpinner {}
   interface BalTag {
@@ -148,6 +199,7 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'bal-button': BalButton;
+    'bal-field': BalField;
     'bal-spinner': BalSpinner;
     'bal-tag': BalTag;
     'bal-toast': BalToast;
@@ -161,6 +213,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'bal-button': LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
+      'bal-field': LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
       'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
       'bal-tag': LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
       'bal-toast': LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
