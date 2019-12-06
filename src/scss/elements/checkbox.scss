@@ -65,7 +65,8 @@
     content: "";
   }
 
-  input[type="checkbox"]:focus + label::before {
+  input[type="checkbox"]:focus + label::before,
+  input[type="checkbox"]:focus + label::after {
     outline: 2px dashed $cyan !important;
   }
 }
