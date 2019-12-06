@@ -1,4 +1,9 @@
-import { Component, Host, h } from "@stencil/core";
+import {Component, Host, h, State, Method, Prop, EventEmitter} from "@stencil/core";
+
+export interface DropDownOption {
+  label: string;
+  value: any;
+}
 
 @Component({
   tag: "bal-dropdown",
@@ -7,41 +12,62 @@ import { Component, Host, h } from "@stencil/core";
 })
 export class BalDropdown {
 
+  @Prop() options: DropDownOption[] = [
+    {
+      label: "bubu",
+      value: "bubu",
+    },
+    {
+      label: "lala",
+      value: "lala",
+    },
+  ];
+  @Event() optionChanged: EventEmitter;
+
+  @State() dropdownIsActive = false;
+  @State() selectedOption: DropDownOption;
+
+  @Method()
+  async toggle() {
+    this.dropdownIsActive = !this.dropdownIsActive;
+  }
+
+  onOptionSelected(option: DropDownOption) {
+    this.selectedOption = option;
+    this.toggle();
+    this.optionChanged.emit(option);
+  }
+
+  get dropDownTitle() {
+    return this.selectedOption && this.selectedOption.label || "-";
+  }
+
   render() {
     return (
       <Host>
-        <div class="dropdown is-active">
+        <div class={this.dropdownIsActive ? "dropdown is-active" : "dropdown"}>
           <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-              <span>Dropdown button</span>
+            <button class="button"
+                    aria-haspopup="true"
+                    aria-controls="dropdown-menu"
+                    onClick={() => this.toggle()}>
+              <span>{this.dropDownTitle}</span>
               <span class="icon is-small">
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                <i class="bal-icon-caret-down" aria-hidden="true"></i>
               </span>
             </button>
           </div>
-          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-menu" role="menu">
             <div class="dropdown-content">
-              <a href="#" class="dropdown-item">
-                Dropdown item
-              </a>
-              <a class="dropdown-item">
-                Other dropdown item
-              </a>
-              <a href="#" class="dropdown-item is-active">
-                Active dropdown item
-              </a>
-              <a href="#" class="dropdown-item">
-                Other dropdown item
-              </a>
-              <hr class="dropdown-divider"/>
-              <a href="#" class="dropdown-item">
-                With a divider
-              </a>
+              {this.options.map((option) =>
+                <a class="dropdown-item" onClick={() => this.onOptionSelected(option)}>
+                  {option.label}
+                </a>
+              )}
             </div>
           </div>
         </div>
       </Host>
     );
   }
-
 }

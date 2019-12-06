@@ -12,6 +12,33 @@ A basic dropdown.
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property  | Attribute | Description | Type               | Default                                                                                                               |
+| --------- | --------- | ----------- | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| `options` | --        |             | `DropDownOption[]` | `[     {       label: "bubu",       value: "bubu",     },     {       label: "lala",       value: "lala",     },   ]` |
+
+
+## Events
+
+| Event           | Description | Type               |
+| --------------- | ----------- | ------------------ |
+| `optionChanged` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `toggle() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

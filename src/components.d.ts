@@ -7,7 +7,9 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  DropDownOption,
+} from './components/bal-dropdown/bal-dropdown';
 
 export namespace Components {
   interface BalButton {
@@ -29,7 +31,10 @@ export namespace Components {
     | "is-danger"
     | "is-link";
   }
-  interface BalDropdown {}
+  interface BalDropdown {
+    'options': DropDownOption[];
+    'toggle': () => Promise<void>;
+  }
   interface BalSpinner {}
   interface BalTag {
     /**
@@ -127,7 +132,10 @@ declare namespace LocalJSX {
     | "is-danger"
     | "is-link";
   }
-  interface BalDropdown {}
+  interface BalDropdown {
+    'onOptionChanged'?: (event: CustomEvent<any>) => void;
+    'options'?: DropDownOption[];
+  }
   interface BalSpinner {}
   interface BalTag {
     /**
