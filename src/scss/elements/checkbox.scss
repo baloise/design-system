@@ -1,17 +1,8 @@
-.bal-checkbox {
+div.bal-checkbox {
   position: relative;
 
   padding-right: 25px;
   padding-bottom: 15px;
-
-  * {
-    cursor: pointer;
-  }
-
-  input[type="checkbox"]:disabled + * {
-    cursor: default;
-    opacity: 0.5;
-  }
 
   input[type="checkbox"] {
     position: absolute;
@@ -20,6 +11,16 @@
     margin: 0;
     padding: 0;
     opacity: 0;
+    outline: 0;
+  }
+
+  input[type="checkbox"] + label {
+    cursor: pointer;
+    padding-left: 34px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   label {
@@ -57,6 +58,11 @@
     background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cpath stroke="%2399ADD6" d="M.5.5h23v23H.5z"/%3E%3Cpath stroke="%23039" stroke-width="2" d="M7 12.366l3.22 3.135L16.72 9"/%3E%3C/g%3E%3C/svg%3E') no-repeat;
   }
 
+  input[type="checkbox"]:disabled + label {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
   input[type="checkbox"]:checked + label::before {
     content: none;
   }
@@ -67,6 +73,6 @@
 
   input[type="checkbox"]:focus + label::before,
   input[type="checkbox"]:focus + label::after {
-    outline: 2px dashed $cyan !important;
+    outline: 1px dashed $cyan !important;
   }
 }
