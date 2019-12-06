@@ -1,0 +1,71 @@
+.bal-checkbox {
+  position: relative;
+
+  padding-right: 25px;
+  padding-bottom: 15px;
+
+  * {
+    cursor: pointer;
+  }
+
+  input[type="checkbox"]:disabled + * {
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+
+  label {
+    padding-left: 34px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  label::before,
+  label::after {
+    display: inline-block;
+    position: absolute;
+
+    left: 0px;
+    top: 0px;
+
+    height: 24px;
+    width: 24px;
+
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+  }
+
+  label::before {
+    content: "";
+    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" %3E%3Cpath fill="none" fill-rule="evenodd" stroke="%2399ADD6" d="M.5.5h23v23H.5z"/%3E%3C/svg%3E') no-repeat;
+  }
+
+  label::after {
+    content: none;
+    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cpath stroke="%2399ADD6" d="M.5.5h23v23H.5z"/%3E%3Cpath stroke="%23039" stroke-width="2" d="M7 12.366l3.22 3.135L16.72 9"/%3E%3C/g%3E%3C/svg%3E') no-repeat;
+  }
+
+  input[type="checkbox"]:checked + label::before {
+    content: none;
+  }
+
+  input[type="checkbox"]:checked + label::after {
+    content: "";
+  }
+
+  input[type="checkbox"]:focus + label::before {
+    outline: 2px dashed $cyan !important;
+  }
+}

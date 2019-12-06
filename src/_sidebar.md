@@ -7,6 +7,7 @@
 - **Elements**
 
   - [Box](docs/elements/box.md)
+  - [Checkbox](docs/elements/checkbox.md)
   - [Content](docs/elements/content.md)
   - [Input](docs/elements/input.md)
   - [Image](docs/elements/image.md)
