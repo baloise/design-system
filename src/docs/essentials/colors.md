@@ -17,10 +17,6 @@
  
 | Color                         | Variable                      | Value |
 | ---                           | --------                      | ----- |
-| **Primary shadow**            | `$primary-shadow`             | <div class="bal-app box"><span class="bd-color has-background-primary-shadow"></span></div> |
-| **Primary shadow light**      | `$primary-shadow-light`       | <div class="bal-app box"><span class="bd-color has-background-primary-shadow-light"></span></div> |
-| **Primary shadow lighter**    | `$primary-shadow-lighter`     | <div class="bal-app box"><span class="bd-color has-background-primary-shadow-lighter"></span></div> |
-| **Primary shadow lightest**   | `$primary-shadow-lightest`    | <div class="bal-app box"><span class="bd-color has-background-primary-shadow-lightest"></span></div> |
 | **Black bis**                 | `$black-bis`                  | <div class="bal-app box"><span class="bd-color has-background-black-bis"></span></div> |
 | **Black ter**                 | `$black-ter`                  | <div class="bal-app box"><span class="bd-color has-background-black-ter"></span></div> |
 | **Grey darker**               | `$grey-darker`                | <div class="bal-app box"><span class="bd-color has-background-grey-darker"></span></div> |

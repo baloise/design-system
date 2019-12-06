@@ -16,7 +16,14 @@
       true,
       "double"
     ],
-    "curly": false
+    "curly": false,
+    "member-ordering": false,
+    "arrow-parens": false,
+    "semicolon": [
+      true,
+      "always",
+      "ignore-bound-class-methods"
+    ]
   },
   "rulesDirectory": []
 }

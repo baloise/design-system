@@ -2,6 +2,8 @@
 @import "base/all";
 
 .bal-app {
+  @import "elements/all";
+
   @import "node_modules/bulma/sass/grid/_all.sass";
   @import "node_modules/bulma/sass/layout/_all.sass";
 
@@ -10,8 +12,8 @@
   @import "node_modules/bulma/sass/elements/image.sass";
   @import "node_modules/bulma/sass/elements/title.sass";
   @import "node_modules/bulma/sass/elements/notification.sass";
+  @import "node_modules/bulma/sass/form/all";
 
 }
 
 @import "./elements/notices";
-
