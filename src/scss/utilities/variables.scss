@@ -1,7 +1,8 @@
+@import "bal-variables";
+
 /**
  * Colors
  */
-$blue-light: #D3DBEA;
 $blue: #003399;
 $blue-dark: #002B82;
 $cyan: #009ee7;
@@ -25,15 +26,15 @@ $white: #ffffff;
 $white-bis: #fafafa;
 $white-ter: #f5f5f6;
 
-$primary-shadow: #99d0e9;
-$primary-shadow-light: #b2dcef;
-$primary-shadow-lighter: #cce8f4;
-$primary-shadow-lightest: #e5f3f9;
+$light-text-blue: #7188b8;
+$light-text-blue-neg: #99add6;
+$line-blue: #d3dbeb;
+$light-blue: #f0fbff;
 
 $dark: $blue;
 $light: $grey;
 $primary: $cyan;
-$info-light: $blue-light;
+$info-light: $light-blue;
 $info: $blue;
 $info-dark: $blue-dark;
 $link: $cyan;
@@ -43,7 +44,7 @@ $danger: $red;
 $primary-invert: $white;
 $success-invert: $white;
 
-$text: $grey-darkest;
+$text: $black-ter;
 
 $shades: (
   "black-bis": $black-bis,
@@ -55,13 +56,18 @@ $shades: (
   "grey-lighter": $grey-lighter,
   "white-ter": $white-ter,
   "white-bis": $white-bis,
-  "primary-shadow": $primary-shadow,
-  "primary-shadow-light": $primary-shadow-light,
-  "primary-shadow-lighter": $primary-shadow-lighter,
-  "primary-shadow-lightest":$primary-shadow-lightest,
 );
 
 $form-background: $white-bis;
+
+// General colors
+
+$scheme-main: $white;
+$scheme-main-bis: $white-bis;
+$scheme-main-ter: $white-ter;
+$scheme-invert: $black;
+$scheme-invert-bis: $black-bis;
+$scheme-invert-ter: $black-ter;
 
 /**
  * Typography

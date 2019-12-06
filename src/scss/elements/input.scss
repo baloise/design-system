@@ -1,0 +1,37 @@
+$input-color: $text;
+$input-radius: 0;
+$input-border-color: $line-blue;
+$input-shadow: none;
+$input-placeholder-color: $grey-darker;
+$input-background-color: transparent;
+$input-height: 42px;
+
+$input-hover-border-color: $line-blue;
+
+$input-focus-box-shadow-size: 0;
+$input-focus-box-shadow-color: none;
+$input-focus-border-color: $blue;
+
+$input-disabled-color: $light-text-blue;
+$input-disabled-background-color: $light-blue;
+$input-disabled-border-color: $line-blue;
+$input-disabled-placeholder-color: $light-text-blue;
+
+.input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-width: 1px;
+  padding: 5px 0 6px 0;
+
+  &:focus {
+    border-width: 2px;
+    padding: 5px 0 5px 0;
+  }
+
+  &:disabled {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
