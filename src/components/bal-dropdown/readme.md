@@ -14,9 +14,10 @@ A basic dropdown.
 
 ## Properties
 
-| Property  | Attribute | Description | Type               | Default                                                                                                               |
-| --------- | --------- | ----------- | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| `options` | --        |             | `DropDownOption[]` | `[     {       label: "bubu",       value: "bubu",     },     {       label: "lala",       value: "lala",     },   ]` |
+| Property         | Attribute          | Description | Type               | Default                                                                                                               |
+| ---------------- | ------------------ | ----------- | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| `options`        | --                 |             | `DropDownOption[]` | `[     {       label: "bubu",       value: "bubu",     },     {       label: "lala",       value: "lala",     },   ]` |
+| `showBottomLine` | `show-bottom-line` |             | `boolean`          | `true`                                                                                                                |
 
 
 ## Events

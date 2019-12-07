@@ -33,6 +33,7 @@ export namespace Components {
   }
   interface BalDropdown {
     'options': DropDownOption[];
+    'showBottomLine': boolean;
     'toggle': () => Promise<void>;
   }
   interface BalSpinner {}
@@ -135,6 +136,7 @@ declare namespace LocalJSX {
   interface BalDropdown {
     'onOptionChanged'?: (event: CustomEvent<any>) => void;
     'options'?: DropDownOption[];
+    'showBottomLine'?: boolean;
   }
   interface BalSpinner {}
   interface BalTag {

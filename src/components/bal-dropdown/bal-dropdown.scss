@@ -1,8 +1,57 @@
 @import "../../scss/bal-ui-library.globals";
 @import "../../scss/elements/icon";
+
+$dropdown-menu-min-width: 18.75rem;
+$dropdown-content-radius: 0px;
+$dropdown-content-padding-bottom: 14px;
+$dropdown-content-padding-top: 14px;
+$dropdown-content-shadow: 0 0 16px 0 rgba($bal_tile_shadow_blue, 0.15);
+
+$dropdown-item-color: $blue;
+$dropdown-item-hover-color: $blue;
+$dropdown-item-hover-background-color: $light-blue;
+$dropdown-item-active-color: $blue;
+$dropdown-item-active-background-color: $light-blue;
+$dropdown-divider-background-color: $light-text-blue-neg;
+
 @import "node_modules/bulma/sass/components/dropdown.sass";
 @import "node_modules/bulma/sass/elements/button.sass";
 
 :host {
   display: block;
+
+  .dropdown {
+
+    .dropdown-trigger {
+      button {
+        min-width: $dropdown-menu-min-width;
+        justify-content: space-between;
+        border: none;
+        border-radius: 0;
+        color: $text;
+        padding: 0;
+
+        &:focus {
+          outline: $primary dashed 1px;
+          box-shadow: none;
+        }
+
+        &.showBottomLine {
+          border-bottom: solid 1px $line-blue;
+        }
+      }
+    }
+
+    .dropdown-item {
+      padding: 10px 17px 13px 39px;
+      transition: padding-left 0.3s ease;
+
+      &.is-active {
+        font-weight: $weight-bold;
+      }
+      &:hover:not(.is-active) {
+        padding-left: 49px;
+      }
+    }
+  }
 }
