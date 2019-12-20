@@ -2,7 +2,11 @@ $box-color: $text;
 $box-background-color: $scheme-main;
 $box-radius: 0;
 $box-shadow: 0 0 10px 0 rgba($bal_tile_shadow_blue, 0.15);
-$box-padding: 20px;
+$box-padding: 0;
 
 $box-link-hover-shadow: 0 0 30px 0 rgba($bal_tile_shadow_blue, 0.15);
 $box-link-active-shadow: 0 0 30px 0 rgba($bal_tile_shadow_blue, 0.15);
+
+.box.is-padded {
+  padding: 20px;
+}

@@ -11,6 +11,7 @@
     border: 0;
   }
 
+
   &:focus {
     &::before {
       position: absolute;
@@ -19,7 +20,13 @@
       left: 2px;
       right: 2px;
       bottom: 2px;
-      outline: 2px dashed $cyan !important;
+      outline: 2px dashed $cyan;
+    }
+  }
+
+  &:hover,  &:active {
+    &::before {
+      outline: none;
     }
   }
 
@@ -133,6 +140,40 @@
       color: $blue;
       background: transparent;
       text-decoration: underline;
+    }
+  }
+
+  &.is-primary.is-light {
+    border: none;
+    border-radius: 0;
+    color: $blue;
+    background: $light-blue;
+
+    &:hover,
+    &.is-hovered,
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-active {
+      color: $blue;
+      background: $light-blue-hover;
+    }
+  }
+
+  &.is-info.is-light {
+    border: none;
+    border-radius: 0;
+    color: $blue;
+    background: transparent;
+
+    &:hover,
+    &.is-hovered,
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-active {
+      color: $blue;
+      background: transparent;
     }
   }
 

@@ -59,14 +59,22 @@ The classic button, in different colors, sizes, and states
 
 ## Properties
 
-| Property   | Attribute  | Description                                                           | Type                                                                                    | Default        |
-| ---------- | ---------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | -------------- |
-| `disabled` | `disabled` | If `true` the button is disabled                                      | `boolean`                                                                               | `undefined`    |
-| `loading`  | `loading`  | If `true` the label is hidden and a loading spinner is shown instead. | `boolean`                                                                               | `undefined`    |
-| `type`     | `type`     | The theme type of the button. Given by bulma our css framework.       | `"is-danger" \| "is-info" \| "is-link" \| "is-primary" \| "is-success" \| "is-warning"` | `"is-primary"` |
+| Property    | Attribute   | Description                                                           | Type                                                                                                                          | Default        |
+| ----------- | ----------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| `disabled`  | `disabled`  | If `true` the button is disabled                                      | `boolean`                                                                                                                     | `undefined`    |
+| `fullwidth` | `fullwidth` |                                                                       | `boolean`                                                                                                                     | `undefined`    |
+| `inverted`  | `inverted`  |                                                                       | `boolean`                                                                                                                     | `undefined`    |
+| `light`     | `light`     |                                                                       | `boolean`                                                                                                                     | `undefined`    |
+| `loading`   | `loading`   | If `true` the label is hidden and a loading spinner is shown instead. | `boolean`                                                                                                                     | `undefined`    |
+| `outlined`  | `outlined`  |                                                                       | `boolean`                                                                                                                     | `undefined`    |
+| `type`      | `type`      | The theme type of the button. Given by bulma our css framework.       | `"is-danger" \| "is-info is-outlined is-fullwidth" \| "is-info" \| "is-link" \| "is-primary" \| "is-success" \| "is-warning"` | `"is-primary"` |
 
 
 ## Dependencies
+
+### Used by
+
+ - [bal-accordion](../bal-accordion)
 
 ### Depends on
 
@@ -76,6 +84,7 @@ The classic button, in different colors, sizes, and states
 ```mermaid
 graph TD;
   bal-button --> bal-spinner
+  bal-accordion --> bal-button
   style bal-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

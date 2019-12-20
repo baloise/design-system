@@ -17,6 +17,7 @@
 
 - **Components**
 
+  - [Accordion](components/bal-accordion/readme.md)
   - [Button](components/bal-button/readme.md)
   - [Field](components/bal-field/readme.md)
   - [Spinner](components/bal-spinner/readme.md)

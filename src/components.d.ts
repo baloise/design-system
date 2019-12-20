@@ -10,15 +10,27 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
+  interface BalAccordion {
+    /**
+    * Controls if the accordion is collapsed or not
+    */
+    'collapsed': boolean;
+    'type': | "is-primary"
+    | "is-info";
+  }
   interface BalButton {
     /**
     * If `true` the button is disabled
     */
     'disabled': boolean;
+    'fullwidth': boolean;
+    'inverted': boolean;
+    'light': boolean;
     /**
     * If `true` the label is hidden and a loading spinner is shown instead.
     */
     'loading': boolean;
+    'outlined': boolean;
     /**
     * The theme type of the button. Given by bulma our css framework.
     */
@@ -27,6 +39,7 @@ export namespace Components {
     | "is-success"
     | "is-warning"
     | "is-danger"
+    | "is-info is-outlined is-fullwidth"
     | "is-link";
   }
   interface BalField {
@@ -90,6 +103,12 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLBalAccordionElement extends Components.BalAccordion, HTMLStencilElement {}
+  var HTMLBalAccordionElement: {
+    prototype: HTMLBalAccordionElement;
+    new (): HTMLBalAccordionElement;
+  };
+
   interface HTMLBalButtonElement extends Components.BalButton, HTMLStencilElement {}
   var HTMLBalButtonElement: {
     prototype: HTMLBalButtonElement;
@@ -120,6 +139,7 @@ declare global {
     new (): HTMLBalToastElement;
   };
   interface HTMLElementTagNameMap {
+    'bal-accordion': HTMLBalAccordionElement;
     'bal-button': HTMLBalButtonElement;
     'bal-field': HTMLBalFieldElement;
     'bal-spinner': HTMLBalSpinnerElement;
@@ -129,15 +149,27 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface BalAccordion {
+    /**
+    * Controls if the accordion is collapsed or not
+    */
+    'collapsed'?: boolean;
+    'type'?: | "is-primary"
+    | "is-info";
+  }
   interface BalButton {
     /**
     * If `true` the button is disabled
     */
     'disabled'?: boolean;
+    'fullwidth'?: boolean;
+    'inverted'?: boolean;
+    'light'?: boolean;
     /**
     * If `true` the label is hidden and a loading spinner is shown instead.
     */
     'loading'?: boolean;
+    'outlined'?: boolean;
     /**
     * The theme type of the button. Given by bulma our css framework.
     */
@@ -146,6 +178,7 @@ declare namespace LocalJSX {
     | "is-success"
     | "is-warning"
     | "is-danger"
+    | "is-info is-outlined is-fullwidth"
     | "is-link";
   }
   interface BalField {
@@ -198,6 +231,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'bal-accordion': BalAccordion;
     'bal-button': BalButton;
     'bal-field': BalField;
     'bal-spinner': BalSpinner;
@@ -212,6 +246,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'bal-accordion': LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
       'bal-button': LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
       'bal-field': LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
       'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
