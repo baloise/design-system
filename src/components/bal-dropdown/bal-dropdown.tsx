@@ -1,4 +1,4 @@
-import {Component, Host, h, State, Method, Prop, EventEmitter} from "@stencil/core";
+import {Component, Host, h, State, Method, Prop, EventEmitter, Event, Listen, Element, Watch} from "@stencil/core";
 
 export interface DropDownOption {
   label: string;
@@ -11,40 +11,73 @@ export interface DropDownOption {
   shadow: true,
 })
 export class BalDropdown {
-
-  @Prop() showBottomLine = true;
-  @Prop() options: DropDownOption[] = [
-    {
-      label: "bubu",
-      value: "bubu",
-    },
-    {
-      label: "lala",
-      value: "lala",
-    },
-  ];
-  @Event() optionChanged: EventEmitter;
+  @Element() element!: HTMLElement;
 
   @State() dropdownIsActive = false;
-  @State() selectedOption: DropDownOption;
+  @State() selected: DropDownOption = null;
 
+  /**
+   * If `true` the field gets a line below.
+   */
+  @Prop() showBottomLine = true;
+
+  /**
+   * The value of the selected dropdown item.
+   */
+  @Prop({mutable: true, reflect: true}) value: any = null;
+
+  @Watch("value")
+  valueWatcher(newValue: any) {
+    this.selectDropdownItem.emit(newValue);
+  }
+
+  @Event() dropdownSelected: EventEmitter;
+  @Event() selectDropdownItem: EventEmitter;
+
+  componentDidLoad() {
+    if (this.value) {
+      this.selectDropdownItem.emit(this.value);
+    }
+  }
+
+  @Listen("click", {target: "document"})
+  clickOnOutside(event: UIEvent) {
+    if (!this.element.contains((event.target as any)) && this.dropdownIsActive) {
+      this.toggle();
+    }
+  }
+
+  /**
+   * Open & closes the dropdown
+   */
   @Method()
   async toggle() {
     this.dropdownIsActive = !this.dropdownIsActive;
   }
 
-  onOptionSelected(option: DropDownOption) {
-    this.selectedOption = option;
-    this.toggle();
-    this.optionChanged.emit(option);
+  /**
+   * Selects a dropdown item and changes the value.
+   */
+  @Method()
+  async selectItem(option: DropDownOption) {
+    this.value = option.value;
+    this.selected = option;
+    this.dropdownSelected.emit(this.value);
+    if (this.dropdownIsActive) {
+      this.toggle();
+    }
+  }
+
+  /**
+   * Returns the value of the dropdown.
+   */
+  @Method()
+  async getSelectedValue() {
+    return this.value;
   }
 
   get dropDownTitle() {
-    return this.selectedOption && this.selectedOption.label || "-";
-  }
-
-  isOptionActive(option: DropDownOption) {
-    return option && this.selectedOption && (option.value === this.selectedOption.value) || false;
+    return this.selected && this.selected.label || "-";
   }
 
   render() {
@@ -56,7 +89,7 @@ export class BalDropdown {
                     aria-haspopup="true"
                     aria-controls="dropdown-menu"
                     onClick={() => this.toggle()}>
-              <span>{this.dropDownTitle}</span>
+              <span innerHTML={this.dropDownTitle}></span>
               <span class="icon is-small">
                 <i class="bal-icon-caret-down" aria-hidden="true"></i>
               </span>
@@ -64,12 +97,7 @@ export class BalDropdown {
           </div>
           <div class="dropdown-menu" role="menu">
             <div class="dropdown-content">
-              {this.options.map((option) =>
-                <a class={this.isOptionActive(option) ? "dropdown-item is-active" : "dropdown-item"}
-                   onClick={() => this.onOptionSelected(option)}>
-                  {option.label}
-                </a>,
-              )}
+              <slot/>
             </div>
           </div>
         </div>

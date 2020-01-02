@@ -32,9 +32,32 @@ export namespace Components {
     | "is-link";
   }
   interface BalDropdown {
-    'options': DropDownOption[];
+    /**
+    * Returns the value of the dropdown.
+    */
+    'getSelectedValue': () => Promise<any>;
+    /**
+    * Selects a dropdown item and changes the value.
+    */
+    'selectItem': (option: DropDownOption) => Promise<void>;
+    /**
+    * If `true` the field gets a line below.
+    */
     'showBottomLine': boolean;
+    /**
+    * Open & closes the dropdown
+    */
     'toggle': () => Promise<void>;
+    /**
+    * The value of the selected dropdown item.
+    */
+    'value': any;
+  }
+  interface BalDropdownItem {
+    /**
+    * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
+    */
+    'value': string | boolean | number | object;
   }
   interface BalSpinner {}
   interface BalTag {
@@ -87,6 +110,12 @@ declare global {
     new (): HTMLBalDropdownElement;
   };
 
+  interface HTMLBalDropdownItemElement extends Components.BalDropdownItem, HTMLStencilElement {}
+  var HTMLBalDropdownItemElement: {
+    prototype: HTMLBalDropdownItemElement;
+    new (): HTMLBalDropdownItemElement;
+  };
+
   interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {}
   var HTMLBalSpinnerElement: {
     prototype: HTMLBalSpinnerElement;
@@ -107,6 +136,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'bal-button': HTMLBalButtonElement;
     'bal-dropdown': HTMLBalDropdownElement;
+    'bal-dropdown-item': HTMLBalDropdownItemElement;
     'bal-spinner': HTMLBalSpinnerElement;
     'bal-tag': HTMLBalTagElement;
     'bal-toast': HTMLBalToastElement;
@@ -134,9 +164,26 @@ declare namespace LocalJSX {
     | "is-link";
   }
   interface BalDropdown {
-    'onOptionChanged'?: (event: CustomEvent<any>) => void;
-    'options'?: DropDownOption[];
+    'onDropdownSelected'?: (event: CustomEvent<any>) => void;
+    'onSelectDropdownItem'?: (event: CustomEvent<any>) => void;
+    /**
+    * If `true` the field gets a line below.
+    */
     'showBottomLine'?: boolean;
+    /**
+    * The value of the selected dropdown item.
+    */
+    'value'?: any;
+  }
+  interface BalDropdownItem {
+    /**
+    * Click event of the dropdown item.
+    */
+    'onClickEvent'?: (event: CustomEvent<any>) => void;
+    /**
+    * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
+    */
+    'value'?: string | boolean | number | object;
   }
   interface BalSpinner {}
   interface BalTag {
@@ -168,6 +215,7 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'bal-button': BalButton;
     'bal-dropdown': BalDropdown;
+    'bal-dropdown-item': BalDropdownItem;
     'bal-spinner': BalSpinner;
     'bal-tag': BalTag;
     'bal-toast': BalToast;
@@ -182,6 +230,7 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'bal-button': LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
       'bal-dropdown': LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
+      'bal-dropdown-item': LocalJSX.BalDropdownItem & JSXBase.HTMLAttributes<HTMLBalDropdownItemElement>;
       'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
       'bal-tag': LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
       'bal-toast': LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;

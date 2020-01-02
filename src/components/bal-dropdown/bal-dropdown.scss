@@ -1,19 +1,5 @@
-@import "../../scss/bal-ui-library.globals";
+@import "./bal-dropdown.vars";
 @import "../../scss/elements/icon";
-
-$dropdown-menu-min-width: 18.75rem;
-$dropdown-content-radius: 0px;
-$dropdown-content-padding-bottom: 14px;
-$dropdown-content-padding-top: 14px;
-$dropdown-content-shadow: 0 0 16px 0 rgba($bal_tile_shadow_blue, 0.15);
-
-$dropdown-item-color: $blue;
-$dropdown-item-hover-color: $blue;
-$dropdown-item-hover-background-color: $light-blue;
-$dropdown-item-active-color: $blue;
-$dropdown-item-active-background-color: $light-blue;
-$dropdown-divider-background-color: $light-text-blue-neg;
-
 @import "node_modules/bulma/sass/components/dropdown.sass";
 @import "node_modules/bulma/sass/elements/button.sass";
 
@@ -40,15 +26,30 @@ $dropdown-divider-background-color: $light-text-blue-neg;
           border-bottom: solid 1px $line-blue;
         }
       }
+
+
+      button::-moz-focus-inner {
+        border: 0;
+      }
+
     }
 
     .dropdown-item {
       padding: 10px 17px 13px 39px;
       transition: padding-left 0.3s ease;
+      border: 0;
+      background: transparent;
+
+      &:hover, &:focus {
+        background: $dropdown-item-hover-background-color;
+      }
 
       &.is-active {
         font-weight: $weight-bold;
+        background: $dropdown-item-hover-background-color;
       }
+
+      &:focus:not(.is-active),
       &:hover:not(.is-active) {
         padding-left: 49px;
       }
