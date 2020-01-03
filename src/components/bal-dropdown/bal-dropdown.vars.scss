@@ -1,0 +1,14 @@
+@import "../../scss/bal-ui-library.globals";
+
+$dropdown-menu-min-width: 18.75rem;
+$dropdown-content-radius: 0px;
+$dropdown-content-padding-bottom: 14px;
+$dropdown-content-padding-top: 14px;
+$dropdown-content-shadow: 0 0 16px 0 rgba($bal_tile_shadow_blue, 0.15);
+
+$dropdown-item-color: $blue;
+$dropdown-item-hover-color: $blue;
+$dropdown-item-hover-background-color: $light-blue;
+$dropdown-item-active-color: $blue;
+$dropdown-item-active-background-color: $light-blue;
+$dropdown-divider-background-color: $light-text-blue-neg;

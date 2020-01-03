@@ -18,6 +18,8 @@
 - **Components**
 
   - [Button](components/bal-button/readme.md)
+  - [Dropdown](components/bal-dropdown/readme.md)
+    - [Dropdown Item](components/bal-dropdown-item/readme.md)
   - [Field](components/bal-field/readme.md)
   - [Spinner](components/bal-spinner/readme.md)
   - [Tag](components/bal-tag/readme.md)
