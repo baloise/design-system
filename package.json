@@ -52,7 +52,9 @@
 		"url": "https://github.com/hirsch88/bal-ui-library.git"
 	},
 	"dependencies": {
-		"bulma": "0.8.0"
+		"bulma": "0.8.0",
+		"moment": "^2.24.0",
+		"pikaday": "^1.8.0"
 	},
 	"now": {
 		"env": {

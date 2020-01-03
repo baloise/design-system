@@ -29,7 +29,7 @@ $white-ter: #f5f5f6;
 $light-text-blue: #7188b8;
 $light-text-blue-neg: #99add6;
 $line-blue: #d3dbeb;
-$light-blue: #f0fbff;
+$light-blue: #f0faff;
 
 $dark: $blue;
 $light: $grey;
@@ -122,3 +122,9 @@ $link-active-border: $blue;
  * Animation
  */
 $easing: ease-out;
+
+/**
+ * Shadow
+ */
+$shadow: 0 0 10px 0 rgba($bal_tile_shadow_blue, 0.15);
+$shadow-hover: 0 0 30px 0 rgba($bal_tile_shadow_blue, 0.15);

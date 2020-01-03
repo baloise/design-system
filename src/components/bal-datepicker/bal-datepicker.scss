@@ -1,0 +1,245 @@
+@import './bal-datepicker.vars';
+@import '../../../node_modules/pikaday/scss/pikaday.scss';
+
+:host {
+  display: block;
+}
+
+.pika-single {
+  &.is-bound {
+    box-shadow: $shadow
+  }
+
+  .pika-lendar {
+    margin: 40px;
+    width: 350px;
+
+    .pika-prev, .is-rtl .pika-next {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='30.000000000000004' height='30.000000000000004' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch --%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cg%3E%3Ctitle%3Ebackground%3C/title%3E%3Crect fill='none' id='canvas_background' height='402' width='582' y='-1' x='-1'/%3E%3C/g%3E%3Cg%3E%3Ctitle%3ELayer 1%3C/title%3E%3Cg transform='rotate(-180 15,14.499999999999998) ' fill-rule='evenodd' fill='none' id='Assets'%3E%3Cg stroke='%23003399' stroke-width='2' id='icon-nav-go'%3E%3Cpolyline points='13.0119753 11 17 14.5108358 13 18' id='Path-3'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .pika-next, .is-rtl .pika-prev {
+      background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='30px' height='30px' viewBox='0 0 30 30' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch --%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Assets' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='icon-nav-go' stroke-width='2' stroke='%23003399'%3E%3Cpolyline id='Path-3' points='13.0119753 11 17 14.5108358 13 18'%3E%3C/polyline%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .pika-prev, .pika-next {
+      width: 30px;
+      height: 30px;
+      text-indent: 30px;
+      background-size: 120%;
+      opacity: 1;
+    }
+
+    .pika-title {
+      .pika-label {
+        font-size: $size-4;
+      }
+
+      select {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .pika-table {
+    margin-top: 15px;
+
+    thead th {
+      text-align: center;
+
+      abbr[title] {
+        border-bottom: none !important;
+        cursor: inherit !important;
+        text-decoration: none !important;
+      }
+    }
+
+    tbody {
+      border-bottom: 1px solid $line-blue;
+
+      .pika-row {
+        border-right: 1px solid $line-blue;
+
+        td {
+          border-top: 1px solid $line-blue;
+          border-left: 1px solid $line-blue;
+
+          button {
+            padding: 15px;
+            font-size: 15px;
+            line-height: 19px;
+            text-align: center;
+
+            border-radius: 0;
+          }
+
+          button:hover {
+            background: $white;
+            border: 1px solid $blue;
+            padding: 14px;
+          }
+
+          &.is-selected button {
+            &:hover {
+              background: $blue;
+              color: $white;
+            }
+          }
+
+          &.is-today button {
+            font-weight: normal;
+            position: relative;
+
+            &:after {
+              content: "";
+              position: absolute;
+              display: block;
+              width: 3px;
+              height: 3px;
+              background: $blue;
+              border-radius: 100%;
+              margin-top: 5px;
+              margin-left: -1.5px;
+              left: 50%;
+            }
+          }
+
+          &.is-outside-current-month button {
+            opacity: 1;
+            background: $light-blue;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mobile() {
+  .pika-single {
+    left: 0 !important;
+    right: 0 !important;
+
+
+    .pika-lendar {
+      margin: 5%;
+      width: 90%;
+    }
+  }
+}
+
+//.pika-single {
+//
+//  &.is-bound {
+//    box-shadow: $shadow
+//  }
+//
+//  .pika-lendar {
+//    margin: 40px;
+//    width: 350px;
+//
+//    .pika-prev, .is-rtl .pika-next {
+//      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='30.000000000000004' height='30.000000000000004' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch --%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cg%3E%3Ctitle%3Ebackground%3C/title%3E%3Crect fill='none' id='canvas_background' height='402' width='582' y='-1' x='-1'/%3E%3C/g%3E%3Cg%3E%3Ctitle%3ELayer 1%3C/title%3E%3Cg transform='rotate(-180 15,14.499999999999998) ' fill-rule='evenodd' fill='none' id='Assets'%3E%3Cg stroke='%23003399' stroke-width='2' id='icon-nav-go'%3E%3Cpolyline points='13.0119753 11 17 14.5108358 13 18' id='Path-3'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+//    }
+//
+//    .pika-next, .is-rtl .pika-prev {
+//      background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='30px' height='30px' viewBox='0 0 30 30' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch --%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Assets' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='icon-nav-go' stroke-width='2' stroke='%23003399'%3E%3Cpolyline id='Path-3' points='13.0119753 11 17 14.5108358 13 18'%3E%3C/polyline%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+//    }
+//
+//    .pika-prev, .pika-next {
+//      width: 30px;
+//      height: 30px;
+//      text-indent: 30px;
+//      background-size: 120%;
+//      opacity: 1;
+//    }
+//
+//    .pika-title {
+//      .pika-label {
+//        font-size: $size-4;
+//      }
+//
+//      select {
+//        font-size: 15px;
+//      }
+//    }
+//  }
+//
+//  .pika-table {
+//    margin-top: 15px;
+//
+//    thead th {
+//      text-align: center;
+//
+//      abbr[title] {
+//        border-bottom: none !important;
+//        cursor: inherit !important;
+//        text-decoration: none !important;
+//      }
+//    }
+//
+//    tbody {
+//      border-bottom: 1px solid $line-blue;
+//
+//      //&:before {
+//      //  content: "@";
+//      //  display: block;
+//      //  line-height: 15px;
+//      //  text-indent: -99999px;
+//      //}
+//
+//      .pika-row {
+//        border-right: 1px solid $line-blue;
+//
+//        td {
+//          border-top: 1px solid $line-blue;
+//          border-left: 1px solid $line-blue;
+//
+//          button {
+//            padding: 15px;
+//            font-size: 15px;
+//            line-height: 19px;
+//            text-align: center;
+//
+//            border-radius: 0;
+//          }
+//
+//          button:hover {
+//            background: $white;
+//            border: 1px solid $blue;
+//            padding: 14px;
+//          }
+//
+//          &.is-selected button {
+//            &:hover {
+//              background: $blue;
+//              color: $white;
+//            }
+//          }
+//
+//          &.is-today button {
+//            font-weight: normal;
+//            position: relative;
+//
+//            &:after {
+//              content: "";
+//              position: absolute;
+//              display: block;
+//              width: 3px;
+//              height: 3px;
+//              background: $blue;
+//              border-radius: 100%;
+//              margin-top: 5px;
+//              margin-left: -1.5px;
+//              left: 50%;
+//            }
+//          }
+//
+//          &.is-outside-current-month button {
+//            opacity: 1;
+//            background: $light-blue;
+//          }
+//        }
+//      }
+//    }
+//  }
+//}

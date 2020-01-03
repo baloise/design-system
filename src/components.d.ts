@@ -31,6 +31,7 @@ export namespace Components {
     | "is-danger"
     | "is-link";
   }
+  interface BalDatepicker {}
   interface BalDropdown {
     /**
     * Returns the value of the dropdown.
@@ -126,6 +127,12 @@ declare global {
     new (): HTMLBalButtonElement;
   };
 
+  interface HTMLBalDatepickerElement extends Components.BalDatepicker, HTMLStencilElement {}
+  var HTMLBalDatepickerElement: {
+    prototype: HTMLBalDatepickerElement;
+    new (): HTMLBalDatepickerElement;
+  };
+
   interface HTMLBalDropdownElement extends Components.BalDropdown, HTMLStencilElement {}
   var HTMLBalDropdownElement: {
     prototype: HTMLBalDropdownElement;
@@ -163,6 +170,7 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'bal-button': HTMLBalButtonElement;
+    'bal-datepicker': HTMLBalDatepickerElement;
     'bal-dropdown': HTMLBalDropdownElement;
     'bal-dropdown-item': HTMLBalDropdownItemElement;
     'bal-field': HTMLBalFieldElement;
@@ -192,6 +200,7 @@ declare namespace LocalJSX {
     | "is-danger"
     | "is-link";
   }
+  interface BalDatepicker {}
   interface BalDropdown {
     'onDropdownSelected'?: (event: CustomEvent<any>) => void;
     'onSelectDropdownItem'?: (event: CustomEvent<any>) => void;
@@ -265,6 +274,7 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'bal-button': BalButton;
+    'bal-datepicker': BalDatepicker;
     'bal-dropdown': BalDropdown;
     'bal-dropdown-item': BalDropdownItem;
     'bal-field': BalField;
@@ -281,6 +291,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'bal-button': LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
+      'bal-datepicker': LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
       'bal-dropdown': LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
       'bal-dropdown-item': LocalJSX.BalDropdownItem & JSXBase.HTMLAttributes<HTMLBalDropdownItemElement>;
       'bal-field': LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
