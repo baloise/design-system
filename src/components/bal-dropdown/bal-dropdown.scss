@@ -54,5 +54,9 @@
         padding-left: 49px;
       }
     }
+
+    &.is-expanded, &.is-expanded .dropdown-trigger {
+      width: 100%;
+    }
   }
 }

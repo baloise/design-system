@@ -35,3 +35,13 @@ $input-disabled-placeholder-color: $light-text-blue;
   }
 }
 
+.control.has-icons-right .input, .control.has-icons-right .select select {
+  padding-right: 31px !important;
+}
+
+.control.has-icons-right .icon {
+  top: 5px !important;
+  height: 31px !important;
+  width: 31px !important;
+}
+

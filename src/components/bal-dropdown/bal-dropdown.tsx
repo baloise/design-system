@@ -22,6 +22,11 @@ export class BalDropdown {
   @Prop() showBottomLine = true;
 
   /**
+   *
+   */
+  @Prop() isExpanded = false;
+
+  /**
    * The value of the selected dropdown item.
    */
   @Prop({mutable: true, reflect: true}) value: any = null;
@@ -56,6 +61,22 @@ export class BalDropdown {
   }
 
   /**
+   * Open the dropdown menu
+   */
+  @Method()
+  async open() {
+    this.dropdownIsActive = true;
+  }
+
+  /**
+   * Closes the dropdown menu
+   */
+  @Method()
+  async close() {
+    this.dropdownIsActive = false;
+  }
+
+  /**
    * Selects a dropdown item and changes the value.
    */
   @Method()
@@ -83,17 +104,22 @@ export class BalDropdown {
   render() {
     return (
       <Host>
-        <div class={this.dropdownIsActive ? "dropdown is-active" : "dropdown"}>
-          <div class="dropdown-trigger">
-            <button class={this.showBottomLine ? "button showBottomLine" : "button"}
-                    aria-haspopup="true"
-                    aria-controls="dropdown-menu"
-                    onClick={() => this.toggle()}>
-              <span innerHTML={this.dropDownTitle}></span>
-              <span class="icon is-small">
+        <div class={[
+          "dropdown",
+          this.isExpanded ? "is-expanded" : "",
+          this.dropdownIsActive ? "is-active" : "",
+        ].join(" ")}>
+          <div class="dropdown-trigger" onClick={() => this.toggle()}>
+            <slot name="trigger">
+              <button class={this.showBottomLine ? "button showBottomLine" : "button"}
+                      aria-haspopup="true"
+                      aria-controls="dropdown-menu">
+                <span innerHTML={this.dropDownTitle}></span>
+                <span class="icon is-small">
                 <i class="bal-icon-caret-down" aria-hidden="true"></i>
               </span>
-            </button>
+              </button>
+            </slot>
           </div>
           <div class="dropdown-menu" role="menu">
             <div class="dropdown-content">
