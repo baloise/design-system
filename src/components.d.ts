@@ -31,12 +31,50 @@ export namespace Components {
     | "is-danger"
     | "is-link";
   }
-  interface BalDatepicker {}
+  interface BalDatepicker {
+    /**
+    * Close the datepicker dropdown
+    */
+    'close': () => Promise<void>;
+    /**
+    * Disable the input
+    */
+    'disabled': boolean;
+    /**
+    * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
+    */
+    'language': string;
+    /**
+    * Latest date available for selection
+    */
+    'maxDate': string;
+    /**
+    * Earliest date available for selection
+    */
+    'minDate': string;
+    /**
+    * Open the datepicker dropdown
+    */
+    'open': () => Promise<void>;
+    /**
+    * The value of the datepicker with the format `dd.MM.yyyy`.
+    */
+    'value': string;
+  }
   interface BalDropdown {
+    /**
+    * Closes the dropdown menu
+    */
+    'close': () => Promise<void>;
     /**
     * Returns the value of the dropdown.
     */
     'getSelectedValue': () => Promise<any>;
+    'isExpanded': boolean;
+    /**
+    * Open the dropdown menu
+    */
+    'open': () => Promise<void>;
     /**
     * Selects a dropdown item and changes the value.
     */
@@ -200,8 +238,34 @@ declare namespace LocalJSX {
     | "is-danger"
     | "is-link";
   }
-  interface BalDatepicker {}
+  interface BalDatepicker {
+    /**
+    * Disable the input
+    */
+    'disabled'?: boolean;
+    /**
+    * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
+    */
+    'language'?: string;
+    /**
+    * Latest date available for selection
+    */
+    'maxDate'?: string;
+    /**
+    * Earliest date available for selection
+    */
+    'minDate'?: string;
+    /**
+    * Triggers when the value of the datepicker is changed
+    */
+    'onInput'?: (event: CustomEvent<string>) => void;
+    /**
+    * The value of the datepicker with the format `dd.MM.yyyy`.
+    */
+    'value'?: string;
+  }
   interface BalDropdown {
+    'isExpanded'?: boolean;
     'onDropdownSelected'?: (event: CustomEvent<any>) => void;
     'onSelectDropdownItem'?: (event: CustomEvent<any>) => void;
     /**

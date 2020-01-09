@@ -40,6 +40,7 @@ A basic dropdown.
 
 | Property         | Attribute          | Description                              | Type      | Default |
 | ---------------- | ------------------ | ---------------------------------------- | --------- | ------- |
+| `isExpanded`     | `is-expanded`      |                                          | `boolean` | `false` |
 | `showBottomLine` | `show-bottom-line` | If `true` the field gets a line below.   | `boolean` | `true`  |
 | `value`          | `value`            | The value of the selected dropdown item. | `any`     | `null`  |
 
@@ -54,6 +55,16 @@ A basic dropdown.
 
 ## Methods
 
+### `close() => Promise<void>`
+
+Closes the dropdown menu
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `getSelectedValue() => Promise<any>`
 
 Returns the value of the dropdown.
@@ -61,6 +72,16 @@ Returns the value of the dropdown.
 #### Returns
 
 Type: `Promise<any>`
+
+
+
+### `open() => Promise<void>`
+
+Open the dropdown menu
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 
@@ -84,6 +105,19 @@ Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Used by
+
+ - [bal-datepicker](../bal-datepicker)
+
+### Graph
+```mermaid
+graph TD;
+  bal-datepicker --> bal-dropdown
+  style bal-dropdown fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
