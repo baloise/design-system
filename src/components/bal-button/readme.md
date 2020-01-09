@@ -16,20 +16,20 @@ The classic button, in different colors, sizes, and states
 ## Outlined
 
 ```html
-<bal-button type="is-primary is-outlined">Primary</bal-button>
-<bal-button type="is-info is-outlined">Info</bal-button>
-<bal-button type="is-success is-outlined">Success</bal-button>
-<bal-button type="is-warning is-outlined">Warnung</bal-button>
-<bal-button type="is-danger is-outlined">Danger</bal-button>
+<bal-button type="is-primary" outlined>Primary</bal-button>
+<bal-button type="is-info" outlined>Info</bal-button>
+<bal-button type="is-success" outlined>Success</bal-button>
+<bal-button type="is-warning" outlined>Warnung</bal-button>
+<bal-button type="is-danger" outlined>Danger</bal-button>
 ```
 
 ## Inverted
 
 ```html
 <div class="has-inverted-background">
-  <bal-button type="is-primary is-inverted">Primary</bal-button>
-  <bal-button type="is-info is-inverted">Info</bal-button>
-  <bal-button type="is-info is-inverted is-outlined">Info Outlined</bal-button>
+  <bal-button type="is-primary" inverted>Primary</bal-button>
+  <bal-button type="is-info" inverted>Info</bal-button>
+  <bal-button type="is-info" inverted outlined>Info Outlined</bal-button>
 </div>
 ```
 
@@ -59,15 +59,15 @@ The classic button, in different colors, sizes, and states
 
 ## Properties
 
-| Property    | Attribute   | Description                                                           | Type                                                                                                                          | Default        |
-| ----------- | ----------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------- |
-| `disabled`  | `disabled`  | If `true` the button is disabled                                      | `boolean`                                                                                                                     | `undefined`    |
-| `fullwidth` | `fullwidth` |                                                                       | `boolean`                                                                                                                     | `undefined`    |
-| `inverted`  | `inverted`  |                                                                       | `boolean`                                                                                                                     | `undefined`    |
-| `light`     | `light`     |                                                                       | `boolean`                                                                                                                     | `undefined`    |
-| `loading`   | `loading`   | If `true` the label is hidden and a loading spinner is shown instead. | `boolean`                                                                                                                     | `undefined`    |
-| `outlined`  | `outlined`  |                                                                       | `boolean`                                                                                                                     | `undefined`    |
-| `type`      | `type`      | The theme type of the button. Given by bulma our css framework.       | `"is-danger" \| "is-info is-outlined is-fullwidth" \| "is-info" \| "is-link" \| "is-primary" \| "is-success" \| "is-warning"` | `"is-primary"` |
+| Property   | Attribute  | Description                                                           | Type                                                                                    | Default        |
+| ---------- | ---------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | -------------- |
+| `disabled` | `disabled` | If `true` the button is disabled                                      | `boolean`                                                                               | `undefined`    |
+| `expanded` | `expanded` | If `true` the button has a full width                                 | `boolean`                                                                               | `undefined`    |
+| `inverted` | `inverted` | If `true` the button is inverted                                      | `boolean`                                                                               | `undefined`    |
+| `light`    | `light`    | If `true` the button has a light color                                | `boolean`                                                                               | `undefined`    |
+| `loading`  | `loading`  | If `true` the label is hidden and a loading spinner is shown instead. | `boolean`                                                                               | `undefined`    |
+| `outlined` | `outlined` | If `true` the button is outlined                                      | `boolean`                                                                               | `undefined`    |
+| `type`     | `type`     | The theme type of the button. Given by bulma our css framework.       | `"is-danger" \| "is-info" \| "is-link" \| "is-primary" \| "is-success" \| "is-warning"` | `"is-primary"` |
 
 
 ## Dependencies

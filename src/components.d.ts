@@ -14,9 +14,24 @@ import {
 export namespace Components {
   interface BalAccordion {
     /**
+    * Close the accordion
+    */
+    'close': () => Promise<void>;
+    /**
     * Controls if the accordion is collapsed or not
     */
     'collapsed': boolean;
+    /**
+    * Open the accordion
+    */
+    'open': () => Promise<void>;
+    /**
+    * Triggers the accordion
+    */
+    'toggle': () => Promise<void>;
+    /**
+    * Type defines the theme of the accordion toggle
+    */
     'type': | "is-primary"
     | "is-info";
   }
@@ -25,13 +40,25 @@ export namespace Components {
     * If `true` the button is disabled
     */
     'disabled': boolean;
-    'fullwidth': boolean;
+    /**
+    * If `true` the button has a full width
+    */
+    'expanded': boolean;
+    /**
+    * If `true` the button is inverted
+    */
     'inverted': boolean;
+    /**
+    * If `true` the button has a light color
+    */
     'light': boolean;
     /**
     * If `true` the label is hidden and a loading spinner is shown instead.
     */
     'loading': boolean;
+    /**
+    * If `true` the button is outlined
+    */
     'outlined': boolean;
     /**
     * The theme type of the button. Given by bulma our css framework.
@@ -41,7 +68,6 @@ export namespace Components {
     | "is-success"
     | "is-warning"
     | "is-danger"
-    | "is-info is-outlined is-fullwidth"
     | "is-link";
   }
   interface BalDatepicker {
@@ -244,6 +270,9 @@ declare namespace LocalJSX {
     * Controls if the accordion is collapsed or not
     */
     'collapsed'?: boolean;
+    /**
+    * Type defines the theme of the accordion toggle
+    */
     'type'?: | "is-primary"
     | "is-info";
   }
@@ -252,13 +281,25 @@ declare namespace LocalJSX {
     * If `true` the button is disabled
     */
     'disabled'?: boolean;
-    'fullwidth'?: boolean;
+    /**
+    * If `true` the button has a full width
+    */
+    'expanded'?: boolean;
+    /**
+    * If `true` the button is inverted
+    */
     'inverted'?: boolean;
+    /**
+    * If `true` the button has a light color
+    */
     'light'?: boolean;
     /**
     * If `true` the label is hidden and a loading spinner is shown instead.
     */
     'loading'?: boolean;
+    /**
+    * If `true` the button is outlined
+    */
     'outlined'?: boolean;
     /**
     * The theme type of the button. Given by bulma our css framework.
@@ -268,7 +309,6 @@ declare namespace LocalJSX {
     | "is-success"
     | "is-warning"
     | "is-danger"
-    | "is-info is-outlined is-fullwidth"
     | "is-link";
   }
   interface BalDatepicker {

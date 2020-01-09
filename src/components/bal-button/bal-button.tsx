@@ -15,16 +15,31 @@ export class BalButton {
     | "is-success"
     | "is-warning"
     | "is-danger"
-    | "is-info is-outlined is-fullwidth"
     | "is-link" = "is-primary";
 
   /**
    * If `true` the button is disabled
    */
   @Prop() disabled: boolean;
+
+  /**
+   * If `true` the button has a light color
+   */
   @Prop() light: boolean;
-  @Prop() fullwidth: boolean;
+
+  /**
+   * If `true` the button has a full width
+   */
+  @Prop() expanded: boolean;
+
+  /**
+   * If `true` the button is outlined
+   */
   @Prop() outlined: boolean;
+
+  /**
+   * If `true` the button is inverted
+   */
   @Prop() inverted: boolean;
 
   /**
@@ -34,16 +49,25 @@ export class BalButton {
 
   render() {
     return (
-        <button class={`button ${this.type} ${this.inverted ? 'is-inverted':''} ${this.outlined ? 'is-outlined':''} ${this.light ? 'is-light':''} ${this.fullwidth ? 'is-fullwidth':''}`} disabled={this.disabled}>
-          {this.loading ? (
-            <bal-spinner class="is-small is-inverted"></bal-spinner>
-          ) : (
-            ""
-          )}
-          <span style={{display: this.loading ? "none" : "inline-block"}}>
+      <button
+        class={[
+          "button",
+          this.type,
+          this.light ? "is-light" : "",
+          this.inverted ? "is-inverted" : "",
+          this.outlined ? "is-outlined" : "",
+          this.expanded ? "is-fullwidth" : "",
+        ].join(" ")}
+        disabled={this.disabled}>
+        {this.loading ? (
+          <bal-spinner class="is-small is-inverted"></bal-spinner>
+        ) : (
+          ""
+        )}
+        <span style={{display: this.loading ? "none" : "inline-block"}}>
             <slot/>
           </span>
-        </button>
+      </button>
     );
   }
 }
