@@ -12,15 +12,54 @@ import {
 } from './components/bal-dropdown/bal-dropdown';
 
 export namespace Components {
+  interface BalAccordion {
+    /**
+    * Close the accordion
+    */
+    'close': () => Promise<void>;
+    /**
+    * Controls if the accordion is collapsed or not
+    */
+    'collapsed': boolean;
+    /**
+    * Open the accordion
+    */
+    'open': () => Promise<void>;
+    /**
+    * Triggers the accordion
+    */
+    'toggle': () => Promise<void>;
+    /**
+    * Type defines the theme of the accordion toggle
+    */
+    'type': | "is-primary"
+    | "is-info";
+  }
   interface BalButton {
     /**
     * If `true` the button is disabled
     */
     'disabled': boolean;
     /**
+    * If `true` the button has a full width
+    */
+    'expanded': boolean;
+    /**
+    * If `true` the button is inverted
+    */
+    'inverted': boolean;
+    /**
+    * If `true` the button has a light color
+    */
+    'light': boolean;
+    /**
     * If `true` the label is hidden and a loading spinner is shown instead.
     */
     'loading': boolean;
+    /**
+    * If `true` the button is outlined
+    */
+    'outlined': boolean;
     /**
     * The theme type of the button. Given by bulma our css framework.
     */
@@ -159,6 +198,12 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLBalAccordionElement extends Components.BalAccordion, HTMLStencilElement {}
+  var HTMLBalAccordionElement: {
+    prototype: HTMLBalAccordionElement;
+    new (): HTMLBalAccordionElement;
+  };
+
   interface HTMLBalButtonElement extends Components.BalButton, HTMLStencilElement {}
   var HTMLBalButtonElement: {
     prototype: HTMLBalButtonElement;
@@ -207,6 +252,7 @@ declare global {
     new (): HTMLBalToastElement;
   };
   interface HTMLElementTagNameMap {
+    'bal-accordion': HTMLBalAccordionElement;
     'bal-button': HTMLBalButtonElement;
     'bal-datepicker': HTMLBalDatepickerElement;
     'bal-dropdown': HTMLBalDropdownElement;
@@ -219,15 +265,42 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface BalAccordion {
+    /**
+    * Controls if the accordion is collapsed or not
+    */
+    'collapsed'?: boolean;
+    /**
+    * Type defines the theme of the accordion toggle
+    */
+    'type'?: | "is-primary"
+    | "is-info";
+  }
   interface BalButton {
     /**
     * If `true` the button is disabled
     */
     'disabled'?: boolean;
     /**
+    * If `true` the button has a full width
+    */
+    'expanded'?: boolean;
+    /**
+    * If `true` the button is inverted
+    */
+    'inverted'?: boolean;
+    /**
+    * If `true` the button has a light color
+    */
+    'light'?: boolean;
+    /**
     * If `true` the label is hidden and a loading spinner is shown instead.
     */
     'loading'?: boolean;
+    /**
+    * If `true` the button is outlined
+    */
+    'outlined'?: boolean;
     /**
     * The theme type of the button. Given by bulma our css framework.
     */
@@ -337,6 +410,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'bal-accordion': BalAccordion;
     'bal-button': BalButton;
     'bal-datepicker': BalDatepicker;
     'bal-dropdown': BalDropdown;
@@ -354,6 +428,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'bal-accordion': LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
       'bal-button': LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
       'bal-datepicker': LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
       'bal-dropdown': LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;

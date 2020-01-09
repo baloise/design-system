@@ -17,6 +17,7 @@
 
 - **Components**
 
+  - [Accordion](components/bal-accordion/readme.md)
   - [Button](components/bal-button/readme.md)
   - [Datepicker](components/bal-datepicker/readme.md)
   - [Dropdown](components/bal-dropdown/readme.md)

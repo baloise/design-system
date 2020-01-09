@@ -87,7 +87,7 @@ export class BalDatepicker {
    * Open the datepicker dropdown
    */
   @Method()
-  open() {
+  async open() {
     this.pointerDate = this.selectedDate;
   }
 
@@ -95,7 +95,7 @@ export class BalDatepicker {
    * Close the datepicker dropdown
    */
   @Method()
-  close() {
+  async  close() {
     this.dropDownElement.close();
   }
 
