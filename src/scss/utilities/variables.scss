@@ -123,3 +123,9 @@ $link-active-border: $blue;
  * Animation
  */
 $easing: ease-out;
+
+/**
+ * Shadow
+ */
+$shadow: 0 0 10px 0 rgba($bal_tile_shadow_blue, 0.15);
+$shadow-hover: 0 0 30px 0 rgba($bal_tile_shadow_blue, 0.15);

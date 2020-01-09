@@ -1,0 +1,31 @@
+@import "../bal-dropdown/bal-dropdown.vars";
+@import "../../scss/elements/icon";
+@import "node_modules/bulma/sass/components/dropdown.sass";
+@import "node_modules/bulma/sass/elements/button.sass";
+
+:host {
+  display: block;
+
+  .dropdown-item {
+    padding: 10px 17px 13px 39px;
+    transition: padding-left 0.3s ease;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+
+    &:hover, &:focus {
+      background: $dropdown-item-hover-background-color;
+    }
+
+    &.is-active {
+      font-weight: $weight-bold;
+      background: $dropdown-item-hover-background-color;
+    }
+
+    &:focus:not(.is-active),
+    &:hover:not(.is-active) {
+      padding-left: 49px;
+    }
+  }
+}
+
