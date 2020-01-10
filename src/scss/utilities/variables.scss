@@ -4,14 +4,14 @@
  * Colors
  */
 $blue: #003399;
-$blue-dark: #002B82;
-$blue-darker: #002162;
 $cyan: #009ee7;
 $green: #67d3a1;
 $yellow: #ff9900;
 $orange: #ff8304;
 $red: #ff3366;
 
+$blue-darker: #002162;
+$blue-dark: #002B82;
 $blue-light-text: #7188b8;
 $blue-line: #99add6;
 $blue-light-line: #d3dbeb;
@@ -19,8 +19,8 @@ $blue-light-hover: $bal_bg_rollover_light_blue;
 $blue-light: #f0fbff;
 
 $black: #000000;
-$black-bis: #121212;
-$black-ter: #222222;
+$black-bis: $blue-darker;
+$black-ter: $blue-dark;
 
 $grey-darkest: #444444;
 $grey-darker: #7e7e7e;
@@ -50,6 +50,9 @@ $text: $black-ter;
 $text-strong: $blue;
 
 $shades: (
+  "blue-darker": $blue-darker,
+  "blue-dark": $blue-dark,
+  "blue": $blue,
   "blue-light-text": $blue-light-text,
   "blue-line": $blue-line,
   "blue-light-line": $blue-light-line,

@@ -17,6 +17,9 @@
  
 | Color                         | Variable              | Computed Value |
 | ---                           | --------              | -------------- |
+| **Blue darker**               | `$blue-darker`        | <div class="bal-app box"><span class="bd-color has-background-blue-darker"></span></div> |
+| **Blue dark**                 | `$blue-dark`          | <div class="bal-app box"><span class="bd-color has-background-blue-dark"></span></div> |
+| **Blue**                      | `$blue`               | <div class="bal-app box"><span class="bd-color has-background-blue"></span></div> |
 | **Blue light text**           | `$blue-light-text`    | <div class="bal-app box"><span class="bd-color has-background-blue-light-text"></span></div> |
 | **Blue line**                 | `$blue-line`          | <div class="bal-app box"><span class="bd-color has-background-blue-line"></span></div> |
 | **Blue light line**           | `$blue-light-line`    | <div class="bal-app box"><span class="bd-color has-background-blue-light-line"></span></div> |
