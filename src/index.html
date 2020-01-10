@@ -9,6 +9,8 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
 
+  <link rel="stylesheet" href="/docs/github.css"/>
+  <link rel="stylesheet" href="/docs/progress.css"/>
   <link rel="stylesheet" href="/docs/baloise.css"/>
   <link rel="stylesheet" href="/build/bal-ui-library.css"/>
 
@@ -16,10 +18,9 @@
 
 <body>
 <div id="app"></div>
-<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 <script>
     window.$docsify = {
-        name: 'Bal UI Library',
+        name: 'Baloise UI Library',
         repo: 'https://github.com/hirsch88/bal-ui-library',
         coverpage: true,
         loadSidebar: true,
@@ -31,8 +32,13 @@
         auto2top: true,
         homepage: 'home.md',
         executeScript: true,
+        themeable: {
+            readyTransition : true, // default
+            responsiveTables: true  // default
+        }
     };
 </script>
+<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
 <script src="//unpkg.com/docsify/lib/plugins/external-script.min.js"></script>
 <script src="//unpkg.com/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
@@ -45,8 +51,6 @@
 
 <script type="module" src="/build/bal-ui-library.esm.js"></script>
 <script nomodule src="/build/bal-ui-library.js"></script>
-
-§
 
 </body>
 

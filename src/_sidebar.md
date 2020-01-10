@@ -1,28 +1,30 @@
 - **Essentials**
 
-  - [Get Started](docs/essentials/get-started.md)
+  - [Get Started](home.md)
   - [Styling](docs/essentials/styling.md)
   - [Colors](docs/essentials/colors.md)
+
+- **Form**
+
+  - [Checkbox](docs/elements/checkbox.md)
+  - [Datepicker](components/bal-datepicker/readme.md)
+  - [Field](components/bal-field/readme.md)
+  - [Input](docs/elements/input.md)
+  - [Radio](docs/elements/radio.md)
 
 - **Elements**
 
   - [Box](docs/elements/box.md)
-  - [Checkbox](docs/elements/checkbox.md)
   - [Content](docs/elements/content.md)
   - [Icons](docs/elements/icon.md)
-  - [Input](docs/elements/input.md)
   - [Image](docs/elements/image.md)
-  - [Radio](docs/elements/radio.md)
   - [Title](docs/elements/title.md)
 
 - **Components**
 
   - [Accordion](components/bal-accordion/readme.md)
   - [Button](components/bal-button/readme.md)
-  - [Datepicker](components/bal-datepicker/readme.md)
   - [Dropdown](components/bal-dropdown/readme.md)
-    - [Dropdown Item](components/bal-dropdown-item/readme.md)
-  - [Field](components/bal-field/readme.md)
   - [Spinner](components/bal-spinner/readme.md)
   - [Tag](components/bal-tag/readme.md)
   - [Toast](components/bal-toast/readme.md)
@@ -34,6 +36,7 @@
   - [Write your own Component](docs/development/component.md)
   - [Write your own Controller](docs/development/controller.md)
 
-- [Github](https://github.com/hirsch88/bal-ui-library)
-- [Changelog](https://github.com/hirsch88/bal-ui-library/releases)
+- **Links**
 
+    - [Github](https://github.com/hirsch88/bal-ui-library)
+    - [Changelog](https://github.com/hirsch88/bal-ui-library/releases)

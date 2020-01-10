@@ -105,11 +105,11 @@ export namespace Components {
     * Closes the dropdown menu
     */
     'close': () => Promise<void>;
+    'expanded': boolean;
     /**
     * Returns the value of the dropdown.
     */
     'getSelectedValue': () => Promise<any>;
-    'isExpanded': boolean;
     /**
     * Open the dropdown menu
     */
@@ -338,7 +338,7 @@ declare namespace LocalJSX {
     'value'?: string;
   }
   interface BalDropdown {
-    'isExpanded'?: boolean;
+    'expanded'?: boolean;
     'onDropdownSelected'?: (event: CustomEvent<any>) => void;
     'onSelectDropdownItem'?: (event: CustomEvent<any>) => void;
     /**

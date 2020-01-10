@@ -1,6 +1,6 @@
 # Radio
 
-A simple radio button
+Select an option from a set
 
 ## Basic
 

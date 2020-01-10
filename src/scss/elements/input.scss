@@ -1,21 +1,18 @@
 $input-color: $text;
 $input-radius: 0;
-$input-border-color: $line-blue;
+$input-border-color: $blue-light-line;
 $input-shadow: none;
 $input-placeholder-color: $grey-darker;
 $input-background-color: transparent;
 $input-height: 42px;
-
-$input-hover-border-color: $line-blue;
-
+$input-hover-border-color: $blue-light-line;
 $input-focus-box-shadow-size: 0;
 $input-focus-box-shadow-color: none;
 $input-focus-border-color: $blue;
-
-$input-disabled-color: $light-text-blue;
-$input-disabled-background-color: $light-blue;
-$input-disabled-border-color: $line-blue;
-$input-disabled-placeholder-color: $light-text-blue;
+$input-disabled-color: $blue-light-text;
+$input-disabled-background-color: $blue-light;
+$input-disabled-border-color: $blue-light-line;
+$input-disabled-placeholder-color: $blue-light-text;
 
 .input {
   border-top: none;

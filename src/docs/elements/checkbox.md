@@ -1,6 +1,6 @@
 # Checkbox
 
-A simple checkbox
+Select a single or grouped options
 
 ## Basic
 

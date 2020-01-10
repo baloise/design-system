@@ -24,7 +24,7 @@ export class BalDropdown {
   /**
    *
    */
-  @Prop() isExpanded = false;
+  @Prop() expanded = false;
 
   /**
    * The value of the selected dropdown item.
@@ -106,7 +106,7 @@ export class BalDropdown {
       <Host>
         <div class={[
           "dropdown",
-          this.isExpanded ? "is-expanded" : "",
+          this.expanded ? "is-fullwidth" : "",
           this.dropdownIsActive ? "is-active" : "",
         ].join(" ")}>
           <div class="dropdown-trigger" onClick={() => this.toggle()}>
