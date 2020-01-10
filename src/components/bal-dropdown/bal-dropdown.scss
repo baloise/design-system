@@ -23,7 +23,7 @@
         }
 
         &.showBottomLine {
-          border-bottom: solid 1px $line-blue;
+          border-bottom: solid 1px $blue-light-line;
         }
       }
 
@@ -55,7 +55,7 @@
       }
     }
 
-    &.is-expanded, &.is-expanded .dropdown-trigger {
+    &.is-fullwidth, &.is-fullwidth .dropdown-trigger {
       width: 100%;
     }
   }

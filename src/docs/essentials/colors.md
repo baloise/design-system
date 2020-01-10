@@ -15,14 +15,16 @@
 
  ## Shades
  
-| Color                         | Variable                      | Value |
-| ---                           | --------                      | ----- |
-| **Black bis**                 | `$black-bis`                  | <div class="bal-app box"><span class="bd-color has-background-black-bis"></span></div> |
-| **Black ter**                 | `$black-ter`                  | <div class="bal-app box"><span class="bd-color has-background-black-ter"></span></div> |
-| **Grey darker**               | `$grey-darker`                | <div class="bal-app box"><span class="bd-color has-background-grey-darker"></span></div> |
-| **Grey dark**                 | `$grey-dark`                  | <div class="bal-app box"><span class="bd-color has-background-grey-dark"></span></div> |
-| **Grey light**                | `$grey-light`                 | <div class="bal-app box"><span class="bd-color has-background-grey-light"></span></div> |
-| **Grey lighter**              | `$grey-lighter`               | <div class="bal-app box"><span class="bd-color has-background-grey-lighter"></span></div> |
-| **White ter**                 | `$white-ter`                  | <div class="bal-app box"><span class="bd-color has-background-white-ter"></span></div> |
-| **White bis**                 | `$white-ter`                  | <div class="bal-app box"><span class="bd-color has-background-white-ter"></span></div> |
+| Color                         | Variable              | Computed Value |
+| ---                           | --------              | -------------- |
+| **Blue darker**               | `$blue-darker`        | <div class="bal-app box"><span class="bd-color has-background-blue-darker"></span></div> |
+| **Blue dark**                 | `$blue-dark`          | <div class="bal-app box"><span class="bd-color has-background-blue-dark"></span></div> |
+| **Blue**                      | `$blue`               | <div class="bal-app box"><span class="bd-color has-background-blue"></span></div> |
+| **Blue light text**           | `$blue-light-text`    | <div class="bal-app box"><span class="bd-color has-background-blue-light-text"></span></div> |
+| **Blue line**                 | `$blue-line`          | <div class="bal-app box"><span class="bd-color has-background-blue-line"></span></div> |
+| **Blue light line**           | `$blue-light-line`    | <div class="bal-app box"><span class="bd-color has-background-blue-light-line"></span></div> |
+| **Blue light hover**          | `$blue-light-hover`   | <div class="bal-app box"><span class="bd-color has-background-blue-light-hover"></span></div> |
+| **Blue light**                | `$blue-light`         | <div class="bal-app box"><span class="bd-color has-background-blue-light"></span></div> |
+| **White ter**                 | `$white-ter`          | <div class="bal-app box"><span class="bd-color has-background-white-ter"></span></div> |
+| **White bis**                 | `$white-ter`          | <div class="bal-app box"><span class="bd-color has-background-white-ter"></span></div> |
  

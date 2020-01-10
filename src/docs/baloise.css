@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Source+Sans+Pro:300,400,600");
-
 * {
   -webkit-overflow-scrolling: touch;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -37,16 +35,8 @@ div#app:empty:before {
   vertical-align: middle;
 }
 
-.progress {
-  background-color: #009fee;
-  height: 2px;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: width 0.2s, opacity 0.4s;
-  width: 0;
-  z-index: 5;
+.search {
+  order: 2;
 }
 
 .search .search-keyword,
@@ -76,7 +66,6 @@ body {
   font-size: 15px;
   letter-spacing: 0;
   margin: 0;
-  overflow-x: hidden;
 }
 
 img {
@@ -196,32 +185,12 @@ li input[type="checkbox"] {
   display: block;
 }
 
-.github-corner {
-  border-bottom: 0;
-  position: fixed;
-  right: 0;
-  text-decoration: none;
-  top: 0;
-  z-index: 1;
-}
-
-.github-corner:hover .octo-arm {
-  animation: a 0.56s ease-in-out;
-}
-
-.github-corner svg {
-  color: #fff;
-  fill: #009fee;
-  height: 80px;
-  width: 80px;
-}
-
 main {
-  display: block;
+  display: flex;
+  flex-direction: row;
   position: relative;
-  width: 100vw;
-  height: 100%;
   z-index: 0;
+  overflow-x: hidden;
 }
 
 main.hidden {
@@ -243,12 +212,15 @@ main.hidden {
 }
 
 .sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  max-width: 300px;
   border-right: 1px solid rgba(0, 0, 0, 0.07);
   overflow-y: auto;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  background: #f5f5f6;
+  color: #364149;
   transition: transform 0.25s ease-out;
   width: 300px;
   z-index: 3;
@@ -259,6 +231,7 @@ main.hidden {
   font-size: 1.5rem;
   font-weight: 800;
   text-align: center;
+  order: 1;
 }
 
 .sidebar > h1 a {
@@ -272,6 +245,7 @@ main.hidden {
 }
 
 .sidebar .sidebar-nav {
+  order: 3;
   line-height: 2em;
   padding-bottom: 40px;
 }
@@ -291,7 +265,9 @@ main.hidden {
 }
 
 .sidebar li > p strong {
-  color: #34495e;
+  color: #003399;
+  font-size: 1.3em;
+  margin-bottom: .5em;
 }
 
 .sidebar ul,
@@ -302,6 +278,8 @@ main.hidden {
 .sidebar ul li a {
   border-bottom: none;
   display: block;
+  font-size: 1em;
+  line-height: 1.5;
 }
 
 .sidebar ul li ul {
@@ -327,11 +305,10 @@ main.hidden {
 
 .sidebar-toggle {
   background-color: transparent;
-  background-color: hsla(0, 0%, 100%, 0.8);
   border: 0;
   outline: none;
   padding: 10px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   text-align: center;
@@ -352,25 +329,16 @@ main.hidden {
   height: 2px;
 }
 
-body.sticky .sidebar,
-body.sticky .sidebar-toggle {
-  position: fixed;
-}
-
 .content {
   padding-top: 60px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 300px;
+  flex: 1;
   transition: left 0.25s ease;
 }
 
 .markdown-section {
   margin: 0 auto;
   max-width: 800px;
-  padding: 0 15px 30px 40px;
+  padding: 0 40px 30px 40px;
   position: relative;
 }
 
@@ -470,9 +438,9 @@ body.close .sidebar-toggle {
   width: auto;
 }
 
-body.close .content {
-  left: 0;
-}
+/*body.close .content {*/
+/*  !*left: 0;*!*/
+/*}*/
 
 @media print {
   .app-nav,
@@ -498,22 +466,17 @@ body.close .content {
     top: 30px;
   }
 
-  main {
-    height: auto;
-    overflow-x: hidden;
-  }
-
   .sidebar {
     left: -300px;
     transition: transform 0.25s ease-out;
   }
 
   .content {
-    left: 0;
-    max-width: 100vw;
-    position: static;
     padding-top: 20px;
     transition: transform 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
   }
 
   .app-nav,
@@ -529,6 +492,9 @@ body.close .content {
 
   body.close .sidebar {
     transform: translateX(300px);
+    position: absolute;
+    bottom: 0;
+    top: 0;
   }
 
   body.close .sidebar-toggle {
@@ -536,10 +502,6 @@ body.close .content {
     transition: background-color 1s;
     width: 284px;
     padding: 10px;
-  }
-
-  body.close .content {
-    transform: translateX(300px);
   }
 
   body.close .app-nav,
@@ -578,6 +540,7 @@ section.cover {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  min-height: 500px;
   display: none;
   background: #039 !important;
 }
@@ -701,22 +664,32 @@ section.cover blockquote > p > a:hover {
   color: #009fee;
 }
 
-.sidebar,
 body {
   background-color: #fff;
 }
 
-.sidebar {
-  color: #364149;
+.app-name {
+  order: 1;
+  padding-top: 15px;
+  color: #003399;
+}
+
+.app-name a {
+  font-weight: 600;
+  font-size: 1.3em;
 }
 
 .sidebar li {
   margin: 6px 0;
 }
 
+.sidebar ul {
+  margin-bottom: 1.5em;
+}
+
 .sidebar ul li a {
-  color: #505d6b;
-  font-size: 14px;
+  color: #000;
+  font-size: 1em;
   font-weight: 400;
   overflow: hidden;
   text-decoration: none;
@@ -735,7 +708,6 @@ body {
 .sidebar ul li.active > a {
   border-right: 2px solid;
   color: #009fee;
-  font-weight: 600;
 }
 
 .app-sub-sidebar li:before {
@@ -1017,4 +989,13 @@ pre[data-lang="mermaid"] {
   color: white !important;
   display: inline-block !important;
   margin: 0 !important;
+}
+
+.cover-code {
+  background: #002162;
+  color: #fff;
+  font-size: 1.2em;
+  /*opacity: 0.8;*/
+  padding: 20px;
+  border-radius: 6px;
 }

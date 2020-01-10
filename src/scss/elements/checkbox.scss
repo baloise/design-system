@@ -1,6 +1,5 @@
 div.bal-checkbox {
   position: relative;
-
   padding-right: 25px;
   padding-bottom: 15px;
 
@@ -35,7 +34,6 @@ div.bal-checkbox {
   label::after {
     display: inline-block;
     position: absolute;
-
     background-color: transparent;
     background-position: center;
     background-repeat: no-repeat;
@@ -44,30 +42,23 @@ div.bal-checkbox {
 
   label::before {
     content: "";
-
-    left: 0px;
-    top: 0px;
-
+    left: 0;
+    top: 0;
     height: 24px;
     width: 24px;
-
-    border: 1px solid $light-text-blue-neg;
+    border: 1px solid $blue-line;
   }
 
   label::after {
     content: none;
-
     left: 9px;
     top: 6px;
-
     width: 6px;
     height: 10px;
-
-    border-bottom: 2px solid $bal_brand_blue;
-    border-right: 2px solid $bal_brand_blue;
+    border-bottom: 2px solid $blue;
+    border-right: 2px solid $blue;
     border-top: 0;
     border-left: 0;
-
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);

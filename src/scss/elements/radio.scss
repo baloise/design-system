@@ -1,7 +1,6 @@
 div.bal-radio {
   display: inline-block;
   position: relative;
-
   padding-right: 25px;
   padding-bottom: 15px;
 
@@ -28,13 +27,10 @@ div.bal-radio {
   input[type="radio"] + label::after {
     display: inline-block;
     position: absolute;
-
-    left: 0px;
-    top: 0px;
-
+    left: 0;
+    top: 0;
     height: 24px;
     width: 24px;
-
     border-radius: 50%;
   }
 
@@ -45,7 +41,7 @@ div.bal-radio {
 
   input[type="radio"] + label:after {
     content: none;
-    background: $bal_brand_blue;
+    background: $blue;
     transform: scale(.4);
   }
 
@@ -59,7 +55,7 @@ div.bal-radio {
   }
 
   input[type="radio"]:hover:not([disabled]) + label:before {
-    border-color: $bal_brand_blue;
+    border-color: $blue;
   }
 
   input[type="radio"]:focus + label::before {

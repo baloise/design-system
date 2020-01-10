@@ -79,10 +79,6 @@ export class BalDatepicker {
     }
   }
 
-  componentDidLoad() {
-    this.inputElement.value = this.value;
-  }
-
   /**
    * Open the datepicker dropdown
    */
@@ -95,8 +91,8 @@ export class BalDatepicker {
    * Close the datepicker dropdown
    */
   @Method()
-  async  close() {
-    this.dropDownElement.close();
+  async close() {
+    await this.dropDownElement.close();
   }
 
   get parsedMaxDate(): DateTime {
@@ -155,14 +151,14 @@ export class BalDatepicker {
     this.pointerDate = this.pointerDate.set({month: parseInt(event.target.value, 10) + 1});
   }
 
-  private selectDate(cell: CalendarCell) {
+  private async selectDate(cell: CalendarCell) {
     if (!cell.isDisabled && !cell.isOutdated) {
       this.isPristine = false;
       this.selectedDate = cell.date;
       this.pointerDate = cell.date;
       this.inputEventEmitter.emit(this.selectedDate.toISODate());
       this.inputElement.value = this.selectedDate.toFormat(BalDatepicker.FORMAT);
-      this.close();
+      await this.close();
     }
   }
 
@@ -170,9 +166,10 @@ export class BalDatepicker {
     return (
       <Host>
         <div class="datepicker control">
-          <bal-dropdown is-expanded ref={el => this.dropDownElement = el as HTMLBalDropdownElement}>
+          <bal-dropdown expanded ref={el => this.dropDownElement = el as HTMLBalDropdownElement}>
             <div slot="trigger" class="control has-icons-right is-clearfix clickable">
               <input type="text"
+                     value={this.value}
                      disabled={this.disabled}
                      autocomplete="off"
                      placeholder="Click to select..."

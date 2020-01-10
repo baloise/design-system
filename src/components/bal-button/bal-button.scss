@@ -51,21 +51,21 @@
   &.is-success {
     &:hover,
     &.is-hovered {
-      background: darken($green, 15);
+      background: darken($success, 15);
     }
   }
 
   &.is-warning {
     &:hover,
     &.is-hovered {
-      background: darken($orange, 10);
+      background: darken($warning, 10);
     }
   }
 
   &.is-danger {
     &:hover,
     &.is-hovered {
-      background: darken($red, 20);
+      background: darken($danger, 20);
     }
   }
 
@@ -147,7 +147,7 @@
     border: none;
     border-radius: 0;
     color: $blue;
-    background: $light-blue;
+    background: $blue-light;
 
     &:hover,
     &.is-hovered,
@@ -156,7 +156,7 @@
     &:active,
     &.is-active {
       color: $blue;
-      background: $light-blue-hover;
+      background: $blue-light-hover;
     }
   }
 

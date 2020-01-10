@@ -40,7 +40,7 @@ A basic dropdown.
 
 | Property         | Attribute          | Description                              | Type      | Default |
 | ---------------- | ------------------ | ---------------------------------------- | --------- | ------- |
-| `isExpanded`     | `is-expanded`      |                                          | `boolean` | `false` |
+| `expanded`       | `expanded`         |                                          | `boolean` | `false` |
 | `showBottomLine` | `show-bottom-line` | If `true` the field gets a line below.   | `boolean` | `true`  |
 | `value`          | `value`            | The value of the selected dropdown item. | `any`     | `null`  |
 

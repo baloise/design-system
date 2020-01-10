@@ -1,11 +1,21 @@
-# Bal UI Library
+# Baloise UI Library
 
 > Lightweight UI-Component Library for Baloise Applications
 
-<a href="https://badge.fury.io/js/bal-ui-library"><img src="https://badge.fury.io/js/bal-ui-library.svg" alt="npm version" height="18"></a>
+[![npm version](https://badge.fury.io/js/bal-ui-library.svg)](https://badge.fury.io/js/bal-ui-library)
+
+This is a project for building a modern Web Component using Stencil and Bulma.
+
+Just give it a try and add it to your project.
+
+<br>
+
+<code class="cover-code">$ npm install bal-ui-library</code>
+
+<br>
 
 [GitHub](https://github.com/hirsch88/bal-ui-library)
-[Get Started](docs/essentials/get-started.md)
+[Get Started](home.md)
 
 <!-- background color -->
 
