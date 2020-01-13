@@ -88,9 +88,17 @@ export namespace Components {
     */
     'maxDate': string;
     /**
+    * Latest year available for selection
+    */
+    'maxYear': string;
+    /**
     * Earliest date available for selection
     */
     'minDate': string;
+    /**
+    * Earliest year available for selection
+    */
+    'minYear': string;
     /**
     * Open the datepicker dropdown
     */
@@ -325,9 +333,17 @@ declare namespace LocalJSX {
     */
     'maxDate'?: string;
     /**
+    * Latest year available for selection
+    */
+    'maxYear'?: string;
+    /**
     * Earliest date available for selection
     */
     'minDate'?: string;
+    /**
+    * Earliest year available for selection
+    */
+    'minYear'?: string;
     /**
     * Triggers when the value of the datepicker is changed
     */

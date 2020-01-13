@@ -1,8 +1,12 @@
-import {Component, Host, h, Element, Prop, Watch, EventEmitter, Event, State, Method} from "@stencil/core";
-import {DateTime, Info} from "luxon";
+import {Component, Host, h, State, Prop, Watch, Event, EventEmitter, Method} from "@stencil/core";
+import moment from "moment";
+import "moment/locale/en-gb";
+import "moment/locale/de";
+import "moment/locale/fr";
+import "moment/locale/it-ch";
 
 interface CalendarCell {
-  date: DateTime;
+  date: moment.Moment;
   label: string;
   dateString: string;
   isToday: boolean;
@@ -16,17 +20,15 @@ interface CalendarCell {
   styleUrl: "bal-datepicker.scss",
 })
 export class BalDatepicker {
-  static FORMAT = "dd.MM.yyyy";
-
-  @Element() element!: HTMLElement;
+  static FORMAT = "DD.MM.YYYY";
 
   inputElement!: HTMLInputElement;
   dropDownElement!: HTMLBalDropdownElement;
-  now: DateTime = DateTime.local().startOf("day");
+  now: moment.Moment = moment().startOf("day");
 
   @State() isPristine = true;
-  @State() selectedDate: DateTime = DateTime.local().startOf("day");
-  @State() pointerDate: DateTime = DateTime.local().startOf("day");
+  @State() selectedDate: moment.Moment = moment().startOf("day");
+  @State() pointerDate: moment.Moment = moment().startOf("day");
 
   /**
    * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
@@ -49,6 +51,16 @@ export class BalDatepicker {
   @Prop() minDate: string = "";
 
   /**
+   * Latest year available for selection
+   */
+  @Prop() maxYear: string = "";
+
+  /**
+   * Earliest year available for selection
+   */
+  @Prop() minYear: string = "";
+
+  /**
    * The value of the datepicker with the format `dd.MM.yyyy`.
    */
   @Prop() value: string = "";
@@ -57,8 +69,8 @@ export class BalDatepicker {
   valueWatcher(newValue: string) {
     this.isPristine = false;
     this.inputElement.value = newValue;
-    this.selectedDate = DateTime.fromFormat(newValue, BalDatepicker.FORMAT);
-    this.pointerDate = DateTime.fromFormat(newValue, BalDatepicker.FORMAT);
+    this.selectedDate = moment(newValue, BalDatepicker.FORMAT);
+    this.pointerDate = moment(newValue, BalDatepicker.FORMAT);
   }
 
   /**
@@ -72,10 +84,17 @@ export class BalDatepicker {
   }) inputEventEmitter!: EventEmitter<string>;
 
   componentWillLoad() {
+    moment.locale(this.language);
     if (this.value) {
       this.isPristine = false;
-      this.selectedDate = DateTime.fromFormat(this.value, BalDatepicker.FORMAT);
-      this.pointerDate = DateTime.fromFormat(this.value, BalDatepicker.FORMAT);
+      this.selectedDate = moment(this.value, BalDatepicker.FORMAT);
+      this.pointerDate = moment(this.value, BalDatepicker.FORMAT);
+    }
+    if (!this.minYear) {
+      this.minYear = moment(this.now).subtract(100, "years").year().toString();
+    }
+    if (!this.maxYear) {
+      this.maxYear = moment(this.now).add(100, "years").year().toString();
     }
   }
 
@@ -84,7 +103,7 @@ export class BalDatepicker {
    */
   @Method()
   async open() {
-    this.pointerDate = this.selectedDate;
+    await this.dropDownElement.open();
   }
 
   /**
@@ -95,69 +114,76 @@ export class BalDatepicker {
     await this.dropDownElement.close();
   }
 
-  get parsedMaxDate(): DateTime {
-    return DateTime.fromFormat(this.maxDate, BalDatepicker.FORMAT).startOf("day");
+  get years(): number[] {
+    const years = [];
+    for (let year = parseInt(this.minYear, 10); year <= parseInt(this.maxYear, 10); year++) {
+      years.push(year);
+    }
+    return years;
   }
 
-  get parsedMinDate(): DateTime {
-    return DateTime.fromFormat(this.minDate, BalDatepicker.FORMAT).startOf("day");
+  get parsedMaxDate(): moment.Moment {
+    return moment(this.maxDate, BalDatepicker.FORMAT).startOf("day");
   }
 
-  get firstDateOfBox(): DateTime {
-    return this.pointerDate.startOf("month").startOf("week");
+  get parsedMinDate(): moment.Moment {
+    return moment(this.minDate, BalDatepicker.FORMAT).startOf("day");
+  }
+
+  get firstDateOfBox(): moment.Moment {
+    return moment(this.pointerDate).startOf("month").startOf("week");
   }
 
   get calendarGrid(): CalendarCell[][] {
     let weekDatePointer = this.firstDateOfBox;
     let dayDatePointer = this.firstDateOfBox;
     let calendar = [];
-
     do {
       let row = [];
       do {
         row = [...row, {
-          date: dayDatePointer,
-          dateString: dayDatePointer.toISODate(),
-          label: dayDatePointer.day.toString(),
-          isToday: this.now.equals(dayDatePointer),
-          isSelected: !this.isPristine && this.selectedDate.equals(dayDatePointer),
+          date: moment(dayDatePointer),
+          dateString: dayDatePointer.format(BalDatepicker.FORMAT),
+          label: dayDatePointer.date().toString(),
+          isToday: this.now.isSame(dayDatePointer),
+          isSelected: !this.isPristine && this.selectedDate.isSame(dayDatePointer),
           isDisabled: false,
-          isOutdated: !this.pointerDate.hasSame(dayDatePointer, "month")
+          isOutdated: !this.pointerDate.isSame(dayDatePointer, "month")
             || (this.minDate && dayDatePointer < this.parsedMinDate)
             || (this.maxDate && dayDatePointer > this.parsedMaxDate),
         } as CalendarCell];
-        dayDatePointer = dayDatePointer.plus({day: 1});
-      } while (weekDatePointer.hasSame(dayDatePointer, "week"));
+        dayDatePointer = moment(dayDatePointer.add(1, "days"));
+      } while (weekDatePointer.isSame(dayDatePointer, "week"));
       calendar = [...calendar, row];
-      weekDatePointer = weekDatePointer.plus({week: 1});
-    } while (this.pointerDate.hasSame(dayDatePointer, "month"));
+      weekDatePointer = moment(weekDatePointer.add(1, "weeks"));
+    } while (this.pointerDate.isSame(dayDatePointer, "month"));
 
     return calendar;
   }
 
   private previousMonth() {
-    this.pointerDate = this.pointerDate.minus({month: 1});
+    this.pointerDate = moment(this.pointerDate.subtract(1, "months"));
   }
 
   private nextMonth() {
-    this.pointerDate = this.pointerDate.plus({month: 1});
+    this.pointerDate = moment(this.pointerDate.add(1, "months"));
   }
 
   private handleYearSelect(event: any) {
-    this.pointerDate = this.pointerDate.set({year: event.target.value});
+    this.pointerDate = moment(this.pointerDate.year(event.target.value));
   }
 
   private handleMonthSelect(event: any) {
-    this.pointerDate = this.pointerDate.set({month: parseInt(event.target.value, 10) + 1});
+    this.pointerDate = moment(this.pointerDate.month(parseInt(event.target.value, 10)));
   }
 
   private async selectDate(cell: CalendarCell) {
     if (!cell.isDisabled && !cell.isOutdated) {
       this.isPristine = false;
-      this.selectedDate = cell.date;
-      this.pointerDate = cell.date;
-      this.inputEventEmitter.emit(this.selectedDate.toISODate());
-      this.inputElement.value = this.selectedDate.toFormat(BalDatepicker.FORMAT);
+      this.selectedDate = moment(cell.date);
+      this.pointerDate = moment(cell.date);
+      this.inputEventEmitter.emit(this.selectedDate.format(BalDatepicker.FORMAT));
+      this.inputElement.value = this.selectedDate.format(BalDatepicker.FORMAT);
       await this.close();
     }
   }
@@ -201,9 +227,9 @@ export class BalDatepicker {
                     <div class="field has-addons">
                       <div class="control month-select"><span class="select">
                         <select onInput={(event) => this.handleMonthSelect(event)}>
-                          {Info.months("long", {locale: this.language}).map((month, index) =>
+                          {moment.months().map((month, index) =>
                             <option value={index}
-                                    selected={this.pointerDate.month === index + 1}>
+                                    selected={this.pointerDate.month() === index}>
                               {month}
                             </option>,
                           )}
@@ -211,9 +237,9 @@ export class BalDatepicker {
                             </span></div>
                       <div class="control year-select"><span class="select">
                             <select onInput={(event) => this.handleYearSelect(event)}>
-                               {[2019, 2020, 2021, 2022].map((year) =>
+                               {this.years.map((year) =>
                                  <option value={year}
-                                         selected={this.pointerDate.hasSame(DateTime.local(year), "year")}>
+                                         selected={this.pointerDate.year() === year}>
                                    {year}
                                  </option>,
                                )}
@@ -226,7 +252,7 @@ export class BalDatepicker {
               <div class="datepicker-content">
                 <section class="datepicker-table">
                   <header class="datepicker-header">
-                    {Info.weekdays("short", {locale: this.language}).map((weekday) => <div
+                    {moment.weekdaysMin().map((weekday) => <div
                       class="datepicker-cell">{weekday}</div>)}
                   </header>
                   <div class="datepicker-body">
