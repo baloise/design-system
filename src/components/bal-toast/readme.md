@@ -18,14 +18,14 @@ Toast have five different types.
 
 ## In Action
 
-Toast can be created with the `balToastController`.
+Toast can be created with the `balToastController`. The default duration is 5000 milliseconds.
 
 <bal-button id="toast-default">Show default Toast</bal-button>
 <bal-button id="toast-danger" type="is-danger">Show danger Toast</bal-button>
 
 <script type="text/javascript">
     document.getElementById('toast-default').onclick = function() {
-        balToastController.create({ message: 'Hi I am a default Toast!' });
+        balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 });
     };
     document.getElementById('toast-danger').onclick = function() {
         balToastController.create({ message: 'Danger zone!', type: 'is-danger' });
@@ -36,7 +36,7 @@ Toast can be created with the `balToastController`.
 import {balToastController} from 'bal-ui-library';
 
 document.getElementById('toast-default').onclick = function() {
-  balToastController.create({ message: 'Hi I am a default Toast!' });
+  balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 });
 };
 document.getElementById('toast-danger').onclick = function() {
   balToastController.create({ message: 'Danger zone!', type: 'is-danger' });
