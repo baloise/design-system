@@ -6,12 +6,13 @@
       var result = '';
       var markdown = content;
       var lineBreak = '\r\n';
+      var prefix = '```html' + lineBreak;
 
       if (markdown.indexOf(prefix) < 0) {
         lineBreak = '\n';
       }
 
-      var prefix = '```html' + lineBreak;
+      prefix = '```html' + lineBreak;
       var suffix = '```' + lineBreak;
 
       if (markdown.indexOf(prefix) >= 0) {
