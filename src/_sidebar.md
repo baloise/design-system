@@ -11,6 +11,7 @@
   - [Field](components/bal-field/readme.md)
   - [Input](docs/elements/input.md)
   - [Radio](docs/elements/radio.md)
+  - [Select Button](docs/elements/select-button.md)
 
 - **Elements**
 

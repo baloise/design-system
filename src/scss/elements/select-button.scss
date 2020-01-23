@@ -1,0 +1,86 @@
+div.bal-select-button {
+  .select-buttons-field .help {
+    text-align: center;
+  }
+
+  position: relative;
+  display: flex;
+  flex: 1;
+  border: 1px solid $bal_line_blue;
+  border-radius: 100px;
+  padding: 5px;
+
+  .select-button {
+    display: flex;
+    flex: 1;
+
+    input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+    }
+
+    input[type="radio"]:focus ~ label {
+      outline: none;
+      border: 2px dashed $cyan;
+    }
+
+    label {
+      display: flex;
+      flex: 1 1 0;
+      height: 30px;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 100px;
+      background: transparent;
+      min-height: 30px;
+      padding: 0 15px !important;
+      border-color: transparent;
+      border-width: 2px;
+
+      &:hover {
+        color: $blue;
+      }
+
+      text-align: center;
+      font-size: $size-5;
+      font-weight: bold;
+      color: $bal_text_light_blue;
+
+    }
+
+    input:checked ~ label {
+      border-color: $blue;
+      background: $blue;
+      color: white;
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    input:disabled ~ label {
+      cursor: not-allowed;
+      color: $bal_text_light_blue;
+
+
+      &:hover {
+        color: $bal_text_light_blue;
+      }
+    }
+
+    input:disabled:checked ~ label {
+      border-color: $grey-light;
+      background: $grey-light;
+      color: white;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+}
+
+
+
