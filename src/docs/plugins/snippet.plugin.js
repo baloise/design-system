@@ -5,7 +5,12 @@
     hook.beforeEach(function (content) {
       var result = '';
       var markdown = content;
-      var lineBreak = '\n';
+      var lineBreak = '\r\n';
+
+      if (markdown.indexOf(prefix) < 0) {
+        lineBreak = '\n';
+      }
+
       var prefix = '```html' + lineBreak;
       var suffix = '```' + lineBreak;
 
