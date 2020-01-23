@@ -61,9 +61,16 @@ export class BalAccordion {
                     inverted={true}
                     type={this.type}
                     onClick={() => this.toggle()}>
-          {this.isCollapsed ? <slot name="trigger-open">Open me!</slot> : <slot name="trigger-close">Close me!</slot>}
+          <span style={!this.isCollapsed && {display: "none"}}>
+            <slot name="trigger-open">Open me!</slot>
+          </span>
+          <span style={this.isCollapsed && {display: "none"}}>
+            <slot name="trigger-close">Close me!</slot>
+          </span>
         </bal-button>
-        {this.isCollapsed ? undefined : <slot></slot>}
+        <div style={this.isCollapsed && {display: "none"}}>
+          <slot></slot>
+        </div>
       </Host>
     );
   }
