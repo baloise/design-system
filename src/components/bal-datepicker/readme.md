@@ -49,7 +49,9 @@ You can change the language with the language prop.
 | `disabled` | `disabled` | Disable the input                                                        | `boolean` | `false` |
 | `language` | `language` | Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`. | `string`  | `"de"`  |
 | `maxDate`  | `max-date` | Latest date available for selection                                      | `string`  | `""`    |
+| `maxYear`  | `max-year` | Latest year available for selection                                      | `string`  | `""`    |
 | `minDate`  | `min-date` | Earliest date available for selection                                    | `string`  | `""`    |
+| `minYear`  | `min-year` | Earliest year available for selection                                    | `string`  | `""`    |
 | `value`    | `value`    | The value of the datepicker with the format `dd.MM.yyyy`.                | `string`  | `""`    |
 
 
