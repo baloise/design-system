@@ -4,7 +4,7 @@ $input-border-color: $blue-light-line;
 $input-shadow: none;
 $input-placeholder-color: $grey-darker;
 $input-background-color: transparent;
-$input-height: 42px;
+$input-height: 38px;
 $input-hover-border-color: $blue-light-line;
 $input-focus-box-shadow-size: 0;
 $input-focus-box-shadow-color: none;
@@ -19,11 +19,11 @@ $input-disabled-placeholder-color: $blue-light-text;
   border-left: none;
   border-right: none;
   border-width: 1px;
-  padding: 5px 0 6px 0;
+  padding: 1px 0 2px 0;
 
   &:focus {
     border-width: 2px;
-    padding: 5px 0 5px 0;
+    padding: 1px 0 1px 0;
   }
 
   &:disabled {
