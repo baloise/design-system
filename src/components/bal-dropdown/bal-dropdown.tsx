@@ -22,7 +22,7 @@ export class BalDropdown {
   @Prop() showBottomLine = true;
 
   /**
-   *
+   * If `true` the field expands over the whole width.
    */
   @Prop() expanded = false;
 
