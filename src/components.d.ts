@@ -8,6 +8,9 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
+  DateCallback,
+} from './components/bal-datepicker/bal-datepicker';
+import {
   DropDownOption,
 } from './components/bal-dropdown/bal-dropdown';
 
@@ -80,6 +83,10 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
+    * Callback to determine which date in the datepicker should be selectable.
+    */
+    'filter': DateCallback;
+    /**
     * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
     */
     'language': string;
@@ -103,6 +110,10 @@ export namespace Components {
     * Open the datepicker dropdown
     */
     'open': () => Promise<void>;
+    /**
+    * Placeholder text to render if no date has been selected.
+    */
+    'placeholder': string;
     /**
     * The value of the datepicker with the format `dd.MM.yyyy`.
     */
@@ -325,6 +336,10 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
+    * Callback to determine which date in the datepicker should be selectable.
+    */
+    'filter'?: DateCallback;
+    /**
     * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
     */
     'language'?: string;
@@ -348,6 +363,10 @@ declare namespace LocalJSX {
     * Triggers when the value of the datepicker is changed
     */
     'onInput'?: (event: CustomEvent<string>) => void;
+    /**
+    * Placeholder text to render if no date has been selected.
+    */
+    'placeholder'?: string;
     /**
     * The value of the datepicker with the format `dd.MM.yyyy`.
     */
