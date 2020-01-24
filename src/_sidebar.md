@@ -26,6 +26,8 @@
   - [Button](components/bal-button/readme.md)
   - [Dropdown](components/bal-dropdown/readme.md)
   - [Spinner](components/bal-spinner/readme.md)
+  - [Tabs](components/tabs/readme.md)
+    - [Tab-Item](components/tab-item/readme.md)
   - [Tag](components/bal-tag/readme.md)
   - [Toast](components/bal-toast/readme.md)
 

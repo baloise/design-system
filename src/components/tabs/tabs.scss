@@ -1,0 +1,25 @@
+@import "./tabs.vars";
+@import "node_modules/bulma/sass/components/tabs.sass";
+
+:host {
+  display: block;
+}
+
+.tabs {
+  border: 1px solid $blue-light-line;
+  border-radius: 50px;
+
+  & > ul > li {
+    padding: 5px;
+
+    & > a {
+      border-radius: 50px;
+    }
+
+    &.is-active > a, & > a:hover {
+      background: $blue;
+      color: $white;
+    }
+  }
+
+}
