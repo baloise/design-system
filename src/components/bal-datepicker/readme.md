@@ -28,17 +28,6 @@ You can limit the date range with min-date and max-date props.
 <bal-datepicker disabled value="20.02.2020"></bal-datepicker>
 ```
 
-## Translations
-
-
-### Italian
-
-You can change the language with the language prop.
-
-```html
-<bal-datepicker language="it" value="20.02.2020"></bal-datepicker>
-```
-
 <!-- Auto Generated Below -->
 
 
