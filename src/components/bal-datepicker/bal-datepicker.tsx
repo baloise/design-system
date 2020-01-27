@@ -1,4 +1,4 @@
-import {Component, Host, h, State, Prop, Watch, Event, EventEmitter, Method} from "@stencil/core";
+import { Component, Host, h, State, Prop, Watch, Event, EventEmitter, Method } from "@stencil/core";
 import moment from "moment";
 import {i18n} from "./i18n";
 
@@ -16,6 +16,8 @@ interface CalendarCell {
   isDisabled: boolean;
   isOutdated: boolean;
 }
+
+export type DateCallback = (date: string) => boolean;
 
 @Component({
   tag: "bal-datepicker",
@@ -36,6 +38,11 @@ export class BalDatepicker {
    * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
    */
   @Prop() language: string = "de";
+
+  /**
+   * Placeholder text to render if no date has been selected.
+   */
+  @Prop() placeholder: string = "Click to select...";
 
   /**
    * Disable the input
@@ -66,6 +73,11 @@ export class BalDatepicker {
    * The value of the datepicker with the format `dd.MM.yyyy`.
    */
   @Prop() value: string = "";
+
+  /**
+   * Callback to determine which date in the datepicker should be selectable.
+   */
+  @Prop() filter: DateCallback = (_) => true;
 
   @Watch("value")
   valueWatcher(newValue: string) {
@@ -155,7 +167,7 @@ export class BalDatepicker {
           label: dayDatePointer.date().toString(),
           isToday: this.now.isSame(dayDatePointer),
           isSelected: !this.isPristine && this.selectedDate.isSame(dayDatePointer),
-          isDisabled: false,
+          isDisabled: !this.filter(dayDatePointer.format(BalDatepicker.FORMAT)),
           isOutdated: !this.pointerDate.isSame(dayDatePointer, "month")
             || (this.minDate && dayDatePointer < this.parsedMinDate)
             || (this.maxDate && dayDatePointer > this.parsedMaxDate),
@@ -203,13 +215,13 @@ export class BalDatepicker {
           <bal-dropdown expanded ref={el => this.dropDownElement = el as HTMLBalDropdownElement}>
             <div slot="trigger" class="control has-icons-right is-clearfix clickable">
               <input type="text"
-                     value={this.value}
-                     disabled={this.disabled}
-                     autocomplete="off"
-                     placeholder="Click to select..."
-                     readonly="readonly"
-                     ref={el => this.inputElement = el as HTMLInputElement}
-                     class="input"/>
+                value={this.value}
+                disabled={this.disabled}
+                autocomplete="off"
+                placeholder={this.placeholder}
+                readonly="readonly"
+                ref={el => this.inputElement = el as HTMLInputElement}
+                class="input" />
               <span class="icon is-right">
                 <i class="bal-icon-date"></i>
               </span>
@@ -218,15 +230,15 @@ export class BalDatepicker {
               <header class="datepicker-header">
                 <div class="pagination field is-centered">
                   <a role="button"
-                     onClick={() => this.previousMonth()}
-                     class="pagination-previous">
+                    onClick={() => this.previousMonth()}
+                    class="pagination-previous">
                     <span class="icon has-text-primary is-large">
                       <i class="bal-icon-nav-go-left"></i>
                     </span>
                   </a>
                   <a role="button"
-                     onClick={() => this.nextMonth()}
-                     class="pagination-next">
+                    onClick={() => this.nextMonth()}
+                    class="pagination-next">
                     <span class="icon has-text-primary is-large">
                       <i class="bal-icon-nav-go-right"></i>
                     </span>
@@ -237,22 +249,22 @@ export class BalDatepicker {
                         <select onInput={(event) => this.handleMonthSelect(event)}>
                           {moment.months().map((month, index) =>
                             <option value={index}
-                                    selected={this.pointerDate.month() === index}>
+                              selected={this.pointerDate.month() === index}>
                               {month}
                             </option>,
                           )}
-                            </select>
-                            </span></div>
+                        </select>
+                      </span></div>
                       <div class="control year-select"><span class="select">
-                            <select onInput={(event) => this.handleYearSelect(event)}>
-                               {this.years.map((year) =>
-                                 <option value={year}
-                                         selected={this.pointerDate.year() === year}>
-                                   {year}
-                                 </option>,
-                               )}
-                            </select>
-                            </span></div>
+                        <select onInput={(event) => this.handleYearSelect(event)}>
+                          {this.years.map((year) =>
+                            <option value={year}
+                              selected={this.pointerDate.year() === year}>
+                              {year}
+                            </option>,
+                          )}
+                        </select>
+                      </span></div>
                     </div>
                   </div>
                 </div>

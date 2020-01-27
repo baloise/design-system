@@ -22,6 +22,12 @@ You can limit the date range with min-date and max-date props.
 <bal-datepicker min-date="10.02.2020" max-date="22.02.2020" value="20.02.2020"></bal-datepicker>
 ```
 
+## Filter
+
+```html
+<bal-datepicker value="20.02.2020" filter="alert()"></bal-datepicker>
+```
+
 ## Disabled
 
 ```html
@@ -33,15 +39,17 @@ You can limit the date range with min-date and max-date props.
 
 ## Properties
 
-| Property   | Attribute  | Description                                                              | Type      | Default |
-| ---------- | ---------- | ------------------------------------------------------------------------ | --------- | ------- |
-| `disabled` | `disabled` | Disable the input                                                        | `boolean` | `false` |
-| `language` | `language` | Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`. | `string`  | `"de"`  |
-| `maxDate`  | `max-date` | Latest date available for selection                                      | `string`  | `""`    |
-| `maxYear`  | `max-year` | Latest year available for selection                                      | `string`  | `""`    |
-| `minDate`  | `min-date` | Earliest date available for selection                                    | `string`  | `""`    |
-| `minYear`  | `min-year` | Earliest year available for selection                                    | `string`  | `""`    |
-| `value`    | `value`    | The value of the datepicker with the format `dd.MM.yyyy`.                | `string`  | `""`    |
+| Property      | Attribute     | Description                                                              | Type                        | Default                |
+| ------------- | ------------- | ------------------------------------------------------------------------ | --------------------------- | ---------------------- |
+| `disabled`    | `disabled`    | Disable the input                                                        | `boolean`                   | `false`                |
+| `filter`      | --            | Callback to determine which date in the datepicker should be selectable. | `(date: string) => boolean` | `(_) => true`          |
+| `language`    | `language`    | Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`. | `string`                    | `"de"`                 |
+| `maxDate`     | `max-date`    | Latest date available for selection                                      | `string`                    | `""`                   |
+| `maxYear`     | `max-year`    | Latest year available for selection                                      | `string`                    | `""`                   |
+| `minDate`     | `min-date`    | Earliest date available for selection                                    | `string`                    | `""`                   |
+| `minYear`     | `min-year`    | Earliest year available for selection                                    | `string`                    | `""`                   |
+| `placeholder` | `placeholder` | Placeholder text to render if no date has been selected.                 | `string`                    | `"Click to select..."` |
+| `value`       | `value`       | The value of the datepicker with the format `dd.MM.yyyy`.                | `string`                    | `""`                   |
 
 
 ## Events
