@@ -10,8 +10,24 @@ Simple responsive horizontal navigation tabs.
 </bal-tabs>
 ```
 
+## Expanded
+
+```html
+<bal-tabs expanded>
+    <bal-tab-item value="item-a" label="Item A" active="true">Content of Item A</bal-tab-item>
+    <bal-tab-item value="item-b" label="Item B">Content of Item B</bal-tab-item>
+    <bal-tab-item value="item-c" label="Item C">Content of Item C</bal-tab-item>
+</bal-tabs>
+```
 
 <!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property   | Attribute  | Description                                       | Type      | Default |
+| ---------- | ---------- | ------------------------------------------------- | --------- | ------- |
+| `expanded` | `expanded` | If `true` the field expands over the whole width. | `boolean` | `false` |
 
 
 ## Events

@@ -6,14 +6,20 @@
 }
 
 .tabs {
-  border: 1px solid $blue-light-line;
-  border-radius: 50px;
+  border: none;
 
   & > ul > li {
-    padding: 5px;
+    padding-right: 10px;
+
+    &:last-child {
+      padding-right: 0;
+    }
 
     & > a {
       border-radius: 50px;
+      padding: 6px 24px 8px 24px;
+      line-height: 1.2;
+      font-size: $size-4;
     }
 
     &.is-active > a, & > a:hover {

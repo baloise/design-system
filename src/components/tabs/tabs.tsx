@@ -1,4 +1,4 @@
-import {Component, Host, h, Element, State, Event, EventEmitter, Method} from "@stencil/core";
+import {Component, Host, h, Element, State, Event, EventEmitter, Method, Prop} from "@stencil/core";
 import {TabItemOptions} from "../tab-item/tab-item";
 
 @Component({
@@ -10,6 +10,11 @@ export class Tabs {
   @Element() element!: HTMLElement;
 
   @State() tabsOptions: TabItemOptions[] = [];
+
+  /**
+   * If `true` the field expands over the whole width.
+   */
+  @Prop() expanded = false;
 
   /**
    * Emitted when the changes has finished.
@@ -50,7 +55,7 @@ export class Tabs {
       <Host>
         <div class={[
           "tabs",
-          "is-fullwidth",
+          this.expanded ? "is-fullwidth" : "",
         ].join(" ")}>
           <ul>
             {this.tabsOptions.map((tab) =>
