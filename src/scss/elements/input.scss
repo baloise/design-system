@@ -20,6 +20,7 @@ $input-disabled-placeholder-color: $blue-light-text;
   border-right: none;
   border-width: 1px;
   padding: 1px 0 2px 0;
+  font-size: $size-4;
 
   &:focus {
     border-width: 2px;

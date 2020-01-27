@@ -4,9 +4,9 @@ Simple responsive horizontal navigation tabs.
 
 ```html
 <bal-tabs>
-    <bal-tab-item value="item-a" label="Item A" active="true">Content of Item A</bal-tab-item>
-    <bal-tab-item value="item-b" label="Item B">Content of Item B</bal-tab-item>
-    <bal-tab-item value="item-c" label="Item C">Content of Item C</bal-tab-item>
+    <bal-tab-item value="tab-a" label="Tab A" active="true">Content of Tab A</bal-tab-item>
+    <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+    <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
 </bal-tabs>
 ```
 
@@ -14,9 +14,9 @@ Simple responsive horizontal navigation tabs.
 
 ```html
 <bal-tabs expanded>
-    <bal-tab-item value="item-a" label="Item A" active="true">Content of Item A</bal-tab-item>
-    <bal-tab-item value="item-b" label="Item B">Content of Item B</bal-tab-item>
-    <bal-tab-item value="item-c" label="Item C">Content of Item C</bal-tab-item>
+    <bal-tab-item value="tab-a" label="Tab A" active="true">Content of Tab A</bal-tab-item>
+    <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+    <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
 </bal-tabs>
 ```
 

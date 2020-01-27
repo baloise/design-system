@@ -758,20 +758,20 @@ body {
   font-size: 1rem;
 }
 
-.markdown-section figure,
-.markdown-section p {
+.markdown-section > figure,
+.markdown-section > p {
   margin: 1.2em 0;
 }
 
-.markdown-section ol,
-.markdown-section p,
-.markdown-section ul {
+.markdown-section > ol,
+.markdown-section > p,
+.markdown-section > ul {
   line-height: 1.6rem;
   word-spacing: 0.05rem;
 }
 
-.markdown-section ol,
-.markdown-section ul {
+.markdown-section > ol,
+.markdown-section > ul {
   padding-left: 1.5rem;
 }
 
