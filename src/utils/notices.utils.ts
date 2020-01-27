@@ -21,15 +21,15 @@ const createNoticesUtils = () => {
     document.body.appendChild(container);
   };
 
-  const showNotice = (element: HTMLBalToastElement) => {
+  const showNotice = (element: HTMLBalToastElement, duration?: number) => {
     if (shouldQueue()) {
       // Call recursively if should queue
-      setTimeout(() => showNotice(element), 250);
+      setTimeout(() => showNotice(element, duration), 250);
       return;
     }
 
     container.insertAdjacentElement("afterbegin", element);
-    element.closeIn(DURATION);
+    element.closeIn(duration || DURATION);
   };
 
   setupContainer();
