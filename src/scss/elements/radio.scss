@@ -21,6 +21,9 @@ div.bal-radio {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    color: $blue;
+    font-size: $size-5;
+    vertical-align: super;
   }
 
   input[type="radio"] + label::before,
@@ -36,7 +39,7 @@ div.bal-radio {
 
   input[type="radio"] + label:before {
     content: "";
-    border: 1px solid $bal_line_blue;
+    border: 1px solid $blue-line;
   }
 
   input[type="radio"] + label:after {
