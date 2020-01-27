@@ -13,6 +13,12 @@ import {
 import {
   DropDownOption,
 } from './components/bal-dropdown/bal-dropdown';
+import {
+  TabItemOptions,
+} from './components/tab-item/tab-item';
+import {
+  TabItemOptions as TabItemOptions1,
+} from './components/tab-item/tab-item';
 
 export namespace Components {
   interface BalAccordion {
@@ -124,6 +130,9 @@ export namespace Components {
     * Closes the dropdown menu
     */
     'close': () => Promise<void>;
+    /**
+    * If `true` the field expands over the whole width.
+    */
     'expanded': boolean;
     /**
     * Returns the value of the dropdown.
@@ -179,6 +188,38 @@ export namespace Components {
     'validationMessage': string;
   }
   interface BalSpinner {}
+  interface BalTabItem {
+    /**
+    * Tell's if the tab is active and the content is visible.
+    */
+    'active': boolean;
+    /**
+    * Options of the tab like label, value etc.
+    */
+    'getOptions': () => Promise<TabItemOptions>;
+    /**
+    * Label for the tab.
+    */
+    'label': string;
+    /**
+    * Sets the tab active.
+    */
+    'setActive': (active: boolean) => Promise<void>;
+    /**
+    * This is the key of the tab.
+    */
+    'value': string;
+  }
+  interface BalTabs {
+    /**
+    * If `true` the field expands over the whole width.
+    */
+    'expanded': boolean;
+    /**
+    * Select a tab by the value of the tab item.
+    */
+    'select': (value: string) => Promise<void>;
+  }
   interface BalTag {
     /**
     * The theme type of the tag. Given by bulma our css framework.
@@ -259,6 +300,18 @@ declare global {
     new (): HTMLBalSpinnerElement;
   };
 
+  interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {}
+  var HTMLBalTabItemElement: {
+    prototype: HTMLBalTabItemElement;
+    new (): HTMLBalTabItemElement;
+  };
+
+  interface HTMLBalTabsElement extends Components.BalTabs, HTMLStencilElement {}
+  var HTMLBalTabsElement: {
+    prototype: HTMLBalTabsElement;
+    new (): HTMLBalTabsElement;
+  };
+
   interface HTMLBalTagElement extends Components.BalTag, HTMLStencilElement {}
   var HTMLBalTagElement: {
     prototype: HTMLBalTagElement;
@@ -278,6 +331,8 @@ declare global {
     'bal-dropdown-item': HTMLBalDropdownItemElement;
     'bal-field': HTMLBalFieldElement;
     'bal-spinner': HTMLBalSpinnerElement;
+    'bal-tab-item': HTMLBalTabItemElement;
+    'bal-tabs': HTMLBalTabsElement;
     'bal-tag': HTMLBalTagElement;
     'bal-toast': HTMLBalToastElement;
   }
@@ -373,6 +428,9 @@ declare namespace LocalJSX {
     'value'?: string;
   }
   interface BalDropdown {
+    /**
+    * If `true` the field expands over the whole width.
+    */
     'expanded'?: boolean;
     'onDropdownSelected'?: (event: CustomEvent<any>) => void;
     'onSelectDropdownItem'?: (event: CustomEvent<any>) => void;
@@ -418,6 +476,30 @@ declare namespace LocalJSX {
     'validationMessage'?: string;
   }
   interface BalSpinner {}
+  interface BalTabItem {
+    /**
+    * Tell's if the tab is active and the content is visible.
+    */
+    'active'?: boolean;
+    /**
+    * Label for the tab.
+    */
+    'label'?: string;
+    /**
+    * This is the key of the tab.
+    */
+    'value'?: string;
+  }
+  interface BalTabs {
+    /**
+    * If `true` the field expands over the whole width.
+    */
+    'expanded'?: boolean;
+    /**
+    * Emitted when the changes has finished.
+    */
+    'onBalTabsDidChange'?: (event: CustomEvent<TabItemOptions>) => void;
+  }
   interface BalTag {
     /**
     * The theme type of the tag. Given by bulma our css framework.
@@ -452,6 +534,8 @@ declare namespace LocalJSX {
     'bal-dropdown-item': BalDropdownItem;
     'bal-field': BalField;
     'bal-spinner': BalSpinner;
+    'bal-tab-item': BalTabItem;
+    'bal-tabs': BalTabs;
     'bal-tag': BalTag;
     'bal-toast': BalToast;
   }
@@ -470,6 +554,8 @@ declare module "@stencil/core" {
       'bal-dropdown-item': LocalJSX.BalDropdownItem & JSXBase.HTMLAttributes<HTMLBalDropdownItemElement>;
       'bal-field': LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
       'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
+      'bal-tab-item': LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
+      'bal-tabs': LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
       'bal-tag': LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
       'bal-toast': LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
     }

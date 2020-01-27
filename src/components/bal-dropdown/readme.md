@@ -38,11 +38,11 @@ A basic dropdown.
 
 ## Properties
 
-| Property         | Attribute          | Description                              | Type      | Default |
-| ---------------- | ------------------ | ---------------------------------------- | --------- | ------- |
-| `expanded`       | `expanded`         |                                          | `boolean` | `false` |
-| `showBottomLine` | `show-bottom-line` | If `true` the field gets a line below.   | `boolean` | `true`  |
-| `value`          | `value`            | The value of the selected dropdown item. | `any`     | `null`  |
+| Property         | Attribute          | Description                                       | Type      | Default |
+| ---------------- | ------------------ | ------------------------------------------------- | --------- | ------- |
+| `expanded`       | `expanded`         | If `true` the field expands over the whole width. | `boolean` | `false` |
+| `showBottomLine` | `show-bottom-line` | If `true` the field gets a line below.            | `boolean` | `true`  |
+| `value`          | `value`            | The value of the selected dropdown item.          | `any`     | `null`  |
 
 
 ## Events

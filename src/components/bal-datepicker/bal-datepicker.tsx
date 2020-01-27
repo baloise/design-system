@@ -1,9 +1,11 @@
 import { Component, Host, h, State, Prop, Watch, Event, EventEmitter, Method } from "@stencil/core";
 import moment from "moment";
-import "moment/locale/en-gb";
-import "moment/locale/de";
-import "moment/locale/fr";
-import "moment/locale/it-ch";
+import {i18n} from "./i18n";
+
+moment.defineLocale("it", i18n.it);
+moment.defineLocale("fr", i18n.fr);
+moment.defineLocale("en", i18n.en);
+moment.defineLocale("de", i18n.de);
 
 interface CalendarCell {
   date: moment.Moment;
@@ -126,6 +128,12 @@ export class BalDatepicker {
     await this.dropDownElement.close();
   }
 
+  get weekdays(): string[] {
+    const arr: string[] = moment.weekdaysMin();
+    arr.push(arr.shift() as any);
+    return arr;
+  }
+
   get years(): number[] {
     const years = [];
     for (let year = parseInt(this.minYear, 10); year <= parseInt(this.maxYear, 10); year++) {
@@ -143,7 +151,7 @@ export class BalDatepicker {
   }
 
   get firstDateOfBox(): moment.Moment {
-    return moment(this.pointerDate).startOf("month").startOf("week");
+    return moment(this.pointerDate).startOf("month").startOf("isoWeek");
   }
 
   get calendarGrid(): CalendarCell[][] {
@@ -264,7 +272,7 @@ export class BalDatepicker {
               <div class="datepicker-content">
                 <section class="datepicker-table">
                   <header class="datepicker-header">
-                    {moment.weekdaysMin().map((weekday) => <div
+                    {this.weekdays.map((weekday) => <div
                       class="datepicker-cell">{weekday}</div>)}
                   </header>
                   <div class="datepicker-body">
