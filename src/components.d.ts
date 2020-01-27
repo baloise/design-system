@@ -201,6 +201,10 @@ export namespace Components {
   }
   interface BalTabs {
     /**
+    * If `true` the field expands over the whole width.
+    */
+    'expanded': boolean;
+    /**
     * Select a tab by the value of the tab item.
     */
     'select': (value: string) => Promise<void>;
@@ -468,6 +472,10 @@ declare namespace LocalJSX {
     'value'?: string;
   }
   interface BalTabs {
+    /**
+    * If `true` the field expands over the whole width.
+    */
+    'expanded'?: boolean;
     /**
     * Emitted when the changes has finished.
     */
