@@ -22,8 +22,6 @@ div.bal-radio {
     -ms-user-select: none;
     user-select: none;
     color: $blue;
-    font-size: $size-5;
-    vertical-align: super;
   }
 
   input[type="radio"] + label::before,
