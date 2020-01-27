@@ -8,6 +8,15 @@
 
   .dropdown {
 
+    .dropdown-content {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .dropdown-menu {
+      padding-top: 0;
+    }
+
     .dropdown-trigger {
       button {
         min-width: $dropdown-menu-min-width;
@@ -16,6 +25,12 @@
         border-radius: 0;
         color: $text;
         padding: 0;
+
+        .icon {
+          margin-right: 0;
+          height: 2em;
+          width: 2em;
+        }
 
         &:focus {
           outline: $primary dashed 1px;
