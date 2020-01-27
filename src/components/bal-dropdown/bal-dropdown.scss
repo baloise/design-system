@@ -26,6 +26,10 @@
         color: $text;
         padding: 0;
 
+        span:not(.icon) {
+          font-size: $size-4;
+        }
+
         .icon {
           margin-right: 0;
           height: 2em;
