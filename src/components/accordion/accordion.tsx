@@ -4,7 +4,7 @@ import {Component, Host, h, Prop, State, Watch, Method} from "@stencil/core";
   tag: "bal-accordion",
   shadow: true,
 })
-export class BalAccordion {
+export class Accordion {
 
   @State() isCollapsed: boolean = true;
 

@@ -99,7 +99,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [bal-button](../bal-button)
+- [bal-button](../button)
 
 ### Graph
 ```mermaid
