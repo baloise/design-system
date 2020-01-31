@@ -73,12 +73,6 @@ export class BalDatepicker {
    * The value of the datepicker with the format `dd.MM.yyyy`.
    */
   @Prop() value: string = "";
-
-  /**
-   * Callback to determine which date in the datepicker should be selectable.
-   */
-  @Prop() filter: DateCallback = (_) => true;
-
   @Watch("value")
   valueWatcher(newValue: string) {
     this.isPristine = false;
@@ -86,6 +80,11 @@ export class BalDatepicker {
     this.selectedDate = moment(newValue, BalDatepicker.FORMAT);
     this.pointerDate = moment(newValue, BalDatepicker.FORMAT);
   }
+
+  /**
+   * Callback to determine which date in the datepicker should be selectable.
+   */
+  @Prop() filter: DateCallback = (_) => true;
 
   /**
    * Triggers when the value of the datepicker is changed
