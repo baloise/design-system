@@ -74,7 +74,7 @@ The classic button, in different colors, sizes, and states
 
 ### Used by
 
- - [bal-accordion](../bal-accordion)
+ - [bal-accordion](../accordion)
 
 ### Depends on
 

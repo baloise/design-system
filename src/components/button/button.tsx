@@ -2,10 +2,10 @@ import {Component, h, Prop} from "@stencil/core";
 
 @Component({
   tag: "bal-button",
-  styleUrl: "bal-button.scss",
+  styleUrl: "button.scss",
   shadow: true,
 })
-export class BalButton {
+export class Button {
   /**
    * The theme type of the button. Given by bulma our css framework.
    */
