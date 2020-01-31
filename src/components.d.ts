@@ -44,6 +44,50 @@ export namespace Components {
     'type': | "is-primary"
     | "is-info";
   }
+  interface BalAutocomplete {
+    /**
+    * If `true` the field is disabled
+    */
+    'disabled': boolean;
+    /**
+    * If `true` the field expands over the whole width.
+    */
+    'expanded': boolean;
+    /**
+    * Sets the given value to the input, closes the dropdown and triggers a change event.
+    */
+    'selectItem': (newValue: string) => Promise<void>;
+    /**
+    * The value of the autocomplete.
+    */
+    'value': string;
+  }
+  interface BalAutocompleteItem {
+    /**
+    * Highlights the given text in the value.
+    */
+    'activated': boolean;
+    /**
+    * Highlights the given text in the value.
+    */
+    'highlightedValue': string;
+    /**
+    * Tell's if the item is activated by selection.
+    */
+    'isActive': () => Promise<boolean>;
+    /**
+    * Tell's if the item is highlighted by the search term.
+    */
+    'isDisplayed': () => Promise<boolean>;
+    /**
+    * Tell's if the item is activated by selection.
+    */
+    'isHidden': () => Promise<boolean>;
+    /**
+    * Value of this item, which is also use as a label
+    */
+    'value': string;
+  }
   interface BalButton {
     /**
     * If `true` the button is disabled
@@ -264,6 +308,18 @@ declare global {
     new (): HTMLBalAccordionElement;
   };
 
+  interface HTMLBalAutocompleteElement extends Components.BalAutocomplete, HTMLStencilElement {}
+  var HTMLBalAutocompleteElement: {
+    prototype: HTMLBalAutocompleteElement;
+    new (): HTMLBalAutocompleteElement;
+  };
+
+  interface HTMLBalAutocompleteItemElement extends Components.BalAutocompleteItem, HTMLStencilElement {}
+  var HTMLBalAutocompleteItemElement: {
+    prototype: HTMLBalAutocompleteItemElement;
+    new (): HTMLBalAutocompleteItemElement;
+  };
+
   interface HTMLBalButtonElement extends Components.BalButton, HTMLStencilElement {}
   var HTMLBalButtonElement: {
     prototype: HTMLBalButtonElement;
@@ -325,6 +381,8 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'bal-accordion': HTMLBalAccordionElement;
+    'bal-autocomplete': HTMLBalAutocompleteElement;
+    'bal-autocomplete-item': HTMLBalAutocompleteItemElement;
     'bal-button': HTMLBalButtonElement;
     'bal-datepicker': HTMLBalDatepickerElement;
     'bal-dropdown': HTMLBalDropdownElement;
@@ -349,6 +407,50 @@ declare namespace LocalJSX {
     */
     'type'?: | "is-primary"
     | "is-info";
+  }
+  interface BalAutocomplete {
+    /**
+    * If `true` the field is disabled
+    */
+    'disabled'?: boolean;
+    /**
+    * If `true` the field expands over the whole width.
+    */
+    'expanded'?: boolean;
+    /**
+    * Emitted when the toggle loses focus.
+    */
+    'onBalBlur'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the checked property has changed.
+    */
+    'onBalChange'?: (event: CustomEvent<string>) => void;
+    /**
+    * Emitted when the toggle has focus..
+    */
+    'onBalFocus'?: (event: CustomEvent<void>) => void;
+    /**
+    * The value of the autocomplete.
+    */
+    'value'?: string;
+  }
+  interface BalAutocompleteItem {
+    /**
+    * Highlights the given text in the value.
+    */
+    'activated'?: boolean;
+    /**
+    * Highlights the given text in the value.
+    */
+    'highlightedValue'?: string;
+    /**
+    * Click event of the dropdown item.
+    */
+    'onBalClick'?: (event: CustomEvent<any>) => void;
+    /**
+    * Value of this item, which is also use as a label
+    */
+    'value'?: string;
   }
   interface BalButton {
     /**
@@ -528,6 +630,8 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'bal-accordion': BalAccordion;
+    'bal-autocomplete': BalAutocomplete;
+    'bal-autocomplete-item': BalAutocompleteItem;
     'bal-button': BalButton;
     'bal-datepicker': BalDatepicker;
     'bal-dropdown': BalDropdown;
@@ -548,6 +652,8 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'bal-accordion': LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
+      'bal-autocomplete': LocalJSX.BalAutocomplete & JSXBase.HTMLAttributes<HTMLBalAutocompleteElement>;
+      'bal-autocomplete-item': LocalJSX.BalAutocompleteItem & JSXBase.HTMLAttributes<HTMLBalAutocompleteItemElement>;
       'bal-button': LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
       'bal-datepicker': LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
       'bal-dropdown': LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;

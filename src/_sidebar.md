@@ -23,8 +23,11 @@
 - **Components**
 
   - [Accordion](components/bal-accordion/readme.md)
+  - [Autocomplete](components/autocomplete/readme.md)
+    - [Autocomplete-Item](components/autocomplete-item/readme.md)
   - [Button](components/bal-button/readme.md)
   - [Dropdown](components/bal-dropdown/readme.md)
+    - [Dropdown-Item](components/bal-dropdown-item/readme.md)
   - [Spinner](components/bal-spinner/readme.md)
   - [Tabs](components/tabs/readme.md)
     - [Tab-Item](components/tab-item/readme.md)

@@ -1,0 +1,10 @@
+@import "../../scss/bal-ui-library.globals";
+@import "../bal-dropdown-item/bal-dropdown-item";
+
+:host {
+  display: block;
+}
+
+.highlight {
+  font-weight: $weight-bold;
+}

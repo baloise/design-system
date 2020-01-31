@@ -9,8 +9,8 @@
   .dropdown {
 
     .dropdown-content {
-      padding-top: 10px;
-      padding-bottom: 10px;
+      overflow: scroll;
+      max-height: 220px;
     }
 
     .dropdown-menu {

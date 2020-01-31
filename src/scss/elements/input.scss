@@ -19,12 +19,18 @@ $input-disabled-placeholder-color: $blue-light-text;
   border-left: none;
   border-right: none;
   border-width: 1px;
+  border-radius: 0;
+  box-shadow: none;
   padding: 1px 0 2px 0;
   font-size: $size-4;
+  outline: none;
+  color: $text;
 
   &:focus {
     border-width: 2px;
+    border-color: $blue;
     padding: 1px 0 1px 0;
+    box-shadow: none;
   }
 
   &:disabled {
