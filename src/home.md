@@ -22,7 +22,7 @@ Then you can use the element anywhere in your template, JSX, html etc
 <!-- The snippet.plugin looks for the html lang, so to avoid that we use xml here -->
 
 ```xml
-<script src='node_modules/bal-ui-library/dist/bal-ui-library.js'></script>
+<script src="https://bal-ui-library.hirsch.now.sh/build/bal-ui-library.js"></script>
 ```
 
 Put the below style reference in the head of your index.html.
@@ -30,7 +30,7 @@ Put the below style reference in the head of your index.html.
 <!-- The snippet.plugin looks for the html lang, so to avoid that we use xml here -->
 
 ```xml
-<link rel="stylesheet" href="node_modules/bal-ui-library/dist/bal-ui-library/bal-ui-library.css" />
+<link rel="stylesheet" href="https://bal-ui-library.hirsch.now.sh/build/bal-ui-library.css" />
 ```
 
 ## Sass
