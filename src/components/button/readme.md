@@ -78,7 +78,7 @@ The classic button, in different colors, sizes, and states
 
 ### Depends on
 
-- [bal-spinner](../bal-spinner)
+- [bal-spinner](../spinner)
 
 ### Graph
 ```mermaid

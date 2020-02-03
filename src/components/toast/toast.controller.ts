@@ -6,7 +6,7 @@ interface ToastOptions {
   type?: | "is-primary" | "is-info" | "is-success" | "is-warning" | "is-danger";
 }
 
-class BalToastController {
+class ToastController {
   create(options: ToastOptions): HTMLBalToastElement {
     const toast: HTMLBalToastElement = document.createElement("bal-toast");
     toast.message = options.message;
@@ -16,4 +16,4 @@ class BalToastController {
   }
 }
 
-export const balToastController = new BalToastController();
+export const balToastController = new ToastController();

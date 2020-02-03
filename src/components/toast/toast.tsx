@@ -2,10 +2,10 @@ import {Component, Host, h, Prop, Method, Element, State} from "@stencil/core";
 
 @Component({
   tag: "bal-toast",
-  styleUrl: "bal-toast.scss",
+  styleUrl: "toast.scss",
   shadow: true,
 })
-export class BalToast {
+export class Toast {
   timer: NodeJS.Timer;
   @Element() element: HTMLBalToastElement;
   @State() animationClass = "fadeInDown";

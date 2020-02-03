@@ -2,9 +2,9 @@ import {Component, Host, h, Prop} from "@stencil/core";
 
 @Component({
   tag: "bal-field",
-  styleUrl: "bal-field.scss",
+  styleUrl: "field.scss",
 })
-export class BalField {
+export class Field {
 
   /**
    * Label text

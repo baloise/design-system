@@ -2,10 +2,10 @@ import { Component, Host, h } from "@stencil/core";
 
 @Component({
   tag: "bal-spinner",
-  styleUrl: "bal-spinner.scss",
+  styleUrl: "spinner.scss",
   shadow: true,
 })
-export class BalSpinner {
+export class Spinner {
   render() {
     return (
       <Host>

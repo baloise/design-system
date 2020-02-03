@@ -10,7 +10,7 @@
   - [Datepicker](components/datepicker/readme.md)
   - [Dropdown](components/dropdown/readme.md)
     - [Dropdown Option](components/dropdown-option/readme.md)
-  - [Field](components/bal-field/readme.md)
+  - [Field](src/components/field/readme.md)
   - [Input](docs/elements/input.md)
   - [Radio](docs/elements/radio.md)
   - [Typeahead](components/dropdown/readme.md?id=typeahead)
@@ -27,11 +27,11 @@
 
   - [Accordion](components/accordion/readme.md)
   - [Button](components/button/readme.md)
-  - [Spinner](components/bal-spinner/readme.md)
+  - [Spinner](components/spinner/readme.md)
   - [Tabs](components/tabs/readme.md)
     - [Tab-Item](components/tab-item/readme.md)
-  - [Tag](components/bal-tag/readme.md)
-  - [Toast](components/bal-toast/readme.md)
+  - [Tag](components/tag/readme.md)
+  - [Toast](components/toast/readme.md)
 
 - **Development**
 

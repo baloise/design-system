@@ -2,10 +2,10 @@ import {Component, h, Host, Prop} from "@stencil/core";
 
 @Component({
   tag: "bal-tag",
-  styleUrl: "bal-tag.scss",
+  styleUrl: "tag.scss",
   shadow: true,
 })
-export class BalTag {
+export class Tag {
   /**
    * The theme type of the tag. Given by bulma our css framework.
    */
