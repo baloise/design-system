@@ -31,6 +31,24 @@ export class Field {
    */
   @Prop() iconLeft: string = "";
 
+  get buildIconLeftTemplate() {
+    if (this.iconLeft) {
+      return (
+        <bal-icon name={this.iconLeft} isLeft={true} size="small"/>
+      );
+    }
+    return ("");
+  }
+
+  get buildIconRightTemplate() {
+    if (this.iconRight) {
+      return (
+        <bal-icon name={this.iconRight} isRight={true} size="small"/>
+      );
+    }
+    return ("");
+  }
+
   render() {
     return (
       <Host>
@@ -39,15 +57,8 @@ export class Field {
           <div
             class={"control" + (this.iconLeft ? " has-icons-left" : "") + (this.iconRight ? " has-icons-right" : "")}>
             <slot></slot>
-
-            {this.iconLeft ? <span class="icon is-small is-left">
-              <i class={this.iconLeft}></i>
-              </span> : ""}
-
-            {this.iconRight ? <span class="icon is-small is-right">
-              <i class={this.iconRight}></i>
-              </span> : ""}
-
+            {this.buildIconLeftTemplate}
+            {this.buildIconRightTemplate}
           </div>
           <p class="help is-danger">{this.validationMessage}</p>
         </div>

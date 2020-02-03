@@ -114,7 +114,7 @@ export class Dropdown {
    * Defines the trigger icon on the right site.
    */
   @Prop()
-  triggerIcon = "bal-icon-caret-down";
+  triggerIcon = "caret-down";
 
   /**
    * Emitted when the checked property has changed.
@@ -330,10 +330,10 @@ export class Dropdown {
                      onFocus={this.balFocus.emit.bind(this)}
                      ref={el => this.inputElement = el as HTMLInputElement}
               />
-              <span class="icon is-small is-right"
-                    style={{display: this.triggerIcon && !this.typeahead ? "flex" : "none"}}>
-                <i class={this.triggerIcon}></i>
-              </span>
+              <bal-icon size="small"
+                        name={this.triggerIcon}
+                        isRight={true}
+                        style={{display: this.triggerIcon && !this.typeahead ? "flex" : "none"}} />
             </div>
           </div>
           <div class="dropdown-menu" role="menu">

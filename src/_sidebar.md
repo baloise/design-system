@@ -10,7 +10,7 @@
   - [Datepicker](components/datepicker/readme.md)
   - [Dropdown](components/dropdown/readme.md)
     - [Dropdown Option](components/dropdown-option/readme.md)
-  - [Field](src/components/field/readme.md)
+  - [Field](components/field/readme.md)
   - [Input](docs/elements/input.md)
   - [Radio](docs/elements/radio.md)
   - [Typeahead](components/dropdown/readme.md?id=typeahead)
@@ -19,7 +19,6 @@
 
   - [Box](docs/elements/box.md)
   - [Content](docs/elements/content.md)
-  - [Icons](docs/elements/icon.md)
   - [Image](docs/elements/image.md)
   - [Title](docs/elements/title.md)
 
@@ -27,6 +26,7 @@
 
   - [Accordion](components/accordion/readme.md)
   - [Button](components/button/readme.md)
+  - [Icon](components/icon/readme.md)
   - [Spinner](components/spinner/readme.md)
   - [Tabs](components/tabs/readme.md)
     - [Tab-Item](components/tab-item/readme.md)

@@ -1,8 +1,14 @@
 @import "node_modules/bulma/sass/elements/icon.sass";
 @import "bal-icons";
 
+:host {
+  display: block;
+}
+
 .icon i[class*=bal-icon] {
   width: inherit;
   height: inherit;
   background-size: contain;
 }
+
+

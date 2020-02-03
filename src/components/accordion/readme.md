@@ -35,15 +35,11 @@ Use the `trigger` slot to define the label of the trigger
 ```html
 <bal-accordion class="box">
     <span slot="trigger-open" class="accordion-trigger">
-        <span class="icon">
-            <i class="bal-icon-plus"></i>
-        </span>
+        <bal-icon name="plus" />
         <span>Open</span>
     </span>
     <span slot="trigger-close" class="accordion-trigger">
-        <span class="icon">
-            <i class="bal-icon-minus"></i>
-        </span>
+        <bal-icon name="minus" />
         <span>Close</span>
     </span>
     <p class="is-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>

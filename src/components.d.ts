@@ -223,6 +223,18 @@ export namespace Components {
     */
     'validationMessage': string;
   }
+  interface BalIcon {
+    'isLeft': boolean;
+    'isRight': boolean;
+    /**
+    * The name of the icon without the bal-icon prefix.
+    */
+    'name': string;
+    /**
+    * Defines the size of the icon.
+    */
+    'size': "small" | "medium" | "large" | "";
+  }
   interface BalSpinner {}
   interface BalTabItem {
     /**
@@ -330,6 +342,12 @@ declare global {
     new (): HTMLBalFieldElement;
   };
 
+  interface HTMLBalIconElement extends Components.BalIcon, HTMLStencilElement {}
+  var HTMLBalIconElement: {
+    prototype: HTMLBalIconElement;
+    new (): HTMLBalIconElement;
+  };
+
   interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {}
   var HTMLBalSpinnerElement: {
     prototype: HTMLBalSpinnerElement;
@@ -366,6 +384,7 @@ declare global {
     'bal-dropdown': HTMLBalDropdownElement;
     'bal-dropdown-option': HTMLBalDropdownOptionElement;
     'bal-field': HTMLBalFieldElement;
+    'bal-icon': HTMLBalIconElement;
     'bal-spinner': HTMLBalSpinnerElement;
     'bal-tab-item': HTMLBalTabItemElement;
     'bal-tabs': HTMLBalTabsElement;
@@ -549,6 +568,18 @@ declare namespace LocalJSX {
     */
     'validationMessage'?: string;
   }
+  interface BalIcon {
+    'isLeft'?: boolean;
+    'isRight'?: boolean;
+    /**
+    * The name of the icon without the bal-icon prefix.
+    */
+    'name'?: string;
+    /**
+    * Defines the size of the icon.
+    */
+    'size'?: "small" | "medium" | "large" | "";
+  }
   interface BalSpinner {}
   interface BalTabItem {
     /**
@@ -607,6 +638,7 @@ declare namespace LocalJSX {
     'bal-dropdown': BalDropdown;
     'bal-dropdown-option': BalDropdownOption;
     'bal-field': BalField;
+    'bal-icon': BalIcon;
     'bal-spinner': BalSpinner;
     'bal-tab-item': BalTabItem;
     'bal-tabs': BalTabs;
@@ -627,6 +659,7 @@ declare module "@stencil/core" {
       'bal-dropdown': LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
       'bal-dropdown-option': LocalJSX.BalDropdownOption & JSXBase.HTMLAttributes<HTMLBalDropdownOptionElement>;
       'bal-field': LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
+      'bal-icon': LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
       'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
       'bal-tab-item': LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
       'bal-tabs': LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

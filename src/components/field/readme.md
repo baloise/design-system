@@ -21,7 +21,7 @@ All generic form field, designed for consistency
 ## Icons
 
 ```html
-<bal-field label="Lastname" icon-left="bal-icon-account" icon-right="bal-icon-check">
+<bal-field label="Lastname" icon-left="account" icon-right="check">
     <input class="input" placeholder="Enter lastname here" />
 </bal-field>
 ```
@@ -40,6 +40,19 @@ All generic form field, designed for consistency
 | `required`          | `required`           | If `true` a asterix (*) is added to the label text | `boolean` | `false` |
 | `validationMessage` | `validation-message` | Validation message text                            | `string`  | `""`    |
 
+
+## Dependencies
+
+### Depends on
+
+- [bal-icon](../icon)
+
+### Graph
+```mermaid
+graph TD;
+  bal-field --> bal-icon
+  style bal-field fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

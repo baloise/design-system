@@ -62,16 +62,16 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                                 | Type      | Default                 |
-| ------------- | -------------- | ----------------------------------------------------------- | --------- | ----------------------- |
-| `disabled`    | `disabled`     | If `true`, the user cannot interact with the input.         | `boolean` | `false`                 |
-| `expanded`    | `expanded`     | If `true`, the component uses the whole width.              | `boolean` | `false`                 |
-| `fixed`       | `fixed`        | If `true`, the height of the dropdown content is fixed.     | `boolean` | `true`                  |
-| `placeholder` | `placeholder`  | Instructional text that shows before the input has a value. | `string`  | `""`                    |
-| `readonly`    | `readonly`     | If `true`, the user cannot interact with the input.         | `boolean` | `false`                 |
-| `triggerIcon` | `trigger-icon` | Defines the trigger icon on the right site.                 | `string`  | `"bal-icon-caret-down"` |
-| `typeahead`   | `typeahead`    | If `true`, the use can search for the option.               | `boolean` | `false`                 |
-| `value`       | --             | The value of the selected dropdown item.                    | `Option`  | `null`                  |
+| Property      | Attribute      | Description                                                 | Type      | Default        |
+| ------------- | -------------- | ----------------------------------------------------------- | --------- | -------------- |
+| `disabled`    | `disabled`     | If `true`, the user cannot interact with the input.         | `boolean` | `false`        |
+| `expanded`    | `expanded`     | If `true`, the component uses the whole width.              | `boolean` | `false`        |
+| `fixed`       | `fixed`        | If `true`, the height of the dropdown content is fixed.     | `boolean` | `true`         |
+| `placeholder` | `placeholder`  | Instructional text that shows before the input has a value. | `string`  | `""`           |
+| `readonly`    | `readonly`     | If `true`, the user cannot interact with the input.         | `boolean` | `false`        |
+| `triggerIcon` | `trigger-icon` | Defines the trigger icon on the right site.                 | `string`  | `"caret-down"` |
+| `typeahead`   | `typeahead`    | If `true`, the use can search for the option.               | `boolean` | `false`        |
+| `value`       | --             | The value of the selected dropdown item.                    | `Option`  | `null`         |
 
 
 ## Events
@@ -142,9 +142,14 @@ Type: `Promise<void>`
 
  - [bal-datepicker](../datepicker)
 
+### Depends on
+
+- [bal-icon](../icon)
+
 ### Graph
 ```mermaid
 graph TD;
+  bal-dropdown --> bal-icon
   bal-datepicker --> bal-dropdown
   style bal-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```

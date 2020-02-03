@@ -87,11 +87,14 @@ Type: `Promise<void>`
 ### Depends on
 
 - [bal-dropdown](../dropdown)
+- [bal-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
   bal-datepicker --> bal-dropdown
+  bal-datepicker --> bal-icon
+  bal-dropdown --> bal-icon
   style bal-datepicker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

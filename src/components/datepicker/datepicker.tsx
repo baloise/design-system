@@ -26,7 +26,6 @@ export type DateCallback = (date: string) => boolean;
 export class Datepicker {
   static FORMAT = "DD.MM.YYYY";
 
-  inputElement!: HTMLInputElement;
   dropDownElement!: HTMLBalDropdownElement;
   now: moment.Moment = moment().startOf("day");
 
@@ -72,12 +71,11 @@ export class Datepicker {
   /**
    * The value of the datepicker with the format `dd.MM.yyyy`.
    */
-  @Prop() value: string = "";
+  @Prop({mutable: true}) value: string = "";
 
   @Watch("value")
   valueWatcher(newValue: string) {
     this.isPristine = false;
-    this.inputElement.value = newValue;
     this.selectedDate = moment(newValue, Datepicker.FORMAT);
     this.pointerDate = moment(newValue, Datepicker.FORMAT);
   }
@@ -203,7 +201,7 @@ export class Datepicker {
       this.selectedDate = moment(cell.date);
       this.pointerDate = moment(cell.date);
       this.balChangeEventEmitter.emit(this.selectedDate.format(Datepicker.FORMAT));
-      this.inputElement.value = this.selectedDate.format(Datepicker.FORMAT);
+      this.value = this.selectedDate.format(Datepicker.FORMAT);
       await this.close();
     }
   }
@@ -218,7 +216,7 @@ export class Datepicker {
                         readonly={true}
                         disabled={this.disabled}
                         placeholder={this.placeholder}
-                        triggerIcon={"bal-icon-date"}
+                        triggerIcon={"date"}
                         ref={el => this.dropDownElement = el as HTMLBalDropdownElement}>
             <div class="datepicker-popup">
               <header class="datepicker-header">
@@ -226,16 +224,12 @@ export class Datepicker {
                   <a role="button"
                      onClick={() => this.previousMonth()}
                      class="pagination-previous">
-                    <span class="icon has-text-primary is-large">
-                      <i class="bal-icon-nav-go-left"></i>
-                    </span>
+                    <bal-icon name="nav-go-left" size="large" />
                   </a>
                   <a role="button"
                      onClick={() => this.nextMonth()}
                      class="pagination-next">
-                    <span class="icon has-text-primary is-large">
-                      <i class="bal-icon-nav-go-right"></i>
-                    </span>
+                    <bal-icon name="nav-go-right" size="large" />
                   </a>
                   <div class="pagination-list">
                     <div class="field has-addons">
