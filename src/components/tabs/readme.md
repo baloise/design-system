@@ -41,7 +41,7 @@ Simple responsive horizontal navigation tabs.
 
 ### `select(value: string) => Promise<void>`
 
-Select a tab by the value of the tab item.
+Dropdown a tab by the value of the tab item.
 
 #### Returns
 

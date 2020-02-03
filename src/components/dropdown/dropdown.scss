@@ -1,0 +1,50 @@
+@import "dropdown.vars";
+@import "node_modules/bulma/sass/components/dropdown.sass";
+@import "node_modules/bulma/sass/form/all";
+@import "../../scss/elements/input";
+@import "../../scss/elements/icon";
+
+:host {
+  display: block;
+
+  .dropdown {
+
+    .dropdown-trigger i.bal-icon-caret-down {
+      transition-duration: 0.5s;
+    }
+
+    &.is-active .dropdown-trigger i.bal-icon-caret-down {
+      transform: rotate(180deg);
+    }
+
+    &.is-fixed .dropdown-content {
+      overflow-y: auto;
+      max-height: 220px;
+      padding: 0;
+    }
+
+    .dropdown-menu {
+      padding-top: 0;
+    }
+
+    &:not(.is-typeahead) {
+      .dropdown-trigger {
+        .input {
+          cursor: pointer;
+        }
+      }
+    }
+
+    &.is-fullwidth, &.is-fullwidth .dropdown-trigger {
+      width: 100%;
+    }
+  }
+
+  .no-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}

@@ -54,9 +54,9 @@ You can limit the date range with min-date and max-date props.
 
 ## Events
 
-| Event   | Description                                          | Type                  |
-| ------- | ---------------------------------------------------- | --------------------- |
-| `input` | Triggers when the value of the datepicker is changed | `CustomEvent<string>` |
+| Event       | Description                                          | Type                  |
+| ----------- | ---------------------------------------------------- | --------------------- |
+| `balChange` | Triggers when the value of the datepicker is changed | `CustomEvent<string>` |
 
 
 ## Methods
@@ -86,7 +86,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [bal-dropdown](../bal-dropdown)
+- [bal-dropdown](../dropdown)
 
 ### Graph
 ```mermaid

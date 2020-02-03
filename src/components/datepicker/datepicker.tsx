@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Prop, Watch, Event, EventEmitter, Method } from "@stencil/core";
+import {Component, Host, h, State, Prop, Watch, Event, EventEmitter, Method} from "@stencil/core";
 import moment from "moment";
 import {i18n} from "./i18n";
 
@@ -21,9 +21,9 @@ export type DateCallback = (date: string) => boolean;
 
 @Component({
   tag: "bal-datepicker",
-  styleUrl: "bal-datepicker.scss",
+  styleUrl: "datepicker.scss",
 })
-export class BalDatepicker {
+export class Datepicker {
   static FORMAT = "DD.MM.YYYY";
 
   inputElement!: HTMLInputElement;
@@ -73,12 +73,13 @@ export class BalDatepicker {
    * The value of the datepicker with the format `dd.MM.yyyy`.
    */
   @Prop() value: string = "";
+
   @Watch("value")
   valueWatcher(newValue: string) {
     this.isPristine = false;
     this.inputElement.value = newValue;
-    this.selectedDate = moment(newValue, BalDatepicker.FORMAT);
-    this.pointerDate = moment(newValue, BalDatepicker.FORMAT);
+    this.selectedDate = moment(newValue, Datepicker.FORMAT);
+    this.pointerDate = moment(newValue, Datepicker.FORMAT);
   }
 
   /**
@@ -90,18 +91,18 @@ export class BalDatepicker {
    * Triggers when the value of the datepicker is changed
    */
   @Event({
-    eventName: "input",
+    eventName: "balChange",
     composed: true,
     cancelable: true,
     bubbles: true,
-  }) inputEventEmitter!: EventEmitter<string>;
+  }) balChangeEventEmitter!: EventEmitter<string>;
 
   componentWillLoad() {
     moment.locale(this.language);
     if (this.value) {
       this.isPristine = false;
-      this.selectedDate = moment(this.value, BalDatepicker.FORMAT);
-      this.pointerDate = moment(this.value, BalDatepicker.FORMAT);
+      this.selectedDate = moment(this.value, Datepicker.FORMAT);
+      this.pointerDate = moment(this.value, Datepicker.FORMAT);
     }
     if (!this.minYear) {
       this.minYear = moment(this.now).subtract(100, "years").year().toString();
@@ -142,11 +143,11 @@ export class BalDatepicker {
   }
 
   get parsedMaxDate(): moment.Moment {
-    return moment(this.maxDate, BalDatepicker.FORMAT).startOf("day");
+    return moment(this.maxDate, Datepicker.FORMAT).startOf("day");
   }
 
   get parsedMinDate(): moment.Moment {
-    return moment(this.minDate, BalDatepicker.FORMAT).startOf("day");
+    return moment(this.minDate, Datepicker.FORMAT).startOf("day");
   }
 
   get firstDateOfBox(): moment.Moment {
@@ -162,11 +163,11 @@ export class BalDatepicker {
       do {
         row = [...row, {
           date: moment(dayDatePointer),
-          dateString: dayDatePointer.format(BalDatepicker.FORMAT),
+          dateString: dayDatePointer.format(Datepicker.FORMAT),
           label: dayDatePointer.date().toString(),
           isToday: this.now.isSame(dayDatePointer),
           isSelected: !this.isPristine && this.selectedDate.isSame(dayDatePointer),
-          isDisabled: !this.filter(dayDatePointer.format(BalDatepicker.FORMAT)),
+          isDisabled: !this.filter(dayDatePointer.format(Datepicker.FORMAT)),
           isOutdated: !this.pointerDate.isSame(dayDatePointer, "month")
             || (this.minDate && dayDatePointer < this.parsedMinDate)
             || (this.maxDate && dayDatePointer > this.parsedMaxDate),
@@ -201,8 +202,8 @@ export class BalDatepicker {
       this.isPristine = false;
       this.selectedDate = moment(cell.date);
       this.pointerDate = moment(cell.date);
-      this.inputEventEmitter.emit(this.selectedDate.format(BalDatepicker.FORMAT));
-      this.inputElement.value = this.selectedDate.format(BalDatepicker.FORMAT);
+      this.balChangeEventEmitter.emit(this.selectedDate.format(Datepicker.FORMAT));
+      this.inputElement.value = this.selectedDate.format(Datepicker.FORMAT);
       await this.close();
     }
   }
@@ -211,33 +212,27 @@ export class BalDatepicker {
     return (
       <Host>
         <div class="datepicker control">
-          <bal-dropdown expanded ref={el => this.dropDownElement = el as HTMLBalDropdownElement}>
-            <div slot="trigger" class="control has-icons-right is-clearfix clickable">
-              <input type="text"
-                value={this.value}
-                disabled={this.disabled}
-                autocomplete="off"
-                placeholder={this.placeholder}
-                readonly="readonly"
-                ref={el => this.inputElement = el as HTMLInputElement}
-                class="input" />
-              <span class="icon is-right">
-                <i class="bal-icon-date"></i>
-              </span>
-            </div>
+          <bal-dropdown expanded
+                        fixed={false}
+                        value={{value: this.value, label: this.value}}
+                        readonly={true}
+                        disabled={this.disabled}
+                        placeholder={this.placeholder}
+                        triggerIcon={"bal-icon-date"}
+                        ref={el => this.dropDownElement = el as HTMLBalDropdownElement}>
             <div class="datepicker-popup">
               <header class="datepicker-header">
                 <div class="pagination field is-centered">
                   <a role="button"
-                    onClick={() => this.previousMonth()}
-                    class="pagination-previous">
+                     onClick={() => this.previousMonth()}
+                     class="pagination-previous">
                     <span class="icon has-text-primary is-large">
                       <i class="bal-icon-nav-go-left"></i>
                     </span>
                   </a>
                   <a role="button"
-                    onClick={() => this.nextMonth()}
-                    class="pagination-next">
+                     onClick={() => this.nextMonth()}
+                     class="pagination-next">
                     <span class="icon has-text-primary is-large">
                       <i class="bal-icon-nav-go-right"></i>
                     </span>
@@ -248,7 +243,7 @@ export class BalDatepicker {
                         <select onInput={(event) => this.handleMonthSelect(event)}>
                           {moment.months().map((month, index) =>
                             <option value={index}
-                              selected={this.pointerDate.month() === index}>
+                                    selected={this.pointerDate.month() === index}>
                               {month}
                             </option>,
                           )}
@@ -258,7 +253,7 @@ export class BalDatepicker {
                         <select onInput={(event) => this.handleYearSelect(event)}>
                           {this.years.map((year) =>
                             <option value={year}
-                              selected={this.pointerDate.year() === year}>
+                                    selected={this.pointerDate.year() === year}>
                               {year}
                             </option>,
                           )}

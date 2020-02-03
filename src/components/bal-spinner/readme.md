@@ -29,7 +29,7 @@ A simple loading spinner.
 
 ### Used by
 
- - [bal-button](../bal-button)
+ - [bal-button](../button)
 
 ### Graph
 ```mermaid
