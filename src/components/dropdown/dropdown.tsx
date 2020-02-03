@@ -21,15 +21,21 @@ export class Dropdown {
 
   @Watch("isActive")
   async isActiveWatcher(newIsActive: boolean) {
-    if (newIsActive && this.typeahead) {
-      this.activeItemIndex = 0;
-      this.isPristine = true;
-      const items = this.children;
-      if (items.length > 0) {
-        const firstVisibleItemIndex = (await this.childrenWithHiddenState).indexOf(false);
-        this.activeItemIndex = firstVisibleItemIndex;
-        items.forEach((child, index) =>
-          child.activated = index === firstVisibleItemIndex);
+    if (newIsActive) {
+      if (this.typeahead) {
+        this.activeItemIndex = 0;
+        this.isPristine = true;
+        const items = this.children;
+        if (items.length > 0) {
+          const firstVisibleItemIndex = (await this.childrenWithHiddenState).indexOf(false);
+          this.activeItemIndex = firstVisibleItemIndex;
+          items.forEach((child, index) =>
+            child.activated = index === firstVisibleItemIndex);
+        }
+      } else {
+        if (this.value) {
+          this.activeItemIndex = (await this.childrenWithActivatedState).indexOf(true);
+        }
       }
     }
   }
@@ -187,6 +193,14 @@ export class Dropdown {
     return Promise.all(this.children.map(child => child.isHidden()));
   }
 
+  get childrenWithActivatedState(): Promise<boolean[]> {
+    return Promise.all(this.children.map(child => child.activated));
+  }
+
+  get childrenWithValue(): Promise<any[]> {
+    return Promise.all(this.children.map(child => child.value));
+  }
+
   updateActivatedOptions() {
     this.children
       .forEach(child => child.activated = child.value === this.selectedOption.value);
@@ -203,7 +217,7 @@ export class Dropdown {
       const inputValue = (event.target as HTMLInputElement).value;
       this.isActive = !!inputValue;
       const children = this.children;
-      if (children && children.length > 0) {
+      if (this.typeahead && children && children.length > 0) {
         children.forEach(child => child.highlight = inputValue);
       }
       this.hasNoData = (await this.childrenWithHiddenState).every(hidden => hidden === true);
@@ -234,13 +248,18 @@ export class Dropdown {
   }
 
   async getNextItem(): Promise<number> {
+    let hasSetIndex = false;
     let nextIndex;
+    if (this.activeItemIndex >= 0) {
+      nextIndex = this.activeItemIndex;
+    }
     (await this.childrenWithHiddenState).forEach((isHidden, index) => {
-      if (index > this.activeItemIndex && !isHidden && nextIndex === undefined) {
+      if (index > this.activeItemIndex && !isHidden && !hasSetIndex) {
         nextIndex = index;
+        hasSetIndex = true;
       }
     });
-    return nextIndex || this.activeItemIndex;
+    return nextIndex;
   }
 
   async getPreviousItem(): Promise<number> {
@@ -263,7 +282,7 @@ export class Dropdown {
       }
 
       const scrollPuffer = this.element.offsetTop + 45;
-      const activeChild = children[this.activeItemIndex];
+      const activeChild = children[this.activeItemIndex] || children[0];
       const visMin = this.dropdownContentElement.scrollTop + scrollPuffer;
       const visMax = this.dropdownContentElement.scrollTop + scrollPuffer
         + this.dropdownContentElement.clientHeight - activeChild.clientHeight;
