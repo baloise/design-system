@@ -2,10 +2,10 @@ import {Component, Host, h, State, Prop, Watch, Event, EventEmitter, Method} fro
 import moment from "moment";
 import {i18n} from "./i18n";
 
-moment.defineLocale("it", i18n.it);
-moment.defineLocale("fr", i18n.fr);
-moment.defineLocale("en", i18n.en);
-moment.defineLocale("de", i18n.de);
+moment.updateLocale("it", i18n.it);
+moment.updateLocale("fr", i18n.fr);
+moment.updateLocale("en", i18n.en);
+moment.updateLocale("de", i18n.de);
 
 interface CalendarCell {
   date: moment.Moment;
