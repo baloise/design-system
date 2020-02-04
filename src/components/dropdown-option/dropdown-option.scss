@@ -16,6 +16,10 @@
   background: transparent;
   cursor: pointer;
 
+  span {
+    font-family: $family-primary;
+  }
+
   &:hover, &:focus {
     background: $dropdown-item-hover-background-color;
   }

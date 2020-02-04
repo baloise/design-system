@@ -2,7 +2,6 @@
 @import "node_modules/bulma/sass/components/dropdown.sass";
 @import "node_modules/bulma/sass/form/all";
 @import "../../scss/elements/input";
-// @import "../../scss/elements/icon";
 
 :host {
   display: block;
@@ -25,6 +24,10 @@
 
     .dropdown-menu {
       padding-top: 0;
+    }
+
+    .dropdown-trigger input {
+      font-family: $family-primary;
     }
 
     &:not(.is-typeahead) {
