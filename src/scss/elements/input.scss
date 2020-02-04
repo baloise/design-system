@@ -26,7 +26,7 @@ $input-disabled-placeholder-color: $blue-light-text;
   outline: none;
   color: $text;
 
-  &:focus {
+  &:focus, &.is-focused {
     border-width: 2px;
     border-color: $blue;
     padding: 1px 0 1px 0;

@@ -319,7 +319,10 @@ export class Dropdown {
               "control",
               this.triggerIcon && !this.typeahead ? "has-icons-right" : "",
             ].join(" ")}>
-              <input class="input"
+              <input class={[
+                "input",
+                this.isActive ? "is-focused" : "",
+              ].join(" ")}
                      autocomplete="off"
                      disabled={this.disabled}
                      readOnly={this.readonly || !this.typeahead}
@@ -333,7 +336,7 @@ export class Dropdown {
               <bal-icon size="small"
                         name={this.triggerIcon}
                         isRight={true}
-                        style={{display: this.triggerIcon && !this.typeahead ? "flex" : "none"}} />
+                        style={{display: this.triggerIcon && !this.typeahead ? "flex" : "none"}}/>
             </div>
           </div>
           <div class="dropdown-menu" role="menu">
