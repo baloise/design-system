@@ -27,6 +27,14 @@ export namespace Components {
     */
     'close': () => Promise<void>;
     /**
+    * Bal-Icon of the close trigger button
+    */
+    'closeIcon': string;
+    /**
+    * Label of the close trigger button
+    */
+    'closeLabel': string;
+    /**
     * Controls if the accordion is collapsed or not
     */
     'collapsed': boolean;
@@ -34,6 +42,14 @@ export namespace Components {
     * Open the accordion
     */
     'open': () => Promise<void>;
+    /**
+    * Bal-Icon of the open trigger button
+    */
+    'openIcon': string;
+    /**
+    * Label of the open trigger button
+    */
+    'openLabel': string;
     /**
     * Triggers the accordion
     */
@@ -396,9 +412,25 @@ declare global {
 declare namespace LocalJSX {
   interface BalAccordion {
     /**
+    * Bal-Icon of the close trigger button
+    */
+    'closeIcon'?: string;
+    /**
+    * Label of the close trigger button
+    */
+    'closeLabel'?: string;
+    /**
     * Controls if the accordion is collapsed or not
     */
     'collapsed'?: boolean;
+    /**
+    * Bal-Icon of the open trigger button
+    */
+    'openIcon'?: string;
+    /**
+    * Label of the open trigger button
+    */
+    'openLabel'?: string;
     /**
     * Type defines the theme of the accordion toggle
     */

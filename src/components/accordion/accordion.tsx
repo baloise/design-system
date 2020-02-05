@@ -2,6 +2,7 @@ import {Component, Host, h, Prop, State, Watch, Method} from "@stencil/core";
 
 @Component({
   tag: "bal-accordion",
+  styleUrl: "accordion.scss",
   shadow: true,
 })
 export class Accordion {
@@ -24,6 +25,26 @@ export class Accordion {
   validateCollapsed(newValue: boolean) {
     this.isCollapsed = newValue;
   }
+
+  /**
+   * Label of the open trigger button
+   */
+  @Prop() openLabel = "";
+
+  /**
+   * Bal-Icon of the open trigger button
+   */
+  @Prop() openIcon = "plus";
+
+  /**
+   * Label of the close trigger button
+   */
+  @Prop() closeLabel = "";
+
+  /**
+   * Bal-Icon of the close trigger button
+   */
+  @Prop() closeIcon = "minus";
 
   /**
    * Open the accordion
@@ -61,11 +82,13 @@ export class Accordion {
                     inverted={true}
                     type={this.type}
                     onClick={() => this.toggle()}>
-          <span style={!this.isCollapsed && {display: "none"}}>
-            <slot name="trigger-open">Open me!</slot>
+          <span class="trigger-label" style={!this.isCollapsed && {display: "none"}}>
+            <bal-icon name={this.openIcon}/>
+            <span class="label">{this.openLabel}</span>
           </span>
-          <span style={this.isCollapsed && {display: "none"}}>
-            <slot name="trigger-close">Close me!</slot>
+          <span class="trigger-label" style={this.isCollapsed && {display: "none"}}>
+            <bal-icon name={this.closeIcon}/>
+            <span class="label">{this.closeLabel}</span>
           </span>
         </bal-button>
         <div style={this.isCollapsed && {display: "none"}}>

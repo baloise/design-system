@@ -82,6 +82,7 @@ Here is how you can change the size:
 
 ### Used by
 
+ - [bal-accordion](../accordion)
  - [bal-datepicker](../datepicker)
  - [bal-dropdown](../dropdown)
  - [bal-field](../field)
@@ -89,6 +90,7 @@ Here is how you can change the size:
 ### Graph
 ```mermaid
 graph TD;
+  bal-accordion --> bal-icon
   bal-datepicker --> bal-icon
   bal-dropdown --> bal-icon
   bal-field --> bal-icon
