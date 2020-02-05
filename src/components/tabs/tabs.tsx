@@ -22,7 +22,7 @@ export class Tabs {
   @Event({eventName: "balTabsDidChange"}) tabsDidChange: EventEmitter<TabItemOptions>;
 
   /**
-   * Select a tab by the value of the tab item.
+   * Dropdown a tab by the value of the tab item.
    */
   @Method()
   async select(value: string) {

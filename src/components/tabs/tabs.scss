@@ -8,6 +8,10 @@
 .tabs {
   border: none;
 
+  & > ul {
+    padding: 0;
+  }
+
   & > ul > li {
     padding-right: 10px;
 
@@ -19,6 +23,7 @@
       border-radius: 50px;
       padding: 7.5px 20px 9.5px 20px;
       line-height: 1.2;
+      cursor: pointer;
     }
 
     &.is-active > a, & > a:hover {

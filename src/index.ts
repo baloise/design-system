@@ -1,3 +1,3 @@
 
 export * from "./components";
-export {balToastController} from "./components/bal-toast/bal-toast.controller";
+export {balToastController} from "./components/toast/toast.controller";
