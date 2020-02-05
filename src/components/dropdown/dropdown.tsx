@@ -234,9 +234,9 @@ export class Dropdown {
 
   @Listen("keydown")
   async handleKeyDown(event: KeyboardEvent) {
-    if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+    if (event.key === "ArrowUp" || event.key === "ArrowDown" || event.key === "Down" || event.key === "Up") {
       event.preventDefault();
-      await this.focusNextItem(event.key === "ArrowDown");
+      await this.focusNextItem(event.key === "ArrowDown" || event.key === "Down");
     }
     if (event.key === "Enter") {
       event.preventDefault();
