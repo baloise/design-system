@@ -24,8 +24,20 @@ You can limit the date range with min-date and max-date props.
 
 ## Filter
 
+```typescript
+document.getElementById('with-filter').filter =  function (str) {
+  return parseInt(str.substring(0, 2)) == 5;
+};
+```
+
+<script type="text/javascript">
+document.getElementById('with-filter').filter =  function (str) {
+  return parseInt(str.substring(0, 2)) == 5;
+};
+</script>
+
 ```html
-<bal-datepicker value="20.02.2020" filter="alert()"></bal-datepicker>
+<bal-datepicker id="with-filter"></bal-datepicker>
 ```
 
 ## Disabled
