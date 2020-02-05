@@ -16,6 +16,10 @@
   background: transparent;
   cursor: pointer;
 
+  &.is-hidden {
+    display: none;
+  }
+
   span {
     font-family: $family-primary;
   }
