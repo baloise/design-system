@@ -226,7 +226,7 @@ export class Dropdown {
 
   @Listen("keyup")
   handleKeyUp(event: KeyboardEvent) {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" || event.key === "Esc") {
       event.preventDefault();
       this.isActive = false;
     }
