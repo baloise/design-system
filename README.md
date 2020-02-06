@@ -1,6 +1,6 @@
-<p align="center">
-  <a href="" target="blank"><img src="logo.png" width="320" alt="Baloise UI Library Logo" /></a>
-</p>
+<a href="https://bal-ui-library.hirsch.now.sh" target="blank">
+    <img src="logo.png" width="400" alt="Baloise UI Library Logo" />
+</a>
 
 Lightweight UI-Component Library for Baloise Applications
 
