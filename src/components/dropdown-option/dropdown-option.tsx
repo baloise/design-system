@@ -51,6 +51,14 @@ export class DropdownOption {
   }
 
   get parent(): Components.BalDropdown {
+    if ((this.element.parentNode as any).tagName === "DIV") {
+      // IE11 doesn't allow shadowing so we have tho navigate the dom up to the parent element.
+      try {
+        return this.element.parentNode.parentNode.parentNode.parentNode as any;
+      } catch (e) {
+        // Do nothing
+      }
+    }
     return this.element.parentNode as any;
   }
 
