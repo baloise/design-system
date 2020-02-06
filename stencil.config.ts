@@ -17,6 +17,12 @@ export const config: Config = {
       src: "docs/**/*.css",
     },
     {
+      src: "docs/assets**/*.svg",
+    },
+    {
+      src: "docs/assets**/*.png",
+    },
+    {
       src: "docs/**/*.js",
     },
     {

@@ -2,7 +2,7 @@
 
 The classic button, in different colors, sizes, and states
 
-## Basics
+## Usage
 
 ```html
 <bal-button type="is-primary">Primary</bal-button>
@@ -13,7 +13,7 @@ The classic button, in different colors, sizes, and states
 <bal-button type="is-link">Link</bal-button>
 ```
 
-## Outlined
+### Outlined
 
 ```html
 <bal-button type="is-primary" outlined>Primary</bal-button>
@@ -23,7 +23,7 @@ The classic button, in different colors, sizes, and states
 <bal-button type="is-danger" outlined>Danger</bal-button>
 ```
 
-## Inverted
+### Inverted
 
 ```html
 <div class="has-inverted-background">
@@ -33,7 +33,7 @@ The classic button, in different colors, sizes, and states
 </div>
 ```
 
-## Disabled
+### Disabled
 
 ```html
 <bal-button type="is-primary" disabled>Primary</bal-button>
@@ -44,7 +44,7 @@ The classic button, in different colors, sizes, and states
 <bal-button type="is-link" disabled>Link</bal-button>
 ```
 
-## Loading
+### Loading
 
 ```html
 <bal-button type="is-primary" loading>Primary</bal-button>

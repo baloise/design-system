@@ -2,7 +2,9 @@
 
 Simple responsive horizontal navigation tabs.
 
-## Main Navigation
+## Usage
+
+### Main Navigation
 
 ```html
 <bal-tabs>
@@ -14,7 +16,7 @@ Simple responsive horizontal navigation tabs.
 </bal-tabs>
 ```
 
-## Sub Navigation
+### Sub Navigation
 
 ```html
 <bal-tabs rounded>

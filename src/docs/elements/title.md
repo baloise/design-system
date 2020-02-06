@@ -2,12 +2,14 @@
 
 [Go to the Bulma documentation](https://bulma.io/documentation/elements/title/).
 
+## Usage
+
 ```html
 <h1 class="title">Title</h1>
 <h2 class="subtitle">Subtitle</h2>
 ```
 
-## Sizes {docsify-ignore}
+### Sizes {docsify-ignore}
 
 ```html
 <h1 class="title is-1">Title 1</h1>

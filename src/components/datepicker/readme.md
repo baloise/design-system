@@ -2,19 +2,19 @@
 
 An input with a simple dropdown for selecting a date.
 
-## Basic
+## Usage
 
 ```html
 <bal-datepicker></bal-datepicker>
 ```
 
-## Set Date
+### Set Date
 
 ```html
 <bal-datepicker value="20.02.2020"></bal-datepicker>
 ```
 
-## Date Range
+### Date Range
 
 You can limit the date range with min-date and max-date props.
 
@@ -22,7 +22,7 @@ You can limit the date range with min-date and max-date props.
 <bal-datepicker min-date="10.02.2020" max-date="22.02.2020" value="20.02.2020"></bal-datepicker>
 ```
 
-## Filter
+### Filter
 
 ```typescript
 document.getElementById('with-filter').filter =  function (str) {
@@ -40,7 +40,7 @@ document.getElementById('with-filter').filter =  function (str) {
 <bal-datepicker id="with-filter"></bal-datepicker>
 ```
 
-## Disabled
+### Disabled
 
 ```html
 <bal-datepicker disabled value="20.02.2020"></bal-datepicker>

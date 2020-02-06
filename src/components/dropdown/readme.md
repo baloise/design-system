@@ -1,6 +1,6 @@
 # Dropdown
 
-## Basic
+## Usage
 
 ```html
 <bal-dropdown selected="1">
@@ -26,7 +26,7 @@
     };
 </script>
 
-## Disabled
+### Disabled
 
 ```html
 <bal-dropdown disabled="true">
@@ -36,7 +36,7 @@
 </bal-dropdown>
 ```
 
-## Typeahead
+### Typeahead
 
 ```html
 <bal-dropdown expanded typeahead>

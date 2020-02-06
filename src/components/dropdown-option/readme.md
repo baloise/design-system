@@ -2,19 +2,19 @@
 
 A basic dropdown option.
 
-## Basic
+## Usage
 
 ```html
 <bal-dropdown-option value="1" label="Label"></bal-dropdown-option>
 ```
 
-## Activated
+### Activated
 
 ```html
 <bal-dropdown-option activated="true" value="1" label="Label"></bal-dropdown-option>
 ```
 
-## Highlighted
+### Highlighted
 
 ```html
 <bal-dropdown-option highlight="bel" value="1" label="Label"></bal-dropdown-option>

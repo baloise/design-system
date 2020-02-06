@@ -1,3 +1,7 @@
+<div class="sidebar-icon">
+  <img src="/docs/assets/icon.light.svg" data-origin="docs/assets/icon.light.svg" alt="Baloise UI Library Logo" width="220">
+</div>
+
 - **Essentials**
 
   - [Get Started](home.md)

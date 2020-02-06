@@ -1,8 +1,8 @@
-# Baloise UI Library
-
-> Lightweight UI-Component Library for Baloise Applications
+![Baloise UI Library Logo](docs/assets/icon.dark.svg ':size=400')
 
 [![npm version](https://badge.fury.io/js/bal-ui-library.svg)](https://badge.fury.io/js/bal-ui-library)
+
+> Lightweight UI-Component Library for Baloise Applications
 
 This is a project for building a modern Web Component using Stencil and Bulma.
 

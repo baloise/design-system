@@ -2,7 +2,7 @@
 
 Select a single or grouped options
 
-## Basic
+## Usage
 
 ```html
 <div class="bal-checkbox">
@@ -15,7 +15,7 @@ Select a single or grouped options
 </div>
 ```
 
-## Disabled
+### Disabled
 
 ```html
 <div class="bal-checkbox">

@@ -2,7 +2,7 @@
 
 All generic form field, designed for consistency 
 
-## Basic Form Field
+## Usage
 
 ```html
 <bal-field label="Firstname">
@@ -10,7 +10,7 @@ All generic form field, designed for consistency
 </bal-field>
 ```
 
-##  Validation
+###  Validation
 
 ```html
 <bal-field label="Lastname" required validation-message="Field is required">
@@ -18,7 +18,7 @@ All generic form field, designed for consistency
 </bal-field>
 ```
 
-## Icons
+### Icons
 
 ```html
 <bal-field label="Lastname" icon-left="account" icon-right="check">

@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2910px" height="913px" viewBox="0 0 2910 913" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>bal-ui-library-icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="bal-ui-library-icon" transform="translate(-10.000000, -19.000000)">
+            <g transform="translate(-28.000000, -124.000000)">
+                <path d="M503.966975,152.250842 L842.388731,487.227441 C847.818509,492.601943 855.14977,495.616703 862.78965,495.616703 L982.073362,495.616703 C998.08962,495.616703 1011.07336,508.600445 1011.07336,524.616703 L1011.07336,682.297624 C1011.07336,698.313882 998.08962,711.297624 982.073362,711.297624 L814.975275,711.297624 L504.037621,1025.29268 C492.767959,1036.67315 474.406394,1036.76298 463.025919,1025.49332 C462.984227,1025.45203 462.942661,1025.41062 462.901221,1025.36908 L46.5042749,607.990403 C35.1924133,596.651871 35.2140335,578.2901 46.5525651,566.978238 C46.5600244,566.970796 46.5674878,566.963358 46.5749553,566.955925 L463.106509,152.309039 C474.398147,141.068492 492.643363,141.042506 503.966975,152.250842 Z" id="baloise" fill="#FFFFFF"></path>
+                <g id="baloise-retro" transform="translate(86.000000, 193.000000)">
+                    <g id="box-row" transform="translate(384.000000, 0.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(216.000000, 408.000000)" fill="#003399">
+                        <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(216.000000, 408.000000)" fill="#003399">
+                        <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(216.000000, 408.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(240.000000, 432.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(264.000000, 456.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(288.000000, 480.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(312.000000, 504.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(336.000000, 528.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(360.000000, 552.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(384.000000, 576.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(408.000000, 552.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(432.000000, 528.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(456.000000, 504.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(480.000000, 480.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(504.000000, 456.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(528.000000, 480.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="144" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(552.000000, 504.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="96" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(576.000000, 528.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="24" y="24" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(192.000000, 408.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="168" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(168.000000, 432.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="120" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(120.000000, 456.000000)">
+                        <rect id="Rectangle" fill="#003399" x="24" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="24" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="24" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="24" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="24" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(408.000000, 24.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(432.000000, 48.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(456.000000, 72.000000)">
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(480.000000, 96.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(504.000000, 120.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(528.000000, 144.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(552.000000, 168.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(576.000000, 192.000000)">
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(600.000000, 216.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(624.000000, 240.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(648.000000, 264.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(672.000000, 288.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="168" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(696.000000, 312.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="144" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(720.000000, 336.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="120" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(744.000000, 336.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="120" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(768.000000, 336.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="120" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(792.000000, 336.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="120" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(816.000000, 336.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="120" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(840.000000, 336.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="120" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(864.000000, 336.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="120" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(360.000000, 24.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(336.000000, 48.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(312.000000, 72.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(312.000000, 72.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(288.000000, 96.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(264.000000, 120.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(240.000000, 144.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(216.000000, 168.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(216.000000, 168.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(192.000000, 192.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill-opacity="0.798035553" fill="#FF3366" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(168.000000, 216.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(144.000000, 240.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(120.000000, 264.000000)" fill="#003399">
+                        <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(120.000000, 264.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(96.000000, 288.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="144" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="168" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="192" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(72.000000, 312.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="96" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#009EE7" x="0" y="120" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="144" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(48.000000, 336.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="48" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="72" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="96" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(24.000000, 360.000000)">
+                        <rect id="Rectangle" fill="#003399" x="0" y="0" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#003399" x="0" y="24" width="24" height="24"></rect>
+                        <rect id="Rectangle" fill="#FFEC99" x="0" y="48" width="24" height="24"></rect>
+                    </g>
+                    <g id="box-row" transform="translate(0.000000, 384.000000)" fill="#003399">
+                        <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                    </g>
+                </g>
+                <g id="cursor" transform="translate(325.000000, 463.000000)">
+                    <polygon id="Rectangle" fill="#FFFFFF" points="24 23 47.9961053 23 384 358.417115 237.433505 359.428698 237.9024 466.381727 261.752299 466.365979 262.82968 509 191.837998 509 183.501857 471.636018 163.508951 468.391172 144.352348 428.753469 120.043005 428.753469 47.9961053 502.48033 24 502.48033"></polygon>
+                    <rect id="Rectangle" fill="#333333" x="24" y="0" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="0" y="24" width="24" height="502"></rect>
+                    <rect id="Rectangle" fill="#333333" x="48" y="22" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="72" y="47" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="96" y="70" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="120" y="95" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="144" y="118" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="168" y="143" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="192" y="166" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="216" y="191" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="240" y="214" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="264" y="239" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="288" y="263" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="312" y="287" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="336" y="311" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="359" y="335" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="24" y="502" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="48" y="478" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="72" y="454" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="96" y="430" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="120" y="406" width="24" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="192" y="509" width="71" height="24"></rect>
+                    <rect id="Rectangle" fill="#333333" x="213" y="383" width="24" height="42"></rect>
+                    <rect id="Rectangle" fill="#333333" x="238" y="425" width="24" height="42"></rect>
+                    <rect id="Rectangle" fill="#333333" x="261" y="467" width="24" height="42"></rect>
+                    <rect id="Rectangle" fill="#333333" x="144" y="429" width="24" height="40"></rect>
+                    <rect id="Rectangle" fill="#333333" x="168" y="469" width="24" height="40"></rect>
+                    <rect id="Rectangle" fill="#333333" x="237" y="359" width="122" height="24"></rect>
+                </g>
+                <text id="UI-Library" font-family="MetaW05-Normal, Meta Std Normal" font-size="350" font-weight="normal" fill="#009EE7">
+                    <tspan x="1060" y="984">UI Library</tspan>
+                </text>
+                <text id="Baloise" font-family="MetaStd-Medium, Meta Std Medium" font-size="600" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="1042" y="673">Baloise</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -2,7 +2,10 @@
 
 The Baloise SVG icons have been converted with this [tool](https://websemantics.uk/tools/svg-to-background-image-conversion/).
 
+## Usage
+
 Here is how you can change the size:
+
 ```html
 <bal-icon name="account" size="small"></bal-icon>
 <bal-icon name="account"></bal-icon>

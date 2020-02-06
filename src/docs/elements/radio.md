@@ -2,7 +2,7 @@
 
 Select an option from a set
 
-## Basic
+## Usage
 
 ```html
 <div class="bal-radio">
@@ -19,7 +19,7 @@ Select an option from a set
 </div>
 ```
 
-## Disabled
+### Disabled
 
 ```html
 <div class="bal-radio">
