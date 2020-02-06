@@ -258,6 +258,14 @@ export namespace Components {
     */
     'active': boolean;
     /**
+    * If `true` a small red bubble is added to the tab.
+    */
+    'bubble': boolean;
+    /**
+    * If `true` the tab is disabled.
+    */
+    'disabled': boolean;
+    /**
     * Options of the tab like label, value etc.
     */
     'getOptions': () => Promise<TabItemOptions>;
@@ -279,6 +287,10 @@ export namespace Components {
     * If `true` the field expands over the whole width.
     */
     'expanded': boolean;
+    /**
+    * If you want the rounded tab style
+    */
+    'rounded': boolean;
     /**
     * Dropdown a tab by the value of the tab item.
     */
@@ -619,9 +631,21 @@ declare namespace LocalJSX {
     */
     'active'?: boolean;
     /**
+    * If `true` a small red bubble is added to the tab.
+    */
+    'bubble'?: boolean;
+    /**
+    * If `true` the tab is disabled.
+    */
+    'disabled'?: boolean;
+    /**
     * Label for the tab.
     */
     'label'?: string;
+    /**
+    * Emitted when the tabs get rendered.
+    */
+    'onBalTabChanged'?: (event: CustomEvent<any>) => void;
     /**
     * This is the key of the tab.
     */
@@ -636,6 +660,10 @@ declare namespace LocalJSX {
     * Emitted when the changes has finished.
     */
     'onBalTabsDidChange'?: (event: CustomEvent<TabItemOptions>) => void;
+    /**
+    * If you want the rounded tab style
+    */
+    'rounded'?: boolean;
   }
   interface BalTag {
     /**

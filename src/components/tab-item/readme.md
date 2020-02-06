@@ -16,11 +16,20 @@
 
 ## Properties
 
-| Property | Attribute | Description                                             | Type      | Default |
-| -------- | --------- | ------------------------------------------------------- | --------- | ------- |
-| `active` | `active`  | Tell's if the tab is active and the content is visible. | `boolean` | `false` |
-| `label`  | `label`   | Label for the tab.                                      | `string`  | `""`    |
-| `value`  | `value`   | This is the key of the tab.                             | `string`  | `""`    |
+| Property   | Attribute  | Description                                             | Type      | Default |
+| ---------- | ---------- | ------------------------------------------------------- | --------- | ------- |
+| `active`   | `active`   | Tell's if the tab is active and the content is visible. | `boolean` | `false` |
+| `bubble`   | `bubble`   | If `true` a small red bubble is added to the tab.       | `boolean` | `false` |
+| `disabled` | `disabled` | If `true` the tab is disabled.                          | `boolean` | `false` |
+| `label`    | `label`    | Label for the tab.                                      | `string`  | `""`    |
+| `value`    | `value`    | This is the key of the tab.                             | `string`  | `""`    |
+
+
+## Events
+
+| Event           | Description                         | Type               |
+| --------------- | ----------------------------------- | ------------------ |
+| `balTabChanged` | Emitted when the tabs get rendered. | `CustomEvent<any>` |
 
 
 ## Methods

@@ -1,9 +1,11 @@
-import {Component, Host, h, Prop, Method, State, Watch} from "@stencil/core";
+import {Component, Host, h, Prop, Method, State, Watch, Event, EventEmitter} from "@stencil/core";
 
 export interface TabItemOptions {
   value: string;
   label: string;
   active: boolean;
+  disabled: boolean;
+  hasBubble: boolean;
 }
 
 @Component({
@@ -26,6 +28,16 @@ export class TabItem {
   @Prop() label: string = "";
 
   /**
+   * If `true` a small red bubble is added to the tab.
+   */
+  @Prop() bubble: boolean = false;
+
+  /**
+   * If `true` the tab is disabled.
+   */
+  @Prop() disabled: boolean = false;
+
+  /**
    * Tell's if the tab is active and the content is visible.
    */
   @Prop() active: boolean = false;
@@ -36,15 +48,26 @@ export class TabItem {
   }
 
   /**
-   * Options of the tab like label, value etc.
+   * Emitted when the tabs get rendered.
    */
-  @Method()
-  async getOptions(): Promise<TabItemOptions> {
+  @Event({eventName: "balTabChanged"}) tabChanged: EventEmitter;
+
+  get options() {
     return {
       value: this.value,
       label: this.label,
       active: this.active,
+      disabled: this.disabled,
+      hasBubble: this.bubble,
     };
+  }
+
+  /**
+   * Options of the tab like label, value etc.
+   */
+  @Method()
+  async getOptions(): Promise<TabItemOptions> {
+    return this.options;
   }
 
   /**
@@ -60,6 +83,7 @@ export class TabItem {
   }
 
   render() {
+    this.tabChanged.emit(this.options);
     return (
       <Host>
         <div style={this.isContentHidden && {display: "none"}}>

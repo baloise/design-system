@@ -1,4 +1,4 @@
-import {Component, Host, h, Element, State, Event, EventEmitter, Method, Prop} from "@stencil/core";
+import {Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Listen} from "@stencil/core";
 import {TabItemOptions} from "../tab-item/tab-item";
 
 @Component({
@@ -15,6 +15,11 @@ export class Tabs {
    * If `true` the field expands over the whole width.
    */
   @Prop() expanded = false;
+
+  /**
+   * If you want the rounded tab style
+   */
+  @Prop() rounded = false;
 
   /**
    * Emitted when the changes has finished.
@@ -34,6 +39,11 @@ export class Tabs {
     this.readTabItems();
   }
 
+  @Listen("balTabChanged")
+  tabChanged() {
+    this.readTabItems();
+  }
+
   private readTabItems() {
     Promise.all(this.tabs.map(value => value.getOptions()))
       .then(tabsOptions => {
@@ -46,8 +56,10 @@ export class Tabs {
   }
 
   private async onSelectTab(tab: TabItemOptions) {
-    await this.select(tab.value);
-    this.tabsDidChange.emit(tab);
+    if (!tab.disabled) {
+      await this.select(tab.value);
+      this.tabsDidChange.emit(tab);
+    }
   }
 
   render() {
@@ -55,14 +67,22 @@ export class Tabs {
       <Host>
         <div class={[
           "tabs",
+          this.rounded ? "is-rounded" : "",
           this.expanded ? "is-fullwidth" : "",
         ].join(" ")}>
           <ul>
             {this.tabsOptions.map((tab) =>
-              <li class={tab.active ? "is-active" : ""}>
+              <li class={[
+                tab.active ? "is-active" : "",
+                tab.disabled ? "is-disabled" : "",
+              ].join(" ")}>
                 <a onClick={() => this.onSelectTab(tab)}>{tab.label}</a>
+                <span class="bubble" style={!tab.hasBubble && {display: "none"}}></span>
               </li>,
             )}
+            <li class="is-right">
+              <slot name="action" />
+            </li>
           </ul>
         </div>
         <slot/>
