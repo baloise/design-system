@@ -2,7 +2,7 @@
     <img src="logo.png" width="400" alt="Baloise UI Library Logo" />
 </a>
 
-<br>
+<br><br>
 
 Lightweight UI-Component Library for Baloise Applications
 
