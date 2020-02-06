@@ -17,7 +17,20 @@ export class Tag {
     | "is-danger"
     | "is-light" = "is-light";
 
+  constructor() {
+    console.log("constructor");
+  }
+
+  componentWillLoad() {
+    console.log("componentWillLoad");
+  }
+
+  componentDidLoad() {
+    console.log("componentDidLoad");
+  }
+
   render() {
+    console.log("render");
     return (
       <Host>
         <span class={`tag ${this.type}`}><slot/></span>
