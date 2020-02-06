@@ -1,8 +1,4 @@
-div.bal-select-button {
-  .select-buttons-field .help {
-    text-align: center;
-  }
-
+div.bal-select-buttons {
   position: relative;
   display: flex;
   flex: 1;
@@ -10,7 +6,7 @@ div.bal-select-button {
   border-radius: 100px;
   padding: 5px;
 
-  .select-button {
+  .bal-select-button {
     display: flex;
     flex: 1;
 
@@ -30,6 +26,7 @@ div.bal-select-button {
       height: 30px;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       cursor: pointer;
       border-radius: 100px;
       background: transparent;
@@ -63,15 +60,15 @@ div.bal-select-button {
       cursor: not-allowed;
       color: $bal_text_light_blue;
 
-
       &:hover {
         color: $bal_text_light_blue;
       }
     }
 
     input:disabled:checked ~ label {
-      border-color: $grey-light;
-      background: $grey-light;
+      border-color: $blue;
+      background: $blue;
+      opacity: 50%;
       color: white;
 
       &:hover {
