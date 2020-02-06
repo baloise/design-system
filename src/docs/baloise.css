@@ -215,6 +215,7 @@ main.hidden {
   flex: 1;
   display: flex;
   flex-direction: column;
+  /*height: 100vh;*/
   min-width: 300px;
   max-width: 300px;
   border-right: 1px solid rgba(0, 0, 0, 0.07);
@@ -255,13 +256,13 @@ main.hidden {
 }
 
 .sidebar ul {
-  margin: 0 0 0 15px;
+  margin: 0;
   padding: 0;
 }
 
 .sidebar li > p {
   font-weight: 800;
-  margin: 0;
+  margin: 0 0 0 15px;
 }
 
 .sidebar li > p strong {
@@ -680,7 +681,7 @@ body {
 }
 
 .sidebar li {
-  margin: 6px 0;
+  margin: 0;
 }
 
 .sidebar ul {
@@ -705,9 +706,19 @@ body {
   padding: 0;
 }
 
+.sidebar ul li ul li ul {
+  padding: 0 0 0 15px;
+}
+
+
+.sidebar ul li > a {
+  padding: 8px 0 8px 15px;
+}
+
 .sidebar ul li.active > a {
-  border-right: 2px solid;
-  color: #009fee;
+  border-right: 4px solid;
+  color: #003399;
+  background: #d3dbeb;
 }
 
 .app-sub-sidebar li:before {
@@ -758,20 +769,20 @@ body {
   font-size: 1rem;
 }
 
-.markdown-section figure,
-.markdown-section p {
+.markdown-section > figure,
+.markdown-section > p {
   margin: 1.2em 0;
 }
 
-.markdown-section ol,
-.markdown-section p,
-.markdown-section ul {
+.markdown-section > ol,
+.markdown-section > p,
+.markdown-section > ul {
   line-height: 1.6rem;
   word-spacing: 0.05rem;
 }
 
-.markdown-section ol,
-.markdown-section ul {
+.markdown-section > ol,
+.markdown-section > ul {
   padding-left: 1.5rem;
 }
 

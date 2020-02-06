@@ -18,7 +18,7 @@ $blue-light-line: #d3dbeb;
 $blue-light-hover: $bal_bg_rollover_light_blue;
 $blue-light: #f0fbff;
 
-$black: #000000;
+$black: #222222;
 $black-bis: $blue-darker;
 $black-ter: $blue-dark;
 
@@ -46,7 +46,7 @@ $danger: $red;
 $primary-invert: $white;
 $success-invert: $white;
 
-$text: $black-ter;
+$text: $black;
 $text-strong: $blue;
 
 $shades: (
@@ -95,10 +95,10 @@ $size-5: 0.9375rem;
 $size-6: 0.8125rem;
 $size-7: 0.8125rem;
 
-$size-small: $size-5;
-$size-normal: $size-4;
-$size-medium: $size-3;
-$size-large: $size-2;
+$size-small: $size-6;
+$size-normal: $size-5;
+$size-medium: $size-4;
+$size-large: $size-3;
 
 $title-color: $blue;
 $subtitle-color: $blue;

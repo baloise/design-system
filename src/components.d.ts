@@ -8,8 +8,17 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  DropDownOption,
-} from './components/bal-dropdown/bal-dropdown';
+  DateCallback,
+} from './components/datepicker/datepicker';
+import {
+  Option,
+} from './components/dropdown-option/dropdown-option.types';
+import {
+  TabItemOptions,
+} from './components/tab-item/tab-item';
+import {
+  TabItemOptions as TabItemOptions1,
+} from './components/tab-item/tab-item';
 
 export namespace Components {
   interface BalAccordion {
@@ -18,6 +27,14 @@ export namespace Components {
     */
     'close': () => Promise<void>;
     /**
+    * Bal-Icon of the close trigger button
+    */
+    'closeIcon': string;
+    /**
+    * Label of the close trigger button
+    */
+    'closeLabel': string;
+    /**
     * Controls if the accordion is collapsed or not
     */
     'collapsed': boolean;
@@ -25,6 +42,14 @@ export namespace Components {
     * Open the accordion
     */
     'open': () => Promise<void>;
+    /**
+    * Bal-Icon of the open trigger button
+    */
+    'openIcon': string;
+    /**
+    * Label of the open trigger button
+    */
+    'openLabel': string;
     /**
     * Triggers the accordion
     */
@@ -80,6 +105,10 @@ export namespace Components {
     */
     'disabled': boolean;
     /**
+    * Callback to determine which date in the datepicker should be selectable.
+    */
+    'filter': DateCallback;
+    /**
     * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
     */
     'language': string;
@@ -88,13 +117,25 @@ export namespace Components {
     */
     'maxDate': string;
     /**
+    * Latest year available for selection
+    */
+    'maxYear': string;
+    /**
     * Earliest date available for selection
     */
     'minDate': string;
     /**
+    * Earliest year available for selection
+    */
+    'minYear': string;
+    /**
     * Open the datepicker dropdown
     */
     'open': () => Promise<void>;
+    /**
+    * Placeholder text to render if no date has been selected.
+    */
+    'placeholder': string;
     /**
     * The value of the datepicker with the format `dd.MM.yyyy`.
     */
@@ -102,36 +143,75 @@ export namespace Components {
   }
   interface BalDropdown {
     /**
-    * Closes the dropdown menu
+    * Closes the dropdown menu.
     */
     'close': () => Promise<void>;
+    /**
+    * If `true`, the user cannot interact with the input.
+    */
+    'disabled': boolean;
+    /**
+    * If `true`, the component uses the whole width.
+    */
     'expanded': boolean;
+    /**
+    * If `true`, the height of the dropdown content is fixed.
+    */
+    'fixed': boolean;
     /**
     * Returns the value of the dropdown.
     */
-    'getSelectedValue': () => Promise<any>;
+    'getSelected': () => Promise<Option>;
     /**
-    * Open the dropdown menu
+    * Open the dropdown menu.
     */
     'open': () => Promise<void>;
     /**
-    * Selects a dropdown item and changes the value.
+    * Instructional text that shows before the input has a value.
     */
-    'selectItem': (option: DropDownOption) => Promise<void>;
+    'placeholder': string;
     /**
-    * If `true` the field gets a line below.
+    * If `true`, the user cannot interact with the input.
     */
-    'showBottomLine': boolean;
+    'readonly': boolean;
     /**
-    * Open & closes the dropdown
+    * Selects an option.
+    */
+    'select': (option: Option) => Promise<void>;
+    /**
+    * Open & closes the dropdown.
     */
     'toggle': () => Promise<void>;
     /**
+    * Defines the trigger icon on the right site.
+    */
+    'triggerIcon': string;
+    /**
+    * If `true`, the use can search for the option.
+    */
+    'typeahead': boolean;
+    /**
     * The value of the selected dropdown item.
     */
-    'value': any;
+    'value': Option;
   }
-  interface BalDropdownItem {
+  interface BalDropdownOption {
+    /**
+    * TODO: Describe
+    */
+    'activated': boolean;
+    /**
+    * TODO: Describe
+    */
+    'highlight': string;
+    /**
+    * Tell's if the item is activated by selection.
+    */
+    'isHidden': () => Promise<boolean>;
+    /**
+    * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
+    */
+    'label': string;
     /**
     * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
     */
@@ -159,7 +239,51 @@ export namespace Components {
     */
     'validationMessage': string;
   }
+  interface BalIcon {
+    'isLeft': boolean;
+    'isRight': boolean;
+    /**
+    * The name of the icon without the bal-icon prefix.
+    */
+    'name': string;
+    /**
+    * Defines the size of the icon.
+    */
+    'size': "small" | "medium" | "large" | "";
+  }
   interface BalSpinner {}
+  interface BalTabItem {
+    /**
+    * Tell's if the tab is active and the content is visible.
+    */
+    'active': boolean;
+    /**
+    * Options of the tab like label, value etc.
+    */
+    'getOptions': () => Promise<TabItemOptions>;
+    /**
+    * Label for the tab.
+    */
+    'label': string;
+    /**
+    * Sets the tab active.
+    */
+    'setActive': (active: boolean) => Promise<void>;
+    /**
+    * This is the key of the tab.
+    */
+    'value': string;
+  }
+  interface BalTabs {
+    /**
+    * If `true` the field expands over the whole width.
+    */
+    'expanded': boolean;
+    /**
+    * Dropdown a tab by the value of the tab item.
+    */
+    'select': (value: string) => Promise<void>;
+  }
   interface BalTag {
     /**
     * The theme type of the tag. Given by bulma our css framework.
@@ -222,10 +346,10 @@ declare global {
     new (): HTMLBalDropdownElement;
   };
 
-  interface HTMLBalDropdownItemElement extends Components.BalDropdownItem, HTMLStencilElement {}
-  var HTMLBalDropdownItemElement: {
-    prototype: HTMLBalDropdownItemElement;
-    new (): HTMLBalDropdownItemElement;
+  interface HTMLBalDropdownOptionElement extends Components.BalDropdownOption, HTMLStencilElement {}
+  var HTMLBalDropdownOptionElement: {
+    prototype: HTMLBalDropdownOptionElement;
+    new (): HTMLBalDropdownOptionElement;
   };
 
   interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {}
@@ -234,10 +358,28 @@ declare global {
     new (): HTMLBalFieldElement;
   };
 
+  interface HTMLBalIconElement extends Components.BalIcon, HTMLStencilElement {}
+  var HTMLBalIconElement: {
+    prototype: HTMLBalIconElement;
+    new (): HTMLBalIconElement;
+  };
+
   interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {}
   var HTMLBalSpinnerElement: {
     prototype: HTMLBalSpinnerElement;
     new (): HTMLBalSpinnerElement;
+  };
+
+  interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {}
+  var HTMLBalTabItemElement: {
+    prototype: HTMLBalTabItemElement;
+    new (): HTMLBalTabItemElement;
+  };
+
+  interface HTMLBalTabsElement extends Components.BalTabs, HTMLStencilElement {}
+  var HTMLBalTabsElement: {
+    prototype: HTMLBalTabsElement;
+    new (): HTMLBalTabsElement;
   };
 
   interface HTMLBalTagElement extends Components.BalTag, HTMLStencilElement {}
@@ -256,9 +398,12 @@ declare global {
     'bal-button': HTMLBalButtonElement;
     'bal-datepicker': HTMLBalDatepickerElement;
     'bal-dropdown': HTMLBalDropdownElement;
-    'bal-dropdown-item': HTMLBalDropdownItemElement;
+    'bal-dropdown-option': HTMLBalDropdownOptionElement;
     'bal-field': HTMLBalFieldElement;
+    'bal-icon': HTMLBalIconElement;
     'bal-spinner': HTMLBalSpinnerElement;
+    'bal-tab-item': HTMLBalTabItemElement;
+    'bal-tabs': HTMLBalTabsElement;
     'bal-tag': HTMLBalTagElement;
     'bal-toast': HTMLBalToastElement;
   }
@@ -267,9 +412,25 @@ declare global {
 declare namespace LocalJSX {
   interface BalAccordion {
     /**
+    * Bal-Icon of the close trigger button
+    */
+    'closeIcon'?: string;
+    /**
+    * Label of the close trigger button
+    */
+    'closeLabel'?: string;
+    /**
     * Controls if the accordion is collapsed or not
     */
     'collapsed'?: boolean;
+    /**
+    * Bal-Icon of the open trigger button
+    */
+    'openIcon'?: string;
+    /**
+    * Label of the open trigger button
+    */
+    'openLabel'?: string;
     /**
     * Type defines the theme of the accordion toggle
     */
@@ -317,6 +478,10 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
+    * Callback to determine which date in the datepicker should be selectable.
+    */
+    'filter'?: DateCallback;
+    /**
     * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
     */
     'language'?: string;
@@ -325,36 +490,89 @@ declare namespace LocalJSX {
     */
     'maxDate'?: string;
     /**
+    * Latest year available for selection
+    */
+    'maxYear'?: string;
+    /**
     * Earliest date available for selection
     */
     'minDate'?: string;
     /**
+    * Earliest year available for selection
+    */
+    'minYear'?: string;
+    /**
     * Triggers when the value of the datepicker is changed
     */
-    'onInput'?: (event: CustomEvent<string>) => void;
+    'onBalChange'?: (event: CustomEvent<string>) => void;
+    /**
+    * Placeholder text to render if no date has been selected.
+    */
+    'placeholder'?: string;
     /**
     * The value of the datepicker with the format `dd.MM.yyyy`.
     */
     'value'?: string;
   }
   interface BalDropdown {
-    'expanded'?: boolean;
-    'onDropdownSelected'?: (event: CustomEvent<any>) => void;
-    'onSelectDropdownItem'?: (event: CustomEvent<any>) => void;
     /**
-    * If `true` the field gets a line below.
+    * If `true`, the user cannot interact with the input.
     */
-    'showBottomLine'?: boolean;
+    'disabled'?: boolean;
+    /**
+    * If `true`, the component uses the whole width.
+    */
+    'expanded'?: boolean;
+    /**
+    * If `true`, the height of the dropdown content is fixed.
+    */
+    'fixed'?: boolean;
+    /**
+    * Emitted when the toggle loses focus.
+    */
+    'onBalBlur'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the checked property has changed.
+    */
+    'onBalChange'?: (event: CustomEvent<Option>) => void;
+    /**
+    * Emitted when the toggle has focus..
+    */
+    'onBalFocus'?: (event: CustomEvent<void>) => void;
+    /**
+    * Instructional text that shows before the input has a value.
+    */
+    'placeholder'?: string;
+    /**
+    * If `true`, the user cannot interact with the input.
+    */
+    'readonly'?: boolean;
+    /**
+    * Defines the trigger icon on the right site.
+    */
+    'triggerIcon'?: string;
+    /**
+    * If `true`, the use can search for the option.
+    */
+    'typeahead'?: boolean;
     /**
     * The value of the selected dropdown item.
     */
-    'value'?: any;
+    'value'?: Option;
   }
-  interface BalDropdownItem {
+  interface BalDropdownOption {
     /**
-    * Click event of the dropdown item.
+    * TODO: Describe
     */
-    'onClickEvent'?: (event: CustomEvent<any>) => void;
+    'activated'?: boolean;
+    /**
+    * TODO: Describe
+    */
+    'highlight'?: string;
+    /**
+    * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
+    */
+    'label'?: string;
     /**
     * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
     */
@@ -382,7 +600,43 @@ declare namespace LocalJSX {
     */
     'validationMessage'?: string;
   }
+  interface BalIcon {
+    'isLeft'?: boolean;
+    'isRight'?: boolean;
+    /**
+    * The name of the icon without the bal-icon prefix.
+    */
+    'name'?: string;
+    /**
+    * Defines the size of the icon.
+    */
+    'size'?: "small" | "medium" | "large" | "";
+  }
   interface BalSpinner {}
+  interface BalTabItem {
+    /**
+    * Tell's if the tab is active and the content is visible.
+    */
+    'active'?: boolean;
+    /**
+    * Label for the tab.
+    */
+    'label'?: string;
+    /**
+    * This is the key of the tab.
+    */
+    'value'?: string;
+  }
+  interface BalTabs {
+    /**
+    * If `true` the field expands over the whole width.
+    */
+    'expanded'?: boolean;
+    /**
+    * Emitted when the changes has finished.
+    */
+    'onBalTabsDidChange'?: (event: CustomEvent<TabItemOptions>) => void;
+  }
   interface BalTag {
     /**
     * The theme type of the tag. Given by bulma our css framework.
@@ -414,9 +668,12 @@ declare namespace LocalJSX {
     'bal-button': BalButton;
     'bal-datepicker': BalDatepicker;
     'bal-dropdown': BalDropdown;
-    'bal-dropdown-item': BalDropdownItem;
+    'bal-dropdown-option': BalDropdownOption;
     'bal-field': BalField;
+    'bal-icon': BalIcon;
     'bal-spinner': BalSpinner;
+    'bal-tab-item': BalTabItem;
+    'bal-tabs': BalTabs;
     'bal-tag': BalTag;
     'bal-toast': BalToast;
   }
@@ -432,9 +689,12 @@ declare module "@stencil/core" {
       'bal-button': LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
       'bal-datepicker': LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
       'bal-dropdown': LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
-      'bal-dropdown-item': LocalJSX.BalDropdownItem & JSXBase.HTMLAttributes<HTMLBalDropdownItemElement>;
+      'bal-dropdown-option': LocalJSX.BalDropdownOption & JSXBase.HTMLAttributes<HTMLBalDropdownOptionElement>;
       'bal-field': LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
+      'bal-icon': LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
       'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
+      'bal-tab-item': LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
+      'bal-tabs': LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
       'bal-tag': LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
       'bal-toast': LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
     }

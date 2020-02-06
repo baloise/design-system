@@ -1,0 +1,17 @@
+.accordion {
+  [slot="trigger-open"],
+  [slot="trigger-close"] {
+    display: flex;
+
+    > span {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+
+    > span:not(.icon) {
+      margin-top: 1px;
+    }
+
+  }
+}

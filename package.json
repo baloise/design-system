@@ -25,7 +25,7 @@
 		"serve": "stencil build --docs --dev --watch --serve",
 		"generate": "stencil generate",
 		"lint": "tslint -c tslint.json 'src/**/*.ts' --format stylish",
-		"build": "stencil build --docs --docs-json dist/docs.json",
+		"build": "stencil build --es5 --docs --docs-json dist/docs.json",
 		"test": "stencil test --spec --e2e",
 		"test.watch": "stencil test --spec --e2e --watchAll",
 		"semantic-release": "semantic-release"
@@ -35,7 +35,6 @@
 		"@stencil/postcss": "1.0.1",
 		"@stencil/sass": "^1.1.1",
 		"@types/jest": "^24.0.25",
-		"@types/luxon": "^1.21.0",
 		"@types/puppeteer": "1.20.2",
 		"autoprefixer": "^9.7.3",
 		"docsify-cli": "^4.4.0",
@@ -54,7 +53,7 @@
 	},
 	"dependencies": {
 		"bulma": "0.8.0",
-		"luxon": "^1.21.3"
+		"moment": "^2.24.0"
 	},
 	"now": {
 		"env": {

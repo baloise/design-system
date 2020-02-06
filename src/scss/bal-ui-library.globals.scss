@@ -1,7 +1,12 @@
 @charset "utf-8";
 
-@import "utilities/all";
-@import "base/all";
+@import "utilities/variables";
+
+@import "node_modules/bulma/sass/utilities/initial-variables.sass";
+@import "node_modules/bulma/sass/utilities/functions.sass";
+@import "node_modules/bulma/sass/utilities/derived-variables.sass";
+@import "node_modules/bulma/sass/utilities/mixins.sass";
+@import "node_modules/bulma/sass/utilities/controls.sass";
 
 * {
   box-sizing: border-box;

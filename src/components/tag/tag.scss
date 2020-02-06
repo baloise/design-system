@@ -1,0 +1,10 @@
+@import "tag.vars";
+@import "node_modules/bulma/sass/elements/tag";
+
+:host {
+  .tag {
+    height: 25px;
+    padding: 0 20px;
+    align-items: center;
+  }
+}

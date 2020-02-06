@@ -12,5 +12,6 @@ script:
   - npm run lint
   - npm run build
   - npm run test
+  - npm run build
   - ls
   - npm run semantic-release
