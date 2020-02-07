@@ -37,8 +37,8 @@ div#app:empty:before {
 
 .search {
   order: 2;
-  border: none !important;
-  margin-top: 100px;
+  border-color: #d3dbeb !important;
+  margin-bottom: 0 !important;
 }
 
 .search .search-keyword,
@@ -217,7 +217,7 @@ main.hidden {
   display: none;
 }
 
-.sticky   .sidebar {
+.sticky .sidebar {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -232,19 +232,6 @@ main.hidden {
   z-index: 3;
 }
 
-.sidebar > h1 {
-  margin: 0 auto 1rem;
-  font-size: 1.5rem;
-  font-weight: 800;
-  text-align: center;
-  order: 1;
-}
-
-.sidebar > h1 a {
-  color: inherit;
-  text-decoration: none;
-}
-
 .sidebar > h1 .app-nav {
   display: block;
   position: static;
@@ -253,8 +240,9 @@ main.hidden {
 .sidebar .sidebar-nav {
   order: 3;
   line-height: 2em;
-  padding-bottom: 40px;
-  overflow: scroll;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  overflow-y: scroll;
 }
 
 .sidebar li.collapse .app-sub-sidebar {
@@ -684,14 +672,16 @@ body {
 
 .app-name {
   order: 1;
-  padding-top: 15px;
-  color: #003399;
-  display: none;
+  background-image: url("/docs/assets/logo.png");
+  background-position: 30px 15px;
+  background-size: 220px;
+  background-repeat: no-repeat;
+  min-height: 100px;
+  width: 100%;
 }
 
 .app-name a {
-  font-weight: 600;
-  font-size: 1.3em;
+  display: none;
 }
 
 .sidebar-icon {

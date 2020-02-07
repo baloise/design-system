@@ -1,4 +1,4 @@
-![Baloise UI Library Logo](docs/assets/icon.dark.svg ':size=400')
+![Baloise UI Library Logo](docs/assets/logo-dark.png ':size=400')
 
 [![npm version](https://badge.fury.io/js/bal-ui-library.svg)](https://badge.fury.io/js/bal-ui-library)
 
