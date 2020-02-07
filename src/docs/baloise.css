@@ -304,14 +304,18 @@ main.hidden {
   background-color: transparent;
   border: 0;
   outline: none;
-  padding: 10px;
+  padding: 15px;
   position: fixed;
-  bottom: 0;
-  left: 0;
+  top: 0;
+  left: 300px;
   text-align: center;
-  transition: opacity 0.3s;
-  width: 284px;
   z-index: 4;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.close .sidebar-toggle {
+  left: 0;
 }
 
 .sidebar-toggle .sidebar-toggle-button:hover {
