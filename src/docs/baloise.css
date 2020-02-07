@@ -301,6 +301,11 @@ main.hidden {
 }
 
 .sidebar-toggle {
+  display: none;
+}
+
+.sticky .sidebar-toggle {
+  display: block;
   background-color: transparent;
   border: 0;
   outline: none;
