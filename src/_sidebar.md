@@ -1,5 +1,3 @@
-
-
 - **Essentials**
 
   - [Get Started](home.md)
