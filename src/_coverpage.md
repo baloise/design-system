@@ -4,7 +4,7 @@
 
 > Lightweight UI-Component Library for Baloise Applications
 
-This is a project for building a modern Web Component using Stencil and Bulma.
+This is a project for building modern Web Components using Stencil and Bulma.
 
 Just give it a try and add it to your project.
 
@@ -16,7 +16,3 @@ Just give it a try and add it to your project.
 
 [GitHub](https://github.com/hirsch88/bal-ui-library)
 [Get Started](home.md)
-
-<!-- background color -->
-
-![color](#002f9f)
