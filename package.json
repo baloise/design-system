@@ -23,6 +23,7 @@
 	"scripts": {
 		"start": "docsify start",
 		"serve": "stencil build --docs --dev --watch --serve",
+		"serve-ie": "stencil build --es5 --docs --dev --watch --serve",
 		"generate": "stencil generate",
 		"lint": "tslint -c tslint.json 'src/**/*.ts' --format stylish",
 		"build": "stencil build --es5 --docs --docs-json dist/docs.json",
