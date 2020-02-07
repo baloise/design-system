@@ -2,13 +2,15 @@
 
 [Go to the Bulma documentation](https://bulma.io/documentation/elements/box/).
 
+## Usage
+
 ```html
 <div class="box is-padded">
   Box Content
 </div>
 ```
 
-## Clickable Box including padding
+### Clickable Box including padding
 
 ```html
 <a class="box is-padded">
@@ -16,7 +18,7 @@
 </a>
 ```
 
-## Clickable Box without padding
+### Clickable Box without padding
 
 ```html
 <a class="box">

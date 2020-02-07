@@ -2,19 +2,19 @@
 
 A simple loading spinner.
 
-## Basic
+## Usage
 
 ```html
 <bal-spinner></bal-spinner>
 ```
 
-## Small
+### Small
 
 ```html
 <bal-spinner class="is-small"></bal-spinner>
 ```
 
-## Inverted
+### Inverted
 
 ```html
 <div class="has-background-info is-padded">

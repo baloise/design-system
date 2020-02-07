@@ -16,23 +16,24 @@
 
 </head>
 
-<body>
+<body class="sticky">
 <div id="app"></div>
 <script>
-    window.$docsify = {
-        name: 'Baloise UI Library',
-        repo: 'https://github.com/hirsch88/bal-ui-library',
-        coverpage: true,
-        loadSidebar: true,
-        alias: {
-            '/.*/_sidebar.md': '/_sidebar.md',
-        },
-        subMaxLevel: 1,
-        themeColor: '#009fee',
-        auto2top: true,
-        homepage: 'home.md',
-        executeScript: true,
-    };
+  window.$docsify = {
+    logo: 'docs/assets/logo-dark.png',
+    name: 'Baloise UI Library',
+    repo: 'https://github.com/hirsch88/bal-ui-library',
+    coverpage: true,
+    loadSidebar: true,
+    alias: {
+      '/.*/_sidebar.md': '/_sidebar.md',
+    },
+    subMaxLevel: 1,
+    themeColor: '#009fee',
+    auto2top: true,
+    homepage: 'home.md',
+    executeScript: true,
+  };
 </script>
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
@@ -49,8 +50,9 @@
 <script nomodule src="/build/bal-ui-library.js"></script>
 
 <script type="module">
-    import {balToastController} from '/build/index.esm.js';
-    window.balToastController = balToastController;
+  import {balToastController} from '/build/index.esm.js';
+
+  window.balToastController = balToastController;
 </script>
 
 </body>

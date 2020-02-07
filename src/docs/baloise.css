@@ -37,6 +37,8 @@ div#app:empty:before {
 
 .search {
   order: 2;
+  border-color: #d3dbeb !important;
+  margin-bottom: 0 !important;
 }
 
 .search .search-keyword,
@@ -212,32 +214,22 @@ main.hidden {
 }
 
 .sidebar {
+  display: none;
+}
+
+.sticky .sidebar {
   flex: 1;
   display: flex;
   flex-direction: column;
-  /*height: 100vh;*/
-  min-width: 300px;
-  max-width: 300px;
-  border-right: 1px solid rgba(0, 0, 0, 0.07);
-  overflow-y: auto;
-  background: #f5f5f6;
-  color: #364149;
+  height: 100vh;
+  border-right: 1px solid #d3dbeb;
+  background: #fafafa;
+  color: #333333;
   transition: transform 0.25s ease-out;
   width: 300px;
+  position: fixed;
+  top: 0;
   z-index: 3;
-}
-
-.sidebar > h1 {
-  margin: 0 auto 1rem;
-  font-size: 1.5rem;
-  font-weight: 800;
-  text-align: center;
-  order: 1;
-}
-
-.sidebar > h1 a {
-  color: inherit;
-  text-decoration: none;
 }
 
 .sidebar > h1 .app-nav {
@@ -248,7 +240,9 @@ main.hidden {
 .sidebar .sidebar-nav {
   order: 3;
   line-height: 2em;
-  padding-bottom: 40px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  overflow-y: scroll;
 }
 
 .sidebar li.collapse .app-sub-sidebar {
@@ -262,12 +256,14 @@ main.hidden {
 
 .sidebar li > p {
   font-weight: 800;
-  margin: 0 0 0 15px;
+  margin: 0 0 0 30px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
 }
 
 .sidebar li > p strong {
   color: #003399;
-  font-size: 1.3em;
+  font-size: 1.1em;
   margin-bottom: .5em;
 }
 
@@ -305,17 +301,26 @@ main.hidden {
 }
 
 .sidebar-toggle {
+  display: none;
+}
+
+.sticky .sidebar-toggle {
+  display: block;
   background-color: transparent;
   border: 0;
   outline: none;
-  padding: 10px;
+  padding: 15px;
   position: fixed;
-  bottom: 0;
-  left: 0;
+  top: 0;
+  left: 300px;
   text-align: center;
-  transition: opacity 0.3s;
-  width: 284px;
   z-index: 4;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.close .sidebar-toggle {
+  left: 0;
 }
 
 .sidebar-toggle .sidebar-toggle-button:hover {
@@ -331,9 +336,14 @@ main.hidden {
 }
 
 .content {
-  padding-top: 60px;
+  padding-top: 30px;
   flex: 1;
-  transition: left 0.25s ease;
+  transition: margin-left 0.25s ease;
+  margin-left: 300px;
+}
+
+.close .content {
+  margin-left: 0;
 }
 
 .markdown-section {
@@ -389,7 +399,7 @@ main.hidden {
 
 .markdown-section p.tip {
   border-bottom-right-radius: 2px;
-  border-left: 4px solid #f66;
+  border-left: 4px solid #ff3366;
   border-top-right-radius: 2px;
   margin: 2em 0;
   padding: 12px 24px 12px 30px;
@@ -397,7 +407,7 @@ main.hidden {
 }
 
 .markdown-section p.tip:before {
-  background-color: #f66;
+  background-color: #ff3366;
   border-radius: 100%;
   color: #fff;
   content: "!";
@@ -438,10 +448,6 @@ body.close .sidebar {
 body.close .sidebar-toggle {
   width: auto;
 }
-
-/*body.close .content {*/
-/*  !*left: 0;*!*/
-/*}*/
 
 @media print {
   .app-nav,
@@ -671,13 +677,25 @@ body {
 
 .app-name {
   order: 1;
-  padding-top: 15px;
-  color: #003399;
+  background-image: url("/docs/assets/logo.png");
+  background-position: 30px 15px;
+  background-size: 220px;
+  background-repeat: no-repeat;
+  min-height: 100px;
+  width: 100%;
 }
 
 .app-name a {
-  font-weight: 600;
-  font-size: 1.3em;
+  display: none;
+}
+
+.sidebar-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  position: fixed;
+  top: 15px;
+  left: 30px;
 }
 
 .sidebar li {
@@ -689,17 +707,17 @@ body {
 }
 
 .sidebar ul li a {
-  color: #000;
   font-size: 1em;
   font-weight: 400;
   overflow: hidden;
   text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .sidebar ul li a:hover {
-  text-decoration: underline;
+  color: #003399;
 }
 
 .sidebar ul li ul {
@@ -712,11 +730,14 @@ body {
 
 
 .sidebar ul li > a {
-  padding: 8px 0 8px 15px;
+  padding: 8px 0 8px 30px;
+  color: #7188b8;
+  text-transform: none;
 }
 
 .sidebar ul li.active > a {
-  border-right: 4px solid;
+  padding-left: 26px;
+  border-left: 4px solid;
   color: #003399;
   background: #d3dbeb;
 }
@@ -742,12 +763,12 @@ body {
 }
 
 .markdown-section h1 {
-  font-size: 2rem;
+  font-size: 3.5rem;
   margin: 0 0 1rem;
 }
 
 .markdown-section h2 {
-  font-size: 1.75rem;
+  font-size: 1.825rem;
   margin: 45px 0 0.8rem;
 }
 
@@ -809,7 +830,7 @@ body {
 
 .markdown-section code {
   border-radius: 2px;
-  color: #e96900;
+  color: #009ee7;
   font-size: 0.8rem;
   margin: 0 2px;
   padding: 3px 5px;
@@ -889,18 +910,18 @@ body {
 
 .token.function,
 .token.keyword {
-  color: #e96900;
+  color: #ff3366;
 }
 
 .token.atrule,
 .token.regex,
 .token.statement {
-  color: #22a2c9;
+  color: #009ee7;
 }
 
 .token.placeholder,
 .token.variable {
-  color: #3d8fd1;
+  color: #009ee7;
 }
 
 .token.deleted {
@@ -922,7 +943,7 @@ body {
 }
 
 .token.important {
-  color: #c94922;
+  color: #ff9900;
 }
 
 .token.entity {
@@ -1010,3 +1031,4 @@ pre[data-lang="mermaid"] {
   padding: 20px;
   border-radius: 6px;
 }
+

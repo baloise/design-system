@@ -2,6 +2,8 @@
 
 A simple tag in different colors
 
+## Usage
+
 ```html
 <bal-tag>Default</bal-tag>
 <bal-tag type="is-light">Light</bal-tag>

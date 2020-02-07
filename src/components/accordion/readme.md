@@ -2,7 +2,7 @@
 
 Accordion is a easy way to toggle things.
 
-## Basic
+## Usage
 
 ```html
 <bal-accordion class="box" open-label="Details einblenden" close-label="Details ausblenden">
@@ -10,7 +10,7 @@ Accordion is a easy way to toggle things.
 </bal-accordion>
 ```
 
-## Types
+### Types
 
 The accordion has 2 type of themes `is-info` and `is-primary`.
 
@@ -20,7 +20,7 @@ The accordion has 2 type of themes `is-info` and `is-primary`.
 </bal-accordion>
 ```
 
-## Open accordion
+### Open accordion
 
 ```html
 <bal-accordion class="box" collapsed="false" open-label="Details einblenden" close-label="Details ausblenden">
@@ -28,7 +28,7 @@ The accordion has 2 type of themes `is-info` and `is-primary`.
 </bal-accordion>
 ```
 
-## Trigger label & icon
+### Trigger label & icon
 
 Use the properties `open-label` & `open-icon` to change the content of the trigger button.
 

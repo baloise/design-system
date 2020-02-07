@@ -1,10 +1,12 @@
 # Tab-Item
 
+## USage
+
 ```html
 <bal-tab-item value="item-a" label="Item A">Hidden Content</bal-tab-item>
 ```
 
-## Activated
+### Activated
 
 ```html
 <bal-tab-item value="item-a" label="Item A" active="true">Visible Content</bal-tab-item>

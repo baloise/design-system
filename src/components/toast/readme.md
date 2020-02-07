@@ -4,7 +4,9 @@ Toast are used to inform the user with a simple text message.
 
 > Note: Toast are getting queued to not confuse the users.
 
-## Types
+## Usage
+
+### Types
 
 Toast have five different types.
 
@@ -16,7 +18,7 @@ Toast have five different types.
 <bal-toast type="is-danger" message="Danger Message"></bal-toast>
 ```
 
-## In Action
+### In Action
 
 Toast can be created with the `balToastController`. The default duration is 5000 milliseconds.
 
