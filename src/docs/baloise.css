@@ -394,7 +394,7 @@ main.hidden {
 
 .markdown-section p.tip {
   border-bottom-right-radius: 2px;
-  border-left: 4px solid #f66;
+  border-left: 4px solid #ff3366;
   border-top-right-radius: 2px;
   margin: 2em 0;
   padding: 12px 24px 12px 30px;
@@ -402,7 +402,7 @@ main.hidden {
 }
 
 .markdown-section p.tip:before {
-  background-color: #f66;
+  background-color: #ff3366;
   border-radius: 100%;
   color: #fff;
   content: "!";
@@ -443,10 +443,6 @@ body.close .sidebar {
 body.close .sidebar-toggle {
   width: auto;
 }
-
-/*body.close .content {*/
-/*  !*left: 0;*!*/
-/*}*/
 
 @media print {
   .app-nav,
@@ -909,18 +905,18 @@ body {
 
 .token.function,
 .token.keyword {
-  color: #e96900;
+  color: #ff3366;
 }
 
 .token.atrule,
 .token.regex,
 .token.statement {
-  color: #22a2c9;
+  color: #009ee7;
 }
 
 .token.placeholder,
 .token.variable {
-  color: #3d8fd1;
+  color: #009ee7;
 }
 
 .token.deleted {
@@ -942,7 +938,7 @@ body {
 }
 
 .token.important {
-  color: #c94922;
+  color: #ff9900;
 }
 
 .token.entity {
