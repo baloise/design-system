@@ -86,6 +86,11 @@ export namespace Components {
     */
     'outlined': boolean;
     /**
+    * Size of the button
+    */
+    'size': | "is-small"
+    | "";
+    /**
     * The theme type of the button. Given by bulma our css framework.
     */
     'type': | "is-primary"
@@ -311,7 +316,7 @@ export namespace Components {
     | "is-success"
     | "is-warning"
     | "is-danger"
-    | "is-light";
+    | "";
   }
   interface BalToast {
     /**
@@ -322,10 +327,6 @@ export namespace Components {
     * Closes the toast after the given duration in ms
     */
     'closeIn': (duration: number) => Promise<void>;
-    /**
-    * Message text
-    */
-    'message': string;
     /**
     * The theme type of the toast. Given by bulma our css framework.
     */
@@ -501,6 +502,11 @@ declare namespace LocalJSX {
     * If `true` the button is outlined
     */
     'outlined'?: boolean;
+    /**
+    * Size of the button
+    */
+    'size'?: | "is-small"
+    | "";
     /**
     * The theme type of the button. Given by bulma our css framework.
     */
@@ -704,13 +710,9 @@ declare namespace LocalJSX {
     | "is-success"
     | "is-warning"
     | "is-danger"
-    | "is-light";
+    | "";
   }
   interface BalToast {
-    /**
-    * Message text
-    */
-    'message'?: string;
     /**
     * The theme type of the toast. Given by bulma our css framework.
     */

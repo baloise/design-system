@@ -54,6 +54,7 @@ The classic button, in different colors, sizes, and states
 | `light`    | `light`    | If `true` the button has a light color                                | `boolean`                                                                               | `undefined`    |
 | `loading`  | `loading`  | If `true` the label is hidden and a loading spinner is shown instead. | `boolean`                                                                               | `undefined`    |
 | `outlined` | `outlined` | If `true` the button is outlined                                      | `boolean`                                                                               | `undefined`    |
+| `size`     | `size`     | Size of the button                                                    | `"" \| "is-small"`                                                                      | `""`           |
 | `type`     | `type`     | The theme type of the button. Given by bulma our css framework.       | `"is-danger" \| "is-info" \| "is-link" \| "is-primary" \| "is-success" \| "is-warning"` | `"is-primary"` |
 
 

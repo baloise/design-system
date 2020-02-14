@@ -3,4 +3,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+
+  bal-button {
+    margin-right: 5px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }

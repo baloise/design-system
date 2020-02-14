@@ -9,8 +9,8 @@ interface ToastOptions {
 class ToastController {
   create(options: ToastOptions): HTMLBalToastElement {
     const toast: HTMLBalToastElement = document.createElement("bal-toast");
-    toast.message = options.message;
-    toast.type = options.type || "is-primary";
+    toast.innerHTML = options.message;
+    toast.type = options.type || "is-success";
     noticesUtils.showNotice(toast, options.duration);
     return toast;
   }

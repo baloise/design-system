@@ -18,6 +18,13 @@ export class Button {
     | "is-link" = "is-primary";
 
   /**
+   * Size of the button
+   */
+  @Prop() size:
+    | "is-small"
+    | "" = "";
+
+  /**
    * If `true` the button is disabled
    */
   @Prop() disabled: boolean;
@@ -53,6 +60,7 @@ export class Button {
         class={[
           "button",
           this.type,
+          this.size,
           this.light ? "is-light" : "",
           this.inverted ? "is-inverted" : "",
           this.outlined ? "is-outlined" : "",

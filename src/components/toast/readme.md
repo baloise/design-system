@@ -6,28 +6,18 @@ Toast are used to inform the user with a simple text message.
 
 ## Usage
 
-### Types
-
-Toast have five different types.
-
-```html
-<bal-toast message="Primary Message"></bal-toast>
-<bal-toast type="is-info" message="Info Message"></bal-toast>
-<bal-toast type="is-success" message="Success Message"></bal-toast>
-<bal-toast type="is-warning" message="Warn Message"></bal-toast>
-<bal-toast type="is-danger" message="Danger Message"></bal-toast>
-```
-
-### In Action
-
 Toast can be created with the `balToastController`. The default duration is 5000 milliseconds.
 
-<bal-button id="toast-default">Show default Toast</bal-button>
-<bal-button id="toast-danger" type="is-danger">Show danger Toast</bal-button>
+<bal-button id="toast-default" type="is-success">Show success Toast</bal-button>
+<bal-button id="toast-warning" type="is-warning">Show warning Toast</bal-button>
+<bal-button id="toast-danger" type="is-danger">Show error Toast</bal-button>
 
 <script type="text/javascript">
     document.getElementById('toast-default').onclick = function() {
         balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 });
+    };
+    document.getElementById('toast-warning').onclick = function() {
+        balToastController.create({ message: 'Warning!', type: 'is-warning' });
     };
     document.getElementById('toast-danger').onclick = function() {
         balToastController.create({ message: 'Danger zone!', type: 'is-danger' });
@@ -37,12 +27,25 @@ Toast can be created with the `balToastController`. The default duration is 5000
 ```typescript
 import {balToastController} from 'bal-ui-library';
 
-document.getElementById('toast-default').onclick = function() {
-  balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 });
-};
-document.getElementById('toast-danger').onclick = function() {
-  balToastController.create({ message: 'Danger zone!', type: 'is-danger' });
-};
+balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 });
+balToastController.create({ message: 'Warning!', type: 'is-warning' });
+balToastController.create({ message: 'Danger zone!', type: 'is-danger' });
+```
+
+### Types
+
+Toast have five different types.
+
+```html
+<bal-toast type="is-success">The Force will be with you</bal-toast>
+```
+
+```html
+<bal-toast type="is-warning">A long time ago in a galaxy far, far away</bal-toast>
+```
+
+```html
+<bal-toast type="is-danger">When gone am I, the last of the Jedi will you be</bal-toast>
 ```
 
 
@@ -51,10 +54,9 @@ document.getElementById('toast-danger').onclick = function() {
 
 ## Properties
 
-| Property  | Attribute | Description                                                    | Type                                                                       | Default        |
-| --------- | --------- | -------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------- |
-| `message` | `message` | Message text                                                   | `string`                                                                   | `undefined`    |
-| `type`    | `type`    | The theme type of the toast. Given by bulma our css framework. | `"is-danger" \| "is-info" \| "is-primary" \| "is-success" \| "is-warning"` | `"is-primary"` |
+| Property | Attribute | Description                                                    | Type                                                                       | Default        |
+| -------- | --------- | -------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------- |
+| `type`   | `type`    | The theme type of the toast. Given by bulma our css framework. | `"is-danger" \| "is-info" \| "is-primary" \| "is-success" \| "is-warning"` | `"is-primary"` |
 
 
 ## Methods

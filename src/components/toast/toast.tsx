@@ -11,11 +11,6 @@ export class Toast {
   @State() animationClass = "fadeInDown";
 
   /**
-   * Message text
-   */
-  @Prop() message: string;
-
-  /**
    * The theme type of the toast. Given by bulma our css framework.
    */
   @Prop() type:
@@ -48,11 +43,11 @@ export class Toast {
 
   render() {
     return (
-      <Host>
+      <Host class="container">
         <div role="alert"
              onClick={() => this.close()}
              class={`toast ${this.animationClass} ${this.type}`}>
-          {this.message}
+          <slot />
         </div>
       </Host>
     );
