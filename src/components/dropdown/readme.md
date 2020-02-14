@@ -141,6 +141,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [bal-datepicker](../datepicker)
+ - [bal-timepicker](../timepicker)
 
 ### Depends on
 
@@ -151,6 +152,7 @@ Type: `Promise<void>`
 graph TD;
   bal-dropdown --> bal-icon
   bal-datepicker --> bal-dropdown
+  bal-timepicker --> bal-dropdown
   style bal-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

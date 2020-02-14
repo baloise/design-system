@@ -8,6 +8,7 @@
 
   - [Checkbox](docs/elements/checkbox.md)
   - [Datepicker](components/datepicker/readme.md)
+  - [Timepicker](components/timepicker/readme.md)
   - [Dropdown](components/dropdown/readme.md)
     - [Dropdown Option](components/dropdown-option/readme.md)
   - [Field](components/field/readme.md)

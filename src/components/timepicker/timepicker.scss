@@ -1,0 +1,112 @@
+@import "../../scss/bal-ui-library.globals";
+@import "node_modules/bulma/sass/components/pagination.sass";
+@import "node_modules/bulma/sass/form/all";
+
+:host {
+  display: block;
+  position: relative;
+}
+
+.clickable,
+.clickable input {
+  cursor: pointer;
+}
+
+.timepicker {
+  user-select: none;
+
+  .timepicker-header {
+    text-align: center;
+    .timepicker-label {
+      display: inline-block;
+      padding: 6px 5px 0px 5px !important;
+      color: $blue !important;
+      font-size: $size-4 !important;
+      font-weight: $weight-bold;
+    }
+  }
+
+  .timepicker-popup {
+    padding: 26px 20px;
+    width: 100%;
+  }
+
+  .timepicker-table {
+    display: table;
+    width: 100%;
+    margin: 15px auto 0 auto;
+
+    .timepicker-body {
+      display: table-row-group;
+
+      .timepicker-row {
+        display: table-row;
+      }
+    }
+
+    .timepicker-row:first-child .timepicker-cell {
+      border-top: 1px solid $blue-light-line;
+    }
+
+    .timepicker-cell {
+      position: relative;
+      text-align: center;
+      vertical-align: middle;
+      display: table-cell;
+      max-width: 0;
+      padding: 12px 5px;
+      border-bottom: 1px solid $blue-light-line;
+      border-left: 1px solid $blue-light-line;
+      color: $blue;
+      cursor: pointer;
+      font-size: $size-5;
+
+      &:last-child {
+        border-right: 1px solid $blue-light-line;
+      }
+
+      &.is-selected {
+        background: $blue;
+        color: $white;
+      }
+
+      &.is-outdated,
+      &.is-disabled {
+        background: $blue-light;
+        color: $blue-light-text;
+        cursor: default;
+      }
+
+      &.is-today:after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 3px;
+        height: 3px;
+        background: $blue;
+        border-radius: 100%;
+        margin-top: 2px;
+        margin-left: -1.5px;
+        left: 50%;
+      }
+    }
+
+    header.timepicker-header {
+      display: table-header-group;
+
+      .timepicker-cell {
+        color: $blue-light-text;
+        font-weight: $weight-normal;
+        border: none;
+        cursor: default;
+      }
+    }
+  }
+
+  @include tablet() {
+    .timepicker-popup {
+      padding: 26px 40px;
+      width: 433px;
+    }
+  }
+}
