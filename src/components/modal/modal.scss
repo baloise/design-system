@@ -8,15 +8,23 @@
   display: block;
 }
 
-.modal-content .box {
-  margin: 10px;
+.modal {
+  justify-content: flex-start;
+}
 
-  .title {
-    margin-top: 0;
-  }
+.modal-content {
+  margin-top: 30px;
 
-  p {
-    margin: 10px 0;
+  .box {
+    margin: 10px;
+
+    .title {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 10px 0;
+    }
   }
 }
 
