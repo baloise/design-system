@@ -8,21 +8,6 @@ Typically they are used for Yes or No questions
 ```html
 <div class="bal-select-buttons">
     <div class="bal-select-button">
-        <input type="radio" id="question-1-true" name="question-1" value="true"/>
-        <label for="question-1-true">Yes</label>
-    </div> 
-    <div class="bal-select-button">
-        <input type="radio" id="question-1-false" name="question-1" value="false"/>
-        <label for="question-1-false">No</label>
-    </div>
-</div>
-```
-
-### Preselected
-
-```html
-<div class="bal-select-buttons">
-    <div class="bal-select-button">
         <input type="radio" id="gender-male" name="gender-1" value="male" checked="checked"/>
         <label for="gender-male">Mr</label>
     </div> 
