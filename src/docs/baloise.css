@@ -229,7 +229,6 @@ main.hidden {
   width: 300px;
   position: fixed;
   top: 0;
-  z-index: 3;
 }
 
 .sidebar > h1 .app-nav {
@@ -769,7 +768,7 @@ body {
 
 .markdown-section h2 {
   font-size: 1.825rem;
-  margin: 45px 0 0.8rem;
+  /*margin: 45px 0 0.8rem;*/
 }
 
 .markdown-section h3 {

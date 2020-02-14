@@ -1,0 +1,11 @@
+@import "../../scss/bal-ui-library.globals";
+@import "node_modules/bulma/sass/elements/title";
+
+:host {
+  display: block;
+
+  .subtitle {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+}

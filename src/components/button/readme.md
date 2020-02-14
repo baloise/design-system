@@ -7,20 +7,13 @@ The classic button, in different colors, sizes, and states
 ```html
 <bal-button type="is-primary">Primary</bal-button>
 <bal-button type="is-info">Info</bal-button>
-<bal-button type="is-success">Success</bal-button>
-<bal-button type="is-warning">Warning</bal-button>
-<bal-button type="is-danger">Danger</bal-button>
 <bal-button type="is-link">Link</bal-button>
 ```
 
 ### Outlined
 
 ```html
-<bal-button type="is-primary" outlined>Primary</bal-button>
 <bal-button type="is-info" outlined>Info</bal-button>
-<bal-button type="is-success" outlined>Success</bal-button>
-<bal-button type="is-warning" outlined>Warnung</bal-button>
-<bal-button type="is-danger" outlined>Danger</bal-button>
 ```
 
 ### Inverted
@@ -38,9 +31,6 @@ The classic button, in different colors, sizes, and states
 ```html
 <bal-button type="is-primary" disabled>Primary</bal-button>
 <bal-button type="is-info" disabled>Info</bal-button>
-<bal-button type="is-success" disabled>Success</bal-button>
-<bal-button type="is-warning" disabled>Warning</bal-button>
-<bal-button type="is-danger" disabled>Danger</bal-button>
 <bal-button type="is-link" disabled>Link</bal-button>
 ```
 
@@ -49,9 +39,6 @@ The classic button, in different colors, sizes, and states
 ```html
 <bal-button type="is-primary" loading>Primary</bal-button>
 <bal-button type="is-info" loading>Info</bal-button>
-<bal-button type="is-success" loading>Success</bal-button>
-<bal-button type="is-warning" loading>Warning</bal-button>
-<bal-button type="is-danger" loading>Danger</bal-button>
 ```
 
 <!-- Auto Generated Below -->
