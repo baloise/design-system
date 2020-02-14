@@ -21,10 +21,10 @@ the app before interaction can resume.
         document.getElementById('bal-modal-example').open();
     };
     document.getElementById('bal-modal-close-1').onclick = function() {
-        document.getElementById('bal-modal-example-1').close();
+        document.getElementById('bal-modal-example').close();
     };
     document.getElementById('bal-modal-close-2').onclick = function() {
-        document.getElementById('bal-modal-example-1').close();
+        document.getElementById('bal-modal-example').close();
     };
 </script>
 
