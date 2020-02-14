@@ -25,7 +25,7 @@ export class Toast {
    */
   @Method()
   async closeIn(duration: number): Promise<void> {
-    // this.timer = setTimeout(() => this.close(), duration);
+    this.timer = setTimeout(() => this.close(), duration);
   }
 
   /**

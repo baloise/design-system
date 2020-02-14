@@ -368,7 +368,7 @@ main.hidden {
   min-width: 100%;
 }
 
-.markdown-section table {
+.markdown-section > table {
   border-collapse: collapse;
   border-spacing: 0;
   display: block;
@@ -387,7 +387,7 @@ main.hidden {
   padding: 6px 13px;
 }
 
-.markdown-section tr {
+.markdown-section table > tr {
   border-top: 1px solid #ccc;
 }
 

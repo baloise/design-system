@@ -86,6 +86,11 @@ export namespace Components {
     */
     'outlined': boolean;
     /**
+    * Size of the button
+    */
+    'size': | "is-small"
+    | "";
+    /**
     * The theme type of the button. Given by bulma our css framework.
     */
     'type': | "is-primary"
@@ -497,6 +502,11 @@ declare namespace LocalJSX {
     * If `true` the button is outlined
     */
     'outlined'?: boolean;
+    /**
+    * Size of the button
+    */
+    'size'?: | "is-small"
+    | "";
     /**
     * The theme type of the button. Given by bulma our css framework.
     */

@@ -20,6 +20,7 @@
 
   - [Box](docs/elements/box.md)
   - [Image](docs/elements/image.md)
+  - [Table](docs/elements/table.md)
   - [Title](docs/elements/title.md)
   - [Track-Line](docs/elements/track-line.md)
 

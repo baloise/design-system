@@ -7,6 +7,12 @@
   user-select: none;
   min-height: 50px;
 
+  &.is-small {
+    min-height: 38px;
+    width: 38px;
+    padding: 9px 2px 5.5px 2px;
+  }
+
   &.is-success, &.is-success:hover, &.is-success:focus,
   &.is-danger, &.is-danger:hover, &.is-danger:focus,
   &.is-warning, &.is-warning:hover, &.is-warning:focus {
