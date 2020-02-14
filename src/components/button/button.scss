@@ -7,6 +7,10 @@
   user-select: none;
   min-height: 50px;
 
+  &.is-loading::after {
+    display: none;
+  }
+
   &::-moz-focus-inner {
     border: 0;
   }
@@ -101,6 +105,21 @@
       background: $white;
     }
   }
+
+  &.is-info.is-outlined {
+    border-color: $blue-line;
+    &:hover,
+    &.is-hovered,
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-active {
+      color: $blue;
+      background: $blue-light-line;
+      border-color: $blue-line;
+    }
+  }
+
 
   &.is-info.is-inverted.is-outlined {
     &:hover,

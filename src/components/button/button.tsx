@@ -57,6 +57,7 @@ export class Button {
           this.inverted ? "is-inverted" : "",
           this.outlined ? "is-outlined" : "",
           this.expanded ? "is-fullwidth" : "",
+          this.loading ? "is-loading" : "",
         ].join(" ")}
         disabled={this.disabled}>
         {this.loading ? (
