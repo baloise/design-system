@@ -311,7 +311,7 @@ export namespace Components {
     | "is-success"
     | "is-warning"
     | "is-danger"
-    | "is-light";
+    | "";
   }
   interface BalToast {
     /**
@@ -322,10 +322,6 @@ export namespace Components {
     * Closes the toast after the given duration in ms
     */
     'closeIn': (duration: number) => Promise<void>;
-    /**
-    * Message text
-    */
-    'message': string;
     /**
     * The theme type of the toast. Given by bulma our css framework.
     */
@@ -704,13 +700,9 @@ declare namespace LocalJSX {
     | "is-success"
     | "is-warning"
     | "is-danger"
-    | "is-light";
+    | "";
   }
   interface BalToast {
-    /**
-    * Message text
-    */
-    'message'?: string;
     /**
     * The theme type of the toast. Given by bulma our css framework.
     */

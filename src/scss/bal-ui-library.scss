@@ -2,6 +2,8 @@
 @import "base/all";
 
 .bal-app {
+  position: relative;
+
   @import "elements/all";
 
   @import "node_modules/bulma/sass/grid/_all.sass";

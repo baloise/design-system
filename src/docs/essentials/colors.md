@@ -4,7 +4,8 @@
 | ---           | --------      | -----            | -------------- |
 | **White**     | `$white`      | `$white`          | <div class="bal-app box"><span class="bd-color has-background-white"></span></div> |
 | **Black**     | `$black`      | `$black`          | <div class="bal-app box"><span class="bd-color has-background-black"></span></div> |
-| **Light**     | `$light`      | `$grey`           | <div class="bal-app box"><span class="bd-color has-background-light"></span></div> |
+| **Grey**      | `$grey`       | `$grey`           | <div class="bal-app box"><span class="bd-color has-background-grey"></span></div> |
+| **Light**     | `$light`      | `$white-ter`      | <div class="bal-app box"><span class="bd-color has-background-light"></span></div> |
 | **Dark**      | `$dark`       | `$blue`           | <div class="bal-app box"><span class="bd-color has-background-dark"></span></div> |
 | **Primary**   | `$primary`    | `$cyan`           | <div class="bal-app box"><span class="bd-color has-background-primary"></span></div> |
 | **Info**      | `$info`       | `$blue`           | <div class="bal-app box"><span class="bd-color has-background-info"></span></div> |

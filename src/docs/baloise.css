@@ -747,11 +747,11 @@ body {
   float: left;
 }
 
-.markdown-section h1,
-.markdown-section h2,
-.markdown-section h3,
-.markdown-section h4,
-.markdown-section strong {
+.markdown-section > h1,
+.markdown-section > h2,
+.markdown-section > h3,
+.markdown-section > h4,
+.markdown-section > strong {
   color: #2c3e50;
   font-weight: 600;
 }
@@ -761,30 +761,30 @@ body {
   font-weight: 600;
 }
 
-.markdown-section h1 {
+.markdown-section > h1 {
   font-size: 3.5rem;
   margin: 0 0 1rem;
 }
 
-.markdown-section h2 {
+.markdown-section > h2 {
   font-size: 1.825rem;
-  /*margin: 45px 0 0.8rem;*/
+  margin: 45px 0 0.8rem;
 }
 
-.markdown-section h3 {
+.markdown-section > h3 {
   font-size: 1.5rem;
   margin: 40px 0 0.6rem;
 }
 
-.markdown-section h4 {
+.markdown-section > h4 {
   font-size: 1.25rem;
 }
 
-.markdown-section h5 {
+.markdown-section > h5 {
   font-size: 1rem;
 }
 
-.markdown-section h6 {
+.markdown-section > h6 {
   color: #777;
   font-size: 1rem;
 }
