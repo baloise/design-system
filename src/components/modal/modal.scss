@@ -1,0 +1,34 @@
+@import "modal.vars";
+@import "../../scss/elements/box";
+@import "node_modules/bulma/sass/layout/section";
+@import "node_modules/bulma/sass/elements/box";
+@import "node_modules/bulma/sass/components/modal";
+
+:host {
+  display: block;
+}
+
+.modal-content .box {
+  margin: 10px;
+
+  .title {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 10px 0;
+  }
+}
+
+.modal-close {
+  position: absolute;
+
+  &::before, &::after {
+    background: $blue-line;
+  }
+
+  &:hover, &:focus {
+    background: $blue-light;
+  }
+
+}

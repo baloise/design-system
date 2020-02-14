@@ -29,6 +29,7 @@
   - [Accordion](components/accordion/readme.md)
   - [Button](components/button/readme.md)
   - [Icon](components/icon/readme.md)
+  - [Modal](components/modal/readme.md)
   - [Spinner](components/spinner/readme.md)
   - [Tabs](components/tabs/readme.md)
     - [Tab-Item](components/tab-item/readme.md)

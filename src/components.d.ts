@@ -251,6 +251,12 @@ export namespace Components {
     */
     'size': "small" | "medium" | "large" | "";
   }
+  interface BalModal {
+    'close': () => Promise<void>;
+    'open': () => Promise<void>;
+  }
+  interface BalModalActions {}
+  interface BalModalTitle {}
   interface BalSpinner {}
   interface BalTabItem {
     /**
@@ -376,6 +382,24 @@ declare global {
     new (): HTMLBalIconElement;
   };
 
+  interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {}
+  var HTMLBalModalElement: {
+    prototype: HTMLBalModalElement;
+    new (): HTMLBalModalElement;
+  };
+
+  interface HTMLBalModalActionsElement extends Components.BalModalActions, HTMLStencilElement {}
+  var HTMLBalModalActionsElement: {
+    prototype: HTMLBalModalActionsElement;
+    new (): HTMLBalModalActionsElement;
+  };
+
+  interface HTMLBalModalTitleElement extends Components.BalModalTitle, HTMLStencilElement {}
+  var HTMLBalModalTitleElement: {
+    prototype: HTMLBalModalTitleElement;
+    new (): HTMLBalModalTitleElement;
+  };
+
   interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {}
   var HTMLBalSpinnerElement: {
     prototype: HTMLBalSpinnerElement;
@@ -413,6 +437,9 @@ declare global {
     'bal-dropdown-option': HTMLBalDropdownOptionElement;
     'bal-field': HTMLBalFieldElement;
     'bal-icon': HTMLBalIconElement;
+    'bal-modal': HTMLBalModalElement;
+    'bal-modal-actions': HTMLBalModalActionsElement;
+    'bal-modal-title': HTMLBalModalTitleElement;
     'bal-spinner': HTMLBalSpinnerElement;
     'bal-tab-item': HTMLBalTabItemElement;
     'bal-tabs': HTMLBalTabsElement;
@@ -624,6 +651,9 @@ declare namespace LocalJSX {
     */
     'size'?: "small" | "medium" | "large" | "";
   }
+  interface BalModal {}
+  interface BalModalActions {}
+  interface BalModalTitle {}
   interface BalSpinner {}
   interface BalTabItem {
     /**
@@ -699,6 +729,9 @@ declare namespace LocalJSX {
     'bal-dropdown-option': BalDropdownOption;
     'bal-field': BalField;
     'bal-icon': BalIcon;
+    'bal-modal': BalModal;
+    'bal-modal-actions': BalModalActions;
+    'bal-modal-title': BalModalTitle;
     'bal-spinner': BalSpinner;
     'bal-tab-item': BalTabItem;
     'bal-tabs': BalTabs;
@@ -720,6 +753,9 @@ declare module "@stencil/core" {
       'bal-dropdown-option': LocalJSX.BalDropdownOption & JSXBase.HTMLAttributes<HTMLBalDropdownOptionElement>;
       'bal-field': LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
       'bal-icon': LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
+      'bal-modal': LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
+      'bal-modal-actions': LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;
+      'bal-modal-title': LocalJSX.BalModalTitle & JSXBase.HTMLAttributes<HTMLBalModalTitleElement>;
       'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
       'bal-tab-item': LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
       'bal-tabs': LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
