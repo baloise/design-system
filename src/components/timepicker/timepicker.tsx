@@ -1,11 +1,5 @@
 import { Component, Host, h, State, Prop, Watch, Event, EventEmitter, Method } from "@stencil/core";
 import moment from "moment";
-import { i18n } from "./i18n";
-
-moment.updateLocale("it", i18n.it);
-moment.updateLocale("fr", i18n.fr);
-moment.updateLocale("en", i18n.en);
-moment.updateLocale("de", i18n.de);
 
 interface CalendarCell {
   date: moment.Moment;
@@ -25,6 +19,7 @@ export type TimeCallback = (date: string) => boolean;
 })
 export class Timepicker {
   static FORMAT = "HH:mm";
+  static HOURS_PER_ROW = 4;
 
   dropDownElement!: HTMLBalDropdownElement;
   now: moment.Moment = moment().startOf("hour");
@@ -145,7 +140,7 @@ export class Timepicker {
             || (this.maxTime && hourPointer > this.parsedMaxTime),
         } as CalendarCell];
         hourPointer = moment(hourPointer.add(1, "hour"));
-      } while (row.length < 4);
+      } while (row.length < Timepicker.HOURS_PER_ROW);
       calendar = [...calendar, row];
     } while (this.pointerTime.isSame(hourPointer, "day"));
 

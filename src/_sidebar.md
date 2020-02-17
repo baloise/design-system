@@ -8,13 +8,13 @@
 
   - [Checkbox](docs/elements/checkbox.md)
   - [Datepicker](components/datepicker/readme.md)
-  - [Timepicker](components/timepicker/readme.md)
   - [Dropdown](components/dropdown/readme.md)
     - [Dropdown Option](components/dropdown-option/readme.md)
   - [Field](components/field/readme.md)
   - [Input](docs/elements/input.md)
   - [Radio](docs/elements/radio.md)
   - [Select Button](docs/elements/select-button.md)
+  - [Timepicker](components/timepicker/readme.md)
   - [Typeahead](components/dropdown/readme.md?id=typeahead)
   
 - **Elements**
