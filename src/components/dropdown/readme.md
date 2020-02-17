@@ -19,7 +19,6 @@
 ```
 
 <script type="text/javascript">
-    console.log(document.getElementById('bal-dropdown-example'));
     document.getElementById('bal-dropdown-example').value = {
         label: 'Black Panter',
         value: '2'

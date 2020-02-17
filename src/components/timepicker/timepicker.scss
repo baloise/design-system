@@ -34,7 +34,6 @@
   .timepicker-table {
     display: table;
     border-collapse: collapse;
-    //border-spacing: 0px;
     width: 100%;
     margin: 15px auto 0 auto;
 
@@ -54,10 +53,6 @@
       max-width: 0;
       padding: 12px 5px;
       border: 1px solid $blue-light-line;
-      &.is-selectable:hover {
-        outline: 1px solid  $blue;
-        outline-offset: -1px;
-      }
       color: $blue;
       cursor: pointer;
       font-size: $size-5;
@@ -73,6 +68,12 @@
         background-clip: padding-box; 
         color: $blue-light-text;
         cursor: default;
+      }
+
+      &.is-selectable:hover {
+        outline: 1px solid  $blue;
+        outline-offset: -1px;
+        z-index: 3000;
       }
 
       &.is-today:after {
