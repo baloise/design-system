@@ -33,6 +33,8 @@
 
   .timepicker-table {
     display: table;
+    border-collapse: collapse;
+    //border-spacing: 0px;
     width: 100%;
     margin: 15px auto 0 auto;
 
@@ -44,10 +46,6 @@
       }
     }
 
-    .timepicker-row:first-child .timepicker-cell {
-      border-top: 1px solid $blue-light-line;
-    }
-
     .timepicker-cell {
       position: relative;
       text-align: center;
@@ -55,15 +53,14 @@
       display: table-cell;
       max-width: 0;
       padding: 12px 5px;
-      border-bottom: 1px solid $blue-light-line;
-      border-left: 1px solid $blue-light-line;
+      border: 1px solid $blue-light-line;
+      &.is-selectable:hover {
+        outline: 1px solid  $blue;
+        outline-offset: -1px;
+      }
       color: $blue;
       cursor: pointer;
       font-size: $size-5;
-
-      &:last-child {
-        border-right: 1px solid $blue-light-line;
-      }
 
       &.is-selected {
         background: $blue;
@@ -73,6 +70,7 @@
       &.is-outdated,
       &.is-disabled {
         background: $blue-light;
+        background-clip: padding-box; 
         color: $blue-light-text;
         cursor: default;
       }

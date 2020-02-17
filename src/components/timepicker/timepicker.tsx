@@ -192,6 +192,7 @@ export class Timepicker {
                             cell.isSelected ? "is-selected" : "",
                             cell.isOutdated ? "is-outdated" : "",
                             cell.isDisabled ? "is-disabled" : "",
+                            !cell.isDisabled && !cell.isOutdated ? "is-selectable" : "",
                           ].join(" ")}>
                             {cell.label}
                           </div>,
