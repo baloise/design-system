@@ -19,10 +19,12 @@ export class Navbar {
           this.light ? "" : "is-info",
         ].join(" ")} role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
-            <a class="navbar-item"
+            <a class="navbar-item app-title"
                href={this.logoHref}>
-              <img src={this.logoSrc}
-                   alt={this.logoAlt}/>
+              <slot name="navbar-brand">
+                <img src={this.logoSrc}
+                     alt={this.logoAlt}/>
+              </slot>
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
               <span aria-hidden="true"></span>
@@ -32,10 +34,10 @@ export class Navbar {
           </div>
           <div class="navbar-menu">
             <div class="navbar-start">
-              <slot name="header-start" />
+              <slot name="navbar-start"/>
             </div>
             <div class="navbar-end">
-              <slot name="header-end" />
+              <slot name="navbar-end"/>
             </div>
           </div>
         </nav>

@@ -8,6 +8,14 @@ A responsive horizontal navbar that can support images, links, buttons, and drop
 <bal-navbar></bal-navbar>
 ```
 
+```html
+<bal-navbar>
+    <span slot="navbar-brand">
+        App Name
+    </span>
+</bal-navbar>
+```
+
 ### Light mode
 
 ```html
@@ -18,16 +26,16 @@ A responsive horizontal navbar that can support images, links, buttons, and drop
 
 ```html
 <bal-navbar>
-    <a slot="header-start" class="navbar-item">
+    <a slot="navbar-start" class="navbar-item">
         Home
     </a>
-    <div slot="header-end" class="navbar-item">
+    <div slot="navbar-end" class="navbar-item">
         <bal-button inverted>Action</bal-button>
     </div>
 </bal-navbar>
 <br>
 <bal-navbar light logo-src="docs/assets/logo.png">
-    <div slot="header-end" class="navbar-item">
+    <div slot="navbar-end" class="navbar-item">
         <bal-button inverted>Action</bal-button>
     </div>
 </bal-navbar>
