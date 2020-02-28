@@ -5,13 +5,23 @@ A responsive horizontal navbar that can support images, links, buttons, and drop
 ## Usage
 
 ```html
-<bal-navbar></bal-navbar>
+<bal-navbar>
+    <span slot="navbar-brand">
+        App Name
+    </span>
+</bal-navbar>
+
+<bal-navbar light>
+    <span slot="navbar-brand">
+        App Name
+    </span>
+</bal-navbar>
 ```
 
 ```html
 <bal-navbar>
     <span slot="navbar-brand">
-        App Name
+        <img src="docs/assets/logo-dark.png" />
     </span>
 </bal-navbar>
 ```
@@ -19,13 +29,20 @@ A responsive horizontal navbar that can support images, links, buttons, and drop
 ### Light mode
 
 ```html
-<bal-navbar light logo-src="docs/assets/logo.png"></bal-navbar>
+<bal-navbar light>
+    <span slot="navbar-brand">
+        <img src="docs/assets/logo.png" />
+    </span>
+</bal-navbar>
 ```
 
 ### Actions
 
 ```html
 <bal-navbar>
+    <span slot="navbar-brand">
+        App Name
+    </span>
     <a slot="navbar-start" class="navbar-item">
         Home
     </a>
@@ -35,6 +52,9 @@ A responsive horizontal navbar that can support images, links, buttons, and drop
 </bal-navbar>
 <br>
 <bal-navbar light logo-src="docs/assets/logo.png">
+    <span slot="navbar-brand">
+        App Name
+    </span>
     <div slot="navbar-end" class="navbar-item">
         <bal-button inverted>Action</bal-button>
     </div>
@@ -47,12 +67,10 @@ A responsive horizontal navbar that can support images, links, buttons, and drop
 
 ## Properties
 
-| Property   | Attribute   | Description | Type      | Default                       |
-| ---------- | ----------- | ----------- | --------- | ----------------------------- |
-| `light`    | `light`     |             | `boolean` | `false`                       |
-| `logoAlt`  | `logo-alt`  |             | `string`  | `""`                          |
-| `logoHref` | `logo-href` |             | `string`  | `"https://bulma.io"`          |
-| `logoSrc`  | `logo-src`  |             | `string`  | `"docs/assets/logo-dark.png"` |
+| Property   | Attribute   | Description | Type      | Default              |
+| ---------- | ----------- | ----------- | --------- | -------------------- |
+| `light`    | `light`     |             | `boolean` | `false`              |
+| `logoHref` | `logo-href` |             | `string`  | `"https://bulma.io"` |
 
 
 ----------------------------------------------

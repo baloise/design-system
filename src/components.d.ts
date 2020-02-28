@@ -268,9 +268,7 @@ export namespace Components {
   interface BalModalTitle {}
   interface BalNavbar {
     'light': boolean;
-    'logoAlt': string;
     'logoHref': string;
-    'logoSrc': string;
   }
   interface BalSpinner {}
   interface BalTabItem {
@@ -683,9 +681,7 @@ declare namespace LocalJSX {
   interface BalModalTitle {}
   interface BalNavbar {
     'light'?: boolean;
-    'logoAlt'?: string;
     'logoHref'?: string;
-    'logoSrc'?: string;
   }
   interface BalSpinner {}
   interface BalTabItem {
