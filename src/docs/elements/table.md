@@ -24,10 +24,10 @@
             <td><bal-tag type="is-success">Ready</bal-tag></td>
             <td class="has-buttons">
                 <div class="buttons">
-                    <bal-button type="is-info" size="is-small" outlined>
+                    <bal-button type="is-info" size="is-small" is-square outlined>
                         <bal-icon name="edit" size="medium"></bal-icon>
                     </bal-button>
-                    <bal-button type="is-info" size="is-small" outlined>
+                    <bal-button type="is-info" size="is-small" is-square outlined>
                         <bal-icon name="trash" size="medium"></bal-icon>
                     </bal-button>
                 </div>
@@ -44,10 +44,10 @@
             <td><bal-tag type="is-danger">Injured</bal-tag></td>
             <td class="has-buttons">
                 <div class="buttons">
-                    <bal-button type="is-info" size="is-small" outlined>
+                    <bal-button type="is-info" size="is-small" is-square outlined>
                         <bal-icon name="edit" size="medium"></bal-icon>
                     </bal-button>
-                    <bal-button type="is-info" size="is-small" outlined>
+                    <bal-button type="is-info" size="is-small" is-square outlined>
                         <bal-icon name="trash" size="medium"></bal-icon>
                     </bal-button>
                 </div>
@@ -64,10 +64,10 @@
             <td><bal-tag type="is-warning">In school</bal-tag></td>
             <td class="has-buttons">
                 <div class="buttons">
-                    <bal-button type="is-info" size="is-small" outlined>
+                    <bal-button type="is-info" size="is-small" is-square outlined>
                         <bal-icon name="edit" size="medium"></bal-icon>
                     </bal-button>
-                    <bal-button type="is-info" size="is-small" outlined>
+                    <bal-button type="is-info" size="is-small" is-square outlined>
                         <bal-icon name="trash" size="medium"></bal-icon>
                     </bal-button>
                 </div>
@@ -84,10 +84,10 @@
             <td><bal-tag>Unknown</bal-tag></td>
             <td class="has-buttons">
                 <div class="buttons">
-                    <bal-button type="is-info" size="is-small" outlined>
+                    <bal-button type="is-info" size="is-small" is-square outlined>
                         <bal-icon name="edit" size="medium"></bal-icon>
                     </bal-button>
-                    <bal-button type="is-info" size="is-small" outlined>
+                    <bal-button type="is-info" size="is-small" is-square outlined>
                         <bal-icon name="trash" size="medium"></bal-icon>
                     </bal-button>
                 </div>
