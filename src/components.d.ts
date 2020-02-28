@@ -74,6 +74,10 @@ export namespace Components {
     */
     'inverted': boolean;
     /**
+    * If `true` the width of the buttons is limited
+    */
+    'isSquare': boolean;
+    /**
     * If `true` the button has a light color
     */
     'light': boolean;
@@ -262,6 +266,12 @@ export namespace Components {
   }
   interface BalModalActions {}
   interface BalModalTitle {}
+  interface BalNavbar {
+    'light': boolean;
+    'logoAlt': string;
+    'logoHref': string;
+    'logoSrc': string;
+  }
   interface BalSpinner {}
   interface BalTabItem {
     /**
@@ -401,6 +411,12 @@ declare global {
     new (): HTMLBalModalTitleElement;
   };
 
+  interface HTMLBalNavbarElement extends Components.BalNavbar, HTMLStencilElement {}
+  var HTMLBalNavbarElement: {
+    prototype: HTMLBalNavbarElement;
+    new (): HTMLBalNavbarElement;
+  };
+
   interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {}
   var HTMLBalSpinnerElement: {
     prototype: HTMLBalSpinnerElement;
@@ -441,6 +457,7 @@ declare global {
     'bal-modal': HTMLBalModalElement;
     'bal-modal-actions': HTMLBalModalActionsElement;
     'bal-modal-title': HTMLBalModalTitleElement;
+    'bal-navbar': HTMLBalNavbarElement;
     'bal-spinner': HTMLBalSpinnerElement;
     'bal-tab-item': HTMLBalTabItemElement;
     'bal-tabs': HTMLBalTabsElement;
@@ -490,6 +507,10 @@ declare namespace LocalJSX {
     * If `true` the button is inverted
     */
     'inverted'?: boolean;
+    /**
+    * If `true` the width of the buttons is limited
+    */
+    'isSquare'?: boolean;
     /**
     * If `true` the button has a light color
     */
@@ -660,6 +681,12 @@ declare namespace LocalJSX {
   interface BalModal {}
   interface BalModalActions {}
   interface BalModalTitle {}
+  interface BalNavbar {
+    'light'?: boolean;
+    'logoAlt'?: string;
+    'logoHref'?: string;
+    'logoSrc'?: string;
+  }
   interface BalSpinner {}
   interface BalTabItem {
     /**
@@ -734,6 +761,7 @@ declare namespace LocalJSX {
     'bal-modal': BalModal;
     'bal-modal-actions': BalModalActions;
     'bal-modal-title': BalModalTitle;
+    'bal-navbar': BalNavbar;
     'bal-spinner': BalSpinner;
     'bal-tab-item': BalTabItem;
     'bal-tabs': BalTabs;
@@ -758,6 +786,7 @@ declare module "@stencil/core" {
       'bal-modal': LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
       'bal-modal-actions': LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;
       'bal-modal-title': LocalJSX.BalModalTitle & JSXBase.HTMLAttributes<HTMLBalModalTitleElement>;
+      'bal-navbar': LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
       'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
       'bal-tab-item': LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
       'bal-tabs': LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
