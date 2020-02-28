@@ -25,6 +25,11 @@ export class Button {
     | "" = "";
 
   /**
+   * If `true` the width of the buttons is limited
+   */
+  @Prop() isSquare: boolean;
+
+  /**
    * If `true` the button is disabled
    */
   @Prop() disabled: boolean;
@@ -66,6 +71,7 @@ export class Button {
           this.outlined ? "is-outlined" : "",
           this.expanded ? "is-fullwidth" : "",
           this.loading ? "is-loading" : "",
+          this.isSquare ? "is-square" : "",
         ].join(" ")}
         disabled={this.disabled}>
         {this.loading ? (
