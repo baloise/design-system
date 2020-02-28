@@ -9,8 +9,13 @@
 
   &.is-small {
     min-height: 38px;
+    min-width: 38px;
+    padding: 17px 20px 19px 20px;
+  }
+
+  &.is-square {
     width: 38px;
-    padding: 9px 2px 5.5px 2px;
+    padding: 4px 0 0 0;
   }
 
   &.is-success, &.is-success:hover, &.is-success:focus,

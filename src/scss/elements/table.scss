@@ -30,6 +30,7 @@ table.table {
 
   td, th {
     font-size: $size-normal;
+    padding-top: 10px;
 
     .bal-checkbox {
       padding: 0;
@@ -42,6 +43,7 @@ table.table {
 
     .buttons {
       justify-content: flex-end;
+      padding: 3px;
     }
   }
 }
