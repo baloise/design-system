@@ -7,9 +7,7 @@ import {Component, Host, h, Prop} from "@stencil/core";
 export class Navbar {
 
   @Prop() light = false;
-  @Prop() logoSrc = "docs/assets/logo-dark.png";
   @Prop() logoHref = "https://bulma.io";
-  @Prop() logoAlt = "";
 
   render() {
     return (
@@ -21,10 +19,7 @@ export class Navbar {
           <div class="navbar-brand">
             <a class="navbar-item app-title"
                href={this.logoHref}>
-              <slot name="navbar-brand">
-                <img src={this.logoSrc}
-                     alt={this.logoAlt}/>
-              </slot>
+              <slot name="navbar-brand"/>
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
               <span aria-hidden="true"></span>

@@ -71,6 +71,11 @@ $navbar-breakpoint: $desktop;
 
   .app-title span {
     font-size: $size-3;
+    color: $blue;
+  }
+
+  &.is-info .app-title span {
+    color: $white;
   }
 
 }
