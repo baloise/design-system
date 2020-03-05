@@ -3,8 +3,8 @@
 To start building a new web component using Stencil, clone this repo to a new directory:
 
 ```bash
-git clone https://github.com/hirsch88/bal-ui-library.git bal-ui-library
-cd bal-ui-library
+git clone https://github.com/baloise/ui-library.git ui-library
+cd ui-library
 ```
 
 and run:

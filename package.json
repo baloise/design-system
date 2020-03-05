@@ -1,5 +1,5 @@
 {
-	"name": "bal-ui-library",
+	"name": "@baloise/ui-library",
 	"version": "0.0.0-development",
 	"description": "Lightweight UI-Component Library for Baloise Applications",
 	"main": "dist/index.js",
@@ -9,7 +9,7 @@
 	"types": "dist/types/index.d.ts",
 	"collection": "dist/collection/collection-manifest.json",
 	"collection:main": "dist/collection/index.js",
-	"unpkg": "dist/bal-ui-library/bal-ui-library.js",
+	"unpkg": "dist/ui-library/ui-library.js",
 	"files": [
 		"dist/",
 		"loader/",
@@ -49,7 +49,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/hirsch88/bal-ui-library.git"
+		"url": "https://github.com/baloise/ui-library.git"
 	},
 	"dependencies": {
 		"bulma": "0.8.0",
