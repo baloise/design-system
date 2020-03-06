@@ -14,7 +14,7 @@ $input-disabled-background-color: $blue-light;
 $input-disabled-border-color: $blue-light-line;
 $input-disabled-placeholder-color: $blue-light-text;
 
-.input {
+input.input, textarea.textarea {
   border-top: none;
   border-left: none;
   border-right: none;
