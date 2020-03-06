@@ -14,6 +14,7 @@
   - [Input](docs/elements/input.md)
   - [Radio](docs/elements/radio.md)
   - [Select Button](docs/elements/select-button.md)
+  - [Textarea](docs/elements/textarea.md)
   - [Typeahead](components/dropdown/readme.md?id=typeahead)
   
 - **Elements**
