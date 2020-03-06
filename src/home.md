@@ -2,7 +2,7 @@
 
 ## Release Notes
 
-Latest stable version: <a href="https://badge.fury.io/js/ui-library"><img src="https://badge.fury.io/js/ui-library.svg" alt="npm version" height="18"></a>
+Latest stable version: <a href="https://badge.fury.io/js/%40baloise%2Fui-library"><img src="https://badge.fury.io/js/%40baloise%2Fui-library.svg" alt="npm version" height="18"></a>
 
 Detailed release notes for each version are available on [GitHub](https://github.com/baloise/ui-library/releases).
 
