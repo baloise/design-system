@@ -89,6 +89,7 @@ Here is how you can change the size:
  - [bal-datepicker](../datepicker)
  - [bal-dropdown](../dropdown)
  - [bal-field](../field)
+ - [bal-pagination](../pagination)
 
 ### Graph
 ```mermaid
@@ -97,6 +98,7 @@ graph TD;
   bal-datepicker --> bal-icon
   bal-dropdown --> bal-icon
   bal-field --> bal-icon
+  bal-pagination --> bal-icon
   style bal-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
