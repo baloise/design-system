@@ -1,0 +1,58 @@
+.has-tooltip {
+  &[data-tooltip] {
+    position: relative;
+
+    &:not(.is-loading):focus::before,
+    &:not(.is-loading):focus::after,
+    &:not(.is-loading):hover::before,
+    &:not(.is-loading):hover::after,
+    &:not(.is-disabled):focus::before,
+    &:not(.is-disabled):focus::after,
+    &:not(.is-disabled):hover::before,
+    &:not(.is-disabled):hover::after,
+    &:not([disabled]):focus::before,
+    &:not([disabled]):focus::after,
+    &:not([disabled]):hover::before,
+    &:not([disabled]):hover::after {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &:not(.is-loading)::before,
+    &:not(.is-disabled)::before,
+    &:not([disabled])::before {
+      right: auto;
+      bottom: auto;
+      left: 50%;
+      top: 0;
+      margin-top: -5px;
+      margin-bottom: auto;
+      transform: translate(-50%, -100%);
+      background: rgba(0, 51, 153, 0.9);
+      border-radius: 2px;
+      content: attr(data-tooltip);
+      padding: 0.5rem 1rem;
+      text-overflow: ellipsis;
+      white-space: pre;
+    }
+
+    &:not(.is-loading)::before,
+    &:not(.is-loading)::after,
+    &:not(.is-disabled)::before,
+    &:not(.is-disabled)::after,
+    &:not([disabled])::before,
+    &:not([disabled])::after {
+      box-sizing: border-box;
+      color: $white;
+      display: inline-block;
+      font-size: .75rem;
+      hyphens: auto;
+      opacity: 0;
+      overflow: hidden;
+      pointer-events: none;
+      position: absolute;
+      visibility: hidden;
+      z-index: 1020;
+    }
+  }
+}

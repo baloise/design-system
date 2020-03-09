@@ -23,6 +23,7 @@
   - [Image](docs/elements/image.md)
   - [Table](docs/elements/table.md)
   - [Title](docs/elements/title.md)
+  - [Tooltip](docs/elements/tooltip.md)
   - [Track-Line](docs/elements/track-line.md)
 
 - **Components**
