@@ -41,6 +41,14 @@ The classic button, in different colors, sizes, and states
 <bal-button type="is-info" loading>Info</bal-button>
 ```
 
+### Expanded
+
+```html
+<bal-button type="is-primary" expanded>Primary</bal-button>
+<br>
+<bal-button type="is-info" expanded>Info</bal-button>
+```
+
 ### Small buttons
 
 ```html

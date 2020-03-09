@@ -270,6 +270,26 @@ export namespace Components {
     'light': boolean;
     'logoHref': string;
   }
+  interface BalPagination {
+    /**
+    * Disables component
+    */
+    'disabled': boolean;
+    'next': () => Promise<void>;
+    /**
+    * Specify the max visible pages before and after the selected page
+    */
+    'pageRange': number;
+    'previous': () => Promise<void>;
+    /**
+    * The total amount of pages
+    */
+    'totalPages': number;
+    /**
+    * Current selected page
+    */
+    'value': number;
+  }
   interface BalSpinner {}
   interface BalTabItem {
     /**
@@ -415,6 +435,12 @@ declare global {
     new (): HTMLBalNavbarElement;
   };
 
+  interface HTMLBalPaginationElement extends Components.BalPagination, HTMLStencilElement {}
+  var HTMLBalPaginationElement: {
+    prototype: HTMLBalPaginationElement;
+    new (): HTMLBalPaginationElement;
+  };
+
   interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {}
   var HTMLBalSpinnerElement: {
     prototype: HTMLBalSpinnerElement;
@@ -456,6 +482,7 @@ declare global {
     'bal-modal-actions': HTMLBalModalActionsElement;
     'bal-modal-title': HTMLBalModalTitleElement;
     'bal-navbar': HTMLBalNavbarElement;
+    'bal-pagination': HTMLBalPaginationElement;
     'bal-spinner': HTMLBalSpinnerElement;
     'bal-tab-item': HTMLBalTabItemElement;
     'bal-tabs': HTMLBalTabsElement;
@@ -683,6 +710,28 @@ declare namespace LocalJSX {
     'light'?: boolean;
     'logoHref'?: string;
   }
+  interface BalPagination {
+    /**
+    * Disables component
+    */
+    'disabled'?: boolean;
+    /**
+    * Triggers when a page change happens
+    */
+    'onBalChange'?: (event: CustomEvent<number>) => void;
+    /**
+    * Specify the max visible pages before and after the selected page
+    */
+    'pageRange'?: number;
+    /**
+    * The total amount of pages
+    */
+    'totalPages'?: number;
+    /**
+    * Current selected page
+    */
+    'value'?: number;
+  }
   interface BalSpinner {}
   interface BalTabItem {
     /**
@@ -758,6 +807,7 @@ declare namespace LocalJSX {
     'bal-modal-actions': BalModalActions;
     'bal-modal-title': BalModalTitle;
     'bal-navbar': BalNavbar;
+    'bal-pagination': BalPagination;
     'bal-spinner': BalSpinner;
     'bal-tab-item': BalTabItem;
     'bal-tabs': BalTabs;
@@ -783,6 +833,7 @@ declare module "@stencil/core" {
       'bal-modal-actions': LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;
       'bal-modal-title': LocalJSX.BalModalTitle & JSXBase.HTMLAttributes<HTMLBalModalTitleElement>;
       'bal-navbar': LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
+      'bal-pagination': LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
       'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
       'bal-tab-item': LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
       'bal-tabs': LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

@@ -23,6 +23,7 @@
   - [Image](docs/elements/image.md)
   - [Table](docs/elements/table.md)
   - [Title](docs/elements/title.md)
+  - [Tooltip](docs/elements/tooltip.md)
   - [Track-Line](docs/elements/track-line.md)
 
 - **Components**
@@ -32,6 +33,7 @@
   - [Icon](components/icon/readme.md)
   - [Modal](components/modal/readme.md)
   - [Navbar](components/navbar/readme.md)
+  - [Pagination](components/pagination/readme.md)
   - [Spinner](components/spinner/readme.md)
   - [Tabs](components/tabs/readme.md)
     - [Tab-Item](components/tab-item/readme.md)

@@ -1,6 +1,10 @@
 @import "button.vars";
 @import "node_modules/bulma/sass/elements/button.sass";
 
+:host {
+  display: inline-flex;
+}
+
 .button {
   transition: 0.2s ease-in-out;
   outline: none !important;
