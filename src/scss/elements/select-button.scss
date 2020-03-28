@@ -91,6 +91,8 @@ div.bal-select-buttons.is-vertical {
     label {
       height: 40px;
       min-height: 40px;
+      border: 1px solid $bal_line_blue;
+      border-radius: 100px;
     }
   }
 }
