@@ -79,5 +79,20 @@ div.bal-select-buttons {
 
 }
 
+div.bal-select-buttons.is-vertical {
+  padding: 5px;
+  flex-direction: column;
+  border: 0;
+
+  .bal-select-button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    label {
+      height: 40px;
+      min-height: 40px;
+    }
+  }
+}
 
 

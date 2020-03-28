@@ -18,6 +18,26 @@ Typically they are used for Yes or No questions
 </div>
 ```
 
+## Vertical layout 
+
+```html
+<div class="bal-select-buttons is-vertical">
+    <div class="bal-select-button">
+        <input type="radio" id="large-1" name="large-1" value="male" checked="checked"/>
+        <label for="large-1">Pizza</label>
+    </div> 
+    <div class="bal-select-button">
+        <input type="radio" id="large-2" name="large-1" value="female"/>
+        <label for="large-2">Burger</label>
+    </div>
+    <div class="bal-select-button">
+        <input type="radio" id="large-3" name="large-1" value="female"/>
+        <label for="large-3">Lasagne</label>
+    </div>
+</div>
+```
+
+
 ## Disabled
 
 ```html
