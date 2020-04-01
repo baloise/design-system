@@ -1,5 +1,9 @@
 # Get Started
 
+[Why a UI-Library](docs/introduction/why.md)
+
+[Architecture](docs/introduction/architecture.md)
+
 ## Release Notes
 
 Latest stable version: <a href="https://badge.fury.io/js/%40baloise%2Fui-library"><img src="https://badge.fury.io/js/%40baloise%2Fui-library.svg" alt="npm version" height="18"></a>
