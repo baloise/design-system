@@ -59,5 +59,8 @@
 		"env": {
 			"NODE_ENV": "production"
 		}
+	},
+	"resolutions": {
+		"minimist": "^1.2.5"
 	}
 }
