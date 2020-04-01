@@ -38,14 +38,14 @@
     "@stencil/sass": "1.1.1",
     "@types/jest": "24.0.25",
     "@types/puppeteer": "1.20.2",
-    "autoprefixer": "^9.7.5",
+    "autoprefixer": "9.7.5",
     "docsify-cli": "4.4.0",
     "jest": "24.9.0",
     "jest-cli": "24.9.0",
-    "now": "^17.1.1",
+    "now": "17.1.1",
     "puppeteer": "1.20.0",
     "semantic-release": "17.0.4",
-    "tslint": "^6.1.0"
+    "tslint": "6.1.0"
   },
   "license": "MIT",
   "repository": {
@@ -53,7 +53,7 @@
     "url": "https://github.com/baloise/ui-library.git"
   },
   "dependencies": {
-    "bulma": "^0.8.1",
+    "bulma": "0.8.1",
     "moment": "2.24.0"
   },
   "now": {
@@ -62,6 +62,6 @@
     }
   },
   "resolutions": {
-    "minimist": "^1.2.5"
+    "minimist": "1.2.5"
   }
 }
