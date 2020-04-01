@@ -7,17 +7,19 @@ For those reasons we decided to use Web Components, which are integrated in the 
 
 ## Libraries
 
-Under the hood, UI-Libary uses [Bulma](https://bulma.io/) a clean css framework and [Stencil](https://stenciljs.com/) as our Web Components Compiler.
+Under the hood, UI-Libary uses [Bulma](https://bulma.io/) a clean css framework and [Stencil](https://stenciljs.com/) as our Web Components Compiler. At the end everything will be compiled in a clean web component without any framework specific code.
 
 ![tooling](../assets/tooling.svg)
 
 <br />
 
-| Libary                            | Description                                                                                                                                                                     |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Bulma](https://bulma.io/)        | The Bulma framework is a free CSS solution based on the Flexbox layout. With Bulma, the extensive range of built-in features means faster turnaround and less CSS code writing. |
-| [Stencil](https://stenciljs.com/) | A Web Component compiler for building fast, reusable UI components and Progressive Web Apps.                                                                                    |
+| Libary                                                       | Description                                                                                                                                                                                                                                                                                                                                |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Web Components](https://www.webcomponents.org/introduction) | Web components are a set of web platform APIs that allow you to create new custom, reusable, encapsulated HTML tags to use in web pages and web apps. Custom components and widgets build on the Web Component standards, will work across modern browsers, and can be used with any JavaScript library or framework that works with HTML. |
+| [Bulma](https://bulma.io/)                                   | The Bulma framework is a free CSS solution based on the Flexbox layout. With Bulma, the extensive range of built-in features means faster turnaround and less CSS code writing.                                                                                                                                                            |
+| [Stencil](https://stenciljs.com/)                            | A Web Component compiler for building fast, reusable UI components and Progressive Web Apps.                                                                                                                                                                                                                                               |
 
+<br />
 <h3 id="bulma">
     <img width=240 src="https://bulma.io/images/bulma-logo.png" alt="Bulma Logo" />
 </h3>
@@ -59,9 +61,9 @@ TODO
 
 ## CI & CD
 
-> How we use opensource tooling to make it simpler
-
 TODO
+
+> How we use opensource tooling to make it simpler
 
 ![ci-cd](../assets/ci-cd.svg)
 
