@@ -4,7 +4,7 @@
 
 > Lightweight UI-Component Library for Baloise Applications
 
-This is a project for building modern Web Components using Stencil and Bulma.
+UI-Libary is an open source library for building amazing Baloise applications. No design skills required.
 
 Just give it a try and add it to your project.
 
