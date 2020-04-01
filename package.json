@@ -1,66 +1,68 @@
 {
-	"name": "@baloise/ui-library",
-	"version": "0.0.0-development",
-	"description": "Lightweight UI-Component Library for Baloise Applications",
-	"main": "dist/index.js",
-	"module": "dist/index.mjs",
-	"es2015": "dist/esm/index.mjs",
-	"es2017": "dist/esm/index.mjs",
-	"types": "dist/types/index.d.ts",
-	"collection": "dist/collection/collection-manifest.json",
-	"collection:main": "dist/collection/index.js",
-	"unpkg": "dist/ui-library/ui-library.js",
-	"files": [
-		"dist/",
-		"loader/",
-		"www/",
-		"src/scss/"
-	],
-	"engines": {
-		"node": ">=10.0.0",
-		"npm": ">=6.0.0"
-	},
-	"scripts": {
-		"start": "docsify start",
-		"serve": "stencil build --docs --dev --watch --serve",
-		"serve-ie": "stencil build --es5 --docs --dev --watch --serve",
-		"generate": "stencil generate",
-		"lint": "tslint -c tslint.json 'src/**/*.ts' --format stylish",
-		"build": "stencil build --es5 --docs --docs-json dist/docs.json",
-		"test": "stencil test --spec --e2e",
-		"test.watch": "stencil test --spec --e2e --watchAll",
-		"semantic-release": "semantic-release"
-	},
-	"devDependencies": {
-		"@stencil/core": "1.8.11",
-		"@stencil/postcss": "1.0.1",
-		"@stencil/sass": "1.1.1",
-		"@types/jest": "24.0.25",
-		"@types/puppeteer": "1.20.2",
-		"autoprefixer": "9.7.4",
-		"docsify-cli": "4.4.0",
-		"jest": "24.9.0",
-		"jest-cli": "24.9.0",
-		"now": "17.0.4",
-		"puppeteer": "1.20.0",
-		"semantic-release": "17.0.4",
-		"tslint": "6.0.0"
-	},
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/baloise/ui-library.git"
-	},
-	"dependencies": {
-		"bulma": "0.8.0",
-		"moment": "2.24.0"
-	},
-	"now": {
-		"env": {
-			"NODE_ENV": "production"
-		}
-	},
-	"resolutions": {
-		"minimist": "^1.2.5"
-	}
+  "name": "@baloise/ui-library",
+  "version": "0.0.0-development",
+  "description": "Lightweight UI-Component Library for Baloise Applications",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/ui-library/ui-library.js",
+  "files": [
+    "dist/",
+    "loader/",
+    "www/",
+    "src/scss/"
+  ],
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
+  "scripts": {
+    "preinstall": "npx npm-force-resolutions",
+    "start": "docsify start",
+    "serve": "stencil build --docs --dev --watch --serve",
+    "serve-ie": "stencil build --es5 --docs --dev --watch --serve",
+    "generate": "stencil generate",
+    "lint": "tslint -c tslint.json 'src/**/*.ts' --format stylish",
+    "build": "stencil build --es5 --docs --docs-json dist/docs.json",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "semantic-release": "semantic-release"
+  },
+  "devDependencies": {
+    "@stencil/core": "1.11.3",
+    "@stencil/postcss": "1.0.1",
+    "@stencil/sass": "1.3.0",
+    "@types/jest": "25.1.4",
+    "@types/puppeteer": "2.0.1",
+    "autoprefixer": "9.7.5",
+    "docsify-cli": "4.4.0",
+    "jest": "25.2.4",
+    "jest-cli": "25.2.4",
+    "now": "17.1.1",
+    "puppeteer": "2.1.1",
+    "semantic-release": "17.0.4",
+    "tslint": "6.1.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/ui-library.git"
+  },
+  "dependencies": {
+    "bulma": "0.8.1",
+    "moment": "2.24.0"
+  },
+  "now": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
+  "resolutions": {
+    "minimist": "^1.2.5",
+    "kind-of": "^6.0.3"
+  }
 }
