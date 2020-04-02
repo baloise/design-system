@@ -631,6 +631,10 @@ declare namespace LocalJSX {
     */
     'onBalFocus'?: (event: CustomEvent<void>) => void;
     /**
+    * Emitted when containing input field raises an input event.
+    */
+    'onBalInput'?: (event: CustomEvent<string>) => void;
+    /**
     * Instructional text that shows before the input has a value.
     */
     'placeholder'?: string;
