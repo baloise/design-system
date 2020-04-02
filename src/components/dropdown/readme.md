@@ -24,7 +24,7 @@
         value: '2'
     };
     document.getElementById('bal-dropdown-typeahead-example').addEventListener('balInput', event => { 
-        console.log('input on bal-dropdown-typeahead-example', event) 
+        console.log('balInput on bal-dropdown-typeahead-example', event) 
     });
     document.getElementById('bal-dropdown-typeahead-example').addEventListener('balChange', event => { 
         console.log('balChange on bal-dropdown-typeahead-example', event) 
