@@ -77,6 +77,10 @@ export namespace Components {
     */
     'inverted': boolean;
     /**
+    * If `true` the width of the buttons is limited
+    */
+    'isSquare': boolean;
+    /**
     * If `true` the button has a light color
     */
     'light': boolean;
@@ -88,6 +92,11 @@ export namespace Components {
     * If `true` the button is outlined
     */
     'outlined': boolean;
+    /**
+    * Size of the button
+    */
+    'size': | "is-small"
+    | "";
     /**
     * The theme type of the button. Given by bulma our css framework.
     */
@@ -254,6 +263,36 @@ export namespace Components {
     */
     'size': "small" | "medium" | "large" | "";
   }
+  interface BalModal {
+    'close': () => Promise<void>;
+    'open': () => Promise<void>;
+  }
+  interface BalModalActions {}
+  interface BalModalTitle {}
+  interface BalNavbar {
+    'light': boolean;
+    'logoHref': string;
+  }
+  interface BalPagination {
+    /**
+    * Disables component
+    */
+    'disabled': boolean;
+    'next': () => Promise<void>;
+    /**
+    * Specify the max visible pages before and after the selected page
+    */
+    'pageRange': number;
+    'previous': () => Promise<void>;
+    /**
+    * The total amount of pages
+    */
+    'totalPages': number;
+    /**
+    * Current selected page
+    */
+    'value': number;
+  }
   interface BalSpinner {}
   interface BalTabItem {
     /**
@@ -308,7 +347,7 @@ export namespace Components {
     | "is-success"
     | "is-warning"
     | "is-danger"
-    | "is-light";
+    | "";
   }
   interface BalTimepicker {
     /**
@@ -357,10 +396,6 @@ export namespace Components {
     * Closes the toast after the given duration in ms
     */
     'closeIn': (duration: number) => Promise<void>;
-    /**
-    * Message text
-    */
-    'message': string;
     /**
     * The theme type of the toast. Given by bulma our css framework.
     */
@@ -417,6 +452,36 @@ declare global {
     new (): HTMLBalIconElement;
   };
 
+  interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {}
+  var HTMLBalModalElement: {
+    prototype: HTMLBalModalElement;
+    new (): HTMLBalModalElement;
+  };
+
+  interface HTMLBalModalActionsElement extends Components.BalModalActions, HTMLStencilElement {}
+  var HTMLBalModalActionsElement: {
+    prototype: HTMLBalModalActionsElement;
+    new (): HTMLBalModalActionsElement;
+  };
+
+  interface HTMLBalModalTitleElement extends Components.BalModalTitle, HTMLStencilElement {}
+  var HTMLBalModalTitleElement: {
+    prototype: HTMLBalModalTitleElement;
+    new (): HTMLBalModalTitleElement;
+  };
+
+  interface HTMLBalNavbarElement extends Components.BalNavbar, HTMLStencilElement {}
+  var HTMLBalNavbarElement: {
+    prototype: HTMLBalNavbarElement;
+    new (): HTMLBalNavbarElement;
+  };
+
+  interface HTMLBalPaginationElement extends Components.BalPagination, HTMLStencilElement {}
+  var HTMLBalPaginationElement: {
+    prototype: HTMLBalPaginationElement;
+    new (): HTMLBalPaginationElement;
+  };
+
   interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {}
   var HTMLBalSpinnerElement: {
     prototype: HTMLBalSpinnerElement;
@@ -460,6 +525,11 @@ declare global {
     'bal-dropdown-option': HTMLBalDropdownOptionElement;
     'bal-field': HTMLBalFieldElement;
     'bal-icon': HTMLBalIconElement;
+    'bal-modal': HTMLBalModalElement;
+    'bal-modal-actions': HTMLBalModalActionsElement;
+    'bal-modal-title': HTMLBalModalTitleElement;
+    'bal-navbar': HTMLBalNavbarElement;
+    'bal-pagination': HTMLBalPaginationElement;
     'bal-spinner': HTMLBalSpinnerElement;
     'bal-tab-item': HTMLBalTabItemElement;
     'bal-tabs': HTMLBalTabsElement;
@@ -511,6 +581,10 @@ declare namespace LocalJSX {
     */
     'inverted'?: boolean;
     /**
+    * If `true` the width of the buttons is limited
+    */
+    'isSquare'?: boolean;
+    /**
     * If `true` the button has a light color
     */
     'light'?: boolean;
@@ -522,6 +596,11 @@ declare namespace LocalJSX {
     * If `true` the button is outlined
     */
     'outlined'?: boolean;
+    /**
+    * Size of the button
+    */
+    'size'?: | "is-small"
+    | "";
     /**
     * The theme type of the button. Given by bulma our css framework.
     */
@@ -600,6 +679,10 @@ declare namespace LocalJSX {
     */
     'onBalFocus'?: (event: CustomEvent<void>) => void;
     /**
+    * Emitted when containing input field raises an input event.
+    */
+    'onBalInput'?: (event: CustomEvent<string>) => void;
+    /**
     * Instructional text that shows before the input has a value.
     */
     'placeholder'?: string;
@@ -672,6 +755,35 @@ declare namespace LocalJSX {
     */
     'size'?: "small" | "medium" | "large" | "";
   }
+  interface BalModal {}
+  interface BalModalActions {}
+  interface BalModalTitle {}
+  interface BalNavbar {
+    'light'?: boolean;
+    'logoHref'?: string;
+  }
+  interface BalPagination {
+    /**
+    * Disables component
+    */
+    'disabled'?: boolean;
+    /**
+    * Triggers when a page change happens
+    */
+    'onBalChange'?: (event: CustomEvent<number>) => void;
+    /**
+    * Specify the max visible pages before and after the selected page
+    */
+    'pageRange'?: number;
+    /**
+    * The total amount of pages
+    */
+    'totalPages'?: number;
+    /**
+    * Current selected page
+    */
+    'value'?: number;
+  }
   interface BalSpinner {}
   interface BalTabItem {
     /**
@@ -722,7 +834,7 @@ declare namespace LocalJSX {
     | "is-success"
     | "is-warning"
     | "is-danger"
-    | "is-light";
+    | "";
   }
   interface BalTimepicker {
     /**
@@ -760,10 +872,6 @@ declare namespace LocalJSX {
   }
   interface BalToast {
     /**
-    * Message text
-    */
-    'message'?: string;
-    /**
     * The theme type of the toast. Given by bulma our css framework.
     */
     'type'?: | "is-primary"
@@ -781,6 +889,11 @@ declare namespace LocalJSX {
     'bal-dropdown-option': BalDropdownOption;
     'bal-field': BalField;
     'bal-icon': BalIcon;
+    'bal-modal': BalModal;
+    'bal-modal-actions': BalModalActions;
+    'bal-modal-title': BalModalTitle;
+    'bal-navbar': BalNavbar;
+    'bal-pagination': BalPagination;
     'bal-spinner': BalSpinner;
     'bal-tab-item': BalTabItem;
     'bal-tabs': BalTabs;
@@ -803,6 +916,11 @@ declare module "@stencil/core" {
       'bal-dropdown-option': LocalJSX.BalDropdownOption & JSXBase.HTMLAttributes<HTMLBalDropdownOptionElement>;
       'bal-field': LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
       'bal-icon': LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
+      'bal-modal': LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
+      'bal-modal-actions': LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;
+      'bal-modal-title': LocalJSX.BalModalTitle & JSXBase.HTMLAttributes<HTMLBalModalTitleElement>;
+      'bal-navbar': LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
+      'bal-pagination': LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
       'bal-spinner': LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
       'bal-tab-item': LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
       'bal-tabs': LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

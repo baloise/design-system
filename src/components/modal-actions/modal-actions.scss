@@ -1,0 +1,8 @@
+@import "../../scss/ui-library.globals";
+@import "../../scss/elements/button";
+@import "../../scss/utilities/helpers";
+
+:host {
+  display: block;
+  margin-top: 40px;
+}

@@ -1,4 +1,4 @@
-@import "../../scss/bal-ui-library.globals";
+@import "../../scss/ui-library.globals";
 
 :host {
   display: block;
@@ -17,4 +17,8 @@ span.label {
 bal-icon {
   height: 24px;
   margin-right: 2px;
+}
+
+.accordion-content.is-info {
+  border-top: 1px solid $blue-light-line;
 }

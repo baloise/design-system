@@ -2,16 +2,16 @@
 
 ## Release Notes
 
-Latest stable version: <a href="https://badge.fury.io/js/bal-ui-library"><img src="https://badge.fury.io/js/bal-ui-library.svg" alt="npm version" height="18"></a>
+Latest stable version: <a href="https://badge.fury.io/js/%40baloise%2Fui-library"><img src="https://badge.fury.io/js/%40baloise%2Fui-library.svg" alt="npm version" height="18"></a>
 
-Detailed release notes for each version are available on [GitHub](https://github.com/hirsch88/bal-ui-library/releases).
+Detailed release notes for each version are available on [GitHub](https://github.com/baloise/ui-library/releases).
 
 ## NPM
 
 This project is published to the npm regestry. Just run the below command inside of your repository the install it.
 
 ```bash
-npm install bal-ui-library --save
+npm install @baloise/ui-library --save
 ```
 
 ## Direct `<script>` Include
@@ -22,7 +22,7 @@ Then you can use the element anywhere in your template, JSX, html etc
 <!-- The snippet.plugin looks for the html lang, so to avoid that we use xml here -->
 
 ```xml
-<script src="https://bal-ui-library.hirsch.now.sh/build/bal-ui-library.js"></script>
+<script src="https://baloise-ui-library.now.sh/build/ui-library.js"></script>
 ```
 
 Put the below style reference in the head of your index.html.
@@ -30,7 +30,7 @@ Put the below style reference in the head of your index.html.
 <!-- The snippet.plugin looks for the html lang, so to avoid that we use xml here -->
 
 ```xml
-<link rel="stylesheet" href="https://bal-ui-library.hirsch.now.sh/build/bal-ui-library.css" />
+<link rel="stylesheet" href="https://baloise-ui-library.now.sh/build/ui-library.css" />
 ```
 
 ## Sass
@@ -38,7 +38,7 @@ Put the below style reference in the head of your index.html.
 Instead of the above css import you can use the sass files directly. Just put the below import into your main sass file.
 
 ```scss
-@import "node_modules/bal-ui-library/src/scss/bal-ui-library.scss";
+@import "node_modules/ui-library/src/scss/ui-library.scss";
 ```
 
 ## Vue.js

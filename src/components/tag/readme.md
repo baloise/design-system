@@ -6,7 +6,6 @@ A simple tag in different colors
 
 ```html
 <bal-tag>Default</bal-tag>
-<bal-tag type="is-light">Light</bal-tag>
 <bal-tag type="is-primary">Primary</bal-tag>
 <bal-tag type="is-info">Info</bal-tag>
 <bal-tag type="is-success">Success</bal-tag>
@@ -19,9 +18,9 @@ A simple tag in different colors
 
 ## Properties
 
-| Property | Attribute | Description                                                  | Type                                                                                     | Default      |
-| -------- | --------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ------------ |
-| `type`   | `type`    | The theme type of the tag. Given by bulma our css framework. | `"is-danger" \| "is-info" \| "is-light" \| "is-primary" \| "is-success" \| "is-warning"` | `"is-light"` |
+| Property | Attribute | Description                                                  | Type                                                                             | Default |
+| -------- | --------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------- | ------- |
+| `type`   | `type`    | The theme type of the tag. Given by bulma our css framework. | `"" \| "is-danger" \| "is-info" \| "is-primary" \| "is-success" \| "is-warning"` | `""`    |
 
 
 ----------------------------------------------

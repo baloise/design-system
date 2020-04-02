@@ -3,8 +3,10 @@
 
 :host {
   .tag {
-    height: 25px;
-    padding: 0 20px;
+    padding: 0 20px 1px 20px;
     align-items: center;
+    justify-content: center;
+    font-weight: $weight-bold;
+    background: $grey;
   }
 }

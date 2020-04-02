@@ -15,7 +15,7 @@ export class Tag {
     | "is-success"
     | "is-warning"
     | "is-danger"
-    | "is-light" = "is-light";
+    | "" = "";
 
   render() {
     return (

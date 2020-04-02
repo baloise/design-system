@@ -13,3 +13,17 @@
 .is-padded-large {
   padding: 40px !important;
 }
+
+.is-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.has-background-light {
+  background: $white-bis;
+}
+
+bal-button.is-fullwidth {
+  display: flex;
+  width: 100%;
+}
+

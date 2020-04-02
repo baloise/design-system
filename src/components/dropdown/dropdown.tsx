@@ -117,6 +117,11 @@ export class Dropdown {
   triggerIcon = "caret-down";
 
   /**
+   * Emitted when containing input field raises an input event.
+   */
+  @Event() balInput!: EventEmitter<string>;
+
+  /**
    * Emitted when the checked property has changed.
    */
   @Event() balChange!: EventEmitter<Option>;
@@ -212,6 +217,11 @@ export class Dropdown {
     }
   }
 
+  async onInput(event: InputEvent) {
+    const inputValue = (event.target as HTMLInputElement).value;
+    this.balInput.emit(inputValue);
+  }
+
   async onKeyUp(event: KeyboardEvent) {
     if (!this.disabled && ["Enter", "ArrowUp", "ArrowDown"].indexOf(event.key) < 0) {
       const inputValue = (event.target as HTMLInputElement).value;
@@ -238,7 +248,7 @@ export class Dropdown {
       event.preventDefault();
       await this.focusNextItem(event.key === "ArrowDown" || event.key === "Down");
     }
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && this.activeItemIndex > 0) {
       event.preventDefault();
       this.select({
         label: this.children[this.activeItemIndex].label,
@@ -328,6 +338,7 @@ export class Dropdown {
                      readOnly={this.readonly || !this.typeahead}
                      placeholder={this.placeholder}
                      onKeyUp={this.onKeyUp.bind(this)}
+                     onInput={this.onInput.bind(this)}
                      onClick={this.clicked.bind(this)}
                      onBlur={this.balBlur.emit.bind(this)}
                      onFocus={this.balFocus.emit.bind(this)}

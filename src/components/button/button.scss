@@ -1,11 +1,36 @@
 @import "button.vars";
 @import "node_modules/bulma/sass/elements/button.sass";
 
+:host {
+  display: inline-flex;
+}
+
 .button {
   transition: 0.2s ease-in-out;
   outline: none !important;
   user-select: none;
   min-height: 50px;
+
+  &.is-small {
+    min-height: 38px;
+    min-width: 38px;
+    padding: 17px 20px 19px 20px;
+  }
+
+  &.is-square {
+    width: 38px;
+    padding: 4px 0 0 0;
+  }
+
+  &.is-success, &.is-success:hover, &.is-success:focus,
+  &.is-danger, &.is-danger:hover, &.is-danger:focus,
+  &.is-warning, &.is-warning:hover, &.is-warning:focus {
+    color: $white !important;
+  }
+
+  &.is-loading::after {
+    display: none;
+  }
 
   &::-moz-focus-inner {
     border: 0;
@@ -23,7 +48,7 @@
     }
   }
 
-  &:hover,  &:active {
+  &:hover, &:active {
     &::before {
       outline: none;
     }
@@ -50,7 +75,7 @@
   &.is-success {
     &:hover,
     &.is-hovered {
-      background: darken($success, 15);
+      background: darken($success, 10);
     }
   }
 
@@ -64,13 +89,8 @@
   &.is-danger {
     &:hover,
     &.is-hovered {
-      background: darken($danger, 20);
+      background: darken($danger, 10);
     }
-  }
-
-  &.is-success,
-  &.is-warning {
-    color: $white;
   }
 
   &.is-success,
@@ -101,6 +121,22 @@
       background: $white;
     }
   }
+
+  &.is-info.is-outlined {
+    border-color: $blue-line;
+
+    &:hover,
+    &.is-hovered,
+    &:focus,
+    &.is-focused,
+    &:active,
+    &.is-active {
+      color: $blue;
+      background: $blue-light-line;
+      border-color: $blue-line;
+    }
+  }
+
 
   &.is-info.is-inverted.is-outlined {
     &:hover,
@@ -220,6 +256,7 @@
         background: transparent;
       }
     }
+
   }
 
   span {

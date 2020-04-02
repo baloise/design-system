@@ -1,4 +1,4 @@
-import {Component, h, Prop} from "@stencil/core";
+import {Component, h, Host, Prop} from "@stencil/core";
 
 @Component({
   tag: "bal-button",
@@ -16,6 +16,18 @@ export class Button {
     | "is-warning"
     | "is-danger"
     | "is-link" = "is-primary";
+
+  /**
+   * Size of the button
+   */
+  @Prop() size:
+    | "is-small"
+    | "" = "";
+
+  /**
+   * If `true` the width of the buttons is limited
+   */
+  @Prop() isSquare: boolean;
 
   /**
    * If `true` the button is disabled
@@ -49,25 +61,30 @@ export class Button {
 
   render() {
     return (
-      <button
-        class={[
-          "button",
-          this.type,
-          this.light ? "is-light" : "",
-          this.inverted ? "is-inverted" : "",
-          this.outlined ? "is-outlined" : "",
-          this.expanded ? "is-fullwidth" : "",
-        ].join(" ")}
-        disabled={this.disabled}>
-        {this.loading ? (
-          <bal-spinner class="is-small is-inverted"></bal-spinner>
-        ) : (
-          ""
-        )}
-        <span style={{display: this.loading ? "none" : "inline-block"}}>
+      <Host class={this.expanded ? "is-fullwidth" : ""}>
+        <button
+          class={[
+            "button",
+            this.type,
+            this.size,
+            this.light ? "is-light" : "",
+            this.inverted ? "is-inverted" : "",
+            this.outlined ? "is-outlined" : "",
+            this.expanded ? "is-fullwidth" : "",
+            this.loading ? "is-loading" : "",
+            this.isSquare ? "is-square" : "",
+          ].join(" ")}
+          disabled={this.disabled}>
+          {this.loading ? (
+            <bal-spinner class="is-small is-inverted" />
+          ) : (
+            ""
+          )}
+          <span style={{display: this.loading ? "none" : "inline-block"}}>
             <slot/>
           </span>
-      </button>
+        </button>
+      </Host>
     );
   }
 }

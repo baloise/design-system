@@ -1,4 +1,4 @@
-@import "../../scss/bal-ui-library.globals";
+@import "../../scss/ui-library.globals";
 @import "node_modules/bulma/sass/components/pagination.sass";
 @import "node_modules/bulma/sass/form/all";
 
@@ -83,6 +83,7 @@
 
   .datepicker-table {
     display: table;
+    border-collapse: collapse;
     width: 100%;
     margin: 15px auto 0 auto;
 
@@ -94,10 +95,6 @@
       }
     }
 
-    .datepicker-row:first-child .datepicker-cell {
-      border-top: 1px solid $blue-light-line;
-    }
-
     .datepicker-cell {
       position: relative;
       text-align: center;
@@ -105,15 +102,10 @@
       display: table-cell;
       max-width: 0;
       padding: 12px 5px;
-      border-bottom: 1px solid $blue-light-line;
-      border-left: 1px solid $blue-light-line;
+      border: 1px solid $blue-light-line;
       color: $blue;
       cursor: pointer;
       font-size: $size-5;
-
-      &:last-child {
-        border-right: 1px solid $blue-light-line;
-      }
 
       &.is-selected {
         background: $blue;
@@ -121,9 +113,16 @@
       }
 
       &.is-outdated, &.is-disabled {
-        background: $blue-light;;
+        background: $blue-light;
+        background-clip: padding-box; 
         color: $blue-light-text;
         cursor: default;
+      }
+
+      &.is-selectable:hover {
+        outline: 1px solid  $blue;
+        outline-offset: -1px;
+        z-index: 3000;
       }
 
       &.is-today:after {

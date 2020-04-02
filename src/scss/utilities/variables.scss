@@ -5,10 +5,10 @@
  */
 $blue: #003399;
 $cyan: #009ee7;
-$green: #67d3a1;
+$green: #3fc889;
 $yellow: #ff9900;
 $orange: #ff8304;
-$red: #ff3366;
+$red: #ff668c;
 
 $blue-darker: #002162;
 $blue-dark: #002B82;
@@ -34,7 +34,7 @@ $white-bis: #fafafa;
 $white-ter: #f5f5f6;
 
 $dark: $blue;
-$light: $grey;
+$light: $white-bis;
 $primary: $cyan;
 $info-light: $blue-light;
 $info: $blue;
@@ -60,6 +60,8 @@ $shades: (
   "blue-light": $blue-light,
   "white-bis": $white-bis,
   "white-ter": $white-ter,
+  "grey": $grey,
+  "black": $black,
 );
 
 $form-background: $white-bis;
@@ -131,3 +133,8 @@ $easing: ease-out;
  */
 $shadow: 0 0 10px 0 rgba($bal_tile_shadow_blue, 0.15);
 $shadow-hover: 0 0 30px 0 rgba($bal_tile_shadow_blue, 0.15);
+
+/**
+ * Section
+ */
+$section-padding: 40px;

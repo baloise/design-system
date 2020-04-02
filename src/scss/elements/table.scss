@@ -1,0 +1,49 @@
+$table-color: $text;
+$table-background-color: $scheme-main;
+
+$table-cell-border: 1px solid $blue-light-line; //$border;
+$table-cell-border-width: 0 0 1px;
+$table-cell-padding: 0.5em 0.75em;
+$table-cell-heading-color: $text-strong;
+
+$table-head-cell-border-width: 0 0 1px;
+$table-head-cell-color: $text-strong;
+$table-foot-cell-border-width: 0 0 0;
+$table-foot-cell-color: $text-strong;
+
+$table-head-background-color: transparent;
+$table-body-background-color: transparent;
+$table-foot-background-color: transparent;
+
+$table-row-hover-background-color: $blue-light-hover;
+
+$table-row-active-background-color: $primary;
+$table-row-active-color: $primary-invert;
+
+$table-striped-row-even-background-color: $scheme-main-bis;
+$table-striped-row-even-hover-background-color: $blue-light-hover;
+
+table.table {
+  thead th {
+    border-color: $blue;
+  }
+
+  td, th {
+    font-size: $size-normal;
+    padding-top: 10px;
+
+    .bal-checkbox {
+      padding: 0;
+      margin-top: 1px;
+    }
+  }
+
+  td.has-buttons {
+    padding: 2px;
+
+    .buttons {
+      justify-content: flex-end;
+      padding: 3px;
+    }
+  }
+}

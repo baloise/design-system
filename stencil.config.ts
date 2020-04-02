@@ -7,8 +7,8 @@ export const config: Config = {
   devServer: {
     reloadStrategy: "pageReload",
   },
-  namespace: "bal-ui-library",
-  globalStyle: "src/scss/bal-ui-library.scss",
+  namespace: "ui-library",
+  globalStyle: "src/scss/ui-library.scss",
   copy: [
     {
       src: "**/*.md",

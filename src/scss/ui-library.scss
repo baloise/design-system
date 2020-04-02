@@ -1,0 +1,23 @@
+@import "utilities/all";
+@import "base/all";
+
+.bal-app {
+  position: relative;
+
+  @import "elements/all";
+  @import "components/all";
+
+  @import "node_modules/bulma/sass/grid/_all";
+  @import "node_modules/bulma/sass/layout/_all";
+
+  @import "node_modules/bulma/sass/elements/box";
+  @import "node_modules/bulma/sass/elements/content";
+  @import "node_modules/bulma/sass/elements/image";
+  @import "node_modules/bulma/sass/elements/table";
+  @import "node_modules/bulma/sass/elements/title";
+  @import "node_modules/bulma/sass/elements/notification";
+  @import "node_modules/bulma/sass/components/navbar";
+  @import "node_modules/bulma/sass/form/all";
+}
+
+@import "./elements/notices";

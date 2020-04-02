@@ -91,7 +91,10 @@ export class Accordion {
             <span class="label">{this.closeLabel}</span>
           </span>
         </bal-button>
-        <div style={this.isCollapsed && {display: "none"}}>
+        <div class={[
+          "accordion-content",
+          this.type,
+        ].join(" ")} style={this.isCollapsed && {display: "none"}}>
           <slot></slot>
         </div>
       </Host>
