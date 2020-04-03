@@ -2,11 +2,11 @@
 
 [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)
 
-> Lightweight UI-Component Library for Baloise Applications
+> UI-Libary is an open source library for building amazing Baloise applications
 
-UI-Libary is an open source library for building amazing Baloise applications. No design skills required.
+> No design skills required
 
-Just give it a try and add it to your project.
+Just give it a try and add it to your project
 
 <br>
 

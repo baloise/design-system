@@ -1,7 +1,5 @@
 # Get Started
 
-UI-Libary is an open source library for building amazing Baloise applications. No design skills required.
-
 [Why UI-Library](docs/introduction/why.md)
 
 [Architecture](docs/introduction/architecture.md)
@@ -18,6 +16,14 @@ This project is published to the npm regestry. Just run the below command inside
 
 ```bash
 npm install @baloise/ui-library --save
+```
+
+## Sass
+
+Instead of the above css import you can use the sass files directly. Just put the below import into your main sass file.
+
+```scss
+@import "node_modules/ui-library/src/scss/ui-library.scss";
 ```
 
 ## Direct `<script>` Include
@@ -37,14 +43,6 @@ Put the below style reference in the head of your index.html.
 
 ```xml
 <link rel="stylesheet" href="https://baloise-ui-library.now.sh/build/ui-library.css" />
-```
-
-## Sass
-
-Instead of the above css import you can use the sass files directly. Just put the below import into your main sass file.
-
-```scss
-@import "node_modules/ui-library/src/scss/ui-library.scss";
 ```
 
 ## Vue.js

@@ -2,10 +2,12 @@
   -webkit-overflow-scrolling: touch;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-text-size-adjust: none;
-  -webkit-touch-callout: none
+  -webkit-touch-callout: none;
 }
 
-p, small, strong {
+p,
+small,
+strong {
   color: #34495e;
 }
 
@@ -257,13 +259,13 @@ main.hidden {
   font-weight: 800;
   margin: 0 0 0 30px;
   text-transform: uppercase;
-  letter-spacing: .08em;
+  letter-spacing: 0.08em;
 }
 
 .sidebar li > p strong {
   color: #003399;
   font-size: 1.1em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .sidebar ul,
@@ -727,7 +729,6 @@ body {
   padding: 0 0 0 15px;
 }
 
-
 .sidebar ul li > a {
   padding: 8px 0 8px 30px;
   color: #7188b8;
@@ -816,7 +817,8 @@ body {
 
 .markdown-section blockquote p {
   margin-left: 0;
-  line-height: 3rem;
+  padding-top: 6px;
+  padding-bottom: 8px;
 }
 
 .markdown-section iframe {
@@ -998,7 +1000,7 @@ pre:after {
 
 .bd-color {
   border-radius: 2px;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1), inset 0 0 0 1px rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
   display: inline-block;
   float: left;
   height: 24px;
@@ -1031,3 +1033,59 @@ pre[data-lang="mermaid"] {
   border-radius: 6px;
 }
 
+.docs-swot-table {
+  display: table !important;
+  width: 100%;
+}
+
+.docs-swot-table th {
+  text-align: center !important;
+}
+
+.docs-swot-table th strong {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #039;
+}
+
+.docs-swot-table strong {
+  font-weight: bold;
+  font-size: 1em;
+  color: #000;
+}
+
+.docs-swot-table small {
+  font-size: 0.8em;
+}
+
+.docs-swot-table .green {
+  background: rgba(63, 200, 137, 0.2);
+}
+
+.docs-swot-table .red {
+  background: rgba(255, 102, 140, 0.2);
+}
+
+.docs-swot-table .yellow {
+  background: rgba(255, 153, 0, 0.2);
+}
+
+.docs-swot-table .blue {
+  background: rgba(0, 51, 153, 0.2);
+}
+
+.docs-swot-table ul {
+  list-style-type: disc;
+  padding-left: 15px;
+}
+
+.docs-swot-table .rotate {
+  vertical-align: middle;
+  height: 200px;
+  width: 150px;
+}
+
+.docs-swot-table .rotate div {
+  transform: rotate(-90deg);
+  vertical-align: middle;
+}
