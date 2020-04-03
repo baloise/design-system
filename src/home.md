@@ -1,6 +1,6 @@
 # Get Started
 
-UI-Libary is an open source library for building amazing Baloise applications.
+UI-Libary is an open source library for building amazing web applications that follow the baloise corporate style guidelines.
 No design skills required.
 
 - [Why UI-Library](docs/introduction/why.md)

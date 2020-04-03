@@ -1,15 +1,15 @@
 # Architecture
 
-UI-Libary is an open source library for building amazing Baloise applications. No design skills required.
+UI-Libary is an open source library for building amazing web applications that follow the baloise corporate style guidelines.
 
-The architecture is based on web standards and best practices. Moreover, we tried to keep it as simple as possible for our contributers and users.
-For those reasons we decided to use Web Components, which are integrated in the modern browsers. The project fully supports [TypeScript](https://www.typescriptlang.org/).
+The architecture is based on web standards and best practices. Moreover, we try to keep it as simple as possible for our contributors and consumers.
+For those reasons we decided to use Web Components, which are supported by all modern browsers. The project fully supports [TypeScript](https://www.typescriptlang.org/).
 
 ## Libraries
 
-Under the hood, UI-Libary uses [Bulma](https://bulma.io/) a clean css framework and [Stencil](https://stenciljs.com/) as our Web Components Compiler. At the end everything will be compiled in a clean web component without any framework specific code.
+Under the hood, UI-Libary uses [Bulma](https://bulma.io/), a clean css framework, and [Stencil](https://stenciljs.com/) as Web Components Compiler. At the end everything will be compiled in a clean web component without any framework specific code.
 
-> The best part is that we depend on only two libraries, which do not depend on each other and at the end we have only one simple UI Library for our users!
+> The best part is that we depend on only those two libraries, which do not depend on each other, and at the end we have only one simple UI-Library for our consumers!
 
 ![tooling](../assets/tooling.svg)
 
@@ -40,19 +40,19 @@ At the end Bulma is just one CSS file (bulma.css). However, if you just want to 
 
 ##### Responsive
 
-Bulma is designed as a mobile-first CSS framework, offering optimum site responsiveness. So build a site once and watch it work across any device.
+Bulma is designed as a mobile-first CSS framework, offering optimum site responsiveness. Build a site once and watch it work across any device.
 
 ##### Well documented
 
-The [Documentation](https://bulma.io/documentation/) helps you to get the most out of this framework. There are a lot examples to each component.
+The [Documentation](https://bulma.io/documentation/) helps you getting the most out of this framework. There are a lot examples for each component.
 
 ##### Modular
 
-Bulma is not a all in one framework. It is modular, which means you can use only those compontes you like. For that juse import the individual sass file.
+Bulma is not an all in one framework. It is modular, which means you can only import those components that you need. For that just import the individual sass file.
 
 ##### Themeable
 
-Of cource, not everyone likes the theme of bulma. No problem, just import the variables.scss file and change the colors. Each component has his own sass variables, which can be easily changed to design a new theme.
+Of cource, not everyone likes the theme of bulma. No problem, just import the variables.scss file and change the colors. Each component has its own sass variables, which can be easily changed to design a new theme.
 
 <br>
 
@@ -124,7 +124,7 @@ Of cource, not everyone likes the theme of bulma. No problem, just import the va
     <img width=240 src="https://mhartington.io/stenciljs/img/stencil-logo.svg" alt="Stencil Logo" />
 </h3>
 
-This is not another framework. It is a compiler that generates standards-based [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) (more specifically, Custom Elements). They can be used without any framework, because there are just [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
+This is not another framework. It is a compiler that generates standards-based [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) (more specifically, Custom Elements). They can be used without any framework, because they are just [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
 
 With Stencil we are able to develop universal, framework and library agnostic UI elements that can be shared among different projects.
 
@@ -132,16 +132,16 @@ With Stencil we are able to develop universal, framework and library agnostic UI
 
 ##### Future Friendly
 
-We do know the next big framework on the horizon, but with Stencil we do not have to care. Stencil does not depend on frameworks. Like we mentioned above it is a compiler to generate standards-based [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components), which can be used with any framework.
+We don't know which is going to be the next big framework on the horizon, but with Stencil we do not have to care. Stencil does not depend on any framework. As mentioned above it is a compiler to generate standards-based [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components), which can be used with any framework.
 
 ##### TypeScript Support
 
-TypeScript helps maintaining the code. Additionally, it adds types to your own project.
+TypeScript helps maintaining the code. Additionally, Stencil generates types for the components, which helps during developement.
 
 ##### Browser Support
 
 For the small minority of browsers that do not support modern browser features and APIs, Stencil will automatically polyfill them on-demand.
-Out-of-the-box browser support includes IE11 and up ([Browser Support](https://stenciljs.com/docs/browser-support)).
+Out-of-the-box browser support includes all modern browsers starting from Internet Explorer 11 ([Browser Support](https://stenciljs.com/docs/browser-support)).
 
 ##### Easy to learn
 
