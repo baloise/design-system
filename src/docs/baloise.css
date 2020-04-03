@@ -1089,3 +1089,8 @@ pre[data-lang="mermaid"] {
   transform: rotate(-90deg);
   vertical-align: middle;
 }
+
+article.markdown-section > ul {
+  list-style-type: disc;
+  padding-left: 40px;
+}
