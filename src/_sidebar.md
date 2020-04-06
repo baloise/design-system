@@ -1,8 +1,8 @@
 - **Introduction**
 
+  - [Get Started](home.md)
   - [Why UI-Library](docs/introduction/why.md)
   - [Architecture](docs/introduction/architecture.md)
-  - [Get Started](home.md)
 
 - **Essentials**
   - [Styling](docs/essentials/styling.md)

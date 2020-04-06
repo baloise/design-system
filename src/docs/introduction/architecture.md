@@ -50,7 +50,7 @@ The [Documentation](https://bulma.io/documentation/) helps you getting the most 
 
 Bulma is not an all in one framework. It is modular, which means you can only import those components that you need. For that just import the individual sass file.
 
-##### Themeable
+##### Customizable
 
 Of cource, not everyone likes the theme of bulma. No problem, just import the variables.scss file and change the colors. Each component has its own sass variables, which can be easily changed to design a new theme.
 
@@ -81,15 +81,18 @@ Of cource, not everyone likes the theme of bulma. No problem, just import the va
         <td>
             <strong>Strengths</strong>
             <ul>
-                <li>Item bla</li>
-                <li>Item bla</li>
+                <li>Easy to learn</li>
+                <li>CSS only</li>
+                <li>Responsive</li>
+                <li>Well documented</li>
+                <li>Modular</li>
+                <li>Customizable</li>
             </ul>
         </td>
         <td>
             <strong>Weakness</strong>
             <ul>
-                <li>Item bla</li>
-                <li>Item bla</li>
+                <li>Depending on the release cycle of Bulma</li>
             </ul>
         </td>
     </tr>    
@@ -103,16 +106,16 @@ Of cource, not everyone likes the theme of bulma. No problem, just import the va
         <td>
             <strong>Opportunity</strong>
             <ul>
-                <li>Item bla</li>
-                <li>Item bla</li>
+                <li>Framework agnostic</li>
+                <li>Open-Source positioning</li>
+                <li>Get new components</li>
             </ul>
         </td>
         </td>
         <td>
             <strong>Threat</strong>
             <ul>
-                <li>Item bla</li>
-                <li>Item bla</li>
+                <li>Library could get deprecated</li>
             </ul>
         </td>
         </td>
@@ -178,15 +181,21 @@ The generated code does not rely on Stencil, but rather it generates highly-opti
         <td>
             <strong>Strengths</strong>
             <ul>
-                <li>Item bla</li>
-                <li>Item bla</li>
+                <li>Future Friendly</li>
+                <li>TypeScript Support</li>
+                <li>Browser Support</li>
+                <li>Easy to learn</li>
+                <li>Needs no dependencies at runtime</li>
+                <li>Web Standards</li>
+                <li>Automatic Optimizations</li>
+                <li>Run-time Performance</li>
+                <li>Framework Features During Development</li>
             </ul>
         </td>
         <td>
             <strong>Weakness</strong>
             <ul>
-                <li>Item bla</li>
-                <li>Item bla</li>
+                <li>Depending on the release cycle of Stencil</li>
             </ul>
         </td>
     </tr>    
@@ -200,16 +209,18 @@ The generated code does not rely on Stencil, but rather it generates highly-opti
         <td>
             <strong>Opportunity</strong>
             <ul>
-                <li>Item bla</li>
-                <li>Item bla</li>
+                <li>Framework agnostic</li>
+                <li>Open-Source positioning</li>
+                <li>Get new features</li>
+                <li>Web Standards</li>
+                <li>Only ships Web Components</li>
             </ul>
         </td>
         </td>
         <td>
             <strong>Threat</strong>
             <ul>
-                <li>Item bla</li>
-                <li>Item bla</li>
+                <li>Library could get deprecated</li>
             </ul>
         </td>
         </td>
