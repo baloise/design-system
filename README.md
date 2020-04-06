@@ -4,7 +4,7 @@
 
 <br><br>
 
-Lightweight UI-Component Library for Baloise Applications
+UI-Libary is an open source library for building amazing web applications that follow the Baloise corporate style guidelines.
 
 [![Build Status](https://travis-ci.org/baloise/ui-library.svg?branch=master)](https://travis-ci.org/baloise/ui-library)
 [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)

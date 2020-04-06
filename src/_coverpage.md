@@ -15,4 +15,4 @@ Just give it a try and add it to your project
 <br>
 
 [GitHub](https://github.com/baloise/ui-library)
-[Get Started](home.md)
+[Get Started](home.md?id=get-started)

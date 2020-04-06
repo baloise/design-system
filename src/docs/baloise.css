@@ -590,7 +590,7 @@ section.cover a:hover {
 }
 
 section.cover p {
-  line-height: 1.5rem;
+  line-height: 2rem;
   margin: 1em 0;
   color: white;
 }
@@ -1103,4 +1103,13 @@ pre[data-lang="mermaid"] {
 article.markdown-section > ul {
   list-style-type: disc;
   padding-left: 40px;
+}
+
+.pagination-item-title {
+  color: #34495e;
+}
+
+.pagination-item-label,
+.pagination-item-subtitle {
+  color: rgb(113, 136, 184);
 }
