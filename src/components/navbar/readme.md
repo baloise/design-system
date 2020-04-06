@@ -21,7 +21,7 @@ A responsive horizontal navbar that can support images, links, buttons, and drop
 ```html
 <bal-navbar>
     <span slot="navbar-brand">
-        <img src="docs/assets/logo-dark.png" />
+        <img src="docs/assets/icon.svg" />
     </span>
 </bal-navbar>
 ```
@@ -31,7 +31,7 @@ A responsive horizontal navbar that can support images, links, buttons, and drop
 ```html
 <bal-navbar light>
     <span slot="navbar-brand">
-        <img src="docs/assets/logo.png" />
+        <img src="docs/assets/banner.svg" />
     </span>
 </bal-navbar>
 ```

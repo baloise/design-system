@@ -40,7 +40,10 @@ div#app:empty:before {
 .search {
   order: 2;
   border-color: #d3dbeb !important;
+  margin-top: 10px !important;
   margin-bottom: 0 !important;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
 }
 
 .search .search-keyword,
@@ -54,7 +57,9 @@ div#app:empty:before {
 }
 
 .search input {
+  border-radius: 3px;
   height: 36px;
+  border: 1px solid #99add6 !important;
 }
 
 body,
@@ -672,13 +677,18 @@ section.cover blockquote > p > a:hover {
   color: #009fee;
 }
 
+section.cover img {
+  box-shadow: 0 20px 60px hsla(0, 0%, 4%, 0.05), 0 5px 10px hsla(0, 0%, 4%, 0.1),
+    0 1px 1px hsla(0, 0%, 4%, 0.2);
+}
+
 body {
   background-color: #fff;
 }
 
 .app-name {
   order: 1;
-  background-image: url("/docs/assets/logo.png");
+  background-image: url("/docs/assets/banner.svg");
   background-position: 30px 15px;
   background-size: 220px;
   background-repeat: no-repeat;

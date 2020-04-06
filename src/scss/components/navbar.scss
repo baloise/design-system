@@ -34,7 +34,8 @@ $navbar-dropdown-radius: $radius-large;
 $navbar-dropdown-z: 20;
 
 $navbar-dropdown-boxed-radius: $radius-large;
-$navbar-dropdown-boxed-shadow: 0 8px 8px rgba($scheme-invert, 0.1), 0 0 0 1px rgba($scheme-invert, 0.1);
+$navbar-dropdown-boxed-shadow: 0 8px 8px rgba($scheme-invert, 0.1),
+  0 0 0 1px rgba($scheme-invert, 0.1);
 
 $navbar-dropdown-item-hover-color: $scheme-invert;
 $navbar-dropdown-item-hover-background-color: $background;
@@ -49,7 +50,6 @@ $navbar-bottom-box-shadow-size: 0 -2px 0 0;
 $navbar-breakpoint: $desktop;
 
 .navbar {
-
   &.is-info::after,
   &.is-info::before {
     opacity: 0 !important;
@@ -78,6 +78,7 @@ $navbar-breakpoint: $desktop;
     color: $white;
   }
 
+  .navbar-item img {
+    margin-top: 6px;
+  }
 }
-
-
