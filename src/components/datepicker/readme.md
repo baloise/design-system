@@ -22,6 +22,9 @@ You can limit the date range with min-date and max-date props.
     document.getElementById('bal-datepicker-range-example').addEventListener('balChange', event => { 
         console.log('balChange on bal-datepicker-range-example', event) 
     });
+    document.getElementById('bal-datepicker-range-example').addEventListener('balBlur', event => { 
+        console.log('balBlur on bal-datepicker-range-example', event) 
+    });
 </script>
 
 ```html
@@ -65,23 +68,26 @@ document.getElementById('with-filter').filter =  function (str) {
 
 ## Properties
 
-| Property      | Attribute     | Description                                                              | Type                        | Default                |
-| ------------- | ------------- | ------------------------------------------------------------------------ | --------------------------- | ---------------------- |
-| `disabled`    | `disabled`    | Disable the input                                                        | `boolean`                   | `false`                |
-| `filter`      | --            | Callback to determine which date in the datepicker should be selectable. | `(date: string) => boolean` | `(_) => true`          |
-| `language`    | `language`    | Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`. | `string`                    | `"de"`                 |
-| `maxDate`     | `max-date`    | Latest date available for selection                                      | `string`                    | `""`                   |
-| `maxYear`     | `max-year`    | Latest year available for selection                                      | `string`                    | `""`                   |
-| `minDate`     | `min-date`    | Earliest date available for selection                                    | `string`                    | `""`                   |
-| `minYear`     | `min-year`    | Earliest year available for selection                                    | `string`                    | `""`                   |
-| `placeholder` | `placeholder` | Placeholder text to render if no date has been selected.                 | `string`                    | `"Click to select..."` |
-| `value`       | `value`       | The value of the datepicker with the format `dd.MM.yyyy`.                | `string`                    | `""`                   |
+| Property        | Attribute         | Description                                                              | Type                        | Default                |
+| --------------- | ----------------- | ------------------------------------------------------------------------ | --------------------------- | ---------------------- |
+| `closeOnSelect` | `close-on-select` | Closes the datepicker dropdown after selection                           | `boolean`                   | `true`                 |
+| `disabled`      | `disabled`        | Disable the input                                                        | `boolean`                   | `false`                |
+| `filter`        | --                | Callback to determine which date in the datepicker should be selectable. | `(date: string) => boolean` | `(_) => true`          |
+| `formatLabel`   | --                | Callback to format or modify a changed value pefore display.             | `(date: string) => string`  | `(_) => _`             |
+| `language`      | `language`        | Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`. | `string`                    | `"de"`                 |
+| `maxDate`       | `max-date`        | Latest date available for selection                                      | `string`                    | `""`                   |
+| `maxYear`       | `max-year`        | Latest year available for selection                                      | `string`                    | `""`                   |
+| `minDate`       | `min-date`        | Earliest date available for selection                                    | `string`                    | `""`                   |
+| `minYear`       | `min-year`        | Earliest year available for selection                                    | `string`                    | `""`                   |
+| `placeholder`   | `placeholder`     | Placeholder text to render if no date has been selected.                 | `string`                    | `"Click to select..."` |
+| `value`         | `value`           | The value of the datepicker with the format `dd.MM.yyyy`.                | `string`                    | `""`                   |
 
 
 ## Events
 
 | Event       | Description                                          | Type                  |
 | ----------- | ---------------------------------------------------- | --------------------- |
+| `balBlur`   | Emitted when the toggle loses focus.                 | `CustomEvent<void>`   |
 | `balChange` | Triggers when the value of the datepicker is changed | `CustomEvent<string>` |
 
 

@@ -9,6 +9,7 @@
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   DateCallback,
+  FormatLabelCallback,
 } from './components/datepicker/datepicker';
 import {
   DateCallback as DateCallback1,
@@ -113,6 +114,10 @@ export namespace Components {
     */
     'close': () => Promise<void>;
     /**
+    * Closes the datepicker dropdown after selection
+    */
+    'closeOnSelect': boolean;
+    /**
     * Disable the input
     */
     'disabled': boolean;
@@ -120,6 +125,10 @@ export namespace Components {
     * Callback to determine which date in the datepicker should be selectable.
     */
     'filter': DateCallback;
+    /**
+    * Callback to format or modify a changed value pefore display.
+    */
+    'formatLabel': FormatLabelCallback;
     /**
     * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
     */
@@ -634,6 +643,10 @@ declare namespace LocalJSX {
   }
   interface BalDatepicker {
     /**
+    * Closes the datepicker dropdown after selection
+    */
+    'closeOnSelect'?: boolean;
+    /**
     * Disable the input
     */
     'disabled'?: boolean;
@@ -641,6 +654,10 @@ declare namespace LocalJSX {
     * Callback to determine which date in the datepicker should be selectable.
     */
     'filter'?: DateCallback;
+    /**
+    * Callback to format or modify a changed value pefore display.
+    */
+    'formatLabel'?: FormatLabelCallback;
     /**
     * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
     */
@@ -661,6 +678,10 @@ declare namespace LocalJSX {
     * Earliest year available for selection
     */
     'minYear'?: string;
+    /**
+    * Emitted when the toggle loses focus.
+    */
+    'onBalBlur'?: (event: CustomEvent<void>) => void;
     /**
     * Triggers when the value of the datepicker is changed
     */
@@ -700,9 +721,13 @@ declare namespace LocalJSX {
     */
     'minYear'?: string;
     /**
+    * Emitted when the toggle loses focus.
+    */
+    'onBalBlur'?: (event: CustomEvent<void>) => void;
+    /**
     * Triggers when the value of the timepicke is changed
     */
-    'onBalChange'?: (event: CustomEvent<string>) => void;
+    'onBalDatetimeChange'?: (event: CustomEvent<string>) => void;
     /**
     * Placeholder text to render if no date has been selected.
     */

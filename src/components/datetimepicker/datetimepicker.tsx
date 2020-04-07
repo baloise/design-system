@@ -6,7 +6,7 @@ import { DateCallback } from "../datepicker/datepicker";
   styleUrl: "datetimepicker.scss"
 })
 export class Datetimepicker {
-  static FORMAT = /^([0-9]{2}.[0-9]{2}.[0-9]{4}) ([0-9]{1,2}:[0-9]{2})$/;
+  static FORMAT = /^([0-9]{2}.[0-9]{2}.[0-9]{4}), ([0-9]{1,2}:[0-9]{1,2})$/;
 
   datepickerElement!: HTMLBalDatepickerElement;
   timeinputElement!: HTMLBalTimeinputElement;
@@ -59,11 +59,19 @@ export class Datetimepicker {
    * Triggers when the value of the timepicke is changed
    */
   @Event({
-    eventName: "balChange",
     composed: true,
     cancelable: true,
     bubbles: true,
-  }) balChangeEventEmitter!: EventEmitter<string>;
+  }) balDatetimeChange!: EventEmitter<string>;
+
+  /**
+   * Emitted when the toggle loses focus.
+   */
+  @Event({
+    composed: true,
+    cancelable: false,
+    bubbles: false,
+  }) balBlur!: EventEmitter<void>;
 
   @Watch("value")
   valueWatcher(newValue: string) {
@@ -98,21 +106,44 @@ export class Datetimepicker {
     if (matches !== null) {
       this.date = matches[1];
       this.time = matches[2];
+      return;
     }
+    this.date = undefined;
+    this.time = undefined;
   }
 
   private async selectDate(event: CustomEvent<string>) {
     this.date = event.detail;
-    this.emitValue();
   }
 
   private async changeTime(event: CustomEvent<string>) {
     this.time = event.detail;
-    this.emitValue();
   }
 
-  private emitValue() {
-    this.balChangeEventEmitter.emit(this.date + " " + this.time);
+  private save() {
+    this.value = this.date + ", " + this.time;
+    this.balDatetimeChange.emit(this.value);
+    this.datepickerElement.close();
+  }
+
+  private abort() {
+    this.parseValue(this.value);
+    this.datepickerElement.close();
+  }
+
+  private async onBlur() {
+    this.parseValue(this.value);
+    this.balBlur.emit();
+  }
+
+  private formatDatepickerLabel(date: string) {
+    if (date !== undefined && date !== "" && this.time !== undefined) {
+       return date + ", " + this.time;
+    }
+    if (date !== undefined) {
+      return date;
+    }
+    return this.time;
   }
 
   render() {
@@ -126,11 +157,19 @@ export class Datetimepicker {
           minDate={this.minDate}
           maxYear={this.maxYear}
           minYear={this.minYear}
+          closeOnSelect={false}
           filter={this.filter}
+          formatLabel={this.formatDatepickerLabel.bind(this)}
           onBalChange={this.selectDate.bind(this)}
+          onBalBlur={this.onBlur.bind(this)}
           ref={el => this.datepickerElement = el as HTMLBalDatepickerElement}>
           <div class="bal-datetimepicker-panel">
-            <bal-button type="is-info" size="is-small" is-square outlined>
+            <bal-button
+              disabled={this.disabled}
+              onClick={() => this.abort()}
+              type="is-info"
+              size="is-small"
+              is-square outlined>
               <bal-icon name="close-big" size="medium"></bal-icon>
             </bal-button>
             <bal-timeinput class="bal-datetimepicker-timeinput"
@@ -139,7 +178,12 @@ export class Datetimepicker {
               onBalInput={this.changeTime.bind(this)}
               ref={el => this.timeinputElement = el as HTMLBalTimeinputElement}>
             </bal-timeinput>
-            <bal-button type="is-info" size="is-small" is-square outlined>
+            <bal-button
+              disabled={this.disabled || this.date === undefined || this.time === undefined}
+              onClick={() => this.save()}
+              type="is-info"
+              size="is-small"
+              is-square outlined>
               <bal-icon name="check" size="medium"></bal-icon>
             </bal-button>
           </div>

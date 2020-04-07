@@ -38,7 +38,11 @@ export class Timeinput {
   /**
    * Emitted when either the hour or minute input field loses focus.
    */
-  @Event() balBlur!: EventEmitter<void>;
+  @Event({
+    composed: true,
+    cancelable: false,
+    bubbles: false,
+  }) balBlur!: EventEmitter<void>;
 
   @Watch("value")
   valueWatcher(newValue: string) {
@@ -57,7 +61,10 @@ export class Timeinput {
     if (matches !== null) {
       this.hour = Math.min(Timeinput.MAX_HOUR, parseInt(matches[1], 10));
       this.minute = Math.min(Timeinput.MAX_MINUTE, parseInt(matches[2], 10));
+      return;
     }
+    this.hour = undefined;
+    this.minute = undefined;
   }
 
   private incHour(): boolean {

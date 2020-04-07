@@ -1,12 +1,15 @@
 # Datetimepicker
 
-An input with a simple dropdown for selecting a date.
+An input with a simple dropdown for selecting a date and a time.
 
 ## Usage
 
 <script type="text/javascript">
-    document.getElementById('bal-datetimepicker-select-example').addEventListener('balChange', event => { 
-        console.log('balChange on bal-datetimepicker-select-example', event) 
+    document.getElementById('bal-datetimepicker-select-example').addEventListener('balDatetimeChange', event => { 
+        console.log('balDatetimeChange on bal-datetimepicker-select-example', event) 
+    });
+    document.getElementById('bal-datetimepicker-select-example').addEventListener('balBlur', event => { 
+        console.log('balBlur on bal-datetimepicker-select-example', event) 
     });
 </script>
 
@@ -17,7 +20,7 @@ An input with a simple dropdown for selecting a date.
 ### Set Date
 
 ```html
-<bal-datetimepicker value="20.02.2020 09:30"></bal-datetimepicker>
+<bal-datetimepicker value="20.02.2020, 09:30"></bal-datetimepicker>
 ```
 
 ### Date Range
@@ -25,7 +28,7 @@ An input with a simple dropdown for selecting a date.
 You can limit the date range with min-date and max-date props.
 
 ```html
-<bal-datetimepicker value="20.02.2020 09:30" min-date="10.02.2020" max-date="22.02.2020"></bal-datetimepicker>
+<bal-datetimepicker value="20.02.2020, 09:30" min-date="10.02.2020" max-date="22.02.2020"></bal-datetimepicker>
 ```
 
 ### Filter
@@ -49,7 +52,7 @@ document.getElementById('with-filter').filter =  function (str) {
 ### Disabled
 
 ```html
-<bal-datetimepicker disabled value="20.02.2020 09:30"></bal-datetimepicker>
+<bal-datetimepicker disabled value="20.02.2020, 09:30"></bal-datetimepicker>
 ```
 
 <!-- Auto Generated Below -->
@@ -71,9 +74,10 @@ document.getElementById('with-filter').filter =  function (str) {
 
 ## Events
 
-| Event       | Description                                         | Type                  |
-| ----------- | --------------------------------------------------- | --------------------- |
-| `balChange` | Triggers when the value of the timepicke is changed | `CustomEvent<string>` |
+| Event               | Description                                         | Type                  |
+| ------------------- | --------------------------------------------------- | --------------------- |
+| `balBlur`           | Emitted when the toggle loses focus.                | `CustomEvent<void>`   |
+| `balDatetimeChange` | Triggers when the value of the timepicke is changed | `CustomEvent<string>` |
 
 
 ## Methods
