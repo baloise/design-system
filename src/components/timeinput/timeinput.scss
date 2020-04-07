@@ -1,0 +1,49 @@
+@import "../../scss/ui-library.globals";
+@import "../../scss/elements/input";
+
+:host {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  .stepper {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    .stepper-btn {
+      border: none;
+      outline: 0;
+      padding: 0;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    .stepper-btn:disabled {
+      cursor: default;
+      * {
+        color: $blue-line;
+        stroke: $blue-line;
+      }
+    }
+    .time-box {
+      width: 2em;
+      text-align: center;
+    }
+  }
+  .time-divider {
+    align-items: stretch;
+    display: inline-flex;
+    flex-direction: column;
+    height: 100%;
+    &:after, &:before {
+      content: '';
+      width: .30em;
+      height: .30em;
+      margin-top: .15em;
+      margin-bottom: .15em;
+      margin-left: .35em;
+      margin-right: .35em;
+      border-radius: 50%;
+      background-color: $blue;
+    }
+  }
+}

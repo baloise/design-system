@@ -15,6 +15,7 @@
   - [Radio](docs/elements/radio.md)
   - [Select Button](docs/elements/select-button.md)
   - [Textarea](docs/elements/textarea.md)
+  - [Timeinput](components/timeinput/readme.md)
   - [Timepicker](components/timepicker/readme.md)
   - [Typeahead](components/dropdown/readme.md?id=typeahead)
   
