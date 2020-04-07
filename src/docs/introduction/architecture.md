@@ -11,7 +11,7 @@ Under the hood, UI-Libary uses [Bulma](https://bulma.io/), a clean css framework
 
 > The best part is that we depend on only those two libraries, which do not depend on each other, and at the end we have only one simple UI-Library for our consumers!
 
-![tooling](../assets/tooling.svg)
+![tooling](../assets/images/tooling.svg)
 
 <br />
 
@@ -247,7 +247,7 @@ After detecting the new version, it also publishes the library to npm. Afterthat
 
 <br>
 
-![ci-cd](../assets/ci-cd.svg)
+![ci-cd](../assets/images/ci-cd.svg)
 
 <br />
 

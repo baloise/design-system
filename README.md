@@ -1,5 +1,5 @@
 <a href="https://baloise-ui-library.now.sh" target="blank">
-    <img src="src/docs/assets/banner.svg" width="500" alt="Baloise UI-Library" />
+    <img src="src/docs/assets/images/banner.svg" width="500" alt="Baloise UI-Library" />
 </a>
 
 <br><br>

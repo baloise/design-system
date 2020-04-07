@@ -1,8 +1,9 @@
 @import "utilities/all";
-@import "base/all";
 
 .bal-app {
   position: relative;
+
+  @import "base/all";
 
   @import "elements/all";
   @import "components/all";

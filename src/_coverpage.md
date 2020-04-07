@@ -1,11 +1,8 @@
-![Baloise UI-Library Logo](docs/assets/icon.svg ':size=180')
+![Baloise UI-Library Logo](docs/assets/images/icon.svg ':size=180')
 
 # Baloise UI-Libary
 
 > UI-Libary is an open source library<br>for building amazing web applications<br>that follow the Baloise corporate style guidelines
-
-No design skills required<br>
-Just give it a try and add it to your project
 
 [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)
 
@@ -15,4 +12,4 @@ Just give it a try and add it to your project
 <br>
 
 [GitHub](https://github.com/baloise/ui-library)
-[Get Started](home.md?id=get-started)
+[Get Started](home.md)
