@@ -282,6 +282,7 @@ export class Datepicker {
                     )}
                   </div>
                 </section>
+                <slot />
               </div>
             </div>
           </bal-dropdown>

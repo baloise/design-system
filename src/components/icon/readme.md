@@ -90,6 +90,7 @@ Here is how you can change the size:
 
  - [bal-accordion](../accordion)
  - [bal-datepicker](../datepicker)
+ - [bal-datetimepicker](../datetimepicker)
  - [bal-dropdown](../dropdown)
  - [bal-field](../field)
  - [bal-pagination](../pagination)
@@ -99,6 +100,7 @@ Here is how you can change the size:
 graph TD;
   bal-accordion --> bal-icon
   bal-datepicker --> bal-icon
+  bal-datetimepicker --> bal-icon
   bal-dropdown --> bal-icon
   bal-field --> bal-icon
   bal-pagination --> bal-icon

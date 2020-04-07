@@ -18,8 +18,14 @@ An input with a simple dropdown for selecting a date.
 
 You can limit the date range with min-date and max-date props.
 
+<script type="text/javascript">
+    document.getElementById('bal-datepicker-range-example').addEventListener('balChange', event => { 
+        console.log('balChange on bal-datepicker-range-example', event) 
+    });
+</script>
+
 ```html
-<bal-datepicker min-date="10.02.2020" max-date="22.02.2020" value="20.02.2020"></bal-datepicker>
+<bal-datepicker id="bal-datepicker-range-example" min-date="10.02.2020" max-date="22.02.2020" value="20.02.2020"></bal-datepicker>
 ```
 
 ### Filter
@@ -38,6 +44,14 @@ document.getElementById('with-filter').filter =  function (str) {
 
 ```html
 <bal-datepicker id="with-filter"></bal-datepicker>
+```
+
+### With content
+
+```html
+<bal-datepicker value="20.02.2020">
+  <p style="text-align: center;">Choose your arival date!</p>
+</bal-datepicker>
 ```
 
 ### Disabled
@@ -96,6 +110,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [bal-datetimepicker](../datetimepicker)
+
 ### Depends on
 
 - [bal-dropdown](../dropdown)
@@ -107,6 +125,7 @@ graph TD;
   bal-datepicker --> bal-dropdown
   bal-datepicker --> bal-icon
   bal-dropdown --> bal-icon
+  bal-datetimepicker --> bal-datepicker
   style bal-datepicker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
