@@ -3,9 +3,9 @@
 (function () {
   function StencilPlugin(hook, vm) {
     hook.beforeEach(function (content) {
-      const divider = `----------------------------------------------`
-      const contentWithoutDividers = content.replace(divider, '').replace(divider, '')
-      const search = `*Built with [StencilJS](https://stenciljs.com/)*`
+      var divider = '----------------------------------------------'
+      var contentWithoutDividers = content.replace(divider, '').replace(divider, '')
+      var search = '*Built with [StencilJS](https://stenciljs.com/)*'
       return contentWithoutDividers.replace(search, '')
     });
   }

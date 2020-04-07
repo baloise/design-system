@@ -4,8 +4,8 @@
 
   function GithubPlugin(hook, vm) {
     hook.beforeEach(function (html) {
-      let url = 'https://github.com/baloise/ui-library/blob/master/src/' + vm.route.file;
-      const editHtml = '[:memo: Edit Document](' + url + ')\n'
+      var url = 'https://github.com/baloise/ui-library/blob/master/src/' + vm.route.file;
+      var editHtml = '[:memo: Edit Document](' + url + ')\n'
       return editHtml + html
     })
   }
