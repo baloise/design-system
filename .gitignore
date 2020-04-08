@@ -22,6 +22,7 @@ log.txt
 .versions/
 node_modules/
 $RECYCLE.BIN/
+yarn.lock
 
 .DS_Store
 Thumbs.db

@@ -1,6 +1,11 @@
-- **Essentials**
+- **Introduction**
 
-  - [Get Started](home.md)
+  - [Overview](home.md)
+  - [Why UI-Library](docs/introduction/why.md)
+  - [Architecture](docs/introduction/architecture.md)
+  - [Quick Start](docs/introduction/quick-start.md)
+
+- **Essentials**
   - [Styling](docs/essentials/styling.md)
   - [Colors](docs/essentials/colors.md)
 
@@ -42,8 +47,7 @@
 
 - **Development**
 
-  - [Prerequisites](docs/development/prerequisites.md)
-  - [Setup](docs/development/setup.md)
+  - [Installation](docs/development/installation.md)
   - [Write your own Component](docs/development/component.md)
   - [Write your own Controller](docs/development/controller.md)
 

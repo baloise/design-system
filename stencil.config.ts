@@ -1,6 +1,6 @@
-import {Config} from "@stencil/core";
-import {sass} from "@stencil/sass";
-import {postcss} from "@stencil/postcss";
+import { Config } from "@stencil/core";
+import { sass } from "@stencil/sass";
+import { postcss } from "@stencil/postcss";
 import autoprefixer from "autoprefixer";
 
 export const config: Config = {
@@ -17,10 +17,13 @@ export const config: Config = {
       src: "docs/**/*.css",
     },
     {
-      src: "docs/assets**/*.svg",
+      src: "docs/assets/**/*.svg",
     },
     {
-      src: "docs/assets**/*.png",
+      src: "docs/assets/**/*.png",
+    },
+    {
+      src: "docs/assets/**/*.ico",
     },
     {
       src: "docs/**/*.js",

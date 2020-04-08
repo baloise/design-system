@@ -1,6 +1,6 @@
 # Tab-Item
 
-## USage
+## Usage
 
 ```html
 <bal-tab-item value="item-a" label="Item A">Hidden Content</bal-tab-item>

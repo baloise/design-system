@@ -1,10 +1,10 @@
 <a href="https://baloise-ui-library.now.sh" target="blank">
-    <img src="logo.png" width="400" alt="Baloise UI Library Logo" />
+    <img src="src/docs/assets/images/banner.svg" width="500" alt="Baloise UI-Library" />
 </a>
 
 <br><br>
 
-Lightweight UI-Component Library for Baloise Applications
+UI-Libary is an open source library for building amazing web applications that follow the Baloise corporate style guidelines.
 
 [![Build Status](https://travis-ci.org/baloise/ui-library.svg?branch=master)](https://travis-ci.org/baloise/ui-library)
 [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)

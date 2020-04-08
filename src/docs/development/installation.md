@@ -1,4 +1,4 @@
-# Prerequisites
+# Installation
 
 ## NodeJS
 
@@ -33,3 +33,31 @@ Here is an example of the release type that will be done based on a commit messa
 | `fix(pencil): stop graphite breaking when too much pressure applied`                                                                                                                             | Patch Release              |
 | `feat(pencil): add 'graphiteWidth' option`                                                                                                                                                       | ~~Minor~~ Feature Release  |
 | `perf(pencil): remove graphiteWidth option`<br><br>`BREAKING CHANGE: The graphiteWidth option has been removed.`<br>`The default graphite width of 10mm is always used for performance reasons.` | ~~Major~~ Breaking Release |
+
+## Setup Project
+
+To start building a new web component using Stencil, clone this repo to a new directory:
+
+```bash
+git clone https://github.com/baloise/ui-library.git ui-library
+cd ui-library
+```
+
+and run:
+
+```bash
+npm install
+npm run serve
+```
+
+To build the component for production, run:
+
+```bash
+npm run build
+```
+
+To run the unit tests for the components, run:
+
+```bash
+npm test
+```

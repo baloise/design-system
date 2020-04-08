@@ -1,18 +1,15 @@
-![Baloise UI Library Logo](docs/assets/logo-dark.png ':size=400')
+![Baloise UI-Library Logo](docs/assets/images/icon.svg ':size=180')
+
+# Baloise UI-Libary
+
+> UI-Libary is an open source library<br>for building amazing web applications<br>that follow the Baloise corporate style guidelines
 
 [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)
 
-> Lightweight UI-Component Library for Baloise Applications
-
-This is a project for building modern Web Components using Stencil and Bulma.
-
-Just give it a try and add it to your project.
-
 <br>
-
 <code class="cover-code">$ npm install @baloise/ui-library</code>
-
+<br>
 <br>
 
 [GitHub](https://github.com/baloise/ui-library)
-[Get Started](home.md)
+[Get Started](docs/introduction/quick-start.md)
