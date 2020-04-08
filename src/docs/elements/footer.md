@@ -1,24 +1,23 @@
 # Footer
 
-A page footer
+[Go to the Bulma documentation](https://bulma.io/documentation/layout/footer/).
 
 ## Usage
 
 ### Without content {docsify-ignore}
 
 ```html
-<div class="bal-footer"></div>
+<footer class="footer"></footer>
 ```
 
 ### With content {docsify-ignore}
 
 ```html
-<div class="bal-footer">some content</div>
-
+<footer class="footer">some content</footer>
 ```
 
 ### With more content {docsify-ignore}
 
 ```html
-<div class="bal-footer">a<br/>lot<br/>of<br/>content</div>
+<footer class="footer">a<br/>lot<br/>of<br/>content</footer>
 ```
