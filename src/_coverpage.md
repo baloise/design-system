@@ -12,4 +12,4 @@
 <br>
 
 [GitHub](https://github.com/baloise/ui-library)
-[Get Started](home.md)
+[Get Started](docs/introduction/quick-start.md)

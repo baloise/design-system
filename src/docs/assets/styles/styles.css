@@ -405,3 +405,15 @@ body .sidebar-toggle span:nth-child(3) {
   width: 1.5rem;
   top: 0.65rem;
 }
+
+div.docs-contributors {
+  display: flex;
+  flex-wrap: wrap;
+}
+div.docs-contributors > .docs-contributor {
+  margin-right: 12px;
+}
+
+div.docs-contributors > .docs-contributor:last-child {
+  margin-right: 0;
+}
