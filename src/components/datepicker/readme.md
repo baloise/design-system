@@ -25,6 +25,9 @@ You can limit the date range with min-date and max-date props.
     document.getElementById('bal-datepicker-range-example').addEventListener('balBlur', event => { 
         console.log('balBlur on bal-datepicker-range-example', event) 
     });
+    document.getElementById('bal-datepicker-filter-example').filter =  function (str) {
+      return parseInt(str.substring(0, 2)) == 5;
+    };
 </script>
 
 ```html
@@ -34,19 +37,13 @@ You can limit the date range with min-date and max-date props.
 ### Filter
 
 ```typescript
-document.getElementById('with-filter').filter =  function (str) {
+document.getElementById('bal-datepicker-filter-example').filter =  function (str) {
   return parseInt(str.substring(0, 2)) == 5;
 };
 ```
 
-<script type="text/javascript">
-document.getElementById('with-filter').filter =  function (str) {
-  return parseInt(str.substring(0, 2)) == 5;
-};
-</script>
-
 ```html
-<bal-datepicker id="with-filter"></bal-datepicker>
+<bal-datepicker id="bal-datepicker-filter-example"></bal-datepicker>
 ```
 
 ### With content

@@ -168,13 +168,13 @@ export namespace Components {
     */
     'close': () => Promise<void>;
     /**
+    * Callback to determine which date in the datetimepicker should be selectable.
+    */
+    'dateFilter': DateCallback;
+    /**
     * Disable the input
     */
     'disabled': boolean;
-    /**
-    * Callback to determine which date in the timepicke should be selectable.
-    */
-    'filter': DateCallback;
     /**
     * Latest date available for selection
     */
@@ -697,13 +697,13 @@ declare namespace LocalJSX {
   }
   interface BalDatetimepicker {
     /**
+    * Callback to determine which date in the datetimepicker should be selectable.
+    */
+    'dateFilter'?: DateCallback;
+    /**
     * Disable the input
     */
     'disabled'?: boolean;
-    /**
-    * Callback to determine which date in the timepicke should be selectable.
-    */
-    'filter'?: DateCallback;
     /**
     * Latest date available for selection
     */

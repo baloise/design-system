@@ -6,7 +6,7 @@ import { DateCallback } from "../datepicker/datepicker";
   styleUrl: "datetimepicker.scss"
 })
 export class Datetimepicker {
-  static FORMAT = /^([0-9]{2}.[0-9]{2}.[0-9]{4}), ([0-9]{1,2}:[0-9]{1,2})$/;
+  static FORMAT = /^([0-9]{2}.[0-9]{2}.[0-9]{4}) ([0-9]{1,2}:[0-9]{1,2})$/;
 
   datepickerElement!: HTMLBalDatepickerElement;
   timeinputElement!: HTMLBalTimeinputElement;
@@ -51,9 +51,9 @@ export class Datetimepicker {
   @Prop({ mutable: true }) value: string = "";
 
   /**
-   * Callback to determine which date in the timepicke should be selectable.
+   * Callback to determine which date in the datetimepicker should be selectable.
    */
-  @Prop() filter: DateCallback = (_) => true;
+  @Prop() dateFilter: DateCallback = (_) => true;
 
   /**
    * Triggers when the value of the timepicke is changed
@@ -121,7 +121,7 @@ export class Datetimepicker {
   }
 
   private save() {
-    this.value = this.date + ", " + this.time;
+    this.value = Datetimepicker.formatValue(this.date, this.time);
     this.balDatetimeChange.emit(this.value);
     this.datepickerElement.close();
   }
@@ -138,12 +138,16 @@ export class Datetimepicker {
 
   private formatDatepickerLabel(date: string) {
     if (date !== undefined && date !== "" && this.time !== undefined) {
-       return date + ", " + this.time;
+       return Datetimepicker.formatValue(date, this.time);
     }
     if (date !== undefined) {
       return date;
     }
     return this.time;
+  }
+
+  private static formatValue(date: string, time: string) {
+    return date + " " + time;
   }
 
   render() {
@@ -158,7 +162,7 @@ export class Datetimepicker {
           maxYear={this.maxYear}
           minYear={this.minYear}
           closeOnSelect={false}
-          filter={this.filter}
+          filter={this.dateFilter}
           formatLabel={this.formatDatepickerLabel.bind(this)}
           onBalChange={this.selectDate.bind(this)}
           onBalBlur={this.onBlur.bind(this)}
