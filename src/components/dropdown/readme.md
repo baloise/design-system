@@ -3,7 +3,7 @@
 ## Usage
 
 ```html
-<bal-dropdown selected="1">
+<bal-dropdown>
     <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
     <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
     <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
@@ -23,6 +23,12 @@
         label: 'Black Panter',
         value: '2'
     };
+    document.getElementById('bal-dropdown-typeahead-example').addEventListener('balInput', event => { 
+        console.log('balInput on bal-dropdown-typeahead-example', event) 
+    });
+    document.getElementById('bal-dropdown-typeahead-example').addEventListener('balChange', event => { 
+        console.log('balChange on bal-dropdown-typeahead-example', event) 
+    });
 </script>
 
 ### Disabled
@@ -38,7 +44,7 @@
 ### Typeahead
 
 ```html
-<bal-dropdown expanded typeahead>
+<bal-dropdown expanded typeahead id="bal-dropdown-typeahead-example">
     <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
     <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
     <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
@@ -54,8 +60,6 @@
     <bal-dropdown-option value="13" label="Wolverine"></bal-dropdown-option>
 </bal-dropdown>
 ```
-
-
 <!-- Auto Generated Below -->
 
 
@@ -75,11 +79,12 @@
 
 ## Events
 
-| Event       | Description                                    | Type                  |
-| ----------- | ---------------------------------------------- | --------------------- |
-| `balBlur`   | Emitted when the toggle loses focus.           | `CustomEvent<void>`   |
-| `balChange` | Emitted when the checked property has changed. | `CustomEvent<Option>` |
-| `balFocus`  | Emitted when the toggle has focus..            | `CustomEvent<void>`   |
+| Event       | Description                                                | Type                  |
+| ----------- | ---------------------------------------------------------- | --------------------- |
+| `balBlur`   | Emitted when the toggle loses focus.                       | `CustomEvent<void>`   |
+| `balChange` | Emitted when the checked property has changed.             | `CustomEvent<Option>` |
+| `balFocus`  | Emitted when the toggle has focus..                        | `CustomEvent<void>`   |
+| `balInput`  | Emitted when containing input field raises an input event. | `CustomEvent<string>` |
 
 
 ## Methods
