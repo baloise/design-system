@@ -1,0 +1,11 @@
+div.bal-footer {
+  width: 100%;
+  min-height: 100px;
+  padding: $bal_padding 200px;
+  position: relative;
+  overflow-x: hidden;
+  background-color: $bal_brand_blue;
+  color: $bal_text_white;
+  line-height: $bal_lineheight_20px;
+  font-size: $bal_font_size_15px;
+}
