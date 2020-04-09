@@ -1,7 +1,7 @@
 {
   "name": "@baloise/ui-library",
   "version": "0.0.0-development",
-  "description": "UI-Libary is an open source library for building amazing web applications that follow the Baloise corporate style guidelines. No design skills required.",
+  "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "license": "MIT",
   "repository": {
     "type": "git",
