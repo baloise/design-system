@@ -1,45 +1,39 @@
 # Why UI-Library
 
-<h2>Problem Space<h2>
+## Problem Space
 
-<h3>Internal</h3> 
-<ul>
-  <li>Big corporates have complex organisational structures (many involved stakeholders)</li>
-  <li>Difficult collaboration between teams (IT, design, business units, marketing, sales etc.)</li>
-  <li>Collaboration more difficult for working with distributed teams (office/country) & working with external partners</li>
-</ul>    
- 
-<b>Result:</b> Island solutions are build!
+### Internal
 
-<h3>External</h3>
-<ul>
-  <li>Brand integrity gets disturbed</li>
-  <li>Loss of credibility</li>
-  <li>Loss of trust</li>
-</ul>
+- Big corporates have complex organisational structures (many involved stakeholders)
+- Difficult collaboration between teams (IT, design, business units, marketing, sales etc.)
+- Collaboration more difficult for working with distributed teams (office/country) & working with external partners
+    
+**Result:** Island solutions are build!
 
-<b>Result:</b> Interrupted Customer Journey leads to less revenue
+### External
 
-<h2>Solution Space<h2>
+- Brand integrity gets disturbed
+- Loss of credibility
+- Loss of trust
+
+**Result:** Interrupted Customer Journey leads to less revenue
+
+## Solution Space
 
 Create a design system (collection of reusable components with rules, principles and constraints for the design development) 
 
-<h3>Internal</h3>  
-<ul>
-  <li>Standardisation leads to less frictional losses, more efficiency & easier collaboration</li>
-  <li>Better UX-quality through consistency </li>
-  <li>Reduce costs/errors & improve time-to-market </li>
-</ul>
+### Internal  
 
-<b>Result:</b> Reduce costs/errors & improve time-to-market 
+- Standardisation leads to less frictional losses, more efficiency & easier collaboration
+- Better UX-quality through consistency
+- Reduce costs/errors & improve time-to-market
 
-<h3>External</h3>
-<ul>
-  <li>Clear communication of the brand integrity </li>
-  <li>More credibility</li>
-  <li>More trust</li>
-</ul>
+**Result:** Reduce costs/errors & improve time-to-market 
 
-<b>Result:</b> Optimised customer journey leads to more sales!
+### External
 
+- Clear communication of the brand integrity
+- More credibility
+- More trust
 
+**Result:** Optimised customer journey leads to more sales!
