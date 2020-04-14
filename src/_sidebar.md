@@ -25,6 +25,7 @@
 - **Elements**
 
   - [Box](docs/elements/box.md)
+  - [Footer](docs/elements/footer.md)
   - [Image](docs/elements/image.md)
   - [Table](docs/elements/table.md)
   - [Title](docs/elements/title.md)
