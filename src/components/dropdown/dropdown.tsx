@@ -142,6 +142,13 @@ export class Dropdown {
    */
   @Event() balFocus!: EventEmitter<void>;
 
+  @Listen("keyup", {target: "document"})
+  tabOutside(event: KeyboardEvent) {
+    if (event.key === "Tab" && !this.element.contains(document.activeElement) && this.isActive) {
+      this.toggle();
+    }
+  }
+
   @Listen("click", {target: "document"})
   clickOnOutside(event: UIEvent) {
     if (!this.element.contains((event.target as any)) && this.isActive) {
