@@ -25,13 +25,15 @@
       }
     }
     .time-box {
+      appearance: none;
       border-top: none;
       border-left: none;
       border-right: none;
       border-width: 1px;
       border-radius: 0;
       box-shadow: none;
-      padding: 1px 0 2px 0;
+      padding-left: 5px;
+      padding-right: 5px;
       font-size: $size-4;
       outline: none;
       color: $text;
@@ -40,13 +42,10 @@
       &:focus, &.is-focused {
         border-width: 2px;
         border-color: $blue;
-        padding: 1px 0 1px 0;
         box-shadow: none;
       }
     
       &:disabled {
-        padding-left: 5px;
-        padding-right: 5px;
         background-color: $blue-light;
         cursor: not-allowed;
       }
