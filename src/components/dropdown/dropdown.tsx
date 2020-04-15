@@ -261,7 +261,8 @@ export class Dropdown {
       if (this.typeahead && children && children.length > 0) {
         children.forEach(child => child.highlight = inputValue);
       }
-      this.hasNoData = (await this.childrenWithHiddenState).every(hidden => hidden === true);
+      const childrenWithHiddenState = (await this.childrenWithHiddenState);
+      this.hasNoData = childrenWithHiddenState.every(hidden => hidden === true) && childrenWithHiddenState.length > 0;
       this.fireBlurIfPossible();
     }
   }
