@@ -256,7 +256,6 @@ export class Datetimepicker {
             <bal-button
               disabled={this.disabled || !this.canSave()}
               onClick={() => this.save()}
-              onBlur={e => console.log("go home",e)}
               type="is-info"
               size="is-small"
               is-square outlined
