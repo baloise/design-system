@@ -221,6 +221,11 @@ export class Dropdown {
     return Promise.all(this.children.map(child => child.value));
   }
 
+  get isUp(): boolean {
+    const box = this.element.getBoundingClientRect();
+    return (window.innerHeight - box.top) < window.innerHeight/2;
+  }
+
   updateActivatedOptions() {
     this.children
       .forEach(child => child.activated = child.value === this.selectedOption.value);
@@ -356,6 +361,7 @@ export class Dropdown {
           this.expanded ? "is-fullwidth" : "",
           this.isActive ? "is-active" : "",
           this.fixed ? "is-fixed" : "",
+          this.isUp ? "is-up" : "",
           this.typeahead ? "is-typeahead" : "",
         ].join(" ")}>
           <div class="dropdown-trigger">
