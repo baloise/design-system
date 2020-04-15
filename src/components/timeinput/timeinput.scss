@@ -13,21 +13,44 @@
     .stepper-btn {
       border: none;
       outline: 0;
-      padding: 0;
+      padding: 5px 0 5px 0;
       background-color: transparent;
       cursor: pointer;
     }
     .stepper-btn:disabled {
-      cursor: default;
+      cursor: not-allowed;
       * {
         color: $blue-line;
         stroke: $blue-line;
       }
     }
     .time-box {
-      width: 2em;
-      text-align: center;
-    }
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-width: 1px;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 1px 0 2px 0;
+      font-size: $size-4;
+      outline: none;
+      color: $text;
+      min-height: 45px;
+    
+      &:focus, &.is-focused {
+        border-width: 2px;
+        border-color: $blue;
+        padding: 1px 0 1px 0;
+        box-shadow: none;
+      }
+    
+      &:disabled {
+        padding-left: 5px;
+        padding-right: 5px;
+        background-color: $blue-light;
+        cursor: not-allowed;
+      }
+    }    
   }
   .time-divider {
     align-items: stretch;

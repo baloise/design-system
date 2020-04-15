@@ -178,15 +178,15 @@ export namespace Components {
     /**
     * Latest date available for selection
     */
-    'maxDate': string;
+    'maxDatetime': string;
     /**
     * Latest year available for selection
     */
     'maxYear': string;
     /**
-    * Earliest date available for selection
+    * Earliest datetime available for selection
     */
-    'minDate': string;
+    'minDatetime': string;
     /**
     * Earliest year available for selection
     */
@@ -405,6 +405,14 @@ export namespace Components {
     * If `true` the button is disabled
     */
     'disabled': boolean;
+    /**
+    * Latest date available for selection
+    */
+    'maxTime': string;
+    /**
+    * Earliest date available for selection
+    */
+    'minTime': string;
     /**
     * The value of the datepicker with the format `hh:mm`.
     */
@@ -707,15 +715,15 @@ declare namespace LocalJSX {
     /**
     * Latest date available for selection
     */
-    'maxDate'?: string;
+    'maxDatetime'?: string;
     /**
     * Latest year available for selection
     */
     'maxYear'?: string;
     /**
-    * Earliest date available for selection
+    * Earliest datetime available for selection
     */
-    'minDate'?: string;
+    'minDatetime'?: string;
     /**
     * Earliest year available for selection
     */
@@ -926,13 +934,21 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
+    * Latest date available for selection
+    */
+    'maxTime'?: string;
+    /**
+    * Earliest date available for selection
+    */
+    'minTime'?: string;
+    /**
     * Emitted when either the hour or minute input field loses focus.
     */
     'onBalBlur'?: (event: CustomEvent<void>) => void;
     /**
-    * Emitted when either the hour or the minute input has changed. It will always return a valid number.
+    * Emitted when either the hour or the minute input has changed. It will not be triggert if either hour or time input has never been set (i.e. "--" is selected).
     */
-    'onBalInput'?: (event: CustomEvent<string>) => void;
+    'onBalTimeinputChange'?: (event: CustomEvent<string>) => void;
     /**
     * The value of the datepicker with the format `hh:mm`.
     */

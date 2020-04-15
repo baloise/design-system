@@ -10,13 +10,20 @@ An input deticated for gathering the time.
 ```
 
 <script type="text/javascript">
-    document.getElementById('bal-timeinput-example').addEventListener('balInput', event => { 
-        console.log('balInput on bal-timeinput-example', event) 
+    document.getElementById('bal-timeinput-example').addEventListener('balChange', event => { 
+        console.log('balChange on bal-timeinput-example', event) 
     });
     document.getElementById('bal-timeinput-example').addEventListener('balBlur', event => { 
         console.log('balBlur on bal-timeinput-example') 
     });
 </script>
+
+## Min and max time
+
+```html
+<bal-timeinput value="12:30" min-time="09:30" max-time="18:00"></bal-timeinput>
+<bal-timeinput value="12:30" min-time="09:10" max-time="09:40"></bal-timeinput>
+```
 
 ## Disabled
 
@@ -32,15 +39,17 @@ An input deticated for gathering the time.
 | Property   | Attribute  | Description                                          | Type      | Default     |
 | ---------- | ---------- | ---------------------------------------------------- | --------- | ----------- |
 | `disabled` | `disabled` | If `true` the button is disabled                     | `boolean` | `undefined` |
+| `maxTime`  | `max-time` | Latest date available for selection                  | `string`  | `""`        |
+| `minTime`  | `min-time` | Earliest date available for selection                | `string`  | `""`        |
 | `value`    | `value`    | The value of the datepicker with the format `hh:mm`. | `string`  | `""`        |
 
 
 ## Events
 
-| Event      | Description                                                                                         | Type                  |
-| ---------- | --------------------------------------------------------------------------------------------------- | --------------------- |
-| `balBlur`  | Emitted when either the hour or minute input field loses focus.                                     | `CustomEvent<void>`   |
-| `balInput` | Emitted when either the hour or the minute input has changed. It will always return a valid number. | `CustomEvent<string>` |
+| Event                | Description                                                                                                                                                    | Type                  |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| `balBlur`            | Emitted when either the hour or minute input field loses focus.                                                                                                | `CustomEvent<void>`   |
+| `balTimeinputChange` | Emitted when either the hour or the minute input has changed. It will not be triggert if either hour or time input has never been set (i.e. "--" is selected). | `CustomEvent<string>` |
 
 
 ## Dependencies

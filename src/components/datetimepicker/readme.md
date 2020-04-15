@@ -17,7 +17,7 @@ An input with a simple dropdown for selecting a date and a time.
 </script>
 
 ```html
-<bal-datetimepicker id="bal-datetimepicker-select-example" ></bal-datetimepicker>
+<bal-datetimepicker id="bal-datetimepicker-select-example"></bal-datetimepicker>
 ```
 
 ### Set Date
@@ -26,12 +26,12 @@ An input with a simple dropdown for selecting a date and a time.
 <bal-datetimepicker value="20.02.2020 09:30"></bal-datetimepicker>
 ```
 
-### Date Range
+### Datetime Range
 
 You can limit the date range with min-date and max-date props.
 
 ```html
-<bal-datetimepicker value="20.02.2020 09:30" min-date="10.02.2020" max-date="22.02.2020"></bal-datetimepicker>
+<bal-datetimepicker value="20.02.2020 09:30" min-datetime="10.02.2020 9:30" max-datetime="22.02.2020 18:00"></bal-datetimepicker>
 ```
 
 ### Date Filter
@@ -57,16 +57,16 @@ document.getElementById('bal-datetimepicker-filter-example').dateFilter =  funct
 
 ## Properties
 
-| Property      | Attribute     | Description                                                                  | Type                        | Default                |
-| ------------- | ------------- | ---------------------------------------------------------------------------- | --------------------------- | ---------------------- |
-| `dateFilter`  | --            | Callback to determine which date in the datetimepicker should be selectable. | `(date: string) => boolean` | `(_) => true`          |
-| `disabled`    | `disabled`    | Disable the input                                                            | `boolean`                   | `false`                |
-| `maxDate`     | `max-date`    | Latest date available for selection                                          | `string`                    | `""`                   |
-| `maxYear`     | `max-year`    | Latest year available for selection                                          | `string`                    | `""`                   |
-| `minDate`     | `min-date`    | Earliest date available for selection                                        | `string`                    | `""`                   |
-| `minYear`     | `min-year`    | Earliest year available for selection                                        | `string`                    | `""`                   |
-| `placeholder` | `placeholder` | Placeholder text to render if no date has been selected.                     | `string`                    | `"Click to select..."` |
-| `value`       | `value`       | The value of the timepicke with the format `dd.MM.yyyy`.                     | `string`                    | `""`                   |
+| Property      | Attribute      | Description                                                                  | Type                        | Default                |
+| ------------- | -------------- | ---------------------------------------------------------------------------- | --------------------------- | ---------------------- |
+| `dateFilter`  | --             | Callback to determine which date in the datetimepicker should be selectable. | `(date: string) => boolean` | `(_) => true`          |
+| `disabled`    | `disabled`     | Disable the input                                                            | `boolean`                   | `false`                |
+| `maxDatetime` | `max-datetime` | Latest date available for selection                                          | `string`                    | `""`                   |
+| `maxYear`     | `max-year`     | Latest year available for selection                                          | `string`                    | `""`                   |
+| `minDatetime` | `min-datetime` | Earliest datetime available for selection                                    | `string`                    | `""`                   |
+| `minYear`     | `min-year`     | Earliest year available for selection                                        | `string`                    | `""`                   |
+| `placeholder` | `placeholder`  | Placeholder text to render if no date has been selected.                     | `string`                    | `"Click to select..."` |
+| `value`       | `value`        | The value of the timepicke with the format `dd.MM.yyyy`.                     | `string`                    | `""`                   |
 
 
 ## Events

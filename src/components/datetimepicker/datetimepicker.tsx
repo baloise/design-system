@@ -1,5 +1,6 @@
-import { Component, Host, h, State, Prop, Watch, Event, EventEmitter, Method } from "@stencil/core";
+import { Component, Host, h, Listen, State, Prop, Watch, Event, EventEmitter, Method } from "@stencil/core";
 import { DateCallback } from "../datepicker/datepicker";
+import { Timeinput } from "../timeinput/timeinput";
 
 @Component({
   tag: "bal-datetimepicker",
@@ -10,6 +11,7 @@ export class Datetimepicker {
 
   datepickerElement!: HTMLBalDatepickerElement;
   timeinputElement!: HTMLBalTimeinputElement;
+  saveButtonElement!: HTMLBalButtonElement;
 
   @State() isPristine = true;
   @State() date: string;
@@ -28,12 +30,18 @@ export class Datetimepicker {
   /**
    * Latest date available for selection
    */
-  @Prop() maxDate: string = "";
+  @Prop() maxDatetime: string = "";
+  maxDate = "";
+  maxTime = "";
+  currentMaxTime = "";
 
   /**
-   * Earliest date available for selection
+   * Earliest datetime available for selection
    */
-  @Prop() minDate: string = "";
+  @Prop() minDatetime: string = "";
+  minDate = "";
+  minTime = "";
+  currentMinTime = "";
 
   /**
    * Latest year available for selection
@@ -79,6 +87,16 @@ export class Datetimepicker {
   }
 
   componentWillLoad() {
+    const minMatch = Datetimepicker.FORMAT.exec(this.minDatetime);
+    if (minMatch !== null) {
+      this.minDate = minMatch[1];
+      this.minTime = minMatch[2];
+    }
+    const maxMatch = Datetimepicker.FORMAT.exec(this.maxDatetime);
+    if (maxMatch !== null) {
+      this.maxDate = maxMatch[1];
+      this.maxTime = maxMatch[2];
+    }
     if (this.value) {
       this.parseValue(this.value);
     }
@@ -105,6 +123,7 @@ export class Datetimepicker {
     const matches = Datetimepicker.FORMAT.exec(value);
     if (matches !== null) {
       this.date = matches[1];
+      this.updateCurrenTimeBound();
       this.time = matches[2];
       return;
     }
@@ -114,6 +133,7 @@ export class Datetimepicker {
 
   private async selectDate(event: CustomEvent<string>) {
     this.date = event.detail;
+    this.updateCurrenTimeBound();
   }
 
   private async changeTime(event: CustomEvent<string>) {
@@ -136,6 +156,37 @@ export class Datetimepicker {
     this.balBlur.emit();
   }
 
+  private updateCurrenTimeBound() {
+    this.currentMinTime = "00:00";
+    this.currentMaxTime = "23:59";
+    if (this.date === this.minDate) {
+      this.currentMinTime = this.minTime;
+    }
+    if (this.date === this.maxDate) {
+      this.currentMaxTime = this.maxTime;
+    }
+    if(this.time !== undefined) {
+      const time = this.toSecondCount(this.time);
+      const currentMinTime = this.toSecondCount(this.currentMinTime);
+      const currentMaxTime = this.toSecondCount(this.currentMaxTime);
+      this.time = this.toClockString(Math.min(currentMaxTime, Math.max(currentMinTime, time)));
+    }
+  }
+
+  private toSecondCount(val: string): number {
+    const timeMatch = Timeinput.CLOCK_PATTERN.exec(val);
+    if (timeMatch === null) {
+      return 0;
+    }
+    const hour = parseInt(timeMatch[1], 10);
+    const minute = parseInt(timeMatch[2], 10);
+    return hour * 60 + minute;
+  }
+
+  private toClockString(val: number): string {
+    return Timeinput.formatTimeBoxValue(Math.floor(val/60)) + ":" + Timeinput.formatTimeBoxValue(val % 60);
+  }
+
   private formatDatepickerLabel(date: string) {
     if (date !== undefined && date !== "" && this.time !== undefined) {
        return Datetimepicker.formatValue(date, this.time);
@@ -148,6 +199,24 @@ export class Datetimepicker {
 
   private static formatValue(date: string, time: string) {
     return date + " " + time;
+  }
+
+  private canSave() {
+    return this.date !== undefined && this.time !== undefined;
+  }
+
+  @Listen("keydown")
+  onKeyDown(event: KeyboardEvent) {
+    if (event.key === "Enter") {
+      if (this.canSave()) {
+        this.save();
+        return;
+      }
+      this.abort();
+    }
+    if(event.key === "ESC") {
+      this.abort();
+    }
   }
 
   render() {
@@ -178,16 +247,20 @@ export class Datetimepicker {
             </bal-button>
             <bal-timeinput class="bal-datetimepicker-timeinput"
               value={this.time}
+              minTime={this.currentMinTime}
+              maxTime={this.currentMaxTime}
               disabled={this.disabled}
-              onBalInput={this.changeTime.bind(this)}
+              onBalTimeinputChange={this.changeTime.bind(this)}
               ref={el => this.timeinputElement = el as HTMLBalTimeinputElement}>
             </bal-timeinput>
             <bal-button
-              disabled={this.disabled || this.date === undefined || this.time === undefined}
+              disabled={this.disabled || !this.canSave()}
               onClick={() => this.save()}
+              onBlur={e => console.log("go home",e)}
               type="is-info"
               size="is-small"
-              is-square outlined>
+              is-square outlined
+              ref={el => this.saveButtonElement = el as HTMLBalButtonElement}>
               <bal-icon name="check" size="medium"></bal-icon>
             </bal-button>
           </div>
