@@ -81,21 +81,28 @@ export class Datetimepicker {
     bubbles: false,
   }) balBlur!: EventEmitter<void>;
 
+  @Watch("minDatetime")
+  minDatetimeWatcher(newValue: string) {
+    this.parseMinDatetime(newValue);
+  }
+
+  @Watch("maxDatetime")
+  maxDatetimeWatcher(newValue: string) {
+    this.parseMaxDatetime(newValue);
+  }
+
+
   @Watch("value")
   valueWatcher(newValue: string) {
     this.parseValue(newValue);
   }
 
   componentWillLoad() {
-    const minMatch = Datetimepicker.FORMAT.exec(this.minDatetime);
-    if (minMatch !== null) {
-      this.minDate = minMatch[1];
-      this.minTime = minMatch[2];
+    if (this.minDatetime) {
+      this.parseMinDatetime(this.minDatetime);
     }
-    const maxMatch = Datetimepicker.FORMAT.exec(this.maxDatetime);
-    if (maxMatch !== null) {
-      this.maxDate = maxMatch[1];
-      this.maxTime = maxMatch[2];
+    if (this.maxDatetime) {
+      this.parseMaxDatetime(this.maxDatetime);
     }
     if (this.value) {
       this.parseValue(this.value);
@@ -118,13 +125,37 @@ export class Datetimepicker {
     await this.datepickerElement.close();
   }
 
+  private parseMinDatetime(value: string) {
+    const minMatch = Datetimepicker.FORMAT.exec(value);
+    if (minMatch !== null) {
+      this.minDate = minMatch[1];
+      this.minTime = minMatch[2];
+      this.updateCurrenTimeBound();
+      return;
+    }
+    this.minDate = "";
+    this.minTime = "";
+  }
+
+  private parseMaxDatetime(value: string) {
+    const maxMatch = Datetimepicker.FORMAT.exec(value);
+    if (maxMatch !== null) {
+      this.maxDate = maxMatch[1];
+      this.maxTime = maxMatch[2];
+      this.updateCurrenTimeBound();
+      return;
+    }
+    this.maxDate = "";
+    this.maxTime = "";
+  }
+
   private parseValue(value: string) {
     this.isPristine = false;
     const matches = Datetimepicker.FORMAT.exec(value);
     if (matches !== null) {
       this.date = matches[1];
-      this.updateCurrenTimeBound();
       this.time = matches[2];
+      this.updateCurrenTimeBound();
       return;
     }
     this.date = undefined;
