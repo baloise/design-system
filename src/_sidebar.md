@@ -12,6 +12,7 @@
 - **Form**
 
   - [Checkbox](docs/elements/checkbox.md)
+  - [Datetimepicker](components/datetimepicker/readme.md)
   - [Datepicker](components/datepicker/readme.md)
   - [Dropdown](components/dropdown/readme.md)
     - [Dropdown Option](components/dropdown-option/readme.md)
@@ -20,6 +21,7 @@
   - [Radio](docs/elements/radio.md)
   - [Select Button](docs/elements/select-button.md)
   - [Textarea](docs/elements/textarea.md)
+  - [Timeinput](components/timeinput/readme.md)
   - [Typeahead](components/dropdown/readme.md?id=typeahead)
   
 - **Elements**

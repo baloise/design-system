@@ -1,0 +1,16 @@
+@import "../../scss/ui-library.globals";
+
+:host {
+  display: block;
+  position: relative;
+}
+
+.bal-datetimepicker-panel {
+  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .bal-datetimepicker-timeinput {
+    flex-grow: 1
+  }
+}

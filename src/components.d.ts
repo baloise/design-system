@@ -9,6 +9,10 @@
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   DateCallback,
+  FormatLabelCallback,
+} from './components/datepicker/datepicker';
+import {
+  DateCallback as DateCallback1,
 } from './components/datepicker/datepicker';
 import {
   Option,
@@ -110,6 +114,10 @@ export namespace Components {
     */
     'close': () => Promise<void>;
     /**
+    * Closes the datepicker dropdown after selection
+    */
+    'closeOnSelect': boolean;
+    /**
     * Disable the input
     */
     'disabled': boolean;
@@ -117,6 +125,10 @@ export namespace Components {
     * Callback to determine which date in the datepicker should be selectable.
     */
     'filter': DateCallback;
+    /**
+    * Callback to format or modify a changed value pefore display.
+    */
+    'formatLabel': FormatLabelCallback;
     /**
     * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
     */
@@ -147,6 +159,48 @@ export namespace Components {
     'placeholder': string;
     /**
     * The value of the datepicker with the format `dd.MM.yyyy`.
+    */
+    'value': string;
+  }
+  interface BalDatetimepicker {
+    /**
+    * Close the timepicke dropdown
+    */
+    'close': () => Promise<void>;
+    /**
+    * Callback to determine which date in the datetimepicker should be selectable.
+    */
+    'dateFilter': DateCallback;
+    /**
+    * Disable the input
+    */
+    'disabled': boolean;
+    /**
+    * Latest date available for selection
+    */
+    'maxDatetime': string;
+    /**
+    * Latest year available for selection
+    */
+    'maxYear': string;
+    /**
+    * Earliest datetime available for selection
+    */
+    'minDatetime': string;
+    /**
+    * Earliest year available for selection
+    */
+    'minYear': string;
+    /**
+    * Open the timepicke dropdown
+    */
+    'open': () => Promise<void>;
+    /**
+    * Placeholder text to render if no date has been selected.
+    */
+    'placeholder': string;
+    /**
+    * The value of the timepicke with the format `dd.MM.yyyy`.
     */
     'value': string;
   }
@@ -346,6 +400,24 @@ export namespace Components {
     | "is-danger"
     | "";
   }
+  interface BalTimeinput {
+    /**
+    * If `true` the button is disabled
+    */
+    'disabled': boolean;
+    /**
+    * Latest date available for selection
+    */
+    'maxTime': string;
+    /**
+    * Earliest date available for selection
+    */
+    'minTime': string;
+    /**
+    * The value of the datepicker with the format `hh:mm`.
+    */
+    'value': string;
+  }
   interface BalToast {
     /**
     * Closes this toast
@@ -385,6 +457,12 @@ declare global {
   var HTMLBalDatepickerElement: {
     prototype: HTMLBalDatepickerElement;
     new (): HTMLBalDatepickerElement;
+  };
+
+  interface HTMLBalDatetimepickerElement extends Components.BalDatetimepicker, HTMLStencilElement {}
+  var HTMLBalDatetimepickerElement: {
+    prototype: HTMLBalDatetimepickerElement;
+    new (): HTMLBalDatetimepickerElement;
   };
 
   interface HTMLBalDropdownElement extends Components.BalDropdown, HTMLStencilElement {}
@@ -465,6 +543,12 @@ declare global {
     new (): HTMLBalTagElement;
   };
 
+  interface HTMLBalTimeinputElement extends Components.BalTimeinput, HTMLStencilElement {}
+  var HTMLBalTimeinputElement: {
+    prototype: HTMLBalTimeinputElement;
+    new (): HTMLBalTimeinputElement;
+  };
+
   interface HTMLBalToastElement extends Components.BalToast, HTMLStencilElement {}
   var HTMLBalToastElement: {
     prototype: HTMLBalToastElement;
@@ -474,6 +558,7 @@ declare global {
     'bal-accordion': HTMLBalAccordionElement;
     'bal-button': HTMLBalButtonElement;
     'bal-datepicker': HTMLBalDatepickerElement;
+    'bal-datetimepicker': HTMLBalDatetimepickerElement;
     'bal-dropdown': HTMLBalDropdownElement;
     'bal-dropdown-option': HTMLBalDropdownOptionElement;
     'bal-field': HTMLBalFieldElement;
@@ -487,6 +572,7 @@ declare global {
     'bal-tab-item': HTMLBalTabItemElement;
     'bal-tabs': HTMLBalTabsElement;
     'bal-tag': HTMLBalTagElement;
+    'bal-timeinput': HTMLBalTimeinputElement;
     'bal-toast': HTMLBalToastElement;
   }
 }
@@ -565,6 +651,10 @@ declare namespace LocalJSX {
   }
   interface BalDatepicker {
     /**
+    * Closes the datepicker dropdown after selection
+    */
+    'closeOnSelect'?: boolean;
+    /**
     * Disable the input
     */
     'disabled'?: boolean;
@@ -572,6 +662,10 @@ declare namespace LocalJSX {
     * Callback to determine which date in the datepicker should be selectable.
     */
     'filter'?: DateCallback;
+    /**
+    * Callback to format or modify a changed value pefore display.
+    */
+    'formatLabel'?: FormatLabelCallback;
     /**
     * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
     */
@@ -593,6 +687,10 @@ declare namespace LocalJSX {
     */
     'minYear'?: string;
     /**
+    * Emitted when the toggle loses focus.
+    */
+    'onBalBlur'?: (event: CustomEvent<void>) => void;
+    /**
     * Triggers when the value of the datepicker is changed
     */
     'onBalChange'?: (event: CustomEvent<string>) => void;
@@ -602,6 +700,48 @@ declare namespace LocalJSX {
     'placeholder'?: string;
     /**
     * The value of the datepicker with the format `dd.MM.yyyy`.
+    */
+    'value'?: string;
+  }
+  interface BalDatetimepicker {
+    /**
+    * Callback to determine which date in the datetimepicker should be selectable.
+    */
+    'dateFilter'?: DateCallback;
+    /**
+    * Disable the input
+    */
+    'disabled'?: boolean;
+    /**
+    * Latest date available for selection
+    */
+    'maxDatetime'?: string;
+    /**
+    * Latest year available for selection
+    */
+    'maxYear'?: string;
+    /**
+    * Earliest datetime available for selection
+    */
+    'minDatetime'?: string;
+    /**
+    * Earliest year available for selection
+    */
+    'minYear'?: string;
+    /**
+    * Emitted when the toggle loses focus.
+    */
+    'onBalBlur'?: (event: CustomEvent<void>) => void;
+    /**
+    * Triggers when the value of the timepicke is changed
+    */
+    'onBalDatetimeChange'?: (event: CustomEvent<string>) => void;
+    /**
+    * Placeholder text to render if no date has been selected.
+    */
+    'placeholder'?: string;
+    /**
+    * The value of the timepicke with the format `dd.MM.yyyy`.
     */
     'value'?: string;
   }
@@ -788,6 +928,32 @@ declare namespace LocalJSX {
     | "is-danger"
     | "";
   }
+  interface BalTimeinput {
+    /**
+    * If `true` the button is disabled
+    */
+    'disabled'?: boolean;
+    /**
+    * Latest date available for selection
+    */
+    'maxTime'?: string;
+    /**
+    * Earliest date available for selection
+    */
+    'minTime'?: string;
+    /**
+    * Emitted when either the hour or minute input field loses focus.
+    */
+    'onBalBlur'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when either the hour or the minute input has changed. It will not be triggert if either hour or time input has never been set (i.e. "--" is selected).
+    */
+    'onBalTimeinputChange'?: (event: CustomEvent<string>) => void;
+    /**
+    * The value of the datepicker with the format `hh:mm`.
+    */
+    'value'?: string;
+  }
   interface BalToast {
     /**
     * The theme type of the toast. Given by bulma our css framework.
@@ -803,6 +969,7 @@ declare namespace LocalJSX {
     'bal-accordion': BalAccordion;
     'bal-button': BalButton;
     'bal-datepicker': BalDatepicker;
+    'bal-datetimepicker': BalDatetimepicker;
     'bal-dropdown': BalDropdown;
     'bal-dropdown-option': BalDropdownOption;
     'bal-field': BalField;
@@ -816,6 +983,7 @@ declare namespace LocalJSX {
     'bal-tab-item': BalTabItem;
     'bal-tabs': BalTabs;
     'bal-tag': BalTag;
+    'bal-timeinput': BalTimeinput;
     'bal-toast': BalToast;
   }
 }
@@ -829,6 +997,7 @@ declare module "@stencil/core" {
       'bal-accordion': LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
       'bal-button': LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
       'bal-datepicker': LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
+      'bal-datetimepicker': LocalJSX.BalDatetimepicker & JSXBase.HTMLAttributes<HTMLBalDatetimepickerElement>;
       'bal-dropdown': LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
       'bal-dropdown-option': LocalJSX.BalDropdownOption & JSXBase.HTMLAttributes<HTMLBalDropdownOptionElement>;
       'bal-field': LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
@@ -842,6 +1011,7 @@ declare module "@stencil/core" {
       'bal-tab-item': LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
       'bal-tabs': LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
       'bal-tag': LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
+      'bal-timeinput': LocalJSX.BalTimeinput & JSXBase.HTMLAttributes<HTMLBalTimeinputElement>;
       'bal-toast': LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
     }
   }

@@ -11,6 +11,7 @@ Here is how you can change the size:
 <bal-icon name="account"></bal-icon>
 <bal-icon name="account" size="medium"></bal-icon>
 <bal-icon name="account" size="large"></bal-icon>
+
 ```
 
 ## Icons
@@ -67,6 +68,8 @@ Here is how you can change the size:
 | <bal-icon name="nav-go-down" size="medium" /> | `nav-go-down` |   
 | <bal-icon name="nav-dropdown" size="medium" /> | `nav-dropdown` |   
 | <bal-icon name="trash" size="medium" /> | `trash` | 
+| <bal-icon name="clock" size="medium" /> | `clock` | 
+
 
 <!-- Auto Generated Below -->
 
@@ -87,6 +90,7 @@ Here is how you can change the size:
 
  - [bal-accordion](../accordion)
  - [bal-datepicker](../datepicker)
+ - [bal-datetimepicker](../datetimepicker)
  - [bal-dropdown](../dropdown)
  - [bal-field](../field)
  - [bal-pagination](../pagination)
@@ -96,6 +100,7 @@ Here is how you can change the size:
 graph TD;
   bal-accordion --> bal-icon
   bal-datepicker --> bal-icon
+  bal-datetimepicker --> bal-icon
   bal-dropdown --> bal-icon
   bal-field --> bal-icon
   bal-pagination --> bal-icon

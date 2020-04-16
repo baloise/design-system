@@ -18,6 +18,7 @@ export class Dropdown {
   @State() selectedOption: Option = null;
 
   @State() isActive = false;
+  @State() hasFocus = false;
 
   @Watch("isActive")
   async isActiveWatcher(newIsActive: boolean) {
@@ -89,6 +90,7 @@ export class Dropdown {
   disabledWatcher(newValue: boolean) {
     if (newValue === true) {
       this.isActive = false;
+      this.fireBlurIfPossible();
     }
   }
 
@@ -129,12 +131,23 @@ export class Dropdown {
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event() balBlur!: EventEmitter<void>;
+  @Event({
+    composed: true,
+    cancelable: false,
+    bubbles: false,
+  }) balBlur!: EventEmitter<void>;
 
   /**
    * Emitted when the toggle has focus..
    */
   @Event() balFocus!: EventEmitter<void>;
+
+  @Listen("keyup", {target: "document"})
+  tabOutside(event: KeyboardEvent) {
+    if (event.key === "Tab" && !this.element.contains(document.activeElement) && this.isActive) {
+      this.toggle();
+    }
+  }
 
   @Listen("click", {target: "document"})
   clickOnOutside(event: UIEvent) {
@@ -170,6 +183,7 @@ export class Dropdown {
   @Method()
   async toggle() {
     this.isActive = !this.isActive;
+    this.fireBlurIfPossible();
   }
 
   /**
@@ -186,6 +200,7 @@ export class Dropdown {
   @Method()
   async close() {
     this.isActive = false;
+    this.fireBlurIfPossible();
   }
 
   get children(): HTMLBalDropdownOptionElement[] {
@@ -206,6 +221,11 @@ export class Dropdown {
     return Promise.all(this.children.map(child => child.value));
   }
 
+  get isUp(): boolean {
+    const box = this.element.getBoundingClientRect();
+    return (window.innerHeight - box.top) < window.innerHeight/2;
+  }
+
   updateActivatedOptions() {
     this.children
       .forEach(child => child.activated = child.value === this.selectedOption.value);
@@ -214,6 +234,22 @@ export class Dropdown {
   clicked() {
     if (!this.typeahead) {
       this.toggle();
+    }
+  }
+
+  async onFocus() {
+    this.hasFocus = true;
+    this.balFocus.emit();
+  }
+
+  async onBlur() {
+    this.hasFocus = false;
+    this.balFocus.emit();
+  }
+
+  async fireBlurIfPossible() {
+    if (!this.hasFocus && !this.isActive) {
+      this.balBlur.emit();
     }
   }
 
@@ -230,7 +266,9 @@ export class Dropdown {
       if (this.typeahead && children && children.length > 0) {
         children.forEach(child => child.highlight = inputValue);
       }
-      this.hasNoData = (await this.childrenWithHiddenState).every(hidden => hidden === true);
+      const childrenWithHiddenState = (await this.childrenWithHiddenState);
+      this.hasNoData = childrenWithHiddenState.every(hidden => hidden === true) && childrenWithHiddenState.length > 0;
+      this.fireBlurIfPossible();
     }
   }
 
@@ -239,6 +277,7 @@ export class Dropdown {
     if (event.key === "Escape" || event.key === "Esc") {
       event.preventDefault();
       this.isActive = false;
+      this.fireBlurIfPossible();
     }
   }
 
@@ -322,6 +361,7 @@ export class Dropdown {
           this.expanded ? "is-fullwidth" : "",
           this.isActive ? "is-active" : "",
           this.fixed ? "is-fixed" : "",
+          this.isUp ? "is-up" : "",
           this.typeahead ? "is-typeahead" : "",
         ].join(" ")}>
           <div class="dropdown-trigger">
@@ -340,8 +380,8 @@ export class Dropdown {
                      onKeyUp={this.onKeyUp.bind(this)}
                      onInput={this.onInput.bind(this)}
                      onClick={this.clicked.bind(this)}
-                     onBlur={this.balBlur.emit.bind(this)}
-                     onFocus={this.balFocus.emit.bind(this)}
+                     onBlur={this.onBlur.bind(this)}
+                     onFocus={this.onFocus.bind(this)}
                      ref={el => this.inputElement = el as HTMLInputElement}
               />
               <bal-icon size="small"

@@ -18,6 +18,7 @@ interface CalendarCell {
 }
 
 export type DateCallback = (date: string) => boolean;
+export type FormatLabelCallback = (date: string) => string;
 
 @Component({
   tag: "bal-datepicker",
@@ -64,6 +65,11 @@ export class Datepicker {
   @Prop() maxYear: string = "";
 
   /**
+   * Closes the datepicker dropdown after selection
+   */
+  @Prop() closeOnSelect: boolean = true;
+
+  /**
    * Earliest year available for selection
    */
   @Prop() minYear: string = "";
@@ -75,6 +81,13 @@ export class Datepicker {
 
   @Watch("value")
   valueWatcher(newValue: string) {
+     if(newValue === undefined) {
+      this.value = "";
+      this.isPristine = true;
+      this.selectedDate = moment().startOf("day");
+      this.pointerDate = moment().startOf("day");
+      return;
+    }
     this.isPristine = false;
     this.selectedDate = moment(newValue, Datepicker.FORMAT);
     this.pointerDate = moment(newValue, Datepicker.FORMAT);
@@ -86,6 +99,11 @@ export class Datepicker {
   @Prop() filter: DateCallback = (_) => true;
 
   /**
+   * Callback to format or modify a changed value pefore display.
+   */
+  @Prop() formatLabel: FormatLabelCallback = (_) => _;
+
+  /**
    * Triggers when the value of the datepicker is changed
    */
   @Event({
@@ -94,6 +112,15 @@ export class Datepicker {
     cancelable: true,
     bubbles: true,
   }) balChangeEventEmitter!: EventEmitter<string>;
+
+  /**
+   * Emitted when the toggle loses focus.
+   */
+  @Event({
+    composed: true,
+    cancelable: false,
+    bubbles: false,
+  }) balBlur!: EventEmitter<void>;
 
   componentWillLoad() {
     moment.locale(this.language);
@@ -202,7 +229,9 @@ export class Datepicker {
       this.pointerDate = moment(cell.date);
       this.balChangeEventEmitter.emit(this.selectedDate.format(Datepicker.FORMAT));
       this.value = this.selectedDate.format(Datepicker.FORMAT);
-      await this.close();
+      if(this.closeOnSelect) {
+        await this.close();
+      }
     }
   }
 
@@ -212,10 +241,11 @@ export class Datepicker {
         <div class="datepicker control">
           <bal-dropdown expanded
                         fixed={false}
-                        value={{value: this.value, label: this.value}}
+                        value={{value: this.value, label: this.formatLabel(this.value)}}
                         readonly={true}
                         disabled={this.disabled}
                         placeholder={this.placeholder}
+                        onBalBlur={this.balBlur.emit.bind(this)}
                         triggerIcon={"date"}
                         ref={el => this.dropDownElement = el as HTMLBalDropdownElement}>
             <div class="datepicker-popup">
@@ -282,6 +312,7 @@ export class Datepicker {
                     )}
                   </div>
                 </section>
+                <slot />
               </div>
             </div>
           </bal-dropdown>
