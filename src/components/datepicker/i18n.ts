@@ -1,3 +1,17 @@
+function deProcessRelativeTime(num: number, withoutSuffix: boolean, key: string) {
+  const format = {
+    m: ["eine Minute", "einer Minute"],
+    h: ["eine Stunde", "einer Stunde"],
+    d: ["ein Tag", "einem Tag"],
+    dd: [num + " Tage", num + " Tagen"],
+    M: ["ein Monat", "einem Monat"],
+    MM: [num + " Monate", num + " Monaten"],
+    y: ["ein Jahr", "einem Jahr"],
+    yy: [num + " Jahre", num + " Jahren"],
+  };
+  return withoutSuffix ? format[key][0] : format[key][1];
+}
+
 export const i18n: { [key: string]: {} } = {
   de: {
     months: "Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember".split("_"),
@@ -215,17 +229,3 @@ export const i18n: { [key: string]: {} } = {
     },
   },
 };
-
-function deProcessRelativeTime(num: number, withoutSuffix: boolean, key: string) {
-  const format = {
-    m: ["eine Minute", "einer Minute"],
-    h: ["eine Stunde", "einer Stunde"],
-    d: ["ein Tag", "einem Tag"],
-    dd: [num + " Tage", num + " Tagen"],
-    M: ["ein Monat", "einem Monat"],
-    MM: [num + " Monate", num + " Monaten"],
-    y: ["ein Jahr", "einem Jahr"],
-    yy: [num + " Jahre", num + " Jahren"],
-  };
-  return withoutSuffix ? format[key][0] : format[key][1];
-}
