@@ -11,7 +11,6 @@ Here is how you can change the size:
 <bal-icon name="account"></bal-icon>
 <bal-icon name="account" size="medium"></bal-icon>
 <bal-icon name="account" size="large"></bal-icon>
-
 ```
 
 ## Icons
@@ -93,6 +92,7 @@ Here is how you can change the size:
  - [bal-datetimepicker](../datetimepicker)
  - [bal-dropdown](../dropdown)
  - [bal-field](../field)
+ - [bal-hint](../hint)
  - [bal-pagination](../pagination)
 
 ### Graph
@@ -103,6 +103,7 @@ graph TD;
   bal-datetimepicker --> bal-icon
   bal-dropdown --> bal-icon
   bal-field --> bal-icon
+  bal-hint --> bal-icon
   bal-pagination --> bal-icon
   style bal-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

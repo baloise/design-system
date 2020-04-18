@@ -39,6 +39,7 @@
   - [Accordion](components/accordion/readme.md)
   - [Button](components/button/readme.md)
   - [Icon](components/icon/readme.md)
+  - [Hint](components/hint/readme.md)
   - [Modal](components/modal/readme.md)
   - [Navbar](components/navbar/readme.md)
   - [Pagination](components/pagination/readme.md)

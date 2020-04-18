@@ -93,6 +93,7 @@ The classic button, in different colors, sizes, and states
 
  - [bal-accordion](../accordion)
  - [bal-datetimepicker](../datetimepicker)
+ - [bal-hint](../hint)
 
 ### Depends on
 
@@ -104,6 +105,7 @@ graph TD;
   bal-button --> bal-spinner
   bal-accordion --> bal-button
   bal-datetimepicker --> bal-button
+  bal-hint --> bal-button
   style bal-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

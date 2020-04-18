@@ -1,0 +1,49 @@
+@import "../../scss/ui-library.globals";
+@import "../../scss/elements/button";
+@import "../../scss/utilities/helpers";
+
+:host {
+  display: inline-block;
+}
+
+bal-icon {
+  cursor: pointer;
+  position: absolute;
+  top: -5px;
+}
+
+.hint-content {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: $blue;
+  color: $white;
+  padding: 15px;
+
+  .title {
+    color: $white;
+  }
+
+  .buttons {
+    margin-top: 30px;
+  }
+}
+
+@include tablet() {
+  .hint-content {
+    position: absolute;
+    margin-left: 40px;
+    top: -20px;
+    bottom: initial;
+    left: initial;
+    right: initial;
+    box-shadow: $shadow;
+    border-radius: 4px;
+  }
+}
+
+@include desktop() {
+}
