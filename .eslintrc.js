@@ -12,4 +12,9 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
   },
+  "overrides": [
+    {
+      excludedFiles: 'server.js',
+    }
+  ],
 };
