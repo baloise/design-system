@@ -38,6 +38,7 @@
 
   - [Accordion](components/accordion/readme.md)
   - [Button](components/button/readme.md)
+  - [Filter-Button](components/filter-button/readme.md)
   - [Icon](components/icon/readme.md)
   - [Modal](components/modal/readme.md)
   - [Navbar](components/navbar/readme.md)

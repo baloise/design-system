@@ -51,6 +51,10 @@ export namespace Components {
     }
     interface BalButton {
         /**
+          * If `true` the button is dense
+         */
+        "dense": boolean;
+        /**
           * If `true` the button is disabled
          */
         "disabled": boolean;
@@ -62,6 +66,10 @@ export namespace Components {
           * If `true` the button is inverted
          */
         "inverted": boolean;
+        /**
+          * If `true` the button has a active theme
+         */
+        "isActive": boolean;
         /**
           * If `true` the width of the buttons is limited
          */
@@ -281,6 +289,12 @@ export namespace Components {
          */
         "validationMessage": string;
     }
+    interface BalFilterButton {
+        /**
+          * If `true` then the button is active/selected
+         */
+        "active": boolean;
+    }
     interface BalIcon {
         "isLeft": boolean;
         "isRight": boolean;
@@ -453,6 +467,12 @@ declare global {
         prototype: HTMLBalFieldElement;
         new (): HTMLBalFieldElement;
     };
+    interface HTMLBalFilterButtonElement extends Components.BalFilterButton, HTMLStencilElement {
+    }
+    var HTMLBalFilterButtonElement: {
+        prototype: HTMLBalFilterButtonElement;
+        new (): HTMLBalFilterButtonElement;
+    };
     interface HTMLBalIconElement extends Components.BalIcon, HTMLStencilElement {
     }
     var HTMLBalIconElement: {
@@ -533,6 +553,7 @@ declare global {
         "bal-dropdown": HTMLBalDropdownElement;
         "bal-dropdown-option": HTMLBalDropdownOptionElement;
         "bal-field": HTMLBalFieldElement;
+        "bal-filter-button": HTMLBalFilterButtonElement;
         "bal-icon": HTMLBalIconElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-actions": HTMLBalModalActionsElement;
@@ -576,6 +597,10 @@ declare namespace LocalJSX {
     }
     interface BalButton {
         /**
+          * If `true` the button is dense
+         */
+        "dense"?: boolean;
+        /**
           * If `true` the button is disabled
          */
         "disabled"?: boolean;
@@ -587,6 +612,10 @@ declare namespace LocalJSX {
           * If `true` the button is inverted
          */
         "inverted"?: boolean;
+        /**
+          * If `true` the button has a active theme
+         */
+        "isActive"?: boolean;
         /**
           * If `true` the width of the buttons is limited
          */
@@ -798,6 +827,16 @@ declare namespace LocalJSX {
          */
         "validationMessage"?: string;
     }
+    interface BalFilterButton {
+        /**
+          * If `true` then the button is active/selected
+         */
+        "active"?: boolean;
+        /**
+          * Triggers when the value of the filter-button is changed
+         */
+        "onBalChange"?: (event: CustomEvent<boolean>) => void;
+    }
     interface BalIcon {
         "isLeft"?: boolean;
         "isRight"?: boolean;
@@ -930,6 +969,7 @@ declare namespace LocalJSX {
         "bal-dropdown": BalDropdown;
         "bal-dropdown-option": BalDropdownOption;
         "bal-field": BalField;
+        "bal-filter-button": BalFilterButton;
         "bal-icon": BalIcon;
         "bal-modal": BalModal;
         "bal-modal-actions": BalModalActions;
@@ -955,6 +995,7 @@ declare module "@stencil/core" {
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
             "bal-dropdown-option": LocalJSX.BalDropdownOption & JSXBase.HTMLAttributes<HTMLBalDropdownOptionElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
+            "bal-filter-button": LocalJSX.BalFilterButton & JSXBase.HTMLAttributes<HTMLBalFilterButtonElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-actions": LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;

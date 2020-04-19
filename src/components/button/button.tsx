@@ -1,4 +1,4 @@
-import {Component, h, Host, Prop} from "@stencil/core";
+import { Component, h, Host, Prop } from "@stencil/core";
 
 @Component({
   tag: "bal-button",
@@ -20,9 +20,7 @@ export class Button {
   /**
    * Size of the button
    */
-  @Prop() size:
-    | "is-small"
-    | "" = "";
+  @Prop() size: "is-small" | "" = "";
 
   /**
    * If `true` the width of the buttons is limited
@@ -40,6 +38,11 @@ export class Button {
   @Prop() light: boolean;
 
   /**
+   * If `true` the button has a active theme
+   */
+  @Prop() isActive: boolean = false;
+
+  /**
    * If `true` the button has a full width
    */
   @Prop() expanded: boolean;
@@ -53,6 +56,11 @@ export class Button {
    * If `true` the button is inverted
    */
   @Prop() inverted: boolean;
+
+  /**
+   * If `true` the button is dense
+   */
+  @Prop() dense: boolean;
 
   /**
    * If `true` the label is hidden and a loading spinner is shown instead.
@@ -69,19 +77,18 @@ export class Button {
             this.size,
             this.light ? "is-light" : "",
             this.inverted ? "is-inverted" : "",
+            this.isActive ? "is-active" : "",
             this.outlined ? "is-outlined" : "",
             this.expanded ? "is-fullwidth" : "",
             this.loading ? "is-loading" : "",
             this.isSquare ? "is-square" : "",
+            this.dense ? "is-dense" : "",
           ].join(" ")}
-          disabled={this.disabled}>
-          {this.loading ? (
-            <bal-spinner class="is-small is-inverted" />
-          ) : (
-            ""
-          )}
-          <span style={{display: this.loading ? "none" : "inline-block"}}>
-            <slot/>
+          disabled={this.disabled}
+        >
+          {this.loading ? <bal-spinner class="is-small is-inverted" /> : ""}
+          <span style={{ display: this.loading ? "none" : "inline-block" }}>
+            <slot />
           </span>
         </button>
       </Host>
