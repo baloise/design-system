@@ -307,6 +307,42 @@ export namespace Components {
          */
         "size": "small" | "medium" | "large" | "";
     }
+    interface BalList {
+        /**
+          * If `true` each list item has a bottom border
+         */
+        "border": boolean;
+        /**
+          * If `true` the list item can be hovered
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the list can be used on a dark backround
+         */
+        "inverted": boolean;
+    }
+    interface BalListItem {
+        /**
+          * If `true` the list item can be hovered
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the list item has a selected theme
+         */
+        "selected": boolean;
+    }
+    interface BalListItemContent {
+    }
+    interface BalListItemIcon {
+        /**
+          * If `true` the icon is on the right side of the list item. Default is the left side.
+         */
+        "right": boolean;
+    }
+    interface BalListItemSubtitle {
+    }
+    interface BalListItemTitle {
+    }
     interface BalModal {
         "close": () => Promise<void>;
         "open": () => Promise<void>;
@@ -479,6 +515,42 @@ declare global {
         prototype: HTMLBalIconElement;
         new (): HTMLBalIconElement;
     };
+    interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
+    }
+    var HTMLBalListElement: {
+        prototype: HTMLBalListElement;
+        new (): HTMLBalListElement;
+    };
+    interface HTMLBalListItemElement extends Components.BalListItem, HTMLStencilElement {
+    }
+    var HTMLBalListItemElement: {
+        prototype: HTMLBalListItemElement;
+        new (): HTMLBalListItemElement;
+    };
+    interface HTMLBalListItemContentElement extends Components.BalListItemContent, HTMLStencilElement {
+    }
+    var HTMLBalListItemContentElement: {
+        prototype: HTMLBalListItemContentElement;
+        new (): HTMLBalListItemContentElement;
+    };
+    interface HTMLBalListItemIconElement extends Components.BalListItemIcon, HTMLStencilElement {
+    }
+    var HTMLBalListItemIconElement: {
+        prototype: HTMLBalListItemIconElement;
+        new (): HTMLBalListItemIconElement;
+    };
+    interface HTMLBalListItemSubtitleElement extends Components.BalListItemSubtitle, HTMLStencilElement {
+    }
+    var HTMLBalListItemSubtitleElement: {
+        prototype: HTMLBalListItemSubtitleElement;
+        new (): HTMLBalListItemSubtitleElement;
+    };
+    interface HTMLBalListItemTitleElement extends Components.BalListItemTitle, HTMLStencilElement {
+    }
+    var HTMLBalListItemTitleElement: {
+        prototype: HTMLBalListItemTitleElement;
+        new (): HTMLBalListItemTitleElement;
+    };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
     var HTMLBalModalElement: {
@@ -555,6 +627,12 @@ declare global {
         "bal-field": HTMLBalFieldElement;
         "bal-filter-button": HTMLBalFilterButtonElement;
         "bal-icon": HTMLBalIconElement;
+        "bal-list": HTMLBalListElement;
+        "bal-list-item": HTMLBalListItemElement;
+        "bal-list-item-content": HTMLBalListItemContentElement;
+        "bal-list-item-icon": HTMLBalListItemIconElement;
+        "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
+        "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-actions": HTMLBalModalActionsElement;
         "bal-modal-title": HTMLBalModalTitleElement;
@@ -849,6 +927,42 @@ declare namespace LocalJSX {
          */
         "size"?: "small" | "medium" | "large" | "";
     }
+    interface BalList {
+        /**
+          * If `true` each list item has a bottom border
+         */
+        "border"?: boolean;
+        /**
+          * If `true` the list item can be hovered
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the list can be used on a dark backround
+         */
+        "inverted"?: boolean;
+    }
+    interface BalListItem {
+        /**
+          * If `true` the list item can be hovered
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the list item has a selected theme
+         */
+        "selected"?: boolean;
+    }
+    interface BalListItemContent {
+    }
+    interface BalListItemIcon {
+        /**
+          * If `true` the icon is on the right side of the list item. Default is the left side.
+         */
+        "right"?: boolean;
+    }
+    interface BalListItemSubtitle {
+    }
+    interface BalListItemTitle {
+    }
     interface BalModal {
     }
     interface BalModalActions {
@@ -971,6 +1085,12 @@ declare namespace LocalJSX {
         "bal-field": BalField;
         "bal-filter-button": BalFilterButton;
         "bal-icon": BalIcon;
+        "bal-list": BalList;
+        "bal-list-item": BalListItem;
+        "bal-list-item-content": BalListItemContent;
+        "bal-list-item-icon": BalListItemIcon;
+        "bal-list-item-subtitle": BalListItemSubtitle;
+        "bal-list-item-title": BalListItemTitle;
         "bal-modal": BalModal;
         "bal-modal-actions": BalModalActions;
         "bal-modal-title": BalModalTitle;
@@ -997,6 +1117,12 @@ declare module "@stencil/core" {
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-filter-button": LocalJSX.BalFilterButton & JSXBase.HTMLAttributes<HTMLBalFilterButtonElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
+            "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
+            "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
+            "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;
+            "bal-list-item-icon": LocalJSX.BalListItemIcon & JSXBase.HTMLAttributes<HTMLBalListItemIconElement>;
+            "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
+            "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-actions": LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;
             "bal-modal-title": LocalJSX.BalModalTitle & JSXBase.HTMLAttributes<HTMLBalModalTitleElement>;

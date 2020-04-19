@@ -2,13 +2,13 @@
 @import "bal-icons";
 
 :host {
-  display: block;
+  justify-content: center;
+  align-content: center;
+  display: flex;
 }
 
-.icon i[class*=bal-icon] {
+.icon i[class*="bal-icon"] {
   width: inherit;
   height: inherit;
   background-size: contain;
 }
-
-
