@@ -29,7 +29,7 @@ Lists present content in a way that makes it easy to identify a specific item in
     <bal-list-item-content>
       <bal-list-item-title>Single-line item</bal-list-item-title>
     </bal-list-item-content>
-  </bal-list-item>  
+  </bal-list-item>
   <bal-list-item selected>
     <bal-list-item-content>
       <bal-list-item-title>Selected item</bal-list-item-title>
@@ -76,6 +76,15 @@ Lists present content in a way that makes it easy to identify a specific item in
     <bal-list-item-content>
       <bal-list-item-title>Tony Stark</bal-list-item-title>
       <bal-list-item-subtitle>Stark Industries</bal-list-item-subtitle>
+    </bal-list-item-content>
+  </bal-list-item>
+
+  <bal-list-item>
+    <bal-list-item-icon>
+      <bal-icon size="medium" name="check"></bal-icon>
+    </bal-list-item-icon>
+    <bal-list-item-content>
+      <bal-list-item-title class="has-text-black">Avenger</bal-list-item-title>
     </bal-list-item-content>
   </bal-list-item>
 
