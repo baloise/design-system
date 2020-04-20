@@ -16,7 +16,7 @@
   & > ul > li {
     position: relative;
 
-    &.is-right{
+    &.is-right {
       position: absolute;
       right: 40px;
     }
@@ -50,14 +50,25 @@
       color: $blue;
     }
 
-    &.is-disabled > a, &.is-disabled > a:hover {
+    &.is-disabled > a,
+    &.is-disabled > a:hover {
       color: $blue-light-text;
       cursor: not-allowed;
       opacity: 50%;
     }
-
   }
+}
 
+.tabs.is-dense {
+  & > ul > li {
+    & > a {
+      padding: 10px 16px;
+    }
+
+    &.is-active > a {
+      padding-bottom: 8px;
+    }
+  }
 }
 
 .tabs.is-rounded {
@@ -83,11 +94,11 @@
       font-size: $size-5;
     }
 
-    &.is-active > a, & > a:hover {
+    &.is-active > a,
+    & > a:hover {
       background: $blue;
       color: $white;
       border-bottom: 0;
     }
   }
-
 }
