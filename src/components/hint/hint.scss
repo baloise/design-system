@@ -6,13 +6,28 @@
   display: inline-block;
 }
 
-bal-icon {
+.bal-hint-icon {
+  user-select: none;
   cursor: pointer;
-  position: absolute;
-  top: -5px;
+  background: $blue;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    color: $white;
+    font-weight: $weight-bold;
+  }
+
+  &:hover {
+    background: $blue-dark;
+  }
 }
 
-.hint-content {
+.bal-hint-content {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -33,7 +48,7 @@ bal-icon {
 }
 
 @include tablet() {
-  .hint-content {
+  .bal-hint-content {
     position: absolute;
     margin-left: 40px;
     top: -20px;
@@ -43,7 +58,4 @@ bal-icon {
     box-shadow: $shadow;
     border-radius: 4px;
   }
-}
-
-@include desktop() {
 }

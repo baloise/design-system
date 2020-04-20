@@ -275,7 +275,6 @@ aside.sidebar {
 
 .sidebar ul li a {
   font-size: 1em !important;
-  font-weight: 600 !important;
   overflow: hidden !important;
   text-decoration: none !important;
   text-overflow: ellipsis !important;

@@ -14,7 +14,8 @@ $input-disabled-background-color: $blue-light;
 $input-disabled-border-color: $blue-light-line;
 $input-disabled-placeholder-color: $blue-light-text;
 
-input.input, textarea.textarea {
+input.input,
+textarea.textarea {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -26,7 +27,8 @@ input.input, textarea.textarea {
   outline: none;
   color: $text;
 
-  &:focus, &.is-focused {
+  &:focus,
+  &.is-focused {
     border-width: 2px;
     border-color: $blue;
     padding: 1px 0 1px 0;
@@ -39,7 +41,8 @@ input.input, textarea.textarea {
   }
 }
 
-.control.has-icons-right .input, .control.has-icons-right .select select {
+.control.has-icons-right .input,
+.control.has-icons-right .select select {
   padding-right: 31px !important;
 }
 
@@ -49,3 +52,6 @@ input.input, textarea.textarea {
   width: 31px !important;
 }
 
+label.label bal-hint {
+  margin-left: 8px;
+}
