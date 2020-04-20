@@ -281,6 +281,32 @@ export namespace Components {
          */
         "validationMessage": string;
     }
+    interface BalHint {
+        /**
+          * Closes the hint box.
+         */
+        "close": () => Promise<void>;
+        /**
+          * Text for the close button.
+         */
+        "closeLabel": string;
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * Opens the hint box.
+         */
+        "open": () => Promise<void>;
+        /**
+          * Toggles the hint box.
+         */
+        "toggle": () => Promise<void>;
+    }
+    interface BalHintText {
+    }
+    interface BalHintTitle {
+    }
     interface BalIcon {
         "isLeft": boolean;
         "isRight": boolean;
@@ -453,6 +479,24 @@ declare global {
         prototype: HTMLBalFieldElement;
         new (): HTMLBalFieldElement;
     };
+    interface HTMLBalHintElement extends Components.BalHint, HTMLStencilElement {
+    }
+    var HTMLBalHintElement: {
+        prototype: HTMLBalHintElement;
+        new (): HTMLBalHintElement;
+    };
+    interface HTMLBalHintTextElement extends Components.BalHintText, HTMLStencilElement {
+    }
+    var HTMLBalHintTextElement: {
+        prototype: HTMLBalHintTextElement;
+        new (): HTMLBalHintTextElement;
+    };
+    interface HTMLBalHintTitleElement extends Components.BalHintTitle, HTMLStencilElement {
+    }
+    var HTMLBalHintTitleElement: {
+        prototype: HTMLBalHintTitleElement;
+        new (): HTMLBalHintTitleElement;
+    };
     interface HTMLBalIconElement extends Components.BalIcon, HTMLStencilElement {
     }
     var HTMLBalIconElement: {
@@ -533,6 +577,9 @@ declare global {
         "bal-dropdown": HTMLBalDropdownElement;
         "bal-dropdown-option": HTMLBalDropdownOptionElement;
         "bal-field": HTMLBalFieldElement;
+        "bal-hint": HTMLBalHintElement;
+        "bal-hint-text": HTMLBalHintTextElement;
+        "bal-hint-title": HTMLBalHintTitleElement;
         "bal-icon": HTMLBalIconElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-actions": HTMLBalModalActionsElement;
@@ -798,6 +845,20 @@ declare namespace LocalJSX {
          */
         "validationMessage"?: string;
     }
+    interface BalHint {
+        /**
+          * Text for the close button.
+         */
+        "closeLabel"?: string;
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+    }
+    interface BalHintText {
+    }
+    interface BalHintTitle {
+    }
     interface BalIcon {
         "isLeft"?: boolean;
         "isRight"?: boolean;
@@ -930,6 +991,9 @@ declare namespace LocalJSX {
         "bal-dropdown": BalDropdown;
         "bal-dropdown-option": BalDropdownOption;
         "bal-field": BalField;
+        "bal-hint": BalHint;
+        "bal-hint-text": BalHintText;
+        "bal-hint-title": BalHintTitle;
         "bal-icon": BalIcon;
         "bal-modal": BalModal;
         "bal-modal-actions": BalModalActions;
@@ -955,6 +1019,9 @@ declare module "@stencil/core" {
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
             "bal-dropdown-option": LocalJSX.BalDropdownOption & JSXBase.HTMLAttributes<HTMLBalDropdownOptionElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
+            "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
+            "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
+            "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-actions": LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;

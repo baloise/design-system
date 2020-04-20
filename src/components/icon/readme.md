@@ -11,7 +11,6 @@ Here is how you can change the size:
 <bal-icon name="account"></bal-icon>
 <bal-icon name="account" size="medium"></bal-icon>
 <bal-icon name="account" size="large"></bal-icon>
-
 ```
 
 ## Icons
