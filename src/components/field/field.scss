@@ -15,3 +15,7 @@
   min-height: 22.5px;
   margin-top: 0 !important;
 }
+
+.control.has-icons-left *::part(input) {
+  padding-left: 38px;
+}
