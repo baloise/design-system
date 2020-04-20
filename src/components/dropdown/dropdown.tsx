@@ -369,7 +369,7 @@ export class Dropdown {
               "control",
               this.triggerIcon && !this.typeahead ? "has-icons-right" : "",
             ].join(" ")}>
-              <input class={[
+              <input part="input" class={[
                 "input",
                 this.isActive ? "is-focused" : "",
               ].join(" ")}
