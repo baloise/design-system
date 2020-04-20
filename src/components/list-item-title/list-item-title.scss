@@ -1,0 +1,16 @@
+@import "../../scss/ui-library.globals";
+
+bal-list-item-title {
+  display: block;
+  color: $blue;
+  font-weight: $weight-normal;
+  align-self: center;
+  flex: 1 1 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+bal-list.is-inverted bal-list-item-title {
+  color: $white;
+}

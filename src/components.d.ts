@@ -51,6 +51,10 @@ export namespace Components {
     }
     interface BalButton {
         /**
+          * If `true` the button is dense
+         */
+        "dense": boolean;
+        /**
           * If `true` the button is disabled
          */
         "disabled": boolean;
@@ -62,6 +66,10 @@ export namespace Components {
           * If `true` the button is inverted
          */
         "inverted": boolean;
+        /**
+          * If `true` the button has a active theme
+         */
+        "isActive": boolean;
         /**
           * If `true` the width of the buttons is limited
          */
@@ -281,6 +289,12 @@ export namespace Components {
          */
         "validationMessage": string;
     }
+    interface BalFilterButton {
+        /**
+          * If `true` then the button is active/selected
+         */
+        "active": boolean;
+    }
     interface BalHint {
         /**
           * Closes the hint box.
@@ -318,6 +332,42 @@ export namespace Components {
           * Defines the size of the icon.
          */
         "size": "small" | "medium" | "large" | "";
+    }
+    interface BalList {
+        /**
+          * If `true` each list item has a bottom border
+         */
+        "border": boolean;
+        /**
+          * If `true` the list item can be hovered
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the list can be used on a dark backround
+         */
+        "inverted": boolean;
+    }
+    interface BalListItem {
+        /**
+          * If `true` the list item can be hovered
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the list item has a selected theme
+         */
+        "selected": boolean;
+    }
+    interface BalListItemContent {
+    }
+    interface BalListItemIcon {
+        /**
+          * If `true` the icon is on the right side of the list item. Default is the left side.
+         */
+        "right": boolean;
+    }
+    interface BalListItemSubtitle {
+    }
+    interface BalListItemTitle {
     }
     interface BalModal {
         "close": () => Promise<void>;
@@ -479,6 +529,12 @@ declare global {
         prototype: HTMLBalFieldElement;
         new (): HTMLBalFieldElement;
     };
+    interface HTMLBalFilterButtonElement extends Components.BalFilterButton, HTMLStencilElement {
+    }
+    var HTMLBalFilterButtonElement: {
+        prototype: HTMLBalFilterButtonElement;
+        new (): HTMLBalFilterButtonElement;
+    };
     interface HTMLBalHintElement extends Components.BalHint, HTMLStencilElement {
     }
     var HTMLBalHintElement: {
@@ -502,6 +558,42 @@ declare global {
     var HTMLBalIconElement: {
         prototype: HTMLBalIconElement;
         new (): HTMLBalIconElement;
+    };
+    interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
+    }
+    var HTMLBalListElement: {
+        prototype: HTMLBalListElement;
+        new (): HTMLBalListElement;
+    };
+    interface HTMLBalListItemElement extends Components.BalListItem, HTMLStencilElement {
+    }
+    var HTMLBalListItemElement: {
+        prototype: HTMLBalListItemElement;
+        new (): HTMLBalListItemElement;
+    };
+    interface HTMLBalListItemContentElement extends Components.BalListItemContent, HTMLStencilElement {
+    }
+    var HTMLBalListItemContentElement: {
+        prototype: HTMLBalListItemContentElement;
+        new (): HTMLBalListItemContentElement;
+    };
+    interface HTMLBalListItemIconElement extends Components.BalListItemIcon, HTMLStencilElement {
+    }
+    var HTMLBalListItemIconElement: {
+        prototype: HTMLBalListItemIconElement;
+        new (): HTMLBalListItemIconElement;
+    };
+    interface HTMLBalListItemSubtitleElement extends Components.BalListItemSubtitle, HTMLStencilElement {
+    }
+    var HTMLBalListItemSubtitleElement: {
+        prototype: HTMLBalListItemSubtitleElement;
+        new (): HTMLBalListItemSubtitleElement;
+    };
+    interface HTMLBalListItemTitleElement extends Components.BalListItemTitle, HTMLStencilElement {
+    }
+    var HTMLBalListItemTitleElement: {
+        prototype: HTMLBalListItemTitleElement;
+        new (): HTMLBalListItemTitleElement;
     };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
@@ -577,10 +669,17 @@ declare global {
         "bal-dropdown": HTMLBalDropdownElement;
         "bal-dropdown-option": HTMLBalDropdownOptionElement;
         "bal-field": HTMLBalFieldElement;
+        "bal-filter-button": HTMLBalFilterButtonElement;
         "bal-hint": HTMLBalHintElement;
         "bal-hint-text": HTMLBalHintTextElement;
         "bal-hint-title": HTMLBalHintTitleElement;
         "bal-icon": HTMLBalIconElement;
+        "bal-list": HTMLBalListElement;
+        "bal-list-item": HTMLBalListItemElement;
+        "bal-list-item-content": HTMLBalListItemContentElement;
+        "bal-list-item-icon": HTMLBalListItemIconElement;
+        "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
+        "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-actions": HTMLBalModalActionsElement;
         "bal-modal-title": HTMLBalModalTitleElement;
@@ -623,6 +722,10 @@ declare namespace LocalJSX {
     }
     interface BalButton {
         /**
+          * If `true` the button is dense
+         */
+        "dense"?: boolean;
+        /**
           * If `true` the button is disabled
          */
         "disabled"?: boolean;
@@ -634,6 +737,10 @@ declare namespace LocalJSX {
           * If `true` the button is inverted
          */
         "inverted"?: boolean;
+        /**
+          * If `true` the button has a active theme
+         */
+        "isActive"?: boolean;
         /**
           * If `true` the width of the buttons is limited
          */
@@ -845,6 +952,16 @@ declare namespace LocalJSX {
          */
         "validationMessage"?: string;
     }
+    interface BalFilterButton {
+        /**
+          * If `true` then the button is active/selected
+         */
+        "active"?: boolean;
+        /**
+          * Triggers when the value of the filter-button is changed
+         */
+        "onBalChange"?: (event: CustomEvent<boolean>) => void;
+    }
     interface BalHint {
         /**
           * Text for the close button.
@@ -870,6 +987,42 @@ declare namespace LocalJSX {
           * Defines the size of the icon.
          */
         "size"?: "small" | "medium" | "large" | "";
+    }
+    interface BalList {
+        /**
+          * If `true` each list item has a bottom border
+         */
+        "border"?: boolean;
+        /**
+          * If `true` the list item can be hovered
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the list can be used on a dark backround
+         */
+        "inverted"?: boolean;
+    }
+    interface BalListItem {
+        /**
+          * If `true` the list item can be hovered
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the list item has a selected theme
+         */
+        "selected"?: boolean;
+    }
+    interface BalListItemContent {
+    }
+    interface BalListItemIcon {
+        /**
+          * If `true` the icon is on the right side of the list item. Default is the left side.
+         */
+        "right"?: boolean;
+    }
+    interface BalListItemSubtitle {
+    }
+    interface BalListItemTitle {
     }
     interface BalModal {
     }
@@ -991,10 +1144,17 @@ declare namespace LocalJSX {
         "bal-dropdown": BalDropdown;
         "bal-dropdown-option": BalDropdownOption;
         "bal-field": BalField;
+        "bal-filter-button": BalFilterButton;
         "bal-hint": BalHint;
         "bal-hint-text": BalHintText;
         "bal-hint-title": BalHintTitle;
         "bal-icon": BalIcon;
+        "bal-list": BalList;
+        "bal-list-item": BalListItem;
+        "bal-list-item-content": BalListItemContent;
+        "bal-list-item-icon": BalListItemIcon;
+        "bal-list-item-subtitle": BalListItemSubtitle;
+        "bal-list-item-title": BalListItemTitle;
         "bal-modal": BalModal;
         "bal-modal-actions": BalModalActions;
         "bal-modal-title": BalModalTitle;
@@ -1019,10 +1179,17 @@ declare module "@stencil/core" {
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
             "bal-dropdown-option": LocalJSX.BalDropdownOption & JSXBase.HTMLAttributes<HTMLBalDropdownOptionElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
+            "bal-filter-button": LocalJSX.BalFilterButton & JSXBase.HTMLAttributes<HTMLBalFilterButtonElement>;
             "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
             "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
+            "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
+            "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
+            "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;
+            "bal-list-item-icon": LocalJSX.BalListItemIcon & JSXBase.HTMLAttributes<HTMLBalListItemIconElement>;
+            "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
+            "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-actions": LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;
             "bal-modal-title": LocalJSX.BalModalTitle & JSXBase.HTMLAttributes<HTMLBalModalTitleElement>;

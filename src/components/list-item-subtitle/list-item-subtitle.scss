@@ -1,0 +1,12 @@
+@import "../../scss/ui-library.globals";
+
+bal-list-item-subtitle {
+  display: block;
+  color: $blue-light-text;
+  font-weight: $weight-normal;
+  align-self: center;
+  flex: 1 1 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

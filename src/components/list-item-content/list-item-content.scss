@@ -1,0 +1,11 @@
+@import "../../scss/ui-library.globals";
+
+bal-list-item-content {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  flex-wrap: wrap;
+  flex: 1 1;
+  overflow: hidden;
+  padding: 8px 0;
+}

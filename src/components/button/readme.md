@@ -76,9 +76,11 @@ The classic button, in different colors, sizes, and states
 
 | Property   | Attribute   | Description                                                           | Type                                                                                    | Default        |
 | ---------- | ----------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | -------------- |
+| `dense`    | `dense`     | If `true` the button is dense                                         | `boolean`                                                                               | `undefined`    |
 | `disabled` | `disabled`  | If `true` the button is disabled                                      | `boolean`                                                                               | `undefined`    |
 | `expanded` | `expanded`  | If `true` the button has a full width                                 | `boolean`                                                                               | `undefined`    |
 | `inverted` | `inverted`  | If `true` the button is inverted                                      | `boolean`                                                                               | `undefined`    |
+| `isActive` | `is-active` | If `true` the button has a active theme                               | `boolean`                                                                               | `false`        |
 | `isSquare` | `is-square` | If `true` the width of the buttons is limited                         | `boolean`                                                                               | `undefined`    |
 | `light`    | `light`     | If `true` the button has a light color                                | `boolean`                                                                               | `undefined`    |
 | `loading`  | `loading`   | If `true` the label is hidden and a loading spinner is shown instead. | `boolean`                                                                               | `undefined`    |
@@ -93,6 +95,7 @@ The classic button, in different colors, sizes, and states
 
  - [bal-accordion](../accordion)
  - [bal-datetimepicker](../datetimepicker)
+ - [bal-filter-button](../filter-button)
  - [bal-hint](../hint)
 
 ### Depends on
@@ -105,6 +108,7 @@ graph TD;
   bal-button --> bal-spinner
   bal-accordion --> bal-button
   bal-datetimepicker --> bal-button
+  bal-filter-button --> bal-button
   bal-hint --> bal-button
   style bal-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
