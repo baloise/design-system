@@ -106,6 +106,30 @@ export namespace Components {
     }
     interface BalCardTitle {
     }
+    interface BalData {
+        /**
+          * If `true` a bottom border is added to the data-item.
+         */
+        "border": boolean;
+        /**
+          * If `true` the data list is horizontal instead of vertical.
+         */
+        "horizontal": boolean;
+    }
+    interface BalDataItem {
+        /**
+          * If `true` the item gets a lighter font color.
+         */
+        "disabled": boolean;
+    }
+    interface BalDataLabel {
+        /**
+          * If `true` an asterix is added after the label.
+         */
+        "required": boolean;
+    }
+    interface BalDataValue {
+    }
     interface BalDatepicker {
         /**
           * Close the datepicker dropdown
@@ -544,6 +568,30 @@ declare global {
         prototype: HTMLBalCardTitleElement;
         new (): HTMLBalCardTitleElement;
     };
+    interface HTMLBalDataElement extends Components.BalData, HTMLStencilElement {
+    }
+    var HTMLBalDataElement: {
+        prototype: HTMLBalDataElement;
+        new (): HTMLBalDataElement;
+    };
+    interface HTMLBalDataItemElement extends Components.BalDataItem, HTMLStencilElement {
+    }
+    var HTMLBalDataItemElement: {
+        prototype: HTMLBalDataItemElement;
+        new (): HTMLBalDataItemElement;
+    };
+    interface HTMLBalDataLabelElement extends Components.BalDataLabel, HTMLStencilElement {
+    }
+    var HTMLBalDataLabelElement: {
+        prototype: HTMLBalDataLabelElement;
+        new (): HTMLBalDataLabelElement;
+    };
+    interface HTMLBalDataValueElement extends Components.BalDataValue, HTMLStencilElement {
+    }
+    var HTMLBalDataValueElement: {
+        prototype: HTMLBalDataValueElement;
+        new (): HTMLBalDataValueElement;
+    };
     interface HTMLBalDatepickerElement extends Components.BalDatepicker, HTMLStencilElement {
     }
     var HTMLBalDatepickerElement: {
@@ -714,6 +762,10 @@ declare global {
         "bal-card-content": HTMLBalCardContentElement;
         "bal-card-subtitle": HTMLBalCardSubtitleElement;
         "bal-card-title": HTMLBalCardTitleElement;
+        "bal-data": HTMLBalDataElement;
+        "bal-data-item": HTMLBalDataItemElement;
+        "bal-data-label": HTMLBalDataLabelElement;
+        "bal-data-value": HTMLBalDataValueElement;
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-datetimepicker": HTMLBalDatetimepickerElement;
         "bal-dropdown": HTMLBalDropdownElement;
@@ -826,6 +878,30 @@ declare namespace LocalJSX {
     interface BalCardSubtitle {
     }
     interface BalCardTitle {
+    }
+    interface BalData {
+        /**
+          * If `true` a bottom border is added to the data-item.
+         */
+        "border"?: boolean;
+        /**
+          * If `true` the data list is horizontal instead of vertical.
+         */
+        "horizontal"?: boolean;
+    }
+    interface BalDataItem {
+        /**
+          * If `true` the item gets a lighter font color.
+         */
+        "disabled"?: boolean;
+    }
+    interface BalDataLabel {
+        /**
+          * If `true` an asterix is added after the label.
+         */
+        "required"?: boolean;
+    }
+    interface BalDataValue {
     }
     interface BalDatepicker {
         /**
@@ -1209,6 +1285,10 @@ declare namespace LocalJSX {
         "bal-card-content": BalCardContent;
         "bal-card-subtitle": BalCardSubtitle;
         "bal-card-title": BalCardTitle;
+        "bal-data": BalData;
+        "bal-data-item": BalDataItem;
+        "bal-data-label": BalDataLabel;
+        "bal-data-value": BalDataValue;
         "bal-datepicker": BalDatepicker;
         "bal-datetimepicker": BalDatetimepicker;
         "bal-dropdown": BalDropdown;
@@ -1249,6 +1329,10 @@ declare module "@stencil/core" {
             "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
             "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
             "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
+            "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
+            "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;
+            "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
+            "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-datetimepicker": LocalJSX.BalDatetimepicker & JSXBase.HTMLAttributes<HTMLBalDatetimepickerElement>;
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;

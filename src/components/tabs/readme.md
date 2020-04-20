@@ -16,6 +16,8 @@ Simple responsive horizontal navigation tabs.
 </bal-tabs>
 ```
 
+#### With dense theme
+
 ```html
 <bal-tabs dense>
     <bal-tab-item value="tab-a" label="Tab A" active="true">Content of Tab A</bal-tab-item>

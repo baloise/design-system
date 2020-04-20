@@ -1,0 +1,19 @@
+@import "../../scss/ui-library.globals";
+
+bal-data-value {
+  display: block;
+  font-family: $body-family;
+  font-size: $size-4;
+  flex: 1 1;
+  flex-basis: 100%;
+}
+
+bal-data-item.is-disabled bal-data-value {
+  color: $blue-light-text;
+}
+
+@include tablet() {
+  bal-data-value {
+    flex-basis: 0;
+  }
+}

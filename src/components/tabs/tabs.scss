@@ -62,11 +62,16 @@
 .tabs.is-dense {
   & > ul > li {
     & > a {
-      padding: 10px 16px;
+      padding: 10px 20px;
     }
 
     &.is-active > a {
       padding-bottom: 8px;
+    }
+
+    span.bubble {
+      top: 12px;
+      right: 2px;
     }
   }
 }
