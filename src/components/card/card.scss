@@ -1,0 +1,12 @@
+@import "../../scss/ui-library.globals";
+
+bal-card {
+  display: block;
+  max-width: 100%;
+  outline: none;
+  text-decoration: none;
+  transition-property: box-shadow, opacity;
+  overflow-wrap: break-word;
+  position: relative;
+  white-space: normal;
+}

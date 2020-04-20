@@ -165,6 +165,8 @@
   &.is-link {
     color: $cyan;
     background: transparent;
+    padding-left: 0;
+    padding-right: 0;
 
     &:hover,
     &.is-hovered,

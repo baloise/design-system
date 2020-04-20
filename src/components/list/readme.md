@@ -5,7 +5,7 @@ Lists present content in a way that makes it easy to identify a specific item in
 ## Usage
 
 ```html
-<bal-list disabled class="box">
+<bal-list disabled class="box is-padded">
   <bal-list-item>
     <bal-list-item-content>
       <bal-list-item-title>Single-line item</bal-list-item-title>
@@ -47,7 +47,7 @@ Lists present content in a way that makes it easy to identify a specific item in
 ### Inverted
 
 ```html
-<div class="has-background-info">
+<div class="has-background-info is-padded">
   <bal-list inverted border>
     <bal-list-item>
       <bal-list-item-content>
@@ -68,7 +68,7 @@ Lists present content in a way that makes it easy to identify a specific item in
 ### With Icons
 
 ```html
-<bal-list class="box">
+<bal-list class="box is-padded">
   <bal-list-item>
     <bal-list-item-icon>
       <bal-icon size="medium" name="account"></bal-icon>
@@ -106,7 +106,7 @@ Lists present content in a way that makes it easy to identify a specific item in
 ### Link
 
 ```html
-<bal-list class="box">
+<bal-list class="box is-padded">
   <bal-list-item>
     <bal-list-item-content>
       <bal-list-item-title>Link A</bal-list-item-title>
@@ -118,6 +118,44 @@ Lists present content in a way that makes it easy to identify a specific item in
   <bal-list-item disabled>
     <bal-list-item-content>
       <bal-list-item-title>Disabled Link B</bal-list-item-title>
+    </bal-list-item-content>
+    <bal-list-item-icon right>
+      <bal-icon size="medium" name="nav-go-large"></bal-icon>
+    </bal-list-item-icon>
+  </bal-list-item>
+</bal-list>
+```
+
+### With multiple columns
+
+```html
+<bal-list border class="box is-padded">
+  <bal-list-item>
+    <bal-list-item-content>
+      <div class="columns">
+        <div class="column">
+          <bal-list-item-title>14.02.2020</bal-list-item-title>
+        </div>
+        <div class="column">
+          <bal-list-item-title>Link A</bal-list-item-title>
+        </div>
+      </div>
+    </bal-list-item-content>
+    <bal-list-item-icon right>
+      <bal-icon size="medium" name="nav-go-large"></bal-icon>
+    </bal-list-item-icon>
+  </bal-list-item>
+
+  <bal-list-item>
+    <bal-list-item-content>
+      <div class="columns">
+        <div class="column">
+          <bal-list-item-title>03.04.2020</bal-list-item-title>
+        </div>
+        <div class="column">
+          <bal-list-item-title>Link B</bal-list-item-title>
+        </div>
+      </div>
     </bal-list-item-content>
     <bal-list-item-icon right>
       <bal-icon size="medium" name="nav-go-large"></bal-icon>

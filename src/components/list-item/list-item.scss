@@ -8,13 +8,12 @@ bal-list-item {
   letter-spacing: normal;
   min-height: 48px;
   outline: none;
-  padding: 0 16px;
   text-decoration: none;
   transition: 0.2s ease-in-out;
   cursor: pointer;
 
   &:hover {
-    padding: 0 24px;
+    padding: 0 8px;
   }
 
   &.is-selected {
@@ -38,7 +37,7 @@ bal-list-item.is-disabled {
   cursor: default;
 
   &:hover {
-    padding: 0 16px;
+    padding: 0;
   }
 }
 

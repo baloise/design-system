@@ -1,0 +1,11 @@
+@import "../../scss/ui-library.globals";
+
+bal-card-actions {
+  align-items: center;
+  display: flex;
+  padding: 16px;
+
+  &.is-right {
+    flex-direction: row-reverse;
+  }
+}

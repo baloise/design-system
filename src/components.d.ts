@@ -95,6 +95,17 @@ export namespace Components {
          */
         "type": "is-primary" | "is-info" | "is-success" | "is-warning" | "is-danger" | "is-link";
     }
+    interface BalCard {
+    }
+    interface BalCardActions {
+        "right": boolean;
+    }
+    interface BalCardContent {
+    }
+    interface BalCardSubtitle {
+    }
+    interface BalCardTitle {
+    }
     interface BalDatepicker {
         /**
           * Close the datepicker dropdown
@@ -435,11 +446,15 @@ export namespace Components {
     }
     interface BalTabs {
         /**
+          * If `true` the the padding gets reduced.
+         */
+        "dense": boolean;
+        /**
           * If `true` the field expands over the whole width.
          */
         "expanded": boolean;
         /**
-          * If you want the rounded tab style
+          * If you want the rounded tab style.
          */
         "rounded": boolean;
         /**
@@ -498,6 +513,36 @@ declare global {
     var HTMLBalButtonElement: {
         prototype: HTMLBalButtonElement;
         new (): HTMLBalButtonElement;
+    };
+    interface HTMLBalCardElement extends Components.BalCard, HTMLStencilElement {
+    }
+    var HTMLBalCardElement: {
+        prototype: HTMLBalCardElement;
+        new (): HTMLBalCardElement;
+    };
+    interface HTMLBalCardActionsElement extends Components.BalCardActions, HTMLStencilElement {
+    }
+    var HTMLBalCardActionsElement: {
+        prototype: HTMLBalCardActionsElement;
+        new (): HTMLBalCardActionsElement;
+    };
+    interface HTMLBalCardContentElement extends Components.BalCardContent, HTMLStencilElement {
+    }
+    var HTMLBalCardContentElement: {
+        prototype: HTMLBalCardContentElement;
+        new (): HTMLBalCardContentElement;
+    };
+    interface HTMLBalCardSubtitleElement extends Components.BalCardSubtitle, HTMLStencilElement {
+    }
+    var HTMLBalCardSubtitleElement: {
+        prototype: HTMLBalCardSubtitleElement;
+        new (): HTMLBalCardSubtitleElement;
+    };
+    interface HTMLBalCardTitleElement extends Components.BalCardTitle, HTMLStencilElement {
+    }
+    var HTMLBalCardTitleElement: {
+        prototype: HTMLBalCardTitleElement;
+        new (): HTMLBalCardTitleElement;
     };
     interface HTMLBalDatepickerElement extends Components.BalDatepicker, HTMLStencilElement {
     }
@@ -664,6 +709,11 @@ declare global {
     interface HTMLElementTagNameMap {
         "bal-accordion": HTMLBalAccordionElement;
         "bal-button": HTMLBalButtonElement;
+        "bal-card": HTMLBalCardElement;
+        "bal-card-actions": HTMLBalCardActionsElement;
+        "bal-card-content": HTMLBalCardContentElement;
+        "bal-card-subtitle": HTMLBalCardSubtitleElement;
+        "bal-card-title": HTMLBalCardTitleElement;
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-datetimepicker": HTMLBalDatetimepickerElement;
         "bal-dropdown": HTMLBalDropdownElement;
@@ -765,6 +815,17 @@ declare namespace LocalJSX {
           * The theme type of the button. Given by bulma our css framework.
          */
         "type"?: "is-primary" | "is-info" | "is-success" | "is-warning" | "is-danger" | "is-link";
+    }
+    interface BalCard {
+    }
+    interface BalCardActions {
+        "right"?: boolean;
+    }
+    interface BalCardContent {
+    }
+    interface BalCardSubtitle {
+    }
+    interface BalCardTitle {
     }
     interface BalDatepicker {
         /**
@@ -1086,6 +1147,10 @@ declare namespace LocalJSX {
     }
     interface BalTabs {
         /**
+          * If `true` the the padding gets reduced.
+         */
+        "dense"?: boolean;
+        /**
           * If `true` the field expands over the whole width.
          */
         "expanded"?: boolean;
@@ -1094,7 +1159,7 @@ declare namespace LocalJSX {
          */
         "onBalTabsDidChange"?: (event: CustomEvent<TabItemOptions>) => void;
         /**
-          * If you want the rounded tab style
+          * If you want the rounded tab style.
          */
         "rounded"?: boolean;
     }
@@ -1139,6 +1204,11 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
         "bal-button": BalButton;
+        "bal-card": BalCard;
+        "bal-card-actions": BalCardActions;
+        "bal-card-content": BalCardContent;
+        "bal-card-subtitle": BalCardSubtitle;
+        "bal-card-title": BalCardTitle;
         "bal-datepicker": BalDatepicker;
         "bal-datetimepicker": BalDatetimepicker;
         "bal-dropdown": BalDropdown;
@@ -1174,6 +1244,11 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "bal-accordion": LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
             "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
+            "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
+            "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;
+            "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
+            "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
+            "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-datetimepicker": LocalJSX.BalDatetimepicker & JSXBase.HTMLAttributes<HTMLBalDatetimepickerElement>;
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
