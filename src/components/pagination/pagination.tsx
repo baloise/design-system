@@ -61,6 +61,11 @@ export class Pagination {
     }
   }
 
+  selectPage(pageNumber: number) {
+    this._value = pageNumber;
+    this.balChangeEventEmitter.emit(this._value);
+  }
+
   renderEllipsisElement() {
     return <li>
       <span class="pagination-ellipsis">&hellip;</span>
@@ -73,7 +78,7 @@ export class Pagination {
         "pagination-link",
         this._value === pageNumber ? "is-current" : "",
       ].join(" ")}
-         onClick={() => this._value = pageNumber}>
+         onClick={() => this.selectPage(pageNumber)}>
         {pageNumber}
       </a>
     </li>;
