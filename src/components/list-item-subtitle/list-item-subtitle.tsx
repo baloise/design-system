@@ -2,7 +2,6 @@ import { Component, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'bal-list-item-subtitle',
-  styleUrl: 'list-item-subtitle.scss',
   scoped: false,
   shadow: false,
 })
@@ -10,7 +9,7 @@ export class ListItemSubtitle {
 
   render() {
     return (
-      <Host>
+      <Host class="bal-list-item-subtitle">
         <slot></slot>
       </Host>
     );

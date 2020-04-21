@@ -1,0 +1,108 @@
+.bal-list {
+  position: static;
+  display: block;
+  width: 100%;
+
+  .bal-list-item {
+    position: relative;
+    display: flex;
+    flex: 1 1 100%;
+    align-items: center;
+    letter-spacing: normal;
+    min-height: 48px;
+    outline: none;
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      padding: 0 8px;
+    }
+
+    &.is-selected {
+      background: $blue-light;
+    }
+  }
+
+  &.is-inverted .bal-list-item.is-selected {
+    background: $blue-dark;
+  }
+
+  &.is-inverted .bal-list-item:not(.is-selected) {
+    &:hover {
+      background: $blue-dark;
+    }
+  }
+
+  &.is-disabled .bal-list-item,
+  .bal-list-item.is-disabled {
+    transition: 0;
+    cursor: default;
+
+    &:hover {
+      padding: 0;
+    }
+  }
+
+  &.is-disabled .bal-list-item:not(.is-selected):hover {
+    background: transparent;
+  }
+
+  &.has-border .bal-list-item {
+    border-bottom: 1px solid $blue-light-line;
+  }
+
+  &.has-border.is-inverted .bal-list-item {
+    border-bottom: 1px solid $blue-line-inverted;
+  }
+
+  .bal-list-item-icon {
+    display: block;
+    align-self: flex-start;
+    display: inline-flex;
+    min-width: 24px;
+    margin: 8px 0;
+    margin-right: 20px;
+
+    &.is-right {
+      margin-right: 0;
+      margin-left: 20px;
+    }
+  }
+
+  .bal-list-item-title,
+  .bal-list-item-subtitle,
+  .bal-list-item-content {
+    font-weight: $weight-normal;
+    align-self: center;
+    overflow: hidden;
+  }
+
+  .bal-list-item-title,
+  .bal-list-item-subtitle {
+    display: block;
+    flex: 1 1 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .bal-list-item-title {
+    color: $blue;
+  }
+
+  .bal-list-item-subtitle {
+    color: $blue-light-text;
+  }
+
+  .bal-list-item-content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: 1 1;
+    overflow: hidden;
+  }
+
+  &.is-inverted .bal-list-item-title {
+    color: $white;
+  }
+}
