@@ -4,6 +4,10 @@
 @import "node_modules/bulma/sass/elements/box";
 @import "node_modules/bulma/sass/components/modal";
 
+:root {
+  --bal-width: $modal-content-width;
+}
+
 :host {
   display: block;
 }
@@ -13,6 +17,7 @@
 }
 
 .modal-content {
+  width: var(--bal-width, $modal-content-width);
   margin-top: 30px;
 
   .box {
