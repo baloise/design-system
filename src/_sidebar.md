@@ -29,6 +29,7 @@
   - [Box](docs/elements/box.md)
   - [Footer](docs/elements/footer.md)
   - [Image](docs/elements/image.md)
+  - [Notification](docs/elements/notification.md)
   - [Table](docs/elements/table.md)
   - [Title](docs/elements/title.md)
   - [Tooltip](docs/elements/tooltip.md)
