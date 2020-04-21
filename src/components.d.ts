@@ -51,6 +51,10 @@ export namespace Components {
     }
     interface BalButton {
         /**
+          * If `true` the bottom corners get rounded
+         */
+        "bottemRounded": boolean;
+        /**
           * If `true` the button is dense
          */
         "dense": boolean;
@@ -104,12 +108,22 @@ export namespace Components {
           * If `true` the card loses its shadow.
          */
         "flat": boolean;
+        /**
+          * If `true` the card loses its border radius.
+         */
+        "square": boolean;
     }
     interface BalCardActions {
         /**
           * If `true` the buttons start form right to left.
          */
         "right": boolean;
+    }
+    interface BalCardButton {
+        /**
+          * Name of the icon like `edit`.
+         */
+        "icon": string;
     }
     interface BalCardContent {
     }
@@ -563,6 +577,12 @@ declare global {
         prototype: HTMLBalCardActionsElement;
         new (): HTMLBalCardActionsElement;
     };
+    interface HTMLBalCardButtonElement extends Components.BalCardButton, HTMLStencilElement {
+    }
+    var HTMLBalCardButtonElement: {
+        prototype: HTMLBalCardButtonElement;
+        new (): HTMLBalCardButtonElement;
+    };
     interface HTMLBalCardContentElement extends Components.BalCardContent, HTMLStencilElement {
     }
     var HTMLBalCardContentElement: {
@@ -778,6 +798,7 @@ declare global {
         "bal-button": HTMLBalButtonElement;
         "bal-card": HTMLBalCardElement;
         "bal-card-actions": HTMLBalCardActionsElement;
+        "bal-card-button": HTMLBalCardButtonElement;
         "bal-card-content": HTMLBalCardContentElement;
         "bal-card-heading": HTMLBalCardHeadingElement;
         "bal-card-subtitle": HTMLBalCardSubtitleElement;
@@ -844,6 +865,10 @@ declare namespace LocalJSX {
     }
     interface BalButton {
         /**
+          * If `true` the bottom corners get rounded
+         */
+        "bottemRounded"?: boolean;
+        /**
           * If `true` the button is dense
          */
         "dense"?: boolean;
@@ -897,12 +922,22 @@ declare namespace LocalJSX {
           * If `true` the card loses its shadow.
          */
         "flat"?: boolean;
+        /**
+          * If `true` the card loses its border radius.
+         */
+        "square"?: boolean;
     }
     interface BalCardActions {
         /**
           * If `true` the buttons start form right to left.
          */
         "right"?: boolean;
+    }
+    interface BalCardButton {
+        /**
+          * Name of the icon like `edit`.
+         */
+        "icon"?: string;
     }
     interface BalCardContent {
     }
@@ -1315,6 +1350,7 @@ declare namespace LocalJSX {
         "bal-button": BalButton;
         "bal-card": BalCard;
         "bal-card-actions": BalCardActions;
+        "bal-card-button": BalCardButton;
         "bal-card-content": BalCardContent;
         "bal-card-heading": BalCardHeading;
         "bal-card-subtitle": BalCardSubtitle;
@@ -1360,6 +1396,7 @@ declare module "@stencil/core" {
             "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
             "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
             "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;
+            "bal-card-button": LocalJSX.BalCardButton & JSXBase.HTMLAttributes<HTMLBalCardButtonElement>;
             "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
             "bal-card-heading": LocalJSX.BalCardHeading & JSXBase.HTMLAttributes<HTMLBalCardHeadingElement>;
             "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;

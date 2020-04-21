@@ -16,14 +16,20 @@ export class BalCard {
    */
   @Prop()
   flat = false
+  /**
+   * If `true` the card loses its border radius.
+   */
+  @Prop()
+  square = false
 
   render() {
     return (
       <Host
         class={[
           "bal-card",
+          this.square ? "is-square" : "",
           this.border ? "has-border" : "",
-          this.flat ? "" : "box",
+          this.flat ? "is-flat" : "",
         ].join(" ")}
       >
         <slot></slot>

@@ -129,12 +129,7 @@ The position the action buttons to the right side just add the attribute `right`
   <bal-card-title>Cupra Ateca</bal-card-title>
   <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
 
-  <bal-button expanded light inverted>
-    <span class="trigger-label">
-      <bal-icon name="edit"></bal-icon>
-      <span class="label">Edit</span>
-    </span>
-  </bal-button>
+  <bal-card-button icon="edit">Edit</bal-card-button>
 </bal-card>
 ```
 
@@ -147,6 +142,7 @@ The position the action buttons to the right side just add the attribute `right`
 | -------- | --------- | --------------------------------------------------- | --------- | ------- |
 | `border` | `border`  | If `true` a light blue border is added to the card. | `boolean` | `false` |
 | `flat`   | `flat`    | If `true` the card loses its shadow.                | `boolean` | `false` |
+| `square` | `square`  | If `true` the card loses its border radius.         | `boolean` | `false` |
 
 
 ----------------------------------------------

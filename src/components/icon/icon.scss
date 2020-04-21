@@ -2,9 +2,8 @@
 @import "bal-icons";
 
 :host {
-  justify-content: center;
-  align-content: center;
-  display: flex;
+  display: inline-block;
+  position: static;
 }
 
 .icon i[class*="bal-icon"] {
