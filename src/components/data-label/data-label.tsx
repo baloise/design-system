@@ -2,7 +2,6 @@ import { Component, Host, h, Prop } from "@stencil/core"
 
 @Component({
   tag: "bal-data-label",
-  styleUrl: "data-label.scss",
   shadow: false,
   scoped: false,
 })
@@ -16,7 +15,7 @@ export class DataLabel {
 
   render() {
     return (
-      <Host>
+      <Host class="bal-data-label">
         <slot></slot>
         {this.required ? "*" : ""}
       </Host>

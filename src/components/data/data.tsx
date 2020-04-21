@@ -2,7 +2,6 @@ import { Component, Host, h, Prop } from "@stencil/core"
 
 @Component({
   tag: "bal-data",
-  styleUrl: "data.scss", 
   shadow: false,
   scoped: false,
 })
@@ -23,6 +22,7 @@ export class Data {
     return (
       <Host
         class={[
+          "bal-data",
           this.border ? "has-border" : "",
           this.horizontal ? "is-horizontal" : "",
         ].join(" ")}
