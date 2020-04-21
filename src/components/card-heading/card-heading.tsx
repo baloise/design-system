@@ -1,14 +1,14 @@
 import { Component, Host, h } from "@stencil/core"
 
 @Component({
-  tag: "bal-card-title",
+  tag: "bal-card-heading",
   shadow: false,
   scoped: false,
 })
-export class CardTitle {
+export class CardHeading {
   render() {
     return (
-      <Host class="bal-card-title" role="heading">
+      <Host class="bal-card-heading">
         <slot></slot>
       </Host>
     )

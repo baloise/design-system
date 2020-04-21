@@ -96,11 +96,24 @@ export namespace Components {
         "type": "is-primary" | "is-info" | "is-success" | "is-warning" | "is-danger" | "is-link";
     }
     interface BalCard {
+        /**
+          * If `true` a light blue border is added to the card.
+         */
+        "border": boolean;
+        /**
+          * If `true` the card loses its shadow.
+         */
+        "flat": boolean;
     }
     interface BalCardActions {
+        /**
+          * If `true` the buttons start form right to left.
+         */
         "right": boolean;
     }
     interface BalCardContent {
+    }
+    interface BalCardHeading {
     }
     interface BalCardSubtitle {
     }
@@ -556,6 +569,12 @@ declare global {
         prototype: HTMLBalCardContentElement;
         new (): HTMLBalCardContentElement;
     };
+    interface HTMLBalCardHeadingElement extends Components.BalCardHeading, HTMLStencilElement {
+    }
+    var HTMLBalCardHeadingElement: {
+        prototype: HTMLBalCardHeadingElement;
+        new (): HTMLBalCardHeadingElement;
+    };
     interface HTMLBalCardSubtitleElement extends Components.BalCardSubtitle, HTMLStencilElement {
     }
     var HTMLBalCardSubtitleElement: {
@@ -760,6 +779,7 @@ declare global {
         "bal-card": HTMLBalCardElement;
         "bal-card-actions": HTMLBalCardActionsElement;
         "bal-card-content": HTMLBalCardContentElement;
+        "bal-card-heading": HTMLBalCardHeadingElement;
         "bal-card-subtitle": HTMLBalCardSubtitleElement;
         "bal-card-title": HTMLBalCardTitleElement;
         "bal-data": HTMLBalDataElement;
@@ -869,11 +889,24 @@ declare namespace LocalJSX {
         "type"?: "is-primary" | "is-info" | "is-success" | "is-warning" | "is-danger" | "is-link";
     }
     interface BalCard {
+        /**
+          * If `true` a light blue border is added to the card.
+         */
+        "border"?: boolean;
+        /**
+          * If `true` the card loses its shadow.
+         */
+        "flat"?: boolean;
     }
     interface BalCardActions {
+        /**
+          * If `true` the buttons start form right to left.
+         */
         "right"?: boolean;
     }
     interface BalCardContent {
+    }
+    interface BalCardHeading {
     }
     interface BalCardSubtitle {
     }
@@ -1283,6 +1316,7 @@ declare namespace LocalJSX {
         "bal-card": BalCard;
         "bal-card-actions": BalCardActions;
         "bal-card-content": BalCardContent;
+        "bal-card-heading": BalCardHeading;
         "bal-card-subtitle": BalCardSubtitle;
         "bal-card-title": BalCardTitle;
         "bal-data": BalData;
@@ -1327,6 +1361,7 @@ declare module "@stencil/core" {
             "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
             "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;
             "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
+            "bal-card-heading": LocalJSX.BalCardHeading & JSXBase.HTMLAttributes<HTMLBalCardHeadingElement>;
             "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
             "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
             "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;

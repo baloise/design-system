@@ -5,7 +5,7 @@ The `bal-card` component is a versatile component that can be combined easily wi
 ## Usage
 
 ```html
-<bal-card class="box">
+<bal-card>
   <bal-card-title>BaloiseCombi</bal-card-title>
   <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
 
@@ -22,8 +22,10 @@ The `bal-card` component is a versatile component that can be combined easily wi
 
 ### With accordion
 
+The combination with the `bal-accordion` is useful to hide details.
+
 ```html
-<bal-card class="box">
+<bal-card>
   <bal-card-title>BaloiseCombi</bal-card-title>
   <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
 
@@ -38,8 +40,10 @@ The `bal-card` component is a versatile component that can be combined easily wi
 
 ### With list
 
+The position the action buttons to the right side just add the attribute `right` to the component `bal-card-actions`.
+
 ```html
-<bal-card class="box">
+<bal-card>
   <bal-card-title>News</bal-card-title>
 
   <bal-card-content>
@@ -72,7 +76,7 @@ The `bal-card` component is a versatile component that can be combined easily wi
 ### With avatar
 
 ```html
-<bal-card class="box">
+<bal-card>
   <bal-card-title>Natasha Romanoff</bal-card-title>
   <bal-card-subtitle>Black Widow</bal-card-subtitle>
 
@@ -117,7 +121,32 @@ The `bal-card` component is a versatile component that can be combined easily wi
 </bal-card>
 ```
 
+### A Summary card
+
+```html
+<bal-card border flat>
+  <bal-card-heading>Insured vehicle</bal-card-heading>
+  <bal-card-title>Cupra Ateca</bal-card-title>
+  <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
+
+  <bal-button expanded light inverted>
+    <span class="trigger-label">
+      <bal-icon name="edit"></bal-icon>
+      <span class="label">Edit</span>
+    </span>
+  </bal-button>
+</bal-card>
+```
+
 <!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property | Attribute | Description                                         | Type      | Default |
+| -------- | --------- | --------------------------------------------------- | --------- | ------- |
+| `border` | `border`  | If `true` a light blue border is added to the card. | `boolean` | `false` |
+| `flat`   | `flat`    | If `true` the card loses its shadow.                | `boolean` | `false` |
 
 
 ----------------------------------------------

@@ -1,19 +1,33 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, Prop } from "@stencil/core"
 
 @Component({
-  tag: 'bal-card',
-  styleUrl: 'card.scss',
+  tag: "bal-card",
   shadow: false,
   scoped: false,
 })
 export class BalCard {
+  /**
+   * If `true` a light blue border is added to the card.
+   */
+  @Prop()
+  border = false
+  /**
+   * If `true` the card loses its shadow.
+   */
+  @Prop()
+  flat = false
 
   render() {
     return (
-      <Host>
+      <Host
+        class={[
+          "bal-card",
+          this.border ? "has-border" : "",
+          this.flat ? "" : "box",
+        ].join(" ")}
+      >
         <slot></slot>
       </Host>
-    );
+    )
   }
-
 }
