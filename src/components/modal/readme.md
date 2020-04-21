@@ -38,7 +38,7 @@ the app before interaction can resume.
     };
 </script>
 
-# Customize width
+## Customize width
 
 ```html
 <bal-modal style="--bal-width: 1000px;" id="bal-modal-example-width">
