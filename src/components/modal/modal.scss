@@ -13,6 +13,7 @@
 }
 
 .modal-content {
+  width: var(--bal-width, $modal-content-width);
   margin-top: 30px;
 
   .box {
