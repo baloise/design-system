@@ -19,7 +19,7 @@ The classic button, in different colors, sizes, and states
 ### Inverted
 
 ```html
-<div class="has-inverted-background">
+<div class="has-background-info is-padded">
   <bal-button type="is-primary" inverted>Primary</bal-button>
   <bal-button type="is-info" inverted>Info</bal-button>
   <bal-button type="is-info" inverted outlined>Info Outlined</bal-button>
@@ -45,27 +45,41 @@ The classic button, in different colors, sizes, and states
 
 ```html
 <bal-button type="is-primary" expanded>Primary</bal-button>
-<br>
+<br />
 <bal-button type="is-info" expanded>Info</bal-button>
+```
+
+### With icons
+
+```html
+<bal-button type="is-info" outlined>
+  <bal-icon class="icon" name="edit"></bal-icon>
+  <span>Edit</span>
+</bal-button>
+
+<bal-button inverted light>
+  <bal-icon class="icon" name="edit"></bal-icon>
+  <span>Edit</span>
+</bal-button>
 ```
 
 ### Small buttons
 
 ```html
 <bal-button type="is-primary" size="is-small">
-    Primary
+  Primary
 </bal-button>
 <bal-button type="is-info" size="is-small">
-    Info
+  Info
 </bal-button>
 ```
 
 ```html
 <bal-button type="is-info" size="is-small" is-square outlined>
-    <bal-icon name="edit" size="medium"></bal-icon>
+  <bal-icon name="edit" size="medium"></bal-icon>
 </bal-button>
 <bal-button type="is-info" size="is-small" is-square outlined>
-    <bal-icon name="trash" size="medium"></bal-icon>
+  <bal-icon name="trash" size="medium"></bal-icon>
 </bal-button>
 ```
 
@@ -74,19 +88,20 @@ The classic button, in different colors, sizes, and states
 
 ## Properties
 
-| Property   | Attribute   | Description                                                           | Type                                                                                    | Default        |
-| ---------- | ----------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | -------------- |
-| `dense`    | `dense`     | If `true` the button is dense                                         | `boolean`                                                                               | `undefined`    |
-| `disabled` | `disabled`  | If `true` the button is disabled                                      | `boolean`                                                                               | `undefined`    |
-| `expanded` | `expanded`  | If `true` the button has a full width                                 | `boolean`                                                                               | `undefined`    |
-| `inverted` | `inverted`  | If `true` the button is inverted                                      | `boolean`                                                                               | `undefined`    |
-| `isActive` | `is-active` | If `true` the button has a active theme                               | `boolean`                                                                               | `false`        |
-| `isSquare` | `is-square` | If `true` the width of the buttons is limited                         | `boolean`                                                                               | `undefined`    |
-| `light`    | `light`     | If `true` the button has a light color                                | `boolean`                                                                               | `undefined`    |
-| `loading`  | `loading`   | If `true` the label is hidden and a loading spinner is shown instead. | `boolean`                                                                               | `undefined`    |
-| `outlined` | `outlined`  | If `true` the button is outlined                                      | `boolean`                                                                               | `undefined`    |
-| `size`     | `size`      | Size of the button                                                    | `"" \| "is-small"`                                                                      | `""`           |
-| `type`     | `type`      | The theme type of the button. Given by bulma our css framework.       | `"is-danger" \| "is-info" \| "is-link" \| "is-primary" \| "is-success" \| "is-warning"` | `"is-primary"` |
+| Property        | Attribute        | Description                                                           | Type                                                                                    | Default        |
+| --------------- | ---------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | -------------- |
+| `bottemRounded` | `bottem-rounded` | If `true` the bottom corners get rounded                              | `boolean`                                                                               | `false`        |
+| `dense`         | `dense`          | If `true` the button is dense                                         | `boolean`                                                                               | `undefined`    |
+| `disabled`      | `disabled`       | If `true` the button is disabled                                      | `boolean`                                                                               | `undefined`    |
+| `expanded`      | `expanded`       | If `true` the button has a full width                                 | `boolean`                                                                               | `undefined`    |
+| `inverted`      | `inverted`       | If `true` the button is inverted                                      | `boolean`                                                                               | `undefined`    |
+| `isActive`      | `is-active`      | If `true` the button has a active theme                               | `boolean`                                                                               | `false`        |
+| `isSquare`      | `is-square`      | If `true` the width of the buttons is limited                         | `boolean`                                                                               | `undefined`    |
+| `light`         | `light`          | If `true` the button has a light color                                | `boolean`                                                                               | `undefined`    |
+| `loading`       | `loading`        | If `true` the label is hidden and a loading spinner is shown instead. | `boolean`                                                                               | `undefined`    |
+| `outlined`      | `outlined`       | If `true` the button is outlined                                      | `boolean`                                                                               | `undefined`    |
+| `size`          | `size`           | Size of the button                                                    | `"" \| "is-small"`                                                                      | `""`           |
+| `type`          | `type`           | The theme type of the button. Given by bulma our css framework.       | `"is-danger" \| "is-info" \| "is-link" \| "is-primary" \| "is-success" \| "is-warning"` | `"is-primary"` |
 
 
 ## Dependencies
@@ -94,6 +109,7 @@ The classic button, in different colors, sizes, and states
 ### Used by
 
  - [bal-accordion](../accordion)
+ - [bal-card-button](../card-button)
  - [bal-datetimepicker](../datetimepicker)
  - [bal-filter-button](../filter-button)
  - [bal-hint](../hint)
@@ -107,6 +123,7 @@ The classic button, in different colors, sizes, and states
 graph TD;
   bal-button --> bal-spinner
   bal-accordion --> bal-button
+  bal-card-button --> bal-button
   bal-datetimepicker --> bal-button
   bal-filter-button --> bal-button
   bal-hint --> bal-button

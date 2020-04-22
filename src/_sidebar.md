@@ -29,6 +29,7 @@
   - [Box](docs/elements/box.md)
   - [Footer](docs/elements/footer.md)
   - [Image](docs/elements/image.md)
+  - [Notification](docs/elements/notification.md)
   - [Table](docs/elements/table.md)
   - [Title](docs/elements/title.md)
   - [Tooltip](docs/elements/tooltip.md)
@@ -38,6 +39,8 @@
 
   - [Accordion](components/accordion/readme.md)
   - [Button](components/button/readme.md)
+  - [Card](components/card/readme.md)
+  - [Data List](components/data/readme.md)
   - [Filter-Button](components/filter-button/readme.md)
   - [Icon](components/icon/readme.md)
   - [Hint](components/hint/readme.md)

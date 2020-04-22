@@ -1,13 +1,13 @@
 import { Component, Host, h, Prop } from "@stencil/core"
 
 @Component({
-  tag: "bal-list-item-icon",
+  tag: "bal-card-actions",
   shadow: false,
   scoped: false,
 })
-export class ListItemIcon {
+export class CardActions {
   /**
-   * If `true` the icon is on the right side of the list item. Default is the left side.
+   * If `true` the buttons start form right to left.
    */
   @Prop()
   right = false
@@ -15,7 +15,7 @@ export class ListItemIcon {
   render() {
     return (
       <Host
-        class={["bal-list-item-icon", this.right ? "is-right" : ""].join(" ")}
+        class={["bal-card-actions", this.right ? "is-right" : ""].join(" ")}
       >
         <slot></slot>
       </Host>

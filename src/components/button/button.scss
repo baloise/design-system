@@ -3,6 +3,7 @@
 
 :host {
   display: inline-flex;
+  position: static;
 }
 
 .button {
@@ -10,6 +11,15 @@
   outline: none !important;
   user-select: none;
   min-height: 50px;
+
+  &.is-fullwidth {
+    width: 100%;
+  }
+
+  &.has-round-bottom-corners {
+    border-bottom-left-radius: $radius !important;
+    border-bottom-right-radius: $radius !important;
+  }
 
   &.is-small {
     min-height: 38px;
@@ -22,9 +32,15 @@
     padding: 4px 0 0 0;
   }
 
-  &.is-success, &.is-success:hover, &.is-success:focus,
-  &.is-danger, &.is-danger:hover, &.is-danger:focus,
-  &.is-warning, &.is-warning:hover, &.is-warning:focus {
+  &.is-success,
+  &.is-success:hover,
+  &.is-success:focus,
+  &.is-danger,
+  &.is-danger:hover,
+  &.is-danger:focus,
+  &.is-warning,
+  &.is-warning:hover,
+  &.is-warning:focus {
     color: $white !important;
   }
 
@@ -48,7 +64,8 @@
     }
   }
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     &::before {
       outline: none;
     }
@@ -136,7 +153,6 @@
       border-color: $blue-line;
     }
   }
-
 
   &.is-info.is-inverted.is-outlined {
     &:hover,
@@ -256,7 +272,6 @@
         background: transparent;
       }
     }
-
   }
 
   span {
@@ -264,9 +279,8 @@
     font-weight: 600;
   }
 
-  &.is-dense{
+  &.is-dense {
     padding-left: 16px;
     padding-right: 16px;
   }
-
 }

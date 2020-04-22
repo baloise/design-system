@@ -1,0 +1,102 @@
+.bal-card {
+  display: block;
+  max-width: 100%;
+  outline: none;
+  text-decoration: none;
+  overflow-wrap: break-word;
+  position: relative;
+  white-space: normal;
+  border-radius: $radius;
+  box-shadow: $shadow;
+
+  .bal-card-button {
+    position: static;
+    display: block;
+  }
+
+  .bal-button:last-child,
+  .bal-button:last-child > button.button,
+  bal-accordion:last-child {
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+  }
+
+  &.is-flat {
+    box-shadow: none;
+  }
+
+  &.is-square {
+    border-radius: 0;
+  }
+
+  &.has-border {
+    border: 1px solid $blue-light-line;
+  }
+
+  .bal-card-heading,
+  .bal-card-title,
+  .bal-card-subtitle,
+  .bal-card-content,
+  .bal-card-actions {
+    align-items: center;
+    display: flex;
+    padding: 16px;
+  }
+
+  .bal-card-heading,
+  .bal-card-title,
+  .bal-card-subtitle,
+  .bal-card-content {
+    flex-wrap: wrap;
+    word-break: break-all;
+  }
+
+  .bal-card-heading,
+  .bal-card-title,
+  .bal-card-subtitle {
+    font-family: $title-family;
+    line-height: 2rem;
+  }
+
+  .bal-card-heading {
+    font-size: $size-5;
+    font-weight: $weight-bold;
+    color: $blue;
+  }
+
+  .bal-card-title {
+    font-size: $size-3;
+    font-weight: $weight-bold;
+    color: $blue;
+  }
+
+  .bal-card-subtitle {
+    font-size: $size-5;
+    font-weight: $weight-normal;
+    color: $blue-light-text;
+  }
+
+  .bal-card-content {
+    font-size: $size-normal;
+    font-weight: $weight-normal;
+    font-family: $body-family;
+  }
+
+  .bal-card-heading + .bal-card-title,
+  .bal-card-title + .bal-card-subtitle {
+    margin-top: -18px;
+    padding-top: 0;
+  }
+
+  .bal-card-heading + .bal-card-content,
+  .bal-card-title + .bal-card-content,
+  .bal-card-subtitle + .bal-card-content {
+    padding-top: 0;
+  }
+
+  .bal-card-actions {
+    &.is-right {
+      flex-direction: row-reverse;
+    }
+  }
+}

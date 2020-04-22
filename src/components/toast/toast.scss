@@ -38,7 +38,6 @@
 
     &.is-success {
       background: $success;
-      //background: darken($success, 10);
       color: $white;
     }
 
@@ -49,7 +48,6 @@
 
     &.is-danger {
       background: $danger;
-      //background: lighten($danger, 10);
       color: $white;
     }
   }

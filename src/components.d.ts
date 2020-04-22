@@ -51,6 +51,10 @@ export namespace Components {
     }
     interface BalButton {
         /**
+          * If `true` the bottom corners get rounded
+         */
+        "bottemRounded": boolean;
+        /**
           * If `true` the button is dense
          */
         "dense": boolean;
@@ -94,6 +98,64 @@ export namespace Components {
           * The theme type of the button. Given by bulma our css framework.
          */
         "type": "is-primary" | "is-info" | "is-success" | "is-warning" | "is-danger" | "is-link";
+    }
+    interface BalCard {
+        /**
+          * If `true` a light blue border is added to the card.
+         */
+        "border": boolean;
+        /**
+          * If `true` the card loses its shadow.
+         */
+        "flat": boolean;
+        /**
+          * If `true` the card loses its border radius.
+         */
+        "square": boolean;
+    }
+    interface BalCardActions {
+        /**
+          * If `true` the buttons start form right to left.
+         */
+        "right": boolean;
+    }
+    interface BalCardButton {
+        /**
+          * Name of the icon like `edit`.
+         */
+        "icon": string;
+    }
+    interface BalCardContent {
+    }
+    interface BalCardHeading {
+    }
+    interface BalCardSubtitle {
+    }
+    interface BalCardTitle {
+    }
+    interface BalData {
+        /**
+          * If `true` a bottom border is added to the data-item.
+         */
+        "border": boolean;
+        /**
+          * If `true` the data list is horizontal instead of vertical.
+         */
+        "horizontal": boolean;
+    }
+    interface BalDataItem {
+        /**
+          * If `true` the item gets a lighter font color.
+         */
+        "disabled": boolean;
+    }
+    interface BalDataLabel {
+        /**
+          * If `true` an asterix is added after the label.
+         */
+        "required": boolean;
+    }
+    interface BalDataValue {
     }
     interface BalDatepicker {
         /**
@@ -435,11 +497,15 @@ export namespace Components {
     }
     interface BalTabs {
         /**
+          * If `true` the the padding gets reduced.
+         */
+        "dense": boolean;
+        /**
           * If `true` the field expands over the whole width.
          */
         "expanded": boolean;
         /**
-          * If you want the rounded tab style
+          * If you want the rounded tab style.
          */
         "rounded": boolean;
         /**
@@ -498,6 +564,72 @@ declare global {
     var HTMLBalButtonElement: {
         prototype: HTMLBalButtonElement;
         new (): HTMLBalButtonElement;
+    };
+    interface HTMLBalCardElement extends Components.BalCard, HTMLStencilElement {
+    }
+    var HTMLBalCardElement: {
+        prototype: HTMLBalCardElement;
+        new (): HTMLBalCardElement;
+    };
+    interface HTMLBalCardActionsElement extends Components.BalCardActions, HTMLStencilElement {
+    }
+    var HTMLBalCardActionsElement: {
+        prototype: HTMLBalCardActionsElement;
+        new (): HTMLBalCardActionsElement;
+    };
+    interface HTMLBalCardButtonElement extends Components.BalCardButton, HTMLStencilElement {
+    }
+    var HTMLBalCardButtonElement: {
+        prototype: HTMLBalCardButtonElement;
+        new (): HTMLBalCardButtonElement;
+    };
+    interface HTMLBalCardContentElement extends Components.BalCardContent, HTMLStencilElement {
+    }
+    var HTMLBalCardContentElement: {
+        prototype: HTMLBalCardContentElement;
+        new (): HTMLBalCardContentElement;
+    };
+    interface HTMLBalCardHeadingElement extends Components.BalCardHeading, HTMLStencilElement {
+    }
+    var HTMLBalCardHeadingElement: {
+        prototype: HTMLBalCardHeadingElement;
+        new (): HTMLBalCardHeadingElement;
+    };
+    interface HTMLBalCardSubtitleElement extends Components.BalCardSubtitle, HTMLStencilElement {
+    }
+    var HTMLBalCardSubtitleElement: {
+        prototype: HTMLBalCardSubtitleElement;
+        new (): HTMLBalCardSubtitleElement;
+    };
+    interface HTMLBalCardTitleElement extends Components.BalCardTitle, HTMLStencilElement {
+    }
+    var HTMLBalCardTitleElement: {
+        prototype: HTMLBalCardTitleElement;
+        new (): HTMLBalCardTitleElement;
+    };
+    interface HTMLBalDataElement extends Components.BalData, HTMLStencilElement {
+    }
+    var HTMLBalDataElement: {
+        prototype: HTMLBalDataElement;
+        new (): HTMLBalDataElement;
+    };
+    interface HTMLBalDataItemElement extends Components.BalDataItem, HTMLStencilElement {
+    }
+    var HTMLBalDataItemElement: {
+        prototype: HTMLBalDataItemElement;
+        new (): HTMLBalDataItemElement;
+    };
+    interface HTMLBalDataLabelElement extends Components.BalDataLabel, HTMLStencilElement {
+    }
+    var HTMLBalDataLabelElement: {
+        prototype: HTMLBalDataLabelElement;
+        new (): HTMLBalDataLabelElement;
+    };
+    interface HTMLBalDataValueElement extends Components.BalDataValue, HTMLStencilElement {
+    }
+    var HTMLBalDataValueElement: {
+        prototype: HTMLBalDataValueElement;
+        new (): HTMLBalDataValueElement;
     };
     interface HTMLBalDatepickerElement extends Components.BalDatepicker, HTMLStencilElement {
     }
@@ -664,6 +796,17 @@ declare global {
     interface HTMLElementTagNameMap {
         "bal-accordion": HTMLBalAccordionElement;
         "bal-button": HTMLBalButtonElement;
+        "bal-card": HTMLBalCardElement;
+        "bal-card-actions": HTMLBalCardActionsElement;
+        "bal-card-button": HTMLBalCardButtonElement;
+        "bal-card-content": HTMLBalCardContentElement;
+        "bal-card-heading": HTMLBalCardHeadingElement;
+        "bal-card-subtitle": HTMLBalCardSubtitleElement;
+        "bal-card-title": HTMLBalCardTitleElement;
+        "bal-data": HTMLBalDataElement;
+        "bal-data-item": HTMLBalDataItemElement;
+        "bal-data-label": HTMLBalDataLabelElement;
+        "bal-data-value": HTMLBalDataValueElement;
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-datetimepicker": HTMLBalDatetimepickerElement;
         "bal-dropdown": HTMLBalDropdownElement;
@@ -722,6 +865,10 @@ declare namespace LocalJSX {
     }
     interface BalButton {
         /**
+          * If `true` the bottom corners get rounded
+         */
+        "bottemRounded"?: boolean;
+        /**
           * If `true` the button is dense
          */
         "dense"?: boolean;
@@ -765,6 +912,64 @@ declare namespace LocalJSX {
           * The theme type of the button. Given by bulma our css framework.
          */
         "type"?: "is-primary" | "is-info" | "is-success" | "is-warning" | "is-danger" | "is-link";
+    }
+    interface BalCard {
+        /**
+          * If `true` a light blue border is added to the card.
+         */
+        "border"?: boolean;
+        /**
+          * If `true` the card loses its shadow.
+         */
+        "flat"?: boolean;
+        /**
+          * If `true` the card loses its border radius.
+         */
+        "square"?: boolean;
+    }
+    interface BalCardActions {
+        /**
+          * If `true` the buttons start form right to left.
+         */
+        "right"?: boolean;
+    }
+    interface BalCardButton {
+        /**
+          * Name of the icon like `edit`.
+         */
+        "icon"?: string;
+    }
+    interface BalCardContent {
+    }
+    interface BalCardHeading {
+    }
+    interface BalCardSubtitle {
+    }
+    interface BalCardTitle {
+    }
+    interface BalData {
+        /**
+          * If `true` a bottom border is added to the data-item.
+         */
+        "border"?: boolean;
+        /**
+          * If `true` the data list is horizontal instead of vertical.
+         */
+        "horizontal"?: boolean;
+    }
+    interface BalDataItem {
+        /**
+          * If `true` the item gets a lighter font color.
+         */
+        "disabled"?: boolean;
+    }
+    interface BalDataLabel {
+        /**
+          * If `true` an asterix is added after the label.
+         */
+        "required"?: boolean;
+    }
+    interface BalDataValue {
     }
     interface BalDatepicker {
         /**
@@ -1086,6 +1291,10 @@ declare namespace LocalJSX {
     }
     interface BalTabs {
         /**
+          * If `true` the the padding gets reduced.
+         */
+        "dense"?: boolean;
+        /**
           * If `true` the field expands over the whole width.
          */
         "expanded"?: boolean;
@@ -1094,7 +1303,7 @@ declare namespace LocalJSX {
          */
         "onBalTabsDidChange"?: (event: CustomEvent<TabItemOptions>) => void;
         /**
-          * If you want the rounded tab style
+          * If you want the rounded tab style.
          */
         "rounded"?: boolean;
     }
@@ -1139,6 +1348,17 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
         "bal-button": BalButton;
+        "bal-card": BalCard;
+        "bal-card-actions": BalCardActions;
+        "bal-card-button": BalCardButton;
+        "bal-card-content": BalCardContent;
+        "bal-card-heading": BalCardHeading;
+        "bal-card-subtitle": BalCardSubtitle;
+        "bal-card-title": BalCardTitle;
+        "bal-data": BalData;
+        "bal-data-item": BalDataItem;
+        "bal-data-label": BalDataLabel;
+        "bal-data-value": BalDataValue;
         "bal-datepicker": BalDatepicker;
         "bal-datetimepicker": BalDatetimepicker;
         "bal-dropdown": BalDropdown;
@@ -1174,6 +1394,17 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "bal-accordion": LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
             "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
+            "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
+            "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;
+            "bal-card-button": LocalJSX.BalCardButton & JSXBase.HTMLAttributes<HTMLBalCardButtonElement>;
+            "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
+            "bal-card-heading": LocalJSX.BalCardHeading & JSXBase.HTMLAttributes<HTMLBalCardHeadingElement>;
+            "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
+            "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
+            "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
+            "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;
+            "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
+            "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-datetimepicker": LocalJSX.BalDatetimepicker & JSXBase.HTMLAttributes<HTMLBalDatetimepickerElement>;
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
