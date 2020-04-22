@@ -8,6 +8,8 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { DateCallback, FormatLabelCallback, } from "./components/datepicker/datepicker";
 import { DateCallback as DateCallback1, } from "./components/datepicker/datepicker";
 import { Option, } from "./components/dropdown-option/dropdown-option.types";
+import { StepOptions, } from "./components/step/step";
+import { StepOptions as StepOptions1, } from "./components/step/step";
 import { TabItemOptions, } from "./components/tab-item/tab-item";
 import { TabItemOptions as TabItemOptions1, } from "./components/tab-item/tab-item";
 export namespace Components {
@@ -465,6 +467,42 @@ export namespace Components {
     }
     interface BalSpinner {
     }
+    interface BalStep {
+        /**
+          * Tell's if the step is active and the content is visible.
+         */
+        "active": boolean;
+        /**
+          * If `true` a small red bubble is added to the step.
+         */
+        "bubble": boolean;
+        /**
+          * If `true` the step is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * Options of the step like label, value etc.
+         */
+        "getOptions": () => Promise<StepOptions>;
+        /**
+          * Label for the step.
+         */
+        "label": string;
+        /**
+          * Sets the step active.
+         */
+        "setActive": (active: boolean) => Promise<void>;
+        /**
+          * This is the key of the step.
+         */
+        "value": string;
+    }
+    interface BalSteps {
+        /**
+          * Select a step.
+         */
+        "select": (value: string) => Promise<void>;
+    }
     interface BalTabItem {
         /**
           * Tell's if the tab is active and the content is visible.
@@ -763,6 +801,18 @@ declare global {
         prototype: HTMLBalSpinnerElement;
         new (): HTMLBalSpinnerElement;
     };
+    interface HTMLBalStepElement extends Components.BalStep, HTMLStencilElement {
+    }
+    var HTMLBalStepElement: {
+        prototype: HTMLBalStepElement;
+        new (): HTMLBalStepElement;
+    };
+    interface HTMLBalStepsElement extends Components.BalSteps, HTMLStencilElement {
+    }
+    var HTMLBalStepsElement: {
+        prototype: HTMLBalStepsElement;
+        new (): HTMLBalStepsElement;
+    };
     interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
     }
     var HTMLBalTabItemElement: {
@@ -829,6 +879,8 @@ declare global {
         "bal-navbar": HTMLBalNavbarElement;
         "bal-pagination": HTMLBalPaginationElement;
         "bal-spinner": HTMLBalSpinnerElement;
+        "bal-step": HTMLBalStepElement;
+        "bal-steps": HTMLBalStepsElement;
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-tabs": HTMLBalTabsElement;
         "bal-tag": HTMLBalTagElement;
@@ -1263,6 +1315,38 @@ declare namespace LocalJSX {
     }
     interface BalSpinner {
     }
+    interface BalStep {
+        /**
+          * Tell's if the step is active and the content is visible.
+         */
+        "active"?: boolean;
+        /**
+          * If `true` a small red bubble is added to the step.
+         */
+        "bubble"?: boolean;
+        /**
+          * If `true` the step is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Label for the step.
+         */
+        "label"?: string;
+        /**
+          * Emitted when the steps get rendered.
+         */
+        "onBalStepChanged"?: (event: CustomEvent<any>) => void;
+        /**
+          * This is the key of the step.
+         */
+        "value"?: string;
+    }
+    interface BalSteps {
+        /**
+          * Emitted when the changes has finished.
+         */
+        "onBalStepsDidChange"?: (event: CustomEvent<StepOptions>) => void;
+    }
     interface BalTabItem {
         /**
           * Tell's if the tab is active and the content is visible.
@@ -1381,6 +1465,8 @@ declare namespace LocalJSX {
         "bal-navbar": BalNavbar;
         "bal-pagination": BalPagination;
         "bal-spinner": BalSpinner;
+        "bal-step": BalStep;
+        "bal-steps": BalSteps;
         "bal-tab-item": BalTabItem;
         "bal-tabs": BalTabs;
         "bal-tag": BalTag;
@@ -1427,6 +1513,8 @@ declare module "@stencil/core" {
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
+            "bal-step": LocalJSX.BalStep & JSXBase.HTMLAttributes<HTMLBalStepElement>;
+            "bal-steps": LocalJSX.BalSteps & JSXBase.HTMLAttributes<HTMLBalStepsElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
