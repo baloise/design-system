@@ -437,6 +437,12 @@ export namespace Components {
     }
     interface BalModalActions {
     }
+    interface BalModalCard {
+        "close": () => Promise<void>;
+        "open": () => Promise<void>;
+    }
+    interface BalModalCardActions {
+    }
     interface BalModalTitle {
     }
     interface BalNavbar {
@@ -739,6 +745,18 @@ declare global {
         prototype: HTMLBalModalActionsElement;
         new (): HTMLBalModalActionsElement;
     };
+    interface HTMLBalModalCardElement extends Components.BalModalCard, HTMLStencilElement {
+    }
+    var HTMLBalModalCardElement: {
+        prototype: HTMLBalModalCardElement;
+        new (): HTMLBalModalCardElement;
+    };
+    interface HTMLBalModalCardActionsElement extends Components.BalModalCardActions, HTMLStencilElement {
+    }
+    var HTMLBalModalCardActionsElement: {
+        prototype: HTMLBalModalCardActionsElement;
+        new (): HTMLBalModalCardActionsElement;
+    };
     interface HTMLBalModalTitleElement extends Components.BalModalTitle, HTMLStencilElement {
     }
     var HTMLBalModalTitleElement: {
@@ -825,6 +843,8 @@ declare global {
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-actions": HTMLBalModalActionsElement;
+        "bal-modal-card": HTMLBalModalCardElement;
+        "bal-modal-card-actions": HTMLBalModalCardActionsElement;
         "bal-modal-title": HTMLBalModalTitleElement;
         "bal-navbar": HTMLBalNavbarElement;
         "bal-pagination": HTMLBalPaginationElement;
@@ -1233,6 +1253,10 @@ declare namespace LocalJSX {
     }
     interface BalModalActions {
     }
+    interface BalModalCard {
+    }
+    interface BalModalCardActions {
+    }
     interface BalModalTitle {
     }
     interface BalNavbar {
@@ -1377,6 +1401,8 @@ declare namespace LocalJSX {
         "bal-list-item-title": BalListItemTitle;
         "bal-modal": BalModal;
         "bal-modal-actions": BalModalActions;
+        "bal-modal-card": BalModalCard;
+        "bal-modal-card-actions": BalModalCardActions;
         "bal-modal-title": BalModalTitle;
         "bal-navbar": BalNavbar;
         "bal-pagination": BalPagination;
@@ -1423,6 +1449,8 @@ declare module "@stencil/core" {
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-actions": LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;
+            "bal-modal-card": LocalJSX.BalModalCard & JSXBase.HTMLAttributes<HTMLBalModalCardElement>;
+            "bal-modal-card-actions": LocalJSX.BalModalCardActions & JSXBase.HTMLAttributes<HTMLBalModalCardActionsElement>;
             "bal-modal-title": LocalJSX.BalModalTitle & JSXBase.HTMLAttributes<HTMLBalModalTitleElement>;
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;

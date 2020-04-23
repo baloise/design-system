@@ -48,6 +48,7 @@
     - [List Item](components/list-item/readme.md)
     - [List Item Icon](components/list-item-icon/readme.md)
   - [Modal](components/modal/readme.md)
+  - [Modal Card](components/modal-card/readme.md)
   - [Navbar](components/navbar/readme.md)
   - [Pagination](components/pagination/readme.md)
   - [Spinner](components/spinner/readme.md)
