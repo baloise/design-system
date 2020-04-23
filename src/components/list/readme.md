@@ -176,6 +176,19 @@ Lists present content in a way that makes it easy to identify a specific item in
 | `inverted` | `inverted` | If `true` the list can be used on a dark backround | `boolean` | `false` |
 
 
+## Dependencies
+
+### Used by
+
+ - [bal-file-upload](../file-upload)
+
+### Graph
+```mermaid
+graph TD;
+  bal-file-upload --> bal-list
+  style bal-list fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

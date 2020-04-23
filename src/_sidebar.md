@@ -18,6 +18,7 @@
   - [Dropdown](components/dropdown/readme.md)
     - [Dropdown Option](components/dropdown-option/readme.md)
   - [Field](components/field/readme.md)
+  - [File Upload](components/file-upload/readme.md)
   - [Input](docs/elements/input.md)
   - [Radio](docs/elements/radio.md)
   - [Select Button](docs/elements/select-button.md)

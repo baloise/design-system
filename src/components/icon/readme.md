@@ -93,6 +93,7 @@ Here is how you can change the size:
  - [bal-datetimepicker](../datetimepicker)
  - [bal-dropdown](../dropdown)
  - [bal-field](../field)
+ - [bal-file-upload](../file-upload)
  - [bal-pagination](../pagination)
 
 ### Graph
@@ -104,6 +105,7 @@ graph TD;
   bal-datetimepicker --> bal-icon
   bal-dropdown --> bal-icon
   bal-field --> bal-icon
+  bal-file-upload --> bal-icon
   bal-pagination --> bal-icon
   style bal-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

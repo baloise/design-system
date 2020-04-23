@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { DateCallback, FormatLabelCallback, } from "./components/datepicker/datepicker";
 import { DateCallback as DateCallback1, } from "./components/datepicker/datepicker";
 import { Option, } from "./components/dropdown-option/dropdown-option.types";
+import { FileUploadRejectedFile, } from "./components/file-upload/file-upload.type";
 import { StepOptions, } from "./components/step/step";
 import { StepOptions as StepOptions1, } from "./components/step/step";
 import { TabItemOptions, } from "./components/tab-item/tab-item";
@@ -352,6 +353,36 @@ export namespace Components {
           * Validation message text
          */
         "validationMessage": string;
+    }
+    interface BalFileUpload {
+        /**
+          * Accepted MIME-Types like `image/png,image/jpeg`.
+         */
+        "accept": string;
+        /**
+          * If `true` the button is disabled
+         */
+        "disabled": boolean;
+        /**
+          * Label of the drop area.
+         */
+        "label": string;
+        /**
+          * Allowed max bundle size in bytes.
+         */
+        "maxBundleSize": number;
+        /**
+          * Allowed max file size in bytes.
+         */
+        "maxFileSize": number;
+        /**
+          * Allowed number of files in the bundle.
+         */
+        "maxFiles": number;
+        /**
+          * If `true` multiple file upload is possible.
+         */
+        "multiple": boolean;
     }
     interface BalFilterButton {
         /**
@@ -699,6 +730,12 @@ declare global {
         prototype: HTMLBalFieldElement;
         new (): HTMLBalFieldElement;
     };
+    interface HTMLBalFileUploadElement extends Components.BalFileUpload, HTMLStencilElement {
+    }
+    var HTMLBalFileUploadElement: {
+        prototype: HTMLBalFileUploadElement;
+        new (): HTMLBalFileUploadElement;
+    };
     interface HTMLBalFilterButtonElement extends Components.BalFilterButton, HTMLStencilElement {
     }
     var HTMLBalFilterButtonElement: {
@@ -862,6 +899,7 @@ declare global {
         "bal-dropdown": HTMLBalDropdownElement;
         "bal-dropdown-option": HTMLBalDropdownOptionElement;
         "bal-field": HTMLBalFieldElement;
+        "bal-file-upload": HTMLBalFileUploadElement;
         "bal-filter-button": HTMLBalFilterButtonElement;
         "bal-hint": HTMLBalHintElement;
         "bal-hint-text": HTMLBalHintTextElement;
@@ -1209,6 +1247,44 @@ declare namespace LocalJSX {
          */
         "validationMessage"?: string;
     }
+    interface BalFileUpload {
+        /**
+          * Accepted MIME-Types like `image/png,image/jpeg`.
+         */
+        "accept"?: string;
+        /**
+          * If `true` the button is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Label of the drop area.
+         */
+        "label"?: string;
+        /**
+          * Allowed max bundle size in bytes.
+         */
+        "maxBundleSize"?: number;
+        /**
+          * Allowed max file size in bytes.
+         */
+        "maxFileSize"?: number;
+        /**
+          * Allowed number of files in the bundle.
+         */
+        "maxFiles"?: number;
+        /**
+          * If `true` multiple file upload is possible.
+         */
+        "multiple"?: boolean;
+        /**
+          * Triggers when a file is added or removed.
+         */
+        "onBalChange"?: (event: CustomEvent<File[]>) => void;
+        /**
+          * Triggers when a file is rejected due to not allowed MIME-Type and so on.
+         */
+        "onBalFileUploadRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
+    }
     interface BalFilterButton {
         /**
           * If `true` then the button is active/selected
@@ -1448,6 +1524,7 @@ declare namespace LocalJSX {
         "bal-dropdown": BalDropdown;
         "bal-dropdown-option": BalDropdownOption;
         "bal-field": BalField;
+        "bal-file-upload": BalFileUpload;
         "bal-filter-button": BalFilterButton;
         "bal-hint": BalHint;
         "bal-hint-text": BalHintText;
@@ -1496,6 +1573,7 @@ declare module "@stencil/core" {
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
             "bal-dropdown-option": LocalJSX.BalDropdownOption & JSXBase.HTMLAttributes<HTMLBalDropdownOptionElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
+            "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
             "bal-filter-button": LocalJSX.BalFilterButton & JSXBase.HTMLAttributes<HTMLBalFilterButtonElement>;
             "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;

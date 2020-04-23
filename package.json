@@ -70,6 +70,7 @@
   },
   "dependencies": {
     "bulma": "^0.8.2",
+    "filesize.js": "^2.0.0",
     "moment": "2.24.0"
   },
   "resolutions": {
