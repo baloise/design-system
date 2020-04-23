@@ -4,17 +4,17 @@
 
 ```html
 <bal-dropdown>
-    <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
-    <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
-    <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
+  <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
+  <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
+  <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
 </bal-dropdown>
 ```
 
 ```html
 <bal-dropdown id="bal-dropdown-example">
-    <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
-    <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
-    <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
+  <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
+  <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
+  <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
 </bal-dropdown>
 ```
 
@@ -41,9 +41,9 @@
 
 ```html
 <bal-dropdown disabled="true">
-    <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
-    <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
-    <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
+  <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
+  <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
+  <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
 </bal-dropdown>
 ```
 
@@ -51,36 +51,58 @@
 
 ```html
 <bal-dropdown expanded typeahead id="bal-dropdown-typeahead-example">
-    <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
-    <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
-    <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
-    <bal-dropdown-option value="4" label="Captain America"></bal-dropdown-option>
-    <bal-dropdown-option value="5" label="Captain Marvel"></bal-dropdown-option>
-    <bal-dropdown-option value="6" label="Daredevil"></bal-dropdown-option>
-    <bal-dropdown-option value="7" label="Dr. Strange"></bal-dropdown-option>
-    <bal-dropdown-option value="8" label="Hulk"></bal-dropdown-option>
-    <bal-dropdown-option value="9" label="Iron Man"></bal-dropdown-option>
-    <bal-dropdown-option value="10" label="Spider Man"></bal-dropdown-option>
-    <bal-dropdown-option value="11" label="Thor"></bal-dropdown-option>
-    <bal-dropdown-option value="12" label="Wasp"></bal-dropdown-option>
-    <bal-dropdown-option value="13" label="Wolverine"></bal-dropdown-option>
+  <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
+  <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
+  <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
+  <bal-dropdown-option value="4" label="Captain America"></bal-dropdown-option>
+  <bal-dropdown-option value="5" label="Captain Marvel"></bal-dropdown-option>
+  <bal-dropdown-option value="6" label="Daredevil"></bal-dropdown-option>
+  <bal-dropdown-option value="7" label="Dr. Strange"></bal-dropdown-option>
+  <bal-dropdown-option value="8" label="Hulk"></bal-dropdown-option>
+  <bal-dropdown-option value="9" label="Iron Man"></bal-dropdown-option>
+  <bal-dropdown-option value="10" label="Spider Man"></bal-dropdown-option>
+  <bal-dropdown-option value="11" label="Thor"></bal-dropdown-option>
+  <bal-dropdown-option value="12" label="Wasp"></bal-dropdown-option>
+  <bal-dropdown-option value="13" label="Wolverine"></bal-dropdown-option>
 </bal-dropdown>
 ```
+
+### Multi-Select
+
+```html
+<bal-dropdown multi-select typeahead expanded>
+  <bal-dropdown-option checkbox value="1" label="Ant-Man"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="2" label="Black Panter"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="3" label="Black Widow"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="4" label="Captain America"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="5" label="Captain Marvel"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="6" label="Daredevil"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="7" label="Dr. Strange"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="8" label="Hulk"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="9" label="Iron Man"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="10" label="Spider Man"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="11" label="Thor"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="12" label="Wasp"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="13" label="Wolverine"></bal-dropdown-option>
+</bal-dropdown>
+```
+
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property      | Attribute      | Description                                                 | Type      | Default        |
-| ------------- | -------------- | ----------------------------------------------------------- | --------- | -------------- |
-| `disabled`    | `disabled`     | If `true`, the user cannot interact with the input.         | `boolean` | `false`        |
-| `expanded`    | `expanded`     | If `true`, the component uses the whole width.              | `boolean` | `false`        |
-| `fixed`       | `fixed`        | If `true`, the height of the dropdown content is fixed.     | `boolean` | `true`         |
-| `placeholder` | `placeholder`  | Instructional text that shows before the input has a value. | `string`  | `""`           |
-| `readonly`    | `readonly`     | If `true`, the user cannot interact with the input.         | `boolean` | `false`        |
-| `triggerIcon` | `trigger-icon` | Defines the trigger icon on the right site.                 | `string`  | `"caret-down"` |
-| `typeahead`   | `typeahead`    | If `true`, the use can search for the option.               | `boolean` | `false`        |
-| `value`       | --             | The value of the selected dropdown item.                    | `Option`  | `null`         |
+| Property      | Attribute      | Description                                                 | Type                 | Default        |
+| ------------- | -------------- | ----------------------------------------------------------- | -------------------- | -------------- |
+| `disabled`    | `disabled`     | If `true`, the user cannot interact with the input.         | `boolean`            | `false`        |
+| `expanded`    | `expanded`     | If `true`, the component uses the whole width.              | `boolean`            | `false`        |
+| `fixed`       | `fixed`        | If `true`, the height of the dropdown content is fixed.     | `boolean`            | `true`         |
+| `multiSelect` | `multi-select` | TODO: Describe                                              | `boolean`            | `false`        |
+| `placeholder` | `placeholder`  | Instructional text that shows before the input has a value. | `string`             | `""`           |
+| `readonly`    | `readonly`     | If `true`, the user cannot interact with the input.         | `boolean`            | `false`        |
+| `triggerIcon` | `trigger-icon` | Defines the trigger icon on the right site.                 | `string`             | `"caret-down"` |
+| `typeahead`   | `typeahead`    | If `true`, the use can search for the option.               | `boolean`            | `false`        |
+| `value`       | --             | The value of the selected dropdown item.                    | `Option \| Option[]` | `null`         |
 
 
 ## Events
@@ -105,13 +127,13 @@ Type: `Promise<void>`
 
 
 
-### `getSelected() => Promise<Option>`
+### `getSelected() => Promise<Option | Option[]>`
 
 Returns the value of the dropdown.
 
 #### Returns
 
-Type: `Promise<Option>`
+Type: `Promise<Option | Option[]>`
 
 
 

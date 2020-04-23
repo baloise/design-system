@@ -276,7 +276,11 @@ export namespace Components {
         /**
           * Returns the value of the dropdown.
          */
-        "getSelected": () => Promise<Option>;
+        "getSelected": () => Promise<Option | Option[]>;
+        /**
+          * TODO: Describe
+         */
+        "multiSelect": boolean;
         /**
           * Open the dropdown menu.
          */
@@ -308,17 +312,13 @@ export namespace Components {
         /**
           * The value of the selected dropdown item.
          */
-        "value": Option;
+        "value": Option | Option[];
     }
     interface BalDropdownOption {
-        /**
-          * TODO: Describe
-         */
         "activated": boolean;
-        /**
-          * TODO: Describe
-         */
+        "checkbox": boolean;
         "highlight": string;
+        "icon": string;
         /**
           * Tell's if the item is activated by selection.
          */
@@ -1171,6 +1171,10 @@ declare namespace LocalJSX {
          */
         "fixed"?: boolean;
         /**
+          * TODO: Describe
+         */
+        "multiSelect"?: boolean;
+        /**
           * Emitted when the toggle loses focus.
          */
         "onBalBlur"?: (event: CustomEvent<void>) => void;
@@ -1205,17 +1209,13 @@ declare namespace LocalJSX {
         /**
           * The value of the selected dropdown item.
          */
-        "value"?: Option;
+        "value"?: Option | Option[];
     }
     interface BalDropdownOption {
-        /**
-          * TODO: Describe
-         */
         "activated"?: boolean;
-        /**
-          * TODO: Describe
-         */
+        "checkbox"?: boolean;
         "highlight"?: string;
+        "icon"?: string;
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */

@@ -1,4 +1,5 @@
 @import "src/components/dropdown/dropdown.vars";
+@import "../../scss/elements/checkbox.scss";
 @import "node_modules/bulma/sass/components/dropdown.sass";
 
 :host {
@@ -16,6 +17,48 @@
   background: transparent;
   cursor: pointer;
 
+  &.has-icon {
+    span.label {
+      margin-left: 32px;
+    }
+  }
+
+  &.has-checkbox {
+    span.label {
+      margin-left: 35px;
+    }
+  }
+
+  &.has-icon.has-checkbox {
+    span.icon {
+      margin-left: 25px;
+    }
+    span.label {
+      margin-left: 75px;
+    }
+  }
+
+  &.has-checkbox {
+    div.bal-checkbox {
+      position: absolute;
+      top: 8px;
+      padding: 0;
+    }
+  }
+
+  .icon {
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 32px;
+    flex: 1 1;
+
+    bal-icon {
+      position: absolute;
+      top: -4px;
+    }
+  }
+
   &.is-hidden {
     display: none;
   }
@@ -24,7 +67,8 @@
     font-family: $family-primary;
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: $dropdown-item-hover-background-color;
   }
 
@@ -33,8 +77,8 @@
     background: $dropdown-item-hover-background-color;
   }
 
-  &:focus:not(.is-active),
-  &:hover:not(.is-active) {
+  &:focus:not(.is-active):not(.has-checkbox),
+  &:hover:not(.is-active):not(.has-checkbox) {
     padding-left: 49px;
   }
 }

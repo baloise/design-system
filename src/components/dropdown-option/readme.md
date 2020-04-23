@@ -11,15 +11,50 @@ A basic dropdown option.
 ### Activated
 
 ```html
-<bal-dropdown-option activated="true" value="1" label="Label"></bal-dropdown-option>
+<bal-dropdown-option
+  activated="true"
+  value="1"
+  label="Label"
+></bal-dropdown-option>
 ```
 
 ### Highlighted
 
 ```html
-<bal-dropdown-option highlight="bel" value="1" label="Label"></bal-dropdown-option>
+<bal-dropdown-option
+  highlight="bel"
+  value="1"
+  label="Label"
+></bal-dropdown-option>
 ```
 
+### With Icons
+
+```html
+<bal-dropdown-option
+  icon="account"
+  value="1"
+  label="Label"
+></bal-dropdown-option>
+```
+
+### With a Checkbox
+
+```html
+<bal-dropdown-option
+  activated
+  checkbox
+  icon="account"
+  value="1"
+  label="Label"
+></bal-dropdown-option>
+<bal-dropdown-option
+  checkbox
+  icon="account"
+  value="1"
+  label="Label"
+></bal-dropdown-option>
+```
 
 <!-- Auto Generated Below -->
 
@@ -28,8 +63,10 @@ A basic dropdown option.
 
 | Property    | Attribute   | Description                                                                                       | Type                                    | Default |
 | ----------- | ----------- | ------------------------------------------------------------------------------------------------- | --------------------------------------- | ------- |
-| `activated` | `activated` | TODO: Describe                                                                                    | `boolean`                               | `false` |
-| `highlight` | `highlight` | TODO: Describe                                                                                    | `string`                                | `""`    |
+| `activated` | `activated` |                                                                                                   | `boolean`                               | `false` |
+| `checkbox`  | `checkbox`  |                                                                                                   | `boolean`                               | `false` |
+| `highlight` | `highlight` |                                                                                                   | `string`                                | `""`    |
+| `icon`      | `icon`      |                                                                                                   | `string`                                | `""`    |
 | `label`     | `label`     | The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element. | `string`                                | `""`    |
 | `value`     | `value`     | The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element. | `boolean \| number \| object \| string` | `false` |
 
@@ -46,6 +83,19 @@ Type: `Promise<boolean>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [bal-icon](../icon)
+
+### Graph
+```mermaid
+graph TD;
+  bal-dropdown-option --> bal-icon
+  style bal-dropdown-option fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
