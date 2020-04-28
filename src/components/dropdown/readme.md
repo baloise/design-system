@@ -11,7 +11,7 @@
 ```
 
 ```html
-<bal-dropdown id="bal-dropdown-example">
+<bal-dropdown value='2' id="bal-dropdown-example">
     <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
     <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
     <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
@@ -19,10 +19,6 @@
 ```
 
 <script type="text/javascript">
-    document.getElementById('bal-dropdown-example').value = {
-        label: 'Black Panter',
-        value: '2'
-    };
     document.getElementById('bal-dropdown-example').addEventListener('balBlur', event => { 
         console.log('balBlur on bal-dropdown-example', event) 
     });
@@ -71,16 +67,16 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                                 | Type      | Default        |
-| ------------- | -------------- | ----------------------------------------------------------- | --------- | -------------- |
-| `disabled`    | `disabled`     | If `true`, the user cannot interact with the input.         | `boolean` | `false`        |
-| `expanded`    | `expanded`     | If `true`, the component uses the whole width.              | `boolean` | `false`        |
-| `fixed`       | `fixed`        | If `true`, the height of the dropdown content is fixed.     | `boolean` | `true`         |
-| `placeholder` | `placeholder`  | Instructional text that shows before the input has a value. | `string`  | `""`           |
-| `readonly`    | `readonly`     | If `true`, the user cannot interact with the input.         | `boolean` | `false`        |
-| `triggerIcon` | `trigger-icon` | Defines the trigger icon on the right site.                 | `string`  | `"caret-down"` |
-| `typeahead`   | `typeahead`    | If `true`, the use can search for the option.               | `boolean` | `false`        |
-| `value`       | --             | The value of the selected dropdown item.                    | `Option`  | `null`         |
+| Property      | Attribute      | Description                                                 | Type               | Default        |
+| ------------- | -------------- | ----------------------------------------------------------- | ------------------ | -------------- |
+| `disabled`    | `disabled`     | If `true`, the user cannot interact with the input.         | `boolean`          | `false`        |
+| `expanded`    | `expanded`     | If `true`, the component uses the whole width.              | `boolean`          | `false`        |
+| `fixed`       | `fixed`        | If `true`, the height of the dropdown content is fixed.     | `boolean`          | `true`         |
+| `placeholder` | `placeholder`  | Instructional text that shows before the input has a value. | `string`           | `""`           |
+| `readonly`    | `readonly`     | If `true`, the user cannot interact with the input.         | `boolean`          | `false`        |
+| `triggerIcon` | `trigger-icon` | Defines the trigger icon on the right site.                 | `string`           | `"caret-down"` |
+| `typeahead`   | `typeahead`    | If `true`, the use can search for the option.               | `boolean`          | `false`        |
+| `value`       | `value`        | The value of the selected dropdown item.                    | `Option \| string` | `null`         |
 
 
 ## Events

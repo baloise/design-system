@@ -305,7 +305,7 @@ export namespace Components {
         /**
           * The value of the selected dropdown item.
          */
-        "value": Option;
+        "value": string | Option;
     }
     interface BalDropdownOption {
         /**
@@ -1135,7 +1135,7 @@ declare namespace LocalJSX {
         /**
           * The value of the selected dropdown item.
          */
-        "value"?: Option;
+        "value"?: string | Option;
     }
     interface BalDropdownOption {
         /**

@@ -1,5 +1,5 @@
-import {Component, Host, h, Method, Element, Prop, State, Event, EventEmitter, Listen, Watch} from "@stencil/core";
-import {Option} from "../dropdown-option/dropdown-option.types";
+import { Component, Host, h, Method, Element, Prop, State, Event, EventEmitter, Listen, Watch } from "@stencil/core";
+import { Option } from "../dropdown-option/dropdown-option.types";
 
 @Component({
   tag: "bal-dropdown",
@@ -44,26 +44,26 @@ export class Dropdown {
   /**
    * The value of the selected dropdown item.
    */
-  @Prop() value: Option = null;
+  @Prop() value: string | Option = null;
 
   @Watch("value")
   valueWatcher(newValue: Option) {
     if (newValue) {
-      this.selectedOption = this.value;
-      this.inputElement.value = this.value.label;
+      this.selectedOption = this.parse(this.value);
+      this.inputElement.value = this.selectedOption.label;
       this.updateActivatedOptions();
     }
   }
 
   componentWillLoad() {
     if (this.value) {
-      this.selectedOption = this.value;
+      this.selectedOption = this.parse(this.value);
     }
   }
 
   componentDidLoad() {
     if (this.value) {
-      this.inputElement.value = this.value.label;
+      this.inputElement.value = this.parse(this.value).label;
       this.updateActivatedOptions();
     }
   }
@@ -142,14 +142,14 @@ export class Dropdown {
    */
   @Event() balFocus!: EventEmitter<void>;
 
-  @Listen("keyup", {target: "document"})
+  @Listen("keyup", { target: "document" })
   tabOutside(event: KeyboardEvent) {
     if (event.key === "Tab" && !this.element.contains(document.activeElement) && this.isActive) {
       this.toggle();
     }
   }
 
-  @Listen("click", {target: "document"})
+  @Listen("click", { target: "document" })
   clickOnOutside(event: UIEvent) {
     if (!this.element.contains((event.target as any)) && this.isActive) {
       this.toggle();
@@ -203,6 +203,16 @@ export class Dropdown {
     this.fireBlurIfPossible();
   }
 
+  parse(val: string | Option): Option {
+    if (typeof val === 'string' || val instanceof String) {
+      const entry = this.children.find(child => child.value === val);
+      if (entry) {
+        return { label: entry.label, value: entry.value };
+      }
+    }
+    return val as Option;
+  }
+
   get children(): HTMLBalDropdownOptionElement[] {
     return Array.from(
       this.element.querySelectorAll<HTMLBalDropdownOptionElement>("bal-dropdown-option"),
@@ -223,7 +233,7 @@ export class Dropdown {
 
   get isUp(): boolean {
     const box = this.element.getBoundingClientRect();
-    return (window.innerHeight - box.top) < window.innerHeight/2;
+    return (window.innerHeight - box.top) < window.innerHeight / 2;
   }
 
   updateActivatedOptions() {
@@ -373,28 +383,28 @@ export class Dropdown {
                 "input",
                 this.isActive ? "is-focused" : "",
               ].join(" ")}
-                     autocomplete="off"
-                     disabled={this.disabled}
-                     readOnly={this.readonly || !this.typeahead}
-                     placeholder={this.placeholder}
-                     onKeyUp={this.onKeyUp.bind(this)}
-                     onInput={this.onInput.bind(this)}
-                     onClick={this.clicked.bind(this)}
-                     onBlur={this.onBlur.bind(this)}
-                     onFocus={this.onFocus.bind(this)}
-                     ref={el => this.inputElement = el as HTMLInputElement}
+                autocomplete="off"
+                disabled={this.disabled}
+                readOnly={this.readonly || !this.typeahead}
+                placeholder={this.placeholder}
+                onKeyUp={this.onKeyUp.bind(this)}
+                onInput={this.onInput.bind(this)}
+                onClick={this.clicked.bind(this)}
+                onBlur={this.onBlur.bind(this)}
+                onFocus={this.onFocus.bind(this)}
+                ref={el => this.inputElement = el as HTMLInputElement}
               />
               <bal-icon size="small"
-                        name={this.triggerIcon}
-                        isRight={true}
-                        style={{display: this.triggerIcon && !this.typeahead ? "flex" : "none"}}/>
+                name={this.triggerIcon}
+                isRight={true}
+                style={{ display: this.triggerIcon && !this.typeahead ? "flex" : "none" }} />
             </div>
           </div>
           <div class="dropdown-menu" role="menu">
             <div class="dropdown-content"
-                 ref={el => this.dropdownContentElement = el as HTMLDivElement}>
-              <slot/>
-              <span class="no-data" style={!this.hasNoData && {display: "none"}}>
+              ref={el => this.dropdownContentElement = el as HTMLDivElement}>
+              <slot />
+              <span class="no-data" style={!this.hasNoData && { display: "none" }}>
                 <slot name="no-data-content">No Data</slot>
               </span>
             </div>
