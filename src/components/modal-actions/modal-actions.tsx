@@ -1,4 +1,4 @@
-import {Component, Host, h} from "@stencil/core";
+import { Component, Host, h } from "@stencil/core";
 
 @Component({
   tag: "bal-modal-actions",
@@ -11,7 +11,7 @@ export class ModalActions {
     return (
       <Host>
         <div class="buttons is-row-reverse">
-          <slot/>
+          <slot />
         </div>
       </Host>
     );
