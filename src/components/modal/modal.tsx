@@ -1,4 +1,4 @@
-import {Component, Host, h, State, Method, Listen} from "@stencil/core";
+import { Component, Host, h, State, Method, Listen, Prop } from "@stencil/core";
 
 @Component({
   tag: "bal-modal",
@@ -8,6 +8,11 @@ import {Component, Host, h, State, Method, Listen} from "@stencil/core";
 export class Modal {
 
   @State() isActive = false;
+
+  /**
+   * Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot.
+   */
+  @Prop() card = false;
 
   @Method()
   async open(): Promise<void> {
@@ -19,7 +24,7 @@ export class Modal {
     this.isActive = false;
   }
 
-  @Listen("keyup", {target: "body"})
+  @Listen("keyup", { target: "body" })
   async handleKeyUp(event: KeyboardEvent) {
     if (this.isActive) {
       if (event.key === "Escape" || event.key === "Esc") {
@@ -38,12 +43,23 @@ export class Modal {
           this.isActive ? "is-active" : "",
         ].join(" ")}>
           <div class="modal-background"></div>
-          <div class="modal-content">
-            <div class="box">
-              <div class="section">
-                <slot></slot>
+          <div class={[
+            "modal-card box",
+            this.card ? "" : "no-border",
+          ].join(" ")}>
+            <header class="modal-card-head">
+              <p class="modal-card-title">
+                <slot name="head" />
+              </p>
+            </header>
+            <section class="modal-card-body">
+              <slot />
+            </section>
+            <footer class="modal-card-foot">
+              <div class="modal-card-foot-container">
+                <slot name="foot" />
               </div>
-            </div>
+            </footer>
           </div>
         </div>
       </Host>

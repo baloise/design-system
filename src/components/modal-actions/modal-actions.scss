@@ -4,5 +4,12 @@
 
 :host {
   display: block;
-  margin-top: 40px;
+}
+
+::slotted(bal-button) {
+  margin-right: 5px;
+}
+
+::slotted(bal-button:first-child) {
+  margin-right: 0;
 }
