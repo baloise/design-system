@@ -2,7 +2,7 @@
 
 ## Installation
 
-This project is published to the npm regestry. Just run the below command inside of your repository the install it.
+This project is published to the npm registry. Just run the below command inside of your repository the install it.
 
 ```bash
 npm install @baloise/ui-library --save
