@@ -1,6 +1,15 @@
-import {Component, Host, h, Element, Prop, State, Watch, Method} from "@stencil/core";
-import {Components} from "../../components";
-import {Option} from "./dropdown-option.types";
+import {
+  Component,
+  Host,
+  h,
+  Element,
+  Prop,
+  State,
+  Watch,
+  Method,
+} from "@stencil/core"
+import { Components } from "../../components"
+import { Option } from "./dropdown-option.types"
 
 @Component({
   tag: "bal-dropdown-option",
@@ -8,73 +17,70 @@ import {Option} from "./dropdown-option.types";
   shadow: true,
 })
 export class DropdownOption {
-  @Element() element!: HTMLElement;
-  labelElement!: HTMLSpanElement;
+  @Element() element!: HTMLElement
+  labelElement!: HTMLSpanElement
 
-  @State() hidden = false;
-
-  /**
-   * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
-   */
-  @Prop() value: string | boolean | number | object = false;
+  @State() hidden = false
 
   /**
    * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
    */
-  @Prop() label: string = "";
+  @Prop() value: string | boolean | number | object = false
 
   /**
-   * TODO: Describe
+   * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
    */
-  @Prop() activated = false;
+  @Prop() label = ""
 
-  /**
-   * TODO: Describe
-   */
-  @Prop() highlight = "";
+  @Prop() icon = ""
+  @Prop() checkbox = false
+  @Prop() focused = false
+  @Prop() selected = false
+  @Prop() highlight = ""
 
   @Watch("highlight")
   highlightChanged() {
-    this.updateLabel();
+    this.updateLabel()
   }
 
-  /**
-   * Tell's if the item is activated by selection.
-   */
   @Method()
   async isHidden(): Promise<boolean> {
-    return this.hidden;
+    return this.hidden
   }
 
   componentDidLoad() {
-    this.updateLabel();
+    this.updateLabel()
   }
 
   get parent(): Components.BalDropdown {
     if ((this.element.parentNode as any).tagName === "DIV") {
       // IE11 doesn't allow shadowing so we have tho navigate the dom up to the parent element.
       try {
-        return this.element.parentNode.parentNode.parentNode.parentNode as any;
+        return this.element.parentNode.parentNode.parentNode.parentNode as any
       } catch (e) {
         // Do nothing
       }
     }
-    return this.element.parentNode as any;
+    return this.element.parentNode as any
   }
 
   updateLabel() {
     if (this.highlight.length > 0) {
-      const index = this.label.toLowerCase().indexOf(this.highlight.toLowerCase());
-      this.hidden = index < 0;
+      const index = this.label
+        .toLowerCase()
+        .indexOf(this.highlight.toLowerCase())
+      this.hidden = index < 0
       if (index >= 0) {
-        this.labelElement.innerHTML = this.label.substring(0, index)
-          + "<span class='highlight'>"
-          + this.label.substring(index, index + this.highlight.length)
-          + "</span>"
-          + this.label.substring(index + this.highlight.length, this.label.length);
+        this.labelElement.innerHTML =
+          this.label.substring(0, index) +
+          "<span class='highlight'>" +
+          this.label.substring(index, index + this.highlight.length) +
+          "</span>" +
+          this.label.substring(index + this.highlight.length, this.label.length)
       }
     } else {
-      this.labelElement.innerHTML = this.label;
+      this.hidden = false
+      this.labelElement.innerHTML = this.label
     }
   }
 
@@ -82,25 +88,52 @@ export class DropdownOption {
     const option: Option = {
       label: this.label,
       value: this.value,
-    };
-    await this.parent.select(option);
+    }
+    await this.parent.select(option)
   }
 
   render() {
     return (
       <Host>
-        <button class={[
-          "dropdown-item",
-          this.activated ? "is-active" : "",
-          this.hidden ? "is-hidden" : "",
-        ].join(" ")}
-                onClick={this.select.bind(this)}>
-          <span ref={el => this.labelElement = el as HTMLSpanElement}>
-            <slot/>
+        <button
+          class={[
+            "dropdown-item",
+            this.selected ? "is-selected" : "",
+            this.focused ? "is-focused" : "",
+            this.hidden ? "is-hidden" : "",
+            this.icon ? "has-icon" : "",
+            this.checkbox ? "has-checkbox" : "",
+          ].join(" ")}
+          tabIndex={-1}
+          onClick={this.select.bind(this)}
+        >
+          <span
+            class="checkbox"
+            style={{ display: this.checkbox ? "flex" : "none" }}
+          >
+            <div class="bal-checkbox">
+              <input
+                type="checkbox"
+                checked={this.selected}
+                tabIndex={-1}
+              />
+              <label></label>
+            </div>
+          </span>
+          <span
+            class="icon"
+            style={{ display: this.icon.length === 0 ? "none" : "flex" }}
+          >
+            <bal-icon name={this.icon} size="medium"></bal-icon>
+          </span>
+          <span
+            class="label"
+            ref={(el) => (this.labelElement = el as HTMLSpanElement)}
+          >
+            <slot />
           </span>
         </button>
       </Host>
-    );
+    )
   }
-
 }

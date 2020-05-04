@@ -4,6 +4,7 @@ import { Component, Host, h, Prop } from "@stencil/core";
   tag: "bal-icon",
   styleUrl: "icon.scss",
   scoped: true,
+  shadow: false,
 })
 export class Icon {
 

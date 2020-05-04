@@ -7,7 +7,6 @@
   display: block;
 
   .dropdown {
-
     .dropdown-trigger i.bal-icon-caret-down {
       transition-duration: 0.5s;
     }
@@ -17,9 +16,13 @@
     }
 
     &.is-fixed .dropdown-content {
-      overflow-y: auto;
-      max-height: 220px;
+      overflow-y: hidden;
+      // max-height: 220px;
       padding: 0;
+    }
+
+    &.is-typeahead.is-multi-select .dropdown-content {
+      max-height: 220px + 77.5px !important;
     }
 
     .dropdown-menu {
@@ -30,6 +33,16 @@
       font-family: $family-primary;
     }
 
+    .dropdown-content-search {
+      padding: 10px 20px 0 20px;
+    }
+
+    .dropdown-content-options {
+      overflow-y: auto;
+      max-height: 220px;
+      padding: 0;
+    }
+
     &:not(.is-typeahead) {
       .dropdown-trigger {
         .input {
@@ -38,7 +51,8 @@
       }
     }
 
-    &.is-fullwidth, &.is-fullwidth .dropdown-trigger {
+    &.is-fullwidth,
+    &.is-fullwidth .dropdown-trigger {
       width: 100%;
     }
   }

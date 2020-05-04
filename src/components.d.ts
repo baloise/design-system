@@ -8,6 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { DateCallback, FormatLabelCallback, } from "./components/datepicker/datepicker";
 import { DateCallback as DateCallback1, } from "./components/datepicker/datepicker";
 import { Option, } from "./components/dropdown-option/dropdown-option.types";
+import { FileUploadRejectedFile, } from "./components/file-upload/file-upload.type";
+import { StepOptions, } from "./components/step/step";
+import { StepOptions as StepOptions1, } from "./components/step/step";
 import { TabItemOptions, } from "./components/tab-item/tab-item";
 import { TabItemOptions as TabItemOptions1, } from "./components/tab-item/tab-item";
 export namespace Components {
@@ -273,7 +276,11 @@ export namespace Components {
         /**
           * Returns the value of the dropdown.
          */
-        "getSelected": () => Promise<Option>;
+        "getSelected": () => Promise<Option | Option[]>;
+        /**
+          * TODO: Describe
+         */
+        "multiSelect": boolean;
         /**
           * Open the dropdown menu.
          */
@@ -305,25 +312,19 @@ export namespace Components {
         /**
           * The value of the selected dropdown item.
          */
-        "value": Option;
+        "value": Option | Option[];
     }
     interface BalDropdownOption {
-        /**
-          * TODO: Describe
-         */
-        "activated": boolean;
-        /**
-          * TODO: Describe
-         */
+        "checkbox": boolean;
+        "focused": boolean;
         "highlight": string;
-        /**
-          * Tell's if the item is activated by selection.
-         */
+        "icon": string;
         "isHidden": () => Promise<boolean>;
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
         "label": string;
+        "selected": boolean;
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
@@ -350,6 +351,36 @@ export namespace Components {
           * Validation message text
          */
         "validationMessage": string;
+    }
+    interface BalFileUpload {
+        /**
+          * Accepted MIME-Types like `image/png,image/jpeg`.
+         */
+        "accept": string;
+        /**
+          * If `true` the button is disabled
+         */
+        "disabled": boolean;
+        /**
+          * Label of the drop area.
+         */
+        "label": string;
+        /**
+          * Allowed max bundle size in bytes.
+         */
+        "maxBundleSize": number;
+        /**
+          * Allowed max file size in bytes.
+         */
+        "maxFileSize": number;
+        /**
+          * Allowed number of files in the bundle.
+         */
+        "maxFiles": number;
+        /**
+          * If `true` multiple file upload is possible.
+         */
+        "multiple": boolean;
     }
     interface BalFilterButton {
         /**
@@ -466,6 +497,42 @@ export namespace Components {
         "value": number;
     }
     interface BalSpinner {
+    }
+    interface BalStep {
+        /**
+          * Tell's if the step is active and the content is visible.
+         */
+        "active": boolean;
+        /**
+          * If `true` a small red bubble is added to the step.
+         */
+        "bubble": boolean;
+        /**
+          * If `true` the step is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * Options of the step like label, value etc.
+         */
+        "getOptions": () => Promise<StepOptions>;
+        /**
+          * Label for the step.
+         */
+        "label": string;
+        /**
+          * Sets the step active.
+         */
+        "setActive": (active: boolean) => Promise<void>;
+        /**
+          * This is the key of the step.
+         */
+        "value": string;
+    }
+    interface BalSteps {
+        /**
+          * Select a step.
+         */
+        "select": (value: string) => Promise<void>;
     }
     interface BalTabItem {
         /**
@@ -663,6 +730,12 @@ declare global {
         prototype: HTMLBalFieldElement;
         new (): HTMLBalFieldElement;
     };
+    interface HTMLBalFileUploadElement extends Components.BalFileUpload, HTMLStencilElement {
+    }
+    var HTMLBalFileUploadElement: {
+        prototype: HTMLBalFileUploadElement;
+        new (): HTMLBalFileUploadElement;
+    };
     interface HTMLBalFilterButtonElement extends Components.BalFilterButton, HTMLStencilElement {
     }
     var HTMLBalFilterButtonElement: {
@@ -759,6 +832,18 @@ declare global {
         prototype: HTMLBalSpinnerElement;
         new (): HTMLBalSpinnerElement;
     };
+    interface HTMLBalStepElement extends Components.BalStep, HTMLStencilElement {
+    }
+    var HTMLBalStepElement: {
+        prototype: HTMLBalStepElement;
+        new (): HTMLBalStepElement;
+    };
+    interface HTMLBalStepsElement extends Components.BalSteps, HTMLStencilElement {
+    }
+    var HTMLBalStepsElement: {
+        prototype: HTMLBalStepsElement;
+        new (): HTMLBalStepsElement;
+    };
     interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
     }
     var HTMLBalTabItemElement: {
@@ -808,6 +893,7 @@ declare global {
         "bal-dropdown": HTMLBalDropdownElement;
         "bal-dropdown-option": HTMLBalDropdownOptionElement;
         "bal-field": HTMLBalFieldElement;
+        "bal-file-upload": HTMLBalFileUploadElement;
         "bal-filter-button": HTMLBalFilterButtonElement;
         "bal-hint": HTMLBalHintElement;
         "bal-hint-text": HTMLBalHintTextElement;
@@ -824,6 +910,8 @@ declare global {
         "bal-navbar": HTMLBalNavbarElement;
         "bal-pagination": HTMLBalPaginationElement;
         "bal-spinner": HTMLBalSpinnerElement;
+        "bal-step": HTMLBalStepElement;
+        "bal-steps": HTMLBalStepsElement;
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-tabs": HTMLBalTabsElement;
         "bal-tag": HTMLBalTagElement;
@@ -1076,6 +1164,10 @@ declare namespace LocalJSX {
          */
         "fixed"?: boolean;
         /**
+          * TODO: Describe
+         */
+        "multiSelect"?: boolean;
+        /**
           * Emitted when the toggle loses focus.
          */
         "onBalBlur"?: (event: CustomEvent<void>) => void;
@@ -1110,21 +1202,18 @@ declare namespace LocalJSX {
         /**
           * The value of the selected dropdown item.
          */
-        "value"?: Option;
+        "value"?: Option | Option[];
     }
     interface BalDropdownOption {
-        /**
-          * TODO: Describe
-         */
-        "activated"?: boolean;
-        /**
-          * TODO: Describe
-         */
+        "checkbox"?: boolean;
+        "focused"?: boolean;
         "highlight"?: string;
+        "icon"?: string;
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
         "label"?: string;
+        "selected"?: boolean;
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
@@ -1151,6 +1240,44 @@ declare namespace LocalJSX {
           * Validation message text
          */
         "validationMessage"?: string;
+    }
+    interface BalFileUpload {
+        /**
+          * Accepted MIME-Types like `image/png,image/jpeg`.
+         */
+        "accept"?: string;
+        /**
+          * If `true` the button is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Label of the drop area.
+         */
+        "label"?: string;
+        /**
+          * Allowed max bundle size in bytes.
+         */
+        "maxBundleSize"?: number;
+        /**
+          * Allowed max file size in bytes.
+         */
+        "maxFileSize"?: number;
+        /**
+          * Allowed number of files in the bundle.
+         */
+        "maxFiles"?: number;
+        /**
+          * If `true` multiple file upload is possible.
+         */
+        "multiple"?: boolean;
+        /**
+          * Triggers when a file is added or removed.
+         */
+        "onBalChange"?: (event: CustomEvent<File[]>) => void;
+        /**
+          * Triggers when a file is rejected due to not allowed MIME-Type and so on.
+         */
+        "onBalFileUploadRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
     }
     interface BalFilterButton {
         /**
@@ -1260,6 +1387,38 @@ declare namespace LocalJSX {
     }
     interface BalSpinner {
     }
+    interface BalStep {
+        /**
+          * Tell's if the step is active and the content is visible.
+         */
+        "active"?: boolean;
+        /**
+          * If `true` a small red bubble is added to the step.
+         */
+        "bubble"?: boolean;
+        /**
+          * If `true` the step is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Label for the step.
+         */
+        "label"?: string;
+        /**
+          * Emitted when the steps get rendered.
+         */
+        "onBalStepChanged"?: (event: CustomEvent<any>) => void;
+        /**
+          * This is the key of the step.
+         */
+        "value"?: string;
+    }
+    interface BalSteps {
+        /**
+          * Emitted when the changes has finished.
+         */
+        "onBalStepsDidChange"?: (event: CustomEvent<StepOptions>) => void;
+    }
     interface BalTabItem {
         /**
           * Tell's if the tab is active and the content is visible.
@@ -1361,6 +1520,7 @@ declare namespace LocalJSX {
         "bal-dropdown": BalDropdown;
         "bal-dropdown-option": BalDropdownOption;
         "bal-field": BalField;
+        "bal-file-upload": BalFileUpload;
         "bal-filter-button": BalFilterButton;
         "bal-hint": BalHint;
         "bal-hint-text": BalHintText;
@@ -1377,6 +1537,8 @@ declare namespace LocalJSX {
         "bal-navbar": BalNavbar;
         "bal-pagination": BalPagination;
         "bal-spinner": BalSpinner;
+        "bal-step": BalStep;
+        "bal-steps": BalSteps;
         "bal-tab-item": BalTabItem;
         "bal-tabs": BalTabs;
         "bal-tag": BalTag;
@@ -1406,6 +1568,7 @@ declare module "@stencil/core" {
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
             "bal-dropdown-option": LocalJSX.BalDropdownOption & JSXBase.HTMLAttributes<HTMLBalDropdownOptionElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
+            "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
             "bal-filter-button": LocalJSX.BalFilterButton & JSXBase.HTMLAttributes<HTMLBalFilterButtonElement>;
             "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
@@ -1422,6 +1585,8 @@ declare module "@stencil/core" {
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
+            "bal-step": LocalJSX.BalStep & JSXBase.HTMLAttributes<HTMLBalStepElement>;
+            "bal-steps": LocalJSX.BalSteps & JSXBase.HTMLAttributes<HTMLBalStepsElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;

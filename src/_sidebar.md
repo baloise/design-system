@@ -6,6 +6,7 @@
   - [Quick Start](docs/introduction/quick-start.md)
 
 - **Essentials**
+
   - [Styling](docs/essentials/styling.md)
   - [Colors](docs/essentials/colors.md)
 
@@ -17,13 +18,14 @@
   - [Dropdown](components/dropdown/readme.md)
     - [Dropdown Option](components/dropdown-option/readme.md)
   - [Field](components/field/readme.md)
+  - [File Upload](components/file-upload/readme.md)
   - [Input](docs/elements/input.md)
   - [Radio](docs/elements/radio.md)
   - [Select Button](docs/elements/select-button.md)
   - [Textarea](docs/elements/textarea.md)
   - [Timeinput](components/timeinput/readme.md)
   - [Typeahead](components/dropdown/readme.md?id=typeahead)
-  
+
 - **Elements**
 
   - [Box](docs/elements/box.md)
@@ -51,6 +53,8 @@
   - [Navbar](components/navbar/readme.md)
   - [Pagination](components/pagination/readme.md)
   - [Spinner](components/spinner/readme.md)
+  - [Steps](components/steps/readme.md)
+    - [Step](components/step/readme.md)
   - [Tabs](components/tabs/readme.md)
     - [Tab-Item](components/tab-item/readme.md)
   - [Tag](components/tag/readme.md)
