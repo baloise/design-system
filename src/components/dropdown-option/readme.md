@@ -63,11 +63,12 @@ A basic dropdown option.
 
 | Property    | Attribute   | Description                                                                                       | Type                                    | Default |
 | ----------- | ----------- | ------------------------------------------------------------------------------------------------- | --------------------------------------- | ------- |
-| `activated` | `activated` |                                                                                                   | `boolean`                               | `false` |
 | `checkbox`  | `checkbox`  |                                                                                                   | `boolean`                               | `false` |
+| `focused`   | `focused`   |                                                                                                   | `boolean`                               | `false` |
 | `highlight` | `highlight` |                                                                                                   | `string`                                | `""`    |
 | `icon`      | `icon`      |                                                                                                   | `string`                                | `""`    |
 | `label`     | `label`     | The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element. | `string`                                | `""`    |
+| `selected`  | `selected`  |                                                                                                   | `boolean`                               | `false` |
 | `value`     | `value`     | The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element. | `boolean \| number \| object \| string` | `false` |
 
 
@@ -75,7 +76,7 @@ A basic dropdown option.
 
 ### `isHidden() => Promise<boolean>`
 
-Tell's if the item is activated by selection.
+
 
 #### Returns
 

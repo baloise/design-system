@@ -10,12 +10,18 @@
   font-weight: $weight-bold;
 }
 
-.dropdown-item {
-  padding: 10px 17px 13px 39px;
+a.dropdown-item,
+button.dropdown-item {
+  padding: 10px 20px 13px 20px;
   transition: padding-left 0.3s ease;
   border: 0;
   background: transparent;
   cursor: pointer;
+  outline: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
 
   &.has-icon {
     span.label {
@@ -72,13 +78,18 @@
     background: $dropdown-item-hover-background-color;
   }
 
-  &.is-active {
+  &.is-selected {
     font-weight: $weight-bold;
     background: $dropdown-item-hover-background-color;
   }
 
-  &:focus:not(.is-active):not(.has-checkbox),
-  &:hover:not(.is-active):not(.has-checkbox) {
-    padding-left: 49px;
+  &.is-focused {
+    background: $dropdown-item-hover-background-color;
+  }
+
+  &.is-focused:not(.is-selected):not(.has-checkbox),
+  &:focus:not(.is-selected):not(.has-checkbox),
+  &:hover:not(.is-selected):not(.has-checkbox) {
+    padding-left: 30px !important;
   }
 }

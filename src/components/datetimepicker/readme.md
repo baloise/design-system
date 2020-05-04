@@ -119,6 +119,8 @@ graph TD;
   bal-datepicker --> bal-dropdown
   bal-datepicker --> bal-icon
   bal-dropdown --> bal-icon
+  bal-dropdown --> bal-field
+  bal-field --> bal-icon
   bal-button --> bal-spinner
   style bal-datetimepicker fill:#f9f,stroke:#333,stroke-width:4px
 ```

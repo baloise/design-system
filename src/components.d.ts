@@ -315,18 +315,16 @@ export namespace Components {
         "value": Option | Option[];
     }
     interface BalDropdownOption {
-        "activated": boolean;
         "checkbox": boolean;
+        "focused": boolean;
         "highlight": string;
         "icon": string;
-        /**
-          * Tell's if the item is activated by selection.
-         */
         "isHidden": () => Promise<boolean>;
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
         "label": string;
+        "selected": boolean;
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
@@ -1212,14 +1210,15 @@ declare namespace LocalJSX {
         "value"?: Option | Option[];
     }
     interface BalDropdownOption {
-        "activated"?: boolean;
         "checkbox"?: boolean;
+        "focused"?: boolean;
         "highlight"?: string;
         "icon"?: string;
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
         "label"?: string;
+        "selected"?: boolean;
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */

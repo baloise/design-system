@@ -21,7 +21,9 @@ import { Option } from "../dropdown-option/dropdown-option.types"
 export class Dropdown {
   @Element() element!: HTMLElement
   inputElement!: HTMLInputElement
+  searchInputElement!: HTMLInputElement
   dropdownContentElement!: HTMLDivElement
+  dropdownMenuElement!: HTMLDivElement
 
   hasNoData = false
   isPristine = true
@@ -46,7 +48,7 @@ export class Dropdown {
           this.activeItemIndex = firstVisibleItemIndex
           items.forEach(
             (child, index) =>
-              (child.activated = index === firstVisibleItemIndex),
+              (child.selected = index === firstVisibleItemIndex),
           )
         }
       } else {
@@ -97,6 +99,15 @@ export class Dropdown {
       this.updateLabel()
       this.updateActivatedOptions()
     }
+
+    this.dropdownMenuElement.addEventListener("mouseenter", () => {
+      document.body.style.overflow = "hidden"
+      document.body.style.marginRight = "15px"
+    })
+    this.dropdownMenuElement.addEventListener("mouseleave", () => {
+      document.body.style.overflow = "auto"
+      document.body.style.marginRight = "0"
+    })
   }
 
   /**
@@ -270,7 +281,7 @@ export class Dropdown {
   }
 
   get childrenWithActivatedState(): Promise<boolean[]> {
-    return Promise.all(this.children.map((child) => child.activated))
+    return Promise.all(this.children.map((child) => child.selected))
   }
 
   get childrenWithValue(): Promise<any[]> {
@@ -285,20 +296,24 @@ export class Dropdown {
   updateActivatedOptions() {
     this.children.forEach((child) => {
       if (Array.isArray(this.selectedOption)) {
-        child.activated =
+        child.selected =
           this.selectedOption
             .filter((o) => o)
             .map((o) => o.value)
             .indexOf(child.value) >= 0
       } else {
-        child.activated = child.value === this.selectedOption.value
+        child.selected = child.value === this.selectedOption.value
       }
     })
   }
 
   clicked() {
-    if (!this.typeahead) {
+    if (!this.typeahead || (this.typeahead && this.multiSelect)) {
       this.toggle()
+    }
+
+    if (this.typeahead && this.multiSelect) {
+      setTimeout(() => this.searchInputElement.focus(), 100)
     }
   }
 
@@ -326,10 +341,12 @@ export class Dropdown {
   async onKeyUp(event: KeyboardEvent) {
     if (
       !this.disabled &&
-      ["Enter", "ArrowUp", "ArrowDown"].indexOf(event.key) < 0
+      ["Enter", "ArrowUp", "ArrowDown", "Up", "Down"].indexOf(event.key) < 0
     ) {
       const inputValue = (event.target as HTMLInputElement).value
-      this.isActive = !!inputValue
+      if (this.typeahead && !this.multiSelect) {
+        this.isActive = !!inputValue
+      }
       const children = this.children
       if (this.typeahead && children && children.length > 0) {
         children.forEach((child) => (child.highlight = inputValue))
@@ -364,7 +381,7 @@ export class Dropdown {
         event.key === "ArrowDown" || event.key === "Down",
       )
     }
-    if (event.key === "Enter" && this.activeItemIndex > 0) {
+    if (event.key === "Enter" && this.activeItemIndex >= 0) {
       event.preventDefault()
       this.select({
         label: this.children[this.activeItemIndex].label,
@@ -407,29 +424,43 @@ export class Dropdown {
         this.activeItemIndex = await this.getPreviousItem()
       }
 
-      const scrollPuffer = this.element.offsetTop + 45
       const activeChild = children[this.activeItemIndex] || children[0]
-      const visMin = this.dropdownContentElement.scrollTop + scrollPuffer
-      const visMax =
-        this.dropdownContentElement.scrollTop +
-        scrollPuffer +
-        this.dropdownContentElement.clientHeight -
-        activeChild.clientHeight
+      const isTop = this.dropdownMenuElement.offsetTop < 0
+      const menuIsTopPuffer = isTop
+        ? this.typeahead && this.multiSelect
+          ? 6 * activeChild.clientHeight - 10
+          : 133
+        : 0
 
-      if (activeChild.offsetTop < visMin) {
+      if (isTop) {
         this.dropdownContentElement.scrollTop =
-          activeChild.offsetTop - scrollPuffer
-      } else if (activeChild.offsetTop >= visMax) {
+          activeChild.offsetTop +
+          this.dropdownMenuElement.clientHeight -
+          menuIsTopPuffer
+      } else {
         this.dropdownContentElement.scrollTop =
           activeChild.offsetTop -
-          scrollPuffer -
-          this.dropdownContentElement.clientHeight +
-          activeChild.clientHeight
+          this.dropdownMenuElement.clientHeight +
+          menuIsTopPuffer
       }
 
-      children.forEach(
-        (child, index) => (child.activated = index === this.activeItemIndex),
-      )
+      const isInSelected = (
+        value: string | boolean | number | object,
+      ): boolean => {
+        if (this.selectedOption) {
+          if (Array.isArray(this.selectedOption)) {
+            return this.selectedOption.map((o) => o.value).indexOf(value) >= 0
+          } else {
+            return this.selectedOption.value === value
+          }
+        }
+        return false
+      }
+
+      children.forEach((child, index) => {
+        child.focused =
+          index === this.activeItemIndex || isInSelected(child.value)
+      })
     }
   }
 
@@ -444,6 +475,7 @@ export class Dropdown {
             this.fixed ? "is-fixed" : "",
             this.isUp ? "is-up" : "",
             this.typeahead ? "is-typeahead" : "",
+            this.multiSelect ? "is-multi-select" : "",
           ].join(" ")}
         >
           <div class="dropdown-trigger">
@@ -458,7 +490,11 @@ export class Dropdown {
                 class={["input", this.isActive ? "is-focused" : ""].join(" ")}
                 autocomplete="off"
                 disabled={this.disabled}
-                readOnly={this.readonly || !this.typeahead}
+                readOnly={
+                  this.readonly ||
+                  !this.typeahead ||
+                  (this.typeahead && this.multiSelect)
+                }
                 placeholder={this.placeholder}
                 onKeyUp={this.onKeyUp.bind(this)}
                 onInput={this.onInput.bind(this)}
@@ -478,12 +514,38 @@ export class Dropdown {
               />
             </div>
           </div>
-          <div class="dropdown-menu" role="menu">
-            <div
-              class="dropdown-content"
-              ref={(el) => (this.dropdownContentElement = el as HTMLDivElement)}
-            >
-              <slot />
+          <div
+            class="dropdown-menu"
+            role="menu"
+            ref={(el) => (this.dropdownMenuElement = el as HTMLInputElement)}
+          >
+            <div class="dropdown-content">
+              {this.hasNoData || (this.multiSelect && this.typeahead) ? (
+                <div class="dropdown-content-search">
+                  <bal-field icon-left="search">
+                    <input
+                      part="input"
+                      class={["input"].join(" ")}
+                      autocomplete="off"
+                      placeholder={this.placeholder}
+                      onKeyUp={this.onKeyUp.bind(this)}
+                      ref={(el) =>
+                        (this.searchInputElement = el as HTMLInputElement)
+                      }
+                    />
+                  </bal-field>
+                </div>
+              ) : (
+                ""
+              )}
+              <div
+                class="dropdown-content-options"
+                ref={(el) =>
+                  (this.dropdownContentElement = el as HTMLDivElement)
+                }
+              >
+                <slot />
+              </div>
               <span
                 class="no-data"
                 style={!this.hasNoData && { display: "none" }}

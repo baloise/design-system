@@ -70,6 +70,19 @@
 ### Multi-Select
 
 ```html
+<bal-dropdown multi-select expanded>
+  <bal-dropdown-option checkbox value="1" label="Ant-Man"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="2" label="Black Panter"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="3" label="Black Widow"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="4" label="Captain America"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="5" label="Captain Marvel"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="6" label="Daredevil"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="7" label="Dr. Strange"></bal-dropdown-option>
+  <bal-dropdown-option checkbox value="8" label="Hulk"></bal-dropdown-option>
+</bal-dropdown>
+```
+
+```html
 <bal-dropdown multi-select typeahead expanded>
   <bal-dropdown-option checkbox value="1" label="Ant-Man"></bal-dropdown-option>
   <bal-dropdown-option checkbox value="2" label="Black Panter"></bal-dropdown-option>
@@ -177,11 +190,14 @@ Type: `Promise<void>`
 ### Depends on
 
 - [bal-icon](../icon)
+- [bal-field](../field)
 
 ### Graph
 ```mermaid
 graph TD;
   bal-dropdown --> bal-icon
+  bal-dropdown --> bal-field
+  bal-field --> bal-icon
   bal-datepicker --> bal-dropdown
   style bal-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```

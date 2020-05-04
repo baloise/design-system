@@ -43,6 +43,10 @@ All generic form field, designed for consistency
 
 ## Dependencies
 
+### Used by
+
+ - [bal-dropdown](../dropdown)
+
 ### Depends on
 
 - [bal-icon](../icon)
@@ -51,6 +55,7 @@ All generic form field, designed for consistency
 ```mermaid
 graph TD;
   bal-field --> bal-icon
+  bal-dropdown --> bal-field
   style bal-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

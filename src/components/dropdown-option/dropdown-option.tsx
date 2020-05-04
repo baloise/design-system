@@ -34,7 +34,8 @@ export class DropdownOption {
 
   @Prop() icon = ""
   @Prop() checkbox = false
-  @Prop() activated = false
+  @Prop() focused = false
+  @Prop() selected = false
   @Prop() highlight = ""
 
   @Watch("highlight")
@@ -42,9 +43,6 @@ export class DropdownOption {
     this.updateLabel()
   }
 
-  /**
-   * Tell's if the item is activated by selection.
-   */
   @Method()
   async isHidden(): Promise<boolean> {
     return this.hidden
@@ -81,6 +79,7 @@ export class DropdownOption {
           this.label.substring(index + this.highlight.length, this.label.length)
       }
     } else {
+      this.hidden = false
       this.labelElement.innerHTML = this.label
     }
   }
@@ -99,11 +98,13 @@ export class DropdownOption {
         <button
           class={[
             "dropdown-item",
-            this.activated ? "is-active" : "",
+            this.selected ? "is-selected" : "",
+            this.focused ? "is-focused" : "",
             this.hidden ? "is-hidden" : "",
             this.icon ? "has-icon" : "",
             this.checkbox ? "has-checkbox" : "",
           ].join(" ")}
+          tabIndex={-1}
           onClick={this.select.bind(this)}
         >
           <span
@@ -111,8 +112,12 @@ export class DropdownOption {
             style={{ display: this.checkbox ? "flex" : "none" }}
           >
             <div class="bal-checkbox">
-              <input type="checkbox" id="checkbox1" checked={this.activated} />
-              <label htmlFor="checkbox1"></label>
+              <input
+                type="checkbox"
+                checked={this.selected}
+                tabIndex={-1}
+              />
+              <label></label>
             </div>
           </span>
           <span
