@@ -37,7 +37,7 @@ export class Dropdown {
   @Watch("isActive")
   async isActiveWatcher(newIsActive: boolean) {
     if (newIsActive) {
-      if (this.typeahead) {
+      if (this.typeahead && this.preActivateFirst) {
         this.activeItemIndex = 0
         this.isPristine = true
         const items = this.children
@@ -142,6 +142,11 @@ export class Dropdown {
    * If `true`, the use can search for the option.
    */
   @Prop() typeahead = false
+
+  /**
+   * If `true`, the first visible option in the dropdown will become activated for selection if nothing else has been selected before. Only works on typeahead
+   */
+  @Prop() preActivateFirst = true
 
   /**
    * If `true`, the height of the dropdown content is fixed.
