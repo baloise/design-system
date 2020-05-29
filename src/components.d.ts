@@ -290,6 +290,10 @@ export namespace Components {
          */
         "placeholder": string;
         /**
+          * If `true`, the first visible option in the dropdown will become activated for selection if nothing else has been selected before. Only works on typeahead
+         */
+        "preActivateFirst": boolean;
+        /**
           * If `true`, the user cannot interact with the input.
          */
         "readonly": boolean;
@@ -1187,6 +1191,10 @@ declare namespace LocalJSX {
           * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string;
+        /**
+          * If `true`, the first visible option in the dropdown will become activated for selection if nothing else has been selected before. Only works on typeahead
+         */
+        "preActivateFirst"?: boolean;
         /**
           * If `true`, the user cannot interact with the input.
          */
