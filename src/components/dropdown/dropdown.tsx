@@ -509,7 +509,7 @@ export class Dropdown {
                 ref={(el) => (this.inputElement = el as HTMLInputElement)}
               />
               <bal-icon
-                size="small"
+                size="medium"
                 name={this.triggerIcon}
                 isRight={true}
                 style={{

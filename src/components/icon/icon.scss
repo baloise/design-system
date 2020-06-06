@@ -3,9 +3,6 @@
 @import "../../scss/ui-library.globals";
 @import "bal-icons";
 
-:root {
-  --bal-icon-color: $blue;
-}
 
 :host {
   display: inline-block;
@@ -37,16 +34,11 @@
     // width: 1em;
     // margin-right: .2em;
     text-align: center;
-    color: var(--bal-icon-color, $blue);
+    color: $blue;
     /* opacity: .8; */
 
     /* For safety - reset parent styles, that can break glyph codes*/
     font-variant: normal;
     text-transform: none;
-  }
-  i.svg {
-    width: inherit;
-    height: inherit;
-    background-size: contain;
   }
 }

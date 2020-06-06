@@ -21,9 +21,6 @@ export class Icon {
   size: "small" | "medium" | "large" | "" = "";
 
   @Prop()
-  isFont = false;
-
-  @Prop()
   isRight = false;
 
   @Prop()
@@ -37,10 +34,7 @@ export class Icon {
   }
 
   get iconCssClass() {
-    if (this.isFont) {
-      return `icon-${this.name}`;
-    }
-    return `bal-icon-${this.name}`;
+    return `icon-${this.name}`;
   }
 
   render() {
@@ -54,7 +48,7 @@ export class Icon {
         ].join(" ")}>
           <i class={[
           this.iconCssClass,
-          this.isFont ? "font" : "svg",
+          "font",
         ].join(" ")}></i>
         </span>
       </Host>

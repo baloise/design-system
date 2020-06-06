@@ -7,11 +7,11 @@
   display: block;
 
   .dropdown {
-    .dropdown-trigger i.bal-icon-caret-down {
+    .dropdown-trigger i.icon-caret-down {
       transition-duration: 0.5s;
     }
 
-    &.is-active .dropdown-trigger i.bal-icon-caret-down {
+    &.is-active .dropdown-trigger i.icon-caret-down {
       transform: rotate(180deg);
     }
 
