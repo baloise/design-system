@@ -1,13 +1,44 @@
 @import "node_modules/bulma/sass/elements/icon.sass";
+
+@import "../../scss/ui-library.globals";
 @import "bal-icons";
+
 
 :host {
   display: inline-block;
   position: static;
 }
 
-.icon i[class*="bal-icon"] {
-  width: inherit;
-  height: inherit;
-  background-size: contain;
+.icon {
+  font-size: 24px;
+
+  &.is-small {
+    font-size: 16px;
+  }
+  
+  &.is-medium {
+    font-size: 32px;
+  }
+  
+  &.is-large {
+    font-size: 47px;
+  }
+  
+  i.font {
+    font-family: "bal-ui-library";
+    font-style: normal;
+    font-weight: normal;
+
+    // display: inline-block;
+    // text-decoration: inherit;
+    // width: 1em;
+    // margin-right: .2em;
+    text-align: center;
+    color: $blue;
+    /* opacity: .8; */
+
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+  }
 }

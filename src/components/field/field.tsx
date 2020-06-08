@@ -32,14 +32,14 @@ export class Field {
 
   get buildIconLeftTemplate() {
     if (this.iconLeft) {
-      return <bal-icon name={this.iconLeft} isLeft={true} size="small" />
+      return <bal-icon name={this.iconLeft} isLeft={true} size="medium" />
     }
     return ""
   }
 
   get buildIconRightTemplate() {
     if (this.iconRight) {
-      return <bal-icon name={this.iconRight} isRight={true} size="small" />
+      return <bal-icon name={this.iconRight} isRight={true} size="medium" />
     }
     return ""
   }

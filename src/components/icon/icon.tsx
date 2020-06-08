@@ -34,7 +34,7 @@ export class Icon {
   }
 
   get iconCssClass() {
-    return `bal-icon-${this.name}`;
+    return `icon-${this.name}`;
   }
 
   render() {
@@ -46,7 +46,10 @@ export class Icon {
           this.isLeft ? "is-left" : "",
           this.sizeCssClass,
         ].join(" ")}>
-          <i class={this.iconCssClass}></i>
+          <i class={[
+          this.iconCssClass,
+          "font",
+        ].join(" ")}></i>
         </span>
       </Host>
     );

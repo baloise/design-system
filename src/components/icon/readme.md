@@ -1,16 +1,39 @@
 # Icon
 
-The Baloise SVG icons have been converted with this [tool](https://websemantics.uk/tools/svg-to-background-image-conversion/).
+The preprocessed Baloise SVG icons have been converted to a web font by using [http://fontello.com](http://fontello.com).
+The proprocessing step for each SVG icon included: (done in Adobe Illustrator, but Inkscape should do as well)
+
+* Converting lines and effects to shapes using (Illustrator: Object > Expand)
+* Merge overlapping paths to one path (Illustrator: Use pathfinder)
+* Converting geometries and polyongs to paths (Illustrator: Object > Compound Path > Make)
+* Remove colors and other styles, as they are not used anyway (optional)
 
 ## Usage
 
 Here is how you can change the size:
 
 ```html
-<bal-icon name="account" size="small"></bal-icon>
-<bal-icon name="account"></bal-icon>
-<bal-icon name="account" size="medium"></bal-icon>
-<bal-icon name="account" size="large"></bal-icon>
+<bal-icon name="date" size="small"></bal-icon>
+<bal-icon name="date"></bal-icon>
+<bal-icon name="date" size="medium"></bal-icon>
+<bal-icon name="date" size="large"></bal-icon>
+```
+
+## Styling
+
+Here is how you can change the color:
+
+```html
+<div>
+  <style type="text/css" scoped>
+  .alert i {
+    color: red !important;
+  }
+  </style>
+
+  <bal-icon class="alert" name="alert-circle" size="medium"></bal-icon>
+</div>
+
 ```
 
 ## Icons
