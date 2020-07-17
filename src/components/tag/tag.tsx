@@ -20,7 +20,7 @@ export class Tag {
   render() {
     return (
       <Host>
-        <span class={`tag ${this.type}`}><slot/></span>
+        <span class={`tag ${this.type ? this.type : "default"}`}><slot/></span>
       </Host>
     );
   }
