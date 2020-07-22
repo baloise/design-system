@@ -19,6 +19,8 @@ import { Option } from "../dropdown-option/dropdown-option.types"
   shadow: true,
 })
 export class Dropdown {
+  public static MIN_DISTANCE_TO_BROWSER_BORDER = 30
+
   @Element() element!: HTMLElement
   inputElement!: HTMLInputElement
   searchInputElement!: HTMLInputElement
@@ -32,6 +34,7 @@ export class Dropdown {
   @State() selectedOption: Option | Option[] = null
   @State() hasFocus = false
 
+  @State() maxDropdownWidth = 100
   @State() isActive = false
 
   @Watch("isActive")
@@ -252,6 +255,7 @@ export class Dropdown {
    */
   @Method()
   async toggle() {
+    this.adjustMaxDropdownWidth()
     this.isActive = !this.isActive
     this.fireBlurIfPossible()
   }
@@ -261,6 +265,7 @@ export class Dropdown {
    */
   @Method()
   async open() {
+    this.adjustMaxDropdownWidth()
     this.isActive = true
   }
 
@@ -351,6 +356,7 @@ export class Dropdown {
       const inputValue = (event.target as HTMLInputElement).value
       if (this.typeahead && !this.multiSelect) {
         this.isActive = !!inputValue
+        this.adjustMaxDropdownWidth()
       }
       const children = this.children
       if (this.typeahead && children && children.length > 0) {
@@ -362,6 +368,11 @@ export class Dropdown {
         childrenWithHiddenState.length > 0
       this.fireBlurIfPossible()
     }
+  }
+  
+  adjustMaxDropdownWidth() {
+    const rect = this.inputElement.getBoundingClientRect()
+    this.maxDropdownWidth = window.innerWidth - rect.x - Dropdown.MIN_DISTANCE_TO_BROWSER_BORDER
   }
 
   @Listen("keyup")
@@ -521,6 +532,7 @@ export class Dropdown {
           </div>
           <div
             class="dropdown-menu"
+            style={{maxWidth: this.maxDropdownWidth + 'px' }}
             role="menu"
             ref={(el) => (this.dropdownMenuElement = el as HTMLInputElement)}
           >
