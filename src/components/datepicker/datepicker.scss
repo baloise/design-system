@@ -14,6 +14,10 @@
 .datepicker {
   user-select: none;
 
+  bal-dropdown::part(content-options) {
+    max-height: none;
+  }  
+
   .pagination {
     flex-wrap: nowrap;
   }

@@ -102,15 +102,6 @@ export class Dropdown {
       this.updateLabel()
       this.updateActivatedOptions()
     }
-
-    this.dropdownMenuElement.addEventListener("mouseenter", () => {
-      document.body.style.overflow = "hidden"
-      document.body.style.marginRight = "15px"
-    })
-    this.dropdownMenuElement.addEventListener("mouseleave", () => {
-      document.body.style.overflow = "auto"
-      document.body.style.marginRight = "0"
-    })
   }
 
   /**
@@ -555,7 +546,8 @@ export class Dropdown {
               ) : (
                 ""
               )}
-              <div
+              <div 
+                part="content-options"
                 class="dropdown-content-options"
                 ref={(el) =>
                   (this.dropdownContentElement = el as HTMLDivElement)
