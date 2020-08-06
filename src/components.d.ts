@@ -5,14 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { DateCallback, FormatLabelCallback, } from "./components/datepicker/datepicker";
-import { DateCallback as DateCallback1, } from "./components/datepicker/datepicker";
-import { Option, } from "./components/dropdown-option/dropdown-option.types";
-import { FileUploadRejectedFile, } from "./components/file-upload/file-upload.type";
-import { StepOptions, } from "./components/step/step";
-import { StepOptions as StepOptions1, } from "./components/step/step";
-import { TabItemOptions, } from "./components/tab-item/tab-item";
-import { TabItemOptions as TabItemOptions1, } from "./components/tab-item/tab-item";
+import { DateCallback, FormatLabelCallback } from "./components/datepicker/datepicker";
+import { DateCallback as DateCallback1 } from "./components/datepicker/datepicker";
+import { Option } from "./components/dropdown-option/dropdown-option.types";
+import { FileUploadRejectedFile } from "./components/file-upload/file-upload.type";
+import { StepOptions } from "./components/step/step";
+import { StepOptions as StepOptions1 } from "./components/step/step";
+import { TabItemOptions } from "./components/tab-item/tab-item";
+import { TabItemOptions as TabItemOptions1 } from "./components/tab-item/tab-item";
 export namespace Components {
     interface BalAccordion {
         /**
@@ -50,7 +50,8 @@ export namespace Components {
         /**
           * Type defines the theme of the accordion toggle
          */
-        "type": "is-primary" | "is-info";
+        "type": | "is-primary"
+    | "is-info";
     }
     interface BalButton {
         /**
@@ -100,7 +101,12 @@ export namespace Components {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "type": "is-primary" | "is-info" | "is-success" | "is-warning" | "is-danger" | "is-link";
+        "type": | "is-primary"
+    | "is-info"
+    | "is-success"
+    | "is-warning"
+    | "is-danger"
+    | "is-link";
     }
     interface BalCard {
         /**
@@ -590,7 +596,12 @@ export namespace Components {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "type": "is-primary" | "is-info" | "is-success" | "is-warning" | "is-danger" | "";
+        "type": | "is-primary"
+    | "is-info"
+    | "is-success"
+    | "is-warning"
+    | "is-danger"
+    | "";
     }
     interface BalTimeinput {
         /**
@@ -622,7 +633,11 @@ export namespace Components {
         /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "type": "is-primary" | "is-info" | "is-success" | "is-warning" | "is-danger";
+        "type": | "is-primary"
+    | "is-info"
+    | "is-success"
+    | "is-warning"
+    | "is-danger";
     }
 }
 declare global {
@@ -948,7 +963,8 @@ declare namespace LocalJSX {
         /**
           * Type defines the theme of the accordion toggle
          */
-        "type"?: "is-primary" | "is-info";
+        "type"?: | "is-primary"
+    | "is-info";
     }
     interface BalButton {
         /**
@@ -998,7 +1014,12 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "type"?: "is-primary" | "is-info" | "is-success" | "is-warning" | "is-danger" | "is-link";
+        "type"?: | "is-primary"
+    | "is-info"
+    | "is-success"
+    | "is-warning"
+    | "is-danger"
+    | "is-link";
     }
     interface BalCard {
         /**
@@ -1475,7 +1496,12 @@ declare namespace LocalJSX {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "type"?: "is-primary" | "is-info" | "is-success" | "is-warning" | "is-danger" | "";
+        "type"?: | "is-primary"
+    | "is-info"
+    | "is-success"
+    | "is-warning"
+    | "is-danger"
+    | "";
     }
     interface BalTimeinput {
         /**
@@ -1507,7 +1533,11 @@ declare namespace LocalJSX {
         /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "type"?: "is-primary" | "is-info" | "is-success" | "is-warning" | "is-danger";
+        "type"?: | "is-primary"
+    | "is-info"
+    | "is-success"
+    | "is-warning"
+    | "is-danger";
     }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
