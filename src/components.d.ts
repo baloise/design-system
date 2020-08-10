@@ -306,7 +306,7 @@ export namespace Components {
         /**
           * Selects an option.
          */
-        "select": (option: Option) => Promise<void>;
+        "select": (option: any) => Promise<void>;
         /**
           * Open & closes the dropdown.
          */
