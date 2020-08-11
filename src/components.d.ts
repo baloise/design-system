@@ -282,7 +282,7 @@ export namespace Components {
         /**
           * Returns the value of the dropdown.
          */
-        "getSelected": () => Promise<Option | Option[]>;
+        "getSelected": () => Promise<Option<any> | Option<any>[]>;
         /**
           * TODO: Describe
          */
@@ -306,7 +306,7 @@ export namespace Components {
         /**
           * Selects an option.
          */
-        "select": (option: any) => Promise<void>;
+        "select": (option: Option<any>) => Promise<void>;
         /**
           * Open & closes the dropdown.
          */
@@ -322,7 +322,7 @@ export namespace Components {
         /**
           * The value of the selected dropdown item.
          */
-        "value": Option | Option[];
+        "value": Option<any> | Option<any>[];
     }
     interface BalDropdownOption {
         "checkbox": boolean;
@@ -1231,7 +1231,7 @@ declare namespace LocalJSX {
         /**
           * The value of the selected dropdown item.
          */
-        "value"?: Option | Option[];
+        "value"?: Option<any> | Option<any>[];
     }
     interface BalDropdownOption {
         "checkbox"?: boolean;
