@@ -25,7 +25,7 @@ export class DropdownOption {
   /**
    * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
    */
-  @Prop() value: string | boolean | number | object = false
+  @Prop() value: string | boolean | number | any = false
 
   /**
    * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
@@ -85,7 +85,7 @@ export class DropdownOption {
   }
 
   async select() {
-    const option: Option = {
+    const option: Option<any> = {
       label: this.label,
       value: this.value,
     }
