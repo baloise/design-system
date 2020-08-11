@@ -11,7 +11,7 @@ import {
   Listen,
   Watch,
 } from "@stencil/core"
-import { Option } from "../dropdown-option/dropdown-option.types"
+import {Option} from "../dropdown-option/dropdown-option.types"
 
 @Component({
   tag: "bal-dropdown",
@@ -31,7 +31,7 @@ export class Dropdown {
   isPristine = true
   activeItemIndex = -1
 
-  @State() selectedOption: Option | Option[] = null
+  @State() selectedOption: Option<any> | Option<any>[] = null
   @State() hasFocus = false
 
   @State() maxDropdownWidth = 100
@@ -67,10 +67,10 @@ export class Dropdown {
   /**
    * The value of the selected dropdown item.
    */
-  @Prop() value: Option | Option[] = null
+  @Prop() value: Option<any> | Option<any>[] = null
 
   @Watch("value")
-  valueWatcher(newValue: Option | Option[]) {
+  valueWatcher(newValue: Option<any> | Option<any>[]) {
     if (newValue) {
       this.selectedOption = this.value
       this.updateLabel()
@@ -165,7 +165,7 @@ export class Dropdown {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<Option>
+  @Event() balChange!: EventEmitter<Option<any>>
 
   /**
    * Emitted when the toggle loses focus.
@@ -182,7 +182,7 @@ export class Dropdown {
    */
   @Event() balFocus!: EventEmitter<void>
 
-  @Listen("keyup", { target: "document" })
+  @Listen("keyup", {target: "document"})
   tabOutside(event: KeyboardEvent) {
     if (
       event.key === "Tab" &&
@@ -193,14 +193,14 @@ export class Dropdown {
     }
   }
 
-  @Listen("click", { target: "document" })
+  @Listen("click", {target: "document"})
   clickOnOutside(event: UIEvent) {
     if (!this.element.contains(event.target as any) && this.isActive) {
       this.toggle()
     }
   }
 
-  private prepareValues(value: Option | Option[], option: Option) {
+  private prepareValues(value: Option<any> | Option<any>[], option: Option<any>) {
     let values = Array.isArray(value) ? value : [value]
     values = values.filter((v) => v)
     if (values.map((v) => v.value).indexOf(option.value) >= 0) {
@@ -213,7 +213,7 @@ export class Dropdown {
    * Selects an option.
    */
   @Method()
-  async select(option: Option): Promise<void> {
+  async select(option: Option<any>): Promise<void> {
     if (this.multiSelect) {
       this.value = this.prepareValues(this.value, option)
       this.selectedOption = this.prepareValues(this.selectedOption, option)
@@ -237,7 +237,7 @@ export class Dropdown {
    * Returns the value of the dropdown.
    */
   @Method()
-  async getSelected(): Promise<Option | Option[]> {
+  async getSelected(): Promise<Option<any> | Option<any>[]> {
     return this.selectedOption
   }
 
@@ -360,7 +360,7 @@ export class Dropdown {
       this.fireBlurIfPossible()
     }
   }
-  
+
   adjustMaxDropdownWidth() {
     const rect = this.inputElement.getBoundingClientRect()
     this.maxDropdownWidth = window.innerWidth - rect.x - Dropdown.MIN_DISTANCE_TO_BROWSER_BORDER
@@ -452,7 +452,7 @@ export class Dropdown {
       }
 
       const isInSelected = (
-        value: string | boolean | number | object,
+        value: string | boolean | number | any,
       ): boolean => {
         if (this.selectedOption) {
           if (Array.isArray(this.selectedOption)) {
@@ -523,7 +523,7 @@ export class Dropdown {
           </div>
           <div
             class="dropdown-menu"
-            style={{maxWidth: this.maxDropdownWidth + 'px' }}
+            style={{maxWidth: this.maxDropdownWidth + 'px'}}
             role="menu"
             ref={(el) => (this.dropdownMenuElement = el as HTMLInputElement)}
           >
@@ -546,18 +546,18 @@ export class Dropdown {
               ) : (
                 ""
               )}
-              <div 
+              <div
                 part="content-options"
                 class="dropdown-content-options"
                 ref={(el) =>
                   (this.dropdownContentElement = el as HTMLDivElement)
                 }
               >
-                <slot />
+                <slot/>
               </div>
               <span
                 class="no-data"
-                style={!this.hasNoData && { display: "none" }}
+                style={!this.hasNoData && {display: "none"}}
               >
                 <slot name="no-data-content">No Data</slot>
               </span>
@@ -568,3 +568,4 @@ export class Dropdown {
     )
   }
 }
+

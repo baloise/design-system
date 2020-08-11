@@ -1,4 +1,4 @@
-function deProcessRelativeTime(num: number, withoutSuffix: boolean, key: string) {
+function deProcessRelativeTime(num: number, withoutSuffix: boolean, key: string): any {
   const format = {
     m: ["eine Minute", "einer Minute"],
     h: ["eine Stunde", "einer Stunde"],
@@ -12,7 +12,7 @@ function deProcessRelativeTime(num: number, withoutSuffix: boolean, key: string)
   return withoutSuffix ? format[key][0] : format[key][1];
 }
 
-export const i18n: { [key: string]: {} } = {
+export const i18n: { [key: string]: any } = {
   de: {
     months: "Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember".split("_"),
     monthsShort: "Jan._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.".split("_"),
@@ -79,7 +79,7 @@ export const i18n: { [key: string]: {} } = {
       nextDay: "[Domani alle] LT",
       nextWeek: "dddd [alle] LT",
       lastDay: "[Ieri alle] LT",
-      lastWeek: () => {
+      lastWeek: (): string => {
         switch (this.day()) {
           case 0:
             return "[la scorsa] dddd [alle] LT";
@@ -90,7 +90,7 @@ export const i18n: { [key: string]: {} } = {
       sameElse: "L",
     },
     relativeTime: {
-      future: (s) => {
+      future: (s: string): string => {
         return ((/^[0-9].+$/).test(s) ? "tra" : "in") + " " + s;
       },
       past: "%s fa",
@@ -155,7 +155,7 @@ export const i18n: { [key: string]: {} } = {
       yy: "%d ans",
     },
     dayOfMonthOrdinalParse: /\d{1,2}(er|)/,
-    ordinal: (num, period: string) => {
+    ordinal: (num: number, period: string): string => {
       switch (period) {
         case "D":
           return num + (num === 1 ? "er" : "");
@@ -214,7 +214,7 @@ export const i18n: { [key: string]: {} } = {
       yy: "%d years",
     },
     dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
-    ordinal: (num) => {
+    ordinal: (num: number): string => {
       const b = num % 10;
       // tslint:disable-next-line
       const output = (~~(num % 100 / 10) === 1) ? "th" :

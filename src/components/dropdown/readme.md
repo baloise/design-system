@@ -119,18 +119,18 @@ It can also deal with large content:
 
 ## Properties
 
-| Property           | Attribute            | Description                                                                                                                                               | Type                 | Default        |
-| ------------------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------- |
-| `disabled`         | `disabled`           | If `true`, the user cannot interact with the input.                                                                                                       | `boolean`            | `false`        |
-| `expanded`         | `expanded`           | If `true`, the component uses the whole width.                                                                                                            | `boolean`            | `false`        |
-| `fixed`            | `fixed`              | If `true`, the height of the dropdown content is fixed.                                                                                                   | `boolean`            | `true`         |
-| `multiSelect`      | `multi-select`       | TODO: Describe                                                                                                                                            | `boolean`            | `false`        |
-| `placeholder`      | `placeholder`        | Instructional text that shows before the input has a value.                                                                                               | `string`             | `""`           |
-| `preActivateFirst` | `pre-activate-first` | If `true`, the first visible option in the dropdown will become activated for selection if nothing else has been selected before. Only works on typeahead | `boolean`            | `true`         |
-| `readonly`         | `readonly`           | If `true`, the user cannot interact with the input.                                                                                                       | `boolean`            | `false`        |
-| `triggerIcon`      | `trigger-icon`       | Defines the trigger icon on the right site.                                                                                                               | `string`             | `"caret-down"` |
-| `typeahead`        | `typeahead`          | If `true`, the use can search for the option.                                                                                                             | `boolean`            | `false`        |
-| `value`            | --                   | The value of the selected dropdown item.                                                                                                                  | `Option \| Option[]` | `null`         |
+| Property           | Attribute            | Description                                                                                                                                               | Type                           | Default        |
+| ------------------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | -------------- |
+| `disabled`         | `disabled`           | If `true`, the user cannot interact with the input.                                                                                                       | `boolean`                      | `false`        |
+| `expanded`         | `expanded`           | If `true`, the component uses the whole width.                                                                                                            | `boolean`                      | `false`        |
+| `fixed`            | `fixed`              | If `true`, the height of the dropdown content is fixed.                                                                                                   | `boolean`                      | `true`         |
+| `multiSelect`      | `multi-select`       | TODO: Describe                                                                                                                                            | `boolean`                      | `false`        |
+| `placeholder`      | `placeholder`        | Instructional text that shows before the input has a value.                                                                                               | `string`                       | `""`           |
+| `preActivateFirst` | `pre-activate-first` | If `true`, the first visible option in the dropdown will become activated for selection if nothing else has been selected before. Only works on typeahead | `boolean`                      | `true`         |
+| `readonly`         | `readonly`           | If `true`, the user cannot interact with the input.                                                                                                       | `boolean`                      | `false`        |
+| `triggerIcon`      | `trigger-icon`       | Defines the trigger icon on the right site.                                                                                                               | `string`                       | `"caret-down"` |
+| `typeahead`        | `typeahead`          | If `true`, the use can search for the option.                                                                                                             | `boolean`                      | `false`        |
+| `value`            | --                   | The value of the selected dropdown item.                                                                                                                  | `Option<any> \| Option<any>[]` | `null`         |
 
 
 ## Events
@@ -138,7 +138,7 @@ It can also deal with large content:
 | Event       | Description                                                | Type                  |
 | ----------- | ---------------------------------------------------------- | --------------------- |
 | `balBlur`   | Emitted when the toggle loses focus.                       | `CustomEvent<void>`   |
-| `balChange` | Emitted when the checked property has changed.             | `CustomEvent<Option>` |
+| `balChange` | Emitted when the checked property has changed.             | `CustomEvent<any>`    |
 | `balFocus`  | Emitted when the toggle has focus..                        | `CustomEvent<void>`   |
 | `balInput`  | Emitted when containing input field raises an input event. | `CustomEvent<string>` |
 
@@ -155,13 +155,13 @@ Type: `Promise<void>`
 
 
 
-### `getSelected() => Promise<Option | Option[]>`
+### `getSelected() => Promise<Option<any> | Option<any>[]>`
 
 Returns the value of the dropdown.
 
 #### Returns
 
-Type: `Promise<Option | Option[]>`
+Type: `Promise<Option<any> | Option<any>[]>`
 
 
 
@@ -175,7 +175,7 @@ Type: `Promise<void>`
 
 
 
-### `select(option: Option) => Promise<void>`
+### `select(option: Option<any>) => Promise<void>`
 
 Selects an option.
 
@@ -194,6 +194,14 @@ Open & closes the dropdown.
 Type: `Promise<void>`
 
 
+
+
+## Shadow Parts
+
+| Part                | Description |
+| ------------------- | ----------- |
+| `"content-options"` |             |
+| `"input"`           |             |
 
 
 ## Dependencies
