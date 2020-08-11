@@ -1,6 +1,6 @@
 # Architecture
 
-UI-Libary is an open source library for building amazing web applications that follow the Baloise corporate style guidelines.
+The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.
 
 The architecture is based on web standards and best practices. Moreover, we try to keep it as simple as possible for our contributors and consumers.
 For those reasons we decided to use Web Components, which are supported by all modern browsers. The project fully supports [TypeScript](https://www.typescriptlang.org/).

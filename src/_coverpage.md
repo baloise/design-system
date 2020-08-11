@@ -2,7 +2,7 @@
 
 # Baloise UI-Libary
 
-> UI-Libary is an open source library<br>for building amazing web applications<br>that follow the Baloise corporate style guidelines
+> The UI-Libary is an open source project<br>for styling awesome web applications<br>that follow the Baloise corporate styling guidelines
 
 [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)
 
