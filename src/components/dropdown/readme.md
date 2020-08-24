@@ -135,12 +135,12 @@ It can also deal with large content:
 
 ## Events
 
-| Event       | Description                                                | Type                  |
-| ----------- | ---------------------------------------------------------- | --------------------- |
-| `balBlur`   | Emitted when the toggle loses focus.                       | `CustomEvent<void>`   |
-| `balChange` | Emitted when the checked property has changed.             | `CustomEvent<any>`    |
-| `balFocus`  | Emitted when the toggle has focus..                        | `CustomEvent<void>`   |
-| `balInput`  | Emitted when containing input field raises an input event. | `CustomEvent<string>` |
+| Event       | Description                                                | Type                       |
+| ----------- | ---------------------------------------------------------- | -------------------------- |
+| `balBlur`   | Emitted when the toggle loses focus.                       | `CustomEvent<void>`        |
+| `balChange` | Emitted when the checked property has changed.             | `CustomEvent<Option<any>>` |
+| `balFocus`  | Emitted when the toggle has focus..                        | `CustomEvent<void>`        |
+| `balInput`  | Emitted when containing input field raises an input event. | `CustomEvent<string>`      |
 
 
 ## Methods

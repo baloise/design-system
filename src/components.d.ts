@@ -118,6 +118,10 @@ export namespace Components {
          */
         "flat": boolean;
         /**
+          * If `true` the card background color becomes blue.
+         */
+        "inverted": boolean;
+        /**
           * If `true` the card loses its border radius.
          */
         "square": boolean;
@@ -135,12 +139,24 @@ export namespace Components {
         "icon": string;
     }
     interface BalCardContent {
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "inverted": boolean;
     }
     interface BalCardHeading {
     }
     interface BalCardSubtitle {
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "inverted": boolean;
     }
     interface BalCardTitle {
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "inverted": boolean;
     }
     interface BalData {
         /**
@@ -338,7 +354,7 @@ export namespace Components {
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
-        "value": string | boolean | number | object;
+        "value": string | boolean | number | any;
     }
     interface BalField {
         /**
@@ -1031,6 +1047,10 @@ declare namespace LocalJSX {
          */
         "flat"?: boolean;
         /**
+          * If `true` the card background color becomes blue.
+         */
+        "inverted"?: boolean;
+        /**
           * If `true` the card loses its border radius.
          */
         "square"?: boolean;
@@ -1048,12 +1068,24 @@ declare namespace LocalJSX {
         "icon"?: string;
     }
     interface BalCardContent {
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "inverted"?: boolean;
     }
     interface BalCardHeading {
     }
     interface BalCardSubtitle {
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "inverted"?: boolean;
     }
     interface BalCardTitle {
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "inverted"?: boolean;
     }
     interface BalData {
         /**
@@ -1199,7 +1231,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<Option>) => void;
+        "onBalChange"?: (event: CustomEvent<Option<any>>) => void;
         /**
           * Emitted when the toggle has focus..
          */
@@ -1246,7 +1278,7 @@ declare namespace LocalJSX {
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
-        "value"?: string | boolean | number | object;
+        "value"?: string | boolean | number | any;
     }
     interface BalField {
         /**
