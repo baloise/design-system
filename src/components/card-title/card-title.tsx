@@ -6,6 +6,9 @@ import { Component, Host, h, Prop } from "@stencil/core"
   scoped: false,
 })
 export class CardTitle {
+  /**
+   * If `true` the card text color becomes white.
+   */
   @Prop() inverted = false
 
   render() {

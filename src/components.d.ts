@@ -139,14 +139,23 @@ export namespace Components {
         "icon": string;
     }
     interface BalCardContent {
+        /**
+          * If `true` the card text color becomes white.
+         */
         "inverted": boolean;
     }
     interface BalCardHeading {
     }
     interface BalCardSubtitle {
+        /**
+          * If `true` the card text color becomes white.
+         */
         "inverted": boolean;
     }
     interface BalCardTitle {
+        /**
+          * If `true` the card text color becomes white.
+         */
         "inverted": boolean;
     }
     interface BalData {
@@ -1059,14 +1068,23 @@ declare namespace LocalJSX {
         "icon"?: string;
     }
     interface BalCardContent {
+        /**
+          * If `true` the card text color becomes white.
+         */
         "inverted"?: boolean;
     }
     interface BalCardHeading {
     }
     interface BalCardSubtitle {
+        /**
+          * If `true` the card text color becomes white.
+         */
         "inverted"?: boolean;
     }
     interface BalCardTitle {
+        /**
+          * If `true` the card text color becomes white.
+         */
         "inverted"?: boolean;
     }
     interface BalData {
