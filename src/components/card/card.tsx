@@ -21,6 +21,11 @@ export class BalCard {
    */
   @Prop()
   square = false
+  /**
+   * If `true` the card background color becomes blue.
+   */
+  @Prop()
+  inverted = false
 
   render() {
     return (
@@ -30,6 +35,7 @@ export class BalCard {
           this.square ? "is-square" : "",
           this.border ? "has-border" : "",
           this.flat ? "is-flat" : "",
+          this.inverted ? "is-inverted" : ""
         ].join(" ")}
       >
         <slot></slot>

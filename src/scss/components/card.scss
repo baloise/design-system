@@ -33,6 +33,10 @@
     border: 1px solid $blue-light-line;
   }
 
+  &.is-inverted {
+    background-color: $bal_brand_blue;
+  }
+
   .bal-card-heading,
   .bal-card-title,
   .bal-card-subtitle,
@@ -70,16 +74,28 @@
     color: $blue;
   }
 
+  .bal-card-title.inverted{
+    color: $white;
+  }
+
   .bal-card-subtitle {
     font-size: $size-5;
     font-weight: $weight-normal;
     color: $blue-light-text;
   }
 
+  .bal-card-subtitle.inverted{
+    color: $white-bis;
+  }
+
   .bal-card-content {
     font-size: $size-normal;
     font-weight: $weight-normal;
     font-family: $body-family;
+  }
+
+  .bal-card-content.inverted{
+    color: $white;
   }
 
   .bal-card-heading + .bal-card-title,

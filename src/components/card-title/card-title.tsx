@@ -1,4 +1,4 @@
-import { Component, Host, h } from "@stencil/core"
+import { Component, Host, h, Prop } from "@stencil/core"
 
 @Component({
   tag: "bal-card-title",
@@ -6,9 +6,14 @@ import { Component, Host, h } from "@stencil/core"
   scoped: false,
 })
 export class CardTitle {
+  @Prop() inverted = false
+
   render() {
     return (
-      <Host class="bal-card-title" role="heading">
+      <Host class={[
+        "bal-card-title",
+        this.inverted ? "inverted" : ""
+      ].join(' ')} role="heading">
         <slot></slot>
       </Host>
     )
