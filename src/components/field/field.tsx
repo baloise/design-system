@@ -30,6 +30,11 @@ export class Field {
    */
   @Prop() iconLeft: string = ""
 
+  /**
+   * If `true` the field can be used on blue background.
+   */
+  @Prop() inverted: boolean = false
+
   get buildIconLeftTemplate() {
     if (this.iconLeft) {
       return <bal-icon name={this.iconLeft} isLeft={true} size="medium" />
@@ -47,7 +52,10 @@ export class Field {
   render() {
     return (
       <Host>
-        <div class="form">
+        <div class=
+        {["form",
+        this.inverted ? "is-inverted" : ""
+        ].join(" ")}>
           <label class="label">
             {this.label}
             {this.required === true ? "*" : ""}

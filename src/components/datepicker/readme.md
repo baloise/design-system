@@ -8,6 +8,14 @@ An input with a simple dropdown for selecting a date.
 <bal-datepicker></bal-datepicker>
 ```
 
+## Inverted style
+
+```html
+<div class="has-background-info is-padded">
+  <bal-datepicker inverted></bal-datepicker>
+</div>
+```
+
 ### Set Date
 
 ```html
@@ -71,6 +79,7 @@ document.getElementById('bal-datepicker-filter-example').filter =  function (str
 | `disabled`      | `disabled`        | Disable the input                                                        | `boolean`                   | `false`                |
 | `filter`        | --                | Callback to determine which date in the datepicker should be selectable. | `(date: string) => boolean` | `(_) => true`          |
 | `formatLabel`   | --                | Callback to format or modify a changed value pefore display.             | `(date: string) => string`  | `(_) => _`             |
+| `inverted`      | `inverted`        | If `true` the datepicker can be used on blue background.                 | `boolean`                   | `false`                |
 | `language`      | `language`        | Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`. | `string`                    | `"de"`                 |
 | `maxDate`       | `max-date`        | Latest date available for selection                                      | `string`                    | `""`                   |
 | `maxYear`       | `max-year`        | Latest year available for selection                                      | `string`                    | `""`                   |

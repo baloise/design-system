@@ -39,6 +39,26 @@ textarea.textarea {
     padding-left: 5px;
     padding-right: 5px;
   }
+
+  &.is-inverted {
+  color: $white;
+  border-bottom-color: $blue-line;
+
+  &:focus,
+  &.is-focused {
+    border-width: 2px;
+  }
+
+  &:disabled {
+    background-color: $blue-dark;
+  }
+
+  &::-webkit-input-placeholder {
+    color: $blue-line;
+  }
+
+  }
+
 }
 
 .control.has-icons-right .input,

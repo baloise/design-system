@@ -28,6 +28,11 @@ export class Datetimepicker {
   @Prop() disabled: boolean = false;
 
   /**
+   * If `true` the datetimepicker can be used on blue background.
+   */
+  @Prop() inverted: boolean = false;
+  
+  /**
    * Latest date available for selection
    */
   @Prop() maxDatetime: string = "";
@@ -256,6 +261,7 @@ export class Datetimepicker {
         <bal-datepicker
           value={this.date}
           disabled={this.disabled}
+          inverted={this.inverted}
           placeholder={this.placeholder}
           maxDate={this.maxDate}
           minDate={this.minDate}

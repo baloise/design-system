@@ -416,3 +416,7 @@ div.docs-contributors > .docs-contributor {
 div.docs-contributors > .docs-contributor:last-child {
   margin-right: 0;
 }
+
+.has-background-info {
+  background: #039;
+}

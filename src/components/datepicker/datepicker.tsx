@@ -50,6 +50,11 @@ export class Datepicker {
   @Prop() disabled: boolean = false;
 
   /**
+   * If `true` the datepicker can be used on blue background.
+   */
+  @Prop() inverted: boolean = false;
+
+  /**
    * Latest date available for selection
    */
   @Prop() maxDate: string = "";
@@ -241,6 +246,7 @@ export class Datepicker {
         <div class="datepicker control">
           <bal-dropdown expanded
                         fixed={false}
+                        inverted={this.inverted}
                         value={{value: this.value, label: this.formatLabel(this.value)}}
                         readonly={true}
                         disabled={this.disabled}

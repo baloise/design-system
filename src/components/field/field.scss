@@ -20,3 +20,30 @@ p.help {
 .control.has-icons-left *::part(input) {
   padding-left: 38px;
 }
+
+.is-inverted {
+  .label {
+    color: $white !important; 
+  }
+
+  .control {
+    .input {
+      color: $white !important;
+      border-bottom-color: $blue-line !important;
+    }
+
+    .input::-webkit-input-placeholder {
+      color: $blue-line !important;
+    }
+
+  }
+
+  .help {
+    color: $blue-line !important;
+  }
+
+  .sc-bal-icon-h > .icon > .font {
+    color: $blue-line !important;
+  }
+
+}

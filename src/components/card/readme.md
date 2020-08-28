@@ -20,6 +20,24 @@ The `bal-card` component is a versatile component that can be combined easily wi
 </bal-card>
 ```
 
+## Inverted style
+
+```html
+<bal-card inverted>
+  <bal-card-title inverted>BaloiseCombi</bal-card-title>
+  <bal-card-subtitle inverted>Police number 70/2.937.458</bal-card-subtitle>
+
+  <bal-card-content inverted>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua.
+  </bal-card-content>
+
+  <bal-card-actions>
+    <bal-button inverted>Action</bal-button>
+  </bal-card-actions>
+</bal-card>
+```
+
 ### With accordion
 
 The combination with the `bal-accordion` is useful to hide details.

@@ -77,7 +77,49 @@ div.bal-select-buttons {
     }
   }
 
+  &.is-inverted {
+    .bal-select-button {
+  
+      label:hover {
+        color: white;
+      }
+  
+      input:checked ~ label {
+        border-color: $white;
+        background: $white;
+        color: $blue !important;
+  
+        &:hover {
+          color: $blue;
+        }
+  
+      }
+  
+      input[type="radio"]:focus ~ label {
+        outline: none;
+        border: 2px dashed $cyan;
+      }
+  
+      input:disabled:checked ~ label {
+        border-color: $blue;
+        background: $white !important;
+        opacity: 50%;
+        color: $blue !important;
+  
+        &:hover {
+          color: $blue !important;
+        }
+      }
+  
+      input:disabled ~ label {
+        cursor: not-allowed;
+        color: $blue-line;
+  
+        &:hover {
+          color: $blue-line;
+        }
+      }
+    }
+  }
+
 }
-
-
-

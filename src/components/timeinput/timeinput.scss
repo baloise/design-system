@@ -68,4 +68,9 @@
       background-color: $blue;
     }
   }
+  .is-inverted {
+    &:after, &:before{
+      background-color: $white;
+    }
+  }
 }

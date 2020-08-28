@@ -55,6 +55,32 @@
     &.is-fullwidth .dropdown-trigger {
       width: 100%;
     }
+
+
+  &.is-inverted {
+
+    i {
+      color: $blue-line !important;
+    }
+
+    ::-webkit-input-placeholder {
+      color: $blue-line !important;
+    }
+
+    .dropdown-trigger > .control > .input{
+      color: $white !important;
+      border-bottom-color: $blue-line !important;
+
+      &:focus,
+      &.is-focused {
+        border-width: 2px;
+      }
+
+      &:disabled {
+        background-color: $blue-dark;
+        cursor: not-allowed;
+      }
+    }
   }
 
   .no-data {
@@ -64,4 +90,6 @@
     padding-top: 5px;
     padding-bottom: 5px;
   }
+}
+
 }

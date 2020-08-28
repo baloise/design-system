@@ -188,6 +188,10 @@ export namespace Components {
          */
         "formatLabel": FormatLabelCallback;
         /**
+          * If `true` the datepicker can be used on blue background.
+         */
+        "inverted": boolean;
+        /**
           * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
          */
         "language": string;
@@ -233,6 +237,10 @@ export namespace Components {
           * Disable the input
          */
         "disabled": boolean;
+        /**
+          * If `true` the datetimepicker can be used on blue background.
+         */
+        "inverted": boolean;
         /**
           * Latest date available for selection
          */
@@ -283,6 +291,10 @@ export namespace Components {
           * Returns the value of the dropdown.
          */
         "getSelected": () => Promise<Option<any> | Option<any>[]>;
+        /**
+          * If `true` the dropdown can be used on blue background.
+         */
+        "inverted": boolean;
         /**
           * TODO: Describe
          */
@@ -338,7 +350,7 @@ export namespace Components {
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
-        "value": string | boolean | number | object;
+        "value": string | boolean | number | any;
     }
     interface BalField {
         /**
@@ -349,6 +361,10 @@ export namespace Components {
           * Baloise icon for the right side of the input
          */
         "iconRight": string;
+        /**
+          * If `true` the field can be used on blue background.
+         */
+        "inverted": boolean;
         /**
           * Label text
          */
@@ -608,6 +624,10 @@ export namespace Components {
           * If `true` the button is disabled
          */
         "disabled": boolean;
+        /**
+          * If `true` the timeinput can be used on blue background.
+         */
+        "inverted": boolean;
         /**
           * Latest date available for selection
          */
@@ -1097,6 +1117,10 @@ declare namespace LocalJSX {
          */
         "formatLabel"?: FormatLabelCallback;
         /**
+          * If `true` the datepicker can be used on blue background.
+         */
+        "inverted"?: boolean;
+        /**
           * Language of the datepicker. Possible values are `de`, `fr`,`it` or `en`.
          */
         "language"?: string;
@@ -1142,6 +1166,10 @@ declare namespace LocalJSX {
           * Disable the input
          */
         "disabled"?: boolean;
+        /**
+          * If `true` the datetimepicker can be used on blue background.
+         */
+        "inverted"?: boolean;
         /**
           * Latest date available for selection
          */
@@ -1189,6 +1217,10 @@ declare namespace LocalJSX {
          */
         "fixed"?: boolean;
         /**
+          * If `true` the dropdown can be used on blue background.
+         */
+        "inverted"?: boolean;
+        /**
           * TODO: Describe
          */
         "multiSelect"?: boolean;
@@ -1199,7 +1231,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<Option>) => void;
+        "onBalChange"?: (event: CustomEvent<Option<any>>) => void;
         /**
           * Emitted when the toggle has focus..
          */
@@ -1246,7 +1278,7 @@ declare namespace LocalJSX {
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
-        "value"?: string | boolean | number | object;
+        "value"?: string | boolean | number | any;
     }
     interface BalField {
         /**
@@ -1257,6 +1289,10 @@ declare namespace LocalJSX {
           * Baloise icon for the right side of the input
          */
         "iconRight"?: string;
+        /**
+          * If `true` the field can be used on blue background.
+         */
+        "inverted"?: boolean;
         /**
           * Label text
          */
@@ -1508,6 +1544,10 @@ declare namespace LocalJSX {
           * If `true` the button is disabled
          */
         "disabled"?: boolean;
+        /**
+          * If `true` the timeinput can be used on blue background.
+         */
+        "inverted"?: boolean;
         /**
           * Latest date available for selection
          */
