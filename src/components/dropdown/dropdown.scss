@@ -59,17 +59,17 @@
 
   &.is-inverted {
 
-    i {
-      color: $blue-line !important;
+    .icon > i {
+      color: $blue-line;
     }
 
     ::-webkit-input-placeholder {
-      color: $blue-light-line !important;
+      color: $blue-light-line;
     }
 
     .dropdown-trigger > .control > .input{
-      color: $white !important;
-      border-bottom-color: $blue-line !important;
+      color: $white;
+      border-bottom-color: $blue-line;
 
       &:focus,
       &.is-focused {

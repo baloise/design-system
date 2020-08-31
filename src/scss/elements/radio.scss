@@ -65,15 +65,15 @@ div.bal-radio {
 
   &.is-inverted {
     input[type="radio"]:hover:not([disabled]) + label:before {
-      border-color: $white !important;
+      border-color: $white;
     }
   
     input[type="radio"] + label:after {
-      background: $white !important;
+      background: $white;
     }
 
-    label {
-      color: $white !important;
+    input[type="radio"] + label {
+      color: $white;
     }
   }
 }

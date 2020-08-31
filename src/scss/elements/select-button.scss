@@ -87,7 +87,7 @@ div.bal-select-buttons {
       input:checked ~ label {
         border-color: $white;
         background: $white;
-        color: $blue !important;
+        color: $blue;
   
         &:hover {
           color: $blue;
@@ -102,12 +102,12 @@ div.bal-select-buttons {
   
       input:disabled:checked ~ label {
         border-color: $blue;
-        background: $white !important;
+        background: $white;
         opacity: 50%;
-        color: $blue !important;
+        color: $blue;
   
         &:hover {
-          color: $blue !important;
+          color: $blue;
         }
       }
   

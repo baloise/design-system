@@ -21,29 +21,31 @@ p.help {
   padding-left: 38px;
 }
 
-.is-inverted {
-  .label {
-    color: $white !important; 
-  }
-
-  .control {
-    .input {
-      color: $white !important;
-      border-bottom-color: $blue-line !important;
+.form {
+  &.is-inverted {
+    .label {
+      color: $white; 
     }
 
-    .input::-webkit-input-placeholder {
-      color: $blue-light-line !important;
+    .control {
+      .input {
+        color: $white;
+        border-bottom-color: $blue-line;
+      }
+
+      .input::-webkit-input-placeholder {
+        color: $blue-light-line;
+      }
+
+    }
+
+    p.help {
+      color: $blue-line;
+    }
+
+    .sc-bal-icon-h > .icon > .font {
+      color: $blue-line;
     }
 
   }
-
-  .help {
-    color: $blue-line !important;
-  }
-
-  .sc-bal-icon-h > .icon > .font {
-    color: $blue-line !important;
-  }
-
 }
