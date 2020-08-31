@@ -57,39 +57,38 @@
     }
 
 
-  &.is-inverted {
-
-    .icon > i {
-      color: $blue-line;
-    }
-
-    ::-webkit-input-placeholder {
-      color: $blue-light-line;
-    }
-
-    .dropdown-trigger > .control > .input{
-      color: $white;
-      border-bottom-color: $blue-line;
-
-      &:focus,
-      &.is-focused {
-        border-width: 2px;
+    &.is-inverted {
+      .icon > i {
+        color: $blue-line;
       }
 
-      &:disabled {
-        background-color: $blue-dark;
-        cursor: not-allowed;
+      ::-webkit-input-placeholder {
+        color: $blue-light-line;
+      }
+
+      .dropdown-trigger > .control > .input {
+        color: $white;
+        border-bottom-color: $blue-line;
+
+        &:focus,
+        &.is-focused {
+          border-width: 2px;
+          border-bottom-color: $white;
+        }
+
+        &:disabled {
+          background-color: $blue-dark;
+          cursor: not-allowed;
+        }
       }
     }
-  }
 
-  .no-data {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    .no-data {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
   }
-}
-
 }

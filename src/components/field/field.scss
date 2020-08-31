@@ -31,6 +31,12 @@ p.help {
       .input {
         color: $white;
         border-bottom-color: $blue-line;
+
+        &:focus,
+        &.is-focused {
+          //border-width: 2px;
+          border-bottom-color: $white;
+        }
       }
 
       .input::-webkit-input-placeholder {

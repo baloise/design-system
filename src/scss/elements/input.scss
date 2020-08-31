@@ -41,24 +41,23 @@ textarea.textarea {
   }
 
   &.is-inverted {
-  color: $white;
-  border-bottom-color: $blue-line;
+    color: $white;
+    border-bottom-color: $blue-line;
 
-  &:focus,
-  &.is-focused {
-    border-width: 2px;
+    &:focus,
+    &.is-focused {
+      border-width: 2px;
+      border-bottom-color: $white;
+    }
+
+    &:disabled {
+      background-color: $blue-dark;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $blue-light-line;
+    }
   }
-
-  &:disabled {
-    background-color: $blue-dark;
-  }
-
-  &::-webkit-input-placeholder {
-    color: $blue-light-line;
-  }
-
-  }
-
 }
 
 .control.has-icons-right .input,
