@@ -15,6 +15,21 @@ Select a single or grouped options
 </div>
 ```
 
+### Inverted style
+
+```html
+<div class="has-background-info is-padded">
+    <div class="bal-checkbox is-inverted">
+        <input type="checkbox" id="checkbox5"/>
+        <label for="checkbox5">Check me</label>
+    </div>
+    <div class="bal-checkbox is-inverted">
+        <input type="checkbox" id="checkbox6" checked/>
+        <label for="checkbox6">Uncheck me</label>
+    </div>
+</div>
+```
+
 ### Disabled
 
 ```html

@@ -62,4 +62,18 @@ div.bal-radio {
   input[type="radio"]:focus + label::before {
     outline: 1px dashed $cyan !important;
   }
+
+  &.is-inverted {
+    input[type="radio"]:hover:not([disabled]) + label:before {
+      border-color: $white;
+    }
+  
+    input[type="radio"] + label:after {
+      background: $white;
+    }
+
+    input[type="radio"] + label {
+      color: $white;
+    }
+  }
 }

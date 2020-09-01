@@ -79,4 +79,21 @@ div.bal-checkbox {
   input[type="checkbox"]:focus + label::before {
     outline: 1px dashed $cyan !important;
   }
+
+  &.is-inverted {
+    label {
+      color: $white;
+    }
+    label::before {
+      border: 1px solid $blue-line;
+    }
+    label::after {
+      border-bottom: 2px solid $white;
+      border-right: 2px solid $white;
+    }
+
+    input[type="checkbox"]:hover:not([disabled]) + label:before {
+      border-color: $white;
+    }
+  }
 }

@@ -10,6 +10,16 @@ All generic form field, designed for consistency
 </bal-field>
 ```
 
+### Inverted style
+
+```html
+<div class="has-background-info is-padded">
+    <bal-field label="Firstname" inverted>
+        <input class="input" placeholder="Enter firstname here" />
+    </bal-field>
+</div>
+```
+
 ###  Validation
 
 ```html
@@ -32,13 +42,14 @@ All generic form field, designed for consistency
 
 ## Properties
 
-| Property            | Attribute            | Description                                        | Type      | Default |
-| ------------------- | -------------------- | -------------------------------------------------- | --------- | ------- |
-| `iconLeft`          | `icon-left`          | Baloise icon for the left side of the input        | `string`  | `""`    |
-| `iconRight`         | `icon-right`         | Baloise icon for the right side of the input       | `string`  | `""`    |
-| `label`             | `label`              | Label text                                         | `string`  | `""`    |
-| `required`          | `required`           | If `true` a asterix (*) is added to the label text | `boolean` | `false` |
-| `validationMessage` | `validation-message` | Validation message text                            | `string`  | `""`    |
+| Property            | Attribute            | Description                                         | Type      | Default |
+| ------------------- | -------------------- | --------------------------------------------------- | --------- | ------- |
+| `iconLeft`          | `icon-left`          | Baloise icon for the left side of the input         | `string`  | `""`    |
+| `iconRight`         | `icon-right`         | Baloise icon for the right side of the input        | `string`  | `""`    |
+| `inverted`          | `inverted`           | If `true` the field can be used on blue background. | `boolean` | `false` |
+| `label`             | `label`              | Label text                                          | `string`  | `""`    |
+| `required`          | `required`           | If `true` a asterix (*) is added to the label text  | `boolean` | `false` |
+| `validationMessage` | `validation-message` | Validation message text                             | `string`  | `""`    |
 
 
 ## Dependencies

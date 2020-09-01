@@ -18,6 +18,16 @@ An input deticated for gathering the time.
     });
 </script>
 
+### Inverted style
+
+```html
+<div class="has-background-info is-padded">
+    <bal-timeinput id="bal-timeinput-example" value="12:30" inverted></bal-timeinput>
+    <bal-timeinput inverted></bal-timeinput>
+</div>
+```
+
+
 ## Min and max time
 
 ```html
@@ -36,12 +46,13 @@ An input deticated for gathering the time.
 
 ## Properties
 
-| Property   | Attribute  | Description                                          | Type      | Default     |
-| ---------- | ---------- | ---------------------------------------------------- | --------- | ----------- |
-| `disabled` | `disabled` | If `true` the button is disabled                     | `boolean` | `undefined` |
-| `maxTime`  | `max-time` | Latest date available for selection                  | `string`  | `""`        |
-| `minTime`  | `min-time` | Earliest date available for selection                | `string`  | `""`        |
-| `value`    | `value`    | The value of the datepicker with the format `hh:mm`. | `string`  | `""`        |
+| Property   | Attribute  | Description                                             | Type      | Default     |
+| ---------- | ---------- | ------------------------------------------------------- | --------- | ----------- |
+| `disabled` | `disabled` | If `true` the button is disabled                        | `boolean` | `undefined` |
+| `inverted` | `inverted` | If `true` the timeinput can be used on blue background. | `boolean` | `false`     |
+| `maxTime`  | `max-time` | Latest date available for selection                     | `string`  | `""`        |
+| `minTime`  | `min-time` | Earliest date available for selection                   | `string`  | `""`        |
+| `value`    | `value`    | The value of the datepicker with the format `hh:mm`.    | `string`  | `""`        |
 
 
 ## Events

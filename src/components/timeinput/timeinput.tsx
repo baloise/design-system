@@ -53,6 +53,11 @@ export class Timeinput {
   @Prop() minTime: string = "";
 
   /**
+   * If `true` the timeinput can be used on blue background.
+   */
+  @Prop() inverted: boolean = false;
+
+  /**
    * Emitted when either the hour or the minute input has changed.
    * It will not be triggert if either hour or time input has never been set (i.e. "--" is selected).
    */
@@ -256,7 +261,10 @@ export class Timeinput {
   render() {
     return (
       <Host>
-        <div class="stepper">
+        <div class={[
+        "stepper",
+        this.inverted ? "is-inverted" : ""
+        ].join(" ")}>
           <button
             class="stepper-btn"
             onMouseDown={() => this.repeatOnHold(() => this.incHour())}
@@ -265,7 +273,7 @@ export class Timeinput {
             disabled={this.disabled || this.hour >= this.maxHour}
             tabindex="-1">
             <svg width="15px" height="10px" version="1.1">
-              <g stroke-width="3.25" fill="none" stroke="#003399">
+              <g stroke-width="3.25" fill="none" stroke={this.inverted ? "#ffffff" : "#003399"}>
                 <polyline points="2,8 7.5,2 13,8">
                 </polyline>
               </g>
@@ -294,14 +302,17 @@ export class Timeinput {
             disabled={this.disabled || this.hour <= this.minHour || this.hour === undefined}
             tabindex="-1">
             <svg width="15px" height="10px" version="1.1">
-              <g stroke-width="3.25" fill="none" stroke="#003399">
+              <g stroke-width="3.25" fill="none" stroke={this.inverted ? "#ffffff" : "#003399"}>
                 <polyline points="2,2 7.5,8 13,2">
                 </polyline>
               </g>
             </svg>
           </button>
         </div>
-        <div class="time-divider" />
+        <div class={[
+              "time-divider",
+              this.inverted ? "is-inverted" : ""
+              ].join(" ")}/>
         <div class="stepper">
           <button
             class="stepper-btn"
@@ -311,7 +322,7 @@ export class Timeinput {
             disabled={this.disabled || this.minute >= this.currentMaxMinute}
             tabindex="-1">
             <svg width="15px" height="10px" version="1.1">
-              <g stroke-width="3.25" fill="none" stroke="#003399">
+              <g stroke-width="3.25" fill="none" stroke={this.inverted ? "#ffffff" : "#003399"}>
                 <polyline points="2,8 7.5,2 13,8">
                 </polyline>
               </g>
@@ -340,7 +351,7 @@ export class Timeinput {
             disabled={this.disabled || this.minute <= this.currentMinMinute || this.minute === undefined}
             tabindex="-1">
             <svg width="15px" height="10px" version="1.1">
-              <g stroke-width="3.25" fill="none" stroke="#003399">
+              <g stroke-width="3.25" fill="none" stroke={this.inverted ? "#ffffff" : "#003399"}>
                 <polyline points="2,2 7.5,8 13,2">
                 </polyline>
               </g>

@@ -20,6 +20,14 @@ An input with a simple dropdown for selecting a date and a time.
 <bal-datetimepicker id="bal-datetimepicker-select-example"></bal-datetimepicker>
 ```
 
+## Inverted style
+
+```html
+<div class="has-background-info is-padded">
+<bal-datetimepicker id="bal-datetimepicker-select-example" inverted></bal-datetimepicker>
+</div>
+```
+
 ### Set Date
 
 ```html
@@ -61,6 +69,7 @@ document.getElementById('bal-datetimepicker-filter-example').dateFilter =  funct
 | ------------- | -------------- | ---------------------------------------------------------------------------- | --------------------------- | ---------------------- |
 | `dateFilter`  | --             | Callback to determine which date in the datetimepicker should be selectable. | `(date: string) => boolean` | `(_) => true`          |
 | `disabled`    | `disabled`     | Disable the input                                                            | `boolean`                   | `false`                |
+| `inverted`    | `inverted`     | If `true` the datetimepicker can be used on blue background.                 | `boolean`                   | `false`                |
 | `maxDatetime` | `max-datetime` | Latest date available for selection                                          | `string`                    | `""`                   |
 | `maxYear`     | `max-year`     | Latest year available for selection                                          | `string`                    | `""`                   |
 | `minDatetime` | `min-datetime` | Earliest datetime available for selection                                    | `string`                    | `""`                   |

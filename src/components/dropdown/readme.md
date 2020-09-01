@@ -51,6 +51,18 @@ It can also deal with large content:
     });
 </script>
 
+### Inverted style
+
+```html
+<div class="has-background-info is-padded">
+  <bal-dropdown inverted>
+    <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
+    <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
+    <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
+  </bal-dropdown>
+</div>
+```
+
 ### Disabled
 
 ```html
@@ -124,6 +136,7 @@ It can also deal with large content:
 | `disabled`         | `disabled`           | If `true`, the user cannot interact with the input.                                                                                                       | `boolean`                      | `false`        |
 | `expanded`         | `expanded`           | If `true`, the component uses the whole width.                                                                                                            | `boolean`                      | `false`        |
 | `fixed`            | `fixed`              | If `true`, the height of the dropdown content is fixed.                                                                                                   | `boolean`                      | `true`         |
+| `inverted`         | `inverted`           | If `true` the dropdown can be used on blue background.                                                                                                    | `boolean`                      | `false`        |
 | `multiSelect`      | `multi-select`       | TODO: Describe                                                                                                                                            | `boolean`                      | `false`        |
 | `placeholder`      | `placeholder`        | Instructional text that shows before the input has a value.                                                                                               | `string`                       | `""`           |
 | `preActivateFirst` | `pre-activate-first` | If `true`, the first visible option in the dropdown will become activated for selection if nothing else has been selected before. Only works on typeahead | `boolean`                      | `true`         |

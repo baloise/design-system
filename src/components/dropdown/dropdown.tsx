@@ -124,6 +124,11 @@ export class Dropdown {
    */
   @Prop() disabled = false
 
+  /**
+   * If `true` the dropdown can be used on blue background.
+   */
+  @Prop() inverted = false
+
   @Watch("disabled")
   disabledWatcher(newValue: boolean) {
     if (newValue === true) {
@@ -483,6 +488,7 @@ export class Dropdown {
             this.isUp ? "is-up" : "",
             this.typeahead ? "is-typeahead" : "",
             this.multiSelect ? "is-multi-select" : "",
+            this.inverted ? "is-inverted" : ""
           ].join(" ")}
         >
           <div class="dropdown-trigger">
@@ -518,6 +524,7 @@ export class Dropdown {
                   display:
                     this.triggerIcon && !this.typeahead ? "flex" : "none",
                 }}
+                class={[this.inverted ? "is-inverted" : ""].join(" ")}
               />
             </div>
           </div>
