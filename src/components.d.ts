@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { CardStepOptions } from "./components/card-step/card-step";
+import { CardStepOptions as CardStepOptions1 } from "./components/card-step/card-step";
 import { DateCallback, FormatLabelCallback } from "./components/datepicker/datepicker";
 import { DateCallback as DateCallback1 } from "./components/datepicker/datepicker";
 import { Option } from "./components/dropdown-option/dropdown-option.types";
@@ -145,6 +147,50 @@ export namespace Components {
         "inverted": boolean;
     }
     interface BalCardHeading {
+    }
+    interface BalCardStep {
+        /**
+          * Tell's if the step is active and the content is visible.
+         */
+        "active": boolean;
+        /**
+          * If `true` a small red bubble is added to the step.
+         */
+        "bubble": boolean;
+        /**
+          * If `true` the step is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the step is done.
+         */
+        "done": boolean;
+        /**
+          * Options of the step like label, value etc.
+         */
+        "getOptions": () => Promise<CardStepOptions>;
+        /**
+          * Label for the step.
+         */
+        "label": string;
+        /**
+          * Sets the step active.
+         */
+        "setActive": (active: boolean) => Promise<void>;
+        /**
+          * This is the key of the step.
+         */
+        "value": string;
+    }
+    interface BalCardSteps {
+        /**
+          * If `true` a the style is ready for a dark background.
+         */
+        "inverted": boolean;
+        /**
+          * Select a step.
+         */
+        "select": (value: string) => Promise<void>;
     }
     interface BalCardSubtitle {
         /**
@@ -719,6 +765,18 @@ declare global {
         prototype: HTMLBalCardHeadingElement;
         new (): HTMLBalCardHeadingElement;
     };
+    interface HTMLBalCardStepElement extends Components.BalCardStep, HTMLStencilElement {
+    }
+    var HTMLBalCardStepElement: {
+        prototype: HTMLBalCardStepElement;
+        new (): HTMLBalCardStepElement;
+    };
+    interface HTMLBalCardStepsElement extends Components.BalCardSteps, HTMLStencilElement {
+    }
+    var HTMLBalCardStepsElement: {
+        prototype: HTMLBalCardStepsElement;
+        new (): HTMLBalCardStepsElement;
+    };
     interface HTMLBalCardSubtitleElement extends Components.BalCardSubtitle, HTMLStencilElement {
     }
     var HTMLBalCardSubtitleElement: {
@@ -937,6 +995,8 @@ declare global {
         "bal-card-button": HTMLBalCardButtonElement;
         "bal-card-content": HTMLBalCardContentElement;
         "bal-card-heading": HTMLBalCardHeadingElement;
+        "bal-card-step": HTMLBalCardStepElement;
+        "bal-card-steps": HTMLBalCardStepsElement;
         "bal-card-subtitle": HTMLBalCardSubtitleElement;
         "bal-card-title": HTMLBalCardTitleElement;
         "bal-data": HTMLBalDataElement;
@@ -1094,6 +1154,46 @@ declare namespace LocalJSX {
         "inverted"?: boolean;
     }
     interface BalCardHeading {
+    }
+    interface BalCardStep {
+        /**
+          * Tell's if the step is active and the content is visible.
+         */
+        "active"?: boolean;
+        /**
+          * If `true` a small red bubble is added to the step.
+         */
+        "bubble"?: boolean;
+        /**
+          * If `true` the step is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the step is done.
+         */
+        "done"?: boolean;
+        /**
+          * Label for the step.
+         */
+        "label"?: string;
+        /**
+          * Emitted when the steps get rendered.
+         */
+        "onBalCardStepChanged"?: (event: CustomEvent<any>) => void;
+        /**
+          * This is the key of the step.
+         */
+        "value"?: string;
+    }
+    interface BalCardSteps {
+        /**
+          * If `true` a the style is ready for a dark background.
+         */
+        "inverted"?: boolean;
+        /**
+          * Emitted when the changes has finished.
+         */
+        "onBalCardStepsDidChange"?: (event: CustomEvent<CardStepOptions>) => void;
     }
     interface BalCardSubtitle {
         /**
@@ -1619,6 +1719,8 @@ declare namespace LocalJSX {
         "bal-card-button": BalCardButton;
         "bal-card-content": BalCardContent;
         "bal-card-heading": BalCardHeading;
+        "bal-card-step": BalCardStep;
+        "bal-card-steps": BalCardSteps;
         "bal-card-subtitle": BalCardSubtitle;
         "bal-card-title": BalCardTitle;
         "bal-data": BalData;
@@ -1667,6 +1769,8 @@ declare module "@stencil/core" {
             "bal-card-button": LocalJSX.BalCardButton & JSXBase.HTMLAttributes<HTMLBalCardButtonElement>;
             "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
             "bal-card-heading": LocalJSX.BalCardHeading & JSXBase.HTMLAttributes<HTMLBalCardHeadingElement>;
+            "bal-card-step": LocalJSX.BalCardStep & JSXBase.HTMLAttributes<HTMLBalCardStepElement>;
+            "bal-card-steps": LocalJSX.BalCardSteps & JSXBase.HTMLAttributes<HTMLBalCardStepsElement>;
             "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
             "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
             "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
