@@ -9,6 +9,10 @@
 
 .tabs {
   margin: 0 !important;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
 
   & > ul {
     margin: 0;
