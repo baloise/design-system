@@ -42,6 +42,8 @@
   - [Accordion](components/accordion/readme.md)
   - [Button](components/button/readme.md)
   - [Card](components/card/readme.md)
+  - [CardSteps](components/card-steps/readme.md)
+    - [CardStep](components/card-step/readme.md)
   - [Data List](components/data/readme.md)
   - [Filter-Button](components/filter-button/readme.md)
   - [Icon](components/icon/readme.md)
