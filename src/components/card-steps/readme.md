@@ -12,6 +12,7 @@ The steps list is useful for tracking progress in multi steps forms or wizards.
       <bal-card-step value="step-c" label="Step C" class="has-text-white">Step C Content</bal-card-step>
       <bal-card-step value="step-d" label="Step D" disabled class="has-text-white">Step D Content</bal-card-step>
       <bal-card-step value="step-e" label="Step E" disabled class="has-text-white">Step E Content</bal-card-step>
+      <bal-card-step value="step-f" label="Step F" hidden class="has-text-white">Step F Content</bal-card-step>
     </bal-card-steps>
 </bal-card>
 ```
@@ -35,6 +36,7 @@ The steps list is useful for tracking progress in multi steps forms or wizards.
 
 | Property   | Attribute  | Description                                           | Type      | Default |
 | ---------- | ---------- | ----------------------------------------------------- | --------- | ------- |
+| `hidden`   | `hidden`   | If `true` the steps navigation is hidden.             | `boolean` | `false` |
 | `inverted` | `inverted` | If `true` a the style is ready for a dark background. | `boolean` | `false` |
 
 

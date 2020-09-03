@@ -27,6 +27,11 @@ export class CardSteps {
   @Prop() inverted: boolean = false
 
   /**
+   * If `true` the steps navigation is hidden.
+   */
+  @Prop() hidden: boolean = false
+
+  /**
    * Emitted when the changes has finished.
    */
   @Event({ eventName: 'balCardStepsDidChange' }) stepsDidChange: EventEmitter<CardStepOptions>
@@ -71,9 +76,9 @@ export class CardSteps {
   render() {
     return (
       <Host>
-        <div class={['tabs', this.inverted ? 'is-inverted' : ''].join(' ')}>
+        <div class={['tabs', this.inverted ? 'is-inverted' : '', this.hidden ? 'is-hidden' : ''].join(' ')}>
           <ul>
-            {this.stepOptions.map((step, index) => (
+            {this.stepOptions.filter(step => !step.hidden && !this.hidden).map((step, index) => (
               <li
                 class={[
                   step.active ? 'is-active' : '',
@@ -84,10 +89,6 @@ export class CardSteps {
                 <a onClick={() => this.onSelectStep(step)} title={step.label}>
                   <span class="step-index"><span>{index + 1}</span></span>
                 </a>
-                <span
-                  class="bubble"
-                  style={!step.hasBubble && { display: 'none' }}
-                ></span>
               </li>
             ))}
           </ul>

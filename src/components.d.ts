@@ -154,10 +154,6 @@ export namespace Components {
          */
         "active": boolean;
         /**
-          * If `true` a small red bubble is added to the step.
-         */
-        "bubble": boolean;
-        /**
           * If `true` the step is disabled.
          */
         "disabled": boolean;
@@ -169,6 +165,10 @@ export namespace Components {
           * Options of the step like label, value etc.
          */
         "getOptions": () => Promise<CardStepOptions>;
+        /**
+          * If `true` the step is hidden in the steps navigation.
+         */
+        "hidden": boolean;
         /**
           * Label for the step.
          */
@@ -183,6 +183,10 @@ export namespace Components {
         "value": string;
     }
     interface BalCardSteps {
+        /**
+          * If `true` the steps navigation is hidden.
+         */
+        "hidden": boolean;
         /**
           * If `true` a the style is ready for a dark background.
          */
@@ -1161,10 +1165,6 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
         /**
-          * If `true` a small red bubble is added to the step.
-         */
-        "bubble"?: boolean;
-        /**
           * If `true` the step is disabled.
          */
         "disabled"?: boolean;
@@ -1172,6 +1172,10 @@ declare namespace LocalJSX {
           * If `true` the step is done.
          */
         "done"?: boolean;
+        /**
+          * If `true` the step is hidden in the steps navigation.
+         */
+        "hidden"?: boolean;
         /**
           * Label for the step.
          */
@@ -1186,6 +1190,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalCardSteps {
+        /**
+          * If `true` the steps navigation is hidden.
+         */
+        "hidden"?: boolean;
         /**
           * If `true` a the style is ready for a dark background.
          */

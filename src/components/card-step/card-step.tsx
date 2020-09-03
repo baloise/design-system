@@ -16,7 +16,7 @@ export interface CardStepOptions {
   active: boolean
   done: boolean
   disabled: boolean
-  hasBubble: boolean
+  hidden: boolean
 }
 
 @Component({
@@ -38,9 +38,9 @@ export class CardStep {
   @Prop() label: string = ''
 
   /**
-   * If `true` a small red bubble is added to the step.
+   * If `true` the step is hidden in the steps navigation.
    */
-  @Prop() bubble: boolean = false
+  @Prop() hidden: boolean = false
 
   /**
    * If `true` the step is disabled.
@@ -74,7 +74,7 @@ export class CardStep {
       active: this.active,
       done: this.done,
       disabled: this.disabled,
-      hasBubble: this.bubble,
+      hidden: this.hidden,
     }
   }
 
