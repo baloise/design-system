@@ -9,12 +9,14 @@
 .form > .label {
   font-size: $size-5 !important;
   margin-bottom: 0 !important;
+  font-family: $family-primary;
 }
 
 p.help {
   min-height: 22.5px;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+  font-family: $family-primary;
 }
 
 .control.has-icons-left *::part(input) {
@@ -24,7 +26,8 @@ p.help {
 .form {
   &.is-inverted {
     .label {
-      color: $white; 
+      color: $white;
+
     }
 
     .control {
@@ -34,7 +37,6 @@ p.help {
 
         &:focus,
         &.is-focused {
-          //border-width: 2px;
           border-bottom-color: $white;
         }
       }
@@ -45,7 +47,7 @@ p.help {
 
     }
 
-    p.help {
+    p.help:not(.is-danger) {
       color: $blue-line;
     }
 

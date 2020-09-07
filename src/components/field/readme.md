@@ -13,8 +13,8 @@ All generic form field, designed for consistency
 ### Inverted style
 
 ```html
-<div class="has-background-info is-padded">
-    <bal-field label="Firstname" inverted>
+<div class="has-background-info is-padded" >
+    <bal-field label="Firstname" validation-message="Field is required" inverted>
         <input class="input" placeholder="Enter firstname here" />
     </bal-field>
 </div>
