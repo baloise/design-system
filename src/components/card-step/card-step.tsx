@@ -100,10 +100,11 @@ export class CardStep {
 
   render() {
     return (
-      <Host>
-        <div class="card-step-content" style={this.isContentHidden && { display: 'none' }}>
-          <slot/>
-        </div>
+      <Host class={{
+        'is-hidden': this.isContentHidden,
+        'card-step-content': true,
+      }}>
+        <slot/>
       </Host>
     )
   }
