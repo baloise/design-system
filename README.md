@@ -23,4 +23,3 @@ The [documentation](https://baloise-ui-library.now.sh) is published on now.sh, a
 ## License
 
 [MIT](/LICENSE)
-
