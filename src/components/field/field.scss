@@ -24,7 +24,7 @@ p.help {
 .form {
   &.is-inverted {
     .label {
-      color: $white; 
+      color: $white;
     }
 
     .control {
@@ -34,7 +34,6 @@ p.help {
 
         &:focus,
         &.is-focused {
-          //border-width: 2px;
           border-bottom-color: $white;
         }
       }
@@ -45,7 +44,7 @@ p.help {
 
     }
 
-    p.help {
+    p.help:not(.is-danger) {
       color: $blue-line;
     }
 
