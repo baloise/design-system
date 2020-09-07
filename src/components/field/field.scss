@@ -9,12 +9,14 @@
 .form > .label {
   font-size: $size-5 !important;
   margin-bottom: 0 !important;
+  font-family: $family-primary;
 }
 
 p.help {
   min-height: 22.5px;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+  font-family: $family-primary;
 }
 
 .control.has-icons-left *::part(input) {
@@ -25,6 +27,7 @@ p.help {
   &.is-inverted {
     .label {
       color: $white;
+
     }
 
     .control {
