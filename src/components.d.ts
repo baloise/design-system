@@ -346,6 +346,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` the dropdown shows the empty message
+         */
+        "empty": boolean;
+        /**
           * If `true`, the component uses the whole width.
          */
         "expanded": boolean;
@@ -362,7 +366,7 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * TODO: Describe
+          * If `true` the dropdown allows multiple selection
          */
         "multiSelect": boolean;
         /**
@@ -373,10 +377,6 @@ export namespace Components {
           * Instructional text that shows before the input has a value.
          */
         "placeholder": string;
-        /**
-          * If `true`, the first visible option in the dropdown will become activated for selection if nothing else has been selected before. Only works on typeahead
-         */
-        "preActivateFirst": boolean;
         /**
           * If `true`, the user cannot interact with the input.
          */
@@ -1364,6 +1364,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If `true` the dropdown shows the empty message
+         */
+        "empty"?: boolean;
+        /**
           * If `true`, the component uses the whole width.
          */
         "expanded"?: boolean;
@@ -1376,7 +1380,7 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * TODO: Describe
+          * If `true` the dropdown allows multiple selection
          */
         "multiSelect"?: boolean;
         /**
@@ -1399,10 +1403,6 @@ declare namespace LocalJSX {
           * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string;
-        /**
-          * If `true`, the first visible option in the dropdown will become activated for selection if nothing else has been selected before. Only works on typeahead
-         */
-        "preActivateFirst"?: boolean;
         /**
           * If `true`, the user cannot interact with the input.
          */

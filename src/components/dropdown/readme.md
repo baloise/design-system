@@ -3,14 +3,6 @@
 ## Usage
 
 ```html
-<bal-dropdown>
-  <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
-  <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
-  <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
-</bal-dropdown>
-```
-
-```html
 <bal-dropdown id="bal-dropdown-example">
   <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
   <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
@@ -36,20 +28,31 @@ It can also deal with large content:
     document.getElementById('bal-dropdown-example').value = {
         label: 'Black Panter',
         value: '2'
-    };
+    }
     document.getElementById('bal-dropdown-example').addEventListener('balBlur', event => { 
         console.log('balBlur on bal-dropdown-example', event) 
-    });
+    })
     document.getElementById('bal-dropdown-typeahead-example').addEventListener('balInput', event => { 
         console.log('balInput on bal-dropdown-typeahead-example', event) 
-    });
+    })
     document.getElementById('bal-dropdown-typeahead-example').addEventListener('balChange', event => { 
         console.log('balChange on bal-dropdown-typeahead-example', event) 
-    });
+    })
     document.getElementById('bal-dropdown-typeahead-example').addEventListener('balBlur', event => { 
         console.log('balBlur on bal-dropdown-typeahead-example', event) 
-    });
+    })
 </script>
+
+### Custom empty message
+
+```html
+<bal-dropdown empty>
+  <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
+  <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
+  <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
+  <span slot="is-empty">No Results here! :-(</span>
+</bal-dropdown>
+```
 
 ### Inverted style
 
@@ -108,6 +111,8 @@ It can also deal with large content:
 </bal-dropdown>
 ```
 
+#### With typeahead
+
 ```html
 <bal-dropdown multi-select typeahead expanded>
   <bal-dropdown-option checkbox value="1" label="Ant-Man"></bal-dropdown-option>
@@ -123,6 +128,7 @@ It can also deal with large content:
   <bal-dropdown-option checkbox value="11" label="Thor"></bal-dropdown-option>
   <bal-dropdown-option checkbox value="12" label="Wasp"></bal-dropdown-option>
   <bal-dropdown-option checkbox value="13" label="Wolverine"></bal-dropdown-option>
+  <span slot="no-search-results">No results here with your search term! :-(</span>
 </bal-dropdown>
 ```
 
@@ -131,19 +137,19 @@ It can also deal with large content:
 
 ## Properties
 
-| Property           | Attribute            | Description                                                                                                                                               | Type                           | Default        |
-| ------------------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | -------------- |
-| `disabled`         | `disabled`           | If `true`, the user cannot interact with the input.                                                                                                       | `boolean`                      | `false`        |
-| `expanded`         | `expanded`           | If `true`, the component uses the whole width.                                                                                                            | `boolean`                      | `false`        |
-| `fixed`            | `fixed`              | If `true`, the height of the dropdown content is fixed.                                                                                                   | `boolean`                      | `true`         |
-| `inverted`         | `inverted`           | If `true` the dropdown can be used on blue background.                                                                                                    | `boolean`                      | `false`        |
-| `multiSelect`      | `multi-select`       | TODO: Describe                                                                                                                                            | `boolean`                      | `false`        |
-| `placeholder`      | `placeholder`        | Instructional text that shows before the input has a value.                                                                                               | `string`                       | `''`           |
-| `preActivateFirst` | `pre-activate-first` | If `true`, the first visible option in the dropdown will become activated for selection if nothing else has been selected before. Only works on typeahead | `boolean`                      | `true`         |
-| `readonly`         | `readonly`           | If `true`, the user cannot interact with the input.                                                                                                       | `boolean`                      | `false`        |
-| `triggerIcon`      | `trigger-icon`       | Defines the trigger icon on the right site.                                                                                                               | `string`                       | `'caret-down'` |
-| `typeahead`        | `typeahead`          | If `true`, the use can search for the option.                                                                                                             | `boolean`                      | `false`        |
-| `value`            | --                   | The value of the selected dropdown item.                                                                                                                  | `Option<any> \| Option<any>[]` | `null`         |
+| Property      | Attribute      | Description                                                 | Type                           | Default        |
+| ------------- | -------------- | ----------------------------------------------------------- | ------------------------------ | -------------- |
+| `disabled`    | `disabled`     | If `true`, the user cannot interact with the input.         | `boolean`                      | `false`        |
+| `empty`       | `empty`        | If `true` the dropdown shows the empty message              | `boolean`                      | `false`        |
+| `expanded`    | `expanded`     | If `true`, the component uses the whole width.              | `boolean`                      | `false`        |
+| `fixed`       | `fixed`        | If `true`, the height of the dropdown content is fixed.     | `boolean`                      | `true`         |
+| `inverted`    | `inverted`     | If `true` the dropdown can be used on blue background.      | `boolean`                      | `false`        |
+| `multiSelect` | `multi-select` | If `true` the dropdown allows multiple selection            | `boolean`                      | `false`        |
+| `placeholder` | `placeholder`  | Instructional text that shows before the input has a value. | `string`                       | `''`           |
+| `readonly`    | `readonly`     | If `true`, the user cannot interact with the input.         | `boolean`                      | `false`        |
+| `triggerIcon` | `trigger-icon` | Defines the trigger icon on the right site.                 | `string`                       | `'caret-down'` |
+| `typeahead`   | `typeahead`    | If `true`, the use can search for the option.               | `boolean`                      | `false`        |
+| `value`       | --             | The value of the selected dropdown item.                    | `Option<any> \| Option<any>[]` | `null`         |
 
 
 ## Events

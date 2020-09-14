@@ -17,7 +17,6 @@
 
     &.is-fixed .dropdown-content {
       overflow-y: hidden;
-      // max-height: 220px;
       padding: 0;
     }
 
@@ -83,7 +82,7 @@
       }
     }
 
-    .no-data {
+    .is-empty, .no-search-results {
       display: flex;
       justify-content: center;
       align-items: center;
