@@ -1,21 +1,9 @@
-import {
-  Component,
-  Host,
-  h,
-  Method,
-  Element,
-  Prop,
-  State,
-  Event,
-  EventEmitter,
-  Listen,
-  Watch,
-} from "@stencil/core"
-import {Option} from "../dropdown-option/dropdown-option.types"
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core'
+import { Option } from '../dropdown-option/dropdown-option.types'
 
 @Component({
-  tag: "bal-dropdown",
-  styleUrl: "dropdown.scss",
+  tag: 'bal-dropdown',
+  styleUrl: 'dropdown.scss',
   shadow: true,
 })
 export class Dropdown {
@@ -37,7 +25,7 @@ export class Dropdown {
   @State() maxDropdownWidth = 100
   @State() isActive = false
 
-  @Watch("isActive")
+  @Watch('isActive')
   async isActiveWatcher(newIsActive: boolean) {
     if (newIsActive) {
       if (this.typeahead && this.preActivateFirst) {
@@ -69,7 +57,7 @@ export class Dropdown {
    */
   @Prop() value: Option<any> | Option<any>[] = null
 
-  @Watch("value")
+  @Watch('value')
   valueWatcher(newValue: Option<any> | Option<any>[]) {
     if (newValue) {
       this.selectedOption = this.value
@@ -79,12 +67,12 @@ export class Dropdown {
   }
 
   updateLabel() {
-    let label = ""
+    let label = ''
     if (Array.isArray(this.value)) {
       label = this.value
         .filter((v) => v)
         .map((v) => v.label)
-        .join(", ")
+        .join(', ')
     } else {
       label = this.value.label
     }
@@ -112,7 +100,7 @@ export class Dropdown {
   /**
    * Instructional text that shows before the input has a value.
    */
-  @Prop() placeholder = ""
+  @Prop() placeholder = ''
 
   /**
    * If `true`, the user cannot interact with the input.
@@ -129,7 +117,7 @@ export class Dropdown {
    */
   @Prop() inverted = false
 
-  @Watch("disabled")
+  @Watch('disabled')
   disabledWatcher(newValue: boolean) {
     if (newValue === true) {
       this.isActive = false
@@ -160,7 +148,7 @@ export class Dropdown {
   /**
    * Defines the trigger icon on the right site.
    */
-  @Prop() triggerIcon = "caret-down"
+  @Prop() triggerIcon = 'caret-down'
 
   /**
    * Emitted when containing input field raises an input event.
@@ -187,10 +175,10 @@ export class Dropdown {
    */
   @Event() balFocus!: EventEmitter<void>
 
-  @Listen("keyup", {target: "document"})
+  @Listen('keyup', { target: 'document' })
   tabOutside(event: KeyboardEvent) {
     if (
-      event.key === "Tab" &&
+      event.key === 'Tab' &&
       !this.element.contains(document.activeElement) &&
       this.isActive
     ) {
@@ -198,7 +186,7 @@ export class Dropdown {
     }
   }
 
-  @Listen("click", {target: "document"})
+  @Listen('click', { target: 'document' })
   clickOnOutside(event: UIEvent) {
     if (!this.element.contains(event.target as any) && this.isActive) {
       this.toggle()
@@ -277,7 +265,7 @@ export class Dropdown {
   get children(): HTMLBalDropdownOptionElement[] {
     return Array.from(
       this.element.querySelectorAll<HTMLBalDropdownOptionElement>(
-        "bal-dropdown-option",
+        'bal-dropdown-option',
       ),
     )
   }
@@ -347,7 +335,7 @@ export class Dropdown {
   async onKeyUp(event: KeyboardEvent) {
     if (
       !this.disabled &&
-      ["Enter", "ArrowUp", "ArrowDown", "Up", "Down"].indexOf(event.key) < 0
+      ['Enter', 'ArrowUp', 'ArrowDown', 'Up', 'Down'].indexOf(event.key) < 0
     ) {
       const inputValue = (event.target as HTMLInputElement).value
       if (this.typeahead && !this.multiSelect) {
@@ -371,29 +359,29 @@ export class Dropdown {
     this.maxDropdownWidth = window.innerWidth - rect.x - Dropdown.MIN_DISTANCE_TO_BROWSER_BORDER
   }
 
-  @Listen("keyup")
+  @Listen('keyup')
   handleKeyUp(event: KeyboardEvent) {
-    if (event.key === "Escape" || event.key === "Esc") {
+    if (event.key === 'Escape' || event.key === 'Esc') {
       event.preventDefault()
       this.isActive = false
       this.fireBlurIfPossible()
     }
   }
 
-  @Listen("keydown")
+  @Listen('keydown')
   async handleKeyDown(event: KeyboardEvent) {
     if (
-      event.key === "ArrowUp" ||
-      event.key === "ArrowDown" ||
-      event.key === "Down" ||
-      event.key === "Up"
+      event.key === 'ArrowUp' ||
+      event.key === 'ArrowDown' ||
+      event.key === 'Down' ||
+      event.key === 'Up'
     ) {
       event.preventDefault()
       await this.focusNextItem(
-        event.key === "ArrowDown" || event.key === "Down",
+        event.key === 'ArrowDown' || event.key === 'Down',
       )
     }
-    if (event.key === "Enter" && this.activeItemIndex >= 0) {
+    if (event.key === 'Enter' && this.activeItemIndex >= 0) {
       event.preventDefault()
       this.select({
         label: this.children[this.activeItemIndex].label,
@@ -481,26 +469,26 @@ export class Dropdown {
       <Host>
         <div
           class={[
-            "dropdown",
-            this.expanded ? "is-fullwidth" : "",
-            this.isActive ? "is-active" : "",
-            this.fixed ? "is-fixed" : "",
-            this.isUp ? "is-up" : "",
-            this.typeahead ? "is-typeahead" : "",
-            this.multiSelect ? "is-multi-select" : "",
-            this.inverted ? "is-inverted" : ""
-          ].join(" ")}
+            'dropdown',
+            this.expanded ? 'is-fullwidth' : '',
+            this.isActive ? 'is-active' : '',
+            this.fixed ? 'is-fixed' : '',
+            this.isUp ? 'is-up' : '',
+            this.typeahead ? 'is-typeahead' : '',
+            this.multiSelect ? 'is-multi-select' : '',
+            this.inverted ? 'is-inverted' : '',
+          ].join(' ')}
         >
           <div class="dropdown-trigger">
             <div
               class={[
-                "control",
-                this.triggerIcon && !this.typeahead ? "has-icons-right" : "",
-              ].join(" ")}
+                'control',
+                this.triggerIcon && !this.typeahead ? 'has-icons-right' : '',
+              ].join(' ')}
             >
               <input
                 part="input"
-                class={["input", this.isActive ? "is-focused" : ""].join(" ")}
+                class={['input', this.isActive ? 'is-focused' : ''].join(' ')}
                 autocomplete="off"
                 disabled={this.disabled}
                 readOnly={
@@ -522,15 +510,15 @@ export class Dropdown {
                 isRight={true}
                 style={{
                   display:
-                    this.triggerIcon && !this.typeahead ? "flex" : "none",
+                    this.triggerIcon && !this.typeahead ? 'flex' : 'none',
                 }}
-                class={[this.inverted ? "is-inverted" : ""].join(" ")}
+                class={[this.inverted ? 'is-inverted' : ''].join(' ')}
               />
             </div>
           </div>
           <div
             class="dropdown-menu"
-            style={{maxWidth: this.maxDropdownWidth + 'px'}}
+            style={{ maxWidth: this.maxDropdownWidth + 'px' }}
             role="menu"
             ref={(el) => (this.dropdownMenuElement = el as HTMLInputElement)}
           >
@@ -540,7 +528,7 @@ export class Dropdown {
                   <bal-field icon-left="search">
                     <input
                       part="input"
-                      class={["input"].join(" ")}
+                      class={['input'].join(' ')}
                       autocomplete="off"
                       placeholder={this.placeholder}
                       onKeyUp={this.onKeyUp.bind(this)}
@@ -551,7 +539,7 @@ export class Dropdown {
                   </bal-field>
                 </div>
               ) : (
-                ""
+                ''
               )}
               <div
                 part="content-options"
@@ -564,7 +552,7 @@ export class Dropdown {
               </div>
               <span
                 class="no-data"
-                style={!this.hasNoData && {display: "none"}}
+                style={!this.hasNoData && { display: 'none' }}
               >
                 <slot name="no-data-content">No Data</slot>
               </span>

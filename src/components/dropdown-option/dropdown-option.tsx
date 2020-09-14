@@ -32,10 +32,29 @@ export class DropdownOption {
    */
   @Prop() label = ''
 
+  /**
+   * Baloise icon as a prefix
+   */
   @Prop() icon = ''
+
+  /**
+   * Use checkbox for multi-select
+   */
   @Prop() checkbox = false
+
+  /**
+   * If `true` the option is focused
+   */
   @Prop() focused = false
+
+  /**
+   * If `true` the option is selected
+   */
   @Prop() selected = false
+
+  /**
+   * Tells witch part of the label should be highlighted
+   */
   @Prop() highlight = ''
 
   @Watch('highlight')
@@ -56,7 +75,7 @@ export class DropdownOption {
     if ((this.element.parentNode as any).tagName === 'DIV') {
       // IE11 doesn't allow shadowing so we have tho navigate the dom up to the parent element.
       try {
-        return this.element.parentNode.parentNode.parentNode.parentNode as any
+        return this.element.parentNode.parentNode.parentNode.parentNode.parentNode as any
       } catch (e) {
         // Do nothing
       }
@@ -86,7 +105,7 @@ export class DropdownOption {
   }
 
   private setLabelHtml(content: string) {
-    if (this.labelElement && this.labelElement.innerHTML) {
+    if (this.labelElement && this.labelElement.innerHTML !== undefined) {
       this.labelElement.innerHTML = content
     }
   }
@@ -131,7 +150,8 @@ export class DropdownOption {
             class="icon"
             style={{ display: this.icon.length === 0 ? 'none' : 'flex' }}
           >
-            <bal-icon name={this.icon} size="medium"></bal-icon>
+            <bal-icon name={this.icon}
+                      size="medium"></bal-icon>
           </span>
           <span
             class="label"
