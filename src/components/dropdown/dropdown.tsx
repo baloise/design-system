@@ -22,7 +22,6 @@ export class Dropdown {
 
   @State() maxDropdownWidth = 100
   @State() isActive = false
-  @State() allTheOptionsAreHidden = true
 
   /**
    * The value of the selected dropdown item.
@@ -237,8 +236,6 @@ export class Dropdown {
   }
 
   async onInputClick() {
-    await this.checkIfOptionListIsEmpty()
-
     if (!this.typeahead || (this.typeahead && this.multiSelect)) {
       await this.toggle()
     }
@@ -278,7 +275,6 @@ export class Dropdown {
       if (this.typeahead && children && children.length > 0) {
         children.forEach((child) => (child.highlight = inputValue))
       }
-      await this.checkIfOptionListIsEmpty()
       this.fireBlurIfPossible()
     }
   }
@@ -386,12 +382,6 @@ export class Dropdown {
               >
                 <slot name="is-empty">No item available</slot>
               </span>
-              <span
-                class="no-search-results"
-                style={(!this.allTheOptionsAreHidden) && { display: 'none' }}
-              >
-                <slot name="no-search-results">Could not find any item</slot>
-              </span>
             </div>
           </div>
         </div>
@@ -444,13 +434,6 @@ export class Dropdown {
         child.selected = child.value === this.selectedOption.value
       }
     })
-  }
-
-  private async checkIfOptionListIsEmpty() {
-    const childrenWithHiddenState = await this.childrenWithHiddenState
-    this.allTheOptionsAreHidden =
-      childrenWithHiddenState.every((hidden) => hidden === true) &&
-      childrenWithHiddenState.length > 0
   }
 
 }
