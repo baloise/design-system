@@ -1,13 +1,4 @@
-import {
-  Component,
-  Host,
-  h,
-  Element,
-  Prop,
-  State,
-  Watch,
-  Method,
-} from '@stencil/core'
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core'
 import { Components } from '../../components'
 import { Option } from './dropdown-option.types'
 
@@ -31,6 +22,11 @@ export class DropdownOption {
    * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
    */
   @Prop() label = ''
+
+  /**
+   * If a slot is used instead of label attribute use this value to hide and display the dropdown option.
+   */
+  @Prop() searchTerm = ''
 
   /**
    * Baloise icon as a prefix
@@ -83,24 +79,35 @@ export class DropdownOption {
     return this.element.parentNode as any
   }
 
+  get hasSlotValue() {
+    return !(this.label && this.label.length > 0)
+  }
+
   updateLabel() {
-    if (this.highlight.length > 0) {
-      const index = this.label
+    let label = this.label
+    if (this.hasSlotValue) {
+      label = this.searchTerm || ''
+    }
+
+    if (this.highlight && this.highlight.length > 0) {
+      const index = label
         .toLowerCase()
         .indexOf(this.highlight.toLowerCase())
       this.hidden = index < 0
-      if (index >= 0) {
+      if (index >= 0 && !this.hasSlotValue) {
         this.setLabelHtml(
-          this.label.substring(0, index) +
+          label.substring(0, index) +
           '<span class=\'highlight\'>' +
-          this.label.substring(index, index + this.highlight.length) +
+          label.substring(index, index + this.highlight.length) +
           '</span>' +
-          this.label.substring(index + this.highlight.length, this.label.length),
+          label.substring(index + this.highlight.length, label.length),
         )
       }
     } else {
       this.hidden = false
-      this.setLabelHtml(this.label)
+      if (!this.hasSlotValue) {
+        this.setLabelHtml(label)
+      }
     }
   }
 
