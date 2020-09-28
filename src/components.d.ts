@@ -425,6 +425,10 @@ export namespace Components {
          */
         "label": string;
         /**
+          * If a slot is used instead of label attribute use this value to hide and display the dropdown option.
+         */
+        "searchTerm": string;
+        /**
           * If `true` the option is selected
          */
         "selected": boolean;
@@ -1441,6 +1445,10 @@ declare namespace LocalJSX {
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
         "label"?: string;
+        /**
+          * If a slot is used instead of label attribute use this value to hide and display the dropdown option.
+         */
+        "searchTerm"?: string;
         /**
           * If `true` the option is selected
          */

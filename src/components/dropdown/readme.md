@@ -54,6 +54,25 @@ It can also deal with large content:
 </bal-dropdown>
 ```
 
+### Custom options style
+
+```html
+<bal-dropdown>
+  <bal-dropdown-option value="1" search-term="Ant Man San Franciso">
+    <b>Ant Man</b><br>
+    <span>San Franciso</span>
+  </bal-dropdown-option>
+  <bal-dropdown-option value="2" search-term="Black Panter Wakanda">
+   <b>Black Panter</b><br>
+   <span>Wakanda</span>
+  </bal-dropdown-option>
+  <bal-dropdown-option value="3" search-term="Black Widow Russia">
+   <b>Black Widow</b><br>
+   <span>Russia</span>
+  </bal-dropdown-option>
+</bal-dropdown>
+```
+
 ### Inverted style
 
 ```html
