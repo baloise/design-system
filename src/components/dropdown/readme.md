@@ -58,15 +58,15 @@ It can also deal with large content:
 
 ```html
 <bal-dropdown>
-  <bal-dropdown-option value="1" search-term="Ant Man San Franciso">
+  <bal-dropdown-option value="1" search-term="Ant Man San Franciso" label="Ant-Man">
     <b>Ant Man</b><br>
     <span>San Franciso</span>
   </bal-dropdown-option>
-  <bal-dropdown-option value="2" search-term="Black Panter Wakanda">
+  <bal-dropdown-option value="2" search-term="Black Panter Wakanda" label="Black Panter">
    <b>Black Panter</b><br>
    <span>Wakanda</span>
   </bal-dropdown-option>
-  <bal-dropdown-option value="3" search-term="Black Widow Russia">
+  <bal-dropdown-option value="3" search-term="Black Widow Russia" label="Black Widow">
    <b>Black Widow</b><br>
    <span>Russia</span>
   </bal-dropdown-option>

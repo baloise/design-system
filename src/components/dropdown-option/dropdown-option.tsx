@@ -11,6 +11,8 @@ export class DropdownOption {
   @Element() element!: HTMLElement
   labelElement!: HTMLSpanElement
 
+  isSlotEmpty = true
+
   @State() hidden = false
 
   /**
@@ -64,6 +66,7 @@ export class DropdownOption {
   }
 
   componentDidLoad() {
+    this.isSlotEmpty = this.labelElement.querySelector('slot').assignedElements().length === 0
     this.updateLabel()
   }
 
@@ -79,13 +82,9 @@ export class DropdownOption {
     return this.element.parentNode as any
   }
 
-  get hasSlotValue() {
-    return !(this.label && this.label.length > 0)
-  }
-
   updateLabel() {
     let label = this.label
-    if (this.hasSlotValue) {
+    if (!this.isSlotEmpty) {
       label = this.searchTerm || ''
     }
 
@@ -94,7 +93,7 @@ export class DropdownOption {
         .toLowerCase()
         .indexOf(this.highlight.toLowerCase())
       this.hidden = index < 0
-      if (index >= 0 && !this.hasSlotValue) {
+      if (index >= 0 && this.isSlotEmpty) {
         this.setLabelHtml(
           label.substring(0, index) +
           '<span class=\'highlight\'>' +
@@ -105,7 +104,7 @@ export class DropdownOption {
       }
     } else {
       this.hidden = false
-      if (!this.hasSlotValue) {
+      if (this.isSlotEmpty) {
         this.setLabelHtml(label)
       }
     }

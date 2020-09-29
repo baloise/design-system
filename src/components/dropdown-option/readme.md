@@ -38,6 +38,18 @@ A basic dropdown option.
 ></bal-dropdown-option>
 ```
 
+### With Custom Style
+
+```html
+<bal-dropdown-option 
+    value="1" 
+    label="Black Widow"
+    search-term="Black Widow Russia" >
+    <b>Black Widow</b><br>
+    <span>Russia</span>
+</bal-dropdown-option>
+```
+
 ### With a Checkbox
 
 ```html
