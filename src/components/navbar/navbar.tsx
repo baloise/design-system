@@ -1,4 +1,4 @@
-import {Component, Host, h, Prop} from "@stencil/core";
+import {Element, Component, Host, h, Prop} from "@stencil/core";
 
 @Component({
   tag: "bal-navbar",
@@ -6,8 +6,18 @@ import {Component, Host, h, Prop} from "@stencil/core";
 })
 export class Navbar {
 
+  hasNavbarStartSlot: boolean;
+  hasNavbarEndSlot: boolean;
+
   @Prop() light = false;
   @Prop() logoHref = "https://bulma.io";
+
+  @Element() el: HTMLElement;;
+
+  componentWillLoad() {
+    this.hasNavbarStartSlot = !!this.el.querySelector('[slot="navbar-start"]');
+    this.hasNavbarEndSlot = !!this.el.querySelector('[slot="navbar-end"]');
+  }
 
   render() {
     return (
@@ -21,11 +31,13 @@ export class Navbar {
                href={this.logoHref}>
               <slot name="navbar-brand"/>
             </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
+            {this.hasNavbarStartSlot || this.hasNavbarEndSlot ?
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            : ""}
           </div>
           <div class="navbar-menu">
             <div class="navbar-start">
