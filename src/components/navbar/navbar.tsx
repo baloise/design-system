@@ -1,4 +1,4 @@
-import {Element, Component, Host, h, Prop} from "@stencil/core";
+import {Element, Component, Host, h, Prop, State} from "@stencil/core";
 
 @Component({
   tag: "bal-navbar",
@@ -8,6 +8,8 @@ export class Navbar {
 
   hasNavbarStartSlot: boolean;
   hasNavbarEndSlot: boolean;
+
+  @State() isMenuActive: boolean = false;
 
   @Prop() light = false;
   @Prop() logoHref = "https://bulma.io";
@@ -19,27 +21,33 @@ export class Navbar {
     this.hasNavbarEndSlot = !!this.el.querySelector('[slot="navbar-end"]');
   }
 
+  async toggle(): Promise<void> {
+    this.isMenuActive = !this.isMenuActive;
+  }
+
   render() {
     return (
       <Host>
-        <nav class={[
-          "navbar is-spaced bal-track-line",
-          this.light ? "is-white" : "is-info",
-        ].join(" ")} role="navigation" aria-label="main navigation">
+        <nav class={ "navbar is-spaced" + (this.light ? " is-white bal-track-line" : " is-info") }
+             role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
             <a class="navbar-item app-title"
                href={this.logoHref}>
               <slot name="navbar-brand"/>
             </a>
             {this.hasNavbarStartSlot || this.hasNavbarEndSlot ?
-              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+              <a role="button"
+                 class={ "navbar-burger" + (this.isMenuActive ? " is-active" : "") }
+                 aria-label="menu"
+                 aria-expanded={ this.isMenuActive ? "true" : "false" }
+                 onClick={ () => this.toggle() }>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
               </a>
             : ""}
           </div>
-          <div class="navbar-menu">
+          <div class={ "navbar-menu" + (this.isMenuActive ? " is-active" : "") }>
             <div class="navbar-start">
               <slot name="navbar-start"/>
             </div>
