@@ -14,7 +14,7 @@ export class Navbar {
       <Host>
         <nav class={[
           "navbar is-spaced bal-track-line",
-          this.light ? "" : "is-info",
+          this.light ? "is-white" : "is-info",
         ].join(" ")} role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
             <a class="navbar-item app-title"

@@ -55,6 +55,9 @@ A responsive horizontal navbar that can support images, links, buttons, and drop
     <span slot="navbar-brand">
         App Name
     </span>
+    <a slot="navbar-start" class="navbar-item">
+        Home
+    </a>
     <div slot="navbar-end" class="navbar-item">
         <bal-button inverted>Action</bal-button>
     </div>
