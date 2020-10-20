@@ -9,7 +9,7 @@ $navbar-padding-horizontal: 3.75rem;
 $navbar-z: 30;
 $navbar-fixed-z: 30;
 
-$navbar-item-color: red;
+$navbar-item-color: $white;
 $navbar-item-hover-color: $link;
 $navbar-item-hover-background-color: $scheme-main-bis;
 $navbar-item-active-color: $scheme-invert;
@@ -35,7 +35,7 @@ $navbar-dropdown-z: 20;
 
 $navbar-dropdown-boxed-radius: $radius-large;
 $navbar-dropdown-boxed-shadow: 0 8px 8px rgba($scheme-invert, 0.1),
-  0 0 0 1px rgba($scheme-invert, 0.1);
+0 0 0 1px rgba($scheme-invert, 0.1);
 
 $navbar-dropdown-item-hover-color: $scheme-invert;
 $navbar-dropdown-item-hover-background-color: $background;
@@ -65,10 +65,6 @@ $navbar-breakpoint: $desktop;
     background: $blue !important;
   }
 
-  .navbar-start {
-    margin-left: 15px;
-  }
-
   .app-title span {
     font-size: $size-3;
     color: $blue;
@@ -76,6 +72,12 @@ $navbar-breakpoint: $desktop;
 
   &.is-info .app-title span {
     color: $white;
+  }
+
+  .navbar-menu.is-active {
+    .navbar-item {
+      color: $blue;
+    }
   }
 
   .navbar-item img {

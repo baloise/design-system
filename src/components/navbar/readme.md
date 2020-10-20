@@ -70,10 +70,10 @@ A responsive horizontal navbar that can support images, links, buttons, and drop
 
 ## Properties
 
-| Property   | Attribute   | Description | Type      | Default              |
-| ---------- | ----------- | ----------- | --------- | -------------------- |
-| `light`    | `light`     |             | `boolean` | `false`              |
-| `logoHref` | `logo-href` |             | `string`  | `"https://bulma.io"` |
+| Property   | Attribute   | Description | Type      | Default |
+| ---------- | ----------- | ----------- | --------- | ------- |
+| `light`    | `light`     |             | `boolean` | `false` |
+| `logoHref` | `logo-href` |             | `string`  | `''`    |
 
 
 ----------------------------------------------
