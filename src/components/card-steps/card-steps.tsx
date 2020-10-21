@@ -32,6 +32,11 @@ export class CardSteps {
   @Prop() hidden: boolean = false
 
   /**
+   * If `true` the steps navigation is on.
+   */
+  @Prop() navigation: boolean = true
+
+  /**
    * Emitted when the changes has finished.
    */
   @Event({ eventName: 'balCardStepsDidChange' }) stepsDidChange: EventEmitter<CardStepOptions>
@@ -67,7 +72,7 @@ export class CardSteps {
   }
 
   private async onSelectStep(step: CardStepOptions): Promise<void> {
-    if (!step.disabled) {
+    if (!step.disabled && this.navigation) {
       await this.select(step.value)
       this.stepsDidChange.emit(step)
     }
