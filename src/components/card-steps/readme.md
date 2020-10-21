@@ -6,7 +6,7 @@ The steps list is useful for tracking progress in multi steps forms or wizards.
 
 ```html
 <bal-card inverted>
-    <bal-card-steps inverted>
+    <bal-card-steps navigation inverted>
       <bal-card-step value="step-a" label="Step A" done class="has-text-white">Step A Content</bal-card-step>
       <bal-card-step value="step-b" label="Step B" active class="has-text-white">Step B Content</bal-card-step>
       <bal-card-step value="step-c" label="Step C" class="has-text-white">Step C Content</bal-card-step>

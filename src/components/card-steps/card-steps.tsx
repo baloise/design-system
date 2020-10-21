@@ -34,7 +34,7 @@ export class CardSteps {
   /**
    * If `true` the steps navigation is on.
    */
-  @Prop() navigation: boolean = true
+  @Prop() navigation: boolean = false
 
   /**
    * Emitted when the changes has finished.
