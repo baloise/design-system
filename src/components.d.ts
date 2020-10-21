@@ -192,6 +192,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * If `true` the steps navigation is on.
+         */
+        "navigation": boolean;
+        /**
           * Select a step.
          */
         "select": (value: string) => Promise<void>;
@@ -1217,6 +1221,10 @@ declare namespace LocalJSX {
           * If `true` a the style is ready for a dark background.
          */
         "inverted"?: boolean;
+        /**
+          * If `true` the steps navigation is on.
+         */
+        "navigation"?: boolean;
         /**
           * Emitted when the changes has finished.
          */
