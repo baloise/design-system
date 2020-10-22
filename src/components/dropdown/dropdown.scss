@@ -62,7 +62,11 @@
       }
 
       ::-webkit-input-placeholder {
-        color: $blue-light-line;
+        color: $blue-light-text !important;
+      }
+
+      ::-moz-placeholder {
+        color: $blue-light-text !important;
       }
 
       .dropdown-trigger > .control > .input {

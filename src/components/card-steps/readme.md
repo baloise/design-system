@@ -38,7 +38,7 @@ The steps list is useful for tracking progress in multi steps forms or wizards.
 | ------------ | ------------ | ----------------------------------------------------- | --------- | ------- |
 | `hidden`     | `hidden`     | If `true` the steps navigation is hidden.             | `boolean` | `false` |
 | `inverted`   | `inverted`   | If `true` a the style is ready for a dark background. | `boolean` | `false` |
-| `navigation` | `navigation` | If `true` the steps navigation is on.                 | `boolean` | `true`  |
+| `navigation` | `navigation` | If `true` the steps navigation is on.                 | `boolean` | `false` |
 
 
 ## Events

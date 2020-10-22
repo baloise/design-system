@@ -77,7 +77,7 @@ It can also deal with large content:
 
 ```html
 <div class="has-background-info is-padded">
-  <bal-dropdown inverted>
+  <bal-dropdown inverted placeholder="Select your hero">
     <bal-dropdown-option value="1" label="Ant-Man"></bal-dropdown-option>
     <bal-dropdown-option value="2" label="Black Panter"></bal-dropdown-option>
     <bal-dropdown-option value="3" label="Black Widow"></bal-dropdown-option>
