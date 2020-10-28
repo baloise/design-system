@@ -9,6 +9,7 @@
 
   - [Styling](docs/essentials/styling.md)
   - [Colors](docs/essentials/colors.md)
+  - [Typography](docs/essentials/typography.md)
 
 - **Form**
 
@@ -33,7 +34,6 @@
   - [Image](docs/elements/image.md)
   - [Notification](docs/elements/notification.md)
   - [Table](docs/elements/table.md)
-  - [Title](docs/elements/title.md)
   - [Tooltip](docs/elements/tooltip.md)
   - [Track-Line](docs/elements/track-line.md)
 
