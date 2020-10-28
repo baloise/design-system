@@ -1,0 +1,88 @@
+// Headline
+h1.title.is-size-1 {
+  font-size: 25px !important;
+  line-height: 32px !important;
+}
+
+// Subheadline
+h2.title.is-size-2 {
+  font-size: 22px !important;
+  line-height: 28px !important;
+}
+
+// Title
+h3.title.is-size-3,
+h3.subtitle.is-size-3 {
+  font-size: 17px !important;
+  line-height: 22px !important;
+}
+
+// Lead
+h4.title.is-size-4,
+h4.subtitle.is-size-4 {
+  font-size: 14px !important;
+  line-height: 20px !important;
+}
+
+// paragraph
+p, a {
+  font-family: $family-primary !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+}
+
+// Small Text
+p.is-small,
+a.is-small {
+  font-size: 12px !important;
+  line-height: 16px !important;
+}
+
+@include tablet() {
+  // Headline
+  h1.title.is-size-1 {
+    font-size: 30px !important;
+    line-height: 38px !important;
+  }
+}
+
+@include desktop() {
+  // Headline
+  h1.title.is-size-1 {
+    font-size: 44px !important;
+    line-height: 50px !important;
+  }
+
+  // Subheadline
+  h2.title.is-size-2 {
+    font-size: 32px !important;
+    line-height: 40px !important;
+  }
+
+  // Title
+  h3.title.is-size-3,
+  h3.subtitle.is-size-3 {
+    font-size: 22px !important;
+    line-height: 28px !important;
+  }
+
+  // Lead
+  h4.title.is-size-4,
+  h4.subtitle.is-size-4 {
+    font-size: 18px !important;
+    line-height: 26px !important;
+  }
+
+  // paragraph
+  p, a {
+    font-size: 18px !important;
+    line-height: 26px !important;
+  }
+
+  // Small Text
+  p.is-small,
+  a.is-small {
+    font-size: 15px !important;
+    line-height: 20px !important;
+  }
+}
