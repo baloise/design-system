@@ -38,6 +38,11 @@ a.is-small {
   line-height: 16px !important;
 }
 
+p.is-bold,
+a.is-bold {
+  font-weight: $weight-bold;
+}
+
 @include tablet() {
   // Headline
   h1.title.is-size-1 {
