@@ -1,0 +1,351 @@
+@import './bal-card-steps.vars';
+@import 'node_modules/bulma/sass/components/tabs.sass';
+
+:host {
+  display: block;
+  position: static;
+  padding-top: 20px;
+
+  .tab-title {
+    margin: 0 !important;
+    padding: 0;
+    text-align: center;
+    position: absolute;
+    top: 23px;
+    left: 40px;
+    right: 40px;
+
+    &.is-inverted {
+      color: $white;
+    }
+  }
+
+  .card-steps-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+
+    .left-side {
+      position: absolute;
+      display: flex;
+      width: 40px;
+      flex-direction: row;
+      align-items: center;
+      padding-left: 20px;
+      top: 0;
+
+      a {
+        height: 30px;
+      }
+
+      .nav-go-left {
+        transform: rotate(180deg);
+        max-height: 30px;
+      }
+
+      .nav-go-left-label {
+        color: $blue;
+        font-family: $family-sans-serif;
+        font-size: 15px;
+        height: 33px;
+        line-height: 32px;
+        display: none;
+      }
+
+      a {
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+    }
+
+    &.is-inverted {
+      .left-side {
+        .nav-go-left-label {
+          color: white;
+          opacity: 0.5;
+        }
+      }
+
+      .nav-go-left {
+        opacity: 0.5;
+      }
+    }
+
+    .right-side {
+      position: absolute;
+      width: 40px;
+      padding-right: 20px;
+    }
+
+    .tabs {
+      margin: 0 !important;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      width: 100%;
+      max-height: 30px;
+      min-height: 30px;
+
+      & > ul {
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+      }
+
+      & > ul > li {
+        position: relative;
+        height: 30px;
+
+        & > a {
+          line-height: 1.2;
+          cursor: pointer;
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+          padding: 0;
+          width: 30px;
+
+          span.step-index {
+            position: relative;
+            background: $blue;
+            border: 1px solid $blue;
+            border-radius: 50%;
+            display: flex;
+            height: 8px;
+            width: 8px;
+            opacity: 0.5;
+          }
+
+          span.step-label,
+          span.step-index span {
+            display: none;
+          }
+        }
+
+        &.is-done > a span.step-index {
+          background: $blue;
+          opacity: 1;
+        }
+
+        &.is-active > a span.step-index {
+          background: transparent;
+          opacity: 1;
+        }
+
+        &.is-disabled > a,
+        &.is-disabled > a:hover {
+          cursor: not-allowed;
+        }
+      }
+
+      &.is-inverted {
+        & > ul > li {
+          & > a {
+            span.step-index {
+              background: $white;
+              border: 1px solid $white;
+            }
+          }
+
+          &.is-done > a span.step-index {
+            background: $white;
+            opacity: 1;
+          }
+
+          &.is-active > a span.step-index {
+            background: transparent;
+            opacity: 1;
+          }
+
+          &.is-done > a span.step-index {
+            background: $white;
+          }
+        }
+      }
+
+      &.is-disabled {
+        & ul > li > a {
+          cursor: unset !important;
+        }
+      }
+
+      &.is-hidden {
+        opacity: 0;
+      }
+    }
+
+    @include desktop() {
+      .tabs {
+        > ul > li {
+          & > a {
+            width: 50px;
+            color: $blue-light-text;
+            font-size: $size-3;
+
+            span.step-index {
+              height: 26px;
+              width: 26px;
+              line-height: 26px;
+              justify-content: center;
+              align-items: center;
+              background: transparent;
+              border: 1px solid $blue;
+              color: $blue;
+            }
+
+            span.step-index span {
+              display: flex;
+              font-size: $size-5;
+            }
+          }
+
+          &.is-done > a span.step-index {
+            span {
+              display: none;
+            }
+
+            &::after {
+              display: inline-block;
+              position: absolute;
+              background-color: transparent;
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: 24px 24px;
+              content: '';
+              top: 5px;
+              left: 9px;
+              width: 4px;
+              height: 10px;
+              border-bottom: 2px solid $white;
+              border-right: 2px solid $white;
+              border-top: 0;
+              border-left: 0;
+              -moz-transform: rotate(45deg);
+              -ms-transform: rotate(45deg);
+              -o-transform: rotate(45deg);
+              -webkit-transform: rotate(45deg);
+              transform: rotate(45deg);
+            }
+          }
+
+          &.is-active > a span.step-index {
+            background: transparent;
+            opacity: 1;
+
+            span {
+              display: flex;
+              color: $blue;
+            }
+
+            &::after {
+              content: none;
+            }
+          }
+
+          &.is-disabled > a,
+          &.is-disabled > a:hover {
+            cursor: not-allowed;
+
+            span.step-index {
+              background: transparent;
+              color: $blue;
+            }
+          }
+        }
+
+        &.is-inverted {
+          > ul > li {
+            & > a {
+              color: $blue-light-text;
+
+              span.step-index {
+                background: transparent;
+                border: 1px solid $white;
+                color: $white;
+              }
+            }
+
+            &.is-done > a span.step-index {
+              background: $white;
+
+              &::after {
+                border-bottom: 2px solid $blue;
+                border-right: 2px solid $blue;
+              }
+            }
+
+            &.is-active > a span.step-index {
+              background: transparent;
+
+              span {
+                color: $white;
+              }
+            }
+
+            &.is-disabled > a,
+            &.is-disabled > a:hover {
+              span.step-index {
+                background: transparent;
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include tablet() {
+    .tab-title {
+      top: 0;
+      left: 60px;
+      right: 60px;
+    }
+
+    .card-steps-wrapper {
+      .left-side {
+        width: 60px;
+
+        .nav-go-left-label {
+          display: none;
+        }
+      }
+
+      .right-side {
+        width: 60px;
+      }
+    }
+  }
+
+  @include desktop() {
+
+  }
+
+  @include fullhd() {
+    .tab-title {
+      left: 120px;
+      right: 120px;
+    }
+
+    .card-steps-wrapper {
+      .left-side {
+        width: 120px;
+
+        .nav-go-left-label {
+          display: inline;
+          white-space: nowrap;
+        }
+      }
+
+      .right-side {
+        width: 120px;
+      }
+    }
+  }
+}

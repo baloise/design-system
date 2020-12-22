@@ -1,86 +1,54 @@
 {
-  "name": "@baloise/ui-library",
-  "version": "0.0.0-development",
-  "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/baloise/ui-library.git"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
-  "types": "dist/types/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/ui-library/ui-library.js",
-  "files": [
-    "dist/",
-    "loader/",
-    "www/",
-    "src/scss/"
-  ],
-  "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.0.0"
+  "name": "root",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
-    "dev": "run-p start watch",
-    "start": "node server.js",
-    "watch": "nodemon --watch src --exec npm run build:dev -e md,scss,ts,tsx",
-    "build:dev": "stencil build --docs --dev --config stencil.config.dev.ts",
-    "serve": "stencil build --docs --dev --watch --serve",
-    "serve-ie": "stencil build --es5 --docs --dev --watch --serve",
-    "generate": "stencil generate",
-    "tslint": "tslint -c tslint.json 'src/**/*.ts' --format stylish",
-    "lint": "eslint \"src/**/*.ts\" --fix",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "build": "stencil build --es5 --docs --docs-json dist/docs.json",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "semantic-release": "semantic-release"
+    "postinstall": "npm run bootstrap && npm run docs:install",
+    "bootstrap": "lerna bootstrap",
+    "build": "npm run lib:build && npm run lib:vue:build && npm run lib:angular:build && npm run testing:build",
+    "lint": "lerna run lint",
+    "test": "npm run testing:run",
+    "clean": "rm -rf node_modules && rm -rf docs/node_modules && rm -rf packages/library/node_modules && rm -rf packages/vue/node_modules && rm -rf packages/angular/node_modules && rm -rf packages/testing/node_modules",
+    "release": "lerna publish --yes --force-publish",
+    "docs:install": "cd docs && npm install",
+    "docs:clean": "rimraf docs/www && rimraf docs/lib",
+    "docs:serve": "npm --prefix docs run serve",
+    "docs:build": "npm run docs:clean && npm --prefix packages/library run build:docs && npm --prefix packages/testing run build:docs && npm --prefix docs run build",
+    "docs:publish": "npm run docs:install && npm run docs:build",
+    "lib:build": "npm --prefix packages/library run build",
+    "lib:serve": "npm --prefix packages/library run serve",
+    "lib:serve:ie": "npm --prefix packages/library run serve:ie",
+    "lib:vue:clean": "rimraf packages/vue/node_modules",
+    "lib:vue:build": "npm --prefix packages/vue run build",
+    "lib:angular:clean": "rimraf packages/angular/node_modules",
+    "lib:angular:build": "npm --prefix packages/angular run build",
+    "testing:run": "npm --prefix packages/testing run ci",
+    "testing:serve": "npm --prefix packages/testing run serve",
+    "testing:server": "npm --prefix packages/testing run start-server",
+    "testing:build": "npm --prefix packages/testing run build",
+    "vue:install": "npm --prefix examples/vue install",
+    "vue:serve": "npm --prefix examples/vue run serve",
+    "angular:install": "npm --prefix examples/angular install",
+    "angular:serve": "npm --prefix examples/angular run start"
   },
   "devDependencies": {
-    "@baloise/eslint-config-typescript": "1.0.0",
-    "@stencil/core": "1.17.3",
-    "@stencil/postcss": "1.0.1",
-    "@stencil/sass": "1.3.2",
-    "@types/jest": "26.0.9",
-    "@types/puppeteer": "1.20.2",
-    "@typescript-eslint/eslint-plugin": "3.8.0",
-    "@typescript-eslint/parser": "3.8.0",
-    "autoprefixer": "9.8.6",
-    "connect-livereload": "0.6.1",
-    "docsify": "4.11.4",
-    "docsify-cli": "4.4.1",
-    "eslint": "7.6.0",
-    "eslint-config-prettier": "6.11.0",
-    "express": "4.17.1",
-    "jest": "26.2.2",
-    "jest-cli": "26.2.2",
-    "livereload": "0.9.1",
-    "nodemon": "2.0.4",
-    "now": "19.2.0",
-    "npm-run-all": "4.1.5",
-    "opn": "6.0.0",
-    "prettier": "2.0.5",
-    "puppeteer": "1.20.0",
-    "semantic-release": "17.1.1"
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "husky": "^4.3.0",
+    "lerna": "^3.22.1",
+    "rimraf": "^3.0.2"
   },
-  "dependencies": {
-    "bulma": "0.9.0",
-    "filesize.js": "2.0.0",
-    "moment": "2.27.0"
-  },
-  "resolutions": {
-    "mem": "^4.0.0",
-    "minimist": "^1.2.5",
-    "kind-of": ">=6.0.3"
-  },
-  "now": {
-    "env": {
-      "NODE_ENV": "production"
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
-  }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "dependencies": {}
 }

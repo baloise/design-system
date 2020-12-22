@@ -1,0 +1,50 @@
+input.input,
+textarea.textarea {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-width: 1px;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1px 0 2px 0;
+  font-size: $size-4;
+  outline: none;
+  color: $text;
+  height: 2.2em;
+
+  &:focus,
+  &.is-focused {
+    border-width: 2px;
+    border-color: $blue;
+    padding: 1px 0 1px 0;
+    box-shadow: none;
+  }
+
+  &.is-inverted {
+    color: $white;
+    border-bottom-color: $blue-line;
+    background: transparent;
+
+    &:focus,
+    &.is-focused {
+      border-width: 2px;
+      border-bottom-color: $white;
+    }
+
+    &:disabled {
+      background-color: $blue-dark;
+    }
+  }
+}
+
+.textarea::placeholder,
+.input::placeholder {
+  font-family: $family-primary !important;
+}
+
+.textarea.is-inverted::placeholder,
+.input.is-inverted::placeholder {
+  color: $blue-light-text !important;
+  font-family: $family-primary !important;
+  opacity: 1;
+}

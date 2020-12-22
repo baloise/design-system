@@ -1,0 +1,15 @@
+@import 'bal-tag.vars';
+@import 'node_modules/bulma/sass/elements/tag';
+
+:host {
+  .tag {
+    padding: 0 20px 1px 20px;
+    align-items: center;
+    justify-content: center;
+    font-weight: $weight-bold;
+
+    &.default {
+      background-color: $grey;
+    }
+  }
+}

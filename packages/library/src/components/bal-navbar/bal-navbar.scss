@@ -1,0 +1,55 @@
+@import './bal-navbar.vars.scss';
+@import 'node_modules/bulma/sass/components/navbar';
+
+:host {
+  display: block;
+}
+
+.navbar {
+  &.is-info::after,
+  &.is-info::before {
+    opacity: 0 !important;
+  }
+
+  &.bal-track-line::after,
+  &.bal-track-line::before {
+    top: 0;
+  }
+
+  &.is-info .navbar-brand > a.navbar-item:focus,
+  &.is-info .navbar-brand > a.navbar-item:hover {
+    background: $blue !important;
+  }
+
+  &.is-white .navbar-brand > a.navbar-item:focus,
+  &.is-white .navbar-brand > a.navbar-item:hover {
+    background: $white !important;
+  }
+
+  .app-title {
+    font-family: $family-primary;
+    font-size: $size-3;
+    color: $blue;
+    text-decoration: none;
+  }
+
+  &.is-info .app-title {
+    color: $white !important;
+  }
+
+  &.is-white .app-title {
+    color: $blue !important;
+  }
+
+  .navbar-menu.is-active {
+    .navbar-item {
+      color: $blue;
+    }
+  }
+
+  .navbar-burger {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}

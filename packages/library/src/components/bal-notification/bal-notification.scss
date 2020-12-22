@@ -1,0 +1,52 @@
+@import './bal-notification.vars.scss';
+
+@import 'node_modules/bulma/sass/elements/notification';
+
+:host {
+  display: block;
+  position: static;
+
+  .notification {
+    background: $blue-light;
+    border: 1px solid $blue-light-line;
+    color: $blue;
+    font-family: $family-primary;
+
+    &.is-primary {
+      background: $blue;
+      border: 1px solid $blue;
+      color: $white;
+    }
+
+    &.is-info {
+      background: $white-bis;
+      border: 1px solid $blue-light-line;
+      color: $text;
+    }
+
+    &.is-link {
+      background: $blue;
+      color: $white;
+      border: none;
+    }
+
+    &.is-warning {
+      background: $yellow;
+      color: $white;
+      border: none;
+    }
+
+    &.is-danger {
+      background: $red;
+      color: $white;
+      border: none;
+    }
+
+    &.is-success {
+      background: $green;
+      color: $white;
+      border: none;
+    }
+
+  }
+}

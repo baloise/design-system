@@ -1,0 +1,52 @@
+@import '../../styles/ui-library.utilities';
+@import 'node_modules/bulma/sass/elements/icon.sass';
+@import 'bal-icons';
+@import 'bal-icons-font';
+
+bal-icon {
+  display: inline-block;
+  position: static;
+
+  .icon {
+    font-size: 24px;
+    i {
+      transition: rotate 0.3s;
+      transition: transform 0.3s;
+    }
+
+    &.is-small {
+      font-size: 16px;
+    }
+
+    &.is-medium {
+      font-size: 32px;
+    }
+
+    &.is-large {
+      font-size: 47px;
+    }
+
+    &.turn {
+      i.font {
+        rotate: 180deg;
+        transform: rotate(180deg);
+      }
+    }
+
+    i.font {
+      font-family: 'bal-ui-library';
+      font-style: normal;
+      font-weight: normal;
+      text-align: center;
+      color: $blue;
+
+      /* For safety - reset parent styles, that can break glyph codes*/
+      font-variant: normal;
+      text-transform: none;
+    }
+  }
+
+  &.is-inverted .icon i.font {
+    color: $blue-line;
+  }
+}

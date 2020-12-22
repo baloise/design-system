@@ -1,0 +1,46 @@
+{
+  "name": "@baloise/ui-library-testing",
+  "version": "2.0.0",
+  "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/ui-library.git"
+  },
+  "homepage": "https://ui-library.vercel.app",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "start-server": "http-server ../library/www -p 3333 -c-1 --silent",
+    "test": "cypress run",
+    "ci": "start-server-and-test start-server http://localhost:3333 test",
+    "serve": "cypress open",
+    "build": "npm run compile",
+    "build:docs": "node build/docs.js",
+    "compile": "npm run tsc",
+    "tsc": "tsc -p tsconfig.build.json"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/jquery": "^3.5.1",
+    "@types/node": "^14.14.6",
+    "cypress": "^5.5.0",
+    "glob": "^7.1.6",
+    "http-server": "^0.12.3",
+    "start-server-and-test": "^1.11.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  },
+  "gitHead": "9936956ada470a2f3785bf7d93f501744dbc43dd",
+  "dependencies": {
+    "@baloise/ui-library": "^2.0.0"
+  }
+}

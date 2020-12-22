@@ -1,0 +1,14 @@
+@import '../../styles/ui-library.utilities';
+@import '../bal-input/bal-input.scss';
+
+:host {
+  display: block;
+}
+
+.is-turned-up {
+  rotate: 180deg;
+}
+
+.multiple-typeahead {
+  margin: 10px 20px 13px 20px;
+}

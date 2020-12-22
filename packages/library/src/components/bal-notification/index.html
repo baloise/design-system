@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+  </head>
+  <body class="bal-app">
+    <div class="container">
+      <h2 class="title is-size-2">Basic</h2>
+      <section>
+        <bal-notification
+          >Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, assumenda in ducimus modi animi enim velit
+          molestiae rerum natus, ad culpa explicabo blanditiis architecto quo expedita incidunt officiis quaerat
+          delectus.</bal-notification
+        >
+      </section>
+
+      <h2 class="title is-size-2">Types</h2>
+      <section>
+        <bal-notification>Default</bal-notification>
+        <br />
+        <bal-notification type="info">Info</bal-notification>
+        <br />
+        <bal-notification type="primary">Primary</bal-notification>
+        <br />
+        <bal-notification type="success">Success</bal-notification>
+        <br />
+        <bal-notification type="warning">Warning</bal-notification>
+        <br />
+        <bal-notification type="danger">Danger</bal-notification>
+      </section>
+
+      <h2 class="title is-size-2">Box</h2>
+      <section>
+        <bal-notification type="primary" class="has-text-centered" style="max-width: 400px">
+          <h3 class="title is-size-3 has-text-white" style="margin-top: 0;">Title</h3>
+          <bal-button type="is-info" outlined inverted>Action</bal-button>
+        </bal-notification>
+      </section>
+
+      <h2 class="title is-size-2">Error</h2>
+      <section>
+        <style type="text/css" scoped>
+          .alert i {
+            color: red !important;
+          }
+        </style>
+
+        <bal-notification>
+          <div style="display: flex">
+            <bal-icon class="alert" name="alert-circle"></bal-icon>
+            <p style="margin-left: 10px; line-height: 1.325rem">
+              <strong style="margin-right: 10px">Error!</strong>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+        </bal-notification>
+      </section>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    </div>
+  </body>
+</html>

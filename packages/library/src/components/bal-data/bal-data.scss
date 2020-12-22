@@ -1,0 +1,84 @@
+@import '../../styles/ui-library.utilities';
+
+.bal-data {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  outline: none;
+  text-decoration: none;
+  overflow-wrap: break-word;
+  white-space: normal;
+
+  .bal-data-item {
+    display: flex;
+    flex: 1 1;
+    min-height: 48px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 8px 0;
+
+    .bal-data-label {
+      display: block;
+      font-weight: $weight-bold;
+      color: $blue;
+      font-family: $body-family;
+      font-size: $size-5;
+      flex: 1 1;
+      flex-basis: 100%;
+
+      bal-hint {
+        margin-left: 6px;
+      }
+    }
+
+    .bal-data-value {
+      display: block;
+      font-family: $body-family;
+      font-size: $size-4;
+      flex: 1 1;
+      flex-basis: 100%;
+    }
+
+    &.is-disabled .bal-data-label,
+    &.is-disabled .bal-data-value {
+      color: $blue-light-text;
+    }
+  }
+
+  &.has-border > .bal-data-item {
+    border-bottom: 1px solid $blue-light-line;
+  }
+}
+
+@include tablet() {
+  .bal-data {
+    &.is-horizontal {
+      flex-direction: row;
+
+      & > .bal-data-item {
+        flex-wrap: wrap;
+      }
+    }
+
+    .bal-data-item {
+      flex-wrap: no-wrap;
+
+      .bal-data-label {
+        flex-basis: 0;
+      }
+      .bal-data-value {
+        flex-basis: 0;
+      }
+    }
+
+    &.is-horizontal > .bal-data-item {
+      & > .bal-data-label,
+      & > .bal-data-value {
+        flex-basis: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
