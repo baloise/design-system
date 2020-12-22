@@ -88,14 +88,14 @@ export const config: Config = {
       ],
     },
     vueOutputTarget({
-      componentCorePackage: '@baloise/ui-library',
+      componentCorePackage: '@baloise/ui-library-next',
       proxiesFile: '../vue/src/components.ts',
       componentModels: vueComponentModels,
       includeDefineCustomElements: false,
       includePolyfills: false,
     }) as any,
     angularOutputTarget({
-      componentCorePackage: '@baloise/ui-library',
+      componentCorePackage: '@baloise/ui-library-next',
       directivesProxyFile: '../angular/src/directives/proxies.ts',
       directivesArrayFile: '../angular/src/directives/proxies-list.ts',
       valueAccessorConfigs: angularValueAccessorBindings,
