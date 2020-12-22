@@ -1,7 +1,6 @@
 - **Introduction**
 
   - [Overview](home.md)
-  - [Quick Start](introduction/quick-start.md)
   - [Vue](introduction/vue.md)
   - [Angular](introduction/angular.md)
   - [Why UI-Library](introduction/why.md)
