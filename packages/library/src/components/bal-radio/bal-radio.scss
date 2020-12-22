@@ -1,0 +1,197 @@
+@import '../../styles/ui-library.utilities';
+
+:host {
+  &.bal-radio {
+    min-height: 26px;
+    display: inline-block;
+    position: relative;
+    padding-right: 25px;
+    padding-bottom: 15px;
+
+    input[type='radio'] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      outline: 0;
+    }
+
+    input[type='radio'] + label {
+      cursor: pointer;
+      padding-left: 34px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      color: $blue;
+    }
+
+    input[type='radio'] + label::before,
+    input[type='radio'] + label::after {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+    }
+
+    input[type='radio'] + label:before {
+      content: '';
+      border: 1px solid $blue-line;
+    }
+
+    input[type='radio'] + label:after {
+      content: none;
+      background: $blue;
+      transform: scale(0.4);
+      top: 1px;
+      left: 1px;
+    }
+
+    input[type='radio']:disabled + label {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    input[type='radio']:checked + label::after {
+      content: '';
+    }
+
+    input[type='radio']:hover:not([disabled]) + label:before {
+      border-color: $blue;
+    }
+
+    input[type='radio']:focus + label::before {
+      outline: 1px dashed $cyan !important;
+    }
+
+    &.is-inverted {
+      input[type='radio']:hover:not([disabled]) + label:before {
+        border-color: $white;
+      }
+
+      input[type='radio'] + label:after {
+        background: $white;
+      }
+
+      input[type='radio'] + label {
+        color: $white;
+      }
+    }
+  }
+
+  &.bal-select-button {
+    display: flex;
+    flex: 1;
+
+    input[type='radio'] {
+      position: absolute;
+      opacity: 0;
+    }
+
+    input[type='radio']:focus ~ label {
+      outline: none;
+      border: 2px dashed $cyan;
+    }
+
+    label {
+      display: flex;
+      flex: 1 1 0;
+      height: 30px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 100px;
+      background: transparent;
+      min-height: 30px;
+      padding: 0 15px !important;
+      border-color: transparent;
+      border-width: 2px;
+
+      &:hover {
+        color: $blue;
+      }
+
+      text-align: center;
+      font-size: $size-5;
+      font-weight: bold;
+      color: $bal_text_light_blue;
+    }
+
+    input:checked ~ label {
+      border-color: $blue;
+      background: $blue;
+      color: white;
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    input:disabled ~ label {
+      cursor: not-allowed;
+      color: $bal_text_light_blue;
+
+      &:hover {
+        color: $bal_text_light_blue;
+      }
+    }
+
+    input:disabled:checked ~ label {
+      border-color: $blue;
+      background: $blue;
+      opacity: 0.5;
+      color: white;
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    &.is-inverted {
+      label:hover {
+        color: white;
+      }
+
+      input:checked ~ label {
+        border-color: $white;
+        background: $white;
+        color: $blue;
+
+        &:hover {
+          color: $blue;
+        }
+      }
+
+      input[type='radio']:focus ~ label {
+        outline: none;
+        border: 2px dashed $cyan;
+      }
+
+      input:disabled:checked ~ label {
+        border-color: $blue;
+        background: $white;
+        opacity: 0.5;
+        color: $blue;
+
+        &:hover {
+          color: $blue;
+        }
+      }
+
+      input:disabled ~ label {
+        cursor: not-allowed;
+        color: $blue-line;
+
+        &:hover {
+          color: $blue-line;
+        }
+      }
+    }
+  }
+}

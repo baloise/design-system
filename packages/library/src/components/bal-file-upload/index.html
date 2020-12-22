@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+  </head>
+  <body class="bal-app">
+    <div class="container">
+      <h2 class="title is-size-2">Basic</h2>
+      <section>
+        <p id="bal-file-upload-messages"></p>
+        <bal-file-upload
+          id="bal-file-upload-example"
+          accept="image/png,image/jpeg"
+          max-files="3"
+          max-file-size="1000000"
+          max-bundle-size="1000000"
+        ></bal-file-upload>
+      </section>
+      <script>
+        var messages = []
+        document.getElementById('bal-file-upload-example').addEventListener('balRejectedFile', event => {
+          var div = document.createElement('div')
+          var text = document.createTextNode(
+            'The file "' +
+              event.detail.file.name +
+              '" could not be uploaded, because of "' +
+              event.detail.reasons.join(', ') +
+              '"',
+          )
+          div.appendChild(text)
+          div.setAttribute('class', 'notification is-warning')
+          document.getElementById('bal-file-upload-messages').appendChild(div)
+        })
+      </script>
+    </div>
+  </body>
+</html>

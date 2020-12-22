@@ -1,0 +1,38 @@
+@import 'node_modules/bulma/sass/helpers/_all.sass';
+
+.is-padded-small {
+  padding: 10px !important;
+}
+
+.is-padded {
+  padding: 20px !important;
+}
+
+.is-padded-medium {
+  padding: 30px !important;
+}
+
+.is-padded-large {
+  padding: 40px !important;
+}
+
+.is-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.has-background-light {
+  background: $white-bis;
+}
+
+.clickable {
+  cursor: pointer !important;
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+
+.display-block {
+  display: block;
+}

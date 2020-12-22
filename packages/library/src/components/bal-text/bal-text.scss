@@ -1,0 +1,8 @@
+@import '../../styles/base/fonts.scss';
+@import '../../styles/ui-library.utilities.scss';
+
+:host {
+  display: inline;
+  position: static;
+  font-family: $family-primary;
+}

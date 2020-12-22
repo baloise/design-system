@@ -1,0 +1,47 @@
+{
+  "name": "@baloise/ui-library",
+  "version": "1.20.4",
+  "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/ui-library.git"
+  },
+  "homepage": "https://ui-library.vercel.app",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/ui-library/ui-library.js",
+  "files": [
+    "dist/",
+    "src/styles/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "stencil build --docs --es5 --prod",
+    "build:docs": "stencil build --docs --es5 --prod --config stencil.docs.config.ts",
+    "serve": "stencil build --docs --dev --watch --serve --docs-json www/components.json",
+    "generate": "stencil generate"
+  },
+  "dependencies": {
+    "@stencil/core": "^2.0.1",
+    "bulma": "^0.9.0",
+    "filesize.js": "^2.0.0"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@stencil/postcss": "^1.0.1",
+    "@stencil/sass": "^1.3.2",
+    "@types/autoprefixer": "^9.7.2",
+    "autoprefixer": "^10.0.1",
+    "hirsch-angular-output-target": "0.0.6",
+    "hirsch-vue-output-target": "0.0.5"
+  },
+  "gitHead": "9936956ada470a2f3785bf7d93f501744dbc43dd"
+}

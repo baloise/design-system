@@ -1,0 +1,16 @@
+@import '../../styles/ui-library.utilities';
+
+// @import "../../scss/elements/button";
+// @import "../../scss/utilities/helpers";
+
+:host {
+  display: block;
+}
+
+::slotted(bal-button) {
+  margin-right: 5px;
+}
+
+::slotted(bal-button:first-child) {
+  margin-right: 0;
+}

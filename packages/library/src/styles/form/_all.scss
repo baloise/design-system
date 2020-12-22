@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+//
+// The order of the imports is important to override the variables of the css framework bulma
+//
+
+@import 'node_modules/bulma/sass/form/shared.sass';
+@import 'node_modules/bulma/sass/form/input-textarea.sass';
+@import 'node_modules/bulma/sass/form/tools.sass';
+
+@import 'shared';
+@import 'input-textarea';
+@import 'hint';

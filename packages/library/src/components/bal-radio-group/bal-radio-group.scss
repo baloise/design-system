@@ -1,0 +1,14 @@
+@import '../../styles/ui-library.utilities';
+
+:host {
+  display: inline-block;
+  position: relative;
+
+  &.bal-select-button {
+    display: flex;
+    flex: 1;
+    border: 1px solid $bal_line_blue;
+    border-radius: 100px;
+    padding: 5px;
+  }
+}

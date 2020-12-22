@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+  </head>
+  <body class="bal-app">
+    <div class="container">
+      <h2 class="title is-size-2">Basic</h2>
+      <section>
+        <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+        <bal-input id="bal-input-1-preview" disabled placeholder="Enter your firstname"></bal-input>
+      </section>
+
+      <script>
+        var input1 = document.getElementById('bal-input-1')
+        var input1Preview = document.getElementById('bal-input-1-preview')
+        setTimeout(() => input1.setFocus(), 0)
+        input1.addEventListener('balInput', function (event) {
+          input1Preview.value = event.detail
+        })
+      </script>
+
+      <h2 class="title is-size-2">HTML input</h2>
+      <section>
+        <input class="input" name="firstName" placeholder="Enter your firstname" />
+        <input class="input" name="firstName" disabled placeholder="Enter your firstname" />
+      </section>
+
+      <h2 class="title is-size-2">Inverted</h2>
+      <section>
+        <div class="has-background-info is-padded">
+          <bal-input inverted name="firstName" placeholder="Enter your firstname"></bal-input>
+          <bal-input inverted name="firstName" placeholder="Enter your firstname" disabled></bal-input>
+        </div>
+      </section>
+
+      <h2 class="title is-size-2">Number Input</h2>
+      <section>
+        <bal-input
+          id="bal-input-only-numbers"
+          only-numbers
+          number-keyboard
+          name="age"
+          placeholder="Enter your age"
+        ></bal-input>
+        <p class="help" id="bal-input-only-numbers-preview"></p>
+      </section>
+      <script>
+        var inputOnlyNumbers = document.getElementById('bal-input-only-numbers')
+        var inputOnlyNumbersPreview = document.getElementById('bal-input-only-numbers-preview')
+        setTimeout(() => input1.setFocus(), 0)
+        inputOnlyNumbers.addEventListener('balInput', function (event) {
+          inputOnlyNumbersPreview.innerHTML = event.detail
+        })
+      </script>
+    </div>
+  </body>
+</html>

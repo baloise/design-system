@@ -1,0 +1,11 @@
+@import '../../styles/ui-library.utilities';
+
+:host {
+  display: block;
+  font-family: $body-family;
+}
+
+p {
+  font-weight: initial;
+  font-family: $body-family;
+}

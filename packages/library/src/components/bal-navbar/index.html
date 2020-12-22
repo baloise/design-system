@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+  </head>
+  <body class="bal-app">
+    <div class="container">
+      <h2 class="title is-size-2">Basic</h2>
+      <section>
+        <bal-navbar>
+          <span slot="navbar-brand">Default navbar</span>
+        </bal-navbar>
+      </section>
+
+      <h2 class="title is-size-2">Light mode</h2>
+      <section>
+        <bal-navbar light>
+          <span slot="navbar-brand">Light Navbar</span>
+        </bal-navbar>
+      </section>
+
+      <h2 class="title is-size-2">With logo</h2>
+      <section>
+        <bal-navbar>
+          <span slot="navbar-brand">
+            <img src="https://github.com/baloise/ui-library-next/raw/master/docs/assets/images/icon.svg" />
+          </span>
+        </bal-navbar>
+      </section>
+
+      <h2 class="title is-size-2">Actions</h2>
+      <section>
+        <bal-navbar>
+          <span slot="navbar-brand">
+            <img src="https://github.com/baloise/ui-library-next/raw/master/docs/assets/images/icon.svg" />
+          </span>
+          <a slot="navbar-start" class="navbar-item"> Home </a>
+          <div slot="navbar-end" class="navbar-item">
+            <bal-button inverted>Action</bal-button>
+          </div>
+        </bal-navbar>
+      </section>
+    </div>
+  </body>
+</html>

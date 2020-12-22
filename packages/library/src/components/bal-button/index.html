@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+  </head>
+  <body class="bal-app">
+    <div class="container">
+      <h2 class="title is-size-2">Basic</h2>
+
+      <section>
+        <bal-button type="is-primary">Primary</bal-button>
+        <bal-button type="is-info">Info</bal-button>
+        <bal-button type="is-link">Link</bal-button>
+      </section>
+      <h2 class="title is-size-2">Outlined</h2>
+      <section>
+        <bal-button type="is-info" outlined>Info</bal-button>
+      </section>
+
+      <h2 class="title is-size-2">Inverted</h2>
+      <section>
+        <div class="has-background-info is-padded">
+          <bal-button type="is-primary" inverted>Primary</bal-button>
+          <bal-button type="is-info" inverted>Info</bal-button>
+          <bal-button type="is-info" inverted outlined>Info Outlined</bal-button>
+        </div>
+      </section>
+
+      <h2 class="title is-size-2">Other colors</h2>
+      <section>
+        <bal-button type="is-warning">Warning</bal-button>
+        <bal-button type="is-danger">Danger</bal-button>
+      </section>
+
+      <h2 class="title is-size-2">Disabled</h2>
+      <section>
+        <bal-button type="is-primary" disabled>Primary</bal-button>
+        <bal-button type="is-info" disabled>Info</bal-button>
+        <bal-button type="is-link" disabled>Link</bal-button>
+      </section>
+
+      <h2 class="title is-size-2">Loading</h2>
+      <section>
+        <bal-button type="is-primary" loading>Primary</bal-button>
+        <bal-button type="is-info" loading>Info</bal-button>
+      </section>
+
+      <h2 class="title is-size-2">Expanded</h2>
+      <section>
+        <bal-button type="is-primary" expanded>Primary</bal-button>
+        <br />
+        <bal-button type="is-info" expanded>Info</bal-button>
+      </section>
+
+      <h2 class="title is-size-2">With icons</h2>
+      <section>
+        <bal-button type="is-info" outlined icon="edit">Edit</bal-button>
+        <bal-button type="is-info" outlined icon-right="caret-down">Dropdown</bal-button>
+        <bal-button inverted light icon="edit">Edit</span></bal-button>
+      </section>
+  
+      <h2 class="title is-size-2">Small buttons</h2>
+      <section>
+        <bal-button type="is-primary" size="is-small"> Primary </bal-button> 
+        <bal-button type="is-info" size="is-small"> Info </bal-button>
+      </section>
+
+      <h2 class="title is-size-2">Square buttons</h2>
+      <section>
+        <bal-button type="is-info" size="is-small" is-square outlined>
+          <bal-icon name="edit" size="medium"></bal-icon>
+        </bal-button>
+        <bal-button type="is-info" size="is-small" is-square outlined>
+          <bal-icon name="trash" size="medium"></bal-icon>
+        </bal-button>
+      </section>
+
+    </div>
+  </body>
+</html>

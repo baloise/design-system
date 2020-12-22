@@ -1,0 +1,54 @@
+{
+  "name": "root",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "postinstall": "npm run bootstrap && npm run docs:install",
+    "bootstrap": "lerna bootstrap",
+    "build": "npm run lib:build && npm run lib:vue:build && npm run lib:angular:build && npm run testing:build",
+    "lint": "lerna run lint",
+    "test": "npm run testing:run",
+    "clean": "rm -rf node_modules && rm -rf docs/node_modules && rm -rf packages/library/node_modules && rm -rf packages/vue/node_modules && rm -rf packages/angular/node_modules && rm -rf packages/testing/node_modules",
+    "release": "lerna publish --yes --force-publish",
+    "docs:install": "cd docs && npm install",
+    "docs:clean": "rimraf docs/www && rimraf docs/lib",
+    "docs:serve": "npm --prefix docs run serve",
+    "docs:build": "npm run docs:clean && npm --prefix packages/library run build:docs && npm --prefix packages/testing run build:docs && npm --prefix docs run build",
+    "docs:publish": "npm run docs:install && npm run docs:build",
+    "lib:build": "npm --prefix packages/library run build",
+    "lib:serve": "npm --prefix packages/library run serve",
+    "lib:serve:ie": "npm --prefix packages/library run serve:ie",
+    "lib:vue:clean": "rimraf packages/vue/node_modules",
+    "lib:vue:build": "npm --prefix packages/vue run build",
+    "lib:angular:clean": "rimraf packages/angular/node_modules",
+    "lib:angular:build": "npm --prefix packages/angular run build",
+    "testing:run": "npm --prefix packages/testing run ci",
+    "testing:serve": "npm --prefix packages/testing run serve",
+    "testing:server": "npm --prefix packages/testing run start-server",
+    "testing:build": "npm --prefix packages/testing run build",
+    "vue:install": "npm --prefix examples/vue install",
+    "vue:serve": "npm --prefix examples/vue run serve",
+    "angular:install": "npm --prefix examples/angular install",
+    "angular:serve": "npm --prefix examples/angular run start"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "husky": "^4.3.0",
+    "lerna": "^3.22.1",
+    "rimraf": "^3.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "dependencies": {}
+}

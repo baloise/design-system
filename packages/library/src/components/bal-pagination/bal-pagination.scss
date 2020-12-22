@@ -1,0 +1,38 @@
+@import "bal-pagination.vars";
+@import "node_modules/bulma/sass/components/pagination";
+
+:host {
+  display: block;
+}
+
+nav.pagination {
+
+  & > button {
+    box-shadow: none !important;
+    align-items: center;
+    background: $white;
+
+    &:disabled {
+      background: $blue-light;
+      border-color: $blue-light-line;
+      color: $blue-light-text;
+    }
+  }
+
+  bal-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  button, a {
+    cursor: pointer;
+  }
+
+}

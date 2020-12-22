@@ -1,0 +1,20 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "version": "1.20.4",
+  "command": {
+    "publish": {
+      "conventionalCommits": true,
+      "ignoreChanges": [
+        "docs/**",
+        "examples/**"
+      ],
+      "message": "chore(): release"
+    },
+    "version": {
+      "message": "chore(release): release",
+      "private": false
+    }
+  }
+}

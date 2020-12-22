@@ -1,0 +1,75 @@
+@import '../../styles/ui-library.utilities';
+@import 'node_modules/bulma/sass/elements/icon.sass';
+
+:host {
+  display: inline-block;
+  position: relative;
+
+  &.is-expanded {
+    display: block;
+  }
+}
+
+.control.is-loading::after,
+.select.is-loading::after {
+  border-top-color: $blue !important;
+  border-right-color: $blue !important;
+  border-left-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+
+.form.is-inverted {
+  .control.is-loading::after,
+  .select.is-loading::after {
+    border-top-color: $white !important;
+    border-right-color: $white !important;
+  }
+}
+
+.form > .label {
+  font-size: $size-5 !important;
+  margin-bottom: 0 !important;
+  font-family: $family-primary;
+}
+
+p.help {
+  min-height: 22.5px;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  font-family: $family-primary;
+}
+
+.control.has-icons-left *::part(input) {
+  padding-left: 38px;
+}
+
+.control bal-icon {
+  display: block;
+}
+
+.form {
+  p.help {
+    text-align: left;
+  }
+
+  &.is-expanded {
+    width: 100%;
+  }
+
+  &.is-disabled {
+    .label,
+    .control {
+      opacity: 0.6;
+    }
+  }
+
+  &.is-inverted {
+    .label {
+      color: $white;
+    }
+
+    p.help:not(.is-danger) {
+      color: $blue-line;
+    }
+  }
+}

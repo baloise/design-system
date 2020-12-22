@@ -1,0 +1,43 @@
+@import 'base/fonts.scss';
+@import './ui-library.utilities';
+@import './elements/notices.scss';
+
+.bal-app {
+  position: relative;
+}
+
+.bal-app,
+.bal-notices {
+  @import './utilities/helpers';
+  @import './utilities/animations';
+  @import './base/all';
+  @import './form/all';
+  @import './elements/all';
+  @import 'node_modules/bulma/sass/grid/all.sass';
+  @import 'node_modules/bulma/sass/layout/section.sass';
+
+  * {
+    box-sizing: border-box;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+  }
+
+  span,
+  b,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  strong {
+    font-family: $family-primary;
+  }
+}
+
+body.bal-app {
+  margin: 0;
+  padding: 0;
+}

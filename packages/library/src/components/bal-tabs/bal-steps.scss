@@ -1,0 +1,224 @@
+:host.bal-steps {
+  .tabs {
+    margin: 0 !important;
+
+    & > ul {
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+      align-items: center;
+    }
+
+    & > ul > li {
+      position: relative;
+      height: 50px;
+      max-width: 75px;
+
+      & > a {
+        line-height: 1.2;
+        cursor: pointer;
+        display: flex;
+        flex: 1 1;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+
+        span.step-index {
+          border-radius: 50%;
+          border: 1px solid $blue-light-line;
+          display: flex;
+          align-items: center;
+          font-weight: $weight-bold;
+          font-family: $title-family;
+          color: $text-strong;
+          height: 28px;
+          min-width: 28px;
+          line-height: 28px;
+          justify-content: center;
+          font-size: $size-5;
+          position: relative;
+
+          span {
+            font-weight: $weight-bold;
+            font-family: $title-family;
+            color: $text-strong;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            margin-top: -14px;
+            text-align: center;
+          }
+        }
+
+        span.step-label {
+          display: none;
+        }
+      }
+
+      &.is-done {
+        color: $blue;
+        padding-bottom: 0;
+
+        span.step-index span {
+          display: none;
+        }
+
+        span.step-index {
+          position: relative;
+          background: $blue;
+          border-color: $blue !important;
+        }
+
+        span.step-index::after {
+          display: inline-block;
+          position: absolute;
+          background-color: transparent;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 24px 24px;
+          content: '';
+          top: 5px;
+          left: 50%;
+          margin-left: -3px;
+          width: 5px;
+          height: 12px;
+          border-bottom: 2px solid $white;
+          border-right: 2px solid $white;
+          border-top: 0;
+          border-left: 0;
+          -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+
+      &.is-active > a {
+        color: $blue;
+        padding-bottom: 0;
+
+        span.step-index {
+          border-color: $blue;
+        }
+      }
+
+      & > a:hover {
+        span.step-label {
+          color: $blue;
+        }
+      }
+
+      &.is-failed {
+        padding-bottom: 0;
+
+        span.step-index span {
+          display: none;
+        }
+
+        span.step-index {
+          position: relative;
+          background: $danger;
+          border-color: $danger !important;
+        }
+
+        span.step-index::after {
+          color: $white;
+          display: inline-block;
+          position: absolute;
+          background-color: transparent;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 24px 24px;
+          text-align: center;
+          font-weight: 700;
+          font-size: $size-3;
+          content: '!';
+          top: 50%;
+          left: 50%;
+          margin-top: -14px;
+          margin-left: -3px;
+          overflow: hidden;
+        }
+      }
+
+      &.is-disabled > a,
+      &.is-disabled > a:hover {
+        cursor: not-allowed;
+        opacity: 0.5;
+
+        span.step-index {
+          border-color: $blue-light-line;
+        }
+
+        span.step-label,
+        span.step-index {
+          color: $blue-light-text;
+        }
+      }
+    }
+  }
+
+  @include tablet() {
+    .tabs {
+      border-bottom: 1px solid $blue-light-line;
+      & > ul > li {
+        border-top: 1px solid $blue-light-line;
+        border-left: 1px solid $blue-light-line;
+        max-width: 300px;
+        height: 100px;
+
+        &:last-child {
+          border-right: 1px solid $blue-light-line;
+        }
+
+        & > a {
+          padding-bottom: 2px;
+        }
+
+        &.is-active > a {
+          border-bottom: 2px solid $blue;
+        }
+      }
+    }
+  }
+
+  @include desktop() {
+    .tabs {
+      & > ul {
+        display: flex;
+        justify-content: center;
+
+        & > li {
+          & > a {
+            flex-wrap: nowrap;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: $blue;
+            font-size: $size-3;
+
+            span.step-index {
+              align-self: center;
+              width: 25px;
+              max-width: 25px;
+            }
+
+            span.step-label {
+              margin-left: 20px;
+              text-align: left;
+              flex-basis: 100%;
+              display: flex;
+              font-size: $size-4;
+              word-break: break-all;
+              word-wrap: break-word;
+              overflow-wrap: break-word;
+              white-space: normal;
+            }
+          }
+        }
+      }
+    }
+  }
+}

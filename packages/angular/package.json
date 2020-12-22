@@ -1,0 +1,52 @@
+{
+  "name": "@baloise/ui-library-angular",
+  "version": "1.20.4",
+  "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/ui-library.git"
+  },
+  "homepage": "https://ui-library.vercel.app",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "npm run clean && ng-packagr -p package.json",
+    "clean": "rimraf dist"
+  },
+  "$schema": "./node_modules/ng-packagr/package.schema.json",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "src/index.ts"
+    },
+    "whitelistedNonPeerDependencies": [
+      "@baloise/ui-library-next",
+      "@baloise/ui-library",
+      "@angular/common",
+      "@angular/core",
+      "@angular/forms"
+    ]
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@baloise/ui-library-next": "^1.20.4",
+    "tslib": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@angular/common": "~10.2.0",
+    "@angular/core": "~10.2.0",
+    "@angular/forms": "~10.2.0"
+  },
+  "gitHead": "9936956ada470a2f3785bf7d93f501744dbc43dd",
+  "devDependencies": {
+    "@angular/common": "^10.2.0",
+    "@angular/compiler": "~10.2.0",
+    "@angular/compiler-cli": "~10.2.0",
+    "@angular/core": "^10.2.0",
+    "@angular/forms": "^10.2.0",
+    "ng-packagr": "^10.1.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.0.5"
+  }
+}

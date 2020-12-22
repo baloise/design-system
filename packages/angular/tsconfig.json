@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "lib": ["dom", "es2015"],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "removeComments": false,
+    "sourceMap": true,
+    "jsx": "react",
+    "target": "es2015"
+  },
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "enableResourceInlining": true,
+    "enableIvy": false
+  },
+  "include": ["src/**/*.ts"],
+  "compileOnSave": false,
+  "buildOnSave": false
+}

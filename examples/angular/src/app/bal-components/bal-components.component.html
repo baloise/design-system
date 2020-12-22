@@ -1,0 +1,12 @@
+<div class="is-padded">
+  <bal-list class="box is-padded">
+    <bal-list-item *ngFor="let route of routes">
+      <bal-list-item-content>
+        <bal-list-item-title [routerLink]="[route.path]">bal-{{ route.path }}</bal-list-item-title>
+      </bal-list-item-content>
+      <bal-list-item-icon right>
+        <bal-icon size="medium" name="nav-go-large"></bal-icon>
+      </bal-list-item-icon>
+    </bal-list-item>
+  </bal-list>
+</div>

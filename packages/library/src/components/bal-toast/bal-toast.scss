@@ -1,0 +1,55 @@
+@import '../../styles/ui-library.utilities.scss';
+// @import "../../scss/utilities/animations";
+
+:host {
+  display: inline-flex;
+  position: relative;
+  align-self: center;
+  cursor: pointer;
+  width: 100%;
+  justify-content: center;
+  flex-grow: 0 !important;
+
+  .toast {
+    align-self: center;
+    display: inline-flex;
+    animation-duration: 150ms;
+    margin: .5em 0;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    border-radius: 3px;
+    padding: 20px 40px;
+    pointer-events: auto;
+    max-width: 600px;
+    flex-grow: 1;
+    font-size: $size-5;
+    font-weight: $weight-bold;
+
+    &.is-primary {
+      background: $primary;
+      color: $primary-invert;
+    }
+
+    &.is-info {
+      background: $info;
+      color: $info-invert;
+    }
+
+    &.is-success {
+      background: $success;
+      color: $white;
+    }
+
+    &.is-warning {
+      background: $warning;
+      color: $white;
+    }
+
+    &.is-danger {
+      background: $danger;
+      color: $white;
+    }
+  }
+}
+
+

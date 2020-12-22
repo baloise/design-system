@@ -1,0 +1,28 @@
+@import '../../styles/ui-library.utilities';
+
+:host {
+  display: block;
+}
+
+span.trigger-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span.label {
+    margin-bottom: 0;
+  }
+}
+
+bal-icon {
+  height: 24px;
+  margin-right: 2px;
+}
+
+.accordion-content.is-info {
+  border-top: 1px solid $blue-light-line;
+}
+
+.is-fullwidth {
+  width: 100%;
+}
