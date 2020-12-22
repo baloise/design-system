@@ -4,7 +4,7 @@
 import Vue, { PropOptions } from 'vue';
 import { createCommonRender, createCommonMethod } from './vue-component-lib/utils';
 
-import type { Components } from '@baloise/ui-library-next';
+import type { Components } from '@baloise/ui-library';
 
 
 

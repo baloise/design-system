@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
-import { defineCustomElements } from '@baloise/ui-library-next/loader'
+import { defineCustomElements } from '@baloise/ui-library/loader'
 
 import { DIRECTIVES } from './directives/proxies-list'
 import { BooleanValueAccessor } from './directives/boolean-value-accessor'

@@ -1,5 +1,5 @@
 import Vue, { PluginObject } from 'vue'
-import { defineCustomElements, applyPolyfills } from '@baloise/ui-library-next/loader'
+import { defineCustomElements, applyPolyfills } from '@baloise/ui-library/loader'
 
 Vue.config.ignoredElements = [/bal-\w*/]
 

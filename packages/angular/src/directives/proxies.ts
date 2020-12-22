@@ -3,9 +3,9 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone } from '@angular/core';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components } from '@baloise/ui-library-next';
+import { Components } from '@baloise/ui-library';
 
-import { Accordion as IAccordion } from '@baloise/ui-library-next/dist/types/components/bal-accordion/bal-accordion';
+import { Accordion as IAccordion } from '@baloise/ui-library/dist/types/components/bal-accordion/bal-accordion';
 export declare interface BalAccordion extends Components.BalAccordion {}
 @ProxyCmp({
   inputs: ['closeIcon', 'closeLabel', 'isActive', 'openIcon', 'openLabel', 'type'],
@@ -160,7 +160,7 @@ export class BalCardStep {
   }
 }
 
-import { CardSteps as ICardSteps } from '@baloise/ui-library-next/dist/types/components/bal-card-steps/bal-card-steps';
+import { CardSteps as ICardSteps } from '@baloise/ui-library/dist/types/components/bal-card-steps/bal-card-steps';
 export declare interface BalCardSteps extends Components.BalCardSteps {}
 @ProxyCmp({
   inputs: ['backLabel', 'hasBack', 'hidden', 'inverted', 'navigation', 'showLabel'],
@@ -226,7 +226,7 @@ export class BalCardTitle {
   }
 }
 
-import { Checkbox as ICheckbox } from '@baloise/ui-library-next/dist/types/components/bal-checkbox/bal-checkbox';
+import { Checkbox as ICheckbox } from '@baloise/ui-library/dist/types/components/bal-checkbox/bal-checkbox';
 export declare interface BalCheckbox extends Components.BalCheckbox {}
 @ProxyCmp({
   inputs: ['balTabindex', 'checked', 'disabled', 'inverted', 'label', 'name', 'value'],
@@ -327,7 +327,7 @@ export class BalDataValue {
   }
 }
 
-import { Datepicker as IDatepicker } from '@baloise/ui-library-next/dist/types/components/bal-datepicker/bal-datepicker';
+import { Datepicker as IDatepicker } from '@baloise/ui-library/dist/types/components/bal-datepicker/bal-datepicker';
 export declare interface BalDatepicker extends Components.BalDatepicker {}
 @ProxyCmp({
   inputs: ['balTabindex', 'closeOnSelect', 'disabled', 'expanded', 'filter', 'inverted', 'locale', 'maxDate', 'maxYearProp', 'minDate', 'minYearProp', 'placeholder', 'readonly', 'triggerIcon', 'value'],
@@ -357,7 +357,7 @@ export class BalDatepicker {
   }
 }
 
-import { Dropdown as IDropdown } from '@baloise/ui-library-next/dist/types/components/bal-dropdown/bal-dropdown';
+import { Dropdown as IDropdown } from '@baloise/ui-library/dist/types/components/bal-dropdown/bal-dropdown';
 export declare interface BalDropdown extends Components.BalDropdown {}
 @ProxyCmp({
   inputs: ['expanded', 'fixedContentWidth', 'isActive', 'scrollable'],
@@ -402,7 +402,7 @@ export class BalField {
   }
 }
 
-import { FileUpload as IFileUpload } from '@baloise/ui-library-next/dist/types/components/bal-file-upload/bal-file-upload';
+import { FileUpload as IFileUpload } from '@baloise/ui-library/dist/types/components/bal-file-upload/bal-file-upload';
 export declare interface BalFileUpload extends Components.BalFileUpload {}
 @ProxyCmp({
   inputs: ['accept', 'disabled', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple']
@@ -498,7 +498,7 @@ export class BalIcon {
   }
 }
 
-import { Input as IInput } from '@baloise/ui-library-next/dist/types/components/bal-input/bal-input';
+import { Input as IInput } from '@baloise/ui-library/dist/types/components/bal-input/bal-input';
 export declare interface BalInput extends Components.BalInput {}
 @ProxyCmp({
   inputs: ['autoComplete', 'balTabindex', 'clickable', 'disabled', 'inverted', 'maxLength', 'minLength', 'name', 'numberKeyboard', 'onlyNumbers', 'placeholder', 'readonly', 'type', 'value'],
@@ -709,7 +709,7 @@ export class BalNotification {
   }
 }
 
-import { Pagination as IPagination } from '@baloise/ui-library-next/dist/types/components/bal-pagination/bal-pagination';
+import { Pagination as IPagination } from '@baloise/ui-library/dist/types/components/bal-pagination/bal-pagination';
 export declare interface BalPagination extends Components.BalPagination {}
 @ProxyCmp({
   inputs: ['disabled', 'pageRange', 'totalPages', 'value'],
@@ -733,7 +733,7 @@ export class BalPagination {
   }
 }
 
-import { Radio as IRadio } from '@baloise/ui-library-next/dist/types/components/bal-radio/bal-radio';
+import { Radio as IRadio } from '@baloise/ui-library/dist/types/components/bal-radio/bal-radio';
 export declare interface BalRadio extends Components.BalRadio {}
 @ProxyCmp({
   inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'label', 'name', 'value'],
@@ -759,7 +759,7 @@ export class BalRadio {
   }
 }
 
-import { RadioGroup as IRadioGroup } from '@baloise/ui-library-next/dist/types/components/bal-radio-group/bal-radio-group';
+import { RadioGroup as IRadioGroup } from '@baloise/ui-library/dist/types/components/bal-radio-group/bal-radio-group';
 export declare interface BalRadioGroup extends Components.BalRadioGroup {}
 @ProxyCmp({
   inputs: ['interface', 'inverted', 'value']
@@ -782,7 +782,7 @@ export class BalRadioGroup {
   }
 }
 
-import { Select as ISelect } from '@baloise/ui-library-next/dist/types/components/bal-select/bal-select';
+import { Select as ISelect } from '@baloise/ui-library/dist/types/components/bal-select/bal-select';
 export declare interface BalSelect extends Components.BalSelect {}
 @ProxyCmp({
   inputs: ['balTabindex', 'disabled', 'expanded', 'filterPlaceholder', 'inverted', 'loading', 'multiple', 'noFilter', 'placeholder', 'scrollable', 'typeahead', 'value'],
@@ -877,7 +877,7 @@ export class BalTabItem {
   }
 }
 
-import { Tabs as ITabs } from '@baloise/ui-library-next/dist/types/components/bal-tabs/bal-tabs';
+import { Tabs as ITabs } from '@baloise/ui-library/dist/types/components/bal-tabs/bal-tabs';
 export declare interface BalTabs extends Components.BalTabs {}
 @ProxyCmp({
   inputs: ['action', 'actionLabel', 'dense', 'expanded', 'interface', 'rounded'],
@@ -938,7 +938,7 @@ export class BalText {
   }
 }
 
-import { Timeinput as ITimeinput } from '@baloise/ui-library-next/dist/types/components/bal-timeinput/bal-timeinput';
+import { Timeinput as ITimeinput } from '@baloise/ui-library/dist/types/components/bal-timeinput/bal-timeinput';
 export declare interface BalTimeinput extends Components.BalTimeinput {}
 @ProxyCmp({
   inputs: ['disabled', 'inverted', 'maxTime', 'minTime', 'value']

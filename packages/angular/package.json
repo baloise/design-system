@@ -30,7 +30,7 @@
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/ui-library-next": "^1.20.4",
+    "@baloise/ui-library": "^2.0.0-alpha.0",
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
