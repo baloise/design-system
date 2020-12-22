@@ -4,8 +4,8 @@
     <BalSelect :value="value" typeahead placeholder @balChange="valueChanged($event)">
       <BalSelectOption label="Label 1" value="1">Label 1</BalSelectOption>
       <BalSelectOption label="Label 2" value="2">Label 2</BalSelectOption>
-      <BalSelectOption label="Label 3" value="2">Label 3</BalSelectOption>
-      <BalSelectOption label="Label 4" value="2">Label 4</BalSelectOption>
+      <BalSelectOption label="Label 3" value="3">Label 3</BalSelectOption>
+      <BalSelectOption label="Label 4" value="4">Label 4</BalSelectOption>
     </BalSelect>
     <p>{{ value }}</p>
   </div>
@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { BalSelect, BalSelectOption } from '@baloise/ui-library-next-vue'
+import { BalSelect, BalSelectOption } from '@baloise/ui-library-vue'
 
 export default Vue.extend({
   data: () => {

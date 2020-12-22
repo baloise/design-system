@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { BalButton } from '@baloise/ui-library-next-vue'
+import { BalButton } from '@baloise/ui-library-vue'
 
 export default Vue.extend({
   name: 'Home',

@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { BalTimeinput } from '@baloise/ui-library-next-vue'
+import { BalTimeinput } from '@baloise/ui-library-vue'
 
 export default Vue.extend({
   data: () => {

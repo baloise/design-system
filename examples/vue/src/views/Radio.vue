@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { BalRadio, BalRadioGroup } from '@baloise/ui-library-next-vue'
+import { BalRadio, BalRadioGroup } from '@baloise/ui-library-vue'
 
 export default Vue.extend({
   data: () => {
