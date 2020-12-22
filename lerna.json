@@ -5,7 +5,7 @@
   "version": "2.0.0",
   "command": {
     "publish": {
-      "conventionalCommits": false,
+      "conventionalCommits": true,
       "ignoreChanges": [
         "docs/**",
         "examples/**"
