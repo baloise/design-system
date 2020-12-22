@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ui-library-testing",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -41,6 +41,6 @@
   },
   "gitHead": "9936956ada470a2f3785bf7d93f501744dbc43dd",
   "dependencies": {
-    "@baloise/ui-library": "^2.0.1"
+    "@baloise/ui-library": "^2.0.2"
   }
 }
