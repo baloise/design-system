@@ -20,7 +20,6 @@
       "entryFile": "src/index.ts"
     },
     "whitelistedNonPeerDependencies": [
-      "@baloise/ui-library-next",
       "@baloise/ui-library",
       "@angular/common",
       "@angular/core",
