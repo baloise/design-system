@@ -1,4 +1,4 @@
-import { toClaimNumber } from './claim-number.util'
+import { toClaimNumber } from './toClaimNumber'
 
 describe('ClaimNumberUtils', () => {
   test('should format a claim number correctly', () => {

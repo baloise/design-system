@@ -30,6 +30,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@baloise/ui-library": "^2.1.0",
+    "@baloise/ui-library-utils": "^2.1.0",
     "tslib": "^2.0.0"
   },
   "peerDependencies": {

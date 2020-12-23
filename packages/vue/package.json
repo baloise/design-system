@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "npm run compile",
+    "build:utils": "node ./build/utils.js",
     "compile": "npm run tsc",
     "tsc": "tsc -p ."
   },
@@ -32,6 +33,7 @@
   },
   "gitHead": "9936956ada470a2f3785bf7d93f501744dbc43dd",
   "dependencies": {
-    "@baloise/ui-library": "^2.1.0"
+    "@baloise/ui-library": "^2.1.0",
+    "@baloise/ui-library-utils": "^2.1.0"
   }
 }

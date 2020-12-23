@@ -1,1 +1,7 @@
-export * from './claim-number/claim-number.util'
+export { toClaimNumber } from './filters/toClaimNumber'
+
+import { ToClaimNumberStatic } from './filters/toClaimNumber'
+
+export interface BalUtilsStatic {
+  toClaimNumber: ToClaimNumberStatic
+}
