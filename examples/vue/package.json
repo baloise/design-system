@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@baloise/ui-library": "^2.2.0-alpha.0",
-    "@baloise/ui-library-vue": "^2.2.0-alpha.0",
+    "@baloise/ui-library-vue": "^2.2.0-alpha.1",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"
