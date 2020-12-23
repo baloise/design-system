@@ -11,7 +11,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run compile",
+    "build": "npm run build:utils && npm run compile",
     "build:utils": "node ./build/utils.js",
     "compile": "npm run tsc",
     "tsc": "tsc -p ."

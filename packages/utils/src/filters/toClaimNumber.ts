@@ -3,7 +3,7 @@ export type ToClaimNumberStatic = (claimNumber: string) => string
 /**
  * Formats the claim-number correctly.
  */
-export const toClaimNumber: ToClaimNumberStatic = (claimNumber: string): string => {
+export const toClaimNumber: ToClaimNumberStatic = (claimNumber) => {
   if (!claimNumber) {
     return ''
   }
