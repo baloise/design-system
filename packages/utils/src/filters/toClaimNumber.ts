@@ -1,9 +1,10 @@
-export type ToClaimNumberStatic = (claimNumber: string) => string
-
 /**
- * Formats the claim-number correctly.
+ * toClaimNumber is filter/pipe, which transforms string values.
+ * Pass in a number string and get out a formatted claim number.
+ *
+ * "73001217169" => "93/001217/16.9
  */
-export const toClaimNumber: ToClaimNumberStatic = (claimNumber) => {
+export const toClaimNumber = (claimNumber: string): string => {
   if (!claimNumber) {
     return ''
   }
