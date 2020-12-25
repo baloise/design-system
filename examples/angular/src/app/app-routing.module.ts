@@ -6,17 +6,18 @@ import { BalRadioComponent } from './bal-components/bal-radio/bal-radio.componen
 import { BalSelectComponent } from './bal-components/bal-select/bal-select.component';
 import { BalDatepickerComponent } from './bal-components/bal-datepicker/bal-datepicker.component';
 import { BalTimeinputComponent } from './bal-components/bal-timeinput/bal-timeinput.component';
-import { BalComponentsComponent } from './bal-components/bal-components.component';
+import { HomeComponent } from './bal-components/home/home.component';
 
 const routes: Routes = [
-  {path: '', component: BalComponentsComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent},
   {path: 'checkbox', component: BalCheckboxComponent},
-  {path: 'input', component: BalInputComponent},
   {path: 'radio', component: BalRadioComponent},
-  {path: 'select', component: BalSelectComponent},
+  {path: 'input', component: BalInputComponent},
   {path: 'datepicker', component: BalDatepickerComponent},
+  {path: 'select', component: BalSelectComponent},
   {path: 'timeinput', component: BalTimeinputComponent},
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({
