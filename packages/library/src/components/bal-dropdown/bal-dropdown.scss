@@ -4,7 +4,7 @@
 @import 'node_modules/bulma/sass/form/all';
 
 :host {
-  display: block;
+  display: inline-block;
 
   .dropdown {
     &.is-expanded {

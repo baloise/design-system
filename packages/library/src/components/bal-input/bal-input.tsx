@@ -130,6 +130,7 @@ export class Input {
    */
   @Method()
   async setFocus(): Promise<void> {
+    console.log(this.inputEl)
     this.inputEl.focus()
   }
 

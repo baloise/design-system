@@ -13,13 +13,13 @@ export interface Visible<T> {
   assertNotVisible(): T
 }
 
-export const VisibleMixin: Mixin = ({ element, creator }) => ({
+export const VisibleMixin: Mixin = ({ selector, creator }) => ({
   assertVisible: () => {
-    element.should('be.visible')
+    cy.get(selector).should('be.visible')
     return creator()
   },
   assertNotVisible: () => {
-    element.should('not.be.visible')
+    cy.get(selector).should('not.be.visible')
     return creator()
   },
 })

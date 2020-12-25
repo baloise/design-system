@@ -9,9 +9,9 @@ export interface Clearable<T> {
   clear(options?: Partial<Cypress.TypeOptions>): T
 }
 
-export const ClearableMixin: Mixin = ({ element, creator }) => ({
+export const ClearableMixin: Mixin = ({ selector, creator }) => ({
   clear: (options?: Partial<Cypress.ClearOptions>) => {
-    element.clear(options)
+    cy.get(selector).clear(options)
     return creator()
   },
 })

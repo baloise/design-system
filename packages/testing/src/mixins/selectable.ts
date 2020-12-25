@@ -13,13 +13,13 @@ export interface Selectable<T> {
   assertIsSelected(indexes: number[] | number | string): T
 }
 
-export const SelectableMixin: Mixin = ({ element, creator }) => ({
+export const SelectableMixin: Mixin = ({ selector, creator }) => ({
   select: (index: number) => {
-    element.eq(index)
+    cy.get(selector).eq(index)
     return creator()
   },
   assertIsSelected: (index: number) => {
-    element.eq(index)
+    cy.get(selector).eq(index)
     return creator()
   },
 })

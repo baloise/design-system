@@ -28,12 +28,12 @@ interface CheckboxAccessorType
     NthSelectable<CheckboxAccessorType>,
     Shouldable<CheckboxAccessorType> {}
 
-export const CheckboxClickableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
+export const CheckboxClickableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   /**
    * Clicks the checkbox and set checked to true
    */
   click: (options?: Partial<Cypress.ClickOptions>) => {
-    const checkbox = element.find('label')
+    const checkbox = cy.get(selector).find('label')
     checkbox.click(options)
     return creator()
   },
@@ -41,7 +41,7 @@ export const CheckboxClickableMixin: Mixin = <T>({ element, creator }: MixinCont
    * Clicks the checkbox and set checked to true
    */
   check: (options?: Partial<Cypress.CheckOptions>) => {
-    const checkbox = element.find('label' + name)
+    const checkbox = cy.get(selector).find('label' + name)
     checkbox.click(options)
     return creator()
   },
@@ -49,7 +49,7 @@ export const CheckboxClickableMixin: Mixin = <T>({ element, creator }: MixinCont
    * Assert if the checkbox is checked
    */
   assertIsChecked: (shouldBeChecked: boolean = true) => {
-    const checkbox = element.find('input')
+    const checkbox = cy.get(selector).find('input')
     checkbox.should('have.attr', 'aria-checked', `${shouldBeChecked}`)
     return creator()
   },
@@ -57,7 +57,7 @@ export const CheckboxClickableMixin: Mixin = <T>({ element, creator }: MixinCont
    * Assert if the checkbox is disabled
    */
   assertIsDisabled: () => {
-    const checkbox = element.find('input')
+    const checkbox = cy.get(selector).find('input')
     checkbox.should('have.attr', 'aria-disabled', `true`)
     return creator()
   },
@@ -65,18 +65,18 @@ export const CheckboxClickableMixin: Mixin = <T>({ element, creator }: MixinCont
    * Assert if the checkbox is enabled and not disabled
    */
   assertIsEnabled: () => {
-    const checkbox = element.find('input')
+    const checkbox = cy.get(selector).find('input')
     checkbox.should('have.attr', 'aria-disabled', `false`)
     return creator()
   },
 })
 
-export const CheckboxContainableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
+export const CheckboxContainableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   /**
    * Check the content of the label element
    */
   contains: (content: string) => {
-    const item = element.find('label bal-text')
+    const item = cy.get(selector).find('label bal-text')
     item.contains(content)
     return creator()
   },

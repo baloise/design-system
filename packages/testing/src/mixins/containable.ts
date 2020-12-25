@@ -9,9 +9,9 @@ export interface Containable<T> {
   contains(content: string | number | RegExp): T
 }
 
-export const ContainableMixin: Mixin = ({ element, creator }) => ({
+export const ContainableMixin: Mixin = ({ selector, creator }) => ({
   contains: (content: string | number | RegExp) => {
-    element.contains(content)
+    cy.get(selector).contains(content)
     return creator()
   },
 })

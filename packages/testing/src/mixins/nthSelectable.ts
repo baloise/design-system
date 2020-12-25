@@ -9,9 +9,9 @@ export interface NthSelectable<T> {
   selectNth(index: number): T
 }
 
-export const NthSelectableMixin: Mixin = ({ element, creator }) => ({
+export const NthSelectableMixin: Mixin = ({ selector, creator }) => ({
   selectNth: (index: number) => {
-    element.eq(index)
+    cy.get(selector).eq(index)
     return creator()
   },
 })
