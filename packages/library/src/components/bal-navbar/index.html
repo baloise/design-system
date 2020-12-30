@@ -39,7 +39,20 @@
           <span slot="navbar-brand">
             <img src="https://github.com/baloise/ui-library/raw/master/docs/assets/images/icon.svg" />
           </span>
-          <a slot="navbar-start" class="navbar-item"> Home </a>
+          <div slot="navbar-start" class="navbar-start">
+            <a class="navbar-item">Home</a>
+            <a class="navbar-item">Documentation</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">More</a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item">About</a>
+                <a class="navbar-item">Jobs</a>
+                <a class="navbar-item">Contact</a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">Report an issue</a>
+              </div>
+            </div>
+          </div>
           <div slot="navbar-end" class="navbar-item">
             <bal-button inverted>Action</bal-button>
           </div>
