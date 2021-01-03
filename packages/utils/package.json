@@ -11,8 +11,9 @@
     "access": "public"
   },
   "scripts": {
+    "clean": "rm -rf src/index.ts",
     "build:docs": "node build/docs.js",
-    "build": "npm run compile && npm run build:docs",
+    "build": "npm run clean && npm run build:docs && npm run compile",
     "compile": "npm run tsc",
     "tsc": "tsc -p .",
     "test": "jest"

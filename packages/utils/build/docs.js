@@ -29,8 +29,8 @@ const filterVariableDeclaration = nodes => {
   return filterDeclarationsAndStatements(nodes, 249)
 }
 
-const parseFunctionComment = (node, sourceFile) =>
-  node
+const parseFunctionComment = (node, sourceFile) => {
+  const text = node
     .getFullText(sourceFile)
     .replace(node.getText(sourceFile), '')
     .split('\n')
@@ -39,7 +39,21 @@ const parseFunctionComment = (node, sourceFile) =>
     .filter(l => l !== '/**' && l !== '*/')
     .map(l => (l.startsWith('*') ? l.substring(1) : l))
     .map(l => l.trim())
-    .join('\n')
+
+  const indexOfDescription = text.indexOf('@description')
+  const indexOfExample = text.indexOf('@example')
+
+  const descriptionEnd = indexOfExample === -1 ? text.length : indexOfExample
+  const description = text.slice(indexOfDescription + 1, descriptionEnd).map(l => l.trim()).filter(l => l).join('\n')
+
+  let example = ''
+  if (indexOfExample >= 0) {
+    example = text.slice(indexOfExample + 1, text.length).map(l => l.trim()).filter(l => l).join('\n')
+  }
+
+  return { description, example }
+}
+
 
 const parseType = typeCode => {
   switch (typeCode) {
@@ -49,6 +63,10 @@ const parseType = typeCode => {
       return 'number'
     case 147:
       return 'string'
+    case 173:
+      return 'Blob'
+    case 182:
+      return 'undefined'
     case 178:
       return `${parseType(typeCode.elementType)}[]`
     default:
@@ -69,7 +87,7 @@ const parseFilters = filepath => {
   const variableStatement = filterVariableStatements(sourceFile.statements)
   const variableDeclaration = filterVariableDeclaration(variableStatement.declarationList.declarations)[0]
   const name = variableDeclaration.name.escapedText
-  const descripton = parseFunctionComment(variableStatement, sourceFile).trim()
+  const comment = parseFunctionComment(variableStatement, sourceFile)
   const arrowFunction = variableDeclaration.initializer
   const parameters = arrowFunction.parameters.map(parseParameters)
   let returnType = arrowFunction.type
@@ -83,7 +101,8 @@ const parseFilters = filepath => {
 
   return {
     name,
-    descripton,
+    descripton: comment.description,
+    example: comment.example,
     returnType: 'string',
     parameters,
     signature,

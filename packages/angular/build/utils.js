@@ -3,13 +3,13 @@ const fs = require('fs')
 const filtersJson = require('../../utils/src/filters.json')
 
 const utilImports = filtersJson.map(f => `import { ${f.name} } from '@baloise/ui-library-utils'`)
-const utilFilters = filtersJson.map(f => `  Bal${f.name.charAt(0).toUpperCase() + f.name.slice(1)}Pipe`)
+const utilFilters = filtersJson.map(f => `  ${f.name.charAt(0).toUpperCase() + f.name.slice(1)}Pipe`)
 const utilFiltersClass = filtersJson.map(f =>
   [
     '@Pipe({',
     `  name: '${f.name}'`,
     '})',
-    `export class Bal${f.name.charAt(0).toUpperCase() + f.name.slice(1)}Pipe implements PipeTransform {`,
+    `export class ${f.name.charAt(0).toUpperCase() + f.name.slice(1)}Pipe implements PipeTransform {`,
     `  transform = ${f.name}`,
     '}',
     '',

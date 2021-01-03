@@ -7,10 +7,10 @@ Follow the installtion guide of Vue. [Link to the Vue Installion](/introduction/
 
 ### Filters
 
-The filters like `toClaimNumber` can be used directly in the template.
+The filters like `balClaimNumber` can be used directly in the template.
 
 ```html 
-<p>{{ '73001217169' | toClaimNumber }}</p>
+<p>{{ '73001217169' | balClaimNumber }}</p>
 ```
 
 or in the component with `this.$balUtils` or `Vue.$balUtils`.
@@ -24,7 +24,7 @@ export default Vue.extend({
   },
   computed: {
     claimNumberFormatted: function() {
-      return this.$balUtils.toClaimNumber(this.claimNumber)
+      return this.$balUtils.balClaimNumber(this.claimNumber)
     }
   }
 })
@@ -37,10 +37,10 @@ Follow the installtion guide of Angular. [Link to the Vue Installion](/introduct
 
 ### Pipes
 
-The pipes like `toClaimNumber` can be used directly in the view.
+The pipes like `balClaimNumber` can be used directly in the view.
 
 ```html 
-<p>{{ '73001217169' | toClaimNumber }}</p>
+<p>{{ '73001217169' | balClaimNumber }}</p>
 ```
 
 ## Manual
@@ -48,14 +48,14 @@ The pipes like `toClaimNumber` can be used directly in the view.
 Install the library directly from npm.
 
 ```bash
-npm add @baloise/ui-librar-utils
+npm add @baloise/ui-library-utils
 ```
 
 Than import it into any of your files and use the functions.
 
 ```typescript 
-import { toClaimNumber } from '@baloise/ui-library-utils'
+import { balClaimNumber } from '@baloise/ui-library-utils'
 
-toClaimNumber('93001217169')
+balClaimNumber('93001217169')
 // returns "93/001217/16.9"
 ```
