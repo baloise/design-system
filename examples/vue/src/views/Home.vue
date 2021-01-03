@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1 class="title size-1">Filters</h1>
-    <p>{{ '123' | toClaimNumber }}</p>
-    <p>{{ '73001217169' | toClaimNumber }}</p>
+    <p>{{ '123' | balClaimNumber }}</p>
+    <p>{{ '73001217169' | balClaimNumber }}</p>
     <p>{{ claimNumberFormatted }}</p>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default Vue.extend({
   },
   computed: {
     claimNumberFormatted: function() {
-      return this.$balUtils.toClaimNumber(this.claimNumber)
+      return this.$balUtils.balClaimNumber(this.claimNumber)
     }
   }
 })
