@@ -27,10 +27,17 @@ export class Navbar {
   componentWillLoad() {
     this.hasNavbarStartSlot = !!this.el.querySelector('[slot="navbar-start"]')
     this.hasNavbarEndSlot = !!this.el.querySelector('[slot="navbar-end"]')
+    window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
   }
 
   async toggle(): Promise<void> {
     this.isMenuActive = !this.isMenuActive
+  }
+
+  async resetIsMenuActive(e) {
+    if (e.matches) {
+      this.isMenuActive = false;
+    }
   }
 
   render() {

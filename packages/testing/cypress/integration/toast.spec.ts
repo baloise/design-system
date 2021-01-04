@@ -3,8 +3,8 @@ import { app } from '../support/app'
 describe("Toast", () => {
   let page = app.getToastPage()
 
-  it("can be clicked", () => {
+  it("should navigate to Toast page and open Toast", () => {
     page.open()
-    page.toast.get().click()
+    page.toast.get().click({ multiple: true })
   })
 })

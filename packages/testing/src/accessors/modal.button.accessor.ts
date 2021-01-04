@@ -51,9 +51,8 @@ export const CloseModalWindowMixin: Mixin = <T>({creator}: MixinContext<T>) => (
  * describe('Model', () => {
  *   it('should ...', () => {
  *      const model = ModalButtonAccessor(dataTestSelector('model-id')).get()
- *      model.click()
- *      model.assertBodyExists()
- *      model.contains('Label')
+ *      model.clickOpenModalButton()
+ *      model.assertBigModalContent('content')
  *  })
  * })
  * ```

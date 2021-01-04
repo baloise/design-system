@@ -21,13 +21,25 @@ interface TabsAccessorType
   assertVisible(text: string): TabsAccessorType;
 }
 
-// export const TabsAssertVisibleMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
-//   assertVisible: (text: string) => {
-//     const field = cy.get(selector).find(`[title="${text}"] .bal-tabs-panel`);
-//     field.should('be.visible');
-//     return creator();
-//   }
-// });
+export const TabsAssertVisibleMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+  /**
+   * Assert if tab is visible
+   */
+  assertVisible: (text: string) => {
+    const field = cy.get(selector).find(`[label="${text}"] .sc-bal-tab-item`);
+    field.should('be.visible');
+    return creator();
+  },
+  /**
+   * Selects tab
+   */
+  select: (index: number) => {
+    cy.get(selector).within(() => {
+      cy.get(`a.sc-bal-tabs`).eq(index).click();
+    });
+    return creator();
+  },
+});
 
 /**
  * TabsAccessor is a helper object for E-2-E testing.
@@ -39,13 +51,12 @@ interface TabsAccessorType
  * describe('Tabs', () => {
  *   it('should ...', () => {
  *      const tabs = TabsAccessor(dataTestSelector('tabs-id')).get()
- *      tabs.click()
- *      tabs.assertIsChecked()
- *      tabs.contains('Label')
+ *      tabs.select()
+ *      tabs.assertVisible('value')
  *  })
  * })
  * ```
  */
 export const TabsAccessor: Accessor<TabsAccessorType> =
   createAccessor<TabsAccessorType>(ClickableMixin, ContainableMixin, ExistableMixin, ShouldableMixin,
-    DisableableMixin, NthSelectableMixin, AttributableMixin, UrlableMixin, WaitableMixin, ListSelectableMixin);
+    DisableableMixin, NthSelectableMixin, AttributableMixin, UrlableMixin, WaitableMixin, ListSelectableMixin, TabsAssertVisibleMixin);

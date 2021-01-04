@@ -45,9 +45,7 @@ export const InputValueAssertableMixin: Mixin = <T>({selector, creator}: MixinCo
  * describe('Input', () => {
  *   it('should ...', () => {
  *      const input = InputAccessor(dataTestSelector('input-id')).get()
- *      input.click()
- *      input.assertBodyExists()
- *      input.contains('Label')
+ *      input.assertValue('value)
  *  })
  * })
  * ```

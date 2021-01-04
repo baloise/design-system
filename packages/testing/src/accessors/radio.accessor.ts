@@ -60,9 +60,7 @@ export const SelectButtonSelectableMixin: Mixin = <T>({selector, creator}: Mixin
  * describe('Radio', () => {
  *   it('should ...', () => {
  *      const radio = RadioAccessor(dataTestSelector('radio-id')).get()
- *      radio.click()
- *      radio.assertBodyExists()
- *      radio.contains('Label')
+ *      radio.select(1)
  *  })
  * })
  * ```

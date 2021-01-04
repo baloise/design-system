@@ -84,8 +84,8 @@ export const SelectContainableMixin: Mixin = <T>({selector, creator}: MixinConte
  *   it('should ...', () => {
  *      const select = SelectAccessor(dataTestSelector('select-id')).get()
  *      select.click()
- *      select.assertBodyExists()
- *      select.contains('Label')
+ *      select.select(1)
+ *      select.contains('value')
  *  })
  * })
  * ```

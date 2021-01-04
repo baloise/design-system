@@ -42,8 +42,6 @@ export const SuccessToastableMixin: Mixin = <T>({creator}: MixinContext<T>) => (
  *   it('should ...', () => {
  *      const toast = ToastAccessor(dataTestSelector('toast-id')).get()
  *      toast.click()
- *      toast.assertIsChecked()
- *      toast.contains('Label')
  *  })
  * })
  * ```

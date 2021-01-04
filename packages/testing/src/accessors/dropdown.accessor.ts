@@ -12,7 +12,7 @@ import {
   Visible,
   Attributable,
   Urlable,
-  Waitable, Selectable,
+  Waitable, Selectable
 } from '../mixins'
 
 interface DropDownAccessorType
@@ -44,13 +44,11 @@ export const DropDownClickableMixin: Mixin = <T>({selector, creator}: MixinConte
  *   it('should ...', () => {
  *      const dropdown = DropDownAccessor(dataTestSelector('dropdown-id')).get()
  *      dropdown.click()
- *      dropdown.assertBodyExists()
- *      dropdown.contains('Label')
  *  })
  * })
  * ```
  */
 export const DropDownAccessor: Accessor<DropDownAccessorType> =
   createAccessor<DropDownAccessorType>(
-    DropDownClickableMixin
+    DropDownClickableMixin,
   );

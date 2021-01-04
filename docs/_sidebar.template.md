@@ -25,7 +25,6 @@
 - **Testing**
 
   - [Installation](testing/installation.md)
-  - [Accessors](testing/accessors.md)
 
 - **Development**
 

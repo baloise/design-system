@@ -99,9 +99,9 @@ export const DatePickerMinMaxRangeAssertableMixin: Mixin = <T>({selector, creato
    * describe('Datepicker', () => {
  *   it('should ...', () => {
  *      const datepicker = DatePickerAccessor(dataTestSelector('datepicker-id')).get()
- *      datepicker.click()
- *      datepicker.assertBodyExists()
- *      datepicker.contains('Label')
+ *      datepicker.open()
+ *      datepicker.pick(new Date())
+ *      datepicker.shouldHaveValue(new Date())
  *  })
  * })
  * ```

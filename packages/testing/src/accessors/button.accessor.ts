@@ -42,6 +42,13 @@ export const ButtonContainableMixin: Mixin = <T>({ selector, creator }: MixinCon
     cy.get(selector).find('bal-text').contains(content)
     return creator()
   },
+  /**
+   * Asserts that button is disabled
+   */
+  assertIsDisabled: () => {
+    cy.get(selector).should('have.attr', 'disabled')
+    return creator()
+  },
 })
 
 /**
@@ -55,7 +62,7 @@ export const ButtonContainableMixin: Mixin = <T>({ selector, creator }: MixinCon
  *   it('should ...', () => {
  *      const button = ButtonAccessor(dataTestSelector('button-id')).get()
  *      button.click()
- *      button.assertIsChecked()
+ *      button.assertIsEnabled()
  *      button.contains('Label')
  *  })
  * })
