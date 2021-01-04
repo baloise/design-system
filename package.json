@@ -4,6 +4,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "homepage": "https://baloise-ui-library.now.sh",
+  "author": {
+    "name": "Gery Hirschfeld",
+    "email": "gerhard.hirschfeld@baloise.ch",
+    "url": "https://github.com/hirsch88"
+  },
   "scripts": {
     "postinstall": "npm run bootstrap && npm run docs:install",
     "bootstrap": "lerna bootstrap",

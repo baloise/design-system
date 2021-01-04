@@ -6,7 +6,12 @@
     "type": "git",
     "url": "https://github.com/baloise/ui-library.git"
   },
-  "homepage": "https://ui-library.vercel.app",
+  "homepage": "https://baloise-ui-library.now.sh",
+  "author": {
+    "name": "Gery Hirschfeld",
+    "email": "gerhard.hirschfeld@baloise.ch",
+    "url": "https://github.com/hirsch88"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -27,7 +32,6 @@
       "@angular/forms"
     ]
   },
-  "author": "",
   "license": "Apache-2.0",
   "dependencies": {
     "@baloise/ui-library": "^2.3.0",
