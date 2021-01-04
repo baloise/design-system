@@ -2,10 +2,10 @@
   "packages": [
     "packages/*"
   ],
-  "version": "2.2.0-alpha.2",
+  "version": "2.2.0",
   "command": {
     "publish": {
-      "conventionalCommits": false,
+      "conventionalCommits": true,
       "ignoreChanges": [
         "docs/**",
         "examples/**"
