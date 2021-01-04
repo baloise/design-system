@@ -15,7 +15,7 @@
     "docs:install": "cd docs && npm install",
     "docs:clean": "rimraf docs/www && rimraf docs/lib",
     "docs:serve": "npm --prefix docs run serve",
-    "docs:build": "npm run docs:clean && npm --prefix packages/library run build:docs && npm --prefix packages/testing run build:docs && npm --prefix docs run build",
+    "docs:build": "npm run docs:clean && npm --prefix packages/library run build:docs && npm --prefix packages/utils run build:docs && npm --prefix packages/testing run build:docs && npm --prefix docs run build",
     "docs:publish": "npm run docs:install && npm run docs:build",
     "lib:build": "npm --prefix packages/library run build",
     "lib:serve": "npm --prefix packages/library run serve",
