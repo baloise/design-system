@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.4](https://github.com/baloise/ui-library/compare/v2.3.3...v2.3.4) (2021-01-04)
+
+
+### Bug Fixes
+
+* **navbar:** fix navbar dropdown colors + add example ([64197bc](https://github.com/baloise/ui-library/commit/64197bc5cd50bd21cac1f717a29523ac2d8f51d3))
+
+
+
+## 2.1.1 (2020-12-23)
+
+
+
+
+
 ## [2.3.3](https://github.com/baloise/ui-library/compare/v2.3.2...v2.3.3) (2021-01-04)
 
 **Note:** Version bump only for package @baloise/ui-library
