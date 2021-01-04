@@ -232,9 +232,9 @@ The generated code does not rely on Stencil, but rather it generates highly-opti
 > We use opensource tooling to make our processes simpler
 
 We use Github as our software development platform, which is the leading platform for open-spource projects in the world.
-For new features or fixes we develop them in seperate branches which will result in a pull-request. Travis, our CI tool, listens on webhooks and starts building & testing our application in a seperate container. Moreover, our deployment platform Now also listens for fired webhooks and automatically deploys the code of the pull request to a preview environment. All this is shown in the open pull request on Github. So other developers and UX specialists can easly review, comment, approve or decline the new changes.
+For new features or fixes we develop them in seperate branches which will result in a pull-request. Github Actions, our CI tool, listens on webhooks and starts building & testing our application in a seperate container. Moreover, our deployment platform Now also listens for fired webhooks and automatically deploys the code of the pull request to a preview environment. All this is shown in the open pull request on Github. So other developers and UX specialists can easly review, comment, approve or decline the new changes.
 
-After a pull request has been approved, it will be merged into master, which is our default branch. Travis reacts on the merge action and starts its configured workflow. There is a slide diffrence to other builds, which is the release part. The release process is fully automated with sematic release.
+After a pull request has been approved, it will be merged into master, which is our default branch. github Actions reacts on the merge action and starts its configured workflow. There is a slide diffrence to other builds, which is the release part. The release process is fully automated with sematic release.
 Based on the commit messages since the last release, it detects the release type (major, minor or patch).
 
 | Commit message                                                                                                                                                                                   | Release type               |
@@ -253,8 +253,7 @@ After detecting the new version, it also publishes the library to npm. Afterthat
 
 | Tool                                                                    | Description                                                             |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| [Github](https://github.com/)                                           | Is the world's leading software development platform.                   |
-| [Travis CI](https://travis-ci.com/)                                     | Our Continuous Integration platform.                                    |
+| [Github](https://github.com/)                                           | Is the world's leading software development platform.                   |                                   |
 | [NPM](https://www.npmjs.com/)                                           | Software Registry of all the JavaScript & TypeScript packages.          |
 | [Now](https://zeit.co/)                                                 | ZEIT Now is a cloud platform for static sites and Serverless Functions. |
 | [Sematic Release](https://github.com/semantic-release/semantic-release) | Fully automated version management and package publishing.              |
