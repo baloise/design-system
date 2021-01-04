@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ui-library-utils",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -11,7 +11,8 @@
     "name": "Gery Hirschfeld",
     "email": "gerhard.hirschfeld@baloise.ch",
     "url": "https://github.com/hirsch88"
-  },  "publishConfig": {
+  },
+  "publishConfig": {
     "access": "public"
   },
   "scripts": {
