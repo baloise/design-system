@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ui-library-angular",
-  "version": "2.1.1",
+  "version": "2.2.0-alpha.2",
   "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -11,7 +11,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run clean && ng-packagr -p package.json",
+    "build:utils": "node ./build/utils.js",
+    "build": "npm run build:utils && npm run clean && ng-packagr -p package.json",
     "clean": "rimraf dist"
   },
   "$schema": "./node_modules/ng-packagr/package.schema.json",
@@ -29,7 +30,8 @@
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/ui-library": "^2.1.1",
+    "@baloise/ui-library": "^2.2.0-alpha.2",
+    "@baloise/ui-library-utils": "^2.2.0-alpha.2",
     "tslib": "^2.0.0"
   },
   "peerDependencies": {

@@ -1,5 +1,7 @@
 import Vue, { PluginObject } from 'vue'
 import { defineCustomElements, applyPolyfills } from '@baloise/ui-library/loader'
+import * as balUtils from '@baloise/ui-library-utils'
+import { addFilters } from './filters'
 
 Vue.config.ignoredElements = [/bal-\w*/]
 
@@ -22,7 +24,9 @@ export const BalUiLibraryPlugin: PluginObject<BalUiLibraryPluginOption> = {
       applyPolyfills().then(() => defineCustomElements())
     }
 
-    // VueInstance.$balUtils = utils
-    // VueInstance.prototype.$balUtils = utils
+    _VueInstance.$balUtils = balUtils
+    _VueInstance.prototype.$balUtils = balUtils
+
+    addFilters(_VueInstance)
   },
 }

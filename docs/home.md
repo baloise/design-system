@@ -12,12 +12,13 @@ The UI-Libary is an open source project for styling awesome web applications tha
 
 ## Ecosytem
 
-| Library                                             | Status                                                                                                                                             | Description                                                |
-| --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| [UI Library](introduction/quick-start)              | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)                 | Core library build with web components and global styling. |
-| [UI Library Vue](introduction/vue) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-vue.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-vue)         | Vue component library based on the the core library.       |
-| [UI Library Angular](introduction/angular) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-angular.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-angular)         | Angular component library based on the the core library.       |
-| [UI Library Testing](testing/installation)          | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-testing.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-testing) | Testing library with accessors for each component.         |
+| Library                                    | Status                                                                                                                                   | Description                                                |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| [UI Library](introduction/quick-start)     | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)                 | Core library build with web components and global styling. |
+| [UI Library Vue](introduction/vue)         | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-vue.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-vue)         | Vue component library based on the the core library.       |
+| [UI Library Angular](introduction/angular) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-angular.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-angular) | Angular component library based on the the core library.   |
+| [UI Library Utils](utilities/installation) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-utils.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-utils)     | Utilities like filters.                                    |
+| [UI Library Testing](testing/installation) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-testing.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-testing) | Testing library with accessors for each component.         |
 
 ## Quick Start
 
@@ -45,7 +46,6 @@ There are supporting libraries for the following frameworks.
     </td>
   </tr>
 </table>
-
 
 ## Release Notes
 

@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ui-library-vue",
-  "version": "2.1.1",
+  "version": "2.2.0-alpha.2",
   "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -11,7 +11,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run compile",
+    "build": "npm run build:utils && npm run compile",
+    "build:utils": "node ./build/utils.js",
     "compile": "npm run tsc",
     "tsc": "tsc -p ."
   },
@@ -32,6 +33,7 @@
   },
   "gitHead": "9936956ada470a2f3785bf7d93f501744dbc43dd",
   "dependencies": {
-    "@baloise/ui-library": "^2.1.1"
+    "@baloise/ui-library": "^2.2.0-alpha.2",
+    "@baloise/ui-library-utils": "^2.2.0-alpha.2"
   }
 }

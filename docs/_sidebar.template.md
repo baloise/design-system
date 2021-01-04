@@ -21,6 +21,7 @@
 - **Utilities**
 
   - [Installation](utilities/installation.md)
+  - [Filters](utilities/filters.md)
 
 - **Testing**
 
