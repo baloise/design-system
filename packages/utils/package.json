@@ -1,0 +1,43 @@
+{
+  "name": "@baloise/ui-library-utils",
+  "version": "2.3.4",
+  "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/ui-library.git"
+  },
+  "homepage": "https://baloise-ui-library.now.sh",
+  "author": {
+    "name": "Gery Hirschfeld",
+    "email": "gerhard.hirschfeld@baloise.ch",
+    "url": "https://github.com/hirsch88"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rm -rf src/index.ts",
+    "build:docs": "node build/docs.js",
+    "build": "npm run clean && npm run build:docs && npm run compile",
+    "compile": "npm run tsc",
+    "tsc": "tsc -p .",
+    "test": "jest"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@types/jest": "^26.0.19",
+    "babel-jest": "^26.6.3",
+    "glob": "^7.1.6",
+    "jest": "^26.6.3",
+    "typescript": "^4.1.3"
+  }
+}

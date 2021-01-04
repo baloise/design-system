@@ -1,12 +1,17 @@
 {
   "name": "@baloise/ui-library-testing",
-  "version": "2.0.3",
+  "version": "2.3.4",
   "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
     "url": "https://github.com/baloise/ui-library.git"
   },
-  "homepage": "https://ui-library.vercel.app",
+  "homepage": "https://baloise-ui-library.now.sh",
+  "author": {
+    "name": "Gery Hirschfeld",
+    "email": "gerhard.hirschfeld@baloise.ch",
+    "url": "https://github.com/hirsch88"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -26,7 +31,6 @@
     "compile": "npm run tsc",
     "tsc": "tsc -p tsconfig.build.json"
   },
-  "author": "",
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/chai": "^4.2.12",
@@ -41,6 +45,6 @@
   },
   "gitHead": "9936956ada470a2f3785bf7d93f501744dbc43dd",
   "dependencies": {
-    "@baloise/ui-library": "^2.0.3"
+    "@baloise/ui-library": "^2.3.4"
   }
 }
