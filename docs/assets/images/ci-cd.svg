@@ -30,7 +30,7 @@
                     <rect id="Rectangle" stroke="#003399" stroke-width="3" fill="#EBF6FA" x="1.5" y="1.5" width="117" height="116.811912" rx="5"></rect>
                     <text id="CI-Github-Actions" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#003399">
                         <tspan x="50" y="56">CI</tspan>
-                        <tspan x="39.762207" y="78" font-size="14">Github Actions</tspan>
+                        <tspan x="39.762207" y="78" font-size="14">Actions</tspan>
                     </text>
                 </g>
                 <g transform="translate(185.000000, 0.000000)">
@@ -55,7 +55,7 @@
                     <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="200" height="119.811912" rx="5"></rect>
                     <text id="Versioning-Sematic-R" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#003399">
                         <tspan x="48.8769531" y="56">Versioning</tspan>
-                        <tspan x="44.7416992" y="78" font-size="14">Sematic Release</tspan>
+                        <tspan x="44.7416992" y="78" font-size="14">Lerna</tspan>
                     </text>
                 </g>
             </g>
@@ -85,7 +85,7 @@
                     <rect id="Rectangle" stroke="#003399" stroke-width="3" fill="#EBF6FA" x="1.5" y="1.5" width="117" height="116.811912" rx="5"></rect>
                     <text id="CI-Github-Actions" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#003399">
                         <tspan x="50" y="56">CI</tspan>
-                        <tspan x="39.762207" y="78" font-size="14">Github Actions</tspan>
+                        <tspan x="39.762207" y="78" font-size="14">Actions</tspan>
                     </text>
                 </g>
                 <g transform="translate(185.000000, 0.000000)">

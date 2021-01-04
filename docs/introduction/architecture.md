@@ -251,9 +251,9 @@ After detecting the new version, it also publishes the library to npm. Afterthat
 
 <br />
 
-| Tool                                                                    | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| [Github](https://github.com/)                                           | Is the world's leading software development platform.                   |                                   |
-| [NPM](https://www.npmjs.com/)                                           | Software Registry of all the JavaScript & TypeScript packages.          |
-| [Now](https://zeit.co/)                                                 | ZEIT Now is a cloud platform for static sites and Serverless Functions. |
-| [Sematic Release](https://github.com/semantic-release/semantic-release) | Fully automated version management and package publishing.              |
+| Tool                                    | Description                                                             |
+| --------------------------------------- | ----------------------------------------------------------------------- | --- |
+| [Github](https://github.com/)           | Is the world's leading software development platform.                   |     |
+| [NPM](https://www.npmjs.com/)           | Software Registry of all the JavaScript & TypeScript packages.          |
+| [Now](https://zeit.co/)                 | ZEIT Now is a cloud platform for static sites and Serverless Functions. |
+| [Lerna](https://github.com/lerna/lerna) | A tool for managing JavaScript projects with multiple packages.         |
