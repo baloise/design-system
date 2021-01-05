@@ -55,6 +55,7 @@ export const SelectAssertableOptionsMixin: Mixin = <T>({selector, creator}: Mixi
   assertOptions: (...options: string[]) => {
     cy.get(selector).within(() => {
       cy.get('bal-select-option').then(opt => {
+        // @ts-ignore
         const actual = [...opt.toArray()].map(o => o.value);
         expect(actual).to.deep.eq(options);
       });
