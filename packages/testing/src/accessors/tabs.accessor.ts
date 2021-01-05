@@ -51,7 +51,7 @@ export const TabsAssertVisibleMixin: Mixin = <T>({selector, creator}: MixinConte
  * describe('Tabs', () => {
  *   it('should ...', () => {
  *      const tabs = TabsAccessor(dataTestSelector('tabs-id')).get()
- *      tabs.select()
+ *      tabs.select(1)
  *      tabs.assertVisible('value')
  *  })
  * })

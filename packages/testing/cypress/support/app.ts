@@ -1,8 +1,8 @@
 import { CheckboxPage } from './pages/checkbox.page'
 import { ButtonPage } from './pages/button.page'
 import { AccordionPage } from './pages/accordion.page'
-import { DatePickerPage } from './pages/datepicker.page'
-import { DropDownPage } from './pages/dropdown.page'
+import { DatepickerPage } from './pages/datepicker.page'
+import { DropdownPage } from './pages/dropdown.page'
 import { SelectPage } from './pages/select.page'
 import { InputPage } from './pages/input.page'
 import { ModalPage } from './pages/modal.page'
@@ -14,8 +14,8 @@ export class App {
   getCheckboxPage = () => new CheckboxPage()
   getButtonPage = () => new ButtonPage()
   getAccordionPage = () => new AccordionPage()
-  getDatePickerPage = () => new DatePickerPage()
-  getDropDownPage = () => new DropDownPage()
+  getDatepickerPage = () => new DatepickerPage()
+  getDropdownPage = () => new DropdownPage()
   getSelectPage = () => new SelectPage()
   getInputPage = () => new InputPage()
   getModalPage = () => new ModalPage()

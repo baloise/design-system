@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe("Datepicker", () => {
-  let page = app.getDatePickerPage()
+  let page = app.getDatepickerPage()
 
   it("should navigate to Datepicker page and open Datepicker", () => {
     page.open()

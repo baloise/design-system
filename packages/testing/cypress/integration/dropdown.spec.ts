@@ -1,9 +1,9 @@
 import { app } from '../support/app'
 
-describe("DropDown", () => {
-  let page = app.getDropDownPage()
+describe("Dropdown", () => {
+  let page = app.getDropdownPage()
 
-  it("should navigate to DropDown page and open and close the DropDown", () => {
+  it("should navigate to Dropdown page and open and close the Dropdown", () => {
     page.open()
     page.dropdown.get().click()
     page.dropdown.get().click()

@@ -7,19 +7,19 @@ import {
 } from '../mixins'
 import { format } from '../../../library/src/components/bal-datepicker/bal-datepicker.util'
 
-export interface DatePickerAccessorType {
-  write(date: string): DatePickerAccessorType;
-  pick(date: Date): DatePickerAccessorType;
-  open(): DatePickerAccessorType;
-  shouldHaveValue(date: Date): DatePickerAccessorType;
+export interface DatepickerAccessorType {
+  write(date: string): DatepickerAccessorType;
+  pick(date: Date): DatepickerAccessorType;
+  open(): DatepickerAccessorType;
+  shouldHaveValue(date: Date): DatepickerAccessorType;
   errorCheck(name: string, error: string): void;
   noErrorCheck(name: string): void;
-  assertDateInRange(date: Date, shouldBeInRange?: boolean): DatePickerAccessorType;
+  assertDateInRange(date: Date, shouldBeInRange?: boolean): DatepickerAccessorType;
 }
 
 const selectorDayBox = (date: Date) => `[data-date="${format(date)}"]`;
 
-export const DatePickerWriteMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const DatepickerWriteMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Write in the datepicker
    */
@@ -31,7 +31,7 @@ export const DatePickerWriteMixin: Mixin = <T>({selector, creator}: MixinContext
   }
 });
 
-export const DatePickerOpenableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const DatepickerOpenableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Open the datepicker
    */
@@ -41,12 +41,12 @@ export const DatePickerOpenableMixin: Mixin = <T>({selector, creator}: MixinCont
   }
 });
 
-export const DatePickerPickableMixin: Mixin = <T>({creator, selector}: MixinContext<T>) => ({
+export const DatepickerPickableMixin: Mixin = <T>({creator, selector}: MixinContext<T>) => ({
   /**
    * Pick the date
    */
   pick: (date: Date) => {
-    const openMixin = DatePickerOpenableMixin({creator, selector})
+    const openMixin = DatepickerOpenableMixin({creator, selector})
     const month = date.getMonth();
     const year = date.getFullYear();
 
@@ -62,7 +62,7 @@ export const DatePickerPickableMixin: Mixin = <T>({creator, selector}: MixinCont
   }
 });
 
-export const DatePickerShouldHaveValueAssertableMixin: Mixin = ({selector, creator}) => ({
+export const DatepickerShouldHaveValueAssertableMixin: Mixin = ({selector, creator}) => ({
   /**
    * Check if datepicker have value
    */
@@ -72,7 +72,7 @@ export const DatePickerShouldHaveValueAssertableMixin: Mixin = ({selector, creat
   }
 });
 
-export const DatePickerMinMaxRangeAssertableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const DatepickerMinMaxRangeAssertableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Assert if the date is in range
    */
@@ -90,15 +90,15 @@ export const DatePickerMinMaxRangeAssertableMixin: Mixin = <T>({selector, creato
 });
 
 /**
- * DatePickerAccessor is a helper object for E-2-E testing.
+ * DatepickerAccessor is a helper object for E-2-E testing.
  * It maps the datepicker behaviour to the `bal-datepicker` ui component.
  *
  * ```typescript
- * import { dataTestSelector, DatePickerAccessor } from '@baloise/ui-library-testing'
+ * import { dataTestSelector, DatepickerAccessor } from '@baloise/ui-library-testing'
  *
    * describe('Datepicker', () => {
  *   it('should ...', () => {
- *      const datepicker = DatePickerAccessor(dataTestSelector('datepicker-id')).get()
+ *      const datepicker = DatepickerAccessor(dataTestSelector('datepicker-id')).get()
  *      datepicker.open()
  *      datepicker.pick(new Date())
  *      datepicker.shouldHaveValue(new Date())
@@ -106,11 +106,11 @@ export const DatePickerMinMaxRangeAssertableMixin: Mixin = <T>({selector, creato
  * })
  * ```
  */
-export const DatePickerAccessor: Accessor<DatePickerAccessorType> =
-  createAccessor<DatePickerAccessorType>(
-    DatePickerOpenableMixin,
-    DatePickerPickableMixin,
-    DatePickerShouldHaveValueAssertableMixin,
-    DatePickerWriteMixin,
-    DatePickerMinMaxRangeAssertableMixin
+export const DatepickerAccessor: Accessor<DatepickerAccessorType> =
+  createAccessor<DatepickerAccessorType>(
+    DatepickerOpenableMixin,
+    DatepickerPickableMixin,
+    DatepickerShouldHaveValueAssertableMixin,
+    DatepickerWriteMixin,
+    DatepickerMinMaxRangeAssertableMixin
   );

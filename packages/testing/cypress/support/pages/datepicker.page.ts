@@ -1,7 +1,7 @@
-import { DatePickerAccessor, dataTestSelector } from '../../../src'
+import { DatepickerAccessor, dataTestSelector } from '../../../src'
 
-export class DatePickerPage {
-  datepicker = DatePickerAccessor(dataTestSelector("datepicker"))
+export class DatepickerPage {
+  datepicker = DatepickerAccessor(dataTestSelector("datepicker"))
   open() {
     cy.visit('/components/bal-datepicker')
   }

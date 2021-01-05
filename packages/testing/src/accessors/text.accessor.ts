@@ -29,8 +29,6 @@ interface TextAccessorType
  * describe('Text', () => {
  *   it('should ...', () => {
  *      const text = TextAccessor(dataTestSelector('text-id')).get()
- *      text.click()
- *      text.assertIsChecked()
  *      text.contains('Label')
  *  })
  * })
