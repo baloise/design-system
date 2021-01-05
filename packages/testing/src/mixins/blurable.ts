@@ -9,9 +9,9 @@ export interface Blurable<T> {
   blur(options?: Partial<Cypress.BlurOptions>): T
 }
 
-export const BlurableMixin: Mixin = ({ element, creator }) => ({
+export const BlurableMixin: Mixin = ({ selector, creator }) => ({
   blur: (options?: Partial<Cypress.BlurOptions>) => {
-    element.blur(options)
+    cy.get(selector).blur(options)
     return creator()
   },
 })

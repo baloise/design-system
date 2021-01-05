@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="/build/ui-library.css" />
     <script type="module" src="/build/ui-library.esm.js"></script>
     <script nomodule src="/build/ui-library.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
   </head>
   <body class="bal-app">
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-select id="bal-select-year" placeholder="select a year">
+        <bal-select id="bal-select-year" placeholder="select a year" data-test-id="select">
           <bal-select-option value="1995" label="1995">1995</bal-select-option>
           <bal-select-option value="1996" label="1996">1996</bal-select-option>
           <bal-select-option value="1997" label="1997">1997</bal-select-option>

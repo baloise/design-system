@@ -9,9 +9,9 @@ export interface Typeable<T> {
   type(text: string, options?: Partial<Cypress.TypeOptions>): T
 }
 
-export const TypeableMixin: Mixin = ({ element, creator }) => ({
+export const TypeableMixin: Mixin = ({ selector, creator }) => ({
   type: (text: string, options?: Partial<Cypress.TypeOptions>) => {
-    element.type(text, options)
+    cy.get(selector).type(text, options)
     return creator()
   },
 })

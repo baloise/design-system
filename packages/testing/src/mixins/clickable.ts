@@ -13,13 +13,13 @@ export interface Clickable<T> {
   clickNth(index: number, options?: Partial<Cypress.ClickOptions>): T
 }
 
-export const ClickableMixin: Mixin = ({ element, creator }) => ({
+export const ClickableMixin: Mixin = ({ selector, creator }) => ({
   click: (options?: Partial<Cypress.ClickOptions>) => {
-    element.click(options)
+    cy.get(selector).click(options)
     return creator()
   },
   clickNth: (index: number, options?: Partial<Cypress.ClickOptions>) => {
-    element.eq(index).click(options)
+    cy.get(selector).eq(index).click(options)
     return creator()
   },
 })

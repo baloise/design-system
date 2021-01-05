@@ -13,13 +13,13 @@ export interface Existable<T> {
   assertNotExists(): T
 }
 
-export const ExistableMixin: Mixin = ({ element, creator }) => ({
+export const ExistableMixin: Mixin = ({ selector, creator }) => ({
   assertExists: () => {
-    element.should('exist')
+    cy.get(selector).should('exist')
     return creator()
   },
   assertNotExists: () => {
-    element.should('not.exist')
+    cy.get(selector).should('not.exist')
     return creator()
   },
 })

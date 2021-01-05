@@ -13,7 +13,7 @@
       <h2 class="title is-size-2">Basic</h2>
 
       <section>
-        <bal-modal id="bal-modal-example">
+        <bal-modal id="bal-modal-example" data-test-id="modal">
           <span slot="head">Modal Title</span>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -26,7 +26,7 @@
           </bal-modal-actions>
         </bal-modal>
 
-        <bal-button id="bal-modal-trigger-example">Launch Modal</bal-button>
+        <bal-button id="bal-modal-trigger-example" data-test-id="open-modal-button">Launch Modal</bal-button>
       </section>
       <script type="text/javascript">
         const modalElementBasic = document.getElementById('bal-modal-example')
@@ -46,7 +46,7 @@
 
       <h2 class="title is-size-2">Customize width</h2>
       <section>
-        <bal-modal style="--bal-width: 1000px" id="bal-modal-example-width">
+        <bal-modal style="--bal-width: 1000px" id="bal-modal-example-width" data-test-id="modal">
           <span slot="head">Modal Title</span>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -83,7 +83,7 @@
         linses.
       </p>
       <section>
-        <bal-modal card id="bal-modal-card-example">
+        <bal-modal card id="bal-modal-card-example" data-test-id="modal">
           <span slot="head">Modal Title</span>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et

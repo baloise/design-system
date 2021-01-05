@@ -13,13 +13,13 @@ export interface Disableable<T> {
   assertIsEnabled(): T
 }
 
-export const DisableableMixin: Mixin = ({ element, creator }) => ({
+export const DisableableMixin: Mixin = ({ selector, creator }) => ({
   assertIsDisabled: () => {
-    element.should('be.disabled')
+    cy.get(selector).should('be.disabled')
     return creator()
   },
   assertIsEnabled: () => {
-    element.should('not.be.disabled')
+    cy.get(selector).should('not.be.disabled')
     return creator()
   },
 })
