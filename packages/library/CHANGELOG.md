@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.5](https://github.com/baloise/ui-library/compare/v2.3.4...v2.3.5) (2021-01-05)
+
+
+### Bug Fixes
+
+* **icons:** adjust icon position ([ec5bdcf](https://github.com/baloise/ui-library/commit/ec5bdcf48f2ae6aa157bf50ec8795761e56af129))
+
+
+
+
+
 ## [2.3.4](https://github.com/baloise/ui-library/compare/v2.3.3...v2.3.4) (2021-01-04)
 
 
