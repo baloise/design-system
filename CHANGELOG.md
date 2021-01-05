@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/baloise/ui-library/compare/v2.3.5...v2.4.0) (2021-01-05)
+
+
+### Bug Fixes
+
+* **select.accessor:** add ts-ignore ([e3e567d](https://github.com/baloise/ui-library/commit/e3e567d15b7e473def317d2958c2f6fda6ecb0ec))
+* sync packages ([67c6b05](https://github.com/baloise/ui-library/commit/67c6b05f691955547bc14299d57a99f52c2224f5))
+
+
+### Features
+
+* fixed navbar and refactored tests description ([e5b2494](https://github.com/baloise/ui-library/commit/e5b24940fe30cded3911c1ad95cc5d46e40fa62c))
+* fixed navbar and refactored tests description ([d7ba031](https://github.com/baloise/ui-library/commit/d7ba031c0db6caa9d80b63d24906a51fab291a06))
+
+
+
+## [2.3.4](https://github.com/baloise/ui-library/compare/v2.0.3...v2.3.4) (2021-01-04)
+
+
+### Features
+
+* **angular:** added home page and improved styling ([11ea4a3](https://github.com/baloise/ui-library/commit/11ea4a384003c80507c021a2f8b7baf478edb86c))
+* added accessors and tests ([1036e7a](https://github.com/baloise/ui-library/commit/1036e7a7e7fcc4e82c7c6c116006162f9880c444))
+
+
+
+## 2.0.3 (2020-12-22)
+
+
+
+
+
 ## [2.3.5](https://github.com/baloise/ui-library/compare/v2.3.4...v2.3.5) (2021-01-05)
 
 

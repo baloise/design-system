@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/baloise/ui-library/compare/v2.3.5...v2.4.0) (2021-01-05)
+
+
+### Features
+
+* fixed navbar and refactored tests description ([e5b2494](https://github.com/baloise/ui-library/commit/e5b24940fe30cded3911c1ad95cc5d46e40fa62c))
+
+
+
+## [2.3.4](https://github.com/baloise/ui-library/compare/v2.0.3...v2.3.4) (2021-01-04)
+
+
+
+
+
 ## [2.3.5](https://github.com/baloise/ui-library/compare/v2.3.4...v2.3.5) (2021-01-05)
 
 **Note:** Version bump only for package @baloise/ui-library-vue
