@@ -386,15 +386,72 @@ export class BalDropdown {
 
 export declare interface BalField extends Components.BalField {}
 @ProxyCmp({
-  inputs: ['disabled', 'expanded', 'iconLeft', 'iconRight', 'inverted', 'label', 'loading', 'required', 'validationMessage']
+  inputs: ['disabled', 'expanded', 'inverted', 'loading']
 })
 @Component({
   selector: 'bal-field',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'expanded', 'iconLeft', 'iconRight', 'inverted', 'label', 'loading', 'required', 'validationMessage']
+  inputs: ['disabled', 'expanded', 'inverted', 'loading']
 })
 export class BalField {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalFieldControl extends Components.BalFieldControl {}
+@ProxyCmp({
+  inputs: ['iconLeft', 'iconRight']
+})
+@Component({
+  selector: 'bal-field-control',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['iconLeft', 'iconRight']
+})
+export class BalFieldControl {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalFieldLabel extends Components.BalFieldLabel {}
+@ProxyCmp({
+  inputs: ['required', 'text']
+})
+@Component({
+  selector: 'bal-field-label',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['required', 'text']
+})
+export class BalFieldLabel {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalFieldMessage extends Components.BalFieldMessage {}
+@ProxyCmp({
+  inputs: ['type']
+})
+@Component({
+  selector: 'bal-field-message',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['type']
+})
+export class BalFieldMessage {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1004,6 +1061,38 @@ export class BalText {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+  }
+}
+
+import { Textarea as ITextarea } from '@baloise/ui-library/dist/types/components/bal-textarea/bal-textarea';
+export declare interface BalTextarea extends Components.BalTextarea {}
+@ProxyCmp({
+  inputs: ['balTabindex', 'clickable', 'disabled', 'inverted', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'value'],
+  methods: ['setFocus']
+})
+@Component({
+  selector: 'bal-textarea',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['balTabindex', 'clickable', 'disabled', 'inverted', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'value'],
+  outputs: ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']
+})
+export class BalTextarea {
+  /** Emitted when a keyboard input occurred. */
+  balInput!: ITextarea['balInput'];
+  /** Emitted when a keyboard input occurred. */
+  balBlur!: ITextarea['balBlur'];
+  /** Emitted when the input has clicked. */
+  balClick!: ITextarea['balClick'];
+  /** Emitted when a keyboard key has pressed. */
+  balKeyPress!: ITextarea['balKeyPress'];
+  /** Emitted when the input has focus. */
+  balFocus!: ITextarea['balFocus'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']);
   }
 }
 

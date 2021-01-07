@@ -121,13 +121,13 @@
             width: 8px;
             opacity: 0.5;
 
-            span {
-              margin-top: -3px;
+            bal-text {
+              margin-top: 0px;
             }
           }
 
           span.step-label,
-          span.step-index span {
+          span.step-index bal-text {
             display: none;
           }
         }
@@ -203,14 +203,14 @@
               color: $blue;
             }
 
-            span.step-index span {
+            span.step-index bal-text {
               display: flex;
               font-size: $size-5;
             }
           }
 
           &.is-done > a span.step-index {
-            span {
+            bal-text {
               display: none;
             }
 
@@ -242,7 +242,7 @@
             background: transparent;
             opacity: 1;
 
-            span {
+            bal-text {
               display: flex;
               color: $blue;
             }
@@ -287,7 +287,7 @@
             &.is-active > a span.step-index {
               background: transparent;
 
-              span {
+              bal-text {
                 color: $white;
               }
             }

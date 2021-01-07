@@ -25,15 +25,18 @@
 
       <h2 class="title is-size-2">Field</h2>
       <section>
-        <bal-field label="Firstname">
-          <bal-hint slot="hint">
-            <bal-hint-title>Firstname</bal-hint-title>
-            <bal-hint-text>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-              et dolore magna aliquyam erat, sed diam voluptua.
-            </bal-hint-text>
-          </bal-hint>
-          <input class="input" placeholder="Enter firstname here" />
+        <bal-field expanded>
+          <bal-field-label text="Firstname" required>
+            <bal-hint>
+              <bal-hint-title>Spider-Man</bal-hint-title>
+              <bal-hint-text>
+                Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.
+              </bal-hint-text>
+            </bal-hint>
+          </bal-field-label>
+          <bal-field-control>
+            <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+          </bal-field-control>
         </bal-field>
       </section>
     </div>

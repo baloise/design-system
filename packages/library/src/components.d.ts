@@ -398,6 +398,16 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * If `true` the field can be used on blue background.
+         */
+        "inverted": boolean;
+        /**
+          * If `true` a loading spinner is visible at the end of the input
+         */
+        "loading": boolean;
+    }
+    interface BalFieldControl {
+        /**
           * Baloise icon for the left side of the input
          */
         "iconLeft": string;
@@ -405,26 +415,22 @@ export namespace Components {
           * Baloise icon for the right side of the input
          */
         "iconRight": string;
-        /**
-          * If `true` the field can be used on blue background.
-         */
-        "inverted": boolean;
-        /**
-          * Text of the inputs label
-         */
-        "label": string;
-        /**
-          * If `true` a loading spinner is visible at the end of the input
-         */
-        "loading": boolean;
+    }
+    interface BalFieldLabel {
         /**
           * If `true` a asterix (*) is added to the label text
          */
         "required": boolean;
         /**
-          * Validation message text
+          * Text of the inputs label
          */
-        "validationMessage": string;
+        "text": string;
+    }
+    interface BalFieldMessage {
+        /**
+          * Defines the color of the message.
+         */
+        "type": '' | 'danger' | 'success' | 'warning';
     }
     interface BalFileUpload {
         /**
@@ -931,6 +937,52 @@ export namespace Components {
     }
     interface BalText {
     }
+    interface BalTextarea {
+        /**
+          * The tabindex of the control.
+         */
+        "balTabindex": number;
+        /**
+          * If `true` the input gets a clickable cursor style
+         */
+        "clickable": boolean;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled": boolean;
+        /**
+          * If `true` this component can be placed on dark background
+         */
+        "inverted": boolean;
+        /**
+          * Defines the max length of the value.
+         */
+        "maxLength": number | undefined;
+        /**
+          * Defines the min length of the value.
+         */
+        "minLength": number | undefined;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Placeholder of the input
+         */
+        "placeholder": string;
+        /**
+          * If `true` the input is readonly
+         */
+        "readonly": boolean;
+        /**
+          * Sets the focus on the input element.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The value of the control.
+         */
+        "value": string;
+    }
     interface BalTimeinput {
         /**
           * If `true` the button is disabled
@@ -1082,6 +1134,24 @@ declare global {
     var HTMLBalFieldElement: {
         prototype: HTMLBalFieldElement;
         new (): HTMLBalFieldElement;
+    };
+    interface HTMLBalFieldControlElement extends Components.BalFieldControl, HTMLStencilElement {
+    }
+    var HTMLBalFieldControlElement: {
+        prototype: HTMLBalFieldControlElement;
+        new (): HTMLBalFieldControlElement;
+    };
+    interface HTMLBalFieldLabelElement extends Components.BalFieldLabel, HTMLStencilElement {
+    }
+    var HTMLBalFieldLabelElement: {
+        prototype: HTMLBalFieldLabelElement;
+        new (): HTMLBalFieldLabelElement;
+    };
+    interface HTMLBalFieldMessageElement extends Components.BalFieldMessage, HTMLStencilElement {
+    }
+    var HTMLBalFieldMessageElement: {
+        prototype: HTMLBalFieldMessageElement;
+        new (): HTMLBalFieldMessageElement;
     };
     interface HTMLBalFileUploadElement extends Components.BalFileUpload, HTMLStencilElement {
     }
@@ -1263,6 +1333,12 @@ declare global {
         prototype: HTMLBalTextElement;
         new (): HTMLBalTextElement;
     };
+    interface HTMLBalTextareaElement extends Components.BalTextarea, HTMLStencilElement {
+    }
+    var HTMLBalTextareaElement: {
+        prototype: HTMLBalTextareaElement;
+        new (): HTMLBalTextareaElement;
+    };
     interface HTMLBalTimeinputElement extends Components.BalTimeinput, HTMLStencilElement {
     }
     var HTMLBalTimeinputElement: {
@@ -1295,6 +1371,9 @@ declare global {
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-dropdown": HTMLBalDropdownElement;
         "bal-field": HTMLBalFieldElement;
+        "bal-field-control": HTMLBalFieldControlElement;
+        "bal-field-label": HTMLBalFieldLabelElement;
+        "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
         "bal-hint": HTMLBalHintElement;
         "bal-hint-text": HTMLBalHintTextElement;
@@ -1325,6 +1404,7 @@ declare global {
         "bal-tabs": HTMLBalTabsElement;
         "bal-tag": HTMLBalTagElement;
         "bal-text": HTMLBalTextElement;
+        "bal-textarea": HTMLBalTextareaElement;
         "bal-timeinput": HTMLBalTimeinputElement;
         "bal-toast": HTMLBalToastElement;
     }
@@ -1716,6 +1796,16 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
+          * If `true` the field can be used on blue background.
+         */
+        "inverted"?: boolean;
+        /**
+          * If `true` a loading spinner is visible at the end of the input
+         */
+        "loading"?: boolean;
+    }
+    interface BalFieldControl {
+        /**
           * Baloise icon for the left side of the input
          */
         "iconLeft"?: string;
@@ -1723,26 +1813,22 @@ declare namespace LocalJSX {
           * Baloise icon for the right side of the input
          */
         "iconRight"?: string;
-        /**
-          * If `true` the field can be used on blue background.
-         */
-        "inverted"?: boolean;
-        /**
-          * Text of the inputs label
-         */
-        "label"?: string;
-        /**
-          * If `true` a loading spinner is visible at the end of the input
-         */
-        "loading"?: boolean;
+    }
+    interface BalFieldLabel {
         /**
           * If `true` a asterix (*) is added to the label text
          */
         "required"?: boolean;
         /**
-          * Validation message text
+          * Text of the inputs label
          */
-        "validationMessage"?: string;
+        "text"?: string;
+    }
+    interface BalFieldMessage {
+        /**
+          * Defines the color of the message.
+         */
+        "type"?: '' | 'danger' | 'success' | 'warning';
     }
     interface BalFileUpload {
         /**
@@ -2254,6 +2340,68 @@ declare namespace LocalJSX {
     }
     interface BalText {
     }
+    interface BalTextarea {
+        /**
+          * The tabindex of the control.
+         */
+        "balTabindex"?: number;
+        /**
+          * If `true` the input gets a clickable cursor style
+         */
+        "clickable"?: boolean;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` this component can be placed on dark background
+         */
+        "inverted"?: boolean;
+        /**
+          * Defines the max length of the value.
+         */
+        "maxLength"?: number | undefined;
+        /**
+          * Defines the min length of the value.
+         */
+        "minLength"?: number | undefined;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalInput"?: (event: CustomEvent<string>) => void;
+        /**
+          * Emitted when a keyboard key has pressed.
+         */
+        "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
+        /**
+          * Placeholder of the input
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the input is readonly
+         */
+        "readonly"?: boolean;
+        /**
+          * The value of the control.
+         */
+        "value"?: string;
+    }
     interface BalTimeinput {
         /**
           * If `true` the button is disabled
@@ -2310,6 +2458,9 @@ declare namespace LocalJSX {
         "bal-datepicker": BalDatepicker;
         "bal-dropdown": BalDropdown;
         "bal-field": BalField;
+        "bal-field-control": BalFieldControl;
+        "bal-field-label": BalFieldLabel;
+        "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
         "bal-hint": BalHint;
         "bal-hint-text": BalHintText;
@@ -2340,6 +2491,7 @@ declare namespace LocalJSX {
         "bal-tabs": BalTabs;
         "bal-tag": BalTag;
         "bal-text": BalText;
+        "bal-textarea": BalTextarea;
         "bal-timeinput": BalTimeinput;
         "bal-toast": BalToast;
     }
@@ -2367,6 +2519,9 @@ declare module "@stencil/core" {
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
+            "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
+            "bal-field-label": LocalJSX.BalFieldLabel & JSXBase.HTMLAttributes<HTMLBalFieldLabelElement>;
+            "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
             "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
@@ -2397,6 +2552,7 @@ declare module "@stencil/core" {
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
             "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
+            "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
             "bal-timeinput": LocalJSX.BalTimeinput & JSXBase.HTMLAttributes<HTMLBalTimeinputElement>;
             "bal-toast": LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
         }

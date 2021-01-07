@@ -29,6 +29,9 @@ const customElementTags: string[] = [
  'bal-datepicker',
  'bal-dropdown',
  'bal-field',
+ 'bal-field-control',
+ 'bal-field-label',
+ 'bal-field-message',
  'bal-file-upload',
  'bal-hint',
  'bal-hint-text',
@@ -59,6 +62,7 @@ const customElementTags: string[] = [
  'bal-tabs',
  'bal-tag',
  'bal-text',
+ 'bal-textarea',
  'bal-timeinput',
  'bal-toast',
 ];
@@ -358,19 +362,49 @@ export const BalDropdown = /*@__PURE__*/ Vue.extend({
 export const BalField = /*@__PURE__*/ Vue.extend({
 
   props: {
-    label: {} as PropOptions<Components.BalField['label']>,
-    required: {} as PropOptions<Components.BalField['required']>,
     expanded: {} as PropOptions<Components.BalField['expanded']>,
     disabled: {} as PropOptions<Components.BalField['disabled']>,
-    validationMessage: {} as PropOptions<Components.BalField['validationMessage']>,
-    iconRight: {} as PropOptions<Components.BalField['iconRight']>,
-    iconLeft: {} as PropOptions<Components.BalField['iconLeft']>,
     inverted: {} as PropOptions<Components.BalField['inverted']>,
     loading: {} as PropOptions<Components.BalField['loading']>,
   },
 
 
   render: createCommonRender('bal-field', []),
+});
+
+
+export const BalFieldControl = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    iconRight: {} as PropOptions<Components.BalFieldControl['iconRight']>,
+    iconLeft: {} as PropOptions<Components.BalFieldControl['iconLeft']>,
+  },
+
+
+  render: createCommonRender('bal-field-control', []),
+});
+
+
+export const BalFieldLabel = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    text: {} as PropOptions<Components.BalFieldLabel['text']>,
+    required: {} as PropOptions<Components.BalFieldLabel['required']>,
+  },
+
+
+  render: createCommonRender('bal-field-label', []),
+});
+
+
+export const BalFieldMessage = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    type: {} as PropOptions<Components.BalFieldMessage['type']>,
+  },
+
+
+  render: createCommonRender('bal-field-message', []),
 });
 
 
@@ -790,6 +824,29 @@ export const BalText = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('bal-text', []),
+});
+
+
+export const BalTextarea = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    name: {} as PropOptions<Components.BalTextarea['name']>,
+    placeholder: {} as PropOptions<Components.BalTextarea['placeholder']>,
+    balTabindex: {} as PropOptions<Components.BalTextarea['balTabindex']>,
+    maxLength: {} as PropOptions<Components.BalTextarea['maxLength']>,
+    minLength: {} as PropOptions<Components.BalTextarea['minLength']>,
+    inverted: {} as PropOptions<Components.BalTextarea['inverted']>,
+    readonly: {} as PropOptions<Components.BalTextarea['readonly']>,
+    disabled: {} as PropOptions<Components.BalTextarea['disabled']>,
+    clickable: {} as PropOptions<Components.BalTextarea['clickable']>,
+    value: {} as PropOptions<Components.BalTextarea['value']>,
+  },
+
+
+  methods: {
+    setFocus: createCommonMethod('setFocus') as Components.BalTextarea['setFocus'],
+  },
+  render: createCommonRender('bal-textarea', ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']),
 });
 
 

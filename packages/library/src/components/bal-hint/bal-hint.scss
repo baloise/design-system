@@ -16,15 +16,11 @@
   justify-content: center;
   align-items: center;
 
-  span {
+  bal-text {
     color: $white;
     font-weight: $weight-bold;
-    font-family: $family-primary;
     font-size: 14px;
-    position: absolute;
-    top: 0;
-    left: 8px;
-    margin-top: -1px;
+    margin-top: 0;
   }
 
   &:hover {
