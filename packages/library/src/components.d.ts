@@ -635,10 +635,22 @@ export namespace Components {
           * It `true` the navbar has a white background
          */
         "light": boolean;
+    }
+    interface BalNavbarBrand {
         /**
-          * Defines the link on the logo.
+          * Link of the logo / title.
          */
-        "logoHref": string;
+        "href": string;
+    }
+    interface BalNavbarMenu {
+        /**
+          * PRIVATE: Collapses the menu.
+         */
+        "toggle": (isMenuActive: boolean) => Promise<void>;
+    }
+    interface BalNavbarMenuEnd {
+    }
+    interface BalNavbarMenuStart {
     }
     interface BalNotification {
         /**
@@ -1161,6 +1173,30 @@ declare global {
         prototype: HTMLBalNavbarElement;
         new (): HTMLBalNavbarElement;
     };
+    interface HTMLBalNavbarBrandElement extends Components.BalNavbarBrand, HTMLStencilElement {
+    }
+    var HTMLBalNavbarBrandElement: {
+        prototype: HTMLBalNavbarBrandElement;
+        new (): HTMLBalNavbarBrandElement;
+    };
+    interface HTMLBalNavbarMenuElement extends Components.BalNavbarMenu, HTMLStencilElement {
+    }
+    var HTMLBalNavbarMenuElement: {
+        prototype: HTMLBalNavbarMenuElement;
+        new (): HTMLBalNavbarMenuElement;
+    };
+    interface HTMLBalNavbarMenuEndElement extends Components.BalNavbarMenuEnd, HTMLStencilElement {
+    }
+    var HTMLBalNavbarMenuEndElement: {
+        prototype: HTMLBalNavbarMenuEndElement;
+        new (): HTMLBalNavbarMenuEndElement;
+    };
+    interface HTMLBalNavbarMenuStartElement extends Components.BalNavbarMenuStart, HTMLStencilElement {
+    }
+    var HTMLBalNavbarMenuStartElement: {
+        prototype: HTMLBalNavbarMenuStartElement;
+        new (): HTMLBalNavbarMenuStartElement;
+    };
     interface HTMLBalNotificationElement extends Components.BalNotification, HTMLStencilElement {
     }
     var HTMLBalNotificationElement: {
@@ -1274,6 +1310,10 @@ declare global {
         "bal-modal": HTMLBalModalElement;
         "bal-modal-actions": HTMLBalModalActionsElement;
         "bal-navbar": HTMLBalNavbarElement;
+        "bal-navbar-brand": HTMLBalNavbarBrandElement;
+        "bal-navbar-menu": HTMLBalNavbarMenuElement;
+        "bal-navbar-menu-end": HTMLBalNavbarMenuEndElement;
+        "bal-navbar-menu-start": HTMLBalNavbarMenuStartElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-pagination": HTMLBalPaginationElement;
         "bal-radio": HTMLBalRadioElement;
@@ -1923,10 +1963,18 @@ declare namespace LocalJSX {
           * It `true` the navbar has a white background
          */
         "light"?: boolean;
+    }
+    interface BalNavbarBrand {
         /**
-          * Defines the link on the logo.
+          * Link of the logo / title.
          */
-        "logoHref"?: string;
+        "href"?: string;
+    }
+    interface BalNavbarMenu {
+    }
+    interface BalNavbarMenuEnd {
+    }
+    interface BalNavbarMenuStart {
     }
     interface BalNotification {
         /**
@@ -2277,6 +2325,10 @@ declare namespace LocalJSX {
         "bal-modal": BalModal;
         "bal-modal-actions": BalModalActions;
         "bal-navbar": BalNavbar;
+        "bal-navbar-brand": BalNavbarBrand;
+        "bal-navbar-menu": BalNavbarMenu;
+        "bal-navbar-menu-end": BalNavbarMenuEnd;
+        "bal-navbar-menu-start": BalNavbarMenuStart;
         "bal-notification": BalNotification;
         "bal-pagination": BalPagination;
         "bal-radio": BalRadio;
@@ -2330,6 +2382,10 @@ declare module "@stencil/core" {
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-actions": LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
+            "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;
+            "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;
+            "bal-navbar-menu-end": LocalJSX.BalNavbarMenuEnd & JSXBase.HTMLAttributes<HTMLBalNavbarMenuEndElement>;
+            "bal-navbar-menu-start": LocalJSX.BalNavbarMenuStart & JSXBase.HTMLAttributes<HTMLBalNavbarMenuStartElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;

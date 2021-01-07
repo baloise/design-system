@@ -44,6 +44,10 @@ const customElementTags: string[] = [
  'bal-modal',
  'bal-modal-actions',
  'bal-navbar',
+ 'bal-navbar-brand',
+ 'bal-navbar-menu',
+ 'bal-navbar-menu-end',
+ 'bal-navbar-menu-start',
  'bal-notification',
  'bal-pagination',
  'bal-radio',
@@ -555,11 +559,48 @@ export const BalNavbar = /*@__PURE__*/ Vue.extend({
 
   props: {
     light: {} as PropOptions<Components.BalNavbar['light']>,
-    logoHref: {} as PropOptions<Components.BalNavbar['logoHref']>,
   },
 
 
   render: createCommonRender('bal-navbar', []),
+});
+
+
+export const BalNavbarBrand = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    href: {} as PropOptions<Components.BalNavbarBrand['href']>,
+  },
+
+
+  render: createCommonRender('bal-navbar-brand', []),
+});
+
+
+export const BalNavbarMenu = /*@__PURE__*/ Vue.extend({
+
+
+
+  methods: {
+    toggle: createCommonMethod('toggle') as Components.BalNavbarMenu['toggle'],
+  },
+  render: createCommonRender('bal-navbar-menu', []),
+});
+
+
+export const BalNavbarMenuEnd = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-navbar-menu-end', []),
+});
+
+
+export const BalNavbarMenuStart = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-navbar-menu-start', []),
 });
 
 

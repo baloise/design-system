@@ -7,10 +7,9 @@ A responsive horizontal navbar that can support images, links, buttons, and drop
 
 ## Properties
 
-| Property   | Attribute   | Description                                 | Type      | Default |
-| ---------- | ----------- | ------------------------------------------- | --------- | ------- |
-| `light`    | `light`     | It `true` the navbar has a white background | `boolean` | `false` |
-| `logoHref` | `logo-href` | Defines the link on the logo.               | `string`  | `''`    |
+| Property | Attribute | Description                                 | Type      | Default |
+| -------- | --------- | ------------------------------------------- | --------- | ------- |
+| `light`  | `light`   | It `true` the navbar has a white background | `boolean` | `false` |
 
 
 ----------------------------------------------

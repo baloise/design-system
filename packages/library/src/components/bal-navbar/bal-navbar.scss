@@ -1,8 +1,9 @@
 @import './bal-navbar.vars.scss';
 @import 'node_modules/bulma/sass/components/navbar';
 
-:host {
+bal-navbar {
   display: block;
+  position: relative;
 }
 
 .navbar {
@@ -51,5 +52,18 @@
     position: absolute;
     right: 0;
     top: 0;
+  }
+
+  .navbar-link:not(.is-arrowless)::after {
+    width: 0.5em;
+    height: 0.5em;
+    border-width: 2px;
+    border-radius: 1px;
+    margin-top: -0.4em;
+  }
+
+  .navbar-dropdown {
+    border-radius: 4px !important;
+    z-index: 32 !important;
   }
 }
