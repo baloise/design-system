@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/baloise/ui-library/compare/v2.4.0...v2.4.1) (2021-01-07)
+
+
+### Bug Fixes
+
+* **navbar:** remove slots to improve the usage of the wrapper libs ([578669d](https://github.com/baloise/ui-library/commit/578669dbbf23366e85f38c5e9eb51d0e40e50943))
+
+
+
+
+
 # [2.4.0](https://github.com/baloise/ui-library/compare/v2.3.5...v2.4.0) (2021-01-05)
 
 
