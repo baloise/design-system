@@ -13,49 +13,58 @@
       <h2 class="title is-size-2">Basic</h2>
       <section>
         <bal-navbar>
-          <span slot="navbar-brand">Default navbar</span>
+          <bal-navbar-brand>
+            <img src="https://github.com/baloise/ui-library/raw/master/docs/assets/images/icon.svg" />
+            <bal-text style="margin-left: 15px">App Title</bal-text>
+          </bal-navbar-brand>
+          <bal-navbar-menu>
+            <bal-navbar-menu-start>
+              <a class="navbar-item"><bal-text>Home</bal-text></a>
+              <a class="navbar-item"><bal-text>Documentation</bal-text></a>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link"><bal-text>More</bal-text></a>
+                <div class="navbar-dropdown">
+                  <a class="navbar-item"><bal-text>Level 1</bal-text></a>
+                  <a class="navbar-item"><bal-text>Level 2</bal-text></a>
+                  <a class="navbar-item"><bal-text>Level 3</bal-text></a>
+                  <hr class="navbar-divider" />
+                  <a class="navbar-item"><bal-text>Level 4</bal-text></a>
+                </div>
+              </div>
+            </bal-navbar-menu-start>
+            <bal-navbar-menu-end>
+              <bal-button inverted>Action</bal-button>
+            </bal-navbar-menu-end>
+          </bal-navbar-menu>
         </bal-navbar>
       </section>
 
-      <h2 class="title is-size-2">Light mode</h2>
+      <h2 class="title is-size-2">Light</h2>
       <section>
         <bal-navbar light>
-          <span slot="navbar-brand">Light Navbar</span>
-        </bal-navbar>
-      </section>
-
-      <h2 class="title is-size-2">With logo</h2>
-      <section>
-        <bal-navbar>
-          <span slot="navbar-brand">
+          <bal-navbar-brand>
             <img src="https://github.com/baloise/ui-library/raw/master/docs/assets/images/icon.svg" />
-          </span>
-        </bal-navbar>
-      </section>
-
-      <h2 class="title is-size-2">Actions</h2>
-      <section>
-        <bal-navbar>
-          <span slot="navbar-brand">
-            <img src="https://github.com/baloise/ui-library/raw/master/docs/assets/images/icon.svg" />
-          </span>
-          <div slot="navbar-start" class="navbar-start">
-            <a class="navbar-item">Home</a>
-            <a class="navbar-item">Documentation</a>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">More</a>
-              <div class="navbar-dropdown">
-                <a class="navbar-item">About</a>
-                <a class="navbar-item">Jobs</a>
-                <a class="navbar-item">Contact</a>
-                <hr class="navbar-divider">
-                <a class="navbar-item">Report an issue</a>
+            <bal-text style="margin-left: 15px">App Title</bal-text>
+          </bal-navbar-brand>
+          <bal-navbar-menu>
+            <bal-navbar-menu-start>
+              <a class="navbar-item"><bal-text>Home</bal-text></a>
+              <a class="navbar-item"><bal-text>Documentation</bal-text></a>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link"><bal-text>More</bal-text></a>
+                <div class="navbar-dropdown">
+                  <a class="navbar-item"><bal-text>Level 1</bal-text></a>
+                  <a class="navbar-item"><bal-text>Level 2</bal-text></a>
+                  <a class="navbar-item"><bal-text>Level 3</bal-text></a>
+                  <hr class="navbar-divider" />
+                  <a class="navbar-item"><bal-text>Level 4</bal-text></a>
+                </div>
               </div>
-            </div>
-          </div>
-          <div slot="navbar-end" class="navbar-item">
-            <bal-button inverted>Action</bal-button>
-          </div>
+            </bal-navbar-menu-start>
+            <bal-navbar-menu-end>
+              <bal-button>Action</bal-button>
+            </bal-navbar-menu-end>
+          </bal-navbar-menu>
         </bal-navbar>
       </section>
     </div>

@@ -674,15 +674,84 @@ export class BalModalActions {
 
 export declare interface BalNavbar extends Components.BalNavbar {}
 @ProxyCmp({
-  inputs: ['light', 'logoHref']
+  inputs: ['light']
 })
 @Component({
   selector: 'bal-navbar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['light', 'logoHref']
+  inputs: ['light']
 })
 export class BalNavbar {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalNavbarBrand extends Components.BalNavbarBrand {}
+@ProxyCmp({
+  inputs: ['href']
+})
+@Component({
+  selector: 'bal-navbar-brand',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['href']
+})
+export class BalNavbarBrand {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalNavbarMenu extends Components.BalNavbarMenu {}
+@ProxyCmp({
+  methods: ['toggle']
+})
+@Component({
+  selector: 'bal-navbar-menu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalNavbarMenu {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalNavbarMenuEnd extends Components.BalNavbarMenuEnd {}
+
+@Component({
+  selector: 'bal-navbar-menu-end',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalNavbarMenuEnd {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalNavbarMenuStart extends Components.BalNavbarMenuStart {}
+
+@Component({
+  selector: 'bal-navbar-menu-start',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalNavbarMenuStart {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
