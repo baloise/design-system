@@ -6,3 +6,8 @@
 .form.is-inverted .icon > .font {
   color: $blue-line !important;
 }
+
+.control.has-icons-left bal-icon,
+.control.has-icons-right bal-icon {
+  display: block !important;
+}

@@ -366,11 +366,7 @@ export namespace Components {
         /**
           * Returns the `HTMLDivElement` of the content element
          */
-        "getContentElement": () => Promise<HTMLDivElement>;
-        /**
-          * Returns the `HTMLDivElement` of the menu element
-         */
-        "getMenuElement": () => Promise<HTMLDivElement>;
+        "getContentElement": () => Promise<HTMLElement>;
         /**
           * If `true` the dropdown content is open.
          */
@@ -379,14 +375,19 @@ export namespace Components {
           * Open the dropdown menu.
          */
         "open": () => Promise<void>;
-        /**
-          * Limit the height of the dropdown content. Pass the amount of pixel.
-         */
         "scrollable": number;
         /**
           * Open or closes the dropdown.
          */
         "toggle": () => Promise<void>;
+    }
+    interface BalDropdownMenu {
+        /**
+          * Limit the height of the dropdown content. Pass the amount of pixel.
+         */
+        "scrollable": number;
+    }
+    interface BalDropdownTrigger {
     }
     interface BalField {
         /**
@@ -635,6 +636,12 @@ export namespace Components {
         "open": () => Promise<void>;
     }
     interface BalModalActions {
+    }
+    interface BalModalBody {
+    }
+    interface BalModalFooter {
+    }
+    interface BalModalHeader {
     }
     interface BalNavbar {
         /**
@@ -1129,6 +1136,18 @@ declare global {
         prototype: HTMLBalDropdownElement;
         new (): HTMLBalDropdownElement;
     };
+    interface HTMLBalDropdownMenuElement extends Components.BalDropdownMenu, HTMLStencilElement {
+    }
+    var HTMLBalDropdownMenuElement: {
+        prototype: HTMLBalDropdownMenuElement;
+        new (): HTMLBalDropdownMenuElement;
+    };
+    interface HTMLBalDropdownTriggerElement extends Components.BalDropdownTrigger, HTMLStencilElement {
+    }
+    var HTMLBalDropdownTriggerElement: {
+        prototype: HTMLBalDropdownTriggerElement;
+        new (): HTMLBalDropdownTriggerElement;
+    };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
     var HTMLBalFieldElement: {
@@ -1236,6 +1255,24 @@ declare global {
     var HTMLBalModalActionsElement: {
         prototype: HTMLBalModalActionsElement;
         new (): HTMLBalModalActionsElement;
+    };
+    interface HTMLBalModalBodyElement extends Components.BalModalBody, HTMLStencilElement {
+    }
+    var HTMLBalModalBodyElement: {
+        prototype: HTMLBalModalBodyElement;
+        new (): HTMLBalModalBodyElement;
+    };
+    interface HTMLBalModalFooterElement extends Components.BalModalFooter, HTMLStencilElement {
+    }
+    var HTMLBalModalFooterElement: {
+        prototype: HTMLBalModalFooterElement;
+        new (): HTMLBalModalFooterElement;
+    };
+    interface HTMLBalModalHeaderElement extends Components.BalModalHeader, HTMLStencilElement {
+    }
+    var HTMLBalModalHeaderElement: {
+        prototype: HTMLBalModalHeaderElement;
+        new (): HTMLBalModalHeaderElement;
     };
     interface HTMLBalNavbarElement extends Components.BalNavbar, HTMLStencilElement {
     }
@@ -1370,6 +1407,8 @@ declare global {
         "bal-data-value": HTMLBalDataValueElement;
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-dropdown": HTMLBalDropdownElement;
+        "bal-dropdown-menu": HTMLBalDropdownMenuElement;
+        "bal-dropdown-trigger": HTMLBalDropdownTriggerElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-label": HTMLBalFieldLabelElement;
@@ -1388,6 +1427,9 @@ declare global {
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-actions": HTMLBalModalActionsElement;
+        "bal-modal-body": HTMLBalModalBodyElement;
+        "bal-modal-footer": HTMLBalModalFooterElement;
+        "bal-modal-header": HTMLBalModalHeaderElement;
         "bal-navbar": HTMLBalNavbarElement;
         "bal-navbar-brand": HTMLBalNavbarBrandElement;
         "bal-navbar-menu": HTMLBalNavbarMenuElement;
@@ -1781,10 +1823,15 @@ declare namespace LocalJSX {
           * Internal
          */
         "onBalDropdownPrepare"?: (event: CustomEvent<string>) => void;
+        "scrollable"?: number;
+    }
+    interface BalDropdownMenu {
         /**
           * Limit the height of the dropdown content. Pass the amount of pixel.
          */
         "scrollable"?: number;
+    }
+    interface BalDropdownTrigger {
     }
     interface BalField {
         /**
@@ -2043,6 +2090,12 @@ declare namespace LocalJSX {
         "card"?: boolean;
     }
     interface BalModalActions {
+    }
+    interface BalModalBody {
+    }
+    interface BalModalFooter {
+    }
+    interface BalModalHeader {
     }
     interface BalNavbar {
         /**
@@ -2457,6 +2510,8 @@ declare namespace LocalJSX {
         "bal-data-value": BalDataValue;
         "bal-datepicker": BalDatepicker;
         "bal-dropdown": BalDropdown;
+        "bal-dropdown-menu": BalDropdownMenu;
+        "bal-dropdown-trigger": BalDropdownTrigger;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-label": BalFieldLabel;
@@ -2475,6 +2530,9 @@ declare namespace LocalJSX {
         "bal-list-item-title": BalListItemTitle;
         "bal-modal": BalModal;
         "bal-modal-actions": BalModalActions;
+        "bal-modal-body": BalModalBody;
+        "bal-modal-footer": BalModalFooter;
+        "bal-modal-header": BalModalHeader;
         "bal-navbar": BalNavbar;
         "bal-navbar-brand": BalNavbarBrand;
         "bal-navbar-menu": BalNavbarMenu;
@@ -2518,6 +2576,8 @@ declare module "@stencil/core" {
             "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
+            "bal-dropdown-menu": LocalJSX.BalDropdownMenu & JSXBase.HTMLAttributes<HTMLBalDropdownMenuElement>;
+            "bal-dropdown-trigger": LocalJSX.BalDropdownTrigger & JSXBase.HTMLAttributes<HTMLBalDropdownTriggerElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-label": LocalJSX.BalFieldLabel & JSXBase.HTMLAttributes<HTMLBalFieldLabelElement>;
@@ -2536,6 +2596,9 @@ declare module "@stencil/core" {
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-actions": LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;
+            "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
+            "bal-modal-footer": LocalJSX.BalModalFooter & JSXBase.HTMLAttributes<HTMLBalModalFooterElement>;
+            "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;
             "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;

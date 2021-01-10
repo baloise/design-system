@@ -17,7 +17,7 @@
     "lint": "lerna run lint",
     "test": "npm run utils:test && npm run testing:run",
     "clean": "rm -rf node_modules && rm -rf docs/node_modules && rm -rf packages/library/node_modules && rm -rf packages/vue/node_modules && rm -rf packages/angular/node_modules && rm -rf packages/testing/node_modules",
-    "release": "lerna publish --yes --force-publish",
+    "release": "lerna publish --yes --force-publish --conventional-commits",
     "docs:install": "cd docs && npm install",
     "docs:clean": "rimraf docs/www && rimraf docs/lib",
     "docs:serve": "npm --prefix docs run serve",

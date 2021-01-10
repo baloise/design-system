@@ -448,9 +448,11 @@ export class Select {
           scrollable={this.scrollable}
           onBalCollapse={e => this.onDropdownChange(e)}
           ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
-          {this.renderControl()}
-          {this.renderFilter()}
-          <slot></slot>
+          <bal-dropdown-trigger>{this.renderControl()}</bal-dropdown-trigger>
+          <bal-dropdown-menu>
+            {this.renderFilter()}
+            <slot></slot>
+          </bal-dropdown-menu>
         </bal-dropdown>
       </Host>
     )
@@ -458,7 +460,7 @@ export class Select {
 
   renderControl() {
     return (
-      <div class="control has-icons-right" slot="trigger">
+      <div class="control has-icons-right">
         {this.renderInput()}
         <bal-icon
           class={{ 'is-hidden': this.loading }}

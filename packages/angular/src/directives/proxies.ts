@@ -361,7 +361,7 @@ import { Dropdown as IDropdown } from '@baloise/ui-library/dist/types/components
 export declare interface BalDropdown extends Components.BalDropdown {}
 @ProxyCmp({
   inputs: ['expanded', 'fixedContentWidth', 'isActive', 'scrollable'],
-  methods: ['open', 'close', 'toggle', 'getMenuElement', 'getContentElement']
+  methods: ['open', 'close', 'toggle', 'getContentElement']
 })
 @Component({
   selector: 'bal-dropdown',
@@ -380,6 +380,41 @@ export class BalDropdown {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balCollapse', 'balDropdownPrepare']);
+  }
+}
+
+
+export declare interface BalDropdownMenu extends Components.BalDropdownMenu {}
+@ProxyCmp({
+  inputs: ['scrollable']
+})
+@Component({
+  selector: 'bal-dropdown-menu',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['scrollable']
+})
+export class BalDropdownMenu {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalDropdownTrigger extends Components.BalDropdownTrigger {}
+
+@Component({
+  selector: 'bal-dropdown-trigger',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalDropdownTrigger {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
   }
 }
 
@@ -721,6 +756,54 @@ export declare interface BalModalActions extends Components.BalModalActions {}
   template: '<ng-content></ng-content>'
 })
 export class BalModalActions {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalModalBody extends Components.BalModalBody {}
+
+@Component({
+  selector: 'bal-modal-body',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalModalBody {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalModalFooter extends Components.BalModalFooter {}
+
+@Component({
+  selector: 'bal-modal-footer',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalModalFooter {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalModalHeader extends Components.BalModalHeader {}
+
+@Component({
+  selector: 'bal-modal-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalModalHeader {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

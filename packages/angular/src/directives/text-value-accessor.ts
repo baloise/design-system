@@ -5,7 +5,7 @@ import { ValueAccessor } from './value-accessor';
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
-  selector: 'bal-input',
+  selector: 'bal-input, bal-textarea',
   host: {
     '(balInput)': 'handleChangeEvent($event.target.value)'
   },

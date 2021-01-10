@@ -28,6 +28,8 @@ const customElementTags: string[] = [
  'bal-data-value',
  'bal-datepicker',
  'bal-dropdown',
+ 'bal-dropdown-menu',
+ 'bal-dropdown-trigger',
  'bal-field',
  'bal-field-control',
  'bal-field-label',
@@ -46,6 +48,9 @@ const customElementTags: string[] = [
  'bal-list-item-title',
  'bal-modal',
  'bal-modal-actions',
+ 'bal-modal-body',
+ 'bal-modal-footer',
+ 'bal-modal-header',
  'bal-navbar',
  'bal-navbar-brand',
  'bal-navbar-menu',
@@ -337,8 +342,8 @@ export const BalDatepicker = /*@__PURE__*/ Vue.extend({
 export const BalDropdown = /*@__PURE__*/ Vue.extend({
 
   props: {
-    scrollable: {} as PropOptions<Components.BalDropdown['scrollable']>,
     expanded: {} as PropOptions<Components.BalDropdown['expanded']>,
+    scrollable: {} as PropOptions<Components.BalDropdown['scrollable']>,
     fixedContentWidth: {} as PropOptions<Components.BalDropdown['fixedContentWidth']>,
     isActive: {} as PropOptions<Components.BalDropdown['isActive']>,
   },
@@ -352,10 +357,28 @@ export const BalDropdown = /*@__PURE__*/ Vue.extend({
     open: createCommonMethod('open') as Components.BalDropdown['open'],
     close: createCommonMethod('close') as Components.BalDropdown['close'],
     toggle: createCommonMethod('toggle') as Components.BalDropdown['toggle'],
-    getMenuElement: createCommonMethod('getMenuElement') as Components.BalDropdown['getMenuElement'],
     getContentElement: createCommonMethod('getContentElement') as Components.BalDropdown['getContentElement'],
   },
   render: createCommonRender('bal-dropdown', ['balCollapse', 'balDropdownPrepare']),
+});
+
+
+export const BalDropdownMenu = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    scrollable: {} as PropOptions<Components.BalDropdownMenu['scrollable']>,
+  },
+
+
+  render: createCommonRender('bal-dropdown-menu', []),
+});
+
+
+export const BalDropdownTrigger = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-dropdown-trigger', []),
 });
 
 
@@ -586,6 +609,30 @@ export const BalModalActions = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('bal-modal-actions', []),
+});
+
+
+export const BalModalBody = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-modal-body', []),
+});
+
+
+export const BalModalFooter = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-modal-footer', []),
+});
+
+
+export const BalModalHeader = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-modal-header', []),
 });
 
 
@@ -842,6 +889,10 @@ export const BalTextarea = /*@__PURE__*/ Vue.extend({
     value: {} as PropOptions<Components.BalTextarea['value']>,
   },
 
+  model: {
+    prop: 'value',
+    event: 'balInput'
+  },
 
   methods: {
     setFocus: createCommonMethod('setFocus') as Components.BalTextarea['setFocus'],
