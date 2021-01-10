@@ -18,6 +18,7 @@
  - [bal-modal-header](../bal-modal-header)
  - [bal-radio](../bal-radio)
  - [bal-tabs](../bal-tabs)
+ - [bal-tag](../bal-tag)
  - [bal-toast](../bal-toast)
 
 ### Graph
@@ -32,6 +33,7 @@ graph TD;
   bal-modal-header --> bal-text
   bal-radio --> bal-text
   bal-tabs --> bal-text
+  bal-tag --> bal-text
   bal-toast --> bal-text
   style bal-text fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -8,10 +8,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                  | Type      | Default |
-| ---------- | ---------- | -------------------------------------------- | --------- | ------- |
-| `disabled` | `disabled` | If `true` the list item can be hovered       | `boolean` | `false` |
-| `selected` | `selected` | If `true` the list item has a selected theme | `boolean` | `false` |
+| Property    | Attribute   | Description                                        | Type      | Default |
+| ----------- | ----------- | -------------------------------------------------- | --------- | ------- |
+| `clickable` | `clickable` | If `true` the list item shows that it is clickable | `boolean` | `false` |
+| `disabled`  | `disabled`  | If `true` the list item can be hovered             | `boolean` | `false` |
+| `selected`  | `selected`  | If `true` the list item has a selected theme       | `boolean` | `false` |
 
 
 ## Dependencies

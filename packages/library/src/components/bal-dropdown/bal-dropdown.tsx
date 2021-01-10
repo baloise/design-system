@@ -78,7 +78,6 @@ export class Dropdown {
    */
   @Method()
   async toggle() {
-    console.log('toggle')
     this.isActive = !this.isActive
     this.balCollapse.emit(this.isActive)
   }

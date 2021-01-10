@@ -644,13 +644,13 @@ export class BalList {
 
 export declare interface BalListItem extends Components.BalListItem {}
 @ProxyCmp({
-  inputs: ['disabled', 'selected']
+  inputs: ['clickable', 'disabled', 'selected']
 })
 @Component({
   selector: 'bal-list-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'selected']
+  inputs: ['clickable', 'disabled', 'selected']
 })
 export class BalListItem {
   protected el: HTMLElement;

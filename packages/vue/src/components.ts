@@ -546,6 +546,7 @@ export const BalListItem = /*@__PURE__*/ Vue.extend({
 
   props: {
     disabled: {} as PropOptions<Components.BalListItem['disabled']>,
+    clickable: {} as PropOptions<Components.BalListItem['clickable']>,
     selected: {} as PropOptions<Components.BalListItem['selected']>,
   },
 

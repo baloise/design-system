@@ -311,18 +311,20 @@ export class Select {
     if (focusedElement && this.dropdownElement) {
       const dropdownContentElement = await this.dropdownElement.getContentElement()
 
-      // up
-      const topOfOption = focusedElement.offsetTop
-      const topOfDropdownContent = dropdownContentElement.scrollTop
-      if (topOfOption < topOfDropdownContent) {
-        dropdownContentElement.scrollTop = topOfOption
-      }
+      if (dropdownContentElement) {
+        // up
+        const topOfOption = focusedElement.offsetTop
+        const topOfDropdownContent = dropdownContentElement.scrollTop
+        if (topOfOption < topOfDropdownContent) {
+          dropdownContentElement.scrollTop = topOfOption
+        }
 
-      // down
-      const bottomOfOption = focusedElement.offsetTop + focusedElement.clientHeight
-      const bottomOfDropdownContent = dropdownContentElement.scrollTop + dropdownContentElement.clientHeight
-      if (bottomOfOption > bottomOfDropdownContent) {
-        dropdownContentElement.scrollTop = dropdownContentElement.scrollTop + focusedElement.clientHeight
+        // down
+        const bottomOfOption = focusedElement.offsetTop + focusedElement.clientHeight
+        const bottomOfDropdownContent = dropdownContentElement.scrollTop + dropdownContentElement.clientHeight
+        if (bottomOfOption > bottomOfDropdownContent) {
+          dropdownContentElement.scrollTop = dropdownContentElement.scrollTop + focusedElement.clientHeight
+        }
       }
     }
   }
@@ -504,26 +506,28 @@ export class Select {
     }
 
     return (
-      <div class="multiple-typeahead control has-icons-right">
-        <input
-          class="input"
-          autoComplete="off"
-          placeholder={this.filterPlaceholder}
-          onInput={e => this.onInput(e as any)}
-          onKeyPress={e => this.onKeyPress(e)}
-          onKeyUp={e => this.onKeyUp(e)}
-          onBlur={e => this.balBlur.emit(e)}
-          onFocus={e => this.balFocus.emit(e)}
-          ref={el => (this.inputFilterElement = el as HTMLInputElement)}
-        />
-        <bal-icon
-          class={{ 'is-hidden': this.loading }}
-          size="medium"
-          is-right
-          turn={!this.loading && !this.typeahead && this.isDropdownOpen}
-          color="blue"
-          name="search"
-        />
+      <div class="multiple-typeahead">
+        <div class="control has-icons-right">
+          <input
+            class="input"
+            autoComplete="off"
+            placeholder={this.filterPlaceholder}
+            onInput={e => this.onInput(e as any)}
+            onKeyPress={e => this.onKeyPress(e)}
+            onKeyUp={e => this.onKeyUp(e)}
+            onBlur={e => this.balBlur.emit(e)}
+            onFocus={e => this.balFocus.emit(e)}
+            ref={el => (this.inputFilterElement = el as HTMLInputElement)}
+          />
+          <bal-icon
+            class={{ 'is-hidden': this.loading }}
+            size="medium"
+            is-right
+            turn={!this.loading && !this.typeahead && this.isDropdownOpen}
+            color="blue"
+            name="search"
+          />
+        </div>
       </div>
     )
   }

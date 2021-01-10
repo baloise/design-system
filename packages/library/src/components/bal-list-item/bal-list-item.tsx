@@ -13,6 +13,12 @@ export class ListItem {
   disabled = false
 
   /**
+   * If `true` the list item shows that it is clickable
+   */
+  @Prop()
+  clickable = false
+
+  /**
    * If `true` the list item has a selected theme
    */
   @Prop()
@@ -25,6 +31,7 @@ export class ListItem {
         class={[
           "bal-list-item",
           this.disabled ? "is-disabled" : "",
+          this.clickable ? "is-clickable" : "",
           this.selected ? "is-selected" : "",
         ].join(" ")}
       >

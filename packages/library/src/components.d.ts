@@ -607,6 +607,10 @@ export namespace Components {
     }
     interface BalListItem {
         /**
+          * If `true` the list item shows that it is clickable
+         */
+        "clickable": boolean;
+        /**
           * If `true` the list item can be hovered
          */
         "disabled": boolean;
@@ -2062,6 +2066,10 @@ declare namespace LocalJSX {
         "inverted"?: boolean;
     }
     interface BalListItem {
+        /**
+          * If `true` the list item shows that it is clickable
+         */
+        "clickable"?: boolean;
         /**
           * If `true` the list item can be hovered
          */

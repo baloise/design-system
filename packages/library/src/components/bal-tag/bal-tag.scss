@@ -2,8 +2,11 @@
 @import 'node_modules/bulma/sass/elements/tag';
 
 :host {
+  position: static;
+  display: inline-flex;
+
   .tag {
-    padding: 0 20px 1px 20px;
+    padding: 0 20px 0px 20px;
     align-items: center;
     justify-content: center;
     font-weight: $weight-bold;
