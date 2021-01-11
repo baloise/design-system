@@ -50,7 +50,7 @@ const parseParameters = parameter => {
 
 const parseFilters = (filepath, fileContent) => {
   const sourceFile = createSourceFile(fileContent)
-  const variableStatement = filterVariableStatements(sourceFile.statements)
+  const variableStatement = filterVariableStatements(sourceFile.statements)[0]
   const variableDeclaration = filterVariableDeclaration(variableStatement.declarationList.declarations)[0]
   const name = variableDeclaration.name.escapedText
 
@@ -125,9 +125,9 @@ const run = async () => {
   const pathToJson = './src/filters.json'
   try {
     await file.write(pathToJson, JSON.stringify(filters))
-    log.break().success(`Successfully wrote file to ${pathToJson}`)
+    log.break().success(`Successfully updated file to ${pathToJson}`)
   } catch (error) {
-    log.error(`Could not write file ${pathToJson}`, error)
+    log.error(`Could not update file ${pathToJson}`, error)
   }
 }
 

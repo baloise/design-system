@@ -11,7 +11,7 @@ import {
   Shouldable, ShouldableMixin,
   Urlable, UrlableMixin, Visible, VisibleMixin,
   Waitable, WaitableMixin,
-} from '../mixins'
+} from '../index'
 
 interface TextAccessorType
   extends Containable<TextAccessorType>, Clickable<TextAccessorType>, Shouldable<TextAccessorType>, Blurable<TextAccessorType>, Existable<TextAccessorType>,

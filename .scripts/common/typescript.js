@@ -18,11 +18,15 @@ const filterDeclarationsAndStatements = (list, kind) => {
 }
 
 const filterVariableStatements = nodes => {
-  return filterDeclarationsAndStatements(nodes, 232)[0]
+  return filterDeclarationsAndStatements(nodes, 232)
 }
 
 const filterVariableDeclaration = nodes => {
   return filterDeclarationsAndStatements(nodes, 249)
+}
+
+const filterInterfaceDeclaration = nodes => {
+  return filterDeclarationsAndStatements(nodes, 253)[0]
 }
 
 const parseFunctionComment = (node, sourceFile) =>
@@ -60,6 +64,7 @@ module.exports = {
   filterDeclarationsAndStatements,
   filterVariableStatements,
   filterVariableDeclaration,
+  filterInterfaceDeclaration,
   parseFunctionComment,
   parseType,
 }

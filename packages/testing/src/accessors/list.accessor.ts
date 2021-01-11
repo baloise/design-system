@@ -21,7 +21,7 @@ import {
   ShouldableMixin,
   VisibleMixin,
   NthSelectableMixin, AttributableMixin, UrlableMixin, WaitableMixin, DisableableMixin,
-} from '../mixins'
+} from '../index'
 
 interface ListAccessorType
   extends Selectable<ListAccessorType>, Containable<ListAccessorType>, Existable<ListAccessorType>, Clickable<ListAccessorType>,

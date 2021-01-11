@@ -10,7 +10,7 @@ import {
   NthSelectable, NthSelectableMixin, Shouldable, ShouldableMixin,
   Urlable, UrlableMixin,
   Visible, VisibleMixin, Waitable, WaitableMixin,
-} from '../mixins'
+} from '../index'
 
 interface ModalButtonAccessorType
   extends Clickable<ModalButtonAccessorType>, Containable<ModalButtonAccessorType>, Existable<ModalButtonAccessorType>, Shouldable<ModalButtonAccessorType>,

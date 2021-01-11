@@ -13,7 +13,7 @@ import {
   Attributable,
   Urlable,
   Waitable, Selectable,
-} from '../mixins'
+} from '../index'
 
 interface SelectAccessorType
   extends Clickable<SelectAccessorType>, Selectable<SelectAccessorType>, Disableable<SelectAccessorType>, Containable<SelectAccessorType>,
@@ -43,9 +43,6 @@ export const SelectSelectableMixin: Mixin = <T>({selector, creator}: MixinContex
     });
     return creator();
   },
-  assertIsSelected: () => {
-    throw new Error('Please use contains method');
-  }
 });
 
 export const SelectAssertableOptionsMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({

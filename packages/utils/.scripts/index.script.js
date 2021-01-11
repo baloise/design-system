@@ -25,6 +25,8 @@ const run = async () => {
   const utilStaticTypes = filters.map(f => `  ${f.name}: ${f.signature}`)
 
   const content = [
+    '// generated file by .scripts/index.script.js',
+    '',
     utilExports.join('\n'),
     '',
     'export interface BalUtilsStatic {',

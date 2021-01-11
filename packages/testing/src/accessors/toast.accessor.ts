@@ -11,7 +11,7 @@ import {
   Shouldable, ShouldableMixin,
   Urlable, UrlableMixin, Visible, VisibleMixin,
   Waitable, WaitableMixin,
-} from '../mixins'
+} from '../index'
 
 interface ToastAccessorType
   extends Clickable<ToastAccessorType>, Containable<ToastAccessorType>, Existable<ToastAccessorType>, Shouldable<ToastAccessorType>,

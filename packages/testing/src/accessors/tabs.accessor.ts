@@ -11,7 +11,7 @@ import {
   Shouldable, ShouldableMixin,
   Urlable, UrlableMixin,
   Waitable, WaitableMixin,
-} from '../mixins'
+} from '../index'
 import { ListSelectableMixin } from './list.accessor'
 
 interface TabsAccessorType

@@ -10,7 +10,7 @@ import {
   NthSelectable, NthSelectableMixin,
   Shouldable, ShouldableMixin,
   Typeable, TypeableMixin, Urlable, UrlableMixin, Visible, VisibleMixin, Waitable, WaitableMixin,
-} from '../mixins'
+} from '../index'
 
 interface InputAccessorType
   extends Clickable<InputAccessorType>, Typeable<InputAccessorType>, Blurable<InputAccessorType>, Clearable<InputAccessorType>, Visible<InputAccessorType>,

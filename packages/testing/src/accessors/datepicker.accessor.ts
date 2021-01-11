@@ -4,7 +4,7 @@ import {
   createAccessor,
   Mixin,
   MixinContext,
-} from '../mixins'
+} from '../index'
 import { format } from '../../../library/src/components/bal-datepicker/bal-datepicker.util'
 
 export interface DatepickerAccessorType {

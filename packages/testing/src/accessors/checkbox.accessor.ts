@@ -16,7 +16,7 @@ import {
   ShouldableMixin,
   Visible,
   VisibleMixin,
-} from '../mixins'
+} from '../index'
 
 interface CheckboxAccessorType
   extends Clickable<CheckboxAccessorType>,
