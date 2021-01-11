@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/baloise/ui-library/compare/v2.4.1...v2.5.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* remove named slots ([bf33511](https://github.com/baloise/ui-library/commit/bf3351152b729591d0f91a96d3c5868abbccd0ab))
+* some style fixes ([f9731f4](https://github.com/baloise/ui-library/commit/f9731f456dd7eeff305914648a8598d73d129eaf))
+* **field:** remove named slots to improve warpper lib support ([4ef9636](https://github.com/baloise/ui-library/commit/4ef96365ce30fc5a6793ab4aad3e666a97e5a4b7))
+
+
+
+
+
 ## [2.4.1](https://github.com/baloise/ui-library/compare/v2.4.0...v2.4.1) (2021-01-07)
 
 
