@@ -416,6 +416,10 @@ export namespace Components {
           * Baloise icon for the right side of the input
          */
         "iconRight": string;
+        /**
+          * If `true` a loading spinner is visible at the end of the input
+         */
+        "loading": boolean;
     }
     interface BalFieldLabel {
         /**
@@ -1864,6 +1868,10 @@ declare namespace LocalJSX {
           * Baloise icon for the right side of the input
          */
         "iconRight"?: string;
+        /**
+          * If `true` a loading spinner is visible at the end of the input
+         */
+        "loading"?: boolean;
     }
     interface BalFieldLabel {
         /**

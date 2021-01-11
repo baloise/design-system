@@ -401,6 +401,7 @@ export const BalFieldControl = /*@__PURE__*/ Vue.extend({
   props: {
     iconRight: {} as PropOptions<Components.BalFieldControl['iconRight']>,
     iconLeft: {} as PropOptions<Components.BalFieldControl['iconLeft']>,
+    loading: {} as PropOptions<Components.BalFieldControl['loading']>,
   },
 
 

@@ -440,13 +440,13 @@ export class BalField {
 
 export declare interface BalFieldControl extends Components.BalFieldControl {}
 @ProxyCmp({
-  inputs: ['iconLeft', 'iconRight']
+  inputs: ['iconLeft', 'iconRight', 'loading']
 })
 @Component({
   selector: 'bal-field-control',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['iconLeft', 'iconRight']
+  inputs: ['iconLeft', 'iconRight', 'loading']
 })
 export class BalFieldControl {
   protected el: HTMLElement;
