@@ -16,8 +16,8 @@
     "access": "public"
   },
   "scripts": {
-    "build:utils": "node ./build/utils.js",
-    "build": "npm run build:utils && npm run clean && ng-packagr -p package.json",
+    "build": "npm run build:filters && npm run clean && ng-packagr -p package.json",
+    "build:filters": "node ./filter.script.js",
     "clean": "rimraf dist"
   },
   "$schema": "./node_modules/ng-packagr/package.schema.json",

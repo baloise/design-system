@@ -16,12 +16,12 @@
     "access": "public"
   },
   "scripts": {
-    "clean": "rm -rf src/index.ts",
-    "build:docs": "node build/docs.js",
-    "build": "npm run clean && npm run build:docs && npm run compile",
-    "compile": "npm run tsc",
-    "tsc": "tsc -p .",
-    "test": "jest"
+    "test": "jest",
+    "build": "npm run build:clean && npm run build:docs && npm run build:index && npm run build:compile",
+    "build:clean": "rm -rf src/index.ts",
+    "build:docs": "node .scripts/docs-json.script.js",
+    "build:index": "node .scripts/index.script.js",
+    "build:compile": "tsc -p ."
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",

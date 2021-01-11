@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const filtersJson = require('../../utils/src/filters.json')
+const filtersJson = require('../utils/src/filters.json')
 
 const utilImports = filtersJson.map(f => `import { ${f.name} } from '@baloise/ui-library-utils'`)
 const utilFilters = filtersJson.map(f => `  _Vue.filter('${f.name}', ${f.name})`)
