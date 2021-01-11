@@ -32,20 +32,33 @@ export class Field {
   @Watch('inverted')
   @Watch('disabled')
   @Watch('expanded')
-  watchHandler() {
-    this.updateChildControl()
+  watchInputHandler() {
+    this.updateChildInput()
+  }
+
+  @Watch('loading')
+  watchFieldHandler() {
+    this.updateChildFieldControl()
   }
 
   componentWillLoad() {
-    this.updateChildControl()
+    this.updateChildInput()
+    this.updateChildFieldControl()
   }
 
-  updateChildControl() {
-    const controls = this.element.querySelectorAll('bal-input, bal-select, bal-datepicker')
+  updateChildInput() {
+    const inputs = this.element.querySelectorAll('bal-input, bal-select, bal-datepicker')
+    inputs.forEach((input: any) => {
+      input.disabled = this.disabled
+      input.inverted = this.inverted
+      input.expanded = this.expanded
+    })
+  }
+
+  updateChildFieldControl() {
+    const controls = this.element.querySelectorAll('bal-field')
     controls.forEach((control: any) => {
-      control.disabled = this.disabled
-      control.inverted = this.inverted
-      control.expanded = this.expanded
+      control.loading = this.loading
     })
   }
 

@@ -18,10 +18,10 @@ export class FieldControl {
    */
   @Prop() iconLeft: string = ''
 
-  // /**
-  //  * If `true` a loading spinner is visible at the end of the input
-  //  */
-  // @Prop() loading: boolean = false
+  /**
+   * If `true` a loading spinner is visible at the end of the input
+   */
+  @Prop() loading: boolean = false
 
   get buildIconLeftTemplate() {
     if (this.iconLeft) {
@@ -37,19 +37,14 @@ export class FieldControl {
     return ''
   }
 
-  get isLoading() {
-    const fieldElement = this.element.closest('bal-field')
-    return fieldElement && fieldElement.loading
-  }
-
   render() {
     return (
       <Host
         class={{
           'control': true,
           'has-icons-left': !!this.iconLeft,
-          'has-icons-right': !!this.iconRight || this.isLoading,
-          'is-loading': this.isLoading,
+          'has-icons-right': !!this.iconRight || this.loading,
+          'is-loading': this.loading,
         }}>
         <slot></slot>
         {this.buildIconLeftTemplate}

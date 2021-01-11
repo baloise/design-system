@@ -152,21 +152,6 @@ export class Dropdown {
             'is-up': this.isDropDownContentUp,
           }}>
           <slot></slot>
-          {/* <div class="dropdown-trigger">
-            <slot name="trigger" />
-          </div> */}
-          {/* <div
-            class="dropdown-menu"
-            id="dropdown-menu"
-            role="menu"
-            ref={el => (this.menuElement = el as HTMLDivElement)}>
-            <div
-              class="dropdown-content"
-              style={this.contentStyle}
-              ref={el => (this.contentElement = el as HTMLDivElement)}>
-              <slot></slot>
-            </div>
-          </div> */}
         </div>
       </Host>
     )
