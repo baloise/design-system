@@ -89,7 +89,7 @@ The proprocessing step for each SVG icon included: (done in Adobe Illustrator, b
  - [bal-button](../bal-button)
  - [bal-card-steps](../bal-card-steps)
  - [bal-datepicker](../bal-datepicker)
- - [bal-field](../bal-field)
+ - [bal-field-control](../bal-field-control)
  - [bal-file-upload](../bal-file-upload)
  - [bal-pagination](../bal-pagination)
  - [bal-select](../bal-select)
@@ -101,7 +101,7 @@ graph TD;
   bal-button --> bal-icon
   bal-card-steps --> bal-icon
   bal-datepicker --> bal-icon
-  bal-field --> bal-icon
+  bal-field-control --> bal-icon
   bal-file-upload --> bal-icon
   bal-pagination --> bal-icon
   bal-select --> bal-icon

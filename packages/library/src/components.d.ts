@@ -366,11 +366,7 @@ export namespace Components {
         /**
           * Returns the `HTMLDivElement` of the content element
          */
-        "getContentElement": () => Promise<HTMLDivElement>;
-        /**
-          * Returns the `HTMLDivElement` of the menu element
-         */
-        "getMenuElement": () => Promise<HTMLDivElement>;
+        "getContentElement": () => Promise<HTMLElement>;
         /**
           * If `true` the dropdown content is open.
          */
@@ -379,14 +375,19 @@ export namespace Components {
           * Open the dropdown menu.
          */
         "open": () => Promise<void>;
-        /**
-          * Limit the height of the dropdown content. Pass the amount of pixel.
-         */
         "scrollable": number;
         /**
           * Open or closes the dropdown.
          */
         "toggle": () => Promise<void>;
+    }
+    interface BalDropdownMenu {
+        /**
+          * Limit the height of the dropdown content. Pass the amount of pixel.
+         */
+        "scrollable": number;
+    }
+    interface BalDropdownTrigger {
     }
     interface BalField {
         /**
@@ -398,6 +399,16 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * If `true` the field can be used on blue background.
+         */
+        "inverted": boolean;
+        /**
+          * If `true` a loading spinner is visible at the end of the input
+         */
+        "loading": boolean;
+    }
+    interface BalFieldControl {
+        /**
           * Baloise icon for the left side of the input
          */
         "iconLeft": string;
@@ -405,26 +416,22 @@ export namespace Components {
           * Baloise icon for the right side of the input
          */
         "iconRight": string;
-        /**
-          * If `true` the field can be used on blue background.
-         */
-        "inverted": boolean;
-        /**
-          * Text of the inputs label
-         */
-        "label": string;
-        /**
-          * If `true` a loading spinner is visible at the end of the input
-         */
-        "loading": boolean;
+    }
+    interface BalFieldLabel {
         /**
           * If `true` a asterix (*) is added to the label text
          */
         "required": boolean;
         /**
-          * Validation message text
+          * Text of the inputs label
          */
-        "validationMessage": string;
+        "text": string;
+    }
+    interface BalFieldMessage {
+        /**
+          * Defines the color of the message.
+         */
+        "type": '' | 'danger' | 'success' | 'warning';
     }
     interface BalFileUpload {
         /**
@@ -600,6 +607,10 @@ export namespace Components {
     }
     interface BalListItem {
         /**
+          * If `true` the list item shows that it is clickable
+         */
+        "clickable": boolean;
+        /**
           * If `true` the list item can be hovered
          */
         "disabled": boolean;
@@ -629,6 +640,12 @@ export namespace Components {
         "open": () => Promise<void>;
     }
     interface BalModalActions {
+    }
+    interface BalModalBody {
+    }
+    interface BalModalFooter {
+    }
+    interface BalModalHeader {
     }
     interface BalNavbar {
         /**
@@ -931,6 +948,52 @@ export namespace Components {
     }
     interface BalText {
     }
+    interface BalTextarea {
+        /**
+          * The tabindex of the control.
+         */
+        "balTabindex": number;
+        /**
+          * If `true` the input gets a clickable cursor style
+         */
+        "clickable": boolean;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled": boolean;
+        /**
+          * If `true` this component can be placed on dark background
+         */
+        "inverted": boolean;
+        /**
+          * Defines the max length of the value.
+         */
+        "maxLength": number | undefined;
+        /**
+          * Defines the min length of the value.
+         */
+        "minLength": number | undefined;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Placeholder of the input
+         */
+        "placeholder": string;
+        /**
+          * If `true` the input is readonly
+         */
+        "readonly": boolean;
+        /**
+          * Sets the focus on the input element.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The value of the control.
+         */
+        "value": string;
+    }
     interface BalTimeinput {
         /**
           * If `true` the button is disabled
@@ -1077,11 +1140,41 @@ declare global {
         prototype: HTMLBalDropdownElement;
         new (): HTMLBalDropdownElement;
     };
+    interface HTMLBalDropdownMenuElement extends Components.BalDropdownMenu, HTMLStencilElement {
+    }
+    var HTMLBalDropdownMenuElement: {
+        prototype: HTMLBalDropdownMenuElement;
+        new (): HTMLBalDropdownMenuElement;
+    };
+    interface HTMLBalDropdownTriggerElement extends Components.BalDropdownTrigger, HTMLStencilElement {
+    }
+    var HTMLBalDropdownTriggerElement: {
+        prototype: HTMLBalDropdownTriggerElement;
+        new (): HTMLBalDropdownTriggerElement;
+    };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
     var HTMLBalFieldElement: {
         prototype: HTMLBalFieldElement;
         new (): HTMLBalFieldElement;
+    };
+    interface HTMLBalFieldControlElement extends Components.BalFieldControl, HTMLStencilElement {
+    }
+    var HTMLBalFieldControlElement: {
+        prototype: HTMLBalFieldControlElement;
+        new (): HTMLBalFieldControlElement;
+    };
+    interface HTMLBalFieldLabelElement extends Components.BalFieldLabel, HTMLStencilElement {
+    }
+    var HTMLBalFieldLabelElement: {
+        prototype: HTMLBalFieldLabelElement;
+        new (): HTMLBalFieldLabelElement;
+    };
+    interface HTMLBalFieldMessageElement extends Components.BalFieldMessage, HTMLStencilElement {
+    }
+    var HTMLBalFieldMessageElement: {
+        prototype: HTMLBalFieldMessageElement;
+        new (): HTMLBalFieldMessageElement;
     };
     interface HTMLBalFileUploadElement extends Components.BalFileUpload, HTMLStencilElement {
     }
@@ -1166,6 +1259,24 @@ declare global {
     var HTMLBalModalActionsElement: {
         prototype: HTMLBalModalActionsElement;
         new (): HTMLBalModalActionsElement;
+    };
+    interface HTMLBalModalBodyElement extends Components.BalModalBody, HTMLStencilElement {
+    }
+    var HTMLBalModalBodyElement: {
+        prototype: HTMLBalModalBodyElement;
+        new (): HTMLBalModalBodyElement;
+    };
+    interface HTMLBalModalFooterElement extends Components.BalModalFooter, HTMLStencilElement {
+    }
+    var HTMLBalModalFooterElement: {
+        prototype: HTMLBalModalFooterElement;
+        new (): HTMLBalModalFooterElement;
+    };
+    interface HTMLBalModalHeaderElement extends Components.BalModalHeader, HTMLStencilElement {
+    }
+    var HTMLBalModalHeaderElement: {
+        prototype: HTMLBalModalHeaderElement;
+        new (): HTMLBalModalHeaderElement;
     };
     interface HTMLBalNavbarElement extends Components.BalNavbar, HTMLStencilElement {
     }
@@ -1263,6 +1374,12 @@ declare global {
         prototype: HTMLBalTextElement;
         new (): HTMLBalTextElement;
     };
+    interface HTMLBalTextareaElement extends Components.BalTextarea, HTMLStencilElement {
+    }
+    var HTMLBalTextareaElement: {
+        prototype: HTMLBalTextareaElement;
+        new (): HTMLBalTextareaElement;
+    };
     interface HTMLBalTimeinputElement extends Components.BalTimeinput, HTMLStencilElement {
     }
     var HTMLBalTimeinputElement: {
@@ -1294,7 +1411,12 @@ declare global {
         "bal-data-value": HTMLBalDataValueElement;
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-dropdown": HTMLBalDropdownElement;
+        "bal-dropdown-menu": HTMLBalDropdownMenuElement;
+        "bal-dropdown-trigger": HTMLBalDropdownTriggerElement;
         "bal-field": HTMLBalFieldElement;
+        "bal-field-control": HTMLBalFieldControlElement;
+        "bal-field-label": HTMLBalFieldLabelElement;
+        "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
         "bal-hint": HTMLBalHintElement;
         "bal-hint-text": HTMLBalHintTextElement;
@@ -1309,6 +1431,9 @@ declare global {
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-actions": HTMLBalModalActionsElement;
+        "bal-modal-body": HTMLBalModalBodyElement;
+        "bal-modal-footer": HTMLBalModalFooterElement;
+        "bal-modal-header": HTMLBalModalHeaderElement;
         "bal-navbar": HTMLBalNavbarElement;
         "bal-navbar-brand": HTMLBalNavbarBrandElement;
         "bal-navbar-menu": HTMLBalNavbarMenuElement;
@@ -1325,6 +1450,7 @@ declare global {
         "bal-tabs": HTMLBalTabsElement;
         "bal-tag": HTMLBalTagElement;
         "bal-text": HTMLBalTextElement;
+        "bal-textarea": HTMLBalTextareaElement;
         "bal-timeinput": HTMLBalTimeinputElement;
         "bal-toast": HTMLBalToastElement;
     }
@@ -1701,10 +1827,15 @@ declare namespace LocalJSX {
           * Internal
          */
         "onBalDropdownPrepare"?: (event: CustomEvent<string>) => void;
+        "scrollable"?: number;
+    }
+    interface BalDropdownMenu {
         /**
           * Limit the height of the dropdown content. Pass the amount of pixel.
          */
         "scrollable"?: number;
+    }
+    interface BalDropdownTrigger {
     }
     interface BalField {
         /**
@@ -1716,6 +1847,16 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
+          * If `true` the field can be used on blue background.
+         */
+        "inverted"?: boolean;
+        /**
+          * If `true` a loading spinner is visible at the end of the input
+         */
+        "loading"?: boolean;
+    }
+    interface BalFieldControl {
+        /**
           * Baloise icon for the left side of the input
          */
         "iconLeft"?: string;
@@ -1723,26 +1864,22 @@ declare namespace LocalJSX {
           * Baloise icon for the right side of the input
          */
         "iconRight"?: string;
-        /**
-          * If `true` the field can be used on blue background.
-         */
-        "inverted"?: boolean;
-        /**
-          * Text of the inputs label
-         */
-        "label"?: string;
-        /**
-          * If `true` a loading spinner is visible at the end of the input
-         */
-        "loading"?: boolean;
+    }
+    interface BalFieldLabel {
         /**
           * If `true` a asterix (*) is added to the label text
          */
         "required"?: boolean;
         /**
-          * Validation message text
+          * Text of the inputs label
          */
-        "validationMessage"?: string;
+        "text"?: string;
+    }
+    interface BalFieldMessage {
+        /**
+          * Defines the color of the message.
+         */
+        "type"?: '' | 'danger' | 'success' | 'warning';
     }
     interface BalFileUpload {
         /**
@@ -1930,6 +2067,10 @@ declare namespace LocalJSX {
     }
     interface BalListItem {
         /**
+          * If `true` the list item shows that it is clickable
+         */
+        "clickable"?: boolean;
+        /**
           * If `true` the list item can be hovered
          */
         "disabled"?: boolean;
@@ -1957,6 +2098,12 @@ declare namespace LocalJSX {
         "card"?: boolean;
     }
     interface BalModalActions {
+    }
+    interface BalModalBody {
+    }
+    interface BalModalFooter {
+    }
+    interface BalModalHeader {
     }
     interface BalNavbar {
         /**
@@ -2254,6 +2401,68 @@ declare namespace LocalJSX {
     }
     interface BalText {
     }
+    interface BalTextarea {
+        /**
+          * The tabindex of the control.
+         */
+        "balTabindex"?: number;
+        /**
+          * If `true` the input gets a clickable cursor style
+         */
+        "clickable"?: boolean;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` this component can be placed on dark background
+         */
+        "inverted"?: boolean;
+        /**
+          * Defines the max length of the value.
+         */
+        "maxLength"?: number | undefined;
+        /**
+          * Defines the min length of the value.
+         */
+        "minLength"?: number | undefined;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalInput"?: (event: CustomEvent<string>) => void;
+        /**
+          * Emitted when a keyboard key has pressed.
+         */
+        "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
+        /**
+          * Placeholder of the input
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the input is readonly
+         */
+        "readonly"?: boolean;
+        /**
+          * The value of the control.
+         */
+        "value"?: string;
+    }
     interface BalTimeinput {
         /**
           * If `true` the button is disabled
@@ -2309,7 +2518,12 @@ declare namespace LocalJSX {
         "bal-data-value": BalDataValue;
         "bal-datepicker": BalDatepicker;
         "bal-dropdown": BalDropdown;
+        "bal-dropdown-menu": BalDropdownMenu;
+        "bal-dropdown-trigger": BalDropdownTrigger;
         "bal-field": BalField;
+        "bal-field-control": BalFieldControl;
+        "bal-field-label": BalFieldLabel;
+        "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
         "bal-hint": BalHint;
         "bal-hint-text": BalHintText;
@@ -2324,6 +2538,9 @@ declare namespace LocalJSX {
         "bal-list-item-title": BalListItemTitle;
         "bal-modal": BalModal;
         "bal-modal-actions": BalModalActions;
+        "bal-modal-body": BalModalBody;
+        "bal-modal-footer": BalModalFooter;
+        "bal-modal-header": BalModalHeader;
         "bal-navbar": BalNavbar;
         "bal-navbar-brand": BalNavbarBrand;
         "bal-navbar-menu": BalNavbarMenu;
@@ -2340,6 +2557,7 @@ declare namespace LocalJSX {
         "bal-tabs": BalTabs;
         "bal-tag": BalTag;
         "bal-text": BalText;
+        "bal-textarea": BalTextarea;
         "bal-timeinput": BalTimeinput;
         "bal-toast": BalToast;
     }
@@ -2366,7 +2584,12 @@ declare module "@stencil/core" {
             "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
+            "bal-dropdown-menu": LocalJSX.BalDropdownMenu & JSXBase.HTMLAttributes<HTMLBalDropdownMenuElement>;
+            "bal-dropdown-trigger": LocalJSX.BalDropdownTrigger & JSXBase.HTMLAttributes<HTMLBalDropdownTriggerElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
+            "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
+            "bal-field-label": LocalJSX.BalFieldLabel & JSXBase.HTMLAttributes<HTMLBalFieldLabelElement>;
+            "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
             "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
@@ -2381,6 +2604,9 @@ declare module "@stencil/core" {
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-actions": LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;
+            "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
+            "bal-modal-footer": LocalJSX.BalModalFooter & JSXBase.HTMLAttributes<HTMLBalModalFooterElement>;
+            "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;
             "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;
@@ -2397,6 +2623,7 @@ declare module "@stencil/core" {
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
             "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
+            "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
             "bal-timeinput": LocalJSX.BalTimeinput & JSXBase.HTMLAttributes<HTMLBalTimeinputElement>;
             "bal-toast": LocalJSX.BalToast & JSXBase.HTMLAttributes<HTMLBalToastElement>;
         }

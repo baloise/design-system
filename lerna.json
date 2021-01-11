@@ -5,7 +5,6 @@
   "version": "2.4.1",
   "command": {
     "publish": {
-      "conventionalCommits": true,
       "ignoreChanges": [
         "docs/**",
         "examples/**"

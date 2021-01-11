@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property            | Attribute             | Description                                                         | Type      | Default |
-| ------------------- | --------------------- | ------------------------------------------------------------------- | --------- | ------- |
-| `expanded`          | `expanded`            | If `true` the field spans over the whole width.                     | `boolean` | `false` |
-| `fixedContentWidth` | `fixed-content-width` | If `true` the dropdown content has a fixed width                    | `boolean` | `false` |
-| `isActive`          | `is-active`           | If `true` the dropdown content is open.                             | `boolean` | `false` |
-| `scrollable`        | `scrollable`          | Limit the height of the dropdown content. Pass the amount of pixel. | `number`  | `0`     |
+| Property            | Attribute             | Description                                      | Type      | Default |
+| ------------------- | --------------------- | ------------------------------------------------ | --------- | ------- |
+| `expanded`          | `expanded`            | If `true` the field spans over the whole width.  | `boolean` | `false` |
+| `fixedContentWidth` | `fixed-content-width` | If `true` the dropdown content has a fixed width | `boolean` | `false` |
+| `isActive`          | `is-active`           | If `true` the dropdown content is open.          | `boolean` | `false` |
+| `scrollable`        | `scrollable`          |                                                  | `number`  | `0`     |
 
 
 ## Events
@@ -35,23 +35,13 @@ Type: `Promise<void>`
 
 
 
-### `getContentElement() => Promise<HTMLDivElement>`
+### `getContentElement() => Promise<HTMLElement>`
 
 Returns the `HTMLDivElement` of the content element
 
 #### Returns
 
-Type: `Promise<HTMLDivElement>`
-
-
-
-### `getMenuElement() => Promise<HTMLDivElement>`
-
-Returns the `HTMLDivElement` of the menu element
-
-#### Returns
-
-Type: `Promise<HTMLDivElement>`
+Type: `Promise<HTMLElement>`
 
 
 

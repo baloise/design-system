@@ -367,14 +367,16 @@ export class Datepicker {
           fixedContentWidth={true}
           onBalCollapse={e => this.onDropdownChange(e)}
           ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
-          {this.renderInput()}
-          <div class="datepicker-popup">
-            {this.renderHeader()}
-            {this.renderBody()}
-            <div class="datepicker-footer">
-              <slot></slot>
+          <bal-dropdown-trigger>{this.renderInput()}</bal-dropdown-trigger>
+          <bal-dropdown-menu>
+            <div class="datepicker-popup">
+              {this.renderHeader()}
+              {this.renderBody()}
+              <div class="datepicker-footer">
+                <slot></slot>
+              </div>
             </div>
-          </div>
+          </bal-dropdown-menu>
         </bal-dropdown>
       </Host>
     )
@@ -382,7 +384,7 @@ export class Datepicker {
 
   renderInput() {
     return (
-      <div class="control has-icons-right" slot="trigger">
+      <div class="control has-icons-right">
         <input
           class={{
             'input': true,

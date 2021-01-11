@@ -110,9 +110,11 @@ export class Tabs {
                 }}>
                 <a onClick={() => this.onSelectTab(tab)}>
                   <span class="step-index">
-                    <span>{index + 1}</span>
+                    <bal-text>{index + 1}</bal-text>
                   </span>
-                  <span class="step-label">{tab.label}</span>
+                  <span class="step-label">
+                    <bal-text>{tab.label}</bal-text>
+                  </span>
                 </a>
                 <span class="bubble" style={!tab.hasBubble && { display: 'none' }}></span>
               </li>

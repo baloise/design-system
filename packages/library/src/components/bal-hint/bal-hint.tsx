@@ -63,7 +63,7 @@ export class Hint {
     return (
       <Host>
         <div role="button" class="bal-hint-icon" onClick={() => this.toggle()}>
-          <span>i</span>
+          <bal-text>i</bal-text>
         </div>
 
         <div class="bal-hint-content" style={{ display: this.isActive ? 'inline-block' : 'none' }}>

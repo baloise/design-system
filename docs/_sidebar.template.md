@@ -13,6 +13,7 @@
   - [Typography](essentials/typography.md)
   - [Responsiveness](essentials/responsiveness.md)
   - [Grid](essentials/grid.md)
+  - [Table](essentials/table.md)
   - [Track Line](essentials/track-line.md)
 
 <!-- Auto Generated Sidebar Start -->

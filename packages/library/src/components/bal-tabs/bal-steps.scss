@@ -34,20 +34,13 @@
           color: $text-strong;
           height: 28px;
           min-width: 28px;
-          line-height: 28px;
           justify-content: center;
           font-size: $size-5;
           position: relative;
 
-          span {
+          bal-text {
             font-weight: $weight-bold;
-            font-family: $title-family;
             color: $text-strong;
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            margin-top: -15px;
             text-align: center;
           }
         }
@@ -61,7 +54,7 @@
         color: $blue;
         padding-bottom: 0;
 
-        span.step-index span {
+        span.step-index bal-text {
           display: none;
         }
 
@@ -79,7 +72,7 @@
           background-repeat: no-repeat;
           background-size: 24px 24px;
           content: '';
-          top: 5px;
+          top: 4px;
           left: 50%;
           margin-left: -3px;
           width: 5px;
@@ -114,7 +107,7 @@
       &.is-failed {
         padding-bottom: 0;
 
-        span.step-index span {
+        span.step-index bal-text {
           display: none;
         }
 
@@ -138,7 +131,7 @@
           content: '!';
           top: 50%;
           left: 50%;
-          margin-top: -15px;
+          margin-top: -13px;
           margin-left: -3px;
           overflow: hidden;
         }

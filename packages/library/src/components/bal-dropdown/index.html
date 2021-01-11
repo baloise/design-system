@@ -12,29 +12,31 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-dropdown id="bal-dropdown-1" scrollable="200" is-active="false" data-test-id="dropdown">
-          <bal-button
-            id="bal-dropdown-1-trigger"
-            slot="trigger"
-            aria-haspopup="true"
-            aria-controls="dropdown-menu"
-            type="is-info"
-            outlined
-            icon-right="caret-down"
-          >
-            <span id="bal-dropdown-1-trigger-label">Trigger</span>
-          </bal-button>
-
-          <div style="padding: 0 15px 15px">
-            <h5 class="title is-size-3" style="margin-top: 0px">Title</h5>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque
-              error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis
-              harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus
-              doloremque error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia
-              facilis harum vero.
-            </p>
-          </div>
+        <bal-dropdown id="bal-dropdown-1" is-active="false" data-test-id="dropdown">
+          <bal-dropdown-trigger>
+            <bal-button
+              id="bal-dropdown-1-trigger"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu"
+              type="is-info"
+              outlined
+              icon-right="caret-down"
+            >
+              <span id="bal-dropdown-1-trigger-label">Trigger</span>
+            </bal-button>
+          </bal-dropdown-trigger>
+          <bal-dropdown-menu scrollable="200">
+            <div style="padding: 0 15px 15px">
+              <h5 class="title is-size-3" style="margin-top: 0px">Title</h5>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque
+                error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis
+                harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed
+                minus doloremque error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis
+                mollitia facilis harum vero.
+              </p>
+            </div>
+          </bal-dropdown-menu>
         </bal-dropdown>
       </section>
       <script>
@@ -49,14 +51,18 @@
       <h2 class="title is-size-2">Input</h2>
       <section>
         <bal-dropdown id="bal-dropdown-2" scrollable="200" expanded>
-          <div class="control has-icons-right" slot="trigger">
-            <input type="text" class="input clickable" readonly id="bal-dropdown-2-trigger" />
-            <bal-icon size="medium" is-right color="blue" name="caret-down" />
-          </div>
-
-          <div style="padding: 0 15px 15px">
-            <h5 class="title is-size-3" style="margin-top: 0px">Some Content</h5>
-          </div>
+          <bal-dropdown-trigger>
+            <div class="control has-icons-right">
+              <input type="text" class="input clickable" readonly id="bal-dropdown-2-trigger" />
+              <bal-icon size="medium" is-right color="blue" name="caret-down" />
+            </div>
+          </bal-dropdown-trigger>
+          <bal-dropdown-menu>
+            <div style="padding: 0 15px 15px">
+              <h5 class="title is-size-3" style="margin-top: 0px">Some Content</h5>
+              <p>Some text</p>
+            </div>
+          </bal-dropdown-menu>
         </bal-dropdown>
       </section>
       <script>
@@ -64,7 +70,6 @@
         var trigger2 = document.getElementById('bal-dropdown-2-trigger')
 
         trigger2.addEventListener('click', function (event) {
-          console.log('asdf')
           dropdown2.toggle()
         })
       </script>

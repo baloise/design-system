@@ -1,8 +1,12 @@
 @import 'bal-modal.vars';
 @import 'node_modules/bulma/sass/components/modal';
 
-:host {
+bal-modal,
+bal-modal-header,
+bal-modal-body,
+bal-model-footer {
   display: block;
+  position: relative;
 }
 
 .modal {
@@ -13,6 +17,7 @@
   width: var(--bal-width, $modal-content-width);
   margin-top: 30px;
   display: flex !important;
+  border-radius: 10px !important;
 
   .modal-card-head {
     padding-bottom: 0px;

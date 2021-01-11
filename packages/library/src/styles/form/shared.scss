@@ -1,8 +1,13 @@
 .control.has-icons-left .icon,
 .control.has-icons-right .icon {
-  top: 1px !important;
+  top: -1px !important;
 }
 
 .form.is-inverted .icon > .font {
   color: $blue-line !important;
+}
+
+.control.has-icons-left bal-icon,
+.control.has-icons-right bal-icon {
+  display: block !important;
 }

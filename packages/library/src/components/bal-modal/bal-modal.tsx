@@ -3,7 +3,7 @@ import { Component, Host, h, State, Method, Listen, Prop } from '@stencil/core'
 @Component({
   tag: 'bal-modal',
   styleUrl: 'bal-modal.scss',
-  scoped: true,
+  scoped: false,
   shadow: false,
 })
 export class Modal {
@@ -40,20 +40,7 @@ export class Modal {
         <div class={['modal', 'is-clipped', this.isActive ? 'is-active' : ''].join(' ')}>
           <div class="modal-background"></div>
           <div class={['modal-card box', this.card ? '' : 'no-border'].join(' ')}>
-            <header class="modal-card-head">
-              <p class="modal-card-title">
-                <slot name="head" />
-              </p>
-            </header>
-            <section class="modal-card-body">
-              <div class="content"><slot /></div>
-              
-            </section>
-            <footer class="modal-card-foot">
-              <div class="modal-card-foot-container">
-                <slot name="foot" />
-              </div>
-            </footer>
+            <slot></slot>
           </div>
         </div>
       </Host>

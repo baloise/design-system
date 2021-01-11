@@ -4,27 +4,20 @@ import { Component, h, Host, Listen, Method, Prop, Element, Event, EventEmitter,
   tag: 'bal-dropdown',
   styleUrl: 'bal-dropdown.scss',
   shadow: false,
-  scoped: true,
+  scoped: false,
 })
 export class Dropdown {
   private dropdownId = `bal-dd-${DropdownIds++}`
-
-  contentElement!: HTMLDivElement
-  menuElement!: HTMLDivElement
 
   @Element() element!: HTMLElement
 
   @State() isDropDownContentUp = false
 
   /**
-   * Limit the height of the dropdown content. Pass the amount of pixel.
-   */
-  @Prop() scrollable: number = 0
-
-  /**
    * If `true` the field spans over the whole width.
    */
   @Prop() expanded: boolean = false
+  @Prop() scrollable: number = 0
 
   /**
    * If `true` the dropdown content has a fixed width
@@ -92,8 +85,7 @@ export class Dropdown {
   /**
    * Returns the `HTMLDivElement` of the menu element
    */
-  @Method()
-  async getMenuElement(): Promise<HTMLDivElement> {
+  async getMenuElement(): Promise<HTMLElement> {
     return this.menuElement
   }
 
@@ -101,7 +93,7 @@ export class Dropdown {
    * Returns the `HTMLDivElement` of the content element
    */
   @Method()
-  async getContentElement(): Promise<HTMLDivElement> {
+  async getContentElement(): Promise<HTMLElement> {
     return this.contentElement
   }
 
@@ -130,16 +122,12 @@ export class Dropdown {
     this.calcIsDropDownContentUp()
   }
 
-  get contentStyle() {
-    if (this.scrollable === 0) {
-      return {}
-    } else {
-      const maxHeight = `${this.scrollable}px`
-      return {
-        'max-height': maxHeight,
-        'overflow': 'auto',
-      }
-    }
+  get menuElement(): HTMLElement {
+    return this.element.querySelector('bal-dropdown-menu')
+  }
+
+  get contentElement(): HTMLElement {
+    return this.element.querySelector('bal-dropdown-content')
   }
 
   private calcIsDropDownContentUp() {
@@ -163,21 +151,7 @@ export class Dropdown {
             'is-expanded': this.expanded,
             'is-up': this.isDropDownContentUp,
           }}>
-          <div class="dropdown-trigger">
-            <slot name="trigger" />
-          </div>
-          <div
-            class="dropdown-menu"
-            id="dropdown-menu"
-            role="menu"
-            ref={el => (this.menuElement = el as HTMLDivElement)}>
-            <div
-              class="dropdown-content"
-              style={this.contentStyle}
-              ref={el => (this.contentElement = el as HTMLDivElement)}>
-              <slot></slot>
-            </div>
-          </div>
+          <slot></slot>
         </div>
       </Host>
     )

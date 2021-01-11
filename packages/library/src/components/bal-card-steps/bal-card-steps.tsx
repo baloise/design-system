@@ -146,7 +146,7 @@ export class CardSteps {
                     ].join(' ')}>
                     <a onClick={() => this.onClickStepCircle(step)} title={step.label}>
                       <span class="step-index">
-                        <span>{index + 1}</span>
+                        <bal-text>{index + 1}</bal-text>
                       </span>
                     </a>
                   </li>
