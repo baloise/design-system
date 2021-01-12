@@ -24,7 +24,8 @@
   "scripts": {
     "serve": "cypress open",
     "test": "cypress run",
-    "build": "npm run build:docs && npm run build:index && npm run build:compile",
+    "build": "npm run build:clean && npm run build:docs && npm run build:index && npm run build:compile",
+    "build:clean": "rm -rf src/index.ts",
     "build:index": "node .scripts/index.script.js",
     "build:docs": "node .scripts/docs-json.script.js",
     "build:compile": "tsc -p tsconfig.build.json",
@@ -37,7 +38,6 @@
     "@types/jquery": "^3.5.1",
     "@types/node": "^14.14.6",
     "cypress": "^5.6.0",
-    "glob": "^7.1.6",
     "http-server": "^0.12.3",
     "start-server-and-test": "^1.11.4",
     "ts-node": "^9.0.0",

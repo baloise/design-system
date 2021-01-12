@@ -1,3 +1,5 @@
+// generated file by .scripts/filters.script.js
+
 import { Pipe, PipeTransform } from '@angular/core';
 import { balBlobToUrl } from '@baloise/ui-library-utils'
 import { balCapitalize } from '@baloise/ui-library-utils'

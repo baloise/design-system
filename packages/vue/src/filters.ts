@@ -1,3 +1,5 @@
+// generated file by .scripts/filters.script.js
+
 import { PluginFunction } from 'vue'
 import { balBlobToUrl } from '@baloise/ui-library-utils'
 import { balCapitalize } from '@baloise/ui-library-utils'

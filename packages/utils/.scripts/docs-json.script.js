@@ -6,15 +6,15 @@
  * and code generations.
  */
 
-const file = require('../../../.scripts/common/file')
-const { banner, log } = require('../../../.scripts/common/log')
+const file = require('../../../.scripts/file')
+const { title, log } = require('../../../.scripts/log')
 const {
   createSourceFile,
   parseFunctionComment,
   filterVariableStatements,
   filterVariableDeclaration,
   parseType,
-} = require('../../../.scripts/common/typescript')
+} = require('../../../.scripts/typescript')
 
 const parseComment = (node, sourceFile) => {
   const text = parseFunctionComment(node, sourceFile)
@@ -83,7 +83,7 @@ const parseFilters = (filepath, fileContent) => {
 }
 
 const run = async () => {
-  await banner('utils : docs-json')
+  await title('utils : docs-json')
 
   const pathToFilters = 'src/filters/**/!(*.spec|index).ts'
   let filePaths = []

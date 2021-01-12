@@ -1,3 +1,5 @@
+// generated file by .scripts/index.script.js
+
 export { balBlobToUrl } from './filters/balBlobToUrl'
 export { balCapitalize } from './filters/balCapitalize'
 export { balClaimNumber } from './filters/balClaimNumber'

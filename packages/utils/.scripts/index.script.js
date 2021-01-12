@@ -6,11 +6,11 @@
  * all the types and exports.
  */
 
-const file = require('../../../.scripts/common/file')
-const { banner, log } = require('../../../.scripts/common/log')
+const file = require('../../../.scripts/file')
+const { title, log } = require('../../../.scripts/log')
 
 const run = async () => {
-  await banner('utils : index')
+  await title('utils : index')
 
   let filters = []
   try {
@@ -18,7 +18,7 @@ const run = async () => {
     filters = JSON.parse(fileContent)
     log.info(`Read ${filters.length} filters`).break()
   } catch (error) {
-    log.error('Could not read file ./src/filters.json. Maybe run `npm run build:docs` first.', error)
+    log.error('Could not read file ./src/filters.json. Maybe run `npm run utils:build` first.', error)
   }
 
   const utilExports = filters.map(f => `export { ${f.name} } from './filters/${f.name}'`)

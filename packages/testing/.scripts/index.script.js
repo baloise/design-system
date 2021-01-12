@@ -6,12 +6,12 @@
  * all the types and exports.
  */
 
-const file = require('../../../.scripts/common/file')
-const { banner, log } = require('../../../.scripts/common/log')
-const { uncapitalize, convertToDotCase } = require('../../../.scripts/common/string')
+const file = require('../../../.scripts/file')
+const { title, log } = require('../../../.scripts/log')
+const { uncapitalize, convertToDotCase } = require('../../../.scripts/string')
 
 const run = async () => {
-  await banner('testing : index')
+  await title('testing : index')
 
   let mixins = []
   try {
@@ -19,7 +19,7 @@ const run = async () => {
     mixins = JSON.parse(fileContentMixins)
     log.info(`Read ${mixins.length} mixins`)
   } catch (error) {
-    log.error('Could not read file ./src/mixins.json. Maybe run `npm run build:docs` first.', error)
+    log.error('Could not read file ./src/mixins.json. Maybe run `npm run testing:build` first.', error)
   }
 
   let accessors = []

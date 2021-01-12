@@ -6,14 +6,14 @@
  * and code generations.
  */
 
-const file = require('../../../.scripts/common/file')
-const { banner, log } = require('../../../.scripts/common/log')
+const file = require('../../../.scripts/file')
+const { title, log } = require('../../../.scripts/log')
 const {
   createSourceFile,
   parseFunctionComment,
   filterVariableStatements,
   filterInterfaceDeclaration,
-} = require('../../../.scripts/common/typescript')
+} = require('../../../.scripts/typescript')
 
 const filterAccessorNode = nodes => {
   return nodes.filter(n => n.declarationList.declarations[0].name.escapedText.endsWith('Accessor'))[0]
@@ -93,7 +93,7 @@ const parseAccessor = (fileContent, mixins) => {
 }
 
 const run = async () => {
-  await banner('testing : docs-json')
+  await title('testing : docs-json')
 
   const pathToMixins = 'src/mixins/**.ts'
   let mixinFilePaths = []

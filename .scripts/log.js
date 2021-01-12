@@ -1,13 +1,18 @@
 const chalk = require('chalk')
 const figlet = require('figlet')
 
-const banner = async title => {
+const title = async text => {
+  console.log(chalk.bold.underline.blue(text))
+  console.log('')
+}
+
+const banner = async text => {
   return new Promise(resolve => {
-    figlet(title, (err, data) => {
+    figlet(text, (err, data) => {
       if (err) {
-        console.log(title)
+        console.log(title(text))
       } else {
-        console.log(data)
+        console.log(chalk.blue(data))
       }
       console.log('')
       resolve()
@@ -50,5 +55,6 @@ const log = {
 
 module.exports = {
   banner,
+  title,
   log,
 }

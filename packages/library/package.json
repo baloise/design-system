@@ -30,9 +30,8 @@
   ],
   "scripts": {
     "build": "stencil build --docs --es5 --prod",
-    "build:docs": "stencil build --docs --es5 --prod --config stencil.docs.config.ts",
-    "serve": "stencil build --docs --dev --watch --serve --docs-json www/components.json",
-    "generate": "stencil generate"
+    "docs": "stencil build --docs --es5 --prod --config stencil.docs.config.ts",
+    "serve": "stencil build --docs --dev --watch --serve --docs-json www/components.json"
   },
   "dependencies": {
     "@stencil/core": "^2.0.1",
