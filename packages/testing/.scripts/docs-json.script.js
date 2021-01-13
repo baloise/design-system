@@ -6,8 +6,9 @@
  * and code generations.
  */
 
+const path = require('path')
 const file = require('../../../.scripts/file')
-const { title, log } = require('../../../.scripts/log')
+const log = require('../../../.scripts/log')
 const {
   createSourceFile,
   parseFunctionComment,
@@ -93,7 +94,7 @@ const parseAccessor = (fileContent, mixins) => {
 }
 
 const run = async () => {
-  await title('testing : docs-json')
+  await log.title('testing : docs-json')
 
   const pathToMixins = 'src/mixins/**.ts'
   let mixinFilePaths = []
@@ -171,21 +172,9 @@ const run = async () => {
     })
   })
 
-  const pathToMixinsJson = './src/mixins.json'
-  try {
-    await file.write(pathToMixinsJson, JSON.stringify(mixins))
-    log.break().success(`Successfully updated file to ${pathToMixinsJson}`)
-  } catch (error) {
-    log.error(`Could not update file ${pathToJson}`, error)
-  }
-
-  const pathToAccessorsJson = './src/accessors.json'
-  try {
-    await file.write(pathToAccessorsJson, JSON.stringify(accessors))
-    log.success(`Successfully updated file to ${pathToAccessorsJson}`)
-  } catch (error) {
-    log.error(`Could not update file ${pathToJson}`, error)
-  }
+  await file.makeDir(path.join(__dirname, '../docs'))
+  await file.save(path.join(__dirname, '../docs/mixins.json'), JSON.stringify(mixins))
+  await file.save(path.join(__dirname, '../docs/accessors.json'), JSON.stringify(accessors))
 }
 
 run()

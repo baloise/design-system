@@ -21,7 +21,7 @@ export const config: Config = {
     },
     {
       type: 'docs-json',
-      file: '../../temp/components.json',
+      file: './docs/components.raw.json',
     },
     {
       type: 'www',

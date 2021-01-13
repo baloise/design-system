@@ -6,21 +6,15 @@
  * all the types and exports.
  */
 
+const path = require('path')
 const file = require('../../../.scripts/file')
-const { title, log } = require('../../../.scripts/log')
+const log = require('../../../.scripts/log')
+const utilsLib = require('./utils.lib')
 
 const run = async () => {
-  await title('utils : index')
+  await log.title('utils : index')
 
-  let filters = []
-  try {
-    const fileContent = await file.read('./src/filters.json')
-    filters = JSON.parse(fileContent)
-    log.info(`Read ${filters.length} filters`).break()
-  } catch (error) {
-    log.error('Could not read file ./src/filters.json. Maybe run `npm run utils:build` first.', error)
-  }
-
+  const filters = await utilsLib.filters()
   const utilExports = filters.map(f => `export { ${f.name} } from './filters/${f.name}'`)
   const utilStaticTypes = filters.map(f => `  ${f.name}: ${f.signature}`)
 
@@ -35,12 +29,7 @@ const run = async () => {
     '',
   ].join('\n')
 
-  try {
-    await file.write('./src/index.ts', content)
-    log.success('Successfully updated `src/index.ts`')
-  } catch (error) {
-    log.error('Could not update `src/index.ts`', error)
-  }
+  await file.save(path.join(__dirname, '../src/index.ts'), content)
 }
 
 run()

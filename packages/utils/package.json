@@ -18,7 +18,7 @@
   "scripts": {
     "test": "jest",
     "build": "npm run build:clean && npm run build:docs && npm run build:index && npm run build:compile",
-    "build:clean": "rm -rf src/index.ts",
+    "build:clean": "rm -rf docs",
     "build:docs": "node .scripts/docs-json.script.js",
     "build:index": "node .scripts/index.script.js",
     "build:compile": "tsc -p ."

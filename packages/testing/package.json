@@ -25,7 +25,7 @@
     "serve": "cypress open",
     "test": "cypress run",
     "build": "npm run build:clean && npm run build:docs && npm run build:index && npm run build:compile",
-    "build:clean": "rm -rf src/index.ts",
+    "build:clean": "rm -rf src/index.ts && rm -rf docs",
     "build:index": "node .scripts/index.script.js",
     "build:docs": "node .scripts/docs-json.script.js",
     "build:compile": "tsc -p tsconfig.build.json",

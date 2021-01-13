@@ -6,8 +6,9 @@
  * and code generations.
  */
 
+const path = require('path')
 const file = require('../../../.scripts/file')
-const { title, log } = require('../../../.scripts/log')
+const log = require('../../../.scripts/log')
 const {
   createSourceFile,
   parseFunctionComment,
@@ -83,7 +84,7 @@ const parseFilters = (filepath, fileContent) => {
 }
 
 const run = async () => {
-  await title('utils : docs-json')
+  await log.title('utils : docs-json')
 
   const pathToFilters = 'src/filters/**/!(*.spec|index).ts'
   let filePaths = []
@@ -121,14 +122,8 @@ const run = async () => {
       log.warn(`Please add a description to the filter ${f.name}.`)
     }
   })
-
-  const pathToJson = './src/filters.json'
-  try {
-    await file.write(pathToJson, JSON.stringify(filters))
-    log.break().success(`Successfully updated file to ${pathToJson}`)
-  } catch (error) {
-    log.error(`Could not update file ${pathToJson}`, error)
-  }
+  await file.makeDir(path.join(__dirname, '../docs'))
+  await file.save(path.join(__dirname, '../docs/filters.json'), JSON.stringify(filters))
 }
 
 run()

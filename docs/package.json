@@ -8,12 +8,12 @@
   "license": "Apache-2.0",
   "main": "index.html",
   "scripts": {
-    "build": "npm run copy:lib && npm run build:sidebar && npm run build:components && npm run build:utils",
-    "build:sidebar": "node ./build/sidebar.build.js",
-    "build:components": "node ./build/components.build.js",
-    "build:utils": "node ./build/utils.build.js",
-    "serve": "http-server ./ --port 3000 -c-1",
-    "copy:lib": "cpy ./ ../../../docs/lib/ --parents --cwd=../packages/library/dist"
+    "build": "npm run build:lib && npm run build:sidebar && npm run build:utils && npm run build:components",
+    "build:lib": "cpy ./ ../../../docs/lib/ --parents --cwd=../packages/library/dist",
+    "build:sidebar": "node .scripts/sidebar.script.js",
+    "build:utils": "node .scripts/utils.script.js",
+    "build:components": "node .scripts/components.script.js",
+    "serve": "http-server ./ --port 3000 -c-1"
   },
   "dependencies": {},
   "devDependencies": {

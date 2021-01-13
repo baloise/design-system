@@ -1,5 +1,6 @@
 const fs = require('fs')
 const glob = require('glob')
+const log = require('./log')
 
 const read = async path => {
   return new Promise((resolve, reject) => {
@@ -10,6 +11,14 @@ const read = async path => {
       resolve(data)
     })
   })
+}
+
+const readSync = path => {
+  try {
+    return fs.readFileSync(path, 'utf8')
+  } catch (err) {
+    return null
+  }
 }
 
 const write = async (path, data) => {
@@ -34,8 +43,34 @@ const scan = async path => {
   })
 }
 
+const save = async (filePath, content) => {
+  try {
+    await write(filePath, content)
+    log.success(`Successfully updated ${filePath}`)
+  } catch (error) {
+    log.error(`Could not update ${filePath}`, error)
+    setTimeout(() => process.exit(1), 0)
+  }
+}
+
+const makeDir = async dirPath => {
+  return new Promise(resolve => {
+    fs.mkdir(dirPath, { recursive: true }, error => {
+      if (error) {
+        log.error(`Could not update ${filePath}`, error)
+        setTimeout(() => process.exit(1), 0)
+      } else {
+        resolve()
+      }
+    })
+  })
+}
+
 module.exports = {
+  readSync,
   read,
   write,
   scan,
+  save,
+  makeDir,
 }

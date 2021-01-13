@@ -1,7 +1,7 @@
 const htmlParser = require('node-html-parser')
 const babelCore = require('@babel/core')
 
-const { NEWLINE, LEFT_WHITESPACE } = require('../constants')
+const { NEWLINE, LEFT_WHITESPACE } = require('./constants')
 
 const getCodeExample = node =>
   node.innerHTML
@@ -10,7 +10,7 @@ const getCodeExample = node =>
     .map(line => line.substring(LEFT_WHITESPACE))
     .join(NEWLINE)
 
-const parseExamples = component => {
+const parse = component => {
   if (component.examples) {
     const root = htmlParser.parse(component.examples)
     const container = htmlParser.parse(root.querySelector('.container').innerHTML)
@@ -64,5 +64,5 @@ const parseExamples = component => {
 }
 
 module.exports = {
-  parseExamples,
+  parse,
 }

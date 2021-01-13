@@ -6,21 +6,15 @@
  * adds the filter to the vue framework.
  */
 
+const path = require('path')
 const file = require('../../../.scripts/file')
-const { title, log } = require('../../../.scripts/log')
+const log = require('../../../.scripts/log')
+const utilsLib = require('../../utils/.scripts/utils.lib')
 
 const run = async () => {
-  await title('vue : filters')
+  await log.title('vue : filters')
 
-  let filters = []
-  const pathToFiltersJson = '../utils/src/filters.json'
-  try {
-    const fileContent = await file.read(pathToFiltersJson)
-    filters = JSON.parse(fileContent)
-    log.info(`Read ${filters.length} filters`).break()
-  } catch (error) {
-    log.error(`Could not read file ${pathToFiltersJson}. Maybe run 'npm run utils:build' first.`, error)
-  }
+  const filters = await utilsLib.filters()
 
   const utilImports = filters.map(f => `import { ${f.name} } from '@baloise/ui-library-utils'`)
   const utilFilters = filters.map(f => `  _Vue.filter('${f.name}', ${f.name})`)
@@ -37,13 +31,7 @@ const run = async () => {
     '',
   ].join('\n')
 
-  const pathToFilters = './src/filters.ts'
-  try {
-    await file.write(pathToFilters, content)
-    log.success(`Successfully updated ${pathToFilters}`)
-  } catch (error) {
-    log.error(`Could not update ${pathToFilters}`, error)
-  }
+  await file.save(path.join(__dirname, '../src/filters.ts'), content)
 }
 
 run()
