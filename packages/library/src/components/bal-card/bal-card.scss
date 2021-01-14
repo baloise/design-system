@@ -114,22 +114,52 @@
     }
 
     .bal-card-actions {
-      &.is-right {
-        flex-direction: row-reverse;
+      display: flex;
+      flex-direction: column;
+
+      bal-button {
+        margin-top: 10px;
       }
     }
-  }
 
-  @include tablet() {
-    .bal-card.is-teaser {
-      width: 380px;
+    @include mobile() {
+      .bal-card-actions {
+        bal-button,
+        bal-button > button {
+          width: 100%;
+        }
+      }
     }
-  }
 
-  @include desktop() {
-    .bal-card.is-teaser {
-      min-height: 470px;
-      width: 570px;
+    @include tablet() {
+      .bal-card.is-teaser {
+        width: 380px;
+      }
+
+      .bal-card-actions {
+        flex-direction: row;
+
+        bal-button {
+          margin-top: 0;
+          margin-right: 10px;
+        }
+
+        &.is-right {
+          flex-direction: row-reverse;
+
+          bal-button {
+            margin-right: 0;
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+
+    @include desktop() {
+      .bal-card.is-teaser {
+        min-height: 470px;
+        width: 570px;
+      }
     }
   }
 }
