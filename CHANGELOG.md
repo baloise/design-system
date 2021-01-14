@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.1](https://github.com/baloise/ui-library/compare/v2.5.0...v2.5.1) (2021-01-14)
+
+
+### Bug Fixes
+
+* **card:** add responsive styles for the action buttons ([a07ccdf](https://github.com/baloise/ui-library/commit/a07ccdf7c9e5c66352f842ca5e9da14ee78a3591))
+* **select:** improve search logic ([cf75055](https://github.com/baloise/ui-library/commit/cf75055173f2b72d95837f0010930631bae70d9a))
+
+
+
+
+
 # [2.5.0](https://github.com/baloise/ui-library/compare/v2.4.1...v2.5.0) (2021-01-11)
 
 
