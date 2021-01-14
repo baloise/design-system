@@ -56,7 +56,7 @@ export class Field {
   }
 
   updateChildFieldControl() {
-    const controls = this.element.querySelectorAll('bal-field')
+    const controls = this.element.querySelectorAll('bal-field-control')
     controls.forEach((control: any) => {
       control.loading = this.loading
     })

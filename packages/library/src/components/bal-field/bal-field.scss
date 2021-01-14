@@ -1,87 +1,90 @@
 @import '../../styles/ui-library.utilities';
-@import 'node_modules/bulma/sass/elements/icon.sass';
 
-bal-field {
-  display: inline-block;
-  position: relative;
-  padding-bottom: 8px;
+.bal-app {
+  @import 'node_modules/bulma/sass/elements/icon.sass';
 
-  &.is-expanded {
-    display: block;
-  }
-
-  bal-field-label,
-  bal-field-control,
-  bal-field-message {
+  bal-field {
+    display: inline-block;
     position: relative;
-    display: block;
-  }
-
-  .control.is-loading::after,
-  .select.is-loading::after {
-    border-top-color: $blue !important;
-    border-right-color: $blue !important;
-    border-left-color: transparent !important;
-    border-bottom-color: transparent !important;
-  }
-
-  .form.is-inverted {
-    .control.is-loading::after,
-    .select.is-loading::after {
-      border-top-color: $white !important;
-      border-right-color: $white !important;
-    }
-  }
-
-  .control {
-    & > bal-checkbox,
-    & > bal-radio-group {
-      margin-top: 10px;
-    }
-  }
-
-  .form > .label {
-    font-size: $size-5 !important;
-    margin-bottom: 0 !important;
-  }
-
-  .help {
-    min-height: 22.5px;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-
-  .control.has-icons-left *::part(input) {
-    padding-left: 38px;
-  }
-
-  .control bal-icon {
-    display: block;
-  }
-
-  .form {
-    .help {
-      text-align: left;
-    }
+    padding-bottom: 8px;
 
     &.is-expanded {
-      width: 100%;
+      display: block;
     }
 
-    &.is-disabled {
-      .label,
-      .control {
-        opacity: 0.6;
+    bal-field-label,
+    bal-field-control,
+    bal-field-message {
+      position: relative;
+      display: block;
+    }
+
+    .control.is-loading::after,
+    .select.is-loading::after {
+      border-top-color: $blue !important;
+      border-right-color: $blue !important;
+      border-left-color: transparent !important;
+      border-bottom-color: transparent !important;
+    }
+
+    .form.is-inverted {
+      .control.is-loading::after,
+      .select.is-loading::after {
+        border-top-color: $white !important;
+        border-right-color: $white !important;
       }
     }
 
-    &.is-inverted {
-      .label {
-        color: $white;
+    .control {
+      & > bal-checkbox,
+      & > bal-radio-group {
+        margin-top: 10px;
+      }
+    }
+
+    .form > .label {
+      font-size: $size-5 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .help {
+      min-height: 22.5px;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .control.has-icons-left *::part(input) {
+      padding-left: 38px;
+    }
+
+    .control bal-icon {
+      display: block;
+    }
+
+    .form {
+      .help {
+        text-align: left;
       }
 
-      .help:not(.is-danger) {
-        color: $blue-line;
+      &.is-expanded {
+        width: 100%;
+      }
+
+      &.is-disabled {
+        .label,
+        .control {
+          opacity: 0.6;
+        }
+      }
+
+      &.is-inverted {
+        .label {
+          color: $white;
+        }
+
+        .help:not(.is-danger) {
+          color: $blue-line;
+        }
       }
     }
   }
