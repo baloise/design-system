@@ -20,7 +20,7 @@ import {
   Urlable,
   Waitable,
   AttributableMixin, UrlableMixin, WaitableMixin, Mixin, MixinContext,
-} from '../mixins'
+} from '../index'
 
 interface ButtonAccessorType
   extends Clickable<ButtonAccessorType>,

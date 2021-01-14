@@ -1,112 +1,114 @@
 @import '../../styles/ui-library.utilities';
 
-.bal-list {
-  position: static;
-  display: block;
-  width: 100%;
+.bal-app {
+  .bal-list {
+    position: static;
+    display: block;
+    width: 100%;
 
-  &.is-inverted .bal-list-item.is-selected {
-    background: $blue-dark;
-  }
-
-  &.is-inverted .bal-list-item:not(.is-selected) {
-    &:hover {
+    &.is-inverted .bal-list-item.is-selected {
       background: $blue-dark;
     }
-  }
 
-  &.is-disabled .bal-list-item,
-  .bal-list-item.is-disabled {
-    transition: 0;
-    cursor: default;
+    &.is-inverted .bal-list-item:not(.is-selected) {
+      &:hover {
+        background: $blue-dark;
+      }
+    }
 
-    &:hover {
-      padding: 0;
+    &.is-disabled .bal-list-item,
+    .bal-list-item.is-disabled {
+      transition: 0;
+      cursor: default;
+
+      &:hover {
+        padding: 0;
+      }
+    }
+
+    &.is-disabled .bal-list-item:not(.is-selected):hover {
+      background: transparent;
+    }
+
+    &.has-border .bal-list-item {
+      border-bottom: 1px solid $blue-light-line;
+    }
+
+    &.has-border.is-inverted .bal-list-item {
+      border-bottom: 1px solid $blue-line-inverted;
+    }
+
+    &.is-inverted .bal-list-item-title {
+      color: $white;
     }
   }
 
-  &.is-disabled .bal-list-item:not(.is-selected):hover {
-    background: transparent;
+  .bal-list-item {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    transition: 0.2s ease-in-out;
+    padding: 0;
+
+    &:hover {
+      padding: 0 8px;
+    }
+
+    &.is-selected {
+      background: $blue-light;
+    }
   }
 
-  &.has-border .bal-list-item {
-    border-bottom: 1px solid $blue-light-line;
+  .bal-list-item-content,
+  .bal-list-item-icon {
+    position: static;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
   }
 
-  &.has-border.is-inverted .bal-list-item {
-    border-bottom: 1px solid $blue-line-inverted;
+  .bal-list-item-content {
+    display: flex;
+    width: 100%;
+    min-height: 48px;
   }
 
-  &.is-inverted .bal-list-item-title {
-    color: $white;
-  }
-}
+  .bal-list-item-icon {
+    align-self: flex-start;
+    display: inline-flex;
+    min-width: 24px;
+    margin: 8px 0;
+    margin-right: 20px;
 
-.bal-list-item {
-  position: static;
-  display: flex;
-  flex-direction: row;
-  transition: 0.2s ease-in-out;
-  padding: 0;
-
-  &:hover {
-    padding: 0 8px;
+    &.is-right {
+      margin-right: 0;
+      margin-left: 20px;
+    }
   }
 
-  &.is-selected {
-    background: $blue-light;
+  .bal-list-item-title,
+  .bal-list-item-subtitle,
+  .bal-list-item-content {
+    font-weight: $weight-normal;
+    font-family: $family-primary;
   }
-}
 
-.bal-list-item-content,
-.bal-list-item-icon {
-  position: static;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.bal-list-item-content {
-  display: flex;
-  width: 100%;
-  min-height: 48px;
-}
-
-.bal-list-item-icon {
-  align-self: flex-start;
-  display: inline-flex;
-  min-width: 24px;
-  margin: 8px 0;
-  margin-right: 20px;
-
-  &.is-right {
-    margin-right: 0;
-    margin-left: 20px;
+  .bal-list-item-title,
+  .bal-list-item-subtitle {
+    position: static;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 0 1em;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-}
 
-.bal-list-item-title,
-.bal-list-item-subtitle,
-.bal-list-item-content {
-  font-weight: $weight-normal;
-  font-family: $family-primary;
-}
+  .bal-list-item-title {
+    color: $blue;
+  }
 
-.bal-list-item-title,
-.bal-list-item-subtitle {
-  position: static;
-  box-sizing: border-box;
-  max-width: 100%;
-  padding: 0 1em;
-  display: block;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.bal-list-item-title {
-  color: $blue;
-}
-
-.bal-list-item-subtitle {
-  color: $blue-light-text;
+  .bal-list-item-subtitle {
+    color: $blue-light-text;
+  }
 }

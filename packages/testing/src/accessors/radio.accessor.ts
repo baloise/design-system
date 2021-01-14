@@ -13,7 +13,7 @@ import {
   Urlable, UrlableMixin,
   Visible, VisibleMixin,
   Waitable, WaitableMixin,
-} from '../mixins'
+} from '../index'
 
 interface RadioAccessorType
   extends Checkable<RadioAccessorType>, Containable<RadioAccessorType>, Clickable<RadioAccessorType>, Existable<RadioAccessorType>,

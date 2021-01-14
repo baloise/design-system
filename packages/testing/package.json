@@ -22,14 +22,15 @@
     "dist/"
   ],
   "scripts": {
-    "start-server": "http-server ../library/www -p 3333 -c-1 --silent",
-    "test": "cypress run",
-    "ci": "start-server-and-test start-server http://localhost:3333 test",
     "serve": "cypress open",
-    "build": "npm run compile",
-    "build:docs": "node build/docs.js",
-    "compile": "npm run tsc",
-    "tsc": "tsc -p tsconfig.build.json"
+    "test": "cypress run",
+    "build": "npm run build:clean && npm run build:docs && npm run build:index && npm run build:compile",
+    "build:clean": "rm -rf src/index.ts && rm -rf docs",
+    "build:index": "node .scripts/index.script.js",
+    "build:docs": "node .scripts/docs-json.script.js",
+    "build:compile": "tsc -p tsconfig.build.json",
+    "ci": "start-server-and-test ci:server http://localhost:3333 test",
+    "ci:server": "http-server ../library/www -p 3333 -c-1 --silent"
   },
   "license": "Apache-2.0",
   "devDependencies": {
@@ -37,7 +38,6 @@
     "@types/jquery": "^3.5.1",
     "@types/node": "^14.14.6",
     "cypress": "^5.6.0",
-    "glob": "^7.1.6",
     "http-server": "^0.12.3",
     "start-server-and-test": "^1.11.4",
     "ts-node": "^9.0.0",

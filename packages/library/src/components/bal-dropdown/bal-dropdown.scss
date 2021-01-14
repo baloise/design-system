@@ -1,32 +1,33 @@
-@import 'bal-dropdown.vars';
-@import '../bal-input/bal-input.scss';
-@import 'node_modules/bulma/sass/components/dropdown.sass';
-@import 'node_modules/bulma/sass/form/all';
+.bal-app {
+  @import 'bal-dropdown.vars';
+  @import '../bal-input/bal-input.scss';
+  @import 'node_modules/bulma/sass/components/dropdown.sass';
+  @import 'node_modules/bulma/sass/form/all';
 
-:host {
-  display: inline-block;
-  width: 100%;
+  bal-dropdown {
+    display: inline-block;
 
-  .dropdown {
-    &.is-expanded {
-      width: 100%;
-      .dropdown-trigger {
+    .dropdown {
+      &.is-expanded {
         width: 100%;
+        .dropdown-trigger {
+          width: 100%;
+        }
       }
-    }
 
-    &.is-expanded:not(.has-fixed-content-width) {
+      &.is-expanded:not(.has-fixed-content-width) {
+        .dropdown-menu {
+          min-width: 100%;
+        }
+      }
+
+      .dropdown-content {
+        padding: 0;
+      }
+
       .dropdown-menu {
-        min-width: 100%;
+        padding-top: 0;
       }
-    }
-
-    .dropdown-content {
-      padding: 0;
-    }
-
-    .dropdown-menu {
-      padding-top: 0;
     }
   }
 }

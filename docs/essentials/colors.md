@@ -1,5 +1,13 @@
 # Colors
 
+To access the color variables just import the `ui-library.utilities` into your scss files.
+
+```scss
+@import 'node_modules/@baloise/ui-library/src/styles/ui-library.utilities';
+```
+
+## Variables
+
 | Color       | Variable   | Value        | Computed value                                                                       |
 | ----------- | ---------- | ------------ | ------------------------------------------------------------------------------------ |
 | **White**   | `$white`   | `$white`     | <div class="bal-app box"><span class="bd-color has-background-white"></span></div>   |
@@ -14,7 +22,7 @@
 | **Warning** | `$warning` | `$yellow`    | <div class="bal-app box"><span class="bd-color has-background-warning"></span></div> |
 | **Danger**  | `$danger`  | `$red`       | <div class="bal-app box"><span class="bd-color has-background-danger"></span></div>  |
 
-## Shades
+### Shades
 
 | Color                  | Variable              | Computed Value                                                                                  |
 | ---------------------- | --------------------- | ----------------------------------------------------------------------------------------------- |

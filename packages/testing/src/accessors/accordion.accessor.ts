@@ -18,8 +18,10 @@ import {
   Attributable,
   Urlable,
   Waitable,
-  AttributableMixin, UrlableMixin, WaitableMixin,
-} from '../mixins'
+  AttributableMixin,
+  UrlableMixin,
+  WaitableMixin,
+} from '../index'
 
 interface AccordionAccessorType
   extends Clickable<AccordionAccessorType>,
@@ -31,8 +33,8 @@ interface AccordionAccessorType
     Attributable<AccordionAccessorType>,
     Urlable<AccordionAccessorType>,
     Waitable<AccordionAccessorType> {
-  assertBodyExists(): AccordionAccessorType;
-  assertBodyNotExists(): AccordionAccessorType;
+  assertBodyExists(): AccordionAccessorType
+  assertBodyNotExists(): AccordionAccessorType
 }
 
 export const AccordionClickableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
@@ -44,7 +46,6 @@ export const AccordionClickableMixin: Mixin = <T>({ selector, creator }: MixinCo
     return creator()
   },
 })
-
 
 export const AccordionContainableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   /**

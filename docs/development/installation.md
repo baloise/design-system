@@ -6,7 +6,7 @@ To work with this project a recent LTS version of NodeJS and npm is required. Ma
 
 !> Note that you will need to use npm 6 or higher.
 
-## Run Baloise Ui-Library on local
+## Run Baloise Ui-Library
 
 To start building a new web component using Stencil, clone this repo to a new directory:
 
@@ -23,24 +23,15 @@ cd ui-library
 
 For more commands visit [Commands](./commands.md)
 
-## Release
+## Run Baloise Ui-Library Documentation
 
-It is important to follow the [conventional commits](#Conventional_Commits) rules of the sematic versioning.
+To create the documentation out of the written code and comments run the following commands:
 
-!> Note that the lerna release uses the commit messages to determine the type of changes in the codebase.
+- Run `npm install` to install library’s dependencies
+- Run `npm run docs:install` to install documentation's dependencies
+- Run `npm run docs:build` to build the documentation
+- Run `npm run docs:serve` to serve documentation page
 
-### Usage
+> The documentation page will be served at http://localhost:3000/ by default.
 
-```bash
-sgc
-```
-
-### Conventional Commits
-
-Here is an example of the release type that will be done based on a commit messages:
-
-| Commit message                                                                                                                                                                                   | Release type               |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
-| `fix(pencil): stop graphite breaking when too much pressure applied`                                                                                                                             | Patch Release              |
-| `feat(pencil): add 'graphiteWidth' option`                                                                                                                                                       | ~~Minor~~ Feature Release  |
-| `perf(pencil): remove graphiteWidth option`<br><br>`BREAKING CHANGE: The graphiteWidth option has been removed.`<br>`The default graphite width of 10mm is always used for performance reasons.` | ~~Major~~ Breaking Release |
+For more commands visit [Commands](./commands.md)

@@ -1,6 +1,6 @@
 # Write your own Component
 
-All our components are located in the `src/components` dir.
+All our components are located in the `packages/library/src/components` dir.
 
 To create a new one just run:
 
@@ -19,4 +19,3 @@ Change the extension of the generated `bal-component.css` file to `bal-component
 ## Style Guide
 
 [Go to the Stencil Style Guide](https://stenciljs.com/docs/style-guide).
-

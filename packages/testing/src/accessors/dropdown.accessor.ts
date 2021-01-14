@@ -13,7 +13,7 @@ import {
   Attributable,
   Urlable,
   Waitable, Selectable
-} from '../mixins'
+} from '../index'
 
 interface DropdownAccessorType
   extends Clickable<DropdownAccessorType>, Selectable<DropdownAccessorType>, Disableable<DropdownAccessorType>, Containable<DropdownAccessorType>,
