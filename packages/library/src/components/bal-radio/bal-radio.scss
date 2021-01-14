@@ -6,7 +6,6 @@
     display: inline-block;
     position: relative;
     padding-right: 25px;
-    padding-bottom: 15px;
 
     input[type='radio'] {
       position: absolute;
@@ -19,6 +18,9 @@
     }
 
     input[type='radio'] + label {
+      display: block;
+      min-height: 26px;
+      padding-top: 1px;
       cursor: pointer;
       padding-left: 34px;
       -webkit-user-select: none;

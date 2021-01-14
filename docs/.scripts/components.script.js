@@ -53,6 +53,7 @@ const run = async () => {
       if (hasTestingContent) {
         lines.push(printListItem('Testing', component.tag))
       }
+      lines.push(printListItem('Links', component.tag))
       lines.push(`</ul>`)
       lines.push(``)
       lines.push(``)

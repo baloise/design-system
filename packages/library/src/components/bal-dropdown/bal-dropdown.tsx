@@ -59,9 +59,11 @@ export class Dropdown {
    */
   @Method()
   async open() {
-    this.balDropdownPrepare.emit(this.dropdownId)
-    this.isActive = true
-    this.balCollapse.emit(this.isActive)
+    if (!this.isActive) {
+      this.balDropdownPrepare.emit(this.dropdownId)
+      this.isActive = true
+      this.balCollapse.emit(this.isActive)
+    }
   }
 
   /**
@@ -69,8 +71,10 @@ export class Dropdown {
    */
   @Method()
   async close() {
-    this.isActive = false
-    this.balCollapse.emit(this.isActive)
+    if (this.isActive) {
+      this.isActive = false
+      this.balCollapse.emit(this.isActive)
+    }
   }
 
   /**

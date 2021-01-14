@@ -235,7 +235,11 @@ export class Select {
 
   private onInput(event: InputEvent) {
     const inputValue = (event.target as HTMLInputElement).value
-    this.value = []
+
+    if (this.typeahead && !this.multiple) {
+      this.value = []
+    }
+
     this.focusIndex = 0
     this.updateOptionProps()
 
