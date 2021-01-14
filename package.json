@@ -24,6 +24,7 @@
     "docs:publish": "npm run docs:install && npm run docs:build",
     "lib:build": "node .scripts/banner.js lib:build && npm --prefix packages/library run build",
     "lib:serve": "node .scripts/banner.js lib:serve && npm --prefix packages/library run serve",
+    "lib:generate": "node .scripts/banner.js lib:generate && npm --prefix packages/library run generate",
     "vue:build": "node .scripts/banner.js vue:build && npm --prefix packages/vue run build",
     "angular:build": "node .scripts/banner.js angular:build && npm --prefix packages/angular run build",
     "testing:test": "node .scripts/banner.js testing:run && npm --prefix packages/testing run ci",

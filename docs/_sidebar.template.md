@@ -31,6 +31,7 @@
 - **Development**
 
   - [Installation](development/installation.md)
+  - [Release](development/release.md)
   - [Commands](development/commands.md)
   - [Write your own Component](development/component.md)
   - [Write your own Controller](development/controller.md)

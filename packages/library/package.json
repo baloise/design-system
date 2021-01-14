@@ -33,7 +33,8 @@
     "docs": "npm run docs:compile && npm run docs:build",
     "docs:compile": "stencil build --docs --es5 --prod --config stencil.docs.config.ts",
     "docs:build": "node .scripts/docs-json.script.js",
-    "serve": "stencil build --docs --dev --watch --serve"
+    "serve": "stencil build --docs --dev --watch --serve",
+    "generate": "stencil generate"
   },
   "dependencies": {
     "@stencil/core": "^2.0.1",
