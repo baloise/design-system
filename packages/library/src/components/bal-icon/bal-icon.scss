@@ -1,52 +1,70 @@
 @import '../../styles/ui-library.utilities';
 @import 'node_modules/bulma/sass/elements/icon.sass';
-@import 'bal-icons';
-@import 'bal-icons-font';
 
-bal-icon {
+:host {
   display: inline-block;
   position: static;
+  height: 32px;
+  width: 32px;
+  fill: $blue;
 
-  .icon {
-    font-size: 24px;
-    i {
-      transition: rotate 0.3s;
-      transition: transform 0.3s;
-    }
-
-    &.is-small {
-      font-size: 16px;
-    }
-
-    &.is-medium {
-      font-size: 32px;
-    }
-
-    &.is-large {
-      font-size: 47px;
-    }
-
-    &.turn {
-      i.font {
-        rotate: 180deg;
-        transform: rotate(180deg);
-      }
-    }
-
-    i.font {
-      font-family: 'bal-ui-library';
-      font-style: normal;
-      font-weight: normal;
-      text-align: center;
-      color: $blue;
-
-      /* For safety - reset parent styles, that can break glyph codes*/
-      font-variant: normal;
-      text-transform: none;
-    }
+  .bal-icon-inner {
+    display: block;
+    position: static;
+    height: 32px;
+    width: 32px;
   }
 
-  &.is-inverted .icon i.font {
-    color: $blue-line;
+  &.is-size-xsmall,
+  &.is-size-xsmall .bal-icon-inner {
+    height: 16px;
+    width: 16px;
+  }
+
+  &.is-size-small,
+  &.is-size-small .bal-icon-inner {
+    height: 24px;
+    width: 24px;
+  }
+
+  &.is-size-medium,
+  &.is-size-medium .bal-icon-inner {
+    height: 48px;
+    width: 48px;
+  }
+
+  &.is-size-large,
+  &.is-size-large .bal-icon-inner {
+    height: 64px;
+    width: 64px;
+  }
+
+  &.turn .bal-icon-inner {
+    rotate: 180deg;
+    transform: rotate(180deg);
+  }
+
+  &.is-primary {
+    fill: $cyan;
+  }
+
+  &.is-success {
+    fill: $success;
+  }
+
+  &.is-info {
+    fill: $info;
+  }
+
+  &.is-inverted.is-info {
+    fill: $white;
+  }
+
+  &.is-warning {
+    fill: $warning;
+  }
+
+  &.is-danger {
+    fill: $danger;
   }
 }

@@ -43,6 +43,7 @@ $info-dark: $blue-dark;
 $link: $cyan;
 $warning: $yellow;
 $danger: $red;
+$success: $green;
 
 $primary-invert: $white;
 $success-invert: $white;
@@ -81,6 +82,7 @@ $scheme-invert-ter: $black-ter;
 /**
  * Typography
  */
+$font-path: 'assets';
 $family-sans-serif: MetaPro, Arial, sans-serif;
 $family-primary: $family-sans-serif;
 $title-family: $family-sans-serif;

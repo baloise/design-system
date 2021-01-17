@@ -470,8 +470,7 @@ export class Select {
         {this.renderInput()}
         <bal-icon
           class={{ 'is-hidden': this.loading }}
-          size="medium"
-          is-right
+          type="info"
           turn={!this.loading && !this.typeahead && this.isDropdownOpen}
           color={this.inverted ? 'white' : 'blue'}
           name={this.typeahead && !this.multiple ? 'search' : 'caret-down'}
@@ -525,10 +524,8 @@ export class Select {
           />
           <bal-icon
             class={{ 'is-hidden': this.loading }}
-            size="medium"
-            is-right
             turn={!this.loading && !this.typeahead && this.isDropdownOpen}
-            color="blue"
+            type="info"
             name="search"
           />
         </div>

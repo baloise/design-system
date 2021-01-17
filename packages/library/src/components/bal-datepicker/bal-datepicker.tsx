@@ -407,9 +407,9 @@ export class Datepicker {
         />
         <bal-icon
           class="datepicker-trigger-icon clickable"
-          size="medium"
           is-right
-          color={this.inverted ? 'white' : 'blue'}
+          type="info"
+          inverted={this.inverted}
           name="date"
           onClick={e => this.onIconClick(e)}
         />
@@ -461,10 +461,10 @@ export class Datepicker {
       <header class="datepicker-header">
         <div class="pagination field is-centered">
           <a role="button" onClick={() => this.previousMonth()} class="pagination-previous">
-            <bal-icon name="nav-go-left" size="large" />
+            <bal-icon name="nav-go-left" size="medium" />
           </a>
           <a role="button" onClick={() => this.nextMonth()} class="pagination-next">
-            <bal-icon name="nav-go-right" size="large" />
+            <bal-icon name="nav-go-right" size="medium" />
           </a>
           <div class="pagination-list">
             <div class="field has-addons">

@@ -70,7 +70,7 @@ export class Hint {
           <slot></slot>
 
           <div class="buttons is-row-reverse">
-            <bal-button type="is-info" outlined inverted onClick={() => this.close()}>
+            <bal-button type="info" outlined inverted onClick={() => this.close()}>
               {this.closeLabel}
             </bal-button>
           </div>

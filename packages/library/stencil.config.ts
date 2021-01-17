@@ -65,6 +65,7 @@ export const config: Config = {
     {
       type: 'dist',
       polyfills: true,
+      empty: true,
       esmLoaderPath: '../loader',
     },
     {
@@ -76,7 +77,8 @@ export const config: Config = {
     {
       type: 'www',
       dir: 'www',
-      serviceWorker: null, // disable service workers
+      serviceWorker: false,
+      empty: false,
       copy: [
         {
           src: '**/*.html',

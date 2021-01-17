@@ -8,8 +8,16 @@ const convertToDotCase = value =>
     .replace(/\s+/g, '.')
     .toLowerCase()
 
+const toCamelCase = text => text.replace(/-\w/g, clearAndUpper)
+
+const toPascalCase = text => text.replace(/(^\w|-\w)/g, clearAndUpper)
+
+const clearAndUpper = text => text.replace(/-/, '').toUpperCase()
+
 module.exports = {
   capitalize,
   uncapitalize,
   convertToDotCase,
+  toCamelCase,
+  toPascalCase,
 }

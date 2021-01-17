@@ -10,12 +10,17 @@ export class Button {
   /**
    * The theme type of the button. Given by bulma our css framework.
    */
-  @Prop() type: 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger' | 'is-link' = 'is-primary'
+  @Prop() type: 'primary' | 'info' | 'success' | 'warning' | 'danger' | 'link' = 'primary'
 
   /**
    * Size of the button
    */
-  @Prop() size: 'is-small' | '' = ''
+  @Prop() size: 'small' | '' = ''
+
+  /**
+   * Size of the button
+   */
+  @Prop() iconPosition: 'left' | 'right' = 'left'
 
   /**
    * If `true` the width of the buttons is limited
@@ -53,11 +58,6 @@ export class Button {
   @Prop() inverted: boolean
 
   /**
-   * If `true` the button is dense
-   */
-  @Prop() dense: boolean
-
-  /**
    * If `true` the label is hidden and a loading spinner is shown instead.
    */
   @Prop() loading: boolean
@@ -78,31 +78,73 @@ export class Button {
   @Prop() iconRight = ''
 
   render() {
+    if (this.isSquare) {
+      return this.renderSquareButton()
+    }
+    return this.renderButton()
+  }
+
+  renderButton() {
     return (
       <Host class={[this.expanded ? 'is-fullwidth' : ''].join(' ')}>
         <button
           class={[
             'button',
-            this.type,
-            this.size,
+            `is-${this.type}`,
+            this.size ? 'is-small' : '',
             this.light ? 'is-light' : '',
             this.inverted ? 'is-inverted' : '',
             this.isActive ? 'is-active' : '',
             this.outlined ? 'is-outlined' : '',
             this.expanded ? 'is-fullwidth' : '',
             this.loading ? 'is-loading' : '',
-            this.isSquare ? 'is-square' : '',
-            this.dense ? 'is-dense' : '',
             this.bottomRounded ? 'has-round-bottom-corners' : '',
           ].join(' ')}
           disabled={this.disabled}>
           <span>{/* Empty span to get the correct text height */}</span>
           {this.loading ? <bal-spinner class="is-small is-inverted" /> : ''}
-          {this.icon ? <bal-icon class="icon-left" name={this.icon} /> : ''}
+          {this.icon ? (
+            <bal-icon class="icon-left" name={this.icon} size={this.size} type={this.type} inverted={this.inverted} />
+          ) : (
+            ''
+          )}
           <bal-text style={{ display: this.loading ? 'none' : 'inline' }}>
             <slot />
           </bal-text>
-          {this.iconRight ? <bal-icon class="icon-right" name={this.iconRight} /> : ''}
+          {this.iconRight ? (
+            <bal-icon
+              class="icon-right"
+              name={this.iconRight}
+              size={this.size}
+              type={this.type}
+              inverted={this.inverted}
+            />
+          ) : (
+            ''
+          )}
+        </button>
+      </Host>
+    )
+  }
+
+  renderSquareButton() {
+    return (
+      <Host>
+        <button
+          class={[
+            'button',
+            'is-square',
+            `is-${this.type}`,
+            this.size ? 'is-small' : '',
+            this.light ? 'is-light' : '',
+            this.inverted ? 'is-inverted' : '',
+            this.isActive ? 'is-active' : '',
+            this.outlined ? 'is-outlined' : '',
+            this.isSquare ? 'is-square' : '',
+            this.bottomRounded ? 'has-round-bottom-corners' : '',
+          ].join(' ')}
+          disabled={this.disabled}>
+          <bal-icon name={this.icon} size={this.size} type={this.type} inverted={this.inverted} />
         </button>
       </Host>
     )

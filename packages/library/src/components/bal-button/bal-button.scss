@@ -35,8 +35,8 @@
       align-items: center;
       display: inline-flex;
       justify-content: center;
-      height: 1.5rem;
-      width: 1.5rem;
+      // height: 1.5rem;
+      // width: 1.5rem;
     }
 
     .icon-left {
@@ -58,6 +58,11 @@
       border-bottom-right-radius: $radius !important;
     }
 
+    &.is-square {
+      width: 50px;
+      padding: 0;
+    }
+
     &.is-small {
       min-height: 38px;
       min-width: 38px;
@@ -66,12 +71,14 @@
       bal-text {
         min-height: 19px;
       }
+
+      &.is-square {
+        width: 38px;
+        padding: 0;
+      }
     }
 
-    &.is-square {
-      width: 38px;
-      padding: 0;
-    }
+
 
     &.is-success,
     &.is-success:hover,

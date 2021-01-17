@@ -25,50 +25,52 @@ const run = async () => {
   const files = []
 
   components.forEach(async component => {
-    const accessor = accessors.get(component.tag)
+    if (component.tag.indexOf('bal-icon-') === -1) {
+      const accessor = accessors.get(component.tag)
 
-    const examplesContent = examples.parse(component)
-    const apiContent = api.parse(components, component)
-    const testingContent = testing.parse(accessor)
-    const githubContent = github.parse(component, accessor)
+      const examplesContent = examples.parse(component)
+      const apiContent = api.parse(components, component)
+      const testingContent = testing.parse(accessor)
+      const githubContent = github.parse(component, accessor)
 
-    const hasExampleContent = examplesContent && examplesContent.length > 0
-    const hasApiContent = apiContent && apiContent.length > 0
-    const hasTestingContent = testingContent && testingContent.length > 0
+      const hasExampleContent = examplesContent && examplesContent.length > 0
+      const hasApiContent = apiContent && apiContent.length > 0
+      const hasTestingContent = testingContent && testingContent.length > 0
 
-    const lines = []
-    lines.push(`# ${component.tag}`)
-    lines.push(``)
-
-    if (hasExampleContent || hasApiContent || hasTestingContent) {
-      lines.push(`<p class="docs-content"><strong>CONTENTS</strong></p>`)
+      const lines = []
+      lines.push(`# ${component.tag}`)
       lines.push(``)
-      lines.push(`<ul class="docs-content">`)
-      if (hasExampleContent) {
-        lines.push(printListItem('Examples', component.tag))
+
+      if (hasExampleContent || hasApiContent || hasTestingContent) {
+        lines.push(`<p class="docs-content"><strong>CONTENTS</strong></p>`)
+        lines.push(``)
+        lines.push(`<ul class="docs-content">`)
+        if (hasExampleContent) {
+          lines.push(printListItem('Examples', component.tag))
+        }
+        if (hasApiContent) {
+          lines.push(printListItem('API', component.tag))
+        }
+        if (hasTestingContent) {
+          lines.push(printListItem('Testing', component.tag))
+        }
+        lines.push(printListItem('Links', component.tag))
+        lines.push(`</ul>`)
+        lines.push(``)
+        lines.push(``)
       }
-      if (hasApiContent) {
-        lines.push(printListItem('API', component.tag))
-      }
-      if (hasTestingContent) {
-        lines.push(printListItem('Testing', component.tag))
-      }
-      lines.push(printListItem('Links', component.tag))
-      lines.push(`</ul>`)
-      lines.push(``)
-      lines.push(``)
+
+      component.readme.split(NEWLINE).forEach(line => lines.push(line))
+
+      lines.push(examplesContent)
+      lines.push(apiContent)
+      lines.push(testingContent)
+      lines.push(githubContent)
+      files.push({
+        path: path.join(__dirname, `../www/components/${component.tag}/readme.md`),
+        content: lines.join(NEWLINE),
+      })
     }
-
-    component.readme.split(NEWLINE).forEach(line => lines.push(line))
-
-    lines.push(examplesContent)
-    lines.push(apiContent)
-    lines.push(testingContent)
-    lines.push(githubContent)
-    files.push({
-      path: path.join(__dirname, `../www/components/${component.tag}/readme.md`),
-      content: lines.join(NEWLINE),
-    })
   })
 
   for (let i = 0; i < files.length; i++) {

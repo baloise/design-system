@@ -11,25 +11,65 @@
   <body class="bal-app">
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
-      <p>Here is how you can change the size:</p>
       <section>
-        <bal-icon name="date" size="small"></bal-icon>
-        <bal-icon name="date"></bal-icon>
-        <bal-icon name="date" size="medium"></bal-icon>
-        <bal-icon name="date" size="large"></bal-icon>
+        <bal-icon name="edit" is-left></bal-icon>
       </section>
 
-      <h2 class="title is-size-2">Basic</h2>
+      <h2 class="title is-size-2">Size</h2>
+      <p>Here is how you can change the size:</p>
+      <section>
+        <span class="icon-text">
+          <span class="icon">
+            <bal-icon name="edit" size="small"></bal-icon>
+          </span>
+          <span>Small Size</span>
+        </span>
+        <br />
+        <span class="icon-text">
+          <span class="icon">
+            <bal-icon name="edit"></bal-icon>
+          </span>
+          <span>Normal Size</span>
+        </span>
+        <br />
+        <span class="icon-text">
+          <span class="icon">
+            <bal-icon name="edit" size="large"></bal-icon>
+          </span>
+          <span>Large Size</span>
+        </span>
+      </section>
+
+      <h2 class="title is-size-2">Colors</h2>
+      <section>
+        <bal-icon type="primary" name="edit"></bal-icon>
+        <bal-icon type="info" name="edit"></bal-icon>
+        <bal-icon type="success" name="edit"></bal-icon>
+        <bal-icon type="warning" name="edit"></bal-icon>
+        <bal-icon type="danger" name="edit" inverted></bal-icon>
+        <div class="has-background-blue">
+          <bal-icon type="primary" inverted name="edit"></bal-icon>
+          <bal-icon type="info" inverted name="edit"></bal-icon>
+          <bal-icon type="success" inverted name="edit"></bal-icon>
+          <bal-icon type="warning" inverted name="edit"></bal-icon>
+          <bal-icon type="danger" inverted name="edit" inverted></bal-icon>
+        </div>
+      </section>
+
+      <h2 class="title is-size-2">Custom Color</h2>
       <p>Here is how you can change the color:</p>
       <section>
         <style type="text/css" scoped>
-          .alert i {
-            color: red !important;
+          .custom-color {
+            fill: lime !important;
           }
         </style>
 
-        <bal-icon class="alert" name="alert-circle" size="medium"></bal-icon>
+        <bal-icon class="custom-color" name="edit"></bal-icon>
       </section>
+
+      <h2 class="title is-size-2">Icons</h2>
+      <div class="docs-icons"></div>
     </div>
   </body>
 </html>

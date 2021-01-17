@@ -2,6 +2,7 @@ module.exports = {
   GENERATED_TAG: '<!-- Auto Generated File -->\n',
   SIDEBAR_SEPERATOR_START: '<!-- Auto Generated Sidebar Start -->',
   SIDEBAR_SEPERATOR_END: '<!-- Auto Generated Sidebar End -->',
+  NEWLINE_WINDOWS: '\r\n',
   NEWLINE: '\n',
   LEFT_WHITESPACE: 8,
   SIDEBAR_TEMPLATE_FILEPATH: './_sidebar.template.md',

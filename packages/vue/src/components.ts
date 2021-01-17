@@ -39,6 +39,57 @@ const customElementTags: string[] = [
  'bal-hint-text',
  'bal-hint-title',
  'bal-icon',
+ 'bal-icon-account',
+ 'bal-icon-alert',
+ 'bal-icon-alert-circle',
+ 'bal-icon-answer',
+ 'bal-icon-call',
+ 'bal-icon-caret-down',
+ 'bal-icon-caret-left',
+ 'bal-icon-caret-right',
+ 'bal-icon-caret-up',
+ 'bal-icon-check',
+ 'bal-icon-check-circle',
+ 'bal-icon-clock',
+ 'bal-icon-close-big',
+ 'bal-icon-close-small',
+ 'bal-icon-close-thin',
+ 'bal-icon-contact',
+ 'bal-icon-copy',
+ 'bal-icon-date',
+ 'bal-icon-document',
+ 'bal-icon-download',
+ 'bal-icon-edit',
+ 'bal-icon-generell-consultant',
+ 'bal-icon-generell-edit',
+ 'bal-icon-info',
+ 'bal-icon-info-circle',
+ 'bal-icon-locate',
+ 'bal-icon-location',
+ 'bal-icon-menu-bars',
+ 'bal-icon-menu-dots',
+ 'bal-icon-message',
+ 'bal-icon-minus',
+ 'bal-icon-nav-back',
+ 'bal-icon-nav-dropdown',
+ 'bal-icon-nav-go-down',
+ 'bal-icon-nav-go-large',
+ 'bal-icon-nav-go-left',
+ 'bal-icon-nav-go-left-no-padding',
+ 'bal-icon-nav-go-right',
+ 'bal-icon-nav-go-right-no-padding',
+ 'bal-icon-nav-go-small',
+ 'bal-icon-nav-go-up',
+ 'bal-icon-nav-success',
+ 'bal-icon-plus',
+ 'bal-icon-read-only',
+ 'bal-icon-refresh',
+ 'bal-icon-search',
+ 'bal-icon-social-facebook-line',
+ 'bal-icon-social-linkedin-line',
+ 'bal-icon-social-xing-line',
+ 'bal-icon-trash',
+ 'bal-icon-upload',
  'bal-input',
  'bal-list',
  'bal-list-item',
@@ -104,6 +155,7 @@ export const BalButton = /*@__PURE__*/ Vue.extend({
   props: {
     type: {} as PropOptions<Components.BalButton['type']>,
     size: {} as PropOptions<Components.BalButton['size']>,
+    iconPosition: {} as PropOptions<Components.BalButton['iconPosition']>,
     isSquare: {} as PropOptions<Components.BalButton['isSquare']>,
     disabled: {} as PropOptions<Components.BalButton['disabled']>,
     light: {} as PropOptions<Components.BalButton['light']>,
@@ -111,7 +163,6 @@ export const BalButton = /*@__PURE__*/ Vue.extend({
     expanded: {} as PropOptions<Components.BalButton['expanded']>,
     outlined: {} as PropOptions<Components.BalButton['outlined']>,
     inverted: {} as PropOptions<Components.BalButton['inverted']>,
-    dense: {} as PropOptions<Components.BalButton['dense']>,
     loading: {} as PropOptions<Components.BalButton['loading']>,
     bottomRounded: {} as PropOptions<Components.BalButton['bottomRounded']>,
     icon: {} as PropOptions<Components.BalButton['icon']>,
@@ -402,6 +453,7 @@ export const BalFieldControl = /*@__PURE__*/ Vue.extend({
     iconRight: {} as PropOptions<Components.BalFieldControl['iconRight']>,
     iconLeft: {} as PropOptions<Components.BalFieldControl['iconLeft']>,
     loading: {} as PropOptions<Components.BalFieldControl['loading']>,
+    inverted: {} as PropOptions<Components.BalFieldControl['inverted']>,
   },
 
 
@@ -487,15 +539,422 @@ export const BalIcon = /*@__PURE__*/ Vue.extend({
   props: {
     name: {} as PropOptions<Components.BalIcon['name']>,
     size: {} as PropOptions<Components.BalIcon['size']>,
-    isRight: {} as PropOptions<Components.BalIcon['isRight']>,
-    isLeft: {} as PropOptions<Components.BalIcon['isLeft']>,
+    type: {} as PropOptions<Components.BalIcon['type']>,
+    inverted: {} as PropOptions<Components.BalIcon['inverted']>,
     rotate: {} as PropOptions<Components.BalIcon['rotate']>,
     turn: {} as PropOptions<Components.BalIcon['turn']>,
-    color: {} as PropOptions<Components.BalIcon['color']>,
   },
 
 
   render: createCommonRender('bal-icon', []),
+});
+
+
+export const BalIconAccount = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-account', []),
+});
+
+
+export const BalIconAlert = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-alert', []),
+});
+
+
+export const BalIconAlertCircle = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-alert-circle', []),
+});
+
+
+export const BalIconAnswer = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-answer', []),
+});
+
+
+export const BalIconCall = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-call', []),
+});
+
+
+export const BalIconCaretDown = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-caret-down', []),
+});
+
+
+export const BalIconCaretLeft = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-caret-left', []),
+});
+
+
+export const BalIconCaretRight = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-caret-right', []),
+});
+
+
+export const BalIconCaretUp = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-caret-up', []),
+});
+
+
+export const BalIconCheck = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-check', []),
+});
+
+
+export const BalIconCheckCircle = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-check-circle', []),
+});
+
+
+export const BalIconClock = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-clock', []),
+});
+
+
+export const BalIconCloseBig = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-close-big', []),
+});
+
+
+export const BalIconCloseSmall = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-close-small', []),
+});
+
+
+export const BalIconCloseThin = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-close-thin', []),
+});
+
+
+export const BalIconContact = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-contact', []),
+});
+
+
+export const BalIconCopy = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-copy', []),
+});
+
+
+export const BalIconDate = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-date', []),
+});
+
+
+export const BalIconDocument = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-document', []),
+});
+
+
+export const BalIconDownload = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-download', []),
+});
+
+
+export const BalIconEdit = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-edit', []),
+});
+
+
+export const BalIconGenerellConsultant = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-generell-consultant', []),
+});
+
+
+export const BalIconGenerellEdit = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-generell-edit', []),
+});
+
+
+export const BalIconInfo = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-info', []),
+});
+
+
+export const BalIconInfoCircle = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-info-circle', []),
+});
+
+
+export const BalIconLocate = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-locate', []),
+});
+
+
+export const BalIconLocation = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-location', []),
+});
+
+
+export const BalIconMenuBars = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-menu-bars', []),
+});
+
+
+export const BalIconMenuDots = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-menu-dots', []),
+});
+
+
+export const BalIconMessage = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-message', []),
+});
+
+
+export const BalIconMinus = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-minus', []),
+});
+
+
+export const BalIconNavBack = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-nav-back', []),
+});
+
+
+export const BalIconNavDropdown = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-nav-dropdown', []),
+});
+
+
+export const BalIconNavGoDown = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-nav-go-down', []),
+});
+
+
+export const BalIconNavGoLarge = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-nav-go-large', []),
+});
+
+
+export const BalIconNavGoLeft = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-nav-go-left', []),
+});
+
+
+export const BalIconNavGoLeftNoPadding = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-nav-go-left-no-padding', []),
+});
+
+
+export const BalIconNavGoRight = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-nav-go-right', []),
+});
+
+
+export const BalIconNavGoRightNoPadding = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-nav-go-right-no-padding', []),
+});
+
+
+export const BalIconNavGoSmall = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-nav-go-small', []),
+});
+
+
+export const BalIconNavGoUp = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-nav-go-up', []),
+});
+
+
+export const BalIconNavSuccess = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-nav-success', []),
+});
+
+
+export const BalIconPlus = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-plus', []),
+});
+
+
+export const BalIconReadOnly = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-read-only', []),
+});
+
+
+export const BalIconRefresh = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-refresh', []),
+});
+
+
+export const BalIconSearch = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-search', []),
+});
+
+
+export const BalIconSocialFacebookLine = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-social-facebook-line', []),
+});
+
+
+export const BalIconSocialLinkedinLine = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-social-linkedin-line', []),
+});
+
+
+export const BalIconSocialXingLine = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-social-xing-line', []),
+});
+
+
+export const BalIconTrash = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-trash', []),
+});
+
+
+export const BalIconUpload = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-upload', []),
 });
 
 

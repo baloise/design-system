@@ -25,8 +25,10 @@ const run = async () => {
   const content = [getSidebarStart(sidebarContent)]
   content.push(NEWLINE + '- **Components**' + NEWLINE)
   components.forEach(component => {
-    if (component.parent === null) {
-      content.push(`  - [${component.tag}](www/components/${component.tag}/readme)`)
+    if (component.tag.indexOf('bal-icon-') === -1) {
+      if (component.parent === null) {
+        content.push(`  - [${component.tag}](www/components/${component.tag}/readme)`)
+      }
     }
   })
   content.push(getSidebarEnd(sidebarContent))

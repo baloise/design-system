@@ -124,10 +124,10 @@ export class Pagination {
       <Host>
         <nav class="pagination is-centered" role="navigation" aria-label="pagination">
           <button class="pagination-previous" disabled={this._value < 2} onClick={() => this.previous()}>
-            <bal-icon name="nav-go-left-no-padding" size="small" />
+            <bal-icon name="nav-go-left" />
           </button>
           <button class="pagination-next" disabled={this._value === this.totalPages} onClick={() => this.next()}>
-            <bal-icon name="nav-go-right-no-padding" size="small" />
+            <bal-icon name="nav-go-right" />
           </button>
           <ul class="pagination-list">{items}</ul>
         </nav>

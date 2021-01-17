@@ -37,6 +37,7 @@ export class Field {
   }
 
   @Watch('loading')
+  @Watch('inverted')
   watchFieldHandler() {
     this.updateChildFieldControl()
   }
@@ -59,6 +60,7 @@ export class Field {
     const controls = this.element.querySelectorAll('bal-field-control')
     controls.forEach((control: any) => {
       control.loading = this.loading
+      control.inverted = this.inverted
     })
   }
 

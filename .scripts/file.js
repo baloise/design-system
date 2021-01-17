@@ -1,10 +1,11 @@
 const fs = require('fs')
 const glob = require('glob')
+const path = require('path')
 const log = require('./log')
 
-const read = async path => {
+const read = async filePath => {
   return new Promise((resolve, reject) => {
-    fs.readFile(path, 'utf8', (err, data) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
       if (err) {
         return reject(err)
       }
@@ -13,17 +14,17 @@ const read = async path => {
   })
 }
 
-const readSync = path => {
+const readSync = filePath => {
   try {
-    return fs.readFileSync(path, 'utf8')
+    return fs.readFileSync(filePath, 'utf8')
   } catch (err) {
     return null
   }
 }
 
-const write = async (path, data) => {
+const write = async (filePath, data) => {
   return new Promise((resolve, reject) => {
-    fs.writeFile(path, data, err => {
+    fs.writeFile(filePath, data, err => {
       if (err) {
         return reject(err)
       }
@@ -32,9 +33,9 @@ const write = async (path, data) => {
   })
 }
 
-const scan = async path => {
+const scan = async filePath => {
   return new Promise((resolve, reject) => {
-    glob(path, (err, filterFilePaths) => {
+    glob(filePath, (err, filterFilePaths) => {
       if (err) {
         return reject(err)
       }
@@ -46,7 +47,7 @@ const scan = async path => {
 const save = async (filePath, content) => {
   try {
     await write(filePath, content)
-    log.success(`Successfully updated ${filePath}`)
+    log.success(`Successfully updated ${path.basename(filePath)}`)
   } catch (error) {
     log.error(`Could not update ${filePath}`, error)
     setTimeout(() => process.exit(1), 0)
