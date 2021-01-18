@@ -32,13 +32,13 @@ export class BalAccordion {
 
 export declare interface BalButton extends Components.BalButton {}
 @ProxyCmp({
-  inputs: ['bottomRounded', 'disabled', 'expanded', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'isSquare', 'light', 'loading', 'outlined', 'size', 'type']
+  inputs: ['bottomRounded', 'disabled', 'expanded', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'isSquare', 'loading', 'outlined', 'size', 'type']
 })
 @Component({
   selector: 'bal-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['bottomRounded', 'disabled', 'expanded', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'isSquare', 'light', 'loading', 'outlined', 'size', 'type']
+  inputs: ['bottomRounded', 'disabled', 'expanded', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'isSquare', 'loading', 'outlined', 'size', 'type']
 })
 export class BalButton {
   protected el: HTMLElement;

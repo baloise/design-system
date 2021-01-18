@@ -158,7 +158,6 @@ export const BalButton = /*@__PURE__*/ Vue.extend({
     iconPosition: {} as PropOptions<Components.BalButton['iconPosition']>,
     isSquare: {} as PropOptions<Components.BalButton['isSquare']>,
     disabled: {} as PropOptions<Components.BalButton['disabled']>,
-    light: {} as PropOptions<Components.BalButton['light']>,
     isActive: {} as PropOptions<Components.BalButton['isActive']>,
     expanded: {} as PropOptions<Components.BalButton['expanded']>,
     outlined: {} as PropOptions<Components.BalButton['outlined']>,

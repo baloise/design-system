@@ -90,9 +90,6 @@ export class CardStep {
 
   componentWillLoad() {
     this.isContentHidden = !this.active
-    // if (this.active) {
-    //   this.labelHandler()
-    // }
   }
 
   render() {

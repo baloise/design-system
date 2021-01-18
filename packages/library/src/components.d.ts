@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { BalButtonType } from "./components/bal-button/bal.button.type";
 import { BalCardStepOption } from "./components/bal-card-step/bal-card-step.type";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
@@ -87,10 +88,6 @@ export namespace Components {
          */
         "isSquare": boolean;
         /**
-          * If `true` the button has a light color
-         */
-        "light": boolean;
-        /**
           * If `true` the label is hidden and a loading spinner is shown instead.
          */
         "loading": boolean;
@@ -105,7 +102,7 @@ export namespace Components {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "type": 'primary' | 'info' | 'success' | 'warning' | 'danger' | 'link';
+        "type": BalButtonType;
     }
     interface BalCard {
         /**
@@ -521,7 +518,7 @@ export namespace Components {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "type": 'primary' | 'info' | 'success' | 'warning' | 'danger' | 'link';
+        "type": BalButtonType;
     }
     interface BalIconAccount {
     }
@@ -1977,10 +1974,6 @@ declare namespace LocalJSX {
          */
         "isSquare"?: boolean;
         /**
-          * If `true` the button has a light color
-         */
-        "light"?: boolean;
-        /**
           * If `true` the label is hidden and a loading spinner is shown instead.
          */
         "loading"?: boolean;
@@ -1995,7 +1988,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "type"?: 'primary' | 'info' | 'success' | 'warning' | 'danger' | 'link';
+        "type"?: BalButtonType;
     }
     interface BalCard {
         /**
@@ -2418,7 +2411,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "type"?: 'primary' | 'info' | 'success' | 'warning' | 'danger' | 'link';
+        "type"?: BalButtonType;
     }
     interface BalIconAccount {
     }

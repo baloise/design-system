@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, Method, Event, EventEmitter } from '@stencil/core'
+import { BalButtonType } from '../bal-button/bal.button.type'
 
 @Component({
   tag: 'bal-accordion',
@@ -69,10 +70,17 @@ export class Accordion {
     this.balCollapse.emit(this.isActive)
   }
 
+  get buttonType(): BalButtonType {
+    return `${this.type}-light` as BalButtonType
+  }
+
   render() {
     return (
       <Host class="accordion">
-        <bal-button expanded={true} light={true} inverted={true} type={this.type} onClick={() => this.toggle()}>
+        <bal-button
+          expanded={true}
+          type={this.buttonType}
+          onClick={() => this.toggle()}>
           <span class="trigger-label" style={this.isActive && { display: 'none' }}>
             <bal-icon name={this.openIcon} type={this.type} />
             <span class="label">{this.openLabel}</span>

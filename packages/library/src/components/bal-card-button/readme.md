@@ -11,7 +11,7 @@
 
 | Property | Attribute | Description                   | Type     | Default |
 | -------- | --------- | ----------------------------- | -------- | ------- |
-| `icon`   | `icon`    | Name of the icon like `edit`. | `string` | `""`    |
+| `icon`   | `icon`    | Name of the icon like `edit`. | `string` | `''`    |
 
 
 ## Dependencies

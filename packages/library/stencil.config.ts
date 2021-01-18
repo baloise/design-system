@@ -78,13 +78,16 @@ export const config: Config = {
       type: 'www',
       dir: 'www',
       serviceWorker: false,
-      empty: false,
+      empty: true,
       copy: [
         {
           src: '**/*.html',
         },
         {
           src: 'components.d.ts',
+        },
+        {
+          src: 'assets/fonts',
         },
       ],
     },

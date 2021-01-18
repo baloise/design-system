@@ -1,4 +1,5 @@
 import { Component, h, Prop, Host } from '@stencil/core'
+import { BalButtonType } from './bal.button.type'
 
 @Component({
   tag: 'bal-button',
@@ -10,7 +11,7 @@ export class Button {
   /**
    * The theme type of the button. Given by bulma our css framework.
    */
-  @Prop() type: 'primary' | 'info' | 'success' | 'warning' | 'danger' | 'link' = 'primary'
+  @Prop() type: BalButtonType = 'primary'
 
   /**
    * Size of the button
@@ -31,11 +32,6 @@ export class Button {
    * If `true` the button is disabled
    */
   @Prop() disabled: boolean
-
-  /**
-   * If `true` the button has a light color
-   */
-  @Prop() light: boolean
 
   /**
    * If `true` the button has a active theme
@@ -77,6 +73,29 @@ export class Button {
    */
   @Prop() iconRight = ''
 
+  get isIconInverted() {
+    switch (this.type) {
+      case 'primary':
+      case 'success':
+      case 'warning':
+      case 'danger':
+        return true
+
+      default:
+        return false
+    }
+  }
+
+  // get buttonType() {
+  //   if (this.type === 'light') {
+  //     return `is-primary is-${this.type}`
+  //   }
+  //   if (this.type === 'white') {
+  //     return `is-info is-light`
+  //   }
+  //   return `is-${this.type}`
+  // }
+
   render() {
     if (this.isSquare) {
       return this.renderSquareButton()
@@ -92,7 +111,6 @@ export class Button {
             'button',
             `is-${this.type}`,
             this.size ? 'is-small' : '',
-            this.light ? 'is-light' : '',
             this.inverted ? 'is-inverted' : '',
             this.isActive ? 'is-active' : '',
             this.outlined ? 'is-outlined' : '',
@@ -104,7 +122,13 @@ export class Button {
           <span>{/* Empty span to get the correct text height */}</span>
           {this.loading ? <bal-spinner class="is-small is-inverted" /> : ''}
           {this.icon ? (
-            <bal-icon class="icon-left" name={this.icon} size={this.size} type={this.type} inverted={this.inverted} />
+            <bal-icon
+              class="icon-left"
+              name={this.icon}
+              size={this.size}
+              type={this.type}
+              inverted={this.isIconInverted}
+            />
           ) : (
             ''
           )}
@@ -117,7 +141,7 @@ export class Button {
               name={this.iconRight}
               size={this.size}
               type={this.type}
-              inverted={this.inverted}
+              inverted={this.isIconInverted}
             />
           ) : (
             ''
@@ -136,7 +160,6 @@ export class Button {
             'is-square',
             `is-${this.type}`,
             this.size ? 'is-small' : '',
-            this.light ? 'is-light' : '',
             this.inverted ? 'is-inverted' : '',
             this.isActive ? 'is-active' : '',
             this.outlined ? 'is-outlined' : '',
@@ -144,7 +167,12 @@ export class Button {
             this.bottomRounded ? 'has-round-bottom-corners' : '',
           ].join(' ')}
           disabled={this.disabled}>
-          <bal-icon name={this.icon} size={this.size} type={this.type} inverted={this.inverted} />
+          <bal-icon
+            name={this.icon}
+            size={this.size}
+            type={this.type}
+            inverted={this.isIconInverted}
+          />
         </button>
       </Host>
     )

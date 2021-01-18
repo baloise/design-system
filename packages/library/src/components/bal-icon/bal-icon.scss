@@ -56,10 +56,16 @@
     fill: $info;
   }
 
-  &.is-inverted.is-info {
-    fill: $white;
+  &.is-inverted {
+    &.is-primary,
+    &.is-success,
+    &.is-warning,
+    &.is-danger,
+    &.is-info {
+      fill: $white;
+    }
   }
-
+  
   &.is-warning {
     fill: $warning;
   }

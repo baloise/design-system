@@ -113,11 +113,7 @@ export class CardSteps {
         <div class={['card-steps-wrapper', this.inverted ? 'is-inverted' : ''].join(' ')}>
           <div class={['left-side', !this.hasBack ? 'is-hidden' : ''].join(' ')}>
             <a role="button" onClick={() => this.onBackButtonClick()}>
-              <bal-icon
-                class="nav-go-left"
-                name="nav-go-large"
-                size="medium"
-                color={this.inverted ? 'white' : 'blue'}></bal-icon>
+              <bal-icon class="nav-go-left" name="nav-go-large" inverted={this.inverted}></bal-icon>
               <span class="nav-go-left-label">{this.backLabel}</span>
             </a>
           </div>

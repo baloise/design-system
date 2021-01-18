@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
+import { BalButtonType } from '../bal-button/bal.button.type'
 
 @Component({
   tag: 'bal-icon',
@@ -20,7 +21,7 @@ export class Icon {
   /**
    * The theme type of the button. Given by bulma our css framework.
    */
-  @Prop() type: 'primary' | 'info' | 'success' | 'warning' | 'danger' | 'link' = 'primary'
+  @Prop() type: BalButtonType = 'info'
 
   /**
    * If `true` the button is inverted
