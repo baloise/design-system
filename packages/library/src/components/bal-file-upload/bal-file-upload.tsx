@@ -186,7 +186,7 @@ export class FileUpload {
             />
             <span class="file-cta">
               <span class="file-icon">
-                <bal-icon name="upload" size="medium"></bal-icon>
+                <bal-icon name="upload"></bal-icon>
               </span>
               <span class="file-label">{this.label}</span>
             </span>
@@ -196,14 +196,14 @@ export class FileUpload {
           {this.files.map((file, index) => (
             <bal-list-item>
               <bal-list-item-icon>
-                <bal-icon size="medium" name="document"></bal-icon>
+                <bal-icon name="document"></bal-icon>
               </bal-list-item-icon>
               <bal-list-item-content>
                 <bal-list-item-title>{file.name}</bal-list-item-title>
                 <bal-list-item-subtitle>{filesize(file.size)}</bal-list-item-subtitle>
               </bal-list-item-content>
               <bal-list-item-icon right class="file-remove" onClick={() => this.removeFile(index)}>
-                <bal-icon size="medium" name="trash"></bal-icon>
+                <bal-icon name="trash"></bal-icon>
               </bal-list-item-icon>
             </bal-list-item>
           ))}

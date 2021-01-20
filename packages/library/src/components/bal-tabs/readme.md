@@ -40,7 +40,7 @@ Type: `Promise<void>`
 
 ### `sync() => Promise<void>`
 
-*Internal* Rerenders the tabs with their given settings
+*Internal* - Rerenders the tabs with their given settings
 
 #### Returns
 
@@ -62,8 +62,8 @@ graph TD;
   bal-tabs --> bal-text
   bal-tabs --> bal-button
   bal-button --> bal-spinner
-  bal-button --> bal-icon
   bal-button --> bal-text
+  bal-button --> bal-icon
   style bal-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

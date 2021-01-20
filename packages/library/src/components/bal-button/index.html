@@ -11,12 +11,12 @@
   <body class="bal-app">
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
-
       <section>
         <bal-button type="primary" data-test-id="primary-button">Primary</bal-button>
         <bal-button type="info">Info</bal-button>
         <bal-button type="link">Link</bal-button>
       </section>
+
       <h2 class="title is-size-2">Outlined</h2>
       <section>
         <bal-button type="info" outlined>Info</bal-button>
@@ -28,6 +28,18 @@
           <bal-button type="primary" inverted>Primary</bal-button>
           <bal-button type="info" inverted>Info</bal-button>
           <bal-button type="info" inverted outlined>Info Outlined</bal-button>
+        </div>
+        <div class="has-background-primary is-padded">
+          <bal-button type="primary" inverted outlined>Primary Outlined</bal-button>
+        </div>
+        <div class="has-background-success is-padded">
+          <bal-button type="success" inverted outlined>Success Outlined</bal-button>
+        </div>
+        <div class="has-background-warning is-padded">
+          <bal-button type="warning" inverted outlined>Warning Outlined</bal-button>
+        </div>
+        <div class="has-background-danger is-padded">
+          <bal-button type="danger" inverted outlined>Danger Outlined</bal-button>
         </div>
       </section>
 
@@ -74,8 +86,13 @@
 
       <h2 class="title is-size-2">Square buttons</h2>
       <section>
-        <bal-button type="info" icon="edit" is-square outlined></bal-button>
-        <bal-button type="info" size="small" icon="edit" is-square outlined></bal-button>
+        <bal-button type="info" icon="edit" square outlined></bal-button>
+        <bal-button type="info" size="small" icon="edit" square outlined></bal-button>
+      </section>
+
+      <h2 class="title is-size-2">Button Link</h2>
+      <section>
+        <bal-button link href="https://github.com/baloise/ui-library" target="_blank">GitHub</bal-button>
       </section>
     </div>
   </body>

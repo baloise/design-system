@@ -14,7 +14,6 @@
  - [bal-checkbox](../bal-checkbox)
  - [bal-field-label](../bal-field-label)
  - [bal-field-message](../bal-field-message)
- - [bal-hint](../bal-hint)
  - [bal-modal-header](../bal-modal-header)
  - [bal-radio](../bal-radio)
  - [bal-tabs](../bal-tabs)
@@ -29,7 +28,6 @@ graph TD;
   bal-checkbox --> bal-text
   bal-field-label --> bal-text
   bal-field-message --> bal-text
-  bal-hint --> bal-text
   bal-modal-header --> bal-text
   bal-radio --> bal-text
   bal-tabs --> bal-text

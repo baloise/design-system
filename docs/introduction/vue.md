@@ -2,7 +2,7 @@
 
 ## Install
 
-After creating a project with vue-cli or custom-made (usually Webpack) install the following libraries.
+After creating a project with [Vue CLI](https://cli.vuejs.org/guide/installation.html) or custom-made (usually Webpack) install the following libraries with npm.
 
 ```bash
 npm install @baloise/ui-library --save
@@ -11,7 +11,9 @@ npm install @baloise/ui-library-vue --save
 
 ## Add Plugin
 
-Import the `ui-library.css` file into your `main.ts` file to get the global style classes. Moreover, import the `BalUiLibraryPlugin`, which loads by default the pollyfils and defines the components.
+The `@baloise/ui-library-vue` dependency includes a the plugin `BalUiLibraryPlugin`, which loads by default the pollyfils and defines the components. Moreover, it adds the filtes and conrollers to your vue instance.
+
+Import the `ui-library.css` file into your `main.ts` file to get the global style classes.
 
 ```typescript
 // main.ts
@@ -24,9 +26,7 @@ import { BalUiLibraryPlugin } from '@baloise/ui-library-vue'
 
 Vue.config.productionTip = false
 
-Vue.use(BalUiLibraryPlugin, {
-  defineCustomElements: true,
-})
+Vue.use(BalUiLibraryPlugin)
 
 new Vue({
   render: h => h(App),
@@ -59,16 +59,20 @@ export default Vue.extend({
 </script>
 ```
 
-## Configure styling
+## Advanced Styling (SASS)
 
-Instead of importing the `ui-library.css` file add the `ui-library.scss` file to your main `.scss` file. With that you get access to the scss variables like colors or breakpoints.
+Instead of importing the `ui-library.css` file, use the `ui-library.scss` SASS file in the main `.scss` file.
 
 ```scss
+// Imports all the global styles of the library
 @import 'node_modules/@baloise/ui-library/src/styles/ui-library.scss';
 ```
+
+This gives access to the scss variables like [colors](essentials/colors.md) or [responsiveness helpers](essentials/responsiveness).
 
 > Use the variables of the UI-Library for your own project components by using the `ui-library.utilities.scss` file.
 
 ```scss
+// Only imports variables and mixins
 @import 'node_modules/@baloise/ui-library/src/styles/ui-library.utilities.scss';
 ```

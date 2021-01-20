@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, Method, Event, EventEmitter } from '@stencil/core'
+import { ColorTypesBasic } from '../../types/color.types'
 import { BalButtonType } from '../bal-button/bal.button.type'
 
 @Component({
@@ -11,7 +12,7 @@ export class Accordion {
   /**
    * Type defines the theme of the accordion toggle
    */
-  @Prop() type: 'primary' | 'info' = 'primary'
+  @Prop() type: ColorTypesBasic = 'primary'
 
   /**
    * Controls if the accordion is collapsed or not

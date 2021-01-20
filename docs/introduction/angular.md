@@ -31,16 +31,20 @@ import { AppComponent } from './app.component'
 export class AppModule {}
 ```
 
-## Configure styling
+## Advanced Styling (SASS)
 
-Instead of importing the `ui-library.css` file add the `ui-library.scss` file to your main `.scss` file. With that you get access to the scss variables like colors or breakpoints.
+Instead of importing the `ui-library.css` file, use the `ui-library.scss` SASS file in the main `.scss` file.
 
 ```scss
+// Imports all the global styles of the library
 @import 'node_modules/@baloise/ui-library/src/styles/ui-library.scss';
 ```
+
+This gives access to the scss variables like [colors](essentials/colors.md) or [responsiveness helpers](essentials/responsiveness).
 
 > Use the variables of the UI-Library for your own project components by using the `ui-library.utilities.scss` file.
 
 ```scss
+// Only imports variables and mixins
 @import 'node_modules/@baloise/ui-library/src/styles/ui-library.utilities.scss';
 ```

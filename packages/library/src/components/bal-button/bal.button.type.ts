@@ -1,9 +1,5 @@
-export type BalButtonType =
-  | 'primary'
-  | 'primary-light'
-  | 'info-light'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'link'
+import { ColorTypes } from '../../types/color.types'
+
+export type BalButtonExtraType = 'link' | 'primary-light' | 'info-light'
+
+export type BalButtonType = ColorTypes | BalButtonExtraType

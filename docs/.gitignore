@@ -1,5 +1,10 @@
 lib/
 www/
+build/
+components/
+assets/fonts/
 
+components.d.ts
+host.config.json
 _sidebar.md
 filters.md

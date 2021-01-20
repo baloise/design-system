@@ -1,6 +1,7 @@
 # bal-icon
 
-All our icons are pure svg files.
+All our icons are pure svg files. To add a new icon just place your svg file into the folder `packages/library/src/components/bal-icon/svg`.
+Then the build script will automatically optimize the svg and create its own web component.
 
 ## Icons
 
@@ -71,7 +72,7 @@ All our icons are pure svg files.
 | `rotate`   | `rotate`   | If `true` the icon rotates like for a loading spinner           | `boolean`                                                                                                | `false`     |
 | `size`     | `size`     | Defines the size of the icon.                                   | `"" \| "large" \| "medium" \| "small" \| "xsmall"`                                                       | `''`        |
 | `turn`     | `turn`     | If `true` the icon is rotated 180deg                            | `boolean`                                                                                                | `false`     |
-| `type`     | `type`     | The theme type of the button. Given by bulma our css framework. | `"danger" \| "info" \| "info-light" \| "link" \| "primary" \| "primary-light" \| "success" \| "warning"` | `'primary'` |
+| `type`     | `type`     | The theme type of the button. Given by bulma our css framework. | `"danger" \| "info" \| "info-light" \| "link" \| "primary" \| "primary-light" \| "success" \| "warning"` | `'info'`    |
 
 
 ## Dependencies
@@ -84,6 +85,7 @@ All our icons are pure svg files.
  - [bal-datepicker](../bal-datepicker)
  - [bal-field-control](../bal-field-control)
  - [bal-file-upload](../bal-file-upload)
+ - [bal-hint](../bal-hint)
  - [bal-pagination](../bal-pagination)
  - [bal-select](../bal-select)
 
@@ -96,6 +98,7 @@ graph TD;
   bal-datepicker --> bal-icon
   bal-field-control --> bal-icon
   bal-file-upload --> bal-icon
+  bal-hint --> bal-icon
   bal-pagination --> bal-icon
   bal-select --> bal-icon
   style bal-icon fill:#f9f,stroke:#333,stroke-width:4px

@@ -155,8 +155,11 @@ export const BalButton = /*@__PURE__*/ Vue.extend({
   props: {
     type: {} as PropOptions<Components.BalButton['type']>,
     size: {} as PropOptions<Components.BalButton['size']>,
+    link: {} as PropOptions<Components.BalButton['link']>,
+    href: {} as PropOptions<Components.BalButton['href']>,
+    target: {} as PropOptions<Components.BalButton['target']>,
     iconPosition: {} as PropOptions<Components.BalButton['iconPosition']>,
-    isSquare: {} as PropOptions<Components.BalButton['isSquare']>,
+    square: {} as PropOptions<Components.BalButton['square']>,
     disabled: {} as PropOptions<Components.BalButton['disabled']>,
     isActive: {} as PropOptions<Components.BalButton['isActive']>,
     expanded: {} as PropOptions<Components.BalButton['expanded']>,

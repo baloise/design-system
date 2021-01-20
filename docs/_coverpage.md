@@ -11,5 +11,7 @@
 <br>
 <br>
 
-[GitHub](https://github.com/baloise/ui-library)
-[Get Started](/?id=baloise-ui-library)
+<bal-button link inverted href="#/?id=baloise-ui-library" style="margin-right: 10px;">Get Started</bal-button>
+<bal-button link type="info" inverted outlined href="https://github.com/baloise/ui-library" style="margin-left: 10px;">GitHub</bal-button>
+
+<br>

@@ -17,7 +17,7 @@ the app before interaction can resume.
 
 ### `close() => Promise<void>`
 
-
+Closes the modal.
 
 #### Returns
 
@@ -27,7 +27,7 @@ Type: `Promise<void>`
 
 ### `open() => Promise<void>`
 
-
+Opens the modal.
 
 #### Returns
 

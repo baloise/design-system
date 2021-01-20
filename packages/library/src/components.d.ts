@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
 import { BalButtonType } from "./components/bal-button/bal.button.type";
 import { BalCardStepOption } from "./components/bal-card-step/bal-card-step.type";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
@@ -48,7 +49,7 @@ export namespace Components {
         /**
           * Type defines the theme of the accordion toggle
          */
-        "type": 'primary' | 'info';
+        "type": ColorTypesBasic;
     }
     interface BalButton {
         /**
@@ -63,6 +64,10 @@ export namespace Components {
           * If `true` the button has a full width
          */
         "expanded": boolean;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href": string;
         /**
           * Name of the left button icon
          */
@@ -84,9 +89,9 @@ export namespace Components {
          */
         "isActive": boolean;
         /**
-          * If `true` the width of the buttons is limited
+          * Turn the button in to a link.
          */
-        "isSquare": boolean;
+        "link": boolean;
         /**
           * If `true` the label is hidden and a loading spinner is shown instead.
          */
@@ -99,6 +104,14 @@ export namespace Components {
           * Size of the button
          */
         "size": 'small' | '';
+        /**
+          * If `true` the width of the buttons is limited
+         */
+        "square": boolean;
+        /**
+          * Specifies where to open the linked document
+         */
+        "target": '_blank' | ' _parent' | '_self' | '_top';
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
@@ -436,7 +449,7 @@ export namespace Components {
         /**
           * Defines the color of the message.
          */
-        "type": '' | 'danger' | 'success' | 'warning';
+        "type": '' | ColorTypesExtended;
     }
     interface BalFileUpload {
         /**
@@ -729,7 +742,13 @@ export namespace Components {
           * Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot.
          */
         "card": boolean;
+        /**
+          * Closes the modal.
+         */
         "close": () => Promise<void>;
+        /**
+          * Opens the modal.
+         */
         "open": () => Promise<void>;
     }
     interface BalModalActions {
@@ -754,7 +773,7 @@ export namespace Components {
     }
     interface BalNavbarMenu {
         /**
-          * PRIVATE: Collapses the menu.
+          * *Internal* - If the menu is open it closes it and the other way around.
          */
         "toggle": (isMenuActive: boolean) => Promise<void>;
     }
@@ -766,7 +785,7 @@ export namespace Components {
         /**
           * Defines the color of the element
          */
-        "type": '' | 'primary' | 'info' | 'success' | 'warning' | 'danger';
+        "type": '' | ColorTypes;
     }
     interface BalPagination {
         /**
@@ -929,7 +948,10 @@ export namespace Components {
           * If `true` the option is focused
          */
         "focused": boolean;
-        "getOption": () => Promise<BalOptionValue<any>>;
+        /**
+          * *Internal* - Used to return the options infromation
+         */
+        "getOption": <T>() => Promise<BalOptionValue<T>>;
         /**
           * If `true` the option is hidden
          */
@@ -1029,7 +1051,7 @@ export namespace Components {
          */
         "select": (tab: BalTabOption) => Promise<void>;
         /**
-          * *Internal* Rerenders the tabs with their given settings
+          * *Internal* - Rerenders the tabs with their given settings
          */
         "sync": () => Promise<void>;
     }
@@ -1037,7 +1059,7 @@ export namespace Components {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "type": 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger' | '';
+        "type": ColorTypes | '';
     }
     interface BalText {
     }
@@ -1934,7 +1956,7 @@ declare namespace LocalJSX {
         /**
           * Type defines the theme of the accordion toggle
          */
-        "type"?: 'primary' | 'info';
+        "type"?: ColorTypesBasic;
     }
     interface BalButton {
         /**
@@ -1949,6 +1971,10 @@ declare namespace LocalJSX {
           * If `true` the button has a full width
          */
         "expanded"?: boolean;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
         /**
           * Name of the left button icon
          */
@@ -1970,9 +1996,9 @@ declare namespace LocalJSX {
          */
         "isActive"?: boolean;
         /**
-          * If `true` the width of the buttons is limited
+          * Turn the button in to a link.
          */
-        "isSquare"?: boolean;
+        "link"?: boolean;
         /**
           * If `true` the label is hidden and a loading spinner is shown instead.
          */
@@ -1985,6 +2011,14 @@ declare namespace LocalJSX {
           * Size of the button
          */
         "size"?: 'small' | '';
+        /**
+          * If `true` the width of the buttons is limited
+         */
+        "square"?: boolean;
+        /**
+          * Specifies where to open the linked document
+         */
+        "target"?: '_blank' | ' _parent' | '_self' | '_top';
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
@@ -2270,7 +2304,7 @@ declare namespace LocalJSX {
          */
         "onBalCollapse"?: (event: CustomEvent<boolean>) => void;
         /**
-          * Internal
+          * *Internal* - Use this to close unuesed dropdowns.
          */
         "onBalDropdownPrepare"?: (event: CustomEvent<string>) => void;
         "scrollable"?: number;
@@ -2333,7 +2367,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the message.
          */
-        "type"?: '' | 'danger' | 'success' | 'warning';
+        "type"?: '' | ColorTypesExtended;
     }
     interface BalFileUpload {
         /**
@@ -2669,7 +2703,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the element
          */
-        "type"?: '' | 'primary' | 'info' | 'success' | 'warning' | 'danger';
+        "type"?: '' | ColorTypes;
     }
     interface BalPagination {
         /**
@@ -2939,7 +2973,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "type"?: 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger' | '';
+        "type"?: ColorTypes | '';
     }
     interface BalText {
     }

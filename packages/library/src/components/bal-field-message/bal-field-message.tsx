@@ -1,4 +1,5 @@
 import { Component, h, Host, Element, Prop } from '@stencil/core'
+import { ColorTypesExtended } from '../../types/color.types'
 
 @Component({
   tag: 'bal-field-message',
@@ -11,7 +12,7 @@ export class FieldMessage {
   /**
    * Defines the color of the message.
    */
-  @Prop() type: '' | 'danger' | 'success' | 'warning' = ''
+  @Prop() type: '' | ColorTypesExtended = ''
 
   render() {
     return (

@@ -32,13 +32,13 @@ export class BalAccordion {
 
 export declare interface BalButton extends Components.BalButton {}
 @ProxyCmp({
-  inputs: ['bottomRounded', 'disabled', 'expanded', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'isSquare', 'loading', 'outlined', 'size', 'type']
+  inputs: ['bottomRounded', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'type']
 })
 @Component({
   selector: 'bal-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['bottomRounded', 'disabled', 'expanded', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'isSquare', 'loading', 'outlined', 'size', 'type']
+  inputs: ['bottomRounded', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'type']
 })
 export class BalButton {
   protected el: HTMLElement;
@@ -373,7 +373,7 @@ export declare interface BalDropdown extends Components.BalDropdown {}
 export class BalDropdown {
   /** Listen when the dropdown opens or closes. Returns the current `isActive` value. */
   balCollapse!: IDropdown['balCollapse'];
-  /** Internal */
+  /** *Internal* - Use this to close unuesed dropdowns. */
   balDropdownPrepare!: IDropdown['balDropdownPrepare'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

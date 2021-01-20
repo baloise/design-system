@@ -13,7 +13,15 @@ const log = require('../../../.scripts/log')
 const { toPascalCase } = require('../../../.scripts/string')
 const { NEWLINE } = require('../../../docs/.scripts/utils/constants')
 
-const svgo = new SVGO()
+const svgo = new SVGO({
+  plugins: [
+    {
+      removeAttrs: { attrs: '(stroke|fill)' },
+    }, {
+      removeDimensions: true,
+    }
+  ],
+})
 
 const iconComponent = (tag, className, svgContent) => `import { Component, h } from '@stencil/core';
 

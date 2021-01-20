@@ -26,9 +26,9 @@ export const config: Config = {
     },
     {
       type: 'www',
-      dir: '../../docs/www',
+      dir: '../../docs',
       serviceWorker: false,
-      empty: true,
+      empty: false,
       copy: [
         {
           src: '**/*.html',

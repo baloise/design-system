@@ -27,7 +27,7 @@ const run = async () => {
   components.forEach(component => {
     if (component.tag.indexOf('bal-icon-') === -1) {
       if (component.parent === null) {
-        content.push(`  - [${component.tag}](www/components/${component.tag}/readme)`)
+        content.push(`  - [${component.tag}](components/${component.tag}/readme)`)
       }
     }
   })

@@ -5,46 +5,44 @@
 
 The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.
 
-- [Why UI-Library](docs/introduction/why.md)
-- [Architecture](docs/introduction/architecture.md)
-- [Quick Start](docs/introduction/quick-start.md)
+- [Why UI-Library](introduction/why.md)
+- [Architecture](introduction/architecture.md)
+- [Installation](introduction/installation.md)
 
 ## Ecosytem
 
 | Library                                    | Status                                                                                                                                   | Description                                                |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| [UI Library](introduction/quick-start)     | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)                 | Core library build with web components and global styling. |
+| [UI Library](introduction/html5)     | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)                 | Core library build with web components and global styling. |
 | [UI Library Vue](introduction/vue)         | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-vue.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-vue)         | Vue component library based on the the core library.       |
 | [UI Library Angular](introduction/angular) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-angular.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-angular) | Angular component library based on the the core library.   |
 | [UI Library Utils](utilities/installation) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-utils.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-utils)     | Utilities like filters.                                    |
 | [UI Library Testing](testing/installation) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-testing.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-testing) | Testing library with accessors for each component.         |
 
-## Quick Start
+## Framework Support
 
-There are supporting libraries for the following frameworks.
-
-<table style="width: 600px">
-  <tr>
-    <td style="text-align: center">
-      <a href="#/introduction/vue">
-        <h3 style="margin: 20px 0;">Vue</h3>
-      </a>
-    </td>
-    <td style="text-align: center">
-      <a href="#/introduction/angular">
-        <h3 style="margin: 20px 0;">Angular</h3>
-      </a>    
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" style="text-align: center; background: white;">
-      <a href="#/introduction/vue"><img style="width: 150px;" src="https://vuejs.org/images/logo.png" /></a>
-    </td>
-    <td width="50%" style="text-align: center; background: white;">
-    <a href="#/introduction/angular"><img style="width: 200px;" src="https://angular.io/assets/images/logos/angular/angular.svg"></a>
-    </td>
-  </tr>
+<table>
+  <thead>
+    <tr>
+    <th><img style="width: 48px;" src="https://vuejs.org/images/logo.png" data-origin="https://vuejs.org/images/logo.png" alt="Vue"></th>
+    <th><img style="width: 48px;" src="https://angular.io/assets/images/logos/angular/angular.svg" data-origin="https://angular.io/assets/images/logos/angular/angular.svg" alt="Vue"></th>
+    </tr>
+  </thead>
+<tbody>
+<tr>
+<td><strong>Vue.js</strong><br>2.x.x ✔</td>
+<td><strong>Angular</strong><br>10.2.x ✔</td>
+</tr>
+</tbody>
 </table>
+
+## Browser Support
+
+| ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png) | ![Edge](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![IE9](https://raw.githubusercontent.com/alrra/browser-logos/main/src/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png) |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **Chrome**<br />Last 2 versions ✔                                                                   | **Firefox**<br />Last 2 versions ✔                                                                     | **Safari**<br />Last 2 versions ✔                                                                   | **Edge** (Chromium)<br />Last 2 versions ✔                                                    | **IE9**<br /> Enabled with pollyfills. Only functional.                                                                                |
+
+For more detail go to [Stencil - Browser Support](https://stenciljs.com/docs/browser-support).
 
 ## Release Notes
 

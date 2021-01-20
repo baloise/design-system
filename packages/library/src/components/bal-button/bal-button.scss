@@ -16,6 +16,9 @@
     outline: none !important;
     user-select: none;
     min-height: 50px;
+    text-decoration: none;
+    padding-top: 7px;
+    padding-bottom: 6px;
 
     &:focus span,
     &:active span,
@@ -35,8 +38,6 @@
       align-items: center;
       display: inline-flex;
       justify-content: center;
-      // height: 1.5rem;
-      // width: 1.5rem;
     }
 
     .icon-left {
@@ -66,7 +67,7 @@
     &.is-small {
       min-height: 38px;
       min-width: 38px;
-      padding: 18px 20px 18px 20px;
+      padding: 10px 20px 9px 20px;
 
       bal-text {
         min-height: 19px;
@@ -78,18 +79,19 @@
       }
     }
 
-
-
-    &.is-success,
-    &.is-success:hover,
-    &.is-success:focus,
-    &.is-danger,
-    &.is-danger:hover,
-    &.is-danger:focus,
-    &.is-warning,
-    &.is-warning:hover,
-    &.is-warning:focus {
-      color: $white !important;
+    &.is-outlined.is-inverted {
+      &.is-success:hover,
+      &.is-success:focus {
+        color: $success;
+      }
+      &.is-warning:hover,
+      &.is-warning:focus {
+        color: $warning;
+      }
+      &.is-danger:hover,
+      &.is-danger:focus {
+        color: $danger;
+      }
     }
 
     &.is-loading::after {

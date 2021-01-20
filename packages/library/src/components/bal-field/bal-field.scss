@@ -19,6 +19,11 @@
       display: block;
     }
 
+    bal-field-label > label > bal-hint {
+      position: absolute;
+      top: -5px;
+    }
+
     .control.is-loading::after,
     .select.is-loading::after {
       border-top-color: $blue !important;

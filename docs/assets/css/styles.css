@@ -15,6 +15,20 @@
   background: var(--theme-color-light);
 }
 
+@font-face {
+  font-family: 'MetaPro';
+  font-style: normal;
+  font-weight: 300;
+  src: local('MetaPro'), local('MetaStd-Normal'), url('/assets/fonts/MetaStd-Normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'MetaPro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('MetaPro'), local('MetaStd-Medium'), url('/assets/fonts/MetaStd-Medium.woff2') format('woff2');
+}
+
 * {
   text-decoration: none !important;
 }

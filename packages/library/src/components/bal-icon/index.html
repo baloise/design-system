@@ -12,32 +12,21 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-icon name="edit" is-left></bal-icon>
+        <span class="icon-text">
+          <span class="icon">
+            <bal-icon name="info-circle"></bal-icon>
+          </span>
+          <span>info-circle</span>
+        </span>
       </section>
 
       <h2 class="title is-size-2">Size</h2>
       <p>Here is how you can change the size:</p>
       <section>
-        <span class="icon-text">
-          <span class="icon">
-            <bal-icon name="edit" size="small"></bal-icon>
-          </span>
-          <span>Small Size</span>
-        </span>
-        <br />
-        <span class="icon-text">
-          <span class="icon">
-            <bal-icon name="edit"></bal-icon>
-          </span>
-          <span>Normal Size</span>
-        </span>
-        <br />
-        <span class="icon-text">
-          <span class="icon">
-            <bal-icon name="edit" size="large"></bal-icon>
-          </span>
-          <span>Large Size</span>
-        </span>
+        <bal-icon name="date" size="small"></bal-icon>
+        <bal-icon name="date"></bal-icon>
+        <bal-icon name="date" size="medium"></bal-icon>
+        <bal-icon name="date" size="large"></bal-icon>
       </section>
 
       <h2 class="title is-size-2">Colors</h2>
@@ -61,15 +50,12 @@
       <section>
         <style type="text/css" scoped>
           .custom-color {
-            fill: purple !important;
+            fill: green !important;
           }
         </style>
 
-        <bal-icon class="custom-color" name="edit"></bal-icon>
+        <bal-icon class="custom-color" name="check-circle"></bal-icon>
       </section>
-
-      <h2 class="title is-size-2">Icons</h2>
-      <div class="docs-icons"></div>
     </div>
   </body>
 </html>

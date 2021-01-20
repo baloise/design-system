@@ -14,11 +14,17 @@ export class Modal {
    */
   @Prop() card = false
 
+  /**
+   * Opens the modal.
+   */
   @Method()
   async open(): Promise<void> {
     this.isActive = true
   }
 
+  /**
+   * Closes the modal.
+   */
   @Method()
   async close(): Promise<void> {
     this.isActive = false

@@ -11,7 +11,7 @@ const testingLib = require('../../packages/testing/.scripts/testing.lib')
 
 const printListItem = (title, tag) => `
 <li>
-    <a href="#/www/components/${tag}/readme?id=${title.toLowerCase()}">
+    <a href="#/components/${tag}/readme?id=${title.toLowerCase()}">
         ${title}
     </a>
 </li>
@@ -67,7 +67,7 @@ const run = async () => {
       lines.push(testingContent)
       lines.push(githubContent)
       files.push({
-        path: path.join(__dirname, `../www/components/${component.tag}/readme.md`),
+        path: path.join(__dirname, `../components/${component.tag}/readme.md`),
         content: lines.join(NEWLINE),
       })
     }
