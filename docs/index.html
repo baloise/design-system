@@ -14,18 +14,39 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
 
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="stylesheet" href="assets/css/vue.css" />
     <link rel="stylesheet" href="lib/ui-library/ui-library.css" />
+
+    <link rel="stylesheet" href="assets/css/fonts.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/navbar.css" />
+    <link rel="stylesheet" href="assets/css/sidebar.css" />
+    <link rel="stylesheet" href="assets/css/markdown.css" />
+    <link rel="stylesheet" href="assets/css/swot.css" />
+    <link rel="stylesheet" href="assets/css/contributors.css" />
+    <link rel="stylesheet" href="assets/css/code.css" />
+    <link rel="stylesheet" href="assets/css/pagination.css" />
+    <link rel="stylesheet" href="assets/css/table.css" />
   </head>
 
-  <body class="sticky">
+  <body class="sticky bal-app">
+    <nav class="bal-app">
+      <bal-navbar expanded>
+        <bal-navbar-brand>
+          <img src="/assets/images/icon.svg" />
+          <bal-text style="margin-left: 15px">Baloise UI Library</bal-text>
+        </bal-navbar-brand>
+        <bal-navbar-menu>
+          <!-- <bal-navbar-menu-start>
+            <a class="navbar-item" href="/#/"><bal-text>Home</bal-text></a>
+          </bal-navbar-menu-start> -->
+        </bal-navbar-menu>
+      </bal-navbar>
+    </nav>
     <div id="app">Loading ...</div>
     <script>
       window.$docsify = {
         name: 'Baloise UI-Library',
         repo: 'https://github.com/baloise/ui-library',
-        coverpage: true,
         loadSidebar: true,
         mergeNavbar: true,
         formatUpdated: '{DD}.{MM} {HH}:{mm}',

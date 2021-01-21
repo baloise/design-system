@@ -1,5 +1,7 @@
 # Angular
 
+> Do not forget to configure fonts and styling. [Go to styling](introduction/styling.md)
+
 ## Install
 
 After creating a project with ng-cli install the following libraries.
@@ -29,22 +31,4 @@ import { AppComponent } from './app.component'
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
-```
-
-## Advanced Styling (SASS)
-
-Instead of importing the `ui-library.css` file, use the `ui-library.scss` SASS file in the main `.scss` file.
-
-```scss
-// Imports all the global styles of the library
-@import 'node_modules/@baloise/ui-library/src/styles/ui-library.scss';
-```
-
-This gives access to the scss variables like [colors](essentials/colors.md) or [responsiveness helpers](essentials/responsiveness).
-
-> Use the variables of the UI-Library for your own project components by using the `ui-library.utilities.scss` file.
-
-```scss
-// Only imports variables and mixins
-@import 'node_modules/@baloise/ui-library/src/styles/ui-library.utilities.scss';
 ```

@@ -28,7 +28,7 @@
           var codeBlock = markdown.substring(startIndex + prefix.length, endIndex);
           result = result + markdown.substring(0, startIndex);
           result = result + lineBreak;
-          result = result + ('<section class="bal-app">' + codeBlock + '</section>');
+          result = result + ('<section class="docs-example bal-app">' + codeBlock + '</section>');
           result = result + lineBreak + lineBreak;
           result = result + prefix;
           result = result + codeBlock;

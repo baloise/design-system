@@ -39,9 +39,9 @@ const parse = component => {
         }
         if (node.rawTagName === 'section') {
           return (
-            '<div class="bal-app">' +
+            '<section class="docs-example bal-app">' +
             getCodeExample(node) +
-            '</div>' +
+            '</section>' +
             NEWLINE +
             NEWLINE +
             '```html' +

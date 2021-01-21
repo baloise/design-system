@@ -117,6 +117,13 @@ export class Button {
     ].join(' ')
   }
 
+  get iconSize() {
+    if (this.size === 'small') {
+      return 'xsmall'
+    }
+    return 'small'
+  }
+
   render() {
     if (this.square) {
       return this.renderSquareButton()
@@ -156,7 +163,13 @@ export class Button {
   renderButtonLeftIcon() {
     if (this.icon) {
       return (
-        <bal-icon class="icon-left" name={this.icon} size={this.size} type={this.type} inverted={this.isIconInverted} />
+        <bal-icon
+          class="icon-left"
+          name={this.icon}
+          size={this.iconSize}
+          type={this.type}
+          inverted={this.isIconInverted}
+        />
       )
     }
   }
@@ -167,7 +180,7 @@ export class Button {
         <bal-icon
           class="icon-right"
           name={this.iconRight}
-          size={this.size}
+          size={this.iconSize}
           type={this.type}
           inverted={this.isIconInverted}
         />

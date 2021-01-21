@@ -14,9 +14,15 @@ export class Navbar {
    */
   @Prop() light = false
 
+  /**
+   * It `true` the burger button is hidden
+   */
+  @Prop() noBurger = false
+
   render() {
     return (
       <Host
+        class={{ 'no-burger': this.noBurger }}
         style={{
           position: 'reletiv',
           paddingTop: this.light ? '10px' : '',

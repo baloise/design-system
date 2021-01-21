@@ -783,6 +783,22 @@ export class BalIconClock {
 }
 
 
+export declare interface BalIconClose extends Components.BalIconClose {}
+
+@Component({
+  selector: 'bal-icon-close',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalIconClose {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface BalIconCloseBig extends Components.BalIconCloseBig {}
 
 @Component({
@@ -951,6 +967,22 @@ export declare interface BalIconGenerellEdit extends Components.BalIconGenerellE
   template: '<ng-content></ng-content>'
 })
 export class BalIconGenerellEdit {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalIconGithub extends Components.BalIconGithub {}
+
+@Component({
+  selector: 'bal-icon-github',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalIconGithub {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1630,13 +1662,13 @@ export class BalModalHeader {
 
 export declare interface BalNavbar extends Components.BalNavbar {}
 @ProxyCmp({
-  inputs: ['light']
+  inputs: ['light', 'noBurger']
 })
 @Component({
   selector: 'bal-navbar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['light']
+  inputs: ['light', 'noBurger']
 })
 export class BalNavbar {
   protected el: HTMLElement;

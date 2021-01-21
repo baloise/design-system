@@ -5,6 +5,7 @@
     - [HTML5](introduction/html5.md)
     - [Vue](introduction/vue.md)
     - [Angular](introduction/angular.md)
+    - [Styling](introduction/styling.md)
   - [Why UI-Library](introduction/why.md)
   - [Architecture](introduction/architecture.md)
 

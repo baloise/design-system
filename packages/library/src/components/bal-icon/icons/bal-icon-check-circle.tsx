@@ -8,7 +8,7 @@ import { Component, h } from '@stencil/core';
 export class IconCheckCircle {
   render() {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M15 .5C7 .5.5 7 .5 15S7 29.5 15 29.5 29.5 23 29.5 15 23 .5 15 .5zm-1.6 18.9l-3.1-3.2 1.4-1.4 1.7 1.7 5.1-5.3 1.4 1.4-6.5 6.8z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M15 0C6.783 0 0 6.783 0 15c0 8.217 6.783 15 15 15 8.217 0 15-6.783 15-15 0-8.217-6.783-15-15-15zm-2.087 20.74L8.87 16.564l1.826-1.826 2.217 2.217 6.652-6.912 1.826 1.826-8.478 8.87z"/></svg>
     );
   }
 }

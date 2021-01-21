@@ -83,7 +83,7 @@ export class Accordion {
           type={this.buttonType}
           onClick={() => this.toggle()}>
           <span class="trigger-label" style={this.isActive && { display: 'none' }}>
-            <bal-icon name={this.openIcon} type={this.type} />
+            <bal-icon name={this.openIcon} type={this.type} size="small"/>
             <span class="label">{this.openLabel}</span>
           </span>
           <span class="trigger-label" style={!this.isActive && { display: 'none' }}>

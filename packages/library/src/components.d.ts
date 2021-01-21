@@ -557,6 +557,8 @@ export namespace Components {
     }
     interface BalIconClock {
     }
+    interface BalIconClose {
+    }
     interface BalIconCloseBig {
     }
     interface BalIconCloseSmall {
@@ -578,6 +580,8 @@ export namespace Components {
     interface BalIconGenerellConsultant {
     }
     interface BalIconGenerellEdit {
+    }
+    interface BalIconGithub {
     }
     interface BalIconInfo {
     }
@@ -764,6 +768,10 @@ export namespace Components {
           * It `true` the navbar has a white background
          */
         "light": boolean;
+        /**
+          * It `true` the burger button is hidden
+         */
+        "noBurger": boolean;
     }
     interface BalNavbarBrand {
         /**
@@ -1393,6 +1401,12 @@ declare global {
         prototype: HTMLBalIconClockElement;
         new (): HTMLBalIconClockElement;
     };
+    interface HTMLBalIconCloseElement extends Components.BalIconClose, HTMLStencilElement {
+    }
+    var HTMLBalIconCloseElement: {
+        prototype: HTMLBalIconCloseElement;
+        new (): HTMLBalIconCloseElement;
+    };
     interface HTMLBalIconCloseBigElement extends Components.BalIconCloseBig, HTMLStencilElement {
     }
     var HTMLBalIconCloseBigElement: {
@@ -1458,6 +1472,12 @@ declare global {
     var HTMLBalIconGenerellEditElement: {
         prototype: HTMLBalIconGenerellEditElement;
         new (): HTMLBalIconGenerellEditElement;
+    };
+    interface HTMLBalIconGithubElement extends Components.BalIconGithub, HTMLStencilElement {
+    }
+    var HTMLBalIconGithubElement: {
+        prototype: HTMLBalIconGithubElement;
+        new (): HTMLBalIconGithubElement;
     };
     interface HTMLBalIconInfoElement extends Components.BalIconInfo, HTMLStencilElement {
     }
@@ -1855,6 +1875,7 @@ declare global {
         "bal-icon-check": HTMLBalIconCheckElement;
         "bal-icon-check-circle": HTMLBalIconCheckCircleElement;
         "bal-icon-clock": HTMLBalIconClockElement;
+        "bal-icon-close": HTMLBalIconCloseElement;
         "bal-icon-close-big": HTMLBalIconCloseBigElement;
         "bal-icon-close-small": HTMLBalIconCloseSmallElement;
         "bal-icon-close-thin": HTMLBalIconCloseThinElement;
@@ -1866,6 +1887,7 @@ declare global {
         "bal-icon-edit": HTMLBalIconEditElement;
         "bal-icon-generell-consultant": HTMLBalIconGenerellConsultantElement;
         "bal-icon-generell-edit": HTMLBalIconGenerellEditElement;
+        "bal-icon-github": HTMLBalIconGithubElement;
         "bal-icon-info": HTMLBalIconInfoElement;
         "bal-icon-info-circle": HTMLBalIconInfoCircleElement;
         "bal-icon-locate": HTMLBalIconLocateElement;
@@ -2471,6 +2493,8 @@ declare namespace LocalJSX {
     }
     interface BalIconClock {
     }
+    interface BalIconClose {
+    }
     interface BalIconCloseBig {
     }
     interface BalIconCloseSmall {
@@ -2492,6 +2516,8 @@ declare namespace LocalJSX {
     interface BalIconGenerellConsultant {
     }
     interface BalIconGenerellEdit {
+    }
+    interface BalIconGithub {
     }
     interface BalIconInfo {
     }
@@ -2686,6 +2712,10 @@ declare namespace LocalJSX {
           * It `true` the navbar has a white background
          */
         "light"?: boolean;
+        /**
+          * It `true` the burger button is hidden
+         */
+        "noBurger"?: boolean;
     }
     interface BalNavbarBrand {
         /**
@@ -3117,6 +3147,7 @@ declare namespace LocalJSX {
         "bal-icon-check": BalIconCheck;
         "bal-icon-check-circle": BalIconCheckCircle;
         "bal-icon-clock": BalIconClock;
+        "bal-icon-close": BalIconClose;
         "bal-icon-close-big": BalIconCloseBig;
         "bal-icon-close-small": BalIconCloseSmall;
         "bal-icon-close-thin": BalIconCloseThin;
@@ -3128,6 +3159,7 @@ declare namespace LocalJSX {
         "bal-icon-edit": BalIconEdit;
         "bal-icon-generell-consultant": BalIconGenerellConsultant;
         "bal-icon-generell-edit": BalIconGenerellEdit;
+        "bal-icon-github": BalIconGithub;
         "bal-icon-info": BalIconInfo;
         "bal-icon-info-circle": BalIconInfoCircle;
         "bal-icon-locate": BalIconLocate;
@@ -3234,6 +3266,7 @@ declare module "@stencil/core" {
             "bal-icon-check": LocalJSX.BalIconCheck & JSXBase.HTMLAttributes<HTMLBalIconCheckElement>;
             "bal-icon-check-circle": LocalJSX.BalIconCheckCircle & JSXBase.HTMLAttributes<HTMLBalIconCheckCircleElement>;
             "bal-icon-clock": LocalJSX.BalIconClock & JSXBase.HTMLAttributes<HTMLBalIconClockElement>;
+            "bal-icon-close": LocalJSX.BalIconClose & JSXBase.HTMLAttributes<HTMLBalIconCloseElement>;
             "bal-icon-close-big": LocalJSX.BalIconCloseBig & JSXBase.HTMLAttributes<HTMLBalIconCloseBigElement>;
             "bal-icon-close-small": LocalJSX.BalIconCloseSmall & JSXBase.HTMLAttributes<HTMLBalIconCloseSmallElement>;
             "bal-icon-close-thin": LocalJSX.BalIconCloseThin & JSXBase.HTMLAttributes<HTMLBalIconCloseThinElement>;
@@ -3245,6 +3278,7 @@ declare module "@stencil/core" {
             "bal-icon-edit": LocalJSX.BalIconEdit & JSXBase.HTMLAttributes<HTMLBalIconEditElement>;
             "bal-icon-generell-consultant": LocalJSX.BalIconGenerellConsultant & JSXBase.HTMLAttributes<HTMLBalIconGenerellConsultantElement>;
             "bal-icon-generell-edit": LocalJSX.BalIconGenerellEdit & JSXBase.HTMLAttributes<HTMLBalIconGenerellEditElement>;
+            "bal-icon-github": LocalJSX.BalIconGithub & JSXBase.HTMLAttributes<HTMLBalIconGithubElement>;
             "bal-icon-info": LocalJSX.BalIconInfo & JSXBase.HTMLAttributes<HTMLBalIconInfoElement>;
             "bal-icon-info-circle": LocalJSX.BalIconInfoCircle & JSXBase.HTMLAttributes<HTMLBalIconInfoCircleElement>;
             "bal-icon-locate": LocalJSX.BalIconLocate & JSXBase.HTMLAttributes<HTMLBalIconLocateElement>;

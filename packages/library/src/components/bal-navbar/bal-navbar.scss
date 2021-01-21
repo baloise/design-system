@@ -7,6 +7,12 @@
     display: block;
     position: relative;
 
+    &.no-burger {
+      .navbar-burger {
+        display: none !important;
+      }
+    }
+
     .navbar {
       &.is-info::after,
       &.is-info::before {
@@ -96,6 +102,23 @@
         margin-top: -0.4em;
       }
 
+      .is-active {
+        .navbar-start,
+        .navbar-end {
+          a {
+            transition: padding-left 0.3s ease;
+          }
+
+          a.navbar-item:hover,
+          a.navbar-item:focus,
+          a.navbar-link:hover,
+          a.navbar-link:focus {
+            background: $blue-light;
+            padding-left: 22px;
+          }
+        }
+      }
+
       .navbar-dropdown {
         border-radius: 0px !important;
         border: none;
@@ -103,7 +126,6 @@
         padding-top: 0;
         padding-bottom: 0;
         min-width: 160px;
-        box-shadow: 0 0 16px 0 rgba(0, 33, 98, 0.15) !important;
 
         .navbar-item {
           font-size: $size-6;
@@ -121,6 +143,12 @@
           background-color: $blue-light-line;
           height: 1px;
         }
+      }
+    }
+
+    @include desktop() {
+      .navbar-dropdown {
+        box-shadow: 0 0 16px 0 rgba(0, 33, 98, 0.15) !important;
       }
     }
   }

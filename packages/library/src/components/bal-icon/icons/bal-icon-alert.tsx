@@ -8,7 +8,7 @@ import { Component, h } from '@stencil/core';
 export class IconAlert {
   render() {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M14.4 16.6h1.9l.4-7.6h-2.6l.3 7.6zm-.4 2.5c0 .7.6 1.4 1.4 1.4.7 0 1.4-.6 1.4-1.4 0-.7-.6-1.4-1.4-1.4-.8.1-1.4.7-1.4 1.4z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M12.043 19.826H17L18.044 0H11.26l.783 19.826zM11 26.348C11 28.174 12.565 30 14.652 30c1.826 0 3.652-1.565 3.652-3.652 0-1.826-1.565-3.652-3.652-3.652-2.087.26-3.652 1.826-3.652 3.652z"/></svg>
     );
   }
 }

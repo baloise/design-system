@@ -1,0 +1,414 @@
+.markdown-section {
+  margin: 0 auto;
+  padding: 64px;
+  position: relative;
+}
+
+.markdown-section > :first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-section > p > code {
+  font-size: 1em !important;
+}
+
+.markdown-section > h1 > a,
+.markdown-section > h2 > a,
+.markdown-section > h3 > a,
+.markdown-section > h4 > a,
+.markdown-section > h5 > a {
+  font-family: MetaPro, Source Sans Pro, Helvetica Neue, Arial, sans-serif;
+  color: #2c3e50;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.markdown-section > ul > li {
+  font-family: MetaPro, Source Sans Pro, Helvetica Neue, Arial, sans-serif;
+}
+
+/**
+ * Heading 1
+ */
+
+.markdown-section > h1 {
+  margin: 0 0 1rem;
+}
+
+.markdown-section > h1 > a {
+  font-size: 2.75rem !important;
+  line-height: 3.125rem !important;
+}
+
+@media screen and (max-width: 768px) {
+  .markdown-section > h1 > a {
+    font-size: 1.875rem !important;
+    line-height: 2.375rem !important;
+  }
+}
+
+/**
+ * Heading 2
+ */
+
+.markdown-section > h2 {
+  margin: 0 0 1rem;
+}
+
+.markdown-section > h2 > a {
+  font-size: 2rem !important;
+  line-height: 2.5rem !important;
+}
+
+@media screen and (max-width: 768px) {
+  .markdown-section > h2 > a {
+    font-size: 1.375rem !important;
+    line-height: 1.75rem !important;
+  }
+}
+
+/**
+ * Heading 3
+ */
+
+.markdown-section > h3 {
+  margin: 0 0 1rem;
+}
+
+.markdown-section > h3 > a {
+  font-size: 1.375rem !important;
+  line-height: 1.75rem !important;
+}
+
+@media screen and (max-width: 768px) {
+  .markdown-section > h3 > a {
+    font-size: 1.063rem !important;
+    line-height: 1.375rem !important;
+  }
+}
+
+/**
+ * Heading 4
+ */
+
+.markdown-section > h4,
+.markdown-section > h5,
+.markdown-section > h6 {
+  margin: 0 0 1rem;
+}
+
+.markdown-section > h4 > a,
+.markdown-section > h5 > a,
+.markdown-section > h6 > a {
+  font-size: 1.125rem !important;
+  line-height: 1.625rem !important;
+}
+
+@media screen and (max-width: 768px) {
+  .markdown-section > h4 > a,
+  .markdown-section > h5 > a,
+  .markdown-section > h6 > a {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+  }
+}
+
+.markdown-section > p a,
+.markdown-section > table a,
+.markdown-section > a {
+  color: #009ee7;
+}
+
+.markdown-section > blockquote a {
+  color: #039;
+}
+
+/**
+ * Code
+ */
+
+.markdown-section span code,
+.markdown-section td code,
+.markdown-section p code,
+.markdown-section strong code {
+  background-color: #ebf6fa !important;
+  color: #039 !important;
+  border-radius: 4px;
+  padding: 3px 5px 4px 5px;
+}
+
+.markdown-section pre {
+  -moz-osx-font-smoothing: initial;
+  -webkit-font-smoothing: initial;
+  background-color: #f1f3f5;
+  font-family: 'Roboto Mono', Monaco, courier, monospace;
+  line-height: 1.5rem;
+  margin: 1.2em 0;
+  overflow: auto;
+  position: relative;
+  word-wrap: normal;
+  padding: 0;
+}
+
+/* code highlight */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #8e908c;
+}
+.token.namespace {
+  opacity: 0.7;
+}
+.token.boolean,
+.token.number {
+  color: #c76b29;
+}
+.token.punctuation {
+  color: #525252;
+}
+.token.property {
+  color: #c08b30;
+}
+.token.tag {
+  color: #2973b7;
+}
+.token.string {
+  color: var(--theme-color, #42b983);
+}
+.token.selector {
+  color: #6679cc;
+}
+.token.attr-name {
+  color: #2973b7;
+}
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #22a2c9;
+}
+.token.attr-value,
+.token.control,
+.token.directive,
+.token.unit {
+  color: var(--theme-color, #42b983);
+}
+.token.keyword,
+.token.function {
+  color: #e96900;
+}
+.token.statement,
+.token.regex,
+.token.atrule {
+  color: #22a2c9;
+}
+.token.placeholder,
+.token.variable {
+  color: #3d8fd1;
+}
+.token.deleted {
+  text-decoration: line-through;
+}
+.token.inserted {
+  border-bottom: 1px dotted #202746;
+  text-decoration: none;
+}
+.token.italic {
+  font-style: italic;
+}
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.important {
+  color: #c94922;
+}
+.token.entity {
+  cursor: help;
+}
+
+.markdown-section > pre {
+  padding: 0 !important;
+}
+
+.markdown-section > pre > code {
+  -moz-osx-font-smoothing: initial;
+  -webkit-font-smoothing: initial;
+  background-color: #f1f3f5;
+  border-radius: 2px;
+  color: #525252;
+  display: block;
+  font-family: 'Roboto Mono', Monaco, courier, monospace !important;
+  font-size: 0.8rem;
+  line-height: inherit;
+  max-width: inherit;
+  overflow: inherit;
+  padding: 1.4rem 1.6rem;
+  white-space: inherit;
+}
+
+.markdown-section > pre > code::-webkit-scrollbar {
+  height: 4px;
+}
+
+.markdown-section > pre > code::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.markdown-section > pre > code:hover::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.4);
+}
+
+.markdown-section > pre > code:hover::-webkit-scrollbar-track {
+  background: rgba(136, 136, 136, 0.1);
+}
+
+.markdown-section code::after,
+.markdown-section code::before {
+  letter-spacing: 0.05rem;
+}
+code .token {
+  -moz-osx-font-smoothing: initial;
+  -webkit-font-smoothing: initial;
+  min-height: 1.5rem;
+  position: relative;
+  left: auto;
+}
+pre::after {
+  color: #ccc;
+  content: attr(data-lang);
+  font-size: 0.6rem;
+  font-weight: 600;
+  height: 15px;
+  line-height: 15px;
+  padding: 5px 10px 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+}
+
+.markdown-section pre code span {
+  font-family: 'Roboto Mono', Monaco, courier, monospace !important;
+}
+
+.markdown-section blockquote {
+  background: #f0fbff !important;
+  border: 1px solid #d3dbeb !important;
+  color: #003399 !important;
+  font-family: MetaPro, Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.markdown-section > ul {
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-left: 32px !important;
+  margin-bottom: 32px !important;
+}
+
+.docsify-copy-code-button {
+  padding: 0.5em !important;
+  border-radius: 4px !important;
+}
+
+.docsify-copy-code-button span {
+  font-family: MetaPro, Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+  font-size: 0.8125rem !important;
+  border-radius: 4px !important;
+}
+
+.docsify-copy-code-button span.label {
+  font-weight: 100 !important;
+}
+
+.docsify-copy-code-button span.success,
+.docsify-copy-code-button span.error {
+  padding: 0 20px 0px 20px !important;
+  font-weight: 700 !important;
+  font-size: 0.8125rem !important;
+  border-radius: 100px !important;
+}
+
+.docsify-copy-code-button span.success {
+  background-color: #3fc889 !important;
+}
+
+.docsify-copy-code-button span.error {
+  background-color: #ff3366 !important;
+}
+
+.docsify-copy-code-button.error .error,
+.docsify-copy-code-button.success .success {
+  -webkit-transform: translate(-30%, -50%) !important;
+  transform: translate(-30%, -50%) !important;
+}
+
+.docs-content {
+  color: #7188b8 !important;
+  line-height: 1 !important;
+  font-size: 1em !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  margin-bottom: 0.5em !important;
+}
+
+p.docs-content {
+  text-transform: uppercase !important;
+  margin-top: 0.5em !important;
+}
+
+ul.docs-content {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  margin-bottom: 2em !important;
+}
+
+ul.docs-content li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+ul.docs-content a {
+  font-size: 14px !important;
+  color: #2c3e50 !important;
+  font-weight: 800 !important;
+  opacity: 0.6 !important;
+  text-decoration: none !important;
+}
+
+.bd-color {
+  border-radius: 2px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  float: left;
+  height: 24px;
+  margin-right: 8px;
+  width: 24px;
+}
+
+.docs-example {
+  padding: 24px !important;
+  background-color: white;
+  background-image: linear-gradient(45deg, rgb(241, 243, 245) 25%, transparent 25%),
+    linear-gradient(135deg, rgb(241, 243, 245) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgb(241, 243, 245) 75%),
+    linear-gradient(135deg, transparent 75%, rgb(241, 243, 245) 75%);
+  background-size: 20px 20px;
+  background-position: 0px 0px, 10px 0px, 10px -10px, 0px 10px;
+  border-radius: 5px 5px 0px 0px;
+  margin-bottom: -20px;
+  border: 1px solid #f1f3f5;
+}
+
+.markdown-section > pre {
+  border-radius: 6px;
+}
+
+.markdown-section > pre[data-lang='html'] {
+  border-radius: 0px 0px 6px 6px;
+}

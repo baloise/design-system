@@ -15,19 +15,7 @@
   background: var(--theme-color-light);
 }
 
-@font-face {
-  font-family: 'MetaPro';
-  font-style: normal;
-  font-weight: 300;
-  src: local('MetaPro'), local('MetaStd-Normal'), url('/assets/fonts/MetaStd-Normal.woff2') format('woff2');
-}
 
-@font-face {
-  font-family: 'MetaPro';
-  font-style: normal;
-  font-weight: 700;
-  src: local('MetaPro'), local('MetaStd-Medium'), url('/assets/fonts/MetaStd-Medium.woff2') format('woff2');
-}
 
 * {
   text-decoration: none !important;
@@ -104,62 +92,7 @@ pre[data-lang='mermaid'] {
   font-weight: 600;
 }
 
-.docs-swot-table {
-  display: table !important;
-  width: 100%;
-}
 
-.docs-swot-table th {
-  text-align: center !important;
-}
-
-.docs-swot-table th strong {
-  font-weight: bold;
-  font-size: 1.2em;
-  color: #039;
-}
-
-.docs-swot-table strong {
-  font-weight: bold;
-  font-size: 1em;
-  color: #000;
-}
-
-.docs-swot-table small {
-  font-size: 0.8em;
-}
-
-.docs-swot-table .green {
-  background: rgba(63, 200, 137, 0.2);
-}
-
-.docs-swot-table .red {
-  background: rgba(255, 102, 140, 0.2);
-}
-
-.docs-swot-table .yellow {
-  background: rgba(255, 153, 0, 0.2);
-}
-
-.docs-swot-table .blue {
-  background: rgba(0, 51, 153, 0.2);
-}
-
-.docs-swot-table ul {
-  list-style-type: disc;
-  padding-left: 15px;
-}
-
-.docs-swot-table .rotate {
-  vertical-align: middle;
-  height: 200px;
-  width: 150px;
-}
-
-.docs-swot-table .rotate div {
-  transform: rotate(-90deg);
-  vertical-align: middle;
-}
 
 .cover-code {
   background: #002162;
@@ -230,10 +163,14 @@ section.cover .cover-main > p:last-child a:hover {
 
 aside.sidebar {
   background: #fafafa !important;
-  border-right: 1px solid #d3dbeb !important;
+  /* border-right: 1px solid #d3dbeb !important; */
 }
 
 .app-name {
+  display: none;
+}
+
+/* .app-name {
   color: white;
   background-color: #039;
   background-image: url('/assets/images/icon.svg');
@@ -245,10 +182,15 @@ aside.sidebar {
   padding-bottom: 10px;
   width: 100%;
   font-weight: bold;
-}
+} */
 
 .sidebar {
   padding: 0 !important;
+  margin-top: 80px !important;
+}
+
+.sidebar-nav {
+  /* padding-top: 20px !important; */
 }
 
 .app-name {
@@ -278,14 +220,16 @@ aside.sidebar {
 }
 
 .sidebar li > p strong {
+  display: block;
   color: #003399 !important;
   font-size: 1.1em !important;
-  margin-bottom: 0.5em !important;
+  margin-top: 1.3em !important;
+  margin-bottom: 0.25em !important;
 }
 
-.sidebar ul {
-  margin-bottom: 1.5em !important;
-}
+/* .sidebar ul { */
+  /* margin-bottom: 1.5em !important; */
+/* } */
 
 .sidebar ul li a {
   font-size: 1em !important;
@@ -297,29 +241,33 @@ aside.sidebar {
 }
 
 .sidebar ul li a:hover {
-  color: #003399 !important;
+  background: #e9edf8 !important;
 }
 
 .sidebar ul li ul {
   padding: 0 !important;
 }
 
-.sidebar ul li ul li ul {
-  padding: 0 0 0 15px !important;
-}
-
 .sidebar ul li > a {
-  padding: 4px 0 4px 30px !important;
+  padding: 2px 0 2px 30px !important;
   color: #7188b8 !important;
   text-transform: none !important;
 }
 
 .sidebar ul li.active > a {
-  padding-left: 26px !important;
+  padding-left: 26px;
   border-left: 4px solid !important;
   border-right: none !important;
   color: #003399 !important;
   background: #d3dbeb !important;
+}
+
+.sidebar ul li ul li ul li a {
+  padding-left: 45px !important;
+}
+
+.sidebar ul li ul li ul li.active a {
+  padding-left: 41px !important;
 }
 
 .app-sub-sidebar li:before {
@@ -328,14 +276,10 @@ aside.sidebar {
   float: left;
 }
 
-.content {
-  padding-top: 15px !important;
-}
-
 body .sidebar-toggle {
   background: none;
-  top: 0;
-  left: 300px;
+  top: 85px;
+  left: 305px;
   bottom: auto;
   cursor: pointer;
   padding: 1rem;

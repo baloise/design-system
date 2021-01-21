@@ -51,6 +51,7 @@ const customElementTags: string[] = [
  'bal-icon-check',
  'bal-icon-check-circle',
  'bal-icon-clock',
+ 'bal-icon-close',
  'bal-icon-close-big',
  'bal-icon-close-small',
  'bal-icon-close-thin',
@@ -62,6 +63,7 @@ const customElementTags: string[] = [
  'bal-icon-edit',
  'bal-icon-generell-consultant',
  'bal-icon-generell-edit',
+ 'bal-icon-github',
  'bal-icon-info',
  'bal-icon-info-circle',
  'bal-icon-locate',
@@ -648,6 +650,14 @@ export const BalIconClock = /*@__PURE__*/ Vue.extend({
 });
 
 
+export const BalIconClose = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-close', []),
+});
+
+
 export const BalIconCloseBig = /*@__PURE__*/ Vue.extend({
 
 
@@ -733,6 +743,14 @@ export const BalIconGenerellEdit = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('bal-icon-generell-edit', []),
+});
+
+
+export const BalIconGithub = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-github', []),
 });
 
 
@@ -1103,6 +1121,7 @@ export const BalNavbar = /*@__PURE__*/ Vue.extend({
 
   props: {
     light: {} as PropOptions<Components.BalNavbar['light']>,
+    noBurger: {} as PropOptions<Components.BalNavbar['noBurger']>,
   },
 
 

@@ -21,9 +21,7 @@ Then the build script will automatically optimize the svg and create its own web
 | <bal-icon name="check-circle" /> | `check-circle` |
 | <bal-icon name="check" /> | `check` |
 | <bal-icon name="clock" /> | `clock` |
-| <bal-icon name="close-big" /> | `close-big` |
-| <bal-icon name="close-small" /> | `close-small` |
-| <bal-icon name="close-thin" /> | `close-thin` |
+| <bal-icon name="close" /> | `close` |
 | <bal-icon name="contact" /> | `contact` |
 | <bal-icon name="copy" /> | `copy` |
 | <bal-icon name="date" /> | `date` |
@@ -31,7 +29,7 @@ Then the build script will automatically optimize the svg and create its own web
 | <bal-icon name="download" /> | `download` |
 | <bal-icon name="edit" /> | `edit` |
 | <bal-icon name="generell-consultant" /> | `generell-consultant` |
-| <bal-icon name="generell-edit" /> | `generell-edit` |
+| <bal-icon name="github" /> | `github` |
 | <bal-icon name="info-circle" /> | `info-circle` |
 | <bal-icon name="info" /> | `info` |
 | <bal-icon name="locate" /> | `locate` |
@@ -41,16 +39,10 @@ Then the build script will automatically optimize the svg and create its own web
 | <bal-icon name="message" /> | `message` |
 | <bal-icon name="minus" /> | `minus` |
 | <bal-icon name="nav-back" /> | `nav-back` |
-| <bal-icon name="nav-dropdown" /> | `nav-dropdown` |
 | <bal-icon name="nav-go-down" /> | `nav-go-down` |
-| <bal-icon name="nav-go-large" /> | `nav-go-large` |
-| <bal-icon name="nav-go-left-no-padding" /> | `nav-go-left-no-padding` |
 | <bal-icon name="nav-go-left" /> | `nav-go-left` |
-| <bal-icon name="nav-go-right-no-padding" /> | `nav-go-right-no-padding` |
 | <bal-icon name="nav-go-right" /> | `nav-go-right` |
-| <bal-icon name="nav-go-small" /> | `nav-go-small` |
 | <bal-icon name="nav-go-up" /> | `nav-go-up` |
-| <bal-icon name="nav-success" /> | `nav-success` |
 | <bal-icon name="plus" /> | `plus` |
 | <bal-icon name="read-only" /> | `read-only` |
 | <bal-icon name="refresh" /> | `refresh` |

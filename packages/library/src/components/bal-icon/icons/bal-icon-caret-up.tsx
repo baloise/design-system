@@ -8,7 +8,7 @@ import { Component, h } from '@stencil/core';
 export class IconCaretUp {
   render() {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M15 13l4 4h-8z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M15 8l15 15H0L15 8z"/></svg>
     );
   }
 }
