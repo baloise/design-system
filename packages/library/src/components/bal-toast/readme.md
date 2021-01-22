@@ -21,9 +21,17 @@ balToastController.create({ message: 'Danger zone!', type: 'is-danger' })
 
 ## Properties
 
-| Property | Attribute | Description                                                    | Type                                                                       | Default        |
-| -------- | --------- | -------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------- |
-| `type`   | `type`    | The theme type of the toast. Given by bulma our css framework. | `"is-danger" \| "is-info" \| "is-primary" \| "is-success" \| "is-warning"` | `'is-primary'` |
+| Property   | Attribute  | Description                                                    | Type                                                              | Default |
+| ---------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- | ------- |
+| `duration` | `duration` | The duration of the toast                                      | `number`                                                          | `0`     |
+| `type`     | `type`     | The theme type of the toast. Given by bulma our css framework. | `"" \| "danger" \| "info" \| "primary" \| "success" \| "warning"` | `''`    |
+
+
+## Events
+
+| Event      | Description                  | Type                  |
+| ---------- | ---------------------------- | --------------------- |
+| `balClose` | Emitted when toast is closed | `CustomEvent<string>` |
 
 
 ## Methods
@@ -54,11 +62,13 @@ Type: `Promise<void>`
 ### Depends on
 
 - [bal-text](../bal-text)
+- [bal-icon](../bal-icon)
 
 ### Graph
 ```mermaid
 graph TD;
   bal-toast --> bal-text
+  bal-toast --> bal-icon
   style bal-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

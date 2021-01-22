@@ -13,8 +13,7 @@
       window.balToastController = balToastController
     </script>
   </head>
-  <body>
-    <div class="bal-app"></div>
+  <body class="bal-app">
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
@@ -24,7 +23,7 @@
       </section>
       <script>
         document.getElementById('toast-default').onclick = function () {
-          balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
+          balToastController.create({ message: 'Hi I am a default Toast! Hi I am a default Toast!', duration: 1000, type: 'is-success' })
         }
         document.getElementById('toast-warning').onclick = function () {
           balToastController.create({ message: 'Warning!', type: 'is-warning' })
@@ -33,6 +32,33 @@
           balToastController.create({ message: 'Danger zone!', type: 'is-danger' })
         }
       </script>
+
+      <h2 class="title is-size-2">Colors</h2>
+      <section>
+        <bal-toast>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </bal-toast>
+        <br>
+        <bal-toast type="is-primary">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </bal-toast>
+        <br>
+        <bal-toast type="is-info">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </bal-toast>
+        <br>
+        <bal-toast type="is-success">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </bal-toast>
+        <br>
+        <bal-toast type="is-warning">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </bal-toast>
+        <br>
+        <bal-toast type="is-danger">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </bal-toast>
+      </section>
     </div>
   </body>
 </html>

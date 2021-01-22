@@ -1047,6 +1047,30 @@ export class BalSelectOption {
   }
 }
 
+import { Snackbar as ISnackbar } from '@baloise/ui-library/dist/types/components/bal-snackbar/bal-snackbar';
+export declare interface BalSnackbar extends Components.BalSnackbar {}
+@ProxyCmp({
+  inputs: ['duration', 'icon', 'message', 'subject', 'type'],
+  methods: ['closeIn', 'close']
+})
+@Component({
+  selector: 'bal-snackbar',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['duration', 'icon', 'message', 'subject', 'type'],
+  outputs: ['balClose']
+})
+export class BalSnackbar {
+  /** Emitted when snackbar is closed */
+  balClose!: ISnackbar['balClose'];
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balClose']);
+  }
+}
+
 
 export declare interface BalSpinner extends Components.BalSpinner {}
 @ProxyCmp({
@@ -1205,22 +1229,26 @@ It will not be triggert if either hour or time input has never been set (i.e. "-
   }
 }
 
-
+import { Toast as IToast } from '@baloise/ui-library/dist/types/components/bal-toast/bal-toast';
 export declare interface BalToast extends Components.BalToast {}
 @ProxyCmp({
-  inputs: ['type'],
+  inputs: ['duration', 'type'],
   methods: ['closeIn', 'close']
 })
 @Component({
   selector: 'bal-toast',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['type']
+  inputs: ['duration', 'type'],
+  outputs: ['balClose']
 })
 export class BalToast {
+  /** Emitted when toast is closed */
+  balClose!: IToast['balClose'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balClose']);
   }
 }

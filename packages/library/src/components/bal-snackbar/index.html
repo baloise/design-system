@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+    <script type="module">
+      import { balSnackbarController } from '/build/index.esm.js'
+
+      window.balSnackbarController = balSnackbarController
+    </script>
+  </head>
+  <body class="bal-app">
+    <div class="container">
+      <h2 class="title is-size-2">Basic</h2>
+      <section>
+        <bal-button id="snack-default" type="is-success" data-test-id="snack">Show success Snack</bal-button>
+        <bal-button id="snack-warning" type="is-warning" data-test-id="snack">Show warning Snack</bal-button>
+        <bal-button id="snack-danger" type="is-danger" data-test-id="snack">Show error Snack</bal-button>
+      </section>
+      <script>
+        document.getElementById('snack-default').onclick = function () {
+          balSnackbarController.create({ message: 'Hi I am a default Snack!', subject: 'Subject', type: 'is-success', duration: 1000 })
+        }
+        document.getElementById('snack-warning').onclick = function () {
+          balSnackbarController.create({ message: 'Warning!', type: 'is-warning', subject: 'Subject', icon: 'info-circle' })
+        }
+        document.getElementById('snack-danger').onclick = function () {
+          balSnackbarController.create({ message: 'Danger zone!', type: 'is-danger', subject: 'Subject' })
+        }
+      </script>
+
+      <h2 class="title is-size-2">Colors</h2>
+      <section>
+        <bal-snackbar subject="Subject" icon="info-circle">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </bal-snackbar>
+        <bal-snackbar subject="Subject" icon="info-circle" type="is-primary">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </bal-snackbar>
+        <bal-snackbar subject="Subject" icon="info-circle" type="is-info">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </bal-snackbar>
+        <bal-snackbar subject="Subject" icon="info-circle" type="is-success">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </bal-snackbar>
+        <bal-snackbar subject="Subject" icon="info-circle" type="is-warning">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </bal-snackbar>
+        <bal-snackbar subject="Subject" icon="info-circle" type="is-danger">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </bal-snackbar>
+      </section>
+    </div>
+  </body>
+</html>
