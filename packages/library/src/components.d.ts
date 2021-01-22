@@ -765,6 +765,10 @@ export namespace Components {
     }
     interface BalNavbar {
         /**
+          * It `true` the component uses the whole width
+         */
+        "expanded": boolean;
+        /**
           * It `true` the navbar has a white background
          */
         "light": boolean;
@@ -2708,6 +2712,10 @@ declare namespace LocalJSX {
     interface BalModalHeader {
     }
     interface BalNavbar {
+        /**
+          * It `true` the component uses the whole width
+         */
+        "expanded"?: boolean;
         /**
           * It `true` the navbar has a white background
          */

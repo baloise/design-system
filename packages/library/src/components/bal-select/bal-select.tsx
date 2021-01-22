@@ -471,6 +471,7 @@ export class Select {
         <bal-icon
           class={{ 'is-hidden': this.loading }}
           type="info"
+          size="xsmall"
           turn={!this.loading && !this.typeahead && this.isDropdownOpen}
           color={this.inverted ? 'white' : 'blue'}
           name={this.typeahead && !this.multiple ? 'search' : 'caret-down'}
@@ -525,6 +526,7 @@ export class Select {
           <bal-icon
             class={{ 'is-hidden': this.loading }}
             turn={!this.loading && !this.typeahead && this.isDropdownOpen}
+            size="xsmall"
             type="info"
             name="search"
           />

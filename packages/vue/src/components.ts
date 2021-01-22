@@ -1122,6 +1122,7 @@ export const BalNavbar = /*@__PURE__*/ Vue.extend({
   props: {
     light: {} as PropOptions<Components.BalNavbar['light']>,
     noBurger: {} as PropOptions<Components.BalNavbar['noBurger']>,
+    expanded: {} as PropOptions<Components.BalNavbar['expanded']>,
   },
 
 

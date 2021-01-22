@@ -1662,13 +1662,13 @@ export class BalModalHeader {
 
 export declare interface BalNavbar extends Components.BalNavbar {}
 @ProxyCmp({
-  inputs: ['light', 'noBurger']
+  inputs: ['expanded', 'light', 'noBurger']
 })
 @Component({
   selector: 'bal-navbar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['light', 'noBurger']
+  inputs: ['expanded', 'light', 'noBurger']
 })
 export class BalNavbar {
   protected el: HTMLElement;

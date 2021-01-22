@@ -2,46 +2,41 @@
 @import 'node_modules/bulma/sass/elements/icon.sass';
 
 :host {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: static;
-  height: 24px;
   width: 24px;
   fill: $blue;
 
   .bal-icon-inner {
     display: block;
     position: static;
-    height: 24px;
     width: 24px;
   }
 
   &.is-size-xsmall,
   &.is-size-xsmall .bal-icon-inner {
-    height: 12px;
-    width: 12px;
+    width: 10px;
   }
 
   &.is-size-small,
   &.is-size-small .bal-icon-inner {
-    height: 16px;
     width: 16px;
   }
 
   &.is-size-medium,
   &.is-size-medium .bal-icon-inner {
-    height: 32px;
     width: 32px;
   }
 
   &.is-size-large,
   &.is-size-large .bal-icon-inner {
-    height: 48px;
     width: 48px;
   }
 
   &.is-size-xlarge,
   &.is-size-xlarge .bal-icon-inner {
-    height: 64px;
     width: 64px;
   }
 

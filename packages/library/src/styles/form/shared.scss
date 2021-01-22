@@ -7,18 +7,18 @@
   color: $blue-line !important;
 }
 
-.control.has-icons-left bal-icon,
-.control.has-icons-right bal-icon {
-  display: block !important;
-}
+// .control.has-icons-left bal-icon,
+// .control.has-icons-right bal-icon {
+//   display: block !important;
+// }
 
 .control.has-icons-left bal-icon,
 .control.has-icons-right bal-icon {
-  height: 38px;
+  height: 36px;
   pointer-events: none;
   position: absolute;
   top: 0;
-  width: 38px;
+  width: 36px;
   z-index: 4;
 }
 
