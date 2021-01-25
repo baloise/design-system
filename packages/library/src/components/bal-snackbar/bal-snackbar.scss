@@ -13,7 +13,7 @@
     margin: 0.5em 0 0 0;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
     border-radius: $radius-card;
-    padding: 20px 30px;
+    padding: 32px;
     pointer-events: auto;
     max-width: 320px;
     flex-grow: 1;
@@ -26,7 +26,6 @@
       display: flex;
       align-items: center;
       column-gap: 10px;
-      margin-top: 15px;
       font-size: $size-4;
       font-weight: $weight-bold;
     }
@@ -66,8 +65,8 @@
 
     .close {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 32px;
+      right: 32px;
       cursor: pointer;
     }
   }

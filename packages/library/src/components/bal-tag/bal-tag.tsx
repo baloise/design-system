@@ -16,7 +16,7 @@ export class Tag {
   render() {
     return (
       <Host>
-        <span class={`tag ${this.type ? `is-${this.type}` : 'default'}`}>
+        <span class={`tag ${this.type !== '' ? `is-${this.type}` : 'default'}`}>
           <bal-text>
             <slot />
           </bal-text>

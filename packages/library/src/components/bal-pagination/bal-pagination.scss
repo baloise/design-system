@@ -1,12 +1,11 @@
-@import "bal-pagination.vars";
-@import "node_modules/bulma/sass/components/pagination";
+@import 'bal-pagination.vars';
+@import 'node_modules/bulma/sass/components/pagination';
 
 :host {
   display: block;
 }
 
 nav.pagination {
-
   & > button {
     box-shadow: none !important;
     align-items: center;
@@ -24,6 +23,7 @@ nav.pagination {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -2px;
   }
 
   ul {
@@ -32,8 +32,8 @@ nav.pagination {
     list-style: none;
   }
 
-  button, a {
+  button,
+  a {
     cursor: pointer;
   }
-
 }

@@ -21,6 +21,7 @@
       padding: 8px 0;
 
       .bal-data-label {
+        position: relative;
         display: block;
         font-weight: $weight-bold;
         color: $blue;
@@ -31,6 +32,8 @@
 
         bal-hint {
           margin-left: 6px;
+          position: absolute;
+          top: -3px;
         }
       }
 

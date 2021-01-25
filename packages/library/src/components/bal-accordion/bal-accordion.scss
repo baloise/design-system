@@ -10,13 +10,15 @@ span.trigger-label {
   align-items: center;
 
   span.label {
+    margin-top: 3px;
     margin-bottom: 0;
+    font-weight: $weight-normal;
   }
 }
 
 bal-icon {
   height: 32px;
-  margin-right: 2px;
+  margin-right: 5px;
 }
 
 .accordion-content.is-info {

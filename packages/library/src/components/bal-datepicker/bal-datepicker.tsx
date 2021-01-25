@@ -461,10 +461,10 @@ export class Datepicker {
       <header class="datepicker-header">
         <div class="pagination field is-centered">
           <a role="button" onClick={() => this.previousMonth()} class="pagination-previous">
-            <bal-icon name="nav-go-left" size="medium" />
+            <bal-icon name="nav-go-left" size="small" />
           </a>
           <a role="button" onClick={() => this.nextMonth()} class="pagination-next">
-            <bal-icon name="nav-go-right" size="medium" />
+            <bal-icon name="nav-go-right" size="small" />
           </a>
           <div class="pagination-list">
             <div class="field has-addons">

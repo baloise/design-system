@@ -27,6 +27,8 @@
             message: 'Hi I am a default Snack!',
             subject: 'Subject',
             type: 'success',
+            action: 'More',
+            icon: 'info-circle',
             duration: 1000,
           })
         }
@@ -35,11 +37,18 @@
             message: 'Warning!',
             type: 'warning',
             subject: 'Subject',
+            action: 'More',
             icon: 'info-circle',
           })
         }
         document.getElementById('snack-danger').onclick = function () {
-          balSnackbarController.create({ message: 'Danger zone!', type: 'danger', subject: 'Subject' })
+          balSnackbarController.create({
+            message: 'Danger zone!',
+            type: 'danger',
+            subject: 'Subject',
+            action: 'More',
+            icon: 'info-circle',
+          })
         }
       </script>
 

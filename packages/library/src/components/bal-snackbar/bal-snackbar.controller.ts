@@ -1,9 +1,13 @@
+import { ColorTypes } from '../../types/color.types'
+
 interface SnackbarOptions {
   message: string
   icon: string
   subject: string
   duration?: number
-  type?: "primary" | "info" | "success" | "warning" | "danger"
+  action?: string
+  actionCallback?: () => void
+  type?: ColorTypes | ''
 }
 
 class SnackbarController {
@@ -14,27 +18,29 @@ class SnackbarController {
 
   create(options: SnackbarOptions): HTMLBalSnackbarElement {
     this.setupContainer()
-    const snackbar: HTMLBalSnackbarElement = document.createElement("bal-snackbar")
+    const snackbar: HTMLBalSnackbarElement = document.createElement('bal-snackbar')
     snackbar.innerHTML = options.message
-    snackbar.type = options.type || "info"
+    snackbar.type = options.type || 'info'
     snackbar.duration = options.duration || 0
     snackbar.subject = options.subject
     snackbar.icon = options.icon
+    snackbar.action = options.action
     snackbar.addEventListener('balClose', event => this.removeFromQueue((<any>event).detail))
+    snackbar.addEventListener('balAction', () => options.actionCallback())
     this.preQueue.push(snackbar)
     this.updateQueue()
     return snackbar
   }
 
-  private setupContainer()  {
-    this.container = document.getElementById("bal-snackbar-container")
+  private setupContainer() {
+    this.container = document.getElementById('bal-snackbar-container')
 
     if (this.container) return
 
     if (!this.container) {
-      this.container = document.createElement("div")
-      this.container.className = "bal-notices bal-notices--snackbar"
-      this.container.id = "bal-snackbar-container"
+      this.container = document.createElement('div')
+      this.container.className = 'bal-notices bal-notices--snackbar'
+      this.container.id = 'bal-snackbar-container'
     }
 
     document.body.appendChild(this.container)
@@ -45,7 +51,7 @@ class SnackbarController {
       const snackbar = this.preQueue.shift()
       if (snackbar) {
         this.queue.push(snackbar)
-        this.container.insertAdjacentElement("beforeend", snackbar)
+        this.container.insertAdjacentElement('beforeend', snackbar)
       }
     }
   }
@@ -58,7 +64,6 @@ class SnackbarController {
   setQueue(queueLimit: number) {
     this.queueLimit = queueLimit
   }
-
 }
 
 export const balSnackbarController = new SnackbarController()

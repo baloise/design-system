@@ -78,16 +78,13 @@ export class Accordion {
   render() {
     return (
       <Host class="accordion">
-        <bal-button
-          expanded={true}
-          type={this.buttonType}
-          onClick={() => this.toggle()}>
+        <bal-button expanded={true} type={this.buttonType} onClick={() => this.toggle()}>
           <span class="trigger-label" style={this.isActive && { display: 'none' }}>
-            <bal-icon name={this.openIcon} type={this.type} size="small"/>
+            <bal-icon name={this.openIcon} type={this.type} size="small" />
             <span class="label">{this.openLabel}</span>
           </span>
           <span class="trigger-label" style={!this.isActive && { display: 'none' }}>
-            <bal-icon name={this.closeIcon} type={this.type} />
+            <bal-icon name={this.closeIcon} type={this.type} size="small" />
             <span class="label">{this.closeLabel}</span>
           </span>
         </bal-button>
