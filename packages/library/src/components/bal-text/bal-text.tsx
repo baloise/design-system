@@ -4,7 +4,7 @@ import { Component, h, Host } from '@stencil/core';
   tag: 'bal-text',
   styleUrl: 'bal-text.scss',
   shadow: false,
-  scoped: true,
+  scoped: false,
 })
 export class Text {
   render() {

@@ -7,37 +7,44 @@
   align-items: center;
   position: static;
   width: 24px;
+  max-height: 24px;
   fill: $blue;
 
   .bal-icon-inner {
     display: block;
     position: static;
     width: 24px;
+    max-height: 24px;
   }
 
   &.is-size-xsmall,
   &.is-size-xsmall .bal-icon-inner {
     width: 10px;
+    max-height: 10px;
   }
 
   &.is-size-small,
   &.is-size-small .bal-icon-inner {
     width: 16px;
+    max-height: 16px;
   }
 
   &.is-size-medium,
   &.is-size-medium .bal-icon-inner {
     width: 32px;
+    max-height: 32px;
   }
 
   &.is-size-large,
   &.is-size-large .bal-icon-inner {
     width: 48px;
+    max-height: 48px;
   }
 
   &.is-size-xlarge,
   &.is-size-xlarge .bal-icon-inner {
     width: 64px;
+    max-height: 64px;
   }
 
   &.turn .bal-icon-inner {

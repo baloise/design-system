@@ -1,7 +1,7 @@
 @import '../../styles/base/fonts.scss';
 @import '../../styles/ui-library.utilities.scss';
 
-:host {
+bal-text {
   display: inline;
   position: static;
   font-family: $family-primary;

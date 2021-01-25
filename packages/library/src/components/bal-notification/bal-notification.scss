@@ -7,21 +7,21 @@
   position: static;
 
   .notification {
-    background: $blue-light;
-    border: 1px solid $blue-light-line;
-    color: $blue;
     font-family: $family-primary;
+    background: $white-bis;
+    border: 1px solid $blue-light-line;
+    color: $text;
 
     &.is-primary {
-      background: $blue;
-      border: 1px solid $blue;
-      color: $white;
+      background: $blue-light;
+      border: 1px solid $blue-light-line;
+      color: $blue;
     }
 
     &.is-info {
-      background: $white-bis;
-      border: 1px solid $blue-light-line;
-      color: $text;
+      background: $blue;
+      border: 1px solid $blue;
+      color: $white;
     }
 
     &.is-link {

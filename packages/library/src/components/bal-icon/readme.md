@@ -80,6 +80,8 @@ Then the build script will automatically optimize the svg and create its own web
  - [bal-hint](../bal-hint)
  - [bal-pagination](../bal-pagination)
  - [bal-select](../bal-select)
+ - [bal-snackbar](../bal-snackbar)
+ - [bal-toast](../bal-toast)
 
 ### Graph
 ```mermaid
@@ -93,6 +95,8 @@ graph TD;
   bal-hint --> bal-icon
   bal-pagination --> bal-icon
   bal-select --> bal-icon
+  bal-snackbar --> bal-icon
+  bal-toast --> bal-icon
   style bal-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

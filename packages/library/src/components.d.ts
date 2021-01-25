@@ -985,6 +985,40 @@ export namespace Components {
          */
         "value": string;
     }
+    interface BalSnackbar {
+        /**
+          * Label text for the action button
+         */
+        "action": string;
+        /**
+          * Closes this snackbar
+         */
+        "close": () => Promise<void>;
+        /**
+          * Closes the snackbar after the given duration in ms
+         */
+        "closeIn": (duration: number) => Promise<void>;
+        /**
+          * The duration of the snackbar
+         */
+        "duration": number;
+        /**
+          * The icon of the snackbar header
+         */
+        "icon": string;
+        /**
+          * The message of the snackbar
+         */
+        "message": string;
+        /**
+          * The subject of the snackbar header
+         */
+        "subject": string;
+        /**
+          * The theme type of the snackbar. Given by bulma our css framework.
+         */
+        "type": ColorTypes | '';
+    }
     interface BalSpinner {
         /**
           * If `true` the component can be used on dark background
@@ -1153,9 +1187,13 @@ export namespace Components {
          */
         "closeIn": (duration: number) => Promise<void>;
         /**
+          * The duration of the toast
+         */
+        "duration": number;
+        /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "type": 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger';
+        "type": ColorTypes | '';
     }
 }
 declare global {
@@ -1789,6 +1827,12 @@ declare global {
         prototype: HTMLBalSelectOptionElement;
         new (): HTMLBalSelectOptionElement;
     };
+    interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
+    }
+    var HTMLBalSnackbarElement: {
+        prototype: HTMLBalSnackbarElement;
+        new (): HTMLBalSnackbarElement;
+    };
     interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {
     }
     var HTMLBalSpinnerElement: {
@@ -1943,6 +1987,7 @@ declare global {
         "bal-radio-group": HTMLBalRadioGroupElement;
         "bal-select": HTMLBalSelectElement;
         "bal-select-option": HTMLBalSelectOptionElement;
+        "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-tabs": HTMLBalTabsElement;
@@ -2933,6 +2978,40 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface BalSnackbar {
+        /**
+          * Label text for the action button
+         */
+        "action"?: string;
+        /**
+          * The duration of the snackbar
+         */
+        "duration"?: number;
+        /**
+          * The icon of the snackbar header
+         */
+        "icon"?: string;
+        /**
+          * The message of the snackbar
+         */
+        "message"?: string;
+        /**
+          * Emitted when the action button is clicked
+         */
+        "onBalAction"?: (event: CustomEvent<string>) => void;
+        /**
+          * Emitted when snackbar is closed
+         */
+        "onBalClose"?: (event: CustomEvent<string>) => void;
+        /**
+          * The subject of the snackbar header
+         */
+        "subject"?: string;
+        /**
+          * The theme type of the snackbar. Given by bulma our css framework.
+         */
+        "type"?: ColorTypes | '';
+    }
     interface BalSpinner {
         /**
           * If `true` the component can be used on dark background
@@ -3109,9 +3188,17 @@ declare namespace LocalJSX {
     }
     interface BalToast {
         /**
+          * The duration of the toast
+         */
+        "duration"?: number;
+        /**
+          * Emitted when toast is closed
+         */
+        "onBalClose"?: (event: CustomEvent<string>) => void;
+        /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "type"?: 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger';
+        "type"?: ColorTypes | '';
     }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
@@ -3219,6 +3306,7 @@ declare namespace LocalJSX {
         "bal-radio-group": BalRadioGroup;
         "bal-select": BalSelect;
         "bal-select-option": BalSelectOption;
+        "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
         "bal-tab-item": BalTabItem;
         "bal-tabs": BalTabs;
@@ -3338,6 +3426,7 @@ declare module "@stencil/core" {
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
             "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
+            "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

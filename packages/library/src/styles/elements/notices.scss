@@ -17,4 +17,25 @@
   .container {
     width: 100%;
   }
+  &.bal-notices--snackbar {
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-direction: column-reverse;
+    margin: .5em;
+
+    bal-snackbar {
+      justify-content: flex-end;
+      align-self: flex-end;
+    }
+  }
+  &.bal-notices--toast {
+    justify-content: flex-start;
+    align-items: center;
+    margin: .5em;
+
+    bal-toast {
+      justify-content: center;
+      align-self: center;
+    }
+  }
 }

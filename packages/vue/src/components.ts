@@ -115,6 +115,7 @@ const customElementTags: string[] = [
  'bal-radio-group',
  'bal-select',
  'bal-select-option',
+ 'bal-snackbar',
  'bal-spinner',
  'bal-tab-item',
  'bal-tabs',
@@ -1285,6 +1286,26 @@ export const BalSelectOption = /*@__PURE__*/ Vue.extend({
 });
 
 
+export const BalSnackbar = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    type: {} as PropOptions<Components.BalSnackbar['type']>,
+    duration: {} as PropOptions<Components.BalSnackbar['duration']>,
+    subject: {} as PropOptions<Components.BalSnackbar['subject']>,
+    message: {} as PropOptions<Components.BalSnackbar['message']>,
+    icon: {} as PropOptions<Components.BalSnackbar['icon']>,
+    action: {} as PropOptions<Components.BalSnackbar['action']>,
+  },
+
+
+  methods: {
+    closeIn: createCommonMethod('closeIn') as Components.BalSnackbar['closeIn'],
+    close: createCommonMethod('close') as Components.BalSnackbar['close'],
+  },
+  render: createCommonRender('bal-snackbar', ['balClose', 'balAction']),
+});
+
+
 export const BalSpinner = /*@__PURE__*/ Vue.extend({
 
   props: {
@@ -1407,6 +1428,7 @@ export const BalToast = /*@__PURE__*/ Vue.extend({
 
   props: {
     type: {} as PropOptions<Components.BalToast['type']>,
+    duration: {} as PropOptions<Components.BalToast['duration']>,
   },
 
 
@@ -1414,6 +1436,6 @@ export const BalToast = /*@__PURE__*/ Vue.extend({
     closeIn: createCommonMethod('closeIn') as Components.BalToast['closeIn'],
     close: createCommonMethod('close') as Components.BalToast['close'],
   },
-  render: createCommonRender('bal-toast', []),
+  render: createCommonRender('bal-toast', ['balClose']),
 });
 

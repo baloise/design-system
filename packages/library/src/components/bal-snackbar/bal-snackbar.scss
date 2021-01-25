@@ -1,25 +1,35 @@
 @import '../../styles/ui-library.utilities.scss';
-// @import "../../scss/utilities/animations";
 
 :host {
-  display: inline-flex;
+  display: flex;
   position: relative;
-  cursor: pointer;
+  width: 100%;
   flex-grow: 0 !important;
 
-  .toast {
-    align-self: center;
+  .snackbar {
+    align-self: flex-end;
     display: inline-flex;
     animation-duration: 150ms;
-    margin: 0 0 0.5em 0;
+    margin: 0.5em 0 0 0;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
     border-radius: $radius-card;
-    padding: 20px 40px;
+    padding: 20px 30px;
     pointer-events: auto;
-    max-width: 600px;
+    max-width: 320px;
     flex-grow: 1;
     font-size: $size-5;
+    flex-direction: column !important;
+    row-gap: 20px;
     position: relative;
+
+    .snackbar-header {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      margin-top: 15px;
+      font-size: $size-4;
+      font-weight: $weight-bold;
+    }
 
     &.is-primary {
       background: $primary;
@@ -46,18 +56,19 @@
       color: $white;
     }
 
-    span.toast-message {
-      margin-right: 50px;
-      margin-top: 1px;
+    bal-text {
+      word-break: break-all;
+    }
+
+    .icon bal-icon {
+      margin-top: -4px;
     }
 
     .close {
       position: absolute;
-      top: 50%;
-      right: 40px;
-      margin-top: -7px;
-      margin-right: -5px;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
     }
-
   }
 }

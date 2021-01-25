@@ -3,13 +3,19 @@ $font-path: 'assets/fonts' !default;
 @font-face {
   font-family: 'MetaPro';
   font-style: normal;
-  font-weight: 300;
-  src: local('MetaPro'), local('MetaStd-Normal'), url('/#{$font-path}/MetaStd-Normal.woff2') format('woff2');
+  font-weight: 400;
+  font-display: fallback;
+  src: local('MetaPro'), local('MetaStd-Normal'),
+    url('/#{$font-path}/MetaStd-Normal.woff2') format('woff2') url('/#{$font-path}/MetaStd-Normal.woff') format('woff')
+      url('/#{$font-path}/MetaStd-Normal.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'MetaPro';
   font-style: normal;
   font-weight: 700;
-  src: local('MetaPro'), local('MetaStd-Medium'), url('/#{$font-path}/MetaStd-Medium.woff2') format('woff2');
+  font-display: fallback;
+  src: local('MetaStd-Medium'),
+    url('/#{$font-path}/MetaStd-Medium.woff2') format('woff2') url('/#{$font-path}/MetaStd-Medium.woff') format('woff')
+      url('/#{$font-path}/MetaStd-Medium.ttf') format('truetype');
 }

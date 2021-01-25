@@ -16,9 +16,9 @@
  - [bal-field-message](../bal-field-message)
  - [bal-modal-header](../bal-modal-header)
  - [bal-radio](../bal-radio)
+ - [bal-snackbar](../bal-snackbar)
  - [bal-tabs](../bal-tabs)
  - [bal-tag](../bal-tag)
- - [bal-toast](../bal-toast)
 
 ### Graph
 ```mermaid
@@ -30,9 +30,9 @@ graph TD;
   bal-field-message --> bal-text
   bal-modal-header --> bal-text
   bal-radio --> bal-text
+  bal-snackbar --> bal-text
   bal-tabs --> bal-text
   bal-tag --> bal-text
-  bal-toast --> bal-text
   style bal-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
