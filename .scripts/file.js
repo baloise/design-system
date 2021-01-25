@@ -49,7 +49,7 @@ const save = async (filePath, content) => {
     await write(filePath, content)
     log.success(`Successfully updated ${path.basename(filePath)}`)
   } catch (error) {
-    log.error(`Could not update ${filePath}`, error)
+    log.error(`Could not save ${filePath}`, error)
     setTimeout(() => process.exit(1), 0)
   }
 }

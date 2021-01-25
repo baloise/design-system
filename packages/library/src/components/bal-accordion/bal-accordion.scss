@@ -2,6 +2,12 @@
 
 :host {
   display: block;
+  border-radius: $radius-large;
+
+  & > bal-button,
+  & bal-button > button {
+    border-radius: $radius-large;
+  }
 }
 
 span.trigger-label {
@@ -13,6 +19,7 @@ span.trigger-label {
     margin-top: 3px;
     margin-bottom: 0;
     font-weight: $weight-normal;
+    font-size: $size-4;
   }
 }
 
@@ -27,4 +34,9 @@ bal-icon {
 
 .is-fullwidth {
   width: 100%;
+}
+
+.accordion-content {
+  border-bottom-left-radius: $radius-large;
+  border-bottom-right-radius: $radius-large;
 }

@@ -15,6 +15,10 @@ import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
         /**
+          * If `true` the accordion is used on the bottom of a card
+         */
+        "card": boolean;
+        /**
           * Close the accordion
          */
         "close": () => Promise<void>;
@@ -113,6 +117,10 @@ export namespace Components {
          */
         "target": '_blank' | ' _parent' | '_self' | '_top';
         /**
+          * If `true` the top corners get rounded
+         */
+        "topRounded": boolean;
+        /**
           * The theme type of the button. Given by bulma our css framework.
          */
         "type": BalButtonType;
@@ -131,6 +139,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * If `true` the card has padding.
+         */
+        "padded": boolean;
+        /**
           * If `true` the card loses its border radius.
          */
         "square": boolean;
@@ -138,6 +150,10 @@ export namespace Components {
           * If `true` the card has a limited width on desktop.
          */
         "teaser": boolean;
+        /**
+          * Defines the color of the card.
+         */
+        "type": ColorTypes | '';
     }
     interface BalCardActions {
         /**
@@ -559,12 +575,6 @@ export namespace Components {
     }
     interface BalIconClose {
     }
-    interface BalIconCloseBig {
-    }
-    interface BalIconCloseSmall {
-    }
-    interface BalIconCloseThin {
-    }
     interface BalIconContact {
     }
     interface BalIconCopy {
@@ -578,8 +588,6 @@ export namespace Components {
     interface BalIconEdit {
     }
     interface BalIconGenerellConsultant {
-    }
-    interface BalIconGenerellEdit {
     }
     interface BalIconGithub {
     }
@@ -601,25 +609,13 @@ export namespace Components {
     }
     interface BalIconNavBack {
     }
-    interface BalIconNavDropdown {
-    }
     interface BalIconNavGoDown {
-    }
-    interface BalIconNavGoLarge {
     }
     interface BalIconNavGoLeft {
     }
-    interface BalIconNavGoLeftNoPadding {
-    }
     interface BalIconNavGoRight {
     }
-    interface BalIconNavGoRightNoPadding {
-    }
-    interface BalIconNavGoSmall {
-    }
     interface BalIconNavGoUp {
-    }
-    interface BalIconNavSuccess {
     }
     interface BalIconPlus {
     }
@@ -1449,24 +1445,6 @@ declare global {
         prototype: HTMLBalIconCloseElement;
         new (): HTMLBalIconCloseElement;
     };
-    interface HTMLBalIconCloseBigElement extends Components.BalIconCloseBig, HTMLStencilElement {
-    }
-    var HTMLBalIconCloseBigElement: {
-        prototype: HTMLBalIconCloseBigElement;
-        new (): HTMLBalIconCloseBigElement;
-    };
-    interface HTMLBalIconCloseSmallElement extends Components.BalIconCloseSmall, HTMLStencilElement {
-    }
-    var HTMLBalIconCloseSmallElement: {
-        prototype: HTMLBalIconCloseSmallElement;
-        new (): HTMLBalIconCloseSmallElement;
-    };
-    interface HTMLBalIconCloseThinElement extends Components.BalIconCloseThin, HTMLStencilElement {
-    }
-    var HTMLBalIconCloseThinElement: {
-        prototype: HTMLBalIconCloseThinElement;
-        new (): HTMLBalIconCloseThinElement;
-    };
     interface HTMLBalIconContactElement extends Components.BalIconContact, HTMLStencilElement {
     }
     var HTMLBalIconContactElement: {
@@ -1508,12 +1486,6 @@ declare global {
     var HTMLBalIconGenerellConsultantElement: {
         prototype: HTMLBalIconGenerellConsultantElement;
         new (): HTMLBalIconGenerellConsultantElement;
-    };
-    interface HTMLBalIconGenerellEditElement extends Components.BalIconGenerellEdit, HTMLStencilElement {
-    }
-    var HTMLBalIconGenerellEditElement: {
-        prototype: HTMLBalIconGenerellEditElement;
-        new (): HTMLBalIconGenerellEditElement;
     };
     interface HTMLBalIconGithubElement extends Components.BalIconGithub, HTMLStencilElement {
     }
@@ -1575,23 +1547,11 @@ declare global {
         prototype: HTMLBalIconNavBackElement;
         new (): HTMLBalIconNavBackElement;
     };
-    interface HTMLBalIconNavDropdownElement extends Components.BalIconNavDropdown, HTMLStencilElement {
-    }
-    var HTMLBalIconNavDropdownElement: {
-        prototype: HTMLBalIconNavDropdownElement;
-        new (): HTMLBalIconNavDropdownElement;
-    };
     interface HTMLBalIconNavGoDownElement extends Components.BalIconNavGoDown, HTMLStencilElement {
     }
     var HTMLBalIconNavGoDownElement: {
         prototype: HTMLBalIconNavGoDownElement;
         new (): HTMLBalIconNavGoDownElement;
-    };
-    interface HTMLBalIconNavGoLargeElement extends Components.BalIconNavGoLarge, HTMLStencilElement {
-    }
-    var HTMLBalIconNavGoLargeElement: {
-        prototype: HTMLBalIconNavGoLargeElement;
-        new (): HTMLBalIconNavGoLargeElement;
     };
     interface HTMLBalIconNavGoLeftElement extends Components.BalIconNavGoLeft, HTMLStencilElement {
     }
@@ -1599,41 +1559,17 @@ declare global {
         prototype: HTMLBalIconNavGoLeftElement;
         new (): HTMLBalIconNavGoLeftElement;
     };
-    interface HTMLBalIconNavGoLeftNoPaddingElement extends Components.BalIconNavGoLeftNoPadding, HTMLStencilElement {
-    }
-    var HTMLBalIconNavGoLeftNoPaddingElement: {
-        prototype: HTMLBalIconNavGoLeftNoPaddingElement;
-        new (): HTMLBalIconNavGoLeftNoPaddingElement;
-    };
     interface HTMLBalIconNavGoRightElement extends Components.BalIconNavGoRight, HTMLStencilElement {
     }
     var HTMLBalIconNavGoRightElement: {
         prototype: HTMLBalIconNavGoRightElement;
         new (): HTMLBalIconNavGoRightElement;
     };
-    interface HTMLBalIconNavGoRightNoPaddingElement extends Components.BalIconNavGoRightNoPadding, HTMLStencilElement {
-    }
-    var HTMLBalIconNavGoRightNoPaddingElement: {
-        prototype: HTMLBalIconNavGoRightNoPaddingElement;
-        new (): HTMLBalIconNavGoRightNoPaddingElement;
-    };
-    interface HTMLBalIconNavGoSmallElement extends Components.BalIconNavGoSmall, HTMLStencilElement {
-    }
-    var HTMLBalIconNavGoSmallElement: {
-        prototype: HTMLBalIconNavGoSmallElement;
-        new (): HTMLBalIconNavGoSmallElement;
-    };
     interface HTMLBalIconNavGoUpElement extends Components.BalIconNavGoUp, HTMLStencilElement {
     }
     var HTMLBalIconNavGoUpElement: {
         prototype: HTMLBalIconNavGoUpElement;
         new (): HTMLBalIconNavGoUpElement;
-    };
-    interface HTMLBalIconNavSuccessElement extends Components.BalIconNavSuccess, HTMLStencilElement {
-    }
-    var HTMLBalIconNavSuccessElement: {
-        prototype: HTMLBalIconNavSuccessElement;
-        new (): HTMLBalIconNavSuccessElement;
     };
     interface HTMLBalIconPlusElement extends Components.BalIconPlus, HTMLStencilElement {
     }
@@ -1924,9 +1860,6 @@ declare global {
         "bal-icon-check-circle": HTMLBalIconCheckCircleElement;
         "bal-icon-clock": HTMLBalIconClockElement;
         "bal-icon-close": HTMLBalIconCloseElement;
-        "bal-icon-close-big": HTMLBalIconCloseBigElement;
-        "bal-icon-close-small": HTMLBalIconCloseSmallElement;
-        "bal-icon-close-thin": HTMLBalIconCloseThinElement;
         "bal-icon-contact": HTMLBalIconContactElement;
         "bal-icon-copy": HTMLBalIconCopyElement;
         "bal-icon-date": HTMLBalIconDateElement;
@@ -1934,7 +1867,6 @@ declare global {
         "bal-icon-download": HTMLBalIconDownloadElement;
         "bal-icon-edit": HTMLBalIconEditElement;
         "bal-icon-generell-consultant": HTMLBalIconGenerellConsultantElement;
-        "bal-icon-generell-edit": HTMLBalIconGenerellEditElement;
         "bal-icon-github": HTMLBalIconGithubElement;
         "bal-icon-info": HTMLBalIconInfoElement;
         "bal-icon-info-circle": HTMLBalIconInfoCircleElement;
@@ -1945,16 +1877,10 @@ declare global {
         "bal-icon-message": HTMLBalIconMessageElement;
         "bal-icon-minus": HTMLBalIconMinusElement;
         "bal-icon-nav-back": HTMLBalIconNavBackElement;
-        "bal-icon-nav-dropdown": HTMLBalIconNavDropdownElement;
         "bal-icon-nav-go-down": HTMLBalIconNavGoDownElement;
-        "bal-icon-nav-go-large": HTMLBalIconNavGoLargeElement;
         "bal-icon-nav-go-left": HTMLBalIconNavGoLeftElement;
-        "bal-icon-nav-go-left-no-padding": HTMLBalIconNavGoLeftNoPaddingElement;
         "bal-icon-nav-go-right": HTMLBalIconNavGoRightElement;
-        "bal-icon-nav-go-right-no-padding": HTMLBalIconNavGoRightNoPaddingElement;
-        "bal-icon-nav-go-small": HTMLBalIconNavGoSmallElement;
         "bal-icon-nav-go-up": HTMLBalIconNavGoUpElement;
-        "bal-icon-nav-success": HTMLBalIconNavSuccessElement;
         "bal-icon-plus": HTMLBalIconPlusElement;
         "bal-icon-read-only": HTMLBalIconReadOnlyElement;
         "bal-icon-refresh": HTMLBalIconRefreshElement;
@@ -2000,6 +1926,10 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BalAccordion {
+        /**
+          * If `true` the accordion is used on the bottom of a card
+         */
+        "card"?: boolean;
         /**
           * Bal-Icon of the close trigger button
          */
@@ -2091,6 +2021,10 @@ declare namespace LocalJSX {
          */
         "target"?: '_blank' | ' _parent' | '_self' | '_top';
         /**
+          * If `true` the top corners get rounded
+         */
+        "topRounded"?: boolean;
+        /**
           * The theme type of the button. Given by bulma our css framework.
          */
         "type"?: BalButtonType;
@@ -2109,6 +2043,10 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
+          * If `true` the card has padding.
+         */
+        "padded"?: boolean;
+        /**
           * If `true` the card loses its border radius.
          */
         "square"?: boolean;
@@ -2116,6 +2054,10 @@ declare namespace LocalJSX {
           * If `true` the card has a limited width on desktop.
          */
         "teaser"?: boolean;
+        /**
+          * Defines the color of the card.
+         */
+        "type"?: ColorTypes | '';
     }
     interface BalCardActions {
         /**
@@ -2544,12 +2486,6 @@ declare namespace LocalJSX {
     }
     interface BalIconClose {
     }
-    interface BalIconCloseBig {
-    }
-    interface BalIconCloseSmall {
-    }
-    interface BalIconCloseThin {
-    }
     interface BalIconContact {
     }
     interface BalIconCopy {
@@ -2563,8 +2499,6 @@ declare namespace LocalJSX {
     interface BalIconEdit {
     }
     interface BalIconGenerellConsultant {
-    }
-    interface BalIconGenerellEdit {
     }
     interface BalIconGithub {
     }
@@ -2586,25 +2520,13 @@ declare namespace LocalJSX {
     }
     interface BalIconNavBack {
     }
-    interface BalIconNavDropdown {
-    }
     interface BalIconNavGoDown {
-    }
-    interface BalIconNavGoLarge {
     }
     interface BalIconNavGoLeft {
     }
-    interface BalIconNavGoLeftNoPadding {
-    }
     interface BalIconNavGoRight {
     }
-    interface BalIconNavGoRightNoPadding {
-    }
-    interface BalIconNavGoSmall {
-    }
     interface BalIconNavGoUp {
-    }
-    interface BalIconNavSuccess {
     }
     interface BalIconPlus {
     }
@@ -3243,9 +3165,6 @@ declare namespace LocalJSX {
         "bal-icon-check-circle": BalIconCheckCircle;
         "bal-icon-clock": BalIconClock;
         "bal-icon-close": BalIconClose;
-        "bal-icon-close-big": BalIconCloseBig;
-        "bal-icon-close-small": BalIconCloseSmall;
-        "bal-icon-close-thin": BalIconCloseThin;
         "bal-icon-contact": BalIconContact;
         "bal-icon-copy": BalIconCopy;
         "bal-icon-date": BalIconDate;
@@ -3253,7 +3172,6 @@ declare namespace LocalJSX {
         "bal-icon-download": BalIconDownload;
         "bal-icon-edit": BalIconEdit;
         "bal-icon-generell-consultant": BalIconGenerellConsultant;
-        "bal-icon-generell-edit": BalIconGenerellEdit;
         "bal-icon-github": BalIconGithub;
         "bal-icon-info": BalIconInfo;
         "bal-icon-info-circle": BalIconInfoCircle;
@@ -3264,16 +3182,10 @@ declare namespace LocalJSX {
         "bal-icon-message": BalIconMessage;
         "bal-icon-minus": BalIconMinus;
         "bal-icon-nav-back": BalIconNavBack;
-        "bal-icon-nav-dropdown": BalIconNavDropdown;
         "bal-icon-nav-go-down": BalIconNavGoDown;
-        "bal-icon-nav-go-large": BalIconNavGoLarge;
         "bal-icon-nav-go-left": BalIconNavGoLeft;
-        "bal-icon-nav-go-left-no-padding": BalIconNavGoLeftNoPadding;
         "bal-icon-nav-go-right": BalIconNavGoRight;
-        "bal-icon-nav-go-right-no-padding": BalIconNavGoRightNoPadding;
-        "bal-icon-nav-go-small": BalIconNavGoSmall;
         "bal-icon-nav-go-up": BalIconNavGoUp;
-        "bal-icon-nav-success": BalIconNavSuccess;
         "bal-icon-plus": BalIconPlus;
         "bal-icon-read-only": BalIconReadOnly;
         "bal-icon-refresh": BalIconRefresh;
@@ -3363,9 +3275,6 @@ declare module "@stencil/core" {
             "bal-icon-check-circle": LocalJSX.BalIconCheckCircle & JSXBase.HTMLAttributes<HTMLBalIconCheckCircleElement>;
             "bal-icon-clock": LocalJSX.BalIconClock & JSXBase.HTMLAttributes<HTMLBalIconClockElement>;
             "bal-icon-close": LocalJSX.BalIconClose & JSXBase.HTMLAttributes<HTMLBalIconCloseElement>;
-            "bal-icon-close-big": LocalJSX.BalIconCloseBig & JSXBase.HTMLAttributes<HTMLBalIconCloseBigElement>;
-            "bal-icon-close-small": LocalJSX.BalIconCloseSmall & JSXBase.HTMLAttributes<HTMLBalIconCloseSmallElement>;
-            "bal-icon-close-thin": LocalJSX.BalIconCloseThin & JSXBase.HTMLAttributes<HTMLBalIconCloseThinElement>;
             "bal-icon-contact": LocalJSX.BalIconContact & JSXBase.HTMLAttributes<HTMLBalIconContactElement>;
             "bal-icon-copy": LocalJSX.BalIconCopy & JSXBase.HTMLAttributes<HTMLBalIconCopyElement>;
             "bal-icon-date": LocalJSX.BalIconDate & JSXBase.HTMLAttributes<HTMLBalIconDateElement>;
@@ -3373,7 +3282,6 @@ declare module "@stencil/core" {
             "bal-icon-download": LocalJSX.BalIconDownload & JSXBase.HTMLAttributes<HTMLBalIconDownloadElement>;
             "bal-icon-edit": LocalJSX.BalIconEdit & JSXBase.HTMLAttributes<HTMLBalIconEditElement>;
             "bal-icon-generell-consultant": LocalJSX.BalIconGenerellConsultant & JSXBase.HTMLAttributes<HTMLBalIconGenerellConsultantElement>;
-            "bal-icon-generell-edit": LocalJSX.BalIconGenerellEdit & JSXBase.HTMLAttributes<HTMLBalIconGenerellEditElement>;
             "bal-icon-github": LocalJSX.BalIconGithub & JSXBase.HTMLAttributes<HTMLBalIconGithubElement>;
             "bal-icon-info": LocalJSX.BalIconInfo & JSXBase.HTMLAttributes<HTMLBalIconInfoElement>;
             "bal-icon-info-circle": LocalJSX.BalIconInfoCircle & JSXBase.HTMLAttributes<HTMLBalIconInfoCircleElement>;
@@ -3384,16 +3292,10 @@ declare module "@stencil/core" {
             "bal-icon-message": LocalJSX.BalIconMessage & JSXBase.HTMLAttributes<HTMLBalIconMessageElement>;
             "bal-icon-minus": LocalJSX.BalIconMinus & JSXBase.HTMLAttributes<HTMLBalIconMinusElement>;
             "bal-icon-nav-back": LocalJSX.BalIconNavBack & JSXBase.HTMLAttributes<HTMLBalIconNavBackElement>;
-            "bal-icon-nav-dropdown": LocalJSX.BalIconNavDropdown & JSXBase.HTMLAttributes<HTMLBalIconNavDropdownElement>;
             "bal-icon-nav-go-down": LocalJSX.BalIconNavGoDown & JSXBase.HTMLAttributes<HTMLBalIconNavGoDownElement>;
-            "bal-icon-nav-go-large": LocalJSX.BalIconNavGoLarge & JSXBase.HTMLAttributes<HTMLBalIconNavGoLargeElement>;
             "bal-icon-nav-go-left": LocalJSX.BalIconNavGoLeft & JSXBase.HTMLAttributes<HTMLBalIconNavGoLeftElement>;
-            "bal-icon-nav-go-left-no-padding": LocalJSX.BalIconNavGoLeftNoPadding & JSXBase.HTMLAttributes<HTMLBalIconNavGoLeftNoPaddingElement>;
             "bal-icon-nav-go-right": LocalJSX.BalIconNavGoRight & JSXBase.HTMLAttributes<HTMLBalIconNavGoRightElement>;
-            "bal-icon-nav-go-right-no-padding": LocalJSX.BalIconNavGoRightNoPadding & JSXBase.HTMLAttributes<HTMLBalIconNavGoRightNoPaddingElement>;
-            "bal-icon-nav-go-small": LocalJSX.BalIconNavGoSmall & JSXBase.HTMLAttributes<HTMLBalIconNavGoSmallElement>;
             "bal-icon-nav-go-up": LocalJSX.BalIconNavGoUp & JSXBase.HTMLAttributes<HTMLBalIconNavGoUpElement>;
-            "bal-icon-nav-success": LocalJSX.BalIconNavSuccess & JSXBase.HTMLAttributes<HTMLBalIconNavSuccessElement>;
             "bal-icon-plus": LocalJSX.BalIconPlus & JSXBase.HTMLAttributes<HTMLBalIconPlusElement>;
             "bal-icon-read-only": LocalJSX.BalIconReadOnly & JSXBase.HTMLAttributes<HTMLBalIconReadOnlyElement>;
             "bal-icon-refresh": LocalJSX.BalIconRefresh & JSXBase.HTMLAttributes<HTMLBalIconRefreshElement>;

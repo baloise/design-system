@@ -19,7 +19,7 @@
     "build": "npm run build:clean && npm run build:filters && npm run build:compile",
     "build:filters": "node .scripts/filters.script.js",
     "build:compile": "tsc -p .",
-    "build:clean": "rm -rf src/filters.ts && rimraf dist"
+    "build:clean": "rimraf src/filters.ts && rimraf dist"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",

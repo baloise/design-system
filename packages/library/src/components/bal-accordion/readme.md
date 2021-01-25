@@ -8,14 +8,15 @@ Accordion is a easy way to toggle things.
 
 ## Properties
 
-| Property     | Attribute     | Description                                    | Type                  | Default     |
-| ------------ | ------------- | ---------------------------------------------- | --------------------- | ----------- |
-| `closeIcon`  | `close-icon`  | Bal-Icon of the close trigger button           | `string`              | `'minus'`   |
-| `closeLabel` | `close-label` | Label of the close trigger button              | `string`              | `''`        |
-| `isActive`   | `is-active`   | Controls if the accordion is collapsed or not  | `boolean`             | `false`     |
-| `openIcon`   | `open-icon`   | Bal-Icon of the open trigger button            | `string`              | `'plus'`    |
-| `openLabel`  | `open-label`  | Label of the open trigger button               | `string`              | `''`        |
-| `type`       | `type`        | Type defines the theme of the accordion toggle | `"info" \| "primary"` | `'primary'` |
+| Property     | Attribute     | Description                                             | Type                  | Default     |
+| ------------ | ------------- | ------------------------------------------------------- | --------------------- | ----------- |
+| `card`       | `card`        | If `true` the accordion is used on the bottom of a card | `boolean`             | `false`     |
+| `closeIcon`  | `close-icon`  | Bal-Icon of the close trigger button                    | `string`              | `'minus'`   |
+| `closeLabel` | `close-label` | Label of the close trigger button                       | `string`              | `''`        |
+| `isActive`   | `is-active`   | Controls if the accordion is collapsed or not           | `boolean`             | `false`     |
+| `openIcon`   | `open-icon`   | Bal-Icon of the open trigger button                     | `string`              | `'plus'`    |
+| `openLabel`  | `open-label`  | Label of the open trigger button                        | `string`              | `''`        |
+| `type`       | `type`        | Type defines the theme of the accordion toggle          | `"info" \| "primary"` | `'primary'` |
 
 
 ## Events

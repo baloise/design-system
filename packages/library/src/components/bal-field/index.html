@@ -12,49 +12,51 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-field expanded>
-          <bal-field-label text="Firstname" required>
-            <bal-hint>
-              <bal-hint-title>Spider-Man</bal-hint-title>
-              <bal-hint-text>
-                Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.
-              </bal-hint-text>
-            </bal-hint>
-          </bal-field-label>
-          <bal-field-control>
-            <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
-          </bal-field-control>
-          <bal-field-message type="danger">Required Field</bal-field-message>
-        </bal-field>
+        <bal-card padded>
+          <bal-field expanded>
+            <bal-field-label text="Firstname" required>
+              <bal-hint>
+                <bal-hint-title>Spider-Man</bal-hint-title>
+                <bal-hint-text>
+                  Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.
+                </bal-hint-text>
+              </bal-hint>
+            </bal-field-label>
+            <bal-field-control>
+              <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+            </bal-field-control>
+            <bal-field-message type="danger">Required Field</bal-field-message>
+          </bal-field>
 
-        <bal-field expanded disabled loading>
-          <bal-field-label text="Lastname"></bal-field-label>
-          <bal-field-control>
-            <bal-input name="lastname" placeholder="Enter your lastname" value="Parker"></bal-input>
-          </bal-field-control>
-          <bal-field-message type="warning">Correct</bal-field-message>
-        </bal-field>
+          <bal-field expanded disabled loading>
+            <bal-field-label text="Lastname"></bal-field-label>
+            <bal-field-control>
+              <bal-input name="lastname" placeholder="Enter your lastname" value="Parker"></bal-input>
+            </bal-field-control>
+            <bal-field-message type="warning">Correct</bal-field-message>
+          </bal-field>
 
-        <bal-field expanded>
-          <bal-field-label text="Alias"></bal-field-label>
-          <bal-field-control icon-left="account" icon-right="check">
-            <bal-input name="alias" placeholder="Enter your alias" value="Spider-Man"></bal-input>
-          </bal-field-control>
-          <bal-field-message type="success">Correct</bal-field-message>
-        </bal-field>
+          <bal-field expanded>
+            <bal-field-label text="Alias"></bal-field-label>
+            <bal-field-control icon-left="account" icon-right="check">
+              <bal-input name="alias" placeholder="Enter your alias" value="Spider-Man"></bal-input>
+            </bal-field-control>
+            <bal-field-message type="success">Correct</bal-field-message>
+          </bal-field>
 
-        <bal-field expanded>
-          <bal-field-label text="Comment"></bal-field-label>
-          <bal-field-control>
-            <bal-textarea name="comment" placeholder="Enter your comment"></bal-textarea>
-          </bal-field-control>
-          <bal-field-message>Some Message</bal-field-message>
-        </bal-field>
+          <bal-field expanded>
+            <bal-field-label text="Comment"></bal-field-label>
+            <bal-field-control>
+              <bal-textarea name="comment" placeholder="Enter your comment"></bal-textarea>
+            </bal-field-control>
+            <bal-field-message>Some Message</bal-field-message>
+          </bal-field>
+        </bal-card>
       </section>
 
       <h2 class="title is-size-2">Inverted</h2>
       <section>
-        <div class="has-background-info is-padded">
+        <bal-card padded type="info" inverted>
           <bal-field expanded inverted loading>
             <bal-field-label text="Firstname" required></bal-field-label>
             <bal-field-control>
@@ -70,79 +72,71 @@
             </bal-field-control>
             <bal-field-message>Some Message</bal-field-message>
           </bal-field>
-        </div>
+        </bal-card>
       </section>
 
       <h2 class="title is-size-2">Form</h2>
       <section>
-        <bal-field expanded>
-          <bal-field-label text="Firstname" required></bal-field-label>
-          <bal-field-control>
-            <bal-input name="firstName" placeholder="Enter your firstname"></bal-input>
-          </bal-field-control>
-          <bal-field-message></bal-field-message>
-        </bal-field>
-        <bal-field expanded>
-          <bal-field-label text="Year" required></bal-field-label>
-          <bal-field-control>
-            <bal-select id="bal-select-year" placeholder="select a year">
-              <bal-select-option value="1995" label="1995">1995</bal-select-option>
-              <bal-select-option value="1996" label="1996">1996</bal-select-option>
-              <bal-select-option value="1997" label="1997">1997</bal-select-option>
-              <bal-select-option value="1998" label="1998">1998</bal-select-option>
-              <bal-select-option value="1999" label="1999">1999</bal-select-option>
-              <bal-select-option value="2000" label="2000">2000</bal-select-option>
-            </bal-select>
-          </bal-field-control>
-          <bal-field-message></bal-field-message>
-        </bal-field>
-        <bal-field expanded>
-          <bal-field-label text="Birthdate" required></bal-field-label>
-          <bal-field-control>
-            <bal-datepicker placeholder="pick a date"></bal-datepicker>
-          </bal-field-control>
-          <bal-field-message></bal-field-message>
-        </bal-field>
-        <bal-field expanded>
-          <bal-field-label text="Remember me?" required></bal-field-label>
-          <bal-field-control>
-            <bal-checkbox label="Yes"></bal-checkbox>
-          </bal-field-control>
-          <bal-field-message></bal-field-message>
-        </bal-field>
-        <bal-field expanded>
-          <bal-field-label text="How many cars do you have?" required></bal-field-label>
-          <bal-field-control>
-            <bal-radio-group value="2" id="radio-example">
-              <bal-radio label="Label 1" name="radio-example" value="1"></bal-radio>
-              <bal-radio label="Label 2" name="radio-example" value="2"></bal-radio>
-              <bal-radio label="Label 3" name="radio-example" value="3"></bal-radio>
-              <bal-radio label="Label Disabled" name="radio-example" value="4" disabled></bal-radio>
-            </bal-radio-group>
-          </bal-field-control>
-          <bal-field-message></bal-field-message>
-        </bal-field>
-        <bal-field expanded>
-          <bal-field-label text="Are you sure?" required></bal-field-label>
-          <bal-field-control>
-            <bal-radio-group value="yes" interface="select-button">
-              <bal-radio label="Yes" name="select-button-example-2" value="yes"></bal-radio>
-              <bal-radio label="No" name="select-button-example-2" value="no"></bal-radio>
-            </bal-radio-group>
-          </bal-field-control>
-          <bal-field-message></bal-field-message>
-        </bal-field>
+        <bal-card padded>
+          <bal-field expanded>
+            <bal-field-label text="Firstname" required></bal-field-label>
+            <bal-field-control>
+              <bal-input name="firstName" placeholder="Enter your firstname"></bal-input>
+            </bal-field-control>
+            <bal-field-message></bal-field-message>
+          </bal-field>
+          <bal-field expanded>
+            <bal-field-label text="Year" required></bal-field-label>
+            <bal-field-control>
+              <bal-select id="bal-select-year" placeholder="select a year">
+                <bal-select-option value="1995" label="1995">1995</bal-select-option>
+                <bal-select-option value="1996" label="1996">1996</bal-select-option>
+                <bal-select-option value="1997" label="1997">1997</bal-select-option>
+                <bal-select-option value="1998" label="1998">1998</bal-select-option>
+                <bal-select-option value="1999" label="1999">1999</bal-select-option>
+                <bal-select-option value="2000" label="2000">2000</bal-select-option>
+              </bal-select>
+            </bal-field-control>
+            <bal-field-message></bal-field-message>
+          </bal-field>
+          <bal-field expanded>
+            <bal-field-label text="Birthdate" required></bal-field-label>
+            <bal-field-control>
+              <bal-datepicker placeholder="pick a date"></bal-datepicker>
+            </bal-field-control>
+            <bal-field-message></bal-field-message>
+          </bal-field>
+          <bal-field expanded>
+            <bal-field-label text="Remember me?" required></bal-field-label>
+            <bal-field-control>
+              <bal-checkbox label="Yes"></bal-checkbox>
+            </bal-field-control>
+            <bal-field-message></bal-field-message>
+          </bal-field>
+          <bal-field expanded>
+            <bal-field-label text="How many cars do you have?" required></bal-field-label>
+            <bal-field-control>
+              <bal-radio-group value="2" id="radio-example">
+                <bal-radio label="Label 1" name="radio-example" value="1"></bal-radio>
+                <bal-radio label="Label 2" name="radio-example" value="2"></bal-radio>
+                <bal-radio label="Label 3" name="radio-example" value="3"></bal-radio>
+                <bal-radio label="Label Disabled" name="radio-example" value="4" disabled></bal-radio>
+              </bal-radio-group>
+            </bal-field-control>
+            <bal-field-message></bal-field-message>
+          </bal-field>
+          <bal-field expanded>
+            <bal-field-label text="Are you sure?" required></bal-field-label>
+            <bal-field-control>
+              <bal-radio-group value="yes" interface="select-button">
+                <bal-radio label="Yes" name="select-button-example-2" value="yes"></bal-radio>
+                <bal-radio label="No" name="select-button-example-2" value="no"></bal-radio>
+              </bal-radio-group>
+            </bal-field-control>
+            <bal-field-message></bal-field-message>
+          </bal-field>
+        </bal-card>
       </section>
-
-      <!-- <script>
-        var inputValidation = document.getElementById('bal-field-validation')
-        var buttonValidation = document.getElementById('bal-button-validation')
-        var counter = 0
-        buttonValidation.addEventListener('click', function (event) {
-          counter = ++counter
-          inputValidation.setAttribute('validation-message', 'Generated validation message number:' + counter)
-        })
-      </script> -->
     </div>
   </body>
 </html>

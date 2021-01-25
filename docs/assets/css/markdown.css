@@ -1,6 +1,6 @@
 .markdown-section {
   margin: 0 auto;
-  padding: 64px;
+  padding: 64px 64px 128px 64px;
   position: relative;
 }
 
@@ -301,6 +301,7 @@ pre::after {
   font-family: MetaPro, Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
+  border-radius: 10px;
 }
 
 .markdown-section > ul {
@@ -411,4 +412,13 @@ ul.docs-content a {
 
 .markdown-section > pre[data-lang='html'] {
   border-radius: 0px 0px 6px 6px;
+}
+
+.markdown-section .token.number {
+  display: inline;
+  background: transparent;
+  border-radius: none;
+  font-size: 12.8px;
+  margin: 0;
+  padding: 0;
 }

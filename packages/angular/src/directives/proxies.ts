@@ -8,14 +8,14 @@ import { Components } from '@baloise/ui-library';
 import { Accordion as IAccordion } from '@baloise/ui-library/dist/types/components/bal-accordion/bal-accordion';
 export declare interface BalAccordion extends Components.BalAccordion {}
 @ProxyCmp({
-  inputs: ['closeIcon', 'closeLabel', 'isActive', 'openIcon', 'openLabel', 'type'],
+  inputs: ['card', 'closeIcon', 'closeLabel', 'isActive', 'openIcon', 'openLabel', 'type'],
   methods: ['open', 'close', 'toggle']
 })
 @Component({
   selector: 'bal-accordion',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['closeIcon', 'closeLabel', 'isActive', 'openIcon', 'openLabel', 'type'],
+  inputs: ['card', 'closeIcon', 'closeLabel', 'isActive', 'openIcon', 'openLabel', 'type'],
   outputs: ['balCollapse']
 })
 export class BalAccordion {
@@ -32,13 +32,13 @@ export class BalAccordion {
 
 export declare interface BalButton extends Components.BalButton {}
 @ProxyCmp({
-  inputs: ['bottomRounded', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'type']
+  inputs: ['bottomRounded', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded', 'type']
 })
 @Component({
   selector: 'bal-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['bottomRounded', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'type']
+  inputs: ['bottomRounded', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded', 'type']
 })
 export class BalButton {
   protected el: HTMLElement;
@@ -51,13 +51,13 @@ export class BalButton {
 
 export declare interface BalCard extends Components.BalCard {}
 @ProxyCmp({
-  inputs: ['border', 'flat', 'inverted', 'square', 'teaser']
+  inputs: ['border', 'flat', 'inverted', 'padded', 'square', 'teaser', 'type']
 })
 @Component({
   selector: 'bal-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['border', 'flat', 'inverted', 'square', 'teaser']
+  inputs: ['border', 'flat', 'inverted', 'padded', 'square', 'teaser', 'type']
 })
 export class BalCard {
   protected el: HTMLElement;
@@ -799,54 +799,6 @@ export class BalIconClose {
 }
 
 
-export declare interface BalIconCloseBig extends Components.BalIconCloseBig {}
-
-@Component({
-  selector: 'bal-icon-close-big',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
-})
-export class BalIconCloseBig {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface BalIconCloseSmall extends Components.BalIconCloseSmall {}
-
-@Component({
-  selector: 'bal-icon-close-small',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
-})
-export class BalIconCloseSmall {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface BalIconCloseThin extends Components.BalIconCloseThin {}
-
-@Component({
-  selector: 'bal-icon-close-thin',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
-})
-export class BalIconCloseThin {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
 export declare interface BalIconContact extends Components.BalIconContact {}
 
 @Component({
@@ -951,22 +903,6 @@ export declare interface BalIconGenerellConsultant extends Components.BalIconGen
   template: '<ng-content></ng-content>'
 })
 export class BalIconGenerellConsultant {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface BalIconGenerellEdit extends Components.BalIconGenerellEdit {}
-
-@Component({
-  selector: 'bal-icon-generell-edit',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
-})
-export class BalIconGenerellEdit {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1135,22 +1071,6 @@ export class BalIconNavBack {
 }
 
 
-export declare interface BalIconNavDropdown extends Components.BalIconNavDropdown {}
-
-@Component({
-  selector: 'bal-icon-nav-dropdown',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
-})
-export class BalIconNavDropdown {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
 export declare interface BalIconNavGoDown extends Components.BalIconNavGoDown {}
 
 @Component({
@@ -1159,22 +1079,6 @@ export declare interface BalIconNavGoDown extends Components.BalIconNavGoDown {}
   template: '<ng-content></ng-content>'
 })
 export class BalIconNavGoDown {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface BalIconNavGoLarge extends Components.BalIconNavGoLarge {}
-
-@Component({
-  selector: 'bal-icon-nav-go-large',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
-})
-export class BalIconNavGoLarge {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1199,22 +1103,6 @@ export class BalIconNavGoLeft {
 }
 
 
-export declare interface BalIconNavGoLeftNoPadding extends Components.BalIconNavGoLeftNoPadding {}
-
-@Component({
-  selector: 'bal-icon-nav-go-left-no-padding',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
-})
-export class BalIconNavGoLeftNoPadding {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
 export declare interface BalIconNavGoRight extends Components.BalIconNavGoRight {}
 
 @Component({
@@ -1231,38 +1119,6 @@ export class BalIconNavGoRight {
 }
 
 
-export declare interface BalIconNavGoRightNoPadding extends Components.BalIconNavGoRightNoPadding {}
-
-@Component({
-  selector: 'bal-icon-nav-go-right-no-padding',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
-})
-export class BalIconNavGoRightNoPadding {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface BalIconNavGoSmall extends Components.BalIconNavGoSmall {}
-
-@Component({
-  selector: 'bal-icon-nav-go-small',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
-})
-export class BalIconNavGoSmall {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
 export declare interface BalIconNavGoUp extends Components.BalIconNavGoUp {}
 
 @Component({
@@ -1271,22 +1127,6 @@ export declare interface BalIconNavGoUp extends Components.BalIconNavGoUp {}
   template: '<ng-content></ng-content>'
 })
 export class BalIconNavGoUp {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface BalIconNavSuccess extends Components.BalIconNavSuccess {}
-
-@Component({
-  selector: 'bal-icon-nav-success',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
-})
-export class BalIconNavSuccess {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

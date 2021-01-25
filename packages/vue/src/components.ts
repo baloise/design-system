@@ -52,9 +52,6 @@ const customElementTags: string[] = [
  'bal-icon-check-circle',
  'bal-icon-clock',
  'bal-icon-close',
- 'bal-icon-close-big',
- 'bal-icon-close-small',
- 'bal-icon-close-thin',
  'bal-icon-contact',
  'bal-icon-copy',
  'bal-icon-date',
@@ -62,7 +59,6 @@ const customElementTags: string[] = [
  'bal-icon-download',
  'bal-icon-edit',
  'bal-icon-generell-consultant',
- 'bal-icon-generell-edit',
  'bal-icon-github',
  'bal-icon-info',
  'bal-icon-info-circle',
@@ -73,16 +69,10 @@ const customElementTags: string[] = [
  'bal-icon-message',
  'bal-icon-minus',
  'bal-icon-nav-back',
- 'bal-icon-nav-dropdown',
  'bal-icon-nav-go-down',
- 'bal-icon-nav-go-large',
  'bal-icon-nav-go-left',
- 'bal-icon-nav-go-left-no-padding',
  'bal-icon-nav-go-right',
- 'bal-icon-nav-go-right-no-padding',
- 'bal-icon-nav-go-small',
  'bal-icon-nav-go-up',
- 'bal-icon-nav-success',
  'bal-icon-plus',
  'bal-icon-read-only',
  'bal-icon-refresh',
@@ -137,6 +127,7 @@ export const BalAccordion = /*@__PURE__*/ Vue.extend({
     openIcon: {} as PropOptions<Components.BalAccordion['openIcon']>,
     closeLabel: {} as PropOptions<Components.BalAccordion['closeLabel']>,
     closeIcon: {} as PropOptions<Components.BalAccordion['closeIcon']>,
+    card: {} as PropOptions<Components.BalAccordion['card']>,
   },
 
   model: {
@@ -169,6 +160,7 @@ export const BalButton = /*@__PURE__*/ Vue.extend({
     outlined: {} as PropOptions<Components.BalButton['outlined']>,
     inverted: {} as PropOptions<Components.BalButton['inverted']>,
     loading: {} as PropOptions<Components.BalButton['loading']>,
+    topRounded: {} as PropOptions<Components.BalButton['topRounded']>,
     bottomRounded: {} as PropOptions<Components.BalButton['bottomRounded']>,
     icon: {} as PropOptions<Components.BalButton['icon']>,
     iconRight: {} as PropOptions<Components.BalButton['iconRight']>,
@@ -185,7 +177,9 @@ export const BalCard = /*@__PURE__*/ Vue.extend({
     border: {} as PropOptions<Components.BalCard['border']>,
     flat: {} as PropOptions<Components.BalCard['flat']>,
     square: {} as PropOptions<Components.BalCard['square']>,
+    padded: {} as PropOptions<Components.BalCard['padded']>,
     inverted: {} as PropOptions<Components.BalCard['inverted']>,
+    type: {} as PropOptions<Components.BalCard['type']>,
     teaser: {} as PropOptions<Components.BalCard['teaser']>,
   },
 
@@ -659,30 +653,6 @@ export const BalIconClose = /*@__PURE__*/ Vue.extend({
 });
 
 
-export const BalIconCloseBig = /*@__PURE__*/ Vue.extend({
-
-
-
-  render: createCommonRender('bal-icon-close-big', []),
-});
-
-
-export const BalIconCloseSmall = /*@__PURE__*/ Vue.extend({
-
-
-
-  render: createCommonRender('bal-icon-close-small', []),
-});
-
-
-export const BalIconCloseThin = /*@__PURE__*/ Vue.extend({
-
-
-
-  render: createCommonRender('bal-icon-close-thin', []),
-});
-
-
 export const BalIconContact = /*@__PURE__*/ Vue.extend({
 
 
@@ -736,14 +706,6 @@ export const BalIconGenerellConsultant = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('bal-icon-generell-consultant', []),
-});
-
-
-export const BalIconGenerellEdit = /*@__PURE__*/ Vue.extend({
-
-
-
-  render: createCommonRender('bal-icon-generell-edit', []),
 });
 
 
@@ -827,27 +789,11 @@ export const BalIconNavBack = /*@__PURE__*/ Vue.extend({
 });
 
 
-export const BalIconNavDropdown = /*@__PURE__*/ Vue.extend({
-
-
-
-  render: createCommonRender('bal-icon-nav-dropdown', []),
-});
-
-
 export const BalIconNavGoDown = /*@__PURE__*/ Vue.extend({
 
 
 
   render: createCommonRender('bal-icon-nav-go-down', []),
-});
-
-
-export const BalIconNavGoLarge = /*@__PURE__*/ Vue.extend({
-
-
-
-  render: createCommonRender('bal-icon-nav-go-large', []),
 });
 
 
@@ -859,14 +805,6 @@ export const BalIconNavGoLeft = /*@__PURE__*/ Vue.extend({
 });
 
 
-export const BalIconNavGoLeftNoPadding = /*@__PURE__*/ Vue.extend({
-
-
-
-  render: createCommonRender('bal-icon-nav-go-left-no-padding', []),
-});
-
-
 export const BalIconNavGoRight = /*@__PURE__*/ Vue.extend({
 
 
@@ -875,35 +813,11 @@ export const BalIconNavGoRight = /*@__PURE__*/ Vue.extend({
 });
 
 
-export const BalIconNavGoRightNoPadding = /*@__PURE__*/ Vue.extend({
-
-
-
-  render: createCommonRender('bal-icon-nav-go-right-no-padding', []),
-});
-
-
-export const BalIconNavGoSmall = /*@__PURE__*/ Vue.extend({
-
-
-
-  render: createCommonRender('bal-icon-nav-go-small', []),
-});
-
-
 export const BalIconNavGoUp = /*@__PURE__*/ Vue.extend({
 
 
 
   render: createCommonRender('bal-icon-nav-go-up', []),
-});
-
-
-export const BalIconNavSuccess = /*@__PURE__*/ Vue.extend({
-
-
-
-  render: createCommonRender('bal-icon-nav-success', []),
 });
 
 

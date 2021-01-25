@@ -30,6 +30,10 @@ nav.pagination {
     padding: 0;
     margin: 0;
     list-style: none;
+
+    li > a:not(.is-current) {
+      background: $white;
+    }
   }
 
   button,

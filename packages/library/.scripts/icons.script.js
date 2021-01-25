@@ -57,7 +57,7 @@ const generateScgComponent = async (name, filePath) => {
   }
 
   const component = iconComponent(name, toPascalCase(name), svgContent)
-
+  await file.makeDir(path.join(__dirname, `../src/components/bal-icon/icons`))
   await file.save(path.join(__dirname, `../src/components/bal-icon/icons/bal-${name}.tsx`), component)
 }
 

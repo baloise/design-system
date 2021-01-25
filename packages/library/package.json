@@ -29,9 +29,10 @@
     "loader/"
   ],
   "scripts": {
-    "build": "npm run build:icons && npm run build:components",
+    "build": "npm run clean:icons && npm run build:icons && npm run build:components",
     "build:components": "stencil build --docs --es5 --prod",
     "build:icons": "node .scripts/icons.script.js",
+    "clean:icons": "rimraf src/components/bal-icon/icons",
     "docs": "npm run build:icons && npm run docs:compile && npm run docs:build",
     "docs:compile": "stencil build --docs --es5 --prod --config stencil.docs.config.ts",
     "docs:build": "node .scripts/docs-json.script.js",
@@ -51,6 +52,7 @@
     "autoprefixer": "^10.2.1",
     "hirsch-angular-output-target": "0.0.6",
     "hirsch-vue-output-target": "0.0.5",
+    "rimraf": "^3.0.2",
     "svgo": "^1.3.2"
   },
   "gitHead": "9936956ada470a2f3785bf7d93f501744dbc43dd"

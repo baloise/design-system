@@ -74,6 +74,11 @@ export class Button {
   @Prop() loading: boolean
 
   /**
+   * If `true` the top corners get rounded
+   */
+  @Prop() topRounded: boolean
+
+  /**
    * If `true` the bottom corners get rounded
    */
   @Prop() bottomRounded = false
@@ -113,6 +118,7 @@ export class Button {
       this.expanded ? 'is-fullwidth' : '',
       this.disabled ? 'is-disabled' : '',
       this.loading ? 'is-loading' : '',
+      this.topRounded ? 'has-round-top-corners' : '',
       this.bottomRounded ? 'has-round-bottom-corners' : '',
     ].join(' ')
   }

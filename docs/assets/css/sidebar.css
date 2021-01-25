@@ -27,6 +27,11 @@ aside.sidebar {
 }
 
 @media screen and (max-width: 768px) {
+  body.close .sidebar {
+    transform: translateX(300px);
+    z-index: 100;
+  }
+
   aside.sidebar {
     left: -300px;
     transition: transform 250ms ease-out;
@@ -128,6 +133,10 @@ body .sidebar-toggle-button {
 }
 
 @media screen and (max-width: 768px) {
+  body.close .sidebar-toggle {
+    left: 300px;
+  }
+
   body .sidebar-toggle {
     left: 0;
   }
@@ -185,4 +194,37 @@ body.close .sidebar-toggle:hover span:nth-child(3) {
   transform: rotate(0);
   width: 1.5rem;
   top: 0.75rem;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar-toggle:hover span:nth-child(1) {
+    transform: rotate(0);
+    width: 1.5rem;
+    top: 0.75rem;
+  }
+  .sidebar-toggle:hover span:nth-child(2) {
+    opacity: 1;
+    transform: rotate(90deg);
+    top: 0;
+    left: 0.75rem;
+  }
+  .sidebar-toggle:hover span:nth-child(3) {
+    transform: rotate(0);
+    width: 1.5rem;
+    top: 0.75rem;
+  }
+
+  body.close .sidebar-toggle:hover span:nth-child(1) {
+    transform: rotate(45deg);
+    width: 1.75rem;
+    top: 0;
+  }
+  body.close .sidebar-toggle:hover span:nth-child(2) {
+    opacity: 0;
+  }
+  body.close .sidebar-toggle:hover span:nth-child(3) {
+    transform: rotate(-45deg);
+    width: 1.75rem;
+    top: 1.25rem;
+  }
 }

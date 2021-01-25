@@ -40,6 +40,11 @@ export class Accordion {
   @Prop() closeIcon = 'minus'
 
   /**
+   * If `true` the accordion is used on the bottom of a card
+   */
+  @Prop() card = false
+
+  /**
    * Emmited when the accordion has changed
    */
   @Event({ eventName: 'balCollapse' }) balCollapse!: EventEmitter<boolean>
@@ -78,7 +83,12 @@ export class Accordion {
   render() {
     return (
       <Host class="accordion">
-        <bal-button expanded={true} type={this.buttonType} onClick={() => this.toggle()}>
+        <bal-button
+          expanded={true}
+          type={this.buttonType}
+          onClick={() => this.toggle()}
+          top-rounded={!this.card}
+          bottomRounded={!this.isActive}>
           <span class="trigger-label" style={this.isActive && { display: 'none' }}>
             <bal-icon name={this.openIcon} type={this.type} size="small" />
             <span class="label">{this.openLabel}</span>

@@ -1,30 +1,42 @@
 # Styling
 
-## Css
+> We recommand to use Sass. [Advanced Styling with Sass](introduction/styling?id=advanced-styling-with-sass)
 
-### Install Fonts
+## Fonts
 
 Download the 2 used fonts of our Baloise style guide.
 
-- [MetaStd-Normal](https://github.com/baloise/ui-library/raw/feat/icons/packages/library/src/assets/fonts/MetaStd-Normal.woff2)
-- [MetaStd-Medium](https://github.com/baloise/ui-library/raw/feat/icons/packages/library/src/assets/fonts/MetaStd-Medium.woff2)
+- MetaStd-Normal
+  - [woff2](https://github.com/baloise/ui-library/raw/feat/icons/packages/library/src/assets/fonts/MetaStd-Normal.woff2)
+  - [woff](https://github.com/baloise/ui-library/raw/feat/icons/packages/library/src/assets/fonts/MetaStd-Normal.woff)
+  - [truetype](https://github.com/baloise/ui-library/raw/feat/icons/packages/library/src/assets/fonts/MetaStd-Normal.ttf)
+- MetaStd-Medium
+  - [woff2](https://github.com/baloise/ui-library/raw/feat/icons/packages/library/src/assets/fonts/MetaStd-Medium.woff2)
+  - [woff](https://github.com/baloise/ui-library/raw/feat/icons/packages/library/src/assets/fonts/MetaStd-Medium.woff)
+  - [truetype](https://github.com/baloise/ui-library/raw/feat/icons/packages/library/src/assets/fonts/MetaStd-Medium.ttf)
 
 Create a folders in the public space like `assets/fonts` and place the donwloaded fonts in there.
 To use the fonts in the css styles import it with the following snippet.
+
+## Css
+
+Configure the fonts in a css file.
 
 ```css
 @font-face {
   font-family: 'MetaPro';
   font-style: normal;
   font-weight: 300;
-  src: local('MetaPro'), local('MetaStd-Normal'), url('/assets/fonts/MetaStd-Normal.woff2') format('woff2');
+  src: local('MetaPro'), local('MetaStd-Normal'), url('/assets/fonts/MetaStd-Normal.woff2') format('woff2'), url('/assets/fonts/MetaStd-Normal.woff')
+      format('woff'), url('/assets/fonts/MetaStd-Normal.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'MetaPro';
   font-style: normal;
   font-weight: 700;
-  src: local('MetaPro'), local('MetaStd-Medium'), url('/assets/fonts/MetaStd-Medium.woff2') format('woff2');
+  src: local('MetaStd-Medium'), url('/assets/fonts/MetaStd-Medium.woff2') format('woff2'), url('/assets/fonts/MetaStd-Medium.woff')
+      format('woff'), url('/assets/fonts/MetaStd-Medium.ttf') format('truetype');
 }
 ```
 
@@ -50,12 +62,7 @@ import '@baloise/ui-library/dist/ui-library/ui-library.css'
 
 ### Install fonts
 
-Download the 2 used fonts of our Baloise style guide.
-
-- [MetaStd-Normal](https://github.com/baloise/ui-library/raw/feat/icons/packages/library/src/assets/fonts/MetaStd-Normal.woff2)
-- [MetaStd-Medium](https://github.com/baloise/ui-library/raw/feat/icons/packages/library/src/assets/fonts/MetaStd-Medium.woff2)
-
-Place the two donwloaded fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
+Place the donwloaded fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
 
 Import `ui-library.scss` Sass file into the main `.scss` file of your application.
 
@@ -69,6 +76,17 @@ To access the scss variables like [colors](essentials/colors.md) or [responsiven
 ```scss
 // Only imports variables and mixins
 @import 'node_modules/@baloise/ui-library/src/styles/ui-library.utilities.scss';
+
+// mobile first
+p {
+  color: $blue;
+}
+
+@include desktop() {
+  p {
+    color: $danger;
+  }
+}
 ```
 
-> Use the variables and helpers of the UI-Library where ever you can in your application. 
+> Use the variables and helpers of the UI-Library where ever you can in your application.

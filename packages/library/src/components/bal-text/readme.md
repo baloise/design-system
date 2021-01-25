@@ -18,7 +18,6 @@
  - [bal-radio](../bal-radio)
  - [bal-snackbar](../bal-snackbar)
  - [bal-tabs](../bal-tabs)
- - [bal-tag](../bal-tag)
 
 ### Graph
 ```mermaid
@@ -32,7 +31,6 @@ graph TD;
   bal-radio --> bal-text
   bal-snackbar --> bal-text
   bal-tabs --> bal-text
-  bal-tag --> bal-text
   style bal-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

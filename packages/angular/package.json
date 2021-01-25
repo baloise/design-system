@@ -18,7 +18,7 @@
   "scripts": {
     "build": "npm run build:clean && npm run build:filters && npm run build:compile",
     "build:filters": "node .scripts/filters.script.js",
-    "build:clean": "rm -rf src/filters.ts && rimraf dist",
+    "build:clean": "rimraf src/filters.ts && rimraf dist",
     "build:compile": "ng-packagr -p package.json"
   },
   "$schema": "./node_modules/ng-packagr/package.schema.json",

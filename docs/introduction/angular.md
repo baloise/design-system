@@ -32,3 +32,35 @@ import { AppComponent } from './app.component'
 })
 export class AppModule {}
 ```
+
+## Usage
+
+### app.component.html
+
+```xml
+// app.component.html
+<div class="container">
+    <h1>Checkbox</h1>
+    <bal-checkbox label="Label" data-test-id="checkbox-normal" [(ngModel)]="checkbox"></bal-checkbox>
+    <br>
+    <bal-text>Checked: {{ checkbox }}</bal-text>
+</div>
+```
+
+### app.component.ts
+
+```typescript
+import { Component, OnInit } from '@angular/core'
+
+@Component({
+  selector: 'app-bal-checkbox',
+  templateUrl: './bal-checkbox.component.html',
+})
+export class BalCheckboxComponent implements OnInit {
+  checkbox: boolean = false
+
+  constructor() {}
+
+  ngOnInit(): void {}
+}
+```

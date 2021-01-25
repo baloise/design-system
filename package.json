@@ -15,7 +15,7 @@
     "bootstrap": "lerna bootstrap",
     "build": "npm run utils:build && npm run lib:build && npm run vue:build && npm run angular:build && npm run testing:build",
     "test": "npm run utils:test && npm run testing:test",
-    "clean": "rm -rf node_modules && rm -rf docs/node_modules && rm -rf packages/library/node_modules && rm -rf packages/vue/node_modules && rm -rf packages/angular/node_modules && rm -rf packages/testing/node_modules",
+    "clean": "rimraf node_modules && rimraf docs/node_modules && rimraf packages/library/node_modules && rimraf packages/vue/node_modules && rimraf packages/angular/node_modules && rimraf packages/testing/node_modules",
     "release": "lerna publish --yes --force-publish --conventional-commits",
     "docs:install": "cd docs && npm install",
     "docs:clean": "rimraf docs/www && rimraf docs/lib",

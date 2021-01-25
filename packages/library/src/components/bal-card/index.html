@@ -30,7 +30,7 @@
 
       <h2 class="title is-size-2">Inverted style</h2>
       <section>
-        <bal-card inverted>
+        <bal-card type="info" inverted>
           <bal-card-title inverted>BaloiseCombi</bal-card-title>
           <bal-card-subtitle inverted>Police number 70/2.937.458</bal-card-subtitle>
 
@@ -40,8 +40,8 @@
           </bal-card-content>
 
           <bal-card-actions right>
-            <bal-button>Action</bal-button>
-            <bal-button>Action 2</bal-button>
+            <bal-button inverted>Action</bal-button>
+            <bal-button inverted>Action 2</bal-button>
           </bal-card-actions>
         </bal-card>
       </section>
@@ -52,7 +52,7 @@
           <bal-card-title>BaloiseCombi</bal-card-title>
           <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
 
-          <bal-accordion>
+          <bal-accordion card>
             <p class="is-padded">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua.
@@ -105,6 +105,33 @@
           <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
 
           <bal-card-button icon="edit">Edit</bal-card-button>
+        </bal-card>
+      </section>
+
+      <h2 class="title is-size-2">Colors</h2>
+      <section>
+        <bal-card padded>
+          <p>Default</p>
+        </bal-card>
+        <br />
+        <bal-card padded inverted type="primary">
+          <p>Primary</p>
+        </bal-card>
+        <br />
+        <bal-card padded inverted type="info">
+          <p>Info</p>
+        </bal-card>
+        <br />
+        <bal-card padded inverted type="success">
+          <p>Success</p>
+        </bal-card>
+        <br />
+        <bal-card padded inverted type="warning">
+          <p>Warning</p>
+        </bal-card>
+        <br />
+        <bal-card padded inverted type="danger">
+          <p>Danger</p>
         </bal-card>
       </section>
     </div>

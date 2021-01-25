@@ -29,20 +29,18 @@
   </head>
 
   <body class="sticky bal-app">
-    <nav class="bal-app">
-      <bal-navbar expanded>
-        <bal-navbar-brand>
-          <img src="/assets/images/icon.svg" />
-          <bal-text style="margin-left: 15px">Baloise UI Library</bal-text>
-        </bal-navbar-brand>
-        <bal-navbar-menu>
-          <!-- <bal-navbar-menu-start>
-            <a class="navbar-item" href="/#/"><bal-text>Home</bal-text></a>
-          </bal-navbar-menu-start> -->
-        </bal-navbar-menu>
-      </bal-navbar>
-    </nav>
-    <div id="app">Loading ...</div>
+    <bal-navbar expanded no-burger>
+      <bal-navbar-brand>
+        <img src="/assets/images/icon.svg" />
+        <bal-text style="margin-left: 15px">Baloise UI Library</bal-text>
+      </bal-navbar-brand>
+      <bal-navbar-menu> </bal-navbar-menu>
+    </bal-navbar>
+    <div id="app">
+      <h1 class="title is-size-1">Loading ...</h1>
+      <h3 class="title is-size-3">Baloise UI Library</h3>
+      <h3 class="subtitle is-size-3">Documentation</h3>
+    </div>
     <script>
       window.$docsify = {
         name: 'Baloise UI-Library',
@@ -79,6 +77,34 @@
       import { balToastController } from './lib/esm/index.js'
 
       window.balToastController = balToastController
+    </script>
+    <script>
+      function docScrollTo() {
+        var mainElements = document.getElementsByTagName('main')
+        if (mainElements.length === 0) {
+          setTimeout(docScrollTo, 100)
+        } else {
+          var searchParamString = location.href.substring(location.href.indexOf('?') + 1, location.href.length)
+          var searchParamArray = searchParamString.split('&')
+          var searchParamMatrix = searchParamArray
+            .map(s => s.split('='))
+            .filter(s => s[0] === 'id')
+            .map(s => s[1])
+
+          if (searchParamMatrix.length > 0) {
+            var scrollToTitle = document.getElementById(searchParamMatrix[0])
+            mainElements[0].scrollTo(0, scrollToTitle.offsetTop - 32)
+          } else {
+            mainElements[0].scrollTo(0, 0)
+          }
+        }
+      }
+
+      window.addEventListener('popstate', event => {
+        docScrollTo()
+      })
+
+      docScrollTo()
     </script>
   </body>
 </html>

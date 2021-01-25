@@ -26,6 +26,7 @@ The classic button, in different colors, sizes, and states.
 | `size`          | `size`           | Size of the button                                                    | `"" \| "small"`                                                                                          | `''`        |
 | `square`        | `square`         | If `true` the width of the buttons is limited                         | `boolean`                                                                                                | `undefined` |
 | `target`        | `target`         | Specifies where to open the linked document                           | `" _parent" \| "_blank" \| "_self" \| "_top"`                                                            | `'_self'`   |
+| `topRounded`    | `top-rounded`    | If `true` the top corners get rounded                                 | `boolean`                                                                                                | `undefined` |
 | `type`          | `type`           | The theme type of the button. Given by bulma our css framework.       | `"danger" \| "info" \| "info-light" \| "link" \| "primary" \| "primary-light" \| "success" \| "warning"` | `'primary'` |
 
 
