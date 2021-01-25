@@ -41,12 +41,12 @@ export class Button {
   /**
    * If `true` the width of the buttons is limited
    */
-  @Prop() square: boolean
+  @Prop() square: boolean = false
 
   /**
    * If `true` the button is disabled
    */
-  @Prop() disabled: boolean
+  @Prop() disabled: boolean = false
 
   /**
    * If `true` the button has a active theme
@@ -56,27 +56,27 @@ export class Button {
   /**
    * If `true` the button has a full width
    */
-  @Prop() expanded: boolean
+  @Prop() expanded: boolean = false
 
   /**
    * If `true` the button is outlined
    */
-  @Prop() outlined: boolean
+  @Prop() outlined: boolean = false
 
   /**
    * If `true` the button is inverted
    */
-  @Prop() inverted: boolean
+  @Prop() inverted: boolean = false
 
   /**
    * If `true` the label is hidden and a loading spinner is shown instead.
    */
-  @Prop() loading: boolean
+  @Prop() loading: boolean = false
 
   /**
    * If `true` the top corners get rounded
    */
-  @Prop() topRounded: boolean
+  @Prop() topRounded: boolean = false
 
   /**
    * If `true` the bottom corners get rounded
