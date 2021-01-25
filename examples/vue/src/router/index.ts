@@ -40,6 +40,11 @@ export const routes: Array<RouteConfig> = [
     name: 'Timeinput',
     component: () => import('../views/Timeinput.vue'),
   },
+  {
+    path: '/toast',
+    name: 'Toast',
+    component: () => import('../views/Toast.vue'),
+  },
 ]
 
 const router = new VueRouter({
