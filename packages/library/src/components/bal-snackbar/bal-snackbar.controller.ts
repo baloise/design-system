@@ -1,6 +1,6 @@
 import { ColorTypes } from '../../types/color.types'
 
-interface SnackbarOptions {
+export interface BalSnackbarOptions {
   message: string
   icon: string
   subject: string
@@ -10,13 +10,13 @@ interface SnackbarOptions {
   type?: ColorTypes | ''
 }
 
-class SnackbarController {
+export class BalSnackbarController {
   private container: HTMLElement
   private queue: HTMLBalSnackbarElement[] = []
   private preQueue: HTMLBalSnackbarElement[] = []
   private queueLimit: number = 5
 
-  create(options: SnackbarOptions): HTMLBalSnackbarElement {
+  create(options: BalSnackbarOptions): HTMLBalSnackbarElement {
     this.setupContainer()
     const snackbar: HTMLBalSnackbarElement = document.createElement('bal-snackbar')
     snackbar.innerHTML = options.message
@@ -66,4 +66,4 @@ class SnackbarController {
   }
 }
 
-export const balSnackbarController = new SnackbarController()
+export const balSnackbarController = new BalSnackbarController()

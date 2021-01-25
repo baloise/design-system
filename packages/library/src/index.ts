@@ -19,5 +19,5 @@ export * from './components/bal-select-option/bal-select-option.util'
 /**
  * Controllers
  */
-export { balToastController } from './components/bal-toast/bal-toast.controller'
-export { balSnackbarController } from './components/bal-snackbar/bal-snackbar.controller'
+export * from './components/bal-toast/bal-toast.controller'
+export * from './components/bal-snackbar/bal-snackbar.controller'

@@ -1,16 +1,16 @@
-interface ToastOptions {
+export interface BalToastOptions {
   message: string
   duration?: number
   type?: "primary" | "info" | "success" | "warning" | "danger"
 }
 
-class ToastController {
+export class BalToastController {
   private container: HTMLElement
   private queue: HTMLBalToastElement[] = []
   private preQueue: HTMLBalToastElement[] = []
   private queueLimit: number = 5
 
-  create(options: ToastOptions): HTMLBalToastElement {
+  create(options: BalToastOptions): HTMLBalToastElement {
     this.setupContainer()
     const toast: HTMLBalToastElement = document.createElement("bal-toast")
     toast.innerHTML = options.message
@@ -57,4 +57,4 @@ class ToastController {
 
 }
 
-export const balToastController = new ToastController()
+export const balToastController = new BalToastController()
