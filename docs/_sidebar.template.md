@@ -2,10 +2,10 @@
 
   - [Overview](home.md)
   - [Installation](introduction/installation.md)
-    - [HTML5](introduction/html5.md)
     - [Vue](introduction/vue.md)
     - [Angular](introduction/angular.md)
     - [Styling](introduction/styling.md)
+    - [HTML5](introduction/html5.md)
   - [Why UI-Library](introduction/why.md)
   - [Architecture](introduction/architecture.md)
 

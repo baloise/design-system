@@ -19,8 +19,8 @@
 
     input[type='radio'] + label {
       display: block;
+      padding-top: 3px;
       min-height: 26px;
-      padding-top: 1px;
       cursor: pointer;
       padding-left: 34px;
       -webkit-user-select: none;
@@ -35,7 +35,7 @@
       display: inline-block;
       position: absolute;
       left: 0;
-      top: -3px;
+      top: 0;
       height: 24px;
       width: 24px;
       border-radius: 50%;
@@ -51,8 +51,8 @@
       content: none;
       background: $blue;
       transform: scale(0.4);
-      top: -3px;
-      left: 0px;
+      top: 0;
+      left: 0;
     }
 
     input[type='radio']:disabled + label {

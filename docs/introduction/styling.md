@@ -1,7 +1,5 @@
 # Styling
 
-> We recommand to use Sass. [Advanced Styling with Sass](introduction/styling?id=advanced-styling-with-sass)
-
 ## Fonts
 
 Download the 2 used fonts of our Baloise style guide.
@@ -17,6 +15,42 @@ Download the 2 used fonts of our Baloise style guide.
 
 Create a folders in the public space like `assets/fonts` and place the donwloaded fonts in there.
 To use the fonts in the css styles import it with the following snippet.
+
+## Sass (recommended)
+
+### Install
+
+Place the donwloaded fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
+
+Import `ui-library.scss` Sass file into the main `.scss` file of your application.
+
+```scss
+@import 'node_modules/@baloise/ui-library/src/styles/ui-library.scss';
+```
+
+### Variables
+
+To access the scss variables like [colors](essentials/colors.md) or [responsiveness helpers](essentials/responsiveness) import the `ui-library.utilities.scss`.
+
+> Use the variables and helpers of the UI-Library where ever you can in your application.
+
+#### Usage
+
+```scss
+// Only imports variables and mixins
+@import 'node_modules/@baloise/ui-library/src/styles/ui-library.utilities.scss';
+
+// mobile first
+p {
+  color: $blue;
+}
+
+@include desktop() {
+  p {
+    color: $danger;
+  }
+}
+```
 
 ## Css
 
@@ -57,36 +91,3 @@ Import the css directly into your main TypeScript or JavaScript file.
 ```typescript
 import '@baloise/ui-library/dist/ui-library/ui-library.css'
 ```
-
-## Advanced Styling with Sass
-
-### Install fonts
-
-Place the donwloaded fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
-
-Import `ui-library.scss` Sass file into the main `.scss` file of your application.
-
-```scss
-// Imports all the global styles of the library
-@import 'node_modules/@baloise/ui-library/src/styles/ui-library.scss';
-```
-
-To access the scss variables like [colors](essentials/colors.md) or [responsiveness helpers](essentials/responsiveness) import the `ui-library.utilities.scss`.
-
-```scss
-// Only imports variables and mixins
-@import 'node_modules/@baloise/ui-library/src/styles/ui-library.utilities.scss';
-
-// mobile first
-p {
-  color: $blue;
-}
-
-@include desktop() {
-  p {
-    color: $danger;
-  }
-}
-```
-
-> Use the variables and helpers of the UI-Library where ever you can in your application.
