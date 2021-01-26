@@ -26,6 +26,7 @@
 
 .clickable {
   cursor: pointer !important;
+  pointer-events: visible !important;
 }
 
 strong,
