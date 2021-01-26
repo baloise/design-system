@@ -15,7 +15,7 @@ import { HomeComponent } from './bal-components/home/home.component';
 
 @NgModule({
   declarations: [AppComponent, BalCheckboxComponent, BalInputComponent, BalRadioComponent, BalSelectComponent, BalDatepickerComponent, BalTimeinputComponent, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule, BalUiLibraryModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

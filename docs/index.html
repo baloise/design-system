@@ -74,9 +74,10 @@
     <script type="module" src="lib/ui-library/ui-library.esm.js"></script>
     <script nomodule src="lib/ui-library/ui-library.js"></script>
     <script type="module">
-      import { balToastController } from './lib/esm/index.js'
+      import { balToastController, balSnackbarController } from './lib/esm/index.js'
 
       window.balToastController = balToastController
+      window.balSnackbarController = balSnackbarController
     </script>
     <script>
       function docScrollTo() {

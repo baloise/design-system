@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
-import { defineCustomElements } from '@baloise/ui-library/loader'
+import { defineCustomElements, applyPolyfills } from '@baloise/ui-library/loader'
 
 import { DIRECTIVES } from './directives/proxies-list'
 import { BooleanValueAccessor } from './directives/boolean-value-accessor'
@@ -9,7 +9,9 @@ import { TextValueAccessor } from './directives/text-value-accessor'
 import { SelectValueAccessor } from './directives/select-value-accessor'
 import { FILTERS } from './filters'
 
-defineCustomElements(window)
+applyPolyfills().then(() => {
+  defineCustomElements(window)
+})
 
 const DECLARATIONS = [
   // proxies
