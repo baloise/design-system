@@ -1,10 +1,55 @@
-body.bal-app.ready > bal-navbar {
+body.bal-app.ready > nav.docs-navbar {
   position: fixed;
   top: 0;
   z-index: 0;
   width: 100%;
 }
 
-body:not(.ready) > bal-navbar {
+body:not(.ready) > nav.docs-navbar {
   display: none;
+}
+
+nav.docs-navbar {
+  height: 80px;
+  background: #039;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+}
+
+.docs-navbar__brand {
+  align-items: stretch;
+  display: flex;
+  flex-shrink: 0;
+  min-height: 3.25rem;
+}
+
+.docs-navbar__item {
+  flex-grow: 0;
+  flex-shrink: 0;
+  color: #4a4a4a;
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+  position: relative;
+  align-items: center;
+  display: flex;
+}
+
+.docs-navbar__item img {
+  height: auto;
+  max-width: 100%;
+  max-height: 3rem;
+}
+
+.docs-navbar__brand .docs-navbar__item span {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-top: 4px;
+}
+
+.docs-navbar__menu {
+  flex-grow: 1;
+  flex-shrink: 0;
+  align-items: stretch;
+  display: flex;
 }
