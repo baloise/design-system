@@ -29,13 +29,16 @@
   </head>
 
   <body class="sticky bal-app">
-    <bal-navbar expanded no-burger>
+    <nav class="navbar is-spaced is-info">
+      a
+    </nav>
+    <!-- <bal-navbar expanded no-burger>
       <bal-navbar-brand>
         <img src="/assets/images/icon.svg" />
         <bal-text style="margin-left: 15px">Baloise UI Library</bal-text>
       </bal-navbar-brand>
       <bal-navbar-menu> </bal-navbar-menu>
-    </bal-navbar>
+    </bal-navbar> -->
     <div id="app">
       <h1 class="title is-size-1">Loading ...</h1>
       <h3 class="title is-size-3">Baloise UI Library</h3>
@@ -85,23 +88,31 @@
         if (mainElements.length === 0) {
           setTimeout(docScrollTo, 100)
         } else {
-          var searchParamString = location.href.substring(location.href.indexOf('?') + 1, location.href.length)
-          var searchParamArray = searchParamString.split('&')
-          var searchParamMatrix = searchParamArray
-            .map(s => s.split('='))
-            .filter(s => s[0] === 'id')
-            .map(s => s[1])
+          if (location.href.indexOf('?') >= 0) {
+            var searchParamString = location.href.substring(location.href.indexOf('?') + 1, location.href.length)
+            var searchParamArray = searchParamString.split('&')
+            var searchParamMatrix = searchParamArray
+              .map(function (s) {
+                return s.split('=')
+              })
+              .filter(function (s) {
+                return s[0] === 'id'
+              })
+              .map(function (s) {
+                return s[1]
+              })
 
-          if (searchParamMatrix.length > 0) {
-            var scrollToTitle = document.getElementById(searchParamMatrix[0])
-            mainElements[0].scrollTo(0, scrollToTitle.offsetTop - 32)
-          } else {
-            mainElements[0].scrollTo(0, 0)
+            if (searchParamMatrix.length > 0) {
+              var scrollToTitle = document.getElementById(searchParamMatrix[0])
+              mainElements[0].scrollTo(0, scrollToTitle.offsetTop - 32)
+            } else {
+              mainElements[0].scrollTo(0, 0)
+            }
           }
         }
       }
 
-      window.addEventListener('popstate', event => {
+      window.addEventListener('popstate', function (event) {
         docScrollTo()
       })
 
