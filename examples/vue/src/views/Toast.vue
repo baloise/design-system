@@ -10,10 +10,6 @@ import Vue from 'vue'
 import { BalButton } from '@baloise/ui-library-vue'
 
 export default Vue.extend({
-  data: () => {
-    const value = '08:00'
-    return { value }
-  },
   methods: {
     createToast: function () {
       this.$balToast.create({

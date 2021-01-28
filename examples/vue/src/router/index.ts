@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '@/views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -44,6 +44,11 @@ export const routes: Array<RouteConfig> = [
     path: '/toast',
     name: 'Toast',
     component: () => import('../views/Toast.vue'),
+  },
+  {
+    path: '/modal',
+    name: 'Modal',
+    component: () => import('../views/Modal.vue'),
   },
 ]
 

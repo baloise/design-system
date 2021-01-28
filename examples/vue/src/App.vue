@@ -2,35 +2,30 @@
   <div id="app">
     <BalNavbar>
       <BalNavbarBrand>
-        Demo App
+        <img src="https://github.com/baloise/ui-library/raw/master/docs/assets/images/icon.svg" />
+        <BalText style="margin-left: 15px">Demo App</BalText>
       </BalNavbarBrand>
     </BalNavbar>
 
     <nav class="has-background-white">
       <div class="container">
         <BalTabs>
-          <router-link v-for="routeItem in routes" :key="routeItem.name" :to="routeItem" v-slot="{ href, route, navigate, isActive }">
+          <router-link
+            v-for="routeItem in routes"
+            :key="routeItem.name"
+            :to="routeItem"
+            v-slot="{ href, route, navigate, isActive }"
+          >
             <BalTabItem
               :active="isActive"
               :href="href"
               :label="route.name"
               :value="route.name"
-              @balNavigate="() => bubu()"
+              @balNavigate="navigate"
             ></BalTabItem>
           </router-link>
         </BalTabs>
       </div>
-
-      <!-- <router-link
-        v-for="routeItem in routes"
-        :key="routeItem.name"
-        :to="routeItem"
-        v-slot="{ href, route, navigate, isActive }"
-      >
-        <a :key="route.path" :label="route.name" :value="route.name" :active="isActive" :href="href">
-          {{ route.name }}
-        </a>
-      </router-link> -->
     </nav>
 
     <main class="container">
@@ -40,23 +35,13 @@
         </div>
       </BalCard>
     </main>
-
-    <div id="nav">
-      <span v-for="(route, index) in routes" :key="route.path">
-        <router-link :to="route.path">
-          {{ route.name }}
-        </router-link>
-        <span v-if="index !== routes.length - 1">|</span>
-      </span>
-    </div>
-    <div class="container"></div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { routes } from './router'
-import { BalNavbar, BalTabs, BalTabItem, BalNavbarBrand, BalCard } from '@baloise/ui-library-vue'
+import { BalNavbar, BalTabs, BalTabItem, BalNavbarBrand, BalCard, BalText } from '@baloise/ui-library-vue'
 
 export default Vue.extend({
   name: 'Home',
@@ -66,6 +51,7 @@ export default Vue.extend({
     BalCard,
     BalTabs,
     BalTabItem,
+    BalText,
   },
   data: () => {
     return {
@@ -73,10 +59,10 @@ export default Vue.extend({
     }
   },
   methods: {
-    bubu: () => {
-      alert('asdf')
-    }
-  }
+    bubu: (e: any) => {
+      alert(e)
+    },
+  },
 })
 </script>
 
