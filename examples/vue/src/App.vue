@@ -9,13 +9,13 @@
     <nav class="has-background-white">
       <div class="container">
         <BalTabs>
-          <router-link v-for="routeItem in routes" :key="routeItem" :to="routeItem" v-slot="{ href, route, navigate, isActive }">
+          <router-link v-for="routeItem in routes" :key="routeItem.name" :to="routeItem" v-slot="{ href, route, navigate, isActive }">
             <BalTabItem
               :active="isActive"
               :href="href"
               :label="route.name"
               :value="route.name"
-              @balNavigate="navigate"
+              @balNavigate="() => bubu()"
             ></BalTabItem>
           </router-link>
         </BalTabs>
@@ -72,6 +72,11 @@ export default Vue.extend({
       routes,
     }
   },
+  methods: {
+    bubu: () => {
+      alert('asdf')
+    }
+  }
 })
 </script>
 

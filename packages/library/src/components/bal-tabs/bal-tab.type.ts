@@ -9,5 +9,5 @@ export interface BalTabOption {
   done: boolean
   failed: boolean
   hasBubble: boolean
-  navigate: EventEmitter<BalTabOption>
+  navigate: EventEmitter<MouseEvent>
 }

@@ -75,9 +75,9 @@ export class Tabs {
     return Array.from(this.element.querySelectorAll('bal-tab-item'))
   }
 
-  private async onSelectTab(tab: BalTabOption) {
+  private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
     if (!tab.disabled) {
-      tab.navigate.emit(tab)
+      tab.navigate.emit(event)
       await this.select(tab)
       this.tabsDidChange.emit(tab)
     }
@@ -104,7 +104,7 @@ export class Tabs {
                   'is-done': tab.done,
                   'is-failed': tab.failed,
                 }}>
-                <a onClick={() => this.onSelectTab(tab)}>
+                <a onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}>
                   <span class="step-index">
                     <bal-text>{index + 1}</bal-text>
                   </span>
@@ -132,13 +132,13 @@ export class Tabs {
                 <a
                   href={tab.href}
                   aria-current="page"
-                  onClick={() => this.onSelectTab(tab)}
+                  onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}
                   style={{ display: tab.href === '' ? 'none' : '' }}>
                   <bal-text>{tab.label}</bal-text>
                 </a>
                 <a
                   aria-current="page"
-                  onClick={() => this.onSelectTab(tab)}
+                  onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}
                   style={{ display: tab.href === '' ? '' : 'none' }}>
                   <bal-text>{tab.label}</bal-text>
                 </a>

@@ -55,7 +55,7 @@ export class TabItem {
   /**
    * Emitted when the action button has clicked
    */
-  @Event({ eventName: 'balNavigate' }) navigate: EventEmitter<BalTabOption>
+  @Event({ eventName: 'balNavigate' }) navigate: EventEmitter<MouseEvent>
 
   @Watch('active')
   activatedHandler(newActive: boolean) {
