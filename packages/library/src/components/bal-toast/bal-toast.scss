@@ -20,6 +20,7 @@
     flex-grow: 1;
     font-size: $size-5;
     position: relative;
+    background: $white;
 
     &.is-primary {
       background: $primary;

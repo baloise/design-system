@@ -12,15 +12,26 @@
   font-size: 0.85em !important;
 }
 
+.markdown-section > h1,
+.markdown-section > h2,
+.markdown-section > h3,
+.markdown-section > h4,
+.markdown-section > h5,
+.markdown-section > table th h2 {
+  text-align: left;
+}
+
 .markdown-section > h1 > a,
 .markdown-section > h2 > a,
 .markdown-section > h3 > a,
 .markdown-section > h4 > a,
-.markdown-section > h5 > a {
+.markdown-section > h5 > a,
+.markdown-section > table th h2 > a {
   font-family: MetaPro, Source Sans Pro, Helvetica Neue, Arial, sans-serif;
   color: #2c3e50;
   text-decoration: none;
   font-weight: 700;
+  text-align: left;
 }
 
 .markdown-section > ul > li {
@@ -55,13 +66,15 @@
   margin: 0 0 1rem;
 }
 
-.markdown-section > h2 > a {
+.markdown-section > h2 > a,
+.markdown-section > table th h2 > a {
   font-size: 2rem !important;
   line-height: 2.5rem !important;
 }
 
 @media screen and (max-width: 768px) {
-  .markdown-section > h2 > a {
+  .markdown-section > h2 > a,
+  .markdown-section > table th h2 > a {
     font-size: 1.375rem !important;
     line-height: 1.75rem !important;
   }

@@ -26,7 +26,7 @@ const run = async () => {
       `  <tbody>`,
       `    <tr>`,
       `      <td width="100px"><b>Description</b></td>`,
-      `      <td>${f.descripton}</td>`,
+      `      <td>${f.description}</td>`,
       `    </tr>`,
       `    <tr>`,
       `      <td width="100px"><b>Signature</b></td>`,
