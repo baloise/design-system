@@ -1239,6 +1239,7 @@ export const BalTabItem = /*@__PURE__*/ Vue.extend({
   props: {
     value: {} as PropOptions<Components.BalTabItem['value']>,
     label: {} as PropOptions<Components.BalTabItem['label']>,
+    href: {} as PropOptions<Components.BalTabItem['href']>,
     bubble: {} as PropOptions<Components.BalTabItem['bubble']>,
     disabled: {} as PropOptions<Components.BalTabItem['disabled']>,
     done: {} as PropOptions<Components.BalTabItem['done']>,

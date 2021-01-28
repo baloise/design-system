@@ -23,6 +23,11 @@ export class TabItem {
   @Prop() label: string = ''
 
   /**
+   * Link to path.
+   */
+  @Prop() href: string = ''
+
+  /**
    * If `true` a small red bubble is added to the tab.
    */
   @Prop() bubble: boolean = false
@@ -84,6 +89,7 @@ export class TabItem {
       value: this.value,
       label: this.label,
       active: this.active,
+      href: this.href,
       disabled: this.disabled,
       done: this.done,
       failed: this.failed,

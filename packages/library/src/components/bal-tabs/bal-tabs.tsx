@@ -128,7 +128,13 @@ export class Tabs {
           <ul>
             {this.tabsOptions.map(tab => (
               <li class={[tab.active ? 'is-active' : '', tab.disabled ? 'is-disabled' : ''].join(' ')}>
-                <a onClick={() => this.onSelectTab(tab)}>
+                <a
+                  href={tab.href}
+                  onClick={() => this.onSelectTab(tab)}
+                  style={{ display: tab.href === '' ? 'none' : '' }}>
+                  <bal-text>{tab.label}</bal-text>
+                </a>
+                <a onClick={() => this.onSelectTab(tab)} style={{ display: tab.href === '' ? '' : 'none' }}>
                   <bal-text>{tab.label}</bal-text>
                 </a>
                 <span class="bubble" style={!tab.hasBubble && { display: 'none' }}></span>

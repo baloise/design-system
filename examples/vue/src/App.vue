@@ -1,6 +1,18 @@
 <template>
-  <div id="app" class="container">
-    <div id="nav">
+  <div id="app">
+    <BalNavbar>
+      <BalNavbarBrand>
+        Demo App
+      </BalNavbarBrand>
+    </BalNavbar>
+    <main class="container">
+      <BalTabs>
+        <BalTabItem v-for="route in routes" :key="route.path" :label="route.name" :value="route.name" :href="route.path"></BalTabItem>
+      </BalTabs>
+      <router-view />
+    </main>
+
+    <!-- <div id="nav">
       <span v-for="(route, index) in routes" :key="route.path">
         <router-link :to="route.path">
           {{ route.name }}
@@ -8,16 +20,23 @@
         <span v-if="index !== routes.length - 1">|</span>
       </span>
     </div>
-    <router-view />
+    <div class="container"></div> -->
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { routes } from './router'
+import { BalNavbar, BalTabs, BalTabItem, BalNavbarBrand } from '@baloise/ui-library-vue'
 
 export default Vue.extend({
   name: 'Home',
+  components: {
+    BalNavbar,
+    BalNavbarBrand,
+    BalTabs,
+    BalTabItem,
+  },
   data: () => {
     return {
       routes,

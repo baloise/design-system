@@ -1783,14 +1783,14 @@ export class BalSpinner {
 
 export declare interface BalTabItem extends Components.BalTabItem {}
 @ProxyCmp({
-  inputs: ['active', 'bubble', 'disabled', 'done', 'failed', 'label', 'value'],
+  inputs: ['active', 'bubble', 'disabled', 'done', 'failed', 'href', 'label', 'value'],
   methods: ['getOptions', 'setActive']
 })
 @Component({
   selector: 'bal-tab-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['active', 'bubble', 'disabled', 'done', 'failed', 'label', 'value']
+  inputs: ['active', 'bubble', 'disabled', 'done', 'failed', 'href', 'label', 'value']
 })
 export class BalTabItem {
   protected el: HTMLElement;

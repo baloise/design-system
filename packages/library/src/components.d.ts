@@ -1059,6 +1059,10 @@ export namespace Components {
          */
         "getOptions": () => Promise<BalTabOption>;
         /**
+          * Link to path.
+         */
+        "href": string;
+        /**
           * Label for the tab.
          */
         "label": string;
@@ -2978,6 +2982,10 @@ declare namespace LocalJSX {
           * If `true` the step is marked as failed.
          */
         "failed"?: boolean;
+        /**
+          * Link to path.
+         */
+        "href"?: string;
         /**
           * Label for the tab.
          */
