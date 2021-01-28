@@ -15,9 +15,7 @@ export class CardButton {
     return (
       <Host class="bal-card-button">
         <bal-button type="primary-light" expanded bottom-rounded icon={this.icon}>
-          <span class="label">
-            <slot></slot>
-          </span>
+          <slot></slot>
         </bal-button>
       </Host>
     )

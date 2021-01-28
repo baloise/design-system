@@ -5,4 +5,12 @@ bal-text {
   display: inline;
   position: static;
   font-family: $family-primary;
+  font-weight: $weight-normal;
+  font-size: $size-normal;
+  line-height: $bal_lineheight_20px;
+
+  &.is-small {
+    font-size: $size-small;
+    line-height: $bal_lineheight_15px;
+  }
 }

@@ -721,9 +721,17 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href": string;
+        /**
           * If `true` the list item has a selected theme
          */
         "selected": boolean;
+        /**
+          * Specifies where to open the linked document
+         */
+        "target": '_blank' | ' _parent' | '_self' | '_top';
     }
     interface BalListItemContent {
     }
@@ -1073,10 +1081,6 @@ export namespace Components {
          */
         "actionLabel": string;
         /**
-          * If `true` the padding gets reduced.
-         */
-        "dense": boolean;
-        /**
           * If `true` the field expands over the whole width.
          */
         "expanded": boolean;
@@ -1104,6 +1108,7 @@ export namespace Components {
         "type": ColorTypes | '';
     }
     interface BalText {
+        "small": boolean;
     }
     interface BalTextarea {
         /**
@@ -2648,9 +2653,17 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
           * If `true` the list item has a selected theme
          */
         "selected"?: boolean;
+        /**
+          * Specifies where to open the linked document
+         */
+        "target"?: '_blank' | ' _parent' | '_self' | '_top';
     }
     interface BalListItemContent {
     }
@@ -2984,10 +2997,6 @@ declare namespace LocalJSX {
          */
         "actionLabel"?: string;
         /**
-          * If `true` the padding gets reduced.
-         */
-        "dense"?: boolean;
-        /**
           * If `true` the field expands over the whole width.
          */
         "expanded"?: boolean;
@@ -3015,6 +3024,7 @@ declare namespace LocalJSX {
         "type"?: ColorTypes | '';
     }
     interface BalText {
+        "small"?: boolean;
     }
     interface BalTextarea {
         /**

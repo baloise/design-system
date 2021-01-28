@@ -24,12 +24,14 @@
       .bal-data-label {
         position: relative;
         display: block;
-        font-weight: $weight-bold;
         color: $blue;
-        font-family: $body-family;
-        font-size: $size-5;
         flex: 1 1;
         flex-basis: 100%;
+
+        font-family: $family-primary;
+        font-weight: $weight-semibold;
+        font-size: $size-normal;
+        line-height: $size-normal;
 
         bal-hint {
           margin-left: 6px;
@@ -40,10 +42,14 @@
 
       .bal-data-value {
         display: block;
-        font-family: $body-family;
-        font-size: $size-4;
         flex: 1 1;
         flex-basis: 100%;
+        margin-top: 4px;
+
+        font-family: $family-primary;
+        font-weight: $weight-normal;
+        font-size: $size-normal;
+        line-height: $size-normal;
       }
 
       &.is-disabled .bal-data-label,
@@ -72,9 +78,11 @@
 
         .bal-data-label {
           flex-basis: 0;
+          margin-top: 2px;
         }
         .bal-data-value {
           flex-basis: 0;
+          margin-top: 2px;
         }
       }
 

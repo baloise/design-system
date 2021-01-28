@@ -16,16 +16,14 @@ span.trigger-label {
   align-items: center;
 
   span.label {
-    margin-top: 3px;
-    margin-bottom: 0;
-    font-weight: $weight-normal;
     font-size: $size-4;
+    line-height: $size-4;
   }
 }
 
 bal-icon {
-  margin-top: -4px;
-  margin-right: 5px;
+  margin-top: -1px;
+  margin-right: 8px;
 }
 
 .accordion-content.is-info {

@@ -17,7 +17,9 @@ export class Notification {
     return (
       <Host>
         <div class={`notification is-${this.type}`}>
-          <slot />
+          <bal-text>
+            <slot />
+          </bal-text>
         </div>
       </Host>
     )

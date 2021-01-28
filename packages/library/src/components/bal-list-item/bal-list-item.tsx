@@ -1,7 +1,7 @@
-import { Component, Host, h, Prop } from "@stencil/core"
+import { Component, Host, h, Prop } from '@stencil/core'
 
 @Component({
-  tag: "bal-list-item",
+  tag: 'bal-list-item',
   shadow: false,
   scoped: false,
 })
@@ -9,32 +9,55 @@ export class ListItem {
   /**
    * If `true` the list item can be hovered
    */
-  @Prop()
-  disabled = false
+  @Prop() disabled = false
 
   /**
    * If `true` the list item shows that it is clickable
    */
-  @Prop()
-  clickable = false
+  @Prop() clickable = false
 
   /**
    * If `true` the list item has a selected theme
    */
-  @Prop()
-  selected = false
+  @Prop() selected = false
+
+  /**
+   * Specifies the URL of the page the link goes to
+   */
+  @Prop() href: string = ''
+
+  /**
+   * Specifies where to open the linked document
+   */
+  @Prop() target: '_blank' | ' _parent' | '_self' | '_top' = '_self'
 
   render() {
+    if (this.href.length > 0 && !this.disabled) {
+      return (
+        <Host
+          role="listitem"
+          class={{
+            'bal-list-item': true,
+            'is-disabled': this.disabled,
+            'is-selected': this.selected,
+            'is-clickable': this.clickable || this.href.length > 0,
+          }}>
+          <a href={this.href} target={this.target}>
+            <slot></slot>
+          </a>
+        </Host>
+      )
+    }
+
     return (
       <Host
         role="listitem"
-        class={[
-          "bal-list-item",
-          this.disabled ? "is-disabled" : "",
-          this.clickable ? "is-clickable" : "",
-          this.selected ? "is-selected" : "",
-        ].join(" ")}
-      >
+        class={{
+          'bal-list-item': true,
+          'is-disabled': this.disabled,
+          'is-selected': this.selected,
+          'is-clickable': this.clickable || this.href.length > 0,
+        }}>
         <slot></slot>
       </Host>
     )

@@ -1332,13 +1332,13 @@ export class BalList {
 
 export declare interface BalListItem extends Components.BalListItem {}
 @ProxyCmp({
-  inputs: ['clickable', 'disabled', 'selected']
+  inputs: ['clickable', 'disabled', 'href', 'selected', 'target']
 })
 @Component({
   selector: 'bal-list-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['clickable', 'disabled', 'selected']
+  inputs: ['clickable', 'disabled', 'href', 'selected', 'target']
 })
 export class BalListItem {
   protected el: HTMLElement;
@@ -1803,14 +1803,14 @@ export class BalTabItem {
 import { Tabs as ITabs } from '@baloise/ui-library/dist/types/components/bal-tabs/bal-tabs';
 export declare interface BalTabs extends Components.BalTabs {}
 @ProxyCmp({
-  inputs: ['action', 'actionLabel', 'dense', 'expanded', 'interface', 'rounded'],
+  inputs: ['action', 'actionLabel', 'expanded', 'interface', 'rounded'],
   methods: ['select', 'sync']
 })
 @Component({
   selector: 'bal-tabs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['action', 'actionLabel', 'dense', 'expanded', 'interface', 'rounded'],
+  inputs: ['action', 'actionLabel', 'expanded', 'interface', 'rounded'],
   outputs: ['balTabChange', 'balActionClick']
 })
 export class BalTabs {
@@ -1847,11 +1847,14 @@ export class BalTag {
 
 
 export declare interface BalText extends Components.BalText {}
-
+@ProxyCmp({
+  inputs: ['small']
+})
 @Component({
   selector: 'bal-text',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['small']
 })
 export class BalText {
   protected el: HTMLElement;

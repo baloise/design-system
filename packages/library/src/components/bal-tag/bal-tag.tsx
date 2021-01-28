@@ -17,7 +17,9 @@ export class Tag {
     return (
       <Host>
         <span class={`tag ${this.type !== '' ? `is-${this.type}` : 'default'}`}>
-          <slot />
+          <bal-text small>
+            <slot />
+          </bal-text>
         </span>
       </Host>
     )

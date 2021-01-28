@@ -12,6 +12,7 @@
     border: 1px solid $blue-light-line;
     color: $text;
     border-radius: $radius-large;
+    padding: 20px 20px 20px 20px;
 
     &.is-primary {
       background: $blue-light;
@@ -48,6 +49,5 @@
       color: $white;
       border: none;
     }
-
   }
 }

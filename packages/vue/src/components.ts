@@ -943,6 +943,8 @@ export const BalListItem = /*@__PURE__*/ Vue.extend({
     disabled: {} as PropOptions<Components.BalListItem['disabled']>,
     clickable: {} as PropOptions<Components.BalListItem['clickable']>,
     selected: {} as PropOptions<Components.BalListItem['selected']>,
+    href: {} as PropOptions<Components.BalListItem['href']>,
+    target: {} as PropOptions<Components.BalListItem['target']>,
   },
 
 
@@ -1258,7 +1260,6 @@ export const BalTabs = /*@__PURE__*/ Vue.extend({
   props: {
     interface: {} as PropOptions<Components.BalTabs['interface']>,
     expanded: {} as PropOptions<Components.BalTabs['expanded']>,
-    dense: {} as PropOptions<Components.BalTabs['dense']>,
     rounded: {} as PropOptions<Components.BalTabs['rounded']>,
     action: {} as PropOptions<Components.BalTabs['action']>,
     actionLabel: {} as PropOptions<Components.BalTabs['actionLabel']>,
@@ -1286,6 +1287,9 @@ export const BalTag = /*@__PURE__*/ Vue.extend({
 
 export const BalText = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    small: {} as PropOptions<Components.BalText['small']>,
+  },
 
 
   render: createCommonRender('bal-text', []),

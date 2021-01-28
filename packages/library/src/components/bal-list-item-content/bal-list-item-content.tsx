@@ -1,7 +1,7 @@
-import { Component, Host, h } from "@stencil/core";
+import { Component, Host, h } from '@stencil/core'
 
 @Component({
-  tag: "bal-list-item-content",
+  tag: 'bal-list-item-content',
   shadow: false,
   scoped: false,
 })
@@ -11,6 +11,6 @@ export class ListItemContent {
       <Host class="bal-list-item-content">
         <slot></slot>
       </Host>
-    );
+    )
   }
 }

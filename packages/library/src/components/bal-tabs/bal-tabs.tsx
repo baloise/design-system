@@ -23,11 +23,6 @@ export class Tabs {
   @Prop() expanded = false
 
   /**
-   * If `true` the padding gets reduced.
-   */
-  @Prop() dense = false
-
-  /**
    * If you want the rounded tab style.
    */
   @Prop() rounded = false
@@ -129,17 +124,13 @@ export class Tabs {
   renderTabs() {
     return (
       <Host class="bal-tabs">
-        <div
-          class={[
-            'tabs',
-            this.rounded ? 'is-rounded' : '',
-            this.dense ? 'is-dense' : '',
-            this.expanded ? 'is-fullwidth' : '',
-          ].join(' ')}>
+        <div class={['tabs', this.rounded ? 'is-rounded' : '', this.expanded ? 'is-fullwidth' : ''].join(' ')}>
           <ul>
             {this.tabsOptions.map(tab => (
               <li class={[tab.active ? 'is-active' : '', tab.disabled ? 'is-disabled' : ''].join(' ')}>
-                <a onClick={() => this.onSelectTab(tab)}>{tab.label}</a>
+                <a onClick={() => this.onSelectTab(tab)}>
+                  <bal-text>{tab.label}</bal-text>
+                </a>
                 <span class="bubble" style={!tab.hasBubble && { display: 'none' }}></span>
               </li>
             ))}

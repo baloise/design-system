@@ -1,19 +1,15 @@
-# bal-toast
+# bal-snackbar
 
-Toast are used to inform the user with a simple text message.
-
-> Note: Toast are getting queued to not confuse the users.
+Snackbar are used to inform the user with a simple text message.
 
 ## Usage
 
-Toast can be created with the `balToastController`. The default duration is 5000 milliseconds.
+Toast can be created with the `balScnackbarController`. The default duration is 5000 milliseconds.
 
 ```typescript
-import { balToastController } from '@baloise/ui-library'
+import { balScnackbarController } from '@baloise/ui-library'
 
-balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
-balToastController.create({ message: 'Warning!', type: 'is-warning' })
-balToastController.create({ message: 'Danger zone!', type: 'is-danger' })
+balScnackbarController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
 ```
 
 <!-- Auto Generated Below -->

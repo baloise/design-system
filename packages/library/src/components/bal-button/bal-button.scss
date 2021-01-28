@@ -17,9 +17,7 @@
     user-select: none;
     min-height: 50px;
     text-decoration: none;
-    padding-top: 7px;
-    padding-bottom: 6px;
-    font-size: $size-4;
+    // padding-top: calc(0.6em - 1px);
 
     &.has-round-top-corners,
     &.has-round-top-corners button {
@@ -57,17 +55,17 @@
       align-items: center;
       display: inline-flex;
       justify-content: center;
-      margin-top: -4px;
+      margin-top: -6px;
     }
 
     .icon-left {
-      margin-left: -18px;
-      margin-right: 6px;
+      margin-left: -4px;
+      margin-right: 8px;
     }
 
     .icon-right {
-      margin-right: -18px;
-      margin-left: 6px;
+      margin-right: -4px;
+      margin-left: 8px;
     }
 
     &.is-fullwidth {
@@ -82,13 +80,12 @@
     &.is-small {
       min-height: 38px;
       min-width: 38px;
-      padding: 10px 20px 9px 20px;
-      font-size: $size-5;
+      padding-left: 20px;
+      padding-right: 20px;
+      // padding-top: calc(0.7em - 1px);
 
-      bal-text {
-        min-height: 19px;
-        font-size: $size-5;
-      }
+      font-size: $size-5;
+      line-height: $bal_lineheight_15px;
 
       &.is-square {
         width: 38px;
@@ -343,11 +340,6 @@
           background: transparent;
         }
       }
-    }
-
-    &.is-dense {
-      padding-left: 16px;
-      padding-right: 16px;
     }
   }
 }

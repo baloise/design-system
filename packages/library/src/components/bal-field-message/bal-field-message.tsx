@@ -17,7 +17,7 @@ export class FieldMessage {
   render() {
     return (
       <Host class={`help is-${this.type}`}>
-        <bal-text>
+        <bal-text small>
           <slot></slot>
         </bal-text>
       </Host>

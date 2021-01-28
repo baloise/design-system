@@ -160,7 +160,7 @@ export class Button {
 
   renderButtonLabel() {
     return (
-      <bal-text style={{ display: this.loading ? 'none' : 'inline' }}>
+      <bal-text small={this.size === 'small'} style={{ display: this.loading ? 'none' : 'inline' }}>
         <slot />
       </bal-text>
     )

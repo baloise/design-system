@@ -1,9 +1,11 @@
 @import '../../styles/ui-library.utilities';
 
 :host {
-  display: block;
   position: relative;
   min-height: 26px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 
   input[type='checkbox'] {
     position: absolute;
@@ -26,7 +28,7 @@
 
   label {
     padding-left: 34px;
-    line-height: 26px;
+    margin-top: 1px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
