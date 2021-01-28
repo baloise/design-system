@@ -77,6 +77,7 @@ export class Tabs {
 
   private async onSelectTab(tab: BalTabOption) {
     if (!tab.disabled) {
+      tab.navigate.emit(tab)
       await this.select(tab)
       this.tabsDidChange.emit(tab)
     }
@@ -130,11 +131,15 @@ export class Tabs {
               <li class={[tab.active ? 'is-active' : '', tab.disabled ? 'is-disabled' : ''].join(' ')}>
                 <a
                   href={tab.href}
+                  aria-current="page"
                   onClick={() => this.onSelectTab(tab)}
                   style={{ display: tab.href === '' ? 'none' : '' }}>
                   <bal-text>{tab.label}</bal-text>
                 </a>
-                <a onClick={() => this.onSelectTab(tab)} style={{ display: tab.href === '' ? '' : 'none' }}>
+                <a
+                  aria-current="page"
+                  onClick={() => this.onSelectTab(tab)}
+                  style={{ display: tab.href === '' ? '' : 'none' }}>
                   <bal-text>{tab.label}</bal-text>
                 </a>
                 <span class="bubble" style={!tab.hasBubble && { display: 'none' }}></span>

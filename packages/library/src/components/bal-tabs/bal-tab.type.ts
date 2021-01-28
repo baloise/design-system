@@ -1,3 +1,5 @@
+import { EventEmitter } from '@stencil/core'
+
 export interface BalTabOption {
   value: string
   label: string
@@ -7,4 +9,5 @@ export interface BalTabOption {
   done: boolean
   failed: boolean
   hasBubble: boolean
+  navigate: EventEmitter<BalTabOption>
 }

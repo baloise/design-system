@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Method, State, Watch, Element } from '@stencil/core'
+import { Component, Host, h, Prop, Method, State, Watch, Element, EventEmitter, Event } from '@stencil/core'
 import { BalTabOption } from '../bal-tabs/bal-tab.type'
 
 @Component({
@@ -52,6 +52,11 @@ export class TabItem {
    */
   @Prop() active: boolean = false
 
+  /**
+   * Emitted when the action button has clicked
+   */
+  @Event({ eventName: 'balNavigate' }) navigate: EventEmitter<BalTabOption>
+
   @Watch('active')
   activatedHandler(newActive: boolean) {
     this.isContentHidden = !newActive
@@ -94,6 +99,7 @@ export class TabItem {
       done: this.done,
       failed: this.failed,
       hasBubble: this.bubble,
+      navigate: this.navigate,
     }
   }
 

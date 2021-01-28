@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title size-1">Filters</h1>
+    <h1 class="title is-size-1">Filters</h1>
     <p>{{ '123' | balClaimNumber }}</p>
     <p>{{ '73001217169' | balClaimNumber }}</p>
     <p>{{ claimNumberFormatted }}</p>

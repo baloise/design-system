@@ -21,6 +21,13 @@
 | `value`    | `value`    | This is the key of the tab.                             | `string`  | `''`    |
 
 
+## Events
+
+| Event         | Description                                | Type                        |
+| ------------- | ------------------------------------------ | --------------------------- |
+| `balNavigate` | Emitted when the action button has clicked | `CustomEvent<BalTabOption>` |
+
+
 ## Methods
 
 ### `getOptions() => Promise<BalTabOption>`

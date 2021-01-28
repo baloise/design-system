@@ -2991,6 +2991,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Emitted when the action button has clicked
+         */
+        "onBalNavigate"?: (event: CustomEvent<BalTabOption>) => void;
+        /**
           * This is the key of the tab.
          */
         "value"?: string;

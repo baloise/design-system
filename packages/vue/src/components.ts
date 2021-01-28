@@ -1252,7 +1252,7 @@ export const BalTabItem = /*@__PURE__*/ Vue.extend({
     getOptions: createCommonMethod('getOptions') as Components.BalTabItem['getOptions'],
     setActive: createCommonMethod('setActive') as Components.BalTabItem['setActive'],
   },
-  render: createCommonRender('bal-tab-item', []),
+  render: createCommonRender('bal-tab-item', ['balNavigate']),
 });
 
 
