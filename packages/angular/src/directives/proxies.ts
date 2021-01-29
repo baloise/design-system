@@ -799,6 +799,22 @@ export class BalIconClose {
 }
 
 
+export declare interface BalIconConsultant extends Components.BalIconConsultant {}
+
+@Component({
+  selector: 'bal-icon-consultant',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalIconConsultant {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface BalIconContact extends Components.BalIconContact {}
 
 @Component({
@@ -887,22 +903,6 @@ export declare interface BalIconEdit extends Components.BalIconEdit {}
   template: '<ng-content></ng-content>'
 })
 export class BalIconEdit {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface BalIconGenerellConsultant extends Components.BalIconGenerellConsultant {}
-
-@Component({
-  selector: 'bal-icon-generell-consultant',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
-})
-export class BalIconGenerellConsultant {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1151,6 +1151,22 @@ export class BalIconPlus {
 }
 
 
+export declare interface BalIconPrint extends Components.BalIconPrint {}
+
+@Component({
+  selector: 'bal-icon-print',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalIconPrint {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface BalIconReadOnly extends Components.BalIconReadOnly {}
 
 @Component({
@@ -1191,6 +1207,22 @@ export declare interface BalIconSearch extends Components.BalIconSearch {}
   template: '<ng-content></ng-content>'
 })
 export class BalIconSearch {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalIconSend extends Components.BalIconSend {}
+
+@Component({
+  selector: 'bal-icon-send',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalIconSend {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

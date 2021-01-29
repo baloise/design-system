@@ -22,13 +22,13 @@ Then the build script will automatically optimize the svg and create its own web
 | <bal-icon name="check" /> | `check` |
 | <bal-icon name="clock" /> | `clock` |
 | <bal-icon name="close" /> | `close` |
+| <bal-icon name="consultant" /> | `consultant` |
 | <bal-icon name="contact" /> | `contact` |
 | <bal-icon name="copy" /> | `copy` |
 | <bal-icon name="date" /> | `date` |
 | <bal-icon name="document" /> | `document` |
 | <bal-icon name="download" /> | `download` |
 | <bal-icon name="edit" /> | `edit` |
-| <bal-icon name="generell-consultant" /> | `generell-consultant` |
 | <bal-icon name="github" /> | `github` |
 | <bal-icon name="info-circle" /> | `info-circle` |
 | <bal-icon name="info" /> | `info` |
@@ -44,9 +44,11 @@ Then the build script will automatically optimize the svg and create its own web
 | <bal-icon name="nav-go-right" /> | `nav-go-right` |
 | <bal-icon name="nav-go-up" /> | `nav-go-up` |
 | <bal-icon name="plus" /> | `plus` |
+| <bal-icon name="print" /> | `print` |
 | <bal-icon name="read-only" /> | `read-only` |
 | <bal-icon name="refresh" /> | `refresh` |
 | <bal-icon name="search" /> | `search` |
+| <bal-icon name="send" /> | `send` |
 | <bal-icon name="social-facebook-line" /> | `social-facebook-line` |
 | <bal-icon name="social-linkedin-line" /> | `social-linkedin-line` |
 | <bal-icon name="social-xing-line" /> | `social-xing-line` |

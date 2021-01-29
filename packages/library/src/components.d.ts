@@ -575,6 +575,8 @@ export namespace Components {
     }
     interface BalIconClose {
     }
+    interface BalIconConsultant {
+    }
     interface BalIconContact {
     }
     interface BalIconCopy {
@@ -586,8 +588,6 @@ export namespace Components {
     interface BalIconDownload {
     }
     interface BalIconEdit {
-    }
-    interface BalIconGenerellConsultant {
     }
     interface BalIconGithub {
     }
@@ -619,11 +619,15 @@ export namespace Components {
     }
     interface BalIconPlus {
     }
+    interface BalIconPrint {
+    }
     interface BalIconReadOnly {
     }
     interface BalIconRefresh {
     }
     interface BalIconSearch {
+    }
+    interface BalIconSend {
     }
     interface BalIconSocialFacebookLine {
     }
@@ -1454,6 +1458,12 @@ declare global {
         prototype: HTMLBalIconCloseElement;
         new (): HTMLBalIconCloseElement;
     };
+    interface HTMLBalIconConsultantElement extends Components.BalIconConsultant, HTMLStencilElement {
+    }
+    var HTMLBalIconConsultantElement: {
+        prototype: HTMLBalIconConsultantElement;
+        new (): HTMLBalIconConsultantElement;
+    };
     interface HTMLBalIconContactElement extends Components.BalIconContact, HTMLStencilElement {
     }
     var HTMLBalIconContactElement: {
@@ -1489,12 +1499,6 @@ declare global {
     var HTMLBalIconEditElement: {
         prototype: HTMLBalIconEditElement;
         new (): HTMLBalIconEditElement;
-    };
-    interface HTMLBalIconGenerellConsultantElement extends Components.BalIconGenerellConsultant, HTMLStencilElement {
-    }
-    var HTMLBalIconGenerellConsultantElement: {
-        prototype: HTMLBalIconGenerellConsultantElement;
-        new (): HTMLBalIconGenerellConsultantElement;
     };
     interface HTMLBalIconGithubElement extends Components.BalIconGithub, HTMLStencilElement {
     }
@@ -1586,6 +1590,12 @@ declare global {
         prototype: HTMLBalIconPlusElement;
         new (): HTMLBalIconPlusElement;
     };
+    interface HTMLBalIconPrintElement extends Components.BalIconPrint, HTMLStencilElement {
+    }
+    var HTMLBalIconPrintElement: {
+        prototype: HTMLBalIconPrintElement;
+        new (): HTMLBalIconPrintElement;
+    };
     interface HTMLBalIconReadOnlyElement extends Components.BalIconReadOnly, HTMLStencilElement {
     }
     var HTMLBalIconReadOnlyElement: {
@@ -1603,6 +1613,12 @@ declare global {
     var HTMLBalIconSearchElement: {
         prototype: HTMLBalIconSearchElement;
         new (): HTMLBalIconSearchElement;
+    };
+    interface HTMLBalIconSendElement extends Components.BalIconSend, HTMLStencilElement {
+    }
+    var HTMLBalIconSendElement: {
+        prototype: HTMLBalIconSendElement;
+        new (): HTMLBalIconSendElement;
     };
     interface HTMLBalIconSocialFacebookLineElement extends Components.BalIconSocialFacebookLine, HTMLStencilElement {
     }
@@ -1869,13 +1885,13 @@ declare global {
         "bal-icon-check-circle": HTMLBalIconCheckCircleElement;
         "bal-icon-clock": HTMLBalIconClockElement;
         "bal-icon-close": HTMLBalIconCloseElement;
+        "bal-icon-consultant": HTMLBalIconConsultantElement;
         "bal-icon-contact": HTMLBalIconContactElement;
         "bal-icon-copy": HTMLBalIconCopyElement;
         "bal-icon-date": HTMLBalIconDateElement;
         "bal-icon-document": HTMLBalIconDocumentElement;
         "bal-icon-download": HTMLBalIconDownloadElement;
         "bal-icon-edit": HTMLBalIconEditElement;
-        "bal-icon-generell-consultant": HTMLBalIconGenerellConsultantElement;
         "bal-icon-github": HTMLBalIconGithubElement;
         "bal-icon-info": HTMLBalIconInfoElement;
         "bal-icon-info-circle": HTMLBalIconInfoCircleElement;
@@ -1891,9 +1907,11 @@ declare global {
         "bal-icon-nav-go-right": HTMLBalIconNavGoRightElement;
         "bal-icon-nav-go-up": HTMLBalIconNavGoUpElement;
         "bal-icon-plus": HTMLBalIconPlusElement;
+        "bal-icon-print": HTMLBalIconPrintElement;
         "bal-icon-read-only": HTMLBalIconReadOnlyElement;
         "bal-icon-refresh": HTMLBalIconRefreshElement;
         "bal-icon-search": HTMLBalIconSearchElement;
+        "bal-icon-send": HTMLBalIconSendElement;
         "bal-icon-social-facebook-line": HTMLBalIconSocialFacebookLineElement;
         "bal-icon-social-linkedin-line": HTMLBalIconSocialLinkedinLineElement;
         "bal-icon-social-xing-line": HTMLBalIconSocialXingLineElement;
@@ -2495,6 +2513,8 @@ declare namespace LocalJSX {
     }
     interface BalIconClose {
     }
+    interface BalIconConsultant {
+    }
     interface BalIconContact {
     }
     interface BalIconCopy {
@@ -2506,8 +2526,6 @@ declare namespace LocalJSX {
     interface BalIconDownload {
     }
     interface BalIconEdit {
-    }
-    interface BalIconGenerellConsultant {
     }
     interface BalIconGithub {
     }
@@ -2539,11 +2557,15 @@ declare namespace LocalJSX {
     }
     interface BalIconPlus {
     }
+    interface BalIconPrint {
+    }
     interface BalIconReadOnly {
     }
     interface BalIconRefresh {
     }
     interface BalIconSearch {
+    }
+    interface BalIconSend {
     }
     interface BalIconSocialFacebookLine {
     }
@@ -3187,13 +3209,13 @@ declare namespace LocalJSX {
         "bal-icon-check-circle": BalIconCheckCircle;
         "bal-icon-clock": BalIconClock;
         "bal-icon-close": BalIconClose;
+        "bal-icon-consultant": BalIconConsultant;
         "bal-icon-contact": BalIconContact;
         "bal-icon-copy": BalIconCopy;
         "bal-icon-date": BalIconDate;
         "bal-icon-document": BalIconDocument;
         "bal-icon-download": BalIconDownload;
         "bal-icon-edit": BalIconEdit;
-        "bal-icon-generell-consultant": BalIconGenerellConsultant;
         "bal-icon-github": BalIconGithub;
         "bal-icon-info": BalIconInfo;
         "bal-icon-info-circle": BalIconInfoCircle;
@@ -3209,9 +3231,11 @@ declare namespace LocalJSX {
         "bal-icon-nav-go-right": BalIconNavGoRight;
         "bal-icon-nav-go-up": BalIconNavGoUp;
         "bal-icon-plus": BalIconPlus;
+        "bal-icon-print": BalIconPrint;
         "bal-icon-read-only": BalIconReadOnly;
         "bal-icon-refresh": BalIconRefresh;
         "bal-icon-search": BalIconSearch;
+        "bal-icon-send": BalIconSend;
         "bal-icon-social-facebook-line": BalIconSocialFacebookLine;
         "bal-icon-social-linkedin-line": BalIconSocialLinkedinLine;
         "bal-icon-social-xing-line": BalIconSocialXingLine;
@@ -3297,13 +3321,13 @@ declare module "@stencil/core" {
             "bal-icon-check-circle": LocalJSX.BalIconCheckCircle & JSXBase.HTMLAttributes<HTMLBalIconCheckCircleElement>;
             "bal-icon-clock": LocalJSX.BalIconClock & JSXBase.HTMLAttributes<HTMLBalIconClockElement>;
             "bal-icon-close": LocalJSX.BalIconClose & JSXBase.HTMLAttributes<HTMLBalIconCloseElement>;
+            "bal-icon-consultant": LocalJSX.BalIconConsultant & JSXBase.HTMLAttributes<HTMLBalIconConsultantElement>;
             "bal-icon-contact": LocalJSX.BalIconContact & JSXBase.HTMLAttributes<HTMLBalIconContactElement>;
             "bal-icon-copy": LocalJSX.BalIconCopy & JSXBase.HTMLAttributes<HTMLBalIconCopyElement>;
             "bal-icon-date": LocalJSX.BalIconDate & JSXBase.HTMLAttributes<HTMLBalIconDateElement>;
             "bal-icon-document": LocalJSX.BalIconDocument & JSXBase.HTMLAttributes<HTMLBalIconDocumentElement>;
             "bal-icon-download": LocalJSX.BalIconDownload & JSXBase.HTMLAttributes<HTMLBalIconDownloadElement>;
             "bal-icon-edit": LocalJSX.BalIconEdit & JSXBase.HTMLAttributes<HTMLBalIconEditElement>;
-            "bal-icon-generell-consultant": LocalJSX.BalIconGenerellConsultant & JSXBase.HTMLAttributes<HTMLBalIconGenerellConsultantElement>;
             "bal-icon-github": LocalJSX.BalIconGithub & JSXBase.HTMLAttributes<HTMLBalIconGithubElement>;
             "bal-icon-info": LocalJSX.BalIconInfo & JSXBase.HTMLAttributes<HTMLBalIconInfoElement>;
             "bal-icon-info-circle": LocalJSX.BalIconInfoCircle & JSXBase.HTMLAttributes<HTMLBalIconInfoCircleElement>;
@@ -3319,9 +3343,11 @@ declare module "@stencil/core" {
             "bal-icon-nav-go-right": LocalJSX.BalIconNavGoRight & JSXBase.HTMLAttributes<HTMLBalIconNavGoRightElement>;
             "bal-icon-nav-go-up": LocalJSX.BalIconNavGoUp & JSXBase.HTMLAttributes<HTMLBalIconNavGoUpElement>;
             "bal-icon-plus": LocalJSX.BalIconPlus & JSXBase.HTMLAttributes<HTMLBalIconPlusElement>;
+            "bal-icon-print": LocalJSX.BalIconPrint & JSXBase.HTMLAttributes<HTMLBalIconPrintElement>;
             "bal-icon-read-only": LocalJSX.BalIconReadOnly & JSXBase.HTMLAttributes<HTMLBalIconReadOnlyElement>;
             "bal-icon-refresh": LocalJSX.BalIconRefresh & JSXBase.HTMLAttributes<HTMLBalIconRefreshElement>;
             "bal-icon-search": LocalJSX.BalIconSearch & JSXBase.HTMLAttributes<HTMLBalIconSearchElement>;
+            "bal-icon-send": LocalJSX.BalIconSend & JSXBase.HTMLAttributes<HTMLBalIconSendElement>;
             "bal-icon-social-facebook-line": LocalJSX.BalIconSocialFacebookLine & JSXBase.HTMLAttributes<HTMLBalIconSocialFacebookLineElement>;
             "bal-icon-social-linkedin-line": LocalJSX.BalIconSocialLinkedinLine & JSXBase.HTMLAttributes<HTMLBalIconSocialLinkedinLineElement>;
             "bal-icon-social-xing-line": LocalJSX.BalIconSocialXingLine & JSXBase.HTMLAttributes<HTMLBalIconSocialXingLineElement>;

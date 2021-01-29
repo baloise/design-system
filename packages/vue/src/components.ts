@@ -52,13 +52,13 @@ const customElementTags: string[] = [
  'bal-icon-check-circle',
  'bal-icon-clock',
  'bal-icon-close',
+ 'bal-icon-consultant',
  'bal-icon-contact',
  'bal-icon-copy',
  'bal-icon-date',
  'bal-icon-document',
  'bal-icon-download',
  'bal-icon-edit',
- 'bal-icon-generell-consultant',
  'bal-icon-github',
  'bal-icon-info',
  'bal-icon-info-circle',
@@ -74,9 +74,11 @@ const customElementTags: string[] = [
  'bal-icon-nav-go-right',
  'bal-icon-nav-go-up',
  'bal-icon-plus',
+ 'bal-icon-print',
  'bal-icon-read-only',
  'bal-icon-refresh',
  'bal-icon-search',
+ 'bal-icon-send',
  'bal-icon-social-facebook-line',
  'bal-icon-social-linkedin-line',
  'bal-icon-social-xing-line',
@@ -653,6 +655,14 @@ export const BalIconClose = /*@__PURE__*/ Vue.extend({
 });
 
 
+export const BalIconConsultant = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-consultant', []),
+});
+
+
 export const BalIconContact = /*@__PURE__*/ Vue.extend({
 
 
@@ -698,14 +708,6 @@ export const BalIconEdit = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('bal-icon-edit', []),
-});
-
-
-export const BalIconGenerellConsultant = /*@__PURE__*/ Vue.extend({
-
-
-
-  render: createCommonRender('bal-icon-generell-consultant', []),
 });
 
 
@@ -829,6 +831,14 @@ export const BalIconPlus = /*@__PURE__*/ Vue.extend({
 });
 
 
+export const BalIconPrint = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-print', []),
+});
+
+
 export const BalIconReadOnly = /*@__PURE__*/ Vue.extend({
 
 
@@ -850,6 +860,14 @@ export const BalIconSearch = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('bal-icon-search', []),
+});
+
+
+export const BalIconSend = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-icon-send', []),
 });
 
 
