@@ -133,13 +133,15 @@ export class Tabs {
                   href={tab.href}
                   aria-current="page"
                   onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}
-                  style={{ display: tab.href === '' ? 'none' : '' }}>
+                  style={{ display: tab.href === '' ? 'none' : '' }}
+                  class={{ hidden: tab.href === '' }}>
                   <bal-text>{tab.label}</bal-text>
                 </a>
                 <a
                   aria-current="page"
                   onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}
-                  style={{ display: tab.href === '' ? '' : 'none' }}>
+                  style={{ display: tab.href === '' ? '' : 'none' }}
+                  class={{ hidden: tab.href !== '' }}>
                   <bal-text>{tab.label}</bal-text>
                 </a>
                 <span class="bubble" style={!tab.hasBubble && { display: 'none' }}></span>

@@ -35,7 +35,7 @@ export const TabsAssertVisibleMixin: Mixin = <T>({selector, creator}: MixinConte
    */
   select: (index: number) => {
     cy.get(selector).within(() => {
-      cy.get(`a.sc-bal-tabs`).eq(index).click();
+      cy.get(`a.sc-bal-tabs:not(.hidden)`).eq(index).click();
     });
     return creator();
   },
