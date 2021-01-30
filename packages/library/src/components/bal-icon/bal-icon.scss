@@ -16,6 +16,10 @@
     position: static;
     width: 24px;
     max-height: 24px;
+
+    svg {
+      max-height: 24px;
+    }
   }
 
   &.is-size-xsmall,

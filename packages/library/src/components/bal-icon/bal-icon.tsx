@@ -50,7 +50,7 @@ export class Icon {
           [`turn`]: this.turn,
           [`rotate`]: this.rotate,
         }}>
-        <SvgIcon class="bal-icon-inner"></SvgIcon>
+        <SvgIcon class="bal-icon-inner" size={this.size}></SvgIcon>
       </Host>
     )
   }

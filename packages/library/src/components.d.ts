@@ -550,94 +550,274 @@ export namespace Components {
         "type": BalButtonType;
     }
     interface BalIconAccount {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconAlert {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconAlertCircle {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconAnswer {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCall {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCaretDown {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCaretLeft {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCaretRight {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCaretUp {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCheck {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCheckCircle {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconClock {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconClose {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconConsultant {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconContact {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCopy {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconDate {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconDocument {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconDownload {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconEdit {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconGithub {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconInfo {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconInfoCircle {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconLocate {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconLocation {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconMenuBars {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconMenuDots {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconMessage {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconMinus {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconNavBack {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconNavGoDown {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconNavGoLeft {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconNavGoRight {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconNavGoUp {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconPlus {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconPrint {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconReadOnly {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconRefresh {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconSearch {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconSend {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconSocialFacebookLine {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconSocialLinkedinLine {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconSocialXingLine {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconTrash {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconUpload {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalInput {
         /**
@@ -2488,94 +2668,274 @@ declare namespace LocalJSX {
         "type"?: BalButtonType;
     }
     interface BalIconAccount {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconAlert {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconAlertCircle {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconAnswer {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCall {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCaretDown {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCaretLeft {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCaretRight {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCaretUp {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCheck {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCheckCircle {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconClock {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconClose {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconConsultant {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconContact {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconCopy {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconDate {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconDocument {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconDownload {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconEdit {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconGithub {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconInfo {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconInfoCircle {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconLocate {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconLocation {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconMenuBars {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconMenuDots {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconMessage {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconMinus {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconNavBack {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconNavGoDown {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconNavGoLeft {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconNavGoRight {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconNavGoUp {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconPlus {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconPrint {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconReadOnly {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconRefresh {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconSearch {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconSend {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconSocialFacebookLine {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconSocialLinkedinLine {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconSocialXingLine {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconTrash {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconUpload {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalInput {
         /**
