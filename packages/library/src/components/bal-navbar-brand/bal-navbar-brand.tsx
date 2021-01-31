@@ -21,7 +21,10 @@ export class NavbarBrand {
   @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
 
   componentWillLoad() {
-    window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
+    var isIE11 = !!window.MSInputMethodContext && !!(document as any).documentMode
+    if (!isIE11) {
+      window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
+    }
   }
 
   async resetIsMenuActive(e) {

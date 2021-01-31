@@ -69,6 +69,7 @@
     <script src="assets/js/prism-scss.min.js"></script>
     <script src="assets/js/docsify-pagination.min.js"></script>
     <script src="assets/js/snippet.plugin.js"></script>
+    <script src="assets/js/scroll-to.js"></script>
 
     <script type="module" src="lib/ui-library/ui-library.esm.js"></script>
     <script nomodule src="lib/ui-library/ui-library.js"></script>
@@ -77,42 +78,6 @@
 
       window.balToastController = balToastController
       window.balSnackbarController = balSnackbarController
-    </script>
-    <script>
-      function docScrollTo() {
-        var mainElements = document.getElementsByTagName('main')
-        if (mainElements.length === 0) {
-          setTimeout(docScrollTo, 100)
-        } else {
-          if (location.href.indexOf('?') >= 0) {
-            var searchParamString = location.href.substring(location.href.indexOf('?') + 1, location.href.length)
-            var searchParamArray = searchParamString.split('&')
-            var searchParamMatrix = searchParamArray
-              .map(function (s) {
-                return s.split('=')
-              })
-              .filter(function (s) {
-                return s[0] === 'id'
-              })
-              .map(function (s) {
-                return s[1]
-              })
-
-            if (searchParamMatrix.length > 0) {
-              var scrollToTitle = document.getElementById(searchParamMatrix[0])
-              mainElements[0].scrollTo(0, scrollToTitle.offsetTop - 32)
-            }
-          } else {
-            mainElements[0].scrollTo(0, 0)
-          }
-        }
-      }
-
-      window.addEventListener('popstate', function (event) {
-        docScrollTo()
-      })
-
-      docScrollTo()
     </script>
   </body>
 </html>

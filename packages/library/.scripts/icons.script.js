@@ -17,23 +17,32 @@ const svgo = new SVGO({
   plugins: [
     {
       removeAttrs: { attrs: '(stroke|fill)' },
-    }, {
+    },
+    {
       removeDimensions: true,
-    }
+    },
   ],
 })
 
-const iconComponent = (tag, className, svgContent) => `import { Component, h } from '@stencil/core';
+const iconComponent = (tag, className, svgContent) => `import { Component, h, Host, Prop } from '@stencil/core';
 
 @Component({
   tag: 'bal-${tag}',
+  styleUrl: '../bal-icon-svg.scss',
   shadow: false,
   scoped: true,
 })
 export class ${className} {
+  /**
+   * Defines the size of the icon.
+   */
+  @Prop() size: 'xsmall' | 'small' | 'medium' | 'large' | '' = ''
+
   render() {
     return (
-      ${svgContent}
+      <Host class={{ [\`is-size-\${this.size}\`]: !!this.size }}>
+        ${svgContent}
+      </Host>
     );
   }
 }

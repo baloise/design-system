@@ -1,0 +1,27 @@
+@import '../../styles/ui-library.utilities';
+
+:host {
+  svg {
+    max-height: 24px;
+  }
+
+  &.is-size-xsmall svg {
+    max-height: 10px;
+  }
+
+  &.is-size-small svg {
+    max-height: 16px;
+  }
+
+  &.is-size-medium svg {
+    max-height: 32px;
+  }
+
+  &.is-size-large svg {
+    max-height: 48px;
+  }
+
+  &.is-size-xlarge svg {
+    max-height: 64px;
+  }
+}
