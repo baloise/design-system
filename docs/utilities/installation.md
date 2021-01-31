@@ -33,7 +33,7 @@ export default Vue.extend({
 ## Angular
 
 The utils are a part of the Angular module. The module declares all the filters and util functions.
-Follow the installtion guide of Angular. [Link to the Vue Installion](/introduction/angular)
+Follow the installtion guide of Angular. [Link to the Angular Installion](/introduction/angular)
 
 ### Pipes
 

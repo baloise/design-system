@@ -19,7 +19,7 @@ cd ui-library
 - Run `npm run build` to build the library
 - Run `npm run lib:serve` to serve UI library demo page
 
-> The demo page will be served at http://localhost:3333/ by default. You can check effect of your changes immediately on this demo page.
+> The demo page will be served at http://localhost:3333/ by default.
 
 For more commands visit [Commands](./commands.md)
 
