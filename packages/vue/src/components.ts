@@ -553,6 +553,9 @@ export const BalIcon = /*@__PURE__*/ Vue.extend({
 
 export const BalIconAccount = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconAccount['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-account', []),
@@ -561,6 +564,9 @@ export const BalIconAccount = /*@__PURE__*/ Vue.extend({
 
 export const BalIconAlert = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconAlert['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-alert', []),
@@ -569,6 +575,9 @@ export const BalIconAlert = /*@__PURE__*/ Vue.extend({
 
 export const BalIconAlertCircle = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconAlertCircle['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-alert-circle', []),
@@ -577,6 +586,9 @@ export const BalIconAlertCircle = /*@__PURE__*/ Vue.extend({
 
 export const BalIconAnswer = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconAnswer['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-answer', []),
@@ -585,6 +597,9 @@ export const BalIconAnswer = /*@__PURE__*/ Vue.extend({
 
 export const BalIconCall = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconCall['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-call', []),
@@ -593,6 +608,9 @@ export const BalIconCall = /*@__PURE__*/ Vue.extend({
 
 export const BalIconCaretDown = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconCaretDown['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-caret-down', []),
@@ -601,6 +619,9 @@ export const BalIconCaretDown = /*@__PURE__*/ Vue.extend({
 
 export const BalIconCaretLeft = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconCaretLeft['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-caret-left', []),
@@ -609,6 +630,9 @@ export const BalIconCaretLeft = /*@__PURE__*/ Vue.extend({
 
 export const BalIconCaretRight = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconCaretRight['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-caret-right', []),
@@ -617,6 +641,9 @@ export const BalIconCaretRight = /*@__PURE__*/ Vue.extend({
 
 export const BalIconCaretUp = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconCaretUp['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-caret-up', []),
@@ -625,6 +652,9 @@ export const BalIconCaretUp = /*@__PURE__*/ Vue.extend({
 
 export const BalIconCheck = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconCheck['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-check', []),
@@ -633,6 +663,9 @@ export const BalIconCheck = /*@__PURE__*/ Vue.extend({
 
 export const BalIconCheckCircle = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconCheckCircle['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-check-circle', []),
@@ -641,6 +674,9 @@ export const BalIconCheckCircle = /*@__PURE__*/ Vue.extend({
 
 export const BalIconClock = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconClock['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-clock', []),
@@ -649,6 +685,9 @@ export const BalIconClock = /*@__PURE__*/ Vue.extend({
 
 export const BalIconClose = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconClose['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-close', []),
@@ -657,6 +696,9 @@ export const BalIconClose = /*@__PURE__*/ Vue.extend({
 
 export const BalIconConsultant = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconConsultant['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-consultant', []),
@@ -665,6 +707,9 @@ export const BalIconConsultant = /*@__PURE__*/ Vue.extend({
 
 export const BalIconContact = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconContact['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-contact', []),
@@ -673,6 +718,9 @@ export const BalIconContact = /*@__PURE__*/ Vue.extend({
 
 export const BalIconCopy = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconCopy['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-copy', []),
@@ -681,6 +729,9 @@ export const BalIconCopy = /*@__PURE__*/ Vue.extend({
 
 export const BalIconDate = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconDate['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-date', []),
@@ -689,6 +740,9 @@ export const BalIconDate = /*@__PURE__*/ Vue.extend({
 
 export const BalIconDocument = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconDocument['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-document', []),
@@ -697,6 +751,9 @@ export const BalIconDocument = /*@__PURE__*/ Vue.extend({
 
 export const BalIconDownload = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconDownload['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-download', []),
@@ -705,6 +762,9 @@ export const BalIconDownload = /*@__PURE__*/ Vue.extend({
 
 export const BalIconEdit = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconEdit['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-edit', []),
@@ -713,6 +773,9 @@ export const BalIconEdit = /*@__PURE__*/ Vue.extend({
 
 export const BalIconGithub = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconGithub['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-github', []),
@@ -721,6 +784,9 @@ export const BalIconGithub = /*@__PURE__*/ Vue.extend({
 
 export const BalIconInfo = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconInfo['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-info', []),
@@ -729,6 +795,9 @@ export const BalIconInfo = /*@__PURE__*/ Vue.extend({
 
 export const BalIconInfoCircle = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconInfoCircle['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-info-circle', []),
@@ -737,6 +806,9 @@ export const BalIconInfoCircle = /*@__PURE__*/ Vue.extend({
 
 export const BalIconLocate = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconLocate['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-locate', []),
@@ -745,6 +817,9 @@ export const BalIconLocate = /*@__PURE__*/ Vue.extend({
 
 export const BalIconLocation = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconLocation['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-location', []),
@@ -753,6 +828,9 @@ export const BalIconLocation = /*@__PURE__*/ Vue.extend({
 
 export const BalIconMenuBars = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconMenuBars['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-menu-bars', []),
@@ -761,6 +839,9 @@ export const BalIconMenuBars = /*@__PURE__*/ Vue.extend({
 
 export const BalIconMenuDots = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconMenuDots['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-menu-dots', []),
@@ -769,6 +850,9 @@ export const BalIconMenuDots = /*@__PURE__*/ Vue.extend({
 
 export const BalIconMessage = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconMessage['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-message', []),
@@ -777,6 +861,9 @@ export const BalIconMessage = /*@__PURE__*/ Vue.extend({
 
 export const BalIconMinus = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconMinus['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-minus', []),
@@ -785,6 +872,9 @@ export const BalIconMinus = /*@__PURE__*/ Vue.extend({
 
 export const BalIconNavBack = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconNavBack['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-nav-back', []),
@@ -793,6 +883,9 @@ export const BalIconNavBack = /*@__PURE__*/ Vue.extend({
 
 export const BalIconNavGoDown = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconNavGoDown['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-nav-go-down', []),
@@ -801,6 +894,9 @@ export const BalIconNavGoDown = /*@__PURE__*/ Vue.extend({
 
 export const BalIconNavGoLeft = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconNavGoLeft['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-nav-go-left', []),
@@ -809,6 +905,9 @@ export const BalIconNavGoLeft = /*@__PURE__*/ Vue.extend({
 
 export const BalIconNavGoRight = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconNavGoRight['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-nav-go-right', []),
@@ -817,6 +916,9 @@ export const BalIconNavGoRight = /*@__PURE__*/ Vue.extend({
 
 export const BalIconNavGoUp = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconNavGoUp['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-nav-go-up', []),
@@ -825,6 +927,9 @@ export const BalIconNavGoUp = /*@__PURE__*/ Vue.extend({
 
 export const BalIconPlus = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconPlus['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-plus', []),
@@ -833,6 +938,9 @@ export const BalIconPlus = /*@__PURE__*/ Vue.extend({
 
 export const BalIconPrint = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconPrint['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-print', []),
@@ -841,6 +949,9 @@ export const BalIconPrint = /*@__PURE__*/ Vue.extend({
 
 export const BalIconReadOnly = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconReadOnly['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-read-only', []),
@@ -849,6 +960,9 @@ export const BalIconReadOnly = /*@__PURE__*/ Vue.extend({
 
 export const BalIconRefresh = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconRefresh['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-refresh', []),
@@ -857,6 +971,9 @@ export const BalIconRefresh = /*@__PURE__*/ Vue.extend({
 
 export const BalIconSearch = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconSearch['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-search', []),
@@ -865,6 +982,9 @@ export const BalIconSearch = /*@__PURE__*/ Vue.extend({
 
 export const BalIconSend = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconSend['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-send', []),
@@ -873,6 +993,9 @@ export const BalIconSend = /*@__PURE__*/ Vue.extend({
 
 export const BalIconSocialFacebookLine = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconSocialFacebookLine['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-social-facebook-line', []),
@@ -881,6 +1004,9 @@ export const BalIconSocialFacebookLine = /*@__PURE__*/ Vue.extend({
 
 export const BalIconSocialLinkedinLine = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconSocialLinkedinLine['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-social-linkedin-line', []),
@@ -889,6 +1015,9 @@ export const BalIconSocialLinkedinLine = /*@__PURE__*/ Vue.extend({
 
 export const BalIconSocialXingLine = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconSocialXingLine['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-social-xing-line', []),
@@ -897,6 +1026,9 @@ export const BalIconSocialXingLine = /*@__PURE__*/ Vue.extend({
 
 export const BalIconTrash = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconTrash['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-trash', []),
@@ -905,6 +1037,9 @@ export const BalIconTrash = /*@__PURE__*/ Vue.extend({
 
 export const BalIconUpload = /*@__PURE__*/ Vue.extend({
 
+  props: {
+    size: {} as PropOptions<Components.BalIconUpload['size']>,
+  },
 
 
   render: createCommonRender('bal-icon-upload', []),

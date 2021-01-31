@@ -598,11 +598,14 @@ export class BalIcon {
 
 
 export declare interface BalIconAccount extends Components.BalIconAccount {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-account',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconAccount {
   protected el: HTMLElement;
@@ -614,11 +617,14 @@ export class BalIconAccount {
 
 
 export declare interface BalIconAlert extends Components.BalIconAlert {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-alert',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconAlert {
   protected el: HTMLElement;
@@ -630,11 +636,14 @@ export class BalIconAlert {
 
 
 export declare interface BalIconAlertCircle extends Components.BalIconAlertCircle {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-alert-circle',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconAlertCircle {
   protected el: HTMLElement;
@@ -646,11 +655,14 @@ export class BalIconAlertCircle {
 
 
 export declare interface BalIconAnswer extends Components.BalIconAnswer {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-answer',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconAnswer {
   protected el: HTMLElement;
@@ -662,11 +674,14 @@ export class BalIconAnswer {
 
 
 export declare interface BalIconCall extends Components.BalIconCall {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-call',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCall {
   protected el: HTMLElement;
@@ -678,11 +693,14 @@ export class BalIconCall {
 
 
 export declare interface BalIconCaretDown extends Components.BalIconCaretDown {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-caret-down',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCaretDown {
   protected el: HTMLElement;
@@ -694,11 +712,14 @@ export class BalIconCaretDown {
 
 
 export declare interface BalIconCaretLeft extends Components.BalIconCaretLeft {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-caret-left',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCaretLeft {
   protected el: HTMLElement;
@@ -710,11 +731,14 @@ export class BalIconCaretLeft {
 
 
 export declare interface BalIconCaretRight extends Components.BalIconCaretRight {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-caret-right',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCaretRight {
   protected el: HTMLElement;
@@ -726,11 +750,14 @@ export class BalIconCaretRight {
 
 
 export declare interface BalIconCaretUp extends Components.BalIconCaretUp {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-caret-up',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCaretUp {
   protected el: HTMLElement;
@@ -742,11 +769,14 @@ export class BalIconCaretUp {
 
 
 export declare interface BalIconCheck extends Components.BalIconCheck {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-check',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCheck {
   protected el: HTMLElement;
@@ -758,11 +788,14 @@ export class BalIconCheck {
 
 
 export declare interface BalIconCheckCircle extends Components.BalIconCheckCircle {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-check-circle',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCheckCircle {
   protected el: HTMLElement;
@@ -774,11 +807,14 @@ export class BalIconCheckCircle {
 
 
 export declare interface BalIconClock extends Components.BalIconClock {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-clock',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconClock {
   protected el: HTMLElement;
@@ -790,11 +826,14 @@ export class BalIconClock {
 
 
 export declare interface BalIconClose extends Components.BalIconClose {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-close',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconClose {
   protected el: HTMLElement;
@@ -806,11 +845,14 @@ export class BalIconClose {
 
 
 export declare interface BalIconConsultant extends Components.BalIconConsultant {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-consultant',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconConsultant {
   protected el: HTMLElement;
@@ -822,11 +864,14 @@ export class BalIconConsultant {
 
 
 export declare interface BalIconContact extends Components.BalIconContact {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-contact',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconContact {
   protected el: HTMLElement;
@@ -838,11 +883,14 @@ export class BalIconContact {
 
 
 export declare interface BalIconCopy extends Components.BalIconCopy {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-copy',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCopy {
   protected el: HTMLElement;
@@ -854,11 +902,14 @@ export class BalIconCopy {
 
 
 export declare interface BalIconDate extends Components.BalIconDate {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-date',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconDate {
   protected el: HTMLElement;
@@ -870,11 +921,14 @@ export class BalIconDate {
 
 
 export declare interface BalIconDocument extends Components.BalIconDocument {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-document',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconDocument {
   protected el: HTMLElement;
@@ -886,11 +940,14 @@ export class BalIconDocument {
 
 
 export declare interface BalIconDownload extends Components.BalIconDownload {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-download',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconDownload {
   protected el: HTMLElement;
@@ -902,11 +959,14 @@ export class BalIconDownload {
 
 
 export declare interface BalIconEdit extends Components.BalIconEdit {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-edit',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconEdit {
   protected el: HTMLElement;
@@ -918,11 +978,14 @@ export class BalIconEdit {
 
 
 export declare interface BalIconGithub extends Components.BalIconGithub {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-github',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconGithub {
   protected el: HTMLElement;
@@ -934,11 +997,14 @@ export class BalIconGithub {
 
 
 export declare interface BalIconInfo extends Components.BalIconInfo {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-info',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconInfo {
   protected el: HTMLElement;
@@ -950,11 +1016,14 @@ export class BalIconInfo {
 
 
 export declare interface BalIconInfoCircle extends Components.BalIconInfoCircle {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-info-circle',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconInfoCircle {
   protected el: HTMLElement;
@@ -966,11 +1035,14 @@ export class BalIconInfoCircle {
 
 
 export declare interface BalIconLocate extends Components.BalIconLocate {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-locate',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconLocate {
   protected el: HTMLElement;
@@ -982,11 +1054,14 @@ export class BalIconLocate {
 
 
 export declare interface BalIconLocation extends Components.BalIconLocation {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-location',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconLocation {
   protected el: HTMLElement;
@@ -998,11 +1073,14 @@ export class BalIconLocation {
 
 
 export declare interface BalIconMenuBars extends Components.BalIconMenuBars {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-menu-bars',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconMenuBars {
   protected el: HTMLElement;
@@ -1014,11 +1092,14 @@ export class BalIconMenuBars {
 
 
 export declare interface BalIconMenuDots extends Components.BalIconMenuDots {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-menu-dots',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconMenuDots {
   protected el: HTMLElement;
@@ -1030,11 +1111,14 @@ export class BalIconMenuDots {
 
 
 export declare interface BalIconMessage extends Components.BalIconMessage {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-message',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconMessage {
   protected el: HTMLElement;
@@ -1046,11 +1130,14 @@ export class BalIconMessage {
 
 
 export declare interface BalIconMinus extends Components.BalIconMinus {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-minus',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconMinus {
   protected el: HTMLElement;
@@ -1062,11 +1149,14 @@ export class BalIconMinus {
 
 
 export declare interface BalIconNavBack extends Components.BalIconNavBack {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-nav-back',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconNavBack {
   protected el: HTMLElement;
@@ -1078,11 +1168,14 @@ export class BalIconNavBack {
 
 
 export declare interface BalIconNavGoDown extends Components.BalIconNavGoDown {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-nav-go-down',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconNavGoDown {
   protected el: HTMLElement;
@@ -1094,11 +1187,14 @@ export class BalIconNavGoDown {
 
 
 export declare interface BalIconNavGoLeft extends Components.BalIconNavGoLeft {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-nav-go-left',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconNavGoLeft {
   protected el: HTMLElement;
@@ -1110,11 +1206,14 @@ export class BalIconNavGoLeft {
 
 
 export declare interface BalIconNavGoRight extends Components.BalIconNavGoRight {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-nav-go-right',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconNavGoRight {
   protected el: HTMLElement;
@@ -1126,11 +1225,14 @@ export class BalIconNavGoRight {
 
 
 export declare interface BalIconNavGoUp extends Components.BalIconNavGoUp {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-nav-go-up',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconNavGoUp {
   protected el: HTMLElement;
@@ -1142,11 +1244,14 @@ export class BalIconNavGoUp {
 
 
 export declare interface BalIconPlus extends Components.BalIconPlus {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-plus',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconPlus {
   protected el: HTMLElement;
@@ -1158,11 +1263,14 @@ export class BalIconPlus {
 
 
 export declare interface BalIconPrint extends Components.BalIconPrint {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-print',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconPrint {
   protected el: HTMLElement;
@@ -1174,11 +1282,14 @@ export class BalIconPrint {
 
 
 export declare interface BalIconReadOnly extends Components.BalIconReadOnly {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-read-only',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconReadOnly {
   protected el: HTMLElement;
@@ -1190,11 +1301,14 @@ export class BalIconReadOnly {
 
 
 export declare interface BalIconRefresh extends Components.BalIconRefresh {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-refresh',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconRefresh {
   protected el: HTMLElement;
@@ -1206,11 +1320,14 @@ export class BalIconRefresh {
 
 
 export declare interface BalIconSearch extends Components.BalIconSearch {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-search',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconSearch {
   protected el: HTMLElement;
@@ -1222,11 +1339,14 @@ export class BalIconSearch {
 
 
 export declare interface BalIconSend extends Components.BalIconSend {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-send',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconSend {
   protected el: HTMLElement;
@@ -1238,11 +1358,14 @@ export class BalIconSend {
 
 
 export declare interface BalIconSocialFacebookLine extends Components.BalIconSocialFacebookLine {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-social-facebook-line',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconSocialFacebookLine {
   protected el: HTMLElement;
@@ -1254,11 +1377,14 @@ export class BalIconSocialFacebookLine {
 
 
 export declare interface BalIconSocialLinkedinLine extends Components.BalIconSocialLinkedinLine {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-social-linkedin-line',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconSocialLinkedinLine {
   protected el: HTMLElement;
@@ -1270,11 +1396,14 @@ export class BalIconSocialLinkedinLine {
 
 
 export declare interface BalIconSocialXingLine extends Components.BalIconSocialXingLine {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-social-xing-line',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconSocialXingLine {
   protected el: HTMLElement;
@@ -1286,11 +1415,14 @@ export class BalIconSocialXingLine {
 
 
 export declare interface BalIconTrash extends Components.BalIconTrash {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-trash',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconTrash {
   protected el: HTMLElement;
@@ -1302,11 +1434,14 @@ export class BalIconTrash {
 
 
 export declare interface BalIconUpload extends Components.BalIconUpload {}
-
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-upload',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconUpload {
   protected el: HTMLElement;
