@@ -65,10 +65,8 @@ export const config: Config = {
     {
       type: 'dist',
       polyfills: true,
+      empty: true,
       esmLoaderPath: '../loader',
-    },
-    {
-      type: 'dist-custom-elements-bundle',
     },
     {
       type: 'docs-readme',
@@ -76,13 +74,17 @@ export const config: Config = {
     {
       type: 'www',
       dir: 'www',
-      serviceWorker: null, // disable service workers
+      serviceWorker: false,
+      empty: true,
       copy: [
         {
           src: '**/*.html',
         },
         {
           src: 'components.d.ts',
+        },
+        {
+          src: 'assets/fonts',
         },
       ],
     },

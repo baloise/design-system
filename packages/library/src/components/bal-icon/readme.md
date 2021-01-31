@@ -1,84 +1,72 @@
-# bal-icon 
+# bal-icon
 
-The preprocessed Baloise SVG icons have been converted to a web font by using [http://fontello.com](http://fontello.com).
-The proprocessing step for each SVG icon included: (done in Adobe Illustrator, but Inkscape should do as well)
-
-* Converting lines and effects to shapes using (Illustrator: Object > Expand)
-* Merge overlapping paths to one path (Illustrator: Use pathfinder)
-* Converting geometries and polyongs to paths (Illustrator: Object > Compound Path > Make)
-* Remove colors and other styles, as they are not used anyway (optional)
+All our icons are pure svg files. To add a new icon just place your svg file into the folder `packages/library/src/components/bal-icon/svg`.
+Then the build script will automatically optimize the svg and create its own web component.
 
 ## Icons
 
+<!-- Auto Generated Icons -->
+
 | Icon | Name |
-| ---- | ---- |   
-| <bal-icon name="account" size="medium" /> | `account` |   
-| <bal-icon name="alert-circle" size="medium" /> | `alert-circle` |   
-| <bal-icon name="alert" size="medium" /> | `alert` |   
-| <bal-icon name="answer" size="medium" /> | `answer` |   
-| <bal-icon name="call" size="medium" /> | `call` |   
-| <bal-icon name="caret-down" size="medium" /> | `caret-down` |   
-| <bal-icon name="caret-left" size="medium" /> | `caret-left` |   
-| <bal-icon name="caret-right" size="medium" /> | `caret-right` |   
-| <bal-icon name="caret-up" size="medium" /> | `caret-up` |   
-| <bal-icon name="check-circle" size="medium" /> | `check-circle` |   
-| <bal-icon name="check" size="medium" /> | `check` |   
-| <bal-icon name="close-small" size="medium" /> | `close-small` |   
-| <bal-icon name="close-big" size="medium" /> | `close-big` |   
-| <bal-icon name="close-thin" size="medium" /> | `close-thin` |   
-| <bal-icon name="contact" size="medium" /> | `contact` |   
-| <bal-icon name="document" size="medium" /> | `document` |   
-| <bal-icon name="download" size="medium" /> | `download` |   
-| <bal-icon name="edit" size="medium" /> | `edit` |   
-| <bal-icon name="date" size="medium" /> | `date` |   
-| <bal-icon name="general-consultant" size="medium" /> | `general-consultant` |   
-| <bal-icon name="general-edit" size="medium" /> | `general-edit` |   
-| <bal-icon name="info" size="medium" /> | `info` |   
-| <bal-icon name="info-circle" size="medium" /> | `info-circle` |   
-| <bal-icon name="locate" size="medium" /> | `locate` |   
-| <bal-icon name="copy" size="medium" /> | `copy` |   
-| <bal-icon name="location" size="medium" /> | `location` |   
-| <bal-icon name="menu-dots" size="medium" /> | `menu-dots` |   
-| <bal-icon name="message" size="medium" /> | `message` |   
-| <bal-icon name="minus" size="medium" /> | `minus` |   
-| <bal-icon name="menu-bars" size="medium" /> | `menu-bars` |   
-| <bal-icon name="nav-back" size="medium" /> | `nav-back` |   
-| <bal-icon name="nav-go-large" size="medium" /> | `nav-go-large` |   
-| <bal-icon name="nav-go-left-no-padding" size="medium" /> | `nav-go-left-no-padding` |   
-| <bal-icon name="nav-go-right-no-padding" size="medium" /> | `nav-go-right-no-padding` |   
-| <bal-icon name="nav-success" size="medium" /> | `nav-success` |   
-| <bal-icon name="nav-go-up" size="medium" /> | `nav-go-up` |   
-| <bal-icon name="plus" size="medium" /> | `plus` |   
-| <bal-icon name="nav-go-right" size="medium" /> | `nav-go-right` |   
-| <bal-icon name="nav-go-small" size="medium" /> | `nav-go-small` |   
-| <bal-icon name="refresh" size="medium" /> | `refresh` |   
-| <bal-icon name="nav-go-left" size="medium" /> | `nav-go-left` |   
-| <bal-icon name="social-facebook-line" size="medium" /> | `social-facebook-line` |   
-| <bal-icon name="social-xing-line" size="medium" /> | `social-xing-line` |   
-| <bal-icon name="read-only" size="medium" /> | `read-only` |   
-| <bal-icon name="social-linkedin-line" size="medium" /> | `social-linkedin-line` |   
-| <bal-icon name="upload" size="medium" /> | `upload` |   
-| <bal-icon name="search" size="medium" /> | `search` |   
-| <bal-icon name="nav-go-down" size="medium" /> | `nav-go-down` |   
-| <bal-icon name="nav-dropdown" size="medium" /> | `nav-dropdown` |   
-| <bal-icon name="trash" size="medium" /> | `trash` | 
-| <bal-icon name="clock" size="medium" /> | `clock` | 
-
-
+| ---- | ---- |
+| <bal-icon name="account" /> | `account` |
+| <bal-icon name="alert-circle" /> | `alert-circle` |
+| <bal-icon name="alert" /> | `alert` |
+| <bal-icon name="answer" /> | `answer` |
+| <bal-icon name="call" /> | `call` |
+| <bal-icon name="caret-down" /> | `caret-down` |
+| <bal-icon name="caret-left" /> | `caret-left` |
+| <bal-icon name="caret-right" /> | `caret-right` |
+| <bal-icon name="caret-up" /> | `caret-up` |
+| <bal-icon name="check-circle" /> | `check-circle` |
+| <bal-icon name="check" /> | `check` |
+| <bal-icon name="clock" /> | `clock` |
+| <bal-icon name="close" /> | `close` |
+| <bal-icon name="consultant" /> | `consultant` |
+| <bal-icon name="contact" /> | `contact` |
+| <bal-icon name="copy" /> | `copy` |
+| <bal-icon name="date" /> | `date` |
+| <bal-icon name="document" /> | `document` |
+| <bal-icon name="download" /> | `download` |
+| <bal-icon name="edit" /> | `edit` |
+| <bal-icon name="github" /> | `github` |
+| <bal-icon name="info-circle" /> | `info-circle` |
+| <bal-icon name="info" /> | `info` |
+| <bal-icon name="locate" /> | `locate` |
+| <bal-icon name="location" /> | `location` |
+| <bal-icon name="menu-bars" /> | `menu-bars` |
+| <bal-icon name="menu-dots" /> | `menu-dots` |
+| <bal-icon name="message" /> | `message` |
+| <bal-icon name="minus" /> | `minus` |
+| <bal-icon name="nav-back" /> | `nav-back` |
+| <bal-icon name="nav-go-down" /> | `nav-go-down` |
+| <bal-icon name="nav-go-left" /> | `nav-go-left` |
+| <bal-icon name="nav-go-right" /> | `nav-go-right` |
+| <bal-icon name="nav-go-up" /> | `nav-go-up` |
+| <bal-icon name="plus" /> | `plus` |
+| <bal-icon name="print" /> | `print` |
+| <bal-icon name="read-only" /> | `read-only` |
+| <bal-icon name="refresh" /> | `refresh` |
+| <bal-icon name="search" /> | `search` |
+| <bal-icon name="send" /> | `send` |
+| <bal-icon name="social-facebook-line" /> | `social-facebook-line` |
+| <bal-icon name="social-linkedin-line" /> | `social-linkedin-line` |
+| <bal-icon name="social-xing-line" /> | `social-xing-line` |
+| <bal-icon name="trash" /> | `trash` |
+| <bal-icon name="upload" /> | `upload` |
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property  | Attribute  | Description                                                                 | Type                                                                                                                                  | Default |
-| --------- | ---------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `color`   | `color`    | Defines the color of the icon.                                              | `"" \| "black" \| "blue" \| "blue-light-line" \| "blue-line" \| "danger" \| "grey" \| "primary" \| "success" \| "warning" \| "white"` | `''`    |
-| `isLeft`  | `is-left`  | If `true` the icon can be positioned ot the left side of another component  | `boolean`                                                                                                                             | `false` |
-| `isRight` | `is-right` | If `true` the icon can be positioned ot the right side of another component | `boolean`                                                                                                                             | `false` |
-| `name`    | `name`     | The name of the icon without the bal-icon prefix.                           | `string`                                                                                                                              | `''`    |
-| `rotate`  | `rotate`   | If `true` the icon rotates like for a loading spinner                       | `boolean`                                                                                                                             | `false` |
-| `size`    | `size`     | Defines the size of the icon.                                               | `"" \| "large" \| "medium" \| "small"`                                                                                                | `''`    |
-| `turn`    | `turn`     | If `true` the icon is rotated 180deg                                        | `boolean`                                                                                                                             | `false` |
+| Property   | Attribute  | Description                                                     | Type                                                                                                     | Default     |
+| ---------- | ---------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ----------- |
+| `inverted` | `inverted` | If `true` the button is inverted                                | `boolean`                                                                                                | `undefined` |
+| `name`     | `name`     | The name of the icon without the bal-icon prefix.               | `string`                                                                                                 | `''`        |
+| `rotate`   | `rotate`   | If `true` the icon rotates like for a loading spinner           | `boolean`                                                                                                | `false`     |
+| `size`     | `size`     | Defines the size of the icon.                                   | `"" \| "large" \| "medium" \| "small" \| "xsmall"`                                                       | `''`        |
+| `turn`     | `turn`     | If `true` the icon is rotated 180deg                            | `boolean`                                                                                                | `false`     |
+| `type`     | `type`     | The theme type of the button. Given by bulma our css framework. | `"danger" \| "info" \| "info-light" \| "link" \| "primary" \| "primary-light" \| "success" \| "warning"` | `'info'`    |
 
 
 ## Dependencies
@@ -91,8 +79,11 @@ The proprocessing step for each SVG icon included: (done in Adobe Illustrator, b
  - [bal-datepicker](../bal-datepicker)
  - [bal-field-control](../bal-field-control)
  - [bal-file-upload](../bal-file-upload)
+ - [bal-hint](../bal-hint)
  - [bal-pagination](../bal-pagination)
  - [bal-select](../bal-select)
+ - [bal-snackbar](../bal-snackbar)
+ - [bal-toast](../bal-toast)
 
 ### Graph
 ```mermaid
@@ -103,8 +94,11 @@ graph TD;
   bal-datepicker --> bal-icon
   bal-field-control --> bal-icon
   bal-file-upload --> bal-icon
+  bal-hint --> bal-icon
   bal-pagination --> bal-icon
   bal-select --> bal-icon
+  bal-snackbar --> bal-icon
+  bal-toast --> bal-icon
   style bal-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

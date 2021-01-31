@@ -1,5 +1,7 @@
 # Styling
 
+> Do not forget to configure fonts and styling. [Go to styling](introduction/styling.md)
+
 This project is build on top of the [Bulma CSS framework](https://bulma.io/).
 
 Add the `bal-app` to your root element. Within this css-class we are able to use the defined bulma helpers.

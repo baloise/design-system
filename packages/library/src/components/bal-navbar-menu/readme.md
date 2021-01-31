@@ -12,7 +12,7 @@
 
 ### `toggle(isMenuActive: boolean) => Promise<void>`
 
-PRIVATE: Collapses the menu.
+*Internal* - If the menu is open it closes it and the other way around.
 
 #### Returns
 

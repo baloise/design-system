@@ -1,0 +1,85 @@
+:root {
+  --theme-color: #009ee7;
+  --theme-color-light: #99dfff;
+  --theme-color-dark: #007ab3;
+  --theme-color-secondary: #003399;
+  --theme-color-secondary-dark: #002266;
+  --theme-color-secondary-light: #0044cc;
+
+  --text-color-base: #34495e;
+  --text-color-secondary: #ff668c;
+  --text-color-tertiary: #3fc889;
+}
+
+h1.app-name,
+.github-corner,
+.cover {
+  display: none !important;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  background-color: #fff;
+}
+
+.progress {
+  background-color: var(--theme-color, #42b983);
+  height: 2px;
+  left: 0px;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  transition: width 0.2s, opacity 0.4s;
+  width: 0%;
+  z-index: 999999;
+}
+
+main {
+  display: block;
+  width: 100vw;
+  height: 100%;
+  z-index: 0;
+  position: absolute;
+  top: 80px;
+  overflow: scroll;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    height: auto;
+    overflow-x: hidden;
+  }
+}
+
+main section.content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 300px;
+  transition: left 250ms ease;
+  transition: transform 250ms ease;
+  margin-top: 0px;
+}
+
+@media screen and (max-width: 768px) {
+  main section.content {
+    position: static;
+  }
+}
+
+body:not(.ready) > #app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

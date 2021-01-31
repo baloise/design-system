@@ -62,15 +62,13 @@ export class Hint {
   render() {
     return (
       <Host>
-        <div role="button" class="bal-hint-icon" onClick={() => this.toggle()}>
-          <bal-text>i</bal-text>
-        </div>
+        <bal-icon role="button" name="info-circle" size="" onClick={() => this.toggle()}></bal-icon>
 
         <div class="bal-hint-content" style={{ display: this.isActive ? 'inline-block' : 'none' }}>
           <slot></slot>
 
           <div class="buttons is-row-reverse">
-            <bal-button type="is-info" outlined inverted onClick={() => this.close()}>
+            <bal-button type="info" outlined inverted onClick={() => this.close()}>
               {this.closeLabel}
             </bal-button>
           </div>

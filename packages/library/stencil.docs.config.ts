@@ -14,6 +14,7 @@ export const config: Config = {
     {
       type: 'dist',
       polyfills: true,
+      empty: true,
       esmLoaderPath: '../loader',
     },
     {
@@ -25,8 +26,9 @@ export const config: Config = {
     },
     {
       type: 'www',
-      dir: '../../docs/www',
-      serviceWorker: null, // disable service workers
+      dir: '../../docs',
+      serviceWorker: false,
+      empty: false,
       copy: [
         {
           src: '**/*.html',
@@ -36,6 +38,9 @@ export const config: Config = {
         },
         {
           src: 'components.d.ts',
+        },
+        {
+          src: 'assets/fonts',
         },
       ],
     },

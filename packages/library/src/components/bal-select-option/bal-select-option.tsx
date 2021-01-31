@@ -49,8 +49,11 @@ export class SelectOption {
    */
   @Prop() checkbox = false
 
+  /**
+   * *Internal* - Used to return the options infromation
+   */
   @Method()
-  async getOption() {
+  async getOption<T>(): Promise<BalOptionValue<T>> {
     return this.option
   }
 

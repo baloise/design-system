@@ -1,4 +1,6 @@
 import { Component, Host, h, Prop, Method, Event, EventEmitter } from '@stencil/core'
+import { ColorTypesBasic } from '../../types/color.types'
+import { BalButtonType } from '../bal-button/bal.button.type'
 
 @Component({
   tag: 'bal-accordion',
@@ -7,17 +9,15 @@ import { Component, Host, h, Prop, Method, Event, EventEmitter } from '@stencil/
   shadow: false,
 })
 export class Accordion {
-
   /**
    * Type defines the theme of the accordion toggle
    */
-  @Prop() type: 'is-primary' | 'is-info' = 'is-primary'
+  @Prop() type: ColorTypesBasic = 'primary'
 
   /**
    * Controls if the accordion is collapsed or not
    */
   @Prop({ mutable: true, reflect: true }) isActive = false
-
 
   /**
    * Label of the open trigger button
@@ -38,6 +38,11 @@ export class Accordion {
    * Bal-Icon of the close trigger button
    */
   @Prop() closeIcon = 'minus'
+
+  /**
+   * If `true` the accordion is used on the bottom of a card
+   */
+  @Prop() card = false
 
   /**
    * Emmited when the accordion has changed
@@ -71,20 +76,29 @@ export class Accordion {
     this.balCollapse.emit(this.isActive)
   }
 
+  get buttonType(): BalButtonType {
+    return `${this.type}-light` as BalButtonType
+  }
+
   render() {
     return (
       <Host class="accordion">
-        <bal-button expanded={true} light={true} inverted={true} type={this.type} onClick={() => this.toggle()}>
+        <bal-button
+          expanded={true}
+          type={this.buttonType}
+          onClick={() => this.toggle()}
+          top-rounded={!this.card}
+          bottomRounded={!this.isActive}>
           <span class="trigger-label" style={this.isActive && { display: 'none' }}>
-            <bal-icon name={this.openIcon} />
+            <bal-icon name={this.openIcon} type={this.type} size="small" />
             <span class="label">{this.openLabel}</span>
           </span>
           <span class="trigger-label" style={!this.isActive && { display: 'none' }}>
-            <bal-icon name={this.closeIcon} />
+            <bal-icon name={this.closeIcon} type={this.type} size="small" />
             <span class="label">{this.closeLabel}</span>
           </span>
         </bal-button>
-        <div class={['accordion-content', this.type].join(' ')} style={!this.isActive && { display: 'none' }}>
+        <div class={['accordion-content', `is-${this.type}`].join(' ')} style={!this.isActive && { display: 'none' }}>
           <slot></slot>
         </div>
       </Host>

@@ -1,10 +1,11 @@
 import { Component, h, Host, Prop } from '@stencil/core'
+import { BalButtonType } from '../bal-button/bal.button.type'
 
 @Component({
   tag: 'bal-icon',
   styleUrl: 'bal-icon.scss',
   shadow: false,
-  scoped: false,
+  scoped: true,
 })
 export class Icon {
   /**
@@ -15,17 +16,17 @@ export class Icon {
   /**
    * Defines the size of the icon.
    */
-  @Prop() size: 'small' | 'medium' | 'large' | '' = ''
+  @Prop() size: 'xsmall' | 'small' | 'medium' | 'large' | '' = ''
 
   /**
-   * If `true` the icon can be positioned ot the right side of another component
+   * The theme type of the button. Given by bulma our css framework.
    */
-  @Prop() isRight = false
+  @Prop() type: BalButtonType = 'info'
 
   /**
-   * If `true` the icon can be positioned ot the left side of another component
+   * If `true` the button is inverted
    */
-  @Prop() isLeft = false
+  @Prop() inverted: boolean
 
   /**
    * If `true` the icon rotates like for a loading spinner
@@ -37,47 +38,19 @@ export class Icon {
    */
   @Prop() turn = false
 
-  /**
-   * Defines the color of the icon.
-   */
-  @Prop() color:
-    | 'danger'
-    | 'warning'
-    | 'primary'
-    | 'blue'
-    | 'success'
-    | 'grey'
-    | 'white'
-    | 'black'
-    | 'blue-line'
-    | 'blue-light-line'
-    | '' = ''
-
-  get sizeCssClass() {
-    if (this.size && this.size.length > 0) {
-      return `is-${this.size}`
-    }
-    return ''
-  }
-
-  get iconCssClass() {
-    return `bal-icon-${this.name}`
-  }
-
   render() {
+    const SvgIcon = `bal-icon-${this.name}`
+
     return (
-      <Host>
-        <span
-          class={[
-            'icon',
-            this.isRight ? 'is-right' : '',
-            this.isLeft ? 'is-left' : '',
-            this.rotate ? 'rotate' : '',
-            this.turn ? 'turn' : '',
-            this.sizeCssClass,
-          ].join(' ')}>
-          <i class={['font', this.iconCssClass, this.color.length > 0 ? `has-text-${this.color}` : ''].join(' ')}></i>
-        </span>
+      <Host
+        class={{
+          [`is-size-${this.size}`]: !!this.size,
+          [`is-inverted`]: this.inverted,
+          [`is-${this.type}`]: true,
+          [`turn`]: this.turn,
+          [`rotate`]: this.rotate,
+        }}>
+        <SvgIcon class="bal-icon-inner" size={this.size}></SvgIcon>
       </Host>
     )
   }

@@ -15,6 +15,13 @@
 | `href`   | `href`    | Link of the logo / title. | `string` | `'/'`   |
 
 
+## Events
+
+| Event         | Description                               | Type                      |
+| ------------- | ----------------------------------------- | ------------------------- |
+| `balNavigate` | Emitted when the link element has clicked | `CustomEvent<MouseEvent>` |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

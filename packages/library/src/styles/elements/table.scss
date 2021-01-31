@@ -24,6 +24,8 @@ $table-striped-row-even-background-color: $scheme-main-bis;
 $table-striped-row-even-hover-background-color: $blue-light-hover;
 
 table.table {
+  border-spacing: 0;
+
   thead {
     tr {
       border-top: 0;
@@ -37,11 +39,16 @@ table.table {
   td,
   th {
     font-size: $size-normal;
+    font-family: $family-primary;
     vertical-align: middle;
 
     .bal-checkbox {
       padding: 0;
       margin-top: 1px;
+    }
+
+    bal-tag bal-text {
+      margin-top: -2px !important;
     }
   }
 

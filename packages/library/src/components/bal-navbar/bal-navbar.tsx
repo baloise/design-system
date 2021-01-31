@@ -14,9 +14,20 @@ export class Navbar {
    */
   @Prop() light = false
 
+  /**
+   * It `true` the burger button is hidden
+   */
+  @Prop() noBurger = false
+
+  /**
+   * It `true` the component uses the whole width
+   */
+  @Prop() expanded = false
+
   render() {
     return (
       <Host
+        class={{ 'no-burger': this.noBurger }}
         style={{
           position: 'reletiv',
           paddingTop: this.light ? '10px' : '',
@@ -30,7 +41,12 @@ export class Navbar {
             display: !this.light ? 'none' : '',
           }}></div>
         <nav
-          class={'navbar is-spaced' + (this.light ? ' is-white' : ' is-info')}
+          class={{
+            'navbar': true,
+            'is-spaced': !this.expanded,
+            'is-white': this.light,
+            'is-info': !this.light,
+          }}
           role="navigation"
           aria-label="main navigation">
           <slot></slot>

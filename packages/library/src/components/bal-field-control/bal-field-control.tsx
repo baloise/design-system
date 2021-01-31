@@ -23,16 +23,21 @@ export class FieldControl {
    */
   @Prop() loading: boolean = false
 
+  /**
+   * If `true` the field can be used on blue background.
+   */
+  @Prop() inverted: boolean = false
+
   get buildIconLeftTemplate() {
     if (this.iconLeft) {
-      return <bal-icon name={this.iconLeft} isLeft={true} size="medium" />
+      return <bal-icon name={this.iconLeft} type="info" class="is-left" size="small" inverted={this.inverted} />
     }
     return ''
   }
 
   get buildIconRightTemplate() {
     if (this.iconRight) {
-      return <bal-icon name={this.iconRight} isRight={true} size="medium" />
+      return <bal-icon name={this.iconRight} type="info" class="is-right" size="small" inverted={this.inverted} />
     }
     return ''
   }

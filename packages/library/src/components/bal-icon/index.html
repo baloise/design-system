@@ -11,24 +11,45 @@
   <body class="bal-app">
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
+      <section>
+        <span class="icon-text">
+          <span class="icon">
+            <bal-icon name="info-circle"></bal-icon>
+          </span>
+          <span>info-circle</span>
+        </span>
+      </section>
+
+      <h2 class="title is-size-2">Size</h2>
       <p>Here is how you can change the size:</p>
       <section>
+        <bal-icon name="date" size="xsmall"></bal-icon>
         <bal-icon name="date" size="small"></bal-icon>
         <bal-icon name="date"></bal-icon>
         <bal-icon name="date" size="medium"></bal-icon>
         <bal-icon name="date" size="large"></bal-icon>
+        <bal-icon name="date" size="xlarge"></bal-icon>
       </section>
 
-      <h2 class="title is-size-2">Basic</h2>
+      <h2 class="title is-size-2">Colors</h2>
+      <section>
+        <bal-icon type="primary" name="github"></bal-icon>
+        <bal-icon type="info" name="github"></bal-icon>
+        <bal-icon type="success" name="github"></bal-icon>
+        <bal-icon type="warning" name="github"></bal-icon>
+        <bal-icon type="danger" name="github"></bal-icon>
+      </section>
+
+      <h2 class="title is-size-2">Custom Color</h2>
       <p>Here is how you can change the color:</p>
       <section>
         <style type="text/css" scoped>
-          .alert i {
-            color: red !important;
+          .custom-color {
+            fill: green !important;
           }
         </style>
 
-        <bal-icon class="alert" name="alert-circle" size="medium"></bal-icon>
+        <bal-icon class="custom-color" name="check-circle"></bal-icon>
       </section>
     </div>
   </body>

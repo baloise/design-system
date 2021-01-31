@@ -1,6 +1,6 @@
 const htmlParser = require('node-html-parser')
 const babelCore = require('@babel/core')
-
+const log = require('../../../.scripts/log')
 const { NEWLINE, LEFT_WHITESPACE } = require('./constants')
 
 const getCodeExample = node =>
@@ -13,7 +13,12 @@ const getCodeExample = node =>
 const parse = component => {
   if (component.examples) {
     const root = htmlParser.parse(component.examples)
-    const container = htmlParser.parse(root.querySelector('.container').innerHTML)
+    const containerElement = root.querySelector('.container')
+    if (!containerElement) {
+      log.error(`Example file index.html of the component ${component.tag} is invalid`)
+      return process.exit(1)
+    }
+    const container = htmlParser.parse(containerElement.innerHTML)
     let scriptContent = []
     const content = container.childNodes.map(node => {
       if (node.nodeType === 3) {
@@ -34,9 +39,9 @@ const parse = component => {
         }
         if (node.rawTagName === 'section') {
           return (
-            '<div class="bal-app">' +
+            '<section class="docs-example bal-app">' +
             getCodeExample(node) +
-            '</div>' +
+            '</section>' +
             NEWLINE +
             NEWLINE +
             '```html' +

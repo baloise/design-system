@@ -1,0 +1,11 @@
+div.docs-contributors {
+  display: flex;
+  flex-wrap: wrap;
+}
+div.docs-contributors > .docs-contributor {
+  margin-right: 12px;
+}
+
+div.docs-contributors > .docs-contributor:last-child {
+  margin-right: 0;
+}

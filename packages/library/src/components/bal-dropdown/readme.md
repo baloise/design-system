@@ -20,7 +20,7 @@
 | Event                | Description                                                                     | Type                   |
 | -------------------- | ------------------------------------------------------------------------------- | ---------------------- |
 | `balCollapse`        | Listen when the dropdown opens or closes. Returns the current `isActive` value. | `CustomEvent<boolean>` |
-| `balDropdownPrepare` | Internal                                                                        | `CustomEvent<string>`  |
+| `balDropdownPrepare` | *Internal* - Use this to close unuesed dropdowns.                               | `CustomEvent<string>`  |
 
 
 ## Methods

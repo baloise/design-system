@@ -43,6 +43,7 @@ $info-dark: $blue-dark;
 $link: $cyan;
 $warning: $yellow;
 $danger: $red;
+$success: $green;
 
 $primary-invert: $white;
 $success-invert: $white;
@@ -81,6 +82,7 @@ $scheme-invert-ter: $black-ter;
 /**
  * Typography
  */
+$font-path: 'assets';
 $family-sans-serif: MetaPro, Arial, sans-serif;
 $family-primary: $family-sans-serif;
 $title-family: $family-sans-serif;
@@ -88,8 +90,8 @@ $body-family: $family-sans-serif;
 
 $weight-light: 300;
 $weight-normal: 400;
-$weight-medium: 400;
-$weight-semibold: 700;
+$weight-medium: 500;
+$weight-semibold: 500;
 $weight-bold: 700;
 
 $size-1: $bal_font_size_44px;
@@ -100,10 +102,10 @@ $size-5: $bal_font_size_15px;
 $size-6: $bal_font_size_13px;
 $size-7: $bal_font_size_13px;
 
-$size-small: $size-6;
-$size-normal: $size-5;
-$size-medium: $size-4;
-$size-large: $size-3;
+$size-small: $size-5;
+$size-normal: $size-4;
+$size-medium: $size-3;
+$size-large: $size-2;
 
 $title-color: $blue;
 $subtitle-color: $blue;
@@ -113,7 +115,8 @@ $subtitle-color: $blue;
  */
 $radius-small: 4px;
 $radius: 4px;
-$radius-large: 6px;
+$radius-large: 10px;
+$radius-none: 0;
 $radius-rounded: 100%;
 
 /**

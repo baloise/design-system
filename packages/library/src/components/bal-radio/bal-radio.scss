@@ -19,8 +19,8 @@
 
     input[type='radio'] + label {
       display: block;
+      padding-top: 2px;
       min-height: 26px;
-      padding-top: 1px;
       cursor: pointer;
       padding-left: 34px;
       -webkit-user-select: none;
@@ -51,8 +51,8 @@
       content: none;
       background: $blue;
       transform: scale(0.4);
-      top: 0px;
-      left: 0px;
+      top: 0;
+      left: 0;
     }
 
     input[type='radio']:disabled + label {
@@ -124,6 +124,10 @@
       font-size: $size-5;
       font-weight: bold;
       color: $bal_text_light_blue;
+
+      bal-text {
+        margin-top: 3px;
+      }
     }
 
     input:checked ~ label {

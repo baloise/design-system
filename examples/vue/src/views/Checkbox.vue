@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Checkbox</h1>
-    <BalCheckbox v-model="checked" />
+    <BalCheckbox label="Label" v-model="checked" />
     <p>{{ checked }}</p>
   </div>
 </template>

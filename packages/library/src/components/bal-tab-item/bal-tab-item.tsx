@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Method, State, Watch, Element } from '@stencil/core'
+import { Component, Host, h, Prop, Method, State, Watch, Element, EventEmitter, Event } from '@stencil/core'
 import { BalTabOption } from '../bal-tabs/bal-tab.type'
 
 @Component({
@@ -21,6 +21,11 @@ export class TabItem {
    * Label for the tab.
    */
   @Prop() label: string = ''
+
+  /**
+   * Link to path.
+   */
+  @Prop() href: string = ''
 
   /**
    * If `true` a small red bubble is added to the tab.
@@ -46,6 +51,11 @@ export class TabItem {
    * Tell's if the tab is active and the content is visible.
    */
   @Prop() active: boolean = false
+
+  /**
+   * Emitted when the link element has clicked
+   */
+  @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
 
   @Watch('active')
   activatedHandler(newActive: boolean) {
@@ -84,10 +94,12 @@ export class TabItem {
       value: this.value,
       label: this.label,
       active: this.active,
+      href: this.href,
       disabled: this.disabled,
       done: this.done,
       failed: this.failed,
       hasBubble: this.bubble,
+      navigate: this.balNavigate,
     }
   }
 

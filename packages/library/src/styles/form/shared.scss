@@ -1,13 +1,22 @@
-.control.has-icons-left .icon,
-.control.has-icons-right .icon {
-  top: -1px !important;
-}
-
 .form.is-inverted .icon > .font {
   color: $blue-line !important;
 }
 
 .control.has-icons-left bal-icon,
 .control.has-icons-right bal-icon {
-  display: block !important;
+  min-height: 36px;
+  height: 36px;
+  pointer-events: none;
+  position: absolute;
+  top: -2px;
+  width: 36px;
+  z-index: 4;
+}
+
+.control.has-icons-right bal-icon:not(.is-left) {
+  right: 0;
+}
+
+.button .label {
+  font-weight: $weight-normal;
 }

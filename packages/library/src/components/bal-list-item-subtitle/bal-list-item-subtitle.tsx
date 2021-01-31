@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h } from '@stencil/core'
 
 @Component({
   tag: 'bal-list-item-subtitle',
@@ -6,13 +6,13 @@ import { Component, Host, h } from '@stencil/core';
   shadow: false,
 })
 export class ListItemSubtitle {
-
   render() {
     return (
       <Host class="bal-list-item-subtitle">
-        <slot></slot>
+        <bal-text>
+          <slot></slot>
+        </bal-text>
       </Host>
-    );
+    )
   }
-
 }

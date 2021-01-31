@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ui-library-testing",
-  "version": "2.5.1",
+  "version": "3.0.0",
   "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
     "serve": "cypress open",
     "test": "cypress run",
     "build": "npm run build:clean && npm run build:docs && npm run build:index && npm run build:compile",
-    "build:clean": "rm -rf src/index.ts && rm -rf docs",
+    "build:clean": "rimraf src/index.ts && rimraf docs",
     "build:index": "node .scripts/index.script.js",
     "build:docs": "node .scripts/docs-json.script.js",
     "build:compile": "tsc -p tsconfig.build.json",
@@ -39,12 +39,13 @@
     "@types/node": "^14.14.6",
     "cypress": "^5.6.0",
     "http-server": "^0.12.3",
+    "rimraf": "^3.0.2",
     "start-server-and-test": "^1.11.4",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.3"
   },
   "gitHead": "9936956ada470a2f3785bf7d93f501744dbc43dd",
   "dependencies": {
-    "@baloise/ui-library": "^2.5.1"
+    "@baloise/ui-library": "^3.0.0"
   }
 }

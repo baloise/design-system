@@ -7,6 +7,12 @@
     display: block;
     position: relative;
 
+    &.no-burger {
+      .navbar-burger {
+        display: none !important;
+      }
+    }
+
     .navbar {
       &.is-info::after,
       &.is-info::before {
@@ -29,10 +35,13 @@
       }
 
       .app-title {
-        font-family: $family-primary;
-        font-size: $size-3;
-        color: $blue;
         text-decoration: none;
+
+        bal-text {
+          font-size: $size-3 !important;
+          line-height: $size-3 !important;
+          text-decoration: none;
+        }
       }
 
       &.is-info .app-title {
@@ -60,7 +69,7 @@
         transform: rotate(0deg);
         border-top: 5px solid $white !important;
         border-radius: 0;
-        margin-top: -2.5px;
+        margin-top: -2px;
       }
 
       .navbar-start > .navbar-item:hover > .navbar-link::after {
@@ -96,14 +105,30 @@
         margin-top: -0.4em;
       }
 
+      .is-active {
+        .navbar-start,
+        .navbar-end {
+          a {
+            transition: padding-left 0.3s ease;
+          }
+
+          a.navbar-item:hover,
+          a.navbar-item:focus,
+          a.navbar-link:hover,
+          a.navbar-link:focus {
+            background: $blue-light;
+            padding-left: 22px;
+          }
+        }
+      }
+
       .navbar-dropdown {
         border-radius: 0px !important;
         border: none;
         z-index: 32 !important;
-        padding-top: 0;
-        padding-bottom: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
         min-width: 160px;
-        box-shadow: 0 0 16px 0 rgba(0, 33, 98, 0.15) !important;
 
         .navbar-item {
           font-size: $size-6;
@@ -121,6 +146,12 @@
           background-color: $blue-light-line;
           height: 1px;
         }
+      }
+    }
+
+    @include desktop() {
+      .navbar-dropdown {
+        box-shadow: 0 0 16px 0 rgba(0, 33, 98, 0.15) !important;
       }
     }
   }

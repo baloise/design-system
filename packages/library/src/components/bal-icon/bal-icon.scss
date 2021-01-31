@@ -1,52 +1,89 @@
 @import '../../styles/ui-library.utilities';
 @import 'node_modules/bulma/sass/elements/icon.sass';
-@import 'bal-icons';
-@import 'bal-icons-font';
 
-bal-icon {
-  display: inline-block;
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: static;
+  width: 24px;
+  max-height: 24px;
+  fill: $blue;
+  pointer-events: visible;
 
-  .icon {
-    font-size: 24px;
-    i {
-      transition: rotate 0.3s;
-      transition: transform 0.3s;
-    }
+  .bal-icon-inner {
+    display: block;
+    position: static;
+    width: 24px;
+    max-height: 24px;
 
-    &.is-small {
-      font-size: 16px;
-    }
-
-    &.is-medium {
-      font-size: 32px;
-    }
-
-    &.is-large {
-      font-size: 47px;
-    }
-
-    &.turn {
-      i.font {
-        rotate: 180deg;
-        transform: rotate(180deg);
-      }
-    }
-
-    i.font {
-      font-family: 'bal-ui-library';
-      font-style: normal;
-      font-weight: normal;
-      text-align: center;
-      color: $blue;
-
-      /* For safety - reset parent styles, that can break glyph codes*/
-      font-variant: normal;
-      text-transform: none;
+    svg {
+      max-height: 24px;
     }
   }
 
-  &.is-inverted .icon i.font {
-    color: $blue-line;
+  &.is-size-xsmall,
+  &.is-size-xsmall .bal-icon-inner {
+    width: 10px;
+    max-height: 10px;
+  }
+
+  &.is-size-small,
+  &.is-size-small .bal-icon-inner {
+    width: 16px;
+    max-height: 16px;
+  }
+
+  &.is-size-medium,
+  &.is-size-medium .bal-icon-inner {
+    width: 32px;
+    max-height: 32px;
+  }
+
+  &.is-size-large,
+  &.is-size-large .bal-icon-inner {
+    width: 48px;
+    max-height: 48px;
+  }
+
+  &.is-size-xlarge,
+  &.is-size-xlarge .bal-icon-inner {
+    width: 64px;
+    max-height: 64px;
+  }
+
+  &.turn .bal-icon-inner {
+    rotate: 180deg;
+    transform: rotate(180deg);
+  }
+
+  &.is-primary {
+    fill: $cyan;
+  }
+
+  &.is-success {
+    fill: $success;
+  }
+
+  &.is-info {
+    fill: $info;
+  }
+
+  &.is-inverted {
+    &.is-primary,
+    &.is-success,
+    &.is-warning,
+    &.is-danger,
+    &.is-info {
+      fill: $white;
+    }
+  }
+
+  &.is-warning {
+    fill: $warning;
+  }
+
+  &.is-danger {
+    fill: $danger;
   }
 }

@@ -23,11 +23,6 @@ export class Tabs {
   @Prop() expanded = false
 
   /**
-   * If `true` the padding gets reduced.
-   */
-  @Prop() dense = false
-
-  /**
    * If you want the rounded tab style.
    */
   @Prop() rounded = false
@@ -63,7 +58,7 @@ export class Tabs {
   }
 
   /**
-   * *Internal* Rerenders the tabs with their given settings
+   * *Internal* - Rerenders the tabs with their given settings
    */
   @Method()
   async sync() {
@@ -80,8 +75,9 @@ export class Tabs {
     return Array.from(this.element.querySelectorAll('bal-tab-item'))
   }
 
-  private async onSelectTab(tab: BalTabOption) {
+  private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
     if (!tab.disabled) {
+      tab.navigate.emit(event)
       await this.select(tab)
       this.tabsDidChange.emit(tab)
     }
@@ -108,7 +104,7 @@ export class Tabs {
                   'is-done': tab.done,
                   'is-failed': tab.failed,
                 }}>
-                <a onClick={() => this.onSelectTab(tab)}>
+                <a onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}>
                   <span class="step-index">
                     <bal-text>{index + 1}</bal-text>
                   </span>
@@ -129,17 +125,25 @@ export class Tabs {
   renderTabs() {
     return (
       <Host class="bal-tabs">
-        <div
-          class={[
-            'tabs',
-            this.rounded ? 'is-rounded' : '',
-            this.dense ? 'is-dense' : '',
-            this.expanded ? 'is-fullwidth' : '',
-          ].join(' ')}>
+        <div class={['tabs', this.rounded ? 'is-rounded' : '', this.expanded ? 'is-fullwidth' : ''].join(' ')}>
           <ul>
             {this.tabsOptions.map(tab => (
               <li class={[tab.active ? 'is-active' : '', tab.disabled ? 'is-disabled' : ''].join(' ')}>
-                <a onClick={() => this.onSelectTab(tab)}>{tab.label}</a>
+                <a
+                  href={tab.href}
+                  aria-current="page"
+                  onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}
+                  style={{ display: tab.href === '' ? 'none' : '' }}
+                  class={{ hidden: tab.href === '' }}>
+                  <bal-text>{tab.label}</bal-text>
+                </a>
+                <a
+                  aria-current="page"
+                  onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}
+                  style={{ display: tab.href === '' ? '' : 'none' }}
+                  class={{ hidden: tab.href !== '' }}>
+                  <bal-text>{tab.label}</bal-text>
+                </a>
                 <span class="bubble" style={!tab.hasBubble && { display: 'none' }}></span>
               </li>
             ))}

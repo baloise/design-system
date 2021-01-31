@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
+import { ColorTypes } from '../../types/color.types'
 
 @Component({
   tag: 'bal-tag',
@@ -10,13 +11,13 @@ export class Tag {
   /**
    * The theme type of the tag. Given by bulma our css framework.
    */
-  @Prop() type: 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger' | '' = ''
+  @Prop() type: ColorTypes | '' = ''
 
   render() {
     return (
       <Host>
-        <span class={`tag ${this.type ? this.type : 'default'}`}>
-          <bal-text>
+        <span class={`tag ${this.type !== '' ? `is-${this.type}` : 'default'}`}>
+          <bal-text small>
             <slot />
           </bal-text>
         </span>

@@ -1,17 +1,19 @@
-import { Component, h, Host } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-text',
   styleUrl: 'bal-text.scss',
   shadow: false,
-  scoped: true,
+  scoped: false,
 })
 export class Text {
+  @Prop() small = false
+
   render() {
     return (
-      <Host>
+      <Host class={{ 'is-small': this.small }}>
         <slot />
       </Host>
-    );
+    )
   }
 }

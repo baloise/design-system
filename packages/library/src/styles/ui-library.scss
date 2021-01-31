@@ -6,6 +6,10 @@
   position: relative;
 }
 
+.bal-app.bal-app-background {
+  background: $white-ter;
+}
+
 .bal-app,
 .bal-notices {
   @import './utilities/helpers';

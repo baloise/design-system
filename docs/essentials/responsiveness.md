@@ -30,7 +30,7 @@ Use the scss mixins in your application like this.
 
 The file `ui-library.utilities` provides all the defined scss variables like [colors](essentials/colors) and also the mixins.
 
-### Further Documentation
+**Further Documentation**
 
 [Go to the bulma documentation](http://bulma.io/documentation/overview/responsiveness/)
 
@@ -47,7 +47,7 @@ A simple way to build responsive layouts with css-classes.
 </div>
 ```
 
-### Further Documentation
+**Further Documentation**
 
 [Go to the bulma documentation](http://bulma.io/documentation/columns/basics/)
 

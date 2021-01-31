@@ -22,7 +22,7 @@ export class FieldLabel {
     return (
       <Host class="label">
         <label htmlFor={this.findInputId()}>
-          <bal-text>
+          <bal-text small>
             {this.text}
             {this.required === true ? ' *' : ''}
           </bal-text>

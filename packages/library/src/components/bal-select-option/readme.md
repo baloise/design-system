@@ -22,13 +22,13 @@
 
 ## Methods
 
-### `getOption() => Promise<BalOptionValue<any>>`
+### `getOption<T>() => Promise<BalOptionValue<T>>`
 
-
+*Internal* - Used to return the options infromation
 
 #### Returns
 
-Type: `Promise<BalOptionValue<any>>`
+Type: `Promise<BalOptionValue<T>>`
 
 
 

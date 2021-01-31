@@ -6,10 +6,18 @@
   display: inline-flex;
 
   .tag {
-    padding: 0 20px 0px 20px;
     align-items: center;
     justify-content: center;
     font-weight: $weight-bold;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: normal;
+    height: auto;
+    min-height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // padding-top: calc(0.3em - 1px);
 
     &.default {
       background-color: $grey;

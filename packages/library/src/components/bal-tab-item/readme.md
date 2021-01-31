@@ -16,8 +16,16 @@
 | `disabled` | `disabled` | If `true` the tab is disabled.                          | `boolean` | `false` |
 | `done`     | `done`     | If `true` the step is marked as done.                   | `boolean` | `false` |
 | `failed`   | `failed`   | If `true` the step is marked as failed.                 | `boolean` | `false` |
+| `href`     | `href`     | Link to path.                                           | `string`  | `''`    |
 | `label`    | `label`    | Label for the tab.                                      | `string`  | `''`    |
 | `value`    | `value`    | This is the key of the tab.                             | `string`  | `''`    |
+
+
+## Events
+
+| Event         | Description                               | Type                      |
+| ------------- | ----------------------------------------- | ------------------------- |
+| `balNavigate` | Emitted when the link element has clicked | `CustomEvent<MouseEvent>` |
 
 
 ## Methods

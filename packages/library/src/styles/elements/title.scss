@@ -44,6 +44,13 @@ h4.subtitle.is-size-4 {
   line-height: $pixel_20 !important;
 }
 
+h1.subtitle,
+h2.subtitle,
+h3.subtitle,
+h4.subtitle {
+  font-weight: 100 !important;
+}
+
 // paragraph
 p,
 a {

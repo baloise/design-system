@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
+import { BalButtonType } from "./components/bal-button/bal.button.type";
 import { BalCardStepOption } from "./components/bal-card-step/bal-card-step.type";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
@@ -12,6 +14,10 @@ import { BalOptionValue } from "./components/bal-select-option/bal-select-option
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
+        /**
+          * If `true` the accordion is used on the bottom of a card
+         */
+        "card": boolean;
         /**
           * Close the accordion
          */
@@ -47,17 +53,13 @@ export namespace Components {
         /**
           * Type defines the theme of the accordion toggle
          */
-        "type": 'is-primary' | 'is-info';
+        "type": ColorTypesBasic;
     }
     interface BalButton {
         /**
           * If `true` the bottom corners get rounded
          */
         "bottomRounded": boolean;
-        /**
-          * If `true` the button is dense
-         */
-        "dense": boolean;
         /**
           * If `true` the button is disabled
          */
@@ -67,9 +69,17 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href": string;
+        /**
           * Name of the left button icon
          */
         "icon": string;
+        /**
+          * Size of the button
+         */
+        "iconPosition": 'left' | 'right';
         /**
           * Name of the right button icon
          */
@@ -83,13 +93,9 @@ export namespace Components {
          */
         "isActive": boolean;
         /**
-          * If `true` the width of the buttons is limited
+          * Turn the button in to a link.
          */
-        "isSquare": boolean;
-        /**
-          * If `true` the button has a light color
-         */
-        "light": boolean;
+        "link": boolean;
         /**
           * If `true` the label is hidden and a loading spinner is shown instead.
          */
@@ -101,11 +107,23 @@ export namespace Components {
         /**
           * Size of the button
          */
-        "size": 'is-small' | '';
+        "size": 'small' | '';
+        /**
+          * If `true` the width of the buttons is limited
+         */
+        "square": boolean;
+        /**
+          * Specifies where to open the linked document
+         */
+        "target": '_blank' | ' _parent' | '_self' | '_top';
+        /**
+          * If `true` the top corners get rounded
+         */
+        "topRounded": boolean;
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "type": 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger' | 'is-link';
+        "type": BalButtonType;
     }
     interface BalCard {
         /**
@@ -121,6 +139,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * If `true` the card has padding.
+         */
+        "padded": boolean;
+        /**
           * If `true` the card loses its border radius.
          */
         "square": boolean;
@@ -128,6 +150,10 @@ export namespace Components {
           * If `true` the card has a limited width on desktop.
          */
         "teaser": boolean;
+        /**
+          * Defines the color of the card.
+         */
+        "type": ColorTypes | '';
     }
     interface BalCardActions {
         /**
@@ -417,6 +443,10 @@ export namespace Components {
          */
         "iconRight": string;
         /**
+          * If `true` the field can be used on blue background.
+         */
+        "inverted": boolean;
+        /**
           * If `true` a loading spinner is visible at the end of the input
          */
         "loading": boolean;
@@ -435,7 +465,7 @@ export namespace Components {
         /**
           * Defines the color of the message.
          */
-        "type": '' | 'danger' | 'success' | 'warning';
+        "type": '' | ColorTypesExtended;
     }
     interface BalFileUpload {
         /**
@@ -495,27 +525,9 @@ export namespace Components {
     }
     interface BalIcon {
         /**
-          * Defines the color of the icon.
+          * If `true` the button is inverted
          */
-        "color": | 'danger'
-    | 'warning'
-    | 'primary'
-    | 'blue'
-    | 'success'
-    | 'grey'
-    | 'white'
-    | 'black'
-    | 'blue-line'
-    | 'blue-light-line'
-    | '';
-        /**
-          * If `true` the icon can be positioned ot the left side of another component
-         */
-        "isLeft": boolean;
-        /**
-          * If `true` the icon can be positioned ot the right side of another component
-         */
-        "isRight": boolean;
+        "inverted": boolean;
         /**
           * The name of the icon without the bal-icon prefix.
          */
@@ -527,11 +539,285 @@ export namespace Components {
         /**
           * Defines the size of the icon.
          */
-        "size": 'small' | 'medium' | 'large' | '';
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
         /**
           * If `true` the icon is rotated 180deg
          */
         "turn": boolean;
+        /**
+          * The theme type of the button. Given by bulma our css framework.
+         */
+        "type": BalButtonType;
+    }
+    interface BalIconAccount {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconAlert {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconAlertCircle {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconAnswer {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCall {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCaretDown {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCaretLeft {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCaretRight {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCaretUp {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCheck {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCheckCircle {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconClock {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconClose {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconConsultant {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconContact {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCopy {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconDate {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconDocument {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconDownload {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconEdit {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconGithub {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconInfo {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconInfoCircle {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconLocate {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconLocation {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconMenuBars {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconMenuDots {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconMessage {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconMinus {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconNavBack {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconNavGoDown {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconNavGoLeft {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconNavGoRight {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconNavGoUp {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconPlus {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconPrint {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconReadOnly {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconRefresh {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconSearch {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconSend {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconSocialFacebookLine {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconSocialLinkedinLine {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconSocialXingLine {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconTrash {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconUpload {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalInput {
         /**
@@ -619,9 +905,17 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href": string;
+        /**
           * If `true` the list item has a selected theme
          */
         "selected": boolean;
+        /**
+          * Specifies where to open the linked document
+         */
+        "target": '_blank' | ' _parent' | '_self' | '_top';
     }
     interface BalListItemContent {
     }
@@ -640,7 +934,13 @@ export namespace Components {
           * Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot.
          */
         "card": boolean;
+        /**
+          * Closes the modal.
+         */
         "close": () => Promise<void>;
+        /**
+          * Opens the modal.
+         */
         "open": () => Promise<void>;
     }
     interface BalModalActions {
@@ -653,9 +953,17 @@ export namespace Components {
     }
     interface BalNavbar {
         /**
+          * It `true` the component uses the whole width
+         */
+        "expanded": boolean;
+        /**
           * It `true` the navbar has a white background
          */
         "light": boolean;
+        /**
+          * It `true` the burger button is hidden
+         */
+        "noBurger": boolean;
     }
     interface BalNavbarBrand {
         /**
@@ -665,7 +973,7 @@ export namespace Components {
     }
     interface BalNavbarMenu {
         /**
-          * PRIVATE: Collapses the menu.
+          * *Internal* - If the menu is open it closes it and the other way around.
          */
         "toggle": (isMenuActive: boolean) => Promise<void>;
     }
@@ -677,7 +985,7 @@ export namespace Components {
         /**
           * Defines the color of the element
          */
-        "type": '' | 'primary' | 'info' | 'success' | 'warning' | 'danger';
+        "type": '' | ColorTypes;
     }
     interface BalPagination {
         /**
@@ -840,7 +1148,10 @@ export namespace Components {
           * If `true` the option is focused
          */
         "focused": boolean;
-        "getOption": () => Promise<BalOptionValue<any>>;
+        /**
+          * *Internal* - Used to return the options infromation
+         */
+        "getOption": <T>() => Promise<BalOptionValue<T>>;
         /**
           * If `true` the option is hidden
          */
@@ -861,6 +1172,40 @@ export namespace Components {
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
         "value": string;
+    }
+    interface BalSnackbar {
+        /**
+          * Label text for the action button
+         */
+        "action": string;
+        /**
+          * Closes this snackbar
+         */
+        "close": () => Promise<void>;
+        /**
+          * Closes the snackbar after the given duration in ms
+         */
+        "closeIn": (duration: number) => Promise<void>;
+        /**
+          * The duration of the snackbar
+         */
+        "duration": number;
+        /**
+          * The icon of the snackbar header
+         */
+        "icon": string;
+        /**
+          * The message of the snackbar
+         */
+        "message": string;
+        /**
+          * The subject of the snackbar header
+         */
+        "subject": string;
+        /**
+          * The theme type of the snackbar. Given by bulma our css framework.
+         */
+        "type": ColorTypes | '';
     }
     interface BalSpinner {
         /**
@@ -898,6 +1243,10 @@ export namespace Components {
          */
         "getOptions": () => Promise<BalTabOption>;
         /**
+          * Link to path.
+         */
+        "href": string;
+        /**
           * Label for the tab.
          */
         "label": string;
@@ -920,10 +1269,6 @@ export namespace Components {
          */
         "actionLabel": string;
         /**
-          * If `true` the padding gets reduced.
-         */
-        "dense": boolean;
-        /**
           * If `true` the field expands over the whole width.
          */
         "expanded": boolean;
@@ -940,7 +1285,7 @@ export namespace Components {
          */
         "select": (tab: BalTabOption) => Promise<void>;
         /**
-          * *Internal* Rerenders the tabs with their given settings
+          * *Internal* - Rerenders the tabs with their given settings
          */
         "sync": () => Promise<void>;
     }
@@ -948,9 +1293,10 @@ export namespace Components {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "type": 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger' | '';
+        "type": ColorTypes | '';
     }
     interface BalText {
+        "small": boolean;
     }
     interface BalTextarea {
         /**
@@ -1030,9 +1376,13 @@ export namespace Components {
          */
         "closeIn": (duration: number) => Promise<void>;
         /**
+          * The duration of the toast
+         */
+        "duration": number;
+        /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "type": 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger';
+        "type": ColorTypes | '';
     }
 }
 declare global {
@@ -1210,6 +1560,276 @@ declare global {
         prototype: HTMLBalIconElement;
         new (): HTMLBalIconElement;
     };
+    interface HTMLBalIconAccountElement extends Components.BalIconAccount, HTMLStencilElement {
+    }
+    var HTMLBalIconAccountElement: {
+        prototype: HTMLBalIconAccountElement;
+        new (): HTMLBalIconAccountElement;
+    };
+    interface HTMLBalIconAlertElement extends Components.BalIconAlert, HTMLStencilElement {
+    }
+    var HTMLBalIconAlertElement: {
+        prototype: HTMLBalIconAlertElement;
+        new (): HTMLBalIconAlertElement;
+    };
+    interface HTMLBalIconAlertCircleElement extends Components.BalIconAlertCircle, HTMLStencilElement {
+    }
+    var HTMLBalIconAlertCircleElement: {
+        prototype: HTMLBalIconAlertCircleElement;
+        new (): HTMLBalIconAlertCircleElement;
+    };
+    interface HTMLBalIconAnswerElement extends Components.BalIconAnswer, HTMLStencilElement {
+    }
+    var HTMLBalIconAnswerElement: {
+        prototype: HTMLBalIconAnswerElement;
+        new (): HTMLBalIconAnswerElement;
+    };
+    interface HTMLBalIconCallElement extends Components.BalIconCall, HTMLStencilElement {
+    }
+    var HTMLBalIconCallElement: {
+        prototype: HTMLBalIconCallElement;
+        new (): HTMLBalIconCallElement;
+    };
+    interface HTMLBalIconCaretDownElement extends Components.BalIconCaretDown, HTMLStencilElement {
+    }
+    var HTMLBalIconCaretDownElement: {
+        prototype: HTMLBalIconCaretDownElement;
+        new (): HTMLBalIconCaretDownElement;
+    };
+    interface HTMLBalIconCaretLeftElement extends Components.BalIconCaretLeft, HTMLStencilElement {
+    }
+    var HTMLBalIconCaretLeftElement: {
+        prototype: HTMLBalIconCaretLeftElement;
+        new (): HTMLBalIconCaretLeftElement;
+    };
+    interface HTMLBalIconCaretRightElement extends Components.BalIconCaretRight, HTMLStencilElement {
+    }
+    var HTMLBalIconCaretRightElement: {
+        prototype: HTMLBalIconCaretRightElement;
+        new (): HTMLBalIconCaretRightElement;
+    };
+    interface HTMLBalIconCaretUpElement extends Components.BalIconCaretUp, HTMLStencilElement {
+    }
+    var HTMLBalIconCaretUpElement: {
+        prototype: HTMLBalIconCaretUpElement;
+        new (): HTMLBalIconCaretUpElement;
+    };
+    interface HTMLBalIconCheckElement extends Components.BalIconCheck, HTMLStencilElement {
+    }
+    var HTMLBalIconCheckElement: {
+        prototype: HTMLBalIconCheckElement;
+        new (): HTMLBalIconCheckElement;
+    };
+    interface HTMLBalIconCheckCircleElement extends Components.BalIconCheckCircle, HTMLStencilElement {
+    }
+    var HTMLBalIconCheckCircleElement: {
+        prototype: HTMLBalIconCheckCircleElement;
+        new (): HTMLBalIconCheckCircleElement;
+    };
+    interface HTMLBalIconClockElement extends Components.BalIconClock, HTMLStencilElement {
+    }
+    var HTMLBalIconClockElement: {
+        prototype: HTMLBalIconClockElement;
+        new (): HTMLBalIconClockElement;
+    };
+    interface HTMLBalIconCloseElement extends Components.BalIconClose, HTMLStencilElement {
+    }
+    var HTMLBalIconCloseElement: {
+        prototype: HTMLBalIconCloseElement;
+        new (): HTMLBalIconCloseElement;
+    };
+    interface HTMLBalIconConsultantElement extends Components.BalIconConsultant, HTMLStencilElement {
+    }
+    var HTMLBalIconConsultantElement: {
+        prototype: HTMLBalIconConsultantElement;
+        new (): HTMLBalIconConsultantElement;
+    };
+    interface HTMLBalIconContactElement extends Components.BalIconContact, HTMLStencilElement {
+    }
+    var HTMLBalIconContactElement: {
+        prototype: HTMLBalIconContactElement;
+        new (): HTMLBalIconContactElement;
+    };
+    interface HTMLBalIconCopyElement extends Components.BalIconCopy, HTMLStencilElement {
+    }
+    var HTMLBalIconCopyElement: {
+        prototype: HTMLBalIconCopyElement;
+        new (): HTMLBalIconCopyElement;
+    };
+    interface HTMLBalIconDateElement extends Components.BalIconDate, HTMLStencilElement {
+    }
+    var HTMLBalIconDateElement: {
+        prototype: HTMLBalIconDateElement;
+        new (): HTMLBalIconDateElement;
+    };
+    interface HTMLBalIconDocumentElement extends Components.BalIconDocument, HTMLStencilElement {
+    }
+    var HTMLBalIconDocumentElement: {
+        prototype: HTMLBalIconDocumentElement;
+        new (): HTMLBalIconDocumentElement;
+    };
+    interface HTMLBalIconDownloadElement extends Components.BalIconDownload, HTMLStencilElement {
+    }
+    var HTMLBalIconDownloadElement: {
+        prototype: HTMLBalIconDownloadElement;
+        new (): HTMLBalIconDownloadElement;
+    };
+    interface HTMLBalIconEditElement extends Components.BalIconEdit, HTMLStencilElement {
+    }
+    var HTMLBalIconEditElement: {
+        prototype: HTMLBalIconEditElement;
+        new (): HTMLBalIconEditElement;
+    };
+    interface HTMLBalIconGithubElement extends Components.BalIconGithub, HTMLStencilElement {
+    }
+    var HTMLBalIconGithubElement: {
+        prototype: HTMLBalIconGithubElement;
+        new (): HTMLBalIconGithubElement;
+    };
+    interface HTMLBalIconInfoElement extends Components.BalIconInfo, HTMLStencilElement {
+    }
+    var HTMLBalIconInfoElement: {
+        prototype: HTMLBalIconInfoElement;
+        new (): HTMLBalIconInfoElement;
+    };
+    interface HTMLBalIconInfoCircleElement extends Components.BalIconInfoCircle, HTMLStencilElement {
+    }
+    var HTMLBalIconInfoCircleElement: {
+        prototype: HTMLBalIconInfoCircleElement;
+        new (): HTMLBalIconInfoCircleElement;
+    };
+    interface HTMLBalIconLocateElement extends Components.BalIconLocate, HTMLStencilElement {
+    }
+    var HTMLBalIconLocateElement: {
+        prototype: HTMLBalIconLocateElement;
+        new (): HTMLBalIconLocateElement;
+    };
+    interface HTMLBalIconLocationElement extends Components.BalIconLocation, HTMLStencilElement {
+    }
+    var HTMLBalIconLocationElement: {
+        prototype: HTMLBalIconLocationElement;
+        new (): HTMLBalIconLocationElement;
+    };
+    interface HTMLBalIconMenuBarsElement extends Components.BalIconMenuBars, HTMLStencilElement {
+    }
+    var HTMLBalIconMenuBarsElement: {
+        prototype: HTMLBalIconMenuBarsElement;
+        new (): HTMLBalIconMenuBarsElement;
+    };
+    interface HTMLBalIconMenuDotsElement extends Components.BalIconMenuDots, HTMLStencilElement {
+    }
+    var HTMLBalIconMenuDotsElement: {
+        prototype: HTMLBalIconMenuDotsElement;
+        new (): HTMLBalIconMenuDotsElement;
+    };
+    interface HTMLBalIconMessageElement extends Components.BalIconMessage, HTMLStencilElement {
+    }
+    var HTMLBalIconMessageElement: {
+        prototype: HTMLBalIconMessageElement;
+        new (): HTMLBalIconMessageElement;
+    };
+    interface HTMLBalIconMinusElement extends Components.BalIconMinus, HTMLStencilElement {
+    }
+    var HTMLBalIconMinusElement: {
+        prototype: HTMLBalIconMinusElement;
+        new (): HTMLBalIconMinusElement;
+    };
+    interface HTMLBalIconNavBackElement extends Components.BalIconNavBack, HTMLStencilElement {
+    }
+    var HTMLBalIconNavBackElement: {
+        prototype: HTMLBalIconNavBackElement;
+        new (): HTMLBalIconNavBackElement;
+    };
+    interface HTMLBalIconNavGoDownElement extends Components.BalIconNavGoDown, HTMLStencilElement {
+    }
+    var HTMLBalIconNavGoDownElement: {
+        prototype: HTMLBalIconNavGoDownElement;
+        new (): HTMLBalIconNavGoDownElement;
+    };
+    interface HTMLBalIconNavGoLeftElement extends Components.BalIconNavGoLeft, HTMLStencilElement {
+    }
+    var HTMLBalIconNavGoLeftElement: {
+        prototype: HTMLBalIconNavGoLeftElement;
+        new (): HTMLBalIconNavGoLeftElement;
+    };
+    interface HTMLBalIconNavGoRightElement extends Components.BalIconNavGoRight, HTMLStencilElement {
+    }
+    var HTMLBalIconNavGoRightElement: {
+        prototype: HTMLBalIconNavGoRightElement;
+        new (): HTMLBalIconNavGoRightElement;
+    };
+    interface HTMLBalIconNavGoUpElement extends Components.BalIconNavGoUp, HTMLStencilElement {
+    }
+    var HTMLBalIconNavGoUpElement: {
+        prototype: HTMLBalIconNavGoUpElement;
+        new (): HTMLBalIconNavGoUpElement;
+    };
+    interface HTMLBalIconPlusElement extends Components.BalIconPlus, HTMLStencilElement {
+    }
+    var HTMLBalIconPlusElement: {
+        prototype: HTMLBalIconPlusElement;
+        new (): HTMLBalIconPlusElement;
+    };
+    interface HTMLBalIconPrintElement extends Components.BalIconPrint, HTMLStencilElement {
+    }
+    var HTMLBalIconPrintElement: {
+        prototype: HTMLBalIconPrintElement;
+        new (): HTMLBalIconPrintElement;
+    };
+    interface HTMLBalIconReadOnlyElement extends Components.BalIconReadOnly, HTMLStencilElement {
+    }
+    var HTMLBalIconReadOnlyElement: {
+        prototype: HTMLBalIconReadOnlyElement;
+        new (): HTMLBalIconReadOnlyElement;
+    };
+    interface HTMLBalIconRefreshElement extends Components.BalIconRefresh, HTMLStencilElement {
+    }
+    var HTMLBalIconRefreshElement: {
+        prototype: HTMLBalIconRefreshElement;
+        new (): HTMLBalIconRefreshElement;
+    };
+    interface HTMLBalIconSearchElement extends Components.BalIconSearch, HTMLStencilElement {
+    }
+    var HTMLBalIconSearchElement: {
+        prototype: HTMLBalIconSearchElement;
+        new (): HTMLBalIconSearchElement;
+    };
+    interface HTMLBalIconSendElement extends Components.BalIconSend, HTMLStencilElement {
+    }
+    var HTMLBalIconSendElement: {
+        prototype: HTMLBalIconSendElement;
+        new (): HTMLBalIconSendElement;
+    };
+    interface HTMLBalIconSocialFacebookLineElement extends Components.BalIconSocialFacebookLine, HTMLStencilElement {
+    }
+    var HTMLBalIconSocialFacebookLineElement: {
+        prototype: HTMLBalIconSocialFacebookLineElement;
+        new (): HTMLBalIconSocialFacebookLineElement;
+    };
+    interface HTMLBalIconSocialLinkedinLineElement extends Components.BalIconSocialLinkedinLine, HTMLStencilElement {
+    }
+    var HTMLBalIconSocialLinkedinLineElement: {
+        prototype: HTMLBalIconSocialLinkedinLineElement;
+        new (): HTMLBalIconSocialLinkedinLineElement;
+    };
+    interface HTMLBalIconSocialXingLineElement extends Components.BalIconSocialXingLine, HTMLStencilElement {
+    }
+    var HTMLBalIconSocialXingLineElement: {
+        prototype: HTMLBalIconSocialXingLineElement;
+        new (): HTMLBalIconSocialXingLineElement;
+    };
+    interface HTMLBalIconTrashElement extends Components.BalIconTrash, HTMLStencilElement {
+    }
+    var HTMLBalIconTrashElement: {
+        prototype: HTMLBalIconTrashElement;
+        new (): HTMLBalIconTrashElement;
+    };
+    interface HTMLBalIconUploadElement extends Components.BalIconUpload, HTMLStencilElement {
+    }
+    var HTMLBalIconUploadElement: {
+        prototype: HTMLBalIconUploadElement;
+        new (): HTMLBalIconUploadElement;
+    };
     interface HTMLBalInputElement extends Components.BalInput, HTMLStencilElement {
     }
     var HTMLBalInputElement: {
@@ -1348,6 +1968,12 @@ declare global {
         prototype: HTMLBalSelectOptionElement;
         new (): HTMLBalSelectOptionElement;
     };
+    interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
+    }
+    var HTMLBalSnackbarElement: {
+        prototype: HTMLBalSnackbarElement;
+        new (): HTMLBalSnackbarElement;
+    };
     interface HTMLBalSpinnerElement extends Components.BalSpinner, HTMLStencilElement {
     }
     var HTMLBalSpinnerElement: {
@@ -1426,6 +2052,51 @@ declare global {
         "bal-hint-text": HTMLBalHintTextElement;
         "bal-hint-title": HTMLBalHintTitleElement;
         "bal-icon": HTMLBalIconElement;
+        "bal-icon-account": HTMLBalIconAccountElement;
+        "bal-icon-alert": HTMLBalIconAlertElement;
+        "bal-icon-alert-circle": HTMLBalIconAlertCircleElement;
+        "bal-icon-answer": HTMLBalIconAnswerElement;
+        "bal-icon-call": HTMLBalIconCallElement;
+        "bal-icon-caret-down": HTMLBalIconCaretDownElement;
+        "bal-icon-caret-left": HTMLBalIconCaretLeftElement;
+        "bal-icon-caret-right": HTMLBalIconCaretRightElement;
+        "bal-icon-caret-up": HTMLBalIconCaretUpElement;
+        "bal-icon-check": HTMLBalIconCheckElement;
+        "bal-icon-check-circle": HTMLBalIconCheckCircleElement;
+        "bal-icon-clock": HTMLBalIconClockElement;
+        "bal-icon-close": HTMLBalIconCloseElement;
+        "bal-icon-consultant": HTMLBalIconConsultantElement;
+        "bal-icon-contact": HTMLBalIconContactElement;
+        "bal-icon-copy": HTMLBalIconCopyElement;
+        "bal-icon-date": HTMLBalIconDateElement;
+        "bal-icon-document": HTMLBalIconDocumentElement;
+        "bal-icon-download": HTMLBalIconDownloadElement;
+        "bal-icon-edit": HTMLBalIconEditElement;
+        "bal-icon-github": HTMLBalIconGithubElement;
+        "bal-icon-info": HTMLBalIconInfoElement;
+        "bal-icon-info-circle": HTMLBalIconInfoCircleElement;
+        "bal-icon-locate": HTMLBalIconLocateElement;
+        "bal-icon-location": HTMLBalIconLocationElement;
+        "bal-icon-menu-bars": HTMLBalIconMenuBarsElement;
+        "bal-icon-menu-dots": HTMLBalIconMenuDotsElement;
+        "bal-icon-message": HTMLBalIconMessageElement;
+        "bal-icon-minus": HTMLBalIconMinusElement;
+        "bal-icon-nav-back": HTMLBalIconNavBackElement;
+        "bal-icon-nav-go-down": HTMLBalIconNavGoDownElement;
+        "bal-icon-nav-go-left": HTMLBalIconNavGoLeftElement;
+        "bal-icon-nav-go-right": HTMLBalIconNavGoRightElement;
+        "bal-icon-nav-go-up": HTMLBalIconNavGoUpElement;
+        "bal-icon-plus": HTMLBalIconPlusElement;
+        "bal-icon-print": HTMLBalIconPrintElement;
+        "bal-icon-read-only": HTMLBalIconReadOnlyElement;
+        "bal-icon-refresh": HTMLBalIconRefreshElement;
+        "bal-icon-search": HTMLBalIconSearchElement;
+        "bal-icon-send": HTMLBalIconSendElement;
+        "bal-icon-social-facebook-line": HTMLBalIconSocialFacebookLineElement;
+        "bal-icon-social-linkedin-line": HTMLBalIconSocialLinkedinLineElement;
+        "bal-icon-social-xing-line": HTMLBalIconSocialXingLineElement;
+        "bal-icon-trash": HTMLBalIconTrashElement;
+        "bal-icon-upload": HTMLBalIconUploadElement;
         "bal-input": HTMLBalInputElement;
         "bal-list": HTMLBalListElement;
         "bal-list-item": HTMLBalListItemElement;
@@ -1449,6 +2120,7 @@ declare global {
         "bal-radio-group": HTMLBalRadioGroupElement;
         "bal-select": HTMLBalSelectElement;
         "bal-select-option": HTMLBalSelectOptionElement;
+        "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-tabs": HTMLBalTabsElement;
@@ -1461,6 +2133,10 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BalAccordion {
+        /**
+          * If `true` the accordion is used on the bottom of a card
+         */
+        "card"?: boolean;
         /**
           * Bal-Icon of the close trigger button
          */
@@ -1488,17 +2164,13 @@ declare namespace LocalJSX {
         /**
           * Type defines the theme of the accordion toggle
          */
-        "type"?: 'is-primary' | 'is-info';
+        "type"?: ColorTypesBasic;
     }
     interface BalButton {
         /**
           * If `true` the bottom corners get rounded
          */
         "bottomRounded"?: boolean;
-        /**
-          * If `true` the button is dense
-         */
-        "dense"?: boolean;
         /**
           * If `true` the button is disabled
          */
@@ -1508,9 +2180,17 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
           * Name of the left button icon
          */
         "icon"?: string;
+        /**
+          * Size of the button
+         */
+        "iconPosition"?: 'left' | 'right';
         /**
           * Name of the right button icon
          */
@@ -1524,17 +2204,17 @@ declare namespace LocalJSX {
          */
         "isActive"?: boolean;
         /**
-          * If `true` the width of the buttons is limited
+          * Turn the button in to a link.
          */
-        "isSquare"?: boolean;
-        /**
-          * If `true` the button has a light color
-         */
-        "light"?: boolean;
+        "link"?: boolean;
         /**
           * If `true` the label is hidden and a loading spinner is shown instead.
          */
         "loading"?: boolean;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * If `true` the button is outlined
          */
@@ -1542,11 +2222,23 @@ declare namespace LocalJSX {
         /**
           * Size of the button
          */
-        "size"?: 'is-small' | '';
+        "size"?: 'small' | '';
+        /**
+          * If `true` the width of the buttons is limited
+         */
+        "square"?: boolean;
+        /**
+          * Specifies where to open the linked document
+         */
+        "target"?: '_blank' | ' _parent' | '_self' | '_top';
+        /**
+          * If `true` the top corners get rounded
+         */
+        "topRounded"?: boolean;
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "type"?: 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger' | 'is-link';
+        "type"?: BalButtonType;
     }
     interface BalCard {
         /**
@@ -1562,6 +2254,10 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
+          * If `true` the card has padding.
+         */
+        "padded"?: boolean;
+        /**
           * If `true` the card loses its border radius.
          */
         "square"?: boolean;
@@ -1569,6 +2265,10 @@ declare namespace LocalJSX {
           * If `true` the card has a limited width on desktop.
          */
         "teaser"?: boolean;
+        /**
+          * Defines the color of the card.
+         */
+        "type"?: ColorTypes | '';
     }
     interface BalCardActions {
         /**
@@ -1649,6 +2349,10 @@ declare namespace LocalJSX {
           * Emitted when the step circle is clicked.
          */
         "onBalCardStepClick"?: (event: CustomEvent<BalCardStepOption>) => void;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * Hides the navigation circles and adds the step label instead
          */
@@ -1828,7 +2532,7 @@ declare namespace LocalJSX {
          */
         "onBalCollapse"?: (event: CustomEvent<boolean>) => void;
         /**
-          * Internal
+          * *Internal* - Use this to close unuesed dropdowns.
          */
         "onBalDropdownPrepare"?: (event: CustomEvent<string>) => void;
         "scrollable"?: number;
@@ -1869,6 +2573,10 @@ declare namespace LocalJSX {
          */
         "iconRight"?: string;
         /**
+          * If `true` the field can be used on blue background.
+         */
+        "inverted"?: boolean;
+        /**
           * If `true` a loading spinner is visible at the end of the input
          */
         "loading"?: boolean;
@@ -1887,7 +2595,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the message.
          */
-        "type"?: '' | 'danger' | 'success' | 'warning';
+        "type"?: '' | ColorTypesExtended;
     }
     interface BalFileUpload {
         /**
@@ -1943,27 +2651,9 @@ declare namespace LocalJSX {
     }
     interface BalIcon {
         /**
-          * Defines the color of the icon.
+          * If `true` the button is inverted
          */
-        "color"?: | 'danger'
-    | 'warning'
-    | 'primary'
-    | 'blue'
-    | 'success'
-    | 'grey'
-    | 'white'
-    | 'black'
-    | 'blue-line'
-    | 'blue-light-line'
-    | '';
-        /**
-          * If `true` the icon can be positioned ot the left side of another component
-         */
-        "isLeft"?: boolean;
-        /**
-          * If `true` the icon can be positioned ot the right side of another component
-         */
-        "isRight"?: boolean;
+        "inverted"?: boolean;
         /**
           * The name of the icon without the bal-icon prefix.
          */
@@ -1975,11 +2665,285 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the icon.
          */
-        "size"?: 'small' | 'medium' | 'large' | '';
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
         /**
           * If `true` the icon is rotated 180deg
          */
         "turn"?: boolean;
+        /**
+          * The theme type of the button. Given by bulma our css framework.
+         */
+        "type"?: BalButtonType;
+    }
+    interface BalIconAccount {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconAlert {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconAlertCircle {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconAnswer {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCall {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCaretDown {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCaretLeft {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCaretRight {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCaretUp {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCheck {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCheckCircle {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconClock {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconClose {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconConsultant {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconContact {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconCopy {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconDate {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconDocument {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconDownload {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconEdit {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconGithub {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconInfo {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconInfoCircle {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconLocate {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconLocation {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconMenuBars {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconMenuDots {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconMessage {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconMinus {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconNavBack {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconNavGoDown {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconNavGoLeft {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconNavGoRight {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconNavGoUp {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconPlus {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconPrint {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconReadOnly {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconRefresh {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconSearch {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconSend {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconSocialFacebookLine {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconSocialLinkedinLine {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconSocialXingLine {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconTrash {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconUpload {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalInput {
         /**
@@ -2083,9 +3047,21 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
           * If `true` the list item has a selected theme
          */
         "selected"?: boolean;
+        /**
+          * Specifies where to open the linked document
+         */
+        "target"?: '_blank' | ' _parent' | '_self' | '_top';
     }
     interface BalListItemContent {
     }
@@ -2115,15 +3091,27 @@ declare namespace LocalJSX {
     }
     interface BalNavbar {
         /**
+          * It `true` the component uses the whole width
+         */
+        "expanded"?: boolean;
+        /**
           * It `true` the navbar has a white background
          */
         "light"?: boolean;
+        /**
+          * It `true` the burger button is hidden
+         */
+        "noBurger"?: boolean;
     }
     interface BalNavbarBrand {
         /**
           * Link of the logo / title.
          */
         "href"?: string;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
     }
     interface BalNavbarMenu {
     }
@@ -2135,7 +3123,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the element
          */
-        "type"?: '' | 'primary' | 'info' | 'success' | 'warning' | 'danger';
+        "type"?: '' | ColorTypes;
     }
     interface BalPagination {
         /**
@@ -2327,6 +3315,40 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface BalSnackbar {
+        /**
+          * Label text for the action button
+         */
+        "action"?: string;
+        /**
+          * The duration of the snackbar
+         */
+        "duration"?: number;
+        /**
+          * The icon of the snackbar header
+         */
+        "icon"?: string;
+        /**
+          * The message of the snackbar
+         */
+        "message"?: string;
+        /**
+          * Emitted when the action button is clicked
+         */
+        "onBalAction"?: (event: CustomEvent<string>) => void;
+        /**
+          * Emitted when snackbar is closed
+         */
+        "onBalClose"?: (event: CustomEvent<string>) => void;
+        /**
+          * The subject of the snackbar header
+         */
+        "subject"?: string;
+        /**
+          * The theme type of the snackbar. Given by bulma our css framework.
+         */
+        "type"?: ColorTypes | '';
+    }
     interface BalSpinner {
         /**
           * If `true` the component can be used on dark background
@@ -2359,9 +3381,17 @@ declare namespace LocalJSX {
          */
         "failed"?: boolean;
         /**
+          * Link to path.
+         */
+        "href"?: string;
+        /**
           * Label for the tab.
          */
         "label"?: string;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * This is the key of the tab.
          */
@@ -2376,10 +3406,6 @@ declare namespace LocalJSX {
           * Label for the action button
          */
         "actionLabel"?: string;
-        /**
-          * If `true` the padding gets reduced.
-         */
-        "dense"?: boolean;
         /**
           * If `true` the field expands over the whole width.
          */
@@ -2405,9 +3431,10 @@ declare namespace LocalJSX {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "type"?: 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger' | '';
+        "type"?: ColorTypes | '';
     }
     interface BalText {
+        "small"?: boolean;
     }
     interface BalTextarea {
         /**
@@ -2503,9 +3530,17 @@ declare namespace LocalJSX {
     }
     interface BalToast {
         /**
+          * The duration of the toast
+         */
+        "duration"?: number;
+        /**
+          * Emitted when toast is closed
+         */
+        "onBalClose"?: (event: CustomEvent<string>) => void;
+        /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "type"?: 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger';
+        "type"?: ColorTypes | '';
     }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
@@ -2537,6 +3572,51 @@ declare namespace LocalJSX {
         "bal-hint-text": BalHintText;
         "bal-hint-title": BalHintTitle;
         "bal-icon": BalIcon;
+        "bal-icon-account": BalIconAccount;
+        "bal-icon-alert": BalIconAlert;
+        "bal-icon-alert-circle": BalIconAlertCircle;
+        "bal-icon-answer": BalIconAnswer;
+        "bal-icon-call": BalIconCall;
+        "bal-icon-caret-down": BalIconCaretDown;
+        "bal-icon-caret-left": BalIconCaretLeft;
+        "bal-icon-caret-right": BalIconCaretRight;
+        "bal-icon-caret-up": BalIconCaretUp;
+        "bal-icon-check": BalIconCheck;
+        "bal-icon-check-circle": BalIconCheckCircle;
+        "bal-icon-clock": BalIconClock;
+        "bal-icon-close": BalIconClose;
+        "bal-icon-consultant": BalIconConsultant;
+        "bal-icon-contact": BalIconContact;
+        "bal-icon-copy": BalIconCopy;
+        "bal-icon-date": BalIconDate;
+        "bal-icon-document": BalIconDocument;
+        "bal-icon-download": BalIconDownload;
+        "bal-icon-edit": BalIconEdit;
+        "bal-icon-github": BalIconGithub;
+        "bal-icon-info": BalIconInfo;
+        "bal-icon-info-circle": BalIconInfoCircle;
+        "bal-icon-locate": BalIconLocate;
+        "bal-icon-location": BalIconLocation;
+        "bal-icon-menu-bars": BalIconMenuBars;
+        "bal-icon-menu-dots": BalIconMenuDots;
+        "bal-icon-message": BalIconMessage;
+        "bal-icon-minus": BalIconMinus;
+        "bal-icon-nav-back": BalIconNavBack;
+        "bal-icon-nav-go-down": BalIconNavGoDown;
+        "bal-icon-nav-go-left": BalIconNavGoLeft;
+        "bal-icon-nav-go-right": BalIconNavGoRight;
+        "bal-icon-nav-go-up": BalIconNavGoUp;
+        "bal-icon-plus": BalIconPlus;
+        "bal-icon-print": BalIconPrint;
+        "bal-icon-read-only": BalIconReadOnly;
+        "bal-icon-refresh": BalIconRefresh;
+        "bal-icon-search": BalIconSearch;
+        "bal-icon-send": BalIconSend;
+        "bal-icon-social-facebook-line": BalIconSocialFacebookLine;
+        "bal-icon-social-linkedin-line": BalIconSocialLinkedinLine;
+        "bal-icon-social-xing-line": BalIconSocialXingLine;
+        "bal-icon-trash": BalIconTrash;
+        "bal-icon-upload": BalIconUpload;
         "bal-input": BalInput;
         "bal-list": BalList;
         "bal-list-item": BalListItem;
@@ -2560,6 +3640,7 @@ declare namespace LocalJSX {
         "bal-radio-group": BalRadioGroup;
         "bal-select": BalSelect;
         "bal-select-option": BalSelectOption;
+        "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
         "bal-tab-item": BalTabItem;
         "bal-tabs": BalTabs;
@@ -2603,6 +3684,51 @@ declare module "@stencil/core" {
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
             "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
+            "bal-icon-account": LocalJSX.BalIconAccount & JSXBase.HTMLAttributes<HTMLBalIconAccountElement>;
+            "bal-icon-alert": LocalJSX.BalIconAlert & JSXBase.HTMLAttributes<HTMLBalIconAlertElement>;
+            "bal-icon-alert-circle": LocalJSX.BalIconAlertCircle & JSXBase.HTMLAttributes<HTMLBalIconAlertCircleElement>;
+            "bal-icon-answer": LocalJSX.BalIconAnswer & JSXBase.HTMLAttributes<HTMLBalIconAnswerElement>;
+            "bal-icon-call": LocalJSX.BalIconCall & JSXBase.HTMLAttributes<HTMLBalIconCallElement>;
+            "bal-icon-caret-down": LocalJSX.BalIconCaretDown & JSXBase.HTMLAttributes<HTMLBalIconCaretDownElement>;
+            "bal-icon-caret-left": LocalJSX.BalIconCaretLeft & JSXBase.HTMLAttributes<HTMLBalIconCaretLeftElement>;
+            "bal-icon-caret-right": LocalJSX.BalIconCaretRight & JSXBase.HTMLAttributes<HTMLBalIconCaretRightElement>;
+            "bal-icon-caret-up": LocalJSX.BalIconCaretUp & JSXBase.HTMLAttributes<HTMLBalIconCaretUpElement>;
+            "bal-icon-check": LocalJSX.BalIconCheck & JSXBase.HTMLAttributes<HTMLBalIconCheckElement>;
+            "bal-icon-check-circle": LocalJSX.BalIconCheckCircle & JSXBase.HTMLAttributes<HTMLBalIconCheckCircleElement>;
+            "bal-icon-clock": LocalJSX.BalIconClock & JSXBase.HTMLAttributes<HTMLBalIconClockElement>;
+            "bal-icon-close": LocalJSX.BalIconClose & JSXBase.HTMLAttributes<HTMLBalIconCloseElement>;
+            "bal-icon-consultant": LocalJSX.BalIconConsultant & JSXBase.HTMLAttributes<HTMLBalIconConsultantElement>;
+            "bal-icon-contact": LocalJSX.BalIconContact & JSXBase.HTMLAttributes<HTMLBalIconContactElement>;
+            "bal-icon-copy": LocalJSX.BalIconCopy & JSXBase.HTMLAttributes<HTMLBalIconCopyElement>;
+            "bal-icon-date": LocalJSX.BalIconDate & JSXBase.HTMLAttributes<HTMLBalIconDateElement>;
+            "bal-icon-document": LocalJSX.BalIconDocument & JSXBase.HTMLAttributes<HTMLBalIconDocumentElement>;
+            "bal-icon-download": LocalJSX.BalIconDownload & JSXBase.HTMLAttributes<HTMLBalIconDownloadElement>;
+            "bal-icon-edit": LocalJSX.BalIconEdit & JSXBase.HTMLAttributes<HTMLBalIconEditElement>;
+            "bal-icon-github": LocalJSX.BalIconGithub & JSXBase.HTMLAttributes<HTMLBalIconGithubElement>;
+            "bal-icon-info": LocalJSX.BalIconInfo & JSXBase.HTMLAttributes<HTMLBalIconInfoElement>;
+            "bal-icon-info-circle": LocalJSX.BalIconInfoCircle & JSXBase.HTMLAttributes<HTMLBalIconInfoCircleElement>;
+            "bal-icon-locate": LocalJSX.BalIconLocate & JSXBase.HTMLAttributes<HTMLBalIconLocateElement>;
+            "bal-icon-location": LocalJSX.BalIconLocation & JSXBase.HTMLAttributes<HTMLBalIconLocationElement>;
+            "bal-icon-menu-bars": LocalJSX.BalIconMenuBars & JSXBase.HTMLAttributes<HTMLBalIconMenuBarsElement>;
+            "bal-icon-menu-dots": LocalJSX.BalIconMenuDots & JSXBase.HTMLAttributes<HTMLBalIconMenuDotsElement>;
+            "bal-icon-message": LocalJSX.BalIconMessage & JSXBase.HTMLAttributes<HTMLBalIconMessageElement>;
+            "bal-icon-minus": LocalJSX.BalIconMinus & JSXBase.HTMLAttributes<HTMLBalIconMinusElement>;
+            "bal-icon-nav-back": LocalJSX.BalIconNavBack & JSXBase.HTMLAttributes<HTMLBalIconNavBackElement>;
+            "bal-icon-nav-go-down": LocalJSX.BalIconNavGoDown & JSXBase.HTMLAttributes<HTMLBalIconNavGoDownElement>;
+            "bal-icon-nav-go-left": LocalJSX.BalIconNavGoLeft & JSXBase.HTMLAttributes<HTMLBalIconNavGoLeftElement>;
+            "bal-icon-nav-go-right": LocalJSX.BalIconNavGoRight & JSXBase.HTMLAttributes<HTMLBalIconNavGoRightElement>;
+            "bal-icon-nav-go-up": LocalJSX.BalIconNavGoUp & JSXBase.HTMLAttributes<HTMLBalIconNavGoUpElement>;
+            "bal-icon-plus": LocalJSX.BalIconPlus & JSXBase.HTMLAttributes<HTMLBalIconPlusElement>;
+            "bal-icon-print": LocalJSX.BalIconPrint & JSXBase.HTMLAttributes<HTMLBalIconPrintElement>;
+            "bal-icon-read-only": LocalJSX.BalIconReadOnly & JSXBase.HTMLAttributes<HTMLBalIconReadOnlyElement>;
+            "bal-icon-refresh": LocalJSX.BalIconRefresh & JSXBase.HTMLAttributes<HTMLBalIconRefreshElement>;
+            "bal-icon-search": LocalJSX.BalIconSearch & JSXBase.HTMLAttributes<HTMLBalIconSearchElement>;
+            "bal-icon-send": LocalJSX.BalIconSend & JSXBase.HTMLAttributes<HTMLBalIconSendElement>;
+            "bal-icon-social-facebook-line": LocalJSX.BalIconSocialFacebookLine & JSXBase.HTMLAttributes<HTMLBalIconSocialFacebookLineElement>;
+            "bal-icon-social-linkedin-line": LocalJSX.BalIconSocialLinkedinLine & JSXBase.HTMLAttributes<HTMLBalIconSocialLinkedinLineElement>;
+            "bal-icon-social-xing-line": LocalJSX.BalIconSocialXingLine & JSXBase.HTMLAttributes<HTMLBalIconSocialXingLineElement>;
+            "bal-icon-trash": LocalJSX.BalIconTrash & JSXBase.HTMLAttributes<HTMLBalIconTrashElement>;
+            "bal-icon-upload": LocalJSX.BalIconUpload & JSXBase.HTMLAttributes<HTMLBalIconUploadElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
             "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
@@ -2626,6 +3752,7 @@ declare module "@stencil/core" {
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
             "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
+            "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

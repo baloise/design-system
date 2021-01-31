@@ -12,47 +12,50 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-list disabled class="box is-padded">
-          <bal-list-item>
-            <bal-list-item-content>
-              <bal-list-item-title>Single-line item</bal-list-item-title>
-            </bal-list-item-content>
-          </bal-list-item>
-
-          <bal-list-item>
-            <bal-list-item-content>
-              <bal-list-item-title>Two-line item</bal-list-item-title>
-              <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
-            </bal-list-item-content>
-          </bal-list-item>
-        </bal-list>
+        <bal-card padded>
+          <bal-list disabled>
+            <bal-list-item>
+              <bal-list-item-content>
+                <bal-list-item-title>Single-line item</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item>
+              <bal-list-item-content>
+                <bal-list-item-title>Two-line item</bal-list-item-title>
+                <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
+              </bal-list-item-content>
+            </bal-list-item>
+          </bal-list>
+        </bal-card>
       </section>
 
       <h2 class="title is-size-2">With borders</h2>
       <section>
-        <bal-list border>
-          <bal-list-item clickable>
-            <bal-list-item-content>
-              <bal-list-item-title>Single-line item</bal-list-item-title>
-            </bal-list-item-content>
-          </bal-list-item>
-          <bal-list-item clickable selected>
-            <bal-list-item-content>
-              <bal-list-item-title>Selected item</bal-list-item-title>
-            </bal-list-item-content>
-          </bal-list-item>
-          <bal-list-item disabled>
-            <bal-list-item-content>
-              <bal-list-item-title>Two-line item</bal-list-item-title>
-              <bal-list-item-subtitle>Disabled item</bal-list-item-subtitle>
-            </bal-list-item-content>
-          </bal-list-item>
-        </bal-list>
+        <bal-card padded>
+          <bal-list border>
+            <bal-list-item clickable>
+              <bal-list-item-content>
+                <bal-list-item-title>Single-line item</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item clickable selected>
+              <bal-list-item-content>
+                <bal-list-item-title>Selected item</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item disabled>
+              <bal-list-item-content>
+                <bal-list-item-title>Two-line item</bal-list-item-title>
+                <bal-list-item-subtitle>Disabled item</bal-list-item-subtitle>
+              </bal-list-item-content>
+            </bal-list-item>
+          </bal-list>
+        </bal-card>
       </section>
 
       <h2 class="title is-size-2">Inverted</h2>
       <section>
-        <div class="has-background-info is-padded">
+        <bal-card padded inverted type="info">
           <bal-list inverted border>
             <bal-list-item>
               <bal-list-item-content>
@@ -67,107 +70,68 @@
               </bal-list-item-content>
             </bal-list-item>
           </bal-list>
-        </div>
+        </bal-card>
       </section>
 
       <h2 class="title is-size-2">With Icons</h2>
       <section>
-        <bal-list class="box is-padded">
-          <bal-list-item>
-            <bal-list-item-icon>
-              <bal-icon size="medium" name="account"></bal-icon>
-            </bal-list-item-icon>
-            <bal-list-item-content>
-              <bal-list-item-title>Tony Stark</bal-list-item-title>
-              <bal-list-item-subtitle>Stark Industries</bal-list-item-subtitle>
-            </bal-list-item-content>
-          </bal-list-item>
-
-          <bal-list-item>
-            <bal-list-item-icon>
-              <bal-icon size="medium" name="check"></bal-icon>
-            </bal-list-item-icon>
-            <bal-list-item-content>
-              <bal-list-item-title class="has-text-black">Avenger</bal-list-item-title>
-            </bal-list-item-content>
-          </bal-list-item>
-
-          <bal-list-item>
-            <bal-list-item-icon>
-              <bal-icon size="medium" name="document"></bal-icon>
-            </bal-list-item-icon>
-            <bal-list-item-content>
-              <bal-list-item-title>Document.pdf</bal-list-item-title>
-              <bal-list-item-subtitle>20.03.1998</bal-list-item-subtitle>
-            </bal-list-item-content>
-            <bal-list-item-icon right>
-              <bal-icon size="medium" name="download"></bal-icon>
-            </bal-list-item-icon>
-          </bal-list-item>
-        </bal-list>
+        <bal-card padded>
+          <bal-list>
+            <bal-list-item>
+              <bal-list-item-icon>
+                <bal-icon name="account"></bal-icon>
+              </bal-list-item-icon>
+              <bal-list-item-content>
+                <bal-list-item-title>Tony Stark</bal-list-item-title>
+                <bal-list-item-subtitle>Stark Industries</bal-list-item-subtitle>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item>
+              <bal-list-item-icon>
+                <bal-icon name="check"></bal-icon>
+              </bal-list-item-icon>
+              <bal-list-item-content>
+                <bal-list-item-title class="has-text-black">Avenger</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item>
+              <bal-list-item-icon>
+                <bal-icon name="document"></bal-icon>
+              </bal-list-item-icon>
+              <bal-list-item-content>
+                <bal-list-item-title>Document.pdf</bal-list-item-title>
+                <bal-list-item-subtitle>20.03.1998</bal-list-item-subtitle>
+              </bal-list-item-content>
+              <bal-list-item-icon right>
+                <bal-icon name="download"></bal-icon>
+              </bal-list-item-icon>
+            </bal-list-item>
+          </bal-list>
+        </bal-card>
       </section>
 
       <h2 class="title is-size-2">Link</h2>
       <section>
-        <bal-list class="box is-padded">
-          <bal-list-item>
-            <bal-list-item-content>
-              <bal-list-item-title>Link A</bal-list-item-title>
-            </bal-list-item-content>
-            <bal-list-item-icon right>
-              <bal-icon size="medium" name="nav-go-large"></bal-icon>
-            </bal-list-item-icon>
-          </bal-list-item>
-          <bal-list-item disabled>
-            <bal-list-item-content>
-              <bal-list-item-title>Disabled Link B</bal-list-item-title>
-            </bal-list-item-content>
-            <bal-list-item-icon right>
-              <bal-icon size="medium" name="nav-go-large"></bal-icon>
-            </bal-list-item-icon>
-          </bal-list-item>
-        </bal-list>
-      </section>
-
-      <h2 class="title is-size-2">With multiple columns</h2>
-      <section>
-        <bal-list border class="box is-padded">
-          <bal-list-item>
-            <bal-list-item-content>
-              <div style="display: block; width: 100%">
-                <div class="columns">
-                  <div class="column" style="max-width: 140px">
-                    <bal-list-item-title>14.02.2020</bal-list-item-title>
-                  </div>
-                  <div class="column">
-                    <bal-list-item-title>Link A</bal-list-item-title>
-                  </div>
-                </div>
-              </div>
-            </bal-list-item-content>
-            <bal-list-item-icon right>
-              <bal-icon size="medium" name="nav-go-large"></bal-icon>
-            </bal-list-item-icon>
-          </bal-list-item>
-
-          <bal-list-item>
-            <bal-list-item-content>
-              <div style="display: block; width: 100%">
-                <div class="columns">
-                  <div class="column" style="max-width: 140px">
-                    <bal-list-item-title>03.04.2020</bal-list-item-title>
-                  </div>
-                  <div class="column">
-                    <bal-list-item-title>Link B</bal-list-item-title>
-                  </div>
-                </div>
-              </div>
-            </bal-list-item-content>
-            <bal-list-item-icon right>
-              <bal-icon size="medium" name="nav-go-large"></bal-icon>
-            </bal-list-item-icon>
-          </bal-list-item>
-        </bal-list>
+        <bal-card padded>
+          <bal-list>
+            <bal-list-item href="https://google.com" target="_blank">
+              <bal-list-item-content>
+                <bal-list-item-title>Link A</bal-list-item-title>
+              </bal-list-item-content>
+              <bal-list-item-icon right>
+                <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+              </bal-list-item-icon>
+            </bal-list-item>
+            <bal-list-item disabled>
+              <bal-list-item-content>
+                <bal-list-item-title>Disabled Link B</bal-list-item-title>
+              </bal-list-item-content>
+              <bal-list-item-icon right>
+                <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+              </bal-list-item-icon>
+            </bal-list-item>
+          </bal-list>
+        </bal-card>
       </section>
     </div>
   </body>

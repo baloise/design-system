@@ -30,22 +30,33 @@
         border-radius: 50%;
         position: absolute;
         display: block;
-        top: 35px;
+        top: 18px;
         right: 5px;
       }
 
       & > a {
-        padding: 32px 20px 32px 20px;
+        padding: 22px 20px 20px 20px;
         line-height: 1.2;
         cursor: pointer;
-        color: $blue-light-text;
-        font-size: $size-3;
+        border-bottom: 2px solid transparent;
+        text-decoration: none;
+
+        bal-text {
+          color: $blue-light-text;
+          font-size: $size-3;
+          line-height: $size-3;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
 
       &.is-active > a {
-        color: $blue;
         border-bottom: 2px solid $blue;
-        padding-bottom: 30px;
+
+        bal-text {
+          color: $blue;
+        }
       }
 
       & > a:hover {
@@ -57,23 +68,6 @@
         color: $blue-light-text;
         cursor: not-allowed;
         opacity: 0.5;
-      }
-    }
-  }
-
-  .tabs.is-dense {
-    & > ul > li {
-      & > a {
-        padding: 10px 20px;
-      }
-
-      &.is-active > a {
-        padding-bottom: 8px;
-      }
-
-      span.bubble {
-        top: 12px;
-        right: 2px;
       }
     }
   }
@@ -95,10 +89,16 @@
       & > a {
         border-radius: 50px;
         padding: 8.5px 20px 8.5px 20px;
-        line-height: 1.2;
         cursor: pointer;
-        color: $black;
-        font-size: $size-5;
+
+        bal-text {
+          color: $black;
+          font-size: $size-4;
+          line-height: $size-4;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
 
       &.is-active > a,
@@ -106,6 +106,10 @@
         background: $blue;
         color: $white;
         border-bottom: 0;
+
+        bal-text {
+          color: $white;
+        }
       }
     }
   }

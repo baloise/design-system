@@ -11,7 +11,7 @@
 
 | Property | Attribute | Description                   | Type     | Default |
 | -------- | --------- | ----------------------------- | -------- | ------- |
-| `icon`   | `icon`    | Name of the icon like `edit`. | `string` | `""`    |
+| `icon`   | `icon`    | Name of the icon like `edit`. | `string` | `''`    |
 
 
 ## Dependencies
@@ -25,8 +25,8 @@
 graph TD;
   bal-card-button --> bal-button
   bal-button --> bal-spinner
-  bal-button --> bal-icon
   bal-button --> bal-text
+  bal-button --> bal-icon
   style bal-card-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

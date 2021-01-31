@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop, State, Method, EventEmitter, Event, Listen } from '@stencil/core'
+import { Component, h, Host, Element, Prop, State, Method, EventEmitter, Event, Listen, Watch } from '@stencil/core'
 import { isEnterKey, isEscapeKey, isArrowDownKey, isArrowUpKey } from '../../utils/key.util'
 import { BalOptionValue } from '../bal-select-option/bal-select-option.type'
 
@@ -114,6 +114,17 @@ export class Select {
    * Emitted when the user cancels the input.
    */
   @Event({ eventName: 'balCancel' }) balCancel!: EventEmitter<KeyboardEvent>
+
+  componentDidLoad() {
+    this.valueWatcher()
+  }
+
+  @Watch('value')
+  valueWatcher() {
+    const selectedOptions = this.childOptions.filter(option => this.value.indexOf(option.value) >= 0)
+    this.inputElement.value = selectedOptions.map(o => o.value).join(', ')
+    this.sync()
+  }
 
   /**
    * Opens the dropdown
@@ -470,11 +481,11 @@ export class Select {
         {this.renderInput()}
         <bal-icon
           class={{ 'is-hidden': this.loading }}
-          size="medium"
-          is-right
+          type="info"
           turn={!this.loading && !this.typeahead && this.isDropdownOpen}
           color={this.inverted ? 'white' : 'blue'}
           name={this.typeahead && !this.multiple ? 'search' : 'caret-down'}
+          size={this.typeahead && !this.multiple ? 'small' : 'xsmall'}
         />
       </div>
     )
@@ -525,10 +536,9 @@ export class Select {
           />
           <bal-icon
             class={{ 'is-hidden': this.loading }}
-            size="medium"
-            is-right
             turn={!this.loading && !this.typeahead && this.isDropdownOpen}
-            color="blue"
+            size="small"
+            type="info"
             name="search"
           />
         </div>

@@ -4,26 +4,23 @@
 :host {
   display: inline-flex;
   position: relative;
-  align-self: center;
   cursor: pointer;
-  width: 100%;
-  justify-content: center;
   flex-grow: 0 !important;
 
   .toast {
     align-self: center;
     display: inline-flex;
     animation-duration: 150ms;
-    margin: .5em 0;
-    text-align: center;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-    border-radius: 3px;
-    padding: 20px 40px;
+    margin: 0 0 0.5em 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+    border-radius: $radius-large;
+    padding: 20px 40px 20px 40px;
     pointer-events: auto;
     max-width: 600px;
     flex-grow: 1;
     font-size: $size-5;
-    font-weight: $weight-bold;
+    position: relative;
+    background: $white;
 
     &.is-primary {
       background: $primary;
@@ -49,7 +46,17 @@
       background: $danger;
       color: $white;
     }
+
+    span.toast-message {
+      margin-right: 50px;
+    }
+
+    .close {
+      position: absolute;
+      top: 50%;
+      right: 40px;
+      margin-top: -7px;
+      margin-right: -5px;
+    }
   }
 }
-
-

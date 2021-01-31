@@ -9,8 +9,8 @@ export class ModalHeader {
   render() {
     return (
       <Host class="modal-card-head">
-        <p class="modal-card-title title is-size-2">
-          <bal-text>
+        <p class="modal-card-title">
+          <bal-text class="title is-size-2">
             <slot></slot>
           </bal-text>
         </p>

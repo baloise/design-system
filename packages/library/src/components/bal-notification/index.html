@@ -12,7 +12,7 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-notification
+        <bal-notification type="primary"
           >Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, assumenda in ducimus modi animi enim velit
           molestiae rerum natus, ad culpa explicabo blanditiis architecto quo expedita incidunt officiis quaerat
           delectus.</bal-notification
@@ -23,9 +23,9 @@
       <section>
         <bal-notification>Default</bal-notification>
         <br />
-        <bal-notification type="info">Info</bal-notification>
-        <br />
         <bal-notification type="primary">Primary</bal-notification>
+        <br />
+        <bal-notification type="info">Info</bal-notification>
         <br />
         <bal-notification type="success">Success</bal-notification>
         <br />
@@ -36,8 +36,8 @@
 
       <h2 class="title is-size-2">Box</h2>
       <section>
-        <bal-notification type="primary" class="has-text-centered" style="max-width: 400px">
-          <h3 class="title is-size-3 has-text-white" style="margin-top: 0;">Title</h3>
+        <bal-notification type="info" class="has-text-centered" style="max-width: 400px">
+          <h3 class="title is-size-3 has-text-white" style="margin-top: 0">Title</h3>
           <bal-button type="is-info" outlined inverted>Action</bal-button>
         </bal-notification>
       </section>
@@ -51,22 +51,17 @@
         </style>
 
         <bal-notification>
-          <div style="display: flex">
-            <bal-icon class="alert" name="alert-circle"></bal-icon>
-            <p style="margin-left: 10px; line-height: 1.325rem">
+          <span class="icon-text">
+            <span class="icon">
+              <bal-icon name="alert-circle"></bal-icon>
+            </span>
+            <span style="margin-left: 10px">
               <strong style="margin-right: 10px">Error!</strong>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            </p>
-          </div>
+            </span>
+          </span>
         </bal-notification>
       </section>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
     </div>
   </body>
 </html>

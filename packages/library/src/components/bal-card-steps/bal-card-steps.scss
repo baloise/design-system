@@ -49,9 +49,8 @@
         color: $blue;
         font-family: $family-sans-serif;
         font-size: 15px;
-        height: 33px;
-        line-height: 32px;
         display: none;
+        margin-top: 2px;
       }
 
       a {
@@ -122,7 +121,7 @@
             opacity: 0.5;
 
             bal-text {
-              margin-top: 0px;
+              margin-top: -2px;
             }
           }
 
