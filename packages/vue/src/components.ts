@@ -169,7 +169,7 @@ export const BalButton = /*@__PURE__*/ Vue.extend({
   },
 
 
-  render: createCommonRender('bal-button', []),
+  render: createCommonRender('bal-button', ['balNavigate']),
 });
 
 
@@ -267,7 +267,7 @@ export const BalCardSteps = /*@__PURE__*/ Vue.extend({
     select: createCommonMethod('select') as Components.BalCardSteps['select'],
     sync: createCommonMethod('sync') as Components.BalCardSteps['sync'],
   },
-  render: createCommonRender('bal-card-steps', ['balCardStepChange', 'balBackClick', 'balCardStepClick']),
+  render: createCommonRender('bal-card-steps', ['balNavigate', 'balCardStepChange', 'balBackClick', 'balCardStepClick']),
 });
 
 
@@ -966,7 +966,7 @@ export const BalListItem = /*@__PURE__*/ Vue.extend({
   },
 
 
-  render: createCommonRender('bal-list-item', []),
+  render: createCommonRender('bal-list-item', ['balNavigate']),
 });
 
 
@@ -1072,7 +1072,7 @@ export const BalNavbarBrand = /*@__PURE__*/ Vue.extend({
   },
 
 
-  render: createCommonRender('bal-navbar-brand', []),
+  render: createCommonRender('bal-navbar-brand', ['balNavigate']),
 });
 
 

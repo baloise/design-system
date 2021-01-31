@@ -23,9 +23,9 @@
 
 ## Events
 
-| Event         | Description                                | Type                      |
-| ------------- | ------------------------------------------ | ------------------------- |
-| `balNavigate` | Emitted when the action button has clicked | `CustomEvent<MouseEvent>` |
+| Event         | Description                               | Type                      |
+| ------------- | ----------------------------------------- | ------------------------- |
+| `balNavigate` | Emitted when the link element has clicked | `CustomEvent<MouseEvent>` |
 
 
 ## Methods

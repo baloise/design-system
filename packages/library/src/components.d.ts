@@ -2032,6 +2032,10 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
           * If `true` the button is outlined
          */
         "outlined"?: boolean;
@@ -2165,6 +2169,10 @@ declare namespace LocalJSX {
           * Emitted when the step circle is clicked.
          */
         "onBalCardStepClick"?: (event: CustomEvent<BalCardStepOption>) => void;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * Hides the navigation circles and adds the step label instead
          */
@@ -2683,6 +2691,10 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
           * If `true` the list item has a selected theme
          */
         "selected"?: boolean;
@@ -2736,6 +2748,10 @@ declare namespace LocalJSX {
           * Link of the logo / title.
          */
         "href"?: string;
+        /**
+          * Emitted when the link element has clicked
+         */
+        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
     }
     interface BalNavbarMenu {
     }
@@ -3013,7 +3029,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Emitted when the action button has clicked
+          * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
         /**

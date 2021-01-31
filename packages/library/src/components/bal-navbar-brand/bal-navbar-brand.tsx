@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop, State } from '@stencil/core'
+import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@stencil/core'
 
 @Component({
   tag: 'bal-navbar-brand',
@@ -14,6 +14,11 @@ export class NavbarBrand {
    * Link of the logo / title.
    */
   @Prop() href = '/'
+
+  /**
+   * Emitted when the link element has clicked
+   */
+  @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
 
   componentWillLoad() {
     window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
@@ -38,7 +43,7 @@ export class NavbarBrand {
   render() {
     return (
       <Host class="navbar-brand">
-        <a class="navbar-item app-title" href={this.href}>
+        <a class="navbar-item app-title" href={this.href} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
           <slot></slot>
         </a>
 

@@ -29,7 +29,7 @@ export class BalAccordion {
   }
 }
 
-
+import { Button as IButton } from '@baloise/ui-library/dist/types/components/bal-button/bal-button';
 export declare interface BalButton extends Components.BalButton {}
 @ProxyCmp({
   inputs: ['bottomRounded', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded', 'type']
@@ -38,13 +38,17 @@ export declare interface BalButton extends Components.BalButton {}
   selector: 'bal-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['bottomRounded', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded', 'type']
+  inputs: ['bottomRounded', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded', 'type'],
+  outputs: ['balNavigate']
 })
 export class BalButton {
+  /** Emitted when the link element has clicked */
+  balNavigate!: IButton['balNavigate'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balNavigate']);
   }
 }
 
@@ -171,9 +175,11 @@ export declare interface BalCardSteps extends Components.BalCardSteps {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   inputs: ['backLabel', 'hasBack', 'hidden', 'inverted', 'navigation', 'showLabel'],
-  outputs: ['balCardStepChange', 'balBackClick', 'balCardStepClick']
+  outputs: ['balNavigate', 'balCardStepChange', 'balBackClick', 'balCardStepClick']
 })
 export class BalCardSteps {
+  /** Emitted when the link element has clicked */
+  balNavigate!: ICardSteps['balNavigate'];
   /** Emitted when the changes has finished. */
   balCardStepChange!: ICardSteps['balChange'];
   /** Emitted when the back button is clicked. */
@@ -184,7 +190,7 @@ export class BalCardSteps {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['balCardStepChange', 'balBackClick', 'balCardStepClick']);
+    proxyOutputs(this, this.el, ['balNavigate', 'balCardStepChange', 'balBackClick', 'balCardStepClick']);
   }
 }
 
@@ -1361,7 +1367,7 @@ export class BalList {
   }
 }
 
-
+import { ListItem as IListItem } from '@baloise/ui-library/dist/types/components/bal-list-item/bal-list-item';
 export declare interface BalListItem extends Components.BalListItem {}
 @ProxyCmp({
   inputs: ['clickable', 'disabled', 'href', 'selected', 'target']
@@ -1370,13 +1376,17 @@ export declare interface BalListItem extends Components.BalListItem {}
   selector: 'bal-list-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['clickable', 'disabled', 'href', 'selected', 'target']
+  inputs: ['clickable', 'disabled', 'href', 'selected', 'target'],
+  outputs: ['balNavigate']
 })
 export class BalListItem {
+  /** Emitted when the link element has clicked */
+  balNavigate!: IListItem['balNavigate'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balNavigate']);
   }
 }
 
@@ -1550,7 +1560,7 @@ export class BalNavbar {
   }
 }
 
-
+import { NavbarBrand as INavbarBrand } from '@baloise/ui-library/dist/types/components/bal-navbar-brand/bal-navbar-brand';
 export declare interface BalNavbarBrand extends Components.BalNavbarBrand {}
 @ProxyCmp({
   inputs: ['href']
@@ -1559,13 +1569,17 @@ export declare interface BalNavbarBrand extends Components.BalNavbarBrand {}
   selector: 'bal-navbar-brand',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['href']
+  inputs: ['href'],
+  outputs: ['balNavigate']
 })
 export class BalNavbarBrand {
+  /** Emitted when the link element has clicked */
+  balNavigate!: INavbarBrand['balNavigate'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balNavigate']);
   }
 }
 
@@ -1826,8 +1840,8 @@ export declare interface BalTabItem extends Components.BalTabItem {}
   outputs: ['balNavigate']
 })
 export class BalTabItem {
-  /** Emitted when the action button has clicked */
-  balNavigate!: ITabItem['navigate'];
+  /** Emitted when the link element has clicked */
+  balNavigate!: ITabItem['balNavigate'];
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

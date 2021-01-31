@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core'
+import { Component, Host, h, Prop, Event, EventEmitter } from '@stencil/core'
 
 @Component({
   tag: 'bal-list-item',
@@ -31,6 +31,11 @@ export class ListItem {
    */
   @Prop() target: '_blank' | ' _parent' | '_self' | '_top' = '_self'
 
+  /**
+   * Emitted when the link element has clicked
+   */
+  @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
+
   render() {
     if (this.href.length > 0 && !this.disabled) {
       return (
@@ -42,7 +47,7 @@ export class ListItem {
             'is-selected': this.selected,
             'is-clickable': this.clickable || this.href.length > 0,
           }}>
-          <a href={this.href} target={this.target}>
+          <a href={this.href} target={this.target} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
             <slot></slot>
           </a>
         </Host>

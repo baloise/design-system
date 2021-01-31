@@ -44,6 +44,11 @@ export class CardSteps {
   @Prop() showLabel: boolean = false
 
   /**
+   * Emitted when the link element has clicked
+   */
+  @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
+
+  /**
    * Emitted when the changes has finished.
    */
   @Event({ eventName: 'balCardStepChange' }) balChange: EventEmitter<BalCardStepOption>
@@ -84,11 +89,12 @@ export class CardSteps {
     return Array.from(this.element.querySelectorAll('bal-card-step'))
   }
 
-  private async onClickStepCircle(step: BalCardStepOption): Promise<void> {
+  private async onClickStepCircle(event: MouseEvent, step: BalCardStepOption): Promise<void> {
     if (this.navigation && !step.disabled) {
       await this.select(step)
     }
     this.balStepClick.emit(step)
+    this.balNavigate.emit(event)
   }
 
   private async onBackButtonClick() {
@@ -140,7 +146,7 @@ export class CardSteps {
                       step.disabled ? 'is-disabled' : '',
                       step.done ? 'is-done' : '',
                     ].join(' ')}>
-                    <a onClick={() => this.onClickStepCircle(step)} title={step.label}>
+                    <a onClick={(event: MouseEvent) => this.onClickStepCircle(event, step)} title={step.label}>
                       <span class="step-index">
                         <bal-text>{index + 1}</bal-text>
                       </span>
