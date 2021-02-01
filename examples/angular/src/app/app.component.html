@@ -1,9 +1,13 @@
 <div id="app" class="container">
-  <div id="nav">
+  <!-- <div id="nav">
     <span *ngFor="let route of routes; let i = index">
       <a [routerLink]="[route.path]" class="link" routerLinkActive="active">{{ route.path | titlecase }}</a>
       <span *ngIf="i !== routes.length - 1"> | </span>
     </span>
-  </div>
-  <router-outlet></router-outlet>
+  </div> -->
+
+  <h1>Test</h1>
+  <bal-input (balInput)="onInput($event)"></bal-input>
+
+  <!-- <router-outlet></router-outlet> -->
 </div>
