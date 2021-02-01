@@ -35,7 +35,7 @@
   "peerDependencies": {
     "vue": "^3.0.5"
   },
-  "gitHead": "9936956ada470a2f3785bf7d93f501744dbc43dd",
+  "gitHead": "e0d380309b487bcedee06d025645f5aab37ab192",
   "dependencies": {
     "@baloise/ui-library": "^3.1.0-alpha.3",
     "@baloise/ui-library-utils": "^3.1.0-alpha.3"
