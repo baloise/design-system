@@ -16,8 +16,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run build:clean && npm run build:filters && npm run build:compile",
-    "build:filters": "node .scripts/filters.script.js",
+    "build": "npm run build:clean && npm run build:compile",
     "build:compile": "tsc -p .",
     "build:clean": "rimraf src/filters.ts && rimraf dist"
   },
