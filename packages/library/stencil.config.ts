@@ -4,6 +4,7 @@ import { postcss } from '@stencil/postcss'
 import autoprefixer from 'autoprefixer'
 import { ComponentModelConfig, vueOutputTarget } from 'hirsch-vue-output-target'
 import { angularOutputTarget, ValueAccessorConfig } from 'hirsch-angular-output-target'
+import { vueOutputTarget as vueNextOutputTarget } from 'hirsch-vue-next-output-target'
 
 /**
  * Vue Component Models
@@ -94,7 +95,14 @@ export const config: Config = {
       componentModels: vueComponentModels,
       includeDefineCustomElements: false,
       includePolyfills: false,
-    }) as any,
+    }),
+    vueNextOutputTarget({
+      componentCorePackage: '@baloise/ui-library',
+      proxiesFile: '../vue-next/src/components.ts',
+      componentModels: vueComponentModels,
+      includeDefineCustomElements: false,
+      includePolyfills: false,
+    }),
     angularOutputTarget({
       componentCorePackage: '@baloise/ui-library',
       directivesProxyFile: '../angular/src/directives/proxies.ts',
