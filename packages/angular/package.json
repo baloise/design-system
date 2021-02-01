@@ -44,7 +44,7 @@
     "@angular/core": "~10.2.0",
     "@angular/forms": "~10.2.0"
   },
-  "gitHead": "9936956ada470a2f3785bf7d93f501744dbc43dd",
+  "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca",
   "devDependencies": {
     "@angular/common": "^10.2.0",
     "@angular/compiler": "~10.2.0",

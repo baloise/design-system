@@ -37,7 +37,7 @@
   "peerDependencies": {
     "vue": "^2.6.12"
   },
-  "gitHead": "9936956ada470a2f3785bf7d93f501744dbc43dd",
+  "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca",
   "dependencies": {
     "@baloise/ui-library": "^3.2.0-angular.0",
     "@baloise/ui-library-utils": "^3.2.0-angular.0"
