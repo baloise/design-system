@@ -101,13 +101,6 @@ export const config: Config = {
       directivesArrayFile: '../angular/src/directives/proxies-list.ts',
       valueAccessorConfigs: angularValueAccessorBindings,
     }),
-    // {
-    //   type: 'custom',
-    //   name: 'bubu',
-    //   generator: (config: Config, compilerCtx: any, buildCtx: any, docs: any) => {
-    //     console.log(buildCtx.components)
-    //   },
-    // },
   ],
   plugins: [
     postcss({
