@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { FormsModule } from '@angular/forms'
 
-import { BalUiLibraryModule } from '@baloise/ui-library-angular/dist'
-// import { BalUiLibraryModule } from './lib';
+// import { BalUiLibraryModule } from '@baloise/ui-library-angular/dist'
+import { BalUiLibraryModule } from './lib';
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { FormsModule } from '@angular/forms'
 import { BalCheckboxComponent } from './bal-components/bal-checkbox/bal-checkbox.component'
 import { BalInputComponent } from './bal-components/bal-input/bal-input.component'
 import { BalRadioComponent } from './bal-components/bal-radio/bal-radio.component'

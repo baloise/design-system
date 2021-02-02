@@ -7,7 +7,7 @@ import { ValueAccessor } from './value-accessor';
   /* tslint:disable-next-line:directive-selector */
   selector: 'bal-radio-group, bal-select, bal-datepicker, bal-timeinput',
   host: {
-    '(balChange)': 'handleChangeEvent($event)'
+    '(balChange)': 'handleChangeEvent($event.target.value)'
   },
   providers: [
     {
