@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/baloise/ui-library/compare/v3.0.6...v3.1.0) (2021-02-02)
+
+
+### Features
+
+* **angular:** change output types and return custom event detail ([8e0e945](https://github.com/baloise/ui-library/commit/8e0e9452e78d11e220051ae381fba8a5be5599cf))
+
+
+
+## 3.0.5 (2021-02-02)
+
+
+
+
+
+## [3.0.5](https://github.com/baloise/ui-library/compare/v3.0.4...v3.0.5) (2021-02-02)
+
+
+### Features
+
+* **angular:** change output types and return custom event detail ([b1615af](https://github.com/baloise/ui-library/commit/b1615af2d55568084933d641fccc2b8829af7f78))
+
+
+
+## 3.0.1 (2021-01-31)
+
+
+
+
+
 ## [3.0.1](https://github.com/baloise/ui-library/compare/v3.0.0...v3.0.1) (2021-01-31)
 
 

@@ -1,6 +1,14 @@
 <div class="container">
-    <h1>Input</h1>
-    <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname" [(ngModel)]="inputValue"></bal-input>
-    <br>
-    <bal-text>Value: {{ inputValue }}</bal-text>
+  <h1>Two-Way Binding</h1>
+  <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname" [(ngModel)]="inputValue"></bal-input>
+  <br />
+  <bal-text>Value: {{ inputValue }}</bal-text>
+  <br />
+  <h1>Input Event</h1>
+  <bal-input (balInput)="onInput($event)"></bal-input>  
+  <br />
+  <h1>Form Control</h1>
+  <!-- <input [formControl]="firstName" /> -->
+  <bal-input [formControl]="firstName"></bal-input>  
+  <p>{{ firstName.valid }}</p>
 </div>
