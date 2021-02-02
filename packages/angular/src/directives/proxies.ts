@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* auto-generated angular directive proxies */
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter } from '@angular/core';
-import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
+import { ProxyCmp, proxyOutputs, addProxyOutputListener, removeProxyOutputListener } from './angular-component-lib/utils';
 
 import { Components } from '@baloise/ui-library';
 
@@ -28,6 +28,12 @@ export class BalAccordion {
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balCollapse']);
   }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balCollapse']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balCollapse']);
+  }
 }
 
 
@@ -51,6 +57,12 @@ export class BalButton {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balNavigate']);
+  }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balNavigate']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balNavigate']);
   }
 }
 
@@ -201,6 +213,12 @@ export class BalCardSteps {
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balNavigate', 'balCardStepChange', 'balBackClick', 'balCardStepClick']);
   }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balNavigate', 'balCardStepChange', 'balBackClick', 'balCardStepClick']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balNavigate', 'balCardStepChange', 'balBackClick', 'balCardStepClick']);
+  }
 }
 
 
@@ -269,6 +287,12 @@ export class BalCheckbox {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balChange', 'balFocus', 'balBlur']);
+  }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balChange', 'balFocus', 'balBlur']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balChange', 'balFocus', 'balBlur']);
   }
 }
 
@@ -378,6 +402,12 @@ export class BalDatepicker {
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balChange', 'balInput', 'balBlur', 'balFocus']);
   }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balChange', 'balInput', 'balBlur', 'balFocus']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balChange', 'balInput', 'balBlur', 'balFocus']);
+  }
 }
 
 
@@ -404,6 +434,12 @@ export class BalDropdown {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balCollapse', 'balDropdownPrepare']);
+  }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balCollapse', 'balDropdownPrepare']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balCollapse', 'balDropdownPrepare']);
   }
 }
 
@@ -547,6 +583,12 @@ export class BalFileUpload {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balChange', 'balRejectedFile']);
+  }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balChange', 'balRejectedFile']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balChange', 'balRejectedFile']);
   }
 }
 
@@ -1556,6 +1598,12 @@ export class BalInput {
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']);
   }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']);
+  }
 }
 
 
@@ -1599,6 +1647,12 @@ export class BalListItem {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balNavigate']);
+  }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balNavigate']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balNavigate']);
   }
 }
 
@@ -1804,6 +1858,12 @@ export class BalNavbarBrand {
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balNavigate']);
   }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balNavigate']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balNavigate']);
+  }
 }
 
 
@@ -1902,6 +1962,12 @@ export class BalPagination {
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balChange']);
   }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balChange']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balChange']);
+  }
 }
 
 
@@ -1929,6 +1995,12 @@ export class BalRadio {
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balFocus', 'balBlur']);
   }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balFocus', 'balBlur']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balFocus', 'balBlur']);
+  }
 }
 
 
@@ -1952,6 +2024,12 @@ export class BalRadioGroup {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balChange']);
+  }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balChange']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balChange']);
   }
 }
 
@@ -1989,6 +2067,12 @@ export class BalSelect {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balChange', 'balInput', 'balBlur', 'balFocus', 'balClick', 'balKeyPress', 'balCancel']);
+  }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balChange', 'balInput', 'balBlur', 'balFocus', 'balClick', 'balKeyPress', 'balCancel']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balChange', 'balInput', 'balBlur', 'balFocus', 'balClick', 'balKeyPress', 'balCancel']);
   }
 }
 
@@ -2038,6 +2122,12 @@ export class BalSnackbar {
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balClose', 'balAction']);
   }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balClose', 'balAction']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balClose', 'balAction']);
+  }
 }
 
 
@@ -2083,6 +2173,12 @@ export class BalTabItem {
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balNavigate']);
   }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balNavigate']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balNavigate']);
+  }
 }
 
 import { BalTabOption } from '@baloise/ui-library';
@@ -2109,6 +2205,12 @@ export class BalTabs {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balTabChange', 'balActionClick']);
+  }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balTabChange', 'balActionClick']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balTabChange', 'balActionClick']);
   }
 }
 
@@ -2183,6 +2285,12 @@ export class BalTextarea {
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']);
   }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']);
+  }
 }
 
 
@@ -2210,6 +2318,12 @@ It will not be triggert if either hour or time input has never been set (i.e. "-
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balChange', 'balBlur']);
   }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balChange', 'balBlur']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balChange', 'balBlur']);
+  }
 }
 
 
@@ -2234,5 +2348,11 @@ export class BalToast {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balClose']);
+  }
+  ngOnInit() {
+    addProxyOutputListener(this, this.el, ['balClose']);
+  }
+  ngOnDestroy() {
+    removeProxyOutputListener(this, this.el, ['balClose']);
   }
 }
