@@ -17,6 +17,11 @@ export class AppComponent implements OnInit {
     console.log('onInput', event.detail)
   }
 
+  // onInput(event: CustomEvent<string>): void {
+  //   console.log('onInput', event)
+  //   console.log('onInput', event.detail)
+  // }
+
   ngOnInit(): void {
     this.routes = this.route.config
     this.routes.shift()
