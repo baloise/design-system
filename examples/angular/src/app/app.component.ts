@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core'
 import { Router, Routes } from '@angular/router'
-import { parseCustomEvent } from '@baloise/ui-library-angular/dist'
 
 @Component({
   selector: 'app-root',
@@ -12,10 +11,6 @@ export class AppComponent implements OnInit {
   routes: Routes = []
 
   constructor(private route: Router) {}
-
-  onInput(event: CustomEvent<string>): void {
-    console.warn('onInput', parseCustomEvent(event))
-  }
 
   ngOnInit(): void {
     this.routes = this.route.config
