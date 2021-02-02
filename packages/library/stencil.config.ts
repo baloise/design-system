@@ -99,7 +99,7 @@ export const config: Config = {
       componentCorePackage: '@baloise/ui-library',
       directivesProxyFile: '../angular/src/directives/proxies.ts',
       directivesArrayFile: '../angular/src/directives/proxies-list.ts',
-      valueAccessorConfigs: angularValueAccessorBindings,
+      // valueAccessorConfigs: angularValueAccessorBindings,
     }),
   ],
   plugins: [
