@@ -1,6 +1,6 @@
-import { EventEmitter } from 'events'
-import { fromEvent } from 'rxjs'
-import { map } from 'rxjs/operators'
+// import { fromEvent } from 'rxjs';
+// import { map } from 'rxjs/operators';
+import { EventEmitter } from '@angular/core'
 
 export const proxyInputs = (Cmp: any, inputs: string[]) => {
   const Prototype = Cmp.prototype
@@ -31,6 +31,7 @@ export const proxyOutputs = (instance: any, el: any, events: string[]) => {
 
   events.forEach(eventName => {
     el.addEventListener(eventName, (event: any) => {
+      console.log(eventName, event)
       let emittedValue = event
       if ('detail' in event) {
         emittedValue = event.detail
@@ -38,20 +39,6 @@ export const proxyOutputs = (instance: any, el: any, events: string[]) => {
       instance[eventName].emit(emittedValue)
     })
   })
-
-  // events.forEach(eventName => (instance[eventName] = fromEvent(el, eventName)))
-  // events.forEach(
-  //   eventName =>
-  //     (instance[eventName] = fromEvent(el, eventName).pipe(
-  //       map((event: any) => {
-  //         event?.preventDefault()
-  //         event?.stopPropagation()
-  //         if ('detail' in event) {
-  //           return event.detail
-  //         }
-  //       }),
-  //     )),
-  // )
 }
 
 // tslint:disable-next-line: only-arrow-functions
