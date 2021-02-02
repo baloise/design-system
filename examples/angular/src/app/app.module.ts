@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
-// import { BalUiLibraryModule } from '@baloise/ui-library-angular/dist'
-import { BalUiLibraryModule } from './lib'
+import { BalUiLibraryModule } from '@baloise/ui-library-angular/dist'
+// import { BalUiLibraryModule } from './lib'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
