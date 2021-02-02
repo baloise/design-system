@@ -1,4 +1,4 @@
-import { Plugin } from 'vue'
+import { inject, Plugin } from 'vue'
 import { defineCustomElements, applyPolyfills } from '@baloise/ui-library/loader'
 import {
   balToastController,
@@ -24,3 +24,7 @@ export const BaloiseUILibrary: Plugin = {
     app.provide<BalSnackbarController>('balSnackbar', balSnackbarController)
   },
 }
+
+export const useUtils = (): typeof balUtils => inject<typeof balUtils>('balUtils')
+export const useToast = (): BalSnackbarController => inject<BalSnackbarController>('balToast')
+export const useSnackbar = (): BalSnackbarController => inject<BalSnackbarController>('balSnackbar')
