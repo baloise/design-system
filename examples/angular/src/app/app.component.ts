@@ -13,8 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private route: Router) {}
 
   onInput(event: CustomEvent<string>): void {
-    console.log('onInput', event)
-    console.log('onInput', event.detail)
+    console.warn('onInput', event)
   }
 
   // onInput(event: CustomEvent<string>): void {
