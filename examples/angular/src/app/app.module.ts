@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { BalUiLibraryModule } from '@baloise/ui-library-angular/dist';
+// import { BalUiLibraryModule } from '@baloise/ui-library-angular/dist';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { BalSelectComponent } from './bal-components/bal-select/bal-select.compo
 import { BalDatepickerComponent } from './bal-components/bal-datepicker/bal-datepicker.component';
 import { BalTimeinputComponent } from './bal-components/bal-timeinput/bal-timeinput.component';
 import { HomeComponent } from './bal-components/home/home.component';
+import { BalUiLibraryModule } from './lib';
 
 @NgModule({
   declarations: [AppComponent, BalCheckboxComponent, BalInputComponent, BalRadioComponent, BalSelectComponent, BalDatepickerComponent, BalTimeinputComponent, HomeComponent],
