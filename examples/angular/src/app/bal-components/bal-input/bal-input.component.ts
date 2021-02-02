@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { parseCustomEvent } from '@baloise/ui-library-angular/dist';
 
 @Component({
   selector: 'app-bal-input',
@@ -10,6 +11,10 @@ export class BalInputComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onInput(event: CustomEvent<string>): void {
+    console.warn('onInput', parseCustomEvent(event))
   }
 
 }

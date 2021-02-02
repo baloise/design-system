@@ -11,3 +11,11 @@ export * from './directives/select-value-accessor'
 
 // PACKAGE MODULE
 export { BalUiLibraryModule } from './ui-library.module'
+
+// HELPERS
+export const parseCustomEvent = <T>(event: CustomEvent<T> | Event): T => {
+  if ('detail' in event) {
+    return event.detail
+  }
+  return null
+}
