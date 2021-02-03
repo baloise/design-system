@@ -1537,7 +1537,7 @@ export declare interface BalInput extends Components.BalInput {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   inputs: ['autoComplete', 'balTabindex', 'clickable', 'disabled', 'inverted', 'maxLength', 'minLength', 'name', 'numberKeyboard', 'onlyNumbers', 'placeholder', 'readonly', 'type', 'value'],
-  outputs: ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']
+  outputs: ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']
 })
 export class BalInput {
   /** Emitted when a keyboard input occurred. */
@@ -1550,11 +1550,13 @@ export class BalInput {
   balKeyPress!: EventEmitter<CustomEvent<KeyboardEvent>>;
   /** Emitted when the input has focus. */
   balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
+  /** Emitted when the input value has changed. */
+  balChange!: EventEmitter<CustomEvent<UIEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']);
+    proxyOutputs(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']);
   }
 }
 
