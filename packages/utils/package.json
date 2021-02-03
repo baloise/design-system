@@ -40,9 +40,5 @@
     "rimraf": "^3.0.2",
     "typescript": "^4.1.3"
   },
-<<<<<<< HEAD
-  "gitHead": "e0d380309b487bcedee06d025645f5aab37ab192"
-=======
   "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca"
->>>>>>> master
 }
