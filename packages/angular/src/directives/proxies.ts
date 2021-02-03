@@ -21,7 +21,7 @@ export declare interface BalAccordion extends Components.BalAccordion {}
 })
 export class BalAccordion {
   /** Emmited when the accordion has changed */
-  balCollapse!: EventEmitter<boolean>;
+  balCollapse!: EventEmitter<CustomEvent<boolean>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -45,7 +45,7 @@ export declare interface BalButton extends Components.BalButton {}
 })
 export class BalButton {
   /** Emitted when the link element has clicked */
-  balNavigate!: EventEmitter<MouseEvent>;
+  balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -188,13 +188,13 @@ export declare interface BalCardSteps extends Components.BalCardSteps {}
 })
 export class BalCardSteps {
   /** Emitted when the link element has clicked */
-  balNavigate!: EventEmitter<MouseEvent>;
+  balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
   /** Emitted when the changes has finished. */
-  balCardStepChange!: EventEmitter<BalCardStepOption>;
+  balCardStepChange!: EventEmitter<CustomEvent<BalCardStepOption>>;
   /** Emitted when the back button is clicked. */
-  balBackClick!: EventEmitter<void>;
+  balBackClick!: EventEmitter<CustomEvent<void>>;
   /** Emitted when the step circle is clicked. */
-  balCardStepClick!: EventEmitter<BalCardStepOption>;
+  balCardStepClick!: EventEmitter<CustomEvent<BalCardStepOption>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -259,11 +259,11 @@ export declare interface BalCheckbox extends Components.BalCheckbox {}
 })
 export class BalCheckbox {
   /** Emitted when the checked property has changed. */
-  balChange!: EventEmitter<boolean>;
+  balChange!: EventEmitter<CustomEvent<boolean>>;
   /** Emitted when the toggle has focus. */
-  balFocus!: EventEmitter<void>;
+  balFocus!: EventEmitter<CustomEvent<void>>;
   /** Emitted when the toggle loses focus. */
-  balBlur!: EventEmitter<void>;
+  balBlur!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -365,13 +365,13 @@ export declare interface BalDatepicker extends Components.BalDatepicker {}
 })
 export class BalDatepicker {
   /** Emitted when a option got selected. */
-  balChange!: EventEmitter<any>;
+  balChange!: EventEmitter<CustomEvent<any>>;
   /** Emitted when a keyboard input occurred. */
-  balInput!: EventEmitter<string>;
+  balInput!: EventEmitter<CustomEvent<string>>;
   /** Emitted when the input loses focus. */
-  balBlur!: EventEmitter<FocusEvent>;
+  balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input has focus. */
-  balFocus!: EventEmitter<FocusEvent>;
+  balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -396,9 +396,9 @@ export declare interface BalDropdown extends Components.BalDropdown {}
 })
 export class BalDropdown {
   /** Listen when the dropdown opens or closes. Returns the current `isActive` value. */
-  balCollapse!: EventEmitter<boolean>;
+  balCollapse!: EventEmitter<CustomEvent<boolean>>;
   /** *Internal* - Use this to close unuesed dropdowns. */
-  balDropdownPrepare!: EventEmitter<string>;
+  balDropdownPrepare!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -539,9 +539,9 @@ export declare interface BalFileUpload extends Components.BalFileUpload {}
 })
 export class BalFileUpload {
   /** Triggers when a file is added or removed. */
-  balChange!: EventEmitter<File[]>;
+  balChange!: EventEmitter<CustomEvent<File[]>>;
   /** Triggers when a file is rejected due to not allowed MIME-Type and so on. */
-  balRejectedFile!: EventEmitter<FileUploadRejectedFile>;
+  balRejectedFile!: EventEmitter<CustomEvent<FileUploadRejectedFile>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1541,15 +1541,15 @@ export declare interface BalInput extends Components.BalInput {}
 })
 export class BalInput {
   /** Emitted when a keyboard input occurred. */
-  balInput!: EventEmitter<string>;
+  balInput!: EventEmitter<CustomEvent<string>>;
   /** Emitted when a keyboard input occurred. */
-  balBlur!: EventEmitter<FocusEvent>;
+  balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input has clicked. */
-  balClick!: EventEmitter<MouseEvent>;
+  balClick!: EventEmitter<CustomEvent<MouseEvent>>;
   /** Emitted when a keyboard key has pressed. */
-  balKeyPress!: EventEmitter<KeyboardEvent>;
+  balKeyPress!: EventEmitter<CustomEvent<KeyboardEvent>>;
   /** Emitted when the input has focus. */
-  balFocus!: EventEmitter<FocusEvent>;
+  balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1593,7 +1593,7 @@ export declare interface BalListItem extends Components.BalListItem {}
 })
 export class BalListItem {
   /** Emitted when the link element has clicked */
-  balNavigate!: EventEmitter<MouseEvent>;
+  balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1797,7 +1797,7 @@ export declare interface BalNavbarBrand extends Components.BalNavbarBrand {}
 })
 export class BalNavbarBrand {
   /** Emitted when the link element has clicked */
-  balNavigate!: EventEmitter<MouseEvent>;
+  balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1895,7 +1895,7 @@ export declare interface BalPagination extends Components.BalPagination {}
 })
 export class BalPagination {
   /** Triggers when a page change happens */
-  balChange!: EventEmitter<number>;
+  balChange!: EventEmitter<CustomEvent<number>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1920,9 +1920,9 @@ export declare interface BalRadio extends Components.BalRadio {}
 })
 export class BalRadio {
   /** Emitted when the toggle has focus. */
-  balFocus!: EventEmitter<void>;
+  balFocus!: EventEmitter<CustomEvent<void>>;
   /** Emitted when the toggle loses focus. */
-  balBlur!: EventEmitter<void>;
+  balBlur!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1946,7 +1946,7 @@ export declare interface BalRadioGroup extends Components.BalRadioGroup {}
 })
 export class BalRadioGroup {
   /** Emitted when the checked property has changed. */
-  balChange!: EventEmitter<string>;
+  balChange!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1971,19 +1971,19 @@ export declare interface BalSelect extends Components.BalSelect {}
 })
 export class BalSelect {
   /** Emitted when a option got selected. */
-  balChange!: EventEmitter<string[]>;
+  balChange!: EventEmitter<CustomEvent<string[]>>;
   /** Emitted when a keyboard input occurred. */
-  balInput!: EventEmitter<string>;
+  balInput!: EventEmitter<CustomEvent<string>>;
   /** Emitted when the input loses focus. */
-  balBlur!: EventEmitter<FocusEvent>;
+  balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input has focus. */
-  balFocus!: EventEmitter<FocusEvent>;
+  balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input got clicked. */
-  balClick!: EventEmitter<MouseEvent>;
+  balClick!: EventEmitter<CustomEvent<MouseEvent>>;
   /** Emitted when the input has focus and key from the keyboard go hit. */
-  balKeyPress!: EventEmitter<KeyboardEvent>;
+  balKeyPress!: EventEmitter<CustomEvent<KeyboardEvent>>;
   /** Emitted when the user cancels the input. */
-  balCancel!: EventEmitter<KeyboardEvent>;
+  balCancel!: EventEmitter<CustomEvent<KeyboardEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -2029,9 +2029,9 @@ export declare interface BalSnackbar extends Components.BalSnackbar {}
 })
 export class BalSnackbar {
   /** Emitted when snackbar is closed */
-  balClose!: EventEmitter<string>;
+  balClose!: EventEmitter<CustomEvent<string>>;
   /** Emitted when the action button is clicked */
-  balAction!: EventEmitter<string>;
+  balAction!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -2076,7 +2076,7 @@ export declare interface BalTabItem extends Components.BalTabItem {}
 })
 export class BalTabItem {
   /** Emitted when the link element has clicked */
-  balNavigate!: EventEmitter<MouseEvent>;
+  balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -2101,9 +2101,9 @@ export declare interface BalTabs extends Components.BalTabs {}
 })
 export class BalTabs {
   /** Emitted when the changes has finished. */
-  balTabChange!: EventEmitter<BalTabOption>;
+  balTabChange!: EventEmitter<CustomEvent<BalTabOption>>;
   /** Emitted when the action button has clicked */
-  balActionClick!: EventEmitter<MouseEvent>;
+  balActionClick!: EventEmitter<CustomEvent<MouseEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -2168,15 +2168,15 @@ export declare interface BalTextarea extends Components.BalTextarea {}
 })
 export class BalTextarea {
   /** Emitted when a keyboard input occurred. */
-  balInput!: EventEmitter<string>;
+  balInput!: EventEmitter<CustomEvent<string>>;
   /** Emitted when a keyboard input occurred. */
-  balBlur!: EventEmitter<FocusEvent>;
+  balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input has clicked. */
-  balClick!: EventEmitter<MouseEvent>;
+  balClick!: EventEmitter<CustomEvent<MouseEvent>>;
   /** Emitted when a keyboard key has pressed. */
-  balKeyPress!: EventEmitter<KeyboardEvent>;
+  balKeyPress!: EventEmitter<CustomEvent<KeyboardEvent>>;
   /** Emitted when the input has focus. */
-  balFocus!: EventEmitter<FocusEvent>;
+  balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -2201,9 +2201,9 @@ export declare interface BalTimeinput extends Components.BalTimeinput {}
 export class BalTimeinput {
   /** Emitted when either the hour or the minute input has changed.
 It will not be triggert if either hour or time input has never been set (i.e. "--" is selected). */
-  balChange!: EventEmitter<string>;
+  balChange!: EventEmitter<CustomEvent<string>>;
   /** Emitted when either the hour or minute input field loses focus. */
-  balBlur!: EventEmitter<void>;
+  balBlur!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -2228,7 +2228,7 @@ export declare interface BalToast extends Components.BalToast {}
 })
 export class BalToast {
   /** Emitted when toast is closed */
-  balClose!: EventEmitter<string>;
+  balClose!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
