@@ -27,13 +27,14 @@
 
 ## Events
 
-| Event         | Description                              | Type                         |
-| ------------- | ---------------------------------------- | ---------------------------- |
-| `balBlur`     | Emitted when a keyboard input occurred.  | `CustomEvent<FocusEvent>`    |
-| `balClick`    | Emitted when the input has clicked.      | `CustomEvent<MouseEvent>`    |
-| `balFocus`    | Emitted when the input has focus.        | `CustomEvent<FocusEvent>`    |
-| `balInput`    | Emitted when a keyboard input occurred.  | `CustomEvent<string>`        |
-| `balKeyPress` | Emitted when a keyboard key has pressed. | `CustomEvent<KeyboardEvent>` |
+| Event         | Description                               | Type                         |
+| ------------- | ----------------------------------------- | ---------------------------- |
+| `balBlur`     | Emitted when a keyboard input occurred.   | `CustomEvent<FocusEvent>`    |
+| `balChange`   | Emitted when the input value has changed. | `CustomEvent<UIEvent>`       |
+| `balClick`    | Emitted when the input has clicked.       | `CustomEvent<MouseEvent>`    |
+| `balFocus`    | Emitted when the input has focus.         | `CustomEvent<FocusEvent>`    |
+| `balInput`    | Emitted when a keyboard input occurred.   | `CustomEvent<string>`        |
+| `balKeyPress` | Emitted when a keyboard key has pressed.  | `CustomEvent<KeyboardEvent>` |
 
 
 ## Methods
