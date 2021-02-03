@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.3](https://github.com/baloise/ui-library/compare/v3.1.2...v3.1.3) (2021-02-03)
+
+
+### Bug Fixes
+
+* **input:** add change event to the bal-input ([ad0f6ea](https://github.com/baloise/ui-library/commit/ad0f6eaf81c25996915e76a8e27a302506ae0204))
+
+
+
+
+
 ## [3.1.2](https://github.com/baloise/ui-library/compare/v3.1.1...v3.1.2) (2021-02-03)
 
 
