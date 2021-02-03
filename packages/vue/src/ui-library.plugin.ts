@@ -1,38 +1,30 @@
-import Vue, { PluginObject } from 'vue'
+import { inject, Plugin } from 'vue'
 import { defineCustomElements, applyPolyfills } from '@baloise/ui-library/loader'
+import {
+  balToastController,
+  balSnackbarController,
+  BalToastController,
+  BalSnackbarController,
+} from '@baloise/ui-library'
 import * as balUtils from '@baloise/ui-library-utils'
-import { balSnackbarController, balToastController } from '@baloise/ui-library'
 
-import { addFilters } from './filters'
+export const BaloiseUILibrary: Plugin = {
+  async install(app) {
+    await applyPolyfills()
+    await defineCustomElements()
 
-Vue.config.ignoredElements = [/bal-\w*/]
+    app.config.isCustomElement = tag => tag.startsWith('bal-')
 
-export type BalUiLibraryPluginOption = {
-  defineCustomeElements: boolean
-}
+    app.config.globalProperties.$balUtils = balUtils
+    app.config.globalProperties.$balToast = balToastController
+    app.config.globalProperties.$balSnackbar = balSnackbarController
 
-const BalUiLibraryPluginOptionDefaults: BalUiLibraryPluginOption = {
-  defineCustomeElements: true,
-}
-
-export const BalUiLibraryPlugin: PluginObject<BalUiLibraryPluginOption> = {
-  install(_VueInstance, options): void {
-    options = {
-      ...BalUiLibraryPluginOptionDefaults,
-      ...options,
-    }
-
-    if (options.defineCustomeElements === true) {
-      applyPolyfills().then(() => defineCustomElements())
-    }
-
-    ;(_VueInstance as any).$balUtils = balUtils
-    _VueInstance.prototype.$balUtils = balUtils
-    ;(_VueInstance as any).$balToast = balToastController
-    _VueInstance.prototype.$balToast = balToastController
-    ;(_VueInstance as any).$balSnackbar = balSnackbarController
-    _VueInstance.prototype.$balSnackbar = balSnackbarController
-
-    addFilters(_VueInstance)
+    app.provide<typeof balUtils>('balUtils', balUtils)
+    app.provide<BalToastController>('balToast', balToastController)
+    app.provide<BalSnackbarController>('balSnackbar', balSnackbarController)
   },
 }
+
+export const useUtils = (): typeof balUtils => inject<typeof balUtils>('balUtils')
+export const useToast = (): BalSnackbarController => inject<BalSnackbarController>('balToast')
+export const useSnackbar = (): BalSnackbarController => inject<BalSnackbarController>('balSnackbar')

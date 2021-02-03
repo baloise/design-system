@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ui-library-vue",
-  "version": "3.1.2",
+  "version": "3.1.0-alpha.8",
   "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -16,30 +16,28 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run build:clean && npm run build:filters && npm run build:compile",
-    "build:filters": "node .scripts/filters.script.js",
+    "build": "npm run build:clean && npm run build:compile",
     "build:compile": "tsc -p .",
     "build:clean": "rimraf src/filters.ts && rimraf dist"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "types": "./types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "files": [
-    "dist/",
-    "types/"
+    "dist/"
   ],
   "license": "Apache-2.0",
   "devDependencies": {
     "rimraf": "^3.0.2",
     "typescript": "^4.0.2",
-    "vue": "^2.6.12"
+    "vue": "^3.0.5"
   },
   "peerDependencies": {
-    "vue": "^2.6.12"
+    "vue": "^3.0.5"
   },
-  "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca",
+  "gitHead": "e0d380309b487bcedee06d025645f5aab37ab192",
   "dependencies": {
-    "@baloise/ui-library": "^3.1.2",
-    "@baloise/ui-library-utils": "^3.1.2"
+    "@baloise/ui-library": "^3.1.0-alpha.8",
+    "@baloise/ui-library-utils": "^3.1.0-alpha.8"
   }
 }

@@ -92,14 +92,14 @@ export const config: Config = {
     },
     vue2OutputTarget({
       componentCorePackage: '@baloise/ui-library',
-      proxiesFile: '../vue/src/components.ts',
+      proxiesFile: '../vue-2/src/components.ts',
       componentModels: vueComponentModels,
       includeDefineCustomElements: false,
       includePolyfills: false,
     }),
     vueOutputTarget({
       componentCorePackage: '@baloise/ui-library',
-      proxiesFile: '../vue-next/src/components.ts',
+      proxiesFile: '../vue/src/components.ts',
       componentModels: vueComponentModels,
       includeDefineCustomElements: false,
       includePolyfills: false,
