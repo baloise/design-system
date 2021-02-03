@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ui-library",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -40,6 +40,8 @@
     "generate": "stencil generate"
   },
   "dependencies": {
+    "@baloise/angular-output-target": "^1.0.5",
+    "@baloise/vue-2-output-target": "^1.0.5",
     "@stencil/core": "^2.3.0",
     "@stencil/postcss": "^2.0.0",
     "@stencil/sass": "^1.4.1",
@@ -50,8 +52,6 @@
   "devDependencies": {
     "@types/autoprefixer": "^9.7.2",
     "autoprefixer": "^10.2.1",
-    "hirsch-angular-output-target": "^0.1.11",
-    "hirsch-vue-output-target": "0.0.5",
     "rimraf": "^3.0.2",
     "svgo": "^1.3.2"
   },

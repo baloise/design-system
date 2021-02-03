@@ -2,8 +2,8 @@ import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
 import { postcss } from '@stencil/postcss'
 import autoprefixer from 'autoprefixer'
-import { ComponentModelConfig, vueOutputTarget } from 'hirsch-vue-output-target'
-import { angularOutputTarget, ValueAccessorConfig } from 'hirsch-angular-output-target'
+import { ComponentModelConfig, vue2OutputTarget } from '@baloise/vue-2-output-target'
+import { angularOutputTarget, ValueAccessorConfig } from '@baloise/angular-output-target'
 
 /**
  * Vue Component Models
@@ -88,7 +88,7 @@ export const config: Config = {
         },
       ],
     },
-    vueOutputTarget({
+    vue2OutputTarget({
       componentCorePackage: '@baloise/ui-library',
       proxiesFile: '../vue/src/components.ts',
       componentModels: vueComponentModels,
