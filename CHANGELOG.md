@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.5](https://github.com/baloise/ui-library/compare/v3.1.4...v3.1.5) (2021-02-04)
+
+
+### Bug Fixes
+
+* **navbar:** check for navbar menu element when toggling ([39357b6](https://github.com/baloise/ui-library/commit/39357b6bcf8fdc2bf563fbbe09fa740ed6711b7b))
+
+
+
+
+
 ## [3.1.4](https://github.com/baloise/ui-library/compare/v3.1.3...v3.1.4) (2021-02-04)
 
 
