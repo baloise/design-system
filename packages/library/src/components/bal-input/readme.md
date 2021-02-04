@@ -30,7 +30,7 @@
 | Event         | Description                               | Type                         |
 | ------------- | ----------------------------------------- | ---------------------------- |
 | `balBlur`     | Emitted when a keyboard input occurred.   | `CustomEvent<FocusEvent>`    |
-| `balChange`   | Emitted when the input value has changed. | `CustomEvent<UIEvent>`       |
+| `balChange`   | Emitted when the input value has changed. | `CustomEvent<string>`        |
 | `balClick`    | Emitted when the input has clicked.       | `CustomEvent<MouseEvent>`    |
 | `balFocus`    | Emitted when the input has focus.         | `CustomEvent<FocusEvent>`    |
 | `balInput`    | Emitted when a keyboard input occurred.   | `CustomEvent<string>`        |
