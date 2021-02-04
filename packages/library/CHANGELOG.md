@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.4](https://github.com/baloise/ui-library/compare/v3.1.3...v3.1.4) (2021-02-04)
+
+
+### Bug Fixes
+
+* **checkbox:** improve checked watch condition ([8499507](https://github.com/baloise/ui-library/commit/8499507ebda877f4d42a8e8ba41e34878ce8f112))
+
+
+
+
+
 ## [3.1.3](https://github.com/baloise/ui-library/compare/v3.1.2...v3.1.3) (2021-02-03)
 
 
