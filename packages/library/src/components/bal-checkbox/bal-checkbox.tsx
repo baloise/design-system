@@ -38,7 +38,7 @@ export class Checkbox {
   @Prop({ mutable: true }) checked = false
   @Watch('checked')
   protected checkedChanged() {
-    if (this.inputEl.checked !== this.checked) {
+    if (this.inputEl && this.inputEl.checked !== this.checked) {
       this.inputEl.checked = this.checked
     }
   }
