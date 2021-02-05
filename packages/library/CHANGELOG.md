@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.8](https://github.com/baloise/ui-library/compare/v3.1.7...v3.1.8) (2021-02-05)
+
+
+### Bug Fixes
+
+* **fonts:** add missing commas ([b0ba277](https://github.com/baloise/ui-library/commit/b0ba277aeada346ace53d5febe6a928d6e14f3fd))
+
+
+
+
+
 ## [3.1.7](https://github.com/baloise/ui-library/compare/v3.1.6...v3.1.7) (2021-02-05)
 
 
