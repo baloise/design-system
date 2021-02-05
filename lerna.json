@@ -2,7 +2,7 @@
   "packages": [
     "packages/*"
   ],
-  "version": "3.0.0-alpha.9",
+  "version": "3.1.8",
   "command": {
     "publish": {
       "ignoreChanges": [
@@ -12,7 +12,7 @@
       "message": "chore(): release"
     },
     "version": {
-      "message": "chore(release): release",
+      "message": "chore(): release",
       "private": false
     }
   }

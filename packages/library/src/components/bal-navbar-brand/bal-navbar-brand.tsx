@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop, State } from '@stencil/core'
+import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@stencil/core'
 
 @Component({
   tag: 'bal-navbar-brand',
@@ -15,8 +15,16 @@ export class NavbarBrand {
    */
   @Prop() href = '/'
 
+  /**
+   * Emitted when the link element has clicked
+   */
+  @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
+
   componentWillLoad() {
-    window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
+    var isIE11 = !!window.MSInputMethodContext && !!(document as any).documentMode
+    if (!isIE11) {
+      window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
+    }
   }
 
   async resetIsMenuActive(e) {
@@ -28,7 +36,9 @@ export class NavbarBrand {
   async toggle(isMenuActive: boolean): Promise<void> {
     this.isMenuActive = isMenuActive
     const navbarMenuElement = this.el.closest('bal-navbar').querySelector('bal-navbar-menu')
-    await (navbarMenuElement as any).toggle(this.isMenuActive)
+    if (navbarMenuElement) {
+      await (navbarMenuElement as any).toggle(this.isMenuActive)
+    }
   }
 
   async onClick() {
@@ -38,7 +48,7 @@ export class NavbarBrand {
   render() {
     return (
       <Host class="navbar-brand">
-        <a class="navbar-item app-title" href={this.href}>
+        <a class="navbar-item app-title" href={this.href} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
           <slot></slot>
         </a>
 

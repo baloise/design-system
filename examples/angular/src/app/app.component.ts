@@ -5,7 +5,7 @@ import { Route } from '@angular/compiler/src/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   routes: Route[] = [];
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
   }
 
   navigate(route: Route) {
-    this.router.navigate([`/${route['path']}`]);
+    this.router.navigate([`/${(route as any).path}`]);
   }
 
   onRouteChanged(event: any) {

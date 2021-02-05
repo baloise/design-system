@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { BalUiLibraryModule } from '@baloise/ui-library-angular/dist';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { BalUiLibraryModule } from '@baloise/ui-library-angular/dist'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
 import { BalCheckboxComponent } from './bal-components/bal-checkbox/bal-checkbox.component';
 import { BalInputComponent } from './bal-components/bal-input/bal-input.component';
 import { BalRadioComponent } from './bal-components/bal-radio/bal-radio.component';
@@ -17,7 +17,7 @@ import { BalToastComponent } from './bal-components/bal-toast/bal-toast.componen
 
 @NgModule({
   declarations: [AppComponent, BalCheckboxComponent, BalInputComponent, BalRadioComponent, BalSelectComponent, BalDatepickerComponent, BalTimeinputComponent, HomeComponent, BalModalComponent, BalToastComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, BalUiLibraryModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, BalUiLibraryModule],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

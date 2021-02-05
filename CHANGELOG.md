@@ -3,6 +3,128 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.8](https://github.com/baloise/ui-library/compare/v3.1.7...v3.1.8) (2021-02-05)
+
+
+### Bug Fixes
+
+* **fonts:** add missing commas ([b0ba277](https://github.com/baloise/ui-library/commit/b0ba277aeada346ace53d5febe6a928d6e14f3fd))
+
+
+
+
+
+## [3.1.7](https://github.com/baloise/ui-library/compare/v3.1.6...v3.1.7) (2021-02-05)
+
+
+
+## 3.1.5 (2021-02-04)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [3.1.6](https://github.com/baloise/ui-library/compare/v3.1.5...v3.1.6) (2021-02-05)
+
+
+### Bug Fixes
+
+* **font:** fix font paths ([c00ec32](https://github.com/baloise/ui-library/commit/c00ec32254a7affd722db584fff4b50b3125cfd0))
+* **input:** return the value with the change event ([c250c4b](https://github.com/baloise/ui-library/commit/c250c4b7246473e577b60d8d17b1f9f9abcc5925))
+
+
+
+
+
+## [3.1.5](https://github.com/baloise/ui-library/compare/v3.1.4...v3.1.5) (2021-02-04)
+
+
+### Bug Fixes
+
+* **navbar:** check for navbar menu element when toggling ([39357b6](https://github.com/baloise/ui-library/commit/39357b6bcf8fdc2bf563fbbe09fa740ed6711b7b))
+
+
+
+
+
+## [3.1.4](https://github.com/baloise/ui-library/compare/v3.1.3...v3.1.4) (2021-02-04)
+
+
+### Bug Fixes
+
+* **checkbox:** improve checked watch condition ([8499507](https://github.com/baloise/ui-library/commit/8499507ebda877f4d42a8e8ba41e34878ce8f112))
+
+
+
+
+
+## [3.1.3](https://github.com/baloise/ui-library/compare/v3.1.2...v3.1.3) (2021-02-03)
+
+
+### Bug Fixes
+
+* **input:** add change event to the bal-input ([ad0f6ea](https://github.com/baloise/ui-library/commit/ad0f6eaf81c25996915e76a8e27a302506ae0204))
+
+
+
+
+
+## [3.1.2](https://github.com/baloise/ui-library/compare/v3.1.1...v3.1.2) (2021-02-03)
+
+
+
+# 3.1.0 (2021-02-02)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+# [3.1.0](https://github.com/baloise/ui-library/compare/v3.0.6...v3.1.0) (2021-02-02)
+
+
+### Features
+
+* **angular:** change output types and return custom event detail ([8e0e945](https://github.com/baloise/ui-library/commit/8e0e9452e78d11e220051ae381fba8a5be5599cf))
+
+
+
+## 3.0.5 (2021-02-02)
+
+
+
+
+
+## [3.0.5](https://github.com/baloise/ui-library/compare/v3.0.4...v3.0.5) (2021-02-02)
+
+
+### Features
+
+* **angular:** change output types and return custom event detail ([b1615af](https://github.com/baloise/ui-library/commit/b1615af2d55568084933d641fccc2b8829af7f78))
+
+
+
+## 3.0.1 (2021-01-31)
+
+
+
+
+
+## [3.0.1](https://github.com/baloise/ui-library/compare/v3.0.0...v3.0.1) (2021-01-31)
+
+
+
+## 2.5.1 (2021-01-14)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 ## [2.5.1](https://github.com/baloise/ui-library/compare/v2.5.0...v2.5.1) (2021-01-14)
 
 

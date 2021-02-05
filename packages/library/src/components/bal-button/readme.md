@@ -30,6 +30,13 @@ The classic button, in different colors, sizes, and states.
 | `type`          | `type`           | The theme type of the button. Given by bulma our css framework.       | `"danger" \| "info" \| "info-light" \| "link" \| "primary" \| "primary-light" \| "success" \| "warning"` | `'primary'` |
 
 
+## Events
+
+| Event         | Description                               | Type                      |
+| ------------- | ----------------------------------------- | ------------------------- |
+| `balNavigate` | Emitted when the link element has clicked | `CustomEvent<MouseEvent>` |
+
+
 ## Dependencies
 
 ### Used by

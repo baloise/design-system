@@ -1,9 +1,10 @@
 /* tslint:disable */
 /* auto-generated angular directive proxies */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter } from '@angular/core';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
 import { Components } from '@baloise/ui-library';
+
 
 import { Accordion as IAccordion } from '@baloise/ui-library/dist/types/components/bal-accordion/bal-accordion';
 export declare interface BalAccordion extends Components.BalAccordion {}
@@ -20,7 +21,7 @@ export declare interface BalAccordion extends Components.BalAccordion {}
 })
 export class BalAccordion {
   /** Emmited when the accordion has changed */
-  balCollapse!: IAccordion['balCollapse'];
+  balCollapse!: EventEmitter<CustomEvent<boolean>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -30,6 +31,7 @@ export class BalAccordion {
 }
 
 
+import { Button as IButton } from '@baloise/ui-library/dist/types/components/bal-button/bal-button';
 export declare interface BalButton extends Components.BalButton {}
 @ProxyCmp({
   inputs: ['bottomRounded', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded', 'type']
@@ -38,15 +40,20 @@ export declare interface BalButton extends Components.BalButton {}
   selector: 'bal-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['bottomRounded', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded', 'type']
+  inputs: ['bottomRounded', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded', 'type'],
+  outputs: ['balNavigate']
 })
 export class BalButton {
+  /** Emitted when the link element has clicked */
+  balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balNavigate']);
   }
 }
+
 
 
 export declare interface BalCard extends Components.BalCard {}
@@ -68,6 +75,7 @@ export class BalCard {
 }
 
 
+
 export declare interface BalCardActions extends Components.BalCardActions {}
 @ProxyCmp({
   inputs: ['right']
@@ -85,6 +93,7 @@ export class BalCardActions {
     this.el = r.nativeElement;
   }
 }
+
 
 
 export declare interface BalCardButton extends Components.BalCardButton {}
@@ -106,6 +115,7 @@ export class BalCardButton {
 }
 
 
+
 export declare interface BalCardContent extends Components.BalCardContent {}
 @ProxyCmp({
   inputs: ['inverted']
@@ -125,6 +135,7 @@ export class BalCardContent {
 }
 
 
+
 export declare interface BalCardHeading extends Components.BalCardHeading {}
 
 @Component({
@@ -139,6 +150,7 @@ export class BalCardHeading {
     this.el = r.nativeElement;
   }
 }
+
 
 
 export declare interface BalCardStep extends Components.BalCardStep {}
@@ -160,6 +172,7 @@ export class BalCardStep {
   }
 }
 
+import { BalCardStepOption } from '@baloise/ui-library';
 import { CardSteps as ICardSteps } from '@baloise/ui-library/dist/types/components/bal-card-steps/bal-card-steps';
 export declare interface BalCardSteps extends Components.BalCardSteps {}
 @ProxyCmp({
@@ -171,22 +184,25 @@ export declare interface BalCardSteps extends Components.BalCardSteps {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   inputs: ['backLabel', 'hasBack', 'hidden', 'inverted', 'navigation', 'showLabel'],
-  outputs: ['balCardStepChange', 'balBackClick', 'balCardStepClick']
+  outputs: ['balNavigate', 'balCardStepChange', 'balBackClick', 'balCardStepClick']
 })
 export class BalCardSteps {
+  /** Emitted when the link element has clicked */
+  balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
   /** Emitted when the changes has finished. */
-  balCardStepChange!: ICardSteps['balChange'];
+  balCardStepChange!: EventEmitter<CustomEvent<BalCardStepOption>>;
   /** Emitted when the back button is clicked. */
-  balBackClick!: ICardSteps['balBackClick'];
+  balBackClick!: EventEmitter<CustomEvent<void>>;
   /** Emitted when the step circle is clicked. */
-  balCardStepClick!: ICardSteps['balStepClick'];
+  balCardStepClick!: EventEmitter<CustomEvent<BalCardStepOption>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['balCardStepChange', 'balBackClick', 'balCardStepClick']);
+    proxyOutputs(this, this.el, ['balNavigate', 'balCardStepChange', 'balBackClick', 'balCardStepClick']);
   }
 }
+
 
 
 export declare interface BalCardSubtitle extends Components.BalCardSubtitle {}
@@ -208,6 +224,7 @@ export class BalCardSubtitle {
 }
 
 
+
 export declare interface BalCardTitle extends Components.BalCardTitle {}
 @ProxyCmp({
   inputs: ['inverted']
@@ -226,6 +243,7 @@ export class BalCardTitle {
   }
 }
 
+
 import { Checkbox as ICheckbox } from '@baloise/ui-library/dist/types/components/bal-checkbox/bal-checkbox';
 export declare interface BalCheckbox extends Components.BalCheckbox {}
 @ProxyCmp({
@@ -241,11 +259,11 @@ export declare interface BalCheckbox extends Components.BalCheckbox {}
 })
 export class BalCheckbox {
   /** Emitted when the checked property has changed. */
-  balChange!: ICheckbox['balChange'];
+  balChange!: EventEmitter<CustomEvent<boolean>>;
   /** Emitted when the toggle has focus. */
-  balFocus!: ICheckbox['balFocus'];
+  balFocus!: EventEmitter<CustomEvent<void>>;
   /** Emitted when the toggle loses focus. */
-  balBlur!: ICheckbox['balBlur'];
+  balBlur!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -253,6 +271,7 @@ export class BalCheckbox {
     proxyOutputs(this, this.el, ['balChange', 'balFocus', 'balBlur']);
   }
 }
+
 
 
 export declare interface BalData extends Components.BalData {}
@@ -274,6 +293,7 @@ export class BalData {
 }
 
 
+
 export declare interface BalDataItem extends Components.BalDataItem {}
 @ProxyCmp({
   inputs: ['disabled']
@@ -291,6 +311,7 @@ export class BalDataItem {
     this.el = r.nativeElement;
   }
 }
+
 
 
 export declare interface BalDataLabel extends Components.BalDataLabel {}
@@ -312,6 +333,7 @@ export class BalDataLabel {
 }
 
 
+
 export declare interface BalDataValue extends Components.BalDataValue {}
 
 @Component({
@@ -326,6 +348,7 @@ export class BalDataValue {
     this.el = r.nativeElement;
   }
 }
+
 
 import { Datepicker as IDatepicker } from '@baloise/ui-library/dist/types/components/bal-datepicker/bal-datepicker';
 export declare interface BalDatepicker extends Components.BalDatepicker {}
@@ -342,13 +365,13 @@ export declare interface BalDatepicker extends Components.BalDatepicker {}
 })
 export class BalDatepicker {
   /** Emitted when a option got selected. */
-  balChange!: IDatepicker['balChange'];
+  balChange!: EventEmitter<CustomEvent<any>>;
   /** Emitted when a keyboard input occurred. */
-  balInput!: IDatepicker['balInput'];
+  balInput!: EventEmitter<CustomEvent<string>>;
   /** Emitted when the input loses focus. */
-  balBlur!: IDatepicker['balBlur'];
+  balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input has focus. */
-  balFocus!: IDatepicker['balFocus'];
+  balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -356,6 +379,7 @@ export class BalDatepicker {
     proxyOutputs(this, this.el, ['balChange', 'balInput', 'balBlur', 'balFocus']);
   }
 }
+
 
 import { Dropdown as IDropdown } from '@baloise/ui-library/dist/types/components/bal-dropdown/bal-dropdown';
 export declare interface BalDropdown extends Components.BalDropdown {}
@@ -372,9 +396,9 @@ export declare interface BalDropdown extends Components.BalDropdown {}
 })
 export class BalDropdown {
   /** Listen when the dropdown opens or closes. Returns the current `isActive` value. */
-  balCollapse!: IDropdown['balCollapse'];
+  balCollapse!: EventEmitter<CustomEvent<boolean>>;
   /** *Internal* - Use this to close unuesed dropdowns. */
-  balDropdownPrepare!: IDropdown['balDropdownPrepare'];
+  balDropdownPrepare!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -382,6 +406,7 @@ export class BalDropdown {
     proxyOutputs(this, this.el, ['balCollapse', 'balDropdownPrepare']);
   }
 }
+
 
 
 export declare interface BalDropdownMenu extends Components.BalDropdownMenu {}
@@ -403,6 +428,7 @@ export class BalDropdownMenu {
 }
 
 
+
 export declare interface BalDropdownTrigger extends Components.BalDropdownTrigger {}
 
 @Component({
@@ -417,6 +443,7 @@ export class BalDropdownTrigger {
     this.el = r.nativeElement;
   }
 }
+
 
 
 export declare interface BalField extends Components.BalField {}
@@ -438,6 +465,7 @@ export class BalField {
 }
 
 
+
 export declare interface BalFieldControl extends Components.BalFieldControl {}
 @ProxyCmp({
   inputs: ['iconLeft', 'iconRight', 'inverted', 'loading']
@@ -455,6 +483,7 @@ export class BalFieldControl {
     this.el = r.nativeElement;
   }
 }
+
 
 
 export declare interface BalFieldLabel extends Components.BalFieldLabel {}
@@ -476,6 +505,7 @@ export class BalFieldLabel {
 }
 
 
+
 export declare interface BalFieldMessage extends Components.BalFieldMessage {}
 @ProxyCmp({
   inputs: ['type']
@@ -494,6 +524,7 @@ export class BalFieldMessage {
   }
 }
 
+import { FileUploadRejectedFile } from '@baloise/ui-library';
 import { FileUpload as IFileUpload } from '@baloise/ui-library/dist/types/components/bal-file-upload/bal-file-upload';
 export declare interface BalFileUpload extends Components.BalFileUpload {}
 @ProxyCmp({
@@ -508,9 +539,9 @@ export declare interface BalFileUpload extends Components.BalFileUpload {}
 })
 export class BalFileUpload {
   /** Triggers when a file is added or removed. */
-  balChange!: IFileUpload['balChangeEventEmitter'];
+  balChange!: EventEmitter<CustomEvent<File[]>>;
   /** Triggers when a file is rejected due to not allowed MIME-Type and so on. */
-  balRejectedFile!: IFileUpload['balRejectedFileEventEmitter'];
+  balRejectedFile!: EventEmitter<CustomEvent<FileUploadRejectedFile>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -518,6 +549,7 @@ export class BalFileUpload {
     proxyOutputs(this, this.el, ['balChange', 'balRejectedFile']);
   }
 }
+
 
 
 export declare interface BalHint extends Components.BalHint {}
@@ -540,6 +572,7 @@ export class BalHint {
 }
 
 
+
 export declare interface BalHintText extends Components.BalHintText {}
 
 @Component({
@@ -556,6 +589,7 @@ export class BalHintText {
 }
 
 
+
 export declare interface BalHintTitle extends Components.BalHintTitle {}
 
 @Component({
@@ -570,6 +604,7 @@ export class BalHintTitle {
     this.el = r.nativeElement;
   }
 }
+
 
 
 export declare interface BalIcon extends Components.BalIcon {}
@@ -591,12 +626,16 @@ export class BalIcon {
 }
 
 
-export declare interface BalIconAccount extends Components.BalIconAccount {}
 
+export declare interface BalIconAccount extends Components.BalIconAccount {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-account',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconAccount {
   protected el: HTMLElement;
@@ -607,12 +646,16 @@ export class BalIconAccount {
 }
 
 
-export declare interface BalIconAlert extends Components.BalIconAlert {}
 
+export declare interface BalIconAlert extends Components.BalIconAlert {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-alert',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconAlert {
   protected el: HTMLElement;
@@ -623,12 +666,16 @@ export class BalIconAlert {
 }
 
 
-export declare interface BalIconAlertCircle extends Components.BalIconAlertCircle {}
 
+export declare interface BalIconAlertCircle extends Components.BalIconAlertCircle {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-alert-circle',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconAlertCircle {
   protected el: HTMLElement;
@@ -639,12 +686,16 @@ export class BalIconAlertCircle {
 }
 
 
-export declare interface BalIconAnswer extends Components.BalIconAnswer {}
 
+export declare interface BalIconAnswer extends Components.BalIconAnswer {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-answer',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconAnswer {
   protected el: HTMLElement;
@@ -655,12 +706,16 @@ export class BalIconAnswer {
 }
 
 
-export declare interface BalIconCall extends Components.BalIconCall {}
 
+export declare interface BalIconCall extends Components.BalIconCall {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-call',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCall {
   protected el: HTMLElement;
@@ -671,12 +726,16 @@ export class BalIconCall {
 }
 
 
-export declare interface BalIconCaretDown extends Components.BalIconCaretDown {}
 
+export declare interface BalIconCaretDown extends Components.BalIconCaretDown {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-caret-down',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCaretDown {
   protected el: HTMLElement;
@@ -687,12 +746,16 @@ export class BalIconCaretDown {
 }
 
 
-export declare interface BalIconCaretLeft extends Components.BalIconCaretLeft {}
 
+export declare interface BalIconCaretLeft extends Components.BalIconCaretLeft {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-caret-left',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCaretLeft {
   protected el: HTMLElement;
@@ -703,12 +766,16 @@ export class BalIconCaretLeft {
 }
 
 
-export declare interface BalIconCaretRight extends Components.BalIconCaretRight {}
 
+export declare interface BalIconCaretRight extends Components.BalIconCaretRight {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-caret-right',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCaretRight {
   protected el: HTMLElement;
@@ -719,12 +786,16 @@ export class BalIconCaretRight {
 }
 
 
-export declare interface BalIconCaretUp extends Components.BalIconCaretUp {}
 
+export declare interface BalIconCaretUp extends Components.BalIconCaretUp {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-caret-up',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCaretUp {
   protected el: HTMLElement;
@@ -735,12 +806,16 @@ export class BalIconCaretUp {
 }
 
 
-export declare interface BalIconCheck extends Components.BalIconCheck {}
 
+export declare interface BalIconCheck extends Components.BalIconCheck {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-check',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCheck {
   protected el: HTMLElement;
@@ -751,12 +826,16 @@ export class BalIconCheck {
 }
 
 
-export declare interface BalIconCheckCircle extends Components.BalIconCheckCircle {}
 
+export declare interface BalIconCheckCircle extends Components.BalIconCheckCircle {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-check-circle',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCheckCircle {
   protected el: HTMLElement;
@@ -767,12 +846,16 @@ export class BalIconCheckCircle {
 }
 
 
-export declare interface BalIconClock extends Components.BalIconClock {}
 
+export declare interface BalIconClock extends Components.BalIconClock {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-clock',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconClock {
   protected el: HTMLElement;
@@ -783,12 +866,16 @@ export class BalIconClock {
 }
 
 
-export declare interface BalIconClose extends Components.BalIconClose {}
 
+export declare interface BalIconClose extends Components.BalIconClose {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-close',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconClose {
   protected el: HTMLElement;
@@ -799,12 +886,16 @@ export class BalIconClose {
 }
 
 
-export declare interface BalIconConsultant extends Components.BalIconConsultant {}
 
+export declare interface BalIconConsultant extends Components.BalIconConsultant {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-consultant',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconConsultant {
   protected el: HTMLElement;
@@ -815,12 +906,16 @@ export class BalIconConsultant {
 }
 
 
-export declare interface BalIconContact extends Components.BalIconContact {}
 
+export declare interface BalIconContact extends Components.BalIconContact {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-contact',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconContact {
   protected el: HTMLElement;
@@ -831,12 +926,16 @@ export class BalIconContact {
 }
 
 
-export declare interface BalIconCopy extends Components.BalIconCopy {}
 
+export declare interface BalIconCopy extends Components.BalIconCopy {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-copy',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconCopy {
   protected el: HTMLElement;
@@ -847,12 +946,16 @@ export class BalIconCopy {
 }
 
 
-export declare interface BalIconDate extends Components.BalIconDate {}
 
+export declare interface BalIconDate extends Components.BalIconDate {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-date',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconDate {
   protected el: HTMLElement;
@@ -863,12 +966,16 @@ export class BalIconDate {
 }
 
 
-export declare interface BalIconDocument extends Components.BalIconDocument {}
 
+export declare interface BalIconDocument extends Components.BalIconDocument {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-document',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconDocument {
   protected el: HTMLElement;
@@ -879,12 +986,16 @@ export class BalIconDocument {
 }
 
 
-export declare interface BalIconDownload extends Components.BalIconDownload {}
 
+export declare interface BalIconDownload extends Components.BalIconDownload {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-download',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconDownload {
   protected el: HTMLElement;
@@ -895,12 +1006,16 @@ export class BalIconDownload {
 }
 
 
-export declare interface BalIconEdit extends Components.BalIconEdit {}
 
+export declare interface BalIconEdit extends Components.BalIconEdit {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-edit',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconEdit {
   protected el: HTMLElement;
@@ -911,12 +1026,16 @@ export class BalIconEdit {
 }
 
 
-export declare interface BalIconGithub extends Components.BalIconGithub {}
 
+export declare interface BalIconGithub extends Components.BalIconGithub {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-github',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconGithub {
   protected el: HTMLElement;
@@ -927,12 +1046,16 @@ export class BalIconGithub {
 }
 
 
-export declare interface BalIconInfo extends Components.BalIconInfo {}
 
+export declare interface BalIconInfo extends Components.BalIconInfo {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-info',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconInfo {
   protected el: HTMLElement;
@@ -943,12 +1066,16 @@ export class BalIconInfo {
 }
 
 
-export declare interface BalIconInfoCircle extends Components.BalIconInfoCircle {}
 
+export declare interface BalIconInfoCircle extends Components.BalIconInfoCircle {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-info-circle',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconInfoCircle {
   protected el: HTMLElement;
@@ -959,12 +1086,16 @@ export class BalIconInfoCircle {
 }
 
 
-export declare interface BalIconLocate extends Components.BalIconLocate {}
 
+export declare interface BalIconLocate extends Components.BalIconLocate {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-locate',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconLocate {
   protected el: HTMLElement;
@@ -975,12 +1106,16 @@ export class BalIconLocate {
 }
 
 
-export declare interface BalIconLocation extends Components.BalIconLocation {}
 
+export declare interface BalIconLocation extends Components.BalIconLocation {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-location',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconLocation {
   protected el: HTMLElement;
@@ -991,12 +1126,16 @@ export class BalIconLocation {
 }
 
 
-export declare interface BalIconMenuBars extends Components.BalIconMenuBars {}
 
+export declare interface BalIconMenuBars extends Components.BalIconMenuBars {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-menu-bars',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconMenuBars {
   protected el: HTMLElement;
@@ -1007,12 +1146,16 @@ export class BalIconMenuBars {
 }
 
 
-export declare interface BalIconMenuDots extends Components.BalIconMenuDots {}
 
+export declare interface BalIconMenuDots extends Components.BalIconMenuDots {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-menu-dots',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconMenuDots {
   protected el: HTMLElement;
@@ -1023,12 +1166,16 @@ export class BalIconMenuDots {
 }
 
 
-export declare interface BalIconMessage extends Components.BalIconMessage {}
 
+export declare interface BalIconMessage extends Components.BalIconMessage {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-message',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconMessage {
   protected el: HTMLElement;
@@ -1039,12 +1186,16 @@ export class BalIconMessage {
 }
 
 
-export declare interface BalIconMinus extends Components.BalIconMinus {}
 
+export declare interface BalIconMinus extends Components.BalIconMinus {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-minus',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconMinus {
   protected el: HTMLElement;
@@ -1055,12 +1206,16 @@ export class BalIconMinus {
 }
 
 
-export declare interface BalIconNavBack extends Components.BalIconNavBack {}
 
+export declare interface BalIconNavBack extends Components.BalIconNavBack {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-nav-back',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconNavBack {
   protected el: HTMLElement;
@@ -1071,12 +1226,16 @@ export class BalIconNavBack {
 }
 
 
-export declare interface BalIconNavGoDown extends Components.BalIconNavGoDown {}
 
+export declare interface BalIconNavGoDown extends Components.BalIconNavGoDown {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-nav-go-down',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconNavGoDown {
   protected el: HTMLElement;
@@ -1087,12 +1246,16 @@ export class BalIconNavGoDown {
 }
 
 
-export declare interface BalIconNavGoLeft extends Components.BalIconNavGoLeft {}
 
+export declare interface BalIconNavGoLeft extends Components.BalIconNavGoLeft {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-nav-go-left',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconNavGoLeft {
   protected el: HTMLElement;
@@ -1103,12 +1266,16 @@ export class BalIconNavGoLeft {
 }
 
 
-export declare interface BalIconNavGoRight extends Components.BalIconNavGoRight {}
 
+export declare interface BalIconNavGoRight extends Components.BalIconNavGoRight {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-nav-go-right',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconNavGoRight {
   protected el: HTMLElement;
@@ -1119,12 +1286,16 @@ export class BalIconNavGoRight {
 }
 
 
-export declare interface BalIconNavGoUp extends Components.BalIconNavGoUp {}
 
+export declare interface BalIconNavGoUp extends Components.BalIconNavGoUp {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-nav-go-up',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconNavGoUp {
   protected el: HTMLElement;
@@ -1135,12 +1306,16 @@ export class BalIconNavGoUp {
 }
 
 
-export declare interface BalIconPlus extends Components.BalIconPlus {}
 
+export declare interface BalIconPlus extends Components.BalIconPlus {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-plus',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconPlus {
   protected el: HTMLElement;
@@ -1151,12 +1326,16 @@ export class BalIconPlus {
 }
 
 
-export declare interface BalIconPrint extends Components.BalIconPrint {}
 
+export declare interface BalIconPrint extends Components.BalIconPrint {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-print',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconPrint {
   protected el: HTMLElement;
@@ -1167,12 +1346,16 @@ export class BalIconPrint {
 }
 
 
-export declare interface BalIconReadOnly extends Components.BalIconReadOnly {}
 
+export declare interface BalIconReadOnly extends Components.BalIconReadOnly {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-read-only',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconReadOnly {
   protected el: HTMLElement;
@@ -1183,12 +1366,16 @@ export class BalIconReadOnly {
 }
 
 
-export declare interface BalIconRefresh extends Components.BalIconRefresh {}
 
+export declare interface BalIconRefresh extends Components.BalIconRefresh {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-refresh',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconRefresh {
   protected el: HTMLElement;
@@ -1199,12 +1386,16 @@ export class BalIconRefresh {
 }
 
 
-export declare interface BalIconSearch extends Components.BalIconSearch {}
 
+export declare interface BalIconSearch extends Components.BalIconSearch {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-search',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconSearch {
   protected el: HTMLElement;
@@ -1215,12 +1406,16 @@ export class BalIconSearch {
 }
 
 
-export declare interface BalIconSend extends Components.BalIconSend {}
 
+export declare interface BalIconSend extends Components.BalIconSend {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-send',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconSend {
   protected el: HTMLElement;
@@ -1231,12 +1426,16 @@ export class BalIconSend {
 }
 
 
-export declare interface BalIconSocialFacebookLine extends Components.BalIconSocialFacebookLine {}
 
+export declare interface BalIconSocialFacebookLine extends Components.BalIconSocialFacebookLine {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-social-facebook-line',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconSocialFacebookLine {
   protected el: HTMLElement;
@@ -1247,12 +1446,16 @@ export class BalIconSocialFacebookLine {
 }
 
 
-export declare interface BalIconSocialLinkedinLine extends Components.BalIconSocialLinkedinLine {}
 
+export declare interface BalIconSocialLinkedinLine extends Components.BalIconSocialLinkedinLine {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-social-linkedin-line',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconSocialLinkedinLine {
   protected el: HTMLElement;
@@ -1263,12 +1466,16 @@ export class BalIconSocialLinkedinLine {
 }
 
 
-export declare interface BalIconSocialXingLine extends Components.BalIconSocialXingLine {}
 
+export declare interface BalIconSocialXingLine extends Components.BalIconSocialXingLine {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-social-xing-line',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconSocialXingLine {
   protected el: HTMLElement;
@@ -1279,12 +1486,16 @@ export class BalIconSocialXingLine {
 }
 
 
-export declare interface BalIconTrash extends Components.BalIconTrash {}
 
+export declare interface BalIconTrash extends Components.BalIconTrash {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-trash',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconTrash {
   protected el: HTMLElement;
@@ -1295,12 +1506,16 @@ export class BalIconTrash {
 }
 
 
-export declare interface BalIconUpload extends Components.BalIconUpload {}
 
+export declare interface BalIconUpload extends Components.BalIconUpload {}
+@ProxyCmp({
+  inputs: ['size']
+})
 @Component({
   selector: 'bal-icon-upload',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
 })
 export class BalIconUpload {
   protected el: HTMLElement;
@@ -1309,6 +1524,7 @@ export class BalIconUpload {
     this.el = r.nativeElement;
   }
 }
+
 
 import { Input as IInput } from '@baloise/ui-library/dist/types/components/bal-input/bal-input';
 export declare interface BalInput extends Components.BalInput {}
@@ -1321,26 +1537,29 @@ export declare interface BalInput extends Components.BalInput {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   inputs: ['autoComplete', 'balTabindex', 'clickable', 'disabled', 'inverted', 'maxLength', 'minLength', 'name', 'numberKeyboard', 'onlyNumbers', 'placeholder', 'readonly', 'type', 'value'],
-  outputs: ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']
+  outputs: ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']
 })
 export class BalInput {
   /** Emitted when a keyboard input occurred. */
-  balInput!: IInput['balInput'];
+  balInput!: EventEmitter<CustomEvent<string>>;
   /** Emitted when a keyboard input occurred. */
-  balBlur!: IInput['balBlur'];
+  balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input has clicked. */
-  balClick!: IInput['balClick'];
+  balClick!: EventEmitter<CustomEvent<MouseEvent>>;
   /** Emitted when a keyboard key has pressed. */
-  balKeyPress!: IInput['balKeyPress'];
+  balKeyPress!: EventEmitter<CustomEvent<KeyboardEvent>>;
   /** Emitted when the input has focus. */
-  balFocus!: IInput['balFocus'];
+  balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
+  /** Emitted when the input value has changed. */
+  balChange!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']);
+    proxyOutputs(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']);
   }
 }
+
 
 
 export declare interface BalList extends Components.BalList {}
@@ -1362,6 +1581,7 @@ export class BalList {
 }
 
 
+import { ListItem as IListItem } from '@baloise/ui-library/dist/types/components/bal-list-item/bal-list-item';
 export declare interface BalListItem extends Components.BalListItem {}
 @ProxyCmp({
   inputs: ['clickable', 'disabled', 'href', 'selected', 'target']
@@ -1370,15 +1590,20 @@ export declare interface BalListItem extends Components.BalListItem {}
   selector: 'bal-list-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['clickable', 'disabled', 'href', 'selected', 'target']
+  inputs: ['clickable', 'disabled', 'href', 'selected', 'target'],
+  outputs: ['balNavigate']
 })
 export class BalListItem {
+  /** Emitted when the link element has clicked */
+  balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balNavigate']);
   }
 }
+
 
 
 export declare interface BalListItemContent extends Components.BalListItemContent {}
@@ -1395,6 +1620,7 @@ export class BalListItemContent {
     this.el = r.nativeElement;
   }
 }
+
 
 
 export declare interface BalListItemIcon extends Components.BalListItemIcon {}
@@ -1416,6 +1642,7 @@ export class BalListItemIcon {
 }
 
 
+
 export declare interface BalListItemSubtitle extends Components.BalListItemSubtitle {}
 
 @Component({
@@ -1432,6 +1659,7 @@ export class BalListItemSubtitle {
 }
 
 
+
 export declare interface BalListItemTitle extends Components.BalListItemTitle {}
 
 @Component({
@@ -1446,6 +1674,7 @@ export class BalListItemTitle {
     this.el = r.nativeElement;
   }
 }
+
 
 
 export declare interface BalModal extends Components.BalModal {}
@@ -1468,6 +1697,7 @@ export class BalModal {
 }
 
 
+
 export declare interface BalModalActions extends Components.BalModalActions {}
 
 @Component({
@@ -1482,6 +1712,7 @@ export class BalModalActions {
     this.el = r.nativeElement;
   }
 }
+
 
 
 export declare interface BalModalBody extends Components.BalModalBody {}
@@ -1500,6 +1731,7 @@ export class BalModalBody {
 }
 
 
+
 export declare interface BalModalFooter extends Components.BalModalFooter {}
 
 @Component({
@@ -1516,6 +1748,7 @@ export class BalModalFooter {
 }
 
 
+
 export declare interface BalModalHeader extends Components.BalModalHeader {}
 
 @Component({
@@ -1530,6 +1763,7 @@ export class BalModalHeader {
     this.el = r.nativeElement;
   }
 }
+
 
 
 export declare interface BalNavbar extends Components.BalNavbar {}
@@ -1551,6 +1785,7 @@ export class BalNavbar {
 }
 
 
+import { NavbarBrand as INavbarBrand } from '@baloise/ui-library/dist/types/components/bal-navbar-brand/bal-navbar-brand';
 export declare interface BalNavbarBrand extends Components.BalNavbarBrand {}
 @ProxyCmp({
   inputs: ['href']
@@ -1559,15 +1794,20 @@ export declare interface BalNavbarBrand extends Components.BalNavbarBrand {}
   selector: 'bal-navbar-brand',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['href']
+  inputs: ['href'],
+  outputs: ['balNavigate']
 })
 export class BalNavbarBrand {
+  /** Emitted when the link element has clicked */
+  balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balNavigate']);
   }
 }
+
 
 
 export declare interface BalNavbarMenu extends Components.BalNavbarMenu {}
@@ -1588,6 +1828,7 @@ export class BalNavbarMenu {
 }
 
 
+
 export declare interface BalNavbarMenuEnd extends Components.BalNavbarMenuEnd {}
 
 @Component({
@@ -1604,6 +1845,7 @@ export class BalNavbarMenuEnd {
 }
 
 
+
 export declare interface BalNavbarMenuStart extends Components.BalNavbarMenuStart {}
 
 @Component({
@@ -1618,6 +1860,7 @@ export class BalNavbarMenuStart {
     this.el = r.nativeElement;
   }
 }
+
 
 
 export declare interface BalNotification extends Components.BalNotification {}
@@ -1638,6 +1881,7 @@ export class BalNotification {
   }
 }
 
+
 import { Pagination as IPagination } from '@baloise/ui-library/dist/types/components/bal-pagination/bal-pagination';
 export declare interface BalPagination extends Components.BalPagination {}
 @ProxyCmp({
@@ -1653,7 +1897,7 @@ export declare interface BalPagination extends Components.BalPagination {}
 })
 export class BalPagination {
   /** Triggers when a page change happens */
-  balChange!: IPagination['balChangeEventEmitter'];
+  balChange!: EventEmitter<CustomEvent<number>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1661,6 +1905,7 @@ export class BalPagination {
     proxyOutputs(this, this.el, ['balChange']);
   }
 }
+
 
 import { Radio as IRadio } from '@baloise/ui-library/dist/types/components/bal-radio/bal-radio';
 export declare interface BalRadio extends Components.BalRadio {}
@@ -1677,9 +1922,9 @@ export declare interface BalRadio extends Components.BalRadio {}
 })
 export class BalRadio {
   /** Emitted when the toggle has focus. */
-  balFocus!: IRadio['balFocus'];
+  balFocus!: EventEmitter<CustomEvent<void>>;
   /** Emitted when the toggle loses focus. */
-  balBlur!: IRadio['balBlur'];
+  balBlur!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1687,6 +1932,7 @@ export class BalRadio {
     proxyOutputs(this, this.el, ['balFocus', 'balBlur']);
   }
 }
+
 
 import { RadioGroup as IRadioGroup } from '@baloise/ui-library/dist/types/components/bal-radio-group/bal-radio-group';
 export declare interface BalRadioGroup extends Components.BalRadioGroup {}
@@ -1702,7 +1948,7 @@ export declare interface BalRadioGroup extends Components.BalRadioGroup {}
 })
 export class BalRadioGroup {
   /** Emitted when the checked property has changed. */
-  balChange!: IRadioGroup['balChange'];
+  balChange!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1710,6 +1956,7 @@ export class BalRadioGroup {
     proxyOutputs(this, this.el, ['balChange']);
   }
 }
+
 
 import { Select as ISelect } from '@baloise/ui-library/dist/types/components/bal-select/bal-select';
 export declare interface BalSelect extends Components.BalSelect {}
@@ -1726,19 +1973,19 @@ export declare interface BalSelect extends Components.BalSelect {}
 })
 export class BalSelect {
   /** Emitted when a option got selected. */
-  balChange!: ISelect['balChange'];
+  balChange!: EventEmitter<CustomEvent<string[]>>;
   /** Emitted when a keyboard input occurred. */
-  balInput!: ISelect['balInput'];
+  balInput!: EventEmitter<CustomEvent<string>>;
   /** Emitted when the input loses focus. */
-  balBlur!: ISelect['balBlur'];
+  balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input has focus. */
-  balFocus!: ISelect['balFocus'];
+  balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input got clicked. */
-  balClick!: ISelect['balClick'];
+  balClick!: EventEmitter<CustomEvent<MouseEvent>>;
   /** Emitted when the input has focus and key from the keyboard go hit. */
-  balKeyPress!: ISelect['balKeyPress'];
+  balKeyPress!: EventEmitter<CustomEvent<KeyboardEvent>>;
   /** Emitted when the user cancels the input. */
-  balCancel!: ISelect['balCancel'];
+  balCancel!: EventEmitter<CustomEvent<KeyboardEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1746,6 +1993,7 @@ export class BalSelect {
     proxyOutputs(this, this.el, ['balChange', 'balInput', 'balBlur', 'balFocus', 'balClick', 'balKeyPress', 'balCancel']);
   }
 }
+
 
 
 export declare interface BalSelectOption extends Components.BalSelectOption {}
@@ -1767,6 +2015,7 @@ export class BalSelectOption {
   }
 }
 
+
 import { Snackbar as ISnackbar } from '@baloise/ui-library/dist/types/components/bal-snackbar/bal-snackbar';
 export declare interface BalSnackbar extends Components.BalSnackbar {}
 @ProxyCmp({
@@ -1782,9 +2031,9 @@ export declare interface BalSnackbar extends Components.BalSnackbar {}
 })
 export class BalSnackbar {
   /** Emitted when snackbar is closed */
-  balClose!: ISnackbar['balClose'];
+  balClose!: EventEmitter<CustomEvent<string>>;
   /** Emitted when the action button is clicked */
-  balAction!: ISnackbar['balAction'];
+  balAction!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1792,6 +2041,7 @@ export class BalSnackbar {
     proxyOutputs(this, this.el, ['balClose', 'balAction']);
   }
 }
+
 
 
 export declare interface BalSpinner extends Components.BalSpinner {}
@@ -1812,6 +2062,7 @@ export class BalSpinner {
   }
 }
 
+
 import { TabItem as ITabItem } from '@baloise/ui-library/dist/types/components/bal-tab-item/bal-tab-item';
 export declare interface BalTabItem extends Components.BalTabItem {}
 @ProxyCmp({
@@ -1826,8 +2077,8 @@ export declare interface BalTabItem extends Components.BalTabItem {}
   outputs: ['balNavigate']
 })
 export class BalTabItem {
-  /** Emitted when the action button has clicked */
-  balNavigate!: ITabItem['navigate'];
+  /** Emitted when the link element has clicked */
+  balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1836,6 +2087,7 @@ export class BalTabItem {
   }
 }
 
+import { BalTabOption } from '@baloise/ui-library';
 import { Tabs as ITabs } from '@baloise/ui-library/dist/types/components/bal-tabs/bal-tabs';
 export declare interface BalTabs extends Components.BalTabs {}
 @ProxyCmp({
@@ -1851,9 +2103,9 @@ export declare interface BalTabs extends Components.BalTabs {}
 })
 export class BalTabs {
   /** Emitted when the changes has finished. */
-  balTabChange!: ITabs['tabsDidChange'];
+  balTabChange!: EventEmitter<CustomEvent<BalTabOption>>;
   /** Emitted when the action button has clicked */
-  balActionClick!: ITabs['actionHasClicked'];
+  balActionClick!: EventEmitter<CustomEvent<MouseEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1861,6 +2113,7 @@ export class BalTabs {
     proxyOutputs(this, this.el, ['balTabChange', 'balActionClick']);
   }
 }
+
 
 
 export declare interface BalTag extends Components.BalTag {}
@@ -1882,6 +2135,7 @@ export class BalTag {
 }
 
 
+
 export declare interface BalText extends Components.BalText {}
 @ProxyCmp({
   inputs: ['small']
@@ -1900,6 +2154,7 @@ export class BalText {
   }
 }
 
+
 import { Textarea as ITextarea } from '@baloise/ui-library/dist/types/components/bal-textarea/bal-textarea';
 export declare interface BalTextarea extends Components.BalTextarea {}
 @ProxyCmp({
@@ -1915,15 +2170,15 @@ export declare interface BalTextarea extends Components.BalTextarea {}
 })
 export class BalTextarea {
   /** Emitted when a keyboard input occurred. */
-  balInput!: ITextarea['balInput'];
+  balInput!: EventEmitter<CustomEvent<string>>;
   /** Emitted when a keyboard input occurred. */
-  balBlur!: ITextarea['balBlur'];
+  balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input has clicked. */
-  balClick!: ITextarea['balClick'];
+  balClick!: EventEmitter<CustomEvent<MouseEvent>>;
   /** Emitted when a keyboard key has pressed. */
-  balKeyPress!: ITextarea['balKeyPress'];
+  balKeyPress!: EventEmitter<CustomEvent<KeyboardEvent>>;
   /** Emitted when the input has focus. */
-  balFocus!: ITextarea['balFocus'];
+  balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1931,6 +2186,7 @@ export class BalTextarea {
     proxyOutputs(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']);
   }
 }
+
 
 import { Timeinput as ITimeinput } from '@baloise/ui-library/dist/types/components/bal-timeinput/bal-timeinput';
 export declare interface BalTimeinput extends Components.BalTimeinput {}
@@ -1947,9 +2203,9 @@ export declare interface BalTimeinput extends Components.BalTimeinput {}
 export class BalTimeinput {
   /** Emitted when either the hour or the minute input has changed.
 It will not be triggert if either hour or time input has never been set (i.e. "--" is selected). */
-  balChange!: ITimeinput['balTimeinputChange'];
+  balChange!: EventEmitter<CustomEvent<string>>;
   /** Emitted when either the hour or minute input field loses focus. */
-  balBlur!: ITimeinput['balBlur'];
+  balBlur!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1957,6 +2213,7 @@ It will not be triggert if either hour or time input has never been set (i.e. "-
     proxyOutputs(this, this.el, ['balChange', 'balBlur']);
   }
 }
+
 
 import { Toast as IToast } from '@baloise/ui-library/dist/types/components/bal-toast/bal-toast';
 export declare interface BalToast extends Components.BalToast {}
@@ -1973,7 +2230,7 @@ export declare interface BalToast extends Components.BalToast {}
 })
 export class BalToast {
   /** Emitted when toast is closed */
-  balClose!: IToast['balClose'];
+  balClose!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

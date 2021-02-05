@@ -53,9 +53,9 @@ export class TabItem {
   @Prop() active: boolean = false
 
   /**
-   * Emitted when the action button has clicked
+   * Emitted when the link element has clicked
    */
-  @Event({ eventName: 'balNavigate' }) navigate: EventEmitter<MouseEvent>
+  @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
 
   @Watch('active')
   activatedHandler(newActive: boolean) {
@@ -99,7 +99,7 @@ export class TabItem {
       done: this.done,
       failed: this.failed,
       hasBubble: this.bubble,
-      navigate: this.navigate,
+      navigate: this.balNavigate,
     }
   }
 

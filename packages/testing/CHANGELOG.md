@@ -3,6 +3,96 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.8](https://github.com/baloise/ui-library/compare/v3.1.7...v3.1.8) (2021-02-05)
+
+**Note:** Version bump only for package @baloise/ui-library-testing
+
+
+
+
+
+## [3.1.7](https://github.com/baloise/ui-library/compare/v3.1.6...v3.1.7) (2021-02-05)
+
+**Note:** Version bump only for package @baloise/ui-library-testing
+
+
+
+
+
+## [3.1.6](https://github.com/baloise/ui-library/compare/v3.1.5...v3.1.6) (2021-02-05)
+
+**Note:** Version bump only for package @baloise/ui-library-testing
+
+
+
+
+
+## [3.1.5](https://github.com/baloise/ui-library/compare/v3.1.4...v3.1.5) (2021-02-04)
+
+**Note:** Version bump only for package @baloise/ui-library-testing
+
+
+
+
+
+## [3.1.4](https://github.com/baloise/ui-library/compare/v3.1.3...v3.1.4) (2021-02-04)
+
+
+### Bug Fixes
+
+* **checkbox:** improve checked watch condition ([8499507](https://github.com/baloise/ui-library/commit/8499507ebda877f4d42a8e8ba41e34878ce8f112))
+
+
+
+
+
+## [3.1.3](https://github.com/baloise/ui-library/compare/v3.1.2...v3.1.3) (2021-02-03)
+
+**Note:** Version bump only for package @baloise/ui-library-testing
+
+
+
+
+
+## [3.1.2](https://github.com/baloise/ui-library/compare/v3.1.1...v3.1.2) (2021-02-03)
+
+**Note:** Version bump only for package @baloise/ui-library-testing
+
+
+
+
+
+# [3.1.0](https://github.com/baloise/ui-library/compare/v3.0.6...v3.1.0) (2021-02-02)
+
+
+### Features
+
+* **angular:** change output types and return custom event detail ([69ac578](https://github.com/baloise/ui-library/commit/69ac57832c2b60e80aab7d303bb60cca73858f9b))
+
+
+
+## 3.0.5 (2021-02-02)
+
+
+
+
+
+## [3.0.5](https://github.com/baloise/ui-library/compare/v3.0.4...v3.0.5) (2021-02-02)
+
+**Note:** Version bump only for package @baloise/ui-library-testing
+
+
+
+
+
+## [3.0.1](https://github.com/baloise/ui-library/compare/v3.0.0...v3.0.1) (2021-01-31)
+
+**Note:** Version bump only for package @baloise/ui-library-testing
+
+
+
+
+
 ## [2.5.1](https://github.com/baloise/ui-library/compare/v2.5.0...v2.5.1) (2021-01-14)
 
 **Note:** Version bump only for package @baloise/ui-library-testing

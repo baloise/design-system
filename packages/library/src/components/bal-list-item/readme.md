@@ -17,6 +17,13 @@
 | `target`    | `target`    | Specifies where to open the linked document        | `" _parent" \| "_blank" \| "_self" \| "_top"` | `'_self'` |
 
 
+## Events
+
+| Event         | Description                               | Type                      |
+| ------------- | ----------------------------------------- | ------------------------- |
+| `balNavigate` | Emitted when the link element has clicked | `CustomEvent<MouseEvent>` |
+
+
 ## Dependencies
 
 ### Used by

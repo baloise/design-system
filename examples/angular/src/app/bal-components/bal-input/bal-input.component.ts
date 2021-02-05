@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core'
+import { FormControl, Validators } from '@angular/forms'
+import { parseCustomEvent } from '@baloise/ui-library-angular'
 
 @Component({
   selector: 'app-bal-input',
-  templateUrl: './bal-input.component.html'
+  templateUrl: './bal-input.component.html',
 })
-export class BalInputComponent implements OnInit {
-  inputValue: string = 'Value'
+export class BalInputComponent {
+  inputValue: string = ''
 
-  constructor() { }
+  firstName: FormControl = new FormControl(null, [Validators.required])
 
-  ngOnInit(): void {
+  onInput(event: CustomEvent<string>): void {
+    console.warn('onInput', parseCustomEvent(event))
   }
-
 }

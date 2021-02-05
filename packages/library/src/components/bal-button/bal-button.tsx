@@ -1,4 +1,4 @@
-import { Component, h, Prop, Host } from '@stencil/core'
+import { Component, h, Prop, Host, Event, EventEmitter } from '@stencil/core'
 import { BalButtonType } from './bal.button.type'
 
 @Component({
@@ -92,6 +92,11 @@ export class Button {
    * Name of the right button icon
    */
   @Prop() iconRight = ''
+
+  /**
+   * Emitted when the link element has clicked
+   */
+  @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
 
   get isIconInverted() {
     switch (this.type) {
@@ -211,7 +216,11 @@ export class Button {
   renderLinkButton() {
     return (
       <Host class={[this.expanded ? 'is-fullwidth' : ''].join(' ')}>
-        <a class={this.buttonCssClass} href={this.href} target={this.target}>
+        <a
+          class={this.buttonCssClass}
+          href={this.href}
+          target={this.target}
+          onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
           <span>{/* Empty span to get the correct text height */}</span>
           {this.renderButtonLoading()}
           {this.renderButtonLeftIcon()}
@@ -235,7 +244,11 @@ export class Button {
   renderLinkSquareButton() {
     return (
       <Host>
-        <a class={this.buttonCssClass} href={this.href} target={this.target}>
+        <a
+          class={this.buttonCssClass}
+          href={this.href}
+          target={this.target}
+          onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
           <bal-icon name={this.icon} size={this.size} type={this.type} inverted={this.isIconInverted} />
         </a>
       </Host>
