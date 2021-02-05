@@ -128,7 +128,7 @@ export class Input {
   /**
    * Emitted when the input value has changed.
    */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<UIEvent>
+  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<string>
 
   /**
    * Sets the focus on the input element.
@@ -160,7 +160,7 @@ export class Input {
           maxLength={this.maxLength}
           minLength={this.minLength}
           onInput={e => this.onInput(e as any)}
-          onChange={e => this.balChange.emit(e as any)}
+          onChange={() => this.balChange.emit(this.value)}
           onBlur={e => this.balBlur.emit(e)}
           onClick={e => this.balClick.emit(e)}
           onKeyPress={e => this.balKeyPress.emit(e)}

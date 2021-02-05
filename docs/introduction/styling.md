@@ -20,7 +20,7 @@ To use the fonts in the css styles import it with the following snippet.
 
 ### Install
 
-Place the donwloaded fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
+Place the download fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
 
 Import `ui-library.scss` Sass file into the main `.scss` file of your application.
 

@@ -2989,7 +2989,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<UIEvent>) => void;
+        "onBalChange"?: (event: CustomEvent<string>) => void;
         /**
           * Emitted when the input has clicked.
          */
