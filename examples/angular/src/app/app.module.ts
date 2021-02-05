@@ -12,10 +12,12 @@ import { BalSelectComponent } from './bal-components/bal-select/bal-select.compo
 import { BalDatepickerComponent } from './bal-components/bal-datepicker/bal-datepicker.component';
 import { BalTimeinputComponent } from './bal-components/bal-timeinput/bal-timeinput.component';
 import { HomeComponent } from './bal-components/home/home.component';
+import { BalModalComponent } from './bal-components/bal-modal/bal-modal.component';
+import { BalToastComponent } from './bal-components/bal-toast/bal-toast.component';
 
 @NgModule({
-  declarations: [AppComponent, BalCheckboxComponent, BalInputComponent, BalRadioComponent, BalSelectComponent, BalDatepickerComponent, BalTimeinputComponent, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  declarations: [AppComponent, BalCheckboxComponent, BalInputComponent, BalRadioComponent, BalSelectComponent, BalDatepickerComponent, BalTimeinputComponent, HomeComponent, BalModalComponent, BalToastComponent],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, BalUiLibraryModule],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Checkbox</h1>
+    <h1 class="title is-size-1">Checkbox</h1>
     <BalCheckbox label="Label" v-model="checked" />
     <p>{{ checked }}</p>
   </div>

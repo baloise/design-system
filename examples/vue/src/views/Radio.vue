@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Radio</h1>
+    <h1 class="title is-size-1">Radio</h1>
     <BalRadioGroup v-model="value">
       <BalRadio label="Label 1" name="radio-example" value="1"></BalRadio>
       <BalRadio label="Label 2" name="radio-example" value="2"></BalRadio>

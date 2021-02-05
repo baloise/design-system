@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './bal-input.component.html'
 })
 export class BalInputComponent implements OnInit {
-  inputValue: string = ''
+  inputValue: string = 'Value'
 
   constructor() { }
 

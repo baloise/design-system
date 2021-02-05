@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Modal</h1>
+    <h1 class="title is-size-1">Modal</h1>
     <BalButton @click="openModal()">Open Modal</BalButton>
 
     <BalModal ref="modal">
