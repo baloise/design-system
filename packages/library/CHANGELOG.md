@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.7](https://github.com/baloise/ui-library/compare/v3.1.6...v3.1.7) (2021-02-05)
+
+
+
+## 3.1.5 (2021-02-04)
+
+**Note:** Version bump only for package @baloise/ui-library
+
+
+
+
+
 ## [3.1.6](https://github.com/baloise/ui-library/compare/v3.1.5...v3.1.6) (2021-02-05)
 
 
