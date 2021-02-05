@@ -13,9 +13,8 @@ $font-medium-woff2: str-insert('/MetaStd-Medium.woff2', $font-path, 0);
   font-style: normal;
   font-weight: 400;
   font-display: fallback;
-  src: local('MetaPro'), local('MetaStd-Normal'),
-    url($font-normal-woff2) format('woff2') url($font-normal-woff) format('woff') url($font-normal-ttf)
-      format('truetype');
+  src: local('MetaPro'), local('MetaStd-Normal'), url($font-normal-woff2) format('woff2'),
+    url($font-normal-woff) format('woff'), url($font-normal-ttf) format('truetype');
 }
 
 @font-face {
@@ -23,7 +22,6 @@ $font-medium-woff2: str-insert('/MetaStd-Medium.woff2', $font-path, 0);
   font-style: normal;
   font-weight: 700;
   font-display: fallback;
-  src: local('MetaStd-Medium'),
-    url($font-medium-woff2) format('woff2') url($font-medium-woff) format('woff') url($font-medium-ttf)
-      format('truetype');
+  src: local('MetaStd-Medium'), url($font-medium-woff2) format('woff2'), url($font-medium-woff) format('woff'),
+    url($font-medium-ttf) format('truetype');
 }
