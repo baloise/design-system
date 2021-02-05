@@ -19,9 +19,9 @@
     "@angular/platform-browser": "~10.2.0",
     "@angular/platform-browser-dynamic": "~10.2.0",
     "@angular/router": "~10.2.0",
-    "@baloise/ui-library": "^3.1.6",
-    "@baloise/ui-library-angular": "^3.1.6",
-    "@baloise/ui-library-utils": "^3.1.6",
+    "@baloise/ui-library": "^3.1.7",
+    "@baloise/ui-library-angular": "^3.1.7",
+    "@baloise/ui-library-utils": "^3.1.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
