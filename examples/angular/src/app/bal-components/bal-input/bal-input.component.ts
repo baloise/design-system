@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { FormControl, Validators } from '@angular/forms'
-import { parseCustomEvent } from '@baloise/ui-library-angular'
+import { parseCustomEvent } from '@baloise/ui-library-angular/dist'
 
 @Component({
   selector: 'app-bal-input',

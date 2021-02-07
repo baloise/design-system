@@ -1,25 +1,22 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core'
+import type { Components } from '@baloise/ui-library'
 
 @Component({
   selector: 'app-bal-modal',
-  templateUrl: './bal-modal.component.html'
+  templateUrl: './bal-modal.component.html',
 })
 export class BalModalComponent implements OnInit {
-  @ViewChild('modal') modal; 
+  @ViewChild('modal') modal!: Components.BalModal
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   openModal() {
-    const modal = this.modal.el as HTMLBalModalElement;
-    modal.open();
+    this.modal.open()
   }
 
   closeModal() {
-    const modal = this.modal.el as HTMLBalModalElement;
-    modal.close();
+    this.modal.close()
   }
-
 }
