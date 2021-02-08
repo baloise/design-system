@@ -1073,7 +1073,7 @@ export const BalInput = /*@__PURE__*/ Vue.extend({
   methods: {
     setFocus: createCommonMethod('setFocus') as Components.BalInput['setFocus'],
   },
-  render: createCommonRender('bal-input', ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']),
+  render: createCommonRender('bal-input', ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']),
 });
 
 

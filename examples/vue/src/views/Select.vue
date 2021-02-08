@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Select</h1>
+    <h1 class="title is-size-1">Select</h1>
     <BalSelect :value="value" typeahead placeholder @balChange="valueChanged($event)">
       <BalSelectOption label="Label 1" value="1">Label 1</BalSelectOption>
       <BalSelectOption label="Label 2" value="2">Label 2</BalSelectOption>

@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BalSelectComponent implements OnInit {
   selected: string[] = ["1998"]
+  selectedWithNgModel: string[] = ["1998"]
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onChange(event: CustomEvent<string[]>) {
+    this.selected = event.detail;
   }
 
 }

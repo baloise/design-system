@@ -36,7 +36,9 @@ export class NavbarBrand {
   async toggle(isMenuActive: boolean): Promise<void> {
     this.isMenuActive = isMenuActive
     const navbarMenuElement = this.el.closest('bal-navbar').querySelector('bal-navbar-menu')
-    await (navbarMenuElement as any).toggle(this.isMenuActive)
+    if (navbarMenuElement) {
+      await (navbarMenuElement as any).toggle(this.isMenuActive)
+    }
   }
 
   async onClick() {

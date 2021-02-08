@@ -1,10 +1,22 @@
-<div id="app" class="container">
-  <div id="nav">
-    <span *ngFor="let route of routes; let i = index">
-      <a [routerLink]="[route.path]" class="link" routerLinkActive="active">{{ route.path | titlecase }}</a>
-      <span *ngIf="i !== routes.length - 1"> | </span>
-    </span>
-  </div>
+<bal-navbar>
+  <bal-navbar-brand>
+    <img src="https://github.com/baloise/ui-library/raw/master/docs/assets/images/icon.svg" />
+    <bal-text style="margin-left: 15px">Demo App</bal-text>
+  </bal-navbar-brand>
+</bal-navbar>
 
-  <router-outlet></router-outlet>
-</div>
+<nav class="has-background-white">
+  <div class="container">
+    <bal-tabs>
+      <bal-tab-item *ngFor="let route of routes; let i = index" [value]="route.path" label="{{capitalizeFirstLetter(route.path)}}" [active]="route.active" (balNavigate)="navigate(route)"></bal-tab-item>
+    </bal-tabs>
+  </div>
+</nav>
+
+<main class="container">
+  <bal-card style="margin-top: 40px">
+    <div class="is-padded">
+      <router-outlet></router-outlet>
+    </div>
+  </bal-card>
+</main>

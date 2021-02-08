@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Toast</h1>
+    <h1 class="title is-size-1">Toast</h1>
     <BalButton @click="createToast()">Create Toast</BalButton>
   </div>
 </template>

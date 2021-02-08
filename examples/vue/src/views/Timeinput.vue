@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Timeinput</h1>
+    <h1 class="title is-size-1">Timeinput</h1>
     <BalTimeinput v-model="value"/>
     <p>{{ value }}</p>
   </div>

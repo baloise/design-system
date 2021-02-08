@@ -648,7 +648,8 @@ export const BalInput = /*@__PURE__*/ defineContainer<JSX.BalInput>('bal-input',
 'balBlur',
 'balClick',
 'balKeyPress',
-'balFocus'],
+'balFocus',
+'balChange'],
   {
     modelProp: 'value',
     modelUpdateEvent: 'balInput'
