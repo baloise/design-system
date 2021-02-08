@@ -8,7 +8,7 @@ import {
 } from '@baloise/ui-library'
 import * as balUtils from '@baloise/ui-library-utils'
 
-export const BaloiseUILibrary: Plugin = {
+export const baloiseUiLibrary: Plugin = {
   async install(app) {
     await applyPolyfills()
     await defineCustomElements()
@@ -25,6 +25,9 @@ export const BaloiseUILibrary: Plugin = {
   },
 }
 
-export const useUtils = (): typeof balUtils => inject<typeof balUtils>('balUtils')
-export const useToast = (): BalSnackbarController => inject<BalSnackbarController>('balToast')
-export const useSnackbar = (): BalSnackbarController => inject<BalSnackbarController>('balSnackbar')
+export const useUtils = (): typeof balUtils => inject<typeof balUtils>('balUtils', balUtils)
+
+export const useToast = (): BalToastController => inject<BalToastController>('balToast', balToastController)
+
+export const useSnackbar = (): BalSnackbarController =>
+  inject<BalSnackbarController>('balSnackbar', balSnackbarController)
