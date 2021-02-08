@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Datepicker</h1>
+    <h1 class="title is-size-1">Datepicker</h1>
     <BalDatepicker placeholder="DD.MM.YYYY" v-model="value" />
     <p>{{ value }}</p>
   </div>

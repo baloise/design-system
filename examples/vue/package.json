@@ -8,8 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@baloise/ui-library": "^3.0.0-alpha.10",
-    "@baloise/ui-library-vue": "^3.0.0-alpha.10",
+    "@baloise/ui-library": "^3.1.9-alpha.0",
+    "@baloise/ui-library-vue": "^3.1.9-alpha.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"
