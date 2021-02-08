@@ -76,6 +76,7 @@ export class Tabs {
   }
 
   private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
+    debugger
     if (tab.prevent) {
       event.preventDefault()
       event.stopPropagation()
