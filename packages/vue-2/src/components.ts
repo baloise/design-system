@@ -1398,6 +1398,7 @@ export const BalTabItem = /*@__PURE__*/ Vue.extend({
     done: {} as PropOptions<Components.BalTabItem['done']>,
     failed: {} as PropOptions<Components.BalTabItem['failed']>,
     active: {} as PropOptions<Components.BalTabItem['active']>,
+    prevent: {} as PropOptions<Components.BalTabItem['prevent']>,
   },
 
 

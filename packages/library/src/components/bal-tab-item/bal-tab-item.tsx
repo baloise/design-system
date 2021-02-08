@@ -53,6 +53,11 @@ export class TabItem {
   @Prop() active: boolean = false
 
   /**
+   * Tell's if the linking is done by a router.
+   */
+  @Prop() prevent: boolean = false
+
+  /**
    * Emitted when the link element has clicked
    */
   @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
@@ -69,6 +74,7 @@ export class TabItem {
   @Watch('label')
   @Watch('done')
   @Watch('failed')
+  @Watch('prevent')
   informParent() {
     this.parent.sync()
   }
@@ -99,6 +105,7 @@ export class TabItem {
       done: this.done,
       failed: this.failed,
       hasBubble: this.bubble,
+      prevent: this.prevent,
       navigate: this.balNavigate,
     }
   }

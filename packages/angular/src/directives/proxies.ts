@@ -2066,14 +2066,14 @@ export class BalSpinner {
 import { TabItem as ITabItem } from '@baloise/ui-library/dist/types/components/bal-tab-item/bal-tab-item';
 export declare interface BalTabItem extends Components.BalTabItem {}
 @ProxyCmp({
-  inputs: ['active', 'bubble', 'disabled', 'done', 'failed', 'href', 'label', 'value'],
+  inputs: ['active', 'bubble', 'disabled', 'done', 'failed', 'href', 'label', 'prevent', 'value'],
   methods: ['getOptions', 'setActive']
 })
 @Component({
   selector: 'bal-tab-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['active', 'bubble', 'disabled', 'done', 'failed', 'href', 'label', 'value'],
+  inputs: ['active', 'bubble', 'disabled', 'done', 'failed', 'href', 'label', 'prevent', 'value'],
   outputs: ['balNavigate']
 })
 export class BalTabItem {

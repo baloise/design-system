@@ -887,7 +887,8 @@ export const BalTabItem = /*@__PURE__*/ defineContainer<JSX.BalTabItem>('bal-tab
 'disabled',
 'done',
 'failed',
-'active'],
+'active',
+'prevent'],
   ['balNavigate'],
   
 );

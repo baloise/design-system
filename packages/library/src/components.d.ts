@@ -1251,6 +1251,10 @@ export namespace Components {
          */
         "label": string;
         /**
+          * Tell's if the linking is done by a router.
+         */
+        "prevent": boolean;
+        /**
           * Sets the tab active.
          */
         "setActive": (active: boolean) => Promise<void>;
@@ -3396,6 +3400,10 @@ declare namespace LocalJSX {
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * Tell's if the linking is done by a router.
+         */
+        "prevent"?: boolean;
         /**
           * This is the key of the tab.
          */
