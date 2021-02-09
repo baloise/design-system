@@ -2,7 +2,7 @@
   "packages": [
     "packages/*"
   ],
-  "version": "3.1.12-alpha.0",
+  "version": "3.1.12-alpha.1",
   "command": {
     "publish": {
       "ignoreChanges": [
