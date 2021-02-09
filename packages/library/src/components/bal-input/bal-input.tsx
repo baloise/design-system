@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, Watch, EventEmitter, Event, Method } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method } from '@stencil/core'
 
 @Component({
   tag: 'bal-input',
@@ -7,6 +7,31 @@ import { Component, h, Host, Prop, Element, Watch, EventEmitter, Event, Method }
   scoped: true,
 })
 export class Input {
+  private allowedKeys = [
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '.',
+    'Backspace',
+    'Enter',
+    'ArrowLeft',
+    'Left',
+    'ArrowRight',
+    'Right',
+    'Tab',
+    'Esc',
+    'Escape',
+    'Del',
+    'Delete',
+  ]
+
   private inputId = `bal-in-${InputIds++}`
   private inputEl?: HTMLInputElement
 
@@ -81,10 +106,6 @@ export class Input {
    * The value of the control.
    */
   @Prop({ mutable: true }) value: string = ''
-  @Watch('value')
-  protected valueChanged() {
-    this.updateInputValue()
-  }
 
   /**
    * Emitted when a keyboard input occurred.
@@ -100,8 +121,6 @@ export class Input {
     if (this.value !== val) {
       this.value = val
       this.balInput.emit(this.value)
-    } else {
-      this.updateInputValue()
     }
   }
 
@@ -164,6 +183,7 @@ export class Input {
           onBlur={e => this.balBlur.emit(e)}
           onClick={e => this.balClick.emit(e)}
           onKeyPress={e => this.balKeyPress.emit(e)}
+          onKeyDown={e => this.onKeyDown(e)}
           onFocus={e => this.balFocus.emit(e)}
           ref={inputEl => (this.inputEl = inputEl)}
         />
@@ -171,9 +191,12 @@ export class Input {
     )
   }
 
-  private updateInputValue() {
-    if (this.inputEl.value !== this.value) {
-      this.inputEl.value = this.value
+  onKeyDown(event: KeyboardEvent): void {
+    if (this.numberKeyboard) {
+      if (this.allowedKeys.indexOf(event.key) < 0) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
     }
   }
 
