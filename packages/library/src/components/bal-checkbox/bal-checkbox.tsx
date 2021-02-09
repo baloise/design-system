@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Watch, Method } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method } from '@stencil/core'
 
 @Component({
   tag: 'bal-checkbox',
@@ -36,12 +36,6 @@ export class Checkbox {
    * If `true`, the checkbox is selected.
    */
   @Prop({ mutable: true }) checked = false
-  @Watch('checked')
-  protected checkedChanged() {
-    if (this.inputEl && this.inputEl.checked !== this.checked) {
-      this.inputEl.checked = this.checked
-    }
-  }
 
   /**
    * If `true`, the user cannot interact with the checkbox.

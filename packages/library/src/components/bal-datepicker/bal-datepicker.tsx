@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch } from '@stencil/core'
+import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method } from '@stencil/core'
 import { i18nDate } from './bal-datepicker.i18n'
 import { BalCalendarCell, BalDateCallback } from './bal-datepicker.type'
 import {
@@ -139,16 +139,6 @@ export class Datepicker {
     this.balChange.emit(this.value)
     if (this.closeOnSelect) {
       await this.dropdownElement?.toggle()
-    }
-  }
-
-  @Watch('value')
-  valueWatcher(newDate: Date, oldDate: Date) {
-    newDate = this.parseValue(newDate)
-    oldDate = this.parseValue(oldDate)
-    this.value = this.parseValue(this.value)
-    if (oldDate === undefined || (isValidDate(newDate) && isValidDate(oldDate) && !isSameDay(newDate, oldDate))) {
-      this.updateFromValue()
     }
   }
 

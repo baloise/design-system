@@ -70,7 +70,9 @@ export class TabItem {
   @Watch('done')
   @Watch('failed')
   informParent() {
-    this.parent.sync()
+    if (this.parent) {
+      this.parent.sync()
+    }
   }
 
   /**

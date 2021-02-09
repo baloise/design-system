@@ -54,7 +54,9 @@ export class CardStep {
   @Watch('disabled')
   @Watch('hidden')
   informParent() {
-    this.parent.sync()
+    if (this.parent) {
+      this.parent.sync()
+    }
   }
 
   /**
