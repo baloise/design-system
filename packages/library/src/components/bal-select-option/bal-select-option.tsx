@@ -78,7 +78,7 @@ export class SelectOption {
     return (
       <Host role="option" id={this.inputId} onClick={() => this.onClick()}>
         <button
-          type="text"
+          type="button"
           class={[
             'dropdown-item',
             this.selected ? 'is-selected' : '',
