@@ -8,10 +8,10 @@ import { BalButtonType } from './bal.button.type'
   scoped: true,
 })
 export class Button {
-  // /**
-  //  * The type of the button.
-  //  */
-  // @Prop() type: 'button' | 'reset' | 'submit' = 'button'
+  /**
+   * The type of the button.
+   */
+  @Prop() type: 'button' | 'reset' | 'submit' = 'button'
 
   /**
    * The theme type of the button. Given by bulma our css framework.
@@ -207,7 +207,7 @@ export class Button {
   renderNormalButton() {
     return (
       <Host class={[this.expanded ? 'is-fullwidth' : ''].join(' ')}>
-        <button class={this.buttonCssClass} disabled={this.disabled}>
+        <button type={this.type} class={this.buttonCssClass} disabled={this.disabled}>
           <span>{/* Empty span to get the correct text height */}</span>
           {this.renderButtonLoading()}
           {this.renderButtonLeftIcon()}
@@ -239,7 +239,7 @@ export class Button {
   renderNormalSquareButton() {
     return (
       <Host>
-        <button class={this.buttonCssClass} disabled={this.disabled}>
+        <button type={this.type} class={this.buttonCssClass} disabled={this.disabled}>
           <bal-icon name={this.icon} size={this.size} color={this.color} inverted={this.isIconInverted} />
         </button>
       </Host>
