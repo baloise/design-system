@@ -17,16 +17,16 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-button id="snack-default" type="success" data-test-id="snack">Show success Snack</bal-button>
-        <bal-button id="snack-warning" type="warning" data-test-id="snack">Show warning Snack</bal-button>
-        <bal-button id="snack-danger" type="danger" data-test-id="snack">Show error Snack</bal-button>
+        <bal-button id="snack-default" color="success" data-test-id="snack">Show success Snack</bal-button>
+        <bal-button id="snack-warning" color="warning" data-test-id="snack">Show warning Snack</bal-button>
+        <bal-button id="snack-danger" color="danger" data-test-id="snack">Show error Snack</bal-button>
       </section>
       <script>
         document.getElementById('snack-default').onclick = function () {
           balSnackbarController.create({
             message: 'Hi I am a default Snack!',
             subject: 'Subject',
-            type: 'success',
+            color: 'success',
             action: 'More',
             icon: 'info-circle',
             duration: 1000,
@@ -35,7 +35,7 @@
         document.getElementById('snack-warning').onclick = function () {
           balSnackbarController.create({
             message: 'Warning!',
-            type: 'warning',
+            color: 'warning',
             subject: 'Subject',
             action: 'More',
             icon: 'info-circle',
@@ -44,7 +44,7 @@
         document.getElementById('snack-danger').onclick = function () {
           balSnackbarController.create({
             message: 'Danger zone!',
-            type: 'danger',
+            color: 'danger',
             subject: 'Subject',
             action: 'More',
             icon: 'info-circle',
@@ -57,19 +57,19 @@
         <bal-snackbar subject="Default" icon="info-circle" action="More">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </bal-snackbar>
-        <bal-snackbar subject="Primary" icon="info-circle" type="primary" action="More">
+        <bal-snackbar subject="Primary" icon="info-circle" color="primary" action="More">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </bal-snackbar>
-        <bal-snackbar subject="Info" icon="info-circle" type="info" action="More">
+        <bal-snackbar subject="Info" icon="info-circle" color="info" action="More">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </bal-snackbar>
-        <bal-snackbar subject="Success" icon="info-circle" type="success" action="More">
+        <bal-snackbar subject="Success" icon="info-circle" color="success" action="More">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </bal-snackbar>
-        <bal-snackbar subject="Warning" icon="info-circle" type="warning" action="More">
+        <bal-snackbar subject="Warning" icon="info-circle" color="warning" action="More">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </bal-snackbar>
-        <bal-snackbar subject="Danger" icon="info-circle" type="danger" action="More">
+        <bal-snackbar subject="Danger" icon="info-circle" color="danger" action="More">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </bal-snackbar>
       </section>

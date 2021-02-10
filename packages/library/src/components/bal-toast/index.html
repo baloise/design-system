@@ -17,19 +17,23 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-button id="toast-default" type="success" data-test-id="toast">Show success Toast</bal-button>
-        <bal-button id="toast-warning" type="warning" data-test-id="toast">Show warning Toast</bal-button>
-        <bal-button id="toast-danger" type="danger" data-test-id="toast">Show error Toast</bal-button>
+        <bal-button id="toast-default" color="success" data-test-id="toast">Show success Toast</bal-button>
+        <bal-button id="toast-warning" color="warning" data-test-id="toast">Show warning Toast</bal-button>
+        <bal-button id="toast-danger" color="danger" data-test-id="toast">Show error Toast</bal-button>
       </section>
       <script>
         document.getElementById('toast-default').onclick = function () {
-          balToastController.create({ message: 'Hi I am a default Toast! Hi I am a default Toast!', duration: 1000, type: 'success' })
+          balToastController.create({
+            message: 'Hi I am a default Toast! Hi I am a default Toast!',
+            duration: 1000,
+            color: 'success',
+          })
         }
         document.getElementById('toast-warning').onclick = function () {
-          balToastController.create({ message: 'Warning!', type: 'warning' })
+          balToastController.create({ message: 'Warning!', color: 'warning' })
         }
         document.getElementById('toast-danger').onclick = function () {
-          balToastController.create({ message: 'Danger zone!', type: 'danger' })
+          balToastController.create({ message: 'Danger zone!', color: 'danger' })
         }
       </script>
 
@@ -39,28 +43,28 @@
           <strong>Default</strong>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </bal-toast>
-        <br>
-        <bal-toast type="primary">
+        <br />
+        <bal-toast color="primary">
           <strong>Primary</strong>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </bal-toast>
-        <br>
-        <bal-toast type="info">
+        <br />
+        <bal-toast color="info">
           <strong>Info</strong>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </bal-toast>
-        <br>
-        <bal-toast type="success">
+        <br />
+        <bal-toast color="success">
           <strong>Success</strong>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </bal-toast>
-        <br>
-        <bal-toast type="warning">
+        <br />
+        <bal-toast color="warning">
           <strong>Warning</strong>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </bal-toast>
-        <br>
-        <bal-toast type="danger">
+        <br />
+        <bal-toast color="danger">
           <strong>Danger</strong>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </bal-toast>

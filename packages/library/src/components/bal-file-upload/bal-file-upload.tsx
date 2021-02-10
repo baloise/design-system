@@ -203,7 +203,7 @@ export class FileUpload {
                 <bal-list-item-subtitle>{filesize(file.size)}</bal-list-item-subtitle>
               </bal-list-item-content>
               <bal-list-item-icon right class="file-remove" onClick={() => this.removeFile(index)}>
-                <bal-icon name="trash" type="danger" size="small"></bal-icon>
+                <bal-icon name="trash" color="danger" size="small"></bal-icon>
               </bal-list-item-icon>
             </bal-list-item>
           ))}

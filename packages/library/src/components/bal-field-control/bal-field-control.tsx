@@ -30,14 +30,14 @@ export class FieldControl {
 
   get buildIconLeftTemplate() {
     if (this.iconLeft) {
-      return <bal-icon name={this.iconLeft} type="info" class="is-left" size="small" inverted={this.inverted} />
+      return <bal-icon name={this.iconLeft} color="info" class="is-left" size="small" inverted={this.inverted} />
     }
     return ''
   }
 
   get buildIconRightTemplate() {
     if (this.iconRight) {
-      return <bal-icon name={this.iconRight} type="info" class="is-right" size="small" inverted={this.inverted} />
+      return <bal-icon name={this.iconRight} color="info" class="is-right" size="small" inverted={this.inverted} />
     }
     return ''
   }

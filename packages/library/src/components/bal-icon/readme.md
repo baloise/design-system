@@ -61,12 +61,12 @@ Then the build script will automatically optimize the svg and create its own web
 
 | Property   | Attribute  | Description                                                     | Type                                                                                                     | Default     |
 | ---------- | ---------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ----------- |
+| `color`    | `color`    | The theme type of the button. Given by bulma our css framework. | `"danger" \| "info" \| "info-light" \| "link" \| "primary" \| "primary-light" \| "success" \| "warning"` | `'info'`    |
 | `inverted` | `inverted` | If `true` the button is inverted                                | `boolean`                                                                                                | `undefined` |
 | `name`     | `name`     | The name of the icon without the bal-icon prefix.               | `string`                                                                                                 | `''`        |
 | `rotate`   | `rotate`   | If `true` the icon rotates like for a loading spinner           | `boolean`                                                                                                | `false`     |
 | `size`     | `size`     | Defines the size of the icon.                                   | `"" \| "large" \| "medium" \| "small" \| "xsmall"`                                                       | `''`        |
 | `turn`     | `turn`     | If `true` the icon is rotated 180deg                            | `boolean`                                                                                                | `false`     |
-| `type`     | `type`     | The theme type of the button. Given by bulma our css framework. | `"danger" \| "info" \| "info-light" \| "link" \| "primary" \| "primary-light" \| "success" \| "warning"` | `'info'`    |
 
 
 ## Dependencies

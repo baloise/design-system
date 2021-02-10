@@ -123,7 +123,7 @@ Vue.config.ignoredElements = [...Vue.config.ignoredElements, ...customElementTag
 export const BalAccordion = /*@__PURE__*/ Vue.extend({
 
   props: {
-    type: {} as PropOptions<Components.BalAccordion['type']>,
+    color: {} as PropOptions<Components.BalAccordion['color']>,
     isActive: {} as PropOptions<Components.BalAccordion['isActive']>,
     openLabel: {} as PropOptions<Components.BalAccordion['openLabel']>,
     openIcon: {} as PropOptions<Components.BalAccordion['openIcon']>,
@@ -149,7 +149,7 @@ export const BalAccordion = /*@__PURE__*/ Vue.extend({
 export const BalButton = /*@__PURE__*/ Vue.extend({
 
   props: {
-    type: {} as PropOptions<Components.BalButton['type']>,
+    color: {} as PropOptions<Components.BalButton['color']>,
     size: {} as PropOptions<Components.BalButton['size']>,
     link: {} as PropOptions<Components.BalButton['link']>,
     href: {} as PropOptions<Components.BalButton['href']>,
@@ -181,7 +181,7 @@ export const BalCard = /*@__PURE__*/ Vue.extend({
     square: {} as PropOptions<Components.BalCard['square']>,
     padded: {} as PropOptions<Components.BalCard['padded']>,
     inverted: {} as PropOptions<Components.BalCard['inverted']>,
-    type: {} as PropOptions<Components.BalCard['type']>,
+    color: {} as PropOptions<Components.BalCard['color']>,
     teaser: {} as PropOptions<Components.BalCard['teaser']>,
   },
 
@@ -477,7 +477,7 @@ export const BalFieldLabel = /*@__PURE__*/ Vue.extend({
 export const BalFieldMessage = /*@__PURE__*/ Vue.extend({
 
   props: {
-    type: {} as PropOptions<Components.BalFieldMessage['type']>,
+    color: {} as PropOptions<Components.BalFieldMessage['color']>,
   },
 
 
@@ -540,7 +540,7 @@ export const BalIcon = /*@__PURE__*/ Vue.extend({
   props: {
     name: {} as PropOptions<Components.BalIcon['name']>,
     size: {} as PropOptions<Components.BalIcon['size']>,
-    type: {} as PropOptions<Components.BalIcon['type']>,
+    color: {} as PropOptions<Components.BalIcon['color']>,
     inverted: {} as PropOptions<Components.BalIcon['inverted']>,
     rotate: {} as PropOptions<Components.BalIcon['rotate']>,
     turn: {} as PropOptions<Components.BalIcon['turn']>,
@@ -1241,7 +1241,7 @@ export const BalNavbarMenuStart = /*@__PURE__*/ Vue.extend({
 export const BalNotification = /*@__PURE__*/ Vue.extend({
 
   props: {
-    type: {} as PropOptions<Components.BalNotification['type']>,
+    color: {} as PropOptions<Components.BalNotification['color']>,
   },
 
 
@@ -1358,7 +1358,7 @@ export const BalSelectOption = /*@__PURE__*/ Vue.extend({
 export const BalSnackbar = /*@__PURE__*/ Vue.extend({
 
   props: {
-    type: {} as PropOptions<Components.BalSnackbar['type']>,
+    color: {} as PropOptions<Components.BalSnackbar['color']>,
     duration: {} as PropOptions<Components.BalSnackbar['duration']>,
     subject: {} as PropOptions<Components.BalSnackbar['subject']>,
     message: {} as PropOptions<Components.BalSnackbar['message']>,
@@ -1431,7 +1431,7 @@ export const BalTabs = /*@__PURE__*/ Vue.extend({
 export const BalTag = /*@__PURE__*/ Vue.extend({
 
   props: {
-    type: {} as PropOptions<Components.BalTag['type']>,
+    color: {} as PropOptions<Components.BalTag['color']>,
   },
 
 
@@ -1499,7 +1499,7 @@ export const BalTimeinput = /*@__PURE__*/ Vue.extend({
 export const BalToast = /*@__PURE__*/ Vue.extend({
 
   props: {
-    type: {} as PropOptions<Components.BalToast['type']>,
+    color: {} as PropOptions<Components.BalToast['color']>,
     duration: {} as PropOptions<Components.BalToast['duration']>,
   },
 

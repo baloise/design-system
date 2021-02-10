@@ -21,7 +21,7 @@ export class Icon {
   /**
    * The theme type of the button. Given by bulma our css framework.
    */
-  @Prop() type: BalButtonType = 'info'
+  @Prop() color: BalButtonType = 'info'
 
   /**
    * If `true` the button is inverted
@@ -46,7 +46,7 @@ export class Icon {
         class={{
           [`is-size-${this.size}`]: !!this.size,
           [`is-inverted`]: this.inverted,
-          [`is-${this.type}`]: true,
+          [`is-${this.color}`]: true,
           [`turn`]: this.turn,
           [`rotate`]: this.rotate,
         }}>

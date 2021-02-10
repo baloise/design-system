@@ -12,6 +12,7 @@ The classic button, in different colors, sizes, and states.
 | Property        | Attribute        | Description                                                           | Type                                                                                                     | Default     |
 | --------------- | ---------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ----------- |
 | `bottomRounded` | `bottom-rounded` | If `true` the bottom corners get rounded                              | `boolean`                                                                                                | `false`     |
+| `color`         | `color`          | The theme type of the button. Given by bulma our css framework.       | `"danger" \| "info" \| "info-light" \| "link" \| "primary" \| "primary-light" \| "success" \| "warning"` | `'primary'` |
 | `disabled`      | `disabled`       | If `true` the button is disabled                                      | `boolean`                                                                                                | `false`     |
 | `expanded`      | `expanded`       | If `true` the button has a full width                                 | `boolean`                                                                                                | `false`     |
 | `href`          | `href`           | Specifies the URL of the page the link goes to                        | `string`                                                                                                 | `''`        |
@@ -27,7 +28,6 @@ The classic button, in different colors, sizes, and states.
 | `square`        | `square`         | If `true` the width of the buttons is limited                         | `boolean`                                                                                                | `false`     |
 | `target`        | `target`         | Specifies where to open the linked document                           | `" _parent" \| "_blank" \| "_self" \| "_top"`                                                            | `'_self'`   |
 | `topRounded`    | `top-rounded`    | If `true` the top corners get rounded                                 | `boolean`                                                                                                | `false`     |
-| `type`          | `type`           | The theme type of the button. Given by bulma our css framework.       | `"danger" \| "info" \| "info-light" \| "link" \| "primary" \| "primary-light" \| "success" \| "warning"` | `'primary'` |
 
 
 ## Events

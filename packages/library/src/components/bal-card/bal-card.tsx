@@ -36,7 +36,7 @@ export class BalCard {
   /**
    * Defines the color of the card.
    */
-  @Prop() type: ColorTypes | '' = ''
+  @Prop() color: ColorTypes | '' = ''
 
   /**
    * If `true` the card has a limited width on desktop.
@@ -48,7 +48,7 @@ export class BalCard {
       <Host
         class={[
           'bal-card',
-          `is-${this.type}`,
+          `is-${this.color}`,
           this.teaser ? 'is-teaser' : '',
           this.square ? 'is-square' : '',
           this.padded ? 'is-padded' : '',

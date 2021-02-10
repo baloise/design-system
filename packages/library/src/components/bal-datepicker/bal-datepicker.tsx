@@ -398,7 +398,7 @@ export class Datepicker {
         <bal-icon
           class="datepicker-trigger-icon clickable"
           is-right
-          type="info"
+          color="info"
           inverted={this.inverted}
           name="date"
           onClick={e => this.onIconClick(e)}

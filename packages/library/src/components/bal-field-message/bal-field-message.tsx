@@ -12,11 +12,11 @@ export class FieldMessage {
   /**
    * Defines the color of the message.
    */
-  @Prop() type: '' | ColorTypesExtended = ''
+  @Prop() color: '' | ColorTypesExtended = ''
 
   render() {
     return (
-      <Host class={`help is-${this.type}`}>
+      <Host class={`help is-${this.color}`}>
         <bal-text small>
           <slot></slot>
         </bal-text>

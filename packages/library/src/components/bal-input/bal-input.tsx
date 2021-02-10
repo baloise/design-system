@@ -45,7 +45,26 @@ export class Input {
   /**
    * Defines the type of the input (text, number, email ...).
    */
-  @Prop() type: string = 'text'
+  @Prop() type:
+    | 'button'
+    | 'checkbox'
+    | 'color'
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'file'
+    | 'image'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'radio'
+    | 'range'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'time'
+    | 'url'
+    | 'week' = 'text'
 
   /**
    * Placeholder of the input

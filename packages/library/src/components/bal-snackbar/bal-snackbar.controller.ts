@@ -7,7 +7,7 @@ export interface BalSnackbarOptions {
   duration?: number
   action?: string
   actionCallback?: () => void
-  type?: ColorTypes | ''
+  color?: ColorTypes | ''
 }
 
 export class BalSnackbarController {
@@ -20,7 +20,7 @@ export class BalSnackbarController {
     this.setupContainer()
     const snackbar: HTMLBalSnackbarElement = document.createElement('bal-snackbar')
     snackbar.innerHTML = options.message
-    snackbar.type = options.type || 'info'
+    snackbar.color = options.color || 'info'
     snackbar.duration = options.duration || 0
     snackbar.subject = options.subject
     snackbar.icon = options.icon

@@ -11,12 +11,12 @@ export class Tag {
   /**
    * The theme type of the tag. Given by bulma our css framework.
    */
-  @Prop() type: ColorTypes | '' = ''
+  @Prop() color: ColorTypes | '' = ''
 
   render() {
     return (
       <Host>
-        <span class={`tag ${this.type !== '' ? `is-${this.type}` : 'default'}`}>
+        <span class={`tag ${this.color !== '' ? `is-${this.color}` : 'default'}`}>
           <bal-text small>
             <slot />
           </bal-text>

@@ -10,7 +10,7 @@ A simple tag in different colors
 
 | Property | Attribute | Description                                                  | Type                                                              | Default |
 | -------- | --------- | ------------------------------------------------------------ | ----------------------------------------------------------------- | ------- |
-| `type`   | `type`    | The theme type of the tag. Given by bulma our css framework. | `"" \| "danger" \| "info" \| "primary" \| "success" \| "warning"` | `''`    |
+| `color`  | `color`   | The theme type of the tag. Given by bulma our css framework. | `"" \| "danger" \| "info" \| "primary" \| "success" \| "warning"` | `''`    |
 
 
 ## Dependencies

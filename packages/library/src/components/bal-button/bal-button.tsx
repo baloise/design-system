@@ -8,10 +8,15 @@ import { BalButtonType } from './bal.button.type'
   scoped: true,
 })
 export class Button {
+  // /**
+  //  * The type of the button.
+  //  */
+  // @Prop() type: 'button' | 'reset' | 'submit' = 'button'
+
   /**
    * The theme type of the button. Given by bulma our css framework.
    */
-  @Prop() type: BalButtonType = 'primary'
+  @Prop() color: BalButtonType = 'primary'
 
   /**
    * Size of the button
@@ -99,7 +104,7 @@ export class Button {
   @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
 
   get isIconInverted() {
-    switch (this.type) {
+    switch (this.color) {
       case 'primary':
       case 'success':
       case 'warning':
@@ -114,7 +119,7 @@ export class Button {
   get buttonCssClass() {
     return [
       'button',
-      `is-${this.type}`,
+      `is-${this.color}`,
       this.square ? 'is-square' : '',
       this.size ? 'is-small' : '',
       this.inverted ? 'is-inverted' : '',
@@ -178,7 +183,7 @@ export class Button {
           class="icon-left"
           name={this.icon}
           size={this.iconSize}
-          type={this.type}
+          color={this.color}
           inverted={this.isIconInverted}
         />
       )
@@ -192,7 +197,7 @@ export class Button {
           class="icon-right"
           name={this.iconRight}
           size={this.iconSize}
-          type={this.type}
+          color={this.color}
           inverted={this.isIconInverted}
         />
       )
@@ -235,7 +240,7 @@ export class Button {
     return (
       <Host>
         <button class={this.buttonCssClass} disabled={this.disabled}>
-          <bal-icon name={this.icon} size={this.size} type={this.type} inverted={this.isIconInverted} />
+          <bal-icon name={this.icon} size={this.size} color={this.color} inverted={this.isIconInverted} />
         </button>
       </Host>
     )
@@ -249,7 +254,7 @@ export class Button {
           href={this.href}
           target={this.target}
           onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
-          <bal-icon name={this.icon} size={this.size} type={this.type} inverted={this.isIconInverted} />
+          <bal-icon name={this.icon} size={this.size} color={this.color} inverted={this.isIconInverted} />
         </a>
       </Host>
     )
