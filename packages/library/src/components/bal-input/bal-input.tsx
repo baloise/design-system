@@ -182,6 +182,10 @@ export class Input {
   }
 
   render() {
+    let inputProps = {}
+    if (this.numberKeyboard) {
+      inputProps = { pattern: '[0-9]*' }
+    }
     return (
       <Host>
         <input
@@ -200,9 +204,9 @@ export class Input {
           tabindex={this.balTabindex}
           disabled={this.disabled}
           readonly={this.readonly}
-          pattern={this.numberKeyboard ? '[0-9]*' : ''}
           maxLength={this.maxLength}
           minLength={this.minLength}
+          {...inputProps}
           onInput={e => this.onInput(e as any)}
           onChange={() => this.balChange.emit(this.value)}
           onBlur={e => this.balBlur.emit(e)}
