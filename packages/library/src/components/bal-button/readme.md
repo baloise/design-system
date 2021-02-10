@@ -28,6 +28,7 @@ The classic button, in different colors, sizes, and states.
 | `square`        | `square`         | If `true` the width of the buttons is limited                         | `boolean`                                                                                                | `false`     |
 | `target`        | `target`         | Specifies where to open the linked document                           | `" _parent" \| "_blank" \| "_self" \| "_top"`                                                            | `'_self'`   |
 | `topRounded`    | `top-rounded`    | If `true` the top corners get rounded                                 | `boolean`                                                                                                | `false`     |
+| `type`          | `type`           | The type of the button.                                               | `"button" \| "reset" \| "submit"`                                                                        | `'button'`  |
 
 
 ## Events

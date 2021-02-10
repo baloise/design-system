@@ -124,6 +124,10 @@ export namespace Components {
           * If `true` the top corners get rounded
          */
         "topRounded": boolean;
+        /**
+          * The type of the button.
+         */
+        "type": 'button' | 'reset' | 'submit';
     }
     interface BalCard {
         /**
@@ -2257,6 +2261,10 @@ declare namespace LocalJSX {
           * If `true` the top corners get rounded
          */
         "topRounded"?: boolean;
+        /**
+          * The type of the button.
+         */
+        "type"?: 'button' | 'reset' | 'submit';
     }
     interface BalCard {
         /**

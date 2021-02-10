@@ -149,6 +149,7 @@ export const BalAccordion = /*@__PURE__*/ Vue.extend({
 export const BalButton = /*@__PURE__*/ Vue.extend({
 
   props: {
+    type: {} as PropOptions<Components.BalButton['type']>,
     color: {} as PropOptions<Components.BalButton['color']>,
     size: {} as PropOptions<Components.BalButton['size']>,
     link: {} as PropOptions<Components.BalButton['link']>,

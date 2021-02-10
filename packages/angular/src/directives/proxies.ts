@@ -34,13 +34,13 @@ export class BalAccordion {
 import { Button as IButton } from '@baloise/ui-library/dist/types/components/bal-button/bal-button';
 export declare interface BalButton extends Components.BalButton {}
 @ProxyCmp({
-  inputs: ['bottomRounded', 'color', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded']
+  inputs: ['bottomRounded', 'color', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded', 'type']
 })
 @Component({
   selector: 'bal-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['bottomRounded', 'color', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded'],
+  inputs: ['bottomRounded', 'color', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded', 'type'],
   outputs: ['balNavigate']
 })
 export class BalButton {
