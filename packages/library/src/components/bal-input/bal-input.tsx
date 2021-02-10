@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, Watch, EventEmitter, Event, Method } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method } from '@stencil/core'
 
 @Component({
   tag: 'bal-input',
@@ -7,6 +7,31 @@ import { Component, h, Host, Prop, Element, Watch, EventEmitter, Event, Method }
   scoped: true,
 })
 export class Input {
+  private allowedKeys = [
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '.',
+    'Backspace',
+    'Enter',
+    'ArrowLeft',
+    'Left',
+    'ArrowRight',
+    'Right',
+    'Tab',
+    'Esc',
+    'Escape',
+    'Del',
+    'Delete',
+  ]
+
   private inputId = `bal-in-${InputIds++}`
   private inputEl?: HTMLInputElement
 
@@ -20,7 +45,26 @@ export class Input {
   /**
    * Defines the type of the input (text, number, email ...).
    */
-  @Prop() type: string = 'text'
+  @Prop() type:
+    | 'button'
+    | 'checkbox'
+    | 'color'
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'file'
+    | 'image'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'radio'
+    | 'range'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'time'
+    | 'url'
+    | 'week' = 'text'
 
   /**
    * Placeholder of the input
@@ -41,6 +85,11 @@ export class Input {
    * Defines the min length of the value.
    */
   @Prop() minLength: number | undefined = undefined
+
+  /**
+   * If `true` the attribute required is added to the native input.
+   */
+  @Prop() required = false
 
   /**
    * If `true` this component can be placed on dark background
@@ -81,10 +130,6 @@ export class Input {
    * The value of the control.
    */
   @Prop({ mutable: true }) value: string = ''
-  @Watch('value')
-  protected valueChanged() {
-    this.updateInputValue()
-  }
 
   /**
    * Emitted when a keyboard input occurred.
@@ -100,8 +145,6 @@ export class Input {
     if (this.value !== val) {
       this.value = val
       this.balInput.emit(this.value)
-    } else {
-      this.updateInputValue()
     }
   }
 
@@ -139,6 +182,10 @@ export class Input {
   }
 
   render() {
+    let inputProps = {}
+    if (this.numberKeyboard) {
+      inputProps = { pattern: '[0-9]*' }
+    }
     return (
       <Host>
         <input
@@ -150,20 +197,22 @@ export class Input {
           autoComplete={this.autoComplete ? 'on' : 'off'}
           id={this.inputId}
           type={this.type}
+          required={this.required}
           placeholder={this.placeholder}
           name={this.name}
           value={this.value}
           tabindex={this.balTabindex}
           disabled={this.disabled}
           readonly={this.readonly}
-          pattern={this.numberKeyboard ? '[0-9]*' : ''}
           maxLength={this.maxLength}
           minLength={this.minLength}
+          {...inputProps}
           onInput={e => this.onInput(e as any)}
           onChange={() => this.balChange.emit(this.value)}
           onBlur={e => this.balBlur.emit(e)}
           onClick={e => this.balClick.emit(e)}
           onKeyPress={e => this.balKeyPress.emit(e)}
+          onKeyDown={e => this.onKeyDown(e)}
           onFocus={e => this.balFocus.emit(e)}
           ref={inputEl => (this.inputEl = inputEl)}
         />
@@ -171,9 +220,12 @@ export class Input {
     )
   }
 
-  private updateInputValue() {
-    if (this.inputEl.value !== this.value) {
-      this.inputEl.value = this.value
+  onKeyDown(event: KeyboardEvent): void {
+    if (this.numberKeyboard) {
+      if (this.allowedKeys.indexOf(event.key) < 0) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
     }
   }
 

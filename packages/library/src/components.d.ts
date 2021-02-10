@@ -31,6 +31,10 @@ export namespace Components {
          */
         "closeLabel": string;
         /**
+          * Type defines the theme of the accordion toggle
+         */
+        "color": ColorTypesBasic;
+        /**
           * Controls if the accordion is collapsed or not
          */
         "isActive": boolean;
@@ -50,16 +54,16 @@ export namespace Components {
           * Triggers the accordion
          */
         "toggle": () => Promise<void>;
-        /**
-          * Type defines the theme of the accordion toggle
-         */
-        "type": ColorTypesBasic;
     }
     interface BalButton {
         /**
           * If `true` the bottom corners get rounded
          */
         "bottomRounded": boolean;
+        /**
+          * The theme type of the button. Given by bulma our css framework.
+         */
+        "color": BalButtonType;
         /**
           * If `true` the button is disabled
          */
@@ -121,15 +125,19 @@ export namespace Components {
          */
         "topRounded": boolean;
         /**
-          * The theme type of the button. Given by bulma our css framework.
+          * The type of the button.
          */
-        "type": BalButtonType;
+        "type": 'button' | 'reset' | 'submit';
     }
     interface BalCard {
         /**
           * If `true` a light blue border is added to the card.
          */
         "border": boolean;
+        /**
+          * Defines the color of the card.
+         */
+        "color": ColorTypes | '';
         /**
           * If `true` the card loses its shadow.
          */
@@ -150,10 +158,6 @@ export namespace Components {
           * If `true` the card has a limited width on desktop.
          */
         "teaser": boolean;
-        /**
-          * Defines the color of the card.
-         */
-        "type": ColorTypes | '';
     }
     interface BalCardActions {
         /**
@@ -364,6 +368,10 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required": boolean;
+        /**
           * Selects an option
          */
         "select": (date: Date) => Promise<void>;
@@ -401,6 +409,9 @@ export namespace Components {
           * Open the dropdown menu.
          */
         "open": () => Promise<void>;
+        /**
+          * Defines the length of the menu in pixel.
+         */
         "scrollable": number;
         /**
           * Open or closes the dropdown.
@@ -465,7 +476,7 @@ export namespace Components {
         /**
           * Defines the color of the message.
          */
-        "type": '' | ColorTypesExtended;
+        "color": '' | ColorTypesExtended;
     }
     interface BalFileUpload {
         /**
@@ -525,6 +536,10 @@ export namespace Components {
     }
     interface BalIcon {
         /**
+          * The theme type of the button. Given by bulma our css framework.
+         */
+        "color": BalButtonType;
+        /**
           * If `true` the button is inverted
          */
         "inverted": boolean;
@@ -544,10 +559,6 @@ export namespace Components {
           * If `true` the icon is rotated 180deg
          */
         "turn": boolean;
-        /**
-          * The theme type of the button. Given by bulma our css framework.
-         */
-        "type": BalButtonType;
     }
     interface BalIconAccount {
         /**
@@ -869,13 +880,35 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required": boolean;
+        /**
           * Sets the focus on the input element.
          */
         "setFocus": () => Promise<void>;
         /**
           * Defines the type of the input (text, number, email ...).
          */
-        "type": string;
+        "type": | 'button'
+    | 'checkbox'
+    | 'color'
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'file'
+    | 'image'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'radio'
+    | 'range'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'time'
+    | 'url'
+    | 'week';
         /**
           * The value of the control.
          */
@@ -985,7 +1018,7 @@ export namespace Components {
         /**
           * Defines the color of the element
          */
-        "type": '' | ColorTypes;
+        "color": '' | ColorTypes;
     }
     interface BalPagination {
         /**
@@ -1115,6 +1148,10 @@ export namespace Components {
          */
         "placeholder": string;
         /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required": boolean;
+        /**
           * Defines the height of the dropdown list.
          */
         "scrollable": number;
@@ -1187,6 +1224,10 @@ export namespace Components {
          */
         "closeIn": (duration: number) => Promise<void>;
         /**
+          * The theme type of the snackbar. Given by bulma our css framework.
+         */
+        "color": ColorTypes | '';
+        /**
           * The duration of the snackbar
          */
         "duration": number;
@@ -1202,10 +1243,6 @@ export namespace Components {
           * The subject of the snackbar header
          */
         "subject": string;
-        /**
-          * The theme type of the snackbar. Given by bulma our css framework.
-         */
-        "type": ColorTypes | '';
     }
     interface BalSpinner {
         /**
@@ -1297,7 +1334,7 @@ export namespace Components {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "type": ColorTypes | '';
+        "color": ColorTypes | '';
     }
     interface BalText {
         "small": boolean;
@@ -1380,13 +1417,13 @@ export namespace Components {
          */
         "closeIn": (duration: number) => Promise<void>;
         /**
+          * The theme type of the toast. Given by bulma our css framework.
+         */
+        "color": ColorTypes | '';
+        /**
           * The duration of the toast
          */
         "duration": number;
-        /**
-          * The theme type of the toast. Given by bulma our css framework.
-         */
-        "type": ColorTypes | '';
     }
 }
 declare global {
@@ -2150,6 +2187,10 @@ declare namespace LocalJSX {
          */
         "closeLabel"?: string;
         /**
+          * Type defines the theme of the accordion toggle
+         */
+        "color"?: ColorTypesBasic;
+        /**
           * Controls if the accordion is collapsed or not
          */
         "isActive"?: boolean;
@@ -2165,16 +2206,16 @@ declare namespace LocalJSX {
           * Label of the open trigger button
          */
         "openLabel"?: string;
-        /**
-          * Type defines the theme of the accordion toggle
-         */
-        "type"?: ColorTypesBasic;
     }
     interface BalButton {
         /**
           * If `true` the bottom corners get rounded
          */
         "bottomRounded"?: boolean;
+        /**
+          * The theme type of the button. Given by bulma our css framework.
+         */
+        "color"?: BalButtonType;
         /**
           * If `true` the button is disabled
          */
@@ -2240,15 +2281,19 @@ declare namespace LocalJSX {
          */
         "topRounded"?: boolean;
         /**
-          * The theme type of the button. Given by bulma our css framework.
+          * The type of the button.
          */
-        "type"?: BalButtonType;
+        "type"?: 'button' | 'reset' | 'submit';
     }
     interface BalCard {
         /**
           * If `true` a light blue border is added to the card.
          */
         "border"?: boolean;
+        /**
+          * Defines the color of the card.
+         */
+        "color"?: ColorTypes | '';
         /**
           * If `true` the card loses its shadow.
          */
@@ -2269,10 +2314,6 @@ declare namespace LocalJSX {
           * If `true` the card has a limited width on desktop.
          */
         "teaser"?: boolean;
-        /**
-          * Defines the color of the card.
-         */
-        "type"?: ColorTypes | '';
     }
     interface BalCardActions {
         /**
@@ -2510,6 +2551,10 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required"?: boolean;
+        /**
           * If `true` the datepicker only open on click of the icon
          */
         "triggerIcon"?: boolean;
@@ -2539,6 +2584,9 @@ declare namespace LocalJSX {
           * *Internal* - Use this to close unuesed dropdowns.
          */
         "onBalDropdownPrepare"?: (event: CustomEvent<string>) => void;
+        /**
+          * Defines the length of the menu in pixel.
+         */
         "scrollable"?: number;
     }
     interface BalDropdownMenu {
@@ -2599,7 +2647,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the message.
          */
-        "type"?: '' | ColorTypesExtended;
+        "color"?: '' | ColorTypesExtended;
     }
     interface BalFileUpload {
         /**
@@ -2655,6 +2703,10 @@ declare namespace LocalJSX {
     }
     interface BalIcon {
         /**
+          * The theme type of the button. Given by bulma our css framework.
+         */
+        "color"?: BalButtonType;
+        /**
           * If `true` the button is inverted
          */
         "inverted"?: boolean;
@@ -2674,10 +2726,6 @@ declare namespace LocalJSX {
           * If `true` the icon is rotated 180deg
          */
         "turn"?: boolean;
-        /**
-          * The theme type of the button. Given by bulma our css framework.
-         */
-        "type"?: BalButtonType;
     }
     interface BalIconAccount {
         /**
@@ -3023,9 +3071,31 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required"?: boolean;
+        /**
           * Defines the type of the input (text, number, email ...).
          */
-        "type"?: string;
+        "type"?: | 'button'
+    | 'checkbox'
+    | 'color'
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'file'
+    | 'image'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'radio'
+    | 'range'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'time'
+    | 'url'
+    | 'week';
         /**
           * The value of the control.
          */
@@ -3131,7 +3201,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the element
          */
-        "type"?: '' | ColorTypes;
+        "color"?: '' | ColorTypes;
     }
     interface BalPagination {
         /**
@@ -3281,6 +3351,10 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required"?: boolean;
+        /**
           * Defines the height of the dropdown list.
          */
         "scrollable"?: number;
@@ -3329,6 +3403,10 @@ declare namespace LocalJSX {
          */
         "action"?: string;
         /**
+          * The theme type of the snackbar. Given by bulma our css framework.
+         */
+        "color"?: ColorTypes | '';
+        /**
           * The duration of the snackbar
          */
         "duration"?: number;
@@ -3352,10 +3430,6 @@ declare namespace LocalJSX {
           * The subject of the snackbar header
          */
         "subject"?: string;
-        /**
-          * The theme type of the snackbar. Given by bulma our css framework.
-         */
-        "type"?: ColorTypes | '';
     }
     interface BalSpinner {
         /**
@@ -3443,7 +3517,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "type"?: ColorTypes | '';
+        "color"?: ColorTypes | '';
     }
     interface BalText {
         "small"?: boolean;
@@ -3542,6 +3616,10 @@ declare namespace LocalJSX {
     }
     interface BalToast {
         /**
+          * The theme type of the toast. Given by bulma our css framework.
+         */
+        "color"?: ColorTypes | '';
+        /**
           * The duration of the toast
          */
         "duration"?: number;
@@ -3549,10 +3627,6 @@ declare namespace LocalJSX {
           * Emitted when toast is closed
          */
         "onBalClose"?: (event: CustomEvent<string>) => void;
-        /**
-          * The theme type of the toast. Given by bulma our css framework.
-         */
-        "type"?: ColorTypes | '';
     }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;

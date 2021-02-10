@@ -24,6 +24,7 @@ An input with a simple dropdown for selecting a date.
 | `minYearProp`   | `min-year`        | Earliest year available for selection                                                      | `number`                       | `undefined` |
 | `placeholder`   | `placeholder`     | Defines the placeholder of the input element.                                              | `string`                       | `''`        |
 | `readonly`      | `readonly`        | If `true` the use can only select a date.                                                  | `boolean`                      | `false`     |
+| `required`      | `required`        | If `true` the attribute required is added to the native input.                             | `boolean`                      | `false`     |
 | `triggerIcon`   | `trigger-icon`    | If `true` the datepicker only open on click of the icon                                    | `boolean`                      | `false`     |
 | `value`         | --                | Selected date. Could also be passed as a string, which gets transformed to js date object. | `Date`                         | `undefined` |
 

@@ -12,7 +12,12 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-accordion class="box" open-label="Details einblenden" close-label="Details ausblenden" data-test-id="accordion">
+        <bal-accordion
+          class="box"
+          open-label="Details einblenden"
+          close-label="Details ausblenden"
+          data-test-id="accordion"
+        >
           <p class="is-padded">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.
@@ -20,10 +25,10 @@
         </bal-accordion>
       </section>
 
-      <h2 class="title is-size-2">Types</h2>
-      <p>The accordion has 2 type of themes `is-info` and `is-primary`.</p>
+      <h2 class="title is-size-2">Colors</h2>
+      <p>The accordion has 2 colors of themes `is-info` and `is-primary`.</p>
       <section>
-        <bal-accordion class="box" type="info" open-label="Details einblenden" close-label="Details ausblenden">
+        <bal-accordion class="box" color="info" open-label="Details einblenden" close-label="Details ausblenden">
           <p class="is-padded">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.
@@ -44,13 +49,7 @@
       <h2 class="title is-size-2">Trigger label & icon</h2>
       <p>Use the properties `open-label` & `open-icon` to change the content of the trigger button.</p>
       <section>
-        <bal-accordion
-          class="box"
-          open-icon="edit"
-          open-label="Bearbeiten"
-          close-label="Schliessen"
-          close-icon="close"
-        >
+        <bal-accordion class="box" open-icon="edit" open-label="Bearbeiten" close-label="Schliessen" close-icon="close">
           <p class="is-padded">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.

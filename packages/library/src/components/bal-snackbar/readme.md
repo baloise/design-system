@@ -20,11 +20,11 @@ balScnackbarController.create({ message: 'Hi I am a default Toast!', duration: 1
 | Property   | Attribute  | Description                                                       | Type                                                              | Default |
 | ---------- | ---------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ------- |
 | `action`   | `action`   | Label text for the action button                                  | `string`                                                          | `''`    |
+| `color`    | `color`    | The theme type of the snackbar. Given by bulma our css framework. | `"" \| "danger" \| "info" \| "primary" \| "success" \| "warning"` | `''`    |
 | `duration` | `duration` | The duration of the snackbar                                      | `number`                                                          | `0`     |
 | `icon`     | `icon`     | The icon of the snackbar header                                   | `string`                                                          | `''`    |
 | `message`  | `message`  | The message of the snackbar                                       | `string`                                                          | `''`    |
 | `subject`  | `subject`  | The subject of the snackbar header                                | `string`                                                          | `''`    |
-| `type`     | `type`     | The theme type of the snackbar. Given by bulma our css framework. | `"" \| "danger" \| "info" \| "primary" \| "success" \| "warning"` | `''`    |
 
 
 ## Events

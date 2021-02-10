@@ -33,12 +33,13 @@ The UI-Libary is an open source project for styling awesome web applications tha
 <tr>
 <td>
     <strong>Vue.js</strong><br>
-    2.x.x ✔<br><br>
+    2.x.x ✔<br>
+    3.x.x ✔<br><br>
     <a href="#/introduction/vue">Documentation</a>
 </td>
 <td>
     <strong>Angular</strong><br>
-    10.2.x ✔<br><br>
+    10.2.x ✔<br><br><br>
     <a href="#/introduction/angular">Documentation</a>
 </td>
 </tr>

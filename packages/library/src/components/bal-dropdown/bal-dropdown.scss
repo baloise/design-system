@@ -8,25 +8,27 @@
     display: inline-block;
 
     .dropdown {
-      &.is-expanded {
-        width: 100%;
-        .dropdown-trigger {
-          width: 100%;
-        }
-      }
-
-      &.is-expanded:not(.has-fixed-content-width) {
-        .dropdown-menu {
-          min-width: 100%;
-        }
-      }
-
       .dropdown-content {
         padding: 0;
       }
 
       .dropdown-menu {
         padding-top: 0;
+      }
+    }
+
+    &.is-expanded {
+      width: 100%;
+
+      .dropdown,
+      .dropdown-trigger {
+        width: 100%;
+      }
+    }
+
+    @include mobile() {
+      .dropdown-menu {
+        min-width: 100%;
       }
     }
   }

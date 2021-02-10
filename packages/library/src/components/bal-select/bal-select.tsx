@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop, State, Method, EventEmitter, Event, Listen, Watch } from '@stencil/core'
+import { Component, h, Host, Element, Prop, State, Method, EventEmitter, Event, Listen } from '@stencil/core'
 import { isEnterKey, isEscapeKey, isArrowDownKey, isArrowUpKey } from '../../utils/key.util'
 import { BalOptionValue } from '../bal-select-option/bal-select-option.type'
 
@@ -29,6 +29,11 @@ export class Select {
    * If `true` the filtering of the options is done outside of the component.
    */
   @Prop() noFilter = false
+
+  /**
+   * If `true` the attribute required is added to the native input.
+   */
+  @Prop() required = false
 
   /**
    * The tabindex of the control.
@@ -114,17 +119,6 @@ export class Select {
    * Emitted when the user cancels the input.
    */
   @Event({ eventName: 'balCancel' }) balCancel!: EventEmitter<KeyboardEvent>
-
-  componentDidLoad() {
-    this.valueWatcher()
-  }
-
-  @Watch('value')
-  valueWatcher() {
-    const selectedOptions = this.childOptions.filter(option => this.value.indexOf(option.value) >= 0)
-    this.inputElement.value = selectedOptions.map(o => o.value).join(', ')
-    this.sync()
-  }
 
   /**
    * Opens the dropdown
@@ -457,6 +451,11 @@ export class Select {
     optionElement.focused = true
   }
 
+  private parseValue(): string {
+    const selectedOptions = this.childOptions.filter(option => this.value.indexOf(option.value) >= 0)
+    return selectedOptions.map(o => o.label).join(', ')
+  }
+
   render() {
     return (
       <Host role="listbox">
@@ -481,9 +480,9 @@ export class Select {
         {this.renderInput()}
         <bal-icon
           class={{ 'is-hidden': this.loading }}
-          type="info"
+          color="info"
           turn={!this.loading && !this.typeahead && this.isDropdownOpen}
-          color={this.inverted ? 'white' : 'blue'}
+          inverted={this.inverted}
           name={this.typeahead && !this.multiple ? 'search' : 'caret-down'}
           size={this.typeahead && !this.multiple ? 'small' : 'xsmall'}
         />
@@ -499,11 +498,14 @@ export class Select {
           'clickable': true,
           'is-inverted': this.inverted,
         }}
+        type="text"
+        required={this.required}
         readonly={!(this.typeahead && !this.multiple)}
         autoComplete="off"
         disabled={this.disabled}
         placeholder={this.placeholder}
         tabindex={this.balTabindex}
+        value={this.parseValue()}
         onInput={e => this.onInput(e as any)}
         onClick={e => this.onInputClick(e)}
         onKeyPress={e => this.onKeyPress(e)}
@@ -538,7 +540,7 @@ export class Select {
             class={{ 'is-hidden': this.loading }}
             turn={!this.loading && !this.typeahead && this.isDropdownOpen}
             size="small"
-            type="info"
+            color="info"
             name="search"
           />
         </div>

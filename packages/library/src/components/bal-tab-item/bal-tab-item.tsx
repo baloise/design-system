@@ -76,7 +76,9 @@ export class TabItem {
   @Watch('failed')
   @Watch('prevent')
   informParent() {
-    this.parent.sync()
+    if (this.parent) {
+      this.parent.sync()
+    }
   }
 
   /**

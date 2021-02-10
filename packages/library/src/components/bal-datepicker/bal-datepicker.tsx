@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch } from '@stencil/core'
+import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method } from '@stencil/core'
 import { i18nDate } from './bal-datepicker.i18n'
 import { BalCalendarCell, BalDateCallback } from './bal-datepicker.type'
 import {
@@ -53,6 +53,11 @@ export class Datepicker {
    * Set this to `true` when the component is placed on a dark background.
    */
   @Prop() inverted = false
+
+  /**
+   * If `true` the attribute required is added to the native input.
+   */
+  @Prop() required = false
 
   /**
    * If `true` the use can only select a date.
@@ -139,16 +144,6 @@ export class Datepicker {
     this.balChange.emit(this.value)
     if (this.closeOnSelect) {
       await this.dropdownElement?.toggle()
-    }
-  }
-
-  @Watch('value')
-  valueWatcher(newDate: Date, oldDate: Date) {
-    newDate = this.parseValue(newDate)
-    oldDate = this.parseValue(oldDate)
-    this.value = this.parseValue(this.value)
-    if (oldDate === undefined || (isValidDate(newDate) && isValidDate(oldDate) && !isSameDay(newDate, oldDate))) {
-      this.updateFromValue()
     }
   }
 
@@ -392,8 +387,10 @@ export class Datepicker {
             'is-inverted': this.inverted,
             'is-disabled': this.disabled,
           }}
+          type="text"
           maxlength="10"
           autoComplete="off"
+          required={this.required}
           disabled={this.disabled}
           readonly={this.readonly}
           placeholder={this.placeholder}
@@ -408,7 +405,7 @@ export class Datepicker {
         <bal-icon
           class="datepicker-trigger-icon clickable"
           is-right
-          type="info"
+          color="info"
           inverted={this.inverted}
           name="date"
           onClick={e => this.onIconClick(e)}

@@ -11,12 +11,12 @@ export class Notification {
   /**
    * Defines the color of the element
    */
-  @Prop() type: '' | ColorTypes = ''
+  @Prop() color: '' | ColorTypes = ''
 
   render() {
     return (
       <Host>
-        <div class={`notification is-${this.type}`}>
+        <div class={`notification is-${this.color}`}>
           <bal-text>
             <slot />
           </bal-text>

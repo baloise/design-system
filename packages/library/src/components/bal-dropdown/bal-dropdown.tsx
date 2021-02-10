@@ -17,6 +17,10 @@ export class Dropdown {
    * If `true` the field spans over the whole width.
    */
   @Prop() expanded: boolean = false
+
+  /**
+   * Defines the length of the menu in pixel.
+   */
   @Prop() scrollable: number = 0
 
   /**
@@ -146,12 +150,16 @@ export class Dropdown {
 
   render() {
     return (
-      <Host data-id={this.dropdownId}>
+      <Host
+        data-id={this.dropdownId}
+        class={{
+          'is-expanded': this.expanded,
+          'has-fixed-content-width': this.fixedContentWidth,
+        }}>
         <div
           class={{
             'dropdown': true,
             'is-active': this.isActive,
-            'has-fixed-content-width': this.fixedContentWidth,
             'is-expanded': this.expanded,
             'is-up': this.isDropDownContentUp,
           }}>

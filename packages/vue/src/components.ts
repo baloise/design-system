@@ -9,7 +9,7 @@ import type { JSX } from '@baloise/ui-library';
 
 
 export const BalAccordion = /*@__PURE__*/ defineContainer<JSX.BalAccordion>('bal-accordion',
-  ['type',
+  ['color',
 'isActive',
 'openLabel',
 'openIcon',
@@ -26,6 +26,7 @@ export const BalAccordion = /*@__PURE__*/ defineContainer<JSX.BalAccordion>('bal
 
 export const BalButton = /*@__PURE__*/ defineContainer<JSX.BalButton>('bal-button',
   ['type',
+'color',
 'size',
 'link',
 'href',
@@ -53,7 +54,7 @@ export const BalCard = /*@__PURE__*/ defineContainer<JSX.BalCard>('bal-card',
 'square',
 'padded',
 'inverted',
-'type',
+'color',
 'teaser'],
   [],
   
@@ -181,6 +182,7 @@ export const BalDatepicker = /*@__PURE__*/ defineContainer<JSX.BalDatepicker>('b
 'balTabindex',
 'expanded',
 'inverted',
+'required',
 'readonly',
 'disabled',
 'placeholder',
@@ -260,7 +262,7 @@ export const BalFieldLabel = /*@__PURE__*/ defineContainer<JSX.BalFieldLabel>('b
 
 
 export const BalFieldMessage = /*@__PURE__*/ defineContainer<JSX.BalFieldMessage>('bal-field-message',
-  ['type'],
+  ['color'],
   [],
   
 );
@@ -305,7 +307,7 @@ export const BalHintTitle = /*@__PURE__*/ defineContainer<JSX.BalHintTitle>('bal
 export const BalIcon = /*@__PURE__*/ defineContainer<JSX.BalIcon>('bal-icon',
   ['name',
 'size',
-'type',
+'color',
 'inverted',
 'rotate',
 'turn'],
@@ -636,6 +638,7 @@ export const BalInput = /*@__PURE__*/ defineContainer<JSX.BalInput>('bal-input',
 'balTabindex',
 'maxLength',
 'minLength',
+'required',
 'inverted',
 'readonly',
 'disabled',
@@ -778,7 +781,7 @@ export const BalNavbarMenuStart = /*@__PURE__*/ defineContainer<JSX.BalNavbarMen
 
 
 export const BalNotification = /*@__PURE__*/ defineContainer<JSX.BalNotification>('bal-notification',
-  ['type'],
+  ['color'],
   [],
   
 );
@@ -824,6 +827,7 @@ export const BalRadioGroup = /*@__PURE__*/ defineContainer<JSX.BalRadioGroup>('b
 export const BalSelect = /*@__PURE__*/ defineContainer<JSX.BalSelect>('bal-select',
   ['multiple',
 'noFilter',
+'required',
 'balTabindex',
 'expanded',
 'inverted',
@@ -859,7 +863,7 @@ export const BalSelectOption = /*@__PURE__*/ defineContainer<JSX.BalSelectOption
 
 
 export const BalSnackbar = /*@__PURE__*/ defineContainer<JSX.BalSnackbar>('bal-snackbar',
-  ['type',
+  ['color',
 'duration',
 'subject',
 'message',
@@ -907,7 +911,7 @@ export const BalTabs = /*@__PURE__*/ defineContainer<JSX.BalTabs>('bal-tabs',
 
 
 export const BalTag = /*@__PURE__*/ defineContainer<JSX.BalTag>('bal-tag',
-  ['type'],
+  ['color'],
   [],
   
 );
@@ -959,7 +963,7 @@ export const BalTimeinput = /*@__PURE__*/ defineContainer<JSX.BalTimeinput>('bal
 
 
 export const BalToast = /*@__PURE__*/ defineContainer<JSX.BalToast>('bal-toast',
-  ['type',
+  ['color',
 'duration'],
   ['balClose'],
   

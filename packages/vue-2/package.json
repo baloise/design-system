@@ -39,7 +39,7 @@
   },
   "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca",
   "dependencies": {
-    "@baloise/ui-library": "^3.2.0-alpha.5",
-    "@baloise/ui-library-utils": "^3.2.0-alpha.5"
+    "@baloise/ui-library": "^4.0.0-alpha.6",
+    "@baloise/ui-library-utils": "^4.0.0-alpha.6"
   }
 }
