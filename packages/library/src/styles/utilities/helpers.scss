@@ -16,8 +16,12 @@
   padding: 40px !important;
 }
 
+.is-full-width {
+  width: 100% !important;
+}
+
 .is-row-reverse {
-  flex-direction: row-reverse;
+  flex-direction: row-reverse !important;
 }
 
 .has-background-light {
@@ -34,6 +38,14 @@ b {
   font-weight: 700;
 }
 
-.display-block {
-  display: block;
+.is-display-block {
+  display: block !important;
+}
+
+.is-display-inline-block {
+  display: inline-block !important;
+}
+
+.is-display-flex {
+  display: flex !important;
 }

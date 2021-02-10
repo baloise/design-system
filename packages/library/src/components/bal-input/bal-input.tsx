@@ -87,6 +87,11 @@ export class Input {
   @Prop() minLength: number | undefined = undefined
 
   /**
+   * If `true` the attribute required is added to the native input.
+   */
+  @Prop() required = false
+
+  /**
    * If `true` this component can be placed on dark background
    */
   @Prop() inverted = false
@@ -188,6 +193,7 @@ export class Input {
           autoComplete={this.autoComplete ? 'on' : 'off'}
           id={this.inputId}
           type={this.type}
+          required={this.required}
           placeholder={this.placeholder}
           name={this.name}
           value={this.value}

@@ -876,6 +876,10 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required": boolean;
+        /**
           * Sets the focus on the input element.
          */
         "setFocus": () => Promise<void>;
@@ -3050,6 +3054,10 @@ declare namespace LocalJSX {
           * If `true` the input is readonly
          */
         "readonly"?: boolean;
+        /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required"?: boolean;
         /**
           * Defines the type of the input (text, number, email ...).
          */

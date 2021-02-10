@@ -1056,6 +1056,7 @@ export const BalInput = /*@__PURE__*/ Vue.extend({
     balTabindex: {} as PropOptions<Components.BalInput['balTabindex']>,
     maxLength: {} as PropOptions<Components.BalInput['maxLength']>,
     minLength: {} as PropOptions<Components.BalInput['minLength']>,
+    required: {} as PropOptions<Components.BalInput['required']>,
     inverted: {} as PropOptions<Components.BalInput['inverted']>,
     readonly: {} as PropOptions<Components.BalInput['readonly']>,
     disabled: {} as PropOptions<Components.BalInput['disabled']>,

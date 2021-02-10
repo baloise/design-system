@@ -1529,14 +1529,14 @@ export class BalIconUpload {
 import { Input as IInput } from '@baloise/ui-library/dist/types/components/bal-input/bal-input';
 export declare interface BalInput extends Components.BalInput {}
 @ProxyCmp({
-  inputs: ['autoComplete', 'balTabindex', 'clickable', 'disabled', 'inverted', 'maxLength', 'minLength', 'name', 'numberKeyboard', 'onlyNumbers', 'placeholder', 'readonly', 'type', 'value'],
+  inputs: ['autoComplete', 'balTabindex', 'clickable', 'disabled', 'inverted', 'maxLength', 'minLength', 'name', 'numberKeyboard', 'onlyNumbers', 'placeholder', 'readonly', 'required', 'type', 'value'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'bal-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['autoComplete', 'balTabindex', 'clickable', 'disabled', 'inverted', 'maxLength', 'minLength', 'name', 'numberKeyboard', 'onlyNumbers', 'placeholder', 'readonly', 'type', 'value'],
+  inputs: ['autoComplete', 'balTabindex', 'clickable', 'disabled', 'inverted', 'maxLength', 'minLength', 'name', 'numberKeyboard', 'onlyNumbers', 'placeholder', 'readonly', 'required', 'type', 'value'],
   outputs: ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']
 })
 export class BalInput {
