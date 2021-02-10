@@ -367,6 +367,7 @@ export const BalDatepicker = /*@__PURE__*/ Vue.extend({
     balTabindex: {} as PropOptions<Components.BalDatepicker['balTabindex']>,
     expanded: {} as PropOptions<Components.BalDatepicker['expanded']>,
     inverted: {} as PropOptions<Components.BalDatepicker['inverted']>,
+    required: {} as PropOptions<Components.BalDatepicker['required']>,
     readonly: {} as PropOptions<Components.BalDatepicker['readonly']>,
     disabled: {} as PropOptions<Components.BalDatepicker['disabled']>,
     placeholder: {} as PropOptions<Components.BalDatepicker['placeholder']>,
@@ -1312,6 +1313,7 @@ export const BalSelect = /*@__PURE__*/ Vue.extend({
   props: {
     multiple: {} as PropOptions<Components.BalSelect['multiple']>,
     noFilter: {} as PropOptions<Components.BalSelect['noFilter']>,
+    required: {} as PropOptions<Components.BalSelect['required']>,
     balTabindex: {} as PropOptions<Components.BalSelect['balTabindex']>,
     expanded: {} as PropOptions<Components.BalSelect['expanded']>,
     inverted: {} as PropOptions<Components.BalSelect['inverted']>,

@@ -368,6 +368,10 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required": boolean;
+        /**
           * Selects an option
          */
         "select": (date: Date) => Promise<void>;
@@ -1143,6 +1147,10 @@ export namespace Components {
           * Defines the placeholder of the input element.
          */
         "placeholder": string;
+        /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required": boolean;
         /**
           * Defines the height of the dropdown list.
          */
@@ -2539,6 +2547,10 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required"?: boolean;
+        /**
           * If `true` the datepicker only open on click of the icon
          */
         "triggerIcon"?: boolean;
@@ -3334,6 +3346,10 @@ declare namespace LocalJSX {
           * Defines the placeholder of the input element.
          */
         "placeholder"?: string;
+        /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required"?: boolean;
         /**
           * Defines the height of the dropdown list.
          */

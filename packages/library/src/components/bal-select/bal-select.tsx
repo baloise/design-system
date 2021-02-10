@@ -31,6 +31,11 @@ export class Select {
   @Prop() noFilter = false
 
   /**
+   * If `true` the attribute required is added to the native input.
+   */
+  @Prop() required = false
+
+  /**
    * The tabindex of the control.
    */
   @Prop() balTabindex: number = 0
@@ -493,6 +498,8 @@ export class Select {
           'clickable': true,
           'is-inverted': this.inverted,
         }}
+        type="text"
+        required={this.required}
         readonly={!(this.typeahead && !this.multiple)}
         autoComplete="off"
         disabled={this.disabled}

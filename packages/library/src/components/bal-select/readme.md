@@ -28,6 +28,7 @@ export interface BalOptionValue<T> {
 | `multiple`          | `multiple`           | If `true` multiple option can be selected                                         | `boolean`  | `false` |
 | `noFilter`          | `no-filter`          | If `true` the filtering of the options is done outside of the component.          | `boolean`  | `false` |
 | `placeholder`       | `placeholder`        | Defines the placeholder of the input element.                                     | `string`   | `''`    |
+| `required`          | `required`           | If `true` the attribute required is added to the native input.                    | `boolean`  | `false` |
 | `scrollable`        | `scrollable`         | Defines the height of the dropdown list.                                          | `number`   | `250`   |
 | `typeahead`         | `typeahead`          | If `true` the user can search by typing into the input field.                     | `boolean`  | `false` |
 | `value`             | --                   | Selected option values. Could also be passed as a string, which gets transformed. | `string[]` | `[]`    |

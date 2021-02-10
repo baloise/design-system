@@ -55,6 +55,11 @@ export class Datepicker {
   @Prop() inverted = false
 
   /**
+   * If `true` the attribute required is added to the native input.
+   */
+  @Prop() required = false
+
+  /**
    * If `true` the use can only select a date.
    */
   @Prop() readonly = false
@@ -382,8 +387,10 @@ export class Datepicker {
             'is-inverted': this.inverted,
             'is-disabled': this.disabled,
           }}
+          type="text"
           maxlength="10"
           autoComplete="off"
+          required={this.required}
           disabled={this.disabled}
           readonly={this.readonly}
           placeholder={this.placeholder}
