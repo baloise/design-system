@@ -405,6 +405,9 @@ export namespace Components {
           * Open the dropdown menu.
          */
         "open": () => Promise<void>;
+        /**
+          * Defines the length of the menu in pixel.
+         */
         "scrollable": number;
         /**
           * Open or closes the dropdown.
@@ -2561,6 +2564,9 @@ declare namespace LocalJSX {
           * *Internal* - Use this to close unuesed dropdowns.
          */
         "onBalDropdownPrepare"?: (event: CustomEvent<string>) => void;
+        /**
+          * Defines the length of the menu in pixel.
+         */
         "scrollable"?: number;
     }
     interface BalDropdownMenu {
