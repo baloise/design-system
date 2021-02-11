@@ -1,4 +1,7 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch } from '@stencil/core'
+import { debounceEvent, findItemLabel } from '../../utils/helpers'
+import { AutocompleteTypes, InputTypes } from '../../utils/interfaces'
+import { actionKeys, numberKeys } from '../../utils/key.util'
 
 @Component({
   tag: 'bal-input',
@@ -7,33 +10,9 @@ import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch }
   scoped: true,
 })
 export class Input {
-  private allowedKeys = [
-    '0',
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '.',
-    'Backspace',
-    'Enter',
-    'ArrowLeft',
-    'Left',
-    'ArrowRight',
-    'Right',
-    'Tab',
-    'Esc',
-    'Escape',
-    'Del',
-    'Delete',
-  ]
-
+  private allowedKeys = [...numberKeys, '.', ...actionKeys]
   private inputId = `bal-in-${InputIds++}`
-  private inputEl?: HTMLInputElement
+  private nativeInput?: HTMLInputElement
 
   @Element() el!: HTMLElement
 
@@ -45,36 +24,53 @@ export class Input {
   /**
    * Defines the type of the input (text, number, email ...).
    */
-  @Prop() type:
-    | 'button'
-    | 'checkbox'
-    | 'color'
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'file'
-    | 'image'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'radio'
-    | 'range'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week' = 'text'
+  @Prop() type: InputTypes = 'text'
 
   /**
-   * Placeholder of the input
+   * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
    */
-  @Prop() placeholder = ''
+  @Prop() accept?: string
 
   /**
-   * The tabindex of the control.
+   * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+   * Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
    */
-  @Prop() balTabindex: number = 0
+  @Prop() autocapitalize = 'off'
+
+  /**
+   * Indicates whether the value of the control can be automatically completed by the browser.
+   */
+  @Prop() autocomplete: AutocompleteTypes = 'off'
+
+  /**
+   * Whether auto correction should be enabled when the user is entering/editing the text value.
+   */
+  @Prop() autocorrect: 'on' | 'off' = 'off'
+
+  /**
+   * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+   */
+  @Prop() autofocus = false
+
+  /**
+   * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+   */
+  @Prop() debounce = 0
+
+  @Watch('debounce')
+  protected debounceChanged() {
+    this.balChange = debounceEvent(this.balChange, this.debounce)
+  }
+
+  /**
+   * Instructional text that shows before the input has a value.
+   */
+  @Prop() placeholder?: string | null
+
+  /**
+   * The maximum value, which must not be less than its minimum (min attribute) value.
+   */
+  @Prop() max?: string
 
   /**
    * Defines the max length of the value.
@@ -82,14 +78,39 @@ export class Input {
   @Prop() maxLength: number | undefined = undefined
 
   /**
+   * The minimum value, which must not be greater than its maximum (max attribute) value.
+   */
+  @Prop() min?: string
+
+  /**
    * Defines the min length of the value.
    */
   @Prop() minLength: number | undefined = undefined
 
   /**
-   * If `true` the attribute required is added to the native input.
+   * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
+   */
+  @Prop() multiple?: boolean
+
+  /**
+   * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
+   */
+  @Prop() pattern?: string | undefined
+
+  /**
+   * The tabindex of the control.
+   */
+  @Prop() balTabindex: number = 0
+
+  /**
+   * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop() required = false
+
+  /**
+   * If `true`, the element will have its spelling and grammar checked.
+   */
+  @Prop() spellcheck = false
 
   /**
    * If `true` this component can be placed on dark background
@@ -97,7 +118,7 @@ export class Input {
   @Prop() inverted = false
 
   /**
-   * If `true` the input is readonly
+   * If `true`, the user cannot modify the value.
    */
   @Prop() readonly = false
 
@@ -127,108 +148,84 @@ export class Input {
   @Prop() onlyNumbers = false
 
   /**
-   * The value of the control.
+   * The value of the input.
    */
-  @Prop({ mutable: true }) value: string = ''
-
-  /**
-   * Emitted when a keyboard input occurred.
-   */
-  @Event({ eventName: 'balInput' }) balInput!: EventEmitter<string>
-  private onInput = (event: { target: { value: string } }) => {
-    let val = event.target && event.target?.value
-
-    if (this.onlyNumbers) {
-      val = this.filterNumbers(val)
-    }
-
-    if (this.value !== val) {
-      this.value = val
-      this.balInput.emit(this.value)
-    }
-  }
-
-  /**
-   * Emitted when a keyboard input occurred.
-   */
-  @Event({ eventName: 'balBlur' }) balBlur!: EventEmitter<FocusEvent>
-
-  /**
-   * Emitted when the input has clicked.
-   */
-  @Event({ eventName: 'balClick' }) balClick!: EventEmitter<MouseEvent>
-
-  /**
-   * Emitted when a keyboard key has pressed.
-   */
-  @Event({ eventName: 'balKeyPress' }) balKeyPress!: EventEmitter<KeyboardEvent>
-
-  /**
-   * Emitted when the input has focus.
-   */
-  @Event({ eventName: 'balFocus' }) balFocus!: EventEmitter<FocusEvent>
-
-  /**
-   * Emitted when the input value has changed.
-   */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<string>
+  @Prop({ mutable: true }) value?: string | number | null = ''
 
   /**
    * Update the native input element when the value changes
    */
   @Watch('value')
   protected valueChanged() {
-    this.balChange.emit(this.value == null ? this.value : this.value.toString())
+    this.balChange.emit(this.getValue())
   }
 
   /**
-   * Sets the focus on the input element.
+   * Emitted when a keyboard input occurred.
+   */
+  @Event() balInput!: EventEmitter<string | number | null>
+
+  /**
+   * Emitted when a keyboard input occurred.
+   */
+  @Event() balBlur!: EventEmitter<FocusEvent>
+
+  /**
+   * Emitted when the input has clicked.
+   */
+  @Event() balClick!: EventEmitter<MouseEvent>
+
+  /**
+   * Emitted when a keyboard key has pressed.
+   */
+  @Event() balKeyPress!: EventEmitter<KeyboardEvent>
+
+  /**
+   * Emitted when the input has focus.
+   */
+  @Event() balFocus!: EventEmitter<FocusEvent>
+
+  /**
+   * Emitted when the input value has changed.
+   */
+  @Event() balChange!: EventEmitter<string>
+
+  connectedCallback() {
+    this.debounceChanged()
+  }
+
+  /**
+   * Sets focus on the native `input` in `bal-input`. Use this method instead of the global
+   * `input.focus()`.
    */
   @Method()
-  async setFocus(): Promise<void> {
-    this.inputEl.focus()
-  }
-
-  render() {
-    let inputProps = {}
-    if (this.numberKeyboard) {
-      inputProps = { pattern: '[0-9]*' }
+  async setFocus() {
+    if (this.nativeInput) {
+      this.nativeInput.focus()
     }
-    return (
-      <Host>
-        <input
-          class={{
-            'input': true,
-            'is-inverted': this.inverted,
-            'clickable': this.clickable,
-          }}
-          autoComplete={this.autoComplete ? 'on' : 'off'}
-          id={this.inputId}
-          type={this.type}
-          required={this.required}
-          placeholder={this.placeholder}
-          name={this.name}
-          value={this.value}
-          tabindex={this.balTabindex}
-          disabled={this.disabled}
-          readonly={this.readonly}
-          maxLength={this.maxLength}
-          minLength={this.minLength}
-          {...inputProps}
-          onInput={e => this.onInput(e as any)}
-          onChange={() => this.balChange.emit(this.value)}
-          onBlur={e => this.balBlur.emit(e)}
-          onClick={e => this.balClick.emit(e)}
-          onKeyPress={e => this.balKeyPress.emit(e)}
-          onKeyDown={e => this.onKeyDown(e)}
-          onFocus={e => this.balFocus.emit(e)}
-          ref={inputEl => (this.inputEl = inputEl)}
-        />
-      </Host>
-    )
   }
 
-  onKeyDown(event: KeyboardEvent): void {
+  /**
+   * Returns the native `<input>` element used under the hood.
+   */
+  @Method()
+  getInputElement(): Promise<HTMLInputElement> {
+    return Promise.resolve(this.nativeInput!)
+  }
+
+  private getValue(): string {
+    return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString()
+  }
+
+  private onInput = (ev: Event) => {
+    const input = ev.target as HTMLInputElement | null
+    if (input) {
+      this.value = input.value || ''
+    }
+    this.balInput.emit(this.value)
+  }
+
+  private onKeyDown = (event: KeyboardEvent): void => {
     if (this.numberKeyboard) {
       if (this.allowedKeys.indexOf(event.key) < 0) {
         event.preventDefault()
@@ -237,11 +234,61 @@ export class Input {
     }
   }
 
-  private filterNumbers(val: string) {
-    if (val && typeof val === 'string') {
-      val = val.replace(/[^\d]/g, '')
+  render() {
+    const value = this.getValue()
+    const labelId = this.inputId + '-lbl'
+    const label = findItemLabel(this.el)
+    if (label) {
+      label.id = labelId
+      label.htmlFor = this.inputId
     }
-    return val
+    let inputProps = {}
+    if (this.pattern) {
+      inputProps = { pattern: this.pattern }
+    }
+    if (this.numberKeyboard) {
+      inputProps = { pattern: '[0-9]*' }
+    }
+    return (
+      <Host aria-disabled={this.disabled ? 'true' : null}>
+        <input
+          class={{
+            'input': true,
+            'is-inverted': this.inverted,
+            'clickable': this.clickable,
+          }}
+          ref={inputEl => (this.nativeInput = inputEl)}
+          id={this.inputId}
+          aria-labelledby={labelId}
+          disabled={this.disabled}
+          accept={this.accept}
+          autoCapitalize={this.autocapitalize}
+          autoComplete={this.autocomplete}
+          autoCorrect={this.autocorrect}
+          autoFocus={this.autofocus}
+          min={this.min}
+          max={this.max}
+          minLength={this.minLength}
+          maxLength={this.maxLength}
+          multiple={this.multiple}
+          name={this.name}
+          placeholder={this.placeholder || ''}
+          readOnly={this.readonly}
+          required={this.required}
+          spellcheck={this.spellcheck}
+          type={this.type}
+          tabindex={this.balTabindex}
+          value={value}
+          {...inputProps}
+          onInput={this.onInput}
+          onKeyDown={this.onKeyDown}
+          onBlur={e => this.balBlur.emit(e)}
+          onClick={e => this.balClick.emit(e)}
+          onFocus={e => this.balFocus.emit(e)}
+          onKeyPress={e => this.balKeyPress.emit(e)}
+        />
+      </Host>
+    )
   }
 }
 

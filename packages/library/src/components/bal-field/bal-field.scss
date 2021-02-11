@@ -13,6 +13,14 @@
       width: 100%;
     }
 
+    bal-field-label {
+      user-select: none;
+
+      label[for] {
+        cursor: pointer;
+      }
+    }
+
     bal-field-label,
     bal-field-control,
     bal-field-message {
@@ -31,6 +39,7 @@
       border-right-color: $blue !important;
       border-left-color: transparent !important;
       border-bottom-color: transparent !important;
+      top: 0.425em;
     }
 
     .form.is-inverted {
@@ -87,6 +96,23 @@
         .help:not(.is-danger) {
           color: $blue-line;
         }
+      }
+    }
+
+    bal-field-label,
+    bal-field-hint {
+      display: inline-block !important;
+    }
+
+    bal-field-hint {
+      position: relative;
+      min-width: 34px;
+      min-height: 18px;
+
+      bal-hint {
+        position: absolute;
+        top: 0;
+        left: 0;
       }
     }
   }

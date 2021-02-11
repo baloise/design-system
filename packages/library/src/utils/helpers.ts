@@ -1,17 +1,25 @@
-// export const getElementRoot = (el: HTMLElement, fallback: HTMLElement = el) => {
-//   return el.shadowRoot || fallback
-// }
+import { EventEmitter } from '@stencil/core'
 
-// export const hasShadowDom = (el: HTMLElement) => {
-//   return !!el.shadowRoot && !!(el as any).attachShadow
-// }
+export const debounceEvent = (event: EventEmitter, wait: number): EventEmitter => {
+  const original = (event as any)._original || event
+  return {
+    _original: event,
+    emit: debounce(original.emit.bind(original), wait),
+  } as EventEmitter
+}
 
-// export const findItemLabel = (componentEl: HTMLElement) => {
-//   const itemEl = componentEl.closest('bal-field')
-//   if (itemEl) {
-//     return itemEl.querySelector('span.label')
-//   }
-//   return null
-// }
+export const debounce = (func: (...args: any[]) => void, wait = 0) => {
+  let timer: any
+  return (...args: any[]): any => {
+    clearTimeout(timer)
+    timer = setTimeout(func, wait, ...args)
+  }
+}
 
-
+export const findItemLabel = (componentEl: HTMLElement): HTMLLabelElement | null => {
+  const fieldLabelEl = componentEl.closest('bal-field')
+  if (fieldLabelEl) {
+    return fieldLabelEl.querySelector('label')
+  }
+  return null
+}

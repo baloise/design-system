@@ -257,6 +257,13 @@ export const BalFieldControl = /*@__PURE__*/ defineContainer<JSX.BalFieldControl
 );
 
 
+export const BalFieldHint = /*@__PURE__*/ defineContainer<JSX.BalFieldHint>('bal-field-hint',
+  ['subject'],
+  [],
+  
+);
+
+
 export const BalFieldLabel = /*@__PURE__*/ defineContainer<JSX.BalFieldLabel>('bal-field-label',
   ['text',
 'required'],
@@ -638,11 +645,22 @@ export const BalIconUpload = /*@__PURE__*/ defineContainer<JSX.BalIconUpload>('b
 export const BalInput = /*@__PURE__*/ defineContainer<JSX.BalInput>('bal-input',
   ['name',
 'type',
+'accept',
+'autocapitalize',
+'autocomplete',
+'autocorrect',
+'autofocus',
+'debounce',
 'placeholder',
-'balTabindex',
+'max',
 'maxLength',
+'min',
 'minLength',
+'multiple',
+'pattern',
+'balTabindex',
 'required',
+'spellcheck',
 'inverted',
 'readonly',
 'disabled',

@@ -32,6 +32,7 @@ const customElementTags: string[] = [
  'bal-dropdown-trigger',
  'bal-field',
  'bal-field-control',
+ 'bal-field-hint',
  'bal-field-label',
  'bal-field-message',
  'bal-file-upload',
@@ -463,6 +464,17 @@ export const BalFieldControl = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('bal-field-control', []),
+});
+
+
+export const BalFieldHint = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    subject: {} as PropOptions<Components.BalFieldHint['subject']>,
+  },
+
+
+  render: createCommonRender('bal-field-hint', []),
 });
 
 
@@ -1055,11 +1067,22 @@ export const BalInput = /*@__PURE__*/ Vue.extend({
   props: {
     name: {} as PropOptions<Components.BalInput['name']>,
     type: {} as PropOptions<Components.BalInput['type']>,
+    accept: {} as PropOptions<Components.BalInput['accept']>,
+    autocapitalize: {} as PropOptions<Components.BalInput['autocapitalize']>,
+    autocomplete: {} as PropOptions<Components.BalInput['autocomplete']>,
+    autocorrect: {} as PropOptions<Components.BalInput['autocorrect']>,
+    autofocus: {} as PropOptions<Components.BalInput['autofocus']>,
+    debounce: {} as PropOptions<Components.BalInput['debounce']>,
     placeholder: {} as PropOptions<Components.BalInput['placeholder']>,
-    balTabindex: {} as PropOptions<Components.BalInput['balTabindex']>,
+    max: {} as PropOptions<Components.BalInput['max']>,
     maxLength: {} as PropOptions<Components.BalInput['maxLength']>,
+    min: {} as PropOptions<Components.BalInput['min']>,
     minLength: {} as PropOptions<Components.BalInput['minLength']>,
+    multiple: {} as PropOptions<Components.BalInput['multiple']>,
+    pattern: {} as PropOptions<Components.BalInput['pattern']>,
+    balTabindex: {} as PropOptions<Components.BalInput['balTabindex']>,
     required: {} as PropOptions<Components.BalInput['required']>,
+    spellcheck: {} as PropOptions<Components.BalInput['spellcheck']>,
     inverted: {} as PropOptions<Components.BalInput['inverted']>,
     readonly: {} as PropOptions<Components.BalInput['readonly']>,
     disabled: {} as PropOptions<Components.BalInput['disabled']>,
@@ -1077,6 +1100,7 @@ export const BalInput = /*@__PURE__*/ Vue.extend({
 
   methods: {
     setFocus: createCommonMethod('setFocus') as Components.BalInput['setFocus'],
+    getInputElement: createCommonMethod('getInputElement') as Components.BalInput['getInputElement'],
   },
   render: createCommonRender('bal-input', ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']),
 });

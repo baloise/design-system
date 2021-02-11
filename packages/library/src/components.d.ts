@@ -10,6 +10,7 @@ import { BalButtonColor } from "./components/bal-button/bal.button.type";
 import { BalCardStepOption } from "./components/bal-card-step/bal-card-step.type";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
+import { AutocompleteTypes, InputTypes } from "./utils/interfaces";
 import { BalOptionValue } from "./components/bal-select-option/bal-select-option.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -470,6 +471,12 @@ export namespace Components {
          */
         "loading": boolean;
     }
+    interface BalFieldHint {
+        /**
+          * Text of the inputs label
+         */
+        "subject": string;
+    }
     interface BalFieldLabel {
         /**
           * If `true` a asterix (*) is added to the label text
@@ -840,9 +847,29 @@ export namespace Components {
     }
     interface BalInput {
         /**
+          * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+         */
+        "accept"?: string;
+        /**
           * The autocomplete attribute specifies whether or not an input field should have autocomplete enabled.
          */
         "autoComplete": boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+         */
+        "autocapitalize": string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": AutocompleteTypes;
+        /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+         */
+        "autocorrect": 'on' | 'off';
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus": boolean;
         /**
           * The tabindex of the control.
          */
@@ -852,21 +879,41 @@ export namespace Components {
          */
         "clickable": boolean;
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
           * If `true` the input is disabled
          */
         "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
         /**
           * If `true` this component can be placed on dark background
          */
         "inverted": boolean;
         /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
           * Defines the max length of the value.
          */
         "maxLength": number | undefined;
         /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
           * Defines the min length of the value.
          */
         "minLength": number | undefined;
+        /**
+          * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
+         */
+        "multiple"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -880,47 +927,37 @@ export namespace Components {
          */
         "onlyNumbers": boolean;
         /**
-          * Placeholder of the input
+          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
-        "placeholder": string;
+        "pattern"?: string | undefined;
         /**
-          * If `true` the input is readonly
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
+        /**
+          * If `true`, the user cannot modify the value.
          */
         "readonly": boolean;
         /**
-          * If `true` the attribute required is added to the native input.
+          * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
         /**
-          * Sets the focus on the input element.
+          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck": boolean;
+        /**
           * Defines the type of the input (text, number, email ...).
          */
-        "type": | 'button'
-    | 'checkbox'
-    | 'color'
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'file'
-    | 'image'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'radio'
-    | 'range'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week';
+        "type": InputTypes;
         /**
-          * The value of the control.
+          * The value of the input.
          */
-        "value": string;
+        "value"?: string | number | null;
     }
     interface BalList {
         /**
@@ -1567,6 +1604,12 @@ declare global {
         prototype: HTMLBalFieldControlElement;
         new (): HTMLBalFieldControlElement;
     };
+    interface HTMLBalFieldHintElement extends Components.BalFieldHint, HTMLStencilElement {
+    }
+    var HTMLBalFieldHintElement: {
+        prototype: HTMLBalFieldHintElement;
+        new (): HTMLBalFieldHintElement;
+    };
     interface HTMLBalFieldLabelElement extends Components.BalFieldLabel, HTMLStencilElement {
     }
     var HTMLBalFieldLabelElement: {
@@ -2094,6 +2137,7 @@ declare global {
         "bal-dropdown-trigger": HTMLBalDropdownTriggerElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
+        "bal-field-hint": HTMLBalFieldHintElement;
         "bal-field-label": HTMLBalFieldLabelElement;
         "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
@@ -2657,6 +2701,12 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
     }
+    interface BalFieldHint {
+        /**
+          * Text of the inputs label
+         */
+        "subject"?: string;
+    }
     interface BalFieldLabel {
         /**
           * If `true` a asterix (*) is added to the label text
@@ -3023,9 +3073,29 @@ declare namespace LocalJSX {
     }
     interface BalInput {
         /**
+          * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+         */
+        "accept"?: string;
+        /**
           * The autocomplete attribute specifies whether or not an input field should have autocomplete enabled.
          */
         "autoComplete"?: boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+         */
+        "autocapitalize"?: string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: AutocompleteTypes;
+        /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+         */
+        "autocorrect"?: 'on' | 'off';
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus"?: boolean;
         /**
           * The tabindex of the control.
          */
@@ -3035,6 +3105,10 @@ declare namespace LocalJSX {
          */
         "clickable"?: boolean;
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
           * If `true` the input is disabled
          */
         "disabled"?: boolean;
@@ -3043,13 +3117,25 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
           * Defines the max length of the value.
          */
         "maxLength"?: number | undefined;
         /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
           * Defines the min length of the value.
          */
         "minLength"?: number | undefined;
+        /**
+          * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
+         */
+        "multiple"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -3077,7 +3163,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string>) => void;
+        "onBalInput"?: (event: CustomEvent<string | number | null>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -3087,43 +3173,33 @@ declare namespace LocalJSX {
          */
         "onlyNumbers"?: boolean;
         /**
-          * Placeholder of the input
+          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
-        "placeholder"?: string;
+        "pattern"?: string | undefined;
         /**
-          * If `true` the input is readonly
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
+        /**
+          * If `true`, the user cannot modify the value.
          */
         "readonly"?: boolean;
         /**
-          * If `true` the attribute required is added to the native input.
+          * If `true`, the user must fill in a value before submitting a form.
          */
         "required"?: boolean;
         /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck"?: boolean;
+        /**
           * Defines the type of the input (text, number, email ...).
          */
-        "type"?: | 'button'
-    | 'checkbox'
-    | 'color'
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'file'
-    | 'image'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'radio'
-    | 'range'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week';
+        "type"?: InputTypes;
         /**
-          * The value of the control.
+          * The value of the input.
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface BalList {
         /**
@@ -3679,6 +3755,7 @@ declare namespace LocalJSX {
         "bal-dropdown-trigger": BalDropdownTrigger;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
+        "bal-field-hint": BalFieldHint;
         "bal-field-label": BalFieldLabel;
         "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
@@ -3791,6 +3868,7 @@ declare module "@stencil/core" {
             "bal-dropdown-trigger": LocalJSX.BalDropdownTrigger & JSXBase.HTMLAttributes<HTMLBalDropdownTriggerElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
+            "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;
             "bal-field-label": LocalJSX.BalFieldLabel & JSXBase.HTMLAttributes<HTMLBalFieldLabelElement>;
             "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
