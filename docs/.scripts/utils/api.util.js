@@ -20,7 +20,7 @@ const printComponent = component => {
         ...component.props.map(prop => [
           printBold(printCode(prop.name)),
           printCode(prop.attr),
-          prop.docs.trim(),
+          prop.docs.replace(/(?:\r\n|\r|\n)/g, ' ').trim(),
           printCode(prop.type ? prop.type.split('|').join(',') : ''),
           printCode(prop.default),
         ]),

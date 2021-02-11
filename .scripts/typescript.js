@@ -38,7 +38,6 @@ const parseFunctionComment = (node, sourceFile) =>
     .filter(l => l)
     .filter(l => l !== '/**' && l !== '*/')
     .map(l => (l.startsWith('*') ? l.substring(1) : l))
-    .map(l => l.trim())
 
 const parseType = typeCode => {
   switch (typeCode) {
