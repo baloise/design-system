@@ -1478,7 +1478,7 @@ export const BalTextarea = /*@__PURE__*/ Vue.extend({
   methods: {
     setFocus: createCommonMethod('setFocus') as Components.BalTextarea['setFocus'],
   },
-  render: createCommonRender('bal-textarea', ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']),
+  render: createCommonRender('bal-textarea', ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']),
 });
 
 

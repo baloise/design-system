@@ -2166,7 +2166,7 @@ export declare interface BalTextarea extends Components.BalTextarea {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   inputs: ['balTabindex', 'clickable', 'disabled', 'inverted', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'value'],
-  outputs: ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']
+  outputs: ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']
 })
 export class BalTextarea {
   /** Emitted when a keyboard input occurred. */
@@ -2179,11 +2179,13 @@ export class BalTextarea {
   balKeyPress!: EventEmitter<CustomEvent<KeyboardEvent>>;
   /** Emitted when the input has focus. */
   balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
+  /** Emitted when the input value has changed.. */
+  balChange!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']);
+    proxyOutputs(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']);
   }
 }
 

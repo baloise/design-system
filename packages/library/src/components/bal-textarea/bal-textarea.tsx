@@ -96,6 +96,11 @@ export class Textarea {
   @Event({ eventName: 'balFocus' }) balFocus!: EventEmitter<FocusEvent>
 
   /**
+   * Emitted when the input value has changed..
+   */
+  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<string>
+
+  /**
    * Sets the focus on the input element.
    */
   @Method()
@@ -121,6 +126,7 @@ export class Textarea {
           readonly={this.readonly}
           maxLength={this.maxLength}
           minLength={this.minLength}
+          onChange={() => this.balChange.emit(this.value)}
           onInput={e => this.onInput(e as any)}
           onBlur={e => this.balBlur.emit(e)}
           onClick={e => this.balClick.emit(e)}

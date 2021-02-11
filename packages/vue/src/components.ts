@@ -939,7 +939,8 @@ export const BalTextarea = /*@__PURE__*/ defineContainer<JSX.BalTextarea>('bal-t
 'balBlur',
 'balClick',
 'balKeyPress',
-'balFocus'],
+'balFocus',
+'balChange'],
   {
     modelProp: 'value',
     modelUpdateEvent: 'balInput'

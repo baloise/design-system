@@ -3556,6 +3556,10 @@ declare namespace LocalJSX {
          */
         "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
+          * Emitted when the input value has changed..
+         */
+        "onBalChange"?: (event: CustomEvent<string>) => void;
+        /**
           * Emitted when the input has clicked.
          */
         "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
