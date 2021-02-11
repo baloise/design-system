@@ -2533,7 +2533,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: CustomEvent<any>) => void;
+        "onBalChange"?: (event: CustomEvent<Date>) => void;
         /**
           * Emitted when the input has focus.
          */

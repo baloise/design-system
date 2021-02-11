@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop, State, Method, EventEmitter, Event, Listen } from '@stencil/core'
+import { Component, h, Host, Element, Prop, State, Method, EventEmitter, Event, Listen, Watch } from '@stencil/core'
 import { isEnterKey, isEscapeKey, isArrowDownKey, isArrowUpKey } from '../../utils/key.util'
 import { BalOptionValue } from '../bal-select-option/bal-select-option.type'
 
@@ -119,6 +119,14 @@ export class Select {
    * Emitted when the user cancels the input.
    */
   @Event({ eventName: 'balCancel' }) balCancel!: EventEmitter<KeyboardEvent>
+
+  /**
+   * Update the native input element when the value changes
+   */
+  @Watch('value')
+  protected valueChanged() {
+    this.balChange.emit(this.value)
+  }
 
   /**
    * Opens the dropdown

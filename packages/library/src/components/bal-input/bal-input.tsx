@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch } from '@stencil/core'
 
 @Component({
   tag: 'bal-input',
@@ -172,6 +172,14 @@ export class Input {
    * Emitted when the input value has changed.
    */
   @Event({ eventName: 'balChange' }) balChange!: EventEmitter<string>
+
+  /**
+   * Update the native input element when the value changes
+   */
+  @Watch('value')
+  protected valueChanged() {
+    this.balChange.emit(this.value == null ? this.value : this.value.toString())
+  }
 
   /**
    * Sets the focus on the input element.

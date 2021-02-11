@@ -140,6 +140,14 @@ export class Button {
     return 'small'
   }
 
+  handleClick(event: MouseEvent) {
+    console.log('handleClick')
+    if (this.disabled) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+  }
+
   render() {
     if (this.square) {
       return this.renderSquareButton()
@@ -206,8 +214,14 @@ export class Button {
 
   renderNormalButton() {
     return (
-      <Host class={[this.expanded ? 'is-fullwidth' : ''].join(' ')}>
-        <button type={this.type} class={this.buttonCssClass} disabled={this.disabled}>
+      <Host
+        aria-disabled={this.disabled ? 'true' : null}
+        class={{
+          'is-fullwidth': this.expanded,
+          'is-disabled': this.disabled,
+        }}
+        onClick={this.handleClick}>
+        <button part="native" type={this.type} class={this.buttonCssClass} disabled={this.disabled}>
           <span>{/* Empty span to get the correct text height */}</span>
           {this.renderButtonLoading()}
           {this.renderButtonLeftIcon()}
@@ -220,7 +234,13 @@ export class Button {
 
   renderLinkButton() {
     return (
-      <Host class={[this.expanded ? 'is-fullwidth' : ''].join(' ')}>
+      <Host
+        aria-disabled={this.disabled ? 'true' : null}
+        class={{
+          'is-fullwidth': this.expanded,
+          'is-disabled': this.disabled,
+        }}
+        onClick={e => this.handleClick(e)}>
         <a
           class={this.buttonCssClass}
           href={this.href}
@@ -238,7 +258,12 @@ export class Button {
 
   renderNormalSquareButton() {
     return (
-      <Host>
+      <Host
+        aria-disabled={this.disabled ? 'true' : null}
+        class={{
+          'is-disabled': this.disabled,
+        }}
+        onClick={e => this.handleClick(e)}>
         <button type={this.type} class={this.buttonCssClass} disabled={this.disabled}>
           <bal-icon name={this.icon} size={this.size} color={this.color} inverted={this.isIconInverted} />
         </button>
@@ -248,7 +273,12 @@ export class Button {
 
   renderLinkSquareButton() {
     return (
-      <Host>
+      <Host
+        aria-disabled={this.disabled ? 'true' : null}
+        class={{
+          'is-disabled': this.disabled,
+        }}
+        onClick={e => this.handleClick(e)}>
         <a
           class={this.buttonCssClass}
           href={this.href}

@@ -365,7 +365,7 @@ export declare interface BalDatepicker extends Components.BalDatepicker {}
 })
 export class BalDatepicker {
   /** Emitted when a option got selected. */
-  balChange!: EventEmitter<CustomEvent<any>>;
+  balChange!: EventEmitter<CustomEvent<Date>>;
   /** Emitted when a keyboard input occurred. */
   balInput!: EventEmitter<CustomEvent<string>>;
   /** Emitted when the input loses focus. */

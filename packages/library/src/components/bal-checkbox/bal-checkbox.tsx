@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch } from '@stencil/core'
 
 @Component({
   tag: 'bal-checkbox',
@@ -61,6 +61,14 @@ export class Checkbox {
    * Emitted when the toggle loses focus.
    */
   @Event({ eventName: 'balBlur' }) balBlur!: EventEmitter<void>
+
+  /**
+   * Update the native input element when the value changes
+   */
+  @Watch('checked')
+  protected valueChanged() {
+    this.balChange.emit(this.checked)
+  }
 
   /**
    * Sets the focus on the checkbox input element.

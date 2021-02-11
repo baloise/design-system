@@ -34,7 +34,7 @@ An input with a simple dropdown for selecting a date.
 | Event       | Description                             | Type                      |
 | ----------- | --------------------------------------- | ------------------------- |
 | `balBlur`   | Emitted when the input loses focus.     | `CustomEvent<FocusEvent>` |
-| `balChange` | Emitted when a option got selected.     | `CustomEvent<any>`        |
+| `balChange` | Emitted when a option got selected.     | `CustomEvent<Date>`       |
 | `balFocus`  | Emitted when the input has focus.       | `CustomEvent<FocusEvent>` |
 | `balInput`  | Emitted when a keyboard input occurred. | `CustomEvent<string>`     |
 

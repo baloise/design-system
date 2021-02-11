@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method } from '@stencil/core'
+import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch } from '@stencil/core'
 import { i18nDate } from './bal-datepicker.i18n'
 import { BalCalendarCell, BalDateCallback } from './bal-datepicker.type'
 import {
@@ -117,7 +117,7 @@ export class Datepicker {
   /**
    * Emitted when a option got selected.
    */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<any>
+  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<Date>
 
   /**
    * Emitted when a keyboard input occurred.
@@ -133,6 +133,14 @@ export class Datepicker {
    * Emitted when the input has focus.
    */
   @Event({ eventName: 'balFocus' }) balFocus!: EventEmitter<FocusEvent>
+
+  /**
+   * Update the native input element when the value changes
+   */
+  @Watch('value')
+  protected valueChanged() {
+    this.balChange.emit(this.value)
+  }
 
   /**
    * Selects an option

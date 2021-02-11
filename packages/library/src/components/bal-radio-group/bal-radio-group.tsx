@@ -28,8 +28,8 @@ export class RadioGroup {
   valueChanged(value: string, oldValue: string) {
     if (value !== oldValue) {
       this.sync()
-      this.balChange.emit(value)
     }
+    this.balChange.emit(value)
   }
 
   /**

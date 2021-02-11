@@ -10,6 +10,10 @@
     width: 100%;
   }
 
+  &.is-disabled {
+    pointer-events: none;
+  }
+
   .button {
     margin: 0;
     transition: background 0.2s ease-in-out;
@@ -17,7 +21,6 @@
     user-select: none;
     min-height: 50px;
     text-decoration: none;
-    // padding-top: calc(0.6em - 1px);
 
     &.has-round-top-corners,
     &.has-round-top-corners button {

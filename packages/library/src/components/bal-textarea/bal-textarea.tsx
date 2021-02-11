@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch } from '@stencil/core'
 
 @Component({
   tag: 'bal-textarea',
@@ -61,6 +61,14 @@ export class Textarea {
    * The value of the control.
    */
   @Prop({ mutable: true }) value: string = ''
+
+  /**
+   * Update the native input element when the value changes
+   */
+  @Watch('value')
+  protected valueChanged() {
+    this.balChange.emit(this.value == null ? this.value : this.value.toString())
+  }
 
   /**
    * Emitted when a keyboard input occurred.

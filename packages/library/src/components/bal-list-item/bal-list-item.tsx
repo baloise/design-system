@@ -47,7 +47,13 @@ export class ListItem {
             'is-selected': this.selected,
             'is-clickable': this.clickable || this.href.length > 0,
           }}>
-          <a href={this.href} target={this.target} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
+          <a
+            href={this.href}
+            target={this.target}
+            onClick={(event: MouseEvent) => {
+              console.log('click')
+              this.balNavigate.emit(event)
+            }}>
             <slot></slot>
           </a>
         </Host>

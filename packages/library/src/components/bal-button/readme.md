@@ -38,6 +38,13 @@ The classic button, in different colors, sizes, and states.
 | `balNavigate` | Emitted when the link element has clicked | `CustomEvent<MouseEvent>` |
 
 
+## Shadow Parts
+
+| Part       | Description |
+| ---------- | ----------- |
+| `"native"` |             |
+
+
 ## Dependencies
 
 ### Used by
