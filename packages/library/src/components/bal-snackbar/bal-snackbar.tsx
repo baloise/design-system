@@ -1,6 +1,6 @@
 import { Component, Host, h, Prop, Method, Element, State, Event, EventEmitter } from '@stencil/core'
 import { ColorTypes } from '../../types/color.types'
-import { BalButtonType } from '../bal-button/bal.button.type'
+import { BalButtonColor } from '../bal-button/bal.button.type'
 
 @Component({
   tag: 'bal-snackbar',
@@ -89,7 +89,7 @@ export class Snackbar {
     return `is-${this.color}`
   }
 
-  get buttonType(): BalButtonType {
+  get buttonType(): BalButtonColor {
     if (this.color === '') {
       return 'info'
     }

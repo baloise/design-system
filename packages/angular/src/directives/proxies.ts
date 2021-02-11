@@ -34,23 +34,27 @@ export class BalAccordion {
 import { Button as IButton } from '@baloise/ui-library/dist/types/components/bal-button/bal-button';
 export declare interface BalButton extends Components.BalButton {}
 @ProxyCmp({
-  inputs: ['bottomRounded', 'color', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded', 'type']
+  inputs: ['bottomRounded', 'color', 'disabled', 'download', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'rel', 'size', 'square', 'target', 'topRounded', 'type']
 })
 @Component({
   selector: 'bal-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['bottomRounded', 'color', 'disabled', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'size', 'square', 'target', 'topRounded', 'type'],
-  outputs: ['balNavigate']
+  inputs: ['bottomRounded', 'color', 'disabled', 'download', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'rel', 'size', 'square', 'target', 'topRounded', 'type'],
+  outputs: ['balNavigate', 'balFocus', 'balBlur']
 })
 export class BalButton {
-  /** Emitted when the link element has clicked */
+  /** Emitted when the link element has clicked. */
   balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
+  /** Emitted when the button has focus. */
+  balFocus!: EventEmitter<CustomEvent<void>>;
+  /** Emitted when the button loses focus. */
+  balBlur!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['balNavigate']);
+    proxyOutputs(this, this.el, ['balNavigate', 'balFocus', 'balBlur']);
   }
 }
 

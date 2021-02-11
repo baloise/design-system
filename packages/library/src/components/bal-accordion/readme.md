@@ -72,8 +72,8 @@ graph TD;
   bal-accordion --> bal-button
   bal-accordion --> bal-icon
   bal-button --> bal-spinner
-  bal-button --> bal-text
   bal-button --> bal-icon
+  bal-button --> bal-text
   style bal-accordion fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

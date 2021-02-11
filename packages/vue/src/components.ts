@@ -25,15 +25,17 @@ export const BalAccordion = /*@__PURE__*/ defineContainer<JSX.BalAccordion>('bal
 
 
 export const BalButton = /*@__PURE__*/ defineContainer<JSX.BalButton>('bal-button',
-  ['type',
-'color',
+  ['color',
+'type',
+'disabled',
 'size',
 'link',
 'href',
 'target',
+'rel',
+'download',
 'iconPosition',
 'square',
-'disabled',
 'isActive',
 'expanded',
 'outlined',
@@ -43,7 +45,9 @@ export const BalButton = /*@__PURE__*/ defineContainer<JSX.BalButton>('bal-butto
 'bottomRounded',
 'icon',
 'iconRight'],
-  ['balNavigate'],
+  ['balNavigate',
+'balFocus',
+'balBlur'],
   
 );
 

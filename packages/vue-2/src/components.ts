@@ -149,15 +149,17 @@ export const BalAccordion = /*@__PURE__*/ Vue.extend({
 export const BalButton = /*@__PURE__*/ Vue.extend({
 
   props: {
-    type: {} as PropOptions<Components.BalButton['type']>,
     color: {} as PropOptions<Components.BalButton['color']>,
+    type: {} as PropOptions<Components.BalButton['type']>,
+    disabled: {} as PropOptions<Components.BalButton['disabled']>,
     size: {} as PropOptions<Components.BalButton['size']>,
     link: {} as PropOptions<Components.BalButton['link']>,
     href: {} as PropOptions<Components.BalButton['href']>,
     target: {} as PropOptions<Components.BalButton['target']>,
+    rel: {} as PropOptions<Components.BalButton['rel']>,
+    download: {} as PropOptions<Components.BalButton['download']>,
     iconPosition: {} as PropOptions<Components.BalButton['iconPosition']>,
     square: {} as PropOptions<Components.BalButton['square']>,
-    disabled: {} as PropOptions<Components.BalButton['disabled']>,
     isActive: {} as PropOptions<Components.BalButton['isActive']>,
     expanded: {} as PropOptions<Components.BalButton['expanded']>,
     outlined: {} as PropOptions<Components.BalButton['outlined']>,
@@ -170,7 +172,7 @@ export const BalButton = /*@__PURE__*/ Vue.extend({
   },
 
 
-  render: createCommonRender('bal-button', ['balNavigate']),
+  render: createCommonRender('bal-button', ['balNavigate', 'balFocus', 'balBlur']),
 });
 
 

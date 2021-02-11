@@ -1,6 +1,6 @@
 import { Component, Host, h, Prop, Method, Event, EventEmitter } from '@stencil/core'
 import { ColorTypesBasic } from '../../types/color.types'
-import { BalButtonType } from '../bal-button/bal.button.type'
+import { BalButtonColor } from '../bal-button/bal.button.type'
 
 @Component({
   tag: 'bal-accordion',
@@ -76,8 +76,8 @@ export class Accordion {
     this.balCollapse.emit(this.isActive)
   }
 
-  get buttonType(): BalButtonType {
-    return `${this.color}-light` as BalButtonType
+  get buttonType(): BalButtonColor {
+    return `${this.color}-light` as BalButtonColor
   }
 
   render() {

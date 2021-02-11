@@ -2,25 +2,52 @@
 @import 'node_modules/bulma/sass/elements/button.sass';
 
 :host {
-  display: inline-flex;
-  position: static;
+  display: inline-block;
+  width: auto;
+  font-family: $family-primary;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: top; // the better option for most scenarios
+  vertical-align: -webkit-baseline-middle; // the best for those that support it
+  pointer-events: auto;
+  font-kerning: none;
+}
 
-  &.is-fullwidth {
-    display: flex;
-    width: 100%;
-  }
+:host(.is-disabled) {
+  cursor: default;
+  pointer-events: none;
+}
 
-  &.is-disabled {
-    pointer-events: none;
-  }
+:host(.is-fullwidth) {
+  display: flex;
+  width: 100%;
+}
 
+:host {
   .button {
-    margin: 0;
-    transition: background 0.2s ease-in-out;
-    outline: none !important;
-    user-select: none;
+    @include font-smoothing();
+    @include margin(0);
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    line-height: 1;
+    contain: layout style;
+    outline: none;
+    cursor: pointer;
+    z-index: 0;
+    box-sizing: border-box;
+    appearance: none;
+    transition: background 0.1s ease, color 0.1s ease;
     min-height: 50px;
     text-decoration: none;
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
 
     &.has-round-top-corners,
     &.has-round-top-corners button {
@@ -58,7 +85,6 @@
       align-items: center;
       display: inline-flex;
       justify-content: center;
-      margin-top: -6px;
     }
 
     .icon-left {
@@ -78,6 +104,10 @@
     &.is-square {
       width: 50px;
       padding: 0;
+
+      .icon-left {
+        @include margin(0);
+      }
     }
 
     &.is-small {
@@ -85,7 +115,6 @@
       min-width: 38px;
       padding-left: 20px;
       padding-right: 20px;
-      // padding-top: calc(0.7em - 1px);
 
       font-size: $size-5;
       line-height: $bal_lineheight_15px;

@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
-import { BalButtonType } from "./components/bal-button/bal.button.type";
+import { BalButtonColor } from "./components/bal-button/bal.button.type";
 import { BalCardStepOption } from "./components/bal-card-step/bal-card-step.type";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
@@ -61,13 +61,17 @@ export namespace Components {
          */
         "bottomRounded": boolean;
         /**
-          * The theme type of the button. Given by bulma our css framework.
+          * The color to use from your application's color palette.
          */
-        "color": BalButtonType;
+        "color": BalButtonColor;
         /**
-          * If `true` the button is disabled
+          * If `true`, the user cannot interact with the button.
          */
         "disabled": boolean;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download": string | undefined;
         /**
           * If `true` the button has a full width
          */
@@ -75,7 +79,7 @@ export namespace Components {
         /**
           * Specifies the URL of the page the link goes to
          */
-        "href": string;
+        "href": string | undefined;
         /**
           * Name of the left button icon
          */
@@ -109,6 +113,10 @@ export namespace Components {
          */
         "outlined": boolean;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
           * Size of the button
          */
         "size": 'small' | '';
@@ -117,7 +125,7 @@ export namespace Components {
          */
         "square": boolean;
         /**
-          * Specifies where to open the linked document
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target": '_blank' | ' _parent' | '_self' | '_top';
         /**
@@ -125,7 +133,7 @@ export namespace Components {
          */
         "topRounded": boolean;
         /**
-          * The type of the button.
+          * The type of button.
          */
         "type": 'button' | 'reset' | 'submit';
     }
@@ -538,7 +546,7 @@ export namespace Components {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color": BalButtonType;
+        "color": BalButtonColor;
         /**
           * If `true` the button is inverted
          */
@@ -2213,13 +2221,17 @@ declare namespace LocalJSX {
          */
         "bottomRounded"?: boolean;
         /**
-          * The theme type of the button. Given by bulma our css framework.
+          * The color to use from your application's color palette.
          */
-        "color"?: BalButtonType;
+        "color"?: BalButtonColor;
         /**
-          * If `true` the button is disabled
+          * If `true`, the user cannot interact with the button.
          */
         "disabled"?: boolean;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string | undefined;
         /**
           * If `true` the button has a full width
          */
@@ -2227,7 +2239,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the URL of the page the link goes to
          */
-        "href"?: string;
+        "href"?: string | undefined;
         /**
           * Name of the left button icon
          */
@@ -2257,13 +2269,25 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * Emitted when the link element has clicked
+          * Emitted when the button loses focus.
+         */
+        "onBalBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onBalFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the link element has clicked.
          */
         "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * If `true` the button is outlined
          */
         "outlined"?: boolean;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
         /**
           * Size of the button
          */
@@ -2273,7 +2297,7 @@ declare namespace LocalJSX {
          */
         "square"?: boolean;
         /**
-          * Specifies where to open the linked document
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target"?: '_blank' | ' _parent' | '_self' | '_top';
         /**
@@ -2281,7 +2305,7 @@ declare namespace LocalJSX {
          */
         "topRounded"?: boolean;
         /**
-          * The type of the button.
+          * The type of button.
          */
         "type"?: 'button' | 'reset' | 'submit';
     }
@@ -2705,7 +2729,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color"?: BalButtonType;
+        "color"?: BalButtonColor;
         /**
           * If `true` the button is inverted
          */
