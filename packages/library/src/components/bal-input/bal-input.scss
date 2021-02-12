@@ -3,7 +3,6 @@
 :host {
   display: flex;
   position: relative;
-  pointer-events: none;
   flex: 1;
   align-items: center;
   width: 100%;
@@ -21,6 +20,10 @@
     box-sizing: border-box;
     appearance: none;
     pointer-events: auto;
+
+    &.has-icon-right {
+      padding-right: 32px !important;
+    }
 
     &::placeholder {
       font-family: inherit;

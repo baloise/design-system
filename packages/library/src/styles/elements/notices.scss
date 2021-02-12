@@ -1,5 +1,5 @@
 .bal-notices {
-  @import "node_modules/bulma/sass/elements/container";
+  @import 'node_modules/bulma/sass/elements/container';
 
   position: fixed;
   display: flex;
@@ -21,7 +21,7 @@
     justify-content: flex-start;
     align-items: flex-end;
     flex-direction: column-reverse;
-    margin: .5em;
+    margin: 0.5em;
 
     bal-snackbar {
       justify-content: flex-end;
@@ -31,7 +31,7 @@
   &.bal-notices--toast {
     justify-content: flex-start;
     align-items: center;
-    margin: .5em;
+    margin: 0.5em;
 
     bal-toast {
       justify-content: center;

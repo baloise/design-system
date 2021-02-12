@@ -1090,6 +1090,7 @@ export const BalInput = /*@__PURE__*/ Vue.extend({
     autoComplete: {} as PropOptions<Components.BalInput['autoComplete']>,
     numberKeyboard: {} as PropOptions<Components.BalInput['numberKeyboard']>,
     onlyNumbers: {} as PropOptions<Components.BalInput['onlyNumbers']>,
+    hasIconRight: {} as PropOptions<Components.BalInput['hasIconRight']>,
     inputmode: {} as PropOptions<Components.BalInput['inputmode']>,
     value: {} as PropOptions<Components.BalInput['value']>,
   },
@@ -1339,8 +1340,8 @@ export const BalSelect = /*@__PURE__*/ Vue.extend({
 
   props: {
     multiple: {} as PropOptions<Components.BalSelect['multiple']>,
+    name: {} as PropOptions<Components.BalSelect['name']>,
     noFilter: {} as PropOptions<Components.BalSelect['noFilter']>,
-    required: {} as PropOptions<Components.BalSelect['required']>,
     balTabindex: {} as PropOptions<Components.BalSelect['balTabindex']>,
     expanded: {} as PropOptions<Components.BalSelect['expanded']>,
     inverted: {} as PropOptions<Components.BalSelect['inverted']>,

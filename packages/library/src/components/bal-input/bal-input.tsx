@@ -1,4 +1,15 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch } from '@stencil/core'
+import {
+  Component,
+  h,
+  Host,
+  Prop,
+  Element,
+  EventEmitter,
+  Event,
+  Method,
+  Watch,
+  ComponentInterface,
+} from '@stencil/core'
 import { debounceEvent, findItemLabel } from '../../utils/helpers'
 import { AutocompleteTypes, InputTypes } from '../../utils/interfaces'
 import { actionKeys, numberKeys } from '../../utils/key.util'
@@ -9,7 +20,7 @@ import { actionKeys, numberKeys } from '../../utils/key.util'
   shadow: false,
   scoped: true,
 })
-export class Input {
+export class Input implements ComponentInterface {
   private allowedKeys = [...numberKeys, '.', ...actionKeys]
   private inputId = `bal-in-${InputIds++}`
   private nativeInput?: HTMLInputElement
@@ -148,6 +159,12 @@ export class Input {
   @Prop() onlyNumbers = false
 
   /**
+   * @internal
+   * If `true` the input will get some right padding.
+   */
+  @Prop() hasIconRight = false
+
+  /**
    * A hint to the browser for which keyboard to display.
    * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
    * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
@@ -263,6 +280,7 @@ export class Input {
             'input': true,
             'is-inverted': this.inverted,
             'clickable': this.clickable,
+            'has-icon-right': this.hasIconRight,
           }}
           ref={inputEl => (this.nativeInput = inputEl)}
           id={this.inputId}

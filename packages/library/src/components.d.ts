@@ -890,6 +890,7 @@ export namespace Components {
           * Returns the native `<input>` element used under the hood.
          */
         "getInputElement": () => Promise<HTMLInputElement>;
+        "hasIconRight": boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
@@ -1185,6 +1186,10 @@ export namespace Components {
          */
         "multiple": boolean;
         /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
           * If `true` the filtering of the options is done outside of the component.
          */
         "noFilter": boolean;
@@ -1193,13 +1198,9 @@ export namespace Components {
          */
         "open": () => Promise<void>;
         /**
-          * Defines the placeholder of the input element.
+          * The text to display when the select is empty.
          */
-        "placeholder": string;
-        /**
-          * If `true` the attribute required is added to the native input.
-         */
-        "required": boolean;
+        "placeholder"?: string | null;
         /**
           * Defines the height of the dropdown list.
          */
@@ -1234,9 +1235,6 @@ export namespace Components {
           * If `true` the option is focused
          */
         "focused": boolean;
-        /**
-          * *Internal* - Used to return the options infromation
-         */
         "getOption": <T>() => Promise<BalOptionValue<T>>;
         /**
           * If `true` the option is hidden
@@ -3152,6 +3150,7 @@ declare namespace LocalJSX {
           * If `true` the input is disabled
          */
         "disabled"?: boolean;
+        "hasIconRight"?: boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
@@ -3459,6 +3458,10 @@ declare namespace LocalJSX {
          */
         "multiple"?: boolean;
         /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
           * If `true` the filtering of the options is done outside of the component.
          */
         "noFilter"?: boolean;
@@ -3491,13 +3494,9 @@ declare namespace LocalJSX {
          */
         "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
-          * Defines the placeholder of the input element.
+          * The text to display when the select is empty.
          */
-        "placeholder"?: string;
-        /**
-          * If `true` the attribute required is added to the native input.
-         */
-        "required"?: boolean;
+        "placeholder"?: string | null;
         /**
           * Defines the height of the dropdown list.
          */

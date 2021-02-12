@@ -1985,14 +1985,14 @@ export class BalRadioGroup {
 import { Select as ISelect } from '@baloise/ui-library/dist/types/components/bal-select/bal-select';
 export declare interface BalSelect extends Components.BalSelect {}
 @ProxyCmp({
-  inputs: ['balTabindex', 'disabled', 'expanded', 'filterPlaceholder', 'inverted', 'loading', 'multiple', 'noFilter', 'placeholder', 'required', 'scrollable', 'typeahead', 'value'],
+  inputs: ['balTabindex', 'disabled', 'expanded', 'filterPlaceholder', 'inverted', 'loading', 'multiple', 'name', 'noFilter', 'placeholder', 'scrollable', 'typeahead', 'value'],
   methods: ['open', 'close', 'select', 'clear', 'setFocus', 'sync']
 })
 @Component({
   selector: 'bal-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['balTabindex', 'disabled', 'expanded', 'filterPlaceholder', 'inverted', 'loading', 'multiple', 'noFilter', 'placeholder', 'required', 'scrollable', 'typeahead', 'value'],
+  inputs: ['balTabindex', 'disabled', 'expanded', 'filterPlaceholder', 'inverted', 'loading', 'multiple', 'name', 'noFilter', 'placeholder', 'scrollable', 'typeahead', 'value'],
   outputs: ['balChange', 'balInput', 'balBlur', 'balFocus', 'balClick', 'balKeyPress', 'balCancel']
 })
 export class BalSelect {
@@ -2022,8 +2022,7 @@ export class BalSelect {
 
 export declare interface BalSelectOption extends Components.BalSelectOption {}
 @ProxyCmp({
-  inputs: ['checkbox', 'focused', 'hidden', 'icon', 'label', 'selected', 'value'],
-  methods: ['getOption']
+  inputs: ['checkbox', 'focused', 'hidden', 'icon', 'label', 'selected', 'value']
 })
 @Component({
   selector: 'bal-select-option',

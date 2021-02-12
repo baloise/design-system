@@ -1,4 +1,15 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch } from '@stencil/core'
+import {
+  Component,
+  h,
+  Host,
+  Prop,
+  Element,
+  EventEmitter,
+  Event,
+  Method,
+  Watch,
+  ComponentInterface,
+} from '@stencil/core'
 import { debounceEvent, findItemLabel } from '../../utils/helpers'
 
 @Component({
@@ -7,7 +18,7 @@ import { debounceEvent, findItemLabel } from '../../utils/helpers'
   shadow: false,
   scoped: true,
 })
-export class Textarea {
+export class Textarea implements ComponentInterface {
   private inputId = `bal-textarea-${TextareaIds++}`
   private nativeInput?: HTMLTextAreaElement
 

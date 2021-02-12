@@ -1,4 +1,4 @@
-import { Component, h, Prop, Host, Event, EventEmitter } from '@stencil/core'
+import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface } from '@stencil/core'
 import { BalButtonColor } from './bal.button.type'
 
 @Component({
@@ -7,7 +7,7 @@ import { BalButtonColor } from './bal.button.type'
   shadow: false,
   scoped: true,
 })
-export class Button {
+export class Button implements ComponentInterface {
   /**
    * The color to use from your application's color palette.
    */

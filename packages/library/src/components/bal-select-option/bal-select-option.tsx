@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Method, Prop } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Method, Prop } from '@stencil/core'
 import { BalOptionValue } from './bal-select-option.type'
 import { NewBalOptionValue } from './bal-select-option.util'
 
@@ -8,16 +8,16 @@ import { NewBalOptionValue } from './bal-select-option.util'
   shadow: false,
   scoped: true,
 })
-export class SelectOption {
+export class SelectOption implements ComponentInterface {
   private inputId = `bal-selopt-${selectOptionIds++}`
   private parent!: HTMLBalSelectElement
 
-  @Element() element!: HTMLElement
+  @Element() el!: HTMLElement
 
   /**
    * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
    */
-  @Prop() value: string
+  @Prop({ reflect: true }) value: string
 
   /**
    * Label will be shown in the input element when it got selected
@@ -27,7 +27,7 @@ export class SelectOption {
   /**
    * If `true` the option is hidden
    */
-  @Prop() hidden = true
+  @Prop({ reflect: true }) hidden = true
 
   /**
    * Baloise icon as a prefix
@@ -37,12 +37,12 @@ export class SelectOption {
   /**
    * If `true` the option is focused
    */
-  @Prop() focused = false
+  @Prop({ reflect: true }) focused = false
 
   /**
    * If `true` the option is selected
    */
-  @Prop() selected = false
+  @Prop({ reflect: true }) selected = false
 
   /**
    * If `true` the option has a checkbox
@@ -50,7 +50,8 @@ export class SelectOption {
   @Prop() checkbox = false
 
   /**
-   * *Internal* - Used to return the options infromation
+   * @internal
+   * Used to return the options infromation
    */
   @Method()
   async getOption<T>(): Promise<BalOptionValue<T>> {
@@ -62,7 +63,7 @@ export class SelectOption {
   }
 
   connectedCallback() {
-    this.parent = this.element.closest('bal-select')
+    this.parent = this.el.closest('bal-select')
     this.parent.sync()
   }
 
@@ -70,13 +71,18 @@ export class SelectOption {
     this.parent.sync()
   }
 
-  private onClick() {
+  private onClick = () => {
     this.parent.select(this.option)
+  }
+
+  private onChange = (ev: Event) => {
+    ev.preventDefault()
+    ev.stopPropagation()
   }
 
   render() {
     return (
-      <Host role="option" id={this.inputId} onClick={() => this.onClick()}>
+      <Host role="option" id={this.inputId} onClick={this.onClick}>
         <button
           type="button"
           class={[
@@ -90,7 +96,7 @@ export class SelectOption {
           tabIndex={-1}>
           <div class="select-option__content">
             <span class="checkbox" style={{ display: this.checkbox ? 'flex' : 'none' }}>
-              <bal-checkbox checked={this.selected} tabindex={-1}></bal-checkbox>
+              <bal-checkbox checked={this.selected} tabindex={-1} onBalChange={this.onChange}></bal-checkbox>
             </span>
             <span class="label">
               <slot />

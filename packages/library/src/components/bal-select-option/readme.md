@@ -20,19 +20,6 @@
 | `value`    | `value`    | The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element. | `string`  | `undefined` |
 
 
-## Methods
-
-### `getOption<T>() => Promise<BalOptionValue<T>>`
-
-*Internal* - Used to return the options infromation
-
-#### Returns
-
-Type: `Promise<BalOptionValue<T>>`
-
-
-
-
 ## Dependencies
 
 ### Depends on
