@@ -11,25 +11,11 @@ import {
   Watch,
   ComponentInterface,
 } from '@stencil/core'
+import { balDateUtil } from '@baloise/ui-library-utils'
 import { debounceEvent, findItemLabel } from '../../utils/helpers'
 import { actionKeys, isEnterKey, numberKeys } from '../../utils/key.util'
 import { i18nDate } from './bal-datepicker.i18n'
 import { BalCalendarCell, BalDateCallback } from './bal-datepicker.type'
-import {
-  decreaseYear,
-  isSameDay,
-  isSameMonth,
-  isSameWeek,
-  now,
-  year,
-  getFirstDayOfTheWeek,
-  day,
-  format,
-  month,
-  getLastDayOfMonth,
-  isInRange,
-  isValidDate,
-} from './bal-datepicker.util'
 
 @Component({
   tag: 'bal-datepicker',
@@ -265,11 +251,11 @@ export class Datepicker implements ComponentInterface {
   }
 
   get minYear() {
-    return this.minYearProp ? this.minYearProp : decreaseYear(now(), 100)
+    return this.minYearProp ? this.minYearProp : balDateUtil.decreaseYear(balDateUtil.now(), 100)
   }
 
   get maxYear() {
-    return this.maxYearProp ? this.maxYearProp : year(now())
+    return this.maxYearProp ? this.maxYearProp : balDateUtil.year(balDateUtil.now())
   }
 
   get years(): number[] {
@@ -284,7 +270,7 @@ export class Datepicker implements ComponentInterface {
 
   get firstDateOfBox(): Date {
     const date = new Date(this.pointerYear, this.pointerMonth, 1)
-    return getFirstDayOfTheWeek(date)
+    return balDateUtil.getFirstDayOfTheWeek(date)
   }
 
   get calendarGrid(): BalCalendarCell[][] {
@@ -298,20 +284,21 @@ export class Datepicker implements ComponentInterface {
           ...row,
           {
             date: new Date(dayDatePointer),
-            dateString: format(dayDatePointer),
-            label: day(dayDatePointer).toString(),
-            isToday: isSameDay(dayDatePointer, now()),
-            isSelected: this.value && isSameDay(dayDatePointer, this.value),
+            dateString: balDateUtil.format(dayDatePointer),
+            label: balDateUtil.day(dayDatePointer).toString(),
+            isToday: balDateUtil.isSameDay(dayDatePointer, balDateUtil.now()),
+            isSelected: this.value && balDateUtil.isSameDay(dayDatePointer, this.value),
             isDisabled: !this.filter(dayDatePointer),
             isOutdated:
-              this.pointerMonth !== dayDatePointer.getMonth() || !isInRange(dayDatePointer, this.minDate, this.maxDate),
+              this.pointerMonth !== dayDatePointer.getMonth() ||
+              !balDateUtil.isInRange(dayDatePointer, this.minDate, this.maxDate),
           } as BalCalendarCell,
         ]
         dayDatePointer.setDate(dayDatePointer.getDate() + 1)
-      } while (isSameWeek(dayDatePointer, weekDatePointer))
+      } while (balDateUtil.isSameWeek(dayDatePointer, weekDatePointer))
       calendar = [...calendar, row]
       weekDatePointer.setDate(weekDatePointer.getDate() + 7)
-    } while (isSameMonth(this.pointerDate, dayDatePointer))
+    } while (balDateUtil.isSameMonth(this.pointerDate, dayDatePointer))
     return calendar
   }
 
@@ -430,7 +417,7 @@ export class Datepicker implements ComponentInterface {
           type="text"
           maxlength="10"
           autoComplete="off"
-          value={format(this.value)}
+          value={balDateUtil.format(this.value)}
           required={this.required}
           disabled={this.disabled}
           readonly={this.readonly}
@@ -536,11 +523,11 @@ export class Datepicker implements ComponentInterface {
   }
 
   private updateFromValue() {
-    if (this.value && isValidDate(this.value)) {
-      this.inputElement.value = format(this.value)
-      this.pointerYear = year(this.value)
-      this.pointerMonth = month(this.value)
-      this.pointerDay = day(this.value)
+    if (this.value && balDateUtil.isValidDate(this.value)) {
+      this.inputElement.value = balDateUtil.format(this.value)
+      this.pointerYear = balDateUtil.year(this.value)
+      this.pointerMonth = balDateUtil.month(this.value)
+      this.pointerDay = balDateUtil.day(this.value)
     }
   }
 
@@ -552,14 +539,14 @@ export class Datepicker implements ComponentInterface {
         const month = parseInt(parts[1], 10) - 1
         if (parts[2].length === 4 && year >= 1900 && month < 12 && month >= 0) {
           const day = parseInt(parts[0], 10)
-          const lastDayOfMonth = getLastDayOfMonth(year, month)
+          const lastDayOfMonth = balDateUtil.getLastDayOfMonth(year, month)
           if (0 < day && day <= lastDayOfMonth) {
             const d = new Date(year, month, day)
             this.value = d
             this.pointerMonth = month
             this.pointerYear = year
             if (shouldFormat) {
-              this.inputElement.value = format(d)
+              this.inputElement.value = balDateUtil.format(d)
             }
           }
         }

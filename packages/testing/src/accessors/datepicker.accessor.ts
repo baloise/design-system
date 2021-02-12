@@ -1,8 +1,7 @@
 /// <reference types="cypress" />
 
+import { balDateUtil } from '@baloise/ui-library-utils'
 import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-
-const format = (s: any) => s
 
 export interface DatepickerAccessorType {
   write(date: string): DatepickerAccessorType
@@ -14,7 +13,7 @@ export interface DatepickerAccessorType {
   assertDateInRange(date: Date, shouldBeInRange?: boolean): DatepickerAccessorType
 }
 
-const selectorDayBox = (date: Date) => `[data-date="${format(date)}"]`
+const selectorDayBox = (date: Date) => `[data-date="${balDateUtil.format(date)}"]`
 
 export const DatepickerWriteMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   /**
@@ -64,7 +63,10 @@ export const DatepickerShouldHaveValueAssertableMixin: Mixin = ({ selector, crea
    * Check if datepicker have value
    */
   shouldHaveValue: (date: Date) => {
-    cy.get(selector).find('.dropdown-trigger .sc-bal-datepicker.input').first().should('have.value', format(date))
+    cy.get(selector)
+      .find('.dropdown-trigger .sc-bal-datepicker.input')
+      .first()
+      .should('have.value', balDateUtil.format(date))
     return creator()
   },
 })

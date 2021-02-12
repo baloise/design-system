@@ -21,7 +21,7 @@
     "types": ["cypress", "node"]
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["cypress", "@baloise/ui-library"],
+  "exclude": ["cypress"],
   "compileOnSave": false,
   "buildOnSave": false
 }
