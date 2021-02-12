@@ -21,6 +21,8 @@ const run = async () => {
   const content = [
     '// generated file by .scripts/index.script.js',
     '',
+    `export * from './utils/index'`,
+    '',
     utilExports.join('\n'),
     '',
     'export interface BalUtilsStatic {',

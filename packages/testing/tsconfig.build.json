@@ -13,14 +13,15 @@
     "noImplicitReturns": true,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
-    "outDir": "dist",
+    "outDir": "dist-transpiled",
+    "declarationDir": "dist/types",
     "removeComments": false,
     "sourceMap": true,
     "target": "es2015",
     "types": ["cypress", "node"]
   },
-  "include": ["src/index.ts"],
-  "exclude": ["cypress"],
+  "include": ["src/**/*.ts"],
+  "exclude": ["cypress", "@baloise/ui-library"],
   "compileOnSave": false,
   "buildOnSave": false
 }
