@@ -47,7 +47,7 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 | Event         | Description                               | Type                            |
 | ------------- | ----------------------------------------- | ------------------------------- |
 | `balBlur`     | Emitted when a keyboard input occurred.   | `CustomEvent<FocusEvent>`       |
-| `balChange`   | Emitted when the input value has changed. | `CustomEvent<string>`           |
+| `balChange`   | Emitted when the input value has changed. | `CustomEvent<number \| string>` |
 | `balClick`    | Emitted when the input has clicked.       | `CustomEvent<MouseEvent>`       |
 | `balFocus`    | Emitted when the input has focus.         | `CustomEvent<FocusEvent>`       |
 | `balInput`    | Emitted when a keyboard input occurred.   | `CustomEvent<number \| string>` |

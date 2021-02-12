@@ -19,15 +19,23 @@
           data-test-id="input"
         ></bal-input>
         <bal-input id="bal-input-1-preview" disabled placeholder="Enter your firstname"></bal-input>
+        <bal-input id="bal-input-1-change" disabled placeholder="Enter your firstname"></bal-input>
       </section>
 
       <script>
         var input1 = document.getElementById('bal-input-1')
         var input1Preview = document.getElementById('bal-input-1-preview')
-        setTimeout(() => input1.setFocus(), 100)
+        var input1Change = document.getElementById('bal-input-1-change')
+        // setTimeout(() => input1.setFocus(), 100)
         input1.addEventListener('balInput', function (event) {
           input1Preview.value = event.detail
         })
+        input1.addEventListener('balChange', function (event) {
+          input1Change.value = event.detail
+        })
+        setTimeout(() => {
+          input1.value = 'Boba'
+        }, 600)
       </script>
 
       <h2 class="title is-size-2">HTML input</h2>

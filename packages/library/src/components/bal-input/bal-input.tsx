@@ -24,6 +24,8 @@ export class Input implements ComponentInterface {
   private allowedKeys = [...numberKeys, '.', ...actionKeys]
   private inputId = `bal-in-${InputIds++}`
   private nativeInput?: HTMLInputElement
+  private didInit = false
+  private hasFocus = false
 
   @Element() el!: HTMLElement
 
@@ -180,8 +182,10 @@ export class Input implements ComponentInterface {
    * Update the native input element when the value changes
    */
   @Watch('value')
-  protected valueChanged() {
-    this.balChange.emit(this.getValue())
+  protected valueChanged(newValue: string | number | null, oldValue: string | number | null) {
+    if (this.didInit && !this.hasFocus && newValue !== oldValue) {
+      this.balChange.emit(this.getValue())
+    }
   }
 
   /**
@@ -212,10 +216,14 @@ export class Input implements ComponentInterface {
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<string>
+  @Event() balChange!: EventEmitter<string | number | null>
 
   connectedCallback() {
     this.debounceChanged()
+  }
+
+  componentDidLoad() {
+    this.didInit = true
   }
 
   /**
@@ -256,6 +264,17 @@ export class Input implements ComponentInterface {
         event.stopPropagation()
       }
     }
+  }
+
+  private onFocus = (ev: FocusEvent) => {
+    this.hasFocus = true
+    this.balFocus.emit(ev)
+  }
+
+  private onBlur = (ev: FocusEvent) => {
+    this.hasFocus = false
+    this.balBlur.emit(ev)
+    this.balChange.emit(this.getValue())
   }
 
   render() {
@@ -308,9 +327,9 @@ export class Input implements ComponentInterface {
           {...inputProps}
           onInput={this.onInput}
           onKeyDown={this.onKeyDown}
-          onBlur={e => this.balBlur.emit(e)}
+          onBlur={this.onBlur}
+          onFocus={this.onFocus}
           onClick={e => this.balClick.emit(e)}
-          onFocus={e => this.balFocus.emit(e)}
           onKeyPress={e => this.balKeyPress.emit(e)}
         />
       </Host>

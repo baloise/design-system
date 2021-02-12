@@ -1575,7 +1575,7 @@ export class BalInput {
   /** Emitted when the input has focus. */
   balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input value has changed. */
-  balChange!: EventEmitter<CustomEvent<string>>;
+  balChange!: EventEmitter<CustomEvent<number | string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

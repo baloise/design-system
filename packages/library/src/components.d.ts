@@ -3194,7 +3194,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string>) => void;
+        "onBalChange"?: (event: CustomEvent<string | number | null>) => void;
         /**
           * Emitted when the input has clicked.
          */
