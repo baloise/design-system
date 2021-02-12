@@ -40,9 +40,6 @@
   },
   "dependencies": {
     "@baloise/ui-library-utils": "^4.0.0-alpha.18",
-    "@stencil/core": "^2.3.0",
-    "@stencil/postcss": "^2.0.0",
-    "@stencil/sass": "^1.4.1",
     "bulma": "^0.9.0",
     "filesize.js": "^2.0.0"
   },
@@ -51,6 +48,9 @@
     "@baloise/angular-output-target": "^1.0.5",
     "@baloise/vue-2-output-target": "^1.0.5",
     "@baloise/vue-output-target": "^0.0.8",
+    "@stencil/core": "^2.4.0",
+    "@stencil/postcss": "^2.0.0",
+    "@stencil/sass": "^1.4.1",
     "@types/autoprefixer": "^9.7.2",
     "autoprefixer": "^10.2.1",
     "rimraf": "^3.0.2",
