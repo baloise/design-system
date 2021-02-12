@@ -12,10 +12,16 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-button color="primary" data-test-id="primary-button">Primary</bal-button>
+        <bal-button id="bubu" disabled color="primary" data-test-id="primary-button">Primary</bal-button>
         <bal-button color="info">Info</bal-button>
         <bal-button color="link">Link</bal-button>
       </section>
+
+      <script>
+        var btn = document.getElementById('bubu')
+        btn.addEventListener('click', () => console.log('click'))
+        setTimeout(() => btn.click(), 1000)
+      </script>
 
       <h2 class="title is-size-2">Outlined</h2>
       <section>

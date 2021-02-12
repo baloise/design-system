@@ -1,4 +1,4 @@
-import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface } from '@stencil/core'
+import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface, Listen, Element } from '@stencil/core'
 import { BalButtonColor } from './bal.button.type'
 
 @Component({
@@ -8,6 +8,8 @@ import { BalButtonColor } from './bal.button.type'
   scoped: true,
 })
 export class Button implements ComponentInterface {
+  @Element() el: HTMLElement
+
   /**
    * The color to use from your application's color palette.
    */
@@ -127,6 +129,14 @@ export class Button implements ComponentInterface {
    * Emitted when the button loses focus.
    */
   @Event() balBlur!: EventEmitter<void>
+
+  @Listen('click', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    if (this.disabled && ev.target && ev.target === this.el) {
+      ev.preventDefault()
+      ev.stopPropagation()
+    }
+  }
 
   private get isIconInverted() {
     switch (this.color) {
