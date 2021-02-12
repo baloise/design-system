@@ -1323,6 +1323,7 @@ export const BalRadioGroup = /*@__PURE__*/ Vue.extend({
 
   props: {
     interface: {} as PropOptions<Components.BalRadioGroup['interface']>,
+    name: {} as PropOptions<Components.BalRadioGroup['name']>,
     inverted: {} as PropOptions<Components.BalRadioGroup['inverted']>,
     value: {} as PropOptions<Components.BalRadioGroup['value']>,
   },
@@ -1362,6 +1363,8 @@ export const BalSelect = /*@__PURE__*/ Vue.extend({
     clear: createCommonMethod('clear') as Components.BalSelect['clear'],
     setFocus: createCommonMethod('setFocus') as Components.BalSelect['setFocus'],
     sync: createCommonMethod('sync') as Components.BalSelect['sync'],
+    getInputElement: createCommonMethod('getInputElement') as Components.BalSelect['getInputElement'],
+    getFilterInputElement: createCommonMethod('getFilterInputElement') as Components.BalSelect['getFilterInputElement'],
   },
   render: createCommonRender('bal-select', ['balChange', 'balInput', 'balBlur', 'balFocus', 'balClick', 'balKeyPress', 'balCancel']),
 });

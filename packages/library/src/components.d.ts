@@ -1144,6 +1144,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
           * The value of the control.
          */
         "value": string;
@@ -1173,6 +1177,14 @@ export namespace Components {
           * Defines the placeholder of the input filter element.
          */
         "filterPlaceholder": string;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getFilterInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLBalInputElement>;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
@@ -2549,7 +2561,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<void>) => void;
+        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the checked property has changed.
          */
@@ -2557,7 +2569,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<void>) => void;
+        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * The value of the control.
          */
@@ -3400,11 +3412,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<void>) => void;
+        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<void>) => void;
+        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * The value of the control.
          */
@@ -3419,6 +3431,10 @@ declare namespace LocalJSX {
           * If `true` the component can be used on dark background
          */
         "inverted"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
         /**
           * Emitted when the checked property has changed.
          */

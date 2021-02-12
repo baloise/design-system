@@ -265,9 +265,9 @@ export class BalCheckbox {
   /** Emitted when the checked property has changed. */
   balChange!: EventEmitter<CustomEvent<boolean>>;
   /** Emitted when the toggle has focus. */
-  balFocus!: EventEmitter<CustomEvent<void>>;
+  balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the toggle loses focus. */
-  balBlur!: EventEmitter<CustomEvent<void>>;
+  balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1946,9 +1946,9 @@ export declare interface BalRadio extends Components.BalRadio {}
 })
 export class BalRadio {
   /** Emitted when the toggle has focus. */
-  balFocus!: EventEmitter<CustomEvent<void>>;
+  balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the toggle loses focus. */
-  balBlur!: EventEmitter<CustomEvent<void>>;
+  balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -1961,13 +1961,13 @@ export class BalRadio {
 import { RadioGroup as IRadioGroup } from '@baloise/ui-library/dist/types/components/bal-radio-group/bal-radio-group';
 export declare interface BalRadioGroup extends Components.BalRadioGroup {}
 @ProxyCmp({
-  inputs: ['interface', 'inverted', 'value']
+  inputs: ['interface', 'inverted', 'name', 'value']
 })
 @Component({
   selector: 'bal-radio-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['interface', 'inverted', 'value'],
+  inputs: ['interface', 'inverted', 'name', 'value'],
   outputs: ['balChange']
 })
 export class BalRadioGroup {
@@ -1986,7 +1986,7 @@ import { Select as ISelect } from '@baloise/ui-library/dist/types/components/bal
 export declare interface BalSelect extends Components.BalSelect {}
 @ProxyCmp({
   inputs: ['balTabindex', 'disabled', 'expanded', 'filterPlaceholder', 'inverted', 'loading', 'multiple', 'name', 'noFilter', 'placeholder', 'scrollable', 'typeahead', 'value'],
-  methods: ['open', 'close', 'select', 'clear', 'setFocus', 'sync']
+  methods: ['open', 'close', 'select', 'clear', 'setFocus', 'sync', 'getInputElement', 'getFilterInputElement']
 })
 @Component({
   selector: 'bal-select',

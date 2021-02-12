@@ -69,6 +69,26 @@ Type: `Promise<void>`
 
 
 
+### `getFilterInputElement() => Promise<HTMLInputElement>`
+
+Returns the native `<input>` element used under the hood.
+
+#### Returns
+
+Type: `Promise<HTMLInputElement>`
+
+
+
+### `getInputElement() => Promise<HTMLBalInputElement>`
+
+Returns the native `<input>` element used under the hood.
+
+#### Returns
+
+Type: `Promise<HTMLBalInputElement>`
+
+
+
 ### `open() => Promise<void>`
 
 Opens the dropdown

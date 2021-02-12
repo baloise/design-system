@@ -838,6 +838,7 @@ export const BalRadio = /*@__PURE__*/ defineContainer<JSX.BalRadio>('bal-radio',
 
 export const BalRadioGroup = /*@__PURE__*/ defineContainer<JSX.BalRadioGroup>('bal-radio-group',
   ['interface',
+'name',
 'inverted',
 'value'],
   ['balChange'],

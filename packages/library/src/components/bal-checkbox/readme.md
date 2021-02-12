@@ -22,11 +22,11 @@ Checkboxes allow the selection of multiple options from a set of options. They a
 
 ## Events
 
-| Event       | Description                                    | Type                   |
-| ----------- | ---------------------------------------------- | ---------------------- |
-| `balBlur`   | Emitted when the toggle loses focus.           | `CustomEvent<void>`    |
-| `balChange` | Emitted when the checked property has changed. | `CustomEvent<boolean>` |
-| `balFocus`  | Emitted when the toggle has focus.             | `CustomEvent<void>`    |
+| Event       | Description                                    | Type                      |
+| ----------- | ---------------------------------------------- | ------------------------- |
+| `balBlur`   | Emitted when the toggle loses focus.           | `CustomEvent<FocusEvent>` |
+| `balChange` | Emitted when the checked property has changed. | `CustomEvent<boolean>`    |
+| `balFocus`  | Emitted when the toggle has focus.             | `CustomEvent<FocusEvent>` |
 
 
 ## Methods

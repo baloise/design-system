@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch } from '@stencil/core'
+import { findItemLabel } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-checkbox',
@@ -50,17 +51,17 @@ export class Checkbox {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<boolean>
+  @Event() balChange!: EventEmitter<boolean>
 
   /**
    * Emitted when the toggle has focus.
    */
-  @Event({ eventName: 'balFocus' }) balFocus!: EventEmitter<void>
+  @Event() balFocus!: EventEmitter<FocusEvent>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event({ eventName: 'balBlur' }) balBlur!: EventEmitter<void>
+  @Event() balBlur!: EventEmitter<FocusEvent>
 
   /**
    * Update the native input element when the value changes
@@ -85,16 +86,14 @@ export class Checkbox {
     this.balChange.emit(this.checked)
   }
 
-  private onFocus = () => {
-    this.balFocus.emit()
-  }
-
-  private onBlur = () => {
-    this.balBlur.emit()
-  }
-
   render() {
-    const { inputId, label } = this
+    const labelId = this.inputId + '-lbl'
+    const label = findItemLabel(this.el)
+    if (label) {
+      label.id = labelId
+      label.htmlFor = this.inputId
+    }
+
     return (
       <Host
         class={{
@@ -103,7 +102,7 @@ export class Checkbox {
         <input
           type="checkbox"
           role="checkbox"
-          id={inputId}
+          id={this.inputId}
           name={this.name}
           value={this.value}
           checked={this.checked}
@@ -112,13 +111,13 @@ export class Checkbox {
           aria-label={label}
           disabled={this.disabled}
           aria-disabled={this.disabled ? 'true' : 'false'}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
+          onFocus={e => this.balFocus.emit(e)}
+          onBlur={e => this.balBlur.emit(e)}
           onInput={this.onInput}
           ref={inputEl => (this.inputEl = inputEl)}
         />
-        <label htmlFor={inputId}>
-          <bal-text>{label}</bal-text>
+        <label htmlFor={this.inputId}>
+          <bal-text>{this.label}</bal-text>
         </label>
       </Host>
     )

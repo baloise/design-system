@@ -226,6 +226,22 @@ export class Select {
     this.updateOptionProps()
   }
 
+  /**
+   * Returns the native `<input>` element used under the hood.
+   */
+  @Method()
+  getInputElement(): Promise<HTMLBalInputElement> {
+    return Promise.resolve(this.inputElement)
+  }
+
+  /**
+   * Returns the native `<input>` element used under the hood.
+   */
+  @Method()
+  getFilterInputElement(): Promise<HTMLInputElement> {
+    return Promise.resolve(this.inputFilterElement)
+  }
+
   @Listen('keydown', { target: 'window' })
   keyDownHandler(event: KeyboardEvent) {
     if (this.isDropdownOpen && (isArrowDownKey(event) || isArrowUpKey(event))) {

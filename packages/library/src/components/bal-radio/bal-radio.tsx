@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface } from '@stencil/core'
 
 @Component({
   tag: 'bal-radio',
@@ -6,11 +6,11 @@ import { Component, h, Host, Prop, Element, EventEmitter, Event, Method } from '
   shadow: false,
   scoped: true,
 })
-export class Radio {
+export class Radio implements ComponentInterface {
   private inputId = `bal-rb-${radioIds++}`
   private inputEl?: HTMLInputElement
 
-  @Element() element!: HTMLElement
+  @Element() el!: HTMLElement
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -22,7 +22,7 @@ export class Radio {
    */
   @Prop() interface: 'radio' | 'select-button' = 'radio'
 
-    /**
+  /**
    * The tabindex of the control.
    */
   @Prop() balTabindex: number = 0
@@ -55,12 +55,12 @@ export class Radio {
   /**
    * Emitted when the toggle has focus.
    */
-  @Event({ eventName: 'balFocus' }) balFocus!: EventEmitter<void>
+  @Event() balFocus!: EventEmitter<FocusEvent>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event({ eventName: 'balBlur' }) balBlur!: EventEmitter<void>
+  @Event() balBlur!: EventEmitter<FocusEvent>
 
   /**
    * Sets the focus on the input element.
@@ -73,7 +73,7 @@ export class Radio {
   }
 
   get parent(): HTMLBalRadioGroupElement {
-    return this.element.closest('bal-radio-group')
+    return this.el.closest('bal-radio-group')
   }
 
   connectedCallback() {
@@ -95,14 +95,6 @@ export class Radio {
     }
   }
 
-  private onFocus = () => {
-    this.balFocus.emit()
-  }
-
-  private onBlur = () => {
-    this.balBlur.emit()
-  }
-
   render() {
     const { inputId, label } = this
     return (
@@ -120,11 +112,12 @@ export class Radio {
           tabindex={this.balTabindex}
           value={this.value}
           aria-label={label}
+          aria-hidden={this.disabled ? 'true' : null}
           disabled={this.disabled}
           checked={this.checked}
           aria-disabled={this.disabled ? 'true' : 'false'}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
+          onFocus={e => this.balFocus.emit(e)}
+          onBlur={e => this.balBlur.emit(e)}
           ref={inputEl => (this.inputEl = inputEl)}
         />
         <label htmlFor={inputId}>
