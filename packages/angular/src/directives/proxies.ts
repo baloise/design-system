@@ -358,7 +358,7 @@ import { Datepicker as IDatepicker } from '@baloise/ui-library/dist/types/compon
 export declare interface BalDatepicker extends Components.BalDatepicker {}
 @ProxyCmp({
   inputs: ['balTabindex', 'closeOnSelect', 'debounce', 'disabled', 'expanded', 'filter', 'inverted', 'locale', 'maxDate', 'maxYearProp', 'minDate', 'minYearProp', 'name', 'placeholder', 'readonly', 'required', 'triggerIcon', 'value'],
-  methods: ['select', 'setFocus', 'getInputElement']
+  methods: ['open', 'close', 'select', 'setFocus', 'getInputElement']
 })
 @Component({
   selector: 'bal-datepicker',

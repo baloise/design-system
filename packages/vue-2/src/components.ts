@@ -392,6 +392,8 @@ export const BalDatepicker = /*@__PURE__*/ Vue.extend({
   },
 
   methods: {
+    open: createCommonMethod('open') as Components.BalDatepicker['open'],
+    close: createCommonMethod('close') as Components.BalDatepicker['close'],
     select: createCommonMethod('select') as Components.BalDatepicker['select'],
     setFocus: createCommonMethod('setFocus') as Components.BalDatepicker['setFocus'],
     getInputElement: createCommonMethod('getInputElement') as Components.BalDatepicker['getInputElement'],

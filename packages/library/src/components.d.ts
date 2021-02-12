@@ -329,6 +329,10 @@ export namespace Components {
          */
         "balTabindex": number;
         /**
+          * Closes the dropdown
+         */
+        "close": () => Promise<void>;
+        /**
           * Closes the datepicker dropdown after selection
          */
         "closeOnSelect": boolean;
@@ -380,6 +384,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * Opens the dropdown
+         */
+        "open": () => Promise<void>;
         /**
           * The text to display when the select is empty.
          */

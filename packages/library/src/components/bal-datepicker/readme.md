@@ -43,6 +43,16 @@ An input with a simple dropdown for selecting a date.
 
 ## Methods
 
+### `close() => Promise<void>`
+
+Closes the dropdown
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `getInputElement() => Promise<HTMLInputElement>`
 
 Returns the native `<input>` element used under the hood.
@@ -50,6 +60,16 @@ Returns the native `<input>` element used under the hood.
 #### Returns
 
 Type: `Promise<HTMLInputElement>`
+
+
+
+### `open() => Promise<void>`
+
+Opens the dropdown
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

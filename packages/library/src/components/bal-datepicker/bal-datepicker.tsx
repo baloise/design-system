@@ -12,7 +12,7 @@ import {
   ComponentInterface,
 } from '@stencil/core'
 import { debounceEvent, findItemLabel } from '../../utils/helpers'
-import { actionKeys, numberKeys } from '../../utils/key.util'
+import { actionKeys, isEnterKey, numberKeys } from '../../utils/key.util'
 import { i18nDate } from './bal-datepicker.i18n'
 import { BalCalendarCell, BalDateCallback } from './bal-datepicker.type'
 import {
@@ -185,6 +185,32 @@ export class Datepicker implements ComponentInterface {
   }
 
   /**
+   * Opens the dropdown
+   */
+  @Method()
+  async open(): Promise<void> {
+    if (this.disabled) {
+      return undefined
+    }
+    if (this.dropdownElement) {
+      this.dropdownElement.open()
+    }
+  }
+
+  /**
+   * Closes the dropdown
+   */
+  @Method()
+  async close(): Promise<void> {
+    if (this.disabled) {
+      return undefined
+    }
+    if (this.dropdownElement) {
+      this.dropdownElement.close()
+    }
+  }
+
+  /**
    * Selects an option
    */
   @Method()
@@ -350,6 +376,14 @@ export class Datepicker implements ComponentInterface {
     this.pointerYear = parseInt(inputValue, 10)
   }
 
+  private onKeyPress = (event: KeyboardEvent) => {
+    if (isEnterKey(event)) {
+      if (!this.isDropdownOpen) {
+        this.open()
+      }
+    }
+  }
+
   render() {
     return (
       <Host role="datepicker" aria-disabled={this.disabled ? 'true' : null}>
@@ -402,6 +436,7 @@ export class Datepicker implements ComponentInterface {
           readonly={this.readonly}
           placeholder={this.placeholder}
           tabindex={this.balTabindex}
+          onKeyPress={this.onKeyPress}
           onKeyDown={e => this.onInputKeyDown(e)}
           onInput={this.onInput}
           onClick={this.onInputClick}
