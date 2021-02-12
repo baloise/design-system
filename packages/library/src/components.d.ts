@@ -891,6 +891,10 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement>;
         /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
           * If `true` this component can be placed on dark background
          */
         "inverted": boolean;
@@ -1386,6 +1390,14 @@ export namespace Components {
     }
     interface BalTextarea {
         /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        "autocapitalize": string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus": boolean;
+        /**
           * The tabindex of the control.
          */
         "balTabindex": number;
@@ -1394,41 +1406,69 @@ export namespace Components {
          */
         "clickable": boolean;
         /**
-          * If `true` the input is disabled
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * If `true`, the user cannot interact with the textarea.
          */
         "disabled": boolean;
+        /**
+          * Returns the native `<textarea>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLTextAreaElement>;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
         /**
           * If `true` this component can be placed on dark background
          */
         "inverted": boolean;
         /**
-          * Defines the max length of the value.
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
          */
-        "maxLength": number | undefined;
+        "maxLength"?: number;
         /**
-          * Defines the min length of the value.
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
          */
-        "minLength": number | undefined;
+        "minLength"?: number;
         /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
         /**
-          * Placeholder of the input
+          * Instructional text that shows before the input has a value.
          */
-        "placeholder": string;
+        "placeholder"?: string | null;
         /**
-          * If `true` the input is readonly
+          * If `true`, the user cannot modify the value.
          */
         "readonly": boolean;
         /**
-          * Sets the focus on the input element.
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        /**
+          * Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global `textarea.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
-          * The value of the control.
+          * The value of the textarea.
          */
-        "value": string;
+        "value"?: string | null;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: 'hard' | 'soft' | 'off';
     }
     interface BalTimeinput {
         /**
@@ -3113,6 +3153,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
           * If `true` this component can be placed on dark background
          */
         "inverted"?: boolean;
@@ -3624,6 +3668,14 @@ declare namespace LocalJSX {
     }
     interface BalTextarea {
         /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        "autocapitalize"?: string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus"?: boolean;
+        /**
           * The tabindex of the control.
          */
         "balTabindex"?: number;
@@ -3632,21 +3684,33 @@ declare namespace LocalJSX {
          */
         "clickable"?: boolean;
         /**
-          * If `true` the input is disabled
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * If `true`, the user cannot interact with the textarea.
          */
         "disabled"?: boolean;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
         /**
           * If `true` this component can be placed on dark background
          */
         "inverted"?: boolean;
         /**
-          * Defines the max length of the value.
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
          */
-        "maxLength"?: number | undefined;
+        "maxLength"?: number;
         /**
-          * Defines the min length of the value.
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
          */
-        "minLength"?: number | undefined;
+        "minLength"?: number;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -3676,17 +3740,29 @@ declare namespace LocalJSX {
          */
         "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
-          * Placeholder of the input
+          * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string;
+        "placeholder"?: string | null;
         /**
-          * If `true` the input is readonly
+          * If `true`, the user cannot modify the value.
          */
         "readonly"?: boolean;
         /**
-          * The value of the control.
+          * If `true`, the user must fill in a value before submitting a form.
          */
-        "value"?: string;
+        "required"?: boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        /**
+          * The value of the textarea.
+         */
+        "value"?: string | null;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: 'hard' | 'soft' | 'off';
     }
     interface BalTimeinput {
         /**

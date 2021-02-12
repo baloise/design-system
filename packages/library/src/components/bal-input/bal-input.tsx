@@ -148,6 +148,13 @@ export class Input {
   @Prop() onlyNumbers = false
 
   /**
+   * A hint to the browser for which keyboard to display.
+   * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
+   * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+   */
+  @Prop() inputmode?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
+
+  /**
    * The value of the input.
    */
   @Prop({ mutable: true }) value?: string | number | null = ''
@@ -262,6 +269,7 @@ export class Input {
           aria-labelledby={labelId}
           disabled={this.disabled}
           accept={this.accept}
+          inputMode={this.inputmode}
           autoCapitalize={this.autocapitalize}
           autoComplete={this.autocomplete}
           autoCorrect={this.autocorrect}

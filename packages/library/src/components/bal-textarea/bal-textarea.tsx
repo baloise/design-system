@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch } from '@stencil/core'
+import { debounceEvent, findItemLabel } from '../../utils/helpers'
 
 @Component({
   tag: 'bal-textarea',
@@ -7,8 +8,8 @@ import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch }
   scoped: true,
 })
 export class Textarea {
-  private inputId = `bal-ta-${TextareaIds++}`
-  private inputEl?: HTMLTextAreaElement
+  private inputId = `bal-textarea-${TextareaIds++}`
+  private nativeInput?: HTMLTextAreaElement
 
   @Element() el!: HTMLElement
 
@@ -18,9 +19,34 @@ export class Textarea {
   @Prop() name: string = this.inputId
 
   /**
-   * Placeholder of the input
+   * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
    */
-  @Prop() placeholder = ''
+  @Prop() autocapitalize = 'none'
+
+  /**
+   * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+   */
+  @Prop() autofocus = false
+
+  /**
+   * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+   */
+  @Prop() debounce = 0
+
+  @Watch('debounce')
+  protected debounceChanged() {
+    this.balChange = debounceEvent(this.balChange, this.debounce)
+  }
+
+  /**
+   * If `true`, the user cannot interact with the textarea.
+   */
+  @Prop() disabled = false
+
+  /**
+   * Instructional text that shows before the input has a value.
+   */
+  @Prop() placeholder?: string | null
 
   /**
    * The tabindex of the control.
@@ -28,14 +54,14 @@ export class Textarea {
   @Prop() balTabindex: number = 0
 
   /**
-   * Defines the max length of the value.
+   * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
    */
-  @Prop() maxLength: number | undefined = undefined
+  @Prop() maxLength?: number
 
   /**
-   * Defines the min length of the value.
+   * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
    */
-  @Prop() minLength: number | undefined = undefined
+  @Prop() minLength?: number
 
   /**
    * If `true` this component can be placed on dark background
@@ -43,14 +69,29 @@ export class Textarea {
   @Prop() inverted = false
 
   /**
-   * If `true` the input is readonly
+   * If `true`, the user cannot modify the value.
    */
   @Prop() readonly = false
 
   /**
-   * If `true` the input is disabled
+   * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
    */
-  @Prop() disabled = false
+  @Prop() cols?: number
+
+  /**
+   * The number of visible text lines for the control.
+   */
+  @Prop() rows?: number
+
+  /**
+   * Indicates how the control wraps text.
+   */
+  @Prop() wrap?: 'hard' | 'soft' | 'off'
+
+  /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop() required = false
 
   /**
    * If `true` the input gets a clickable cursor style
@@ -58,30 +99,40 @@ export class Textarea {
   @Prop() clickable = false
 
   /**
-   * The value of the control.
+   * A hint to the browser for which keyboard to display.
+   * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
+   * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
    */
-  @Prop({ mutable: true }) value: string = ''
+  @Prop() inputmode?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
+
+  /**
+   * The value of the textarea.
+   */
+  @Prop({ mutable: true }) value?: string | null = ''
 
   /**
    * Update the native input element when the value changes
    */
   @Watch('value')
   protected valueChanged() {
-    this.balChange.emit(this.value == null ? this.value : this.value.toString())
+    const nativeInput = this.nativeInput
+    const value = this.getValue()
+    if (nativeInput && nativeInput.value !== value) {
+      nativeInput.value = value
+    }
+
+    this.balChange.emit(value)
   }
+
+  /**
+   * Emitted when the input value has changed..
+   */
+  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<string>
 
   /**
    * Emitted when a keyboard input occurred.
    */
   @Event({ eventName: 'balInput' }) balInput!: EventEmitter<string>
-  private onInput = (event: { target: { value: string } }) => {
-    let val = event.target && event.target?.value
-
-    if (this.value !== val) {
-      this.value = val
-      this.balInput.emit(this.value)
-    }
-  }
 
   /**
    * Emitted when a keyboard input occurred.
@@ -103,45 +154,82 @@ export class Textarea {
    */
   @Event({ eventName: 'balFocus' }) balFocus!: EventEmitter<FocusEvent>
 
-  /**
-   * Emitted when the input value has changed..
-   */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<string>
+  connectedCallback() {
+    this.debounceChanged()
+  }
 
   /**
-   * Sets the focus on the input element.
+   * Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global
+   * `textarea.focus()`.
    */
   @Method()
-  async setFocus(): Promise<void> {
-    this.inputEl.focus()
+  async setFocus() {
+    if (this.nativeInput) {
+      this.nativeInput.focus()
+    }
+  }
+
+  /**
+   * Returns the native `<textarea>` element used under the hood.
+   */
+  @Method()
+  getInputElement(): Promise<HTMLTextAreaElement> {
+    return Promise.resolve(this.nativeInput!)
+  }
+
+  private getValue(): string {
+    return this.value || ''
+  }
+
+  private onInput = () => {
+    if (this.nativeInput) {
+      this.value = this.nativeInput.value
+    }
+    this.balInput.emit(this.value)
   }
 
   render() {
+    const value = this.getValue()
+    const labelId = this.inputId + '-lbl'
+    const label = findItemLabel(this.el)
+    if (label) {
+      label.id = labelId
+      label.htmlFor = this.inputId
+    }
+
     return (
-      <Host>
+      <Host aria-disabled={this.disabled ? 'true' : null}>
         <textarea
           class={{
             'textarea': true,
             'is-inverted': this.inverted,
             'clickable': this.clickable,
           }}
+          ref={inputEl => (this.nativeInput = inputEl)}
           id={this.inputId}
+          aria-labelledby={labelId}
+          disabled={this.disabled}
+          autoCapitalize={this.autocapitalize}
+          autoFocus={this.autofocus}
+          minLength={this.minLength}
+          maxLength={this.maxLength}
           placeholder={this.placeholder}
+          inputMode={this.inputmode}
           name={this.name}
           value={this.value}
           tabindex={this.balTabindex}
-          disabled={this.disabled}
           readonly={this.readonly}
-          maxLength={this.maxLength}
-          minLength={this.minLength}
+          cols={this.cols}
+          rows={this.rows}
+          wrap={this.wrap}
+          onInput={this.onInput}
           onChange={() => this.balChange.emit(this.value)}
-          onInput={e => this.onInput(e as any)}
           onBlur={e => this.balBlur.emit(e)}
           onClick={e => this.balClick.emit(e)}
           onKeyPress={e => this.balKeyPress.emit(e)}
-          onFocus={e => this.balFocus.emit(e)}
-          ref={inputEl => (this.inputEl = inputEl)}
-        />
+          onFocus={e => this.balFocus.emit(e)}>
+          {value}
+        </textarea>
       </Host>
     )
   }

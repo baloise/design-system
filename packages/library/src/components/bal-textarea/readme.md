@@ -7,18 +7,26 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                                     | Type      | Default        |
-| ------------- | -------------- | --------------------------------------------------------------- | --------- | -------------- |
-| `balTabindex` | `bal-tabindex` | The tabindex of the control.                                    | `number`  | `0`            |
-| `clickable`   | `clickable`    | If `true` the input gets a clickable cursor style               | `boolean` | `false`        |
-| `disabled`    | `disabled`     | If `true` the input is disabled                                 | `boolean` | `false`        |
-| `inverted`    | `inverted`     | If `true` this component can be placed on dark background       | `boolean` | `false`        |
-| `maxLength`   | `max-length`   | Defines the max length of the value.                            | `number`  | `undefined`    |
-| `minLength`   | `min-length`   | Defines the min length of the value.                            | `number`  | `undefined`    |
-| `name`        | `name`         | The name of the control, which is submitted with the form data. | `string`  | `this.inputId` |
-| `placeholder` | `placeholder`  | Placeholder of the input                                        | `string`  | `''`           |
-| `readonly`    | `readonly`     | If `true` the input is readonly                                 | `boolean` | `false`        |
-| `value`       | `value`        | The value of the control.                                       | `string`  | `''`           |
+| Property         | Attribute        | Description                                                                                                                                                                      | Type                                                                                  | Default        |
+| ---------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | -------------- |
+| `autocapitalize` | `autocapitalize` | Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.                                                                | `string`                                                                              | `'none'`       |
+| `autofocus`      | `autofocus`      | This Boolean attribute lets you specify that a form control should have input focus when the page loads.                                                                         | `boolean`                                                                             | `false`        |
+| `balTabindex`    | `bal-tabindex`   | The tabindex of the control.                                                                                                                                                     | `number`                                                                              | `0`            |
+| `clickable`      | `clickable`      | If `true` the input gets a clickable cursor style                                                                                                                                | `boolean`                                                                             | `false`        |
+| `cols`           | `cols`           | The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.                                                           | `number`                                                                              | `undefined`    |
+| `debounce`       | `debounce`       | Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.          | `number`                                                                              | `0`            |
+| `disabled`       | `disabled`       | If `true`, the user cannot interact with the textarea.                                                                                                                           | `boolean`                                                                             | `false`        |
+| `inputmode`      | `inputmode`      | A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.                 | `"decimal" \| "email" \| "none" \| "numeric" \| "search" \| "tel" \| "text" \| "url"` | `undefined`    |
+| `inverted`       | `inverted`       | If `true` this component can be placed on dark background                                                                                                                        | `boolean`                                                                             | `false`        |
+| `maxLength`      | `max-length`     | If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter. | `number`                                                                              | `undefined`    |
+| `minLength`      | `min-length`     | If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter. | `number`                                                                              | `undefined`    |
+| `name`           | `name`           | The name of the control, which is submitted with the form data.                                                                                                                  | `string`                                                                              | `this.inputId` |
+| `placeholder`    | `placeholder`    | Instructional text that shows before the input has a value.                                                                                                                      | `string`                                                                              | `undefined`    |
+| `readonly`       | `readonly`       | If `true`, the user cannot modify the value.                                                                                                                                     | `boolean`                                                                             | `false`        |
+| `required`       | `required`       | If `true`, the user must fill in a value before submitting a form.                                                                                                               | `boolean`                                                                             | `false`        |
+| `rows`           | `rows`           | The number of visible text lines for the control.                                                                                                                                | `number`                                                                              | `undefined`    |
+| `value`          | `value`          | The value of the textarea.                                                                                                                                                       | `string`                                                                              | `''`           |
+| `wrap`           | `wrap`           | Indicates how the control wraps text.                                                                                                                                            | `"hard" \| "off" \| "soft"`                                                           | `undefined`    |
 
 
 ## Events
@@ -35,9 +43,20 @@
 
 ## Methods
 
+### `getInputElement() => Promise<HTMLTextAreaElement>`
+
+Returns the native `<textarea>` element used under the hood.
+
+#### Returns
+
+Type: `Promise<HTMLTextAreaElement>`
+
+
+
 ### `setFocus() => Promise<void>`
 
-Sets the focus on the input element.
+Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global
+`textarea.focus()`.
 
 #### Returns
 

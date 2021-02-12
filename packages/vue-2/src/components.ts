@@ -1090,6 +1090,7 @@ export const BalInput = /*@__PURE__*/ Vue.extend({
     autoComplete: {} as PropOptions<Components.BalInput['autoComplete']>,
     numberKeyboard: {} as PropOptions<Components.BalInput['numberKeyboard']>,
     onlyNumbers: {} as PropOptions<Components.BalInput['onlyNumbers']>,
+    inputmode: {} as PropOptions<Components.BalInput['inputmode']>,
     value: {} as PropOptions<Components.BalInput['value']>,
   },
 
@@ -1485,14 +1486,22 @@ export const BalTextarea = /*@__PURE__*/ Vue.extend({
 
   props: {
     name: {} as PropOptions<Components.BalTextarea['name']>,
+    autocapitalize: {} as PropOptions<Components.BalTextarea['autocapitalize']>,
+    autofocus: {} as PropOptions<Components.BalTextarea['autofocus']>,
+    debounce: {} as PropOptions<Components.BalTextarea['debounce']>,
+    disabled: {} as PropOptions<Components.BalTextarea['disabled']>,
     placeholder: {} as PropOptions<Components.BalTextarea['placeholder']>,
     balTabindex: {} as PropOptions<Components.BalTextarea['balTabindex']>,
     maxLength: {} as PropOptions<Components.BalTextarea['maxLength']>,
     minLength: {} as PropOptions<Components.BalTextarea['minLength']>,
     inverted: {} as PropOptions<Components.BalTextarea['inverted']>,
     readonly: {} as PropOptions<Components.BalTextarea['readonly']>,
-    disabled: {} as PropOptions<Components.BalTextarea['disabled']>,
+    cols: {} as PropOptions<Components.BalTextarea['cols']>,
+    rows: {} as PropOptions<Components.BalTextarea['rows']>,
+    wrap: {} as PropOptions<Components.BalTextarea['wrap']>,
+    required: {} as PropOptions<Components.BalTextarea['required']>,
     clickable: {} as PropOptions<Components.BalTextarea['clickable']>,
+    inputmode: {} as PropOptions<Components.BalTextarea['inputmode']>,
     value: {} as PropOptions<Components.BalTextarea['value']>,
   },
 
@@ -1503,8 +1512,9 @@ export const BalTextarea = /*@__PURE__*/ Vue.extend({
 
   methods: {
     setFocus: createCommonMethod('setFocus') as Components.BalTextarea['setFocus'],
+    getInputElement: createCommonMethod('getInputElement') as Components.BalTextarea['getInputElement'],
   },
-  render: createCommonRender('bal-textarea', ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']),
+  render: createCommonRender('bal-textarea', ['balChange', 'balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus']),
 });
 
 
