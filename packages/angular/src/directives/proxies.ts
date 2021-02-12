@@ -357,14 +357,14 @@ export class BalDataValue {
 import { Datepicker as IDatepicker } from '@baloise/ui-library/dist/types/components/bal-datepicker/bal-datepicker';
 export declare interface BalDatepicker extends Components.BalDatepicker {}
 @ProxyCmp({
-  inputs: ['balTabindex', 'closeOnSelect', 'disabled', 'expanded', 'filter', 'inverted', 'locale', 'maxDate', 'maxYearProp', 'minDate', 'minYearProp', 'placeholder', 'readonly', 'required', 'triggerIcon', 'value'],
-  methods: ['select']
+  inputs: ['balTabindex', 'closeOnSelect', 'debounce', 'disabled', 'expanded', 'filter', 'inverted', 'locale', 'maxDate', 'maxYearProp', 'minDate', 'minYearProp', 'name', 'placeholder', 'readonly', 'required', 'triggerIcon', 'value'],
+  methods: ['select', 'setFocus', 'getInputElement']
 })
 @Component({
   selector: 'bal-datepicker',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['balTabindex', 'closeOnSelect', 'disabled', 'expanded', 'filter', 'inverted', 'locale', 'maxDate', 'maxYearProp', 'minDate', 'minYearProp', 'placeholder', 'readonly', 'required', 'triggerIcon', 'value'],
+  inputs: ['balTabindex', 'closeOnSelect', 'debounce', 'disabled', 'expanded', 'filter', 'inverted', 'locale', 'maxDate', 'maxYearProp', 'minDate', 'minYearProp', 'name', 'placeholder', 'readonly', 'required', 'triggerIcon', 'value'],
   outputs: ['balChange', 'balInput', 'balBlur', 'balFocus']
 })
 export class BalDatepicker {

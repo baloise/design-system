@@ -9,24 +9,26 @@ An input with a simple dropdown for selecting a date.
 
 ## Properties
 
-| Property        | Attribute         | Description                                                                                | Type                           | Default     |
-| --------------- | ----------------- | ------------------------------------------------------------------------------------------ | ------------------------------ | ----------- |
-| `balTabindex`   | `bal-tabindex`    | The tabindex of the control.                                                               | `number`                       | `0`         |
-| `closeOnSelect` | `close-on-select` | Closes the datepicker dropdown after selection                                             | `boolean`                      | `true`      |
-| `disabled`      | `disabled`        | If `true` the component is diabled.                                                        | `boolean`                      | `false`     |
-| `expanded`      | `expanded`        | If `true` the component uses the whole width.                                              | `boolean`                      | `false`     |
-| `filter`        | --                | Callback to determine which date in the datepicker should be selectable.                   | `(date: Date) => boolean`      | `_ => true` |
-| `inverted`      | `inverted`        | Set this to `true` when the component is placed on a dark background.                      | `boolean`                      | `false`     |
-| `locale`        | `locale`          | If `true` the component uses the whole width.                                              | `"de" \| "en" \| "fr" \| "it"` | `'en'`      |
-| `maxDate`       | --                | Latest date available for selection                                                        | `Date`                         | `undefined` |
-| `maxYearProp`   | `max-year`        | Latest year available for selection                                                        | `number`                       | `undefined` |
-| `minDate`       | --                | Earliest date available for selection                                                      | `Date`                         | `undefined` |
-| `minYearProp`   | `min-year`        | Earliest year available for selection                                                      | `number`                       | `undefined` |
-| `placeholder`   | `placeholder`     | Defines the placeholder of the input element.                                              | `string`                       | `''`        |
-| `readonly`      | `readonly`        | If `true` the use can only select a date.                                                  | `boolean`                      | `false`     |
-| `required`      | `required`        | If `true` the attribute required is added to the native input.                             | `boolean`                      | `false`     |
-| `triggerIcon`   | `trigger-icon`    | If `true` the datepicker only open on click of the icon                                    | `boolean`                      | `false`     |
-| `value`         | --                | Selected date. Could also be passed as a string, which gets transformed to js date object. | `Date`                         | `undefined` |
+| Property        | Attribute         | Description                                                                                                                                                             | Type                           | Default        |
+| --------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | -------------- |
+| `balTabindex`   | `bal-tabindex`    | The tabindex of the control.                                                                                                                                            | `number`                       | `0`            |
+| `closeOnSelect` | `close-on-select` | Closes the datepicker dropdown after selection                                                                                                                          | `boolean`                      | `true`         |
+| `debounce`      | `debounce`        | Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`. | `number`                       | `0`            |
+| `disabled`      | `disabled`        | If `true` the component is diabled.                                                                                                                                     | `boolean`                      | `false`        |
+| `expanded`      | `expanded`        | If `true` the component uses the whole width.                                                                                                                           | `boolean`                      | `false`        |
+| `filter`        | --                | Callback to determine which date in the datepicker should be selectable.                                                                                                | `(date: Date) => boolean`      | `_ => true`    |
+| `inverted`      | `inverted`        | Set this to `true` when the component is placed on a dark background.                                                                                                   | `boolean`                      | `false`        |
+| `locale`        | `locale`          | If `true` the component uses the whole width.                                                                                                                           | `"de" \| "en" \| "fr" \| "it"` | `'en'`         |
+| `maxDate`       | --                | Latest date available for selection                                                                                                                                     | `Date`                         | `undefined`    |
+| `maxYearProp`   | `max-year`        | Latest year available for selection                                                                                                                                     | `number`                       | `undefined`    |
+| `minDate`       | --                | Earliest date available for selection                                                                                                                                   | `Date`                         | `undefined`    |
+| `minYearProp`   | `min-year`        | Earliest year available for selection                                                                                                                                   | `number`                       | `undefined`    |
+| `name`          | `name`            | The name of the control, which is submitted with the form data.                                                                                                         | `string`                       | `this.inputId` |
+| `placeholder`   | `placeholder`     | The text to display when the select is empty.                                                                                                                           | `string`                       | `undefined`    |
+| `readonly`      | `readonly`        | If `true` the use can only select a date.                                                                                                                               | `boolean`                      | `false`        |
+| `required`      | `required`        | If `true` the attribute required is added to the native input.                                                                                                          | `boolean`                      | `false`        |
+| `triggerIcon`   | `trigger-icon`    | If `true` the datepicker only open on click of the icon                                                                                                                 | `boolean`                      | `false`        |
+| `value`         | --                | Selected date. Could also be passed as a string, which gets transformed to js date object.                                                                              | `Date`                         | `undefined`    |
 
 
 ## Events
@@ -41,9 +43,29 @@ An input with a simple dropdown for selecting a date.
 
 ## Methods
 
+### `getInputElement() => Promise<HTMLInputElement>`
+
+Returns the native `<input>` element used under the hood.
+
+#### Returns
+
+Type: `Promise<HTMLInputElement>`
+
+
+
 ### `select(date: Date) => Promise<void>`
 
 Selects an option
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setFocus() => Promise<void>`
+
+Sets the focus on the input element
 
 #### Returns
 

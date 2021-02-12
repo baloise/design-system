@@ -1,4 +1,18 @@
-import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch } from '@stencil/core'
+import {
+  Component,
+  Host,
+  h,
+  Element,
+  State,
+  Prop,
+  Event,
+  EventEmitter,
+  Method,
+  Watch,
+  ComponentInterface,
+} from '@stencil/core'
+import { debounceEvent, findItemLabel } from '../../utils/helpers'
+import { actionKeys, numberKeys } from '../../utils/key.util'
 import { i18nDate } from './bal-datepicker.i18n'
 import { BalCalendarCell, BalDateCallback } from './bal-datepicker.type'
 import {
@@ -23,16 +37,24 @@ import {
   scoped: true,
   shadow: false,
 })
-export class Datepicker {
+export class Datepicker implements ComponentInterface {
   private inputElement!: HTMLInputElement
   private dropdownElement!: HTMLBalDropdownElement
+  private didInit = false
+  private hasFocus = false
+  private inputId = `bal-dp-${datepickerIds++}`
 
-  @Element() element!: HTMLElement
+  @Element() el!: HTMLElement
 
   @State() isDropdownOpen: boolean = false
   @State() pointerMonth: number = 10
   @State() pointerYear: number = 2020
   @State() pointerDay: number = 1
+
+  /**
+   * The name of the control, which is submitted with the form data.
+   */
+  @Prop() name: string = this.inputId
 
   /**
    * If `true` the component uses the whole width.
@@ -70,14 +92,9 @@ export class Datepicker {
   @Prop() disabled = false
 
   /**
-   * Defines the placeholder of the input element.
+   * The text to display when the select is empty.
    */
-  @Prop() placeholder = ''
-
-  /**
-   * Selected date. Could also be passed as a string, which gets transformed to js date object.
-   */
-  @Prop({ mutable: true }) value: Date
+  @Prop() placeholder?: string | null
 
   /**
    * Latest date available for selection
@@ -110,6 +127,31 @@ export class Datepicker {
   @Prop({ attribute: 'max-year' }) maxYearProp: number | undefined = undefined
 
   /**
+   * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+   */
+  @Prop() debounce = 0
+
+  @Watch('debounce')
+  protected debounceChanged() {
+    this.balChange = debounceEvent(this.balChange, this.debounce)
+  }
+
+  /**
+   * Selected date. Could also be passed as a string, which gets transformed to js date object.
+   */
+  @Prop({ mutable: true }) value: Date | null
+
+  /**
+   * Update the native input element when the value changes
+   */
+  @Watch('value')
+  protected valueChanged(newValue: Date | null, oldValue: Date | null) {
+    if (this.didInit && !this.hasFocus && newValue !== oldValue) {
+      this.balChange.emit(this.value)
+    }
+  }
+
+  /**
    * Callback to determine which date in the datepicker should be selectable.
    */
   @Prop() filter: BalDateCallback = _ => true
@@ -117,29 +159,29 @@ export class Datepicker {
   /**
    * Emitted when a option got selected.
    */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<Date>
+  @Event() balChange!: EventEmitter<Date>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event({ eventName: 'balInput' }) balInput!: EventEmitter<string>
+  @Event() balInput!: EventEmitter<string>
 
   /**
    * Emitted when the input loses focus.
    */
-  @Event({ eventName: 'balBlur' }) balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<FocusEvent>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event({ eventName: 'balFocus' }) balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<FocusEvent>
 
-  /**
-   * Update the native input element when the value changes
-   */
-  @Watch('value')
-  protected valueChanged() {
-    this.balChange.emit(this.value)
+  connectedCallback() {
+    this.debounceChanged()
+  }
+
+  componentDidLoad() {
+    this.didInit = true
   }
 
   /**
@@ -153,6 +195,24 @@ export class Datepicker {
     if (this.closeOnSelect) {
       await this.dropdownElement?.toggle()
     }
+  }
+
+  /**
+   * Sets the focus on the input element
+   */
+  @Method()
+  async setFocus() {
+    if (this.inputElement) {
+      this.inputElement.focus()
+    }
+  }
+
+  /**
+   * Returns the native `<input>` element used under the hood.
+   */
+  @Method()
+  getInputElement(): Promise<HTMLInputElement> {
+    return Promise.resolve(this.inputElement)
   }
 
   componentWillLoad() {
@@ -229,24 +289,24 @@ export class Datepicker {
     return calendar
   }
 
-  private async onIconClick(event: MouseEvent) {
+  private onIconClick = (event: MouseEvent) => {
     this.dropdownElement.toggle()
     event.stopPropagation()
   }
 
-  private async onInputClick(event: MouseEvent) {
+  private onInputClick = (event: MouseEvent) => {
     if (!this.triggerIcon) {
       this.dropdownElement.toggle()
     }
     event.stopPropagation()
   }
 
-  private onDropdownChange(event: CustomEvent<boolean>) {
+  private onDropdownChange = (event: CustomEvent<boolean>) => {
     this.isDropdownOpen = event.detail
     event.stopPropagation()
   }
 
-  private onInput(event: InputEvent) {
+  private onInput = (event: InputEvent) => {
     const inputValue = (event.target as HTMLInputElement).value
     this.parseAndSetDate(inputValue)
 
@@ -254,121 +314,49 @@ export class Datepicker {
     event.stopPropagation()
   }
 
-  private updateFromValue() {
-    if (this.value && isValidDate(this.value)) {
-      this.inputElement.value = format(this.value)
-      this.pointerYear = year(this.value)
-      this.pointerMonth = month(this.value)
-      this.pointerDay = day(this.value)
-    }
-  }
-
-  private parseAndSetDate(inputValue: string, shouldFormat = false) {
-    if (inputValue.length >= 8) {
-      const parts = inputValue.split('.')
-      if (parts.length === 3) {
-        const year = parseInt(parts[2], 10)
-        const month = parseInt(parts[1], 10) - 1
-        if (parts[2].length === 4 && year >= 1900 && month < 12 && month >= 0) {
-          const day = parseInt(parts[0], 10)
-          const lastDayOfMonth = getLastDayOfMonth(year, month)
-          if (0 < day && day <= lastDayOfMonth) {
-            const d = new Date(year, month, day)
-            this.value = d
-            this.pointerMonth = month
-            this.pointerYear = year
-            if (shouldFormat) {
-              this.inputElement.value = format(d)
-            }
-          }
-        }
-      }
-    }
-  }
-
-  private previousMonth() {
-    if (this.pointerYear === this.minYear && this.pointerMonth === 0) {
-      return
-    }
-    if (this.pointerMonth === 0) {
-      this.pointerYear = this.pointerYear - 1
-      this.pointerMonth = 11
-    } else {
-      this.pointerMonth = this.pointerMonth - 1
-    }
-  }
-
-  private nextMonth() {
-    if (this.pointerYear === this.maxYear && this.pointerMonth === 11) {
-      return
-    }
-    if (this.pointerMonth === 11) {
-      this.pointerYear = this.pointerYear + 1
-      this.pointerMonth = 0
-    } else {
-      this.pointerMonth = this.pointerMonth + 1
-    }
-  }
-
-  private handleMonthSelect(event: InputEvent) {
-    const inputValue = (event.target as HTMLInputElement).value
-    this.pointerMonth = parseInt(inputValue, 10)
-  }
-
-  private handleYearSelect(event: InputEvent) {
-    const inputValue = (event.target as HTMLInputElement).value
-    this.pointerYear = parseInt(inputValue, 10)
-  }
-
-  private onClickDateCell(cell: BalCalendarCell): void {
+  private onClickDateCell = (cell: BalCalendarCell): void => {
     if (!cell.isDisabled) {
       this.select(cell.date)
     }
   }
 
-  private onInputKeyDown(event: KeyboardEvent) {
-    const allowedKeys = [
-      '0',
-      '1',
-      '2',
-      '3',
-      '4',
-      '5',
-      '6',
-      '7',
-      '8',
-      '9',
-      '.',
-      'Backspace',
-      'Enter',
-      'ArrowLeft',
-      'Left',
-      'ArrowRight',
-      'Right',
-      'Tab',
-      'Esc',
-      'Escape',
-      'Del',
-      'Delete',
-    ]
+  private onInputKeyDown = (event: KeyboardEvent) => {
+    const allowedKeys = [...numberKeys, '.', ...actionKeys]
     if (allowedKeys.indexOf(event.key) < 0) {
       event.preventDefault()
       event.stopPropagation()
     }
   }
 
-  private onInputBlur(event: FocusEvent) {
+  private onInputFocus = (event: FocusEvent) => {
+    this.hasFocus = true
+    this.balFocus.emit(event)
+  }
+
+  private onInputBlur = (event: FocusEvent) => {
+    this.hasFocus = false
     this.balBlur.emit(event)
     this.parseAndSetDate(this.inputElement.value, true)
+    this.balChange.emit(this.value)
+  }
+
+  private onMonthSelect = (event: InputEvent) => {
+    const inputValue = (event.target as HTMLInputElement).value
+    this.pointerMonth = parseInt(inputValue, 10)
+  }
+
+  private onYearSelect = (event: InputEvent) => {
+    const inputValue = (event.target as HTMLInputElement).value
+    this.pointerYear = parseInt(inputValue, 10)
   }
 
   render() {
     return (
-      <Host role="datepicker">
+      <Host role="datepicker" aria-disabled={this.disabled ? 'true' : null}>
         <bal-dropdown
           expanded={this.expanded}
           fixedContentWidth={true}
-          onBalCollapse={e => this.onDropdownChange(e)}
+          onBalCollapse={this.onDropdownChange}
           ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
           <bal-dropdown-trigger>{this.renderInput()}</bal-dropdown-trigger>
           <bal-dropdown-menu>
@@ -386,6 +374,13 @@ export class Datepicker {
   }
 
   renderInput() {
+    const labelId = this.inputId + '-lbl'
+    const label = findItemLabel(this.el)
+    if (label) {
+      label.id = labelId
+      label.htmlFor = this.inputId
+    }
+
     return (
       <div class="control has-icons-right">
         <input
@@ -395,20 +390,23 @@ export class Datepicker {
             'is-inverted': this.inverted,
             'is-disabled': this.disabled,
           }}
+          ref={el => (this.inputElement = el as HTMLInputElement)}
+          id={this.inputId}
+          aria-labelledby={labelId}
           type="text"
           maxlength="10"
           autoComplete="off"
+          value={format(this.value)}
           required={this.required}
           disabled={this.disabled}
           readonly={this.readonly}
           placeholder={this.placeholder}
           tabindex={this.balTabindex}
           onKeyDown={e => this.onInputKeyDown(e)}
-          onInput={e => this.onInput(e as any)}
-          onClick={e => this.onInputClick(e)}
-          onBlur={e => this.onInputBlur(e)}
-          onFocus={e => this.balFocus.emit(e)}
-          ref={el => (this.inputElement = el as HTMLInputElement)}
+          onInput={this.onInput}
+          onClick={this.onInputClick}
+          onBlur={this.onInputBlur}
+          onFocus={this.onInputFocus}
         />
         <bal-icon
           class="datepicker-trigger-icon clickable"
@@ -416,7 +414,7 @@ export class Datepicker {
           color="info"
           inverted={this.inverted}
           name="date"
-          onClick={e => this.onIconClick(e)}
+          onClick={this.onIconClick}
         />
       </div>
     )
@@ -475,7 +473,7 @@ export class Datepicker {
             <div class="field has-addons">
               <div class="control month-select">
                 <span class="select">
-                  <select onInput={e => this.handleMonthSelect(e as InputEvent)}>
+                  <select onInput={this.onMonthSelect}>
                     {i18nDate[this.locale].months.map((month, index) => (
                       <option value={index} selected={this.pointerMonth === index}>
                         {month}
@@ -486,7 +484,7 @@ export class Datepicker {
               </div>
               <div class="control year-select">
                 <span class="select">
-                  <select onInput={e => this.handleYearSelect(e as InputEvent)}>
+                  <select onInput={this.onYearSelect}>
                     {this.years.map(year => (
                       <option value={year} selected={this.pointerYear === year}>
                         {year}
@@ -501,4 +499,62 @@ export class Datepicker {
       </header>
     )
   }
+
+  private updateFromValue() {
+    if (this.value && isValidDate(this.value)) {
+      this.inputElement.value = format(this.value)
+      this.pointerYear = year(this.value)
+      this.pointerMonth = month(this.value)
+      this.pointerDay = day(this.value)
+    }
+  }
+
+  private parseAndSetDate(inputValue: string, shouldFormat = false) {
+    if (inputValue.length >= 8) {
+      const parts = inputValue.split('.')
+      if (parts.length === 3) {
+        const year = parseInt(parts[2], 10)
+        const month = parseInt(parts[1], 10) - 1
+        if (parts[2].length === 4 && year >= 1900 && month < 12 && month >= 0) {
+          const day = parseInt(parts[0], 10)
+          const lastDayOfMonth = getLastDayOfMonth(year, month)
+          if (0 < day && day <= lastDayOfMonth) {
+            const d = new Date(year, month, day)
+            this.value = d
+            this.pointerMonth = month
+            this.pointerYear = year
+            if (shouldFormat) {
+              this.inputElement.value = format(d)
+            }
+          }
+        }
+      }
+    }
+  }
+
+  private previousMonth() {
+    if (this.pointerYear === this.minYear && this.pointerMonth === 0) {
+      return
+    }
+    if (this.pointerMonth === 0) {
+      this.pointerYear = this.pointerYear - 1
+      this.pointerMonth = 11
+    } else {
+      this.pointerMonth = this.pointerMonth - 1
+    }
+  }
+
+  private nextMonth() {
+    if (this.pointerYear === this.maxYear && this.pointerMonth === 11) {
+      return
+    }
+    if (this.pointerMonth === 11) {
+      this.pointerYear = this.pointerYear + 1
+      this.pointerMonth = 0
+    } else {
+      this.pointerMonth = this.pointerMonth + 1
+    }
+  }
 }
+
+let datepickerIds = 0

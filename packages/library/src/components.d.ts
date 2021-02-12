@@ -333,6 +333,10 @@ export namespace Components {
          */
         "closeOnSelect": boolean;
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
           * If `true` the component is diabled.
          */
         "disabled": boolean;
@@ -344,6 +348,10 @@ export namespace Components {
           * Callback to determine which date in the datepicker should be selectable.
          */
         "filter": BalDateCallback;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
@@ -369,9 +377,13 @@ export namespace Components {
          */
         "minYearProp": number | undefined;
         /**
-          * Defines the placeholder of the input element.
+          * The name of the control, which is submitted with the form data.
          */
-        "placeholder": string;
+        "name": string;
+        /**
+          * The text to display when the select is empty.
+         */
+        "placeholder"?: string | null;
         /**
           * If `true` the use can only select a date.
          */
@@ -385,13 +397,17 @@ export namespace Components {
          */
         "select": (date: Date) => Promise<void>;
         /**
+          * Sets the focus on the input element
+         */
+        "setFocus": () => Promise<void>;
+        /**
           * If `true` the datepicker only open on click of the icon
          */
         "triggerIcon": boolean;
         /**
           * Selected date. Could also be passed as a string, which gets transformed to js date object.
          */
-        "value": Date;
+        "value": Date | null;
     }
     interface BalDropdown {
         /**
@@ -2609,6 +2625,10 @@ declare namespace LocalJSX {
          */
         "closeOnSelect"?: boolean;
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
           * If `true` the component is diabled.
          */
         "disabled"?: boolean;
@@ -2645,6 +2665,10 @@ declare namespace LocalJSX {
          */
         "minYearProp"?: number | undefined;
         /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
           * Emitted when the input loses focus.
          */
         "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
@@ -2661,9 +2685,9 @@ declare namespace LocalJSX {
          */
         "onBalInput"?: (event: CustomEvent<string>) => void;
         /**
-          * Defines the placeholder of the input element.
+          * The text to display when the select is empty.
          */
-        "placeholder"?: string;
+        "placeholder"?: string | null;
         /**
           * If `true` the use can only select a date.
          */
@@ -2679,7 +2703,7 @@ declare namespace LocalJSX {
         /**
           * Selected date. Could also be passed as a string, which gets transformed to js date object.
          */
-        "value"?: Date;
+        "value"?: Date | null;
     }
     interface BalDropdown {
         /**

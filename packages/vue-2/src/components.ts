@@ -366,6 +366,7 @@ export const BalDataValue = /*@__PURE__*/ Vue.extend({
 export const BalDatepicker = /*@__PURE__*/ Vue.extend({
 
   props: {
+    name: {} as PropOptions<Components.BalDatepicker['name']>,
     locale: {} as PropOptions<Components.BalDatepicker['locale']>,
     balTabindex: {} as PropOptions<Components.BalDatepicker['balTabindex']>,
     expanded: {} as PropOptions<Components.BalDatepicker['expanded']>,
@@ -374,13 +375,14 @@ export const BalDatepicker = /*@__PURE__*/ Vue.extend({
     readonly: {} as PropOptions<Components.BalDatepicker['readonly']>,
     disabled: {} as PropOptions<Components.BalDatepicker['disabled']>,
     placeholder: {} as PropOptions<Components.BalDatepicker['placeholder']>,
-    value: {} as PropOptions<Components.BalDatepicker['value']>,
     maxDate: {} as PropOptions<Components.BalDatepicker['maxDate']>,
     minDate: {} as PropOptions<Components.BalDatepicker['minDate']>,
     closeOnSelect: {} as PropOptions<Components.BalDatepicker['closeOnSelect']>,
     triggerIcon: {} as PropOptions<Components.BalDatepicker['triggerIcon']>,
     minYearProp: {} as PropOptions<Components.BalDatepicker['minYearProp']>,
     maxYearProp: {} as PropOptions<Components.BalDatepicker['maxYearProp']>,
+    debounce: {} as PropOptions<Components.BalDatepicker['debounce']>,
+    value: {} as PropOptions<Components.BalDatepicker['value']>,
     filter: {} as PropOptions<Components.BalDatepicker['filter']>,
   },
 
@@ -391,6 +393,8 @@ export const BalDatepicker = /*@__PURE__*/ Vue.extend({
 
   methods: {
     select: createCommonMethod('select') as Components.BalDatepicker['select'],
+    setFocus: createCommonMethod('setFocus') as Components.BalDatepicker['setFocus'],
+    getInputElement: createCommonMethod('getInputElement') as Components.BalDatepicker['getInputElement'],
   },
   render: createCommonRender('bal-datepicker', ['balChange', 'balInput', 'balBlur', 'balFocus']),
 });
