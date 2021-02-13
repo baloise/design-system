@@ -15,5 +15,5 @@ export default {
       sourcemap: true
     }
   ],
-  external: ['@baloise/ui-library', '@baloise/ui-library/loader', '@baloise/ui-library-utils', 'vue']
+  external: ['@baloise/ui-library', '@baloise/ui-library/loader', 'vue']
 };

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { balDateUtil } from '@baloise/ui-library-utils'
+import { balDateUtil } from '@baloise/ui-library'
 import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
 
 export interface DatepickerAccessorType {

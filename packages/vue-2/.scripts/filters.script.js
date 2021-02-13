@@ -9,14 +9,14 @@
 const path = require('path')
 const file = require('../../../.scripts/file')
 const log = require('../../../.scripts/log')
-const utilsLib = require('../../utils/.scripts/utils.lib')
+const filtersLib = require('../../library/.scripts/filters.lib')
 
 const run = async () => {
   await log.title('vue : filters')
 
-  const filters = await utilsLib.filters()
+  const filters = await filtersLib.filters()
 
-  const utilImports = filters.map(f => `import { ${f.name} } from '@baloise/ui-library-utils'`)
+  const utilImports = filters.map(f => `import { ${f.name} } from '@baloise/ui-library'`)
   const utilFilters = filters.map(f => `  _Vue.filter('${f.name}', ${f.name})`)
 
   const content = [

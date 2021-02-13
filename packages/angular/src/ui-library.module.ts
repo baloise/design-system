@@ -8,6 +8,8 @@ import { BooleanValueAccessor } from './directives/boolean-value-accessor'
 import { TextValueAccessor } from './directives/text-value-accessor'
 import { SelectValueAccessor } from './directives/select-value-accessor'
 import { FILTERS } from './filters'
+import { ToastService } from './toast.service'
+import { SnackbarService } from './snackbar.service'
 
 applyPolyfills().then(() => {
   defineCustomElements(window)
@@ -30,6 +32,6 @@ const DECLARATIONS = [
   declarations: [DECLARATIONS],
   exports: [DECLARATIONS],
   imports: [CommonModule, FormsModule],
-  providers: [],
+  providers: [ToastService, SnackbarService],
 })
 export class BalUiLibraryModule {}

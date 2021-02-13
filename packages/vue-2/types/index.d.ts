@@ -1,16 +1,16 @@
 import Vue from 'vue'
-import { BalUtilsStatic } from '@baloise/ui-library-utils'
+// import { BalUtilsStatic } from '@baloise/ui-library'
 import { BalToastController, BalSnackbarController } from '@baloise/ui-library'
 
 declare module 'vue/types/vue' {
   interface VueConstructor {
-    $balUtils: BalUtilsStatic
+    // $balUtils: BalUtilsStatic
     $balToast: BalToastController
     $balSnackbar: BalSnackbarController
   }
 
   interface Vue {
-    $balUtils: BalUtilsStatic
+    // $balUtils: BalUtilsStatic
     $balToast: BalToastController
     $balSnackbar: BalSnackbarController
   }

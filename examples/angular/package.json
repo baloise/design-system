@@ -21,7 +21,6 @@
     "@angular/router": "~10.2.0",
     "@baloise/ui-library": "^3.1.9-alpha.0",
     "@baloise/ui-library-angular": "^3.1.9-alpha.0",
-    "@baloise/ui-library-utils": "^3.1.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

@@ -31,6 +31,7 @@
     "strictPropertyInitialization": false,
     "target": "es2015",
     "baseUrl": ".",
+    "types": ["@baloise/ui-library"],
     "paths": {
       "@baloise/ui-library/loader": ["../library/loader"],
       "@baloise/ui-library": ["../library"]

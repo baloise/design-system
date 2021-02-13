@@ -15,5 +15,5 @@ export default {
       sourcemap: true
     }
   ],
-  external: ["@baloise/ui-library-utils"]
+  external: ["@baloise/ui-library"]
 };

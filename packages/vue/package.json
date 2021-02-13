@@ -42,8 +42,7 @@
   },
   "gitHead": "e0d380309b487bcedee06d025645f5aab37ab192",
   "dependencies": {
-    "@baloise/ui-library": "^4.0.0-alpha.18",
-    "@baloise/ui-library-utils": "^4.0.0-alpha.18"
+    "@baloise/ui-library": "^4.0.0-alpha.18"
   },
   "vetur": {
     "tags": "dist/vetur/tags.json",

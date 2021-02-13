@@ -1,20 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { balClaimNumber } from '@baloise/ui-library-utils'
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
   claimNumber: string = '93001217169'
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   claimNumberFormatted() {
-    return balClaimNumber(this.claimNumber);
+    // return balClaimNumber(this.claimNumber);
+    return ''
   }
-
 }
