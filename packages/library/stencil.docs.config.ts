@@ -12,19 +12,6 @@ export const config: Config = {
   buildEs5: true,
   outputTargets: [
     {
-      type: 'dist',
-      polyfills: true,
-      empty: true,
-      esmLoaderPath: '../loader',
-    },
-    {
-      type: 'docs-readme',
-    },
-    {
-      type: 'docs-json',
-      file: './docs/components.raw.json',
-    },
-    {
       type: 'www',
       dir: '../../docs',
       serviceWorker: false,

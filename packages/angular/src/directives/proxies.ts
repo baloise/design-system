@@ -6,7 +6,6 @@ import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 import { Components } from '@baloise/ui-library';
 
 
-import { Accordion as IAccordion } from '@baloise/ui-library/dist/types/components/bal-accordion/bal-accordion';
 export declare interface BalAccordion extends Components.BalAccordion {}
 @ProxyCmp({
   inputs: ['card', 'closeIcon', 'closeLabel', 'color', 'isActive', 'openIcon', 'openLabel'],
@@ -31,7 +30,6 @@ export class BalAccordion {
 }
 
 
-import { Button as IButton } from '@baloise/ui-library/dist/types/components/bal-button/bal-button';
 export declare interface BalButton extends Components.BalButton {}
 @ProxyCmp({
   inputs: ['bottomRounded', 'color', 'disabled', 'download', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'rel', 'size', 'square', 'target', 'topRounded', 'type']
@@ -59,7 +57,6 @@ export class BalButton {
 }
 
 
-
 export declare interface BalCard extends Components.BalCard {}
 @ProxyCmp({
   inputs: ['border', 'color', 'flat', 'inverted', 'padded', 'square', 'teaser']
@@ -77,7 +74,6 @@ export class BalCard {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalCardActions extends Components.BalCardActions {}
@@ -99,7 +95,6 @@ export class BalCardActions {
 }
 
 
-
 export declare interface BalCardButton extends Components.BalCardButton {}
 @ProxyCmp({
   inputs: ['icon']
@@ -117,7 +112,6 @@ export class BalCardButton {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalCardContent extends Components.BalCardContent {}
@@ -139,7 +133,6 @@ export class BalCardContent {
 }
 
 
-
 export declare interface BalCardHeading extends Components.BalCardHeading {}
 
 @Component({
@@ -154,7 +147,6 @@ export class BalCardHeading {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalCardStep extends Components.BalCardStep {}
@@ -177,7 +169,6 @@ export class BalCardStep {
 }
 
 import { BalCardStepOption } from '@baloise/ui-library';
-import { CardSteps as ICardSteps } from '@baloise/ui-library/dist/types/components/bal-card-steps/bal-card-steps';
 export declare interface BalCardSteps extends Components.BalCardSteps {}
 @ProxyCmp({
   inputs: ['backLabel', 'hasBack', 'hidden', 'inverted', 'navigation', 'showLabel'],
@@ -208,7 +199,6 @@ export class BalCardSteps {
 }
 
 
-
 export declare interface BalCardSubtitle extends Components.BalCardSubtitle {}
 @ProxyCmp({
   inputs: ['inverted']
@@ -226,7 +216,6 @@ export class BalCardSubtitle {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalCardTitle extends Components.BalCardTitle {}
@@ -248,7 +237,6 @@ export class BalCardTitle {
 }
 
 
-import { Checkbox as ICheckbox } from '@baloise/ui-library/dist/types/components/bal-checkbox/bal-checkbox';
 export declare interface BalCheckbox extends Components.BalCheckbox {}
 @ProxyCmp({
   inputs: ['balTabindex', 'checked', 'disabled', 'inverted', 'label', 'name', 'value'],
@@ -277,7 +265,6 @@ export class BalCheckbox {
 }
 
 
-
 export declare interface BalData extends Components.BalData {}
 @ProxyCmp({
   inputs: ['border', 'horizontal']
@@ -295,7 +282,6 @@ export class BalData {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalDataItem extends Components.BalDataItem {}
@@ -317,7 +303,6 @@ export class BalDataItem {
 }
 
 
-
 export declare interface BalDataLabel extends Components.BalDataLabel {}
 @ProxyCmp({
   inputs: ['required']
@@ -337,7 +322,6 @@ export class BalDataLabel {
 }
 
 
-
 export declare interface BalDataValue extends Components.BalDataValue {}
 
 @Component({
@@ -354,7 +338,6 @@ export class BalDataValue {
 }
 
 
-import { Datepicker as IDatepicker } from '@baloise/ui-library/dist/types/components/bal-datepicker/bal-datepicker';
 export declare interface BalDatepicker extends Components.BalDatepicker {}
 @ProxyCmp({
   inputs: ['balTabindex', 'closeOnSelect', 'debounce', 'disabled', 'expanded', 'filter', 'inverted', 'locale', 'maxDate', 'maxYearProp', 'minDate', 'minYearProp', 'name', 'placeholder', 'readonly', 'required', 'triggerIcon', 'value'],
@@ -385,7 +368,6 @@ export class BalDatepicker {
 }
 
 
-import { Dropdown as IDropdown } from '@baloise/ui-library/dist/types/components/bal-dropdown/bal-dropdown';
 export declare interface BalDropdown extends Components.BalDropdown {}
 @ProxyCmp({
   inputs: ['expanded', 'fixedContentWidth', 'isActive', 'scrollable'],
@@ -412,7 +394,6 @@ export class BalDropdown {
 }
 
 
-
 export declare interface BalDropdownMenu extends Components.BalDropdownMenu {}
 @ProxyCmp({
   inputs: ['scrollable']
@@ -432,7 +413,6 @@ export class BalDropdownMenu {
 }
 
 
-
 export declare interface BalDropdownTrigger extends Components.BalDropdownTrigger {}
 
 @Component({
@@ -447,7 +427,6 @@ export class BalDropdownTrigger {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalField extends Components.BalField {}
@@ -469,7 +448,6 @@ export class BalField {
 }
 
 
-
 export declare interface BalFieldControl extends Components.BalFieldControl {}
 @ProxyCmp({
   inputs: ['iconLeft', 'iconRight', 'inverted', 'loading']
@@ -487,7 +465,6 @@ export class BalFieldControl {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalFieldHint extends Components.BalFieldHint {}
@@ -509,7 +486,6 @@ export class BalFieldHint {
 }
 
 
-
 export declare interface BalFieldLabel extends Components.BalFieldLabel {}
 @ProxyCmp({
   inputs: ['required', 'text']
@@ -527,7 +503,6 @@ export class BalFieldLabel {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalFieldMessage extends Components.BalFieldMessage {}
@@ -549,7 +524,6 @@ export class BalFieldMessage {
 }
 
 import { FileUploadRejectedFile } from '@baloise/ui-library';
-import { FileUpload as IFileUpload } from '@baloise/ui-library/dist/types/components/bal-file-upload/bal-file-upload';
 export declare interface BalFileUpload extends Components.BalFileUpload {}
 @ProxyCmp({
   inputs: ['accept', 'disabled', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple']
@@ -575,7 +549,6 @@ export class BalFileUpload {
 }
 
 
-
 export declare interface BalHint extends Components.BalHint {}
 @ProxyCmp({
   inputs: ['closeLabel', 'disabled'],
@@ -596,7 +569,6 @@ export class BalHint {
 }
 
 
-
 export declare interface BalHintText extends Components.BalHintText {}
 
 @Component({
@@ -613,7 +585,6 @@ export class BalHintText {
 }
 
 
-
 export declare interface BalHintTitle extends Components.BalHintTitle {}
 
 @Component({
@@ -628,7 +599,6 @@ export class BalHintTitle {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIcon extends Components.BalIcon {}
@@ -650,7 +620,6 @@ export class BalIcon {
 }
 
 
-
 export declare interface BalIconAccount extends Components.BalIconAccount {}
 @ProxyCmp({
   inputs: ['size']
@@ -668,7 +637,6 @@ export class BalIconAccount {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconAlert extends Components.BalIconAlert {}
@@ -690,7 +658,6 @@ export class BalIconAlert {
 }
 
 
-
 export declare interface BalIconAlertCircle extends Components.BalIconAlertCircle {}
 @ProxyCmp({
   inputs: ['size']
@@ -708,7 +675,6 @@ export class BalIconAlertCircle {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconAnswer extends Components.BalIconAnswer {}
@@ -730,7 +696,6 @@ export class BalIconAnswer {
 }
 
 
-
 export declare interface BalIconCall extends Components.BalIconCall {}
 @ProxyCmp({
   inputs: ['size']
@@ -748,7 +713,6 @@ export class BalIconCall {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconCaretDown extends Components.BalIconCaretDown {}
@@ -770,7 +734,6 @@ export class BalIconCaretDown {
 }
 
 
-
 export declare interface BalIconCaretLeft extends Components.BalIconCaretLeft {}
 @ProxyCmp({
   inputs: ['size']
@@ -788,7 +751,6 @@ export class BalIconCaretLeft {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconCaretRight extends Components.BalIconCaretRight {}
@@ -810,7 +772,6 @@ export class BalIconCaretRight {
 }
 
 
-
 export declare interface BalIconCaretUp extends Components.BalIconCaretUp {}
 @ProxyCmp({
   inputs: ['size']
@@ -828,7 +789,6 @@ export class BalIconCaretUp {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconCheck extends Components.BalIconCheck {}
@@ -850,7 +810,6 @@ export class BalIconCheck {
 }
 
 
-
 export declare interface BalIconCheckCircle extends Components.BalIconCheckCircle {}
 @ProxyCmp({
   inputs: ['size']
@@ -868,7 +827,6 @@ export class BalIconCheckCircle {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconClock extends Components.BalIconClock {}
@@ -890,7 +848,6 @@ export class BalIconClock {
 }
 
 
-
 export declare interface BalIconClose extends Components.BalIconClose {}
 @ProxyCmp({
   inputs: ['size']
@@ -908,7 +865,6 @@ export class BalIconClose {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconConsultant extends Components.BalIconConsultant {}
@@ -930,7 +886,6 @@ export class BalIconConsultant {
 }
 
 
-
 export declare interface BalIconContact extends Components.BalIconContact {}
 @ProxyCmp({
   inputs: ['size']
@@ -948,7 +903,6 @@ export class BalIconContact {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconCopy extends Components.BalIconCopy {}
@@ -970,7 +924,6 @@ export class BalIconCopy {
 }
 
 
-
 export declare interface BalIconDate extends Components.BalIconDate {}
 @ProxyCmp({
   inputs: ['size']
@@ -988,7 +941,6 @@ export class BalIconDate {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconDocument extends Components.BalIconDocument {}
@@ -1010,7 +962,6 @@ export class BalIconDocument {
 }
 
 
-
 export declare interface BalIconDownload extends Components.BalIconDownload {}
 @ProxyCmp({
   inputs: ['size']
@@ -1028,7 +979,6 @@ export class BalIconDownload {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconEdit extends Components.BalIconEdit {}
@@ -1050,7 +1000,6 @@ export class BalIconEdit {
 }
 
 
-
 export declare interface BalIconGithub extends Components.BalIconGithub {}
 @ProxyCmp({
   inputs: ['size']
@@ -1068,7 +1017,6 @@ export class BalIconGithub {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconInfo extends Components.BalIconInfo {}
@@ -1090,7 +1038,6 @@ export class BalIconInfo {
 }
 
 
-
 export declare interface BalIconInfoCircle extends Components.BalIconInfoCircle {}
 @ProxyCmp({
   inputs: ['size']
@@ -1108,7 +1055,6 @@ export class BalIconInfoCircle {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconLocate extends Components.BalIconLocate {}
@@ -1130,7 +1076,6 @@ export class BalIconLocate {
 }
 
 
-
 export declare interface BalIconLocation extends Components.BalIconLocation {}
 @ProxyCmp({
   inputs: ['size']
@@ -1148,7 +1093,6 @@ export class BalIconLocation {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconMenuBars extends Components.BalIconMenuBars {}
@@ -1170,7 +1114,6 @@ export class BalIconMenuBars {
 }
 
 
-
 export declare interface BalIconMenuDots extends Components.BalIconMenuDots {}
 @ProxyCmp({
   inputs: ['size']
@@ -1188,7 +1131,6 @@ export class BalIconMenuDots {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconMessage extends Components.BalIconMessage {}
@@ -1210,7 +1152,6 @@ export class BalIconMessage {
 }
 
 
-
 export declare interface BalIconMinus extends Components.BalIconMinus {}
 @ProxyCmp({
   inputs: ['size']
@@ -1228,7 +1169,6 @@ export class BalIconMinus {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconNavBack extends Components.BalIconNavBack {}
@@ -1250,7 +1190,6 @@ export class BalIconNavBack {
 }
 
 
-
 export declare interface BalIconNavGoDown extends Components.BalIconNavGoDown {}
 @ProxyCmp({
   inputs: ['size']
@@ -1268,7 +1207,6 @@ export class BalIconNavGoDown {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconNavGoLeft extends Components.BalIconNavGoLeft {}
@@ -1290,7 +1228,6 @@ export class BalIconNavGoLeft {
 }
 
 
-
 export declare interface BalIconNavGoRight extends Components.BalIconNavGoRight {}
 @ProxyCmp({
   inputs: ['size']
@@ -1308,7 +1245,6 @@ export class BalIconNavGoRight {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconNavGoUp extends Components.BalIconNavGoUp {}
@@ -1330,7 +1266,6 @@ export class BalIconNavGoUp {
 }
 
 
-
 export declare interface BalIconPlus extends Components.BalIconPlus {}
 @ProxyCmp({
   inputs: ['size']
@@ -1348,7 +1283,6 @@ export class BalIconPlus {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconPrint extends Components.BalIconPrint {}
@@ -1370,7 +1304,6 @@ export class BalIconPrint {
 }
 
 
-
 export declare interface BalIconReadOnly extends Components.BalIconReadOnly {}
 @ProxyCmp({
   inputs: ['size']
@@ -1388,7 +1321,6 @@ export class BalIconReadOnly {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconRefresh extends Components.BalIconRefresh {}
@@ -1410,7 +1342,6 @@ export class BalIconRefresh {
 }
 
 
-
 export declare interface BalIconSearch extends Components.BalIconSearch {}
 @ProxyCmp({
   inputs: ['size']
@@ -1428,7 +1359,6 @@ export class BalIconSearch {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconSend extends Components.BalIconSend {}
@@ -1450,7 +1380,6 @@ export class BalIconSend {
 }
 
 
-
 export declare interface BalIconSocialFacebookLine extends Components.BalIconSocialFacebookLine {}
 @ProxyCmp({
   inputs: ['size']
@@ -1468,7 +1397,6 @@ export class BalIconSocialFacebookLine {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconSocialLinkedinLine extends Components.BalIconSocialLinkedinLine {}
@@ -1490,7 +1418,6 @@ export class BalIconSocialLinkedinLine {
 }
 
 
-
 export declare interface BalIconSocialXingLine extends Components.BalIconSocialXingLine {}
 @ProxyCmp({
   inputs: ['size']
@@ -1508,7 +1435,6 @@ export class BalIconSocialXingLine {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalIconTrash extends Components.BalIconTrash {}
@@ -1530,7 +1456,6 @@ export class BalIconTrash {
 }
 
 
-
 export declare interface BalIconUpload extends Components.BalIconUpload {}
 @ProxyCmp({
   inputs: ['size']
@@ -1550,7 +1475,6 @@ export class BalIconUpload {
 }
 
 
-import { Input as IInput } from '@baloise/ui-library/dist/types/components/bal-input/bal-input';
 export declare interface BalInput extends Components.BalInput {}
 @ProxyCmp({
   inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberKeyboard', 'onlyNumbers', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'type', 'value'],
@@ -1585,7 +1509,6 @@ export class BalInput {
 }
 
 
-
 export declare interface BalList extends Components.BalList {}
 @ProxyCmp({
   inputs: ['border', 'disabled', 'inverted']
@@ -1605,7 +1528,6 @@ export class BalList {
 }
 
 
-import { ListItem as IListItem } from '@baloise/ui-library/dist/types/components/bal-list-item/bal-list-item';
 export declare interface BalListItem extends Components.BalListItem {}
 @ProxyCmp({
   inputs: ['clickable', 'disabled', 'href', 'selected', 'target']
@@ -1629,7 +1551,6 @@ export class BalListItem {
 }
 
 
-
 export declare interface BalListItemContent extends Components.BalListItemContent {}
 
 @Component({
@@ -1644,7 +1565,6 @@ export class BalListItemContent {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalListItemIcon extends Components.BalListItemIcon {}
@@ -1666,7 +1586,6 @@ export class BalListItemIcon {
 }
 
 
-
 export declare interface BalListItemSubtitle extends Components.BalListItemSubtitle {}
 
 @Component({
@@ -1683,7 +1602,6 @@ export class BalListItemSubtitle {
 }
 
 
-
 export declare interface BalListItemTitle extends Components.BalListItemTitle {}
 
 @Component({
@@ -1698,7 +1616,6 @@ export class BalListItemTitle {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalModal extends Components.BalModal {}
@@ -1721,7 +1638,6 @@ export class BalModal {
 }
 
 
-
 export declare interface BalModalActions extends Components.BalModalActions {}
 
 @Component({
@@ -1736,7 +1652,6 @@ export class BalModalActions {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalModalBody extends Components.BalModalBody {}
@@ -1755,7 +1670,6 @@ export class BalModalBody {
 }
 
 
-
 export declare interface BalModalFooter extends Components.BalModalFooter {}
 
 @Component({
@@ -1772,7 +1686,6 @@ export class BalModalFooter {
 }
 
 
-
 export declare interface BalModalHeader extends Components.BalModalHeader {}
 
 @Component({
@@ -1787,7 +1700,6 @@ export class BalModalHeader {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalNavbar extends Components.BalNavbar {}
@@ -1809,7 +1721,6 @@ export class BalNavbar {
 }
 
 
-import { NavbarBrand as INavbarBrand } from '@baloise/ui-library/dist/types/components/bal-navbar-brand/bal-navbar-brand';
 export declare interface BalNavbarBrand extends Components.BalNavbarBrand {}
 @ProxyCmp({
   inputs: ['href']
@@ -1833,7 +1744,6 @@ export class BalNavbarBrand {
 }
 
 
-
 export declare interface BalNavbarMenu extends Components.BalNavbarMenu {}
 @ProxyCmp({
   methods: ['toggle']
@@ -1852,7 +1762,6 @@ export class BalNavbarMenu {
 }
 
 
-
 export declare interface BalNavbarMenuEnd extends Components.BalNavbarMenuEnd {}
 
 @Component({
@@ -1869,7 +1778,6 @@ export class BalNavbarMenuEnd {
 }
 
 
-
 export declare interface BalNavbarMenuStart extends Components.BalNavbarMenuStart {}
 
 @Component({
@@ -1884,7 +1792,6 @@ export class BalNavbarMenuStart {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalNotification extends Components.BalNotification {}
@@ -1906,7 +1813,6 @@ export class BalNotification {
 }
 
 
-import { Pagination as IPagination } from '@baloise/ui-library/dist/types/components/bal-pagination/bal-pagination';
 export declare interface BalPagination extends Components.BalPagination {}
 @ProxyCmp({
   inputs: ['disabled', 'pageRange', 'totalPages', 'value'],
@@ -1931,7 +1837,6 @@ export class BalPagination {
 }
 
 
-import { Radio as IRadio } from '@baloise/ui-library/dist/types/components/bal-radio/bal-radio';
 export declare interface BalRadio extends Components.BalRadio {}
 @ProxyCmp({
   inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'label', 'name', 'value'],
@@ -1958,7 +1863,6 @@ export class BalRadio {
 }
 
 
-import { RadioGroup as IRadioGroup } from '@baloise/ui-library/dist/types/components/bal-radio-group/bal-radio-group';
 export declare interface BalRadioGroup extends Components.BalRadioGroup {}
 @ProxyCmp({
   inputs: ['interface', 'inverted', 'name', 'value']
@@ -1982,7 +1886,6 @@ export class BalRadioGroup {
 }
 
 
-import { Select as ISelect } from '@baloise/ui-library/dist/types/components/bal-select/bal-select';
 export declare interface BalSelect extends Components.BalSelect {}
 @ProxyCmp({
   inputs: ['balTabindex', 'disabled', 'expanded', 'filterPlaceholder', 'inverted', 'loading', 'multiple', 'name', 'noFilter', 'placeholder', 'scrollable', 'typeahead', 'value'],
@@ -2019,7 +1922,6 @@ export class BalSelect {
 }
 
 
-
 export declare interface BalSelectOption extends Components.BalSelectOption {}
 @ProxyCmp({
   inputs: ['checkbox', 'focused', 'hidden', 'icon', 'label', 'selected', 'value']
@@ -2039,7 +1941,6 @@ export class BalSelectOption {
 }
 
 
-import { Snackbar as ISnackbar } from '@baloise/ui-library/dist/types/components/bal-snackbar/bal-snackbar';
 export declare interface BalSnackbar extends Components.BalSnackbar {}
 @ProxyCmp({
   inputs: ['action', 'color', 'duration', 'icon', 'message', 'subject'],
@@ -2066,7 +1967,6 @@ export class BalSnackbar {
 }
 
 
-
 export declare interface BalSpinner extends Components.BalSpinner {}
 @ProxyCmp({
   inputs: ['inverted', 'small']
@@ -2086,7 +1986,6 @@ export class BalSpinner {
 }
 
 
-import { TabItem as ITabItem } from '@baloise/ui-library/dist/types/components/bal-tab-item/bal-tab-item';
 export declare interface BalTabItem extends Components.BalTabItem {}
 @ProxyCmp({
   inputs: ['active', 'bubble', 'disabled', 'done', 'failed', 'href', 'label', 'prevent', 'value'],
@@ -2111,7 +2010,6 @@ export class BalTabItem {
 }
 
 import { BalTabOption } from '@baloise/ui-library';
-import { Tabs as ITabs } from '@baloise/ui-library/dist/types/components/bal-tabs/bal-tabs';
 export declare interface BalTabs extends Components.BalTabs {}
 @ProxyCmp({
   inputs: ['action', 'actionLabel', 'expanded', 'interface', 'rounded'],
@@ -2138,7 +2036,6 @@ export class BalTabs {
 }
 
 
-
 export declare interface BalTag extends Components.BalTag {}
 @ProxyCmp({
   inputs: ['color']
@@ -2156,7 +2053,6 @@ export class BalTag {
     this.el = r.nativeElement;
   }
 }
-
 
 
 export declare interface BalText extends Components.BalText {}
@@ -2178,7 +2074,6 @@ export class BalText {
 }
 
 
-import { Textarea as ITextarea } from '@baloise/ui-library/dist/types/components/bal-textarea/bal-textarea';
 export declare interface BalTextarea extends Components.BalTextarea {}
 @ProxyCmp({
   inputs: ['autocapitalize', 'autofocus', 'balTabindex', 'clickable', 'cols', 'debounce', 'disabled', 'inputmode', 'inverted', 'maxLength', 'minLength', 'name', 'placeholder', 'readonly', 'required', 'rows', 'value', 'wrap'],
@@ -2213,7 +2108,6 @@ export class BalTextarea {
 }
 
 
-import { Timeinput as ITimeinput } from '@baloise/ui-library/dist/types/components/bal-timeinput/bal-timeinput';
 export declare interface BalTimeinput extends Components.BalTimeinput {}
 @ProxyCmp({
   inputs: ['disabled', 'inverted', 'maxTime', 'minTime', 'value']
@@ -2240,7 +2134,6 @@ It will not be triggert if either hour or time input has never been set (i.e. "-
 }
 
 
-import { Toast as IToast } from '@baloise/ui-library/dist/types/components/bal-toast/bal-toast';
 export declare interface BalToast extends Components.BalToast {}
 @ProxyCmp({
   inputs: ['color', 'duration'],

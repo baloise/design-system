@@ -252,40 +252,16 @@ export class Button implements ComponentInterface {
         class={{
           'is-fullwidth': this.expanded,
           'is-disabled': this.disabled,
-        }}>
-        <TagType
-          {...attrs}
-          type={this.type}
-          class={this.buttonCssClass}
-          part="native"
-          disabled={this.disabled}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onClick={this.onClick}>
+        }}
+      >
+        <TagType {...attrs} type={this.type} class={this.buttonCssClass} part="native" disabled={this.disabled} onFocus={this.onFocus} onBlur={this.onBlur} onClick={this.onClick}>
           <span {...this.spanAttrs}>{/* Empty span to get the correct text height */}</span>
           <bal-spinner {...this.loadingAttrs} class="is-small is-inverted" />
-          <bal-icon
-            {...this.leftIconAttrs}
-            class="icon-left"
-            name={this.icon}
-            size={this.square ? this.size : this.iconSize}
-            color={this.color}
-            inverted={this.isIconInverted}
-          />
-          <bal-text
-            {...this.spanAttrs}
-            small={this.size === 'small'}
-            style={{ display: this.loading ? 'none' : 'inline' }}>
+          <bal-icon {...this.leftIconAttrs} class="icon-left" name={this.icon} size={this.square ? this.size : this.iconSize} color={this.color} inverted={this.isIconInverted} />
+          <bal-text {...this.spanAttrs} small={this.size === 'small'} style={{ display: this.loading ? 'none' : 'inline' }}>
             <slot />
           </bal-text>
-          <bal-icon
-            {...this.leftRightAttrs}
-            class="icon-right"
-            name={this.iconRight}
-            size={this.iconSize}
-            color={this.color}
-            inverted={this.isIconInverted}
-          />
+          <bal-icon {...this.leftRightAttrs} class="icon-right" name={this.iconRight} size={this.iconSize} color={this.color} inverted={this.isIconInverted} />
         </TagType>
       </Host>
     )

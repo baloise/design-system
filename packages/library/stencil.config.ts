@@ -64,6 +64,12 @@ export const config: Config = {
   namespace: 'ui-library',
   globalStyle: 'src/styles/ui-library.scss',
   buildEs5: true,
+  plugins: [
+    postcss({
+      plugins: [autoprefixer()],
+    }),
+    sass(),
+  ],
   outputTargets: [
     {
       type: 'dist',
@@ -72,7 +78,14 @@ export const config: Config = {
       esmLoaderPath: '../loader',
     },
     {
+      type: 'dist-custom-elements-bundle',
+    },
+    {
       type: 'docs-readme',
+    },
+    {
+      type: 'docs-json',
+      file: './docs/components.raw.json',
     },
     {
       type: 'www',
@@ -111,11 +124,5 @@ export const config: Config = {
       directivesArrayFile: '../angular/src/directives/proxies-list.ts',
       valueAccessorConfigs: angularValueAccessorBindings,
     }),
-  ],
-  plugins: [
-    postcss({
-      plugins: [autoprefixer()],
-    }),
-    sass(),
   ],
 }

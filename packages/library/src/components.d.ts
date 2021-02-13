@@ -10,7 +10,7 @@ import { BalButtonColor } from "./components/bal-button/bal.button.type";
 import { BalCardStepOption } from "./components/bal-card-step/bal-card-step.type";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
-import { AutocompleteTypes, InputTypes } from "./utils/interfaces";
+import { AutocompleteTypes, InputTypes } from "./types/interfaces";
 import { BalOptionValue } from "./components/bal-select-option/bal-select-option.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {

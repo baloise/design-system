@@ -10,7 +10,7 @@ const path = require('path')
 const file = require('../../../.scripts/file')
 const log = require('../../../.scripts/log')
 const { NEWLINE, DOCS_CHILD_REGEX, DOCS_HEADING_REGEX } = require('../../../docs/.scripts/utils/constants')
-const libraryLib = require('./library.lib')
+const libraryLib = require('./components.lib')
 
 const addChildInformation = component => {
   component.parent = null
@@ -46,6 +46,7 @@ const run = async () => {
   const componentsMap = new Map()
 
   const components = json.components
+    .filter(c => !c.tag.includes('bal-icon-'))
     .map(addChildInformation)
     .map(addExamples)
     .map(c => {

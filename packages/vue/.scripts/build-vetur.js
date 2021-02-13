@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { paramCase } = require('change-case');
-const libaryLib = require('../../library/.scripts/library.lib');
+const libaryLib = require('../../library/.scripts/components.lib');
 
 const generateTags = (components) => {
   const tagsObject = {};

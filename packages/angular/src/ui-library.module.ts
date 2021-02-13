@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 import { defineCustomElements, applyPolyfills } from '@baloise/ui-library/loader'
 
 import { DIRECTIVES } from './directives/proxies-list'

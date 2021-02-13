@@ -1,21 +1,10 @@
-import {
-  Component,
-  Host,
-  h,
-  Element,
-  State,
-  Prop,
-  Event,
-  EventEmitter,
-  Method,
-  Watch,
-  ComponentInterface,
-} from '@stencil/core'
-import { balDateUtil } from '@baloise/ui-library-utils'
-import { debounceEvent, findItemLabel } from '../../utils/helpers'
-import { actionKeys, isEnterKey, numberKeys } from '../../utils/key.util'
+import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch, ComponentInterface } from '@stencil/core'
+import { balDateUtil } from '../../utils'
+import { debounceEvent, findItemLabel } from '../../helpers/helpers'
+import { isEnterKey } from '../../utils/balKeyUtil'
 import { i18nDate } from './bal-datepicker.i18n'
 import { BalCalendarCell, BalDateCallback } from './bal-datepicker.type'
+import { ACTION_KEYS, NUMBER_KEYS } from '../../constants/keys.constant'
 
 @Component({
   tag: 'bal-datepicker',
@@ -289,9 +278,7 @@ export class Datepicker implements ComponentInterface {
             isToday: balDateUtil.isSameDay(dayDatePointer, balDateUtil.now()),
             isSelected: this.value && balDateUtil.isSameDay(dayDatePointer, this.value),
             isDisabled: !this.filter(dayDatePointer),
-            isOutdated:
-              this.pointerMonth !== dayDatePointer.getMonth() ||
-              !balDateUtil.isInRange(dayDatePointer, this.minDate, this.maxDate),
+            isOutdated: this.pointerMonth !== dayDatePointer.getMonth() || !balDateUtil.isInRange(dayDatePointer, this.minDate, this.maxDate),
           } as BalCalendarCell,
         ]
         dayDatePointer.setDate(dayDatePointer.getDate() + 1)
@@ -334,7 +321,7 @@ export class Datepicker implements ComponentInterface {
   }
 
   private onInputKeyDown = (event: KeyboardEvent) => {
-    const allowedKeys = [...numberKeys, '.', ...actionKeys]
+    const allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]
     if (allowedKeys.indexOf(event.key) < 0) {
       event.preventDefault()
       event.stopPropagation()
@@ -374,11 +361,7 @@ export class Datepicker implements ComponentInterface {
   render() {
     return (
       <Host role="datepicker" aria-disabled={this.disabled ? 'true' : null}>
-        <bal-dropdown
-          expanded={this.expanded}
-          fixedContentWidth={true}
-          onBalCollapse={this.onDropdownChange}
-          ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
+        <bal-dropdown expanded={this.expanded} fixedContentWidth={true} onBalCollapse={this.onDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
           <bal-dropdown-trigger>{this.renderInput()}</bal-dropdown-trigger>
           <bal-dropdown-menu>
             <div class="datepicker-popup">
@@ -430,14 +413,7 @@ export class Datepicker implements ComponentInterface {
           onBlur={this.onInputBlur}
           onFocus={this.onInputFocus}
         />
-        <bal-icon
-          class="datepicker-trigger-icon clickable"
-          is-right
-          color="info"
-          inverted={this.inverted}
-          name="date"
-          onClick={this.onIconClick}
-        />
+        <bal-icon class="datepicker-trigger-icon clickable" is-right color="info" inverted={this.inverted} name="date" onClick={this.onIconClick} />
       </div>
     )
   }
@@ -460,7 +436,8 @@ export class Datepicker implements ComponentInterface {
                     cell.isOutdated ? 'is-outdated' : '',
                     cell.isDisabled ? 'is-disabled' : '',
                     !cell.isOutdated && !cell.isDisabled ? 'is-selectable' : '',
-                  ].join(' ')}>
+                  ].join(' ')}
+                >
                   {cell.label}
                 </div>
               ))}

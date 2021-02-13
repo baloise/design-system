@@ -12,7 +12,11 @@ const components = async (isRaw = false) => {
       return json
     }
     const componentsMap = new Map()
-    json.components.forEach(c => componentsMap.set(c.tag, c))
+    json.components.forEach(c => {
+      if (!c.tag.includes('bal-icon-')) {
+        componentsMap.set(c.tag, c)
+      }
+    })
     return componentsMap
   } catch (error) {
     log.error(`Could not read file '${filePath}'. Maybe run 'npm run lib:docs' first.`, error)

@@ -1,6 +1,6 @@
 import { Component, h, Host, Element, Prop, State, Method, EventEmitter, Event, Listen, Watch } from '@stencil/core'
-import { findItemLabel } from '../../utils/helpers'
-import { isEnterKey, isEscapeKey, isArrowDownKey, isArrowUpKey } from '../../utils/key.util'
+import { findItemLabel } from '../../helpers/helpers'
+import { isEnterKey, isEscapeKey, isArrowDownKey, isArrowUpKey } from '../../utils/balKeyUtil'
 import { BalOptionValue } from '../bal-select-option/bal-select-option.type'
 
 @Component({
@@ -346,11 +346,7 @@ export class Select {
 
     return (
       <Host role="listbox" aria-disabled={this.disabled ? 'true' : null}>
-        <bal-dropdown
-          expanded={this.expanded}
-          scrollable={this.scrollable}
-          onBalCollapse={this.onDropdownChange}
-          ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
+        <bal-dropdown expanded={this.expanded} scrollable={this.scrollable} onBalCollapse={this.onDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
           <bal-dropdown-trigger>
             <bal-input
               ref={el => (this.inputElement = el as HTMLBalInputElement)}
@@ -367,7 +363,8 @@ export class Select {
               onKeyPress={this.onKeyPress}
               onKeyUp={this.onKeyUp}
               onBlur={e => this.balBlur.emit(e)}
-              onFocus={e => this.balFocus.emit(e)}></bal-input>
+              onFocus={e => this.balFocus.emit(e)}
+            ></bal-input>
             <bal-icon
               class={{ 'is-hidden': this.loading, 'is-right': true }}
               color="info"
@@ -405,13 +402,7 @@ export class Select {
             onFocus={e => this.balFocus.emit(e)}
             ref={el => (this.inputFilterElement = el as HTMLInputElement)}
           />
-          <bal-icon
-            class={{ 'is-hidden': this.loading }}
-            turn={!this.loading && !this.typeahead && this.isDropdownOpen}
-            size="small"
-            color="info"
-            name="search"
-          />
+          <bal-icon class={{ 'is-hidden': this.loading }} turn={!this.loading && !this.typeahead && this.isDropdownOpen} size="small" color="info" name="search" />
         </div>
       </div>
     )

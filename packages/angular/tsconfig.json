@@ -1,25 +1,43 @@
 {
-  "compilerOptions": {
-    "declaration": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "lib": ["dom", "es2015"],
-    "module": "es2015",
-    "moduleResolution": "node",
-    "outDir": "dist",
-    "removeComments": false,
-    "sourceMap": true,
-    "jsx": "react",
-    "target": "es2015"
-  },
   "angularCompilerOptions": {
-    "skipTemplateCodegen": true,
+    "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
+    "skipTemplateCodegen": true,
+    "fullTemplateTypeCheck": false,
     "enableResourceInlining": true,
     "enableIvy": false
   },
-  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "outDir": "dist",
+    "alwaysStrict": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "declaration": true,
+    "declarationDir": "dist",
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["dom", "es2017"],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "pretty": true,
+    "removeComments": false,
+    "importHelpers": true,
+    "rootDir": "src",
+    "strictPropertyInitialization": false,
+    "target": "es2015",
+    "baseUrl": ".",
+    "paths": {
+      "@baloise/ui-library/loader": ["../library/loader"],
+      "@baloise/ui-library": ["../library"]
+    }
+  },
+  "exclude": ["node_modules", "src/schematics"],
+  "files": ["src/index.ts"],
   "compileOnSave": false,
   "buildOnSave": false
 }

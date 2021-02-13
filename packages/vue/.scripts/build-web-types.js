@@ -1,6 +1,6 @@
 const fs = require("fs")
 const { pascalCase } = require('change-case')
-const libaryLib = require('../../library/.scripts/library.lib');
+const libaryLib = require('../../library/.scripts/components.lib');
 
 async function main() {
   const docsComponents = await libaryLib.components()

@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch } from '@stencil/core'
-import { findItemLabel } from '../../utils/helpers'
+import { findItemLabel } from '../../helpers/helpers'
 
 @Component({
   tag: 'bal-checkbox',
@@ -98,7 +98,8 @@ export class Checkbox {
       <Host
         class={{
           'is-inverted': this.inverted,
-        }}>
+        }}
+      >
         <input
           type="checkbox"
           role="checkbox"

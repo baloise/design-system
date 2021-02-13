@@ -1,18 +1,7 @@
-import {
-  Component,
-  h,
-  Host,
-  Prop,
-  Element,
-  EventEmitter,
-  Event,
-  Method,
-  Watch,
-  ComponentInterface,
-} from '@stencil/core'
-import { debounceEvent, findItemLabel } from '../../utils/helpers'
-import { AutocompleteTypes, InputTypes } from '../../utils/interfaces'
-import { actionKeys, numberKeys } from '../../utils/key.util'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface } from '@stencil/core'
+import { NUMBER_KEYS, ACTION_KEYS } from '../../constants/keys.constant'
+import { debounceEvent, findItemLabel } from '../../helpers/helpers'
+import { AutocompleteTypes, InputTypes } from '../../types/interfaces'
 
 @Component({
   tag: 'bal-input',
@@ -21,7 +10,7 @@ import { actionKeys, numberKeys } from '../../utils/key.util'
   scoped: true,
 })
 export class Input implements ComponentInterface {
-  private allowedKeys = [...numberKeys, '.', ...actionKeys]
+  private allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]
   private inputId = `bal-in-${InputIds++}`
   private nativeInput?: HTMLInputElement
   private didInit = false

@@ -27,10 +27,7 @@
       "entryFile": "src/index.ts"
     },
     "whitelistedNonPeerDependencies": [
-      "@baloise/ui-library",
-      "@angular/common",
-      "@angular/core",
-      "@angular/forms"
+      "@baloise/ui-library"
     ]
   },
   "license": "Apache-2.0",

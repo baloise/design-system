@@ -1,16 +1,5 @@
-import {
-  Component,
-  h,
-  Host,
-  Prop,
-  Element,
-  EventEmitter,
-  Event,
-  Method,
-  Watch,
-  ComponentInterface,
-} from '@stencil/core'
-import { debounceEvent, findItemLabel } from '../../utils/helpers'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface } from '@stencil/core'
+import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 
 @Component({
   tag: 'bal-textarea',
@@ -238,7 +227,8 @@ export class Textarea implements ComponentInterface {
           onBlur={e => this.balBlur.emit(e)}
           onClick={e => this.balClick.emit(e)}
           onKeyPress={e => this.balKeyPress.emit(e)}
-          onFocus={e => this.balFocus.emit(e)}>
+          onFocus={e => this.balFocus.emit(e)}
+        >
           {value}
         </textarea>
       </Host>

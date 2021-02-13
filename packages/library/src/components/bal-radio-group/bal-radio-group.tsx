@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Watch, ComponentInterface } from '@stencil/core'
-import { findItemLabel } from '../../utils/helpers'
+import { findItemLabel } from '../../helpers/helpers'
 
 @Component({
   tag: 'bal-radio-group',
@@ -85,11 +85,7 @@ export class RadioGroup implements ComponentInterface {
     }
 
     return (
-      <Host
-        role="radiogroup"
-        aria-labelledby={label ? labelId : null}
-        onClick={this.onClick}
-        class={`bal-${this.interface}`}>
+      <Host role="radiogroup" aria-labelledby={label ? labelId : null} onClick={this.onClick} class={`bal-${this.interface}`}>
         <slot></slot>
       </Host>
     )
