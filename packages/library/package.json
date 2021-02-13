@@ -39,7 +39,7 @@
     "clean:icons": "rimraf src/components/bal-icon/icons",
     "docs": "npm run build && npm run docs:compile",
     "docs:compile": "stencil build --docs --es5 --prod --config stencil.docs.config.ts",
-    "serve": "stencil build --docs --dev --watch --serve",
+    "serve": "stencil build --docs --dev --watch --serve --config stencil.dev.config.ts",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
