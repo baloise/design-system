@@ -16,8 +16,9 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run build:clean && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
+    "build": "npm run build:clean && npm run build:filters && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
     "build:clean": "rimraf dist && rimraf dist-transpiled",
+    "build:filters": "node .scripts/filters.script.js",
     "build:compile": "tsc -p .",
     "build:bundle": "rollup --config rollup.config.js",
     "build:web-types": "node ./.scripts/build-web-types.js",

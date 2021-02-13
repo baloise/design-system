@@ -1,17 +1,19 @@
 // generated file by .scripts/filters.script.js
 
 import { PluginFunction } from 'vue'
-import { balBlobToUrl } from '@baloise/ui-library'
-import { balCapitalize } from '@baloise/ui-library'
-import { balClaimNumber } from '@baloise/ui-library'
-import { balCurrency } from '@baloise/ui-library'
-import { balDefaultString } from '@baloise/ui-library'
-import { balFileSize } from '@baloise/ui-library'
-import { balHighlight } from '@baloise/ui-library'
-import { balJoinArray } from '@baloise/ui-library'
-import { balLimit } from '@baloise/ui-library'
-import { balOfferNumber } from '@baloise/ui-library'
-import { balPhoneNumber } from '@baloise/ui-library'
+import {
+  balBlobToUrl,
+  balCapitalize,
+  balClaimNumber,
+  balCurrency,
+  balDefaultString,
+  balFileSize,
+  balHighlight,
+  balJoinArray,
+  balLimit,
+  balOfferNumber,
+  balPhoneNumber
+} from '@baloise/ui-library'
 
 export const addFilters: PluginFunction<any> = (_Vue): void => {
   _Vue.filter('balBlobToUrl', balBlobToUrl)
