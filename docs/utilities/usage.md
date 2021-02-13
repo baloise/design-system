@@ -1,4 +1,15 @@
-# Installation
+# Usage
+
+## Function
+
+Than import it into any of your files and use the functions.
+
+```typescript
+import { balClaimNumber } from '@baloise/ui-library'
+
+balClaimNumber('93001217169')
+// returns "93/001217/16.9"
+```
 
 ## Vue
 
@@ -9,7 +20,7 @@ Follow the installtion guide of Vue. [Link to the Vue Installion](/introduction/
 
 The filters like `balClaimNumber` can be used directly in the template.
 
-```html
+```xml
 <p>{{ '73001217169' | balClaimNumber }}</p>
 ```
 
@@ -39,17 +50,6 @@ Follow the installtion guide of Angular. [Link to the Angular Installion](/intro
 
 The pipes like `balClaimNumber` can be used directly in the view.
 
-```html
+```xml
 <p>{{ '73001217169' | balClaimNumber }}</p>
-```
-
-## Function
-
-Than import it into any of your files and use the functions.
-
-```typescript
-import { balClaimNumber } from '@baloise/ui-library'
-
-balClaimNumber('93001217169')
-// returns "93/001217/16.9"
 ```

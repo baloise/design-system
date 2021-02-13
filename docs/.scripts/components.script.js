@@ -6,7 +6,7 @@ const api = require('./utils/api.util')
 const testing = require('./utils/testing.util')
 const github = require('./utils/github.util')
 const { NEWLINE } = require('./utils/constants')
-const libraryLib = require('../../packages/library/.scripts/library.lib')
+const libraryLib = require('../../packages/library/.scripts/components.lib')
 const testingLib = require('../../packages/testing/.scripts/testing.lib')
 
 const printListItem = (title, tag) => `

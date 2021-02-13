@@ -23,8 +23,9 @@
 
 - **Utilities**
 
-  - [Installation](utilities/installation.md)
+  - [Usage](utilities/usage.md)
   - [Filters](utilities/filters.md)
+  - [Utils](utilities/utils.md)
 
 - **Testing**
 

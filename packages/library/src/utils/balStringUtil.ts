@@ -1,12 +1,12 @@
-export const isBlank = (s?: string) => {
+export const isBlank = (s?: string): boolean => {
   return s == null || ('' + s).trim() === ''
 }
 
-export const isNotBlank = (s?: string) => {
+export const isNotBlank = (s?: string): boolean => {
   return !isBlank(s)
 }
 
-export const assertNotBlank = (s: string) => {
+export const assertNotBlank = (s: string): void => {
   if (isBlank(s)) {
     throw new Error('Assertion error: given string param must not be blank.')
   }

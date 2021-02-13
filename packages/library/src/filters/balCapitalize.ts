@@ -1,11 +1,11 @@
 import { isBlank } from '../utils/balStringUtil'
 
 /**
- * @description
  * Transforms the given string parameter to capitalize string.
  *
- * @example
- * balCapitalize('baloise') => Baloise
+ * ```typescript
+ * balCapitalize('baloise') // Baloise
+ * ```
  */
 export const balCapitalize = (value: string): string => {
   if (isBlank(value)) {

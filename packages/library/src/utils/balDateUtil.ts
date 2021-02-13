@@ -1,13 +1,7 @@
-/**
- * Returns the current date
- */
 export const now = (): Date => new Date()
 
 export const isValidDate = (value: any): boolean => new Date(value).toString() !== 'Invalid Date'
 
-/**
- * Returns the year of the given date
- */
 export const year = (date: Date): number => date.getFullYear()
 export const month = (date: Date): number => date.getMonth()
 export const day = (date: Date): number => date.getDate()

@@ -40,7 +40,7 @@
     "docs": "npm run build && npm run docs:compile",
     "docs:compile": "stencil build --docs --es5 --prod --config stencil.docs.config.ts",
     "serve": "stencil build --docs --dev --watch --serve --config stencil.dev.config.ts",
-    "test": "stencil test --spec --e2e",
+    "test": "stencil test --spec --e2e --config stencil.test.config.ts",
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {
