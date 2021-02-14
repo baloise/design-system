@@ -8,7 +8,7 @@
 
 `now() => Date`
 
-Returns the current date
+
 
 ### isValidDate
 
@@ -20,7 +20,7 @@ Returns the current date
 
 `year(date: Date) => number`
 
-Returns the year of the given date
+
 
 ### month
 
@@ -141,13 +141,13 @@ Returns the year of the given date
 
 ### isBlank
 
-`isBlank(s: string) => any`
+`isBlank(s: string) => boolean`
 
 
 
 ### isNotBlank
 
-`isNotBlank(s: string) => any`
+`isNotBlank(s: string) => boolean`
 
 
 
@@ -216,63 +216,21 @@ Returns the year of the given date
 
 
 
-### assertNil
+### assertNull
 
-`assertNil(obj: any) => any`
+`assertNull(obj: any) => any`
 
 
 
-### assertNotNil
+### assertNotNull
 
-`assertNotNil(obj: any) => any`
+`assertNotNull(obj: any) => any`
 
 
 
 ### assertFunction
 
 `assertFunction(obj: any) => any`
-
-
-
-### invokeFnWithNotNilParam
-
-`invokeFnWithNotNilParam(obj: any, fn: any) => any`
-
-
-
-### invokeFnIfParamNotNil
-
-`invokeFnIfParamNotNil(obj: any, fn: any) => any`
-
-
-
-### noop
-
-`noop() => any`
-
-
-
-### xor
-
-`xor(a: boolean, b: boolean) => boolean`
-
-
-
-### xnor
-
-`xnor(a: boolean, b: boolean) => boolean`
-
-
-
-### ensureArray
-
-`ensureArray(obj: any) => any[]`
-
-
-
-### createMap
-
-`createMap(obj: any) => Map`
 
 
 

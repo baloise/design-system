@@ -5,8 +5,8 @@ export * from './directives/proxies'
 export * from './filters'
 
 // SERVICES
-export { ToastService } from './toast.service'
-export { SnackbarService } from './snackbar.service'
+export { BalToastService } from './bal-toast.service'
+export { BalSnackbarService } from './bal-snackbar.service'
 
 // PACKAGE MODULE
 export { BalUiLibraryModule } from './ui-library.module'

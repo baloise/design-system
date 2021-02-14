@@ -11,8 +11,8 @@ export class AppComponent implements OnInit {
   routes: Route[] = [];
   activeTab: number = 0;
 
-  constructor(private router: Router) { 
-    this.router.events.subscribe( (event) => this.onRouteChanged(event) );
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => this.onRouteChanged(event));
   }
 
   ngOnInit(): void {
@@ -21,14 +21,14 @@ export class AppComponent implements OnInit {
 
   createRoutesArray() {
     let routes = [];
-    routes = this.router.config.filter(route => route.data?.nav)
+    routes = this.router.config.filter((route) => route.data?.nav);
     routes = this.initActiveProp(routes);
 
     return routes;
   }
 
   initActiveProp(array: any[]) {
-    array.forEach( (route, index) => {
+    array.forEach((route, index) => {
       route.active = index !== this.activeTab ? false : true;
     });
 
@@ -45,7 +45,6 @@ export class AppComponent implements OnInit {
 
   onRouteChanged(event: any) {
     if (event instanceof NavigationEnd) {
-      console.log(event)
       const name = event['url'];
       if (name && name !== '/') {
         this.routes = this.updateActiveProp(this.routes, name.slice(1));
@@ -54,7 +53,7 @@ export class AppComponent implements OnInit {
   }
 
   updateActiveProp(array: any[], name: string) {
-    let index = array.findIndex(route => route.path === name);
+    let index = array.findIndex((route) => route.path === name);
     array[this.activeTab].active = false;
     array[index].active = true;
     this.activeTab = index;

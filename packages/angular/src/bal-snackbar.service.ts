@@ -4,7 +4,7 @@ import { balSnackbarController, BalSnackbarOptions } from '@baloise/ui-library'
 @Injectable({
   providedIn: 'root',
 })
-export class SnackbarService {
+export class BalSnackbarService {
   create(options: BalSnackbarOptions): HTMLBalSnackbarElement {
     return balSnackbarController.create(options)
   }

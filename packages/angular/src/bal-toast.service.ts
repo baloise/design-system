@@ -4,7 +4,7 @@ import { balToastController, BalToastOptions } from '@baloise/ui-library'
 @Injectable({
   providedIn: 'root',
 })
-export class ToastService {
+export class BalToastService {
   create(options: BalToastOptions): HTMLBalToastElement {
     return balToastController.create(options)
   }

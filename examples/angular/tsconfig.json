@@ -4,7 +4,6 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
-    "strict": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -17,5 +16,8 @@
       "es2018",
       "dom"
     ]
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false
   }
 }

@@ -38,7 +38,8 @@ The UI-Libary is an open source project for styling awesome web applications tha
 </td>
 <td>
     <strong>Angular</strong><br>
-    10.2.x ✔<br><br><br>
+    10.2.x ✔<br>
+    11.x.x ✔<br><br>
     <a href="#/introduction/angular">Documentation</a>
 </td>
 </tr>
