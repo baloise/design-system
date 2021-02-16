@@ -11,7 +11,7 @@ import { AutocompleteTypes, InputTypes } from '../../types/interfaces'
 })
 export class Input implements ComponentInterface {
   private allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]
-  private inputId = `bal-in-${InputIds++}`
+  private inputId = `bal-input-${InputIds++}`
   private nativeInput?: HTMLInputElement
   private didInit = false
   private hasFocus = false

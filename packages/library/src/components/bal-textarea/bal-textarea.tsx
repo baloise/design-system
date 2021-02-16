@@ -10,6 +10,8 @@ import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 export class Textarea implements ComponentInterface {
   private inputId = `bal-textarea-${TextareaIds++}`
   private nativeInput?: HTMLTextAreaElement
+  private didInit = false
+  private hasFocus = false
 
   @Element() el!: HTMLElement
 
@@ -114,45 +116,54 @@ export class Textarea implements ComponentInterface {
    * Update the native input element when the value changes
    */
   @Watch('value')
-  protected valueChanged() {
-    const nativeInput = this.nativeInput
-    const value = this.getValue()
-    if (nativeInput && nativeInput.value !== value) {
-      nativeInput.value = value
+  protected valueChanged(newValue: string | number | null, oldValue: string | number | null) {
+    if (this.didInit && !this.hasFocus && newValue !== oldValue) {
+      this.balChange.emit(this.getValue())
     }
-
-    this.balChange.emit(value)
   }
+  // protected valueChanged() {
+  //   const nativeInput = this.nativeInput
+  //   const value = this.getValue()
+  //   if (nativeInput && nativeInput.value !== value) {
+  //     nativeInput.value = value
+  //   }
+
+  //   this.balChange.emit(value)
+  // }
 
   /**
    * Emitted when the input value has changed..
    */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<string>
+  @Event() balChange!: EventEmitter<string>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event({ eventName: 'balInput' }) balInput!: EventEmitter<string>
+  @Event() balInput!: EventEmitter<string>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event({ eventName: 'balBlur' }) balBlur!: EventEmitter<FocusEvent>
+  @Event() balBlur!: EventEmitter<FocusEvent>
 
   /**
    * Emitted when the input has clicked.
    */
-  @Event({ eventName: 'balClick' }) balClick!: EventEmitter<MouseEvent>
+  @Event() balClick!: EventEmitter<MouseEvent>
 
   /**
    * Emitted when a keyboard key has pressed.
    */
-  @Event({ eventName: 'balKeyPress' }) balKeyPress!: EventEmitter<KeyboardEvent>
+  @Event() balKeyPress!: EventEmitter<KeyboardEvent>
 
   /**
    * Emitted when the input has focus.
    */
-  @Event({ eventName: 'balFocus' }) balFocus!: EventEmitter<FocusEvent>
+  @Event() balFocus!: EventEmitter<FocusEvent>
+
+  componentDidLoad() {
+    this.didInit = true
+  }
 
   connectedCallback() {
     this.debounceChanged()
@@ -181,11 +192,23 @@ export class Textarea implements ComponentInterface {
     return this.value || ''
   }
 
-  private onInput = () => {
-    if (this.nativeInput) {
-      this.value = this.nativeInput.value
+  private onInput = (ev: Event) => {
+    const textarea = ev.target as HTMLTextAreaElement | null
+    if (textarea) {
+      this.value = textarea.value || ''
     }
     this.balInput.emit(this.value)
+  }
+
+  private onFocus = (ev: FocusEvent) => {
+    this.hasFocus = true
+    this.balFocus.emit(ev)
+  }
+
+  private onBlur = (ev: FocusEvent) => {
+    this.hasFocus = false
+    this.balBlur.emit(ev)
+    this.balChange.emit(this.getValue())
   }
 
   render() {
@@ -223,11 +246,10 @@ export class Textarea implements ComponentInterface {
           rows={this.rows}
           wrap={this.wrap}
           onInput={this.onInput}
-          onChange={() => this.balChange.emit(this.value)}
-          onBlur={e => this.balBlur.emit(e)}
+          onBlur={this.onBlur}
+          onFocus={this.onFocus}
           onClick={e => this.balClick.emit(e)}
           onKeyPress={e => this.balKeyPress.emit(e)}
-          onFocus={e => this.balFocus.emit(e)}
         >
           {value}
         </textarea>
