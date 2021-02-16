@@ -1,5 +1,5 @@
 export const isBlank = (s?: string): boolean => {
-  return s == null || ('' + s).trim() === ''
+  return s == null || s == undefined || ('' + s).trim() === ''
 }
 
 export const isNotBlank = (s?: string): boolean => {

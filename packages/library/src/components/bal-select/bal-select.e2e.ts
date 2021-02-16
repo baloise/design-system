@@ -1,87 +1,55 @@
 import { newE2EPage } from '@stencil/core/testing'
 
 describe('bal-select', () => {
-  it('init', () => {
-    expect(true)
+  it('should fire a balChange event when selecting an option', async () => {
+    const page = await newE2EPage()
+    await page.setContent(`
+    <bal-select>
+      <bal-select-option value="1995" label="1995">1995</bal-select-option>
+      <bal-select-option value="1996" label="1996">1996</bal-select-option>
+      <bal-select-option value="1997" label="1997">1997</bal-select-option>
+      <bal-select-option value="1998" label="1998">1998</bal-select-option>
+      <bal-select-option value="1999" label="1999">1999</bal-select-option>
+      <bal-select-option value="2000" label="2000">2000</bal-select-option>
+    </bal-select>
+    `)
+    const balChangeEvent = await page.spyOnEvent('balChange')
+    const select = await page.find('bal-select')
+    const trigger = await select.find('bal-dropdown-trigger bal-input')
+    const selectOption = await select.find('bal-select-option[value="1998"]')
+
+    await trigger.click()
+    await selectOption.click()
+
+    let value = await select.getProperty('value')
+    expect(value).toEqual(['1998'])
+    expect(balChangeEvent).toHaveReceivedEventTimes(1)
   })
-  // it('should only call balInput and no balChange, because the input has still the focus', async () => {
-  //   const page = await newE2EPage()
-  //   await page.setContent(`<bal-textarea></bal-textarea>`)
-  //   const balChangeEvent = await page.spyOnEvent('balChange')
-  //   const balInputEvent = await page.spyOnEvent('balInput')
-  //   const balInputElement = await page.find('bal-textarea')
-  //   const textarea = await balInputElement.find('textarea')
-  //   let value = await textarea.getProperty('value')
-  //   expect(value).toBe('')
-  //   await textarea.focus()
-  //   await textarea.press('8')
-  //   await page.waitForChanges()
-  //   value = await textarea.getProperty('value')
-  //   expect(value).toBe('8')
-  //   expect(balInputEvent).toHaveReceivedEvent()
-  //   expect(balChangeEvent).not.toHaveReceivedEvent()
-  // })
-  // it('should fire balChange & balInput, because the input gets blured', async () => {
-  //   const page = await newE2EPage()
-  //   await page.setContent(`<bal-textarea></bal-textarea>`)
-  //   const balChangeEvent = await page.spyOnEvent('balChange')
-  //   const balInputEvent = await page.spyOnEvent('balInput')
-  //   const balInputElement = await page.find('bal-textarea')
-  //   const textarea = await balInputElement.find('textarea')
-  //   let value = await textarea.getProperty('value')
-  //   expect(value).toBe('')
-  //   await textarea.focus()
-  //   await textarea.press('8')
-  //   await textarea.press('Tab')
-  //   await page.waitForChanges()
-  //   value = await textarea.getProperty('value')
-  //   expect(value).toBe('8')
-  //   expect(balInputEvent).toHaveReceivedEvent()
-  //   expect(balChangeEvent).toHaveReceivedEvent()
-  // })
-  // it('should fire balChange and no balInput, beacuse only the value of the web component is changed', async () => {
-  //   const page = await newE2EPage()
-  //   await page.setContent(`<bal-textarea></bal-textarea>`)
-  //   const balChangeEvent = await page.spyOnEvent('balChange')
-  //   const balInputEvent = await page.spyOnEvent('balInput')
-  //   const balInputElement = await page.find('bal-textarea')
-  //   const value = await balInputElement.getProperty('value')
-  //   expect(value).toBe('')
-  //   await balInputElement.setProperty('value', '88')
-  //   await page.waitForChanges()
-  //   expect(balInputEvent).not.toHaveReceivedEvent()
-  //   expect(balChangeEvent).toHaveReceivedEvent()
-  // })
-  // it('should fire no balChange and no balInput, beacuse the field has still a focus', async () => {
-  //   const page = await newE2EPage()
-  //   await page.setContent(`<bal-textarea></bal-textarea>`)
-  //   const balChangeEvent = await page.spyOnEvent('balChange')
-  //   const balInputEvent = await page.spyOnEvent('balInput')
-  //   const balInputElement = await page.find('bal-textarea')
-  //   const inputElement = await balInputElement.find('textarea')
-  //   const value = await balInputElement.getProperty('value')
-  //   expect(value).toBe('')
-  //   inputElement.focus()
-  //   await balInputElement.setProperty('value', '88')
-  //   await page.waitForChanges()
-  //   expect(balInputEvent).not.toHaveReceivedEvent()
-  //   expect(balChangeEvent).not.toHaveReceivedEvent()
-  // })
-  // it('should fire no balChange and no balInput, beacuse the field has still a focus', async () => {
-  //   const page = await newE2EPage()
-  //   await page.setContent(`<bal-input></bal-input>`)
-  //   const balChangeEvent = await page.spyOnEvent('balChange')
-  //   const balInputEvent = await page.spyOnEvent('balInput')
-  //   const balInputElement = await page.find('bal-textarea')
-  //   const inputElement = await balInputElement.find('textarea')
-  //   const value = await balInputElement.getProperty('value')
-  //   expect(value).toBe('')
-  //   inputElement.focus()
-  //   await balInputElement.setProperty('value', '88')
-  //   await page.waitForChanges()
-  //   await inputElement.press('Tab')
-  //   await page.waitForChanges()
-  //   expect(balInputEvent).not.toHaveReceivedEvent()
-  //   expect(balChangeEvent).toHaveReceivedEvent()
-  // })
+
+  it('should fire a balChange event when selecting multiple options', async () => {
+    const page = await newE2EPage()
+    await page.setContent(`
+    <bal-select multiple>
+      <bal-select-option value="1995" label="1995">1995</bal-select-option>
+      <bal-select-option value="1996" label="1996">1996</bal-select-option>
+      <bal-select-option value="1997" label="1997">1997</bal-select-option>
+      <bal-select-option value="1998" label="1998">1998</bal-select-option>
+      <bal-select-option value="1999" label="1999">1999</bal-select-option>
+      <bal-select-option value="2000" label="2000">2000</bal-select-option>
+    </bal-select>
+    `)
+    const balChangeEvent = await page.spyOnEvent('balChange')
+    const select = await page.find('bal-select')
+    const trigger = await select.find('bal-dropdown-trigger bal-input')
+    const selectOptionOne = await select.find('bal-select-option[value="1998"]')
+    const selectOptionTwo = await select.find('bal-select-option[value="2000"]')
+
+    await trigger.click()
+    await selectOptionOne.click()
+    await selectOptionTwo.click()
+
+    let value = await select.getProperty('value')
+    expect(value).toEqual(['1998', '2000'])
+    expect(balChangeEvent).toHaveReceivedEventTimes(2)
+  })
 })

@@ -279,6 +279,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
           * If `true`, the control works on dark background.
          */
         "inverted": boolean;

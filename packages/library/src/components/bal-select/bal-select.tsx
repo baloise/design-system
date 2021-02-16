@@ -1,6 +1,7 @@
 import { Component, h, Host, Element, Prop, State, Method, EventEmitter, Event, Listen, Watch } from '@stencil/core'
 import { findItemLabel } from '../../helpers/helpers'
 import { isEnterKey, isEscapeKey, isArrowDownKey, isArrowUpKey } from '../../utils/balKeyUtil'
+import { areArraysEqual } from '../../utils/balUtil'
 import { BalOptionValue } from '../bal-select-option/bal-select-option.type'
 
 @Component({
@@ -89,11 +90,13 @@ export class Select {
   @Prop({ mutable: true }) value: string[] = []
 
   @Watch('value')
-  valueWatcher() {
-    if (this.inputElement && this.didInit) {
+  valueWatcher(newValue: string[], oldValue: string[]) {
+    const areValueNotEqual = !areArraysEqual(newValue, oldValue)
+    if (areValueNotEqual && this.didInit && this.inputElement) {
       const selectedOptions = this.childOptions.filter(option => this.value.indexOf(option.value) >= 0)
       this.inputElement.value = selectedOptions.map(o => o.value).join(', ')
       this.sync()
+      this.balChange.emit(this.value)
     }
   }
 
@@ -134,7 +137,6 @@ export class Select {
 
   componentDidLoad() {
     this.didInit = true
-    this.valueWatcher()
   }
 
   /**
@@ -168,8 +170,9 @@ export class Select {
    */
   @Method()
   async select(option: BalOptionValue<any>) {
-    if (this.inputElement && this.didInit) {
+    if (this.inputElement && this.didInit && option !== undefined && option !== null) {
       this.focusIndex = this.childOptions.findIndex(el => el.value === option.value)
+
       if (this.multiple) {
         if (this.value.includes(option.value)) {
           for (var i = 0; i < this.value.length; i++) {
@@ -189,7 +192,6 @@ export class Select {
         this.inputElement.value = option?.label
         await this.dropdownElement?.close()
       }
-      this.balChange.emit(this.value)
       this.updateOptionProps()
     }
   }
@@ -205,6 +207,7 @@ export class Select {
       this.focusIndex = 0
       this.clearFocus()
       this.updateOptionProps()
+      this.balChange.emit(this.value)
     }
   }
 
@@ -336,6 +339,11 @@ export class Select {
     }
   }
 
+  private onBalChange = (ev: Event) => {
+    ev.preventDefault()
+    ev.stopPropagation()
+  }
+
   render() {
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
@@ -358,6 +366,7 @@ export class Select {
               clickable={true}
               hasIconRight={true}
               balTabindex={this.balTabindex}
+              onBalChange={this.onBalChange}
               onInput={this.onInput}
               onClick={this.onInputClick}
               onKeyPress={this.onKeyPress}

@@ -240,7 +240,7 @@ export class BalCardTitle {
 export declare interface BalCheckbox extends Components.BalCheckbox {}
 @ProxyCmp({
   inputs: ['balTabindex', 'checked', 'disabled', 'inverted', 'label', 'name', 'value'],
-  methods: ['setFocus']
+  methods: ['setFocus', 'getInputElement']
 })
 @Component({
   selector: 'bal-checkbox',

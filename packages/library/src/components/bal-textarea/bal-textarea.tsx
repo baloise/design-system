@@ -1,5 +1,6 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface } from '@stencil/core'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
+import { isBlank } from '../../utils/balStringUtil'
 
 @Component({
   tag: 'bal-textarea',
@@ -121,15 +122,6 @@ export class Textarea implements ComponentInterface {
       this.balChange.emit(this.getValue())
     }
   }
-  // protected valueChanged() {
-  //   const nativeInput = this.nativeInput
-  //   const value = this.getValue()
-  //   if (nativeInput && nativeInput.value !== value) {
-  //     nativeInput.value = value
-  //   }
-
-  //   this.balChange.emit(value)
-  // }
 
   /**
    * Emitted when the input value has changed..
@@ -163,6 +155,9 @@ export class Textarea implements ComponentInterface {
 
   componentDidLoad() {
     this.didInit = true
+    if (isBlank(this.value)) {
+      this.valueChanged(this.value, undefined)
+    }
   }
 
   connectedCallback() {

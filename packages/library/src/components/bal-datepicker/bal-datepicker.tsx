@@ -5,6 +5,7 @@ import { isEnterKey } from '../../utils/balKeyUtil'
 import { i18nDate } from './bal-datepicker.i18n'
 import { BalCalendarCell, BalDateCallback } from './bal-datepicker.type'
 import { ACTION_KEYS, NUMBER_KEYS } from '../../constants/keys.constant'
+import { day, month, now, year } from '../../utils/balDateUtil'
 
 @Component({
   tag: 'bal-datepicker',
@@ -22,9 +23,9 @@ export class Datepicker implements ComponentInterface {
   @Element() el!: HTMLElement
 
   @State() isDropdownOpen: boolean = false
-  @State() pointerMonth: number = 10
-  @State() pointerYear: number = 2020
-  @State() pointerDay: number = 1
+  @State() pointerMonth: number = month(now())
+  @State() pointerYear: number = year(now())
+  @State() pointerDay: number = day(now())
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -121,6 +122,7 @@ export class Datepicker implements ComponentInterface {
    */
   @Watch('value')
   protected valueChanged(newValue: Date | null, oldValue: Date | null) {
+    // console.log('valueChanged', newValue, oldValue)
     if (this.didInit && !this.hasFocus && newValue !== oldValue) {
       this.balChange.emit(this.value)
     }
@@ -157,6 +159,10 @@ export class Datepicker implements ComponentInterface {
 
   componentDidLoad() {
     this.didInit = true
+    if (this.value) {
+      this.value = this.parseValue(this.value)
+      setTimeout(() => this.updateFromValue(), 0)
+    }
   }
 
   /**
@@ -192,7 +198,6 @@ export class Datepicker implements ComponentInterface {
   async select(date: Date) {
     this.value = new Date(date)
     this.updateFromValue()
-    this.balChange.emit(this.value)
     if (this.closeOnSelect) {
       await this.dropdownElement?.toggle()
     }
@@ -214,13 +219,6 @@ export class Datepicker implements ComponentInterface {
   @Method()
   getInputElement(): Promise<HTMLInputElement> {
     return Promise.resolve(this.inputElement)
-  }
-
-  componentWillLoad() {
-    if (this.value) {
-      this.value = this.parseValue(this.value)
-      setTimeout(() => this.updateFromValue(), 0)
-    }
   }
 
   parseValue(value: Date | string | undefined): Date {
@@ -326,6 +324,9 @@ export class Datepicker implements ComponentInterface {
       event.preventDefault()
       event.stopPropagation()
     }
+    if (event.key === 'Tab') {
+      this.close()
+    }
   }
 
   private onInputFocus = (event: FocusEvent) => {
@@ -337,7 +338,6 @@ export class Datepicker implements ComponentInterface {
     this.hasFocus = false
     this.balBlur.emit(event)
     this.parseAndSetDate(this.inputElement.value, true)
-    this.balChange.emit(this.value)
   }
 
   private onMonthSelect = (event: InputEvent) => {

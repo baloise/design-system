@@ -40,7 +40,7 @@ export class Radio implements ComponentInterface {
   /**
    * If `true`, the radio is selected.
    */
-  @Prop() checked = false
+  @Prop({ mutable: true }) checked = false
 
   /**
    * If `true`, the user cannot interact with the checkbox.
@@ -103,7 +103,8 @@ export class Radio implements ComponentInterface {
           'bal-radio': this.interface === 'radio',
           'bal-select-button': this.interface === 'select-button',
           'is-inverted': this.inverted,
-        }}>
+        }}
+      >
         <input
           type="radio"
           role="radio"

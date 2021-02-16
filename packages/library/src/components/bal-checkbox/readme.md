@@ -31,6 +31,16 @@ Checkboxes allow the selection of multiple options from a set of options. They a
 
 ## Methods
 
+### `getInputElement() => Promise<HTMLInputElement>`
+
+Returns the native `<input>` element used under the hood.
+
+#### Returns
+
+Type: `Promise<HTMLInputElement>`
+
+
+
 ### `setFocus() => Promise<void>`
 
 Sets the focus on the checkbox input element.

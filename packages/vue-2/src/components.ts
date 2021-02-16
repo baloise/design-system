@@ -316,6 +316,7 @@ export const BalCheckbox = /*@__PURE__*/ Vue.extend({
 
   methods: {
     setFocus: createCommonMethod('setFocus') as Components.BalCheckbox['setFocus'],
+    getInputElement: createCommonMethod('getInputElement') as Components.BalCheckbox['getInputElement'],
   },
   render: createCommonRender('bal-checkbox', ['balChange', 'balFocus', 'balBlur']),
 });

@@ -2,6 +2,7 @@ import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, 
 import { NUMBER_KEYS, ACTION_KEYS } from '../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../types/interfaces'
+import { isDefined } from '../../utils/balUtil'
 
 @Component({
   tag: 'bal-input',
@@ -213,6 +214,9 @@ export class Input implements ComponentInterface {
 
   componentDidLoad() {
     this.didInit = true
+    if (isDefined(this.value) && this.value !== '') {
+      this.valueChanged(this.value, undefined)
+    }
   }
 
   /**

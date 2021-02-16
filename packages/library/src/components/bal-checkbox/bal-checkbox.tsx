@@ -9,7 +9,7 @@ import { findItemLabel } from '../../helpers/helpers'
 })
 export class Checkbox {
   private inputId = `bal-cb-${checkboxIds++}`
-  private inputEl?: HTMLInputElement
+  private nativeInput?: HTMLInputElement
 
   @Element() el!: HTMLElement
 
@@ -67,8 +67,10 @@ export class Checkbox {
    * Update the native input element when the value changes
    */
   @Watch('checked')
-  protected valueChanged() {
-    this.balChange.emit(this.checked)
+  protected valueChanged(newValue: boolean, oldValue: boolean) {
+    if (newValue !== oldValue) {
+      this.balChange.emit(this.checked)
+    }
   }
 
   /**
@@ -76,14 +78,21 @@ export class Checkbox {
    */
   @Method()
   async setFocus() {
-    if (this.inputEl) {
-      this.inputEl.focus()
+    if (this.nativeInput) {
+      this.nativeInput.focus()
     }
+  }
+
+  /**
+   * Returns the native `<input>` element used under the hood.
+   */
+  @Method()
+  getInputElement(): Promise<HTMLInputElement> {
+    return Promise.resolve(this.nativeInput!)
   }
 
   private onInput = (ev: any) => {
     this.checked = ev.target.checked
-    this.balChange.emit(this.checked)
   }
 
   render() {
@@ -115,7 +124,7 @@ export class Checkbox {
           onFocus={e => this.balFocus.emit(e)}
           onBlur={e => this.balBlur.emit(e)}
           onInput={this.onInput}
-          ref={inputEl => (this.inputEl = inputEl)}
+          ref={inputEl => (this.nativeInput = inputEl)}
         />
         <label htmlFor={this.inputId}>
           <bal-text>{this.label}</bal-text>
