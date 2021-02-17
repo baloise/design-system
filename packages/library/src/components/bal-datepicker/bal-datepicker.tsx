@@ -1,11 +1,25 @@
 import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch, ComponentInterface } from '@stencil/core'
-import { balDateUtil } from '../../utils'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 import { isEnterKey } from '../../utils/balKeyUtil'
 import { i18nDate } from './bal-datepicker.i18n'
 import { BalCalendarCell, BalDateCallback } from './bal-datepicker.type'
 import { ACTION_KEYS, NUMBER_KEYS } from '../../constants/keys.constant'
-import { day, month, now, year } from '../../utils/balDateUtil'
+import {
+  day,
+  decreaseYear,
+  format,
+  getFirstDayOfTheWeek,
+  getLastDayOfMonth,
+  isInRange,
+  isSameDay,
+  isSameMonth,
+  isSameWeek,
+  isValidDate,
+  month,
+  now,
+  padYear,
+  year,
+} from '../../utils/balDateUtil'
 
 @Component({
   tag: 'bal-datepicker',
@@ -17,7 +31,6 @@ export class Datepicker implements ComponentInterface {
   private inputElement!: HTMLInputElement
   private dropdownElement!: HTMLBalDropdownElement
   private didInit = false
-  private hasFocus = false
   private inputId = `bal-dp-${datepickerIds++}`
 
   @Element() el!: HTMLElement
@@ -115,16 +128,15 @@ export class Datepicker implements ComponentInterface {
   /**
    * Selected date. Could also be passed as a string, which gets transformed to js date object.
    */
-  @Prop({ mutable: true }) value: Date | null
+  @Prop({ mutable: true }) value: Date | undefined
 
   /**
    * Update the native input element when the value changes
    */
   @Watch('value')
-  protected valueChanged(newValue: Date | null, oldValue: Date | null) {
-    // console.log('valueChanged', newValue, oldValue)
-    if (this.didInit && !this.hasFocus && newValue !== oldValue) {
-      this.balChange.emit(this.value)
+  protected valueChanged(newValue: Date | undefined, oldValue: Date | undefined) {
+    if (this.didInit && newValue !== oldValue) {
+      this.balChange.emit(this.removeTimezone(this.value))
     }
   }
 
@@ -203,6 +215,15 @@ export class Datepicker implements ComponentInterface {
     }
   }
 
+  private removeTimezone(date: Date) {
+    if (isValidDate(date)) {
+      const userTimezoneOffset = this.value.getTimezoneOffset() * 60000
+      return new Date(date.getTime() - userTimezoneOffset)
+    }
+
+    return date
+  }
+
   /**
    * Sets the focus on the input element
    */
@@ -238,11 +259,11 @@ export class Datepicker implements ComponentInterface {
   }
 
   get minYear() {
-    return this.minYearProp ? this.minYearProp : balDateUtil.decreaseYear(balDateUtil.now(), 100)
+    return this.minYearProp ? this.minYearProp : decreaseYear(now(), 100)
   }
 
   get maxYear() {
-    return this.maxYearProp ? this.maxYearProp : balDateUtil.year(balDateUtil.now())
+    return this.maxYearProp ? this.maxYearProp : year(now())
   }
 
   get years(): number[] {
@@ -257,7 +278,7 @@ export class Datepicker implements ComponentInterface {
 
   get firstDateOfBox(): Date {
     const date = new Date(this.pointerYear, this.pointerMonth, 1)
-    return balDateUtil.getFirstDayOfTheWeek(date)
+    return getFirstDayOfTheWeek(date)
   }
 
   get calendarGrid(): BalCalendarCell[][] {
@@ -271,19 +292,19 @@ export class Datepicker implements ComponentInterface {
           ...row,
           {
             date: new Date(dayDatePointer),
-            dateString: balDateUtil.format(dayDatePointer),
-            label: balDateUtil.day(dayDatePointer).toString(),
-            isToday: balDateUtil.isSameDay(dayDatePointer, balDateUtil.now()),
-            isSelected: this.value && balDateUtil.isSameDay(dayDatePointer, this.value),
+            dateString: format(dayDatePointer),
+            label: day(dayDatePointer).toString(),
+            isToday: isSameDay(dayDatePointer, now()),
+            isSelected: this.value && isSameDay(dayDatePointer, this.value),
             isDisabled: !this.filter(dayDatePointer),
-            isOutdated: this.pointerMonth !== dayDatePointer.getMonth() || !balDateUtil.isInRange(dayDatePointer, this.minDate, this.maxDate),
+            isOutdated: this.pointerMonth !== dayDatePointer.getMonth() || !isInRange(dayDatePointer, this.minDate, this.maxDate),
           } as BalCalendarCell,
         ]
         dayDatePointer.setDate(dayDatePointer.getDate() + 1)
-      } while (balDateUtil.isSameWeek(dayDatePointer, weekDatePointer))
+      } while (isSameWeek(dayDatePointer, weekDatePointer))
       calendar = [...calendar, row]
       weekDatePointer.setDate(weekDatePointer.getDate() + 7)
-    } while (balDateUtil.isSameMonth(this.pointerDate, dayDatePointer))
+    } while (isSameMonth(this.pointerDate, dayDatePointer))
     return calendar
   }
 
@@ -306,7 +327,6 @@ export class Datepicker implements ComponentInterface {
 
   private onInput = (event: InputEvent) => {
     const inputValue = (event.target as HTMLInputElement).value
-    this.parseAndSetDate(inputValue)
 
     this.balInput.emit(inputValue)
     event.stopPropagation()
@@ -330,13 +350,14 @@ export class Datepicker implements ComponentInterface {
   }
 
   private onInputFocus = (event: FocusEvent) => {
-    this.hasFocus = true
     this.balFocus.emit(event)
   }
 
   private onInputBlur = (event: FocusEvent) => {
-    this.hasFocus = false
     this.balBlur.emit(event)
+  }
+
+  private onInputChange = () => {
     this.parseAndSetDate(this.inputElement.value, true)
   }
 
@@ -400,7 +421,7 @@ export class Datepicker implements ComponentInterface {
           type="text"
           maxlength="10"
           autoComplete="off"
-          value={balDateUtil.format(this.value)}
+          value={format(this.value)}
           required={this.required}
           disabled={this.disabled}
           readonly={this.readonly}
@@ -410,6 +431,7 @@ export class Datepicker implements ComponentInterface {
           onKeyDown={e => this.onInputKeyDown(e)}
           onInput={this.onInput}
           onClick={this.onInputClick}
+          onChange={this.onInputChange}
           onBlur={this.onInputBlur}
           onFocus={this.onInputFocus}
         />
@@ -500,35 +522,38 @@ export class Datepicker implements ComponentInterface {
   }
 
   private updateFromValue() {
-    if (this.value && balDateUtil.isValidDate(this.value)) {
-      this.inputElement.value = balDateUtil.format(this.value)
-      this.pointerYear = balDateUtil.year(this.value)
-      this.pointerMonth = balDateUtil.month(this.value)
-      this.pointerDay = balDateUtil.day(this.value)
+    if (this.value && isValidDate(this.value)) {
+      this.inputElement.value = format(this.value)
+      this.pointerYear = year(this.value)
+      this.pointerMonth = month(this.value)
+      this.pointerDay = day(this.value)
     }
   }
 
   private parseAndSetDate(inputValue: string, shouldFormat = false) {
-    if (inputValue.length >= 8) {
+    if (inputValue.length >= 6) {
       const parts = inputValue.split('.')
       if (parts.length === 3) {
-        const year = parseInt(parts[2], 10)
+        const year = parseInt(padYear(parts[2]), 10)
         const month = parseInt(parts[1], 10) - 1
-        if (parts[2].length === 4 && year >= 1900 && month < 12 && month >= 0) {
+        if (`${year}`.length === 4 && year >= 1900 && month < 12 && month >= 0) {
           const day = parseInt(parts[0], 10)
-          const lastDayOfMonth = balDateUtil.getLastDayOfMonth(year, month)
+          const lastDayOfMonth = getLastDayOfMonth(year, month)
           if (0 < day && day <= lastDayOfMonth) {
             const d = new Date(year, month, day)
-            this.value = d
             this.pointerMonth = month
             this.pointerYear = year
             if (shouldFormat) {
-              this.inputElement.value = balDateUtil.format(d)
+              this.inputElement.value = format(d)
             }
+            return (this.value = d)
           }
         }
       }
     }
+
+    this.inputElement.value = ''
+    this.value = undefined
   }
 
   private previousMonth() {

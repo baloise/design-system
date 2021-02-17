@@ -1,12 +1,12 @@
-import { newE2EPage } from '@stencil/core/testing'
+import { E2EElement, E2EPage, EventSpy, newE2EPage } from '@stencil/core/testing'
 import { format, now } from '../../utils/balDateUtil'
 
 describe('bal-datepicker', () => {
-  let page
-  let balChangeEvent
-  let balInputEvent
-  let balDatepickerElement
-  let nativeInputElement
+  let page: E2EPage
+  let balChangeEvent: EventSpy
+  let balInputEvent: EventSpy
+  let balDatepickerElement: E2EElement
+  let nativeInputElement: E2EElement
   beforeEach(async () => {
     page = await newE2EPage()
     await page.setContent(`<bal-datepicker></bal-datepicker>`)
@@ -19,7 +19,7 @@ describe('bal-datepicker', () => {
     await nativeInputElement.focus()
     await nativeInputElement.press('2')
     await nativeInputElement.press('.')
-    await nativeInputElement.press('2')
+    await nativeInputElement.press('4')
     await nativeInputElement.press('.')
     await nativeInputElement.press('1')
     await nativeInputElement.press('9')
@@ -27,9 +27,10 @@ describe('bal-datepicker', () => {
     await nativeInputElement.press('8')
     await nativeInputElement.press('Tab')
 
-    expect(await nativeInputElement.getProperty('value')).toBe('02.02.1988')
+    expect(await nativeInputElement.getProperty('value')).toBe('02.04.1988')
     expect(balInputEvent).toHaveReceivedEventTimes(8)
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
+    expect(balChangeEvent).toHaveReceivedEventDetail('1988-04-02T00:00:00.000Z')
   })
   it('should select the date of today', async () => {
     await nativeInputElement.click()
@@ -40,5 +41,39 @@ describe('bal-datepicker', () => {
     expect(await nativeInputElement.getProperty('value')).toBe(format(now()))
     expect(balInputEvent).toHaveReceivedEventTimes(0)
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
+  })
+  it('should fire balChange when the empty is set to nothing', async () => {
+    await balDatepickerElement.setProperty('value', '')
+    await page.waitForChanges()
+
+    expect(await nativeInputElement.getProperty('value')).toBe('')
+    expect(balInputEvent).toHaveReceivedEventTimes(0)
+    expect(balChangeEvent).toHaveReceivedEventTimes(1)
+  })
+  it('should return an empty string, because of a invalid date', async () => {
+    await nativeInputElement.focus()
+    await nativeInputElement.press('2')
+    await nativeInputElement.press('.')
+    await nativeInputElement.press('2')
+    await nativeInputElement.press('.')
+    await nativeInputElement.press('1')
+    await nativeInputElement.press('Tab')
+
+    expect(await nativeInputElement.getProperty('value')).toBe('')
+    expect(balChangeEvent).toHaveReceivedEventTimes(0)
+  })
+  it('should parse the short date into the correct format', async () => {
+    await nativeInputElement.focus()
+    await nativeInputElement.press('2')
+    await nativeInputElement.press('.')
+    await nativeInputElement.press('4')
+    await nativeInputElement.press('.')
+    await nativeInputElement.press('2')
+    await nativeInputElement.press('1')
+    await nativeInputElement.press('Tab')
+
+    expect(await nativeInputElement.getProperty('value')).toBe('02.04.2021')
+    expect(balChangeEvent).toHaveReceivedEventTimes(1)
+    expect(balChangeEvent).toHaveReceivedEventDetail('2021-04-02T00:00:00.000Z')
   })
 })

@@ -419,7 +419,7 @@ export namespace Components {
         /**
           * Selected date. Could also be passed as a string, which gets transformed to js date object.
          */
-        "value": Date | null;
+        "value": Date | undefined;
     }
     interface BalDropdown {
         /**
@@ -2715,7 +2715,7 @@ declare namespace LocalJSX {
         /**
           * Selected date. Could also be passed as a string, which gets transformed to js date object.
          */
-        "value"?: Date | null;
+        "value"?: Date | undefined;
     }
     interface BalDropdown {
         /**

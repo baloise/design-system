@@ -13,8 +13,14 @@
       <h2 class="title is-size-2">Basic</h2>
       <p>In this example the user can only select a date. For that use the property `readonly`.</p>
       <section>
-        <bal-datepicker data-test-id="datepicker"></bal-datepicker>
+        <bal-datepicker id="bubu" data-test-id="datepicker"></bal-datepicker>
       </section>
+      <script>
+        const el = document.getElementById('bubu')
+        el.addEventListener('balChange', ev => {
+          console.log(ev.detail)
+        })
+      </script>
 
       <h2 class="title is-size-2">Disabled</h2>
       <section>

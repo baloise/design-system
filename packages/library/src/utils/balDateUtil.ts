@@ -1,6 +1,11 @@
 export const now = (): Date => new Date()
 
-export const isValidDate = (value: any): boolean => new Date(value).toString() !== 'Invalid Date'
+export const isValidDate = (value: any): boolean => {
+  if (value === null || value === undefined) {
+    return false
+  }
+  return new Date(value).toString() !== 'Invalid Date'
+}
 
 export const year = (date: Date): number => date.getFullYear()
 export const month = (date: Date): number => date.getMonth()
@@ -17,7 +22,12 @@ export const isInRange = (date: Date, minDate: Date, maxDate: Date): boolean => 
   return true
 }
 
-export const format = (date: Date): string => {
+export const padYear = (year: number | string) => {
+  var s = `20${year}`
+  return s.substr(s.length - 4)
+}
+
+export const format = (date: Date | undefined): string => {
   function pad(value: number) {
     var s = `0${value}`
     return s.substr(s.length - 2)
