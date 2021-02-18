@@ -9,7 +9,7 @@ import { BalButtonColor } from '../bal-button/bal.button.type'
   shadow: false,
 })
 export class Snackbar {
-  snackbarId = `bal-to-${snackbarIds++}`
+  snackbarId = `bal-snackbar-${snackbarIds++}`
   timer: NodeJS.Timer
   @Element() element: HTMLElement
   @State() animationClass = 'fadeInDown'
@@ -112,14 +112,8 @@ export class Snackbar {
             <slot />
           </bal-text>
           <bal-icon name="close" class="close" inverted={this.color !== ''} size="xsmall" onClick={() => this.close()}></bal-icon>
-          <div class="snackbar-footer">
-            <bal-button
-              style={{ display: this.action === '' ? 'none' : 'inline-block' }}
-              color={this.buttonType}
-              inverted={this.color !== ''}
-              outlined
-              onClick={() => this.balAction.emit()}
-            >
+          <div class="snackbar-footer" style={{ display: this.action === '' ? 'none' : 'inline-block' }}>
+            <bal-button color={this.buttonType} inverted={this.color !== ''} outlined onClick={() => this.balAction.emit()}>
               {this.action}
             </bal-button>
           </div>

@@ -30,9 +30,10 @@
       column-gap: 10px;
       font-size: $size-4;
       font-weight: $weight-bold;
-    }
 
-    .snackbar-footer {
+      .icon-text .icon:not(:last-child) {
+        margin-right: 0.6em;
+      }
     }
 
     &.is-primary {
@@ -66,9 +67,11 @@
 
     .close {
       position: absolute;
+      cursor: pointer;
       top: 32px;
       right: 32px;
-      cursor: pointer;
+      width: 24px;
+      height: 24px;
     }
   }
 }
