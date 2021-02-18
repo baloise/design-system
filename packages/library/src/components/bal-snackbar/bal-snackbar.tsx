@@ -47,12 +47,12 @@ export class Snackbar {
   /**
    * Emitted when snackbar is closed
    */
-  @Event({ eventName: 'balClose' }) balClose!: EventEmitter<string>
+  @Event() balClose!: EventEmitter<string>
 
   /**
    * Emitted when the action button is clicked
    */
-  @Event({ eventName: 'balAction' }) balAction!: EventEmitter<string>
+  @Event() balAction!: EventEmitter<string>
 
   async componentWillLoad() {
     if (this.duration > 0) {
@@ -111,20 +111,18 @@ export class Snackbar {
           <bal-text>
             <slot />
           </bal-text>
-          <bal-icon
-            name="close"
-            class="close"
-            inverted={this.color !== ''}
-            size="xsmall"
-            onClick={() => this.close()}></bal-icon>
-          <bal-button
-            style={{ display: this.action === '' ? 'none' : 'flex' }}
-            color={this.buttonType}
-            inverted={this.color !== ''}
-            outlined
-            onClick={() => this.balAction.emit()}>
-            {this.action}
-          </bal-button>
+          <bal-icon name="close" class="close" inverted={this.color !== ''} size="xsmall" onClick={() => this.close()}></bal-icon>
+          <div class="snackbar-footer">
+            <bal-button
+              style={{ display: this.action === '' ? 'none' : 'inline-block' }}
+              color={this.buttonType}
+              inverted={this.color !== ''}
+              outlined
+              onClick={() => this.balAction.emit()}
+            >
+              {this.action}
+            </bal-button>
+          </div>
         </div>
       </Host>
     )

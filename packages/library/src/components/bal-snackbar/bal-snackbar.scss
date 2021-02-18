@@ -24,11 +24,15 @@
     position: relative;
 
     .snackbar-header {
+      @include font-smoothing();
       display: flex;
       align-items: center;
       column-gap: 10px;
       font-size: $size-4;
       font-weight: $weight-bold;
+    }
+
+    .snackbar-footer {
     }
 
     &.is-primary {
@@ -58,10 +62,6 @@
 
     bal-text {
       word-break: break-all;
-    }
-
-    .icon bal-icon {
-      margin-top: -4px;
     }
 
     .close {
