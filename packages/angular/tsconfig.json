@@ -29,7 +29,7 @@
     "importHelpers": true,
     "rootDir": "src",
     "strictPropertyInitialization": false,
-    "target": "es2015",
+    "target": "es5",
     "baseUrl": ".",
     "types": ["@baloise/ui-library"],
     "paths": {
