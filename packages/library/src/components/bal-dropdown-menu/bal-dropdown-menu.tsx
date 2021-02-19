@@ -6,7 +6,7 @@ import { Component, h, Host, Element, Prop } from '@stencil/core'
   scoped: false,
 })
 export class DropdownMenu {
-  @Element() el: HTMLElement
+  @Element() el!: HTMLElement
 
   /**
    * Limit the height of the dropdown content. Pass the amount of pixel.

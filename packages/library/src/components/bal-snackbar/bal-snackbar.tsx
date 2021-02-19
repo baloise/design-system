@@ -9,9 +9,9 @@ import { BalButtonColor } from '../bal-button/bal.button.type'
   shadow: false,
 })
 export class Snackbar {
+  @Element() element!: HTMLElement
+  timer!: NodeJS.Timer
   snackbarId = `bal-snackbar-${snackbarIds++}`
-  timer: NodeJS.Timer
-  @Element() element: HTMLElement
   @State() animationClass = 'fadeInDown'
 
   /**

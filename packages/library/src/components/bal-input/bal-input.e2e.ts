@@ -1,12 +1,12 @@
-import { newE2EPage } from '@stencil/core/testing'
+import { E2EElement, E2EPage, EventSpy, newE2EPage } from '@stencil/core/testing'
 
 describe('bal-input', () => {
-  let page
-  let clickEvent
-  let balChangeEvent
-  let balInputEvent
-  let balInputElement
-  let nativeInputElement
+  let page: E2EPage
+  let clickEvent: EventSpy
+  let balChangeEvent: EventSpy
+  let balInputEvent: EventSpy
+  let balInputElement: E2EElement
+  let nativeInputElement: E2EElement
 
   beforeEach(async () => {
     page = await newE2EPage()
@@ -36,7 +36,7 @@ describe('bal-input', () => {
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
   })
   it('should fire balChange and no balInput, beacuse only the value of the web component is changed', async () => {
-    await balInputElement.setProperty('value', '88')
+    balInputElement.setProperty('value', '88')
     await page.waitForChanges()
 
     expect(await nativeInputElement.getProperty('value')).toBe('88')
@@ -47,7 +47,7 @@ describe('bal-input', () => {
   it('should fire no balChange and no balInput, beacuse the field has still a focus', async () => {
     nativeInputElement.focus()
 
-    await balInputElement.setProperty('value', '88')
+    balInputElement.setProperty('value', '88')
     await page.waitForChanges()
 
     expect(balInputEvent).not.toHaveReceivedEvent()
@@ -57,7 +57,7 @@ describe('bal-input', () => {
   it('should fire no balChange and no balInput, beacuse the field has still a focus', async () => {
     nativeInputElement.focus()
 
-    await balInputElement.setProperty('value', '88')
+    balInputElement.setProperty('value', '88')
     await page.waitForChanges()
     await nativeInputElement.press('Tab')
 
@@ -73,7 +73,7 @@ describe('bal-input', () => {
   })
 
   it('should not fire a click event, because the input is disabled', async () => {
-    await balInputElement.setProperty('disabled', true)
+    balInputElement.setProperty('disabled', true)
     await page.waitForChanges()
 
     nativeInputElement.click()

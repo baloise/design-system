@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-field-control',
@@ -6,8 +6,6 @@ import { Component, h, Host, Prop, Element } from '@stencil/core'
   scoped: true,
 })
 export class FieldControl {
-  @Element() element: HTMLElement
-
   /**
    * Baloise icon for the right side of the input
    */

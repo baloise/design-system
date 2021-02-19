@@ -80,7 +80,7 @@ export class Radio implements ComponentInterface {
     }
   }
 
-  get parent(): HTMLBalRadioGroupElement {
+  get parent(): HTMLBalRadioGroupElement | null {
     return this.el.closest('bal-radio-group')
   }
 

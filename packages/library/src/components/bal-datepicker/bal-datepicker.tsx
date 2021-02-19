@@ -83,17 +83,17 @@ export class Datepicker implements ComponentInterface {
   /**
    * The text to display when the select is empty.
    */
-  @Prop() placeholder?: string | null
+  @Prop() placeholder: string | undefined
 
   /**
    * Latest date available for selection
    */
-  @Prop() maxDate: Date
+  @Prop() maxDate: Date | undefined
 
   /**
    * Earliest date available for selection
    */
-  @Prop() minDate: Date
+  @Prop() minDate: Date | undefined
 
   /**
    * Closes the datepicker dropdown after selection
@@ -223,8 +223,8 @@ export class Datepicker implements ComponentInterface {
     }
   }
 
-  private removeTimezone(date: Date) {
-    if (isValidDate(date)) {
+  private removeTimezone(date: Date | undefined) {
+    if (isValidDate(date) && this.value && date) {
       const userTimezoneOffset = this.value.getTimezoneOffset() * 60000
       return new Date(date.getTime() - userTimezoneOffset)
     }
@@ -250,7 +250,7 @@ export class Datepicker implements ComponentInterface {
     return Promise.resolve(this.inputElement)
   }
 
-  parseValue(value: Date | string | undefined): Date {
+  parseValue(value: Date | string | undefined): Date | undefined {
     if (value === undefined) {
       return undefined
     } else {
@@ -280,7 +280,7 @@ export class Datepicker implements ComponentInterface {
 
   get weekDays(): string[] {
     const translations = [...i18nDate[this.locale].weekdaysMin]
-    translations.push(translations.shift())
+    translations.push(translations.shift() || '')
     return translations
   }
 
@@ -292,9 +292,9 @@ export class Datepicker implements ComponentInterface {
   get calendarGrid(): BalCalendarCell[][] {
     let weekDatePointer = this.firstDateOfBox
     let dayDatePointer = this.firstDateOfBox
-    let calendar = []
+    let calendar: any[] = []
     do {
-      let row = []
+      let row: any[] = []
       do {
         row = [
           ...row,
@@ -335,7 +335,7 @@ export class Datepicker implements ComponentInterface {
     event.stopPropagation()
   }
 
-  private onInput = (event: InputEvent) => {
+  private onInput = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
 
     this.balInput.emit(inputValue)
@@ -371,12 +371,12 @@ export class Datepicker implements ComponentInterface {
     this.parseAndSetDate(this.inputElement.value, true)
   }
 
-  private onMonthSelect = (event: InputEvent) => {
+  private onMonthSelect = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
     this.pointerMonth = parseInt(inputValue, 10)
   }
 
-  private onYearSelect = (event: InputEvent) => {
+  private onYearSelect = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
     this.pointerYear = parseInt(inputValue, 10)
   }
@@ -578,6 +578,7 @@ export class Datepicker implements ComponentInterface {
 
     this.inputElement.value = ''
     this.value = undefined
+    return
   }
 
   private previousMonth() {

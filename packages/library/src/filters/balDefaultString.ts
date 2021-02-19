@@ -7,6 +7,6 @@ import { isBlank } from '../utils/balStringUtil'
  * balDefaultString('') => -\n
  * balDefaultString('text') => text
  */
-export const balDefaultString = (value: string | undefined, defaultString: string = '-'): string => {
-  return isBlank(value) ? defaultString : value
+export const balDefaultString = (value: string | undefined | null, defaultString: string = '-'): string => {
+  return isBlank(value) ? defaultString : (value as string)
 }

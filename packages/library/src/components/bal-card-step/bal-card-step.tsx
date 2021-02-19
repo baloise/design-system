@@ -86,7 +86,7 @@ export class CardStep {
     }
   }
 
-  get parent(): HTMLBalCardStepsElement {
+  get parent(): HTMLBalCardStepsElement | null {
     return this.element.closest('bal-card-steps')
   }
 

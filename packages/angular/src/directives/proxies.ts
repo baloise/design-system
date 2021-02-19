@@ -1489,7 +1489,7 @@ export declare interface BalInput extends Components.BalInput {}
 })
 export class BalInput {
   /** Emitted when a keyboard input occurred. */
-  balInput!: EventEmitter<CustomEvent<number | string>>;
+  balInput!: EventEmitter<CustomEvent<null | number | string>>;
   /** Emitted when a keyboard input occurred. */
   balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input has clicked. */
@@ -1499,7 +1499,7 @@ export class BalInput {
   /** Emitted when the input has focus. */
   balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input value has changed. */
-  balChange!: EventEmitter<CustomEvent<number | string>>;
+  balChange!: EventEmitter<CustomEvent<null | number | string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -2124,7 +2124,7 @@ export class BalTimeinput {
 It will not be triggert if either hour or time input has never been set (i.e. "--" is selected). */
   balChange!: EventEmitter<CustomEvent<string>>;
   /** Emitted when either the hour or minute input field loses focus. */
-  balBlur!: EventEmitter<CustomEvent<void>>;
+  balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

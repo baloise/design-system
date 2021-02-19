@@ -93,7 +93,7 @@ export class Dropdown {
   /**
    * Returns the `HTMLDivElement` of the menu element
    */
-  async getMenuElement(): Promise<HTMLElement> {
+  async getMenuElement(): Promise<HTMLElement | null> {
     return this.menuElement
   }
 
@@ -101,7 +101,7 @@ export class Dropdown {
    * Returns the `HTMLDivElement` of the content element
    */
   @Method()
-  async getContentElement(): Promise<HTMLElement> {
+  async getContentElement(): Promise<HTMLElement | null> {
     return this.contentElement
   }
 
@@ -130,11 +130,11 @@ export class Dropdown {
     this.calcIsDropDownContentUp()
   }
 
-  get menuElement(): HTMLElement {
+  get menuElement(): HTMLElement | null {
     return this.element.querySelector('bal-dropdown-menu')
   }
 
-  get contentElement(): HTMLElement {
+  get contentElement(): HTMLElement | null {
     return this.element.querySelector('bal-dropdown-content')
   }
 

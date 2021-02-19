@@ -83,22 +83,17 @@ export class Accordion {
   render() {
     return (
       <Host class="accordion">
-        <bal-button
-          expanded={true}
-          color={this.buttonType}
-          onClick={() => this.toggle()}
-          top-rounded={!this.card}
-          bottomRounded={!this.isActive}>
-          <span class="trigger-label" style={this.isActive && { display: 'none' }}>
+        <bal-button expanded={true} color={this.buttonType} onClick={() => this.toggle()} top-rounded={!this.card} bottomRounded={!this.isActive}>
+          <span class="trigger-label" style={{ display: !this.isActive ? 'flex' : 'none' }}>
             <bal-icon name={this.openIcon} color={this.color} size="small" />
             <span class="label">{this.openLabel}</span>
           </span>
-          <span class="trigger-label" style={!this.isActive && { display: 'none' }}>
+          <span class="trigger-label" style={{ display: this.isActive ? 'flex' : 'none' }}>
             <bal-icon name={this.closeIcon} color={this.color} size="small" />
             <span class="label">{this.closeLabel}</span>
           </span>
         </bal-button>
-        <div class={['accordion-content', `is-${this.color}`].join(' ')} style={!this.isActive && { display: 'none' }}>
+        <div class={['accordion-content', `is-${this.color}`].join(' ')} style={{ display: this.isActive ? 'block' : 'none' }}>
           <slot></slot>
         </div>
       </Host>

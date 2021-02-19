@@ -34,7 +34,7 @@ export class ListItem {
   /**
    * Emitted when the link element has clicked
    */
-  @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<MouseEvent>
 
   render() {
     if (this.href.length > 0 && !this.disabled) {

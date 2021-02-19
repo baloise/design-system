@@ -9,8 +9,7 @@ export class DataItem {
   /**
    * If `true` the item gets a lighter font color.
    */
-  @Prop()
-  disabled = false
+  @Prop() disabled = false
 
   render() {
     return (

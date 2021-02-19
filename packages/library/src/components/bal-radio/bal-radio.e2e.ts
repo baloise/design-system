@@ -46,7 +46,7 @@ describe('bal-radio-group', () => {
   })
 
   it('should not fire a click event, because the input is disabled', async () => {
-    await balRadioMale.setProperty('disabled', true)
+    balRadioMale.setProperty('disabled', true)
     await page.waitForChanges()
 
     nativeMaleInputElement.click()

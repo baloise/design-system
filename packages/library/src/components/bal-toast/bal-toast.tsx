@@ -8,9 +8,9 @@ import { ColorTypes } from '../../types/color.types'
   shadow: false,
 })
 export class Toast {
+  @Element() element!: HTMLBalToastElement
+  timer!: NodeJS.Timer
   toastId = `bal-toast-${toastIds++}`
-  timer: NodeJS.Timer
-  @Element() element: HTMLBalToastElement
   @State() animationClass = 'fadeInDown'
 
   /**

@@ -6,7 +6,7 @@ import { Component, Element, h, Host, Prop, State, Event, EventEmitter } from '@
   shadow: false,
 })
 export class NavbarBrand {
-  @Element() el: HTMLElement
+  @Element() el!: HTMLElement
 
   @State() isMenuActive = false
 
@@ -18,7 +18,7 @@ export class NavbarBrand {
   /**
    * Emitted when the link element has clicked
    */
-  @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<MouseEvent>
 
   componentWillLoad() {
     var isIE11 = !!window.MSInputMethodContext && !!(document as any).documentMode
@@ -27,17 +27,20 @@ export class NavbarBrand {
     }
   }
 
-  async resetIsMenuActive(e) {
-    if (e.matches) {
+  async resetIsMenuActive(ev: MediaQueryListEvent) {
+    if (ev.matches) {
       this.toggle(false)
     }
   }
 
   async toggle(isMenuActive: boolean): Promise<void> {
     this.isMenuActive = isMenuActive
-    const navbarMenuElement = this.el.closest('bal-navbar').querySelector('bal-navbar-menu')
-    if (navbarMenuElement) {
-      await (navbarMenuElement as any).toggle(this.isMenuActive)
+    const navbar = this.el.closest('bal-navbar')
+    if (navbar) {
+      const navbarMenuElement = navbar.querySelector('bal-navbar-menu')
+      if (navbarMenuElement) {
+        await (navbarMenuElement as any).toggle(this.isMenuActive)
+      }
     }
   }
 
@@ -57,7 +60,8 @@ export class NavbarBrand {
           class={'navbar-burger' + (this.isMenuActive ? ' is-active' : '')}
           aria-label="menu"
           aria-expanded={this.isMenuActive ? 'true' : 'false'}
-          onClick={() => this.onClick()}>
+          onClick={() => this.onClick()}
+        >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>

@@ -9,7 +9,7 @@ export class CardContent {
   /**
    * If `true` the card text color becomes white.
    */
-  @Prop() inverted: boolean
+  @Prop() inverted = false
 
   render() {
     return (

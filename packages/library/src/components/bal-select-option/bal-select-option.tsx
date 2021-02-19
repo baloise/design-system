@@ -10,19 +10,19 @@ import { NewBalOptionValue } from './bal-select-option.util'
 })
 export class SelectOption implements ComponentInterface {
   private inputId = `bal-selopt-${selectOptionIds++}`
-  private parent!: HTMLBalSelectElement
+  private parent!: HTMLBalSelectElement | null
 
   @Element() el!: HTMLElement
 
   /**
    * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
    */
-  @Prop({ reflect: true }) value: string
+  @Prop({ reflect: true }) value: string | undefined
 
   /**
    * Label will be shown in the input element when it got selected
    */
-  @Prop() label: string
+  @Prop() label: string | undefined
 
   /**
    * If `true` the option is hidden
@@ -59,20 +59,26 @@ export class SelectOption implements ComponentInterface {
   }
 
   get option(): BalOptionValue<any> {
-    return NewBalOptionValue(this.value, this.label)
+    return NewBalOptionValue(this.value as any, this.label || '')
   }
 
   connectedCallback() {
     this.parent = this.el.closest('bal-select')
-    this.parent.sync()
+    if (this.parent) {
+      this.parent.sync()
+    }
   }
 
   disconnectedCallback() {
-    this.parent.sync()
+    if (this.parent) {
+      this.parent.sync()
+    }
   }
 
   private onClick = () => {
-    this.parent.select(this.option)
+    if (this.parent) {
+      this.parent.select(this.option)
+    }
   }
 
   private onChange = (ev: Event) => {
@@ -93,7 +99,8 @@ export class SelectOption implements ComponentInterface {
             this.icon ? 'has-icon' : '',
             this.checkbox ? 'has-checkbox' : '',
           ].join(' ')}
-          tabIndex={-1}>
+          tabIndex={-1}
+        >
           <div class="select-option__content">
             <span class="checkbox" style={{ display: this.checkbox ? 'flex' : 'none' }}>
               <bal-checkbox checked={this.selected} tabindex={-1} onBalChange={this.onChange}></bal-checkbox>

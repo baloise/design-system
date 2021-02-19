@@ -14,7 +14,7 @@ export class Select {
   private inputElement!: HTMLBalInputElement
   private inputFilterElement!: HTMLInputElement
   private dropdownElement!: HTMLBalDropdownElement
-  private clearScrollToValue: NodeJS.Timeout
+  private clearScrollToValue!: NodeJS.Timeout
   private didInit = false
   private inputId = `bal-select-${selectIds++}`
 
@@ -93,7 +93,7 @@ export class Select {
   valueWatcher(newValue: string[], oldValue: string[]) {
     const areValueNotEqual = !areArraysEqual(newValue, oldValue)
     if (areValueNotEqual && this.didInit && this.inputElement) {
-      const selectedOptions = this.childOptions.filter(option => this.value.indexOf(option.value) >= 0)
+      const selectedOptions = this.childOptions.filter(option => option.value !== undefined).filter(option => this.value.indexOf(option.value as string) >= 0)
       this.inputElement.value = selectedOptions.map(o => o.value).join(', ')
       this.sync()
       this.balChange.emit(this.value)
@@ -192,7 +192,8 @@ export class Select {
           this.value = [...this.value, option.value]
         }
         this.inputElement.value = this.childOptions
-          .filter(option => this.value.includes(option.value))
+          .filter(option => option !== undefined)
+          .filter(option => this.value.includes(option.value as string))
           .map(option => option.label)
           .join(', ')
       } else {
@@ -281,16 +282,15 @@ export class Select {
     if (this.disabled) {
       event.preventDefault()
       event.stopPropagation()
-      return undefined
-    }
+    } else {
+      this.balClick.emit(event)
+      if (!this.typeahead || this.multiple) {
+        await this.dropdownElement?.toggle()
+      }
 
-    this.balClick.emit(event)
-    if (!this.typeahead || this.multiple) {
-      await this.dropdownElement?.toggle()
-    }
-
-    if (this.typeahead && this.multiple && this.isDropdownOpen) {
-      setTimeout(() => this.inputFilterElement.focus(), 100)
+      if (this.typeahead && this.multiple && this.isDropdownOpen) {
+        setTimeout(() => this.inputFilterElement.focus(), 100)
+      }
     }
   }
 
@@ -300,7 +300,7 @@ export class Select {
     event.stopPropagation()
   }
 
-  private onInput = (event: InputEvent) => {
+  private onInput = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
 
     if (this.typeahead && !this.multiple) {
@@ -452,7 +452,7 @@ export class Select {
         option.setAttribute('hidden', `${!this.isDropdownOpen}`)
       }
 
-      const isSelected = !!this.value && this.value.includes(option.value)
+      const isSelected = !!this.value && this.value.includes(option.value as string)
       option.setAttribute('selected', `${isSelected}`)
 
       const isFocused = this.focusIndex === index
@@ -499,7 +499,7 @@ export class Select {
   }
 
   private async selectFocused() {
-    const focusedElement: HTMLBalSelectOptionElement = this.childOptions.find(o => o.focused)
+    const focusedElement: HTMLBalSelectOptionElement | undefined = this.childOptions.find(o => o.focused)
     if (focusedElement) {
       const option = await focusedElement.getOption()
       this.select(option)
@@ -515,7 +515,7 @@ export class Select {
   }
 
   private async scrollToLabel(label: string) {
-    const optionElement = this.childOptions.find(o => this.startsWithForFilter(o.label, label))
+    const optionElement = this.childOptions.find(o => this.startsWithForFilter(o.label as string, label))
     if (optionElement) {
       this.focusOptionElement(optionElement)
       await this.scrollTo(optionElement.offsetTop)
@@ -525,11 +525,13 @@ export class Select {
 
   private async scrollTo(scrollTop: number) {
     const dropdownContentElement = await this.dropdownElement.getContentElement()
-    dropdownContentElement.scrollTop = scrollTop
+    if (dropdownContentElement) {
+      dropdownContentElement.scrollTop = scrollTop
+    }
   }
 
   private unfocusAllOptions() {
-    this.childOptions.find(o => (o.focused = false))
+    this.childOptions.forEach(o => (o.focused = false))
   }
 
   private focusOptionElement(optionElement: HTMLBalSelectOptionElement) {
@@ -537,7 +539,7 @@ export class Select {
     optionElement.focused = true
   }
 
-  private nextOptionIndex(index: number, lastIndex: number) {
+  private nextOptionIndex(index: number, lastIndex: number): number {
     if (index >= lastIndex) {
       return lastIndex
     }
@@ -549,7 +551,7 @@ export class Select {
     }
   }
 
-  private previousOptionIndex(index: number) {
+  private previousOptionIndex(index: number): number {
     if (index <= 0) {
       return 0
     }

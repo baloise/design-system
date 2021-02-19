@@ -1,20 +1,23 @@
 const createNoticesUtils = () => {
   // const DURATION = 5000
 
-  let container: HTMLDivElement
+  let container: HTMLDivElement | null = null
 
   const shouldQueue = () => {
-    return container.childElementCount > 0
+    if (container) {
+      return container.childElementCount > 0
+    }
+    return false
   }
 
   const setupContainer = () => {
-    container = document.querySelector("body" + ">.bal-notices")
+    container = document.querySelector('body' + '>.bal-notices')
 
     if (container) return
 
     if (!container) {
-      container = document.createElement("div")
-      container.className = "bal-notices"
+      container = document.createElement('div')
+      container.className = 'bal-notices'
     }
 
     document.body.appendChild(container)
@@ -27,8 +30,9 @@ const createNoticesUtils = () => {
       return
     }
 
-    container.insertAdjacentElement("afterbegin", element)
-    // element.closeIn(duration || DURATION)
+    if (container) {
+      container.insertAdjacentElement('afterbegin', element)
+    }
   }
 
   setupContainer()

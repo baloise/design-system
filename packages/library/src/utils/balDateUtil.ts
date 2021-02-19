@@ -7,23 +7,40 @@ export const isValidDate = (value: any): boolean => {
   return new Date(value).toString() !== 'Invalid Date'
 }
 
-export const year = (date: Date): number => date.getFullYear()
-export const month = (date: Date): number => date.getMonth()
-export const day = (date: Date): number => date.getDate()
+export const year = (date: Date | undefined): number => {
+  if (date && isValidDate(date)) {
+    return date.getFullYear()
+  }
+  throw new Error('Not a valid date')
+}
+
+export const month = (date: Date | undefined): number => {
+  if (date && isValidDate(date)) {
+    return date.getMonth()
+  }
+  throw new Error('Not a valid date')
+}
+
+export const day = (date: Date | undefined): number => {
+  if (date && isValidDate(date)) {
+    return date.getDate()
+  }
+  throw new Error('Not a valid date')
+}
 
 export const increaseYear = (date: Date, years: number): number => year(date) + years
 
 export const decreaseYear = (date: Date, years: number): number => year(date) - years
 
-export const isInRange = (date: Date, minDate: Date, maxDate: Date): boolean => {
+export const isInRange = (date: Date | undefined, minDate: Date | undefined, maxDate: Date | undefined): boolean => {
   if (date && minDate && maxDate) {
     return minDate <= date && date <= maxDate
   }
   return true
 }
 
-export const padYear = (year: number | string) => {
-  var s = `20${year}`
+export const padYear = (y: number | string) => {
+  var s = `20${y}`
   return s.substr(s.length - 4)
 }
 
@@ -38,8 +55,8 @@ export const format = (date: Date | undefined): string => {
   return `${pad(day(date))}.${pad(month(date) + 1)}.${year(date)}`
 }
 
-export const getLastDayOfMonth = (year: number, month: number): number => {
-  const date = new Date(year, month + 1, 0)
+export const getLastDayOfMonth = (y: number, m: number): number => {
+  const date = new Date(y, m + 1, 0)
   if (!isValidDate(date)) {
     return 0
   }

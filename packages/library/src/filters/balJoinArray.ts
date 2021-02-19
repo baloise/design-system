@@ -7,7 +7,7 @@ import { isArray } from '../utils/balUtil'
  * @example
  * balJoinArray(['Apple', 'Potato', 'Bacon']) => Apple, Potato, Bacon
  */
-export const balJoinArray = (value: string[], delimiter: string = ', '): string => {
+export const balJoinArray = (value: string[] | undefined | null, delimiter: string = ', '): string => {
   if (value === null || value === undefined) {
     return ''
   }

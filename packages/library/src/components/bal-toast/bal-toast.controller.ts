@@ -5,7 +5,7 @@ export interface BalToastOptions {
 }
 
 export class BalToastController {
-  private container: HTMLElement
+  private container: HTMLElement | null = null
   private queue: HTMLBalToastElement[] = []
   private preQueue: HTMLBalToastElement[] = []
   private queueLimit: number = 5
@@ -39,7 +39,7 @@ export class BalToastController {
   private updateQueue() {
     if (this.queue.length < this.queueLimit) {
       const toast = this.preQueue.shift()
-      if (toast) {
+      if (toast && this.container) {
         this.queue.push(toast)
         this.container.insertAdjacentElement('beforeend', toast)
       }

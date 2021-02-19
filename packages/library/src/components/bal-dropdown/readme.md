@@ -35,13 +35,13 @@ Type: `Promise<void>`
 
 
 
-### `getContentElement() => Promise<HTMLElement>`
+### `getContentElement() => Promise<HTMLElement | null>`
 
 Returns the `HTMLDivElement` of the content element
 
 #### Returns
 
-Type: `Promise<HTMLElement>`
+Type: `Promise<HTMLElement | null>`
 
 
 

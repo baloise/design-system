@@ -7,10 +7,11 @@ import { isBlank } from '../utils/balStringUtil'
  * balCapitalize('baloise') // Baloise
  * ```
  */
-export const balCapitalize = (value: string): string => {
+export const balCapitalize = (value: string | null | undefined): string => {
   if (isBlank(value)) {
     return ''
   } else {
-    return value.charAt(0).toUpperCase() + value.slice(1)
+    const s = value as string
+    return s.charAt(0).toUpperCase() + s.slice(1)
   }
 }

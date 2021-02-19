@@ -8,7 +8,7 @@ import { BalButtonColor } from './bal.button.type'
   scoped: true,
 })
 export class Button implements ComponentInterface {
-  @Element() el: HTMLElement
+  @Element() el!: HTMLElement
 
   /**
    * The color to use from your application's color palette.
@@ -118,7 +118,7 @@ export class Button implements ComponentInterface {
   /**
    * Emitted when the link element has clicked.
    */
-  @Event() balNavigate: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<MouseEvent>
 
   /**
    * Emitted when the button has focus.

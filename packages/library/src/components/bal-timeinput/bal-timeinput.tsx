@@ -15,11 +15,11 @@ export class Timeinput {
   static readonly MAX_HOUR = 23
   static readonly MAX_MINUTE = 59
 
-  timeoutHandler: NodeJS.Timeout = undefined
+  timeoutHandler: NodeJS.Timeout | undefined
 
   @State() isPristine = true
-  @State() hour: number
-  @State() minute: number
+  @State() hour?: number = 0
+  @State() minute?: number = 0
 
   @State() minHour: number = Timeinput.ZERO
   @State() minMinute: number = Timeinput.ZERO
@@ -32,7 +32,7 @@ export class Timeinput {
   /**
    * If `true` the button is disabled
    */
-  @Prop() disabled: boolean
+  @Prop() disabled = false
 
   /**
    * The value of the datepicker with the format `hh:mm`.
@@ -63,12 +63,7 @@ export class Timeinput {
   /**
    * Emitted when either the hour or minute input field loses focus.
    */
-  @Event({
-    composed: true,
-    cancelable: false,
-    bubbles: false,
-  })
-  balBlur!: EventEmitter<void>
+  @Event() balBlur!: EventEmitter<FocusEvent>
 
   @Watch('value')
   valueWatcher(newValue: string) {
@@ -150,7 +145,7 @@ export class Timeinput {
   }
 
   private incHour(): boolean {
-    if (this.hour >= this.maxHour) {
+    if (this.hour !== undefined && this.hour >= this.maxHour) {
       return false
     }
     this.hour = (this.hour ?? this.minHour) + 1
@@ -160,7 +155,7 @@ export class Timeinput {
   }
 
   private decHour(): boolean {
-    if (this.hour <= this.minHour) {
+    if (this.hour !== undefined && this.hour <= this.minHour) {
       return false
     }
     this.hour = (this.hour ?? this.minHour) - 1
@@ -170,7 +165,7 @@ export class Timeinput {
   }
 
   private incMinute(): boolean {
-    if (this.minute >= this.currentMaxMinute) {
+    if (this.minute !== undefined && this.minute >= this.currentMaxMinute) {
       return false
     }
     this.minute = (this.minute ?? this.currentMinMinute) + 1
@@ -179,7 +174,7 @@ export class Timeinput {
   }
 
   private decMinute(): boolean {
-    if (this.minute <= this.currentMinMinute) {
+    if (this.minute !== undefined && this.minute <= this.currentMinMinute) {
       return false
     }
     this.minute = (this.minute ?? this.currentMinMinute) - 1
@@ -187,7 +182,7 @@ export class Timeinput {
     return true
   }
 
-  private async onHourChange(event: InputEvent) {
+  private onHourChange = async (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
     const val = parseInt(inputValue, 10)
     this.hour = isNaN(val) ? undefined : val
@@ -195,7 +190,7 @@ export class Timeinput {
     this.onValueChange()
   }
 
-  private async onMinuteChange(event: InputEvent) {
+  private onMinuteChange = async (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
     const val = parseInt(inputValue, 10)
     this.minute = isNaN(val) ? undefined : val
@@ -243,16 +238,18 @@ export class Timeinput {
     for (const i of Array.from(Array(Timeinput.MAX_MINUTE + 1).keys())) {
       options.push({
         value: Timeinput.formatTimeBoxValue(i),
-        disabled:
-          this.hour !== undefined &&
-          ((this.hour === this.minHour && i < this.minMinute) || (this.hour === this.maxHour && i > this.maxMinute)),
+        disabled: this.hour !== undefined && ((this.hour === this.minHour && i < this.minMinute) || (this.hour === this.maxHour && i > this.maxMinute)),
       })
     }
     return options
   }
 
-  static formatTimeBoxValue(val: number) {
-    return val?.toString()?.padStart(2, '0')
+  static formatTimeBoxValue(val: number | undefined): string {
+    if (val === undefined) {
+      return ''
+    }
+
+    return val.toString().padStart(2, '0')
   }
 
   render() {
@@ -265,27 +262,21 @@ export class Timeinput {
             onMouseDown={() => this.repeatOnHold(() => this.incHour())}
             onMouseUp={() => this.onMouseLeafOrUp()}
             onMouseLeave={() => this.onMouseLeafOrUp()}
-            disabled={this.disabled || this.hour >= this.maxHour}
-            tabindex="-1">
+            disabled={this.disabled || (this.hour !== undefined && this.hour >= this.maxHour)}
+            tabindex="-1"
+          >
             <svg width="15px" height="10px" version="1.1">
               <g stroke-width="3.25" fill="none" stroke={this.inverted ? '#ffffff' : '#003399'}>
                 <polyline points="2,8 7.5,2 13,8"></polyline>
               </g>
             </svg>
           </button>
-          <select
-            class="input time-box"
-            onBlur={this.balBlur.emit.bind(this)}
-            onChange={this.onHourChange.bind(this)}
-            disabled={this.disabled}>
+          <select class="input time-box" onBlur={ev => this.balBlur.emit(ev)} onChange={this.onHourChange} disabled={this.disabled}>
             <option value="" disabled selected={this.hour === undefined}>
               --
             </option>
             {this.hourOptions.map(hourOption => (
-              <option
-                selected={hourOption.value === Timeinput.formatTimeBoxValue(this.hour)}
-                disabled={hourOption.disabled}
-                value={hourOption.value}>
+              <option selected={hourOption.value === Timeinput.formatTimeBoxValue(this.hour)} disabled={hourOption.disabled} value={hourOption.value}>
                 {hourOption.value}
               </option>
             ))}
@@ -296,8 +287,9 @@ export class Timeinput {
             onMouseDown={() => this.repeatOnHold(() => this.decHour())}
             onMouseUp={() => this.onMouseLeafOrUp()}
             onMouseLeave={() => this.onMouseLeafOrUp()}
-            disabled={this.disabled || this.hour <= this.minHour || this.hour === undefined}
-            tabindex="-1">
+            disabled={this.disabled || (this.hour !== undefined && this.hour <= this.minHour) || this.hour === undefined}
+            tabindex="-1"
+          >
             <svg width="15px" height="10px" version="1.1">
               <g stroke-width="3.25" fill="none" stroke={this.inverted ? '#ffffff' : '#003399'}>
                 <polyline points="2,2 7.5,8 13,2"></polyline>
@@ -313,27 +305,21 @@ export class Timeinput {
             onMouseDown={() => this.repeatOnHold(() => this.incMinute())}
             onMouseUp={() => this.onMouseLeafOrUp()}
             onMouseLeave={() => this.onMouseLeafOrUp()}
-            disabled={this.disabled || this.minute >= this.currentMaxMinute}
-            tabindex="-1">
+            disabled={this.disabled || (this.minute !== undefined && this.minute >= this.currentMaxMinute)}
+            tabindex="-1"
+          >
             <svg width="15px" height="10px" version="1.1">
               <g stroke-width="3.25" fill="none" stroke={this.inverted ? '#ffffff' : '#003399'}>
                 <polyline points="2,8 7.5,2 13,8"></polyline>
               </g>
             </svg>
           </button>
-          <select
-            class="time-box"
-            onBlur={this.balBlur.emit.bind(this)}
-            onChange={this.onMinuteChange.bind(this)}
-            disabled={this.disabled}>
+          <select class="time-box" onBlur={ev => this.balBlur.emit(ev)} onChange={this.onMinuteChange} disabled={this.disabled}>
             <option value="" disabled selected={this.minute === undefined}>
               --
             </option>
             {this.minuteOptions.map(minuteOption => (
-              <option
-                selected={minuteOption.value === Timeinput.formatTimeBoxValue(this.minute)}
-                disabled={minuteOption.disabled}
-                value={minuteOption.value}>
+              <option selected={minuteOption.value === Timeinput.formatTimeBoxValue(this.minute)} disabled={minuteOption.disabled} value={minuteOption.value}>
                 {minuteOption.value}
               </option>
             ))}
@@ -344,8 +330,9 @@ export class Timeinput {
             onMouseDown={() => this.repeatOnHold(() => this.decMinute())}
             onMouseUp={() => this.onMouseLeafOrUp()}
             onMouseLeave={() => this.onMouseLeafOrUp()}
-            disabled={this.disabled || this.minute <= this.currentMinMinute || this.minute === undefined}
-            tabindex="-1">
+            disabled={this.disabled || (this.minute !== undefined && this.minute <= this.currentMinMinute) || this.minute === undefined}
+            tabindex="-1"
+          >
             <svg width="15px" height="10px" version="1.1">
               <g stroke-width="3.25" fill="none" stroke={this.inverted ? '#ffffff' : '#003399'}>
                 <polyline points="2,2 7.5,8 13,2"></polyline>

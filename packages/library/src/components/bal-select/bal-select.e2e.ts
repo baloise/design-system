@@ -4,7 +4,6 @@ describe('bal-select', () => {
   let page: E2EPage
   let clickEvent: EventSpy
   let balChangeEvent: EventSpy
-  let balInputEvent: EventSpy
   let balSelectElement: E2EElement
   let nativeInputElement: E2EElement
   let triggerElement: E2EElement
@@ -25,7 +24,6 @@ describe('bal-select', () => {
     `)
     clickEvent = await page.spyOnEvent('click')
     balChangeEvent = await page.spyOnEvent('balChange')
-    balInputEvent = await page.spyOnEvent('balInput')
     balSelectElement = await page.find('bal-select')
     nativeInputElement = await balSelectElement.find('input')
     triggerElement = await balSelectElement.find('bal-dropdown-trigger bal-input')
@@ -43,7 +41,7 @@ describe('bal-select', () => {
   })
 
   it('should fire a balChange event when selecting multiple options', async () => {
-    await balSelectElement.setProperty('multiple', true)
+    balSelectElement.setProperty('multiple', true)
     await page.waitForChanges()
 
     await triggerElement.click()
@@ -63,7 +61,7 @@ describe('bal-select', () => {
   })
 
   it('should not fire a click event, because the input is disabled', async () => {
-    await balSelectElement.setProperty('disabled', true)
+    balSelectElement.setProperty('disabled', true)
     await page.waitForChanges()
 
     nativeInputElement.click()

@@ -1,12 +1,12 @@
-import { newE2EPage } from '@stencil/core/testing'
+import { E2EElement, E2EPage, EventSpy, newE2EPage } from '@stencil/core/testing'
 
 describe('bal-textarea', () => {
-  let page
-  let clickEvent
-  let balChangeEvent
-  let balInputEvent
-  let balInputElement
-  let nativeTextareaElement
+  let page: E2EPage
+  let clickEvent: EventSpy
+  let balChangeEvent: EventSpy
+  let balInputEvent: EventSpy
+  let balInputElement: E2EElement
+  let nativeTextareaElement: E2EElement
   beforeEach(async () => {
     page = await newE2EPage()
     await page.setContent(`<bal-textarea></bal-textarea>`)
@@ -38,7 +38,7 @@ describe('bal-textarea', () => {
   })
 
   it('should fire balChange and no balInput, beacuse only the value of the web component is changed', async () => {
-    await balInputElement.setProperty('value', '88')
+    balInputElement.setProperty('value', '88')
     await page.waitForChanges()
 
     expect(balInputEvent).not.toHaveReceivedEvent()
@@ -48,7 +48,7 @@ describe('bal-textarea', () => {
   it('should fire no balChange and no balInput, beacuse the field has still a focus', async () => {
     nativeTextareaElement.focus()
 
-    await balInputElement.setProperty('value', '88')
+    balInputElement.setProperty('value', '88')
     await page.waitForChanges()
 
     expect(balInputEvent).not.toHaveReceivedEvent()
@@ -58,7 +58,7 @@ describe('bal-textarea', () => {
   it('should fire no balChange and no balInput, beacuse the field has still a focus', async () => {
     nativeTextareaElement.focus()
 
-    await balInputElement.setProperty('value', '88')
+    balInputElement.setProperty('value', '88')
     await page.waitForChanges()
     await nativeTextareaElement.press('Tab')
 
@@ -74,7 +74,7 @@ describe('bal-textarea', () => {
   })
 
   it('should not fire a click event, because the input is disabled', async () => {
-    await balInputElement.setProperty('disabled', true)
+    balInputElement.setProperty('disabled', true)
     await page.waitForChanges()
 
     nativeTextareaElement.click()

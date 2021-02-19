@@ -371,7 +371,7 @@ export namespace Components {
         /**
           * Latest date available for selection
          */
-        "maxDate": Date;
+        "maxDate": Date | undefined;
         /**
           * Latest year available for selection
          */
@@ -379,7 +379,7 @@ export namespace Components {
         /**
           * Earliest date available for selection
          */
-        "minDate": Date;
+        "minDate": Date | undefined;
         /**
           * Earliest year available for selection
          */
@@ -395,7 +395,7 @@ export namespace Components {
         /**
           * The text to display when the select is empty.
          */
-        "placeholder"?: string | null;
+        "placeholder": string | undefined;
         /**
           * If `true` the use can only select a date.
          */
@@ -437,7 +437,7 @@ export namespace Components {
         /**
           * Returns the `HTMLDivElement` of the content element
          */
-        "getContentElement": () => Promise<HTMLElement>;
+        "getContentElement": () => Promise<HTMLElement | null>;
         /**
           * If `true` the dropdown content is open.
          */
@@ -537,15 +537,15 @@ export namespace Components {
         /**
           * Allowed max bundle size in bytes.
          */
-        "maxBundleSize": number;
+        "maxBundleSize": number | undefined;
         /**
           * Allowed max file size in bytes.
          */
-        "maxFileSize": number;
+        "maxFileSize": number | undefined;
         /**
           * Allowed number of files in the bundle.
          */
-        "maxFiles": number;
+        "maxFiles": number | undefined;
         /**
           * If `true` multiple file upload is possible.
          */
@@ -990,7 +990,7 @@ export namespace Components {
         /**
           * The value of the input.
          */
-        "value"?: string | number | null;
+        "value"?: string | number;
     }
     interface BalList {
         /**
@@ -1287,7 +1287,7 @@ export namespace Components {
         /**
           * Label will be shown in the input element when it got selected
          */
-        "label": string;
+        "label": string | undefined;
         /**
           * If `true` the option is selected
          */
@@ -1295,7 +1295,7 @@ export namespace Components {
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
-        "value": string;
+        "value": string | undefined;
     }
     interface BalSnackbar {
         /**
@@ -1489,7 +1489,7 @@ export namespace Components {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -1509,7 +1509,7 @@ export namespace Components {
         /**
           * The value of the textarea.
          */
-        "value"?: string | null;
+        "value"?: string;
         /**
           * Indicates how the control wraps text.
          */
@@ -2670,7 +2670,7 @@ declare namespace LocalJSX {
         /**
           * Latest date available for selection
          */
-        "maxDate"?: Date;
+        "maxDate"?: Date | undefined;
         /**
           * Latest year available for selection
          */
@@ -2678,7 +2678,7 @@ declare namespace LocalJSX {
         /**
           * Earliest date available for selection
          */
-        "minDate"?: Date;
+        "minDate"?: Date | undefined;
         /**
           * Earliest year available for selection
          */
@@ -2706,7 +2706,7 @@ declare namespace LocalJSX {
         /**
           * The text to display when the select is empty.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string | undefined;
         /**
           * If `true` the use can only select a date.
          */
@@ -2832,15 +2832,15 @@ declare namespace LocalJSX {
         /**
           * Allowed max bundle size in bytes.
          */
-        "maxBundleSize"?: number;
+        "maxBundleSize"?: number | undefined;
         /**
           * Allowed max file size in bytes.
          */
-        "maxFileSize"?: number;
+        "maxFileSize"?: number | undefined;
         /**
           * Allowed number of files in the bundle.
          */
-        "maxFiles"?: number;
+        "maxFiles"?: number | undefined;
         /**
           * If `true` multiple file upload is possible.
          */
@@ -3297,7 +3297,7 @@ declare namespace LocalJSX {
         /**
           * The value of the input.
          */
-        "value"?: string | number | null;
+        "value"?: string | number;
     }
     interface BalList {
         /**
@@ -3589,7 +3589,7 @@ declare namespace LocalJSX {
         /**
           * Label will be shown in the input element when it got selected
          */
-        "label"?: string;
+        "label"?: string | undefined;
         /**
           * If `true` the option is selected
          */
@@ -3597,7 +3597,7 @@ declare namespace LocalJSX {
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
-        "value"?: string;
+        "value"?: string | undefined;
     }
     interface BalSnackbar {
         /**
@@ -3807,7 +3807,7 @@ declare namespace LocalJSX {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -3823,7 +3823,7 @@ declare namespace LocalJSX {
         /**
           * The value of the textarea.
          */
-        "value"?: string | null;
+        "value"?: string;
         /**
           * Indicates how the control wraps text.
          */
@@ -3849,7 +3849,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when either the hour or minute input field loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<void>) => void;
+        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Emitted when either the hour or the minute input has changed. It will not be triggert if either hour or time input has never been set (i.e. "--" is selected).
          */

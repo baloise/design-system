@@ -11,7 +11,7 @@ export interface BalSnackbarOptions {
 }
 
 export class BalSnackbarController {
-  private container: HTMLElement
+  private container!: HTMLElement | null
   private queue: HTMLBalSnackbarElement[] = []
   private preQueue: HTMLBalSnackbarElement[] = []
   private queueLimit: number = 5
@@ -24,9 +24,9 @@ export class BalSnackbarController {
     snackbar.duration = options.duration || 0
     snackbar.subject = options.subject
     snackbar.icon = options.icon
-    snackbar.action = options.action
+    snackbar.action = options.action || ''
     snackbar.addEventListener('balClose', event => this.removeFromQueue((<any>event).detail))
-    snackbar.addEventListener('balAction', () => options.actionCallback())
+    snackbar.addEventListener('balAction', () => (options.actionCallback ? options.actionCallback() : void 0))
     this.preQueue.push(snackbar)
     this.updateQueue()
     return snackbar
@@ -49,7 +49,7 @@ export class BalSnackbarController {
   private updateQueue() {
     if (this.queue.length < this.queueLimit) {
       const snackbar = this.preQueue.shift()
-      if (snackbar) {
+      if (snackbar && this.container) {
         this.queue.push(snackbar)
         this.container.insertAdjacentElement('beforeend', snackbar)
       }

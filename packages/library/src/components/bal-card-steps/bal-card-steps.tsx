@@ -46,22 +46,22 @@ export class CardSteps {
   /**
    * Emitted when the link element has clicked
    */
-  @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<MouseEvent>
 
   /**
    * Emitted when the changes has finished.
    */
-  @Event({ eventName: 'balCardStepChange' }) balChange: EventEmitter<BalCardStepOption>
+  @Event({ eventName: 'balCardStepChange' }) balChange!: EventEmitter<BalCardStepOption>
 
   /**
    * Emitted when the back button is clicked.
    */
-  @Event({ eventName: 'balBackClick' }) balBackClick: EventEmitter<void>
+  @Event() balBackClick!: EventEmitter<void>
 
   /**
    * Emitted when the step circle is clicked.
    */
-  @Event({ eventName: 'balCardStepClick' }) balStepClick: EventEmitter<BalCardStepOption>
+  @Event({ eventName: 'balCardStepClick' }) balStepClick!: EventEmitter<BalCardStepOption>
 
   /**
    * Go to tab with the given value
@@ -78,7 +78,10 @@ export class CardSteps {
     await Promise.all(this.steps.map(value => value.getOptions())).then(stepOptions => {
       this.stepOptions = stepOptions
     })
-    this.label = this.stepOptions.find(o => o.active).label
+    const option = this.stepOptions.find(o => o.active)
+    if (option && option.label) {
+      this.label = option.label
+    }
   }
 
   componentWillLoad(): void {
@@ -123,29 +126,18 @@ export class CardSteps {
               <span class="nav-go-left-label">{this.backLabel}</span>
             </a>
           </div>
-          <h3
-            style={{ display: this.showLabel ? 'block' : 'none' }}
-            class={['tab-title title is-size-3', this.inverted ? 'is-inverted' : ''].join(' ')}>
+          <h3 style={{ display: this.showLabel ? 'block' : 'none' }} class={['tab-title title is-size-3', this.inverted ? 'is-inverted' : ''].join(' ')}>
             {this.label}
           </h3>
           <div
             style={{ display: this.showLabel ? 'none' : 'block' }}
-            class={[
-              'tabs',
-              !this.navigation ? 'is-disabled' : '',
-              this.inverted ? 'is-inverted' : '',
-              this.hidden ? 'is-hidden' : '',
-            ].join(' ')}>
+            class={['tabs', !this.navigation ? 'is-disabled' : '', this.inverted ? 'is-inverted' : '', this.hidden ? 'is-hidden' : ''].join(' ')}
+          >
             <ul>
               {this.stepOptions
                 .filter(step => !step.hidden && !this.hidden && !this.showLabel)
                 .map((step, index) => (
-                  <li
-                    class={[
-                      step.active ? 'is-active' : '',
-                      step.disabled ? 'is-disabled' : '',
-                      step.done ? 'is-done' : '',
-                    ].join(' ')}>
+                  <li class={[step.active ? 'is-active' : '', step.disabled ? 'is-disabled' : '', step.done ? 'is-done' : ''].join(' ')}>
                     <a onClick={(event: MouseEvent) => this.onClickStepCircle(event, step)} title={step.label}>
                       <span class="step-index">
                         <bal-text>{index + 1}</bal-text>

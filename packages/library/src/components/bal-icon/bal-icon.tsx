@@ -26,7 +26,7 @@ export class Icon {
   /**
    * If `true` the button is inverted
    */
-  @Prop() inverted: boolean
+  @Prop() inverted = false
 
   /**
    * If `true` the icon rotates like for a loading spinner

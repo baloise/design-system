@@ -166,13 +166,13 @@ export class Input implements ComponentInterface {
   /**
    * The value of the input.
    */
-  @Prop({ mutable: true }) value?: string | number | null = ''
+  @Prop({ mutable: true }) value?: string | number = ''
 
   /**
    * Update the native input element when the value changes
    */
   @Watch('value')
-  protected valueChanged(newValue: string | number | null, oldValue: string | number | null) {
+  protected valueChanged(newValue: string | number | undefined, oldValue: string | number | undefined) {
     if (this.didInit && !this.hasFocus && newValue !== oldValue) {
       this.balChange.emit(this.getValue())
     }

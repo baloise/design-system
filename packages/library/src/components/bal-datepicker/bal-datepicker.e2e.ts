@@ -45,7 +45,7 @@ describe('bal-datepicker', () => {
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
   })
   it('should fire balChange when the empty is set to nothing', async () => {
-    await balDatepickerElement.setProperty('value', '')
+    balDatepickerElement.setProperty('value', '')
     await page.waitForChanges()
 
     expect(await nativeInputElement.getProperty('value')).toBe('')
@@ -87,7 +87,7 @@ describe('bal-datepicker', () => {
   })
 
   it('should not fire a click event, because the input is disabled', async () => {
-    await balDatepickerElement.setProperty('disabled', true)
+    balDatepickerElement.setProperty('disabled', true)
     await page.waitForChanges()
 
     nativeInputElement.click()

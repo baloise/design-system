@@ -49,7 +49,7 @@ export class Textarea implements ComponentInterface {
   /**
    * Instructional text that shows before the input has a value.
    */
-  @Prop() placeholder?: string | null
+  @Prop() placeholder?: string
 
   /**
    * The tabindex of the control.
@@ -111,13 +111,13 @@ export class Textarea implements ComponentInterface {
   /**
    * The value of the textarea.
    */
-  @Prop({ mutable: true }) value?: string | null = ''
+  @Prop({ mutable: true }) value?: string = ''
 
   /**
    * Update the native input element when the value changes
    */
   @Watch('value')
-  protected valueChanged(newValue: string | number | null, oldValue: string | number | null) {
+  protected valueChanged(newValue: string | number | null | undefined, oldValue: string | number | null | undefined) {
     if (this.didInit && !this.hasFocus && newValue !== oldValue) {
       this.balChange.emit(this.getValue())
     }
@@ -200,7 +200,7 @@ export class Textarea implements ComponentInterface {
     if (textarea) {
       this.value = textarea.value || ''
     }
-    this.balInput.emit(this.value)
+    this.balInput.emit(this.value || '')
   }
 
   private onFocus = (ev: FocusEvent) => {

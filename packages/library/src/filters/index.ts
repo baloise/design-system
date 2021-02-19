@@ -14,14 +14,14 @@ export { balPhoneNumber } from './balPhoneNumber'
 
 export interface BalFiltersStatic {
   balBlobToUrl: (value: Blob) => string
-  balCapitalize: (value: string) => string
-  balClaimNumber: (value: string) => string
+  balCapitalize: (value: undefined) => string
+  balClaimNumber: (value: undefined) => string
   balCurrency: (value: number, currencySign: string, showZero: boolean, decimalLength: number) => string
   balDefaultString: (value: undefined, defaultString: string) => string
   balFileSize: (value: number) => string
   balHighlight: (value: string, search: string, cssClass: string) => string
-  balJoinArray: (value: string[], delimiter: string) => string
-  balLimit: (value: string, limit: number) => string
-  balOfferNumber: (value: string, varianteNr: string) => string
+  balJoinArray: (value: undefined, delimiter: string) => string
+  balLimit: (value: undefined, limit: number) => string
+  balOfferNumber: (value: undefined, varianteNr: string) => string
   balPhoneNumber: (value: undefined) => string
 }

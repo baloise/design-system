@@ -7,7 +7,7 @@ import { Component, Element, h, Host, Prop } from '@stencil/core'
   shadow: false,
 })
 export class Navbar {
-  @Element() el: HTMLElement
+  @Element() el!: HTMLElement
 
   /**
    * It `true` the navbar has a white background

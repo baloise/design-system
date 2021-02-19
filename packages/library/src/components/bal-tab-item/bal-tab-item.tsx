@@ -60,7 +60,7 @@ export class TabItem {
   /**
    * Emitted when the link element has clicked
    */
-  @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<MouseEvent>
 
   @Watch('active')
   activatedHandler(newActive: boolean) {
@@ -112,7 +112,7 @@ export class TabItem {
     }
   }
 
-  get parent(): HTMLBalTabsElement {
+  get parent(): HTMLBalTabsElement | null {
     return this.element.closest('bal-tabs')
   }
 
@@ -123,7 +123,7 @@ export class TabItem {
   render() {
     return (
       <Host>
-        <div style={this.isContentHidden && { display: 'none' }}>
+        <div style={{ display: this.isContentHidden ? 'none' : 'block' }}>
           <slot />
         </div>
       </Host>

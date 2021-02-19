@@ -63,13 +63,21 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
 export const config: Config = {
   namespace: 'ui-library',
   globalStyle: 'src/styles/ui-library.scss',
-  buildEs5: true,
   plugins: [
     postcss({
       plugins: [autoprefixer()],
     }),
     sass(),
   ],
+  buildEs5: true,
+  extras: {
+    cssVarsShim: true,
+    dynamicImportShim: true,
+    initializeNextTick: true,
+    safari10: true,
+    scriptDataOpts: true,
+    shadowDomShim: true,
+  },
   outputTargets: [
     {
       type: 'dist',

@@ -22,7 +22,7 @@ describe('bal-checkbox', () => {
   })
 
   it('should not be able to alter the checkbox, because it is disabled', async () => {
-    await balCheckboxElement.setAttribute('disabled', true)
+    balCheckboxElement.setAttribute('disabled', true)
     await page.waitForChanges()
     await nativeInputElement.click()
 
@@ -38,7 +38,7 @@ describe('bal-checkbox', () => {
   })
 
   it('should not fire a click event, because the input is disabled', async () => {
-    await balCheckboxElement.setProperty('disabled', true)
+    balCheckboxElement.setProperty('disabled', true)
     await page.waitForChanges()
 
     nativeInputElement.click()

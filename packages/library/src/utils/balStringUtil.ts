@@ -1,4 +1,4 @@
-export const isBlank = (s?: string): boolean => {
+export const isBlank = (s?: string | null): boolean => {
   return s == null || s == undefined || ('' + s).trim() === ''
 }
 
