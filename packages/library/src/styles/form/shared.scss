@@ -20,3 +20,8 @@
 .button .label {
   font-weight: $weight-normal;
 }
+
+.is-disabled {
+  cursor: default;
+  pointer-events: none;
+}

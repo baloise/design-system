@@ -16,11 +16,6 @@
   font-kerning: none;
 }
 
-:host(.is-disabled) {
-  cursor: default;
-  pointer-events: none;
-}
-
 :host(.is-fullwidth) {
   display: flex;
   width: 100%;

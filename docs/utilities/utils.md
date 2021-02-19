@@ -52,9 +52,15 @@
 
 
 
+### padYear
+
+`padYear(year: undefined) => any`
+
+
+
 ### format
 
-`format(date: Date) => string`
+`format(date: undefined) => string`
 
 
 
@@ -168,6 +174,12 @@
 
 ## balUtil
 
+### isDefined
+
+`isDefined(obj: any) => boolean`
+
+
+
 ### isFunction
 
 `isFunction(obj: any) => boolean`
@@ -231,6 +243,12 @@
 ### assertFunction
 
 `assertFunction(obj: any) => any`
+
+
+
+### areArraysEqual
+
+`areArraysEqual(a: T[], b: T[]) => boolean`
 
 
 

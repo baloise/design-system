@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface, ModeStyles, Listen } from '@stencil/core'
 import { NUMBER_KEYS, ACTION_KEYS } from '../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../types/interfaces'
@@ -208,6 +208,14 @@ export class Input implements ComponentInterface {
    */
   @Event() balChange!: EventEmitter<string | number | null>
 
+  @Listen('click', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    if (this.disabled && ev.target && ev.target === this.el) {
+      ev.preventDefault()
+      ev.stopPropagation()
+    }
+  }
+
   connectedCallback() {
     this.debounceChanged()
   }
@@ -270,6 +278,19 @@ export class Input implements ComponentInterface {
     this.balChange.emit(this.getValue())
   }
 
+  private onClick = (ev: MouseEvent) => {
+    if (!this.disabled) {
+      this.balClick.emit(ev)
+    }
+  }
+
+  private handleClick = (event: MouseEvent) => {
+    if (this.disabled) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+  }
+
   render() {
     const value = this.getValue()
     const labelId = this.inputId + '-lbl'
@@ -286,10 +307,17 @@ export class Input implements ComponentInterface {
       inputProps = { pattern: '[0-9]*' }
     }
     return (
-      <Host aria-disabled={this.disabled ? 'true' : null}>
+      <Host
+        onClick={this.handleClick}
+        aria-disabled={this.disabled ? 'true' : null}
+        class={{
+          'is-disabled': this.disabled,
+        }}
+      >
         <input
           class={{
             'input': true,
+            'is-disabled': this.disabled,
             'is-inverted': this.inverted,
             'clickable': this.clickable,
             'has-icon-right': this.hasIconRight,
@@ -322,7 +350,7 @@ export class Input implements ComponentInterface {
           onKeyDown={this.onKeyDown}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
-          onClick={e => this.balClick.emit(e)}
+          onClick={this.onClick}
           onKeyPress={e => this.balKeyPress.emit(e)}
         />
       </Host>
