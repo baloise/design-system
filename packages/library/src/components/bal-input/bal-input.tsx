@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface, ModeStyles, Listen } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface, Listen } from '@stencil/core'
 import { NUMBER_KEYS, ACTION_KEYS } from '../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../types/interfaces'
