@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface, Listen } from '@stencil/core'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 import { isBlank } from '../../utils/balStringUtil'
 
@@ -153,6 +153,14 @@ export class Textarea implements ComponentInterface {
    */
   @Event() balFocus!: EventEmitter<FocusEvent>
 
+  @Listen('click', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    if (this.disabled && ev.target && ev.target === this.el) {
+      ev.preventDefault()
+      ev.stopPropagation()
+    }
+  }
+
   componentDidLoad() {
     this.didInit = true
     if (isBlank(this.value)) {
@@ -206,6 +214,13 @@ export class Textarea implements ComponentInterface {
     this.balChange.emit(this.getValue())
   }
 
+  private handleClick = (event: MouseEvent) => {
+    if (this.disabled) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+  }
+
   render() {
     const value = this.getValue()
     const labelId = this.inputId + '-lbl'
@@ -216,11 +231,18 @@ export class Textarea implements ComponentInterface {
     }
 
     return (
-      <Host aria-disabled={this.disabled ? 'true' : null}>
+      <Host
+        onClick={this.handleClick}
+        aria-disabled={this.disabled ? 'true' : null}
+        class={{
+          'is-disabled': this.disabled,
+        }}
+      >
         <textarea
           class={{
             'textarea': true,
             'is-inverted': this.inverted,
+            'is-disabled': this.disabled,
             'clickable': this.clickable,
           }}
           ref={inputEl => (this.nativeInput = inputEl)}

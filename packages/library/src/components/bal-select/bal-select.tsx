@@ -135,6 +135,14 @@ export class Select {
    */
   @Event() balCancel!: EventEmitter<KeyboardEvent>
 
+  @Listen('click', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    if (this.disabled && ev.target && ev.target === this.el) {
+      ev.preventDefault()
+      ev.stopPropagation()
+    }
+  }
+
   componentDidLoad() {
     this.didInit = true
   }
@@ -271,6 +279,8 @@ export class Select {
 
   private onInputClick = async (event: MouseEvent) => {
     if (this.disabled) {
+      event.preventDefault()
+      event.stopPropagation()
       return undefined
     }
 
@@ -344,6 +354,13 @@ export class Select {
     ev.stopPropagation()
   }
 
+  private handleClick = (event: MouseEvent) => {
+    if (this.disabled) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+  }
+
   render() {
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
@@ -353,7 +370,14 @@ export class Select {
     }
 
     return (
-      <Host role="listbox" aria-disabled={this.disabled ? 'true' : null}>
+      <Host
+        role="listbox"
+        onClick={this.handleClick}
+        aria-disabled={this.disabled ? 'true' : null}
+        class={{
+          'is-disabled': this.disabled,
+        }}
+      >
         <bal-dropdown expanded={this.expanded} scrollable={this.scrollable} onBalCollapse={this.onDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
           <bal-dropdown-trigger>
             <bal-input

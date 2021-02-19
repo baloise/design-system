@@ -50,7 +50,7 @@ export class TabItem {
   /**
    * Tell's if the tab is active and the content is visible.
    */
-  @Prop() active: boolean = false
+  @Prop({ mutable: true }) active: boolean = false
 
   /**
    * Tell's if the linking is done by a router.

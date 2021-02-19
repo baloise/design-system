@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, Listen } from '@stencil/core'
 import { findItemLabel } from '../../helpers/helpers'
 
 @Component({
@@ -39,6 +39,16 @@ export class Checkbox {
   @Prop({ mutable: true }) checked = false
 
   /**
+   * Update the native input element when the value changes
+   */
+  @Watch('checked')
+  protected valueChanged(newValue: boolean, oldValue: boolean) {
+    if (newValue !== oldValue) {
+      this.balChange.emit(this.checked)
+    }
+  }
+
+  /**
    * If `true`, the user cannot interact with the checkbox.
    */
   @Prop() disabled = false
@@ -63,13 +73,11 @@ export class Checkbox {
    */
   @Event() balBlur!: EventEmitter<FocusEvent>
 
-  /**
-   * Update the native input element when the value changes
-   */
-  @Watch('checked')
-  protected valueChanged(newValue: boolean, oldValue: boolean) {
-    if (newValue !== oldValue) {
-      this.balChange.emit(this.checked)
+  @Listen('click', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    if (this.disabled && ev.target && ev.target === this.el) {
+      ev.preventDefault()
+      ev.stopPropagation()
     }
   }
 
@@ -95,6 +103,17 @@ export class Checkbox {
     this.checked = ev.target.checked
   }
 
+  private handleClick = (event: MouseEvent) => {
+    if (this.disabled) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+  }
+
+  private inputClick = (event: MouseEvent) => {
+    event.stopPropagation()
+  }
+
   render() {
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
@@ -105,11 +124,17 @@ export class Checkbox {
 
     return (
       <Host
+        onClick={this.handleClick}
+        aria-disabled={this.disabled ? 'true' : null}
         class={{
           'is-inverted': this.inverted,
+          'is-disabled': this.disabled,
         }}
       >
         <input
+          class={{
+            'is-disabled': this.disabled,
+          }}
           type="checkbox"
           role="checkbox"
           id={this.inputId}
@@ -121,12 +146,19 @@ export class Checkbox {
           aria-label={label}
           disabled={this.disabled}
           aria-disabled={this.disabled ? 'true' : 'false'}
+          onClick={this.inputClick}
           onFocus={e => this.balFocus.emit(e)}
           onBlur={e => this.balBlur.emit(e)}
           onInput={this.onInput}
           ref={inputEl => (this.nativeInput = inputEl)}
         />
-        <label htmlFor={this.inputId}>
+        <label
+          class={{
+            'is-disabled': this.disabled,
+          }}
+          htmlFor={this.inputId}
+          onClick={this.handleClick}
+        >
           <bal-text>{this.label}</bal-text>
         </label>
       </Host>

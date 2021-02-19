@@ -86,7 +86,7 @@
   animation-name: fadeInUp;
 }
 
-@keyframes rotation {
+@keyframes spinAround {
   from {
     transform: rotate(0deg);
   }
@@ -96,5 +96,5 @@
 }
 
 .rotate {
-  animation: rotation 2s infinite linear;
+  animation: spinAround 2s infinite linear;
 }

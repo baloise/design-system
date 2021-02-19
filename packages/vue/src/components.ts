@@ -945,7 +945,8 @@ export const BalTag = /*@__PURE__*/ defineContainer<JSX.BalTag>('bal-tag',
 
 
 export const BalText = /*@__PURE__*/ defineContainer<JSX.BalText>('bal-text',
-  ['small'],
+  ['small',
+'color'],
   [],
   
 );

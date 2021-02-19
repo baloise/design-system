@@ -23,5 +23,5 @@
 
 .is-disabled {
   cursor: default;
-  pointer-events: none;
+  pointer-events: none !important;
 }

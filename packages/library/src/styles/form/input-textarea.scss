@@ -11,6 +11,7 @@ textarea.textarea {
   outline: none;
   color: $text;
   height: 2em;
+  font-family: $family-primary;
 
   &:focus,
   &.is-focused {

@@ -2057,13 +2057,13 @@ export class BalTag {
 
 export declare interface BalText extends Components.BalText {}
 @ProxyCmp({
-  inputs: ['small']
+  inputs: ['color', 'small']
 })
 @Component({
   selector: 'bal-text',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['small']
+  inputs: ['color', 'small']
 })
 export class BalText {
   protected el: HTMLElement;

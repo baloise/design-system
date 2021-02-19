@@ -3,6 +3,7 @@ import { format, now } from '../../utils/balDateUtil'
 
 describe('bal-datepicker', () => {
   let page: E2EPage
+  let clickEvent: EventSpy
   let balChangeEvent: EventSpy
   let balInputEvent: EventSpy
   let balDatepickerElement: E2EElement
@@ -10,6 +11,7 @@ describe('bal-datepicker', () => {
   beforeEach(async () => {
     page = await newE2EPage()
     await page.setContent(`<bal-datepicker></bal-datepicker>`)
+    clickEvent = await page.spyOnEvent('click')
     balChangeEvent = await page.spyOnEvent('balChange')
     balInputEvent = await page.spyOnEvent('balInput')
     balDatepickerElement = await page.find('bal-datepicker')
@@ -75,5 +77,23 @@ describe('bal-datepicker', () => {
     expect(await nativeInputElement.getProperty('value')).toBe('02.04.2021')
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
     expect(balChangeEvent).toHaveReceivedEventDetail('2021-04-02T00:00:00.000Z')
+  })
+
+  it('should fire a click event', async () => {
+    balDatepickerElement.click()
+    await page.waitForChanges()
+
+    expect(clickEvent).toHaveReceivedEventTimes(1)
+  })
+
+  it('should not fire a click event, because the input is disabled', async () => {
+    await balDatepickerElement.setProperty('disabled', true)
+    await page.waitForChanges()
+
+    nativeInputElement.click()
+    balDatepickerElement.click()
+    await page.waitForChanges()
+
+    expect(clickEvent).not.toHaveReceivedEvent()
   })
 })

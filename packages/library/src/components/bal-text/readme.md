@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default |
-| -------- | --------- | ----------- | --------- | ------- |
-| `small`  | `small`   |             | `boolean` | `false` |
+| Property | Attribute | Description                                                    | Type                                                              | Default |
+| -------- | --------- | -------------------------------------------------------------- | ----------------------------------------------------------------- | ------- |
+| `color`  | `color`   | The theme type of the toast. Given by bulma our css framework. | `"" \| "danger" \| "info" \| "primary" \| "success" \| "warning"` | `''`    |
+| `small`  | `small`   | If `true` the text has a small size                            | `boolean`                                                         | `false` |
 
 
 ## Dependencies

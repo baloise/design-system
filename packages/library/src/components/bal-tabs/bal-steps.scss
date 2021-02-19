@@ -34,13 +34,16 @@
           color: $text-strong;
           height: 28px;
           min-width: 28px;
+          line-height: 1;
           justify-content: center;
           font-size: $size-5;
           position: relative;
 
           bal-text {
+            margin-top: -1px;
             font-weight: $weight-bold;
             color: $text-strong;
+            line-height: 1;
             text-align: center;
           }
         }
@@ -131,7 +134,7 @@
           content: '!';
           top: 50%;
           left: 50%;
-          margin-top: -14px;
+          margin-top: -13px;
           margin-left: -3.5px;
           overflow: hidden;
         }

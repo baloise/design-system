@@ -1424,6 +1424,13 @@ export namespace Components {
         "color": ColorTypes | '';
     }
     interface BalText {
+        /**
+          * The theme type of the toast. Given by bulma our css framework.
+         */
+        "color": ColorTypes | '';
+        /**
+          * If `true` the text has a small size
+         */
         "small": boolean;
     }
     interface BalTextarea {
@@ -3715,6 +3722,13 @@ declare namespace LocalJSX {
         "color"?: ColorTypes | '';
     }
     interface BalText {
+        /**
+          * The theme type of the toast. Given by bulma our css framework.
+         */
+        "color"?: ColorTypes | '';
+        /**
+          * If `true` the text has a small size
+         */
         "small"?: boolean;
     }
     interface BalTextarea {

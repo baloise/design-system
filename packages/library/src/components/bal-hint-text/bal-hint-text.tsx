@@ -10,7 +10,7 @@ export class HintText {
   render() {
     return (
       <Host>
-        <p class="is-small has-text-white">
+        <p class="has-text-white">
           <slot></slot>
         </p>
       </Host>

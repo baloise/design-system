@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch, ComponentInterface } from '@stencil/core'
+import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch, ComponentInterface, Listen } from '@stencil/core'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 import { isEnterKey } from '../../utils/balKeyUtil'
 import { i18nDate } from './bal-datepicker.i18n'
@@ -165,6 +165,14 @@ export class Datepicker implements ComponentInterface {
    */
   @Event() balFocus!: EventEmitter<FocusEvent>
 
+  @Listen('click', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    if (this.disabled && ev.target && ev.target === this.el) {
+      ev.preventDefault()
+      ev.stopPropagation()
+    }
+  }
+
   connectedCallback() {
     this.debounceChanged()
   }
@@ -309,12 +317,14 @@ export class Datepicker implements ComponentInterface {
   }
 
   private onIconClick = (event: MouseEvent) => {
-    this.dropdownElement.toggle()
+    if (!this.disabled) {
+      this.dropdownElement.toggle()
+    }
     event.stopPropagation()
   }
 
   private onInputClick = (event: MouseEvent) => {
-    if (!this.triggerIcon) {
+    if (!this.triggerIcon && !this.disabled) {
       this.dropdownElement.toggle()
     }
     event.stopPropagation()
@@ -379,9 +389,23 @@ export class Datepicker implements ComponentInterface {
     }
   }
 
+  private handleClick = (event: MouseEvent) => {
+    if (this.disabled) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+  }
+
   render() {
     return (
-      <Host role="datepicker" aria-disabled={this.disabled ? 'true' : null}>
+      <Host
+        role="datepicker"
+        onClick={this.handleClick}
+        aria-disabled={this.disabled ? 'true' : null}
+        class={{
+          'is-disabled': this.disabled,
+        }}
+      >
         <bal-dropdown expanded={this.expanded} fixedContentWidth={true} onBalCollapse={this.onDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
           <bal-dropdown-trigger>{this.renderInput()}</bal-dropdown-trigger>
           <bal-dropdown-menu>

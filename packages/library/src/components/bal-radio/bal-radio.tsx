@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface, Listen } from '@stencil/core'
 
 @Component({
   tag: 'bal-radio',
@@ -62,6 +62,14 @@ export class Radio implements ComponentInterface {
    */
   @Event() balBlur!: EventEmitter<FocusEvent>
 
+  @Listen('click', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    if (this.disabled && ev.target && ev.target === this.el) {
+      ev.preventDefault()
+      ev.stopPropagation()
+    }
+  }
+
   /**
    * Sets the focus on the input element.
    */
@@ -95,17 +103,34 @@ export class Radio implements ComponentInterface {
     }
   }
 
+  private handleClick = (event: MouseEvent) => {
+    if (this.disabled) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+  }
+
+  private inputClick = (event: MouseEvent) => {
+    event.stopPropagation()
+  }
+
   render() {
     const { inputId, label } = this
     return (
       <Host
+        onClick={this.handleClick}
+        aria-disabled={this.disabled ? 'true' : null}
         class={{
           'bal-radio': this.interface === 'radio',
           'bal-select-button': this.interface === 'select-button',
           'is-inverted': this.inverted,
+          'is-disabled': this.disabled,
         }}
       >
         <input
+          class={{
+            'is-disabled': this.disabled,
+          }}
           type="radio"
           role="radio"
           id={inputId}
@@ -117,11 +142,18 @@ export class Radio implements ComponentInterface {
           disabled={this.disabled}
           checked={this.checked}
           aria-disabled={this.disabled ? 'true' : 'false'}
+          onClick={this.inputClick}
           onFocus={e => this.balFocus.emit(e)}
           onBlur={e => this.balBlur.emit(e)}
           ref={inputEl => (this.inputEl = inputEl)}
         />
-        <label htmlFor={inputId}>
+        <label
+          class={{
+            'is-disabled': this.disabled,
+          }}
+          htmlFor={inputId}
+          onClick={this.handleClick}
+        >
           <bal-text>{label}</bal-text>
         </label>
       </Host>

@@ -2,6 +2,7 @@ import { newE2EPage } from '@stencil/core/testing'
 
 describe('bal-textarea', () => {
   let page
+  let clickEvent
   let balChangeEvent
   let balInputEvent
   let balInputElement
@@ -9,6 +10,7 @@ describe('bal-textarea', () => {
   beforeEach(async () => {
     page = await newE2EPage()
     await page.setContent(`<bal-textarea></bal-textarea>`)
+    clickEvent = await page.spyOnEvent('click')
     balChangeEvent = await page.spyOnEvent('balChange')
     balInputEvent = await page.spyOnEvent('balInput')
     balInputElement = await page.find('bal-textarea')
@@ -62,5 +64,23 @@ describe('bal-textarea', () => {
 
     expect(balInputEvent).not.toHaveReceivedEvent()
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
+  })
+
+  it('should fire a click event', async () => {
+    nativeTextareaElement.click()
+    await page.waitForChanges()
+
+    expect(clickEvent).toHaveReceivedEventTimes(1)
+  })
+
+  it('should not fire a click event, because the input is disabled', async () => {
+    await balInputElement.setProperty('disabled', true)
+    await page.waitForChanges()
+
+    nativeTextareaElement.click()
+    balInputElement.click()
+    await page.waitForChanges()
+
+    expect(clickEvent).not.toHaveReceivedEvent()
   })
 })

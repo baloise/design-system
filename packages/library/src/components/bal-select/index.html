@@ -26,22 +26,13 @@
       </section>
       <script>
         var selectYear = document.getElementById('bal-select-year')
-        selectYear.value = ['1996']
-        // setTimeout(() => {
-        //   selectYear.value = ['1998']
-        // }, 2000)
-
-        selectYear.addEventListener('balChange', function (event) {
-          console.log('balChange', event.target)
-        })
-
         var buttonYear = document.getElementById('bal-select-year-clear')
         buttonYear.addEventListener('click', function () {
           selectYear.clear()
         })
       </script>
 
-      <!-- <h3 class="title is-size-3">Styling</h3>
+      <h3 class="title is-size-3">Styling</h3>
       <section>
         <div class="has-background-blue is-padded">
           <bal-select inverted expanded placeholder="select a hero">
@@ -193,7 +184,7 @@
         selectTypeaheadRemote.addEventListener('balInput', function (event) {
           selectTypeaheadRemote.addEventListener('balInput', handleInput)
         })
-      </script> -->
+      </script>
     </div>
   </body>
 </html>

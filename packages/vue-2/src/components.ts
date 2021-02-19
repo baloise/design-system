@@ -1486,6 +1486,7 @@ export const BalText = /*@__PURE__*/ Vue.extend({
 
   props: {
     small: {} as PropOptions<Components.BalText['small']>,
+    color: {} as PropOptions<Components.BalText['color']>,
   },
 
 
