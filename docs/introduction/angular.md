@@ -2,6 +2,8 @@
 
 This guide explains how the setup a Angular project with the Baloise UI Library.
 
+> Angular 11.x.x does not support IE11 from scratch. Go to [IE 11 Support](IE-11-Support) to get your Angular App IE11 ready.
+
 ## Prerequisite
 
 ### Setup Angular Project
@@ -76,7 +78,7 @@ import { AppComponent } from './app.component'
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, BalUiLibraryModule],
+  imports: [BrowserModule, BalUiLibraryModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -166,4 +168,70 @@ export class AppComponent {
     return balCapitalize(value)
   }
 }
+```
+
+## IE 11 Support
+
+In this section we will explain how to support Internet Explorer 11 with Angular.
+
+### Step 1 - Targeting ES5
+
+Update the target in the `tsconfig.json` file, because IE11 only support ES5.
+
+```json
+"compilerOptions": {
+    ...
+    "target": "es5"
+}
+```
+
+### Step 2 - Broswerlist
+
+Replace `not IE 9-11` with the following in the `browserlist` file.
+
+```
+not IE 9-10
+IE 11
+```
+
+### Step 3 - Polyfills
+
+The Baloise UI Library & Angular uses features from ES6+, so we have to install pollyfills to support.
+All the pollyfills in Angular are managed in the file `polyfills.ts`. First we need to install the required pollyfils.
+
+```bash
+npm install --save classlist.js web-animations-js @webcomponents/custom-elements
+```
+
+Near the top of the `polyfills.ts` file add the following polyfills.
+
+```TypeScript
+// for browser not supporting custom elements
+import '@webcomponents/custom-elements/custom-elements.min.js';
+/** For IE 11 */
+import 'core-js/es/promise';
+import 'core-js/es/string';
+import 'core-js/es/map';
+import 'core-js/es/set';
+import 'core-js/es/array';
+```
+
+Uncomment the `classlist.js` import.
+
+```TypeScript
+/**
+ * IE11 requires the following for NgClass support on SVG elements
+ */
+import 'classlist.js';
+```
+
+Uncomment the `web-animations-js` import.
+
+```TypeScript
+/**
+ * Web Animations `@angular/platform-browser/animations`
+ * Only required if AnimationBuilder is used within the application and using IE/Edge or Safari.
+ * Standard animation support in Angular DOES NOT require any polyfills (as of Angular 6.0).
+ */
+import 'web-animations-js';
 ```

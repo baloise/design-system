@@ -25,8 +25,6 @@ export const BalUiLibraryPlugin: PluginObject<BalUiLibraryPluginOption> = {
       applyPolyfills().then(() => defineCustomElements())
     }
 
-    // ;(_VueInstance as any).$balUtils = balUtils
-    // _VueInstance.prototype.$balUtils = balUtils
     ;(_VueInstance as any).$balToast = balToastController
     _VueInstance.prototype.$balToast = balToastController
     ;(_VueInstance as any).$balSnackbar = balSnackbarController
