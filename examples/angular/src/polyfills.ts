@@ -17,7 +17,14 @@
 /***************************************************************************************************
  * BROWSER POLYFILLS
  */
-import 'core-js'
+// for browser not supporting custom elements
+import '@webcomponents/custom-elements/custom-elements.min.js'
+/** For IE 11 */
+import 'core-js/es/promise'
+import 'core-js/es/string'
+import 'core-js/es/map'
+import 'core-js/es/set'
+import 'core-js/es/array'
 
 /**
  * IE11 requires the following for NgClass support on SVG elements
@@ -59,6 +66,7 @@ import 'web-animations-js' // Run `npm install --save web-animations-js`.
  * Zone JS is required by default for Angular itself.
  */
 import 'zone.js/dist/zone' // Included with Angular CLI.
+;(window as any).__Zone_enable_cross_context_check = true
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
