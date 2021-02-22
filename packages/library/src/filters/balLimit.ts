@@ -6,11 +6,14 @@
  * balLimit('Some string that is ways to long to be rendered') => Some string that is ...
  */
 export const balLimit = (value: string | undefined | null, limit: number = 20): string => {
-  const TRAIL_STRING = '...'
+  if (value === null || value === undefined) {
+    return ''
+  }
 
-  if (value !== null && value !== undefined && value.length > limit && limit > 0) {
+  if (value.length > limit && limit > 0) {
+    const TRAIL_STRING = '...'
     return value.substring(0, limit) + TRAIL_STRING
   }
 
-  return ''
+  return value
 }

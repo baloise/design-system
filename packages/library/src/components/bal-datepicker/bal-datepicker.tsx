@@ -1,25 +1,11 @@
 import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch, ComponentInterface, Listen } from '@stencil/core'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
+import { BalCalendarCell, BalDateCallback, BalPointerDate } from './bal-datepicker.type'
+import { day, format, month, now, year, isValidDate, decreaseYear, getFirstDayOfTheWeek, isSameDay, isInRange, isSameWeek, isSameMonth, parseDate } from '../../utils/balDateUtil'
 import { isEnterKey } from '../../utils/balKeyUtil'
-import { i18nDate } from './bal-datepicker.i18n'
-import { BalCalendarCell, BalDateCallback } from './bal-datepicker.type'
 import { ACTION_KEYS, NUMBER_KEYS } from '../../constants/keys.constant'
-import {
-  day,
-  decreaseYear,
-  format,
-  getFirstDayOfTheWeek,
-  getLastDayOfMonth,
-  isInRange,
-  isSameDay,
-  isSameMonth,
-  isSameWeek,
-  isValidDate,
-  month,
-  now,
-  padYear,
-  year,
-} from '../../utils/balDateUtil'
+import { convertInputValueToDateString, formatInputValue, isValidDateString } from './bal-datepicker.utils'
+import { i18nDate } from './bal-datepicker.i18n'
 
 @Component({
   tag: 'bal-datepicker',
@@ -30,15 +16,17 @@ import {
 export class Datepicker implements ComponentInterface {
   private inputElement!: HTMLInputElement
   private dropdownElement!: HTMLBalDropdownElement
-  private didInit = false
   private inputId = `bal-dp-${datepickerIds++}`
 
   @Element() el!: HTMLElement
 
   @State() isDropdownOpen: boolean = false
-  @State() pointerMonth: number = month(now())
-  @State() pointerYear: number = year(now())
-  @State() pointerDay: number = day(now())
+  @State() selectedDate?: string | null = ''
+  @State() pointerDate: BalPointerDate = {
+    year: year(now()),
+    month: month(now()),
+    day: day(now()),
+  }
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -86,14 +74,24 @@ export class Datepicker implements ComponentInterface {
   @Prop() placeholder: string | undefined
 
   /**
-   * Latest date available for selection
+   * The minimum datetime allowed. Value must be a date string
+   * following the
+   * [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime),
+   * such as `1996-12-19`. The format does not have to be specific to an exact
+   * datetime. For example, the minimum could just be the year, such as `1994`.
+   * Defaults to the beginning of the year, 100 years ago from today.
    */
-  @Prop() maxDate: Date | undefined
+  @Prop({ mutable: true }) min?: string
 
   /**
-   * Earliest date available for selection
+   * The maximum datetime allowed. Value must be a date string
+   * following the
+   * [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime),
+   * `1996-12-19`. The format does not have to be specific to an exact
+   * datetime. For example, the maximum could just be the year, such as `1994`.
+   * Defaults to the end of this year.
    */
-  @Prop() minDate: Date | undefined
+  @Prop({ mutable: true }) max?: string
 
   /**
    * Closes the datepicker dropdown after selection
@@ -128,16 +126,16 @@ export class Datepicker implements ComponentInterface {
   /**
    * Selected date. Could also be passed as a string, which gets transformed to js date object.
    */
-  @Prop({ mutable: true }) value: Date | undefined
+  @Prop({ mutable: true }) value?: string | null
 
   /**
    * Update the native input element when the value changes
    */
   @Watch('value')
-  protected valueChanged(newValue: Date | undefined, oldValue: Date | undefined) {
-    if (this.didInit && newValue !== oldValue) {
-      this.balChange.emit(this.removeTimezone(this.value))
-    }
+  protected valueChanged() {
+    this.updatePointerDates()
+    this.selectedDate = this.value
+    this.balChange.emit(this.value)
   }
 
   /**
@@ -148,7 +146,7 @@ export class Datepicker implements ComponentInterface {
   /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<Date>
+  @Event() balChange!: EventEmitter<string | undefined | null>
 
   /**
    * Emitted when a keyboard input occurred.
@@ -173,16 +171,12 @@ export class Datepicker implements ComponentInterface {
     }
   }
 
-  connectedCallback() {
-    this.debounceChanged()
+  componentWillLoad() {
+    this.updatePointerDates()
   }
 
-  componentDidLoad() {
-    this.didInit = true
-    if (this.value) {
-      this.value = this.parseValue(this.value)
-      setTimeout(() => this.updateFromValue(), 0)
-    }
+  connectedCallback() {
+    this.debounceChanged()
   }
 
   /**
@@ -191,7 +185,7 @@ export class Datepicker implements ComponentInterface {
   @Method()
   async open(): Promise<void> {
     if (this.disabled) {
-      return undefined
+      return
     }
     if (this.dropdownElement) {
       this.dropdownElement.open()
@@ -216,21 +210,13 @@ export class Datepicker implements ComponentInterface {
    */
   @Method()
   async select(date: Date) {
-    this.value = new Date(date)
-    this.updateFromValue()
+    this.inputElement.value = format(date)
+    this.updateValue(date.toLocaleString())
+    this.updatePointerDates()
+
     if (this.closeOnSelect) {
       await this.dropdownElement?.toggle()
     }
-  }
-
-  private removeTimezone(date: Date | undefined) {
-    console.log('removeTimezone', date, isValidDate(date))
-    if (isValidDate(date)) {
-      const userTimezoneOffset = (date as Date).getTimezoneOffset() * 60000
-      return new Date((date as Date).getTime() - userTimezoneOffset)
-    }
-
-    return date
   }
 
   /**
@@ -251,20 +237,27 @@ export class Datepicker implements ComponentInterface {
     return Promise.resolve(this.inputElement)
   }
 
-  parseValue(value: Date | string | undefined): Date | undefined {
-    if (value === undefined) {
-      return undefined
-    } else {
-      if (typeof value === 'object') {
-        return value
-      } else {
-        return new Date(value)
-      }
+  private updatePointerDates() {
+    let date = parseDate(this.selectedDate)
+    if (date === undefined) {
+      date = now()
+    }
+    this.pointerDate = {
+      year: year(date),
+      month: month(date),
+      day: day(date),
     }
   }
 
-  get pointerDate(): Date {
-    return new Date(this.pointerYear, this.pointerMonth, this.pointerDay)
+  private updateValue(value: string | undefined) {
+    if (!isValidDate(value)) {
+      this.selectedDate = undefined
+      this.value = undefined
+      this.inputElement.value = ''
+      return
+    }
+
+    this.value = convertInputValueToDateString(this.value)
   }
 
   get minYear() {
@@ -286,7 +279,7 @@ export class Datepicker implements ComponentInterface {
   }
 
   get firstDateOfBox(): Date {
-    const date = new Date(this.pointerYear, this.pointerMonth, 1)
+    const date = new Date(this.pointerDate.year, this.pointerDate.month, 1)
     return getFirstDayOfTheWeek(date)
   }
 
@@ -304,16 +297,16 @@ export class Datepicker implements ComponentInterface {
             dateString: format(dayDatePointer),
             label: day(dayDatePointer).toString(),
             isToday: isSameDay(dayDatePointer, now()),
-            isSelected: this.value && isSameDay(dayDatePointer, this.value),
+            isSelected: parseDate(this.selectedDate) && isSameDay(dayDatePointer, parseDate(this.selectedDate) as Date),
             isDisabled: !this.filter(dayDatePointer),
-            isOutdated: this.pointerMonth !== dayDatePointer.getMonth() || !isInRange(dayDatePointer, this.minDate, this.maxDate),
+            isOutdated: this.pointerDate.month !== dayDatePointer.getMonth() || !isInRange(dayDatePointer, parseDate(this.min), parseDate(this.max)),
           } as BalCalendarCell,
         ]
         dayDatePointer.setDate(dayDatePointer.getDate() + 1)
       } while (isSameWeek(dayDatePointer, weekDatePointer))
       calendar = [...calendar, row]
       weekDatePointer.setDate(weekDatePointer.getDate() + 7)
-    } while (isSameMonth(this.pointerDate, dayDatePointer))
+    } while (isSameMonth(new Date(this.pointerDate.year, this.pointerDate.month, this.pointerDate.day), dayDatePointer))
     return calendar
   }
 
@@ -338,9 +331,22 @@ export class Datepicker implements ComponentInterface {
 
   private onInput = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
-
     this.balInput.emit(inputValue)
     event.stopPropagation()
+
+    if (isValidDateString(inputValue)) {
+      this.selectedDate = formatInputValue(inputValue)
+      this.updatePointerDates()
+    }
+  }
+
+  private onInputChange = (event: Event) => {
+    const inputValue = (event.target as HTMLInputElement).value
+    const formattedValue = formatInputValue(inputValue)
+    this.inputElement.value = formattedValue
+    const date = convertInputValueToDateString(formattedValue)
+    this.updateValue(date)
+    this.updatePointerDates()
   }
 
   private onClickDateCell = (cell: BalCalendarCell): void => {
@@ -368,18 +374,20 @@ export class Datepicker implements ComponentInterface {
     this.balBlur.emit(event)
   }
 
-  private onInputChange = () => {
-    this.parseAndSetDate(this.inputElement.value, true)
-  }
-
   private onMonthSelect = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
-    this.pointerMonth = parseInt(inputValue, 10)
+    this.pointerDate = {
+      ...this.pointerDate,
+      month: parseInt(inputValue, 10),
+    }
   }
 
   private onYearSelect = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
-    this.pointerYear = parseInt(inputValue, 10)
+    this.pointerDate = {
+      ...this.pointerDate,
+      year: parseInt(inputValue, 10),
+    }
   }
 
   private onKeyPress = (event: KeyboardEvent) => {
@@ -521,7 +529,7 @@ export class Datepicker implements ComponentInterface {
                 <span class="select">
                   <select onInput={this.onMonthSelect}>
                     {i18nDate[this.locale].months.map((month, index) => (
-                      <option value={index} selected={this.pointerMonth === index}>
+                      <option value={index} selected={this.pointerDate.month === index}>
                         {month}
                       </option>
                     ))}
@@ -532,7 +540,7 @@ export class Datepicker implements ComponentInterface {
                 <span class="select">
                   <select onInput={this.onYearSelect}>
                     {this.years.map(year => (
-                      <option value={year} selected={this.pointerYear === year}>
+                      <option value={year} selected={this.pointerDate.year === year}>
                         {year}
                       </option>
                     ))}
@@ -546,63 +554,25 @@ export class Datepicker implements ComponentInterface {
     )
   }
 
-  private updateFromValue() {
-    if (this.value && isValidDate(this.value)) {
-      this.inputElement.value = format(this.value)
-      this.pointerYear = year(this.value)
-      this.pointerMonth = month(this.value)
-      this.pointerDay = day(this.value)
-    }
-  }
-
-  private parseAndSetDate(inputValue: string, shouldFormat = false) {
-    if (inputValue.length >= 6) {
-      const parts = inputValue.split('.')
-      if (parts.length === 3) {
-        const year = parseInt(padYear(parts[2]), 10)
-        const month = parseInt(parts[1], 10) - 1
-        if (`${year}`.length === 4 && year >= 1900 && month < 12 && month >= 0) {
-          const day = parseInt(parts[0], 10)
-          const lastDayOfMonth = getLastDayOfMonth(year, month)
-          if (0 < day && day <= lastDayOfMonth) {
-            const d = new Date(year, month, day)
-            this.pointerMonth = month
-            this.pointerYear = year
-            if (shouldFormat) {
-              this.inputElement.value = format(d)
-            }
-            return (this.value = d)
-          }
-        }
-      }
-    }
-
-    this.inputElement.value = ''
-    this.value = undefined
-    return
-  }
-
   private previousMonth() {
-    if (this.pointerYear === this.minYear && this.pointerMonth === 0) {
+    if (this.pointerDate.year === this.minYear && this.pointerDate.month === 0) {
       return
     }
-    if (this.pointerMonth === 0) {
-      this.pointerYear = this.pointerYear - 1
-      this.pointerMonth = 11
+    if (this.pointerDate.month === 0) {
+      this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year - 1, month: 11 }
     } else {
-      this.pointerMonth = this.pointerMonth - 1
+      this.pointerDate = { ...this.pointerDate, month: this.pointerDate.month - 1 }
     }
   }
 
   private nextMonth() {
-    if (this.pointerYear === this.maxYear && this.pointerMonth === 11) {
+    if (this.pointerDate.year === this.maxYear && this.pointerDate.month === 11) {
       return
     }
-    if (this.pointerMonth === 11) {
-      this.pointerYear = this.pointerYear + 1
-      this.pointerMonth = 0
+    if (this.pointerDate.month === 11) {
+      this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year + 1, month: 0 }
     } else {
-      this.pointerMonth = this.pointerMonth + 1
+      this.pointerDate = { ...this.pointerDate, month: this.pointerDate.month + 1 }
     }
   }
 }

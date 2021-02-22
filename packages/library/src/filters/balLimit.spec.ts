@@ -1,6 +1,6 @@
 import { balLimit } from './balLimit'
 
-describe('balLimit', () => {
+describe.only('balLimit', () => {
   test('should format some string correctly', () => {
     expect(balLimit('Some string that is ways to long to be rendered')).toEqual('Some string that is ...')
   })
@@ -22,6 +22,6 @@ describe('balLimit', () => {
   })
 
   test('should format null correctly as null', () => {
-    expect(balLimit(undefined)).toEqual(undefined)
+    expect(balLimit(undefined)).toEqual('')
   })
 })

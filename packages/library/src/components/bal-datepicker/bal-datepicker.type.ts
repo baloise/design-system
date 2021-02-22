@@ -22,4 +22,10 @@ export interface BalCalendarCell {
   isOutdated: boolean
 }
 
+export interface BalPointerDate {
+  year: number
+  month: number
+  day: number
+}
+
 export type BalDateCallback = (date: Date) => boolean

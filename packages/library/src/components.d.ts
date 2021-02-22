@@ -369,17 +369,17 @@ export namespace Components {
          */
         "locale": 'en' | 'de' | 'fr' | 'it';
         /**
-          * Latest date available for selection
+          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
-        "maxDate": Date | undefined;
+        "max"?: string;
         /**
           * Latest year available for selection
          */
         "maxYearProp": number | undefined;
         /**
-          * Earliest date available for selection
+          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
          */
-        "minDate": Date | undefined;
+        "min"?: string;
         /**
           * Earliest year available for selection
          */
@@ -419,7 +419,7 @@ export namespace Components {
         /**
           * Selected date. Could also be passed as a string, which gets transformed to js date object.
          */
-        "value": Date | undefined;
+        "value"?: string | null;
     }
     interface BalDropdown {
         /**
@@ -2668,17 +2668,17 @@ declare namespace LocalJSX {
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it';
         /**
-          * Latest date available for selection
+          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
-        "maxDate"?: Date | undefined;
+        "max"?: string;
         /**
           * Latest year available for selection
          */
         "maxYearProp"?: number | undefined;
         /**
-          * Earliest date available for selection
+          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
          */
-        "minDate"?: Date | undefined;
+        "min"?: string;
         /**
           * Earliest year available for selection
          */
@@ -2694,7 +2694,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: CustomEvent<Date>) => void;
+        "onBalChange"?: (event: CustomEvent<string | undefined | null>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -2722,7 +2722,7 @@ declare namespace LocalJSX {
         /**
           * Selected date. Could also be passed as a string, which gets transformed to js date object.
          */
-        "value"?: Date | undefined;
+        "value"?: string | null;
     }
     interface BalDropdown {
         /**

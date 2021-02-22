@@ -3,4 +3,4 @@ declare module '*.vue' {
   export default Vue
 }
 
-import '@baloise/ui-library-vue/types'
+import '@baloise/ui-library-vue-2/types'

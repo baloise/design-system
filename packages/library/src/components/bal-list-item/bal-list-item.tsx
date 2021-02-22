@@ -51,7 +51,6 @@ export class ListItem {
             href={this.href}
             target={this.target}
             onClick={(event: MouseEvent) => {
-              console.log('click')
               this.balNavigate.emit(event)
             }}>
             <slot></slot>

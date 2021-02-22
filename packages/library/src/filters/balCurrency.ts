@@ -6,7 +6,7 @@
  * balCurrency(1234567.89) => 1'234'567.89
  */
 export const balCurrency = (
-  value: number,
+  value: number | null,
   currencySign: string = 'CHF',
   showZero: boolean = false,
   decimalLength: number = 2,
