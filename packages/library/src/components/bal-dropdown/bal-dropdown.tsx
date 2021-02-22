@@ -153,6 +153,7 @@ export class Dropdown {
       <Host
         data-id={this.dropdownId}
         class={{
+          'bal-dropdown': true,
           'is-expanded': this.expanded,
           'has-fixed-content-width': this.fixedContentWidth,
         }}>
