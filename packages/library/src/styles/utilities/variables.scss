@@ -195,3 +195,11 @@ $button-family: $family-sans-serif;
 $button-padding-horizontal: 30px;
 $button-focus-box-shadow-size: 0 0 0 0;
 $button-focus-box-shadow-color: transparent;
+
+/**
+ * Notification
+ */
+$notification-background-color: $background;
+$notification-code-background-color: $scheme-main;
+$notification-radius: 0;
+$notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem;
