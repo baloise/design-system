@@ -2,7 +2,6 @@ import { Component, h, Host, Listen, Method, Prop, Element, Event, EventEmitter,
 
 @Component({
   tag: 'bal-dropdown',
-  styleUrl: 'bal-dropdown.scss',
   shadow: false,
   scoped: false,
 })

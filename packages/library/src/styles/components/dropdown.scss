@@ -1,0 +1,28 @@
+.bal-dropdown {
+  display: inline-block;
+
+  .dropdown {
+    .dropdown-content {
+      padding: 0;
+    }
+
+    .dropdown-menu {
+      padding-top: 0;
+    }
+  }
+
+  &.is-expanded {
+    width: 100%;
+
+    .dropdown,
+    .dropdown-trigger {
+      width: 100%;
+    }
+  }
+
+  @include mobile() {
+    .dropdown-menu {
+      min-width: 100%;
+    }
+  }
+}
