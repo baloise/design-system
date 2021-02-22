@@ -224,6 +224,7 @@ export class Datepicker implements ComponentInterface {
   }
 
   private removeTimezone(date: Date | undefined) {
+    console.log('removeTimezone', date, isValidDate(date))
     if (isValidDate(date)) {
       const userTimezoneOffset = (date as Date).getTimezoneOffset() * 60000
       return new Date((date as Date).getTime() - userTimezoneOffset)
