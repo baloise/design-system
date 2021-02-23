@@ -109,7 +109,7 @@ export function newDateString(yearOrDate: Date | number, month?: number, day?: n
 }
 
 export const localDatetime = (date: Date): Date => {
-  return new Date(Date.UTC(date.getFullYear(), date.getMonth() - 1, date.getDate()))
+  return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()))
 }
 
 export const toDate = (datestring: string | undefined | null): Date | undefined => {

@@ -17,7 +17,6 @@ import {
   isoString,
   toDate,
   isValidDateString,
-  newDateString,
 } from '../../utils/balDateUtil'
 import { isEnterKey } from '../../utils/balKeyUtil'
 import { ACTION_KEYS, NUMBER_KEYS } from '../../constants/keys.constant'
@@ -227,8 +226,7 @@ export class Datepicker implements ComponentInterface {
    * Selects an option
    */
   @Method()
-  async select(date: Date) {
-    const datestring = newDateString(date)
+  async select(datestring: string) {
     this.inputElement.value = format(datestring)
     this.updateValue(datestring)
     this.updatePointerDates()
@@ -379,7 +377,7 @@ export class Datepicker implements ComponentInterface {
 
   private onClickDateCell = (cell: BalCalendarCell): void => {
     if (!cell.isDisabled) {
-      this.select(cell.date)
+      this.select(cell.dateString)
     }
   }
 

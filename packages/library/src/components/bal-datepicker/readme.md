@@ -73,7 +73,7 @@ Type: `Promise<void>`
 
 
 
-### `select(date: Date) => Promise<void>`
+### `select(datestring: string) => Promise<void>`
 
 Selects an option
 

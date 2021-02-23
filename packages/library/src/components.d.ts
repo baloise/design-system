@@ -407,7 +407,7 @@ export namespace Components {
         /**
           * Selects an option
          */
-        "select": (date: Date) => Promise<void>;
+        "select": (datestring: string) => Promise<void>;
         /**
           * Sets the focus on the input element
          */

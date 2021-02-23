@@ -12,7 +12,7 @@ describe('parseDate', () => {
   describe('newDateString', () => {
     test('should', () => {
       expect(newDateString(2033, 3, 2)).toBe('2033-03-02')
-      expect(newDateString(new Date(2022, 2, 1))).toBe('2022-02-01')
+      expect(newDateString(new Date(2022, 1, 1))).toBe('2022-02-01')
     })
   })
 
