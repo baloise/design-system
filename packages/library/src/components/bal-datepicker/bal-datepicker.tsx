@@ -140,7 +140,7 @@ export class Datepicker implements ComponentInterface {
   }
 
   /**
-   * Selected iso datestring. Could also be passed as a string, which gets transformed to js date object.
+   * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
    */
   @Prop({ mutable: true }) value?: string | null
 
@@ -359,7 +359,7 @@ export class Datepicker implements ComponentInterface {
       const date = toDate(inputValue)
       const datestring = isoString(date)
       if (isValidDateString(datestring)) {
-        this.selectedDate = isoString(toDate(inputValue))
+        this.selectedDate = datestring
         this.updatePointerDates()
       }
     }

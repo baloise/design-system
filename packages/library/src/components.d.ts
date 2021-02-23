@@ -417,7 +417,7 @@ export namespace Components {
          */
         "triggerIcon": boolean;
         /**
-          * Selected iso datestring. Could also be passed as a string, which gets transformed to js date object.
+          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
         "value"?: string | null;
     }
@@ -2720,7 +2720,7 @@ declare namespace LocalJSX {
          */
         "triggerIcon"?: boolean;
         /**
-          * Selected iso datestring. Could also be passed as a string, which gets transformed to js date object.
+          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
         "value"?: string | null;
     }

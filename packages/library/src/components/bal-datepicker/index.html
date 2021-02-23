@@ -7,34 +7,33 @@
     <link rel="stylesheet" href="/build/ui-library.css" />
     <script type="module" src="/build/ui-library.esm.js"></script>
     <script nomodule src="/build/ui-library.js"></script>
-
-    <script>
-      var balDateUtil = {
-        localDatetime: function (date) {
-          return new Date(Date.UTC(date.getFullYear(), date.getMonth() - 1, date.getDate()))
-        },
-      }
-    </script>
   </head>
   <body class="bal-app">
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <p>In this example the user can only select a date. For that use the property `readonly`.</p>
       <section>
-        <bal-datepicker data-test-id="datepicker"></bal-datepicker>
+        <bal-datepicker id="datepicker" data-test-id="datepicker"></bal-datepicker>
+        <p id="datepicker-preview"></p>
       </section>
+      <script>
+        var datepicker = document.getElementById('datepicker')
+        var datepickerPreview = document.getElementById('datepicker-preview')
+        datepicker.addEventListener('balChange', event => {
+          datepickerPreview.innerHTML = event.detail
+        })
+      </script>
 
       <h2 class="title is-size-2">Disabled</h2>
       <section>
         <bal-datepicker readonly disabled id="datepicker-disabled"></bal-datepicker>
       </section>
       <script>
-        // import { balDateUtil } from '@baloise/ui-library'
         var datepickerDisabled = document.getElementById('datepicker-disabled')
-        datepickerDisabled.value = balDateUtil.localDatetime(new Date(1988, 7, 14)).toISOString()
+        datepickerDisabled.value = '2021-01-01'
       </script>
 
-      <h2 class="title is-size-2">Manual Input</h2>
+      <!-- <h2 class="title is-size-2">Manual Input</h2>
       <p>
         To enable manual input remove the property `readonly` and add the property `trigger-ico`. The `trigger-ico` property only opens the dropdown when the icon gets clicked.
       </p>
@@ -73,7 +72,7 @@
         datepickerRange.filter = function (date) {
           return date.getMonth() === today.getMonth()
         }
-      </script>
+      </script> -->
     </div>
   </body>
 </html>

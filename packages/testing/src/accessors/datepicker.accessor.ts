@@ -14,7 +14,7 @@ export interface DatepickerAccessorType {
 }
 
 const localDatetime = (date: Date): string => {
-  return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())).toISOString()
+  return balDateUtil.newDateString(date)
 }
 
 const selectorDayBox = (date: Date) => `[data-date="${balDateUtil.format(localDatetime(date))}"]`

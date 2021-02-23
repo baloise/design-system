@@ -89,11 +89,11 @@ export const format = (datestring: string | undefined | null): string => {
   return `${pad(day(date))}.${pad(month(date) + 1)}.${year(date)}`
 }
 
-export const isoString = (value: Date | undefined): string => {
-  if (value === undefined) {
+export const isoString = (date: Date | undefined): string => {
+  if (date === undefined || date === null || Date.toString() === 'Invalid Date') {
     return ''
   }
-  return value.toISOString()
+  return `${year(date)}-${pad(month(date) + 1)}-${pad(day(date))}`
 }
 
 export function newDateString(date: Date): string
@@ -117,46 +117,57 @@ export const toDate = (datestring: string | undefined | null): Date | undefined 
     return undefined
   }
 
-  if (datestring.length >= 8 && datestring.length <= 10) {
-    const parts = datestring.split('.')
-    const year = parseInt(parts[2], 10)
-    if (year < 1900) {
-      return undefined
-    }
-
+  if (datestring.length >= 8 && datestring.length <= 10 && (datestring.indexOf('-') >= 0 || datestring.indexOf('.') >= 0)) {
+    const isIso = datestring.indexOf('-') >= 0
+    const seperator = isIso ? '-' : '.'
+    const parts = datestring.split(seperator)
+    const year = parseInt(isIso ? parts[0] : parts[2], 10)
     const month = parseInt(parts[1], 10)
-    if (month < 1 || month > 12) {
-      return undefined
+    const day = parseInt(isIso ? parts[2] : parts[0], 10)
+
+    if (year < 1900) {
+      return
     }
 
-    const day = parseInt(parts[0], 10)
+    if (month < 1 || month > 12) {
+      return
+    }
+
     const lastDayOfMonth = new Date(year, month, 0).getDate()
     if (day < 1 || day > lastDayOfMonth) {
-      return undefined
+      return
     }
 
-    const date = new Date(year, month, parseInt(parts[0], 10))
-    const localDateTime = localDatetime(date)
-    datestring = localDateTime.toISOString()
+    datestring = newDateString(year, month, day)
   }
 
-  if (!isValidDateString(datestring)) {
-    return undefined
-  }
-
-  return new Date(datestring)
-}
-
-export const isValidDateString = (datestring: string | undefined | null): boolean => {
-  if (datestring === undefined || datestring === null) {
-    return false
-  }
-
-  if (datestring.length < 24 || datestring.length > 27) {
-    return false
+  if (datestring === '' || datestring.length < 8 || datestring.length > 10) {
+    return
   }
 
   const date = new Date(datestring)
+
+  if (date.toString() === 'Invalid Date') {
+    return
+  }
+
+  return date
+}
+
+export const isValidDateString = (datestring: string | undefined | null): boolean => {
+  const date = toDate(datestring)
+  if (date === undefined) {
+    return false
+  }
+
+  if (typeof datestring !== 'string') {
+    return false
+  }
+
+  if (datestring && datestring.indexOf('-') === -1) {
+    return false
+  }
+
   if (date.toString() === 'Invalid Date') {
     return false
   }
