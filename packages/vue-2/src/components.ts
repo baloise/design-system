@@ -384,7 +384,7 @@ export const BalDatepicker = /*@__PURE__*/ Vue.extend({
     maxYearProp: {} as PropOptions<Components.BalDatepicker['maxYearProp']>,
     debounce: {} as PropOptions<Components.BalDatepicker['debounce']>,
     value: {} as PropOptions<Components.BalDatepicker['value']>,
-    filter: {} as PropOptions<Components.BalDatepicker['filter']>,
+    allowedDates: {} as PropOptions<Components.BalDatepicker['allowedDates']>,
   },
 
   model: {

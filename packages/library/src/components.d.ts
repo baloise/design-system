@@ -329,6 +329,10 @@ export namespace Components {
     }
     interface BalDatepicker {
         /**
+          * Callback to determine which date in the datepicker should be selectable.
+         */
+        "allowedDates": BalDateCallback;
+        /**
           * The tabindex of the control.
          */
         "balTabindex": number;
@@ -352,10 +356,6 @@ export namespace Components {
           * If `true` the component uses the whole width.
          */
         "expanded": boolean;
-        /**
-          * Callback to determine which date in the datepicker should be selectable.
-         */
-        "filter": BalDateCallback;
         /**
           * Returns the native `<input>` element used under the hood.
          */
@@ -2636,6 +2636,10 @@ declare namespace LocalJSX {
     }
     interface BalDatepicker {
         /**
+          * Callback to determine which date in the datepicker should be selectable.
+         */
+        "allowedDates"?: BalDateCallback;
+        /**
           * The tabindex of the control.
          */
         "balTabindex"?: number;
@@ -2655,10 +2659,6 @@ declare namespace LocalJSX {
           * If `true` the component uses the whole width.
          */
         "expanded"?: boolean;
-        /**
-          * Callback to determine which date in the datepicker should be selectable.
-         */
-        "filter"?: BalDateCallback;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */

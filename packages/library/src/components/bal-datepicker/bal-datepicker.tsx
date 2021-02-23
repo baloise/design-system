@@ -157,7 +157,7 @@ export class Datepicker implements ComponentInterface {
   /**
    * Callback to determine which date in the datepicker should be selectable.
    */
-  @Prop() filter: BalDateCallback = _ => true
+  @Prop() allowedDates: BalDateCallback = _ => true
 
   /**
    * Emitted when a option got selected.
@@ -315,11 +315,12 @@ export class Datepicker implements ComponentInterface {
           ...row,
           {
             date: new Date(dayDatePointer),
-            dateString: format(isoString(dayDatePointer)),
+            display: format(isoString(dayDatePointer)),
+            dateString: isoString(dayDatePointer),
             label: day(dayDatePointer).toString(),
             isToday: isSameDay(dayDatePointer, now()),
             isSelected: toDate(this.selectedDate) && isSameDay(dayDatePointer, toDate(this.selectedDate) as Date),
-            isDisabled: !this.filter(dayDatePointer),
+            isDisabled: !this.allowedDates(isoString(dayDatePointer)) || !isInRange(dayDatePointer, toDate(this.min), toDate(this.max)),
             isOutdated: this.pointerDate.month !== dayDatePointer.getMonth() || !isInRange(dayDatePointer, toDate(this.min), toDate(this.max)),
           } as BalCalendarCell,
         ]
@@ -511,14 +512,14 @@ export class Datepicker implements ComponentInterface {
                 <div
                   data-date={cell.dateString}
                   onClick={() => this.onClickDateCell(cell)}
-                  class={[
-                    'datepicker-cell',
-                    cell.isToday ? 'is-today' : '',
-                    cell.isSelected ? 'is-selected' : '',
-                    cell.isOutdated ? 'is-outdated' : '',
-                    cell.isDisabled ? 'is-disabled' : '',
-                    !cell.isOutdated && !cell.isDisabled ? 'is-selectable' : '',
-                  ].join(' ')}
+                  class={{
+                    'datepicker-cell': true,
+                    'is-today': cell.isToday,
+                    'is-selected': cell.isSelected,
+                    'is-outdated': cell.isOutdated,
+                    'is-disabled': cell.isDisabled,
+                    'is-selectable': !cell.isDisabled,
+                  }}
                 >
                   {cell.label}
                 </div>
