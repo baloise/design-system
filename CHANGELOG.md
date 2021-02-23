@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-rc.16](https://github.com/baloise/ui-library/compare/v4.0.0-rc.15...v4.0.0-rc.16) (2021-02-23)
+
+
+### Features
+
+* **datepicker:** use iso date string ([8e6744a](https://github.com/baloise/ui-library/commit/8e6744a12db266686e37aff63da3d064f7ef9445))
+
+
+
+
+
 # [4.0.0-rc.15](https://github.com/baloise/ui-library/compare/v4.0.0-rc.14...v4.0.0-rc.15) (2021-02-23)
 
 
