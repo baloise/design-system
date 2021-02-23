@@ -417,7 +417,7 @@ export namespace Components {
          */
         "triggerIcon": boolean;
         /**
-          * Selected date. Could also be passed as a string, which gets transformed to js date object.
+          * Selected iso datestring. Could also be passed as a string, which gets transformed to js date object.
          */
         "value"?: string | null;
     }
@@ -2720,7 +2720,7 @@ declare namespace LocalJSX {
          */
         "triggerIcon"?: boolean;
         /**
-          * Selected date. Could also be passed as a string, which gets transformed to js date object.
+          * Selected iso datestring. Could also be passed as a string, which gets transformed to js date object.
          */
         "value"?: string | null;
     }

@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="/build/ui-library.css" />
     <script type="module" src="/build/ui-library.esm.js"></script>
     <script nomodule src="/build/ui-library.js"></script>
+
+    <script>
+      var balDateUtil = {
+        localDatetime: function (date) {
+          return new Date(Date.UTC(date.getFullYear(), date.getMonth() - 1, date.getDate()))
+        },
+      }
+    </script>
   </head>
   <body class="bal-app">
     <div class="container">
@@ -21,8 +29,9 @@
         <bal-datepicker readonly disabled id="datepicker-disabled"></bal-datepicker>
       </section>
       <script>
+        // import { balDateUtil } from '@baloise/ui-library'
         var datepickerDisabled = document.getElementById('datepicker-disabled')
-        datepickerDisabled.value = new Date(1988, 7, 14).toLocaleString()
+        datepickerDisabled.value = balDateUtil.localDatetime(new Date(1988, 7, 14)).toISOString()
       </script>
 
       <h2 class="title is-size-2">Manual Input</h2>

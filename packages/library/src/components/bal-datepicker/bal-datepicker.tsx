@@ -1,10 +1,24 @@
 import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch, ComponentInterface, Listen } from '@stencil/core'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 import { BalCalendarCell, BalDateCallback, BalPointerDate } from './bal-datepicker.type'
-import { day, format, month, now, year, isValidDate, decreaseYear, getFirstDayOfTheWeek, isSameDay, isInRange, isSameWeek, isSameMonth, parseDate } from '../../utils/balDateUtil'
+import {
+  day,
+  format,
+  month,
+  now,
+  year,
+  decreaseYear,
+  getFirstDayOfTheWeek,
+  isSameDay,
+  isInRange,
+  isSameWeek,
+  isSameMonth,
+  isoString,
+  toDate,
+  isValidDateString,
+} from '../../utils/balDateUtil'
 import { isEnterKey } from '../../utils/balKeyUtil'
 import { ACTION_KEYS, NUMBER_KEYS } from '../../constants/keys.constant'
-import { convertInputValueToDateString, formatInputValue, isValidDateString } from './bal-datepicker.utils'
 import { i18nDate } from './bal-datepicker.i18n'
 
 @Component({
@@ -124,7 +138,7 @@ export class Datepicker implements ComponentInterface {
   }
 
   /**
-   * Selected date. Could also be passed as a string, which gets transformed to js date object.
+   * Selected iso datestring. Could also be passed as a string, which gets transformed to js date object.
    */
   @Prop({ mutable: true }) value?: string | null
 
@@ -210,8 +224,8 @@ export class Datepicker implements ComponentInterface {
    */
   @Method()
   async select(date: Date) {
-    this.inputElement.value = format(date)
-    this.updateValue(date.toLocaleString())
+    this.inputElement.value = format(isoString(date))
+    this.updateValue(isoString(date))
     this.updatePointerDates()
 
     if (this.closeOnSelect) {
@@ -238,7 +252,7 @@ export class Datepicker implements ComponentInterface {
   }
 
   private updatePointerDates() {
-    let date = parseDate(this.selectedDate)
+    let date = toDate(this.selectedDate)
     if (date === undefined) {
       date = now()
     }
@@ -249,15 +263,15 @@ export class Datepicker implements ComponentInterface {
     }
   }
 
-  private updateValue(value: string | undefined) {
-    if (!isValidDate(value)) {
+  private updateValue(datestring: string | undefined) {
+    if (!isValidDateString(datestring)) {
       this.selectedDate = undefined
       this.value = undefined
       this.inputElement.value = ''
       return
     }
 
-    this.value = convertInputValueToDateString(this.value)
+    this.value = datestring
   }
 
   get minYear() {
@@ -294,12 +308,12 @@ export class Datepicker implements ComponentInterface {
           ...row,
           {
             date: new Date(dayDatePointer),
-            dateString: format(dayDatePointer),
+            dateString: format(isoString(dayDatePointer)),
             label: day(dayDatePointer).toString(),
             isToday: isSameDay(dayDatePointer, now()),
-            isSelected: parseDate(this.selectedDate) && isSameDay(dayDatePointer, parseDate(this.selectedDate) as Date),
+            isSelected: toDate(this.selectedDate) && isSameDay(dayDatePointer, toDate(this.selectedDate) as Date),
             isDisabled: !this.filter(dayDatePointer),
-            isOutdated: this.pointerDate.month !== dayDatePointer.getMonth() || !isInRange(dayDatePointer, parseDate(this.min), parseDate(this.max)),
+            isOutdated: this.pointerDate.month !== dayDatePointer.getMonth() || !isInRange(dayDatePointer, toDate(this.min), toDate(this.max)),
           } as BalCalendarCell,
         ]
         dayDatePointer.setDate(dayDatePointer.getDate() + 1)
@@ -335,17 +349,19 @@ export class Datepicker implements ComponentInterface {
     event.stopPropagation()
 
     if (isValidDateString(inputValue)) {
-      this.selectedDate = formatInputValue(inputValue)
+      this.selectedDate = isoString(toDate(inputValue))
       this.updatePointerDates()
     }
   }
 
   private onInputChange = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
-    const formattedValue = formatInputValue(inputValue)
+    const date = toDate(inputValue)
+    const datestring = isoString(date)
+    const formattedValue = format(datestring)
+
     this.inputElement.value = formattedValue
-    const date = convertInputValueToDateString(formattedValue)
-    this.updateValue(date)
+    this.updateValue(datestring)
     this.updatePointerDates()
   }
 
