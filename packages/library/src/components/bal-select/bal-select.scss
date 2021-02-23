@@ -3,6 +3,13 @@
 
 :host {
   display: block;
+  position: relative;
+
+  bal-icon.is-right {
+    position: absolute;
+    top: 6px;
+    right: 11px;
+  }
 }
 
 .is-turned-up {

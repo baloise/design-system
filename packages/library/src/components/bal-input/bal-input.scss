@@ -2,4 +2,43 @@
 
 :host {
   display: block;
+  position: relative;
+  flex: 1;
+  align-items: center;
+  width: 100%;
+  padding: 0 !important;
+  font-family: $family-primary;
+
+  input {
+    display: inline-block;
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    outline: none;
+    background: transparent;
+    box-sizing: border-box;
+    appearance: none;
+    pointer-events: auto;
+
+    &.has-icon-right {
+      padding-right: 32px !important;
+    }
+
+    &::placeholder {
+      font-family: inherit;
+    }
+
+    &:-webkit-autofill {
+      background-color: transparent;
+    }
+
+    &:invalid {
+      box-shadow: none;
+    }
+
+    &::-ms-clear {
+      display: none;
+    }
+  }
 }

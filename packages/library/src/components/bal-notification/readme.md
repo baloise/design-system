@@ -9,7 +9,7 @@
 
 | Property | Attribute | Description                      | Type                                                              | Default |
 | -------- | --------- | -------------------------------- | ----------------------------------------------------------------- | ------- |
-| `type`   | `type`    | Defines the color of the element | `"" \| "danger" \| "info" \| "primary" \| "success" \| "warning"` | `''`    |
+| `color`  | `color`   | Defines the color of the element | `"" \| "danger" \| "info" \| "primary" \| "success" \| "warning"` | `''`    |
 
 
 ## Dependencies

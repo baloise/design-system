@@ -18,6 +18,7 @@
 | `failed`   | `failed`   | If `true` the step is marked as failed.                 | `boolean` | `false` |
 | `href`     | `href`     | Link to path.                                           | `string`  | `''`    |
 | `label`    | `label`    | Label for the tab.                                      | `string`  | `''`    |
+| `prevent`  | `prevent`  | Tell's if the linking is done by a router.              | `boolean` | `false` |
 | `value`    | `value`    | This is the key of the tab.                             | `string`  | `''`    |
 
 

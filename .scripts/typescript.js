@@ -4,6 +4,7 @@
  */
 
 const ts = require('typescript')
+const log = require('./log')
 
 const createSourceFile = fileContent => ts.createSourceFile('x.ts', fileContent, ts.ScriptTarget.Latest)
 
@@ -38,10 +39,16 @@ const parseFunctionComment = (node, sourceFile) =>
     .filter(l => l)
     .filter(l => l !== '/**' && l !== '*/')
     .map(l => (l.startsWith('*') ? l.substring(1) : l))
-    .map(l => l.trim())
 
-const parseType = typeCode => {
-  switch (typeCode) {
+const parseType = type => {
+  if (type === undefined) {
+    return 'any'
+  }
+  if (type.typeName) {
+    return type.typeName.escapedText
+  }
+
+  switch (type.kind) {
     case 131:
       return 'boolean'
     case 144:
@@ -53,7 +60,7 @@ const parseType = typeCode => {
     case 182:
       return 'undefined'
     case 178:
-      return `${parseType(typeCode.elementType)}[]`
+      return `${parseType(type.elementType)}[]`
     default:
       return 'any'
   }

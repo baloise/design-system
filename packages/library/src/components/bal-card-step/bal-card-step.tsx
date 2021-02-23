@@ -54,7 +54,9 @@ export class CardStep {
   @Watch('disabled')
   @Watch('hidden')
   informParent() {
-    this.parent.sync()
+    if (this.parent) {
+      this.parent.sync()
+    }
   }
 
   /**
@@ -84,7 +86,7 @@ export class CardStep {
     }
   }
 
-  get parent(): HTMLBalCardStepsElement {
+  get parent(): HTMLBalCardStepsElement | null {
     return this.element.closest('bal-card-steps')
   }
 

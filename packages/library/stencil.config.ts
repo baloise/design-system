@@ -2,7 +2,9 @@ import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
 import { postcss } from '@stencil/postcss'
 import autoprefixer from 'autoprefixer'
-import { ComponentModelConfig, vue2OutputTarget } from '@baloise/vue-2-output-target'
+
+import { ComponentModelConfig, vueOutputTarget } from '@baloise/vue-output-target'
+import { vue2OutputTarget } from '@baloise/vue-2-output-target'
 import { angularOutputTarget, ValueAccessorConfig } from '@baloise/angular-output-target'
 
 /**
@@ -61,6 +63,21 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
 export const config: Config = {
   namespace: 'ui-library',
   globalStyle: 'src/styles/ui-library.scss',
+  plugins: [
+    postcss({
+      plugins: [autoprefixer()],
+    }),
+    sass(),
+  ],
+  buildEs5: true,
+  extras: {
+    cssVarsShim: true,
+    dynamicImportShim: true,
+    initializeNextTick: true,
+    safari10: true,
+    scriptDataOpts: true,
+    shadowDomShim: true,
+  },
   outputTargets: [
     {
       type: 'dist',
@@ -69,7 +86,14 @@ export const config: Config = {
       esmLoaderPath: '../loader',
     },
     {
+      type: 'dist-custom-elements-bundle',
+    },
+    {
       type: 'docs-readme',
+    },
+    {
+      type: 'docs-json',
+      file: './docs/components.raw.json',
     },
     {
       type: 'www',
@@ -90,22 +114,23 @@ export const config: Config = {
     },
     vue2OutputTarget({
       componentCorePackage: '@baloise/ui-library',
+      proxiesFile: '../vue-2/src/components.ts',
+      componentModels: vueComponentModels,
+      includeDefineCustomElements: false,
+      includePolyfills: false,
+    }),
+    vueOutputTarget({
+      componentCorePackage: '@baloise/ui-library',
       proxiesFile: '../vue/src/components.ts',
       componentModels: vueComponentModels,
       includeDefineCustomElements: false,
       includePolyfills: false,
-    }) as any,
+    }),
     angularOutputTarget({
       componentCorePackage: '@baloise/ui-library',
       directivesProxyFile: '../angular/src/directives/proxies.ts',
       directivesArrayFile: '../angular/src/directives/proxies-list.ts',
       valueAccessorConfigs: angularValueAccessorBindings,
     }),
-  ],
-  plugins: [
-    postcss({
-      plugins: [autoprefixer()],
-    }),
-    sass(),
   ],
 }

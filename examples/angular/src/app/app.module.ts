@@ -1,25 +1,50 @@
-import { BrowserModule } from '@angular/platform-browser'
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { HttpClient, HttpClientModule } from '@angular/common/http'
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { BalUiLibraryModule } from '@baloise/ui-library-angular/dist'
+import { BrowserModule } from '@angular/platform-browser'
+import { BalUiLibraryModule } from '@baloise/ui-library-angular'
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core'
+import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BalCheckboxComponent } from './bal-components/bal-checkbox/bal-checkbox.component';
-import { BalInputComponent } from './bal-components/bal-input/bal-input.component';
-import { BalRadioComponent } from './bal-components/bal-radio/bal-radio.component';
-import { BalSelectComponent } from './bal-components/bal-select/bal-select.component';
-import { BalDatepickerComponent } from './bal-components/bal-datepicker/bal-datepicker.component';
-import { BalTimeinputComponent } from './bal-components/bal-timeinput/bal-timeinput.component';
-import { HomeComponent } from './bal-components/home/home.component';
-import { BalModalComponent } from './bal-components/bal-modal/bal-modal.component';
-import { BalToastComponent } from './bal-components/bal-toast/bal-toast.component';
+import { AppRoutingModule } from './app-routing.module'
+import { AppComponent } from './app.component'
+import { FormComponent } from './form/form.component'
+import { I18nComponent } from './i18n/i18n.component'
+import { ModalComponent } from './modal/modal.component'
+import { PipesComponent } from './pipes/pipes.component'
+import { ServicesComponent } from './services/services.component'
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient)
+}
 
 @NgModule({
-  declarations: [AppComponent, BalCheckboxComponent, BalInputComponent, BalRadioComponent, BalSelectComponent, BalDatepickerComponent, BalTimeinputComponent, HomeComponent, BalModalComponent, BalToastComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, BalUiLibraryModule],
+  declarations: [AppComponent, FormComponent, ServicesComponent, PipesComponent, ModalComponent, I18nComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
+    BalUiLibraryModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(public translate: TranslateService) {
+    translate.addLangs(['en', 'de'])
+    translate.setDefaultLang('en')
+
+    const browserLang = translate.getBrowserLang()
+    translate.use(browserLang.match(/en|de/) ? browserLang : 'en')
+  }
+}

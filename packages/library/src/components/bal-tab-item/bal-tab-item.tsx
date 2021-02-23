@@ -50,12 +50,17 @@ export class TabItem {
   /**
    * Tell's if the tab is active and the content is visible.
    */
-  @Prop() active: boolean = false
+  @Prop({ mutable: true }) active: boolean = false
+
+  /**
+   * Tell's if the linking is done by a router.
+   */
+  @Prop() prevent: boolean = false
 
   /**
    * Emitted when the link element has clicked
    */
-  @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<MouseEvent>
 
   @Watch('active')
   activatedHandler(newActive: boolean) {
@@ -69,8 +74,11 @@ export class TabItem {
   @Watch('label')
   @Watch('done')
   @Watch('failed')
+  @Watch('prevent')
   informParent() {
-    this.parent.sync()
+    if (this.parent) {
+      this.parent.sync()
+    }
   }
 
   /**
@@ -99,11 +107,12 @@ export class TabItem {
       done: this.done,
       failed: this.failed,
       hasBubble: this.bubble,
+      prevent: this.prevent,
       navigate: this.balNavigate,
     }
   }
 
-  get parent(): HTMLBalTabsElement {
+  get parent(): HTMLBalTabsElement | null {
     return this.element.closest('bal-tabs')
   }
 
@@ -114,7 +123,7 @@ export class TabItem {
   render() {
     return (
       <Host>
-        <div style={this.isContentHidden && { display: 'none' }}>
+        <div style={{ display: this.isContentHidden ? 'none' : 'block' }}>
           <slot />
         </div>
       </Host>

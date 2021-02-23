@@ -26,19 +26,13 @@
       </section>
       <script>
         var selectYear = document.getElementById('bal-select-year')
-        selectYear.value = ['1998']
-
-        selectYear.addEventListener('balChange', function (event) {
-          console.log('balChange', event.detail)
-        })
-
         var buttonYear = document.getElementById('bal-select-year-clear')
         buttonYear.addEventListener('click', function () {
           selectYear.clear()
         })
       </script>
 
-      <!-- <h3 class="title is-size-3">Styling</h3>
+      <h3 class="title is-size-3">Styling</h3>
       <section>
         <div class="has-background-blue is-padded">
           <bal-select inverted expanded placeholder="select a hero">
@@ -132,13 +126,7 @@
       <h3 class="title is-size-3">No Filter</h3>
       <section>
         <bal-field id="bal-select-typeahead-remote-field" label="Star Wars Character" is-expanded>
-          <bal-select
-            id="bal-select-typeahead-remote"
-            typeahead
-            no-filter
-            placeholder="start typing"
-            expanded
-          ></bal-select>
+          <bal-select id="bal-select-typeahead-remote" typeahead no-filter placeholder="start typing" expanded></bal-select>
         </bal-field>
         <p class="help" id="bal-select-typeahead-remote-help"></p>
       </section>
@@ -196,7 +184,7 @@
         selectTypeaheadRemote.addEventListener('balInput', function (event) {
           selectTypeaheadRemote.addEventListener('balInput', handleInput)
         })
-      </script> -->
+      </script>
     </div>
   </body>
 </html>

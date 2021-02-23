@@ -24,11 +24,16 @@
     position: relative;
 
     .snackbar-header {
+      @include font-smoothing();
       display: flex;
       align-items: center;
       column-gap: 10px;
       font-size: $size-4;
       font-weight: $weight-bold;
+
+      .icon-text .icon:not(:last-child) {
+        margin-right: 0.6em;
+      }
     }
 
     &.is-primary {
@@ -60,15 +65,13 @@
       word-break: break-all;
     }
 
-    .icon bal-icon {
-      margin-top: -4px;
-    }
-
     .close {
       position: absolute;
+      cursor: pointer;
       top: 32px;
       right: 32px;
-      cursor: pointer;
+      width: 24px;
+      height: 24px;
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ui-library-vue",
-  "version": "3.1.11",
+  "version": "4.0.0",
   "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -16,30 +16,38 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run build:clean && npm run build:filters && npm run build:compile",
+    "build": "npm run build:clean && npm run build:filters && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
+    "build:clean": "rimraf dist && rimraf dist-transpiled",
     "build:filters": "node .scripts/filters.script.js",
     "build:compile": "tsc -p .",
-    "build:clean": "rimraf src/filters.ts && rimraf dist"
+    "build:bundle": "rollup --config rollup.config.js",
+    "build:web-types": "node ./.scripts/build-web-types.js",
+    "build:vetur": "node ./.scripts/build-vetur.js"
   },
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./types/index.d.ts",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/types/index.d.ts",
   "files": [
-    "dist/",
-    "types/"
+    "dist/"
   ],
   "license": "Apache-2.0",
   "devDependencies": {
+    "change-case": "^4.1.2",
     "rimraf": "^3.0.2",
+    "rollup": "^2.39.0",
     "typescript": "^4.0.2",
-    "vue": "^2.6.12"
+    "vue": "^3.0.5"
   },
   "peerDependencies": {
-    "vue": "^2.6.12"
+    "vue": "^3.0.5"
   },
-  "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca",
+  "gitHead": "e0d380309b487bcedee06d025645f5aab37ab192",
   "dependencies": {
-    "@baloise/ui-library": "^3.1.11",
-    "@baloise/ui-library-utils": "^3.1.11"
-  }
+    "@baloise/ui-library": "^4.0.0"
+  },
+  "vetur": {
+    "tags": "dist/vetur/tags.json",
+    "attributes": "dist/vetur/attributes.json"
+  },
+  "web-types": "dist/web-types.json"
 }

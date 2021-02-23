@@ -31,7 +31,7 @@ import {
   BalModalFooter,
   BalModalHeader,
   BalModalActions,
-} from '@baloise/ui-library-vue'
+} from '@baloise/ui-library-vue-2'
 
 export default Vue.extend({
   methods: {

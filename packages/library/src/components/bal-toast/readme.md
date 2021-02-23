@@ -21,8 +21,8 @@ balToastController.create({ message: 'Danger zone!', type: 'is-danger' })
 
 | Property   | Attribute  | Description                                                    | Type                                                              | Default |
 | ---------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- | ------- |
+| `color`    | `color`    | The theme type of the toast. Given by bulma our css framework. | `"" \| "danger" \| "info" \| "primary" \| "success" \| "warning"` | `''`    |
 | `duration` | `duration` | The duration of the toast                                      | `number`                                                          | `0`     |
-| `type`     | `type`     | The theme type of the toast. Given by bulma our css framework. | `"" \| "danger" \| "info" \| "primary" \| "success" \| "warning"` | `''`    |
 
 
 ## Events

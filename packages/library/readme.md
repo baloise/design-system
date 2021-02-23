@@ -14,13 +14,3 @@ UI-Libary is an open source library for building amazing web applications that f
 ## Documentation
 
 The [documentation](https://baloise-ui-library.now.sh) is published on now.sh, and is built with the docsify tool.
-
-## Packages
-
-| Library                                    | Status                                                                                                                                   | Description                                                |
-| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| [UI Library](https://baloise-ui-library.now.sh/#/README?id=quick-start)     | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)                 | Core library build with web components and global styling. |
-| [UI Library Vue](https://baloise-ui-library.now.sh/#/introduction/vue)         | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-vue.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-vue)         | Vue component library based on the the core library.       |
-| [UI Library Angular](https://baloise-ui-library.now.sh/#/introduction/angular) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-angular.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-angular) | Angular component library based on the the core library.   |
-| [UI Library Utils](https://baloise-ui-library.now.sh/#/utilities/installation) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-utils.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-utils)     | Utilities like filters.                                    |
-| [UI Library Testing](https://baloise-ui-library.now.sh/#/testing/installation) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-testing.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-testing) | Testing library with accessors for each component.         |

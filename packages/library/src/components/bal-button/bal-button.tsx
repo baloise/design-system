@@ -1,5 +1,5 @@
-import { Component, h, Prop, Host, Event, EventEmitter } from '@stencil/core'
-import { BalButtonType } from './bal.button.type'
+import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface, Listen, Element } from '@stencil/core'
+import { BalButtonColor } from './bal.button.type'
 
 @Component({
   tag: 'bal-button',
@@ -7,16 +7,28 @@ import { BalButtonType } from './bal.button.type'
   shadow: false,
   scoped: true,
 })
-export class Button {
+export class Button implements ComponentInterface {
+  @Element() el!: HTMLElement
+
   /**
-   * The theme type of the button. Given by bulma our css framework.
+   * The color to use from your application's color palette.
    */
-  @Prop() type: BalButtonType = 'primary'
+  @Prop() color: BalButtonColor = 'primary'
+
+  /**
+   * The type of button.
+   */
+  @Prop() type: 'button' | 'reset' | 'submit' = 'button'
+
+  /**
+   * If `true`, the user cannot interact with the button.
+   */
+  @Prop({ reflect: true }) disabled = false
 
   /**
    * Size of the button
    */
-  @Prop() size: 'small' | '' = ''
+  @Prop({ reflect: true }) size: 'small' | '' = ''
 
   /**
    * Turn the button in to a link.
@@ -26,12 +38,27 @@ export class Button {
   /**
    * Specifies the URL of the page the link goes to
    */
-  @Prop() href: string = ''
+  @Prop() href: string | undefined
 
   /**
-   * Specifies where to open the linked document
+   * Specifies where to display the linked URL.
+   * Only applies when an `href` is provided.
    */
   @Prop() target: '_blank' | ' _parent' | '_self' | '_top' = '_self'
+
+  /**
+   * Specifies the relationship of the target object to the link object.
+   * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+   */
+  @Prop() rel: string | undefined
+
+  /**
+   * This attribute instructs browsers to download a URL instead of navigating to
+   * it, so the user will be prompted to save it as a local file. If the attribute
+   * has a value, it is used as the pre-filled file name in the Save prompt
+   * (the user can still change the file name if they want).
+   */
+  @Prop() download: string | undefined
 
   /**
    * Size of the button
@@ -42,11 +69,6 @@ export class Button {
    * If `true` the width of the buttons is limited
    */
   @Prop() square: boolean = false
-
-  /**
-   * If `true` the button is disabled
-   */
-  @Prop() disabled: boolean = false
 
   /**
    * If `true` the button has a active theme
@@ -94,12 +116,30 @@ export class Button {
   @Prop() iconRight = ''
 
   /**
-   * Emitted when the link element has clicked
+   * Emitted when the link element has clicked.
    */
-  @Event({ eventName: 'balNavigate' }) balNavigate: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<MouseEvent>
 
-  get isIconInverted() {
-    switch (this.type) {
+  /**
+   * Emitted when the button has focus.
+   */
+  @Event() balFocus!: EventEmitter<void>
+
+  /**
+   * Emitted when the button loses focus.
+   */
+  @Event() balBlur!: EventEmitter<void>
+
+  @Listen('click', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    if (this.disabled && ev.target && ev.target === this.el) {
+      ev.preventDefault()
+      ev.stopPropagation()
+    }
+  }
+
+  private get isIconInverted() {
+    switch (this.color) {
       case 'primary':
       case 'success':
       case 'warning':
@@ -111,146 +151,118 @@ export class Button {
     }
   }
 
-  get buttonCssClass() {
-    return [
-      'button',
-      `is-${this.type}`,
-      this.square ? 'is-square' : '',
-      this.size ? 'is-small' : '',
-      this.inverted ? 'is-inverted' : '',
-      this.isActive ? 'is-active' : '',
-      this.outlined ? 'is-outlined' : '',
-      this.expanded ? 'is-fullwidth' : '',
-      this.disabled ? 'is-disabled' : '',
-      this.loading ? 'is-loading' : '',
-      this.topRounded ? 'has-round-top-corners' : '',
-      this.bottomRounded ? 'has-round-bottom-corners' : '',
-    ].join(' ')
+  private get buttonCssClass() {
+    return {
+      'button': true,
+      [`is-${this.color}`]: true,
+      'is-square': this.square,
+      'is-small': this.size,
+      'is-inverted': this.inverted,
+      'is-active': this.isActive,
+      'is-outlined': this.outlined,
+      'is-fullwidth': this.expanded,
+      'is-disabled': this.disabled,
+      'is-loading': this.loading,
+      'has-round-top-corners': this.topRounded,
+      'has-round-bottom-corners': this.bottomRounded,
+    }
   }
 
-  get iconSize() {
+  private get iconSize() {
     if (this.size === 'small') {
       return 'xsmall'
     }
     return 'small'
   }
 
-  render() {
+  private get leftIconAttrs() {
+    if (!this.icon) {
+      return {
+        style: { display: 'none' },
+      }
+    }
+    return {}
+  }
+
+  private get leftRightAttrs() {
+    if (!this.iconRight) {
+      return {
+        style: { display: 'none' },
+      }
+    }
+    return {}
+  }
+
+  private get spanAttrs() {
     if (this.square) {
-      return this.renderSquareButton()
+      return {
+        style: { display: 'none' },
+      }
     }
-
-    return this.renderButton()
+    return {}
   }
 
-  renderButton() {
-    if (this.link) {
-      return this.renderLinkButton()
+  private get loadingAttrs() {
+    if (!this.loading) {
+      return {
+        style: { display: 'none' },
+      }
     }
-    return this.renderNormalButton()
+    return {}
   }
 
-  renderSquareButton() {
-    if (this.link) {
-      return this.renderLinkSquareButton()
-    }
-    return this.renderNormalSquareButton()
-  }
-
-  renderButtonLoading() {
-    if (this.loading) {
-      return <bal-spinner class="is-small is-inverted" />
+  private handleClick(event: MouseEvent) {
+    if (this.disabled) {
+      event.preventDefault()
+      event.stopPropagation()
     }
   }
 
-  renderButtonLabel() {
+  private onFocus = () => {
+    this.balFocus.emit()
+  }
+
+  private onBlur = () => {
+    this.balBlur.emit()
+  }
+
+  private onClick = (event: MouseEvent) => {
+    if (this.href !== undefined) {
+      this.balNavigate.emit(event)
+    }
+  }
+
+  render() {
+    const { type, download, href, rel, target } = this
+    const TagType = this.href === undefined ? 'button' : ('a' as any)
+    const attrs =
+      TagType === 'button'
+        ? { type }
+        : {
+            download,
+            href,
+            rel,
+            target,
+          }
+
     return (
-      <bal-text small={this.size === 'small'} style={{ display: this.loading ? 'none' : 'inline' }}>
-        <slot />
-      </bal-text>
-    )
-  }
-
-  renderButtonLeftIcon() {
-    if (this.icon) {
-      return (
-        <bal-icon
-          class="icon-left"
-          name={this.icon}
-          size={this.iconSize}
-          type={this.type}
-          inverted={this.isIconInverted}
-        />
-      )
-    }
-  }
-
-  renderButtonRightIcon() {
-    if (this.iconRight) {
-      return (
-        <bal-icon
-          class="icon-right"
-          name={this.iconRight}
-          size={this.iconSize}
-          type={this.type}
-          inverted={this.isIconInverted}
-        />
-      )
-    }
-  }
-
-  renderNormalButton() {
-    return (
-      <Host class={[this.expanded ? 'is-fullwidth' : ''].join(' ')}>
-        <button class={this.buttonCssClass} disabled={this.disabled}>
-          <span>{/* Empty span to get the correct text height */}</span>
-          {this.renderButtonLoading()}
-          {this.renderButtonLeftIcon()}
-          {this.renderButtonLabel()}
-          {this.renderButtonRightIcon()}
-        </button>
-      </Host>
-    )
-  }
-
-  renderLinkButton() {
-    return (
-      <Host class={[this.expanded ? 'is-fullwidth' : ''].join(' ')}>
-        <a
-          class={this.buttonCssClass}
-          href={this.href}
-          target={this.target}
-          onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
-          <span>{/* Empty span to get the correct text height */}</span>
-          {this.renderButtonLoading()}
-          {this.renderButtonLeftIcon()}
-          {this.renderButtonLabel()}
-          {this.renderButtonRightIcon()}
-        </a>
-      </Host>
-    )
-  }
-
-  renderNormalSquareButton() {
-    return (
-      <Host>
-        <button class={this.buttonCssClass} disabled={this.disabled}>
-          <bal-icon name={this.icon} size={this.size} type={this.type} inverted={this.isIconInverted} />
-        </button>
-      </Host>
-    )
-  }
-
-  renderLinkSquareButton() {
-    return (
-      <Host>
-        <a
-          class={this.buttonCssClass}
-          href={this.href}
-          target={this.target}
-          onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
-          <bal-icon name={this.icon} size={this.size} type={this.type} inverted={this.isIconInverted} />
-        </a>
+      <Host
+        onClick={this.handleClick}
+        aria-disabled={this.disabled ? 'true' : null}
+        class={{
+          'is-fullwidth': this.expanded,
+          'is-disabled': this.disabled,
+        }}
+      >
+        <TagType {...attrs} type={this.type} class={this.buttonCssClass} part="native" disabled={this.disabled} onFocus={this.onFocus} onBlur={this.onBlur} onClick={this.onClick}>
+          <span {...this.spanAttrs}>{/* Empty span to get the correct text height */}</span>
+          <bal-spinner {...this.loadingAttrs} class="is-small is-inverted" />
+          <bal-icon {...this.leftIconAttrs} class="icon-left" name={this.icon} size={this.square ? this.size : this.iconSize} color={this.color} inverted={this.isIconInverted} />
+          <bal-text {...this.spanAttrs} small={this.size === 'small'} style={{ display: this.loading ? 'none' : 'inline' }}>
+            <slot />
+          </bal-text>
+          <bal-icon {...this.leftRightAttrs} class="icon-right" name={this.iconRight} size={this.iconSize} color={this.color} inverted={this.isIconInverted} />
+        </TagType>
       </Host>
     )
   }

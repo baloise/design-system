@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { BalButtonType } from '../bal-button/bal.button.type'
+import { BalButtonColor } from '../bal-button/bal.button.type'
 
 @Component({
   tag: 'bal-icon',
@@ -21,12 +21,12 @@ export class Icon {
   /**
    * The theme type of the button. Given by bulma our css framework.
    */
-  @Prop() type: BalButtonType = 'info'
+  @Prop() color: BalButtonColor = 'info'
 
   /**
    * If `true` the button is inverted
    */
-  @Prop() inverted: boolean
+  @Prop() inverted = false
 
   /**
    * If `true` the icon rotates like for a loading spinner
@@ -46,7 +46,7 @@ export class Icon {
         class={{
           [`is-size-${this.size}`]: !!this.size,
           [`is-inverted`]: this.inverted,
-          [`is-${this.type}`]: true,
+          [`is-${this.color}`]: true,
           [`turn`]: this.turn,
           [`rotate`]: this.rotate,
         }}>

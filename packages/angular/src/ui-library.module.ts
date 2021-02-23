@@ -1,17 +1,16 @@
-import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { defineCustomElements, applyPolyfills } from '@baloise/ui-library/loader'
+import { APP_INITIALIZER, ModuleWithProviders, NgModule, NgZone } from '@angular/core'
+import { CommonModule, DOCUMENT } from '@angular/common'
+import { FormsModule } from '@angular/forms'
 
+import { appInitialize } from './app-initialize'
 import { DIRECTIVES } from './directives/proxies-list'
 import { BooleanValueAccessor } from './directives/boolean-value-accessor'
 import { TextValueAccessor } from './directives/text-value-accessor'
 import { SelectValueAccessor } from './directives/select-value-accessor'
 import { FILTERS } from './filters'
 
-applyPolyfills().then(() => {
-  defineCustomElements(window)
-})
+import { BalToastService } from './bal-toast.service'
+import { BalSnackbarService } from './bal-snackbar.service'
 
 const DECLARATIONS = [
   // proxies
@@ -30,6 +29,20 @@ const DECLARATIONS = [
   declarations: [DECLARATIONS],
   exports: [DECLARATIONS],
   imports: [CommonModule, FormsModule],
-  providers: [],
+  providers: [BalToastService, BalSnackbarService],
 })
-export class BalUiLibraryModule {}
+export class BalUiLibraryModule {
+  static forRoot(): ModuleWithProviders<BalUiLibraryModule> {
+    return {
+      ngModule: BalUiLibraryModule,
+      providers: [
+        {
+          provide: APP_INITIALIZER,
+          useFactory: appInitialize,
+          multi: true,
+          deps: [DOCUMENT, NgZone],
+        },
+      ],
+    }
+  }
+}

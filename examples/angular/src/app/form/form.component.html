@@ -1,0 +1,109 @@
+<h1 class="title is-size-1 has-no-margin">Reactive Form</h1>
+<h2 class="title is-size-2 has-no-margin-top has-text-warning">
+  {{ form.status }}
+</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <bal-field expanded>
+    <bal-field-label [text]="'Name'" required></bal-field-label>
+    <bal-field-control>
+      <bal-input
+        id="bal-input-1"
+        name="name"
+        placeholder="Enter your name"
+        formControlName="name"
+        required
+        (balChange)="onNameChange($event)"
+      ></bal-input>
+    </bal-field-control>
+    <bal-field-message color="danger" *ngIf="form.get('name').errors && form.get('name').hasError('required')"
+      >Required Field</bal-field-message
+    >
+  </bal-field>
+
+  <bal-field expanded>
+    <bal-field-label text="Age"></bal-field-label>
+    <bal-field-control>
+      <bal-select id="bal-select-year" placeholder="select a year" data-test-id="select" formControlName="age" expanded>
+        <bal-select-option value="1995" label="1995">1995</bal-select-option>
+        <bal-select-option value="1996" label="1996">1996</bal-select-option>
+        <bal-select-option value="1997" label="1997">1997</bal-select-option>
+        <bal-select-option value="1998" label="1998">1998</bal-select-option>
+        <bal-select-option value="1999" label="1999">1999</bal-select-option>
+        <bal-select-option value="2000" label="2000">2000</bal-select-option>
+      </bal-select>
+    </bal-field-control>
+    <bal-field-message color="danger" *ngIf="form.get('age').errors && form.get('age').hasError('required')"
+      >Required Field</bal-field-message
+    >
+  </bal-field>
+
+  <bal-field expanded>
+    <bal-field-label text="Due Date"></bal-field-label>
+    <bal-field-control>
+      <bal-datepicker placeholder="Select a date" formControlName="dueDate"></bal-datepicker>
+    </bal-field-control>
+    <bal-field-message color="danger" *ngIf="form.get('dueDate').errors && form.get('dueDate').hasError('required')"
+      >Required Field</bal-field-message
+    >
+  </bal-field>
+
+  <bal-field expanded>
+    <bal-field-label text="Gender"></bal-field-label>
+    <bal-field-control>
+      <bal-radio-group value="male" formControlName="gender">
+        <bal-radio label="Male" name="gender" value="male"></bal-radio>
+        <bal-radio label="Female" name="gender" value="female"></bal-radio>
+      </bal-radio-group>
+    </bal-field-control>
+    <bal-field-message color="danger" *ngIf="form.get('gender').errors && form.get('gender').hasError('required')"
+      >Required Field</bal-field-message
+    >
+  </bal-field>
+
+  <bal-field expanded>
+    <bal-field-label text="Checkbox"></bal-field-label>
+    <bal-field-control>
+      <bal-checkbox label="Checkbox" formControlName="checkbox"></bal-checkbox>
+    </bal-field-control>
+    <bal-field-message color="danger" *ngIf="form.get('checkbox').errors && form.get('checkbox').hasError('required')"
+      >Required Field</bal-field-message
+    >
+  </bal-field>
+
+  <bal-field expanded>
+    <bal-field-label text="Comment"></bal-field-label>
+    <bal-field-control>
+      <bal-textarea formControlName="comment" name="comment" placeholder="Enter your comment"></bal-textarea>
+    </bal-field-control>
+    <bal-field-message color="danger" *ngIf="form.get('comment').errors && form.get('comment').hasError('required')"
+      >Required Field</bal-field-message
+    >
+  </bal-field>
+
+  <p id="firstname-value" class="is-flex-grow-1 is-full-width">
+    {{ form.get('name').value }}
+  </p>
+  <p id="name-value" class="is-flex-grow-1 is-full-width">
+    {{ nameChanged }}
+  </p>
+  <p id="age-value" class="is-flex-grow-1 is-full-width">
+    {{ form.get('age').value }}
+  </p>
+  <p id="date-value" class="is-flex-grow-1 is-full-width">
+    {{ form.get('dueDate').value }}
+  </p>
+  <p id="gender-value" class="is-flex-grow-1 is-full-width">
+    {{ form.get('gender').value }}
+  </p>
+  <p id="checkbox-value" class="is-flex-grow-1 is-full-width">
+    {{ form.get('checkbox').value }}
+  </p>
+  <p id="comment-value" class="is-flex-grow-1 is-full-width">
+    {{ form.get('comment').value }}
+  </p>
+  <bal-button color="info" outlined (click)="updateName()">Update Name</bal-button>
+  <bal-button color="danger" outlined (click)="setCommentDisabled()">Disable Comment</bal-button>
+
+  <bal-button color="primary" type="submit" [disabled]="!form.valid">Submit</bal-button>
+</form>

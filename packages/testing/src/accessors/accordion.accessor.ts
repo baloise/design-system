@@ -1,27 +1,15 @@
 /// <reference types="cypress" />
-import {
-  Accessor,
-  createAccessor,
-  Mixin,
-  MixinContext,
-  Clickable,
-  Containable,
-  Existable,
-  ExistableMixin,
-  NthSelectable,
-  NthSelectableMixin,
-  Shouldable,
-  ShouldableMixin,
-  Visible,
-  VisibleMixin,
-  ClickableMixin,
-  Attributable,
-  Urlable,
-  Waitable,
-  AttributableMixin,
-  UrlableMixin,
-  WaitableMixin,
-} from '../index'
+
+import { Attributable, AttributableMixin } from '../mixins/attributable'
+import { Clickable, ClickableMixin } from '../mixins/clickable'
+import { Containable } from '../mixins/containable'
+import { Existable, ExistableMixin } from '../mixins/existable'
+import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
+import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
+import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
+import { Urlable, UrlableMixin } from '../mixins/urlable'
+import { Visible, VisibleMixin } from '../mixins/visible'
+import { Waitable, WaitableMixin } from '../mixins/waitable'
 
 interface AccordionAccessorType
   extends Clickable<AccordionAccessorType>,

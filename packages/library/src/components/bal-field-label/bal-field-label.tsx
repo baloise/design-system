@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-field-label',
@@ -6,8 +6,6 @@ import { Component, h, Host, Prop, Element } from '@stencil/core'
   scoped: true,
 })
 export class FieldLabel {
-  @Element() element: HTMLElement
-
   /**
    * Text of the inputs label
    */
@@ -21,7 +19,7 @@ export class FieldLabel {
   render() {
     return (
       <Host class="label">
-        <label htmlFor={this.findInputId()}>
+        <label>
           <bal-text small>
             {this.text}
             {this.required === true ? ' *' : ''}
@@ -30,10 +28,5 @@ export class FieldLabel {
         </label>
       </Host>
     )
-  }
-
-  private findInputId(): string {
-    const inputElement = this.element.querySelector('input.input')
-    return inputElement && inputElement.id ? inputElement.id : ''
   }
 }

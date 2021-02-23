@@ -17,20 +17,21 @@ export interface BalOptionValue<T> {
 
 ## Properties
 
-| Property            | Attribute            | Description                                                                       | Type       | Default |
-| ------------------- | -------------------- | --------------------------------------------------------------------------------- | ---------- | ------- |
-| `balTabindex`       | `bal-tabindex`       | The tabindex of the control.                                                      | `number`   | `0`     |
-| `disabled`          | `disabled`           | If `true` the component is diabled.                                               | `boolean`  | `false` |
-| `expanded`          | `expanded`           | If `true` the component uses the whole width.                                     | `boolean`  | `false` |
-| `filterPlaceholder` | `filter-placeholder` | Defines the placeholder of the input filter element.                              | `string`   | `''`    |
-| `inverted`          | `inverted`           | Set this to `true` when the component is placed on a dark background.             | `boolean`  | `false` |
-| `loading`           | `loading`            | If `true` the component shows a loading spinner and sets the input to readonly.   | `boolean`  | `false` |
-| `multiple`          | `multiple`           | If `true` multiple option can be selected                                         | `boolean`  | `false` |
-| `noFilter`          | `no-filter`          | If `true` the filtering of the options is done outside of the component.          | `boolean`  | `false` |
-| `placeholder`       | `placeholder`        | Defines the placeholder of the input element.                                     | `string`   | `''`    |
-| `scrollable`        | `scrollable`         | Defines the height of the dropdown list.                                          | `number`   | `250`   |
-| `typeahead`         | `typeahead`          | If `true` the user can search by typing into the input field.                     | `boolean`  | `false` |
-| `value`             | --                   | Selected option values. Could also be passed as a string, which gets transformed. | `string[]` | `[]`    |
+| Property            | Attribute            | Description                                                                       | Type                          | Default        |
+| ------------------- | -------------------- | --------------------------------------------------------------------------------- | ----------------------------- | -------------- |
+| `balTabindex`       | `bal-tabindex`       | The tabindex of the control.                                                      | `number`                      | `0`            |
+| `disabled`          | `disabled`           | If `true` the component is diabled.                                               | `boolean`                     | `false`        |
+| `expanded`          | `expanded`           | If `true` the component uses the whole width.                                     | `boolean`                     | `false`        |
+| `filterPlaceholder` | `filter-placeholder` | Defines the placeholder of the input filter element.                              | `string`                      | `''`           |
+| `inverted`          | `inverted`           | Set this to `true` when the component is placed on a dark background.             | `boolean`                     | `false`        |
+| `loading`           | `loading`            | If `true` the component shows a loading spinner and sets the input to readonly.   | `boolean`                     | `false`        |
+| `multiple`          | `multiple`           | If `true` multiple option can be selected                                         | `boolean`                     | `false`        |
+| `name`              | `name`               | The name of the control, which is submitted with the form data.                   | `string`                      | `this.inputId` |
+| `noFilter`          | `no-filter`          | If `true` the filtering of the options is done outside of the component.          | `boolean`                     | `false`        |
+| `placeholder`       | `placeholder`        | The text to display when the select is empty.                                     | `null \| string \| undefined` | `undefined`    |
+| `scrollable`        | `scrollable`         | Defines the height of the dropdown list.                                          | `number`                      | `250`          |
+| `typeahead`         | `typeahead`          | If `true` the user can search by typing into the input field.                     | `boolean`                     | `false`        |
+| `value`             | --                   | Selected option values. Could also be passed as a string, which gets transformed. | `string[]`                    | `[]`           |
 
 
 ## Events
@@ -65,6 +66,26 @@ Closes the dropdown
 #### Returns
 
 Type: `Promise<void>`
+
+
+
+### `getFilterInputElement() => Promise<HTMLInputElement>`
+
+Returns the native `<input>` element used under the hood.
+
+#### Returns
+
+Type: `Promise<HTMLInputElement>`
+
+
+
+### `getInputElement() => Promise<HTMLBalInputElement>`
+
+Returns the native `<input>` element used under the hood.
+
+#### Returns
+
+Type: `Promise<HTMLBalInputElement>`
 
 
 
@@ -115,16 +136,18 @@ Type: `Promise<void>`
 
 - [bal-dropdown](../bal-dropdown)
 - [bal-dropdown-trigger](../bal-dropdown-trigger)
-- [bal-dropdown-menu](../bal-dropdown-menu)
+- [bal-input](../bal-input)
 - [bal-icon](../bal-icon)
+- [bal-dropdown-menu](../bal-dropdown-menu)
 
 ### Graph
 ```mermaid
 graph TD;
   bal-select --> bal-dropdown
   bal-select --> bal-dropdown-trigger
-  bal-select --> bal-dropdown-menu
+  bal-select --> bal-input
   bal-select --> bal-icon
+  bal-select --> bal-dropdown-menu
   style bal-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

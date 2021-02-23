@@ -9,8 +9,7 @@ export class DataLabel {
   /**
    * If `true` an asterix is added after the label.
    */
-  @Prop()
-  required = false
+  @Prop() required = false
 
   render() {
     return (

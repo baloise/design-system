@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { BalCheckbox } from '@baloise/ui-library-vue'
+import { BalCheckbox } from '@baloise/ui-library-vue-2'
 
 export default Vue.extend({
   data: () => {

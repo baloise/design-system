@@ -1,17 +1,19 @@
 // generated file by .scripts/filters.script.js
 
 import { Pipe, PipeTransform } from '@angular/core';
-import { balBlobToUrl } from '@baloise/ui-library-utils'
-import { balCapitalize } from '@baloise/ui-library-utils'
-import { balClaimNumber } from '@baloise/ui-library-utils'
-import { balCurrency } from '@baloise/ui-library-utils'
-import { balDefaultString } from '@baloise/ui-library-utils'
-import { balFileSize } from '@baloise/ui-library-utils'
-import { balHighlight } from '@baloise/ui-library-utils'
-import { balJoinArray } from '@baloise/ui-library-utils'
-import { balLimit } from '@baloise/ui-library-utils'
-import { balOfferNumber } from '@baloise/ui-library-utils'
-import { balPhoneNumber } from '@baloise/ui-library-utils'
+import {
+  balBlobToUrl,
+  balCapitalize,
+  balClaimNumber,
+  balCurrency,
+  balDefaultString,
+  balFileSize,
+  balHighlight,
+  balJoinArray,
+  balLimit,
+  balOfferNumber,
+  balPhoneNumber
+} from '@baloise/ui-library'
 
 @Pipe({
   name: 'balBlobToUrl'

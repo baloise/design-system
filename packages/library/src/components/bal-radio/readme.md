@@ -23,10 +23,10 @@ Select an option from a set
 
 ## Events
 
-| Event      | Description                          | Type                |
-| ---------- | ------------------------------------ | ------------------- |
-| `balBlur`  | Emitted when the toggle loses focus. | `CustomEvent<void>` |
-| `balFocus` | Emitted when the toggle has focus.   | `CustomEvent<void>` |
+| Event      | Description                          | Type                      |
+| ---------- | ------------------------------------ | ------------------------- |
+| `balBlur`  | Emitted when the toggle loses focus. | `CustomEvent<FocusEvent>` |
+| `balFocus` | Emitted when the toggle has focus.   | `CustomEvent<FocusEvent>` |
 
 
 ## Methods

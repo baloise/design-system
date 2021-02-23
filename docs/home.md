@@ -17,7 +17,6 @@ The UI-Libary is an open source project for styling awesome web applications tha
 | [UI Library](introduction/html5)           | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)                 | Core library build with web components and global styling. |
 | [UI Library Vue](introduction/vue)         | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-vue.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-vue)         | Vue component library based on the the core library.       |
 | [UI Library Angular](introduction/angular) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-angular.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-angular) | Angular component library based on the the core library.   |
-| [UI Library Utils](utilities/installation) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-utils.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-utils)     | Utilities like filters.                                    |
 | [UI Library Testing](testing/installation) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-testing.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-testing) | Testing library with accessors for each component.         |
 
 ## Framework Support
@@ -33,12 +32,14 @@ The UI-Libary is an open source project for styling awesome web applications tha
 <tr>
 <td>
     <strong>Vue.js</strong><br>
-    2.x.x ✔<br><br>
+    2.x.x ✔<br>
+    3.x.x ✔<br><br>
     <a href="#/introduction/vue">Documentation</a>
 </td>
 <td>
     <strong>Angular</strong><br>
-    10.2.x ✔<br><br>
+    10.2.x ✔<br>
+    11.x.x ✔<br><br>
     <a href="#/introduction/angular">Documentation</a>
 </td>
 </tr>

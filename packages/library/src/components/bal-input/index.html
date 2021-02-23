@@ -14,14 +14,19 @@
       <section>
         <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname" data-test-id="input"></bal-input>
         <bal-input id="bal-input-1-preview" disabled placeholder="Enter your firstname"></bal-input>
+        <bal-input id="bal-input-1-change" disabled placeholder="Enter your firstname"></bal-input>
       </section>
 
       <script>
         var input1 = document.getElementById('bal-input-1')
         var input1Preview = document.getElementById('bal-input-1-preview')
+        var input1Change = document.getElementById('bal-input-1-change')
         setTimeout(() => input1.setFocus(), 100)
         input1.addEventListener('balInput', function (event) {
           input1Preview.value = event.detail
+        })
+        input1.addEventListener('balChange', function (event) {
+          input1Change.value = event.detail
         })
       </script>
 
@@ -41,13 +46,7 @@
 
       <h2 class="title is-size-2">Number Input</h2>
       <section>
-        <bal-input
-          id="bal-input-only-numbers"
-          only-numbers
-          number-keyboard
-          name="age"
-          placeholder="Enter your age"
-        ></bal-input>
+        <bal-input id="bal-input-only-numbers" only-numbers number-keyboard name="age" placeholder="Enter your age"></bal-input>
         <p class="help" id="bal-input-only-numbers-preview"></p>
       </section>
       <script>

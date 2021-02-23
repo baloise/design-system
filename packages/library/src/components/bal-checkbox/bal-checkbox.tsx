@@ -1,4 +1,5 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Watch, Method } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, Listen } from '@stencil/core'
+import { findItemLabel } from '../../helpers/helpers'
 
 @Component({
   tag: 'bal-checkbox',
@@ -8,7 +9,7 @@ import { Component, h, Host, Prop, Element, EventEmitter, Event, Watch, Method }
 })
 export class Checkbox {
   private inputId = `bal-cb-${checkboxIds++}`
-  private inputEl?: HTMLInputElement
+  private nativeInput?: HTMLInputElement
 
   @Element() el!: HTMLElement
 
@@ -36,10 +37,14 @@ export class Checkbox {
    * If `true`, the checkbox is selected.
    */
   @Prop({ mutable: true }) checked = false
+
+  /**
+   * Update the native input element when the value changes
+   */
   @Watch('checked')
-  protected checkedChanged() {
-    if (this.inputEl && this.inputEl.checked !== this.checked) {
-      this.inputEl.checked = this.checked
+  protected valueChanged(newValue: boolean, oldValue: boolean) {
+    if (newValue !== oldValue) {
+      this.balChange.emit(this.checked)
     }
   }
 
@@ -56,52 +61,83 @@ export class Checkbox {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<boolean>
+  @Event() balChange!: EventEmitter<boolean>
 
   /**
    * Emitted when the toggle has focus.
    */
-  @Event({ eventName: 'balFocus' }) balFocus!: EventEmitter<void>
+  @Event() balFocus!: EventEmitter<FocusEvent>
 
   /**
    * Emitted when the toggle loses focus.
    */
-  @Event({ eventName: 'balBlur' }) balBlur!: EventEmitter<void>
+  @Event() balBlur!: EventEmitter<FocusEvent>
+
+  @Listen('click', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    if (this.disabled && ev.target && ev.target === this.el) {
+      ev.preventDefault()
+      ev.stopPropagation()
+    }
+  }
 
   /**
    * Sets the focus on the checkbox input element.
    */
   @Method()
   async setFocus() {
-    if (this.inputEl) {
-      this.inputEl.focus()
+    if (this.nativeInput) {
+      this.nativeInput.focus()
     }
+  }
+
+  /**
+   * Returns the native `<input>` element used under the hood.
+   */
+  @Method()
+  getInputElement(): Promise<HTMLInputElement> {
+    return Promise.resolve(this.nativeInput!)
   }
 
   private onInput = (ev: any) => {
     this.checked = ev.target.checked
-    this.balChange.emit(this.checked)
   }
 
-  private onFocus = () => {
-    this.balFocus.emit()
+  private handleClick = (event: MouseEvent) => {
+    if (this.disabled) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
   }
 
-  private onBlur = () => {
-    this.balBlur.emit()
+  private inputClick = (event: MouseEvent) => {
+    event.stopPropagation()
   }
 
   render() {
-    const { inputId, label } = this
+    const labelId = this.inputId + '-lbl'
+    const label = findItemLabel(this.el)
+    if (label) {
+      label.id = labelId
+      label.htmlFor = this.inputId
+    }
+
     return (
       <Host
+        onClick={this.handleClick}
+        aria-disabled={this.disabled ? 'true' : null}
         class={{
           'is-inverted': this.inverted,
-        }}>
+          'is-disabled': this.disabled,
+        }}
+      >
         <input
+          class={{
+            'is-disabled': this.disabled,
+          }}
           type="checkbox"
           role="checkbox"
-          id={inputId}
+          id={this.inputId}
           name={this.name}
           value={this.value}
           checked={this.checked}
@@ -110,13 +146,20 @@ export class Checkbox {
           aria-label={label}
           disabled={this.disabled}
           aria-disabled={this.disabled ? 'true' : 'false'}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
+          onClick={this.inputClick}
+          onFocus={e => this.balFocus.emit(e)}
+          onBlur={e => this.balBlur.emit(e)}
           onInput={this.onInput}
-          ref={inputEl => (this.inputEl = inputEl)}
+          ref={inputEl => (this.nativeInput = inputEl)}
         />
-        <label htmlFor={inputId}>
-          <bal-text>{label}</bal-text>
+        <label
+          class={{
+            'is-disabled': this.disabled,
+          }}
+          htmlFor={this.inputId}
+          onClick={this.handleClick}
+        >
+          <bal-text>{this.label}</bal-text>
         </label>
       </Host>
     )

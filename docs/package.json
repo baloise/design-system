@@ -2,15 +2,15 @@
   "name": "@baloise/ui-library-docs",
   "version": "1.0.0",
   "private": true,
-  "description": "> TODO: description",
   "author": "hirsch <gery.hirschfeld@w3tec.ch>",
   "homepage": "https://github.com/baloise/ui-library#readme",
   "license": "Apache-2.0",
   "main": "index.html",
   "scripts": {
-    "build": "npm run build:lib && npm run build:sidebar && npm run build:utils && npm run build:components",
+    "build": "npm run build:lib && npm run build:sidebar && npm run build:filters && npm run build:utils && npm run build:components",
     "build:lib": "cpy ./ ../../../docs/lib/ --parents --cwd=../packages/library/dist",
     "build:sidebar": "node .scripts/sidebar.script.js",
+    "build:filters": "node .scripts/filters.script.js",
     "build:utils": "node .scripts/utils.script.js",
     "build:components": "node .scripts/components.script.js",
     "serve": "http-server ./ --port 3000 -c-1"

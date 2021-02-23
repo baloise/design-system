@@ -27,8 +27,11 @@
   }
 
   label {
+    @include font-smoothing();
+    @include margin(0);
+
+    line-height: 1;
     padding-left: 34px;
-    margin-top: 1px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;

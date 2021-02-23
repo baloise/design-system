@@ -1,20 +1,20 @@
 export interface BalToastOptions {
   message: string
   duration?: number
-  type?: "primary" | "info" | "success" | "warning" | "danger"
+  color?: 'primary' | 'info' | 'success' | 'warning' | 'danger'
 }
 
 export class BalToastController {
-  private container: HTMLElement
+  private container: HTMLElement | null = null
   private queue: HTMLBalToastElement[] = []
   private preQueue: HTMLBalToastElement[] = []
   private queueLimit: number = 5
 
   create(options: BalToastOptions): HTMLBalToastElement {
     this.setupContainer()
-    const toast: HTMLBalToastElement = document.createElement("bal-toast")
+    const toast: HTMLBalToastElement = document.createElement('bal-toast')
     toast.innerHTML = options.message
-    toast.type = options.type || "success"
+    toast.color = options.color || 'success'
     toast.duration = options.duration || 0
     toast.addEventListener('balClose', event => this.removeFromQueue((<any>event).detail))
     this.preQueue.push(toast)
@@ -22,15 +22,15 @@ export class BalToastController {
     return toast
   }
 
-  private setupContainer()  {
-    this.container = document.getElementById("bal-toast-container")
+  private setupContainer() {
+    this.container = document.getElementById('bal-toast-container')
 
     if (this.container) return
 
     if (!this.container) {
-      this.container = document.createElement("div")
-      this.container.className = "bal-notices bal-notices--toast"
-      this.container.id = "bal-toast-container"
+      this.container = document.createElement('div')
+      this.container.className = 'bal-notices bal-notices--toast'
+      this.container.id = 'bal-toast-container'
     }
 
     document.body.appendChild(this.container)
@@ -39,9 +39,9 @@ export class BalToastController {
   private updateQueue() {
     if (this.queue.length < this.queueLimit) {
       const toast = this.preQueue.shift()
-      if (toast) {
+      if (toast && this.container) {
         this.queue.push(toast)
-        this.container.insertAdjacentElement("beforeend", toast)
+        this.container.insertAdjacentElement('beforeend', toast)
       }
     }
   }
@@ -54,7 +54,6 @@ export class BalToastController {
   setQueue(queueLimit: number) {
     this.queueLimit = queueLimit
   }
-
 }
 
 export const balToastController = new BalToastController()

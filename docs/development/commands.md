@@ -7,7 +7,7 @@
 | `npm install`     | Installs all the npm dependencies and bootstrap the lerna project with the symlinks.                                 |
 | `npm run build`   | Builds all packages in the correct order.                                                                            |
 | `npm run test`    | Runs the the cypress e2e test against the example pages (bal-component/index.html) of the components and unit tests. |
-| `npm run release` | Starts the release process of lerna & npm.                                                                            |
+| `npm run release` | Starts the release process of lerna & npm.                                                                           |
 
 ## Library
 
@@ -18,15 +18,6 @@ All the library project commands starts with the prefix `lib:`
 | `npm run lib:build`    | Builds the stencil components into web-components.       |
 | `npm run lib:serve`    | This will start a dev server on `http://localhost:3333`. |
 | `npm run lib:generate` | Generates a new component.                               |
-
-## Utils
-
-All the library project commands starts with the prefix `utils:`
-
-| Command               | Description                                      |
-| :-------------------- | :----------------------------------------------- |
-| `npm run utils:build` | Builds the utils package.                        |
-| `npm run utils:test`  | Runs all the unit tests of the filter functions. |
 
 ## Vue
 

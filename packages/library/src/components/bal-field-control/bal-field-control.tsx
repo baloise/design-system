@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-field-control',
@@ -6,8 +6,6 @@ import { Component, h, Host, Prop, Element } from '@stencil/core'
   scoped: true,
 })
 export class FieldControl {
-  @Element() element: HTMLElement
-
   /**
    * Baloise icon for the right side of the input
    */
@@ -30,14 +28,14 @@ export class FieldControl {
 
   get buildIconLeftTemplate() {
     if (this.iconLeft) {
-      return <bal-icon name={this.iconLeft} type="info" class="is-left" size="small" inverted={this.inverted} />
+      return <bal-icon name={this.iconLeft} color="info" class="is-left" size="small" inverted={this.inverted} />
     }
     return ''
   }
 
   get buildIconRightTemplate() {
     if (this.iconRight) {
-      return <bal-icon name={this.iconRight} type="info" class="is-right" size="small" inverted={this.inverted} />
+      return <bal-icon name={this.iconRight} color="info" class="is-right" size="small" inverted={this.inverted} />
     }
     return ''
   }

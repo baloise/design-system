@@ -6,10 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
-import { BalButtonType } from "./components/bal-button/bal.button.type";
+import { BalButtonColor } from "./components/bal-button/bal.button.type";
 import { BalCardStepOption } from "./components/bal-card-step/bal-card-step.type";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
+import { AutocompleteTypes, InputTypes } from "./types/interfaces";
 import { BalOptionValue } from "./components/bal-select-option/bal-select-option.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -31,6 +32,10 @@ export namespace Components {
          */
         "closeLabel": string;
         /**
+          * Type defines the theme of the accordion toggle
+         */
+        "color": ColorTypesBasic;
+        /**
           * Controls if the accordion is collapsed or not
          */
         "isActive": boolean;
@@ -50,10 +55,6 @@ export namespace Components {
           * Triggers the accordion
          */
         "toggle": () => Promise<void>;
-        /**
-          * Type defines the theme of the accordion toggle
-         */
-        "type": ColorTypesBasic;
     }
     interface BalButton {
         /**
@@ -61,9 +62,17 @@ export namespace Components {
          */
         "bottomRounded": boolean;
         /**
-          * If `true` the button is disabled
+          * The color to use from your application's color palette.
+         */
+        "color": BalButtonColor;
+        /**
+          * If `true`, the user cannot interact with the button.
          */
         "disabled": boolean;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download": string | undefined;
         /**
           * If `true` the button has a full width
          */
@@ -71,7 +80,7 @@ export namespace Components {
         /**
           * Specifies the URL of the page the link goes to
          */
-        "href": string;
+        "href": string | undefined;
         /**
           * Name of the left button icon
          */
@@ -105,6 +114,10 @@ export namespace Components {
          */
         "outlined": boolean;
         /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
           * Size of the button
          */
         "size": 'small' | '';
@@ -113,7 +126,7 @@ export namespace Components {
          */
         "square": boolean;
         /**
-          * Specifies where to open the linked document
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target": '_blank' | ' _parent' | '_self' | '_top';
         /**
@@ -121,15 +134,19 @@ export namespace Components {
          */
         "topRounded": boolean;
         /**
-          * The theme type of the button. Given by bulma our css framework.
+          * The type of button.
          */
-        "type": BalButtonType;
+        "type": 'button' | 'reset' | 'submit';
     }
     interface BalCard {
         /**
           * If `true` a light blue border is added to the card.
          */
         "border": boolean;
+        /**
+          * Defines the color of the card.
+         */
+        "color": ColorTypes | '';
         /**
           * If `true` the card loses its shadow.
          */
@@ -150,10 +167,6 @@ export namespace Components {
           * If `true` the card has a limited width on desktop.
          */
         "teaser": boolean;
-        /**
-          * Defines the color of the card.
-         */
-        "type": ColorTypes | '';
     }
     interface BalCardActions {
         /**
@@ -266,6 +279,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
           * If `true`, the control works on dark background.
          */
         "inverted": boolean;
@@ -312,13 +329,25 @@ export namespace Components {
     }
     interface BalDatepicker {
         /**
+          * Callback to determine which date in the datepicker should be selectable.
+         */
+        "allowedDates": BalDateCallback;
+        /**
           * The tabindex of the control.
          */
         "balTabindex": number;
         /**
+          * Closes the dropdown
+         */
+        "close": () => Promise<void>;
+        /**
           * Closes the datepicker dropdown after selection
          */
         "closeOnSelect": boolean;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
         /**
           * If `true` the component is diabled.
          */
@@ -328,9 +357,9 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
-          * Callback to determine which date in the datepicker should be selectable.
+          * Returns the native `<input>` element used under the hood.
          */
-        "filter": BalDateCallback;
+        "getInputElement": () => Promise<HTMLInputElement>;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
@@ -340,41 +369,57 @@ export namespace Components {
          */
         "locale": 'en' | 'de' | 'fr' | 'it';
         /**
-          * Latest date available for selection
+          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
-        "maxDate": Date;
+        "max"?: string;
         /**
           * Latest year available for selection
          */
         "maxYearProp": number | undefined;
         /**
-          * Earliest date available for selection
+          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
          */
-        "minDate": Date;
+        "min"?: string;
         /**
           * Earliest year available for selection
          */
         "minYearProp": number | undefined;
         /**
-          * Defines the placeholder of the input element.
+          * The name of the control, which is submitted with the form data.
          */
-        "placeholder": string;
+        "name": string;
+        /**
+          * Opens the dropdown
+         */
+        "open": () => Promise<void>;
+        /**
+          * The text to display when the select is empty.
+         */
+        "placeholder": string | undefined;
         /**
           * If `true` the use can only select a date.
          */
         "readonly": boolean;
         /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required": boolean;
+        /**
           * Selects an option
          */
-        "select": (date: Date) => Promise<void>;
+        "select": (datestring: string) => Promise<void>;
+        /**
+          * Sets the focus on the input element
+         */
+        "setFocus": () => Promise<void>;
         /**
           * If `true` the datepicker only open on click of the icon
          */
         "triggerIcon": boolean;
         /**
-          * Selected date. Could also be passed as a string, which gets transformed to js date object.
+          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "value": Date;
+        "value"?: string | null;
     }
     interface BalDropdown {
         /**
@@ -392,7 +437,7 @@ export namespace Components {
         /**
           * Returns the `HTMLDivElement` of the content element
          */
-        "getContentElement": () => Promise<HTMLElement>;
+        "getContentElement": () => Promise<HTMLElement | null>;
         /**
           * If `true` the dropdown content is open.
          */
@@ -401,6 +446,9 @@ export namespace Components {
           * Open the dropdown menu.
          */
         "open": () => Promise<void>;
+        /**
+          * Defines the length of the menu in pixel.
+         */
         "scrollable": number;
         /**
           * Open or closes the dropdown.
@@ -451,6 +499,12 @@ export namespace Components {
          */
         "loading": boolean;
     }
+    interface BalFieldHint {
+        /**
+          * Text of the inputs label
+         */
+        "subject": string;
+    }
     interface BalFieldLabel {
         /**
           * If `true` a asterix (*) is added to the label text
@@ -465,7 +519,7 @@ export namespace Components {
         /**
           * Defines the color of the message.
          */
-        "type": '' | ColorTypesExtended;
+        "color": '' | ColorTypesExtended;
     }
     interface BalFileUpload {
         /**
@@ -483,15 +537,15 @@ export namespace Components {
         /**
           * Allowed max bundle size in bytes.
          */
-        "maxBundleSize": number;
+        "maxBundleSize": number | undefined;
         /**
           * Allowed max file size in bytes.
          */
-        "maxFileSize": number;
+        "maxFileSize": number | undefined;
         /**
           * Allowed number of files in the bundle.
          */
-        "maxFiles": number;
+        "maxFiles": number | undefined;
         /**
           * If `true` multiple file upload is possible.
          */
@@ -525,6 +579,10 @@ export namespace Components {
     }
     interface BalIcon {
         /**
+          * The theme type of the button. Given by bulma our css framework.
+         */
+        "color": BalButtonColor;
+        /**
           * If `true` the button is inverted
          */
         "inverted": boolean;
@@ -544,10 +602,6 @@ export namespace Components {
           * If `true` the icon is rotated 180deg
          */
         "turn": boolean;
-        /**
-          * The theme type of the button. Given by bulma our css framework.
-         */
-        "type": BalButtonType;
     }
     interface BalIconAccount {
         /**
@@ -821,9 +875,29 @@ export namespace Components {
     }
     interface BalInput {
         /**
+          * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+         */
+        "accept"?: string;
+        /**
           * The autocomplete attribute specifies whether or not an input field should have autocomplete enabled.
          */
         "autoComplete": boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+         */
+        "autocapitalize": string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": AutocompleteTypes;
+        /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+         */
+        "autocorrect": 'on' | 'off';
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus": boolean;
         /**
           * The tabindex of the control.
          */
@@ -833,21 +907,46 @@ export namespace Components {
          */
         "clickable": boolean;
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
           * If `true` the input is disabled
          */
         "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        "hasIconRight": boolean;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
         /**
           * If `true` this component can be placed on dark background
          */
         "inverted": boolean;
         /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
           * Defines the max length of the value.
          */
         "maxLength": number | undefined;
         /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
           * Defines the min length of the value.
          */
         "minLength": number | undefined;
+        /**
+          * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
+         */
+        "multiple"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -861,25 +960,37 @@ export namespace Components {
          */
         "onlyNumbers": boolean;
         /**
-          * Placeholder of the input
+          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
-        "placeholder": string;
+        "pattern"?: string | undefined;
         /**
-          * If `true` the input is readonly
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
+        /**
+          * If `true`, the user cannot modify the value.
          */
         "readonly": boolean;
         /**
-          * Sets the focus on the input element.
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck": boolean;
+        /**
           * Defines the type of the input (text, number, email ...).
          */
-        "type": string;
+        "type": InputTypes;
         /**
-          * The value of the control.
+          * The value of the input.
          */
-        "value": string;
+        "value"?: string | number;
     }
     interface BalList {
         /**
@@ -985,7 +1096,7 @@ export namespace Components {
         /**
           * Defines the color of the element
          */
-        "type": '' | ColorTypes;
+        "color": '' | ColorTypes;
     }
     interface BalPagination {
         /**
@@ -1061,6 +1172,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
           * The value of the control.
          */
         "value": string;
@@ -1091,6 +1206,14 @@ export namespace Components {
          */
         "filterPlaceholder": string;
         /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getFilterInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLBalInputElement>;
+        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
@@ -1103,6 +1226,10 @@ export namespace Components {
          */
         "multiple": boolean;
         /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
           * If `true` the filtering of the options is done outside of the component.
          */
         "noFilter": boolean;
@@ -1111,9 +1238,9 @@ export namespace Components {
          */
         "open": () => Promise<void>;
         /**
-          * Defines the placeholder of the input element.
+          * The text to display when the select is empty.
          */
-        "placeholder": string;
+        "placeholder"?: string | null;
         /**
           * Defines the height of the dropdown list.
          */
@@ -1148,9 +1275,6 @@ export namespace Components {
           * If `true` the option is focused
          */
         "focused": boolean;
-        /**
-          * *Internal* - Used to return the options infromation
-         */
         "getOption": <T>() => Promise<BalOptionValue<T>>;
         /**
           * If `true` the option is hidden
@@ -1163,7 +1287,7 @@ export namespace Components {
         /**
           * Label will be shown in the input element when it got selected
          */
-        "label": string;
+        "label": string | undefined;
         /**
           * If `true` the option is selected
          */
@@ -1171,7 +1295,7 @@ export namespace Components {
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
-        "value": string;
+        "value": string | undefined;
     }
     interface BalSnackbar {
         /**
@@ -1186,6 +1310,10 @@ export namespace Components {
           * Closes the snackbar after the given duration in ms
          */
         "closeIn": (duration: number) => Promise<void>;
+        /**
+          * The theme type of the snackbar. Given by bulma our css framework.
+         */
+        "color": ColorTypes | '';
         /**
           * The duration of the snackbar
          */
@@ -1202,10 +1330,6 @@ export namespace Components {
           * The subject of the snackbar header
          */
         "subject": string;
-        /**
-          * The theme type of the snackbar. Given by bulma our css framework.
-         */
-        "type": ColorTypes | '';
     }
     interface BalSpinner {
         /**
@@ -1251,6 +1375,10 @@ export namespace Components {
          */
         "label": string;
         /**
+          * Tell's if the linking is done by a router.
+         */
+        "prevent": boolean;
+        /**
           * Sets the tab active.
          */
         "setActive": (active: boolean) => Promise<void>;
@@ -1293,12 +1421,27 @@ export namespace Components {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "type": ColorTypes | '';
+        "color": ColorTypes | '';
     }
     interface BalText {
+        /**
+          * The theme type of the toast. Given by bulma our css framework.
+         */
+        "color": ColorTypes | '';
+        /**
+          * If `true` the text has a small size
+         */
         "small": boolean;
     }
     interface BalTextarea {
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        "autocapitalize": string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus": boolean;
         /**
           * The tabindex of the control.
          */
@@ -1308,41 +1451,69 @@ export namespace Components {
          */
         "clickable": boolean;
         /**
-          * If `true` the input is disabled
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * If `true`, the user cannot interact with the textarea.
          */
         "disabled": boolean;
+        /**
+          * Returns the native `<textarea>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLTextAreaElement>;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
         /**
           * If `true` this component can be placed on dark background
          */
         "inverted": boolean;
         /**
-          * Defines the max length of the value.
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
          */
-        "maxLength": number | undefined;
+        "maxLength"?: number;
         /**
-          * Defines the min length of the value.
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
          */
-        "minLength": number | undefined;
+        "minLength"?: number;
         /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
         /**
-          * Placeholder of the input
+          * Instructional text that shows before the input has a value.
          */
-        "placeholder": string;
+        "placeholder"?: string;
         /**
-          * If `true` the input is readonly
+          * If `true`, the user cannot modify the value.
          */
         "readonly": boolean;
         /**
-          * Sets the focus on the input element.
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        /**
+          * Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global `textarea.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
-          * The value of the control.
+          * The value of the textarea.
          */
-        "value": string;
+        "value"?: string;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: 'hard' | 'soft' | 'off';
     }
     interface BalTimeinput {
         /**
@@ -1376,13 +1547,13 @@ export namespace Components {
          */
         "closeIn": (duration: number) => Promise<void>;
         /**
+          * The theme type of the toast. Given by bulma our css framework.
+         */
+        "color": ColorTypes | '';
+        /**
           * The duration of the toast
          */
         "duration": number;
-        /**
-          * The theme type of the toast. Given by bulma our css framework.
-         */
-        "type": ColorTypes | '';
     }
 }
 declare global {
@@ -1517,6 +1688,12 @@ declare global {
     var HTMLBalFieldControlElement: {
         prototype: HTMLBalFieldControlElement;
         new (): HTMLBalFieldControlElement;
+    };
+    interface HTMLBalFieldHintElement extends Components.BalFieldHint, HTMLStencilElement {
+    }
+    var HTMLBalFieldHintElement: {
+        prototype: HTMLBalFieldHintElement;
+        new (): HTMLBalFieldHintElement;
     };
     interface HTMLBalFieldLabelElement extends Components.BalFieldLabel, HTMLStencilElement {
     }
@@ -2045,6 +2222,7 @@ declare global {
         "bal-dropdown-trigger": HTMLBalDropdownTriggerElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
+        "bal-field-hint": HTMLBalFieldHintElement;
         "bal-field-label": HTMLBalFieldLabelElement;
         "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
@@ -2146,6 +2324,10 @@ declare namespace LocalJSX {
          */
         "closeLabel"?: string;
         /**
+          * Type defines the theme of the accordion toggle
+         */
+        "color"?: ColorTypesBasic;
+        /**
           * Controls if the accordion is collapsed or not
          */
         "isActive"?: boolean;
@@ -2161,10 +2343,6 @@ declare namespace LocalJSX {
           * Label of the open trigger button
          */
         "openLabel"?: string;
-        /**
-          * Type defines the theme of the accordion toggle
-         */
-        "type"?: ColorTypesBasic;
     }
     interface BalButton {
         /**
@@ -2172,9 +2350,17 @@ declare namespace LocalJSX {
          */
         "bottomRounded"?: boolean;
         /**
-          * If `true` the button is disabled
+          * The color to use from your application's color palette.
+         */
+        "color"?: BalButtonColor;
+        /**
+          * If `true`, the user cannot interact with the button.
          */
         "disabled"?: boolean;
+        /**
+          * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
+         */
+        "download"?: string | undefined;
         /**
           * If `true` the button has a full width
          */
@@ -2182,7 +2368,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the URL of the page the link goes to
          */
-        "href"?: string;
+        "href"?: string | undefined;
         /**
           * Name of the left button icon
          */
@@ -2212,13 +2398,25 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * Emitted when the link element has clicked
+          * Emitted when the button loses focus.
+         */
+        "onBalBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onBalFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the link element has clicked.
          */
         "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * If `true` the button is outlined
          */
         "outlined"?: boolean;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
         /**
           * Size of the button
          */
@@ -2228,7 +2426,7 @@ declare namespace LocalJSX {
          */
         "square"?: boolean;
         /**
-          * Specifies where to open the linked document
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target"?: '_blank' | ' _parent' | '_self' | '_top';
         /**
@@ -2236,15 +2434,19 @@ declare namespace LocalJSX {
          */
         "topRounded"?: boolean;
         /**
-          * The theme type of the button. Given by bulma our css framework.
+          * The type of button.
          */
-        "type"?: BalButtonType;
+        "type"?: 'button' | 'reset' | 'submit';
     }
     interface BalCard {
         /**
           * If `true` a light blue border is added to the card.
          */
         "border"?: boolean;
+        /**
+          * Defines the color of the card.
+         */
+        "color"?: ColorTypes | '';
         /**
           * If `true` the card loses its shadow.
          */
@@ -2265,10 +2467,6 @@ declare namespace LocalJSX {
           * If `true` the card has a limited width on desktop.
          */
         "teaser"?: boolean;
-        /**
-          * Defines the color of the card.
-         */
-        "type"?: ColorTypes | '';
     }
     interface BalCardActions {
         /**
@@ -2398,7 +2596,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<void>) => void;
+        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the checked property has changed.
          */
@@ -2406,7 +2604,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<void>) => void;
+        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * The value of the control.
          */
@@ -2438,6 +2636,10 @@ declare namespace LocalJSX {
     }
     interface BalDatepicker {
         /**
+          * Callback to determine which date in the datepicker should be selectable.
+         */
+        "allowedDates"?: BalDateCallback;
+        /**
           * The tabindex of the control.
          */
         "balTabindex"?: number;
@@ -2445,6 +2647,10 @@ declare namespace LocalJSX {
           * Closes the datepicker dropdown after selection
          */
         "closeOnSelect"?: boolean;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
         /**
           * If `true` the component is diabled.
          */
@@ -2454,10 +2660,6 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
-          * Callback to determine which date in the datepicker should be selectable.
-         */
-        "filter"?: BalDateCallback;
-        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
@@ -2466,21 +2668,25 @@ declare namespace LocalJSX {
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it';
         /**
-          * Latest date available for selection
+          * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
-        "maxDate"?: Date;
+        "max"?: string;
         /**
           * Latest year available for selection
          */
         "maxYearProp"?: number | undefined;
         /**
-          * Earliest date available for selection
+          * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
          */
-        "minDate"?: Date;
+        "min"?: string;
         /**
           * Earliest year available for selection
          */
         "minYearProp"?: number | undefined;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
         /**
           * Emitted when the input loses focus.
          */
@@ -2488,7 +2694,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: CustomEvent<any>) => void;
+        "onBalChange"?: (event: CustomEvent<string | undefined | null>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -2498,21 +2704,25 @@ declare namespace LocalJSX {
          */
         "onBalInput"?: (event: CustomEvent<string>) => void;
         /**
-          * Defines the placeholder of the input element.
+          * The text to display when the select is empty.
          */
-        "placeholder"?: string;
+        "placeholder"?: string | undefined;
         /**
           * If `true` the use can only select a date.
          */
         "readonly"?: boolean;
         /**
+          * If `true` the attribute required is added to the native input.
+         */
+        "required"?: boolean;
+        /**
           * If `true` the datepicker only open on click of the icon
          */
         "triggerIcon"?: boolean;
         /**
-          * Selected date. Could also be passed as a string, which gets transformed to js date object.
+          * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "value"?: Date;
+        "value"?: string | null;
     }
     interface BalDropdown {
         /**
@@ -2535,6 +2745,9 @@ declare namespace LocalJSX {
           * *Internal* - Use this to close unuesed dropdowns.
          */
         "onBalDropdownPrepare"?: (event: CustomEvent<string>) => void;
+        /**
+          * Defines the length of the menu in pixel.
+         */
         "scrollable"?: number;
     }
     interface BalDropdownMenu {
@@ -2581,6 +2794,12 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
     }
+    interface BalFieldHint {
+        /**
+          * Text of the inputs label
+         */
+        "subject"?: string;
+    }
     interface BalFieldLabel {
         /**
           * If `true` a asterix (*) is added to the label text
@@ -2595,7 +2814,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the message.
          */
-        "type"?: '' | ColorTypesExtended;
+        "color"?: '' | ColorTypesExtended;
     }
     interface BalFileUpload {
         /**
@@ -2613,15 +2832,15 @@ declare namespace LocalJSX {
         /**
           * Allowed max bundle size in bytes.
          */
-        "maxBundleSize"?: number;
+        "maxBundleSize"?: number | undefined;
         /**
           * Allowed max file size in bytes.
          */
-        "maxFileSize"?: number;
+        "maxFileSize"?: number | undefined;
         /**
           * Allowed number of files in the bundle.
          */
-        "maxFiles"?: number;
+        "maxFiles"?: number | undefined;
         /**
           * If `true` multiple file upload is possible.
          */
@@ -2651,6 +2870,10 @@ declare namespace LocalJSX {
     }
     interface BalIcon {
         /**
+          * The theme type of the button. Given by bulma our css framework.
+         */
+        "color"?: BalButtonColor;
+        /**
           * If `true` the button is inverted
          */
         "inverted"?: boolean;
@@ -2670,10 +2893,6 @@ declare namespace LocalJSX {
           * If `true` the icon is rotated 180deg
          */
         "turn"?: boolean;
-        /**
-          * The theme type of the button. Given by bulma our css framework.
-         */
-        "type"?: BalButtonType;
     }
     interface BalIconAccount {
         /**
@@ -2947,9 +3166,29 @@ declare namespace LocalJSX {
     }
     interface BalInput {
         /**
+          * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
+         */
+        "accept"?: string;
+        /**
           * The autocomplete attribute specifies whether or not an input field should have autocomplete enabled.
          */
         "autoComplete"?: boolean;
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+         */
+        "autocapitalize"?: string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: AutocompleteTypes;
+        /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+         */
+        "autocorrect"?: 'on' | 'off';
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus"?: boolean;
         /**
           * The tabindex of the control.
          */
@@ -2959,21 +3198,42 @@ declare namespace LocalJSX {
          */
         "clickable"?: boolean;
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
           * If `true` the input is disabled
          */
         "disabled"?: boolean;
+        "hasIconRight"?: boolean;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
         /**
           * If `true` this component can be placed on dark background
          */
         "inverted"?: boolean;
         /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
           * Defines the max length of the value.
          */
         "maxLength"?: number | undefined;
         /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
           * Defines the min length of the value.
          */
         "minLength"?: number | undefined;
+        /**
+          * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
+         */
+        "multiple"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -2989,7 +3249,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string>) => void;
+        "onBalChange"?: (event: CustomEvent<string | number | null>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3001,7 +3261,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string>) => void;
+        "onBalInput"?: (event: CustomEvent<string | number | null>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -3011,21 +3271,33 @@ declare namespace LocalJSX {
          */
         "onlyNumbers"?: boolean;
         /**
-          * Placeholder of the input
+          * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
-        "placeholder"?: string;
+        "pattern"?: string | undefined;
         /**
-          * If `true` the input is readonly
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
+        /**
+          * If `true`, the user cannot modify the value.
          */
         "readonly"?: boolean;
         /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck"?: boolean;
+        /**
           * Defines the type of the input (text, number, email ...).
          */
-        "type"?: string;
+        "type"?: InputTypes;
         /**
-          * The value of the control.
+          * The value of the input.
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     interface BalList {
         /**
@@ -3127,7 +3399,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the element
          */
-        "type"?: '' | ColorTypes;
+        "color"?: '' | ColorTypes;
     }
     interface BalPagination {
         /**
@@ -3183,11 +3455,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the toggle loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<void>) => void;
+        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Emitted when the toggle has focus.
          */
-        "onBalFocus"?: (event: CustomEvent<void>) => void;
+        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * The value of the control.
          */
@@ -3202,6 +3474,10 @@ declare namespace LocalJSX {
           * If `true` the component can be used on dark background
          */
         "inverted"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
         /**
           * Emitted when the checked property has changed.
          */
@@ -3241,6 +3517,10 @@ declare namespace LocalJSX {
          */
         "multiple"?: boolean;
         /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
           * If `true` the filtering of the options is done outside of the component.
          */
         "noFilter"?: boolean;
@@ -3273,9 +3553,9 @@ declare namespace LocalJSX {
          */
         "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
-          * Defines the placeholder of the input element.
+          * The text to display when the select is empty.
          */
-        "placeholder"?: string;
+        "placeholder"?: string | null;
         /**
           * Defines the height of the dropdown list.
          */
@@ -3309,7 +3589,7 @@ declare namespace LocalJSX {
         /**
           * Label will be shown in the input element when it got selected
          */
-        "label"?: string;
+        "label"?: string | undefined;
         /**
           * If `true` the option is selected
          */
@@ -3317,13 +3597,17 @@ declare namespace LocalJSX {
         /**
           * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
          */
-        "value"?: string;
+        "value"?: string | undefined;
     }
     interface BalSnackbar {
         /**
           * Label text for the action button
          */
         "action"?: string;
+        /**
+          * The theme type of the snackbar. Given by bulma our css framework.
+         */
+        "color"?: ColorTypes | '';
         /**
           * The duration of the snackbar
          */
@@ -3348,10 +3632,6 @@ declare namespace LocalJSX {
           * The subject of the snackbar header
          */
         "subject"?: string;
-        /**
-          * The theme type of the snackbar. Given by bulma our css framework.
-         */
-        "type"?: ColorTypes | '';
     }
     interface BalSpinner {
         /**
@@ -3397,6 +3677,10 @@ declare namespace LocalJSX {
          */
         "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
         /**
+          * Tell's if the linking is done by a router.
+         */
+        "prevent"?: boolean;
+        /**
           * This is the key of the tab.
          */
         "value"?: string;
@@ -3435,12 +3719,27 @@ declare namespace LocalJSX {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "type"?: ColorTypes | '';
+        "color"?: ColorTypes | '';
     }
     interface BalText {
+        /**
+          * The theme type of the toast. Given by bulma our css framework.
+         */
+        "color"?: ColorTypes | '';
+        /**
+          * If `true` the text has a small size
+         */
         "small"?: boolean;
     }
     interface BalTextarea {
+        /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        "autocapitalize"?: string;
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus"?: boolean;
         /**
           * The tabindex of the control.
          */
@@ -3450,21 +3749,33 @@ declare namespace LocalJSX {
          */
         "clickable"?: boolean;
         /**
-          * If `true` the input is disabled
+          * The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.
+         */
+        "cols"?: number;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * If `true`, the user cannot interact with the textarea.
          */
         "disabled"?: boolean;
+        /**
+          * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
+         */
+        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
         /**
           * If `true` this component can be placed on dark background
          */
         "inverted"?: boolean;
         /**
-          * Defines the max length of the value.
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
          */
-        "maxLength"?: number | undefined;
+        "maxLength"?: number;
         /**
-          * Defines the min length of the value.
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
          */
-        "minLength"?: number | undefined;
+        "minLength"?: number;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -3473,6 +3784,10 @@ declare namespace LocalJSX {
           * Emitted when a keyboard input occurred.
          */
         "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the input value has changed..
+         */
+        "onBalChange"?: (event: CustomEvent<string>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3490,17 +3805,29 @@ declare namespace LocalJSX {
          */
         "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
-          * Placeholder of the input
+          * Instructional text that shows before the input has a value.
          */
         "placeholder"?: string;
         /**
-          * If `true` the input is readonly
+          * If `true`, the user cannot modify the value.
          */
         "readonly"?: boolean;
         /**
-          * The value of the control.
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The number of visible text lines for the control.
+         */
+        "rows"?: number;
+        /**
+          * The value of the textarea.
          */
         "value"?: string;
+        /**
+          * Indicates how the control wraps text.
+         */
+        "wrap"?: 'hard' | 'soft' | 'off';
     }
     interface BalTimeinput {
         /**
@@ -3522,7 +3849,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when either the hour or minute input field loses focus.
          */
-        "onBalBlur"?: (event: CustomEvent<void>) => void;
+        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
           * Emitted when either the hour or the minute input has changed. It will not be triggert if either hour or time input has never been set (i.e. "--" is selected).
          */
@@ -3534,6 +3861,10 @@ declare namespace LocalJSX {
     }
     interface BalToast {
         /**
+          * The theme type of the toast. Given by bulma our css framework.
+         */
+        "color"?: ColorTypes | '';
+        /**
           * The duration of the toast
          */
         "duration"?: number;
@@ -3541,10 +3872,6 @@ declare namespace LocalJSX {
           * Emitted when toast is closed
          */
         "onBalClose"?: (event: CustomEvent<string>) => void;
-        /**
-          * The theme type of the toast. Given by bulma our css framework.
-         */
-        "type"?: ColorTypes | '';
     }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
@@ -3569,6 +3896,7 @@ declare namespace LocalJSX {
         "bal-dropdown-trigger": BalDropdownTrigger;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
+        "bal-field-hint": BalFieldHint;
         "bal-field-label": BalFieldLabel;
         "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
@@ -3681,6 +4009,7 @@ declare module "@stencil/core" {
             "bal-dropdown-trigger": LocalJSX.BalDropdownTrigger & JSXBase.HTMLAttributes<HTMLBalDropdownTriggerElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
+            "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;
             "bal-field-label": LocalJSX.BalFieldLabel & JSXBase.HTMLAttributes<HTMLBalFieldLabelElement>;
             "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;

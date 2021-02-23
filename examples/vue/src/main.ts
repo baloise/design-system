@@ -3,7 +3,7 @@ import './style.scss'
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import { BalUiLibraryPlugin } from '@baloise/ui-library-vue'
+import { BalUiLibraryPlugin } from '@baloise/ui-library-vue-2'
 
 Vue.config.productionTip = false
 

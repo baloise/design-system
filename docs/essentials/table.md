@@ -18,12 +18,10 @@
         <bal-checkbox id="checkbox1"></bal-checkbox>
       </td>
       <td>Tony Stark</td>
-      <td><bal-tag type="success">Ready</bal-tag></td>
+      <td><bal-tag color="success">Ready</bal-tag></td>
       <td class="has-buttons">
-        <div class="buttons">
-          <bal-button type="info" size="small" icon="edit" square outlined></bal-button>
-          <bal-button type="info" size="small" icon="trash" square outlined></bal-button>
-        </div>
+        <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+        <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
       </td>
     </tr>
     <tr>
@@ -31,12 +29,10 @@
         <bal-checkbox id="checkbox2"></bal-checkbox>
       </td>
       <td>Steve Rogers</td>
-      <td><bal-tag type="danger">Injured</bal-tag></td>
+      <td><bal-tag color="danger">Injured</bal-tag></td>
       <td class="has-buttons">
-        <div class="buttons">
-          <bal-button type="info" size="small" icon="edit" square outlined></bal-button>
-          <bal-button type="info" size="small" icon="trash" square outlined></bal-button>
-        </div>
+        <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+        <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
       </td>
     </tr>
     <tr>
@@ -44,12 +40,10 @@
         <bal-checkbox id="checkbox3"></bal-checkbox>
       </td>
       <td>Peter Parker</td>
-      <td><bal-tag type="warning">In school</bal-tag></td>
+      <td><bal-tag color="warning">In school</bal-tag></td>
       <td class="has-buttons">
-        <div class="buttons">
-          <bal-button type="info" size="small" icon="edit" square outlined></bal-button>
-          <bal-button type="info" size="small" icon="trash" square outlined></bal-button>
-        </div>
+        <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+        <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
       </td>
     </tr>
     <tr>
@@ -59,10 +53,8 @@
       <td>John Doe</td>
       <td><bal-tag>Unknown</bal-tag></td>
       <td class="has-buttons">
-        <div class="buttons">
-          <bal-button type="info" size="small" icon="edit" square outlined></bal-button>
-          <bal-button type="info" size="small" icon="trash" square outlined></bal-button>
-        </div>
+        <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+        <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
       </td>
     </tr>
   </tbody>

@@ -40,12 +40,12 @@ export class Tabs {
   /**
    * Emitted when the changes has finished.
    */
-  @Event({ eventName: 'balTabChange' }) tabsDidChange: EventEmitter<BalTabOption>
+  @Event({ eventName: 'balTabChange' }) tabsDidChange!: EventEmitter<BalTabOption>
 
   /**
    * Emitted when the action button has clicked
    */
-  @Event({ eventName: 'balActionClick' }) actionHasClicked: EventEmitter<MouseEvent>
+  @Event({ eventName: 'balActionClick' }) actionHasClicked!: EventEmitter<MouseEvent>
 
   /**
    * Go to tab with the given value
@@ -76,6 +76,11 @@ export class Tabs {
   }
 
   private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
+    if (tab.prevent) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+
     if (!tab.disabled) {
       tab.navigate.emit(event)
       await this.select(tab)
@@ -103,7 +108,8 @@ export class Tabs {
                   'is-disabled': tab.disabled,
                   'is-done': tab.done,
                   'is-failed': tab.failed,
-                }}>
+                }}
+              >
                 <a onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}>
                   <span class="step-index">
                     <bal-text>{index + 1}</bal-text>
@@ -112,7 +118,7 @@ export class Tabs {
                     <bal-text>{tab.label}</bal-text>
                   </span>
                 </a>
-                <span class="bubble" style={!tab.hasBubble && { display: 'none' }}></span>
+                <span class="bubble" style={{ display: tab.hasBubble ? 'inline' : 'none' }}></span>
               </li>
             ))}
           </ul>
@@ -134,17 +140,19 @@ export class Tabs {
                   aria-current="page"
                   onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}
                   style={{ display: tab.href === '' ? 'none' : '' }}
-                  class={{ hidden: tab.href === '' }}>
+                  class={{ hidden: tab.href === '' }}
+                >
                   <bal-text>{tab.label}</bal-text>
                 </a>
                 <a
                   aria-current="page"
                   onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}
                   style={{ display: tab.href === '' ? '' : 'none' }}
-                  class={{ hidden: tab.href !== '' }}>
+                  class={{ hidden: tab.href !== '' }}
+                >
                   <bal-text>{tab.label}</bal-text>
                 </a>
-                <span class="bubble" style={!tab.hasBubble && { display: 'none' }}></span>
+                <span class="bubble" style={{ display: tab.hasBubble ? 'inline' : 'none' }}></span>
               </li>
             ))}
             <li class="is-right" style={{ display: this.action ? 'block' : 'none' }}>

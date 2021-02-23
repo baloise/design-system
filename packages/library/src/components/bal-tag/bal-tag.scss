@@ -2,22 +2,37 @@
 @import 'node_modules/bulma/sass/elements/tag';
 
 :host {
-  position: static;
-  display: inline-flex;
+  display: inline-block;
+  width: auto;
+  font-family: $family-primary;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: top; // the better option for most scenarios
+  vertical-align: -webkit-baseline-middle; // the best for those that support it
+  pointer-events: auto;
+  font-kerning: none;
 
   .tag {
-    align-items: center;
-    justify-content: center;
+    @include font-smoothing();
+    @include margin(0);
+
+    width: 100%;
+    line-height: 1;
+    contain: layout style;
+    outline: none;
+    z-index: 0;
+    box-sizing: border-box;
+    appearance: none;
     font-weight: $weight-bold;
+    padding-top: 0px;
+    padding-bottom: 2px;
     padding-left: 20px;
     padding-right: 20px;
-    line-height: normal;
     height: auto;
     min-height: 22px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // padding-top: calc(0.3em - 1px);
 
     &.default {
       background-color: $grey;

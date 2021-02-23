@@ -17,6 +17,10 @@ export class Dropdown {
    * If `true` the field spans over the whole width.
    */
   @Prop() expanded: boolean = false
+
+  /**
+   * Defines the length of the menu in pixel.
+   */
   @Prop() scrollable: number = 0
 
   /**
@@ -89,7 +93,7 @@ export class Dropdown {
   /**
    * Returns the `HTMLDivElement` of the menu element
    */
-  async getMenuElement(): Promise<HTMLElement> {
+  async getMenuElement(): Promise<HTMLElement | null> {
     return this.menuElement
   }
 
@@ -97,7 +101,7 @@ export class Dropdown {
    * Returns the `HTMLDivElement` of the content element
    */
   @Method()
-  async getContentElement(): Promise<HTMLElement> {
+  async getContentElement(): Promise<HTMLElement | null> {
     return this.contentElement
   }
 
@@ -126,11 +130,11 @@ export class Dropdown {
     this.calcIsDropDownContentUp()
   }
 
-  get menuElement(): HTMLElement {
+  get menuElement(): HTMLElement | null {
     return this.element.querySelector('bal-dropdown-menu')
   }
 
-  get contentElement(): HTMLElement {
+  get contentElement(): HTMLElement | null {
     return this.element.querySelector('bal-dropdown-content')
   }
 
@@ -146,12 +150,16 @@ export class Dropdown {
 
   render() {
     return (
-      <Host data-id={this.dropdownId}>
+      <Host
+        data-id={this.dropdownId}
+        class={{
+          'is-expanded': this.expanded,
+          'has-fixed-content-width': this.fixedContentWidth,
+        }}>
         <div
           class={{
             'dropdown': true,
             'is-active': this.isActive,
-            'has-fixed-content-width': this.fixedContentWidth,
             'is-expanded': this.expanded,
             'is-up': this.isDropDownContentUp,
           }}>

@@ -1,6 +1,6 @@
 const log = require('../../.scripts/log')
 const file = require('../../.scripts/file')
-const libraryLib = require('../../packages/library/.scripts/library.lib')
+const libraryLib = require('../../packages/library/.scripts/components.lib')
 const path = require('path')
 const { NEWLINE, SIDEBAR_SEPERATOR_START, SIDEBAR_SEPERATOR_END } = require('./utils/constants')
 

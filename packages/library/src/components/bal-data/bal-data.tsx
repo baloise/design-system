@@ -10,14 +10,12 @@ export class Data {
   /**
    * If `true` a bottom border is added to the data-item.
    */
-  @Prop()
-  border = false
+  @Prop() border = false
 
   /**
    * If `true` the data list is horizontal instead of vertical.
    */
-  @Prop()
-  horizontal = false
+  @Prop() horizontal = false
 
   render() {
     return (

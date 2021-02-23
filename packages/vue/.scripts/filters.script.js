@@ -1,33 +1,42 @@
 /**
- * vue - filters
+ * angular - pipes
  * --------------------------------------
  * This script reads the filter.json and creates
  * out of this information the filters.ts file, which
- * adds the filter to the vue framework.
+ * adds the pipes to the angular framework.
  */
 
 const path = require('path')
 const file = require('../../../.scripts/file')
-const log = require('../../../.scripts/log')
-const utilsLib = require('../../utils/.scripts/utils.lib')
+const { title, log } = require('../../../.scripts/log')
+const filtersLib = require('../../library/.scripts/filters.lib')
 
 const run = async () => {
-  await log.title('vue : filters')
+  await title('vue : filters')
 
-  const filters = await utilsLib.filters()
+  const filters = await filtersLib.filters()
 
-  const utilImports = filters.map(f => `import { ${f.name} } from '@baloise/ui-library-utils'`)
-  const utilFilters = filters.map(f => `  _Vue.filter('${f.name}', ${f.name})`)
+  const functions = filters.map(f => `  ${f.name}`)
+
+  const functionsGlobal = filters.map(f => `  app.config.globalProperties.$${f.name} = ${f.name}`)
+  const functionsProvide = filters.map(f => `  app.provide<typeof ${f.name}>('${f.name}', ${f.name})`)
+  const functionsUse = filters.map(f => `export const use${f.name.replace('bal', 'Bal')} = (): typeof ${f.name} => inject<typeof ${f.name}>('${f.name}', ${f.name})`)
 
   const content = [
     '// generated file by .scripts/filters.script.js',
     '',
-    `import { PluginFunction } from 'vue'`,
-    utilImports.join('\n'),
+    `import { App, inject } from 'vue'`,
+    `import {`,
+    functions.join(',\n'),
+    `} from '@baloise/ui-library'`,
     '',
-    'export const addFilters: PluginFunction<any> = (_Vue): void => {',
-    utilFilters.join('\n'),
+    'export const applyFilters = (app: App) => {',
+    functionsGlobal.join('\n'),
+    '',
+    functionsProvide.join('\n'),
     '}',
+    '',
+    functionsUse.join('\n'),
     '',
   ].join('\n')
 

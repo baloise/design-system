@@ -49,6 +49,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [bal-field-hint](../bal-field-hint)
+
 ### Depends on
 
 - [bal-icon](../bal-icon)
@@ -60,8 +64,9 @@ graph TD;
   bal-hint --> bal-icon
   bal-hint --> bal-button
   bal-button --> bal-spinner
-  bal-button --> bal-text
   bal-button --> bal-icon
+  bal-button --> bal-text
+  bal-field-hint --> bal-hint
   style bal-hint fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,6 +1,19 @@
 @import '../../styles/ui-library.utilities';
 
 :host {
+  display: inline-block;
+  width: auto;
+  font-family: $family-primary;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: top; // the better option for most scenarios
+  vertical-align: -webkit-baseline-middle; // the best for those that support it
+  pointer-events: auto;
+  font-kerning: none;
+
   &.bal-radio {
     min-height: 26px;
     display: inline-block;
@@ -18,6 +31,12 @@
     }
 
     input[type='radio'] + label {
+      @include font-smoothing();
+      @include margin(0);
+
+      line-height: 1;
+      contain: layout style;
+
       display: block;
       padding-top: 2px;
       min-height: 26px;
@@ -102,6 +121,11 @@
     }
 
     label {
+      @include font-smoothing();
+      @include margin(0);
+
+      contain: layout style;
+      line-height: 1;
       display: flex;
       flex: 1 1 0;
       height: 30px;
@@ -124,10 +148,6 @@
       font-size: $size-5;
       font-weight: bold;
       color: $bal_text_light_blue;
-
-      bal-text {
-        margin-top: 3px;
-      }
     }
 
     input:checked ~ label {

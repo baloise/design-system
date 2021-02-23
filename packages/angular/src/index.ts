@@ -4,6 +4,10 @@ export * from './directives/proxies'
 // FILTERS
 export * from './filters'
 
+// SERVICES
+export { BalToastService } from './bal-toast.service'
+export { BalSnackbarService } from './bal-snackbar.service'
+
 // PACKAGE MODULE
 export { BalUiLibraryModule } from './ui-library.module'
 

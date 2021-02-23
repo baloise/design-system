@@ -42,7 +42,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { routes } from './router'
-import { BalNavbar, BalTabs, BalTabItem, BalNavbarBrand, BalCard, BalText } from '@baloise/ui-library-vue'
+import { BalNavbar, BalTabs, BalTabItem, BalNavbarBrand, BalCard, BalText } from '@baloise/ui-library-vue-2'
 
 export default Vue.extend({
   name: 'Home',

@@ -1,38 +1,28 @@
 /// <reference types="cypress" />
-import {
-  Accessor,
-  createAccessor,
-  Clickable,
-  Containable,
-  Disableable,
-  Existable,
-  ExistableMixin,
-  NthSelectable,
-  NthSelectableMixin,
-  Shouldable,
-  ShouldableMixin,
-  Visible,
-  VisibleMixin,
-  ContainableMixin,
-  ClickableMixin,
-  DisableableMixin,
-  Attributable,
-  Urlable,
-  Waitable,
-  AttributableMixin, UrlableMixin, WaitableMixin, Mixin, MixinContext,
-} from '../index'
+
+import { Attributable, AttributableMixin } from '../mixins/attributable'
+import { Clickable, ClickableMixin } from '../mixins/clickable'
+import { Containable, ContainableMixin } from '../mixins/containable'
+import { Disableable, DisableableMixin } from '../mixins/disableable'
+import { Existable, ExistableMixin } from '../mixins/existable'
+import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
+import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
+import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
+import { Urlable, UrlableMixin } from '../mixins/urlable'
+import { Visible, VisibleMixin } from '../mixins/visible'
+import { Waitable, WaitableMixin } from '../mixins/waitable'
 
 interface ButtonAccessorType
   extends Clickable<ButtonAccessorType>,
-          Existable<ButtonAccessorType>,
-          Shouldable<ButtonAccessorType>,
-          Containable<ButtonAccessorType>,
-          Disableable<ButtonAccessorType>,
-          Visible<ButtonAccessorType>,
-          NthSelectable<ButtonAccessorType>,
-          Attributable<ButtonAccessorType>,
-          Urlable<ButtonAccessorType>,
-          Waitable<ButtonAccessorType>{}
+    Existable<ButtonAccessorType>,
+    Shouldable<ButtonAccessorType>,
+    Containable<ButtonAccessorType>,
+    Disableable<ButtonAccessorType>,
+    Visible<ButtonAccessorType>,
+    NthSelectable<ButtonAccessorType>,
+    Attributable<ButtonAccessorType>,
+    Urlable<ButtonAccessorType>,
+    Waitable<ButtonAccessorType> {}
 
 export const ButtonContainableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   /**
@@ -79,5 +69,5 @@ export const ButtonAccessor: Accessor<ButtonAccessorType> = createAccessor<Butto
   AttributableMixin,
   UrlableMixin,
   WaitableMixin,
-  ButtonContainableMixin
+  ButtonContainableMixin,
 )

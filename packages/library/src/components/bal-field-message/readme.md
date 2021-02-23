@@ -12,7 +12,7 @@
 
 | Property | Attribute | Description                       | Type                                       | Default |
 | -------- | --------- | --------------------------------- | ------------------------------------------ | ------- |
-| `type`   | `type`    | Defines the color of the message. | `"" \| "danger" \| "success" \| "warning"` | `''`    |
+| `color`  | `color`   | Defines the color of the message. | `"" \| "danger" \| "success" \| "warning"` | `''`    |
 
 
 ## Dependencies

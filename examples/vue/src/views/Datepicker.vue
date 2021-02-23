@@ -8,15 +8,16 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { BalDatepicker } from '@baloise/ui-library-vue'
+import { balDateUtil } from '@baloise/ui-library'
+import { BalDatepicker } from '@baloise/ui-library-vue-2'
 
 export default Vue.extend({
   data: () => {
-    const value = new Date()
+    const value = balDateUtil.newDateString(balDateUtil.now())
     return { value }
   },
   watch: {
-    value: (value: Date) => {
+    value: (value: string) => {
       console.log('BalDatepicker has changed', value)
     },
   },

@@ -9,6 +9,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { balClaimNumber } from '@baloise/ui-library'
 
 export default Vue.extend({
   name: 'Home',
@@ -18,9 +19,9 @@ export default Vue.extend({
     }
   },
   computed: {
-    claimNumberFormatted: function() {
-      return this.$balUtils.balClaimNumber(this.claimNumber)
-    }
-  }
+    claimNumberFormatted: function () {
+      return balClaimNumber(this.claimNumber)
+    },
+  },
 })
 </script>

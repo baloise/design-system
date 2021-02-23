@@ -7,14 +7,17 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { BalButton } from '@baloise/ui-library-vue'
+import { BalButton } from '@baloise/ui-library-vue-2'
 
 export default Vue.extend({
   methods: {
     createToast: function () {
-      this.$balToast.create({
-        message: 'Message',
-      })
+      // this.$createToast({
+      //   message: 'Message',
+      // })
+      // // this.$balToast.create({
+      //   message: 'Message',
+      // })
     },
   },
   components: {

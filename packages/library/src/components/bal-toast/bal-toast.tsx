@@ -8,15 +8,15 @@ import { ColorTypes } from '../../types/color.types'
   shadow: false,
 })
 export class Toast {
-  toastId = `bal-to-${toastIds++}`
-  timer: NodeJS.Timer
-  @Element() element: HTMLBalToastElement
+  @Element() element!: HTMLBalToastElement
+  timer!: NodeJS.Timer
+  toastId = `bal-toast-${toastIds++}`
   @State() animationClass = 'fadeInDown'
 
   /**
    * The theme type of the toast. Given by bulma our css framework.
    */
-  @Prop() type: ColorTypes | '' = ''
+  @Prop() color: ColorTypes | '' = ''
 
   /**
    * The duration of the toast
@@ -57,10 +57,10 @@ export class Toast {
   }
 
   get colorType() {
-    if (this.type === '') {
+    if (this.color === '') {
       return ''
     }
-    return `is-${this.type}`
+    return `is-${this.color}`
   }
 
   render() {
@@ -70,7 +70,7 @@ export class Toast {
           <span class="toast-message">
             <slot />
           </span>
-          <bal-icon name="close" class="close" size="xsmall" inverted={this.type !== ''}></bal-icon>
+          <bal-icon name="close" class="close" size="xsmall" inverted={this.color !== ''}></bal-icon>
         </div>
       </Host>
     )

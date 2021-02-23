@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
 import { ColorTypesExtended } from '../../types/color.types'
 
 @Component({
@@ -7,16 +7,14 @@ import { ColorTypesExtended } from '../../types/color.types'
   scoped: false,
 })
 export class FieldMessage {
-  @Element() element: HTMLElement
-
   /**
    * Defines the color of the message.
    */
-  @Prop() type: '' | ColorTypesExtended = ''
+  @Prop() color: '' | ColorTypesExtended = ''
 
   render() {
     return (
-      <Host class={`help is-${this.type}`}>
+      <Host class={`help is-${this.color}`}>
         <bal-text small>
           <slot></slot>
         </bal-text>

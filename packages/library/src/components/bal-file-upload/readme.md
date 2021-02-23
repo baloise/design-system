@@ -8,15 +8,15 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 
 ## Properties
 
-| Property        | Attribute         | Description                                      | Type      | Default                      |
-| --------------- | ----------------- | ------------------------------------------------ | --------- | ---------------------------- |
-| `accept`        | `accept`          | Accepted MIME-Types like `image/png,image/jpeg`. | `string`  | `''`                         |
-| `disabled`      | `disabled`        | If `true` the button is disabled                 | `boolean` | `undefined`                  |
-| `label`         | `label`           | Label of the drop area.                          | `string`  | `'Choose or drop a file...'` |
-| `maxBundleSize` | `max-bundle-size` | Allowed max bundle size in bytes.                | `number`  | `undefined`                  |
-| `maxFileSize`   | `max-file-size`   | Allowed max file size in bytes.                  | `number`  | `undefined`                  |
-| `maxFiles`      | `max-files`       | Allowed number of files in the bundle.           | `number`  | `undefined`                  |
-| `multiple`      | `multiple`        | If `true` multiple file upload is possible.      | `boolean` | `true`                       |
+| Property        | Attribute         | Description                                      | Type                  | Default                      |
+| --------------- | ----------------- | ------------------------------------------------ | --------------------- | ---------------------------- |
+| `accept`        | `accept`          | Accepted MIME-Types like `image/png,image/jpeg`. | `string`              | `''`                         |
+| `disabled`      | `disabled`        | If `true` the button is disabled                 | `boolean`             | `false`                      |
+| `label`         | `label`           | Label of the drop area.                          | `string`              | `'Choose or drop a file...'` |
+| `maxBundleSize` | `max-bundle-size` | Allowed max bundle size in bytes.                | `number \| undefined` | `undefined`                  |
+| `maxFileSize`   | `max-file-size`   | Allowed max file size in bytes.                  | `number \| undefined` | `undefined`                  |
+| `maxFiles`      | `max-files`       | Allowed number of files in the bundle.           | `number \| undefined` | `undefined`                  |
+| `multiple`      | `multiple`        | If `true` multiple file upload is possible.      | `boolean`             | `true`                       |
 
 
 ## Events

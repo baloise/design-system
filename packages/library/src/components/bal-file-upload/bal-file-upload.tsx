@@ -29,7 +29,7 @@ export class FileUpload {
   /**
    * If `true` the button is disabled
    */
-  @Prop() disabled: boolean
+  @Prop() disabled = false
 
   /**
    * Accepted MIME-Types like `image/png,image/jpeg`.
@@ -39,17 +39,17 @@ export class FileUpload {
   /**
    * Allowed number of files in the bundle.
    */
-  @Prop() maxFiles: number = undefined
+  @Prop() maxFiles: number | undefined = undefined
 
   /**
    * Allowed max file size in bytes.
    */
-  @Prop() maxFileSize: number = undefined
+  @Prop() maxFileSize: number | undefined = undefined
 
   /**
    * Allowed max bundle size in bytes.
    */
-  @Prop() maxBundleSize: number = undefined
+  @Prop() maxBundleSize: number | undefined = undefined
 
   /**
    * Triggers when a file is added or removed.
@@ -87,49 +87,51 @@ export class FileUpload {
     if (!this.disabled) {
       this.isOver = false
       const dataTransfer = event.dataTransfer
-      if (event.dataTransfer) {
+      if (dataTransfer) {
         this.handleFiles(dataTransfer.files)
       }
     }
   }
 
-  handleFiles(files: FileList): void {
+  handleFiles = (files: FileList): void => {
     if (!this.disabled) {
       const list = [...this.files]
       for (let index = 0; index < files.length; index++) {
         const file = files.item(index)
-        const rejectReasons = []
+        if (file) {
+          const rejectReasons = []
 
-        if (this.accept && this.accept.split(' ').join('').split(',').indexOf(file.type) === -1) {
-          rejectReasons.push(FileUploadRejectionReason.BAD_EXTENSION)
-        }
+          if (this.accept && this.accept.split(' ').join('').split(',').indexOf(file.type) === -1) {
+            rejectReasons.push(FileUploadRejectionReason.BAD_EXTENSION)
+          }
 
-        if (this.maxFileSize && file.size > this.maxFileSize) {
-          rejectReasons.push(FileUploadRejectionReason.FILE_TOO_BIG)
-        }
+          if (this.maxFileSize && file.size > this.maxFileSize) {
+            rejectReasons.push(FileUploadRejectionReason.FILE_TOO_BIG)
+          }
 
-        const transactionFileSizeSum = this.files.map(f => f.size).reduce((a, b) => a + b, 0)
-        const bundleSize = file.size + transactionFileSizeSum
-        if (this.maxBundleSize && bundleSize > this.maxBundleSize) {
-          rejectReasons.push(FileUploadRejectionReason.FILE_SIZE_SUM_TOO_BIG)
-        }
+          const transactionFileSizeSum = this.files.map(f => f.size).reduce((a, b) => a + b, 0)
+          const bundleSize = file.size + transactionFileSizeSum
+          if (this.maxBundleSize && bundleSize > this.maxBundleSize) {
+            rejectReasons.push(FileUploadRejectionReason.FILE_SIZE_SUM_TOO_BIG)
+          }
 
-        if (this.maxFiles && list.length + 1 > this.maxFiles) {
-          rejectReasons.push(FileUploadRejectionReason.TOO_MANY_FILES)
-        }
+          if (this.maxFiles && list.length + 1 > this.maxFiles) {
+            rejectReasons.push(FileUploadRejectionReason.TOO_MANY_FILES)
+          }
 
-        const duplicatedFiles = list.filter(f => f.size === file.size && f.name === file.name && f.type === file.type)
-        if (duplicatedFiles.length > 0) {
-          rejectReasons.push(FileUploadRejectionReason.DUPLICATED_FILE)
-        }
+          const duplicatedFiles = list.filter(f => f.size === file.size && f.name === file.name && f.type === file.type)
+          if (duplicatedFiles.length > 0) {
+            rejectReasons.push(FileUploadRejectionReason.DUPLICATED_FILE)
+          }
 
-        if (rejectReasons.length > 0) {
-          this.balRejectedFileEventEmitter.emit({
-            file: file,
-            reasons: rejectReasons,
-          })
-        } else {
-          list.push(file)
+          if (rejectReasons.length > 0) {
+            this.balRejectedFileEventEmitter.emit({
+              file: file,
+              reasons: rejectReasons,
+            })
+          } else {
+            list.push(file)
+          }
         }
       }
       this.files = [...list]
@@ -169,6 +171,13 @@ export class FileUpload {
     }
   }
 
+  onChange = (): void => {
+    if ((this.fileInput, this.fileInput.files)) {
+      const files = this.fileInput.files
+      this.handleFiles(files)
+    }
+  }
+
   render() {
     return (
       <Host class={['bal-file-upload', this.disabled ? 'is-disabled' : ''].join(' ')}>
@@ -181,7 +190,7 @@ export class FileUpload {
               multiple={this.multiple}
               disabled={this.disabled}
               accept={this.accept}
-              onChange={() => this.handleFiles(this.fileInput.files)}
+              onChange={this.onChange}
               ref={el => (this.fileInput = el as HTMLInputElement)}
             />
             <span class="file-cta">
@@ -203,7 +212,7 @@ export class FileUpload {
                 <bal-list-item-subtitle>{filesize(file.size)}</bal-list-item-subtitle>
               </bal-list-item-content>
               <bal-list-item-icon right class="file-remove" onClick={() => this.removeFile(index)}>
-                <bal-icon name="trash" type="danger" size="small"></bal-icon>
+                <bal-icon name="trash" color="danger" size="small"></bal-icon>
               </bal-list-item-icon>
             </bal-list-item>
           ))}
