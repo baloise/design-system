@@ -17,6 +17,7 @@ import {
   isoString,
   toDate,
   isValidDateString,
+  newDateString,
 } from '../../utils/balDateUtil'
 import { isEnterKey } from '../../utils/balKeyUtil'
 import { ACTION_KEYS, NUMBER_KEYS } from '../../constants/keys.constant'
@@ -227,8 +228,9 @@ export class Datepicker implements ComponentInterface {
    */
   @Method()
   async select(date: Date) {
-    this.inputElement.value = format(isoString(date))
-    this.updateValue(isoString(date))
+    const datestring = newDateString(date)
+    this.inputElement.value = format(datestring)
+    this.updateValue(datestring)
     this.updatePointerDates()
 
     if (this.closeOnSelect) {

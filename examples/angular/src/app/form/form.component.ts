@@ -12,7 +12,7 @@ export class FormComponent {
   form = new FormGroup({
     name: new FormControl(null, [Validators.required]),
     age: new FormControl(null, [Validators.required]),
-    dueDate: new FormControl(null, [Validators.required]),
+    dueDate: new FormControl(balDateUtil.newDateString(new Date()), [Validators.required]),
     gender: new FormControl(null, [Validators.required]),
     checkbox: new FormControl(true, [Validators.requiredTrue]),
     comment: new FormControl(null, [Validators.required]),

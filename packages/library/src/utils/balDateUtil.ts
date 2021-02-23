@@ -167,32 +167,3 @@ export const isValidDateString = (datestring: string | undefined | null): boolea
 
   return true
 }
-
-/**
- * Converts a valid UTC datetime string to JS Date time object.
- * By default uses the users local timezone, but an optional
- * timezone can be provided.
- * Note: This is not meant for time strings
- * such as "01:47"
- */
-// export const parseDate = (value: any = '', timeZone: any = ''): Date | undefined => {
-//   if (!isValidDateString(value)) {
-//     return undefined
-//   }
-
-//   const d = unformat(value)
-//   const date = new Date(d.year, d.month, d.day)
-//   const localDateTime = new Date(Date.UTC(date.getFullYear(), date.getMonth() - 1, date.getDate()))
-
-//   if (timeZone && timeZone.length > 0) {
-//     return new Date(date.getTime() - getTimezoneOffset(localDateTime, timeZone))
-//   }
-
-//   return localDateTime
-// }
-
-// export const getTimezoneOffset = (localDate: Date, timeZone: string) => {
-//   const utcDateTime = new Date(localDate.toLocaleString('en-US', { timeZone: 'utc' }))
-//   const tzDateTime = new Date(localDate.toLocaleString('en-US', { timeZone }))
-//   return utcDateTime.getTime() - tzDateTime.getTime()
-// }
