@@ -1,14 +1,20 @@
-import { toDate, format, isValidDateString } from './balDateUtil'
+import { toDate, format, isValidDateString, newDateString } from './balDateUtil'
 
 describe('parseDate', () => {
-    describe('format', () => {
-      test('should', () => {
-        expect(format('1988-02-07T00:00:00.000Z')).toBe('07.02.1988')
-        expect(format('')).toBe('')
-        expect(format(undefined)).toBe('')
-        expect(format(null)).toBe('')
-      })
+  describe('newDateString', () => {
+    test('should', () => {
+      expect(newDateString(new Date(2022, 2, 1))).toBe('2022-02-01T00:00:00.000Z')
+      expect(newDateString(2022, 2, 1)).toBe('2022-02-01T00:00:00.000Z')
     })
+  })
+  describe('format', () => {
+    test('should', () => {
+      expect(format('1988-02-07T00:00:00.000Z')).toBe('07.02.1988')
+      expect(format('')).toBe('')
+      expect(format(undefined)).toBe('')
+      expect(format(null)).toBe('')
+    })
+  })
   describe('toDate', () => {
     test('should', () => {
       expect(toDate('07.02.1988')?.toISOString()).toBe('1988-02-07T00:00:00.000Z')

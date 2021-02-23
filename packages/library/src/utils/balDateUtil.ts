@@ -96,6 +96,18 @@ export const isoString = (value: Date | undefined): string => {
   return value.toISOString()
 }
 
+export function newDateString(date: Date): string
+export function newDateString(year: number, month: number, day: number): string
+export function newDateString(yearOrDate: Date | number, month?: number, day?: number): string {
+  let date
+  if (yearOrDate instanceof Date) {
+    date = localDatetime(yearOrDate)
+  } else {
+    date = new Date(Date.UTC(yearOrDate, (month as number) - 1, day as number))
+  }
+  return isoString(date)
+}
+
 export const localDatetime = (date: Date): Date => {
   return new Date(Date.UTC(date.getFullYear(), date.getMonth() - 1, date.getDate()))
 }
