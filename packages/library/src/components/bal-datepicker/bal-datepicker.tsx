@@ -8,6 +8,7 @@ import {
   now,
   year,
   decreaseYear,
+  increaseYear,
   getFirstDayOfTheWeek,
   isSameDay,
   isInRange,
@@ -283,7 +284,7 @@ export class Datepicker implements ComponentInterface {
   }
 
   get maxYear() {
-    return this.maxYearProp ? this.maxYearProp : year(now())
+    return this.maxYearProp ? this.maxYearProp : increaseYear(now(), 100)
   }
 
   get years(): number[] {
