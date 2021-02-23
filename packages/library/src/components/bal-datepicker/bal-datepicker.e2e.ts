@@ -1,5 +1,5 @@
 import { E2EElement, E2EPage, EventSpy, newE2EPage } from '@stencil/core/testing'
-import { format, isoString, now } from '../../utils/balDateUtil'
+import { format, isoString, newDateString, now } from '../../utils/balDateUtil'
 
 describe('bal-datepicker', () => {
   let page: E2EPage
@@ -41,7 +41,7 @@ describe('bal-datepicker', () => {
     todayCellElement.click()
     await page.waitForChanges()
 
-    expect(await nativeInputElement.getProperty('value')).toBe(format(isoString(now())))
+    expect(await nativeInputElement.getProperty('value')).toBe(format(newDateString(now())))
     expect(balInputEvent).toHaveReceivedEventTimes(0)
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
   })
