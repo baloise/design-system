@@ -340,19 +340,19 @@ export class BalDataValue {
 
 export declare interface BalDatepicker extends Components.BalDatepicker {}
 @ProxyCmp({
-  inputs: ['balTabindex', 'closeOnSelect', 'debounce', 'disabled', 'expanded', 'filter', 'inverted', 'locale', 'maxDate', 'maxYearProp', 'minDate', 'minYearProp', 'name', 'placeholder', 'readonly', 'required', 'triggerIcon', 'value'],
+  inputs: ['balTabindex', 'closeOnSelect', 'debounce', 'disabled', 'expanded', 'filter', 'inverted', 'locale', 'max', 'maxYearProp', 'min', 'minYearProp', 'name', 'placeholder', 'readonly', 'required', 'triggerIcon', 'value'],
   methods: ['open', 'close', 'select', 'setFocus', 'getInputElement']
 })
 @Component({
   selector: 'bal-datepicker',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['balTabindex', 'closeOnSelect', 'debounce', 'disabled', 'expanded', 'filter', 'inverted', 'locale', 'maxDate', 'maxYearProp', 'minDate', 'minYearProp', 'name', 'placeholder', 'readonly', 'required', 'triggerIcon', 'value'],
+  inputs: ['balTabindex', 'closeOnSelect', 'debounce', 'disabled', 'expanded', 'filter', 'inverted', 'locale', 'max', 'maxYearProp', 'min', 'minYearProp', 'name', 'placeholder', 'readonly', 'required', 'triggerIcon', 'value'],
   outputs: ['balChange', 'balInput', 'balBlur', 'balFocus']
 })
 export class BalDatepicker {
   /** Emitted when a option got selected. */
-  balChange!: EventEmitter<CustomEvent<Date>>;
+  balChange!: EventEmitter<CustomEvent<null | string | undefined>>;
   /** Emitted when a keyboard input occurred. */
   balInput!: EventEmitter<CustomEvent<string>>;
   /** Emitted when the input loses focus. */

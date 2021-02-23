@@ -13,7 +13,11 @@ export interface DatepickerAccessorType {
   assertDateInRange(date: Date, shouldBeInRange?: boolean): DatepickerAccessorType
 }
 
-const selectorDayBox = (date: Date) => `[data-date="${balDateUtil.format(date)}"]`
+const localDatetime = (date: Date): string => {
+  return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())).toISOString()
+}
+
+const selectorDayBox = (date: Date) => `[data-date="${balDateUtil.format(localDatetime(date))}"]`
 
 export const DatepickerWriteMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   /**
@@ -66,7 +70,7 @@ export const DatepickerShouldHaveValueAssertableMixin: Mixin = ({ selector, crea
     cy.get(selector)
       .find('.dropdown-trigger .sc-bal-datepicker.input')
       .first()
-      .should('have.value', balDateUtil.format(date))
+      .should('have.value', balDateUtil.format(localDatetime(date)))
     return creator()
   },
 })

@@ -16,7 +16,7 @@ export interface BalFiltersStatic {
   balBlobToUrl: (value: Blob) => string
   balCapitalize: (value: undefined) => string
   balClaimNumber: (value: undefined) => string
-  balCurrency: (value: number, currencySign: string, showZero: boolean, decimalLength: number) => string
+  balCurrency: (value: undefined, currencySign: string, showZero: boolean, decimalLength: number) => string
   balDefaultString: (value: undefined, defaultString: string) => string
   balFileSize: (value: number) => string
   balHighlight: (value: string, search: string, cssClass: string) => string

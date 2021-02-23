@@ -147,8 +147,8 @@ export class Datepicker implements ComponentInterface {
    */
   @Watch('value')
   protected valueChanged() {
-    this.updatePointerDates()
     this.selectedDate = this.value
+    this.updatePointerDates()
     this.balChange.emit(this.value)
   }
 
@@ -186,7 +186,9 @@ export class Datepicker implements ComponentInterface {
   }
 
   componentWillLoad() {
+    this.selectedDate = this.value
     this.updatePointerDates()
+    this.updateValue(this.value)
   }
 
   connectedCallback() {
@@ -263,11 +265,13 @@ export class Datepicker implements ComponentInterface {
     }
   }
 
-  private updateValue(datestring: string | undefined) {
+  private updateValue(datestring: string | undefined | null) {
     if (!isValidDateString(datestring)) {
       this.selectedDate = undefined
       this.value = undefined
-      this.inputElement.value = ''
+      if (this.inputElement) {
+        this.inputElement.value = ''
+      }
       return
     }
 
@@ -348,9 +352,13 @@ export class Datepicker implements ComponentInterface {
     this.balInput.emit(inputValue)
     event.stopPropagation()
 
-    if (isValidDateString(inputValue)) {
-      this.selectedDate = isoString(toDate(inputValue))
-      this.updatePointerDates()
+    if (inputValue && inputValue.length >= 6) {
+      const date = toDate(inputValue)
+      const datestring = isoString(date)
+      if (isValidDateString(datestring)) {
+        this.selectedDate = isoString(toDate(inputValue))
+        this.updatePointerDates()
+      }
     }
   }
 

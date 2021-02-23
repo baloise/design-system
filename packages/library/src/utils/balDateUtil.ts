@@ -107,7 +107,23 @@ export const toDate = (datestring: string | undefined | null): Date | undefined 
 
   if (datestring.length >= 8 && datestring.length <= 10) {
     const parts = datestring.split('.')
-    const date = new Date(parseInt(parts[2], 10), parseInt(parts[1], 10), parseInt(parts[0], 10))
+    const year = parseInt(parts[2], 10)
+    if (year < 1900) {
+      return undefined
+    }
+
+    const month = parseInt(parts[1], 10)
+    if (month < 1 || month > 12) {
+      return undefined
+    }
+
+    const day = parseInt(parts[0], 10)
+    const lastDayOfMonth = new Date(year, month, 0).getDate()
+    if (day < 1 || day > lastDayOfMonth) {
+      return undefined
+    }
+
+    const date = new Date(year, month, parseInt(parts[0], 10))
     const localDateTime = localDatetime(date)
     datestring = localDateTime.toISOString()
   }

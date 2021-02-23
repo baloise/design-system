@@ -10,12 +10,4 @@ describe('Checkbox', () => {
     page.normalCheckboxElement.get().assertIsChecked()
     page.normalCheckboxElement.get().contains('Label')
   })
-
-  it('Disable can not be checked', () => {
-    page.open()
-    page.disabledCheckboxElement.get().assertIsChecked(false)
-    page.disabledCheckboxElement.get().assertIsDisabled()
-    page.disabledCheckboxElement.get().click()
-    page.disabledCheckboxElement.get().assertIsChecked(false)
-  })
 })
