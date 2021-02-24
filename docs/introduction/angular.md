@@ -2,7 +2,7 @@
 
 This guide explains how the setup a Angular project with the Baloise UI Library.
 
-> Angular 11.x.x does not support IE11 from scratch. Go to [IE 11 Support](IE-11-Support) to get your Angular App IE11 ready.
+> Angular 11.x.x does not support IE11 from scratch. Go to [IE 11 Support](#IE-11-Support) to get your Angular App IE11 ready.
 
 ## Prerequisite
 
