@@ -3,7 +3,6 @@ import { ColorTypes } from '../../types/color.types'
 
 @Component({
   tag: 'bal-card',
-  styleUrl: 'bal-card.scss',
   shadow: false,
   scoped: false,
 })

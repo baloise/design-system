@@ -2,7 +2,6 @@ import { Component, h, Host, Listen, Method, Prop, Element, Event, EventEmitter,
 
 @Component({
   tag: 'bal-dropdown',
-  styleUrl: 'bal-dropdown.scss',
   shadow: false,
   scoped: false,
 })
@@ -153,6 +152,7 @@ export class Dropdown {
       <Host
         data-id={this.dropdownId}
         class={{
+          'bal-dropdown': true,
           'is-expanded': this.expanded,
           'has-fixed-content-width': this.fixedContentWidth,
         }}>

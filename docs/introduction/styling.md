@@ -5,7 +5,7 @@
 Download the 2 used fonts of our Baloise style guide.
 
 - MetaStd-Normal
-  - [woff2](https://github.com/baloise/ui-library/raw/master/packages/library/src/assets/fonts/MetaStd-Medium.woff2)
+  - [woff2](https://github.com/baloise/ui-library/raw/master/packages/library/src/assets/fonts/MetaStd-Normal.woff2)
   - [woff](https://github.com/baloise/ui-library/raw/master/packages/library/src/assets/fonts/MetaStd-Normal.woff)
   - [truetype](https://github.com/baloise/ui-library/raw/master/packages/library/src/assets/fonts/MetaStd-Normal.ttf)
 - MetaStd-Medium
@@ -60,7 +60,8 @@ Configure the fonts in a css file.
 @font-face {
   font-family: 'MetaPro';
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
+  font-display: fallback;
   src: local('MetaPro'), local('MetaStd-Normal'), url('/assets/fonts/MetaStd-Normal.woff2') format('woff2'), url('/assets/fonts/MetaStd-Normal.woff')
       format('woff'), url('/assets/fonts/MetaStd-Normal.ttf') format('truetype');
 }
@@ -69,6 +70,7 @@ Configure the fonts in a css file.
   font-family: 'MetaPro';
   font-style: normal;
   font-weight: 700;
+  font-display: fallback;
   src: local('MetaStd-Medium'), url('/assets/fonts/MetaStd-Medium.woff2') format('woff2'), url('/assets/fonts/MetaStd-Medium.woff')
       format('woff'), url('/assets/fonts/MetaStd-Medium.ttf') format('truetype');
 }
