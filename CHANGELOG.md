@@ -3,108 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [4.0.0-rc.16](https://github.com/baloise/ui-library/compare/v4.0.0-rc.15...v4.0.0-rc.16) (2021-02-23)
-
-
-### Features
-
-* **datepicker:** use iso date string ([8e6744a](https://github.com/baloise/ui-library/commit/8e6744a12db266686e37aff63da3d064f7ef9445))
-
-
-
-
-
-# [4.0.0-rc.15](https://github.com/baloise/ui-library/compare/v4.0.0-rc.14...v4.0.0-rc.15) (2021-02-23)
-
+# [4.0.0](https://github.com/baloise/ui-library/compare/v3.1.11...v4.0.0) (2021-02-23)
 
 ### Features
 
-* **datepicker:** use iso date string ([0e19c6d](https://github.com/baloise/ui-library/commit/0e19c6dc584919f8195351e3e82346474664fa7a))
-* **datepicker:** use iso date string ([8e77e64](https://github.com/baloise/ui-library/commit/8e77e6469eabdadf578e30fdced78529515e7f4a))
-
-
-
-
+- **datepicker:** use iso date (yyyy-mm-dd) string
+- **components:** attribute type was renamed to colors
+- **components:** improve form events like balChange and balInput
+- **angular:** add app initializer for better component loading
+- **angular:** add services for toast and snackbar
+- **utils:** remove package utils and move it to the core library
+- **angular&vue:** use rollup for building es5 output
+- **vue:** add vue 3.x.x support
 
 ## [3.1.11](https://github.com/baloise/ui-library/compare/v3.1.10...v3.1.11) (2021-02-08)
-
-
 
 ## 3.1.8 (2021-02-05)
 
 **Note:** Version bump only for package root
 
-
-
-
-
 ## [3.1.8](https://github.com/baloise/ui-library/compare/v3.1.7...v3.1.8) (2021-02-05)
-
 
 ### Bug Fixes
 
-* **fonts:** add missing commas ([b0ba277](https://github.com/baloise/ui-library/commit/b0ba277aeada346ace53d5febe6a928d6e14f3fd))
-
-
-
-
+- **fonts:** add missing commas ([b0ba277](https://github.com/baloise/ui-library/commit/b0ba277aeada346ace53d5febe6a928d6e14f3fd))
 
 ## [3.1.7](https://github.com/baloise/ui-library/compare/v3.1.6...v3.1.7) (2021-02-05)
-
-
 
 ## 3.1.5 (2021-02-04)
 
 **Note:** Version bump only for package root
 
-
-
-
-
 ## [3.1.6](https://github.com/baloise/ui-library/compare/v3.1.5...v3.1.6) (2021-02-05)
-
 
 ### Bug Fixes
 
-* **font:** fix font paths ([c00ec32](https://github.com/baloise/ui-library/commit/c00ec32254a7affd722db584fff4b50b3125cfd0))
-* **input:** return the value with the change event ([c250c4b](https://github.com/baloise/ui-library/commit/c250c4b7246473e577b60d8d17b1f9f9abcc5925))
-
-
-
-
+- **font:** fix font paths ([c00ec32](https://github.com/baloise/ui-library/commit/c00ec32254a7affd722db584fff4b50b3125cfd0))
+- **input:** return the value with the change event ([c250c4b](https://github.com/baloise/ui-library/commit/c250c4b7246473e577b60d8d17b1f9f9abcc5925))
 
 ## [3.1.5](https://github.com/baloise/ui-library/compare/v3.1.4...v3.1.5) (2021-02-04)
 
-
 ### Bug Fixes
 
-* **navbar:** check for navbar menu element when toggling ([39357b6](https://github.com/baloise/ui-library/commit/39357b6bcf8fdc2bf563fbbe09fa740ed6711b7b))
-
-
-
-
+- **navbar:** check for navbar menu element when toggling ([39357b6](https://github.com/baloise/ui-library/commit/39357b6bcf8fdc2bf563fbbe09fa740ed6711b7b))
 
 ## [3.1.4](https://github.com/baloise/ui-library/compare/v3.1.3...v3.1.4) (2021-02-04)
 
-
 ### Bug Fixes
 
-* **checkbox:** improve checked watch condition ([8499507](https://github.com/baloise/ui-library/commit/8499507ebda877f4d42a8e8ba41e34878ce8f112))
-
-
-
-
+- **checkbox:** improve checked watch condition ([8499507](https://github.com/baloise/ui-library/commit/8499507ebda877f4d42a8e8ba41e34878ce8f112))
 
 ## [3.1.3](https://github.com/baloise/ui-library/compare/v3.1.2...v3.1.3) (2021-02-03)
 
-
 ### Bug Fixes
 
-* **input:** add change event to the bal-input ([ad0f6ea](https://github.com/baloise/ui-library/commit/ad0f6eaf81c25996915e76a8e27a302506ae0204))
-
-
-
-
+- **input:** add change event to the bal-input ([ad0f6ea](https://github.com/baloise/ui-library/commit/ad0f6eaf81c25996915e76a8e27a302506ae0204))
 
 ## [3.1.2](https://github.com/baloise/ui-library/compare/v3.1.1...v3.1.2) (2021-02-03)
 
