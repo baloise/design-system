@@ -68,7 +68,9 @@ a.is-small {
 }
 
 p.is-bold,
-a.is-bold {
+a.is-bold,
+h3.title.is-size-3,
+h4.title.is-size-4 {
   font-weight: $weight-bold;
 }
 
