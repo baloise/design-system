@@ -22,7 +22,7 @@ export class NavbarBrand {
 
   componentWillLoad() {
     var isIE11 = !!window.MSInputMethodContext && !!(document as any).documentMode
-    if (!isIE11) {
+    if (!isIE11 && window.matchMedia) {
       window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
     }
   }
