@@ -8,13 +8,13 @@
 
 const path = require('path')
 const file = require('../../../.scripts/file')
-const { title, log } = require('../../../.scripts/log')
-const filtersLib = require('../../library/.scripts/filters.lib')
+const { title } = require('../../../.scripts/log')
+const utilities = require('../../library/.scripts/utilities')
 
 const run = async () => {
   await title('angular : filters')
-
-  const filters = await filtersLib.filters()
+  const files = await utilities.read({ fileName: 'filters' })
+  const filters = files.map(f => f.functions[0])
 
   const functions = filters.map(f => f.name)
   const utilFilters = filters.map(f => `  ${f.name.charAt(0).toUpperCase() + f.name.slice(1)}Pipe`)

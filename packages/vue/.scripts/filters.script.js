@@ -1,26 +1,30 @@
 /**
- * angular - pipes
+ * vue - filters
  * --------------------------------------
  * This script reads the filter.json and creates
  * out of this information the filters.ts file, which
- * adds the pipes to the angular framework.
+ * adds the filters to the vue framework.
  */
 
 const path = require('path')
 const file = require('../../../.scripts/file')
-const { title, log } = require('../../../.scripts/log')
-const filtersLib = require('../../library/.scripts/filters.lib')
+const { title } = require('../../../.scripts/log')
+const utilities = require('../../library/.scripts/utilities')
 
 const run = async () => {
   await title('vue : filters')
-
-  const filters = await filtersLib.filters()
-
+  const files = await utilities.read({ fileName: 'filters' })
+  const filters = files.map(f => f.functions[0])
   const functions = filters.map(f => `  ${f.name}`)
 
   const functionsGlobal = filters.map(f => `  app.config.globalProperties.$${f.name} = ${f.name}`)
   const functionsProvide = filters.map(f => `  app.provide<typeof ${f.name}>('${f.name}', ${f.name})`)
-  const functionsUse = filters.map(f => `export const use${f.name.replace('bal', 'Bal')} = (): typeof ${f.name} => inject<typeof ${f.name}>('${f.name}', ${f.name})`)
+  const functionsUse = filters.map(
+    f =>
+      `export const use${f.name.replace('bal', 'Bal')} = (): typeof ${f.name} => inject<typeof ${f.name}>('${
+        f.name
+      }', ${f.name})`,
+  )
 
   const content = [
     '// generated file by .scripts/filters.script.js',

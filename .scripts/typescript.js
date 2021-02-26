@@ -31,10 +31,14 @@ const filterVariableDeclaration = nodes => {
 }
 
 const filterInterfaceDeclaration = nodes => {
-  return filterDeclarationsAndStatements(nodes, 253)[0]
+  return filterInterfaceDeclarations(nodes)[0]
 }
 
-const filterExportedFunctionStatements = nodes => {
+const filterInterfaceDeclarations = nodes => {
+  return filterDeclarationsAndStatements(nodes, 253)
+}
+
+const filterExportedStatements = nodes => {
   return nodes.filter(statement => {
     if (statement.modifiers && statement.modifiers.length > 0) {
       return statement.modifiers.filter(m => m.kind === 92).length === 1
@@ -96,9 +100,10 @@ module.exports = {
   filterDeclarationsAndStatements,
   filterVariableStatements,
   filterVariableDeclaration,
-  filterInterfaceDeclaration,
   filterFunctionStatements,
-  filterExportedFunctionStatements,
+  filterExportedStatements,
+  filterInterfaceDeclaration,
+  filterInterfaceDeclarations,
   parseFunctionComment,
   parseType,
   parseParameters,

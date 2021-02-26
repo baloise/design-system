@@ -1,5 +1,7 @@
 // generated file by .scripts/filters.index.js
 
+import { PhoneNumber } from './balPhoneNumber'
+
 export { balBlobToUrl } from './balBlobToUrl'
 export { balCapitalize } from './balCapitalize'
 export { balClaimNumber } from './balClaimNumber'
@@ -10,7 +12,7 @@ export { balHighlight } from './balHighlight'
 export { balJoinArray } from './balJoinArray'
 export { balLimit } from './balLimit'
 export { balOfferNumber } from './balOfferNumber'
-export { balPhoneNumber } from './balPhoneNumber'
+export { balPhoneNumber, PhoneNumber } from './balPhoneNumber'
 
 export interface BalFiltersStatic {
   balBlobToUrl: (value: Blob) => string

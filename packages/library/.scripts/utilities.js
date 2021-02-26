@@ -1,7 +1,15 @@
 const path = require('path')
 const file = require('../../../.scripts/file')
 const log = require('../../../.scripts/log')
-const { createSourceFile, filterFunctionStatements, parseFunctionComment, filterExportedFunctionStatements, parseParameters, parseType } = require('../../../.scripts/typescript')
+const {
+  createSourceFile,
+  filterFunctionStatements,
+  parseFunctionComment,
+  filterExportedStatements,
+  parseParameters,
+  parseType,
+  filterInterfaceDeclarations,
+} = require('../../../.scripts/typescript')
 
 const read = async ({ fileName }) => {
   const filePath = path.join(__dirname, `../docs/${fileName}.json`)
@@ -30,6 +38,9 @@ const write = async ({ name, files, multiple, assertedReturnType }) => {
       fileContent: f,
       multiple,
       assertedReturnType,
+    }),
+    interfaces: parseInterfaces({
+      fileContent: f,
     }),
   }))
 
@@ -68,10 +79,18 @@ function parseFunction({ statement, sourceFile, assertedReturnType, filePath }) 
   return { name, type, parameters, signature, documentation, filePath }
 }
 
+function parseInterfaces({ fileContent }) {
+  const sourceFile = createSourceFile(fileContent)
+  const interfaceStatements = filterInterfaceDeclarations(sourceFile.statements)
+  const exportedInterfaceStatements = filterExportedStatements(interfaceStatements)
+  const interfaceNames = exportedInterfaceStatements.map(e => e.name.escapedText)
+  return interfaceNames
+}
+
 function parseUtility({ filePath, fileContent, multiple, assertedReturnType }) {
   const sourceFile = createSourceFile(fileContent)
   const functionStatements = filterFunctionStatements(sourceFile.statements)
-  const exportedFunctionStatements = filterExportedFunctionStatements(functionStatements)
+  const exportedFunctionStatements = filterExportedStatements(functionStatements)
 
   if (exportedFunctionStatements.length === 0) {
     log.warn(`Could not find any exported function in the ${filePath} file!`)
