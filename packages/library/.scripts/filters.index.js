@@ -7,16 +7,18 @@
  */
 
 const path = require('path')
+const utilities = require('./utilities')
 const file = require('../../../.scripts/file')
 const log = require('../../../.scripts/log')
-const filtersLib = require('./filters.lib')
 
 const run = async () => {
   await log.title('filters : index')
 
-  const filters = await filtersLib.filters()
-  const utilExports = filters.map(f => `export { ${f.name} } from './${f.name}'`)
-  const utilStaticTypes = filters.map(f => `  ${f.name}: ${f.signature}`)
+  let files = await utilities.read({ fileName: 'filters' })
+  files = files.map(f => f.functions[0])
+
+  const utilExports = files.map(f => `export { ${f.name} } from './${f.name}'`)
+  const utilStaticTypes = files.map(f => `  ${f.name}: ${f.signature}`)
 
   const content = [
     '// generated file by .scripts/filters.index.js',

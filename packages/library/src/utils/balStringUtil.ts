@@ -1,17 +1,17 @@
-export const isBlank = (s?: string | null): boolean => {
+export function isBlank(s?: string | null): boolean {
   return s == null || s == undefined || ('' + s).trim() === ''
 }
 
-export const isNotBlank = (s?: string): boolean => {
+export function isNotBlank(s?: string): boolean {
   return !isBlank(s)
 }
 
-export const assertNotBlank = (s: string): void => {
+export function assertNotBlank(s: string): void {
   if (isBlank(s)) {
     throw new Error('Assertion error: given string param must not be blank.')
   }
 }
 
-export const isStringLiteral = (s: any): boolean => {
+export function isStringLiteral(s: any): boolean {
   return typeof s === 'string'
 }

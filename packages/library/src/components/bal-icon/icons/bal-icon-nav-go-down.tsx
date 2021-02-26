@@ -1,3 +1,5 @@
+// generated file by .scripts/icons.script.js
+
 import { Component, h, Host, Prop } from '@stencil/core';
 
 @Component({

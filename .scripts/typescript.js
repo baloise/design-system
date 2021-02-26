@@ -18,6 +18,10 @@ const filterDeclarationsAndStatements = (list, kind) => {
   return nodes
 }
 
+const filterFunctionStatements = nodes => {
+  return filterDeclarationsAndStatements(nodes, 251)
+}
+
 const filterVariableStatements = nodes => {
   return filterDeclarationsAndStatements(nodes, 232)
 }
@@ -30,6 +34,22 @@ const filterInterfaceDeclaration = nodes => {
   return filterDeclarationsAndStatements(nodes, 253)[0]
 }
 
+const filterExportedFunctionStatements = nodes => {
+  return nodes.filter(statement => {
+    if (statement.modifiers && statement.modifiers.length > 0) {
+      return statement.modifiers.filter(m => m.kind === 92).length === 1
+    }
+    return false
+  })
+}
+
+const parseParameters = parameter => {
+  return {
+    name: parameter.name.escapedText,
+    type: parseType(parameter.type),
+  }
+}
+
 const parseFunctionComment = (node, sourceFile) =>
   node
     .getFullText(sourceFile)
@@ -38,7 +58,7 @@ const parseFunctionComment = (node, sourceFile) =>
     .map(l => l.trim())
     .filter(l => l)
     .filter(l => l !== '/**' && l !== '*/')
-    .map(l => (l.startsWith('*') ? l.substring(1) : l))
+    .map(l => (l.startsWith('*') ? l.substring(2) : l))
 
 const parseType = type => {
   if (type === undefined) {
@@ -49,6 +69,11 @@ const parseType = type => {
   }
 
   switch (type.kind) {
+    case 150:
+      return 'undefined'
+    case 103:
+    case 191:
+      return 'null'
     case 131:
       return 'boolean'
     case 144:
@@ -57,10 +82,10 @@ const parseType = type => {
       return 'string'
     case 173:
       return 'Blob'
-    case 182:
-      return 'undefined'
     case 178:
       return `${parseType(type.elementType)}[]`
+    case 182: // UnionType like string | number
+      return type.types.map(parseType).join(' | ')
     default:
       return 'any'
   }
@@ -72,6 +97,9 @@ module.exports = {
   filterVariableStatements,
   filterVariableDeclaration,
   filterInterfaceDeclaration,
+  filterFunctionStatements,
+  filterExportedFunctionStatements,
   parseFunctionComment,
   parseType,
+  parseParameters,
 }
