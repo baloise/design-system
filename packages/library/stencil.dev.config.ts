@@ -29,6 +29,9 @@ export const config: Config = {
         {
           src: 'assets/fonts',
         },
+        {
+          src: 'assets/js',
+        },
       ],
     },
   ],

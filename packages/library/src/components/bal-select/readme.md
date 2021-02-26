@@ -119,16 +119,6 @@ Type: `Promise<void>`
 
 
 
-### `sync() => Promise<void>`
-
-*Internal* - Used to update option changes
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
 
 ## Dependencies
 

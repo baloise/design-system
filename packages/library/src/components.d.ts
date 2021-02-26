@@ -1253,9 +1253,6 @@ export namespace Components {
           * Sets the focus on the input element
          */
         "setFocus": () => Promise<void>;
-        /**
-          * *Internal* - Used to update option changes
-         */
         "sync": () => Promise<void>;
         /**
           * If `true` the user can search by typing into the input field.

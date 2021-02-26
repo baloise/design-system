@@ -4,6 +4,7 @@ describe('bal-select', () => {
   let page: E2EPage
   let clickEvent: EventSpy
   let balChangeEvent: EventSpy
+  let balInputEvent: EventSpy
   let balSelectElement: E2EElement
   let nativeInputElement: E2EElement
   let triggerElement: E2EElement
@@ -24,6 +25,7 @@ describe('bal-select', () => {
     `)
     clickEvent = await page.spyOnEvent('click')
     balChangeEvent = await page.spyOnEvent('balChange')
+    balInputEvent = await page.spyOnEvent('balInput')
     balSelectElement = await page.find('bal-select')
     nativeInputElement = await balSelectElement.find('input')
     triggerElement = await balSelectElement.find('bal-dropdown-trigger bal-input')
@@ -69,5 +71,21 @@ describe('bal-select', () => {
     await page.waitForChanges()
 
     expect(clickEvent).not.toHaveReceivedEvent()
+  })
+
+  it('should fire only input event typing', async () => {
+    balSelectElement.setProperty('typeahead', true)
+    await triggerElement.click()
+    await nativeInputElement.type('1')
+    await nativeInputElement.type('9')
+    await nativeInputElement.type('9')
+    await nativeInputElement.type('8')
+    await page.keyboard.down('Enter')
+    await page.keyboard.press('Enter')
+
+    let value = await balSelectElement.getProperty('value')
+    expect(value).toEqual(['1998'])
+    expect(balChangeEvent).toHaveReceivedEventTimes(1)
+    expect(balInputEvent).toHaveReceivedEventTimes(4)
   })
 })
