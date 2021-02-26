@@ -9,13 +9,6 @@ export function now(): Date {
   return new Date()
 }
 
-function isValidDate(value: any): boolean {
-  if (value === null || value === undefined) {
-    return false
-  }
-  return new Date(value).toString() !== 'Invalid Date'
-}
-
 /**
  * Returns the year number of the given date
  *
@@ -92,11 +85,6 @@ export function isInRange(date: Date | undefined, minDate: Date | undefined, max
     return minDate <= date && date <= maxDate
   }
   return true
-}
-
-function pad(value: number) {
-  var s = `0${value}`
-  return s.substr(s.length - 2)
 }
 
 /**
@@ -279,4 +267,20 @@ export function isValidDateString(datestring: string | undefined | null): boolea
   }
 
   return true
+}
+
+function isValidDate(value: any): boolean {
+  if (value === null || value === undefined) {
+    return false
+  }
+  if (value instanceof Date) {
+    return value.toString() !== 'Invalid Date'
+  }
+
+  return new Date(value).toString() !== 'Invalid Date'
+}
+
+function pad(value: number) {
+  var s = `0${value}`
+  return s.substr(s.length - 2)
 }
