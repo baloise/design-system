@@ -8,33 +8,29 @@
   & bal-button > button {
     border-radius: $radius-large;
   }
-}
 
-span.trigger-label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  span.trigger-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  span.label {
-    font-size: $size-4;
-    line-height: $size-4;
+    span.label {
+      font-size: $size-4;
+      line-height: $size-4;
+    }
   }
-}
 
-bal-icon {
-  margin-top: -1px;
-  margin-right: 8px;
-}
+  bal-icon {
+    margin-top: -1px;
+    margin-right: 8px;
+  }
 
-.accordion-content.is-info {
-  border-top: 1px solid $blue-light-line;
-}
+  .accordion-content.is-info {
+    border-top: 1px solid $blue-light-line;
+  }
 
-.is-fullwidth {
-  width: 100%;
-}
-
-.accordion-content {
-  border-bottom-left-radius: $radius-large;
-  border-bottom-right-radius: $radius-large;
+  .accordion-content {
+    border-bottom-left-radius: $radius-large;
+    border-bottom-right-radius: $radius-large;
+  }
 }
