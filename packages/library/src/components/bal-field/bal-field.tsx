@@ -61,6 +61,11 @@ export class Field {
     controls.forEach((control: any) => {
       control.loading = this.loading
       control.inverted = this.inverted
+
+      const selects = this.element.querySelectorAll('bal-select')
+      selects.forEach((select: any) => {
+        select.loading = this.loading
+      })
     })
   }
 
@@ -69,13 +74,15 @@ export class Field {
       <Host
         class={{
           'is-expanded': this.expanded,
-        }}>
+        }}
+      >
         <div
           class={{
             'form': true,
             'is-inverted': this.inverted,
             'is-disabled': this.disabled,
-          }}>
+          }}
+        >
           <slot></slot>
         </div>
       </Host>

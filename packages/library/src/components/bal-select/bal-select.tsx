@@ -182,12 +182,14 @@ export class Select {
       this.focusIndex = this.childOptions.findIndex(el => el.value === option.value)
 
       if (this.multiple) {
+        const list = []
         if (this.value.includes(option.value)) {
           for (var i = 0; i < this.value.length; i++) {
-            if (this.value[i] === option.value) {
-              this.value.splice(i, 1)
+            if (this.value[i] !== option.value) {
+              list.push(this.value[i])
             }
           }
+          this.value = [...list]
         } else {
           this.value = [...this.value, option.value]
         }
@@ -216,7 +218,6 @@ export class Select {
       this.focusIndex = 0
       this.clearFocus()
       this.updateOptionProps()
-      this.balChange.emit(this.value)
     }
   }
 
@@ -231,7 +232,7 @@ export class Select {
   }
 
   /**
-   * *Internal* - Used to update option changes
+   * @internal - Used to update option changes
    */
   @Method()
   async sync() {
@@ -270,8 +271,14 @@ export class Select {
     return this.childOptions.length > 0
   }
 
-  private get inputElementValue() {
-    return this.inputElement ? this.inputElement.value : ''
+  private get inputElementValue(): string {
+    if (!this.inputElement) {
+      return ''
+    }
+    if (this.inputElement.value === null || this.inputElement.value === undefined) {
+      return ''
+    }
+    return `${this.inputElement.value}`
   }
 
   private get inputFilterElementValue() {
@@ -303,10 +310,6 @@ export class Select {
   private onInput = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
 
-    if (this.typeahead && !this.multiple) {
-      this.value = []
-    }
-
     this.focusIndex = 0
     this.updateOptionProps()
 
@@ -318,8 +321,20 @@ export class Select {
     }
     event.preventDefault()
     event.stopPropagation()
-    this.balChange.emit(this.value)
     this.balInput.emit(inputValue)
+  }
+
+  private onInputBlur = (event: Event) => {
+    event.preventDefault()
+    event.stopPropagation()
+    if (this.typeahead && !this.multiple) {
+      const hasInputValueOptionLabel = this.childOptions.some(option => this.compareLabels(option.label || '', this.inputElementValue))
+      if (!hasInputValueOptionLabel) {
+        this.clear()
+      }
+    }
+
+    this.balBlur.emit(event as any)
   }
 
   private onKeyUp = (event: KeyboardEvent) => {
@@ -349,7 +364,7 @@ export class Select {
     }
   }
 
-  private onBalChange = (ev: Event) => {
+  private preventEvent = (ev: Event) => {
     ev.preventDefault()
     ev.stopPropagation()
   }
@@ -390,18 +405,21 @@ export class Select {
               clickable={true}
               hasIconRight={true}
               balTabindex={this.balTabindex}
-              onBalChange={this.onBalChange}
+              onBalInput={this.preventEvent}
+              onBalChange={this.preventEvent}
+              onBalClick={this.preventEvent}
+              onBalKeyPress={this.preventEvent}
+              onBalBlur={this.onInputBlur}
               onInput={this.onInput}
               onClick={this.onInputClick}
               onKeyPress={this.onKeyPress}
               onKeyUp={this.onKeyUp}
-              onBlur={e => this.balBlur.emit(e)}
               onFocus={e => this.balFocus.emit(e)}
             ></bal-input>
             <bal-icon
               class={{ 'is-hidden': this.loading, 'is-right': true }}
               color="info"
-              turn={!this.loading && !this.typeahead && this.isDropdownOpen}
+              turn={!this.typeahead && this.isDropdownOpen}
               inverted={this.inverted}
               name={this.typeahead && !this.multiple ? 'search' : 'caret-down'}
               size={this.typeahead && !this.multiple ? 'small' : 'xsmall'}
@@ -446,7 +464,7 @@ export class Select {
     this.clearFocus()
     this.childOptions.forEach((option, index) => {
       if (!this.noFilter && this.typeahead) {
-        const didMatch = this.compareForFilter(`${option.label}` || '', `${inputValue}`)
+        const didMatch = this.compareForFiltering(`${option.label}` || '', `${inputValue}`)
         option.setAttribute('hidden', `${!didMatch}`)
       } else {
         option.setAttribute('hidden', `${!this.isDropdownOpen}`)
@@ -458,10 +476,23 @@ export class Select {
       const isFocused = this.focusIndex === index
       option.setAttribute('focused', `${isFocused}`)
     })
-    this.moveFocus()
+
+    const visibleOptions = this.childOptions.filter(o => !o.hidden)
+    if (visibleOptions.length === 1) {
+      this.clearFocus()
+      visibleOptions[0].setAttribute('focused', `${true}`)
+    }
+
+    this.scrollToFocusedOption()
   }
 
-  private compareForFilter(text: string, input: string): boolean {
+  private compareLabels(text: string, input: string): boolean {
+    text = text.toLocaleLowerCase()
+    input = input.toLocaleLowerCase()
+    return text === input
+  }
+
+  private compareForFiltering(text: string, input: string): boolean {
     text = text.toLocaleLowerCase()
     input = input.toLocaleLowerCase()
     return text.indexOf(input) >= 0
@@ -576,7 +607,7 @@ export class Select {
     }
   }
 
-  private async moveFocus() {
+  private async scrollToFocusedOption() {
     const focusedElement = this.childOptions.find(el => el.focused)
     if (focusedElement && this.dropdownElement) {
       const dropdownContentElement = await this.dropdownElement.getContentElement()
