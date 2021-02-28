@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.5](https://github.com/baloise/ui-library/compare/v4.0.4...v4.0.5) (2021-02-27)
+
+
+### Bug Fixes
+
+* **select:** improve event handling ([cd2af28](https://github.com/baloise/ui-library/commit/cd2af288ac17d573555e17e4db2cb259cb7fb075))
+
+
+
+
+
 ## [4.0.4](https://github.com/baloise/ui-library/compare/v4.0.3...v4.0.4) (2021-02-25)
 
 
