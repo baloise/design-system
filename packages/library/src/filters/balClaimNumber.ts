@@ -1,11 +1,11 @@
 /**
- * @description
- * Formats the claim-number correctly.
+ * Transforms the given string into the correct claim-number format.
  *
- * @example
- * balClaimNumber('73001217169') => 73/001217/16.9
+ * ```typescript
+ * balClaimNumber('73001217169') // 73/001217/16.9
+ * ```
  */
-export const balClaimNumber = (value: string | undefined | null | number): string => {
+export function balClaimNumber(value: string | undefined | null | number): string {
   if (!value) {
     return ''
   }

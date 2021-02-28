@@ -1,11 +1,11 @@
 /**
- * @description
  * Limits the input string.
  *
- * @example
- * balLimit('Some string that is ways to long to be rendered') => Some string that is ...
+ * ```typescript
+ * balLimit('Some string that is ways to long to be rendered') // Some string that is ...
+ * ```
  */
-export const balLimit = (value: string | undefined | null, limit: number = 20): string => {
+export function balLimit(value: string | undefined | null, limit: number = 20): string {
   if (value === null || value === undefined) {
     return ''
   }

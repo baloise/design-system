@@ -16,6 +16,7 @@ export * from './components/bal-file-upload/bal-file-upload.type'
  */
 export * from './utils'
 export * from './filters'
+export * from './validators'
 export * from './components/bal-select-option/bal-select-option.util'
 
 /**

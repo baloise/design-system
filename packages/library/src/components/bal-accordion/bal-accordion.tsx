@@ -47,7 +47,7 @@ export class Accordion {
   /**
    * Emmited when the accordion has changed
    */
-  @Event({ eventName: 'balCollapse' }) balCollapse!: EventEmitter<boolean>
+  @Event() balCollapse!: EventEmitter<boolean>
 
   /**
    * Open the accordion
@@ -80,17 +80,21 @@ export class Accordion {
     return `${this.color}-light` as BalButtonColor
   }
 
+  get label() {
+    return this.isActive ? this.closeLabel : this.openLabel
+  }
+
+  get icon() {
+    return this.isActive ? this.closeIcon : this.openIcon
+  }
+
   render() {
     return (
       <Host class="accordion">
         <bal-button expanded={true} color={this.buttonType} onClick={() => this.toggle()} top-rounded={!this.card} bottomRounded={!this.isActive}>
-          <span class="trigger-label" style={{ display: !this.isActive ? 'flex' : 'none' }}>
-            <bal-icon name={this.openIcon} color={this.color} size="small" />
-            <span class="label">{this.openLabel}</span>
-          </span>
-          <span class="trigger-label" style={{ display: this.isActive ? 'flex' : 'none' }}>
-            <bal-icon name={this.closeIcon} color={this.color} size="small" />
-            <span class="label">{this.closeLabel}</span>
+          <span class="trigger-label">
+            <bal-icon name={this.icon} color={'info'} size="small" />
+            <span class="label">{this.label}</span>
           </span>
         </bal-button>
         <div class={['accordion-content', `is-${this.color}`].join(' ')} style={{ display: this.isActive ? 'block' : 'none' }}>

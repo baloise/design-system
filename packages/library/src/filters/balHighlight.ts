@@ -1,11 +1,11 @@
 /**
- * @description
  * Transforms the given text into a highlighted html content.
  *
- * @example
- * balHighlight('Some Text') => <span class="bal-highlight">Some Text</span>
+ * ```typescript
+ * balHighlight('Some Text') // <span class="bal-highlight">Some Text</span>
+ * ```
  */
-export const balHighlight = (value: string, search: string, cssClass: string = 'bal-highlight'): string => {
+export function balHighlight(value: string, search: string, cssClass: string = 'bal-highlight'): string {
   if (search && value) {
     let pattern = search.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&')
     pattern = pattern

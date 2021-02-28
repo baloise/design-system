@@ -1,9 +1,8 @@
 /**
- * utils - docs-json
+ * components script - docs-json
  * --------------------------------------
- * This script reads the defined filter functions and creates
- * a JSON file with all the meta information for documentation
- * and code generations.
+ * This script adds additional information to the generated
+ * component.json to generate a documentation out of it.
  */
 
 const path = require('path')

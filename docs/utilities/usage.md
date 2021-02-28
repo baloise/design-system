@@ -1,8 +1,8 @@
 # Usage
 
-## Function
+All the utilities are just functions.
 
-Than import it into any of your files and use the functions.
+Just import them into any of your files.
 
 ```typescript
 import { balClaimNumber } from '@baloise/ui-library'

@@ -25,6 +25,7 @@
 
   - [Usage](utilities/usage.md)
   - [Filters](utilities/filters.md)
+  - [Validators](utilities/validators.md)
   - [Utils](utilities/utils.md)
 
 - **Testing**

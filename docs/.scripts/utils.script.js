@@ -1,26 +1,31 @@
+/**
+ * utils - docs
+ * --------------------------------------
+ * This script reads the filter.json and creates
+ * out of this information the documentation markdown file.
+ */
+
 const log = require('../../.scripts/log')
 const file = require('../../.scripts/file')
-const utilsLib = require('../../packages/library/.scripts/utils.lib')
 const path = require('path')
+const utilities = require('../../packages/library/.scripts/utilities')
 const { NEWLINE, GENERATED_TAG } = require('./utils/constants')
 
 const run = async () => {
-  log.title('docs : utils')
+  log.title('utils : docs')
+  const files = await utilities.read({ fileName: 'utils' })
 
-  const utils = await utilsLib.utils()
-
-  const filterDocs = utils.map(u =>
+  const filterDocs = files.map(u =>
     [
-      `## ${u.name}`,
+      `## ${u.fileName}`,
       '',
-      ...u.functions.map(f => [
-        `### ${f.name}`,
-        ``,
-        `\`${f.name}${f.signature}\``,
-        ``,
-        f.description,
-        ``,
-      ].join(NEWLINE)),
+      '```typescript',
+      `import { ${u.fileName} } from '@baloise/ui-library'`,
+      '```',
+      '',
+      ...u.functions.map(f =>
+        [`### ${f.name}`, ``, `\`${f.name}${f.signature}\``, ``, f.documentation, ``].join(NEWLINE),
+      ),
       ``,
       `---`,
       ``,

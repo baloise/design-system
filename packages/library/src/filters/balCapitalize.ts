@@ -7,7 +7,7 @@ import { isBlank } from '../utils/balStringUtil'
  * balCapitalize('baloise') // Baloise
  * ```
  */
-export const balCapitalize = (value: string | null | undefined): string => {
+export function balCapitalize(value: string | null | undefined): string {
   if (isBlank(value)) {
     return ''
   } else {

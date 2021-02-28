@@ -6,14 +6,14 @@ export interface PhoneNumber {
 }
 
 /**
- * @description
  * Formats the given phone.
  *
- * @example
- * balPhoneNumber('41,41564410808') => +41 56 441 08 08
- * balPhoneNumber({ countryCode: '41', phoneNumber: '564410808' }) => +41 56 441 08 08
+ * ```typescript
+ * balPhoneNumber('41,41564410808') // +41 56 441 08 08
+ * balPhoneNumber({ countryCode: '41', phoneNumber: '564410808' }) // +41 56 441 08 08
+ * ```
  */
-export const balPhoneNumber = (value: string | PhoneNumber | null | undefined): string => {
+export function balPhoneNumber(value: string | PhoneNumber | null | undefined): string {
   if (value === null || value === undefined) {
     return ''
   }

@@ -1,9 +1,8 @@
 /**
- * utils - docs-json
+ * svg icons
  * --------------------------------------
- * This script reads the defined filter functions and creates
- * a JSON file with all the meta information for documentation
- * and code generations.
+ * This script reads the svg icons and optimizes them. For each
+ * svg icon a web components gets generated
  */
 
 const path = require('path')
@@ -24,7 +23,9 @@ const svgo = new SVGO({
   ],
 })
 
-const iconComponent = (tag, className, svgContent) => `import { Component, h, Host, Prop } from '@stencil/core';
+const iconComponent = (tag, className, svgContent) => `// generated file by .scripts/icons.script.js
+
+import { Component, h, Host, Prop } from '@stencil/core';
 
 @Component({
   tag: 'bal-${tag}',

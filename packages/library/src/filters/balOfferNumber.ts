@@ -1,13 +1,13 @@
 import { isBlank } from '../utils/balStringUtil'
 
 /**
- * @description
  * Transforms the input string into a offer number.
  *
- * @example
- * balOfferNumber('987654321') => 98/7.654.321
+ * ```typescript
+ * balOfferNumber('987654321') // 98/7.654.321
+ * ```
  */
-export const balOfferNumber = (value: string | null | undefined, varianteNr?: string): string => {
+export function balOfferNumber(value: string | null | undefined, varianteNr?: string): string {
   if (!isBlank(value)) {
     const offertNrNoLeadingZeros = parseInt(value as string, 10).toString(10)
     if (offertNrNoLeadingZeros && offertNrNoLeadingZeros.length === 9) {
