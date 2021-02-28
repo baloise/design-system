@@ -46,6 +46,9 @@
     <bal-field-message color="danger" *ngIf="form.get('dueDate').errors && form.get('dueDate').hasError('required')"
       >Required Field</bal-field-message
     >
+    <bal-field-message color="danger" *ngIf="form.get('dueDate').errors && form.get('dueDate').hasError('isAfter')"
+      >Date must be after of today</bal-field-message
+    >
   </bal-field>
 
   <bal-field expanded>

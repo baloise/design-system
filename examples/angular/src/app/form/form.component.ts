@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { balDateUtil } from '@baloise/ui-library'
+import { BalDateUtil } from '@baloise/ui-library'
+import { BalValidators } from '@baloise/ui-library-angular'
 
 @Component({
   selector: 'app-form',
@@ -12,7 +13,10 @@ export class FormComponent {
   form = new FormGroup({
     name: new FormControl(null, [Validators.required]),
     age: new FormControl(null, [Validators.required]),
-    dueDate: new FormControl(balDateUtil.newDateString(new Date()), [Validators.required]),
+    dueDate: new FormControl(BalDateUtil.newDateString(BalDateUtil.now()), [
+      Validators.required,
+      BalValidators.isAfter(BalDateUtil.now()),
+    ]),
     gender: new FormControl(null, [Validators.required]),
     checkbox: new FormControl(true, [Validators.requiredTrue]),
     comment: new FormControl(null, [Validators.required]),
