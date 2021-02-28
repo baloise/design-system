@@ -15,7 +15,7 @@ import { balDateUtil } from '@baloise/ui-library'
 Returns a JS Date instance of today
 
 ```typescript
-const date = balDateUtil.now()
+const date = BalDateUtil.now()
 ```
 
 ### year
@@ -25,7 +25,7 @@ const date = balDateUtil.now()
 Returns the year number of the given date
 
 ```typescript
-balDateUtil.year(new Date(2020, 0, 1)) // 2020
+BalDateUtil.year(new Date(2020, 0, 1)) // 2020
 ```
 
 ### month
@@ -35,7 +35,7 @@ balDateUtil.year(new Date(2020, 0, 1)) // 2020
 Returns the month number of the given date
 
 ```typescript
-balDateUtil.month(new Date(2020, 0, 1)) // 0
+BalDateUtil.month(new Date(2020, 0, 1)) // 0
 ```
 
 ### day
@@ -45,7 +45,7 @@ balDateUtil.month(new Date(2020, 0, 1)) // 0
 Returns the day number of the given date
 
 ```typescript
-balDateUtil.day(new Date(2020, 0, 1)) // 1
+BalDateUtil.day(new Date(2020, 0, 1)) // 1
 ```
 
 ### increaseYear
@@ -55,7 +55,7 @@ balDateUtil.day(new Date(2020, 0, 1)) // 1
 Increases the year of a date and retunrs the result
 
 ```typescript
-balDateUtil.increaseYear(new Date(2020, 0, 1), 1) // 2021
+BalDateUtil.increaseYear(new Date(2020, 0, 1), 1) // 2021
 ```
 
 ### decreaseYear
@@ -65,7 +65,27 @@ balDateUtil.increaseYear(new Date(2020, 0, 1), 1) // 2021
 Decreases the year of a date and retunrs the result
 
 ```typescript
-balDateUtil.decreaseYear(new Date(2020, 0, 1), 1) // 2019
+BalDateUtil.decreaseYear(new Date(2020, 0, 1), 1) // 2019
+```
+
+### isBefore
+
+`isBefore(date: any, beforeDate: Date | string | undefined) => boolean`
+
+Returns `true` when the given date is not smaller than the before date.
+
+```typescript
+BalDateUtil.isBefore(new Date(2020, 1, 1), new Date(2020, 3, 1)) // true
+```
+
+### isAfter
+
+`isAfter(date: any, afterDate: Date | string | undefined) => boolean`
+
+Returns `true` when the given date is not smaller than the before date.
+
+```typescript
+BalDateUtil.isAfter(new Date(2020, 5, 1), new Date(2020, 3, 1)) // true
 ```
 
 ### isInRange
@@ -75,7 +95,7 @@ balDateUtil.decreaseYear(new Date(2020, 0, 1), 1) // 2019
 Returns `true` when the given date is not smaller than the minDate and not bigger than the maxDate.
 
 ```typescript
-balDateUtil.isInRange(new Date(2020, 1, 1), new Date(2020, 0, 1), new Date(2020, 2, 1)) // true
+BalDateUtil.isInRange(new Date(2020, 1, 1), new Date(2020, 0, 1), new Date(2020, 2, 1)) // true
 ```
 
 ### getFirstDayOfTheWeek
@@ -115,7 +135,7 @@ Returns `true` when the week of the dates are the same
 Transforms the ISO datestring into `dd.mm.yyyy`
 
 ```typescript
-balDateUtil.format('2020-12-02') // '02.12.2020'
+BalDateUtil.format('2020-12-02') // '02.12.2020'
 ```
 
 ### isoString
@@ -125,7 +145,7 @@ balDateUtil.format('2020-12-02') // '02.12.2020'
 Returns the ISO string `yyyy-mm-dd` of the given date
 
 ```typescript
-balDateUtil.isoString(new Date(2020, 0, 13)) // '2020-01-13'
+BalDateUtil.isoString(new Date(2020, 0, 13)) // '2020-01-13'
 ```
 
 ### newDateString
@@ -135,7 +155,7 @@ balDateUtil.isoString(new Date(2020, 0, 13)) // '2020-01-13'
 Returns the ISO string `yyyy-mm-dd` of the given date
 
 ```typescript
-balDateUtil.newDateString(new Date(2020, 0, 13)) // '2020-01-13'
+BalDateUtil.newDateString(new Date(2020, 0, 13)) // '2020-01-13'
 ```
 
 ### newDateString
@@ -145,7 +165,7 @@ balDateUtil.newDateString(new Date(2020, 0, 13)) // '2020-01-13'
 Returns the ISO string `yyyy-mm-dd` of the given parameters year, month and day
 
 ```typescript
-balDateUtil.newDateString(2020, 0, 13) // '2020-01-13'
+BalDateUtil.newDateString(2020, 0, 13) // '2020-01-13'
 ```
 
 ### newDateString
@@ -161,7 +181,7 @@ balDateUtil.newDateString(2020, 0, 13) // '2020-01-13'
 Turns the ISO string `yyyy-mm-dd` it a JS Date instance
 
 ```typescript
-balDateUtil.toDate('2020-01-13') // js date instance
+BalDateUtil.toDate('2020-01-13') // js date instance
 ```
 
 ### isValidDateString
@@ -171,11 +191,17 @@ balDateUtil.toDate('2020-01-13') // js date instance
 Returns `true` if the given datestring is valid
 
 ```typescript
-balDateUtil.isValidDateString('2020-01-13') //true
-balDateUtil.isValidDateString('2020-01-0') //false
-balDateUtil.isValidDateString('') //false
-balDateUtil.isValidDateString('1899-01-0') //false
+BalDateUtil.isValidDateString('2020-01-13') //true
+BalDateUtil.isValidDateString('2020-01-0') //false
+BalDateUtil.isValidDateString('') //false
+BalDateUtil.isValidDateString('1899-01-0') //false
 ```
+
+### isValidDate
+
+`isValidDate(value: any) => boolean`
+
+Returns `true` if the given date is valid
 
 
 ---
@@ -222,6 +248,24 @@ import { balNumberUtil } from '@baloise/ui-library'
 ### round
 
 `round(value: number, digits: number) => string`
+
+
+
+### parseNumber
+
+`parseNumber(value: any) => number | undefined`
+
+
+
+### isValidNumber
+
+`isValidNumber(value: number) => boolean`
+
+
+
+### isValidNumberWithSeparators
+
+`isValidNumberWithSeparators(stringValue: string) => boolean`
 
 
 

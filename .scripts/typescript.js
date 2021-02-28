@@ -86,6 +86,8 @@ const parseType = type => {
       return 'string'
     case 173:
       return 'Blob'
+    case 160:
+      return 'RegExp'
     case 178:
       return `${parseType(type.elementType)}[]`
     case 182: // UnionType like string | number

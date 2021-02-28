@@ -15,6 +15,8 @@ import {
   isSameMonth,
   isSameDay,
   isSameWeek,
+  isBefore,
+  isAfter,
 } from './balDateUtil'
 
 describe('parseDate', () => {
@@ -66,6 +68,19 @@ describe('parseDate', () => {
       expect(isValidDateString('1999-01-32')).toBe(false)
       expect(isValidDateString('')).toBe(false)
       expect(isValidDateString(undefined)).toBe(false)
+    })
+  })
+
+  describe('isBefore & isAfter', () => {
+    test('isBefore', () => {
+      expect(isBefore(new Date(2020, 0, 1), new Date(2020, 0, 2))).toBe(true)
+      expect(isBefore('2000-01-01', '2000-01-02')).toBe(true)
+      expect(isBefore('2000-01-01', '2000-01-01')).toBe(false)
+    })
+    test('isAfter', () => {
+      expect(isAfter(new Date(2020, 0, 2), new Date(2020, 0, 1))).toBe(true)
+      expect(isAfter('2000-01-02', '2000-01-01')).toBe(true)
+      expect(isAfter('2000-01-01', '2000-01-01')).toBe(false)
     })
   })
 

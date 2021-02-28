@@ -1,8 +1,10 @@
+import { isDefined, isNumber } from './balUtil'
+
 /**
  * Returns a JS Date instance of today
  *
  * ```typescript
- * const date = balDateUtil.now()
+ * const date = BalDateUtil.now()
  * ```
  */
 export function now(): Date {
@@ -13,7 +15,7 @@ export function now(): Date {
  * Returns the year number of the given date
  *
  * ```typescript
- * balDateUtil.year(new Date(2020, 0, 1)) // 2020
+ * BalDateUtil.year(new Date(2020, 0, 1)) // 2020
  * ```
  */
 export function year(date: Date | undefined): number {
@@ -27,7 +29,7 @@ export function year(date: Date | undefined): number {
  * Returns the month number of the given date
  *
  * ```typescript
- * balDateUtil.month(new Date(2020, 0, 1)) // 0
+ * BalDateUtil.month(new Date(2020, 0, 1)) // 0
  * ```
  */
 export function month(date: Date | undefined): number {
@@ -41,7 +43,7 @@ export function month(date: Date | undefined): number {
  * Returns the day number of the given date
  *
  * ```typescript
- * balDateUtil.day(new Date(2020, 0, 1)) // 1
+ * BalDateUtil.day(new Date(2020, 0, 1)) // 1
  * ```
  */
 export function day(date: Date | undefined): number {
@@ -55,7 +57,7 @@ export function day(date: Date | undefined): number {
  * Increases the year of a date and retunrs the result
  *
  * ```typescript
- * balDateUtil.increaseYear(new Date(2020, 0, 1), 1) // 2021
+ * BalDateUtil.increaseYear(new Date(2020, 0, 1), 1) // 2021
  * ```
  */
 export function increaseYear(date: Date, years: number): number {
@@ -66,7 +68,7 @@ export function increaseYear(date: Date, years: number): number {
  * Decreases the year of a date and retunrs the result
  *
  * ```typescript
- * balDateUtil.decreaseYear(new Date(2020, 0, 1), 1) // 2019
+ * BalDateUtil.decreaseYear(new Date(2020, 0, 1), 1) // 2019
  * ```
  */
 export function decreaseYear(date: Date, years: number): number {
@@ -74,10 +76,32 @@ export function decreaseYear(date: Date, years: number): number {
 }
 
 /**
+ * Returns `true` when the given date is not smaller than the before date.
+ *
+ * ```typescript
+ * BalDateUtil.isBefore(new Date(2020, 1, 1), new Date(2020, 3, 1)) // true
+ * ```
+ */
+export function isBefore(date: any, beforeDate: Date | string | undefined): boolean {
+  return validateTwoDates(date, beforeDate, (first, second) => first < second)
+}
+
+/**
+ * Returns `true` when the given date is not smaller than the before date.
+ *
+ * ```typescript
+ * BalDateUtil.isAfter(new Date(2020, 5, 1), new Date(2020, 3, 1)) // true
+ * ```
+ */
+export function isAfter(date: any, afterDate: Date | string | undefined): boolean {
+  return validateTwoDates(date, afterDate, (first, second) => first > second)
+}
+
+/**
  * Returns `true` when the given date is not smaller than the minDate and not bigger than the maxDate.
  *
  * ```typescript
- * balDateUtil.isInRange(new Date(2020, 1, 1), new Date(2020, 0, 1), new Date(2020, 2, 1)) // true
+ * BalDateUtil.isInRange(new Date(2020, 1, 1), new Date(2020, 0, 1), new Date(2020, 2, 1)) // true
  * ```
  */
 export function isInRange(date: Date | undefined, minDate: Date | undefined, maxDate: Date | undefined): boolean {
@@ -129,7 +153,7 @@ export function isSameWeek(a: Date, b: Date): boolean {
  * Transforms the ISO datestring into `dd.mm.yyyy`
  *
  * ```typescript
- * balDateUtil.format('2020-12-02') // '02.12.2020'
+ * BalDateUtil.format('2020-12-02') // '02.12.2020'
  * ```
  */
 export function format(datestring: string | undefined | null): string {
@@ -145,7 +169,7 @@ export function format(datestring: string | undefined | null): string {
  * Returns the ISO string `yyyy-mm-dd` of the given date
  *
  * ```typescript
- * balDateUtil.isoString(new Date(2020, 0, 13)) // '2020-01-13'
+ * BalDateUtil.isoString(new Date(2020, 0, 13)) // '2020-01-13'
  * ```
  */
 export function isoString(date: Date | undefined): string {
@@ -159,7 +183,7 @@ export function isoString(date: Date | undefined): string {
  * Returns the ISO string `yyyy-mm-dd` of the given date
  *
  * ```typescript
- * balDateUtil.newDateString(new Date(2020, 0, 13)) // '2020-01-13'
+ * BalDateUtil.newDateString(new Date(2020, 0, 13)) // '2020-01-13'
  * ```
  */
 export function newDateString(date: Date): string
@@ -167,7 +191,7 @@ export function newDateString(date: Date): string
  * Returns the ISO string `yyyy-mm-dd` of the given parameters year, month and day
  *
  * ```typescript
- * balDateUtil.newDateString(2020, 0, 13) // '2020-01-13'
+ * BalDateUtil.newDateString(2020, 0, 13) // '2020-01-13'
  * ```
  */
 export function newDateString(year: number, month: number, day: number): string
@@ -189,7 +213,7 @@ function localDatetime(date: Date): Date {
  * Turns the ISO string `yyyy-mm-dd` it a JS Date instance
  *
  * ```typescript
- * balDateUtil.toDate('2020-01-13') // js date instance
+ * BalDateUtil.toDate('2020-01-13') // js date instance
  * ```
  */
 export function toDate(datestring: string | undefined | null): Date | undefined {
@@ -238,10 +262,10 @@ export function toDate(datestring: string | undefined | null): Date | undefined 
  * Returns `true` if the given datestring is valid
  *
  * ```typescript
- * balDateUtil.isValidDateString('2020-01-13') //true
- * balDateUtil.isValidDateString('2020-01-0') //false
- * balDateUtil.isValidDateString('') //false
- * balDateUtil.isValidDateString('1899-01-0') //false
+ * BalDateUtil.isValidDateString('2020-01-13') //true
+ * BalDateUtil.isValidDateString('2020-01-0') //false
+ * BalDateUtil.isValidDateString('') //false
+ * BalDateUtil.isValidDateString('1899-01-0') //false
  * ```
  */
 export function isValidDateString(datestring: string | undefined | null): boolean {
@@ -269,8 +293,14 @@ export function isValidDateString(datestring: string | undefined | null): boolea
   return true
 }
 
-function isValidDate(value: any): boolean {
-  if (value === null || value === undefined) {
+/**
+ * Returns `true` if the given date is valid
+ */
+export function isValidDate(value: any): boolean {
+  if (!isDefined(value)) {
+    return false
+  }
+  if (isNumber(value)) {
     return false
   }
   if (value instanceof Date) {
@@ -283,4 +313,19 @@ function isValidDate(value: any): boolean {
 function pad(value: number) {
   var s = `0${value}`
   return s.substr(s.length - 2)
+}
+
+function validateTwoDates(first: any, second: Date | string | undefined, validateFn: (irst: Date, second: Date) => boolean) {
+  if (!isDefined(first) && !isDefined(second)) {
+    return false
+  }
+
+  const _first: Date = new Date(first as string | Date)
+  const _second: Date = new Date(second as string | Date)
+
+  if (!isValidDate(_first) || !isValidDate(_second)) {
+    return false
+  }
+
+  return validateFn(_first, _second)
 }

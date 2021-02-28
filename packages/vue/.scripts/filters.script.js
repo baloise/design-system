@@ -16,20 +16,11 @@ const run = async () => {
   const files = await utilities.read({ fileName: 'filters' })
   const filters = files.map(f => f.functions[0])
   const functions = filters.map(f => `  ${f.name}`)
-
   const functionsGlobal = filters.map(f => `  app.config.globalProperties.$${f.name} = ${f.name}`)
-  const functionsProvide = filters.map(f => `  app.provide<typeof ${f.name}>('${f.name}', ${f.name})`)
-  const functionsUse = filters.map(
-    f =>
-      `export const use${f.name.replace('bal', 'Bal')} = (): typeof ${f.name} => inject<typeof ${f.name}>('${
-        f.name
-      }', ${f.name})`,
-  )
-
   const content = [
     '// generated file by .scripts/filters.script.js',
     '',
-    `import { App, inject } from 'vue'`,
+    `import { App } from 'vue'`,
     `import {`,
     functions.join(',\n'),
     `} from '@baloise/ui-library'`,
@@ -37,10 +28,7 @@ const run = async () => {
     'export const applyFilters = (app: App) => {',
     functionsGlobal.join('\n'),
     '',
-    functionsProvide.join('\n'),
     '}',
-    '',
-    functionsUse.join('\n'),
     '',
   ].join('\n')
 

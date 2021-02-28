@@ -16,7 +16,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run clean && npm run build:filters && npm run build:compile && npm run clean:package",
+    "build": "npm run clean && npm run build:filters && npm run build:validators && npm run build:compile && npm run clean:package",
+    "build:validators": "node .scripts/validators.script.js",
     "build:filters": "node .scripts/filters.script.js",
     "build:compile": "ng-packagr -p package.json",
     "clean": "rimraf src/filters.ts && rimraf dist",
