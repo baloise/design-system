@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/baloise/ui-library/compare/v4.1.2...v4.2.0) (2021-03-01)
+
+
+### Bug Fixes
+
+* **angular:** remove zone specific init parts ([a89a452](https://github.com/baloise/ui-library/commit/a89a452f71a35d315803b78da3c55fb375eeee96))
+
+
+### Features
+
+* **angular:** add balDidRender event ([8371d19](https://github.com/baloise/ui-library/commit/8371d1940837c9ff474cc975bdaa15ef14dc3770))
+
+
+
+
+
 ## [4.1.2](https://github.com/baloise/ui-library/compare/v4.1.1...v4.1.2) (2021-02-28)
 
 **Note:** Version bump only for package @baloise/ui-library-angular
