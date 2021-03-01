@@ -39,7 +39,7 @@ export declare interface BalButton extends Components.BalButton {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   inputs: ['bottomRounded', 'color', 'disabled', 'download', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'outlined', 'rel', 'size', 'square', 'target', 'topRounded', 'type'],
-  outputs: ['balNavigate', 'balFocus', 'balBlur']
+  outputs: ['balNavigate', 'balFocus', 'balBlur', 'balDidRender']
 })
 export class BalButton {
   /** Emitted when the link element has clicked. */
@@ -48,11 +48,13 @@ export class BalButton {
   balFocus!: EventEmitter<CustomEvent<void>>;
   /** Emitted when the button loses focus. */
   balBlur!: EventEmitter<CustomEvent<void>>;
+  /** Emitted when the button has been  rendered. */
+  balDidRender!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['balNavigate', 'balFocus', 'balBlur']);
+    proxyOutputs(this, this.el, ['balNavigate', 'balFocus', 'balBlur', 'balDidRender']);
   }
 }
 

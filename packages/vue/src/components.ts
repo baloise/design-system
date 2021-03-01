@@ -47,7 +47,8 @@ export const BalButton = /*@__PURE__*/ defineContainer<JSX.BalButton>('bal-butto
 'iconRight'],
   ['balNavigate',
 'balFocus',
-'balBlur'],
+'balBlur',
+'balDidRender'],
   
 );
 

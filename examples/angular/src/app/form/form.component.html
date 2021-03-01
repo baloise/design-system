@@ -108,5 +108,5 @@
   <bal-button color="info" outlined (click)="updateName()">Update Name</bal-button>
   <bal-button color="danger" outlined (click)="setCommentDisabled()">Disable Comment</bal-button>
 
-  <bal-button color="primary" type="submit" [disabled]="!form.valid">Submit</bal-button>
+  <bal-button color="primary" id="submit" type="submit" [disabled]="true" (click)="onSubmit()">Submit</bal-button>
 </form>

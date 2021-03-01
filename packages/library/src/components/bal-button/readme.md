@@ -33,11 +33,12 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Events
 
-| Event         | Description                                | Type                      |
-| ------------- | ------------------------------------------ | ------------------------- |
-| `balBlur`     | Emitted when the button loses focus.       | `CustomEvent<void>`       |
-| `balFocus`    | Emitted when the button has focus.         | `CustomEvent<void>`       |
-| `balNavigate` | Emitted when the link element has clicked. | `CustomEvent<MouseEvent>` |
+| Event          | Description                                 | Type                      |
+| -------------- | ------------------------------------------- | ------------------------- |
+| `balBlur`      | Emitted when the button loses focus.        | `CustomEvent<void>`       |
+| `balDidRender` | Emitted when the button has been  rendered. | `CustomEvent<void>`       |
+| `balFocus`     | Emitted when the button has focus.          | `CustomEvent<void>`       |
+| `balNavigate`  | Emitted when the link element has clicked.  | `CustomEvent<MouseEvent>` |
 
 
 ## Dependencies

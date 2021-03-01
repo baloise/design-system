@@ -130,12 +130,21 @@ export class Button implements ComponentInterface {
    */
   @Event() balBlur!: EventEmitter<void>
 
+  /**
+   * Emitted when the button has been  rendered.
+   */
+  @Event() balDidRender!: EventEmitter<void>
+
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (this.disabled && ev.target && ev.target === this.el) {
       ev.preventDefault()
       ev.stopPropagation()
     }
+  }
+
+  componentDidRender() {
+    this.balDidRender.emit()
   }
 
   private get isIconInverted() {
