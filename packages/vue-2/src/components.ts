@@ -173,7 +173,7 @@ export const BalButton = /*@__PURE__*/ Vue.extend({
   },
 
 
-  render: createCommonRender('bal-button', ['balNavigate', 'balFocus', 'balBlur']),
+  render: createCommonRender('bal-button', ['balNavigate', 'balFocus', 'balBlur', 'balDidRender']),
 });
 
 

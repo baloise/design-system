@@ -2399,6 +2399,10 @@ declare namespace LocalJSX {
          */
         "onBalBlur"?: (event: CustomEvent<void>) => void;
         /**
+          * Emitted when the button has been  rendered.
+         */
+        "onBalDidRender"?: (event: CustomEvent<void>) => void;
+        /**
           * Emitted when the button has focus.
          */
         "onBalFocus"?: (event: CustomEvent<void>) => void;
