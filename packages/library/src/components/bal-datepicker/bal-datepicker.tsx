@@ -381,6 +381,23 @@ export class Datepicker implements ComponentInterface {
     }
   }
 
+  private onInputKeyUp = (event: KeyboardEvent) => {
+    if (isEnterKey(event) && !this.triggerIcon) {
+      const date = toDate(this.inputElement.value)
+      const datestring = isoString(date)
+
+      if (this.isDropdownOpen) {
+        if (this.value === datestring) {
+          this.close()
+        }
+      } else {
+        if (this.value !== datestring) {
+          this.open()
+        }
+      }
+    }
+  }
+
   private onInputKeyDown = (event: KeyboardEvent) => {
     const allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]
     if (allowedKeys.indexOf(event.key) < 0) {
@@ -413,14 +430,6 @@ export class Datepicker implements ComponentInterface {
     this.pointerDate = {
       ...this.pointerDate,
       year: parseInt(inputValue, 10),
-    }
-  }
-
-  private onKeyPress = (event: KeyboardEvent) => {
-    if (isEnterKey(event)) {
-      if (!this.isDropdownOpen) {
-        this.open()
-      }
     }
   }
 
@@ -486,8 +495,8 @@ export class Datepicker implements ComponentInterface {
           readonly={this.readonly}
           placeholder={this.placeholder}
           tabindex={this.balTabindex}
-          onKeyPress={this.onKeyPress}
           onKeyDown={e => this.onInputKeyDown(e)}
+          onKeyUp={e => this.onInputKeyUp(e)}
           onInput={this.onInput}
           onClick={this.onInputClick}
           onChange={this.onInputChange}
