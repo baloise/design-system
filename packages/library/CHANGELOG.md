@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.1](https://github.com/baloise/ui-library/compare/v4.2.0...v4.2.1) (2021-03-01)
+
+
+### Bug Fixes
+
+* **datepicker:** change enter key behaviour ([5b10b70](https://github.com/baloise/ui-library/commit/5b10b70609936adeb39a6c2645a5a518eb6fee6b))
+
+
+
+
+
 # [4.2.0](https://github.com/baloise/ui-library/compare/v4.1.2...v4.2.0) (2021-03-01)
 
 
