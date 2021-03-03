@@ -57,46 +57,8 @@
       }
     }
 
-    .form > .label {
-      font-size: $size-5 !important;
-      margin-bottom: 0 !important;
-    }
-
-    .help {
-      min-height: 22.5px;
-      margin-top: 3px !important;
-      margin-bottom: 0 !important;
-    }
-
     .control.has-icons-left *::part(input) {
       padding-left: 38px;
-    }
-
-    .form {
-      .help {
-        text-align: left;
-      }
-
-      &.is-expanded {
-        width: 100%;
-      }
-
-      &.is-disabled {
-        .label,
-        .control {
-          opacity: 0.6;
-        }
-      }
-
-      &.is-inverted {
-        .label {
-          color: $white;
-        }
-
-        .help:not(.is-danger) {
-          color: $blue-line;
-        }
-      }
     }
 
     bal-field-label,
