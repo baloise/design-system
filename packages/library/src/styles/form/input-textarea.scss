@@ -38,6 +38,28 @@ textarea.textarea {
   }
 }
 
+input.input {
+  &.has-icon-right {
+    padding-right: 32px !important;
+  }
+
+  &::placeholder {
+    font-family: inherit;
+  }
+
+  &:-webkit-autofill {
+    background-color: transparent;
+  }
+
+  &:invalid {
+    box-shadow: none;
+  }
+
+  &::-ms-clear {
+    display: none;
+  }
+}
+
 .textarea::placeholder,
 .input::placeholder {
   font-family: $family-primary !important;

@@ -20,25 +20,5 @@
     box-sizing: border-box;
     appearance: none;
     pointer-events: auto;
-
-    &.has-icon-right {
-      padding-right: 32px !important;
-    }
-
-    &::placeholder {
-      font-family: inherit;
-    }
-
-    &:-webkit-autofill {
-      background-color: transparent;
-    }
-
-    &:invalid {
-      box-shadow: none;
-    }
-
-    &::-ms-clear {
-      display: none;
-    }
   }
 }
