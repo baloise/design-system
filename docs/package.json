@@ -13,11 +13,13 @@
     "build": "vuepress build src",
     "setup": "npm run build:lib",
     "build:copy": "node .scripts/copy.script.js",
-    "build:contributors": "node .scripts/contributors.script.js"
+    "build:contributors": "node .scripts/contributors.script.js",
+    "build:components": "node .scripts/components.script.js"
   },
   "license": "Apache-2.0",
   "devDependencies": {
     "fs-extra": "^9.1.0",
+    "node-html-parser": "^3.0.3",
     "vuepress": "^1.5.3"
   },
   "dependencies": {}

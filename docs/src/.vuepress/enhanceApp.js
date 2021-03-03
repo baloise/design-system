@@ -12,5 +12,7 @@ export default ({
   router, // the router instance for the app
   siteData, // site metadata
 }) => {
+  Vue.config.ignoredElements = [/bal-\w*/]
+
   applyPolyfills().then(() => defineCustomElements())
 }

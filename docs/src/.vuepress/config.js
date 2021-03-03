@@ -43,7 +43,7 @@ module.exports = {
       },
       {
         text: 'Components',
-        link: '/components/',
+        link: '/components/' + require('./generated/components.json')[0],
       },
     ],
     sidebar: {
@@ -81,7 +81,7 @@ module.exports = {
         {
           title: 'Components',
           collapsable: false,
-          children: [''],
+          children: require('./generated/components.json'),
         },
       ],
     },

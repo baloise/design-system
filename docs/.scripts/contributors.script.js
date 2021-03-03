@@ -3,7 +3,7 @@ const path = require('path')
 const file = require('../../.scripts/file')
 const { NEWLINE } = require('../../.scripts/constants')
 
-async function run() {
+async function main() {
   const res = await fetch('https://api.github.com/repos/baloise/ui-library/contributors')
   const json = await res.json()
   const users = json
@@ -27,4 +27,4 @@ async function run() {
   )
 }
 
-run()
+main()
