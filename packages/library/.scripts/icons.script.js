@@ -10,7 +10,7 @@ const SVGO = require('svgo')
 const file = require('../../../.scripts/file')
 const log = require('../../../.scripts/log')
 const { toPascalCase } = require('../../../.scripts/string')
-const { NEWLINE } = require('../../../docs/.scripts/utils/constants')
+const { NEWLINE } = require('../../../.scripts/constants')
 
 const svgo = new SVGO({
   plugins: [

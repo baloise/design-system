@@ -9,11 +9,15 @@
   },
   "repository": "https://github.com/baloise/ui-library/@baloise/ui-library-docs",
   "scripts": {
-    "dev": "vuepress dev src",
-    "build": "vuepress build src"
+    "serve": "vuepress dev src",
+    "build": "vuepress build src",
+    "setup": "npm run build:lib",
+    "build:copy": "node .scripts/copy.script.js"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
+    "cpy-cli": "^3.1.1",
+    "fs-extra": "^9.1.0",
     "vuepress": "^1.5.3"
   }
 }

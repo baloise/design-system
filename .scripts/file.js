@@ -1,4 +1,5 @@
 const fs = require('fs')
+const fse = require('fs-extra')
 const glob = require('glob')
 const path = require('path')
 const log = require('./log')
@@ -67,6 +68,19 @@ const makeDir = async dirPath => {
   })
 }
 
+const copy = async (srcDir, destDir) => {
+  return new Promise(async resolve => {
+    try {
+      await fse.emptyDir(destDir)
+      fse.copySync(srcDir, destDir)
+      resolve()
+    } catch (err) {
+      log.error(`Could not copy ${srcDir} to ${destDir}`, error)
+      setTimeout(() => process.exit(1), 0)
+    }
+  })
+}
+
 module.exports = {
   readSync,
   read,
@@ -74,4 +88,5 @@ module.exports = {
   scan,
   save,
   makeDir,
+  copy,
 }
