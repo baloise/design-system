@@ -17,7 +17,7 @@ function parseChild(node) {
     if (rawText === NEWLINE || rawText.length === 0) {
       return ''
     }
-    return `<span>${rawText.split(NEWLINE).join('<br/>')}</span>`
+    return `${rawText.split(NEWLINE).join('<br/>')}`
   }
 
   const tag = node.tagName.toLowerCase()
@@ -32,10 +32,8 @@ function parseChild(node) {
 
 function formatToMarkdownHtml(html) {
   const root = htmlParser.parse(html)
-  return root.childNodes
-    .map(parseChild)
-    .filter(s => s.trim().length > 0)
-    .join(NEWLINE)
+  const list = root.childNodes.map(parseChild).filter(s => s.trim().length > 0)
+  return list.join(NEWLINE)
 }
 
 module.exports = {

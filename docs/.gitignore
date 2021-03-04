@@ -2,3 +2,5 @@ fonts/
 lib/
 generated/
 src/components/bal-*.md
+
+docs-demo-bal-*.vue

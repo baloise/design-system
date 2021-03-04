@@ -45,6 +45,18 @@ const scan = async filePath => {
   })
 }
 
+const remove = async filePath => {
+  try {
+    const filterFilePaths = await scan(filePath)
+    for (let index = 0; index < filterFilePaths.length; index++) {
+      await fse.remove(filterFilePaths[index])
+    }
+  } catch (error) {
+    log.error(`Could not save ${filePath}`, error)
+    setTimeout(() => process.exit(1), 0)
+  }
+}
+
 const save = async (filePath, content) => {
   try {
     await write(filePath, content)
@@ -65,6 +77,18 @@ const makeDir = async dirPath => {
         resolve()
       }
     })
+  })
+}
+
+const empty = async dir => {
+  return new Promise(async resolve => {
+    try {
+      await fse.emptyDir(dir)
+      resolve()
+    } catch (err) {
+      log.error(`Could not empty ${dir}`, error)
+      setTimeout(() => process.exit(1), 0)
+    }
   })
 }
 
@@ -89,4 +113,6 @@ module.exports = {
   save,
   makeDir,
   copy,
+  empty,
+  remove,
 }

@@ -22,6 +22,8 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['link', { rel: 'stylesheet', href: '/lib/dist/ui-library/ui-library.css' }],
+    ['link', { rel: 'stylesheet', href: '/assets/css/swot.css' }],
+    ['link', { rel: 'stylesheet', href: '/assets/css/demo.css' }],
   ],
 
   /**

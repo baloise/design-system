@@ -6,9 +6,12 @@ const libraryLib = require('../../packages/library/.scripts/components.lib')
 const { NEWLINE, LEFT_WHITESPACE } = require('../../.scripts/constants')
 const { formatToMarkdownHtml } = require('./html.util')
 
+let INDEX = 0
+
 async function main() {
   log.title('create component docs')
   const components = await libraryLib.components()
+  await file.remove(path.join(__dirname, '../src/.vuepress/components/docs-demo-bal-*.vue'))
   await generateSidebar(components)
   await generateMarkdown(components)
 }
@@ -20,6 +23,8 @@ async function generateSidebar(components) {
 }
 
 async function generateMarkdown(components) {
+  const dir = path.join(__dirname, `../src/components`)
+  await file.empty(dir)
   await forEachComponent(components, async component => {
     const examples = generateExamples(component)
 
@@ -28,7 +33,7 @@ async function generateMarkdown(components) {
     component.readme.split(NEWLINE).forEach(line => lines.push(line))
     lines.push(examples)
     lines.push('')
-    await file.save(path.join(__dirname, `../src/components/${component.tag}.md`), lines.join(NEWLINE))
+    await file.save(path.join(dir, `${component.tag}.md`), lines.join(NEWLINE))
   })
 }
 
@@ -61,20 +66,15 @@ function transformToMarkdown(component) {
           return `${printRawText(node)}` + NEWLINE
         }
         if (node.rawTagName === 'section') {
-          return [
-            `<docs-demo>` + NEWLINE,
-            formatToMarkdownHtml(node.innerHTML) + NEWLINE,
-            `</docs-demo>`,
-            NEWLINE + NEWLINE,
-            '```html',
-            getCodeExample(node),
-            '```',
-            NEWLINE,
-          ].join('')
+          const tag = `docs-demo-${component.tag}-${INDEX++}`
+          const content = getCodeExample(node)
+          writeDemoComponent(tag, content)
+          return [`<${tag}></${tag}>`, NEWLINE + NEWLINE, '```html', content, '```', NEWLINE].join('')
         }
       }
       return ''
     })
+    .filter(a => a)
     .filter(a => a.trim().length !== 0)
     .join(NEWLINE)
 }
@@ -99,6 +99,11 @@ function findContainer(component) {
     return process.exit(1)
   }
   return htmlParser.parse(containerElement.innerHTML)
+}
+
+async function writeDemoComponent(tag, content) {
+  const componentContent = ['<template>', '<div class="demo bal-app">', content, '</div>', '</template>'].join(NEWLINE)
+  await file.save(path.join(__dirname, `../src/.vuepress/components/${tag}.vue`), componentContent)
 }
 
 function forEachComponent(components, callback) {
