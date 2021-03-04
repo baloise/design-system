@@ -4,7 +4,7 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  title: 'Vuepress Docs Boilerplate',
+  title: 'Baloise UI Library',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
@@ -16,9 +16,14 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/config/#head
    */
   head: [
-    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'theme-color', content: '#009ee7' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+    ['link', { rel: 'stylesheet', href: '/lib/dist/ui-library/ui-library.css' }],
+    ['link', { rel: 'stylesheet', href: '/assets/css/swot.css' }],
+    ['link', { rel: 'stylesheet', href: '/assets/css/demo.css' }],
   ],
 
   /**
@@ -27,9 +32,10 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
-    repo: '',
+    repo: 'https://github.com/baloise/ui-library',
+    logo: '/assets/images/logo.svg',
     editLinks: false,
-    docsDir: '',
+    docsDir: 'docs',
     editLinkText: '',
     lastUpdated: false,
     nav: [
@@ -38,13 +44,9 @@ module.exports = {
         link: '/guide/',
       },
       {
-        text: 'Config',
-        link: '/config/'
+        text: 'Components',
+        link: '/components/' + require('./generated/components.json')[0],
       },
-      {
-        text: 'VuePress',
-        link: 'https://v1.vuepress.vuejs.org'
-      }
     ],
     sidebar: {
       '/guide/': [
@@ -52,19 +54,38 @@ module.exports = {
           title: 'Guide',
           collapsable: false,
           children: [
+            'essentials/why',
+            'essentials/architecture',
             '',
-            'using-vue',
-          ]
-        }
+            'essentials/html5',
+            'essentials/styling',
+            'essentials/vue',
+            'essentials/angular',
+          ],
+        },
+        {
+          title: 'Styles',
+          collapsable: false,
+          children: [],
+        },
+        {
+          title: 'Tooling',
+          collapsable: false,
+          children: [],
+        },
+        {
+          title: 'Development',
+          collapsable: false,
+          children: [],
+        },
       ],
-    }
+      '/components/': [
+        {
+          title: 'Components',
+          collapsable: false,
+          children: require('./generated/components.json'),
+        },
+      ],
+    },
   },
-
-  /**
-   * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
-   */
-  plugins: [
-    '@vuepress/plugin-back-to-top',
-    '@vuepress/plugin-medium-zoom',
-  ]
 }

@@ -156,7 +156,10 @@ async function writeDemoComponent(tag, content) {
 
 function forEachComponent(components, callback) {
   components.forEach(async component => {
-    if (component.tag === 'bal-button' && component.tag.indexOf('bal-icon-') === -1 && component.isChild === false) {
+    // if (component.tag.indexOf('bal-icon-') === -1 && component.isChild === false) {
+    //   await callback(component)
+    // }
+    if (component.tag === 'bal-button' || component.tag === 'bal-accordion' || component.tag === 'bal-toast') {
       await callback(component)
     }
   })
