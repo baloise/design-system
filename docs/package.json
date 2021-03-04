@@ -7,7 +7,7 @@
     "name": "Gery Hirschfeld",
     "email": "gerhard.hirschfeld@baloise.ch"
   },
-  "repository": "https://github.com/baloise/ui-library/@baloise/ui-library-docs",
+  "repository": "https://github.com/baloise/ui-library",
   "scripts": {
     "serve": "vuepress dev src",
     "build": "vuepress build src",
@@ -18,10 +18,11 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.8.2",
+    "@vuepress/plugin-medium-zoom": "^1.8.2",
     "fs-extra": "^9.1.0",
-    "glob": "^7.1.6",
     "node-html-parser": "^3.0.3",
-    "vuepress": "^1.5.3"
+    "vuepress": "^1.8.2"
   },
   "dependencies": {}
 }

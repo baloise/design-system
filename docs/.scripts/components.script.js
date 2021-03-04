@@ -4,9 +4,11 @@ const log = require('../../.scripts/log')
 const file = require('../../.scripts/file')
 const libraryLib = require('../../packages/library/.scripts/components.lib')
 const { NEWLINE, LEFT_WHITESPACE } = require('../../.scripts/constants')
-const { formatToMarkdownHtml } = require('./html.util')
 
+const JAVASCRIPT_CONTENT = []
 let INDEX = 0
+
+const camelize = s => s.replace(/-./g, x => x.toUpperCase()[1])
 
 async function main() {
   log.title('create component docs')
@@ -26,15 +28,24 @@ async function generateMarkdown(components) {
   const dir = path.join(__dirname, `../src/components`)
   await file.empty(dir)
   await forEachComponent(components, async component => {
-    const examples = generateExamples(component)
+    const { markdown, scripts } = generateExamples(component)
+    JAVASCRIPT_CONTENT.push(scripts)
 
     const lines = []
     lines.push(`# ${component.tag}`)
     component.readme.split(NEWLINE).forEach(line => lines.push(line))
-    lines.push(examples)
+    lines.push(markdown)
     lines.push('')
+
+    if (scripts) {
+      lines.push(`<docs-component-script tag="${camelize(component.tag)}"></docs-component-script>`)
+      lines.push('')
+    }
+
     await file.save(path.join(dir, `${component.tag}.md`), lines.join(NEWLINE))
   })
+
+  await file.save(path.join(__dirname, `../src/.vuepress/generated/components.js`), JAVASCRIPT_CONTENT.join(NEWLINE))
 }
 
 function generateExamples(component) {
@@ -42,7 +53,30 @@ function generateExamples(component) {
     return ''
   }
 
-  return transformToMarkdown(component)
+  return {
+    markdown: transformToMarkdown(component),
+    scripts: transformScripts(component),
+  }
+}
+
+function transformScripts(component) {
+  const container = findContainer(component)
+  const scriptContent = container.childNodes
+    .map(node => (node.rawTagName === 'script' ? getCodeExample(node) : ''))
+    .filter(a => a.trim().length !== 0)
+    .join(NEWLINE + NEWLINE)
+  if (scriptContent.length > 0) {
+    return (
+      `export function ${camelize(component.tag)}(){` +
+      scriptContent
+        .split(NEWLINE)
+        .map(c => `  ${c}`)
+        .join(NEWLINE) +
+      NEWLINE +
+      '}' +
+      NEWLINE
+    )
+  }
 }
 
 function transformToMarkdown(component) {
@@ -80,7 +114,10 @@ function transformToMarkdown(component) {
 }
 
 function printRawText(node) {
-  return node.childNodes.map(n => n.rawText).join(' ')
+  return node.childNodes
+    .map(n => n.rawText.trim())
+    .join(' ')
+    .trim()
 }
 
 function getCodeExample(node) {
@@ -102,13 +139,24 @@ function findContainer(component) {
 }
 
 async function writeDemoComponent(tag, content) {
-  const componentContent = ['<template>', '<div class="demo bal-app">', content, '</div>', '</template>'].join(NEWLINE)
+  const componentContent = [
+    '<template>',
+    '<div class="demo bal-app">',
+    content,
+    '</div>',
+    '</template>',
+    '<script>',
+    'export default {',
+    `  name: '${tag}'`,
+    '}',
+    '</script>',
+  ].join(NEWLINE)
   await file.save(path.join(__dirname, `../src/.vuepress/components/${tag}.vue`), componentContent)
 }
 
 function forEachComponent(components, callback) {
   components.forEach(async component => {
-    if (component.tag.indexOf('bal-icon-') === -1 && component.isChild === false) {
+    if (component.tag === 'bal-button' && component.tag.indexOf('bal-icon-') === -1 && component.isChild === false) {
       await callback(component)
     }
   })
