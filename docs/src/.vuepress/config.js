@@ -71,7 +71,7 @@ module.exports = {
         {
           title: 'Tooling',
           collapsable: false,
-          children: [],
+          children: ['tooling/filters', 'tooling/utils', 'tooling/validators'],
         },
         {
           title: 'Development',

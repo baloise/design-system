@@ -11,10 +11,13 @@
   "scripts": {
     "serve": "vuepress dev src",
     "build": "vuepress build src",
-    "setup": "npm run build:lib",
+    "setup": "npm run build:copy && npm run build:contributors && npm run build:components && npm run build:filters && npm run build:utils && npm run build:validators",
     "build:copy": "node .scripts/copy.script.js",
     "build:contributors": "node .scripts/contributors.script.js",
-    "build:components": "node .scripts/components.script.js"
+    "build:components": "node .scripts/components.script.js",
+    "build:filters": "node .scripts/filters.script.js",
+    "build:utils": "node .scripts/utils.script.js",
+    "build:validators": "node .scripts/validators.script.js"
   },
   "license": "Apache-2.0",
   "devDependencies": {
