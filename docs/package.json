@@ -19,6 +19,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "fs-extra": "^9.1.0",
+    "markdown-table": "^2.0.0",
     "node-html-parser": "^3.0.3",
     "vuepress": "^1.8.2"
   },

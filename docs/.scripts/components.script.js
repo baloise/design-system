@@ -3,6 +3,10 @@ const htmlParser = require('node-html-parser')
 const log = require('../../.scripts/log')
 const file = require('../../.scripts/file')
 const libraryLib = require('../../packages/library/.scripts/components.lib')
+const testingLib = require('../../packages/testing/.scripts/testing.lib')
+const api = require('./utils/api.util')
+const testing = require('./utils/testing.util')
+const github = require('./utils/github.util')
 const { NEWLINE, LEFT_WHITESPACE } = require('../../.scripts/constants')
 
 const JAVASCRIPT_CONTENT = []
@@ -25,6 +29,7 @@ async function generateSidebar(components) {
 }
 
 async function generateMarkdown(components) {
+  const accessors = await testingLib.accessors()
   const dir = path.join(__dirname, `../src/components`)
   await file.empty(dir)
   await forEachComponent(components, async component => {
@@ -35,6 +40,19 @@ async function generateMarkdown(components) {
     lines.push(`# ${component.tag}`)
     component.readme.split(NEWLINE).forEach(line => lines.push(line))
     lines.push(markdown)
+    lines.push('')
+
+    const apiContent = api.parse(components, component)
+    lines.push(apiContent)
+    lines.push('')
+
+    const accessor = accessors.get(component.tag)
+    const testingContent = testing.parse(accessor)
+    lines.push(testingContent)
+    lines.push('')
+
+    const githubContent = github.parse(component, accessor)
+    lines.push(githubContent)
     lines.push('')
 
     if (scripts) {
@@ -156,12 +174,12 @@ async function writeDemoComponent(tag, content) {
 
 function forEachComponent(components, callback) {
   components.forEach(async component => {
-    // if (component.tag.indexOf('bal-icon-') === -1 && component.isChild === false) {
-    //   await callback(component)
-    // }
-    if (component.tag === 'bal-button' || component.tag === 'bal-accordion' || component.tag === 'bal-toast') {
+    if (component.tag.indexOf('bal-icon-') === -1 && component.isChild === false) {
       await callback(component)
     }
+    // if (component.tag === 'bal-select') {
+    //   await callback(component)
+    // }
   })
 }
 

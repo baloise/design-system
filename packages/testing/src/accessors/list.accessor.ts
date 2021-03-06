@@ -36,13 +36,6 @@ export const ListSelectableMixin: Mixin = <T>({ selector, creator }: MixinContex
     return creator()
   },
 })
-// export const ListAssertableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
-//   assertIsSelected: (number: string) => {
-//     const link = cy.get(selector).find('.page-link');
-//     link.should('contain', number);
-//     return creator();
-//   }
-// });
 
 export const ListAccessor: Accessor<ListAccessorType> = createAccessor<ListAccessorType>(
   ListSelectableMixin,

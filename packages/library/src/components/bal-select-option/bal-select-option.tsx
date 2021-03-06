@@ -15,7 +15,7 @@ export class SelectOption implements ComponentInterface {
   @Element() el!: HTMLElement
 
   /**
-   * The value of the dropdown item. This value will be returned by the parent <bal-dropdown> element.
+   * The value of the dropdown item. This value will be returned by the parent `<bal-dropdown>` element.
    */
   @Prop({ reflect: true }) value: string | undefined
 
