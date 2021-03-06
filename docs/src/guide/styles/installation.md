@@ -1,4 +1,4 @@
-# Styling
+# Installation
 
 ## Fonts
 

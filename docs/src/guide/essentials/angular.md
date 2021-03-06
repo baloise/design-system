@@ -36,7 +36,7 @@ npm install @baloise/ui-library-angular --save
 
 ### Apply the styles and assets
 
-Go to the [styling documentation](/guide/styling) and add the fonts and styles.
+Go to the [styling documentation](/styles/installation) and add the fonts and styles.
 
 ### index.html
 

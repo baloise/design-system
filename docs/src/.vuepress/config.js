@@ -58,7 +58,6 @@ module.exports = {
             'essentials/architecture',
             '',
             'essentials/html5',
-            'essentials/styling',
             'essentials/vue',
             'essentials/angular',
           ],
@@ -66,17 +65,31 @@ module.exports = {
         {
           title: 'Styles',
           collapsable: false,
-          children: [],
+          children: [
+            'styles/installation',
+            'styles/colors',
+            'styles/typography',
+            'styles/responsiveness',
+            'styles/helpers',
+            'styles/table',
+            'styles/track-line',
+          ],
         },
         {
           title: 'Tooling',
           collapsable: false,
-          children: ['tooling/filters', 'tooling/utils', 'tooling/validators'],
+          children: ['tooling/filters', 'tooling/utils', 'tooling/validators', 'tooling/testing'],
         },
         {
           title: 'Development',
           collapsable: false,
-          children: [],
+          children: [
+            'development/installation',
+            'development/commands',
+            'development/component',
+            'development/controller',
+            'development/release',
+          ],
         },
       ],
       '/components/': [
