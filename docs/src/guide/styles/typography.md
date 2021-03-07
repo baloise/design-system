@@ -71,3 +71,23 @@
 <p class="is-small">Paragraph MetaPro Normal</p>
 <a class="is-link is-small" href="">Link cyan</a>
 ```
+
+## Helpers
+
+[Go to the Bulma documentation](https://bulma.io/documentation/modifiers/typography-helpers/).
+
+<docs-demo>
+<div class="has-background-light is-padded">
+  <p class="is-size-1 has-text-centered">
+    a big centered text
+  </p>
+</div>
+</docs-demo>
+
+```html
+<div class="has-background-light is-padded">
+  <p class="is-size-1 has-text-centered">
+    a big centered text
+  </p>
+</div>
+```

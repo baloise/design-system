@@ -1,7 +1,6 @@
 # bal-field
 
-All generic form field, designed for consistency 
-
+A field wrappes a form field like input. It provides a clear style structure of each control.
 
 <!-- Auto Generated Below -->
 

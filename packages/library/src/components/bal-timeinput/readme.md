@@ -1,7 +1,5 @@
 # bal-timeinput
 
-
-
 <!-- Auto Generated Below -->
 
 

@@ -1,7 +1,6 @@
 # bal-accordion
 
-Accordion is a easy way to toggle things.
-
+An accordion hides secondary content and requires user interaction to display the content.
 
 <!-- Auto Generated Below -->
 

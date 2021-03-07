@@ -1,7 +1,6 @@
 # bal-tag
 
-A simple tag in different colors
-
+A tag highlights a label for quick recognition.
 
 <!-- Auto Generated Below -->
 

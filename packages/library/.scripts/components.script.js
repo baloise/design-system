@@ -16,7 +16,7 @@ const addChildInformation = component => {
   component.isChild = false
   component.childComponents = []
 
-  const lines = component.readme.split(NEWLINE).filter(line => line.match(DOCS_HEADING_REGEX) === null)
+  const lines = component.readme.split(NEWLINE)
   const firstLine = lines[0]
   const parentTag = firstLine.match(DOCS_CHILD_REGEX)
 

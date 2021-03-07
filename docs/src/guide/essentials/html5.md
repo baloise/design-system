@@ -14,7 +14,7 @@ Add the following 2 references to your `<head></head>`
 The CDN script does not run in the IE11 Browser. To get IE11 up and running use the [Javascript](/) integration;
 :::
 
-```
+```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ui-library/dist/ui-library/ui-library.css" />
 <script type="module" src="https://cdn.jsdelivr.net/npm/@baloise/ui-library/dist/ui-library/ui-library.esm.js"></script>
 ```

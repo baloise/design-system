@@ -1,6 +1,6 @@
 # bal-navbar
 
-A responsive horizontal navbar that can support images, links, buttons, and dropdowns 
+A responsive horizontal navbar that can support images, links, buttons, and dropdowns.
 
 <!-- Auto Generated Below -->
 

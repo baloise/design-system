@@ -1,6 +1,6 @@
 # bal-data
 
-The component `bal-data` displays key-value pairs.
+A data component display readonly form data.
 
 <!-- Auto Generated Below -->
 

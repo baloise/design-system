@@ -10,11 +10,11 @@ altActionLink: /guide/why
 
 features:
   - title: 📦 Agnostic
-    details: Our Web Components work with many popular frameworks right out of the box.
+    details: Our Library work with many popular frameworks right out of the box.
   - title: ⚡️ Fast Runtime
-    details: Since we push more an more to the browser for better performance.
+    details: Web Components offered a solution by pushing more work to the browser for better performance.
   - title: 🛠️ Rich Features
-    details: The library has a set of utilities like validators, filters and util functions.
+    details: The library has a set of utilities like validators, filters, util functions and testing helpers.
 footer: Apache-2.0 Licensed | Copyright © 2019-present Gery Hirschfeld & Contributors
 ---
 

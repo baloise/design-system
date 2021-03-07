@@ -1,8 +1,6 @@
-# bal-radio
+# bal-radio <Badge text="Two-way binding"/>
 
-Select an option from a set
-
-> Two-way binding with `v-model` or `ng-model` is available.
+A radio input is normally displayed in a radio group. The user can only select one option from a number of choices.
 
 <!-- Auto Generated Below -->
 

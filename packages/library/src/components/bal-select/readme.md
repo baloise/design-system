@@ -1,6 +1,6 @@
-# bal-select
+# bal-select <Badge text="Two-way binding"/>
 
-Select fields components are used for collecting user provided information from a list of options.
+A select is a collection of options, where the user can select a single one or multiple.
 
 ## Option interface
 

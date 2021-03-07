@@ -1,7 +1,7 @@
 # bal-hint
 
-Display a helper text. Use this to explain complicted form fields.
-
+A hint hides content with some additional description and shows it by clicking the icon.
+It can easily combined with the `bal-data` or `bal-field` component.
 
 <!-- Auto Generated Below -->
 

@@ -24,6 +24,7 @@ $table-striped-row-even-background-color: $scheme-main-bis;
 $table-striped-row-even-hover-background-color: $blue-light-hover;
 
 table.table {
+  display: table !important;
   border-spacing: 0;
 
   thead {

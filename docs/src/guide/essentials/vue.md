@@ -2,7 +2,7 @@
 
 <img style="width: 128px;" src="https://vuejs.org/images/logo.png" data-origin="https://vuejs.org/images/logo.png" alt="Vue">
 
-To add the Baloise UI Library to your Vue project follow this steps.
+`@baloise/ui-libary-vue` combines the core Ionic Framework experience with the tooling and APIs that are tailored to Vue Developers.
 
 ## Install
 

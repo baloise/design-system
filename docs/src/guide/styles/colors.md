@@ -1,10 +1,6 @@
 # Colors
 
-To access the color variables just import the `ui-library.utilities` into your scss files.
-
-```scss
-@import 'node_modules/@baloise/ui-library/src/styles/ui-library.utilities';
-```
+Out of the box access all the colors form the Baloise Design System.
 
 ## Variables
 
@@ -37,3 +33,27 @@ To access the color variables just import the `ui-library.utilities` into your s
 | **Blue light**         | `$blue-light`         | <div class="bal-app box"><span class="bd-color has-background-blue-light"></span></div>         |
 | **White ter**          | `$white-ter`          | <div class="bal-app box"><span class="bd-color has-background-white-ter"></span></div>          |
 | **White bis**          | `$white-ter`          | <div class="bal-app box"><span class="bd-color has-background-white-ter"></span></div>          |
+
+## Usage
+
+These colors/variables can be used within your style sheets, by import the `ui-library.utilities` into your scss files.
+
+```scss
+@import 'node_modules/@baloise/ui-library/src/styles/ui-library.utilities';
+```
+
+## Helpers
+
+[Go to the Bulma documentation](https://bulma.io/documentation/modifiers/color-helpers/).
+
+<docs-demo>
+<div class="has-background-info is-padded">
+  <p class="has-text-white">Hello World!</p>
+</div>
+</docs-demo>
+
+```html
+<div class="has-background-info is-padded">
+  <p class="has-text-white">Hello World!</p>
+</div>
+```

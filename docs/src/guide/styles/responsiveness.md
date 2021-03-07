@@ -70,3 +70,7 @@ The library supports those 4 breakpoints.
 | Tablet               | 720px                  |
 | Desktop              | 960px                  |
 | Fullhd or Widescreen | 1200px                 |
+
+## Helpers
+
+[Go to the Bulma documentation](https://bulma.io/documentation/modifiers/responsive-helpers/)

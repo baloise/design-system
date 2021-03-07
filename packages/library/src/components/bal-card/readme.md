@@ -1,8 +1,6 @@
 # bal-card
 
-The `bal-card` component is a versatile component that can be combined easily wiht other componets.
-
-
+The card component is a versatile component that can be combined easily wiht other componets.
 
 <!-- Auto Generated Below -->
 

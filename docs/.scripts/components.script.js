@@ -37,7 +37,7 @@ async function generateMarkdown(components) {
     JAVASCRIPT_CONTENT.push(scripts)
 
     const lines = []
-    lines.push(`# ${component.tag}`)
+    // lines.push(`# ${component.tag}`)
     component.readme.split(NEWLINE).forEach(line => lines.push(line))
     lines.push(markdown)
     lines.push('')

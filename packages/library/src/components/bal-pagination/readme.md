@@ -1,6 +1,6 @@
 # bal-pagination
 
-A responsive, usable, and flexible pagination.
+A pagination is used with large amount of content to distribute it over multpile pages.
 
 <!-- Auto Generated Below -->
 

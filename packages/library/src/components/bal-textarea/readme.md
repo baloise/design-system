@@ -1,6 +1,6 @@
-# bal-textarea
+# bal-textarea <Badge text="Two-way binding"/>
 
-> Two-way binding with `v-model` or `ng-model` is available.
+A textarea allows a user to write and edit large texts.
 
 <!-- Auto Generated Below -->
 
