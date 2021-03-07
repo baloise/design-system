@@ -9,15 +9,13 @@
   },
   "repository": "https://github.com/baloise/ui-library",
   "scripts": {
-    "serve": "vuepress dev src",
-    "build": "vuepress build src",
-    "setup": "npm run build:copy && npm run build:contributors && npm run build:components && npm run build:filters && npm run build:utils && npm run build:validators",
-    "build:copy": "node .scripts/copy.script.js",
-    "build:contributors": "node .scripts/contributors.script.js",
-    "build:components": "node .scripts/components.script.js",
-    "build:filters": "node .scripts/filters.script.js",
-    "build:utils": "node .scripts/utils.script.js",
-    "build:validators": "node .scripts/validators.script.js"
+    "serve": "npm run setup && vuepress dev src",
+    "build": "npm run setup && vuepress build src",
+    "setup": "npm run setup:copy && npm run setup:contributors && npm run setup:components && npm run setup:tooling",
+    "setup:copy": "node .scripts/copy.script.js",
+    "setup:contributors": "node .scripts/contributors.script.js",
+    "setup:components": "node .scripts/components.script.js",
+    "setup:tooling": "node .scripts/tooling.script.js"
   },
   "license": "Apache-2.0",
   "devDependencies": {

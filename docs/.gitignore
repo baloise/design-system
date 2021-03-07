@@ -2,8 +2,5 @@ fonts/
 lib/
 generated/
 src/components/bal-*.md
-src/guide/tooling/filters.md
-src/guide/tooling/utils.md
-src/guide/tooling/validators.md
 
 docs-demo-bal-*.vue

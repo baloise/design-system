@@ -131,36 +131,6 @@ export class AppComponent {
 }
 ```
 
-### Pipes
-
-The UI Library has a collection of [pipes/filters](utilities/filters).
-
-In our example we want that `baloise` gets turned into `Baloise`. To do so we use the pipe `balCapitalize` in our component template file.
-
-```xml
-// app.component.html
-{{ 'baloise' | balCapitalize }}
-```
-
-The filters can also be used in the component controller files like this.
-
-```typescript
-// app.component.ts
-import { Component } from '@angular/core'
-import { balCapitalize } from '@baloise/ui-library'
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-})
-export class AppComponent {
-  capitalize(value: string) {
-    return balCapitalize(value)
-  }
-}
-```
-
 ## IE 11 Support
 
 In this section we will explain how to support Internet Explorer 11 with Angular.
