@@ -4,9 +4,20 @@ const file = require('../../.scripts/file')
 
 async function main() {
   log.title('copy resources')
+  await file.empty(path.join(__dirname, '../src/.vuepress/public/assets/fonts'))
+  await file.empty(path.join(__dirname, '../src/.vuepress/public/lib/loader'))
+  await file.empty(path.join(__dirname, '../src/.vuepress/public/lib/dist'))
   await file.copy(
-    path.join(__dirname, '../../packages/library/src/assets/fonts'),
+    path.join(__dirname, '../../resources/fonts'),
     path.join(__dirname, '../src/.vuepress/public/assets/fonts'),
+  )
+  await file.copy(
+    path.join(__dirname, '../../resources/images/logo.svg'),
+    path.join(__dirname, '../src/.vuepress/public/assets/images/logo.svg'),
+  )
+  await file.copy(
+    path.join(__dirname, '../../resources/images/logo-app.svg'),
+    path.join(__dirname, '../src/.vuepress/public/assets/images/logo-app.svg'),
   )
   await file.copy(
     path.join(__dirname, '../../packages/library/dist'),
@@ -20,6 +31,3 @@ async function main() {
 }
 
 main()
-
-// "build:lib:dist": "cpy ./ ../../../docs/src/.vuepress/public/lib/dist/ --parents --cwd=../packages/library/dist",
-// "build:lib:loader": "cpy ./ ../../../docs/src/.vuepress/public/lib/loader/ --parents --cwd=../packages/library/loader"

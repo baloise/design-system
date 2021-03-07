@@ -47,7 +47,7 @@ export class FormComponent {
 Returns `true` if the value date is before the given date
 
 ```typescript
-BalValidators.isCustom(value => value > 2)(3) // true
+BalValidators.isCustom((value) => value > 2)(3) // true
 ```
 
 ### isBefore

@@ -20,6 +20,8 @@ if (balKeyUtil.isEnterKey(event)) {
 
 <!-- generated content -->
 
+
+
 ## API balDateUtil
 
 ```typescript
@@ -190,6 +192,8 @@ BalDateUtil.newDateString(2020, 0, 13) // '2020-01-13'
 
 `newDateString(yearOrDate: Date | number, month: number, day: number) => string`
 
+
+
 ### toDate
 
 `toDate(datestring: string | undefined | null) => Date | undefined`
@@ -218,6 +222,7 @@ BalDateUtil.isValidDateString('1899-01-0') //false
 `isValidDate(value: any) => boolean`
 
 Returns `true` if the given date is valid
+
 
 ---
 
@@ -251,6 +256,7 @@ Returns `true` if the keyboard event was triggered by the `ArrowDown` key
 
 Returns `true` if the keyboard event was triggered by the `ArrowUp` key
 
+
 ---
 
 ## API balNumberUtil
@@ -263,17 +269,26 @@ import { balNumberUtil } from '@baloise/ui-library'
 
 `round(value: number, digits: number) => string`
 
+
+
 ### parseNumber
 
 `parseNumber(value: any) => number | undefined`
+
+
 
 ### isValidNumber
 
 `isValidNumber(value: number) => boolean`
 
+
+
 ### isValidNumberWithSeparators
 
 `isValidNumberWithSeparators(stringValue: string) => boolean`
+
+
+
 
 ---
 
@@ -287,17 +302,26 @@ import { balStringUtil } from '@baloise/ui-library'
 
 `isBlank(s: string | null) => boolean`
 
+
+
 ### isNotBlank
 
 `isNotBlank(s: string) => boolean`
+
+
 
 ### assertNotBlank
 
 `assertNotBlank(s: string) => any`
 
+
+
 ### isStringLiteral
 
 `isStringLiteral(s: any) => boolean`
+
+
+
 
 ---
 
@@ -311,52 +335,79 @@ import { balUtil } from '@baloise/ui-library'
 
 `isDefined(obj: any) => boolean`
 
+
+
 ### isFunction
 
 `isFunction(obj: any) => boolean`
+
+
 
 ### isNumber
 
 `isNumber(obj: any) => boolean`
 
+
+
 ### isString
 
 `isString(obj: any) => boolean`
+
+
 
 ### isArray
 
 `isArray(obj: any) => boolean`
 
+
+
 ### isNotArray
 
 `isNotArray(obj: any) => boolean`
+
+
 
 ### isError
 
 `isError(obj: any) => boolean`
 
+
+
 ### isObject
 
 `isObject(obj: any) => boolean`
+
+
 
 ### isBoolean
 
 `isBoolean(obj: any) => boolean`
 
+
+
 ### assertNull
 
 `assertNull(obj: any) => any`
+
+
 
 ### assertNotNull
 
 `assertNotNull(obj: any) => any`
 
+
+
 ### assertFunction
 
 `assertFunction(obj: any) => any`
 
+
+
 ### areArraysEqual
 
 `areArraysEqual(a: T[], b: T[]) => boolean`
+
+
+
 
 ---

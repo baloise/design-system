@@ -95,10 +95,9 @@ const empty = async dir => {
 const copy = async (srcDir, destDir) => {
   return new Promise(async resolve => {
     try {
-      await fse.emptyDir(destDir)
-      fse.copySync(srcDir, destDir)
+      await fse.copy(srcDir, destDir)
       resolve()
-    } catch (err) {
+    } catch (error) {
       log.error(`Could not copy ${srcDir} to ${destDir}`, error)
       setTimeout(() => process.exit(1), 0)
     }

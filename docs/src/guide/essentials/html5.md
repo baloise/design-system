@@ -42,6 +42,6 @@ There is also the possible to just include the styles with the css or scss file.
 <link rel="stylesheet" href="node_modules/@baloise/ui-library/dist/ui-library/ui-library.css" />
 ```
 
-::: danger
-However, without the javascript the components like datepicker cannot be used.
+::: warning
+However, without the javascript the components like datepicker or toast cannot be used.
 :::
