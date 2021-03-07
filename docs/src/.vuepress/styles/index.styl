@@ -5,7 +5,7 @@
  */
 
 .home .hero img
-  max-width 450px!important
+  max-width 450px !important
 
 .custom-block.tip
   border-color: #009ee7;
@@ -18,3 +18,25 @@
   height: 24px;
   margin-right: 8px;
   width: 24px;
+
+header.navbar::before
+  content: '';
+  position: absolute;
+  top: 55px;
+  height: 8px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  background: linear-gradient(90deg, #009ee7 0, #009ee7 66%, #039 66%, #039 100%);
+  z-index: 1;
+
+header.navbar::after
+  content: '';
+  position: absolute;
+  top: 55px;
+  height: 8px;
+  left: 66%;
+  background: #fff;
+  transform: translateX(-50%) skew(-45deg);
+  z-index: 100;
+  width: 10px;

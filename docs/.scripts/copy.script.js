@@ -16,10 +16,6 @@ async function main() {
     path.join(__dirname, '../src/.vuepress/public/assets/images/logo.svg'),
   )
   await file.copy(
-    path.join(__dirname, '../../resources/images/logo-app.svg'),
-    path.join(__dirname, '../src/.vuepress/public/assets/images/logo-app.svg'),
-  )
-  await file.copy(
     path.join(__dirname, '../../packages/library/dist'),
     path.join(__dirname, '../src/.vuepress/public/lib/dist'),
   )
