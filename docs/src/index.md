@@ -45,10 +45,31 @@ footer: Apache-2.0 Licensed | Copyright © 2019-present Gery Hirschfeld & Contri
 
 The Library supports the following borwers. For more detail go to [Stencil - Browser Support](https://stenciljs.com/docs/browser-support).
 
-<!-- <docs-browsers></docs-browsers> -->
+<div class="features" style="border: none; margin-top: 0; padding-top: 0;">
+  <div class="feature" style="flex-basis: 20%; max-width: 20%;">
+    <h2><img style="width: 48px;" src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png"  alt="Chrome"></h2>
+    <h2>Chrome</h2><p>Last 2 versions ✔</p>
+  </div>
+  <div class="feature" style="flex-basis: 20%; max-width: 20%;">
+    <h2><img style="width: 48px;" src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png"  alt="Chrome"></h2>
+    <h2>Firefox</h2><p>Last 2 versions ✔</p>
+  </div>
+  <div class="feature" style="flex-basis: 20%; max-width: 20%;">
+    <h2><img style="width: 48px;" src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png"  alt="Chrome"></h2>
+    <h2>Safari</h2><p><strong>Chrome</strong><br/>Last 2 versions ✔</p>
+  </div>
+  <div class="feature" style="flex-basis: 20%; max-width: 20%;">
+    <h2><img style="width: 48px;" src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png"  alt="Edge"></h2>
+    <h2>Edge</h2><p>(Chromium)<br/>Last 2 versions ✔</p>
+  </div>
+  <div class="feature" style="flex-basis: 20%; max-width: 20%;">
+    <h2><img style="width: 48px;" src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png"  alt="Internet Explorer 11"></h2>
+    <h2>Internet Explorer 11</h2><p>Enabled with pollyfills. Only functional.</p>
+  </div>
+</div>
 
 ## Contributors
 
 This project exists thanks to all the people who contribute.
 
-<!-- <docs-contributors></docs-contributors> -->
+<docs-contributors></docs-contributors>
