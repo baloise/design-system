@@ -1,3 +1,4 @@
+const path = require('path')
 const { description } = require('../../package')
 
 module.exports = {
@@ -21,12 +22,14 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/assets/images/logo.svg' }],
-    ['link', { rel: 'stylesheet', href: '/lib/dist/ui-library/ui-library.css' }],
     ['link', { rel: 'stylesheet', href: '/assets/css/swot.css' }],
     ['link', { rel: 'stylesheet', href: '/assets/css/demo.css' }],
   ],
 
   dest: 'public',
+  alias: {
+    styles: path.resolve(__dirname, './styles'),
+  },
 
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
