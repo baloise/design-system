@@ -1,6 +1,6 @@
 {
   "name": "@baloise/ui-library-angular",
-  "version": "4.2.6",
+  "version": "4.2.7",
   "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/ui-library": "^4.2.6",
+    "@baloise/ui-library": "^4.2.7",
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
