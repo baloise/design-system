@@ -37,7 +37,6 @@ async function generateMarkdown(components) {
     JAVASCRIPT_CONTENT.push(scripts)
 
     const lines = []
-    // lines.push(`# ${component.tag}`)
     component.readme.split(NEWLINE).forEach(line => lines.push(line))
     lines.push(markdown)
     lines.push('')
@@ -85,7 +84,7 @@ function transformScripts(component) {
     .join(NEWLINE + NEWLINE)
   if (scriptContent.length > 0) {
     return (
-      `export function ${camelize(component.tag)}(){` +
+      `export function ${camelize(component.tag)}(balSnackbarController, balToastController){` +
       scriptContent
         .split(NEWLINE)
         .map(c => `  ${c}`)

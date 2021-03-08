@@ -5,8 +5,8 @@ const file = require('../../.scripts/file')
 async function main() {
   log.title('copy resources')
   await file.empty(path.join(__dirname, '../src/.vuepress/public/assets/fonts'))
-  await file.empty(path.join(__dirname, '../src/.vuepress/public/lib/loader'))
-  await file.empty(path.join(__dirname, '../src/.vuepress/public/lib/dist'))
+  await file.empty(path.join(__dirname, '../src/.vuepress/lib/loader'))
+  await file.empty(path.join(__dirname, '../src/.vuepress/lib/dist'))
   await file.copy(
     path.join(__dirname, '../../resources/fonts'),
     path.join(__dirname, '../src/.vuepress/public/assets/fonts'),
@@ -17,11 +17,11 @@ async function main() {
   )
   await file.copy(
     path.join(__dirname, '../../packages/library/dist'),
-    path.join(__dirname, '../src/.vuepress/public/lib/dist'),
+    path.join(__dirname, '../src/.vuepress/lib/dist'),
   )
   await file.copy(
     path.join(__dirname, '../../packages/library/loader'),
-    path.join(__dirname, '../src/.vuepress/public/lib/loader'),
+    path.join(__dirname, '../src/.vuepress/lib/loader'),
   )
   log.success('Resources are copied')
 }

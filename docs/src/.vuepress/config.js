@@ -26,6 +26,8 @@ module.exports = {
     ['link', { rel: 'stylesheet', href: '/assets/css/demo.css' }],
   ],
 
+  dest: 'public',
+
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
    *

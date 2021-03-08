@@ -6,3 +6,4 @@ src/components/bal-*.md
 docs-demo-bal-*.vue
 logo.svg
 logo-app.svg
+/public
