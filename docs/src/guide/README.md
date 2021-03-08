@@ -12,9 +12,9 @@ Since we use css stylesheets and standard web components the library can be inte
   </thead>
 <tbody>
 <tr>
-<td><strong>HTML5</strong><br>Server-Side-Rendering<br><br><a href="/guide/html5">Continue</a></td>
-<td><strong>Vue.js</strong><br>JavaScript-Webframework<br><br><a href="/guide/vue">Continue</a></td>
-<td><strong>Angular</strong><br>JavaScript-Webframework<br><br><a href="/guide/angular">Continue</a></td>
+<td><strong>HTML5</strong><br>Server-Side-Rendering<br><br><a href="/guide/essentials/html5.html">Continue</a></td>
+<td><strong>Vue.js</strong><br>JavaScript-Webframework<br><br><a href="/guide/essentials/vue.html">Continue</a></td>
+<td><strong>Angular</strong><br>JavaScript-Webframework<br><br><a href="/guide/essentials/angular.html">Continue</a></td>
 </tr>
 </tbody>
 </table>

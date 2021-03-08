@@ -45,7 +45,7 @@ new Vue({
 
 ## Styles
 
-Go to the [styling documentation](/styles/installation) and add the fonts and styles.
+Go to the [styling documentation](/guide/styles/installation) and add the fonts and styles.
 
 ## Vue 2.x.x
 

@@ -37,4 +37,8 @@ h4 {
 img {
   border-radius: 100%;
 }
+
+.home .features {
+  justify-content: flex-start !important;
+}
 </style>

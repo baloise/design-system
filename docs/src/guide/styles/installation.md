@@ -1,4 +1,4 @@
-# Installation
+# Style Installation
 
 For the baloise style you need to provide the fonts and stylesheets.
 
@@ -46,7 +46,7 @@ Import `ui-library.scss` Sass file into the main `.scss` file of your applicatio
 
 ### Variables
 
-To access the scss variables like [colors](essentials/colors.md) or [responsiveness helpers](essentials/responsiveness) import the `ui-library.utilities.scss`.
+To access the scss variables like [colors](/guide/styles/colors.html) or [responsiveness helpers](/guide/styles/responsiveness.html) import the `ui-library.utilities.scss`.
 
 ::: tip
 Use the variables and helpers of the UI-Library where ever you can in your application.

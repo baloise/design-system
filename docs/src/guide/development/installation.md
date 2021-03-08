@@ -1,4 +1,4 @@
-# Installation
+# Setup
 
 ## NodeJS
 
@@ -21,7 +21,7 @@ cd ui-library
 
 > The demo page will be served at http://localhost:3333/ by default.
 
-For more commands visit [Commands](./commands.md)
+For more commands visit [Commands](/guide/development/commands.html)
 
 ## Run Baloise Ui-Library Documentation
 
@@ -29,9 +29,9 @@ To create the documentation out of the written code and comments run the followi
 
 - Run `npm install` to install library’s dependencies
 - Run `npm run docs:install` to install documentation's dependencies
-- Run `npm run docs:build` to build the documentation
+- Run `npm run docs:setup` to setup the documentation
 - Run `npm run docs:serve` to serve documentation page
 
-> The documentation page will be served at http://localhost:3000/ by default.
+> The documentation page will be served at http://localhost:8080/ by default.
 
-For more commands visit [Commands](./commands.md)
+For more commands visit [Commands](/guide/development/commands.html)

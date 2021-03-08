@@ -28,7 +28,7 @@ Use the scss mixins in your application like this.
 }
 ```
 
-The file `ui-library.utilities` provides all the defined scss variables like [colors](essentials/colors) and also the mixins.
+The file `ui-library.utilities` provides all the defined scss variables like [colors](/guide/styles/colors.html) and also the mixins.
 
 **Further Documentation**
 

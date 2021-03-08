@@ -1,15 +1,16 @@
 # Release
 
-It is important to follow the [conventional commits](#Conventional_Commits) rules of the sematic versioning.
+It is important to follow the [conventional commits](/guide/development/release.html#conventional-commits) rules of the sematic versioning.
 
-!> Note that the lerna release uses the commit messages to determine the type of changes in the codebase.
-
-> The changelog gets generated out of the commit messages.
+::: tip
+Note that the lerna release uses the commit messages to determine the type of changes in the codebase.
+The changelog gets generated out of the commit messages.
+:::
 
 ## Process
 
 1. Create a new git branch.
-2. Create a pull request and follow the [conventional commits](#Conventional_Commits) rules.
+2. Create a pull request and follow the [conventional commits](/guide/development/release.html#conventional-commits) rules.
 3. After merging the github action `.github/release.yml` will release the changes immediately.
    - First it determines the new version out of the git commit messages
    - Then it releases is on npm

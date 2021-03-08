@@ -4,7 +4,9 @@
 
 For E-2-E testing we are using the testing framework [Cypress](https://www.cypress.io/), so for that we have to install it first.
 
-> if you are using Vue or Angular please install Cypress with the provided CLI
+::: tip
+If you are using Vue or Angular please install Cypress with the provided CLI.
+:::
 
 ## Install Accessors
 
