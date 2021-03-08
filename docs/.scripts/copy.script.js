@@ -23,6 +23,10 @@ async function main() {
     path.join(__dirname, '../../packages/library/loader'),
     path.join(__dirname, '../src/.vuepress/lib/loader'),
   )
+  await file.copy(
+    path.join(__dirname, '../src/.vuepress/lib/dist/ui-library/ui-library.css'),
+    path.join(__dirname, '../src/.vuepress/public/assets/css/ui-library.css'),
+  )
   log.success('Resources are copied')
 }
 
