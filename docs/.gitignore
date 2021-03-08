@@ -1,10 +1,8 @@
+fonts/
 lib/
-www/
-build/
-components/
-assets/fonts/
+generated/
+src/components/bal-*.md
 
-components.d.ts
-host.config.json
-_sidebar.md
-filters.md
+docs-demo-bal-*.vue
+logo.svg
+logo-app.svg

@@ -1,39 +1,28 @@
 {
   "name": "@baloise/ui-library-docs",
-  "version": "1.0.0",
-  "private": true,
-  "author": "hirsch <gery.hirschfeld@w3tec.ch>",
-  "homepage": "https://github.com/baloise/ui-library#readme",
-  "license": "Apache-2.0",
-  "main": "index.html",
+  "version": "0.0.1",
+  "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "main": "index.js",
+  "authors": {
+    "name": "Gery Hirschfeld",
+    "email": "gerhard.hirschfeld@baloise.ch"
+  },
+  "repository": "https://github.com/baloise/ui-library",
   "scripts": {
-    "build": "npm run build:lib && npm run build:sidebar && npm run build:filters && npm run build:utils && npm run build:validators && npm run build:components",
-    "build:lib": "cpy ./ ../../../docs/lib/ --parents --cwd=../packages/library/dist",
-    "build:sidebar": "node .scripts/sidebar.script.js",
-    "build:filters": "node .scripts/filters.script.js",
-    "build:validators": "node .scripts/validators.script.js",
-    "build:utils": "node .scripts/utils.script.js",
-    "build:components": "node .scripts/components.script.js",
-    "serve": "http-server ./ --port 3000 -c-1"
+    "serve": "npm run setup && vuepress dev src",
+    "build": "npm run setup && vuepress build src",
+    "setup": "npm run setup:copy && npm run setup:contributors && npm run setup:components && npm run setup:tooling",
+    "setup:copy": "node .scripts/copy.script.js",
+    "setup:contributors": "node .scripts/contributors.script.js",
+    "setup:components": "node .scripts/components.script.js",
+    "setup:tooling": "node .scripts/tooling.script.js"
   },
-  "dependencies": {},
+  "license": "Apache-2.0",
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
-    "chalk": "^4.1.0",
-    "cpy-cli": "^3.1.1",
-    "docsify": "^4.11.6",
-    "glob": "^7.1.6",
-    "http-server": "^0.12.3",
+    "fs-extra": "^9.1.0",
     "markdown-table": "^2.0.0",
-    "node-html-parser": "^1.3.1"
+    "node-html-parser": "^3.0.3",
+    "vuepress": "^1.8.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/baloise/ui-library.git"
-  },
-  "bugs": {
-    "url": "https://github.com/baloise/ui-library/issues"
-  }
+  "dependencies": {}
 }

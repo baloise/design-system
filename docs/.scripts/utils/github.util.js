@@ -1,4 +1,4 @@
-const { NEWLINE } = require('./constants')
+const { NEWLINE } = require('../../../.scripts/constants')
 const { convertToDotCase } = require('../../../.scripts/string')
 
 const parse = (component, accessor) => {

@@ -1,6 +1,6 @@
 # bal-snackbar
 
-Snackbar are used to inform the user with a simple text message.
+A snackbar is used to inform the user with a simple text message and a action.
 
 ## Usage
 

@@ -1,6 +1,6 @@
 # bal-dropdown
 
-
+A dropdown shows and hides content close to the trigger element.
 
 <!-- Auto Generated Below -->
 

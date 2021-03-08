@@ -1,8 +1,8 @@
-const printBold = (text) => !!text ? `**${text}**` : ''
+const printBold = text => (!!text ? `**${text}**` : '')
 
-const printCode = (text) => !!text ? `<code>${text}</code>` : ''
+const printCode = text => (!!text ? `\`${text}\`` : '')
 
 module.exports = {
-    printCode,
-    printBold,
+  printCode,
+  printBold,
 }

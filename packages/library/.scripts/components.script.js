@@ -8,7 +8,7 @@
 const path = require('path')
 const file = require('../../../.scripts/file')
 const log = require('../../../.scripts/log')
-const { NEWLINE, DOCS_CHILD_REGEX, DOCS_HEADING_REGEX } = require('../../../docs/.scripts/utils/constants')
+const { NEWLINE, DOCS_CHILD_REGEX, DOCS_HEADING_REGEX } = require('../../../.scripts/constants')
 const libraryLib = require('./components.lib')
 
 const addChildInformation = component => {
@@ -16,7 +16,7 @@ const addChildInformation = component => {
   component.isChild = false
   component.childComponents = []
 
-  const lines = component.readme.split(NEWLINE).filter(line => line.match(DOCS_HEADING_REGEX) === null)
+  const lines = component.readme.split(NEWLINE)
   const firstLine = lines[0]
   const parentTag = firstLine.match(DOCS_CHILD_REGEX)
 

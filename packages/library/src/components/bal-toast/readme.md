@@ -1,6 +1,6 @@
 # bal-toast
 
-Toast are used to inform the user with a simple text message.
+Toasts are used to inform the user with a simple text message.
 
 ## Usage
 

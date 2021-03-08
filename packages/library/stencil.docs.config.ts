@@ -9,33 +9,37 @@ import autoprefixer from 'autoprefixer'
 export const config: Config = {
   namespace: 'ui-library',
   globalStyle: 'src/styles/ui-library.scss',
-  buildEs5: true,
-  outputTargets: [
-    {
-      type: 'www',
-      dir: '../../docs',
-      serviceWorker: false,
-      empty: false,
-      copy: [
-        {
-          src: '**/*.html',
-        },
-        {
-          src: '**/*.md',
-        },
-        {
-          src: 'components.d.ts',
-        },
-        {
-          src: 'assets/fonts',
-        },
-      ],
-    },
-  ],
   plugins: [
     postcss({
       plugins: [autoprefixer()],
     }),
     sass(),
+  ],
+  buildEs5: true,
+  extras: {
+    cssVarsShim: true,
+    dynamicImportShim: true,
+    initializeNextTick: true,
+    safari10: true,
+    scriptDataOpts: true,
+    shadowDomShim: true,
+  },
+  outputTargets: [
+    {
+      type: 'dist',
+      polyfills: true,
+      empty: true,
+      esmLoaderPath: '../loader',
+    },
+    {
+      type: 'dist-custom-elements-bundle',
+    },
+    {
+      type: 'docs-readme',
+    },
+    {
+      type: 'docs-json',
+      file: './docs/components.raw.json',
+    },
   ],
 }

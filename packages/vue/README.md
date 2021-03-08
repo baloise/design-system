@@ -1,5 +1,5 @@
 <a href="https://baloise-ui-library.now.sh" target="blank">
-    <img src="https://raw.githubusercontent.com/baloise/ui-library/master/docs/assets/images/banner.svg?sanitize=true" width="500" alt="Baloise UI-Library" />
+    <img src="https://raw.githubusercontent.com/baloise/ui-library/master/resources/images/banner.svg?sanitize=true" width="500" alt="Baloise UI-Library" />
 </a>
 
 <br>
@@ -14,3 +14,13 @@ UI-Libary is an open source library for building amazing web applications that f
 ## Documentation
 
 The [documentation](https://baloise-ui-library.now.sh) is published on now.sh, and is built with the docsify tool.
+
+## Packages
+
+| Library                                                                        | Status                                                                                                                                   | Description                                                |
+| ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| [UI Library](https://baloise-ui-library.now.sh/#/README?id=quick-start)        | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)                 | Core library build with web components and global styling. |
+| [UI Library Vue](https://baloise-ui-library.now.sh/#/introduction/vue)         | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-vue.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-vue)         | Vue component library based on the the core library.       |
+| [UI Library Vue 2](https://baloise-ui-library.now.sh/#/introduction/vue)       | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-vue-2.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-vue-2)     | Vue component library based on the the core library.       |
+| [UI Library Angular](https://baloise-ui-library.now.sh/#/introduction/angular) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-angular.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-angular) | Angular component library based on the the core library.   |
+| [UI Library Testing](https://baloise-ui-library.now.sh/#/testing/installation) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-testing.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-testing) | Testing library with accessors for each component.         |

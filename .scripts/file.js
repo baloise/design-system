@@ -1,4 +1,5 @@
 const fs = require('fs')
+const fse = require('fs-extra')
 const glob = require('glob')
 const path = require('path')
 const log = require('./log')
@@ -44,6 +45,18 @@ const scan = async filePath => {
   })
 }
 
+const remove = async filePath => {
+  try {
+    const filterFilePaths = await scan(filePath)
+    for (let index = 0; index < filterFilePaths.length; index++) {
+      await fse.remove(filterFilePaths[index])
+    }
+  } catch (error) {
+    log.error(`Could not save ${filePath}`, error)
+    setTimeout(() => process.exit(1), 0)
+  }
+}
+
 const save = async (filePath, content) => {
   try {
     await write(filePath, content)
@@ -67,6 +80,30 @@ const makeDir = async dirPath => {
   })
 }
 
+const empty = async dir => {
+  return new Promise(async resolve => {
+    try {
+      await fse.emptyDir(dir)
+      resolve()
+    } catch (err) {
+      log.error(`Could not empty ${dir}`, error)
+      setTimeout(() => process.exit(1), 0)
+    }
+  })
+}
+
+const copy = async (srcDir, destDir) => {
+  return new Promise(async resolve => {
+    try {
+      await fse.copy(srcDir, destDir)
+      resolve()
+    } catch (error) {
+      log.error(`Could not copy ${srcDir} to ${destDir}`, error)
+      setTimeout(() => process.exit(1), 0)
+    }
+  })
+}
+
 module.exports = {
   readSync,
   read,
@@ -74,4 +111,7 @@ module.exports = {
   scan,
   save,
   makeDir,
+  copy,
+  empty,
+  remove,
 }

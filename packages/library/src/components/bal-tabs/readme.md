@@ -1,7 +1,6 @@
 # bal-tabs
 
-Simple responsive horizontal navigation tabs.
-
+Tabs are used to structure the information in sub section on the same page.
 
 <!-- Auto Generated Below -->
 

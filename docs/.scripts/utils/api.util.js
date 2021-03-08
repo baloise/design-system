@@ -1,10 +1,10 @@
 const table = require('markdown-table')
-const { NEWLINE } = require('./constants')
+const { NEWLINE } = require('../../../.scripts/constants')
 const { printCode, printBold } = require('./markdown.util')
 
 const printComponent = component => {
   const lines = []
-  lines.push(`### ${printCode(component.tag)}`)
+  lines.push(`### ${component.tag}`)
   lines.push('')
 
   if (component.isChild && component.readme) {
@@ -16,29 +16,29 @@ const printComponent = component => {
     lines.push('')
     table(
       [
-        ['Property', 'Attribute', 'Description', 'Type', 'Default'],
+        ['Attribute', 'Description', 'Type', 'Default'],
         ...component.props.map(prop => [
-          printBold(printCode(prop.name)),
-          printCode(prop.attr),
+          printBold(prop.attr),
           prop.docs.replace(/(?:\r\n|\r|\n)/g, ' ').trim(),
           printCode(prop.type ? prop.type.split('|').join(',') : ''),
           printCode(prop.default),
         ]),
       ],
-      { align: ['l', 'l', 'l', 'l', 'l'] },
+      { align: ['l', 'l', 'l', 'l'] },
     )
       .split(NEWLINE)
       .forEach(l => lines.push(l))
   }
 
   if (component.events && component.events.length > 0) {
+    lines.push('')
     lines.push(`#### Events`)
     lines.push('')
     table(
       [
         ['Event', 'Description', 'Type'],
         ...component.events.map(eventItem => [
-          printBold(printCode(eventItem.event)),
+          printBold(eventItem.event),
           eventItem.docs.trim(),
           printCode(eventItem.detail),
         ]),
@@ -50,6 +50,7 @@ const printComponent = component => {
   }
 
   if (component.methods && component.methods.length > 0) {
+    lines.push('')
     lines.push(`#### Methods`)
     lines.push('')
     table(
@@ -90,6 +91,7 @@ const parse = (components, component) => {
     lines.push(``)
     lines.push(printComponent(component))
     component.childComponents.forEach(childTag => {
+      lines.push('')
       lines.push(printComponent(components.get(childTag)))
     })
   }
