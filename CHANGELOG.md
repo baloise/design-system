@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.7](https://github.com/baloise/ui-library/compare/v4.2.6...v4.2.7) (2021-03-08)
+
+
+### Bug Fixes
+
+* **input:** improve style for bottom border$ ([2bb06ae](https://github.com/baloise/ui-library/commit/2bb06aea2fb6460ade0aef7fec1015673d74d3fd))
+
+
+
+
+
 ## [4.2.6](https://github.com/baloise/ui-library/compare/v4.2.5...v4.2.6) (2021-03-08)
 
 **Note:** Version bump only for package root
