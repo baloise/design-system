@@ -8,3 +8,4 @@ logo.svg
 logo-app.svg
 /public
 src/.vuepress/styles/ui-library.css
+src/guide/CHANGELOG.md

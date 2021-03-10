@@ -52,6 +52,10 @@ module.exports = {
         text: 'Components',
         link: '/components/' + require('./generated/components.json')[0],
       },
+      {
+        text: 'Changelog',
+        link: '/guide/CHANGELOG.md',
+      },
     ],
     sidebar: {
       '/guide/': [
