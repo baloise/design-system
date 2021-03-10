@@ -13,6 +13,14 @@
       }
     }
 
+    .navbar-brand {
+      min-height: auto !important;
+    }
+
+    a.navbar-item {
+      text-decoration: none !important;
+    }
+
     .navbar {
       &.is-info::after,
       &.is-info::before {
@@ -35,12 +43,12 @@
       }
 
       .app-title {
-        text-decoration: none;
+        text-decoration: none !important;
 
         bal-text {
           font-size: $size-3 !important;
-          line-height: $size-3 !important;
-          text-decoration: none;
+          line-height: 2.2rem !important;
+          text-decoration: none !important;
         }
       }
 
