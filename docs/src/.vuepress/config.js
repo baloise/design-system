@@ -53,8 +53,8 @@ module.exports = {
         link: '/components/' + require('./generated/components.json')[0],
       },
       {
-        text: 'Changelog',
-        link: '/guide/CHANGELOG.md',
+        text: 'Change Log',
+        link: '/changelog/',
       },
     ],
     sidebar: {

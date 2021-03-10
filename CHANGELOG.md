@@ -25,14 +25,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **angular:** add balDidRender event ([8371d19](https://github.com/baloise/ui-library/commit/8371d1940837c9ff474cc975bdaa15ef14dc3770))
 
-## [4.1.2](https://github.com/baloise/ui-library/compare/v4.1.1...v4.1.2) (2021-02-28)
-
-**Note:** Version bump only for package root
-
-## 4.0.5 (2021-02-27)
-
-**Note:** Version bump only for package root
-
 ## [4.0.5](https://github.com/baloise/ui-library/compare/v4.0.4...v4.0.5) (2021-02-27)
 
 ### Bug Fixes
@@ -95,8 +87,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **angular:** change output types and return custom event detail ([8e0e945](https://github.com/baloise/ui-library/commit/8e0e9452e78d11e220051ae381fba8a5be5599cf))
 
-## 3.0.5 (2021-02-02)
-
 ## [3.0.5](https://github.com/baloise/ui-library/compare/v3.0.4...v3.0.5) (2021-02-02)
 
 ### Features
@@ -133,12 +123,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **select.accessor:** add ts-ignore ([e3e567d](https://github.com/baloise/ui-library/commit/e3e567d15b7e473def317d2958c2f6fda6ecb0ec))
-- sync packages ([67c6b05](https://github.com/baloise/ui-library/commit/67c6b05f691955547bc14299d57a99f52c2224f5))
 
 ### Features
 
-- fixed navbar and refactored tests description ([e5b2494](https://github.com/baloise/ui-library/commit/e5b24940fe30cded3911c1ad95cc5d46e40fa62c))
-- fixed navbar and refactored tests description ([d7ba031](https://github.com/baloise/ui-library/commit/d7ba031c0db6caa9d80b63d24906a51fab291a06))
+- **navbar:** fixed navbar and refactored tests description ([d7ba031](https://github.com/baloise/ui-library/commit/d7ba031c0db6caa9d80b63d24906a51fab291a06))
 
 ## [2.3.4](https://github.com/baloise/ui-library/compare/v2.0.3...v2.3.4) (2021-01-04)
 
