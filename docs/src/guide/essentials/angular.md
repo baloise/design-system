@@ -30,13 +30,21 @@ ng serve
 Use npm to install the Angular proxy library.
 
 ```bash
-npm install @baloise/ui-library --save
-npm install @baloise/ui-library-angular --save
+npm install @baloise/ui-library @baloise/ui-library-angular --save
 ```
+
+::: tip
+We recommand to use the package `@ngx-translate` for the transalations.
+
+```bash
+npm install @ngx-translate/core @ngx-translate/http-loader --save
+```
+
+:::
 
 ### Apply the styles and assets
 
-Go to the [styling documentation](/guide/styles/installation) and add the fonts and styles.
+Go to the [styling documentation](/guide/styles/installation.html) and add the fonts and styles.
 
 ### index.html
 
@@ -73,6 +81,12 @@ import { AppComponent } from './app.component'
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
+```
+
+Now everything is ready to be used. Add some Baloise components and start the app with:
+
+```bash
+npm start
 ```
 
 ## Usage
