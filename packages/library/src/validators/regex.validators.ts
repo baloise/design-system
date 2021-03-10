@@ -1,4 +1,4 @@
-import { isDefined } from '../utils/balUtil'
+import { isNil } from 'lodash'
 import { BalValidatorFn } from './validator.type'
 
 /**
@@ -43,7 +43,7 @@ export function isPhone(): BalValidatorFn {
 }
 
 function validateRegex(regex: RegExp, value: any): boolean {
-  if (!isDefined(value)) {
+  if (isNil(value)) {
     return false
   }
   if (typeof value !== 'string') {

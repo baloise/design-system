@@ -1,4 +1,4 @@
-import { isArray } from '../utils/balUtil'
+import { isArray } from 'lodash'
 
 /**
  * Transforms the given string array in to a string.

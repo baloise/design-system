@@ -1,4 +1,4 @@
-import { areArraysEqual } from './balUtil'
+import { areArraysEqual } from './balArrayUtil'
 
 describe('balUtil', () => {
   test('should tell if the arrays are equal', () => {

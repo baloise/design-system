@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface, Listen } from '@stencil/core'
+import { isEmpty } from 'lodash'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
-import { isBlank } from '../../utils/balStringUtil'
 
 @Component({
   tag: 'bal-textarea',
@@ -163,7 +163,7 @@ export class Textarea implements ComponentInterface {
 
   componentDidLoad() {
     this.didInit = true
-    if (isBlank(this.value)) {
+    if (isEmpty(this.value)) {
       this.valueChanged(this.value, undefined)
     }
   }

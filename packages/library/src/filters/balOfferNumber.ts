@@ -1,4 +1,4 @@
-import { isBlank } from '../utils/balStringUtil'
+import { isEmpty } from 'lodash'
 
 /**
  * Transforms the input string into a offer number.
@@ -8,7 +8,7 @@ import { isBlank } from '../utils/balStringUtil'
  * ```
  */
 export function balOfferNumber(value: string | null | undefined, varianteNr?: string): string {
-  if (!isBlank(value)) {
+  if (!isEmpty(value)) {
     const offertNrNoLeadingZeros = parseInt(value as string, 10).toString(10)
     if (offertNrNoLeadingZeros && offertNrNoLeadingZeros.length === 9) {
       return (

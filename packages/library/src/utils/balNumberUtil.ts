@@ -1,34 +1,21 @@
-import { isString } from './balUtil'
+import { isNaN, isNil, isString } from 'lodash'
 
-export function round(value: number, digits: number = 0): string {
-  let multiplicator = Math.pow(10, digits)
-  value = parseFloat((value * multiplicator).toFixed(11))
-  let test = Math.round(value) / multiplicator
-  return test.toFixed(digits)
-}
-
-export function parseNumber(value: any): number | undefined {
-  let num = parseFloat(value)
-  if (isString(value)) {
-    num = cleanMonetaryNumber(value)
+/**
+ * Returns `true` if the arrays are equal
+ *
+ * ```typescript
+ * isValidMonetaryNumber(`1'000.99`) // true
+ * ```
+ */
+export function isValidMonetaryNumber(stringValue: string): boolean {
+  if (isNil(stringValue) && !isString(stringValue)) {
+    return false
   }
-  return isValidNumber(num) ? num : undefined
-}
 
-export function isValidNumber(value: number): boolean {
-  return !isNaN(value) && isFinite(value)
-}
-
-export function isValidNumberWithSeparators(stringValue: string): boolean {
-  let numberValue = cleanMonetaryNumber(stringValue)
-  return !isNaN(numberValue) && isFinite(numberValue)
-}
-
-function cleanMonetaryNumber(stringValue: string): number {
   stringValue = stringValue.replace(/'/g, '')
   stringValue = stringValue.replace(/‘/g, '')
   stringValue = stringValue.replace(/’/g, '')
   stringValue = stringValue.replace(/,/g, '.')
 
-  return Number(stringValue)
+  return !isNaN(parseFloat(stringValue))
 }

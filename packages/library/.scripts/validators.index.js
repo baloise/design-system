@@ -7,6 +7,7 @@
  */
 
 const path = require('path')
+const _ = require('lodash')
 const utilities = require('./utilities')
 const file = require('../../../.scripts/file')
 const log = require('../../../.scripts/log')
@@ -15,7 +16,7 @@ const run = async () => {
   await log.title('validators : index')
   const files = await utilities.read({ fileName: 'validators' })
   const fileImports = files.map(f => {
-    const imp = [...f.interfaces, ...f.functions.map(fn => fn.name)]
+    const imp = _.uniq([...f.interfaces, ...f.functions.map(fn => fn.name)])
     return `import { ${imp.join(', ')} } from './${f.fileName}'`
   })
 

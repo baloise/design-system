@@ -1,4 +1,4 @@
-import { isString } from '../utils/balUtil'
+import { isString } from 'lodash'
 
 export interface PhoneNumber {
   countryCode: string
