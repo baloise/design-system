@@ -38,7 +38,7 @@
     "build:compile": "stencil build --docs --es5 --prod",
     "clean": "rimraf docs && npm run clean:icons",
     "clean:icons": "rimraf src/components/bal-icon/icons",
-    "docs": "npm run build && npm run docs:compile",
+    "docs": "npm run build:filters && npm run build:utils && npm run build:validators && npm run docs:compile && npm run build:components",
     "docs:compile": "stencil build --docs --es5 --prod --config stencil.docs.config.ts",
     "serve": "stencil build --docs --dev --watch --serve --config stencil.dev.config.ts",
     "test": "stencil test --spec --e2e --config stencil.test.config.ts",
