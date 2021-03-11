@@ -183,6 +183,7 @@ export const BalCard = /*@__PURE__*/ Vue.extend({
     border: {} as PropOptions<Components.BalCard['border']>,
     flat: {} as PropOptions<Components.BalCard['flat']>,
     square: {} as PropOptions<Components.BalCard['square']>,
+    padding: {} as PropOptions<Components.BalCard['padding']>,
     padded: {} as PropOptions<Components.BalCard['padded']>,
     inverted: {} as PropOptions<Components.BalCard['inverted']>,
     color: {} as PropOptions<Components.BalCard['color']>,

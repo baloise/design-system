@@ -30,10 +30,6 @@
     border-radius: 0;
   }
 
-  &.is-padded {
-    padding: 16px;
-  }
-
   &.has-border {
     border: 1px solid $blue-light-line;
   }
@@ -69,7 +65,32 @@
   .bal-card-actions {
     align-items: center;
     display: flex;
-    padding: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  & > :first-child {
+    padding-top: 20px;
+  }
+
+  & > :last-child {
+    padding-bottom: 20px;
+  }
+
+  bal-accordion,
+  bal-card-button {
+    padding-top: 20px;
+    padding-bottom: 0 !important;
+  }
+
+  &.is-pure-padding {
+    .bal-card-heading,
+    .bal-card-title,
+    .bal-card-subtitle,
+    .bal-card-content,
+    .bal-card-actions {
+      padding: 0 !important;
+    }
   }
 
   .bal-card-heading,
@@ -84,7 +105,6 @@
   .bal-card-title,
   .bal-card-subtitle {
     font-family: $title-family;
-    line-height: 2rem;
   }
 
   .bal-card-heading {
@@ -106,6 +126,7 @@
   .bal-card-subtitle {
     font-size: $size-5;
     font-weight: $weight-normal;
+    line-height: $bal_lineheight_15px;
     color: $blue-light-text;
   }
 
@@ -125,14 +146,13 @@
 
   .bal-card-heading + .bal-card-title,
   .bal-card-title + .bal-card-subtitle {
-    margin-top: -18px;
-    padding-top: 0;
+    padding-top: 8px;
   }
 
   .bal-card-heading + .bal-card-content,
   .bal-card-title + .bal-card-content,
   .bal-card-subtitle + .bal-card-content {
-    padding-top: 0;
+    padding-top: 20px;
   }
 
   .bal-card-actions {
@@ -160,6 +180,7 @@
 
     .bal-card-actions {
       flex-direction: row;
+      padding-top: 20px;
 
       bal-button {
         margin-top: 0;
@@ -175,12 +196,63 @@
         }
       }
     }
+
+    .bal-card-heading,
+    .bal-card-title,
+    .bal-card-subtitle,
+    .bal-card-content,
+    .bal-card-actions {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    & > :first-child {
+      padding-top: 32px;
+    }
+
+    & > :last-child {
+      padding-bottom: 32px;
+    }
+
+    bal-accordion,
+    bal-card-button {
+      padding-top: 40px;
+    }
   }
 
   @include desktop() {
     .bal-card.is-teaser {
       min-height: 470px;
       width: 570px;
+    }
+
+    .bal-card-actions {
+      padding-top: 40px;
+    }
+
+    .bal-card-heading + .bal-card-content,
+    .bal-card-title + .bal-card-content,
+    .bal-card-subtitle + .bal-card-content {
+      padding-top: 40px;
+    }
+
+    &.is-form-padding {
+      .bal-card-heading,
+      .bal-card-title,
+      .bal-card-subtitle,
+      .bal-card-content,
+      .bal-card-actions {
+        padding-left: 120px;
+        padding-right: 120px;
+      }
+
+      & > :first-child {
+        padding-top: 64px;
+      }
+
+      & > :last-child {
+        padding-bottom: 64px;
+      }
     }
   }
 }

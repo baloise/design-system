@@ -61,13 +61,13 @@ export class BalButton {
 
 export declare interface BalCard extends Components.BalCard {}
 @ProxyCmp({
-  inputs: ['border', 'color', 'flat', 'inverted', 'padded', 'square', 'teaser']
+  inputs: ['border', 'color', 'flat', 'inverted', 'padded', 'padding', 'square', 'teaser']
 })
 @Component({
   selector: 'bal-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['border', 'color', 'flat', 'inverted', 'padded', 'square', 'teaser']
+  inputs: ['border', 'color', 'flat', 'inverted', 'padded', 'padding', 'square', 'teaser']
 })
 export class BalCard {
   protected el: HTMLElement;

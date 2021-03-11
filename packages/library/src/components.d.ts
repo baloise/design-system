@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
 import { BalButtonColor } from "./components/bal-button/bal.button.type";
+import { PaddingCardType } from "./types/padding.types";
 import { BalCardStepOption } from "./components/bal-card-step/bal-card-step.type";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
@@ -156,9 +157,13 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * If `true` the card has padding.
+          * @deprecated If `true` the card has padding.
          */
         "padded": boolean;
+        /**
+          * Defines the size of the padding grid
+         */
+        "padding": PaddingCardType;
         /**
           * If `true` the card loses its border radius.
          */
@@ -2457,9 +2462,13 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * If `true` the card has padding.
+          * @deprecated If `true` the card has padding.
          */
         "padded"?: boolean;
+        /**
+          * Defines the size of the padding grid
+         */
+        "padding"?: PaddingCardType;
         /**
           * If `true` the card loses its border radius.
          */

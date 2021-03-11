@@ -1,5 +1,7 @@
 import { Component, h, Host, Prop } from '@stencil/core'
+import { isEmpty } from 'lodash'
 import { ColorTypes } from '../../types/color.types'
+import { PaddingCardType } from '../../types/padding.types'
 
 @Component({
   tag: 'bal-card',
@@ -23,7 +25,12 @@ export class BalCard {
   @Prop() square = false
 
   /**
-   * If `true` the card has padding.
+   * Defines the size of the padding grid
+   */
+  @Prop() padding: PaddingCardType = ''
+
+  /**
+   * @deprecated If `true` the card has padding.
    */
   @Prop() padded = false
 
@@ -42,19 +49,33 @@ export class BalCard {
    */
   @Prop() teaser = false
 
+  get paddingTypeClass(): string {
+    return isEmpty(this.padding) ? '' : `is-${this.padding}-padding`
+  }
+
+  get colorTypeClass(): string {
+    return isEmpty(this.color) ? '' : `is-${this.color}`
+  }
+
   render() {
+    if (this.padded) {
+      console.warn('The attribute padded is deprecated. Please have a look at the new attribute padding')
+    }
+
     return (
       <Host
         class={[
           'bal-card',
-          `is-${this.color}`,
+          this.colorTypeClass,
+          this.paddingTypeClass,
           this.teaser ? 'is-teaser' : '',
           this.square ? 'is-square' : '',
-          this.padded ? 'is-padded' : '',
           this.border ? 'has-border' : '',
           this.flat ? 'is-flat' : '',
           this.inverted ? 'is-inverted' : '',
-        ].join(' ')}>
+          this.padded ? 'is-padded' : '',
+        ].join(' ')}
+      >
         <slot></slot>
       </Host>
     )

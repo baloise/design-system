@@ -23,7 +23,6 @@ A text provides some additional helpers.
  - [bal-field-message](../bal-field-message)
  - [bal-list-item-subtitle](../bal-list-item-subtitle)
  - [bal-list-item-title](../bal-list-item-title)
- - [bal-modal-header](../bal-modal-header)
  - [bal-notification](../bal-notification)
  - [bal-snackbar](../bal-snackbar)
  - [bal-tabs](../bal-tabs)
@@ -38,7 +37,6 @@ graph TD;
   bal-field-message --> bal-text
   bal-list-item-subtitle --> bal-text
   bal-list-item-title --> bal-text
-  bal-modal-header --> bal-text
   bal-notification --> bal-text
   bal-snackbar --> bal-text
   bal-tabs --> bal-text
