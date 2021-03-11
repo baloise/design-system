@@ -13,7 +13,7 @@ UI-Libary is an open source library for building amazing web applications that f
 
 ## Documentation
 
-The [documentation](https://baloise-ui-library.now.sh) is published on now.sh, and is built with the docsify tool.
+The [documentation](https://baloise-ui-library.now.sh) is published on now.sh, and is built with [vuepress](https://vuepress.vuejs.org/).
 
 ## Packages
 
