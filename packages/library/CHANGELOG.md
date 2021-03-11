@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/baloise/ui-library/compare/v4.2.8...v4.3.0) (2021-03-11)
+
+
+### Bug Fixes
+
+* **dropdown:** close other dropdown when toggeling ([e1ec7b6](https://github.com/baloise/ui-library/commit/e1ec7b699dc95478d954d3f2dbc6be355095d5fc))
+* **navbar:** adjust brand alignment ([fa27fcf](https://github.com/baloise/ui-library/commit/fa27fcfa2b1463d23d59745dcafb3b83ac968958))
+
+
+### Features
+
+* **utils:** add lodash as util lib ([99c91f6](https://github.com/baloise/ui-library/commit/99c91f6a9f42d1354a413c10dee5c828a914eb48))
+
+
+
+
+
 ## [4.2.8](https://github.com/baloise/ui-library/compare/v4.2.7...v4.2.8) (2021-03-10)
 
 

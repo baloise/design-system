@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/baloise/ui-library/compare/v4.2.8...v4.3.0) (2021-03-11)
+
+
+### Features
+
+* **utils:** add lodash as util lib ([99c91f6](https://github.com/baloise/ui-library/commit/99c91f6a9f42d1354a413c10dee5c828a914eb48))
+
+
+
+
+
 ## [4.2.8](https://github.com/baloise/ui-library/compare/v4.2.7...v4.2.8) (2021-03-10)
 
 
