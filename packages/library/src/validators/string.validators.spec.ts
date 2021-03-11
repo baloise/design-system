@@ -1,4 +1,3 @@
-import { isCustom } from './custom.validators'
 import { isMaxLength, isMinLength } from './string.validators'
 
 describe('string', () => {
