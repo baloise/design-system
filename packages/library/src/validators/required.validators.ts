@@ -1,4 +1,4 @@
-import { isArray, isBoolean, isDefined, isString, isObject } from '../utils/balUtil'
+import { isArray, isBoolean, isNil, isString, isObject } from 'lodash'
 import { BalValidatorFn } from './validator.type'
 
 /**
@@ -11,7 +11,7 @@ import { BalValidatorFn } from './validator.type'
  */
 export function isRequired(): BalValidatorFn {
   return function (value: any) {
-    if (!isDefined(value)) {
+    if (isNil(value)) {
       return false
     }
 
@@ -48,15 +48,3 @@ export function isRequiredTrue(): BalValidatorFn {
     return value === true
   }
 }
-
-// export const minLength = (length: number): ValidatorFn<string> => value => {
-//   return value === undefined || value === null || value.length < length
-//     ? i18n.global.t('validator.minLength')
-//     : null
-// }
-
-// export const maxLength = (length: number): ValidatorFn<string> => value => {
-//   return value === undefined || value === null || value.length > length
-//     ? i18n.global.t('validator.maxLength')
-//     : null
-// }

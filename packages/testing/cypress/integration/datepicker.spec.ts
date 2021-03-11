@@ -1,4 +1,4 @@
-import { BalDateUtil } from '@baloise/ui-library'
+import { now } from '@baloise/ui-library'
 import { app } from '../support/app'
 
 describe('Datepicker', () => {
@@ -11,7 +11,7 @@ describe('Datepicker', () => {
 
   it('should navigate to Datepicker page and pick the date in Datepicker', () => {
     page.open()
-    page.datepicker.get().pick(BalDateUtil.now())
+    page.datepicker.get().pick(now())
   })
 
   it('should navigate to Datepicker page and check the date in Datepicker', () => {

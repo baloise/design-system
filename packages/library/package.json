@@ -38,7 +38,7 @@
     "build:compile": "stencil build --docs --es5 --prod",
     "clean": "rimraf docs && npm run clean:icons",
     "clean:icons": "rimraf src/components/bal-icon/icons",
-    "docs": "npm run build && npm run docs:compile",
+    "docs": "npm run build:filters && npm run build:utils && npm run build:validators && npm run docs:compile && npm run build:components",
     "docs:compile": "stencil build --docs --es5 --prod --config stencil.docs.config.ts",
     "serve": "stencil build --docs --dev --watch --serve --config stencil.dev.config.ts",
     "test": "stencil test --spec --e2e --config stencil.test.config.ts",
@@ -48,8 +48,10 @@
   },
   "dependencies": {
     "@stencil/core": "^2.4.0",
+    "@types/lodash": "^4.14.168",
     "bulma": "^0.9.2",
-    "filesize.js": "^2.0.0"
+    "filesize.js": "^2.0.0",
+    "lodash": "^4.17.21"
   },
   "license": "Apache-2.0",
   "devDependencies": {

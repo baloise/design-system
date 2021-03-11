@@ -1,4 +1,4 @@
-import { isDefined } from '../utils/balUtil'
+import { isNil } from 'lodash'
 import { BalValidatorFn } from './validator.type'
 
 /**
@@ -12,7 +12,7 @@ import { BalValidatorFn } from './validator.type'
 export function isMinLength(minLength: number): BalValidatorFn {
   return function (value: any) {
     let text = `${value}`
-    if (!isDefined(value)) {
+    if (isNil(value)) {
       text = ''
     }
     return text.length >= minLength
@@ -30,7 +30,7 @@ export function isMinLength(minLength: number): BalValidatorFn {
 export function isMaxLength(maxLength: number): BalValidatorFn {
   return function (value: any) {
     let text = `${value}`
-    if (!isDefined(value)) {
+    if (isNil(value)) {
       text = ''
     }
     return text.length <= maxLength

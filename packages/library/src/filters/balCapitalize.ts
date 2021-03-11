@@ -1,4 +1,4 @@
-import { isBlank } from '../utils/balStringUtil'
+import { isEmpty, capitalize } from 'lodash'
 
 /**
  * Transforms the given string parameter to capitalize string.
@@ -8,10 +8,9 @@ import { isBlank } from '../utils/balStringUtil'
  * ```
  */
 export function balCapitalize(value: string | null | undefined): string {
-  if (isBlank(value)) {
+  if (isEmpty(value)) {
     return ''
   } else {
-    const s = value as string
-    return s.charAt(0).toUpperCase() + s.slice(1)
+    return capitalize(value as string)
   }
 }

@@ -1,4 +1,4 @@
-import { round } from '../utils/balNumberUtil'
+import { round } from 'lodash'
 
 /**
  * Transforms the filesize in human readable string.

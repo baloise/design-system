@@ -11,9 +11,9 @@ We recommand to use the utility library [date-fns](https://date-fns.org/) for wo
 The utilities are simple functions.
 
 ```typescript
-import { balKeyUtil } from '@baloise/ui-library'
+import { isEnterKey } from '@baloise/ui-library'
 
-if (balKeyUtil.isEnterKey(event)) {
+if (isEnterKey(event)) {
   // do something...
 }
 ```
@@ -22,20 +22,64 @@ if (balKeyUtil.isEnterKey(event)) {
 
 
 
-## API balDateUtil
+## ArrayUtil
+
+### areArraysEqual
+
+`areArraysEqual(a: T[], b: T[]) => boolean`
+
+Returns `true` if the arrays are equal
 
 ```typescript
-import { balDateUtil } from '@baloise/ui-library'
+areArraysEqual(['a', 'b'], ['b', 'a']) // true
 ```
+
+
+---
+
+## DateUtil
 
 ### now
 
 `now() => Date`
 
-Returns a JS Date instance of today
+Returns a JS Date instance of the exact moment
 
 ```typescript
-const date = BalDateUtil.now()
+const date = now()
+// Wed Mar 10 2021 20:30:32 GMT+0100 (Central European Standard Time)
+```
+
+### today
+
+`today() => Date`
+
+Returns a JS Date instance of today with time being set to 0
+
+```typescript
+const date = today()
+// Wed Mar 10 2021 00:00:00 GMT+0100 (Central European Standard Time)
+```
+
+### floorTime
+
+`floorTime(date: Date) => any`
+
+Returns a JS Date instance with time being set to 0
+
+```typescript
+const date = floorTime(new Date())
+// Wed Mar 10 2021 00:00:00 GMT+0100 (Central European Standard Time)
+```
+
+### ceilTime
+
+`ceilTime(date: Date) => any`
+
+Returns a JS Date instance with the time set to the possible end
+
+```typescript
+const date = ceilTime(new Date())
 ```
 
 ### year
@@ -45,7 +89,7 @@ const date = BalDateUtil.now()
 Returns the year number of the given date
 
 ```typescript
-BalDateUtil.year(new Date(2020, 0, 1)) // 2020
+year(new Date(2020, 0, 1)) // 2020
 ```
 
 ### month
@@ -55,7 +99,7 @@ BalDateUtil.year(new Date(2020, 0, 1)) // 2020
 Returns the month number of the given date
 
 ```typescript
-BalDateUtil.month(new Date(2020, 0, 1)) // 0
+month(new Date(2020, 0, 1)) // 0
 ```
 
 ### day
@@ -65,7 +109,7 @@ BalDateUtil.month(new Date(2020, 0, 1)) // 0
 Returns the day number of the given date
 
 ```typescript
-BalDateUtil.day(new Date(2020, 0, 1)) // 1
+day(new Date(2020, 0, 1)) // 1
 ```
 
 ### increaseYear
@@ -75,7 +119,7 @@ BalDateUtil.day(new Date(2020, 0, 1)) // 1
 Increases the year of a date and retunrs the result
 
 ```typescript
-BalDateUtil.increaseYear(new Date(2020, 0, 1), 1) // 2021
+increaseYear(new Date(2020, 0, 1), 1) // 2021
 ```
 
 ### decreaseYear
@@ -85,7 +129,7 @@ BalDateUtil.increaseYear(new Date(2020, 0, 1), 1) // 2021
 Decreases the year of a date and retunrs the result
 
 ```typescript
-BalDateUtil.decreaseYear(new Date(2020, 0, 1), 1) // 2019
+decreaseYear(new Date(2020, 0, 1), 1) // 2019
 ```
 
 ### isBefore
@@ -95,7 +139,7 @@ BalDateUtil.decreaseYear(new Date(2020, 0, 1), 1) // 2019
 Returns `true` when the given date is not smaller than the before date.
 
 ```typescript
-BalDateUtil.isBefore(new Date(2020, 1, 1), new Date(2020, 3, 1)) // true
+isBefore(new Date(2020, 1, 1), new Date(2020, 3, 1)) // true
 ```
 
 ### isAfter
@@ -105,7 +149,7 @@ BalDateUtil.isBefore(new Date(2020, 1, 1), new Date(2020, 3, 1)) // true
 Returns `true` when the given date is not smaller than the before date.
 
 ```typescript
-BalDateUtil.isAfter(new Date(2020, 5, 1), new Date(2020, 3, 1)) // true
+isAfter(new Date(2020, 5, 1), new Date(2020, 3, 1)) // true
 ```
 
 ### isInRange
@@ -115,7 +159,7 @@ BalDateUtil.isAfter(new Date(2020, 5, 1), new Date(2020, 3, 1)) // true
 Returns `true` when the given date is not smaller than the minDate and not bigger than the maxDate.
 
 ```typescript
-BalDateUtil.isInRange(new Date(2020, 1, 1), new Date(2020, 0, 1), new Date(2020, 2, 1)) // true
+isInRange(new Date(2020, 1, 1), new Date(2020, 0, 1), new Date(2020, 2, 1)) // true
 ```
 
 ### getFirstDayOfTheWeek
@@ -150,12 +194,12 @@ Returns `true` when the week of the dates are the same
 
 ### format
 
-`format(datestring: string | undefined | null) => string`
+`format(value: string | Date | undefined | null) => string`
 
 Transforms the ISO datestring into `dd.mm.yyyy`
 
 ```typescript
-BalDateUtil.format('2020-12-02') // '02.12.2020'
+format('2020-12-02') // '02.12.2020'
 ```
 
 ### isoString
@@ -165,7 +209,7 @@ BalDateUtil.format('2020-12-02') // '02.12.2020'
 Returns the ISO string `yyyy-mm-dd` of the given date
 
 ```typescript
-BalDateUtil.isoString(new Date(2020, 0, 13)) // '2020-01-13'
+isoString(new Date(2020, 0, 13)) // '2020-01-13'
 ```
 
 ### newDateString
@@ -175,7 +219,7 @@ BalDateUtil.isoString(new Date(2020, 0, 13)) // '2020-01-13'
 Returns the ISO string `yyyy-mm-dd` of the given date
 
 ```typescript
-BalDateUtil.newDateString(new Date(2020, 0, 13)) // '2020-01-13'
+newDateString(new Date(2020, 0, 13)) // '2020-01-13'
 ```
 
 ### newDateString
@@ -185,7 +229,7 @@ BalDateUtil.newDateString(new Date(2020, 0, 13)) // '2020-01-13'
 Returns the ISO string `yyyy-mm-dd` of the given parameters year, month and day
 
 ```typescript
-BalDateUtil.newDateString(2020, 0, 13) // '2020-01-13'
+newDateString(2020, 0, 13) // '2020-01-13'
 ```
 
 ### newDateString
@@ -201,7 +245,7 @@ BalDateUtil.newDateString(2020, 0, 13) // '2020-01-13'
 Turns the ISO string `yyyy-mm-dd` it a JS Date instance
 
 ```typescript
-BalDateUtil.toDate('2020-01-13') // js date instance
+toDate('2020-01-13') // js date instance
 ```
 
 ### isValidDateString
@@ -211,10 +255,10 @@ BalDateUtil.toDate('2020-01-13') // js date instance
 Returns `true` if the given datestring is valid
 
 ```typescript
-BalDateUtil.isValidDateString('2020-01-13') //true
-BalDateUtil.isValidDateString('2020-01-0') //false
-BalDateUtil.isValidDateString('') //false
-BalDateUtil.isValidDateString('1899-01-0') //false
+isValidDateString('2020-01-13') //true
+isValidDateString('2020-01-0') //false
+isValidDateString('') //false
+isValidDateString('1899-01-0') //false
 ```
 
 ### isValidDate
@@ -226,11 +270,7 @@ Returns `true` if the given date is valid
 
 ---
 
-## API balKeyUtil
-
-```typescript
-import { balKeyUtil } from '@baloise/ui-library'
-```
+## KeyUtil
 
 ### isEnterKey
 
@@ -259,155 +299,17 @@ Returns `true` if the keyboard event was triggered by the `ArrowUp` key
 
 ---
 
-## API balNumberUtil
+## NumberUtil
+
+### isValidMonetaryNumber
+
+`isValidMonetaryNumber(stringValue: string) => boolean`
+
+Returns `true` if the arrays are equal
 
 ```typescript
-import { balNumberUtil } from '@baloise/ui-library'
+isValidMonetaryNumber(`1'000.99`) // true
 ```
-
-### round
-
-`round(value: number, digits: number) => string`
-
-
-
-### parseNumber
-
-`parseNumber(value: any) => number | undefined`
-
-
-
-### isValidNumber
-
-`isValidNumber(value: number) => boolean`
-
-
-
-### isValidNumberWithSeparators
-
-`isValidNumberWithSeparators(stringValue: string) => boolean`
-
-
-
-
----
-
-## API balStringUtil
-
-```typescript
-import { balStringUtil } from '@baloise/ui-library'
-```
-
-### isBlank
-
-`isBlank(s: string | null) => boolean`
-
-
-
-### isNotBlank
-
-`isNotBlank(s: string) => boolean`
-
-
-
-### assertNotBlank
-
-`assertNotBlank(s: string) => any`
-
-
-
-### isStringLiteral
-
-`isStringLiteral(s: any) => boolean`
-
-
-
-
----
-
-## API balUtil
-
-```typescript
-import { balUtil } from '@baloise/ui-library'
-```
-
-### isDefined
-
-`isDefined(obj: any) => boolean`
-
-
-
-### isFunction
-
-`isFunction(obj: any) => boolean`
-
-
-
-### isNumber
-
-`isNumber(obj: any) => boolean`
-
-
-
-### isString
-
-`isString(obj: any) => boolean`
-
-
-
-### isArray
-
-`isArray(obj: any) => boolean`
-
-
-
-### isNotArray
-
-`isNotArray(obj: any) => boolean`
-
-
-
-### isError
-
-`isError(obj: any) => boolean`
-
-
-
-### isObject
-
-`isObject(obj: any) => boolean`
-
-
-
-### isBoolean
-
-`isBoolean(obj: any) => boolean`
-
-
-
-### assertNull
-
-`assertNull(obj: any) => any`
-
-
-
-### assertNotNull
-
-`assertNotNull(obj: any) => any`
-
-
-
-### assertFunction
-
-`assertFunction(obj: any) => any`
-
-
-
-### areArraysEqual
-
-`areArraysEqual(a: T[], b: T[]) => boolean`
-
-
 
 
 ---

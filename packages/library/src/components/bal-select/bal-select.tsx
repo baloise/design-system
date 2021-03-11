@@ -1,7 +1,7 @@
 import { Component, h, Host, Element, Prop, State, Method, EventEmitter, Event, Listen, Watch } from '@stencil/core'
 import { findItemLabel } from '../../helpers/helpers'
 import { isEnterKey, isEscapeKey, isArrowDownKey, isArrowUpKey } from '../../utils/balKeyUtil'
-import { areArraysEqual } from '../../utils/balUtil'
+import { areArraysEqual } from '../../utils/balArrayUtil'
 import { BalOptionValue } from '../bal-select-option/bal-select-option.type'
 
 @Component({

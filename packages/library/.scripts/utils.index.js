@@ -7,18 +7,19 @@
  */
 
 const path = require('path')
+const _ = require('lodash')
 const utilities = require('./utilities')
 const file = require('../../../.scripts/file')
 const log = require('../../../.scripts/log')
 
-function capitalize(s) {
-  return s.charAt(0).toUpperCase() + s.slice(1)
-}
-
 const run = async () => {
   await log.title('utils : index')
   const files = await utilities.read({ fileName: 'utils' })
-  const utilExports = files.map(f => `export * as ${capitalize(f.fileName)} from './${f.fileName}'`)
+  const utilExports = files.map(f => {
+    const imp = _.uniq([...f.interfaces, ...f.functions.map(fn => fn.name)])
+    return `export { ${imp.join(', ')} } from './${f.fileName}'`
+  })
+
   const content = ['// generated file by .scripts/utils.index.js', '', utilExports.join('\n'), ''].join('\n')
   await file.save(path.join(__dirname, '../src/utils/index.ts'), content)
 }

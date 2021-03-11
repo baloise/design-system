@@ -17,11 +17,7 @@ async function main() {
     '',
     utilFile => {
       return [
-        `## API ${utilFile.fileName}`,
-        '',
-        '```typescript',
-        `import { ${utilFile.fileName} } from '@baloise/ui-library'`,
-        '```',
+        `## ${utilFile.fileName.replace('bal', '')}`,
         '',
         ...utilFile.functions.map(printFunction),
         ``,

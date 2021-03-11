@@ -85,7 +85,11 @@ export class Dropdown {
    */
   @Method()
   async toggle() {
-    this.isActive = !this.isActive
+    if (this.isActive) {
+      await this.close()
+    } else {
+      await this.open()
+    }
     this.balCollapse.emit(this.isActive)
   }
 
@@ -155,14 +159,16 @@ export class Dropdown {
           'bal-dropdown': true,
           'is-expanded': this.expanded,
           'has-fixed-content-width': this.fixedContentWidth,
-        }}>
+        }}
+      >
         <div
           class={{
             'dropdown': true,
             'is-active': this.isActive,
             'is-expanded': this.expanded,
             'is-up': this.isDropDownContentUp,
-          }}>
+          }}
+        >
           <slot></slot>
         </div>
       </Host>

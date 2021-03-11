@@ -1,4 +1,5 @@
-import { BalNumberUtil } from '../utils'
+import { isValidMonetaryNumber } from '../utils'
+import { parseInt, isNumber as _isNumber } from 'lodash'
 import { BalValidatorFn } from './validator.type'
 
 /**
@@ -12,7 +13,7 @@ import { BalValidatorFn } from './validator.type'
  */
 export function isMin(min: number): BalValidatorFn {
   return function (value: any) {
-    const num = BalNumberUtil.parseNumber(value)
+    const num = parseInt(value)
     if (num === undefined) {
       return false
     }
@@ -31,7 +32,7 @@ export function isMin(min: number): BalValidatorFn {
  */
 export function isMax(max: number): BalValidatorFn {
   return function (value: any) {
-    const num = BalNumberUtil.parseNumber(value)
+    const num = parseInt(value)
     if (num === undefined) {
       return false
     }
@@ -49,7 +50,7 @@ export function isMax(max: number): BalValidatorFn {
  */
 export function isNumber(): BalValidatorFn {
   return function (value: any) {
-    return BalNumberUtil.isValidNumber(value)
+    return _isNumber(value)
   }
 }
 
@@ -64,9 +65,9 @@ export function isNumber(): BalValidatorFn {
  */
 export function isMonetaryNumber(): BalValidatorFn {
   return function (value: any) {
-    if (BalNumberUtil.isValidNumber(value)) {
+    if (_isNumber(value)) {
       return true
     }
-    return BalNumberUtil.isValidNumberWithSeparators(value)
+    return isValidMonetaryNumber(value)
   }
 }

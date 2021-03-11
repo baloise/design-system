@@ -1,4 +1,5 @@
-import { isBlank } from '../utils/balStringUtil'
+import { isEmpty } from 'lodash'
+
 /**
  * If the value is empty it shows a dash ('-').
  *
@@ -8,5 +9,5 @@ import { isBlank } from '../utils/balStringUtil'
  * ```
  */
 export function balDefaultString(value: string | undefined | null, defaultString: string = '-'): string {
-  return isBlank(value) ? defaultString : (value as string)
+  return isEmpty(value) ? defaultString : (value as string)
 }
