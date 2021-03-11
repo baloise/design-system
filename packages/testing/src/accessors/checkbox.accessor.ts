@@ -68,7 +68,7 @@ export const CheckboxContainableMixin: Mixin = <T>({ selector, creator }: MixinC
    * Check the content of the label element
    */
   contains: (content: string) => {
-    const item = cy.get(selector).find('label bal-text')
+    const item = cy.get(selector).find('label')
     item.contains(content)
     return creator()
   },
