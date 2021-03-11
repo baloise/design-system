@@ -20,12 +20,12 @@ bal-icon[role='button'] {
   top: 0;
   left: 0;
   right: 0;
+  min-height: 100%;
   z-index: 100;
   background: $blue;
   color: $white;
   padding: 30px;
-  min-width: 280px;
-  border-radius: $radius-large;
+  border-radius: 0;
 
   .title {
     color: $white;
@@ -39,11 +39,20 @@ bal-icon[role='button'] {
 @include tablet() {
   .bal-hint-content {
     position: absolute;
+    border-radius: $radius-large;
     margin-left: 40px;
-    top: -20px;
+    top: -30px;
     bottom: initial;
     left: initial;
     right: initial;
     box-shadow: $shadow;
+    min-height: auto;
+    min-width: 320px;
+  }
+}
+
+@include desktop() {
+  .bal-hint-content {
+    min-width: 460px;
   }
 }
