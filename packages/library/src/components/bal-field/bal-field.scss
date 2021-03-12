@@ -28,6 +28,14 @@
       display: block;
     }
 
+    bal-field-control {
+      margin-bottom: 26px;
+    }
+
+    bal-field-control + bal-field-message {
+      margin-top: -23px !important;
+    }
+
     bal-field-label > label > bal-hint {
       position: absolute;
       top: -5px;
