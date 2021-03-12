@@ -506,6 +506,13 @@ export const BalIconLocation = /*@__PURE__*/ defineContainer<JSX.BalIconLocation
 );
 
 
+export const BalIconLogo = /*@__PURE__*/ defineContainer<JSX.BalIconLogo>('bal-icon-logo',
+  ['size'],
+  [],
+  
+);
+
+
 export const BalIconMenuBars = /*@__PURE__*/ defineContainer<JSX.BalIconMenuBars>('bal-icon-menu-bars',
   ['size'],
   [],

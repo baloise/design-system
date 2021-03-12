@@ -758,6 +758,12 @@ export namespace Components {
          */
         "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
+    interface BalIconLogo {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
     interface BalIconMenuBars {
         /**
           * Defines the size of the icon.
@@ -1889,6 +1895,12 @@ declare global {
         prototype: HTMLBalIconLocationElement;
         new (): HTMLBalIconLocationElement;
     };
+    interface HTMLBalIconLogoElement extends Components.BalIconLogo, HTMLStencilElement {
+    }
+    var HTMLBalIconLogoElement: {
+        prototype: HTMLBalIconLogoElement;
+        new (): HTMLBalIconLogoElement;
+    };
     interface HTMLBalIconMenuBarsElement extends Components.BalIconMenuBars, HTMLStencilElement {
     }
     var HTMLBalIconMenuBarsElement: {
@@ -2257,6 +2269,7 @@ declare global {
         "bal-icon-info-circle": HTMLBalIconInfoCircleElement;
         "bal-icon-locate": HTMLBalIconLocateElement;
         "bal-icon-location": HTMLBalIconLocationElement;
+        "bal-icon-logo": HTMLBalIconLogoElement;
         "bal-icon-menu-bars": HTMLBalIconMenuBarsElement;
         "bal-icon-menu-dots": HTMLBalIconMenuDotsElement;
         "bal-icon-message": HTMLBalIconMessageElement;
@@ -3049,6 +3062,12 @@ declare namespace LocalJSX {
         "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconLocation {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconLogo {
         /**
           * Defines the size of the icon.
          */
@@ -3939,6 +3958,7 @@ declare namespace LocalJSX {
         "bal-icon-info-circle": BalIconInfoCircle;
         "bal-icon-locate": BalIconLocate;
         "bal-icon-location": BalIconLocation;
+        "bal-icon-logo": BalIconLogo;
         "bal-icon-menu-bars": BalIconMenuBars;
         "bal-icon-menu-dots": BalIconMenuDots;
         "bal-icon-message": BalIconMessage;
@@ -4052,6 +4072,7 @@ declare module "@stencil/core" {
             "bal-icon-info-circle": LocalJSX.BalIconInfoCircle & JSXBase.HTMLAttributes<HTMLBalIconInfoCircleElement>;
             "bal-icon-locate": LocalJSX.BalIconLocate & JSXBase.HTMLAttributes<HTMLBalIconLocateElement>;
             "bal-icon-location": LocalJSX.BalIconLocation & JSXBase.HTMLAttributes<HTMLBalIconLocationElement>;
+            "bal-icon-logo": LocalJSX.BalIconLogo & JSXBase.HTMLAttributes<HTMLBalIconLogoElement>;
             "bal-icon-menu-bars": LocalJSX.BalIconMenuBars & JSXBase.HTMLAttributes<HTMLBalIconMenuBarsElement>;
             "bal-icon-menu-dots": LocalJSX.BalIconMenuDots & JSXBase.HTMLAttributes<HTMLBalIconMenuDotsElement>;
             "bal-icon-message": LocalJSX.BalIconMessage & JSXBase.HTMLAttributes<HTMLBalIconMessageElement>;

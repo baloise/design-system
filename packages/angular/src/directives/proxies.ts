@@ -1097,6 +1097,25 @@ export class BalIconLocation {
 }
 
 
+export declare interface BalIconLogo extends Components.BalIconLogo {}
+@ProxyCmp({
+  inputs: ['size']
+})
+@Component({
+  selector: 'bal-icon-logo',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
+})
+export class BalIconLogo {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface BalIconMenuBars extends Components.BalIconMenuBars {}
 @ProxyCmp({
   inputs: ['size']

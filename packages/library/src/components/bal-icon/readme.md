@@ -34,6 +34,7 @@ Then the build script will automatically optimize the svg and create its own web
 | <bal-icon name="info" /> | `info` |
 | <bal-icon name="locate" /> | `locate` |
 | <bal-icon name="location" /> | `location` |
+| <bal-icon name="logo" /> | `logo` |
 | <bal-icon name="menu-bars" /> | `menu-bars` |
 | <bal-icon name="menu-dots" /> | `menu-dots` |
 | <bal-icon name="message" /> | `message` |

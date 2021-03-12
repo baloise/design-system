@@ -65,6 +65,7 @@ const customElementTags: string[] = [
  'bal-icon-info-circle',
  'bal-icon-locate',
  'bal-icon-location',
+ 'bal-icon-logo',
  'bal-icon-menu-bars',
  'bal-icon-menu-dots',
  'bal-icon-message',
@@ -847,6 +848,17 @@ export const BalIconLocation = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('bal-icon-location', []),
+});
+
+
+export const BalIconLogo = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    size: {} as PropOptions<Components.BalIconLogo['size']>,
+  },
+
+
+  render: createCommonRender('bal-icon-logo', []),
 });
 
 
