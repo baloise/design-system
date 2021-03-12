@@ -46,12 +46,21 @@ b {
   display: flex !important;
 }
 
-.is-padded {
+.is-padded, // @deprecated
+.has-large-padding,
+.has-padding {
   padding: 20px !important;
 }
 
 @include tablet() {
-  .is-padded {
+  .has-large-padding,
+  .has-padding {
     padding: 32px 40px !important;
+  }
+}
+
+@include desktop() {
+  .has-large-padding {
+    padding: 64px 120px !important;
   }
 }

@@ -50,7 +50,7 @@ export class BalCard {
   @Prop() teaser = false
 
   get paddingTypeClass(): string {
-    return isEmpty(this.padding) ? '' : `is-${this.padding}-padding`
+    return isEmpty(this.padding) ? '' : `has-${this.padding}-padding`
   }
 
   get colorTypeClass(): string {
@@ -73,7 +73,6 @@ export class BalCard {
           this.border ? 'has-border' : '',
           this.flat ? 'is-flat' : '',
           this.inverted ? 'is-inverted' : '',
-          this.padded ? 'is-padded' : '',
         ].join(' ')}
       >
         <slot></slot>
