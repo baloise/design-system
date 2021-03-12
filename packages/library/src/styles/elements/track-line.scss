@@ -1,18 +1,21 @@
 .bal-track-line {
   display: flex;
-  height: $bal_track_line_height;
+  height: 12px;
   width: 100%;
   align-items: center;
   background: $bal_bg_white;
+}
 
-  &::before, &::after {
+.bal-track-line,
+.has-track-line {
+  &::before,
+  &::after {
     content: '';
     position: absolute;
-    height: $bal_track_line_height;
+    height: 12px;
   }
 
   &::before {
-    height: $bal_track_line_height;
     left: 0;
     width: 100%;
     background: $bal_bg_white;
@@ -25,7 +28,88 @@
     background: $bal_bg_white;
     transform: translateX(-50%) skew(-45deg);
     z-index: 100;
-    width: 10px;
+    width: 12px;
+  }
+
+  &.is-large {
+    height: 18px !important;
+
+    &::before,
+    &::after {
+      height: 18px !important;
+    }
+
+    &::after {
+      width: 18px !important;
+    }
+  }
+
+  &.is-medium {
+    height: 14px !important;
+
+    &::before,
+    &::after {
+      height: 14px !important;
+    }
+
+    &::after {
+      width: 14px !important;
+    }
+  }
+
+  &.is-small {
+    height: 8px !important;
+
+    &::before,
+    &::after {
+      height: 8px !important;
+    }
+
+    &::after {
+      width: 8px !important;
+    }
   }
 }
 
+.has-track-line {
+  &::before,
+  &::after {
+    bottom: 0;
+  }
+}
+
+@include tablet() {
+  .bal-track-line {
+    height: 14px;
+  }
+
+  .has-track-line,
+  .bal-track-line {
+    &::before,
+    &::after {
+      height: 14px;
+    }
+
+    &::after {
+      width: 14px;
+    }
+  }
+}
+
+@include desktop() {
+  .bal-track-line {
+    height: 18px;
+  }
+
+  .has-track-line,
+  .bal-track-line {
+    &::before,
+    &::after {
+      height: 18px;
+    }
+
+    &::after {
+      width: 18px;
+    }
+  }
+}
