@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/baloise/ui-library/compare/v4.3.0...v4.4.0) (2021-03-13)
+
+
+### Features
+
+* **card:** add various padding styles ([5f1b732](https://github.com/baloise/ui-library/commit/5f1b73247d5718e2510c3201ce4c3218946c5f81))
+* **checkbox:** add html label possibility ([20f8b52](https://github.com/baloise/ui-library/commit/20f8b5210b892d2c544c5ab906e31bef73e4717c))
+* **footer:** add footer styles ([07578cf](https://github.com/baloise/ui-library/commit/07578cf7e1b5f947631a16dbc14b989bdc54ca24))
+* **footer:** add sticky footer ([de83def](https://github.com/baloise/ui-library/commit/de83def3a7f355ba7d914ab6f86e8994da795298))
+* **icon:** add baloise logo ([1a86f61](https://github.com/baloise/ui-library/commit/1a86f617a06c9a57b3d1540c2f77bd13b98c93ac))
+* **radio:** add html label possibility ([ca16d42](https://github.com/baloise/ui-library/commit/ca16d427baf063cca6c1ff8cf5547022f7663588))
+* **track-line:** add responsiveness and sizes ([a572fd4](https://github.com/baloise/ui-library/commit/a572fd43a266d21037f79cd39578c615d0bb6901))
+
+
+
+
+
 # [4.3.0](https://github.com/baloise/ui-library/compare/v4.2.8...v4.3.0) (2021-03-11)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/baloise/ui-library/compare/v4.3.0...v4.4.0) (2021-03-13)
+
+
+### Features
+
+* **card:** add various padding styles ([5f1b732](https://github.com/baloise/ui-library/commit/5f1b73247d5718e2510c3201ce4c3218946c5f81))
+* **icon:** add baloise logo ([1a86f61](https://github.com/baloise/ui-library/commit/1a86f617a06c9a57b3d1540c2f77bd13b98c93ac))
+
+
+
+
+
 # [4.3.0](https://github.com/baloise/ui-library/compare/v4.2.8...v4.3.0) (2021-03-11)
 
 **Note:** Version bump only for package @baloise/ui-library-vue-2
