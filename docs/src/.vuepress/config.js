@@ -79,6 +79,8 @@ module.exports = {
             'styles/colors',
             'styles/typography',
             'styles/responsiveness',
+            'styles/helpers',
+            'styles/footer',
             'styles/table',
             'styles/track-line',
           ],

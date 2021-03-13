@@ -55,7 +55,9 @@ async function generateMarkdown(components) {
     lines.push('')
 
     if (scripts) {
-      lines.push(`<docs-component-script tag="${camelize(component.tag)}"></docs-component-script>`)
+      lines.push(`<ClientOnly>`)
+      lines.push(`  <docs-component-script tag="${camelize(component.tag)}"></docs-component-script>`)
+      lines.push(`</ClientOnly>`)
       lines.push('')
     }
 
@@ -120,7 +122,16 @@ function transformToMarkdown(component) {
           const tag = `docs-demo-${component.tag}-${INDEX++}`
           const content = getCodeExample(node)
           writeDemoComponent(tag, content)
-          return [`<${tag}></${tag}>`, NEWLINE + NEWLINE, '```html', content, '```', NEWLINE].join('')
+          return [
+            `<ClientOnly>`,
+            `  <${tag}></${tag}>`,
+            `</ClientOnly>`,
+            NEWLINE + NEWLINE,
+            '```html',
+            content,
+            '```',
+            NEWLINE,
+          ].join('')
         }
       }
       return ''
@@ -176,9 +187,6 @@ function forEachComponent(components, callback) {
     if (component.tag.indexOf('bal-icon-') === -1 && component.isChild === false) {
       await callback(component)
     }
-    // if (component.tag === 'bal-select') {
-    //   await callback(component)
-    // }
   })
 }
 

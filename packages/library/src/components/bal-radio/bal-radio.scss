@@ -34,11 +34,10 @@
       @include font-smoothing();
       @include margin(0);
 
-      line-height: 1;
+      line-height: 24px;
       contain: layout style;
 
       display: block;
-      padding-top: 2px;
       min-height: 26px;
       cursor: pointer;
       padding-left: 34px;
@@ -47,6 +46,8 @@
       -ms-user-select: none;
       user-select: none;
       color: $blue;
+      font-family: $body-family;
+      font-size: $size-4;
     }
 
     input[type='radio'] + label::before,
@@ -139,14 +140,14 @@
       padding: 0 15px !important;
       border-color: transparent;
       border-width: 2px;
+      font-family: $body-family;
+      font-size: $size-4;
 
       &:hover {
         color: $blue;
       }
 
       text-align: center;
-      font-size: $size-5;
-      font-weight: bold;
       color: $bal_text_light_blue;
     }
 

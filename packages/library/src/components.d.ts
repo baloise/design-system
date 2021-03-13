@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
 import { BalButtonColor } from "./components/bal-button/bal.button.type";
+import { PaddingCardType } from "./types/padding.types";
 import { BalCardStepOption } from "./components/bal-card-step/bal-card-step.type";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
@@ -156,9 +157,13 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * If `true` the card has padding.
+          * @deprecated If `true` the card has padding.
          */
         "padded": boolean;
+        /**
+          * Defines the size of the padding grid
+         */
+        "padding": PaddingCardType;
         /**
           * If `true` the card loses its border radius.
          */
@@ -748,6 +753,12 @@ export namespace Components {
         "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconLocation {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconLogo {
         /**
           * Defines the size of the icon.
          */
@@ -1884,6 +1895,12 @@ declare global {
         prototype: HTMLBalIconLocationElement;
         new (): HTMLBalIconLocationElement;
     };
+    interface HTMLBalIconLogoElement extends Components.BalIconLogo, HTMLStencilElement {
+    }
+    var HTMLBalIconLogoElement: {
+        prototype: HTMLBalIconLogoElement;
+        new (): HTMLBalIconLogoElement;
+    };
     interface HTMLBalIconMenuBarsElement extends Components.BalIconMenuBars, HTMLStencilElement {
     }
     var HTMLBalIconMenuBarsElement: {
@@ -2252,6 +2269,7 @@ declare global {
         "bal-icon-info-circle": HTMLBalIconInfoCircleElement;
         "bal-icon-locate": HTMLBalIconLocateElement;
         "bal-icon-location": HTMLBalIconLocationElement;
+        "bal-icon-logo": HTMLBalIconLogoElement;
         "bal-icon-menu-bars": HTMLBalIconMenuBarsElement;
         "bal-icon-menu-dots": HTMLBalIconMenuDotsElement;
         "bal-icon-message": HTMLBalIconMessageElement;
@@ -2457,9 +2475,13 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * If `true` the card has padding.
+          * @deprecated If `true` the card has padding.
          */
         "padded"?: boolean;
+        /**
+          * Defines the size of the padding grid
+         */
+        "padding"?: PaddingCardType;
         /**
           * If `true` the card loses its border radius.
          */
@@ -3040,6 +3062,12 @@ declare namespace LocalJSX {
         "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconLocation {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconLogo {
         /**
           * Defines the size of the icon.
          */
@@ -3930,6 +3958,7 @@ declare namespace LocalJSX {
         "bal-icon-info-circle": BalIconInfoCircle;
         "bal-icon-locate": BalIconLocate;
         "bal-icon-location": BalIconLocation;
+        "bal-icon-logo": BalIconLogo;
         "bal-icon-menu-bars": BalIconMenuBars;
         "bal-icon-menu-dots": BalIconMenuDots;
         "bal-icon-message": BalIconMessage;
@@ -4043,6 +4072,7 @@ declare module "@stencil/core" {
             "bal-icon-info-circle": LocalJSX.BalIconInfoCircle & JSXBase.HTMLAttributes<HTMLBalIconInfoCircleElement>;
             "bal-icon-locate": LocalJSX.BalIconLocate & JSXBase.HTMLAttributes<HTMLBalIconLocateElement>;
             "bal-icon-location": LocalJSX.BalIconLocation & JSXBase.HTMLAttributes<HTMLBalIconLocationElement>;
+            "bal-icon-logo": LocalJSX.BalIconLogo & JSXBase.HTMLAttributes<HTMLBalIconLogoElement>;
             "bal-icon-menu-bars": LocalJSX.BalIconMenuBars & JSXBase.HTMLAttributes<HTMLBalIconMenuBarsElement>;
             "bal-icon-menu-dots": LocalJSX.BalIconMenuDots & JSXBase.HTMLAttributes<HTMLBalIconMenuDotsElement>;
             "bal-icon-message": LocalJSX.BalIconMessage & JSXBase.HTMLAttributes<HTMLBalIconMessageElement>;

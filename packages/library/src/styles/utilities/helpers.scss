@@ -1,21 +1,5 @@
 @import 'node_modules/bulma/sass/helpers/_all.sass';
 
-.is-padded-small {
-  padding: 10px !important;
-}
-
-.is-padded {
-  padding: 20px !important;
-}
-
-.is-padded-medium {
-  padding: 30px !important;
-}
-
-.is-padded-large {
-  padding: 40px !important;
-}
-
 .is-full-width {
   width: 100% !important;
 }
@@ -60,4 +44,23 @@ b {
 
 .is-display-flex {
   display: flex !important;
+}
+
+.is-padded, // @deprecated
+.has-large-padding,
+.has-padding {
+  padding: 20px !important;
+}
+
+@include tablet() {
+  .has-large-padding,
+  .has-padding {
+    padding: 32px 40px !important;
+  }
+}
+
+@include desktop() {
+  .has-large-padding {
+    padding: 64px 120px !important;
+  }
 }

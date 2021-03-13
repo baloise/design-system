@@ -42,17 +42,6 @@ export const SelectButtonSelectableMixin: Mixin = <T>({ selector, creator }: Mix
 
     return creator()
   },
-  // FINISH !!!
-  // assertIsSelected: (indexes: number | number[]) => {
-  //   if (typeof indexes === 'number') {
-  //     indexes = [indexes];
-  //   }
-  //   cy.get(selector).within(() => {
-  //     (indexes as number[]).forEach((index: number) =>
-  //       cy.get(`bal-radio.bal-select-button`).eq(index).should('have.class', 'bal-active'));
-  //   });
-  //   return creator();
-  // }
 })
 
 /**

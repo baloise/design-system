@@ -31,7 +31,7 @@
 
     <main class="container">
       <BalCard style="margin-top: 40px">
-        <div class="is-padded">
+        <div class="has-padding">
           <router-view />
         </div>
       </BalCard>

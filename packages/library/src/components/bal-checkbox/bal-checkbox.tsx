@@ -10,6 +10,7 @@ import { findItemLabel } from '../../helpers/helpers'
 export class Checkbox {
   private inputId = `bal-cb-${checkboxIds++}`
   private nativeInput?: HTMLInputElement
+  private nativeLabel?: HTMLLabelElement
 
   @Element() el!: HTMLElement
 
@@ -107,6 +108,10 @@ export class Checkbox {
     if (this.disabled) {
       event.preventDefault()
       event.stopPropagation()
+    } else {
+      if (this.nativeLabel !== event.target) {
+        event.stopPropagation()
+      }
     }
   }
 
@@ -157,9 +162,10 @@ export class Checkbox {
             'is-disabled': this.disabled,
           }}
           htmlFor={this.inputId}
+          ref={labelEl => (this.nativeLabel = labelEl)}
           onClick={this.handleClick}
         >
-          <bal-text>{this.label}</bal-text>
+          <slot>{this.label}</slot>
         </label>
       </Host>
     )

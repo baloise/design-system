@@ -54,68 +54,9 @@ Of cource, not everyone likes the theme of bulma. No problem, just import the va
 
 #### SWOT analyse of Bulma
 
-<table class="docs-swot-table">
-    <tr>
-        <th></th>
-        <th class="green">
-            <strong>Helpful</strong><br>
-            <small>to achieving the objective</small>
-        </th>
-        <th class="red">
-            <strong>Harmful</strong><br>
-            <small>to achieving the objective</small>
-        </th>
-    </tr>
-    <tr>
-        <th class="yellow rotate">
-            <div>
-                <strong>Internal origin</strong><br>
-                <small>(product/company attributes)</small>
-            </div>
-        </th>
-        <td>
-            <strong>Strengths</strong>
-            <ul>
-                <li>Easy to learn</li>
-                <li>CSS only</li>
-                <li>Responsive</li>
-                <li>Well documented</li>
-                <li>Modular</li>
-                <li>Customizable</li>
-            </ul>
-        </td>
-        <td>
-            <strong>Weakness</strong>
-            <ul>
-                <li>Depending on the release cycle of Bulma</li>
-            </ul>
-        </td>
-    </tr>    
-    <tr>
-        <th class="blue rotate">
-            <div>
-                <strong>External origin</strong><br>
-                <small>(environment/market attributes)</small>
-            </div>
-        </th>
-        <td>
-            <strong>Opportunity</strong>
-            <ul>
-                <li>Framework agnostic</li>
-                <li>Open-Source positioning</li>
-                <li>Get new components</li>
-            </ul>
-        </td>
-        </td>
-        <td>
-            <strong>Threat</strong>
-            <ul>
-                <li>Library could get deprecated</li>
-            </ul>
-        </td>
-        </td>
-    </tr>
-</table>
+<ClientOnly>
+  <docs-swot-bulma></docs-swot-bulma>
+</ClientOnly>
 
 ### Stencil
 
@@ -151,74 +92,9 @@ The generated code does not rely on Stencil, but rather it generates highly-opti
 
 #### SWOT analyse of Stencil
 
-<br>
-<table class="docs-swot-table">
-    <tr>
-        <th></th>
-        <th class="green">
-            <strong>Helpful</strong><br>
-            <small>to achieving the objective</small>
-        </th>
-        <th class="red">
-            <strong>Harmful</strong><br>
-            <small>to achieving the objective</small>
-        </th>
-    </tr>
-    <tr>
-        <th class="yellow rotate">
-            <div>
-                <strong>Internal origin</strong><br>
-                <small>(product/company attributes)</small>
-            </div>
-        </th>
-        <td>
-            <strong>Strengths</strong>
-            <ul>
-                <li>Future Friendly</li>
-                <li>TypeScript Support</li>
-                <li>Browser Support</li>
-                <li>Easy to learn</li>
-                <li>Needs no dependencies at runtime</li>
-                <li>Web Standards</li>
-                <li>Automatic Optimizations</li>
-                <li>Run-time Performance</li>
-                <li>Framework Features During Development</li>
-            </ul>
-        </td>
-        <td>
-            <strong>Weakness</strong>
-            <ul>
-                <li>Depending on the release cycle of Stencil</li>
-            </ul>
-        </td>
-    </tr>    
-    <tr>
-        <th class="blue rotate">
-            <div>
-                <strong>External origin</strong><br>
-                <small>(environment/market attributes)</small>
-            </div>
-        </th>
-        <td>
-            <strong>Opportunity</strong>
-            <ul>
-                <li>Framework agnostic</li>
-                <li>Open-Source positioning</li>
-                <li>Get new features</li>
-                <li>Web Standards</li>
-                <li>Only ships Web Components</li>
-            </ul>
-        </td>
-        </td>
-        <td>
-            <strong>Threat</strong>
-            <ul>
-                <li>Library could get deprecated</li>
-            </ul>
-        </td>
-        </td>
-    </tr>
-</table>
+<ClientOnly>
+  <docs-swot-stencil></docs-swot-stencil>
+</ClientOnly>
 
 ## CI & CD
 

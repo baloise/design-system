@@ -1,6 +1,7 @@
 @import './ui-library.utilities';
 @import './base/fonts.scss';
 @import './elements/notices.scss';
+@import './layout/sticky-footer.scss';
 
 .bal-app {
   position: relative;
@@ -15,11 +16,11 @@
   @import './utilities/helpers';
   @import './utilities/animations';
   @import './base/all';
+  @import './layout/all';
   @import './form/all';
   @import './elements/all';
   @import './components/all';
   @import 'node_modules/bulma/sass/grid/all.sass';
-  @import 'node_modules/bulma/sass/layout/section.sass';
 
   * {
     box-sizing: border-box;
@@ -46,4 +47,3 @@ body.bal-app {
   margin: 0;
   padding: 0;
 }
-

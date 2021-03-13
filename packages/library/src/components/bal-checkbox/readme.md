@@ -56,14 +56,9 @@ Type: `Promise<void>`
 
  - [bal-select-option](../bal-select-option)
 
-### Depends on
-
-- [bal-text](../bal-text)
-
 ### Graph
 ```mermaid
 graph TD;
-  bal-checkbox --> bal-text
   bal-select-option --> bal-checkbox
   style bal-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```

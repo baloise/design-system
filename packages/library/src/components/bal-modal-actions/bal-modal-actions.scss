@@ -2,6 +2,7 @@
 
 :host {
   position: static;
+  width: 100%;
   display: flex;
   flex: 1;
   justify-content: flex-end;
@@ -9,7 +10,7 @@
 }
 
 ::slotted(bal-button) {
-  margin-right: 5px;
+  margin-right: 8px;
 }
 
 ::slotted(bal-button:first-child) {

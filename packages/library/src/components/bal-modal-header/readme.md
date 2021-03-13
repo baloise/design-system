@@ -7,19 +7,6 @@
 <!-- Auto Generated Below -->
 
 
-## Dependencies
-
-### Depends on
-
-- [bal-text](../bal-text)
-
-### Graph
-```mermaid
-graph TD;
-  bal-modal-header --> bal-text
-  style bal-modal-header fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

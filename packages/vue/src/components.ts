@@ -57,6 +57,7 @@ export const BalCard = /*@__PURE__*/ defineContainer<JSX.BalCard>('bal-card',
   ['border',
 'flat',
 'square',
+'padding',
 'padded',
 'inverted',
 'color',
@@ -499,6 +500,13 @@ export const BalIconLocate = /*@__PURE__*/ defineContainer<JSX.BalIconLocate>('b
 
 
 export const BalIconLocation = /*@__PURE__*/ defineContainer<JSX.BalIconLocation>('bal-icon-location',
+  ['size'],
+  [],
+  
+);
+
+
+export const BalIconLogo = /*@__PURE__*/ defineContainer<JSX.BalIconLogo>('bal-icon-logo',
   ['size'],
   [],
   

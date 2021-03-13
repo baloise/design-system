@@ -9,6 +9,7 @@ import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Compone
 export class Radio implements ComponentInterface {
   private inputId = `bal-rb-${radioIds++}`
   private inputEl?: HTMLInputElement
+  private nativeLabel?: HTMLLabelElement
 
   @Element() el!: HTMLElement
 
@@ -107,6 +108,10 @@ export class Radio implements ComponentInterface {
     if (this.disabled) {
       event.preventDefault()
       event.stopPropagation()
+    } else {
+      if (this.nativeLabel !== event.target) {
+        event.stopPropagation()
+      }
     }
   }
 
@@ -152,9 +157,10 @@ export class Radio implements ComponentInterface {
             'is-disabled': this.disabled,
           }}
           htmlFor={inputId}
+          ref={labelEl => (this.nativeLabel = labelEl)}
           onClick={this.handleClick}
         >
-          <bal-text>{label}</bal-text>
+          <slot>{label}</slot>
         </label>
       </Host>
     )

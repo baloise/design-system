@@ -7,7 +7,7 @@
 - Big corporates have complex organisational structures (many involved stakeholders)
 - Difficult collaboration between teams (IT, design, business units, marketing, sales etc.)
 - Collaboration more difficult for working with distributed teams (office/country) & working with external partners
-    
+
 **Result:** Island solutions are build!
 
 ### External
@@ -20,15 +20,15 @@
 
 ## Solution Space
 
-Create a design system (collection of reusable components with rules, principles and constraints for the design development) 
+Create a [design system](https://stenciljs.com/docs/what-is-design-system) (collection of reusable components with rules, principles and constraints for the design development).
 
-### Internal  
+### Internal
 
 - Standardisation leads to less frictional losses, more efficiency & easier collaboration
 - Better UX-quality through consistency
 - Reduce costs/errors & improve time-to-market
 
-**Result:** Reduce costs/errors & improve time-to-market 
+**Result:** Reduce costs/errors & improve time-to-market
 
 ### External
 

@@ -9,9 +9,7 @@ export class ModalFooter {
   render() {
     return (
       <Host class="modal-card-foot">
-        <div class="modal-card-foot-container">
-          <slot />
-        </div>
+        <slot />
       </Host>
     )
   }
