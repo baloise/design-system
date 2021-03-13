@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.1](https://github.com/baloise/ui-library/compare/v4.4.0...v4.4.1) (2021-03-13)
+
+
+### Bug Fixes
+
+* **vue:** use custom elements for vue 3 ([d43a7a8](https://github.com/baloise/ui-library/commit/d43a7a86857e976b58f3a4c3334cc34ce3169298))
+
+
+
+
+
 # [4.4.0](https://github.com/baloise/ui-library/compare/v4.3.0...v4.4.0) (2021-03-13)
 
 
