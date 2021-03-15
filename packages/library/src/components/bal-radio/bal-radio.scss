@@ -153,7 +153,7 @@
 
     @include desktop() {
       label {
-        font-size: $size-5 !important;
+        font-size: $size-5;
       }
     }
 

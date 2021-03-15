@@ -37,13 +37,13 @@
     -ms-user-select: none;
     user-select: none;
     color: $blue;
-    font-family: $body-family !important;
-    font-size: $size-6 !important;
+    font-family: $body-family;
+    font-size: $size-6;
   }
 
   @include desktop() {
     label {
-      font-size: $size-5 !important;
+      font-size: $size-5;
     }
   }
 

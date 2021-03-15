@@ -55,8 +55,8 @@
     @include desktop() {
       .control.is-loading::after,
       .select.is-loading::after {
-        height: 1em !important;
-        width: 1em !important;
+        height: 1em;
+        width: 1em;
       }
     }
 
