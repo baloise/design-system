@@ -29,6 +29,11 @@
   }
 }
 
+.form .label,
+.form .help {
+  font-family: $family-primary;
+}
+
 .form .label {
   font-size: $size-6 !important;
   margin-bottom: 0 !important;
@@ -43,6 +48,13 @@
 .help {
   min-height: 23px;
   margin-bottom: 0 !important;
+  font-size: $size-6 !important;
+}
+
+@include desktop() {
+  .help {
+    font-size: $size-5 !important;
+  }
 }
 
 .control.has-icons-left bal-icon,
