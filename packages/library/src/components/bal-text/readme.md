@@ -19,7 +19,6 @@ A text provides some additional helpers.
 
  - [bal-button](../bal-button)
  - [bal-card-steps](../bal-card-steps)
- - [bal-field-label](../bal-field-label)
  - [bal-field-message](../bal-field-message)
  - [bal-list-item-subtitle](../bal-list-item-subtitle)
  - [bal-list-item-title](../bal-list-item-title)
@@ -33,7 +32,6 @@ A text provides some additional helpers.
 graph TD;
   bal-button --> bal-text
   bal-card-steps --> bal-text
-  bal-field-label --> bal-text
   bal-field-message --> bal-text
   bal-list-item-subtitle --> bal-text
   bal-list-item-title --> bal-text

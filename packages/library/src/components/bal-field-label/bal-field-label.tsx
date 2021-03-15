@@ -18,13 +18,12 @@ export class FieldLabel {
 
   render() {
     return (
-      <Host class="label">
-        <label>
-          <bal-text small>
+      <Host>
+        <label class="label">
+          <slot>
             {this.text}
             {this.required === true ? ' *' : ''}
-          </bal-text>
-          <slot></slot>
+          </slot>
         </label>
       </Host>
     )

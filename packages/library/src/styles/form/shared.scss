@@ -29,9 +29,15 @@
   }
 }
 
-.form > .label {
-  font-size: $size-5 !important;
+.form .label {
+  font-size: $size-6 !important;
   margin-bottom: 0 !important;
+}
+
+@include desktop() {
+  .form .label {
+    font-size: $size-5 !important;
+  }
 }
 
 .help {
