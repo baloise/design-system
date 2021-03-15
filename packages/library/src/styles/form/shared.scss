@@ -59,13 +59,23 @@
 
 .control.has-icons-left bal-icon,
 .control.has-icons-right bal-icon {
-  min-height: 36px;
-  height: 36px;
+  min-height: 28px;
+  height: 28px;
   pointer-events: none;
   position: absolute;
-  top: -2px;
-  width: 36px;
+  top: -3px;
+  width: 28px;
   z-index: 4;
+}
+
+@include desktop() {
+  .control.has-icons-left bal-icon,
+  .control.has-icons-right bal-icon {
+    min-height: 36px;
+    height: 36px;
+    top: -4px;
+    width: 36px;
+  }
 }
 
 .control.has-icons-right bal-icon:not(.is-left) {

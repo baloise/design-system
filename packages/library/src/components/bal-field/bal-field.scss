@@ -47,7 +47,17 @@
       border-right-color: $blue !important;
       border-left-color: transparent !important;
       border-bottom-color: transparent !important;
-      top: 0.425em;
+      top: 0.4em;
+      height: 0.7em;
+      width: 0.7em;
+    }
+
+    @include desktop() {
+      .control.is-loading::after,
+      .select.is-loading::after {
+        height: 1em !important;
+        width: 1em !important;
+      }
     }
 
     .form.is-inverted {

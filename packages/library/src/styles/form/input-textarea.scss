@@ -7,7 +7,7 @@ textarea.textarea {
   border-radius: 0;
   box-shadow: none;
   padding: 1px 0 2px 0;
-  font-size: $size-4;
+  font-size: $size-5;
   outline: none;
   color: $text;
   height: 2em;
@@ -81,4 +81,11 @@ input.input {
   color: $blue-light-text !important;
   font-family: $family-primary !important;
   opacity: 1;
+}
+
+@include desktop() {
+  input.input,
+  textarea.textarea {
+    font-size: $size-4;
+  }
 }
