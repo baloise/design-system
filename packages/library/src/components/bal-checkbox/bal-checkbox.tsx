@@ -159,6 +159,7 @@ export class Checkbox {
         />
         <label
           class={{
+            'option-label': true,
             'is-disabled': this.disabled,
           }}
           htmlFor={this.inputId}
