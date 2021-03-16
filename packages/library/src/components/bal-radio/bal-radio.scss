@@ -141,7 +141,7 @@
       border-color: transparent;
       border-width: 2px;
       font-family: $body-family;
-      font-size: $size-4;
+      font-size: $size-6;
 
       &:hover {
         color: $blue;
@@ -149,6 +149,12 @@
 
       text-align: center;
       color: $bal_text_light_blue;
+    }
+
+    @include desktop() {
+      label {
+        font-size: $size-5;
+      }
     }
 
     input:checked ~ label {

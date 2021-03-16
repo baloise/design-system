@@ -16,19 +16,6 @@
 | `text`     | `text`     | Text of the inputs label                           | `string`  | `''`    |
 
 
-## Dependencies
-
-### Depends on
-
-- [bal-text](../bal-text)
-
-### Graph
-```mermaid
-graph TD;
-  bal-field-label --> bal-text
-  style bal-field-label fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

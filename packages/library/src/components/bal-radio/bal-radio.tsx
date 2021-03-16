@@ -154,6 +154,7 @@ export class Radio implements ComponentInterface {
         />
         <label
           class={{
+            'option-label': true,
             'is-disabled': this.disabled,
           }}
           htmlFor={inputId}

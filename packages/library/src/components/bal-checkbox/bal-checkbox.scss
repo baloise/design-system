@@ -38,7 +38,13 @@
     user-select: none;
     color: $blue;
     font-family: $body-family;
-    font-size: $size-4;
+    font-size: $size-6;
+  }
+
+  @include desktop() {
+    label {
+      font-size: $size-5;
+    }
   }
 
   label::before,
