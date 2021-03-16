@@ -39,5 +39,7 @@ nav.pagination {
   button,
   a {
     cursor: pointer;
+    font-family: $body-family;
+    line-height: 1.125;
   }
 }

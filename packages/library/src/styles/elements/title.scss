@@ -1,73 +1,23 @@
-$pixel_50: 3.125rem;
-$pixel_44: 2.75rem;
-$pixel_40: 2.5rem;
-$pixel_38: 2.375rem;
-$pixel_32: 2rem;
-$pixel_30: 1.875rem;
-$pixel_28: 1.75rem;
-$pixel_26: 1.625rem;
-$pixel_25: 1.563rem;
-$pixel_22: 1.375rem;
-$pixel_20: 1.25rem;
-$pixel_18: 1.125rem;
-$pixel_17: 1.063rem;
-$pixel_16: 1;
-$pixel_15: 0.9375rem;
-$pixel_14: 0.875rem;
-$pixel_12: 0.75rem;
-
 $title-weight: $weight-normal;
 $subtitle-weight: $weight-normal;
 
 @import 'node_modules/bulma/sass/elements/title.sass';
 
-// Headline
-h1.title.is-size-1 {
-  font-size: $pixel_25 !important;
-  line-height: $pixel_32 !important;
-}
-
-// Subheadline
-h2.title.is-size-2 {
-  font-size: $pixel_22 !important;
-  line-height: $pixel_28 !important;
-}
-
-// Title
-h3.title.is-size-3,
-h3.subtitle.is-size-3 {
-  font-size: $pixel_17 !important;
-  line-height: $pixel_22 !important;
-}
-
-// Lead
-h4.title.is-size-4,
-h4.subtitle.is-size-4 {
-  font-size: $pixel_14 !important;
-  line-height: $pixel_20 !important;
-}
-
 h1.subtitle,
 h2.subtitle,
 h3.subtitle,
 h4.subtitle {
-  font-weight: 100 !important;
+  font-weight: $weight-normal;
 }
 
-// paragraph
 p,
 a {
   margin: 0;
-  font-family: $family-primary !important;
-  font-size: $pixel_14;
-  line-height: $pixel_20;
 }
 
-// Small Text
 p.is-small,
 a.is-small {
-  font-size: $pixel_12;
-  line-height: $pixel_16;
+  font-size: $size-small;
 }
 
 p.is-bold,
@@ -84,54 +34,4 @@ a.is-link:visited,
 a.is-link {
   color: $cyan;
   text-decoration: none;
-}
-
-@include tablet() {
-  // Headline
-  h1.title.is-size-1 {
-    font-size: $pixel_30 !important;
-    line-height: $pixel_38 !important;
-  }
-}
-
-@include desktop() {
-  // Headline
-  h1.title.is-size-1 {
-    font-size: $pixel_44 !important;
-    line-height: $pixel_50 !important;
-  }
-
-  // Subheadline
-  h2.title.is-size-2 {
-    font-size: $pixel_32 !important;
-    line-height: $pixel_40 !important;
-  }
-
-  // Title
-  h3.title.is-size-3,
-  h3.subtitle.is-size-3 {
-    font-size: $pixel_22 !important;
-    line-height: $pixel_28 !important;
-  }
-
-  // Lead
-  h4.title.is-size-4,
-  h4.subtitle.is-size-4 {
-    font-size: $pixel_18 !important;
-    line-height: $pixel_26 !important;
-  }
-
-  // paragraph
-  p,
-  a {
-    font-size: $pixel_18;
-    line-height: $pixel_26;
-  }
-
-  // Small Text
-  p.is-small,
-  a.is-small {
-    font-size: $pixel_15;
-    line-height: $pixel_20;
-  }
 }

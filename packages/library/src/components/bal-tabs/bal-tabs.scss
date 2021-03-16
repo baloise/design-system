@@ -43,8 +43,8 @@
 
         bal-text {
           color: $blue-light-text;
-          font-size: $size-medium;
-          line-height: $size-medium;
+          font-size: $size-large;
+          line-height: 1.125;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -88,13 +88,13 @@
 
       & > a {
         border-radius: 50px;
-        padding: 8.5px 20px 8.5px 20px;
+        padding: 7.5px 20px 9.5px 20px;
         cursor: pointer;
 
         bal-text {
           color: $black;
-          font-size: $size-normal;
-          line-height: $size-normal;
+          font-size: $size-medium;
+          line-height: 1.125;
           display: flex;
           justify-content: center;
           align-items: center;

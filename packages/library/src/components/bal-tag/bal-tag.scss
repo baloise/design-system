@@ -20,7 +20,7 @@
     @include margin(0);
 
     width: 100%;
-    line-height: 1;
+    line-height: 1.125;
     contain: layout style;
     outline: none;
     z-index: 0;
@@ -28,7 +28,7 @@
     appearance: none;
     font-weight: $weight-bold;
     padding-top: 0px;
-    padding-bottom: 2px;
+    padding-bottom: 1px;
     padding-left: 20px;
     padding-right: 20px;
     height: auto;

@@ -4,7 +4,7 @@
 
   position: relative;
   width: 100%;
-  line-height: 1;
+  line-height: 1.125;
   contain: layout style;
   outline: none;
   cursor: pointer;
@@ -12,8 +12,10 @@
   box-sizing: border-box;
   appearance: none;
   transition: background 0.1s ease, color 0.1s ease;
-  min-height: 50px;
+  min-height: 44px;
   text-decoration: none;
+  padding-top: calc(0.3em - 1px);
+  padding-bottom: calc(0.4em - 1px);
 
   &::-moz-focus-inner {
     border: 0;
@@ -85,9 +87,8 @@
     min-width: 38px;
     padding-left: 20px;
     padding-right: 20px;
-
     font-size: $size-small;
-    line-height: $bal_lineheight_15px;
+    padding-bottom: calc(0.3em - 1px);
 
     &.is-square {
       width: 38px;
