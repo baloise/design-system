@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.2](https://github.com/baloise/ui-library/compare/v4.4.1...v4.4.2) (2021-03-16)
+
+
+### Bug Fixes
+
+* **field:** adjust font-size for checkbox & radio ([df4ebf8](https://github.com/baloise/ui-library/commit/df4ebf837be7e8f7ef80880ef6b2e1b69c703cff))
+* **field:** adjust font-size for label ([b419926](https://github.com/baloise/ui-library/commit/b4199261fb3a99404d407d62413b183c71b87695))
+* **field:** adjust font-size for the help message ([eed2bdf](https://github.com/baloise/ui-library/commit/eed2bdfba3cc4471d23dc375f375799e5bb14d56))
+* **field:** adjust font-size of the input field ([c97c54e](https://github.com/baloise/ui-library/commit/c97c54ef98106706e4eb1e8ec624963164dbc7f2))
+
+
+
+
+
 ## [4.4.1](https://github.com/baloise/ui-library/compare/v4.4.0...v4.4.1) (2021-03-13)
 
 
