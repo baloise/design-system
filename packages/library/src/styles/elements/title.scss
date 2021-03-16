@@ -16,6 +16,9 @@ $pixel_15: 0.9375rem;
 $pixel_14: 0.875rem;
 $pixel_12: 0.75rem;
 
+$title-weight: $weight-normal;
+$subtitle-weight: $weight-normal;
+
 @import 'node_modules/bulma/sass/elements/title.sass';
 
 // Headline

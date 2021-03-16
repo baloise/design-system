@@ -45,7 +45,7 @@
 
 @include desktop() {
   .form .label {
-    font-size: $size-5 !important;
+    font-size: $size-small !important;
   }
 }
 
@@ -57,7 +57,7 @@
 
 @include desktop() {
   .help {
-    font-size: $size-5 !important;
+    font-size: $size-small !important;
   }
 }
 
@@ -108,6 +108,6 @@ label.option-label strong {
   label.option-label a,
   label.option-label span,
   label.option-label strong {
-    font-size: $size-5 !important;
+    font-size: $size-small !important;
   }
 }

@@ -36,7 +36,7 @@
           min-width: 28px;
           line-height: 1;
           justify-content: center;
-          font-size: $size-5;
+          font-size: $size-small;
           position: relative;
 
           bal-text {
@@ -130,7 +130,7 @@
           background-size: 24px 24px;
           text-align: center;
           font-weight: 700;
-          font-size: $size-3;
+          font-size: $size-medium;
           content: '!';
           top: 50%;
           left: 50%;
@@ -206,7 +206,7 @@
               text-align: left;
               flex-basis: 100%;
               display: flex;
-              font-size: $size-4;
+              font-size: $size-normal;
               word-break: break-all;
               word-wrap: break-word;
               overflow-wrap: break-word;
