@@ -29,12 +29,12 @@
         flex-basis: 100%;
 
         font-family: $family-primary;
-        font-weight: $weight-semibold;
-        font-size: $size-normal;
+        font-weight: $weight-bold;
+        font-size: $size-small;
         line-height: $size-normal;
 
         bal-hint {
-          margin-left: 6px;
+          margin-left: 8px;
           position: absolute;
           top: -3px;
         }
@@ -44,7 +44,7 @@
         display: block;
         flex: 1 1;
         flex-basis: 100%;
-        margin-top: 4px;
+        margin-top: 10px;
 
         font-family: $family-primary;
         font-weight: $weight-normal;
@@ -65,32 +65,38 @@
 
   @include tablet() {
     .bal-data {
-      &.is-horizontal {
-        flex-direction: row;
-
-        & > .bal-data-item {
-          flex-wrap: wrap;
-        }
-      }
-
       .bal-data-item {
         flex-wrap: no-wrap;
 
         .bal-data-label {
           flex-basis: 0;
-          margin-top: 2px;
         }
+
         .bal-data-value {
           flex-basis: 0;
+        }
+      }
+
+      &:not(.is-horizontal) {
+        .bal-data-label {
+          font-size: $size-normal;
+        }
+        .bal-data-value {
           margin-top: 2px;
         }
       }
 
-      &.is-horizontal > .bal-data-item {
-        & > .bal-data-label,
-        & > .bal-data-value {
-          flex-basis: 100%;
-          width: 100%;
+      &.is-horizontal {
+        flex-direction: row;
+
+        & > .bal-data-item {
+          flex-wrap: wrap;
+
+          & > .bal-data-label,
+          & > .bal-data-value {
+            flex-basis: 100%;
+            width: 100%;
+          }
         }
       }
     }
