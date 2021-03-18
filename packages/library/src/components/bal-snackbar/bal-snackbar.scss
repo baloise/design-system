@@ -18,7 +18,7 @@
     pointer-events: auto;
     max-width: 320px;
     flex-grow: 1;
-    font-size: $size-5;
+    font-size: $size-small;
     flex-direction: column !important;
     row-gap: 20px;
     position: relative;
@@ -28,7 +28,7 @@
       display: flex;
       align-items: center;
       column-gap: 10px;
-      font-size: $size-4;
+      font-size: $size-normal;
       font-weight: $weight-bold;
 
       .icon-text .icon:not(:last-child) {

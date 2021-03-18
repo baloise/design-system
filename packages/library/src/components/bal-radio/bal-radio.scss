@@ -47,7 +47,7 @@
       user-select: none;
       color: $blue;
       font-family: $body-family;
-      font-size: $size-4;
+      font-size: $size-normal;
     }
 
     input[type='radio'] + label::before,
@@ -153,7 +153,7 @@
 
     @include desktop() {
       label {
-        font-size: $size-5;
+        font-size: $size-small;
       }
     }
 

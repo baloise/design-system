@@ -108,13 +108,13 @@
   }
 
   .bal-card-heading {
-    font-size: $size-5;
+    font-size: $size-small;
     font-weight: $weight-semibold;
     color: $blue;
   }
 
   .bal-card-title {
-    font-size: $size-3;
+    font-size: $size-medium;
     font-weight: $weight-semibold;
     color: $blue;
   }
@@ -124,7 +124,7 @@
   }
 
   .bal-card-subtitle {
-    font-size: $size-5;
+    font-size: $size-small;
     font-weight: $weight-normal;
     line-height: $bal_lineheight_15px;
     color: $blue-light-text;

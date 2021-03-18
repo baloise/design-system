@@ -1,4 +1,6 @@
-<template></template>
+<template>
+  <span></span>
+</template>
 
 <script>
 import * as BalComponentScripts from '../generated/components'
@@ -31,7 +33,9 @@ export default {
       const queue = []
       for (let index = 0; index < elements.length; index++) {
         const element = elements[index]
-        queue.push(element.componentOnReady())
+        if (element && typeof element.componentOnReady === 'function') {
+          queue.push(element.componentOnReady())
+        }
       }
       await Promise.all(queue)
       const fn = BalComponentScripts[this.$props.tag]

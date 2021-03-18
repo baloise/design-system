@@ -33,47 +33,50 @@
       box-shadow: none;
       padding-left: 5px;
       padding-right: 5px;
-      font-size: $size-4;
+      font-size: $size-normal;
       outline: none;
       color: $text;
       min-height: 45px;
-    
-      &:focus, &.is-focused {
+
+      &:focus,
+      &.is-focused {
         border-width: 2px;
         border-color: $blue;
         box-shadow: none;
       }
-    
+
       &:disabled {
         background-color: $blue-light;
         cursor: not-allowed;
       }
-    }    
+    }
   }
   .time-divider {
     align-items: stretch;
     display: inline-flex;
     flex-direction: column;
     height: 100%;
-    &:after, &:before {
+    &:after,
+    &:before {
       content: '';
-      width: .30em;
-      height: .30em;
-      margin-top: .15em;
-      margin-bottom: .15em;
-      margin-left: .35em;
-      margin-right: .35em;
+      width: 0.3em;
+      height: 0.3em;
+      margin-top: 0.15em;
+      margin-bottom: 0.15em;
+      margin-left: 0.35em;
+      margin-right: 0.35em;
       border-radius: 50%;
       background-color: $blue;
     }
   }
   .is-inverted {
-    &:after, &:before{
+    &:after,
+    &:before {
       background-color: $white;
     }
 
     select {
-        background-color: $white;
+      background-color: $white;
     }
   }
 }
