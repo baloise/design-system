@@ -9,3 +9,4 @@ logo-app.svg
 /public
 src/.vuepress/styles/ui-library.css
 src/changelog/index.md
+/examples

@@ -32,7 +32,7 @@
     "docs:setup": "npm --prefix packages/library run docs && npm run testing:build && npm --prefix docs run setup",
     "docs:build": "npm run docs:setup && npm --prefix docs run build",
     "docs:publish": "npm run docs:install && npm run docs:build",
-    "docs:examples:build": "npm run docs:install && npm --prefix docs run examples:build"
+    "docs:examples:build": "npm --prefix packages/library run docs:examples && npm run docs:install && npm --prefix docs run examples:build"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
