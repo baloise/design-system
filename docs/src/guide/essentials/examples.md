@@ -10,10 +10,10 @@ A list of examples to quickly start your project.
 
 A typical layout for our produkt calculators.
 
-[![Form](/assets/images/form.png)](https://baloise-ui-library-form.now.sh)
+[![Form](/assets/images/form.png)](https://ui-library-examples.vercel.app/form.html)
 
 ## Portal
 
 The basic layout of our portal application.
 
-[![Portal](/assets/images/portal.png)](https://baloise-ui-library-portal.now.sh)
+[![Portal](/assets/images/portal.png)](https://ui-library-examples.vercel.app/portal.html)
