@@ -291,6 +291,10 @@ export namespace Components {
          */
         "debounce": number;
         /**
+          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
+         */
+        "defaultDate"?: string | null;
+        /**
           * If `true` the component is diabled.
          */
         "disabled": boolean;
@@ -2617,6 +2621,10 @@ declare namespace LocalJSX {
           * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
+        /**
+          * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
+         */
+        "defaultDate"?: string | null;
         /**
           * If `true` the component is diabled.
          */
