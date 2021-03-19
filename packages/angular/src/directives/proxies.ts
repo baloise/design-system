@@ -151,52 +151,18 @@ export class BalCardHeading {
 }
 
 
-export declare interface BalCardStep extends Components.BalCardStep {}
-@ProxyCmp({
-  inputs: ['active', 'disabled', 'done', 'hidden', 'label', 'value'],
-  methods: ['getOptions', 'setActive']
-})
-@Component({
-  selector: 'bal-card-step',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  inputs: ['active', 'disabled', 'done', 'hidden', 'label', 'value']
-})
-export class BalCardStep {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-import { BalCardStepOption } from '@baloise/ui-library';
 export declare interface BalCardSteps extends Components.BalCardSteps {}
-@ProxyCmp({
-  inputs: ['backLabel', 'hasBack', 'hidden', 'inverted', 'navigation', 'showLabel'],
-  methods: ['select', 'sync']
-})
+
 @Component({
   selector: 'bal-card-steps',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  inputs: ['backLabel', 'hasBack', 'hidden', 'inverted', 'navigation', 'showLabel'],
-  outputs: ['balNavigate', 'balCardStepChange', 'balBackClick', 'balCardStepClick']
+  template: '<ng-content></ng-content>'
 })
 export class BalCardSteps {
-  /** Emitted when the link element has clicked */
-  balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
-  /** Emitted when the changes has finished. */
-  balCardStepChange!: EventEmitter<CustomEvent<BalCardStepOption>>;
-  /** Emitted when the back button is clicked. */
-  balBackClick!: EventEmitter<CustomEvent<void>>;
-  /** Emitted when the step circle is clicked. */
-  balCardStepClick!: EventEmitter<CustomEvent<BalCardStepOption>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['balNavigate', 'balCardStepChange', 'balBackClick', 'balCardStepClick']);
   }
 }
 
@@ -2072,6 +2038,56 @@ export class BalTag {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalTeaserStep extends Components.BalTeaserStep {}
+@ProxyCmp({
+  inputs: ['active', 'disabled', 'done', 'hidden', 'label', 'value'],
+  methods: ['getOptions', 'setActive']
+})
+@Component({
+  selector: 'bal-teaser-step',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['active', 'disabled', 'done', 'hidden', 'label', 'value']
+})
+export class BalTeaserStep {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+import { BalTeaserStepOption } from '@baloise/ui-library';
+export declare interface BalTeaserSteps extends Components.BalTeaserSteps {}
+@ProxyCmp({
+  inputs: ['backLabel', 'hasBack', 'hidden', 'inverted', 'navigation', 'showLabel'],
+  methods: ['select', 'sync']
+})
+@Component({
+  selector: 'bal-teaser-steps',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['backLabel', 'hasBack', 'hidden', 'inverted', 'navigation', 'showLabel'],
+  outputs: ['balNavigate', 'balTeaserStepChange', 'balBackClick', 'balTeaserStepClick']
+})
+export class BalTeaserSteps {
+  /** Emitted when the link element has clicked */
+  balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
+  /** Emitted when the changes has finished. */
+  balTeaserStepChange!: EventEmitter<CustomEvent<BalTeaserStepOption>>;
+  /** Emitted when the back button is clicked. */
+  balBackClick!: EventEmitter<CustomEvent<void>>;
+  /** Emitted when the step circle is clicked. */
+  balTeaserStepClick!: EventEmitter<CustomEvent<BalTeaserStepOption>>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balNavigate', 'balTeaserStepChange', 'balBackClick', 'balTeaserStepClick']);
   }
 }
 

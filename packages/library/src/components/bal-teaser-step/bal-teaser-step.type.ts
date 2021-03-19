@@ -1,4 +1,4 @@
-export interface BalCardStepOption {
+export interface BalTeaserStepOption {
   value: string
   label?: string
   active?: boolean

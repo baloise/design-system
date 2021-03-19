@@ -95,29 +95,9 @@ export const BalCardHeading = /*@__PURE__*/ defineContainer<JSX.BalCardHeading>(
 );
 
 
-export const BalCardStep = /*@__PURE__*/ defineContainer<JSX.BalCardStep>('bal-card-step',
-  ['value',
-'label',
-'hidden',
-'disabled',
-'done',
-'active'],
-  [],
-  
-);
-
-
 export const BalCardSteps = /*@__PURE__*/ defineContainer<JSX.BalCardSteps>('bal-card-steps',
-  ['inverted',
-'hidden',
-'hasBack',
-'navigation',
-'backLabel',
-'showLabel'],
-  ['balNavigate',
-'balCardStepChange',
-'balBackClick',
-'balCardStepClick'],
+  [],
+  [],
   
 );
 
@@ -949,6 +929,33 @@ export const BalTabs = /*@__PURE__*/ defineContainer<JSX.BalTabs>('bal-tabs',
 export const BalTag = /*@__PURE__*/ defineContainer<JSX.BalTag>('bal-tag',
   ['color'],
   [],
+  
+);
+
+
+export const BalTeaserStep = /*@__PURE__*/ defineContainer<JSX.BalTeaserStep>('bal-teaser-step',
+  ['value',
+'label',
+'hidden',
+'disabled',
+'done',
+'active'],
+  [],
+  
+);
+
+
+export const BalTeaserSteps = /*@__PURE__*/ defineContainer<JSX.BalTeaserSteps>('bal-teaser-steps',
+  ['inverted',
+'hidden',
+'hasBack',
+'navigation',
+'backLabel',
+'showLabel'],
+  ['balNavigate',
+'balTeaserStepChange',
+'balBackClick',
+'balTeaserStepClick'],
   
 );
 

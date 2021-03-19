@@ -18,25 +18,21 @@ A text provides some additional helpers.
 ### Used by
 
  - [bal-button](../bal-button)
- - [bal-card-steps](../bal-card-steps)
  - [bal-list-item-subtitle](../bal-list-item-subtitle)
  - [bal-list-item-title](../bal-list-item-title)
- - [bal-notification](../bal-notification)
  - [bal-snackbar](../bal-snackbar)
- - [bal-tabs](../bal-tabs)
  - [bal-tag](../bal-tag)
+ - [bal-teaser-steps](../bal-teaser-steps)
 
 ### Graph
 ```mermaid
 graph TD;
   bal-button --> bal-text
-  bal-card-steps --> bal-text
   bal-list-item-subtitle --> bal-text
   bal-list-item-title --> bal-text
-  bal-notification --> bal-text
   bal-snackbar --> bal-text
-  bal-tabs --> bal-text
   bal-tag --> bal-text
+  bal-teaser-steps --> bal-text
   style bal-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

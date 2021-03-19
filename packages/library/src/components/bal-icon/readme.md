@@ -76,7 +76,6 @@ Then the build script will automatically optimize the svg and create its own web
 
  - [bal-accordion](../bal-accordion)
  - [bal-button](../bal-button)
- - [bal-card-steps](../bal-card-steps)
  - [bal-datepicker](../bal-datepicker)
  - [bal-field-control](../bal-field-control)
  - [bal-file-upload](../bal-file-upload)
@@ -84,6 +83,7 @@ Then the build script will automatically optimize the svg and create its own web
  - [bal-pagination](../bal-pagination)
  - [bal-select](../bal-select)
  - [bal-snackbar](../bal-snackbar)
+ - [bal-teaser-steps](../bal-teaser-steps)
  - [bal-toast](../bal-toast)
 
 ### Graph
@@ -91,7 +91,6 @@ Then the build script will automatically optimize the svg and create its own web
 graph TD;
   bal-accordion --> bal-icon
   bal-button --> bal-icon
-  bal-card-steps --> bal-icon
   bal-datepicker --> bal-icon
   bal-field-control --> bal-icon
   bal-file-upload --> bal-icon
@@ -99,6 +98,7 @@ graph TD;
   bal-pagination --> bal-icon
   bal-select --> bal-icon
   bal-snackbar --> bal-icon
+  bal-teaser-steps --> bal-icon
   bal-toast --> bal-icon
   style bal-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

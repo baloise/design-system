@@ -35,28 +35,23 @@
       }
 
       & > a {
-        padding: 22px 20px 20px 20px;
+        padding: 32px 20px 30px 20px;
         line-height: 1.2;
         cursor: pointer;
         border-bottom: 2px solid transparent;
         text-decoration: none;
 
-        bal-text {
-          color: $blue-light-text;
-          font-size: $size-medium;
-          line-height: $size-medium;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+        color: $blue-light-text;
+        font-size: $size-medium;
+        line-height: 1.125;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       &.is-active > a {
         border-bottom: 2px solid $blue;
-
-        bal-text {
-          color: $blue;
-        }
+        color: $blue;
       }
 
       & > a:hover {
@@ -91,14 +86,12 @@
         padding: 8.5px 20px 8.5px 20px;
         cursor: pointer;
 
-        bal-text {
-          color: $black;
-          font-size: $size-normal;
-          line-height: $size-normal;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+        color: $black;
+        font-size: $size-normal;
+        line-height: $size-normal;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       &.is-active > a,
@@ -106,10 +99,7 @@
         background: $blue;
         color: $white;
         border-bottom: 0;
-
-        bal-text {
-          color: $white;
-        }
+        color: $white;
       }
     }
   }

@@ -15,6 +15,15 @@
     display: block;
   }
 
+  .bal-card-steps {
+    position: static;
+    display: block;
+    .tabs > ul > li,
+    .tabs > ul > li > a {
+      border-top-width: 0 !important;
+    }
+  }
+
   .bal-button:last-child,
   .bal-button:last-child > button.button,
   bal-accordion:last-child {
@@ -69,11 +78,11 @@
     padding-right: 20px;
   }
 
-  & > :first-child {
+  & > :first-child:not(.bal-card-steps) {
     padding-top: 20px;
   }
 
-  & > :last-child {
+  & > :last-child:not(.bal-card-steps) {
     padding-bottom: 20px;
   }
 
@@ -206,11 +215,11 @@
       padding-right: 40px;
     }
 
-    & > :first-child {
+    & > :first-child:not(.bal-card-steps) {
       padding-top: 32px;
     }
 
-    & > :last-child {
+    & > :last-child:not(.bal-card-steps) {
       padding-bottom: 32px;
     }
 
@@ -246,11 +255,11 @@
         padding-right: 120px;
       }
 
-      & > :first-child {
+      & > :first-child:not(.bal-card-steps) {
         padding-top: 64px;
       }
 
-      & > :last-child {
+      & > :last-child:not(.bal-card-steps) {
         padding-bottom: 64px;
       }
     }

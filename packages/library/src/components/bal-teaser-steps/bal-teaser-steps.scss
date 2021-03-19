@@ -1,4 +1,4 @@
-@import './bal-card-steps.vars';
+@import './bal-teaser-steps.vars';
 @import 'node_modules/bulma/sass/components/tabs.sass';
 
 :host {
@@ -20,7 +20,7 @@
     }
   }
 
-  .card-steps-wrapper {
+  .teaser-steps-wrapper {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -311,7 +311,7 @@
       right: 60px;
     }
 
-    .card-steps-wrapper {
+    .teaser-steps-wrapper {
       .left-side {
         width: 60px;
 
@@ -335,7 +335,7 @@
       right: 120px;
     }
 
-    .card-steps-wrapper {
+    .teaser-steps-wrapper {
       .left-side {
         width: 120px;
 
