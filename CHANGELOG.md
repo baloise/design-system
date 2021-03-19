@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/baloise/ui-library/compare/v4.4.4...v4.5.0) (2021-03-19)
+
+
+### Features
+
+* **datepicker:** add default date ([eacc8c9](https://github.com/baloise/ui-library/commit/eacc8c9827bbdf947b6e68b6d63056e18d05e1c6))
+
+
+
+
+
 ## [4.4.4](https://github.com/baloise/ui-library/compare/v4.4.3...v4.4.4) (2021-03-18)
 
 **Note:** Version bump only for package root

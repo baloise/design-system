@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/baloise/ui-library/compare/v4.4.4...v4.5.0) (2021-03-19)
+
+**Note:** Version bump only for package @baloise/ui-library-angular
+
+
+
+
+
 ## [4.4.4](https://github.com/baloise/ui-library/compare/v4.4.3...v4.4.4) (2021-03-18)
 
 **Note:** Version bump only for package @baloise/ui-library-angular
