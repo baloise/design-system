@@ -69,6 +69,7 @@ module.exports = {
             'essentials/html5',
             'essentials/vue',
             'essentials/angular',
+            'essentials/examples',
           ],
         },
         {
@@ -85,8 +86,9 @@ module.exports = {
             'styles/track-line',
           ],
         },
+
         {
-          title: 'Tooling',
+          title: 'Example',
           collapsable: false,
           children: ['tooling/filters', 'tooling/utils', 'tooling/validators', 'tooling/testing'],
         },
