@@ -1,8 +1,8 @@
-<!-- docs:child of bal-card-steps -->
+<!-- docs:child of bal-teaser-steps -->
 
-# bal-card-step
+# bal-teaser-step
 
-`bal-card-step` is a child component of bal-card-steps. This component represents a step.
+`bal-teaser-step` is a child component of bal-teaser-steps. This component represents a step.
 
 <!-- Auto Generated Below -->
 
@@ -21,13 +21,13 @@
 
 ## Methods
 
-### `getOptions() => Promise<BalCardStepOption>`
+### `getOptions() => Promise<BalTeaserStepOption>`
 
 Options of the step like label, value etc.
 
 #### Returns
 
-Type: `Promise<BalCardStepOption>`
+Type: `Promise<BalTeaserStepOption>`
 
 
 

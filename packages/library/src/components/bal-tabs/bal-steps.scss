@@ -34,18 +34,14 @@
           color: $text-strong;
           height: 28px;
           min-width: 28px;
-          line-height: 1;
+          line-height: 1.125;
           justify-content: center;
           font-size: $size-small;
           position: relative;
 
-          bal-text {
-            margin-top: -1px;
-            font-weight: $weight-bold;
-            color: $text-strong;
-            line-height: 1;
-            text-align: center;
-          }
+          font-weight: $weight-bold;
+          color: $text-strong;
+          text-align: center;
         }
 
         span.step-label {
@@ -56,10 +52,6 @@
       &.is-done {
         color: $blue;
         padding-bottom: 0;
-
-        span.step-index bal-text {
-          display: none;
-        }
 
         span.step-index {
           position: relative;
@@ -75,7 +67,7 @@
           background-repeat: no-repeat;
           background-size: 24px 24px;
           content: '';
-          top: 4px;
+          top: 5px;
           left: 50%;
           margin-left: -3px;
           width: 5px;
@@ -110,33 +102,12 @@
       &.is-failed {
         padding-bottom: 0;
 
-        span.step-index bal-text {
-          display: none;
-        }
-
         span.step-index {
           position: relative;
           background: $danger;
+          color: $white !important;
+          font-size: $size-normal !important;
           border-color: $danger !important;
-        }
-
-        span.step-index::after {
-          color: $white;
-          display: inline-block;
-          position: absolute;
-          background-color: transparent;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: 24px 24px;
-          text-align: center;
-          font-weight: 700;
-          font-size: $size-medium;
-          content: '!';
-          top: 50%;
-          left: 50%;
-          margin-top: -13px;
-          margin-left: -3.5px;
-          overflow: hidden;
         }
       }
 

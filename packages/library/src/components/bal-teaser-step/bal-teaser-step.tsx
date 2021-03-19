@@ -1,13 +1,13 @@
 import { Component, h, Host, Method, Prop, State, Watch, Element } from '@stencil/core'
-import { BalCardStepOption } from './bal-card-step.type'
+import { BalTeaserStepOption } from './bal-teaser-step.type'
 
 @Component({
-  tag: 'bal-card-step',
-  styleUrl: 'bal-card-step.scss',
+  tag: 'bal-teaser-step',
+  styleUrl: 'bal-teaser-step.scss',
   shadow: false,
   scoped: true,
 })
-export class CardStep {
+export class TeaserStep {
   @Element() element!: HTMLElement
 
   @State() isContentHidden = true
@@ -63,7 +63,7 @@ export class CardStep {
    * Options of the step like label, value etc.
    */
   @Method()
-  async getOptions(): Promise<BalCardStepOption> {
+  async getOptions(): Promise<BalTeaserStepOption> {
     return this.options
   }
 
@@ -75,7 +75,7 @@ export class CardStep {
     this.active = active
   }
 
-  get options(): BalCardStepOption {
+  get options(): BalTeaserStepOption {
     return {
       value: this.value,
       label: this.label,
@@ -86,8 +86,8 @@ export class CardStep {
     }
   }
 
-  get parent(): HTMLBalCardStepsElement | null {
-    return this.element.closest('bal-card-steps')
+  get parent(): HTMLBalTeaserStepsElement | null {
+    return this.element.closest('bal-teaser-steps')
   }
 
   componentWillLoad() {
@@ -99,8 +99,9 @@ export class CardStep {
       <Host
         class={{
           'is-hidden': this.isContentHidden,
-          'card-step-content': true,
-        }}>
+          'teaser-step-content': true,
+        }}
+      >
         <slot />
       </Host>
     )

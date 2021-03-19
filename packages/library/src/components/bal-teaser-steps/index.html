@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/build/ui-library.css" />
+    <script type="module" src="/build/ui-library.esm.js"></script>
+    <script nomodule src="/build/ui-library.js"></script>
+  </head>
+  <body class="bal-app">
+    <div class="container">
+      <h2 class="title is-size-2">Basic</h2>
+      <section>
+        <bal-card inverted color="info" teaser>
+          <bal-teaser-steps navigation inverted has-back back-label="Übersicht">
+            <bal-teaser-step value="step-a" label="Step A" done class="has-text-white">Step A Content</bal-teaser-step>
+            <bal-teaser-step value="step-b" label="Step B" active class="has-text-white">Step B Content</bal-teaser-step>
+            <bal-teaser-step value="step-c" label="Step C" class="has-text-white">Step C Content</bal-teaser-step>
+            <bal-teaser-step value="step-d" label="Step D" disabled class="has-text-white">Step D Content</bal-teaser-step>
+            <bal-teaser-step value="step-e" label="Step E" disabled class="has-text-white">Step E Content</bal-teaser-step>
+            <bal-teaser-step value="step-f" label="Step F" hidden class="has-text-white">Step F Content</bal-teaser-step>
+          </bal-teaser-steps>
+        </bal-card>
+      </section>
+      <h2 class="title is-size-2">In light theme</h2>
+      <p>The navigation is disabled, so the framework has to do that.</p>
+      <section>
+        <bal-card teaser>
+          <bal-teaser-steps id="steps-2">
+            <bal-teaser-step value="step-a" label="Step A" done>Step A Content</bal-teaser-step>
+            <bal-teaser-step id="step-2" value="step-b" label="One Moment, your premium is being clacluated..." active>Step B Content</bal-teaser-step>
+            <bal-teaser-step value="step-c" label="Step C">Step C Content</bal-teaser-step>
+            <bal-teaser-step value="step-d" label="Step D" disabled>Step D Content</bal-teaser-step>
+            <bal-teaser-step value="step-e" label="Step E" disabled>Step E Content</bal-teaser-step>
+          </bal-teaser-steps>
+
+          <bal-button id="update-label-button">Show Label</bal-button>
+        </bal-card>
+      </section>
+      <script>
+        var button = document.getElementById('update-label-button')
+        var step = document.getElementById('step-2')
+        var steps = document.getElementById('steps-2')
+        var counter = 0
+        button.addEventListener('click', function () {
+          counter = ++counter
+          step.setAttribute('label', 'New label with counter: ' + counter)
+          steps.setAttribute('show-label', 'true')
+        })
+      </script>
+    </div>
+  </body>
+</html>

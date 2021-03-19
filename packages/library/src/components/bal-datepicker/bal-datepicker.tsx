@@ -21,6 +21,7 @@ import {
 import { isEnterKey } from '../../utils/balKeyUtil'
 import { ACTION_KEYS, NUMBER_KEYS } from '../../constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
+import { isNil } from 'lodash'
 
 @Component({
   tag: 'bal-datepicker',
@@ -137,6 +138,11 @@ export class Datepicker implements ComponentInterface {
   protected debounceChanged() {
     this.balChange = debounceEvent(this.balChange, this.debounce)
   }
+
+  /**
+   * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
+   */
+  @Prop() defaultDate?: string | null
 
   /**
    * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
@@ -257,7 +263,11 @@ export class Datepicker implements ComponentInterface {
   private updatePointerDates() {
     let date = toDate(this.selectedDate)
     if (date === undefined) {
-      date = now()
+      if (isNil(this.defaultDate)) {
+        date = now()
+      } else {
+        date = toDate(this.defaultDate)
+      }
     }
     this.pointerDate = {
       year: year(date),

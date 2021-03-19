@@ -86,12 +86,10 @@
 
     bal-field-hint {
       position: relative;
-      min-width: 24px;
-      min-height: 24px;
 
       bal-hint {
         position: absolute;
-        top: 2px;
+        top: -20px;
         left: 0;
       }
     }

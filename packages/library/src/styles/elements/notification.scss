@@ -1,44 +1,50 @@
 .notification {
-    font-family: $family-primary;
-    background: $white-bis;
-    border: 1px solid $blue-light-line;
-    color: $text;
-    border-radius: $radius-large;
-    padding: 20px 20px 20px 20px;
+  font-family: $family-primary;
+  background: $white-bis;
+  border: 1px solid $blue-light-line;
+  color: $text;
+  border-radius: $radius-large;
+  padding: 20px;
 
-    &.is-primary {
-      background: $blue-light;
-      border: 1px solid $blue-light-line;
-      color: $blue;
-    }
-
-    &.is-info {
-      background: $blue;
-      border: 1px solid $blue;
-      color: $white;
-    }
-
-    &.is-link {
-      background: $blue;
-      color: $white;
-      border: none;
-    }
-
-    &.is-warning {
-      background: $yellow;
-      color: $white;
-      border: none;
-    }
-
-    &.is-danger {
-      background: $red;
-      color: $white;
-      border: none;
-    }
-
-    &.is-success {
-      background: $green;
-      color: $white;
-      border: none;
-    }
+  &.is-primary {
+    background: $blue-light;
+    border: none;
+    color: $blue;
   }
+
+  &.is-info {
+    background: $blue;
+    border: 1px solid $blue;
+    color: $white;
+  }
+
+  &.is-link {
+    background: $blue;
+    color: $white;
+    border: none;
+  }
+
+  &.is-warning {
+    background: $yellow;
+    color: $white;
+    border: none;
+  }
+
+  &.is-danger {
+    background: $red;
+    color: $white;
+    border: none;
+  }
+
+  &.is-success {
+    background: $green;
+    color: $white;
+    border: none;
+  }
+}
+
+@include desktop() {
+  .notification {
+    padding: 40px;
+  }
+}

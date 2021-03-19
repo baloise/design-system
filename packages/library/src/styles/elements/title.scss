@@ -21,6 +21,17 @@ $subtitle-weight: $weight-normal;
 
 @import 'node_modules/bulma/sass/elements/title.sass';
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  small {
+    font-size: $pixel_15 !important;
+    font-weight: $weight-normal !important;
+  }
+}
+
 // Headline
 h1.title.is-size-1 {
   font-size: $pixel_25 !important;

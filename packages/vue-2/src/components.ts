@@ -17,7 +17,6 @@ const customElementTags: string[] = [
  'bal-card-button',
  'bal-card-content',
  'bal-card-heading',
- 'bal-card-step',
  'bal-card-steps',
  'bal-card-subtitle',
  'bal-card-title',
@@ -114,6 +113,8 @@ const customElementTags: string[] = [
  'bal-tab-item',
  'bal-tabs',
  'bal-tag',
+ 'bal-teaser-step',
+ 'bal-teaser-steps',
  'bal-text',
  'bal-textarea',
  'bal-timeinput',
@@ -237,43 +238,11 @@ export const BalCardHeading = /*@__PURE__*/ Vue.extend({
 });
 
 
-export const BalCardStep = /*@__PURE__*/ Vue.extend({
-
-  props: {
-    value: {} as PropOptions<Components.BalCardStep['value']>,
-    label: {} as PropOptions<Components.BalCardStep['label']>,
-    hidden: {} as PropOptions<Components.BalCardStep['hidden']>,
-    disabled: {} as PropOptions<Components.BalCardStep['disabled']>,
-    done: {} as PropOptions<Components.BalCardStep['done']>,
-    active: {} as PropOptions<Components.BalCardStep['active']>,
-  },
-
-
-  methods: {
-    getOptions: createCommonMethod('getOptions') as Components.BalCardStep['getOptions'],
-    setActive: createCommonMethod('setActive') as Components.BalCardStep['setActive'],
-  },
-  render: createCommonRender('bal-card-step', []),
-});
-
-
 export const BalCardSteps = /*@__PURE__*/ Vue.extend({
 
-  props: {
-    inverted: {} as PropOptions<Components.BalCardSteps['inverted']>,
-    hidden: {} as PropOptions<Components.BalCardSteps['hidden']>,
-    hasBack: {} as PropOptions<Components.BalCardSteps['hasBack']>,
-    navigation: {} as PropOptions<Components.BalCardSteps['navigation']>,
-    backLabel: {} as PropOptions<Components.BalCardSteps['backLabel']>,
-    showLabel: {} as PropOptions<Components.BalCardSteps['showLabel']>,
-  },
 
 
-  methods: {
-    select: createCommonMethod('select') as Components.BalCardSteps['select'],
-    sync: createCommonMethod('sync') as Components.BalCardSteps['sync'],
-  },
-  render: createCommonRender('bal-card-steps', ['balNavigate', 'balCardStepChange', 'balBackClick', 'balCardStepClick']),
+  render: createCommonRender('bal-card-steps', []),
 });
 
 
@@ -1492,6 +1461,46 @@ export const BalTag = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('bal-tag', []),
+});
+
+
+export const BalTeaserStep = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    value: {} as PropOptions<Components.BalTeaserStep['value']>,
+    label: {} as PropOptions<Components.BalTeaserStep['label']>,
+    hidden: {} as PropOptions<Components.BalTeaserStep['hidden']>,
+    disabled: {} as PropOptions<Components.BalTeaserStep['disabled']>,
+    done: {} as PropOptions<Components.BalTeaserStep['done']>,
+    active: {} as PropOptions<Components.BalTeaserStep['active']>,
+  },
+
+
+  methods: {
+    getOptions: createCommonMethod('getOptions') as Components.BalTeaserStep['getOptions'],
+    setActive: createCommonMethod('setActive') as Components.BalTeaserStep['setActive'],
+  },
+  render: createCommonRender('bal-teaser-step', []),
+});
+
+
+export const BalTeaserSteps = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    inverted: {} as PropOptions<Components.BalTeaserSteps['inverted']>,
+    hidden: {} as PropOptions<Components.BalTeaserSteps['hidden']>,
+    hasBack: {} as PropOptions<Components.BalTeaserSteps['hasBack']>,
+    navigation: {} as PropOptions<Components.BalTeaserSteps['navigation']>,
+    backLabel: {} as PropOptions<Components.BalTeaserSteps['backLabel']>,
+    showLabel: {} as PropOptions<Components.BalTeaserSteps['showLabel']>,
+  },
+
+
+  methods: {
+    select: createCommonMethod('select') as Components.BalTeaserSteps['select'],
+    sync: createCommonMethod('sync') as Components.BalTeaserSteps['sync'],
+  },
+  render: createCommonRender('bal-teaser-steps', ['balNavigate', 'balTeaserStepChange', 'balBackClick', 'balTeaserStepClick']),
 });
 
 

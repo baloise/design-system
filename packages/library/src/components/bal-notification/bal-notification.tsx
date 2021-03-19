@@ -17,9 +17,7 @@ export class Notification {
     return (
       <Host>
         <div class={`notification is-${this.color}`}>
-          <bal-text>
-            <slot />
-          </bal-text>
+          <slot></slot>
         </div>
       </Host>
     )

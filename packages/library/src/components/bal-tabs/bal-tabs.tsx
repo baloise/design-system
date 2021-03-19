@@ -96,6 +96,16 @@ export class Tabs {
     }
   }
 
+  stepIndex(tab: BalTabOption, index: number): string {
+    if (tab.failed) {
+      return '!'
+    }
+    if (tab.done) {
+      return ''
+    }
+    return `${index + 1}`
+  }
+
   renderSteps() {
     return (
       <Host class="bal-steps">
@@ -111,12 +121,8 @@ export class Tabs {
                 }}
               >
                 <a onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}>
-                  <span class="step-index">
-                    <bal-text>{index + 1}</bal-text>
-                  </span>
-                  <span class="step-label">
-                    <bal-text>{tab.label}</bal-text>
-                  </span>
+                  <span class="step-index">{this.stepIndex(tab, index)}</span>
+                  <span class="step-label">{tab.label}</span>
                 </a>
                 <span class="bubble" style={{ display: tab.hasBubble ? 'inline' : 'none' }}></span>
               </li>
@@ -142,7 +148,7 @@ export class Tabs {
                   style={{ display: tab.href === '' ? 'none' : '' }}
                   class={{ hidden: tab.href === '' }}
                 >
-                  <bal-text>{tab.label}</bal-text>
+                  {tab.label}
                 </a>
                 <a
                   aria-current="page"
@@ -150,7 +156,7 @@ export class Tabs {
                   style={{ display: tab.href === '' ? '' : 'none' }}
                   class={{ hidden: tab.href !== '' }}
                 >
-                  <bal-text>{tab.label}</bal-text>
+                  {tab.label}
                 </a>
                 <span class="bubble" style={{ display: tab.hasBubble ? 'inline' : 'none' }}></span>
               </li>
