@@ -180,6 +180,7 @@ export const BalDatepicker = /*@__PURE__*/ defineContainer<JSX.BalDatepicker>('b
 'minYearProp',
 'maxYearProp',
 'debounce',
+'defaultDate',
 'value',
 'allowedDates'],
   ['balChange',
