@@ -3,10 +3,12 @@ import { defineCustomElements } from '@baloise/ui-library/dist/custom-elements'
 import { applyFilters } from './filters'
 
 export const baloiseUiLibrary: Plugin = {
-  async install(app) {
+  async install(app, options) {
     defineCustomElements()
 
-    app.config.isCustomElement = tag => tag.startsWith('bal-')
+    if (options.setIsCustomElementFunction === true) {
+      app.config.isCustomElement = tag => tag.startsWith('bal-')
+    }
 
     applyFilters(app)
   },
