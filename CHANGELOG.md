@@ -5,112 +5,53 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [4.5.2](https://github.com/baloise/ui-library/compare/v4.5.1...v4.5.2) (2021-03-22)
 
-
 ### Bug Fixes
 
-* **vue:** only set isCustomElement function if defined in the options ([81526f4](https://github.com/baloise/ui-library/commit/81526f44a459be8b4f8f7eb3d38649dd232a4a55))
-
-
-
-
-
-## [4.5.1](https://github.com/baloise/ui-library/compare/v4.5.0...v4.5.1) (2021-03-19)
-
-**Note:** Version bump only for package root
-
-
-
-
+- **vue:** only set isCustomElement function if defined in the options ([81526f4](https://github.com/baloise/ui-library/commit/81526f44a459be8b4f8f7eb3d38649dd232a4a55))
 
 # [4.5.0](https://github.com/baloise/ui-library/compare/v4.4.4...v4.5.0) (2021-03-19)
 
-
 ### Features
 
-* **datepicker:** add default date ([eacc8c9](https://github.com/baloise/ui-library/commit/eacc8c9827bbdf947b6e68b6d63056e18d05e1c6))
-
-
-
-
-
-## [4.4.4](https://github.com/baloise/ui-library/compare/v4.4.3...v4.4.4) (2021-03-18)
-
-**Note:** Version bump only for package root
-
-
-
-
-
-## [4.4.3](https://github.com/baloise/ui-library/compare/v4.4.2...v4.4.3) (2021-03-16)
-
-
-
-## 4.4.1 (2021-03-13)
-
-**Note:** Version bump only for package root
-
-
-
-
+- **datepicker:** add default date ([eacc8c9](https://github.com/baloise/ui-library/commit/eacc8c9827bbdf947b6e68b6d63056e18d05e1c6))
 
 ## [4.4.2](https://github.com/baloise/ui-library/compare/v4.4.1...v4.4.2) (2021-03-16)
 
-
 ### Bug Fixes
 
-* **field:** adjust font-size for checkbox & radio ([df4ebf8](https://github.com/baloise/ui-library/commit/df4ebf837be7e8f7ef80880ef6b2e1b69c703cff))
-* **field:** adjust font-size for label ([b419926](https://github.com/baloise/ui-library/commit/b4199261fb3a99404d407d62413b183c71b87695))
-* **field:** adjust font-size for the help message ([eed2bdf](https://github.com/baloise/ui-library/commit/eed2bdfba3cc4471d23dc375f375799e5bb14d56))
-* **field:** adjust font-size of the input field ([c97c54e](https://github.com/baloise/ui-library/commit/c97c54ef98106706e4eb1e8ec624963164dbc7f2))
-
-
-
-
+- **field:** adjust font-size for checkbox & radio ([df4ebf8](https://github.com/baloise/ui-library/commit/df4ebf837be7e8f7ef80880ef6b2e1b69c703cff))
+- **field:** adjust font-size for label ([b419926](https://github.com/baloise/ui-library/commit/b4199261fb3a99404d407d62413b183c71b87695))
+- **field:** adjust font-size for the help message ([eed2bdf](https://github.com/baloise/ui-library/commit/eed2bdfba3cc4471d23dc375f375799e5bb14d56))
+- **field:** adjust font-size of the input field ([c97c54e](https://github.com/baloise/ui-library/commit/c97c54ef98106706e4eb1e8ec624963164dbc7f2))
 
 ## [4.4.1](https://github.com/baloise/ui-library/compare/v4.4.0...v4.4.1) (2021-03-13)
 
-
 ### Bug Fixes
 
-* **vue:** use custom elements for vue 3 ([d43a7a8](https://github.com/baloise/ui-library/commit/d43a7a86857e976b58f3a4c3334cc34ce3169298))
-
-
-
-
+- **vue:** use custom elements for vue 3 ([d43a7a8](https://github.com/baloise/ui-library/commit/d43a7a86857e976b58f3a4c3334cc34ce3169298))
 
 # [4.4.0](https://github.com/baloise/ui-library/compare/v4.3.0...v4.4.0) (2021-03-13)
 
-
 ### Features
 
-* **card:** add various padding styles ([5f1b732](https://github.com/baloise/ui-library/commit/5f1b73247d5718e2510c3201ce4c3218946c5f81))
-* **checkbox:** add html label possibility ([20f8b52](https://github.com/baloise/ui-library/commit/20f8b5210b892d2c544c5ab906e31bef73e4717c))
-* **footer:** add footer styles ([07578cf](https://github.com/baloise/ui-library/commit/07578cf7e1b5f947631a16dbc14b989bdc54ca24))
-* **footer:** add sticky footer ([de83def](https://github.com/baloise/ui-library/commit/de83def3a7f355ba7d914ab6f86e8994da795298))
-* **icon:** add baloise logo ([1a86f61](https://github.com/baloise/ui-library/commit/1a86f617a06c9a57b3d1540c2f77bd13b98c93ac))
-* **radio:** add html label possibility ([ca16d42](https://github.com/baloise/ui-library/commit/ca16d427baf063cca6c1ff8cf5547022f7663588))
-* **track-line:** add responsiveness and sizes ([a572fd4](https://github.com/baloise/ui-library/commit/a572fd43a266d21037f79cd39578c615d0bb6901))
-
-
-
-
+- **card:** add various padding styles ([5f1b732](https://github.com/baloise/ui-library/commit/5f1b73247d5718e2510c3201ce4c3218946c5f81))
+- **checkbox:** add html label possibility ([20f8b52](https://github.com/baloise/ui-library/commit/20f8b5210b892d2c544c5ab906e31bef73e4717c))
+- **footer:** add footer styles ([07578cf](https://github.com/baloise/ui-library/commit/07578cf7e1b5f947631a16dbc14b989bdc54ca24))
+- **footer:** add sticky footer ([de83def](https://github.com/baloise/ui-library/commit/de83def3a7f355ba7d914ab6f86e8994da795298))
+- **icon:** add baloise logo ([1a86f61](https://github.com/baloise/ui-library/commit/1a86f617a06c9a57b3d1540c2f77bd13b98c93ac))
+- **radio:** add html label possibility ([ca16d42](https://github.com/baloise/ui-library/commit/ca16d427baf063cca6c1ff8cf5547022f7663588))
+- **track-line:** add responsiveness and sizes ([a572fd4](https://github.com/baloise/ui-library/commit/a572fd43a266d21037f79cd39578c615d0bb6901))
 
 # [4.3.0](https://github.com/baloise/ui-library/compare/v4.2.8...v4.3.0) (2021-03-11)
 
-
 ### Bug Fixes
 
-* **dropdown:** close other dropdown when toggeling ([e1ec7b6](https://github.com/baloise/ui-library/commit/e1ec7b699dc95478d954d3f2dbc6be355095d5fc))
-* **navbar:** adjust brand alignment ([fa27fcf](https://github.com/baloise/ui-library/commit/fa27fcfa2b1463d23d59745dcafb3b83ac968958))
-
+- **dropdown:** close other dropdown when toggeling ([e1ec7b6](https://github.com/baloise/ui-library/commit/e1ec7b699dc95478d954d3f2dbc6be355095d5fc))
+- **navbar:** adjust brand alignment ([fa27fcf](https://github.com/baloise/ui-library/commit/fa27fcfa2b1463d23d59745dcafb3b83ac968958))
 
 ### Features
 
-* **utils:** add lodash as util lib ([99c91f6](https://github.com/baloise/ui-library/commit/99c91f6a9f42d1354a413c10dee5c828a914eb48))
-
-
-
-
+- **utils:** add lodash as util lib ([99c91f6](https://github.com/baloise/ui-library/commit/99c91f6a9f42d1354a413c10dee5c828a914eb48))
 
 ## [4.2.8](https://github.com/baloise/ui-library/compare/v4.2.7...v4.2.8) (2021-03-10)
 

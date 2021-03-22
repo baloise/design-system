@@ -6,7 +6,7 @@ export const baloiseUiLibrary: Plugin = {
   async install(app, options) {
     defineCustomElements()
 
-    if (options.setIsCustomElementFunction === true) {
+    if (options && options.setIsCustomElementFunction === true) {
       app.config.isCustomElement = tag => tag.startsWith('bal-')
     }
 
