@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.2](https://github.com/baloise/ui-library/compare/v4.5.1...v4.5.2) (2021-03-22)
+
+
+### Bug Fixes
+
+* **vue:** only set isCustomElement function if defined in the options ([81526f4](https://github.com/baloise/ui-library/commit/81526f44a459be8b4f8f7eb3d38649dd232a4a55))
+
+
+
+
+
 ## [4.5.1](https://github.com/baloise/ui-library/compare/v4.5.0...v4.5.1) (2021-03-19)
 
 **Note:** Version bump only for package @baloise/ui-library-vue
