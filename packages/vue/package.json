@@ -16,9 +16,10 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run build:clean && npm run build:filters && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
+    "build": "npm run build:clean && npm run build:components && npm run build:filters && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
     "build:clean": "rimraf dist && rimraf dist-transpiled",
     "build:filters": "node .scripts/filters.script.js",
+    "build:components": "node .scripts/components.script.js",
     "build:compile": "tsc -p .",
     "build:bundle": "rollup --config rollup.config.js",
     "build:web-types": "node ./.scripts/build-web-types.js",
@@ -33,6 +34,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "change-case": "^4.1.2",
+    "lodash": "^4.17.21",
     "rimraf": "^3.0.2",
     "rollup": "^2.39.0",
     "typescript": "^4.0.2",
