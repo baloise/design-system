@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.6.0](https://github.com/baloise/ui-library/compare/v4.5.3...v4.6.0) (2021-03-24)
+
+**Note:** Version bump only for package @baloise/ui-library-testing
+
+
+
+
+
 ## [4.5.3](https://github.com/baloise/ui-library/compare/v4.5.2...v4.5.3) (2021-03-22)
 
 **Note:** Version bump only for package @baloise/ui-library-testing

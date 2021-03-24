@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.6.0](https://github.com/baloise/ui-library/compare/v4.5.3...v4.6.0) (2021-03-24)
+
+
+### Features
+
+* **vue:** components are globally added to the vue app instance ([629c834](https://github.com/baloise/ui-library/commit/629c8348bae972257ca56f2103b639020755722a))
+
+
+
+
+
 ## [4.5.3](https://github.com/baloise/ui-library/compare/v4.5.2...v4.5.3) (2021-03-22)
 
 
