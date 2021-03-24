@@ -1,6 +1,7 @@
 import { Plugin } from 'vue'
 import { defineCustomElements } from '@baloise/ui-library/dist/custom-elements'
-import { applyFilters } from './filters'
+import { applyFilters } from './generated/filters'
+import { applyComponents } from './generated/components'
 
 export const baloiseUiLibrary: Plugin = {
   async install(app, options) {
@@ -11,5 +12,6 @@ export const baloiseUiLibrary: Plugin = {
     }
 
     applyFilters(app)
+    applyComponents(app)
   },
 }

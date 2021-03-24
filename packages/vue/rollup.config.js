@@ -6,14 +6,14 @@ export default {
       entryFileNames: '[name].esm.js',
       chunkFileNames: '[name]-[hash].esm.js',
       format: 'es',
-      sourcemap: true
+      sourcemap: true,
     },
     {
       dir: 'dist/',
       format: 'commonjs',
       preferConst: true,
-      sourcemap: true
-    }
+      sourcemap: true,
+    },
   ],
-  external: ['@baloise/ui-library', '@baloise/ui-library/loader', 'vue']
-};
+  external: ['@baloise/ui-library', '@baloise/ui-library/loader', '@baloise/ui-library/dist/custom-elements', 'vue'],
+}
