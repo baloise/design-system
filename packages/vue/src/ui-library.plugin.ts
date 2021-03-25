@@ -11,18 +11,18 @@ interface BaloiseUiLibraryOptions {
 
 export const baloiseUiLibrary: Plugin = {
   async install(app, options: BaloiseUiLibraryOptions = {}) {
-    if (options && options.useVite === true) {
-      await defineNativeCustomElements()
-    } else {
-      await applyPolyfills()
-      await defineCustomElements()
-    }
-
     if (options && options.defineCustomeElementTag === true) {
       app.config.isCustomElement = tag => tag.startsWith('bal-')
     }
 
     applyFilters(app)
     applyComponents(app)
+
+    if (options && options.useVite === true) {
+      defineNativeCustomElements()
+    } else {
+      await applyPolyfills()
+      await defineCustomElements()
+    }
   },
 }
