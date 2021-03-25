@@ -3,7 +3,6 @@ import { defineCustomElements, applyPolyfills } from '@baloise/ui-library/loader
 import { balSnackbarController, balToastController } from '@baloise/ui-library'
 
 import { addFilters } from './generated/filters'
-import { addComponents } from './generated/components'
 
 Vue.config.ignoredElements = [/bal-\w*/]
 
@@ -27,7 +26,6 @@ export const BalUiLibraryPlugin: PluginObject<BalUiLibraryPluginOption> = {
     _VueInstance.prototype.$balSnackbar = balSnackbarController
 
     addFilters(_VueInstance)
-    addComponents(_VueInstance)
 
     if (options.defineCustomeElements === true) {
       applyPolyfills().then(() => defineCustomElements())
