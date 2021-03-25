@@ -1,13 +1,24 @@
 import { Plugin } from 'vue'
-import { defineCustomElements } from '@baloise/ui-library/dist/custom-elements'
+import { defineCustomElements as defineNativeCustomElements } from '@baloise/ui-library/dist/custom-elements'
+import { defineCustomElements, applyPolyfills } from '@baloise/ui-library/loader'
 import { applyFilters } from './generated/filters'
 import { applyComponents } from './generated/components'
 
-export const baloiseUiLibrary: Plugin = {
-  async install(app, options) {
-    defineCustomElements()
+interface BaloiseUiLibraryOptions {
+  defineCustomeElementTag?: boolean
+  useVite?: boolean
+}
 
-    if (options && options.setIsCustomElementFunction === true) {
+export const baloiseUiLibrary: Plugin = {
+  async install(app, options: BaloiseUiLibraryOptions = {}) {
+    if (options && options.useVite === true) {
+      await defineNativeCustomElements()
+    } else {
+      await applyPolyfills()
+      await defineCustomElements()
+    }
+
+    if (options && options.defineCustomeElementTag === true) {
       app.config.isCustomElement = tag => tag.startsWith('bal-')
     }
 
