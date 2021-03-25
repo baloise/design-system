@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.1](https://github.com/baloise/ui-library/compare/v4.6.0...v4.6.1) (2021-03-25)
+
+
+### Bug Fixes
+
+* **vetur:** use the vue component names instead of the web-components ([116d3e5](https://github.com/baloise/ui-library/commit/116d3e5a12263e45327bcfd6cc6637d90b882245))
+
+
+
+
+
 # [4.6.0](https://github.com/baloise/ui-library/compare/v4.5.3...v4.6.0) (2021-03-24)
 
 **Note:** Version bump only for package @baloise/ui-library-vue-2
