@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.2](https://github.com/baloise/ui-library/compare/v4.6.1...v4.6.2) (2021-03-25)
+
+**Note:** Version bump only for package @baloise/ui-library-vue-2
+
+
+
+
+
 ## [4.6.1](https://github.com/baloise/ui-library/compare/v4.6.0...v4.6.1) (2021-03-25)
 
 
