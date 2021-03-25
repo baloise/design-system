@@ -70,12 +70,22 @@
   .bal-card-heading,
   .bal-card-title,
   .bal-card-subtitle,
-  .bal-card-content,
   .bal-card-actions {
     align-items: center;
     display: flex;
+  }
+
+  .bal-card-heading,
+  .bal-card-title,
+  .bal-card-subtitle,
+  .bal-card-content,
+  .bal-card-actions {
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  .bal-card-content {
+    display: block;
   }
 
   & > :first-child:not(.bal-card-steps) {
