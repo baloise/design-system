@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.6](https://github.com/baloise/ui-library/compare/v4.6.5...v4.6.6) (2021-03-25)
+
+
+### Bug Fixes
+
+* **vue:** do not add vue 2 components globally ([08b5d89](https://github.com/baloise/ui-library/commit/08b5d8915c79a2f77fd734ffdc123b6bb1c9c88c))
+
+
+
+
+
 ## [4.6.5](https://github.com/baloise/ui-library/compare/v4.6.4...v4.6.5) (2021-03-25)
 
 
