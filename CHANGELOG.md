@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.5](https://github.com/baloise/ui-library/compare/v4.6.4...v4.6.5) (2021-03-25)
+
+
+### Bug Fixes
+
+* **vue:** improve plugin order ([3be7045](https://github.com/baloise/ui-library/commit/3be704521972812230f35cfb780a1432cc828cca))
+* **vue:** register components for vue 2 ([1a3c646](https://github.com/baloise/ui-library/commit/1a3c646d17104989361666b74c82da2c41adfc71))
+
+
+
+## 4.6.3 (2021-03-25)
+
+
+
+
+
 ## [4.6.4](https://github.com/baloise/ui-library/compare/v4.6.3...v4.6.4) (2021-03-25)
 
 
