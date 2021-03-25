@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.3](https://github.com/baloise/ui-library/compare/v4.6.2...v4.6.3) (2021-03-25)
+
+
+### Bug Fixes
+
+* **vue:** add vite option ([fbacc89](https://github.com/baloise/ui-library/commit/fbacc894ca81bbb6f7722a326cd9a8083a566506))
+* **vue:** change target & module ([11212bf](https://github.com/baloise/ui-library/commit/11212bf715278bbd6da86920d79123ae38c6dfb2))
+
+
+
+## 4.6.1 (2021-03-25)
+
+
+
+
+
 ## [4.6.2](https://github.com/baloise/ui-library/compare/v4.6.1...v4.6.2) (2021-03-25)
 
 
