@@ -33,7 +33,7 @@ const run = async () => {
     '',
   ].join('\n')
 
-  await file.save(path.join(__dirname, '../src/filters.ts'), content)
+  await file.save(path.join(__dirname, '../src/generated/filters.ts'), content)
 }
 
 run()

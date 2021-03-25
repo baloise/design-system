@@ -16,11 +16,12 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run build:clean && npm run build:filters && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
+    "build": "npm run build:clean && npm run build:components && npm run build:filters && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
     "build:clean": "rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p .",
     "build:bundle": "rollup --config rollup.config.js",
     "build:filters": "node .scripts/filters.script.js",
+    "build:components": "node .scripts/components.script.js",
     "build:web-types": "node ./.scripts/build-web-types.js",
     "build:vetur": "node ./.scripts/build-vetur.js"
   },
