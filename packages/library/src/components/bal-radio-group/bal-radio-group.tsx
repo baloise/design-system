@@ -67,7 +67,12 @@ export class RadioGroup implements ComponentInterface {
 
   private onClick = (ev: Event) => {
     const selectedRadio = ev.target && (ev.target as HTMLElement).closest('bal-radio')
-    if (selectedRadio && !selectedRadio.disabled) {
+    if (selectedRadio) {
+      if (selectedRadio.disabled) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        return
+      }
       const currentValue = this.value
       const newValue = selectedRadio.value
       if (newValue !== currentValue) {

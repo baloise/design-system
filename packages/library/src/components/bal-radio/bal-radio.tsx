@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface, Listen } from '@stencil/core'
+import { isDescendant } from '../../helpers/helpers'
 
 @Component({
   tag: 'bal-radio',
@@ -9,7 +10,6 @@ import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Compone
 export class Radio implements ComponentInterface {
   private inputId = `bal-rb-${radioIds++}`
   private inputEl?: HTMLInputElement
-  private nativeLabel?: HTMLLabelElement
 
   @Element() el!: HTMLElement
 
@@ -65,7 +65,7 @@ export class Radio implements ComponentInterface {
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
-    if (this.disabled && ev.target && ev.target === this.el) {
+    if (this.disabled && ev.target && (ev.target === this.el || isDescendant(this.el, ev.target as HTMLElement))) {
       ev.preventDefault()
       ev.stopPropagation()
     }
@@ -104,26 +104,10 @@ export class Radio implements ComponentInterface {
     }
   }
 
-  private handleClick = (event: MouseEvent) => {
-    if (this.disabled) {
-      event.preventDefault()
-      event.stopPropagation()
-    } else {
-      if (this.nativeLabel !== event.target) {
-        event.stopPropagation()
-      }
-    }
-  }
-
-  private inputClick = (event: MouseEvent) => {
-    event.stopPropagation()
-  }
-
   render() {
     const { inputId, label } = this
     return (
       <Host
-        onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
           'bal-radio': this.interface === 'radio',
@@ -147,7 +131,6 @@ export class Radio implements ComponentInterface {
           disabled={this.disabled}
           checked={this.checked}
           aria-disabled={this.disabled ? 'true' : 'false'}
-          onClick={this.inputClick}
           onFocus={e => this.balFocus.emit(e)}
           onBlur={e => this.balBlur.emit(e)}
           ref={inputEl => (this.inputEl = inputEl)}
@@ -158,8 +141,9 @@ export class Radio implements ComponentInterface {
             'is-disabled': this.disabled,
           }}
           htmlFor={inputId}
-          ref={labelEl => (this.nativeLabel = labelEl)}
-          onClick={this.handleClick}
+          onClick={(ev: MouseEvent) => {
+            ev.stopPropagation()
+          }}
         >
           <slot>{label}</slot>
         </label>

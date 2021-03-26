@@ -88,7 +88,7 @@
       border-color: $blue;
     }
 
-    input[type='radio']:focus + label::before {
+    input[type='radio']:focus-visible + label::before {
       outline: 1px dashed $cyan !important;
     }
 
@@ -116,7 +116,7 @@
       opacity: 0;
     }
 
-    input[type='radio']:focus ~ label {
+    input[type='radio']:focus-visible ~ label {
       outline: none;
       border: 2px dashed $cyan;
     }
@@ -202,7 +202,7 @@
         }
       }
 
-      input[type='radio']:focus ~ label {
+      input[type='radio']:focus-visible ~ label {
         outline: none;
         border: 2px dashed $cyan;
       }
