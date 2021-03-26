@@ -324,14 +324,22 @@ export class Select {
     this.balInput.emit(inputValue)
   }
 
+  private clearTimeout?: NodeJS.Timeout
+
   private onInputBlur = (event: Event) => {
     event.preventDefault()
     event.stopPropagation()
+    if (this.clearTimeout) {
+      clearTimeout(this.clearTimeout)
+    }
+
     if (this.typeahead && !this.multiple) {
-      const hasInputValueOptionLabel = this.childOptions.some(option => this.compareLabels(option.label || '', this.inputElementValue))
-      if (!hasInputValueOptionLabel) {
-        this.clear()
-      }
+      this.clearTimeout = setTimeout(() => {
+        const hasInputValueOptionLabel = this.childOptions.some(option => this.compareLabels(option.label || '', this.inputElementValue))
+        if (!hasInputValueOptionLabel) {
+          this.clear()
+        }
+      }, 500)
     }
 
     this.balBlur.emit(event as any)
