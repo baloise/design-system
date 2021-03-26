@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.8](https://github.com/baloise/ui-library/compare/v4.6.7...v4.6.8) (2021-03-26)
+
+
+### Bug Fixes
+
+* **select:** add delay to clear input action ([51b9735](https://github.com/baloise/ui-library/commit/51b9735605281412ea77842a8445cb74bad5ee3e))
+
+
+
+
+
 ## [4.6.7](https://github.com/baloise/ui-library/compare/v4.6.6...v4.6.7) (2021-03-25)
 
 ### Features
