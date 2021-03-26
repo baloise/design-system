@@ -1,6 +1,6 @@
 # Getting Started
 
-Since we use css stylesheets and standard web components the library can be integrated in almost any web tecnology.
+Since we use css stylesheets and standard web components the library can be integrated in almost any web technology.
 
 <table>
   <thead>
