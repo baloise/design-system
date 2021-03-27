@@ -16,7 +16,6 @@
         <bal-checkbox label="Checked" checked></bal-checkbox>
         <bal-checkbox label="Disabled" disabled data-test-id="checkbox-disabled"></bal-checkbox>
       </section>
-
       <h2 class="title is-size-2">Inverted</h2>
       <section>
         <div class="has-background-info has-padding">
@@ -34,32 +33,32 @@
       <h2 class="title is-size-2">Events</h2>
       <h3 class="title is-size-3">Listen on Changes</h3>
       <section>
-        <bal-checkbox id="checkbox-1" label="Listen on changes"></bal-checkbox>
-        <span id="checkbox-1-result">false</span>
+        <bal-checkbox id="cb-2" label="Listen on changes"></bal-checkbox>
+        <p class="help" id="cb-2-result">false</p>
       </section>
       <script>
-        var checkbox1 = document.getElementById('checkbox-1')
-        var checkboxResult = document.getElementById('checkbox-1-result')
-        checkbox1.addEventListener('balChange', function (event) {
-          checkboxResult.innerHTML = event.detail
+        var checkbox2 = document.getElementById('cb-2')
+        var checkbox2Result = document.getElementById('cb-2-result')
+        checkbox2.addEventListener('balChange', function (event) {
+          checkbox2Result.innerHTML = event.detail
         })
       </script>
 
       <h3 class="title is-size-3">Change value</h3>
       <section>
-        <bal-checkbox id="checkbox-2" label="Value"></bal-checkbox>
-        <button id="checkbox-2-trigger-1">Set to true</button>
-        <button id="checkbox-2-trigger-2">Set to false</button>
+        <bal-checkbox id="cb-3" label="Value"></bal-checkbox>
+        <button id="cb-3-trigger-1">Set to true</button>
+        <button id="cb-3-trigger-2">Set to false</button>
       </section>
       <script>
-        var checkbox2 = document.getElementById('checkbox-2')
-        var checkboxTrigger1 = document.getElementById('checkbox-2-trigger-1')
-        var checkboxTrigger2 = document.getElementById('checkbox-2-trigger-2')
-        checkboxTrigger1.addEventListener('click', function (event) {
-          checkbox2.checked = true
+        var checkbox3 = document.getElementById('cb-3')
+        var checkbox3Trigger1 = document.getElementById('cb-3-trigger-1')
+        var checkbox3Trigger2 = document.getElementById('cb-3-trigger-2')
+        checkbox3Trigger1.addEventListener('click', function (event) {
+          checkbox3.checked = true
         })
-        checkboxTrigger2.addEventListener('click', function (event) {
-          checkbox2.checked = false
+        checkbox3Trigger2.addEventListener('click', function (event) {
+          checkbox3.checked = false
         })
       </script>
     </div>

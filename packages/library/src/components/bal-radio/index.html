@@ -23,14 +23,14 @@
         <bal-button id="radio-example-action">Go to 3</bal-button>
       </section>
       <script>
-        var selectButtonGroup = document.getElementById('radio-example')
-        var selectButtonResult = document.getElementById('radio-example-result')
-        var selectButtonAction = document.getElementById('radio-example-action')
-        selectButtonGroup.addEventListener('balChange', function (event) {
-          selectButtonResult.innerHTML = event.detail
+        var radioGroup = document.getElementById('radio-example')
+        var radioResult = document.getElementById('radio-example-result')
+        var radioAction = document.getElementById('radio-example-action')
+        radioGroup.addEventListener('balChange', function (event) {
+          radioResult.innerHTML = event.detail
         })
-        selectButtonAction.addEventListener('click', function () {
-          selectButtonGroup.value = 3
+        radioAction.addEventListener('click', function () {
+          radioGroup.value = 3
         })
       </script>
 

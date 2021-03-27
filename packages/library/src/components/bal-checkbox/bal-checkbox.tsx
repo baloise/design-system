@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, Listen } from '@stencil/core'
-import { findItemLabel } from '../../helpers/helpers'
+import { findItemLabel, isDescendant } from '../../helpers/helpers'
 
 @Component({
   tag: 'bal-checkbox',
@@ -10,7 +10,6 @@ import { findItemLabel } from '../../helpers/helpers'
 export class Checkbox {
   private inputId = `bal-cb-${checkboxIds++}`
   private nativeInput?: HTMLInputElement
-  private nativeLabel?: HTMLLabelElement
 
   @Element() el!: HTMLElement
 
@@ -76,7 +75,7 @@ export class Checkbox {
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
-    if (this.disabled && ev.target && ev.target === this.el) {
+    if (this.disabled && ev.target && (ev.target === this.el || isDescendant(this.el, ev.target as HTMLElement))) {
       ev.preventDefault()
       ev.stopPropagation()
     }
@@ -104,21 +103,6 @@ export class Checkbox {
     this.checked = ev.target.checked
   }
 
-  private handleClick = (event: MouseEvent) => {
-    if (this.disabled) {
-      event.preventDefault()
-      event.stopPropagation()
-    } else {
-      if (this.nativeLabel !== event.target) {
-        event.stopPropagation()
-      }
-    }
-  }
-
-  private inputClick = (event: MouseEvent) => {
-    event.stopPropagation()
-  }
-
   render() {
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
@@ -129,7 +113,6 @@ export class Checkbox {
 
     return (
       <Host
-        onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
           'is-inverted': this.inverted,
@@ -151,7 +134,6 @@ export class Checkbox {
           aria-label={label}
           disabled={this.disabled}
           aria-disabled={this.disabled ? 'true' : 'false'}
-          onClick={this.inputClick}
           onFocus={e => this.balFocus.emit(e)}
           onBlur={e => this.balBlur.emit(e)}
           onInput={this.onInput}
@@ -163,8 +145,9 @@ export class Checkbox {
             'is-disabled': this.disabled,
           }}
           htmlFor={this.inputId}
-          ref={labelEl => (this.nativeLabel = labelEl)}
-          onClick={this.handleClick}
+          onClick={(ev: MouseEvent) => {
+            ev.stopPropagation()
+          }}
         >
           <slot>{this.label}</slot>
         </label>
