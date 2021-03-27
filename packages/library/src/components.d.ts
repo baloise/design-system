@@ -1140,7 +1140,7 @@ export namespace Components {
         /**
           * Sets the value to null and resets the value of the input.
          */
-        "clear": () => Promise<void>;
+        "clear": (force?: boolean) => Promise<void>;
         /**
           * Closes the dropdown
          */

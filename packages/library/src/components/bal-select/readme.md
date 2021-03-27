@@ -49,7 +49,7 @@ export interface BalOptionValue<T> {
 
 ## Methods
 
-### `clear() => Promise<void>`
+### `clear(force?: boolean) => Promise<void>`
 
 Sets the value to null and resets the value of the input.
 
