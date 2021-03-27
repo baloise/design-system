@@ -118,7 +118,7 @@
     border: 0;
   }
 
-  &:focus {
+  &:focus-visible {
     &::before {
       position: absolute;
       content: '';
