@@ -1,3 +1,4 @@
+import { BalValidatorFn } from '@baloise/ui-library'
 import { isArray } from 'lodash'
 import { Ref, unref } from 'vue'
 
@@ -43,5 +44,14 @@ export function validators(isDisabledOrRules: any, rules?: any): ValidatorsRules
       }
     }
     return true
+  }
+}
+
+export function useValidator(translateFn: (key: string) => string) {
+  return {
+    createValidator: (validatorFn: BalValidatorFn, translationKey: string): ValidatorFn => value => {
+      const isValid = validatorFn(value)
+      return isValid ? null : translateFn(translationKey)
+    },
   }
 }
