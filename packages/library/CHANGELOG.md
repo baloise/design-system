@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.7.0](https://github.com/baloise/ui-library/compare/v4.6.9...v4.7.0) (2021-03-29)
+
+
+### Bug Fixes
+
+* **checkbox:** improve event handling ([ecd0d1e](https://github.com/baloise/ui-library/commit/ecd0d1e46a79e5af71f3eb0afdccfb1a0ca4a989))
+* **radio:** fix click event on label and adjust focus style ([1dbb0e3](https://github.com/baloise/ui-library/commit/1dbb0e3f8a1f0f130a4d044d0f0b0043dfc99ba2))
+* **select:** only clear value on blur ([8ad6420](https://github.com/baloise/ui-library/commit/8ad6420f19474265418ff0a501b6770988965f03))
+
+
+
+## 4.6.8 (2021-03-26)
+
+
+
+
+
 ## [4.6.9](https://github.com/baloise/ui-library/compare/v4.6.8...v4.6.9) (2021-03-27)
 
 **Note:** Version bump only for package @baloise/ui-library
