@@ -217,7 +217,6 @@ export class Select {
     if (this.inputElement && this.didInit) {
       this.value = []
       if (force === true) {
-        debugger
         this.inputElement.value = ''
       }
       this.focusIndex = 0
