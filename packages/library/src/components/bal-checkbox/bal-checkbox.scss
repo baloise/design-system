@@ -92,7 +92,7 @@
     content: '';
   }
 
-  input[type='checkbox']:focus + label::before {
+  input[type='checkbox']:focus-visible + label::before {
     outline: 1px dashed $cyan !important;
   }
 

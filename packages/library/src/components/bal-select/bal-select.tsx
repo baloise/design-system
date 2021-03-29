@@ -94,7 +94,9 @@ export class Select {
     const areValueNotEqual = !areArraysEqual(newValue, oldValue)
     if (areValueNotEqual && this.didInit && this.inputElement) {
       const selectedOptions = this.childOptions.filter(option => option.value !== undefined).filter(option => this.value.indexOf(option.value as string) >= 0)
-      this.inputElement.value = selectedOptions.map(o => o.value).join(', ')
+      if (this.value.length !== 0) {
+        this.inputElement.value = selectedOptions.map(o => o.value).join(', ')
+      }
       this.sync()
       this.balChange.emit(this.value)
     }
@@ -211,10 +213,12 @@ export class Select {
    * Sets the value to null and resets the value of the input.
    */
   @Method()
-  async clear() {
+  async clear(force = false) {
     if (this.inputElement && this.didInit) {
       this.value = []
-      this.inputElement.value = ''
+      if (force === true) {
+        this.inputElement.value = ''
+      }
       this.focusIndex = 0
       this.clearFocus()
       this.updateOptionProps()

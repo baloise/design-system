@@ -1,4 +1,9 @@
-import { Ref } from 'vue'
+import { isArray } from 'lodash'
+import { Ref, unref } from 'vue'
+
+/**
+ * WebComponent Helpers
+ */
 
 interface WebComponent<T> {
   $el: T
@@ -7,4 +12,36 @@ interface WebComponent<T> {
 export const element = <T>(elementReference: Ref<any>): T => {
   const component: WebComponent<T> = elementReference.value
   return component.$el
+}
+
+/**
+ * Validator Helpers
+ */
+
+export type ValidatorFn = (value: any) => Promise<string | null> | string | null
+export type ValidatorsRulesFn = (value: any) => Promise<boolean | string> | boolean | string
+
+export function validators(rules: ValidatorFn[]): ValidatorsRulesFn
+export function validators(isDisabled: Ref<boolean> | boolean, rules: ValidatorFn[]): ValidatorsRulesFn
+export function validators(isDisabledOrRules: any, rules?: any): ValidatorsRulesFn {
+  return async function (value) {
+    const isDisabled = unref(isDisabledOrRules)
+    if (isDisabled === true) {
+      return true
+    }
+
+    if (isDisabled !== false) {
+      rules = isDisabledOrRules
+    }
+
+    if (isArray(rules)) {
+      for (let i = 0; i < rules.length; i++) {
+        const errorMessage = await rules[i](unref(value))
+        if (errorMessage !== null) {
+          return errorMessage
+        }
+      }
+    }
+    return true
+  }
 }
