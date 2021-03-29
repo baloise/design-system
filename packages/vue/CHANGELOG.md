@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.8.0](https://github.com/baloise/ui-library/compare/v4.7.0...v4.8.0) (2021-03-29)
+
+
+### Features
+
+* **vue:** add useValidator helper function ([3ba7c2b](https://github.com/baloise/ui-library/commit/3ba7c2b4e54bd2f7715858e0db6a79b8cbe08e07))
+
+
+
+
+
 # [4.7.0](https://github.com/baloise/ui-library/compare/v4.6.9...v4.7.0) (2021-03-29)
 
 
