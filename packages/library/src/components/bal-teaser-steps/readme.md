@@ -2,6 +2,10 @@
 
 The steps list is useful for tracking progress in multi steps forms or wizards.
 
+::: warning
+Only use this component in teasers and not for normal applications. If you need a stepper go to [tabs](/components/bal-tabs.html#stepper).
+:::
+
 
 <!-- Auto Generated Below -->
 
