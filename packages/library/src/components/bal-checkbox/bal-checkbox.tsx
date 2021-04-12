@@ -24,6 +24,11 @@ export class Checkbox {
   @Prop() label: string = ''
 
   /**
+   * Defines the layout of the checkbox button
+   */
+  @Prop() interface: 'checkbox' | 'switch' = 'checkbox'
+
+  /**
    * The tabindex of the control.
    */
   @Prop() balTabindex: number = 0
@@ -117,6 +122,8 @@ export class Checkbox {
         class={{
           'is-inverted': this.inverted,
           'is-disabled': this.disabled,
+          'bal-checkbox': this.interface === 'checkbox',
+          'bal-switch': this.interface === 'switch',
         }}
       >
         <input

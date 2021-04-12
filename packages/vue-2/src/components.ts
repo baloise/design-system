@@ -273,6 +273,7 @@ export const BalCheckbox = /*@__PURE__*/ Vue.extend({
   props: {
     name: {} as PropOptions<Components.BalCheckbox['name']>,
     label: {} as PropOptions<Components.BalCheckbox['label']>,
+    interface: {} as PropOptions<Components.BalCheckbox['interface']>,
     balTabindex: {} as PropOptions<Components.BalCheckbox['balTabindex']>,
     value: {} as PropOptions<Components.BalCheckbox['value']>,
     checked: {} as PropOptions<Components.BalCheckbox['checked']>,

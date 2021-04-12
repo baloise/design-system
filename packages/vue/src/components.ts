@@ -119,6 +119,7 @@ export const BalCardTitle = /*@__PURE__*/ defineContainer<JSX.BalCardTitle>('bal
 export const BalCheckbox = /*@__PURE__*/ defineContainer<JSX.BalCheckbox>('bal-checkbox',
   ['name',
 'label',
+'interface',
 'balTabindex',
 'value',
 'checked',
