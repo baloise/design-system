@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.9.0](https://github.com/baloise/ui-library/compare/v4.8.2...v4.9.0) (2021-04-13)
+
+
+### Features
+
+* **checkbox:** add switch style ([1494552](https://github.com/baloise/ui-library/commit/1494552a1a9aea3be5ce238b5e3e660a0f357064))
+
+
+
+
+
 ## [4.8.2](https://github.com/baloise/ui-library/compare/v4.8.1...v4.8.2) (2021-04-12)
 
 **Note:** Version bump only for package @baloise/ui-library-angular
