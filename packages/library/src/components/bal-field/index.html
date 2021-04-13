@@ -14,8 +14,8 @@
       <section>
         <bal-card padding="form">
           <bal-card-content>
-            <bal-field expanded>
-              <bal-field-label text="Firstname" required></bal-field-label>
+            <bal-field expanded id="field-example-field">
+              <bal-field-label required>Firstname</bal-field-label>
               <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
               <bal-field-control>
                 <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
@@ -24,7 +24,7 @@
             </bal-field>
 
             <bal-field expanded disabled loading>
-              <bal-field-label text="Lastname"></bal-field-label>
+              <bal-field-label>Lastname</bal-field-label>
               <bal-field-control>
                 <bal-input name="lastname" placeholder="Enter your lastname" value="Parker"></bal-input>
               </bal-field-control>
@@ -32,7 +32,7 @@
             </bal-field>
 
             <bal-field expanded>
-              <bal-field-label text="Alias"></bal-field-label>
+              <bal-field-label>Alias</bal-field-label>
               <bal-field-control icon-left="account" icon-right="check">
                 <bal-input name="alias" placeholder="Enter your alias" value="Spider-Man"></bal-input>
               </bal-field-control>
@@ -40,22 +40,33 @@
             </bal-field>
 
             <bal-field expanded>
-              <bal-field-label text="Comment"></bal-field-label>
+              <bal-field-label>Comment</bal-field-label>
               <bal-field-control>
                 <bal-textarea name="comment" placeholder="Enter your comment"></bal-textarea>
               </bal-field-control>
               <bal-field-message>Some Message</bal-field-message>
             </bal-field>
           </bal-card-content>
+          <bal-card-actions>
+            <bal-button color="danger" id="field-example-button">Disable Firstname</bal-button>
+          </bal-card-actions>
         </bal-card>
       </section>
+      <script>
+        const fieldElement = document.getElementById('field-example-field')
+        const buttonElement = document.getElementById('field-example-button')
+        buttonElement.addEventListener('click', () => {
+          console.log('action', fieldElement)
+          fieldElement.setAttribute('disabled', 'true')
+        })
+      </script>
 
       <h2 class="title is-size-2">Inverted</h2>
       <section>
         <bal-card padding="form" color="info" inverted>
           <bal-card-content>
             <bal-field expanded inverted loading>
-              <bal-field-label text="Firstname" required></bal-field-label>
+              <bal-field-label required>Firstname</bal-field-label>
               <bal-field-control>
                 <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
               </bal-field-control>
@@ -63,7 +74,7 @@
             </bal-field>
 
             <bal-field expanded inverted disabled>
-              <bal-field-label text="Alias"></bal-field-label>
+              <bal-field-label>Alias</bal-field-label>
               <bal-field-control icon-left="account" icon-right="check">
                 <bal-input name="alias" placeholder="Enter your alias" value="Spider-Man"></bal-input>
               </bal-field-control>
@@ -78,7 +89,7 @@
         <bal-card padding="form">
           <bal-card-content>
             <bal-field expanded>
-              <bal-field-label text="Firstname" required></bal-field-label>
+              <bal-field-label required>Firstname</bal-field-label>
               <bal-field-control>
                 <bal-input name="firstName" placeholder="Enter your firstname"></bal-input>
               </bal-field-control>
@@ -99,21 +110,21 @@
               <bal-field-message></bal-field-message>
             </bal-field>
             <bal-field expanded>
-              <bal-field-label text="Birthdate" required></bal-field-label>
+              <bal-field-label required>Birthdate</bal-field-label>
               <bal-field-control>
                 <bal-datepicker placeholder="pick a date"></bal-datepicker>
               </bal-field-control>
               <bal-field-message></bal-field-message>
             </bal-field>
             <bal-field expanded>
-              <bal-field-label text="Remember me?" required></bal-field-label>
+              <bal-field-label required>Remember me?</bal-field-label>
               <bal-field-control>
                 <bal-checkbox label="Yes"></bal-checkbox>
               </bal-field-control>
               <bal-field-message></bal-field-message>
             </bal-field>
             <bal-field expanded>
-              <bal-field-label text="How many cars do you have?" required></bal-field-label>
+              <bal-field-label required>How many cars do you have?</bal-field-label>
               <bal-field-control>
                 <bal-radio-group value="2" id="radio-example">
                   <bal-radio label="Label 1" name="radio-example" value="1"></bal-radio>
@@ -125,7 +136,7 @@
               <bal-field-message></bal-field-message>
             </bal-field>
             <bal-field expanded>
-              <bal-field-label text="Are you sure?" required></bal-field-label>
+              <bal-field-label required>Are you sure?</bal-field-label>
               <bal-field-control>
                 <bal-radio-group value="yes" interface="select-button">
                   <bal-radio label="Yes" name="select-button-example-2" value="yes"></bal-radio>

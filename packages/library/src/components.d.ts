@@ -460,10 +460,6 @@ export namespace Components {
           * If `true` a asterix (*) is added to the label text
          */
         "required": boolean;
-        /**
-          * Text of the inputs label
-         */
-        "text": string;
     }
     interface BalFieldMessage {
         /**
@@ -2787,10 +2783,6 @@ declare namespace LocalJSX {
           * If `true` a asterix (*) is added to the label text
          */
         "required"?: boolean;
-        /**
-          * Text of the inputs label
-         */
-        "text"?: string;
     }
     interface BalFieldMessage {
         /**
