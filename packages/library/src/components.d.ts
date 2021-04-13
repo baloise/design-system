@@ -423,6 +423,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * If `true` the component gets a invalid style. Only use this if there is no live validation.
+         */
+        "invalid": boolean;
+        /**
           * If `true` the field can be used on blue background.
          */
         "inverted": boolean;
@@ -2745,6 +2749,10 @@ declare namespace LocalJSX {
           * If `true` the component takes the whole width
          */
         "expanded"?: boolean;
+        /**
+          * If `true` the component gets a invalid style. Only use this if there is no live validation.
+         */
+        "invalid"?: boolean;
         /**
           * If `true` the field can be used on blue background.
          */
