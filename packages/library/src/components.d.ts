@@ -191,6 +191,8 @@ export namespace Components {
          */
         "inverted": boolean;
     }
+    interface BalCardHead {
+    }
     interface BalCardHeading {
     }
     interface BalCardSteps {
@@ -1611,6 +1613,12 @@ declare global {
         prototype: HTMLBalCardContentElement;
         new (): HTMLBalCardContentElement;
     };
+    interface HTMLBalCardHeadElement extends Components.BalCardHead, HTMLStencilElement {
+    }
+    var HTMLBalCardHeadElement: {
+        prototype: HTMLBalCardHeadElement;
+        new (): HTMLBalCardHeadElement;
+    };
     interface HTMLBalCardHeadingElement extends Components.BalCardHeading, HTMLStencilElement {
     }
     var HTMLBalCardHeadingElement: {
@@ -2236,6 +2244,7 @@ declare global {
         "bal-card-actions": HTMLBalCardActionsElement;
         "bal-card-button": HTMLBalCardButtonElement;
         "bal-card-content": HTMLBalCardContentElement;
+        "bal-card-head": HTMLBalCardHeadElement;
         "bal-card-heading": HTMLBalCardHeadingElement;
         "bal-card-steps": HTMLBalCardStepsElement;
         "bal-card-subtitle": HTMLBalCardSubtitleElement;
@@ -2525,6 +2534,8 @@ declare namespace LocalJSX {
           * If `true` the card text color becomes white.
          */
         "inverted"?: boolean;
+    }
+    interface BalCardHead {
     }
     interface BalCardHeading {
     }
@@ -3936,6 +3947,7 @@ declare namespace LocalJSX {
         "bal-card-actions": BalCardActions;
         "bal-card-button": BalCardButton;
         "bal-card-content": BalCardContent;
+        "bal-card-head": BalCardHead;
         "bal-card-heading": BalCardHeading;
         "bal-card-steps": BalCardSteps;
         "bal-card-subtitle": BalCardSubtitle;
@@ -4051,6 +4063,7 @@ declare module "@stencil/core" {
             "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;
             "bal-card-button": LocalJSX.BalCardButton & JSXBase.HTMLAttributes<HTMLBalCardButtonElement>;
             "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
+            "bal-card-head": LocalJSX.BalCardHead & JSXBase.HTMLAttributes<HTMLBalCardHeadElement>;
             "bal-card-heading": LocalJSX.BalCardHeading & JSXBase.HTMLAttributes<HTMLBalCardHeadingElement>;
             "bal-card-steps": LocalJSX.BalCardSteps & JSXBase.HTMLAttributes<HTMLBalCardStepsElement>;
             "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;

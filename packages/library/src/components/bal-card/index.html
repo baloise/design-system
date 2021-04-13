@@ -87,14 +87,54 @@
         </bal-card>
       </section>
 
-      <h2 class="title is-size-2">A Summary card</h2>
+      <h2 class="title is-size-2">Summary card</h2>
       <section>
         <bal-card border flat>
           <bal-card-heading>Insured vehicle</bal-card-heading>
           <bal-card-title>Cupra Ateca</bal-card-title>
           <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
 
+          <bal-card-content>
+            <bal-data horizontal>
+              <bal-data-item>
+                <bal-data-label>Tony</bal-data-label>
+                <bal-data-value>Stark</bal-data-value>
+              </bal-data-item>
+              <bal-data-item>
+                <bal-data-label>Steve</bal-data-label>
+                <bal-data-value>Rogers</bal-data-value>
+              </bal-data-item>
+              <bal-data-item>
+                <bal-data-label>Stephen</bal-data-label>
+                <bal-data-value>Strange</bal-data-value>
+              </bal-data-item>
+            </bal-data>
+          </bal-card-content>
+
           <bal-card-button icon="edit">Edit</bal-card-button>
+        </bal-card>
+      </section>
+
+      <h2 class="title is-size-2">Service card</h2>
+      <section>
+        <bal-card service>
+          <bal-card-head>
+            <img class="has-background-grey" />
+            <div>
+              <h4 class="title is-size-4">H4 MetaPro Medium</h4>
+              <h4 class="subtitle is-size-4">+ CHF 11.30</h4>
+            </div>
+            <bal-checkbox checked interface="switch"></bal-checkbox>
+          </bal-card-head>
+          <bal-card-content>
+            <p class="has-text-blue-light-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </bal-card-content>
+
+          <bal-accordion card open-label="Details einblenden" close-label="Details ausblenden">
+            <p class="has-padding has-text-blue-light-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </bal-accordion>
         </bal-card>
       </section>
 
