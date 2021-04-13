@@ -225,6 +225,10 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement>;
         /**
+          * Defines the layout of the checkbox button
+         */
+        "interface": 'checkbox' | 'switch';
+        /**
           * If `true`, the control works on dark background.
          */
         "inverted": boolean;
@@ -2551,6 +2555,10 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled"?: boolean;
+        /**
+          * Defines the layout of the checkbox button
+         */
+        "interface"?: 'checkbox' | 'switch';
         /**
           * If `true`, the control works on dark background.
          */

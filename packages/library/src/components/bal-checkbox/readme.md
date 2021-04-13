@@ -7,15 +7,16 @@ Checkboxes allow the selection of multiple options from a set of options. They a
 
 ## Properties
 
-| Property      | Attribute      | Description                                                     | Type      | Default        |
-| ------------- | -------------- | --------------------------------------------------------------- | --------- | -------------- |
-| `balTabindex` | `bal-tabindex` | The tabindex of the control.                                    | `number`  | `0`            |
-| `checked`     | `checked`      | If `true`, the checkbox is selected.                            | `boolean` | `false`        |
-| `disabled`    | `disabled`     | If `true`, the user cannot interact with the checkbox.          | `boolean` | `false`        |
-| `inverted`    | `inverted`     | If `true`, the control works on dark background.                | `boolean` | `false`        |
-| `label`       | `label`        | The label of the control.                                       | `string`  | `''`           |
-| `name`        | `name`         | The name of the control, which is submitted with the form data. | `string`  | `this.inputId` |
-| `value`       | `value`        | The value of the control.                                       | `string`  | `'on'`         |
+| Property      | Attribute      | Description                                                     | Type                     | Default        |
+| ------------- | -------------- | --------------------------------------------------------------- | ------------------------ | -------------- |
+| `balTabindex` | `bal-tabindex` | The tabindex of the control.                                    | `number`                 | `0`            |
+| `checked`     | `checked`      | If `true`, the checkbox is selected.                            | `boolean`                | `false`        |
+| `disabled`    | `disabled`     | If `true`, the user cannot interact with the checkbox.          | `boolean`                | `false`        |
+| `interface`   | `interface`    | Defines the layout of the checkbox button                       | `"checkbox" \| "switch"` | `'checkbox'`   |
+| `inverted`    | `inverted`     | If `true`, the control works on dark background.                | `boolean`                | `false`        |
+| `label`       | `label`        | The label of the control.                                       | `string`                 | `''`           |
+| `name`        | `name`         | The name of the control, which is submitted with the form data. | `string`                 | `this.inputId` |
+| `value`       | `value`        | The value of the control.                                       | `string`                 | `'on'`         |
 
 
 ## Events

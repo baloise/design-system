@@ -7,109 +7,113 @@
   justify-content: flex-start;
   align-items: center;
 
-  input[type='checkbox'] {
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
-    outline: 0;
-  }
-
-  input[type='checkbox'] + label {
-    cursor: pointer;
-    padding-left: 34px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  label {
-    @include font-smoothing();
-    @include margin(0);
-
-    line-height: 1;
-    padding-left: 34px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    color: $blue;
-    font-family: $body-family;
-    font-size: $size-6;
-  }
-
-  @include desktop() {
-    label {
-      font-size: $size-small;
+  &.bal-checkbox {
+    input[type='checkbox'] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      outline: 0;
     }
-  }
 
-  label::before,
-  label::after {
-    display: inline-block;
-    position: absolute;
-    background-color: transparent;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 24px 24px;
-  }
-
-  label::before {
-    content: '';
-    left: 0;
-    top: 0;
-    height: 24px;
-    width: 24px;
-    border: 1px solid $blue-line;
-  }
-
-  label::after {
-    content: none;
-    left: 9px;
-    top: 6px;
-    width: 6px;
-    height: 10px;
-    border-bottom: 2px solid $blue;
-    border-right: 2px solid $blue;
-    border-top: 0;
-    border-left: 0;
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-  input[type='checkbox']:disabled + label {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-
-  input[type='checkbox']:checked + label::after {
-    content: '';
-  }
-
-  input[type='checkbox']:focus-visible + label::before {
-    outline: 1px dashed $cyan !important;
-  }
-
-  &.is-inverted {
-    label {
-      color: $white;
+    input[type='checkbox'] + label {
+      cursor: pointer;
+      padding-left: 34px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
+
+    label {
+      @include font-smoothing();
+      @include margin(0);
+
+      line-height: 1;
+      padding-left: 34px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      color: $blue;
+      font-family: $body-family;
+      font-size: $size-6;
+    }
+
+    @include desktop() {
+      label {
+        font-size: $size-small;
+      }
+    }
+
+    label::before,
+    label::after {
+      display: inline-block;
+      position: absolute;
+      background-color: transparent;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 24px 24px;
+    }
+
     label::before {
+      content: '';
+      left: 0;
+      top: 0;
+      height: 24px;
+      width: 24px;
       border: 1px solid $blue-line;
     }
+
     label::after {
-      border-bottom: 2px solid $white;
-      border-right: 2px solid $white;
+      content: none;
+      left: 9px;
+      top: 6px;
+      width: 6px;
+      height: 10px;
+      border-bottom: 2px solid $blue;
+      border-right: 2px solid $blue;
+      border-top: 0;
+      border-left: 0;
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
     }
 
-    input[type='checkbox']:hover:not([disabled]) + label:before {
-      border-color: $white;
+    input[type='checkbox']:disabled + label {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    input[type='checkbox']:checked + label::after {
+      content: '';
+    }
+
+    input[type='checkbox']:focus-visible + label::before {
+      outline: 1px dashed $cyan !important;
+    }
+
+    &.is-inverted {
+      label {
+        color: $white;
+      }
+      label::before {
+        border: 1px solid $blue-line;
+      }
+      label::after {
+        border-bottom: 2px solid $white;
+        border-right: 2px solid $white;
+      }
+
+      input[type='checkbox']:hover:not([disabled]) + label:before {
+        border-color: $white;
+      }
     }
   }
 }
+
+@import './bal-switch';

@@ -207,14 +207,14 @@ export class BalCardTitle {
 
 export declare interface BalCheckbox extends Components.BalCheckbox {}
 @ProxyCmp({
-  inputs: ['balTabindex', 'checked', 'disabled', 'inverted', 'label', 'name', 'value'],
+  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'label', 'name', 'value'],
   methods: ['setFocus', 'getInputElement']
 })
 @Component({
   selector: 'bal-checkbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['balTabindex', 'checked', 'disabled', 'inverted', 'label', 'name', 'value'],
+  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'label', 'name', 'value'],
   outputs: ['balChange', 'balFocus', 'balBlur']
 })
 export class BalCheckbox {
