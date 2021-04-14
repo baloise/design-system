@@ -10,8 +10,8 @@ Toast can be created with the `balToastController`. The default duration is 5000
 import { balToastController } from '@baloise/ui-library'
 
 balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
-balToastController.create({ message: 'Warning!', type: 'warning' })
-balToastController.create({ message: 'Danger zone!', type: 'danger' })
+balToastController.create({ message: 'Warning!', color: 'warning' })
+balToastController.create({ message: 'Danger zone!', color: 'danger' })
 ```
 
 <!-- Auto Generated Below -->
