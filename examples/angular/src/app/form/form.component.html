@@ -5,7 +5,7 @@
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <bal-field expanded>
-    <bal-field-label [text]="'Name'" required></bal-field-label>
+    <bal-field-label required>Name</bal-field-label>
     <bal-field-control>
       <bal-input
         id="bal-input-1"
@@ -22,7 +22,7 @@
   </bal-field>
 
   <bal-field expanded>
-    <bal-field-label text="Age"></bal-field-label>
+    <bal-field-label>Age</bal-field-label>
     <bal-field-control>
       <bal-select id="bal-select-year" placeholder="select a year" data-test-id="select" formControlName="age" expanded>
         <bal-select-option value="1995" label="1995">1995</bal-select-option>
@@ -39,7 +39,7 @@
   </bal-field>
 
   <bal-field expanded>
-    <bal-field-label text="Due Date"></bal-field-label>
+    <bal-field-label>Due Date</bal-field-label>
     <bal-field-control>
       <bal-datepicker placeholder="Select a date" formControlName="dueDate"></bal-datepicker>
     </bal-field-control>
@@ -52,7 +52,7 @@
   </bal-field>
 
   <bal-field expanded>
-    <bal-field-label text="Gender"></bal-field-label>
+    <bal-field-label>Gender</bal-field-label>
     <bal-field-control>
       <bal-radio-group value="male" formControlName="gender">
         <bal-radio label="Male" name="gender" value="male"></bal-radio>
@@ -65,7 +65,7 @@
   </bal-field>
 
   <bal-field expanded>
-    <bal-field-label text="Checkbox"></bal-field-label>
+    <bal-field-label>Checkbox</bal-field-label>
     <bal-field-control>
       <bal-checkbox label="Checkbox" formControlName="checkbox"></bal-checkbox>
     </bal-field-control>
@@ -75,7 +75,7 @@
   </bal-field>
 
   <bal-field expanded>
-    <bal-field-label text="Comment"></bal-field-label>
+    <bal-field-label>Comment</bal-field-label>
     <bal-field-control>
       <bal-textarea formControlName="comment" name="comment" placeholder="Enter your comment"></bal-textarea>
     </bal-field-control>
