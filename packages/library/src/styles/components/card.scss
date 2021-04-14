@@ -200,15 +200,16 @@
     }
 
     > img {
-      width: 80px;
-      max-width: 80px;
-      height: 80px;
-      max-height: 80px;
+      border: none;
+      width: 60px;
+      max-width: 60px;
+      height: 60px;
+      max-height: 60px;
     }
 
     > div {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
       display: flex;
       justify-content: center;
       flex-direction: column;
@@ -283,8 +284,8 @@
 
     .bal-card-head {
       > div {
-        padding-left: 40px;
-        padding-right: 40px;
+        padding-left: 20px;
+        padding-right: 20px;
       }
     }
   }
@@ -323,6 +324,20 @@
 
       & > :last-child:not(.bal-card-steps) {
         padding-bottom: 64px;
+      }
+    }
+
+    .bal-card-head {
+      > div {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+
+      > img {
+        width: 80px;
+        max-width: 80px;
+        height: 80px;
+        max-height: 80px;
       }
     }
   }

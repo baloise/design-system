@@ -7,25 +7,6 @@ $icon-dimensions-large: 3rem !default;
 $icon-text-spacing: 0.5em !default;
 
 .icon-text {
-  align-items: flex-start;
-  color: inherit;
-  display: inline-flex;
-  flex-wrap: wrap;
-  line-height: $icon-dimensions;
-  vertical-align: top;
-
-  .icon {
-    flex-grow: 0;
-    flex-shrink: 0;
-    &:not(:last-child) {
-      margin-right: $icon-text-spacing;
-    }
-    &:not(:first-child) {
-      margin-left: $icon-text-spacing;
-    }
-  }
-}
-
-div.icon-text {
-  display: flex;
+  flex-wrap: nowrap;
+  word-break: break-word;
 }
