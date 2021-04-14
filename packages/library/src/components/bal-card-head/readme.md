@@ -1,12 +1,11 @@
 <!-- docs:child of bal-card -->
 
-# bal-card-title
+# bal-card-head
 
-`bal-card-title` is a child component of `bal-card` that adds a title to card.
+`bal-card-head` is a child component of `bal-card` that adds a head element for the service card style.
 
 <!-- Auto Generated Below -->
 
+---
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
