@@ -39,7 +39,7 @@
 }
 
 .form .label {
-  font-size: $size-6 !important;
+  font-size: $size-small !important;
   margin-bottom: 0 !important;
 }
 
@@ -52,7 +52,7 @@
 .help {
   min-height: 23px;
   margin-bottom: 0 !important;
-  font-size: $size-6 !important;
+  font-size: $size-small !important;
 }
 
 @include desktop() {
@@ -67,7 +67,7 @@
   height: 28px;
   pointer-events: none;
   position: absolute;
-  top: -3px;
+  top: 0;
   width: 28px;
   z-index: 4;
 }
@@ -100,7 +100,7 @@ label.option-label a,
 label.option-label span,
 label.option-label strong {
   font-family: $body-family !important;
-  font-size: $size-6 !important;
+  font-size: $size-small !important;
 }
 
 @include desktop() {
