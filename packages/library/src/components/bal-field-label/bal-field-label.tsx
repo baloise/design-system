@@ -7,11 +7,6 @@ import { Component, h, Host, Prop } from '@stencil/core'
 })
 export class FieldLabel {
   /**
-   * Text of the inputs label
-   */
-  @Prop() text: string = ''
-
-  /**
    * If `true` a asterix (*) is added to the label text
    */
   @Prop() required: boolean = false
@@ -20,10 +15,8 @@ export class FieldLabel {
     return (
       <Host>
         <label class="label">
-          <slot>
-            {this.text}
-            {this.required === true ? ' *' : ''}
-          </slot>
+          <slot></slot>
+          {this.required === true ? ' *' : ''}
         </label>
       </Host>
     )

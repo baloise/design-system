@@ -19,6 +19,7 @@
       padding-left: 3.5rem;
       padding-top: 0.2rem;
       cursor: pointer;
+      min-height: 1.5rem + 0.2rem;
     }
 
     input[type='checkbox'] + label::before {

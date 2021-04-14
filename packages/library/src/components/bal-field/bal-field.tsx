@@ -15,6 +15,11 @@ export class Field {
   @Prop() expanded: boolean = false
 
   /**
+   * If `true` the component gets a invalid style. Only use this if there is no live validation.
+   */
+  @Prop() invalid: boolean = false
+
+  /**
    * If `true` the field loses opacity
    */
   @Prop() disabled: boolean = false
@@ -74,6 +79,7 @@ export class Field {
       <Host
         class={{
           'is-expanded': this.expanded,
+          'is-invalid': this.invalid,
         }}
       >
         <div

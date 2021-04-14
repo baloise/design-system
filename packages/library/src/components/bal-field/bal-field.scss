@@ -93,5 +93,65 @@
         left: 0;
       }
     }
+
+    &.is-invalid {
+      bal-field-label label {
+        color: $danger !important;
+      }
+
+      input.input {
+        border-color: $danger !important;
+      }
+
+      bal-dropdown-trigger bal-icon {
+        fill: $danger !important;
+      }
+
+      bal-checkbox {
+        label {
+          color: $danger !important;
+        }
+        label::after,
+        label::before {
+          border-color: $danger !important;
+        }
+      }
+
+      bal-radio-group:not(.bal-select-button) bal-radio {
+        label {
+          color: $danger !important;
+        }
+        label::after {
+          background: $danger !important;
+          border-color: $danger !important;
+        }
+        label::before {
+          border-color: $danger !important;
+        }
+      }
+
+      bal-radio-group.bal-select-button {
+        border-color: $danger !important;
+
+        bal-radio {
+          input[type='radio']:not(:checked) + label {
+            color: $danger !important;
+          }
+
+          input[type='radio']:checked + label {
+            background: $danger !important;
+            border-color: $danger !important;
+          }
+
+          label::after {
+            background: $danger !important;
+            border-color: $danger !important;
+          }
+          label::before {
+            border-color: $danger !important;
+          }
+        }
+      }
+    }
   }
 }
