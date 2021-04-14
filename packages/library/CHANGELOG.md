@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.10.0](https://github.com/baloise/ui-library/compare/v4.9.1...v4.10.0) (2021-04-14)
+
+
+### Bug Fixes
+
+* **field:** removed text prop from the label. Use the slot instead ([acdaa74](https://github.com/baloise/ui-library/commit/acdaa7418742ab7911e88ccc6e2eecce9c417236))
+
+
+### Features
+
+* **card:** add service card styles ([44b8fcd](https://github.com/baloise/ui-library/commit/44b8fcd2ade7a2f2a3a682e899107ea56e56e8fc))
+* **field:** add special validation style ([5678629](https://github.com/baloise/ui-library/commit/5678629897475575f4bd0060bb32ca86a0f53e7a))
+
+
+
+# 4.9.0 (2021-04-13)
+
+
+
+
+
 ## [4.9.1](https://github.com/baloise/ui-library/compare/v4.9.0...v4.9.1) (2021-04-14)
 
 **Note:** Version bump only for package @baloise/ui-library
