@@ -8,6 +8,7 @@ BalCard,
 BalCardActions,
 BalCardButton,
 BalCardContent,
+BalCardHead,
 BalCardHeading,
 BalCardSteps,
 BalCardSubtitle,
@@ -74,6 +75,7 @@ export const applyComponents = (app: App) => {
   app.component('BalCardActions', BalCardActions)
   app.component('BalCardButton', BalCardButton)
   app.component('BalCardContent', BalCardContent)
+  app.component('BalCardHead', BalCardHead)
   app.component('BalCardHeading', BalCardHeading)
   app.component('BalCardSteps', BalCardSteps)
   app.component('BalCardSubtitle', BalCardSubtitle)

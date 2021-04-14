@@ -16,6 +16,7 @@ const customElementTags: string[] = [
  'bal-card-actions',
  'bal-card-button',
  'bal-card-content',
+ 'bal-card-head',
  'bal-card-heading',
  'bal-card-steps',
  'bal-card-subtitle',
@@ -230,6 +231,14 @@ export const BalCardContent = /*@__PURE__*/ Vue.extend({
 });
 
 
+export const BalCardHead = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-card-head', []),
+});
+
+
 export const BalCardHeading = /*@__PURE__*/ Vue.extend({
 
 
@@ -423,6 +432,7 @@ export const BalField = /*@__PURE__*/ Vue.extend({
 
   props: {
     expanded: {} as PropOptions<Components.BalField['expanded']>,
+    invalid: {} as PropOptions<Components.BalField['invalid']>,
     disabled: {} as PropOptions<Components.BalField['disabled']>,
     inverted: {} as PropOptions<Components.BalField['inverted']>,
     loading: {} as PropOptions<Components.BalField['loading']>,
@@ -461,7 +471,6 @@ export const BalFieldHint = /*@__PURE__*/ Vue.extend({
 export const BalFieldLabel = /*@__PURE__*/ Vue.extend({
 
   props: {
-    text: {} as PropOptions<Components.BalFieldLabel['text']>,
     required: {} as PropOptions<Components.BalFieldLabel['required']>,
   },
 

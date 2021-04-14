@@ -135,6 +135,22 @@ export class BalCardContent {
 }
 
 
+export declare interface BalCardHead extends Components.BalCardHead {}
+
+@Component({
+  selector: 'bal-card-head',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalCardHead {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface BalCardHeading extends Components.BalCardHeading {}
 
 @Component({
@@ -399,13 +415,13 @@ export class BalDropdownTrigger {
 
 export declare interface BalField extends Components.BalField {}
 @ProxyCmp({
-  inputs: ['disabled', 'expanded', 'inverted', 'loading']
+  inputs: ['disabled', 'expanded', 'invalid', 'inverted', 'loading']
 })
 @Component({
   selector: 'bal-field',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'expanded', 'inverted', 'loading']
+  inputs: ['disabled', 'expanded', 'invalid', 'inverted', 'loading']
 })
 export class BalField {
   protected el: HTMLElement;
@@ -456,13 +472,13 @@ export class BalFieldHint {
 
 export declare interface BalFieldLabel extends Components.BalFieldLabel {}
 @ProxyCmp({
-  inputs: ['required', 'text']
+  inputs: ['required']
 })
 @Component({
   selector: 'bal-field-label',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['required', 'text']
+  inputs: ['required']
 })
 export class BalFieldLabel {
   protected el: HTMLElement;

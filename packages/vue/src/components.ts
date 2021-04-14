@@ -88,6 +88,13 @@ export const BalCardContent = /*@__PURE__*/ defineContainer<JSX.BalCardContent>(
 );
 
 
+export const BalCardHead = /*@__PURE__*/ defineContainer<JSX.BalCardHead>('bal-card-head',
+  [],
+  [],
+  
+);
+
+
 export const BalCardHeading = /*@__PURE__*/ defineContainer<JSX.BalCardHeading>('bal-card-heading',
   [],
   [],
@@ -225,6 +232,7 @@ export const BalDropdownTrigger = /*@__PURE__*/ defineContainer<JSX.BalDropdownT
 
 export const BalField = /*@__PURE__*/ defineContainer<JSX.BalField>('bal-field',
   ['expanded',
+'invalid',
 'disabled',
 'inverted',
 'loading'],
@@ -251,8 +259,7 @@ export const BalFieldHint = /*@__PURE__*/ defineContainer<JSX.BalFieldHint>('bal
 
 
 export const BalFieldLabel = /*@__PURE__*/ defineContainer<JSX.BalFieldLabel>('bal-field-label',
-  ['text',
-'required'],
+  ['required'],
   [],
   
 );
