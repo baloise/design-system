@@ -374,6 +374,13 @@
         max-height: 80px;
       }
 
+      p,
+      h5,
+      h4,
+      h3 {
+        line-height: 1.5 !important;
+      }
+
       > bal-checkbox {
         top: 63px;
       }

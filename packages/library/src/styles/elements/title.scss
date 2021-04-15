@@ -20,7 +20,8 @@ a {
 h1.subtitle,
 h2.subtitle,
 h3.subtitle,
-h4.subtitle {
+h4.subtitle,
+h5.subtitle {
   font-weight: $weight-normal;
 }
 
@@ -39,7 +40,8 @@ a.is-small {
 p.is-bold,
 a.is-bold,
 h3.title.is-size-3,
-h4.title.is-size-4 {
+h4.title.is-size-4,
+h5.title.is-size-5 {
   font-weight: $weight-bold;
 }
 
