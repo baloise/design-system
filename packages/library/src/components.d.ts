@@ -153,6 +153,10 @@ export namespace Components {
          */
         "flat": boolean;
         /**
+          * If `true` a card will not have a shadow on mobile.
+         */
+        "flatMobile": boolean;
+        /**
           * If `true` the card background color becomes blue.
          */
         "inverted": boolean;
@@ -2496,6 +2500,10 @@ declare namespace LocalJSX {
           * If `true` the card loses its shadow.
          */
         "flat"?: boolean;
+        /**
+          * If `true` a card will not have a shadow on mobile.
+         */
+        "flatMobile"?: boolean;
         /**
           * If `true` the card background color becomes blue.
          */

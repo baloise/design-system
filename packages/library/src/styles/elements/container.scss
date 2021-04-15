@@ -1,6 +1,25 @@
 @import 'node_modules/bulma/sass/elements/container.sass';
 
 .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@include tablet() {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@include desktop() {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.container.has-padding {
   padding-left: 10px;
   padding-right: 10px;
 }

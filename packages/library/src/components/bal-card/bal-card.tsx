@@ -15,6 +15,11 @@ export class BalCard {
   @Prop() border = false
 
   /**
+   * If `true` a card will not have a shadow on mobile.
+   */
+  @Prop() flatMobile = false
+
+  /**
    * If `true` the card loses its shadow.
    */
   @Prop() flat = false
@@ -72,6 +77,7 @@ export class BalCard {
           this.square ? 'is-square' : '',
           this.border ? 'has-border' : '',
           this.flat ? 'is-flat' : '',
+          this.flatMobile ? 'is-flat-mobile' : '',
           this.inverted ? 'is-inverted' : '',
         ].join(' ')}
       >
