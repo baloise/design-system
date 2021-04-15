@@ -55,6 +55,7 @@ export const BalButton = /*@__PURE__*/ defineContainer<JSX.BalButton>('bal-butto
 
 export const BalCard = /*@__PURE__*/ defineContainer<JSX.BalCard>('bal-card',
   ['border',
+'flatMobile',
 'flat',
 'square',
 'padding',
@@ -83,6 +84,13 @@ export const BalCardButton = /*@__PURE__*/ defineContainer<JSX.BalCardButton>('b
 
 export const BalCardContent = /*@__PURE__*/ defineContainer<JSX.BalCardContent>('bal-card-content',
   ['inverted'],
+  [],
+  
+);
+
+
+export const BalCardHead = /*@__PURE__*/ defineContainer<JSX.BalCardHead>('bal-card-head',
+  [],
   [],
   
 );
@@ -225,6 +233,7 @@ export const BalDropdownTrigger = /*@__PURE__*/ defineContainer<JSX.BalDropdownT
 
 export const BalField = /*@__PURE__*/ defineContainer<JSX.BalField>('bal-field',
   ['expanded',
+'invalid',
 'disabled',
 'inverted',
 'loading'],
@@ -251,8 +260,7 @@ export const BalFieldHint = /*@__PURE__*/ defineContainer<JSX.BalFieldHint>('bal
 
 
 export const BalFieldLabel = /*@__PURE__*/ defineContainer<JSX.BalFieldLabel>('bal-field-label',
-  ['text',
-'required'],
+  ['required'],
   [],
   
 );
@@ -875,6 +883,13 @@ export const BalSelectOption = /*@__PURE__*/ defineContainer<JSX.BalSelectOption
 'focused',
 'selected',
 'checkbox'],
+  [],
+  
+);
+
+
+export const BalSheet = /*@__PURE__*/ defineContainer<JSX.BalSheet>('bal-sheet',
+  [],
   [],
   
 );

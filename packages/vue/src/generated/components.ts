@@ -8,6 +8,7 @@ BalCard,
 BalCardActions,
 BalCardButton,
 BalCardContent,
+BalCardHead,
 BalCardHeading,
 BalCardSteps,
 BalCardSubtitle,
@@ -54,6 +55,7 @@ BalRadio,
 BalRadioGroup,
 BalSelect,
 BalSelectOption,
+BalSheet,
 BalSnackbar,
 BalSpinner,
 BalTabItem,
@@ -74,6 +76,7 @@ export const applyComponents = (app: App) => {
   app.component('BalCardActions', BalCardActions)
   app.component('BalCardButton', BalCardButton)
   app.component('BalCardContent', BalCardContent)
+  app.component('BalCardHead', BalCardHead)
   app.component('BalCardHeading', BalCardHeading)
   app.component('BalCardSteps', BalCardSteps)
   app.component('BalCardSubtitle', BalCardSubtitle)
@@ -120,6 +123,7 @@ export const applyComponents = (app: App) => {
   app.component('BalRadioGroup', BalRadioGroup)
   app.component('BalSelect', BalSelect)
   app.component('BalSelectOption', BalSelectOption)
+  app.component('BalSheet', BalSheet)
   app.component('BalSnackbar', BalSnackbar)
   app.component('BalSpinner', BalSpinner)
   app.component('BalTabItem', BalTabItem)
