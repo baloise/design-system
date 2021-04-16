@@ -1,0 +1,24 @@
+@import '../../styles/ui-library.utilities.scss';
+
+bal-sheet {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 30;
+
+  font-family: $family-primary;
+  font-weight: $weight-normal;
+  font-size: $size-normal;
+
+  > div.container {
+    background-color: $blue-light;
+    box-shadow: $shadow;
+
+    > div.inner {
+      padding: 20px;
+    }
+  }
+}

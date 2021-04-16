@@ -61,13 +61,13 @@ export class BalButton {
 
 export declare interface BalCard extends Components.BalCard {}
 @ProxyCmp({
-  inputs: ['border', 'color', 'flat', 'inverted', 'padded', 'padding', 'square', 'teaser']
+  inputs: ['border', 'color', 'flat', 'flatMobile', 'inverted', 'padded', 'padding', 'square', 'teaser']
 })
 @Component({
   selector: 'bal-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['border', 'color', 'flat', 'inverted', 'padded', 'padding', 'square', 'teaser']
+  inputs: ['border', 'color', 'flat', 'flatMobile', 'inverted', 'padded', 'padding', 'square', 'teaser']
 })
 export class BalCard {
   protected el: HTMLElement;
@@ -1936,6 +1936,22 @@ export declare interface BalSelectOption extends Components.BalSelectOption {}
   inputs: ['checkbox', 'focused', 'hidden', 'icon', 'label', 'selected', 'value']
 })
 export class BalSelectOption {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalSheet extends Components.BalSheet {}
+
+@Component({
+  selector: 'bal-sheet',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalSheet {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

@@ -35,6 +35,12 @@
     box-shadow: none;
   }
 
+  @include mobile() {
+    &.is-flat-mobile {
+      box-shadow: none !important;
+    }
+  }
+
   &.is-square {
     border-radius: 0;
   }
@@ -190,13 +196,23 @@
     display: flex;
     flex-direction: row;
     position: relative;
+    min-height: 60px + 20px;
 
-    > img,
-    > div,
-    > bal-checkbox {
+    > div {
       flex: 1;
       justify-content: flex-end;
       align-items: center;
+    }
+
+    > img,
+    > bal-checkbox {
+      position: absolute;
+    }
+
+    > bal-checkbox {
+      top: 37px;
+      right: 15px;
+      max-width: 60px;
     }
 
     > img {
@@ -208,21 +224,36 @@
     }
 
     > div {
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: 70px;
+      padding-right: 60px;
       display: flex;
       justify-content: center;
       flex-direction: column;
       align-items: flex-start;
 
-      h4 {
-        margin: 0 !important;
-        padding: 0 !important;
+      small {
+        font-weight: $weight-normal;
       }
-    }
 
-    > bal-checkbox {
-      max-width: 60px;
+      h4.is-size-4 > small {
+        font-size: $size-4;
+      }
+
+      h3.is-size-3 > small {
+        font-size: $size-3;
+      }
+
+      h5.is-size-5 > small {
+        font-size: $size-5;
+      }
+
+      p,
+      h5,
+      h4,
+      h3 {
+        margin: 0 !important;
+        line-height: 1.2;
+      }
     }
   }
 
@@ -283,9 +314,10 @@
     }
 
     .bal-card-head {
-      > div {
-        padding-left: 20px;
-        padding-right: 20px;
+      min-height: 60px + 40px;
+
+      > bal-checkbox {
+        top: 52px;
       }
     }
   }
@@ -328,9 +360,11 @@
     }
 
     .bal-card-head {
+      min-height: 120px;
+
       > div {
-        padding-left: 40px;
-        padding-right: 40px;
+        padding-left: 100px;
+        padding-right: 60px;
       }
 
       > img {
@@ -338,6 +372,17 @@
         max-width: 80px;
         height: 80px;
         max-height: 80px;
+      }
+
+      p,
+      h5,
+      h4,
+      h3 {
+        line-height: 1.5 !important;
+      }
+
+      > bal-checkbox {
+        top: 63px;
       }
     }
   }

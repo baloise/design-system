@@ -103,7 +103,7 @@ export class Tabs {
     if (tab.done) {
       return ''
     }
-    return `${index + 1}`
+    return <span style={{ marginTop: '-2px' }}>{index + 1}</span>
   }
 
   renderSteps() {

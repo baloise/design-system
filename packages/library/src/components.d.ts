@@ -153,6 +153,10 @@ export namespace Components {
          */
         "flat": boolean;
         /**
+          * If `true` a card will not have a shadow on mobile.
+         */
+        "flatMobile": boolean;
+        /**
           * If `true` the card background color becomes blue.
          */
         "inverted": boolean;
@@ -1252,6 +1256,8 @@ export namespace Components {
          */
         "value": string | undefined;
     }
+    interface BalSheet {
+    }
     interface BalSnackbar {
         /**
           * Label text for the action button
@@ -2171,6 +2177,12 @@ declare global {
         prototype: HTMLBalSelectOptionElement;
         new (): HTMLBalSelectOptionElement;
     };
+    interface HTMLBalSheetElement extends Components.BalSheet, HTMLStencilElement {
+    }
+    var HTMLBalSheetElement: {
+        prototype: HTMLBalSheetElement;
+        new (): HTMLBalSheetElement;
+    };
     interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
     }
     var HTMLBalSnackbarElement: {
@@ -2337,6 +2349,7 @@ declare global {
         "bal-radio-group": HTMLBalRadioGroupElement;
         "bal-select": HTMLBalSelectElement;
         "bal-select-option": HTMLBalSelectOptionElement;
+        "bal-sheet": HTMLBalSheetElement;
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
         "bal-tab-item": HTMLBalTabItemElement;
@@ -2496,6 +2509,10 @@ declare namespace LocalJSX {
           * If `true` the card loses its shadow.
          */
         "flat"?: boolean;
+        /**
+          * If `true` a card will not have a shadow on mobile.
+         */
+        "flatMobile"?: boolean;
         /**
           * If `true` the card background color becomes blue.
          */
@@ -3598,6 +3615,8 @@ declare namespace LocalJSX {
          */
         "value"?: string | undefined;
     }
+    interface BalSheet {
+    }
     interface BalSnackbar {
         /**
           * Label text for the action button
@@ -4040,6 +4059,7 @@ declare namespace LocalJSX {
         "bal-radio-group": BalRadioGroup;
         "bal-select": BalSelect;
         "bal-select-option": BalSelectOption;
+        "bal-sheet": BalSheet;
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
         "bal-tab-item": BalTabItem;
@@ -4156,6 +4176,7 @@ declare module "@stencil/core" {
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
             "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
+            "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;

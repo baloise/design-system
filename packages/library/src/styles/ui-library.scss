@@ -8,7 +8,13 @@
 }
 
 .bal-app.bal-app-background {
-  background: $white-ter;
+  background: $white;
+}
+
+@include tablet() {
+  .bal-app.bal-app-background {
+    background: $white-ter;
+  }
 }
 
 .bal-app,

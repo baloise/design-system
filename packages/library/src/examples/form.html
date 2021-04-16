@@ -10,7 +10,7 @@
   </head>
   <body class="bal-app bal-app-background has-sticky-footer">
     <header>
-      <bal-navbar>
+      <bal-navbar no-burger>
         <bal-navbar-brand>
           <bal-icon name="logo" inverted size="large"></bal-icon>
           <bal-text style="margin-left: 15px"><strong>Car</strong> Insurance</bal-text>
@@ -19,7 +19,7 @@
     </header>
     <main>
       <div class="container">
-        <bal-card padding="pure" class="has-large-margin-top">
+        <bal-card padding="pure" flat-mobile class="has-large-margin-top">
           <bal-card-steps>
             <bal-tabs interface="steps">
               <bal-tab-item value="step-a" label="Information" done active>
@@ -144,7 +144,92 @@
                   </div>
                 </div>
               </bal-tab-item>
-              <bal-tab-item value="step-b" label="Coverage" disabled failed></bal-tab-item>
+              <bal-tab-item value="step-b" label="Coverage" failed>
+                <div class="has-large-padding">
+                  <h4 class="subtitle is-size-4 has-no-margin">Car Insurance</h4>
+                  <h2 class="title is-size-2 has-no-margin-top">Coverage</h2>
+
+                  <bal-card border flat class="has-large-margin-top">
+                    <bal-card-head>
+                      <img src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" />
+                      <div>
+                        <h5 class="title is-size-5">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></h5>
+                        <h5 class="subtitle is-size-5 is-hidden-desktop">+ CHF 11.30</h5>
+                        <p class="has-text-blue-light-text is-hidden-touch">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
+                      </div>
+                      <bal-checkbox checked interface="switch"></bal-checkbox>
+                    </bal-card-head>
+
+                    <bal-card-content class="is-hidden-desktop">
+                      <p class="has-text-blue-light-text">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
+                    </bal-card-content>
+
+                    <bal-accordion card open-label="Details einblenden" close-label="Details ausblenden">
+                      <p class="has-padding has-text-blue-light-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                      </p>
+                    </bal-accordion>
+                  </bal-card>
+
+                  <bal-card border flat class="has-large-margin-top">
+                    <bal-card-head>
+                      <img src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" />
+                      <div>
+                        <h5 class="title is-size-5">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></h5>
+                        <h5 class="subtitle is-size-5 is-hidden-desktop">+ CHF 11.30</h5>
+                        <p class="has-text-blue-light-text is-hidden-touch">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
+                      </div>
+                      <bal-checkbox checked interface="switch"></bal-checkbox>
+                    </bal-card-head>
+
+                    <bal-card-content class="is-hidden-desktop">
+                      <p class="has-text-blue-light-text">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
+                    </bal-card-content>
+
+                    <bal-accordion card open-label="Details einblenden" close-label="Details ausblenden">
+                      <p class="has-padding has-text-blue-light-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                      </p>
+                    </bal-accordion>
+                  </bal-card>
+
+                  <bal-card border flat class="has-large-margin-top">
+                    <bal-card-head>
+                      <img src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" />
+                      <div>
+                        <h5 class="title is-size-5">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></h5>
+                        <h5 class="subtitle is-size-5 is-hidden-desktop">+ CHF 11.30</h5>
+                        <p class="has-text-blue-light-text is-hidden-touch">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
+                      </div>
+                      <bal-checkbox checked interface="switch"></bal-checkbox>
+                    </bal-card-head>
+
+                    <bal-card-content class="is-hidden-desktop">
+                      <p class="has-text-blue-light-text">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
+                    </bal-card-content>
+
+                    <bal-accordion card open-label="Details einblenden" close-label="Details ausblenden">
+                      <p class="has-padding has-text-blue-light-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                      </p>
+                    </bal-accordion>
+                  </bal-card>
+                </div>
+
+                <hr class="is-large" />
+
+                <div class="has-large-padding">
+                  <div class="is-flex is-justify-content-center">
+                    <bal-button color="info">Calculate Prime</bal-button>
+                  </div>
+                </div>
+              </bal-tab-item>
               <bal-tab-item value="step-d" label="Summary">
                 <div class="has-large-padding">
                   <h4 class="subtitle is-size-4 has-no-margin">Car Insurance</h4>
@@ -154,7 +239,22 @@
                     <bal-card-heading>Insured vehicle</bal-card-heading>
                     <bal-card-title>Cupra Ateca</bal-card-title>
                     <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
-
+                    <bal-card-content>
+                      <bal-data horizontal>
+                        <bal-data-item>
+                          <bal-data-label>Tony</bal-data-label>
+                          <bal-data-value>Stark</bal-data-value>
+                        </bal-data-item>
+                        <bal-data-item>
+                          <bal-data-label>Steve</bal-data-label>
+                          <bal-data-value>Rogers</bal-data-value>
+                        </bal-data-item>
+                        <bal-data-item>
+                          <bal-data-label>Stephen</bal-data-label>
+                          <bal-data-value>Strange</bal-data-value>
+                        </bal-data-item>
+                      </bal-data>
+                    </bal-card-content>
                     <bal-card-button icon="edit">Edit</bal-card-button>
                   </bal-card>
                   <br />

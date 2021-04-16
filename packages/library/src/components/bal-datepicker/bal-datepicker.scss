@@ -116,7 +116,9 @@ select {
     vertical-align: middle;
     display: table-cell;
     max-width: 0;
-    padding: 12px 5px;
+    padding: 12px 0;
+    width: 44px;
+    min-width: 44px;
     border: 1px solid $blue-light-line;
     color: $blue;
     cursor: pointer;
@@ -175,7 +177,7 @@ select {
 @include tablet() {
   .datepicker-popup {
     padding: 26px 40px;
-    width: 433px;
+    width: 48px * 7 + 80px;
   }
 }
 

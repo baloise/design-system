@@ -42,7 +42,7 @@
         text-decoration: none !important;
 
         bal-text {
-          font-size: $size-medium !important;
+          font-size: $size-large !important;
           line-height: 2.2rem !important;
           text-decoration: none !important;
         }
@@ -135,7 +135,7 @@
         min-width: 160px;
 
         .navbar-item {
-          font-size: $size-6;
+          font-size: $size-small;
           padding: 10px 20px 13px 20px;
           transition: padding-left 0.3s ease;
 

@@ -109,6 +109,7 @@ const customElementTags: string[] = [
  'bal-radio-group',
  'bal-select',
  'bal-select-option',
+ 'bal-sheet',
  'bal-snackbar',
  'bal-spinner',
  'bal-tab-item',
@@ -184,6 +185,7 @@ export const BalCard = /*@__PURE__*/ Vue.extend({
 
   props: {
     border: {} as PropOptions<Components.BalCard['border']>,
+    flatMobile: {} as PropOptions<Components.BalCard['flatMobile']>,
     flat: {} as PropOptions<Components.BalCard['flat']>,
     square: {} as PropOptions<Components.BalCard['square']>,
     padding: {} as PropOptions<Components.BalCard['padding']>,
@@ -1387,6 +1389,14 @@ export const BalSelectOption = /*@__PURE__*/ Vue.extend({
     getOption: createCommonMethod('getOption') as Components.BalSelectOption['getOption'],
   },
   render: createCommonRender('bal-select-option', []),
+});
+
+
+export const BalSheet = /*@__PURE__*/ Vue.extend({
+
+
+
+  render: createCommonRender('bal-sheet', []),
 });
 
 
