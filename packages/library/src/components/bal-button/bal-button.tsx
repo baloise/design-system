@@ -116,6 +116,16 @@ export class Button implements ComponentInterface {
   @Prop() iconRight = ''
 
   /**
+   * The name of the button, which is submitted with the form data.
+   */
+   @Prop() name?: string = ''
+
+  /**
+   * The value of the button, which is submitted with the form data.
+   */
+   @Prop() value?: string | number = ''
+
+  /**
    * Emitted when the link element has clicked.
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
@@ -242,11 +252,11 @@ export class Button implements ComponentInterface {
   }
 
   render() {
-    const { type, download, href, rel, target } = this
+    const { type, download, href, rel, target, name, value } = this
     const TagType = this.href === undefined ? 'button' : ('a' as any)
     const attrs =
       TagType === 'button'
-        ? { type }
+        ? { type, name, value }
         : {
             download,
             href,
