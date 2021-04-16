@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.12.0](https://github.com/baloise/ui-library/compare/v4.11.0...v4.12.0) (2021-04-16)
+
+
+### Features
+
+* **sheet:** add sheet component ([d674457](https://github.com/baloise/ui-library/commit/d6744572ed24382576e4f9453f2295aff871a86f))
+
+
+
+# 4.9.0 (2021-04-13)
+
+
+
+
+
 # [4.11.0](https://github.com/baloise/ui-library/compare/v4.10.0...v4.11.0) (2021-04-15)
 
 **Note:** Version bump only for package @baloise/ui-library-vue-2

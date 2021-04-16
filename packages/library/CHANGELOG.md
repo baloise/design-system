@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.12.0](https://github.com/baloise/ui-library/compare/v4.11.0...v4.12.0) (2021-04-16)
+
+
+### Bug Fixes
+
+* **field:** removed text prop from the label. Use the slot instead ([acdaa74](https://github.com/baloise/ui-library/commit/acdaa7418742ab7911e88ccc6e2eecce9c417236))
+
+
+### Features
+
+* **sheet:** add sheet component ([d674457](https://github.com/baloise/ui-library/commit/d6744572ed24382576e4f9453f2295aff871a86f))
+* **sheet:** add sheet component ([e800d76](https://github.com/baloise/ui-library/commit/e800d7624d777e36d3d5a950d9b1ede5bcb5c475))
+* adjust font size to 16px ([64f85b3](https://github.com/baloise/ui-library/commit/64f85b38adfef0cc8fd477757499937f10521f68))
+* **card:** add service card styles ([44b8fcd](https://github.com/baloise/ui-library/commit/44b8fcd2ade7a2f2a3a682e899107ea56e56e8fc))
+* **field:** add special validation style ([5678629](https://github.com/baloise/ui-library/commit/5678629897475575f4bd0060bb32ca86a0f53e7a))
+
+
+
+# 4.9.0 (2021-04-13)
+
+
+
+
+
 # [4.11.0](https://github.com/baloise/ui-library/compare/v4.10.0...v4.11.0) (2021-04-15)
 
 
