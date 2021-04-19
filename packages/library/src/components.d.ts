@@ -679,6 +679,12 @@ export namespace Components {
          */
         "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
+    interface BalIconEyeClosed {
+        /**
+          * Defines the size of the icon.
+         */
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
     interface BalIconGithub {
         /**
           * Defines the size of the icon.
@@ -1883,6 +1889,12 @@ declare global {
         prototype: HTMLBalIconEditElement;
         new (): HTMLBalIconEditElement;
     };
+    interface HTMLBalIconEyeClosedElement extends Components.BalIconEyeClosed, HTMLStencilElement {
+    }
+    var HTMLBalIconEyeClosedElement: {
+        prototype: HTMLBalIconEyeClosedElement;
+        new (): HTMLBalIconEyeClosedElement;
+    };
     interface HTMLBalIconGithubElement extends Components.BalIconGithub, HTMLStencilElement {
     }
     var HTMLBalIconGithubElement: {
@@ -2300,6 +2312,7 @@ declare global {
         "bal-icon-document": HTMLBalIconDocumentElement;
         "bal-icon-download": HTMLBalIconDownloadElement;
         "bal-icon-edit": HTMLBalIconEditElement;
+        "bal-icon-eye-closed": HTMLBalIconEyeClosedElement;
         "bal-icon-github": HTMLBalIconGithubElement;
         "bal-icon-info": HTMLBalIconInfoElement;
         "bal-icon-info-circle": HTMLBalIconInfoCircleElement;
@@ -3019,6 +3032,12 @@ declare namespace LocalJSX {
         "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
     }
     interface BalIconEdit {
+        /**
+          * Defines the size of the icon.
+         */
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+    }
+    interface BalIconEyeClosed {
         /**
           * Defines the size of the icon.
          */
@@ -4010,6 +4029,7 @@ declare namespace LocalJSX {
         "bal-icon-document": BalIconDocument;
         "bal-icon-download": BalIconDownload;
         "bal-icon-edit": BalIconEdit;
+        "bal-icon-eye-closed": BalIconEyeClosed;
         "bal-icon-github": BalIconGithub;
         "bal-icon-info": BalIconInfo;
         "bal-icon-info-circle": BalIconInfoCircle;
@@ -4127,6 +4147,7 @@ declare module "@stencil/core" {
             "bal-icon-document": LocalJSX.BalIconDocument & JSXBase.HTMLAttributes<HTMLBalIconDocumentElement>;
             "bal-icon-download": LocalJSX.BalIconDownload & JSXBase.HTMLAttributes<HTMLBalIconDownloadElement>;
             "bal-icon-edit": LocalJSX.BalIconEdit & JSXBase.HTMLAttributes<HTMLBalIconEditElement>;
+            "bal-icon-eye-closed": LocalJSX.BalIconEyeClosed & JSXBase.HTMLAttributes<HTMLBalIconEyeClosedElement>;
             "bal-icon-github": LocalJSX.BalIconGithub & JSXBase.HTMLAttributes<HTMLBalIconGithubElement>;
             "bal-icon-info": LocalJSX.BalIconInfo & JSXBase.HTMLAttributes<HTMLBalIconInfoElement>;
             "bal-icon-info-circle": LocalJSX.BalIconInfoCircle & JSXBase.HTMLAttributes<HTMLBalIconInfoCircleElement>;
