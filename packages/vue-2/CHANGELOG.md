@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.13.0](https://github.com/baloise/ui-library/compare/v4.12.0...v4.13.0) (2021-04-19)
+
+
+### Features
+
+* **icon:** add bal-icon-eye-closed ([c39cc82](https://github.com/baloise/ui-library/commit/c39cc82340049a98370235eba0769fb16bbe640f))
+
+
+
+
+
 # [4.12.0](https://github.com/baloise/ui-library/compare/v4.11.0...v4.12.0) (2021-04-16)
 
 
