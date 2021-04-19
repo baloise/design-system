@@ -3,6 +3,7 @@ import { findItemLabel } from '../../helpers/helpers'
 import { isEnterKey, isEscapeKey, isArrowDownKey, isArrowUpKey } from '../../utils/balKeyUtil'
 import { areArraysEqual } from '../../utils/balArrayUtil'
 import { BalOptionValue } from '../bal-select-option/bal-select-option.type'
+import { isNil } from 'lodash'
 
 @Component({
   tag: 'bal-select',
@@ -147,6 +148,9 @@ export class Select {
 
   componentDidLoad() {
     this.didInit = true
+    if (!isNil(this.value)) {
+      this.valueWatcher(this.value, [])
+    }
   }
 
   /**
