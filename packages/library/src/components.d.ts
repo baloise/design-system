@@ -111,6 +111,10 @@ export namespace Components {
          */
         "loading": boolean;
         /**
+          * The name of the button, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
           * If `true` the button is outlined
          */
         "outlined": boolean;
@@ -138,6 +142,10 @@ export namespace Components {
           * The type of button.
          */
         "type": 'button' | 'reset' | 'submit';
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "value"?: string | number;
     }
     interface BalCard {
         /**
@@ -2465,6 +2473,10 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * The name of the button, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
           * Emitted when the button loses focus.
          */
         "onBalBlur"?: (event: CustomEvent<void>) => void;
@@ -2508,6 +2520,10 @@ declare namespace LocalJSX {
           * The type of button.
          */
         "type"?: 'button' | 'reset' | 'submit';
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "value"?: string | number;
     }
     interface BalCard {
         /**

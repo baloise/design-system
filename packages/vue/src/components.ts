@@ -161,6 +161,16 @@ export const BalButton = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
+    name: {
+      type: String,
+      default: '',
+      required: false,
+    },
+    value: {
+      type: [String, Number],
+      default: '',
+      required: false,
+    },
   },
   emits: {
     balNavigate: (value: MouseEvent) => true,

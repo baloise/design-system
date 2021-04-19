@@ -175,6 +175,8 @@ export const BalButton = /*@__PURE__*/ Vue.extend({
     bottomRounded: {} as PropOptions<Components.BalButton['bottomRounded']>,
     icon: {} as PropOptions<Components.BalButton['icon']>,
     iconRight: {} as PropOptions<Components.BalButton['iconRight']>,
+    name: {} as PropOptions<Components.BalButton['name']>,
+    value: {} as PropOptions<Components.BalButton['value']>,
   },
 
 
