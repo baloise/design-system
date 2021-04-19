@@ -18,11 +18,6 @@ export class Dropdown {
   @Prop() expanded: boolean = false
 
   /**
-   * Defines the length of the menu in pixel.
-   */
-  @Prop() scrollable: number = 0
-
-  /**
    * If `true` the dropdown content has a fixed width
    */
   @Prop() fixedContentWidth: boolean = false

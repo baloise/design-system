@@ -3,6 +3,7 @@ import { findItemLabel } from '../../helpers/helpers'
 import { isEnterKey, isEscapeKey, isArrowDownKey, isArrowUpKey } from '../../utils/balKeyUtil'
 import { areArraysEqual } from '../../utils/balArrayUtil'
 import { BalOptionValue } from '../bal-select-option/bal-select-option.type'
+import { isNil } from 'lodash'
 
 @Component({
   tag: 'bal-select',
@@ -147,6 +148,9 @@ export class Select {
 
   componentDidLoad() {
     this.didInit = true
+    if (!isNil(this.value)) {
+      this.valueWatcher(this.value, [])
+    }
   }
 
   /**
@@ -405,7 +409,7 @@ export class Select {
           'is-disabled': this.disabled,
         }}
       >
-        <bal-dropdown expanded={this.expanded} scrollable={this.scrollable} onBalCollapse={this.onDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
+        <bal-dropdown expanded={this.expanded} onBalCollapse={this.onDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
           <bal-dropdown-trigger>
             <bal-input
               ref={el => (this.inputElement = el as HTMLBalInputElement)}
@@ -437,7 +441,7 @@ export class Select {
               size={this.typeahead && !this.multiple ? 'small' : 'xsmall'}
             />
           </bal-dropdown-trigger>
-          <bal-dropdown-menu>
+          <bal-dropdown-menu scrollable={this.scrollable}>
             {this.renderFilter()}
             <slot></slot>
           </bal-dropdown-menu>

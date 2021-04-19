@@ -587,11 +587,6 @@ export const BalDropdown = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
-    scrollable: {
-      type: Number,
-      default: 0,
-      required: false,
-    },
     fixedContentWidth: {
       type: Boolean,
       default: false,
