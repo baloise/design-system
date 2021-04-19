@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.15.1](https://github.com/baloise/ui-library/compare/v4.15.0...v4.15.1) (2021-04-19)
+
+
+### Bug Fixes
+
+* **select:** add scrollable to dropdown-menu ([7383b03](https://github.com/baloise/ui-library/commit/7383b03a4a86f1359e1f8ffd414eccebc3699179))
+
+
+
+# 4.14.0 (2021-04-19)
+
+
+
+
+
 # [4.15.0](https://github.com/baloise/ui-library/compare/v4.14.0...v4.15.0) (2021-04-19)
 
 **Note:** Version bump only for package @baloise/ui-library-vue
