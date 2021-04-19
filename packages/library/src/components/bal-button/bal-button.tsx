@@ -187,6 +187,13 @@ export class Button implements ComponentInterface {
     }
   }
 
+  private get spinnerCssClass() {
+    return {
+      'is-small': true,
+      'is-inverted': !(this.color === 'link' || this.outlined),
+    }
+  }
+
   private get iconSize() {
     if (this.size === 'small') {
       return 'xsmall'
@@ -275,7 +282,7 @@ export class Button implements ComponentInterface {
       >
         <TagType {...attrs} type={this.type} class={this.buttonCssClass} part="native" disabled={this.disabled} onFocus={this.onFocus} onBlur={this.onBlur} onClick={this.onClick}>
           <span {...this.spanAttrs}>{/* Empty span to get the correct text height */}</span>
-          <bal-spinner {...this.loadingAttrs} class="is-small is-inverted" />
+          <bal-spinner {...this.loadingAttrs} class={this.spinnerCssClass} />
           <bal-icon {...this.leftIconAttrs} class="icon-left" name={this.icon} size={this.square ? this.size : this.iconSize} color={this.color} inverted={this.isIconInverted} />
           <bal-text {...this.spanAttrs} small={this.size === 'small'} style={{ display: this.loading ? 'none' : 'inline' }}>
             <slot />
