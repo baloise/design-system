@@ -354,14 +354,14 @@ export class BalDatepicker {
 
 export declare interface BalDropdown extends Components.BalDropdown {}
 @ProxyCmp({
-  inputs: ['expanded', 'fixedContentWidth', 'isActive', 'scrollable'],
+  inputs: ['expanded', 'fixedContentWidth', 'isActive'],
   methods: ['open', 'close', 'toggle', 'getContentElement']
 })
 @Component({
   selector: 'bal-dropdown',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['expanded', 'fixedContentWidth', 'isActive', 'scrollable'],
+  inputs: ['expanded', 'fixedContentWidth', 'isActive'],
   outputs: ['balCollapse', 'balDropdownPrepare']
 })
 export class BalDropdown {

@@ -12,7 +12,6 @@ A dropdown shows and hides content close to the trigger element.
 | `expanded`          | `expanded`            | If `true` the field spans over the whole width.  | `boolean` | `false` |
 | `fixedContentWidth` | `fixed-content-width` | If `true` the dropdown content has a fixed width | `boolean` | `false` |
 | `isActive`          | `is-active`           | If `true` the dropdown content is open.          | `boolean` | `false` |
-| `scrollable`        | `scrollable`          | Defines the length of the menu in pixel.         | `number`  | `0`     |
 
 
 ## Events

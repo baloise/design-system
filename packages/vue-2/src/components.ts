@@ -394,7 +394,6 @@ export const BalDropdown = /*@__PURE__*/ Vue.extend({
 
   props: {
     expanded: {} as PropOptions<Components.BalDropdown['expanded']>,
-    scrollable: {} as PropOptions<Components.BalDropdown['scrollable']>,
     fixedContentWidth: {} as PropOptions<Components.BalDropdown['fixedContentWidth']>,
     isActive: {} as PropOptions<Components.BalDropdown['isActive']>,
   },

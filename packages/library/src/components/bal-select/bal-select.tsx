@@ -405,7 +405,7 @@ export class Select {
           'is-disabled': this.disabled,
         }}
       >
-        <bal-dropdown expanded={this.expanded} scrollable={this.scrollable} onBalCollapse={this.onDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
+        <bal-dropdown expanded={this.expanded} onBalCollapse={this.onDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
           <bal-dropdown-trigger>
             <bal-input
               ref={el => (this.inputElement = el as HTMLBalInputElement)}
@@ -437,7 +437,7 @@ export class Select {
               size={this.typeahead && !this.multiple ? 'small' : 'xsmall'}
             />
           </bal-dropdown-trigger>
-          <bal-dropdown-menu>
+          <bal-dropdown-menu scrollable={this.scrollable}>
             {this.renderFilter()}
             <slot></slot>
           </bal-dropdown-menu>
