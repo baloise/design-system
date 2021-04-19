@@ -984,6 +984,25 @@ export class BalIconEdit {
 }
 
 
+export declare interface BalIconEyeClosed extends Components.BalIconEyeClosed {}
+@ProxyCmp({
+  inputs: ['size']
+})
+@Component({
+  selector: 'bal-icon-eye-closed',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['size']
+})
+export class BalIconEyeClosed {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface BalIconGithub extends Components.BalIconGithub {}
 @ProxyCmp({
   inputs: ['size']

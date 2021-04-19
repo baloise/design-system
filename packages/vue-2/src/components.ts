@@ -60,6 +60,7 @@ const customElementTags: string[] = [
  'bal-icon-document',
  'bal-icon-download',
  'bal-icon-edit',
+ 'bal-icon-eye-closed',
  'bal-icon-github',
  'bal-icon-info',
  'bal-icon-info-circle',
@@ -775,6 +776,17 @@ export const BalIconEdit = /*@__PURE__*/ Vue.extend({
 
 
   render: createCommonRender('bal-icon-edit', []),
+});
+
+
+export const BalIconEyeClosed = /*@__PURE__*/ Vue.extend({
+
+  props: {
+    size: {} as PropOptions<Components.BalIconEyeClosed['size']>,
+  },
+
+
+  render: createCommonRender('bal-icon-eye-closed', []),
 });
 
 

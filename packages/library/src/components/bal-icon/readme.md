@@ -29,6 +29,7 @@ Then the build script will automatically optimize the svg and create its own web
 | <bal-icon name="document" /> | `document` |
 | <bal-icon name="download" /> | `download` |
 | <bal-icon name="edit" /> | `edit` |
+| <bal-icon name="eye-closed" /> | `eye-closed` |
 | <bal-icon name="github" /> | `github` |
 | <bal-icon name="info-circle" /> | `info-circle` |
 | <bal-icon name="info" /> | `info` |

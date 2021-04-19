@@ -1171,6 +1171,21 @@ export const BalIconEdit = /*@__PURE__*/ defineComponent({
   setup: defineSetup('bal-icon-edit', [], undefined)
 })
 
+export const BalIconEyeClosed = /*@__PURE__*/ defineComponent({
+  name: 'bal-icon-eye-closed',
+  props: {
+    size: {
+      type: String,
+      default: '',
+      required: false,
+    },
+  },
+  emits: {
+
+  },
+  setup: defineSetup('bal-icon-eye-closed', [], undefined)
+})
+
 export const BalIconGithub = /*@__PURE__*/ defineComponent({
   name: 'bal-icon-github',
   props: {
