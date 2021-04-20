@@ -1,32 +1,59 @@
 {
-  "name": "vue",
+  "name": "vue-starter-kit",
   "version": "0.1.0",
-  "private": true,
+  "description": "Boilerplate project to start a Vue Baloise Application",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Gery Hirschfeld",
+    "email": "gerhard.hirschfeld@baloise.ch",
+    "url": "https://github.com/hirsch88"
+  },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "vue-cli-service serve --port 3000",
+    "build": "vue-cli-service build --mode production",
+    "test": "start-server-and-test serve http-get://localhost:3000 cypress:run",
+    "test:ci": "start-server-and-test serve http-get://localhost:3000 cypress:run:ci",
+    "lint": "vue-cli-service lint",
+    "format": "npm run prettier:write",
+    "prettier:write": "prettier --write \"./src\"",
+    "prettier:check": "prettier --check \"./src\"",
+    "cypress:run": "cypress run --config video=false,screenshotOnRunFailure=false",
+    "cypress:run:ci": "cypress run --config",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
-    "@baloise/ui-library-vue-2": "^4.0.0-rc.16",
+    "@baloise/ui-library": "^4.15.1",
+    "@baloise/ui-library-vue": "^4.15.1",
+    "@baloise/vue-axios": "^1.0.0",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11",
-    "vue-router": "^3.2.0"
+    "vee-validate": "^4.2.4",
+    "vue": "^3.0.0",
+    "vue-i18n": "^9.0.0",
+    "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.33.0",
-    "@typescript-eslint/parser": "^2.33.0",
+    "@baloise/ui-library-testing": "^4.15.1",
+    "@types/jest": "^26.0.21",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "@vue/eslint-config-typescript": "^5.0.2",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "cypress": "^6.8.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.0.0",
+    "prettier": "^2.2.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
-    "typescript": "~3.9.3",
-    "vue-template-compiler": "^2.6.11"
+    "start-server-and-test": "^1.12.1",
+    "typescript": "~4.1.5"
   }
 }

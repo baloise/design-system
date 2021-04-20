@@ -12,7 +12,7 @@ import { angularOutputTarget, ValueAccessorConfig } from '@baloise/angular-outpu
  */
 const vueComponentModels: ComponentModelConfig[] = [
   {
-    elements: ['bal-radio-group', 'bal-datepicker', 'bal-timeinput'],
+    elements: ['bal-radio-group', 'bal-datepicker', 'bal-timeinput', 'bal-select'],
     event: 'balChange',
     targetAttr: 'value',
   },

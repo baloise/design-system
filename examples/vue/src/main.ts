@@ -1,15 +1,64 @@
-import './style.scss'
+/* ============
+ * Main File
+ * ============
+ *
+ * The main.ts file is the entry point of our web application.
+ * Here we add global styling, plugins and define where the should get mounted.
+ */
 
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import { BalUiLibraryPlugin } from '@baloise/ui-library-vue-2'
+import { createApp } from 'vue'
 
-Vue.config.productionTip = false
+/* ============
+ * Styling
+ * ============
+ *
+ * The global styles are defined in the src/styles/main.scss file.
+ *
+ * https://sass-lang.com/
+ */
 
-Vue.use(BalUiLibraryPlugin)
+import './styles/main.scss'
 
-new Vue({
-  router,
-  render: h => h(App),
-}).$mount('#app')
+/* ============
+ * Configure App
+ * ============
+ *
+ * In this section we define our entry component and mount it to a dom
+ * element form the index.html. Moreover, the plugins get registered.
+ *
+ * Plugins are self-contained code that usually add global-level functionality to Vue.
+ * It is either an object that exposes an install() method, or a function.
+ *
+ * https://v3.vuejs.org/guide/plugins.html
+ */
+
+import { baloiseUiLibrary } from '@baloise/ui-library-vue'
+import { vueAxios } from '@baloise/vue-axios'
+import { router } from './plugins/router.plugin'
+import { i18n } from './plugins/i18n.plugin'
+import App from './app/App.vue'
+
+createApp(App)
+  /**
+   * Our router plugins, which sync URLs to views in your app.
+   * To define a new route open the src/app/router/routes file.
+   */
+  .use(router)
+  /**
+   * The localization plugin to support multiple locals.
+   * There are located in the src/i18n folder.
+   */
+  .use(i18n)
+  /**
+   * Our plugin to do http request with the axios library.
+   */
+  .use(vueAxios)
+  /**
+   * Our Baloise component library.
+   * https://baloise-ui-library.now.sh/
+   */
+  .use(baloiseUiLibrary, { useVite: false })
+  /**
+   * Bind the Vue instance to the HTML DOM.
+   */
+  .mount('#app')

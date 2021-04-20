@@ -8,7 +8,96 @@ The utilities are simple functions.
 
 ### Vue
 
-> Coming soon!
+For Vue we use the libary [VeeValidate](https://vee-validate.logaretm.com/v4/) togehter with the [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html).
+
+First install VeeValidate (Version >= 4.x.x).
+
+```bash
+npm add vee-validate
+```
+
+#### Define i18n validators
+
+In this section we change the return type of our `BalValidators` into the the translated texts.
+Pass your i18n translation function to the `useValidator` helper and then use the returned helper function `createValidator` to map the `BalValidators` with your translations.
+
+```typescript
+import { BalValidators } from '@baloise/ui-library'
+import { useValidator, ValidatorFn } from '@baloise/ui-library-vue'
+import { i18n } from '../../plugins/i18n.plugin'
+
+const { createValidator } = useValidator(i18n.global.t)
+
+export const isRequired = (): ValidatorFn => createValidator(BalValidators.isRequired(), 'validator.required')
+```
+
+#### Create form
+
+First we define our template like this.
+
+```html
+<form @submit.prevent="submit">
+  <BalField expanded :disabled="isFirstNameDisabled">
+    <BalFieldLabel required>
+      {{ $t('form.firstName.label') }}
+    </BalFieldLabel>
+    <BalFieldControl>
+      <BalInput
+        v-model="firstName"
+        :name="firstNameName"
+        :placeholder="$t('form.firstName.placeholder')"
+        :disabled="isFirstNameDisabled"
+      ></BalInput>
+    </BalFieldControl>
+    <BalFieldMessage color="danger" v-if="!isFirstNameDisabled">
+      {{ firstNameErrorMessage }}
+    </BalFieldMessage>
+  </BalField>
+</form>
+```
+
+Now we have to define the logic of our form with the help of VeeValidate.
+
+:::tip
+The helper function `validators` helps us to combine validators and to use the possibility to dynamically disable fields and their validation rules.
+:::
+
+```typescript
+import { defineComponent, ref } from 'vue'
+import { validators } from '@baloise/ui-library-vue'
+import { useField, useForm, useIsFormValid } from 'vee-validate'
+import { isMaxLength, isMinLength, isRequired } from '../helpers/validators'
+
+export default defineComponent({
+  name: 'Form',
+  setup() {
+    const { validate } = useForm()
+    const isFormValid = useIsFormValid()
+    const isFirstNameDisabled = ref(false)
+
+    const {
+      errorMessage: firstNameErrorMessage,
+      value: firstName,
+      name: firstNameName,
+    } = useField('firstName', validators(isFirstNameDisabled, [ isRequired() ]))
+
+    async function submit() {
+      const { valid, errors } = await validate()
+      ...
+    }
+
+    function disable() {
+      isFirstNameDisabled.value = !isFirstNameDisabled.value
+    }
+
+    return {
+      firstName, firstNameErrorMessage, firstNameName,
+      isFirstNameDisabled, isFormValid,
+      disable, submit,
+    }
+  },
+})
+```
 
 ### Angular
 
@@ -17,7 +106,7 @@ The validator functions are defined as [Angular Custom Validators](https://angul
 ```typescript
 import { Component } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { BalDateUtil } from '@baloise/ui-library'
+import { newDateString, now } from '@baloise/ui-library'
 import { BalValidators } from '@baloise/ui-library-angular'
 
 @Component({
@@ -26,9 +115,9 @@ import { BalValidators } from '@baloise/ui-library-angular'
 })
 export class FormComponent {
   form = new FormGroup({
-    birthdate: new FormControl(BalDateUtil.newDateString(BalDateUtil.now()), [
+    birthdate: new FormControl(newDateString(now()), [
       BalValidators.isRequired()
-      BalValidators.isAfter(BalDateUtil.now()),
+      BalValidators.isAfter(now()),
     ]),
   })
   ...
@@ -47,7 +136,7 @@ export class FormComponent {
 Returns `true` if the value date is before the given date
 
 ```typescript
-BalValidators.isCustom((value) => value > 2)(3) // true
+BalValidators.isCustom(value => value > 2)(3) // true
 ```
 
 ### isBefore
