@@ -2184,6 +2184,9 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
       default: [],
       required: false,
     },
+    modelValue: {
+      default: undefined,
+    },
   },
   emits: {
     balChange: (value: string[]) => true,
@@ -2193,8 +2196,12 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
     balClick: (value: MouseEvent) => true,
     balKeyPress: (value: KeyboardEvent) => true,
     balCancel: (value: KeyboardEvent) => true,
+    'update:modelValue': (value: any) => true,
   },
-  setup: defineSetup('bal-select', ['balChange','balInput','balBlur','balFocus','balClick','balKeyPress','balCancel'], undefined)
+  setup: defineSetup('bal-select', ['balChange','balInput','balBlur','balFocus','balClick','balKeyPress','balCancel','update:modelValue'], {
+    modelProp: 'value',
+    modelUpdateEvent: 'balChange'
+  })
 })
 
 export const BalSelectOption = /*@__PURE__*/ defineComponent({
