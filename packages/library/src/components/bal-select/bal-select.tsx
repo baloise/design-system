@@ -96,7 +96,7 @@ export class Select {
     if (areValueNotEqual && this.didInit && this.inputElement) {
       const selectedOptions = this.childOptions.filter(option => option.value !== undefined).filter(option => this.value.indexOf(option.value as string) >= 0)
       if (this.value.length !== 0) {
-        this.inputElement.value = selectedOptions.map(o => o.value).join(', ')
+        this.inputElement.value = selectedOptions.map(o => o.label).join(', ')
       }
       this.sync()
       this.balChange.emit(this.value)

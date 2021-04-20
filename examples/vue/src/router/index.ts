@@ -1,61 +1,42 @@
-import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '@/views/Home.vue'
+import { RouteRecordRaw } from 'vue-router'
+import Home from '../app/pages/Home.vue'
 
-Vue.use(VueRouter)
-
-export const routes: Array<RouteConfig> = [
+export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
     component: Home,
   },
   {
+    path: '/form',
+    name: 'Form',
+    component: () =>
+      import(/* webpackChunkName: "form" */ '../app/pages/Form.vue'),
+  },
+  {
     path: '/checkbox',
     name: 'Checkbox',
-    component: () => import('../views/Checkbox.vue'),
+    component: () =>
+      import(/* webpackChunkName: "checkbox" */ '../app/pages/Checkbox.vue'),
   },
   {
     path: '/radio',
     name: 'Radio',
-    component: () => import('../views/Radio.vue'),
-  },
-  {
-    path: '/input',
-    name: 'Input',
-    component: () => import('../views/Input.vue'),
+    component: () =>
+      import(/* webpackChunkName: "radio" */ '../app/pages/Radio.vue'),
   },
   {
     path: '/datepicker',
     name: 'Datepicker',
-    component: () => import('../views/Datepicker.vue'),
+    component: () =>
+      import(
+        /* webpackChunkName: "datepicker" */ '../app/pages/Datepicker.vue'
+      ),
   },
   {
     path: '/select',
     name: 'Select',
-    component: () => import('../views/Select.vue'),
-  },
-  {
-    path: '/timeinput',
-    name: 'Timeinput',
-    component: () => import('../views/Timeinput.vue'),
-  },
-  {
-    path: '/toast',
-    name: 'Toast',
-    component: () => import('../views/Toast.vue'),
-  },
-  {
-    path: '/modal',
-    name: 'Modal',
-    component: () => import('../views/Modal.vue'),
+    component: () =>
+      import(/* webpackChunkName: "select" */ '../app/pages/Select.vue'),
   },
 ]
-
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes,
-})
-
-export default router

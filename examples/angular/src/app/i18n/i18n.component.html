@@ -1,6 +1,12 @@
 <h1 class="title is-size-1 has-no-margin-top">i18n</h1>
 
-<bal-accordion class="box" [openLabel]="'open' | translate" [closeLabel]="'close' | translate" data-test-id="accordion">
+<bal-accordion
+  card
+  class="box"
+  [openLabel]="'open' | translate"
+  [closeLabel]="'close' | translate"
+  data-test-id="accordion"
+>
   <p class="has-padding">
     {{ 'message' | translate }}
   </p>
