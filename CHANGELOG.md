@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.15.2](https://github.com/baloise/ui-library/compare/v4.15.1...v4.15.2) (2021-04-20)
+
+
+### Bug Fixes
+
+* **select:** show label instead of value ([3856536](https://github.com/baloise/ui-library/commit/3856536626e7a2551c9f42a8363aa8c13b1f15ff))
+
+
+
+
+
 ## [4.15.1](https://github.com/baloise/ui-library/compare/v4.15.0...v4.15.1) (2021-04-19)
 
 
