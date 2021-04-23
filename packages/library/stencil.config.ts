@@ -77,6 +77,9 @@ export const config: Config = {
     safari10: true,
     scriptDataOpts: true,
     shadowDomShim: true,
+    appendChildSlotFix: true,
+    cloneNodeFix: true,
+    slotChildNodesFix: true,
   },
   outputTargets: [
     {
