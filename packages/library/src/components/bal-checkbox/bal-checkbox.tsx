@@ -19,11 +19,6 @@ export class Checkbox {
   @Prop() name: string = this.inputId
 
   /**
-   * The label of the control.
-   */
-  @Prop() label: string = ''
-
-  /**
    * Defines the layout of the checkbox button
    */
   @Prop() interface: 'checkbox' | 'switch' = 'checkbox'
@@ -156,7 +151,7 @@ export class Checkbox {
             ev.stopPropagation()
           }}
         >
-          <slot>{this.label}</slot>
+          <slot></slot>
         </label>
       </Host>
     )

@@ -14,7 +14,6 @@ Checkboxes allow the selection of multiple options from a set of options. They a
 | `disabled`    | `disabled`     | If `true`, the user cannot interact with the checkbox.          | `boolean`                | `false`        |
 | `interface`   | `interface`    | Defines the layout of the checkbox button                       | `"checkbox" \| "switch"` | `'checkbox'`   |
 | `inverted`    | `inverted`     | If `true`, the control works on dark background.                | `boolean`                | `false`        |
-| `label`       | `label`        | The label of the control.                                       | `string`                 | `''`           |
 | `name`        | `name`         | The name of the control, which is submitted with the form data. | `string`                 | `this.inputId` |
 | `value`       | `value`        | The value of the control.                                       | `string`                 | `'on'`         |
 

@@ -247,10 +247,6 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * The label of the control.
-         */
-        "label": string;
-        /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
@@ -1117,10 +1113,6 @@ export namespace Components {
           * If `true`, the control works on dark background.
          */
         "inverted": boolean;
-        /**
-          * The label of the control.
-         */
-        "label": string;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -2611,10 +2603,6 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * The label of the control.
-         */
-        "label"?: string;
-        /**
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
@@ -3481,10 +3469,6 @@ declare namespace LocalJSX {
           * If `true`, the control works on dark background.
          */
         "inverted"?: boolean;
-        /**
-          * The label of the control.
-         */
-        "label"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
