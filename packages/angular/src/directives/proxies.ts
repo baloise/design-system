@@ -223,14 +223,14 @@ export class BalCardTitle {
 
 export declare interface BalCheckbox extends Components.BalCheckbox {}
 @ProxyCmp({
-  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'label', 'name', 'value'],
+  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'name', 'value'],
   methods: ['setFocus', 'getInputElement']
 })
 @Component({
   selector: 'bal-checkbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'label', 'name', 'value'],
+  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'name', 'value'],
   outputs: ['balChange', 'balFocus', 'balBlur']
 })
 export class BalCheckbox {
@@ -1861,14 +1861,14 @@ export class BalPagination {
 
 export declare interface BalRadio extends Components.BalRadio {}
 @ProxyCmp({
-  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'label', 'name', 'value'],
+  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'name', 'value'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'bal-radio',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'label', 'name', 'value'],
+  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'name', 'value'],
   outputs: ['balFocus', 'balBlur']
 })
 export class BalRadio {

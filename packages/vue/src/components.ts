@@ -352,11 +352,6 @@ export const BalCheckbox = /*@__PURE__*/ defineComponent({
       default: undefined,
       required: false,
     },
-    label: {
-      type: String,
-      default: '',
-      required: false,
-    },
     interface: {
       type: String,
       default: 'checkbox',
@@ -2044,11 +2039,6 @@ export const BalRadio = /*@__PURE__*/ defineComponent({
     balTabindex: {
       type: Number,
       default: 0,
-      required: false,
-    },
-    label: {
-      type: String,
-      default: '',
       required: false,
     },
     value: {

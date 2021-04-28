@@ -286,7 +286,6 @@ export const BalCheckbox = /*@__PURE__*/ Vue.extend({
 
   props: {
     name: {} as PropOptions<Components.BalCheckbox['name']>,
-    label: {} as PropOptions<Components.BalCheckbox['label']>,
     interface: {} as PropOptions<Components.BalCheckbox['interface']>,
     balTabindex: {} as PropOptions<Components.BalCheckbox['balTabindex']>,
     value: {} as PropOptions<Components.BalCheckbox['value']>,
@@ -1319,7 +1318,6 @@ export const BalRadio = /*@__PURE__*/ Vue.extend({
     name: {} as PropOptions<Components.BalRadio['name']>,
     interface: {} as PropOptions<Components.BalRadio['interface']>,
     balTabindex: {} as PropOptions<Components.BalRadio['balTabindex']>,
-    label: {} as PropOptions<Components.BalRadio['label']>,
     value: {} as PropOptions<Components.BalRadio['value']>,
     checked: {} as PropOptions<Components.BalRadio['checked']>,
     disabled: {} as PropOptions<Components.BalRadio['disabled']>,
