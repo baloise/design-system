@@ -13,7 +13,7 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-select id="bal-select-year" placeholder="select a year" data-test-id="select">
+        <bal-select expanded id="bal-select-year" placeholder="Try finding a year" data-test-id="select">
           <bal-select-option value="v1995" label="1995">1995</bal-select-option>
           <bal-select-option value="v1996" label="1996">1996</bal-select-option>
           <bal-select-option value="v1997" label="1997">1997</bal-select-option>
@@ -21,183 +21,230 @@
           <bal-select-option value="v1999" label="1999">1999</bal-select-option>
           <bal-select-option value="v2000" label="2000">2000</bal-select-option>
         </bal-select>
-        <bal-select id="bal-select-year-disabled" disabled placeholder="disabled"></bal-select>
-
-        <bal-button id="bal-select-year-clear">Clear</bal-button>
+        <br />
+        <p id="bal-select-year-preview"></p>
+        <bal-button color="success" id="bal-select-year-add">Add</bal-button>
+        <bal-button color="danger" id="bal-select-year-remove">Remove</bal-button>
       </section>
       <script>
+        var year = 2001
         var selectYear = document.getElementById('bal-select-year')
-        var buttonYear = document.getElementById('bal-select-year-clear')
-        buttonYear.addEventListener('click', function () {
-          selectYear.clear()
+        var selectYearPreview = document.getElementById('bal-select-year-preview')
+        var btnYearAdd = document.getElementById('bal-select-year-add')
+        var btnYearRemove = document.getElementById('bal-select-year-remove')
+
+        btnYearAdd.addEventListener('click', function () {
+          let element = document.createElement('bal-select-option')
+          element.innerHTML = year
+          element.setAttribute('label', year)
+          element.setAttribute('value', `v${year}`)
+          selectYear.appendChild(element)
+          year = year + 1
         })
-        selectYear.value = ['v1998']
+
+        btnYearRemove.addEventListener('click', function () {
+          year = year - 1
+          let element = document.querySelector(`bal-select-option[label="${year}"]`)
+          if (element) {
+            element.remove()
+          }
+        })
+
+        selectYear.addEventListener('balChange', function (event) {
+          selectYearPreview.innerHTML = JSON.stringify(event.detail)
+        })
       </script>
 
-      <h3 class="title is-size-3">Styling</h3>
+      <h3>Typeahead</h3>
       <section>
         <div class="has-background-blue has-padding">
-          <bal-select inverted expanded placeholder="select a hero">
-            <bal-select-option value="1" label="Ant-Man">
-              <b style="display: block">Ant-Man</b>
-              <span>San Francisco</span>
+          <bal-select id="bal-select-typeahaed" typeahead inverted expanded placeholder="Try finding your hero" no-data-label="No option available">
+            <bal-select-option value="BlackWidow" label="Black Widow">
+              <b style="display: block">Black Widow</b>
+              <span>S.H.I.E.L.D.</span>
             </bal-select-option>
-            <bal-select-option value="2" label="Spider-Man">
-              <b style="display: block">The amating Spider-Man The amating Spider-Man The amating Spider-Man</b>
-              <span>Queens</span>
-            </bal-select-option>
-            <bal-select-option value="3" label="Iron Man">
-              <b style="display: block">Iron Man</b>
-              <span>Malibu</span>
-            </bal-select-option>
-            <bal-select-option value="4" label="Black Panter">
+            <bal-select-option value="BlackPanter" label="Black Panter">
               <b style="display: block">Black Panter</b>
               <span>Wakanda</span>
             </bal-select-option>
+            <bal-select-option value="IronMan" label="Iron Man">
+              <b style="display: block">Iron Man</b>
+              <span>Malibu</span>
+            </bal-select-option>
+            <bal-select-option value="SpiderMan" label="Spider Man">
+              <b style="display: block">Spider Man</b>
+              <span>Queens</span>
+            </bal-select-option>
+            <bal-select-option value="CaptainAmerica" label="Captain America">
+              <b style="display: block">Captain America</b>
+              <span>Broklyn</span>
+            </bal-select-option>
+            <bal-select-option value="Thor" label="Thor God of Thunder">
+              <b style="display: block">Thor God of Thunder</b>
+              <span>Asgard</span>
+            </bal-select-option>
           </bal-select>
+          <br />
+          <p id="bal-select-typeahead-preview" class="has-text-white"></p>
+          <bal-button id="bal-select-typeahead-trigger" inverted color="primary">Select Spider Man</bal-button>
+          <bal-button id="bal-select-typeahead-clear" inverted outlined color="info">Clear & Focus</bal-button>
         </div>
       </section>
-
-      <h2 class="title is-size-2">Multi-Select</h2>
-      <section>
-        <bal-select multiple placeholder="select a hero">
-          <bal-select-option checkbox value="1" label="Ant-Man">
-            <b style="display: block">Ant-Man</b>
-            <span>San Francisco</span>
-          </bal-select-option>
-          <bal-select-option checkbox value="2" label="Spider-Man">
-            <b style="display: block">The amating Spider-Man The amating Spider-Man The amating Spider-Man</b>
-            <span>Queens</span>
-          </bal-select-option>
-          <bal-select-option checkbox value="3" label="Iron Man">
-            <b style="display: block">Iron Man</b>
-            <span>Malibu</span>
-          </bal-select-option>
-          <bal-select-option checkbox value="4" label="Black Panter">
-            <b style="display: block">Black Panter</b>
-            <span>Wakanda</span>
-          </bal-select-option>
-        </bal-select>
-      </section>
-
-      <h2 class="title is-size-2">Typeahead</h2>
-      <h3 class="title is-size-3">Single</h3>
-      <section>
-        <bal-select typeahead placeholder="select a hero" id="s-typeahead">
-          <bal-select-option value="1" label="Ant-Man">
-            <b style="display: block">Ant-Man</b>
-            <span>San Francisco</span>
-          </bal-select-option>
-          <bal-select-option value="2" label="Spider-Man">
-            <b style="display: block">The amating Spider-Man The amating Spider-Man The amating Spider-Man</b>
-            <span>Queens</span>
-          </bal-select-option>
-          <bal-select-option value="3" label="Iron Man">
-            <b style="display: block">Iron Man</b>
-            <span>Malibu</span>
-          </bal-select-option>
-          <bal-select-option value="4" label="Black Panter">
-            <b style="display: block">Black Panter</b>
-            <span>Wakanda</span>
-          </bal-select-option>
-          <bal-select-option value="5" label="Black Widow">
-            <b style="display: block">Black Widow</b>
-            <span>New York</span>
-          </bal-select-option>
-        </bal-select>
-        <p class="help" id="s-typeahead-result"></p>
-      </section>
       <script>
-        const typeahead = document.getElementById('s-typeahead')
-        const typeaheadResult = document.getElementById('s-typeahead-result')
-        typeahead.addEventListener('balChange', event => {
-          typeaheadResult.innerHTML = event.detail
+        var selectTypeahead = document.getElementById('bal-select-typeahaed')
+        var selectTypeaheadPreview = document.getElementById('bal-select-typeahead-preview')
+        var selectTypeaheadTrigger = document.getElementById('bal-select-typeahead-trigger')
+        var selectTypeaheadClear = document.getElementById('bal-select-typeahead-clear')
+        selectTypeahead.addEventListener('balChange', function (event) {
+          selectTypeaheadPreview.innerHTML = JSON.stringify(event.detail)
         })
+        selectTypeaheadTrigger.addEventListener('click', function () {
+          selectTypeahead.value = ['SpiderMan']
+        })
+        selectTypeaheadClear.addEventListener('click', function () {
+          selectTypeahead.clear(true)
+          selectTypeahead.setFocus()
+        })
+        selectTypeahead.value = ['CaptainAmerica']
+        selectTypeaheadPreview.innerHTML = JSON.stringify(selectTypeahead.value)
       </script>
 
-      <h3 class="title is-size-3">Multiple</h3>
+      <h3>Multi-Select</h3>
       <section>
-        <bal-select typeahead multiple placeholder="select a hero" filter-placeholder="search your hero">
-          <bal-select-option checkbox value="1" label="Ant-Man">
-            <b style="display: block">Ant-Man</b>
-            <span>San Francisco</span>
+        <bal-select multiple expanded placeholder="Try finding your hero">
+          <bal-select-option checkbox value="BlackWidow" label="Black Widow">
+            <b style="display: block">Black Widow</b>
+            <span>S.H.I.E.L.D.</span>
           </bal-select-option>
-          <bal-select-option checkbox value="2" label="Spider-Man">
-            <b style="display: block">The amating Spider-Man The amating Spider-Man The amating Spider-Man</b>
-            <span>Queens</span>
+          <bal-select-option checkbox value="BlackPanter" label="Black Panter">
+            <b style="display: block">Black Panter</b>
+            <span>Wakanda</span>
           </bal-select-option>
-          <bal-select-option checkbox value="3" label="Iron Man">
+          <bal-select-option checkbox value="IronMan" label="Iron Man">
             <b style="display: block">Iron Man</b>
             <span>Malibu</span>
           </bal-select-option>
-          <bal-select-option checkbox value="4" label="Black Panter">
-            <b style="display: block">Black Panter</b>
-            <span>Wakanda</span>
+          <bal-select-option checkbox value="SpiderMan" label="Spider Man">
+            <b style="display: block">Spider Man</b>
+            <span>Queens</span>
+          </bal-select-option>
+          <bal-select-option checkbox value="CaptainAmerica" label="Captain America">
+            <b style="display: block">Captain America</b>
+            <span>Broklyn</span>
+          </bal-select-option>
+          <bal-select-option checkbox value="Thor" label="Thor God of Thunder">
+            <b style="display: block">Thor God of Thunder</b>
+            <span>Asgard</span>
           </bal-select-option>
         </bal-select>
       </section>
 
-      <h3 class="title is-size-3">No Filter</h3>
+      <h3>Multi-Select with typeahead</h3>
       <section>
-        <bal-field id="bal-select-typeahead-remote-field" label="Star Wars Character" is-expanded>
+        <bal-select multiple typeahead expanded placeholder="Try finding your hero" no-data-label="No option available">
+          <bal-select-option checkbox value="BlackWidow" label="Black Widow">
+            <b style="display: block">Black Widow</b>
+            <span>S.H.I.E.L.D.</span>
+          </bal-select-option>
+          <bal-select-option checkbox value="BlackPanter" label="Black Panter">
+            <b style="display: block">Black Panter</b>
+            <span>Wakanda</span>
+          </bal-select-option>
+          <bal-select-option checkbox value="IronMan" label="Iron Man">
+            <b style="display: block">Iron Man</b>
+            <span>Malibu</span>
+          </bal-select-option>
+          <bal-select-option checkbox value="SpiderMan" label="Spider Man">
+            <b style="display: block">Spider Man</b>
+            <span>Queens</span>
+          </bal-select-option>
+          <bal-select-option checkbox value="CaptainAmerica" label="Captain America">
+            <b style="display: block">Captain America</b>
+            <span>Broklyn</span>
+          </bal-select-option>
+          <bal-select-option checkbox value="Thor" label="Thor God of Thunder">
+            <b style="display: block">Thor God of Thunder</b>
+            <span>Asgard</span>
+          </bal-select-option>
+        </bal-select>
+      </section>
+
+      <h3>Remote Typeahead</h3>
+      <section>
+        <bal-field id="bal-field-remote" expanded>
+          <bal-field-label>Canton</bal-field-label>
           <bal-field-control>
-            <bal-select id="bal-select-typeahead-remote" typeahead no-filter placeholder="start typing" expanded></bal-select>
+            <bal-select id="bal-select-remote" typeahead expanded placeholder="Try finding your canton"></bal-select>
           </bal-field-control>
+          <bal-field-message id="bal-select-remote-preview"></bal-field-message>
         </bal-field>
-        <p class="help" id="bal-select-typeahead-remote-help"></p>
       </section>
       <script>
-        const selectTypeaheadRemote = document.getElementById('bal-select-typeahead-remote')
-        const selectTypeaheadRemoteField = document.getElementById('bal-select-typeahead-remote-field')
-        const selectTypeaheadRemoteHelp = document.getElementById('bal-select-typeahead-remote-help')
+        var fieldRemote = document.getElementById('bal-field-remote')
+        var selectRemote = document.getElementById('bal-select-remote')
+        var selectRemotePreview = document.getElementById('bal-select-remote-preview')
 
-        const searchFunction = event => {
-          const search = event.detail
-          selectTypeaheadRemote.loading = true
-          selectTypeaheadRemoteField.loading = true
-          fetch('https://swapi.dev/api/people/?search=' + search)
-            .then(res => res.json())
-            .then(data => {
-              selectTypeaheadRemote.querySelectorAll('bal-select-option').forEach(function (element) {
-                element.parentNode.removeChild(element)
-              })
-              data.results.forEach(person => {
-                var option = document.createElement('bal-select-option')
-                option.setAttribute('value', person.url)
-                option.setAttribute('label', person.name)
-                option.innerHTML = person.name
-                selectTypeaheadRemote.querySelector('.dropdown-content').appendChild(option)
-              })
-              selectTypeaheadRemote.loading = false
-              selectTypeaheadRemoteField.loading = false
-            })
-        }
+        var cantons = [
+          'Zürich',
+          'Bern/Berne',
+          'Luzern',
+          'Uri',
+          'Schwyz',
+          'Unterwalden',
+          'Glarus',
+          'Zug',
+          'Freiburg/Fribourg',
+          'Solothurn',
+          'Basel',
+          'Schaffhausen',
+          'Appenzell',
+          'SanktGallen',
+          'Graubünden',
+          'Aargau',
+          'Thurgau',
+          'Ticino',
+          'Vaud',
+          'Wallis',
+          'Neuchâtel',
+          'Genève',
+          'Jura',
+        ]
 
-        const debounce = (func, wait) => {
-          let timeout = undefined
-          return function () {
-            const context = this
-            const args = arguments
-
-            const later = () => {
-              timeout = null
-              func.apply(context, args)
-            }
-
-            clearTimeout(timeout)
-            timeout = setTimeout(later, wait)
-
-            if (!timeout) func.apply(context, args)
-          }
-        }
-
-        const handleInput = debounce(searchFunction, 1000)
-
-        selectTypeaheadRemote.addEventListener('balChange', function (event) {
-          selectTypeaheadRemoteHelp.innerHTML = event.detail
+        selectRemote.addEventListener('balChange', function (event) {
+          selectRemotePreview.innerHTML = JSON.stringify(event.detail)
         })
 
-        selectTypeaheadRemote.addEventListener('balInput', handleInput)
+        function querySelections(value) {
+          fieldRemote.loading = true
+          selectRemote.loading = true
+          // Simulated ajax query
+          setTimeout(() => {
+            var options = selectRemote.querySelectorAll('bal-select-option')
+            if (options) {
+              options.forEach(o => o.remove())
+            }
+
+            var filteredResults = cantons.filter(e => {
+              return (e || '').toLowerCase().indexOf((value || '').toLowerCase()) > -1
+            })
+
+            for (let index = 0; index < filteredResults.length; index++) {
+              const option = filteredResults[index]
+              let element = document.createElement('bal-select-option')
+              element.innerHTML = option
+              element.setAttribute('label', option)
+              element.setAttribute('value', option)
+              selectRemote.appendChild(element)
+            }
+
+            fieldRemote.loading = false
+            selectRemote.loading = false
+          }, 1000)
+        }
+
+        selectRemote.searchInput = function (value) {
+          querySelections(value)
+        }
       </script>
     </div>
   </body>

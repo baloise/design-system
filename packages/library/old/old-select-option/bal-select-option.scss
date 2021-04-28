@@ -2,11 +2,8 @@
 @import 'node_modules/bulma/sass/components/dropdown.sass';
 
 :host {
+  display: block;
   font-family: $family-primary !important;
-
-  &.is-connected {
-    display: block;
-  }
 
   a.dropdown-item,
   button.dropdown-item {

@@ -1,41 +1,48 @@
 @import 'bal-tag.vars';
 @import 'node_modules/bulma/sass/elements/tag';
 
-:host {
-  display: inline-block;
-  width: auto;
+bal-tag.tag {
+  @include font-smoothing();
+  @include margin(0);
+
   font-family: $family-primary;
-  text-align: center;
-  text-decoration: none;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   user-select: none;
-  vertical-align: top; // the better option for most scenarios
-  vertical-align: -webkit-baseline-middle; // the best for those that support it
   pointer-events: auto;
   font-kerning: none;
+  font-weight: $weight-bold;
+  padding-left: 20px;
+  padding-right: 20px;
+  line-height: 1;
+  vertical-align: top; // the better option for most scenarios
+  vertical-align: -webkit-baseline-middle; // the best for those that support it
 
-  .tag {
-    @include font-smoothing();
-    @include margin(0);
+  > span {
+    margin-top: -2px;
+  }
 
-    width: 100%;
-    line-height: 1;
-    contain: layout style;
-    outline: none;
-    z-index: 0;
-    box-sizing: border-box;
-    appearance: none;
-    font-weight: $weight-bold;
-    padding-top: 0px;
-    padding-bottom: 2px;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: auto;
-    min-height: 22px;
+  .delete {
+    margin-left: 0.3rem;
+    margin-right: -0.1rem;
+  }
 
-    &.default {
-      background-color: $grey;
+  &.default {
+    background-color: $grey;
+  }
+
+  &.is-dense {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    .delete {
+      margin-left: 0.25rem;
+      margin-right: -0.1rem;
     }
+  }
+
+  &.is-transparent {
+    background-color: transparent !important;
+    border-color: transparent !important;
   }
 }

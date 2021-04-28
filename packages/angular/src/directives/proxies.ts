@@ -1910,49 +1910,49 @@ export class BalRadioGroup {
 
 export declare interface BalSelect extends Components.BalSelect {}
 @ProxyCmp({
-  inputs: ['balTabindex', 'disabled', 'expanded', 'filterPlaceholder', 'inverted', 'loading', 'multiple', 'name', 'noFilter', 'placeholder', 'scrollable', 'typeahead', 'value'],
-  methods: ['open', 'close', 'select', 'clear', 'setFocus', 'getInputElement', 'getFilterInputElement']
+  inputs: ['balTabindex', 'disabled', 'expanded', 'inverted', 'loading', 'multiple', 'name', 'noDataLabel', 'placeholder', 'scrollable', 'searchInput', 'typeahead', 'value'],
+  methods: ['setFocus', 'clear', 'open', 'close', 'cancel']
 })
 @Component({
   selector: 'bal-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['balTabindex', 'disabled', 'expanded', 'filterPlaceholder', 'inverted', 'loading', 'multiple', 'name', 'noFilter', 'placeholder', 'scrollable', 'typeahead', 'value'],
-  outputs: ['balChange', 'balInput', 'balBlur', 'balFocus', 'balClick', 'balKeyPress', 'balCancel']
+  inputs: ['balTabindex', 'disabled', 'expanded', 'inverted', 'loading', 'multiple', 'name', 'noDataLabel', 'placeholder', 'scrollable', 'searchInput', 'typeahead', 'value'],
+  outputs: ['balChange', 'balClick', 'balInput', 'balBlur', 'balFocus', 'balCancel', 'balKeyPress']
 })
 export class BalSelect {
   /** Emitted when a option got selected. */
   balChange!: EventEmitter<CustomEvent<string[]>>;
+  /** Emitted when the input got clicked. */
+  balClick!: EventEmitter<CustomEvent<MouseEvent>>;
   /** Emitted when a keyboard input occurred. */
   balInput!: EventEmitter<CustomEvent<string>>;
   /** Emitted when the input loses focus. */
   balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
   /** Emitted when the input has focus. */
   balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
-  /** Emitted when the input got clicked. */
-  balClick!: EventEmitter<CustomEvent<MouseEvent>>;
-  /** Emitted when the input has focus and key from the keyboard go hit. */
-  balKeyPress!: EventEmitter<CustomEvent<KeyboardEvent>>;
   /** Emitted when the user cancels the input. */
   balCancel!: EventEmitter<CustomEvent<KeyboardEvent>>;
+  /** Emitted when the input has focus and key from the keyboard go hit. */
+  balKeyPress!: EventEmitter<CustomEvent<KeyboardEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['balChange', 'balInput', 'balBlur', 'balFocus', 'balClick', 'balKeyPress', 'balCancel']);
+    proxyOutputs(this, this.el, ['balChange', 'balClick', 'balInput', 'balBlur', 'balFocus', 'balCancel', 'balKeyPress']);
   }
 }
 
 
 export declare interface BalSelectOption extends Components.BalSelectOption {}
 @ProxyCmp({
-  inputs: ['checkbox', 'focused', 'hidden', 'icon', 'label', 'selected', 'value']
+  inputs: ['checkbox', 'focused', 'hidden', 'label', 'selected', 'value']
 })
 @Component({
   selector: 'bal-select-option',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['checkbox', 'focused', 'hidden', 'icon', 'label', 'selected', 'value']
+  inputs: ['checkbox', 'focused', 'hidden', 'label', 'selected', 'value']
 })
 export class BalSelectOption {
   protected el: HTMLElement;
@@ -2076,19 +2076,23 @@ export class BalTabs {
 
 export declare interface BalTag extends Components.BalTag {}
 @ProxyCmp({
-  inputs: ['color']
+  inputs: ['closable', 'color', 'size']
 })
 @Component({
   selector: 'bal-tag',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color']
+  inputs: ['closable', 'color', 'size'],
+  outputs: ['balCloseClick']
 })
 export class BalTag {
+  /** Emitted when the input got clicked. */
+  balCloseClick!: EventEmitter<CustomEvent<MouseEvent>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balCloseClick']);
   }
 }
 

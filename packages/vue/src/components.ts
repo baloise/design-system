@@ -2119,24 +2119,34 @@ export const BalRadioGroup = /*@__PURE__*/ defineComponent({
 export const BalSelect = /*@__PURE__*/ defineComponent({
   name: 'bal-select',
   props: {
-    multiple: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
     name: {
       type: String,
       default: undefined,
       required: false,
     },
-    noFilter: {
+    balTabindex: {
+      type: Number,
+      default: 0,
+      required: false,
+    },
+    multiple: {
       type: Boolean,
       default: false,
       required: false,
     },
-    balTabindex: {
-      type: Number,
-      default: 0,
+    noDataLabel: {
+      type: String,
+      default: undefined,
+      required: false,
+    },
+    typeahead: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
       required: false,
     },
     expanded: {
@@ -2149,14 +2159,14 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
-    disabled: {
-      type: Boolean,
-      default: false,
+    placeholder: {
+      type: String,
+      default: undefined,
       required: false,
     },
-    typeahead: {
-      type: Boolean,
-      default: false,
+    scrollable: {
+      type: Number,
+      default: 250,
       required: false,
     },
     loading: {
@@ -2164,19 +2174,9 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
-    placeholder: {
-      type: String,
+    searchInput: {
+      type: Function as PropType<((inputValue: string) => void) | undefined>,
       default: undefined,
-      required: false,
-    },
-    filterPlaceholder: {
-      type: String,
-      default: '',
-      required: false,
-    },
-    scrollable: {
-      type: Number,
-      default: 250,
       required: false,
     },
     value: {
@@ -2190,15 +2190,15 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
   },
   emits: {
     balChange: (value: string[]) => true,
+    balClick: (value: MouseEvent) => true,
     balInput: (value: string) => true,
     balBlur: (value: FocusEvent) => true,
     balFocus: (value: FocusEvent) => true,
-    balClick: (value: MouseEvent) => true,
-    balKeyPress: (value: KeyboardEvent) => true,
     balCancel: (value: KeyboardEvent) => true,
+    balKeyPress: (value: KeyboardEvent) => true,
     'update:modelValue': (value: any) => true,
   },
-  setup: defineSetup('bal-select', ['balChange','balInput','balBlur','balFocus','balClick','balKeyPress','balCancel','update:modelValue'], {
+  setup: defineSetup('bal-select', ['balChange','balClick','balInput','balBlur','balFocus','balCancel','balKeyPress','update:modelValue'], {
     modelProp: 'value',
     modelUpdateEvent: 'balChange'
   })
@@ -2207,24 +2207,24 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
 export const BalSelectOption = /*@__PURE__*/ defineComponent({
   name: 'bal-select-option',
   props: {
-    value: {
+    label: {
       type: String,
       default: undefined,
       required: false,
     },
-    label: {
+    checkbox: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    value: {
       type: String,
       default: undefined,
       required: false,
     },
     hidden: {
       type: Boolean,
-      default: true,
-      required: false,
-    },
-    icon: {
-      type: String,
-      default: '',
+      default: false,
       required: false,
     },
     focused: {
@@ -2233,11 +2233,6 @@ export const BalSelectOption = /*@__PURE__*/ defineComponent({
       required: false,
     },
     selected: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    checkbox: {
       type: Boolean,
       default: false,
       required: false,
@@ -2420,11 +2415,31 @@ export const BalTag = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
+    size: {
+      type: String,
+      default: '',
+      required: false,
+    },
+    closable: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    dense: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    transparent: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   emits: {
-
+    balCloseClick: (value: MouseEvent) => true,
   },
-  setup: defineSetup('bal-tag', [], undefined)
+  setup: defineSetup('bal-tag', ['balCloseClick'], undefined)
 })
 
 export const BalTeaserStep = /*@__PURE__*/ defineComponent({

@@ -1,6 +1,10 @@
-import { Component, ComponentInterface, Element, h, Host, Method, Prop } from '@stencil/core'
+import { Component, ComponentInterface, Element, h, Host, Prop, State } from '@stencil/core'
 import { BalOptionValue } from './bal-select-option.type'
 import { NewBalOptionValue } from './bal-select-option.util'
+
+export interface BalOptionController extends BalOptionValue {
+  id: string
+}
 
 @Component({
   tag: 'bal-select-option',
@@ -14,10 +18,7 @@ export class SelectOption implements ComponentInterface {
 
   @Element() el!: HTMLElement
 
-  /**
-   * The value of the dropdown item. This value will be returned by the parent `<bal-dropdown>` element.
-   */
-  @Prop({ reflect: true }) value: string | undefined
+  @State() isConnected = false
 
   /**
    * Label will be shown in the input element when it got selected
@@ -25,14 +26,19 @@ export class SelectOption implements ComponentInterface {
   @Prop() label: string | undefined
 
   /**
-   * If `true` the option is hidden
+   * If `true` the option has a checkbox
    */
-  @Prop({ reflect: true }) hidden = true
+  @Prop() checkbox = false
 
   /**
-   * Baloise icon as a prefix
+   * The value of the dropdown item. This value will be returned by the parent `<bal-dropdown>` element.
    */
-  @Prop() icon = ''
+  @Prop() value: string | undefined
+
+  /**
+   * If `true` the option is hidden
+   */
+  @Prop({ reflect: true }) hidden = false
 
   /**
    * If `true` the option is focused
@@ -44,40 +50,40 @@ export class SelectOption implements ComponentInterface {
    */
   @Prop({ reflect: true }) selected = false
 
-  /**
-   * If `true` the option has a checkbox
-   */
-  @Prop() checkbox = false
-
-  /**
-   * @internal
-   * Used to return the options infromation
-   */
-  @Method()
-  async getOption<T>(): Promise<BalOptionValue<T>> {
-    return this.option
-  }
-
-  get option(): BalOptionValue<any> {
+  get option(): BalOptionValue {
     return NewBalOptionValue(this.value as any, this.label || '')
   }
 
-  connectedCallback() {
-    this.parent = this.el.closest('bal-select')
-    if (this.parent) {
-      this.parent.sync()
+  get optionController(): BalOptionController {
+    return {
+      ...this.option,
+      id: this.inputId,
     }
   }
 
-  disconnectedCallback() {
+  async componentDidLoad() {
+    this.parent = this.el.closest('bal-select')
     if (this.parent) {
-      this.parent.sync()
+      await this.parent.optionConnected(this.optionController)
+      this.isConnected = true
+    }
+  }
+
+  async componentWillUpdate() {
+    if (this.parent) {
+      await this.parent.optionWillUpdate(this.optionController)
+    }
+  }
+
+  async disconnectedCallback() {
+    if (this.parent) {
+      await this.parent.optionDisconnected(this.optionController)
     }
   }
 
   private onClick = () => {
     if (this.parent) {
-      this.parent.select(this.option)
+      this.parent.optionSelected(this.optionController)
     }
   }
 
@@ -88,17 +94,19 @@ export class SelectOption implements ComponentInterface {
 
   render() {
     return (
-      <Host role="option" id={this.inputId} onClick={this.onClick}>
+      <Host
+        role="option"
+        id={this.inputId}
+        onClick={this.onClick}
+        class={{
+          'is-connected': this.isConnected,
+        }}
+      >
         <button
           type="button"
-          class={[
-            'dropdown-item',
-            this.selected ? 'is-selected' : '',
-            this.hidden ? 'is-hidden' : '',
-            this.focused ? 'is-focused' : '',
-            this.icon ? 'has-icon' : '',
-            this.checkbox ? 'has-checkbox' : '',
-          ].join(' ')}
+          class={['dropdown-item', this.selected ? 'is-selected' : '', this.hidden ? 'is-hidden' : '', this.focused ? 'is-focused' : '', this.checkbox ? 'has-checkbox' : ''].join(
+            ' ',
+          )}
           tabIndex={-1}
         >
           <div class="select-option__content">

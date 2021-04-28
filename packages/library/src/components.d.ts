@@ -11,7 +11,7 @@ import { PaddingCardType } from "./types/padding.types";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
 import { AutocompleteTypes, InputTypes } from "./types/interfaces";
-import { BalOptionValue } from "./components/bal-select-option/bal-select-option.type";
+import { BalOptionController } from "./components/bal-select-option/bal-select-option";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 import { BalTeaserStepOption } from "./components/bal-teaser-step/bal-teaser-step.type";
 export namespace Components {
@@ -1158,6 +1158,10 @@ export namespace Components {
          */
         "balTabindex": number;
         /**
+          * Cancel the dropdown
+         */
+        "cancel": () => Promise<void>;
+        /**
           * Sets the value to null and resets the value of the input.
          */
         "clear": (force?: boolean) => Promise<void>;
@@ -1174,24 +1178,9 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
-          * Defines the placeholder of the input filter element.
-         */
-        "filterPlaceholder": string;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getFilterInputElement": () => Promise<HTMLInputElement>;
-        /**
-          * Returns the native `<input>` element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLBalInputElement>;
-        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
-        /**
-          * If `true` the component shows a loading spinner and sets the input to readonly.
-         */
         "loading": boolean;
         /**
           * If `true` multiple option can be selected
@@ -1202,30 +1191,30 @@ export namespace Components {
          */
         "name": string;
         /**
-          * If `true` the filtering of the options is done outside of the component.
+          * This label is shown if typeahead is active and all the options are filtered out.
          */
-        "noFilter": boolean;
+        "noDataLabel": string | undefined;
         /**
           * Opens the dropdown
          */
         "open": () => Promise<void>;
+        "optionConnected": (option: BalOptionController) => Promise<void>;
+        "optionDisconnected": (optionToDisconnect: BalOptionController) => Promise<void>;
+        "optionSelected": (selectedOption: BalOptionController) => Promise<void>;
+        "optionWillUpdate": (optionToUpdate: BalOptionController) => Promise<void>;
         /**
           * The text to display when the select is empty.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * Defines the height of the dropdown list.
          */
         "scrollable": number;
-        /**
-          * Selects an option
-         */
-        "select": (option: BalOptionValue<any>) => Promise<void>;
+        "searchInput"?: (inputValue: string) => void;
         /**
           * Sets the focus on the input element
          */
         "setFocus": () => Promise<void>;
-        "sync": () => Promise<void>;
         /**
           * If `true` the user can search by typing into the input field.
          */
@@ -1244,15 +1233,10 @@ export namespace Components {
           * If `true` the option is focused
          */
         "focused": boolean;
-        "getOption": <T>() => Promise<BalOptionValue<T>>;
         /**
           * If `true` the option is hidden
          */
         "hidden": boolean;
-        /**
-          * Baloise icon as a prefix
-         */
-        "icon": string;
         /**
           * Label will be shown in the input element when it got selected
          */
@@ -1392,7 +1376,17 @@ export namespace Components {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
+        "closable": boolean;
+        /**
+          * The theme type of the tag. Given by bulma our css framework.
+         */
         "color": ColorTypes | '';
+        "dense": boolean;
+        /**
+          * The size of the tag element
+         */
+        "size": 'small' | 'medium' | 'large' | '';
+        "transparent": boolean;
     }
     interface BalTeaserStep {
         /**
@@ -3544,16 +3538,9 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
-          * Defines the placeholder of the input filter element.
-         */
-        "filterPlaceholder"?: string;
-        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
-        /**
-          * If `true` the component shows a loading spinner and sets the input to readonly.
-         */
         "loading"?: boolean;
         /**
           * If `true` multiple option can be selected
@@ -3564,9 +3551,9 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * If `true` the filtering of the options is done outside of the component.
+          * This label is shown if typeahead is active and all the options are filtered out.
          */
-        "noFilter"?: boolean;
+        "noDataLabel"?: string | undefined;
         /**
           * Emitted when the input loses focus.
          */
@@ -3598,11 +3585,12 @@ declare namespace LocalJSX {
         /**
           * The text to display when the select is empty.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * Defines the height of the dropdown list.
          */
         "scrollable"?: number;
+        "searchInput"?: (inputValue: string) => void;
         /**
           * If `true` the user can search by typing into the input field.
          */
@@ -3625,10 +3613,6 @@ declare namespace LocalJSX {
           * If `true` the option is hidden
          */
         "hidden"?: boolean;
-        /**
-          * Baloise icon as a prefix
-         */
-        "icon"?: string;
         /**
           * Label will be shown in the input element when it got selected
          */
@@ -3764,7 +3748,21 @@ declare namespace LocalJSX {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
+        "closable"?: boolean;
+        /**
+          * The theme type of the tag. Given by bulma our css framework.
+         */
         "color"?: ColorTypes | '';
+        "dense"?: boolean;
+        /**
+          * Emitted when the input got clicked.
+         */
+        "onBalCloseClick"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * The size of the tag element
+         */
+        "size"?: 'small' | 'medium' | 'large' | '';
+        "transparent"?: boolean;
     }
     interface BalTeaserStep {
         /**

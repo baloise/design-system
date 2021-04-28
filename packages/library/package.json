@@ -48,7 +48,7 @@
     "test:e2e:watch": "stencil test --e2e --watchAll"
   },
   "dependencies": {
-    "@stencil/core": "^2.4.0",
+    "@stencil/core": "^2.5.2",
     "@types/lodash": "^4.14.168",
     "bulma": "^0.9.2",
     "filesize.js": "^2.0.0",

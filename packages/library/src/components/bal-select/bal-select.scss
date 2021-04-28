@@ -5,17 +5,111 @@
   display: block;
   position: relative;
 
-  bal-icon.is-right {
-    position: absolute;
-    top: 6px;
-    right: 11px;
+  .bal-select__slot {
+    position: relative;
+    align-items: center;
+    display: flex;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+    padding-bottom: 1px;
+    border-bottom: 1px solid $blue-light-line;
+
+    &:focus-within,
+    &.is-focused {
+      padding-bottom: 0;
+      border-width: 2px;
+      border-color: $blue;
+      box-shadow: none;
+    }
+
+    .bal-select__selections {
+      align-items: center;
+      display: flex;
+      flex: 1 1;
+      flex-wrap: wrap;
+      line-height: 18px;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    bal-tag {
+      margin-right: 8px;
+    }
+
+    .input {
+      border: none;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    .value {
+      margin: 7px 4px 7px 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 90%;
+    }
   }
+
+  .bal-select__empty {
+    padding: 10px 20px 13px 20px;
+  }
+
+  // .bal-select-input {
+  //   display: flex;
+  //   border-top: none;
+  //   border-left: none;
+  //   border-right: none;
+  //   border-bottom: 1px solid $blue-light-line;
+  //   border-radius: 0;
+  //   box-shadow: none;
+  //   padding: 1px 0 2px 0;
+  //   font-size: $size-normal;
+  //   outline: none;
+  //   color: $text;
+  //   height: 2.2em;
+  //   font-family: $family-primary;
+
+  //   &:focus-within,
+  //   &.is-focused {
+  //     border-width: 2px;
+  //     border-color: $blue;
+  //     box-shadow: none;
+  //   }
+
+  //   bal-tag {
+  //     margin: 0.1rem;
+  //   }
+
+  //   span.value {
+  //     padding-top: 4px;
+  //   }
+
+  //   input.input {
+  //     border: none;
+  //     border-color: transparent;
+  //     box-shadow: none;
+  //     display: inline-block;
+  //     flex: 1 0 auto;
+  //     height: 2.3rem;
+  //     margin-left: 0.2rem;
+  //     margin-right: 0.2rem;
+  //     width: auto;
+  //   }
+  // }
+
+  // &.is-disabled .bal-select-input {
+  //   background: $blue-light;
+  //   cursor: not-allowed;
+  //   pointer-events: visible;
+  // }
 }
 
-.is-turned-up {
-  rotate: 180deg;
-}
+// .is-turned-up {
+//   rotate: 180deg;
+// }
 
-.multiple-typeahead {
-  padding: 15px 20px;
-}
+// .multiple-typeahead {
+//   padding: 15px 20px;
+// }

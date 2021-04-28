@@ -1355,18 +1355,18 @@ export const BalRadioGroup = /*@__PURE__*/ Vue.extend({
 export const BalSelect = /*@__PURE__*/ Vue.extend({
 
   props: {
-    multiple: {} as PropOptions<Components.BalSelect['multiple']>,
     name: {} as PropOptions<Components.BalSelect['name']>,
-    noFilter: {} as PropOptions<Components.BalSelect['noFilter']>,
     balTabindex: {} as PropOptions<Components.BalSelect['balTabindex']>,
+    multiple: {} as PropOptions<Components.BalSelect['multiple']>,
+    noDataLabel: {} as PropOptions<Components.BalSelect['noDataLabel']>,
+    typeahead: {} as PropOptions<Components.BalSelect['typeahead']>,
+    disabled: {} as PropOptions<Components.BalSelect['disabled']>,
     expanded: {} as PropOptions<Components.BalSelect['expanded']>,
     inverted: {} as PropOptions<Components.BalSelect['inverted']>,
-    disabled: {} as PropOptions<Components.BalSelect['disabled']>,
-    typeahead: {} as PropOptions<Components.BalSelect['typeahead']>,
-    loading: {} as PropOptions<Components.BalSelect['loading']>,
     placeholder: {} as PropOptions<Components.BalSelect['placeholder']>,
-    filterPlaceholder: {} as PropOptions<Components.BalSelect['filterPlaceholder']>,
     scrollable: {} as PropOptions<Components.BalSelect['scrollable']>,
+    loading: {} as PropOptions<Components.BalSelect['loading']>,
+    searchInput: {} as PropOptions<Components.BalSelect['searchInput']>,
     value: {} as PropOptions<Components.BalSelect['value']>,
   },
 
@@ -1376,35 +1376,32 @@ export const BalSelect = /*@__PURE__*/ Vue.extend({
   },
 
   methods: {
+    setFocus: createCommonMethod('setFocus') as Components.BalSelect['setFocus'],
+    clear: createCommonMethod('clear') as Components.BalSelect['clear'],
     open: createCommonMethod('open') as Components.BalSelect['open'],
     close: createCommonMethod('close') as Components.BalSelect['close'],
-    select: createCommonMethod('select') as Components.BalSelect['select'],
-    clear: createCommonMethod('clear') as Components.BalSelect['clear'],
-    setFocus: createCommonMethod('setFocus') as Components.BalSelect['setFocus'],
-    sync: createCommonMethod('sync') as Components.BalSelect['sync'],
-    getInputElement: createCommonMethod('getInputElement') as Components.BalSelect['getInputElement'],
-    getFilterInputElement: createCommonMethod('getFilterInputElement') as Components.BalSelect['getFilterInputElement'],
+    cancel: createCommonMethod('cancel') as Components.BalSelect['cancel'],
+    optionSelected: createCommonMethod('optionSelected') as Components.BalSelect['optionSelected'],
+    optionConnected: createCommonMethod('optionConnected') as Components.BalSelect['optionConnected'],
+    optionWillUpdate: createCommonMethod('optionWillUpdate') as Components.BalSelect['optionWillUpdate'],
+    optionDisconnected: createCommonMethod('optionDisconnected') as Components.BalSelect['optionDisconnected'],
   },
-  render: createCommonRender('bal-select', ['balChange', 'balInput', 'balBlur', 'balFocus', 'balClick', 'balKeyPress', 'balCancel']),
+  render: createCommonRender('bal-select', ['balChange', 'balClick', 'balInput', 'balBlur', 'balFocus', 'balCancel', 'balKeyPress']),
 });
 
 
 export const BalSelectOption = /*@__PURE__*/ Vue.extend({
 
   props: {
-    value: {} as PropOptions<Components.BalSelectOption['value']>,
     label: {} as PropOptions<Components.BalSelectOption['label']>,
+    checkbox: {} as PropOptions<Components.BalSelectOption['checkbox']>,
+    value: {} as PropOptions<Components.BalSelectOption['value']>,
     hidden: {} as PropOptions<Components.BalSelectOption['hidden']>,
-    icon: {} as PropOptions<Components.BalSelectOption['icon']>,
     focused: {} as PropOptions<Components.BalSelectOption['focused']>,
     selected: {} as PropOptions<Components.BalSelectOption['selected']>,
-    checkbox: {} as PropOptions<Components.BalSelectOption['checkbox']>,
   },
 
 
-  methods: {
-    getOption: createCommonMethod('getOption') as Components.BalSelectOption['getOption'],
-  },
   render: createCommonRender('bal-select-option', []),
 });
 
@@ -1495,10 +1492,14 @@ export const BalTag = /*@__PURE__*/ Vue.extend({
 
   props: {
     color: {} as PropOptions<Components.BalTag['color']>,
+    size: {} as PropOptions<Components.BalTag['size']>,
+    closable: {} as PropOptions<Components.BalTag['closable']>,
+    dense: {} as PropOptions<Components.BalTag['dense']>,
+    transparent: {} as PropOptions<Components.BalTag['transparent']>,
   },
 
 
-  render: createCommonRender('bal-tag', []),
+  render: createCommonRender('bal-tag', ['balCloseClick']),
 });
 
 
