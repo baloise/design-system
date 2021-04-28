@@ -6,6 +6,13 @@ export function isEnterKey(event: KeyboardEvent): boolean {
 }
 
 /**
+ * Returns `true` if the keyboard event was triggered by the `Space` key
+ */
+export function isSpaceKey(event: KeyboardEvent): boolean {
+  return event.key === ' '
+}
+
+/**
  * Returns `true` if the keyboard event was triggered by the `Escape` key
  */
 export function isEscapeKey(event: KeyboardEvent): boolean {

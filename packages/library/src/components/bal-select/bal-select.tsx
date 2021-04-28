@@ -1,7 +1,7 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
 import { isNil } from 'lodash'
 import { findItemLabel } from '../../helpers/helpers'
-import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey } from '../../utils'
+import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey } from '../../utils'
 import { BalOptionController } from '../bal-select-option/bal-select-option'
 import { addOption, findLabelByValue, removeOption, updateOption } from './option.utils'
 import { addValue, removeValue, compareValueWithInput, validateAfterBlur } from './value.utils'
@@ -203,8 +203,8 @@ export class Select {
    */
   @Method()
   async open(): Promise<void> {
-    if (!this.disabled) {
-      await this.open()
+    if (!this.disabled && !isNil(this.dropdownElement)) {
+      await this.dropdownElement.open()
     }
   }
 
@@ -213,8 +213,8 @@ export class Select {
    */
   @Method()
   async close(): Promise<void> {
-    if (!this.disabled) {
-      await this.close()
+    if (!this.disabled && !isNil(this.dropdownElement)) {
+      await this.dropdownElement.close()
     }
   }
 
@@ -437,14 +437,17 @@ export class Select {
    ********************************************************/
 
   private updateValue(newValue: string, isSelected = true) {
-    if (isSelected) {
-      this.value = addValue(this.value, newValue, this.multiple)
+    if (this.multiple) {
+      if (isSelected) {
+        this.value = addValue(this.value, newValue, this.multiple)
+      } else {
+        this.value = removeValue(this.value, newValue)
+      }
     } else {
-      this.value = removeValue(this.value, newValue)
-    }
-    if (!this.multiple) {
+      this.value = addValue(this.value, newValue, this.multiple)
       this.inputElement.value = findLabelByValue(this.options, this.value[0])
     }
+
     this.updateSelection()
   }
 
@@ -530,6 +533,13 @@ export class Select {
     }
   }
 
+  private handleKeyPress = async (event: KeyboardEvent) => {
+    if (isSpaceKey(event) && !this.isDropdownOpen) {
+      await this.open()
+    }
+    this.balKeyPress.emit(event)
+  }
+
   private handleInput = async (event: Event) => {
     if (!this.disabled) {
       if (!this.isDropdownOpen) {
@@ -565,6 +575,7 @@ export class Select {
         aria-disabled={this.disabled ? 'true' : null}
         class={{
           'is-disabled': this.disabled,
+          'is-inverted': this.inverted,
         }}
       >
         <bal-dropdown expanded={this.expanded} onBalCollapse={this.handleDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
@@ -611,7 +622,7 @@ export class Select {
             onClick={this.handleInputClick}
             onBlur={this.handleInputBlur}
             onFocus={this.balFocus.emit}
-            onKeyPress={this.balKeyPress.emit}
+            onKeyPress={this.handleKeyPress}
             ref={el => (this.inputElement = el as HTMLInputElement)}
           />
         </div>

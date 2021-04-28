@@ -1,7 +1,4 @@
-@import 'bal-tag.vars';
-@import 'node_modules/bulma/sass/elements/tag';
-
-bal-tag.tag {
+.tag {
   @include font-smoothing();
   @include margin(0);
 
