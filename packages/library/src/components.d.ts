@@ -1238,7 +1238,7 @@ export namespace Components {
          */
         "selected": boolean;
         /**
-          * The value of the dropdown item. This value will be returned by the parent `<bal-dropdown>` element.
+          * The value of the select option. This value will be returned by the parent `<bal-select>` element.
          */
         "value": string | undefined;
     }
@@ -3606,7 +3606,7 @@ declare namespace LocalJSX {
          */
         "selected"?: boolean;
         /**
-          * The value of the dropdown item. This value will be returned by the parent `<bal-dropdown>` element.
+          * The value of the select option. This value will be returned by the parent `<bal-select>` element.
          */
         "value"?: string | undefined;
     }

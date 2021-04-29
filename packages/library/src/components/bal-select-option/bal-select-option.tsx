@@ -31,7 +31,7 @@ export class SelectOption implements ComponentInterface {
   @Prop() checkbox = false
 
   /**
-   * The value of the dropdown item. This value will be returned by the parent `<bal-dropdown>` element.
+   * The value of the select option. This value will be returned by the parent `<bal-select>` element.
    */
   @Prop() value: string | undefined
 

@@ -23,7 +23,7 @@ export class Select {
 
   @State() focusIndex: number = 0
   @State() isDropdownOpen: boolean = false
-  @State() options: BalOptionController[] = []
+  @State() options: Map<string, BalOptionController> = new Map<string, BalOptionController>()
   @State() labelToScrollTo: string = ''
 
   /**
@@ -222,10 +222,10 @@ export class Select {
    * Cancel the dropdown
    */
   @Method()
-  async cancel() {
+  async cancel(): Promise<void> {
     this.labelToScrollTo = ''
     this.close()
-    await this.scrollTo(0)
+    this.scrollTo(0)
     this.balCancel.emit()
   }
 
@@ -258,7 +258,7 @@ export class Select {
     this.options = addOption(this.options, option)
     this.filterOptions(this.inputElement.value)
     this.validateAfterBlur()
-    await this.updateFocus()
+    this.updateFocus()
   }
 
   /**
@@ -317,7 +317,7 @@ export class Select {
    * FOCUS
    ********************************************************/
 
-  private async updateFocus() {
+  private updateFocus() {
     if (this.focusIndex < 0) {
       this.focusIndex = 0
     }
@@ -343,7 +343,7 @@ export class Select {
     }
   }
 
-  private async scrollToFocusedOption(focusedElement?: HTMLBalSelectOptionElement) {
+  private scrollToFocusedOption(focusedElement?: HTMLBalSelectOptionElement) {
     if (focusedElement && this.dropdownElement) {
       const dropdownContentElement = this.getDropdownContent()
 
@@ -365,7 +365,7 @@ export class Select {
     }
   }
 
-  private async scrollTo(scrollTop: number) {
+  private scrollTo(scrollTop: number) {
     const dropdownContentElement = this.getDropdownContent()
     if (dropdownContentElement) {
       dropdownContentElement.scrollTop = scrollTop
@@ -409,7 +409,7 @@ export class Select {
     const optionElement = visibleOptions.find(o => this.startsWithForFilter(o.label || '', label))
     if (optionElement) {
       this.focusOptionElement(optionElement)
-      await this.scrollTo(optionElement.offsetTop)
+      this.scrollTo(optionElement.offsetTop)
     }
     this.labelToScrollTo = ''
   }
@@ -460,20 +460,18 @@ export class Select {
   }
 
   private updateSelection() {
-    for (let index = 0; index < this.options.length; index++) {
-      const option = this.options[index]
+    this.options.forEach(option => {
       const optionEl = this.findOptionById(option.id)
       if (optionEl !== null) {
         optionEl.selected = this.value.includes(option.value)
       }
-    }
+    })
   }
 
   private filterOptions(inputValue: string): void {
     if (this.typeahead) {
       this.itemCounter = 0
-      for (let index = 0; index < this.options.length; index++) {
-        const option = this.options[index]
+      this.options.forEach(option => {
         const optionElement = this.findOptionById(option.id)
         const didMatch = compareValueWithInput(`${option.label}` || '', `${inputValue}`)
         if (didMatch === true) {
@@ -482,7 +480,7 @@ export class Select {
         if (optionElement !== null) {
           optionElement.setAttribute('hidden', `${!didMatch}`)
         }
-      }
+      })
     }
   }
 
@@ -517,7 +515,7 @@ export class Select {
     event.stopPropagation()
   }
 
-  private handleInputBlur = async (event: FocusEvent) => {
+  private handleInputBlur = (event: FocusEvent) => {
     this.validateAfterBlur()
     this.balBlur.emit(event)
   }

@@ -1,58 +1,42 @@
+import { isNil } from 'lodash'
 import { BalOptionController } from '../bal-select-option/bal-select-option'
 
-export function addOption(options: BalOptionController[], option: BalOptionController): BalOptionController[] {
-  return [...options, option]
+export function addOption(options: Map<string, BalOptionController>, option: BalOptionController): Map<string, BalOptionController> {
+  options.set(option.value, option)
+  return new Map(options)
 }
 
-export function updateOption(options: BalOptionController[], optionToUpdate: BalOptionController): BalOptionController[] {
-  const copyOfOptions = [...options]
-  for (let index = 0; index < copyOfOptions.length; index++) {
-    const option = copyOfOptions[index]
-    if (option.value === optionToUpdate.value) {
-      copyOfOptions[index] = optionToUpdate
-    }
+export function updateOption(options: Map<string, BalOptionController>, optionToUpdate: BalOptionController): Map<string, BalOptionController> {
+  options.set(optionToUpdate.value, optionToUpdate)
+  return new Map(options)
+}
+
+export function removeOption(options: Map<string, BalOptionController>, optionToRemove: BalOptionController): Map<string, BalOptionController> {
+  options.delete(optionToRemove.value)
+  return new Map(options)
+}
+
+export function findOptionByValue(options: Map<string, BalOptionController>, value: string): BalOptionController | undefined {
+  return options.get(value)
+}
+
+function findOptionByLabelIterator(iterator: IterableIterator<BalOptionController>, label: string): BalOptionController | undefined {
+  const { value, done } = iterator.next()
+  if (!isNil(value) && value.label === label) {
+    return value
   }
-  return copyOfOptions
-}
-
-export function removeOption(options: BalOptionController[], optionToRemove: BalOptionController): BalOptionController[] {
-  const copyOfOptions = []
-  for (let index = 0; index < options.length; index++) {
-    const option = options[index]
-    if (option.value !== optionToRemove.value) {
-      copyOfOptions.push(option)
-    }
-  }
-  return copyOfOptions
-}
-
-export function findOptionByValue(options: BalOptionController[], value: string): BalOptionController | undefined {
-  if (options.length > 0) {
-    for (let index = 0; index < options.length; index++) {
-      const option = options[index]
-      if (option.value === value) {
-        return option
-      }
-    }
+  if (done) {
+    return undefined
   }
 
-  return undefined
+  return findOptionByLabelIterator(iterator, label)
 }
 
-export function findOptionByLabel(options: BalOptionController[], label: string): BalOptionController | undefined {
-  if (options.length > 0) {
-    for (let index = 0; index < options.length; index++) {
-      const option = options[index]
-      if (option.label === label) {
-        return option
-      }
-    }
-  }
-
-  return undefined
+export function findOptionByLabel(options: Map<string, BalOptionController>, label: string): BalOptionController | undefined {
+  return findOptionByLabelIterator(options.values(), label)
 }
 
-export function findLabelByValue(options: BalOptionController[], value: string): string {
+export function findLabelByValue(options: Map<string, BalOptionController>, value: string): string {
   const option = findOptionByValue(options, value)
   if (option !== undefined) {
     return option.label

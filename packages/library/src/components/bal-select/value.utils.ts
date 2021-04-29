@@ -1,14 +1,8 @@
 import { BalOptionController } from '../bal-select-option/bal-select-option'
-import { findOptionByLabel, findOptionByValue } from './option.utils'
+import { findOptionByLabel } from './option.utils'
 
-export function removeValue(value: string[], valueToRemove: string): string[] {
-  const copyOfValues = []
-  for (let index = 0; index < value.length; index++) {
-    if (value[index] !== valueToRemove) {
-      copyOfValues.push(value[index])
-    }
-  }
-  return copyOfValues
+export function removeValue(values: string[], valueToRemove: string): string[] {
+  return values.filter(value => value !== valueToRemove)
 }
 
 export function addValue(values: string[], valueToAdd: string, hasMultipleValue: boolean) {
@@ -27,9 +21,9 @@ export function compareValueWithInput(text: string, input: string): boolean {
   return text.indexOf(input) >= 0
 }
 
-export function validateAfterBlur(values: string[], options: BalOptionController[], typedLabel: string): string[] {
+export function validateAfterBlur(values: string[], options: Map<string, BalOptionController>, typedLabel: string): string[] {
   if (values.length > 0) {
-    const valueOption = findOptionByValue(options, values[0])
+    const valueOption = options.get(values[0])
     if (valueOption && typedLabel !== valueOption?.label) {
       return []
     }

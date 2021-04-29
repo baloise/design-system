@@ -24,7 +24,6 @@ export class FormComponent {
   }
 
   setCommentDisabled() {
-    console.log(this.form.get('age'))
     this.form.get('age')?.disable()
   }
 

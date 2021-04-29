@@ -38,20 +38,26 @@ describe('bal-select', () => {
     })
   })
   describe('validateAfterBlur', () => {
+    let options = new Map()
+    beforeEach(() => {
+      options = new Map()
+      options.set(optionA.value, optionA)
+      options.set(optionB.value, optionB)
+    })
     test('should keep the typed value', () => {
-      const result = validateAfterBlur(['1'], [optionA, optionB], 'labelA')
+      const result = validateAfterBlur(['1'], options, 'labelA')
       expect(result).toStrictEqual(['1'])
     })
     test('should remove the value due to non existing label', () => {
-      const result = validateAfterBlur(['1'], [optionA, optionB], 'invalid-label')
+      const result = validateAfterBlur(['1'], options, 'invalid-label')
       expect(result).toStrictEqual([])
     })
     test('should set the value of the given label', () => {
-      const result = validateAfterBlur([], [optionA, optionB], 'labelA')
+      const result = validateAfterBlur([], options, 'labelA')
       expect(result).toStrictEqual(['1'])
     })
     test('should not set the value', () => {
-      const result = validateAfterBlur([], [optionA, optionB], '')
+      const result = validateAfterBlur([], options, '')
       expect(result).toStrictEqual([])
     })
   })
