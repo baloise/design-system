@@ -17,6 +17,7 @@ export class Select {
   private inputElement!: HTMLInputElement
   private dropdownElement!: HTMLBalDropdownElement
   private itemCounter = 0
+  private didInit = false
   private initialValue: string[] = []
   private inputId = `bal-select-${selectIds++}`
   private clearScrollToValue!: NodeJS.Timeout
@@ -152,6 +153,8 @@ export class Select {
       }
       if (isEnterKey(event)) {
         this.selectedFocusedOption()
+        event.preventDefault()
+        event.stopPropagation()
       }
       if (isEscapeKey(event)) {
         this.cancel()
@@ -171,7 +174,9 @@ export class Select {
       this.inputElement.value = findLabelByValue(this.options, this.initialValue[0])
       this.initialValue = []
       this.filterOptions(this.inputElement.value)
+      this.updateSelection()
     }
+    this.didInit = true
   }
 
   /**
@@ -267,7 +272,6 @@ export class Select {
   @Method()
   async optionWillUpdate(optionToUpdate: BalOptionController) {
     this.options = updateOption(this.options, optionToUpdate)
-    this.validateAfterBlur()
   }
 
   /**
@@ -485,7 +489,7 @@ export class Select {
   }
 
   private validateAfterBlur() {
-    if (!this.multiple) {
+    if (!this.multiple && this.didInit) {
       this.value = validateAfterBlur(this.value, this.options, this.inputElement.value)
     }
   }
@@ -532,8 +536,14 @@ export class Select {
   }
 
   private handleKeyPress = async (event: KeyboardEvent) => {
-    if (isSpaceKey(event) && !this.isDropdownOpen) {
-      await this.open()
+    if (isSpaceKey(event)) {
+      if (!this.isDropdownOpen) {
+        await this.open()
+      } else {
+        if (!this.typeahead) {
+          await this.close()
+        }
+      }
     }
     this.balKeyPress.emit(event)
   }

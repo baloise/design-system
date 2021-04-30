@@ -29,6 +29,7 @@ $grey-dark: #cecfd0;
 $grey: #d8d9d9;
 $grey-light: #e2e3e3;
 $grey-lighter: #ebecec;
+$grey-lightest: #f1f3f5;
 
 $white: #ffffff;
 $white-bis: #fafafa;
@@ -216,7 +217,7 @@ $dropdown-content-shadow: 0 0 16px 0 rgba($bal_tile_shadow_blue, 0.15);
 
 $dropdown-item-color: $blue;
 $dropdown-item-hover-color: $blue;
-$dropdown-item-hover-background-color: $blue-light;
+$dropdown-item-hover-background-color: $grey-lightest;
 $dropdown-item-active-color: $blue;
 $dropdown-item-active-background-color: $blue-light;
 $dropdown-divider-background-color: $blue-line;

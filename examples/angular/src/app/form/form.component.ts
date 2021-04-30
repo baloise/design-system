@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { newDateString, now } from '@baloise/ui-library'
+import { NewBalOptionValue, newDateString, now } from '@baloise/ui-library'
 import { BalValidators } from '@baloise/ui-library-angular'
 
 @Component({
@@ -9,6 +9,15 @@ import { BalValidators } from '@baloise/ui-library-angular'
 })
 export class FormComponent {
   nameChanged = ''
+
+  years = [
+    NewBalOptionValue('1995', '1995'),
+    NewBalOptionValue('1996', '1996'),
+    NewBalOptionValue('1997', '1997'),
+    NewBalOptionValue('1998', '1998'),
+    NewBalOptionValue('1999', '1999'),
+    NewBalOptionValue('2000', '2000'),
+  ]
 
   form = new FormGroup({
     name: new FormControl(null, [Validators.required]),
