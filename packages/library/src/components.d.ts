@@ -11,7 +11,6 @@ import { PaddingCardType } from "./types/padding.types";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
 import { AutocompleteTypes, InputTypes } from "./types/interfaces";
-import { BalOptionController } from "./components/bal-select-option/bal-select-option";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 import { BalTeaserStepOption } from "./components/bal-teaser-step/bal-teaser-step.type";
 export namespace Components {
@@ -1190,10 +1189,6 @@ export namespace Components {
           * Opens the dropdown
          */
         "open": () => Promise<void>;
-        "optionConnected": (option: BalOptionController) => Promise<void>;
-        "optionDisconnected": (optionToDisconnect: BalOptionController) => Promise<void>;
-        "optionSelected": (selectedOption: BalOptionController) => Promise<void>;
-        "optionWillUpdate": (optionToUpdate: BalOptionController) => Promise<void>;
         /**
           * The text to display when the select is empty.
          */
@@ -1203,6 +1198,10 @@ export namespace Components {
          */
         "scrollable": number;
         "searchInput"?: (inputValue: string) => void;
+        /**
+          * Select option by passed value
+         */
+        "select": (value: string) => Promise<void>;
         /**
           * Sets the focus on the input element
          */
@@ -1218,25 +1217,9 @@ export namespace Components {
     }
     interface BalSelectOption {
         /**
-          * If `true` the option has a checkbox
-         */
-        "checkbox": boolean;
-        /**
-          * If `true` the option is focused
-         */
-        "focused": boolean;
-        /**
-          * If `true` the option is hidden
-         */
-        "hidden": boolean;
-        /**
           * Label will be shown in the input element when it got selected
          */
         "label": string | undefined;
-        /**
-          * If `true` the option is selected
-         */
-        "selected": boolean;
         /**
           * The value of the select option. This value will be returned by the parent `<bal-select>` element.
          */
@@ -3586,25 +3569,9 @@ declare namespace LocalJSX {
     }
     interface BalSelectOption {
         /**
-          * If `true` the option has a checkbox
-         */
-        "checkbox"?: boolean;
-        /**
-          * If `true` the option is focused
-         */
-        "focused"?: boolean;
-        /**
-          * If `true` the option is hidden
-         */
-        "hidden"?: boolean;
-        /**
           * Label will be shown in the input element when it got selected
          */
         "label"?: string | undefined;
-        /**
-          * If `true` the option is selected
-         */
-        "selected"?: boolean;
         /**
           * The value of the select option. This value will be returned by the parent `<bal-select>` element.
          */

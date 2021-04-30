@@ -1,5 +1,5 @@
-import { BalOptionController } from '../bal-select-option/bal-select-option'
-import { addValue, removeValue, validateAfterBlur } from './value.utils'
+import { BalOptionController } from '../bal-select'
+import { addValue, removeValue, validateAfterBlur, findLabelByValue, findOptionByLabel } from './utils'
 
 describe('bal-select', () => {
   let optionA: BalOptionController
@@ -10,11 +10,15 @@ describe('bal-select', () => {
       id: 'id-a',
       value: '1',
       label: 'labelA',
+      textContent: 'labelA',
+      innerHTML: 'labelA',
     }
     optionB = {
       id: 'id-b',
       value: '2',
       label: 'labelB',
+      textContent: 'labelB',
+      innerHTML: 'labelB',
     }
   })
   describe('addValue', () => {
@@ -59,6 +63,38 @@ describe('bal-select', () => {
     test('should not set the value', () => {
       const result = validateAfterBlur([], options, '')
       expect(result).toStrictEqual([])
+    })
+  })
+  describe('findLabelByValue', () => {
+    let options = new Map()
+    beforeEach(() => {
+      options = new Map()
+      options.set(optionA.value, optionA)
+      options.set(optionB.value, optionB)
+    })
+    test('should find option', () => {
+      const result = findLabelByValue(options, '2')
+      expect(result).toStrictEqual('labelB')
+    })
+    test('should return an empty string if the option does not exist', () => {
+      const result = findLabelByValue(options, '3')
+      expect(result).toStrictEqual('')
+    })
+  })
+  describe('findOptionByLabel', () => {
+    let options = new Map()
+    beforeEach(() => {
+      options = new Map()
+      options.set(optionA.value, optionA)
+      options.set(optionB.value, optionB)
+    })
+    test('should find option', () => {
+      const result = findOptionByLabel(options, 'labelA')
+      expect(result?.value).toStrictEqual('1')
+    })
+    test('should return an empty string if the option does not exist', () => {
+      const result = findOptionByLabel(options, '3')
+      expect(result?.value).toBeUndefined()
     })
   })
 })

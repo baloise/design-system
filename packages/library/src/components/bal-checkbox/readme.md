@@ -54,12 +54,12 @@ Type: `Promise<void>`
 
 ### Used by
 
- - [bal-select-option](../bal-select-option)
+ - [bal-select](../bal-select)
 
 ### Graph
 ```mermaid
 graph TD;
-  bal-select-option --> bal-checkbox
+  bal-select --> bal-checkbox
   style bal-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
