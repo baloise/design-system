@@ -114,7 +114,7 @@ export class SelectOption implements ComponentInterface {
               <bal-checkbox checked={this.selected} tabindex={-1} onBalChange={this.onChange}></bal-checkbox>
             </span>
             <span class="label">
-              <slot />
+              <slot></slot>
             </span>
           </div>
         </button>

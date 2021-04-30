@@ -3,46 +3,63 @@
     <BalCardTitle>Select</BalCardTitle>
     <BalCardContent>
       <BalSelect v-model="value" @bal-change="onChange($event)">
-        <BalSelectOption label="Label 1" value="1">Label 1</BalSelectOption>
-        <BalSelectOption label="Label 2" value="2">Label 2</BalSelectOption>
-        <BalSelectOption label="Label 3" value="3">Label 3</BalSelectOption>
-        <BalSelectOption label="Label 4" value="4">Label 4</BalSelectOption>
+        <BalSelectOption
+          v-for="opt in options"
+          :key="opt.value"
+          :label="opt.label"
+          :value="opt.value"
+        >
+          {{ opt.label }}
+        </BalSelectOption>
       </BalSelect>
+
       <p>{{ value }}</p>
+      <BalButton @click="addYear()">Add Year</BalButton>
     </BalCardContent>
   </BalCard>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import {
-  BalSelect,
-  BalSelectOption,
-  BalCard,
-  BalCardContent,
-  BalCardTitle,
-} from '@baloise/ui-library-vue'
+import { NewBalOptionValue } from '@baloise/ui-library'
 
 export default defineComponent({
   setup() {
-    const value = ref(['2'])
+    const value = ref(['v1997'])
+    const options = ref([
+      NewBalOptionValue('v1995', '1995'),
+      NewBalOptionValue('v1996', '1996'),
+      NewBalOptionValue('v1997', '1997'),
+      NewBalOptionValue('v1998', '1998'),
+      NewBalOptionValue('v1999', '1999'),
+      NewBalOptionValue('v2000', '2000'),
+    ])
+    let year = 2001
 
     const onChange = (newValue: string[]) => {
       console.log('value', value.value)
       console.log('change', newValue)
     }
 
+    const addYear = () => {
+      options.value.push(NewBalOptionValue(`v${year}`, `${year}`))
+      year = year + 1
+    }
+
     return {
       value,
+      options,
+      addYear,
       onChange,
     }
   },
-  components: {
-    BalSelect,
-    BalSelectOption,
-    BalCard,
-    BalCardContent,
-    BalCardTitle,
-  },
+  // components: {
+  //   BalSelect,
+  //   BalSelectOption,
+  //   BalCard,
+  //   BalCardContent,
+  //   BalCardTitle,
+  //   BalButton,
+  // },
 })
 </script>
