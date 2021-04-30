@@ -35,7 +35,7 @@
     }
 
     &.is-hidden {
-      display: none;
+      display: none !important;
     }
 
     span {
@@ -48,21 +48,24 @@
       font-size: $size-small;
     }
 
-    &:hover,
-    &:focus {
-      background: $dropdown-item-hover-background-color;
+    &.is-selected {
+      background: $dropdown-item-active-background-color;
     }
 
-    &.is-selected {
-      background: $dropdown-item-hover-background-color;
-
+    &.is-selected:not(.has-checkbox) {
       span.label {
         font-weight: $weight-bold;
+        color: $dropdown-item-active-color;
       }
     }
 
+    &:hover,
     &.is-focused {
       background: $dropdown-item-hover-background-color;
+
+      span.label {
+        color: $dropdown-item-hover-color;
+      }
     }
 
     &.is-focused:not(.is-selected):not(.has-checkbox),

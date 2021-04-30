@@ -53,6 +53,9 @@
         selectYear.addEventListener('balChange', function (event) {
           selectYearPreview.innerHTML = JSON.stringify(event.detail)
         })
+
+        selectYear.value = ['v1999']
+        selectYearPreview.innerHTML = JSON.stringify(selectYear.value)
       </script>
 
       <h3>Typeahead</h3>
