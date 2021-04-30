@@ -12,22 +12,22 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-checkbox label="Label" data-test-id="checkbox-normal"></bal-checkbox>
-        <bal-checkbox label="Checked" checked></bal-checkbox>
-        <bal-checkbox label="Disabled" disabled data-test-id="checkbox-disabled"></bal-checkbox>
+        <bal-checkbox data-test-id="checkbox-normal">Label</bal-checkbox>
+        <bal-checkbox checked>Checked</bal-checkbox>
+        <bal-checkbox disabled data-test-id="checkbox-disabled">Disabled</bal-checkbox>
       </section>
       <h2 class="title is-size-2">Switch</h2>
       <section>
-        <bal-checkbox label="Label" interface="switch"></bal-checkbox>
-        <bal-checkbox label="Checked" checked interface="switch"></bal-checkbox>
-        <bal-checkbox label="Disabled" disabled interface="switch"></bal-checkbox>
+        <bal-checkbox interface="switch">Label</bal-checkbox>
+        <bal-checkbox checked interface="switch">Checked</bal-checkbox>
+        <bal-checkbox disabled interface="switch">Disabled</bal-checkbox>
       </section>
       <h2 class="title is-size-2">Inverted</h2>
       <section>
         <div class="has-background-info has-padding">
-          <bal-checkbox label="Label" inverted></bal-checkbox>
-          <bal-checkbox label="Checked" inverted checked></bal-checkbox>
-          <bal-checkbox label="Disabled" inverted disabled></bal-checkbox>
+          <bal-checkbox inverted>Label</bal-checkbox>
+          <bal-checkbox inverted checked>Checked</bal-checkbox>
+          <bal-checkbox inverted disabled>Disabled</bal-checkbox>
         </div>
       </section>
 
@@ -39,7 +39,7 @@
       <h2 class="title is-size-2">Events</h2>
       <h3 class="title is-size-3">Listen on Changes</h3>
       <section>
-        <bal-checkbox id="cb-2" label="Listen on changes"></bal-checkbox>
+        <bal-checkbox id="cb-2">Listen on changes</bal-checkbox>
         <p class="help" id="cb-2-result">false</p>
       </section>
       <script>
@@ -52,7 +52,7 @@
 
       <h3 class="title is-size-3">Change value</h3>
       <section>
-        <bal-checkbox id="cb-3" label="Value"></bal-checkbox>
+        <bal-checkbox id="cb-3">Value</bal-checkbox>
         <button id="cb-3-trigger-1">Set to true</button>
         <button id="cb-3-trigger-2">Set to false</button>
       </section>

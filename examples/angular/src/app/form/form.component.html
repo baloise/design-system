@@ -21,7 +21,7 @@
     >
   </bal-field>
 
-  <bal-field expanded>
+  <bal-field expanded [disabled]="form.get('age').disabled">
     <bal-field-label>Age</bal-field-label>
     <bal-field-control>
       <bal-select id="bal-select-year" placeholder="select a year" data-test-id="select" formControlName="age" expanded>

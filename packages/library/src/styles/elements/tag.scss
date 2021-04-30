@@ -1,0 +1,45 @@
+.tag {
+  @include font-smoothing();
+  @include margin(0);
+
+  font-family: $family-primary;
+  user-select: none;
+  pointer-events: auto;
+  font-kerning: none;
+  font-weight: $weight-bold;
+  padding-left: 20px;
+  padding-right: 20px;
+  line-height: 1;
+  vertical-align: top; // the better option for most scenarios
+  vertical-align: -webkit-baseline-middle; // the best for those that support it
+
+  > span {
+    margin-top: -2px;
+  }
+
+  .delete {
+    margin-left: 0.3rem;
+    margin-right: -0.1rem;
+  }
+
+  &.default {
+    background-color: $grey;
+  }
+
+  &.is-dense {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    .delete {
+      margin-left: 0.25rem;
+      margin-right: -0.1rem;
+    }
+  }
+
+  &.is-transparent {
+    background-color: transparent !important;
+    border-color: transparent !important;
+  }
+}

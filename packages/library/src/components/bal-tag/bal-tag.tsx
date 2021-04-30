@@ -1,10 +1,9 @@
-import { Component, h, Host, Prop } from '@stencil/core'
+import { Component, EventEmitter, h, Host, Prop, Event } from '@stencil/core'
 import { ColorTypes } from '../../types/color.types'
 
 @Component({
   tag: 'bal-tag',
-  styleUrl: 'bal-tag.scss',
-  scoped: true,
+  scoped: false,
   shadow: false,
 })
 export class Tag {
@@ -13,14 +12,65 @@ export class Tag {
    */
   @Prop() color: ColorTypes | '' = ''
 
+  /**
+   * The size of the tag element
+   */
+  @Prop() size: 'small' | 'medium' | 'large' | '' = ''
+
+  /**
+   * The theme type of the tag. Given by bulma our css framework.
+   */
+  @Prop() closable: boolean = false
+
+  /**
+   * @internal
+   * Reduces the padding
+   */
+  @Prop() dense: boolean = false
+
+  /**
+   * @internal
+   * Sets background color to transparent
+   */
+  @Prop() transparent: boolean = false
+
+  /**
+   * Emitted when the input got clicked.
+   */
+  @Event() balCloseClick!: EventEmitter<MouseEvent>
+
+  get colorCssClass(): string {
+    return this.color !== '' ? `is-${this.color}` : 'default'
+  }
+
+  get sizeCssClass(): string {
+    return this.size === '' ? '' : `is-${this.size}`
+  }
+
   render() {
     return (
-      <Host>
-        <span class={`tag ${this.color !== '' ? `is-${this.color}` : 'default'}`}>
-          <bal-text small>
-            <slot />
-          </bal-text>
+      <Host
+        class={{
+          'tag': true,
+          'is-dense': this.dense,
+          'is-transparent': this.transparent,
+          [this.colorCssClass]: true,
+          [this.sizeCssClass]: true,
+        }}
+      >
+        <span>
+          <slot />
         </span>
+        <div
+          style={{
+            display: this.closable ? 'inline-block' : 'none',
+          }}
+          class={{
+            'delete': true,
+            'is-small': true,
+          }}
+          onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
+        ></div>
       </Host>
     )
   }

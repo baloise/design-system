@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface, Listen } from '@stencil/core'
-import { isDescendant } from '../../helpers/helpers'
+import { findItemLabel, isDescendant } from '../../helpers/helpers'
 
 @Component({
   tag: 'bal-radio',
@@ -27,11 +27,6 @@ export class Radio implements ComponentInterface {
    * The tabindex of the control.
    */
   @Prop() balTabindex: number = 0
-
-  /**
-   * The label of the control.
-   */
-  @Prop() label: string = ''
 
   /**
    * The value of the control.
@@ -105,7 +100,9 @@ export class Radio implements ComponentInterface {
   }
 
   render() {
-    const { inputId, label } = this
+    const { inputId } = this
+    const label = findItemLabel(this.el)
+
     return (
       <Host
         aria-disabled={this.disabled ? 'true' : null}
@@ -126,8 +123,8 @@ export class Radio implements ComponentInterface {
           name={this.name}
           tabindex={this.balTabindex}
           value={this.value}
-          aria-label={label}
           aria-hidden={this.disabled ? 'true' : null}
+          aria-label={label}
           disabled={this.disabled}
           checked={this.checked}
           aria-disabled={this.disabled ? 'true' : 'false'}
@@ -145,7 +142,7 @@ export class Radio implements ComponentInterface {
             ev.stopPropagation()
           }}
         >
-          <slot>{label}</slot>
+          <slot></slot>
         </label>
       </Host>
     )

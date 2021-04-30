@@ -14,10 +14,10 @@
       <h2 class="title is-size-2">Basic</h2>
       <section>
         <bal-radio-group value="2" id="radio-example">
-          <bal-radio label="Label 1" name="radio-example" value="1"></bal-radio>
-          <bal-radio label="Label 2" name="radio-example" value="2"></bal-radio>
-          <bal-radio label="Label 3" name="radio-example" value="3"></bal-radio>
-          <bal-radio label="Label Disabled" name="radio-example" value="4" disabled></bal-radio>
+          <bal-radio name="radio-example" value="1">Label 1</bal-radio>
+          <bal-radio name="radio-example" value="2">Label 2</bal-radio>
+          <bal-radio name="radio-example" value="3">Label 3</bal-radio>
+          <bal-radio name="radio-example" value="4" disabled>Label Disabled</bal-radio>
         </bal-radio-group>
         <p class="help" id="radio-example-result"></p>
         <bal-button id="radio-example-action">Go to 3</bal-button>
@@ -38,10 +38,10 @@
       <section>
         <div class="has-background-blue has-padding">
           <bal-radio-group value="3" inverted>
-            <bal-radio inverted label="Label 1" name="radio-example-inverted" value="1"></bal-radio>
-            <bal-radio inverted label="Label 2" name="radio-example-inverted" value="2"></bal-radio>
-            <bal-radio inverted label="Label 3" name="radio-example-inverted" value="3"></bal-radio>
-            <bal-radio inverted label="Label Disabled" name="radio-example-inverted" value="4" disabled></bal-radio>
+            <bal-radio inverted name="radio-example-inverted" value="1">Label 1</bal-radio>
+            <bal-radio inverted name="radio-example-inverted" value="2">Label 2</bal-radio>
+            <bal-radio inverted name="radio-example-inverted" value="3">Label 3</bal-radio>
+            <bal-radio inverted name="radio-example-inverted" value="4" disabled>Label Disabled</bal-radio>
           </bal-radio-group>
         </div>
       </section>
@@ -49,7 +49,7 @@
       <h2 class="title is-size-2">With Links</h2>
       <section>
         <bal-radio-group value="1">
-          <bal-radio name="link-example" value="1"> Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it </bal-radio>
+          <bal-radio name="link-example" value="1">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
           <bal-radio name="link-example" value="2">Label 2 without a link</bal-radio>
         </bal-radio-group>
       </section>
@@ -57,9 +57,9 @@
       <h2 class="title is-size-2">Select Button</h2>
       <section>
         <bal-radio-group value="1" interface="select-button" data-test-id="radio">
-          <bal-radio label="Label 1" name="select-button-example" value="1"></bal-radio>
-          <bal-radio label="Label 2" name="select-button-example" value="2"></bal-radio>
-          <bal-radio label="Label Disabled" name="select-button-example" value="3" disabled></bal-radio>
+          <bal-radio name="select-button-example" value="1">Label 1</bal-radio>
+          <bal-radio name="select-button-example" value="2">Label 2</bal-radio>
+          <bal-radio name="select-button-example" value="3" disabled>Label Disabled</bal-radio>
         </bal-radio-group>
       </section>
 
@@ -67,8 +67,8 @@
       <section>
         <div class="has-background-blue has-padding">
           <bal-radio-group value="yes" interface="select-button" inverted>
-            <bal-radio label="Yes" name="select-button-example-2" value="yes"></bal-radio>
-            <bal-radio label="No" name="select-button-example-2" value="no"></bal-radio>
+            <bal-radio name="select-button-example-2" value="yes">Yes</bal-radio>
+            <bal-radio name="select-button-example-2" value="no">No</bal-radio>
           </bal-radio-group>
         </div>
       </section>

@@ -5,17 +5,65 @@
   display: block;
   position: relative;
 
-  bal-icon.is-right {
-    position: absolute;
-    top: 6px;
-    right: 11px;
+  .bal-select__slot {
+    position: relative;
+    align-items: center;
+    display: flex;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+    padding-bottom: 1px;
+    border-bottom: 1px solid $blue-light-line;
+
+    &:focus-within,
+    &.is-focused {
+      padding-bottom: 0;
+      border-width: 2px;
+      border-color: $blue;
+      box-shadow: none;
+    }
+
+    .bal-select__selections {
+      align-items: center;
+      display: flex;
+      flex: 1 1;
+      flex-wrap: wrap;
+      line-height: 18px;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    bal-tag {
+      margin-right: 8px;
+    }
+
+    .input {
+      border: none;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    .value {
+      margin: 7px 4px 7px 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 90%;
+    }
   }
-}
 
-.is-turned-up {
-  rotate: 180deg;
-}
+  &.is-inverted {
+    .bal-select__slot {
+      border-color: $white;
 
-.multiple-typeahead {
-  padding: 15px 20px;
+      &:focus-within,
+      &.is-focused {
+        border-color: $white;
+      }
+    }
+  }
+
+  .bal-select__empty {
+    padding: 10px 20px 13px 20px;
+  }
 }
