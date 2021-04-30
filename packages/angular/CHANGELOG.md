@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.16.0](https://github.com/baloise/ui-library/compare/v4.15.2...v4.16.0) (2021-04-30)
+
+
+### Features
+
+* **select:** add tags ([70eb8f1](https://github.com/baloise/ui-library/commit/70eb8f112e67fc1065150805083ee62d0f4aa6aa))
+
+
+
+
+
 ## [4.15.2](https://github.com/baloise/ui-library/compare/v4.15.1...v4.15.2) (2021-04-20)
 
 **Note:** Version bump only for package @baloise/ui-library-angular
