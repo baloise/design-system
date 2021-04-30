@@ -2202,29 +2202,9 @@ export const BalSelectOption = /*@__PURE__*/ defineComponent({
       default: undefined,
       required: false,
     },
-    checkbox: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
     value: {
       type: String,
       default: undefined,
-      required: false,
-    },
-    hidden: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    focused: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    selected: {
-      type: Boolean,
-      default: false,
       required: false,
     },
   },
