@@ -17,7 +17,7 @@ cd ui-library
 
 - Run `npm install` to install library’s dependencies
 - Run `npm run build` to build the library
-- Run `npm run lib:serve` to serve UI library demo page
+- Run `npm run lib:serve` to serve Design System demo page
 
 > The demo page will be served at http://localhost:3333/ by default.
 

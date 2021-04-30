@@ -1,6 +1,6 @@
-# Examples
+# Templates
 
-A list of examples to quickly start your project.
+A list of templates to quickly start your project.
 
 <h2>Table of Contents</h2>
 

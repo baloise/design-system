@@ -1,0 +1,5 @@
+# Resources
+
+- fonts
+- icons
+- logos

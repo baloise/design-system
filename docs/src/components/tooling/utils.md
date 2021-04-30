@@ -278,6 +278,12 @@ Returns `true` if the given date is valid
 
 Returns `true` if the keyboard event was triggered by the `Enter` key
 
+### isSpaceKey
+
+`isSpaceKey(event: KeyboardEvent) => boolean`
+
+Returns `true` if the keyboard event was triggered by the `Space` key
+
 ### isEscapeKey
 
 `isEscapeKey(event: KeyboardEvent) => boolean`

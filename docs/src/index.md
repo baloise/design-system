@@ -1,12 +1,10 @@
 ---
 home: true
 heroImage: /assets/images/logo.svg
-tagline: The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate style guide.
-actionText: Quick Start →
-actionLink: /guide/
+tagline: The Design System is an open source project for styling awesome web applications that follow the Baloise corporate style guide.
 
-altActionText: Learn More
-altActionLink: /guide/why
+actionText: Explore our components →
+actionLink: /components/
 
 features:
   - title: 📦 Agnostic

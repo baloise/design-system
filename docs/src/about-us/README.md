@@ -1,4 +1,4 @@
-# Why UI-Library
+# Why a Design System
 
 "The need for `Design Systems` goes hand in hand with the need for scale, efficiency, and consistency in Design."
 

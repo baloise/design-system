@@ -5,7 +5,7 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  title: 'Baloise UI Library',
+  title: 'Baloise Design System',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
@@ -45,12 +45,20 @@ module.exports = {
     lastUpdated: false,
     nav: [
       {
-        text: 'Guide',
-        link: '/guide/',
+        text: 'Design',
+        link: '/design/',
       },
       {
         text: 'Components',
-        link: '/components/' + require('./generated/components.json')[0],
+        link: '/components/',
+      },
+      {
+        text: 'Resources',
+        link: '/resources/',
+      },
+      {
+        text: 'About Us',
+        link: '/about-us/',
       },
       {
         text: 'Change Log',
@@ -58,23 +66,22 @@ module.exports = {
       },
     ],
     sidebar: {
-      '/guide/': [
+      '/design/': [
         {
-          title: 'Guide',
+          title: 'Design',
           collapsable: false,
-          children: [
-            'essentials/why',
-            'essentials/architecture',
-            '',
-            'essentials/html5',
-            'essentials/vue',
-            'essentials/angular',
-            'essentials/examples',
-          ],
+          children: ['', 'spacing'],
+        },
+      ],
+      '/components/': [
+        {
+          title: 'Getting Started',
+          collapsable: true,
+          children: ['', 'essentials/html5', 'essentials/vue', 'essentials/angular'],
         },
         {
           title: 'Styles',
-          collapsable: false,
+          collapsable: true,
           children: [
             'styles/installation',
             'styles/colors',
@@ -86,11 +93,29 @@ module.exports = {
             'styles/track-line',
           ],
         },
-
         {
-          title: 'Example',
-          collapsable: false,
+          title: 'Components',
+          collapsable: true,
+          children: require('./generated/components.json'),
+        },
+        {
+          title: 'Tooling',
+          collapsable: true,
           children: ['tooling/filters', 'tooling/utils', 'tooling/validators', 'tooling/testing'],
+        },
+      ],
+      '/resources/': [
+        {
+          title: 'Resources',
+          collapsable: false,
+          children: ['', 'templates'],
+        },
+      ],
+      '/about-us/': [
+        {
+          title: 'About Us',
+          collapsable: false,
+          children: ['', 'architecture'],
         },
         {
           title: 'Development',
@@ -104,13 +129,19 @@ module.exports = {
           ],
         },
       ],
-      '/components/': [
-        {
-          title: 'Components',
-          collapsable: false,
-          children: require('./generated/components.json'),
-        },
-      ],
+      // '/guide/': [
+      //   {
+      //     title: 'Guide',
+      //     collapsable: false,
+      //     children: [
+      //       'essentials/html5',
+      //       'essentials/vue',
+      //       'essentials/angular',
+      //       'essentials/examples',
+      //     ],
+      //   },
+
+      // ],
     },
   },
 }
