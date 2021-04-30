@@ -9,6 +9,7 @@
   },
   "repository": "https://github.com/baloise/ui-library",
   "scripts": {
+    "serve:light": "vuepress dev src",
     "serve": "npm run setup && vuepress dev src",
     "build": "npm run setup && vuepress build src",
     "examples:build": "node .scripts/examples.script.js",

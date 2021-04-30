@@ -37,7 +37,7 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
-    repo: 'https://github.com/baloise/ui-library',
+    // repo: 'https://github.com/baloise/ui-library',
     logo: '/assets/images/logo.svg',
     editLinks: false,
     docsDir: 'docs',
@@ -60,10 +60,10 @@ module.exports = {
         text: 'About Us',
         link: '/about-us/',
       },
-      {
-        text: 'Change Log',
-        link: '/changelog/',
-      },
+      // {
+      //   text: 'Change Log',
+      //   link: '/changelog/',
+      // },
     ],
     sidebar: {
       '/design/': [
