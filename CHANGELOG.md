@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.17.0](https://github.com/baloise/ui-library/compare/v4.16.0...v4.17.0) (2021-04-30)
+
+
+### Bug Fixes
+
+* **checkbox&radio:** remove label prop, use innerHTML instead ([5f9229a](https://github.com/baloise/ui-library/commit/5f9229ad785144299bff5048167eb0d41bb29c0d))
+* **IE11:** add additional fixes recommended by stencil ([1ed900e](https://github.com/baloise/ui-library/commit/1ed900eae846d4c914236ec91fe5ad43c8ddbd72))
+* **select:** fix mouse and keyboard selection ([f8cb5af](https://github.com/baloise/ui-library/commit/f8cb5af3eef51df23a828ed334839708e217a4e1))
+
+
+### Features
+
+* **select:** add tags ([70eb8f1](https://github.com/baloise/ui-library/commit/70eb8f112e67fc1065150805083ee62d0f4aa6aa))
+
+
+
+## 4.15.2 (2021-04-20)
+
+
+
+
+
 # [4.16.0](https://github.com/baloise/ui-library/compare/v4.15.2...v4.16.0) (2021-04-30)
 
 
