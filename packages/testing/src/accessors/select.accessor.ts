@@ -43,7 +43,7 @@ export const SelectSelectableMixin: Mixin = <T>({ selector, creator }: MixinCont
    */
   select: (index: number) => {
     cy.get(selector).within(() => {
-      cy.get(`button.dropdown-item`).eq(index).click()
+      cy.get(`button.bal-select__option`).eq(index).click()
     })
     return creator()
   },
@@ -55,9 +55,9 @@ export const SelectAssertableOptionsMixin: Mixin = <T>({ selector, creator }: Mi
    */
   assertOptions: (...options: string[]) => {
     cy.get(selector).within(() => {
-      cy.get('button.dropdown-item').then(opt => {
+      cy.get('button.bal-select__option').then(opt => {
         // @ts-ignore
-        const actual = [...opt.toArray()].map(o => o.value)
+        const actual = [...opt.toArray()].map(o => o.dataset.value)
         expect(actual).to.deep.eq(options)
       })
     })
