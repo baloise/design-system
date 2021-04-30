@@ -617,6 +617,8 @@ export class Select {
                 type="button"
                 role="option"
                 id={option.id}
+                data-value={option.value}
+                data-label={option.label}
                 class={{
                   'bal-select__option ': true,
                   'dropdown-item': true,

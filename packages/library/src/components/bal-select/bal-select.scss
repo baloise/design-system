@@ -1,6 +1,5 @@
-@import 'node_modules/bulma/sass/components/dropdown.sass';
 @import '../../styles/ui-library.utilities';
-@import '../bal-input/bal-input.scss';
+@import 'node_modules/bulma/sass/components/dropdown.sass';
 
 :host {
   display: block;
@@ -69,6 +68,7 @@
   }
 
   .bal-select__option {
+    visibility: visible;
     font-family: $family-primary !important;
     padding: 10px 20px 13px 20px;
     transition: padding-left 0.3s ease;

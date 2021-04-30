@@ -1,6 +1,11 @@
 .bal-dropdown {
   display: inline-block;
 
+  .dropdown.is-active .dropdown-menu,
+  .dropdown.is-active .dropdown-content {
+    visibility: visible;
+  }
+
   .dropdown {
     .dropdown-content {
       padding: 0;
@@ -29,4 +34,5 @@
 
 bal-select-option {
   display: none;
+  visibility: hidden;
 }
