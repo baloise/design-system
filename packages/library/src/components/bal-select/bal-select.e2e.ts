@@ -1,5 +1,4 @@
 import { E2EElement, E2EPage, EventSpy, newE2EPage } from '@stencil/core/testing'
-import { delay } from 'lodash'
 
 describe('bal-select', () => {
   let page: E2EPage
