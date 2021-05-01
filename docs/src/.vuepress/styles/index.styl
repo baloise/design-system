@@ -21,27 +21,72 @@
   margin-right: 8px;
   width: 24px;
 
-header.navbar::before
-  content: '';
-  position: absolute;
-  top: 55px;
-  height: 6px;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  background: linear-gradient(90deg, #039 0, #039 66%, #009ee7 66%, #009ee7 100%);
-  z-index: 1;
+header.navbar
+  background-color: #039
 
-header.navbar::after
-  content: '';
-  position: absolute;
-  top: 55px;
-  height: 8px;
-  left: 66%;
-  background: #fff;
-  transform: translateX(-50%) skew(-45deg);
-  z-index: 100;
-  width: 10px;
+  .site-name,
+  .nav-link,
+  .router-link-active,
+  .nav-links .repo-link
+    color: #fff !important
+    font-family: MetaPro, Arial, sans-serif
+    font-weight: 400;
+    line-height: 1.5;
+    b
+      font-weight: 800;
+
+  .nav-links .repo-link svg
+    color: #fff
+
+  .nav-item, .nav-links .repo-link
+    margin-left: 8px;
+
+  .nav-links .repo-link,
+  .nav-item > a
+    padding: 6px 8px
+    border-radius: 4px
+    border: none !important
+
+  .nav-item > a:hover,
+  .nav-links .repo-link:hover
+    background: #002162
+
+  .nav-item > a.router-link-active
+    border: none !important
+
+  .nav-item > a.router-link-active:after
+    content: '';
+    height: 3px;
+    background: #00adfd;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -12px;
+
+  .links
+    background-color: #039
+
+// header.navbar::before
+//   content: '';
+//   position: absolute;
+//   top: 55px;
+//   height: 6px;
+//   left: 0;
+//   width: 100%;
+//   background: #fff;
+//   background: linear-gradient(90deg, #039 0, #039 66%, #009ee7 66%, #009ee7 100%);
+//   z-index: 1;
+
+// header.navbar::after
+//   content: '';
+//   position: absolute;
+//   top: 55px;
+//   height: 8px;
+//   left: 66%;
+//   background: #fff;
+//   transform: translateX(-50%) skew(-45deg);
+//   z-index: 100;
+//   width: 10px;
 
 header.navbar
   z-index: 40;

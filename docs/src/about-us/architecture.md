@@ -11,7 +11,7 @@ Under the hood, UI-Libary uses [Bulma](https://bulma.io/), a clean css framework
 
 The best part is that we depend on only those two libraries, which do not depend on each other, and at the end we have only one simple UI-Library for our consumers!
 
-![Architecture](/assets/images/tooling.svg)
+![Architecture](/assets/images/architecture/tooling.svg)
 
 | Libary                                                       | Description                                                                                                                                                                                                                                                                                                                                |
 | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -114,7 +114,7 @@ Based on the commit messages since the last release, it detects the release type
 
 After detecting the new version, it also publishes the library to npm. Afterthat, it releases it on Github with a nice changelog, which is generated based on the commit messages. Finally, it gets deployed to the production environment of now.
 
-![ci-cd](/assets/images/ci-cd.svg)
+![ci-cd](/assets/images/architecture/ci-cd.svg)
 
 | Tool                                    | Description                                                             |
 | --------------------------------------- | ----------------------------------------------------------------------- |

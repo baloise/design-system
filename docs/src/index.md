@@ -8,12 +8,12 @@ actionLink: /components/
 
 features:
   - title: 📦 Agnostic
-    details: Our Library work with many popular frameworks right out of the box.
+    details: Our Design System work with many popular frameworks right out of the box.
   - title: ⚡️ Fast Runtime
     details: Web Components offered a solution by pushing more work to the browser for better performance.
   - title: 🛠️ Rich Features
-    details: The library has a set of utilities like validators, filters, util functions and testing helpers.
-footer: Apache-2.0 Licensed | Copyright © 2019-present Gery Hirschfeld & Contributors
+    details: We offer a set of utilities like validators, filters, util functions and testing helpers.
+footer: Apache-2.0 Licensed | Copyright © 2019-present Laurent Tauber, Gery Hirschfeld & Contributors
 ---
 
 ## Framework Support

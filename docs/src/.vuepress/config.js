@@ -37,8 +37,8 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
-    // repo: 'https://github.com/baloise/ui-library',
-    logo: '/assets/images/logo.svg',
+    repo: 'https://github.com/baloise/ui-library',
+    logo: '/assets/images/logo-dark.svg',
     editLinks: false,
     docsDir: 'docs',
     editLinkText: '',
