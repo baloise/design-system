@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.18.0](https://github.com/baloise/ui-library/compare/v4.17.0...v4.18.0) (2021-05-01)
+
+
+### Features
+
+* **select:** improve handling and performance ([f8962d8](https://github.com/baloise/ui-library/commit/f8962d82dce9339251cd89f983d10cb594c5e6a9))
+
+
+
+
+
 # [4.17.0](https://github.com/baloise/ui-library/compare/v4.16.0...v4.17.0) (2021-04-30)
 
 

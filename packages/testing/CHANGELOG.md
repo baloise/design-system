@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.18.0](https://github.com/baloise/ui-library/compare/v4.17.0...v4.18.0) (2021-05-01)
+
+
+### Bug Fixes
+
+* **select:** adjust assertOptions ([b24df77](https://github.com/baloise/ui-library/commit/b24df77d3fe93c8d611116f11c340e901478725b))
+* **select:** adjust test accesssor ([1b0e015](https://github.com/baloise/ui-library/commit/1b0e015b73a3a940d2c312724c8294c7c18936c6))
+
+
+
+
+
 # [4.17.0](https://github.com/baloise/ui-library/compare/v4.16.0...v4.17.0) (2021-04-30)
 
 **Note:** Version bump only for package @baloise/ui-library-testing
