@@ -1,5 +1,5 @@
 @import '../../styles/ui-library.utilities';
-@import '../bal-input/bal-input.scss';
+@import 'node_modules/bulma/sass/components/dropdown.sass';
 
 :host {
   display: block;
@@ -65,5 +65,73 @@
 
   .bal-select__empty {
     padding: 10px 20px 13px 20px;
+  }
+
+  .bal-select__option {
+    visibility: visible;
+    font-family: $family-primary !important;
+    padding: 10px 20px 13px 20px;
+    transition: padding-left 0.3s ease;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    .select-option__content {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    &.has-checkbox {
+      span.checkbox {
+        width: 35px;
+      }
+    }
+
+    &.is-hidden {
+      display: none !important;
+    }
+
+    span {
+      font-family: $family-primary;
+      font-size: $size-small;
+    }
+
+    span.label {
+      font-weight: $weight-normal;
+      font-size: $size-small;
+    }
+
+    &.is-selected {
+      background: $dropdown-item-active-background-color;
+    }
+
+    &.is-selected:not(.has-checkbox) {
+      span.label {
+        font-weight: $weight-bold;
+        color: $dropdown-item-active-color;
+      }
+    }
+
+    &:hover,
+    &.is-focused {
+      background: $dropdown-item-hover-background-color;
+
+      span.label {
+        color: $dropdown-item-hover-color;
+      }
+    }
+
+    &.is-focused:not(.is-selected):not(.has-checkbox),
+    &:focus:not(.is-selected):not(.has-checkbox),
+    &:hover:not(.is-selected):not(.has-checkbox) {
+      padding-left: 30px !important;
+    }
   }
 }

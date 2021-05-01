@@ -2,9 +2,16 @@ import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, El
 import { isNil } from 'lodash'
 import { findItemLabel } from '../../helpers/helpers'
 import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey } from '../../utils'
-import { BalOptionController } from '../bal-select-option/bal-select-option'
-import { addOption, findLabelByValue, removeOption, updateOption } from './option.utils'
-import { addValue, removeValue, compareValueWithInput, validateAfterBlur } from './value.utils'
+import { addValue, findLabelByValue, includes, preventDefault, removeValue, startsWith, validateAfterBlur } from './utils/utils'
+import { watchForOptions } from './utils/watch-options'
+
+import { BalOptionValue } from './utils/bal-option.type'
+
+export interface BalOptionController extends BalOptionValue {
+  id: string
+  textContent: string
+  innerHTML: string
+}
 
 @Component({
   tag: 'bal-select',
@@ -16,12 +23,12 @@ export class Select {
   @Element() private el!: HTMLElement
   private inputElement!: HTMLInputElement
   private dropdownElement!: HTMLBalDropdownElement
-  private itemCounter = 0
   private didInit = false
-  private initialValue: string[] = []
   private inputId = `bal-select-${selectIds++}`
   private clearScrollToValue!: NodeJS.Timeout
+  private mutationO?: MutationObserver
 
+  @State() inputValue: string = ''
   @State() focusIndex: number = 0
   @State() isDropdownOpen: boolean = false
   @State() options: Map<string, BalOptionController> = new Map<string, BalOptionController>()
@@ -90,12 +97,17 @@ export class Select {
     if (!areArraysEqual(newValue, oldValue)) {
       if (!this.multiple && this.typeahead) {
         if (this.value.length > 0) {
-          this.inputElement.value = findLabelByValue(this.options, newValue[0])
+          this.updateInputValue(findLabelByValue(this.options, newValue[0]))
         }
-        this.filterOptions(this.inputElement.value)
       }
-      this.updateSelection()
       this.balChange.emit(this.value)
+    }
+  }
+
+  private updateInputValue(value: string) {
+    if (!isNil(this.inputElement)) {
+      this.inputElement.value = value
+      this.inputValue = value
     }
   }
 
@@ -135,10 +147,9 @@ export class Select {
   @Event() balKeyPress!: EventEmitter<KeyboardEvent>
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(ev: UIEvent) {
-    if (this.disabled && ev.target && ev.target === this.el) {
-      ev.preventDefault()
-      ev.stopPropagation()
+  listenOnClick(event: UIEvent) {
+    if (this.disabled && event.target && event.target === this.el) {
+      preventDefault(event)
     }
   }
 
@@ -146,15 +157,13 @@ export class Select {
   handleKeyDown(event: KeyboardEvent) {
     if (this.isDropdownOpen) {
       if (isArrowDownKey(event) || isArrowUpKey(event)) {
-        event.preventDefault()
-        event.stopPropagation()
+        preventDefault(event)
         this.navigateWithArrowKey(event)
         this.updateFocus()
       }
       if (isEnterKey(event)) {
+        preventDefault(event)
         this.selectedFocusedOption()
-        event.preventDefault()
-        event.stopPropagation()
       }
       if (isEscapeKey(event)) {
         this.cancel()
@@ -165,18 +174,52 @@ export class Select {
     }
   }
 
-  componentWillLoad() {
-    this.initialValue = this.value
+  connectedCallback() {
+    this.updateOptions()
+
+    this.mutationO = watchForOptions<HTMLBalSelectOptionElement>(this.el, 'bal-select-option', () => {
+      this.updateOptions()
+    })
   }
 
-  componentDidUpdate() {
-    if (this.initialValue.length > 0) {
-      this.inputElement.value = findLabelByValue(this.options, this.initialValue[0])
-      this.initialValue = []
-      this.filterOptions(this.inputElement.value)
-      this.updateSelection()
+  disconnectedCallback() {
+    if (this.mutationO) {
+      this.mutationO.disconnect()
+      this.mutationO = undefined
     }
+  }
+
+  componentWillLoad() {
+    if (this.options.size > 0 && this.value.length === 1) {
+      const firstOption = this.options.get(this.value[0])
+      if (!isNil(firstOption)) {
+        this.inputValue = firstOption.label
+      }
+    }
+  }
+
+  componentDidLoad() {
+    this.inputElement.value = this.inputValue
     this.didInit = true
+  }
+
+  private updateOptions() {
+    const optionElements = this.getChildOpts()
+    const options = new Map()
+    for (let index = 0; index < optionElements.length; index++) {
+      const element = optionElements[index]
+      options.set(element.value, {
+        value: element.value,
+        label: element.label,
+        id: element.id,
+        textContent: element.textContent,
+        innerHTML: element.innerHTML,
+      })
+    }
+    this.options = new Map(options)
+    if (this.didInit) {
+      this.validateAfterBlur()
+    }
   }
 
   /**
@@ -197,7 +240,7 @@ export class Select {
     this.focusIndex = 0
     if (this.inputElement) {
       if (force === true) {
-        this.inputElement.value = ''
+        this.updateInputValue('')
       }
       this.value = []
     }
@@ -235,58 +278,32 @@ export class Select {
   }
 
   /**
-   * @internal - Used to update option changes
+   * Select option by passed value
    */
   @Method()
-  async optionSelected(selectedOption: BalOptionController) {
-    const isAlreadySelected = this.value.some(v => v === selectedOption.value)
-    this.updateValue(selectedOption.value, !isAlreadySelected)
-
-    if (!this.multiple) {
-      if (this.typeahead) {
-        this.filterOptions(selectedOption.label)
-      }
-
-      await this.dropdownElement.close()
-    } else {
-      if (this.typeahead) {
-        await this.setFocus()
-      }
+  async select(value: string): Promise<void> {
+    const option = this.options.get(value)
+    if (!isNil(option)) {
+      this.optionSelected(option)
     }
-  }
-
-  /**
-   * @internal - Used to update option changes
-   */
-  @Method()
-  async optionConnected(option: BalOptionController) {
-    this.options = addOption(this.options, option)
-    this.filterOptions(this.inputElement.value)
-    this.validateAfterBlur()
-    this.updateFocus()
-  }
-
-  /**
-   * @internal - Used to update option changes
-   */
-  @Method()
-  async optionWillUpdate(optionToUpdate: BalOptionController) {
-    this.options = updateOption(this.options, optionToUpdate)
-  }
-
-  /**
-   * @internal - Used to update option changes
-   */
-  @Method()
-  async optionDisconnected(optionToDisconnect: BalOptionController) {
-    this.value = removeValue(this.value, optionToDisconnect.value)
-    this.options = removeOption(this.options, optionToDisconnect)
-    this.filterOptions(this.inputElement.value)
   }
 
   /********************************************************
    * GETTERS
    ********************************************************/
+
+  private get optionArray() {
+    return Array.from(this.options, ([_, value]) => value).filter(option => {
+      if (this.typeahead) {
+        return includes(option.textContent, this.inputValue)
+      }
+      return true
+    })
+  }
+
+  private hasOptions() {
+    return this.optionArray.length > 0
+  }
 
   private get inputPlaceholder(): string | undefined {
     if (this.multiple) {
@@ -303,18 +320,12 @@ export class Select {
     return this.placeholder
   }
 
+  private getChildOpts() {
+    return Array.from(this.el.querySelectorAll('bal-select-option'))
+  }
+
   private getDropdownContent() {
     return this.dropdownElement.querySelector('.dropdown-content')
-  }
-
-  private findOptionById(id: string): HTMLBalSelectOptionElement | null {
-    return this.el.querySelector(`#${id}`)
-  }
-
-  private getVisibleOptions(): HTMLBalSelectOptionElement[] {
-    const nodes = this.el.querySelectorAll('bal-select-option')
-    const list: HTMLBalSelectOptionElement[] = Array.prototype.slice.call(nodes)
-    return list.filter(el => !el.hidden)
   }
 
   /********************************************************
@@ -326,28 +337,23 @@ export class Select {
       this.focusIndex = 0
     }
 
-    const visibleOptions = this.getVisibleOptions()
+    const visibleOptions = this.optionArray
     if (visibleOptions.length > 0) {
       if (visibleOptions.length <= this.focusIndex) {
         this.focusIndex = visibleOptions.length - 1
       }
 
-      let focusedElement: HTMLBalSelectOptionElement | undefined
-      for (let index = 0; index < visibleOptions.length; index++) {
-        const element = visibleOptions[index]
-        const isElementInFocus = index === this.focusIndex
-        if (isElementInFocus) {
-          focusedElement = element
-        }
-        element.setAttribute('focused', `${isElementInFocus}`)
+      const option = visibleOptions[this.focusIndex]
+      const focusedElement = this.el.querySelector<HTMLElement>(`button#${option.id}`)
+      if (focusedElement) {
+        this.scrollToFocusedOption(focusedElement)
       }
-      this.scrollToFocusedOption(focusedElement)
     } else {
       this.focusIndex = 0
     }
   }
 
-  private scrollToFocusedOption(focusedElement?: HTMLBalSelectOptionElement) {
+  private scrollToFocusedOption(focusedElement?: HTMLElement) {
     if (focusedElement && this.dropdownElement) {
       const dropdownContentElement = this.getDropdownContent()
 
@@ -377,16 +383,10 @@ export class Select {
   }
 
   private selectedFocusedOption() {
-    const visibleOptions = this.getVisibleOptions()
+    const visibleOptions = this.optionArray
     if (visibleOptions.length > this.focusIndex) {
       const focusedOption = visibleOptions[this.focusIndex]
-      if (!isNil(focusedOption)) {
-        this.optionSelected({
-          id: focusedOption.id,
-          label: focusedOption.label || '',
-          value: focusedOption.value || '',
-        })
-      }
+      this.optionSelected(focusedOption)
     }
   }
 
@@ -409,36 +409,34 @@ export class Select {
   }
 
   private async scrollToLabel(label: string) {
-    const visibleOptions = this.getVisibleOptions()
-    const optionElement = visibleOptions.find(o => this.startsWithForFilter(o.label || '', label))
-    if (optionElement) {
-      this.focusOptionElement(optionElement)
-      this.scrollTo(optionElement.offsetTop)
-    }
-    this.labelToScrollTo = ''
-  }
-
-  private focusOptionElement(optionElement: HTMLBalSelectOptionElement) {
-    const visibleOptions = this.getVisibleOptions()
-    for (let index = 0; index < visibleOptions.length; index++) {
-      const element = visibleOptions[index]
-      const isFocused = element.id === optionElement.id
-      element.setAttribute('focused', `${isFocused}`)
-      if (isFocused) {
+    const option = this.optionArray.find(o => startsWith(o.label || '', label))
+    if (!isNil(option)) {
+      const optionElement = this.el.querySelector<HTMLButtonElement>(`button#${option.id}`)
+      if (!isNil(optionElement)) {
+        const index = this.optionArray.indexOf(option)
         this.focusIndex = index
+        this.scrollTo(optionElement.offsetTop)
       }
     }
-  }
-
-  private startsWithForFilter(text: string, input: string): boolean {
-    text = text.toLocaleLowerCase()
-    input = input.toLocaleLowerCase()
-    return text.startsWith(input)
+    this.labelToScrollTo = ''
   }
 
   /********************************************************
    * VALUE & FILTER & SELECTION
    ********************************************************/
+
+  private optionSelected(selectedOption: BalOptionController) {
+    const isAlreadySelected = this.value.some(v => v === selectedOption.value)
+    this.updateValue(selectedOption.value, !isAlreadySelected)
+
+    if (!this.multiple) {
+      this.dropdownElement.close()
+    } else {
+      if (this.typeahead) {
+        this.setFocus()
+      }
+    }
+  }
 
   private updateValue(newValue: string, isSelected = true) {
     if (this.multiple) {
@@ -449,42 +447,14 @@ export class Select {
       }
     } else {
       this.value = addValue(this.value, newValue, this.multiple)
-      this.inputElement.value = findLabelByValue(this.options, this.value[0])
+      this.updateInputValue(findLabelByValue(this.options, this.value[0]))
     }
-
-    this.updateSelection()
   }
 
   private removeValue = (value: string) => {
     this.value = removeValue(this.value, value)
-    this.updateSelection()
     if (this.multiple && this.typeahead) {
       this.setFocus()
-    }
-  }
-
-  private updateSelection() {
-    this.options.forEach(option => {
-      const optionEl = this.findOptionById(option.id)
-      if (optionEl !== null) {
-        optionEl.selected = this.value.includes(option.value)
-      }
-    })
-  }
-
-  private filterOptions(inputValue: string): void {
-    if (this.typeahead) {
-      this.itemCounter = 0
-      this.options.forEach(option => {
-        const optionElement = this.findOptionById(option.id)
-        const didMatch = compareValueWithInput(`${option.label}` || '', `${inputValue}`)
-        if (didMatch === true) {
-          this.itemCounter = this.itemCounter + 1
-        }
-        if (optionElement !== null) {
-          optionElement.setAttribute('hidden', `${!didMatch}`)
-        }
-      })
     }
   }
 
@@ -500,8 +470,7 @@ export class Select {
 
   private handleClick = (event: MouseEvent) => {
     if (this.disabled) {
-      event.preventDefault()
-      event.stopPropagation()
+      preventDefault(event)
     }
   }
 
@@ -512,8 +481,7 @@ export class Select {
     } else {
       this.focusIndex = 0
       if (this.multiple && this.typeahead) {
-        this.inputElement.value = ''
-        this.filterOptions(this.inputElement.value)
+        this.updateInputValue('')
       }
     }
     event.stopPropagation()
@@ -526,8 +494,7 @@ export class Select {
 
   private handleInputClick = async (event: MouseEvent) => {
     if (this.disabled) {
-      event.preventDefault()
-      event.stopPropagation()
+      preventDefault(event)
     } else {
       this.focusIndex = 0
       this.balClick.emit(event)
@@ -548,23 +515,28 @@ export class Select {
     this.balKeyPress.emit(event)
   }
 
+  private handleInputChange = (event: Event) => {
+    if (!this.disabled) {
+      this.inputValue = (event.target as HTMLInputElement).value
+    }
+  }
+
   private handleInput = async (event: Event) => {
     if (!this.disabled) {
+      this.inputValue = (event.target as HTMLInputElement).value
+
       if (!this.isDropdownOpen) {
         this.dropdownElement.open()
       }
+
       this.focusIndex = 0
-
-      const inputValue = (event.target as HTMLInputElement).value
-      this.filterOptions(inputValue)
       this.updateFocus()
+      preventDefault(event)
 
-      event.preventDefault()
-      event.stopPropagation()
       if (this.searchInput !== undefined) {
-        this.searchInput(inputValue)
+        this.searchInput(this.inputValue)
       }
-      this.balInput.emit(inputValue)
+      this.balInput.emit(this.inputValue)
     }
   }
 
@@ -575,6 +547,12 @@ export class Select {
       label.id = labelId
       label.htmlFor = this.inputId
     }
+
+    const Chip = (props: { value: string }) => (
+      <bal-tag size="small" dense closable onBalCloseClick={_ => this.removeValue(props.value)}>
+        {findLabelByValue(this.options, props.value)}
+      </bal-tag>
+    )
 
     return (
       <Host
@@ -587,13 +565,82 @@ export class Select {
         }}
       >
         <bal-dropdown expanded={this.expanded} onBalCollapse={this.handleDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
-          <bal-dropdown-trigger>{this.renderTrigger()}</bal-dropdown-trigger>
+          <bal-dropdown-trigger>
+            <div
+              class={{
+                'bal-select__slot': true,
+                'is-focused': this.isDropdownOpen,
+              }}
+            >
+              <div class="bal-select__selections">
+                {this.value
+                  .filter(_ => this.multiple)
+                  .map((value: string) => (
+                    <Chip value={value}></Chip>
+                  ))}
+                <input
+                  type="text"
+                  class={{
+                    'input': true,
+                    'is-inverted': this.inverted,
+                    'is-clickable': !this.isDropdownOpen,
+                  }}
+                  autocomplete={'off'}
+                  placeholder={this.inputPlaceholder}
+                  readOnly={!this.typeahead}
+                  disabled={this.disabled}
+                  tabindex={this.balTabindex}
+                  onInput={this.handleInput}
+                  onClick={this.handleInputClick}
+                  onBlur={this.handleInputBlur}
+                  onChange={this.handleInputChange}
+                  onFocus={this.balFocus.emit}
+                  onKeyPress={this.handleKeyPress}
+                  ref={el => (this.inputElement = el as HTMLInputElement)}
+                />
+              </div>
+              <bal-icon
+                class={{ 'is-hidden': this.loading }}
+                name="caret-down"
+                size="xsmall"
+                inverted={this.inverted}
+                turn={this.isDropdownOpen}
+                style={{
+                  marginTop: this.isDropdownOpen ? '8px' : '0px',
+                }}
+              ></bal-icon>
+            </div>
+          </bal-dropdown-trigger>
           <bal-dropdown-menu scrollable={this.scrollable}>
-            <slot></slot>
+            {this.optionArray.map((option: BalOptionController, index: number) => (
+              <button
+                type="button"
+                role="option"
+                id={option.id}
+                data-value={option.value}
+                data-label={option.label}
+                class={{
+                  'bal-select__option ': true,
+                  'dropdown-item': true,
+                  'is-selected': this.value.includes(option.value),
+                  'is-focused': this.focusIndex === index,
+                  'has-checkbox': this.multiple,
+                }}
+                tabIndex={-1}
+                onClick={() => this.optionSelected(option)}
+              >
+                <div class="select-option__content">
+                  <span class="checkbox" style={{ display: this.multiple ? 'flex' : 'none' }}>
+                    <bal-checkbox checked={this.value.includes(option.value)} tabindex={-1} onBalChange={preventDefault}></bal-checkbox>
+                  </span>
+                  <span class="label" innerHTML={option.innerHTML}></span>
+                </div>
+              </button>
+            ))}
             <div
               class={{
                 'bal-select__empty': true,
-                'is-hidden': this.noDataLabel === undefined || this.itemCounter !== 0 || !this.typeahead,
+                'is-hidden': this.noDataLabel === undefined || this.hasOptions() || !this.typeahead,
               }}
             >
               {this.noDataLabel}
@@ -601,60 +648,6 @@ export class Select {
           </bal-dropdown-menu>
         </bal-dropdown>
       </Host>
-    )
-  }
-
-  renderTrigger() {
-    return (
-      <div
-        class={{
-          'bal-select__slot': true,
-          'is-focused': this.isDropdownOpen,
-        }}
-      >
-        <div class="bal-select__selections">
-          {this.value.map((value: string) => this.renderValue(value))}
-          <input
-            type="text"
-            class={{
-              'input': true,
-              'is-inverted': this.inverted,
-              'is-clickable': !this.isDropdownOpen,
-            }}
-            autocomplete={'off'}
-            placeholder={this.inputPlaceholder}
-            readOnly={!this.typeahead}
-            disabled={this.disabled}
-            tabindex={this.balTabindex}
-            onInput={this.handleInput}
-            onClick={this.handleInputClick}
-            onBlur={this.handleInputBlur}
-            onFocus={this.balFocus.emit}
-            onKeyPress={this.handleKeyPress}
-            ref={el => (this.inputElement = el as HTMLInputElement)}
-          />
-        </div>
-        <bal-icon
-          class={{ 'is-hidden': this.loading }}
-          name="caret-down"
-          size="xsmall"
-          inverted={this.inverted}
-          turn={this.isDropdownOpen}
-          style={{
-            marginTop: this.isDropdownOpen ? '8px' : '0px',
-          }}
-        ></bal-icon>
-      </div>
-    )
-  }
-
-  renderValue(value: string) {
-    return this.multiple ? (
-      <bal-tag size="small" dense closable onBalCloseClick={_ => this.removeValue(value)}>
-        {findLabelByValue(this.options, value)}
-      </bal-tag>
-    ) : (
-      ''
     )
   }
 }

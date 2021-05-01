@@ -1911,7 +1911,7 @@ export class BalRadioGroup {
 export declare interface BalSelect extends Components.BalSelect {}
 @ProxyCmp({
   inputs: ['balTabindex', 'disabled', 'expanded', 'inverted', 'loading', 'multiple', 'name', 'noDataLabel', 'placeholder', 'scrollable', 'searchInput', 'typeahead', 'value'],
-  methods: ['setFocus', 'clear', 'open', 'close', 'cancel']
+  methods: ['setFocus', 'clear', 'open', 'close', 'cancel', 'select']
 })
 @Component({
   selector: 'bal-select',
@@ -1946,13 +1946,13 @@ export class BalSelect {
 
 export declare interface BalSelectOption extends Components.BalSelectOption {}
 @ProxyCmp({
-  inputs: ['checkbox', 'focused', 'hidden', 'label', 'selected', 'value']
+  inputs: ['label', 'value']
 })
 @Component({
   selector: 'bal-select-option',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['checkbox', 'focused', 'hidden', 'label', 'selected', 'value']
+  inputs: ['label', 'value']
 })
 export class BalSelectOption {
   protected el: HTMLElement;

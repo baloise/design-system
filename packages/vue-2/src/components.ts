@@ -1379,10 +1379,7 @@ export const BalSelect = /*@__PURE__*/ Vue.extend({
     open: createCommonMethod('open') as Components.BalSelect['open'],
     close: createCommonMethod('close') as Components.BalSelect['close'],
     cancel: createCommonMethod('cancel') as Components.BalSelect['cancel'],
-    optionSelected: createCommonMethod('optionSelected') as Components.BalSelect['optionSelected'],
-    optionConnected: createCommonMethod('optionConnected') as Components.BalSelect['optionConnected'],
-    optionWillUpdate: createCommonMethod('optionWillUpdate') as Components.BalSelect['optionWillUpdate'],
-    optionDisconnected: createCommonMethod('optionDisconnected') as Components.BalSelect['optionDisconnected'],
+    select: createCommonMethod('select') as Components.BalSelect['select'],
   },
   render: createCommonRender('bal-select', ['balChange', 'balClick', 'balInput', 'balBlur', 'balFocus', 'balCancel', 'balKeyPress']),
 });
@@ -1392,11 +1389,7 @@ export const BalSelectOption = /*@__PURE__*/ Vue.extend({
 
   props: {
     label: {} as PropOptions<Components.BalSelectOption['label']>,
-    checkbox: {} as PropOptions<Components.BalSelectOption['checkbox']>,
     value: {} as PropOptions<Components.BalSelectOption['value']>,
-    hidden: {} as PropOptions<Components.BalSelectOption['hidden']>,
-    focused: {} as PropOptions<Components.BalSelectOption['focused']>,
-    selected: {} as PropOptions<Components.BalSelectOption['selected']>,
   },
 
 
