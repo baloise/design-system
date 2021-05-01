@@ -62,11 +62,11 @@ async function readFunctions(fileName, mapFn, returnFiles = false) {
 }
 
 async function readFile(fileName) {
-  return file.read(path.join(__dirname, `../src/guide/tooling/${fileName}.md`))
+  return file.read(path.join(__dirname, `../src/components/tooling/${fileName}.md`))
 }
 
 async function saveFile(fileName, content) {
-  await file.save(path.join(__dirname, `../src/guide/tooling/${fileName}.md`), content)
+  await file.save(path.join(__dirname, `../src/components/tooling/${fileName}.md`), content)
 }
 
 main()

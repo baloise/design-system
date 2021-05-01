@@ -1,0 +1,55 @@
+# bal-file-upload
+
+The `bal-file-upload` is all in one component. It supports drag&drop and the normal file upload dialog of the browser.
+
+
+## Basic
+
+<ClientOnly>  <docs-demo-bal-file-upload-45></docs-demo-bal-file-upload-45></ClientOnly>
+
+```html
+<p id="bal-file-upload-messages"></p>
+<bal-file-upload id="bal-file-upload-example"
+  accept="image/png,image/jpeg"
+  max-files="3"
+  max-file-size="1000000"
+  max-bundle-size="1000000"
+></bal-file-upload>
+```
+
+
+## API
+
+### bal-file-upload
+
+#### Properties
+
+| Attribute           | Description                                      | Type                 | Default                      |
+| :------------------ | :----------------------------------------------- | :------------------- | :--------------------------- |
+| **accept**          | Accepted MIME-Types like `image/png,image/jpeg`. | `string`             | `''`                         |
+| **disabled**        | If `true` the button is disabled                 | `boolean`            | `false`                      |
+| **label**           | Label of the drop area.                          | `string`             | `'Choose or drop a file...'` |
+| **max-bundle-size** | Allowed max bundle size in bytes.                | `number , undefined` | `undefined`                  |
+| **max-file-size**   | Allowed max file size in bytes.                  | `number , undefined` | `undefined`                  |
+| **max-files**       | Allowed number of files in the bundle.           | `number , undefined` | `undefined`                  |
+| **multiple**        | If `true` multiple file upload is possible.      | `boolean`            | `true`                       |
+
+#### Events
+
+| Event               | Description                                                              | Type                     |
+| :------------------ | :----------------------------------------------------------------------- | :----------------------- |
+| **balChange**       | Triggers when a file is added or removed.                                | `File[]`                 |
+| **balRejectedFile** | Triggers when a file is rejected due to not allowed MIME-Type and so on. | `FileUploadRejectedFile` |
+
+
+
+
+
+
+## Links
+
+* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-file-upload)
+
+<ClientOnly>
+  <docs-component-script tag="balFileUpload"></docs-component-script>
+</ClientOnly>

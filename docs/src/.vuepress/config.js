@@ -60,17 +60,13 @@ module.exports = {
         text: 'About Us',
         link: '/about-us/',
       },
-      // {
-      //   text: 'Change Log',
-      //   link: '/changelog/',
-      // },
     ],
     sidebar: {
       '/design/': [
         {
           title: 'Design',
           collapsable: false,
-          children: ['', 'spacing'],
+          children: ['spacing'],
         },
       ],
       '/components/': [
@@ -108,7 +104,7 @@ module.exports = {
         {
           title: 'Resources',
           collapsable: false,
-          children: ['', 'templates'],
+          children: ['fonts', 'icons', 'templates', 'changelog'],
         },
       ],
       '/about-us/': [
@@ -129,19 +125,6 @@ module.exports = {
           ],
         },
       ],
-      // '/guide/': [
-      //   {
-      //     title: 'Guide',
-      //     collapsable: false,
-      //     children: [
-      //       'essentials/html5',
-      //       'essentials/vue',
-      //       'essentials/angular',
-      //       'essentials/examples',
-      //     ],
-      //   },
-
-      // ],
     },
   },
 }

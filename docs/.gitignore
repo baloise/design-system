@@ -1,12 +1,11 @@
 fonts/
 lib/
 generated/
-src/components/bal-*.md
 
 docs-demo-bal-*.vue
 logo.svg
 logo-app.svg
 /public
 src/.vuepress/styles/ui-library.css
-src/changelog/index.md
+src/resources/changelog.md
 /examples

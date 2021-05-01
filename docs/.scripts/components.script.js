@@ -7,6 +7,7 @@ const testingLib = require('../../packages/testing/.scripts/testing.lib')
 const api = require('./utils/api.util')
 const testing = require('./utils/testing.util')
 const github = require('./utils/github.util')
+const componentDoc = require('./utils/component-doc.util')
 const { NEWLINE, LEFT_WHITESPACE } = require('../../.scripts/constants')
 
 const JAVASCRIPT_CONTENT = []
@@ -24,14 +25,13 @@ async function main() {
 
 async function generateSidebar(components) {
   const sidebar = []
-  await forEachComponent(components, async component => sidebar.push(component.tag))
+  await forEachComponent(components, async component => sidebar.push(`components/${component.tag}`))
   await file.save(path.join(__dirname, '../src/.vuepress/generated/components.json'), JSON.stringify(sidebar))
 }
 
 async function generateMarkdown(components) {
   const accessors = await testingLib.accessors()
-  const dir = path.join(__dirname, `../src/components`)
-  await file.empty(dir)
+  const dir = path.join(__dirname, `../src/components/components`)
   await forEachComponent(components, async component => {
     const { markdown, scripts } = generateExamples(component)
     JAVASCRIPT_CONTENT.push(scripts)
@@ -48,6 +48,10 @@ async function generateMarkdown(components) {
     const accessor = accessors.get(component.tag)
     const testingContent = testing.parse(accessor)
     lines.push(testingContent)
+    lines.push('')
+
+    const docContent = await componentDoc.parse(component)
+    lines.push(docContent)
     lines.push('')
 
     const githubContent = github.parse(component, accessor)
