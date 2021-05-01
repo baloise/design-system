@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /assets/images/logo.svg
+heroImage: /assets/images/banner-without-text.svg
 tagline: The Design System is an open source project for styling awesome web applications that follow the Baloise corporate style guide.
 
 actionText: Explore our components →
