@@ -16,16 +16,4 @@ export default ({
   applyPolyfills().then(() => {
     defineCustomElements()
   })
-
-  document.onreadystatechange = () => {
-    if (document.readyState == 'complete') {
-      console.log('Page completed with image and files!')
-      const siteNameElements = document.getElementsByClassName('site-name')
-      if (siteNameElements && siteNameElements.length > 0) {
-        const siteNameElement = siteNameElements[0]
-        siteNameElement.innerHTML = '<b>Baloise</b> Design System'
-      }
-      // fetch to next page or some code
-    }
-  }
 }
