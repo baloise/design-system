@@ -1,10 +1,14 @@
 # bal-checkbox <Badge text="Two-way binding"/>
 
+<!-- START: human documentation top -->
+
 Checkboxes allow the selection of multiple options from a set of options. They appear as checked (ticked) when activated. Clicking on a checkbox will toggle the **checked** property. They can also be checked programmatically by setting the **checked** property.
+
+<!-- END: human documentation top -->
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-checkbox-22></docs-demo-bal-checkbox-22></ClientOnly>
+<ClientOnly> <docs-demo-bal-checkbox-22></docs-demo-bal-checkbox-22></ClientOnly>
 
 ```html
 <bal-checkbox data-test-id="checkbox-normal">Label</bal-checkbox>
@@ -14,7 +18,7 @@ Checkboxes allow the selection of multiple options from a set of options. They a
 
 ## Switch
 
-<ClientOnly>  <docs-demo-bal-checkbox-23></docs-demo-bal-checkbox-23></ClientOnly>
+<ClientOnly> <docs-demo-bal-checkbox-23></docs-demo-bal-checkbox-23></ClientOnly>
 
 ```html
 <bal-checkbox interface="switch">Label</bal-checkbox>
@@ -24,7 +28,7 @@ Checkboxes allow the selection of multiple options from a set of options. They a
 
 ## Inverted
 
-<ClientOnly>  <docs-demo-bal-checkbox-24></docs-demo-bal-checkbox-24></ClientOnly>
+<ClientOnly> <docs-demo-bal-checkbox-24></docs-demo-bal-checkbox-24></ClientOnly>
 
 ```html
 <div class="has-background-info has-padding">
@@ -36,17 +40,19 @@ Checkboxes allow the selection of multiple options from a set of options. They a
 
 ## With Links
 
-<ClientOnly>  <docs-demo-bal-checkbox-25></docs-demo-bal-checkbox-25></ClientOnly>
+<ClientOnly> <docs-demo-bal-checkbox-25></docs-demo-bal-checkbox-25></ClientOnly>
 
 ```html
-<bal-checkbox> Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it. </bal-checkbox>
+<bal-checkbox>
+  Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it.
+</bal-checkbox>
 ```
 
 ## Events
 
 ### Listen on Changes
 
-<ClientOnly>  <docs-demo-bal-checkbox-26></docs-demo-bal-checkbox-26></ClientOnly>
+<ClientOnly> <docs-demo-bal-checkbox-26></docs-demo-bal-checkbox-26></ClientOnly>
 
 ```html
 <bal-checkbox id="cb-2">Listen on changes</bal-checkbox>
@@ -55,14 +61,13 @@ Checkboxes allow the selection of multiple options from a set of options. They a
 
 ### Change value
 
-<ClientOnly>  <docs-demo-bal-checkbox-27></docs-demo-bal-checkbox-27></ClientOnly>
+<ClientOnly> <docs-demo-bal-checkbox-27></docs-demo-bal-checkbox-27></ClientOnly>
 
 ```html
 <bal-checkbox id="cb-3">Value</bal-checkbox>
 <button id="cb-3-trigger-1">Set to true</button>
 <button id="cb-3-trigger-2">Set to false</button>
 ```
-
 
 ## API
 
@@ -107,11 +112,11 @@ import { dataTestSelector, CheckboxAccessor } from '@baloise/ui-library-testing'
 
 describe('Checkbox', () => {
   it('should ...', () => {
-     const checkbox = CheckboxAccessor(dataTestSelector('checkbox-id')).get()
-     checkbox.click()
-     checkbox.assertIsChecked()
-     checkbox.contains('Label')
- })
+    const checkbox = CheckboxAccessor(dataTestSelector('checkbox-id')).get()
+    checkbox.click()
+    checkbox.assertIsChecked()
+    checkbox.contains('Label')
+  })
 })
 ```
 
@@ -132,13 +137,14 @@ describe('Checkbox', () => {
 | **selectNth**        | Selects the option at the given index                                                                            | `index: number`                                          |
 | **should**           | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax) | `chainers: string, attribute?: string, content?: string` |
 
+<!-- START: human documentation bottom -->
 
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-checkbox)
-* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/checkbox.accessor.ts)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-checkbox)
+- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/checkbox.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balCheckbox"></docs-component-script>

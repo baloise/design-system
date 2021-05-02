@@ -1,10 +1,14 @@
 # bal-tabs
 
+<!-- START: human documentation top -->
+
 Tabs are used to structure the information in sub section on the same page.
+
+<!-- END: human documentation top -->
 
 ## Main Navigation
 
-<ClientOnly>  <docs-demo-bal-tabs-87></docs-demo-bal-tabs-87></ClientOnly>
+<ClientOnly> <docs-demo-bal-tabs-87></docs-demo-bal-tabs-87></ClientOnly>
 
 ```html
 <bal-tabs action action-label="Action" data-test-id="tabs">
@@ -17,7 +21,7 @@ Tabs are used to structure the information in sub section on the same page.
 
 ## Sub Navigation
 
-<ClientOnly>  <docs-demo-bal-tabs-88></docs-demo-bal-tabs-88></ClientOnly>
+<ClientOnly> <docs-demo-bal-tabs-88></docs-demo-bal-tabs-88></ClientOnly>
 
 ```html
 <bal-tabs rounded>
@@ -29,7 +33,7 @@ Tabs are used to structure the information in sub section on the same page.
 
 ## Expanded
 
-<ClientOnly>  <docs-demo-bal-tabs-89></docs-demo-bal-tabs-89></ClientOnly>
+<ClientOnly> <docs-demo-bal-tabs-89></docs-demo-bal-tabs-89></ClientOnly>
 
 ```html
 <bal-tabs rounded expanded>
@@ -41,7 +45,7 @@ Tabs are used to structure the information in sub section on the same page.
 
 ## Stepper
 
-<ClientOnly>  <docs-demo-bal-tabs-90></docs-demo-bal-tabs-90></ClientOnly>
+<ClientOnly> <docs-demo-bal-tabs-90></docs-demo-bal-tabs-90></ClientOnly>
 
 ```html
 <bal-tabs interface="steps">
@@ -53,7 +57,6 @@ Tabs are used to structure the information in sub section on the same page.
   <bal-tab-item value="step-d" label="Step D" disabled>Step D Content</bal-tab-item>
 </bal-tabs>
 ```
-
 
 ## API
 
@@ -81,10 +84,9 @@ Tabs are used to structure the information in sub section on the same page.
 | Method       | Description                                               | Signature                                    |
 | :----------- | :-------------------------------------------------------- | :------------------------------------------- |
 | **`select`** | Go to tab with the given value                            | `select(tab: BalTabOption) => Promise<void>` |
-| **`sync`**   | *Internal* - Rerenders the tabs with their given settings | `sync() => Promise<void>`                    |
+| **`sync`**   | _Internal_ - Rerenders the tabs with their given settings | `sync() => Promise<void>`                    |
 
 ### bal-tab-item
-
 
 # bal-tab-item
 
@@ -129,10 +131,10 @@ import { dataTestSelector, TabsAccessor } from '@baloise/ui-library-testing'
 
 describe('Tabs', () => {
   it('should ...', () => {
-     const tabs = TabsAccessor(dataTestSelector('tabs-id')).get()
-     tabs.select(1)
-     tabs.assertVisible('value')
- })
+    const tabs = TabsAccessor(dataTestSelector('tabs-id')).get()
+    tabs.select(1)
+    tabs.assertVisible('value')
+  })
 })
 ```
 
@@ -157,10 +159,11 @@ describe('Tabs', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
+<!-- START: human documentation bottom -->
 
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-tabs)
-* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/tabs.accessor.ts)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-tabs)
+- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/tabs.accessor.ts)

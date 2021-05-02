@@ -1,15 +1,16 @@
 # bal-teaser-steps
 
+<!-- START: human documentation top -->
+
 The steps list is useful for tracking progress in multi steps forms or wizards.
 
 ::: warning
 Only use this component in teasers and not for normal applications. If you need a stepper go to [tabs](/components/bal-tabs.html#stepper).
 :::
 
-
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-teaser-steps-95></docs-demo-bal-teaser-steps-95></ClientOnly>
+<ClientOnly> <docs-demo-bal-teaser-steps-95></docs-demo-bal-teaser-steps-95></ClientOnly>
 
 ```html
 <bal-card inverted color="info" teaser>
@@ -28,13 +29,15 @@ Only use this component in teasers and not for normal applications. If you need 
 
 The navigation is disabled, so the framework has to do that.
 
-<ClientOnly>  <docs-demo-bal-teaser-steps-96></docs-demo-bal-teaser-steps-96></ClientOnly>
+<ClientOnly> <docs-demo-bal-teaser-steps-96></docs-demo-bal-teaser-steps-96></ClientOnly>
 
 ```html
 <bal-card teaser>
   <bal-teaser-steps id="steps-2">
     <bal-teaser-step value="step-a" label="Step A" done>Step A Content</bal-teaser-step>
-    <bal-teaser-step id="step-2" value="step-b" label="One Moment, your premium is being clacluated..." active>Step B Content</bal-teaser-step>
+    <bal-teaser-step id="step-2" value="step-b" label="One Moment, your premium is being clacluated..." active
+      >Step B Content</bal-teaser-step
+    >
     <bal-teaser-step value="step-c" label="Step C">Step C Content</bal-teaser-step>
     <bal-teaser-step value="step-d" label="Step D" disabled>Step D Content</bal-teaser-step>
     <bal-teaser-step value="step-e" label="Step E" disabled>Step E Content</bal-teaser-step>
@@ -43,7 +46,6 @@ The navigation is disabled, so the framework has to do that.
   <bal-button id="update-label-button">Show Label</bal-button>
 </bal-card>
 ```
-
 
 ## API
 
@@ -78,7 +80,6 @@ The navigation is disabled, so the framework has to do that.
 
 ### bal-teaser-step
 
-
 # bal-teaser-step
 
 `bal-teaser-step` is a child component of bal-teaser-steps. This component represents a step.
@@ -101,14 +102,13 @@ The navigation is disabled, so the framework has to do that.
 | **`getOptions`** | Options of the step like label, value etc. | `getOptions() => Promise<BalTeaserStepOption>` |
 | **`setActive`**  | Sets the step active.                      | `setActive(active: boolean) => Promise<void>`  |
 
+<!-- START: human documentation bottom -->
 
-
-
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-teaser-steps)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-teaser-steps)
 
 <ClientOnly>
   <docs-component-script tag="balTeaserSteps"></docs-component-script>

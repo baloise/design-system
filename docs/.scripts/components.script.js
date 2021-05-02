@@ -36,8 +36,14 @@ async function generateMarkdown(components) {
     const { markdown, scripts } = generateExamples(component)
     JAVASCRIPT_CONTENT.push(scripts)
 
+    const { top, bottom } = await componentDoc.parse(component)
+
     const lines = []
     component.readme.split(NEWLINE).forEach(line => lines.push(line))
+
+    lines.push(top)
+    lines.push('')
+
     lines.push(markdown)
     lines.push('')
 
@@ -50,8 +56,7 @@ async function generateMarkdown(components) {
     lines.push(testingContent)
     lines.push('')
 
-    const docContent = await componentDoc.parse(component)
-    lines.push(docContent)
+    lines.push(bottom)
     lines.push('')
 
     const githubContent = github.parse(component, accessor)

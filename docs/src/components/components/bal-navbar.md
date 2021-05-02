@@ -1,14 +1,18 @@
 # bal-navbar
 
+<!-- START: human documentation top -->
+
 A responsive horizontal navbar that can support images, links, buttons, and dropdowns.
 
 ::: tip
 Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/ueber-uns/wer-wir-sind/bilder-logos.html)
 :::
 
+<!-- END: human documentation top -->
+
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-navbar-64></docs-demo-bal-navbar-64></ClientOnly>
+<ClientOnly> <docs-demo-bal-navbar-64></docs-demo-bal-navbar-64></ClientOnly>
 
 ```html
 <bal-navbar>
@@ -25,7 +29,7 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
           <a class="navbar-item"><bal-text>English</bal-text></a>
           <a class="navbar-item"><bal-text>German</bal-text></a>
           <a class="navbar-item"><bal-text>French</bal-text></a>
-          <hr class="navbar-divider" >
+          <hr class="navbar-divider" />
           <a class="navbar-item"><bal-text>Support</bal-text></a>
         </div>
       </div>
@@ -39,12 +43,12 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 ## Light
 
-<ClientOnly>  <docs-demo-bal-navbar-65></docs-demo-bal-navbar-65></ClientOnly>
+<ClientOnly> <docs-demo-bal-navbar-65></docs-demo-bal-navbar-65></ClientOnly>
 
 ```html
 <bal-navbar light>
   <bal-navbar-brand>
-    <img src="https://github.com/baloise/ui-library/raw/master/resources/images/logo.svg" >
+    <img src="https://github.com/baloise/ui-library/raw/master/resources/images/logo.svg" />
     <bal-text style="margin-left: 15px"><strong>App</strong> Title</bal-text>
   </bal-navbar-brand>
   <bal-navbar-menu>
@@ -56,7 +60,7 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
           <a class="navbar-item"><bal-text>English</bal-text></a>
           <a class="navbar-item"><bal-text>German</bal-text></a>
           <a class="navbar-item"><bal-text>French</bal-text></a>
-          <hr class="navbar-divider" >
+          <hr class="navbar-divider" />
           <a class="navbar-item"><bal-text>Support</bal-text></a>
         </div>
       </div>
@@ -67,7 +71,6 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
   </bal-navbar-menu>
 </bal-navbar>
 ```
-
 
 ## API
 
@@ -83,11 +86,9 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 ### bal-navbar-brand
 
-
-# bal-navbar-brand 
+# bal-navbar-brand
 
 `bal-navbar-brand` is a child component of `bal-navbar` that defines the area in the navbar where the logo or the title of the applications is.
-
 
 #### Properties
 
@@ -103,42 +104,32 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 ### bal-navbar-menu
 
-
-# bal-navbar-menu 
+# bal-navbar-menu
 
 `bal-navbar-menu` is a child component of `bal-navbar` that defines the area in the navbar where links and actions are.
-
-
 
 #### Methods
 
 | Method       | Description                                                             | Signature                                        |
 | :----------- | :---------------------------------------------------------------------- | :----------------------------------------------- |
-| **`toggle`** | *Internal* - If the menu is open it closes it and the other way around. | `toggle(isMenuActive: boolean) => Promise<void>` |
+| **`toggle`** | _Internal_ - If the menu is open it closes it and the other way around. | `toggle(isMenuActive: boolean) => Promise<void>` |
 
 ### bal-navbar-menu-end
 
-
-# bal-navbar-menu-start 
+# bal-navbar-menu-start
 
 `bal-navbar-menu-start` is a child component of `bal-navbar` which is the left side of the navbar.
 
-
-
 ### bal-navbar-menu-start
 
-
-# bal-navbar-menu-end 
+# bal-navbar-menu-end
 
 `bal-navbar-menu-end` is a child component of `bal-navbar` which is the right side of the navbar.
 
+<!-- START: human documentation bottom -->
 
-
-
-
-
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-navbar)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-navbar)

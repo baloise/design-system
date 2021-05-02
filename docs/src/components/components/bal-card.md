@@ -1,17 +1,24 @@
 # bal-card
 
+<!-- START: human documentation top -->
+
 The card component is a versatile component that can be combined easily wiht other componets.
+
+<!-- END: human documentation top -->
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-card-15></docs-demo-bal-card-15></ClientOnly>
+<ClientOnly> <docs-demo-bal-card-15></docs-demo-bal-card-15></ClientOnly>
 
 ```html
 <bal-card>
   <bal-card-title>BaloiseCombi</bal-card-title>
   <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
 
-  <bal-card-content> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </bal-card-content>
+  <bal-card-content>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua.
+  </bal-card-content>
 
   <bal-card-actions>
     <bal-button>Action</bal-button>
@@ -22,7 +29,7 @@ The card component is a versatile component that can be combined easily wiht oth
 
 ## Inverted style
 
-<ClientOnly>  <docs-demo-bal-card-16></docs-demo-bal-card-16></ClientOnly>
+<ClientOnly> <docs-demo-bal-card-16></docs-demo-bal-card-16></ClientOnly>
 
 ```html
 <bal-card color="info" inverted>
@@ -30,7 +37,8 @@ The card component is a versatile component that can be combined easily wiht oth
   <bal-card-subtitle inverted>Police number 70/2.937.458</bal-card-subtitle>
 
   <bal-card-content inverted>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua.
   </bal-card-content>
 
   <bal-card-actions right>
@@ -42,7 +50,7 @@ The card component is a versatile component that can be combined easily wiht oth
 
 ## With accordion
 
-<ClientOnly>  <docs-demo-bal-card-17></docs-demo-bal-card-17></ClientOnly>
+<ClientOnly> <docs-demo-bal-card-17></docs-demo-bal-card-17></ClientOnly>
 
 ```html
 <bal-card>
@@ -50,7 +58,10 @@ The card component is a versatile component that can be combined easily wiht oth
   <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
 
   <bal-accordion card>
-    <p class="has-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p class="has-padding">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.
+    </p>
   </bal-accordion>
 </bal-card>
 ```
@@ -59,7 +70,7 @@ The card component is a versatile component that can be combined easily wiht oth
 
 The position the action buttons to the right side just add the attribute `right` to the component `bal-card-actions`.
 
-<ClientOnly>  <docs-demo-bal-card-18></docs-demo-bal-card-18></ClientOnly>
+<ClientOnly> <docs-demo-bal-card-18></docs-demo-bal-card-18></ClientOnly>
 
 ```html
 <bal-card>
@@ -94,7 +105,7 @@ The position the action buttons to the right side just add the attribute `right`
 
 ## Summary card
 
-<ClientOnly>  <docs-demo-bal-card-19></docs-demo-bal-card-19></ClientOnly>
+<ClientOnly> <docs-demo-bal-card-19></docs-demo-bal-card-19></ClientOnly>
 
 ```html
 <bal-card border flat>
@@ -125,12 +136,12 @@ The position the action buttons to the right side just add the attribute `right`
 
 ## Service card
 
-<ClientOnly>  <docs-demo-bal-card-20></docs-demo-bal-card-20></ClientOnly>
+<ClientOnly> <docs-demo-bal-card-20></docs-demo-bal-card-20></ClientOnly>
 
 ```html
 <bal-card>
   <bal-card-head>
-    <img src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
+    <img src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" />
     <div>
       <h4 class="title is-size-4">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></h4>
       <h5 class="subtitle is-size-5 is-hidden-desktop">+ CHF 11.30</h5>
@@ -145,9 +156,10 @@ The position the action buttons to the right side just add the attribute `right`
 
   <bal-accordion card open-label="Details einblenden" close-label="Details ausblenden">
     <p class="has-padding has-text-blue-light-text">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+      et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+      ut labore et dolore magna aliqua.
     </p>
   </bal-accordion>
 </bal-card>
@@ -155,34 +167,33 @@ The position the action buttons to the right side just add the attribute `right`
 
 ## Colors
 
-<ClientOnly>  <docs-demo-bal-card-21></docs-demo-bal-card-21></ClientOnly>
+<ClientOnly> <docs-demo-bal-card-21></docs-demo-bal-card-21></ClientOnly>
 
 ```html
 <bal-card>
   <bal-card-content>Default</bal-card-content>
 </bal-card>
-<br>
+<br />
 <bal-card inverted color="primary">
   <bal-card-content>Primary</bal-card-content>
 </bal-card>
-<br>
+<br />
 <bal-card inverted color="info">
   <bal-card-content>Info</bal-card-content>
 </bal-card>
-<br>
+<br />
 <bal-card inverted color="success">
   <bal-card-content>Success</bal-card-content>
 </bal-card>
-<br>
+<br />
 <bal-card inverted color="warning">
   <bal-card-content>Warning</bal-card-content>
 </bal-card>
-<br>
+<br />
 <bal-card inverted color="danger">
   <bal-card-content>Danger</bal-card-content>
 </bal-card>
 ```
-
 
 ## API
 
@@ -204,7 +215,6 @@ The position the action buttons to the right side just add the attribute `right`
 
 ### bal-card-actions
 
-
 # bal-card-actions
 
 `bal-card-actions` is a child component of `bal-card` that sets the buttons to the right place.
@@ -216,7 +226,6 @@ The position the action buttons to the right side just add the attribute `right`
 | **right** | If `true` the buttons start form right to left. | `boolean` | `false` |
 
 ### bal-card-button
-
 
 # bal-card-button
 
@@ -230,11 +239,9 @@ The position the action buttons to the right side just add the attribute `right`
 
 ### bal-card-content
 
-
 # bal-card-content
 
 `bal-card-content` is a child component of `bal-card`. It is recommended that any text content for a card should be placed in a `bal-card-content`.
-
 
 #### Properties
 
@@ -244,30 +251,23 @@ The position the action buttons to the right side just add the attribute `right`
 
 ### bal-card-head
 
-
 # bal-card-head
 
 `bal-card-head` is a child component of `bal-card` that adds a head element for the service card style.
 
-
 ### bal-card-heading
-
 
 # bal-card-heading
 
 `bal-card-heading` is a child component of `bal-card` that adds a small heading to the card. It is recommended to use this before the `bal-card-title` component.
 
-
 ### bal-card-steps
-
 
 # bal-card-steps
 
 `bal-card-steps` is a child component of `bal-card` that adds a wrapper for the bal-tabs.
 
-
 ### bal-card-subtitle
-
 
 # bal-card-subtitle
 
@@ -281,7 +281,6 @@ The position the action buttons to the right side just add the attribute `right`
 
 ### bal-card-title
 
-
 # bal-card-title
 
 `bal-card-title` is a child component of `bal-card` that adds a title to card.
@@ -292,11 +291,10 @@ The position the action buttons to the right side just add the attribute `right`
 | :----------- | :------------------------------------------- | :-------- | :------ |
 | **inverted** | If `true` the card text color becomes white. | `boolean` | `false` |
 
+<!-- START: human documentation bottom -->
 
-
-
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-card)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-card)

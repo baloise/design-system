@@ -1,17 +1,23 @@
 # bal-field
 
+<!-- START: human documentation top -->
+
 A field wrappes a form field like input. It provides a clear style structure of each control.
+
+<!-- END: human documentation top -->
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-field-41></docs-demo-bal-field-41></ClientOnly>
+<ClientOnly> <docs-demo-bal-field-41></docs-demo-bal-field-41></ClientOnly>
 
 ```html
 <bal-card padding="form">
   <bal-card-content>
     <bal-field expanded>
       <bal-field-label required>Firstname</bal-field-label>
-      <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
+      <bal-field-hint subject="Spider-Man">
+        Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.
+      </bal-field-hint>
       <bal-field-control>
         <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
       </bal-field-control>
@@ -47,7 +53,7 @@ A field wrappes a form field like input. It provides a clear style structure of 
 
 ## Inverted
 
-<ClientOnly>  <docs-demo-bal-field-42></docs-demo-bal-field-42></ClientOnly>
+<ClientOnly> <docs-demo-bal-field-42></docs-demo-bal-field-42></ClientOnly>
 
 ```html
 <bal-card padding="form" color="info" inverted>
@@ -73,7 +79,7 @@ A field wrappes a form field like input. It provides a clear style structure of 
 
 ## Form
 
-<ClientOnly>  <docs-demo-bal-field-43></docs-demo-bal-field-43></ClientOnly>
+<ClientOnly> <docs-demo-bal-field-43></docs-demo-bal-field-43></ClientOnly>
 
 ```html
 <bal-card padding="form">
@@ -143,7 +149,7 @@ A field wrappes a form field like input. It provides a clear style structure of 
 
 This is not a recommanded validation style. Only use this style if you do not have the possibility to use live validation.
 
-<ClientOnly>  <docs-demo-bal-field-44></docs-demo-bal-field-44></ClientOnly>
+<ClientOnly> <docs-demo-bal-field-44></docs-demo-bal-field-44></ClientOnly>
 
 ```html
 <bal-card padding="form">
@@ -223,7 +229,6 @@ This is not a recommanded validation style. Only use this style if you do not ha
 </bal-card>
 ```
 
-
 ## API
 
 ### bal-field
@@ -240,11 +245,9 @@ This is not a recommanded validation style. Only use this style if you do not ha
 
 ### bal-field-control
 
-
 # bal-field-control
 
 `bal-field-control` is a child component of `bal-field`.
-
 
 #### Properties
 
@@ -256,7 +259,6 @@ This is not a recommanded validation style. Only use this style if you do not ha
 | **loading**    | If `true` a loading spinner is visible at the end of the input | `boolean` | `false` |
 
 ### bal-field-hint
-
 
 # bal-field-hint
 
@@ -270,25 +272,21 @@ This is not a recommanded validation style. Only use this style if you do not ha
 
 ### bal-field-label
 
-
 # bal-field-label
 
 `bal-field-label` is a child component of `bal-field`.
 
-
 #### Properties
 
-| Attribute    | Description                                        | Type      | Default |
-| :----------- | :------------------------------------------------- | :-------- | :------ |
-| **required** | If `true` a asterix (*) is added to the label text | `boolean` | `false` |
+| Attribute    | Description                                         | Type      | Default |
+| :----------- | :-------------------------------------------------- | :-------- | :------ |
+| **required** | If `true` a asterix (\*) is added to the label text | `boolean` | `false` |
 
 ### bal-field-message
-
 
 # bal-field-message
 
 `bal-field-message` is a child component of `bal-field`.
-
 
 #### Properties
 
@@ -296,11 +294,10 @@ This is not a recommanded validation style. Only use this style if you do not ha
 | :-------- | :-------------------------------- | :-------------------------------------- | :------ |
 | **color** | Defines the color of the message. | `"" , "danger" , "success" , "warning"` | `''`    |
 
+<!-- START: human documentation bottom -->
 
-
-
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-field)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-field)

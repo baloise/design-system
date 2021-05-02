@@ -1,6 +1,10 @@
 # bal-toast
 
+<!-- START: human documentation top -->
+
 Toasts are used to inform the user with a simple text message.
+
+<!-- END: human documentation top -->
 
 ## Usage
 
@@ -16,7 +20,7 @@ balToastController.create({ message: 'Danger zone!', color: 'danger' })
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-toast-105></docs-demo-bal-toast-105></ClientOnly>
+<ClientOnly> <docs-demo-bal-toast-105></docs-demo-bal-toast-105></ClientOnly>
 
 ```html
 <bal-button id="toast-default" color="success" data-test-id="toast">Show success Toast</bal-button>
@@ -26,40 +30,39 @@ balToastController.create({ message: 'Danger zone!', color: 'danger' })
 
 ## Colors
 
-<ClientOnly>  <docs-demo-bal-toast-106></docs-demo-bal-toast-106></ClientOnly>
+<ClientOnly> <docs-demo-bal-toast-106></docs-demo-bal-toast-106></ClientOnly>
 
 ```html
 <bal-toast>
   <strong>Default</strong>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </bal-toast>
-<br>
+<br />
 <bal-toast color="primary">
   <strong>Primary</strong>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </bal-toast>
-<br>
+<br />
 <bal-toast color="info">
   <strong>Info</strong>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </bal-toast>
-<br>
+<br />
 <bal-toast color="success">
   <strong>Success</strong>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </bal-toast>
-<br>
+<br />
 <bal-toast color="warning">
   <strong>Warning</strong>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </bal-toast>
-<br>
+<br />
 <bal-toast color="danger">
   <strong>Danger</strong>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </bal-toast>
 ```
-
 
 ## API
 
@@ -97,9 +100,9 @@ import { dataTestSelector, ToastAccessor } from '@baloise/ui-library-testing'
 
 describe('Toast', () => {
   it('should ...', () => {
-     const toast = ToastAccessor(dataTestSelector('toast-id')).get()
-     toast.click()
- })
+    const toast = ToastAccessor(dataTestSelector('toast-id')).get()
+    toast.click()
+  })
 })
 ```
 
@@ -125,19 +128,14 @@ describe('Toast', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-<!-- START: human documentation -->
+<!-- START: human documentation bottom -->
 
-## Usage
-
-Some bla
-
-<!-- END: human documentation -->
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-toast)
-* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/toast.accessor.ts)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-toast)
+- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/toast.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balToast"></docs-component-script>

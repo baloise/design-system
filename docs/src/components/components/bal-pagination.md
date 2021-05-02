@@ -1,15 +1,18 @@
 # bal-pagination
 
+<!-- START: human documentation top -->
+
 A pagination is used with large amount of content to distribute it over multpile pages.
+
+<!-- END: human documentation top -->
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-pagination-70></docs-demo-bal-pagination-70></ClientOnly>
+<ClientOnly> <docs-demo-bal-pagination-70></docs-demo-bal-pagination-70></ClientOnly>
 
 ```html
 <bal-pagination value="2" page-range="3" total-pages="20"></bal-pagination>
 ```
-
 
 ## API
 
@@ -37,11 +40,10 @@ A pagination is used with large amount of content to distribute it over multpile
 | **`next`**     | Go to the next page    | `next() => Promise<void>`     |
 | **`previous`** | Go to the prvious page | `previous() => Promise<void>` |
 
+<!-- START: human documentation bottom -->
 
-
-
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-pagination)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-pagination)

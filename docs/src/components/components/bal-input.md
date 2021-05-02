@@ -1,12 +1,16 @@
 # bal-input <Badge text="Two-way binding"/>
 
+<!-- START: human documentation top -->
+
 The input component is a wrapper to the HTML input element with custom styling and additional functionality. It accepts most of the same properties as the HTML input, but works great on desktop devices and integrates with the keyboard on mobile devices.
 
 It is meant for text type inputs only, such as "text", "password", "email", "number", "search", "tel", and "url". It supports all standard text input events including keyup, keydown, keypress, and more.
 
+<!-- END: human documentation top -->
+
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-input-52></docs-demo-bal-input-52></ClientOnly>
+<ClientOnly> <docs-demo-bal-input-52></docs-demo-bal-input-52></ClientOnly>
 
 ```html
 <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname" data-test-id="input"></bal-input>
@@ -16,16 +20,16 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 ## HTML input
 
-<ClientOnly>  <docs-demo-bal-input-53></docs-demo-bal-input-53></ClientOnly>
+<ClientOnly> <docs-demo-bal-input-53></docs-demo-bal-input-53></ClientOnly>
 
 ```html
-<input class="input" name="firstName" placeholder="Enter your firstname" >
-<input class="input" name="firstName" disabled placeholder="Enter your firstname" >
+<input class="input" name="firstName" placeholder="Enter your firstname" />
+<input class="input" name="firstName" disabled placeholder="Enter your firstname" />
 ```
 
 ## Inverted
 
-<ClientOnly>  <docs-demo-bal-input-54></docs-demo-bal-input-54></ClientOnly>
+<ClientOnly> <docs-demo-bal-input-54></docs-demo-bal-input-54></ClientOnly>
 
 ```html
 <div class="has-background-info has-padding">
@@ -36,13 +40,12 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 ## Number Input
 
-<ClientOnly>  <docs-demo-bal-input-55></docs-demo-bal-input-55></ClientOnly>
+<ClientOnly> <docs-demo-bal-input-55></docs-demo-bal-input-55></ClientOnly>
 
 ```html
 <bal-input id="bal-input-only-numbers" only-numbers number-keyboard name="age" placeholder="Enter your age"></bal-input>
 <p class="help" id="bal-input-only-numbers-preview"></p>
 ```
-
 
 ## API
 
@@ -93,11 +96,11 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 #### Methods
 
-| Method                | Description                                                                                             | Signature                                        |
-| :-------------------- | :------------------------------------------------------------------------------------------------------ | :----------------------------------------------- |
-| **`getInputElement`** | Returns the native `<input>` element used under the hood.                                               | `getInputElement() => Promise<HTMLInputElement>` |
-| **`setFocus`**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global
-`input.focus()`. | `setFocus() => Promise<void>`                    |
+| Method                | Description                                                                            | Signature                                        |
+| :-------------------- | :------------------------------------------------------------------------------------- | :----------------------------------------------- |
+| **`getInputElement`** | Returns the native `<input>` element used under the hood.                              | `getInputElement() => Promise<HTMLInputElement>` |
+| **`setFocus`**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global |
+| `input.focus()`.      | `setFocus() => Promise<void>`                                                          |
 
 ## Testing
 
@@ -142,13 +145,14 @@ describe('Input', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
+<!-- START: human documentation bottom -->
 
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-input)
-* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/input.accessor.ts)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-input)
+- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/input.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balInput"></docs-component-script>

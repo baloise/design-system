@@ -1,6 +1,10 @@
 # bal-snackbar
 
+<!-- START: human documentation top -->
+
 A snackbar is used to inform the user with a simple text message and a action.
+
+<!-- END: human documentation top -->
 
 ## Usage
 
@@ -14,7 +18,7 @@ balScnackbarController.create({ message: 'Hi I am a default Toast!', duration: 1
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-snackbar-82></docs-demo-bal-snackbar-82></ClientOnly>
+<ClientOnly> <docs-demo-bal-snackbar-82></docs-demo-bal-snackbar-82></ClientOnly>
 
 ```html
 <bal-button id="snack-default" color="success" data-test-id="snack">Show success Snack</bal-button>
@@ -24,17 +28,28 @@ balScnackbarController.create({ message: 'Hi I am a default Toast!', duration: 1
 
 ## Colors
 
-<ClientOnly>  <docs-demo-bal-snackbar-83></docs-demo-bal-snackbar-83></ClientOnly>
+<ClientOnly> <docs-demo-bal-snackbar-83></docs-demo-bal-snackbar-83></ClientOnly>
 
 ```html
-<bal-snackbar subject="Default" icon="info-circle" action="More"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </bal-snackbar>
-<bal-snackbar subject="Primary" icon="info-circle" color="primary" action="More"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </bal-snackbar>
-<bal-snackbar subject="Info" icon="info-circle" color="info" action="More"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </bal-snackbar>
-<bal-snackbar subject="Success" icon="info-circle" color="success" action="More"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </bal-snackbar>
-<bal-snackbar subject="Warning" icon="info-circle" color="warning" action="More"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </bal-snackbar>
-<bal-snackbar subject="Danger" icon="info-circle" color="danger" action="More"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </bal-snackbar>
+<bal-snackbar subject="Default" icon="info-circle" action="More">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+</bal-snackbar>
+<bal-snackbar subject="Primary" icon="info-circle" color="primary" action="More">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+</bal-snackbar>
+<bal-snackbar subject="Info" icon="info-circle" color="info" action="More">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+</bal-snackbar>
+<bal-snackbar subject="Success" icon="info-circle" color="success" action="More">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+</bal-snackbar>
+<bal-snackbar subject="Warning" icon="info-circle" color="warning" action="More">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+</bal-snackbar>
+<bal-snackbar subject="Danger" icon="info-circle" color="danger" action="More">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+</bal-snackbar>
 ```
-
 
 ## API
 
@@ -65,14 +80,13 @@ balScnackbarController.create({ message: 'Hi I am a default Toast!', duration: 1
 | **`close`**   | Closes this snackbar                               | `close() => Promise<void>`                   |
 | **`closeIn`** | Closes the snackbar after the given duration in ms | `closeIn(duration: number) => Promise<void>` |
 
+<!-- START: human documentation bottom -->
 
-
-
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-snackbar)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-snackbar)
 
 <ClientOnly>
   <docs-component-script tag="balSnackbar"></docs-component-script>

@@ -1,14 +1,21 @@
 # bal-accordion
 
+<!-- START: human documentation top -->
+
 An accordion hides secondary content and requires user interaction to display the content.
+
+<!-- END: human documentation top -->
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-accordion-0></docs-demo-bal-accordion-0></ClientOnly>
+<ClientOnly> <docs-demo-bal-accordion-0></docs-demo-bal-accordion-0></ClientOnly>
 
 ```html
 <bal-accordion class="box" open-label="Details einblenden" close-label="Details ausblenden" data-test-id="accordion">
-  <p class="has-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p class="has-padding">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua.
+  </p>
 </bal-accordion>
 ```
 
@@ -16,21 +23,27 @@ An accordion hides secondary content and requires user interaction to display th
 
 The accordion has 2 colors of themes `is-info` and `is-primary`.
 
-<ClientOnly>  <docs-demo-bal-accordion-1></docs-demo-bal-accordion-1></ClientOnly>
+<ClientOnly> <docs-demo-bal-accordion-1></docs-demo-bal-accordion-1></ClientOnly>
 
 ```html
 <bal-accordion class="box" color="info" open-label="Details einblenden" close-label="Details ausblenden">
-  <p class="has-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p class="has-padding">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua.
+  </p>
 </bal-accordion>
 ```
 
 ## Open accordion
 
-<ClientOnly>  <docs-demo-bal-accordion-2></docs-demo-bal-accordion-2></ClientOnly>
+<ClientOnly> <docs-demo-bal-accordion-2></docs-demo-bal-accordion-2></ClientOnly>
 
 ```html
 <bal-accordion class="box" collapsed="false" open-label="Details einblenden" close-label="Details ausblenden">
-  <p class="has-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p class="has-padding">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua.
+  </p>
 </bal-accordion>
 ```
 
@@ -38,14 +51,16 @@ The accordion has 2 colors of themes `is-info` and `is-primary`.
 
 Use the properties `open-label` & `open-icon` to change the content of the trigger button.
 
-<ClientOnly>  <docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
+<ClientOnly> <docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
 
 ```html
 <bal-accordion class="box" open-icon="edit" open-label="Bearbeiten" close-label="Schliessen" close-icon="close">
-  <p class="has-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p class="has-padding">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua.
+  </p>
 </bal-accordion>
 ```
-
 
 ## API
 
@@ -89,11 +104,11 @@ import { dataTestSelector, AccordionAccessor } from '@baloise/ui-library-testing
 
 describe('Accordion', () => {
   it('should ...', () => {
-     const accordion = AccordionAccessor(dataTestSelector('accordion-id')).get()
-     accordion.click()
-     accordion.assertBodyExists()
-     accordion.contains('Label')
- })
+    const accordion = AccordionAccessor(dataTestSelector('accordion-id')).get()
+    accordion.click()
+    accordion.assertBodyExists()
+    accordion.contains('Label')
+  })
 })
 ```
 
@@ -119,10 +134,11 @@ describe('Accordion', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
+<!-- START: human documentation bottom -->
 
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-accordion)
-* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/accordion.accessor.ts)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-accordion)
+- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/accordion.accessor.ts)

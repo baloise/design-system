@@ -1,10 +1,14 @@
 # bal-data
 
+<!-- START: human documentation top -->
+
 A data component display readonly form data.
+
+<!-- END: human documentation top -->
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-data-28></docs-demo-bal-data-28></ClientOnly>
+<ClientOnly> <docs-demo-bal-data-28></docs-demo-bal-data-28></ClientOnly>
 
 ```html
 <bal-card>
@@ -28,8 +32,9 @@ A data component display readonly form data.
           <bal-hint>
             <bal-hint-title>Spider-Man</bal-hint-title>
             <bal-hint-text>
-              Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He first appeared in the anthology comic book Amazing
-              Fantasy #15 (August 1962) in the Silver Age of Comic Books. He appears in American comic books published by Marvel Comics, as well as in a number of movies,
+              Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He
+              first appeared in the anthology comic book Amazing Fantasy #15 (August 1962) in the Silver Age of Comic
+              Books. He appears in American comic books published by Marvel Comics, as well as in a number of movies,
               television shows, and video game adaptations set in the Marvel Universe.
             </bal-hint-text>
           </bal-hint>
@@ -43,7 +48,7 @@ A data component display readonly form data.
 
 ## Horizontal
 
-<ClientOnly>  <docs-demo-bal-data-29></docs-demo-bal-data-29></ClientOnly>
+<ClientOnly> <docs-demo-bal-data-29></docs-demo-bal-data-29></ClientOnly>
 
 ```html
 <bal-card>
@@ -66,7 +71,6 @@ A data component display readonly form data.
 </bal-card>
 ```
 
-
 ## API
 
 ### bal-data
@@ -80,11 +84,9 @@ A data component display readonly form data.
 
 ### bal-data-item
 
-
 # bal-data-item
 
 `bal-data-item` is a child component of `bal-data` that adds a new row item.
-
 
 #### Properties
 
@@ -93,7 +95,6 @@ A data component display readonly form data.
 | **disabled** | If `true` the item gets a lighter font color. | `boolean` | `false` |
 
 ### bal-data-label
-
 
 # bal-data-item-label
 
@@ -107,17 +108,14 @@ A data component display readonly form data.
 
 ### bal-data-value
 
-
 # bal-data-item-value
 
 `bal-data-item` is a child component of `bal-data` that defines the value of the data.
 
+<!-- START: human documentation bottom -->
 
-
-
-
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-data)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-data)

@@ -1,5 +1,7 @@
 # bal-select <Badge text="Two-way binding"/>
 
+<!-- START: human documentation top -->
+
 A select is a collection of options, where the user can select a single one or multiple.
 
 ## Option interface
@@ -12,9 +14,11 @@ export interface BalOptionValue<T> {
 }
 ```
 
+<!-- END: human documentation top -->
+
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-select-76></docs-demo-bal-select-76></ClientOnly>
+<ClientOnly> <docs-demo-bal-select-76></docs-demo-bal-select-76></ClientOnly>
 
 ```html
 <bal-select expanded id="bal-select-year" placeholder="Try finding a year" data-test-id="select">
@@ -25,7 +29,7 @@ export interface BalOptionValue<T> {
   <bal-select-option value="v1999" label="1999">1999</bal-select-option>
   <bal-select-option value="v2000" label="2000">2000</bal-select-option>
 </bal-select>
-<br>
+<br />
 <p id="bal-select-year-preview"></p>
 <bal-button color="success" id="bal-select-year-add">Add</bal-button>
 <bal-button color="danger" id="bal-select-year-remove">Remove</bal-button>
@@ -33,11 +37,18 @@ export interface BalOptionValue<T> {
 
 ### Typeahead
 
-<ClientOnly>  <docs-demo-bal-select-77></docs-demo-bal-select-77></ClientOnly>
+<ClientOnly> <docs-demo-bal-select-77></docs-demo-bal-select-77></ClientOnly>
 
 ```html
 <div class="has-background-blue has-padding">
-  <bal-select id="bal-select-typeahaed" typeahead inverted expanded placeholder="Try finding your hero" no-data-label="No option available">
+  <bal-select
+    id="bal-select-typeahaed"
+    typeahead
+    inverted
+    expanded
+    placeholder="Try finding your hero"
+    no-data-label="No option available"
+  >
     <bal-select-option value="BlackWidow" label="Black Widow">
       <b style="display: block">Black Widow</b>
       <span>S.H.I.E.L.D.</span>
@@ -63,7 +74,7 @@ export interface BalOptionValue<T> {
       <span>Asgard</span>
     </bal-select-option>
   </bal-select>
-  <br>
+  <br />
   <p id="bal-select-typeahead-preview" class="has-text-white"></p>
   <bal-button id="bal-select-typeahead-trigger" inverted color="primary">Select Spider Man</bal-button>
   <bal-button id="bal-select-typeahead-clear" inverted outlined color="info">Clear & Focus</bal-button>
@@ -72,7 +83,7 @@ export interface BalOptionValue<T> {
 
 ### Multi-Select
 
-<ClientOnly>  <docs-demo-bal-select-78></docs-demo-bal-select-78></ClientOnly>
+<ClientOnly> <docs-demo-bal-select-78></docs-demo-bal-select-78></ClientOnly>
 
 ```html
 <bal-select multiple expanded placeholder="Try finding your hero">
@@ -105,7 +116,7 @@ export interface BalOptionValue<T> {
 
 ### Multi-Select with typeahead
 
-<ClientOnly>  <docs-demo-bal-select-79></docs-demo-bal-select-79></ClientOnly>
+<ClientOnly> <docs-demo-bal-select-79></docs-demo-bal-select-79></ClientOnly>
 
 ```html
 <bal-select multiple typeahead expanded placeholder="Try finding your hero" no-data-label="No option available">
@@ -138,7 +149,7 @@ export interface BalOptionValue<T> {
 
 ### Remote Typeahead
 
-<ClientOnly>  <docs-demo-bal-select-80></docs-demo-bal-select-80></ClientOnly>
+<ClientOnly> <docs-demo-bal-select-80></docs-demo-bal-select-80></ClientOnly>
 
 ```html
 <bal-field id="bal-field-remote" expanded>
@@ -149,7 +160,6 @@ export interface BalOptionValue<T> {
   <bal-field-message id="bal-select-remote-preview"></bal-field-message>
 </bal-field>
 ```
-
 
 ## API
 
@@ -197,10 +207,7 @@ export interface BalOptionValue<T> {
 
 ### bal-select-option
 
-
 # bal-select-option
-
-
 
 #### Properties
 
@@ -225,11 +232,11 @@ import { dataTestSelector, SelectAccessor } from '@baloise/ui-library-testing'
 
 describe('Select', () => {
   it('should ...', () => {
-     const select = SelectAccessor(dataTestSelector('select-id')).get()
-     select.click()
-     select.select(1)
-     select.contains('value')
- })
+    const select = SelectAccessor(dataTestSelector('select-id')).get()
+    select.click()
+    select.select(1)
+    select.contains('value')
+  })
 })
 ```
 
@@ -242,13 +249,14 @@ describe('Select', () => {
 | **assertOptions** | Checks the options             | `...options: string[]`                    |
 | **contains**      | Checks if input have a content | `content: string | number | RegExp`       |
 
+<!-- START: human documentation bottom -->
 
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-select)
-* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/select.accessor.ts)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-select)
+- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/select.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balSelect"></docs-component-script>

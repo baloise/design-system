@@ -1,10 +1,12 @@
 # bal-tag
 
+<!-- START: human documentation top -->
+
 A tag highlights a label for quick recognition.
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-tag-91></docs-demo-bal-tag-91></ClientOnly>
+<ClientOnly> <docs-demo-bal-tag-91></docs-demo-bal-tag-91></ClientOnly>
 
 ```html
 <bal-tag>Default</bal-tag>
@@ -17,7 +19,7 @@ A tag highlights a label for quick recognition.
 
 ## Size
 
-<ClientOnly>  <docs-demo-bal-tag-92></docs-demo-bal-tag-92></ClientOnly>
+<ClientOnly> <docs-demo-bal-tag-92></docs-demo-bal-tag-92></ClientOnly>
 
 ```html
 <bal-tag color="primary" size="small">Small</bal-tag>
@@ -27,7 +29,7 @@ A tag highlights a label for quick recognition.
 
 ## Closable
 
-<ClientOnly>  <docs-demo-bal-tag-93></docs-demo-bal-tag-93></ClientOnly>
+<ClientOnly> <docs-demo-bal-tag-93></docs-demo-bal-tag-93></ClientOnly>
 
 ```html
 <bal-tag color="primary" size="small" closable>Small</bal-tag>
@@ -37,14 +39,13 @@ A tag highlights a label for quick recognition.
 
 ## Dense
 
-<ClientOnly>  <docs-demo-bal-tag-94></docs-demo-bal-tag-94></ClientOnly>
+<ClientOnly> <docs-demo-bal-tag-94></docs-demo-bal-tag-94></ClientOnly>
 
 ```html
 <bal-tag color="primary" size="small" dense closable>Small</bal-tag>
 <bal-tag color="info" size="medium" dense closable>Medium</bal-tag>
 <bal-tag color="success" size="large" dense closable>Large</bal-tag>
 ```
-
 
 ## API
 
@@ -64,11 +65,10 @@ A tag highlights a label for quick recognition.
 | :---------------- | :---------------------------------- | :----------- |
 | **balCloseClick** | Emitted when the input got clicked. | `MouseEvent` |
 
+<!-- START: human documentation bottom -->
 
-
-
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-tag)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-tag)

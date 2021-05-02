@@ -1,10 +1,14 @@
 # bal-text
 
+<!-- START: human documentation top -->
+
 A text provides some additional helpers.
+
+<!-- END: human documentation top -->
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-text-97></docs-demo-bal-text-97></ClientOnly>
+<ClientOnly> <docs-demo-bal-text-97></docs-demo-bal-text-97></ClientOnly>
 
 ```html
 <bal-text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
@@ -12,7 +16,7 @@ A text provides some additional helpers.
 
 ## Small
 
-<ClientOnly>  <docs-demo-bal-text-98></docs-demo-bal-text-98></ClientOnly>
+<ClientOnly> <docs-demo-bal-text-98></docs-demo-bal-text-98></ClientOnly>
 
 ```html
 <bal-text small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
@@ -20,20 +24,19 @@ A text provides some additional helpers.
 
 ## Colors
 
-<ClientOnly>  <docs-demo-bal-text-99></docs-demo-bal-text-99></ClientOnly>
+<ClientOnly> <docs-demo-bal-text-99></docs-demo-bal-text-99></ClientOnly>
 
 ```html
 <bal-text color="primary"><strong>Primary</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
-<br>
+<br />
 <bal-text color="info"><strong>Info</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
-<br>
+<br />
 <bal-text color="success"><strong>Success</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
-<br>
+<br />
 <bal-text color="warning"><strong>Warning</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
-<br>
+<br />
 <bal-text color="danger"><strong>Danger</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
 ```
-
 
 ## API
 
@@ -58,9 +61,9 @@ import { dataTestSelector, TextAccessor } from '@baloise/ui-library-testing'
 
 describe('Text', () => {
   it('should ...', () => {
-     const text = TextAccessor(dataTestSelector('text-id')).get()
-     text.contains('Label')
- })
+    const text = TextAccessor(dataTestSelector('text-id')).get()
+    text.contains('Label')
+  })
 })
 ```
 
@@ -86,10 +89,11 @@ describe('Text', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
+<!-- START: human documentation bottom -->
 
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-text)
-* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/text.accessor.ts)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-text)
+- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/text.accessor.ts)

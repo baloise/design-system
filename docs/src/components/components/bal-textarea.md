@@ -1,16 +1,19 @@
 # bal-textarea <Badge text="Two-way binding"/>
 
+<!-- START: human documentation top -->
+
 A textarea allows a user to write and edit large texts.
+
+<!-- END: human documentation top -->
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-textarea-100></docs-demo-bal-textarea-100></ClientOnly>
+<ClientOnly> <docs-demo-bal-textarea-100></docs-demo-bal-textarea-100></ClientOnly>
 
 ```html
 <bal-textarea id="bal-textarea" name="comment" placeholder="Enter your comment"></bal-textarea>
 <bal-textarea id="bal-textarea-preview" name="comment" disabled placeholder="Enter your comment"></bal-textarea>
 ```
-
 
 ## API
 
@@ -52,20 +55,19 @@ A textarea allows a user to write and edit large texts.
 
 #### Methods
 
-| Method                | Description                                                                                                      | Signature                                           |
-| :-------------------- | :--------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------- |
-| **`getInputElement`** | Returns the native `<textarea>` element used under the hood.                                                     | `getInputElement() => Promise<HTMLTextAreaElement>` |
-| **`setFocus`**        | Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global
-`textarea.focus()`. | `setFocus() => Promise<void>`                       |
+| Method                | Description                                                                                  | Signature                                           |
+| :-------------------- | :------------------------------------------------------------------------------------------- | :-------------------------------------------------- |
+| **`getInputElement`** | Returns the native `<textarea>` element used under the hood.                                 | `getInputElement() => Promise<HTMLTextAreaElement>` |
+| **`setFocus`**        | Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global |
+| `textarea.focus()`.   | `setFocus() => Promise<void>`                                                                |
 
+<!-- START: human documentation bottom -->
 
-
-
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-textarea)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-textarea)
 
 <ClientOnly>
   <docs-component-script tag="balTextarea"></docs-component-script>

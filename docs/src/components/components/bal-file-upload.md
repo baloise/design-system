@@ -1,22 +1,25 @@
 # bal-file-upload
 
+<!-- START: human documentation top -->
+
 The `bal-file-upload` is all in one component. It supports drag&drop and the normal file upload dialog of the browser.
 
+<!-- END: human documentation top -->
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-file-upload-45></docs-demo-bal-file-upload-45></ClientOnly>
+<ClientOnly> <docs-demo-bal-file-upload-45></docs-demo-bal-file-upload-45></ClientOnly>
 
 ```html
 <p id="bal-file-upload-messages"></p>
-<bal-file-upload id="bal-file-upload-example"
+<bal-file-upload
+  id="bal-file-upload-example"
   accept="image/png,image/jpeg"
   max-files="3"
   max-file-size="1000000"
   max-bundle-size="1000000"
 ></bal-file-upload>
 ```
-
 
 ## API
 
@@ -41,14 +44,13 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 | **balChange**       | Triggers when a file is added or removed.                                | `File[]`                 |
 | **balRejectedFile** | Triggers when a file is rejected due to not allowed MIME-Type and so on. | `FileUploadRejectedFile` |
 
+<!-- START: human documentation bottom -->
 
-
-
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-file-upload)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-file-upload)
 
 <ClientOnly>
   <docs-component-script tag="balFileUpload"></docs-component-script>

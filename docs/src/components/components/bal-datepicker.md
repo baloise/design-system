@@ -1,12 +1,16 @@
 # bal-datepicker <Badge text="Two-way binding"/>
 
+<!-- START: human documentation top -->
+
 A datepicker allows manual date entry as well as open the dropdown content with a calendar to select a date.
+
+<!-- END: human documentation top -->
 
 ## Basic
 
 In this example the user can only select a date. For that use the property `readonly`.
 
-<ClientOnly>  <docs-demo-bal-datepicker-30></docs-demo-bal-datepicker-30></ClientOnly>
+<ClientOnly> <docs-demo-bal-datepicker-30></docs-demo-bal-datepicker-30></ClientOnly>
 
 ```html
 <bal-datepicker id="datepicker" data-test-id="datepicker"></bal-datepicker>
@@ -15,7 +19,7 @@ In this example the user can only select a date. For that use the property `read
 
 ## Disabled
 
-<ClientOnly>  <docs-demo-bal-datepicker-31></docs-demo-bal-datepicker-31></ClientOnly>
+<ClientOnly> <docs-demo-bal-datepicker-31></docs-demo-bal-datepicker-31></ClientOnly>
 
 ```html
 <bal-datepicker readonly disabled id="datepicker-disabled"></bal-datepicker>
@@ -25,7 +29,7 @@ In this example the user can only select a date. For that use the property `read
 
 To enable manual input remove the property `readonly` and add the property `trigger-ico`. The `trigger-ico` property only opens the dropdown when the icon gets clicked.
 
-<ClientOnly>  <docs-demo-bal-datepicker-32></docs-demo-bal-datepicker-32></ClientOnly>
+<ClientOnly> <docs-demo-bal-datepicker-32></docs-demo-bal-datepicker-32></ClientOnly>
 
 ```html
 <bal-datepicker placeholder="DD.MM.YYYY" trigger-icon></bal-datepicker>
@@ -33,7 +37,7 @@ To enable manual input remove the property `readonly` and add the property `trig
 
 ## Inverted & Expanded
 
-<ClientOnly>  <docs-demo-bal-datepicker-33></docs-demo-bal-datepicker-33></ClientOnly>
+<ClientOnly> <docs-demo-bal-datepicker-33></docs-demo-bal-datepicker-33></ClientOnly>
 
 ```html
 <div class="has-background-info has-padding">
@@ -43,7 +47,7 @@ To enable manual input remove the property `readonly` and add the property `trig
 
 ## i18n
 
-<ClientOnly>  <docs-demo-bal-datepicker-34></docs-demo-bal-datepicker-34></ClientOnly>
+<ClientOnly> <docs-demo-bal-datepicker-34></docs-demo-bal-datepicker-34></ClientOnly>
 
 ```html
 <bal-datepicker id="datepicker-i18n" placeholder="TT.MM.YYYY" locale="de">
@@ -53,7 +57,7 @@ To enable manual input remove the property `readonly` and add the property `trig
 
 ## Footer
 
-<ClientOnly>  <docs-demo-bal-datepicker-35></docs-demo-bal-datepicker-35></ClientOnly>
+<ClientOnly> <docs-demo-bal-datepicker-35></docs-demo-bal-datepicker-35></ClientOnly>
 
 ```html
 <bal-datepicker placeholder="DD.MM.YYYY" readonly>
@@ -63,7 +67,7 @@ To enable manual input remove the property `readonly` and add the property `trig
 
 ## Range Min & Max
 
-<ClientOnly>  <docs-demo-bal-datepicker-36></docs-demo-bal-datepicker-36></ClientOnly>
+<ClientOnly> <docs-demo-bal-datepicker-36></docs-demo-bal-datepicker-36></ClientOnly>
 
 ```html
 <bal-datepicker id="datepicker-range" placeholder="DD.MM.YYYY"></bal-datepicker>
@@ -73,7 +77,7 @@ To enable manual input remove the property `readonly` and add the property `trig
 
 You can specify allowed dates using a function.
 
-<ClientOnly>  <docs-demo-bal-datepicker-37></docs-demo-bal-datepicker-37></ClientOnly>
+<ClientOnly> <docs-demo-bal-datepicker-37></docs-demo-bal-datepicker-37></ClientOnly>
 
 ```html
 <bal-datepicker id="datepicker-allowed-dates" placeholder="DD.MM.YYYY"></bal-datepicker>
@@ -81,12 +85,11 @@ You can specify allowed dates using a function.
 
 ## Custom Start Date
 
-<ClientOnly>  <docs-demo-bal-datepicker-38></docs-demo-bal-datepicker-38></ClientOnly>
+<ClientOnly> <docs-demo-bal-datepicker-38></docs-demo-bal-datepicker-38></ClientOnly>
 
 ```html
 <bal-datepicker default-date="2021-02-20" placeholder="DD.MM.YYYY"></bal-datepicker>
 ```
-
 
 ## API
 
@@ -147,11 +150,11 @@ import { dataTestSelector, DatepickerAccessor } from '@baloise/ui-library-testin
 
 describe('Datepicker', () => {
   it('should ...', () => {
-     const datepicker = DatepickerAccessor(dataTestSelector('datepicker-id')).get()
-     datepicker.open()
-     datepicker.pick(new Date())
-     datepicker.shouldHaveValue(new Date())
- })
+    const datepicker = DatepickerAccessor(dataTestSelector('datepicker-id')).get()
+    datepicker.open()
+    datepicker.pick(new Date())
+    datepicker.shouldHaveValue(new Date())
+  })
 })
 ```
 
@@ -165,13 +168,14 @@ describe('Datepicker', () => {
 | **shouldHaveValue**   | Check if datepicker have value | `date: Date`                                  |
 | **assertDateInRange** | Assert if the date is in range | `date: Date, shouldBeInRange: boolean = true` |
 
+<!-- START: human documentation bottom -->
 
-
+<!-- END: human documentation bottom -->
 
 ## Links
 
-* [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-datepicker)
-* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/datepicker.accessor.ts)
+- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-datepicker)
+- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/datepicker.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balDatepicker"></docs-component-script>
