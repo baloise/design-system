@@ -8,7 +8,7 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-list-56></docs-demo-bal-list-56></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-56></docs-demo-bal-list-56></ClientOnly>
 
 ```html
 <bal-card>
@@ -32,7 +32,7 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ## With borders
 
-<ClientOnly> <docs-demo-bal-list-57></docs-demo-bal-list-57></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-57></docs-demo-bal-list-57></ClientOnly>
 
 ```html
 <bal-card>
@@ -61,7 +61,7 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ## Inverted
 
-<ClientOnly> <docs-demo-bal-list-58></docs-demo-bal-list-58></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-58></docs-demo-bal-list-58></ClientOnly>
 
 ```html
 <bal-card inverted color="info">
@@ -86,7 +86,7 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ## With Icons
 
-<ClientOnly> <docs-demo-bal-list-59></docs-demo-bal-list-59></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-59></docs-demo-bal-list-59></ClientOnly>
 
 ```html
 <bal-card>
@@ -128,7 +128,7 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ## Link
 
-<ClientOnly> <docs-demo-bal-list-60></docs-demo-bal-list-60></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-60></docs-demo-bal-list-60></ClientOnly>
 
 ```html
 <bal-card>
@@ -155,6 +155,7 @@ A list present content in a way that makes it easy to identify a specific item i
 </bal-card>
 ```
 
+
 ## API
 
 ### bal-list
@@ -169,7 +170,9 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ### bal-list-item
 
+
 # bal-list-item
+
 
 #### Properties
 
@@ -189,9 +192,15 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ### bal-list-item-content
 
+
 # bal-list-item-content
 
+
+
+
+
 ### bal-list-item-icon
+
 
 # bal-list-item-icon
 
@@ -205,19 +214,25 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ### bal-list-item-subtitle
 
+
 # bal-list-item-subtitle
 
 `bal-list-item-subtitle` is a child component of `bal-list` that defines the subtitle list row element.
 
+
 ### bal-list-item-title
+
 
 # bal-list-item-title
 
 `bal-list-item-title` is a child component of `bal-list` that defines the title list row element.
 
+
 ## Testing
 
 ### ListAccessor
+
+
 
 #### Methods
 
@@ -245,7 +260,9 @@ A list present content in a way that makes it easy to identify a specific item i
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-list)
-- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/list.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-list.md)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-list)
+* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/list.accessor.ts)

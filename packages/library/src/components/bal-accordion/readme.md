@@ -1,7 +1,5 @@
 # bal-accordion
 
-An accordion hides secondary content and requires user interaction to display the content.
-
 <!-- Auto Generated Below -->
 
 

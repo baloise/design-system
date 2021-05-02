@@ -8,7 +8,7 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-radio-71></docs-demo-bal-radio-71></ClientOnly>
+<ClientOnly>  <docs-demo-bal-radio-71></docs-demo-bal-radio-71></ClientOnly>
 
 ```html
 <bal-radio-group value="2" id="radio-example">
@@ -23,7 +23,7 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 ## Inverted
 
-<ClientOnly> <docs-demo-bal-radio-72></docs-demo-bal-radio-72></ClientOnly>
+<ClientOnly>  <docs-demo-bal-radio-72></docs-demo-bal-radio-72></ClientOnly>
 
 ```html
 <div class="has-background-blue has-padding">
@@ -38,20 +38,18 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 ## With Links
 
-<ClientOnly> <docs-demo-bal-radio-73></docs-demo-bal-radio-73></ClientOnly>
+<ClientOnly>  <docs-demo-bal-radio-73></docs-demo-bal-radio-73></ClientOnly>
 
 ```html
 <bal-radio-group value="1">
-  <bal-radio name="link-example" value="1"
-    >Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio
-  >
+  <bal-radio name="link-example" value="1">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
   <bal-radio name="link-example" value="2">Label 2 without a link</bal-radio>
 </bal-radio-group>
 ```
 
 ## Select Button
 
-<ClientOnly> <docs-demo-bal-radio-74></docs-demo-bal-radio-74></ClientOnly>
+<ClientOnly>  <docs-demo-bal-radio-74></docs-demo-bal-radio-74></ClientOnly>
 
 ```html
 <bal-radio-group value="1" interface="select-button" data-test-id="radio">
@@ -63,7 +61,7 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 ### Inverted
 
-<ClientOnly> <docs-demo-bal-radio-75></docs-demo-bal-radio-75></ClientOnly>
+<ClientOnly>  <docs-demo-bal-radio-75></docs-demo-bal-radio-75></ClientOnly>
 
 ```html
 <div class="has-background-blue has-padding">
@@ -73,6 +71,7 @@ A radio input is normally displayed in a radio group. The user can only select o
   </bal-radio-group>
 </div>
 ```
+
 
 ## API
 
@@ -105,11 +104,8 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 ### bal-radio-group
 
+
 # bal-radio-group
-
-`bal-radio-group` is a child component of `bal-radio` that groups radio buttons together.
-
-> Two-way binding with `v-model` or `ng-model` is available.
 
 #### Properties
 
@@ -138,9 +134,9 @@ import { dataTestSelector, RadioAccessor } from '@baloise/ui-library-testing'
 
 describe('Radio', () => {
   it('should ...', () => {
-    const radio = RadioAccessor(dataTestSelector('radio-id')).get()
-    radio.select(1)
-  })
+     const radio = RadioAccessor(dataTestSelector('radio-id')).get()
+     radio.select(1)
+ })
 })
 ```
 
@@ -172,10 +168,12 @@ describe('Radio', () => {
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-radio)
-- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/radio.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-radio.md)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-radio)
+* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/radio.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balRadio"></docs-component-script>

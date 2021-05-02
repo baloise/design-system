@@ -1,7 +1,5 @@
 # bal-snackbar
 
-A snackbar is used to inform the user with a simple text message and a action.
-
 ## Usage
 
 Toast can be created with the `balScnackbarController`. The default duration is 5000 milliseconds.

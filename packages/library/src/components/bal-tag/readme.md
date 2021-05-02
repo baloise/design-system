@@ -1,7 +1,5 @@
 # bal-tag
 
-A tag highlights a label for quick recognition.
-
 <!-- Auto Generated Below -->
 
 

@@ -8,37 +8,35 @@ A notification is used for alerts or to highlight certain content for the user.
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-notification-66></docs-demo-bal-notification-66></ClientOnly>
+<ClientOnly>  <docs-demo-bal-notification-66></docs-demo-bal-notification-66></ClientOnly>
 
 ```html
 <bal-notification color="primary"
-  >Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, assumenda in ducimus modi animi enim velit molestiae
-  rerum natus, ad culpa explicabo blanditiis architecto quo expedita incidunt officiis quaerat
-  delectus.</bal-notification
->
+  >Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, assumenda in ducimus modi animi enim velit molestiae rerum natus, ad culpa explicabo blanditiis architecto
+  quo expedita incidunt officiis quaerat delectus.</bal-notification>
 ```
 
 ## Types
 
-<ClientOnly> <docs-demo-bal-notification-67></docs-demo-bal-notification-67></ClientOnly>
+<ClientOnly>  <docs-demo-bal-notification-67></docs-demo-bal-notification-67></ClientOnly>
 
 ```html
 <bal-notification>Default</bal-notification>
-<br />
+<br>
 <bal-notification color="primary">Primary</bal-notification>
-<br />
+<br>
 <bal-notification color="info">Info</bal-notification>
-<br />
+<br>
 <bal-notification color="success">Success</bal-notification>
-<br />
+<br>
 <bal-notification color="warning">Warning</bal-notification>
-<br />
+<br>
 <bal-notification color="danger">Danger</bal-notification>
 ```
 
 ## Box
 
-<ClientOnly> <docs-demo-bal-notification-68></docs-demo-bal-notification-68></ClientOnly>
+<ClientOnly>  <docs-demo-bal-notification-68></docs-demo-bal-notification-68></ClientOnly>
 
 ```html
 <bal-notification color="info" class="has-text-centered" style="max-width: 400px">
@@ -49,7 +47,7 @@ A notification is used for alerts or to highlight certain content for the user.
 
 ## Error
 
-<ClientOnly> <docs-demo-bal-notification-69></docs-demo-bal-notification-69></ClientOnly>
+<ClientOnly>  <docs-demo-bal-notification-69></docs-demo-bal-notification-69></ClientOnly>
 
 ```html
 <bal-notification>
@@ -65,6 +63,7 @@ A notification is used for alerts or to highlight certain content for the user.
 </bal-notification>
 ```
 
+
 ## API
 
 ### bal-notification
@@ -75,10 +74,14 @@ A notification is used for alerts or to highlight certain content for the user.
 | :-------- | :------------------------------- | :----------------------------------------------------------- | :------ |
 | **color** | Defines the color of the element | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
 
+
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-notification)
+* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-notification.md)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-notification)

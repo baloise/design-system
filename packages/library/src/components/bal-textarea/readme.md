@@ -1,7 +1,5 @@
 # bal-textarea <Badge text="Two-way binding"/>
 
-A textarea allows a user to write and edit large texts.
-
 <!-- Auto Generated Below -->
 
 

@@ -8,7 +8,7 @@ A dropdown shows and hides content close to the trigger element.
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-dropdown-39></docs-demo-bal-dropdown-39></ClientOnly>
+<ClientOnly>  <docs-demo-bal-dropdown-39></docs-demo-bal-dropdown-39></ClientOnly>
 
 ```html
 <bal-dropdown id="bal-dropdown-1" is-active="false" data-test-id="dropdown">
@@ -21,10 +21,9 @@ A dropdown shows and hides content close to the trigger element.
     <div style="padding: 0 15px 15px">
       <h5 class="title is-size-3" style="margin-top: 0px">Title</h5>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque error
-        quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis harum vero.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque error
-        quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis harum vero.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque error quae excepturi molestiae molestias amet ab, explicabo
+        dolor aperiam perferendis mollitia facilis harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque
+        error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis harum vero.
       </p>
     </div>
   </bal-dropdown-menu>
@@ -33,14 +32,14 @@ A dropdown shows and hides content close to the trigger element.
 
 ## Input
 
-<ClientOnly> <docs-demo-bal-dropdown-40></docs-demo-bal-dropdown-40></ClientOnly>
+<ClientOnly>  <docs-demo-bal-dropdown-40></docs-demo-bal-dropdown-40></ClientOnly>
 
 ```html
 <bal-dropdown id="bal-dropdown-2" scrollable="200" expanded>
   <bal-dropdown-trigger>
     <div class="control has-icons-right">
-      <input type="text" class="input clickable" placeholder="Click me" readonly id="bal-dropdown-2-trigger" />
-      <bal-icon name="caret-down" color="info" size="xsmall"></bal-icon>
+      <input type="text" class="input clickable" placeholder="Click me" readonly id="bal-dropdown-2-trigger" >
+      <bal-icon name="caret-down" color="info" size="xsmall" ></bal-icon>
     </div>
   </bal-dropdown-trigger>
   <bal-dropdown-menu>
@@ -51,6 +50,7 @@ A dropdown shows and hides content close to the trigger element.
   </bal-dropdown-menu>
 </bal-dropdown>
 ```
+
 
 ## API
 
@@ -69,7 +69,7 @@ A dropdown shows and hides content close to the trigger element.
 | Event                  | Description                                                                     | Type      |
 | :--------------------- | :------------------------------------------------------------------------------ | :-------- |
 | **balCollapse**        | Listen when the dropdown opens or closes. Returns the current `isActive` value. | `boolean` |
-| **balDropdownPrepare** | _Internal_ - Use this to close unuesed dropdowns.                               | `string`  |
+| **balDropdownPrepare** | *Internal* - Use this to close unuesed dropdowns.                               | `string`  |
 
 #### Methods
 
@@ -81,6 +81,7 @@ A dropdown shows and hides content close to the trigger element.
 | **`toggle`**            | Open or closes the dropdown.                        | `toggle() => Promise<void>`                          |
 
 ### bal-dropdown-menu
+
 
 # bal-dropdown-menu
 
@@ -94,9 +95,11 @@ A dropdown shows and hides content close to the trigger element.
 
 ### bal-dropdown-trigger
 
+
 # bal-dropdown-trigger
 
 `bal-dropdown-trigger` is a child component of `bal-dropdown` that defines the value of the data.
+
 
 ## Testing
 
@@ -110,9 +113,9 @@ import { dataTestSelector, DropdownAccessor } from '@baloise/ui-library-testing'
 
 describe('Dropdown', () => {
   it('should ...', () => {
-    const dropdown = DropdownAccessor(dataTestSelector('dropdown-id')).get()
-    dropdown.click()
-  })
+     const dropdown = DropdownAccessor(dataTestSelector('dropdown-id')).get()
+     dropdown.click()
+ })
 })
 ```
 
@@ -126,10 +129,12 @@ describe('Dropdown', () => {
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-dropdown)
-- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/dropdown.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-dropdown.md)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-dropdown)
+* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/dropdown.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balDropdown"></docs-component-script>

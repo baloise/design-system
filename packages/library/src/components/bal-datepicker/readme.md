@@ -1,7 +1,5 @@
 # bal-datepicker <Badge text="Two-way binding"/>
 
-A datepicker allows manual date entry as well as open the dropdown content with a calendar to select a date.
-
 <!-- Auto Generated Below -->
 
 

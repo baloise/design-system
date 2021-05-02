@@ -9,36 +9,34 @@ It can easily combined with the `bal-data` or `bal-field` component.
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-hint-46></docs-demo-bal-hint-46></ClientOnly>
+<ClientOnly>  <docs-demo-bal-hint-46></docs-demo-bal-hint-46></ClientOnly>
 
 ```html
 <bal-hint>
   <bal-hint-title>Spider-Man</bal-hint-title>
   <bal-hint-text>
-    Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He first
-    appeared in the anthology comic book Amazing Fantasy #15 (August 1962) in the Silver Age of Comic Books. He appears
-    in American comic books published by Marvel Comics, as well as in a number of movies, television shows, and video
-    game adaptations set in the Marvel Universe.
+    Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He first appeared in the anthology comic book Amazing Fantasy #15
+    (August 1962) in the Silver Age of Comic Books. He appears in American comic books published by Marvel Comics, as well as in a number of movies, television shows, and
+    video game adaptations set in the Marvel Universe.
   </bal-hint-text>
 </bal-hint>
 ```
 
 ## Field
 
-<ClientOnly> <docs-demo-bal-hint-47></docs-demo-bal-hint-47></ClientOnly>
+<ClientOnly>  <docs-demo-bal-hint-47></docs-demo-bal-hint-47></ClientOnly>
 
 ```html
 <bal-field expanded>
   <bal-field-label required>Firstname</bal-field-label>
-  <bal-field-hint subject="Spider-Man">
-    Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.
-  </bal-field-hint>
+  <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
   <bal-field-control>
     <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
   </bal-field-control>
   <bal-field-message color="danger">Required Field</bal-field-message>
 </bal-field>
 ```
+
 
 ## API
 
@@ -61,20 +59,30 @@ It can easily combined with the `bal-data` or `bal-field` component.
 
 ### bal-hint-text
 
+
 # bal-hint-text
 
 `bal-hint-text` is a child component of `bal-hint` that defines the text of the hint dialog.
 
+
+
 ### bal-hint-title
+
 
 # bal-hint-title
 
 `bal-hint-title` is a child component of `bal-hint` that defines the title of the hint dialog.
 
+
+
+
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-hint)
+* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-hint.md)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-hint)

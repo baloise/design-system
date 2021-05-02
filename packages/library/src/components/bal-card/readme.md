@@ -1,7 +1,5 @@
 # bal-card
 
-The card component is a versatile component that can be combined easily wiht other componets.
-
 <!-- Auto Generated Below -->
 
 

@@ -8,7 +8,7 @@ The sheet component is used to show content over the whole page at the bottem of
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-sheet-81></docs-demo-bal-sheet-81></ClientOnly>
+<ClientOnly>  <docs-demo-bal-sheet-81></docs-demo-bal-sheet-81></ClientOnly>
 
 ```html
 <bal-sheet>
@@ -35,10 +35,17 @@ The sheet component is used to show content over the whole page at the bottem of
 </bal-sheet>
 ```
 
+
+
+
+
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-sheet)
+* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-sheet.md)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-sheet)

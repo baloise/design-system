@@ -8,7 +8,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-button-4></docs-demo-bal-button-4></ClientOnly>
+<ClientOnly>  <docs-demo-bal-button-4></docs-demo-bal-button-4></ClientOnly>
 
 ```html
 <bal-button color="primary" data-test-id="primary-button">Primary</bal-button>
@@ -18,7 +18,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Outlined
 
-<ClientOnly> <docs-demo-bal-button-5></docs-demo-bal-button-5></ClientOnly>
+<ClientOnly>  <docs-demo-bal-button-5></docs-demo-bal-button-5></ClientOnly>
 
 ```html
 <bal-button color="info" outlined>Info</bal-button>
@@ -26,7 +26,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Inverted
 
-<ClientOnly> <docs-demo-bal-button-6></docs-demo-bal-button-6></ClientOnly>
+<ClientOnly>  <docs-demo-bal-button-6></docs-demo-bal-button-6></ClientOnly>
 
 ```html
 <div class="has-background-info has-padding">
@@ -50,7 +50,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Other colors
 
-<ClientOnly> <docs-demo-bal-button-7></docs-demo-bal-button-7></ClientOnly>
+<ClientOnly>  <docs-demo-bal-button-7></docs-demo-bal-button-7></ClientOnly>
 
 ```html
 <bal-button color="primary-light" icon="edit">Primary Light</bal-button>
@@ -62,7 +62,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Disabled
 
-<ClientOnly> <docs-demo-bal-button-8></docs-demo-bal-button-8></ClientOnly>
+<ClientOnly>  <docs-demo-bal-button-8></docs-demo-bal-button-8></ClientOnly>
 
 ```html
 <bal-button color="primary" disabled data-test-id="primary-button-disabled">Primary</bal-button>
@@ -72,7 +72,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Loading
 
-<ClientOnly> <docs-demo-bal-button-9></docs-demo-bal-button-9></ClientOnly>
+<ClientOnly>  <docs-demo-bal-button-9></docs-demo-bal-button-9></ClientOnly>
 
 ```html
 <bal-button color="primary" loading>Primary</bal-button>
@@ -83,17 +83,17 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Expanded
 
-<ClientOnly> <docs-demo-bal-button-10></docs-demo-bal-button-10></ClientOnly>
+<ClientOnly>  <docs-demo-bal-button-10></docs-demo-bal-button-10></ClientOnly>
 
 ```html
 <bal-button color="primary" expanded>Primary</bal-button>
-<br />
+<br>
 <bal-button color="info" expanded>Info</bal-button>
 ```
 
 ## With icons
 
-<ClientOnly> <docs-demo-bal-button-11></docs-demo-bal-button-11></ClientOnly>
+<ClientOnly>  <docs-demo-bal-button-11></docs-demo-bal-button-11></ClientOnly>
 
 ```html
 <bal-button color="info" outlined icon="edit">Left Icon</bal-button>
@@ -102,7 +102,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Small buttons
 
-<ClientOnly> <docs-demo-bal-button-12></docs-demo-bal-button-12></ClientOnly>
+<ClientOnly>  <docs-demo-bal-button-12></docs-demo-bal-button-12></ClientOnly>
 
 ```html
 <bal-button color="primary" size="small"> Primary </bal-button>
@@ -111,7 +111,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Square buttons
 
-<ClientOnly> <docs-demo-bal-button-13></docs-demo-bal-button-13></ClientOnly>
+<ClientOnly>  <docs-demo-bal-button-13></docs-demo-bal-button-13></ClientOnly>
 
 ```html
 <bal-button color="info" icon="edit" square outlined></bal-button>
@@ -120,11 +120,12 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Button Link
 
-<ClientOnly> <docs-demo-bal-button-14></docs-demo-bal-button-14></ClientOnly>
+<ClientOnly>  <docs-demo-bal-button-14></docs-demo-bal-button-14></ClientOnly>
 
 ```html
 <bal-button link href="https://github.com/baloise/ui-library" target="_blank">GitHub</bal-button>
 ```
+
 
 ## API
 
@@ -159,12 +160,12 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 #### Events
 
-| Event            | Description                                | Type         |
-| :--------------- | :----------------------------------------- | :----------- |
-| **balBlur**      | Emitted when the button loses focus.       | `void`       |
-| **balDidRender** | Emitted when the button has been rendered. | `void`       |
-| **balFocus**     | Emitted when the button has focus.         | `void`       |
-| **balNavigate**  | Emitted when the link element has clicked. | `MouseEvent` |
+| Event            | Description                                 | Type         |
+| :--------------- | :------------------------------------------ | :----------- |
+| **balBlur**      | Emitted when the button loses focus.        | `void`       |
+| **balDidRender** | Emitted when the button has been  rendered. | `void`       |
+| **balFocus**     | Emitted when the button has focus.          | `void`       |
+| **balNavigate**  | Emitted when the link element has clicked.  | `MouseEvent` |
 
 ## Testing
 
@@ -178,11 +179,11 @@ import { dataTestSelector, ButtonAccessor } from '@baloise/ui-library-testing'
 
 describe('Button', () => {
   it('should ...', () => {
-    const button = ButtonAccessor(dataTestSelector('button-id')).get()
-    button.click()
-    button.assertIsEnabled()
-    button.contains('Label')
-  })
+     const button = ButtonAccessor(dataTestSelector('button-id')).get()
+     button.click()
+     button.assertIsEnabled()
+     button.contains('Label')
+ })
 })
 ```
 
@@ -217,7 +218,9 @@ WIP
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-button)
-- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/button.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-button.md)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-button)
+* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/button.accessor.ts)

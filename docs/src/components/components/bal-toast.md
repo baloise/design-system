@@ -1,11 +1,5 @@
 # bal-toast
 
-<!-- START: human documentation top -->
-
-Toasts are used to inform the user with a simple text message.
-
-<!-- END: human documentation top -->
-
 ## Usage
 
 Toast can be created with the `balToastController`. The default duration is 5000 milliseconds.
@@ -18,9 +12,15 @@ balToastController.create({ message: 'Warning!', color: 'warning' })
 balToastController.create({ message: 'Danger zone!', color: 'danger' })
 ```
 
+<!-- START: human documentation top -->
+
+Toasts are used to inform the user with a simple text message.
+
+<!-- END: human documentation top -->
+
 ## Basic
 
-<ClientOnly> <docs-demo-bal-toast-105></docs-demo-bal-toast-105></ClientOnly>
+<ClientOnly>  <docs-demo-bal-toast-105></docs-demo-bal-toast-105></ClientOnly>
 
 ```html
 <bal-button id="toast-default" color="success" data-test-id="toast">Show success Toast</bal-button>
@@ -30,39 +30,40 @@ balToastController.create({ message: 'Danger zone!', color: 'danger' })
 
 ## Colors
 
-<ClientOnly> <docs-demo-bal-toast-106></docs-demo-bal-toast-106></ClientOnly>
+<ClientOnly>  <docs-demo-bal-toast-106></docs-demo-bal-toast-106></ClientOnly>
 
 ```html
 <bal-toast>
   <strong>Default</strong>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </bal-toast>
-<br />
+<br>
 <bal-toast color="primary">
   <strong>Primary</strong>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </bal-toast>
-<br />
+<br>
 <bal-toast color="info">
   <strong>Info</strong>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </bal-toast>
-<br />
+<br>
 <bal-toast color="success">
   <strong>Success</strong>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </bal-toast>
-<br />
+<br>
 <bal-toast color="warning">
   <strong>Warning</strong>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </bal-toast>
-<br />
+<br>
 <bal-toast color="danger">
   <strong>Danger</strong>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </bal-toast>
 ```
+
 
 ## API
 
@@ -100,9 +101,9 @@ import { dataTestSelector, ToastAccessor } from '@baloise/ui-library-testing'
 
 describe('Toast', () => {
   it('should ...', () => {
-    const toast = ToastAccessor(dataTestSelector('toast-id')).get()
-    toast.click()
-  })
+     const toast = ToastAccessor(dataTestSelector('toast-id')).get()
+     toast.click()
+ })
 })
 ```
 
@@ -132,10 +133,12 @@ describe('Toast', () => {
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-toast)
-- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/toast.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-toast.md)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-toast)
+* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/toast.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balToast"></docs-component-script>

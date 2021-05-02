@@ -1,7 +1,5 @@
 # bal-notification
 
-A notification is used for alerts or to highlight certain content for the user.
-
 <!-- Auto Generated Below -->
 
 

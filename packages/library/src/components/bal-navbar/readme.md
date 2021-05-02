@@ -1,11 +1,5 @@
 # bal-navbar
 
-A responsive horizontal navbar that can support images, links, buttons, and dropdowns.
-
-::: tip
-Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/ueber-uns/wer-wir-sind/bilder-logos.html)
-:::
-
 <!-- Auto Generated Below -->
 
 

@@ -1,7 +1,5 @@
 # bal-radio <Badge text="Two-way binding"/>
 
-A radio input is normally displayed in a radio group. The user can only select one option from a number of choices.
-
 <!-- Auto Generated Below -->
 
 

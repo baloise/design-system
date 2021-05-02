@@ -10,7 +10,7 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-input-52></docs-demo-bal-input-52></ClientOnly>
+<ClientOnly>  <docs-demo-bal-input-52></docs-demo-bal-input-52></ClientOnly>
 
 ```html
 <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname" data-test-id="input"></bal-input>
@@ -20,16 +20,16 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 ## HTML input
 
-<ClientOnly> <docs-demo-bal-input-53></docs-demo-bal-input-53></ClientOnly>
+<ClientOnly>  <docs-demo-bal-input-53></docs-demo-bal-input-53></ClientOnly>
 
 ```html
-<input class="input" name="firstName" placeholder="Enter your firstname" />
-<input class="input" name="firstName" disabled placeholder="Enter your firstname" />
+<input class="input" name="firstName" placeholder="Enter your firstname" >
+<input class="input" name="firstName" disabled placeholder="Enter your firstname" >
 ```
 
 ## Inverted
 
-<ClientOnly> <docs-demo-bal-input-54></docs-demo-bal-input-54></ClientOnly>
+<ClientOnly>  <docs-demo-bal-input-54></docs-demo-bal-input-54></ClientOnly>
 
 ```html
 <div class="has-background-info has-padding">
@@ -40,12 +40,13 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 ## Number Input
 
-<ClientOnly> <docs-demo-bal-input-55></docs-demo-bal-input-55></ClientOnly>
+<ClientOnly>  <docs-demo-bal-input-55></docs-demo-bal-input-55></ClientOnly>
 
 ```html
 <bal-input id="bal-input-only-numbers" only-numbers number-keyboard name="age" placeholder="Enter your age"></bal-input>
 <p class="help" id="bal-input-only-numbers-preview"></p>
 ```
+
 
 ## API
 
@@ -96,11 +97,11 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 #### Methods
 
-| Method                | Description                                                                            | Signature                                        |
-| :-------------------- | :------------------------------------------------------------------------------------- | :----------------------------------------------- |
-| **`getInputElement`** | Returns the native `<input>` element used under the hood.                              | `getInputElement() => Promise<HTMLInputElement>` |
-| **`setFocus`**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global |
-| `input.focus()`.      | `setFocus() => Promise<void>`                                                          |
+| Method                | Description                                                                                             | Signature                                        |
+| :-------------------- | :------------------------------------------------------------------------------------------------------ | :----------------------------------------------- |
+| **`getInputElement`** | Returns the native `<input>` element used under the hood.                                               | `getInputElement() => Promise<HTMLInputElement>` |
+| **`setFocus`**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global
+`input.focus()`. | `setFocus() => Promise<void>`                    |
 
 ## Testing
 
@@ -149,10 +150,12 @@ describe('Input', () => {
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-input)
-- [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/input.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-input.md)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-input)
+* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/input.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balInput"></docs-component-script>

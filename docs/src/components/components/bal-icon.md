@@ -1,12 +1,5 @@
 # bal-icon
 
-<!-- START: human documentation top -->
-
-All our icons are pure svg files. To add a new icon just place your svg file into the folder `packages/library/src/components/bal-icon/svg`.
-Then the build script will automatically optimize the svg and create its own web component.
-
-<!-- END: human documentation top -->
-
 ## Icons
 
 <!-- Auto Generated Icons -->
@@ -61,9 +54,16 @@ Then the build script will automatically optimize the svg and create its own web
 | <bal-icon name="trash" />                | `trash`                |
 | <bal-icon name="upload" />               | `upload`               |
 
+<!-- START: human documentation top -->
+
+All our icons are pure svg files. To add a new icon just place your svg file into the folder `packages/library/src/components/bal-icon/svg`.
+Then the build script will automatically optimize the svg and create its own web component.
+
+<!-- END: human documentation top -->
+
 ## Basic
 
-<ClientOnly> <docs-demo-bal-icon-48></docs-demo-bal-icon-48></ClientOnly>
+<ClientOnly>  <docs-demo-bal-icon-48></docs-demo-bal-icon-48></ClientOnly>
 
 ```html
 <span class="icon-text">
@@ -78,7 +78,7 @@ Then the build script will automatically optimize the svg and create its own web
 
 Here is how you can change the size:
 
-<ClientOnly> <docs-demo-bal-icon-49></docs-demo-bal-icon-49></ClientOnly>
+<ClientOnly>  <docs-demo-bal-icon-49></docs-demo-bal-icon-49></ClientOnly>
 
 ```html
 <bal-icon name="date" size="xsmall"></bal-icon>
@@ -91,7 +91,7 @@ Here is how you can change the size:
 
 ## Colors
 
-<ClientOnly> <docs-demo-bal-icon-50></docs-demo-bal-icon-50></ClientOnly>
+<ClientOnly>  <docs-demo-bal-icon-50></docs-demo-bal-icon-50></ClientOnly>
 
 ```html
 <bal-icon color="primary" name="github"></bal-icon>
@@ -105,7 +105,7 @@ Here is how you can change the size:
 
 Here is how you can change the color:
 
-<ClientOnly> <docs-demo-bal-icon-51></docs-demo-bal-icon-51></ClientOnly>
+<ClientOnly>  <docs-demo-bal-icon-51></docs-demo-bal-icon-51></ClientOnly>
 
 ```html
 <style type="text/css" scoped>
@@ -116,6 +116,7 @@ Here is how you can change the color:
 
 <bal-icon class="custom-color" name="check-circle"></bal-icon>
 ```
+
 
 ## API
 
@@ -132,10 +133,14 @@ Here is how you can change the color:
 | **size**     | Defines the size of the icon.                                   | `"" , "large" , "medium" , "small" , "xsmall"`                                                    | `''`     |
 | **turn**     | If `true` the icon is rotated 180deg                            | `boolean`                                                                                         | `false`  |
 
+
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Component on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-icon)
+* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-icon.md)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-icon)

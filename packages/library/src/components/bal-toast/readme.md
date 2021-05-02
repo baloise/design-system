@@ -1,7 +1,5 @@
 # bal-toast
 
-Toasts are used to inform the user with a simple text message.
-
 ## Usage
 
 Toast can be created with the `balToastController`. The default duration is 5000 milliseconds.

@@ -1,8 +1,5 @@
 # bal-hint
 
-A hint hides content with some additional description and shows it by clicking the icon.
-It can easily combined with the `bal-data` or `bal-field` component.
-
 <!-- Auto Generated Below -->
 
 

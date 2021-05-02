@@ -1,8 +1,5 @@
 # bal-file-upload
 
-The `bal-file-upload` is all in one component. It supports drag&drop and the normal file upload dialog of the browser.
-
-
 <!-- Auto Generated Below -->
 
 

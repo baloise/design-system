@@ -1,8 +1,5 @@
 # bal-modal
 
-A Modal is a dialog that appears on top of the app's body, and must be dismissed by
-the app before interaction can resume.
-
 <!-- Auto Generated Below -->
 
 

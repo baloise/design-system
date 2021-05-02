@@ -1,7 +1,5 @@
 # bal-list
 
-A list present content in a way that makes it easy to identify a specific item in a collection.
-
 <!-- Auto Generated Below -->
 
 

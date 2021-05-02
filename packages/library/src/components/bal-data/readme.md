@@ -1,7 +1,5 @@
 # bal-data
 
-A data component display readonly form data.
-
 <!-- Auto Generated Below -->
 
 
