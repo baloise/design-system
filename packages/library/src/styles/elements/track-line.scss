@@ -1,6 +1,13 @@
+@use "sass:map";
+
+$bal-track-line-size-small: map.get($spacing-values, '2');
+$bal-track-line-size-normal: map.get($spacing-values, '3');
+$bal-track-line-size-medium: map.get($spacing-values, '4');
+$bal-track-line-size-large: map.get($spacing-values, '5');
+
 .bal-track-line {
   display: flex;
-  height: 12px;
+  height: $bal-track-line-size-normal;
   width: 100%;
   align-items: center;
   background: $bal_bg_white;
@@ -12,7 +19,7 @@
   &::after {
     content: '';
     position: absolute;
-    height: 12px;
+    height: $bal-track-line-size-normal;
   }
 
   &::before {
@@ -28,45 +35,45 @@
     background: $bal_bg_white;
     transform: translateX(-50%) skew(-45deg);
     z-index: 100;
-    width: 12px;
+    width: $bal-track-line-size-normal;
   }
 
-  &.is-large {
-    height: 18px !important;
+  &.is-small {
+    height: $bal-track-line-size-small !important;
 
     &::before,
     &::after {
-      height: 18px !important;
+      height: $bal-track-line-size-small !important;
     }
 
     &::after {
-      width: 18px !important;
+      width: $bal-track-line-size-small !important;
     }
   }
 
   &.is-medium {
-    height: 14px !important;
+    height: $bal-track-line-size-medium !important;
 
     &::before,
     &::after {
-      height: 14px !important;
+      height: $bal-track-line-size-medium !important;
     }
 
     &::after {
-      width: 14px !important;
+      width: $bal-track-line-size-medium !important;
     }
   }
 
-  &.is-small {
-    height: 8px !important;
+  &.is-large {
+    height: $bal-track-line-size-large !important;
 
     &::before,
     &::after {
-      height: 8px !important;
+      height: $bal-track-line-size-large !important;
     }
 
     &::after {
-      width: 8px !important;
+      width: $bal-track-line-size-large !important;
     }
   }
 }
@@ -75,41 +82,5 @@
   &::before,
   &::after {
     bottom: 0;
-  }
-}
-
-@include tablet() {
-  .bal-track-line {
-    height: 14px;
-  }
-
-  .has-track-line,
-  .bal-track-line {
-    &::before,
-    &::after {
-      height: 14px;
-    }
-
-    &::after {
-      width: 14px;
-    }
-  }
-}
-
-@include desktop() {
-  .bal-track-line {
-    height: 18px;
-  }
-
-  .has-track-line,
-  .bal-track-line {
-    &::before,
-    &::after {
-      height: 18px;
-    }
-
-    &::after {
-      width: 18px;
-    }
   }
 }
