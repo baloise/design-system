@@ -2,9 +2,7 @@
 
 Decorated line used to separate header form the body.
 
-## Usage
-
-The track line is responsive and changes it size form `12px`, `14px` to `18px`
+## Basic
 
 <docs-demo>
   <div class="bal-track-line"></div>
@@ -16,7 +14,7 @@ The track line is responsive and changes it size form `12px`, `14px` to `18px`
 
 ## Sizes
 
-The sizes helper classes forces the size and break the responsiveness.
+The sizes helper classes forces the size.
 
 ### Small
 

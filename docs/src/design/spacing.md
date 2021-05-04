@@ -6,7 +6,7 @@ Consistent spacing creates visual balance that makes the user interface (UI) eas
 
 ### Create visual rythm
 
-We use incrementally measured spacing to create harmonious arrangements of components and text. This gives the elements a predictable rhythm, which makes the experience as a whole feel intentional and well designed. 
+We use incrementally measured spacing to create harmonious arrangements of components and text. This gives the elements a predictable rhythm, which makes the experience as a whole feel intentional and well designed.
 
 ### Precise but flexible
 
@@ -18,7 +18,7 @@ The Base Grid is the main metric reference of our system from which the rest of 
 
 The grid is constructed from a base 8px module, so that both the dimensions of the elements and the distances between them will always be multiples of 8: 16, 24, 32, 40, 48 …
 
-![8px-grid](/assets/images/spacing/8-pixel-grid.png)
+<docs-image text="8px-grid" link="/assets/images/spacing/8-pixel-grid.png" />
 
 This provides a common metric pattern that creates a visual coherence and consistency between the different elements of the system and their spatial relationships.
 
@@ -26,7 +26,7 @@ This grid favors an efficient workflow, reducing the number of design decisions,
 
 Specifying a metric unit of 8px helps maintain visual consistency and lets you take advantage of its other benefits. There may be situations, however, where a value ​​smaller than 8px is required. The 4px unit is available for these cases.
 
-Values ​​less than 8 px are primarily associated with the anatomy of the interface's basic elements, rather than specifying the distance between elements and page composition. Using Atomic Design's terminology, these minimum measurements should be used almost exclusively to define the internal anatomy of elements like atoms or molecules. 
+Values ​​less than 8 px are primarily associated with the anatomy of the interface's basic elements, rather than specifying the distance between elements and page composition. Using Atomic Design's terminology, these minimum measurements should be used almost exclusively to define the internal anatomy of elements like atoms or molecules.
 
 To learn more about the 8 px grid, see the articles listed below that have served as reference and inspiration for us to adopt this pattern:
 
@@ -38,13 +38,13 @@ To learn more about the 8 px grid, see the articles listed below that have serve
 
 All spacing for components and typography is done in increments of 8px. This forms the basic unit of measurement for spacing.
 
-![8px-grid](/assets/images/spacing/spacing-exapmple.png)
+<docs-image text="8px-grid" link="/assets/images/spacing/spacing-example.png" />
 
 **8px grid**
 
 Typography doesn’t use a traditional baseline grid. Instead, line heights are set in increments of 8px and spacing is measured from the edges of the text boxes.
 
-![8px-grid](/assets/images/spacing/typography-spacing.png)
+<docs-image text="8px-grid" link="/assets/images/spacing/typography-spacing.png" />
 
 Many components are sized in increments of 24px to match the line height of body text. This makes it easy to create harmonious arrangements of components and text
 
@@ -60,29 +60,29 @@ Many components are sized in increments of 24px to match the line height of body
 
 ### How to choose spacing
 
-![8px-grid](/assets/images/spacing/choose-spacing.png)
+<docs-image text="8px-grid" link="/assets/images/spacing/choose-spacing.png" />
 
 Use less space between small components, or components that share a close functional relationship.
 
-![8px-grid](/assets/images/spacing/spacing-between-components.png)
+<docs-image text="8px-grid" link="/assets/images/spacing/spacing-between-components.png" />
 
 Use less space between small components, or components that share a close functional relationship.
 
-Coordinate small and large values, to create visual groupings of related things. This helps users  understand the interface and more easily find what they’re looking for. For screens with specialized layouts, adjust overall spacing based on the density of the content. For example, a simple login screen on desktop display has more room to breathe, so more space can be used.
+Coordinate small and large values, to create visual groupings of related things. This helps users understand the interface and more easily find what they’re looking for. For screens with specialized layouts, adjust overall spacing based on the density of the content. For example, a simple login screen on desktop display has more room to breathe, so more space can be used.
 
 ### Common values
 
-![8px-grid](/assets/images/spacing/spacing-button-icon.png)
+<docs-image text="8px-grid" link="/assets/images/spacing/spacing-button-icon.png"  />
 
 8px between icon and text.
 
-The ![Button](/components/bal-button.html) component has this spacing built in.
+The [Button](/components/bal-button.html) component has this spacing built in.
 
-![8px-grid](/assets/images/spacing/spacing-between-buttons.png)
+<docs-image text="8px-grid" link="/assets/images/spacing/spacing-between-buttons.png" />
 
 16px between buttons.
 
-![8px-grid](/assets/images/spacing/spacing-between-form-fields.png)
+<docs-image text="8px-grid" link="/assets/images/spacing/spacing-between-form-fields.png" />
 
 16 or 32px between form fields.
 

@@ -82,6 +82,7 @@ module.exports = {
             'styles/installation',
             'styles/colors',
             'styles/typography',
+            'styles/spacing',
             'styles/responsiveness',
             'styles/helpers',
             'styles/footer',
@@ -104,7 +105,13 @@ module.exports = {
         {
           title: 'Resources',
           collapsable: false,
-          children: ['fonts', 'icons', 'templates', 'changelog'],
+          children: [
+            'fonts',
+            'templates',
+            'changelog',
+            ['https://github.com/baloise/ui-library/projects/2', 'Roadmap'],
+            ['https://github.com/baloise/ui-library', 'Github'],
+          ],
         },
       ],
       '/about-us/': [
@@ -114,14 +121,14 @@ module.exports = {
           children: ['', 'architecture'],
         },
         {
-          title: 'Development',
+          title: 'Contributing',
           collapsable: false,
           children: [
-            'development/installation',
-            'development/commands',
-            'development/component',
-            'development/controller',
-            'development/release',
+            'contributing/installation',
+            'contributing/commands',
+            'contributing/component',
+            'contributing/controller',
+            'contributing/release',
           ],
         },
       ],

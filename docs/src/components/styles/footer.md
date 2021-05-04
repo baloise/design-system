@@ -2,7 +2,7 @@
 
 Basic footer for the Baloise Applications.
 
-## Usage
+## Basic
 
 The footer runs pure in blue or with a decorated track line below.
 
@@ -18,7 +18,7 @@ The footer runs pure in blue or with a decorated track line below.
 </footer>
 ```
 
-### With Track Line
+## With Track Line
 
 <docs-demo>
   <footer class="footer has-track-line">
@@ -32,7 +32,7 @@ The footer runs pure in blue or with a decorated track line below.
 </footer>
 ```
 
-### Sticky Footer
+## Sticky Footer
 
 To stick the footer at the end of the page add the class `has-sticky-footer` to your body and apply the same structure as shown in the belows example.
 
