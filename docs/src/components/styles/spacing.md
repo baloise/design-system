@@ -58,3 +58,47 @@ Each of these property-direction combinations needs to be appended with one of 1
   Margin with Padding
 </div>
 ```
+
+## Responsive Helpers
+
+There are some responsive padding helpers.
+
+### has-padding
+
+Standard padding for cards or modals.
+
+#### Values
+
+`@mobile(16px), @tablet(32px 40px)`
+
+#### Example
+
+<docs-demo>
+<div class="has-background-blue has-text-white">
+  <p class="has-padding">Some text with padding</p>
+</div>
+</docs-demo>
+
+```html
+<p class="has-padding">Some text with padding</p>
+```
+
+### has-large-padding
+
+Padding configurations for forms.
+
+#### Values
+
+`@mobile(16px), @tablet(32px 40px), @desktop(64px 120px)`
+
+#### Example
+
+<docs-demo>
+<div class="has-background-blue has-text-white">
+  <p class="has-large-padding">Some text with large padding</p>
+</div>
+</docs-demo>
+
+```html
+<p class="has-large-padding">Some text with large padding</p>
+```

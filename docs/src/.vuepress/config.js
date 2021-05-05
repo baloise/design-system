@@ -84,7 +84,6 @@ module.exports = {
             'styles/typography',
             'styles/spacing',
             'styles/responsiveness',
-            'styles/helpers',
             'styles/footer',
             'styles/table',
             'styles/track-line',
