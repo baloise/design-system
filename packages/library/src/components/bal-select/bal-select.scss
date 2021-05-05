@@ -12,7 +12,7 @@
     max-width: 100%;
     min-width: 0;
     width: 100%;
-    padding-bottom: 1px;
+    padding-bottom: 0;
     border-bottom: 1px solid $blue-light-line;
 
     &:focus-within,
@@ -41,6 +41,7 @@
       border: none;
       box-shadow: none;
       padding: 0;
+      height: 2.1em;
     }
 
     .value {
