@@ -21,7 +21,7 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/assets/images/baloise.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/assets/images/logo.svg' }],
     ['link', { rel: 'stylesheet', href: '/assets/css/swot.css' }],
     ['link', { rel: 'stylesheet', href: '/assets/css/demo.css' }],
   ],
