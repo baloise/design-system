@@ -124,7 +124,7 @@ export const config: Config = {
     }),
     vueOutputTarget({
       componentCorePackage: '@baloise/ui-library',
-      proxiesFile: '../vue/src/components.ts',
+      proxiesFile: '../components-vue/src/components.ts',
       componentModels: vueComponentModels,
       includeDefineCustomElements: false,
       includePolyfills: false,
