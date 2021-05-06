@@ -25,11 +25,18 @@ const readSync = filePath => {
 
 const write = async (filePath, data) => {
   return new Promise((resolve, reject) => {
-    fs.writeFile(filePath, data, err => {
-      if (err) {
-        return reject(err)
+    var dirname = path.dirname(filePath)
+    fs.mkdir(dirname, { recursive: true }, mkdirError => {
+      if (mkdirError) {
+        return reject(mkdirError)
       }
-      resolve()
+
+      fs.writeFile(filePath, data, err => {
+        if (err) {
+          return reject(err)
+        }
+        resolve()
+      })
     })
   })
 }

@@ -1,0 +1,41 @@
+{
+  "name": "@baloise/design-system-icons",
+  "version": "0.0.0",
+  "description": "The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/ui-library.git"
+  },
+  "homepage": "https://baloise-ui-library.now.sh",
+  "author": {
+    "name": "Gery Hirschfeld",
+    "email": "gerhard.hirschfeld@baloise.ch",
+    "url": "https://github.com/hirsch88"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "npm run build:clean && npm run build:icons && npm run build:compile && npm run build:bundle",
+    "build:clean": "rimraf dist && rimraf dist-transpiled",
+    "build:icons": "node .scripts/icons.script.js",
+    "build:compile": "tsc -p .",
+    "build:bundle": "rollup --config rollup.config.js"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist/",
+    "svg/"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/lodash": "^4.14.168",
+    "lodash": "^4.17.21",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.39.0",
+    "svgo": "^2.3.0",
+    "typescript": "^4.0.2"
+  }
+}
