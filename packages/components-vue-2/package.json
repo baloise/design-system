@@ -1,6 +1,6 @@
 {
-  "name": "@baloise/ui-library-vue-2",
-  "version": "4.17.0",
+  "name": "@baloise/design-system-components-vue-2",
+  "version": "0.0.0",
   "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
