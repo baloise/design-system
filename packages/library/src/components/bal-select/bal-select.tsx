@@ -1,7 +1,7 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
 import { isNil } from 'lodash'
 import { findItemLabel } from '../../helpers/helpers'
-import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey } from '../../utils'
+import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey } from '../../utils'
 import { addValue, findLabelByValue, includes, preventDefault, removeValue, startsWith, validateAfterBlur } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 
@@ -95,19 +95,8 @@ export class Select {
   @Watch('value')
   valueWatcher(newValue: string[], oldValue: string[]) {
     if (!areArraysEqual(newValue, oldValue)) {
-      if (!this.multiple && this.typeahead) {
-        if (this.value.length > 0) {
-          this.updateInputValue(findLabelByValue(this.options, newValue[0]))
-        }
-      }
+      this.syncNativeInput()
       this.balChange.emit(this.value)
-    }
-  }
-
-  private updateInputValue(value: string) {
-    if (!isNil(this.inputElement)) {
-      this.inputElement.value = value
-      this.inputValue = value
     }
   }
 
@@ -217,6 +206,7 @@ export class Select {
       })
     }
     this.options = new Map(options)
+    this.syncNativeInput()
     if (this.didInit) {
       this.validateAfterBlur()
     }
@@ -233,15 +223,13 @@ export class Select {
   }
 
   /**
-   * Sets the value to null and resets the value of the input.
+   * Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
    */
   @Method()
-  async clear(force = false) {
+  async clear() {
     this.focusIndex = 0
     if (this.inputElement) {
-      if (force === true) {
-        this.updateInputValue('')
-      }
+      this.updateInputValue('')
       this.value = []
     }
   }
@@ -346,7 +334,9 @@ export class Select {
       const option = visibleOptions[this.focusIndex]
       const focusedElement = this.el.querySelector<HTMLElement>(`button#${option.id}`)
       if (focusedElement) {
-        this.scrollToFocusedOption(focusedElement)
+        setTimeout(() => {
+          this.scrollToFocusedOption(focusedElement)
+        }, 0)
       }
     } else {
       this.focusIndex = 0
@@ -464,6 +454,21 @@ export class Select {
     }
   }
 
+  private updateInputValue(value: string) {
+    if (!isNil(this.inputElement)) {
+      this.inputElement.value = value
+      this.inputValue = value
+    }
+  }
+
+  private syncNativeInput() {
+    if (!this.multiple) {
+      if (this.value.length > 0) {
+        this.updateInputValue(findLabelByValue(this.options, this.value[0]))
+      }
+    }
+  }
+
   /********************************************************
    * EVENT HANDLERS
    ********************************************************/
@@ -503,14 +508,8 @@ export class Select {
   }
 
   private handleKeyPress = async (event: KeyboardEvent) => {
-    if (isSpaceKey(event)) {
-      if (!this.isDropdownOpen) {
-        await this.open()
-      } else {
-        if (!this.typeahead) {
-          await this.close()
-        }
-      }
+    if (isEnterKey(event) && !this.isDropdownOpen) {
+      await this.open()
     }
     this.balKeyPress.emit(event)
   }

@@ -1153,9 +1153,9 @@ export namespace Components {
          */
         "cancel": () => Promise<void>;
         /**
-          * Sets the value to null and resets the value of the input.
+          * Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
          */
-        "clear": (force?: boolean) => Promise<void>;
+        "clear": () => Promise<void>;
         /**
           * Closes the dropdown
          */
