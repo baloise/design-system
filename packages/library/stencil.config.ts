@@ -131,8 +131,8 @@ export const config: Config = {
     }),
     angularOutputTarget({
       componentCorePackage: '@baloise/ui-library',
-      directivesProxyFile: '../angular/src/directives/proxies.ts',
-      directivesArrayFile: '../angular/src/directives/proxies-list.ts',
+      directivesProxyFile: '../components-angular/src/directives/proxies.ts',
+      directivesArrayFile: '../components-angular/src/directives/proxies-list.ts',
       valueAccessorConfigs: angularValueAccessorBindings,
     }),
   ],
