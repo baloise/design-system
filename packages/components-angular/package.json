@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components-angular",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -15,6 +15,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "design-system",
+    "web-components",
+    "stenciljs",
+    "bulma-css"
+  ],
   "scripts": {
     "build": "npm run clean && npm run build:filters && npm run build:validators && npm run build:compile && npm run clean:package",
     "build:validators": "node .scripts/validators.script.js",
