@@ -36,10 +36,10 @@ Out of the box access all the colors form the Baloise Design System.
 
 ## Usage
 
-These colors/variables can be used within your style sheets, by import the `ui-library.utilities` into your scss files.
+These colors/variables can be used within your style sheets, by import the `design-system-components.utilities` into your scss files.
 
 ```scss
-@import 'node_modules/@baloise/design-system-components/src/styles/ui-library.utilities';
+@import 'node_modules/@baloise/design-system-components/src/styles/design-system-components.utilities';
 ```
 
 ## Helpers

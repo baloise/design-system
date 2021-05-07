@@ -1,6 +1,6 @@
 # Responsiveness
 
-UI-Library is mobile first oriented and recommands to do so.
+Design System is mobile first oriented and recommands to do so.
 
 There are 2 ways to solve the daily responsiveness challenges.
 
@@ -9,7 +9,7 @@ There are 2 ways to solve the daily responsiveness challenges.
 Use the scss mixins in your application like this.
 
 ```scss
-@import 'node_modules/@baloise/design-system-components/src/styles/ui-library.utilities';
+@import 'node_modules/@baloise/design-system-components/src/styles/design-system-components.utilities';
 
 .bal-element {
   width: 100%;
@@ -28,7 +28,7 @@ Use the scss mixins in your application like this.
 }
 ```
 
-The file `ui-library.utilities` provides all the defined scss variables like [colors](/guide/styles/colors.html) and also the mixins.
+The file `design-system-components.utilities` provides all the defined scss variables like [colors](/guide/styles/colors.html) and also the mixins.
 
 **Further Documentation**
 

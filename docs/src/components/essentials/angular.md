@@ -2,7 +2,7 @@
 
 <img style="width: 128px;" src="https://angular.io/assets/images/logos/angular/angular.svg" data-origin="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular">
 
-`@baloise/ui-libary-angular` combines the core Baloise UI-Library experience with the tooling and APIs that are tailored to Angular Developers.
+`@baloise/ui-libary-angular` combines the core Baloise Design System experience with the tooling and APIs that are tailored to Angular Developers.
 
 ::: warning
 Angular 11.x.x does not support IE11 from scratch. Go to [IE 11 Support](./angular.html#ie-11-support) to get your Angular App IE11 ready.

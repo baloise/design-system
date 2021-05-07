@@ -2,20 +2,20 @@
 
 <img style="width: 128px;" src="https://vuejs.org/images/logo.png" data-origin="https://vuejs.org/images/logo.png" alt="Vue">
 
-`@baloise/ui-libary-vue` combines the core Baloise UI-Library experience with the tooling and APIs that are tailored to Vue Developers.
+`@baloise/ui-libary-vue` combines the core Baloise Design System experience with the tooling and APIs that are tailored to Vue Developers.
 
 ## Install
 
 Before installing the Baloise UI Library setup to a Vue Project. We recommand to use this starter kit [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit) or use the [Vue CLI](https://cli.vuejs.org/guide/installation.html) with Sass and TypeScript.
 
-To install the Baloise UI-Library run the following command.
+To install the Baloise Design System run the following command.
 
 ```bash
 npm install @baloise/design-system-components @baloise/design-system-components-vue --save
 ```
 
 :::tip
-We recommand to use the [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit), because the UI-Library is already integrated as well us i18n, Sass, form-validation and http-requsts.
+We recommand to use the [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit), because the Design System is already integrated as well us i18n, Sass, form-validation and http-requsts.
 :::
 
 ::: tip
@@ -50,11 +50,11 @@ new Vue({
 
 ## Styles
 
-To apply the Baloise UI-Library styles follow the instruction on the page [styling documentation](/guide/styles/installation.html).
+To apply the Baloise Design System styles follow the instruction on the page [styling documentation](/guide/styles/installation.html).
 
 ## Usage
 
-All the Baloise UI-Library components are registered globally, so just use them in your template like the `BalButton`.
+All the Baloise Design System components are registered globally, so just use them in your template like the `BalButton`.
 
 ::: tip
 More usage example are in our Vue Starter Kit app [Link](https://github.com/baloise/vue-starter-kit/blob/vue-next/src/app/pages/Home.vue).

@@ -38,25 +38,25 @@ To use the fonts in the css styles import it with the following snippet.
 
 Place the download fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
 
-Import `ui-library.scss` Sass file into the main `.scss` file of your application.
+Import `design-system-components.scss` Sass file into the main `.scss` file of your application.
 
 ```scss
-@import 'node_modules/@baloise/design-system-components/src/styles/ui-library.scss';
+@import 'node_modules/@baloise/design-system-components/src/styles/design-system-components.scss';
 ```
 
 ### Variables
 
-To access the scss variables like [colors](/guide/styles/colors.html) or [responsiveness helpers](/guide/styles/responsiveness.html) import the `ui-library.utilities.scss`.
+To access the scss variables like [colors](/guide/styles/colors.html) or [responsiveness helpers](/guide/styles/responsiveness.html) import the `design-system-components.utilities.scss`.
 
 ::: tip
-Use the variables and helpers of the UI-Library where ever you can in your application.
+Use the variables and helpers of the Design System where ever you can in your application.
 :::
 
 #### Usage
 
 ```scss
 // Only imports variables and mixins
-@import 'node_modules/@baloise/design-system-components/src/styles/ui-library.utilities.scss';
+@import 'node_modules/@baloise/design-system-components/src/styles/design-system-components.utilities.scss';
 
 // mobile first
 p {
@@ -103,7 +103,7 @@ Put the link tag into your main html file.
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/ui-library/ui-library.css"
+  href="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
 />
 ```
 
@@ -112,5 +112,5 @@ Put the link tag into your main html file.
 Import the css directly into your main TypeScript or JavaScript file.
 
 ```typescript
-import '@baloise/design-system-components/dist/ui-library/ui-library.css'
+import '@baloise/design-system-components/dist/design-system-components/design-system-components.css'
 ```

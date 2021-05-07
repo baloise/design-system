@@ -11,8 +11,8 @@ To work with this project a recent LTS version of NodeJS and npm is required. Ma
 To start building a new web component using Stencil, clone this repo to a new directory:
 
 ```bash
-git clone https://github.com/baloise/ui-library.git ui-library
-cd ui-library
+git clone https://github.com/baloise/ui-library.git design-system
+cd design-system
 ```
 
 - Run `npm install` to install library’s dependencies
