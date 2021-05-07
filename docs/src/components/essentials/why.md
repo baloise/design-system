@@ -65,7 +65,7 @@ $blue: red;
 $radius: 0;
 ```
 
-The changes will be released to [npm](https://www.npmjs.com/package/@baloise/ui-library) from where our development teams can grap the new changes.
+The changes will be released to [npm](https://www.npmjs.com/package/@baloise/design-system-components) from where our development teams can grap the new changes.
 They will simply upgrade the library in there projects and get the style changes immediately.
 Style changes will not change the component interface. Which means the developers has no additional adjustment to do excepting to upgrade the library.
 
@@ -82,7 +82,7 @@ On top of the user interaction and style part the library provides a set of util
 The [validators](/guide/tooling/validators.html) are functions to verify the corect input data of a form field.
 
 ```typescript
-import { BalValidators } from '@baloise/ui-library'
+import { BalValidators } from '@baloise/design-system-components'
 
 BalValidators.isBefore('2000-01-02')('2000-01-01')
 // returns true
@@ -93,7 +93,7 @@ BalValidators.isBefore('2000-01-02')('2000-01-01')
 To display the data in a format that it is more readalbe for our users we can use the [filter functions](/guide/tooling/filters.html).
 
 ```typescript
-import { balCapitalize } from '@baloise/ui-library'
+import { balCapitalize } from '@baloise/design-system-components'
 
 balCapitalize('baloise')
 // returns 'Baloise'
@@ -104,7 +104,7 @@ balCapitalize('baloise')
 To help the software developers in there daily live we export some of our [utility functions](/guide/tooling/utils.html).
 
 ```typescript
-import { now } from '@baloise/ui-library'
+import { now } from '@baloise/design-system-components'
 
 const date = now()
 // Wed Mar 10 2021 20:30:32 GMT+0100 (Central European Standard Time)
@@ -116,7 +116,7 @@ As a [E-2-E testing](/guide/tooling/testing.html) tool we use [Cypress](https://
 The accessors hide the complexity of the component and only serves a interface for the simulated user actions like a click.
 
 ```typescript
-import { dataTestSelector, ButtonAccessor } from '@baloise/ui-library-testing'
+import { dataTestSelector, ButtonAccessor } from '@baloise/design-system-components-testing'
 
 describe('Button', () => {
   it('should ...', () => {

@@ -507,7 +507,7 @@ export class BalFieldMessage {
   }
 }
 
-import { FileUploadRejectedFile } from '@baloise/ui-library';
+import { FileUploadRejectedFile } from '@baloise/design-system-components';
 export declare interface BalFileUpload extends Components.BalFileUpload {}
 @ProxyCmp({
   inputs: ['accept', 'disabled', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple']
@@ -2047,7 +2047,7 @@ export class BalTabItem {
   }
 }
 
-import { BalTabOption } from '@baloise/ui-library';
+import { BalTabOption } from '@baloise/design-system-components';
 export declare interface BalTabs extends Components.BalTabs {}
 @ProxyCmp({
   inputs: ['action', 'actionLabel', 'expanded', 'interface', 'rounded'],
@@ -2116,7 +2116,7 @@ export class BalTeaserStep {
   }
 }
 
-import { BalTeaserStepOption } from '@baloise/ui-library';
+import { BalTeaserStepOption } from '@baloise/design-system-components';
 export declare interface BalTeaserSteps extends Components.BalTeaserSteps {}
 @ProxyCmp({
   inputs: ['backLabel', 'hasBack', 'hidden', 'inverted', 'navigation', 'showLabel'],

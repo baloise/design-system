@@ -79,7 +79,7 @@ export const CheckboxContainableMixin: Mixin = <T>({ selector, creator }: MixinC
  * It maps the checkbox behaviour to the `bal-checkbox` ui component.
  *
  * ```typescript
- * import { dataTestSelector, CheckboxAccessor } from '@baloise/ui-library-testing'
+ * import { dataTestSelector, CheckboxAccessor } from '@baloise/design-system-components-testing'
  *
  * describe('Checkbox', () => {
  *   it('should ...', () => {

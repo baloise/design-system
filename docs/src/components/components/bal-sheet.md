@@ -48,4 +48,4 @@ The sheet component is used to show content over the whole page at the bottem of
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-sheet.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-sheet)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-sheet)

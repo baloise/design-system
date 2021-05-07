@@ -80,7 +80,7 @@ export const SelectContainableMixin: Mixin = <T>({ selector, creator }: MixinCon
  * It maps the select behaviour to the `bal-select` ui component.
  *
  * ```typescript
- * import { dataTestSelector, SelectAccessor } from '@baloise/ui-library-testing'
+ * import { dataTestSelector, SelectAccessor } from '@baloise/design-system-components-testing'
  *
  * describe('Select', () => {
  *   it('should ...', () => {

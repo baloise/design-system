@@ -15,8 +15,14 @@ The CDN script does not run in the IE11 Browser. To get IE11 up and running use 
 :::
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ui-library/dist/ui-library/ui-library.css" />
-<script type="module" src="https://cdn.jsdelivr.net/npm/@baloise/ui-library/dist/ui-library/ui-library.esm.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/ui-library/ui-library.css"
+/>
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/ui-library/ui-library.esm.js"
+></script>
 ```
 
 ## Node Modules
@@ -24,14 +30,14 @@ The CDN script does not run in the IE11 Browser. To get IE11 up and running use 
 Open the terminal and run the following command to install the Baloise UI Library.
 
 ```bash
-npm install @baloise/ui-library --save
+npm install @baloise/design-system-components --save
 ```
 
 Add the following 2 references to your `<head></head>`
 
 ```html
-<link rel="stylesheet" href="node_modules/@baloise/ui-library/dist/ui-library/ui-library.css" />
-<script type="module" src="node_modules/@baloise/ui-library/dist/ui-library/ui-library.esm.js"></script>
+<link rel="stylesheet" href="node_modules/@baloise/design-system-components/dist/ui-library/ui-library.css" />
+<script type="module" src="node_modules/@baloise/design-system-components/dist/ui-library/ui-library.esm.js"></script>
 ```
 
 ## Server-Side
@@ -39,7 +45,7 @@ Add the following 2 references to your `<head></head>`
 There is also the possible to just include the styles with the css or scss file.
 
 ```html
-<link rel="stylesheet" href="node_modules/@baloise/ui-library/dist/ui-library/ui-library.css" />
+<link rel="stylesheet" href="node_modules/@baloise/design-system-components/dist/ui-library/ui-library.css" />
 ```
 
 ::: warning

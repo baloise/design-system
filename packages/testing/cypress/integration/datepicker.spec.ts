@@ -1,4 +1,4 @@
-import { now } from '@baloise/ui-library'
+import { now } from '@baloise/design-system-components'
 import { app } from '../support/app'
 
 describe('Datepicker', () => {

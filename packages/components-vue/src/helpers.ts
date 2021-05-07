@@ -1,4 +1,4 @@
-import { BalValidatorFn } from '@baloise/ui-library'
+import { BalValidatorFn } from '@baloise/design-system-components'
 import { isArray } from 'lodash'
 import { Ref, unref } from 'vue'
 

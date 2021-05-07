@@ -67,7 +67,7 @@ export const AccordionAssertableMixin: Mixin = <T>({ selector, creator }: MixinC
  * It maps the accordion behaviour to the `bal-accordion` ui component.
  *
  * ```typescript
- * import { dataTestSelector, AccordionAccessor } from '@baloise/ui-library-testing'
+ * import { dataTestSelector, AccordionAccessor } from '@baloise/design-system-components-testing'
  *
  * describe('Accordion', () => {
  *   it('should ...', () => {

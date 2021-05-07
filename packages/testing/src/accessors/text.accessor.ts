@@ -31,7 +31,7 @@ interface TextAccessorType
  * It maps the text behaviour to the `bal-text` ui component.
  *
  * ```typescript
- * import { dataTestSelector, TextAccessor } from '@baloise/ui-library-testing'
+ * import { dataTestSelector, TextAccessor } from '@baloise/design-system-components-testing'
  *
  * describe('Text', () => {
  *   it('should ...', () => {

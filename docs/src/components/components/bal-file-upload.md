@@ -12,12 +12,7 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 
 ```html
 <p id="bal-file-upload-messages"></p>
-<bal-file-upload id="bal-file-upload-example"
-  accept="image/png,image/jpeg"
-  max-files="3"
-  max-file-size="1000000"
-  max-bundle-size="1000000"
-></bal-file-upload>
+<bal-file-upload id="bal-file-upload-example" accept="image/png,image/jpeg" max-files="3" max-file-size="1000000" max-bundle-size="1000000"></bal-file-upload>
 ```
 
 
@@ -54,7 +49,7 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-file-upload.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-file-upload)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-file-upload)
 
 <ClientOnly>
   <docs-component-script tag="balFileUpload"></docs-component-script>

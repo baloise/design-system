@@ -6,14 +6,14 @@ export default {
       entryFileNames: '[name].esm.js',
       chunkFileNames: '[name]-[hash].esm.js',
       format: 'es',
-      sourcemap: true
+      sourcemap: true,
     },
     {
       dir: 'dist/',
       format: 'commonjs',
       preferConst: true,
-      sourcemap: true
-    }
+      sourcemap: true,
+    },
   ],
-  external: ["@baloise/ui-library"]
-};
+  external: ['@baloise/design-system-components'],
+}

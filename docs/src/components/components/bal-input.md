@@ -111,7 +111,7 @@ InputAccessor is a helper object for E-2-E testing.
 It maps the input behaviour to the `bal-input` ui component.
 
 ```typescript
-import { dataTestSelector, InputAccessor } from '@baloise/ui-library-testing'
+import { dataTestSelector, InputAccessor } from '@baloise/design-system-components-testing'
 
 describe('Input', () => {
   it('should ...', () => {
@@ -154,7 +154,7 @@ describe('Input', () => {
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-input.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-input)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-input)
 * [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/input.accessor.ts)
 
 <ClientOnly>

@@ -264,5 +264,5 @@ A list present content in a way that makes it easy to identify a specific item i
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-list.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-list)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-list)
 * [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/list.accessor.ts)

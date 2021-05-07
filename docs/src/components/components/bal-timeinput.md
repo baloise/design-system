@@ -69,4 +69,4 @@ It will not be triggert if either hour or time input has never been set (i.e. "-
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-timeinput.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-timeinput)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-timeinput)

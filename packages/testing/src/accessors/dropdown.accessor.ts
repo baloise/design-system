@@ -42,7 +42,7 @@ export const DropdownClickableMixin: Mixin = <T>({ selector, creator }: MixinCon
  * It maps the dropdown behaviour to the `bal-dropdown` ui component.
  *
  * ```typescript
- * import { dataTestSelector, DropdownAccessor } from '@baloise/ui-library-testing'
+ * import { dataTestSelector, DropdownAccessor } from '@baloise/design-system-components-testing'
  *
  * describe('Dropdown', () => {
  *   it('should ...', () => {

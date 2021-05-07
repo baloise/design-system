@@ -109,7 +109,7 @@ DropdownAccessor is a helper object for E-2-E testing.
 It maps the dropdown behaviour to the `bal-dropdown` ui component.
 
 ```typescript
-import { dataTestSelector, DropdownAccessor } from '@baloise/ui-library-testing'
+import { dataTestSelector, DropdownAccessor } from '@baloise/design-system-components-testing'
 
 describe('Dropdown', () => {
   it('should ...', () => {
@@ -133,7 +133,7 @@ describe('Dropdown', () => {
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-dropdown.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-dropdown)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-dropdown)
 * [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/dropdown.accessor.ts)
 
 <ClientOnly>

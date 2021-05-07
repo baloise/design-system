@@ -9,7 +9,7 @@ There are 2 ways to solve the daily responsiveness challenges.
 Use the scss mixins in your application like this.
 
 ```scss
-@import 'node_modules/@baloise/ui-library/src/styles/ui-library.utilities';
+@import 'node_modules/@baloise/design-system-components/src/styles/ui-library.utilities';
 
 .bal-element {
   width: 100%;

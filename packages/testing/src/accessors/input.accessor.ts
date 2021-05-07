@@ -52,7 +52,7 @@ export const InputValueAssertableMixin: Mixin = <T>({ selector, creator }: Mixin
  * It maps the input behaviour to the `bal-input` ui component.
  *
  * ```typescript
- * import { dataTestSelector, InputAccessor } from '@baloise/ui-library-testing'
+ * import { dataTestSelector, InputAccessor } from '@baloise/design-system-components-testing'
  *
  * describe('Input', () => {
  *   it('should ...', () => {

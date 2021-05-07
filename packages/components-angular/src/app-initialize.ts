@@ -1,4 +1,4 @@
-import { defineCustomElements, applyPolyfills } from '@baloise/ui-library/loader'
+import { defineCustomElements, applyPolyfills } from '@baloise/design-system-components/loader'
 
 export const appInitialize = () => {
   return (): any => {

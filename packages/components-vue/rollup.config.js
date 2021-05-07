@@ -16,9 +16,9 @@ export default {
     },
   ],
   external: [
-    '@baloise/ui-library',
-    '@baloise/ui-library/loader',
-    '@baloise/ui-library/dist/custom-elements',
+    '@baloise/design-system-components',
+    '@baloise/design-system-components/loader',
+    '@baloise/design-system-components/dist/custom-elements',
     'vue',
     'lodash',
   ],

@@ -49,7 +49,7 @@ export const SelectButtonSelectableMixin: Mixin = <T>({ selector, creator }: Mix
  * It maps the radio behaviour to the `bal-radio` ui component.
  *
  * ```typescript
- * import { dataTestSelector, RadioAccessor } from '@baloise/ui-library-testing'
+ * import { dataTestSelector, RadioAccessor } from '@baloise/design-system-components-testing'
  *
  * describe('Radio', () => {
  *   it('should ...', () => {

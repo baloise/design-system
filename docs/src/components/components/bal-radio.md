@@ -130,7 +130,7 @@ RadioAccessor is a helper object for E-2-E testing.
 It maps the radio behaviour to the `bal-radio` ui component.
 
 ```typescript
-import { dataTestSelector, RadioAccessor } from '@baloise/ui-library-testing'
+import { dataTestSelector, RadioAccessor } from '@baloise/design-system-components-testing'
 
 describe('Radio', () => {
   it('should ...', () => {
@@ -172,7 +172,7 @@ describe('Radio', () => {
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-radio.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-radio)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-radio)
 * [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/radio.accessor.ts)
 
 <ClientOnly>

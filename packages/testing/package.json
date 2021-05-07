@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/baloise/ui-library.git"
   },
-  "homepage": "https://baloise-ui-library.now.sh",
+  "homepage": "https://baloise-design-system.vercel.app.sh",
   "author": {
     "name": "Gery Hirschfeld",
     "email": "gerhard.hirschfeld@baloise.ch",
@@ -48,6 +48,6 @@
   },
   "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca",
   "dependencies": {
-    "@baloise/ui-library": "^4.17.0"
+    "@baloise/design-system-components": "0.0.0"
   }
 }

@@ -11,7 +11,7 @@ We recommand to use the utility library [date-fns](https://date-fns.org/) for wo
 The utilities are simple functions.
 
 ```typescript
-import { isEnterKey } from '@baloise/ui-library'
+import { isEnterKey } from '@baloise/design-system-components'
 
 if (isEnterKey(event)) {
   // do something...

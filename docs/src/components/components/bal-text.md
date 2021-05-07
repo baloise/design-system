@@ -60,7 +60,7 @@ TextAccessor is a helper object for E-2-E testing.
 It maps the text behaviour to the `bal-text` ui component.
 
 ```typescript
-import { dataTestSelector, TextAccessor } from '@baloise/ui-library-testing'
+import { dataTestSelector, TextAccessor } from '@baloise/design-system-components-testing'
 
 describe('Text', () => {
   it('should ...', () => {
@@ -100,5 +100,5 @@ describe('Text', () => {
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-text.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-text)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-text)
 * [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/text.accessor.ts)

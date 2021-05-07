@@ -22,8 +22,8 @@ In this section we change the return type of our `BalValidators` into the the tr
 Pass your i18n translation function to the `useValidator` helper and then use the returned helper function `createValidator` to map the `BalValidators` with your translations.
 
 ```typescript
-import { BalValidators } from '@baloise/ui-library'
-import { useValidator, ValidatorFn } from '@baloise/ui-library-vue'
+import { BalValidators } from '@baloise/design-system-components'
+import { useValidator, ValidatorFn } from '@baloise/design-system-components-vue'
 import { i18n } from '../../plugins/i18n.plugin'
 
 const { createValidator } = useValidator(i18n.global.t)
@@ -64,7 +64,7 @@ The helper function `validators` helps us to combine validators and to use the p
 
 ```typescript
 import { defineComponent, ref } from 'vue'
-import { validators } from '@baloise/ui-library-vue'
+import { validators } from '@baloise/design-system-components-vue'
 import { useField, useForm, useIsFormValid } from 'vee-validate'
 import { isMaxLength, isMinLength, isRequired } from '../helpers/validators'
 
@@ -106,8 +106,8 @@ The validator functions are defined as [Angular Custom Validators](https://angul
 ```typescript
 import { Component } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { newDateString, now } from '@baloise/ui-library'
-import { BalValidators } from '@baloise/ui-library-angular'
+import { newDateString, now } from '@baloise/design-system-components'
+import { BalValidators } from '@baloise/design-system-components-angular'
 
 @Component({
   selector: 'app-form',

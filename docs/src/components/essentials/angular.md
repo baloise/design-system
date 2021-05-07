@@ -30,7 +30,7 @@ ng serve
 Use npm to install the Angular proxy library.
 
 ```bash
-npm install @baloise/ui-library @baloise/ui-library-angular --save
+npm install @baloise/design-system-components @baloise/design-system-components-angular --save
 ```
 
 ::: tip
@@ -69,7 +69,7 @@ Import the `BalUiLibraryModule` and add it to your angular module. To use the cu
 ```typescript
 import { BrowserModule } from '@angular/platform-browser'
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
-import { BalUiLibraryModule } from '@baloise/ui-library-angular'
+import { BalUiLibraryModule } from '@baloise/design-system-components-angular'
 
 import { AppComponent } from './app.component'
 

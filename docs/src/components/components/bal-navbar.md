@@ -48,7 +48,7 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 ```html
 <bal-navbar light>
   <bal-navbar-brand>
-    <img src="https://github.com/baloise/ui-library/raw/master/resources/images/logo.svg" >
+    <img src="https://github.com/baloise/design-system-components/raw/master/resources/images/logo.svg" >
     <bal-text style="margin-left: 15px"><strong>App</strong> Title</bal-text>
   </bal-navbar-brand>
   <bal-navbar-menu>
@@ -148,4 +148,4 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-navbar.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-navbar)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-navbar)

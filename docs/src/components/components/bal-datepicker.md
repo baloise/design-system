@@ -147,7 +147,7 @@ DatepickerAccessor is a helper object for E-2-E testing.
 It maps the datepicker behaviour to the `bal-datepicker` ui component.
 
 ```typescript
-import { dataTestSelector, DatepickerAccessor } from '@baloise/ui-library-testing'
+import { dataTestSelector, DatepickerAccessor } from '@baloise/design-system-components-testing'
 
 describe('Datepicker', () => {
   it('should ...', () => {
@@ -177,7 +177,7 @@ describe('Datepicker', () => {
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-datepicker.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-datepicker)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-datepicker)
 * [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/datepicker.accessor.ts)
 
 <ClientOnly>

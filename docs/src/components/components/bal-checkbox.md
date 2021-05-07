@@ -107,7 +107,7 @@ CheckboxAccessor is a helper object for E-2-E testing.
 It maps the checkbox behaviour to the `bal-checkbox` ui component.
 
 ```typescript
-import { dataTestSelector, CheckboxAccessor } from '@baloise/ui-library-testing'
+import { dataTestSelector, CheckboxAccessor } from '@baloise/design-system-components-testing'
 
 describe('Checkbox', () => {
   it('should ...', () => {
@@ -144,7 +144,7 @@ describe('Checkbox', () => {
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-checkbox.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-checkbox)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-checkbox)
 * [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/checkbox.accessor.ts)
 
 <ClientOnly>

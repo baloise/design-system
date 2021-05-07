@@ -52,7 +52,7 @@ export const TabsAssertVisibleMixin: Mixin = <T>({ selector, creator }: MixinCon
  * It maps the tabs behaviour to the `bal-tabs` ui component.
  *
  * ```typescript
- * import { dataTestSelector, TabsAccessor } from '@baloise/ui-library-testing'
+ * import { dataTestSelector, TabsAccessor } from '@baloise/design-system-components-testing'
  *
  * describe('Tabs', () => {
  *   it('should ...', () => {

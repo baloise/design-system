@@ -5,7 +5,7 @@
 Toast can be created with the `balScnackbarController`. The default duration is 5000 milliseconds.
 
 ```typescript
-import { balScnackbarController } from '@baloise/ui-library'
+import { balScnackbarController } from '@baloise/design-system-components'
 
 balScnackbarController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
 ```
@@ -79,7 +79,7 @@ A snackbar is used to inform the user with a simple text message and a action.
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-snackbar.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-snackbar)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-snackbar)
 
 <ClientOnly>
   <docs-component-script tag="balSnackbar"></docs-component-script>

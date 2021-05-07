@@ -13,7 +13,7 @@ If you are using Vue or Angular please install Cypress with the provided CLI.
 Install the library directly from npm.
 
 ```bash
-npm add @baloise/ui-library-testing
+npm add @baloise/design-system-components-testing
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ npm add @baloise/ui-library-testing
 Further documentations for each component accessor is documented on the components page.
 
 ```typescript
-import { dataTestSelector, ButtonAccessor } from '@baloise/ui-library-testing'
+import { dataTestSelector, ButtonAccessor } from '@baloise/design-system-components-testing'
 
 describe('Button', () => {
   it('should ...', () => {

@@ -5,7 +5,7 @@
 Toast can be created with the `balToastController`. The default duration is 5000 milliseconds.
 
 ```typescript
-import { balToastController } from '@baloise/ui-library'
+import { balToastController } from '@baloise/design-system-components'
 
 balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
 balToastController.create({ message: 'Warning!', color: 'warning' })
@@ -97,7 +97,7 @@ ToastAccessor is a helper object for E-2-E testing.
 It maps the toast behaviour to the `bal-toast` ui component.
 
 ```typescript
-import { dataTestSelector, ToastAccessor } from '@baloise/ui-library-testing'
+import { dataTestSelector, ToastAccessor } from '@baloise/design-system-components-testing'
 
 describe('Toast', () => {
   it('should ...', () => {
@@ -137,7 +137,7 @@ describe('Toast', () => {
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-toast.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-toast)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-toast)
 * [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/toast.accessor.ts)
 
 <ClientOnly>

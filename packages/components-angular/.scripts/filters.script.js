@@ -36,7 +36,7 @@ const run = async () => {
     `import { Pipe, PipeTransform } from '@angular/core';`,
     `import {`,
     `  ${functions.join(',\n  ')}`,
-    `} from '@baloise/ui-library'`,
+    `} from '@baloise/design-system-components'`,
     '',
     utilFiltersClass.join('\n'),
     'export const FILTERS = [',

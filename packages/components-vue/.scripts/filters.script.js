@@ -23,7 +23,7 @@ const run = async () => {
     `import { App } from 'vue'`,
     `import {`,
     functions.join(',\n'),
-    `} from '@baloise/ui-library'`,
+    `} from '@baloise/design-system-components'`,
     '',
     'export const applyFilters = (app: App) => {',
     functionsGlobal.join('\n'),

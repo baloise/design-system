@@ -13,7 +13,7 @@ import {
   balLimit,
   balOfferNumber,
   balPhoneNumber
-} from '@baloise/ui-library'
+} from '@baloise/design-system-components'
 
 export const applyFilters = (app: App) => {
   app.config.globalProperties.$balBlobToUrl = balBlobToUrl

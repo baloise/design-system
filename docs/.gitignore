@@ -6,6 +6,6 @@ docs-demo-bal-*.vue
 logo.svg
 logo-app.svg
 /public
-src/.vuepress/styles/ui-library.css
+src/.vuepress/styles/design-system-components.css
 src/resources/changelog.md
 /examples

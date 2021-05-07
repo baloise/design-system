@@ -51,9 +51,7 @@ Tabs are used to structure the information in sub section on the same page.
 
 ```html
 <bal-tabs interface="steps">
-  <bal-tab-item value="step-a" label="Lorem ipsum dolor sit amet consectetur" done>
-    Step A Content
-  </bal-tab-item>
+  <bal-tab-item value="step-a" label="Lorem ipsum dolor sit amet consectetur" done> Step A Content </bal-tab-item>
   <bal-tab-item value="step-b" label="Step B" active>Step B Content</bal-tab-item>
   <bal-tab-item value="step-c" label="Step C" failed>Step C Content</bal-tab-item>
   <bal-tab-item value="step-d" label="Step D" disabled>Step D Content</bal-tab-item>
@@ -131,7 +129,7 @@ TabsAccessor is a helper object for E-2-E testing.
 It maps the tabs behaviour to the `bal-tabs` ui component.
 
 ```typescript
-import { dataTestSelector, TabsAccessor } from '@baloise/ui-library-testing'
+import { dataTestSelector, TabsAccessor } from '@baloise/design-system-components-testing'
 
 describe('Tabs', () => {
   it('should ...', () => {
@@ -171,5 +169,5 @@ describe('Tabs', () => {
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-tabs.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-tabs)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-tabs)
 * [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/tabs.accessor.ts)

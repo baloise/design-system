@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/baloise/ui-library.git"
   },
-  "homepage": "https://baloise-ui-library.now.sh",
+  "homepage": "https://baloise-design-system.vercel.app.sh",
   "author": {
     "name": "Gery Hirschfeld",
     "email": "gerhard.hirschfeld@baloise.ch",
@@ -28,17 +28,17 @@
     "lib": {
       "entryFile": "src/index.ts",
       "umdModuleIds": {
-        "@baloise/ui-library": "@baloise/ui-library",
-        "@baloise/ui-library/loader": "@baloise/ui-library/loader"
+        "@baloise/design-system-components": "@baloise/design-system-components",
+        "@baloise/design-system-components/loader": "@baloise/design-system-components/loader"
       }
     },
     "whitelistedNonPeerDependencies": [
-      "@baloise/ui-library"
+      "@baloise/design-system-components"
     ]
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/ui-library": "^4.17.0",
+    "@baloise/design-system-components": "0.0.0",
     "tslib": "^2.0.0"
   },
   "peerDependencies": {

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { newDateString, format } from '@baloise/ui-library'
+import { newDateString, format } from '@baloise/design-system-components'
 import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
 
 export interface DatepickerAccessorType {
@@ -94,7 +94,7 @@ export const DatepickerMinMaxRangeAssertableMixin: Mixin = <T>({ selector, creat
  * It maps the datepicker behaviour to the `bal-datepicker` ui component.
  *
  * ```typescript
- * import { dataTestSelector, DatepickerAccessor } from '@baloise/ui-library-testing'
+ * import { dataTestSelector, DatepickerAccessor } from '@baloise/design-system-components-testing'
  *
  * describe('Datepicker', () => {
  *   it('should ...', () => {

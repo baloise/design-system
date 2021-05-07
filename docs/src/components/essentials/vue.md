@@ -11,7 +11,7 @@ Before installing the Baloise UI Library setup to a Vue Project. We recommand to
 To install the Baloise UI-Library run the following command.
 
 ```bash
-npm install @baloise/ui-library @baloise/ui-library-vue --save
+npm install @baloise/design-system-components @baloise/design-system-components-vue --save
 ```
 
 :::tip
@@ -23,12 +23,12 @@ We recommand to use **Sass** for styling in the Vue project to get access to the
 :::
 
 ::: warning
-If you need to support IE11 use the Vue.js 2.x.x library `@baloise/ui-library-vue-2` instead.
+If you need to support IE11 use the Vue.js 2.x.x library `@baloise/design-system-components-vue-2` instead.
 :::
 
 ## Add Plugin
 
-The `@baloise/ui-library-vue` dependency includes a the plugin `balUiLibraryPlugin`, which loads by default the pollyfils and defines the components. Moreover, it adds the filtes and conrollers to your vue instance.
+The `@baloise/design-system-components-vue` dependency includes a the plugin `balUiLibraryPlugin`, which loads by default the pollyfils and defines the components. Moreover, it adds the filtes and conrollers to your vue instance.
 
 ### main.ts
 
@@ -36,7 +36,7 @@ The `@baloise/ui-library-vue` dependency includes a the plugin `balUiLibraryPlug
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import { balUiLibraryPlugin } from '@baloise/ui-library-vue'
+import { balUiLibraryPlugin } from '@baloise/design-system-components-vue'
 
 Vue.config.productionTip = false
 
@@ -70,7 +70,7 @@ More usage example are in our Vue Starter Kit app [Link](https://github.com/balo
 
 <script lang="ts">
 import Vue from 'vue'
-import { BalCheckbox, BalButton } from '@baloise/ui-library-vue'
+import { BalCheckbox, BalButton } from '@baloise/design-system-components-vue'
 
 export default Vue.extend({
   components: { BalCheckbox, BalButton },

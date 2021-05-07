@@ -225,7 +225,7 @@ SelectAccessor is a helper object for E-2-E testing.
 It maps the select behaviour to the `bal-select` ui component.
 
 ```typescript
-import { dataTestSelector, SelectAccessor } from '@baloise/ui-library-testing'
+import { dataTestSelector, SelectAccessor } from '@baloise/design-system-components-testing'
 
 describe('Select', () => {
   it('should ...', () => {
@@ -254,7 +254,7 @@ describe('Select', () => {
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-select.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-select)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-select)
 * [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/select.accessor.ts)
 
 <ClientOnly>

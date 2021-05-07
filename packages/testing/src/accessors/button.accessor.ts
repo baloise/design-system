@@ -46,7 +46,7 @@ export const ButtonContainableMixin: Mixin = <T>({ selector, creator }: MixinCon
  * It maps the button behaviour to the `bal-button` ui component.
  *
  * ```typescript
- * import { dataTestSelector, ButtonAccessor } from '@baloise/ui-library-testing'
+ * import { dataTestSelector, ButtonAccessor } from '@baloise/design-system-components-testing'
  *
  * describe('Button', () => {
  *   it('should ...', () => {

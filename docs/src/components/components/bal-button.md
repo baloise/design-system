@@ -123,7 +123,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 <ClientOnly>  <docs-demo-bal-button-14></docs-demo-bal-button-14></ClientOnly>
 
 ```html
-<bal-button link href="https://github.com/baloise/ui-library" target="_blank">GitHub</bal-button>
+<bal-button link href="https://github.com/baloise/design-system-components" target="_blank">GitHub</bal-button>
 ```
 
 
@@ -175,7 +175,7 @@ ButtonAccessor is a helper object for E-2-E testing.
 It maps the button behaviour to the `bal-button` ui component.
 
 ```typescript
-import { dataTestSelector, ButtonAccessor } from '@baloise/ui-library-testing'
+import { dataTestSelector, ButtonAccessor } from '@baloise/design-system-components-testing'
 
 describe('Button', () => {
   it('should ...', () => {
@@ -222,5 +222,5 @@ WIP
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-button.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-button)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-button)
 * [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/button.accessor.ts)

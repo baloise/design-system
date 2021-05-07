@@ -106,5 +106,4 @@ dist-transpiled
 # TernJS port file
 .tern-port
 .idea
-/ui-library.iml
 /temp

@@ -33,7 +33,7 @@ export function ${v.name}(${v.parameters.map(p => `${p.name}: ${p.type}`).join('
     '// generated file by .scripts/validators.script.js',
     '',
     `import { AbstractControl, ValidatorFn } from '@angular/forms';`,
-    `import { BalValidators, BalValidatorFn } from '@baloise/ui-library'`,
+    `import { BalValidators, BalValidatorFn } from '@baloise/design-system-components'`,
     `
 function createError(key: string, control: AbstractControl) {
   return {

@@ -253,7 +253,7 @@ the app before interaction can resume.
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-modal.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-modal)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-modal)
 
 <ClientOnly>
   <docs-component-script tag="balModal"></docs-component-script>

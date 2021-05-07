@@ -6,7 +6,7 @@ To work with this project a recent LTS version of NodeJS and npm is required. Ma
 
 !> Note that you will need to use npm 6 or higher.
 
-## Run Baloise Ui-Library
+## Run Baloise Design System
 
 To start building a new web component using Stencil, clone this repo to a new directory:
 
@@ -23,7 +23,7 @@ cd ui-library
 
 For more commands visit [Commands](/guide/development/commands.html)
 
-## Run Baloise Ui-Library Documentation
+## Run Baloise Design System Documentation
 
 To create the documentation out of the written code and comments run the following commands:
 

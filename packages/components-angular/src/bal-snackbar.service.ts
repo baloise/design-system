@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { balSnackbarController, BalSnackbarOptions } from '@baloise/ui-library'
+import { balSnackbarController, BalSnackbarOptions } from '@baloise/design-system-components'
 
 @Injectable({
   providedIn: 'root',

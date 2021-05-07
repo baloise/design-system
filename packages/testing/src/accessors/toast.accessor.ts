@@ -42,7 +42,7 @@ export const SuccessToastableMixin: Mixin = <T>({ creator }: MixinContext<T>) =>
  * It maps the toast behaviour to the `bal-toast` ui component.
  *
  * ```typescript
- * import { dataTestSelector, ToastAccessor } from '@baloise/ui-library-testing'
+ * import { dataTestSelector, ToastAccessor } from '@baloise/design-system-components-testing'
  *
  * describe('Toast', () => {
  *   it('should ...', () => {

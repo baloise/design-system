@@ -41,7 +41,7 @@ Place the download fonts into a folder in the public area. Configure the path wi
 Import `ui-library.scss` Sass file into the main `.scss` file of your application.
 
 ```scss
-@import 'node_modules/@baloise/ui-library/src/styles/ui-library.scss';
+@import 'node_modules/@baloise/design-system-components/src/styles/ui-library.scss';
 ```
 
 ### Variables
@@ -56,7 +56,7 @@ Use the variables and helpers of the UI-Library where ever you can in your appli
 
 ```scss
 // Only imports variables and mixins
-@import 'node_modules/@baloise/ui-library/src/styles/ui-library.utilities.scss';
+@import 'node_modules/@baloise/design-system-components/src/styles/ui-library.utilities.scss';
 
 // mobile first
 p {
@@ -101,7 +101,10 @@ Configure the fonts in a css file.
 Put the link tag into your main html file.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ui-library/dist/ui-library/ui-library.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/ui-library/ui-library.css"
+/>
 ```
 
 #### Webpack
@@ -109,5 +112,5 @@ Put the link tag into your main html file.
 Import the css directly into your main TypeScript or JavaScript file.
 
 ```typescript
-import '@baloise/ui-library/dist/ui-library/ui-library.css'
+import '@baloise/design-system-components/dist/ui-library/ui-library.css'
 ```

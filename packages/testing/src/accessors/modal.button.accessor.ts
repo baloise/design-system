@@ -52,7 +52,7 @@ export const CloseModalWindowMixin: Mixin = <T>({ creator }: MixinContext<T>) =>
  * It maps the model behaviour to the `bal-model` ui component.
  *
  * ```typescript
- * import { dataTestSelector, ModalButtonAccessor } from '@baloise/ui-library-testing'
+ * import { dataTestSelector, ModalButtonAccessor } from '@baloise/design-system-components-testing'
  *
  * describe('Model', () => {
  *   it('should ...', () => {

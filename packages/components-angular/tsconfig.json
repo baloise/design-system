@@ -31,10 +31,10 @@
     "strictPropertyInitialization": false,
     "target": "es5",
     "baseUrl": ".",
-    "types": ["@baloise/ui-library"],
+    "types": ["@baloise/design-system-components"],
     "paths": {
-      "@baloise/ui-library/loader": ["../components/loader"],
-      "@baloise/ui-library": ["../components"]
+      "@baloise/design-system-components/loader": ["../components/loader"],
+      "@baloise/design-system-components": ["../components"]
     }
   },
   "exclude": ["node_modules", "src/schematics"],

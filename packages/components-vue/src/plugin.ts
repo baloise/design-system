@@ -1,6 +1,6 @@
 import { Plugin } from 'vue'
-import { defineCustomElements as defineNativeCustomElements } from '@baloise/ui-library/dist/custom-elements'
-import { defineCustomElements, applyPolyfills } from '@baloise/ui-library/loader'
+import { defineCustomElements as defineNativeCustomElements } from '@baloise/design-system-components/dist/custom-elements'
+import { defineCustomElements, applyPolyfills } from '@baloise/design-system-components/loader'
 import { applyFilters } from './generated/filters'
 import { applyComponents } from './generated/components'
 

@@ -9,7 +9,7 @@ For those reasons we decided to use Web Components, which are supported by all m
 
 Under the hood, UI-Libary uses [Bulma](https://bulma.io/), a clean css framework, and [Stencil](https://stenciljs.com/) as Web Components Compiler. At the end everything will be compiled in a clean web component without any framework specific code.
 
-The best part is that we depend on only those two libraries, which do not depend on each other, and at the end we have only one simple UI-Library for our consumers!
+The best part is that we depend on only those two libraries, which do not depend on each other, and at the end we have only one simple component library for our consumers!
 
 ![Architecture](/assets/images/architecture/tooling.svg)
 

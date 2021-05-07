@@ -72,7 +72,7 @@ A textarea allows a user to write and edit large texts.
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-textarea.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-textarea)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-textarea)
 
 <ClientOnly>
   <docs-component-script tag="balTextarea"></docs-component-script>

@@ -24,8 +24,8 @@ async function main() {
     path.join(__dirname, '../src/.vuepress/lib/loader'),
   )
   await file.copy(
-    path.join(__dirname, '../../packages/components/dist/ui-library/ui-library.css'),
-    path.join(__dirname, '../src/.vuepress/styles/ui-library.css'),
+    path.join(__dirname, '../../packages/components/dist/design-system-components/design-system-components.css'),
+    path.join(__dirname, '../src/.vuepress/styles/design-system-components.css'),
   )
   await file.copy(path.join(__dirname, '../../CHANGELOG.md'), path.join(__dirname, '../src/resources/changelog.md'))
   log.success('Resources are copied')

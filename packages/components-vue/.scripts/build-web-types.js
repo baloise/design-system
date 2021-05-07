@@ -12,7 +12,7 @@ async function main() {
     const slots = []
     const events = []
     const componentName = pascalCase(component.tag)
-    const docUrl = 'https://baloise-ui-library.now.sh/#/components/' + component.tag + '/readme'
+    const docUrl = 'https://baloise-design-system.vercel.app.sh/#/components/' + component.tag + '/readme'
 
     for (const prop of component.props || []) {
       attributes.push({
@@ -56,7 +56,9 @@ async function main() {
       'doc-url': docUrl,
       'description': component.docs,
       'source': {
-        module: '@baloise/ui-library/' + component.filePath.replace('./src/', 'dist/types/').replace('.tsx', '.d.ts'),
+        module:
+          '@baloise/design-system-components/' +
+          component.filePath.replace('./src/', 'dist/types/').replace('.tsx', '.d.ts'),
         symbol: componentName.substr(3),
       },
       attributes,
@@ -68,7 +70,7 @@ async function main() {
   const webTypes = {
     $schema: 'http://json.schemastore.org/web-types',
     framework: 'vue',
-    name: '@baloise/ui-library-vue',
+    name: '@baloise/design-system-components-vue',
     version: require('../package.json').version,
     contributions: {
       html: {

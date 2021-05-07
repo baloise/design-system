@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/baloise/ui-library.git"
   },
-  "homepage": "https://baloise-ui-library.now.sh",
+  "homepage": "https://baloise-design-system.vercel.app.sh",
   "author": {
     "name": "Gery Hirschfeld",
     "email": "gerhard.hirschfeld@baloise.ch",
@@ -56,8 +56,8 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@baloise/angular-output-target": "^1.0.7",
-    "@baloise/vue-output-target": "^0.1.1",
+    "@baloise/angular-output-target": "^1.0.11",
+    "@baloise/vue-output-target": "^0.1.3",
     "@stencil/postcss": "^2.0.0",
     "@stencil/sass": "^1.4.1",
     "@types/autoprefixer": "^9.7.2",

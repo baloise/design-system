@@ -7,7 +7,7 @@ Use filter function to transform any kind of data to display.
 The filter are simple functions which always return a string. Just import the function and use it to transform data in to readable strings.
 
 ```typescript
-import { balCapitalize } from '@baloise/ui-library'
+import { balCapitalize } from '@baloise/design-system-components'
 
 balCapitalize('baloise')
 // returns 'Baloise'
@@ -23,7 +23,7 @@ In Vue 3 just import the filter function and use it in computed functions or ret
 </template>
 
 <script>
-import { balCapitalize } from '@baloise/ui-library'
+import { balCapitalize } from '@baloise/design-system-components'
 
 export default {
   props: {
@@ -57,7 +57,7 @@ The can be used in the component typescript file aswell.
 
 ```typescript
 import { Component } from '@angular/core'
-import { balCapitalize } from '@baloise/ui-library'
+import { balCapitalize } from '@baloise/design-system-components'
 
 @Component({
   selector: 'app-root',

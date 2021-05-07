@@ -89,7 +89,7 @@ AccordionAccessor is a helper object for E-2-E testing.
 It maps the accordion behaviour to the `bal-accordion` ui component.
 
 ```typescript
-import { dataTestSelector, AccordionAccessor } from '@baloise/ui-library-testing'
+import { dataTestSelector, AccordionAccessor } from '@baloise/design-system-components-testing'
 
 describe('Accordion', () => {
   it('should ...', () => {
@@ -131,5 +131,5 @@ describe('Accordion', () => {
 ## Links
 
 * [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-accordion.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/library/src/components/bal-accordion)
+* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-accordion)
 * [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/accordion.accessor.ts)
