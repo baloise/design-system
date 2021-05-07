@@ -4,13 +4,13 @@ import { defineCustomElements, applyPolyfills } from '@baloise/ui-library/loader
 import { applyFilters } from './generated/filters'
 import { applyComponents } from './generated/components'
 
-interface BaloiseUiLibraryOptions {
+interface BaloiseDesignSystemOptions {
   defineCustomeElementTag?: boolean
   useVite?: boolean
 }
 
-export const baloiseUiLibrary: Plugin = {
-  async install(app, options: BaloiseUiLibraryOptions = {}) {
+export const BaloiseDesignSystem: Plugin = {
+  async install(app, options: BaloiseDesignSystemOptions = {}) {
     if (options && options.defineCustomeElementTag === true) {
       app.config.isCustomElement = tag => tag.startsWith('bal-')
     }

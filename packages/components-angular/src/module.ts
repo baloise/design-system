@@ -31,10 +31,10 @@ const DECLARATIONS = [
   imports: [CommonModule, FormsModule],
   providers: [BalToastService, BalSnackbarService],
 })
-export class BalUiLibraryModule {
-  static forRoot(): ModuleWithProviders<BalUiLibraryModule> {
+export class BaloiseDesignSystemModule {
+  static forRoot(): ModuleWithProviders<BaloiseDesignSystemModule> {
     return {
-      ngModule: BalUiLibraryModule,
+      ngModule: BaloiseDesignSystemModule,
       providers: [
         {
           provide: APP_INITIALIZER,

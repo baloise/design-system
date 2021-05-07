@@ -64,12 +64,12 @@
   "files": [
     "dist/"
   ],
-  "main": "dist/bundles/baloise-ui-library-angular.umd.js",
-  "module": "dist/fesm2015/baloise-ui-library-angular.js",
-  "es2015": "dist/fesm2015/baloise-ui-library-angular.js",
-  "esm2015": "dist/esm2015/baloise-ui-library-angular.js",
-  "fesm2015": "dist/fesm2015/baloise-ui-library-angular.js",
-  "typings": "dist/baloise-ui-library-angular.d.ts",
-  "metadata": "dist/baloise-ui-library-angular.metadata.json",
+  "main": "dist/bundles/baloise-design-system-angular.umd.js",
+  "module": "dist/fesm2015/baloise-design-system-angular.js",
+  "es2015": "dist/fesm2015/baloise-design-system-angular.js",
+  "esm2015": "dist/esm2015/baloise-design-system-angular.js",
+  "fesm2015": "dist/fesm2015/baloise-design-system-angular.js",
+  "typings": "dist/baloise-design-system-angular.d.ts",
+  "metadata": "dist/baloise-design-system-angular.metadata.json",
   "sideEffects": false
 }

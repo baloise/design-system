@@ -6,18 +6,18 @@ import { addFilters } from './generated/filters'
 
 Vue.config.ignoredElements = [/bal-\w*/]
 
-export type BalUiLibraryPluginOption = {
+export type BaloiseDesignSystemPluginOption = {
   defineCustomeElements: boolean
 }
 
-const BalUiLibraryPluginOptionDefaults: BalUiLibraryPluginOption = {
+const BaloiseDesignSystemPluginOptionDefaults: BaloiseDesignSystemPluginOption = {
   defineCustomeElements: true,
 }
 
-export const BalUiLibraryPlugin: PluginObject<BalUiLibraryPluginOption> = {
+export const BaloiseDesignSystem: PluginObject<BaloiseDesignSystemPluginOption> = {
   install(_VueInstance, options): void {
     options = {
-      ...BalUiLibraryPluginOptionDefaults,
+      ...BaloiseDesignSystemPluginOptionDefaults,
       ...options,
     }
     ;(_VueInstance as any).$balToast = balToastController

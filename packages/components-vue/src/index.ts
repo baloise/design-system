@@ -1,3 +1,3 @@
 export * from './components'
-export * from './ui-library.plugin'
+export * from './plugin'
 export * from './helpers'
