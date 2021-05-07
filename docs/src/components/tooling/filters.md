@@ -45,14 +45,6 @@ export default {
 Vue 3 has removed filters [Link](https://v3.vuejs.org/guide/migration/filters.html).
 :::
 
-#### Vue 2.x.x
-
-The filter functions are defined as [Vue Filters](https://vuejs.org/v2/guide/filters.html).
-
-```html
-<span>{{ 'baloise' | balCapitalize }}</span>
-```
-
 ### Angular
 
 The filter functions are defined as [Angular Pipes](https://angular.io/guide/pipes).

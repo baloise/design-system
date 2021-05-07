@@ -57,7 +57,6 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@baloise/angular-output-target": "^1.0.7",
-    "@baloise/vue-2-output-target": "^1.0.5",
     "@baloise/vue-output-target": "^0.1.1",
     "@stencil/postcss": "^2.0.0",
     "@stencil/sass": "^1.4.1",

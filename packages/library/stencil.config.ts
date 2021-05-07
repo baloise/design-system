@@ -4,7 +4,6 @@ import { postcss } from '@stencil/postcss'
 import autoprefixer from 'autoprefixer'
 
 import { ComponentModelConfig, vueOutputTarget } from '@baloise/vue-output-target'
-import { vue2OutputTarget } from '@baloise/vue-2-output-target'
 import { angularOutputTarget, ValueAccessorConfig } from '@baloise/angular-output-target'
 
 /**
@@ -115,13 +114,6 @@ export const config: Config = {
         },
       ],
     },
-    vue2OutputTarget({
-      componentCorePackage: '@baloise/ui-library',
-      proxiesFile: '../components-vue-2/src/components.ts',
-      componentModels: vueComponentModels,
-      includeDefineCustomElements: false,
-      includePolyfills: false,
-    }),
     vueOutputTarget({
       componentCorePackage: '@baloise/ui-library',
       proxiesFile: '../components-vue/src/components.ts',
