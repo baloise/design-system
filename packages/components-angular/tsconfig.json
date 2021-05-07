@@ -33,8 +33,8 @@
     "baseUrl": ".",
     "types": ["@baloise/ui-library"],
     "paths": {
-      "@baloise/ui-library/loader": ["../library/loader"],
-      "@baloise/ui-library": ["../library"]
+      "@baloise/ui-library/loader": ["../components/loader"],
+      "@baloise/ui-library": ["../components"]
     }
   },
   "exclude": ["node_modules", "src/schematics"],

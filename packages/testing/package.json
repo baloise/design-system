@@ -31,7 +31,7 @@
     "build:compile": "tsc -p tsconfig.build.json",
     "build:bundle": "rollup --config rollup.config.js",
     "ci": "start-server-and-test ci:server http://localhost:3333 test",
-    "ci:server": "http-server ../library/www -p 3333 -c-1 --silent"
+    "ci:server": "http-server ../components/www -p 3333 -c-1 --silent"
   },
   "license": "Apache-2.0",
   "devDependencies": {

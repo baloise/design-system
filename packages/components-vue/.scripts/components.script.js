@@ -8,7 +8,7 @@ const path = require('path')
 const lodash = require('lodash')
 const file = require('../../../.scripts/file')
 const { title } = require('../../../.scripts/log')
-const libaryLib = require('../../library/.scripts/components.lib')
+const libaryLib = require('../../components/.scripts/components.lib')
 
 const run = async () => {
   await title('vue : components')

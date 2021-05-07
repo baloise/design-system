@@ -13,7 +13,7 @@ const parse = (component, accessor) => {
   const documentationLink = `* [Documentation on Github](${documentationUrl})`
   lines.push(documentationLink)
 
-  const componentUrl = `${baseUrl}/packages/library/src/components/${component.tag}`
+  const componentUrl = `${baseUrl}/packages/components/src/components/${component.tag}`
   const componentLink = `* [Implementation on Github](${componentUrl})`
   lines.push(componentLink)
 

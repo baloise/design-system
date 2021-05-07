@@ -16,15 +16,15 @@ async function main() {
     path.join(__dirname, '../src/.vuepress/public/assets/images/logo.svg'),
   )
   await file.copy(
-    path.join(__dirname, '../../packages/library/dist'),
+    path.join(__dirname, '../../packages/components/dist'),
     path.join(__dirname, '../src/.vuepress/lib/dist'),
   )
   await file.copy(
-    path.join(__dirname, '../../packages/library/loader'),
+    path.join(__dirname, '../../packages/components/loader'),
     path.join(__dirname, '../src/.vuepress/lib/loader'),
   )
   await file.copy(
-    path.join(__dirname, '../../packages/library/dist/ui-library/ui-library.css'),
+    path.join(__dirname, '../../packages/components/dist/ui-library/ui-library.css'),
     path.join(__dirname, '../src/.vuepress/styles/ui-library.css'),
   )
   await file.copy(path.join(__dirname, '../../CHANGELOG.md'), path.join(__dirname, '../src/resources/changelog.md'))

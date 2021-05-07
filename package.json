@@ -16,11 +16,11 @@
     "serve": "npm run lib:serve",
     "build": "npm run lib:build && npm run icons:build && npm run vue:build && npm run angular:build && npm run testing:build",
     "test": "npm run lib:test && npm run testing:test",
-    "clean": "rimraf packages/library/node_modules && rimraf packages/components-vue/node_modules && rimraf packages/angular/node_modules && rimraf packages/testing/node_modules",
+    "clean": "rimraf packages/components/node_modules && rimraf packages/components-vue/node_modules && rimraf packages/angular/node_modules && rimraf packages/testing/node_modules",
     "release": "lerna publish --yes --force-publish --conventional-commits",
-    "lib:build": "node .scripts/banner.js lib:build && npm --prefix packages/library run build",
-    "lib:serve": "node .scripts/banner.js lib:serve && npm --prefix packages/library run serve",
-    "lib:test": "node .scripts/banner.js lib:test && cd packages/library && npm run test",
+    "lib:build": "node .scripts/banner.js lib:build && npm --prefix packages/components run build",
+    "lib:serve": "node .scripts/banner.js lib:serve && npm --prefix packages/components run serve",
+    "lib:test": "node .scripts/banner.js lib:test && cd packages/components && npm run test",
     "vue:build": "node .scripts/banner.js vue:build && npm --prefix packages/components-vue run build",
     "angular:build": "node .scripts/banner.js angular:build && npm --prefix packages/components-angular run build",
     "testing:test": "node .scripts/banner.js testing:run && npm --prefix packages/testing run ci",
@@ -30,10 +30,10 @@
     "icons:build": "node .scripts/banner.js icons:build && npm --prefix packages/icons run build",
     "docs:install": "cd docs && npm install",
     "docs:serve": "npm --prefix docs run serve",
-    "docs:setup": "npm --prefix packages/library run docs && npm run testing:build && npm --prefix docs run setup",
+    "docs:setup": "npm --prefix packages/components run docs && npm run testing:build && npm --prefix docs run setup",
     "docs:build": "npm run docs:setup && npm --prefix docs run build",
     "docs:publish": "npm run docs:install && npm run docs:build",
-    "docs:examples:build": "npm --prefix packages/library run docs:examples && npm run docs:install && npm --prefix docs run examples:build"
+    "docs:examples:build": "npm --prefix packages/components run docs:examples && npm run docs:install && npm --prefix docs run examples:build"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",

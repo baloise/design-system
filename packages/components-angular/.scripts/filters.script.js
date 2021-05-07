@@ -9,7 +9,7 @@
 const path = require('path')
 const file = require('../../../.scripts/file')
 const { title } = require('../../../.scripts/log')
-const utilities = require('../../library/.scripts/utilities')
+const utilities = require('../../components/.scripts/utilities')
 
 const run = async () => {
   await title('angular : filters')

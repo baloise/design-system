@@ -15,5 +15,11 @@ export default {
       sourcemap: true,
     },
   ],
-  external: ['@baloise/ui-library', '@baloise/ui-library/loader', '@baloise/ui-library/dist/custom-elements', 'vue'],
+  external: [
+    '@baloise/ui-library',
+    '@baloise/ui-library/loader',
+    '@baloise/ui-library/dist/custom-elements',
+    'vue',
+    'lodash',
+  ],
 }

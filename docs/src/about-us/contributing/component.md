@@ -1,6 +1,6 @@
 # Write your own Component
 
-All our components are located in the `packages/library/src/components` dir.
+All our components are located in the `packages/components/src/components` dir.
 
 To create a new one just run:
 

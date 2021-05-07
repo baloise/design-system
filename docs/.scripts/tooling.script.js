@@ -2,7 +2,7 @@ const path = require('path')
 const log = require('../../.scripts/log')
 const file = require('../../.scripts/file')
 const { NEWLINE } = require('../../.scripts/constants')
-const utilities = require('../../packages/library/.scripts/utilities')
+const utilities = require('../../packages/components/.scripts/utilities')
 
 const GENERATE_TAG = '<!-- generated content -->'
 
