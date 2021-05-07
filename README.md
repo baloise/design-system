@@ -1,5 +1,5 @@
 <a href="https://baloise-ui-library.now.sh" target="blank">
-    <img src="https://raw.githubusercontent.com/baloise/ui-library/master/resources/images/banner.svg?sanitize=true" width="500" alt="Baloise UI-Library" />
+    <img src="https://raw.githubusercontent.com/baloise/ui-library/design-system/resources/images/banner.svg?sanitize=true" width="500" alt="Baloise Design System" />
 </a>
 
 <br>
@@ -9,7 +9,7 @@
 
 ## About
 
-UI-Libary is an open source library for building amazing web applications that follow the Baloise corporate style guidelines.
+Baloise Design-System is an open source library for building amazing web applications that follow the Baloise corporate style guidelines.
 
 ## Documentation
 
@@ -17,10 +17,12 @@ The [documentation](https://baloise-ui-library.now.sh) is published on now.sh, a
 
 ## Packages
 
-| Library                                                                                   | Status                                                                                                                                   | Description                                                |
-| ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| [UI Library](https://baloise-ui-library.now.sh/)                                          | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library.svg)](https://badge.fury.io/js/%40baloise%2Fui-library)                 | Core library build with web components and global styling. |
-| [UI Library Vue](https://baloise-ui-library.now.sh/guide/essentials/vue.html)             | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-vue.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-vue)         | Vue component library based on the the core library.       |
-| [UI Library Vue 2](https://baloise-ui-library.now.sh/guide/essentials/vue.html#vue-2-x-x) | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-vue-2.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-vue-2)     | Vue component library based on the the core library.       |
-| [UI Library Angular](https://baloise-ui-library.now.sh/guide/essentials/angular.html)     | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-angular.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-angular) | Angular component library based on the the core library.   |
-| [UI Library Testing](https://baloise-ui-library.now.sh/guide/tooling/testing.html)        | [![npm version](https://badge.fury.io/js/%40baloise%2Fui-library-testing.svg)](https://badge.fury.io/js/%40baloise%2Fui-library-testing) | Testing library with accessors for each component.         |
+| Library                                                                                   | Status                                                                                                                                                               | Description                                                |
+| ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| [Components](https://baloise-ui-library.now.sh/)                                          | [![npm version](https://badge.fury.io/js/%40baloise%2Fdesign-system-components.svg)](https://badge.fury.io/js/%40baloise%2Fdesign-system-components)                 | Core package build with web components and global styling. |
+| [Components Vue](https://baloise-ui-library.now.sh/guide/essentials/vue.html)             | [![npm version](https://badge.fury.io/js/%40baloise%2Fdesign-system-components-vue.svg)](https://badge.fury.io/js/%40baloise%2Fdesign-system-components-vue)         | Vue component proxies based on the the core package.       |
+| [Components Vue 2](https://baloise-ui-library.now.sh/guide/essentials/vue.html#vue-2-x-x) | [![npm version](https://badge.fury.io/js/%40baloise%2Fdesign-system-components-vue-2.svg)](https://badge.fury.io/js/%40baloise%2Fdesign-system-components-vue-2)     | Vue component proxies based on the the core package.       |
+| [Components Angular](https://baloise-ui-library.now.sh/guide/essentials/angular.html)     | [![npm version](https://badge.fury.io/js/%40baloise%2Fdesign-system-components-angular.svg)](https://badge.fury.io/js/%40baloise%2Fdesign-system-components-angular) | Angular component proxies based on the the core package.   |
+| [Icons](https://baloise-ui-library.now.sh/guide/tooling/testing.html)                     | [![npm version](https://badge.fury.io/js/%40baloise%2Fdesign-system-testing.svg)](https://badge.fury.io/js/%40baloise%2Fdesign-system-testing)                       | SVG icons of the design system.                            |
+| [Fonts](https://baloise-ui-library.now.sh/guide/tooling/testing.html)                     | [![npm version](https://badge.fury.io/js/%40baloise%2Fdesign-system-testing.svg)](https://badge.fury.io/js/%40baloise%2Fdesign-system-testing)                       | Web-Font of the design system.                             |
+| [Testing](https://baloise-ui-library.now.sh/guide/tooling/testing.html)                   | [![npm version](https://badge.fury.io/js/%40baloise%2Fdesign-system-testing.svg)](https://badge.fury.io/js/%40baloise%2Fdesign-system-testing)                       | Testing package with accessors for each component.         |

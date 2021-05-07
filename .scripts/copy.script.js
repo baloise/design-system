@@ -4,11 +4,13 @@ const file = require('./file')
 
 async function main() {
   log.title('copy readme')
-  await copyReadme('angular')
-  await copyReadme('vue')
-  await copyReadme('vue-2')
+  await copyReadme('components')
+  await copyReadme('components-angular')
+  await copyReadme('components-vue')
+  await copyReadme('components-vue-2')
+  await copyReadme('icons')
+  await copyReadme('fonts')
   await copyReadme('testing')
-  await copyReadme('library')
   log.success('Resources are copied')
 }
 
