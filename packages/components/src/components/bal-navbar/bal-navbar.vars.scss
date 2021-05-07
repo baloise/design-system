@@ -1,4 +1,4 @@
-@import '../../styles/ui-library.utilities';
+@import '../../styles/design-system-components.utilities';
 
 $navbar-background-color: $white;
 $navbar-box-shadow-size: 0 2px 0 0;
@@ -34,8 +34,7 @@ $navbar-dropdown-radius: $radius;
 $navbar-dropdown-z: 20;
 
 $navbar-dropdown-boxed-radius: $radius;
-$navbar-dropdown-boxed-shadow: 0 8px 8px rgba($scheme-invert, 0.1),
-0 0 0 1px rgba($scheme-invert, 0.1);
+$navbar-dropdown-boxed-shadow: 0 8px 8px rgba($scheme-invert, 0.1), 0 0 0 1px rgba($scheme-invert, 0.1);
 
 $navbar-dropdown-item-hover-color: $scheme-invert;
 $navbar-dropdown-item-hover-background-color: $background;

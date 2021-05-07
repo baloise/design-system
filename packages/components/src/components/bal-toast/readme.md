@@ -5,7 +5,7 @@
 Toast can be created with the `balToastController`. The default duration is 5000 milliseconds.
 
 ```typescript
-import { balToastController } from '@baloise/ui-library'
+import { balToastController } from '@baloise/design-system-components'
 
 balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
 balToastController.create({ message: 'Warning!', color: 'warning' })

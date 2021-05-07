@@ -1,4 +1,4 @@
-@import '../../styles/ui-library.utilities';
+@import '../../styles/design-system-components.utilities';
 
 $pagination-color: $text-strong;
 $pagination-border-color: $border;
@@ -29,4 +29,4 @@ $pagination-current-border-color: $info;
 
 $pagination-ellipsis-color: $grey-light;
 
-$pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2)
+$pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2);

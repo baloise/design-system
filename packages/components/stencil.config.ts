@@ -60,8 +60,8 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
  * Stencil Configurations
  */
 export const config: Config = {
-  namespace: 'ui-library',
-  globalStyle: 'src/styles/ui-library.scss',
+  namespace: 'design-system-components',
+  globalStyle: 'src/styles/design-system-components.scss',
   plugins: [
     postcss({
       plugins: [autoprefixer()],
@@ -115,14 +115,14 @@ export const config: Config = {
       ],
     },
     vueOutputTarget({
-      componentCorePackage: '@baloise/ui-library',
+      componentCorePackage: '@baloise/design-system-components',
       proxiesFile: '../components-vue/src/components.ts',
       componentModels: vueComponentModels,
       includeDefineCustomElements: false,
       includePolyfills: false,
     }),
     angularOutputTarget({
-      componentCorePackage: '@baloise/ui-library',
+      componentCorePackage: '@baloise/design-system-components',
       directivesProxyFile: '../components-angular/src/directives/proxies.ts',
       directivesArrayFile: '../components-angular/src/directives/proxies-list.ts',
       valueAccessorConfigs: angularValueAccessorBindings,

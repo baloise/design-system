@@ -7,8 +7,8 @@ import autoprefixer from 'autoprefixer'
  * Stencil Configurations
  */
 export const config: Config = {
-  namespace: 'ui-library',
-  globalStyle: 'src/styles/ui-library.scss',
+  namespace: 'design-system-components',
+  globalStyle: 'src/styles/design-system-components.scss',
   plugins: [
     postcss({
       plugins: [autoprefixer()],

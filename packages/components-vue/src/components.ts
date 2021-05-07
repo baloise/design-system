@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* auto-generated vue proxies */
 import { defineSetup } from './vue-component-lib/utils';
-import * as Lib from '@baloise/ui-library';
+import * as Lib from '@baloise/design-system-components';
 import { defineComponent, PropType } from 'vue';
 
 

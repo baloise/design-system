@@ -4,8 +4,8 @@ import { postcss } from '@stencil/postcss'
 import autoprefixer from 'autoprefixer'
 
 export const config: Config = {
-  namespace: 'ui-library',
-  globalStyle: 'src/styles/ui-library.scss',
+  namespace: 'design-system-components',
+  globalStyle: 'src/styles/design-system-components.scss',
   enableCache: true,
   plugins: [
     postcss({

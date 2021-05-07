@@ -1,7 +1,7 @@
 {
-  "name": "@baloise/ui-library",
-  "version": "4.17.0",
-  "description": "The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "name": "@baloise/design-system-components",
+  "version": "0.0.0",
+  "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
     "url": "https://github.com/baloise/ui-library.git"
@@ -22,7 +22,7 @@
   "types": "dist/custom-elements/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/ui-library/ui-library.esm.js",
+  "unpkg": "dist/design-system-components/design-system-components.esm.js",
   "files": [
     "dist/",
     "src/styles/",

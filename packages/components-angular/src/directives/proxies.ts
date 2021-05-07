@@ -3,7 +3,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, EventEmitter } from '@angular/core';
 import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
-import { Components } from '@baloise/ui-library';
+import { Components } from '@baloise/design-system-components';
 
 
 export declare interface BalAccordion extends Components.BalAccordion {}
