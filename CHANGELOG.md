@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.18.2](https://github.com/baloise/ui-library/compare/v4.18.1...v4.18.2) (2021-05-07)
+
+
+### Bug Fixes
+
+* **select:** improve input label update ([60da5ca](https://github.com/baloise/ui-library/commit/60da5ca5a4d0310ac26363ceaeb83004760b1c66))
+
+
+
+
+
 ## [4.18.1](https://github.com/baloise/ui-library/compare/v4.18.0...v4.18.1) (2021-05-01)
 
 **Note:** Version bump only for package root
