@@ -1,5 +1,7 @@
 import { Component, h, Host, Prop } from '@stencil/core'
+import * as balIcons from '@baloise/design-system-icons'
 import { BalButtonColor } from '../bal-button/bal.button.type'
+import { upperFirst, camelCase } from 'lodash'
 
 @Component({
   tag: 'bal-icon',
@@ -9,9 +11,14 @@ import { BalButtonColor } from '../bal-button/bal.button.type'
 })
 export class Icon {
   /**
-   * The name of the icon without the bal-icon prefix.
+   * Name of the baloise icon.
    */
   @Prop() name = ''
+
+  /**
+   * Svg content.
+   */
+  @Prop() svg = ''
 
   /**
    * Defines the size of the icon.
@@ -38,9 +45,18 @@ export class Icon {
    */
   @Prop() turn = false
 
-  render() {
-    const SvgIcon = `bal-icon-${this.name}`
+  private get svgContent() {
+    if (balIcons && this.name && this.name.length > 0) {
+      const icon: string | undefined = (balIcons as any)[`balIcon${upperFirst(camelCase(this.name))}`]
+      if (icon) {
+        return icon
+      }
+    }
 
+    return this.svg || ''
+  }
+
+  render() {
     return (
       <Host
         class={{
@@ -49,8 +65,9 @@ export class Icon {
           [`is-${this.color}`]: true,
           [`turn`]: this.turn,
           [`rotate`]: this.rotate,
-        }}>
-        <SvgIcon class="bal-icon-inner" size={this.size}></SvgIcon>
+        }}
+      >
+        <div class="bal-icon-inner" innerHTML={this.svgContent}></div>
       </Host>
     )
   }

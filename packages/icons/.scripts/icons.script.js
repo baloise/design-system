@@ -27,11 +27,11 @@ const readSVG = async (name, filePath) => {
       plugins: [
         {
           name: 'removeAttrs',
-          removeAttrs: { attrs: '(stroke|fill)' },
+          params: { attrs: '(stroke|fill)' },
         },
         {
           name: 'removeDimensions',
-          removeDimensions: true,
+          params: { removeDimensions: true },
         },
       ],
     })
@@ -73,7 +73,10 @@ const main = async () => {
   })
 
   await file.save(path.join(__dirname, '../src/icons.ts'), lines.join(NEWLINE))
-  await file.save(path.join(__dirname, '../docs/icons.json'), JSON.stringify([...contents.keys()]))
+  await file.save(
+    path.join(__dirname, '../docs/icons.json'),
+    JSON.stringify([...contents.keys()].map(c => c.replace('icon-', ''))),
+  )
 }
 
 main()
