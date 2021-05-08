@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-fonts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -23,13 +23,13 @@
   ],
   "main": "./lib/localtapiola.css",
   "files": [
-    "lib/"
+    "lib/",
+    "scss/"
   ],
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "scss": "scss"
   },
   "license": "Apache-2.0",
-  "dependencies": {
-    "@baloise/design-system-components": "^0.0.0"
-  }
+  "dependencies": {}
 }

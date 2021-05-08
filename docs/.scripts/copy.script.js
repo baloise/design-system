@@ -8,7 +8,7 @@ async function main() {
   await file.empty(path.join(__dirname, '../src/.vuepress/lib/loader'))
   await file.empty(path.join(__dirname, '../src/.vuepress/lib/dist'))
   await file.copy(
-    path.join(__dirname, '../../resources/fonts'),
+    path.join(__dirname, '../../packages/fonts/lib'),
     path.join(__dirname, '../src/.vuepress/public/assets/fonts'),
   )
   await file.copy(

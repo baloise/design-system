@@ -1,5 +1,6 @@
 @import './global.utilities';
-@import './base/fonts.scss';
+@import 'node_modules/@baloise/design-system-fonts/scss/baloise-fonts.scss';
+
 @import './elements/notices.scss';
 @import './layout/sticky-footer.scss';
 
