@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'MetaPro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: local('MetaPro'), local('MetaStd-Normal'), url('/assets/fonts/MetaStd-Normal.woff2') format('woff2'), url('/assets/fonts/MetaStd-Normal.woff')
+      format('woff'), url('/assets/fonts/MetaStd-Normal.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'MetaPro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: local('MetaStd-Medium'), url('/assets/fonts/MetaStd-Medium.woff2') format('woff2'), url('/assets/fonts/MetaStd-Medium.woff')
+      format('woff'), url('/assets/fonts/MetaStd-Medium.ttf') format('truetype');
+}

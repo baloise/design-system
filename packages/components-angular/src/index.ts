@@ -12,7 +12,7 @@ export { BalToastService } from './bal-toast.service'
 export { BalSnackbarService } from './bal-snackbar.service'
 
 // PACKAGE MODULE
-export { BaloiseDesignSystemModule as BalUiLibraryModule } from './module'
+export { BaloiseDesignSystemModule } from './module'
 
 // HELPERS
 export const parseCustomEvent = <T>(event: CustomEvent<T> | Event): T => {

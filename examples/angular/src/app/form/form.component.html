@@ -52,8 +52,8 @@
     <bal-field-label>Gender</bal-field-label>
     <bal-field-control>
       <bal-radio-group value="male" formControlName="gender">
-        <bal-radio label="Male" name="gender" value="male"></bal-radio>
-        <bal-radio label="Female" name="gender" value="female"></bal-radio>
+        <bal-radio name="gender" value="male">Male</bal-radio>
+        <bal-radio name="gender" value="female">Female</bal-radio>
       </bal-radio-group>
     </bal-field-control>
     <bal-field-message color="danger" *ngIf="form.get('gender').errors && form.get('gender').hasError('required')"
@@ -64,7 +64,7 @@
   <bal-field expanded>
     <bal-field-label>Checkbox</bal-field-label>
     <bal-field-control>
-      <bal-checkbox label="Checkbox" formControlName="checkbox"></bal-checkbox>
+      <bal-checkbox formControlName="checkbox">Checkbox</bal-checkbox>
     </bal-field-control>
     <bal-field-message color="danger" *ngIf="form.get('checkbox').errors && form.get('checkbox').hasError('required')"
       >Required Field</bal-field-message
@@ -105,5 +105,7 @@
   <bal-button color="info" outlined (click)="updateName()">Update Name</bal-button>
   <bal-button color="danger" outlined (click)="setCommentDisabled()">Disable Comment</bal-button>
 
-  <bal-button color="primary" id="submit" type="submit" [disabled]="true" (click)="onSubmit()">Submit</bal-button>
+  <bal-button color="primary" id="submit" type="submit" [disabled]="form.invalid" (click)="onSubmit()"
+    >Submit</bal-button
+  >
 </form>

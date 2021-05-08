@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components-angular",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -28,19 +28,6 @@
     "build:compile": "ng-packagr -p package.json",
     "clean": "rimraf src/filters.ts && rimraf dist",
     "clean:package": "rimraf dist/package.json && rimraf dist/CHANGELOG.md && rimraf dist/LICENSE && rimraf dist/README.md"
-  },
-  "$schema": "./node_modules/ng-packagr/package.schema.json",
-  "ngPackage": {
-    "lib": {
-      "entryFile": "src/index.ts",
-      "umdModuleIds": {
-        "@baloise/design-system-components": "@baloise/design-system-components",
-        "@baloise/design-system-components/loader": "@baloise/design-system-components/loader"
-      }
-    },
-    "whitelistedNonPeerDependencies": [
-      "@baloise/design-system-components"
-    ]
   },
   "license": "Apache-2.0",
   "dependencies": {
@@ -71,12 +58,25 @@
   "files": [
     "dist/"
   ],
-  "main": "dist/bundles/baloise-design-system-angular.umd.js",
-  "module": "dist/fesm2015/baloise-design-system-angular.js",
-  "es2015": "dist/fesm2015/baloise-design-system-angular.js",
-  "esm2015": "dist/esm2015/baloise-design-system-angular.js",
-  "fesm2015": "dist/fesm2015/baloise-design-system-angular.js",
-  "typings": "dist/baloise-design-system-angular.d.ts",
-  "metadata": "dist/baloise-design-system-angular.metadata.json",
-  "sideEffects": false
+  "main": "dist/bundles/baloise-design-system-components-angular.umd.js",
+  "module": "dist/fesm2015/baloise-design-system-components-angular.js",
+  "es2015": "dist/fesm2015/baloise-design-system-components-angular.js",
+  "esm2015": "dist/esm2015/baloise-design-system-components-angular.js",
+  "fesm2015": "dist/fesm2015/baloise-design-system-components-angular.js",
+  "typings": "dist/baloise-design-system-components-angular.d.ts",
+  "metadata": "dist/baloise-design-system-components-angular.metadata.json",
+  "sideEffects": false,
+  "$schema": "./node_modules/ng-packagr/package.schema.json",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "src/index.ts",
+      "umdModuleIds": {
+        "@baloise/design-system-components": "@baloise/design-system-components",
+        "@baloise/design-system-components/loader": "@baloise/design-system-components/loader"
+      }
+    },
+    "whitelistedNonPeerDependencies": [
+      "@baloise/design-system-components"
+    ]
+  }
 }

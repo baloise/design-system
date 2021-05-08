@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { BalSnackbarService, BalToastService } from '@baloise/ui-library-angular'
+import { BalSnackbarService, BalToastService } from '@baloise/design-system-components-angular'
 
 @Component({
   selector: 'app-services',

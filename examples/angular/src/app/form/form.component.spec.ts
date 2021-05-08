@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing'
 import { FormComponent } from './form.component'
-import { BalUiLibraryModule } from '@baloise/ui-library-angular'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterTestingModule } from '@angular/router/testing'
 import { interval } from 'rxjs'
@@ -21,7 +21,7 @@ describe('FormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FormComponent],
-      imports: [BalUiLibraryModule.forRoot(), FormsModule, ReactiveFormsModule, RouterTestingModule],
+      imports: [BaloiseDesignSystemModule.forRoot(), FormsModule, ReactiveFormsModule, RouterTestingModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents()
 
