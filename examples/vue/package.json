@@ -22,18 +22,18 @@
     "cypress:open": "cypress open"
   },
   "dependencies": {
-    "@baloise/ui-library": "^4.15.1",
-    "@baloise/ui-library-vue": "^4.15.1",
+    "@baloise/design-system-components": "0.0.0",
+    "@baloise/design-system-components-vue": "0.0.0",
     "@baloise/vue-axios": "^1.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "vee-validate": "^4.2.4",
-    "vue": "^3.0.0",
+    "vue": "^3.0.8",
     "vue-i18n": "^9.0.0",
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
-    "@baloise/ui-library-testing": "^4.15.1",
+    "@baloise/design-system-testing": "0.0.0",
     "@types/jest": "^26.0.21",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",

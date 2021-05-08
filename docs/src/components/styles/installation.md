@@ -38,15 +38,15 @@ To use the fonts in the css styles import it with the following snippet.
 
 Place the download fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
 
-Import `design-system-components.scss` Sass file into the main `.scss` file of your application.
+Import `global.scss` Sass file into the main `.scss` file of your application.
 
 ```scss
-@import 'node_modules/@baloise/design-system-components/src/styles/design-system-components.scss';
+@import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
 ```
 
 ### Variables
 
-To access the scss variables like [colors](/guide/styles/colors.html) or [responsiveness helpers](/guide/styles/responsiveness.html) import the `design-system-components.utilities.scss`.
+To access the scss variables like [colors](/guide/styles/colors.html) or [responsiveness helpers](/guide/styles/responsiveness.html) import the `global.utilities.scss`.
 
 ::: tip
 Use the variables and helpers of the Design System where ever you can in your application.
@@ -56,7 +56,7 @@ Use the variables and helpers of the Design System where ever you can in your ap
 
 ```scss
 // Only imports variables and mixins
-@import 'node_modules/@baloise/design-system-components/src/styles/design-system-components.utilities.scss';
+@import 'node_modules/@baloise/design-system-components/src/styles/global.utilities.scss';
 
 // mobile first
 p {

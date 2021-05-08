@@ -64,7 +64,7 @@ import {
   isRequired,
 } from '../helpers/validators'
 import { useField, useForm, useIsFormValid } from 'vee-validate'
-import { balToastController } from '@baloise/ui-library'
+import { balToastController } from '@baloise/design-system-components'
 
 export default defineComponent({
   name: 'Form',

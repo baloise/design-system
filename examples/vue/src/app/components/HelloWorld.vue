@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { BalButton } from '@baloise/ui-library-vue'
+import { BalButton } from '@baloise/design-system-components-vue'
 
 export type onConfirm = (value: string) => void
 

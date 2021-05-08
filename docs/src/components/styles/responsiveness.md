@@ -9,7 +9,7 @@ There are 2 ways to solve the daily responsiveness challenges.
 Use the scss mixins in your application like this.
 
 ```scss
-@import 'node_modules/@baloise/design-system-components/src/styles/design-system-components.utilities';
+@import 'node_modules/@baloise/design-system-components/src/styles/global.utilities';
 
 .bal-element {
   width: 100%;
@@ -28,7 +28,7 @@ Use the scss mixins in your application like this.
 }
 ```
 
-The file `design-system-components.utilities` provides all the defined scss variables like [colors](/guide/styles/colors.html) and also the mixins.
+The file `global.utilities` provides all the defined scss variables like [colors](/guide/styles/colors.html) and also the mixins.
 
 **Further Documentation**
 

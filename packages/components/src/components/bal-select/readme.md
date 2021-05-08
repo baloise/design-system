@@ -1,5 +1,17 @@
 # bal-select <Badge text="Two-way binding"/>
 
+A select is a collection of options, where the user can select a single one or multiple.
+
+## Option interface
+
+```typescript
+export interface BalOptionValue<T> {
+  value: string
+  label: string
+  data?: T
+}
+```
+
 <!-- Auto Generated Below -->
 
 
@@ -47,9 +59,9 @@ Type: `Promise<void>`
 
 
 
-### `clear(force?: boolean) => Promise<void>`
+### `clear() => Promise<void>`
 
-Sets the value to null and resets the value of the input.
+Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
 
 #### Returns
 
@@ -77,6 +89,16 @@ Type: `Promise<void>`
 
 
 
+### `select(value: string) => Promise<void>`
+
+Select option by passed value
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `setFocus() => Promise<void>`
 
 Sets the focus on the input element
@@ -92,20 +114,22 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [bal-tag](../bal-tag)
 - [bal-dropdown](../bal-dropdown)
 - [bal-dropdown-trigger](../bal-dropdown-trigger)
-- [bal-dropdown-menu](../bal-dropdown-menu)
 - [bal-icon](../bal-icon)
-- [bal-tag](../bal-tag)
+- [bal-dropdown-menu](../bal-dropdown-menu)
+- [bal-checkbox](../bal-checkbox)
 
 ### Graph
 ```mermaid
 graph TD;
+  bal-select --> bal-tag
   bal-select --> bal-dropdown
   bal-select --> bal-dropdown-trigger
-  bal-select --> bal-dropdown-menu
   bal-select --> bal-icon
-  bal-select --> bal-tag
+  bal-select --> bal-dropdown-menu
+  bal-select --> bal-checkbox
   style bal-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

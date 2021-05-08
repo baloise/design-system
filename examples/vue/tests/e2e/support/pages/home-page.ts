@@ -1,4 +1,7 @@
-import { ButtonAccessor, dataTestSelector } from '@baloise/ui-library-testing'
+import {
+  ButtonAccessor,
+  dataTestSelector,
+} from '@baloise/design-system-testing'
 
 export class HomePage {
   button = ButtonAccessor(dataTestSelector('count-button'))

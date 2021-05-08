@@ -32,7 +32,7 @@ import './styles/main.scss'
  * https://v3.vuejs.org/guide/plugins.html
  */
 
-import { baloiseUiLibrary } from '@baloise/ui-library-vue'
+import { BaloiseDesignSystem } from '@baloise/design-system-components-vue'
 import { vueAxios } from '@baloise/vue-axios'
 import { router } from './plugins/router.plugin'
 import { i18n } from './plugins/i18n.plugin'
@@ -55,9 +55,9 @@ createApp(App)
   .use(vueAxios)
   /**
    * Our Baloise component library.
-   * https://baloise-ui-library.now.sh/
+   * https://baloise-design-system.vercel.app/
    */
-  .use(baloiseUiLibrary, { useVite: false })
+  .use(BaloiseDesignSystem, { useVite: false })
   /**
    * Bind the Vue instance to the HTML DOM.
    */

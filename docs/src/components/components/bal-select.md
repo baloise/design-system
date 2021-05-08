@@ -1,5 +1,17 @@
 # bal-select <Badge text="Two-way binding"/>
 
+A select is a collection of options, where the user can select a single one or multiple.
+
+## Option interface
+
+```typescript
+export interface BalOptionValue<T> {
+  value: string
+  label: string
+  data?: T
+}
+```
+
 <!-- START: human documentation top -->
 
 A select is a collection of options, where the user can select a single one or multiple.
@@ -191,13 +203,14 @@ export interface BalOptionValue<T> {
 
 #### Methods
 
-| Method         | Description                                               | Signature                                 |
-| :------------- | :-------------------------------------------------------- | :---------------------------------------- |
-| **`cancel`**   | Cancel the dropdown                                       | `cancel() => Promise<void>`               |
-| **`clear`**    | Sets the value to null and resets the value of the input. | `clear(force?: boolean) => Promise<void>` |
-| **`close`**    | Closes the dropdown                                       | `close() => Promise<void>`                |
-| **`open`**     | Opens the dropdown                                        | `open() => Promise<void>`                 |
-| **`setFocus`** | Sets the focus on the input element                       | `setFocus() => Promise<void>`             |
+| Method         | Description                                                                 | Signature                                |
+| :------------- | :-------------------------------------------------------------------------- | :--------------------------------------- |
+| **`cancel`**   | Cancel the dropdown                                                         | `cancel() => Promise<void>`              |
+| **`clear`**    | Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´. | `clear() => Promise<void>`               |
+| **`close`**    | Closes the dropdown                                                         | `close() => Promise<void>`               |
+| **`open`**     | Opens the dropdown                                                          | `open() => Promise<void>`                |
+| **`select`**   | Select option by passed value                                               | `select(value: string) => Promise<void>` |
+| **`setFocus`** | Sets the focus on the input element                                         | `setFocus() => Promise<void>`            |
 
 ### bal-select-option
 
@@ -208,14 +221,10 @@ export interface BalOptionValue<T> {
 
 #### Properties
 
-| Attribute    | Description                                                                                       | Type                 | Default |
-| :----------- | :------------------------------------------------------------------------------------------------ | :------------------- | :------ |
-| **checkbox** | If `true` the option has a checkbox                                                               | `boolean`            | `false` |
-| **focused**  | If `true` the option is focused                                                                   | `boolean`            | `false` |
-| **hidden**   | If `true` the option is hidden                                                                    | `boolean`            | `false` |
-| **label**    | Label will be shown in the input element when it got selected                                     | `string , undefined` |         |
-| **selected** | If `true` the option is selected                                                                  | `boolean`            | `false` |
-| **value**    | The value of the select option. This value will be returned by the parent `<bal-select>` element. | `string , undefined` |         |
+| Attribute | Description                                                                                       | Type                 | Default |
+| :-------- | :------------------------------------------------------------------------------------------------ | :------------------- | :------ |
+| **label** | Label will be shown in the input element when it got selected                                     | `string , undefined` |         |
+| **value** | The value of the select option. This value will be returned by the parent `<bal-select>` element. | `string , undefined` |         |
 
 ## Testing
 

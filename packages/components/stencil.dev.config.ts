@@ -5,7 +5,7 @@ import autoprefixer from 'autoprefixer'
 
 export const config: Config = {
   namespace: 'design-system-components',
-  globalStyle: 'src/styles/design-system-components.scss',
+  globalStyle: 'src/styles/global.scss',
   enableCache: true,
   plugins: [
     postcss({

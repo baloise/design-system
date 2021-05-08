@@ -21,7 +21,7 @@ import {
   BalCard,
   BalCardContent,
   BalCardTitle,
-} from '@baloise/ui-library-vue'
+} from '@baloise/design-system-components-vue'
 
 export default defineComponent({
   setup() {

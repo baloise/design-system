@@ -1,8 +1,11 @@
-import { BalValidators } from '@baloise/ui-library'
-import { useValidator, ValidatorFn } from '@baloise/ui-library-vue'
+import { BalValidators } from '@baloise/design-system-components'
+import {
+  useValidator,
+  ValidatorFn,
+} from '@baloise/design-system-components-vue'
 import { i18n } from '../../plugins/i18n.plugin'
 
-export { validators } from '@baloise/ui-library-vue'
+export { validators } from '@baloise/design-system-components-vue'
 
 const { createValidator } = useValidator(i18n.global.t)
 
