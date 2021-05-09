@@ -1,5 +1,5 @@
 /**
- * svg icons
+ * optimize svg icons
  * --------------------------------------
  * This script reads the svg icons and optimizes them. For each
  * svg icon a web components gets generated
@@ -45,7 +45,7 @@ const readSVG = async (name, filePath) => {
 }
 
 const main = async () => {
-  await log.title('design system : icons')
+  await log.title('icons: optimize')
 
   const pathToSvgs = path.join(__dirname, '../svg/*.svg')
   let filePaths = []

@@ -24,9 +24,11 @@
   "scripts": {
     "build": "npm run build:clean && npm run build:icons && npm run build:compile && npm run build:bundle",
     "build:clean": "rimraf dist && rimraf dist-transpiled",
-    "build:icons": "node .scripts/icons.script.js",
+    "build:icons": "node .scripts/optimize.script.js",
     "build:compile": "tsc -p .",
-    "build:bundle": "rollup --config rollup.config.js"
+    "build:bundle": "rollup --config rollup.config.js",
+    "docs": "npm run build && npm run docs:archive",
+    "docs:archive": "node .scripts/archive.script.js"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
@@ -38,6 +40,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/lodash": "^4.14.168",
+    "archiver": "^5.3.0",
     "lodash": "^4.17.21",
     "rimraf": "^3.0.2",
     "rollup": "^2.39.0",

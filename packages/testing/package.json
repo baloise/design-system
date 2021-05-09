@@ -30,12 +30,12 @@
   "scripts": {
     "serve": "cypress open",
     "test": "cypress run",
-    "build": "npm run build:clean && npm run build:docs && npm run build:index && npm run build:compile && npm run build:bundle",
+    "build": "npm run build:clean && npm run build:index && npm run build:compile && npm run build:bundle",
     "build:clean": "rimraf src/index.ts && rimraf docs && rimraf dist && rimraf dist-transpiled",
     "build:index": "node .scripts/index.script.js",
-    "build:docs": "node .scripts/docs-json.script.js",
     "build:compile": "tsc -p tsconfig.build.json",
     "build:bundle": "rollup --config rollup.config.js",
+    "docs": "node .scripts/docs-json.script.js",
     "ci": "start-server-and-test ci:server http://localhost:3333 test",
     "ci:server": "http-server ../components/www -p 3333 -c-1 --silent"
   },
