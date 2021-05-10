@@ -31,7 +31,8 @@
     "docs:serve": "npm --prefix docs run serve",
     "docs:setup": "npm --prefix packages/fonts run docs && npm --prefix packages/icons run docs && npm --prefix packages/components run docs && npm --prefix packages/testing run docs && npm --prefix docs run setup",
     "docs:build": "npm run docs:setup && npm --prefix docs run build",
-    "docs:publish": "npm run docs:install && npm run docs:build"
+    "docs:publish": "npm run docs:install && npm run docs:build",
+    "templates:build": "node .scripts/banner.js templates:build && npm --prefix packages/components run docs:templates && node .scripts/templates.script.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
