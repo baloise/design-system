@@ -41,8 +41,7 @@
     "build:utils": "node .scripts/utils.script.js && node .scripts/utils.index.js",
     "build:components": "node .scripts/components.script.js",
     "build:compile": "stencil build --docs --es5 --prod",
-    "clean": "rimraf docs && npm run clean:icons",
-    "clean:icons": "rimraf src/components/bal-icon/icons",
+    "clean": "rimraf docs",
     "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* src/assets/fonts",
     "docs": "npm run build:filters && npm run build:utils && npm run build:validators && npm run docs:compile && npm run build:components",
     "docs:compile": "stencil build --docs --es5 --prod --config stencil.docs.config.ts",
@@ -73,16 +72,15 @@
     "@stencil/postcss": "^2.0.0",
     "@stencil/sass": "^1.4.1",
     "@types/autoprefixer": "^9.7.2",
-    "@types/jest": "^26.0.20",
+    "@types/jest": "^26.0.23",
     "@types/puppeteer": "^5.4.2",
-    "autoprefixer": "^10.2.1",
+    "autoprefixer": "^10.2.5",
     "copyfiles": "^2.4.1",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
-    "postcss": "^8.2.6",
+    "postcss": "^8.2.14",
     "puppeteer": "^5.5.0",
-    "rimraf": "^3.0.2",
-    "svgo": "^1.3.2"
+    "rimraf": "^3.0.2"
   },
   "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca"
 }

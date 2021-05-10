@@ -2,8 +2,8 @@ const chalk = require('chalk')
 
 const log = {
   title: text => {
-    console.log(chalk.bold.underline.blue(text))
     console.log('')
+    console.log(chalk.bold.underline.blue(text))
     return log
   },
 

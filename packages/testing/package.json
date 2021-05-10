@@ -30,7 +30,7 @@
   "scripts": {
     "serve": "cypress open",
     "test": "cypress run",
-    "build": "npm run build:clean && npm run build:index && npm run build:compile && npm run build:bundle",
+    "build": "npm run build:clean && npm run docs &&  npm run build:index && npm run build:compile && npm run build:bundle",
     "build:clean": "rimraf src/index.ts && rimraf docs && rimraf dist && rimraf dist-transpiled",
     "build:index": "node .scripts/index.script.js",
     "build:compile": "tsc -p tsconfig.build.json",
@@ -44,7 +44,7 @@
     "@baloise/design-system-components": ">=0.1.0"
   },
   "devDependencies": {
-    "@baloise/design-system-components": "0.0.0",
+    "@baloise/design-system-components": "^0.1.1",
     "@types/chai": "^4.2.12",
     "@types/jquery": "^3.5.1",
     "@types/node": "^14.14.6",

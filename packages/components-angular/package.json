@@ -52,7 +52,7 @@
     "@baloise/design-system-components": "^0.1.1",
     "ng-packagr": "^10.1.2",
     "rimraf": "^3.0.2",
-    "typescript": "^4.2.4",
+    "typescript": "^4.0.7",
     "zone.js": "^0.10.3"
   },
   "files": [

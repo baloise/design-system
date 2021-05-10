@@ -14,7 +14,7 @@
     "postinstall": "npm run bootstrap && npm run docs:install && node .scripts/copy.script.js",
     "bootstrap": "lerna bootstrap",
     "serve": "npm run lib:serve",
-    "build": "npm run icons:build npm run lib:build && npm run vue:build && npm run angular:build && npm run testing:build",
+    "build": "npm run icons:build && npm run lib:build && npm run vue:build && npm run angular:build && npm run testing:build",
     "test": "npm run lib:test && npm run testing:test",
     "release": "lerna publish --yes --force-publish --conventional-commits",
     "lib:build": "node .scripts/banner.js lib:build && npm --prefix packages/components run build",
