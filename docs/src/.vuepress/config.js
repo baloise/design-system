@@ -54,7 +54,7 @@ module.exports = {
       },
       {
         text: 'Resources',
-        link: '/resources/',
+        link: '/resources/templates',
       },
       {
         text: 'About Us',
@@ -66,7 +66,7 @@ module.exports = {
         {
           title: 'Design',
           collapsable: false,
-          children: ['spacing'],
+          children: ['spacing', 'typography'],
         },
       ],
       '/components/': [
@@ -105,7 +105,6 @@ module.exports = {
           title: 'Resources',
           collapsable: false,
           children: [
-            'fonts',
             'templates',
             'changelog',
             ['https://github.com/baloise/ui-library/projects/2', 'Roadmap'],
