@@ -66,7 +66,7 @@ module.exports = {
         {
           title: 'Design',
           collapsable: false,
-          children: ['spacing', 'typography'],
+          children: ['colors', 'typography', 'spacing', 'icons'],
         },
       ],
       '/components/': [

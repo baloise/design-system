@@ -14,7 +14,8 @@ $blue-darker: #002162;
 $blue-dark: #002b82;
 $blue-line-inverted: #294d98;
 $blue-light-text: #7188b8;
-$blue-line: #99add6;
+$blue-lighter-text: #95adda;
+$blue-line: $blue-lighter-text;
 $blue-light-line: #d3dbeb;
 $blue-light-hover: $bal_bg_rollover_light_blue;
 $blue-light: #f0fbff;
@@ -58,14 +59,19 @@ $shades: (
   'blue': $blue,
   'blue-line-inverted': $blue-line-inverted,
   'blue-light-text': $blue-light-text,
+  'blue-lighter-text': $blue-lighter-text,
   'blue-line': $blue-line,
   'blue-light-line': $blue-light-line,
   'blue-light-hover': $blue-light-hover,
   'blue-light': $blue-light,
   'white-bis': $white-bis,
   'white-ter': $white-ter,
-  'grey': $grey,
+  'cyan': $cyan,
   'black': $black,
+  'grey': $grey,
+  'grey-light': $grey-light,
+  'grey-lighter': $grey-lighter,
+  'grey-lightest': $grey-lightest,
 );
 
 $border: $blue-light-line;
