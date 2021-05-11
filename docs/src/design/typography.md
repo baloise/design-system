@@ -29,6 +29,10 @@ Download our font for print usage below. For web development please continue rea
 
 Our fonts are provide as a [NPM package](https://www.npmjs.com/package/@baloise/design-system-fonts). Besides the font files the according css and sass file are delivered aswell.
 
+:::tip
+The font package is included in the `@baloise/design-system-components` package.
+:::
+
 To install it to your project run the following command.
 
 ```bash

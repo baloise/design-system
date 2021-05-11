@@ -22,6 +22,10 @@ async function main() {
     path.join(__dirname, '../src/.vuepress/public/assets/download/icons.zip'),
   )
   await file.copy(
+    path.join(__dirname, '../../packages/icons/docs/icons.json'),
+    path.join(__dirname, '../src/.vuepress/generated/icons.json'),
+  )
+  await file.copy(
     path.join(__dirname, '../../resources/images/logo.svg'),
     path.join(__dirname, '../src/.vuepress/public/assets/images/logo.svg'),
   )
