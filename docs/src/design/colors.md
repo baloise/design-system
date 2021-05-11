@@ -62,6 +62,21 @@
   </div>
 </div>
 
+## Decorative Colors
+
+<div class="bal-app">
+  <div class="columns is-multiline mt-2">
+    <div class="column is-4 has-background-blue-line-inverted">
+      <p class="has-text-white is-bold">blue-line-inverted</p>
+      <p class="has-text-white is-small">#204c9d</p>
+    </div>
+    <div class="column is-4 has-background-blue-light-line">
+      <p class="has-text-blue is-bold">blue-light-line</p>
+      <p class="has-text-blue is-small">#d1dbed</p>
+    </div>
+  </div>
+</div>
+
 ## Alert Colors
 
 <div class="bal-app">
