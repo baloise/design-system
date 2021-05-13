@@ -9,6 +9,7 @@ h3,
 h4,
 h5 {
   font-family: $title-family;
+  padding: 0;
 }
 
 p,
@@ -39,9 +40,9 @@ a.is-small {
 
 p.is-bold,
 a.is-bold,
-h3.title.is-size-3,
-h4.title.is-size-4,
-h5.title.is-size-5 {
+.title.is-size-3,
+.title.is-size-4,
+.title.is-size-5 {
   font-weight: $weight-bold;
 }
 

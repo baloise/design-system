@@ -10,9 +10,6 @@ A pagination is used with large amount of content to distribute it over multpile
 
 <ClientOnly>  <docs-demo-bal-pagination-70></docs-demo-bal-pagination-70></ClientOnly>
 
-```html
-<bal-pagination value="2" page-range="3" total-pages="20"></bal-pagination>
-```
 
 
 ## API

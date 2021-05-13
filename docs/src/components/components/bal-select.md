@@ -32,139 +32,26 @@ export interface BalOptionValue<T> {
 
 <ClientOnly>  <docs-demo-bal-select-76></docs-demo-bal-select-76></ClientOnly>
 
-```html
-<bal-select expanded id="bal-select-year" placeholder="Try finding a year" data-test-id="select">
-  <bal-select-option value="v1995" label="1995">1995</bal-select-option>
-  <bal-select-option value="v1996" label="1996">1996</bal-select-option>
-  <bal-select-option value="v1997" label="1997">1997</bal-select-option>
-  <bal-select-option value="v1998" label="1998">1998</bal-select-option>
-  <bal-select-option value="v1999" label="1999">1999</bal-select-option>
-  <bal-select-option value="v2000" label="2000">2000</bal-select-option>
-</bal-select>
-<br>
-<p id="bal-select-year-preview"></p>
-<bal-button color="success" id="bal-select-year-add">Add</bal-button>
-<bal-button color="danger" id="bal-select-year-remove">Remove</bal-button>
-```
 
 ### Typeahead
 
 <ClientOnly>  <docs-demo-bal-select-77></docs-demo-bal-select-77></ClientOnly>
 
-```html
-<div class="has-background-blue has-padding">
-  <bal-select id="bal-select-typeahaed" typeahead inverted expanded placeholder="Try finding your hero" no-data-label="No option available">
-    <bal-select-option value="BlackWidow" label="Black Widow">
-      <b style="display: block">Black Widow</b>
-      <span>S.H.I.E.L.D.</span>
-    </bal-select-option>
-    <bal-select-option value="BlackPanter" label="Black Panter">
-      <b style="display: block">Black Panter</b>
-      <span>Wakanda</span>
-    </bal-select-option>
-    <bal-select-option value="IronMan" label="Iron Man">
-      <b style="display: block">Iron Man</b>
-      <span>Malibu</span>
-    </bal-select-option>
-    <bal-select-option value="SpiderMan" label="Spider Man">
-      <b style="display: block">Spider Man</b>
-      <span>Queens</span>
-    </bal-select-option>
-    <bal-select-option value="CaptainAmerica" label="Captain America">
-      <b style="display: block">Captain America</b>
-      <span>Broklyn</span>
-    </bal-select-option>
-    <bal-select-option value="Thor" label="Thor God of Thunder">
-      <b style="display: block">Thor God of Thunder</b>
-      <span>Asgard</span>
-    </bal-select-option>
-  </bal-select>
-  <br>
-  <p id="bal-select-typeahead-preview" class="has-text-white"></p>
-  <bal-button id="bal-select-typeahead-trigger" inverted color="primary">Select Spider Man</bal-button>
-  <bal-button id="bal-select-typeahead-clear" inverted outlined color="info">Clear & Focus</bal-button>
-</div>
-```
 
 ### Multi-Select
 
 <ClientOnly>  <docs-demo-bal-select-78></docs-demo-bal-select-78></ClientOnly>
 
-```html
-<bal-select multiple expanded placeholder="Try finding your hero">
-  <bal-select-option checkbox value="BlackWidow" label="Black Widow">
-    <b style="display: block">Black Widow</b>
-    <span>S.H.I.E.L.D.</span>
-  </bal-select-option>
-  <bal-select-option checkbox value="BlackPanter" label="Black Panter">
-    <b style="display: block">Black Panter</b>
-    <span>Wakanda</span>
-  </bal-select-option>
-  <bal-select-option checkbox value="IronMan" label="Iron Man">
-    <b style="display: block">Iron Man</b>
-    <span>Malibu</span>
-  </bal-select-option>
-  <bal-select-option checkbox value="SpiderMan" label="Spider Man">
-    <b style="display: block">Spider Man</b>
-    <span>Queens</span>
-  </bal-select-option>
-  <bal-select-option checkbox value="CaptainAmerica" label="Captain America">
-    <b style="display: block">Captain America</b>
-    <span>Broklyn</span>
-  </bal-select-option>
-  <bal-select-option checkbox value="Thor" label="Thor God of Thunder">
-    <b style="display: block">Thor God of Thunder</b>
-    <span>Asgard</span>
-  </bal-select-option>
-</bal-select>
-```
 
 ### Multi-Select with typeahead
 
 <ClientOnly>  <docs-demo-bal-select-79></docs-demo-bal-select-79></ClientOnly>
 
-```html
-<bal-select multiple typeahead expanded placeholder="Try finding your hero" no-data-label="No option available">
-  <bal-select-option checkbox value="BlackWidow" label="Black Widow">
-    <b style="display: block">Black Widow</b>
-    <span>S.H.I.E.L.D.</span>
-  </bal-select-option>
-  <bal-select-option checkbox value="BlackPanter" label="Black Panter">
-    <b style="display: block">Black Panter</b>
-    <span>Wakanda</span>
-  </bal-select-option>
-  <bal-select-option checkbox value="IronMan" label="Iron Man">
-    <b style="display: block">Iron Man</b>
-    <span>Malibu</span>
-  </bal-select-option>
-  <bal-select-option checkbox value="SpiderMan" label="Spider Man">
-    <b style="display: block">Spider Man</b>
-    <span>Queens</span>
-  </bal-select-option>
-  <bal-select-option checkbox value="CaptainAmerica" label="Captain America">
-    <b style="display: block">Captain America</b>
-    <span>Broklyn</span>
-  </bal-select-option>
-  <bal-select-option checkbox value="Thor" label="Thor God of Thunder">
-    <b style="display: block">Thor God of Thunder</b>
-    <span>Asgard</span>
-  </bal-select-option>
-</bal-select>
-```
 
 ### Remote Typeahead
 
 <ClientOnly>  <docs-demo-bal-select-80></docs-demo-bal-select-80></ClientOnly>
 
-```html
-<bal-field id="bal-field-remote" expanded>
-  <bal-field-label>Canton</bal-field-label>
-  <bal-field-control>
-    <bal-select id="bal-select-remote" typeahead expanded placeholder="Try finding your canton"></bal-select>
-  </bal-field-control>
-  <bal-field-message id="bal-select-remote-preview"></bal-field-message>
-</bal-field>
-```
 
 
 ## API

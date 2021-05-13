@@ -11,14 +11,6 @@ Then the build script will automatically optimize the svg and create its own web
 
 <ClientOnly>  <docs-demo-bal-icon-48></docs-demo-bal-icon-48></ClientOnly>
 
-```html
-<span class="icon-text">
-  <span class="icon">
-    <bal-icon name="info-circle"></bal-icon>
-  </span>
-  <span>info-circle</span>
-</span>
-```
 
 ## Size
 
@@ -26,26 +18,11 @@ Here is how you can change the size:
 
 <ClientOnly>  <docs-demo-bal-icon-49></docs-demo-bal-icon-49></ClientOnly>
 
-```html
-<bal-icon name="date" size="xsmall"></bal-icon>
-<bal-icon name="date" size="small"></bal-icon>
-<bal-icon name="date"></bal-icon>
-<bal-icon name="date" size="medium"></bal-icon>
-<bal-icon name="date" size="large"></bal-icon>
-<bal-icon name="date" size="xlarge"></bal-icon>
-```
 
 ## Colors
 
 <ClientOnly>  <docs-demo-bal-icon-50></docs-demo-bal-icon-50></ClientOnly>
 
-```html
-<bal-icon color="primary" name="github"></bal-icon>
-<bal-icon color="info" name="github"></bal-icon>
-<bal-icon color="success" name="github"></bal-icon>
-<bal-icon color="warning" name="github"></bal-icon>
-<bal-icon color="danger" name="github"></bal-icon>
-```
 
 ## Custom Color
 
@@ -53,15 +30,6 @@ Here is how you can change the color:
 
 <ClientOnly>  <docs-demo-bal-icon-51></docs-demo-bal-icon-51></ClientOnly>
 
-```html
-<style type="text/css" scoped>
-  .custom-color {
-    fill: green !important;
-  }
-</style>
-
-<bal-icon class="custom-color" name="check-circle"></bal-icon>
-```
 
 
 ## API

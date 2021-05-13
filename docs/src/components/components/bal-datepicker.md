@@ -12,18 +12,11 @@ In this example the user can only select a date. For that use the property `read
 
 <ClientOnly>  <docs-demo-bal-datepicker-30></docs-demo-bal-datepicker-30></ClientOnly>
 
-```html
-<bal-datepicker id="datepicker" data-test-id="datepicker"></bal-datepicker>
-<p id="datepicker-preview"></p>
-```
 
 ## Disabled
 
 <ClientOnly>  <docs-demo-bal-datepicker-31></docs-demo-bal-datepicker-31></ClientOnly>
 
-```html
-<bal-datepicker readonly disabled id="datepicker-disabled"></bal-datepicker>
-```
 
 ## Manual Input
 
@@ -31,47 +24,26 @@ To enable manual input remove the property `readonly` and add the property `trig
 
 <ClientOnly>  <docs-demo-bal-datepicker-32></docs-demo-bal-datepicker-32></ClientOnly>
 
-```html
-<bal-datepicker placeholder="DD.MM.YYYY" trigger-icon></bal-datepicker>
-```
 
 ## Inverted & Expanded
 
 <ClientOnly>  <docs-demo-bal-datepicker-33></docs-demo-bal-datepicker-33></ClientOnly>
 
-```html
-<div class="has-background-info has-padding">
-  <bal-datepicker inverted expanded placeholder="DD.MM.YYYY"></bal-datepicker>
-</div>
-```
 
 ## i18n
 
 <ClientOnly>  <docs-demo-bal-datepicker-34></docs-demo-bal-datepicker-34></ClientOnly>
 
-```html
-<bal-datepicker id="datepicker-i18n" placeholder="TT.MM.YYYY" locale="de">
-  <bal-button expanded outlined color="info" id="datepicker-i18n-toggle">Toggle Locale</bal-button>
-</bal-datepicker>
-```
 
 ## Footer
 
 <ClientOnly>  <docs-demo-bal-datepicker-35></docs-demo-bal-datepicker-35></ClientOnly>
 
-```html
-<bal-datepicker placeholder="DD.MM.YYYY" readonly>
-  <p style="text-align: center">Choose your arival date!</p>
-</bal-datepicker>
-```
 
 ## Range Min & Max
 
 <ClientOnly>  <docs-demo-bal-datepicker-36></docs-demo-bal-datepicker-36></ClientOnly>
 
-```html
-<bal-datepicker id="datepicker-range" placeholder="DD.MM.YYYY"></bal-datepicker>
-```
 
 ## Allow Dates
 
@@ -79,17 +51,11 @@ You can specify allowed dates using a function.
 
 <ClientOnly>  <docs-demo-bal-datepicker-37></docs-demo-bal-datepicker-37></ClientOnly>
 
-```html
-<bal-datepicker id="datepicker-allowed-dates" placeholder="DD.MM.YYYY"></bal-datepicker>
-```
 
 ## Custom Start Date
 
 <ClientOnly>  <docs-demo-bal-datepicker-38></docs-demo-bal-datepicker-38></ClientOnly>
 
-```html
-<bal-datepicker default-date="2021-02-20" placeholder="DD.MM.YYYY"></bal-datepicker>
-```
 
 
 ## API

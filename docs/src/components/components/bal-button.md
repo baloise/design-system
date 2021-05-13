@@ -10,121 +10,56 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 <ClientOnly>  <docs-demo-bal-button-4></docs-demo-bal-button-4></ClientOnly>
 
-```html
-<bal-button color="primary" data-test-id="primary-button">Primary</bal-button>
-<bal-button color="info">Info</bal-button>
-<bal-button color="link">Link</bal-button>
-```
 
 ## Outlined
 
 <ClientOnly>  <docs-demo-bal-button-5></docs-demo-bal-button-5></ClientOnly>
 
-```html
-<bal-button color="info" outlined>Info</bal-button>
-```
 
 ## Inverted
 
 <ClientOnly>  <docs-demo-bal-button-6></docs-demo-bal-button-6></ClientOnly>
 
-```html
-<div class="has-background-info has-padding">
-  <bal-button color="primary" inverted>Primary</bal-button>
-  <bal-button color="info" inverted>Info</bal-button>
-  <bal-button color="info" inverted outlined>Info Outlined</bal-button>
-</div>
-<div class="has-background-primary has-padding">
-  <bal-button color="primary" inverted outlined>Primary Outlined</bal-button>
-</div>
-<div class="has-background-success has-padding">
-  <bal-button color="success" inverted outlined>Success Outlined</bal-button>
-</div>
-<div class="has-background-warning has-padding">
-  <bal-button color="warning" inverted outlined>Warning Outlined</bal-button>
-</div>
-<div class="has-background-danger has-padding">
-  <bal-button color="danger" inverted outlined>Danger Outlined</bal-button>
-</div>
-```
 
 ## Other colors
 
 <ClientOnly>  <docs-demo-bal-button-7></docs-demo-bal-button-7></ClientOnly>
 
-```html
-<bal-button color="primary-light" icon="edit">Primary Light</bal-button>
-<bal-button color="info-light" icon="edit">Info Light</bal-button>
-<bal-button color="success">Success</bal-button>
-<bal-button color="warning">Warning</bal-button>
-<bal-button color="danger">Danger</bal-button>
-```
 
 ## Disabled
 
 <ClientOnly>  <docs-demo-bal-button-8></docs-demo-bal-button-8></ClientOnly>
 
-```html
-<bal-button color="primary" disabled data-test-id="primary-button-disabled">Primary</bal-button>
-<bal-button color="info" disabled>Info</bal-button>
-<bal-button color="link" disabled>Link</bal-button>
-```
 
 ## Loading
 
 <ClientOnly>  <docs-demo-bal-button-9></docs-demo-bal-button-9></ClientOnly>
 
-```html
-<bal-button color="primary" loading>Primary</bal-button>
-<bal-button color="info" loading>Info</bal-button>
-<bal-button color="link" loading>Info</bal-button>
-<bal-button color="primary" loading outlined>Info</bal-button>
-```
 
 ## Expanded
 
 <ClientOnly>  <docs-demo-bal-button-10></docs-demo-bal-button-10></ClientOnly>
 
-```html
-<bal-button color="primary" expanded>Primary</bal-button>
-<br>
-<bal-button color="info" expanded>Info</bal-button>
-```
 
 ## With icons
 
 <ClientOnly>  <docs-demo-bal-button-11></docs-demo-bal-button-11></ClientOnly>
 
-```html
-<bal-button color="info" outlined icon="edit">Left Icon</bal-button>
-<bal-button color="info" outlined icon-right="edit">Right Icon</bal-button>
-```
 
 ## Small buttons
 
 <ClientOnly>  <docs-demo-bal-button-12></docs-demo-bal-button-12></ClientOnly>
 
-```html
-<bal-button color="primary" size="small"> Primary </bal-button>
-<bal-button color="info" size="small"> Info </bal-button>
-```
 
 ## Square buttons
 
 <ClientOnly>  <docs-demo-bal-button-13></docs-demo-bal-button-13></ClientOnly>
 
-```html
-<bal-button color="info" icon="edit" square outlined></bal-button>
-<bal-button color="info" size="small" icon="edit" square outlined></bal-button>
-```
 
 ## Button Link
 
 <ClientOnly>  <docs-demo-bal-button-14></docs-demo-bal-button-14></ClientOnly>
 
-```html
-<bal-button link href="https://github.com/baloise/design-system-components" target="_blank">GitHub</bal-button>
-```
 
 
 ## API

@@ -10,41 +10,21 @@ Checkboxes allow the selection of multiple options from a set of options. They a
 
 <ClientOnly>  <docs-demo-bal-checkbox-22></docs-demo-bal-checkbox-22></ClientOnly>
 
-```html
-<bal-checkbox data-test-id="checkbox-normal">Label</bal-checkbox>
-<bal-checkbox checked>Checked</bal-checkbox>
-<bal-checkbox disabled data-test-id="checkbox-disabled">Disabled</bal-checkbox>
-```
 
 ## Switch
 
 <ClientOnly>  <docs-demo-bal-checkbox-23></docs-demo-bal-checkbox-23></ClientOnly>
 
-```html
-<bal-checkbox interface="switch">Label</bal-checkbox>
-<bal-checkbox checked interface="switch">Checked</bal-checkbox>
-<bal-checkbox disabled interface="switch">Disabled</bal-checkbox>
-```
 
 ## Inverted
 
 <ClientOnly>  <docs-demo-bal-checkbox-24></docs-demo-bal-checkbox-24></ClientOnly>
 
-```html
-<div class="has-background-info has-padding">
-  <bal-checkbox inverted>Label</bal-checkbox>
-  <bal-checkbox inverted checked>Checked</bal-checkbox>
-  <bal-checkbox inverted disabled>Disabled</bal-checkbox>
-</div>
-```
 
 ## With Links
 
 <ClientOnly>  <docs-demo-bal-checkbox-25></docs-demo-bal-checkbox-25></ClientOnly>
 
-```html
-<bal-checkbox> Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it. </bal-checkbox>
-```
 
 ## Events
 
@@ -52,20 +32,11 @@ Checkboxes allow the selection of multiple options from a set of options. They a
 
 <ClientOnly>  <docs-demo-bal-checkbox-26></docs-demo-bal-checkbox-26></ClientOnly>
 
-```html
-<bal-checkbox id="cb-2">Listen on changes</bal-checkbox>
-<p class="help" id="cb-2-result">false</p>
-```
 
 ### Change value
 
 <ClientOnly>  <docs-demo-bal-checkbox-27></docs-demo-bal-checkbox-27></ClientOnly>
 
-```html
-<bal-checkbox id="cb-3">Value</bal-checkbox>
-<button id="cb-3-trigger-1">Set to true</button>
-<button id="cb-3-trigger-2">Set to false</button>
-```
 
 
 ## API

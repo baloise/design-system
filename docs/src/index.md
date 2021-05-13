@@ -3,18 +3,46 @@ home: true
 heroImage: /assets/images/hero-image.svg
 tagline: The Design System is an open source project for styling awesome web applications that follow the Baloise corporate style guide.
 
-actionText: Explore our components →
-actionLink: /components/
+# actionText: Explore our components →
+# actionLink: /components/
 
-features:
-  - title: 📦 Agnostic
-    details: Our Design System work with many popular frameworks right out of the box.
-  - title: ⚡️ Fast Runtime
-    details: Web Components offered a solution by pushing more work to the browser for better performance.
-  - title: 🛠️ Rich Features
-    details: We offer a set of utilities like validators, filters, util functions and testing helpers.
+# features:
+#   - title: 📦 Agnostic
+#     details: Our Design System work with many popular frameworks right out of the box.
+#   - title: ⚡️ Fast Runtime
+#     details: Web Components offered a solution by pushing more work to the browser for better performance.
+#   - title: 🛠️ Rich Features
+#     details: We offer a set of utilities like validators, filters, util functions and testing helpers.
 footer: Apache-2.0 Licensed | Copyright © 2019-present Laurent Tauber, Gery Hirschfeld & Contributors
 ---
+
+<div class="bal-app home-links">
+  <a href="/design/" class>
+    <bal-icon name="nav-go-right" inverted></bal-icon>
+    <small>Getting started</small>
+    <span>For Designer</span>
+  </a>
+  <a href="/components/" class>
+    <bal-icon name="nav-go-right" inverted></bal-icon>
+    <small>Getting started</small>
+    <span>For Developers</span>
+  </a>
+</div>
+
+<div class="features" style="border: none; margin-top: 0; padding-top: 0;">
+  <div class="feature" >
+    <h2>📦 Agnostic</h2>
+    <p>Our Design System work with many popular frameworks right out of the box.</p>
+  </div>
+  <div class="feature" >
+    <h2>⚡️ Fast Runtime</h2>
+    <p>Web Components offered a solution by pushing more work to the browser for better performance.</p>
+  </div>
+  <div class="feature" >
+    <h2>🛠️ Rich Features</h2>
+    <p>We offer a set of utilities like validators, filters, util functions and testing helpers.</p>
+  </div>
+</div>
 
 ## Framework Support
 
@@ -24,7 +52,6 @@ footer: Apache-2.0 Licensed | Copyright © 2019-present Laurent Tauber, Gery Hir
     <h2>Vue.js</h2>
     <p>Baloise UI-Libary Vue.js specific building blocks on top of @baloise/library components.<br><br>
       <strong>Supported Versions</strong><br>
-      2.x.x ✔<br>
       3.x.x ✔<br><br>
     </p>
   </div>

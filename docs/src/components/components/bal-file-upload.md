@@ -10,10 +10,6 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 
 <ClientOnly>  <docs-demo-bal-file-upload-45></docs-demo-bal-file-upload-45></ClientOnly>
 
-```html
-<p id="bal-file-upload-messages"></p>
-<bal-file-upload id="bal-file-upload-example" accept="image/png,image/jpeg" max-files="3" max-file-size="1000000" max-bundle-size="1000000"></bal-file-upload>
-```
 
 
 ## API

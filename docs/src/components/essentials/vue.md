@@ -11,7 +11,7 @@ Before installing the Baloise UI Library setup to a Vue Project. We recommand to
 To install the Baloise Design System run the following command.
 
 ```bash
-npm install @baloise/design-system-components @baloise/design-system-components-vue --save
+npm install @baloise/design-system-components-vue --save
 ```
 
 :::tip
@@ -22,13 +22,9 @@ We recommand to use the [baloise/vue-starter-kit](https://github.com/baloise/vue
 We recommand to use **Sass** for styling in the Vue project to get access to the color variables and responsive helpers.
 :::
 
-::: warning
-If you need to support IE11 use the Vue.js 2.x.x library `@baloise/design-system-components-vue-2` instead.
-:::
-
 ## Add Plugin
 
-The `@baloise/design-system-components-vue` dependency includes a the plugin `balUiLibraryPlugin`, which loads by default the pollyfils and defines the components. Moreover, it adds the filtes and conrollers to your vue instance.
+The `@baloise/design-system-components-vue` dependency includes a the plugin `BaloiseDesignSystem`, which loads by default the pollyfils and defines the components. Moreover, it adds the filtes and conrollers to your vue instance.
 
 ### main.ts
 
@@ -36,11 +32,11 @@ The `@baloise/design-system-components-vue` dependency includes a the plugin `ba
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import { balUiLibraryPlugin } from '@baloise/design-system-components-vue'
+import { BaloiseDesignSystem } from '@baloise/design-system-components-vue'
 
 Vue.config.productionTip = false
 
-Vue.use(balUiLibraryPlugin)
+Vue.use(BaloiseDesignSystem)
 
 new Vue({
   router,
@@ -48,9 +44,18 @@ new Vue({
 }).$mount('#app')
 ```
 
+:::tip
+To use the Baloise Design System with [ViteJs](https://vitejs.dev/) add the following config:
+
+```typescript
+Vue.use(BaloiseDesignSystem, { useVite: false })
+```
+
+:::
+
 ## Styles
 
-To apply the Baloise Design System styles follow the instruction on the page [styling documentation](/guide/styles/installation.html).
+To apply the Baloise Design System styles and typography follow the instruction on the page [styling documentation](/components/essentials/styles.html).
 
 ## Usage
 

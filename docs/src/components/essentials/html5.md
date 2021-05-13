@@ -8,20 +8,22 @@ This section explains how the Baloise UI Library can be included in to your HTML
 
 The easiest way to use the library is via CDN.
 
-Add the following 2 references to your `<head></head>`
-
-::: warning
-The CDN script does not run in the IE11 Browser. To get IE11 up and running use the [Javascript](/) integration;
-:::
+Add the following 4 references to your `<head></head>`
 
 ```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/baloise-fonts.cdn.css" />
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
 />
+
 <script
   type="module"
   src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
+></script>
+<script
+  nomodule
+  src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
 ></script>
 ```
 
@@ -30,33 +32,25 @@ The CDN script does not run in the IE11 Browser. To get IE11 up and running use 
 Open the terminal and run the following command to install the Baloise UI Library.
 
 ```bash
+npm install @baloise/design-system-fonts --save
 npm install @baloise/design-system-components --save
 ```
 
 Add the following 2 references to your `<head></head>`
 
 ```html
+<link rel="stylesheet" href="node_modules/@baloise/design-system-fonts/lib/baloise-fonts.cdn.css" />
 <link
   rel="stylesheet"
   href="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
 />
+
 <script
   type="module"
   src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
 ></script>
+<script
+  nomodule
+  src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
+></script>
 ```
-
-## Server-Side
-
-There is also the possible to just include the styles with the css or scss file.
-
-```html
-<link
-  rel="stylesheet"
-  href="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
-/>
-```
-
-::: warning
-However, without the javascript the components like datepicker or toast cannot be used.
-:::

@@ -10,46 +10,11 @@ A dropdown shows and hides content close to the trigger element.
 
 <ClientOnly>  <docs-demo-bal-dropdown-39></docs-demo-bal-dropdown-39></ClientOnly>
 
-```html
-<bal-dropdown id="bal-dropdown-1" is-active="false" data-test-id="dropdown">
-  <bal-dropdown-trigger>
-    <bal-button id="bal-dropdown-1-trigger" aria-haspopup="true" aria-controls="dropdown-menu" color="is-info" outlined>
-      <span id="bal-dropdown-1-trigger-label">Trigger</span>
-    </bal-button>
-  </bal-dropdown-trigger>
-  <bal-dropdown-menu scrollable="100">
-    <div style="padding: 0 15px 15px">
-      <h5 class="title is-size-3" style="margin-top: 0px">Title</h5>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque error quae excepturi molestiae molestias amet ab, explicabo
-        dolor aperiam perferendis mollitia facilis harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque
-        error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis harum vero.
-      </p>
-    </div>
-  </bal-dropdown-menu>
-</bal-dropdown>
-```
 
 ## Input
 
 <ClientOnly>  <docs-demo-bal-dropdown-40></docs-demo-bal-dropdown-40></ClientOnly>
 
-```html
-<bal-dropdown id="bal-dropdown-2" scrollable="200" expanded>
-  <bal-dropdown-trigger>
-    <div class="control has-icons-right">
-      <input type="text" class="input clickable" placeholder="Click me" readonly id="bal-dropdown-2-trigger" >
-      <bal-icon name="caret-down" color="info" size="xsmall" ></bal-icon>
-    </div>
-  </bal-dropdown-trigger>
-  <bal-dropdown-menu>
-    <div style="padding: 0 15px 15px">
-      <h5 class="title is-size-3" style="margin-top: 0px">Some Content</h5>
-      <p>Some text</p>
-    </div>
-  </bal-dropdown-menu>
-</bal-dropdown>
-```
 
 
 ## API

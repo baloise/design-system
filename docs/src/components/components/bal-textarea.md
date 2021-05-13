@@ -10,10 +10,6 @@ A textarea allows a user to write and edit large texts.
 
 <ClientOnly>  <docs-demo-bal-textarea-100></docs-demo-bal-textarea-100></ClientOnly>
 
-```html
-<bal-textarea id="bal-textarea" name="comment" placeholder="Enter your comment"></bal-textarea>
-<bal-textarea id="bal-textarea-preview" name="comment" disabled placeholder="Enter your comment"></bal-textarea>
-```
 
 
 ## API

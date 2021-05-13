@@ -10,150 +10,26 @@ A list present content in a way that makes it easy to identify a specific item i
 
 <ClientOnly>  <docs-demo-bal-list-56></docs-demo-bal-list-56></ClientOnly>
 
-```html
-<bal-card>
-  <bal-card-content>
-    <bal-list disabled>
-      <bal-list-item>
-        <bal-list-item-content>
-          <bal-list-item-title>Single-line item</bal-list-item-title>
-        </bal-list-item-content>
-      </bal-list-item>
-      <bal-list-item>
-        <bal-list-item-content>
-          <bal-list-item-title>Two-line item</bal-list-item-title>
-          <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
-        </bal-list-item-content>
-      </bal-list-item>
-    </bal-list>
-  </bal-card-content>
-</bal-card>
-```
 
 ## With borders
 
 <ClientOnly>  <docs-demo-bal-list-57></docs-demo-bal-list-57></ClientOnly>
 
-```html
-<bal-card>
-  <bal-card-content>
-    <bal-list border>
-      <bal-list-item clickable>
-        <bal-list-item-content>
-          <bal-list-item-title>Single-line item</bal-list-item-title>
-        </bal-list-item-content>
-      </bal-list-item>
-      <bal-list-item clickable selected>
-        <bal-list-item-content>
-          <bal-list-item-title>Selected item</bal-list-item-title>
-        </bal-list-item-content>
-      </bal-list-item>
-      <bal-list-item disabled>
-        <bal-list-item-content>
-          <bal-list-item-title>Two-line item</bal-list-item-title>
-          <bal-list-item-subtitle>Disabled item</bal-list-item-subtitle>
-        </bal-list-item-content>
-      </bal-list-item>
-    </bal-list>
-  </bal-card-content>
-</bal-card>
-```
 
 ## Inverted
 
 <ClientOnly>  <docs-demo-bal-list-58></docs-demo-bal-list-58></ClientOnly>
 
-```html
-<bal-card inverted color="info">
-  <bal-card-content>
-    <bal-list inverted border>
-      <bal-list-item>
-        <bal-list-item-content>
-          <bal-list-item-title>Two-line item</bal-list-item-title>
-          <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
-        </bal-list-item-content>
-      </bal-list-item>
-      <bal-list-item>
-        <bal-list-item-content>
-          <bal-list-item-title>Two-line item</bal-list-item-title>
-          <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
-        </bal-list-item-content>
-      </bal-list-item>
-    </bal-list>
-  </bal-card-content>
-</bal-card>
-```
 
 ## With Icons
 
 <ClientOnly>  <docs-demo-bal-list-59></docs-demo-bal-list-59></ClientOnly>
 
-```html
-<bal-card>
-  <bal-card-content>
-    <bal-list>
-      <bal-list-item>
-        <bal-list-item-icon>
-          <bal-icon name="account"></bal-icon>
-        </bal-list-item-icon>
-        <bal-list-item-content>
-          <bal-list-item-title>Tony Stark</bal-list-item-title>
-          <bal-list-item-subtitle>Stark Industries</bal-list-item-subtitle>
-        </bal-list-item-content>
-      </bal-list-item>
-      <bal-list-item>
-        <bal-list-item-icon>
-          <bal-icon name="check"></bal-icon>
-        </bal-list-item-icon>
-        <bal-list-item-content>
-          <bal-list-item-title class="has-text-black">Avenger</bal-list-item-title>
-        </bal-list-item-content>
-      </bal-list-item>
-      <bal-list-item>
-        <bal-list-item-icon>
-          <bal-icon name="document"></bal-icon>
-        </bal-list-item-icon>
-        <bal-list-item-content>
-          <bal-list-item-title>Document.pdf</bal-list-item-title>
-          <bal-list-item-subtitle>20.03.1998</bal-list-item-subtitle>
-        </bal-list-item-content>
-        <bal-list-item-icon right>
-          <bal-icon name="download"></bal-icon>
-        </bal-list-item-icon>
-      </bal-list-item>
-    </bal-list>
-  </bal-card-content>
-</bal-card>
-```
 
 ## Link
 
 <ClientOnly>  <docs-demo-bal-list-60></docs-demo-bal-list-60></ClientOnly>
 
-```html
-<bal-card>
-  <bal-card-content>
-    <bal-list>
-      <bal-list-item href="https://google.com" target="_blank">
-        <bal-list-item-content>
-          <bal-list-item-title>Link A</bal-list-item-title>
-        </bal-list-item-content>
-        <bal-list-item-icon right>
-          <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-        </bal-list-item-icon>
-      </bal-list-item>
-      <bal-list-item disabled>
-        <bal-list-item-content>
-          <bal-list-item-title>Disabled Link B</bal-list-item-title>
-        </bal-list-item-content>
-        <bal-list-item-icon right>
-          <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-        </bal-list-item-icon>
-      </bal-list-item>
-    </bal-list>
-  </bal-card-content>
-</bal-card>
-```
 
 
 ## API

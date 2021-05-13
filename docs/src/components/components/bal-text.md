@@ -12,33 +12,16 @@ A text provides some additional helpers.
 
 <ClientOnly>  <docs-demo-bal-text-97></docs-demo-bal-text-97></ClientOnly>
 
-```html
-<bal-text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
-```
 
 ## Small
 
 <ClientOnly>  <docs-demo-bal-text-98></docs-demo-bal-text-98></ClientOnly>
 
-```html
-<bal-text small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
-```
 
 ## Colors
 
 <ClientOnly>  <docs-demo-bal-text-99></docs-demo-bal-text-99></ClientOnly>
 
-```html
-<bal-text color="primary"><strong>Primary</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
-<br>
-<bal-text color="info"><strong>Info</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
-<br>
-<bal-text color="success"><strong>Success</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
-<br>
-<bal-text color="warning"><strong>Warning</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
-<br>
-<bal-text color="danger"><strong>Danger</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>
-```
 
 
 ## API

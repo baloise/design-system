@@ -22,47 +22,11 @@ Toasts are used to inform the user with a simple text message.
 
 <ClientOnly>  <docs-demo-bal-toast-105></docs-demo-bal-toast-105></ClientOnly>
 
-```html
-<bal-button id="toast-default" color="success" data-test-id="toast">Show success Toast</bal-button>
-<bal-button id="toast-warning" color="warning" data-test-id="toast">Show warning Toast</bal-button>
-<bal-button id="toast-danger" color="danger" data-test-id="toast">Show error Toast</bal-button>
-```
 
 ## Colors
 
 <ClientOnly>  <docs-demo-bal-toast-106></docs-demo-bal-toast-106></ClientOnly>
 
-```html
-<bal-toast>
-  <strong>Default</strong>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-</bal-toast>
-<br>
-<bal-toast color="primary">
-  <strong>Primary</strong>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-</bal-toast>
-<br>
-<bal-toast color="info">
-  <strong>Info</strong>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-</bal-toast>
-<br>
-<bal-toast color="success">
-  <strong>Success</strong>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-</bal-toast>
-<br>
-<bal-toast color="warning">
-  <strong>Warning</strong>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-</bal-toast>
-<br>
-<bal-toast color="danger">
-  <strong>Danger</strong>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-</bal-toast>
-```
 
 
 ## API

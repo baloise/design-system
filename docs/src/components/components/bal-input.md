@@ -12,40 +12,21 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 <ClientOnly>  <docs-demo-bal-input-52></docs-demo-bal-input-52></ClientOnly>
 
-```html
-<bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname" data-test-id="input"></bal-input>
-<bal-input id="bal-input-1-preview" disabled placeholder="Enter your firstname"></bal-input>
-<bal-input id="bal-input-1-change" disabled placeholder="Enter your firstname"></bal-input>
-```
 
 ## HTML input
 
 <ClientOnly>  <docs-demo-bal-input-53></docs-demo-bal-input-53></ClientOnly>
 
-```html
-<input class="input" name="firstName" placeholder="Enter your firstname" >
-<input class="input" name="firstName" disabled placeholder="Enter your firstname" >
-```
 
 ## Inverted
 
 <ClientOnly>  <docs-demo-bal-input-54></docs-demo-bal-input-54></ClientOnly>
 
-```html
-<div class="has-background-info has-padding">
-  <bal-input inverted name="firstName" placeholder="Enter your firstname"></bal-input>
-  <bal-input inverted name="firstName" placeholder="Enter your firstname" disabled></bal-input>
-</div>
-```
 
 ## Number Input
 
 <ClientOnly>  <docs-demo-bal-input-55></docs-demo-bal-input-55></ClientOnly>
 
-```html
-<bal-input id="bal-input-only-numbers" only-numbers number-keyboard name="age" placeholder="Enter your age"></bal-input>
-<p class="help" id="bal-input-only-numbers-preview"></p>
-```
 
 
 ## API

@@ -90,7 +90,7 @@ function generateExamples(component) {
 function transformScripts(component) {
   const container = findContainer(component)
   const scriptContent = container.childNodes
-    .map(node => (node.rawTagName === 'script' ? getCodeExample(node) : ''))
+    .map(node => (node.rawTagName === 'script' ? getCodeExample(node.innerHTML) : ''))
     .filter(a => a.trim().length !== 0)
     .join(NEWLINE + NEWLINE)
   if (scriptContent.length > 0) {
@@ -109,41 +109,81 @@ function transformScripts(component) {
 
 function transformToMarkdown(component) {
   const container = findContainer(component)
+
   return container.childNodes
     .map(node => {
-      if (node.nodeType === 3) {
-        return node.rawText
-      }
+      // if (node.nodeType === 3) {
+      //   return {
+      //     type: 'p',
+      //     content: node.rawText,
+      //   }
+      // }
       if (node.nodeType === 1) {
         if (node.rawTagName === 'h2') {
-          return `## ${printRawText(node)}` + NEWLINE
+          return {
+            type: 'h2',
+            content: printRawText(node),
+          }
         }
         if (node.rawTagName === 'h3') {
-          return `### ${printRawText(node)}` + NEWLINE
+          return {
+            type: 'h3',
+            content: printRawText(node),
+          }
         }
         if (node.rawTagName === 'h4') {
-          return `#### ${printRawText(node)}` + NEWLINE
+          return {
+            type: 'h4',
+            content: printRawText(node),
+          }
         }
         if (node.rawTagName === 'p') {
-          return `${printRawText(node)}` + NEWLINE
+          return {
+            type: 'p',
+            content: printRawText(node),
+          }
         }
         if (node.rawTagName === 'section') {
-          const tag = `docs-demo-${component.tag}-${INDEX++}`
-          const content = getCodeExample(node)
-          writeDemoComponent(tag, content)
-          return [
-            `<ClientOnly>`,
-            `  <${tag}></${tag}>`,
-            `</ClientOnly>`,
-            NEWLINE + NEWLINE,
-            '```html',
-            content,
-            '```',
-            NEWLINE,
-          ].join('')
+          return {
+            type: 'template',
+            content: getCodeExample(node.innerHTML),
+          }
+        }
+        if (node.rawTagName === 'script') {
+          return {
+            type: 'script',
+            content: getCodeExample(node.innerHTML),
+          }
         }
       }
-      return ''
+      return false
+    })
+    .filter(a => a)
+    .map((ctx, index, list) => {
+      switch (ctx.type) {
+        case 'h2':
+          return `## ${ctx.content}` + NEWLINE
+        case 'h3':
+          return `### ${ctx.content}` + NEWLINE
+        case 'h4':
+          return `#### ${ctx.content}` + NEWLINE
+        case 'p':
+          return `${ctx.content}` + NEWLINE
+        case 'template':
+          let scriptContent = ''
+          if (index < list.length) {
+            if (list[index + 1] && list[index + 1].type === 'script') {
+              scriptContent = list[index + 1].content
+            }
+          }
+          const tag = `docs-demo-${component.tag}-${INDEX++}`
+          writeDemoComponent(tag, ctx.content, scriptContent)
+          return [`<ClientOnly>`, `  <${tag}></${tag}>`, `</ClientOnly>`, NEWLINE + NEWLINE].join('')
+        case 'script':
+          break
+        default:
+          return ctx.content
+      }
     })
     .filter(a => a)
     .filter(a => a.trim().length !== 0)
@@ -157,8 +197,8 @@ function printRawText(node) {
     .trim()
 }
 
-function getCodeExample(node) {
-  return node.innerHTML
+function getCodeExample(html) {
+  return html
     .toString()
     .split(NEWLINE)
     .map(line => line.substring(LEFT_WHITESPACE))
@@ -175,19 +215,97 @@ function findContainer(component) {
   return htmlParser.parse(containerElement.innerHTML)
 }
 
-async function writeDemoComponent(tag, content) {
-  const componentContent = [
-    '<template>',
-    '<div class="demo bal-app">',
-    content,
-    '</div>',
-    '</template>',
-    '<script>',
-    'export default {',
-    `  name: '${tag}'`,
-    '}',
-    '</script>',
-  ].join(NEWLINE)
+function replaceAll(str, find, replace) {
+  return str.replace(new RegExp(find, 'g'), replace)
+}
+
+async function writeDemoComponent(tag, content, scriptContent) {
+  const componentContent = `<template>
+  <div class="demo-box">
+    <div class="bal-app demo" v-html="template"></div>
+    <div style="background: #282c34; border-radius: 0px; position: relative">
+      <div class="demo-toolbar">
+        <button v-if="hasJavaScript" :class="{ 'active': activeTab === 'html', 'demo-tab': true }" @click="show('html')">HTML</button>
+        <button v-if="hasJavaScript" :class="{ 'active': activeTab === 'js', 'demo-tab': true }" @click="show('js')">JavaScript</button>
+
+        <form class="demo-sandbox" target="_blank" action="https://jsfiddle.net/api/post/library/pure" method="post">
+          <input type="hidden" name="js" :value="script" />
+          <input type="hidden" name="html" :value="html" />
+          <input type="hidden" name="panel_js" value="3" />
+          <input type="hidden" name="resources" :value="resources" />
+          <button type="submit" alt="JSFiddle">
+            <img src="/assets/images/js-fiddle.svg" />
+            <span>JSFiddle</span>
+          </button>
+        </form>
+      </div>
+      <div :class="{ 'demo-content': true, 'is-closed': isExpandable && !isOpen }">
+        <div v-if="activeTab === 'html'" class="language-html extra-class" v-html="highlightedHTML"></div>
+        <div v-if="activeTab === 'js'" class="language-js extra-class" v-html="highlightedJS"></div>
+      </div>
+      <button v-if="isExpandable" class="demo-show-more" @click="showMore($event)">
+        Show {{ isOpen ? 'less' : 'more' }}
+      </button>
+    </div>
+  </div>
+</template>
+<script>
+const highlight = require('../highlight.js')
+
+export default {
+  name: '${tag}',
+  data: () => {
+    return {
+      activeTab: 'html',
+      isOpen: false,
+      hasJavaScript: ${scriptContent.length > 0},
+      template: \`${content}\`,
+      script: \`${replaceAll(replaceAll(scriptContent, '`', '\\`'), '\\${', '\\${')}\`,
+      resources: [
+        'https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/baloise-fonts.cdn.css',
+        'https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.css',
+        'https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js',
+        'https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js',
+      ].join(','),
+    }
+  },
+  computed: {
+    isExpandable() {
+      const lines = (this.activeTab === 'html' ? this.template : this.script).split('\\n')
+      return lines.length > 16
+    },
+    maxHeight() {
+      if (this.isOpen) {
+        return 'auto'
+      }
+      return '260px'
+    },
+    highlightedHTML() {
+      return highlight(this.template, 'html')
+    },
+    highlightedJS() {
+      return highlight(this.script, 'js')
+    },
+    html() {
+      return [
+        '<div class="bal-app">',
+        this.template,
+        '</div>',
+      ].join('\\n')
+    },
+  },
+  methods: {
+    show(tab) {
+      this.activeTab = tab
+    },
+    showMore() {
+      this.isOpen = !this.isOpen
+    },
+  },
+}
+</script>
+`
+
   await file.save(path.join(__dirname, `../src/.vuepress/components/${tag}.vue`), componentContent)
 }
 

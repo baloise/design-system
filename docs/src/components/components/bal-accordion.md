@@ -10,11 +10,6 @@ An accordion hides secondary content and requires user interaction to display th
 
 <ClientOnly>  <docs-demo-bal-accordion-0></docs-demo-bal-accordion-0></ClientOnly>
 
-```html
-<bal-accordion class="box" open-label="Details einblenden" close-label="Details ausblenden" data-test-id="accordion">
-  <p class="has-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</bal-accordion>
-```
 
 ## Colors
 
@@ -22,21 +17,11 @@ The accordion has 2 colors of themes `is-info` and `is-primary`.
 
 <ClientOnly>  <docs-demo-bal-accordion-1></docs-demo-bal-accordion-1></ClientOnly>
 
-```html
-<bal-accordion class="box" color="info" open-label="Details einblenden" close-label="Details ausblenden">
-  <p class="has-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</bal-accordion>
-```
 
 ## Open accordion
 
 <ClientOnly>  <docs-demo-bal-accordion-2></docs-demo-bal-accordion-2></ClientOnly>
 
-```html
-<bal-accordion class="box" collapsed="false" open-label="Details einblenden" close-label="Details ausblenden">
-  <p class="has-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</bal-accordion>
-```
 
 ## Trigger label & icon
 
@@ -44,11 +29,6 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 
 <ClientOnly>  <docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
 
-```html
-<bal-accordion class="box" open-icon="edit" open-label="Bearbeiten" close-label="Schliessen" close-icon="close">
-  <p class="has-padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</bal-accordion>
-```
 
 
 ## API

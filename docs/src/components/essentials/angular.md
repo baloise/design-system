@@ -2,7 +2,7 @@
 
 <img style="width: 128px;" src="https://angular.io/assets/images/logos/angular/angular.svg" data-origin="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular">
 
-`@baloise/ui-libary-angular` combines the core Baloise Design System experience with the tooling and APIs that are tailored to Angular Developers.
+`@baloise/design-system-components-angular` combines the core Baloise Design System experience with the tooling and APIs that are tailored to Angular Developers.
 
 ::: warning
 Angular 11.x.x does not support IE11 from scratch. Go to [IE 11 Support](./angular.html#ie-11-support) to get your Angular App IE11 ready.
@@ -15,7 +15,7 @@ Angular 11.x.x does not support IE11 from scratch. Go to [IE 11 Support](./angul
 Create a Angular project with the [Angular CLI](https://cli.angular.io/).
 
 ::: tip
-Chose **SCSS** as the stylesheet format, because it gives access to the internal Baloise UI Library variables like colors and much more.
+Chose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
 :::
 
 ```bash
@@ -25,12 +25,12 @@ cd bal-app
 ng serve
 ```
 
-## Install Baloise UI Library
+## Install Baloise Design System
 
 Use npm to install the Angular proxy library.
 
 ```bash
-npm install @baloise/design-system-components @baloise/design-system-components-angular --save
+npm install @baloise/design-system-components-angular --save
 ```
 
 ::: tip
@@ -42,9 +42,9 @@ npm install @ngx-translate/core @ngx-translate/http-loader --save
 
 :::
 
-### Apply the styles and assets
+## Apply styles
 
-Go to the [styling documentation](/guide/styles/installation.html) and add the fonts and styles.
+To apply the Baloise Design System styles and typography follow the instruction on the page [styling documentation](/components/essentials/styles.html).
 
 ### index.html
 
@@ -62,20 +62,20 @@ To have light grey background just add the css class `bal-app-background` to the
 
 ## Import the ngModule
 
-Import the `BalUiLibraryModule` and add it to your angular module. To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
+Import the `BaloiseDesignSystemModule` and add it to your angular module. To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
 
 ### app.module.ts
 
-```typescript
+```typescript{3,9,12}
 import { BrowserModule } from '@angular/platform-browser'
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
-import { BalUiLibraryModule } from '@baloise/design-system-components-angular'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 
 import { AppComponent } from './app.component'
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, BalUiLibraryModule.forRoot()],
+  imports: [BrowserModule, BaloiseDesignSystemModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -91,7 +91,7 @@ npm start
 
 ## Usage
 
-In this section shows usage example of the features from UI Library.
+In this section shows usage example of the features from Baloise Design System.
 
 ::: tip
 More usage example are in our Angular example app [Link](https://github.com/baloise/ui-library/tree/master/examples/angular).
@@ -99,7 +99,7 @@ More usage example are in our Angular example app [Link](https://github.com/balo
 
 ### Component
 
-Every Angular component, how uses the components from the UI Library must be declared in a ngModule with the schema `CUSTOM_ELEMENTS_SCHEMA`.
+Every Angular component, how uses the components from the Baloise Design System must be declared in a ngModule with the schema `CUSTOM_ELEMENTS_SCHEMA`.
 
 ```xml
 // app.component.html
@@ -124,7 +124,7 @@ export class AppComponent {
 
 ### Services
 
-The UI Library has 2 services `BalToastService` and `BalSnackbarService` to create new notices.
+The Baloise Design System has 2 services `BalToastService` and `BalSnackbarService` to create new notices.
 Just import the service into the component.
 
 ```typescript
@@ -171,7 +171,7 @@ IE 11
 
 ### Step 3 - Polyfills
 
-The Baloise UI Library & Angular uses features from ES6+, so we have to install pollyfills to support.
+The Baloise Baloise Design System & Angular uses features from ES6+, so we have to install pollyfills to support.
 All the pollyfills in Angular are managed in the file `polyfills.ts`. First we need to install the required pollyfils.
 
 ```bash

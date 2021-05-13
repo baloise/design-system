@@ -10,67 +10,26 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 <ClientOnly>  <docs-demo-bal-radio-71></docs-demo-bal-radio-71></ClientOnly>
 
-```html
-<bal-radio-group value="2" id="radio-example">
-  <bal-radio name="radio-example" value="1">Label 1</bal-radio>
-  <bal-radio name="radio-example" value="2">Label 2</bal-radio>
-  <bal-radio name="radio-example" value="3">Label 3</bal-radio>
-  <bal-radio name="radio-example" value="4" disabled>Label Disabled</bal-radio>
-</bal-radio-group>
-<p class="help" id="radio-example-result"></p>
-<bal-button id="radio-example-action">Go to 3</bal-button>
-```
 
 ## Inverted
 
 <ClientOnly>  <docs-demo-bal-radio-72></docs-demo-bal-radio-72></ClientOnly>
 
-```html
-<div class="has-background-blue has-padding">
-  <bal-radio-group value="3" inverted>
-    <bal-radio inverted name="radio-example-inverted" value="1">Label 1</bal-radio>
-    <bal-radio inverted name="radio-example-inverted" value="2">Label 2</bal-radio>
-    <bal-radio inverted name="radio-example-inverted" value="3">Label 3</bal-radio>
-    <bal-radio inverted name="radio-example-inverted" value="4" disabled>Label Disabled</bal-radio>
-  </bal-radio-group>
-</div>
-```
 
 ## With Links
 
 <ClientOnly>  <docs-demo-bal-radio-73></docs-demo-bal-radio-73></ClientOnly>
 
-```html
-<bal-radio-group value="1">
-  <bal-radio name="link-example" value="1">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
-  <bal-radio name="link-example" value="2">Label 2 without a link</bal-radio>
-</bal-radio-group>
-```
 
 ## Select Button
 
 <ClientOnly>  <docs-demo-bal-radio-74></docs-demo-bal-radio-74></ClientOnly>
 
-```html
-<bal-radio-group value="1" interface="select-button" data-test-id="radio">
-  <bal-radio name="select-button-example" value="1">Label 1</bal-radio>
-  <bal-radio name="select-button-example" value="2">Label 2</bal-radio>
-  <bal-radio name="select-button-example" value="3" disabled>Label Disabled</bal-radio>
-</bal-radio-group>
-```
 
 ### Inverted
 
 <ClientOnly>  <docs-demo-bal-radio-75></docs-demo-bal-radio-75></ClientOnly>
 
-```html
-<div class="has-background-blue has-padding">
-  <bal-radio-group value="yes" interface="select-button" inverted>
-    <bal-radio name="select-button-example-2" value="yes">Yes</bal-radio>
-    <bal-radio name="select-button-example-2" value="no">No</bal-radio>
-  </bal-radio-group>
-</div>
-```
 
 
 ## API

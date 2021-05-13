@@ -12,51 +12,21 @@ Tabs are used to structure the information in sub section on the same page.
 
 <ClientOnly>  <docs-demo-bal-tabs-87></docs-demo-bal-tabs-87></ClientOnly>
 
-```html
-<bal-tabs action action-label="Action" data-test-id="tabs">
-  <bal-tab-item value="tab-a" label="Tab A" active="true">Content of Tab A</bal-tab-item>
-  <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-  <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-  <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
-</bal-tabs>
-```
 
 ## Sub Navigation
 
 <ClientOnly>  <docs-demo-bal-tabs-88></docs-demo-bal-tabs-88></ClientOnly>
 
-```html
-<bal-tabs rounded>
-  <bal-tab-item value="tab-a" label="Tab A" active="true">Content of Tab A</bal-tab-item>
-  <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-  <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-</bal-tabs>
-```
 
 ## Expanded
 
 <ClientOnly>  <docs-demo-bal-tabs-89></docs-demo-bal-tabs-89></ClientOnly>
 
-```html
-<bal-tabs rounded expanded>
-  <bal-tab-item value="tab-a" label="Tab A" active="true">Content of Tab A</bal-tab-item>
-  <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-  <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-</bal-tabs>
-```
 
 ## Stepper
 
 <ClientOnly>  <docs-demo-bal-tabs-90></docs-demo-bal-tabs-90></ClientOnly>
 
-```html
-<bal-tabs interface="steps">
-  <bal-tab-item value="step-a" label="Lorem ipsum dolor sit amet consectetur" done> Step A Content </bal-tab-item>
-  <bal-tab-item value="step-b" label="Step B" active>Step B Content</bal-tab-item>
-  <bal-tab-item value="step-c" label="Step C" failed>Step C Content</bal-tab-item>
-  <bal-tab-item value="step-d" label="Step D" disabled>Step D Content</bal-tab-item>
-</bal-tabs>
-```
 
 
 ## API

@@ -15,7 +15,7 @@
     <div class="column is-4 has-background-cyan">
       <p class="has-text-white is-bold">cyan (primary)</p>
       <p class="has-text-white is-small">#009ee7</p>
-    </div>    
+    </div>
     <div class="column is-4 has-background-blue-light-text">
       <p class="has-text-white is-bold">blue-light-text</p>
       <p class="has-text-white is-small">#7188b8</p>
@@ -54,7 +54,7 @@
     <div class="column is-4 has-background-white-bis">
       <p class="has-text-blue is-bold">white-bis</p>
       <p class="has-text-blue is-small">#fafafa</p>
-    </div>    
+    </div>
     <div class="column is-4 has-background-white">
       <p class="has-text-blue is-bold">white</p>
       <p class="has-text-blue is-small">#ffffff</p>

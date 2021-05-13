@@ -1,6 +1,6 @@
-# Style Installation
+# Styles
 
-For the baloise style you need to provide the fonts and stylesheets.
+For the Baloise style you need to provide the typography and stylesheets.
 
 ## Usage
 
@@ -16,23 +16,38 @@ Add the `bal-app` to your root element. Within this css-class we are able to use
 ...
 ```
 
-## Fonts
+## Typography
 
-Download the 2 used fonts of our Baloise style guide.
+Next step is to provide the fonts to our web application. To do so we recommand the tool [copyfiles](https://www.npmjs.com/package/copyfiles) to copy the font files into your asset folder.
 
-- MetaStd-Normal
-  - [woff2](https://github.com/baloise/ui-library/raw/master/resources/fonts/MetaStd-Normal.woff2)
-  - [woff](https://github.com/baloise/ui-library/raw/master/resources/fonts/MetaStd-Normal.woff)
-  - [truetype](https://github.com/baloise/ui-library/raw/master/resources/fonts/MetaStd-Normal.ttf)
-- MetaStd-Medium
-  - [woff2](https://github.com/baloise/ui-library/raw/master/resources/fonts/MetaStd-Medium.woff2)
-  - [woff](https://github.com/baloise/ui-library/raw/master/resources/fonts/MetaStd-Medium.woff)
-  - [truetype](https://github.com/baloise/ui-library/raw/master/resources/fonts/MetaStd-Medium.ttf)
+```bash
+npm install copyfiles --save-dev
+```
 
-Create a folders in the public space like `assets/fonts` and place the donwloaded fonts in there.
-To use the fonts in the css styles import it with the following snippet.
+After installing our copyfiles dependency we need to define the copy command in our **package.json** file. Add a new script called `copy:fonts` and adjust the second path to your application.
+
+:::tip
+For angular apps the default path would be **src/assets/fonts** instead of **public/assets/fonts**
+:::
+
+```json{2}
+"scripts": {
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts"
+}
+```
+
+Then we add the defined script `copy:fonts` in our `postinstall` script. Every time we install dependencies the `copy:fonts` script gets executed at the end.
+
+```json{2}
+"scripts": {
+  "postinstall": "npm run copy:fonts",
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts"
+}
+```
 
 ## Sass (recommended)
+
+We recommand to use dart-sass and not node-sass.
 
 ### Install
 
@@ -74,24 +89,10 @@ p {
 
 Configure the fonts in a css file.
 
-```css
-@font-face {
-  font-family: 'MetaPro';
-  font-style: normal;
-  font-weight: 400;
-  font-display: fallback;
-  src: local('MetaPro'), local('MetaStd-Normal'), url('/assets/fonts/MetaStd-Normal.woff2') format('woff2'), url('/assets/fonts/MetaStd-Normal.woff')
-      format('woff'), url('/assets/fonts/MetaStd-Normal.ttf') format('truetype');
-}
+The package `@baloise/design-system-fonts` also delivers css file with the config for the typography.
 
-@font-face {
-  font-family: 'MetaPro';
-  font-style: normal;
-  font-weight: 700;
-  font-display: fallback;
-  src: local('MetaStd-Medium'), url('/assets/fonts/MetaStd-Medium.woff2') format('woff2'), url('/assets/fonts/MetaStd-Medium.woff')
-      format('woff'), url('/assets/fonts/MetaStd-Medium.ttf') format('truetype');
-}
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/baloise-fonts.css" />
 ```
 
 ### Add global styles
@@ -112,5 +113,6 @@ Put the link tag into your main html file.
 Import the css directly into your main TypeScript or JavaScript file.
 
 ```typescript
+import '@baloise/design-system-components/dist/design-system-fonts/lib/baloise-fonts.css'
 import '@baloise/design-system-components/dist/design-system-components/design-system-components.css'
 ```

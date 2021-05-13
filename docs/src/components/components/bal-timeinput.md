@@ -8,33 +8,21 @@
 
 <ClientOnly>  <docs-demo-bal-timeinput-101></docs-demo-bal-timeinput-101></ClientOnly>
 
-```html
-<bal-timeinput id="bal-timeinput-example" value="12:30"></bal-timeinput>
-```
 
 ## Inverted style
 
 <ClientOnly>  <docs-demo-bal-timeinput-102></docs-demo-bal-timeinput-102></ClientOnly>
 
-```html
-<bal-timeinput id="bal-timeinput-example" value="12:30" inverted></bal-timeinput>
-```
 
 ## Min and max time
 
 <ClientOnly>  <docs-demo-bal-timeinput-103></docs-demo-bal-timeinput-103></ClientOnly>
 
-```html
-<bal-timeinput value="12:30" min-time="09:30" max-time="18:00"></bal-timeinput>
-```
 
 ## Disabled
 
 <ClientOnly>  <docs-demo-bal-timeinput-104></docs-demo-bal-timeinput-104></ClientOnly>
 
-```html
-<bal-timeinput value="23:10" disabled></bal-timeinput>
-```
 
 
 ## API

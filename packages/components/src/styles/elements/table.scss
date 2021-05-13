@@ -26,6 +26,7 @@ $table-striped-row-even-hover-background-color: $blue-light-hover;
 table.table {
   display: table !important;
   border-spacing: 0;
+  margin: 0;
 
   thead {
     tr {
