@@ -1,7 +1,7 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
 import { isNil } from 'lodash'
 import { findItemLabel } from '../../helpers/helpers'
-import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey } from '../../utils'
+import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey, isBackspaceKey } from '../../utils'
 import { addValue, findLabelByValue, includes, preventDefault, removeValue, startsWith, validateAfterBlur } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 
@@ -145,6 +145,7 @@ export class Select {
   @Listen('keydown', { target: 'window' })
   handleKeyDown(event: KeyboardEvent) {
     if (this.isDropdownOpen) {
+      console.log(event)
       if (isArrowDownKey(event) || isArrowUpKey(event)) {
         preventDefault(event)
         this.navigateWithArrowKey(event)
@@ -156,6 +157,11 @@ export class Select {
       }
       if (isEscapeKey(event)) {
         this.cancel()
+      }
+      if (isBackspaceKey(event) && this.typeahead && this.multiple) {
+        if (this.inputElement.value === '' && this.value.length > 0) {
+          this.removeValue(this.value[this.value.length - 1])
+        }
       }
       if (!this.typeahead && event.key.length === 1) {
         this.focusOptionByLabel(event.key)
@@ -508,7 +514,8 @@ export class Select {
   }
 
   private handleKeyPress = async (event: KeyboardEvent) => {
-    if (isEnterKey(event) && !this.isDropdownOpen) {
+    if (isSpaceKey(event) && !this.isDropdownOpen) {
+      preventDefault(event)
       await this.open()
     }
     this.balKeyPress.emit(event)
@@ -537,6 +544,11 @@ export class Select {
       }
       this.balInput.emit(this.inputValue)
     }
+  }
+
+  private handleOptionMouseEnter = (index: number) => {
+    console.warn(index)
+    this.focusIndex = index
   }
 
   render() {
@@ -626,6 +638,7 @@ export class Select {
                   'has-checkbox': this.multiple,
                 }}
                 tabIndex={-1}
+                onMouseEnter={() => this.handleOptionMouseEnter(index)}
                 onClick={() => this.optionSelected(option)}
               >
                 <div class="select-option__content">

@@ -20,6 +20,13 @@ export function isEscapeKey(event: KeyboardEvent): boolean {
 }
 
 /**
+ * Returns `true` if the keyboard event was triggered by the `Backspace` key
+ */
+export function isBackspaceKey(event: KeyboardEvent): boolean {
+  return event.key === 'Backspace'
+}
+
+/**
  * Returns `true` if the keyboard event was triggered by the `ArrowDown` key
  */
 export function isArrowDownKey(event: KeyboardEvent): boolean {

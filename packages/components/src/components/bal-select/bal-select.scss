@@ -119,7 +119,10 @@
       }
     }
 
-    &:hover,
+    &:hover {
+      background: $white;
+    }
+
     &.is-focused {
       background: $dropdown-item-hover-background-color;
 
@@ -128,9 +131,7 @@
       }
     }
 
-    &.is-focused:not(.is-selected):not(.has-checkbox),
-    &:focus:not(.is-selected):not(.has-checkbox),
-    &:hover:not(.is-selected):not(.has-checkbox) {
+    &.is-focused:not(.is-selected):not(.has-checkbox) {
       padding-left: 30px !important;
     }
   }
