@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property      | Attribute       | Description                                                                       | Type                                          | Default        |
@@ -20,6 +21,7 @@
 | `typeahead`   | `typeahead`     | If `true` the user can search by typing into the input field.                     | `boolean`                                     | `false`        |
 | `value`       | --              | Selected option values. Could also be passed as a string, which gets transformed. | `string[]`                                    | `[]`           |
 
+
 ## Events
 
 | Event         | Description                                                        | Type                         |
@@ -32,6 +34,7 @@
 | `balInput`    | Emitted when a keyboard input occurred.                            | `CustomEvent<string>`        |
 | `balKeyPress` | Emitted when the input has focus and key from the keyboard go hit. | `CustomEvent<KeyboardEvent>` |
 
+
 ## Methods
 
 ### `cancel() => Promise<void>`
@@ -42,6 +45,8 @@ Cancel the dropdown
 
 Type: `Promise<void>`
 
+
+
 ### `clear() => Promise<void>`
 
 Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
@@ -49,6 +54,8 @@ Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
 #### Returns
 
 Type: `Promise<void>`
+
+
 
 ### `close() => Promise<void>`
 
@@ -58,6 +65,8 @@ Closes the dropdown
 
 Type: `Promise<void>`
 
+
+
 ### `open() => Promise<void>`
 
 Opens the dropdown
@@ -65,6 +74,8 @@ Opens the dropdown
 #### Returns
 
 Type: `Promise<void>`
+
+
 
 ### `select(value: string) => Promise<void>`
 
@@ -74,6 +85,8 @@ Select option by passed value
 
 Type: `Promise<void>`
 
+
+
 ### `setFocus() => Promise<void>`
 
 Sets the focus on the input element
@@ -81,6 +94,9 @@ Sets the focus on the input element
 #### Returns
 
 Type: `Promise<void>`
+
+
+
 
 ## Dependencies
 
@@ -94,7 +110,6 @@ Type: `Promise<void>`
 - [bal-checkbox](../bal-checkbox)
 
 ### Graph
-
 ```mermaid
 graph TD;
   bal-select --> bal-tag
@@ -106,6 +121,6 @@ graph TD;
   style bal-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

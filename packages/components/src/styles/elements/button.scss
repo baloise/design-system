@@ -13,7 +13,7 @@
   appearance: none;
   transition: background 0.1s ease, color 0.1s ease;
   min-height: 50px;
-  text-decoration: none;
+  text-decoration: none !important;
 
   &::-moz-focus-inner {
     border: 0;
@@ -35,6 +35,10 @@
   &.has-round-top-corners:not(.has-round-bottom-corners) button {
     border-bottom-left-radius: $radius-none !important;
     border-bottom-right-radius: $radius-none !important;
+  }
+
+  bal-text {
+    margin-top: -2px;
   }
 
   &:focus span,

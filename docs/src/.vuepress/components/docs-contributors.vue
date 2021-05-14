@@ -1,12 +1,6 @@
 <template>
   <div class="features" style="border: none; margin-top: 0; padding-top: 0">
-    <a
-      class="feature"
-      style="flex-basis: 20%; max-width: 20%"
-      v-for="contributor in contributors"
-      :key="contributor.name"
-      :href="contributor.url"
-    >
+    <a class="feature" v-for="contributor in contributors" :key="contributor.name" :href="contributor.url">
       <h2>
         <img style="width: 64px" :src="contributor.avatar" :alt="contributor.name" />
       </h2>
@@ -40,5 +34,18 @@ img {
 
 .home .features {
   justify-content: flex-start !important;
+  flex-direction: row;
+}
+
+.feature {
+  flex-basis: 50% !important;
+  max-width: 50% !important;
+}
+
+@media only screen and (min-width: 420px) {
+  .feature {
+    flex-basis: 20% !important;
+    max-width: 20% !important;
+  }
 }
 </style>

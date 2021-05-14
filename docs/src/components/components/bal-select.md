@@ -1,17 +1,5 @@
 # bal-select <Badge text="Two-way binding"/>
 
-A select is a collection of options, where the user can select a single one or multiple.
-
-## Option interface
-
-```typescript
-export interface BalOptionValue<T> {
-  value: string
-  label: string
-  data?: T
-}
-```
-
 <!-- START: human documentation top -->
 
 A select is a collection of options, where the user can select a single one or multiple.

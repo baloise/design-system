@@ -30,25 +30,29 @@ h1, h2, h3, h4, h5, p, b, strong, td, th, a, li, .footer
     position: relative
     display: flex
     background: #039
+    background: #009fe6
     border-radius: 4px
-    padding: 14px 48px 18px 16px
+    padding: 14px 80px 18px 24px
     margin: 0 8px
     flex-direction: column
     justify-content: center
     align-items: flex-start
     text-align left
-    min-width: 260px
     bal-icon
       position: absolute
-      right: 16px
+      right: 24px
       top: 25px
     &:hover
       background: #002b82
+      background: #039
     small
       font-size: 0.8em
       font-weight: 700
       text-transform: uppercase
       color: #95adda
+      color: #fafafa
+      color: #d1dbed
+      margin-bottom: 4px
     span
       font-size: 1.5em
       font-weight: 700
@@ -138,3 +142,10 @@ header > .links
  .search-box
    margin-left: 1rem;
    margin-right: 0;
+
+@media (max-width: 719px)
+  .home .feature
+    padding: 0 !important;
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+

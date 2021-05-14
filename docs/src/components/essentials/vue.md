@@ -6,7 +6,7 @@
 
 ## Install
 
-Before installing the Baloise UI Library setup to a Vue Project. We recommand to use this starter kit [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit) or use the [Vue CLI](https://cli.vuejs.org/guide/installation.html) with Sass and TypeScript.
+Before installing the Baloise Design System setup to a Vue Project. We recommand to use this starter kit [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit) or use the [Vue CLI](https://cli.vuejs.org/guide/installation.html) with Sass and TypeScript.
 
 To install the Baloise Design System run the following command.
 

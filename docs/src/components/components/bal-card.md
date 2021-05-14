@@ -84,9 +84,15 @@ The position the action buttons to the right side just add the attribute `right`
 
 #### Properties
 
-| Attribute | Description                   | Type     | Default |
-| :-------- | :---------------------------- | :------- | :------ |
-| **icon**  | Name of the icon like `edit`. | `string` | `''`    |
+| Attribute      | Description                                                                         | Type                                       | Default    |
+| :------------- | :---------------------------------------------------------------------------------- | :----------------------------------------- | :--------- |
+| **disabled**   | If `true`, the user cannot interact with the button.                                | `boolean`                                  | `false`    |
+| **href**       | Specifies the URL of the page the link goes to                                      | `string , undefined`                       |            |
+| **icon**       | Name of the icon like `edit`.                                                       | `string`                                   | `''`       |
+| **icon-right** | Name of the right button icon                                                       | `string`                                   | `''`       |
+| **loading**    | If `true` the label is hidden and a loading spinner is shown instead.               | `boolean`                                  | `false`    |
+| **target**     | Specifies where to display the linked URL. Only applies when an `href` is provided. | `" _parent" , "_blank" , "_self" , "_top"` | `'_self'`  |
+| **type**       | The type of button.                                                                 | `"button" , "reset" , "submit"`            | `'button'` |
 
 ### bal-card-content
 

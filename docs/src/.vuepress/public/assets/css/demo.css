@@ -15,12 +15,20 @@
 
 .demo-box {
   position: relative;
+  margin-left: -24px;
+  margin-right: -24px;
+}
+
+.demo-box div[class*='language-'] {
+  margin: 0 !important;
 }
 
 .demo-box div[class*='language-'] pre {
   padding-top: 0 !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .demo-box div[class*='language-']:before {
@@ -70,7 +78,7 @@ button.demo-tab.active {
 }
 
 .demo-toolbar {
-  padding: 16px 16px 0 16px;
+  padding: 16px 24px 0 24px;
   position: relative;
   min-height: 35px;
   z-index: 10;
@@ -79,7 +87,7 @@ button.demo-tab.active {
 .demo-sandbox {
   position: absolute;
   top: 16px;
-  right: 16px;
+  right: 24px;
   z-index: 10;
 }
 
@@ -116,6 +124,8 @@ button.demo-sandbox span {
   overflow: hidden;
   margin-top: -10px;
   z-index: 0;
+  height: auto;
+  max-height: none;
 }
 
 .demo-content.is-closed {
@@ -140,4 +150,11 @@ button.demo-sandbox span {
 
 .demo-show-more:hover {
   opacity: 0.5;
+}
+
+@media only screen and (min-width: 420px) {
+  .demo-box {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

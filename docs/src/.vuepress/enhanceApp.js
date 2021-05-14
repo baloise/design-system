@@ -16,4 +16,12 @@ export default ({
   applyPolyfills().then(() => {
     defineCustomElements()
   })
+
+  window.addEventListener('load', function(event) {
+    const list = document.getElementsByClassName('site-name')
+    if (list && list.length > 0) {
+      const el = list[0]
+      el.innerHTML = '<b>Baloise</b> Design System'
+    }
+  })
 }

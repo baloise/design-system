@@ -17,16 +17,22 @@ footer: Apache-2.0 Licensed | Copyright © 2019-present Laurent Tauber, Gery Hir
 ---
 
 <div class="bal-app home-links">
-  <a href="/design/" class>
-    <bal-icon name="nav-go-right" inverted></bal-icon>
-    <small>Getting started</small>
-    <span>For Designer</span>
-  </a>
-  <a href="/components/" class>
-    <bal-icon name="nav-go-right" inverted></bal-icon>
-    <small>Getting started</small>
-    <span>For Developers</span>
-  </a>
+  <div class="columns">
+    <div class="column">
+      <a href="/design/" class>
+        <bal-icon name="nav-go-right" inverted></bal-icon>
+        <small>Getting started</small>
+        <span>For Designer</span>
+      </a>
+    </div>
+    <div class="column">
+      <a href="/components/" class>
+        <bal-icon name="nav-go-right" inverted></bal-icon>
+        <small>Getting started</small>
+        <span>For Developers</span>
+      </a>
+    </div>
+  </div>
 </div>
 
 <div class="features" style="border: none; margin-top: 0; padding-top: 0;">
