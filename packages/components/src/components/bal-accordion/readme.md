@@ -61,13 +61,11 @@ Type: `Promise<void>`
 ### Depends on
 
 - [bal-button](../bal-button)
-- [bal-icon](../bal-icon)
 
 ### Graph
 ```mermaid
 graph TD;
   bal-accordion --> bal-button
-  bal-accordion --> bal-icon
   bal-button --> bal-spinner
   bal-button --> bal-icon
   bal-button --> bal-text

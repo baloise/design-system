@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface, Listen } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface, Listen, State } from '@stencil/core'
 import { findItemLabel, isDescendant } from '../../helpers/helpers'
 
 @Component({
@@ -12,6 +12,7 @@ export class Radio implements ComponentInterface {
   private inputEl?: HTMLInputElement
 
   @Element() el!: HTMLElement
+  @State() hasLabel: boolean = true
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -142,7 +143,9 @@ export class Radio implements ComponentInterface {
             ev.stopPropagation()
           }}
         >
-          <slot></slot>
+          <span>
+            <slot></slot>
+          </span>
         </label>
       </Host>
     )

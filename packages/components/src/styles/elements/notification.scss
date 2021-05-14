@@ -5,7 +5,7 @@
   border: 1px solid $blue-light-line;
   color: $text;
   border-radius: $radius-large;
-  padding: 20px;
+  padding: 22px 24px 26px 24px;
 
   &.is-primary {
     background: $blue-light;
@@ -45,7 +45,7 @@
 }
 
 @include desktop() {
-  .notification {
-    padding: 40px;
-  }
+  // .notification {
+  //   padding: 40px;
+  // }
 }

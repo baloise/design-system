@@ -15,7 +15,33 @@ h5 {
 p,
 a {
   font-family: $body-family;
-  line-height: $bal_lineheight_20px;
+  line-height: 24px;
+  margin: 0;
+  word-break: break-word;
+}
+
+.is-size-1 {
+  line-height: 52px;
+}
+
+.is-size-2 {
+  line-height: 44px;
+}
+
+.is-size-3 {
+  line-height: 36px;
+}
+
+.is-size-4 {
+  line-height: 28px;
+}
+
+.is-size-5 {
+  line-height: 20px;
+}
+
+.is-size-6 {
+  line-height: 20px;
 }
 
 h1.subtitle,
@@ -26,24 +52,22 @@ h5.subtitle {
   font-weight: $weight-normal;
 }
 
-p,
-a {
-  margin: 0;
-  word-break: break-word;
-}
-
 p.is-small,
 a.is-small {
   font-size: $size-small;
-  line-height: $bal_lineheight_15px;
 }
 
 p.is-bold,
-a.is-bold,
+a.is-bold {
+  font-weight: $weight-bold;
+}
+
 .title.is-size-3,
 .title.is-size-4,
-.title.is-size-5 {
+.title.is-size-5,
+.title.is-size-6 {
   font-weight: $weight-bold;
+  letter-spacing: -1%;
 }
 
 a.is-link:focus,

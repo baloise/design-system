@@ -11,10 +11,10 @@
     align-self: center;
     display: inline-flex;
     animation-duration: 150ms;
-    margin: 0 0 0.5em 0;
+    margin: 0 0 8px 0;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
     border-radius: $radius-large;
-    padding: 20px 40px 20px 40px;
+    padding: 24px 40px 24px 40px;
     pointer-events: auto;
     max-width: 600px;
     flex-grow: 1;
@@ -48,7 +48,7 @@
     }
 
     span.toast-message {
-      margin-right: 50px;
+      margin-right: 48px;
     }
 
     .close {
@@ -56,7 +56,7 @@
       top: 50%;
       right: 40px;
       margin-top: -8px;
-      margin-right: -5px;
+      margin-right: -8px;
     }
   }
 }

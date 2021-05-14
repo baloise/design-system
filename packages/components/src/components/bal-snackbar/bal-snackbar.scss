@@ -10,7 +10,7 @@
     align-self: flex-end;
     display: inline-flex;
     animation-duration: 150ms;
-    margin: 0.5em 0 0 0;
+    margin: 8px 0 0 0;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
     border-radius: $radius-large;
     background: $white;
@@ -20,14 +20,14 @@
     flex-grow: 1;
     font-size: $size-small;
     flex-direction: column !important;
-    row-gap: 20px;
+    row-gap: 24px;
     position: relative;
 
     .snackbar-header {
       @include font-smoothing();
       display: flex;
       align-items: center;
-      column-gap: 10px;
+      column-gap: 8px;
       font-size: $size-large;
       font-weight: $weight-bold;
 

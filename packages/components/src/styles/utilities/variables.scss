@@ -102,9 +102,9 @@ $weight-semibold: 700;
 $weight-bold: 700;
 
 $size-1: 44px;
-$size-2: 33px;
-$size-3: 22px;
-$size-4: 18px;
+$size-2: 36px;
+$size-3: 28px;
+$size-4: 20px;
 $size-5: 16px;
 $size-6: 14px;
 $size-7: 12px;
@@ -237,7 +237,7 @@ $box-link-active-shadow: $shadow-hover;
  * Button
  */
 $button-family: $family-sans-serif;
-$button-padding-horizontal: 30px;
+$button-padding-horizontal: 32px;
 $button-focus-box-shadow-size: 0 0 0 0;
 $button-focus-box-shadow-color: transparent;
 
@@ -247,7 +247,7 @@ $button-focus-box-shadow-color: transparent;
 $notification-background-color: $white-bis; // was $background from bulma before
 $notification-code-background-color: $scheme-main;
 $notification-radius: 0;
-$notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+$notification-padding: 16px;
 
 /**
  * Dropdown

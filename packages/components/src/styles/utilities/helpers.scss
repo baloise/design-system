@@ -12,6 +12,26 @@
   background: $white-bis;
 }
 
+.has-border-blue {
+  border: 1px solid $blue-line;
+}
+
+.has-border-blue-light {
+  border: 1px solid $blue-light-line;
+}
+
+.has-border-blue-inverted {
+  border: 1px solid $blue-line-inverted;
+}
+
+.has-border-grey {
+  border: 1px solid $grey;
+}
+
+.has-border-radius {
+  border-radius: $radius;
+}
+
 .clickable {
   cursor: pointer !important;
   pointer-events: visible !important;

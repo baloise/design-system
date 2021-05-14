@@ -24,7 +24,7 @@ bal-icon[role='button'] {
   z-index: 100;
   background: $blue;
   color: $white;
-  padding: 30px;
+  padding: 32px;
   border-radius: 0;
 
   .title {
@@ -32,7 +32,7 @@ bal-icon[role='button'] {
   }
 
   .buttons {
-    margin-top: 30px;
+    margin-top: 24px;
   }
 }
 
@@ -41,7 +41,7 @@ bal-icon[role='button'] {
     position: absolute;
     border-radius: $radius-large;
     margin-left: 40px;
-    top: -30px;
+    top: -32px;
     bottom: initial;
     left: initial;
     right: initial;
@@ -53,6 +53,6 @@ bal-icon[role='button'] {
 
 @include desktop() {
   .bal-hint-content {
-    min-width: 460px;
+    min-width: 464px;
   }
 }

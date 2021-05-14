@@ -2,10 +2,8 @@
 
 :host {
   position: relative;
-  min-height: 26px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: inline-block;
+  min-height: 24px;
   outline: none;
 
   &.bal-checkbox {
@@ -21,7 +19,7 @@
 
     input[type='checkbox'] + label {
       cursor: pointer;
-      padding-left: 34px;
+      padding-left: 32px;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
@@ -31,21 +29,22 @@
     label {
       @include font-smoothing();
       @include margin(0);
+      margin-top: -2px;
 
       line-height: 1;
-      padding-left: 34px;
+      padding-left: 32px;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
       color: $blue;
       font-family: $body-family;
-      font-size: $size-small;
+      font-size: $size-normal !important;
     }
 
     @include desktop() {
       label {
-        font-size: $size-small;
+        font-size: $size-normal;
       }
     }
 

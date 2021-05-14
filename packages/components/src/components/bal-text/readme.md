@@ -21,7 +21,6 @@ A text provides some additional helpers.
  - [bal-list-item-subtitle](../bal-list-item-subtitle)
  - [bal-list-item-title](../bal-list-item-title)
  - [bal-snackbar](../bal-snackbar)
- - [bal-teaser-steps](../bal-teaser-steps)
 
 ### Graph
 ```mermaid
@@ -30,7 +29,6 @@ graph TD;
   bal-list-item-subtitle --> bal-text
   bal-list-item-title --> bal-text
   bal-snackbar --> bal-text
-  bal-teaser-steps --> bal-text
   style bal-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -84,19 +84,19 @@
   .bal-list-item-content {
     display: flex;
     width: 100%;
-    min-height: 50px;
+    min-height: 48px;
   }
 
   .bal-list-item-icon {
     align-self: flex-start;
     display: inline-flex;
     min-width: 24px;
-    margin: 12px 0;
-    margin-right: 20px;
+    margin: 16px 0;
+    margin-right: 24px;
 
     &.is-right {
       margin-right: 0;
-      margin-left: 20px;
+      margin-left: 24px;
     }
   }
 
@@ -116,7 +116,7 @@
     position: static;
     box-sizing: border-box;
     max-width: 100%;
-    padding: 0 1em;
+    padding: 0 16px;
     display: block;
     text-overflow: ellipsis;
     white-space: nowrap;

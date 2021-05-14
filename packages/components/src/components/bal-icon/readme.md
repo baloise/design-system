@@ -20,7 +20,6 @@
 
 ### Used by
 
- - [bal-accordion](../bal-accordion)
  - [bal-button](../bal-button)
  - [bal-datepicker](../bal-datepicker)
  - [bal-field-control](../bal-field-control)
@@ -29,13 +28,11 @@
  - [bal-pagination](../bal-pagination)
  - [bal-select](../bal-select)
  - [bal-snackbar](../bal-snackbar)
- - [bal-teaser-steps](../bal-teaser-steps)
  - [bal-toast](../bal-toast)
 
 ### Graph
 ```mermaid
 graph TD;
-  bal-accordion --> bal-icon
   bal-button --> bal-icon
   bal-datepicker --> bal-icon
   bal-field-control --> bal-icon
@@ -44,7 +41,6 @@ graph TD;
   bal-pagination --> bal-icon
   bal-select --> bal-icon
   bal-snackbar --> bal-icon
-  bal-teaser-steps --> bal-icon
   bal-toast --> bal-icon
   style bal-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

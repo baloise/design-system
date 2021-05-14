@@ -69,9 +69,19 @@
     }
 
     .control {
-      & > bal-checkbox,
+      min-height: 36px;
+
+      & > bal-input,
+      & > bal-datepicker {
+        margin-top: 1px;
+      }
+
+      & > bal-checkbox {
+        margin-top: 8px;
+      }
+
       & > bal-radio-group {
-        margin-top: 10px;
+        margin-top: 4px;
       }
     }
 
@@ -99,7 +109,8 @@
         color: $danger !important;
       }
 
-      input.input {
+      input.input,
+      bal-select .dropdown-trigger > div {
         border-color: $danger !important;
       }
 

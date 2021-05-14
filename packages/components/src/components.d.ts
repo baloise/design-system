@@ -12,7 +12,6 @@ import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
 import { AutocompleteTypes, InputTypes } from "./types/interfaces";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
-import { BalTeaserStepOption } from "./components/bal-teaser-step/bal-teaser-step.type";
 export namespace Components {
     interface BalAccordion {
         /**
@@ -1109,71 +1108,6 @@ export namespace Components {
         "size": 'small' | 'medium' | 'large' | '';
         "transparent": boolean;
     }
-    interface BalTeaserStep {
-        /**
-          * Tell's if the step is active and the content is visible.
-         */
-        "active": boolean;
-        /**
-          * If `true` the step is disabled.
-         */
-        "disabled": boolean;
-        /**
-          * If `true` the step is done.
-         */
-        "done": boolean;
-        /**
-          * Options of the step like label, value etc.
-         */
-        "getOptions": () => Promise<BalTeaserStepOption>;
-        /**
-          * If `true` the step is hidden in the steps navigation.
-         */
-        "hidden": boolean;
-        /**
-          * Label for the step.
-         */
-        "label": string;
-        /**
-          * Sets the step active.
-         */
-        "setActive": (active: boolean) => Promise<void>;
-        /**
-          * This is the key of the step.
-         */
-        "value": string;
-    }
-    interface BalTeaserSteps {
-        /**
-          * Label for back button
-         */
-        "backLabel": string;
-        /**
-          * If `true` the steps navigation has back button.
-         */
-        "hasBack": boolean;
-        /**
-          * If `true` the steps navigation is hidden.
-         */
-        "hidden": boolean;
-        /**
-          * If `true` a the style is ready for a dark background.
-         */
-        "inverted": boolean;
-        /**
-          * If `true` the navigation is handled by the component
-         */
-        "navigation": boolean;
-        /**
-          * Go to tab with the given value
-         */
-        "select": (step: BalTeaserStepOption) => Promise<void>;
-        /**
-          * Hides the navigation circles and adds the step label instead
-         */
-        "showLabel": boolean;
-        "sync": () => Promise<void>;
-    }
     interface BalText {
         /**
           * The theme type of the toast. Given by bulma our css framework.
@@ -1662,18 +1596,6 @@ declare global {
         prototype: HTMLBalTagElement;
         new (): HTMLBalTagElement;
     };
-    interface HTMLBalTeaserStepElement extends Components.BalTeaserStep, HTMLStencilElement {
-    }
-    var HTMLBalTeaserStepElement: {
-        prototype: HTMLBalTeaserStepElement;
-        new (): HTMLBalTeaserStepElement;
-    };
-    interface HTMLBalTeaserStepsElement extends Components.BalTeaserSteps, HTMLStencilElement {
-    }
-    var HTMLBalTeaserStepsElement: {
-        prototype: HTMLBalTeaserStepsElement;
-        new (): HTMLBalTeaserStepsElement;
-    };
     interface HTMLBalTextElement extends Components.BalText, HTMLStencilElement {
     }
     var HTMLBalTextElement: {
@@ -1758,8 +1680,6 @@ declare global {
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-tabs": HTMLBalTabsElement;
         "bal-tag": HTMLBalTagElement;
-        "bal-teaser-step": HTMLBalTeaserStepElement;
-        "bal-teaser-steps": HTMLBalTeaserStepsElement;
         "bal-text": HTMLBalTextElement;
         "bal-textarea": HTMLBalTextareaElement;
         "bal-timeinput": HTMLBalTimeinputElement;
@@ -2878,74 +2798,6 @@ declare namespace LocalJSX {
         "size"?: 'small' | 'medium' | 'large' | '';
         "transparent"?: boolean;
     }
-    interface BalTeaserStep {
-        /**
-          * Tell's if the step is active and the content is visible.
-         */
-        "active"?: boolean;
-        /**
-          * If `true` the step is disabled.
-         */
-        "disabled"?: boolean;
-        /**
-          * If `true` the step is done.
-         */
-        "done"?: boolean;
-        /**
-          * If `true` the step is hidden in the steps navigation.
-         */
-        "hidden"?: boolean;
-        /**
-          * Label for the step.
-         */
-        "label"?: string;
-        /**
-          * This is the key of the step.
-         */
-        "value"?: string;
-    }
-    interface BalTeaserSteps {
-        /**
-          * Label for back button
-         */
-        "backLabel"?: string;
-        /**
-          * If `true` the steps navigation has back button.
-         */
-        "hasBack"?: boolean;
-        /**
-          * If `true` the steps navigation is hidden.
-         */
-        "hidden"?: boolean;
-        /**
-          * If `true` a the style is ready for a dark background.
-         */
-        "inverted"?: boolean;
-        /**
-          * If `true` the navigation is handled by the component
-         */
-        "navigation"?: boolean;
-        /**
-          * Emitted when the back button is clicked.
-         */
-        "onBalBackClick"?: (event: CustomEvent<void>) => void;
-        /**
-          * Emitted when the link element has clicked
-         */
-        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
-        /**
-          * Emitted when the changes has finished.
-         */
-        "onBalTeaserStepChange"?: (event: CustomEvent<BalTeaserStepOption>) => void;
-        /**
-          * Emitted when the step circle is clicked.
-         */
-        "onBalTeaserStepClick"?: (event: CustomEvent<BalTeaserStepOption>) => void;
-        /**
-          * Hides the navigation circles and adds the step label instead
-         */
-        "showLabel"?: boolean;
-    }
     interface BalText {
         /**
           * The theme type of the toast. Given by bulma our css framework.
@@ -3158,8 +3010,6 @@ declare namespace LocalJSX {
         "bal-tab-item": BalTabItem;
         "bal-tabs": BalTabs;
         "bal-tag": BalTag;
-        "bal-teaser-step": BalTeaserStep;
-        "bal-teaser-steps": BalTeaserSteps;
         "bal-text": BalText;
         "bal-textarea": BalTextarea;
         "bal-timeinput": BalTimeinput;
@@ -3229,8 +3079,6 @@ declare module "@stencil/core" {
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
-            "bal-teaser-step": LocalJSX.BalTeaserStep & JSXBase.HTMLAttributes<HTMLBalTeaserStepElement>;
-            "bal-teaser-steps": LocalJSX.BalTeaserSteps & JSXBase.HTMLAttributes<HTMLBalTeaserStepsElement>;
             "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
             "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
             "bal-timeinput": LocalJSX.BalTimeinput & JSXBase.HTMLAttributes<HTMLBalTimeinputElement>;
