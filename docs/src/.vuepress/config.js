@@ -68,12 +68,17 @@ module.exports = {
           collapsable: false,
           children: ['colors', 'typography', 'spacing', 'icons'],
         },
+        {
+          title: 'Figma',
+          collapsable: false,
+          children: ['figma/getting-started'],
+        },
       ],
       '/components/': [
         {
           title: 'Getting Started',
           collapsable: true,
-          children: ['', 'essentials/html5', 'essentials/vue', 'essentials/angular', 'essentials/styles'],
+          children: ['essentials/html5', 'essentials/vue', 'essentials/angular', 'essentials/styles'],
         },
         {
           title: 'Foundation',

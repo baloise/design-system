@@ -290,6 +290,12 @@ Returns `true` if the keyboard event was triggered by the `Space` key
 
 Returns `true` if the keyboard event was triggered by the `Escape` key
 
+### isBackspaceKey
+
+`isBackspaceKey(event: KeyboardEvent) => boolean`
+
+Returns `true` if the keyboard event was triggered by the `Backspace` key
+
 ### isArrowDownKey
 
 `isArrowDownKey(event: KeyboardEvent) => boolean`

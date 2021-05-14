@@ -8,17 +8,17 @@ A spinner is a animated graphic that lets the user know content is being loaded.
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-spinner-84></docs-demo-bal-spinner-84></ClientOnly>
+<ClientOnly>  <docs-demo-bal-spinner-85></docs-demo-bal-spinner-85></ClientOnly>
 
 
 ## Small
 
-<ClientOnly>  <docs-demo-bal-spinner-85></docs-demo-bal-spinner-85></ClientOnly>
+<ClientOnly>  <docs-demo-bal-spinner-86></docs-demo-bal-spinner-86></ClientOnly>
 
 
 ## Inverted
 
-<ClientOnly>  <docs-demo-bal-spinner-86></docs-demo-bal-spinner-86></ClientOnly>
+<ClientOnly>  <docs-demo-bal-spinner-87></docs-demo-bal-spinner-87></ClientOnly>
 
 
 

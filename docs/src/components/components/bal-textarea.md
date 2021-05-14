@@ -8,7 +8,7 @@ A textarea allows a user to write and edit large texts.
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-textarea-100></docs-demo-bal-textarea-100></ClientOnly>
+<ClientOnly>  <docs-demo-bal-textarea-99></docs-demo-bal-textarea-99></ClientOnly>
 
 
 

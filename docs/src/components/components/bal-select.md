@@ -18,27 +18,27 @@ export interface BalOptionValue<T> {
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-select-76></docs-demo-bal-select-76></ClientOnly>
+<ClientOnly>  <docs-demo-bal-select-77></docs-demo-bal-select-77></ClientOnly>
 
 
 ### Typeahead
 
-<ClientOnly>  <docs-demo-bal-select-77></docs-demo-bal-select-77></ClientOnly>
+<ClientOnly>  <docs-demo-bal-select-78></docs-demo-bal-select-78></ClientOnly>
 
 
 ### Multi-Select
 
-<ClientOnly>  <docs-demo-bal-select-78></docs-demo-bal-select-78></ClientOnly>
+<ClientOnly>  <docs-demo-bal-select-79></docs-demo-bal-select-79></ClientOnly>
 
 
 ### Multi-Select with typeahead
 
-<ClientOnly>  <docs-demo-bal-select-79></docs-demo-bal-select-79></ClientOnly>
+<ClientOnly>  <docs-demo-bal-select-80></docs-demo-bal-select-80></ClientOnly>
 
 
 ### Remote Typeahead
 
-<ClientOnly>  <docs-demo-bal-select-80></docs-demo-bal-select-80></ClientOnly>
+<ClientOnly>  <docs-demo-bal-select-81></docs-demo-bal-select-81></ClientOnly>
 
 
 

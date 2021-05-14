@@ -18,12 +18,12 @@ A snackbar is used to inform the user with a simple text message and a action.
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-snackbar-82></docs-demo-bal-snackbar-82></ClientOnly>
+<ClientOnly>  <docs-demo-bal-snackbar-83></docs-demo-bal-snackbar-83></ClientOnly>
 
 
 ## Colors
 
-<ClientOnly>  <docs-demo-bal-snackbar-83></docs-demo-bal-snackbar-83></ClientOnly>
+<ClientOnly>  <docs-demo-bal-snackbar-84></docs-demo-bal-snackbar-84></ClientOnly>
 
 
 

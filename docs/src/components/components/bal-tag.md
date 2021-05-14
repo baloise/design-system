@@ -8,22 +8,22 @@ A tag highlights a label for quick recognition.
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-tag-91></docs-demo-bal-tag-91></ClientOnly>
+<ClientOnly>  <docs-demo-bal-tag-92></docs-demo-bal-tag-92></ClientOnly>
 
 
 ## Size
 
-<ClientOnly>  <docs-demo-bal-tag-92></docs-demo-bal-tag-92></ClientOnly>
+<ClientOnly>  <docs-demo-bal-tag-93></docs-demo-bal-tag-93></ClientOnly>
 
 
 ## Closable
 
-<ClientOnly>  <docs-demo-bal-tag-93></docs-demo-bal-tag-93></ClientOnly>
+<ClientOnly>  <docs-demo-bal-tag-94></docs-demo-bal-tag-94></ClientOnly>
 
 
 ## Dense
 
-<ClientOnly>  <docs-demo-bal-tag-94></docs-demo-bal-tag-94></ClientOnly>
+<ClientOnly>  <docs-demo-bal-tag-95></docs-demo-bal-tag-95></ClientOnly>
 
 
 

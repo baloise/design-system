@@ -61,7 +61,7 @@
   </table>
 </docs-demo>
 
-````html
+```html
 <table class="table is-fullwidth is-striped is-hoverable">
   <thead>
     <th>Selected</th>
@@ -117,4 +117,3 @@
   </tbody>
 </table>
 ```
-````
