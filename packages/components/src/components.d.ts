@@ -192,9 +192,33 @@ export namespace Components {
     }
     interface BalCardButton {
         /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "disabled": boolean;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href": string | undefined;
+        /**
           * Name of the icon like `edit`.
          */
         "icon": string;
+        /**
+          * Name of the right button icon
+         */
+        "iconRight": string;
+        /**
+          * If `true` the label is hidden and a loading spinner is shown instead.
+         */
+        "loading": boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": '_blank' | ' _parent' | '_self' | '_top';
+        /**
+          * The type of button.
+         */
+        "type": 'button' | 'reset' | 'submit';
     }
     interface BalCardContent {
         /**
@@ -1929,9 +1953,33 @@ declare namespace LocalJSX {
     }
     interface BalCardButton {
         /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string | undefined;
+        /**
           * Name of the icon like `edit`.
          */
         "icon"?: string;
+        /**
+          * Name of the right button icon
+         */
+        "iconRight"?: string;
+        /**
+          * If `true` the label is hidden and a loading spinner is shown instead.
+         */
+        "loading"?: boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: '_blank' | ' _parent' | '_self' | '_top';
+        /**
+          * The type of button.
+         */
+        "type"?: 'button' | 'reset' | 'submit';
     }
     interface BalCardContent {
         /**
