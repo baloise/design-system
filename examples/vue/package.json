@@ -24,23 +24,20 @@
     "cypress:open": "cypress open"
   },
   "dependencies": {
-    "@baloise/design-system-components": "^0.1.1",
-    "@baloise/design-system-components-vue": "^0.1.0",
-    "@baloise/design-system-fonts": "^0.1.0",
-    "@baloise/design-system-icons": "^0.1.0",
+    "@baloise/design-system-components-vue": "^0.5.0",
     "@baloise/vue-axios": "^1.0.0",
     "axios": "^0.21.1",
-    "core-js": "^3.12.0",
-    "vee-validate": "^4.3.5",
+    "core-js": "^3.12.1",
+    "vee-validate": "^4.3.6",
     "vue": "^3.0.11",
     "vue-i18n": "^9.1.6",
-    "vue-router": "^4.0.6"
+    "vue-router": "^4.0.8"
   },
   "devDependencies": {
-    "@baloise/design-system-testing": "0.0.0",
+    "@baloise/design-system-testing": "^0.5.0",
     "@types/jest": "^26.0.23",
-    "@typescript-eslint/eslint-plugin": "^4.22.1",
-    "@typescript-eslint/parser": "^4.22.1",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
     "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-plugin-e2e-cypress": "^4.5.13",
     "@vue/cli-plugin-eslint": "^4.5.13",
@@ -55,10 +52,10 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^7.9.0",
-    "prettier": "^2.2.1",
-    "sass": "^1.32.12",
+    "prettier": "^2.3.0",
+    "sass": "^1.32.13",
     "sass-loader": "^8.0.2",
-    "start-server-and-test": "^1.12.1",
+    "start-server-and-test": "^1.12.2",
     "typescript": "~4.1.5"
   }
 }

@@ -33,7 +33,7 @@ export class FormComponent {
   }
 
   setCommentDisabled() {
-    this.form.get('age')?.disable()
+    this.form.get('comment')?.disable()
   }
 
   updateName() {
