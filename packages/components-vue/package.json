@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components-vue",
-  "version": "0.2.0",
+  "version": "0.5.0",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -39,11 +39,11 @@
   ],
   "license": "Apache-2.0",
   "devDependencies": {
-    "@types/lodash": "^4.14.168",
+    "@types/lodash": "^4.14.169",
     "change-case": "^4.1.2",
     "lodash": "^4.17.21",
     "rimraf": "^3.0.2",
-    "rollup": "^2.47.0",
+    "rollup": "^2.48.0",
     "typescript": "^4.2.4",
     "vue": "^3.0.11"
   },
@@ -52,7 +52,7 @@
   },
   "gitHead": "e0d380309b487bcedee06d025645f5aab37ab192",
   "dependencies": {
-    "@baloise/design-system-components": "^0.2.0"
+    "@baloise/design-system-components": "^0.5.0"
   },
   "vetur": {
     "tags": "dist/vetur/tags.json",
