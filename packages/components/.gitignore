@@ -2,6 +2,7 @@ dist/
 www/
 loader/
 docs/
+src/assets/fonts/
 
 *~
 *.sw[mnpcod]
