@@ -40,7 +40,7 @@ export const AccordionContainableMixin: Mixin = <T>({ selector, creator }: Mixin
    * It checks that the accordion label contains the given texts
    */
   contains: (content: string) => {
-    cy.get(selector).find('.trigger-label > .label').contains(content)
+    cy.get(selector).find('.sc-bal-accordion > button').contains(content)
     return creator()
   },
 })

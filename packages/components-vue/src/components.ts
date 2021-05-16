@@ -259,6 +259,36 @@ export const BalCardButton = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
+    type: {
+      type: String,
+      default: 'button',
+      required: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    href: {
+      type: String,
+      default: undefined,
+      required: false,
+    },
+    target: {
+      type: String,
+      default: '_self',
+      required: false,
+    },
+    iconRight: {
+      type: String,
+      default: '',
+      required: false,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   emits: {
 
@@ -1710,89 +1740,6 @@ export const BalTag = /*@__PURE__*/ defineComponent({
     balCloseClick: (value: MouseEvent) => true,
   },
   setup: defineSetup('bal-tag', ['balCloseClick'], undefined)
-})
-
-export const BalTeaserStep = /*@__PURE__*/ defineComponent({
-  name: 'bal-teaser-step',
-  props: {
-    value: {
-      type: String,
-      default: '',
-      required: false,
-    },
-    label: {
-      type: String,
-      default: '',
-      required: false,
-    },
-    hidden: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    done: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    active: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-  },
-  emits: {
-
-  },
-  setup: defineSetup('bal-teaser-step', [], undefined)
-})
-
-export const BalTeaserSteps = /*@__PURE__*/ defineComponent({
-  name: 'bal-teaser-steps',
-  props: {
-    inverted: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    hidden: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    hasBack: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    navigation: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    backLabel: {
-      type: String,
-      default: '',
-      required: false,
-    },
-    showLabel: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-  },
-  emits: {
-    balNavigate: (value: MouseEvent) => true,
-    balTeaserStepChange: (value: Lib.BalTeaserStepOption) => true,
-    balBackClick: (value: void) => true,
-    balTeaserStepClick: (value: Lib.BalTeaserStepOption) => true,
-  },
-  setup: defineSetup('bal-teaser-steps', ['balNavigate','balTeaserStepChange','balBackClick','balTeaserStepClick'], undefined)
 })
 
 export const BalText = /*@__PURE__*/ defineComponent({

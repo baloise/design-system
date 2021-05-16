@@ -145,7 +145,6 @@ export class Select {
   @Listen('keydown', { target: 'window' })
   handleKeyDown(event: KeyboardEvent) {
     if (this.isDropdownOpen) {
-      console.log(event)
       if (isArrowDownKey(event) || isArrowUpKey(event)) {
         preventDefault(event)
         this.navigateWithArrowKey(event)

@@ -99,13 +99,13 @@ export class BalCardActions {
 
 export declare interface BalCardButton extends Components.BalCardButton {}
 @ProxyCmp({
-  inputs: ['icon']
+  inputs: ['disabled', 'href', 'icon', 'iconRight', 'loading', 'target', 'type']
 })
 @Component({
   selector: 'bal-card-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['icon']
+  inputs: ['disabled', 'href', 'icon', 'iconRight', 'loading', 'target', 'type']
 })
 export class BalCardButton {
   protected el: HTMLElement;
@@ -1200,56 +1200,6 @@ export class BalTag {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balCloseClick']);
-  }
-}
-
-
-export declare interface BalTeaserStep extends Components.BalTeaserStep {}
-@ProxyCmp({
-  inputs: ['active', 'disabled', 'done', 'hidden', 'label', 'value'],
-  methods: ['getOptions', 'setActive']
-})
-@Component({
-  selector: 'bal-teaser-step',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  inputs: ['active', 'disabled', 'done', 'hidden', 'label', 'value']
-})
-export class BalTeaserStep {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-import { BalTeaserStepOption } from '@baloise/design-system-components';
-export declare interface BalTeaserSteps extends Components.BalTeaserSteps {}
-@ProxyCmp({
-  inputs: ['backLabel', 'hasBack', 'hidden', 'inverted', 'navigation', 'showLabel'],
-  methods: ['select', 'sync']
-})
-@Component({
-  selector: 'bal-teaser-steps',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  inputs: ['backLabel', 'hasBack', 'hidden', 'inverted', 'navigation', 'showLabel'],
-  outputs: ['balNavigate', 'balTeaserStepChange', 'balBackClick', 'balTeaserStepClick']
-})
-export class BalTeaserSteps {
-  /** Emitted when the link element has clicked */
-  balNavigate!: EventEmitter<CustomEvent<MouseEvent>>;
-  /** Emitted when the changes has finished. */
-  balTeaserStepChange!: EventEmitter<CustomEvent<BalTeaserStepOption>>;
-  /** Emitted when the back button is clicked. */
-  balBackClick!: EventEmitter<CustomEvent<void>>;
-  /** Emitted when the step circle is clicked. */
-  balTeaserStepClick!: EventEmitter<CustomEvent<BalTeaserStepOption>>;
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['balNavigate', 'balTeaserStepChange', 'balBackClick', 'balTeaserStepClick']);
   }
 }
 

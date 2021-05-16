@@ -61,8 +61,6 @@ BalSpinner,
 BalTabItem,
 BalTabs,
 BalTag,
-BalTeaserStep,
-BalTeaserSteps,
 BalText,
 BalTextarea,
 BalTimeinput,
@@ -129,8 +127,6 @@ export const applyComponents = (app: App) => {
   app.component('BalTabItem', BalTabItem)
   app.component('BalTabs', BalTabs)
   app.component('BalTag', BalTag)
-  app.component('BalTeaserStep', BalTeaserStep)
-  app.component('BalTeaserSteps', BalTeaserSteps)
   app.component('BalText', BalText)
   app.component('BalTextarea', BalTextarea)
   app.component('BalTimeinput', BalTimeinput)
