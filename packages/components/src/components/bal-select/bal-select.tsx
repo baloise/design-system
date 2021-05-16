@@ -165,6 +165,9 @@ export class Select {
       if (!this.typeahead && event.key.length === 1) {
         this.focusOptionByLabel(event.key)
       }
+      if (isSpaceKey(event) && !this.typeahead) {
+        preventDefault(event)
+      }
     }
   }
 
@@ -404,16 +407,18 @@ export class Select {
   }
 
   private async scrollToLabel(label: string) {
-    const option = this.optionArray.find(o => startsWith(o.label || '', label))
-    if (!isNil(option)) {
-      const optionElement = this.el.querySelector<HTMLButtonElement>(`button#${option.id}`)
-      if (!isNil(optionElement)) {
-        const index = this.optionArray.indexOf(option)
-        this.focusIndex = index
-        this.scrollTo(optionElement.offsetTop)
+    if (label !== ' ') {
+      const option = this.optionArray.find(o => startsWith(o.label || '', label))
+      if (!isNil(option)) {
+        const optionElement = this.el.querySelector<HTMLButtonElement>(`button#${option.id}`)
+        if (!isNil(optionElement)) {
+          const index = this.optionArray.indexOf(option)
+          this.focusIndex = index
+          this.scrollTo(optionElement.offsetTop)
+        }
       }
+      this.labelToScrollTo = ''
     }
-    this.labelToScrollTo = ''
   }
 
   /********************************************************
