@@ -45,7 +45,7 @@
     "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* src/assets/fonts",
     "docs": "npm run build:filters && npm run build:utils && npm run build:validators && npm run docs:compile && npm run build:components",
     "docs:compile": "stencil build --docs --es5 --prod --config stencil.docs.config.ts",
-    "docs:templates": "stencil build --es5 --prod --config stencil.templates.config.ts",
+    "docs:templates": "npm run copy:fonts && stencil build --es5 --prod --config stencil.templates.config.ts",
     "serve": "npm run copy:fonts && stencil build --docs --dev --watch --serve --config stencil.dev.config.ts",
     "test": "stencil test --spec --e2e --config stencil.test.config.ts",
     "test:watch": "stencil test --spec --e2e --watchAll",
