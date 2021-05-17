@@ -19,12 +19,19 @@
 
     input[type='checkbox'] + label {
       cursor: pointer;
-      padding-left: 32px;
       line-height: 23px;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
+    }
+
+    label span {
+      @include font-smoothing();
+      display: block;
+      padding-left: 32px;
+      font-family: $body-family;
+      font-size: $size-normal !important;
     }
 
     label {
@@ -33,7 +40,6 @@
       margin-top: -2px;
 
       line-height: 1;
-      padding-left: 32px;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;

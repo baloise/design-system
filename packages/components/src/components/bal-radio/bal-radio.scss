@@ -7,7 +7,7 @@
   text-align: center;
   text-decoration: none;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  // white-space: nowrap;
   user-select: none;
   vertical-align: top; // the better option for most scenarios
   vertical-align: -webkit-baseline-middle; // the best for those that support it
@@ -48,6 +48,7 @@
       font-family: $body-family;
 
       span {
+        display: block;
         padding-left: 32px;
         font-size: $size-normal !important;
       }
