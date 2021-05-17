@@ -32,7 +32,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@baloise/design-system-components": "^0.5.0",
-    "@baloise/design-system-icons": "^0.5.0",
     "tslib": "^2.2.0"
   },
   "peerDependencies": {
