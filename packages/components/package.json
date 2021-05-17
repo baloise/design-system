@@ -35,7 +35,7 @@
     "loader/"
   ],
   "scripts": {
-    "build": "npm run clean && npm run build:filters && npm run build:utils && npm run build:validators && npm run build:compile && npm run build:components",
+    "build": "npm run clean && npm run copy:fonts && npm run build:filters && npm run build:utils && npm run build:validators && npm run build:compile && npm run build:components",
     "build:validators": "node .scripts/validators.script.js && node .scripts/validators.index.js",
     "build:filters": "node .scripts/filters.script.js && node .scripts/filters.index.js",
     "build:utils": "node .scripts/utils.script.js && node .scripts/utils.index.js",
