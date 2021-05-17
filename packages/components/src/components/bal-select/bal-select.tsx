@@ -551,7 +551,6 @@ export class Select {
   }
 
   private handleOptionMouseEnter = (index: number) => {
-    console.warn(index)
     this.focusIndex = index
   }
 

@@ -8,6 +8,7 @@ The design part is under construction.
 
 ## Getting started
 
+<ClientOnly> 
 <div class="bal-app">
   <bal-card class="my-5">
     <bal-card-head>
@@ -23,3 +24,4 @@ The design part is under construction.
     <bal-card-button icon-right="nav-go-right" link href="/design/figma/getting-started.html">Continue</bal-card-button>
   </bal-card>
 </div>
+</ClientOnly>

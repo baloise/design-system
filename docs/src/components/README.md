@@ -2,6 +2,7 @@
 
 Since we use css stylesheets and standard web components the library can be integrated in almost any web technology.
 
+<ClientOnly> 
 <div class="bal-app">
   <bal-card class="my-5">
     <bal-card-head>
@@ -46,6 +47,7 @@ Since we use css stylesheets and standard web components the library can be inte
     <bal-card-button icon-right="nav-go-right" link href="/components/essentials/angular.html">Continue</bal-card-button>
   </bal-card>
 </div>
+</ClientOnly>
 
 :::tip
 For more integration documentation go the stencil documentation. [Framework Integration](https://stenciljs.com/docs/overview).
