@@ -4,13 +4,17 @@
 
 All our icons are svg based.
 
-<docs-icons></docs-icons>
+<ClientOnly>
+  <docs-icons></docs-icons>
+</ClientOnly>
 
 ## Download
 
 Download our svg icons for print usage below. For web development please continue reading.
 
+<ClientOnly>
 <docs-link-box title="icons.zip" subtitle="Our svg icons" link="/assets/download/icons.zip" ></docs-link-box>
+</ClientOnly>
 
 ## Install icons
 

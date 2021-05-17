@@ -92,7 +92,7 @@ Configure the fonts in a css file.
 The package `@baloise/design-system-fonts` also delivers css file with the config for the typography.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/baloise-fonts.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/fonts.css" />
 ```
 
 ### Add global styles
@@ -113,6 +113,6 @@ Put the link tag into your main html file.
 Import the css directly into your main TypeScript or JavaScript file.
 
 ```typescript
-import '@baloise/design-system-components/dist/design-system-fonts/lib/baloise-fonts.css'
+import '@baloise/design-system-components/dist/design-system-fonts/lib/fonts.css'
 import '@baloise/design-system-components/dist/design-system-components/design-system-components.css'
 ```

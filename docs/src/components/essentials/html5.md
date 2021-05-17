@@ -11,7 +11,7 @@ The easiest way to use the library is via CDN.
 Add the following 4 references to your `<head></head>`
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/baloise-fonts.cdn.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/fonts.cdn.css" />
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
@@ -39,7 +39,7 @@ npm install @baloise/design-system-components --save
 Add the following 2 references to your `<head></head>`
 
 ```html
-<link rel="stylesheet" href="node_modules/@baloise/design-system-fonts/lib/baloise-fonts.cdn.css" />
+<link rel="stylesheet" href="node_modules/@baloise/design-system-fonts/lib/fonts.cdn.css" />
 <link
   rel="stylesheet"
   href="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.css"

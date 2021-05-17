@@ -262,7 +262,7 @@ export default {
       template: \`${content}\`,
       script: \`${replaceAll(replaceAll(scriptContent, '`', '\\`'), '\\${', '\\${')}\`,
       resources: [
-        'https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/baloise-fonts.cdn.css',
+        'https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/fonts.cdn.css',
         'https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.css',
         'https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js',
         'https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js',

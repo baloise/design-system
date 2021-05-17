@@ -32,7 +32,9 @@ Typography can help create clear hierarchies, organize information, and guide us
 
 Download our font for print usage below. For web development please continue reading.
 
+<ClientOnly>
 <docs-link-box title="fonts.zip" subtitle="Our typography files" link="/assets/download/fonts.zip" ></docs-link-box>
+</ClientOnly>
 
 ## Install web font
 
