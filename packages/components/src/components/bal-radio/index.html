@@ -57,21 +57,34 @@
       <h2 class="title is-size-2">Radio Boxes</h2>
       <section>
         <bal-radio-group value="1">
-          <div class="columns">
+          <div class="columns" style="max-width: 400px">
             <div class="column">
-              <div class="is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius">
+              <div class="is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius has-background-blue-light">
                 <img src="https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg" />
-                <p class="has-text-blue mb-2">Label A</p>
+                <p class="has-text-blue mb-2">Selected Label</p>
                 <bal-radio name="box-example" value="1"></bal-radio>
               </div>
             </div>
             <div class="column">
               <div class="is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius">
                 <img src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" />
-                <p class="has-text-blue mb-2">Label B</p>
+                <p class="has-text-blue mb-2">Other Label</p>
                 <bal-radio name="box-example" value="2"></bal-radio>
               </div>
             </div>
+          </div>
+        </bal-radio-group>
+      </section>
+
+      <h2 class="title is-size-2">Radio List</h2>
+      <section>
+        <bal-radio-group value="1">
+          <div class="is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-border-radius has-background-blue-light">
+            <bal-radio name="list-example" class="mr-2" value="1"> <b>Year 1</b> (CHF 66.00) </bal-radio>
+          </div>
+
+          <div class="is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-border-radius">
+            <bal-radio name="list-example" class="mr-2" value="2"> <b>Year 2</b> (CHF 88.00) </bal-radio>
           </div>
         </bal-radio-group>
       </section>

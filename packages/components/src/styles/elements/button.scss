@@ -37,10 +37,6 @@
     border-bottom-right-radius: $radius-none !important;
   }
 
-  &:not(.is-small) bal-text {
-    margin-top: -2px;
-  }
-
   &:focus span,
   &:active span,
   &:focus bal-text,

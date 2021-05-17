@@ -16,6 +16,22 @@
   border: 1px solid $blue-line;
 }
 
+.has-border-success {
+  border: 1px solid $success;
+}
+
+.has-border-danger {
+  border: 1px solid $danger;
+}
+
+.has-border-warning {
+  border: 1px solid $danger;
+}
+
+.has-border-bold {
+  border-width: 2px;
+}
+
 .has-border-blue-light {
   border: 1px solid $blue-light-line;
 }
