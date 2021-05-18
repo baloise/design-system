@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -53,8 +53,8 @@
     "test:e2e:watch": "stencil test --e2e --watchAll"
   },
   "dependencies": {
-    "@baloise/design-system-fonts": "^0.12.0",
-    "@baloise/design-system-icons": "^0.12.0",
+    "@baloise/design-system-fonts": "^0.13.0",
+    "@baloise/design-system-icons": "^0.13.0",
     "@stencil/core": "^2.5.2",
     "@types/lodash": "^4.14.169",
     "bulma": "^0.9.2",

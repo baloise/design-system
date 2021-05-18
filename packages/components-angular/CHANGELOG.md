@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2021-05-18)
+
+
+### Features
+
+* add font crop ([d397598](https://github.com/baloise/ui-library/commit/d3975983288e9d726060573341650d99255e02ac))
+
+
+
+
+
 # [4.17.0](https://github.com/baloise/ui-library/compare/v4.16.0...v4.17.0) (2021-04-30)
 
 **Note:** Version bump only for package @baloise/design-system-components-angular

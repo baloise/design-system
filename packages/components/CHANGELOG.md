@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2021-05-18)
+
+
+### Features
+
+* add font crop ([d397598](https://github.com/baloise/ui-library/commit/d3975983288e9d726060573341650d99255e02ac))
+* **bal-card-button:** add link attribute and some more ([fff1df7](https://github.com/baloise/ui-library/commit/fff1df79849e42662213c33558399808b54b9c15))
+* **bal-select:** improve key handling ([702d6c4](https://github.com/baloise/ui-library/commit/702d6c4ac3383066d94df0f0392087cc4d70f5f1))
+
+
+
+
+
 # [4.17.0](https://github.com/baloise/ui-library/compare/v4.16.0...v4.17.0) (2021-04-30)
 
 ### Bug Fixes

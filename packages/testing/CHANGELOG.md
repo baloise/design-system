@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2021-05-18)
+
+
+### Bug Fixes
+
+* **checkbox:** improve checked watch condition ([8499507](https://github.com/baloise/ui-library/commit/8499507ebda877f4d42a8e8ba41e34878ce8f112))
+* **datepicker:** finish new value type string ([dd1cfb0](https://github.com/baloise/ui-library/commit/dd1cfb0c3d38f7ac7be163cbb7475d2f5e4f89af))
+* **input:** disable click event ([49bf46d](https://github.com/baloise/ui-library/commit/49bf46dc8241a903d907f90466d769c01f847787))
+* **select.accessor:** add ts-ignore ([e3e567d](https://github.com/baloise/ui-library/commit/e3e567d15b7e473def317d2958c2f6fda6ecb0ec))
+* sync packages ([67c6b05](https://github.com/baloise/ui-library/commit/67c6b05f691955547bc14299d57a99f52c2224f5))
+
+
+### Features
+
+* add font crop ([d397598](https://github.com/baloise/ui-library/commit/d3975983288e9d726060573341650d99255e02ac))
+* **angular:** change output types and return custom event detail ([69ac578](https://github.com/baloise/ui-library/commit/69ac57832c2b60e80aab7d303bb60cca73858f9b))
+* **angular:** change output types and return custom event detail ([5b41de2](https://github.com/baloise/ui-library/commit/5b41de27889363223517b5e94d10386702129798))
+* **datepicker:** use iso date string ([0e19c6d](https://github.com/baloise/ui-library/commit/0e19c6dc584919f8195351e3e82346474664fa7a))
+* **datepicker:** use iso date string ([8e77e64](https://github.com/baloise/ui-library/commit/8e77e6469eabdadf578e30fdced78529515e7f4a))
+* **icon:** add new icons to the other components ([826fecf](https://github.com/baloise/ui-library/commit/826fecf8fa158774c56a3ff5d9e4c6e8008ce7b7))
+* **utils:** add lodash as util lib ([99c91f6](https://github.com/baloise/ui-library/commit/99c91f6a9f42d1354a413c10dee5c828a914eb48))
+* **validators:** add validators ([011517a](https://github.com/baloise/ui-library/commit/011517ac03bf0d2eb94978133b16fd624077f283))
+* **vue:** add vue 3.x.x support ([8ff2947](https://github.com/baloise/ui-library/commit/8ff29477b5fbdff7aeb16b8900acd2b545c97bd7))
+* added accessors and tests ([1036e7a](https://github.com/baloise/ui-library/commit/1036e7a7e7fcc4e82c7c6c116006162f9880c444))
+* improved angular example ([0e715f9](https://github.com/baloise/ui-library/commit/0e715f9bb3f007951689e902805a3d6643362246))
+* **vue:** use vue for v3.x.x and vue-2 for the v2.x.x ([001047b](https://github.com/baloise/ui-library/commit/001047b38f7f5309dab04cb8ad7310758d155d45))
+* fixed navbar and refactored tests description ([d7ba031](https://github.com/baloise/ui-library/commit/d7ba031c0db6caa9d80b63d24906a51fab291a06))
+
+
+
+
+
 # [4.17.0](https://github.com/baloise/ui-library/compare/v4.16.0...v4.17.0) (2021-04-30)
 
 **Note:** Version bump only for package @baloise/design-system-components-testing
