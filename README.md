@@ -1,6 +1,7 @@
 <a href="https://baloise-design-system.vercel.app.sh" target="blank">
     <img src="https://raw.githubusercontent.com/baloise/ui-library/design-system/resources/images/banner.svg?sanitize=true" alt="Baloise Design System" />
 </a>
+
 <br>
 
 [![now](https://badgen.net/badge/icon/now?icon=now&label)](https://baloise-design-system.vercel.app.sh)
