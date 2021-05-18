@@ -819,6 +819,46 @@ export const BalFileUpload = /*@__PURE__*/ defineComponent({
   setup: defineSetup('bal-file-upload', ['balChange','balRejectedFile'], undefined)
 })
 
+export const BalHeading = /*@__PURE__*/ defineComponent({
+  name: 'bal-heading',
+  props: {
+    level: {
+      type: String,
+      default: 'h1',
+      required: false,
+    },
+    visualLevel: {
+      type: String,
+      default: undefined,
+      required: false,
+    },
+    subtitle: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    spaced: {
+      type: Boolean,
+      default: true,
+      required: false,
+    },
+    color: {
+      type: String,
+      default: '',
+      required: false,
+    },
+    inverted: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+  },
+  emits: {
+
+  },
+  setup: defineSetup('bal-heading', [], undefined)
+})
+
 export const BalHint = /*@__PURE__*/ defineComponent({
   name: 'bal-hint',
   props: {
@@ -1746,6 +1786,11 @@ export const BalText = /*@__PURE__*/ defineComponent({
   name: 'bal-text',
   props: {
     small: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    bold: {
       type: Boolean,
       default: false,
       required: false,

@@ -7,7 +7,6 @@
   text-align: center;
   text-decoration: none;
   text-overflow: ellipsis;
-  // white-space: nowrap;
   user-select: none;
   vertical-align: top; // the better option for most scenarios
   vertical-align: -webkit-baseline-middle; // the best for those that support it
@@ -37,8 +36,12 @@
       line-height: 22px;
       contain: layout style;
 
-      display: block;
-      min-height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      text-align: left;
+
+      min-height: 26px;
       cursor: pointer;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -47,13 +50,11 @@
       color: $blue;
       font-family: $body-family;
 
-      span {
-        display: block;
+      bal-text {
         padding-left: 32px;
-        font-size: $size-normal !important;
       }
 
-      span:empty {
+      bal-text:empty {
         padding-left: 0;
       }
     }

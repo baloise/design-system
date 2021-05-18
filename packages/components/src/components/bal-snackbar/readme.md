@@ -61,6 +61,7 @@ Type: `Promise<void>`
 ### Depends on
 
 - [bal-icon](../bal-icon)
+- [bal-heading](../bal-heading)
 - [bal-text](../bal-text)
 - [bal-button](../bal-button)
 
@@ -68,6 +69,7 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   bal-snackbar --> bal-icon
+  bal-snackbar --> bal-heading
   bal-snackbar --> bal-text
   bal-snackbar --> bal-button
   bal-button --> bal-spinner

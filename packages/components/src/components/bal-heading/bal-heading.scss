@@ -1,0 +1,15 @@
+@import '../../styles/global.utilities.scss';
+
+bal-heading {
+  @include margin(0);
+  @include padding(0);
+  @include lhCrop(1.2);
+  @include font-smoothing();
+
+  display: block;
+  position: static;
+
+  & + &[subtitle] {
+    margin-top: -1.25rem;
+  }
+}

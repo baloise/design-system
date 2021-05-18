@@ -6,27 +6,27 @@ Typography can help create clear hierarchies, organize information, and guide us
 
 ### Headlines
 
-| Typestyle                                                         | Weight           | Size | Line | CSS                  |
-| ----------------------------------------------------------------- | ---------------- | ---- | ---- | -------------------- |
-| <div class="bal-app"><h1 class="title is-size-1">H1</h1></div>    | Regular (400)    | 44px | 52px | `title is-size-1`    |
-| <div class="bal-app"><h2 class="title is-size-2">H2</h2></div>    | Regular (400)    | 36px | 44px | `title is-size-2`    |
-| <div class="bal-app"><h3 class="title is-size-3">H3</h3></div>    | **Medium (700)** | 28px | 36px | `title is-size-3`    |
-| <div class="bal-app"><h3 class="subtitle is-size-3">H3</h3></div> | Regular (400)    | 28px | 36px | `subtitle is-size-3` |
-| <div class="bal-app"><h4 class="title is-size-4">H4</h4></div>    | **Medium (700)** | 20px | 28px | `title is-size-4`    |
+| Typestyle                                                         | Weight           | Size | Line |
+| ----------------------------------------------------------------- | ---------------- | ---- | ---- |
+| <div class="bal-app"><h1 class="title is-size-1">H1</h1></div>    | Regular (400)    | 44px | 52px |
+| <div class="bal-app"><h2 class="title is-size-2">H2</h2></div>    | Regular (400)    | 36px | 44px |
+| <div class="bal-app"><h3 class="title is-size-3">H3</h3></div>    | **Medium (700)** | 28px | 36px |
+| <div class="bal-app"><h3 class="subtitle is-size-3">H3</h3></div> | Regular (400)    | 28px | 36px |
+| <div class="bal-app"><h4 class="title is-size-4">H4</h4></div>    | **Medium (700)** | 20px | 28px |
 | <div class="bal-app"><h4 class="subtitle is-size-4">H4</h4></div> | Regular (400)    | 20px | 28px | `subtitle is-size-4` |
-| <div class="bal-app"><h5 class="title is-size-5">H5</h5></div>    | **Medium (700)** | 16px | 20px | `title is-size-5`    |
-| <div class="bal-app"><h5 class="subtitle is-size-5">H5</h5></div> | Regular (400)    | 16px | 20px | `subtitle is-size-5` |
+| <div class="bal-app"><h5 class="title is-size-5">H5</h5></div>    | **Medium (700)** | 16px | 20px |
+| <div class="bal-app"><h5 class="subtitle is-size-5">H5</h5></div> | Regular (400)    | 16px | 20px |
 
 ### Body Text
 
-| Typestyle                                                                          | Weight           | Size | Line | CSS                |
-| ---------------------------------------------------------------------------------- | ---------------- | ---- | ---- | ------------------ |
-| <div class="bal-app"><p>Paragraph</p></div>                                        | Regular (400)    | 16px | 24px | ---                |
-| <div class="bal-app"><p class="is-bold">Paragraph Bold</p></div>                   | **Medium (700)** | 16px | 24px | `is-bold`          |
-| <div class="bal-app"><a class="is-link" href="">Link cyan</a></div>                | Regular (400)    | 16px | 24px | `is-link`          |
-| <div class="bal-app"><p class="is-small">Small Paragraph</p></div>                 | Regular (400)    | 14px | 24px | `is-small`         |
-| <div class="bal-app"><p class="is-bold is-small">Small Paragraph Bold</p></div>    | **Medium (700)** | 14px | 24px | `is-small is-bold` |
-| <div class="bal-app"><a class="is-link is-small" href="">Small Link cyan</a></div> | Regular (400)    | 14px | 24px | `is-small is-link` |
+| Typestyle                                                                          | Weight           | Size | Line |
+| ---------------------------------------------------------------------------------- | ---------------- | ---- | ---- |
+| <div class="bal-app"><p>Paragraph</p></div>                                        | Regular (400)    | 16px | 24px |
+| <div class="bal-app"><p class="is-bold">Paragraph Bold</p></div>                   | **Medium (700)** | 16px | 24px |
+| <div class="bal-app"><a class="is-link" href="">Link cyan</a></div>                | Regular (400)    | 16px | 24px |
+| <div class="bal-app"><p class="is-small">Small Paragraph</p></div>                 | Regular (400)    | 14px | 24px |
+| <div class="bal-app"><p class="is-bold is-small">Small Paragraph Bold</p></div>    | **Medium (700)** | 14px | 24px |
+| <div class="bal-app"><a class="is-link is-small" href="">Small Link cyan</a></div> | Regular (400)    | 14px | 24px |
 
 ## Download
 

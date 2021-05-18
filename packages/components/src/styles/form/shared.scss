@@ -94,20 +94,3 @@
   cursor: default;
   pointer-events: none !important;
 }
-
-label.option-label,
-label.option-label a,
-label.option-label span,
-label.option-label strong {
-  font-family: $body-family !important;
-  font-size: $size-small !important;
-}
-
-@include desktop() {
-  label.option-label,
-  label.option-label a,
-  label.option-label span,
-  label.option-label strong {
-    font-size: $size-small !important;
-  }
-}

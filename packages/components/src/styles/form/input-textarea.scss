@@ -89,3 +89,10 @@ input.input {
     font-size: $size-normal;
   }
 }
+
+input[type='radio'] + label,
+input[type='checkbox'] + label {
+  span {
+    font-size: $size-normal !important;
+  }
+}

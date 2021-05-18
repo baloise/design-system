@@ -9,6 +9,7 @@ export { Components, JSX } from './components'
 export * from './components/bal-select/utils/bal-option.type'
 export * from './components/bal-tabs/bal-tab.type'
 export * from './components/bal-file-upload/bal-file-upload.type'
+export * from './components/bal-heading/bal-heading.type'
 
 /**
  * Utils

@@ -1,15 +1,24 @@
 @import '../../styles/global.utilities.scss';
 
 bal-text {
+  @include margin(0);
+  @include padding(0);
+  @include lhCrop(1.3);
+  @include font-smoothing();
+
   display: inline;
   position: static;
   font-family: $family-primary;
   font-weight: $weight-normal;
-  font-size: $size-normal;
+  font-size: $size-normal !important;
   line-height: $bal_lineheight_20px;
 
   &.is-small {
-    font-size: $size-small;
+    @include lhCrop(1);
+  }
+
+  &.is-small {
+    font-size: $size-small !important;
     line-height: $bal_lineheight_15px;
   }
 }

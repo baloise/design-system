@@ -13,9 +13,9 @@
   vertical-align: top; // the better option for most scenarios
   vertical-align: -webkit-baseline-middle; // the best for those that support it
 
-  > span {
-    margin-top: -2px;
-  }
+  // > span {
+  //   margin-top: -2px;
+  // }
 
   .delete {
     margin-left: 0.3rem;

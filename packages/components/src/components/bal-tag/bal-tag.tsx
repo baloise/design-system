@@ -58,19 +58,21 @@ export class Tag {
           [this.sizeCssClass]: true,
         }}
       >
-        <span>
-          <slot />
-        </span>
-        <div
-          style={{
-            display: this.closable ? 'inline-block' : 'none',
-          }}
-          class={{
-            'delete': true,
-            'is-small': true,
-          }}
-          onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
-        ></div>
+        <div class="is-flex is-align-items-center	">
+          <bal-text small={this.dense}>
+            <slot />
+          </bal-text>
+          <div
+            style={{
+              display: this.closable ? 'inline-block' : 'none',
+            }}
+            class={{
+              'delete': true,
+              'is-small': true,
+            }}
+            onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
+          ></div>
+        </div>
       </Host>
     )
   }

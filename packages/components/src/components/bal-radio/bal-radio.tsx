@@ -143,9 +143,9 @@ export class Radio implements ComponentInterface {
             ev.stopPropagation()
           }}
         >
-          <span>
+          <bal-text>
             <slot></slot>
-          </span>
+          </bal-text>
         </label>
       </Host>
     )

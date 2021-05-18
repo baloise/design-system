@@ -10,6 +10,7 @@ import { BalButtonColor } from "./components/bal-button/bal.button.type";
 import { PaddingCardType } from "./types/padding.types";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
+import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
 import { AutocompleteTypes, InputTypes } from "./types/interfaces";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
@@ -528,6 +529,32 @@ export namespace Components {
           * If `true` multiple file upload is possible.
          */
         "multiple": boolean;
+    }
+    interface BalHeading {
+        /**
+          * The theme type of the toast. Given by bulma our css framework.
+         */
+        "color": ColorTypes | '';
+        /**
+          * If `true` the button is inverted
+         */
+        "inverted": boolean;
+        /**
+          * The actual heading level used in the HTML markup.
+         */
+        "level": HeadingLevels;
+        /**
+          * If 'false' the margin of the heading gets dropped.
+         */
+        "spaced": boolean;
+        /**
+          * If `true` the heading gets displayed slimmer.
+         */
+        "subtitle": boolean;
+        /**
+          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+         */
+        "visualLevel": HeadingLevels | undefined;
     }
     interface BalHint {
         /**
@@ -1110,7 +1137,11 @@ export namespace Components {
     }
     interface BalText {
         /**
-          * The theme type of the toast. Given by bulma our css framework.
+          * If `true` the text is bold
+         */
+        "bold": boolean;
+        /**
+          * Defines the color of the text.
          */
         "color": ColorTypes | '';
         /**
@@ -1398,6 +1429,12 @@ declare global {
         prototype: HTMLBalFileUploadElement;
         new (): HTMLBalFileUploadElement;
     };
+    interface HTMLBalHeadingElement extends Components.BalHeading, HTMLStencilElement {
+    }
+    var HTMLBalHeadingElement: {
+        prototype: HTMLBalHeadingElement;
+        new (): HTMLBalHeadingElement;
+    };
     interface HTMLBalHintElement extends Components.BalHint, HTMLStencilElement {
     }
     var HTMLBalHintElement: {
@@ -1647,6 +1684,7 @@ declare global {
         "bal-field-label": HTMLBalFieldLabelElement;
         "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
+        "bal-heading": HTMLBalHeadingElement;
         "bal-hint": HTMLBalHintElement;
         "bal-hint-text": HTMLBalHintTextElement;
         "bal-hint-title": HTMLBalHintTitleElement;
@@ -2210,6 +2248,32 @@ declare namespace LocalJSX {
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
         "onBalRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
+    }
+    interface BalHeading {
+        /**
+          * The theme type of the toast. Given by bulma our css framework.
+         */
+        "color"?: ColorTypes | '';
+        /**
+          * If `true` the button is inverted
+         */
+        "inverted"?: boolean;
+        /**
+          * The actual heading level used in the HTML markup.
+         */
+        "level"?: HeadingLevels;
+        /**
+          * If 'false' the margin of the heading gets dropped.
+         */
+        "spaced"?: boolean;
+        /**
+          * If `true` the heading gets displayed slimmer.
+         */
+        "subtitle"?: boolean;
+        /**
+          * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
+         */
+        "visualLevel"?: HeadingLevels | undefined;
     }
     interface BalHint {
         /**
@@ -2800,7 +2864,11 @@ declare namespace LocalJSX {
     }
     interface BalText {
         /**
-          * The theme type of the toast. Given by bulma our css framework.
+          * If `true` the text is bold
+         */
+        "bold"?: boolean;
+        /**
+          * Defines the color of the text.
          */
         "color"?: ColorTypes | '';
         /**
@@ -2977,6 +3045,7 @@ declare namespace LocalJSX {
         "bal-field-label": BalFieldLabel;
         "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
+        "bal-heading": BalHeading;
         "bal-hint": BalHint;
         "bal-hint-text": BalHintText;
         "bal-hint-title": BalHintTitle;
@@ -3046,6 +3115,7 @@ declare module "@stencil/core" {
             "bal-field-label": LocalJSX.BalFieldLabel & JSXBase.HTMLAttributes<HTMLBalFieldLabelElement>;
             "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
+            "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
             "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
             "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;

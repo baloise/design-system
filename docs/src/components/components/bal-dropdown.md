@@ -8,12 +8,12 @@ A dropdown shows and hides content close to the trigger element.
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-dropdown-39></docs-demo-bal-dropdown-39></ClientOnly>
+<ClientOnly>  <docs-demo-bal-dropdown-40></docs-demo-bal-dropdown-40></ClientOnly>
 
 
 ## Input
 
-<ClientOnly>  <docs-demo-bal-dropdown-40></docs-demo-bal-dropdown-40></ClientOnly>
+<ClientOnly>  <docs-demo-bal-dropdown-41></docs-demo-bal-dropdown-41></ClientOnly>
 
 
 

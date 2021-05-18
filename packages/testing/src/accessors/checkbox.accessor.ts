@@ -33,7 +33,7 @@ export const CheckboxClickableMixin: Mixin = <T>({ selector, creator }: MixinCon
    * Clicks the checkbox and set checked to true
    */
   check: (options?: Partial<Cypress.CheckOptions>) => {
-    const checkbox = cy.get(selector).find('label' + name)
+    const checkbox = cy.get(selector).find('label')
     checkbox.click(options)
     return creator()
   },
@@ -68,7 +68,7 @@ export const CheckboxContainableMixin: Mixin = <T>({ selector, creator }: MixinC
    * Check the content of the label element
    */
   contains: (content: string) => {
-    const item = cy.get(selector).find('label')
+    const item = cy.get(selector).find('bal-text')
     item.contains(content)
     return creator()
   },

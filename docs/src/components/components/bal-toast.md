@@ -20,12 +20,12 @@ Toasts are used to inform the user with a simple text message.
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-toast-104></docs-demo-bal-toast-104></ClientOnly>
+<ClientOnly>  <docs-demo-bal-toast-108></docs-demo-bal-toast-108></ClientOnly>
 
 
 ## Colors
 
-<ClientOnly>  <docs-demo-bal-toast-105></docs-demo-bal-toast-105></ClientOnly>
+<ClientOnly>  <docs-demo-bal-toast-109></docs-demo-bal-toast-109></ClientOnly>
 
 
 

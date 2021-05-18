@@ -19,34 +19,53 @@
 
     input[type='checkbox'] + label {
       cursor: pointer;
-      line-height: 23px;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
     }
 
-    label span {
-      @include font-smoothing();
-      display: block;
-      padding-left: 32px;
-      font-family: $body-family;
-      font-size: $size-normal !important;
-    }
+    // label bal-text {
+    //   @include font-smoothing();
+
+    //   margin: auto;
+    //   padding-left: 32px;
+    //   font-family: $body-family;
+    //   font-size: $size-normal !important;
+
+    //   min-height: 26px;
+    //   display: flex;
+    //   align-items: center;
+    // }
 
     label {
       @include font-smoothing();
       @include margin(0);
-      margin-top: -2px;
 
-      line-height: 1;
+      line-height: 22px;
+      contain: layout style;
+
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      text-align: left;
+
+      min-height: 26px;
+      cursor: pointer;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
       color: $blue;
       font-family: $body-family;
-      font-size: $size-normal !important;
+
+      bal-text {
+        padding-left: 32px;
+      }
+
+      bal-text:empty {
+        padding-left: 0;
+      }
     }
 
     @include desktop() {

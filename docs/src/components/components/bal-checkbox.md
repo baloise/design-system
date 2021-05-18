@@ -38,6 +38,11 @@ Checkboxes allow the selection of multiple options from a set of options. They a
 <ClientOnly>  <docs-demo-bal-checkbox-27></docs-demo-bal-checkbox-27></ClientOnly>
 
 
+## Checkbox Boxes
+
+<ClientOnly>  <docs-demo-bal-checkbox-28></docs-demo-bal-checkbox-28></ClientOnly>
+
+
 
 ## API
 

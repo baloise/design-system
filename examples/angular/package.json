@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^11.2.14",
     "@angular/platform-browser-dynamic": "^11.2.14",
     "@angular/router": "^11.2.14",
-    "@baloise/design-system-components-angular": "^0.7.0",
+    "@baloise/design-system-components-angular": "^0.11.0",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "@webcomponents/custom-elements": "^1.4.3",

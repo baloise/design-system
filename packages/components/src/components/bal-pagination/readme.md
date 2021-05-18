@@ -47,11 +47,13 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [bal-text](../bal-text)
 - [bal-icon](../bal-icon)
 
 ### Graph
 ```mermaid
 graph TD;
+  bal-pagination --> bal-text
   bal-pagination --> bal-icon
   style bal-pagination fill:#f9f,stroke:#333,stroke-width:4px
 ```

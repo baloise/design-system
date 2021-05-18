@@ -14,7 +14,12 @@ export class Text {
   @Prop() small = false
 
   /**
-   * The theme type of the toast. Given by bulma our css framework.
+   * If `true` the text is bold
+   */
+  @Prop() bold = false
+
+  /**
+   * Defines the color of the text.
    */
   @Prop() color: ColorTypes | '' = ''
 
@@ -24,6 +29,7 @@ export class Text {
         class={{
           [`has-text-${this.color}`]: this.color !== '',
           'is-small': this.small,
+          'is-bold': this.bold,
         }}
       >
         <slot />

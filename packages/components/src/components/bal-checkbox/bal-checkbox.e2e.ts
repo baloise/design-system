@@ -6,6 +6,7 @@ describe('bal-checkbox', () => {
   let balChangeEvent: EventSpy
   let balCheckboxElement: E2EElement
   let nativeInputElement: E2EElement
+
   beforeEach(async () => {
     page = await newE2EPage()
     await page.setContent(`<bal-checkbox></bal-checkbox>`)
@@ -14,6 +15,7 @@ describe('bal-checkbox', () => {
     balCheckboxElement = await page.find('bal-checkbox')
     nativeInputElement = await balCheckboxElement.find('input')
   })
+
   it('should set the checkbos as checked', async () => {
     await nativeInputElement.click()
 
@@ -31,7 +33,7 @@ describe('bal-checkbox', () => {
   })
 
   it('should fire a click event', async () => {
-    nativeInputElement.click()
+    await nativeInputElement.click()
     await page.waitForChanges()
 
     expect(clickEvent).toHaveReceivedEventTimes(1)
@@ -41,8 +43,7 @@ describe('bal-checkbox', () => {
     balCheckboxElement.setProperty('disabled', true)
     await page.waitForChanges()
 
-    nativeInputElement.click()
-    balCheckboxElement.click()
+    await nativeInputElement.click()
     await page.waitForChanges()
 
     expect(clickEvent).not.toHaveReceivedEvent()

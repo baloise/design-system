@@ -1,0 +1,80 @@
+import { Component, h, Host, Prop } from '@stencil/core'
+import { ColorTypes } from '../../types/color.types'
+import { HeadingLevels } from './bal-heading.type'
+
+@Component({
+  tag: 'bal-heading',
+  styleUrl: 'bal-heading.scss',
+  shadow: false,
+  scoped: false,
+})
+export class Heading {
+  /**
+   * The actual heading level used in the HTML markup.
+   */
+  @Prop() level: HeadingLevels = 'h1'
+
+  /**
+   * Make the visual style mimic a specific heading level.
+   * This option allows you to make e.g. h1 visually look like h3,
+   * but still keep it h1 in the markup.
+   */
+  @Prop() visualLevel: HeadingLevels | undefined = undefined
+
+  /**
+   * If `true` the heading gets displayed slimmer.
+   */
+  @Prop() subtitle: boolean = false
+
+  /**
+   * If 'false' the margin of the heading gets dropped.
+   */
+  @Prop({ reflect: true }) spaced: boolean = true
+
+  /**
+   * The theme type of the toast. Given by bulma our css framework.
+   */
+  @Prop() color: ColorTypes | '' = ''
+
+  /**
+   * If `true` the button is inverted
+   */
+  @Prop() inverted = false
+
+  get fontSize() {
+    const size = `${this.level}`
+    return `is-size-${size.replace('h', '')}`
+  }
+
+  get fontColor() {
+    if (this.inverted) {
+      return `has-text-white`
+    }
+
+    if (this.color !== '') {
+      return `has-text-${this.color}`
+    }
+
+    return ''
+  }
+
+  render() {
+    const Heading = this.level
+
+    return (
+      <Host>
+        <Heading
+          class={{
+            'title': this.subtitle === false,
+            'subtitle': this.subtitle === true,
+            'has-no-margin': !this.spaced,
+            [this.fontSize]: true,
+            [this.fontColor]: true,
+          }}
+        >
+          <slot />
+        </Heading>
+      </Host>
+    )
+  }
+}

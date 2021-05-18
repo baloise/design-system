@@ -28,6 +28,7 @@ BalFieldHint,
 BalFieldLabel,
 BalFieldMessage,
 BalFileUpload,
+BalHeading,
 BalHint,
 BalHintText,
 BalHintTitle,
@@ -94,6 +95,7 @@ export const applyComponents = (app: App) => {
   app.component('BalFieldLabel', BalFieldLabel)
   app.component('BalFieldMessage', BalFieldMessage)
   app.component('BalFileUpload', BalFileUpload)
+  app.component('BalHeading', BalHeading)
   app.component('BalHint', BalHint)
   app.component('BalHintText', BalHintText)
   app.component('BalHintTitle', BalHintTitle)

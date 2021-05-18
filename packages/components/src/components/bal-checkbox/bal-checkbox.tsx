@@ -151,9 +151,9 @@ export class Checkbox {
             ev.stopPropagation()
           }}
         >
-          <span>
+          <bal-text>
             <slot></slot>
-          </span>
+          </bal-text>
         </label>
       </Host>
     )

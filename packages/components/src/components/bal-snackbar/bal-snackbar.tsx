@@ -105,7 +105,9 @@ export class Snackbar {
               <span class="icon" style={{ display: this.icon ? '' : 'none' }}>
                 <bal-icon name={this.icon} inverted={this.color !== ''}></bal-icon>
               </span>
-              <span>{this.subject}</span>
+              <bal-heading level="h4" inverted={this.color !== ''} spaced={false}>
+                {this.subject}
+              </bal-heading>
             </span>
           </div>
           <bal-text>

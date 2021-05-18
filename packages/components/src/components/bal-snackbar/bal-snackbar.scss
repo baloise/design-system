@@ -31,6 +31,10 @@
       font-size: $size-medium;
       font-weight: $weight-bold;
 
+      & > span {
+        align-items: center;
+      }
+
       .icon-text .icon:not(:last-child) {
         margin-right: 0.6em;
       }
@@ -61,6 +65,7 @@
       color: $white;
     }
 
+    bal-heading,
     bal-text {
       word-break: break-all;
     }
@@ -68,7 +73,7 @@
     .close {
       position: absolute;
       cursor: pointer;
-      top: 32px;
+      top: 35px;
       right: 32px;
       width: 24px;
       height: 24px;

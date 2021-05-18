@@ -12,7 +12,7 @@
   appearance: none;
   transition: background 0.1s ease, color 0.1s ease;
   text-decoration: none !important;
-  padding: 16px 32px;
+  padding: 12px 24px;
   min-height: 48px;
 
   &::-moz-focus-inner {
@@ -55,7 +55,7 @@
     align-items: center;
     display: inline-flex;
     justify-content: center;
-    margin-top: -4px;
+    margin-top: -5px;
   }
 
   .icon-left {

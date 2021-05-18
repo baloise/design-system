@@ -8,7 +8,7 @@ The sheet component is used to show content over the whole page at the bottem of
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-sheet-82></docs-demo-bal-sheet-82></ClientOnly>
+<ClientOnly>  <docs-demo-bal-sheet-86></docs-demo-bal-sheet-86></ClientOnly>
 
 
 

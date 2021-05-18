@@ -118,6 +118,8 @@ graph TD;
   bal-select --> bal-icon
   bal-select --> bal-dropdown-menu
   bal-select --> bal-checkbox
+  bal-tag --> bal-text
+  bal-checkbox --> bal-text
   style bal-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

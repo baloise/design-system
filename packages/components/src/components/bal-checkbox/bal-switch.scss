@@ -12,14 +12,27 @@
     }
 
     input[type='checkbox'] + label {
+      @include font-smoothing();
+      @include margin(0);
+
       position: relative;
-      display: initial;
-      font-size: 1rem;
-      line-height: initial;
       padding-left: 3.5rem;
-      padding-top: 0.2rem;
+      line-height: 22px;
+      contain: layout style;
+
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      text-align: left;
+
+      min-height: 26px;
       cursor: pointer;
-      min-height: 1.5rem + 0.2rem;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      color: $blue;
+      font-family: $body-family;
     }
 
     input[type='checkbox'] + label::before {

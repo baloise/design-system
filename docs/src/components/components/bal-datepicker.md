@@ -10,51 +10,51 @@ A datepicker allows manual date entry as well as open the dropdown content with 
 
 In this example the user can only select a date. For that use the property `readonly`.
 
-<ClientOnly>  <docs-demo-bal-datepicker-30></docs-demo-bal-datepicker-30></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-31></docs-demo-bal-datepicker-31></ClientOnly>
 
 
 ## Disabled
 
-<ClientOnly>  <docs-demo-bal-datepicker-31></docs-demo-bal-datepicker-31></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-32></docs-demo-bal-datepicker-32></ClientOnly>
 
 
 ## Manual Input
 
 To enable manual input remove the property `readonly` and add the property `trigger-ico`. The `trigger-ico` property only opens the dropdown when the icon gets clicked.
 
-<ClientOnly>  <docs-demo-bal-datepicker-32></docs-demo-bal-datepicker-32></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-33></docs-demo-bal-datepicker-33></ClientOnly>
 
 
 ## Inverted & Expanded
 
-<ClientOnly>  <docs-demo-bal-datepicker-33></docs-demo-bal-datepicker-33></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-34></docs-demo-bal-datepicker-34></ClientOnly>
 
 
 ## i18n
 
-<ClientOnly>  <docs-demo-bal-datepicker-34></docs-demo-bal-datepicker-34></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-35></docs-demo-bal-datepicker-35></ClientOnly>
 
 
 ## Footer
 
-<ClientOnly>  <docs-demo-bal-datepicker-35></docs-demo-bal-datepicker-35></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-36></docs-demo-bal-datepicker-36></ClientOnly>
 
 
 ## Range Min & Max
 
-<ClientOnly>  <docs-demo-bal-datepicker-36></docs-demo-bal-datepicker-36></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-37></docs-demo-bal-datepicker-37></ClientOnly>
 
 
 ## Allow Dates
 
 You can specify allowed dates using a function.
 
-<ClientOnly>  <docs-demo-bal-datepicker-37></docs-demo-bal-datepicker-37></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-38></docs-demo-bal-datepicker-38></ClientOnly>
 
 
 ## Custom Start Date
 
-<ClientOnly>  <docs-demo-bal-datepicker-38></docs-demo-bal-datepicker-38></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-39></docs-demo-bal-datepicker-39></ClientOnly>
 
 
 

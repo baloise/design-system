@@ -2,7 +2,7 @@
   <BalCard class="has-margin-top">
     <BalCardTitle>Checkbox</BalCardTitle>
     <BalCardContent>
-      <BalCheckbox label="Label" v-model="checked" />
+      <BalCheckbox v-model="checked">Label</BalCheckbox>
       <p>{{ checked }}</p>
     </BalCardContent>
   </BalCard>

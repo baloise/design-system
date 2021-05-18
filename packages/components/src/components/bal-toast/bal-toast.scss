@@ -19,6 +19,7 @@
     max-width: 600px;
     flex-grow: 1;
     font-size: $size-normal;
+    font-family: $family-primary;
     position: relative;
     background: $white;
 
@@ -47,7 +48,7 @@
       color: $white;
     }
 
-    span.toast-message {
+    .toast-message {
       margin-right: 48px;
     }
 
@@ -55,8 +56,7 @@
       position: absolute;
       top: 50%;
       right: 40px;
-      margin-top: -8px;
-      margin-right: -8px;
+      margin-top: -12px;
     }
   }
 }

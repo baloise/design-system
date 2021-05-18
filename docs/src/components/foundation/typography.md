@@ -1,75 +1,94 @@
 # Typography
 
+We use the `bal-heading` and `bal-text` component to crop the font correctly, otherwise it has font margin top of around 2px.
+
+- [bal-heading](/components/components/bal-heading)
+- [bal-text](/components/components/bal-text)
+
 ## Headline
 
 <docs-demo>
-  <h1 class="title is-size-1">H1 MetaPro Normal</h1>
+  <bal-heading level="h1">H1 MetaPro Normal</bal-heading>
 </docs-demo>
 
 ```html
-<h1 class="title is-size-1">H1 MetaPro Normal</h1>
+<bal-heading level="h1">H1 MetaPro Normal</bal-heading>
 ```
 
 ## Subheadline / Chapters
 
 <docs-demo>
-  <h2 class="title is-size-2">H2 MetaPro Normal</h2>
+  <bal-heading level="h2">H2 MetaPro Normal</bal-heading>
 </docs-demo>
 
 ```html
-<h2 class="title is-size-2">H2 MetaPro Normal</h2>
+<bal-heading level="h2">H" MetaPro Normal</bal-heading>
 ```
 
 ## Title
 
 <docs-demo>
-  <h3 class="title is-size-3">H3 Title MetaPro Medium</h3>
-  <h3 class="subtitle is-size-3">H3 Title MetaPro Normal</h3>
+  <bal-heading level="h3">H3 MetaPro Medium</bal-heading>
+  <bal-heading level="h3" subtitle>H3 MetaPro Normal</bal-heading>
 </docs-demo>
 
 ```html
-<h3 class="title is-size-3">H3 Title MetaPro Medium</h3>
-<h3 class="subtitle is-size-3">H3 Title MetaPro Normal</h3>
+<bal-heading level="h3">H3 MetaPro Medium</bal-heading>
+```
+
+```html
+<bal-heading level="h3" subtitle>H3 MetaPro Normal</bal-heading>
 ```
 
 ## Lead
 
 <docs-demo>
-  <h4 class="title is-size-4">H4 MetaPro Medium</h4>
-  <h4 class="subtitle is-size-4">H4 MetaPro Normal</h4> 
+  <bal-heading level="h4">H4 MetaPro Medium</bal-heading>
+  <bal-heading level="h4" subtitle>H4 MetaPro Normal</bal-heading>
 </docs-demo>
 
 ```html
-<h4 class="title is-size-4">H4 MetaPro Medium</h4>
-<h4 class="subtitle is-size-4">H4 MetaPro Normal</h4>
+<bal-heading level="h3">H3 MetaPro Medium</bal-heading>
+```
+
+```html
+<bal-heading level="h3" subtitle>H3 MetaPro Normal</bal-heading>
 ```
 
 ## Paragraph
 
 <docs-demo>
-  <p class="is-bold">Paragraph MetaPro Normal</p>
-  <p>Paragraph MetaPro Normal</p>
-  <a class="is-link" href="">Link cyan</a>
+  <bal-text bold>Paragraph MetaPro Normal</bal-text>
+  <bal-text>Paragraph MetaPro Normal</bal-text>
+  <a class="is-link" href="">
+    <bal-text>Link cyan</bal-text>
+  </a>
 </docs-demo>
 
 ```html
-<p class="is-bold">Paragraph MetaPro Normal</p>
-<p>Paragraph MetaPro Normal</p>
-<a class="is-link" href="">Link cyan</a>
+<bal-text bold>Paragraph MetaPro Normal</bal-text>
+<bal-text>Paragraph MetaPro Normal</bal-text>
+<a class="is-link" href="">
+  <bal-text>Link cyan</bal-text>
+</a>
 ```
 
 ## Small Text
 
 <docs-demo>
-  <p class="is-small is-bold">Paragraph MetaPro Normal</p>
-  <p class="is-small">Paragraph MetaPro Normal</p>
-  <a class="is-link is-small" href="">Link cyan</a>
+  <bal-text small bold>Paragraph MetaPro Normal</bal-text>
+  <bal-text small>Paragraph MetaPro Normal</bal-text>
+  <a class="is-link" href="">
+    <bal-text small>Link cyan</bal-text>
+  </a>
 </docs-demo>
 
 ```html
-<p class="is-small is-bold">Paragraph MetaPro Normal</p>
-<p class="is-small">Paragraph MetaPro Normal</p>
-<a class="is-link is-small" href="">Link cyan</a>
+<bal-text small bold>Paragraph MetaPro Normal</bal-text>
+<bal-text small>Paragraph MetaPro Normal</bal-text>
+<a class="is-link" href="">
+  <bal-text small>Link cyan</bal-text>
+</a>
 ```
 
 ## Helpers

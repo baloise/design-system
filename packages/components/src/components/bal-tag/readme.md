@@ -25,9 +25,14 @@
 
  - [bal-select](../bal-select)
 
+### Depends on
+
+- [bal-text](../bal-text)
+
 ### Graph
 ```mermaid
 graph TD;
+  bal-tag --> bal-text
   bal-select --> bal-tag
   style bal-tag fill:#f9f,stroke:#333,stroke-width:4px
 ```

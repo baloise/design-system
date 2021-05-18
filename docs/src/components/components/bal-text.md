@@ -10,17 +10,17 @@ A text provides some additional helpers.
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-text-96></docs-demo-bal-text-96></ClientOnly>
+<ClientOnly>  <docs-demo-bal-text-100></docs-demo-bal-text-100></ClientOnly>
 
 
 ## Small
 
-<ClientOnly>  <docs-demo-bal-text-97></docs-demo-bal-text-97></ClientOnly>
+<ClientOnly>  <docs-demo-bal-text-101></docs-demo-bal-text-101></ClientOnly>
 
 
 ## Colors
 
-<ClientOnly>  <docs-demo-bal-text-98></docs-demo-bal-text-98></ClientOnly>
+<ClientOnly>  <docs-demo-bal-text-102></docs-demo-bal-text-102></ClientOnly>
 
 
 
@@ -30,10 +30,11 @@ A text provides some additional helpers.
 
 #### Properties
 
-| Attribute | Description                                                    | Type                                                         | Default |
-| :-------- | :------------------------------------------------------------- | :----------------------------------------------------------- | :------ |
-| **color** | The theme type of the toast. Given by bulma our css framework. | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
-| **small** | If `true` the text has a small size                            | `boolean`                                                    | `false` |
+| Attribute | Description                         | Type                                                         | Default |
+| :-------- | :---------------------------------- | :----------------------------------------------------------- | :------ |
+| **bold**  | If `true` the text is bold          | `boolean`                                                    | `false` |
+| **color** | Defines the color of the text.      | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
+| **small** | If `true` the text has a small size | `boolean`                                                    | `false` |
 
 ## Testing
 

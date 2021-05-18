@@ -8,27 +8,27 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-list-56></docs-demo-bal-list-56></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-59></docs-demo-bal-list-59></ClientOnly>
 
 
 ## With borders
 
-<ClientOnly>  <docs-demo-bal-list-57></docs-demo-bal-list-57></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-60></docs-demo-bal-list-60></ClientOnly>
 
 
 ## Inverted
 
-<ClientOnly>  <docs-demo-bal-list-58></docs-demo-bal-list-58></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-61></docs-demo-bal-list-61></ClientOnly>
 
 
 ## With Icons
 
-<ClientOnly>  <docs-demo-bal-list-59></docs-demo-bal-list-59></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-62></docs-demo-bal-list-62></ClientOnly>
 
 
 ## Link
 
-<ClientOnly>  <docs-demo-bal-list-60></docs-demo-bal-list-60></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-63></docs-demo-bal-list-63></ClientOnly>
 
 
 

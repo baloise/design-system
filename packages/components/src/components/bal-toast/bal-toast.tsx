@@ -67,9 +67,9 @@ export class Toast {
     return (
       <Host id={this.toastId}>
         <div role="alert" onClick={() => this.close()} class={`toast ${this.animationClass} ${this.colorType}`}>
-          <span class="toast-message">
+          <bal-text class="toast-message">
             <slot />
-          </span>
+          </bal-text>
           <bal-icon name="close" class="close" size="xsmall" inverted={this.color !== ''}></bal-icon>
         </div>
       </Host>

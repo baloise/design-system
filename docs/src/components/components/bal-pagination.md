@@ -8,7 +8,7 @@ A pagination is used with large amount of content to distribute it over multpile
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-pagination-70></docs-demo-bal-pagination-70></ClientOnly>
+<ClientOnly>  <docs-demo-bal-pagination-73></docs-demo-bal-pagination-73></ClientOnly>
 
 
 

@@ -533,6 +533,25 @@ export class BalFileUpload {
 }
 
 
+export declare interface BalHeading extends Components.BalHeading {}
+@ProxyCmp({
+  inputs: ['color', 'inverted', 'level', 'spaced', 'subtitle', 'visualLevel']
+})
+@Component({
+  selector: 'bal-heading',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['color', 'inverted', 'level', 'spaced', 'subtitle', 'visualLevel']
+})
+export class BalHeading {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface BalHint extends Components.BalHint {}
 @ProxyCmp({
   inputs: ['closeLabel', 'disabled'],
@@ -1206,13 +1225,13 @@ export class BalTag {
 
 export declare interface BalText extends Components.BalText {}
 @ProxyCmp({
-  inputs: ['color', 'small']
+  inputs: ['bold', 'color', 'small']
 })
 @Component({
   selector: 'bal-text',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color', 'small']
+  inputs: ['bold', 'color', 'small']
 })
 export class BalText {
   protected el: HTMLElement;
