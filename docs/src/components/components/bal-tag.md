@@ -8,24 +8,19 @@ A tag highlights a label for quick recognition.
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-tag-96></docs-demo-bal-tag-96></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-tag-96></docs-demo-bal-tag-96></ClientOnly>
 
 ## Size
 
-<ClientOnly>  <docs-demo-bal-tag-97></docs-demo-bal-tag-97></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-tag-97></docs-demo-bal-tag-97></ClientOnly>
 
 ## Closable
 
-<ClientOnly>  <docs-demo-bal-tag-98></docs-demo-bal-tag-98></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-tag-98></docs-demo-bal-tag-98></ClientOnly>
 
 ## Dense
 
-<ClientOnly>  <docs-demo-bal-tag-99></docs-demo-bal-tag-99></ClientOnly>
-
-
+<ClientOnly> <docs-demo-bal-tag-99></docs-demo-bal-tag-99></ClientOnly>
 
 ## API
 
@@ -45,14 +40,11 @@ A tag highlights a label for quick recognition.
 | :---------------- | :---------------------------------- | :----------- |
 | **balCloseClick** | Emitted when the input got clicked. | `MouseEvent` |
 
-
-
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
-
 ## Links
 
-* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-tag.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-tag)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-tag.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-tag)

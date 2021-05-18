@@ -94,7 +94,7 @@ npm start
 In this section shows usage example of the features from Baloise Design System.
 
 ::: tip
-More usage example are in our Angular example app [Link](https://github.com/baloise/ui-library/tree/master/examples/angular).
+More usage example are in our Angular example app [Link](https://github.com/baloise/design-system/tree/master/examples/angular).
 :::
 
 ### Component

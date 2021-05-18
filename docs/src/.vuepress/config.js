@@ -37,7 +37,7 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
-    repo: 'https://github.com/baloise/ui-library',
+    repo: 'https://github.com/baloise/design-system',
     logo: '/assets/images/baloise-dark.svg',
     editLinks: false,
     docsDir: 'docs',
@@ -111,8 +111,8 @@ module.exports = {
           children: [
             'templates',
             'changelog',
-            ['https://github.com/baloise/ui-library/projects/2', 'Roadmap'],
-            ['https://github.com/baloise/ui-library', 'Github'],
+            ['https://github.com/baloise/design-system/projects/2', 'Roadmap'],
+            ['https://github.com/baloise/design-system', 'Github'],
           ],
         },
       ],

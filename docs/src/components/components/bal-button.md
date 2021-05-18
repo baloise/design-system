@@ -8,59 +8,47 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-button-4></docs-demo-bal-button-4></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-button-4></docs-demo-bal-button-4></ClientOnly>
 
 ## Outlined
 
-<ClientOnly>  <docs-demo-bal-button-5></docs-demo-bal-button-5></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-button-5></docs-demo-bal-button-5></ClientOnly>
 
 ## Inverted
 
-<ClientOnly>  <docs-demo-bal-button-6></docs-demo-bal-button-6></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-button-6></docs-demo-bal-button-6></ClientOnly>
 
 ## Other colors
 
-<ClientOnly>  <docs-demo-bal-button-7></docs-demo-bal-button-7></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-button-7></docs-demo-bal-button-7></ClientOnly>
 
 ## Disabled
 
-<ClientOnly>  <docs-demo-bal-button-8></docs-demo-bal-button-8></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-button-8></docs-demo-bal-button-8></ClientOnly>
 
 ## Loading
 
-<ClientOnly>  <docs-demo-bal-button-9></docs-demo-bal-button-9></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-button-9></docs-demo-bal-button-9></ClientOnly>
 
 ## Expanded
 
-<ClientOnly>  <docs-demo-bal-button-10></docs-demo-bal-button-10></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-button-10></docs-demo-bal-button-10></ClientOnly>
 
 ## With icons
 
-<ClientOnly>  <docs-demo-bal-button-11></docs-demo-bal-button-11></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-button-11></docs-demo-bal-button-11></ClientOnly>
 
 ## Small buttons
 
-<ClientOnly>  <docs-demo-bal-button-12></docs-demo-bal-button-12></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-button-12></docs-demo-bal-button-12></ClientOnly>
 
 ## Square buttons
 
-<ClientOnly>  <docs-demo-bal-button-13></docs-demo-bal-button-13></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-button-13></docs-demo-bal-button-13></ClientOnly>
 
 ## Button Link
 
-<ClientOnly>  <docs-demo-bal-button-14></docs-demo-bal-button-14></ClientOnly>
-
-
+<ClientOnly> <docs-demo-bal-button-14></docs-demo-bal-button-14></ClientOnly>
 
 ## API
 
@@ -95,12 +83,12 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 #### Events
 
-| Event            | Description                                 | Type         |
-| :--------------- | :------------------------------------------ | :----------- |
-| **balBlur**      | Emitted when the button loses focus.        | `void`       |
-| **balDidRender** | Emitted when the button has been  rendered. | `void`       |
-| **balFocus**     | Emitted when the button has focus.          | `void`       |
-| **balNavigate**  | Emitted when the link element has clicked.  | `MouseEvent` |
+| Event            | Description                                | Type         |
+| :--------------- | :----------------------------------------- | :----------- |
+| **balBlur**      | Emitted when the button loses focus.       | `void`       |
+| **balDidRender** | Emitted when the button has been rendered. | `void`       |
+| **balFocus**     | Emitted when the button has focus.         | `void`       |
+| **balNavigate**  | Emitted when the link element has clicked. | `MouseEvent` |
 
 ## Testing
 
@@ -114,18 +102,18 @@ import { dataTestSelector, ButtonAccessor } from '@baloise/design-system-compone
 
 describe('Button', () => {
   it('should ...', () => {
-     const button = ButtonAccessor(dataTestSelector('button-id')).get()
-     button.click()
-     button.assertIsEnabled()
-     button.contains('Label')
- })
+    const button = ButtonAccessor(dataTestSelector('button-id')).get()
+    button.click()
+    button.assertIsEnabled()
+    button.contains('Label')
+  })
 })
 ```
 
 #### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
-| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
+| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- | ------ | ------- |
 | **contains**               | Check the content of the label element                                                                             | `content: string`                                        |
 | **assertIsDisabled**       | Asserts that button is disabled                                                                                    |                                                          |
 | **click**                  | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                |
@@ -133,7 +121,7 @@ describe('Button', () => {
 | **assertExists**           | Asserts that the element exists in the DOM                                                                         |                                                          |
 | **assertNotExists**        | Asserts that the element does not exist in the DOM                                                                 |                                                          |
 | **should**                 | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string` |
-| **contains**               | Verifies if the content of the element matches                                                                     | `content: string | number | RegExp`                      |
+| **contains**               | Verifies if the content of the element matches                                                                     | `content: string                                         | number | RegExp` |
 | **assertIsDisabled**       | Asserts that the element is disabled                                                                               |                                                          |
 | **assertIsEnabled**        | Asserts that the element is enabled and can be used                                                                |                                                          |
 | **assertVisible**          | Assert that the component is visible for the user                                                                  |                                                          |
@@ -153,9 +141,8 @@ WIP
 
 <!-- END: human documentation bottom -->
 
-
 ## Links
 
-* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-button.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-button)
-* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/button.accessor.ts)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-button.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-button)
+- [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/button.accessor.ts)

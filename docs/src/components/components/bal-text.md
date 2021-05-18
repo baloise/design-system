@@ -10,19 +10,15 @@ A text provides some additional helpers.
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-text-100></docs-demo-bal-text-100></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-text-100></docs-demo-bal-text-100></ClientOnly>
 
 ## Small
 
-<ClientOnly>  <docs-demo-bal-text-101></docs-demo-bal-text-101></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-text-101></docs-demo-bal-text-101></ClientOnly>
 
 ## Colors
 
-<ClientOnly>  <docs-demo-bal-text-102></docs-demo-bal-text-102></ClientOnly>
-
-
+<ClientOnly> <docs-demo-bal-text-102></docs-demo-bal-text-102></ClientOnly>
 
 ## API
 
@@ -48,17 +44,17 @@ import { dataTestSelector, TextAccessor } from '@baloise/design-system-component
 
 describe('Text', () => {
   it('should ...', () => {
-     const text = TextAccessor(dataTestSelector('text-id')).get()
-     text.contains('Label')
- })
+    const text = TextAccessor(dataTestSelector('text-id')).get()
+    text.contains('Label')
+  })
 })
 ```
 
 #### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
-| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
-| **contains**               | Verifies if the content of the element matches                                                                     | `content: string | number | RegExp`                      |
+| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- | ------ | ------- |
+| **contains**               | Verifies if the content of the element matches                                                                     | `content: string                                         | number | RegExp` |
 | **should**                 | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string` |
 | **blur**                   | Lose focus of this element                                                                                         | `options?: Partial<Cypress.BlurOptions>`                 |
 | **click**                  | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                |
@@ -80,9 +76,8 @@ describe('Text', () => {
 
 <!-- END: human documentation bottom -->
 
-
 ## Links
 
-* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-text.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-text)
-* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/text.accessor.ts)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-text.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-text)
+- [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/text.accessor.ts)

@@ -4,7 +4,7 @@
   "description": "The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/baloise/ui-library.git"
+    "url": "https://github.com/baloise/design-system.git"
   },
   "homepage": "https://baloise-design-system.vercel.app.sh",
   "author": {

@@ -10,24 +10,19 @@ Tabs are used to structure the information in sub section on the same page.
 
 ## Main Navigation
 
-<ClientOnly>  <docs-demo-bal-tabs-92></docs-demo-bal-tabs-92></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-tabs-92></docs-demo-bal-tabs-92></ClientOnly>
 
 ## Sub Navigation
 
-<ClientOnly>  <docs-demo-bal-tabs-93></docs-demo-bal-tabs-93></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-tabs-93></docs-demo-bal-tabs-93></ClientOnly>
 
 ## Expanded
 
-<ClientOnly>  <docs-demo-bal-tabs-94></docs-demo-bal-tabs-94></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-tabs-94></docs-demo-bal-tabs-94></ClientOnly>
 
 ## Stepper
 
-<ClientOnly>  <docs-demo-bal-tabs-95></docs-demo-bal-tabs-95></ClientOnly>
-
-
+<ClientOnly> <docs-demo-bal-tabs-95></docs-demo-bal-tabs-95></ClientOnly>
 
 ## API
 
@@ -55,10 +50,9 @@ Tabs are used to structure the information in sub section on the same page.
 | Method       | Description                                               | Signature                                    |
 | :----------- | :-------------------------------------------------------- | :------------------------------------------- |
 | **`select`** | Go to tab with the given value                            | `select(tab: BalTabOption) => Promise<void>` |
-| **`sync`**   | *Internal* - Rerenders the tabs with their given settings | `sync() => Promise<void>`                    |
+| **`sync`**   | _Internal_ - Rerenders the tabs with their given settings | `sync() => Promise<void>`                    |
 
 ### bal-tab-item
-
 
 # bal-tab-item
 
@@ -103,22 +97,22 @@ import { dataTestSelector, TabsAccessor } from '@baloise/design-system-component
 
 describe('Tabs', () => {
   it('should ...', () => {
-     const tabs = TabsAccessor(dataTestSelector('tabs-id')).get()
-     tabs.select(1)
-     tabs.assertVisible('value')
- })
+    const tabs = TabsAccessor(dataTestSelector('tabs-id')).get()
+    tabs.select(1)
+    tabs.assertVisible('value')
+  })
 })
 ```
 
 #### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
-| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
+| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- | ------ | ------- |
 | **assertVisible**          | Assert if tab is visible                                                                                           | `text: string`                                           |
 | **select**                 | Selects tab                                                                                                        | `index: number`                                          |
 | **click**                  | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                |
 | **clickNth**               | Triggers n times a click on the element                                                                            | `index: number, options?: Partial<Cypress.ClickOptions>` |
-| **contains**               | Verifies if the content of the element matches                                                                     | `content: string | number | RegExp`                      |
+| **contains**               | Verifies if the content of the element matches                                                                     | `content: string                                         | number | RegExp` |
 | **assertExists**           | Asserts that the element exists in the DOM                                                                         |                                                          |
 | **assertNotExists**        | Asserts that the element does not exist in the DOM                                                                 |                                                          |
 | **should**                 | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string` |
@@ -135,9 +129,8 @@ describe('Tabs', () => {
 
 <!-- END: human documentation bottom -->
 
-
 ## Links
 
-* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-tabs.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-tabs)
-* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/tabs.accessor.ts)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-tabs.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-tabs)
+- [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/tabs.accessor.ts)

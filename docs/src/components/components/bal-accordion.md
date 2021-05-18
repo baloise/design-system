@@ -8,28 +8,23 @@ An accordion hides secondary content and requires user interaction to display th
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-accordion-0></docs-demo-bal-accordion-0></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-accordion-0></docs-demo-bal-accordion-0></ClientOnly>
 
 ## Colors
 
 The accordion has 2 colors of themes `is-info` and `is-primary`.
 
-<ClientOnly>  <docs-demo-bal-accordion-1></docs-demo-bal-accordion-1></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-accordion-1></docs-demo-bal-accordion-1></ClientOnly>
 
 ## Open accordion
 
-<ClientOnly>  <docs-demo-bal-accordion-2></docs-demo-bal-accordion-2></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-accordion-2></docs-demo-bal-accordion-2></ClientOnly>
 
 ## Trigger label & icon
 
 Use the properties `open-label` & `open-icon` to change the content of the trigger button.
 
-<ClientOnly>  <docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
-
-
+<ClientOnly> <docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
 
 ## API
 
@@ -73,11 +68,11 @@ import { dataTestSelector, AccordionAccessor } from '@baloise/design-system-comp
 
 describe('Accordion', () => {
   it('should ...', () => {
-     const accordion = AccordionAccessor(dataTestSelector('accordion-id')).get()
-     accordion.click()
-     accordion.assertBodyExists()
-     accordion.contains('Label')
- })
+    const accordion = AccordionAccessor(dataTestSelector('accordion-id')).get()
+    accordion.click()
+    accordion.assertBodyExists()
+    accordion.contains('Label')
+  })
 })
 ```
 
@@ -107,9 +102,8 @@ describe('Accordion', () => {
 
 <!-- END: human documentation bottom -->
 
-
 ## Links
 
-* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-accordion.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-accordion)
-* [Accessor on Github](https://github.com/baloise/ui-library/blob/master/packages/testing/src/accessors/accordion.accessor.ts)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-accordion.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-accordion)
+- [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/accordion.accessor.ts)

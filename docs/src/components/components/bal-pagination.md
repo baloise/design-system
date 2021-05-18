@@ -8,9 +8,7 @@ A pagination is used with large amount of content to distribute it over multpile
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-pagination-73></docs-demo-bal-pagination-73></ClientOnly>
-
-
+<ClientOnly> <docs-demo-bal-pagination-73></docs-demo-bal-pagination-73></ClientOnly>
 
 ## API
 
@@ -38,14 +36,11 @@ A pagination is used with large amount of content to distribute it over multpile
 | **`next`**     | Go to the next page    | `next() => Promise<void>`     |
 | **`previous`** | Go to the prvious page | `previous() => Promise<void>` |
 
-
-
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
-
 ## Links
 
-* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-pagination.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-pagination)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-pagination.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-pagination)

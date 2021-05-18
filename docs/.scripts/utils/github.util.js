@@ -2,7 +2,7 @@ const { NEWLINE } = require('../../../.scripts/constants')
 const { convertToDotCase } = require('../../../.scripts/string')
 
 const parse = (component, accessor) => {
-  const baseUrl = 'https://github.com/baloise/ui-library/blob/master'
+  const baseUrl = 'https://github.com/baloise/design-system/blob/master'
 
   const lines = []
   lines.push('')

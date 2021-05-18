@@ -9,14 +9,11 @@ It can easily combined with the `bal-data` or `bal-field` component.
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-hint-49></docs-demo-bal-hint-49></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-hint-49></docs-demo-bal-hint-49></ClientOnly>
 
 ## Field
 
-<ClientOnly>  <docs-demo-bal-hint-50></docs-demo-bal-hint-50></ClientOnly>
-
-
+<ClientOnly> <docs-demo-bal-hint-50></docs-demo-bal-hint-50></ClientOnly>
 
 ## API
 
@@ -39,30 +36,21 @@ It can easily combined with the `bal-data` or `bal-field` component.
 
 ### bal-hint-text
 
-
 # bal-hint-text
 
 `bal-hint-text` is a child component of `bal-hint` that defines the text of the hint dialog.
 
-
-
 ### bal-hint-title
-
 
 # bal-hint-title
 
 `bal-hint-title` is a child component of `bal-hint` that defines the title of the hint dialog.
 
-
-
-
-
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
-
 ## Links
 
-* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-hint.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-hint)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-hint.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-hint)

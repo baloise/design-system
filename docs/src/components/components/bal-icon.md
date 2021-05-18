@@ -9,28 +9,23 @@ Then the build script will automatically optimize the svg and create its own web
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-icon-51></docs-demo-bal-icon-51></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-icon-51></docs-demo-bal-icon-51></ClientOnly>
 
 ## Size
 
 Here is how you can change the size:
 
-<ClientOnly>  <docs-demo-bal-icon-52></docs-demo-bal-icon-52></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-icon-52></docs-demo-bal-icon-52></ClientOnly>
 
 ## Colors
 
-<ClientOnly>  <docs-demo-bal-icon-53></docs-demo-bal-icon-53></ClientOnly>
-
+<ClientOnly> <docs-demo-bal-icon-53></docs-demo-bal-icon-53></ClientOnly>
 
 ## Custom Color
 
 Here is how you can change the color:
 
-<ClientOnly>  <docs-demo-bal-icon-54></docs-demo-bal-icon-54></ClientOnly>
-
-
+<ClientOnly> <docs-demo-bal-icon-54></docs-demo-bal-icon-54></ClientOnly>
 
 ## API
 
@@ -48,14 +43,11 @@ Here is how you can change the color:
 | **svg**      | Svg content.                                                    | `string`                                                                                          | `''`     |
 | **turn**     | If `true` the icon is rotated 180deg                            | `boolean`                                                                                         | `false`  |
 
-
-
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
-
 ## Links
 
-* [Documentation on Github](https://github.com/baloise/ui-library/blob/master/docs/src/components/components/bal-icon.md)
-* [Implementation on Github](https://github.com/baloise/ui-library/blob/master/packages/components/src/components/bal-icon)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-icon.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-icon)

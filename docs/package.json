@@ -7,7 +7,7 @@
     "name": "Gery Hirschfeld",
     "email": "gerhard.hirschfeld@baloise.ch"
   },
-  "repository": "https://github.com/baloise/ui-library",
+  "repository": "https://github.com/baloise/design-system",
   "scripts": {
     "serve:light": "vuepress dev src",
     "serve": "npm run setup && vuepress dev src",

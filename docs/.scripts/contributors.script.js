@@ -4,7 +4,7 @@ const file = require('../../.scripts/file')
 const { NEWLINE } = require('../../.scripts/constants')
 
 async function main() {
-  const res = await fetch('https://api.github.com/repos/baloise/ui-library/contributors')
+  const res = await fetch('https://api.github.com/repos/baloise/design-system/contributors')
   const json = await res.json()
   const users = json
     .filter(c => c.type === 'User')
