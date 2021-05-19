@@ -3,17 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.0.1](https://github.com/baloise/design-system/compare/v1.0.0...v1.0.1) (2021-05-18)
+## 1.0.0 (2021-05-18)
 
-**Note:** Version bump only for package @baloise/design-system-components
+### Breaking Changes
 
-# 0.13.0 (2021-05-18)
+- renamed to `Design System`
+  - package `@baloise/ui-library` renamed to `@baloise/design-system-components`
+  - package `@baloise/ui-library-vue` renamed to `@baloise/design-system-components-vue`
+    - `baloiseUiLibrary` renamed to `BaloiseDesignSystem`
+  - package `@baloise/ui-library-angular` renamed to `@baloise/design-system-components-angular`
+    - `BalUiLibraryModule` renamed to `BaloiseDesignSystemModule`
+  - package `@baloise/ui-library-testing` renamed to `@baloise/design-system-testing`
+- new font package `@baloise/design-system-fonts`
+  - follow the new style [instalation guide](https://baloise-design-system.vercel.app/components/essentials/styles.html)
+- new icon package `@baloise/design-system-icons`
+- removed vue-2 proxy libary
+- removed unuesed `bal-teaser-step` component
+- dependency updates for all the packages
 
 ### Features
 
-- add font crop ([d397598](https://github.com/baloise/design-system/commit/d3975983288e9d726060573341650d99255e02ac))
-- **bal-card-button:** add link attribute and some more ([fff1df7](https://github.com/baloise/design-system/commit/fff1df79849e42662213c33558399808b54b9c15))
-- **bal-select:** improve key handling ([702d6c4](https://github.com/baloise/design-system/commit/702d6c4ac3383066d94df0f0392087cc4d70f5f1))
+- **design:** implement 8pixel spacing
+- **bal-heading:** new component with a font cropping fix
+- **bal-checkbox:** add new style examples
+- **bal-radio:** add new style examples
+- **bal-select:** improve focus handling with the keyboard and the cursor
+
+### Bug Fixes
+
+- add design part to the documentation
+
+# UI-Library
+
+This project merged with the design part and got renamed.
 
 # [4.17.0](https://github.com/baloise/design-system/compare/v4.16.0...v4.17.0) (2021-04-30)
 
