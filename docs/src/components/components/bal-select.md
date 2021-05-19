@@ -18,23 +18,29 @@ export interface BalOptionValue<T> {
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-select-81></docs-demo-bal-select-81></ClientOnly>
+<ClientOnly>  <docs-demo-bal-select-81></docs-demo-bal-select-81></ClientOnly>
+
 
 ### Typeahead
 
-<ClientOnly> <docs-demo-bal-select-82></docs-demo-bal-select-82></ClientOnly>
+<ClientOnly>  <docs-demo-bal-select-82></docs-demo-bal-select-82></ClientOnly>
+
 
 ### Multi-Select
 
-<ClientOnly> <docs-demo-bal-select-83></docs-demo-bal-select-83></ClientOnly>
+<ClientOnly>  <docs-demo-bal-select-83></docs-demo-bal-select-83></ClientOnly>
+
 
 ### Multi-Select with typeahead
 
-<ClientOnly> <docs-demo-bal-select-84></docs-demo-bal-select-84></ClientOnly>
+<ClientOnly>  <docs-demo-bal-select-84></docs-demo-bal-select-84></ClientOnly>
+
 
 ### Remote Typeahead
 
-<ClientOnly> <docs-demo-bal-select-85></docs-demo-bal-select-85></ClientOnly>
+<ClientOnly>  <docs-demo-bal-select-85></docs-demo-bal-select-85></ClientOnly>
+
+
 
 ## API
 
@@ -83,7 +89,10 @@ export interface BalOptionValue<T> {
 
 ### bal-select-option
 
+
 # bal-select-option
+
+
 
 #### Properties
 
@@ -104,32 +113,33 @@ import { dataTestSelector, SelectAccessor } from '@baloise/design-system-compone
 
 describe('Select', () => {
   it('should ...', () => {
-    const select = SelectAccessor(dataTestSelector('select-id')).get()
-    select.click()
-    select.select(1)
-    select.contains('value')
-  })
+     const select = SelectAccessor(dataTestSelector('select-id')).get()
+     select.click()
+     select.select(1)
+     select.contains('value')
+ })
 })
 ```
 
 #### Methods
 
 | Method            | Description                    | Arguments                                 |
-| :---------------- | :----------------------------- | :---------------------------------------- | ------ | ------- |
+| :---------------- | :----------------------------- | :---------------------------------------- |
 | **click**         | Clicks the input               | `options?: Partial<Cypress.ClickOptions>` |
 | **select**        | Selects dropdown item          | `index: number`                           |
 | **assertOptions** | Checks the options             | `...options: string[]`                    |
-| **contains**      | Checks if input have a content | `content: string                          | number | RegExp` |
+| **contains**      | Checks if input have a content | `content: string | number | RegExp`       |
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-select.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-select)
-- [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/select.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-select.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-select)
+* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/select.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balSelect"></docs-component-script>

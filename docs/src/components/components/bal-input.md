@@ -10,19 +10,24 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-input-55></docs-demo-bal-input-55></ClientOnly>
+<ClientOnly>  <docs-demo-bal-input-55></docs-demo-bal-input-55></ClientOnly>
+
 
 ## HTML input
 
-<ClientOnly> <docs-demo-bal-input-56></docs-demo-bal-input-56></ClientOnly>
+<ClientOnly>  <docs-demo-bal-input-56></docs-demo-bal-input-56></ClientOnly>
+
 
 ## Inverted
 
-<ClientOnly> <docs-demo-bal-input-57></docs-demo-bal-input-57></ClientOnly>
+<ClientOnly>  <docs-demo-bal-input-57></docs-demo-bal-input-57></ClientOnly>
+
 
 ## Number Input
 
-<ClientOnly> <docs-demo-bal-input-58></docs-demo-bal-input-58></ClientOnly>
+<ClientOnly>  <docs-demo-bal-input-58></docs-demo-bal-input-58></ClientOnly>
+
+
 
 ## API
 
@@ -62,22 +67,22 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 #### Events
 
-| Event           | Description                               | Type            |
-| :-------------- | :---------------------------------------- | :-------------- | ------ | ------- |
-| **balBlur**     | Emitted when a keyboard input occurred.   | `FocusEvent`    |
-| **balChange**   | Emitted when the input value has changed. | `null           | number | string` |
-| **balClick**    | Emitted when the input has clicked.       | `MouseEvent`    |
-| **balFocus**    | Emitted when the input has focus.         | `FocusEvent`    |
-| **balInput**    | Emitted when a keyboard input occurred.   | `null           | number | string` |
-| **balKeyPress** | Emitted when a keyboard key has pressed.  | `KeyboardEvent` |
+| Event           | Description                               | Type                     |
+| :-------------- | :---------------------------------------- | :----------------------- |
+| **balBlur**     | Emitted when a keyboard input occurred.   | `FocusEvent`             |
+| **balChange**   | Emitted when the input value has changed. | `null | number | string` |
+| **balClick**    | Emitted when the input has clicked.       | `MouseEvent`             |
+| **balFocus**    | Emitted when the input has focus.         | `FocusEvent`             |
+| **balInput**    | Emitted when a keyboard input occurred.   | `null | number | string` |
+| **balKeyPress** | Emitted when a keyboard key has pressed.  | `KeyboardEvent`          |
 
 #### Methods
 
-| Method                | Description                                                                            | Signature                                        |
-| :-------------------- | :------------------------------------------------------------------------------------- | :----------------------------------------------- |
-| **`getInputElement`** | Returns the native `<input>` element used under the hood.                              | `getInputElement() => Promise<HTMLInputElement>` |
-| **`setFocus`**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global |
-| `input.focus()`.      | `setFocus() => Promise<void>`                                                          |
+| Method                | Description                                                                                             | Signature                                        |
+| :-------------------- | :------------------------------------------------------------------------------------------------------ | :----------------------------------------------- |
+| **`getInputElement`** | Returns the native `<input>` element used under the hood.                                               | `getInputElement() => Promise<HTMLInputElement>` |
+| **`setFocus`**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global
+`input.focus()`. | `setFocus() => Promise<void>`                    |
 
 ## Testing
 
@@ -100,7 +105,7 @@ describe('Input', () => {
 #### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
-| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- | ------ | ------- |
+| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
 | **assertValue**            | Assert if the checkbox have value                                                                                  | `value: any`                                             |
 | **click**                  | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                |
 | **clickNth**               | Triggers n times a click on the element                                                                            | `index: number, options?: Partial<Cypress.ClickOptions>` |
@@ -108,7 +113,7 @@ describe('Input', () => {
 | **blur**                   | Lose focus of this element                                                                                         | `options?: Partial<Cypress.BlurOptions>`                 |
 | **should**                 | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string` |
 | **clear**                  | Clears the value of the element                                                                                    | `options?: Partial<Cypress.TypeOptions>`                 |
-| **contains**               | Verifies if the content of the element matches                                                                     | `content: string                                         | number | RegExp` |
+| **contains**               | Verifies if the content of the element matches                                                                     | `content: string | number | RegExp`                      |
 | **assertExists**           | Asserts that the element exists in the DOM                                                                         |                                                          |
 | **assertNotExists**        | Asserts that the element does not exist in the DOM                                                                 |                                                          |
 | **assertIsDisabled**       | Asserts that the element is disabled                                                                               |                                                          |
@@ -126,11 +131,12 @@ describe('Input', () => {
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-input.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-input)
-- [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/input.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-input.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-input)
+* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/input.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balInput"></docs-component-script>

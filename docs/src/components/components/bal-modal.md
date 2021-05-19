@@ -9,15 +9,19 @@ the app before interaction can resume.
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-modal-64></docs-demo-bal-modal-64></ClientOnly>
+<ClientOnly>  <docs-demo-bal-modal-64></docs-demo-bal-modal-64></ClientOnly>
+
 
 ## Customize width
 
-<ClientOnly> <docs-demo-bal-modal-65></docs-demo-bal-modal-65></ClientOnly>
+<ClientOnly>  <docs-demo-bal-modal-65></docs-demo-bal-modal-65></ClientOnly>
+
 
 ## Modal card style
 
-<ClientOnly> <docs-demo-bal-modal-66></docs-demo-bal-modal-66></ClientOnly>
+<ClientOnly>  <docs-demo-bal-modal-66></docs-demo-bal-modal-66></ClientOnly>
+
+
 
 ## API
 
@@ -38,36 +42,49 @@ the app before interaction can resume.
 
 ### bal-modal-actions
 
+
 # bal-modal-actions
 
 `bal-modal-actions` is a child component of `bal-modal` that defines the area for the action button at the bottom of the modal.
 
+
+
 ### bal-modal-body
+
 
 # bal-modal-body
 
 `bal-modal-body` is a child component of `bal-modal` that contains the main content of the modal.
 
+
+
 ### bal-modal-footer
+
 
 # bal-modal-footer
 
 `bal-modal-footer` is a child component of `bal-modal` that normally contains some buttons for that please also use the `bal-modal-actions` component.
 
+
 ### bal-modal-header
+
 
 # bal-modal-header
 
 `bal-modal-header` is a child component of `bal-modal` that has the title of the modal.
 
+
+
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-modal.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-modal)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-modal.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-modal)
 
 <ClientOnly>
   <docs-component-script tag="balModal"></docs-component-script>

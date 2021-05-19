@@ -1,23 +1,12 @@
 ---
 home: true
 heroImage: /assets/images/hero-image.svg
-tagline: The Design System is an open source project for styling awesome web applications that follow the Baloise corporate style guide.
-
-# actionText: Explore our components →
-# actionLink: /components/
-
-# features:
-#   - title: 📦 Agnostic
-#     details: Our Design System work with many popular frameworks right out of the box.
-#   - title: ⚡️ Fast Runtime
-#     details: Web Components offered a solution by pushing more work to the browser for better performance.
-#   - title: 🛠️ Rich Features
-#     details: We offer a set of utilities like validators, filters, util functions and testing helpers.
+tagline: The Baloise Design System consists of reusable components and a clearly defined visual style, that can be assembled together to build any number of applications.
 footer: Apache-2.0 Licensed | Copyright © 2019-present Laurent Tauber, Gery Hirschfeld & Contributors
 ---
 
 <div class="bal-app home-links">
-  <div class="columns">
+  <div class="columns mt-2">
     <div class="column">
       <a href="/design/" class>
         <bal-icon name="nav-go-right" inverted></bal-icon>

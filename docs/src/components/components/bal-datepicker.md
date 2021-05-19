@@ -10,43 +10,53 @@ A datepicker allows manual date entry as well as open the dropdown content with 
 
 In this example the user can only select a date. For that use the property `readonly`.
 
-<ClientOnly> <docs-demo-bal-datepicker-31></docs-demo-bal-datepicker-31></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-31></docs-demo-bal-datepicker-31></ClientOnly>
+
 
 ## Disabled
 
-<ClientOnly> <docs-demo-bal-datepicker-32></docs-demo-bal-datepicker-32></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-32></docs-demo-bal-datepicker-32></ClientOnly>
+
 
 ## Manual Input
 
 To enable manual input remove the property `readonly` and add the property `trigger-ico`. The `trigger-ico` property only opens the dropdown when the icon gets clicked.
 
-<ClientOnly> <docs-demo-bal-datepicker-33></docs-demo-bal-datepicker-33></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-33></docs-demo-bal-datepicker-33></ClientOnly>
+
 
 ## Inverted & Expanded
 
-<ClientOnly> <docs-demo-bal-datepicker-34></docs-demo-bal-datepicker-34></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-34></docs-demo-bal-datepicker-34></ClientOnly>
+
 
 ## i18n
 
-<ClientOnly> <docs-demo-bal-datepicker-35></docs-demo-bal-datepicker-35></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-35></docs-demo-bal-datepicker-35></ClientOnly>
+
 
 ## Footer
 
-<ClientOnly> <docs-demo-bal-datepicker-36></docs-demo-bal-datepicker-36></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-36></docs-demo-bal-datepicker-36></ClientOnly>
+
 
 ## Range Min & Max
 
-<ClientOnly> <docs-demo-bal-datepicker-37></docs-demo-bal-datepicker-37></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-37></docs-demo-bal-datepicker-37></ClientOnly>
+
 
 ## Allow Dates
 
 You can specify allowed dates using a function.
 
-<ClientOnly> <docs-demo-bal-datepicker-38></docs-demo-bal-datepicker-38></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-38></docs-demo-bal-datepicker-38></ClientOnly>
+
 
 ## Custom Start Date
 
-<ClientOnly> <docs-demo-bal-datepicker-39></docs-demo-bal-datepicker-39></ClientOnly>
+<ClientOnly>  <docs-demo-bal-datepicker-39></docs-demo-bal-datepicker-39></ClientOnly>
+
+
 
 ## API
 
@@ -78,12 +88,12 @@ You can specify allowed dates using a function.
 
 #### Events
 
-| Event         | Description                             | Type         |
-| :------------ | :-------------------------------------- | :----------- | ------ | ---------- |
-| **balBlur**   | Emitted when the input loses focus.     | `FocusEvent` |
-| **balChange** | Emitted when a option got selected.     | `null        | string | undefined` |
-| **balFocus**  | Emitted when the input has focus.       | `FocusEvent` |
-| **balInput**  | Emitted when a keyboard input occurred. | `string`     |
+| Event         | Description                             | Type                        |
+| :------------ | :-------------------------------------- | :-------------------------- |
+| **balBlur**   | Emitted when the input loses focus.     | `FocusEvent`                |
+| **balChange** | Emitted when a option got selected.     | `null | string | undefined` |
+| **balFocus**  | Emitted when the input has focus.       | `FocusEvent`                |
+| **balInput**  | Emitted when a keyboard input occurred. | `string`                    |
 
 #### Methods
 
@@ -107,11 +117,11 @@ import { dataTestSelector, DatepickerAccessor } from '@baloise/design-system-com
 
 describe('Datepicker', () => {
   it('should ...', () => {
-    const datepicker = DatepickerAccessor(dataTestSelector('datepicker-id')).get()
-    datepicker.open()
-    datepicker.pick(new Date())
-    datepicker.shouldHaveValue(new Date())
-  })
+     const datepicker = DatepickerAccessor(dataTestSelector('datepicker-id')).get()
+     datepicker.open()
+     datepicker.pick(new Date())
+     datepicker.shouldHaveValue(new Date())
+ })
 })
 ```
 
@@ -129,11 +139,12 @@ describe('Datepicker', () => {
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-datepicker.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-datepicker)
-- [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/datepicker.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-datepicker.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-datepicker)
+* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/datepicker.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balDatepicker"></docs-component-script>

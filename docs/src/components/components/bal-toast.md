@@ -20,11 +20,14 @@ Toasts are used to inform the user with a simple text message.
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-toast-108></docs-demo-bal-toast-108></ClientOnly>
+<ClientOnly>  <docs-demo-bal-toast-108></docs-demo-bal-toast-108></ClientOnly>
+
 
 ## Colors
 
-<ClientOnly> <docs-demo-bal-toast-109></docs-demo-bal-toast-109></ClientOnly>
+<ClientOnly>  <docs-demo-bal-toast-109></docs-demo-bal-toast-109></ClientOnly>
+
+
 
 ## API
 
@@ -62,18 +65,18 @@ import { dataTestSelector, ToastAccessor } from '@baloise/design-system-componen
 
 describe('Toast', () => {
   it('should ...', () => {
-    const toast = ToastAccessor(dataTestSelector('toast-id')).get()
-    toast.click()
-  })
+     const toast = ToastAccessor(dataTestSelector('toast-id')).get()
+     toast.click()
+ })
 })
 ```
 
 #### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
-| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- | ------ | ------- |
+| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
 | **assertToast**            | Assert if the toast have content                                                                                   | `content: string`                                        |
-| **contains**               | Verifies if the content of the element matches                                                                     | `content: string                                         | number | RegExp` |
+| **contains**               | Verifies if the content of the element matches                                                                     | `content: string | number | RegExp`                      |
 | **click**                  | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                |
 | **clickNth**               | Triggers n times a click on the element                                                                            | `index: number, options?: Partial<Cypress.ClickOptions>` |
 | **assertVisible**          | Assert that the component is visible for the user                                                                  |                                                          |
@@ -94,11 +97,12 @@ describe('Toast', () => {
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-toast.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-toast)
-- [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/toast.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-toast.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-toast)
+* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/toast.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balToast"></docs-component-script>

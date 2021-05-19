@@ -8,31 +8,39 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-radio-74></docs-demo-bal-radio-74></ClientOnly>
+<ClientOnly>  <docs-demo-bal-radio-74></docs-demo-bal-radio-74></ClientOnly>
+
 
 ## Inverted
 
-<ClientOnly> <docs-demo-bal-radio-75></docs-demo-bal-radio-75></ClientOnly>
+<ClientOnly>  <docs-demo-bal-radio-75></docs-demo-bal-radio-75></ClientOnly>
+
 
 ## With Links
 
-<ClientOnly> <docs-demo-bal-radio-76></docs-demo-bal-radio-76></ClientOnly>
+<ClientOnly>  <docs-demo-bal-radio-76></docs-demo-bal-radio-76></ClientOnly>
+
 
 ## Radio Boxes
 
-<ClientOnly> <docs-demo-bal-radio-77></docs-demo-bal-radio-77></ClientOnly>
+<ClientOnly>  <docs-demo-bal-radio-77></docs-demo-bal-radio-77></ClientOnly>
+
 
 ## Radio List
 
-<ClientOnly> <docs-demo-bal-radio-78></docs-demo-bal-radio-78></ClientOnly>
+<ClientOnly>  <docs-demo-bal-radio-78></docs-demo-bal-radio-78></ClientOnly>
+
 
 ## Select Button
 
-<ClientOnly> <docs-demo-bal-radio-79></docs-demo-bal-radio-79></ClientOnly>
+<ClientOnly>  <docs-demo-bal-radio-79></docs-demo-bal-radio-79></ClientOnly>
+
 
 ### Inverted
 
-<ClientOnly> <docs-demo-bal-radio-80></docs-demo-bal-radio-80></ClientOnly>
+<ClientOnly>  <docs-demo-bal-radio-80></docs-demo-bal-radio-80></ClientOnly>
+
+
 
 ## API
 
@@ -65,6 +73,7 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 ### bal-radio-group
 
+
 # bal-radio-group
 
 #### Properties
@@ -94,22 +103,22 @@ import { dataTestSelector, RadioAccessor } from '@baloise/design-system-componen
 
 describe('Radio', () => {
   it('should ...', () => {
-    const radio = RadioAccessor(dataTestSelector('radio-id')).get()
-    radio.select(1)
-  })
+     const radio = RadioAccessor(dataTestSelector('radio-id')).get()
+     radio.select(1)
+ })
 })
 ```
 
 #### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
-| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- | --------- | ------- |
-| **select**                 | Selects option                                                                                                     | `indexes: number                                         | number[]` |
+| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
+| **select**                 | Selects option                                                                                                     | `indexes: number | number[]`                             |
 | **check**                  | Check element                                                                                                      | `options?: Partial<Cypress.CheckOptions>`                |
 | **assertIsChecked**        | Assert if the the element is checked                                                                               | `shouldBeChecked?: boolean`                              |
 | **click**                  | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                |
 | **clickNth**               | Triggers n times a click on the element                                                                            | `index: number, options?: Partial<Cypress.ClickOptions>` |
-| **contains**               | Verifies if the content of the element matches                                                                     | `content: string                                         | number    | RegExp` |
+| **contains**               | Verifies if the content of the element matches                                                                     | `content: string | number | RegExp`                      |
 | **assertExists**           | Asserts that the element exists in the DOM                                                                         |                                                          |
 | **assertNotExists**        | Asserts that the element does not exist in the DOM                                                                 |                                                          |
 | **assertIsDisabled**       | Asserts that the element is disabled                                                                               |                                                          |
@@ -128,11 +137,12 @@ describe('Radio', () => {
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-radio.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-radio)
-- [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/radio.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-radio.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-radio)
+* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/radio.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balRadio"></docs-component-script>

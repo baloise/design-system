@@ -8,7 +8,9 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-file-upload-46></docs-demo-bal-file-upload-46></ClientOnly>
+<ClientOnly>  <docs-demo-bal-file-upload-46></docs-demo-bal-file-upload-46></ClientOnly>
+
+
 
 ## API
 
@@ -33,14 +35,17 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 | **balChange**       | Triggers when a file is added or removed.                                | `File[]`                 |
 | **balRejectedFile** | Triggers when a file is rejected due to not allowed MIME-Type and so on. | `FileUploadRejectedFile` |
 
+
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-file-upload.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-file-upload)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-file-upload.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-file-upload)
 
 <ClientOnly>
   <docs-component-script tag="balFileUpload"></docs-component-script>

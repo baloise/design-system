@@ -8,23 +8,29 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-list-59></docs-demo-bal-list-59></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-59></docs-demo-bal-list-59></ClientOnly>
+
 
 ## With borders
 
-<ClientOnly> <docs-demo-bal-list-60></docs-demo-bal-list-60></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-60></docs-demo-bal-list-60></ClientOnly>
+
 
 ## Inverted
 
-<ClientOnly> <docs-demo-bal-list-61></docs-demo-bal-list-61></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-61></docs-demo-bal-list-61></ClientOnly>
+
 
 ## With Icons
 
-<ClientOnly> <docs-demo-bal-list-62></docs-demo-bal-list-62></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-62></docs-demo-bal-list-62></ClientOnly>
+
 
 ## Link
 
-<ClientOnly> <docs-demo-bal-list-63></docs-demo-bal-list-63></ClientOnly>
+<ClientOnly>  <docs-demo-bal-list-63></docs-demo-bal-list-63></ClientOnly>
+
+
 
 ## API
 
@@ -40,7 +46,9 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ### bal-list-item
 
+
 # bal-list-item
+
 
 #### Properties
 
@@ -60,9 +68,15 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ### bal-list-item-content
 
+
 # bal-list-item-content
 
+
+
+
+
 ### bal-list-item-icon
+
 
 # bal-list-item-icon
 
@@ -76,26 +90,32 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ### bal-list-item-subtitle
 
+
 # bal-list-item-subtitle
 
 `bal-list-item-subtitle` is a child component of `bal-list` that defines the subtitle list row element.
 
+
 ### bal-list-item-title
+
 
 # bal-list-item-title
 
 `bal-list-item-title` is a child component of `bal-list` that defines the title list row element.
 
+
 ## Testing
 
 ### ListAccessor
 
+
+
 #### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
-| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- | ------ | ------- |
+| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
 | **select**                 | Selects the element from the list                                                                                  | `index: number, options?: Partial<Cypress.ClickOptions>` |
-| **contains**               | Verifies if the content of the element matches                                                                     | `content: string                                         | number | RegExp` |
+| **contains**               | Verifies if the content of the element matches                                                                     | `content: string | number | RegExp`                      |
 | **assertExists**           | Asserts that the element exists in the DOM                                                                         |                                                          |
 | **assertNotExists**        | Asserts that the element does not exist in the DOM                                                                 |                                                          |
 | **click**                  | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                |
@@ -116,8 +136,9 @@ A list present content in a way that makes it easy to identify a specific item i
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-list.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-list)
-- [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/list.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-list.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-list)
+* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/list.accessor.ts)

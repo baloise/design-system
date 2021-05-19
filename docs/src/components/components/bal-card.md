@@ -8,33 +8,41 @@ The card component is a versatile component that can be combined easily wiht oth
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-card-15></docs-demo-bal-card-15></ClientOnly>
+<ClientOnly>  <docs-demo-bal-card-15></docs-demo-bal-card-15></ClientOnly>
+
 
 ## Inverted style
 
-<ClientOnly> <docs-demo-bal-card-16></docs-demo-bal-card-16></ClientOnly>
+<ClientOnly>  <docs-demo-bal-card-16></docs-demo-bal-card-16></ClientOnly>
+
 
 ## With accordion
 
-<ClientOnly> <docs-demo-bal-card-17></docs-demo-bal-card-17></ClientOnly>
+<ClientOnly>  <docs-demo-bal-card-17></docs-demo-bal-card-17></ClientOnly>
+
 
 ## With list
 
 The position the action buttons to the right side just add the attribute `right` to the component `bal-card-actions`.
 
-<ClientOnly> <docs-demo-bal-card-18></docs-demo-bal-card-18></ClientOnly>
+<ClientOnly>  <docs-demo-bal-card-18></docs-demo-bal-card-18></ClientOnly>
+
 
 ## Summary card
 
-<ClientOnly> <docs-demo-bal-card-19></docs-demo-bal-card-19></ClientOnly>
+<ClientOnly>  <docs-demo-bal-card-19></docs-demo-bal-card-19></ClientOnly>
+
 
 ## Service card
 
-<ClientOnly> <docs-demo-bal-card-20></docs-demo-bal-card-20></ClientOnly>
+<ClientOnly>  <docs-demo-bal-card-20></docs-demo-bal-card-20></ClientOnly>
+
 
 ## Colors
 
-<ClientOnly> <docs-demo-bal-card-21></docs-demo-bal-card-21></ClientOnly>
+<ClientOnly>  <docs-demo-bal-card-21></docs-demo-bal-card-21></ClientOnly>
+
+
 
 ## API
 
@@ -56,6 +64,7 @@ The position the action buttons to the right side just add the attribute `right`
 
 ### bal-card-actions
 
+
 # bal-card-actions
 
 `bal-card-actions` is a child component of `bal-card` that sets the buttons to the right place.
@@ -67,6 +76,7 @@ The position the action buttons to the right side just add the attribute `right`
 | **right** | If `true` the buttons start form right to left. | `boolean` | `false` |
 
 ### bal-card-button
+
 
 # bal-card-button
 
@@ -86,9 +96,11 @@ The position the action buttons to the right side just add the attribute `right`
 
 ### bal-card-content
 
+
 # bal-card-content
 
 `bal-card-content` is a child component of `bal-card`. It is recommended that any text content for a card should be placed in a `bal-card-content`.
+
 
 #### Properties
 
@@ -98,23 +110,30 @@ The position the action buttons to the right side just add the attribute `right`
 
 ### bal-card-head
 
+
 # bal-card-head
 
 `bal-card-head` is a child component of `bal-card` that adds a head element for the service card style.
 
+
 ### bal-card-heading
+
 
 # bal-card-heading
 
 `bal-card-heading` is a child component of `bal-card` that adds a small heading to the card. It is recommended to use this before the `bal-card-title` component.
 
+
 ### bal-card-steps
+
 
 # bal-card-steps
 
 `bal-card-steps` is a child component of `bal-card` that adds a wrapper for the bal-tabs.
 
+
 ### bal-card-subtitle
+
 
 # bal-card-subtitle
 
@@ -128,6 +147,7 @@ The position the action buttons to the right side just add the attribute `right`
 
 ### bal-card-title
 
+
 # bal-card-title
 
 `bal-card-title` is a child component of `bal-card` that adds a title to card.
@@ -138,11 +158,14 @@ The position the action buttons to the right side just add the attribute `right`
 | :----------- | :------------------------------------------- | :-------- | :------ |
 | **inverted** | If `true` the card text color becomes white. | `boolean` | `false` |
 
+
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-card.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-card)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-card.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-card)

@@ -9,7 +9,7 @@
 
 ## About
 
-Baloise Design-System is an open source library for building amazing web applications that follow the Baloise corporate style guidelines.
+The Baloise Design System consists of reusable components and a clearly defined visual style, that can be assembled together to build any number of applications.
 
 ## Documentation
 

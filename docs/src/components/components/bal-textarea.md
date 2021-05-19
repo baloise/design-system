@@ -8,7 +8,9 @@ A textarea allows a user to write and edit large texts.
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-textarea-103></docs-demo-bal-textarea-103></ClientOnly>
+<ClientOnly>  <docs-demo-bal-textarea-103></docs-demo-bal-textarea-103></ClientOnly>
+
+
 
 ## API
 
@@ -50,20 +52,23 @@ A textarea allows a user to write and edit large texts.
 
 #### Methods
 
-| Method                | Description                                                                                  | Signature                                           |
-| :-------------------- | :------------------------------------------------------------------------------------------- | :-------------------------------------------------- |
-| **`getInputElement`** | Returns the native `<textarea>` element used under the hood.                                 | `getInputElement() => Promise<HTMLTextAreaElement>` |
-| **`setFocus`**        | Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global |
-| `textarea.focus()`.   | `setFocus() => Promise<void>`                                                                |
+| Method                | Description                                                                                                      | Signature                                           |
+| :-------------------- | :--------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------- |
+| **`getInputElement`** | Returns the native `<textarea>` element used under the hood.                                                     | `getInputElement() => Promise<HTMLTextAreaElement>` |
+| **`setFocus`**        | Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global
+`textarea.focus()`. | `setFocus() => Promise<void>`                       |
+
+
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-textarea.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-textarea)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-textarea.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-textarea)
 
 <ClientOnly>
   <docs-component-script tag="balTextarea"></docs-component-script>

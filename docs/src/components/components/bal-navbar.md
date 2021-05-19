@@ -12,11 +12,14 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-navbar-67></docs-demo-bal-navbar-67></ClientOnly>
+<ClientOnly>  <docs-demo-bal-navbar-67></docs-demo-bal-navbar-67></ClientOnly>
+
 
 ## Light
 
-<ClientOnly> <docs-demo-bal-navbar-68></docs-demo-bal-navbar-68></ClientOnly>
+<ClientOnly>  <docs-demo-bal-navbar-68></docs-demo-bal-navbar-68></ClientOnly>
+
+
 
 ## API
 
@@ -32,9 +35,11 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 ### bal-navbar-brand
 
-# bal-navbar-brand
+
+# bal-navbar-brand 
 
 `bal-navbar-brand` is a child component of `bal-navbar` that defines the area in the navbar where the logo or the title of the applications is.
+
 
 #### Properties
 
@@ -50,33 +55,45 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 ### bal-navbar-menu
 
-# bal-navbar-menu
+
+# bal-navbar-menu 
 
 `bal-navbar-menu` is a child component of `bal-navbar` that defines the area in the navbar where links and actions are.
+
+
 
 #### Methods
 
 | Method       | Description                                                             | Signature                                        |
 | :----------- | :---------------------------------------------------------------------- | :----------------------------------------------- |
-| **`toggle`** | _Internal_ - If the menu is open it closes it and the other way around. | `toggle(isMenuActive: boolean) => Promise<void>` |
+| **`toggle`** | *Internal* - If the menu is open it closes it and the other way around. | `toggle(isMenuActive: boolean) => Promise<void>` |
 
 ### bal-navbar-menu-end
 
-# bal-navbar-menu-start
+
+# bal-navbar-menu-start 
 
 `bal-navbar-menu-start` is a child component of `bal-navbar` which is the left side of the navbar.
 
+
+
 ### bal-navbar-menu-start
 
-# bal-navbar-menu-end
+
+# bal-navbar-menu-end 
 
 `bal-navbar-menu-end` is a child component of `bal-navbar` which is the right side of the navbar.
+
+
+
+
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-navbar.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-navbar)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-navbar.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-navbar)
