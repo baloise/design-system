@@ -15,12 +15,17 @@ export class Tabs {
   /**
    * Defines the layout of the tabs.
    */
-  @Prop() interface: 'tabs' | 'steps' = 'tabs'
+  @Prop() interface: 'tabs' | 'steps' | 'o-steps' = 'tabs'
 
   /**
    * If `true` the field expands over the whole width.
    */
   @Prop() expanded = false
+
+  /**
+   * If `true` the tabs or steps can be clicked.
+   */
+  @Prop() clickable = true
 
   /**
    * If you want the rounded tab style.
@@ -91,6 +96,8 @@ export class Tabs {
   render() {
     if (this.interface === 'steps') {
       return this.renderSteps()
+    } else if (this.interface === 'o-steps') {
+      return this.renderOSteps()
     } else {
       return this.renderTabs()
     }
@@ -104,6 +111,36 @@ export class Tabs {
       return ''
     }
     return <span style={{ marginTop: '-2px' }}>{index + 1}</span>
+  }
+
+  renderOSteps() {
+    return (
+      <Host class="bal-o-steps">
+        <div>
+          <ul>
+            {this.tabsOptions.map((tab /*index*/) => (
+              <li
+                class={{
+                  'is-active': tab.active,
+                  'is-disabled': tab.disabled,
+                  'is-done': tab.done,
+                  'is-failed': tab.failed,
+                  'is-clickable': this.clickable,
+                }}
+              >
+                <a onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}>
+                  <span class="step-index">
+                    <span class="inner"></span>
+                  </span>
+                  <span class="step-label is-hidden-mobile">{tab.label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <slot></slot>
+      </Host>
+    )
   }
 
   renderSteps() {

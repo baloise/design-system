@@ -1,0 +1,180 @@
+:host.bal-o-steps {
+  ul {
+    @include margin(0);
+    @include padding(0);
+
+    display: flex;
+    list-style: none;
+    text-align: center;
+
+    li {
+      flex-basis: 1rem;
+      flex-grow: 1;
+      flex-shrink: 1;
+      position: relative;
+
+      .step-index {
+        height: 24px;
+        width: 24px;
+        border: 2px solid $blue-light-line;
+        background-color: $white;
+        background: $white;
+        color: $white;
+        overflow: hidden;
+        position: absolute;
+        left: calc(50% - 1rem);
+        align-items: center;
+        display: flex;
+        border-radius: 50%;
+        font-weight: 700;
+        justify-content: center;
+        position: relative;
+        z-index: 5;
+        margin-bottom: 8px;
+
+        .inner {
+          background: $blue;
+          border-radius: 50%;
+          height: 10px;
+          width: 10px;
+        }
+      }
+
+      .step-label {
+        margin-top: 2rem;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+        padding-top: 0.2em;
+        color: $blue-light-text;
+      }
+
+      &:not(:last-child):after {
+        content: ' ';
+        display: block;
+        position: absolute;
+
+        height: 2px;
+        left: 50%;
+        right: -50%;
+        top: 11px;
+        margin-right: 16px;
+        margin-left: 8px;
+        background-color: $blue;
+      }
+    }
+
+    li.is-failed:not(.is-active) {
+      .step-index {
+        border: 2px solid $danger !important;
+        background: $danger !important;
+
+        .inner {
+          background: $danger !important;
+        }
+
+        &::after {
+          display: inline-block;
+          position: absolute;
+          background-color: transparent;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 24px 24px;
+          content: '!';
+          font-size: 16px;
+          text-align: center;
+          width: 32px;
+          height: 32px;
+          line-height: 32px;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    li.is-done:not(.is-active) {
+      .step-index {
+        border: 2px solid $success !important;
+        background: $success !important;
+
+        &::after {
+          display: inline-block;
+          position: absolute;
+          background-color: transparent;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 24px 24px;
+          content: '';
+          top: 50%;
+          margin-top: -7px;
+          left: 50%;
+          margin-left: -4px;
+          width: 5px;
+          height: 10px;
+          border-bottom: 2px solid $white;
+          border-right: 2px solid $white;
+          border-top: 0;
+          border-left: 0;
+          -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+
+        .inner {
+          background: $success !important;
+        }
+      }
+    }
+
+    li.is-clickable:hover {
+      .step-label {
+        color: $black;
+      }
+    }
+
+    li.is-clickable.is-active:hover {
+      .step-label {
+        color: $black;
+        font-weight: $weight-bold;
+      }
+    }
+
+    li.is-active:after {
+      background-color: $blue-light-line;
+    }
+
+    li.is-active {
+      .step-index {
+        border: 2px solid $blue;
+
+        .inner {
+          background: $blue;
+        }
+      }
+      .step-label {
+        color: $black;
+        font-weight: $weight-bold;
+      }
+    }
+
+    li.is-active ~ li:after {
+      background-color: $blue-light-line;
+    }
+
+    li.is-active ~ li {
+      .step-index {
+        border: 2px solid $blue-light-line;
+
+        .inner {
+          background: $white;
+        }
+      }
+    }
+
+    li.is-disabled {
+      opacity: 30%;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}

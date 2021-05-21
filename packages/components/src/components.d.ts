@@ -1099,13 +1099,17 @@ export namespace Components {
          */
         "actionLabel": string;
         /**
+          * If `true` the tabs or steps can be clicked.
+         */
+        "clickable": boolean;
+        /**
           * If `true` the field expands over the whole width.
          */
         "expanded": boolean;
         /**
           * Defines the layout of the tabs.
          */
-        "interface": 'tabs' | 'steps';
+        "interface": 'tabs' | 'steps' | 'o-steps';
         /**
           * If you want the rounded tab style.
          */
@@ -2822,13 +2826,17 @@ declare namespace LocalJSX {
          */
         "actionLabel"?: string;
         /**
+          * If `true` the tabs or steps can be clicked.
+         */
+        "clickable"?: boolean;
+        /**
           * If `true` the field expands over the whole width.
          */
         "expanded"?: boolean;
         /**
           * Defines the layout of the tabs.
          */
-        "interface"?: 'tabs' | 'steps';
+        "interface"?: 'tabs' | 'steps' | 'o-steps';
         /**
           * Emitted when the action button has clicked
          */

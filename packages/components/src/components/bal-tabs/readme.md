@@ -7,13 +7,14 @@ Tabs are used to structure the information in sub section on the same page.
 
 ## Properties
 
-| Property      | Attribute      | Description                                       | Type                | Default  |
-| ------------- | -------------- | ------------------------------------------------- | ------------------- | -------- |
-| `action`      | `action`       | If `true` a acation button is added to the right  | `boolean`           | `false`  |
-| `actionLabel` | `action-label` | Label for the action button                       | `string`            | `''`     |
-| `expanded`    | `expanded`     | If `true` the field expands over the whole width. | `boolean`           | `false`  |
-| `interface`   | `interface`    | Defines the layout of the tabs.                   | `"steps" \| "tabs"` | `'tabs'` |
-| `rounded`     | `rounded`      | If you want the rounded tab style.                | `boolean`           | `false`  |
+| Property      | Attribute      | Description                                       | Type                             | Default  |
+| ------------- | -------------- | ------------------------------------------------- | -------------------------------- | -------- |
+| `action`      | `action`       | If `true` a acation button is added to the right  | `boolean`                        | `false`  |
+| `actionLabel` | `action-label` | Label for the action button                       | `string`                         | `''`     |
+| `clickable`   | `clickable`    | If `true` the tabs or steps can be clicked.       | `boolean`                        | `true`   |
+| `expanded`    | `expanded`     | If `true` the field expands over the whole width. | `boolean`                        | `false`  |
+| `interface`   | `interface`    | Defines the layout of the tabs.                   | `"o-steps" \| "steps" \| "tabs"` | `'tabs'` |
+| `rounded`     | `rounded`      | If you want the rounded tab style.                | `boolean`                        | `false`  |
 
 
 ## Events
