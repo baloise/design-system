@@ -20,6 +20,13 @@ export * from './validators'
 export * from './components/bal-select/utils/bal-option.util'
 
 /**
+ * Table Cell Renderers
+ */
+export * from './components/bal-table/bal-table-button-renderer'
+export * from './components/bal-table/bal-table-tag-renderer'
+export * from './components/bal-table/bal-table-text-renderer'
+
+/**
  * Controllers
  */
 export * from './components/bal-toast/bal-toast.controller'

@@ -1089,6 +1089,12 @@ export namespace Components {
          */
         "value": string;
     }
+    interface BalTable {
+        /**
+          * If `true` the table has a full width
+         */
+        "expanded": boolean;
+    }
     interface BalTabs {
         /**
           * If `true` a acation button is added to the right
@@ -1625,6 +1631,12 @@ declare global {
         prototype: HTMLBalTabItemElement;
         new (): HTMLBalTabItemElement;
     };
+    interface HTMLBalTableElement extends Components.BalTable, HTMLStencilElement {
+    }
+    var HTMLBalTableElement: {
+        prototype: HTMLBalTableElement;
+        new (): HTMLBalTableElement;
+    };
     interface HTMLBalTabsElement extends Components.BalTabs, HTMLStencilElement {
     }
     var HTMLBalTabsElement: {
@@ -1720,6 +1732,7 @@ declare global {
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
         "bal-tab-item": HTMLBalTabItemElement;
+        "bal-table": HTMLBalTableElement;
         "bal-tabs": HTMLBalTabsElement;
         "bal-tag": HTMLBalTagElement;
         "bal-text": HTMLBalTextElement;
@@ -2816,6 +2829,12 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface BalTable {
+        /**
+          * If `true` the table has a full width
+         */
+        "expanded"?: boolean;
+    }
     interface BalTabs {
         /**
           * If `true` a acation button is added to the right
@@ -3085,6 +3104,7 @@ declare namespace LocalJSX {
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
         "bal-tab-item": BalTabItem;
+        "bal-table": BalTable;
         "bal-tabs": BalTabs;
         "bal-tag": BalTag;
         "bal-text": BalText;
@@ -3155,6 +3175,7 @@ declare module "@stencil/core" {
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
+            "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
             "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;

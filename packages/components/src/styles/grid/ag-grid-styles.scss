@@ -1,0 +1,30 @@
+@mixin icon-background($uri, $size) {
+  background: url($uri) no-repeat;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: $size $size;
+  height: $size;
+  width: $size;
+}
+
+.ag-theme-balham {
+  .ag-icon {
+    display: inline-block;
+  }
+
+  .ag-icon.ag-icon-checkbox-unchecked,
+  .ag-icon.ag-icon-checkbox-indeterminate {
+    @include icon-background('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"%3E%3Cpath fill="none" fill-rule="evenodd" stroke="%2399ADD6" d="M.5.5h15v15H.5z"/%3E%3C/svg%3E', 16px);
+    &:before {
+      content: '' !important;
+    }
+  }
+
+  .ag-icon.ag-icon-checkbox-checked {
+    @include icon-background('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cpath stroke="%2399ADD6" d="M.5.5h15v15H.5z"/%3E%3Cpath stroke="%23039" stroke-width="2" d="M4.667 8.244l2.1467 2.09L11.1467 6"/%3E%3C/g%3E%3C/svg%3E', 16px);
+    &:before {
+      content: '' !important;
+    }
+  }
+}

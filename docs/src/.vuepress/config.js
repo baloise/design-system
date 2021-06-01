@@ -89,7 +89,6 @@ module.exports = {
             'foundation/spacing',
             'foundation/responsiveness',
             'foundation/footer',
-            'foundation/table',
             'foundation/track-line',
           ],
         },
