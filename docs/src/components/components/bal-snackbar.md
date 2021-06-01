@@ -18,11 +18,14 @@ A snackbar is used to inform the user with a simple text message and a action.
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-snackbar-87></docs-demo-bal-snackbar-87></ClientOnly>
+<ClientOnly><docs-demo-bal-snackbar-87></docs-demo-bal-snackbar-87></ClientOnly>
+
 
 ## Colors
 
-<ClientOnly> <docs-demo-bal-snackbar-88></docs-demo-bal-snackbar-88></ClientOnly>
+<ClientOnly><docs-demo-bal-snackbar-88></docs-demo-bal-snackbar-88></ClientOnly>
+
+
 
 ## API
 
@@ -53,14 +56,17 @@ A snackbar is used to inform the user with a simple text message and a action.
 | **`close`**   | Closes this snackbar                               | `close() => Promise<void>`                   |
 | **`closeIn`** | Closes the snackbar after the given duration in ms | `closeIn(duration: number) => Promise<void>` |
 
+
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-snackbar.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-snackbar)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-snackbar.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-snackbar)
 
 <ClientOnly>
   <docs-component-script tag="balSnackbar"></docs-component-script>

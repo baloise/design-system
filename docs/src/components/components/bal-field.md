@@ -8,21 +8,26 @@ A field wrappes a form field like input. It provides a clear style structure of 
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-field-42></docs-demo-bal-field-42></ClientOnly>
+<ClientOnly><docs-demo-bal-field-42></docs-demo-bal-field-42></ClientOnly>
+
 
 ## Inverted
 
-<ClientOnly> <docs-demo-bal-field-43></docs-demo-bal-field-43></ClientOnly>
+<ClientOnly><docs-demo-bal-field-43></docs-demo-bal-field-43></ClientOnly>
+
 
 ## Form
 
-<ClientOnly> <docs-demo-bal-field-44></docs-demo-bal-field-44></ClientOnly>
+<ClientOnly><docs-demo-bal-field-44></docs-demo-bal-field-44></ClientOnly>
+
 
 ## Validation for all fields
 
 This is not a recommanded validation style. Only use this style if you do not have the possibility to use live validation.
 
-<ClientOnly> <docs-demo-bal-field-45></docs-demo-bal-field-45></ClientOnly>
+<ClientOnly><docs-demo-bal-field-45></docs-demo-bal-field-45></ClientOnly>
+
+
 
 ## API
 
@@ -40,9 +45,11 @@ This is not a recommanded validation style. Only use this style if you do not ha
 
 ### bal-field-control
 
+
 # bal-field-control
 
 `bal-field-control` is a child component of `bal-field`.
+
 
 #### Properties
 
@@ -54,6 +61,7 @@ This is not a recommanded validation style. Only use this style if you do not ha
 | **loading**    | If `true` a loading spinner is visible at the end of the input | `boolean` | `false` |
 
 ### bal-field-hint
+
 
 # bal-field-hint
 
@@ -67,21 +75,25 @@ This is not a recommanded validation style. Only use this style if you do not ha
 
 ### bal-field-label
 
+
 # bal-field-label
 
 `bal-field-label` is a child component of `bal-field`.
 
+
 #### Properties
 
-| Attribute    | Description                                         | Type      | Default |
-| :----------- | :-------------------------------------------------- | :-------- | :------ |
-| **required** | If `true` a asterix (\*) is added to the label text | `boolean` | `false` |
+| Attribute    | Description                                        | Type      | Default |
+| :----------- | :------------------------------------------------- | :-------- | :------ |
+| **required** | If `true` a asterix (*) is added to the label text | `boolean` | `false` |
 
 ### bal-field-message
+
 
 # bal-field-message
 
 `bal-field-message` is a child component of `bal-field`.
+
 
 #### Properties
 
@@ -89,11 +101,14 @@ This is not a recommanded validation style. Only use this style if you do not ha
 | :-------- | :-------------------------------- | :-------------------------------------- | :------ |
 | **color** | Defines the color of the message. | `"" , "danger" , "success" , "warning"` | `''`    |
 
+
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-field.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-field)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-field.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-field)

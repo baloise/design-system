@@ -1,4 +1,4 @@
-# bal-button
+# bal-table
 
 <!-- Auto Generated Below -->
 

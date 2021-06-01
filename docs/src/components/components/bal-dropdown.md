@@ -8,11 +8,14 @@ A dropdown shows and hides content close to the trigger element.
 
 ## Basic
 
-<ClientOnly> <docs-demo-bal-dropdown-40></docs-demo-bal-dropdown-40></ClientOnly>
+<ClientOnly><docs-demo-bal-dropdown-40></docs-demo-bal-dropdown-40></ClientOnly>
+
 
 ## Input
 
-<ClientOnly> <docs-demo-bal-dropdown-41></docs-demo-bal-dropdown-41></ClientOnly>
+<ClientOnly><docs-demo-bal-dropdown-41></docs-demo-bal-dropdown-41></ClientOnly>
+
+
 
 ## API
 
@@ -31,18 +34,19 @@ A dropdown shows and hides content close to the trigger element.
 | Event                  | Description                                                                     | Type      |
 | :--------------------- | :------------------------------------------------------------------------------ | :-------- |
 | **balCollapse**        | Listen when the dropdown opens or closes. Returns the current `isActive` value. | `boolean` |
-| **balDropdownPrepare** | _Internal_ - Use this to close unuesed dropdowns.                               | `string`  |
+| **balDropdownPrepare** | *Internal* - Use this to close unuesed dropdowns.                               | `string`  |
 
 #### Methods
 
-| Method                  | Description                                         | Signature                                   |
-| :---------------------- | :-------------------------------------------------- | :------------------------------------------ | ------ |
-| **`close`**             | Closes the dropdown menu.                           | `close() => Promise<void>`                  |
+| Method                  | Description                                         | Signature                                            |
+| :---------------------- | :-------------------------------------------------- | :--------------------------------------------------- |
+| **`close`**             | Closes the dropdown menu.                           | `close() => Promise<void>`                           |
 | **`getContentElement`** | Returns the `HTMLDivElement` of the content element | `getContentElement() => Promise<HTMLElement | null>` |
-| **`open`**              | Open the dropdown menu.                             | `open() => Promise<void>`                   |
-| **`toggle`**            | Open or closes the dropdown.                        | `toggle() => Promise<void>`                 |
+| **`open`**              | Open the dropdown menu.                             | `open() => Promise<void>`                            |
+| **`toggle`**            | Open or closes the dropdown.                        | `toggle() => Promise<void>`                          |
 
 ### bal-dropdown-menu
+
 
 # bal-dropdown-menu
 
@@ -56,9 +60,11 @@ A dropdown shows and hides content close to the trigger element.
 
 ### bal-dropdown-trigger
 
+
 # bal-dropdown-trigger
 
 `bal-dropdown-trigger` is a child component of `bal-dropdown` that defines the value of the data.
+
 
 ## Testing
 
@@ -72,9 +78,9 @@ import { dataTestSelector, DropdownAccessor } from '@baloise/design-system-compo
 
 describe('Dropdown', () => {
   it('should ...', () => {
-    const dropdown = DropdownAccessor(dataTestSelector('dropdown-id')).get()
-    dropdown.click()
-  })
+     const dropdown = DropdownAccessor(dataTestSelector('dropdown-id')).get()
+     dropdown.click()
+ })
 })
 ```
 
@@ -88,11 +94,12 @@ describe('Dropdown', () => {
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-dropdown.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-dropdown)
-- [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/dropdown.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-dropdown.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-dropdown)
+* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/dropdown.accessor.ts)
 
 <ClientOnly>
   <docs-component-script tag="balDropdown"></docs-component-script>

@@ -9,7 +9,6 @@
     <script nomodule src="/build/design-system-components.js"></script>
     <script type="module">
       import { BalTableTagRenderer, BalTableTextRenderer, BalTableButtonRenderer } from '/build/index.esm.js'
-
       window.BalTableTagRenderer = BalTableTagRenderer
       window.BalTableTextRenderer = BalTableTextRenderer
       window.BalTableButtonRenderer = BalTableButtonRenderer
@@ -90,17 +89,10 @@
         </bal-card>
       </section>
       <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
           const columnDefs = [
             { field: '', sortable: true, filter: true, checkboxSelection: true },
             { field: 'number', sortable: true, filter: true },
-            {
-              field: 'text',
-              sortable: true,
-              filter: true,
-              editable: true,
-              cellRenderer: BalTableTextRenderer(),
-            },
             {
               field: 'textWithIcon',
               sortable: true,
@@ -119,17 +111,6 @@
               }),
             },
             {
-              field: 'textWithIconRight',
-              sortable: true,
-              filter: true,
-              cellRenderer: BalTableTextRenderer({
-                icon: params => 'github',
-                color: params => 'info',
-                iconColor: params => 'primary',
-                iconRight: _ => true,
-              }),
-            },
-            {
               field: 'button',
               sortable: true,
               filter: true,
@@ -144,25 +125,19 @@
           const rowData = [
             {
               number: '1',
-              text: 'Base Text',
               textWithIcon: 'Base Text',
-              textWithIconRight: 'Base Text',
               tag: 'OK',
               button: 'Action',
             },
             {
               number: '2',
-              text: 'Base Text',
               textWithIcon: 'Base Text',
-              textWithIconRight: 'Base Text',
               tag: 'Invalid',
               button: 'Action',
             },
             {
               number: '3',
-              text: 'Base Text',
               textWithIcon: 'Base Text',
-              textWithIconRight: 'Base Text',
               tag: 'OK',
               button: 'Action',
             },
@@ -190,6 +165,7 @@
           }
 
           // setup the grid after the page has finished loading
+
           const gridDiv = document.querySelector('#myGrid')
           gridDiv.componentOnReady().then(() => {
             new agGrid.Grid(gridDiv, gridOptions)
