@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, Listen } from '@stencil/core'
-import { findItemLabel, isDescendant } from '../../helpers/helpers'
+import { isDescendant } from '../../helpers/helpers'
 
 @Component({
   tag: 'bal-checkbox',
@@ -104,13 +104,6 @@ export class Checkbox {
   }
 
   render() {
-    const labelId = this.inputId + '-lbl'
-    const label = findItemLabel(this.el)
-    if (label) {
-      label.id = labelId
-      label.htmlFor = this.inputId
-    }
-
     return (
       <Host
         aria-disabled={this.disabled ? 'true' : null}
@@ -133,7 +126,6 @@ export class Checkbox {
           checked={this.checked}
           tabindex={this.balTabindex}
           aria-checked={this.checked ? 'true' : 'false'}
-          aria-label={label}
           disabled={this.disabled}
           aria-disabled={this.disabled ? 'true' : 'false'}
           onFocus={e => this.balFocus.emit(e)}
