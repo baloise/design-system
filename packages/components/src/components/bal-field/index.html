@@ -14,38 +14,43 @@
       <section>
         <bal-card padding="form">
           <bal-card-content>
-            <bal-field expanded>
-              <bal-field-label required>Firstname</bal-field-label>
-              <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
-              <bal-field-control>
-                <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
-              </bal-field-control>
-              <bal-field-message color="danger">Required Field</bal-field-message>
-            </bal-field>
-
-            <bal-field expanded disabled loading>
-              <bal-field-label>Lastname</bal-field-label>
-              <bal-field-control>
-                <bal-input name="lastname" placeholder="Enter your lastname" value="Parker"></bal-input>
-              </bal-field-control>
-              <bal-field-message color="warning">Correct</bal-field-message>
-            </bal-field>
-
-            <bal-field expanded>
-              <bal-field-label>Alias</bal-field-label>
-              <bal-field-control icon-left="account" icon-right="check">
-                <bal-input name="alias" placeholder="Enter your alias" value="Spider-Man"></bal-input>
-              </bal-field-control>
-              <bal-field-message color="success">Correct</bal-field-message>
-            </bal-field>
-
-            <bal-field expanded>
-              <bal-field-label>Comment</bal-field-label>
-              <bal-field-control>
-                <bal-textarea name="comment" placeholder="Enter your comment"></bal-textarea>
-              </bal-field-control>
-              <bal-field-message>Some Message</bal-field-message>
-            </bal-field>
+            <div class="columns">
+              <bal-field class="column" expanded>
+                <bal-field-label required>Firstname</bal-field-label>
+                <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
+                <bal-field-control>
+                  <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+                </bal-field-control>
+                <bal-field-message color="danger">Required Field</bal-field-message>
+              </bal-field>
+            </div>
+            <div class="columns">
+              <bal-field class="column" expanded disabled loading>
+                <bal-field-label>Lastname</bal-field-label>
+                <bal-field-control>
+                  <bal-input name="lastname" placeholder="Enter your lastname" value="Parker"></bal-input>
+                </bal-field-control>
+                <bal-field-message></bal-field-message>
+              </bal-field>
+            </div>
+            <div class="columns">
+              <bal-field class="column" expanded>
+                <bal-field-label>Alias</bal-field-label>
+                <bal-field-control icon-left="account" icon-right="check">
+                  <bal-input name="alias" placeholder="Enter your alias" value="Spider-Man"></bal-input>
+                </bal-field-control>
+                <bal-field-message color="success">Correct</bal-field-message>
+              </bal-field>
+            </div>
+            <div class="columns">
+              <bal-field class="column" expanded>
+                <bal-field-label>Comment</bal-field-label>
+                <bal-field-control>
+                  <bal-textarea name="comment" placeholder="Enter your comment"></bal-textarea>
+                </bal-field-control>
+                <bal-field-message>Some Message</bal-field-message>
+              </bal-field>
+            </div>
           </bal-card-content>
         </bal-card>
       </section>

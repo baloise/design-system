@@ -13,6 +13,10 @@
       flex-shrink: 1;
       position: relative;
 
+      a {
+        text-decoration: none !important;
+      }
+
       .step-index {
         height: 24px;
         width: 24px;

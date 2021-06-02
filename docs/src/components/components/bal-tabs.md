@@ -23,12 +23,12 @@ Tabs are used to structure the information in sub section on the same page.
 <ClientOnly><docs-demo-bal-tabs-96></docs-demo-bal-tabs-96></ClientOnly>
 
 
-## Stepper
+## Steps
 
 <ClientOnly><docs-demo-bal-tabs-97></docs-demo-bal-tabs-97></ClientOnly>
 
 
-## Stepper Light
+## O-Steps
 
 <ClientOnly><docs-demo-bal-tabs-98></docs-demo-bal-tabs-98></ClientOnly>
 
