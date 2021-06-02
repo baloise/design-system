@@ -25,113 +25,87 @@
       <bal-snackbar icon="github" subject="Subject">Toast</bal-snackbar>
       <hr class="my-6" />
 
-      <div class="columns">
-        <div class="column">
-          <bal-field expanded class="has-background-warning">
-            <bal-field-label required>Firstname</bal-field-label>
-            <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
-            <bal-field-control>
-              <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
-            </bal-field-control>
-          </bal-field>
-        </div>
-        <div class="column">
-          <bal-field expanded class="has-background-success">
-            <bal-field-label required>Firstname</bal-field-label>
-            <bal-field-control>
-              <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
-            </bal-field-control>
-            <bal-field-message color="danger">Required Field</bal-field-message>
-          </bal-field>
-        </div>
-      </div>
+      <div class="columns is-multiline">
+        <bal-field class="column py-0 is-half" expanded>
+          <bal-field-label required>Firstname</bal-field-label>
+          <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
+          <bal-field-control>
+            <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+          </bal-field-control>
+        </bal-field>
 
-      <div class="columns">
-        <div class="column">
-          <bal-field expanded class="has-background-warning">
-            <bal-field-label required>Firstname</bal-field-label>
-            <bal-field-control>
-              <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
-            </bal-field-control>
-          </bal-field>
-        </div>
-        <div class="column">
-          <bal-field expanded class="has-background-success">
-            <bal-field-label required>Year</bal-field-label>
-            <bal-field-control>
-              <bal-select id="bal-select-year" placeholder="select a year">
-                <bal-select-option value="1995" label="1995">1995</bal-select-option>
-                <bal-select-option value="1996" label="1996">1996</bal-select-option>
-                <bal-select-option value="1997" label="1997">1997</bal-select-option>
-                <bal-select-option value="1998" label="1998">1998</bal-select-option>
-                <bal-select-option value="1999" label="1999">1999</bal-select-option>
-                <bal-select-option value="2000" label="2000">2000</bal-select-option>
-              </bal-select>
-            </bal-field-control>
-            <bal-field-message></bal-field-message>
-          </bal-field>
-        </div>
-      </div>
+        <bal-field class="column py-0 is-half" expanded>
+          <bal-field-label required>Firstname</bal-field-label>
+          <bal-field-control>
+            <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+          </bal-field-control>
+          <bal-field-message color="danger">Required Field</bal-field-message>
+        </bal-field>
 
-      <div class="columns">
-        <div class="column">
-          <bal-field expanded class="has-background-warning">
-            <bal-field-label required>Firstname</bal-field-label>
-            <bal-field-control>
-              <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
-            </bal-field-control>
-          </bal-field>
-        </div>
-        <div class="column">
-          <bal-field expanded class="has-background-success">
-            <bal-field-label required>Birthdate</bal-field-label>
-            <bal-field-control>
-              <bal-datepicker placeholder="pick a date"></bal-datepicker>
-            </bal-field-control>
-            <bal-field-message></bal-field-message>
-          </bal-field>
-        </div>
-      </div>
-
-      <div class="columns">
-        <div class="column">
-          <bal-field expanded class="has-background-warning">
-            <bal-field-label required>Firstname</bal-field-label>
-            <bal-field-control>
-              <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
-            </bal-field-control>
-          </bal-field>
-        </div>
-        <div class="column">
-          <bal-field expanded class="has-background-success">
-            <bal-field-label required>Remember me?</bal-field-label>
-            <bal-field-control>
-              <bal-checkbox>Yes</bal-checkbox>
-            </bal-field-control>
-          </bal-field>
-        </div>
-      </div>
-
-      <div class="columns">
-        <div class="column">
-          <bal-field expanded class="has-background-warning">
-            <bal-field-label required>Firstname</bal-field-label>
-            <bal-field-control>
-              <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
-            </bal-field-control>
-          </bal-field>
-        </div>
-        <div class="column">
-          <bal-field expanded class="has-background-success">
-            <bal-field-label required>How many cars do you have?</bal-field-label>
-            <bal-field-control>
-              <bal-radio-group value="2" id="radio-example">
-                <bal-radio name="radio-example" value="1">Label 1</bal-radio>
-                <bal-radio name="radio-example" value="2">Label 2</bal-radio>
-              </bal-radio-group>
-            </bal-field-control>
-          </bal-field>
-        </div>
+        <bal-field class="column py-0 is-half" expanded>
+          <bal-field-label required>Firstname</bal-field-label>
+          <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
+          <bal-field-control>
+            <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+          </bal-field-control>
+        </bal-field>
+        <bal-field expanded class="column py-0 is-half">
+          <bal-field-label required>Year</bal-field-label>
+          <bal-field-control>
+            <bal-select id="bal-select-year" placeholder="select a year">
+              <bal-select-option value="1995" label="1995">1995</bal-select-option>
+              <bal-select-option value="1996" label="1996">1996</bal-select-option>
+              <bal-select-option value="1997" label="1997">1997</bal-select-option>
+              <bal-select-option value="1998" label="1998">1998</bal-select-option>
+              <bal-select-option value="1999" label="1999">1999</bal-select-option>
+              <bal-select-option value="2000" label="2000">2000</bal-select-option>
+            </bal-select>
+          </bal-field-control>
+          <bal-field-message></bal-field-message>
+        </bal-field>
+        <bal-field class="column py-0 is-half" expanded>
+          <bal-field-label required>Firstname</bal-field-label>
+          <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
+          <bal-field-control>
+            <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+          </bal-field-control>
+        </bal-field>
+        <bal-field expanded class="column py-0 is-half">
+          <bal-field-label required>Birthdate</bal-field-label>
+          <bal-field-control>
+            <bal-datepicker placeholder="pick a date"></bal-datepicker>
+          </bal-field-control>
+          <bal-field-message></bal-field-message>
+        </bal-field>
+        <bal-field class="column py-0 is-half" expanded>
+          <bal-field-label required>Firstname</bal-field-label>
+          <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
+          <bal-field-control>
+            <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+          </bal-field-control>
+        </bal-field>
+        <bal-field expanded class="column py-0 is-half">
+          <bal-field-label required>Remember me?</bal-field-label>
+          <bal-field-control>
+            <bal-checkbox>Yes</bal-checkbox>
+          </bal-field-control>
+        </bal-field>
+        <bal-field class="column py-0 is-half" expanded>
+          <bal-field-label required>Firstname</bal-field-label>
+          <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
+          <bal-field-control>
+            <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+          </bal-field-control>
+        </bal-field>
+        <bal-field expanded class="column py-0 is-half">
+          <bal-field-label required>How many cars do you have?</bal-field-label>
+          <bal-field-control>
+            <bal-radio-group value="2" id="radio-example">
+              <bal-radio name="radio-example" value="1">Label 1</bal-radio>
+              <bal-radio name="radio-example" value="2">Label 2</bal-radio>
+            </bal-radio-group>
+          </bal-field-control>
+        </bal-field>
       </div>
     </div>
   </body>
