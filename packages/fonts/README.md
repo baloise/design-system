@@ -9,11 +9,11 @@
 
 ## About
 
-Baloise Design-System is an open source library for building amazing web applications that follow the Baloise corporate style guidelines.
+The Baloise Design System consists of reusable components and a clearly defined visual style, that can be assembled together to build any number of applications.
 
 ## Documentation
 
-The [documentation](https://baloise-design-system.vercel.app.sh) is published on now.sh, and is built with [vuepress](https://vuepress.vuejs.org/).
+The [documentation](https://baloise-design-system.vercel.app) is published on now.sh, and is built with [vuepress](https://vuepress.vuejs.org/).
 
 ## Packages
 
