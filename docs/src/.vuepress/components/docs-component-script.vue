@@ -4,7 +4,13 @@
 
 <script>
 import * as BalComponentScripts from '../generated/components'
-import { balSnackbarController, balToastController } from '../lib/dist'
+import {
+  balSnackbarController,
+  balToastController,
+  BalTableButtonRenderer,
+  BalTableTagRenderer,
+  BalTableTextRenderer,
+} from '../lib/dist'
 
 export default {
   name: 'docs-component-script',
@@ -40,7 +46,17 @@ export default {
       await Promise.all(queue)
       const fn = BalComponentScripts[this.$props.tag]
       if (fn && typeof fn == 'function') {
-        setTimeout(() => fn(balSnackbarController, balToastController), timeout)
+        setTimeout(
+          () =>
+            fn(
+              balSnackbarController,
+              balToastController,
+              BalTableButtonRenderer,
+              BalTableTagRenderer,
+              BalTableTextRenderer,
+            ),
+          timeout,
+        )
       }
     },
   },

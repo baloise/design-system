@@ -8,39 +8,39 @@ Checkboxes allow the selection of multiple options from a set of options. They a
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-checkbox-22></docs-demo-bal-checkbox-22></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-22></docs-demo-bal-checkbox-22></ClientOnly>
 
 
 ## Switch
 
-<ClientOnly>  <docs-demo-bal-checkbox-23></docs-demo-bal-checkbox-23></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-23></docs-demo-bal-checkbox-23></ClientOnly>
 
 
 ## Inverted
 
-<ClientOnly>  <docs-demo-bal-checkbox-24></docs-demo-bal-checkbox-24></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-24></docs-demo-bal-checkbox-24></ClientOnly>
 
 
 ## With Links
 
-<ClientOnly>  <docs-demo-bal-checkbox-25></docs-demo-bal-checkbox-25></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-25></docs-demo-bal-checkbox-25></ClientOnly>
 
 
 ## Events
 
 ### Listen on Changes
 
-<ClientOnly>  <docs-demo-bal-checkbox-26></docs-demo-bal-checkbox-26></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-26></docs-demo-bal-checkbox-26></ClientOnly>
 
 
 ### Change value
 
-<ClientOnly>  <docs-demo-bal-checkbox-27></docs-demo-bal-checkbox-27></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-27></docs-demo-bal-checkbox-27></ClientOnly>
 
 
 ## Checkbox Boxes
 
-<ClientOnly>  <docs-demo-bal-checkbox-28></docs-demo-bal-checkbox-28></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-28></docs-demo-bal-checkbox-28></ClientOnly>
 
 
 

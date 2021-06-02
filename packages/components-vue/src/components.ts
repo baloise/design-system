@@ -1711,6 +1711,21 @@ export const BalTabItem = /*@__PURE__*/ defineComponent({
   setup: defineSetup('bal-tab-item', ['balNavigate'], undefined)
 })
 
+export const BalTable = /*@__PURE__*/ defineComponent({
+  name: 'bal-table',
+  props: {
+    expanded: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+  },
+  emits: {
+
+  },
+  setup: defineSetup('bal-table', [], undefined)
+})
+
 export const BalTabs = /*@__PURE__*/ defineComponent({
   name: 'bal-tabs',
   props: {
@@ -1722,6 +1737,11 @@ export const BalTabs = /*@__PURE__*/ defineComponent({
     expanded: {
       type: Boolean,
       default: false,
+      required: false,
+    },
+    clickable: {
+      type: Boolean,
+      default: true,
       required: false,
     },
     rounded: {

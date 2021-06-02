@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/build/design-system-components.css" />
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+    <script type="module">
+      import { BalTableTagRenderer, BalTableTextRenderer, BalTableButtonRenderer } from '/build/index.esm.js'
+      window.BalTableTagRenderer = BalTableTagRenderer
+      window.BalTableTextRenderer = BalTableTextRenderer
+      window.BalTableButtonRenderer = BalTableButtonRenderer
+    </script>
+    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.noStyle"></script>
+  </head>
+  <body class="bal-app">
+    <div class="container">
+      <h2 class="title is-size-2">Basic</h2>
+      <p>The basic table is only css and html provided by the bulma framework.</p>
+      <p>[Go to the Bulma documentation](https://bulma.io/documentation/elements/table/)</p>
+      <section>
+        <bal-card>
+          <table class="table is-fullwidth is-striped is-hoverable">
+            <thead>
+              <th>Selected</th>
+              <th>Name</th>
+              <th>Status</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <bal-checkbox id="checkbox1"></bal-checkbox>
+                </td>
+                <td>Tony Stark</td>
+                <td><bal-tag size="small" color="success">Ready</bal-tag></td>
+                <td class="has-buttons">
+                  <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                  <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <bal-checkbox id="checkbox2"></bal-checkbox>
+                </td>
+                <td>Steve Rogers</td>
+                <td><bal-tag size="small" color="danger">Injured</bal-tag></td>
+                <td class="has-buttons">
+                  <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                  <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <bal-checkbox id="checkbox3"></bal-checkbox>
+                </td>
+                <td>Peter Parker</td>
+                <td><bal-tag size="small" color="warning">In school</bal-tag></td>
+                <td class="has-buttons">
+                  <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                  <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <bal-checkbox id="checkbox4"></bal-checkbox>
+                </td>
+                <td>John Doe</td>
+                <td><bal-tag size="small">Unknown</bal-tag></td>
+                <td class="has-buttons">
+                  <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
+                  <bal-button color="info" size="small" icon="trash" square outlined></bal-button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </bal-card>
+      </section>
+      <h2 class="title is-size-2">Advanced with AG-Grid</h2>
+      <p>For the advanced tables with sorting and filtering we use the library [AG Grid](https://www.ag-grid.com/)</p>
+      <section>
+        <bal-card>
+          <bal-table id="myGrid" style="height: 250px; width: 100%"></bal-table>
+        </bal-card>
+      </section>
+      <script>
+        setTimeout(() => {
+          const columnDefs = [
+            { field: '', sortable: true, filter: true, checkboxSelection: true },
+            { field: 'number', sortable: true, filter: true },
+            {
+              field: 'textWithIcon',
+              sortable: true,
+              filter: true,
+              cellRenderer: BalTableTextRenderer({
+                icon: params => 'github',
+                iconColor: params => 'primary',
+              }),
+            },
+            {
+              field: 'tag',
+              sortable: true,
+              filter: true,
+              cellRenderer: BalTableTagRenderer({
+                color: params => (params.value === 'Invalid' ? 'danger' : 'success'),
+              }),
+            },
+            {
+              field: 'button',
+              sortable: true,
+              filter: true,
+              cellRenderer: BalTableButtonRenderer({
+                expanded: true,
+                icon: 'github',
+              }),
+            },
+          ]
+
+          // specify the data
+          const rowData = [
+            {
+              number: '1',
+              textWithIcon: 'Base Text',
+              tag: 'OK',
+              button: 'Action',
+            },
+            {
+              number: '2',
+              textWithIcon: 'Base Text',
+              tag: 'Invalid',
+              button: 'Action',
+            },
+            {
+              number: '3',
+              textWithIcon: 'Base Text',
+              tag: 'OK',
+              button: 'Action',
+            },
+          ]
+
+          function onFirstDataRendered(params) {
+            params.api.sizeColumnsToFit()
+          }
+
+          // let the grid know which columns and what data to use
+          const gridOptions = {
+            columnDefs: columnDefs,
+            rowData: rowData,
+            rowSelection: 'multiple',
+            onFirstDataRendered: onFirstDataRendered,
+            onGridReady: function (params) {
+              params.api.sizeColumnsToFit()
+
+              window.addEventListener('resize', function () {
+                setTimeout(function () {
+                  params.api.sizeColumnsToFit()
+                })
+              })
+            },
+          }
+
+          // setup the grid after the page has finished loading
+
+          const gridDiv = document.querySelector('#myGrid')
+          gridDiv.componentOnReady().then(() => {
+            new agGrid.Grid(gridDiv, gridOptions)
+            gridOptions.api.sizeColumnsToFit()
+          })
+        })
+      </script>
+    </div>
+  </body>
+</html>

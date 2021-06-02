@@ -82,17 +82,24 @@
   }
 
   &.is-small {
-    min-height: 40px;
-    min-width: 40px;
-    padding-left: 16px;
-    padding-right: 16px;
+    min-height: 32px;
+    max-height: 32px;
+    min-width: 32px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 
     font-size: $size-small;
     line-height: $bal_lineheight_15px;
 
     &.is-square {
-      width: 40px;
+      width: 32px;
       padding: 0;
+    }
+
+    bal-icon {
+      margin-top: -1px;
     }
   }
 

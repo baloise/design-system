@@ -8,24 +8,24 @@ A field wrappes a form field like input. It provides a clear style structure of 
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-field-42></docs-demo-bal-field-42></ClientOnly>
+<ClientOnly><docs-demo-bal-field-42></docs-demo-bal-field-42></ClientOnly>
 
 
 ## Inverted
 
-<ClientOnly>  <docs-demo-bal-field-43></docs-demo-bal-field-43></ClientOnly>
+<ClientOnly><docs-demo-bal-field-43></docs-demo-bal-field-43></ClientOnly>
 
 
 ## Form
 
-<ClientOnly>  <docs-demo-bal-field-44></docs-demo-bal-field-44></ClientOnly>
+<ClientOnly><docs-demo-bal-field-44></docs-demo-bal-field-44></ClientOnly>
 
 
 ## Validation for all fields
 
 This is not a recommanded validation style. Only use this style if you do not have the possibility to use live validation.
 
-<ClientOnly>  <docs-demo-bal-field-45></docs-demo-bal-field-45></ClientOnly>
+<ClientOnly><docs-demo-bal-field-45></docs-demo-bal-field-45></ClientOnly>
 
 
 

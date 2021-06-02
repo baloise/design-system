@@ -1173,17 +1173,36 @@ export class BalTabItem {
   }
 }
 
+
+export declare interface BalTable extends Components.BalTable {}
+@ProxyCmp({
+  inputs: ['expanded']
+})
+@Component({
+  selector: 'bal-table',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['expanded']
+})
+export class BalTable {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
 import { BalTabOption } from '@baloise/design-system-components';
 export declare interface BalTabs extends Components.BalTabs {}
 @ProxyCmp({
-  inputs: ['action', 'actionLabel', 'expanded', 'interface', 'rounded'],
+  inputs: ['action', 'actionLabel', 'clickable', 'expanded', 'interface', 'rounded'],
   methods: ['select', 'sync']
 })
 @Component({
   selector: 'bal-tabs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['action', 'actionLabel', 'expanded', 'interface', 'rounded'],
+  inputs: ['action', 'actionLabel', 'clickable', 'expanded', 'interface', 'rounded'],
   outputs: ['balTabChange', 'balActionClick']
 })
 export class BalTabs {

@@ -10,22 +10,22 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-input-55></docs-demo-bal-input-55></ClientOnly>
+<ClientOnly><docs-demo-bal-input-55></docs-demo-bal-input-55></ClientOnly>
 
 
 ## HTML input
 
-<ClientOnly>  <docs-demo-bal-input-56></docs-demo-bal-input-56></ClientOnly>
+<ClientOnly><docs-demo-bal-input-56></docs-demo-bal-input-56></ClientOnly>
 
 
 ## Inverted
 
-<ClientOnly>  <docs-demo-bal-input-57></docs-demo-bal-input-57></ClientOnly>
+<ClientOnly><docs-demo-bal-input-57></docs-demo-bal-input-57></ClientOnly>
 
 
 ## Number Input
 
-<ClientOnly>  <docs-demo-bal-input-58></docs-demo-bal-input-58></ClientOnly>
+<ClientOnly><docs-demo-bal-input-58></docs-demo-bal-input-58></ClientOnly>
 
 
 

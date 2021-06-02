@@ -118,12 +118,12 @@ export class Button implements ComponentInterface {
   /**
    * The name of the button, which is submitted with the form data.
    */
-   @Prop() name?: string = ''
+  @Prop() name?: string = ''
 
   /**
    * The value of the button, which is submitted with the form data.
    */
-   @Prop() value?: string | number = ''
+  @Prop() value?: string | number = ''
 
   /**
    * Emitted when the link element has clicked.
@@ -194,12 +194,12 @@ export class Button implements ComponentInterface {
     }
   }
 
-  private get iconSize() {
-    if (this.size === 'small') {
-      return 'xsmall'
-    }
-    return 'small'
-  }
+  // private get iconSize() {
+  //   // if (this.size === 'small') {
+  //   //   return 'xsmall'
+  //   // }
+  //   return 'small'
+  // }
 
   private get leftIconAttrs() {
     if (!this.icon) {
@@ -283,11 +283,11 @@ export class Button implements ComponentInterface {
         <TagType {...attrs} type={this.type} class={this.buttonCssClass} part="native" disabled={this.disabled} onFocus={this.onFocus} onBlur={this.onBlur} onClick={this.onClick}>
           <span {...this.spanAttrs}>{/* Empty span to get the correct text height */}</span>
           <bal-spinner {...this.loadingAttrs} class={this.spinnerCssClass} />
-          <bal-icon {...this.leftIconAttrs} class="icon-left" name={this.icon} size={this.square ? this.size : this.iconSize} color={this.color} inverted={this.isIconInverted} />
+          <bal-icon {...this.leftIconAttrs} class="icon-left" name={this.icon} size={this.square ? this.size : 'small'} color={this.color} inverted={this.isIconInverted} />
           <bal-text {...this.spanAttrs} small={this.size === 'small'} style={{ display: this.loading ? 'none' : 'inline' }}>
             <slot />
           </bal-text>
-          <bal-icon {...this.leftRightAttrs} class="icon-right" name={this.iconRight} size={this.iconSize} color={this.color} inverted={this.isIconInverted} />
+          <bal-icon {...this.leftRightAttrs} class="icon-right" name={this.iconRight} size={'small'} color={this.color} inverted={this.isIconInverted} />
         </TagType>
       </Host>
     )

@@ -95,7 +95,13 @@ function transformScripts(component) {
     .join(NEWLINE + NEWLINE)
   if (scriptContent.length > 0) {
     return (
-      `export function ${camelize(component.tag)}(balSnackbarController, balToastController){` +
+      `export function ${camelize(component.tag)}(
+        balSnackbarController,
+        balToastController,
+        BalTableButtonRenderer,
+        BalTableTagRenderer,
+        BalTableTextRenderer
+        ){` +
       scriptContent
         .split(NEWLINE)
         .map(c => `  ${c}`)
@@ -112,12 +118,6 @@ function transformToMarkdown(component) {
 
   return container.childNodes
     .map(node => {
-      // if (node.nodeType === 3) {
-      //   return {
-      //     type: 'p',
-      //     content: node.rawText,
-      //   }
-      // }
       if (node.nodeType === 1) {
         if (node.rawTagName === 'h2') {
           return {
@@ -178,7 +178,7 @@ function transformToMarkdown(component) {
           }
           const tag = `docs-demo-${component.tag}-${INDEX++}`
           writeDemoComponent(tag, ctx.content, scriptContent)
-          return [`<ClientOnly>`, `  <${tag}></${tag}>`, `</ClientOnly>`, NEWLINE + NEWLINE].join('')
+          return [`<ClientOnly>`, `<${tag}></${tag}>`, `</ClientOnly>`, NEWLINE + NEWLINE].join('')
         case 'script':
           break
         default:
@@ -266,6 +266,7 @@ export default {
         'https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.css',
         'https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js',
         'https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js',
+        'https://unpkg.com/ag-grid-community/dist/ag-grid-community.noStyle.js',
       ].join(','),
     }
   },

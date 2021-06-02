@@ -6,8 +6,7 @@
   bal-field {
     display: inline-block;
     position: relative;
-    padding-bottom: 8px;
-    min-height: 94px;
+    min-height: 80px;
 
     &.is-expanded {
       display: block;
@@ -30,11 +29,11 @@
     }
 
     bal-field-control {
-      margin-bottom: 26px;
+      margin-bottom: 24px;
     }
 
     bal-field-control + bal-field-message {
-      margin-top: -23px !important;
+      margin-top: -24px !important;
     }
 
     bal-field-label > label > bal-hint {
@@ -78,11 +77,11 @@
       }
 
       & > bal-checkbox {
-        margin-top: 8px;
+        margin-top: 7px;
       }
 
       & > bal-radio-group {
-        margin-top: 4px;
+        margin-top: 10px;
       }
     }
 

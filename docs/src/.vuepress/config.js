@@ -24,6 +24,7 @@ module.exports = {
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/assets/images/logo.svg' }],
     ['link', { rel: 'stylesheet', href: '/assets/css/swot.css' }],
     ['link', { rel: 'stylesheet', href: '/assets/css/demo.css' }],
+    ['script', { src: 'https://unpkg.com/ag-grid-community/dist/ag-grid-community.noStyle.js' }],
   ],
 
   dest: 'public',
@@ -89,7 +90,6 @@ module.exports = {
             'foundation/spacing',
             'foundation/responsiveness',
             'foundation/footer',
-            'foundation/table',
             'foundation/track-line',
           ],
         },

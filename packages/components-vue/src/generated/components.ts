@@ -60,6 +60,7 @@ BalSheet,
 BalSnackbar,
 BalSpinner,
 BalTabItem,
+BalTable,
 BalTabs,
 BalTag,
 BalText,
@@ -127,6 +128,7 @@ export const applyComponents = (app: App) => {
   app.component('BalSnackbar', BalSnackbar)
   app.component('BalSpinner', BalSpinner)
   app.component('BalTabItem', BalTabItem)
+  app.component('BalTable', BalTable)
   app.component('BalTabs', BalTabs)
   app.component('BalTag', BalTag)
   app.component('BalText', BalText)

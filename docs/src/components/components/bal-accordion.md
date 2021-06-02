@@ -8,26 +8,26 @@ An accordion hides secondary content and requires user interaction to display th
 
 ## Basic
 
-<ClientOnly>  <docs-demo-bal-accordion-0></docs-demo-bal-accordion-0></ClientOnly>
+<ClientOnly><docs-demo-bal-accordion-0></docs-demo-bal-accordion-0></ClientOnly>
 
 
 ## Colors
 
 The accordion has 2 colors of themes `is-info` and `is-primary`.
 
-<ClientOnly>  <docs-demo-bal-accordion-1></docs-demo-bal-accordion-1></ClientOnly>
+<ClientOnly><docs-demo-bal-accordion-1></docs-demo-bal-accordion-1></ClientOnly>
 
 
 ## Open accordion
 
-<ClientOnly>  <docs-demo-bal-accordion-2></docs-demo-bal-accordion-2></ClientOnly>
+<ClientOnly><docs-demo-bal-accordion-2></docs-demo-bal-accordion-2></ClientOnly>
 
 
 ## Trigger label & icon
 
 Use the properties `open-label` & `open-icon` to change the content of the trigger button.
 
-<ClientOnly>  <docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
+<ClientOnly><docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
 
 
 
