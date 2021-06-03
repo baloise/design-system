@@ -1499,6 +1499,11 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
       default: undefined,
       required: false,
     },
+    noBorder: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
     typeahead: {
       type: Boolean,
       default: false,
