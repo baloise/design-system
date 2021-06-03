@@ -1,5 +1,5 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
-import { isNil } from 'lodash'
+import { isArray, isNil } from 'lodash'
 import { findItemLabel } from '../../helpers/helpers'
 import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey, isBackspaceKey } from '../../utils'
 import { addValue, findLabelByValue, includes, preventDefault, removeValue, startsWith, validateAfterBlur } from './utils/utils'
@@ -53,6 +53,11 @@ export class Select {
    * This label is shown if typeahead is active and all the options are filtered out.
    */
   @Prop() noDataLabel: string | undefined
+
+  /**
+   * Removes the border of the input.
+   */
+  @Prop() noBorder: boolean = false
 
   /**
    * If `true` the user can search by typing into the input field.
@@ -187,6 +192,10 @@ export class Select {
   }
 
   componentWillLoad() {
+    if (!isArray(this.value) || isNil(this.value)) {
+      this.value = []
+    }
+
     if (this.options.size > 0 && this.value.length === 1) {
       const firstOption = this.options.get(this.value[0])
       if (!isNil(firstOption)) {
@@ -584,6 +593,7 @@ export class Select {
               class={{
                 'bal-select__slot': true,
                 'is-focused': this.isDropdownOpen,
+                'has-no-border': this.noBorder,
               }}
             >
               <div class="bal-select__selections">

@@ -1,5 +1,9 @@
 @import 'node_modules/bulma/sass/helpers/_all.sass';
 
+.has-no-border {
+  border: none !important;
+}
+
 .is-full-width {
   width: 100% !important;
 }
@@ -14,6 +18,10 @@
 
 .has-border-blue {
   border: 1px solid $blue-line;
+}
+
+.has-border-blue-dark {
+  border: 1px solid $blue-dark;
 }
 
 .has-border-success {
