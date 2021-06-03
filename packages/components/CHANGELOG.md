@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/baloise/design-system/compare/v1.1.0...v1.1.1) (2021-06-03)
+
+
+### Bug Fixes
+
+* **select:** change empty initial value to empty string ([793c9f4](https://github.com/baloise/design-system/commit/793c9f4fe9a10b964f0d7a2d61cc96219f635a98))
+
+
+
+
+
 # [1.1.0](https://github.com/baloise/design-system/compare/v1.0.2...v1.1.0) (2021-06-02)
 
 
