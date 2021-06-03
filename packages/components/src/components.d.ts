@@ -954,6 +954,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * Removes the border of the input.
+         */
+        "noBorder": boolean;
+        /**
           * This label is shown if typeahead is active and all the options are filtered out.
          */
         "noDataLabel": string | undefined;
@@ -2681,6 +2685,10 @@ declare namespace LocalJSX {
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
+        /**
+          * Removes the border of the input.
+         */
+        "noBorder"?: boolean;
         /**
           * This label is shown if typeahead is active and all the options are filtered out.
          */
