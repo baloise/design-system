@@ -305,6 +305,10 @@ export namespace Components {
         "required": boolean;
     }
     interface BalDataValue {
+        /**
+          * If `true` a small button with a edit icon will be shown on the right.
+         */
+        "editable": boolean;
     }
     interface BalDatepicker {
         /**
@@ -2049,6 +2053,22 @@ declare namespace LocalJSX {
         "required"?: boolean;
     }
     interface BalDataValue {
+        /**
+          * If `true` a small button with a edit icon will be shown on the right.
+         */
+        "editable"?: boolean;
+        /**
+          * Emitted when the edit button loses focus.
+         */
+        "onBalBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the edit button has focus.
+         */
+        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * Emitted when the edit button has focus.
+         */
+        "onBalFocus"?: (event: CustomEvent<void>) => void;
     }
     interface BalDatepicker {
         /**

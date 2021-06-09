@@ -47,6 +47,7 @@
 
  - [bal-accordion](../bal-accordion)
  - [bal-card-button](../bal-card-button)
+ - [bal-data-value](../bal-data-value)
  - [bal-hint](../bal-hint)
  - [bal-snackbar](../bal-snackbar)
  - [bal-tabs](../bal-tabs)
@@ -65,6 +66,7 @@ graph TD;
   bal-button --> bal-text
   bal-accordion --> bal-button
   bal-card-button --> bal-button
+  bal-data-value --> bal-button
   bal-hint --> bal-button
   bal-snackbar --> bal-button
   bal-tabs --> bal-button

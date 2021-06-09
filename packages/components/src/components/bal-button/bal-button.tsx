@@ -194,13 +194,6 @@ export class Button implements ComponentInterface {
     }
   }
 
-  // private get iconSize() {
-  //   // if (this.size === 'small') {
-  //   //   return 'xsmall'
-  //   // }
-  //   return 'small'
-  // }
-
   private get leftIconAttrs() {
     if (!this.icon) {
       return {
