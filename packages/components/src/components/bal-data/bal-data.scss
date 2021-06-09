@@ -50,6 +50,10 @@
         font-weight: $weight-normal;
         font-size: $size-normal;
         line-height: $size-normal;
+
+        .bal-data-value-btn {
+          display: none;
+        }
       }
 
       &.is-disabled .bal-data-label,
@@ -60,6 +64,35 @@
 
     &.has-border > .bal-data-item {
       border-bottom: 1px solid $blue-light-line;
+    }
+  }
+
+  .bal-data:not(.is-horizontal) {
+    .bal-data-value {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & > div {
+        flex: 1;
+      }
+
+      & > div > bal-input input.input {
+        padding-left: 4px;
+        padding-right: 4px;
+        background: $grey-lightest;
+        flex: 1;
+      }
+
+      &.is-editable {
+        .bal-data-value-btn {
+          display: block;
+        }
+      }
+
+      & > bal-button {
+        margin-left: 8px;
+      }
     }
   }
 

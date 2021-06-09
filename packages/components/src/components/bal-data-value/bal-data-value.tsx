@@ -1,4 +1,5 @@
-import { Component, Host, h } from '@stencil/core'
+import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core'
+import { isNil } from 'lodash'
 
 @Component({
   tag: 'bal-data-value',
@@ -6,10 +7,59 @@ import { Component, Host, h } from '@stencil/core'
   scoped: false,
 })
 export class DataValue {
+  @Element() el!: HTMLElement
+
+  /**
+   * If `true` a small button with a edit icon will be shown on the right.
+   */
+  @Prop() editable = false
+
+  /**
+   * Emitted when the edit button has focus.
+   */
+  @Event() balClick!: EventEmitter<MouseEvent>
+
+  /**
+   * Emitted when the edit button has focus.
+   */
+  @Event() balFocus!: EventEmitter<void>
+
+  /**
+   * Emitted when the edit button loses focus.
+   */
+  @Event() balBlur!: EventEmitter<void>
+
+  onClickHandler(event: MouseEvent) {
+    this.balClick.emit(event)
+    const input = this.el.querySelector('bal-input')
+    if (!isNil(input)) {
+      input.setFocus()
+    }
+  }
+
   render() {
     return (
-      <Host class="bal-data-value">
-        <slot></slot>
+      <Host
+        class={{
+          'bal-data-value': true,
+          'is-editable': this.editable,
+        }}
+      >
+        <div>
+          <slot></slot>
+        </div>
+        <bal-button
+          class="bal-data-value-btn"
+          outlined
+          size="small"
+          square
+          color="info"
+          onBalBlur={_ => this.balBlur.emit()}
+          onBalFocus={_ => this.balFocus.emit()}
+          onClick={ev => this.onClickHandler(ev)}
+        >
+          <bal-icon name="edit" size="small"></bal-icon>
+        </bal-button>
       </Host>
     )
   }

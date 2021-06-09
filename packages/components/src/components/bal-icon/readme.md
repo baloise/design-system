@@ -21,6 +21,7 @@
 ### Used by
 
  - [bal-button](../bal-button)
+ - [bal-data-value](../bal-data-value)
  - [bal-datepicker](../bal-datepicker)
  - [bal-field-control](../bal-field-control)
  - [bal-file-upload](../bal-file-upload)
@@ -34,6 +35,7 @@
 ```mermaid
 graph TD;
   bal-button --> bal-icon
+  bal-data-value --> bal-icon
   bal-datepicker --> bal-icon
   bal-field-control --> bal-icon
   bal-file-upload --> bal-icon
