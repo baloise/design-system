@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/baloise/design-system/compare/v1.2.0...v1.2.1) (2021-06-09)
+
+
+### Bug Fixes
+
+* **text:** add bold style ([550d7a2](https://github.com/baloise/design-system/commit/550d7a22a1eb553910ca05a0337488e5fa074c0e))
+
+
+
+
+
 # [1.2.0](https://github.com/baloise/design-system/compare/v1.1.1...v1.2.0) (2021-06-09)
 
 
