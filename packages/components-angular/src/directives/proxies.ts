@@ -307,17 +307,28 @@ export class BalDataLabel {
 
 
 export declare interface BalDataValue extends Components.BalDataValue {}
-
+@ProxyCmp({
+  inputs: ['editable']
+})
 @Component({
   selector: 'bal-data-value',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['editable'],
+  outputs: ['balClick', 'balFocus', 'balBlur']
 })
 export class BalDataValue {
+  /** Emitted when the edit button has focus. */
+  balClick!: EventEmitter<CustomEvent<MouseEvent>>;
+  /** Emitted when the edit button has focus. */
+  balFocus!: EventEmitter<CustomEvent<void>>;
+  /** Emitted when the edit button loses focus. */
+  balBlur!: EventEmitter<CustomEvent<void>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balClick', 'balFocus', 'balBlur']);
   }
 }
 

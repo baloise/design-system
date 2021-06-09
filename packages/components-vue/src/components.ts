@@ -481,12 +481,18 @@ export const BalDataLabel = /*@__PURE__*/ defineComponent({
 export const BalDataValue = /*@__PURE__*/ defineComponent({
   name: 'bal-data-value',
   props: {
-
+    editable: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   emits: {
-
+    balClick: (value: MouseEvent) => true,
+    balFocus: (value: void) => true,
+    balBlur: (value: void) => true,
   },
-  setup: defineSetup('bal-data-value', [], undefined)
+  setup: defineSetup('bal-data-value', ['balClick','balFocus','balBlur'], undefined)
 })
 
 export const BalDatepicker = /*@__PURE__*/ defineComponent({
