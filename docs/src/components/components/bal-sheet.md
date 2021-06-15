@@ -2,7 +2,7 @@
 
 <!-- START: human documentation top -->
 
-The sheet component is used to show content over the whole page at the bottem of it.
+The sheet component is used to show content over the whole page at the bottom. The element is sticky.
 
 <!-- END: human documentation top -->
 
