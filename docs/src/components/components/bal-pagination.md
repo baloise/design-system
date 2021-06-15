@@ -2,7 +2,7 @@
 
 <!-- START: human documentation top -->
 
-A pagination is used with large amount of content to distribute it over multpile pages.
+A pagination is used with large amount of content to distribute it over multiple pages.
 
 <!-- END: human documentation top -->
 
