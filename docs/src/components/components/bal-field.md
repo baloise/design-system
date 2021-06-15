@@ -2,7 +2,7 @@
 
 <!-- START: human documentation top -->
 
-A field wrappes a form field like input. It provides a clear style structure of each control.
+A field wraps a form field like input. It provides a clear style structure of each control.
 
 <!-- END: human documentation top -->
 
