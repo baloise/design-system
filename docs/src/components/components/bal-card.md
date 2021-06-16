@@ -2,7 +2,7 @@
 
 <!-- START: human documentation top -->
 
-The card component is a versatile component that can be combined easily wiht other componets.
+The card component is a versatile component that can be combined easily wiht other components.
 
 <!-- END: human documentation top -->
 
