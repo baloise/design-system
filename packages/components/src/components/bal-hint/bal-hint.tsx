@@ -9,6 +9,7 @@ import { Component, Host, h, Method, State, Prop, Element, Listen } from '@stenc
 export class Hint {
   @Element() element!: HTMLElement
   @State() isActive = false
+  @State() placement: 'left' | 'right' = 'right'
 
   /**
    * Text for the close button.
@@ -35,11 +36,29 @@ export class Hint {
     }
   }
 
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.calcIsDropDownContentUp()
+  }
+
+  @Listen('scroll', { target: 'window' })
+  async scrollHandler() {
+    this.calcIsDropDownContentUp()
+  }
+
+  private calcIsDropDownContentUp() {
+    const box = this.element.getBoundingClientRect()
+    const hint = this.element.querySelector('.bal-hint-content')
+    const width = hint?.clientWidth === 0 ? 464 : hint?.clientWidth || 0
+    this.placement = window.innerWidth < box.right + width ? 'left' : 'right'
+  }
+
   /**
    * Toggles the hint box.
    */
   @Method()
   async toggle(): Promise<void> {
+    this.calcIsDropDownContentUp()
     this.isActive = !this.isActive
   }
 
@@ -61,7 +80,11 @@ export class Hint {
 
   render() {
     return (
-      <Host>
+      <Host
+        class={{
+          [`is-placed-${this.placement}`]: true,
+        }}
+      >
         <bal-icon role="button" name="info-circle" size="" onClick={() => this.toggle()}></bal-icon>
 
         <div class="bal-hint-content" style={{ display: this.isActive ? 'inline-block' : 'none' }}>

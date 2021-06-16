@@ -8,12 +8,12 @@ A data component display readonly form data.
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-data-29></docs-demo-bal-data-29></ClientOnly>
+<ClientOnly><docs-demo-bal-data-30></docs-demo-bal-data-30></ClientOnly>
 
 
 ## Horizontal
 
-<ClientOnly><docs-demo-bal-data-30></docs-demo-bal-data-30></ClientOnly>
+<ClientOnly><docs-demo-bal-data-31></docs-demo-bal-data-31></ClientOnly>
 
 
 

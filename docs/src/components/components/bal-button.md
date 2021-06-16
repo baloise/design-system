@@ -8,57 +8,57 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-button-4></docs-demo-bal-button-4></ClientOnly>
+<ClientOnly><docs-demo-bal-button-5></docs-demo-bal-button-5></ClientOnly>
 
 
 ## Outlined
 
-<ClientOnly><docs-demo-bal-button-5></docs-demo-bal-button-5></ClientOnly>
+<ClientOnly><docs-demo-bal-button-6></docs-demo-bal-button-6></ClientOnly>
 
 
 ## Inverted
 
-<ClientOnly><docs-demo-bal-button-6></docs-demo-bal-button-6></ClientOnly>
+<ClientOnly><docs-demo-bal-button-7></docs-demo-bal-button-7></ClientOnly>
 
 
 ## Other colors
 
-<ClientOnly><docs-demo-bal-button-7></docs-demo-bal-button-7></ClientOnly>
+<ClientOnly><docs-demo-bal-button-8></docs-demo-bal-button-8></ClientOnly>
 
 
 ## Disabled
 
-<ClientOnly><docs-demo-bal-button-8></docs-demo-bal-button-8></ClientOnly>
+<ClientOnly><docs-demo-bal-button-9></docs-demo-bal-button-9></ClientOnly>
 
 
 ## Loading
 
-<ClientOnly><docs-demo-bal-button-9></docs-demo-bal-button-9></ClientOnly>
+<ClientOnly><docs-demo-bal-button-10></docs-demo-bal-button-10></ClientOnly>
 
 
 ## Expanded
 
-<ClientOnly><docs-demo-bal-button-10></docs-demo-bal-button-10></ClientOnly>
+<ClientOnly><docs-demo-bal-button-11></docs-demo-bal-button-11></ClientOnly>
 
 
 ## With icons
 
-<ClientOnly><docs-demo-bal-button-11></docs-demo-bal-button-11></ClientOnly>
+<ClientOnly><docs-demo-bal-button-12></docs-demo-bal-button-12></ClientOnly>
 
 
 ## Small buttons
 
-<ClientOnly><docs-demo-bal-button-12></docs-demo-bal-button-12></ClientOnly>
+<ClientOnly><docs-demo-bal-button-13></docs-demo-bal-button-13></ClientOnly>
 
 
 ## Square buttons
 
-<ClientOnly><docs-demo-bal-button-13></docs-demo-bal-button-13></ClientOnly>
+<ClientOnly><docs-demo-bal-button-14></docs-demo-bal-button-14></ClientOnly>
 
 
 ## Button Link
 
-<ClientOnly><docs-demo-bal-button-14></docs-demo-bal-button-14></ClientOnly>
+<ClientOnly><docs-demo-bal-button-15></docs-demo-bal-button-15></ClientOnly>
 
 
 

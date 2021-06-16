@@ -8,24 +8,24 @@ A field wraps a form field like input. It provides a clear style structure of ea
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-field-42></docs-demo-bal-field-42></ClientOnly>
+<ClientOnly><docs-demo-bal-field-43></docs-demo-bal-field-43></ClientOnly>
 
 
 ## Inverted
 
-<ClientOnly><docs-demo-bal-field-43></docs-demo-bal-field-43></ClientOnly>
+<ClientOnly><docs-demo-bal-field-44></docs-demo-bal-field-44></ClientOnly>
 
 
 ## Form
 
-<ClientOnly><docs-demo-bal-field-44></docs-demo-bal-field-44></ClientOnly>
+<ClientOnly><docs-demo-bal-field-45></docs-demo-bal-field-45></ClientOnly>
 
 
 ## Validation for all fields
 
 This is not a recommanded validation style. Only use this style if you do not have the possibility to use live validation.
 
-<ClientOnly><docs-demo-bal-field-45></docs-demo-bal-field-45></ClientOnly>
+<ClientOnly><docs-demo-bal-field-46></docs-demo-bal-field-46></ClientOnly>
 
 
 
@@ -85,6 +85,7 @@ This is not a recommanded validation style. Only use this style if you do not ha
 
 | Attribute    | Description                                        | Type      | Default |
 | :----------- | :------------------------------------------------- | :-------- | :------ |
+| **expanded** | If `true` the component takes the whole width      | `boolean` | `false` |
 | **required** | If `true` a asterix (*) is added to the label text | `boolean` | `false` |
 
 ### bal-field-message
@@ -97,9 +98,10 @@ This is not a recommanded validation style. Only use this style if you do not ha
 
 #### Properties
 
-| Attribute | Description                       | Type                                    | Default |
-| :-------- | :-------------------------------- | :-------------------------------------- | :------ |
-| **color** | Defines the color of the message. | `"" , "danger" , "success" , "warning"` | `''`    |
+| Attribute    | Description                                   | Type                                    | Default |
+| :----------- | :-------------------------------------------- | :-------------------------------------- | :------ |
+| **color**    | Defines the color of the message.             | `"" , "danger" , "success" , "warning"` | `''`    |
+| **expanded** | If `true` the component takes the whole width | `boolean`                               | `false` |
 
 
 

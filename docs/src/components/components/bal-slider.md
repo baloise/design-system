@@ -8,15 +8,19 @@ The slider component lets users select from a range of values by moving the slid
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-slider-87></docs-demo-bal-slider-87></ClientOnly>
+<ClientOnly><docs-demo-bal-slider-88></docs-demo-bal-slider-88></ClientOnly>
+
 
 ## With Steps
 
-<ClientOnly><docs-demo-bal-slider-88></docs-demo-bal-slider-88></ClientOnly>
+<ClientOnly><docs-demo-bal-slider-89></docs-demo-bal-slider-89></ClientOnly>
+
 
 ## With Field
 
-<ClientOnly><docs-demo-bal-slider-89></docs-demo-bal-slider-89></ClientOnly>
+<ClientOnly><docs-demo-bal-slider-90></docs-demo-bal-slider-90></ClientOnly>
+
+
 
 ## API
 
@@ -51,17 +55,20 @@ The slider component lets users select from a range of values by moving the slid
 
 #### Methods
 
-| Method                | Description                                                                            | Signature                                        |
-| :-------------------- | :------------------------------------------------------------------------------------- | :----------------------------------------------- |
-| **`getInputElement`** | Returns the native `<input>` element used under the hood.                              | `getInputElement() => Promise<HTMLInputElement>` |
-| **`setFocus`**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global |
-| `input.focus()`.      | `setFocus() => Promise<void>`                                                          |
+| Method                | Description                                                                                             | Signature                                        |
+| :-------------------- | :------------------------------------------------------------------------------------------------------ | :----------------------------------------------- |
+| **`getInputElement`** | Returns the native `<input>` element used under the hood.                                               | `getInputElement() => Promise<HTMLInputElement>` |
+| **`setFocus`**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global
+`input.focus()`. | `setFocus() => Promise<void>`                    |
+
+
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+
 ## Links
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-slider.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-slider)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-slider.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-slider)

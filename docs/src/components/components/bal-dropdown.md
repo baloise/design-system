@@ -4,16 +4,20 @@
 
 A dropdown shows and hides content close to the trigger element.
 
+:::tip
+If you are looking for a dropdown with selectable list items go to the [bal-select](./bal-select).
+:::
+
 <!-- END: human documentation top -->
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-dropdown-40></docs-demo-bal-dropdown-40></ClientOnly>
+<ClientOnly><docs-demo-bal-dropdown-41></docs-demo-bal-dropdown-41></ClientOnly>
 
 
 ## Input
 
-<ClientOnly><docs-demo-bal-dropdown-41></docs-demo-bal-dropdown-41></ClientOnly>
+<ClientOnly><docs-demo-bal-dropdown-42></docs-demo-bal-dropdown-42></ClientOnly>
 
 
 

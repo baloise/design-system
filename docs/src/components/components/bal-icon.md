@@ -9,26 +9,26 @@ Then the build script will automatically optimize the svg and create its own web
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-icon-51></docs-demo-bal-icon-51></ClientOnly>
+<ClientOnly><docs-demo-bal-icon-52></docs-demo-bal-icon-52></ClientOnly>
 
 
 ## Size
 
 Here is how you can change the size:
 
-<ClientOnly><docs-demo-bal-icon-52></docs-demo-bal-icon-52></ClientOnly>
+<ClientOnly><docs-demo-bal-icon-53></docs-demo-bal-icon-53></ClientOnly>
 
 
 ## Colors
 
-<ClientOnly><docs-demo-bal-icon-53></docs-demo-bal-icon-53></ClientOnly>
+<ClientOnly><docs-demo-bal-icon-54></docs-demo-bal-icon-54></ClientOnly>
 
 
 ## Custom Color
 
 Here is how you can change the color:
 
-<ClientOnly><docs-demo-bal-icon-54></docs-demo-bal-icon-54></ClientOnly>
+<ClientOnly><docs-demo-bal-icon-55></docs-demo-bal-icon-55></ClientOnly>
 
 
 

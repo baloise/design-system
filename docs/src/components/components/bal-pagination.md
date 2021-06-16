@@ -8,7 +8,7 @@ A pagination is used with large amount of content to distribute it over multiple
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-pagination-73></docs-demo-bal-pagination-73></ClientOnly>
+<ClientOnly><docs-demo-bal-pagination-74></docs-demo-bal-pagination-74></ClientOnly>
 
 
 

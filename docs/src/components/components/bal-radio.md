@@ -8,37 +8,37 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-radio-74></docs-demo-bal-radio-74></ClientOnly>
+<ClientOnly><docs-demo-bal-radio-75></docs-demo-bal-radio-75></ClientOnly>
 
 
 ## Inverted
 
-<ClientOnly><docs-demo-bal-radio-75></docs-demo-bal-radio-75></ClientOnly>
+<ClientOnly><docs-demo-bal-radio-76></docs-demo-bal-radio-76></ClientOnly>
 
 
 ## With Links
 
-<ClientOnly><docs-demo-bal-radio-76></docs-demo-bal-radio-76></ClientOnly>
+<ClientOnly><docs-demo-bal-radio-77></docs-demo-bal-radio-77></ClientOnly>
 
 
 ## Radio Boxes
 
-<ClientOnly><docs-demo-bal-radio-77></docs-demo-bal-radio-77></ClientOnly>
+<ClientOnly><docs-demo-bal-radio-78></docs-demo-bal-radio-78></ClientOnly>
 
 
 ## Radio List
 
-<ClientOnly><docs-demo-bal-radio-78></docs-demo-bal-radio-78></ClientOnly>
+<ClientOnly><docs-demo-bal-radio-79></docs-demo-bal-radio-79></ClientOnly>
 
 
 ## Select Button
 
-<ClientOnly><docs-demo-bal-radio-79></docs-demo-bal-radio-79></ClientOnly>
+<ClientOnly><docs-demo-bal-radio-80></docs-demo-bal-radio-80></ClientOnly>
 
 
 ### Inverted
 
-<ClientOnly><docs-demo-bal-radio-80></docs-demo-bal-radio-80></ClientOnly>
+<ClientOnly><docs-demo-bal-radio-81></docs-demo-bal-radio-81></ClientOnly>
 
 
 
