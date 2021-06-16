@@ -542,6 +542,12 @@ export namespace Components {
          */
         "multiple": boolean;
     }
+    interface BalFooter {
+        /**
+          * If `true` the footer shows a track line at the bottom.
+         */
+        "hasTrackLine": boolean;
+    }
     interface BalHeading {
         /**
           * The theme type of the toast. Given by bulma our css framework.
@@ -1509,6 +1515,12 @@ declare global {
         prototype: HTMLBalFileUploadElement;
         new (): HTMLBalFileUploadElement;
     };
+    interface HTMLBalFooterElement extends Components.BalFooter, HTMLStencilElement {
+    }
+    var HTMLBalFooterElement: {
+        prototype: HTMLBalFooterElement;
+        new (): HTMLBalFooterElement;
+    };
     interface HTMLBalHeadingElement extends Components.BalHeading, HTMLStencilElement {
     }
     var HTMLBalHeadingElement: {
@@ -1776,6 +1788,7 @@ declare global {
         "bal-field-label": HTMLBalFieldLabelElement;
         "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
+        "bal-footer": HTMLBalFooterElement;
         "bal-heading": HTMLBalHeadingElement;
         "bal-hint": HTMLBalHintElement;
         "bal-hint-text": HTMLBalHintTextElement;
@@ -2366,6 +2379,12 @@ declare namespace LocalJSX {
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
         "onBalRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
+    }
+    interface BalFooter {
+        /**
+          * If `true` the footer shows a track line at the bottom.
+         */
+        "hasTrackLine"?: boolean;
     }
     interface BalHeading {
         /**
@@ -3247,6 +3266,7 @@ declare namespace LocalJSX {
         "bal-field-label": BalFieldLabel;
         "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
+        "bal-footer": BalFooter;
         "bal-heading": BalHeading;
         "bal-hint": BalHint;
         "bal-hint-text": BalHintText;
@@ -3319,6 +3339,7 @@ declare module "@stencil/core" {
             "bal-field-label": LocalJSX.BalFieldLabel & JSXBase.HTMLAttributes<HTMLBalFieldLabelElement>;
             "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
+            "bal-footer": LocalJSX.BalFooter & JSXBase.HTMLAttributes<HTMLBalFooterElement>;
             "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
             "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;

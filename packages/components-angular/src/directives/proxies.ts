@@ -483,13 +483,13 @@ export class BalFieldHint {
 
 export declare interface BalFieldLabel extends Components.BalFieldLabel {}
 @ProxyCmp({
-  inputs: ['required']
+  inputs: ['expanded', 'required']
 })
 @Component({
   selector: 'bal-field-label',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['required']
+  inputs: ['expanded', 'required']
 })
 export class BalFieldLabel {
   protected el: HTMLElement;
@@ -502,13 +502,13 @@ export class BalFieldLabel {
 
 export declare interface BalFieldMessage extends Components.BalFieldMessage {}
 @ProxyCmp({
-  inputs: ['color']
+  inputs: ['color', 'expanded']
 })
 @Component({
   selector: 'bal-field-message',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color']
+  inputs: ['color', 'expanded']
 })
 export class BalFieldMessage {
   protected el: HTMLElement;
@@ -540,6 +540,25 @@ export class BalFileUpload {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balChange', 'balRejectedFile']);
+  }
+}
+
+
+export declare interface BalFooter extends Components.BalFooter {}
+@ProxyCmp({
+  inputs: ['hasTrackLine']
+})
+@Component({
+  selector: 'bal-footer',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['hasTrackLine']
+})
+export class BalFooter {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
   }
 }
 

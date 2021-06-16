@@ -8,14 +8,14 @@ The basic table is only css and html provided by the bulma framework.
 
 [Go to the Bulma documentation](https://bulma.io/documentation/elements/table/)
 
-<ClientOnly><docs-demo-bal-table-96></docs-demo-bal-table-96></ClientOnly>
+<ClientOnly><docs-demo-bal-table-98></docs-demo-bal-table-98></ClientOnly>
 
 
 ## Advanced with AG-Grid
 
 For the advanced tables with sorting and filtering we use the library [AG Grid](https://www.ag-grid.com/)
 
-<ClientOnly><docs-demo-bal-table-97></docs-demo-bal-table-97></ClientOnly>
+<ClientOnly><docs-demo-bal-table-99></docs-demo-bal-table-99></ClientOnly>
 
 
 

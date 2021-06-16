@@ -89,7 +89,7 @@ module.exports = {
             'foundation/typography',
             'foundation/spacing',
             'foundation/responsiveness',
-            'foundation/footer',
+            'foundation/page-layout',
             'foundation/track-line',
           ],
         },

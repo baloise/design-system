@@ -757,6 +757,11 @@ export const BalFieldLabel = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
+    expanded: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   emits: {
 
@@ -770,6 +775,11 @@ export const BalFieldMessage = /*@__PURE__*/ defineComponent({
     color: {
       type: String,
       default: '',
+      required: false,
+    },
+    expanded: {
+      type: Boolean,
+      default: false,
       required: false,
     },
   },
@@ -823,6 +833,21 @@ export const BalFileUpload = /*@__PURE__*/ defineComponent({
     balRejectedFile: (value: Lib.FileUploadRejectedFile) => true,
   },
   setup: defineSetup('bal-file-upload', ['balChange','balRejectedFile'], undefined)
+})
+
+export const BalFooter = /*@__PURE__*/ defineComponent({
+  name: 'bal-footer',
+  props: {
+    hasTrackLine: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+  },
+  emits: {
+
+  },
+  setup: defineSetup('bal-footer', [], undefined)
 })
 
 export const BalHeading = /*@__PURE__*/ defineComponent({

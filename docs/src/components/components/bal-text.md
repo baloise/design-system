@@ -10,17 +10,17 @@ A text provides some additional helpers.
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-text-107></docs-demo-bal-text-107></ClientOnly>
+<ClientOnly><docs-demo-bal-text-109></docs-demo-bal-text-109></ClientOnly>
 
 
 ## Small
 
-<ClientOnly><docs-demo-bal-text-108></docs-demo-bal-text-108></ClientOnly>
+<ClientOnly><docs-demo-bal-text-110></docs-demo-bal-text-110></ClientOnly>
 
 
 ## Colors
 
-<ClientOnly><docs-demo-bal-text-109></docs-demo-bal-text-109></ClientOnly>
+<ClientOnly><docs-demo-bal-text-111></docs-demo-bal-text-111></ClientOnly>
 
 
 
