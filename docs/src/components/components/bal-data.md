@@ -8,12 +8,12 @@ A data component display readonly form data.
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-data-29></docs-demo-bal-data-29></ClientOnly>
+<ClientOnly><docs-demo-bal-data-30></docs-demo-bal-data-30></ClientOnly>
 
 
 ## Horizontal
 
-<ClientOnly><docs-demo-bal-data-30></docs-demo-bal-data-30></ClientOnly>
+<ClientOnly><docs-demo-bal-data-31></docs-demo-bal-data-31></ClientOnly>
 
 
 
@@ -62,6 +62,19 @@ A data component display readonly form data.
 
 `bal-data-item` is a child component of `bal-data` that defines the value of the data.
 
+#### Properties
+
+| Attribute    | Description                                                           | Type      | Default |
+| :----------- | :-------------------------------------------------------------------- | :-------- | :------ |
+| **editable** | If `true` a small button with a edit icon will be shown on the right. | `boolean` | `false` |
+
+#### Events
+
+| Event        | Description                               | Type         |
+| :----------- | :---------------------------------------- | :----------- |
+| **balBlur**  | Emitted when the edit button loses focus. | `void`       |
+| **balClick** | Emitted when the edit button has focus.   | `MouseEvent` |
+| **balFocus** | Emitted when the edit button has focus.   | `void`       |
 
 
 

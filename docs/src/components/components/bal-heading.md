@@ -6,12 +6,12 @@ A heading provides some additional helpers.
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-heading-47></docs-demo-bal-heading-47></ClientOnly>
+<ClientOnly><docs-demo-bal-heading-50></docs-demo-bal-heading-50></ClientOnly>
 
 
 ## Colors
 
-<ClientOnly><docs-demo-bal-heading-48></docs-demo-bal-heading-48></ClientOnly>
+<ClientOnly><docs-demo-bal-heading-51></docs-demo-bal-heading-51></ClientOnly>
 
 
 

@@ -9,17 +9,17 @@ the app before interaction can resume.
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-modal-64></docs-demo-bal-modal-64></ClientOnly>
+<ClientOnly><docs-demo-bal-modal-67></docs-demo-bal-modal-67></ClientOnly>
 
 
 ## Customize width
 
-<ClientOnly><docs-demo-bal-modal-65></docs-demo-bal-modal-65></ClientOnly>
+<ClientOnly><docs-demo-bal-modal-68></docs-demo-bal-modal-68></ClientOnly>
 
 
 ## Modal card style
 
-<ClientOnly><docs-demo-bal-modal-66></docs-demo-bal-modal-66></ClientOnly>
+<ClientOnly><docs-demo-bal-modal-69></docs-demo-bal-modal-69></ClientOnly>
 
 
 

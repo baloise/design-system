@@ -56,7 +56,7 @@ export class Input implements ComponentInterface {
   @Prop() autofocus = false
 
   /**
-   * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+   * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
    */
   @Prop() debounce = 0
 

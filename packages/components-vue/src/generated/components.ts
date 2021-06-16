@@ -28,6 +28,7 @@ BalFieldHint,
 BalFieldLabel,
 BalFieldMessage,
 BalFileUpload,
+BalFooter,
 BalHeading,
 BalHint,
 BalHintText,
@@ -57,6 +58,7 @@ BalRadioGroup,
 BalSelect,
 BalSelectOption,
 BalSheet,
+BalSlider,
 BalSnackbar,
 BalSpinner,
 BalTabItem,
@@ -96,6 +98,7 @@ export const applyComponents = (app: App) => {
   app.component('BalFieldLabel', BalFieldLabel)
   app.component('BalFieldMessage', BalFieldMessage)
   app.component('BalFileUpload', BalFileUpload)
+  app.component('BalFooter', BalFooter)
   app.component('BalHeading', BalHeading)
   app.component('BalHint', BalHint)
   app.component('BalHintText', BalHintText)
@@ -125,6 +128,7 @@ export const applyComponents = (app: App) => {
   app.component('BalSelect', BalSelect)
   app.component('BalSelectOption', BalSelectOption)
   app.component('BalSheet', BalSheet)
+  app.component('BalSlider', BalSlider)
   app.component('BalSnackbar', BalSnackbar)
   app.component('BalSpinner', BalSpinner)
   app.component('BalTabItem', BalTabItem)

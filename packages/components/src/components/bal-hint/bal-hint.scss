@@ -36,6 +36,12 @@ bal-icon[role='button'] {
   }
 }
 
+:host.is-placed-left {
+  .bal-hint-content {
+    right: 40px;
+  }
+}
+
 @include tablet() {
   .bal-hint-content {
     position: absolute;

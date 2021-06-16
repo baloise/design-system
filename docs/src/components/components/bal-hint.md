@@ -9,12 +9,12 @@ It can easily combined with the `bal-data` or `bal-field` component.
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-hint-49></docs-demo-bal-hint-49></ClientOnly>
+<ClientOnly><docs-demo-bal-hint-52></docs-demo-bal-hint-52></ClientOnly>
 
 
 ## Field
 
-<ClientOnly><docs-demo-bal-hint-50></docs-demo-bal-hint-50></ClientOnly>
+<ClientOnly><docs-demo-bal-hint-53></docs-demo-bal-hint-53></ClientOnly>
 
 
 

@@ -483,13 +483,13 @@ export class BalFieldHint {
 
 export declare interface BalFieldLabel extends Components.BalFieldLabel {}
 @ProxyCmp({
-  inputs: ['required']
+  inputs: ['expanded', 'required']
 })
 @Component({
   selector: 'bal-field-label',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['required']
+  inputs: ['expanded', 'required']
 })
 export class BalFieldLabel {
   protected el: HTMLElement;
@@ -502,13 +502,13 @@ export class BalFieldLabel {
 
 export declare interface BalFieldMessage extends Components.BalFieldMessage {}
 @ProxyCmp({
-  inputs: ['color']
+  inputs: ['color', 'expanded']
 })
 @Component({
   selector: 'bal-field-message',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color']
+  inputs: ['color', 'expanded']
 })
 export class BalFieldMessage {
   protected el: HTMLElement;
@@ -540,6 +540,25 @@ export class BalFileUpload {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['balChange', 'balRejectedFile']);
+  }
+}
+
+
+export declare interface BalFooter extends Components.BalFooter {}
+@ProxyCmp({
+  inputs: ['hasTrackLine']
+})
+@Component({
+  selector: 'bal-footer',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['hasTrackLine']
+})
+export class BalFooter {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
   }
 }
 
@@ -1112,6 +1131,40 @@ export class BalSheet {
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalSlider extends Components.BalSlider {}
+@ProxyCmp({
+  inputs: ['balTabindex', 'debounce', 'disabled', 'hasTicks', 'max', 'min', 'name', 'readonly', 'required', 'step', 'value'],
+  methods: ['setFocus', 'getInputElement']
+})
+@Component({
+  selector: 'bal-slider',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['balTabindex', 'debounce', 'disabled', 'hasTicks', 'max', 'min', 'name', 'readonly', 'required', 'step', 'value'],
+  outputs: ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']
+})
+export class BalSlider {
+  /** Emitted when a keyboard input occurred. */
+  balInput!: EventEmitter<CustomEvent<null | number | string>>;
+  /** Emitted when a keyboard input occurred. */
+  balBlur!: EventEmitter<CustomEvent<FocusEvent>>;
+  /** Emitted when the input has clicked. */
+  balClick!: EventEmitter<CustomEvent<MouseEvent>>;
+  /** Emitted when a keyboard key has pressed. */
+  balKeyPress!: EventEmitter<CustomEvent<KeyboardEvent>>;
+  /** Emitted when the input has focus. */
+  balFocus!: EventEmitter<CustomEvent<FocusEvent>>;
+  /** Emitted when the input value has changed. */
+  balChange!: EventEmitter<CustomEvent<null | number | string>>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']);
   }
 }
 

@@ -6,22 +6,22 @@
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-timeinput-107></docs-demo-bal-timeinput-107></ClientOnly>
+<ClientOnly><docs-demo-bal-timeinput-113></docs-demo-bal-timeinput-113></ClientOnly>
 
 
 ## Inverted style
 
-<ClientOnly><docs-demo-bal-timeinput-108></docs-demo-bal-timeinput-108></ClientOnly>
+<ClientOnly><docs-demo-bal-timeinput-114></docs-demo-bal-timeinput-114></ClientOnly>
 
 
 ## Min and max time
 
-<ClientOnly><docs-demo-bal-timeinput-109></docs-demo-bal-timeinput-109></ClientOnly>
+<ClientOnly><docs-demo-bal-timeinput-115></docs-demo-bal-timeinput-115></ClientOnly>
 
 
 ## Disabled
 
-<ClientOnly><docs-demo-bal-timeinput-110></docs-demo-bal-timeinput-110></ClientOnly>
+<ClientOnly><docs-demo-bal-timeinput-116></docs-demo-bal-timeinput-116></ClientOnly>
 
 
 

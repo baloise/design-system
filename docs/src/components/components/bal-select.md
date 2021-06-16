@@ -18,27 +18,27 @@ export interface BalOptionValue<T> {
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-select-81></docs-demo-bal-select-81></ClientOnly>
+<ClientOnly><docs-demo-bal-select-84></docs-demo-bal-select-84></ClientOnly>
 
 
 ### Typeahead
 
-<ClientOnly><docs-demo-bal-select-82></docs-demo-bal-select-82></ClientOnly>
+<ClientOnly><docs-demo-bal-select-85></docs-demo-bal-select-85></ClientOnly>
 
 
 ### Multi-Select
 
-<ClientOnly><docs-demo-bal-select-83></docs-demo-bal-select-83></ClientOnly>
+<ClientOnly><docs-demo-bal-select-86></docs-demo-bal-select-86></ClientOnly>
 
 
 ### Multi-Select with typeahead
 
-<ClientOnly><docs-demo-bal-select-84></docs-demo-bal-select-84></ClientOnly>
+<ClientOnly><docs-demo-bal-select-87></docs-demo-bal-select-87></ClientOnly>
 
 
 ### Remote Typeahead
 
-<ClientOnly><docs-demo-bal-select-85></docs-demo-bal-select-85></ClientOnly>
+<ClientOnly><docs-demo-bal-select-88></docs-demo-bal-select-88></ClientOnly>
 
 
 
@@ -57,6 +57,7 @@ export interface BalOptionValue<T> {
 | **loading**       |                                                                                   | `boolean`                                    | `false`        |
 | **multiple**      | If `true` multiple option can be selected                                         | `boolean`                                    | `false`        |
 | **name**          | The name of the control, which is submitted with the form data.                   | `string`                                     | `this.inputId` |
+| **no-border**     | Removes the border of the input.                                                  | `boolean`                                    | `false`        |
 | **no-data-label** | This label is shown if typeahead is active and all the options are filtered out.  | `string , undefined`                         |                |
 | **placeholder**   | The text to display when the select is empty.                                     | `string , undefined`                         |                |
 | **scrollable**    | Defines the height of the dropdown list.                                          | `number`                                     | `250`          |

@@ -494,6 +494,10 @@ export namespace Components {
     }
     interface BalFieldLabel {
         /**
+          * If `true` the component takes the whole width
+         */
+        "expanded": boolean;
+        /**
           * If `true` a asterix (*) is added to the label text
          */
         "required": boolean;
@@ -503,6 +507,10 @@ export namespace Components {
           * Defines the color of the message.
          */
         "color": '' | ColorTypesExtended;
+        /**
+          * If `true` the component takes the whole width
+         */
+        "expanded": boolean;
     }
     interface BalFileUpload {
         /**
@@ -533,6 +541,12 @@ export namespace Components {
           * If `true` multiple file upload is possible.
          */
         "multiple": boolean;
+    }
+    interface BalFooter {
+        /**
+          * If `true` the footer shows a track line at the bottom.
+         */
+        "hasTrackLine": boolean;
     }
     interface BalHeading {
         /**
@@ -650,7 +664,7 @@ export namespace Components {
          */
         "clickable": boolean;
         /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
         /**
@@ -1006,6 +1020,60 @@ export namespace Components {
         "value": string | undefined;
     }
     interface BalSheet {
+    }
+    interface BalSlider {
+        /**
+          * The tabindex of the control.
+         */
+        "balTabindex": number;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * If `true`, small ticks for the steps are shown.
+         */
+        "hasTicks": boolean;
+        /**
+          * Max value of the model.
+         */
+        "max": number;
+        /**
+          * Min value of the model.
+         */
+        "min": number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The step size. 0 means no steps.
+         */
+        "step": number;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | number;
     }
     interface BalSnackbar {
         /**
@@ -1447,6 +1515,12 @@ declare global {
         prototype: HTMLBalFileUploadElement;
         new (): HTMLBalFileUploadElement;
     };
+    interface HTMLBalFooterElement extends Components.BalFooter, HTMLStencilElement {
+    }
+    var HTMLBalFooterElement: {
+        prototype: HTMLBalFooterElement;
+        new (): HTMLBalFooterElement;
+    };
     interface HTMLBalHeadingElement extends Components.BalHeading, HTMLStencilElement {
     }
     var HTMLBalHeadingElement: {
@@ -1621,6 +1695,12 @@ declare global {
         prototype: HTMLBalSheetElement;
         new (): HTMLBalSheetElement;
     };
+    interface HTMLBalSliderElement extends Components.BalSlider, HTMLStencilElement {
+    }
+    var HTMLBalSliderElement: {
+        prototype: HTMLBalSliderElement;
+        new (): HTMLBalSliderElement;
+    };
     interface HTMLBalSnackbarElement extends Components.BalSnackbar, HTMLStencilElement {
     }
     var HTMLBalSnackbarElement: {
@@ -1708,6 +1788,7 @@ declare global {
         "bal-field-label": HTMLBalFieldLabelElement;
         "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
+        "bal-footer": HTMLBalFooterElement;
         "bal-heading": HTMLBalHeadingElement;
         "bal-hint": HTMLBalHintElement;
         "bal-hint-text": HTMLBalHintTextElement;
@@ -1737,6 +1818,7 @@ declare global {
         "bal-select": HTMLBalSelectElement;
         "bal-select-option": HTMLBalSelectOptionElement;
         "bal-sheet": HTMLBalSheetElement;
+        "bal-slider": HTMLBalSliderElement;
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
         "bal-tab-item": HTMLBalTabItemElement;
@@ -2242,6 +2324,10 @@ declare namespace LocalJSX {
     }
     interface BalFieldLabel {
         /**
+          * If `true` the component takes the whole width
+         */
+        "expanded"?: boolean;
+        /**
           * If `true` a asterix (*) is added to the label text
          */
         "required"?: boolean;
@@ -2251,6 +2337,10 @@ declare namespace LocalJSX {
           * Defines the color of the message.
          */
         "color"?: '' | ColorTypesExtended;
+        /**
+          * If `true` the component takes the whole width
+         */
+        "expanded"?: boolean;
     }
     interface BalFileUpload {
         /**
@@ -2289,6 +2379,12 @@ declare namespace LocalJSX {
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
         "onBalRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
+    }
+    interface BalFooter {
+        /**
+          * If `true` the footer shows a track line at the bottom.
+         */
+        "hasTrackLine"?: boolean;
     }
     interface BalHeading {
         /**
@@ -2394,7 +2490,7 @@ declare namespace LocalJSX {
          */
         "clickable"?: boolean;
         /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
         /**
@@ -2771,6 +2867,76 @@ declare namespace LocalJSX {
     }
     interface BalSheet {
     }
+    interface BalSlider {
+        /**
+          * The tabindex of the control.
+         */
+        "balTabindex"?: number;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true`, small ticks for the steps are shown.
+         */
+        "hasTicks"?: boolean;
+        /**
+          * Max value of the model.
+         */
+        "max"?: number;
+        /**
+          * Min value of the model.
+         */
+        "min"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onBalChange"?: (event: CustomEvent<string | number | null>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalInput"?: (event: CustomEvent<string | number | null>) => void;
+        /**
+          * Emitted when a keyboard key has pressed.
+         */
+        "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * The step size. 0 means no steps.
+         */
+        "step"?: number;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | number;
+    }
     interface BalSnackbar {
         /**
           * Label text for the action button
@@ -3100,6 +3266,7 @@ declare namespace LocalJSX {
         "bal-field-label": BalFieldLabel;
         "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
+        "bal-footer": BalFooter;
         "bal-heading": BalHeading;
         "bal-hint": BalHint;
         "bal-hint-text": BalHintText;
@@ -3129,6 +3296,7 @@ declare namespace LocalJSX {
         "bal-select": BalSelect;
         "bal-select-option": BalSelectOption;
         "bal-sheet": BalSheet;
+        "bal-slider": BalSlider;
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
         "bal-tab-item": BalTabItem;
@@ -3171,6 +3339,7 @@ declare module "@stencil/core" {
             "bal-field-label": LocalJSX.BalFieldLabel & JSXBase.HTMLAttributes<HTMLBalFieldLabelElement>;
             "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
+            "bal-footer": LocalJSX.BalFooter & JSXBase.HTMLAttributes<HTMLBalFooterElement>;
             "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
             "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;
@@ -3200,6 +3369,7 @@ declare module "@stencil/core" {
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;
             "bal-select-option": LocalJSX.BalSelectOption & JSXBase.HTMLAttributes<HTMLBalSelectOptionElement>;
             "bal-sheet": LocalJSX.BalSheet & JSXBase.HTMLAttributes<HTMLBalSheetElement>;
+            "bal-slider": LocalJSX.BalSlider & JSXBase.HTMLAttributes<HTMLBalSliderElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;

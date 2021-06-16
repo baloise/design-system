@@ -30,6 +30,11 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 <ClientOnly><docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
 
 
+## With card
+
+<ClientOnly><docs-demo-bal-accordion-4></docs-demo-bal-accordion-4></ClientOnly>
+
+
 
 ## API
 
