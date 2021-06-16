@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="/build/design-system-components.css" />
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+  <body class="bal-app">
+    <div class="container">
+      <h2 class="title is-size-2">Basic</h2>
+      <section>
+        <bal-slider value="20"></bal-slider>
+        <bal-slider disabled value="30"></bal-slider>
+      </section>
+
+      <h2 class="title is-size-2">With Steps</h2>
+      <section>
+        <bal-slider has-ticks step="20" min="0" max="100" value="40"></bal-slider>
+      </section>
+
+      <h2 class="title is-size-2">With Field</h2>
+      <section>
+        <bal-field expanded>
+          <bal-field-label expanded>
+            <span class="is-flex-grow-1">Employees</span>
+            <span class="is-flex-grow-1 has-text-right">Pensioners</span>
+          </bal-field-label>
+          <bal-field-control>
+            <bal-slider step="20" min="0" max="100" value="40"></bal-slider>
+          </bal-field-control>
+          <bal-field-message expanded>
+            <span class="is-flex-grow-1">40%</span>
+            <span class="is-flex-grow-1 has-text-right">60%</span>
+          </bal-field-message>
+        </bal-field>
+      </section>
+    </div>
+  </body>
+</html>

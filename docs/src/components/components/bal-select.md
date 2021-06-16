@@ -57,6 +57,7 @@ export interface BalOptionValue<T> {
 | **loading**       |                                                                                   | `boolean`                                    | `false`        |
 | **multiple**      | If `true` multiple option can be selected                                         | `boolean`                                    | `false`        |
 | **name**          | The name of the control, which is submitted with the form data.                   | `string`                                     | `this.inputId` |
+| **no-border**     | Removes the border of the input.                                                  | `boolean`                                    | `false`        |
 | **no-data-label** | This label is shown if typeahead is active and all the options are filtered out.  | `string , undefined`                         |                |
 | **placeholder**   | The text to display when the select is empty.                                     | `string , undefined`                         |                |
 | **scrollable**    | Defines the height of the dropdown list.                                          | `number`                                     | `250`          |

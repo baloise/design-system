@@ -1606,6 +1606,76 @@ export const BalSheet = /*@__PURE__*/ defineComponent({
   setup: defineSetup('bal-sheet', [], undefined)
 })
 
+export const BalSlider = /*@__PURE__*/ defineComponent({
+  name: 'bal-slider',
+  props: {
+    name: {
+      type: String,
+      default: undefined,
+      required: false,
+    },
+    step: {
+      type: Number,
+      default: 0,
+      required: false,
+    },
+    min: {
+      type: Number,
+      default: 0,
+      required: false,
+    },
+    max: {
+      type: Number,
+      default: 100,
+      required: false,
+    },
+    balTabindex: {
+      type: Number,
+      default: 0,
+      required: false,
+    },
+    readonly: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    required: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    hasTicks: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    debounce: {
+      type: Number,
+      default: 0,
+      required: false,
+    },
+    value: {
+      type: [String, Number],
+      default: '',
+      required: false,
+    },
+  },
+  emits: {
+    balInput: (value: string | number | null) => true,
+    balBlur: (value: FocusEvent) => true,
+    balClick: (value: MouseEvent) => true,
+    balKeyPress: (value: KeyboardEvent) => true,
+    balFocus: (value: FocusEvent) => true,
+    balChange: (value: string | number | null) => true,
+  },
+  setup: defineSetup('bal-slider', ['balInput','balBlur','balClick','balKeyPress','balFocus','balChange'], undefined)
+})
+
 export const BalSnackbar = /*@__PURE__*/ defineComponent({
   name: 'bal-snackbar',
   props: {

@@ -30,7 +30,7 @@ ng serve
 Use npm to install the Angular proxy library.
 
 ```bash
-npm install @baloise/design-system-components-angular --save
+npm install @baloise/design-system-components-angular ag-grid-community --save
 ```
 
 ::: tip

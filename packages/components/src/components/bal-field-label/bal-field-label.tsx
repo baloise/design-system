@@ -11,9 +11,18 @@ export class FieldLabel {
    */
   @Prop() required: boolean = false
 
+  /**
+   * If `true` the component takes the whole width
+   */
+  @Prop() expanded: boolean = false
+
   render() {
     return (
-      <Host>
+      <Host
+        class={{
+          'is-expanded': this.expanded,
+        }}
+      >
         <label class="label">
           <slot></slot>
           {this.required === true ? ' *' : ''}

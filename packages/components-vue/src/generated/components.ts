@@ -57,6 +57,7 @@ BalRadioGroup,
 BalSelect,
 BalSelectOption,
 BalSheet,
+BalSlider,
 BalSnackbar,
 BalSpinner,
 BalTabItem,
@@ -125,6 +126,7 @@ export const applyComponents = (app: App) => {
   app.component('BalSelect', BalSelect)
   app.component('BalSelectOption', BalSelectOption)
   app.component('BalSheet', BalSheet)
+  app.component('BalSlider', BalSlider)
   app.component('BalSnackbar', BalSnackbar)
   app.component('BalSpinner', BalSpinner)
   app.component('BalTabItem', BalTabItem)

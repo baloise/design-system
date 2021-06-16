@@ -41,6 +41,18 @@
       top: -5px;
     }
 
+    bal-field-label.is-expanded,
+    bal-field-label.is-expanded label,
+    bal-field-message.is-expanded {
+      width: 100%;
+    }
+
+    bal-field-label.is-expanded label,
+    bal-field-message.is-expanded {
+      display: flex !important;
+      justify-content: space-between;
+    }
+
     .control.is-loading::after,
     .select.is-loading::after {
       border-top-color: $blue !important;

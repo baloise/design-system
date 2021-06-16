@@ -11,7 +11,7 @@ Before installing the Baloise Design System setup to a Vue Project. We recommand
 To install the Baloise Design System run the following command.
 
 ```bash
-npm install @baloise/design-system-components-vue --save
+npm install @baloise/design-system-components-vue ag-grid-community --save
 ```
 
 :::tip

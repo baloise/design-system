@@ -17,6 +17,7 @@ Add the following 4 references to your `<head></head>`
   href="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
 />
 
+<script src="https://unpkg.com//dist/ag-grid-community.noStyle.js"></script>
 <script
   type="module"
   src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
@@ -34,6 +35,7 @@ Open the terminal and run the following command to install the Baloise Design Sy
 ```bash
 npm install @baloise/design-system-fonts --save
 npm install @baloise/design-system-components --save
+npm install ag-grid-community --save
 ```
 
 Add the following 2 references to your `<head></head>`
