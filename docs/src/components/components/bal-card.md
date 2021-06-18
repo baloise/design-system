@@ -2,7 +2,7 @@
 
 <!-- START: human documentation top -->
 
-The card component is a versatile component that can be combined easily wiht other components.
+Cards contain content and actions about a single subject and can be combined with other components.  
 
 <!-- END: human documentation top -->
 
