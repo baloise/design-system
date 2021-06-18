@@ -2,7 +2,7 @@
 
 <!-- START: human documentation top -->
 
-An accordion hides secondary content and requires user interaction to display the content.
+Accordions put users in control of showing or hiding content. Accordions also help us organize information to keep screens less cluttered so that users can accomplish tasks in short, intuitive steps. And accordions can help users find content they need. The component can be used standalone, in combination or inside bal-card.
 
 <!-- END: human documentation top -->
 
