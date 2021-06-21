@@ -1689,6 +1689,9 @@ export const BalSlider = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
+    modelValue: {
+      default: undefined,
+    },
   },
   emits: {
     balInput: (value: string | number | null) => true,
@@ -1697,8 +1700,12 @@ export const BalSlider = /*@__PURE__*/ defineComponent({
     balKeyPress: (value: KeyboardEvent) => true,
     balFocus: (value: FocusEvent) => true,
     balChange: (value: string | number | null) => true,
+    'update:modelValue': (value: any) => true,
   },
-  setup: defineSetup('bal-slider', ['balInput','balBlur','balClick','balKeyPress','balFocus','balChange'], undefined)
+  setup: defineSetup('bal-slider', ['balInput','balBlur','balClick','balKeyPress','balFocus','balChange','update:modelValue'], {
+    modelProp: 'value',
+    modelUpdateEvent: 'balInput'
+  })
 })
 
 export const BalSnackbar = /*@__PURE__*/ defineComponent({

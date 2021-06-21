@@ -21,7 +21,7 @@ const vueComponentModels: ComponentModelConfig[] = [
     targetAttr: 'checked',
   },
   {
-    elements: ['bal-input', 'bal-textarea'],
+    elements: ['bal-input', 'bal-textarea', 'bal-slider'],
     event: 'balInput',
     targetAttr: 'value',
   },
@@ -49,7 +49,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'boolean',
   },
   {
-    elementSelectors: ['bal-input', 'bal-textarea'],
+    elementSelectors: ['bal-input', 'bal-textarea', 'bal-slider'],
     event: 'balInput',
     targetAttr: 'value',
     type: 'text',
