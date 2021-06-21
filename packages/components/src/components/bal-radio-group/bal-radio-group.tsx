@@ -29,13 +29,15 @@ export class RadioGroup implements ComponentInterface {
   /**
    * If `true`, the user cannot interact with the radios.
    */
-  @Prop() disabled = false
+  @Prop() disabled?: boolean = undefined
 
   @Watch('disabled')
-  disabledChanged(value: boolean) {
-    this.radios.forEach(radio => {
-      radio.disabled = value
-    })
+  disabledChanged(value: boolean | undefined) {
+    if (value !== undefined) {
+      this.radios.forEach(radio => {
+        radio.disabled = value
+      })
+    }
   }
 
   /**

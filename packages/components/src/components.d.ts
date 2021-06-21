@@ -919,7 +919,7 @@ export namespace Components {
         /**
           * If `true`, the user cannot interact with the radios.
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
         /**
           * Defines the layout of the radio button
          */

@@ -1488,6 +1488,11 @@ export const BalRadioGroup = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
+    disabled: {
+      type: Boolean,
+      default: undefined,
+      required: false,
+    },
     value: {
       type: String,
       default: '',
