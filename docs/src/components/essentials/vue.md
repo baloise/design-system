@@ -48,7 +48,7 @@ new Vue({
 To use the Baloise Design System with [ViteJs](https://vitejs.dev/) add the following config:
 
 ```typescript
-Vue.use(BaloiseDesignSystem, { useVite: false })
+Vue.use(BaloiseDesignSystem, { useVite: true })
 ```
 
 :::
