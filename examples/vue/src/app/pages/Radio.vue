@@ -11,6 +11,9 @@
         </BalRadio>
       </BalRadioGroup>
       <p>{{ value }}</p>
+
+      <BalSlider v-model="slider"></BalSlider>
+      <p>{{ slider }}</p>
     </BalCardContent>
   </BalCard>
 </template>
@@ -23,14 +26,21 @@ import {
   BalCard,
   BalCardContent,
   BalCardTitle,
+  BalSlider,
 } from '@baloise/design-system-components-vue'
 
 export default defineComponent({
   setup() {
     const value = ref(2)
+    const slider = ref(50)
+
+    setTimeout(() => {
+      slider.value = 80
+    }, 500)
 
     return {
       value,
+      slider,
     }
   },
   components: {
@@ -39,6 +49,7 @@ export default defineComponent({
     BalCard,
     BalCardContent,
     BalCardTitle,
+    BalSlider,
   },
 })
 </script>
