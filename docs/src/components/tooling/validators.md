@@ -13,7 +13,7 @@ For Vue we use the libary [VeeValidate](https://vee-validate.logaretm.com/v4/) t
 First install VeeValidate (Version >= 4.x.x).
 
 ```bash
-npm add vee-validate
+npm add vee-validate@next
 ```
 
 #### Define i18n validators
