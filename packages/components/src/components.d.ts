@@ -917,6 +917,10 @@ export namespace Components {
     }
     interface BalRadioGroup {
         /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "disabled": boolean;
+        /**
           * Defines the layout of the radio button
          */
         "interface": 'radio' | 'select-button';
@@ -2754,6 +2758,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalRadioGroup {
+        /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "disabled"?: boolean;
         /**
           * Defines the layout of the radio button
          */
