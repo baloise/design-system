@@ -6,6 +6,10 @@ A notification is used for alerts or to highlight certain content for the user.
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-notification-72></docs-demo-bal-notification-72></ClientOnly>
@@ -26,23 +30,27 @@ A notification is used for alerts or to highlight certain content for the user.
 <ClientOnly><docs-demo-bal-notification-75></docs-demo-bal-notification-75></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-notification
-
-#### Properties
+## Properties
 
 | Attribute | Description                      | Type                                                         | Default |
 | :-------- | :------------------------------- | :----------------------------------------------------------- | :------ |
 | **color** | Defines the color of the element | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
 
+:::
 
+::: tab Usage
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

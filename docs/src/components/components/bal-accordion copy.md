@@ -4,16 +4,15 @@
 
 Accordions put users in control of showing or hiding content. Accordions also help us organize information to keep screens less cluttered so that users can accomplish tasks in short, intuitive steps. And accordions can help users find content they need. The component can be used standalone, in combination or inside bal-card.
 
-<!-- END: human documentation top -->
-
 :::: tabs :options="{ useUrlFragment: false }"
 
 ::: tab Examples
 
+<!-- END: human documentation top -->
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-accordion-0></docs-demo-bal-accordion-0></ClientOnly>
-
 
 ## Colors
 
@@ -21,11 +20,9 @@ The accordion has 2 colors of themes `is-info` and `is-primary`.
 
 <ClientOnly><docs-demo-bal-accordion-1></docs-demo-bal-accordion-1></ClientOnly>
 
-
 ## Open accordion
 
 <ClientOnly><docs-demo-bal-accordion-2></docs-demo-bal-accordion-2></ClientOnly>
-
 
 ## Trigger label & icon
 
@@ -33,17 +30,19 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 
 <ClientOnly><docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
 
-
 ## With card
 
 <ClientOnly><docs-demo-bal-accordion-4></docs-demo-bal-accordion-4></ClientOnly>
-
 
 :::
 
 ::: tab Code
 
-## Properties
+## API
+
+### bal-accordion
+
+#### Properties
 
 | Attribute       | Description                                             | Type                 | Default     |
 | :-------------- | :------------------------------------------------------ | :------------------- | :---------- |
@@ -55,13 +54,13 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 | **open-icon**   | Bal-Icon of the open trigger button                     | `string`             | `'plus'`    |
 | **open-label**  | Label of the open trigger button                        | `string`             | `''`        |
 
-## Events
+#### Events
 
 | Event           | Description                            | Type      |
 | :-------------- | :------------------------------------- | :-------- |
 | **balCollapse** | Emmited when the accordion has changed | `boolean` |
 
-## Methods
+#### Methods
 
 | Method       | Description            | Signature                   |
 | :----------- | :--------------------- | :-------------------------- |
@@ -69,11 +68,9 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 | **`open`**   | Open the accordion     | `open() => Promise<void>`   |
 | **`toggle`** | Triggers the accordion | `toggle() => Promise<void>` |
 
-:::
+## Testing
 
-::: tab Testing
-
-## AccordionAccessor
+### AccordionAccessor
 
 AccordionAccessor is a helper object for E-2-E testing.
 It maps the accordion behaviour to the `bal-accordion` ui component.
@@ -83,15 +80,15 @@ import { dataTestSelector, AccordionAccessor } from '@baloise/design-system-comp
 
 describe('Accordion', () => {
   it('should ...', () => {
-     const accordion = AccordionAccessor(dataTestSelector('accordion-id')).get()
-     accordion.click()
-     accordion.assertBodyExists()
-     accordion.contains('Label')
- })
+    const accordion = AccordionAccessor(dataTestSelector('accordion-id')).get()
+    accordion.click()
+    accordion.assertBodyExists()
+    accordion.contains('Label')
+  })
 })
 ```
 
-### Methods
+#### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
 | :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
@@ -118,7 +115,7 @@ describe('Accordion', () => {
 ::: tab Usage
 
 <!-- START: human documentation bottom -->
-Usage
+
 <!-- END: human documentation bottom -->
 
 :::
@@ -127,6 +124,6 @@ Usage
 
 ## Links
 
-* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-accordion.md)
-* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-accordion)
-* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/accordion.accessor.ts)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-accordion.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-accordion)
+- [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/accordion.accessor.ts)

@@ -6,6 +6,10 @@ Cards contain content and actions about a single subject and can be combined wit
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-card-16></docs-demo-bal-card-16></ClientOnly>
@@ -43,12 +47,11 @@ The position the action buttons to the right side just add the attribute `right`
 <ClientOnly><docs-demo-bal-card-22></docs-demo-bal-card-22></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-card
-
-#### Properties
+## Properties
 
 | Attribute       | Description                                         | Type                                                         | Default |
 | :-------------- | :-------------------------------------------------- | :----------------------------------------------------------- | :------ |
@@ -62,27 +65,27 @@ The position the action buttons to the right side just add the attribute `right`
 | **square**      | If `true` the card loses its border radius.         | `boolean`                                                    | `false` |
 | **teaser**      | If `true` the card has a limited width on desktop.  | `boolean`                                                    | `false` |
 
-### bal-card-actions
+## bal-card-actions
 
 
 # bal-card-actions
 
 `bal-card-actions` is a child component of `bal-card` that sets the buttons to the right place.
 
-#### Properties
+### Properties
 
 | Attribute | Description                                     | Type      | Default |
 | :-------- | :---------------------------------------------- | :-------- | :------ |
 | **right** | If `true` the buttons start form right to left. | `boolean` | `false` |
 
-### bal-card-button
+## bal-card-button
 
 
 # bal-card-button
 
 `bal-card-button` is a child component of `bal-card` that sets a block button at the end of the card. Good to use for edit functionality.
 
-#### Properties
+### Properties
 
 | Attribute      | Description                                                                         | Type                                       | Default    |
 | :------------- | :---------------------------------------------------------------------------------- | :----------------------------------------- | :--------- |
@@ -94,7 +97,7 @@ The position the action buttons to the right side just add the attribute `right`
 | **target**     | Specifies where to display the linked URL. Only applies when an `href` is provided. | `" _parent" , "_blank" , "_self" , "_top"` | `'_self'`  |
 | **type**       | The type of button.                                                                 | `"button" , "reset" , "submit"`            | `'button'` |
 
-### bal-card-content
+## bal-card-content
 
 
 # bal-card-content
@@ -102,13 +105,13 @@ The position the action buttons to the right side just add the attribute `right`
 `bal-card-content` is a child component of `bal-card`. It is recommended that any text content for a card should be placed in a `bal-card-content`.
 
 
-#### Properties
+### Properties
 
 | Attribute    | Description                                  | Type      | Default |
 | :----------- | :------------------------------------------- | :-------- | :------ |
 | **inverted** | If `true` the card text color becomes white. | `boolean` | `false` |
 
-### bal-card-head
+## bal-card-head
 
 
 # bal-card-head
@@ -116,7 +119,7 @@ The position the action buttons to the right side just add the attribute `right`
 `bal-card-head` is a child component of `bal-card` that adds a head element for the service card style.
 
 
-### bal-card-heading
+## bal-card-heading
 
 
 # bal-card-heading
@@ -124,7 +127,7 @@ The position the action buttons to the right side just add the attribute `right`
 `bal-card-heading` is a child component of `bal-card` that adds a small heading to the card. It is recommended to use this before the `bal-card-title` component.
 
 
-### bal-card-steps
+## bal-card-steps
 
 
 # bal-card-steps
@@ -132,38 +135,43 @@ The position the action buttons to the right side just add the attribute `right`
 `bal-card-steps` is a child component of `bal-card` that adds a wrapper for the bal-tabs.
 
 
-### bal-card-subtitle
+## bal-card-subtitle
 
 
 # bal-card-subtitle
 
 `bal-card-subtitle` is a child component of `bal-card` that adds a small subtile below the title. It is recommended to use this after the `bal-card-title` component.
 
-#### Properties
+### Properties
 
 | Attribute    | Description                                  | Type      | Default |
 | :----------- | :------------------------------------------- | :-------- | :------ |
 | **inverted** | If `true` the card text color becomes white. | `boolean` | `false` |
 
-### bal-card-title
+## bal-card-title
 
 
 # bal-card-title
 
 `bal-card-title` is a child component of `bal-card` that adds a title to card.
 
-#### Properties
+### Properties
 
 | Attribute    | Description                                  | Type      | Default |
 | :----------- | :------------------------------------------- | :-------- | :------ |
 | **inverted** | If `true` the card text color becomes white. | `boolean` | `false` |
 
+:::
 
+::: tab Usage
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

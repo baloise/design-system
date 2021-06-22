@@ -44,7 +44,16 @@ async function generateMarkdown(components) {
     lines.push(top)
     lines.push('')
 
+    lines.push(':::: tabs :options="{ useUrlFragment: false }"')
+    lines.push('')
+    lines.push('::: tab Examples')
+    lines.push('')
+
     lines.push(markdown)
+
+    lines.push(':::')
+    lines.push('')
+    lines.push('::: tab Code')
     lines.push('')
 
     const apiContent = api.parse(components, component)
@@ -52,12 +61,28 @@ async function generateMarkdown(components) {
     lines.push('')
 
     const accessor = accessors.get(component.tag)
-    const testingContent = testing.parse(accessor)
-    lines.push(testingContent)
+    if(accessor !== undefined) {
+      lines.push(':::')
+      lines.push('')
+      lines.push('::: tab Testing')
+      lines.push('')
+
+      const testingContent = testing.parse(accessor)
+      lines.push(testingContent)
+      lines.push('')
+    }
+
+    lines.push(':::')
+    lines.push('')
+    lines.push('::: tab Usage')
     lines.push('')
 
     lines.push(bottom)
     lines.push('')
+
+    lines.push(':::')
+    lines.push('')
+    lines.push('::::')
 
     const githubContent = github.parse(component, accessor)
     lines.push(githubContent)

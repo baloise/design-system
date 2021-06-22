@@ -7,6 +7,10 @@ Then the build script will automatically optimize the svg and create its own web
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-icon-54></docs-demo-bal-icon-54></ClientOnly>
@@ -31,12 +35,11 @@ Here is how you can change the color:
 <ClientOnly><docs-demo-bal-icon-57></docs-demo-bal-icon-57></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-icon
-
-#### Properties
+## Properties
 
 | Attribute    | Description                                                     | Type                                                                                              | Default  |
 | :----------- | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :------- |
@@ -48,12 +51,17 @@ Here is how you can change the color:
 | **svg**      | Svg content.                                                    | `string`                                                                                          | `''`     |
 | **turn**     | If `true` the icon is rotated 180deg                            | `boolean`                                                                                         | `false`  |
 
+:::
 
+::: tab Usage
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

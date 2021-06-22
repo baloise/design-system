@@ -6,6 +6,10 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-button-5></docs-demo-bal-button-5></ClientOnly>
@@ -61,12 +65,11 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 <ClientOnly><docs-demo-bal-button-15></docs-demo-bal-button-15></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-button
-
-#### Properties
+## Properties
 
 | Attribute          | Description                                                                                                                                                                                                                                                                               | Type                                                                                              | Default     |
 | :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :---------- |
@@ -93,7 +96,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 | **type**           | The type of button.                                                                                                                                                                                                                                                                       | `"button" , "reset" , "submit"`                                                                   | `'button'`  |
 | **value**          | The value of the button, which is submitted with the form data.                                                                                                                                                                                                                           | `number , string , undefined`                                                                     | `''`        |
 
-#### Events
+## Events
 
 | Event            | Description                                 | Type         |
 | :--------------- | :------------------------------------------ | :----------- |
@@ -102,9 +105,11 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 | **balFocus**     | Emitted when the button has focus.          | `void`       |
 | **balNavigate**  | Emitted when the link element has clicked.  | `MouseEvent` |
 
-## Testing
+:::
 
-### ButtonAccessor
+::: tab Testing
+
+## ButtonAccessor
 
 ButtonAccessor is a helper object for E-2-E testing.
 It maps the button behaviour to the `bal-button` ui component.
@@ -122,7 +127,7 @@ describe('Button', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
 | :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
@@ -145,6 +150,10 @@ describe('Button', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
+:::
+
+::: tab Usage
+
 <!-- START: human documentation bottom -->
 
 ## Usage
@@ -153,6 +162,9 @@ WIP
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

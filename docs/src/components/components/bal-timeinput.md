@@ -4,6 +4,10 @@
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-timeinput-113></docs-demo-bal-timeinput-113></ClientOnly>
@@ -24,12 +28,11 @@
 <ClientOnly><docs-demo-bal-timeinput-116></docs-demo-bal-timeinput-116></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-timeinput
-
-#### Properties
+## Properties
 
 | Attribute    | Description                                             | Type      | Default |
 | :----------- | :------------------------------------------------------ | :-------- | :------ |
@@ -39,7 +42,7 @@
 | **min-time** | Earliest date available for selection                   | `string`  | `''`    |
 | **value**    | The value of the datepicker with the format `hh:mm`.    | `string`  | `''`    |
 
-#### Events
+## Events
 
 | Event         | Description                                                                                                                                                    | Type         |
 | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
@@ -47,12 +50,17 @@
 | **balChange** | Emitted when either the hour or the minute input has changed.
 It will not be triggert if either hour or time input has never been set (i.e. "--" is selected). | `string`     |
 
+:::
 
+::: tab Usage
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

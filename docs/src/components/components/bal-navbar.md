@@ -10,6 +10,10 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-navbar-70></docs-demo-bal-navbar-70></ClientOnly>
@@ -20,12 +24,11 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 <ClientOnly><docs-demo-bal-navbar-71></docs-demo-bal-navbar-71></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-navbar
-
-#### Properties
+## Properties
 
 | Attribute     | Description                                  | Type      | Default |
 | :------------ | :------------------------------------------- | :-------- | :------ |
@@ -33,7 +36,7 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 | **light**     | It `true` the navbar has a white background  | `boolean` | `false` |
 | **no-burger** | It `true` the burger button is hidden        | `boolean` | `false` |
 
-### bal-navbar-brand
+## bal-navbar-brand
 
 
 # bal-navbar-brand 
@@ -41,19 +44,19 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 `bal-navbar-brand` is a child component of `bal-navbar` that defines the area in the navbar where the logo or the title of the applications is.
 
 
-#### Properties
+### Properties
 
 | Attribute | Description               | Type     | Default |
 | :-------- | :------------------------ | :------- | :------ |
 | **href**  | Link of the logo / title. | `string` | `'/'`   |
 
-#### Events
+### Events
 
 | Event           | Description                               | Type         |
 | :-------------- | :---------------------------------------- | :----------- |
 | **balNavigate** | Emitted when the link element has clicked | `MouseEvent` |
 
-### bal-navbar-menu
+## bal-navbar-menu
 
 
 # bal-navbar-menu 
@@ -62,13 +65,13 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 
 
-#### Methods
+### Methods
 
 | Method       | Description                                                             | Signature                                        |
 | :----------- | :---------------------------------------------------------------------- | :----------------------------------------------- |
 | **`toggle`** | *Internal* - If the menu is open it closes it and the other way around. | `toggle(isMenuActive: boolean) => Promise<void>` |
 
-### bal-navbar-menu-end
+## bal-navbar-menu-end
 
 
 # bal-navbar-menu-start 
@@ -77,7 +80,7 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 
 
-### bal-navbar-menu-start
+## bal-navbar-menu-start
 
 
 # bal-navbar-menu-end 
@@ -86,12 +89,17 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 
 
+:::
 
+::: tab Usage
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

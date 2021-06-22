@@ -18,6 +18,10 @@ Toasts are used to inform the user with a simple text message.
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-toast-117></docs-demo-bal-toast-117></ClientOnly>
@@ -28,34 +32,35 @@ Toasts are used to inform the user with a simple text message.
 <ClientOnly><docs-demo-bal-toast-118></docs-demo-bal-toast-118></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-toast
-
-#### Properties
+## Properties
 
 | Attribute    | Description                                                    | Type                                                         | Default |
 | :----------- | :------------------------------------------------------------- | :----------------------------------------------------------- | :------ |
 | **color**    | The theme type of the toast. Given by bulma our css framework. | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
 | **duration** | The duration of the toast                                      | `number`                                                     | `0`     |
 
-#### Events
+## Events
 
 | Event        | Description                  | Type     |
 | :----------- | :--------------------------- | :------- |
 | **balClose** | Emitted when toast is closed | `string` |
 
-#### Methods
+## Methods
 
 | Method        | Description                                     | Signature                                    |
 | :------------ | :---------------------------------------------- | :------------------------------------------- |
 | **`close`**   | Closes this toast                               | `close() => Promise<void>`                   |
 | **`closeIn`** | Closes the toast after the given duration in ms | `closeIn(duration: number) => Promise<void>` |
 
-## Testing
+:::
 
-### ToastAccessor
+::: tab Testing
+
+## ToastAccessor
 
 ToastAccessor is a helper object for E-2-E testing.
 It maps the toast behaviour to the `bal-toast` ui component.
@@ -71,7 +76,7 @@ describe('Toast', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
 | :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
@@ -93,10 +98,17 @@ describe('Toast', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
+:::
+
+::: tab Usage
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

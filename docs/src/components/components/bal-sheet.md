@@ -6,20 +6,32 @@ The sheet component is used to show content over the whole page at the bottom. T
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-sheet-89></docs-demo-bal-sheet-89></ClientOnly>
 
 
+:::
+
+::: tab Code
 
 
 
+:::
 
+::: tab Usage
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

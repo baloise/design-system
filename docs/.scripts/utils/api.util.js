@@ -2,17 +2,19 @@ const table = require('markdown-table')
 const { NEWLINE } = require('../../../.scripts/constants')
 const { printCode, printBold } = require('./markdown.util')
 
-const printComponent = component => {
+const printComponent = (component, isRoot = false) => {
   const lines = []
-  lines.push(`### ${component.tag}`)
-  lines.push('')
+  if(!isRoot){
+    lines.push(`## ${component.tag}`)
+    lines.push('')
+  }
 
   if (component.isChild && component.readme) {
     component.readme.split(NEWLINE).forEach(line => lines.push(line))
   }
 
   if (component.props && component.props.length > 0) {
-    lines.push(`#### Properties`)
+    lines.push(`##${!isRoot ? '#': ''} Properties`)
     lines.push('')
     table(
       [
@@ -32,7 +34,7 @@ const printComponent = component => {
 
   if (component.events && component.events.length > 0) {
     lines.push('')
-    lines.push(`#### Events`)
+    lines.push(`##${!isRoot ? '#': ''} Events`)
     lines.push('')
     table(
       [
@@ -51,7 +53,7 @@ const printComponent = component => {
 
   if (component.methods && component.methods.length > 0) {
     lines.push('')
-    lines.push(`#### Methods`)
+    lines.push(`##${!isRoot ? '#': ''} Methods`)
     lines.push('')
     table(
       [
@@ -87,12 +89,10 @@ const hasApiContent = component => {
 const parse = (components, component) => {
   const lines = []
   if (hasApiContent(component)) {
-    lines.push(`## API`)
-    lines.push(``)
-    lines.push(printComponent(component))
+    lines.push(printComponent(component, true))
     component.childComponents.forEach(childTag => {
       lines.push('')
-      lines.push(printComponent(components.get(childTag)))
+      lines.push(printComponent(components.get(childTag), false))
     })
   }
 

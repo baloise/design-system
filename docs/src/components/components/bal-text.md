@@ -8,6 +8,10 @@ A text provides some additional helpers.
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-text-109></docs-demo-bal-text-109></ClientOnly>
@@ -23,12 +27,11 @@ A text provides some additional helpers.
 <ClientOnly><docs-demo-bal-text-111></docs-demo-bal-text-111></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-text
-
-#### Properties
+## Properties
 
 | Attribute | Description                         | Type                                                         | Default |
 | :-------- | :---------------------------------- | :----------------------------------------------------------- | :------ |
@@ -36,9 +39,11 @@ A text provides some additional helpers.
 | **color** | Defines the color of the text.      | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
 | **small** | If `true` the text has a small size | `boolean`                                                    | `false` |
 
-## Testing
+:::
 
-### TextAccessor
+::: tab Testing
+
+## TextAccessor
 
 TextAccessor is a helper object for E-2-E testing.
 It maps the text behaviour to the `bal-text` ui component.
@@ -54,7 +59,7 @@ describe('Text', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
 | :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
@@ -76,10 +81,17 @@ describe('Text', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
+:::
+
+::: tab Usage
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

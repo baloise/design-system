@@ -2,6 +2,10 @@
 
 
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 The basic table is only css and html provided by the bulma framework.
@@ -18,21 +22,25 @@ For the advanced tables with sorting and filtering we use the library [AG Grid](
 <ClientOnly><docs-demo-bal-table-99></docs-demo-bal-table-99></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-table
-
-#### Properties
+## Properties
 
 | Attribute    | Description                          | Type      | Default |
 | :----------- | :----------------------------------- | :-------- | :------ |
 | **expanded** | If `true` the table has a full width | `boolean` | `false` |
 
+:::
+
+::: tab Usage
 
 
 
+:::
 
+::::
 
 ## Links
 

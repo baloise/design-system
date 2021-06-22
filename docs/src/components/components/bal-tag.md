@@ -6,6 +6,10 @@ A tag highlights a label for quick recognition.
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-tag-105></docs-demo-bal-tag-105></ClientOnly>
@@ -26,12 +30,11 @@ A tag highlights a label for quick recognition.
 <ClientOnly><docs-demo-bal-tag-108></docs-demo-bal-tag-108></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-tag
-
-#### Properties
+## Properties
 
 | Attribute    | Description                                                  | Type                                                         | Default |
 | :----------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :------ |
@@ -39,18 +42,23 @@ A tag highlights a label for quick recognition.
 | **color**    | The theme type of the tag. Given by bulma our css framework. | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
 | **size**     | The size of the tag element                                  | `"" , "large" , "medium" , "small"`                          | `''`    |
 
-#### Events
+## Events
 
 | Event             | Description                         | Type         |
 | :---------------- | :---------------------------------- | :----------- |
 | **balCloseClick** | Emitted when the input got clicked. | `MouseEvent` |
 
+:::
 
+::: tab Usage
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

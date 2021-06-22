@@ -6,6 +6,10 @@ The slider component lets users select from a range of values by moving the slid
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-slider-90></docs-demo-bal-slider-90></ClientOnly>
@@ -21,12 +25,11 @@ The slider component lets users select from a range of values by moving the slid
 <ClientOnly><docs-demo-bal-slider-92></docs-demo-bal-slider-92></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-slider
-
-#### Properties
+## Properties
 
 | Attribute        | Description                                                                                                                                                             | Type                          | Default        |
 | :--------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------- | :------------- |
@@ -42,7 +45,7 @@ The slider component lets users select from a range of values by moving the slid
 | **step**         | The step size. 0 means no steps.                                                                                                                                        | `number`                      | `0`            |
 | **value**        | The value of the input.                                                                                                                                                 | `number , string , undefined` | `''`           |
 
-#### Events
+## Events
 
 | Event           | Description                               | Type                     |
 | :-------------- | :---------------------------------------- | :----------------------- |
@@ -53,7 +56,7 @@ The slider component lets users select from a range of values by moving the slid
 | **balInput**    | Emitted when a keyboard input occurred.   | `null | number | string` |
 | **balKeyPress** | Emitted when a keyboard key has pressed.  | `KeyboardEvent`          |
 
-#### Methods
+## Methods
 
 | Method                | Description                                                                                             | Signature                                        |
 | :-------------------- | :------------------------------------------------------------------------------------------------------ | :----------------------------------------------- |
@@ -61,12 +64,17 @@ The slider component lets users select from a range of values by moving the slid
 | **`setFocus`**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global
 `input.focus()`. | `setFocus() => Promise<void>`                    |
 
+:::
 
+::: tab Usage
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

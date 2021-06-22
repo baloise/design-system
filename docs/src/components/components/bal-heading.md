@@ -4,6 +4,10 @@ A heading provides some additional helpers.
 
 
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-heading-50></docs-demo-bal-heading-50></ClientOnly>
@@ -14,12 +18,11 @@ A heading provides some additional helpers.
 <ClientOnly><docs-demo-bal-heading-51></docs-demo-bal-heading-51></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-heading
-
-#### Properties
+## Properties
 
 | Attribute        | Description                                                                                                                                             | Type                                                         | Default     |
 | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------- | :---------- |
@@ -30,10 +33,15 @@ A heading provides some additional helpers.
 | **subtitle**     | If `true` the heading gets displayed slimmer.                                                                                                           | `boolean`                                                    | `false`     |
 | **visual-level** | Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup. | `"h1" , "h2" , "h3" , "h4" , "h5" , "h6" , undefined`        | `undefined` |
 
+:::
+
+::: tab Usage
 
 
 
+:::
 
+::::
 
 ## Links
 

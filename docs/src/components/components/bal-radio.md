@@ -6,6 +6,10 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-radio-77></docs-demo-bal-radio-77></ClientOnly>
@@ -41,12 +45,11 @@ A radio input is normally displayed in a radio group. The user can only select o
 <ClientOnly><docs-demo-bal-radio-83></docs-demo-bal-radio-83></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-radio
-
-#### Properties
+## Properties
 
 | Attribute        | Description                                                     | Type                        | Default        |
 | :--------------- | :-------------------------------------------------------------- | :-------------------------- | :------------- |
@@ -58,25 +61,25 @@ A radio input is normally displayed in a radio group. The user can only select o
 | **name**         | The name of the control, which is submitted with the form data. | `string`                    | `this.inputId` |
 | **value**        | The value of the control.                                       | `string`                    | `''`           |
 
-#### Events
+## Events
 
 | Event        | Description                          | Type         |
 | :----------- | :----------------------------------- | :----------- |
 | **balBlur**  | Emitted when the toggle loses focus. | `FocusEvent` |
 | **balFocus** | Emitted when the toggle has focus.   | `FocusEvent` |
 
-#### Methods
+## Methods
 
 | Method         | Description                          | Signature                     |
 | :------------- | :----------------------------------- | :---------------------------- |
 | **`setFocus`** | Sets the focus on the input element. | `setFocus() => Promise<void>` |
 
-### bal-radio-group
+## bal-radio-group
 
 
 # bal-radio-group
 
-#### Properties
+### Properties
 
 | Attribute     | Description                                                     | Type                        | Default        |
 | :------------ | :-------------------------------------------------------------- | :-------------------------- | :------------- |
@@ -85,15 +88,17 @@ A radio input is normally displayed in a radio group. The user can only select o
 | **name**      | The name of the control, which is submitted with the form data. | `string`                    | `this.inputId` |
 | **value**     | The value of the control.                                       | `string`                    | `''`           |
 
-#### Events
+### Events
 
 | Event         | Description                                    | Type     |
 | :------------ | :--------------------------------------------- | :------- |
 | **balChange** | Emitted when the checked property has changed. | `string` |
 
-## Testing
+:::
 
-### RadioAccessor
+::: tab Testing
+
+## RadioAccessor
 
 RadioAccessor is a helper object for E-2-E testing.
 It maps the radio behaviour to the `bal-radio` ui component.
@@ -109,7 +114,7 @@ describe('Radio', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
 | :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
@@ -133,10 +138,17 @@ describe('Radio', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
+:::
+
+::: tab Usage
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

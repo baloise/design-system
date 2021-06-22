@@ -6,6 +6,10 @@ A field wraps a form field like input. It provides a clear style structure of ea
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-field-43></docs-demo-bal-field-43></ClientOnly>
@@ -28,12 +32,11 @@ This is not a recommanded validation style. Only use this style if you do not ha
 <ClientOnly><docs-demo-bal-field-46></docs-demo-bal-field-46></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-field
-
-#### Properties
+## Properties
 
 | Attribute    | Description                                                                                 | Type      | Default |
 | :----------- | :------------------------------------------------------------------------------------------ | :-------- | :------ |
@@ -43,7 +46,7 @@ This is not a recommanded validation style. Only use this style if you do not ha
 | **inverted** | If `true` the field can be used on blue background.                                         | `boolean` | `false` |
 | **loading**  | If `true` a loading spinner is visible at the end of the input                              | `boolean` | `false` |
 
-### bal-field-control
+## bal-field-control
 
 
 # bal-field-control
@@ -51,7 +54,7 @@ This is not a recommanded validation style. Only use this style if you do not ha
 `bal-field-control` is a child component of `bal-field`.
 
 
-#### Properties
+### Properties
 
 | Attribute      | Description                                                    | Type      | Default |
 | :------------- | :------------------------------------------------------------- | :-------- | :------ |
@@ -60,20 +63,20 @@ This is not a recommanded validation style. Only use this style if you do not ha
 | **inverted**   | If `true` the field can be used on blue background.            | `boolean` | `false` |
 | **loading**    | If `true` a loading spinner is visible at the end of the input | `boolean` | `false` |
 
-### bal-field-hint
+## bal-field-hint
 
 
 # bal-field-hint
 
 `bal-field-hint` is a child component of `bal-field`.
 
-#### Properties
+### Properties
 
 | Attribute   | Description              | Type     | Default |
 | :---------- | :----------------------- | :------- | :------ |
 | **subject** | Text of the inputs label | `string` | `''`    |
 
-### bal-field-label
+## bal-field-label
 
 
 # bal-field-label
@@ -81,14 +84,14 @@ This is not a recommanded validation style. Only use this style if you do not ha
 `bal-field-label` is a child component of `bal-field`.
 
 
-#### Properties
+### Properties
 
 | Attribute    | Description                                        | Type      | Default |
 | :----------- | :------------------------------------------------- | :-------- | :------ |
 | **expanded** | If `true` the component takes the whole width      | `boolean` | `false` |
 | **required** | If `true` a asterix (*) is added to the label text | `boolean` | `false` |
 
-### bal-field-message
+## bal-field-message
 
 
 # bal-field-message
@@ -96,19 +99,24 @@ This is not a recommanded validation style. Only use this style if you do not ha
 `bal-field-message` is a child component of `bal-field`.
 
 
-#### Properties
+### Properties
 
 | Attribute    | Description                                   | Type                                    | Default |
 | :----------- | :-------------------------------------------- | :-------------------------------------- | :------ |
 | **color**    | Defines the color of the message.             | `"" , "danger" , "success" , "warning"` | `''`    |
 | **expanded** | If `true` the component takes the whole width | `boolean`                               | `false` |
 
+:::
 
+::: tab Usage
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

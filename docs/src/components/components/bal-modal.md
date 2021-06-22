@@ -7,6 +7,10 @@ the app before interaction can resume.
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-modal-67></docs-demo-bal-modal-67></ClientOnly>
@@ -22,25 +26,24 @@ the app before interaction can resume.
 <ClientOnly><docs-demo-bal-modal-69></docs-demo-bal-modal-69></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-modal
-
-#### Properties
+## Properties
 
 | Attribute | Description                                                                                     | Type      | Default |
 | :-------- | :---------------------------------------------------------------------------------------------- | :-------- | :------ |
 | **card**  | Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot. | `boolean` | `false` |
 
-#### Methods
+## Methods
 
 | Method      | Description       | Signature                  |
 | :---------- | :---------------- | :------------------------- |
 | **`close`** | Closes the modal. | `close() => Promise<void>` |
 | **`open`**  | Opens the modal.  | `open() => Promise<void>`  |
 
-### bal-modal-actions
+## bal-modal-actions
 
 
 # bal-modal-actions
@@ -49,7 +52,7 @@ the app before interaction can resume.
 
 
 
-### bal-modal-body
+## bal-modal-body
 
 
 # bal-modal-body
@@ -58,7 +61,7 @@ the app before interaction can resume.
 
 
 
-### bal-modal-footer
+## bal-modal-footer
 
 
 # bal-modal-footer
@@ -66,7 +69,7 @@ the app before interaction can resume.
 `bal-modal-footer` is a child component of `bal-modal` that normally contains some buttons for that please also use the `bal-modal-actions` component.
 
 
-### bal-modal-header
+## bal-modal-header
 
 
 # bal-modal-header
@@ -74,12 +77,17 @@ the app before interaction can resume.
 `bal-modal-header` is a child component of `bal-modal` that has the title of the modal.
 
 
+:::
 
+::: tab Usage
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

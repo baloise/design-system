@@ -7,6 +7,10 @@ It can easily combined with the `bal-data` or `bal-field` component.
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-hint-52></docs-demo-bal-hint-52></ClientOnly>
@@ -17,19 +21,18 @@ It can easily combined with the `bal-data` or `bal-field` component.
 <ClientOnly><docs-demo-bal-hint-53></docs-demo-bal-hint-53></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-hint
-
-#### Properties
+## Properties
 
 | Attribute       | Description                                         | Type      | Default   |
 | :-------------- | :-------------------------------------------------- | :-------- | :-------- |
 | **close-label** | Text for the close button.                          | `string`  | `'Close'` |
 | **disabled**    | If `true`, the user cannot interact with the input. | `boolean` | `false`   |
 
-#### Methods
+## Methods
 
 | Method       | Description           | Signature                   |
 | :----------- | :-------------------- | :-------------------------- |
@@ -37,7 +40,7 @@ It can easily combined with the `bal-data` or `bal-field` component.
 | **`open`**   | Opens the hint box.   | `open() => Promise<void>`   |
 | **`toggle`** | Toggles the hint box. | `toggle() => Promise<void>` |
 
-### bal-hint-text
+## bal-hint-text
 
 
 # bal-hint-text
@@ -46,7 +49,7 @@ It can easily combined with the `bal-data` or `bal-field` component.
 
 
 
-### bal-hint-title
+## bal-hint-title
 
 
 # bal-hint-title
@@ -55,12 +58,17 @@ It can easily combined with the `bal-data` or `bal-field` component.
 
 
 
+:::
 
+::: tab Usage
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

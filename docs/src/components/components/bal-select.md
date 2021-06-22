@@ -16,6 +16,10 @@ export interface BalOptionValue<T> {
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-select-84></docs-demo-bal-select-84></ClientOnly>
@@ -41,12 +45,11 @@ export interface BalOptionValue<T> {
 <ClientOnly><docs-demo-bal-select-88></docs-demo-bal-select-88></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-select
-
-#### Properties
+## Properties
 
 | Attribute         | Description                                                                       | Type                                         | Default        |
 | :---------------- | :-------------------------------------------------------------------------------- | :------------------------------------------- | :------------- |
@@ -65,7 +68,7 @@ export interface BalOptionValue<T> {
 | **typeahead**     | If `true` the user can search by typing into the input field.                     | `boolean`                                    | `false`        |
 |                   | Selected option values. Could also be passed as a string, which gets transformed. | `string[]`                                   | `[]`           |
 
-#### Events
+## Events
 
 | Event           | Description                                                        | Type            |
 | :-------------- | :----------------------------------------------------------------- | :-------------- |
@@ -77,7 +80,7 @@ export interface BalOptionValue<T> {
 | **balInput**    | Emitted when a keyboard input occurred.                            | `string`        |
 | **balKeyPress** | Emitted when the input has focus and key from the keyboard go hit. | `KeyboardEvent` |
 
-#### Methods
+## Methods
 
 | Method         | Description                                                                 | Signature                                |
 | :------------- | :-------------------------------------------------------------------------- | :--------------------------------------- |
@@ -88,23 +91,25 @@ export interface BalOptionValue<T> {
 | **`select`**   | Select option by passed value                                               | `select(value: string) => Promise<void>` |
 | **`setFocus`** | Sets the focus on the input element                                         | `setFocus() => Promise<void>`            |
 
-### bal-select-option
+## bal-select-option
 
 
 # bal-select-option
 
 
 
-#### Properties
+### Properties
 
 | Attribute | Description                                                                                       | Type                 | Default |
 | :-------- | :------------------------------------------------------------------------------------------------ | :------------------- | :------ |
 | **label** | Label will be shown in the input element when it got selected                                     | `string , undefined` |         |
 | **value** | The value of the select option. This value will be returned by the parent `<bal-select>` element. | `string , undefined` |         |
 
-## Testing
+:::
 
-### SelectAccessor
+::: tab Testing
+
+## SelectAccessor
 
 SelectAccessor is a helper object for E-2-E testing.
 It maps the select behaviour to the `bal-select` ui component.
@@ -122,7 +127,7 @@ describe('Select', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method            | Description                    | Arguments                                 |
 | :---------------- | :----------------------------- | :---------------------------------------- |
@@ -131,10 +136,17 @@ describe('Select', () => {
 | **assertOptions** | Checks the options             | `...options: string[]`                    |
 | **contains**      | Checks if input have a content | `content: string | number | RegExp`       |
 
+:::
+
+::: tab Usage
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

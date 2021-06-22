@@ -6,6 +6,10 @@ A datepicker allows manual date entry as well as open the dropdown content with 
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 In this example the user can only select a date. For that use the property `readonly`.
@@ -57,12 +61,11 @@ You can specify allowed dates using a function.
 <ClientOnly><docs-demo-bal-datepicker-40></docs-demo-bal-datepicker-40></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-datepicker
-
-#### Properties
+## Properties
 
 | Attribute           | Description                                                                                                                                                                                                                                                                                                                                                             | Type                              | Default        |
 | :------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------- | :------------- |
@@ -86,7 +89,7 @@ You can specify allowed dates using a function.
 | **trigger-icon**    | If `true` the datepicker only open on click of the icon                                                                                                                                                                                                                                                                                                                 | `boolean`                         | `false`        |
 | **value**           | The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).                                                                                                                                                                                                                                                                                          | `null , string , undefined`       |                |
 
-#### Events
+## Events
 
 | Event         | Description                             | Type                        |
 | :------------ | :-------------------------------------- | :-------------------------- |
@@ -95,7 +98,7 @@ You can specify allowed dates using a function.
 | **balFocus**  | Emitted when the input has focus.       | `FocusEvent`                |
 | **balInput**  | Emitted when a keyboard input occurred. | `string`                    |
 
-#### Methods
+## Methods
 
 | Method                | Description                                               | Signature                                        |
 | :-------------------- | :-------------------------------------------------------- | :----------------------------------------------- |
@@ -105,9 +108,11 @@ You can specify allowed dates using a function.
 | **`select`**          | Selects an option                                         | `select(datestring: string) => Promise<void>`    |
 | **`setFocus`**        | Sets the focus on the input element                       | `setFocus() => Promise<void>`                    |
 
-## Testing
+:::
 
-### DatepickerAccessor
+::: tab Testing
+
+## DatepickerAccessor
 
 DatepickerAccessor is a helper object for E-2-E testing.
 It maps the datepicker behaviour to the `bal-datepicker` ui component.
@@ -125,7 +130,7 @@ describe('Datepicker', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method                | Description                    | Arguments                                     |
 | :-------------------- | :----------------------------- | :-------------------------------------------- |
@@ -135,10 +140,17 @@ describe('Datepicker', () => {
 | **shouldHaveValue**   | Check if datepicker have value | `date: Date`                                  |
 | **assertDateInRange** | Assert if the date is in range | `date: Date, shouldBeInRange: boolean = true` |
 
+:::
+
+::: tab Usage
+
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 

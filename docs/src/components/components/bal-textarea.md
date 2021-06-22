@@ -6,17 +6,20 @@ A textarea allows a user to write and edit large texts.
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-textarea-112></docs-demo-bal-textarea-112></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-textarea
-
-#### Properties
+## Properties
 
 | Attribute          | Description                                                                                                                                                                      | Type                                                                                       | Default        |
 | :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- | :------------- |
@@ -39,7 +42,7 @@ A textarea allows a user to write and edit large texts.
 | **value**          | The value of the textarea.                                                                                                                                                       | `string , undefined`                                                                       | `''`           |
 | **wrap**           | Indicates how the control wraps text.                                                                                                                                            | `"hard" , "off" , "soft" , undefined`                                                      |                |
 
-#### Events
+## Events
 
 | Event           | Description                                | Type            |
 | :-------------- | :----------------------------------------- | :-------------- |
@@ -50,7 +53,7 @@ A textarea allows a user to write and edit large texts.
 | **balInput**    | Emitted when a keyboard input occurred.    | `string`        |
 | **balKeyPress** | Emitted when a keyboard key has pressed.   | `KeyboardEvent` |
 
-#### Methods
+## Methods
 
 | Method                | Description                                                                                                      | Signature                                           |
 | :-------------------- | :--------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------- |
@@ -58,12 +61,17 @@ A textarea allows a user to write and edit large texts.
 | **`setFocus`**        | Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global
 `textarea.focus()`. | `setFocus() => Promise<void>`                       |
 
+:::
 
+::: tab Usage
 
 <!-- START: human documentation bottom -->
 
 <!-- END: human documentation bottom -->
 
+:::
+
+::::
 
 ## Links
 
