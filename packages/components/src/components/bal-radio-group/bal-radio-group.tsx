@@ -27,6 +27,20 @@ export class RadioGroup implements ComponentInterface {
   @Prop() inverted: boolean = false
 
   /**
+   * If `true`, the user cannot interact with the radios.
+   */
+  @Prop() disabled?: boolean = undefined
+
+  @Watch('disabled')
+  disabledChanged(value: boolean | undefined) {
+    if (value !== undefined) {
+      this.radios.forEach(radio => {
+        radio.disabled = value
+      })
+    }
+  }
+
+  /**
    * The value of the control.
    */
   @Prop({ mutable: true }) value: string = ''
@@ -46,6 +60,7 @@ export class RadioGroup implements ComponentInterface {
 
   componentWillLoad() {
     this.sync()
+    this.disabledChanged(this.disabled)
   }
 
   private get radios(): HTMLBalRadioElement[] {

@@ -1043,13 +1043,13 @@ export class BalRadio {
 
 export declare interface BalRadioGroup extends Components.BalRadioGroup {}
 @ProxyCmp({
-  inputs: ['interface', 'inverted', 'name', 'value']
+  inputs: ['disabled', 'interface', 'inverted', 'name', 'value']
 })
 @Component({
   selector: 'bal-radio-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['interface', 'inverted', 'name', 'value'],
+  inputs: ['disabled', 'interface', 'inverted', 'name', 'value'],
   outputs: ['balChange']
 })
 export class BalRadioGroup {
