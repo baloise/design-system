@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://github.com/baloise/design-system/compare/v1.3.1...v1.3.2) (2021-06-22)
+
+
+
+# 1.3.0 (2021-06-16)
+
+**Note:** Version bump only for package @baloise/design-system-testing
+
+
+
+
+
 ## [1.3.1](https://github.com/baloise/design-system/compare/v1.3.0...v1.3.1) (2021-06-21)
 
 **Note:** Version bump only for package @baloise/design-system-testing
