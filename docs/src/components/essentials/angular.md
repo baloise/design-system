@@ -5,17 +5,17 @@
 `@baloise/design-system-components-angular` combines the core Baloise Design System experience with the tooling and APIs that are tailored to Angular Developers.
 
 ::: warning
-Angular 11.x.x does not support IE11 from scratch. Go to [IE 11 Support](./angular.html#ie-11-support) to get your Angular App IE11 ready.
+Angular >= 11.0.0 does not support IE11 from scratch. Go to [IE 11 Support](./angular.html#ie-11-support) to get your Angular App IE11 ready.
 :::
 
 ## Prerequisite
 
 ### Setup Angular Project
 
-Create a Angular project with the [Angular CLI](https://cli.angular.io/).
+Create an Angular project with the [Angular CLI](https://cli.angular.io/).
 
 ::: tip
-Chose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
+Choose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
 :::
 
 ```bash
@@ -57,7 +57,7 @@ Set the css class `bal-app` to the body of the `src/index.html` file.
 ```
 
 ::: tip
-To have light grey background just add the css class `bal-app-background` to the body. Recommende to use with the `bal-card` component.
+To have light grey background just add the css class `bal-app-background` to the body. Recommended to use with the `bal-card` component.
 :::
 
 ## Import the ngModule
@@ -91,15 +91,15 @@ npm start
 
 ## Usage
 
-In this section shows usage example of the features from Baloise Design System.
+This section shows usage examples of the features from the Baloise Design System.
 
 ::: tip
-More usage example are in our Angular example app [Link](https://github.com/baloise/design-system/tree/master/examples/angular).
+More usage examples are in our Angular example app [Link](https://github.com/baloise/design-system/tree/master/examples/angular).
 :::
 
 ### Component
 
-Every Angular component, how uses the components from the Baloise Design System must be declared in a ngModule with the schema `CUSTOM_ELEMENTS_SCHEMA`.
+Every Angular component that uses the components from the Baloise Design System must be declared in a ngModule with the schema `CUSTOM_ELEMENTS_SCHEMA`.
 
 ```xml
 // app.component.html
@@ -151,7 +151,7 @@ In this section we will explain how to support Internet Explorer 11 with Angular
 
 ### Step 1 - Targeting ES5
 
-Update the target in the `tsconfig.json` file, because IE11 only support ES5.
+Update the target in the `tsconfig.json` file, because IE11 only supports ES5.
 
 ```json
 "compilerOptions": {
@@ -171,8 +171,8 @@ IE 11
 
 ### Step 3 - Polyfills
 
-The Baloise Baloise Design System & Angular uses features from ES6+, so we have to install pollyfills to support.
-All the pollyfills in Angular are managed in the file `polyfills.ts`. First we need to install the required pollyfils.
+The Baloise Baloise Design System & Angular uses features from ES6+, so we have to install polyfills to support those.
+All the polyfills in Angular are managed in the file `polyfills.ts`. First we need to install the required polyfils.
 
 ```bash
 npm install --save classlist.js web-animations-js @webcomponents/custom-elements
