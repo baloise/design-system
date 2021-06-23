@@ -8,7 +8,7 @@ Since we use css stylesheets and standard web components the library can be inte
     <bal-card-head>
       <img src="https://cdn.iconscout.com/icon/free/png-512/html5-10-569380.png" >
       <div>
-        <h4 class="title is-size-4">HTML5 <small class="is-hidden-touch">HTML, CSS & JS</small></h4>
+        <h4 class="title is-size-4">HTML5 <small class="is-hidden-touch">- HTML, CSS & JS</small></h4>
         <h5 class="subtitle is-size-5 is-hidden-desktop">HTML, CSS & JS</h5>
         <p class="has-text-blue-light-text is-hidden-touch">Getting Started for an integration of the Baloise Design System with HTML, CSS and JavaScript. Can be used with all the JS-Frameworks, Server-Sider-Rendering or any other Web-Technology.</p>
       </div>
@@ -22,7 +22,7 @@ Since we use css stylesheets and standard web components the library can be inte
     <bal-card-head>
       <img src="https://vuejs.org/images/logo.png" >
       <div>
-        <h4 class="title is-size-4">Vue.JS <small class="is-hidden-touch">Progressiv JS Framework</small></h4>
+        <h4 class="title is-size-4">Vue.JS <small class="is-hidden-touch">- Progressive JS Framework</small></h4>
         <h5 class="subtitle is-size-5 is-hidden-desktop">JS Framework</h5>
         <p class="has-text-blue-light-text is-hidden-touch">Getting Started for an integration of the Baloise Design System with the Vue.JS Framework and the usage of the Sass variables.</p>
       </div>
@@ -36,7 +36,7 @@ Since we use css stylesheets and standard web components the library can be inte
     <bal-card-head>
       <img src="https://angular.io/assets/images/logos/angular/angular.svg" >
       <div>
-        <h4 class="title is-size-4">Angular <small class="is-hidden-touch">JS Framework</small></h4>
+        <h4 class="title is-size-4">Angular <small class="is-hidden-touch">- JS Framework</small></h4>
         <h5 class="subtitle is-size-5 is-hidden-desktop">JS Framework</h5>
         <p class="has-text-blue-light-text is-hidden-touch">Getting Started for an integration of the Baloise Design System with the Angular Framework and the usage of the Sass variables.</p>
       </div>
@@ -50,5 +50,5 @@ Since we use css stylesheets and standard web components the library can be inte
 </ClientOnly>
 
 :::tip
-For more integration documentation go to the stencil documentation. [Framework Integration](https://stenciljs.com/docs/overview).
+For more integration documentation go to the stencil documentation about [Framework Integration](https://stenciljs.com/docs/overview).
 :::
