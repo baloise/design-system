@@ -130,7 +130,7 @@
       }
     }
 
-    &.is-focused:not(.is-selected):not(.has-checkbox) {
+    &.has-movement.is-focused:not(.is-selected):not(.has-checkbox) {
       padding-left: 30px !important;
     }
   }

@@ -60,6 +60,11 @@ export class Select {
   @Prop() noBorder: boolean = false
 
   /**
+   * Enables the slide in animation for the option items.
+   */
+  @Prop() hasMovement: boolean = false
+
+  /**
    * If `true` the user can search by typing into the input field.
    */
   @Prop() typeahead = false
@@ -649,6 +654,7 @@ export class Select {
                   'is-selected': this.value.includes(option.value),
                   'is-focused': this.focusIndex === index,
                   'has-checkbox': this.multiple,
+                  'has-movement': this.hasMovement,
                 }}
                 tabIndex={-1}
                 onMouseEnter={() => this.handleOptionMouseEnter(index)}

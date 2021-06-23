@@ -959,6 +959,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * Enables the slide in animation for the option items.
+         */
+        "hasMovement": boolean;
+        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
@@ -2788,6 +2792,10 @@ declare namespace LocalJSX {
           * If `true` the component uses the whole width.
          */
         "expanded"?: boolean;
+        /**
+          * Enables the slide in animation for the option items.
+         */
+        "hasMovement"?: boolean;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
