@@ -4,7 +4,7 @@ For the Baloise style you need to provide the typography and stylesheets.
 
 ## Usage
 
-This project is build on top of the [Bulma CSS framework](https://bulma.io/).
+This project is built on top of the [Bulma CSS framework](https://bulma.io/).
 
 Add the `bal-app` to your root element. Within this css-class we are able to use the defined bulma helpers.
 
@@ -24,7 +24,7 @@ Next step is to provide the fonts to our web application. To do so we recommand 
 npm install copyfiles --save-dev
 ```
 
-After installing our copyfiles dependency we need to define the copy command in our **package.json** file. Add a new script called `copy:fonts` and adjust the second path to your application.
+After installing the copyfiles dependency we need to define the copy command in our **package.json** file. Add a new script called `copy:fonts` and adjust the second path to your application.
 
 :::tip
 For angular apps the default path would be **src/assets/fonts** instead of **public/assets/fonts**
@@ -51,9 +51,9 @@ We recommand to use dart-sass and not node-sass.
 
 ### Install
 
-Place the download fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
+Place the downloaded fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
 
-Import `global.scss` Sass file into the main `.scss` file of your application.
+Import the `global.scss` Sass file into the main `.scss` file of your application.
 
 ```scss
 @import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
@@ -64,7 +64,7 @@ Import `global.scss` Sass file into the main `.scss` file of your application.
 To access the scss variables like [colors](/guide/styles/colors.html) or [responsiveness helpers](/guide/styles/responsiveness.html) import the `global.utilities.scss`.
 
 ::: tip
-Use the variables and helpers of the Design System where ever you can in your application.
+Use the variables and helpers of the Design System whereever you can in your application.
 :::
 
 #### Usage
@@ -89,7 +89,7 @@ p {
 
 Configure the fonts in a css file.
 
-The package `@baloise/design-system-fonts` also delivers css file with the config for the typography.
+The package `@baloise/design-system-fonts` also delivers a css file with the config for the typography.
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/fonts.css" />
