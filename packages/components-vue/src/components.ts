@@ -1535,6 +1535,11 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
+    hasMovement: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
     typeahead: {
       type: Boolean,
       default: false,
