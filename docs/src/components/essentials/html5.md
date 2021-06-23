@@ -2,7 +2,7 @@
 
 <img style="width: 128px;" src="https://cdn.iconscout.com/icon/free/png-512/html5-10-569380.png" data-origin="https://cdn.iconscout.com/icon/free/png-512/html5-10-569380.png" alt="HTML5">
 
-This section explains how the Baloise Design System can be included in to your HTML5 Application.
+This section explains how the Baloise Design System can be included into your HTML5 Application.
 
 ## CDN
 
@@ -30,7 +30,7 @@ Add the following 4 references to your `<head></head>`
 
 ## Node Modules
 
-Open the terminal and run the following command to install the Baloise Design System.
+Open the terminal and run the following commands to install the Baloise Design System.
 
 ```bash
 npm install @baloise/design-system-fonts --save
