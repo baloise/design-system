@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/baloise/design-system/compare/v1.3.2...v1.4.0) (2021-06-23)
+
+
+### Features
+
+* **select:** add prop to turn off the movement ([7c6c495](https://github.com/baloise/design-system/commit/7c6c495424cb37371d4f8ca72a3bc7c00dbce6c8))
+
+
+
+## 1.3.1 (2021-06-21)
+
+
+
+
+
 ## [1.3.2](https://github.com/baloise/design-system/compare/v1.3.1...v1.3.2) (2021-06-22)
 
 
