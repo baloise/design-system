@@ -1066,14 +1066,14 @@ export class BalRadioGroup {
 
 export declare interface BalSelect extends Components.BalSelect {}
 @ProxyCmp({
-  inputs: ['balTabindex', 'disabled', 'expanded', 'inverted', 'loading', 'multiple', 'name', 'noBorder', 'noDataLabel', 'placeholder', 'scrollable', 'searchInput', 'typeahead', 'value'],
+  inputs: ['balTabindex', 'disabled', 'expanded', 'hasMovement', 'inverted', 'loading', 'multiple', 'name', 'noBorder', 'noDataLabel', 'placeholder', 'scrollable', 'searchInput', 'typeahead', 'value'],
   methods: ['setFocus', 'clear', 'open', 'close', 'cancel', 'select']
 })
 @Component({
   selector: 'bal-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['balTabindex', 'disabled', 'expanded', 'inverted', 'loading', 'multiple', 'name', 'noBorder', 'noDataLabel', 'placeholder', 'scrollable', 'searchInput', 'typeahead', 'value'],
+  inputs: ['balTabindex', 'disabled', 'expanded', 'hasMovement', 'inverted', 'loading', 'multiple', 'name', 'noBorder', 'noDataLabel', 'placeholder', 'scrollable', 'searchInput', 'typeahead', 'value'],
   outputs: ['balChange', 'balClick', 'balInput', 'balBlur', 'balFocus', 'balCancel', 'balKeyPress']
 })
 export class BalSelect {
