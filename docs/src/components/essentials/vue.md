@@ -6,7 +6,7 @@
 
 ## Install
 
-Before installing the Baloise Design System setup in a Vue Project, we recommand to use this starter kit [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit) or use the [Vue CLI](https://cli.vuejs.org/guide/installation.html) with Sass and TypeScript.
+Before installing the Baloise Design System setup in a Vue Project, we recommend to use this starter kit [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit) or use the [Vue CLI](https://cli.vuejs.org/guide/installation.html) with Sass and TypeScript.
 
 To install the Baloise Design System run the following command.
 
@@ -15,11 +15,11 @@ npm install @baloise/design-system-components-vue ag-grid-community --save
 ```
 
 :::tip
-We recommand to use the [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit), because the Design System is already integrated as well as i18n, Sass, form-validation and http-requsts.
+We recommend to use the [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit), because the Design System is already integrated as well as i18n, Sass, form-validation and http-requsts.
 :::
 
 ::: tip
-We recommand to use **Sass** for styling in the Vue project to get access to the color variables and responsive helpers.
+We recommend to use **Sass** for styling in the Vue project to get access to the color variables and responsive helpers.
 :::
 
 ## Add Plugin
