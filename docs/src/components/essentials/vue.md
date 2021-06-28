@@ -6,7 +6,7 @@
 
 ## Install
 
-Before installing the Baloise Design System setup to a Vue Project. We recommand to use this starter kit [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit) or use the [Vue CLI](https://cli.vuejs.org/guide/installation.html) with Sass and TypeScript.
+Before installing the Baloise Design System setup in a Vue Project, we recommend to use this starter kit [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit) or use the [Vue CLI](https://cli.vuejs.org/guide/installation.html) with Sass and TypeScript.
 
 To install the Baloise Design System run the following command.
 
@@ -15,16 +15,16 @@ npm install @baloise/design-system-components-vue ag-grid-community --save
 ```
 
 :::tip
-We recommand to use the [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit), because the Design System is already integrated as well us i18n, Sass, form-validation and http-requsts.
+We recommend to use the [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit), because the Design System is already integrated as well as i18n, Sass, form-validation and http-requsts.
 :::
 
 ::: tip
-We recommand to use **Sass** for styling in the Vue project to get access to the color variables and responsive helpers.
+We recommend to use **Sass** for styling in the Vue project to get access to the color variables and responsive helpers.
 :::
 
 ## Add Plugin
 
-The `@baloise/design-system-components-vue` dependency includes a the plugin `BaloiseDesignSystem`, which loads by default the pollyfils and defines the components. Moreover, it adds the filtes and conrollers to your vue instance.
+The `@baloise/design-system-components-vue` dependency includes the plugin `BaloiseDesignSystem`, which loads by default the polyfils and defines the components. Moreover, it adds the filtes and conrollers to your vue instance.
 
 ### main.ts
 
@@ -62,7 +62,7 @@ To apply the Baloise Design System styles and typography follow the instruction 
 All the Baloise Design System components are registered globally, so just use them in your template like the `BalButton`.
 
 ::: tip
-More usage example are in our Vue Starter Kit app [Link](https://github.com/baloise/vue-starter-kit/blob/vue-next/src/app/pages/Home.vue).
+More usage examples are in our Vue Starter Kit app [Link](https://github.com/baloise/vue-starter-kit/blob/vue-next/src/app/pages/Home.vue).
 :::
 
 ```vue
