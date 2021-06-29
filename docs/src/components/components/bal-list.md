@@ -93,8 +93,13 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ::::
 
-## Links
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-list.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-list)
 * [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/list.accessor.ts)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

@@ -60,7 +60,12 @@ A notification is used for alerts or to highlight certain content for the user.
 
 ::::
 
-## Links
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-notification.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-notification)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

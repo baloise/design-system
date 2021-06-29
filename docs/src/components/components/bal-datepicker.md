@@ -158,11 +158,16 @@ describe('Datepicker', () => {
 
 ::::
 
-## Links
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-datepicker.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-datepicker)
 * [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/datepicker.accessor.ts)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balDatepicker"></docs-component-script>

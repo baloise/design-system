@@ -27,7 +27,7 @@ const parse = (component, accessor) => {
   lines.push('## Feedback')
   lines.push('')
   lines.push(
-    'Help us improve this component by providing feedback, asking questions, and leaving any other comments on GitHub.',
+    'Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).',
   )
   lines.push('')
 

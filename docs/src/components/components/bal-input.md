@@ -150,11 +150,16 @@ describe('Input', () => {
 
 ::::
 
-## Links
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-input.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-input)
 * [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/input.accessor.ts)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balInput"></docs-component-script>

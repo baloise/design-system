@@ -33,7 +33,12 @@ The sheet component is used to show content over the whole page at the bottom. T
 
 ::::
 
-## Links
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-sheet.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-sheet)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
