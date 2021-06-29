@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-tag
+
 
 <!-- START: human documentation top -->
 
@@ -36,6 +41,7 @@ A tag highlights a label for quick recognition.
 
 ## Properties
 
+
 | Attribute    | Description                                                  | Type                                                         | Default |
 | :----------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :------ |
 | **closable** | The theme type of the tag. Given by bulma our css framework. | `boolean`                                                    | `false` |
@@ -44,19 +50,22 @@ A tag highlights a label for quick recognition.
 
 ## Events
 
+
 | Event             | Description                         | Type         |
 | :---------------- | :---------------------------------- | :----------- |
 | **balCloseClick** | Emitted when the input got clicked. | `MouseEvent` |
+
 
 :::
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

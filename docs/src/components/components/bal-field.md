@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-field
+
 
 <!-- START: human documentation top -->
 
@@ -38,6 +43,7 @@ This is not a recommanded validation style. Only use this style if you do not ha
 
 ## Properties
 
+
 | Attribute    | Description                                                                                 | Type      | Default |
 | :----------- | :------------------------------------------------------------------------------------------ | :-------- | :------ |
 | **disabled** | If `true` the field loses opacity                                                           | `boolean` | `false` |
@@ -46,75 +52,17 @@ This is not a recommanded validation style. Only use this style if you do not ha
 | **inverted** | If `true` the field can be used on blue background.                                         | `boolean` | `false` |
 | **loading**  | If `true` a loading spinner is visible at the end of the input                              | `boolean` | `false` |
 
-## bal-field-control
-
-
-# bal-field-control
-
-`bal-field-control` is a child component of `bal-field`.
-
-
-### Properties
-
-| Attribute      | Description                                                    | Type      | Default |
-| :------------- | :------------------------------------------------------------- | :-------- | :------ |
-| **icon-left**  | Baloise icon for the left side of the input                    | `string`  | `''`    |
-| **icon-right** | Baloise icon for the right side of the input                   | `string`  | `''`    |
-| **inverted**   | If `true` the field can be used on blue background.            | `boolean` | `false` |
-| **loading**    | If `true` a loading spinner is visible at the end of the input | `boolean` | `false` |
-
-## bal-field-hint
-
-
-# bal-field-hint
-
-`bal-field-hint` is a child component of `bal-field`.
-
-### Properties
-
-| Attribute   | Description              | Type     | Default |
-| :---------- | :----------------------- | :------- | :------ |
-| **subject** | Text of the inputs label | `string` | `''`    |
-
-## bal-field-label
-
-
-# bal-field-label
-
-`bal-field-label` is a child component of `bal-field`.
-
-
-### Properties
-
-| Attribute    | Description                                        | Type      | Default |
-| :----------- | :------------------------------------------------- | :-------- | :------ |
-| **expanded** | If `true` the component takes the whole width      | `boolean` | `false` |
-| **required** | If `true` a asterix (*) is added to the label text | `boolean` | `false` |
-
-## bal-field-message
-
-
-# bal-field-message
-
-`bal-field-message` is a child component of `bal-field`.
-
-
-### Properties
-
-| Attribute    | Description                                   | Type                                    | Default |
-| :----------- | :-------------------------------------------- | :-------------------------------------- | :------ |
-| **color**    | Defines the color of the message.             | `"" , "danger" , "success" , "warning"` | `''`    |
-| **expanded** | If `true` the component takes the whole width | `boolean`                               | `false` |
 
 :::
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

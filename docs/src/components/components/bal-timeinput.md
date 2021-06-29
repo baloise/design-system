@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-timeinput
+
 
 <!-- START: human documentation top -->
 
@@ -34,6 +39,7 @@
 
 ## Properties
 
+
 | Attribute    | Description                                             | Type      | Default |
 | :----------- | :------------------------------------------------------ | :-------- | :------ |
 | **disabled** | If `true` the button is disabled                        | `boolean` | `false` |
@@ -44,21 +50,24 @@
 
 ## Events
 
+
 | Event         | Description                                                                                                                                                    | Type         |
 | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
 | **balBlur**   | Emitted when either the hour or minute input field loses focus.                                                                                                | `FocusEvent` |
 | **balChange** | Emitted when either the hour or the minute input has changed.
 It will not be triggert if either hour or time input has never been set (i.e. "--" is selected). | `string`     |
 
+
 :::
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

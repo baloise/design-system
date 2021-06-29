@@ -5,8 +5,6 @@ const { printCode, printBold } = require('./markdown.util')
 const parse = accessor => {
   const lines = []
   if (accessor) {
-    lines.push(`## ${accessor.name}`)
-    lines.push('')
     lines.push(`${accessor.description.join(NEWLINE).trim()}`)
     lines.push('')
 

@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-radio <Badge text="Two-way binding"/>
+
 
 <!-- START: human documentation top -->
 
@@ -51,6 +56,7 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 ## Properties
 
+
 | Attribute        | Description                                                     | Type                        | Default        |
 | :--------------- | :-------------------------------------------------------------- | :-------------------------- | :------------- |
 | **bal-tabindex** | The tabindex of the control.                                    | `number`                    | `0`            |
@@ -63,6 +69,7 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 ## Events
 
+
 | Event        | Description                          | Type         |
 | :----------- | :----------------------------------- | :----------- |
 | **balBlur**  | Emitted when the toggle loses focus. | `FocusEvent` |
@@ -70,35 +77,13 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 ## Methods
 
+
 | Method         | Description                          | Signature                     |
 | :------------- | :----------------------------------- | :---------------------------- |
 | **`setFocus`** | Sets the focus on the input element. | `setFocus() => Promise<void>` |
 
-## bal-radio-group
+## Testing
 
-
-# bal-radio-group
-
-### Properties
-
-| Attribute     | Description                                                     | Type                        | Default        |
-| :------------ | :-------------------------------------------------------------- | :-------------------------- | :------------- |
-| **interface** | Defines the layout of the radio button                          | `"radio" , "select-button"` | `'radio'`      |
-| **inverted**  | If `true` the component can be used on dark background          | `boolean`                   | `false`        |
-| **name**      | The name of the control, which is submitted with the form data. | `string`                    | `this.inputId` |
-| **value**     | The value of the control.                                       | `string`                    | `''`           |
-
-### Events
-
-| Event         | Description                                    | Type     |
-| :------------ | :--------------------------------------------- | :------- |
-| **balChange** | Emitted when the checked property has changed. | `string` |
-
-:::
-
-::: tab Testing
-
-## RadioAccessor
 
 RadioAccessor is a helper object for E-2-E testing.
 It maps the radio behaviour to the `bal-radio` ui component.
@@ -142,11 +127,12 @@ describe('Radio', () => {
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

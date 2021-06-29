@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-notification
+
 
 <!-- START: human documentation top -->
 
@@ -36,19 +41,22 @@ A notification is used for alerts or to highlight certain content for the user.
 
 ## Properties
 
+
 | Attribute | Description                      | Type                                                         | Default |
 | :-------- | :------------------------------- | :----------------------------------------------------------- | :------ |
 | **color** | Defines the color of the element | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
+
 
 :::
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

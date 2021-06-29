@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-table
+
 
 
 
@@ -28,17 +33,14 @@ For the advanced tables with sorting and filtering we use the library [AG Grid](
 
 ## Properties
 
+
 | Attribute    | Description                          | Type      | Default |
 | :----------- | :----------------------------------- | :-------- | :------ |
 | **expanded** | If `true` the table has a full width | `boolean` | `false` |
 
-:::
-
-::: tab Usage
-
-
 
 :::
+
 
 ::::
 

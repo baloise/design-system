@@ -1,3 +1,7 @@
+---
+sidebarDepth: 0
+---
+
 # bal-toast
 
 ## Usage
@@ -11,6 +15,7 @@ balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 
 balToastController.create({ message: 'Warning!', color: 'warning' })
 balToastController.create({ message: 'Danger zone!', color: 'danger' })
 ```
+
 
 <!-- START: human documentation top -->
 
@@ -38,6 +43,7 @@ Toasts are used to inform the user with a simple text message.
 
 ## Properties
 
+
 | Attribute    | Description                                                    | Type                                                         | Default |
 | :----------- | :------------------------------------------------------------- | :----------------------------------------------------------- | :------ |
 | **color**    | The theme type of the toast. Given by bulma our css framework. | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
@@ -45,22 +51,21 @@ Toasts are used to inform the user with a simple text message.
 
 ## Events
 
+
 | Event        | Description                  | Type     |
 | :----------- | :--------------------------- | :------- |
 | **balClose** | Emitted when toast is closed | `string` |
 
 ## Methods
 
+
 | Method        | Description                                     | Signature                                    |
 | :------------ | :---------------------------------------------- | :------------------------------------------- |
 | **`close`**   | Closes this toast                               | `close() => Promise<void>`                   |
 | **`closeIn`** | Closes the toast after the given duration in ms | `closeIn(duration: number) => Promise<void>` |
 
-:::
+## Testing
 
-::: tab Testing
-
-## ToastAccessor
 
 ToastAccessor is a helper object for E-2-E testing.
 It maps the toast behaviour to the `bal-toast` ui component.
@@ -102,11 +107,12 @@ describe('Toast', () => {
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

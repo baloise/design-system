@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-file-upload
+
 
 <!-- START: human documentation top -->
 
@@ -21,6 +26,7 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 
 ## Properties
 
+
 | Attribute           | Description                                      | Type                 | Default                      |
 | :------------------ | :----------------------------------------------- | :------------------- | :--------------------------- |
 | **accept**          | Accepted MIME-Types like `image/png,image/jpeg`. | `string`             | `''`                         |
@@ -33,20 +39,23 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 
 ## Events
 
+
 | Event               | Description                                                              | Type                     |
 | :------------------ | :----------------------------------------------------------------------- | :----------------------- |
 | **balChange**       | Triggers when a file is added or removed.                                | `File[]`                 |
 | **balRejectedFile** | Triggers when a file is rejected due to not allowed MIME-Type and so on. | `FileUploadRejectedFile` |
 
+
 :::
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

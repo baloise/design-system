@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-slider
+
 
 <!-- START: human documentation top -->
 
@@ -31,6 +36,7 @@ The slider component lets users select from a range of values by moving the slid
 
 ## Properties
 
+
 | Attribute        | Description                                                                                                                                                             | Type                          | Default        |
 | :--------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------- | :------------- |
 | **bal-tabindex** | The tabindex of the control.                                                                                                                                            | `number`                      | `0`            |
@@ -47,6 +53,7 @@ The slider component lets users select from a range of values by moving the slid
 
 ## Events
 
+
 | Event           | Description                               | Type                     |
 | :-------------- | :---------------------------------------- | :----------------------- |
 | **balBlur**     | Emitted when a keyboard input occurred.   | `FocusEvent`             |
@@ -58,21 +65,24 @@ The slider component lets users select from a range of values by moving the slid
 
 ## Methods
 
+
 | Method                | Description                                                                                             | Signature                                        |
 | :-------------------- | :------------------------------------------------------------------------------------------------------ | :----------------------------------------------- |
 | **`getInputElement`** | Returns the native `<input>` element used under the hood.                                               | `getInputElement() => Promise<HTMLInputElement>` |
 | **`setFocus`**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global
 `input.focus()`. | `setFocus() => Promise<void>`                    |
 
+
 :::
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-hint
+
 
 <!-- START: human documentation top -->
 
@@ -27,6 +32,7 @@ It can easily combined with the `bal-data` or `bal-field` component.
 
 ## Properties
 
+
 | Attribute       | Description                                         | Type      | Default   |
 | :-------------- | :-------------------------------------------------- | :-------- | :-------- |
 | **close-label** | Text for the close button.                          | `string`  | `'Close'` |
@@ -34,39 +40,24 @@ It can easily combined with the `bal-data` or `bal-field` component.
 
 ## Methods
 
+
 | Method       | Description           | Signature                   |
 | :----------- | :-------------------- | :-------------------------- |
 | **`close`**  | Closes the hint box.  | `close() => Promise<void>`  |
 | **`open`**   | Opens the hint box.   | `open() => Promise<void>`   |
 | **`toggle`** | Toggles the hint box. | `toggle() => Promise<void>` |
 
-## bal-hint-text
-
-
-# bal-hint-text
-
-`bal-hint-text` is a child component of `bal-hint` that defines the text of the hint dialog.
-
-
-
-## bal-hint-title
-
-
-# bal-hint-title
-
-`bal-hint-title` is a child component of `bal-hint` that defines the title of the hint dialog.
-
-
 
 :::
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

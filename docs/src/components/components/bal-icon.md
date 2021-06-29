@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-icon
+
 
 <!-- START: human documentation top -->
 
@@ -41,6 +46,7 @@ Here is how you can change the color:
 
 ## Properties
 
+
 | Attribute    | Description                                                     | Type                                                                                              | Default  |
 | :----------- | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :------- |
 | **color**    | The theme type of the button. Given by bulma our css framework. | `"danger" , "info" , "info-light" , "link" , "primary" , "primary-light" , "success" , "warning"` | `'info'` |
@@ -51,15 +57,17 @@ Here is how you can change the color:
 | **svg**      | Svg content.                                                    | `string`                                                                                          | `''`     |
 | **turn**     | If `true` the icon is rotated 180deg                            | `boolean`                                                                                         | `false`  |
 
+
 :::
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

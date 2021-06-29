@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-pagination
+
 
 <!-- START: human documentation top -->
 
@@ -21,6 +26,7 @@ A pagination is used with large amount of content to distribute it over multiple
 
 ## Properties
 
+
 | Attribute       | Description                                                      | Type      | Default |
 | :-------------- | :--------------------------------------------------------------- | :-------- | :------ |
 | **disabled**    | Disables component                                               | `boolean` | `false` |
@@ -30,26 +36,30 @@ A pagination is used with large amount of content to distribute it over multiple
 
 ## Events
 
+
 | Event         | Description                         | Type     |
 | :------------ | :---------------------------------- | :------- |
 | **balChange** | Triggers when a page change happens | `number` |
 
 ## Methods
 
+
 | Method         | Description            | Signature                     |
 | :------------- | :--------------------- | :---------------------------- |
 | **`next`**     | Go to the next page    | `next() => Promise<void>`     |
 | **`previous`** | Go to the prvious page | `previous() => Promise<void>` |
 
+
 :::
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

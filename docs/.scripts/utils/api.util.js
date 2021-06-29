@@ -2,19 +2,10 @@ const table = require('markdown-table')
 const { NEWLINE } = require('../../../.scripts/constants')
 const { printCode, printBold } = require('./markdown.util')
 
-const printComponent = (component, isRoot = false) => {
+const printComponentProps = (component) => {
   const lines = []
-  if(!isRoot){
-    lines.push(`## ${component.tag}`)
-    lines.push('')
-  }
-
-  if (component.isChild && component.readme) {
-    component.readme.split(NEWLINE).forEach(line => lines.push(line))
-  }
 
   if (component.props && component.props.length > 0) {
-    lines.push(`##${!isRoot ? '#': ''} Properties`)
     lines.push('')
     table(
       [
@@ -32,9 +23,13 @@ const printComponent = (component, isRoot = false) => {
       .forEach(l => lines.push(l))
   }
 
+  return lines.join(NEWLINE)
+}
+
+const printComponentEvents = (component) => {
+  const lines = []
+
   if (component.events && component.events.length > 0) {
-    lines.push('')
-    lines.push(`##${!isRoot ? '#': ''} Events`)
     lines.push('')
     table(
       [
@@ -51,9 +46,13 @@ const printComponent = (component, isRoot = false) => {
       .forEach(l => lines.push(l))
   }
 
+  return lines.join(NEWLINE)
+}
+
+const printComponentMethods = (component) => {
+  const lines = []
+
   if (component.methods && component.methods.length > 0) {
-    lines.push('')
-    lines.push(`##${!isRoot ? '#': ''} Methods`)
     lines.push('')
     table(
       [
@@ -73,32 +72,34 @@ const printComponent = (component, isRoot = false) => {
   return lines.join(NEWLINE)
 }
 
-const hasApiContent = component => {
-  if (component.props && component.props.length > 0) {
-    return true
-  }
-  if (component.events && component.events.length > 0) {
-    return true
-  }
-  if (component.methods && component.methods.length > 0) {
-    return true
-  }
-  return false
-}
+// const hasApiContent = component => {
+//   if (component.props && component.props.length > 0) {
+//     return true
+//   }
+//   if (component.events && component.events.length > 0) {
+//     return true
+//   }
+//   if (component.methods && component.methods.length > 0) {
+//     return true
+//   }
+//   return false
+// }
 
-const parse = (components, component) => {
-  const lines = []
-  if (hasApiContent(component)) {
-    lines.push(printComponent(component, true))
-    component.childComponents.forEach(childTag => {
-      lines.push('')
-      lines.push(printComponent(components.get(childTag), false))
-    })
-  }
+// const parse = (components, component) => {
+//   const lines = []
+//   if (hasApiContent(component)) {
+//     lines.push(printComponent(component, true))
+//     // component.childComponents.forEach(childTag => {
+//     //   lines.push('')
+//     //   lines.push(printComponent(components.get(childTag), false))
+//     // })
+//   }
 
-  return lines.join(NEWLINE)
-}
+//   return lines.join(NEWLINE)
+// }
 
 module.exports = {
-  parse,
+  printProp: printComponentProps,
+  printEvents: printComponentEvents,
+  printMethods: printComponentMethods,
 }

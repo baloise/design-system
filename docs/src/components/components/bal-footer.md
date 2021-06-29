@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-footer
+
 
 <!-- START: human documentation top -->
 
@@ -31,19 +36,22 @@ To configure a sticky footer go to [foundation page layout](../foundation/page-l
 
 ## Properties
 
+
 | Attribute          | Description                                            | Type      | Default |
 | :----------------- | :----------------------------------------------------- | :-------- | :------ |
 | **has-track-line** | If `true` the footer shows a track line at the bottom. | `boolean` | `false` |
+
 
 :::
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

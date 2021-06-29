@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-button
+
 
 <!-- START: human documentation top -->
 
@@ -71,6 +76,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Properties
 
+
 | Attribute          | Description                                                                                                                                                                                                                                                                               | Type                                                                                              | Default     |
 | :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :---------- |
 | **bottom-rounded** | If `true` the bottom corners get rounded                                                                                                                                                                                                                                                  | `boolean`                                                                                         | `false`     |
@@ -98,6 +104,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Events
 
+
 | Event            | Description                                 | Type         |
 | :--------------- | :------------------------------------------ | :----------- |
 | **balBlur**      | Emitted when the button loses focus.        | `void`       |
@@ -105,11 +112,8 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 | **balFocus**     | Emitted when the button has focus.          | `void`       |
 | **balNavigate**  | Emitted when the link element has clicked.  | `MouseEvent` |
 
-:::
+## Testing
 
-::: tab Testing
-
-## ButtonAccessor
 
 ButtonAccessor is a helper object for E-2-E testing.
 It maps the button behaviour to the `bal-button` ui component.
@@ -154,15 +158,16 @@ describe('Button', () => {
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
 ## Usage
 
 WIP
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

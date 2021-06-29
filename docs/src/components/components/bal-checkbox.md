@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-checkbox <Badge text="Two-way binding"/>
+
 
 <!-- START: human documentation top -->
 
@@ -57,6 +62,7 @@ Switches are used to toggle between exactly two states (like on and off).
 
 ## Properties
 
+
 | Attribute        | Description                                                     | Type                    | Default        |
 | :--------------- | :-------------------------------------------------------------- | :---------------------- | :------------- |
 | **bal-tabindex** | The tabindex of the control.                                    | `number`                | `0`            |
@@ -69,6 +75,7 @@ Switches are used to toggle between exactly two states (like on and off).
 
 ## Events
 
+
 | Event         | Description                                    | Type         |
 | :------------ | :--------------------------------------------- | :----------- |
 | **balBlur**   | Emitted when the toggle loses focus.           | `FocusEvent` |
@@ -77,16 +84,14 @@ Switches are used to toggle between exactly two states (like on and off).
 
 ## Methods
 
+
 | Method                | Description                                               | Signature                                        |
 | :-------------------- | :-------------------------------------------------------- | :----------------------------------------------- |
 | **`getInputElement`** | Returns the native `<input>` element used under the hood. | `getInputElement() => Promise<HTMLInputElement>` |
 | **`setFocus`**        | Sets the focus on the checkbox input element.             | `setFocus() => Promise<void>`                    |
 
-:::
+## Testing
 
-::: tab Testing
-
-## CheckboxAccessor
 
 CheckboxAccessor is a helper object for E-2-E testing.
 It maps the checkbox behaviour to the `bal-checkbox` ui component.
@@ -125,11 +130,12 @@ describe('Checkbox', () => {
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

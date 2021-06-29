@@ -1,6 +1,11 @@
+---
+sidebarDepth: 0
+---
+
 # bal-heading
 
 A heading provides some additional helpers.
+
 
 
 
@@ -24,6 +29,7 @@ A heading provides some additional helpers.
 
 ## Properties
 
+
 | Attribute        | Description                                                                                                                                             | Type                                                         | Default     |
 | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------- | :---------- |
 | **color**        | The theme type of the toast. Given by bulma our css framework.                                                                                          | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`        |
@@ -33,13 +39,9 @@ A heading provides some additional helpers.
 | **subtitle**     | If `true` the heading gets displayed slimmer.                                                                                                           | `boolean`                                                    | `false`     |
 | **visual-level** | Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup. | `"h1" , "h2" , "h3" , "h4" , "h5" , "h6" , undefined`        | `undefined` |
 
-:::
-
-::: tab Usage
-
-
 
 :::
+
 
 ::::
 

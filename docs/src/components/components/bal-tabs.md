@@ -1,6 +1,11 @@
+---
+sidebarDepth: 0
+---
+
 # bal-tabs
 
 Tabs are used to structure the information in sub section on the same page.
+
 
 <!-- START: human documentation top -->
 
@@ -43,6 +48,7 @@ Tabs are used to structure the information in sub section on the same page.
 
 ## Properties
 
+
 | Attribute        | Description                                       | Type                           | Default  |
 | :--------------- | :------------------------------------------------ | :----------------------------- | :------- |
 | **action**       | If `true` a acation button is added to the right  | `boolean`                      | `false`  |
@@ -54,6 +60,7 @@ Tabs are used to structure the information in sub section on the same page.
 
 ## Events
 
+
 | Event              | Description                                | Type           |
 | :----------------- | :----------------------------------------- | :------------- |
 | **balActionClick** | Emitted when the action button has clicked | `MouseEvent`   |
@@ -61,50 +68,14 @@ Tabs are used to structure the information in sub section on the same page.
 
 ## Methods
 
+
 | Method       | Description                                               | Signature                                    |
 | :----------- | :-------------------------------------------------------- | :------------------------------------------- |
 | **`select`** | Go to tab with the given value                            | `select(tab: BalTabOption) => Promise<void>` |
 | **`sync`**   | *Internal* - Rerenders the tabs with their given settings | `sync() => Promise<void>`                    |
 
-## bal-tab-item
+## Testing
 
-
-# bal-tab-item
-
-`bal-tab-item` is a child component of `bal-tabs`.
-
-### Properties
-
-| Attribute    | Description                                             | Type      | Default |
-| :----------- | :------------------------------------------------------ | :-------- | :------ |
-| **active**   | Tell's if the tab is active and the content is visible. | `boolean` | `false` |
-| **bubble**   | If `true` a small red bubble is added to the tab.       | `boolean` | `false` |
-| **disabled** | If `true` the tab is disabled.                          | `boolean` | `false` |
-| **done**     | If `true` the step is marked as done.                   | `boolean` | `false` |
-| **failed**   | If `true` the step is marked as failed.                 | `boolean` | `false` |
-| **href**     | Link to path.                                           | `string`  | `''`    |
-| **label**    | Label for the tab.                                      | `string`  | `''`    |
-| **prevent**  | Tell's if the linking is done by a router.              | `boolean` | `false` |
-| **value**    | This is the key of the tab.                             | `string`  | `''`    |
-
-### Events
-
-| Event           | Description                               | Type         |
-| :-------------- | :---------------------------------------- | :----------- |
-| **balNavigate** | Emitted when the link element has clicked | `MouseEvent` |
-
-### Methods
-
-| Method           | Description                               | Signature                                     |
-| :--------------- | :---------------------------------------- | :-------------------------------------------- |
-| **`getOptions`** | Options of the tab like label, value etc. | `getOptions() => Promise<BalTabOption>`       |
-| **`setActive`**  | Sets the tab active.                      | `setActive(active: boolean) => Promise<void>` |
-
-:::
-
-::: tab Testing
-
-## TabsAccessor
 
 TabsAccessor is a helper object for E-2-E testing.
 It maps the tabs behaviour to the `bal-tabs` ui component.
@@ -146,11 +117,12 @@ describe('Tabs', () => {
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

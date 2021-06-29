@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-select <Badge text="Two-way binding"/>
+
 
 <!-- START: human documentation top -->
 
@@ -51,11 +56,13 @@ export interface BalOptionValue<T> {
 
 ## Properties
 
+
 | Attribute         | Description                                                                       | Type                                         | Default        |
 | :---------------- | :-------------------------------------------------------------------------------- | :------------------------------------------- | :------------- |
 | **bal-tabindex**  | The tabindex of the control.                                                      | `number`                                     | `0`            |
 | **disabled**      | If `true` the component is diabled.                                               | `boolean`                                    | `false`        |
 | **expanded**      | If `true` the component uses the whole width.                                     | `boolean`                                    | `false`        |
+| **has-movement**  | Enables the slide in animation for the option items.                              | `boolean`                                    | `false`        |
 | **inverted**      | Set this to `true` when the component is placed on a dark background.             | `boolean`                                    | `false`        |
 | **loading**       |                                                                                   | `boolean`                                    | `false`        |
 | **multiple**      | If `true` multiple option can be selected                                         | `boolean`                                    | `false`        |
@@ -70,6 +77,7 @@ export interface BalOptionValue<T> {
 
 ## Events
 
+
 | Event           | Description                                                        | Type            |
 | :-------------- | :----------------------------------------------------------------- | :-------------- |
 | **balBlur**     | Emitted when the input loses focus.                                | `FocusEvent`    |
@@ -82,6 +90,7 @@ export interface BalOptionValue<T> {
 
 ## Methods
 
+
 | Method         | Description                                                                 | Signature                                |
 | :------------- | :-------------------------------------------------------------------------- | :--------------------------------------- |
 | **`cancel`**   | Cancel the dropdown                                                         | `cancel() => Promise<void>`              |
@@ -91,25 +100,8 @@ export interface BalOptionValue<T> {
 | **`select`**   | Select option by passed value                                               | `select(value: string) => Promise<void>` |
 | **`setFocus`** | Sets the focus on the input element                                         | `setFocus() => Promise<void>`            |
 
-## bal-select-option
+## Testing
 
-
-# bal-select-option
-
-
-
-### Properties
-
-| Attribute | Description                                                                                       | Type                 | Default |
-| :-------- | :------------------------------------------------------------------------------------------------ | :------------------- | :------ |
-| **label** | Label will be shown in the input element when it got selected                                     | `string , undefined` |         |
-| **value** | The value of the select option. This value will be returned by the parent `<bal-select>` element. | `string , undefined` |         |
-
-:::
-
-::: tab Testing
-
-## SelectAccessor
 
 SelectAccessor is a helper object for E-2-E testing.
 It maps the select behaviour to the `bal-select` ui component.
@@ -140,11 +132,12 @@ describe('Select', () => {
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

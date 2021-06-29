@@ -1,6 +1,11 @@
+---
+sidebarDepth: 0
+---
+
 # bal-text
 
 A text provides some additional helpers.
+
 
 <!-- START: human documentation top -->
 
@@ -33,17 +38,15 @@ A text provides some additional helpers.
 
 ## Properties
 
+
 | Attribute | Description                         | Type                                                         | Default |
 | :-------- | :---------------------------------- | :----------------------------------------------------------- | :------ |
 | **bold**  | If `true` the text is bold          | `boolean`                                                    | `false` |
 | **color** | Defines the color of the text.      | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
 | **small** | If `true` the text has a small size | `boolean`                                                    | `false` |
 
-:::
+## Testing
 
-::: tab Testing
-
-## TextAccessor
 
 TextAccessor is a helper object for E-2-E testing.
 It maps the text behaviour to the `bal-text` ui component.
@@ -85,11 +88,12 @@ describe('Text', () => {
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

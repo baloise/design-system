@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-input <Badge text="Two-way binding"/>
+
 
 <!-- START: human documentation top -->
 
@@ -38,6 +43,7 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 ## Properties
 
+
 | Attribute           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Default        |
 | :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------- |
 | **accept**          | If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.                                                                                                                                                                                                                                                                                                                                                          | `string , undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                |
@@ -70,6 +76,7 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 ## Events
 
+
 | Event           | Description                               | Type                     |
 | :-------------- | :---------------------------------------- | :----------------------- |
 | **balBlur**     | Emitted when a keyboard input occurred.   | `FocusEvent`             |
@@ -81,17 +88,15 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 ## Methods
 
+
 | Method                | Description                                                                                             | Signature                                        |
 | :-------------------- | :------------------------------------------------------------------------------------------------------ | :----------------------------------------------- |
 | **`getInputElement`** | Returns the native `<input>` element used under the hood.                                               | `getInputElement() => Promise<HTMLInputElement>` |
 | **`setFocus`**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global
 `input.focus()`. | `setFocus() => Promise<void>`                    |
 
-:::
+## Testing
 
-::: tab Testing
-
-## InputAccessor
 
 InputAccessor is a helper object for E-2-E testing.
 It maps the input behaviour to the `bal-input` ui component.
@@ -136,11 +141,12 @@ describe('Input', () => {
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

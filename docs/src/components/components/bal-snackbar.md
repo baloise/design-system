@@ -1,3 +1,7 @@
+---
+sidebarDepth: 0
+---
+
 # bal-snackbar
 
 ## Usage
@@ -9,6 +13,7 @@ import { balScnackbarController } from '@baloise/design-system-components'
 
 balScnackbarController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
 ```
+
 
 <!-- START: human documentation top -->
 
@@ -36,6 +41,7 @@ A snackbar is used to inform the user with a simple text message and a action.
 
 ## Properties
 
+
 | Attribute    | Description                                                       | Type                                                         | Default |
 | :----------- | :---------------------------------------------------------------- | :----------------------------------------------------------- | :------ |
 | **action**   | Label text for the action button                                  | `string`                                                     | `''`    |
@@ -47,6 +53,7 @@ A snackbar is used to inform the user with a simple text message and a action.
 
 ## Events
 
+
 | Event         | Description                               | Type     |
 | :------------ | :---------------------------------------- | :------- |
 | **balAction** | Emitted when the action button is clicked | `string` |
@@ -54,20 +61,23 @@ A snackbar is used to inform the user with a simple text message and a action.
 
 ## Methods
 
+
 | Method        | Description                                        | Signature                                    |
 | :------------ | :------------------------------------------------- | :------------------------------------------- |
 | **`close`**   | Closes this snackbar                               | `close() => Promise<void>`                   |
 | **`closeIn`** | Closes the snackbar after the given duration in ms | `closeIn(duration: number) => Promise<void>` |
 
+
 :::
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

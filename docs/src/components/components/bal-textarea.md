@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-textarea <Badge text="Two-way binding"/>
+
 
 <!-- START: human documentation top -->
 
@@ -20,6 +25,7 @@ A textarea allows a user to write and edit large texts.
 ::: tab Code
 
 ## Properties
+
 
 | Attribute          | Description                                                                                                                                                                      | Type                                                                                       | Default        |
 | :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- | :------------- |
@@ -44,6 +50,7 @@ A textarea allows a user to write and edit large texts.
 
 ## Events
 
+
 | Event           | Description                                | Type            |
 | :-------------- | :----------------------------------------- | :-------------- |
 | **balBlur**     | Emitted when a keyboard input occurred.    | `FocusEvent`    |
@@ -55,21 +62,24 @@ A textarea allows a user to write and edit large texts.
 
 ## Methods
 
+
 | Method                | Description                                                                                                      | Signature                                           |
 | :-------------------- | :--------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------- |
 | **`getInputElement`** | Returns the native `<textarea>` element used under the hood.                                                     | `getInputElement() => Promise<HTMLTextAreaElement>` |
 | **`setFocus`**        | Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global
 `textarea.focus()`. | `setFocus() => Promise<void>`                       |
 
+
 :::
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

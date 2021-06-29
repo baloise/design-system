@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-dropdown
+
 
 <!-- START: human documentation top -->
 
@@ -30,6 +35,7 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 
 ## Properties
 
+
 | Attribute               | Description                                      | Type      | Default |
 | :---------------------- | :----------------------------------------------- | :-------- | :------ |
 | **expanded**            | If `true` the field spans over the whole width.  | `boolean` | `false` |
@@ -38,12 +44,14 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 
 ## Events
 
+
 | Event                  | Description                                                                     | Type      |
 | :--------------------- | :------------------------------------------------------------------------------ | :-------- |
 | **balCollapse**        | Listen when the dropdown opens or closes. Returns the current `isActive` value. | `boolean` |
 | **balDropdownPrepare** | *Internal* - Use this to close unuesed dropdowns.                               | `string`  |
 
 ## Methods
+
 
 | Method                  | Description                                         | Signature                                            |
 | :---------------------- | :-------------------------------------------------- | :--------------------------------------------------- |
@@ -52,32 +60,8 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 | **`open`**              | Open the dropdown menu.                             | `open() => Promise<void>`                            |
 | **`toggle`**            | Open or closes the dropdown.                        | `toggle() => Promise<void>`                          |
 
-## bal-dropdown-menu
+## Testing
 
-
-# bal-dropdown-menu
-
-`bal-dropdown-menu` is a child component of `bal-dropdown` that defines the value of the data.
-
-### Properties
-
-| Attribute      | Description                                                         | Type     | Default |
-| :------------- | :------------------------------------------------------------------ | :------- | :------ |
-| **scrollable** | Limit the height of the dropdown content. Pass the amount of pixel. | `number` | `0`     |
-
-## bal-dropdown-trigger
-
-
-# bal-dropdown-trigger
-
-`bal-dropdown-trigger` is a child component of `bal-dropdown` that defines the value of the data.
-
-
-:::
-
-::: tab Testing
-
-## DropdownAccessor
 
 DropdownAccessor is a helper object for E-2-E testing.
 It maps the dropdown behaviour to the `bal-dropdown` ui component.
@@ -103,11 +87,12 @@ describe('Dropdown', () => {
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

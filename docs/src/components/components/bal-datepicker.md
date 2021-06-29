@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-datepicker <Badge text="Two-way binding"/>
+
 
 <!-- START: human documentation top -->
 
@@ -67,6 +72,7 @@ You can specify allowed dates using a function.
 
 ## Properties
 
+
 | Attribute           | Description                                                                                                                                                                                                                                                                                                                                                             | Type                              | Default        |
 | :------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------- | :------------- |
 |                     | Callback to determine which date in the datepicker should be selectable.                                                                                                                                                                                                                                                                                                | `(datestring: string) => boolean` | `_ => true`    |
@@ -91,6 +97,7 @@ You can specify allowed dates using a function.
 
 ## Events
 
+
 | Event         | Description                             | Type                        |
 | :------------ | :-------------------------------------- | :-------------------------- |
 | **balBlur**   | Emitted when the input loses focus.     | `FocusEvent`                |
@@ -100,6 +107,7 @@ You can specify allowed dates using a function.
 
 ## Methods
 
+
 | Method                | Description                                               | Signature                                        |
 | :-------------------- | :-------------------------------------------------------- | :----------------------------------------------- |
 | **`close`**           | Closes the dropdown                                       | `close() => Promise<void>`                       |
@@ -108,11 +116,8 @@ You can specify allowed dates using a function.
 | **`select`**          | Selects an option                                         | `select(datestring: string) => Promise<void>`    |
 | **`setFocus`**        | Sets the focus on the input element                       | `setFocus() => Promise<void>`                    |
 
-:::
+## Testing
 
-::: tab Testing
-
-## DatepickerAccessor
 
 DatepickerAccessor is a helper object for E-2-E testing.
 It maps the datepicker behaviour to the `bal-datepicker` ui component.
@@ -144,11 +149,12 @@ describe('Datepicker', () => {
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

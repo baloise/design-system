@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-sheet
+
 
 <!-- START: human documentation top -->
 
@@ -17,19 +22,14 @@ The sheet component is used to show content over the whole page at the bottom. T
 
 :::
 
-::: tab Code
-
-
-
-:::
-
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

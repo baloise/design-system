@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-spinner
+
 
 <!-- START: human documentation top -->
 
@@ -31,20 +36,23 @@ A spinner is a animated graphic that lets the user know content is being loaded.
 
 ## Properties
 
+
 | Attribute    | Description                                            | Type      | Default |
 | :----------- | :----------------------------------------------------- | :-------- | :------ |
 | **inverted** | If `true` the component can be used on dark background | `boolean` | `false` |
 | **small**    | If `true` the component is smaller                     | `boolean` | `false` |
 
+
 :::
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
+<!-- START: human documentation usage -->
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
 
 :::
+
 
 ::::
 

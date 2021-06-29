@@ -1,0 +1,34 @@
+---
+sidebarDepth: 0
+---
+
+
+# bal-navbar-menu 
+
+`bal-navbar-menu` is a child component of `bal-navbar` that defines the area in the navbar where links and actions are.
+
+
+
+
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Code
+
+## Methods
+
+
+| Method       | Description                                                             | Signature                                        |
+| :----------- | :---------------------------------------------------------------------- | :----------------------------------------------- |
+| **`toggle`** | *Internal* - If the menu is open it closes it and the other way around. | `toggle(isMenuActive: boolean) => Promise<void>` |
+
+
+:::
+
+
+::::
+
+## Links
+
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-navbar-menu.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-navbar-menu)

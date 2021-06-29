@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-accordion
+
 
 <!-- START: human documentation top -->
 
@@ -45,6 +50,7 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 
 ## Properties
 
+
 | Attribute       | Description                                             | Type                 | Default     |
 | :-------------- | :------------------------------------------------------ | :------------------- | :---------- |
 | **card**        | If `true` the accordion is used on the bottom of a card | `boolean`            | `false`     |
@@ -57,11 +63,13 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 
 ## Events
 
+
 | Event           | Description                            | Type      |
 | :-------------- | :------------------------------------- | :-------- |
 | **balCollapse** | Emmited when the accordion has changed | `boolean` |
 
 ## Methods
+
 
 | Method       | Description            | Signature                   |
 | :----------- | :--------------------- | :-------------------------- |
@@ -69,11 +77,8 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 | **`open`**   | Open the accordion     | `open() => Promise<void>`   |
 | **`toggle`** | Triggers the accordion | `toggle() => Promise<void>` |
 
-:::
+## Testing
 
-::: tab Testing
-
-## AccordionAccessor
 
 AccordionAccessor is a helper object for E-2-E testing.
 It maps the accordion behaviour to the `bal-accordion` ui component.
@@ -117,11 +122,20 @@ describe('Accordion', () => {
 
 ::: tab Usage
 
-<!-- START: human documentation bottom -->
-Usage
-<!-- END: human documentation bottom -->
+<!-- START: human documentation usage -->
+WIP! Usage content
+<!-- END: human documentation usage -->
 
 :::
+
+::: tab Style
+
+<!-- START: human documentation style -->
+WIP! Style content
+<!-- END: human documentation style -->
+
+:::
+
 
 ::::
 
