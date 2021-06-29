@@ -2,7 +2,7 @@
 
 <!-- START: human documentation top -->
 
-A pagination is used with large amount of content to distribute it over multiple pages.
+Pagination allows you to divide large amounts of content into smaller chunks across multiple pages.
 
 <!-- END: human documentation top -->
 
