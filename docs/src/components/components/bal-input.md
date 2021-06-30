@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-input <Badge text="Two-way binding"/>
+
 
 <!-- START: human documentation top -->
 
@@ -7,6 +12,10 @@ The input component is a wrapper to the HTML input element with custom styling a
 It is meant for text type inputs only, such as "text", "password", "email", "number", "search", "tel", and "url". It supports all standard text input events including keyup, keydown, keypress, and more.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -28,12 +37,12 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 <ClientOnly><docs-demo-bal-input-61></docs-demo-bal-input-61></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-input
+## Properties
 
-#### Properties
 
 | Attribute           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Default        |
 | :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------- |
@@ -65,7 +74,8 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 | **type**            | Defines the type of the input (text, number, email ...).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `"button" , "checkbox" , "color" , "date" , "datetime-local" , "email" , "file" , "image" , "month" , "number" , "password" , "radio" , "range" , "search" , "tel" , "text" , "time" , "url" , "week"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `'text'`       |
 | **value**           | The value of the input.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `number , string , undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `''`           |
 
-#### Events
+## Events
+
 
 | Event           | Description                               | Type                     |
 | :-------------- | :---------------------------------------- | :----------------------- |
@@ -76,7 +86,8 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 | **balInput**    | Emitted when a keyboard input occurred.   | `null | number | string` |
 | **balKeyPress** | Emitted when a keyboard key has pressed.  | `KeyboardEvent`          |
 
-#### Methods
+## Methods
+
 
 | Method                | Description                                                                                             | Signature                                        |
 | :-------------------- | :------------------------------------------------------------------------------------------------------ | :----------------------------------------------- |
@@ -86,7 +97,6 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 ## Testing
 
-### InputAccessor
 
 InputAccessor is a helper object for E-2-E testing.
 It maps the input behaviour to the `bal-input` ui component.
@@ -102,7 +112,7 @@ describe('Input', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
 | :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
@@ -127,16 +137,29 @@ describe('Input', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-<!-- START: human documentation bottom -->
+:::
 
-<!-- END: human documentation bottom -->
+::: tab Usage
+
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-input.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-input)
 * [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/input.accessor.ts)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balInput"></docs-component-script>

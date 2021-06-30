@@ -1,10 +1,19 @@
+---
+sidebarDepth: 0
+---
+
 # bal-radio <Badge text="Two-way binding"/>
+
 
 <!-- START: human documentation top -->
 
 A radio input is normally displayed in a radio group. The user can only select one option from a number of choices.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -41,12 +50,12 @@ A radio input is normally displayed in a radio group. The user can only select o
 <ClientOnly><docs-demo-bal-radio-83></docs-demo-bal-radio-83></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-radio
+## Properties
 
-#### Properties
 
 | Attribute        | Description                                                     | Type                        | Default        |
 | :--------------- | :-------------------------------------------------------------- | :-------------------------- | :------------- |
@@ -58,42 +67,23 @@ A radio input is normally displayed in a radio group. The user can only select o
 | **name**         | The name of the control, which is submitted with the form data. | `string`                    | `this.inputId` |
 | **value**        | The value of the control.                                       | `string`                    | `''`           |
 
-#### Events
+## Events
+
 
 | Event        | Description                          | Type         |
 | :----------- | :----------------------------------- | :----------- |
 | **balBlur**  | Emitted when the toggle loses focus. | `FocusEvent` |
 | **balFocus** | Emitted when the toggle has focus.   | `FocusEvent` |
 
-#### Methods
+## Methods
+
 
 | Method         | Description                          | Signature                     |
 | :------------- | :----------------------------------- | :---------------------------- |
 | **`setFocus`** | Sets the focus on the input element. | `setFocus() => Promise<void>` |
 
-### bal-radio-group
-
-
-# bal-radio-group
-
-#### Properties
-
-| Attribute     | Description                                                     | Type                        | Default        |
-| :------------ | :-------------------------------------------------------------- | :-------------------------- | :------------- |
-| **interface** | Defines the layout of the radio button                          | `"radio" , "select-button"` | `'radio'`      |
-| **inverted**  | If `true` the component can be used on dark background          | `boolean`                   | `false`        |
-| **name**      | The name of the control, which is submitted with the form data. | `string`                    | `this.inputId` |
-| **value**     | The value of the control.                                       | `string`                    | `''`           |
-
-#### Events
-
-| Event         | Description                                    | Type     |
-| :------------ | :--------------------------------------------- | :------- |
-| **balChange** | Emitted when the checked property has changed. | `string` |
-
 ## Testing
 
-### RadioAccessor
 
 RadioAccessor is a helper object for E-2-E testing.
 It maps the radio behaviour to the `bal-radio` ui component.
@@ -109,7 +99,7 @@ describe('Radio', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
 | :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
@@ -133,16 +123,29 @@ describe('Radio', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-<!-- START: human documentation bottom -->
+:::
 
-<!-- END: human documentation bottom -->
+::: tab Usage
+
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-radio.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-radio)
 * [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/radio.accessor.ts)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balRadio"></docs-component-script>

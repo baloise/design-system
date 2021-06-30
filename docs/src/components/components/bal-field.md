@@ -1,10 +1,19 @@
+---
+sidebarDepth: 0
+---
+
 # bal-field
+
 
 <!-- START: human documentation top -->
 
 A field wraps a form field like input. It provides a clear style structure of each control.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -28,12 +37,12 @@ This is not a recommanded validation style. Only use this style if you do not ha
 <ClientOnly><docs-demo-bal-field-46></docs-demo-bal-field-46></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-field
+## Properties
 
-#### Properties
 
 | Attribute    | Description                                                                                 | Type      | Default |
 | :----------- | :------------------------------------------------------------------------------------------ | :-------- | :------ |
@@ -43,74 +52,26 @@ This is not a recommanded validation style. Only use this style if you do not ha
 | **inverted** | If `true` the field can be used on blue background.                                         | `boolean` | `false` |
 | **loading**  | If `true` a loading spinner is visible at the end of the input                              | `boolean` | `false` |
 
-### bal-field-control
+
+:::
+
+::: tab Usage
+
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-# bal-field-control
+::::
 
-`bal-field-control` is a child component of `bal-field`.
-
-
-#### Properties
-
-| Attribute      | Description                                                    | Type      | Default |
-| :------------- | :------------------------------------------------------------- | :-------- | :------ |
-| **icon-left**  | Baloise icon for the left side of the input                    | `string`  | `''`    |
-| **icon-right** | Baloise icon for the right side of the input                   | `string`  | `''`    |
-| **inverted**   | If `true` the field can be used on blue background.            | `boolean` | `false` |
-| **loading**    | If `true` a loading spinner is visible at the end of the input | `boolean` | `false` |
-
-### bal-field-hint
-
-
-# bal-field-hint
-
-`bal-field-hint` is a child component of `bal-field`.
-
-#### Properties
-
-| Attribute   | Description              | Type     | Default |
-| :---------- | :----------------------- | :------- | :------ |
-| **subject** | Text of the inputs label | `string` | `''`    |
-
-### bal-field-label
-
-
-# bal-field-label
-
-`bal-field-label` is a child component of `bal-field`.
-
-
-#### Properties
-
-| Attribute    | Description                                        | Type      | Default |
-| :----------- | :------------------------------------------------- | :-------- | :------ |
-| **expanded** | If `true` the component takes the whole width      | `boolean` | `false` |
-| **required** | If `true` a asterix (*) is added to the label text | `boolean` | `false` |
-
-### bal-field-message
-
-
-# bal-field-message
-
-`bal-field-message` is a child component of `bal-field`.
-
-
-#### Properties
-
-| Attribute    | Description                                   | Type                                    | Default |
-| :----------- | :-------------------------------------------- | :-------------------------------------- | :------ |
-| **color**    | Defines the color of the message.             | `"" , "danger" , "success" , "warning"` | `''`    |
-| **expanded** | If `true` the component takes the whole width | `boolean`                               | `false` |
-
-
-
-<!-- START: human documentation bottom -->
-
-<!-- END: human documentation bottom -->
-
-
-## Links
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-field.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-field)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

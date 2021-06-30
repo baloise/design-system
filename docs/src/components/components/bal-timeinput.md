@@ -1,8 +1,17 @@
+---
+sidebarDepth: 0
+---
+
 # bal-timeinput
+
 
 <!-- START: human documentation top -->
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -24,12 +33,12 @@
 <ClientOnly><docs-demo-bal-timeinput-116></docs-demo-bal-timeinput-116></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-timeinput
+## Properties
 
-#### Properties
 
 | Attribute    | Description                                             | Type      | Default |
 | :----------- | :------------------------------------------------------ | :-------- | :------ |
@@ -39,7 +48,8 @@
 | **min-time** | Earliest date available for selection                   | `string`  | `''`    |
 | **value**    | The value of the datepicker with the format `hh:mm`.    | `string`  | `''`    |
 
-#### Events
+## Events
+
 
 | Event         | Description                                                                                                                                                    | Type         |
 | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
@@ -48,13 +58,25 @@
 It will not be triggert if either hour or time input has never been set (i.e. "--" is selected). | `string`     |
 
 
+:::
 
-<!-- START: human documentation bottom -->
+::: tab Usage
 
-<!-- END: human documentation bottom -->
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-timeinput.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-timeinput)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-sheet
+
 
 <!-- START: human documentation top -->
 
@@ -6,22 +11,34 @@ The sheet component is used to show content over the whole page at the bottom. T
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-sheet-89></docs-demo-bal-sheet-89></ClientOnly>
 
 
+:::
+
+::: tab Usage
+
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
+::::
 
-
-
-<!-- START: human documentation bottom -->
-
-<!-- END: human documentation bottom -->
-
-
-## Links
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-sheet.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-sheet)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

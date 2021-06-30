@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-textarea <Badge text="Two-way binding"/>
+
 
 <!-- START: human documentation top -->
 
@@ -6,17 +11,21 @@ A textarea allows a user to write and edit large texts.
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-textarea-112></docs-demo-bal-textarea-112></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-textarea
+## Properties
 
-#### Properties
 
 | Attribute          | Description                                                                                                                                                                      | Type                                                                                       | Default        |
 | :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- | :------------- |
@@ -39,7 +48,8 @@ A textarea allows a user to write and edit large texts.
 | **value**          | The value of the textarea.                                                                                                                                                       | `string , undefined`                                                                       | `''`           |
 | **wrap**           | Indicates how the control wraps text.                                                                                                                                            | `"hard" , "off" , "soft" , undefined`                                                      |                |
 
-#### Events
+## Events
+
 
 | Event           | Description                                | Type            |
 | :-------------- | :----------------------------------------- | :-------------- |
@@ -50,7 +60,8 @@ A textarea allows a user to write and edit large texts.
 | **balInput**    | Emitted when a keyboard input occurred.    | `string`        |
 | **balKeyPress** | Emitted when a keyboard key has pressed.   | `KeyboardEvent` |
 
-#### Methods
+## Methods
+
 
 | Method                | Description                                                                                                      | Signature                                           |
 | :-------------------- | :--------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------- |
@@ -59,16 +70,28 @@ A textarea allows a user to write and edit large texts.
 `textarea.focus()`. | `setFocus() => Promise<void>`                       |
 
 
+:::
 
-<!-- START: human documentation bottom -->
+::: tab Usage
 
-<!-- END: human documentation bottom -->
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-textarea.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-textarea)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balTextarea"></docs-component-script>

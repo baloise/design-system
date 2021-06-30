@@ -1,10 +1,19 @@
+---
+sidebarDepth: 0
+---
+
 # bal-button
+
 
 <!-- START: human documentation top -->
 
 Buttons provide a clickable element, which can be used in forms, or anywhere that needs simple, standard button functionality. They may display text, icons, or both. Buttons can be styled with several attributes to look a specific way.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -61,12 +70,12 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 <ClientOnly><docs-demo-bal-button-15></docs-demo-bal-button-15></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-button
+## Properties
 
-#### Properties
 
 | Attribute          | Description                                                                                                                                                                                                                                                                               | Type                                                                                              | Default     |
 | :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :---------- |
@@ -93,7 +102,8 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 | **type**           | The type of button.                                                                                                                                                                                                                                                                       | `"button" , "reset" , "submit"`                                                                   | `'button'`  |
 | **value**          | The value of the button, which is submitted with the form data.                                                                                                                                                                                                                           | `number , string , undefined`                                                                     | `''`        |
 
-#### Events
+## Events
+
 
 | Event            | Description                                 | Type         |
 | :--------------- | :------------------------------------------ | :----------- |
@@ -104,7 +114,6 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Testing
 
-### ButtonAccessor
 
 ButtonAccessor is a helper object for E-2-E testing.
 It maps the button behaviour to the `bal-button` ui component.
@@ -122,7 +131,7 @@ describe('Button', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
 | :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
@@ -145,17 +154,30 @@ describe('Button', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-<!-- START: human documentation bottom -->
+:::
+
+::: tab Usage
+
+<!-- START: human documentation usage -->
 
 ## Usage
 
 WIP
 
-<!-- END: human documentation bottom -->
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-button.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-button)
 * [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/button.accessor.ts)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

@@ -5,15 +5,11 @@ const { printCode, printBold } = require('./markdown.util')
 const parse = accessor => {
   const lines = []
   if (accessor) {
-    lines.push(`## Testing`)
-    lines.push(``)
-    lines.push(`### ${accessor.name}`)
-    lines.push('')
     lines.push(`${accessor.description.join(NEWLINE).trim()}`)
     lines.push('')
 
     if (accessor.methods && accessor.methods.length > 0) {
-      lines.push(`#### Methods`)
+      lines.push(`### Methods`)
       lines.push('')
       table(
         [

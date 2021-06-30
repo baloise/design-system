@@ -1,10 +1,19 @@
+---
+sidebarDepth: 0
+---
+
 # bal-list
+
 
 <!-- START: human documentation top -->
 
 A list present content in a way that makes it easy to identify a specific item in a collection.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -31,12 +40,12 @@ A list present content in a way that makes it easy to identify a specific item i
 <ClientOnly><docs-demo-bal-list-66></docs-demo-bal-list-66></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-list
+## Properties
 
-#### Properties
 
 | Attribute    | Description                                        | Type      | Default |
 | :----------- | :------------------------------------------------- | :-------- | :------ |
@@ -44,73 +53,12 @@ A list present content in a way that makes it easy to identify a specific item i
 | **disabled** | If `true` the list item can be hovered             | `boolean` | `false` |
 | **inverted** | If `true` the list can be used on a dark backround | `boolean` | `false` |
 
-### bal-list-item
-
-
-# bal-list-item
-
-
-#### Properties
-
-| Attribute     | Description                                        | Type                                       | Default   |
-| :------------ | :------------------------------------------------- | :----------------------------------------- | :-------- |
-| **clickable** | If `true` the list item shows that it is clickable | `boolean`                                  | `false`   |
-| **disabled**  | If `true` the list item can be hovered             | `boolean`                                  | `false`   |
-| **href**      | Specifies the URL of the page the link goes to     | `string`                                   | `''`      |
-| **selected**  | If `true` the list item has a selected theme       | `boolean`                                  | `false`   |
-| **target**    | Specifies where to open the linked document        | `" _parent" , "_blank" , "_self" , "_top"` | `'_self'` |
-
-#### Events
-
-| Event           | Description                               | Type         |
-| :-------------- | :---------------------------------------- | :----------- |
-| **balNavigate** | Emitted when the link element has clicked | `MouseEvent` |
-
-### bal-list-item-content
-
-
-# bal-list-item-content
-
-
-
-
-
-### bal-list-item-icon
-
-
-# bal-list-item-icon
-
-`bal-list-item-subtitle` is a child component of `bal-list` that defines the subtitle list row element.
-
-#### Properties
-
-| Attribute | Description                                                                         | Type      | Default |
-| :-------- | :---------------------------------------------------------------------------------- | :-------- | :------ |
-| **right** | If `true` the icon is on the right side of the list item. Default is the left side. | `boolean` | `false` |
-
-### bal-list-item-subtitle
-
-
-# bal-list-item-subtitle
-
-`bal-list-item-subtitle` is a child component of `bal-list` that defines the subtitle list row element.
-
-
-### bal-list-item-title
-
-
-# bal-list-item-title
-
-`bal-list-item-title` is a child component of `bal-list` that defines the title list row element.
-
-
 ## Testing
 
-### ListAccessor
 
 
 
-#### Methods
+### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
 | :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
@@ -132,13 +80,26 @@ A list present content in a way that makes it easy to identify a specific item i
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-<!-- START: human documentation bottom -->
+:::
 
-<!-- END: human documentation bottom -->
+::: tab Usage
+
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-list.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-list)
 * [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/list.accessor.ts)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

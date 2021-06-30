@@ -1,8 +1,17 @@
+---
+sidebarDepth: 0
+---
+
 # bal-heading
 
 A heading provides some additional helpers.
 
 
+
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -14,12 +23,12 @@ A heading provides some additional helpers.
 <ClientOnly><docs-demo-bal-heading-51></docs-demo-bal-heading-51></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-heading
+## Properties
 
-#### Properties
 
 | Attribute        | Description                                                                                                                                             | Type                                                         | Default     |
 | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------- | :---------- |
@@ -31,11 +40,17 @@ A heading provides some additional helpers.
 | **visual-level** | Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup. | `"h1" , "h2" , "h3" , "h4" , "h5" , "h6" , undefined`        | `undefined` |
 
 
+:::
 
 
+::::
 
-
-## Links
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-heading.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-heading)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

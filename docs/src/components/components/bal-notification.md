@@ -1,10 +1,19 @@
+---
+sidebarDepth: 0
+---
+
 # bal-notification
+
 
 <!-- START: human documentation top -->
 
 A notification is used for alerts or to highlight certain content for the user.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -26,25 +35,37 @@ A notification is used for alerts or to highlight certain content for the user.
 <ClientOnly><docs-demo-bal-notification-75></docs-demo-bal-notification-75></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-notification
+## Properties
 
-#### Properties
 
 | Attribute | Description                      | Type                                                         | Default |
 | :-------- | :------------------------------- | :----------------------------------------------------------- | :------ |
 | **color** | Defines the color of the element | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
 
 
+:::
 
-<!-- START: human documentation bottom -->
+::: tab Usage
 
-<!-- END: human documentation bottom -->
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-notification.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-notification)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

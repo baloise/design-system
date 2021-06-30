@@ -6,7 +6,7 @@ const parse = (component, accessor) => {
 
   const lines = []
   lines.push('')
-  lines.push('## Links')
+  lines.push('## Edit this page on Github')
   lines.push('')
 
   const documentationUrl = `${baseUrl}/docs/src/components/components/${component.tag}.md`
@@ -22,6 +22,14 @@ const parse = (component, accessor) => {
     const accessorLink = `* [Accessor on Github](${accessorUrl})`
     lines.push(accessorLink)
   }
+
+  lines.push('')
+  lines.push('## Feedback')
+  lines.push('')
+  lines.push(
+    'Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).',
+  )
+  lines.push('')
 
   return lines.join(NEWLINE)
 }

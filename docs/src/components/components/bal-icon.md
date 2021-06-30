@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-icon
+
 
 <!-- START: human documentation top -->
 
@@ -6,6 +11,10 @@ All our icons are pure svg files. To add a new icon just place your svg file int
 Then the build script will automatically optimize the svg and create its own web component.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -31,12 +40,12 @@ Here is how you can change the color:
 <ClientOnly><docs-demo-bal-icon-57></docs-demo-bal-icon-57></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-icon
+## Properties
 
-#### Properties
 
 | Attribute    | Description                                                     | Type                                                                                              | Default  |
 | :----------- | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :------- |
@@ -49,13 +58,25 @@ Here is how you can change the color:
 | **turn**     | If `true` the icon is rotated 180deg                            | `boolean`                                                                                         | `false`  |
 
 
+:::
 
-<!-- START: human documentation bottom -->
+::: tab Usage
 
-<!-- END: human documentation bottom -->
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-icon.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-icon)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

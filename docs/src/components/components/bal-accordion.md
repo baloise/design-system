@@ -1,10 +1,19 @@
+---
+sidebarDepth: 0
+---
+
 # bal-accordion
+
 
 <!-- START: human documentation top -->
 
 Accordions put users in control of showing or hiding content. Accordions also help us organize information to keep screens less cluttered so that users can accomplish tasks in short, intuitive steps. And accordions can help users find content they need. The component can be used standalone, in combination or inside bal-card.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -35,12 +44,12 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 <ClientOnly><docs-demo-bal-accordion-4></docs-demo-bal-accordion-4></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-accordion
+## Properties
 
-#### Properties
 
 | Attribute       | Description                                             | Type                 | Default     |
 | :-------------- | :------------------------------------------------------ | :------------------- | :---------- |
@@ -52,13 +61,15 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 | **open-icon**   | Bal-Icon of the open trigger button                     | `string`             | `'plus'`    |
 | **open-label**  | Label of the open trigger button                        | `string`             | `''`        |
 
-#### Events
+## Events
+
 
 | Event           | Description                            | Type      |
 | :-------------- | :------------------------------------- | :-------- |
 | **balCollapse** | Emmited when the accordion has changed | `boolean` |
 
-#### Methods
+## Methods
+
 
 | Method       | Description            | Signature                   |
 | :----------- | :--------------------- | :-------------------------- |
@@ -68,7 +79,6 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 
 ## Testing
 
-### AccordionAccessor
 
 AccordionAccessor is a helper object for E-2-E testing.
 It maps the accordion behaviour to the `bal-accordion` ui component.
@@ -86,7 +96,7 @@ describe('Accordion', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
 | :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
@@ -108,13 +118,34 @@ describe('Accordion', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-<!-- START: human documentation bottom -->
+:::
 
-<!-- END: human documentation bottom -->
+::: tab Usage
+
+<!-- START: human documentation usage -->
+WIP! Usage content
+<!-- END: human documentation usage -->
+
+:::
+
+::: tab Style
+
+<!-- START: human documentation style -->
+WIP! Style content
+<!-- END: human documentation style -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-accordion.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-accordion)
 * [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/accordion.accessor.ts)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

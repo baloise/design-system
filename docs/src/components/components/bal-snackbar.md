@@ -1,3 +1,7 @@
+---
+sidebarDepth: 0
+---
+
 # bal-snackbar
 
 ## Usage
@@ -10,11 +14,16 @@ import { balScnackbarController } from '@baloise/design-system-components'
 balScnackbarController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
 ```
 
+
 <!-- START: human documentation top -->
 
 A snackbar is used to inform the user with a simple text message and a action.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -26,12 +35,12 @@ A snackbar is used to inform the user with a simple text message and a action.
 <ClientOnly><docs-demo-bal-snackbar-94></docs-demo-bal-snackbar-94></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-snackbar
+## Properties
 
-#### Properties
 
 | Attribute    | Description                                                       | Type                                                         | Default |
 | :----------- | :---------------------------------------------------------------- | :----------------------------------------------------------- | :------ |
@@ -42,14 +51,16 @@ A snackbar is used to inform the user with a simple text message and a action.
 | **message**  | The message of the snackbar                                       | `string`                                                     | `''`    |
 | **subject**  | The subject of the snackbar header                                | `string`                                                     | `''`    |
 
-#### Events
+## Events
+
 
 | Event         | Description                               | Type     |
 | :------------ | :---------------------------------------- | :------- |
 | **balAction** | Emitted when the action button is clicked | `string` |
 | **balClose**  | Emitted when snackbar is closed           | `string` |
 
-#### Methods
+## Methods
+
 
 | Method        | Description                                        | Signature                                    |
 | :------------ | :------------------------------------------------- | :------------------------------------------- |
@@ -57,16 +68,28 @@ A snackbar is used to inform the user with a simple text message and a action.
 | **`closeIn`** | Closes the snackbar after the given duration in ms | `closeIn(duration: number) => Promise<void>` |
 
 
+:::
 
-<!-- START: human documentation bottom -->
+::: tab Usage
 
-<!-- END: human documentation bottom -->
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-snackbar.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-snackbar)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balSnackbar"></docs-component-script>

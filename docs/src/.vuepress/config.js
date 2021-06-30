@@ -32,6 +32,8 @@ module.exports = {
     styles: path.resolve(__dirname, './styles'),
   },
 
+  plugins: ['tabs'],
+
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
    *

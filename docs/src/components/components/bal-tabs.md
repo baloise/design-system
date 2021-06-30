@@ -1,12 +1,21 @@
+---
+sidebarDepth: 0
+---
+
 # bal-tabs
 
 Tabs are used to structure the information in sub section on the same page.
+
 
 <!-- START: human documentation top -->
 
 Tabs are used to structure the information in sub section on the same page.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Main Navigation
 
@@ -33,12 +42,12 @@ Tabs are used to structure the information in sub section on the same page.
 <ClientOnly><docs-demo-bal-tabs-104></docs-demo-bal-tabs-104></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-tabs
+## Properties
 
-#### Properties
 
 | Attribute        | Description                                       | Type                           | Default  |
 | :--------------- | :------------------------------------------------ | :----------------------------- | :------- |
@@ -49,57 +58,24 @@ Tabs are used to structure the information in sub section on the same page.
 | **interface**    | Defines the layout of the tabs.                   | `"o-steps" , "steps" , "tabs"` | `'tabs'` |
 | **rounded**      | If you want the rounded tab style.                | `boolean`                      | `false`  |
 
-#### Events
+## Events
+
 
 | Event              | Description                                | Type           |
 | :----------------- | :----------------------------------------- | :------------- |
 | **balActionClick** | Emitted when the action button has clicked | `MouseEvent`   |
 | **balTabChange**   | Emitted when the changes has finished.     | `BalTabOption` |
 
-#### Methods
+## Methods
+
 
 | Method       | Description                                               | Signature                                    |
 | :----------- | :-------------------------------------------------------- | :------------------------------------------- |
 | **`select`** | Go to tab with the given value                            | `select(tab: BalTabOption) => Promise<void>` |
 | **`sync`**   | *Internal* - Rerenders the tabs with their given settings | `sync() => Promise<void>`                    |
 
-### bal-tab-item
-
-
-# bal-tab-item
-
-`bal-tab-item` is a child component of `bal-tabs`.
-
-#### Properties
-
-| Attribute    | Description                                             | Type      | Default |
-| :----------- | :------------------------------------------------------ | :-------- | :------ |
-| **active**   | Tell's if the tab is active and the content is visible. | `boolean` | `false` |
-| **bubble**   | If `true` a small red bubble is added to the tab.       | `boolean` | `false` |
-| **disabled** | If `true` the tab is disabled.                          | `boolean` | `false` |
-| **done**     | If `true` the step is marked as done.                   | `boolean` | `false` |
-| **failed**   | If `true` the step is marked as failed.                 | `boolean` | `false` |
-| **href**     | Link to path.                                           | `string`  | `''`    |
-| **label**    | Label for the tab.                                      | `string`  | `''`    |
-| **prevent**  | Tell's if the linking is done by a router.              | `boolean` | `false` |
-| **value**    | This is the key of the tab.                             | `string`  | `''`    |
-
-#### Events
-
-| Event           | Description                               | Type         |
-| :-------------- | :---------------------------------------- | :----------- |
-| **balNavigate** | Emitted when the link element has clicked | `MouseEvent` |
-
-#### Methods
-
-| Method           | Description                               | Signature                                     |
-| :--------------- | :---------------------------------------- | :-------------------------------------------- |
-| **`getOptions`** | Options of the tab like label, value etc. | `getOptions() => Promise<BalTabOption>`       |
-| **`setActive`**  | Sets the tab active.                      | `setActive(active: boolean) => Promise<void>` |
-
 ## Testing
 
-### TabsAccessor
 
 TabsAccessor is a helper object for E-2-E testing.
 It maps the tabs behaviour to the `bal-tabs` ui component.
@@ -116,7 +92,7 @@ describe('Tabs', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
 | :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
@@ -137,13 +113,26 @@ describe('Tabs', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-<!-- START: human documentation bottom -->
+:::
 
-<!-- END: human documentation bottom -->
+::: tab Usage
+
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-tabs.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-tabs)
 * [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/tabs.accessor.ts)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

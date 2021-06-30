@@ -25,52 +25,140 @@ async function main() {
 
 async function generateSidebar(components) {
   const sidebar = []
-  await forEachComponent(components, async component => sidebar.push(`components/${component.tag}`))
+  await forEachComponent(components, async component => {
+    if (component.childComponents.length > 0) {
+      sidebar.push({
+        title: component.tag,
+        path: `/components/components/${component.tag}`,
+        collapsable: true,
+        children: component.childComponents.map(c => `components/${c}`),
+      })
+    } else {
+      sidebar.push(`components/${component.tag}`)
+    }
+  })
   await file.save(path.join(__dirname, '../src/.vuepress/generated/components.json'), JSON.stringify(sidebar))
+}
+
+async function generateComponentMarkdown(component, dir, accessors) {
+  const { markdown, scripts } = generateExamples(component)
+  JAVASCRIPT_CONTENT.push(scripts)
+
+  const { top, usage, style } = await componentDoc.parse(component)
+
+  const lines = []
+  lines.push('---')
+  lines.push('sidebarDepth: 0')
+  lines.push('---')
+  lines.push('')
+
+  component.readme.split(NEWLINE).forEach(line => lines.push(line))
+
+  lines.push('')
+  lines.push(top)
+  lines.push('')
+
+  lines.push(':::: tabs :options="{ useUrlFragment: false }"')
+  lines.push('')
+
+  if (markdown !== undefined && markdown.length > 0) {
+    lines.push('::: tab Examples')
+    lines.push('')
+    lines.push(markdown)
+    lines.push(':::')
+    lines.push('')
+  }
+
+  const componentProps = api.printProp(component)
+  const componentEvents = api.printEvents(component)
+  const componentMethods = api.printMethods(component)
+  const accessor = accessors.get(component.tag)
+  const hasCodeTab =
+    componentProps.length > 0 || componentEvents.length > 0 || componentMethods.length > 0 || accessor !== undefined
+  if (hasCodeTab) {
+    lines.push('::: tab Code')
+    lines.push('')
+
+    if (componentProps.length > 0) {
+      lines.push('## Properties')
+      lines.push('')
+      lines.push(componentProps)
+      lines.push('')
+    }
+
+    if (componentEvents.length > 0) {
+      lines.push('## Events')
+      lines.push('')
+      lines.push(componentEvents)
+      lines.push('')
+    }
+
+    if (componentMethods.length > 0) {
+      lines.push('## Methods')
+      lines.push('')
+      lines.push(componentMethods)
+      lines.push('')
+    }
+
+    if (accessor !== undefined) {
+      lines.push('## Testing')
+      lines.push('')
+      const testingContent = testing.parse(accessor)
+      lines.push('')
+      lines.push(testingContent)
+    }
+
+    lines.push('')
+    lines.push(':::')
+    lines.push('')
+  }
+
+  if (usage && usage.length > 0) {
+    lines.push('::: tab Usage')
+    lines.push('')
+    lines.push(usage)
+    lines.push('')
+    lines.push(':::')
+    lines.push('')
+  }
+
+  if (style && style.length > 0) {
+    lines.push('::: tab Style')
+    lines.push('')
+    lines.push(style)
+    lines.push('')
+    lines.push(':::')
+    lines.push('')
+  }
+
+  lines.push('')
+  lines.push('::::')
+
+  const githubContent = github.parse(component, accessor)
+  lines.push(githubContent)
+  lines.push('')
+
+  if (scripts) {
+    lines.push(`<ClientOnly>`)
+    lines.push(`  <docs-component-script tag="${camelize(component.tag)}"></docs-component-script>`)
+    lines.push(`</ClientOnly>`)
+    lines.push('')
+  }
+
+  await file.save(path.join(dir, `${component.tag}.md`), lines.join(NEWLINE))
 }
 
 async function generateMarkdown(components) {
   const accessors = await testingLib.accessors()
   const dir = path.join(__dirname, `../src/components/components`)
   await forEachComponent(components, async component => {
-    const { markdown, scripts } = generateExamples(component)
-    JAVASCRIPT_CONTENT.push(scripts)
-
-    const { top, bottom } = await componentDoc.parse(component)
-
-    const lines = []
-    component.readme.split(NEWLINE).forEach(line => lines.push(line))
-
-    lines.push(top)
-    lines.push('')
-
-    lines.push(markdown)
-    lines.push('')
-
-    const apiContent = api.parse(components, component)
-    lines.push(apiContent)
-    lines.push('')
-
-    const accessor = accessors.get(component.tag)
-    const testingContent = testing.parse(accessor)
-    lines.push(testingContent)
-    lines.push('')
-
-    lines.push(bottom)
-    lines.push('')
-
-    const githubContent = github.parse(component, accessor)
-    lines.push(githubContent)
-    lines.push('')
-
-    if (scripts) {
-      lines.push(`<ClientOnly>`)
-      lines.push(`  <docs-component-script tag="${camelize(component.tag)}"></docs-component-script>`)
-      lines.push(`</ClientOnly>`)
-      lines.push('')
+    await generateComponentMarkdown(component, dir, accessors)
+    if (component.childComponents.length > 0) {
+      component.childComponents.forEach(async childComponentTag => {
+        const childComponent = components.get(childComponentTag)
+        await generateComponentMarkdown(childComponent, dir, accessors)
+      })
     }
-
-    await file.save(path.join(dir, `${component.tag}.md`), lines.join(NEWLINE))
   })
 
   await file.save(path.join(__dirname, `../src/.vuepress/generated/components.js`), JAVASCRIPT_CONTENT.join(NEWLINE))

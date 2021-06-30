@@ -1,10 +1,19 @@
+---
+sidebarDepth: 0
+---
+
 # bal-datepicker <Badge text="Two-way binding"/>
+
 
 <!-- START: human documentation top -->
 
 A datepicker allows manual date entry as well as open the dropdown content with a calendar to select a date.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -57,12 +66,12 @@ You can specify allowed dates using a function.
 <ClientOnly><docs-demo-bal-datepicker-40></docs-demo-bal-datepicker-40></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-datepicker
+## Properties
 
-#### Properties
 
 | Attribute           | Description                                                                                                                                                                                                                                                                                                                                                             | Type                              | Default        |
 | :------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------- | :------------- |
@@ -86,7 +95,8 @@ You can specify allowed dates using a function.
 | **trigger-icon**    | If `true` the datepicker only open on click of the icon                                                                                                                                                                                                                                                                                                                 | `boolean`                         | `false`        |
 | **value**           | The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).                                                                                                                                                                                                                                                                                          | `null , string , undefined`       |                |
 
-#### Events
+## Events
+
 
 | Event         | Description                             | Type                        |
 | :------------ | :-------------------------------------- | :-------------------------- |
@@ -95,7 +105,8 @@ You can specify allowed dates using a function.
 | **balFocus**  | Emitted when the input has focus.       | `FocusEvent`                |
 | **balInput**  | Emitted when a keyboard input occurred. | `string`                    |
 
-#### Methods
+## Methods
+
 
 | Method                | Description                                               | Signature                                        |
 | :-------------------- | :-------------------------------------------------------- | :----------------------------------------------- |
@@ -107,7 +118,6 @@ You can specify allowed dates using a function.
 
 ## Testing
 
-### DatepickerAccessor
 
 DatepickerAccessor is a helper object for E-2-E testing.
 It maps the datepicker behaviour to the `bal-datepicker` ui component.
@@ -125,7 +135,7 @@ describe('Datepicker', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method                | Description                    | Arguments                                     |
 | :-------------------- | :----------------------------- | :-------------------------------------------- |
@@ -135,16 +145,29 @@ describe('Datepicker', () => {
 | **shouldHaveValue**   | Check if datepicker have value | `date: Date`                                  |
 | **assertDateInRange** | Assert if the date is in range | `date: Date, shouldBeInRange: boolean = true` |
 
-<!-- START: human documentation bottom -->
+:::
 
-<!-- END: human documentation bottom -->
+::: tab Usage
+
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-datepicker.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-datepicker)
 * [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/datepicker.accessor.ts)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balDatepicker"></docs-component-script>

@@ -1,3 +1,7 @@
+---
+sidebarDepth: 0
+---
+
 # bal-toast
 
 ## Usage
@@ -12,11 +16,16 @@ balToastController.create({ message: 'Warning!', color: 'warning' })
 balToastController.create({ message: 'Danger zone!', color: 'danger' })
 ```
 
+
 <!-- START: human documentation top -->
 
 Toasts are used to inform the user with a simple text message.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -28,25 +37,27 @@ Toasts are used to inform the user with a simple text message.
 <ClientOnly><docs-demo-bal-toast-118></docs-demo-bal-toast-118></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-toast
+## Properties
 
-#### Properties
 
 | Attribute    | Description                                                    | Type                                                         | Default |
 | :----------- | :------------------------------------------------------------- | :----------------------------------------------------------- | :------ |
 | **color**    | The theme type of the toast. Given by bulma our css framework. | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
 | **duration** | The duration of the toast                                      | `number`                                                     | `0`     |
 
-#### Events
+## Events
+
 
 | Event        | Description                  | Type     |
 | :----------- | :--------------------------- | :------- |
 | **balClose** | Emitted when toast is closed | `string` |
 
-#### Methods
+## Methods
+
 
 | Method        | Description                                     | Signature                                    |
 | :------------ | :---------------------------------------------- | :------------------------------------------- |
@@ -55,7 +66,6 @@ Toasts are used to inform the user with a simple text message.
 
 ## Testing
 
-### ToastAccessor
 
 ToastAccessor is a helper object for E-2-E testing.
 It maps the toast behaviour to the `bal-toast` ui component.
@@ -71,7 +81,7 @@ describe('Toast', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method                     | Description                                                                                                        | Arguments                                                |
 | :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
@@ -93,16 +103,29 @@ describe('Toast', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-<!-- START: human documentation bottom -->
+:::
 
-<!-- END: human documentation bottom -->
+::: tab Usage
+
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-toast.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-toast)
 * [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/toast.accessor.ts)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balToast"></docs-component-script>

@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-file-upload
+
 
 <!-- START: human documentation top -->
 
@@ -6,17 +11,21 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-file-upload-47></docs-demo-bal-file-upload-47></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-file-upload
+## Properties
 
-#### Properties
 
 | Attribute           | Description                                      | Type                 | Default                      |
 | :------------------ | :----------------------------------------------- | :------------------- | :--------------------------- |
@@ -28,7 +37,8 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 | **max-files**       | Allowed number of files in the bundle.           | `number , undefined` | `undefined`                  |
 | **multiple**        | If `true` multiple file upload is possible.      | `boolean`            | `true`                       |
 
-#### Events
+## Events
+
 
 | Event               | Description                                                              | Type                     |
 | :------------------ | :----------------------------------------------------------------------- | :----------------------- |
@@ -36,16 +46,28 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 | **balRejectedFile** | Triggers when a file is rejected due to not allowed MIME-Type and so on. | `FileUploadRejectedFile` |
 
 
+:::
 
-<!-- START: human documentation bottom -->
+::: tab Usage
 
-<!-- END: human documentation bottom -->
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-file-upload.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-file-upload)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balFileUpload"></docs-component-script>

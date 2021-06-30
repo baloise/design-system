@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-navbar
+
 
 <!-- START: human documentation top -->
 
@@ -10,6 +15,10 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-navbar-70></docs-demo-bal-navbar-70></ClientOnly>
@@ -20,12 +29,12 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 <ClientOnly><docs-demo-bal-navbar-71></docs-demo-bal-navbar-71></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-navbar
+## Properties
 
-#### Properties
 
 | Attribute     | Description                                  | Type      | Default |
 | :------------ | :------------------------------------------- | :-------- | :------ |
@@ -33,67 +42,26 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 | **light**     | It `true` the navbar has a white background  | `boolean` | `false` |
 | **no-burger** | It `true` the burger button is hidden        | `boolean` | `false` |
 
-### bal-navbar-brand
+
+:::
+
+::: tab Usage
+
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-# bal-navbar-brand 
+::::
 
-`bal-navbar-brand` is a child component of `bal-navbar` that defines the area in the navbar where the logo or the title of the applications is.
-
-
-#### Properties
-
-| Attribute | Description               | Type     | Default |
-| :-------- | :------------------------ | :------- | :------ |
-| **href**  | Link of the logo / title. | `string` | `'/'`   |
-
-#### Events
-
-| Event           | Description                               | Type         |
-| :-------------- | :---------------------------------------- | :----------- |
-| **balNavigate** | Emitted when the link element has clicked | `MouseEvent` |
-
-### bal-navbar-menu
-
-
-# bal-navbar-menu 
-
-`bal-navbar-menu` is a child component of `bal-navbar` that defines the area in the navbar where links and actions are.
-
-
-
-#### Methods
-
-| Method       | Description                                                             | Signature                                        |
-| :----------- | :---------------------------------------------------------------------- | :----------------------------------------------- |
-| **`toggle`** | *Internal* - If the menu is open it closes it and the other way around. | `toggle(isMenuActive: boolean) => Promise<void>` |
-
-### bal-navbar-menu-end
-
-
-# bal-navbar-menu-start 
-
-`bal-navbar-menu-start` is a child component of `bal-navbar` which is the left side of the navbar.
-
-
-
-### bal-navbar-menu-start
-
-
-# bal-navbar-menu-end 
-
-`bal-navbar-menu-end` is a child component of `bal-navbar` which is the right side of the navbar.
-
-
-
-
-
-<!-- START: human documentation bottom -->
-
-<!-- END: human documentation bottom -->
-
-
-## Links
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-navbar.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-navbar)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

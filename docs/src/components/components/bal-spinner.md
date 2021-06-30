@@ -1,10 +1,19 @@
+---
+sidebarDepth: 0
+---
+
 # bal-spinner
+
 
 <!-- START: human documentation top -->
 
 A spinner is a animated graphic that lets the user know content is being loaded.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -21,12 +30,12 @@ A spinner is a animated graphic that lets the user know content is being loaded.
 <ClientOnly><docs-demo-bal-spinner-97></docs-demo-bal-spinner-97></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-spinner
+## Properties
 
-#### Properties
 
 | Attribute    | Description                                            | Type      | Default |
 | :----------- | :----------------------------------------------------- | :-------- | :------ |
@@ -34,13 +43,25 @@ A spinner is a animated graphic that lets the user know content is being loaded.
 | **small**    | If `true` the component is smaller                     | `boolean` | `false` |
 
 
+:::
 
-<!-- START: human documentation bottom -->
+::: tab Usage
 
-<!-- END: human documentation bottom -->
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-spinner.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-spinner)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

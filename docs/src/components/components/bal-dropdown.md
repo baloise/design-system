@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-dropdown
+
 
 <!-- START: human documentation top -->
 
@@ -10,6 +15,10 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 
 <!-- END: human documentation top -->
 
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
+
 ## Basic
 
 <ClientOnly><docs-demo-bal-dropdown-41></docs-demo-bal-dropdown-41></ClientOnly>
@@ -20,12 +29,12 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 <ClientOnly><docs-demo-bal-dropdown-42></docs-demo-bal-dropdown-42></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-dropdown
+## Properties
 
-#### Properties
 
 | Attribute               | Description                                      | Type      | Default |
 | :---------------------- | :----------------------------------------------- | :-------- | :------ |
@@ -33,14 +42,16 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 | **fixed-content-width** | If `true` the dropdown content has a fixed width | `boolean` | `false` |
 | **is-active**           | If `true` the dropdown content is open.          | `boolean` | `false` |
 
-#### Events
+## Events
+
 
 | Event                  | Description                                                                     | Type      |
 | :--------------------- | :------------------------------------------------------------------------------ | :-------- |
 | **balCollapse**        | Listen when the dropdown opens or closes. Returns the current `isActive` value. | `boolean` |
 | **balDropdownPrepare** | *Internal* - Use this to close unuesed dropdowns.                               | `string`  |
 
-#### Methods
+## Methods
+
 
 | Method                  | Description                                         | Signature                                            |
 | :---------------------- | :-------------------------------------------------- | :--------------------------------------------------- |
@@ -49,30 +60,8 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 | **`open`**              | Open the dropdown menu.                             | `open() => Promise<void>`                            |
 | **`toggle`**            | Open or closes the dropdown.                        | `toggle() => Promise<void>`                          |
 
-### bal-dropdown-menu
-
-
-# bal-dropdown-menu
-
-`bal-dropdown-menu` is a child component of `bal-dropdown` that defines the value of the data.
-
-#### Properties
-
-| Attribute      | Description                                                         | Type     | Default |
-| :------------- | :------------------------------------------------------------------ | :------- | :------ |
-| **scrollable** | Limit the height of the dropdown content. Pass the amount of pixel. | `number` | `0`     |
-
-### bal-dropdown-trigger
-
-
-# bal-dropdown-trigger
-
-`bal-dropdown-trigger` is a child component of `bal-dropdown` that defines the value of the data.
-
-
 ## Testing
 
-### DropdownAccessor
 
 DropdownAccessor is a helper object for E-2-E testing.
 It maps the dropdown behaviour to the `bal-dropdown` ui component.
@@ -88,22 +77,35 @@ describe('Dropdown', () => {
 })
 ```
 
-#### Methods
+### Methods
 
 | Method    | Description         | Arguments                                 |
 | :-------- | :------------------ | :---------------------------------------- |
 | **click** | Clicks the dropdown | `options?: Partial<Cypress.ClickOptions>` |
 
-<!-- START: human documentation bottom -->
+:::
 
-<!-- END: human documentation bottom -->
+::: tab Usage
+
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-## Links
+::::
+
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-dropdown.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-dropdown)
 * [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/dropdown.accessor.ts)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balDropdown"></docs-component-script>

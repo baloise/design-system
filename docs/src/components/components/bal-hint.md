@@ -1,4 +1,9 @@
+---
+sidebarDepth: 0
+---
+
 # bal-hint
+
 
 <!-- START: human documentation top -->
 
@@ -6,6 +11,10 @@ A hint hides content with some additional description and shows it by clicking t
 It can easily combined with the `bal-data` or `bal-field` component.
 
 <!-- END: human documentation top -->
+
+:::: tabs :options="{ useUrlFragment: false }"
+
+::: tab Examples
 
 ## Basic
 
@@ -17,19 +26,20 @@ It can easily combined with the `bal-data` or `bal-field` component.
 <ClientOnly><docs-demo-bal-hint-53></docs-demo-bal-hint-53></ClientOnly>
 
 
+:::
 
-## API
+::: tab Code
 
-### bal-hint
+## Properties
 
-#### Properties
 
 | Attribute       | Description                                         | Type      | Default   |
 | :-------------- | :-------------------------------------------------- | :-------- | :-------- |
 | **close-label** | Text for the close button.                          | `string`  | `'Close'` |
 | **disabled**    | If `true`, the user cannot interact with the input. | `boolean` | `false`   |
 
-#### Methods
+## Methods
+
 
 | Method       | Description           | Signature                   |
 | :----------- | :-------------------- | :-------------------------- |
@@ -37,32 +47,26 @@ It can easily combined with the `bal-data` or `bal-field` component.
 | **`open`**   | Opens the hint box.   | `open() => Promise<void>`   |
 | **`toggle`** | Toggles the hint box. | `toggle() => Promise<void>` |
 
-### bal-hint-text
+
+:::
+
+::: tab Usage
+
+<!-- START: human documentation usage -->
+
+<!-- END: human documentation usage -->
+
+:::
 
 
-# bal-hint-text
+::::
 
-`bal-hint-text` is a child component of `bal-hint` that defines the text of the hint dialog.
-
-
-
-### bal-hint-title
-
-
-# bal-hint-title
-
-`bal-hint-title` is a child component of `bal-hint` that defines the title of the hint dialog.
-
-
-
-
-
-<!-- START: human documentation bottom -->
-
-<!-- END: human documentation bottom -->
-
-
-## Links
+## Edit this page on Github
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-hint.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-hint)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

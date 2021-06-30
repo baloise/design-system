@@ -5,6 +5,7 @@
  */
 
 @import '~styles/design-system-components.css'
+@require '~vuepress-plugin-tabs/dist/themes/default.styl'
 
 h1, h2, h3, h4, h5, p, b, strong, td, th, a, li, .footer
  font-family: MetaPro, Arial, sans-serif
@@ -150,3 +151,42 @@ header > .links
     flex-basis: 100% !important;
     max-width: 100% !important;
 
+.theme-default-content:not(.custom)
+  max-width: none
+  padding: calc(8px * 8) calc(8px * 12)
+
+.page-nav
+  max-width: none !important
+  padding: calc(8px * 8) calc(8px * 12) !important
+
+.tabs-component
+  margin-bottom: 0
+
+.tabs-component-panels
+  border: none;
+  box-shadow: none;
+  padding: 0
+  padding-top: 16px
+
+.tabs-component-tabs
+  border-bottom: 1px solid #d1dbed !important
+  border-radius: 0 !important
+  margin: 0
+
+.tabs-component-tab
+  border: none
+
+.tabs-component-tab-a
+  font-size: 20px
+  color: #7188b8
+  text-decoration: none !important
+  padding: 12px 16px
+
+.tabs-component-tab-a:hover
+  color: #039
+
+.tabs-component-tab.is-active
+  border-bottom: 2px solid #039
+
+.tabs-component-tab.is-active .tabs-component-tab-a
+  color: #039 !important
