@@ -1,9 +1,9 @@
 # Design
 
-The Baloise Design System provides shared colors, styles and components.
+The Baloise Design System was created to help teams build high-quality digital experiences for the web, providing shared colors, styles and components.
 
 ::: warning
-The design part is under construction.
+Please note: The design part is still under construction.
 :::
 
 ## Getting started
