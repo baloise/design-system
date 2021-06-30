@@ -18,7 +18,7 @@ Most components have variants. Selecting a component with variants will show its
 
 ## Color
 
-Baloise uses colors purposefully to communicate how things function in the interface. This helps us create visual patterns that can make interacting with our products easier and more predictable for customers
+Baloise uses colors purposefully to communicate how things function in the interface. This helps us create visual patterns that can make interacting with our products easier and more predictable for customers.
 The color system uses a semantic naming structure, which means the names tell us about the purpose or use case of the colors rather than their hue. To see how colors are named and organized in the UI kit,
 
 [View Colors Documentation](http://localhost:8080/design/colors.html)
@@ -61,7 +61,7 @@ Changing the nudge amount to 8px in your preferences will make your life much ea
 
 ## Brand Assets
 
-Consistent branding ensures the Baloise brand is well represented in all cases. Use the brand assets if you want to include any baloise sided branding.
+Consistent branding ensures the Baloise brand is well represented in all cases. Use the brand assets if you want to include any Baloise-focused branding.
 
 ### Using Brand Assets
 
@@ -71,7 +71,7 @@ Brand Assets can be enabled by adding the ‘Baloise DS for Web: Brand Assets’
 
 ## Publishing Figma libraries
 
-Enable Polaris for Admin styles and components by publishing each Figma file as a library. [Learn more about libraries](https://help.figma.com/hc/en-us/articles/360041051154)
+Enable styles and components by publishing each Figma file as a library. [Learn more about libraries](https://help.figma.com/hc/en-us/articles/360041051154)
 
 <docs-image text="publishing" link="/assets/images/figma/publishing.png" />
 
