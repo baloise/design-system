@@ -66,8 +66,6 @@ Use less space between small components, or components that share a close functi
 
 <docs-image text="8px-grid" link="/assets/images/spacing/spacing-between-components.png" />
 
-Use less space between small components, or components that share a close functional relationship.
-
 Coordinate small and large values, to create visual groupings of related things. This helps users understand the interface and more easily find what they’re looking for. For screens with specialized layouts, adjust overall spacing based on the density of the content. For example, a simple login screen on desktop display has more room to breathe, so more space can be used.
 
 ### Common values
