@@ -314,7 +314,7 @@ export namespace Components {
         /**
           * Callback to determine which date in the datepicker should be selectable.
          */
-        "allowedDates": BalDateCallback;
+        "allowedDates": BalDateCallback | undefined;
         /**
           * The tabindex of the control.
          */
@@ -2168,7 +2168,7 @@ declare namespace LocalJSX {
         /**
           * Callback to determine which date in the datepicker should be selectable.
          */
-        "allowedDates"?: BalDateCallback;
+        "allowedDates"?: BalDateCallback | undefined;
         /**
           * The tabindex of the control.
          */

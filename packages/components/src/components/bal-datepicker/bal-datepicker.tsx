@@ -162,7 +162,7 @@ export class Datepicker implements ComponentInterface {
   /**
    * Callback to determine which date in the datepicker should be selectable.
    */
-  @Prop() allowedDates: BalDateCallback = _ => true
+  @Prop() allowedDates: BalDateCallback | undefined = undefined
 
   /**
    * Emitted when a option got selected.
@@ -328,7 +328,7 @@ export class Datepicker implements ComponentInterface {
             label: day(dayDatePointer).toString(),
             isToday: isSameDay(dayDatePointer, now()),
             isSelected: toDate(this.selectedDate) && isSameDay(dayDatePointer, toDate(this.selectedDate) as Date),
-            isDisabled: !this.allowedDates(isoString(dayDatePointer)) || !isInRange(dayDatePointer, toDate(this.min), toDate(this.max)),
+            isDisabled: !this.getAllowedDates(dayDatePointer) || !isInRange(dayDatePointer, toDate(this.min), toDate(this.max)),
             isOutdated: this.pointerDate.month !== dayDatePointer.getMonth() || !isInRange(dayDatePointer, toDate(this.min), toDate(this.max)),
           } as BalCalendarCell,
         ]
@@ -338,6 +338,14 @@ export class Datepicker implements ComponentInterface {
       weekDatePointer.setDate(weekDatePointer.getDate() + 7)
     } while (isSameMonth(new Date(this.pointerDate.year, this.pointerDate.month, this.pointerDate.day), dayDatePointer))
     return calendar
+  }
+
+  private getAllowedDates(dayDatePointer: Date): boolean {
+    if (isNil(this.allowedDates)) {
+      return true
+    }
+
+    return this.allowedDates(isoString(dayDatePointer))
   }
 
   private onIconClick = (event: MouseEvent) => {
