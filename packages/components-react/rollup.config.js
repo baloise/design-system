@@ -3,22 +3,14 @@ import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 
 export default {
-  // input: 'dist-transpiled/index.js',
   input: 'src/index.ts',
   output: [
-    // {
-    //   dir: 'dist/',
-    //   entryFileNames: '[name].esm.js',
-    //   chunkFileNames: '[name]-[hash].esm.js',
-    //   format: 'es',
-    //   sourcemap: true,
-    // },
-    // {
-    //   dir: 'dist/',
-    //   format: 'commonjs',
-    //   preferConst: true,
-    //   sourcemap: true,
-    // },
+    {
+      dir: 'dist/',
+      format: 'commonjs',
+      preferConst: true,
+      sourcemap: true,
+    },
     {
       dir: 'dist/',
       entryFileNames: '[name].esm.js',
