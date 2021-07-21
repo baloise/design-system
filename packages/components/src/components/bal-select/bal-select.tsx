@@ -2,7 +2,7 @@ import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, El
 import { isArray, isNil } from 'lodash'
 import { findItemLabel } from '../../helpers/helpers'
 import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey, isBackspaceKey } from '../../utils'
-import { addValue, findLabelByValue, includes, preventDefault, removeValue, startsWith, validateAfterBlur } from './utils/utils'
+import { addValue, findLabelByValue, getValues, includes, length, preventDefault, removeValue, startsWith, validateAfterBlur } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 
 import { BalOptionValue } from './utils/bal-option.type'
@@ -100,7 +100,7 @@ export class Select {
   /**
    * Selected option values. Could also be passed as a string, which gets transformed.
    */
-  @Prop({ mutable: true }) value: string[] = []
+  @Prop({ mutable: true }) value: string[] | undefined = []
 
   @Watch('value')
   valueWatcher(newValue: string[], oldValue: string[]) {
@@ -168,8 +168,9 @@ export class Select {
         this.cancel()
       }
       if (isBackspaceKey(event) && this.typeahead && this.multiple) {
-        if (this.inputElement.value === '' && this.value.length > 0) {
-          this.removeValue(this.value[this.value.length - 1])
+        if (this.inputElement.value === '' && length(this.value) > 0) {
+          const valuesArray = getValues(this.value)
+          this.removeValue(valuesArray[length(this.value) - 1])
         }
       }
       if (!this.typeahead && event.key.length === 1) {
@@ -201,7 +202,7 @@ export class Select {
       this.value = []
     }
 
-    if (this.options.size > 0 && this.value.length === 1) {
+    if (this.options.size > 0 && length(this.value) === 1) {
       const firstOption = this.options.get(this.value[0])
       if (!isNil(firstOption)) {
         this.inputValue = firstOption.label
@@ -317,12 +318,12 @@ export class Select {
 
   private get inputPlaceholder(): string | undefined {
     if (this.multiple) {
-      if (this.value.length < 1) {
+      if (length(this.value) < 1) {
         return this.placeholder
       }
       return undefined
     } else {
-      if (!isNil(this.value) && this.value.length > 0) {
+      if (!isNil(this.value) && length(this.value) > 0) {
         return undefined
       }
     }
@@ -440,7 +441,8 @@ export class Select {
    ********************************************************/
 
   private optionSelected(selectedOption: BalOptionController) {
-    const isAlreadySelected = this.value.some(v => v === selectedOption.value)
+    const valuesArray = getValues(this.value)
+    const isAlreadySelected = valuesArray.some(v => v === selectedOption.value)
     this.updateValue(selectedOption.value, !isAlreadySelected)
 
     if (!this.multiple) {
@@ -487,8 +489,9 @@ export class Select {
 
   private syncNativeInput() {
     if (!this.multiple) {
-      if (this.value.length > 0) {
-        this.updateInputValue(findLabelByValue(this.options, this.value[0]))
+      if (length(this.value) > 0) {
+        const valuesArray = getValues(this.value)
+        this.updateInputValue(findLabelByValue(this.options, valuesArray[0]))
       }
     }
   }
@@ -582,6 +585,8 @@ export class Select {
       </bal-tag>
     )
 
+    const valuesArray = getValues(this.value)
+
     return (
       <Host
         role="listbox"
@@ -602,7 +607,7 @@ export class Select {
               }}
             >
               <div class="bal-select__selections">
-                {this.value
+                {valuesArray
                   .filter(_ => this.multiple)
                   .map((value: string) => (
                     <Chip value={value}></Chip>
@@ -651,7 +656,7 @@ export class Select {
                 class={{
                   'bal-select__option ': true,
                   'dropdown-item': true,
-                  'is-selected': this.value.includes(option.value),
+                  'is-selected': valuesArray.includes(option.value),
                   'is-focused': this.focusIndex === index,
                   'has-checkbox': this.multiple,
                   'has-movement': this.hasMovement,
@@ -662,7 +667,7 @@ export class Select {
               >
                 <div class="select-option__content">
                   <span class="checkbox" style={{ display: this.multiple ? 'flex' : 'none' }}>
-                    <bal-checkbox checked={this.value.includes(option.value)} tabindex={-1} onBalChange={preventDefault}></bal-checkbox>
+                    <bal-checkbox checked={valuesArray.includes(option.value)} tabindex={-1} onBalChange={preventDefault}></bal-checkbox>
                   </span>
                   <span class="label" innerHTML={option.innerHTML}></span>
                 </div>

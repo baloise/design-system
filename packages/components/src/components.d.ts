@@ -1015,7 +1015,7 @@ export namespace Components {
         /**
           * Selected option values. Could also be passed as a string, which gets transformed.
          */
-        "value": string[];
+        "value": string[] | undefined;
     }
     interface BalSelectOption {
         /**
@@ -2869,7 +2869,7 @@ declare namespace LocalJSX {
         /**
           * Selected option values. Could also be passed as a string, which gets transformed.
          */
-        "value"?: string[];
+        "value"?: string[] | undefined;
     }
     interface BalSelectOption {
         /**
