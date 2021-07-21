@@ -25,19 +25,6 @@
       user-select: none;
     }
 
-    // label bal-text {
-    //   @include font-smoothing();
-
-    //   margin: auto;
-    //   padding-left: 32px;
-    //   font-family: $body-family;
-    //   font-size: $size-normal !important;
-
-    //   min-height: 26px;
-    //   display: flex;
-    //   align-items: center;
-    // }
-
     label {
       @include font-smoothing();
       @include margin(0);
