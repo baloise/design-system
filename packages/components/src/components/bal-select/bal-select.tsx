@@ -223,6 +223,7 @@ export class Select {
       options.set(element.value, {
         value: element.value,
         label: element.label,
+        disabled: element.disabled,
         id: element.id,
         textContent: element.textContent,
         innerHTML: element.innerHTML,
@@ -660,7 +661,9 @@ export class Select {
                   'is-focused': this.focusIndex === index,
                   'has-checkbox': this.multiple,
                   'has-movement': this.hasMovement,
+                  'is-disabled': option.disabled,
                 }}
+                disabled={option.disabled}
                 tabIndex={-1}
                 onMouseEnter={() => this.handleOptionMouseEnter(index)}
                 onClick={() => this.optionSelected(option)}

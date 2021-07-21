@@ -76,6 +76,11 @@
     cursor: pointer;
     outline: none;
 
+    &.is-disabled {
+      user-select: none;
+      opacity: 0.5;
+    }
+
     &::-moz-focus-inner {
       border: 0;
     }

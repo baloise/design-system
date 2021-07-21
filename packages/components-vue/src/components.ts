@@ -1586,7 +1586,7 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
       required: false,
     },
     value: {
-      type: Array as PropType<Array<string>>,
+      type: Array as PropType<Array<string | undefined>>,
       default: [],
       required: false,
     },
@@ -1616,6 +1616,11 @@ export const BalSelectOption = /*@__PURE__*/ defineComponent({
     label: {
       type: String,
       default: undefined,
+      required: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
       required: false,
     },
     value: {

@@ -1019,6 +1019,10 @@ export namespace Components {
     }
     interface BalSelectOption {
         /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled": boolean;
+        /**
           * Label will be shown in the input element when it got selected
          */
         "label": string | undefined;
@@ -2872,6 +2876,10 @@ declare namespace LocalJSX {
         "value"?: string[] | undefined;
     }
     interface BalSelectOption {
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled"?: boolean;
         /**
           * Label will be shown in the input element when it got selected
          */
