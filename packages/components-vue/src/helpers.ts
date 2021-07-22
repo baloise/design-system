@@ -19,7 +19,7 @@ export const element = <T>(elementReference: Ref<any>): T => {
  * Validator Helpers
  */
 
-export type ValidatorFn = (value: any) => Promise<string | null> | string | null
+export type ValidatorFn = (value: any) => Promise<string | boolean> | string | boolean
 export type ValidatorsRulesFn = (value: any) => Promise<boolean | string> | boolean | string
 
 export function validators(rules: ValidatorFn[]): ValidatorsRulesFn
@@ -49,9 +49,11 @@ export function validators(isDisabledOrRules: any, rules?: any): ValidatorsRules
 
 export function useValidator(translateFn: (key: string) => string) {
   return {
-    createValidator: (validatorFn: BalValidatorFn, translationKey: string): ValidatorFn => value => {
-      const isValid = validatorFn(value)
-      return isValid ? null : translateFn(translationKey)
-    },
+    createValidator:
+      (validatorFn: BalValidatorFn, translationKey: string): ValidatorFn =>
+      value => {
+        const isValid = validatorFn(value)
+        return isValid ? true : translateFn(translationKey)
+      },
   }
 }

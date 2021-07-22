@@ -52,11 +52,19 @@ async function generateComponentMarkdown(component, dir, accessors) {
   lines.push('---')
   lines.push('')
 
-  component.readme.split(NEWLINE).forEach(line => lines.push(line))
+  component.readme
+    .replace(component.docs, '')
+    .split(NEWLINE)
+    .forEach(line => lines.push(line))
 
   lines.push('')
   lines.push(top)
   lines.push('')
+
+  if (component.docs && component.docs.length > 0) {
+    lines.push(component.docs)
+    lines.push('')
+  }
 
   lines.push(':::: tabs :options="{ useUrlFragment: false }"')
   lines.push('')

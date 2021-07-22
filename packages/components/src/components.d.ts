@@ -314,7 +314,7 @@ export namespace Components {
         /**
           * Callback to determine which date in the datepicker should be selectable.
          */
-        "allowedDates": BalDateCallback;
+        "allowedDates": BalDateCallback | undefined;
         /**
           * The tabindex of the control.
          */
@@ -1015,9 +1015,13 @@ export namespace Components {
         /**
           * Selected option values. Could also be passed as a string, which gets transformed.
          */
-        "value": string[];
+        "value": string[] | undefined;
     }
     interface BalSelectOption {
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled": boolean;
         /**
           * Label will be shown in the input element when it got selected
          */
@@ -2164,7 +2168,7 @@ declare namespace LocalJSX {
         /**
           * Callback to determine which date in the datepicker should be selectable.
          */
-        "allowedDates"?: BalDateCallback;
+        "allowedDates"?: BalDateCallback | undefined;
         /**
           * The tabindex of the control.
          */
@@ -2869,9 +2873,13 @@ declare namespace LocalJSX {
         /**
           * Selected option values. Could also be passed as a string, which gets transformed.
          */
-        "value"?: string[];
+        "value"?: string[] | undefined;
     }
     interface BalSelectOption {
+        /**
+          * If `true`, the user cannot interact with the option.
+         */
+        "disabled"?: boolean;
         /**
           * Label will be shown in the input element when it got selected
          */

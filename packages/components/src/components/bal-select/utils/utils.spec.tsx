@@ -9,6 +9,7 @@ describe('bal-select', () => {
     optionA = {
       id: 'id-a',
       value: '1',
+      disabled: false,
       label: 'labelA',
       textContent: 'labelA',
       innerHTML: 'labelA',
@@ -16,6 +17,7 @@ describe('bal-select', () => {
     optionB = {
       id: 'id-b',
       value: '2',
+      disabled: false,
       label: 'labelB',
       textContent: 'labelB',
       innerHTML: 'labelB',

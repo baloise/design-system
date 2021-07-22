@@ -32,7 +32,9 @@ export class Text {
           'is-bold': this.bold,
         }}
       >
-        <slot />
+        <span>
+          <slot></slot>
+        </span>
       </Host>
     )
   }

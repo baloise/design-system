@@ -1,23 +1,35 @@
 import { isNil, lowerCase, trim } from 'lodash'
 import { BalOptionController } from '../bal-select'
 
-export function removeValue(values: string[], valueToRemove: string): string[] {
-  return values.filter(value => value !== valueToRemove)
+export function getValues(values: string[] | undefined): string[] {
+  return isNil(values) ? [] : values
 }
 
-export function addValue(values: string[], valueToAdd: string, hasMultipleValue: boolean) {
+export function length(values?: string[]): number {
+  return getValues(values).length
+}
+
+export function removeValue(values: string[] | undefined, valueToRemove: string): string[] {
+  return getValues(values).filter(value => value !== valueToRemove)
+}
+
+export function addValue(values: string[] | undefined, valueToAdd: string, hasMultipleValue: boolean) {
+  const valuesArray = getValues(values)
+
   if (hasMultipleValue) {
-    if (values.includes(valueToAdd)) {
+    if (valuesArray.includes(valueToAdd)) {
       return removeValue(values, valueToAdd)
     }
-    return [...values, valueToAdd]
+    return [...valuesArray, valueToAdd]
   }
   return [valueToAdd]
 }
 
-export function validateAfterBlur(values: string[], options: Map<string, BalOptionController>, typedLabel: string): string[] {
-  if (values.length > 0) {
-    const valueOption = options.get(values[0])
+export function validateAfterBlur(values: string[] | undefined, options: Map<string, BalOptionController>, typedLabel: string): string[] {
+  const valuesArray = getValues(values)
+
+  if (valuesArray.length > 0) {
+    const valueOption = options.get(valuesArray[0])
     if (isNil(valueOption) || typedLabel !== valueOption.label) {
       return []
     }
@@ -28,7 +40,7 @@ export function validateAfterBlur(values: string[], options: Map<string, BalOpti
     }
   }
 
-  return values
+  return valuesArray
 }
 
 function findOptionByLabelIterator(iterator: IterableIterator<BalOptionController>, label: string): BalOptionController | undefined {

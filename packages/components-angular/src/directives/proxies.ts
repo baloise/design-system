@@ -1102,13 +1102,13 @@ export class BalSelect {
 
 export declare interface BalSelectOption extends Components.BalSelectOption {}
 @ProxyCmp({
-  inputs: ['label', 'value']
+  inputs: ['disabled', 'label', 'value']
 })
 @Component({
   selector: 'bal-select-option',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['label', 'value']
+  inputs: ['disabled', 'label', 'value']
 })
 export class BalSelectOption {
   protected el: HTMLElement;

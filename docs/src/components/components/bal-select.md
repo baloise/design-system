@@ -5,21 +5,24 @@ sidebarDepth: 0
 # bal-select <Badge text="Two-way binding"/>
 
 
+
+
 <!-- START: human documentation top -->
 
 A select is a collection of options, where the user can select a single one or multiple.
 
-## Option interface
+<!-- END: human documentation top -->
+
+For creating a list of options use the `BalOptionValue` interface.
 
 ```typescript
 export interface BalOptionValue<T> {
   value: string
   label: string
+  disabled?: boolean
   data?: T
 }
 ```
-
-<!-- END: human documentation top -->
 
 :::: tabs :options="{ useUrlFragment: false }"
 
@@ -73,7 +76,7 @@ export interface BalOptionValue<T> {
 | **scrollable**    | Defines the height of the dropdown list.                                          | `number`                                     | `250`          |
 |                   |                                                                                   | `((inputValue: string) => void) , undefined` | `undefined`    |
 | **typeahead**     | If `true` the user can search by typing into the input field.                     | `boolean`                                    | `false`        |
-|                   | Selected option values. Could also be passed as a string, which gets transformed. | `string[]`                                   | `[]`           |
+|                   | Selected option values. Could also be passed as a string, which gets transformed. | `string[] , undefined`                       | `[]`           |
 
 ## Events
 

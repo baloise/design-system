@@ -1,5 +1,16 @@
 # bal-select <Badge text="Two-way binding"/>
 
+For creating a list of options use the `BalOptionValue` interface.
+
+```typescript
+export interface BalOptionValue<T> {
+  value: string
+  label: string
+  disabled?: boolean
+  data?: T
+}
+```
+
 <!-- Auto Generated Below -->
 
 
@@ -21,7 +32,7 @@
 | `scrollable`  | `scrollable`    | Defines the height of the dropdown list.                                          | `number`                                      | `250`          |
 | `searchInput` | --              |                                                                                   | `((inputValue: string) => void) \| undefined` | `undefined`    |
 | `typeahead`   | `typeahead`     | If `true` the user can search by typing into the input field.                     | `boolean`                                     | `false`        |
-| `value`       | --              | Selected option values. Could also be passed as a string, which gets transformed. | `string[]`                                    | `[]`           |
+| `value`       | --              | Selected option values. Could also be passed as a string, which gets transformed. | `string[] \| undefined`                       | `[]`           |
 
 
 ## Events

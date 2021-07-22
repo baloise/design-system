@@ -1,7 +1,5 @@
 # bal-text
 
-A text provides some additional helpers.
-
 <!-- Auto Generated Below -->
 
 

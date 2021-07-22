@@ -17,6 +17,8 @@ Pagination allows you to divide large amounts of content into smaller chunks acr
 
 ## Basic
 
+Generally, pagination is used if there are more than 25 items displayed in one view.  The default number displayed will vary depending on the context.
+
 <ClientOnly><docs-demo-bal-pagination-76></docs-demo-bal-pagination-76></ClientOnly>
 
 

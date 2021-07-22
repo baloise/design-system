@@ -4,8 +4,6 @@ sidebarDepth: 0
 
 # bal-text
 
-A text provides some additional helpers.
-
 
 <!-- START: human documentation top -->
 

@@ -11,6 +11,8 @@ sidebarDepth: 0
 
 
 
+<!-- docs:child of bal-modal -->
+
 :::: tabs :options="{ useUrlFragment: false }"
 
 

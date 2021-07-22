@@ -11,6 +11,8 @@ sidebarDepth: 0
 
 
 
+<!-- docs:child of bal-navbar -->
+
 :::: tabs :options="{ useUrlFragment: false }"
 
 

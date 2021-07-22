@@ -11,6 +11,8 @@ sidebarDepth: 0
 
 
 
+<!-- docs:child of bal-hint -->
+
 :::: tabs :options="{ useUrlFragment: false }"
 
 
