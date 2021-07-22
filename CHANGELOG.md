@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/baloise/design-system/compare/v1.4.1...v1.5.0) (2021-07-22)
+
+
+### Bug Fixes
+
+* **text:** fix swap slot elements. closes [#303](https://github.com/baloise/design-system/issues/303) ([7cd266b](https://github.com/baloise/design-system/commit/7cd266b4c7c94bf875da03ed492d127e962bc5f3))
+* **vue:** change return type of ValidatorFn to string and boolean. closes [#306](https://github.com/baloise/design-system/issues/306) ([52e2b2b](https://github.com/baloise/design-system/commit/52e2b2bcbdf2287b459eaca26d0b92b8d83b9403))
+
+
+### Features
+
+* **select:** add disabled attribute to the options. closes [#306](https://github.com/baloise/design-system/issues/306) ([c7b38eb](https://github.com/baloise/design-system/commit/c7b38eb06ac8c4d59b4c60651d040189dfee765c))
+
+
+
+# [1.4.0](https://github.com/baloise/design-system/compare/v1.3.0...v1.4.0) (2021-06-23)
+
+
+
+# 1.3.0 (2021-06-16)
+
+
+
+
+
 # [1.4.0](https://github.com/baloise/design-system/compare/v1.3.2...v1.4.0) (2021-06-23)
 
 ### Features
