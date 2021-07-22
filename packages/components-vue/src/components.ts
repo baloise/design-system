@@ -589,7 +589,7 @@ export const BalDatepicker = /*@__PURE__*/ defineComponent({
       required: false,
     },
     allowedDates: {
-      type: Function as PropType<(datestring: string) => boolean>,
+      type: Function as PropType<((datestring: string) => boolean) | undefined>,
       default: undefined,
       required: false,
     },

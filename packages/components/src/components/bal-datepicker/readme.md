@@ -1,5 +1,18 @@
 # bal-datepicker <Badge text="Two-way binding"/>
 
+To set the date use the [date utils](/components/tooling/utils.html#dateutil).
+
+```javascript
+import { newDateString, now } from '@baloise/design-system-components'
+
+const datepickerDisabled = document.getElementById('datepicker-disabled')
+datepickerDisabled.value = newDateString(now())
+// or
+datepickerDisabled.value = newDateString(2020, 0, 13)
+// or
+datepickerDisabled.value = newDateString(new Date(2020, 0, 13))
+```
+
 <!-- Auto Generated Below -->
 
 

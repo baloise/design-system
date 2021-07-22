@@ -11,6 +11,8 @@ sidebarDepth: 0
 
 
 
+<!-- docs:child of bal-card -->
+
 :::: tabs :options="{ useUrlFragment: false }"
 
 ::: tab Code

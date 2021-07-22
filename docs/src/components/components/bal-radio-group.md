@@ -8,6 +8,8 @@ sidebarDepth: 0
 
 
 
+<!-- docs:child of bal-radio -->
+
 :::: tabs :options="{ useUrlFragment: false }"
 
 ::: tab Code
@@ -17,6 +19,7 @@ sidebarDepth: 0
 
 | Attribute     | Description                                                     | Type                        | Default        |
 | :------------ | :-------------------------------------------------------------- | :-------------------------- | :------------- |
+| **disabled**  | If `true`, the user cannot interact with the radios.            | `boolean , undefined`       | `undefined`    |
 | **interface** | Defines the layout of the radio button                          | `"radio" , "select-button"` | `'radio'`      |
 | **inverted**  | If `true` the component can be used on dark background          | `boolean`                   | `false`        |
 | **name**      | The name of the control, which is submitted with the form data. | `string`                    | `this.inputId` |

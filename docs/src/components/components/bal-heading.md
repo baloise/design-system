@@ -4,10 +4,12 @@ sidebarDepth: 0
 
 # bal-heading
 
+
+<!-- START: human documentation top -->
+
 A heading provides some additional helpers.
 
-
-
+<!-- END: human documentation top -->
 
 :::: tabs :options="{ useUrlFragment: false }"
 

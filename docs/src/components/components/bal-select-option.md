@@ -10,6 +10,8 @@ sidebarDepth: 0
 
 
 
+<!-- docs:child of bal-select -->
+
 :::: tabs :options="{ useUrlFragment: false }"
 
 ::: tab Code
@@ -17,10 +19,11 @@ sidebarDepth: 0
 ## Properties
 
 
-| Attribute | Description                                                                                       | Type                 | Default |
-| :-------- | :------------------------------------------------------------------------------------------------ | :------------------- | :------ |
-| **label** | Label will be shown in the input element when it got selected                                     | `string , undefined` |         |
-| **value** | The value of the select option. This value will be returned by the parent `<bal-select>` element. | `string , undefined` |         |
+| Attribute    | Description                                                                                       | Type                 | Default |
+| :----------- | :------------------------------------------------------------------------------------------------ | :------------------- | :------ |
+| **disabled** | If `true`, the user cannot interact with the option.                                              | `boolean`            | `false` |
+| **label**    | Label will be shown in the input element when it got selected                                     | `string , undefined` |         |
+| **value**    | The value of the select option. This value will be returned by the parent `<bal-select>` element. | `string , undefined` |         |
 
 
 :::

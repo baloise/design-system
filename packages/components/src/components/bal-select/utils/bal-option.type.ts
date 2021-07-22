@@ -1,6 +1,6 @@
 export interface BalOptionValue<T = unknown> {
   value: string
   label: string
-  disabled: boolean
+  disabled?: boolean
   data?: T
 }

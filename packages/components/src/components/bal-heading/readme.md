@@ -1,7 +1,5 @@
 # bal-heading
 
-A heading provides some additional helpers.
-
 <!-- Auto Generated Below -->
 
 

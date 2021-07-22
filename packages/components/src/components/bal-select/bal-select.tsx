@@ -661,7 +661,7 @@ export class Select {
                   'is-focused': this.focusIndex === index,
                   'has-checkbox': this.multiple,
                   'has-movement': this.hasMovement,
-                  'is-disabled': option.disabled,
+                  'is-disabled': option.disabled === true,
                 }}
                 disabled={option.disabled}
                 tabIndex={-1}

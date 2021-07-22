@@ -1,5 +1,16 @@
 # bal-select <Badge text="Two-way binding"/>
 
+For creating a list of options use the `BalOptionValue` interface.
+
+```typescript
+export interface BalOptionValue<T> {
+  value: string
+  label: string
+  disabled?: boolean
+  data?: T
+}
+```
+
 <!-- Auto Generated Below -->
 
 

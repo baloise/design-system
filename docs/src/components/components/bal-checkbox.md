@@ -17,7 +17,8 @@ Checkboxes allow users to select one or more items from a set. Checkboxes can tu
 
 ## Basic
 
-Checkboxes allow the selection of multiple options from a set of options. They appear as checked (ticked) when activated, or unchecked (unticked) when deactivated. Checkboxes can be selected as checked by setting the property.
+Checkboxes allow the selection of multiple options from a set of options. They appear as checked (ticked) when activated, or unchecked (unticked) when deactivated.
+        Checkboxes can be selected as checked by setting the property.
 
 <ClientOnly><docs-demo-bal-checkbox-23></docs-demo-bal-checkbox-23></ClientOnly>
 

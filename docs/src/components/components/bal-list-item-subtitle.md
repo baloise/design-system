@@ -10,6 +10,8 @@ sidebarDepth: 0
 
 
 
+<!-- docs:child of bal-list -->
+
 :::: tabs :options="{ useUrlFragment: false }"
 
 
