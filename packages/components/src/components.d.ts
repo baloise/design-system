@@ -741,6 +741,10 @@ export namespace Components {
          */
         "spellcheck": boolean;
         /**
+          * Adds a suffix the the inputvalue after blur.
+         */
+        "suffix"?: string;
+        /**
           * Defines the type of the input (text, number, email ...).
          */
         "type": InputTypes;
@@ -2594,6 +2598,10 @@ declare namespace LocalJSX {
           * If `true`, the element will have its spelling and grammar checked.
          */
         "spellcheck"?: boolean;
+        /**
+          * Adds a suffix the the inputvalue after blur.
+         */
+        "suffix"?: string;
         /**
           * Defines the type of the input (text, number, email ...).
          */

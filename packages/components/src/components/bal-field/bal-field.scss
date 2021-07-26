@@ -6,11 +6,15 @@
   bal-field {
     display: inline-block;
     position: relative;
-    min-height: 80px;
+    min-height: 60px;
 
     &.is-expanded {
       display: block;
       width: 100%;
+    }
+
+    &.has-label {
+      min-height: 80px;
     }
 
     bal-field-label {
@@ -30,6 +34,12 @@
 
     bal-field-control {
       margin-bottom: 24px;
+      display: flex;
+
+      bal-button {
+        margin-left: 8px;
+        margin-top: 4px;
+      }
     }
 
     bal-field-control + bal-field-message {

@@ -655,14 +655,14 @@ export class BalIcon {
 
 export declare interface BalInput extends Components.BalInput {}
 @ProxyCmp({
-  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberKeyboard', 'onlyNumbers', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'type', 'value'],
+  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberKeyboard', 'onlyNumbers', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
   methods: ['setFocus', 'getInputElement']
 })
 @Component({
   selector: 'bal-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberKeyboard', 'onlyNumbers', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'type', 'value'],
+  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberKeyboard', 'onlyNumbers', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
   outputs: ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']
 })
 export class BalInput {

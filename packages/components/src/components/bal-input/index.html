@@ -12,7 +12,7 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname" data-test-id="input"></bal-input>
+        <bal-input autofocus id="bal-input-1" name="firstName" placeholder="Enter your firstname" data-test-id="input"></bal-input>
         <bal-input id="bal-input-1-preview" disabled placeholder="Enter your firstname"></bal-input>
         <bal-input id="bal-input-1-change" disabled placeholder="Enter your firstname"></bal-input>
       </section>
@@ -21,7 +21,6 @@
         var input1 = document.getElementById('bal-input-1')
         var input1Preview = document.getElementById('bal-input-1-preview')
         var input1Change = document.getElementById('bal-input-1-change')
-        setTimeout(() => input1.setFocus(), 100)
         input1.addEventListener('balInput', function (event) {
           input1Preview.value = event.detail
         })
@@ -57,6 +56,11 @@
           inputOnlyNumbersPreview.innerHTML = event.detail
         })
       </script>
+
+      <h2 class="title is-size-2">Suffix</h2>
+      <section>
+        <bal-input suffix="%" name="percentage" placeholder="Enter a percentage number"></bal-input>
+      </section>
     </div>
   </body>
 </html>

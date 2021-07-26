@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from '@stencil/core'
+import { Component, h, Host, Prop, Element } from '@stencil/core'
 
 @Component({
   tag: 'bal-field-label',
@@ -6,6 +6,9 @@ import { Component, h, Host, Prop } from '@stencil/core'
   scoped: true,
 })
 export class FieldLabel {
+  @Element() element!: HTMLElement
+  parrentBalFieldElement!: HTMLBalFieldElement | null
+
   /**
    * If `true` a asterix (*) is added to the label text
    */
@@ -15,6 +18,21 @@ export class FieldLabel {
    * If `true` the component takes the whole width
    */
   @Prop() expanded: boolean = false
+
+  componentDidLoad() {
+    if (this.element) {
+      this.parrentBalFieldElement = this.element.closest('bal-field')
+      if (this.parrentBalFieldElement) {
+        this.parrentBalFieldElement.classList.add('has-label')
+      }
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.parrentBalFieldElement) {
+      this.parrentBalFieldElement.classList.remove('has-label')
+    }
+  }
 
   render() {
     return (
