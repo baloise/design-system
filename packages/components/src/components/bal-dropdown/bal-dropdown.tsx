@@ -139,7 +139,12 @@ export class Dropdown {
   private calcIsDropDownContentUp() {
     const box = this.element.getBoundingClientRect()
     const clientHeight = this.contentElement?.clientHeight || 250
-    this.isDropDownContentUp = window.innerHeight < box.bottom + clientHeight + 50
+    const offsetTop = this.element?.offsetTop || 0
+    if (offsetTop < clientHeight) {
+      this.isDropDownContentUp = false
+    } else {
+      this.isDropDownContentUp = window.innerHeight < box.bottom + clientHeight + 50
+    }
   }
 
   componentWillRender() {
