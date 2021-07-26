@@ -35,6 +35,11 @@ export class Input implements ComponentInterface {
   @Prop() accept?: string
 
   /**
+   * Adds a suffix the the inputvalue after blur.
+   */
+  @Prop() suffix?: string
+
+  /**
    * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
    * Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
    */
@@ -172,7 +177,7 @@ export class Input implements ComponentInterface {
    * Update the native input element when the value changes
    */
   @Watch('value')
-  protected valueChanged(newValue: string | number | undefined, oldValue: string | number | undefined) {
+  protected async valueChanged(newValue: string | number | undefined, oldValue: string | number | undefined) {
     if (this.didInit && !this.hasFocus && newValue !== oldValue) {
       this.balChange.emit(this.getValue())
     }
@@ -246,8 +251,15 @@ export class Input implements ComponentInterface {
     return Promise.resolve(this.nativeInput!)
   }
 
+  private getRawValue(): string {
+    const value = typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString()
+    return value
+  }
+
   private getValue(): string {
-    return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString()
+    const value = this.getRawValue()
+    const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
+    return `${value}${suffix}`
   }
 
   private onInput = (ev: Event) => {
@@ -270,12 +282,22 @@ export class Input implements ComponentInterface {
   private onFocus = (ev: FocusEvent) => {
     this.hasFocus = true
     this.balFocus.emit(ev)
+
+    const input = ev.target as HTMLInputElement | null
+    if (input) {
+      input.value = this.getRawValue()
+    }
   }
 
   private onBlur = (ev: FocusEvent) => {
     this.hasFocus = false
     this.balBlur.emit(ev)
-    this.balChange.emit(this.getValue())
+    this.balChange.emit(this.getRawValue())
+
+    const input = ev.target as HTMLInputElement | null
+    if (input) {
+      input.value = this.getValue()
+    }
   }
 
   private onClick = (ev: MouseEvent) => {
@@ -292,7 +314,7 @@ export class Input implements ComponentInterface {
   }
 
   render() {
-    const value = this.getValue()
+    const value = this.hasFocus ? this.getRawValue() : this.getValue()
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
     if (label) {
