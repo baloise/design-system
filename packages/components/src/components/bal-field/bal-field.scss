@@ -34,6 +34,12 @@
 
     bal-field-control {
       margin-bottom: 24px;
+      display: flex;
+
+      bal-button {
+        margin-left: 8px;
+        margin-top: 4px;
+      }
     }
 
     bal-field-control + bal-field-message {
