@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/baloise/design-system/compare/v1.5.0...v1.6.0) (2021-07-26)
+
+
+### Bug Fixes
+
+* change modal background and field height ([eb87f1b](https://github.com/baloise/design-system/commit/eb87f1b639d61028c4712a9229b828358d0896d3))
+* **dropdown:** only open menu when there is enough space on top ([6edc40b](https://github.com/baloise/design-system/commit/6edc40bec8a1de460a4b1ef01c45c5d3af397ea8))
+* **field:** change min height if label is given or not ([1d1fc2e](https://github.com/baloise/design-system/commit/1d1fc2e6dc849dba0186b7ee2c7342a8e949d22d))
+
+
+### Features
+
+* **field:** add button addons ([1201eed](https://github.com/baloise/design-system/commit/1201eeda219335db91231b333a52f496b5f1a443))
+* **input:** add suffix attribute ([121e585](https://github.com/baloise/design-system/commit/121e585f7ec94b22988fe1c87f85eaf85c21ae15))
+
+
+
+
+
 # [1.5.0](https://github.com/baloise/design-system/compare/v1.4.1...v1.5.0) (2021-07-22)
 
 
