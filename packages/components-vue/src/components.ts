@@ -995,6 +995,11 @@ export const BalInput = /*@__PURE__*/ defineComponent({
       default: undefined,
       required: false,
     },
+    suffix: {
+      type: String,
+      default: undefined,
+      required: false,
+    },
     autocapitalize: {
       type: String,
       default: 'off',
