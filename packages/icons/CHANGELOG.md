@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://github.com/baloise/design-system/compare/v1.6.0...v1.6.1) (2021-07-28)
+
+**Note:** Version bump only for package @baloise/design-system-icons
+
+
+
+
+
 # [1.6.0](https://github.com/baloise/design-system/compare/v1.5.0...v1.6.0) (2021-07-26)
 
 **Note:** Version bump only for package @baloise/design-system-icons

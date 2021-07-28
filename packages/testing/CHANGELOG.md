@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://github.com/baloise/design-system/compare/v1.6.0...v1.6.1) (2021-07-28)
+
+
+### Bug Fixes
+
+* [#314](https://github.com/baloise/design-system/issues/314), bal-file-upload: clear state of html input file on change to fix the bug, emit change event only if list of files changed - not if rejection happened ([8529906](https://github.com/baloise/design-system/commit/85299063395ae3ddc3237b68839609ee1cff3798))
+
+
+
+
+
 # [1.6.0](https://github.com/baloise/design-system/compare/v1.5.0...v1.6.0) (2021-07-26)
 
 **Note:** Version bump only for package @baloise/design-system-testing
