@@ -134,8 +134,10 @@ export class FileUpload {
           }
         }
       }
-      this.files = [...list]
-      this.balChangeEventEmitter.emit(this.files)
+      if(this.files.length !== list.length) {
+        this.files = [...list]
+        this.balChangeEventEmitter.emit(this.files)
+      }
     }
   }
 
@@ -172,9 +174,10 @@ export class FileUpload {
   }
 
   onChange = (): void => {
-    if ((this.fileInput, this.fileInput.files)) {
+    if (this.fileInput?.files) {
       const files = this.fileInput.files
       this.handleFiles(files)
+      this.fileInput.value = ''
     }
   }
 
