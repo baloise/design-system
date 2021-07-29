@@ -13,11 +13,13 @@ bal-text {
   font-size: $size-normal !important;
   line-height: $bal_lineheight_20px;
 
-  .is-bold {
+  &.is-bold,
+  &.is-bold span {
     font-weight: $weight-bold !important;
   }
 
-  &.is-small {
+  &.is-small,
+  &.is-small span {
     @include lhCrop(1);
     font-size: $size-small !important;
     line-height: $bal_lineheight_15px;
