@@ -21,7 +21,7 @@ export class Text {
   /**
    * Defines the color of the text.
    */
-  @Prop() color: ColorTypes | '' = ''
+  @Prop() color: ColorTypes | 'hint' | '' = ''
 
   render() {
     return (

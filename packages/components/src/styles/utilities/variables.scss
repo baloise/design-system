@@ -1,3 +1,4 @@
+@import 'node_modules/bulma/sass/utilities/derived-variables.sass';
 @import 'bal-variables';
 
 /**
@@ -44,7 +45,9 @@ $info: $blue;
 $info-dark: $blue-dark;
 $link: $cyan;
 $warning: $yellow;
+$warning-invert: $white;
 $danger: $red;
+$hint: $blue-light-text;
 $success: $green;
 
 $primary-invert: $white;
@@ -52,6 +55,68 @@ $success-invert: $white;
 
 $text: $black;
 $text-strong: $blue;
+
+$colors: mergeColorMaps(
+  (
+    'white': (
+      $white,
+      $black,
+    ),
+    'black': (
+      $black,
+      $white,
+    ),
+    'light': (
+      $light,
+      $light-invert,
+    ),
+    'dark': (
+      $dark,
+      $dark-invert,
+    ),
+    'primary': (
+      $primary,
+      $primary-invert,
+      $primary-light,
+      $primary-dark,
+    ),
+    'link': (
+      $link,
+      $link-invert,
+      $link-light,
+      $link-dark,
+    ),
+    'info': (
+      $info,
+      $info-invert,
+      $info-light,
+      $info-dark,
+    ),
+    'success': (
+      $success,
+      $success-invert,
+      $success-light,
+      $success-dark,
+    ),
+    'warning': (
+      $warning,
+      $warning-invert,
+      $warning-light,
+      $warning-dark,
+    ),
+    'danger': (
+      $danger,
+      $danger-invert,
+      $danger-light,
+      $danger-dark,
+    ),
+    'hint': (
+      $hint,
+      $hint,
+    ),
+  ),
+  $custom-colors
+);
 
 $shades: (
   'blue-darker': $blue-darker,

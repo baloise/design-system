@@ -1245,7 +1245,7 @@ export namespace Components {
         /**
           * Defines the color of the text.
          */
-        "color": ColorTypes | '';
+        "color": ColorTypes | 'hint' | '';
         /**
           * If `true` the text has a small size
          */
@@ -3123,7 +3123,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the text.
          */
-        "color"?: ColorTypes | '';
+        "color"?: ColorTypes | 'hint' | '';
         /**
           * If `true` the text has a small size
          */
