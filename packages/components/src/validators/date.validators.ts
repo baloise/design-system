@@ -1,3 +1,4 @@
+import { isEmpty } from '../utils'
 import * as BalUtils from '../utils'
 import { BalValidatorFn } from './validator.type'
 
@@ -11,6 +12,9 @@ import { BalValidatorFn } from './validator.type'
  */
 export function isBefore(date: Date | string): BalValidatorFn {
   return function (value: any) {
+    if (isEmpty(value)) {
+      return true
+    }
     return BalUtils.isBefore(value, date)
   }
 }
@@ -25,6 +29,9 @@ export function isBefore(date: Date | string): BalValidatorFn {
  */
 export function isAfter(date: Date | string): BalValidatorFn {
   return function (value: any) {
+    if (isEmpty(value)) {
+      return true
+    }
     return BalUtils.isAfter(value, date)
   }
 }
@@ -39,6 +46,9 @@ export function isAfter(date: Date | string): BalValidatorFn {
  */
 export function isDate(): BalValidatorFn {
   return function (value: any) {
+    if (isEmpty(value)) {
+      return true
+    }
     return BalUtils.isValidDate(value)
   }
 }

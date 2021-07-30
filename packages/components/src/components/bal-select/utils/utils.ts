@@ -1,8 +1,12 @@
-import { isNil, lowerCase, trim } from 'lodash'
+import { isArray, isNil, lowerCase, trim } from 'lodash'
 import { BalOptionController } from '../bal-select'
 
 export function getValues(values: string[] | undefined): string[] {
-  return isNil(values) ? [] : values
+  if (isArray(values)) {
+    return values
+  }
+
+  return []
 }
 
 export function length(values?: string[]): number {
