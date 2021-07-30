@@ -81,6 +81,10 @@
 
 <div class="bal-app">
   <div class="columns is-multiline mt-2">
+    <div class="column is-4 has-background-hint">
+      <p class="has-text-white is-bold">hint</p>
+      <p class="has-text-white is-small">#7188b8</p>
+    </div>
     <div class="column is-4 has-background-success">
       <p class="has-text-white is-bold">success</p>
       <p class="has-text-white is-small">#3fc889</p>
