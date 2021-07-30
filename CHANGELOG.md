@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.3](https://github.com/baloise/design-system/compare/v1.6.2...v1.6.3) (2021-07-30)
+
+
+### Bug Fixes
+
+* **select:** getValues returns now always an array ([89fd89e](https://github.com/baloise/design-system/commit/89fd89e1f9280ef4450b03e6eed92b5956c1b8d1))
+* **validators:** empty values will not get validate unless isRequired is set ([a85a248](https://github.com/baloise/design-system/commit/a85a24882ce7698330e129290d06951c159b9182))
+* **vue:** improve rules condition for raised error messages ([cfcfead](https://github.com/baloise/design-system/commit/cfcfead53a88882be3c990adcb47d34f4e178b6f))
+
+
+
+
+
 ## [1.6.2](https://github.com/baloise/design-system/compare/v1.6.1...v1.6.2) (2021-07-29)
 
 

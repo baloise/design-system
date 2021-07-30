@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.3](https://github.com/baloise/design-system/compare/v1.6.2...v1.6.3) (2021-07-30)
+
+
+### Bug Fixes
+
+* **vue:** improve rules condition for raised error messages ([cfcfead](https://github.com/baloise/design-system/commit/cfcfead53a88882be3c990adcb47d34f4e178b6f))
+
+
+
+
+
 ## [1.6.2](https://github.com/baloise/design-system/compare/v1.6.1...v1.6.2) (2021-07-29)
 
 **Note:** Version bump only for package @baloise/design-system-components-vue
