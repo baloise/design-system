@@ -1,5 +1,5 @@
 import { BalValidatorFn } from '@baloise/design-system-components'
-import { isArray, isNil, isString } from 'lodash'
+import { isArray } from 'lodash'
 import { Ref, unref } from 'vue'
 
 /**

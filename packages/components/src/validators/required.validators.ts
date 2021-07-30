@@ -1,4 +1,3 @@
-import { isArray, isBoolean, isNil, isString, isObject } from 'lodash'
 import { isEmpty } from '../utils'
 import { BalValidatorFn } from './validator.type'
 
