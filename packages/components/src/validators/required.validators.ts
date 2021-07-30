@@ -1,4 +1,5 @@
 import { isArray, isBoolean, isNil, isString, isObject } from 'lodash'
+import { isEmpty } from '../utils'
 import { BalValidatorFn } from './validator.type'
 
 /**
@@ -11,27 +12,7 @@ import { BalValidatorFn } from './validator.type'
  */
 export function isRequired(): BalValidatorFn {
   return function (value: any) {
-    if (isNil(value)) {
-      return false
-    }
-
-    if (isString(value) && value === '') {
-      return false
-    }
-
-    if (isBoolean(value)) {
-      return true
-    }
-
-    if (isArray(value) && value.length === 0) {
-      return false
-    }
-
-    if (isObject(value) && Object.keys(value).length === 0) {
-      return false
-    }
-
-    return true
+    return !isEmpty(value)
   }
 }
 

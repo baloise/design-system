@@ -1,4 +1,5 @@
 import { isNil } from 'lodash'
+import { isEmpty } from '../utils'
 import { BalValidatorFn } from './validator.type'
 
 /**
@@ -10,6 +11,9 @@ import { BalValidatorFn } from './validator.type'
  */
 export function matchesRegex(regex: RegExp): BalValidatorFn {
   return function (value: any) {
+    if (isEmpty(value)) {
+      return true
+    }
     return validateRegex(regex, value)
   }
 }
@@ -24,6 +28,9 @@ export function matchesRegex(regex: RegExp): BalValidatorFn {
 export function isEmail(): BalValidatorFn {
   const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   return function (value: any) {
+    if (isEmpty(value)) {
+      return true
+    }
     return validateRegex(regex, value)
   }
 }
@@ -38,6 +45,9 @@ export function isEmail(): BalValidatorFn {
 export function isPhone(): BalValidatorFn {
   const regex = /^\+?[0-9 ]*$/
   return function (value: any) {
+    if (isEmpty(value)) {
+      return true
+    }
     return validateRegex(regex, value)
   }
 }

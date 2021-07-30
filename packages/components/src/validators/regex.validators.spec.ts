@@ -4,8 +4,9 @@ describe('regex', () => {
   test('matchesRegex', () => {
     const validator = matchesRegex(new RegExp('^\\d+$'))
     expect(validator('3')).toBe(true)
-    expect(validator(undefined)).toBe(false)
-    expect(validator(null)).toBe(false)
+    expect(validator(undefined)).toBe(true)
+    expect(validator(null)).toBe(true)
+    expect(validator('')).toBe(true)
   })
 
   test('isEmail', () => {

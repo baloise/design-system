@@ -1,4 +1,4 @@
-import { isValidMonetaryNumber } from '../utils'
+import { isEmpty, isValidMonetaryNumber } from '../utils'
 import { parseInt, isNumber as _isNumber } from 'lodash'
 import { BalValidatorFn } from './validator.type'
 
@@ -13,6 +13,9 @@ import { BalValidatorFn } from './validator.type'
  */
 export function isMin(min: number): BalValidatorFn {
   return function (value: any) {
+    if (isEmpty(value)) {
+      return true
+    }
     const num = parseInt(value)
     if (num === undefined) {
       return false
@@ -32,6 +35,9 @@ export function isMin(min: number): BalValidatorFn {
  */
 export function isMax(max: number): BalValidatorFn {
   return function (value: any) {
+    if (isEmpty(value)) {
+      return true
+    }
     const num = parseInt(value)
     if (num === undefined) {
       return false
@@ -50,6 +56,9 @@ export function isMax(max: number): BalValidatorFn {
  */
 export function isNumber(): BalValidatorFn {
   return function (value: any) {
+    if (isEmpty(value)) {
+      return true
+    }
     return _isNumber(value)
   }
 }
@@ -65,6 +74,9 @@ export function isNumber(): BalValidatorFn {
  */
 export function isMonetaryNumber(): BalValidatorFn {
   return function (value: any) {
+    if (isEmpty(value)) {
+      return true
+    }
     if (_isNumber(value)) {
       return true
     }
