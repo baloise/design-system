@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/baloise/design-system/compare/v1.6.3...v1.7.0) (2021-07-30)
+
+
+### Features
+
+* **text:** add new hint color ([3320708](https://github.com/baloise/design-system/commit/3320708723f1e6b733ffbf34e8ebf85cbeb883e9))
+
+
+
+## 1.6.2 (2021-07-29)
+
+
+
+
+
 ## [1.6.3](https://github.com/baloise/design-system/compare/v1.6.2...v1.6.3) (2021-07-30)
 
 
