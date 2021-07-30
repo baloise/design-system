@@ -1,5 +1,5 @@
 import { BalValidatorFn } from '@baloise/design-system-components'
-import { isArray } from 'lodash'
+import { isArray, isNil, isString } from 'lodash'
 import { Ref, unref } from 'vue'
 
 /**
@@ -38,7 +38,7 @@ export function validators(isDisabledOrRules: any, rules?: any): ValidatorsRules
     if (isArray(rules)) {
       for (let i = 0; i < rules.length; i++) {
         const errorMessage = await rules[i](unref(value))
-        if (errorMessage !== null) {
+        if (errorMessage !== null && errorMessage !== undefined && errorMessage !== '' && errorMessage !== true) {
           return errorMessage
         }
       }

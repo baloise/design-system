@@ -29,7 +29,8 @@
     "build:compile": "tsc -p .",
     "build:bundle": "rollup --config rollup.config.js",
     "build:web-types": "node ./.scripts/build-web-types.js",
-    "build:vetur": "node ./.scripts/build-vetur.js"
+    "build:vetur": "node ./.scripts/build-vetur.js",
+    "test": "jest"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
@@ -39,11 +40,14 @@
   ],
   "license": "Apache-2.0",
   "devDependencies": {
+    "@types/jest": "^26.0.24",
     "@types/lodash": "^4.14.169",
     "change-case": "^4.1.2",
+    "jest": "^27.0.6",
     "lodash": "^4.17.21",
     "rimraf": "^3.0.2",
     "rollup": "^2.48.0",
+    "ts-jest": "^27.0.4",
     "typescript": "^4.2.4",
     "vue": "^3.0.11"
   },
