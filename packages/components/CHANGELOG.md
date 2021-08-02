@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/baloise/design-system/compare/v1.7.1...v1.8.0) (2021-08-02)
+
+
+### Features
+
+* **heading:** add new space attribute ([f07459d](https://github.com/baloise/design-system/commit/f07459d86c085c99caf6d3d79abb6994d216cef5))
+
+
+
+
+
 ## [1.7.1](https://github.com/baloise/design-system/compare/v1.7.0...v1.7.1) (2021-07-30)
 
 **Note:** Version bump only for package @baloise/design-system-components
