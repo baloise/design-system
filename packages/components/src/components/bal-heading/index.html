@@ -10,7 +10,7 @@
   </head>
   <body class="bal-app">
     <div class="container">
-      <h2 class="title is-size-2">Basic</h2>
+      <h2 class="title is-size-2">Sizes</h2>
       <section>
         <bal-heading level="h1">H1 MetaPro Normal</bal-heading>
         <bal-heading level="h2">H2 MetaPro Normal</bal-heading>
@@ -22,11 +22,27 @@
 
       <h2 class="title is-size-2">Colors</h2>
       <section>
-        <bal-heading color="primary" level="h4" spaced="false">Primary</bal-heading>
-        <bal-heading color="info" level="h4" spaced="false">Info</bal-heading>
-        <bal-heading color="success" level="h4" spaced="false">Success</bal-heading>
-        <bal-heading color="warning" level="h4" spaced="false">Warning</bal-heading>
-        <bal-heading color="danger" level="h4" spaced="false">Danger</bal-heading>
+        <bal-heading color="primary" level="h4" space="none">Primary</bal-heading>
+        <bal-heading color="info" level="h4" space="none">Info</bal-heading>
+        <bal-heading color="success" level="h4" space="none">Success</bal-heading>
+        <bal-heading color="warning" level="h4" space="none">Warning</bal-heading>
+        <bal-heading color="danger" level="h4" space="none">Danger</bal-heading>
+      </section>
+
+      <h2 class="title is-size-2">Spacing</h2>
+      <section>
+        <div class="has-background-blue-light is-flex mb-3">
+          <bal-heading color="info" level="h4" space="none">None</bal-heading>
+        </div>
+        <div class="has-background-blue-light is-flex mb-3">
+          <bal-heading color="info" level="h4" space="top">Top</bal-heading>
+        </div>
+        <div class="has-background-blue-light is-flex mb-3">
+          <bal-heading color="info" level="h4" space="bottom">Bottom</bal-heading>
+        </div>
+        <div class="has-background-blue-light is-flex">
+          <bal-heading color="info" level="h4" space="all">All</bal-heading>
+        </div>
       </section>
     </div>
   </body>

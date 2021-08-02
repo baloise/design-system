@@ -562,7 +562,11 @@ export namespace Components {
          */
         "level": HeadingLevels;
         /**
-          * If 'false' the margin of the heading gets dropped.
+          * Defines at which position the heading has spacing.
+         */
+        "space": 'all' | 'none' | 'top' | 'bottom';
+        /**
+          * @deprecated If 'false' the margin of the heading gets dropped.
          */
         "spaced": boolean;
         /**
@@ -2416,7 +2420,11 @@ declare namespace LocalJSX {
          */
         "level"?: HeadingLevels;
         /**
-          * If 'false' the margin of the heading gets dropped.
+          * Defines at which position the heading has spacing.
+         */
+        "space"?: 'all' | 'none' | 'top' | 'bottom';
+        /**
+          * @deprecated If 'false' the margin of the heading gets dropped.
          */
         "spaced"?: boolean;
         /**

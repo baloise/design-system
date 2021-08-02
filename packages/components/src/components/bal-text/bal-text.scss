@@ -13,6 +13,10 @@ bal-text {
   font-size: $size-normal !important;
   line-height: $bal_lineheight_20px;
 
+  span {
+    word-break: break-word;
+  }
+
   &.is-bold,
   &.is-bold span {
     font-weight: $weight-bold !important;

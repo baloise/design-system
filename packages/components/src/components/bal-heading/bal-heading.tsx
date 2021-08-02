@@ -27,9 +27,14 @@ export class Heading {
   @Prop() subtitle: boolean = false
 
   /**
-   * If 'false' the margin of the heading gets dropped.
+   * @deprecated If 'false' the margin of the heading gets dropped.
    */
-  @Prop({ reflect: true }) spaced: boolean = true
+  @Prop() spaced: boolean = true
+
+  /**
+   * Defines at which position the heading has spacing.
+   */
+  @Prop() space: 'all' | 'none' | 'top' | 'bottom' = 'all'
 
   /**
    * The theme type of the toast. Given by bulma our css framework.
@@ -41,12 +46,12 @@ export class Heading {
    */
   @Prop() inverted = false
 
-  get fontSize() {
+  get fontSize(): string {
     const size = `${this.level}`
     return `is-size-${size.replace('h', '')}`
   }
 
-  get fontColor() {
+  get fontColor(): string {
     if (this.inverted) {
       return `has-text-white`
     }
@@ -56,6 +61,19 @@ export class Heading {
     }
 
     return ''
+  }
+
+  get spacing(): string {
+    switch (this.space) {
+      case 'none':
+        return 'm-0'
+      case 'top':
+        return 'mb-0'
+      case 'bottom':
+        return 'mt-0'
+      default:
+        return ''
+    }
   }
 
   render() {
@@ -68,6 +86,7 @@ export class Heading {
             'title': this.subtitle === false,
             'subtitle': this.subtitle === true,
             'has-no-margin': !this.spaced,
+            [this.spacing]: true,
             [this.fontSize]: true,
             [this.fontColor]: true,
           }}
