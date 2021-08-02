@@ -565,13 +565,13 @@ export class BalFooter {
 
 export declare interface BalHeading extends Components.BalHeading {}
 @ProxyCmp({
-  inputs: ['color', 'inverted', 'level', 'spaced', 'subtitle', 'visualLevel']
+  inputs: ['color', 'inverted', 'level', 'space', 'spaced', 'subtitle', 'visualLevel']
 })
 @Component({
   selector: 'bal-heading',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color', 'inverted', 'level', 'spaced', 'subtitle', 'visualLevel']
+  inputs: ['color', 'inverted', 'level', 'space', 'spaced', 'subtitle', 'visualLevel']
 })
 export class BalHeading {
   protected el: HTMLElement;

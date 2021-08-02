@@ -873,6 +873,11 @@ export const BalHeading = /*@__PURE__*/ defineComponent({
       default: true,
       required: false,
     },
+    space: {
+      type: String,
+      default: 'all',
+      required: false,
+    },
     color: {
       type: String,
       default: '',
