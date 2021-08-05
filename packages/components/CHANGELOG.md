@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.1](https://github.com/baloise/design-system/compare/v1.8.0...v1.8.1) (2021-08-05)
+
+
+### Bug Fixes
+
+* **data:** add missing disable state for the edit button ([44e2682](https://github.com/baloise/design-system/commit/44e26823ad6d0fb6cf0010e605740698bc60acc5))
+* **select:** remove old unused attribute searchInput ([d03c1a8](https://github.com/baloise/design-system/commit/d03c1a85ec7177ea555b09e331ea1d16a99d9765))
+
+
+
+
+
 # [1.8.0](https://github.com/baloise/design-system/compare/v1.7.1...v1.8.0) (2021-08-02)
 
 
