@@ -11,6 +11,7 @@
 
 | Property   | Attribute  | Description                                                           | Type      | Default |
 | ---------- | ---------- | --------------------------------------------------------------------- | --------- | ------- |
+| `disabled` | `disabled` | If `true` the button will get disabled.                               | `boolean` | `false` |
 | `editable` | `editable` | If `true` a small button with a edit icon will be shown on the right. | `boolean` | `false` |
 
 

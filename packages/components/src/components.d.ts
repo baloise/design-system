@@ -306,6 +306,10 @@ export namespace Components {
     }
     interface BalDataValue {
         /**
+          * If `true` the button will get disabled.
+         */
+        "disabled": boolean;
+        /**
           * If `true` a small button with a edit icon will be shown on the right.
          */
         "editable": boolean;
@@ -978,6 +982,9 @@ export namespace Components {
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
+        /**
+          * Defines if the select is in a loading state.
+         */
         "loading": boolean;
         /**
           * If `true` multiple option can be selected
@@ -1007,7 +1014,6 @@ export namespace Components {
           * Defines the height of the dropdown list.
          */
         "scrollable": number;
-        "searchInput"?: (inputValue: string) => void;
         /**
           * Select option by passed value
          */
@@ -2156,6 +2162,10 @@ declare namespace LocalJSX {
     }
     interface BalDataValue {
         /**
+          * If `true` the button will get disabled.
+         */
+        "disabled"?: boolean;
+        /**
           * If `true` a small button with a edit icon will be shown on the right.
          */
         "editable"?: boolean;
@@ -2828,6 +2838,9 @@ declare namespace LocalJSX {
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
+        /**
+          * Defines if the select is in a loading state.
+         */
         "loading"?: boolean;
         /**
           * If `true` multiple option can be selected
@@ -2881,7 +2894,6 @@ declare namespace LocalJSX {
           * Defines the height of the dropdown list.
          */
         "scrollable"?: number;
-        "searchInput"?: (inputValue: string) => void;
         /**
           * If `true` the user can search by typing into the input field.
          */

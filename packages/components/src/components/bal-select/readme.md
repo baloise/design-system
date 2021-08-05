@@ -16,23 +16,22 @@ export interface BalOptionValue<T> {
 
 ## Properties
 
-| Property      | Attribute       | Description                                                                       | Type                                          | Default        |
-| ------------- | --------------- | --------------------------------------------------------------------------------- | --------------------------------------------- | -------------- |
-| `balTabindex` | `bal-tabindex`  | The tabindex of the control.                                                      | `number`                                      | `0`            |
-| `disabled`    | `disabled`      | If `true` the component is diabled.                                               | `boolean`                                     | `false`        |
-| `expanded`    | `expanded`      | If `true` the component uses the whole width.                                     | `boolean`                                     | `false`        |
-| `hasMovement` | `has-movement`  | Enables the slide in animation for the option items.                              | `boolean`                                     | `false`        |
-| `inverted`    | `inverted`      | Set this to `true` when the component is placed on a dark background.             | `boolean`                                     | `false`        |
-| `loading`     | `loading`       |                                                                                   | `boolean`                                     | `false`        |
-| `multiple`    | `multiple`      | If `true` multiple option can be selected                                         | `boolean`                                     | `false`        |
-| `name`        | `name`          | The name of the control, which is submitted with the form data.                   | `string`                                      | `this.inputId` |
-| `noBorder`    | `no-border`     | Removes the border of the input.                                                  | `boolean`                                     | `false`        |
-| `noDataLabel` | `no-data-label` | This label is shown if typeahead is active and all the options are filtered out.  | `string \| undefined`                         | `undefined`    |
-| `placeholder` | `placeholder`   | The text to display when the select is empty.                                     | `string \| undefined`                         | `undefined`    |
-| `scrollable`  | `scrollable`    | Defines the height of the dropdown list.                                          | `number`                                      | `250`          |
-| `searchInput` | --              |                                                                                   | `((inputValue: string) => void) \| undefined` | `undefined`    |
-| `typeahead`   | `typeahead`     | If `true` the user can search by typing into the input field.                     | `boolean`                                     | `false`        |
-| `value`       | --              | Selected option values. Could also be passed as a string, which gets transformed. | `string[] \| undefined`                       | `[]`           |
+| Property      | Attribute       | Description                                                                       | Type                    | Default        |
+| ------------- | --------------- | --------------------------------------------------------------------------------- | ----------------------- | -------------- |
+| `balTabindex` | `bal-tabindex`  | The tabindex of the control.                                                      | `number`                | `0`            |
+| `disabled`    | `disabled`      | If `true` the component is diabled.                                               | `boolean`               | `false`        |
+| `expanded`    | `expanded`      | If `true` the component uses the whole width.                                     | `boolean`               | `false`        |
+| `hasMovement` | `has-movement`  | Enables the slide in animation for the option items.                              | `boolean`               | `false`        |
+| `inverted`    | `inverted`      | Set this to `true` when the component is placed on a dark background.             | `boolean`               | `false`        |
+| `loading`     | `loading`       | Defines if the select is in a loading state.                                      | `boolean`               | `false`        |
+| `multiple`    | `multiple`      | If `true` multiple option can be selected                                         | `boolean`               | `false`        |
+| `name`        | `name`          | The name of the control, which is submitted with the form data.                   | `string`                | `this.inputId` |
+| `noBorder`    | `no-border`     | Removes the border of the input.                                                  | `boolean`               | `false`        |
+| `noDataLabel` | `no-data-label` | This label is shown if typeahead is active and all the options are filtered out.  | `string \| undefined`   | `undefined`    |
+| `placeholder` | `placeholder`   | The text to display when the select is empty.                                     | `string \| undefined`   | `undefined`    |
+| `scrollable`  | `scrollable`    | Defines the height of the dropdown list.                                          | `number`                | `250`          |
+| `typeahead`   | `typeahead`     | If `true` the user can search by typing into the input field.                     | `boolean`               | `false`        |
+| `value`       | --              | Selected option values. Could also be passed as a string, which gets transformed. | `string[] \| undefined` | `[]`           |
 
 
 ## Events
