@@ -94,8 +94,10 @@ export class Select {
    */
   @Prop() scrollable: number = 250
 
+  /**
+   * Defines if the select is in a loading state.
+   */
   @Prop() loading: boolean = false
-  @Prop() searchInput?: (inputValue: string) => void = undefined
 
   /**
    * Selected option values. Could also be passed as a string, which gets transformed.
@@ -561,9 +563,6 @@ export class Select {
       this.updateFocus()
       preventDefault(event)
 
-      if (this.searchInput !== undefined) {
-        this.searchInput(this.inputValue)
-      }
       this.balInput.emit(this.inputValue)
     }
   }
