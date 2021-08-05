@@ -486,6 +486,11 @@ export const BalDataValue = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   emits: {
     balClick: (value: MouseEvent) => true,
@@ -1588,11 +1593,6 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
     loading: {
       type: Boolean,
       default: false,
-      required: false,
-    },
-    searchInput: {
-      type: Function as PropType<((inputValue: string) => void) | undefined>,
-      default: undefined,
       required: false,
     },
     value: {
