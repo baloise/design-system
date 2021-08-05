@@ -220,15 +220,17 @@
   &.is-info.is-outlined {
     border-color: $blue-line;
 
-    &:hover,
-    &.is-hovered,
-    &:focus,
-    &.is-focused,
-    &:active,
-    &.is-active {
-      color: $blue;
-      background: $blue-light-line;
-      border-color: $blue-line;
+    &:not(.is-disabled) {
+      &:hover,
+      &.is-hovered,
+      &:focus,
+      &.is-focused,
+      &:active,
+      &.is-active {
+        color: $blue;
+        background: $blue-light-line;
+        border-color: $blue-line;
+      }
     }
   }
 
@@ -324,7 +326,7 @@
         background: $cyan;
       }
 
-      &.is-info {
+      &.is-info:not(.is-outlined) {
         color: $white;
         background: $blue;
       }

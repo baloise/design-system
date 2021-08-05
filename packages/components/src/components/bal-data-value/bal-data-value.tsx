@@ -15,6 +15,11 @@ export class DataValue {
   @Prop() editable = false
 
   /**
+   * If `true` the button will get disabled.
+   */
+  @Prop() disabled = false
+
+  /**
    * Emitted when the edit button has focus.
    */
   @Event() balClick!: EventEmitter<MouseEvent>
@@ -50,10 +55,11 @@ export class DataValue {
         </div>
         <bal-button
           class="bal-data-value-btn"
+          square
           outlined
           size="small"
-          square
           color="info"
+          disabled={this.disabled}
           onBalBlur={_ => this.balBlur.emit()}
           onBalFocus={_ => this.balFocus.emit()}
           onClick={ev => this.onClickHandler(ev)}
