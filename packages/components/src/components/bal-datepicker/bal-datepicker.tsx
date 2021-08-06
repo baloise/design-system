@@ -466,6 +466,7 @@ export class Datepicker implements ComponentInterface {
         aria-disabled={this.disabled ? 'true' : null}
         class={{
           'is-disabled': this.disabled,
+          'is-fullwidth': this.expanded,
         }}
       >
         <bal-dropdown expanded={this.expanded} fixedContentWidth={true} onBalCollapse={this.onDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
