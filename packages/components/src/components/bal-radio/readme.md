@@ -1,4 +1,4 @@
-# bal-radio <Badge text="Two-way binding"/>
+# Radio <Badge text="Two-way binding"/>
 
 <!-- Auto Generated Below -->
 

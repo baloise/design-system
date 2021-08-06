@@ -1,4 +1,4 @@
-# bal-footer
+# Footer
 
 <!-- Auto Generated Below -->
 

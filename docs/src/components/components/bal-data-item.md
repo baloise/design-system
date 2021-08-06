@@ -3,10 +3,9 @@ sidebarDepth: 0
 ---
 
 
-# bal-data-item
+# Data Item
 
 `bal-data-item` is a child component of `bal-data` that adds a new row item.
-
 
 
 

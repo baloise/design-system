@@ -3,10 +3,9 @@ sidebarDepth: 0
 ---
 
 
-# bal-navbar-menu 
+# Navbar Menu
 
 `bal-navbar-menu` is a child component of `bal-navbar` that defines the area in the navbar where links and actions are.
-
 
 
 

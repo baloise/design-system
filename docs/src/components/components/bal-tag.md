@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-tag
+# Tag
 
 
 <!-- START: human documentation top -->

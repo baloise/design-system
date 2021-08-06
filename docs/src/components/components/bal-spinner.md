@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-spinner
+# Spinner
 
 
 <!-- START: human documentation top -->

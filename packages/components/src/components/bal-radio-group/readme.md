@@ -1,6 +1,6 @@
 <!-- docs:child of bal-radio -->
 
-# bal-radio-group
+# Radio Group
 
 <!-- Auto Generated Below -->
 

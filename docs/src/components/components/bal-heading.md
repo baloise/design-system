@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-heading
+# Heading
 
 
 <!-- START: human documentation top -->

@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-datepicker <Badge text="Two-way binding"/>
+# Datepicker <Badge text="Two-way binding"/>
 
 
 

@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-sheet
+# Sheet
 
 
 <!-- START: human documentation top -->

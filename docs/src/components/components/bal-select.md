@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-select <Badge text="Two-way binding"/>
+# Select <Badge text="Two-way binding"/>
 
 
 

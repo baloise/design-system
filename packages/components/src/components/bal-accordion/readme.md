@@ -1,4 +1,4 @@
-# bal-accordion
+# Accordion
 
 <!-- Auto Generated Below -->
 

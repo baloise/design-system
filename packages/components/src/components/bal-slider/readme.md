@@ -1,4 +1,4 @@
-# bal-slider
+# Slider
 
 <!-- Auto Generated Below -->
 

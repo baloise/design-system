@@ -3,7 +3,7 @@ sidebarDepth: 0
 ---
 
 
-# bal-list-item-icon
+# List Item Icon
 
 `bal-list-item-subtitle` is a child component of `bal-list` that defines the subtitle list row element.
 

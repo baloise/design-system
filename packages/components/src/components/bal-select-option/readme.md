@@ -1,8 +1,6 @@
 <!-- docs:child of bal-select -->
 
-# bal-select-option
-
-
+# Select Option
 
 <!-- Auto Generated Below -->
 

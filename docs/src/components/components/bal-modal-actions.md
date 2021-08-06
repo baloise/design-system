@@ -3,10 +3,9 @@ sidebarDepth: 0
 ---
 
 
-# bal-modal-actions
+# Modal Actions
 
 `bal-modal-actions` is a child component of `bal-modal` that defines the area for the action button at the bottom of the modal.
-
 
 
 

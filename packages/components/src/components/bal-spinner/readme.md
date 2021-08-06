@@ -1,4 +1,4 @@
-# bal-spinner
+# Spinner
 
 <!-- Auto Generated Below -->
 

@@ -3,10 +3,9 @@ sidebarDepth: 0
 ---
 
 
-# bal-field-control
+# Field Control
 
 `bal-field-control` is a child component of `bal-field`.
-
 
 
 

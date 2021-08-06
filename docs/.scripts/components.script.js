@@ -27,8 +27,14 @@ async function generateSidebar(components) {
   const sidebar = []
   await forEachComponent(components, async component => {
     if (component.childComponents.length > 0) {
+      console.log(component)
+      let title = component.readme
+        .replace(/#/g, '')
+        .replace(/\n/g, '')
+        .split('<')[0]
+        .trim()
       sidebar.push({
-        title: component.tag,
+        title: title,
         path: `/components/components/${component.tag}`,
         collapsable: true,
         children: component.childComponents.map(c => `components/${c}`),

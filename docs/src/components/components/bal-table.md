@@ -2,14 +2,10 @@
 sidebarDepth: 0
 ---
 
-# bal-table
+# Table
 
 
 
-
-
-
-asdfadsf
 
 :::: tabs :options="{ useUrlFragment: false }"
 

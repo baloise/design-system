@@ -1,4 +1,4 @@
-# bal-input <Badge text="Two-way binding"/>
+# Input <Badge text="Two-way binding"/>
 
 <!-- Auto Generated Below -->
 

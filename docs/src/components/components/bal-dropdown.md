@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-dropdown
+# Dropdown
 
 
 <!-- START: human documentation top -->

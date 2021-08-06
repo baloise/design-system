@@ -1,4 +1,4 @@
-# bal-icon
+# Icon
 
 <!-- Auto Generated Below -->
 

@@ -3,7 +3,7 @@ sidebarDepth: 0
 ---
 
 
-# bal-field-hint
+# Field Hint
 
 `bal-field-hint` is a child component of `bal-field`.
 

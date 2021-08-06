@@ -3,7 +3,7 @@ sidebarDepth: 0
 ---
 
 
-# bal-radio-group
+# Radio Group
 
 
 

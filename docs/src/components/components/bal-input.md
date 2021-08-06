@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-input <Badge text="Two-way binding"/>
+# Input <Badge text="Two-way binding"/>
 
 
 <!-- START: human documentation top -->

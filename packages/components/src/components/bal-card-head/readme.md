@@ -1,6 +1,6 @@
 <!-- docs:child of bal-card -->
 
-# bal-card-head
+# Card Head
 
 `bal-card-head` is a child component of `bal-card` that adds a head element for the service card style.
 

@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-timeinput
+# Timeinput
 
 
 <!-- START: human documentation top -->

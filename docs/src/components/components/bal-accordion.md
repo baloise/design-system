@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-accordion
+# Accordion
 
 
 <!-- START: human documentation top -->

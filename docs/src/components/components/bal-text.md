@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-text
+# Text
 
 
 <!-- START: human documentation top -->

@@ -3,9 +3,7 @@ sidebarDepth: 0
 ---
 
 
-# bal-select-option
-
-
+# Select Option
 
 
 

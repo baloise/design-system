@@ -1,6 +1,6 @@
 <!-- docs:child of bal-tabs -->
 
-# bal-tab-item
+# Tab Item
 
 `bal-tab-item` is a child component of `bal-tabs`.
 

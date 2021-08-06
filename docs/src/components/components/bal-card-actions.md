@@ -3,7 +3,7 @@ sidebarDepth: 0
 ---
 
 
-# bal-card-actions
+# Card Actions
 
 `bal-card-actions` is a child component of `bal-card` that sets the buttons to the right place.
 

@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-textarea <Badge text="Two-way binding"/>
+# Textarea <Badge text="Two-way binding"/>
 
 
 <!-- START: human documentation top -->

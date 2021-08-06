@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-toast
+# Toast
 
 ## Usage
 

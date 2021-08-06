@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-hint
+# Hint
 
 
 <!-- START: human documentation top -->

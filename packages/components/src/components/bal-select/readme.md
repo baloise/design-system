@@ -1,4 +1,4 @@
-# bal-select <Badge text="Two-way binding"/>
+# Select <Badge text="Two-way binding"/>
 
 For creating a list of options use the `BalOptionValue` interface.
 

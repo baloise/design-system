@@ -1,6 +1,6 @@
 <!-- docs:child of bal-field -->
 
-# bal-field-hint
+# Field Hint
 
 `bal-field-hint` is a child component of `bal-field`.
 

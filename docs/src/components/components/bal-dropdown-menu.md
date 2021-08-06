@@ -3,7 +3,7 @@ sidebarDepth: 0
 ---
 
 
-# bal-dropdown-menu
+# Dropdown Menu
 
 `bal-dropdown-menu` is a child component of `bal-dropdown` that defines the value of the data.
 

@@ -1,6 +1,6 @@
 <!-- docs:child of bal-card -->
 
-# bal-card-title
+# Card Title
 
 `bal-card-title` is a child component of `bal-card` that adds a title to card.
 

@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-slider
+# Slider
 
 
 <!-- START: human documentation top -->

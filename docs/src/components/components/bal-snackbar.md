@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-snackbar
+# Snackbar
 
 ## Usage
 

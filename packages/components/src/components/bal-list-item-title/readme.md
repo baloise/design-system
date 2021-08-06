@@ -1,6 +1,6 @@
 <!-- docs:child of bal-list -->
 
-# bal-list-item-title
+# List Item Title
 
 `bal-list-item-title` is a child component of `bal-list` that defines the title list row element.
 

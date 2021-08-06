@@ -1,4 +1,4 @@
-# bal-navbar
+# Navbar
 
 <!-- Auto Generated Below -->
 

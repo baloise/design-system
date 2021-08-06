@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-notification
+# Notification
 
 
 <!-- START: human documentation top -->

@@ -1,4 +1,4 @@
-# bal-snackbar
+# Snackbar
 
 ## Usage
 

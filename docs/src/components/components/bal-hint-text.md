@@ -3,10 +3,9 @@ sidebarDepth: 0
 ---
 
 
-# bal-hint-text
+# Hint Text
 
 `bal-hint-text` is a child component of `bal-hint` that defines the text of the hint dialog.
-
 
 
 

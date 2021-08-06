@@ -3,10 +3,9 @@ sidebarDepth: 0
 ---
 
 
-# bal-navbar-brand 
+# Navbar Brand
 
 `bal-navbar-brand` is a child component of `bal-navbar` that defines the area in the navbar where the logo or the title of the applications is.
-
 
 
 

@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-navbar
+# Navbar
 
 
 <!-- START: human documentation top -->

@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-pagination
+# Pagination
 
 
 <!-- START: human documentation top -->

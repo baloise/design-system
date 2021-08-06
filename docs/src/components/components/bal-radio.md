@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-radio <Badge text="Two-way binding"/>
+# Radio <Badge text="Two-way binding"/>
 
 
 <!-- START: human documentation top -->

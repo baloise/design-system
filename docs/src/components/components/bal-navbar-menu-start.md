@@ -3,10 +3,9 @@ sidebarDepth: 0
 ---
 
 
-# bal-navbar-menu-end 
+# Navbar Menu End
 
 `bal-navbar-menu-end` is a child component of `bal-navbar` which is the right side of the navbar.
-
 
 
 

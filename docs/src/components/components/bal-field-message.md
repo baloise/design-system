@@ -3,10 +3,9 @@ sidebarDepth: 0
 ---
 
 
-# bal-field-message
+# Field Message
 
 `bal-field-message` is a child component of `bal-field`.
-
 
 
 

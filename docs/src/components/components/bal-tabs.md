@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-tabs
+# Tabs
 
 
 <!-- START: human documentation top -->

@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-footer
+# Footer
 
 
 <!-- START: human documentation top -->

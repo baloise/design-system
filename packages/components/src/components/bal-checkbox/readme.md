@@ -1,4 +1,4 @@
-# bal-checkbox <Badge text="Two-way binding"/>
+# Checkbox <Badge text="Two-way binding"/>
 
 <!-- Auto Generated Below -->
 

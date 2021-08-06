@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-card
+# Card
 
 
 <!-- START: human documentation top -->

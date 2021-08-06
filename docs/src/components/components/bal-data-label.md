@@ -3,7 +3,7 @@ sidebarDepth: 0
 ---
 
 
-# bal-data-item-label
+# Data Item Label
 
 `bal-data-item` is a child component of `bal-data` that defines the label of the data.
 

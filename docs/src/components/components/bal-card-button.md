@@ -3,7 +3,7 @@ sidebarDepth: 0
 ---
 
 
-# bal-card-button
+# Card Button
 
 `bal-card-button` is a child component of `bal-card` that sets a block button at the end of the card. Good to use for edit functionality.
 

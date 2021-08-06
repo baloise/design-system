@@ -1,4 +1,4 @@
-# bal-button
+# Button
 
 <!-- Auto Generated Below -->
 

@@ -3,8 +3,7 @@ sidebarDepth: 0
 ---
 
 
-# bal-list-item
-
+# List item
 
 
 

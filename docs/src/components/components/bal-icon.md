@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-icon
+# Icon
 
 
 <!-- START: human documentation top -->

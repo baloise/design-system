@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-modal
+# Modal
 
 
 <!-- START: human documentation top -->

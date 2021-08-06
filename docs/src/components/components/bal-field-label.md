@@ -3,10 +3,9 @@ sidebarDepth: 0
 ---
 
 
-# bal-field-label
+# Field Label
 
 `bal-field-label` is a child component of `bal-field`.
-
 
 
 

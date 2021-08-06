@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-file-upload
+# File Upload
 
 
 <!-- START: human documentation top -->

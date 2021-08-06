@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-checkbox <Badge text="Two-way binding"/>
+# Checkbox <Badge text="Two-way binding"/>
 
 
 <!-- START: human documentation top -->
