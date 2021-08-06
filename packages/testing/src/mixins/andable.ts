@@ -1,6 +1,9 @@
 import {Mixin} from './mixins';
 
 export interface Andable<T> {
+  /**
+   * Use this mixin to chain actions or asserts.
+   */
   and(chainers: string, method?: string, value?: string): T;
 }
 

@@ -3,6 +3,9 @@ import 'cypress-file-upload';
 import {Mixin} from './mixins';
 
 export interface Attachable<T> {
+  /**
+   * Upload file.
+   */
   attachFile(fileLocation: string, attachmentMethod?: 'input' | 'drag-n-drop'): T;
 }
 
