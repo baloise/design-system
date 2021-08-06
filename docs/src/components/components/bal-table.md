@@ -7,6 +7,10 @@ sidebarDepth: 0
 
 
 
+
+
+asdfadsf
+
 :::: tabs :options="{ useUrlFragment: false }"
 
 ::: tab Examples
@@ -17,14 +21,14 @@ The basic table is only css and html provided by the bulma framework.
 
 [Go to the Bulma documentation](https://bulma.io/documentation/elements/table/)
 
-<ClientOnly><docs-demo-bal-table-98></docs-demo-bal-table-98></ClientOnly>
+<ClientOnly><docs-demo-bal-table-101></docs-demo-bal-table-101></ClientOnly>
 
 
 ## Advanced with AG-Grid
 
 For the advanced tables with sorting and filtering we use the library [AG Grid](https://www.ag-grid.com/)
 
-<ClientOnly><docs-demo-bal-table-99></docs-demo-bal-table-99></ClientOnly>
+<ClientOnly><docs-demo-bal-table-102></docs-demo-bal-table-102></ClientOnly>
 
 
 :::

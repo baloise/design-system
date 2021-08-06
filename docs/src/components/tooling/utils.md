@@ -325,3 +325,14 @@ isValidMonetaryNumber(`1'000.99`) // true
 
 
 ---
+
+## Util
+
+### isEmpty
+
+`isEmpty(value: any) => boolean`
+
+Returns `true` if the value is empty
+
+
+---

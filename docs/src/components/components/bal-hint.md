@@ -18,12 +18,12 @@ It can easily combined with the `bal-data` or `bal-field` component.
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-hint-52></docs-demo-bal-hint-52></ClientOnly>
+<ClientOnly><docs-demo-bal-hint-54></docs-demo-bal-hint-54></ClientOnly>
 
 
 ## Field
 
-<ClientOnly><docs-demo-bal-hint-53></docs-demo-bal-hint-53></ClientOnly>
+<ClientOnly><docs-demo-bal-hint-55></docs-demo-bal-hint-55></ClientOnly>
 
 
 :::

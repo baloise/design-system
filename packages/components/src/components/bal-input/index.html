@@ -21,6 +21,7 @@
         var input1 = document.getElementById('bal-input-1')
         var input1Preview = document.getElementById('bal-input-1-preview')
         var input1Change = document.getElementById('bal-input-1-change')
+
         input1.addEventListener('balInput', function (event) {
           input1Preview.value = event.detail
         })
@@ -51,7 +52,6 @@
       <script>
         var inputOnlyNumbers = document.getElementById('bal-input-only-numbers')
         var inputOnlyNumbersPreview = document.getElementById('bal-input-only-numbers-preview')
-        setTimeout(() => input1.setFocus(), 100)
         inputOnlyNumbers.addEventListener('balInput', function (event) {
           inputOnlyNumbersPreview.innerHTML = event.detail
         })

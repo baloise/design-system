@@ -14,6 +14,7 @@
               </BalFieldLabel>
               <BalFieldControl>
                 <BalInput
+                  autofocus
                   v-model="firstName"
                   :name="firstNameName"
                   :placeholder="$t('form.firstName.placeholder')"

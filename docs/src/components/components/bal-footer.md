@@ -22,12 +22,12 @@ To configure a sticky footer go to [foundation page layout](../foundation/page-l
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-footer-48></docs-demo-bal-footer-48></ClientOnly>
+<ClientOnly><docs-demo-bal-footer-49></docs-demo-bal-footer-49></ClientOnly>
 
 
 ## With Track Line
 
-<ClientOnly><docs-demo-bal-footer-49></docs-demo-bal-footer-49></ClientOnly>
+<ClientOnly><docs-demo-bal-footer-50></docs-demo-bal-footer-50></ClientOnly>
 
 
 :::

@@ -21,6 +21,7 @@ sidebarDepth: 0
 
 | Attribute    | Description                                                           | Type      | Default |
 | :----------- | :-------------------------------------------------------------------- | :-------- | :------ |
+| **disabled** | If `true` the button will get disabled.                               | `boolean` | `false` |
 | **editable** | If `true` a small button with a edit icon will be shown on the right. | `boolean` | `false` |
 
 ## Events

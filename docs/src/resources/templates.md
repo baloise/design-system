@@ -4,7 +4,7 @@ A list of templates to quickly start your project.
 
 <div class="bal-app">
 <div class="columns is-multiline mt-8">
-  <div class="column is-half">
+  <div class="column is-full">
     <bal-card>
       <bal-card-content>
         <bal-heading level="h4" class="pt-0" space="bottom">Form Wizzard</bal-heading>
@@ -25,7 +25,7 @@ A list of templates to quickly start your project.
       </bal-card-actions>
     </bal-card>
   </div>
-  <div class="column is-half">
+  <div class="column is-full">
     <bal-card>
       <bal-card-content>
         <bal-heading level="h4" class="pt-0" space="bottom">Portal</bal-heading>

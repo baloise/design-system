@@ -30,27 +30,27 @@ export interface BalOptionValue<T> {
 
 ## Basic
 
-<ClientOnly><docs-demo-bal-select-84></docs-demo-bal-select-84></ClientOnly>
+<ClientOnly><docs-demo-bal-select-87></docs-demo-bal-select-87></ClientOnly>
 
 
 ### Typeahead
 
-<ClientOnly><docs-demo-bal-select-85></docs-demo-bal-select-85></ClientOnly>
+<ClientOnly><docs-demo-bal-select-88></docs-demo-bal-select-88></ClientOnly>
 
 
 ### Multi-Select
 
-<ClientOnly><docs-demo-bal-select-86></docs-demo-bal-select-86></ClientOnly>
+<ClientOnly><docs-demo-bal-select-89></docs-demo-bal-select-89></ClientOnly>
 
 
 ### Multi-Select with typeahead
 
-<ClientOnly><docs-demo-bal-select-87></docs-demo-bal-select-87></ClientOnly>
+<ClientOnly><docs-demo-bal-select-90></docs-demo-bal-select-90></ClientOnly>
 
 
 ### Remote Typeahead
 
-<ClientOnly><docs-demo-bal-select-88></docs-demo-bal-select-88></ClientOnly>
+<ClientOnly><docs-demo-bal-select-91></docs-demo-bal-select-91></ClientOnly>
 
 
 :::
@@ -60,23 +60,22 @@ export interface BalOptionValue<T> {
 ## Properties
 
 
-| Attribute         | Description                                                                       | Type                                         | Default        |
-| :---------------- | :-------------------------------------------------------------------------------- | :------------------------------------------- | :------------- |
-| **bal-tabindex**  | The tabindex of the control.                                                      | `number`                                     | `0`            |
-| **disabled**      | If `true` the component is diabled.                                               | `boolean`                                    | `false`        |
-| **expanded**      | If `true` the component uses the whole width.                                     | `boolean`                                    | `false`        |
-| **has-movement**  | Enables the slide in animation for the option items.                              | `boolean`                                    | `false`        |
-| **inverted**      | Set this to `true` when the component is placed on a dark background.             | `boolean`                                    | `false`        |
-| **loading**       |                                                                                   | `boolean`                                    | `false`        |
-| **multiple**      | If `true` multiple option can be selected                                         | `boolean`                                    | `false`        |
-| **name**          | The name of the control, which is submitted with the form data.                   | `string`                                     | `this.inputId` |
-| **no-border**     | Removes the border of the input.                                                  | `boolean`                                    | `false`        |
-| **no-data-label** | This label is shown if typeahead is active and all the options are filtered out.  | `string , undefined`                         |                |
-| **placeholder**   | The text to display when the select is empty.                                     | `string , undefined`                         |                |
-| **scrollable**    | Defines the height of the dropdown list.                                          | `number`                                     | `250`          |
-|                   |                                                                                   | `((inputValue: string) => void) , undefined` | `undefined`    |
-| **typeahead**     | If `true` the user can search by typing into the input field.                     | `boolean`                                    | `false`        |
-|                   | Selected option values. Could also be passed as a string, which gets transformed. | `string[] , undefined`                       | `[]`           |
+| Attribute         | Description                                                                       | Type                   | Default        |
+| :---------------- | :-------------------------------------------------------------------------------- | :--------------------- | :------------- |
+| **bal-tabindex**  | The tabindex of the control.                                                      | `number`               | `0`            |
+| **disabled**      | If `true` the component is diabled.                                               | `boolean`              | `false`        |
+| **expanded**      | If `true` the component uses the whole width.                                     | `boolean`              | `false`        |
+| **has-movement**  | Enables the slide in animation for the option items.                              | `boolean`              | `false`        |
+| **inverted**      | Set this to `true` when the component is placed on a dark background.             | `boolean`              | `false`        |
+| **loading**       | Defines if the select is in a loading state.                                      | `boolean`              | `false`        |
+| **multiple**      | If `true` multiple option can be selected                                         | `boolean`              | `false`        |
+| **name**          | The name of the control, which is submitted with the form data.                   | `string`               | `this.inputId` |
+| **no-border**     | Removes the border of the input.                                                  | `boolean`              | `false`        |
+| **no-data-label** | This label is shown if typeahead is active and all the options are filtered out.  | `string , undefined`   |                |
+| **placeholder**   | The text to display when the select is empty.                                     | `string , undefined`   |                |
+| **scrollable**    | Defines the height of the dropdown list.                                          | `number`               | `250`          |
+| **typeahead**     | If `true` the user can search by typing into the input field.                     | `boolean`              | `false`        |
+|                   | Selected option values. Could also be passed as a string, which gets transformed. | `string[] , undefined` | `[]`           |
 
 ## Events
 
