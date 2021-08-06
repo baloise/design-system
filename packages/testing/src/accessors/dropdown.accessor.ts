@@ -44,7 +44,7 @@ interface DropdownAccessorType
 
 export const DropdownClickableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
-   * Clicks the dropdown
+   * Clicks the dropdown.
    */
   click: (options?: Partial<Cypress.ClickOptions>) => {
     const button = cy.get(selector).find('button')
@@ -52,16 +52,9 @@ export const DropdownClickableMixin: Mixin = <T>({selector, creator}: MixinConte
     return creator()
   },
 })
-
-
-export const DropDownClickableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
-  click: (options?: Partial<Cypress.ClickOptions>) => {
-    const button = cy.get(selector).find('button.dropdown-button');
-    button.click(options);
-    return creator();
-  }
-});
-
+/**
+ * Selects dropdown option.
+ */
 export const DropDownSelectableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   select: (index: number) => {
     cy.get(selector).within(() => {
@@ -73,7 +66,9 @@ export const DropDownSelectableMixin: Mixin = <T>({selector, creator}: MixinCont
     throw new Error('Please use contains method');
   }
 });
-
+/**
+ * Selects dropdown sibling option.
+ */
 export function SiblingDropDownSelectableMixin(siblingSelector: string): Mixin {
   return <T>({selector, creator}: MixinContext<T>) => ({
     select: (index: number) => {
@@ -87,7 +82,9 @@ export function SiblingDropDownSelectableMixin(siblingSelector: string): Mixin {
     }
   });
 }
-
+/**
+ * Asserts dropdown option.
+ */
 export const DropDownAssertableOptionsMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   assertOptions: (...options: string[]) => {
     cy.get(selector).within(() => {
@@ -99,7 +96,9 @@ export const DropDownAssertableOptionsMixin: Mixin = <T>({selector, creator}: Mi
     return creator();
   }
 });
-
+/**
+ * Asserts dropdown sibling option.
+ */
 export function SiblingDropDownAssertableOptionsMixin(selector: string): Mixin {
   return <T>({selector, creator}: MixinContext<T>) => ({
     assertOptions: (...options: string[]) => {
@@ -113,14 +112,18 @@ export function SiblingDropDownAssertableOptionsMixin(selector: string): Mixin {
     }
   });
 }
-
+/**
+ * Asserts dropdown containing something.
+ */
 export const DropDownContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   contains: (content: string | number | RegExp) => {
     cy.get(selector).find('button.dropdown-button').should('contain', content);
     return creator();
   }
 });
-
+/**
+ * Asserts dropdown sibling containing something.
+ */
 export function SiblingDropDownContainableMixin(siblingSelector: string): Mixin {
   return <T>({selector, creator}: MixinContext<T>) => ({
     contains: (content: string | number | RegExp) => {
@@ -151,7 +154,6 @@ export const DropdownAccessor: Accessor<DropdownAccessorType> = createAccessor<D
   DropdownClickableMixin,
   AndableMixin,
   BlurableMixin,
-  DropDownClickableMixin,
   DropDownSelectableMixin,
   DropDownContainableMixin,
   DropDownAssertableOptionsMixin,

@@ -24,14 +24,18 @@ interface TooltipAccessorType
     Thenable<TooltipAccessorType>, Lengthable<TooltipAccessorType>, Eachable<TooltipAccessorType> {
   hover(): TooltipAccessorType;
 }
-
+/**
+ * Hover over some element.
+ */
 export const HoverMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   hover: () => {
     cy.get(selector).trigger('mouseenter').parent();
     return creator();
   }
 });
-
+/**
+ * Assert that tooltip contains some data.
+ */
 export const HoverContainableMixin: Mixin = <T>({creator}: MixinContext<T>) => ({
   contains: (content: string) => {
     const item = cy.get('.tooltip');

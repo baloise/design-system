@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import {SiblingDropDownAssertableOptionsMixin, SiblingDropDownContainableMixin, SiblingDropDownSelectableMixin} from './drop-down.accessor';
+
 import {ErrorAssertableMixin} from './error.accessor';
 import {InputValueAssertableMixin} from './input.accessor';
 import {Andable, AndableMixin} from '../mixins/andable';
@@ -21,26 +21,31 @@ import {Thenable, ThenableMixin} from '../mixins/thenable';
 import {Typeable, TypeableMixin} from '../mixins/typeable';
 import {Urlable, UrlableMixin} from '../mixins/urlable';
 import {Waitable, WaitableMixin} from '../mixins/waitable';
+import {
+  SiblingDropDownAssertableOptionsMixin,
+  SiblingDropDownContainableMixin,
+  SiblingDropDownSelectableMixin
+} from "./dropdown.accessor";
 
 export interface TypeaheadAccessorType
-    extends Andable<TypeaheadAccessorType>, Clickable<TypeaheadAccessorType>, Typeable<TypeaheadAccessorType>, Blurable<TypeaheadAccessorType>,
-        Clearable<TypeaheadAccessorType>, Containable<TypeaheadAccessorType>, Selectable<TypeaheadAccessorType>, Shouldable<TypeaheadAccessorType>,
-        NthSelectable<TypeaheadAccessorType>, Attributable<TypeaheadAccessorType>, Urlable<TypeaheadAccessorType>, Findable<TypeaheadAccessorType>,
-        Waitable<TypeaheadAccessorType>, Invokable<TypeaheadAccessorType>, Thenable<TypeaheadAccessorType>, Lengthable<TypeaheadAccessorType>,
-        Eachable<TypeaheadAccessorType> {
-    assertValue(value: any): TypeaheadAccessorType;
+  extends Andable<TypeaheadAccessorType>, Clickable<TypeaheadAccessorType>, Typeable<TypeaheadAccessorType>, Blurable<TypeaheadAccessorType>,
+    Clearable<TypeaheadAccessorType>, Containable<TypeaheadAccessorType>, Selectable<TypeaheadAccessorType>, Shouldable<TypeaheadAccessorType>,
+    NthSelectable<TypeaheadAccessorType>, Attributable<TypeaheadAccessorType>, Urlable<TypeaheadAccessorType>, Findable<TypeaheadAccessorType>,
+    Waitable<TypeaheadAccessorType>, Invokable<TypeaheadAccessorType>, Thenable<TypeaheadAccessorType>, Lengthable<TypeaheadAccessorType>,
+    Eachable<TypeaheadAccessorType> {
+  assertValue(value: any): TypeaheadAccessorType;
 
-    contains(content: string | number | RegExp): TypeaheadAccessorType;
+  contains(content: string | number | RegExp): TypeaheadAccessorType;
 
-    assertError(name: string, error: string): TypeaheadAccessorType;
+  assertError(name: string, error: string): TypeaheadAccessorType;
 
-    assertNoError(name: string): TypeaheadAccessorType;
+  assertNoError(name: string): TypeaheadAccessorType;
 
-    assertOptions(...options: string[]): TypeaheadAccessorType;
+  assertOptions(...options: string[]): TypeaheadAccessorType;
 }
 
 export const TypeaheadAccessor: Accessor<TypeaheadAccessorType> =
-    createAccessor<TypeaheadAccessorType>(AndableMixin, ClickableMixin, TypeableMixin, BlurableMixin, ClearableMixin, ContainableMixin,
-        InputValueAssertableMixin, ErrorAssertableMixin, ShouldableMixin, NthSelectableMixin, SiblingDropDownAssertableOptionsMixin('.dropdown-menu'),
-        SiblingDropDownContainableMixin('.dropdown-menu'), SiblingDropDownSelectableMixin('.dropdown-menu'), AttributableMixin,
-        UrlableMixin, FindableMixin, WaitableMixin, InvokableMixin, ThenableMixin, LengthableMixin, EachableMixin);
+  createAccessor<TypeaheadAccessorType>(AndableMixin, ClickableMixin, TypeableMixin, BlurableMixin, ClearableMixin, ContainableMixin,
+    InputValueAssertableMixin, ErrorAssertableMixin, ShouldableMixin, NthSelectableMixin, SiblingDropDownAssertableOptionsMixin('.dropdown-menu'),
+    SiblingDropDownContainableMixin('.dropdown-menu'), SiblingDropDownSelectableMixin('.dropdown-menu'), AttributableMixin,
+    UrlableMixin, FindableMixin, WaitableMixin, InvokableMixin, ThenableMixin, LengthableMixin, EachableMixin);

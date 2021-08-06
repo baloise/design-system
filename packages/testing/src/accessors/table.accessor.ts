@@ -28,7 +28,9 @@ interface TableAccessorType
 
   clickOnRow(index: number, options?: Partial<Cypress.ClickOptions>): TableAccessorType;
 }
-
+/**
+ * Click on the table row.
+ */
 export const TableRowClickableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   clickOnRow: (index: number, options?: Partial<Cypress.ClickOptions>) => {
     const row = cy.get(selector).find('tr').eq(index);
@@ -36,6 +38,9 @@ export const TableRowClickableMixin: Mixin = <T>({selector, creator}: MixinConte
     return creator();
   }
 });
+/**
+ * Assert that table row contains some data..
+ */
 export const TableRowContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   rowContains: (index: number, content: string) => {
     const row = cy.get(selector).find('tr').eq(index);

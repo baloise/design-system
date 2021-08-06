@@ -1,18 +1,18 @@
 /// <reference types="cypress" />
 
-import { Attributable, AttributableMixin } from '../mixins/attributable'
-import { Checkable, CheckableMixin } from '../mixins/checkable'
-import { Clickable, ClickableMixin } from '../mixins/clickable'
-import { Containable, ContainableMixin } from '../mixins/containable'
-import { Disableable, DisableableMixin } from '../mixins/disableable'
-import { Existable, ExistableMixin } from '../mixins/existable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
-import { Selectable } from '../mixins/selectable'
-import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
-import { Urlable, UrlableMixin } from '../mixins/urlable'
-import { Visible, VisibleMixin } from '../mixins/visible'
-import { Waitable, WaitableMixin } from '../mixins/waitable'
+import {Attributable, AttributableMixin} from '../mixins/attributable'
+import {Checkable, CheckableMixin} from '../mixins/checkable'
+import {Clickable, ClickableMixin} from '../mixins/clickable'
+import {Containable, ContainableMixin} from '../mixins/containable'
+import {Disableable, DisableableMixin} from '../mixins/disableable'
+import {Existable, ExistableMixin} from '../mixins/existable'
+import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
+import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
+import {Selectable} from '../mixins/selectable'
+import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
+import {Urlable, UrlableMixin} from '../mixins/urlable'
+import {Visible, VisibleMixin} from '../mixins/visible'
+import {Waitable, WaitableMixin} from '../mixins/waitable'
 
 interface RadioAccessorType
   extends Checkable<RadioAccessorType>,
@@ -26,9 +26,10 @@ interface RadioAccessorType
     Attributable<RadioAccessorType>,
     Urlable<RadioAccessorType>,
     Waitable<RadioAccessorType>,
-    Selectable<RadioAccessorType> {}
+    Selectable<RadioAccessorType> {
+}
 
-export const SelectButtonSelectableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const SelectButtonSelectableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Selects option
    */

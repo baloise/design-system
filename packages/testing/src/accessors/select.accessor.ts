@@ -1,16 +1,16 @@
 /// <reference types="cypress" />
 
-import { Attributable } from '../mixins/attributable'
-import { Clickable } from '../mixins/clickable'
-import { Containable } from '../mixins/containable'
-import { Disableable } from '../mixins/disableable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable } from '../mixins/nthSelectable'
-import { Selectable } from '../mixins/selectable'
-import { Shouldable } from '../mixins/shouldable'
-import { Urlable } from '../mixins/urlable'
-import { Visible } from '../mixins/visible'
-import { Waitable } from '../mixins/waitable'
+import {Attributable} from '../mixins/attributable'
+import {Clickable} from '../mixins/clickable'
+import {Containable} from '../mixins/containable'
+import {Disableable} from '../mixins/disableable'
+import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
+import {NthSelectable} from '../mixins/nthSelectable'
+import {Selectable} from '../mixins/selectable'
+import {Shouldable} from '../mixins/shouldable'
+import {Urlable} from '../mixins/urlable'
+import {Visible} from '../mixins/visible'
+import {Waitable} from '../mixins/waitable'
 
 interface SelectAccessorType
   extends Clickable<SelectAccessorType>,
@@ -26,7 +26,7 @@ interface SelectAccessorType
   assertOptions(...options: string[]): SelectAccessorType
 }
 
-export const SelectClickableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const SelectClickableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Clicks the input
    */
@@ -37,7 +37,7 @@ export const SelectClickableMixin: Mixin = <T>({ selector, creator }: MixinConte
   },
 })
 
-export const SelectSelectableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const SelectSelectableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Selects dropdown item
    */
@@ -49,7 +49,7 @@ export const SelectSelectableMixin: Mixin = <T>({ selector, creator }: MixinCont
   },
 })
 
-export const SelectAssertableOptionsMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const SelectAssertableOptionsMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Checks the options
    */
@@ -65,7 +65,7 @@ export const SelectAssertableOptionsMixin: Mixin = <T>({ selector, creator }: Mi
   },
 })
 
-export const SelectContainableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const SelectContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Checks if input have a content
    */

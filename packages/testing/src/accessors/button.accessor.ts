@@ -1,16 +1,16 @@
 /// <reference types="cypress" />
 
-import { Attributable, AttributableMixin } from '../mixins/attributable'
-import { Clickable, ClickableMixin } from '../mixins/clickable'
-import { Containable, ContainableMixin } from '../mixins/containable'
-import { Disableable, DisableableMixin } from '../mixins/disableable'
-import { Existable, ExistableMixin } from '../mixins/existable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
-import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
-import { Urlable, UrlableMixin } from '../mixins/urlable'
-import { Visible, VisibleMixin } from '../mixins/visible'
-import { Waitable, WaitableMixin } from '../mixins/waitable'
+import {Attributable, AttributableMixin} from '../mixins/attributable'
+import {Clickable, ClickableMixin} from '../mixins/clickable'
+import {Containable, ContainableMixin} from '../mixins/containable'
+import {Disableable, DisableableMixin} from '../mixins/disableable'
+import {Existable, ExistableMixin} from '../mixins/existable'
+import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
+import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
+import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
+import {Urlable, UrlableMixin} from '../mixins/urlable'
+import {Visible, VisibleMixin} from '../mixins/visible'
+import {Waitable, WaitableMixin} from '../mixins/waitable'
 
 interface ButtonAccessorType
   extends Clickable<ButtonAccessorType>,
@@ -22,9 +22,10 @@ interface ButtonAccessorType
     NthSelectable<ButtonAccessorType>,
     Attributable<ButtonAccessorType>,
     Urlable<ButtonAccessorType>,
-    Waitable<ButtonAccessorType> {}
+    Waitable<ButtonAccessorType> {
+}
 
-export const ButtonContainableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const ButtonContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Check the content of the label element
    */

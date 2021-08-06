@@ -25,6 +25,9 @@ interface ErrorAccessorType
   assertNoError(): ErrorAccessorType;
 }
 
+/**
+ * Assert that error is shown or not.
+ */
 export const ErrorAssertableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   assertError: (error: string) => {
     const message = cy.get(selector).get(`bal-error`);

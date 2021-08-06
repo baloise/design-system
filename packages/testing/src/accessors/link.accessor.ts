@@ -43,30 +43,45 @@ interface LinkAccessorType
   assertHrefEquals(href: string): LinkAccessorType;
 }
 
+/**
+ * Click link.
+ */
 export const LinkClickableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   clickLink: () => {
     cy.get(selector).find('a').click();
     return creator();
   }
 });
+/**
+ * Assert links target.
+ */
 export const LinkWithTargetAttribute: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   assertLinkOpeningTarget: (target: Target) => {
     cy.get(selector).find('a').should('have.attr', 'target', target);
     return creator();
   }
 });
+/**
+ * Assert that link does not have target.
+ */
 export const LinkWithoutTargetAttribute: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   assertLinkWithoutTarget: () => {
     cy.get(selector).find('a').should('not.have.attr', 'target');
     return creator();
   }
 });
+/**
+ * Assert that link contains some href.
+ */
 export const LinkHrefContainsAssertableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   assertHrefContains: (href: string) => {
     cy.get(selector).find('a').should('have.attr', 'href').and('contain', href);
     return creator();
   }
 });
+/**
+ * Assert that link have some href.
+ */
 export const LinkHrefEqualsAssertableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   assertHrefEquals: (href: string) => {
     cy.get(selector).find('a').should('have.attr', 'href', href);

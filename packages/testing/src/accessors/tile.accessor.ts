@@ -31,7 +31,9 @@ interface TileAccessorType
 
   containsTileContent(content: string): TileAccessorType;
 }
-
+/**
+ * Click on tile.
+ */
 export const TileClickableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   click: (options?: Partial<Cypress.ClickOptions>) => {
     const button = cy.get(selector);
@@ -39,6 +41,9 @@ export const TileClickableMixin: Mixin = <T>({selector, creator}: MixinContext<T
     return creator();
   }
 });
+/**
+ * Assert tile contains some data.
+ */
 export const TileContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   containsTileContent: (content: string) => {
     cy.get(selector).find(dataTestSelector('tile-content')).contains(content);

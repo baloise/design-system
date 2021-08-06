@@ -1,5 +1,7 @@
 export class BasicLoginPage {
-
+  /**
+   * Override keykloack login
+   */
     loginToKeycloak(username: string, password: string, redirectUri?: string) {
         const baseUrl = Cypress.config('baseUrl');
         const authBaseUrl = Cypress.env('auth_base_url') as string;

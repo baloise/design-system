@@ -25,7 +25,9 @@ interface IconAccessorType
     Lengthable<IconAccessorType>, Eachable<IconAccessorType> {
   assertIcon(id: string): IconAccessorType;
 }
-
+/**
+ * Assert that icon from client lib is shown.
+ */
 export const LibIconAssertableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   assertIcon: (id: string) => {
     cy.get(selector).should('have.attr', 'src', `${id}`);

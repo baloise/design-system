@@ -26,7 +26,9 @@ interface StepperAccessorType
     Lengthable<StepperAccessorType>, Eachable<StepperAccessorType> {
   assertActive(index: number): void;
 }
-
+/**
+ * Select one of the steps in stepper.
+ */
 export const StepperSelectableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   select: (index: number) => {
     cy.get(selector).within(() => {
@@ -34,6 +36,9 @@ export const StepperSelectableMixin: Mixin = <T>({selector, creator}: MixinConte
     });
     return creator();
   },
+  /**
+   * Assert that one of the steps in stepper is selected.
+   */
   assertIsSelected: (index: number) => {
     cy.get(selector).within(() => {
       cy.get(`bal-stepper-step`).eq(index).should('have.class', 'bal-stepper__step--is-active');
