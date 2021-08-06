@@ -82,6 +82,8 @@ const parseAccessor = (fileContent, mixins) => {
     .map(a => a.escapedText)
     .filter(m => mixinOverrides.indexOf(m) === -1)
 
+  console.log(accessorName)
+  console.log(mixinsUsed)
   mixinsUsed.forEach(mixinUsed => {
     mixins
       .filter(m => mixinUsed.startsWith(m.name))

@@ -40,21 +40,21 @@
     "ci:server": "http-server ../components/www -p 3333 -c-1 --silent"
   },
   "license": "Apache-2.0",
-  "dependencies": {
-    "@baloise/design-system-components": "^1.8.1"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@baloise/design-system-components": "^1.8.2",
     "@types/chai": "^4.2.18",
     "@types/jquery": "^3.5.1",
     "@types/node": "^14.14.44",
+    "ag-grid-community": "^25.3.0",
     "cypress": "8.1.0",
+    "cypress-file-upload": "5.0.7",
     "http-server": "^0.12.3",
     "rimraf": "^3.0.2",
     "rollup": "^2.47.0",
     "start-server-and-test": "^1.12.1",
     "ts-node": "^9.0.0",
-    "typescript": "^4.2.4",
-    "cypress-file-upload": "5.0.7"
+    "typescript": "^4.2.4"
   },
   "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca"
 }

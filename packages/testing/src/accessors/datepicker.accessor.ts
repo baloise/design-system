@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-import {format, newDateString} from '@baloise/design-system-components'
-import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
+import { format, newDateString } from '@baloise/design-system-components'
+import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
 
 export interface DatepickerAccessorType {
   write(date: string): DatepickerAccessorType
@@ -22,7 +22,7 @@ export interface DatepickerAccessorType {
 const selectorDayBox = (date: Date) =>
   `[data-date="${newDateString(date.getFullYear(), date.getMonth() + 1, date.getDate())}"]`
 
-export const DatepickerWriteMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const DatepickerWriteMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   /**
    * Write in the datepicker
    */
@@ -34,7 +34,7 @@ export const DatepickerWriteMixin: Mixin = <T>({selector, creator}: MixinContext
   },
 })
 
-export const DatepickerOpenableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const DatepickerOpenableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   /**
    * Open the datepicker
    */
@@ -44,12 +44,12 @@ export const DatepickerOpenableMixin: Mixin = <T>({selector, creator}: MixinCont
   },
 })
 
-export const DatepickerPickableMixin: Mixin = <T>({creator, selector}: MixinContext<T>) => ({
+export const DatepickerPickableMixin: Mixin = <T>({ creator, selector }: MixinContext<T>) => ({
   /**
    * Pick the date
    */
   pick: (date: Date) => {
-    const openMixin = DatepickerOpenableMixin({creator, selector})
+    const openMixin = DatepickerOpenableMixin({ creator, selector })
     const month = date.getMonth()
     const year = date.getFullYear()
 
@@ -65,7 +65,7 @@ export const DatepickerPickableMixin: Mixin = <T>({creator, selector}: MixinCont
   },
 })
 
-export const DatepickerShouldHaveValueAssertableMixin: Mixin = ({selector, creator}) => ({
+export const DatepickerShouldHaveValueAssertableMixin: Mixin = ({ selector, creator }) => ({
   /**
    * Check if datepicker have value
    */
@@ -78,7 +78,7 @@ export const DatepickerShouldHaveValueAssertableMixin: Mixin = ({selector, creat
   },
 })
 
-export const DatepickerMinMaxRangeAssertableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const DatepickerMinMaxRangeAssertableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   /**
    * Assert if the date is in range
    */

@@ -1,24 +1,24 @@
 /// <reference types="cypress" />
 
-import {Attributable, AttributableMixin} from '../mixins/attributable'
-import {Clickable} from '../mixins/clickable'
-import {Containable} from '../mixins/containable'
-import {Disableable, DisableableMixin} from '../mixins/disableable'
-import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
-import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
-import {Selectable} from '../mixins/selectable'
-import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
-import {Urlable, UrlableMixin} from '../mixins/urlable'
-import {Visible, VisibleMixin} from '../mixins/visible'
-import {Waitable, WaitableMixin} from '../mixins/waitable'
-import {Andable, AndableMixin} from "../mixins/andable";
-import {Blurable, BlurableMixin} from "../mixins/blurable";
-import {Findable, FindableMixin} from "../mixins/findable";
-import {Existable, ExistableMixin} from "../mixins/existable";
-import {Thenable, ThenableMixin} from "../mixins/thenable";
-import {Invokable, InvokableMixin} from "../mixins/invokable";
-import {Lengthable, LengthableMixin} from "../mixins/lengthable";
-import {Eachable, EachableMixin} from "../mixins/eachable";
+import { Attributable, AttributableMixin } from '../mixins/attributable'
+import { Clickable } from '../mixins/clickable'
+import { Containable } from '../mixins/containable'
+import { Disableable, DisableableMixin } from '../mixins/disableable'
+import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
+import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
+import { Selectable } from '../mixins/selectable'
+import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
+import { Urlable, UrlableMixin } from '../mixins/urlable'
+import { Visible, VisibleMixin } from '../mixins/visible'
+import { Waitable, WaitableMixin } from '../mixins/waitable'
+import { Andable, AndableMixin } from '../mixins/andable'
+import { Blurable, BlurableMixin } from '../mixins/blurable'
+import { Findable, FindableMixin } from '../mixins/findable'
+import { Existable, ExistableMixin } from '../mixins/existable'
+import { Thenable, ThenableMixin } from '../mixins/thenable'
+import { Invokable, InvokableMixin } from '../mixins/invokable'
+import { Lengthable, LengthableMixin } from '../mixins/lengthable'
+import { Eachable, EachableMixin } from '../mixins/eachable'
 
 interface DropdownAccessorType
   extends Andable<DropdownAccessorType>,
@@ -42,7 +42,7 @@ interface DropdownAccessorType
   assertOptions(...options: string[]): DropdownAccessorType
 }
 
-export const DropdownClickableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const DropdownClickableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   /**
    * Clicks the dropdown.
    */
@@ -55,84 +55,88 @@ export const DropdownClickableMixin: Mixin = <T>({selector, creator}: MixinConte
 /**
  * Selects dropdown option.
  */
-export const DropDownSelectableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const DropDownSelectableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   select: (index: number) => {
     cy.get(selector).within(() => {
-      cy.get(`button.dropdown-item`).eq(index).click();
-    });
-    return creator();
+      cy.get(`button.dropdown-item`).eq(index).click()
+    })
+    return creator()
   },
   assertIsSelected: () => {
-    throw new Error('Please use contains method');
-  }
-});
+    throw new Error('Please use contains method')
+  },
+})
 /**
  * Selects dropdown sibling option.
  */
 export function SiblingDropDownSelectableMixin(siblingSelector: string): Mixin {
-  return <T>({selector, creator}: MixinContext<T>) => ({
+  return <T>({ selector, creator }: MixinContext<T>) => ({
     select: (index: number) => {
-      cy.get(selector).next(siblingSelector).within(() => {
-        cy.get(`button.dropdown-item`).eq(index).click();
-      });
-      return creator();
+      cy.get(selector)
+        .next(siblingSelector)
+        .within(() => {
+          cy.get(`button.dropdown-item`).eq(index).click()
+        })
+      return creator()
     },
     assertIsSelected: () => {
-      throw new Error('Please use contains method');
-    }
-  });
+      throw new Error('Please use contains method')
+    },
+  })
 }
 /**
  * Asserts dropdown option.
  */
-export const DropDownAssertableOptionsMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const DropDownAssertableOptionsMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   assertOptions: (...options: string[]) => {
     cy.get(selector).within(() => {
       cy.get('.dropdown-item').then(opt => {
-        const actual = [...opt.toArray()].map(o => o.textContent);
-        expect(actual).to.deep.eq(options);
-      });
-    });
-    return creator();
-  }
-});
+        const actual = [...opt.toArray()].map(o => o.textContent)
+        expect(actual).to.deep.eq(options)
+      })
+    })
+    return creator()
+  },
+})
 /**
  * Asserts dropdown sibling option.
  */
-export function SiblingDropDownAssertableOptionsMixin(selector: string): Mixin {
-  return <T>({selector, creator}: MixinContext<T>) => ({
-    assertOptions: (...options: string[]) => {
-      cy.get(selector).next(selector).within(() => {
+export const SiblingDropDownAssertableOptionsMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+  assertOptions: (...options: string[]) => {
+    cy.get(selector)
+      .next(selector)
+      .within(() => {
         cy.get('.dropdown-item').then(opt => {
-          const actual = [...opt.toArray()].map(o => o.textContent);
-          expect(actual).to.deep.eq(options);
-        });
-      });
-      return creator();
-    }
-  });
-}
+          const actual = [...opt.toArray()].map(o => o.textContent)
+          expect(actual).to.deep.eq(options)
+        })
+      })
+    return creator()
+  },
+})
 /**
  * Asserts dropdown containing something.
  */
-export const DropDownContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const DropDownContainableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   contains: (content: string | number | RegExp) => {
-    cy.get(selector).find('button.dropdown-button').should('contain', content);
-    return creator();
-  }
-});
+    cy.get(selector).find('button.dropdown-button').should('contain', content)
+    return creator()
+  },
+})
 /**
  * Asserts dropdown sibling containing something.
  */
 export function SiblingDropDownContainableMixin(siblingSelector: string): Mixin {
-  return <T>({selector, creator}: MixinContext<T>) => ({
+  return <T>({ selector, creator }: MixinContext<T>) => ({
     contains: (content: string | number | RegExp) => {
-      cy.get(selector).next(siblingSelector).within(() => {
-        cy.get('button.dropdown-button').should('contain', content);
-      });
-      return creator();
-    }
-  });
+      cy.get(selector)
+        .next(siblingSelector)
+        .within(() => {
+          cy.get('button.dropdown-button').should('contain', content)
+        })
+      return creator()
+    },
+  })
 }
 
 /**
@@ -169,5 +173,5 @@ export const DropdownAccessor: Accessor<DropdownAccessorType> = createAccessor<D
   ThenableMixin,
   InvokableMixin,
   LengthableMixin,
-  EachableMixin
+  EachableMixin,
 )
