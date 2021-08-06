@@ -11,6 +11,7 @@ import { FILTERS } from './filters'
 
 import { BalToastService } from './bal-toast.service'
 import { BalSnackbarService } from './bal-snackbar.service'
+import { AutoFocus } from './focus.directive'
 
 const DECLARATIONS = [
   // proxies
@@ -18,6 +19,9 @@ const DECLARATIONS = [
 
   // filters
   ...FILTERS,
+
+  // directives
+  AutoFocus,
 
   // ngModel accessors
   BooleanValueAccessor,

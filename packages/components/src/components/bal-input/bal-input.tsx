@@ -353,7 +353,7 @@ export class Input implements ComponentInterface {
           autoCapitalize={this.autocapitalize}
           autoComplete={this.autocomplete}
           autoCorrect={this.autocorrect}
-          autoFocus={this.autofocus}
+          autofocus={this.autofocus}
           min={this.min}
           max={this.max}
           minLength={this.minLength}
