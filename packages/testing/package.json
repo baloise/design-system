@@ -47,13 +47,14 @@
     "@types/chai": "^4.2.18",
     "@types/jquery": "^3.5.1",
     "@types/node": "^14.14.44",
-    "cypress": "^5.6.0",
+    "cypress": "8.1.0",
     "http-server": "^0.12.3",
     "rimraf": "^3.0.2",
     "rollup": "^2.47.0",
     "start-server-and-test": "^1.12.1",
     "ts-node": "^9.0.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "cypress-file-upload": "5.0.7"
   },
   "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca"
 }
