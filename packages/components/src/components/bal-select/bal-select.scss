@@ -5,6 +5,10 @@
   display: block;
   position: relative;
 
+  &.is-fullwidth {
+    width: 100%;
+  }
+
   .bal-select__slot {
     position: relative;
     align-items: center;
