@@ -13,6 +13,7 @@ import {Typeable, TypeableMixin} from '../mixins/typeable'
 import {Urlable, UrlableMixin} from '../mixins/urlable'
 import {Visible, VisibleMixin} from '../mixins/visible'
 import {Waitable, WaitableMixin} from '../mixins/waitable'
+import {Attachable, AttachableMixin} from "..";
 
 interface InputAccessorType
   extends Clickable<InputAccessorType>,
@@ -27,7 +28,8 @@ interface InputAccessorType
     NthSelectable<InputAccessorType>,
     Attributable<InputAccessorType>,
     Urlable<InputAccessorType>,
-    Waitable<InputAccessorType> {
+    Waitable<InputAccessorType>,
+    Attachable<InputAccessorType>{
   assertValue(value: any): InputAccessorType
 
   contains(content: string | number | RegExp): InputAccessorType
@@ -77,4 +79,5 @@ export const InputAccessor: Accessor<InputAccessorType> = createAccessor<InputAc
   AttributableMixin,
   UrlableMixin,
   WaitableMixin,
+  AttachableMixin
 )

@@ -11,6 +11,16 @@ import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
 import {Urlable, UrlableMixin} from '../mixins/urlable'
 import {Visible, VisibleMixin} from '../mixins/visible'
 import {Waitable, WaitableMixin} from '../mixins/waitable'
+import {
+  Attachable, AttachableMixin,
+  Eachable, EachableMixin, Findable, FindableMixin,
+  Invokable,
+  InvokableMixin,
+  Lengthable,
+  LengthableMixin,
+  Thenable,
+  ThenableMixin
+} from "..";
 
 interface ButtonAccessorType
   extends Clickable<ButtonAccessorType>,
@@ -22,7 +32,14 @@ interface ButtonAccessorType
     NthSelectable<ButtonAccessorType>,
     Attributable<ButtonAccessorType>,
     Urlable<ButtonAccessorType>,
-    Waitable<ButtonAccessorType> {
+    Waitable<ButtonAccessorType>,
+    Invokable<ButtonAccessorType>,
+    Thenable<ButtonAccessorType>,
+    Lengthable<ButtonAccessorType>,
+    Eachable<ButtonAccessorType>,
+    Attachable<ButtonAccessorType>,
+    Findable<ButtonAccessorType>,
+    Urlable<ButtonAccessorType>{
 }
 
 export const ButtonContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
@@ -71,4 +88,11 @@ export const ButtonAccessor: Accessor<ButtonAccessorType> = createAccessor<Butto
   UrlableMixin,
   WaitableMixin,
   ButtonContainableMixin,
+  InvokableMixin,
+  ThenableMixin,
+  LengthableMixin,
+  EachableMixin,
+  AttachableMixin,
+  FindableMixin,
+  UrlableMixin
 )
