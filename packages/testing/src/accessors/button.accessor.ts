@@ -3,7 +3,7 @@
 import {Attributable, AttributableMixin} from '../mixins/attributable'
 import {Clickable, ClickableMixin} from '../mixins/clickable'
 import {Containable, ContainableMixin} from '../mixins/containable'
-import {Disableable, DisableableMixin} from '../mixins/disableable'
+import {Disableable, EnableableMixin} from '../mixins/disableable'
 import {Existable, ExistableMixin} from '../mixins/existable'
 import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
 import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
@@ -12,8 +12,12 @@ import {Urlable, UrlableMixin} from '../mixins/urlable'
 import {Visible, VisibleMixin} from '../mixins/visible'
 import {Waitable, WaitableMixin} from '../mixins/waitable'
 import {
-  Attachable, AttachableMixin,
-  Eachable, EachableMixin, Findable, FindableMixin,
+  Attachable,
+  AttachableMixin,
+  Eachable,
+  EachableMixin,
+  Findable,
+  FindableMixin,
   Invokable,
   InvokableMixin,
   Lengthable,
@@ -39,7 +43,8 @@ interface ButtonAccessorType
     Eachable<ButtonAccessorType>,
     Attachable<ButtonAccessorType>,
     Findable<ButtonAccessorType>,
-    Urlable<ButtonAccessorType>{
+    Urlable<ButtonAccessorType> {
+  assertIsDisabled(): ButtonAccessorType
 }
 
 export const ButtonContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
@@ -81,7 +86,7 @@ export const ButtonAccessor: Accessor<ButtonAccessorType> = createAccessor<Butto
   ExistableMixin,
   ShouldableMixin,
   ContainableMixin,
-  DisableableMixin,
+  EnableableMixin,
   VisibleMixin,
   NthSelectableMixin,
   AttributableMixin,

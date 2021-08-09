@@ -6,7 +6,7 @@ import {Attributable, AttributableMixin} from '../mixins/attributable';
 import {Blurable, BlurableMixin} from '../mixins/blurable';
 import {Clickable, ClickableMixin} from '../mixins/clickable';
 import {Containable, ContainableMixin} from '../mixins/containable';
-import {Disableable, DisableableMixin} from '../mixins/disableable';
+import {Disableable, EnableableMixin} from '../mixins/disableable';
 import {Eachable, EachableMixin} from '../mixins/eachable';
 import {Existable, ExistableMixin} from '../mixins/existable';
 import {Findable, FindableMixin} from '../mixins/findable';
@@ -91,6 +91,6 @@ export const LinkHrefEqualsAssertableMixin: Mixin = <T>({selector, creator}: Mix
 
 export const LinkAccessor: Accessor<LinkAccessorType> =
   createAccessor<LinkAccessorType>(AndableMixin, BlurableMixin, ClickableMixin, LinkWithTargetAttribute, LinkWithoutTargetAttribute,
-    LinkHrefContainsAssertableMixin, LinkHrefEqualsAssertableMixin, ExistableMixin, ShouldableMixin, ContainableMixin, DisableableMixin, VisibleMixin,
+    LinkHrefContainsAssertableMixin, LinkHrefEqualsAssertableMixin, ExistableMixin, ShouldableMixin, ContainableMixin, EnableableMixin, VisibleMixin,
     NthSelectableMixin, LinkClickableMixin, AttributableMixin, UrlableMixin, FindableMixin, WaitableMixin, InvokableMixin, ThenableMixin, LengthableMixin,
     EachableMixin, AttachableMixin);

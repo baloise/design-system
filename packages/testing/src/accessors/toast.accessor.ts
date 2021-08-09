@@ -3,7 +3,7 @@
 import {Attributable, AttributableMixin} from '../mixins/attributable'
 import {Clickable, ClickableMixin} from '../mixins/clickable'
 import {Containable, ContainableMixin} from '../mixins/containable'
-import {Disableable, DisableableMixin} from '../mixins/disableable'
+import {Disableable, EnableableMixin} from '../mixins/disableable'
 import {Existable, ExistableMixin} from '../mixins/existable'
 import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
 import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
@@ -58,7 +58,7 @@ export const ToastAccessor: Accessor<ToastAccessorType> = createAccessor<ToastAc
   ClickableMixin,
   VisibleMixin,
   ExistableMixin,
-  DisableableMixin,
+  EnableableMixin,
   ShouldableMixin,
   NthSelectableMixin,
   AttributableMixin,

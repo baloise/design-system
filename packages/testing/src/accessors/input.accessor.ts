@@ -4,7 +4,7 @@ import {Blurable, BlurableMixin} from '../mixins/blurable'
 import {Clearable, ClearableMixin} from '../mixins/clearable'
 import {Clickable, ClickableMixin} from '../mixins/clickable'
 import {Containable, ContainableMixin} from '../mixins/containable'
-import {Disableable, DisableableMixin} from '../mixins/disableable'
+import {Disableable, EnableableMixin} from '../mixins/disableable'
 import {Existable, ExistableMixin} from '../mixins/existable'
 import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
 import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
@@ -73,7 +73,7 @@ export const InputAccessor: Accessor<InputAccessorType> = createAccessor<InputAc
   ClearableMixin,
   ContainableMixin,
   ExistableMixin,
-  DisableableMixin,
+  EnableableMixin,
   VisibleMixin,
   NthSelectableMixin,
   AttributableMixin,

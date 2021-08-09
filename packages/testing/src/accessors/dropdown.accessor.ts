@@ -3,7 +3,7 @@
 import { Attributable, AttributableMixin } from '../mixins/attributable'
 import { Clickable } from '../mixins/clickable'
 import { Containable } from '../mixins/containable'
-import { Disableable, DisableableMixin } from '../mixins/disableable'
+import { Disableable, EnableableMixin } from '../mixins/disableable'
 import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
 import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
 import { Selectable } from '../mixins/selectable'
@@ -161,7 +161,7 @@ export const DropdownAccessor: Accessor<DropdownAccessorType> = createAccessor<D
   DropDownSelectableMixin,
   DropDownContainableMixin,
   DropDownAssertableOptionsMixin,
-  DisableableMixin,
+  EnableableMixin,
   ShouldableMixin,
   VisibleMixin,
   NthSelectableMixin,

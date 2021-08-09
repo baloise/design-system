@@ -4,7 +4,7 @@ import { Attributable, AttributableMixin } from '../mixins/attributable'
 import { Blurable, BlurableMixin } from '../mixins/blurable'
 import { Clickable, ClickableMixin } from '../mixins/clickable'
 import { Containable, ContainableMixin } from '../mixins/containable'
-import { Disableable, DisableableMixin } from '../mixins/disableable'
+import { Disableable, EnableableMixin } from '../mixins/disableable'
 import { Existable, ExistableMixin } from '../mixins/existable'
 import { Accessor, createAccessor } from '../mixins/mixins'
 import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
@@ -47,7 +47,7 @@ export const TextAccessor: Accessor<TextAccessorType> = createAccessor<TextAcces
   BlurableMixin,
   ClickableMixin,
   ExistableMixin,
-  DisableableMixin,
+  EnableableMixin,
   VisibleMixin,
   NthSelectableMixin,
   AttributableMixin,

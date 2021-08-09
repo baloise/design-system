@@ -6,12 +6,13 @@ export interface Disableable<T> {
   /**
    * Asserts that the element is enabled or disabled.
    */
-  assertIsDisabled(disabled?: boolean): T;
+  assertIsEnabled(enabled?: boolean): T;
 }
 
-export const DisableableMixin: Mixin = ({selector, creator}) => ({
-  assertIsDisabled: (disabled = true) => {
-    cy.get(selector).should(disabled ? 'be.disabled' : 'not.be.disabled');
+export const EnableableMixin: Mixin = ({selector, creator}) => ({
+  assertIsEnabled: (enabled = true) => {
+    cy.get(selector).should(enabled ? 'not.be.disabled' : 'be.disabled');
     return creator();
   },
 })
+
