@@ -60,7 +60,7 @@ const parseAccessor = (fileContent, mixins) => {
   const accessorNode = filterAccessorNode(variableStatementsNodes)
   const accessorDescription = parseFunctionComment(accessorNode, sourceFile)
   const accessorName = getName(accessorNode)
-  const accessor = { name: accessorName, description: accessorDescription, methods: [] }
+  const accessor = {name: accessorName, description: accessorDescription, methods: []}
 
   const mixinOverrideNodes = filterMixinNodes(variableStatementsNodes)
   mixinOverrideNodes.forEach(mixinOverrideNode => {
@@ -72,7 +72,7 @@ const parseAccessor = (fileContent, mixins) => {
         .map(p => p.getFullText(sourceFile))
         .filter(p => p)
         .map(p => p.trim())
-      accessor.methods.push({ name: methodName, description: methodComment, signature: methodSignature.join(', ') })
+      accessor.methods.push({name: methodName, description: methodComment, signature: methodSignature.join(', ')})
     })
   })
 
@@ -82,8 +82,6 @@ const parseAccessor = (fileContent, mixins) => {
     .map(a => a.escapedText)
     .filter(m => mixinOverrides.indexOf(m) === -1)
 
-  console.log(accessorName)
-  console.log(mixinsUsed)
   mixinsUsed.forEach(mixinUsed => {
     mixins
       .filter(m => mixinUsed.startsWith(m.name))
