@@ -3,7 +3,7 @@
 import {Attributable, AttributableMixin} from '../mixins/attributable'
 import {Clickable, ClickableMixin} from '../mixins/clickable'
 import {Containable} from '../mixins/containable'
-import {Disableable, EnableableMixin} from '../mixins/disableable'
+import {Disableable, DisableableMixin} from '../mixins/disableable'
 import {Existable, ExistableMixin} from '../mixins/existable'
 import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
 import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
@@ -70,7 +70,7 @@ export const ModalButtonAccessor: Accessor<ModalButtonAccessorType> = createAcce
   CloseModalWindowMixin,
   ShouldableMixin,
   VisibleMixin,
-  EnableableMixin,
+  DisableableMixin,
   NthSelectableMixin,
   AttributableMixin,
   UrlableMixin,

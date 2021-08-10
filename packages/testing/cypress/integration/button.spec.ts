@@ -7,7 +7,7 @@ describe('Button', () => {
     page.open()
     page.primaryButton.get().contains('Primary')
     page.primaryButton.get().click()
-    page.primaryButton.get().assertIsEnabled()
+    page.primaryButton.get().assertIsDisabled(false)
     page.primaryButton.get().assertExists()
   })
 

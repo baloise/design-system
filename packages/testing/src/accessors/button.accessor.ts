@@ -3,7 +3,7 @@
 import {Attributable, AttributableMixin} from '../mixins/attributable'
 import {Clickable, ClickableMixin} from '../mixins/clickable'
 import {Containable, ContainableMixin} from '../mixins/containable'
-import {Disableable, EnableableMixin} from '../mixins/disableable'
+import {Disableable, DisableableMixin} from '../mixins/disableable'
 import {Existable, ExistableMixin} from '../mixins/existable'
 import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
 import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
@@ -44,7 +44,6 @@ interface ButtonAccessorType
     Attachable<ButtonAccessorType>,
     Findable<ButtonAccessorType>,
     Urlable<ButtonAccessorType> {
-  assertIsDisabled(): ButtonAccessorType
 }
 
 export const ButtonContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
@@ -53,13 +52,6 @@ export const ButtonContainableMixin: Mixin = <T>({selector, creator}: MixinConte
    */
   contains: (content: string) => {
     cy.get(selector).find('bal-text').contains(content)
-    return creator()
-  },
-  /**
-   * Asserts that button is disabled
-   */
-  assertIsDisabled: () => {
-    cy.get(selector).should('have.attr', 'disabled')
     return creator()
   },
 })
@@ -86,7 +78,7 @@ export const ButtonAccessor: Accessor<ButtonAccessorType> = createAccessor<Butto
   ExistableMixin,
   ShouldableMixin,
   ContainableMixin,
-  EnableableMixin,
+  DisableableMixin,
   VisibleMixin,
   NthSelectableMixin,
   AttributableMixin,

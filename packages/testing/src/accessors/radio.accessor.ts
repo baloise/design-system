@@ -4,7 +4,7 @@ import {Attributable, AttributableMixin} from '../mixins/attributable'
 import {Checkable, CheckableMixin} from '../mixins/checkable'
 import {Clickable, ClickableMixin} from '../mixins/clickable'
 import {Containable, ContainableMixin} from '../mixins/containable'
-import {Disableable, EnableableMixin} from '../mixins/disableable'
+import {Disableable, DisableableMixin} from '../mixins/disableable'
 import {Existable, ExistableMixin} from '../mixins/existable'
 import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
 import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
@@ -65,7 +65,7 @@ export const RadioAccessor: Accessor<RadioAccessorType> = createAccessor<RadioAc
   ClickableMixin,
   ContainableMixin,
   ExistableMixin,
-  EnableableMixin,
+  DisableableMixin,
   ShouldableMixin,
   VisibleMixin,
   NthSelectableMixin,
