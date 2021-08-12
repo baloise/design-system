@@ -1,25 +1,17 @@
 /// <reference types="cypress" />
 
-import { Mixin } from './mixins'
+import {Mixin} from './mixins'
 
 export interface Existable<T> {
   /**
-   * Asserts that the element exists in the DOM
+   * Asserts that the element exists/not exists in the DOM
    */
-  assertExists(): T
-  /**
-   * Asserts that the element does not exist in the DOM
-   */
-  assertNotExists(): T
+  assertExists(exists?: boolean): T;
 }
 
-export const ExistableMixin: Mixin = ({ selector, creator }) => ({
-  assertExists: () => {
-    cy.get(selector).should('exist')
-    return creator()
-  },
-  assertNotExists: () => {
-    cy.get(selector).should('not.exist')
-    return creator()
+export const ExistableMixin: Mixin = ({selector, creator}) => ({
+  assertExists: (exists = true) => {
+    cy.get(selector).should(exists ? 'exist' : 'not.exist');
+    return creator();
   },
 })

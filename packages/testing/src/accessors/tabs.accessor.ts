@@ -1,17 +1,17 @@
 /// <reference types="cypress" />
 
-import { Attributable, AttributableMixin } from '../mixins/attributable'
-import { Clickable, ClickableMixin } from '../mixins/clickable'
-import { Containable, ContainableMixin } from '../mixins/containable'
-import { Disableable, DisableableMixin } from '../mixins/disableable'
-import { Existable, ExistableMixin } from '../mixins/existable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
-import { Selectable } from '../mixins/selectable'
-import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
-import { Urlable, UrlableMixin } from '../mixins/urlable'
-import { Waitable, WaitableMixin } from '../mixins/waitable'
-import { ListSelectableMixin } from './list.accessor'
+import {Attributable, AttributableMixin} from '../mixins/attributable'
+import {Clickable, ClickableMixin} from '../mixins/clickable'
+import {Containable, ContainableMixin} from '../mixins/containable'
+import {Disableable, DisableableMixin} from '../mixins/disableable'
+import {Existable, ExistableMixin} from '../mixins/existable'
+import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
+import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
+import {Selectable} from '../mixins/selectable'
+import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
+import {Urlable, UrlableMixin} from '../mixins/urlable'
+import {Waitable, WaitableMixin} from '../mixins/waitable'
+import {ListSelectableMixin} from './list.accessor'
 
 interface TabsAccessorType
   extends Selectable<TabsAccessorType>,
@@ -27,7 +27,7 @@ interface TabsAccessorType
   assertVisible(text: string): TabsAccessorType
 }
 
-export const TabsAssertVisibleMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const TabsAssertVisibleMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Assert if tab is visible
    */

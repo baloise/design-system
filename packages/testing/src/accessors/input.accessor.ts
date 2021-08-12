@@ -1,18 +1,19 @@
 /// <reference types="cypress" />
-import { Attributable, AttributableMixin } from '../mixins/attributable'
-import { Blurable, BlurableMixin } from '../mixins/blurable'
-import { Clearable, ClearableMixin } from '../mixins/clearable'
-import { Clickable, ClickableMixin } from '../mixins/clickable'
-import { Containable, ContainableMixin } from '../mixins/containable'
-import { Disableable, DisableableMixin } from '../mixins/disableable'
-import { Existable, ExistableMixin } from '../mixins/existable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
-import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
-import { Typeable, TypeableMixin } from '../mixins/typeable'
-import { Urlable, UrlableMixin } from '../mixins/urlable'
-import { Visible, VisibleMixin } from '../mixins/visible'
-import { Waitable, WaitableMixin } from '../mixins/waitable'
+import {Attributable, AttributableMixin} from '../mixins/attributable'
+import {Blurable, BlurableMixin} from '../mixins/blurable'
+import {Clearable, ClearableMixin} from '../mixins/clearable'
+import {Clickable, ClickableMixin} from '../mixins/clickable'
+import {Containable, ContainableMixin} from '../mixins/containable'
+import {Disableable, DisableableMixin} from '../mixins/disableable'
+import {Existable, ExistableMixin} from '../mixins/existable'
+import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
+import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
+import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
+import {Typeable, TypeableMixin} from '../mixins/typeable'
+import {Urlable, UrlableMixin} from '../mixins/urlable'
+import {Visible, VisibleMixin} from '../mixins/visible'
+import {Waitable, WaitableMixin} from '../mixins/waitable'
+import {Attachable, AttachableMixin} from "..";
 
 interface InputAccessorType
   extends Clickable<InputAccessorType>,
@@ -27,7 +28,8 @@ interface InputAccessorType
     NthSelectable<InputAccessorType>,
     Attributable<InputAccessorType>,
     Urlable<InputAccessorType>,
-    Waitable<InputAccessorType> {
+    Waitable<InputAccessorType>,
+    Attachable<InputAccessorType>{
   assertValue(value: any): InputAccessorType
 
   contains(content: string | number | RegExp): InputAccessorType
@@ -37,7 +39,7 @@ interface InputAccessorType
   assertNoError(name: string): InputAccessorType
 }
 
-export const InputValueAssertableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const InputValueAssertableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Assert if the checkbox have value
    */
@@ -77,4 +79,5 @@ export const InputAccessor: Accessor<InputAccessorType> = createAccessor<InputAc
   AttributableMixin,
   UrlableMixin,
   WaitableMixin,
+  AttachableMixin
 )

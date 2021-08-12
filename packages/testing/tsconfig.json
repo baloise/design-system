@@ -1,12 +1,10 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["es5", "dom"],
-    "types": ["cypress", "jest"],
-    "baseUrl": ".",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "types": ["cypress", "cypress-file-upload", "jest"],
+    "baseUrl": "."
   },
-  "include": [
-    "**/*.ts",
-    "node_modules/@stencil/core/compiler/lib.es2015.proxy.d.ts"
-  ]
+  "include": ["**/*.ts", "node_modules/cypress/types/*", "node_modules/@stencil/core/compiler/lib.es2015.proxy.d.ts"]
 }

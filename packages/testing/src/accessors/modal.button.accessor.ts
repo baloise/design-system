@@ -1,16 +1,16 @@
 /// <reference types="cypress" />
 
-import { Attributable, AttributableMixin } from '../mixins/attributable'
-import { Clickable, ClickableMixin } from '../mixins/clickable'
-import { Containable } from '../mixins/containable'
-import { Disableable, DisableableMixin } from '../mixins/disableable'
-import { Existable, ExistableMixin } from '../mixins/existable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
-import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
-import { Urlable, UrlableMixin } from '../mixins/urlable'
-import { Visible, VisibleMixin } from '../mixins/visible'
-import { Waitable, WaitableMixin } from '../mixins/waitable'
+import {Attributable, AttributableMixin} from '../mixins/attributable'
+import {Clickable, ClickableMixin} from '../mixins/clickable'
+import {Containable} from '../mixins/containable'
+import {Disableable, DisableableMixin} from '../mixins/disableable'
+import {Existable, ExistableMixin} from '../mixins/existable'
+import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
+import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
+import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
+import {Urlable, UrlableMixin} from '../mixins/urlable'
+import {Visible, VisibleMixin} from '../mixins/visible'
+import {Waitable, WaitableMixin} from '../mixins/waitable'
 
 interface ModalButtonAccessorType
   extends Clickable<ModalButtonAccessorType>,
@@ -26,7 +26,7 @@ interface ModalButtonAccessorType
   closeModal(): ModalButtonAccessorType
 }
 
-export const ModalButtonContainableMixin: Mixin = <T>({ creator, selector }: MixinContext<T>) => ({
+export const ModalButtonContainableMixin: Mixin = <T>({creator, selector}: MixinContext<T>) => ({
   /**
    * Checks if element contains content
    */
@@ -36,7 +36,7 @@ export const ModalButtonContainableMixin: Mixin = <T>({ creator, selector }: Mix
     return creator()
   },
 })
-export const CloseModalWindowMixin: Mixin = <T>({ creator }: MixinContext<T>) => ({
+export const CloseModalWindowMixin: Mixin = <T>({creator}: MixinContext<T>) => ({
   /**
    * Closes the modal
    */

@@ -1,14 +1,14 @@
 /// <reference types="cypress" />
 
-import { Checkable } from '../mixins/checkable'
-import { Clickable } from '../mixins/clickable'
-import { Containable } from '../mixins/containable'
-import { Disableable } from '../mixins/disableable'
-import { Existable, ExistableMixin } from '../mixins/existable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
-import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
-import { Visible, VisibleMixin } from '../mixins/visible'
+import {Checkable} from '../mixins/checkable'
+import {Clickable} from '../mixins/clickable'
+import {Containable} from '../mixins/containable'
+import {Disableable} from '../mixins/disableable'
+import {Existable, ExistableMixin} from '../mixins/existable'
+import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
+import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
+import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
+import {Visible, VisibleMixin} from '../mixins/visible'
 
 interface CheckboxAccessorType
   extends Clickable<CheckboxAccessorType>,
@@ -18,9 +18,10 @@ interface CheckboxAccessorType
     Existable<CheckboxAccessorType>,
     Visible<CheckboxAccessorType>,
     NthSelectable<CheckboxAccessorType>,
-    Shouldable<CheckboxAccessorType> {}
+    Shouldable<CheckboxAccessorType> {
+}
 
-export const CheckboxClickableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const CheckboxClickableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Clicks the checkbox and set checked to true
    */
@@ -63,7 +64,7 @@ export const CheckboxClickableMixin: Mixin = <T>({ selector, creator }: MixinCon
   },
 })
 
-export const CheckboxContainableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const CheckboxContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Check the content of the label element
    */
