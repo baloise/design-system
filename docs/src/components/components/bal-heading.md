@@ -11,30 +11,30 @@ A heading provides some additional helpers.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Sizes
+## Examples
+
+### Sizes
 
 <ClientOnly><docs-demo-bal-heading-51></docs-demo-bal-heading-51></ClientOnly>
 
 
-## Colors
+### Colors
 
 <ClientOnly><docs-demo-bal-heading-52></docs-demo-bal-heading-52></ClientOnly>
 
 
-## Spacing
+### Spacing
 
 <ClientOnly><docs-demo-bal-heading-53></docs-demo-bal-heading-53></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute        | Description                                                                                                                                             | Type                                                         | Default     |
@@ -48,10 +48,7 @@ A heading provides some additional helpers.
 | **visual-level** | Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup. | `"h1" , "h2" , "h3" , "h4" , "h5" , "h6" , undefined`        | `undefined` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

@@ -10,20 +10,21 @@ sidebarDepth: 0
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-navbar -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute | Description               | Type     | Default |
 | :-------- | :------------------------ | :------- | :------ |
 | **href**  | Link of the logo / title. | `string` | `'/'`   |
 
-## Events
+### Events
 
 
 | Event           | Description                               | Type         |
@@ -31,10 +32,7 @@ sidebarDepth: 0
 | **balNavigate** | Emitted when the link element has clicked | `MouseEvent` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

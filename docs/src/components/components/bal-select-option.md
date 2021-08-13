@@ -8,13 +8,14 @@ sidebarDepth: 0
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-select -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute    | Description                                                                                       | Type                 | Default |
@@ -24,10 +25,7 @@ sidebarDepth: 0
 | **value**    | The value of the select option. This value will be returned by the parent `<bal-select>` element. | `string , undefined` |         |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

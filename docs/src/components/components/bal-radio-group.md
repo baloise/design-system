@@ -8,13 +8,14 @@ sidebarDepth: 0
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-radio -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute     | Description                                                     | Type                        | Default        |
@@ -25,7 +26,7 @@ sidebarDepth: 0
 | **name**      | The name of the control, which is submitted with the form data. | `string`                    | `this.inputId` |
 | **value**     | The value of the control.                                       | `string`                    | `''`           |
 
-## Events
+### Events
 
 
 | Event         | Description                                    | Type     |
@@ -33,10 +34,7 @@ sidebarDepth: 0
 | **balChange** | Emitted when the checked property has changed. | `string` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

@@ -10,13 +10,14 @@ sidebarDepth: 0
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-data -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute    | Description                                   | Type      | Default |
@@ -24,10 +25,7 @@ sidebarDepth: 0
 | **disabled** | If `true` the item gets a lighter font color. | `boolean` | `false` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

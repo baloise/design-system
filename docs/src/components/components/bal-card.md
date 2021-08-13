@@ -11,52 +11,52 @@ Cards contain content and actions about a single subject and can be combined wit
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-card-16></docs-demo-bal-card-16></ClientOnly>
 
 
-## Inverted style
+### Inverted style
 
 <ClientOnly><docs-demo-bal-card-17></docs-demo-bal-card-17></ClientOnly>
 
 
-## With accordion
+### With accordion
 
 <ClientOnly><docs-demo-bal-card-18></docs-demo-bal-card-18></ClientOnly>
 
 
-## With list
+### With list
 
 The position the action buttons to the right side just add the attribute `right` to the component `bal-card-actions`.
 
 <ClientOnly><docs-demo-bal-card-19></docs-demo-bal-card-19></ClientOnly>
 
 
-## Summary card
+### Summary card
 
 <ClientOnly><docs-demo-bal-card-20></docs-demo-bal-card-20></ClientOnly>
 
 
-## Service card
+### Service card
 
 <ClientOnly><docs-demo-bal-card-21></docs-demo-bal-card-21></ClientOnly>
 
 
-## Colors
+### Colors
 
 <ClientOnly><docs-demo-bal-card-22></docs-demo-bal-card-22></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute       | Description                                         | Type                                                         | Default |
@@ -72,18 +72,13 @@ The position the action buttons to the right side just add the attribute `right`
 | **teaser**      | If `true` the card has a limited width on desktop.  | `boolean`                                                    | `false` |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

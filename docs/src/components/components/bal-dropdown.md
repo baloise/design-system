@@ -15,25 +15,25 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-dropdown-41></docs-demo-bal-dropdown-41></ClientOnly>
 
 
-## Input
+### Input
 
 <ClientOnly><docs-demo-bal-dropdown-42></docs-demo-bal-dropdown-42></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute               | Description                                      | Type      | Default |
@@ -42,7 +42,7 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 | **fixed-content-width** | If `true` the dropdown content has a fixed width | `boolean` | `false` |
 | **is-active**           | If `true` the dropdown content is open.          | `boolean` | `false` |
 
-## Events
+### Events
 
 
 | Event                  | Description                                                                     | Type      |
@@ -50,7 +50,7 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 | **balCollapse**        | Listen when the dropdown opens or closes. Returns the current `isActive` value. | `boolean` |
 | **balDropdownPrepare** | *Internal* - Use this to close unuesed dropdowns.                               | `string`  |
 
-## Methods
+### Methods
 
 
 | Method                  | Description                                         | Signature                                            |
@@ -60,7 +60,7 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 | **`open`**              | Open the dropdown menu.                             | `open() => Promise<void>`                            |
 | **`toggle`**            | Open or closes the dropdown.                        | `toggle() => Promise<void>`                          |
 
-## Testing
+### Testing
 
 
 DropdownAccessor is a helper object for E-2-E testing.
@@ -83,18 +83,13 @@ describe('Dropdown', () => {
 | :-------- | :------------------ | :---------------------------------------- |
 | **click** | Clicks the dropdown | `options?: Partial<Cypress.ClickOptions>` |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

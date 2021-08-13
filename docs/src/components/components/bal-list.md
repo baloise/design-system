@@ -11,40 +11,40 @@ A list present content in a way that makes it easy to identify a specific item i
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-list-65></docs-demo-bal-list-65></ClientOnly>
 
 
-## With borders
+### With borders
 
 <ClientOnly><docs-demo-bal-list-66></docs-demo-bal-list-66></ClientOnly>
 
 
-## Inverted
+### Inverted
 
 <ClientOnly><docs-demo-bal-list-67></docs-demo-bal-list-67></ClientOnly>
 
 
-## With Icons
+### With Icons
 
 <ClientOnly><docs-demo-bal-list-68></docs-demo-bal-list-68></ClientOnly>
 
 
-## Link
+### Link
 
 <ClientOnly><docs-demo-bal-list-69></docs-demo-bal-list-69></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute    | Description                                        | Type      | Default |
@@ -53,7 +53,7 @@ A list present content in a way that makes it easy to identify a specific item i
 | **disabled** | If `true` the list item can be hovered             | `boolean` | `false` |
 | **inverted** | If `true` the list can be used on a dark backround | `boolean` | `false` |
 
-## Testing
+### Testing
 
 
 
@@ -80,18 +80,13 @@ A list present content in a way that makes it easy to identify a specific item i
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

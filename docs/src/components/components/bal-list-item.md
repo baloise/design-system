@@ -8,13 +8,14 @@ sidebarDepth: 0
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-list -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute     | Description                                        | Type                                       | Default   |
@@ -25,7 +26,7 @@ sidebarDepth: 0
 | **selected**  | If `true` the list item has a selected theme       | `boolean`                                  | `false`   |
 | **target**    | Specifies where to open the linked document        | `" _parent" , "_blank" , "_self" , "_top"` | `'_self'` |
 
-## Events
+### Events
 
 
 | Event           | Description                               | Type         |
@@ -33,10 +34,7 @@ sidebarDepth: 0
 | **balNavigate** | Emitted when the link element has clicked | `MouseEvent` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

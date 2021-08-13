@@ -10,13 +10,14 @@ sidebarDepth: 0
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-field -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute    | Description                                   | Type                                    | Default |
@@ -25,10 +26,7 @@ sidebarDepth: 0
 | **expanded** | If `true` the component takes the whole width | `boolean`                               | `false` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

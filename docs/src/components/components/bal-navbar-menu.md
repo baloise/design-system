@@ -10,13 +10,14 @@ sidebarDepth: 0
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-navbar -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Methods
+### Methods
 
 
 | Method       | Description                                                             | Signature                                        |
@@ -24,10 +25,7 @@ sidebarDepth: 0
 | **`toggle`** | *Internal* - If the menu is open it closes it and the other way around. | `toggle(isMenuActive: boolean) => Promise<void>` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

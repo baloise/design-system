@@ -11,22 +11,22 @@ Pagination allows you to divide large amounts of content into smaller chunks acr
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 Generally, pagination is used if there are more than 25 items displayed in one view.  The default number displayed will vary depending on the context.
 
 <ClientOnly><docs-demo-bal-pagination-79></docs-demo-bal-pagination-79></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute       | Description                                                      | Type      | Default |
@@ -36,14 +36,14 @@ Generally, pagination is used if there are more than 25 items displayed in one v
 | **total-pages** | The total amount of pages                                        | `number`  | `1`     |
 | **value**       | Current selected page                                            | `number`  | `1`     |
 
-## Events
+### Events
 
 
 | Event         | Description                         | Type     |
 | :------------ | :---------------------------------- | :------- |
 | **balChange** | Triggers when a page change happens | `number` |
 
-## Methods
+### Methods
 
 
 | Method         | Description            | Signature                     |
@@ -52,18 +52,13 @@ Generally, pagination is used if there are more than 25 items displayed in one v
 | **`previous`** | Go to the prvious page | `previous() => Promise<void>` |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

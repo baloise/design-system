@@ -11,35 +11,35 @@ A text provides some additional helpers.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-text-112></docs-demo-bal-text-112></ClientOnly>
 
 
-## Small
+### Small
 
 <ClientOnly><docs-demo-bal-text-113></docs-demo-bal-text-113></ClientOnly>
 
 
-## Bold
+### Bold
 
 <ClientOnly><docs-demo-bal-text-114></docs-demo-bal-text-114></ClientOnly>
 
 
-## Colors
+### Colors
 
 <ClientOnly><docs-demo-bal-text-115></docs-demo-bal-text-115></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute | Description                         | Type                                                                  | Default |
@@ -48,7 +48,7 @@ A text provides some additional helpers.
 | **color** | Defines the color of the text.      | `"" , "danger" , "hint" , "info" , "primary" , "success" , "warning"` | `''`    |
 | **small** | If `true` the text has a small size | `boolean`                                                             | `false` |
 
-## Testing
+### Testing
 
 
 TextAccessor is a helper object for E-2-E testing.
@@ -87,18 +87,13 @@ describe('Text', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

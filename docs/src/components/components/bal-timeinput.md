@@ -9,35 +9,35 @@ sidebarDepth: 0
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-timeinput-117></docs-demo-bal-timeinput-117></ClientOnly>
 
 
-## Inverted style
+### Inverted style
 
 <ClientOnly><docs-demo-bal-timeinput-118></docs-demo-bal-timeinput-118></ClientOnly>
 
 
-## Min and max time
+### Min and max time
 
 <ClientOnly><docs-demo-bal-timeinput-119></docs-demo-bal-timeinput-119></ClientOnly>
 
 
-## Disabled
+### Disabled
 
 <ClientOnly><docs-demo-bal-timeinput-120></docs-demo-bal-timeinput-120></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute    | Description                                             | Type      | Default |
@@ -48,7 +48,7 @@ sidebarDepth: 0
 | **min-time** | Earliest date available for selection                   | `string`  | `''`    |
 | **value**    | The value of the datepicker with the format `hh:mm`.    | `string`  | `''`    |
 
-## Events
+### Events
 
 
 | Event         | Description                                                                                                                                                    | Type         |
@@ -58,18 +58,13 @@ sidebarDepth: 0
 It will not be triggert if either hour or time input has never been set (i.e. "--" is selected). | `string`     |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

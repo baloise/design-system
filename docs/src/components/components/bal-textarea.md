@@ -11,20 +11,20 @@ A textarea allows a user to write and edit large texts.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-textarea-116></docs-demo-bal-textarea-116></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute          | Description                                                                                                                                                                      | Type                                                                                       | Default        |
@@ -48,7 +48,7 @@ A textarea allows a user to write and edit large texts.
 | **value**          | The value of the textarea.                                                                                                                                                       | `string , undefined`                                                                       | `''`           |
 | **wrap**           | Indicates how the control wraps text.                                                                                                                                            | `"hard" , "off" , "soft" , undefined`                                                      |                |
 
-## Events
+### Events
 
 
 | Event           | Description                                | Type            |
@@ -60,7 +60,7 @@ A textarea allows a user to write and edit large texts.
 | **balInput**    | Emitted when a keyboard input occurred.    | `string`        |
 | **balKeyPress** | Emitted when a keyboard key has pressed.   | `KeyboardEvent` |
 
-## Methods
+### Methods
 
 
 | Method                | Description                                                                                                      | Signature                                           |
@@ -70,18 +70,13 @@ A textarea allows a user to write and edit large texts.
 `textarea.focus()`. | `setFocus() => Promise<void>`                       |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

@@ -10,13 +10,14 @@ sidebarDepth: 0
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-data -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute    | Description                                                           | Type      | Default |
@@ -24,7 +25,7 @@ sidebarDepth: 0
 | **disabled** | If `true` the button will get disabled.                               | `boolean` | `false` |
 | **editable** | If `true` a small button with a edit icon will be shown on the right. | `boolean` | `false` |
 
-## Events
+### Events
 
 
 | Event        | Description                               | Type         |
@@ -34,10 +35,7 @@ sidebarDepth: 0
 | **balFocus** | Emitted when the edit button has focus.   | `void`       |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

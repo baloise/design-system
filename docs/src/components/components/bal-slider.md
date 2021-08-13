@@ -11,30 +11,30 @@ The slider component lets users select from a range of values by moving the slid
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-slider-93></docs-demo-bal-slider-93></ClientOnly>
 
 
-## With Steps
+### With Steps
 
 <ClientOnly><docs-demo-bal-slider-94></docs-demo-bal-slider-94></ClientOnly>
 
 
-## With Field
+### With Field
 
 <ClientOnly><docs-demo-bal-slider-95></docs-demo-bal-slider-95></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute        | Description                                                                                                                                                             | Type                          | Default        |
@@ -51,7 +51,7 @@ The slider component lets users select from a range of values by moving the slid
 | **step**         | The step size. 0 means no steps.                                                                                                                                        | `number`                      | `0`            |
 | **value**        | The value of the input.                                                                                                                                                 | `number , string , undefined` | `''`           |
 
-## Events
+### Events
 
 
 | Event           | Description                               | Type                     |
@@ -63,7 +63,7 @@ The slider component lets users select from a range of values by moving the slid
 | **balInput**    | Emitted when a keyboard input occurred.   | `null | number | string` |
 | **balKeyPress** | Emitted when a keyboard key has pressed.  | `KeyboardEvent`          |
 
-## Methods
+### Methods
 
 
 | Method                | Description                                                                                             | Signature                                        |
@@ -73,18 +73,13 @@ The slider component lets users select from a range of values by moving the slid
 `input.focus()`. | `setFocus() => Promise<void>`                    |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

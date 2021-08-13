@@ -11,70 +11,70 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-button-5></docs-demo-bal-button-5></ClientOnly>
 
 
-## Outlined
+### Outlined
 
 <ClientOnly><docs-demo-bal-button-6></docs-demo-bal-button-6></ClientOnly>
 
 
-## Inverted
+### Inverted
 
 <ClientOnly><docs-demo-bal-button-7></docs-demo-bal-button-7></ClientOnly>
 
 
-## Other colors
+### Other colors
 
 <ClientOnly><docs-demo-bal-button-8></docs-demo-bal-button-8></ClientOnly>
 
 
-## Disabled
+### Disabled
 
 <ClientOnly><docs-demo-bal-button-9></docs-demo-bal-button-9></ClientOnly>
 
 
-## Loading
+### Loading
 
 <ClientOnly><docs-demo-bal-button-10></docs-demo-bal-button-10></ClientOnly>
 
 
-## Expanded
+### Expanded
 
 <ClientOnly><docs-demo-bal-button-11></docs-demo-bal-button-11></ClientOnly>
 
 
-## With icons
+### With icons
 
 <ClientOnly><docs-demo-bal-button-12></docs-demo-bal-button-12></ClientOnly>
 
 
-## Small buttons
+### Small buttons
 
 <ClientOnly><docs-demo-bal-button-13></docs-demo-bal-button-13></ClientOnly>
 
 
-## Square buttons
+### Square buttons
 
 <ClientOnly><docs-demo-bal-button-14></docs-demo-bal-button-14></ClientOnly>
 
 
-## Button Link
+### Button Link
 
 <ClientOnly><docs-demo-bal-button-15></docs-demo-bal-button-15></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute          | Description                                                                                                                                                                                                                                                                               | Type                                                                                              | Default     |
@@ -102,7 +102,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 | **type**           | The type of button.                                                                                                                                                                                                                                                                       | `"button" , "reset" , "submit"`                                                                   | `'button'`  |
 | **value**          | The value of the button, which is submitted with the form data.                                                                                                                                                                                                                           | `number , string , undefined`                                                                     | `''`        |
 
-## Events
+### Events
 
 
 | Event            | Description                                 | Type         |
@@ -112,7 +112,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 | **balFocus**     | Emitted when the button has focus.          | `void`       |
 | **balNavigate**  | Emitted when the link element has clicked.  | `MouseEvent` |
 
-## Testing
+### Testing
 
 
 ButtonAccessor is a helper object for E-2-E testing.
@@ -154,9 +154,7 @@ describe('Button', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
@@ -166,10 +164,7 @@ WIP
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

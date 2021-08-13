@@ -50,7 +50,7 @@ async function generateComponentMarkdown(component, dir, accessors) {
   const { markdown, scripts } = generateExamples(component)
   JAVASCRIPT_CONTENT.push(scripts)
 
-  const { top, usage, style } = await componentDoc.parse(component)
+  const { top, usage, style, slots } = await componentDoc.parse(component)
 
   const lines = []
   lines.push('---')
@@ -66,20 +66,20 @@ async function generateComponentMarkdown(component, dir, accessors) {
   lines.push('')
   lines.push(top)
   lines.push('')
+  lines.push('<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>')
+  lines.push('')
 
   if (component.docs && component.docs.length > 0) {
     lines.push(component.docs)
     lines.push('')
   }
 
-  lines.push(':::: tabs :options="{ useUrlFragment: false }"')
   lines.push('')
 
   if (markdown !== undefined && markdown.length > 0) {
-    lines.push('::: tab Examples')
+    lines.push('## Examples')
     lines.push('')
     lines.push(markdown)
-    lines.push(':::')
     lines.push('')
   }
 
@@ -90,32 +90,32 @@ async function generateComponentMarkdown(component, dir, accessors) {
   const hasCodeTab =
     componentProps.length > 0 || componentEvents.length > 0 || componentMethods.length > 0 || accessor !== undefined
   if (hasCodeTab) {
-    lines.push('::: tab Code')
+    lines.push('## Code')
     lines.push('')
 
     if (componentProps.length > 0) {
-      lines.push('## Properties')
+      lines.push('### Properties')
       lines.push('')
       lines.push(componentProps)
       lines.push('')
     }
 
     if (componentEvents.length > 0) {
-      lines.push('## Events')
+      lines.push('### Events')
       lines.push('')
       lines.push(componentEvents)
       lines.push('')
     }
 
     if (componentMethods.length > 0) {
-      lines.push('## Methods')
+      lines.push('### Methods')
       lines.push('')
       lines.push(componentMethods)
       lines.push('')
     }
 
     if (accessor !== undefined) {
-      lines.push('## Testing')
+      lines.push('### Testing')
       lines.push('')
       const testingContent = testing.parse(accessor)
       lines.push('')
@@ -123,30 +123,23 @@ async function generateComponentMarkdown(component, dir, accessors) {
     }
 
     lines.push('')
-    lines.push(':::')
-    lines.push('')
   }
 
   if (usage && usage.length > 0) {
-    lines.push('::: tab Usage')
+    lines.push('## Usage')
     lines.push('')
     lines.push(usage)
-    lines.push('')
-    lines.push(':::')
     lines.push('')
   }
 
   if (style && style.length > 0) {
-    lines.push('::: tab Style')
+    lines.push('## Style')
     lines.push('')
     lines.push(style)
-    lines.push('')
-    lines.push(':::')
     lines.push('')
   }
 
   lines.push('')
-  lines.push('::::')
 
   const githubContent = github.parse(component, accessor)
   lines.push(githubContent)
@@ -157,6 +150,10 @@ async function generateComponentMarkdown(component, dir, accessors) {
     lines.push(`  <docs-component-script tag="${camelize(component.tag)}"></docs-component-script>`)
     lines.push(`</ClientOnly>`)
     lines.push('')
+  }
+
+  if (slots.length > 0) {
+    lines.push(slots)
   }
 
   await file.save(path.join(dir, `${component.tag}.md`), lines.join(NEWLINE))
@@ -245,6 +242,18 @@ function transformToMarkdown(component) {
             content: printRawText(node),
           }
         }
+        if (node.rawTagName === 'article') {
+          return {
+            type: 'article',
+            content: getCodeExample(node.innerHTML),
+          }
+        }
+        if (node.rawTagName === 'content') {
+          return {
+            type: 'content',
+            content: '<Content ' + node.rawAttrs + '></Content>',
+          }
+        }
         if (node.rawTagName === 'section') {
           return {
             type: 'template',
@@ -264,11 +273,11 @@ function transformToMarkdown(component) {
     .map((ctx, index, list) => {
       switch (ctx.type) {
         case 'h2':
-          return `## ${ctx.content}` + NEWLINE
-        case 'h3':
           return `### ${ctx.content}` + NEWLINE
-        case 'h4':
+        case 'h3':
           return `#### ${ctx.content}` + NEWLINE
+        case 'h4':
+          return `##### ${ctx.content}` + NEWLINE
         case 'p':
           return `${ctx.content}` + NEWLINE
         case 'template':

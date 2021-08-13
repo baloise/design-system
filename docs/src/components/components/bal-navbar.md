@@ -15,25 +15,25 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-navbar-73></docs-demo-bal-navbar-73></ClientOnly>
 
 
-## Light
+### Light
 
 <ClientOnly><docs-demo-bal-navbar-74></docs-demo-bal-navbar-74></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute     | Description                                  | Type      | Default |
@@ -43,18 +43,13 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 | **no-burger** | It `true` the burger button is hidden        | `boolean` | `false` |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

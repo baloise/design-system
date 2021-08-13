@@ -13,6 +13,8 @@ A select is a collection of options, where the user can select a single one or m
 
 <!-- END: human documentation top -->
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 For creating a list of options use the `BalOptionValue` interface.
 
 ```typescript
@@ -24,40 +26,38 @@ export interface BalOptionValue<T> {
 }
 ```
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Examples
+## Examples
 
-## Basic
+### Basic
 
 <ClientOnly><docs-demo-bal-select-87></docs-demo-bal-select-87></ClientOnly>
 
 
-### Typeahead
+#### Typeahead
 
 <ClientOnly><docs-demo-bal-select-88></docs-demo-bal-select-88></ClientOnly>
 
 
-### Multi-Select
+#### Multi-Select
 
 <ClientOnly><docs-demo-bal-select-89></docs-demo-bal-select-89></ClientOnly>
 
 
-### Multi-Select with typeahead
+#### Multi-Select with typeahead
 
 <ClientOnly><docs-demo-bal-select-90></docs-demo-bal-select-90></ClientOnly>
 
 
-### Remote Typeahead
+#### Remote Typeahead
 
 <ClientOnly><docs-demo-bal-select-91></docs-demo-bal-select-91></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute         | Description                                                                       | Type                   | Default        |
@@ -77,7 +77,7 @@ export interface BalOptionValue<T> {
 | **typeahead**     | If `true` the user can search by typing into the input field.                     | `boolean`              | `false`        |
 |                   | Selected option values. Could also be passed as a string, which gets transformed. | `string[] , undefined` | `[]`           |
 
-## Events
+### Events
 
 
 | Event           | Description                                                        | Type            |
@@ -90,7 +90,7 @@ export interface BalOptionValue<T> {
 | **balInput**    | Emitted when a keyboard input occurred.                            | `string`        |
 | **balKeyPress** | Emitted when the input has focus and key from the keyboard go hit. | `KeyboardEvent` |
 
-## Methods
+### Methods
 
 
 | Method         | Description                                                                 | Signature                                |
@@ -102,7 +102,7 @@ export interface BalOptionValue<T> {
 | **`select`**   | Select option by passed value                                               | `select(value: string) => Promise<void>` |
 | **`setFocus`** | Sets the focus on the input element                                         | `setFocus() => Promise<void>`            |
 
-## Testing
+### Testing
 
 
 SelectAccessor is a helper object for E-2-E testing.
@@ -130,18 +130,13 @@ describe('Select', () => {
 | **assertOptions** | Checks the options             | `...options: string[]`                    |
 | **contains**      | Checks if input have a content | `content: string | number | RegExp`       |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

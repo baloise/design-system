@@ -10,13 +10,14 @@ sidebarDepth: 0
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-dropdown -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute      | Description                                                         | Type     | Default |
@@ -24,10 +25,7 @@ sidebarDepth: 0
 | **scrollable** | Limit the height of the dropdown content. Pass the amount of pixel. | `number` | `0`     |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

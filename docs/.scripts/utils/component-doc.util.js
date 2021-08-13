@@ -12,6 +12,9 @@ const END_TAG_USAGE = '<!-- END: human documentation usage -->'
 const START_TAG_STYLE = '<!-- START: human documentation style -->'
 const END_TAG_STYLE = '<!-- END: human documentation style -->'
 
+const START_TAG_SLOTS = '<!-- START: human documentation slots -->'
+const END_TAG_SLOTS = '<!-- END: human documentation slots -->'
+
 const parse = async component => {
   const pathToComponent = path.join(__dirname, '../../src/components/components', `${component.tag}.md`)
   let markdownContent = ''
@@ -22,9 +25,11 @@ const parse = async component => {
   const topLines = []
   const usageLines = []
   const styleLines = []
+  const slotLines = []
   let hasReachedStartTagOfTop = false
   let hasReachedStartTagOfUsage = false
   let hasReachedStartTagOfStyle = false
+  let hasReachedStartTagOfSlots = false
 
   for (let index = 0; index < markdownLines.length; index++) {
     const line = markdownLines[index]
@@ -41,6 +46,10 @@ const parse = async component => {
       hasReachedStartTagOfStyle = true
     }
 
+    if (line.includes(START_TAG_SLOTS)) {
+      hasReachedStartTagOfSlots = true
+    }
+
     if (hasReachedStartTagOfTop) {
       topLines.push(line)
     }
@@ -51,6 +60,10 @@ const parse = async component => {
 
     if (hasReachedStartTagOfStyle) {
       styleLines.push(line)
+    }
+
+    if (hasReachedStartTagOfSlots) {
+      slotLines.push(line)
     }
 
     if (line.includes(END_TAG_TOP)) {
@@ -64,12 +77,17 @@ const parse = async component => {
     if (line.includes(END_TAG_STYLE)) {
       hasReachedStartTagOfStyle = false
     }
+
+    if (line.includes(END_TAG_SLOTS)) {
+      hasReachedStartTagOfSlots = false
+    }
   }
 
   return {
     top: topLines.join(NEWLINE),
     usage: usageLines.join(NEWLINE),
     style: styleLines.join(NEWLINE),
+    slots: slotLines.join(NEWLINE),
   }
 }
 

@@ -11,35 +11,35 @@ A notification is used for alerts or to highlight certain content for the user.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-notification-75></docs-demo-bal-notification-75></ClientOnly>
 
 
-## Types
+### Types
 
 <ClientOnly><docs-demo-bal-notification-76></docs-demo-bal-notification-76></ClientOnly>
 
 
-## Box
+### Box
 
 <ClientOnly><docs-demo-bal-notification-77></docs-demo-bal-notification-77></ClientOnly>
 
 
-## Error
+### Error
 
 <ClientOnly><docs-demo-bal-notification-78></docs-demo-bal-notification-78></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute | Description                      | Type                                                         | Default |
@@ -47,18 +47,13 @@ A notification is used for alerts or to highlight certain content for the user.
 | **color** | Defines the color of the element | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

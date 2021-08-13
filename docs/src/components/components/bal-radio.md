@@ -11,50 +11,50 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-radio-80></docs-demo-bal-radio-80></ClientOnly>
 
 
-## Inverted
+### Inverted
 
 <ClientOnly><docs-demo-bal-radio-81></docs-demo-bal-radio-81></ClientOnly>
 
 
-## With Links
+### With Links
 
 <ClientOnly><docs-demo-bal-radio-82></docs-demo-bal-radio-82></ClientOnly>
 
 
-## Radio Boxes
+### Radio Boxes
 
 <ClientOnly><docs-demo-bal-radio-83></docs-demo-bal-radio-83></ClientOnly>
 
 
-## Radio List
+### Radio List
 
 <ClientOnly><docs-demo-bal-radio-84></docs-demo-bal-radio-84></ClientOnly>
 
 
-## Select Button
+### Select Button
 
 <ClientOnly><docs-demo-bal-radio-85></docs-demo-bal-radio-85></ClientOnly>
 
 
-### Inverted
+#### Inverted
 
 <ClientOnly><docs-demo-bal-radio-86></docs-demo-bal-radio-86></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute        | Description                                                     | Type                        | Default        |
@@ -67,7 +67,7 @@ A radio input is normally displayed in a radio group. The user can only select o
 | **name**         | The name of the control, which is submitted with the form data. | `string`                    | `this.inputId` |
 | **value**        | The value of the control.                                       | `string`                    | `''`           |
 
-## Events
+### Events
 
 
 | Event        | Description                          | Type         |
@@ -75,14 +75,14 @@ A radio input is normally displayed in a radio group. The user can only select o
 | **balBlur**  | Emitted when the toggle loses focus. | `FocusEvent` |
 | **balFocus** | Emitted when the toggle has focus.   | `FocusEvent` |
 
-## Methods
+### Methods
 
 
 | Method         | Description                          | Signature                     |
 | :------------- | :----------------------------------- | :---------------------------- |
 | **`setFocus`** | Sets the focus on the input element. | `setFocus() => Promise<void>` |
 
-## Testing
+### Testing
 
 
 RadioAccessor is a helper object for E-2-E testing.
@@ -123,18 +123,13 @@ describe('Radio', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

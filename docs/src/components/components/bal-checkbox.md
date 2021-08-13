@@ -11,11 +11,12 @@ Checkboxes allow users to select one or more items from a set. Checkboxes can tu
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 Checkboxes allow the selection of multiple options from a set of options. They appear as checked (ticked) when activated, or unchecked (unticked) when deactivated.
         Checkboxes can be selected as checked by setting the property.
@@ -23,45 +24,44 @@ Checkboxes allow the selection of multiple options from a set of options. They a
 <ClientOnly><docs-demo-bal-checkbox-23></docs-demo-bal-checkbox-23></ClientOnly>
 
 
-## Switch
+### Switch
 
 Switches are used to toggle between exactly two states (like on and off).
 
 <ClientOnly><docs-demo-bal-checkbox-24></docs-demo-bal-checkbox-24></ClientOnly>
 
 
-## Inverted
+### Inverted
 
 <ClientOnly><docs-demo-bal-checkbox-25></docs-demo-bal-checkbox-25></ClientOnly>
 
 
-## With Links
+### With Links
 
 <ClientOnly><docs-demo-bal-checkbox-26></docs-demo-bal-checkbox-26></ClientOnly>
 
 
-## Events
+### Events
 
-### Listen on Changes
+#### Listen on Changes
 
 <ClientOnly><docs-demo-bal-checkbox-27></docs-demo-bal-checkbox-27></ClientOnly>
 
 
-### Change value
+#### Change value
 
 <ClientOnly><docs-demo-bal-checkbox-28></docs-demo-bal-checkbox-28></ClientOnly>
 
 
-## Checkbox Boxes
+### Checkbox Boxes
 
 <ClientOnly><docs-demo-bal-checkbox-29></docs-demo-bal-checkbox-29></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute        | Description                                                     | Type                    | Default        |
@@ -74,7 +74,7 @@ Switches are used to toggle between exactly two states (like on and off).
 | **name**         | The name of the control, which is submitted with the form data. | `string`                | `this.inputId` |
 | **value**        | The value of the control.                                       | `string`                | `'on'`         |
 
-## Events
+### Events
 
 
 | Event         | Description                                    | Type         |
@@ -83,7 +83,7 @@ Switches are used to toggle between exactly two states (like on and off).
 | **balChange** | Emitted when the checked property has changed. | `boolean`    |
 | **balFocus**  | Emitted when the toggle has focus.             | `FocusEvent` |
 
-## Methods
+### Methods
 
 
 | Method                | Description                                               | Signature                                        |
@@ -91,7 +91,7 @@ Switches are used to toggle between exactly two states (like on and off).
 | **`getInputElement`** | Returns the native `<input>` element used under the hood. | `getInputElement() => Promise<HTMLInputElement>` |
 | **`setFocus`**        | Sets the focus on the checkbox input element.             | `setFocus() => Promise<void>`                    |
 
-## Testing
+### Testing
 
 
 CheckboxAccessor is a helper object for E-2-E testing.
@@ -127,18 +127,13 @@ describe('Checkbox', () => {
 | **selectNth**        | Selects the option at the given index                                                                            | `index: number`                                          |
 | **should**           | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax) | `chainers: string, attribute?: string, content?: string` |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

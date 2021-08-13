@@ -12,25 +12,25 @@ It can easily combined with the `bal-data` or `bal-field` component.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-hint-54></docs-demo-bal-hint-54></ClientOnly>
 
 
-## Field
+### Field
 
 <ClientOnly><docs-demo-bal-hint-55></docs-demo-bal-hint-55></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute       | Description                                         | Type      | Default   |
@@ -38,7 +38,7 @@ It can easily combined with the `bal-data` or `bal-field` component.
 | **close-label** | Text for the close button.                          | `string`  | `'Close'` |
 | **disabled**    | If `true`, the user cannot interact with the input. | `boolean` | `false`   |
 
-## Methods
+### Methods
 
 
 | Method       | Description           | Signature                   |
@@ -48,18 +48,13 @@ It can easily combined with the `bal-data` or `bal-field` component.
 | **`toggle`** | Toggles the hint box. | `toggle() => Promise<void>` |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

@@ -11,25 +11,25 @@ A data component display readonly form data.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-data-30></docs-demo-bal-data-30></ClientOnly>
 
 
-## Horizontal
+### Horizontal
 
 <ClientOnly><docs-demo-bal-data-31></docs-demo-bal-data-31></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute      | Description                                                | Type      | Default |
@@ -38,18 +38,13 @@ A data component display readonly form data.
 | **horizontal** | If `true` the data list is horizontal instead of vertical. | `boolean` | `false` |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

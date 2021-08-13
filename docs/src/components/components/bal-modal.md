@@ -12,37 +12,37 @@ the app before interaction can resume.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-modal-70></docs-demo-bal-modal-70></ClientOnly>
 
 
-## Customize width
+### Customize width
 
 <ClientOnly><docs-demo-bal-modal-71></docs-demo-bal-modal-71></ClientOnly>
 
 
-## Modal card style
+### Modal card style
 
 <ClientOnly><docs-demo-bal-modal-72></docs-demo-bal-modal-72></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute | Description                                                                                     | Type      | Default |
 | :-------- | :---------------------------------------------------------------------------------------------- | :-------- | :------ |
 | **card**  | Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot. | `boolean` | `false` |
 
-## Methods
+### Methods
 
 
 | Method      | Description       | Signature                  |
@@ -51,18 +51,13 @@ the app before interaction can resume.
 | **`open`**  | Opens the modal.  | `open() => Promise<void>`  |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 
