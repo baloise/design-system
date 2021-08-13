@@ -368,8 +368,7 @@ export class Datepicker implements ComponentInterface {
   }
 
   private onInput = (event: Event) => {
-    const inputValue = (event.target as HTMLInputElement).value
-    this.balInput.emit(inputValue)
+    let inputValue = (event.target as HTMLInputElement).value
     event.stopPropagation()
 
     if (inputValue && inputValue.length >= 6) {
@@ -379,6 +378,7 @@ export class Datepicker implements ComponentInterface {
         this.selectedDate = datestring
         this.updatePointerDates()
       }
+      this.balInput.emit(inputValue)
     }
   }
 
@@ -418,7 +418,7 @@ export class Datepicker implements ComponentInterface {
 
   private onInputKeyDown = (event: KeyboardEvent) => {
     const allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]
-    if (allowedKeys.indexOf(event.key) < 0) {
+    if (!event.metaKey && allowedKeys.indexOf(event.key) < 0) {
       event.preventDefault()
       event.stopPropagation()
     }
