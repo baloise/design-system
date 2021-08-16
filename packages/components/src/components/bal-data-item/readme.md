@@ -1,9 +1,8 @@
 <!-- docs:child of bal-data -->
 
-# bal-data-item
+# Data Item
 
 `bal-data-item` is a child component of `bal-data` that adds a new row item.
-
 
 <!-- Auto Generated Below -->
 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Baloise Design System</title>
+    <link rel="stylesheet" href="/build/design-system-components.css" />
+    <script type="module" src="/build/design-system-components.esm.js"></script>
+    <script nomodule src="/build/design-system-components.js"></script>
+  </head>
+  <body class="bal-app bal-app-background has-sticky-footer">
+    <header>
+      <bal-navbar no-burger>
+        <bal-navbar-brand>
+          <bal-icon name="logo" inverted size="large"></bal-icon>
+          <bal-text style="margin-left: 15px"><strong>Baloise Design System</strong> Templates</bal-text>
+        </bal-navbar-brand>
+      </bal-navbar>
+    </header>
+    <main>
+      <div class="container">
+        <div class="columns is-multiline mt-8">
+          <div class="column is-half">
+            <bal-card>
+              <bal-card-content>
+                <bal-heading level="h4" class="pt-0" space="bottom">Form Wizzard</bal-heading>
+                <bal-text>A typical layout for our produkt calculators.</bal-text>
+                <img style="max-width: 100%" src="https://baloise-design-system.vercel.app/assets/images/templates/form.png" class="mt-4" />
+              </bal-card-content>
+              <bal-card-actions>
+                <bal-button link href="https://design-system-templates.vercel.app/form.html">Demo</bal-button>
+                <bal-button
+                  color="info"
+                  outlined
+                  icon="github"
+                  link
+                  href="https://github.com/baloise/design-system/blob/master/packages/components/src/templates/form.html"
+                  target="_blank"
+                  >SourceCode</bal-button
+                >
+              </bal-card-actions>
+            </bal-card>
+          </div>
+          <div class="column is-half">
+            <bal-card>
+              <bal-card-content>
+                <bal-heading level="h4" class="pt-0" space="bottom">Portal</bal-heading>
+                <bal-text>The basic layout of our portal application.</bal-text>
+                <img style="max-width: 100%" src="https://baloise-design-system.vercel.app/assets/images/templates/portal.png" class="mt-4" />
+              </bal-card-content>
+              <bal-card-actions>
+                <bal-button link href="https://design-system-templates.vercel.app/portal.html">Demo</bal-button>
+                <bal-button
+                  color="info"
+                  outlined
+                  icon="github"
+                  link
+                  href="https://github.com/baloise/design-system/blob/master/packages/components/src/templates/portal.html"
+                  target="_blank"
+                  >SourceCode</bal-button
+                >
+              </bal-card-actions>
+            </bal-card>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

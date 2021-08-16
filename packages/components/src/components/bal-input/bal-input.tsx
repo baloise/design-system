@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface, Listen } from '@stencil/core'
 import { isNil } from 'lodash'
-import { NUMBER_KEYS, ACTION_KEYS } from '../../constants/keys.constant'
+import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../types/interfaces'
 
@@ -151,11 +151,6 @@ export class Input implements ComponentInterface {
   @Prop() numberKeyboard = false
 
   /**
-   * If `true` the input only allows numbers
-   */
-  @Prop() onlyNumbers = false
-
-  /**
    * @internal
    * If `true` the input will get some right padding.
    */
@@ -262,7 +257,7 @@ export class Input implements ComponentInterface {
     return `${value}${suffix}`
   }
 
-  private onInput = (ev: Event) => {
+  private onInput = (ev: InputEvent) => {
     const input = ev.target as HTMLInputElement | null
     if (input) {
       this.value = input.value || ''
@@ -270,9 +265,9 @@ export class Input implements ComponentInterface {
     this.balInput.emit(this.value)
   }
 
-  private onKeyDown = (event: KeyboardEvent): void => {
+  private onKeyDown = (event: KeyboardEvent) => {
     if (this.numberKeyboard) {
-      if (this.allowedKeys.indexOf(event.key) < 0) {
+      if (!isCtrlOrCommandKey(event) && this.allowedKeys.indexOf(event.key) < 0) {
         event.preventDefault()
         event.stopPropagation()
       }
@@ -353,7 +348,7 @@ export class Input implements ComponentInterface {
           autoCapitalize={this.autocapitalize}
           autoComplete={this.autocomplete}
           autoCorrect={this.autocorrect}
-          autoFocus={this.autofocus}
+          autofocus={this.autofocus}
           min={this.min}
           max={this.max}
           minLength={this.minLength}
@@ -368,7 +363,7 @@ export class Input implements ComponentInterface {
           tabindex={this.balTabindex}
           value={value}
           {...inputProps}
-          onInput={this.onInput}
+          onInput={ev => this.onInput(ev as InputEvent)}
           onKeyDown={this.onKeyDown}
           onBlur={this.onBlur}
           onFocus={this.onFocus}

@@ -3,20 +3,19 @@ sidebarDepth: 0
 ---
 
 
-# bal-hint-title
+# Hint Title
 
 `bal-hint-title` is a child component of `bal-hint` that defines the title of the hint dialog.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 <!-- docs:child of bal-hint -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
 
-::::
 
 ## Edit this page on Github
 

@@ -3,20 +3,19 @@ sidebarDepth: 0
 ---
 
 
-# bal-navbar-menu-end 
+# Navbar Menu End
 
 `bal-navbar-menu-end` is a child component of `bal-navbar` which is the right side of the navbar.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 <!-- docs:child of bal-navbar -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
 
-::::
 
 ## Edit this page on Github
 

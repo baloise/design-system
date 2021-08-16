@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-accordion
+# Accordion
 
 
 <!-- START: human documentation top -->
@@ -11,44 +11,44 @@ Accordions put users in control of showing or hiding content. Accordions also he
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-accordion-0></docs-demo-bal-accordion-0></ClientOnly>
 
 
-## Colors
+### Colors
 
 The accordion has 2 colors of themes `is-info` and `is-primary`.
 
 <ClientOnly><docs-demo-bal-accordion-1></docs-demo-bal-accordion-1></ClientOnly>
 
 
-## Open accordion
+### Open accordion
 
 <ClientOnly><docs-demo-bal-accordion-2></docs-demo-bal-accordion-2></ClientOnly>
 
 
-## Trigger label & icon
+### Trigger label & icon
 
 Use the properties `open-label` & `open-icon` to change the content of the trigger button.
 
 <ClientOnly><docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
 
 
-## With card
+### With card
 
 <ClientOnly><docs-demo-bal-accordion-4></docs-demo-bal-accordion-4></ClientOnly>
 
 
-:::
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute       | Description                                             | Type                 | Default     |
@@ -61,14 +61,14 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 | **open-icon**   | Bal-Icon of the open trigger button                     | `string`             | `'plus'`    |
 | **open-label**  | Label of the open trigger button                        | `string`             | `''`        |
 
-## Events
+### Events
 
 
 | Event           | Description                            | Type      |
 | :-------------- | :------------------------------------- | :-------- |
 | **balCollapse** | Emmited when the accordion has changed | `boolean` |
 
-## Methods
+### Methods
 
 
 | Method       | Description            | Signature                   |
@@ -77,7 +77,7 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 | **`open`**   | Open the accordion     | `open() => Promise<void>`   |
 | **`toggle`** | Triggers the accordion | `toggle() => Promise<void>` |
 
-## Testing
+### Testing
 
 
 AccordionAccessor is a helper object for E-2-E testing.
@@ -118,26 +118,19 @@ describe('Accordion', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 WIP! Usage content
 <!-- END: human documentation usage -->
 
-:::
-
-::: tab Style
+## Style
 
 <!-- START: human documentation style -->
 WIP! Style content
 <!-- END: human documentation style -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

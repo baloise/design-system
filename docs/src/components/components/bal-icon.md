@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-icon
+# Icon
 
 
 <!-- START: human documentation top -->
@@ -12,39 +12,39 @@ Then the build script will automatically optimize the svg and create its own web
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-icon-54></docs-demo-bal-icon-54></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## Size
+## Examples
 
-Here is how you can change the size:
-
-<ClientOnly><docs-demo-bal-icon-55></docs-demo-bal-icon-55></ClientOnly>
-
-
-## Colors
+### Basic
 
 <ClientOnly><docs-demo-bal-icon-56></docs-demo-bal-icon-56></ClientOnly>
 
 
-## Custom Color
+### Size
 
-Here is how you can change the color:
+Here is how you can change the size:
 
 <ClientOnly><docs-demo-bal-icon-57></docs-demo-bal-icon-57></ClientOnly>
 
 
-:::
+### Colors
 
-::: tab Code
+<ClientOnly><docs-demo-bal-icon-58></docs-demo-bal-icon-58></ClientOnly>
 
-## Properties
+
+### Custom Color
+
+Here is how you can change the color:
+
+<ClientOnly><docs-demo-bal-icon-59></docs-demo-bal-icon-59></ClientOnly>
+
+
+
+## Code
+
+### Properties
 
 
 | Attribute    | Description                                                     | Type                                                                                              | Default  |
@@ -58,18 +58,13 @@ Here is how you can change the color:
 | **turn**     | If `true` the icon is rotated 180deg                            | `boolean`                                                                                         | `false`  |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

@@ -1,4 +1,4 @@
-# bal-datepicker <Badge text="Two-way binding"/>
+# Datepicker <Badge text="Two-way binding"/>
 
 To set the date use the [date utils](/components/tooling/utils.html#dateutil).
 

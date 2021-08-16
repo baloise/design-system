@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-file-upload
+# File Upload
 
 
 <!-- START: human documentation top -->
@@ -11,20 +11,20 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-file-upload-47></docs-demo-bal-file-upload-47></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-:::
+## Examples
 
-::: tab Code
+### Basic
 
-## Properties
+<ClientOnly><docs-demo-bal-file-upload-48></docs-demo-bal-file-upload-48></ClientOnly>
+
+
+
+## Code
+
+### Properties
 
 
 | Attribute           | Description                                      | Type                 | Default                      |
@@ -37,7 +37,7 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 | **max-files**       | Allowed number of files in the bundle.           | `number , undefined` | `undefined`                  |
 | **multiple**        | If `true` multiple file upload is possible.      | `boolean`            | `true`                       |
 
-## Events
+### Events
 
 
 | Event               | Description                                                              | Type                     |
@@ -46,18 +46,13 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 | **balRejectedFile** | Triggers when a file is rejected due to not allowed MIME-Type and so on. | `FileUploadRejectedFile` |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

@@ -3,28 +3,28 @@ sidebarDepth: 0
 ---
 
 
-# bal-navbar-brand 
+# Navbar Brand
 
 `bal-navbar-brand` is a child component of `bal-navbar` that defines the area in the navbar where the logo or the title of the applications is.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 <!-- docs:child of bal-navbar -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute | Description               | Type     | Default |
 | :-------- | :------------------------ | :------- | :------ |
 | **href**  | Link of the logo / title. | `string` | `'/'`   |
 
-## Events
+### Events
 
 
 | Event           | Description                               | Type         |
@@ -32,10 +32,7 @@ sidebarDepth: 0
 | **balNavigate** | Emitted when the link element has clicked | `MouseEvent` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

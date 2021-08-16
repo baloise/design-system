@@ -2,42 +2,42 @@
 sidebarDepth: 0
 ---
 
-# bal-timeinput
+# Timeinput
 
 
 <!-- START: human documentation top -->
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-timeinput-113></docs-demo-bal-timeinput-113></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## Inverted style
+## Examples
 
-<ClientOnly><docs-demo-bal-timeinput-114></docs-demo-bal-timeinput-114></ClientOnly>
+### Basic
 
-
-## Min and max time
-
-<ClientOnly><docs-demo-bal-timeinput-115></docs-demo-bal-timeinput-115></ClientOnly>
+<ClientOnly><docs-demo-bal-timeinput-117></docs-demo-bal-timeinput-117></ClientOnly>
 
 
-## Disabled
+### Inverted style
 
-<ClientOnly><docs-demo-bal-timeinput-116></docs-demo-bal-timeinput-116></ClientOnly>
+<ClientOnly><docs-demo-bal-timeinput-118></docs-demo-bal-timeinput-118></ClientOnly>
 
 
-:::
+### Min and max time
 
-::: tab Code
+<ClientOnly><docs-demo-bal-timeinput-119></docs-demo-bal-timeinput-119></ClientOnly>
 
-## Properties
+
+### Disabled
+
+<ClientOnly><docs-demo-bal-timeinput-120></docs-demo-bal-timeinput-120></ClientOnly>
+
+
+
+## Code
+
+### Properties
 
 
 | Attribute    | Description                                             | Type      | Default |
@@ -48,7 +48,7 @@ sidebarDepth: 0
 | **min-time** | Earliest date available for selection                   | `string`  | `''`    |
 | **value**    | The value of the datepicker with the format `hh:mm`.    | `string`  | `''`    |
 
-## Events
+### Events
 
 
 | Event         | Description                                                                                                                                                    | Type         |
@@ -58,18 +58,13 @@ sidebarDepth: 0
 It will not be triggert if either hour or time input has never been set (i.e. "--" is selected). | `string`     |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

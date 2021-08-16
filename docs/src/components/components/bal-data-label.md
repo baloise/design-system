@@ -3,20 +3,21 @@ sidebarDepth: 0
 ---
 
 
-# bal-data-item-label
+# Data Item Label
 
 `bal-data-item` is a child component of `bal-data` that defines the label of the data.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-data -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute    | Description                                    | Type      | Default |
@@ -24,10 +25,7 @@ sidebarDepth: 0
 | **required** | If `true` an asterix is added after the label. | `boolean` | `false` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

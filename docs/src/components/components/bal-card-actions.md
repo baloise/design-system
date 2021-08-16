@@ -3,20 +3,21 @@ sidebarDepth: 0
 ---
 
 
-# bal-card-actions
+# Card Actions
 
 `bal-card-actions` is a child component of `bal-card` that sets the buttons to the right place.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-card -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute | Description                                     | Type      | Default |
@@ -24,10 +25,7 @@ sidebarDepth: 0
 | **right** | If `true` the buttons start form right to left. | `boolean` | `false` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

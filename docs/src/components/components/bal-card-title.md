@@ -3,20 +3,21 @@ sidebarDepth: 0
 ---
 
 
-# bal-card-title
+# Card Title
 
 `bal-card-title` is a child component of `bal-card` that adds a title to card.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-card -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute    | Description                                  | Type      | Default |
@@ -24,10 +25,7 @@ sidebarDepth: 0
 | **inverted** | If `true` the card text color becomes white. | `boolean` | `false` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

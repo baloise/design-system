@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-toast
+# Toast
 
 ## Usage
 
@@ -23,25 +23,25 @@ Toasts are used to inform the user with a simple text message.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-toast-117></docs-demo-bal-toast-117></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## Colors
+## Examples
 
-<ClientOnly><docs-demo-bal-toast-118></docs-demo-bal-toast-118></ClientOnly>
+### Basic
+
+<ClientOnly><docs-demo-bal-toast-121></docs-demo-bal-toast-121></ClientOnly>
 
 
-:::
+### Colors
 
-::: tab Code
+<ClientOnly><docs-demo-bal-toast-122></docs-demo-bal-toast-122></ClientOnly>
 
-## Properties
+
+
+## Code
+
+### Properties
 
 
 | Attribute    | Description                                                    | Type                                                         | Default |
@@ -49,14 +49,14 @@ Toasts are used to inform the user with a simple text message.
 | **color**    | The theme type of the toast. Given by bulma our css framework. | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
 | **duration** | The duration of the toast                                      | `number`                                                     | `0`     |
 
-## Events
+### Events
 
 
 | Event        | Description                  | Type     |
 | :----------- | :--------------------------- | :------- |
 | **balClose** | Emitted when toast is closed | `string` |
 
-## Methods
+### Methods
 
 
 | Method        | Description                                     | Signature                                    |
@@ -64,7 +64,7 @@ Toasts are used to inform the user with a simple text message.
 | **`close`**   | Closes this toast                               | `close() => Promise<void>`                   |
 | **`closeIn`** | Closes the toast after the given duration in ms | `closeIn(duration: number) => Promise<void>` |
 
-## Testing
+### Testing
 
 
 ToastAccessor is a helper object for E-2-E testing.
@@ -103,18 +103,13 @@ describe('Toast', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

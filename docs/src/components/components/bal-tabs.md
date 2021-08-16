@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-tabs
+# Tabs
 
 
 <!-- START: human documentation top -->
@@ -11,40 +11,40 @@ Tabs are used to structure the information in sub section on the same page.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Main Navigation
-
-<ClientOnly><docs-demo-bal-tabs-100></docs-demo-bal-tabs-100></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## Sub Navigation
+## Examples
 
-<ClientOnly><docs-demo-bal-tabs-101></docs-demo-bal-tabs-101></ClientOnly>
-
-
-## Expanded
-
-<ClientOnly><docs-demo-bal-tabs-102></docs-demo-bal-tabs-102></ClientOnly>
-
-
-## Steps
+### Main Navigation
 
 <ClientOnly><docs-demo-bal-tabs-103></docs-demo-bal-tabs-103></ClientOnly>
 
 
-## O-Steps
+### Sub Navigation
 
 <ClientOnly><docs-demo-bal-tabs-104></docs-demo-bal-tabs-104></ClientOnly>
 
 
-:::
+### Expanded
 
-::: tab Code
+<ClientOnly><docs-demo-bal-tabs-105></docs-demo-bal-tabs-105></ClientOnly>
 
-## Properties
+
+### Steps
+
+<ClientOnly><docs-demo-bal-tabs-106></docs-demo-bal-tabs-106></ClientOnly>
+
+
+### O-Steps
+
+<ClientOnly><docs-demo-bal-tabs-107></docs-demo-bal-tabs-107></ClientOnly>
+
+
+
+## Code
+
+### Properties
 
 
 | Attribute        | Description                                       | Type                           | Default  |
@@ -56,7 +56,7 @@ Tabs are used to structure the information in sub section on the same page.
 | **interface**    | Defines the layout of the tabs.                   | `"o-steps" , "steps" , "tabs"` | `'tabs'` |
 | **rounded**      | If you want the rounded tab style.                | `boolean`                      | `false`  |
 
-## Events
+### Events
 
 
 | Event              | Description                                | Type           |
@@ -64,7 +64,7 @@ Tabs are used to structure the information in sub section on the same page.
 | **balActionClick** | Emitted when the action button has clicked | `MouseEvent`   |
 | **balTabChange**   | Emitted when the changes has finished.     | `BalTabOption` |
 
-## Methods
+### Methods
 
 
 | Method       | Description                                               | Signature                                    |
@@ -72,7 +72,7 @@ Tabs are used to structure the information in sub section on the same page.
 | **`select`** | Go to tab with the given value                            | `select(tab: BalTabOption) => Promise<void>` |
 | **`sync`**   | *Internal* - Rerenders the tabs with their given settings | `sync() => Promise<void>`                    |
 
-## Testing
+### Testing
 
 
 TabsAccessor is a helper object for E-2-E testing.
@@ -111,18 +111,13 @@ describe('Tabs', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

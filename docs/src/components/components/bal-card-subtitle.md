@@ -3,20 +3,21 @@ sidebarDepth: 0
 ---
 
 
-# bal-card-subtitle
+# Card Subtitle
 
 `bal-card-subtitle` is a child component of `bal-card` that adds a small subtile below the title. It is recommended to use this after the `bal-card-title` component.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-card -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute    | Description                                  | Type      | Default |
@@ -24,10 +25,7 @@ sidebarDepth: 0
 | **inverted** | If `true` the card text color becomes white. | `boolean` | `false` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

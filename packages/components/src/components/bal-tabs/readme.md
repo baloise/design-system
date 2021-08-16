@@ -1,4 +1,4 @@
-# bal-tabs
+# Tabs
 
 <!-- Auto Generated Below -->
 

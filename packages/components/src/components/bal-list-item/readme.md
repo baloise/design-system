@@ -1,7 +1,6 @@
 <!-- docs:child of bal-list -->
 
-# bal-list-item
-
+# List item
 
 <!-- Auto Generated Below -->
 

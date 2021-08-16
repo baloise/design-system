@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-navbar
+# Navbar
 
 
 <!-- START: human documentation top -->
@@ -15,25 +15,25 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-navbar-70></docs-demo-bal-navbar-70></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## Light
+## Examples
 
-<ClientOnly><docs-demo-bal-navbar-71></docs-demo-bal-navbar-71></ClientOnly>
+### Basic
+
+<ClientOnly><docs-demo-bal-navbar-73></docs-demo-bal-navbar-73></ClientOnly>
 
 
-:::
+### Light
 
-::: tab Code
+<ClientOnly><docs-demo-bal-navbar-74></docs-demo-bal-navbar-74></ClientOnly>
 
-## Properties
+
+
+## Code
+
+### Properties
 
 
 | Attribute     | Description                                  | Type      | Default |
@@ -43,18 +43,13 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 | **no-burger** | It `true` the burger button is hidden        | `boolean` | `false` |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

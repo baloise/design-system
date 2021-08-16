@@ -3,21 +3,21 @@ sidebarDepth: 0
 ---
 
 
-# bal-data-item
+# Data Item
 
 `bal-data-item` is a child component of `bal-data` that adds a new row item.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 <!-- docs:child of bal-data -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute    | Description                                   | Type      | Default |
@@ -25,10 +25,7 @@ sidebarDepth: 0
 | **disabled** | If `true` the item gets a lighter font color. | `boolean` | `false` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

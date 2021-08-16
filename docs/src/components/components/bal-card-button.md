@@ -3,20 +3,21 @@ sidebarDepth: 0
 ---
 
 
-# bal-card-button
+# Card Button
 
 `bal-card-button` is a child component of `bal-card` that sets a block button at the end of the card. Good to use for edit functionality.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-card -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute      | Description                                                                         | Type                                       | Default    |
@@ -30,10 +31,7 @@ sidebarDepth: 0
 | **type**       | The type of button.                                                                 | `"button" , "reset" , "submit"`            | `'button'` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

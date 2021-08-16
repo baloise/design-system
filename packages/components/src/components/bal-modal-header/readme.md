@@ -1,6 +1,6 @@
 <!-- docs:child of bal-modal -->
 
-# bal-modal-header
+# Modal Header
 
 `bal-modal-header` is a child component of `bal-modal` that has the title of the modal.
 

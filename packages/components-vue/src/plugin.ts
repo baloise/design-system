@@ -3,6 +3,7 @@ import { defineCustomElements as defineNativeCustomElements } from '@baloise/des
 import { defineCustomElements, applyPolyfills } from '@baloise/design-system-components/loader'
 import { applyFilters } from './generated/filters'
 import { applyComponents } from './generated/components'
+import { applyDirectives } from './directives'
 
 interface BaloiseDesignSystemOptions {
   defineCustomeElementTag?: boolean
@@ -17,6 +18,7 @@ export const BaloiseDesignSystem: Plugin = {
 
     applyFilters(app)
     applyComponents(app)
+    applyDirectives(app)
 
     if (options && options.useVite === true) {
       defineNativeCustomElements()

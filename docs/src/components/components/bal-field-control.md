@@ -3,21 +3,21 @@ sidebarDepth: 0
 ---
 
 
-# bal-field-control
+# Field Control
 
 `bal-field-control` is a child component of `bal-field`.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 <!-- docs:child of bal-field -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute      | Description                                                    | Type      | Default |
@@ -28,10 +28,7 @@ sidebarDepth: 0
 | **loading**    | If `true` a loading spinner is visible at the end of the input | `boolean` | `false` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

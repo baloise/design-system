@@ -3,21 +3,21 @@ sidebarDepth: 0
 ---
 
 
-# bal-card-content
+# Card Content
 
 `bal-card-content` is a child component of `bal-card`. It is recommended that any text content for a card should be placed in a `bal-card-content`.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 <!-- docs:child of bal-card -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute    | Description                                  | Type      | Default |
@@ -25,10 +25,7 @@ sidebarDepth: 0
 | **inverted** | If `true` the card text color becomes white. | `boolean` | `false` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

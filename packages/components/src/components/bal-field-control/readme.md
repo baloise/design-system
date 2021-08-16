@@ -1,9 +1,8 @@
 <!-- docs:child of bal-field -->
 
-# bal-field-control
+# Field Control
 
 `bal-field-control` is a child component of `bal-field`.
-
 
 <!-- Auto Generated Below -->
 

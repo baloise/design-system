@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-spinner
+# Spinner
 
 
 <!-- START: human documentation top -->
@@ -11,30 +11,30 @@ A spinner is a animated graphic that lets the user know content is being loaded.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-spinner-95></docs-demo-bal-spinner-95></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## Small
+## Examples
 
-<ClientOnly><docs-demo-bal-spinner-96></docs-demo-bal-spinner-96></ClientOnly>
+### Basic
 
-
-## Inverted
-
-<ClientOnly><docs-demo-bal-spinner-97></docs-demo-bal-spinner-97></ClientOnly>
+<ClientOnly><docs-demo-bal-spinner-98></docs-demo-bal-spinner-98></ClientOnly>
 
 
-:::
+### Small
 
-::: tab Code
+<ClientOnly><docs-demo-bal-spinner-99></docs-demo-bal-spinner-99></ClientOnly>
 
-## Properties
+
+### Inverted
+
+<ClientOnly><docs-demo-bal-spinner-100></docs-demo-bal-spinner-100></ClientOnly>
+
+
+
+## Code
+
+### Properties
 
 
 | Attribute    | Description                                            | Type      | Default |
@@ -43,18 +43,13 @@ A spinner is a animated graphic that lets the user know content is being loaded.
 | **small**    | If `true` the component is smaller                     | `boolean` | `false` |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

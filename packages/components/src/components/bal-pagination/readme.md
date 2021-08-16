@@ -1,4 +1,4 @@
-# bal-pagination
+# Pagination
 
 <!-- Auto Generated Below -->
 

@@ -1,4 +1,4 @@
-# bal-textarea <Badge text="Two-way binding"/>
+# Textarea <Badge text="Two-way binding"/>
 
 <!-- Auto Generated Below -->
 

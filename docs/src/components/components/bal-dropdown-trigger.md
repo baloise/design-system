@@ -3,19 +3,19 @@ sidebarDepth: 0
 ---
 
 
-# bal-dropdown-trigger
+# Dropdown Trigger
 
 `bal-dropdown-trigger` is a child component of `bal-dropdown` that defines the value of the data.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-dropdown -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
 
-::::
 
 ## Edit this page on Github
 

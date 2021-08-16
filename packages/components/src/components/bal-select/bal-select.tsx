@@ -595,6 +595,7 @@ export class Select {
         class={{
           'is-disabled': this.disabled,
           'is-inverted': this.inverted,
+          'is-fullwidth': this.expanded,
         }}
       >
         <bal-dropdown expanded={this.expanded} onBalCollapse={this.handleDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>

@@ -1,9 +1,6 @@
 <!-- docs:child of bal-list -->
 
-# bal-list-item-content
-
-
-
+# List Item Content
 
 <!-- Auto Generated Below -->
 

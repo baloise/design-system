@@ -1,4 +1,4 @@
-# bal-table
+# Table
 
 <!-- Auto Generated Below -->
 

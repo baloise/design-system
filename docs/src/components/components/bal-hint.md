@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-hint
+# Hint
 
 
 <!-- START: human documentation top -->
@@ -12,25 +12,25 @@ It can easily combined with the `bal-data` or `bal-field` component.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-hint-52></docs-demo-bal-hint-52></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## Field
+## Examples
 
-<ClientOnly><docs-demo-bal-hint-53></docs-demo-bal-hint-53></ClientOnly>
+### Basic
+
+<ClientOnly><docs-demo-bal-hint-54></docs-demo-bal-hint-54></ClientOnly>
 
 
-:::
+### Field
 
-::: tab Code
+<ClientOnly><docs-demo-bal-hint-55></docs-demo-bal-hint-55></ClientOnly>
 
-## Properties
+
+
+## Code
+
+### Properties
 
 
 | Attribute       | Description                                         | Type      | Default   |
@@ -38,7 +38,7 @@ It can easily combined with the `bal-data` or `bal-field` component.
 | **close-label** | Text for the close button.                          | `string`  | `'Close'` |
 | **disabled**    | If `true`, the user cannot interact with the input. | `boolean` | `false`   |
 
-## Methods
+### Methods
 
 
 | Method       | Description           | Signature                   |
@@ -48,18 +48,13 @@ It can easily combined with the `bal-data` or `bal-field` component.
 | **`toggle`** | Toggles the hint box. | `toggle() => Promise<void>` |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

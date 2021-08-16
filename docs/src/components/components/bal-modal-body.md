@@ -3,20 +3,19 @@ sidebarDepth: 0
 ---
 
 
-# bal-modal-body
+# Modal Body
 
 `bal-modal-body` is a child component of `bal-modal` that contains the main content of the modal.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 <!-- docs:child of bal-modal -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
 
-::::
 
 ## Edit this page on Github
 

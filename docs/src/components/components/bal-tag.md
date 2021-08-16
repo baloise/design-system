@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-tag
+# Tag
 
 
 <!-- START: human documentation top -->
@@ -11,35 +11,35 @@ A tag highlights a label for quick recognition.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-tag-105></docs-demo-bal-tag-105></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## Size
+## Examples
 
-<ClientOnly><docs-demo-bal-tag-106></docs-demo-bal-tag-106></ClientOnly>
-
-
-## Closable
-
-<ClientOnly><docs-demo-bal-tag-107></docs-demo-bal-tag-107></ClientOnly>
-
-
-## Dense
+### Basic
 
 <ClientOnly><docs-demo-bal-tag-108></docs-demo-bal-tag-108></ClientOnly>
 
 
-:::
+### Size
 
-::: tab Code
+<ClientOnly><docs-demo-bal-tag-109></docs-demo-bal-tag-109></ClientOnly>
 
-## Properties
+
+### Closable
+
+<ClientOnly><docs-demo-bal-tag-110></docs-demo-bal-tag-110></ClientOnly>
+
+
+### Dense
+
+<ClientOnly><docs-demo-bal-tag-111></docs-demo-bal-tag-111></ClientOnly>
+
+
+
+## Code
+
+### Properties
 
 
 | Attribute    | Description                                                  | Type                                                         | Default |
@@ -48,7 +48,7 @@ A tag highlights a label for quick recognition.
 | **color**    | The theme type of the tag. Given by bulma our css framework. | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
 | **size**     | The size of the tag element                                  | `"" , "large" , "medium" , "small"`                          | `''`    |
 
-## Events
+### Events
 
 
 | Event             | Description                         | Type         |
@@ -56,18 +56,13 @@ A tag highlights a label for quick recognition.
 | **balCloseClick** | Emitted when the input got clicked. | `MouseEvent` |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

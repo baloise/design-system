@@ -1,6 +1,6 @@
 <!-- docs:child of bal-card -->
 
-# bal-card-subtitle
+# Card Subtitle
 
 `bal-card-subtitle` is a child component of `bal-card` that adds a small subtile below the title. It is recommended to use this after the `bal-card-title` component.
 

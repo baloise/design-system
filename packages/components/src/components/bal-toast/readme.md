@@ -1,4 +1,4 @@
-# bal-toast
+# Toast
 
 ## Usage
 

@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-field
+# Field
 
 
 <!-- START: human documentation top -->
@@ -11,37 +11,42 @@ A field wraps a form field like input. It provides a clear style structure of ea
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-::: tab Examples
 
-## Basic
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-field-43></docs-demo-bal-field-43></ClientOnly>
 
 
-## Inverted
+### Inverted
 
 <ClientOnly><docs-demo-bal-field-44></docs-demo-bal-field-44></ClientOnly>
 
 
-## Form
+### Addons
 
 <ClientOnly><docs-demo-bal-field-45></docs-demo-bal-field-45></ClientOnly>
 
 
-## Validation for all fields
-
-This is not a recommanded validation style. Only use this style if you do not have the possibility to use live validation.
+### Form
 
 <ClientOnly><docs-demo-bal-field-46></docs-demo-bal-field-46></ClientOnly>
 
 
-:::
+### Validation for all fields
 
-::: tab Code
+This is not a recommanded validation style. Only use this style if you do not have the possibility to use live validation.
 
-## Properties
+<ClientOnly><docs-demo-bal-field-47></docs-demo-bal-field-47></ClientOnly>
+
+
+
+## Code
+
+### Properties
 
 
 | Attribute    | Description                                                                                 | Type      | Default |
@@ -53,18 +58,13 @@ This is not a recommanded validation style. Only use this style if you do not ha
 | **loading**  | If `true` a loading spinner is visible at the end of the input                              | `boolean` | `false` |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

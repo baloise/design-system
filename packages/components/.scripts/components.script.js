@@ -8,7 +8,7 @@
 const path = require('path')
 const file = require('../../../.scripts/file')
 const log = require('../../../.scripts/log')
-const { NEWLINE, DOCS_CHILD_REGEX, DOCS_HEADING_REGEX } = require('../../../.scripts/constants')
+const { NEWLINE, DOCS_CHILD_REGEX } = require('../../../.scripts/constants')
 const libraryLib = require('./components.lib')
 
 const addChildInformation = component => {

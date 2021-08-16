@@ -1,4 +1,4 @@
-# bal-hint
+# Hint
 
 <!-- Auto Generated Below -->
 

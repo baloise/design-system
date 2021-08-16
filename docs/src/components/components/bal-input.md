@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-input <Badge text="Two-way binding"/>
+# Input <Badge text="Two-way binding"/>
 
 
 <!-- START: human documentation top -->
@@ -13,35 +13,40 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-input-58></docs-demo-bal-input-58></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## HTML input
+## Examples
 
-<ClientOnly><docs-demo-bal-input-59></docs-demo-bal-input-59></ClientOnly>
-
-
-## Inverted
+### Basic
 
 <ClientOnly><docs-demo-bal-input-60></docs-demo-bal-input-60></ClientOnly>
 
 
-## Number Input
+### HTML input
 
 <ClientOnly><docs-demo-bal-input-61></docs-demo-bal-input-61></ClientOnly>
 
 
-:::
+### Inverted
 
-::: tab Code
+<ClientOnly><docs-demo-bal-input-62></docs-demo-bal-input-62></ClientOnly>
 
-## Properties
+
+### Number Input
+
+<ClientOnly><docs-demo-bal-input-63></docs-demo-bal-input-63></ClientOnly>
+
+
+### Suffix
+
+<ClientOnly><docs-demo-bal-input-64></docs-demo-bal-input-64></ClientOnly>
+
+
+
+## Code
+
+### Properties
 
 
 | Attribute           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Default        |
@@ -71,10 +76,11 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 | **readonly**        | If `true`, the user cannot modify the value.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `false`        |
 | **required**        | If `true`, the user must fill in a value before submitting a form.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `false`        |
 | **spellcheck**      | If `true`, the element will have its spelling and grammar checked.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `false`        |
+| **suffix**          | Adds a suffix the the inputvalue after blur.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | `string , undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                |
 | **type**            | Defines the type of the input (text, number, email ...).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `"button" , "checkbox" , "color" , "date" , "datetime-local" , "email" , "file" , "image" , "month" , "number" , "password" , "radio" , "range" , "search" , "tel" , "text" , "time" , "url" , "week"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `'text'`       |
 | **value**           | The value of the input.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `number , string , undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `''`           |
 
-## Events
+### Events
 
 
 | Event           | Description                               | Type                     |
@@ -86,7 +92,7 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 | **balInput**    | Emitted when a keyboard input occurred.   | `null | number | string` |
 | **balKeyPress** | Emitted when a keyboard key has pressed.  | `KeyboardEvent`          |
 
-## Methods
+### Methods
 
 
 | Method                | Description                                                                                             | Signature                                        |
@@ -95,7 +101,7 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 | **`setFocus`**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global
 `input.focus()`. | `setFocus() => Promise<void>`                    |
 
-## Testing
+### Testing
 
 
 InputAccessor is a helper object for E-2-E testing.
@@ -137,18 +143,13 @@ describe('Input', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

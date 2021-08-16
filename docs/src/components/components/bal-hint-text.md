@@ -3,20 +3,19 @@ sidebarDepth: 0
 ---
 
 
-# bal-hint-text
+# Hint Text
 
 `bal-hint-text` is a child component of `bal-hint` that defines the text of the hint dialog.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 <!-- docs:child of bal-hint -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
 
-::::
 
 ## Edit this page on Github
 

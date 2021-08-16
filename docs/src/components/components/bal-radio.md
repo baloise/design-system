@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-radio <Badge text="Two-way binding"/>
+# Radio <Badge text="Two-way binding"/>
 
 
 <!-- START: human documentation top -->
@@ -11,50 +11,50 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-radio-77></docs-demo-bal-radio-77></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## Inverted
+## Examples
 
-<ClientOnly><docs-demo-bal-radio-78></docs-demo-bal-radio-78></ClientOnly>
-
-
-## With Links
-
-<ClientOnly><docs-demo-bal-radio-79></docs-demo-bal-radio-79></ClientOnly>
-
-
-## Radio Boxes
+### Basic
 
 <ClientOnly><docs-demo-bal-radio-80></docs-demo-bal-radio-80></ClientOnly>
 
 
-## Radio List
+### Inverted
 
 <ClientOnly><docs-demo-bal-radio-81></docs-demo-bal-radio-81></ClientOnly>
 
 
-## Select Button
+### With Links
 
 <ClientOnly><docs-demo-bal-radio-82></docs-demo-bal-radio-82></ClientOnly>
 
 
-### Inverted
+### Radio Boxes
 
 <ClientOnly><docs-demo-bal-radio-83></docs-demo-bal-radio-83></ClientOnly>
 
 
-:::
+### Radio List
 
-::: tab Code
+<ClientOnly><docs-demo-bal-radio-84></docs-demo-bal-radio-84></ClientOnly>
 
-## Properties
+
+### Select Button
+
+<ClientOnly><docs-demo-bal-radio-85></docs-demo-bal-radio-85></ClientOnly>
+
+
+#### Inverted
+
+<ClientOnly><docs-demo-bal-radio-86></docs-demo-bal-radio-86></ClientOnly>
+
+
+
+## Code
+
+### Properties
 
 
 | Attribute        | Description                                                     | Type                        | Default        |
@@ -67,7 +67,7 @@ A radio input is normally displayed in a radio group. The user can only select o
 | **name**         | The name of the control, which is submitted with the form data. | `string`                    | `this.inputId` |
 | **value**        | The value of the control.                                       | `string`                    | `''`           |
 
-## Events
+### Events
 
 
 | Event        | Description                          | Type         |
@@ -75,14 +75,14 @@ A radio input is normally displayed in a radio group. The user can only select o
 | **balBlur**  | Emitted when the toggle loses focus. | `FocusEvent` |
 | **balFocus** | Emitted when the toggle has focus.   | `FocusEvent` |
 
-## Methods
+### Methods
 
 
 | Method         | Description                          | Signature                     |
 | :------------- | :----------------------------------- | :---------------------------- |
 | **`setFocus`** | Sets the focus on the input element. | `setFocus() => Promise<void>` |
 
-## Testing
+### Testing
 
 
 RadioAccessor is a helper object for E-2-E testing.
@@ -123,18 +123,13 @@ describe('Radio', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

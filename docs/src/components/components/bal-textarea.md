@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-textarea <Badge text="Two-way binding"/>
+# Textarea <Badge text="Two-way binding"/>
 
 
 <!-- START: human documentation top -->
@@ -11,20 +11,20 @@ A textarea allows a user to write and edit large texts.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-textarea-112></docs-demo-bal-textarea-112></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-:::
+## Examples
 
-::: tab Code
+### Basic
 
-## Properties
+<ClientOnly><docs-demo-bal-textarea-116></docs-demo-bal-textarea-116></ClientOnly>
+
+
+
+## Code
+
+### Properties
 
 
 | Attribute          | Description                                                                                                                                                                      | Type                                                                                       | Default        |
@@ -48,7 +48,7 @@ A textarea allows a user to write and edit large texts.
 | **value**          | The value of the textarea.                                                                                                                                                       | `string , undefined`                                                                       | `''`           |
 | **wrap**           | Indicates how the control wraps text.                                                                                                                                            | `"hard" , "off" , "soft" , undefined`                                                      |                |
 
-## Events
+### Events
 
 
 | Event           | Description                                | Type            |
@@ -60,7 +60,7 @@ A textarea allows a user to write and edit large texts.
 | **balInput**    | Emitted when a keyboard input occurred.    | `string`        |
 | **balKeyPress** | Emitted when a keyboard key has pressed.   | `KeyboardEvent` |
 
-## Methods
+### Methods
 
 
 | Method                | Description                                                                                                      | Signature                                           |
@@ -70,18 +70,13 @@ A textarea allows a user to write and edit large texts.
 `textarea.focus()`. | `setFocus() => Promise<void>`                       |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

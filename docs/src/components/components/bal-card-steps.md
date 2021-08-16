@@ -3,19 +3,19 @@ sidebarDepth: 0
 ---
 
 
-# bal-card-steps
+# Card Steps
 
 `bal-card-steps` is a child component of `bal-card` that adds a wrapper for the bal-tabs.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-card -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
 
-::::
 
 ## Edit this page on Github
 

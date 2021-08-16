@@ -1,6 +1,6 @@
 <!-- docs:child of bal-list -->
 
-# bal-list-item-subtitle
+# List Item Subtitle
 
 `bal-list-item-subtitle` is a child component of `bal-list` that defines the subtitle list row element.
 

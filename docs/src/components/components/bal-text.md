@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-text
+# Text
 
 
 <!-- START: human documentation top -->
@@ -11,39 +11,44 @@ A text provides some additional helpers.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-text-109></docs-demo-bal-text-109></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## Small
+## Examples
 
-<ClientOnly><docs-demo-bal-text-110></docs-demo-bal-text-110></ClientOnly>
+### Basic
 
-
-## Colors
-
-<ClientOnly><docs-demo-bal-text-111></docs-demo-bal-text-111></ClientOnly>
+<ClientOnly><docs-demo-bal-text-112></docs-demo-bal-text-112></ClientOnly>
 
 
-:::
+### Small
 
-::: tab Code
-
-## Properties
+<ClientOnly><docs-demo-bal-text-113></docs-demo-bal-text-113></ClientOnly>
 
 
-| Attribute | Description                         | Type                                                         | Default |
-| :-------- | :---------------------------------- | :----------------------------------------------------------- | :------ |
-| **bold**  | If `true` the text is bold          | `boolean`                                                    | `false` |
-| **color** | Defines the color of the text.      | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
-| **small** | If `true` the text has a small size | `boolean`                                                    | `false` |
+### Bold
 
-## Testing
+<ClientOnly><docs-demo-bal-text-114></docs-demo-bal-text-114></ClientOnly>
+
+
+### Colors
+
+<ClientOnly><docs-demo-bal-text-115></docs-demo-bal-text-115></ClientOnly>
+
+
+
+## Code
+
+### Properties
+
+
+| Attribute | Description                         | Type                                                                  | Default |
+| :-------- | :---------------------------------- | :-------------------------------------------------------------------- | :------ |
+| **bold**  | If `true` the text is bold          | `boolean`                                                             | `false` |
+| **color** | Defines the color of the text.      | `"" , "danger" , "hint" , "info" , "primary" , "success" , "warning"` | `''`    |
+| **small** | If `true` the text has a small size | `boolean`                                                             | `false` |
+
+### Testing
 
 
 TextAccessor is a helper object for E-2-E testing.
@@ -82,18 +87,13 @@ describe('Text', () => {
 | **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
 | **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

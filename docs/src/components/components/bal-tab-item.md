@@ -3,20 +3,21 @@ sidebarDepth: 0
 ---
 
 
-# bal-tab-item
+# Tab Item
 
 `bal-tab-item` is a child component of `bal-tabs`.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-tabs -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute    | Description                                             | Type      | Default |
@@ -31,14 +32,14 @@ sidebarDepth: 0
 | **prevent**  | Tell's if the linking is done by a router.              | `boolean` | `false` |
 | **value**    | This is the key of the tab.                             | `string`  | `''`    |
 
-## Events
+### Events
 
 
 | Event           | Description                               | Type         |
 | :-------------- | :---------------------------------------- | :----------- |
 | **balNavigate** | Emitted when the link element has clicked | `MouseEvent` |
 
-## Methods
+### Methods
 
 
 | Method           | Description                               | Signature                                     |
@@ -47,10 +48,7 @@ sidebarDepth: 0
 | **`setActive`**  | Sets the tab active.                      | `setActive(active: boolean) => Promise<void>` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

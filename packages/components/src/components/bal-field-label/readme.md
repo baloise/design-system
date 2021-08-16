@@ -1,9 +1,8 @@
 <!-- docs:child of bal-field -->
 
-# bal-field-label
+# Field Label
 
 `bal-field-label` is a child component of `bal-field`.
-
 
 <!-- Auto Generated Below -->
 

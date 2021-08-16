@@ -1,6 +1,6 @@
 <!-- docs:child of bal-dropdown -->
 
-# bal-dropdown-trigger
+# Dropdown Trigger
 
 `bal-dropdown-trigger` is a child component of `bal-dropdown` that defines the value of the data.
 

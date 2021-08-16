@@ -3,19 +3,19 @@ sidebarDepth: 0
 ---
 
 
-# bal-card-head
+# Card Head
 
 `bal-card-head` is a child component of `bal-card` that adds a head element for the service card style.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-card -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
 
-::::
 
 ## Edit this page on Github
 

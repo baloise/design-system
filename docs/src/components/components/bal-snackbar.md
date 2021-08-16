@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-snackbar
+# Snackbar
 
 ## Usage
 
@@ -21,25 +21,25 @@ A snackbar is used to inform the user with a simple text message and a action.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-snackbar-93></docs-demo-bal-snackbar-93></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## Colors
+## Examples
 
-<ClientOnly><docs-demo-bal-snackbar-94></docs-demo-bal-snackbar-94></ClientOnly>
+### Basic
+
+<ClientOnly><docs-demo-bal-snackbar-96></docs-demo-bal-snackbar-96></ClientOnly>
 
 
-:::
+### Colors
 
-::: tab Code
+<ClientOnly><docs-demo-bal-snackbar-97></docs-demo-bal-snackbar-97></ClientOnly>
 
-## Properties
+
+
+## Code
+
+### Properties
 
 
 | Attribute    | Description                                                       | Type                                                         | Default |
@@ -51,7 +51,7 @@ A snackbar is used to inform the user with a simple text message and a action.
 | **message**  | The message of the snackbar                                       | `string`                                                     | `''`    |
 | **subject**  | The subject of the snackbar header                                | `string`                                                     | `''`    |
 
-## Events
+### Events
 
 
 | Event         | Description                               | Type     |
@@ -59,7 +59,7 @@ A snackbar is used to inform the user with a simple text message and a action.
 | **balAction** | Emitted when the action button is clicked | `string` |
 | **balClose**  | Emitted when snackbar is closed           | `string` |
 
-## Methods
+### Methods
 
 
 | Method        | Description                                        | Signature                                    |
@@ -68,18 +68,13 @@ A snackbar is used to inform the user with a simple text message and a action.
 | **`closeIn`** | Closes the snackbar after the given duration in ms | `closeIn(duration: number) => Promise<void>` |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

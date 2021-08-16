@@ -1,4 +1,4 @@
-# bal-modal
+# Modal
 
 <!-- Auto Generated Below -->
 

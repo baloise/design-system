@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-footer
+# Footer
 
 
 <!-- START: human documentation top -->
@@ -16,25 +16,25 @@ To configure a sticky footer go to [foundation page layout](../foundation/page-l
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-footer-48></docs-demo-bal-footer-48></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## With Track Line
+## Examples
+
+### Basic
 
 <ClientOnly><docs-demo-bal-footer-49></docs-demo-bal-footer-49></ClientOnly>
 
 
-:::
+### With Track Line
 
-::: tab Code
+<ClientOnly><docs-demo-bal-footer-50></docs-demo-bal-footer-50></ClientOnly>
 
-## Properties
+
+
+## Code
+
+### Properties
 
 
 | Attribute          | Description                                            | Type      | Default |
@@ -42,18 +42,13 @@ To configure a sticky footer go to [foundation page layout](../foundation/page-l
 | **has-track-line** | If `true` the footer shows a track line at the bottom. | `boolean` | `false` |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

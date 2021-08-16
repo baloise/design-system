@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-notification
+# Notification
 
 
 <!-- START: human documentation top -->
@@ -11,35 +11,35 @@ A notification is used for alerts or to highlight certain content for the user.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-notification-72></docs-demo-bal-notification-72></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## Types
+## Examples
 
-<ClientOnly><docs-demo-bal-notification-73></docs-demo-bal-notification-73></ClientOnly>
-
-
-## Box
-
-<ClientOnly><docs-demo-bal-notification-74></docs-demo-bal-notification-74></ClientOnly>
-
-
-## Error
+### Basic
 
 <ClientOnly><docs-demo-bal-notification-75></docs-demo-bal-notification-75></ClientOnly>
 
 
-:::
+### Types
 
-::: tab Code
+<ClientOnly><docs-demo-bal-notification-76></docs-demo-bal-notification-76></ClientOnly>
 
-## Properties
+
+### Box
+
+<ClientOnly><docs-demo-bal-notification-77></docs-demo-bal-notification-77></ClientOnly>
+
+
+### Error
+
+<ClientOnly><docs-demo-bal-notification-78></docs-demo-bal-notification-78></ClientOnly>
+
+
+
+## Code
+
+### Properties
 
 
 | Attribute | Description                      | Type                                                         | Default |
@@ -47,18 +47,13 @@ A notification is used for alerts or to highlight certain content for the user.
 | **color** | Defines the color of the element | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
 
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

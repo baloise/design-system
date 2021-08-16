@@ -1,4 +1,4 @@
-# bal-heading
+# Heading
 
 <!-- Auto Generated Below -->
 

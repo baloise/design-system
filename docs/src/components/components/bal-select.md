@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-select <Badge text="Two-way binding"/>
+# Select <Badge text="Two-way binding"/>
 
 
 
@@ -12,6 +12,8 @@ sidebarDepth: 0
 A select is a collection of options, where the user can select a single one or multiple.
 
 <!-- END: human documentation top -->
+
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 For creating a list of options use the `BalOptionValue` interface.
 
@@ -24,61 +26,58 @@ export interface BalOptionValue<T> {
 }
 ```
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Examples
+## Examples
 
-## Basic
-
-<ClientOnly><docs-demo-bal-select-84></docs-demo-bal-select-84></ClientOnly>
-
-
-### Typeahead
-
-<ClientOnly><docs-demo-bal-select-85></docs-demo-bal-select-85></ClientOnly>
-
-
-### Multi-Select
-
-<ClientOnly><docs-demo-bal-select-86></docs-demo-bal-select-86></ClientOnly>
-
-
-### Multi-Select with typeahead
+### Basic
 
 <ClientOnly><docs-demo-bal-select-87></docs-demo-bal-select-87></ClientOnly>
 
 
-### Remote Typeahead
+#### Typeahead
 
 <ClientOnly><docs-demo-bal-select-88></docs-demo-bal-select-88></ClientOnly>
 
 
-:::
+#### Multi-Select
 
-::: tab Code
-
-## Properties
+<ClientOnly><docs-demo-bal-select-89></docs-demo-bal-select-89></ClientOnly>
 
 
-| Attribute         | Description                                                                       | Type                                         | Default        |
-| :---------------- | :-------------------------------------------------------------------------------- | :------------------------------------------- | :------------- |
-| **bal-tabindex**  | The tabindex of the control.                                                      | `number`                                     | `0`            |
-| **disabled**      | If `true` the component is diabled.                                               | `boolean`                                    | `false`        |
-| **expanded**      | If `true` the component uses the whole width.                                     | `boolean`                                    | `false`        |
-| **has-movement**  | Enables the slide in animation for the option items.                              | `boolean`                                    | `false`        |
-| **inverted**      | Set this to `true` when the component is placed on a dark background.             | `boolean`                                    | `false`        |
-| **loading**       |                                                                                   | `boolean`                                    | `false`        |
-| **multiple**      | If `true` multiple option can be selected                                         | `boolean`                                    | `false`        |
-| **name**          | The name of the control, which is submitted with the form data.                   | `string`                                     | `this.inputId` |
-| **no-border**     | Removes the border of the input.                                                  | `boolean`                                    | `false`        |
-| **no-data-label** | This label is shown if typeahead is active and all the options are filtered out.  | `string , undefined`                         |                |
-| **placeholder**   | The text to display when the select is empty.                                     | `string , undefined`                         |                |
-| **scrollable**    | Defines the height of the dropdown list.                                          | `number`                                     | `250`          |
-|                   |                                                                                   | `((inputValue: string) => void) , undefined` | `undefined`    |
-| **typeahead**     | If `true` the user can search by typing into the input field.                     | `boolean`                                    | `false`        |
-|                   | Selected option values. Could also be passed as a string, which gets transformed. | `string[] , undefined`                       | `[]`           |
+#### Multi-Select with typeahead
 
-## Events
+<ClientOnly><docs-demo-bal-select-90></docs-demo-bal-select-90></ClientOnly>
+
+
+#### Remote Typeahead
+
+<ClientOnly><docs-demo-bal-select-91></docs-demo-bal-select-91></ClientOnly>
+
+
+
+## Code
+
+### Properties
+
+
+| Attribute         | Description                                                                       | Type                   | Default        |
+| :---------------- | :-------------------------------------------------------------------------------- | :--------------------- | :------------- |
+| **bal-tabindex**  | The tabindex of the control.                                                      | `number`               | `0`            |
+| **disabled**      | If `true` the component is diabled.                                               | `boolean`              | `false`        |
+| **expanded**      | If `true` the component uses the whole width.                                     | `boolean`              | `false`        |
+| **has-movement**  | Enables the slide in animation for the option items.                              | `boolean`              | `false`        |
+| **inverted**      | Set this to `true` when the component is placed on a dark background.             | `boolean`              | `false`        |
+| **loading**       | Defines if the select is in a loading state.                                      | `boolean`              | `false`        |
+| **multiple**      | If `true` multiple option can be selected                                         | `boolean`              | `false`        |
+| **name**          | The name of the control, which is submitted with the form data.                   | `string`               | `this.inputId` |
+| **no-border**     | Removes the border of the input.                                                  | `boolean`              | `false`        |
+| **no-data-label** | This label is shown if typeahead is active and all the options are filtered out.  | `string , undefined`   |                |
+| **placeholder**   | The text to display when the select is empty.                                     | `string , undefined`   |                |
+| **scrollable**    | Defines the height of the dropdown list.                                          | `number`               | `250`          |
+| **typeahead**     | If `true` the user can search by typing into the input field.                     | `boolean`              | `false`        |
+|                   | Selected option values. Could also be passed as a string, which gets transformed. | `string[] , undefined` | `[]`           |
+
+### Events
 
 
 | Event           | Description                                                        | Type            |
@@ -91,7 +90,7 @@ export interface BalOptionValue<T> {
 | **balInput**    | Emitted when a keyboard input occurred.                            | `string`        |
 | **balKeyPress** | Emitted when the input has focus and key from the keyboard go hit. | `KeyboardEvent` |
 
-## Methods
+### Methods
 
 
 | Method         | Description                                                                 | Signature                                |
@@ -103,7 +102,7 @@ export interface BalOptionValue<T> {
 | **`select`**   | Select option by passed value                                               | `select(value: string) => Promise<void>` |
 | **`setFocus`** | Sets the focus on the input element                                         | `setFocus() => Promise<void>`            |
 
-## Testing
+### Testing
 
 
 SelectAccessor is a helper object for E-2-E testing.
@@ -131,18 +130,13 @@ describe('Select', () => {
 | **assertOptions** | Checks the options             | `...options: string[]`                    |
 | **contains**      | Checks if input have a content | `content: string | number | RegExp`       |
 
-:::
-
-::: tab Usage
+## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

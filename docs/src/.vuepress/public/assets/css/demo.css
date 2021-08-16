@@ -81,7 +81,7 @@ button.demo-tab.active {
   padding: 16px 24px 0 24px;
   position: relative;
   min-height: 35px;
-  z-index: 10;
+  z-index: 1;
 }
 
 .demo-sandbox {

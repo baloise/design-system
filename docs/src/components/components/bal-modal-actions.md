@@ -3,20 +3,19 @@ sidebarDepth: 0
 ---
 
 
-# bal-modal-actions
+# Modal Actions
 
 `bal-modal-actions` is a child component of `bal-modal` that defines the area for the action button at the bottom of the modal.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 <!-- docs:child of bal-modal -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
 
-::::
 
 ## Edit this page on Github
 

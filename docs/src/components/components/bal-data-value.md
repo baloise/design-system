@@ -3,27 +3,29 @@ sidebarDepth: 0
 ---
 
 
-# bal-data-item-value
+# Data Item Value
 
 `bal-data-item` is a child component of `bal-data` that defines the value of the data.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-data -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
-::: tab Code
+## Code
 
-## Properties
+### Properties
 
 
 | Attribute    | Description                                                           | Type      | Default |
 | :----------- | :-------------------------------------------------------------------- | :-------- | :------ |
+| **disabled** | If `true` the button will get disabled.                               | `boolean` | `false` |
 | **editable** | If `true` a small button with a edit icon will be shown on the right. | `boolean` | `false` |
 
-## Events
+### Events
 
 
 | Event        | Description                               | Type         |
@@ -33,10 +35,7 @@ sidebarDepth: 0
 | **balFocus** | Emitted when the edit button has focus.   | `void`       |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

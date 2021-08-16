@@ -2,7 +2,7 @@
 sidebarDepth: 0
 ---
 
-# bal-heading
+# Heading
 
 
 <!-- START: human documentation top -->
@@ -11,25 +11,30 @@ A heading provides some additional helpers.
 
 <!-- END: human documentation top -->
 
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab Examples
-
-## Basic
-
-<ClientOnly><docs-demo-bal-heading-50></docs-demo-bal-heading-50></ClientOnly>
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
 
-## Colors
+## Examples
+
+### Sizes
 
 <ClientOnly><docs-demo-bal-heading-51></docs-demo-bal-heading-51></ClientOnly>
 
 
-:::
+### Colors
 
-::: tab Code
+<ClientOnly><docs-demo-bal-heading-52></docs-demo-bal-heading-52></ClientOnly>
 
-## Properties
+
+### Spacing
+
+<ClientOnly><docs-demo-bal-heading-53></docs-demo-bal-heading-53></ClientOnly>
+
+
+
+## Code
+
+### Properties
 
 
 | Attribute        | Description                                                                                                                                             | Type                                                         | Default     |
@@ -37,15 +42,13 @@ A heading provides some additional helpers.
 | **color**        | The theme type of the toast. Given by bulma our css framework.                                                                                          | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`        |
 | **inverted**     | If `true` the button is inverted                                                                                                                        | `boolean`                                                    | `false`     |
 | **level**        | The actual heading level used in the HTML markup.                                                                                                       | `"h1" , "h2" , "h3" , "h4" , "h5" , "h6"`                    | `'h1'`      |
-| **spaced**       | If 'false' the margin of the heading gets dropped.                                                                                                      | `boolean`                                                    | `true`      |
+| **space**        | Defines at which position the heading has spacing.                                                                                                      | `"all" , "bottom" , "none" , "top"`                          | `'all'`     |
+| **spaced**       |                                                                                                                                                         | `boolean`                                                    | `true`      |
 | **subtitle**     | If `true` the heading gets displayed slimmer.                                                                                                           | `boolean`                                                    | `false`     |
 | **visual-level** | Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup. | `"h1" , "h2" , "h3" , "h4" , "h5" , "h6" , undefined`        | `undefined` |
 
 
-:::
 
-
-::::
 
 ## Edit this page on Github
 

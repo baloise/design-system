@@ -19,7 +19,7 @@ import {
   isValidDateString,
 } from '../../utils/balDateUtil'
 import { isEnterKey } from '../../utils/balKeyUtil'
-import { ACTION_KEYS, NUMBER_KEYS } from '../../constants/keys.constant'
+import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
 import { isNil } from 'lodash'
 
@@ -368,7 +368,7 @@ export class Datepicker implements ComponentInterface {
   }
 
   private onInput = (event: Event) => {
-    const inputValue = (event.target as HTMLInputElement).value
+    let inputValue = (event.target as HTMLInputElement).value
     this.balInput.emit(inputValue)
     event.stopPropagation()
 
@@ -418,7 +418,7 @@ export class Datepicker implements ComponentInterface {
 
   private onInputKeyDown = (event: KeyboardEvent) => {
     const allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]
-    if (allowedKeys.indexOf(event.key) < 0) {
+    if (!isCtrlOrCommandKey(event) && allowedKeys.indexOf(event.key) < 0) {
       event.preventDefault()
       event.stopPropagation()
     }
@@ -466,6 +466,7 @@ export class Datepicker implements ComponentInterface {
         aria-disabled={this.disabled ? 'true' : null}
         class={{
           'is-disabled': this.disabled,
+          'is-fullwidth': this.expanded,
         }}
       >
         <bal-dropdown expanded={this.expanded} fixedContentWidth={true} onBalCollapse={this.onDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>

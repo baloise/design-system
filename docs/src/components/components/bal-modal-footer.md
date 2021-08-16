@@ -3,19 +3,19 @@ sidebarDepth: 0
 ---
 
 
-# bal-modal-footer
+# Modal Footer
 
 `bal-modal-footer` is a child component of `bal-modal` that normally contains some buttons for that please also use the `bal-modal-actions` component.
 
 
 
 
+<ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
 <!-- docs:child of bal-modal -->
 
-:::: tabs :options="{ useUrlFragment: false }"
 
 
-::::
 
 ## Edit this page on Github
 
