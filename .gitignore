@@ -108,3 +108,4 @@ dist-transpiled
 .idea
 /temp
 /templates
+.vscode
