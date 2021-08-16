@@ -27,7 +27,6 @@ async function generateSidebar(components) {
   const sidebar = []
   await forEachComponent(components, async component => {
     if (component.childComponents.length > 0) {
-      console.log(component)
       let title = component.readme
         .replace(/#/g, '')
         .replace(/\n/g, '')

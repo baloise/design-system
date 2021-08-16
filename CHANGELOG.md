@@ -98,7 +98,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [1.4.0](https://github.com/baloise/design-system/compare/v1.3.2...v1.4.0) (2021-06-23)
 
-### Featureså
+### Features
 
 - **select:** add prop to turn off the movement ([7c6c495](https://github.com/baloise/design-system/commit/7c6c495424cb37371d4f8ca72a3bc7c00dbce6c8))
 - **select:** add prop to turn off the movement ([abe717d](https://github.com/baloise/design-system/commit/abe717d8f1e15074cd44652c5d81617e70a67bcb))
