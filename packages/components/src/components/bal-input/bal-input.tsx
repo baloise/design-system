@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface, Listen } from '@stencil/core'
 import { isNil } from 'lodash'
-import { NUMBER_KEYS, ACTION_KEYS } from '../../constants/keys.constant'
+import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../types/interfaces'
 
@@ -267,7 +267,7 @@ export class Input implements ComponentInterface {
 
   private onKeyDown = (event: KeyboardEvent) => {
     if (this.numberKeyboard) {
-      if (!event.metaKey && this.allowedKeys.indexOf(event.key) < 0) {
+      if (!isCtrlOrCommandKey(event) && this.allowedKeys.indexOf(event.key) < 0) {
         event.preventDefault()
         event.stopPropagation()
       }

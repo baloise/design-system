@@ -19,7 +19,7 @@ import {
   isValidDateString,
 } from '../../utils/balDateUtil'
 import { isEnterKey } from '../../utils/balKeyUtil'
-import { ACTION_KEYS, NUMBER_KEYS } from '../../constants/keys.constant'
+import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
 import { isNil } from 'lodash'
 
@@ -369,6 +369,7 @@ export class Datepicker implements ComponentInterface {
 
   private onInput = (event: Event) => {
     let inputValue = (event.target as HTMLInputElement).value
+    this.balInput.emit(inputValue)
     event.stopPropagation()
 
     if (inputValue && inputValue.length >= 6) {
@@ -378,7 +379,6 @@ export class Datepicker implements ComponentInterface {
         this.selectedDate = datestring
         this.updatePointerDates()
       }
-      this.balInput.emit(inputValue)
     }
   }
 
@@ -418,7 +418,7 @@ export class Datepicker implements ComponentInterface {
 
   private onInputKeyDown = (event: KeyboardEvent) => {
     const allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]
-    if (!event.metaKey && allowedKeys.indexOf(event.key) < 0) {
+    if (!isCtrlOrCommandKey(event) && allowedKeys.indexOf(event.key) < 0) {
       event.preventDefault()
       event.stopPropagation()
     }
