@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-testing",
-  "version": "1.8.1",
+  "version": "1.9.0",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -41,13 +41,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-components": "^1.8.1"
+    "@baloise/design-system-components": "^1.9.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.18",
     "@types/jquery": "^3.5.1",
     "@types/node": "^14.14.44",
-    "cypress": "^5.6.0",
+    "cypress": "8.1.0",
+    "cypress-file-upload": "5.0.7",
     "http-server": "^0.12.3",
     "rimraf": "^3.0.2",
     "rollup": "^2.47.0",

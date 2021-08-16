@@ -1,15 +1,21 @@
 /// <reference types="cypress" />
 
-import { newDateString, format } from '@baloise/design-system-components'
+import { format, newDateString } from '@baloise/design-system-components'
 import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
 
 export interface DatepickerAccessorType {
   write(date: string): DatepickerAccessorType
+
   pick(date: Date): DatepickerAccessorType
+
   open(): DatepickerAccessorType
+
   shouldHaveValue(date: Date): DatepickerAccessorType
+
   errorCheck(name: string, error: string): void
+
   noErrorCheck(name: string): void
+
   assertDateInRange(date: Date, shouldBeInRange?: boolean): DatepickerAccessorType
 }
 

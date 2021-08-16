@@ -1,15 +1,15 @@
 /// <reference types="cypress" />
 
-import { Attributable, AttributableMixin } from '../mixins/attributable'
-import { Clickable, ClickableMixin } from '../mixins/clickable'
-import { Containable } from '../mixins/containable'
-import { Existable, ExistableMixin } from '../mixins/existable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
-import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
-import { Urlable, UrlableMixin } from '../mixins/urlable'
-import { Visible, VisibleMixin } from '../mixins/visible'
-import { Waitable, WaitableMixin } from '../mixins/waitable'
+import {Attributable, AttributableMixin} from '../mixins/attributable'
+import {Clickable, ClickableMixin} from '../mixins/clickable'
+import {Containable} from '../mixins/containable'
+import {Existable, ExistableMixin} from '../mixins/existable'
+import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
+import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
+import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
+import {Urlable, UrlableMixin} from '../mixins/urlable'
+import {Visible, VisibleMixin} from '../mixins/visible'
+import {Waitable, WaitableMixin} from '../mixins/waitable'
 
 interface AccordionAccessorType
   extends Clickable<AccordionAccessorType>,
@@ -22,10 +22,11 @@ interface AccordionAccessorType
     Urlable<AccordionAccessorType>,
     Waitable<AccordionAccessorType> {
   assertBodyExists(): AccordionAccessorType
+
   assertBodyNotExists(): AccordionAccessorType
 }
 
-export const AccordionClickableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const AccordionClickableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Toggle the accordion
    */
@@ -35,7 +36,7 @@ export const AccordionClickableMixin: Mixin = <T>({ selector, creator }: MixinCo
   },
 })
 
-export const AccordionContainableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const AccordionContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * It checks that the accordion label contains the given texts
    */
@@ -45,7 +46,7 @@ export const AccordionContainableMixin: Mixin = <T>({ selector, creator }: Mixin
   },
 })
 
-export const AccordionAssertableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const AccordionAssertableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
   /**
    * Asserts that accordion is open
    */

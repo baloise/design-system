@@ -3,6 +3,80 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/baloise/design-system/compare/v1.8.2...v1.9.0) (2021-08-12)
+
+
+### Features
+
+* **testing:** add andable.ts and attachable.ts mixin description ([e918b8a](https://github.com/baloise/design-system/commit/e918b8a2db1e19b7eadd2e42deff697040b83e7d))
+
+
+
+## 1.8.1 (2021-08-05)
+
+
+
+
+
+## [1.8.2](https://github.com/baloise/design-system/compare/v1.8.1...v1.8.2) (2021-08-06)
+
+
+### Bug Fixes
+
+* **table:** make styles accessable for angular & vue applications ([f5b5de5](https://github.com/baloise/design-system/commit/f5b5de5b9061bd600bf0ad5b9783b825b7b38c1c))
+
+
+
+# [1.8.0](https://github.com/baloise/design-system/compare/v1.6.3...v1.8.0) (2021-08-02)
+
+
+
+## [1.6.3](https://github.com/baloise/design-system/compare/v1.3.1...v1.6.3) (2021-07-30)
+
+
+
+## [1.3.1](https://github.com/baloise/design-system/compare/v1.3.0...v1.3.1) (2021-06-21)
+
+
+### Bug Fixes
+
+* **radio:** add disabled to radio-group ([5d783b3](https://github.com/baloise/design-system/commit/5d783b3126c1e41b1e12ecf283f6a62ccbc4c51e))
+
+
+
+# [1.3.0](https://github.com/baloise/design-system/compare/v1.2.3...v1.3.0) (2021-06-16)
+
+
+### Features
+
+* **footer:** add new footer component ([2d4cb02](https://github.com/baloise/design-system/commit/2d4cb02391c2fb4ff741cd83852e2a94fea03fdb))
+* **hint:** auto detects the placement ([e83fdd3](https://github.com/baloise/design-system/commit/e83fdd3afbdb73ad427c82478fb96fa6faf914e6))
+* **slider:** add new form component range slider ([7b89138](https://github.com/baloise/design-system/commit/7b89138bfea2d4f5a763eeb6c36f16fb75394708))
+
+
+
+## [1.2.3](https://github.com/baloise/design-system/compare/v1.2.2...v1.2.3) (2021-06-15)
+
+
+
+## [1.2.2](https://github.com/baloise/design-system/compare/v1.2.1...v1.2.2) (2021-06-15)
+
+
+
+## [1.2.1](https://github.com/baloise/design-system/compare/v1.0.2...v1.2.1) (2021-06-09)
+
+
+
+## [1.0.2](https://github.com/baloise/design-system/compare/v1.0.0...v1.0.2) (2021-05-27)
+
+
+
+# 1.0.0 (2021-05-18)
+
+
+
+
+
 ## [1.8.1](https://github.com/baloise/design-system/compare/v1.8.0...v1.8.1) (2021-08-05)
 
 

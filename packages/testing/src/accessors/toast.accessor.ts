@@ -1,16 +1,16 @@
 /// <reference types="cypress" />
 
-import { Attributable, AttributableMixin } from '../mixins/attributable'
-import { Clickable, ClickableMixin } from '../mixins/clickable'
-import { Containable, ContainableMixin } from '../mixins/containable'
-import { Disableable, DisableableMixin } from '../mixins/disableable'
-import { Existable, ExistableMixin } from '../mixins/existable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
-import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
-import { Urlable, UrlableMixin } from '../mixins/urlable'
-import { Visible, VisibleMixin } from '../mixins/visible'
-import { Waitable, WaitableMixin } from '../mixins/waitable'
+import {Attributable, AttributableMixin} from '../mixins/attributable'
+import {Clickable, ClickableMixin} from '../mixins/clickable'
+import {Containable, ContainableMixin} from '../mixins/containable'
+import {Disableable, DisableableMixin} from '../mixins/disableable'
+import {Existable, ExistableMixin} from '../mixins/existable'
+import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
+import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
+import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
+import {Urlable, UrlableMixin} from '../mixins/urlable'
+import {Visible, VisibleMixin} from '../mixins/visible'
+import {Waitable, WaitableMixin} from '../mixins/waitable'
 
 interface ToastAccessorType
   extends Clickable<ToastAccessorType>,
@@ -26,7 +26,7 @@ interface ToastAccessorType
   assertToast(content: string): ToastAccessorType
 }
 
-export const SuccessToastableMixin: Mixin = <T>({ creator }: MixinContext<T>) => ({
+export const SuccessToastableMixin: Mixin = <T>({creator}: MixinContext<T>) => ({
   /**
    * Assert if the toast have content
    */
