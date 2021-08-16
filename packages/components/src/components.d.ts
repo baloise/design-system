@@ -815,6 +815,10 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
+          * If `true` the modal does not run with a background overlay.
+         */
+        "noOverlay": boolean;
+        /**
           * Opens the modal.
          */
         "open": () => Promise<void>;
@@ -2678,6 +2682,10 @@ declare namespace LocalJSX {
           * Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot.
          */
         "card"?: boolean;
+        /**
+          * If `true` the modal does not run with a background overlay.
+         */
+        "noOverlay"?: boolean;
     }
     interface BalModalActions {
     }

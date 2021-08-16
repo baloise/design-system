@@ -3,9 +3,9 @@ import type { Components } from '@baloise/design-system-components'
 
 @Component({
   selector: 'app-modal',
-  templateUrl: './modal.component.html',
+  templateUrl: './modal-page.component.html',
 })
-export class ModalComponent {
+export class ModalPageComponent {
   @ViewChild('modal') modal!: Components.BalModal
 
   constructor() {}

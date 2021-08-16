@@ -15,6 +15,11 @@ export class Modal {
   @Prop() card = false
 
   /**
+   * If `true` the modal does not run with a background overlay.
+   */
+  @Prop() noOverlay = false
+
+  /**
    * Opens the modal.
    */
   @Method()
@@ -44,7 +49,12 @@ export class Modal {
     return (
       <Host>
         <div class={['modal', 'is-clipped', this.isActive ? 'is-active' : ''].join(' ')}>
-          <div class="modal-background"></div>
+          <div
+            class={{
+              'modal-background': true,
+              'is-hidden': this.noOverlay,
+            }}
+          ></div>
           <div class={['modal-card box', this.card ? '' : 'no-border'].join(' ')}>
             <slot></slot>
           </div>

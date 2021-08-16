@@ -3,9 +3,9 @@ import { BalSnackbarService, BalToastService } from '@baloise/design-system-comp
 
 @Component({
   selector: 'app-services',
-  templateUrl: './services.component.html',
+  templateUrl: './services-page.component.html',
 })
-export class ServicesComponent {
+export class ServicesPageComponent {
   constructor(public toast: BalToastService, public snackbar: BalSnackbarService) {}
 
   createToast() {
