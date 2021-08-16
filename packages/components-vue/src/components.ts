@@ -1115,11 +1115,6 @@ export const BalInput = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
-    onlyNumbers: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
     hasIconRight: {
       type: Boolean,
       default: false,
