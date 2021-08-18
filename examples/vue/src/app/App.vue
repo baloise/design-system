@@ -3,9 +3,7 @@
     <BalNavbar>
       <BalNavbarBrand>
         <BalIcon name="logo" inverted size="large"></BalIcon>
-        <BalText style="margin-left: 15px">
-          <strong>Vue</strong> Starter-Kit
-        </BalText>
+        <BalText style="margin-left: 15px"> <strong>Vue</strong> Starter-Kit </BalText>
       </BalNavbarBrand>
     </BalNavbar>
     <div class="container">
