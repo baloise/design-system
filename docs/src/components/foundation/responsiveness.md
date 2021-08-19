@@ -71,6 +71,8 @@ The library supports those 4 breakpoints.
 | Desktop              | 960px                  |
 | Fullhd or Widescreen | 1200px                 |
 
-## Helpers
+## CSS Helper Classes
+
+Out of the responsive tokens we create a collection of helper css classes.
 
 [Go to the Bulma documentation](https://bulma.io/documentation/modifiers/responsive-helpers/)

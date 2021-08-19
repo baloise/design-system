@@ -61,6 +61,8 @@ Switches are used to toggle between exactly two states (like on and off).
 
 ## Code
 
+
+
 ### Properties
 
 
@@ -120,11 +122,11 @@ describe('Checkbox', () => {
 | **assertIsDisabled** | Assert if the checkbox is disabled                                                                               |                                                          |
 | **assertIsEnabled**  | Assert if the checkbox is enabled and not disabled                                                               |                                                          |
 | **contains**         | Check the content of the label element                                                                           | `content: string`                                        |
-| **assertExists**     | Asserts that the element exists in the DOM                                                                       |                                                          |
-| **assertNotExists**  | Asserts that the element does not exist in the DOM                                                               |                                                          |
-| **assertVisible**    | Assert that the component is visible for the user                                                                |                                                          |
-| **assertNotVisible** | Assert that the component is not visible for the user                                                            |                                                          |
-| **selectNth**        | Selects the option at the given index                                                                            | `index: number`                                          |
+| **assertExists**     | Asserts that the element exists/not exists in the DOM                                                            | `exists?: boolean`                                       |
+| **assertVisible**    | Assert that the component is visible or not visible for the user                                                 | `visible?: boolean`                                      |
+| **selectNth**        | Selects the option at the given index.                                                                           | `index: number`                                          |
+| **last**             | Selects the last option.                                                                                         |                                                          |
+| **parent**           | Selects the parent option.                                                                                       |                                                          |
 | **should**           | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax) | `chainers: string, attribute?: string, content?: string` |
 
 ## Usage

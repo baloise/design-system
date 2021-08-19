@@ -34,6 +34,8 @@ To configure a sticky footer go to [foundation page layout](../foundation/page-l
 
 ## Code
 
+
+
 ### Properties
 
 

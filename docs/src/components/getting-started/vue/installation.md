@@ -1,10 +1,4 @@
-# Vue
-
-<img style="width: 128px;" src="https://vuejs.org/images/logo.png" data-origin="https://vuejs.org/images/logo.png" alt="Vue">
-
-`@baloise/ui-libary-vue` combines the core Baloise Design System experience with the tooling and APIs that are tailored to Vue Developers.
-
-## Install
+# Installation
 
 Before installing the Baloise Design System setup in a Vue Project, we recommend to use this starter kit [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit) or use the [Vue CLI](https://cli.vuejs.org/guide/installation.html) with Sass and TypeScript.
 
@@ -53,43 +47,6 @@ Vue.use(BaloiseDesignSystem, { useVite: true })
 
 :::
 
-## Styles
+## Apply Styles
 
-To apply the Baloise Design System styles and typography follow the instruction on the page [styling documentation](/components/essentials/styles.html).
-
-## Usage
-
-All the Baloise Design System components are registered globally, so just use them in your template like the `BalButton`.
-
-::: tip
-More usage examples are in our Vue Starter Kit app [Link](https://github.com/baloise/vue-starter-kit/blob/vue-next/src/app/pages/Home.vue).
-:::
-
-```vue
-<template>
-  <div id="app">
-    <BalCheckbox v-model="checkbox"></BalCheckbox>
-    <BalButton @click="createToast()">Create Toast</BalButton>
-  </div>
-</template>
-
-<script lang="ts">
-import Vue from 'vue'
-import { BalCheckbox, BalButton } from '@baloise/design-system-components-vue'
-
-export default Vue.extend({
-  components: { BalCheckbox, BalButton },
-  data() {
-    const checkbox = true
-    return { checkbox }
-  },
-  methods: {
-    createToast: function() {
-      this.$balToast.create({
-        message: 'Message',
-      })
-    },
-  },
-})
-</script>
-```
+To apply the Baloise Design System styles and typography follow the instruction on the page [styling documentation](/components/getting-started/vue/styles.html).

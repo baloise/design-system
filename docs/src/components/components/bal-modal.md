@@ -35,12 +35,15 @@ the app before interaction can resume.
 
 ## Code
 
+
+
 ### Properties
 
 
-| Attribute | Description                                                                                     | Type      | Default |
-| :-------- | :---------------------------------------------------------------------------------------------- | :-------- | :------ |
-| **card**  | Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot. | `boolean` | `false` |
+| Attribute      | Description                                                                                     | Type      | Default |
+| :------------- | :---------------------------------------------------------------------------------------------- | :-------- | :------ |
+| **card**       | Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot. | `boolean` | `false` |
+| **no-overlay** | If `true` the modal does not run with a background overlay.                                     | `boolean` | `false` |
 
 ### Methods
 

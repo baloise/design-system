@@ -2,8 +2,6 @@
 
 For the Baloise style you need to provide the typography and stylesheets.
 
-## Usage
-
 This project is built on top of the [Bulma CSS framework](https://bulma.io/).
 
 Add the `bal-app` to your root element. Within this css-class we are able to use the defined bulma helpers.

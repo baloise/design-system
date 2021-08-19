@@ -34,6 +34,8 @@ The slider component lets users select from a range of values by moving the slid
 
 ## Code
 
+
+
 ### Properties
 
 

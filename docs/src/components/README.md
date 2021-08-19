@@ -16,7 +16,21 @@ Since we use css stylesheets and standard web components the library can be inte
     <bal-card-content class="is-hidden-desktop">
       <p class="has-text-blue-light-text">Getting Started for an integration of the Baloise Design System with HTML, CSS and JavaScript. Can be used with all the JS-Frameworks, Server-Sider-Rendering or any other Web-Technology.</p>
     </bal-card-content>
-    <bal-card-button icon-right="nav-go-right" link href="/components/essentials/html5.html">Continue</bal-card-button>
+    <bal-card-button icon-right="nav-go-right" link href="/components/getting-started/html.html">Continue</bal-card-button>
+  </bal-card>
+  <bal-card class="my-5">
+    <bal-card-head>
+      <img src="https://angular.io/assets/images/logos/angular/angular.svg" >
+      <div>
+        <h4 class="title is-size-4">Angular <small class="is-hidden-touch">- Framework</small></h4>
+        <h5 class="subtitle is-size-5 is-hidden-desktop">JS Framework</h5>
+        <p class="has-text-blue-light-text is-hidden-touch">Getting Started for an integration of the Baloise Design System with the Angular Framework and the usage of the Sass variables.</p>
+      </div>
+    </bal-card-head>
+    <bal-card-content class="is-hidden-desktop">
+      <p class="has-text-blue-light-text">Getting Started for an integration of the Baloise Design System with the Angular Framework and the usage of the Sass variables.</p>
+    </bal-card-content>
+    <bal-card-button icon-right="nav-go-right" link href="/components/getting-started/angular/">Continue</bal-card-button>
   </bal-card>
   <bal-card class="my-5">
     <bal-card-head>
@@ -30,21 +44,7 @@ Since we use css stylesheets and standard web components the library can be inte
     <bal-card-content class="is-hidden-desktop">
       <p class="has-text-blue-light-text">Getting Started for an integration of the Baloise Design System with the Vue.JS Framework and the usage of the Sass variables.</p>
     </bal-card-content>
-    <bal-card-button icon-right="nav-go-right" link href="/components/essentials/vue.html">Continue</bal-card-button>
-  </bal-card>
-  <bal-card class="my-5">
-    <bal-card-head>
-      <img src="https://angular.io/assets/images/logos/angular/angular.svg" >
-      <div>
-        <h4 class="title is-size-4">Angular <small class="is-hidden-touch">- JS Framework</small></h4>
-        <h5 class="subtitle is-size-5 is-hidden-desktop">JS Framework</h5>
-        <p class="has-text-blue-light-text is-hidden-touch">Getting Started for an integration of the Baloise Design System with the Angular Framework and the usage of the Sass variables.</p>
-      </div>
-    </bal-card-head>
-    <bal-card-content class="is-hidden-desktop">
-      <p class="has-text-blue-light-text">Getting Started for an integration of the Baloise Design System with the Angular Framework and the usage of the Sass variables.</p>
-    </bal-card-content>
-    <bal-card-button icon-right="nav-go-right" link href="/components/essentials/angular.html">Continue</bal-card-button>
+    <bal-card-button icon-right="nav-go-right" link href="/components/getting-started/vue/index.html">Continue</bal-card-button>
   </bal-card>
 </div>
 </ClientOnly>

@@ -2,8 +2,6 @@
 
 Use filter function to transform any kind of data to display.
 
-## Usage
-
 The filter are simple functions which always return a string. Just import the function and use it to transform data in to readable strings.
 
 ```typescript
@@ -11,64 +9,6 @@ import { balCapitalize } from '@baloise/design-system-components'
 
 balCapitalize('baloise')
 // returns 'Baloise'
-```
-
-### Vue
-
-In Vue 3 just import the filter function and use it in computed functions or return it to the template.
-
-```vue
-<template>
-  <p>{{ capitalized }}</p>
-</template>
-
-<script>
-import { balCapitalize } from '@baloise/design-system-components'
-
-export default {
-  props: {
-    title: {
-      type: String,
-      required: true,
-    },
-  },
-  computed: {
-    capitalized() {
-      return balCapitalize(this.title)
-    },
-  },
-}
-</script>
-```
-
-::: tip
-Vue 3 has removed filters [Link](https://v3.vuejs.org/guide/migration/filters.html).
-:::
-
-### Angular
-
-The filter functions are defined as [Angular Pipes](https://angular.io/guide/pipes).
-
-```html
-<span>{{ 'baloise' | balCapitalize }}</span>
-```
-
-The can be used in the component typescript file aswell.
-
-```typescript
-import { Component } from '@angular/core'
-import { balCapitalize } from '@baloise/design-system-components'
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-})
-export class AppComponent {
-  capitalize(value: string) {
-    return balCapitalize(value)
-  }
-}
 ```
 
 <!-- generated content -->

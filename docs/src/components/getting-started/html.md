@@ -4,7 +4,9 @@
 
 This section explains how the Baloise Design System can be included into your HTML5 Application.
 
-## CDN
+## Installation
+
+### CDN
 
 The easiest way to use the library is via CDN.
 
@@ -28,7 +30,7 @@ Add the following 4 references to your `<head></head>`
 ></script>
 ```
 
-## Node Modules
+### Node Modules
 
 Open the terminal and run the following commands to install the Baloise Design System.
 

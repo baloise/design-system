@@ -74,6 +74,8 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ## Code
 
+
+
 ### Properties
 
 
@@ -133,32 +135,37 @@ describe('Button', () => {
 
 ### Methods
 
-| Method                     | Description                                                                                                        | Arguments                                                |
-| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
-| **contains**               | Check the content of the label element                                                                             | `content: string`                                        |
-| **assertIsDisabled**       | Asserts that button is disabled                                                                                    |                                                          |
-| **click**                  | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                |
-| **clickNth**               | Triggers n times a click on the element                                                                            | `index: number, options?: Partial<Cypress.ClickOptions>` |
-| **assertExists**           | Asserts that the element exists in the DOM                                                                         |                                                          |
-| **assertNotExists**        | Asserts that the element does not exist in the DOM                                                                 |                                                          |
-| **should**                 | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string` |
-| **contains**               | Verifies if the content of the element matches                                                                     | `content: string | number | RegExp`                      |
-| **assertIsDisabled**       | Asserts that the element is disabled                                                                               |                                                          |
-| **assertIsEnabled**        | Asserts that the element is enabled and can be used                                                                |                                                          |
-| **assertVisible**          | Assert that the component is visible for the user                                                                  |                                                          |
-| **assertNotVisible**       | Assert that the component is not visible for the user                                                              |                                                          |
-| **selectNth**              | Selects the option at the given index                                                                              | `index: number`                                          |
-| **assertAttributeEquals**  | Asserting that the element has the attribute and the value.                                                        | `attribute: string, value: string`                       |
-| **assertAttributeInclude** | Asserting that the element has the attribute and include the value.                                                | `attribute: string, value: string`                       |
-| **assertFullUrl**          | Asserting if given url argument matches the url of the browser.                                                    | `url: string`                                            |
-| **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
-| **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
+| Method                         | Description                                                                                                        | Arguments                                                          |
+| :----------------------------- | :----------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
+| **contains**                   | Check the content of the label element                                                                             | `content: string`                                                  |
+| **click**                      | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                          |
+| **clickNth**                   | Triggers n times a click on the element                                                                            | `index: number, options?: Partial<Cypress.ClickOptions>`           |
+| **assertExists**               | Asserts that the element exists/not exists in the DOM                                                              | `exists?: boolean`                                                 |
+| **should**                     | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string`           |
+| **contains**                   | Verifies if the content of the element matches                                                                     | `content: string | number | RegExp`                                |
+| **assertIsDisabled**           | Asserts that the element is enabled or disabled.                                                                   | `enabled?: boolean`                                                |
+| **assertVisible**              | Assert that the component is visible or not visible for the user                                                   | `visible?: boolean`                                                |
+| **selectNth**                  | Selects the option at the given index.                                                                             | `index: number`                                                    |
+| **last**                       | Selects the last option.                                                                                           |                                                                    |
+| **parent**                     | Selects the parent option.                                                                                         |                                                                    |
+| **assertAttributeEquals**      | Asserting that the element has the attribute and the value.                                                        | `attribute: string, value: string`                                 |
+| **assertAttributeInclude**     | Asserting that the element has the attribute and include the value.                                                | `attribute: string, value: string`                                 |
+| **assertDoesNotHaveAttribute** | Asserting that the element does not have the attribute.                                                            | `attribute: string`                                                |
+| **assertFullUrl**              | Asserting if given url argument matches the url of the browser.                                                    | `url: string`                                                      |
+| **assertPartUrl**              | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                                      |
+| **wait**                       | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                                     |
+| **invoke**                     | Invoke a function on the previously yielded subject.                                                               | `locator: string`                                                  |
+| **then**                       | Enables you to work with the subject yielded from the previous command.                                            | `callBack: Function`                                               |
+| **length**                     | Get number of elements.                                                                                            | `locator: string`                                                  |
+| **each**                       | Iterate through an array like structure.                                                                           | `callBack: Function`                                               |
+| **attachFile**                 | Upload file.                                                                                                       | `fileLocation: string, attachmentMethod?: 'input' | 'drag-n-drop'` |
+| **find**                       | Get the descendent DOM elements of a specific selector.                                                            | `locator: string`                                                  |
+| **assertFullUrl**              | Asserting if given url argument matches the url of the browser.                                                    | `url: string`                                                      |
+| **assertPartUrl**              | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                                      |
 
 ## Usage
 
 <!-- START: human documentation usage -->
-
-## Usage
 
 WIP
 
