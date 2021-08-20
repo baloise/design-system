@@ -46,5 +46,8 @@
     "rollup": "^2.56.2",
     "svgo": "^2.4.0",
     "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "@baloise/design-system-components": "^1.10.0"
   }
 }

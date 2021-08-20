@@ -41,23 +41,23 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/jest": "^26.0.24",
-    "@types/lodash": "^4.14.169",
+    "@types/lodash": "^4.14.172",
+    "ag-grid-community": "^26.0.0",
     "change-case": "^4.1.2",
     "jest": "^27.0.6",
     "lodash": "^4.17.21",
     "rimraf": "^3.0.2",
-    "rollup": "^2.48.0",
-    "ts-jest": "^27.0.4",
-    "typescript": "^4.2.4",
-    "vue": "^3.0.11"
+    "rollup": "^2.56.2",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.3.5",
+    "vue": "^3.2.4"
   },
   "peerDependencies": {
     "vue": ">=3.0.5"
   },
   "gitHead": "e0d380309b487bcedee06d025645f5aab37ab192",
   "dependencies": {
-    "@baloise/design-system-components": "^1.10.0",
-    "@baloise/design-system-icons": "^1.10.0"
+    "@baloise/design-system-components": "^1.10.0"
   },
   "vetur": {
     "tags": "dist/vetur/tags.json",
