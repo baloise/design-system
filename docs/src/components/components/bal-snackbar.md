@@ -4,6 +4,7 @@ sidebarDepth: 0
 
 # Snackbar
 
+
 <!-- START: human documentation top -->
 
 A snackbar is used to inform the user with a simple text message and a action.
@@ -12,15 +13,19 @@ A snackbar is used to inform the user with a simple text message and a action.
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
+
 ## Examples
 
 ### Basic
 
 <ClientOnly><docs-demo-bal-snackbar-96></docs-demo-bal-snackbar-96></ClientOnly>
 
+
 ### Colors
 
 <ClientOnly><docs-demo-bal-snackbar-97></docs-demo-bal-snackbar-97></ClientOnly>
+
+
 
 ## Code
 
@@ -36,9 +41,37 @@ const mySnachbar = balSnackbarController.create({ message: 'Hi I am a default sn
 mySnachbar.close()
 ```
 
+::: danger <img src="https://angular.io/assets/images/logos/angular/angular.svg" data-origin="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular" style="width: 32px">Angular
+
+In Angular we provide services to create snackbars and toasts.
+
+```typescript{2,9,12-16}
+import { Component } from '@angular/core'
+import { BalSnackbarService } from '@baloise/design-system-components-angular'
+
+@Component({
+  selector: 'app-services',
+  templateUrl: './services-page.component.html',
+})
+export class ServicesPageComponent {
+  constructor(public snackbar: BalSnackbarService) {}
+
+  createSnackbar() {
+    this.snackbar.create({
+      icon: 'github',
+      subject: 'Snackbar Title',
+      message: 'I am the body of a nice snackbar',
+    })
+  }
+}
+```
+
+:::
+
 <!-- END: human documentation code -->
 
 ### Properties
+
 
 | Attribute    | Description                                                       | Type                                                         | Default |
 | :----------- | :---------------------------------------------------------------- | :----------------------------------------------------------- | :------ |
@@ -51,6 +84,7 @@ mySnachbar.close()
 
 ### Events
 
+
 | Event         | Description                               | Type     |
 | :------------ | :---------------------------------------- | :------- |
 | **balAction** | Emitted when the action button is clicked | `string` |
@@ -58,10 +92,12 @@ mySnachbar.close()
 
 ### Methods
 
+
 | Method        | Description                                        | Signature                                    |
 | :------------ | :------------------------------------------------- | :------------------------------------------- |
 | **`close`**   | Closes this snackbar                               | `close() => Promise<void>`                   |
 | **`closeIn`** | Closes the snackbar after the given duration in ms | `closeIn(duration: number) => Promise<void>` |
+
 
 ## Usage
 
@@ -69,14 +105,17 @@ mySnachbar.close()
 
 <!-- END: human documentation usage -->
 
+
+
 ## Edit this page on Github
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-snackbar.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-snackbar)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-snackbar.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-snackbar)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balSnackbar"></docs-component-script>

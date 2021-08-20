@@ -47,6 +47,10 @@ Vue.use(BaloiseDesignSystem, { useVite: true })
 
 :::
 
-## Apply Styles
+## Apply styles
 
-To apply the Baloise Design System styles and typography follow the instruction on the page [styling documentation](/components/getting-started/vue/styles.html).
+To apply the Baloise Design System styles and typography follow [the instruction on the page styling documentation](/components/getting-started/angular/styles.html).
+
+::: warning
+Do not forget to apply the style, otherwise you components will not look like in this documentation ;-)
+:::

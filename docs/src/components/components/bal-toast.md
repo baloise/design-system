@@ -4,6 +4,7 @@ sidebarDepth: 0
 
 # Toast
 
+
 <!-- START: human documentation top -->
 
 Toasts are used to inform the user with a simple text message.
@@ -12,15 +13,19 @@ Toasts are used to inform the user with a simple text message.
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
+
 ## Examples
 
 ### Basic
 
 <ClientOnly><docs-demo-bal-toast-121></docs-demo-bal-toast-121></ClientOnly>
 
+
 ### Colors
 
 <ClientOnly><docs-demo-bal-toast-122></docs-demo-bal-toast-122></ClientOnly>
+
+
 
 ## Code
 
@@ -39,9 +44,33 @@ const myToast = balToastController.create({ message: 'Danger zone!', color: 'dan
 myToast.close()
 ```
 
+::: danger <img src="https://angular.io/assets/images/logos/angular/angular.svg" data-origin="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular" style="width: 32px">Angular
+
+In Angular we provide services to create snackbars and toasts.
+
+```typescript{2,9,12}
+import { Component } from '@angular/core'
+import { BalToastService } from '@baloise/design-system-components-angular'
+
+@Component({
+  selector: 'app-services',
+  templateUrl: './services-page.component.html',
+})
+export class ServicesPageComponent {
+  constructor(public toast: BalToastService) {}
+
+  createToast() {
+    this.toast.create({ message: 'I am a nice Toast!' })
+  }
+}
+```
+
+:::
+
 <!-- END: human documentation code -->
 
 ### Properties
+
 
 | Attribute    | Description                                                    | Type                                                         | Default |
 | :----------- | :------------------------------------------------------------- | :----------------------------------------------------------- | :------ |
@@ -50,11 +79,13 @@ myToast.close()
 
 ### Events
 
+
 | Event        | Description                  | Type     |
 | :----------- | :--------------------------- | :------- |
 | **balClose** | Emitted when toast is closed | `string` |
 
 ### Methods
+
 
 | Method        | Description                                     | Signature                                    |
 | :------------ | :---------------------------------------------- | :------------------------------------------- |
@@ -62,6 +93,7 @@ myToast.close()
 | **`closeIn`** | Closes the toast after the given duration in ms | `closeIn(duration: number) => Promise<void>` |
 
 ### Testing
+
 
 ToastAccessor is a helper object for E-2-E testing.
 It maps the toast behaviour to the `bal-toast` ui component.
@@ -71,9 +103,9 @@ import { dataTestSelector, ToastAccessor } from '@baloise/design-system-componen
 
 describe('Toast', () => {
   it('should ...', () => {
-    const toast = ToastAccessor(dataTestSelector('toast-id')).get()
-    toast.click()
-  })
+     const toast = ToastAccessor(dataTestSelector('toast-id')).get()
+     toast.click()
+ })
 })
 ```
 
@@ -105,15 +137,18 @@ describe('Toast', () => {
 
 <!-- END: human documentation usage -->
 
+
+
 ## Edit this page on Github
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-toast.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-toast)
-- [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/toast.accessor.ts)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-toast.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-toast)
+* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/toast.accessor.ts)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balToast"></docs-component-script>

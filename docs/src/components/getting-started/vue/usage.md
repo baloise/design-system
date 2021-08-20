@@ -3,10 +3,27 @@
 All the Baloise Design System components are registered globally, so just use them in your template like the `BalButton`.
 
 ::: tip
-More usage examples are in our Vue Starter Kit app [Link](https://github.com/baloise/vue-starter-kit/blob/vue-next/src/app/pages/Home.vue).
+More usage examples are in our [Vue Starter Kit app](https://github.com/baloise/vue-starter-kit/blob/vue-next/src/app/pages/Home.vue) or in our [Vue example app](https://github.com/baloise/design-system/tree/master/examples/vue).
 :::
 
 ## Component
+
+After adding the `BaloiseDesignSystem` plugin the components are registerd in the framework and can be used directly in your custom vue components.
+
+::: tip
+To get more typesafty you need to register the components from Baloise Design System in your custom vue components.
+
+```typescript{2,5}
+import { defineComponent, ref } from 'vue'
+import { BalButton } from '@baloise/design-system-components-vue'
+
+export default defineComponent({
+  components: { BalButton },
+  setup() { ... },
+})
+```
+
+:::
 
 ```vue
 <template>
@@ -15,10 +32,8 @@ More usage examples are in our Vue Starter Kit app [Link](https://github.com/bal
 
 <script lang="ts">
 import Vue from 'vue'
-import { BalButton } from '@baloise/design-system-components-vue'
 
 export default Vue.extend({
-  components: { BalButton },
   setup() {
     const disabled = ref(false)
 
@@ -34,6 +49,14 @@ export default Vue.extend({
 ```
 
 ## Toast & Snackbar
+
+The Baloise Design System has 2 controllers `balSnackbarController` and `balToastController` to create new notices.
+Just import the controllers into the component.
+
+**Components:**
+
+- [Snackbar](/components/components/bal-snackbar.html)
+- [Toast](/components/components/bal-toast.html)
 
 ```vue
 <template>
@@ -51,17 +74,23 @@ import { balToastController } from '@baloise/design-system-components'
 export default Vue.extend({
   components: { BalCheckbox, BalButton },
   setup() {
+    let myToast?: HTMLBalToastElement>
     const checkbox = ref(true)
 
     function createToast() {
-      balToastController.create({
+      myToast = balToastController.create({
         message: 'Message',
       })
+    }
+
+    async function closeToast() {
+      await myToast.close()
     }
 
     return {
       checkbox,
       createToast,
+      closeToast,
     }
   },
 })
@@ -71,6 +100,11 @@ export default Vue.extend({
 ## Filters
 
 In Vue 3 just import the filter function and use it in computed functions or return it to the template.
+Vue 3 has removed filters [Link](https://v3.vuejs.org/guide/migration/filters.html).
+
+::: tip
+More filters are listet here [filters](/components/tooling/filters.html)
+:::
 
 ```vue
 <template>
@@ -94,10 +128,6 @@ export default defineComponent({
 })
 </script>
 ```
-
-::: tip
-Vue 3 has removed filters [Link](https://v3.vuejs.org/guide/migration/filters.html).
-:::
 
 ## Form & Validation
 

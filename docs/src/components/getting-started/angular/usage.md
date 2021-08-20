@@ -8,7 +8,7 @@ More usage examples are in our Angular example app [Link](https://github.com/bal
 
 ## Component
 
-Every Angular component that uses the components from the Baloise Design System must be declared in a ngModule with the schema `CUSTOM_ELEMENTS_SCHEMA`.
+After adding the `BaloiseDesignSystemModule` module we can use all the components from the Baloise Design System.
 
 ```xml
 // app.component.html
@@ -36,6 +36,11 @@ export class AppComponent {
 The Baloise Design System has 2 services `BalToastService` and `BalSnackbarService` to create new notices.
 Just import the service into the component.
 
+**Components:**
+
+- [Snackbar](/components/components/bal-snackbar.html)
+- [Toast](/components/components/bal-toast.html)
+
 ```typescript
 // app.component.ts
 import { Component } from '@angular/core'
@@ -46,10 +51,16 @@ import { Component } from '@angular/core'
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  myToast?: HTMLBalToastElement
+
   constructor(public toast: BalToastService) {}
 
   onButtonClick() {
-    this.toast.create({ message: 'Welcome' })
+    this.myToast = this.toast.create({ message: 'Welcome' })
+  }
+
+  async onSecondBttonClick() {
+    await this.myToast.close()
   }
 }
 ```
@@ -57,6 +68,10 @@ export class AppComponent {
 ## Pipes
 
 The filter functions are defined as [Angular Pipes](https://angular.io/guide/pipes).
+
+::: tip
+More pipes/filters are listet here [filters](/components/tooling/filters.html)
+:::
 
 ```html
 <span>{{ 'baloise' | balCapitalize }}</span>

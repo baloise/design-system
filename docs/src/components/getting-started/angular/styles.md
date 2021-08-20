@@ -1,10 +1,10 @@
 # Styles
 
-For the Baloise style you need to provide the typography and stylesheets.
+For the Baloise Design System styles you need to provide the typography and stylesheets.
 
 This project is built on top of the [Bulma CSS framework](https://bulma.io/).
 
-Add the `bal-app` to your root element. Within this css-class we are able to use the defined bulma helpers.
+Add the `bal-app` to your root element. Within this css-class we are able to use the defined css classes.
 
 ```html
 ...
@@ -14,7 +14,7 @@ Add the `bal-app` to your root element. Within this css-class we are able to use
 ...
 ```
 
-## Typography
+## Install Typography
 
 Next step is to provide the fonts to our web application. To do so we recommand the tool [copyfiles](https://www.npmjs.com/package/copyfiles) to copy the font files into your asset folder.
 
@@ -47,7 +47,7 @@ Then we add the defined script `copy:fonts` in our `postinstall` script. Every t
 
 We recommand to use dart-sass and not node-sass.
 
-### Install
+### Install Sass Stylesheets
 
 Place the downloaded fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
 
