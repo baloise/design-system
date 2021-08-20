@@ -22,9 +22,9 @@ export const element = <T>(elementReference: Ref<any>): T => {
 export type ValidatorFn = (value: any) => Promise<string | boolean> | string | boolean
 export type ValidatorsRulesFn = (value: any) => Promise<boolean | string> | boolean | string
 
-export function validators(rules: ValidatorFn[]): ValidatorsRulesFn
-export function validators(isDisabled: Ref<boolean> | boolean, rules: ValidatorFn[]): ValidatorsRulesFn
-export function validators(isDisabledOrRules: any, rules?: any): ValidatorsRulesFn {
+export function rules(validators: ValidatorFn[]): ValidatorsRulesFn
+export function rules(isDisabled: Ref<boolean> | boolean, rules: ValidatorFn[]): ValidatorsRulesFn
+export function rules(isDisabledOrRules: any, validators?: any): ValidatorsRulesFn {
   return async function (value) {
     const isDisabled = unref(isDisabledOrRules)
     if (isDisabled === true) {
@@ -32,12 +32,12 @@ export function validators(isDisabledOrRules: any, rules?: any): ValidatorsRules
     }
 
     if (isDisabled !== false) {
-      rules = isDisabledOrRules
+      validators = isDisabledOrRules
     }
 
     if (isArray(rules)) {
       for (let i = 0; i < rules.length; i++) {
-        const errorMessage = await rules[i](unref(value))
+        const errorMessage = await validators[i](unref(value))
         if (errorMessage !== null && errorMessage !== undefined && errorMessage !== '' && errorMessage !== true) {
           return errorMessage
         }
