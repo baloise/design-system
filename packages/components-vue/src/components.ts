@@ -1265,6 +1265,11 @@ export const BalModal = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
+    noOverlay: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   emits: {
 

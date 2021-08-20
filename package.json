@@ -36,15 +36,15 @@
     "templates:build": "node .scripts/banner.js templates:build && npm run icons:build && npm --prefix packages/components run docs:templates && node .scripts/templates.script.js"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.1.1",
-    "@commitlint/config-conventional": "^12.1.1",
-    "chalk": "^4.1.1",
-    "figlet": "^1.5.0",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "chalk": "^4.1.2",
+    "figlet": "^1.5.2",
     "glob": "^7.1.7",
-    "husky": "^6.0.0",
+    "husky": "^7.0.1",
     "lerna": "^4.0.0",
     "rimraf": "^3.0.2",
-    "typescript": "^4.2.4"
+    "typescript": "^4.3.5"
   },
   "husky": {
     "hooks": {

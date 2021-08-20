@@ -19,13 +19,13 @@ export function isCustom(validatorFn: BalValidatorFn): ValidatorFn {
   }
 }
 
-export function isBefore(date: Date | string): ValidatorFn {
+export function isBefore(date: any): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     return validate(BalValidators.isBefore(date)(control.value), 'isBefore', control)
   }
 }
 
-export function isAfter(date: Date | string): ValidatorFn {
+export function isAfter(date: any): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     return validate(BalValidators.isAfter(date)(control.value), 'isAfter', control)
   }

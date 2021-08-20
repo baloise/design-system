@@ -798,14 +798,14 @@ export class BalListItemTitle {
 
 export declare interface BalModal extends Components.BalModal {}
 @ProxyCmp({
-  inputs: ['card'],
+  inputs: ['card', 'noOverlay'],
   methods: ['open', 'close']
 })
 @Component({
   selector: 'bal-modal',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['card']
+  inputs: ['card', 'noOverlay']
 })
 export class BalModal {
   protected el: HTMLElement;
