@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/baloise/design-system/compare/v1.10.0...v1.11.0) (2021-08-23)
+
+
+### Bug Fixes
+
+* **checkbox:** remplace rem with pixel ([2095880](https://github.com/baloise/design-system/commit/20958801cf871f6082649fbdbc4adb8bd346acde))
+* **select:** listen for attribute and text content changes ([9a517e0](https://github.com/baloise/design-system/commit/9a517e0ed6c8bdb05db6dca4fcbcbd55ec4aa7e5))
+* **styles:** remove old client lib variables ([9413e38](https://github.com/baloise/design-system/commit/9413e38f5ff44d911eabab7f400f3c838db8d6cb))
+
+
+### Features
+
+* **components:** update deps ([f650c2b](https://github.com/baloise/design-system/commit/f650c2bf2773a1954dc9f5d99689faac6af0f313))
+* **select:** add single value ([b5b536c](https://github.com/baloise/design-system/commit/b5b536ccd62122663b838fa8411a7ca386760922))
+* **table:** introduce new table package ([0540144](https://github.com/baloise/design-system/commit/05401440fad284092ecb0220c567ab22eda003b4))
+
+
+
+
+
 # [1.10.0](https://github.com/baloise/design-system/compare/v1.9.0...v1.10.0) (2021-08-16)
 
 

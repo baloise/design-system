@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/baloise/design-system/compare/v1.10.0...v1.11.0) (2021-08-23)
+
+
+### Features
+
+* **select:** add single value ([b5b536c](https://github.com/baloise/design-system/commit/b5b536ccd62122663b838fa8411a7ca386760922))
+
+
+
+## [1.8.2](https://github.com/baloise/design-system/compare/v1.8.1...v1.8.2) (2021-08-06)
+
+
+
+
+
 # [1.10.0](https://github.com/baloise/design-system/compare/v1.9.0...v1.10.0) (2021-08-16)
 
 
