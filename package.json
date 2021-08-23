@@ -20,7 +20,7 @@
     "lib:build": "node .scripts/banner.js lib:build && npm --prefix packages/components run build",
     "lib:serve": "node .scripts/banner.js lib:serve && npm --prefix packages/components run serve",
     "lib:test": "node .scripts/banner.js lib:test && cd packages/components && npm run test",
-    "table:build": "node .scripts/banner.js table:build && npm --prefix packages/table run build",
+    "table:build": "node .scripts/banner.js table:build && npm --prefix packages/components-table run build",
     "vue:build": "node .scripts/banner.js vue:build && npm --prefix packages/components-vue run build",
     "vue:test": "node .scripts/banner.js vue:test && npm --prefix packages/components-vue run test",
     "angular:build": "node .scripts/banner.js angular:build && npm --prefix packages/components-angular run build",
