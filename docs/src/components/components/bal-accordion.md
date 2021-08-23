@@ -48,6 +48,8 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 
 ## Code
 
+
+
 ### Properties
 
 
@@ -98,25 +100,26 @@ describe('Accordion', () => {
 
 ### Methods
 
-| Method                     | Description                                                                                                        | Arguments                                                |
-| :------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
-| **click**                  | Toggle the accordion                                                                                               | `options?: Partial<Cypress.ClickOptions>`                |
-| **contains**               | It checks that the accordion label contains the given texts                                                        | `content: string`                                        |
-| **assertBodyExists**       | Asserts that accordion is open                                                                                     |                                                          |
-| **assertBodyNotExists**    | Asserts that accordion is closed                                                                                   |                                                          |
-| **click**                  | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                |
-| **clickNth**               | Triggers n times a click on the element                                                                            | `index: number, options?: Partial<Cypress.ClickOptions>` |
-| **assertExists**           | Asserts that the element exists in the DOM                                                                         |                                                          |
-| **assertNotExists**        | Asserts that the element does not exist in the DOM                                                                 |                                                          |
-| **should**                 | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string` |
-| **assertVisible**          | Assert that the component is visible for the user                                                                  |                                                          |
-| **assertNotVisible**       | Assert that the component is not visible for the user                                                              |                                                          |
-| **selectNth**              | Selects the option at the given index                                                                              | `index: number`                                          |
-| **assertAttributeEquals**  | Asserting that the element has the attribute and the value.                                                        | `attribute: string, value: string`                       |
-| **assertAttributeInclude** | Asserting that the element has the attribute and include the value.                                                | `attribute: string, value: string`                       |
-| **assertFullUrl**          | Asserting if given url argument matches the url of the browser.                                                    | `url: string`                                            |
-| **assertPartUrl**          | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
-| **wait**                   | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
+| Method                         | Description                                                                                                        | Arguments                                                |
+| :----------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
+| **click**                      | Toggle the accordion                                                                                               | `options?: Partial<Cypress.ClickOptions>`                |
+| **contains**                   | It checks that the accordion label contains the given texts                                                        | `content: string`                                        |
+| **assertBodyExists**           | Asserts that accordion is open                                                                                     |                                                          |
+| **assertBodyNotExists**        | Asserts that accordion is closed                                                                                   |                                                          |
+| **click**                      | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                |
+| **clickNth**                   | Triggers n times a click on the element                                                                            | `index: number, options?: Partial<Cypress.ClickOptions>` |
+| **assertExists**               | Asserts that the element exists/not exists in the DOM                                                              | `exists?: boolean`                                       |
+| **should**                     | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string` |
+| **assertVisible**              | Assert that the component is visible or not visible for the user                                                   | `visible?: boolean`                                      |
+| **selectNth**                  | Selects the option at the given index.                                                                             | `index: number`                                          |
+| **last**                       | Selects the last option.                                                                                           |                                                          |
+| **parent**                     | Selects the parent option.                                                                                         |                                                          |
+| **assertAttributeEquals**      | Asserting that the element has the attribute and the value.                                                        | `attribute: string, value: string`                       |
+| **assertAttributeInclude**     | Asserting that the element has the attribute and include the value.                                                | `attribute: string, value: string`                       |
+| **assertDoesNotHaveAttribute** | Asserting that the element does not have the attribute.                                                            | `attribute: string`                                      |
+| **assertFullUrl**              | Asserting if given url argument matches the url of the browser.                                                    | `url: string`                                            |
+| **assertPartUrl**              | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
+| **wait**                       | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
 
 ## Usage
 

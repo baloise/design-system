@@ -1,50 +1,36 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
 import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core'
-import { TranslateHttpLoader } from '@ngx-translate/http-loader'
+import { AgGridModule } from 'ag-grid-angular'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { FormComponent } from './form/form.component'
-import { I18nComponent } from './i18n/i18n.component'
-import { ModalComponent } from './modal/modal.component'
-import { PipesComponent } from './pipes/pipes.component'
-import { ServicesComponent } from './services/services.component'
-
-export function HttpLoaderFactory(httpClient: HttpClient) {
-  return new TranslateHttpLoader(httpClient)
-}
+import { FormPageComponent } from './pages/form/form-page.component'
+import { TablePageComponent } from './pages/table/table-page.component'
+import { ModalPageComponent } from './pages/modal/modal-page.component'
+import { PipesPageComponent } from './pages/pipes/pipes-page.component'
+import { ServicesPageComponent } from './pages/services/services-page.component'
 
 @NgModule({
-  declarations: [AppComponent, FormComponent, ServicesComponent, PipesComponent, ModalComponent, I18nComponent],
+  declarations: [
+    AppComponent,
+    FormPageComponent,
+    TablePageComponent,
+    ModalPageComponent,
+    PipesPageComponent,
+    ServicesPageComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
     BaloiseDesignSystemModule.forRoot(),
+    AgGridModule.withComponents([]),
   ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule {
-  constructor(public translate: TranslateService) {
-    translate.addLangs(['en', 'de'])
-    translate.setDefaultLang('en')
-
-    const browserLang = translate.getBrowserLang()
-    translate.use(browserLang.match(/en|de/) ? browserLang : 'en')
-  }
-}
+export class AppModule {}

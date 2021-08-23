@@ -2,8 +2,6 @@
 @import 'node_modules/@baloise/design-system-fonts/scss/fonts.scss';
 @import './elements/notices.scss';
 @import './layout/sticky-footer.scss';
-@import 'node_modules/ag-grid-community/dist/styles/mixins/_ag-theme-params.scss';
-@import 'node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss';
 
 .bal-app {
   position: relative;

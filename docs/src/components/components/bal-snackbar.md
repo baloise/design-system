@@ -4,16 +4,6 @@ sidebarDepth: 0
 
 # Snackbar
 
-## Usage
-
-Toast can be created with the `balScnackbarController`. The default duration is 5000 milliseconds.
-
-```typescript
-import { balScnackbarController } from '@baloise/design-system-components'
-
-balScnackbarController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
-```
-
 
 <!-- START: human documentation top -->
 
@@ -38,6 +28,47 @@ A snackbar is used to inform the user with a simple text message and a action.
 
 
 ## Code
+
+<!-- START: human documentation code -->
+
+Snackbar can be created with the `balScnackbarController`. The default duration is 5000 milliseconds.
+The `create` method return the instance of the created snackbar, so there you can access all the props and methods of it.
+
+```typescript
+import { balSnackbarController } from '@baloise/design-system-components'
+
+const mySnachbar = balSnackbarController.create({ message: 'Hi I am a default snackbar!', duration: 1000 })
+mySnachbar.close()
+```
+
+::: danger <img src="https://angular.io/assets/images/logos/angular/angular.svg" data-origin="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular" style="width: 32px">Angular
+
+In Angular we provide services to create snackbars and toasts.
+
+```typescript{2,9,12-16}
+import { Component } from '@angular/core'
+import { BalSnackbarService } from '@baloise/design-system-components-angular'
+
+@Component({
+  selector: 'app-services',
+  templateUrl: './services-page.component.html',
+})
+export class ServicesPageComponent {
+  constructor(public snackbar: BalSnackbarService) {}
+
+  createSnackbar() {
+    this.snackbar.create({
+      icon: 'github',
+      subject: 'Snackbar Title',
+      message: 'I am the body of a nice snackbar',
+    })
+  }
+}
+```
+
+:::
+
+<!-- END: human documentation code -->
 
 ### Properties
 

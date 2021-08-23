@@ -10,33 +10,21 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/form',
     name: 'Form',
-    component: () =>
-      import(/* webpackChunkName: "form" */ '../app/pages/Form.vue'),
+    component: () => import(/* webpackChunkName: "form" */ '../app/pages/Form.vue'),
   },
   {
-    path: '/checkbox',
-    name: 'Checkbox',
-    component: () =>
-      import(/* webpackChunkName: "checkbox" */ '../app/pages/Checkbox.vue'),
+    path: '/pipes',
+    name: 'Pipes',
+    component: () => import(/* webpackChunkName: "pipes" */ '../app/pages/Pipes.vue'),
   },
   {
-    path: '/radio',
-    name: 'Radio',
-    component: () =>
-      import(/* webpackChunkName: "radio" */ '../app/pages/Radio.vue'),
+    path: '/modal',
+    name: 'Modal',
+    component: () => import(/* webpackChunkName: "modal" */ '../app/pages/Modal.vue'),
   },
   {
-    path: '/datepicker',
-    name: 'Datepicker',
-    component: () =>
-      import(
-        /* webpackChunkName: "datepicker" */ '../app/pages/Datepicker.vue'
-      ),
-  },
-  {
-    path: '/select',
-    name: 'Select',
-    component: () =>
-      import(/* webpackChunkName: "select" */ '../app/pages/Select.vue'),
+    path: '/services',
+    name: 'Services',
+    component: () => import(/* webpackChunkName: "services" */ '../app/pages/Services.vue'),
   },
 ]

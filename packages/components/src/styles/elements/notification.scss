@@ -9,7 +9,7 @@
 
   &.is-primary {
     background: $blue-light;
-    border: none;
+    border: 1px solid $blue-light-line;
     color: $blue;
   }
 

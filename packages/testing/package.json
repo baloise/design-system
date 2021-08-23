@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/baloise/design-system.git"
   },
-  "homepage": "https://baloise-design-system.vercel.app.sh",
+  "homepage": "https://baloise-design-system.vercel.app",
   "author": {
     "name": "Gery Hirschfeld",
     "email": "gerhard.hirschfeld@baloise.ch",
@@ -41,7 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-components": "^1.10.0"
+    "@baloise/design-system-components": "^1.10.0",
+    "@baloise/design-system-icons": "^1.10.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.18",

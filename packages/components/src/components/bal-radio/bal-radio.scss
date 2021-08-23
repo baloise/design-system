@@ -15,9 +15,15 @@
 
   &.bal-radio {
     min-height: 24px;
+    min-width: 24px;
     display: inline-block;
     position: relative;
-    padding-right: 24px;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    padding-left: 24px;
 
     input[type='radio'] {
       position: absolute;
@@ -38,7 +44,7 @@
 
       display: flex;
       align-items: center;
-      justify-content: start;
+      justify-content: flex-start;
       text-align: left;
 
       min-height: 26px;
@@ -49,14 +55,6 @@
       user-select: none;
       color: $blue;
       font-family: $body-family;
-
-      bal-text {
-        padding-left: 32px;
-      }
-
-      bal-text:empty {
-        padding-left: 0;
-      }
     }
 
     input[type='radio'] + label::before,
@@ -157,7 +155,7 @@
       }
 
       text-align: center;
-      color: $bal_text_light_blue;
+      color: $blue-light-text;
     }
 
     @include desktop() {
@@ -178,10 +176,10 @@
 
     input:disabled ~ label {
       cursor: not-allowed;
-      color: $bal_text_light_blue;
+      color: $blue-light-text;
 
       &:hover {
-        color: $bal_text_light_blue;
+        color: $blue-light-text;
       }
     }
 

@@ -10,7 +10,7 @@ $bal-track-line-size-large: map.get($spacing-values, '5');
   height: $bal-track-line-size-normal;
   width: 100%;
   align-items: center;
-  background: $bal_bg_white;
+  background: $white;
 }
 
 .bal-track-line,
@@ -25,14 +25,14 @@ $bal-track-line-size-large: map.get($spacing-values, '5');
   &::before {
     left: 0;
     width: 100%;
-    background: $bal_bg_white;
-    background: linear-gradient(90deg, $bal_brand_blue 0, $bal_brand_blue 66%, $bal-info_blue 66%, $bal-info_blue 100%);
+    background: $white;
+    background: linear-gradient(90deg, $blue 0, $blue 66%, $cyan 66%, $cyan 100%);
     z-index: 1;
   }
 
   &::after {
     left: 66%;
-    background: $bal_bg_white;
+    background: $white;
     transform: translateX(-50%) skew(-45deg);
     z-index: 100;
     width: $bal-track-line-size-normal;

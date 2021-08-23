@@ -16,13 +16,13 @@
       @include margin(0);
 
       position: relative;
-      padding-left: 3.5rem;
+      padding-left: 56px;
       line-height: 22px;
       contain: layout style;
 
       display: flex;
       align-items: center;
-      justify-content: start;
+      justify-content: flex-start;
       text-align: left;
 
       min-height: 26px;
@@ -41,9 +41,9 @@
       display: block;
       top: 0;
       left: 0;
-      width: 3rem;
-      height: 1.5rem;
-      border: 0.1rem solid transparent;
+      width: 48px;
+      height: 24px;
+      border: 1.6px solid transparent;
       background: $blue-line;
       content: '';
       transition: all 0.25s ease-out;
@@ -53,10 +53,10 @@
       border-radius: 50%;
       display: block;
       position: absolute;
-      top: 0.2rem;
-      left: 0.2rem;
-      width: 1.5rem - 0.2rem;
-      height: 1.5rem - 0.2rem;
+      top: 3px;
+      left: 3px;
+      width: 24px - 3px;
+      height: 24px - 3px;
       transform: translate3d(0, 0, 0);
       background: $white;
       transition: all 0.25s ease-out;
@@ -68,7 +68,7 @@
     }
 
     input[type='checkbox']:checked + label::after {
-      left: 1.625rem;
+      left: 26px;
     }
 
     &.is-disabled {

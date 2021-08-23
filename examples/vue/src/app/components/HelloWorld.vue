@@ -27,8 +27,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const title = computed(() => 'Hello ' + props.message)
 
-    const onClick = (event: MouseEvent) => {
-      console.log(event)
+    const onClick = () => {
       emit('onConfirm', props.message)
     }
 

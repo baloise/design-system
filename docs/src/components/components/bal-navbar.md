@@ -33,6 +33,8 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 ## Code
 
+
+
 ### Properties
 
 

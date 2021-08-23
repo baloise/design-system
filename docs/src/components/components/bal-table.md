@@ -30,6 +30,8 @@ The basic table is only css and html provided by the bulma framework.
 
 ## Code
 
+
+
 ### Properties
 
 

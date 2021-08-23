@@ -49,7 +49,7 @@ async function generateComponentMarkdown(component, dir, accessors) {
   const { markdown, scripts } = generateExamples(component)
   JAVASCRIPT_CONTENT.push(scripts)
 
-  const { top, usage, style, slots } = await componentDoc.parse(component)
+  const { top, usage, style, slots, code } = await componentDoc.parse(component)
 
   const lines = []
   lines.push('---')
@@ -90,6 +90,8 @@ async function generateComponentMarkdown(component, dir, accessors) {
     componentProps.length > 0 || componentEvents.length > 0 || componentMethods.length > 0 || accessor !== undefined
   if (hasCodeTab) {
     lines.push('## Code')
+    lines.push('')
+    lines.push(code)
     lines.push('')
 
     if (componentProps.length > 0) {

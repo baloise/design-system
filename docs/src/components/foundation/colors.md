@@ -42,18 +42,20 @@ These colors/variables can be used within your style sheets, by import the `glob
 @import 'node_modules/@baloise/design-system-components/src/styles/global.utilities';
 ```
 
-## Helpers
+## CSS Helper Classes
+
+Out of the color tokens we create a collection of helper css classes.
 
 [Go to the Bulma documentation](https://bulma.io/documentation/modifiers/color-helpers/).
 
 <docs-demo>
-<div class="has-background-info is-padded">
+<div class="has-background-info p-4">
   <p class="has-text-white">Hello World!</p>
 </div>
 </docs-demo>
 
 ```html
-<div class="has-background-info is-padded">
+<div class="has-background-info p-4">
   <p class="has-text-white">Hello World!</p>
 </div>
 ```

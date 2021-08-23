@@ -798,14 +798,14 @@ export class BalListItemTitle {
 
 export declare interface BalModal extends Components.BalModal {}
 @ProxyCmp({
-  inputs: ['card'],
+  inputs: ['card', 'noOverlay'],
   methods: ['open', 'close']
 })
 @Component({
   selector: 'bal-modal',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['card']
+  inputs: ['card', 'noOverlay']
 })
 export class BalModal {
   protected el: HTMLElement;
@@ -1017,14 +1017,14 @@ export class BalPagination {
 
 export declare interface BalRadio extends Components.BalRadio {}
 @ProxyCmp({
-  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'name', 'value'],
+  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'isEmpty', 'name', 'value'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'bal-radio',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'name', 'value'],
+  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'isEmpty', 'name', 'value'],
   outputs: ['balFocus', 'balBlur']
 })
 export class BalRadio {
@@ -1078,7 +1078,7 @@ export declare interface BalSelect extends Components.BalSelect {}
 })
 export class BalSelect {
   /** Emitted when a option got selected. */
-  balChange!: EventEmitter<CustomEvent<string[]>>;
+  balChange!: EventEmitter<CustomEvent<string | string[] | undefined>>;
   /** Emitted when the input got clicked. */
   balClick!: EventEmitter<CustomEvent<MouseEvent>>;
   /** Emitted when a keyboard input occurred. */

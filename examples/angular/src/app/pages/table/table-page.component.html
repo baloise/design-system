@@ -1,0 +1,13 @@
+<bal-card class="mt-6">
+  <bal-heading class="mx-3" space="bottom">Table</bal-heading>
+  <bal-heading class="mx-3" level="h3" color="warning" space="bottom" subtitle>AG Grid</bal-heading>
+
+  <ag-grid-angular
+    style="width: 100%; height: 400px"
+    class="ag-theme-alpine mt-3 p-0"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    (gridReady)="onGridReady($event)"
+  >
+  </ag-grid-angular>
+</bal-card>
