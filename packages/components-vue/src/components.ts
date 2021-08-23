@@ -1462,6 +1462,11 @@ export const BalRadio = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
+    isEmpty: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
     checked: {
       type: Boolean,
       default: false,

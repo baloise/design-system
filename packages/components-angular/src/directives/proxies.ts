@@ -1017,14 +1017,14 @@ export class BalPagination {
 
 export declare interface BalRadio extends Components.BalRadio {}
 @ProxyCmp({
-  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'name', 'value'],
+  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'isEmpty', 'name', 'value'],
   methods: ['setFocus']
 })
 @Component({
   selector: 'bal-radio',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'name', 'value'],
+  inputs: ['balTabindex', 'checked', 'disabled', 'interface', 'inverted', 'isEmpty', 'name', 'value'],
   outputs: ['balFocus', 'balBlur']
 })
 export class BalRadio {
