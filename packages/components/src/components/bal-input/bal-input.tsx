@@ -11,11 +11,13 @@ import { AutocompleteTypes, InputTypes } from '../../types/interfaces'
   scoped: true,
 })
 export class Input implements ComponentInterface {
-  private allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]
+  private allowedKeys = [...NUMBER_KEYS, ...ACTION_KEYS]
   private inputId = `bal-input-${InputIds++}`
   private nativeInput?: HTMLInputElement
   private didInit = false
   private hasFocus = false
+  private isCopyPaste = false
+  private keysPressed: string[] = []
 
   @Element() el!: HTMLElement
 
@@ -146,9 +148,9 @@ export class Input implements ComponentInterface {
   @Prop() autoComplete: boolean = false
 
   /**
-   * If `true` on mobile device the number keypad is active
+   * If `true` only valid numbers can be entered and on mobile device the number keypad is active
    */
-  @Prop() numberKeyboard = false
+  @Prop() numberInput = false
 
   /**
    * @internal
@@ -169,12 +171,17 @@ export class Input implements ComponentInterface {
   @Prop({ mutable: true }) value?: string | number = ''
 
   /**
+   * Number of decimal places.
+   */
+  @Prop() decimal?: number = undefined
+
+  /**
    * Update the native input element when the value changes
    */
   @Watch('value')
   protected async valueChanged(newValue: string | number | undefined, oldValue: string | number | undefined) {
     if (this.didInit && !this.hasFocus && newValue !== oldValue) {
-      this.balChange.emit(this.getValue())
+      this.balChange.emit(this.getFormattedValue())
     }
   }
 
@@ -251,23 +258,92 @@ export class Input implements ComponentInterface {
     return value
   }
 
-  private getValue(): string {
-    const value = this.getRawValue()
+  private getFormattedValue(): string {
+    let value = this.getRawValue()
+
     const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
     return `${value}${suffix}`
+
   }
 
+  private addSuffixToNumber(value: any): string {
+    const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
+    return `${value}${suffix}`
+
+  }
+
+  private isNumeric(value: any): boolean {
+    return !isNaN(value - parseFloat(value));
+  }
+
+  private isStartingWithDot(value: string): boolean {
+    return value.charAt(0) == '.';
+  }
+  
+  private insertDecimal(value: any, decimalPlaces: number): any {
+
+    if (value.length == 1 && value.charAt(0) == '.') {
+      return (Math.round(0 * 100) / 100).toFixed(decimalPlaces)
+    }
+
+    return (Math.round(value * 100) / 100).toFixed(decimalPlaces)
+  }
+
+  private numberWithCommas(value: string): string {
+    return value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, "'")
+  }
+
+  private formatNumber(value: any): any {
+    if (this.isStartingWithDot(value) && value.length == 1) {
+      return '0'
+    }
+
+    return parseFloat(value)
+  }
+ 
   private onInput = (ev: InputEvent) => {
     const input = ev.target as HTMLInputElement | null
     if (input) {
-      this.value = input.value || ''
+      if (!this.isCopyPaste) {
+        this.value = input.value || ''
+      } else {
+        if (!this.isNumeric(input.value)) {
+          this.value = '0'
+        } else {
+          this.value = input.value || ''
+        }
+        this.keysPressed = []
+        this.isCopyPaste = false
+      }
     }
-    this.balInput.emit(this.value)
+    this.balInput.emit(this.formatNumber(this.value))
+  }
+
+  private exist(array: Array<string>, key: string): boolean {
+    return array.indexOf(key) === -1
+  }
+
+  private checkIfCopyPaste(event: KeyboardEvent): void {
+    if (isCtrlOrCommandKey(event) && this.exist(this.keysPressed, 'ctrl')) {
+      this.keysPressed.push('ctrl')
+    }
+
+    if (event.key == 'v' && this.exist(this.keysPressed, 'v')) {
+      this.keysPressed.push('v')
+    }
+
+    this.isCopyPaste = this.keysPressed.length === 2 ? true : false
   }
 
   private onKeyDown = (event: KeyboardEvent) => {
-    if (this.numberKeyboard) {
-      if (!isCtrlOrCommandKey(event) && this.allowedKeys.indexOf(event.key) < 0) {
+    this.checkIfCopyPaste(event)
+
+    if (this.numberInput) {
+      const nextValue = this.value + '' + event.key
+      const isStartingWithDot = this.isStartingWithDot(nextValue)
+      const isNumeric = this.isNumeric(nextValue)
+      const isKeyAllowed = this.allowedKeys.indexOf(event.key) < 0
+      if (!isNumeric && isKeyAllowed && !isStartingWithDot && !isCtrlOrCommandKey(event)) {
         event.preventDefault()
         event.stopPropagation()
       }
@@ -290,8 +366,26 @@ export class Input implements ComponentInterface {
     this.balChange.emit(this.getRawValue())
 
     const input = ev.target as HTMLInputElement | null
+    
     if (input) {
-      input.value = this.getValue()
+      let value = ''
+      if (this.numberInput && input.value.length > 0) {
+        if (this.decimal) {
+          value = this.insertDecimal(input.value, this.decimal)
+        } else {
+          if (input.value.charAt(input.value.length - 1) == '.') {
+            value = input.value.slice(0, -1)
+          }
+          if (this.isStartingWithDot(input.value)) {
+            value = input.value.length > 1 ? parseFloat(input.value).toString() : '0'
+          }
+        }
+        value = value === '' ? input.value : value
+        value = this.numberWithCommas(value)
+        input.value = this.suffix ? this.addSuffixToNumber(value) : value
+      } else {
+        input.value = this.suffix ? this.getFormattedValue() : value
+      }
     }
   }
 
@@ -309,7 +403,7 @@ export class Input implements ComponentInterface {
   }
 
   render() {
-    const value = this.hasFocus ? this.getRawValue() : this.getValue()
+    const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
     if (label) {
@@ -317,11 +411,11 @@ export class Input implements ComponentInterface {
       label.htmlFor = this.inputId
     }
     let inputProps = {}
+    if (this.numberInput) {
+      inputProps = { pattern: '[0-9]*' }
+    }
     if (this.pattern) {
       inputProps = { pattern: this.pattern }
-    }
-    if (this.numberKeyboard) {
-      inputProps = { pattern: '[0-9]*' }
     }
     return (
       <Host

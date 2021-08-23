@@ -676,6 +676,10 @@ export namespace Components {
          */
         "debounce": number;
         /**
+          * Number of decimal places.
+         */
+        "decimal"?: number;
+        /**
           * If `true` the input is disabled
          */
         "disabled": boolean;
@@ -717,9 +721,9 @@ export namespace Components {
          */
         "name": string;
         /**
-          * If `true` on mobile device the number keypad is active
+          * If `true` only valid numbers can be entered and on mobile device the number keypad is active
          */
-        "numberKeyboard": boolean;
+        "numberInput": boolean;
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
@@ -2524,6 +2528,10 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
+          * Number of decimal places.
+         */
+        "decimal"?: number;
+        /**
           * If `true` the input is disabled
          */
         "disabled"?: boolean;
@@ -2561,9 +2569,9 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * If `true` on mobile device the number keypad is active
+          * If `true` only valid numbers can be entered and on mobile device the number keypad is active
          */
-        "numberKeyboard"?: boolean;
+        "numberInput"?: boolean;
         /**
           * Emitted when a keyboard input occurred.
          */
