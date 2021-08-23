@@ -2,6 +2,7 @@
   "name": "design-system-ng-demo",
   "version": "0.0.0",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -25,7 +26,7 @@
     "ag-grid-community": "^25.3.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.1",
-    "zone.js": "~0.11."
+    "zone.js": "~0.11.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^12.2.1",
@@ -41,5 +42,8 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.7.0",
     "typescript": "~4.2.3"
+  },
+  "resolutions": {
+    "glob-parent": ">=5.1.2"
   }
 }

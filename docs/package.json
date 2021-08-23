@@ -9,6 +9,7 @@
   },
   "repository": "https://github.com/baloise/design-system",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "serve:light": "vuepress dev src",
     "serve": "npm run setup && vuepress dev src",
     "build": "npm run setup && vuepress build src",
@@ -29,5 +30,8 @@
   "dependencies": {
     "vue-tabs-component": "^1.5.0",
     "vuepress-plugin-tabs": "^0.3.0"
+  },
+  "resolutions": {
+    "glob-parent": ">=5.1.2"
   }
 }

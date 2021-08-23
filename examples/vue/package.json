@@ -9,6 +9,7 @@
     "url": "https://github.com/hirsch88"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "postinstall": "npm run copy:fonts",
     "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts",
     "serve": "vue-cli-service serve --port 3000",
@@ -58,5 +59,10 @@
     "sass-loader": "^8.0.2",
     "start-server-and-test": "^1.13.1",
     "typescript": "^4.3.5"
+  },
+  "resolutions": {
+    "glob-parent": ">=5.1.2",
+    "lodash": ">=4.17.21",
+    "minimist": ">=0.2.1 <1.0.0 || >=1.2.3"
   }
 }
