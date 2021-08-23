@@ -120,23 +120,18 @@ export class Select {
 
   @Watch('rawValue')
   rawValueWatcher(newValue: string[], oldValue: string[]) {
-    // console.log('rawValueWatcher', this.multiple, areArraysEqual(newValue, oldValue), JSON.stringify(newValue), JSON.stringify(oldValue))
     if (!areArraysEqual(newValue, oldValue)) {
       this.syncNativeInput()
       if (this.multiple) {
         if (isNil(this.rawValue)) {
-          // console.log('multiple --> empty', [])
           this.balChange.emit([])
         } else {
-          // console.log('multiple --> array', [...(this.rawValue as string[])])
           this.balChange.emit([...(this.rawValue as string[])])
         }
       } else {
         if (isNil(this.rawValue) || length(this.rawValue) === 0) {
-          // console.log('single --> undefined', undefined)
           this.balChange.emit(undefined)
         } else {
-          // console.log('single --> first value', this.rawValue[0])
           this.balChange.emit(this.rawValue[0])
         }
       }
