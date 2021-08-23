@@ -4,13 +4,12 @@
 
 <script>
 import * as BalComponentScripts from '../generated/components'
+import { balSnackbarController, balToastController } from '../lib/dist'
 import {
-  balSnackbarController,
-  balToastController,
   BalTableButtonRenderer,
   BalTableTagRenderer,
   BalTableTextRenderer,
-} from '../lib/dist'
+} from '@baloise/design-system-components-table'
 
 export default {
   name: 'docs-component-script',

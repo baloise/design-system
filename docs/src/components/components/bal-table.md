@@ -30,42 +30,119 @@ The basic table is only css and html provided by the bulma framework.
 
 ## Code
 
+<!-- START: human documentation code -->
 
+To use the AG-Grid install the following packages:
 
-### Properties
+```bash
+npm install --save @baloise/design-system-components-table ag-grid-community
+```
 
+The package has three render functions.
 
-| Attribute    | Description                          | Type      | Default |
-| :----------- | :----------------------------------- | :-------- | :------ |
-| **expanded** | If `true` the table has a full width | `boolean` | `false` |
+#### BalTableButtonRenderer
 
+Renders a button into the grid.
 
+```typescript
+import { BalTableButtonRenderer } from '@baloise/design-system-components-table'
 
+...
+{
+  field: 'button',
+  sortable: true,
+  filter: true,
+  cellRenderer: BalTableButtonRenderer({
+    expanded: true,
+    icon: 'github',
+  }),
+},
+...
+```
 
-## Edit this page on Github
+The `BalTableButtonRenderer` takes the option object `BalTableButtonRendererOptions` as a parameter.
 
-* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-table.md)
-* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-table)
+```typescript
+interface BalTableButtonRendererOptions {
+  color?: (params: ICellRendererParams) => ColorTypes
+  loading?: (params: ICellRendererParams) => boolean
+  href?: (params: ICellRendererParams) => string
+  icon?: string
+  iconRight?: boolean
+  square?: boolean
+  expanded?: boolean
+  outlined?: boolean
+  link?: boolean
+  target?: '_blank' | ' _parent' | '_self' | '_top'
+}
+```
 
-## Feedback
+#### BalTableTagRenderer
 
-Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+Renders a tag element into the grid.
 
+```typescript
+import { BalTableTagRenderer } from '@baloise/design-system-components-table'
 
-<ClientOnly>
-  <docs-component-script tag="balTable"></docs-component-script>
-</ClientOnly>
+...
+{
+  field: 'tag',
+  sortable: true,
+  filter: true,
+  cellRenderer: BalTableTagRenderer({
+    color: params => (params.value === 'Invalid' ? 'danger' : 'success'),
+  }),
+},
+...
+```
 
-<!-- START: human documentation slots -->
+The `BalTableTagRenderer` takes the option object `BalTableTagRendererOptions` as a parameter.
 
-:::: slot bal-table-ag-grid
+```typescript
+interface BalTableTagRendererOptions {
+  color?: (params: ICellRendererParams) => ColorTypes
+}
+```
+
+#### BalTableTextRenderer
+
+Renders a text into the grid.
+
+```typescript
+import { BalTableTextRenderer } from '@baloise/design-system-components-table'
+
+...
+{
+  field: 'textWithIcon',
+  sortable: true,
+  filter: true,
+  cellRenderer: BalTableTextRenderer({
+    icon: params => 'github',
+    iconColor: params => 'primary',
+  }),
+},
+...
+```
+
+The `BalTableTextRenderer` takes the option object `BalTableTextRendererOptions` as a parameter.
+
+```typescript
+interface BalTableTextRendererOptions {
+  color?: (params: ICellRendererParams) => ColorTypes
+  icon?: (params: ICellRendererParams) => string
+  iconColor?: (params: ICellRendererParams) => ColorTypes
+  iconRight?: (params: ICellRendererParams) => boolean
+}
+```
+
+#### Further integrations
 
 ::: danger <img src="https://angular.io/assets/images/logos/angular/angular.svg" data-origin="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular" style="width: 32px">Angular
 
 To use AG-Grid with angular install the package `ag-grid-angular`
 
 ```bash
-npm install --save ag-grid-community ag-grid-angular
+npm install --save ag-grid-angular
 npm install # in certain circumstances npm will perform an "auto prune". This step ensures all expected dependencies are | present
 ```
 
@@ -117,6 +194,36 @@ export class TablePageComponent {
 - [Example implementation](https://github.com/baloise/design-system/tree/master/examples/angular)
 
 :::
+
+<!-- END: human documentation code -->
+
+### Properties
+
+
+| Attribute    | Description                          | Type      | Default |
+| :----------- | :----------------------------------- | :-------- | :------ |
+| **expanded** | If `true` the table has a full width | `boolean` | `false` |
+
+
+
+
+## Edit this page on Github
+
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-table.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-table)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
+
+<ClientOnly>
+  <docs-component-script tag="balTable"></docs-component-script>
+</ClientOnly>
+
+<!-- START: human documentation slots -->
+
+:::: slot bal-table-ag-grid
 
 ::::
 
