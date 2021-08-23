@@ -10,6 +10,7 @@ export * from './components/bal-select/utils/bal-option.type'
 export * from './components/bal-tabs/bal-tab.type'
 export * from './components/bal-file-upload/bal-file-upload.type'
 export * from './components/bal-heading/bal-heading.type'
+export * from './types/color.types'
 
 /**
  * Utils
@@ -18,13 +19,6 @@ export * from './utils'
 export * from './filters'
 export * from './validators'
 export * from './components/bal-select/utils/bal-option.util'
-
-/**
- * Table Cell Renderers
- */
-export * from './components/bal-table/bal-table-button-renderer'
-export * from './components/bal-table/bal-table-tag-renderer'
-export * from './components/bal-table/bal-table-text-renderer'
 
 /**
  * Controllers

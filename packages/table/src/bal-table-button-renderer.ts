@@ -1,6 +1,6 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community'
+import { ColorTypes } from '@baloise/design-system-components'
 import { isNil } from 'lodash'
-import { ColorTypes } from '../../types/color.types'
 
 interface BalTableButtonRendererOptions {
   color?: (params: ICellRendererParams) => ColorTypes

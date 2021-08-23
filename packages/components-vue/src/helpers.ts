@@ -35,8 +35,8 @@ export function rules(isDisabledOrRules: any, validators?: any): ValidatorsRules
       validators = isDisabledOrRules
     }
 
-    if (isArray(rules)) {
-      for (let i = 0; i < rules.length; i++) {
+    if (isArray(validators)) {
+      for (let i = 0; i < validators.length; i++) {
         const errorMessage = await validators[i](unref(value))
         if (errorMessage !== null && errorMessage !== undefined && errorMessage !== '' && errorMessage !== true) {
           return errorMessage
