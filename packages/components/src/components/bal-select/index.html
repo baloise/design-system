@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/build/design-system-components.css" />
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
-    <!-- <script src="/assets/js/events.js"></script> -->
+    <script src="/assets/js/events.js"></script>
   </head>
   <body class="bal-app">
     <div class="container">
@@ -195,7 +195,8 @@
           'Zug',
           'Freiburg/Fribourg',
           'Solothurn',
-          'Basel',
+          'Basel-Stadt',
+          'Basel-Land',
           'Schaffhausen',
           'Appenzell',
           'SanktGallen',
@@ -242,9 +243,9 @@
           }, 1000)
         }
 
-        selectRemote.searchInput = function (value) {
-          querySelections(value)
-        }
+        selectRemote.addEventListener('balInput', function (event) {
+          querySelections(event.detail)
+        })
       </script>
     </div>
   </body>

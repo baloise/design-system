@@ -1,5 +1,5 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
-import { isArray, isNil } from 'lodash'
+import { isArray, isNil, isString } from 'lodash'
 import { findItemLabel } from '../../helpers/helpers'
 import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey, isBackspaceKey } from '../../utils'
 import { addValue, findLabelByValue, getValues, includes, length, preventDefault, removeValue, startsWith, validateAfterBlur } from './utils/utils'
@@ -102,20 +102,51 @@ export class Select {
   /**
    * Selected option values. Could also be passed as a string, which gets transformed.
    */
-  @Prop({ mutable: true }) value: string[] | undefined = []
+  @Prop({ mutable: true }) value: string | string[] | undefined = []
+  @State() rawValue: string[] | undefined = []
 
   @Watch('value')
-  valueWatcher(newValue: string[], oldValue: string[]) {
+  valueWatcher() {
+    if (isNil(this.value)) {
+      this.rawValue = []
+    } else {
+      if (isString(this.value)) {
+        this.rawValue = [this.value]
+      } else {
+        this.rawValue = [...this.value]
+      }
+    }
+  }
+
+  @Watch('rawValue')
+  rawValueWatcher(newValue: string[], oldValue: string[]) {
+    // console.log('rawValueWatcher', this.multiple, areArraysEqual(newValue, oldValue), JSON.stringify(newValue), JSON.stringify(oldValue))
     if (!areArraysEqual(newValue, oldValue)) {
       this.syncNativeInput()
-      this.balChange.emit(this.value)
+      if (this.multiple) {
+        if (isNil(this.rawValue)) {
+          // console.log('multiple --> empty', [])
+          this.balChange.emit([])
+        } else {
+          // console.log('multiple --> array', [...(this.rawValue as string[])])
+          this.balChange.emit([...(this.rawValue as string[])])
+        }
+      } else {
+        if (isNil(this.rawValue) || length(this.rawValue) === 0) {
+          // console.log('single --> undefined', undefined)
+          this.balChange.emit(undefined)
+        } else {
+          // console.log('single --> first value', this.rawValue[0])
+          this.balChange.emit(this.rawValue[0])
+        }
+      }
     }
   }
 
   /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<string[]>
+  @Event() balChange!: EventEmitter<string | string[] | undefined>
 
   /**
    * Emitted when the input got clicked.
@@ -170,9 +201,9 @@ export class Select {
         this.cancel()
       }
       if (isBackspaceKey(event) && this.typeahead && this.multiple) {
-        if (this.inputElement.value === '' && length(this.value) > 0) {
-          const valuesArray = getValues(this.value)
-          this.removeValue(valuesArray[length(this.value) - 1])
+        if (this.inputElement.value === '' && length(this.rawValue) > 0) {
+          const valuesArray = getValues(this.rawValue)
+          this.removeValue(valuesArray[length(this.rawValue) - 1])
         }
       }
       if (!this.typeahead && event.key.length === 1) {
@@ -200,12 +231,18 @@ export class Select {
   }
 
   componentWillLoad() {
-    if (!isArray(this.value) || isNil(this.value)) {
-      this.value = []
+    if (isNil(this.value)) {
+      this.rawValue = []
+    } else {
+      if (!isArray(this.value)) {
+        this.rawValue = [this.value]
+      } else {
+        this.rawValue = [...this.value]
+      }
     }
 
-    if (this.options.size > 0 && length(this.value) === 1) {
-      const firstOption = this.options.get(this.value[0])
+    if (this.options.size > 0 && length(this.rawValue) === 1) {
+      const firstOption = this.options.get(this.rawValue[0])
       if (!isNil(firstOption)) {
         this.inputValue = firstOption.label
       }
@@ -256,7 +293,7 @@ export class Select {
     this.focusIndex = 0
     if (this.inputElement) {
       this.updateInputValue('')
-      this.value = []
+      this.rawValue = []
     }
   }
 
@@ -321,12 +358,12 @@ export class Select {
 
   private get inputPlaceholder(): string | undefined {
     if (this.multiple) {
-      if (length(this.value) < 1) {
+      if (length(this.rawValue) < 1) {
         return this.placeholder
       }
       return undefined
     } else {
-      if (!isNil(this.value) && length(this.value) > 0) {
+      if (!isNil(this.rawValue) && length(this.rawValue) > 0) {
         return undefined
       }
     }
@@ -444,7 +481,7 @@ export class Select {
    ********************************************************/
 
   private optionSelected(selectedOption: BalOptionController) {
-    const valuesArray = getValues(this.value)
+    const valuesArray = getValues(this.rawValue)
     const isAlreadySelected = valuesArray.some(v => v === selectedOption.value)
     this.updateValue(selectedOption.value, !isAlreadySelected)
 
@@ -460,18 +497,18 @@ export class Select {
   private updateValue(newValue: string, isSelected = true) {
     if (this.multiple) {
       if (isSelected) {
-        this.value = addValue(this.value, newValue, this.multiple)
+        this.rawValue = addValue(this.rawValue, newValue, this.multiple)
       } else {
-        this.value = removeValue(this.value, newValue)
+        this.rawValue = removeValue(this.rawValue, newValue)
       }
     } else {
-      this.value = addValue(this.value, newValue, this.multiple)
-      this.updateInputValue(findLabelByValue(this.options, this.value[0]))
+      this.rawValue = addValue(this.rawValue, newValue, this.multiple)
+      this.updateInputValue(findLabelByValue(this.options, this.rawValue[0]))
     }
   }
 
   private removeValue = (value: string) => {
-    this.value = removeValue(this.value, value)
+    this.rawValue = removeValue(this.rawValue, value)
     if (this.multiple && this.typeahead) {
       this.setFocus()
     }
@@ -479,7 +516,7 @@ export class Select {
 
   private validateAfterBlur() {
     if (!this.multiple && this.didInit) {
-      this.value = validateAfterBlur(this.value, this.options, this.inputElement.value)
+      this.rawValue = validateAfterBlur(this.rawValue, this.options, this.inputElement.value)
     }
   }
 
@@ -492,8 +529,8 @@ export class Select {
 
   private syncNativeInput() {
     if (!this.multiple) {
-      if (length(this.value) > 0) {
-        const valuesArray = getValues(this.value)
+      if (length(this.rawValue) > 0) {
+        const valuesArray = getValues(this.rawValue)
         this.updateInputValue(findLabelByValue(this.options, valuesArray[0]))
       }
     }
@@ -585,7 +622,7 @@ export class Select {
       </bal-tag>
     )
 
-    const valuesArray = getValues(this.value)
+    const valuesArray = getValues(this.rawValue)
 
     return (
       <Host

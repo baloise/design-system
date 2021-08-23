@@ -1596,7 +1596,7 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
       required: false,
     },
     value: {
-      type: Array as PropType<Array<string | undefined>>,
+      type: String,
       default: [],
       required: false,
     },
@@ -1605,7 +1605,7 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
     },
   },
   emits: {
-    balChange: (value: string[]) => true,
+    balChange: (value: string | string[] | undefined) => true,
     balClick: (value: MouseEvent) => true,
     balInput: (value: string) => true,
     balBlur: (value: FocusEvent) => true,

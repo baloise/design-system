@@ -1029,7 +1029,7 @@ export namespace Components {
         /**
           * Selected option values. Could also be passed as a string, which gets transformed.
          */
-        "value": string[] | undefined;
+        "value": string | string[] | undefined;
     }
     interface BalSelectOption {
         /**
@@ -2869,7 +2869,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: CustomEvent<string[]>) => void;
+        "onBalChange"?: (event: CustomEvent<string | string[] | undefined>) => void;
         /**
           * Emitted when the input got clicked.
          */
@@ -2901,7 +2901,7 @@ declare namespace LocalJSX {
         /**
           * Selected option values. Could also be passed as a string, which gets transformed.
          */
-        "value"?: string[] | undefined;
+        "value"?: string | string[] | undefined;
     }
     interface BalSelectOption {
         /**

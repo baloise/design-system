@@ -1078,7 +1078,7 @@ export declare interface BalSelect extends Components.BalSelect {}
 })
 export class BalSelect {
   /** Emitted when a option got selected. */
-  balChange!: EventEmitter<CustomEvent<string[]>>;
+  balChange!: EventEmitter<CustomEvent<string | string[] | undefined>>;
   /** Emitted when the input got clicked. */
   balClick!: EventEmitter<CustomEvent<MouseEvent>>;
   /** Emitted when a keyboard input occurred. */
