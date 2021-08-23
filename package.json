@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "homepage": "https://baloise-design-system.vercel.app.sh",
+  "homepage": "https://baloise-design-system.vercel.app",
   "author": {
     "name": "Gery Hirschfeld",
     "email": "gerhard.hirschfeld@baloise.ch",

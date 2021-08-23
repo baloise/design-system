@@ -12,7 +12,7 @@ async function main() {
     const slots = []
     const events = []
     const componentName = pascalCase(component.tag)
-    const docUrl = 'https://baloise-design-system.vercel.app.sh/#/components/' + component.tag + '/readme'
+    const docUrl = 'https://baloise-design-system.vercel.app/#/components/' + component.tag + '/readme'
 
     for (const prop of component.props || []) {
       attributes.push({
