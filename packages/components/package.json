@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "@baloise/design-system-fonts": "^1.11.0",
+    "@baloise/design-system-icons": "^1.11.0",
     "@stencil/core": "^2.7.0",
     "@types/lodash": "^4.14.172",
     "bulma": "^0.9.3",
@@ -63,7 +64,6 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@baloise/angular-output-target": "^1.0.11",
-    "@baloise/design-system-icons": "^1.11.0",
     "@baloise/vue-output-target": "^0.1.3",
     "@stencil/postcss": "^2.0.0",
     "@stencil/sass": "^1.4.1",

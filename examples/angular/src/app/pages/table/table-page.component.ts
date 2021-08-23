@@ -1,7 +1,11 @@
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 import { GridApi, ColumnApi } from 'ag-grid-community'
-import { BalTableTextRenderer, BalTableTagRenderer, BalTableButtonRenderer } from '@baloise/design-system-components'
+import {
+  BalTableTextRenderer,
+  BalTableTagRenderer,
+  BalTableButtonRenderer,
+} from '@baloise/design-system-components-table'
 
 @Component({
   selector: 'app-table-page',

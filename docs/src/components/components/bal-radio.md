@@ -66,6 +66,7 @@ A radio input is normally displayed in a radio group. The user can only select o
 | **disabled**     | If `true`, the user cannot interact with the checkbox.          | `boolean`                   | `false`        |
 | **interface**    | Defines the layout of the radio button                          | `"radio" , "select-button"` | `'radio'`      |
 | **inverted**     | If `true`, the control works on dark background.                | `boolean`                   | `false`        |
+| **is-empty**     | If `true` the radio has no label                                | `boolean`                   | `false`        |
 | **name**         | The name of the control, which is submitted with the form data. | `string`                    | `this.inputId` |
 | **value**        | The value of the control.                                       | `string`                    | `''`           |
 

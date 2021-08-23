@@ -17,12 +17,30 @@ cd bal-app
 ng serve
 ```
 
+::: warning
+
+**WARNING in budgets, maximum exceeded for initial**
+
+Open angular.json file and find budgets keyword and adjust the two values.
+
+```json
+"budgets": [
+  {
+    "type": "initial",
+    "maximumWarning": "3mb",
+    "maximumError": "5mb"
+  }
+]
+```
+
+:::
+
 ## Install Baloise Design System
 
 Use npm to install the Angular proxy library.
 
 ```bash
-npm install @baloise/design-system-components-angular ag-grid-community --save
+npm install @baloise/design-system-components-angular --save
 ```
 
 ::: tip
