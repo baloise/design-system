@@ -17,8 +17,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **table:** update ag-grid usage ([f083875](https://github.com/baloise/design-system/commit/f0838754edc5d8a907b1bec0fdf8b503e16e674d))
 
-## 1.8.1 (2021-08-05)
-
 # [1.9.0](https://github.com/baloise/design-system/compare/v1.8.2...v1.9.0) (2021-08-12)
 
 ### Features
