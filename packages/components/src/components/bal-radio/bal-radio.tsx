@@ -35,6 +35,11 @@ export class Radio implements ComponentInterface {
   @Prop() value: string = ''
 
   /**
+   * If `true` the radio has no label
+   */
+  @Prop() isEmpty: boolean = false
+
+  /**
    * If `true`, the radio is selected.
    */
   @Prop({ mutable: true }) checked = false
@@ -143,7 +148,11 @@ export class Radio implements ComponentInterface {
             ev.stopPropagation()
           }}
         >
-          <bal-text>
+          <bal-text
+            class={{
+              'pl-5': !this.isEmpty && this.interface !== 'select-button',
+            }}
+          >
             <slot></slot>
           </bal-text>
         </label>

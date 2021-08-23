@@ -915,6 +915,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * If `true` the radio has no label
+         */
+        "isEmpty": boolean;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
@@ -2774,6 +2778,10 @@ declare namespace LocalJSX {
           * If `true`, the control works on dark background.
          */
         "inverted"?: boolean;
+        /**
+          * If `true` the radio has no label
+         */
+        "isEmpty"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
