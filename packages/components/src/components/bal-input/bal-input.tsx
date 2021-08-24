@@ -181,7 +181,7 @@ export class Input implements ComponentInterface {
   @Watch('value')
   protected async valueChanged(newValue: string | number | undefined, oldValue: string | number | undefined) {
     if (this.didInit && !this.hasFocus && newValue !== oldValue) {
-      this.balChange.emit(this.getFormattedValue())
+      this.balChange.emit(this.getValueForEmitting())
     }
   }
 
@@ -263,7 +263,10 @@ export class Input implements ComponentInterface {
 
     const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
     return `${value}${suffix}`
+  }
 
+  private getValueForEmitting(): any {
+    return this.numberInput ? this.formatNumber(this.getRawValue()) : this.getRawValue()
   }
 
   private addSuffixToNumber(value: any): string {
@@ -300,16 +303,16 @@ export class Input implements ComponentInterface {
     return parseFloat(value)
   }
 
-  private exist(array: Array<string>, key: string): boolean {
-    return array.indexOf(key) === -1
+  private isElementExistsInArray(array: Array<string>, element: string): boolean {
+    return array.indexOf(element) === -1
   }
 
   private checkIfCopyPaste(event: KeyboardEvent): void {
-    if (isCtrlOrCommandKey(event) && this.exist(this.keysPressed, 'ctrl')) {
+    if (isCtrlOrCommandKey(event) && this.isElementExistsInArray(this.keysPressed, 'ctrl')) {
       this.keysPressed.push('ctrl')
     }
 
-    if (event.key == 'v' && this.exist(this.keysPressed, 'v')) {
+    if (event.key == 'v' && this.isElementExistsInArray(this.keysPressed, 'v')) {
       this.keysPressed.push('v')
     }
 
@@ -327,7 +330,7 @@ export class Input implements ComponentInterface {
         this.isCopyPaste = false
       }
     }
-    this.balInput.emit(this.formatNumber(this.value))
+    this.balInput.emit(this.getValueForEmitting())
   }
 
   private onKeyDown = (event: KeyboardEvent) => {
@@ -381,12 +384,12 @@ export class Input implements ComponentInterface {
   private onBlur = (ev: FocusEvent) => {
     this.hasFocus = false
     this.balBlur.emit(ev)
-    this.balChange.emit(this.getRawValue())
+    this.balChange.emit(this.getValueForEmitting())
 
     const input = ev.target as HTMLInputElement | null
     
     if (input) {
-      input.value = this.getValidatedNumber(input.value)
+      input.value = this.numberInput ? this.getValidatedNumber(input.value) : this.getFormattedValue()
     }
   }
 

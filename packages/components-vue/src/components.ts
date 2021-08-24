@@ -1110,7 +1110,7 @@ export const BalInput = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
-    numberKeyboard: {
+    numberInput: {
       type: Boolean,
       default: false,
       required: false,
@@ -1128,6 +1128,11 @@ export const BalInput = /*@__PURE__*/ defineComponent({
     value: {
       type: [String, Number],
       default: '',
+      required: false,
+    },
+    decimal: {
+      type: Number,
+      default: undefined,
       required: false,
     },
     modelValue: {
