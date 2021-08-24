@@ -29,7 +29,7 @@ export default {
     scss({
       processor: () => postcss([autoprefixer()]),
       outputStyle: 'compressed',
-      output: 'dist/design-system-table.css',
+      output: 'css/design-system-table.css',
     }),
   ],
 }
