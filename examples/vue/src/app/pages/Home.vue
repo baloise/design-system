@@ -1,22 +1,12 @@
 <template>
   <BalCard class="has-large-margin-top">
     <BalCardTitle>Vue Starter Kit</BalCardTitle>
-    <BalCardSubtitle data-test-id="count-message">
-      The button was called {{ count }} times!
-    </BalCardSubtitle>
+    <BalCardSubtitle data-test-id="count-message"> The button was called {{ count }} times! </BalCardSubtitle>
     <BalCardContent>
       Welcome to our Baloise Starter Kit for the Vue Framework.
 
-      <hello-world
-        :message="'Tony Stark'"
-        @onConfirm="onConfirm($event)"
-      ></hello-world>
+      <hello-world :message="'Tony Stark'" @onConfirm="onConfirm($event)"></hello-world>
     </BalCardContent>
-    <BalCardActions>
-      <BalButton data-test-id="count-button" color="primary" @click="count++">
-        Click me
-      </BalButton>
-    </BalCardActions>
   </BalCard>
 </template>
 
@@ -30,7 +20,8 @@ export default defineComponent({
     const count = ref(0)
 
     const onConfirm: onConfirm = (value: string) => {
-      alert(value)
+      console.log('onConfirm', value)
+      count.value = count.value + 1
     }
 
     return {

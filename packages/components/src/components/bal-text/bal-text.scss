@@ -11,7 +11,7 @@ bal-text {
   font-family: $family-primary;
   font-weight: $weight-normal;
   font-size: $size-normal !important;
-  line-height: $bal_lineheight_20px;
+  line-height: 20px;
 
   span {
     word-break: break-word;
@@ -26,6 +26,6 @@ bal-text {
   &.is-small span {
     @include lhCrop(1);
     font-size: $size-small !important;
-    line-height: $bal_lineheight_15px;
+    line-height: 20px;
   }
 }

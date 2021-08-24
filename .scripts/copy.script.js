@@ -6,6 +6,7 @@ async function main() {
   log.title('copy readme')
   await copyReadme('components')
   await copyReadme('components-angular')
+  await copyReadme('components-table')
   await copyReadme('components-vue')
   await copyReadme('icons')
   await copyReadme('fonts')

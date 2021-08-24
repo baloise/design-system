@@ -24,6 +24,8 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 
 ## Code
 
+
+
 ### Properties
 
 

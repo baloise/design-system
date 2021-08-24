@@ -1,15 +1,5 @@
 # Snackbar
 
-## Usage
-
-Toast can be created with the `balScnackbarController`. The default duration is 5000 milliseconds.
-
-```typescript
-import { balScnackbarController } from '@baloise/design-system-components'
-
-balScnackbarController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
-```
-
 <!-- Auto Generated Below -->
 
 

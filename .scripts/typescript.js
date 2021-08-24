@@ -4,7 +4,6 @@
  */
 
 const ts = require('typescript')
-const log = require('./log')
 
 const createSourceFile = fileContent => ts.createSourceFile('x.ts', fileContent, ts.ScriptTarget.Latest)
 
@@ -19,11 +18,11 @@ const filterDeclarationsAndStatements = (list, kind) => {
 }
 
 const filterFunctionStatements = nodes => {
-  return filterDeclarationsAndStatements(nodes, 251)
+  return filterDeclarationsAndStatements(nodes, 252)
 }
 
 const filterVariableStatements = nodes => {
-  return filterDeclarationsAndStatements(nodes, 232)
+  return filterDeclarationsAndStatements(nodes, 233)
 }
 
 const filterVariableDeclaration = nodes => {
@@ -35,7 +34,7 @@ const filterInterfaceDeclaration = nodes => {
 }
 
 const filterInterfaceDeclarations = nodes => {
-  return filterDeclarationsAndStatements(nodes, 253)
+  return filterDeclarationsAndStatements(nodes, 254)
 }
 
 const filterExportedStatements = nodes => {
@@ -90,7 +89,7 @@ const parseType = type => {
       return 'RegExp'
     case 178:
       return `${parseType(type.elementType)}[]`
-    case 182: // UnionType like string | number
+    case 183: // UnionType like string | number
       return type.types.map(parseType).join(' | ')
     default:
       return 'any'

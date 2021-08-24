@@ -10,15 +10,8 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-scss-preprocessor')
+      require('@angular-devkit/build-angular/plugins/karma')
     ],
-    files: [
-      { pattern: './src/styles.scss', watched: true, included: true, served: true }
-    ],
-    preprocessors: {
-      './src/styles.scss': ['scss']
-    },
     client: {
       jasmine: {
         // you can add configuration options for Jasmine here
@@ -32,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/bal-app'),
+      dir: require('path').join(__dirname, './coverage/design-system-ng-demo'),
       subdir: '.',
       reporters: [
         { type: 'html' },

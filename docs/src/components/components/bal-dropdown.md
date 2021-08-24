@@ -33,6 +33,8 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 
 ## Code
 
+
+
 ### Properties
 
 
@@ -79,9 +81,34 @@ describe('Dropdown', () => {
 
 ### Methods
 
-| Method    | Description         | Arguments                                 |
-| :-------- | :------------------ | :---------------------------------------- |
-| **click** | Clicks the dropdown | `options?: Partial<Cypress.ClickOptions>` |
+| Method                         | Description                                                                                                        | Arguments                                                |
+| :----------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
+| **click**                      | Clicks the dropdown.                                                                                               | `options?: Partial<Cypress.ClickOptions>`                |
+| **select**                     |                                                                                                                    | `index: number`                                          |
+| **assertIsSelected**           |                                                                                                                    |                                                          |
+| **assertOptions**              |                                                                                                                    | `...options: string[]`                                   |
+| **assertOptions**              |                                                                                                                    | `...options: string[]`                                   |
+| **contains**                   |                                                                                                                    | `content: string | number | RegExp`                      |
+| **and**                        | Use this mixin to chain actions or asserts.                                                                        | `chainers: string, method?: string, value?: string`      |
+| **blur**                       | Lose focus of this element                                                                                         | `options?: Partial<Cypress.BlurOptions>`                 |
+| **assertIsDisabled**           | Asserts that the element is enabled or disabled.                                                                   | `enabled?: boolean`                                      |
+| **should**                     | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string` |
+| **assertVisible**              | Assert that the component is visible or not visible for the user                                                   | `visible?: boolean`                                      |
+| **selectNth**                  | Selects the option at the given index.                                                                             | `index: number`                                          |
+| **last**                       | Selects the last option.                                                                                           |                                                          |
+| **parent**                     | Selects the parent option.                                                                                         |                                                          |
+| **assertAttributeEquals**      | Asserting that the element has the attribute and the value.                                                        | `attribute: string, value: string`                       |
+| **assertAttributeInclude**     | Asserting that the element has the attribute and include the value.                                                | `attribute: string, value: string`                       |
+| **assertDoesNotHaveAttribute** | Asserting that the element does not have the attribute.                                                            | `attribute: string`                                      |
+| **assertFullUrl**              | Asserting if given url argument matches the url of the browser.                                                    | `url: string`                                            |
+| **assertPartUrl**              | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
+| **find**                       | Get the descendent DOM elements of a specific selector.                                                            | `locator: string`                                        |
+| **wait**                       | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
+| **assertExists**               | Asserts that the element exists/not exists in the DOM                                                              | `exists?: boolean`                                       |
+| **then**                       | Enables you to work with the subject yielded from the previous command.                                            | `callBack: Function`                                     |
+| **invoke**                     | Invoke a function on the previously yielded subject.                                                               | `locator: string`                                        |
+| **length**                     | Get number of elements.                                                                                            | `locator: string`                                        |
+| **each**                       | Iterate through an array like structure.                                                                           | `callBack: Function`                                     |
 
 ## Usage
 

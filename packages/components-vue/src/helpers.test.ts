@@ -1,28 +1,26 @@
-import { useValidator, ValidatorFn, validators } from './helpers'
+import { useValidator, ValidatorFn, rules } from './helpers'
 
 describe('helpers', () => {
-  describe('validators', () => {
+  describe('rules', () => {
     test('verify validator function return types', async () => {
-      expect(await validators([() => undefined])('1234')).toBe(true)
-      expect(await validators([() => null])('1234')).toBe(true)
-      expect(await validators([() => ''])('1234')).toBe(true)
-      expect(await validators([() => true])('1234')).toBe(true)
-      expect(await validators([() => false])('1234')).toBe(false)
-      expect(await validators([() => 'Error Message'])('1234')).toBe('Error Message')
+      expect(await rules([() => undefined])('1234')).toBe(true)
+      expect(await rules([() => null])('1234')).toBe(true)
+      expect(await rules([() => ''])('1234')).toBe(true)
+      expect(await rules([() => true])('1234')).toBe(true)
+      expect(await rules([() => false])('1234')).toBe(false)
+      expect(await rules([() => 'Error Message'])('1234')).toBe('Error Message')
     })
     test('should return the first error message', async () => {
-      expect(await validators([() => true, () => 'Error Message'])('1234')).toBe('Error Message')
-      expect(await validators([() => 'Error Message', () => 'Other Error Message'])('1234')).toBe('Error Message')
+      expect(await rules([() => true, () => 'Error Message'])('1234')).toBe('Error Message')
+      expect(await rules([() => 'Error Message', () => 'Other Error Message'])('1234')).toBe('Error Message')
     })
     test('should return a error message if the field is not disabled', async () => {
-      expect(await validators(false, [() => true, () => 'Error Message'])('1234')).toBe('Error Message')
-      expect(await validators(false, [() => 'Error Message', () => 'Other Error Message'])('1234')).toBe(
-        'Error Message',
-      )
+      expect(await rules(false, [() => true, () => 'Error Message'])('1234')).toBe('Error Message')
+      expect(await rules(false, [() => 'Error Message', () => 'Other Error Message'])('1234')).toBe('Error Message')
     })
     test('should return true if the field is disabled', async () => {
-      expect(await validators(true, [() => true, () => 'Error Message'])('1234')).toBe(true)
-      expect(await validators(true, [() => 'Error Message', () => 'Other Error Message'])('1234')).toBe(true)
+      expect(await rules(true, [() => true, () => 'Error Message'])('1234')).toBe(true)
+      expect(await rules(true, [() => 'Error Message', () => 'Other Error Message'])('1234')).toBe(true)
     })
   })
   describe('useValidator', () => {
@@ -50,8 +48,8 @@ describe('helpers', () => {
       const isFirstValidator = (): ValidatorFn => createValidator(firstValidator, 'first.validator.required')
       const isSecondValidator = (): ValidatorFn => createValidator(secondValidator, 'second.validator.required')
 
-      expect(await validators([isFirstValidator(), isSecondValidator()])('1234')).toBe('Validation message 2')
-      expect(await validators([isSecondValidator(), isFirstValidator()])('1234')).toBe('Validation message 2')
+      expect(await rules([isFirstValidator(), isSecondValidator()])('1234')).toBe('Validation message 2')
+      expect(await rules([isSecondValidator(), isFirstValidator()])('1234')).toBe('Validation message 2')
     })
     test('should return the error message of the first failed validator', async () => {
       const firstValidator = () => false
@@ -59,18 +57,18 @@ describe('helpers', () => {
       const isFirstValidator = (): ValidatorFn => createValidator(firstValidator, 'first.validator.required')
       const isSecondValidator = (): ValidatorFn => createValidator(secondValidator, 'second.validator.required')
 
-      expect(await validators([isFirstValidator(), isSecondValidator()])('1234')).toBe('Validation message')
-      expect(await validators([isSecondValidator(), isFirstValidator()])('1234')).toBe('Validation message 2')
+      expect(await rules([isFirstValidator(), isSecondValidator()])('1234')).toBe('Validation message')
+      expect(await rules([isSecondValidator(), isFirstValidator()])('1234')).toBe('Validation message 2')
     })
-    test('should return true due to all valid validators', async () => {
+    test('should return true due to all valid rules', async () => {
       const firstValidator = () => true
       const secondValidator = () => true
       const isFirstValidator = (): ValidatorFn => createValidator(firstValidator, 'first.validator.required')
       const isSecondValidator = (): ValidatorFn => createValidator(secondValidator, 'second.validator.required')
 
-      expect(await validators([])('1234')).toBe(true)
-      expect(await validators([isFirstValidator(), isSecondValidator()])('1234')).toBe(true)
-      expect(await validators([isSecondValidator(), isFirstValidator()])('1234')).toBe(true)
+      expect(await rules([])('1234')).toBe(true)
+      expect(await rules([isFirstValidator(), isSecondValidator()])('1234')).toBe(true)
+      expect(await rules([isSecondValidator(), isFirstValidator()])('1234')).toBe(true)
     })
   })
 })

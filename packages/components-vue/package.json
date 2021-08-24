@@ -1,12 +1,12 @@
 {
   "name": "@baloise/design-system-components-vue",
-  "version": "1.10.0",
+  "version": "1.11.1",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
     "url": "https://github.com/baloise/design-system.git"
   },
-  "homepage": "https://baloise-design-system.vercel.app.sh",
+  "homepage": "https://baloise-design-system.vercel.app",
   "author": {
     "name": "Gery Hirschfeld",
     "email": "gerhard.hirschfeld@baloise.ch",
@@ -41,22 +41,23 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/jest": "^26.0.24",
-    "@types/lodash": "^4.14.169",
+    "@types/lodash": "^4.14.172",
+    "ag-grid-community": "^26.0.0",
     "change-case": "^4.1.2",
     "jest": "^27.0.6",
     "lodash": "^4.17.21",
     "rimraf": "^3.0.2",
-    "rollup": "^2.48.0",
-    "ts-jest": "^27.0.4",
-    "typescript": "^4.2.4",
-    "vue": "^3.0.11"
+    "rollup": "^2.56.2",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.3.5",
+    "vue": "^3.2.4"
   },
   "peerDependencies": {
     "vue": ">=3.0.5"
   },
   "gitHead": "e0d380309b487bcedee06d025645f5aab37ab192",
   "dependencies": {
-    "@baloise/design-system-components": "^1.10.0"
+    "@baloise/design-system-components": "^1.11.1"
   },
   "vetur": {
     "tags": "dist/vetur/tags.json",

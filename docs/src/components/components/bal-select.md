@@ -57,38 +57,40 @@ export interface BalOptionValue<T> {
 
 ## Code
 
+
+
 ### Properties
 
 
-| Attribute         | Description                                                                       | Type                   | Default        |
-| :---------------- | :-------------------------------------------------------------------------------- | :--------------------- | :------------- |
-| **bal-tabindex**  | The tabindex of the control.                                                      | `number`               | `0`            |
-| **disabled**      | If `true` the component is diabled.                                               | `boolean`              | `false`        |
-| **expanded**      | If `true` the component uses the whole width.                                     | `boolean`              | `false`        |
-| **has-movement**  | Enables the slide in animation for the option items.                              | `boolean`              | `false`        |
-| **inverted**      | Set this to `true` when the component is placed on a dark background.             | `boolean`              | `false`        |
-| **loading**       | Defines if the select is in a loading state.                                      | `boolean`              | `false`        |
-| **multiple**      | If `true` multiple option can be selected                                         | `boolean`              | `false`        |
-| **name**          | The name of the control, which is submitted with the form data.                   | `string`               | `this.inputId` |
-| **no-border**     | Removes the border of the input.                                                  | `boolean`              | `false`        |
-| **no-data-label** | This label is shown if typeahead is active and all the options are filtered out.  | `string , undefined`   |                |
-| **placeholder**   | The text to display when the select is empty.                                     | `string , undefined`   |                |
-| **scrollable**    | Defines the height of the dropdown list.                                          | `number`               | `250`          |
-| **typeahead**     | If `true` the user can search by typing into the input field.                     | `boolean`              | `false`        |
-|                   | Selected option values. Could also be passed as a string, which gets transformed. | `string[] , undefined` | `[]`           |
+| Attribute         | Description                                                                       | Type                            | Default        |
+| :---------------- | :-------------------------------------------------------------------------------- | :------------------------------ | :------------- |
+| **bal-tabindex**  | The tabindex of the control.                                                      | `number`                        | `0`            |
+| **disabled**      | If `true` the component is diabled.                                               | `boolean`                       | `false`        |
+| **expanded**      | If `true` the component uses the whole width.                                     | `boolean`                       | `false`        |
+| **has-movement**  | Enables the slide in animation for the option items.                              | `boolean`                       | `false`        |
+| **inverted**      | Set this to `true` when the component is placed on a dark background.             | `boolean`                       | `false`        |
+| **loading**       | Defines if the select is in a loading state.                                      | `boolean`                       | `false`        |
+| **multiple**      | If `true` multiple option can be selected                                         | `boolean`                       | `false`        |
+| **name**          | The name of the control, which is submitted with the form data.                   | `string`                        | `this.inputId` |
+| **no-border**     | Removes the border of the input.                                                  | `boolean`                       | `false`        |
+| **no-data-label** | This label is shown if typeahead is active and all the options are filtered out.  | `string , undefined`            |                |
+| **placeholder**   | The text to display when the select is empty.                                     | `string , undefined`            |                |
+| **scrollable**    | Defines the height of the dropdown list.                                          | `number`                        | `250`          |
+| **typeahead**     | If `true` the user can search by typing into the input field.                     | `boolean`                       | `false`        |
+| **value**         | Selected option values. Could also be passed as a string, which gets transformed. | `string , string[] , undefined` | `[]`           |
 
 ### Events
 
 
-| Event           | Description                                                        | Type            |
-| :-------------- | :----------------------------------------------------------------- | :-------------- |
-| **balBlur**     | Emitted when the input loses focus.                                | `FocusEvent`    |
-| **balCancel**   | Emitted when the user cancels the input.                           | `KeyboardEvent` |
-| **balChange**   | Emitted when a option got selected.                                | `string[]`      |
-| **balClick**    | Emitted when the input got clicked.                                | `MouseEvent`    |
-| **balFocus**    | Emitted when the input has focus.                                  | `FocusEvent`    |
-| **balInput**    | Emitted when a keyboard input occurred.                            | `string`        |
-| **balKeyPress** | Emitted when the input has focus and key from the keyboard go hit. | `KeyboardEvent` |
+| Event           | Description                                                        | Type                            |
+| :-------------- | :----------------------------------------------------------------- | :------------------------------ |
+| **balBlur**     | Emitted when the input loses focus.                                | `FocusEvent`                    |
+| **balCancel**   | Emitted when the user cancels the input.                           | `KeyboardEvent`                 |
+| **balChange**   | Emitted when a option got selected.                                | `string | string[] | undefined` |
+| **balClick**    | Emitted when the input got clicked.                                | `MouseEvent`                    |
+| **balFocus**    | Emitted when the input has focus.                                  | `FocusEvent`                    |
+| **balInput**    | Emitted when a keyboard input occurred.                            | `string`                        |
+| **balKeyPress** | Emitted when the input has focus and key from the keyboard go hit. | `KeyboardEvent`                 |
 
 ### Methods
 

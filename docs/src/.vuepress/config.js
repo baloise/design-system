@@ -80,8 +80,31 @@ module.exports = {
       '/components/': [
         {
           title: 'Getting Started',
+          path: '/components',
           collapsable: true,
-          children: ['essentials/html5', 'essentials/vue', 'essentials/angular', 'essentials/styles'],
+          children: [
+            {
+              title: 'HTML 5',
+              path: '/components/getting-started/html',
+            },
+            {
+              title: 'Anuglar',
+              collapsable: true,
+              path: '/components/getting-started/angular/index',
+              children: [
+                'getting-started/angular/installation',
+                'getting-started/angular/styles',
+                'getting-started/angular/usage',
+                'getting-started/angular/ie11',
+              ],
+            },
+            {
+              title: 'Vue',
+              collapsable: true,
+              path: '/components/getting-started/vue/index',
+              children: ['getting-started/vue/installation', 'getting-started/vue/styles', 'getting-started/vue/usage'],
+            },
+          ],
         },
         {
           title: 'Foundation',

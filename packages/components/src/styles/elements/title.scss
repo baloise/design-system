@@ -9,15 +9,12 @@ h3,
 h4,
 h5 {
   @include padding(0);
-  // @include lhCrop(1.5);
   font-family: $title-family;
   font-family: $family-primary;
 }
 
 p,
 a {
-  // @include lhCrop(1.5);
-
   font-family: $body-family;
   line-height: 24px;
   margin: 0;

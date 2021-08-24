@@ -195,7 +195,8 @@
           'Zug',
           'Freiburg/Fribourg',
           'Solothurn',
-          'Basel',
+          'Basel-Stadt',
+          'Basel-Land',
           'Schaffhausen',
           'Appenzell',
           'SanktGallen',
@@ -242,9 +243,9 @@
           }, 1000)
         }
 
-        selectRemote.searchInput = function (value) {
-          querySelections(value)
-        }
+        selectRemote.addEventListener('balInput', function (event) {
+          querySelections(event.detail)
+        })
       </script>
     </div>
   </body>

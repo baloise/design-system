@@ -42,14 +42,6 @@ footer: Apache-2.0 Licensed | Copyright © 2019-present Laurent Tauber, Gery Hir
 ## Framework Support
 
 <div class="features" style="border: none; margin-top: 0; padding-top: 0;">
-  <div class="feature" style="flex-basis: 50%; max-width: 50%;">
-    <h2><img style="width: 64px;" src="https://vuejs.org/images/logo.png" data-origin="https://vuejs.org/images/logo.png" alt="Vue"></h2>
-    <h2>Vue.js</h2>
-    <p>Proxy library for the Vue.js framework with the Baloise Design System components.<br><br>
-      <strong>Supported Versions</strong><br>
-      3.x.x ✔<br><br>
-    </p>
-  </div>
    <div class="feature" style="flex-basis: 50%; max-width: 50%;">
     <h2><img style="width: 64px;" src="https://angular.io/assets/images/logos/angular/angular.svg" data-origin="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular"></h2>
     <h2>Angular</h2>
@@ -57,6 +49,14 @@ footer: Apache-2.0 Licensed | Copyright © 2019-present Laurent Tauber, Gery Hir
       <strong>Supported Versions</strong><br> 
       10.2.x ✔<br>
       11.x.x ✔<br><br>
+    </p>
+  </div>
+  <div class="feature" style="flex-basis: 50%; max-width: 50%;">
+    <h2><img style="width: 64px;" src="https://vuejs.org/images/logo.png" data-origin="https://vuejs.org/images/logo.png" alt="Vue"></h2>
+    <h2>Vue.js</h2>
+    <p>Proxy library for the Vue.js framework with the Baloise Design System components.<br><br>
+      <strong>Supported Versions</strong><br>
+      3.x.x ✔<br><br>
     </p>
   </div>
 </div>

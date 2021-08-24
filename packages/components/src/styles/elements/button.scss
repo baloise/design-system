@@ -14,6 +14,7 @@
   text-decoration: none !important;
   padding: 12px 24px;
   min-height: 48px;
+  justify-content: center;
 
   &::-moz-focus-inner {
     border: 0;
@@ -91,7 +92,7 @@
     padding-bottom: 0px;
 
     font-size: $size-small;
-    line-height: $bal_lineheight_15px;
+    line-height: 20px;
 
     &.is-square {
       width: 32px;

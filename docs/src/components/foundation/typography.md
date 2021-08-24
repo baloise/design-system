@@ -91,12 +91,14 @@ We use the `bal-heading` and `bal-text` component to crop the font correctly, ot
 </a>
 ```
 
-## Helpers
+## CSS Helper Classes
+
+Out of the typography tokens we create a collection of helper css classes.
 
 [Go to the Bulma documentation](https://bulma.io/documentation/modifiers/typography-helpers/).
 
 <docs-demo>
-<div class="has-background-light is-padded">
+<div class="has-background-light p-4">
   <p class="is-size-1 has-text-centered">
     a big centered text
   </p>
@@ -104,7 +106,7 @@ We use the `bal-heading` and `bal-text` component to crop the font correctly, ot
 </docs-demo>
 
 ```html
-<div class="has-background-light is-padded">
+<div class="has-background-light p-4">
   <p class="is-size-1 has-text-centered">
     a big centered text
   </p>

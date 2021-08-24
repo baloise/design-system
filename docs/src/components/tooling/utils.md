@@ -26,7 +26,7 @@ if (isEnterKey(event)) {
 
 ### areArraysEqual
 
-`areArraysEqual(a: T[], b: T[]) => boolean`
+`areArraysEqual(a: any, b: any) => boolean`
 
 Returns `true` if the arrays are equal
 
@@ -194,7 +194,7 @@ Returns `true` when the week of the dates are the same
 
 ### format
 
-`format(value: string | Date | undefined | null) => string`
+`format(value: string | Date | undefined | any) => string`
 
 Transforms the ISO datestring into `dd.mm.yyyy`
 
@@ -240,7 +240,7 @@ newDateString(2020, 0, 13) // '2020-01-13'
 
 ### toDate
 
-`toDate(datestring: string | undefined | null) => Date | undefined`
+`toDate(datestring: string | undefined | any) => Date | undefined`
 
 Turns the ISO string `yyyy-mm-dd` it a JS Date instance
 
@@ -250,7 +250,7 @@ toDate('2020-01-13') // js date instance
 
 ### isValidDateString
 
-`isValidDateString(datestring: string | undefined | null) => boolean`
+`isValidDateString(datestring: string | undefined | any) => boolean`
 
 Returns `true` if the given datestring is valid
 

@@ -5,6 +5,7 @@
  */
 
 @import '~styles/design-system-components.css'
+@import '~styles/design-system-table.css'
 @require '~vuepress-plugin-tabs/dist/themes/default.styl'
 
 h1, h2, h3, h4, h5, p, b, strong, td, th, a, li, .footer
@@ -192,14 +193,20 @@ header > .links
   color: #039 !important
 
 .custom-block-title > img
-  margin-bottom: -8px;
+  margin-bottom: -8px
 
 html
-  scroll-behavior: smooth;
+  scroll-behavior: smooth
 
 main
-  scroll-margin-top: 5em;
+  scroll-margin-top: 5em
 
 .theme-default-content > h2
-  margin-top: -72px !important;
-  padding-top: 128px !important;
+  margin-top: -72px !important
+  padding-top: 128px !important
+
+ul.sidebar-links:not(.sidebar-group-items)
+  padding: 16px 0 !important
+
+.sidebar > .sidebar-links > li:not(:first-child)
+  margin-top: 0 !important

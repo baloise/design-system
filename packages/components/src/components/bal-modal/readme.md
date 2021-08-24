@@ -5,9 +5,10 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                                     | Type      | Default |
-| -------- | --------- | ----------------------------------------------------------------------------------------------- | --------- | ------- |
-| `card`   | `card`    | Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot. | `boolean` | `false` |
+| Property    | Attribute    | Description                                                                                     | Type      | Default |
+| ----------- | ------------ | ----------------------------------------------------------------------------------------------- | --------- | ------- |
+| `card`      | `card`       | Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot. | `boolean` | `false` |
+| `noOverlay` | `no-overlay` | If `true` the modal does not run with a background overlay.                                     | `boolean` | `false` |
 
 
 ## Methods

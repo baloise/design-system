@@ -33,9 +33,8 @@ describe('bal-select', () => {
     const selector = 'button.bal-select__option[data-value="v2000"]'
     await page.$eval(selector, (btn: any) => btn.click())
 
-    let value = await balSelectElement.getProperty('value')
-    expect(value).toEqual(['v2000'])
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
+    expect(balChangeEvent).toHaveReceivedEventDetail('v2000')
   })
 
   it('should fire a balChange event when selecting multiple options', async () => {
@@ -49,9 +48,8 @@ describe('bal-select', () => {
     const selector2 = 'button.bal-select__option[data-value="v2000"]'
     await page.$eval(selector2, (btn: any) => btn.click())
 
-    let value = await balSelectElement.getProperty('value')
-    expect(value).toEqual(['v1998', 'v2000'])
     expect(balChangeEvent).toHaveReceivedEventTimes(2)
+    expect(balChangeEvent).toHaveReceivedEventDetail(['v1998', 'v2000'])
   })
 
   it('should fire a click event', async () => {
@@ -84,9 +82,8 @@ describe('bal-select', () => {
     await page.keyboard.down('Enter')
     await page.keyboard.press('Enter')
 
-    let value = await balSelectElement.getProperty('value')
-    expect(value).toEqual(['v1998'])
-    expect(balChangeEvent).toHaveReceivedEventTimes(1)
     expect(balInputEvent).toHaveReceivedEventTimes(4)
+    expect(balChangeEvent).toHaveReceivedEventTimes(1)
+    expect(balChangeEvent).toHaveReceivedEventDetail('v1998')
   })
 })

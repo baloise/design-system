@@ -819,6 +819,10 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
+          * If `true` the modal does not run with a background overlay.
+         */
+        "noOverlay": boolean;
+        /**
           * Opens the modal.
          */
         "open": () => Promise<void>;
@@ -914,6 +918,10 @@ export namespace Components {
           * If `true`, the control works on dark background.
          */
         "inverted": boolean;
+        /**
+          * If `true` the radio has no label
+         */
+        "isEmpty": boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -1029,7 +1037,7 @@ export namespace Components {
         /**
           * Selected option values. Could also be passed as a string, which gets transformed.
          */
-        "value": string[] | undefined;
+        "value": string | string[] | undefined;
     }
     interface BalSelectOption {
         /**
@@ -2686,6 +2694,10 @@ declare namespace LocalJSX {
           * Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot.
          */
         "card"?: boolean;
+        /**
+          * If `true` the modal does not run with a background overlay.
+         */
+        "noOverlay"?: boolean;
     }
     interface BalModalActions {
     }
@@ -2774,6 +2786,10 @@ declare namespace LocalJSX {
           * If `true`, the control works on dark background.
          */
         "inverted"?: boolean;
+        /**
+          * If `true` the radio has no label
+         */
+        "isEmpty"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -2869,7 +2885,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: CustomEvent<string[]>) => void;
+        "onBalChange"?: (event: CustomEvent<string | string[] | undefined>) => void;
         /**
           * Emitted when the input got clicked.
          */
@@ -2901,7 +2917,7 @@ declare namespace LocalJSX {
         /**
           * Selected option values. Could also be passed as a string, which gets transformed.
          */
-        "value"?: string[] | undefined;
+        "value"?: string | string[] | undefined;
     }
     interface BalSelectOption {
         /**

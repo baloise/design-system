@@ -1,12 +1,12 @@
 {
   "name": "@baloise/design-system-testing",
-  "version": "1.10.0",
+  "version": "1.11.1",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
     "url": "https://github.com/baloise/design-system.git"
   },
-  "homepage": "https://baloise-design-system.vercel.app.sh",
+  "homepage": "https://baloise-design-system.vercel.app",
   "author": {
     "name": "Gery Hirschfeld",
     "email": "gerhard.hirschfeld@baloise.ch",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-components": "^1.10.0"
+    "@baloise/design-system-components": "^1.11.1"
   },
   "devDependencies": {
     "@types/chai": "^4.2.18",

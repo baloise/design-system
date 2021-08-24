@@ -7,6 +7,7 @@ describe('bal-textarea', () => {
   let balInputEvent: EventSpy
   let balInputElement: E2EElement
   let nativeTextareaElement: E2EElement
+
   beforeEach(async () => {
     page = await newE2EPage()
     await page.setContent(`<bal-textarea></bal-textarea>`)
@@ -16,6 +17,7 @@ describe('bal-textarea', () => {
     balInputElement = await page.find('bal-textarea')
     nativeTextareaElement = await balInputElement.find('textarea')
   })
+
   it('should only call balInput and no balChange, because the input has still the focus', async () => {
     expect(await nativeTextareaElement.getProperty('value')).toBe('')
 

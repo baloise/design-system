@@ -3,21 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.10.0](https://github.com/baloise/design-system/compare/v1.9.0...v1.10.0) (2021-08-16)
+## [1.11.1](https://github.com/baloise/design-system/compare/v1.11.0...v1.11.1) (2021-08-23)
+
+
+### Bug Fixes
+
+* resolve packages ([2c14a4b](https://github.com/baloise/design-system/commit/2c14a4b0d3068661309f5c442c93f9e4a19b5751))
+* **table:** center text of the button ([95945a3](https://github.com/baloise/design-system/commit/95945a39b330a7cb4fcd22b5dd42fad9b1c21e8c))
+
+
+
+
+
+# [1.11.0](https://github.com/baloise/design-system/compare/v1.10.0...v1.11.0) (2021-08-23)
+
+
+### Bug Fixes
+
+* **checkbox:** remplace rem with pixel ([2095880](https://github.com/baloise/design-system/commit/20958801cf871f6082649fbdbc4adb8bd346acde))
+* **input:** enable clipboard content ([4d4032e](https://github.com/baloise/design-system/commit/4d4032e15d457f67e9f404375dc767ca6bf58907))
+* **select:** listen for attribute and text content changes ([9a517e0](https://github.com/baloise/design-system/commit/9a517e0ed6c8bdb05db6dca4fcbcbd55ec4aa7e5))
+* **styles:** remove old client lib variables ([9413e38](https://github.com/baloise/design-system/commit/9413e38f5ff44d911eabab7f400f3c838db8d6cb))
+
+
+### Features
+
+* **components:** update deps ([f650c2b](https://github.com/baloise/design-system/commit/f650c2bf2773a1954dc9f5d99689faac6af0f313))
+* **select:** add single value ([b5b536c](https://github.com/baloise/design-system/commit/b5b536ccd62122663b838fa8411a7ca386760922))
+* **table:** introduce new table package ([0540144](https://github.com/baloise/design-system/commit/05401440fad284092ecb0220c567ab22eda003b4))
+* **table:** update ag-grid usage ([f083875](https://github.com/baloise/design-system/commit/f0838754edc5d8a907b1bec0fdf8b503e16e674d))
+* **vue:** rename function validators to rules ([9bad019](https://github.com/baloise/design-system/commit/9bad019a4a02dbf354b799060d454f1729328d45))
+* **vue:** update deps ([9323c8d](https://github.com/baloise/design-system/commit/9323c8dd8ecf82126f97d412669756d2c2203b7d))
+
+
+
+# [1.9.0](https://github.com/baloise/design-system/compare/v1.8.2...v1.9.0) (2021-08-12)
 
 
 ### Bug Fixes
 
 * **datepicker:** fix fullwidth ([cddd3f2](https://github.com/baloise/design-system/commit/cddd3f2a459e7fb428096bda7b61586a29eda986))
-* **input:** enable clipboard content ([4d4032e](https://github.com/baloise/design-system/commit/4d4032e15d457f67e9f404375dc767ca6bf58907))
 * **input:** fix autofocus and add directives for angular and vue ([ef76dcf](https://github.com/baloise/design-system/commit/ef76dcf9b4ff160b3a38f2148081233407964b53))
 * **select:** fix fullwidth ([9cf060a](https://github.com/baloise/design-system/commit/9cf060a6cbf269fa7e03f55d56d87497dcabe126))
-* **table:** make styles accessable for angular & vue applications ([f5b5de5](https://github.com/baloise/design-system/commit/f5b5de5b9061bd600bf0ad5b9783b825b7b38c1c))
 
 
 ### Features
 
-* **table:** update ag-grid usage ([f083875](https://github.com/baloise/design-system/commit/f0838754edc5d8a907b1bec0fdf8b503e16e674d))
+* **testing:** add andable.ts and attachable.ts mixin description ([e918b8a](https://github.com/baloise/design-system/commit/e918b8a2db1e19b7eadd2e42deff697040b83e7d))
+
+
+
+## [1.8.2](https://github.com/baloise/design-system/compare/v1.8.1...v1.8.2) (2021-08-06)
+
+
+### Bug Fixes
+
+* **table:** make styles accessable for angular & vue applications ([f5b5de5](https://github.com/baloise/design-system/commit/f5b5de5b9061bd600bf0ad5b9783b825b7b38c1c))
 
 
 
@@ -26,6 +67,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+
+# [1.10.0](https://github.com/baloise/design-system/compare/v1.9.0...v1.10.0) (2021-08-16)
+
+### Bug Fixes
+
+- **datepicker:** fix fullwidth ([cddd3f2](https://github.com/baloise/design-system/commit/cddd3f2a459e7fb428096bda7b61586a29eda986))
+- **input:** enable clipboard content ([4d4032e](https://github.com/baloise/design-system/commit/4d4032e15d457f67e9f404375dc767ca6bf58907))
+- **input:** fix autofocus and add directives for angular and vue ([ef76dcf](https://github.com/baloise/design-system/commit/ef76dcf9b4ff160b3a38f2148081233407964b53))
+- **select:** fix fullwidth ([9cf060a](https://github.com/baloise/design-system/commit/9cf060a6cbf269fa7e03f55d56d87497dcabe126))
+- **table:** make styles accessable for angular & vue applications ([f5b5de5](https://github.com/baloise/design-system/commit/f5b5de5b9061bd600bf0ad5b9783b825b7b38c1c))
+
+### Features
+
+- **table:** update ag-grid usage ([f083875](https://github.com/baloise/design-system/commit/f0838754edc5d8a907b1bec0fdf8b503e16e674d))
 
 # [1.9.0](https://github.com/baloise/design-system/compare/v1.8.2...v1.9.0) (2021-08-12)
 
@@ -188,7 +243,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
     - `BalUiLibraryModule` renamed to `BaloiseDesignSystemModule`
   - package `@baloise/ui-library-testing` renamed to `@baloise/design-system-testing`
 - new font package `@baloise/design-system-fonts`
-  - follow the new style [instalation guide](https://baloise-design-system.vercel.app/components/essentials/styles.html)
+  - follow the new style [instalation guide](https://baloise-design-system.vercel.app/components/getting-started/vue/styles.html)
 - new icon package `@baloise/design-system-icons`
 - removed vue-2 proxy libary
 - removed unuesed `bal-teaser-step` component
