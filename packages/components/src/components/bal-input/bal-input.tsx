@@ -269,7 +269,6 @@ export class Input implements ComponentInterface {
   private addSuffixToNumber(value: any): string {
     const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
     return `${value}${suffix}`
-
   }
 
   private isNumeric(value: any): boolean {
@@ -300,24 +299,6 @@ export class Input implements ComponentInterface {
 
     return parseFloat(value)
   }
- 
-  private onInput = (ev: InputEvent) => {
-    const input = ev.target as HTMLInputElement | null
-    if (input) {
-      if (!this.isCopyPaste) {
-        this.value = input.value || ''
-      } else {
-        if (!this.isNumeric(input.value)) {
-          this.value = '0'
-        } else {
-          this.value = input.value || ''
-        }
-        this.keysPressed = []
-        this.isCopyPaste = false
-      }
-    }
-    this.balInput.emit(this.formatNumber(this.value))
-  }
 
   private exist(array: Array<string>, key: string): boolean {
     return array.indexOf(key) === -1
@@ -333,6 +314,20 @@ export class Input implements ComponentInterface {
     }
 
     this.isCopyPaste = this.keysPressed.length === 2 ? true : false
+  }
+ 
+  private onInput = (ev: InputEvent) => {
+    const input = ev.target as HTMLInputElement | null
+    if (input) {
+      if (!this.isCopyPaste) {
+        this.value = input.value || ''
+      } else {
+        this.value = !this.isNumeric(input.value) ? '0' : input.value || ''
+        this.keysPressed = []
+        this.isCopyPaste = false
+      }
+    }
+    this.balInput.emit(this.formatNumber(this.value))
   }
 
   private onKeyDown = (event: KeyboardEvent) => {
@@ -360,6 +355,29 @@ export class Input implements ComponentInterface {
     }
   }
 
+  private getValidatedNumber(inputValue: string): string {
+    let value = ''
+
+    if (this.numberInput && inputValue.length > 0) {
+      if (this.decimal) {
+        value = this.insertDecimal(inputValue, this.decimal)
+      } else {
+        if (inputValue.charAt(inputValue.length - 1) == '.') {
+          value = inputValue.slice(0, -1)
+        }
+        if (this.isStartingWithDot(inputValue)) {
+          value = inputValue.length > 1 ? parseFloat(inputValue).toString() : '0'
+        }
+      }
+      value = value === '' ? inputValue : value
+      value = this.numberWithCommas(value)
+
+      return this.suffix ? this.addSuffixToNumber(value) : value
+    } else {
+      return this.suffix ? this.getFormattedValue() : value
+    }
+  }
+
   private onBlur = (ev: FocusEvent) => {
     this.hasFocus = false
     this.balBlur.emit(ev)
@@ -368,24 +386,7 @@ export class Input implements ComponentInterface {
     const input = ev.target as HTMLInputElement | null
     
     if (input) {
-      let value = ''
-      if (this.numberInput && input.value.length > 0) {
-        if (this.decimal) {
-          value = this.insertDecimal(input.value, this.decimal)
-        } else {
-          if (input.value.charAt(input.value.length - 1) == '.') {
-            value = input.value.slice(0, -1)
-          }
-          if (this.isStartingWithDot(input.value)) {
-            value = input.value.length > 1 ? parseFloat(input.value).toString() : '0'
-          }
-        }
-        value = value === '' ? input.value : value
-        value = this.numberWithCommas(value)
-        input.value = this.suffix ? this.addSuffixToNumber(value) : value
-      } else {
-        input.value = this.suffix ? this.getFormattedValue() : value
-      }
+      input.value = this.getValidatedNumber(input.value)
     }
   }
 

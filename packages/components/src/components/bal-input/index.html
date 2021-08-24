@@ -43,17 +43,9 @@
         <p>With `number-input` property your can only enter valid numbers, if you start with dot (.) zero will be automatically added in front of it.</p>
         <p>With `decimal` property you can set how many decimal places you want and number will be formatted accordingly.</p>
         <bal-input number-input placeholder="Enter a number without decimal"></bal-input>
-        <bal-input number-input placeholder="Enter a number with two decimal points" decimal="2" id="bal-input-only-numbers"></bal-input>
+        <bal-input number-input placeholder="Enter a number with two decimal points" decimal="2"></bal-input>
         <bal-input suffix="CHF" number-input placeholder="Enter a number with two decimal places and CHF suffix" decimal="2"></bal-input>
-        <p id="bal-input-only-numbers-preview"></p>
       </section>
-      <script>
-        var inputOnlyNumbers = document.getElementById('bal-input-only-numbers')
-        var inputOnlyNumbersPreview = document.getElementById('bal-input-only-numbers-preview')
-        inputOnlyNumbers.addEventListener('balInput', function (event) {
-          inputOnlyNumbersPreview.innerHTML = event.detail
-        })
-      </script>
       <h2 class="title is-size-2">Suffix</h2>
       <section>
         <bal-input suffix="%" name="percentage" placeholder="Enter a percentage number"></bal-input>
