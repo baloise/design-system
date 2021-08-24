@@ -2,7 +2,7 @@ import { BalValidators } from '@baloise/design-system-components'
 import { useValidator, ValidatorFn } from '@baloise/design-system-components-vue'
 import { i18n } from '../../plugins/i18n.plugin'
 
-export { validators as rules } from '@baloise/design-system-components-vue'
+export { rules } from '@baloise/design-system-components-vue'
 
 const { createValidator } = useValidator(i18n.global.t)
 

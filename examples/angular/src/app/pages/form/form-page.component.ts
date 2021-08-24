@@ -8,6 +8,10 @@ import { BalValidators } from '@baloise/design-system-components-angular'
   templateUrl: './form-page.component.html',
 })
 export class FormPageComponent {
+  formControlName = 'gender'
+
+  genders = [NewBalOptionValue('male', 'Male'), NewBalOptionValue('female', 'Female')]
+
   cantons = [
     NewBalOptionValue('AG', 'AG'),
     NewBalOptionValue('BS', 'BS'),
@@ -28,6 +32,15 @@ export class FormPageComponent {
     checkbox: new FormControl(true, [BalValidators.isRequiredTrue]),
     comment: new FormControl(null, [BalValidators.isRequired]),
   })
+
+  radioChange(event: any) {
+    console.log(this.form.get('gender')?.value)
+    this.form.get('gender')?.setValue('female')
+    console.log(this.form.get('gender')?.value)
+    // this.form.patchValue({
+    //   gender: 'female',
+    // })
+  }
 
   setCommentDisabled() {
     this.form.get('comment')?.disable()

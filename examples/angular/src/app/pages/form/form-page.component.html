@@ -1,13 +1,15 @@
 <bal-card class="mt-6">
   <bal-card-content>
     <bal-heading space="bottom">Reactive Form</bal-heading>
-    <bal-heading level="h3" color="warning" space="bottom" subtitle>{{ form.status }}</bal-heading>
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="columns is-multiline mt-0">
       <bal-field class="column is-full py-0" expanded [disabled]="form.get('gender')?.disabled">
         <bal-field-control>
-          <bal-radio-group value="male" formControlName="gender">
-            <bal-radio name="gender" value="male">Male</bal-radio>
-            <bal-radio name="gender" value="female">Female</bal-radio>
+          <bal-radio-group
+            interface="select-button"
+            [formControlName]="formControlName"
+            (balChange)="radioChange($event)"
+          >
+            <bal-radio *ngFor="let g of genders" [name]="formControlName" [value]="g.value">{{ g.label }}</bal-radio>
           </bal-radio-group>
         </bal-field-control>
         <bal-field-message

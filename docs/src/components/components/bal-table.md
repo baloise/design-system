@@ -4,11 +4,7 @@ sidebarDepth: 0
 
 # Table
 
-
-
-
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
-
 
 ## Examples
 
@@ -20,13 +16,10 @@ The basic table is only css and html provided by the bulma framework.
 
 <ClientOnly><docs-demo-bal-table-101></docs-demo-bal-table-101></ClientOnly>
 
-
 ### Advanced with AG-Grid
 
 <Content slot-key="bal-table-ag-grid" ></Content>
 <ClientOnly><docs-demo-bal-table-102></docs-demo-bal-table-102></ClientOnly>
-
-
 
 ## Code
 
@@ -36,6 +29,12 @@ To use the AG-Grid install the following packages:
 
 ```bash
 npm install --save @baloise/design-system-components-table ag-grid-community
+```
+
+Next we need to link the stylesheet into our global scss file.
+
+```scss
+@import 'node_modules/@baloise/design-system-components-table/scss';
 ```
 
 The package has three render functions.
@@ -199,23 +198,18 @@ export class TablePageComponent {
 
 ### Properties
 
-
 | Attribute    | Description                          | Type      | Default |
 | :----------- | :----------------------------------- | :-------- | :------ |
 | **expanded** | If `true` the table has a full width | `boolean` | `false` |
 
-
-
-
 ## Edit this page on Github
 
-* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-table.md)
-* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-table)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-table.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-table)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
-
 
 <ClientOnly>
   <docs-component-script tag="balTable"></docs-component-script>
