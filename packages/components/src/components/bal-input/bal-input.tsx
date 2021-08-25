@@ -12,6 +12,7 @@ import { AutocompleteTypes, InputTypes } from '../../types/interfaces'
 })
 export class Input implements ComponentInterface {
   private allowedKeys = [...NUMBER_KEYS, ...ACTION_KEYS]
+  private allowedActionKeys = [...ACTION_KEYS]
   private inputId = `bal-input-${InputIds++}`
   private nativeInput?: HTMLInputElement
   private didInit = false
@@ -266,7 +267,17 @@ export class Input implements ComponentInterface {
   }
 
   private getValueForEmitting(): any {
-    return this.numberInput ? this.formatNumber(this.getRawValue()) : this.getRawValue()
+    const value = this.numberInput ? this.formatNumber(this.getRawValue()) : this.getRawValue()
+
+    if (isNaN(value)) {
+      return undefined
+    }
+
+    if (this.decimal && this.countDecimals(value) > this.decimal) {
+      return value.toFixed(this.decimal)
+    }
+
+    return value
   }
 
   private addSuffixToNumber(value: any): string {
@@ -318,6 +329,18 @@ export class Input implements ComponentInterface {
 
     this.isCopyPaste = this.keysPressed.length === 2 ? true : false
   }
+
+  private countDecimals(value: any): any {
+    if (Math.floor(value) === value) return 0;
+    var str = value.toString();
+
+    if (str.indexOf(".") !== -1 && str.indexOf("-") !== -1) {
+        return str.split("-")[1] || 0;
+    } else if (str.indexOf(".") !== -1) {
+        return str.split(".")[1].length || 0;
+    }
+    return str.split("-")[1] || 0;
+}
  
   private onInput = (ev: InputEvent) => {
     const input = ev.target as HTMLInputElement | null
@@ -338,12 +361,19 @@ export class Input implements ComponentInterface {
 
     if (this.numberInput) {
       const nextValue = this.value + '' + event.key
+      const isKeyAllowed = this.allowedKeys.indexOf(event.key) < 0
       const isStartingWithDot = this.isStartingWithDot(nextValue)
       const isNumeric = this.isNumeric(nextValue)
-      const isKeyAllowed = this.allowedKeys.indexOf(event.key) < 0
       if (!isNumeric && isKeyAllowed && !isStartingWithDot && !isCtrlOrCommandKey(event)) {
         event.preventDefault()
         event.stopPropagation()
+      }
+      if (this.decimal) {
+        const isKeyAllowed = this.allowedActionKeys.indexOf(event.key) < 0
+        if (this.countDecimals(nextValue) > this.decimal && !isCtrlOrCommandKey(event) && isKeyAllowed) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
       }
     }
   }
