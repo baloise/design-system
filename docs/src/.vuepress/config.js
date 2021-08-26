@@ -56,12 +56,12 @@ module.exports = {
         link: '/components/',
       },
       {
-        text: 'Resources',
-        link: '/resources/templates',
-      },
-      {
         text: 'About Us',
         link: '/about-us/',
+      },
+      {
+        text: 'Changelog',
+        link: '/resources/changelog',
       },
     ],
     sidebar: {
@@ -107,16 +107,20 @@ module.exports = {
           ],
         },
         {
+          title: 'Design Tokens',
+          collapsable: true,
+          children: ['foundation/colors', 'foundation/typography', 'foundation/spacing', 'foundation/breakpoints'],
+        },
+        {
           title: 'Foundation',
           collapsable: true,
-          children: [
-            'foundation/colors',
-            'foundation/typography',
-            'foundation/spacing',
-            'foundation/responsiveness',
-            'foundation/page-layout',
-            'foundation/track-line',
-          ],
+          children: ['foundation/page-layout', 'foundation/grid', 'foundation/form', 'foundation/track-line'],
+        },
+        {
+          title: 'Templates',
+          collapsable: true,
+          // path: '/components/templates/index',
+          children: ['templates/contact-form', 'templates/portal'],
         },
         {
           title: 'Components',
@@ -128,28 +132,9 @@ module.exports = {
           collapsable: true,
           children: ['tooling/filters', 'tooling/utils', 'tooling/validators', 'tooling/testing'],
         },
-      ],
-      '/resources/': [
-        {
-          title: 'Resources',
-          collapsable: false,
-          children: [
-            'templates',
-            'changelog',
-            ['https://github.com/baloise/design-system/projects/2', 'Roadmap'],
-            ['https://github.com/baloise/design-system', 'Github'],
-          ],
-        },
-      ],
-      '/about-us/': [
-        {
-          title: 'About Us',
-          collapsable: false,
-          children: ['', 'architecture'],
-        },
         {
           title: 'Contributing',
-          collapsable: false,
+          collapsable: true,
           children: [
             'contributing/installation',
             'contributing/commands',
@@ -157,6 +142,24 @@ module.exports = {
             'contributing/controller',
             'contributing/release',
           ],
+        },
+      ],
+      // '/resources/': [
+      //   {
+      //     title: 'Resources',
+      //     collapsable: false,
+      //     children: [
+      //       'changelog',
+      //       ['https://github.com/baloise/design-system/projects/2', 'Roadmap'],
+      //       ['https://github.com/baloise/design-system', 'Github'],
+      //     ],
+      //   },
+      // ],
+      '/about-us/': [
+        {
+          title: 'About Us',
+          collapsable: false,
+          children: ['', 'architecture'],
         },
       ],
     },
