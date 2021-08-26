@@ -303,6 +303,10 @@ export class Input implements ComponentInterface {
   }
 
   private numberWithCommas(value: string): string {
+    if (this.formatNumber(value) == 0) {
+      value = this.formatNumber(value)
+    }
+
     return value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, "'")
   }
 
@@ -348,8 +352,12 @@ export class Input implements ComponentInterface {
         this.value = input.value || ''
       } else {
         if (!this.isNumeric(input.value)) {
-          input.value = ''
-          this.value = undefined
+          if (this.value == '') {
+            input.value = ''
+            this.value = undefined
+          } else {
+            input.value = this.value ? this.value.toString() : ''
+          }
         } else {
           this.value = input.value || ''
         }
