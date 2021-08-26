@@ -307,11 +307,10 @@ export class Input implements ComponentInterface {
   }
 
   private formatNumber(value: any): any {
-    if (this.isStartingWithDot(value) && value.length == 1) {
-      return '0'
+    if (value != '') {
+      return this.isStartingWithDot(value) && value.length == 1 ? '0' : parseFloat(value)
     }
-
-    return parseFloat(value)
+    return value
   }
 
   private isElementExistsInArray(array: Array<string>, element: string): boolean {
@@ -348,7 +347,12 @@ export class Input implements ComponentInterface {
       if (!this.isCopyPaste) {
         this.value = input.value || ''
       } else {
-        this.value = !this.isNumeric(input.value) ? '0' : input.value || ''
+        if (!this.isNumeric(input.value)) {
+          input.value = ''
+          this.value = undefined
+        } else {
+          this.value = input.value || ''
+        }
         this.keysPressed = []
         this.isCopyPaste = false
       }
@@ -384,7 +388,7 @@ export class Input implements ComponentInterface {
 
     const input = ev.target as HTMLInputElement | null
     if (input) {
-      input.value = this.getRawValue()
+      input.value = this.getValueForEmitting()
     }
   }
 

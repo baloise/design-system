@@ -30,6 +30,10 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 ### Number Input
 
+With number-input property your can only enter valid numbers, if you start with dot (.) zero will be automatically added in front of it.
+
+With decimal property you can set how many decimal places you want and number will be formatted accordingly.
+
 <ClientOnly><docs-demo-bal-input-62></docs-demo-bal-input-62></ClientOnly>
 
 
