@@ -286,11 +286,11 @@ export class Input implements ComponentInterface {
   }
 
   private isNumeric(value: any): boolean {
-    return !isNaN(value - parseFloat(value));
+    return !isNaN(value - parseFloat(value))
   }
 
   private isStartingWithDot(value: string): boolean {
-    return value.charAt(0) == '.';
+    return value.charAt(0) == '.' && !value.substring(1).includes('.')
   }
   
   private insertDecimal(value: any, decimalPlaces: number): any {
