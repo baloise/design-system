@@ -294,7 +294,24 @@ export class Input implements ComponentInterface {
   }
 
   private isStartingWithDot(value: string): boolean {
-    return value.charAt(0) == '.' && !value.substring(1).includes('.')
+    return value.charAt(0) == '.'
+  }
+
+  private isValidAfterDot(value: string): boolean {
+    if (value.length == 1) {
+      return this.isStartingWithDot(value)
+    }
+
+    if (this.isStartingWithDot(value)) {
+      if (value.substring(1).includes('.')) {
+        return false
+      }
+
+      if(!this.isNumeric(value.substring(1))) {
+        return false
+      }
+    }
+    return true
   }
   
   private insertDecimal(value: any, decimalPlaces: number): any {
@@ -378,9 +395,9 @@ export class Input implements ComponentInterface {
     if (this.numberInput) {
       const nextValue = this.value + '' + event.key
       const isKeyAllowed = this.allowedKeys.indexOf(event.key) < 0
-      const isStartingWithDot = this.isStartingWithDot(nextValue)
       const isNumeric = this.isNumeric(nextValue)
-      if (!isNumeric && isKeyAllowed && !isStartingWithDot && !isCtrlOrCommandKey(event)) {
+      const isValidAfterDot = this.isValidAfterDot(nextValue)
+      if (!isNumeric && isKeyAllowed && !isCtrlOrCommandKey(event) && !isValidAfterDot) {
         event.preventDefault()
         event.stopPropagation()
       }
