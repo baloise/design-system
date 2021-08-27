@@ -1,10 +1,17 @@
 import { app } from '../support/app'
 
-describe("Radio", () => {
+describe('Radio', () => {
   let page = app.getRadioPage()
 
-  it("should navigate to Radio page and select second option on first Radio on the page", () => {
+  it('should select the 1st radio', () => {
     page.open()
-    page.radio.get().select(1)
+    const radio = page.radio.get()
+    radio.select(0).assertIsSelected(0)
+  })
+
+  it('should select the 2nd select-button', () => {
+    page.open()
+    const selectButton = page.selectButton.get()
+    selectButton.select(1).assertIsSelected(1)
   })
 })

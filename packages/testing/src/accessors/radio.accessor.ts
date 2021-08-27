@@ -1,18 +1,18 @@
 /// <reference types="cypress" />
 
-import {Attributable, AttributableMixin} from '../mixins/attributable'
-import {Checkable, CheckableMixin} from '../mixins/checkable'
-import {Clickable, ClickableMixin} from '../mixins/clickable'
-import {Containable, ContainableMixin} from '../mixins/containable'
-import {Disableable, DisableableMixin} from '../mixins/disableable'
-import {Existable, ExistableMixin} from '../mixins/existable'
-import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
-import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
-import {Selectable} from '../mixins/selectable'
-import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
-import {Urlable, UrlableMixin} from '../mixins/urlable'
-import {Visible, VisibleMixin} from '../mixins/visible'
-import {Waitable, WaitableMixin} from '../mixins/waitable'
+import { Attributable, AttributableMixin } from '../mixins/attributable'
+import { Checkable, CheckableMixin } from '../mixins/checkable'
+import { Clickable, ClickableMixin } from '../mixins/clickable'
+import { Containable, ContainableMixin } from '../mixins/containable'
+import { Disableable, DisableableMixin } from '../mixins/disableable'
+import { Existable, ExistableMixin } from '../mixins/existable'
+import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
+import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
+import { Selectable } from '../mixins/selectable'
+import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
+import { Urlable, UrlableMixin } from '../mixins/urlable'
+import { Visible, VisibleMixin } from '../mixins/visible'
+import { Waitable, WaitableMixin } from '../mixins/waitable'
 
 interface RadioAccessorType
   extends Checkable<RadioAccessorType>,
@@ -26,10 +26,9 @@ interface RadioAccessorType
     Attributable<RadioAccessorType>,
     Urlable<RadioAccessorType>,
     Waitable<RadioAccessorType>,
-    Selectable<RadioAccessorType> {
-}
+    Selectable<RadioAccessorType> {}
 
-export const SelectButtonSelectableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const RadioSelectableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
   /**
    * Selects option
    */
@@ -38,7 +37,14 @@ export const SelectButtonSelectableMixin: Mixin = <T>({selector, creator}: Mixin
       indexes = [indexes]
     }
     cy.get(selector).within(() => {
-      ;(indexes as number[]).forEach((index: number) => cy.get(`bal-radio.bal-select-button`).eq(index).click())
+      ;(indexes as number[]).forEach((index: number) => cy.get(`bal-radio`).eq(index).click())
+    })
+
+    return creator()
+  },
+  assertIsSelected: (index: number) => {
+    cy.get(selector).within(() => {
+      cy.get(`bal-radio`).eq(index).find('input').should('be.checked')
     })
 
     return creator()
@@ -72,5 +78,5 @@ export const RadioAccessor: Accessor<RadioAccessorType> = createAccessor<RadioAc
   AttributableMixin,
   UrlableMixin,
   WaitableMixin,
-  SelectButtonSelectableMixin,
+  RadioSelectableMixin,
 )
