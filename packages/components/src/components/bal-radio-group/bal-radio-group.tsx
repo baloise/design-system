@@ -50,7 +50,7 @@ export class RadioGroup implements ComponentInterface {
     if (value !== oldValue) {
       this.sync()
     }
-    this.balChange.emit(value)
+    setTimeout(() => this.balChange.emit(value))
   }
 
   /**

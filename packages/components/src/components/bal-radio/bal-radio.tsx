@@ -108,6 +108,8 @@ export class Radio implements ComponentInterface {
   render() {
     const { inputId } = this
     const label = findItemLabel(this.el)
+    const parrentName = this.parent?.name
+    const name = parrentName !== undefined ? parrentName : this.name
 
     return (
       <Host
@@ -126,7 +128,7 @@ export class Radio implements ComponentInterface {
           type="radio"
           role="radio"
           id={inputId}
-          name={this.name}
+          name={name}
           tabindex={this.balTabindex}
           value={this.value}
           aria-hidden={this.disabled ? 'true' : null}
