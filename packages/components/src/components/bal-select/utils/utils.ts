@@ -3,7 +3,7 @@ import { BalOptionController } from '../bal-select'
 
 export function getValues(values: string[] | undefined): string[] {
   if (isArray(values)) {
-    return values
+    return values.filter(v => !isNil(v))
   }
 
   return []
