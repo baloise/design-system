@@ -235,6 +235,10 @@ export class Input implements ComponentInterface {
     }
   }
 
+  componentWillLoad() {
+    this.value = this.getValueForEmitting()
+  }
+
   /**
    * Sets focus on the native `input` in `bal-input`. Use this method instead of the global
    * `input.focus()`.
