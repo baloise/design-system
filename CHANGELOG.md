@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.2](https://github.com/baloise/design-system/compare/v1.11.1...v1.11.2) (2021-08-27)
+
+
+### Bug Fixes
+
+* **angular:** use .detail instead of .target.value ([4496cdd](https://github.com/baloise/design-system/commit/4496cdd2a06789eb430dbce1b96390644741352a))
+
+
+
+
+
 ## [1.11.1](https://github.com/baloise/design-system/compare/v1.11.0...v1.11.1) (2021-08-23)
 
 
