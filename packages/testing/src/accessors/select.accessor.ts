@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import { Attributable } from '../mixins/attributable'
+import { Clearable } from '../mixins/clearable'
 import { Clickable } from '../mixins/clickable'
 import { Containable } from '../mixins/containable'
 import { Disableable } from '../mixins/disableable'
@@ -8,6 +9,7 @@ import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
 import { NthSelectable } from '../mixins/nthSelectable'
 import { Selectable } from '../mixins/selectable'
 import { Shouldable } from '../mixins/shouldable'
+import { Typeable } from '../mixins/typeable'
 import { Urlable } from '../mixins/urlable'
 import { Visible } from '../mixins/visible'
 import { Waitable } from '../mixins/waitable'
@@ -22,7 +24,9 @@ interface SelectAccessorType
     NthSelectable<SelectAccessorType>,
     Attributable<SelectAccessorType>,
     Urlable<SelectAccessorType>,
-    Waitable<SelectAccessorType> {
+    Waitable<SelectAccessorType>,
+    Typeable<SelectAccessorType>,
+    Clearable<SelectAccessorType> {
   assertOptions(...options: string[]): SelectAccessorType
 }
 
@@ -44,6 +48,21 @@ export const SelectSelectableMixin: Mixin = <T>({ selector, creator }: MixinCont
   select: (index: number) => {
     cy.get(selector).within(() => {
       cy.get(`button.dropdown-item`).eq(index).click()
+    })
+    return creator()
+  },
+  /**
+   * adsfa
+   */
+  assertIsSelected: (indexes: number | number[]) => {
+    if (!Array.isArray(indexes)) {
+      indexes = [indexes]
+    }
+    cy.get(selector).within(() => {
+      for (let n = 0; n < (indexes as number[]).length; n++) {
+        const index = indexes[n]
+        cy.get(`button.dropdown-item`).eq(index).should('have.class', 'is-selected')
+      }
     })
     return creator()
   },
@@ -75,6 +94,26 @@ export const SelectContainableMixin: Mixin = <T>({ selector, creator }: MixinCon
   },
 })
 
+export const SelectTypeableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+  /**
+   * Checks if input have a content
+   */
+  type: (text: string, options?: Partial<Cypress.TypeOptions>) => {
+    cy.get(selector).find('.dropdown-trigger .input').type(text, options)
+    return creator()
+  },
+})
+
+export const SelectClearMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+  /**
+   * Checks if input have a content
+   */
+  clear: (options?: Partial<Cypress.ClearOptions>) => {
+    cy.get(selector).invoke('val', '')
+    return creator()
+  },
+})
+
 /**
  * SelectAccessor is a helper object for E-2-E testing.
  * It maps the select behaviour to the `bal-select` ui component.
@@ -97,4 +136,6 @@ export const SelectAccessor: Accessor<SelectAccessorType> = createAccessor<Selec
   SelectSelectableMixin,
   SelectAssertableOptionsMixin,
   SelectContainableMixin,
+  SelectTypeableMixin,
+  SelectClearMixin,
 )
