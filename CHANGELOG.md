@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/baloise/design-system/compare/v1.11.3...v1.12.0) (2021-08-31)
+
+
+### Features
+
+* **input:** add number-input with decimal ([ab473de](https://github.com/baloise/design-system/commit/ab473deacb867ffd44f23e76b0ed6f9400d5072e))
+
+
+
+## [1.11.1](https://github.com/baloise/design-system/compare/v1.10.0...v1.11.1) (2021-08-23)
+
+
+### Features
+
+* **input:** add logic for checking if number entered is valid and add decimal property for number formating ([01818a7](https://github.com/baloise/design-system/commit/01818a7a862664b3733b597cd13569989aeb487a))
+
+
+
+# [1.10.0](https://github.com/baloise/design-system/compare/v1.9.0...v1.10.0) (2021-08-16)
+
+
+### Bug Fixes
+
+* **input:** enable clipboard content ([4d4032e](https://github.com/baloise/design-system/commit/4d4032e15d457f67e9f404375dc767ca6bf58907))
+
+
+### Features
+
+* **table:** update ag-grid usage ([f083875](https://github.com/baloise/design-system/commit/f0838754edc5d8a907b1bec0fdf8b503e16e674d))
+
+
+
+# [1.9.0](https://github.com/baloise/design-system/compare/v1.8.2...v1.9.0) (2021-08-12)
+
+
+### Bug Fixes
+
+* **datepicker:** fix fullwidth ([cddd3f2](https://github.com/baloise/design-system/commit/cddd3f2a459e7fb428096bda7b61586a29eda986))
+* **input:** fix autofocus and add directives for angular and vue ([ef76dcf](https://github.com/baloise/design-system/commit/ef76dcf9b4ff160b3a38f2148081233407964b53))
+* **select:** fix fullwidth ([9cf060a](https://github.com/baloise/design-system/commit/9cf060a6cbf269fa7e03f55d56d87497dcabe126))
+
+
+### Features
+
+* **testing:** add andable.ts and attachable.ts mixin description ([e918b8a](https://github.com/baloise/design-system/commit/e918b8a2db1e19b7eadd2e42deff697040b83e7d))
+
+
+
+## [1.8.2](https://github.com/baloise/design-system/compare/v1.8.1...v1.8.2) (2021-08-06)
+
+
+### Bug Fixes
+
+* **table:** make styles accessable for angular & vue applications ([f5b5de5](https://github.com/baloise/design-system/commit/f5b5de5b9061bd600bf0ad5b9783b825b7b38c1c))
+
+
+
+## 1.8.1 (2021-08-05)
+
+
+
+
+
 ## [1.11.3](https://github.com/baloise/design-system/compare/v1.11.2...v1.11.3) (2021-08-27)
 
 

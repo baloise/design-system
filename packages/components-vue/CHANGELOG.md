@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/baloise/design-system/compare/v1.11.3...v1.12.0) (2021-08-31)
+
+
+### Features
+
+* **input:** add number-input with decimal ([ab473de](https://github.com/baloise/design-system/commit/ab473deacb867ffd44f23e76b0ed6f9400d5072e))
+
+
+
+## [1.11.1](https://github.com/baloise/design-system/compare/v1.10.0...v1.11.1) (2021-08-23)
+
+
+
+
+
 ## [1.11.3](https://github.com/baloise/design-system/compare/v1.11.2...v1.11.3) (2021-08-27)
 
 **Note:** Version bump only for package @baloise/design-system-components-vue
