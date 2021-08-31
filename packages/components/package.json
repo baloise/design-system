@@ -49,6 +49,7 @@
     "serve": "npm run copy:fonts && stencil build --docs --dev --watch --serve --config stencil.dev.config.ts",
     "test": "stencil test --spec --e2e --config stencil.test.config.ts",
     "test:watch": "stencil test --spec --e2e --watchAll",
+    "test:unit": "stencil test --spec",
     "test:unit:watch": "stencil test --spec --watchAll",
     "test:e2e:watch": "stencil test --e2e --watchAll"
   },

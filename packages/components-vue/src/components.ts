@@ -1005,11 +1005,6 @@ export const BalInput = /*@__PURE__*/ defineComponent({
       default: undefined,
       required: false,
     },
-    suffix: {
-      type: String,
-      default: undefined,
-      required: false,
-    },
     autocapitalize: {
       type: String,
       default: 'off',
@@ -1115,6 +1110,16 @@ export const BalInput = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
+    decimal: {
+      type: Number,
+      default: undefined,
+      required: false,
+    },
+    suffix: {
+      type: String,
+      default: undefined,
+      required: false,
+    },
     hasIconRight: {
       type: Boolean,
       default: false,
@@ -1128,11 +1133,6 @@ export const BalInput = /*@__PURE__*/ defineComponent({
     value: {
       type: [String, Number],
       default: '',
-      required: false,
-    },
-    decimal: {
-      type: Number,
-      default: undefined,
       required: false,
     },
     modelValue: {

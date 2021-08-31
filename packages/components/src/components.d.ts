@@ -676,7 +676,7 @@ export namespace Components {
          */
         "debounce": number;
         /**
-          * Number of decimal places.
+          * Defins the allowed decimal points for the `number-input`.
          */
         "decimal"?: number;
         /**
@@ -721,7 +721,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * If `true` only valid numbers can be entered and on mobile device the number keypad is active
+          * If `true` on mobile device the number keypad is active
          */
         "numberInput": boolean;
         /**
@@ -2536,7 +2536,7 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
-          * Number of decimal places.
+          * Defins the allowed decimal points for the `number-input`.
          */
         "decimal"?: number;
         /**
@@ -2577,7 +2577,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * If `true` only valid numbers can be entered and on mobile device the number keypad is active
+          * If `true` on mobile device the number keypad is active
          */
         "numberInput"?: boolean;
         /**

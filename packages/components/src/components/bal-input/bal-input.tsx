@@ -3,6 +3,7 @@ import { isNil } from 'lodash'
 import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../types/interfaces'
+import { filterInputValue, formatInputValue } from './bal-input.utils'
 
 @Component({
   tag: 'bal-input',
@@ -11,14 +12,11 @@ import { AutocompleteTypes, InputTypes } from '../../types/interfaces'
   scoped: true,
 })
 export class Input implements ComponentInterface {
-  private allowedKeys = [...NUMBER_KEYS, ...ACTION_KEYS]
-  private allowedActionKeys = [...ACTION_KEYS]
+  private allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]
   private inputId = `bal-input-${InputIds++}`
   private nativeInput?: HTMLInputElement
   private didInit = false
   private hasFocus = false
-  private isCopyPaste = false
-  private keysPressed: string[] = []
 
   @Element() el!: HTMLElement
 
@@ -36,11 +34,6 @@ export class Input implements ComponentInterface {
    * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
    */
   @Prop() accept?: string
-
-  /**
-   * Adds a suffix the the inputvalue after blur.
-   */
-  @Prop() suffix?: string
 
   /**
    * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
@@ -149,9 +142,19 @@ export class Input implements ComponentInterface {
   @Prop() autoComplete: boolean = false
 
   /**
-   * If `true` only valid numbers can be entered and on mobile device the number keypad is active
+   * If `true` on mobile device the number keypad is active
    */
   @Prop() numberInput = false
+
+  /**
+   * Defins the allowed decimal points for the `number-input`.
+   */
+  @Prop() decimal?: number
+
+  /**
+   * Adds a suffix the the inputvalue after blur.
+   */
+  @Prop() suffix?: string
 
   /**
    * @internal
@@ -172,17 +175,12 @@ export class Input implements ComponentInterface {
   @Prop({ mutable: true }) value?: string | number = ''
 
   /**
-   * Number of decimal places.
-   */
-  @Prop() decimal?: number = undefined
-
-  /**
    * Update the native input element when the value changes
    */
   @Watch('value')
   protected async valueChanged(newValue: string | number | undefined, oldValue: string | number | undefined) {
     if (this.didInit && !this.hasFocus && newValue !== oldValue) {
-      this.balChange.emit(this.getValueForEmitting())
+      this.balChange.emit(this.getFormattedValue())
     }
   }
 
@@ -235,10 +233,6 @@ export class Input implements ComponentInterface {
     }
   }
 
-  componentWillLoad() {
-    this.value = this.getValueForEmitting()
-  }
-
   /**
    * Sets focus on the native `input` in `bal-input`. Use this method instead of the global
    * `input.focus()`.
@@ -264,149 +258,27 @@ export class Input implements ComponentInterface {
   }
 
   private getFormattedValue(): string {
-    let value = this.getRawValue()
-
+    const value = this.getRawValue()
     const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
-    return `${value}${suffix}`
+    return `${formatInputValue(value, this.decimal)}${suffix}`
   }
 
-  private getValueForEmitting(): any {
-    const value = this.numberInput ? this.formatNumber(this.getRawValue()) : this.getRawValue()
-
-    if (isNaN(value)) {
-      return undefined
-    }
-
-    if (this.decimal && this.countDecimals(value) > this.decimal) {
-      return value.toFixed(this.decimal)
-    }
-
-    return value
-  }
-
-  private addSuffixToNumber(value: any): string {
-    const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
-    return `${value}${suffix}`
-  }
-
-  private isNumeric(value: any): boolean {
-    return !isNaN(value - parseFloat(value))
-  }
-
-  private isStartingWithDot(value: string): boolean {
-    return value.charAt(0) == '.'
-  }
-
-  private isValidAfterDot(value: string): boolean {
-    if (value.length == 1) {
-      return this.isStartingWithDot(value)
-    }
-
-    if (this.isStartingWithDot(value)) {
-      if (value.substring(1).includes('.')) {
-        return false
-      }
-
-      if(!this.isNumeric(value.substring(1))) {
-        return false
-      }
-    }
-    return true
-  }
-  
-  private insertDecimal(value: any, decimalPlaces: number): any {
-
-    if (value.length == 1 && value.charAt(0) == '.') {
-      return (Math.round(0 * 100) / 100).toFixed(decimalPlaces)
-    }
-
-    return (Math.round(value * 100) / 100).toFixed(decimalPlaces)
-  }
-
-  private numberWithCommas(value: string): string {
-    if (this.formatNumber(value) == 0) {
-      value = this.formatNumber(value)
-    }
-
-    return value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, "'")
-  }
-
-  private formatNumber(value: any): any {
-    if (value != '') {
-      return this.isStartingWithDot(value) && value.length == 1 ? '0' : parseFloat(value)
-    }
-    return value
-  }
-
-  private isElementExistsInArray(array: Array<string>, element: string): boolean {
-    return array.indexOf(element) === -1
-  }
-
-  private checkIfCopyPaste(event: KeyboardEvent): void {
-    if (isCtrlOrCommandKey(event) && this.isElementExistsInArray(this.keysPressed, 'ctrl')) {
-      this.keysPressed.push('ctrl')
-    }
-
-    if (event.key == 'v' && this.isElementExistsInArray(this.keysPressed, 'v')) {
-      this.keysPressed.push('v')
-    }
-
-    this.isCopyPaste = this.keysPressed.length === 2 ? true : false
-  }
-
-  private countDecimals(value: any): any {
-    if (Math.floor(value) === value) return 0;
-    var str = value.toString();
-
-    if (str.indexOf(".") !== -1 && str.indexOf("-") !== -1) {
-        return str.split("-")[1] || 0;
-    } else if (str.indexOf(".") !== -1) {
-        return str.split(".")[1].length || 0;
-    }
-    return str.split("-")[1] || 0;
-}
- 
   private onInput = (ev: InputEvent) => {
     const input = ev.target as HTMLInputElement | null
+
     if (input) {
-      if (!this.isCopyPaste) {
-        this.value = input.value || ''
-      } else {
-        if (!this.isNumeric(input.value)) {
-          if (this.value == '') {
-            input.value = ''
-            this.value = undefined
-          } else {
-            input.value = this.value ? this.value.toString() : ''
-          }
-        } else {
-          this.value = input.value || ''
-        }
-        this.keysPressed = []
-        this.isCopyPaste = false
-      }
+      const value = filterInputValue(input.value, this.value, this.decimal)
+      input.value = this.value = value || ''
     }
-    this.balInput.emit(this.getValueForEmitting())
+
+    this.balInput.emit(this.value)
   }
 
   private onKeyDown = (event: KeyboardEvent) => {
-    this.checkIfCopyPaste(event)
-
     if (this.numberInput) {
-      const nextValue = this.value + '' + event.key
-      const isKeyAllowed = this.allowedKeys.indexOf(event.key) < 0
-      const isNumeric = this.isNumeric(nextValue)
-      const isValidAfterDot = this.isValidAfterDot(nextValue)
-      if (!isNumeric && isKeyAllowed && !isCtrlOrCommandKey(event) && !isValidAfterDot) {
+      if (!isCtrlOrCommandKey(event) && this.allowedKeys.indexOf(event.key) < 0) {
         event.preventDefault()
         event.stopPropagation()
-      }
-      if (this.decimal) {
-        const isKeyAllowed = this.allowedActionKeys.indexOf(event.key) < 0
-        if (this.countDecimals(nextValue) > this.decimal && !isCtrlOrCommandKey(event) && isKeyAllowed) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
       }
     }
   }
@@ -417,42 +289,18 @@ export class Input implements ComponentInterface {
 
     const input = ev.target as HTMLInputElement | null
     if (input) {
-      input.value = this.getValueForEmitting()
-    }
-  }
-
-  private getValidatedNumber(inputValue: string): string {
-    let value = ''
-
-    if (this.numberInput && inputValue.length > 0) {
-      if (this.decimal) {
-        value = this.insertDecimal(inputValue, this.decimal)
-      } else {
-        if (inputValue.charAt(inputValue.length - 1) == '.') {
-          value = inputValue.slice(0, -1)
-        }
-        if (this.isStartingWithDot(inputValue)) {
-          value = inputValue.length > 1 ? parseFloat(inputValue).toString() : '0'
-        }
-      }
-      value = value === '' ? inputValue : value
-      value = this.numberWithCommas(value)
-
-      return this.suffix ? this.addSuffixToNumber(value) : value
-    } else {
-      return this.suffix ? this.getFormattedValue() : value
+      input.value = this.getRawValue()
     }
   }
 
   private onBlur = (ev: FocusEvent) => {
     this.hasFocus = false
     this.balBlur.emit(ev)
-    this.balChange.emit(this.getValueForEmitting())
+    this.balChange.emit(this.getRawValue())
 
     const input = ev.target as HTMLInputElement | null
-    
     if (input) {
-      input.value = this.numberInput ? this.getValidatedNumber(input.value) : this.getFormattedValue()
+      input.value = this.getFormattedValue()
     }
   }
 
@@ -478,11 +326,11 @@ export class Input implements ComponentInterface {
       label.htmlFor = this.inputId
     }
     let inputProps = {}
-    if (this.numberInput) {
-      inputProps = { pattern: '[0-9]*' }
-    }
     if (this.pattern) {
       inputProps = { pattern: this.pattern }
+    }
+    if (this.numberInput) {
+      inputProps = { pattern: '[0-9]*' }
     }
     return (
       <Host
