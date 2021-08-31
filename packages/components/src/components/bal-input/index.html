@@ -12,15 +12,15 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-input autofocus id="bal-input-1" name="firstName" placeholder="Enter your firstname" data-test-id="input"></bal-input>
-        <bal-input id="bal-input-1-preview" disabled placeholder="Enter your firstname"></bal-input>
-        <bal-input id="bal-input-1-change" disabled placeholder="Enter your firstname"></bal-input>
+        <bal-input autofocus id="input-1" name="firstName" placeholder="Enter your firstname" data-test-id="input"></bal-input>
+        <bal-input id="input-1-preview" disabled placeholder="Value after balInput event"></bal-input>
+        <bal-input id="input-1-change" disabled placeholder="Value after balChange event"></bal-input>
       </section>
 
       <script>
-        var input1 = document.getElementById('bal-input-1')
-        var input1Preview = document.getElementById('bal-input-1-preview')
-        var input1Change = document.getElementById('bal-input-1-change')
+        var input1 = document.getElementById('input-1')
+        var input1Preview = document.getElementById('input-1-preview')
+        var input1Change = document.getElementById('input-1-change')
 
         input1.addEventListener('balInput', function (event) {
           input1Preview.value = event.detail
@@ -29,12 +29,6 @@
           input1Change.value = event.detail
         })
       </script>
-
-      <h2 class="title is-size-2">HTML input</h2>
-      <section>
-        <input class="input" name="firstName" placeholder="Enter your firstname" />
-        <input class="input" name="firstName" disabled placeholder="Enter your firstname" />
-      </section>
 
       <h2 class="title is-size-2">Inverted</h2>
       <section>
@@ -45,21 +39,35 @@
       </section>
 
       <h2 class="title is-size-2">Number Input</h2>
+      <p>With number-input property your can only enter valid numbers, if you start with dot (.) zero will be automatically added in front of it.</p>
+      <p>With decimal property you can set how many decimal places you want and number will be formatted accordingly.</p>
       <section>
-        <bal-input id="bal-input-only-numbers" number-keyboard name="age" placeholder="Enter your age"></bal-input>
-        <p class="help" id="bal-input-only-numbers-preview"></p>
+        <bal-input number-input placeholder="Enter a number without decimal"></bal-input>
+        <bal-input id="input-2" number-input placeholder="Enter a number with two decimal points" decimal="2"></bal-input>
+        <bal-input suffix="CHF" number-input placeholder="Enter a number with two decimal places and CHF suffix" decimal="2"></bal-input>
+        <bal-input id="input-2-preview" disabled placeholder="Value after balInput event"></bal-input>
+        <bal-input id="input-2-change" disabled placeholder="Value after balChange event"></bal-input>
       </section>
       <script>
-        var inputOnlyNumbers = document.getElementById('bal-input-only-numbers')
-        var inputOnlyNumbersPreview = document.getElementById('bal-input-only-numbers-preview')
-        inputOnlyNumbers.addEventListener('balInput', function (event) {
-          inputOnlyNumbersPreview.innerHTML = event.detail
+        var input2 = document.getElementById('input-2')
+        var input2Preview = document.getElementById('input-2-preview')
+        var input2Change = document.getElementById('input-2-change')
+
+        input2.addEventListener('balInput', function (event) {
+          input2Preview.value = event.detail
+        })
+        input2.addEventListener('balChange', function (event) {
+          input2Change.value = event.detail
         })
       </script>
-
       <h2 class="title is-size-2">Suffix</h2>
       <section>
         <bal-input suffix="%" name="percentage" placeholder="Enter a percentage number"></bal-input>
+      </section>
+      <h2 class="title is-size-2">HTML input</h2>
+      <section>
+        <input class="input" name="firstName" placeholder="Enter your firstname" />
+        <input class="input" name="firstName" disabled placeholder="Enter your firstname" />
       </section>
     </div>
   </body>

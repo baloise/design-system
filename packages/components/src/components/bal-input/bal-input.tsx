@@ -3,6 +3,7 @@ import { isNil } from 'lodash'
 import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../types/interfaces'
+import { filterInputValue, formatInputValue } from './bal-input.utils'
 
 @Component({
   tag: 'bal-input',
@@ -33,11 +34,6 @@ export class Input implements ComponentInterface {
    * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
    */
   @Prop() accept?: string
-
-  /**
-   * Adds a suffix the the inputvalue after blur.
-   */
-  @Prop() suffix?: string
 
   /**
    * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
@@ -148,7 +144,17 @@ export class Input implements ComponentInterface {
   /**
    * If `true` on mobile device the number keypad is active
    */
-  @Prop() numberKeyboard = false
+  @Prop() numberInput = false
+
+  /**
+   * Defins the allowed decimal points for the `number-input`.
+   */
+  @Prop() decimal?: number
+
+  /**
+   * Adds a suffix the the inputvalue after blur.
+   */
+  @Prop() suffix?: string
 
   /**
    * @internal
@@ -174,7 +180,7 @@ export class Input implements ComponentInterface {
   @Watch('value')
   protected async valueChanged(newValue: string | number | undefined, oldValue: string | number | undefined) {
     if (this.didInit && !this.hasFocus && newValue !== oldValue) {
-      this.balChange.emit(this.getValue())
+      this.balChange.emit(this.getFormattedValue())
     }
   }
 
@@ -251,22 +257,25 @@ export class Input implements ComponentInterface {
     return value
   }
 
-  private getValue(): string {
+  private getFormattedValue(): string {
     const value = this.getRawValue()
     const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
-    return `${value}${suffix}`
+    return `${formatInputValue(value, this.decimal)}${suffix}`
   }
 
   private onInput = (ev: InputEvent) => {
     const input = ev.target as HTMLInputElement | null
+
     if (input) {
-      this.value = input.value || ''
+      const value = filterInputValue(input.value, this.value, this.decimal)
+      input.value = this.value = value || ''
     }
+
     this.balInput.emit(this.value)
   }
 
   private onKeyDown = (event: KeyboardEvent) => {
-    if (this.numberKeyboard) {
+    if (this.numberInput) {
       if (!isCtrlOrCommandKey(event) && this.allowedKeys.indexOf(event.key) < 0) {
         event.preventDefault()
         event.stopPropagation()
@@ -291,7 +300,7 @@ export class Input implements ComponentInterface {
 
     const input = ev.target as HTMLInputElement | null
     if (input) {
-      input.value = this.getValue()
+      input.value = this.getFormattedValue()
     }
   }
 
@@ -309,7 +318,7 @@ export class Input implements ComponentInterface {
   }
 
   render() {
-    const value = this.hasFocus ? this.getRawValue() : this.getValue()
+    const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
     if (label) {
@@ -320,7 +329,7 @@ export class Input implements ComponentInterface {
     if (this.pattern) {
       inputProps = { pattern: this.pattern }
     }
-    if (this.numberKeyboard) {
+    if (this.numberInput) {
       inputProps = { pattern: '[0-9]*' }
     }
     return (
