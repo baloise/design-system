@@ -38,77 +38,77 @@ const getElementClasses = (
  * options for the component such as router or v-model
  * integrations.
  */
-export const defineSetup = (name: string, componentEvents: string[] = [], componentOptions: ComponentOptions = {}) => (
-  props: any,
-  { attrs, slots, emit }: any,
-) => {
-  const { modelProp, modelUpdateEvent } = componentOptions
-  let modelPropValue = (props as any)[modelProp as any]
-  const containerRef = ref<HTMLElement>()
-  const classes = new Set(getComponentClasses(attrs.class))
-  const onVnodeBeforeMount = (vnode: VNode) => {
-    // Add a listener to tell Vue to update the v-model
-    if (vnode.el && modelUpdateEvent && modelProp) {
-      vnode.el.addEventListener(modelUpdateEvent, (e: CustomEvent<any>) => {
-        modelPropValue = (e?.target as any)[modelProp]
-        emit(UPDATE_VALUE_EVENT, modelPropValue)
+export const defineSetup =
+  (name: string, componentEvents: string[] = [], componentOptions: ComponentOptions = {}) =>
+  (props: any, { attrs, slots, emit }: any) => {
+    const { modelProp, modelUpdateEvent } = componentOptions
+    let modelPropValue = (props as any)[modelProp as any]
+    const containerRef = ref<HTMLElement>()
+    const classes = new Set(getComponentClasses(attrs.class))
+    const onVnodeBeforeMount = (vnode: VNode) => {
+      // Add a listener to tell Vue to update the v-model
+      if (vnode.el && modelUpdateEvent && modelProp) {
+        vnode.el.addEventListener(modelUpdateEvent, (e: CustomEvent<any>) => {
+          // modelPropValue = (e?.target as any)[modelProp]
+          modelPropValue = e?.detail
+          emit(UPDATE_VALUE_EVENT, modelPropValue)
 
-        /**
-         * We need to emit the change event here
-         * rather than on the web component to ensure
-         * that any v-model bindings have been updated.
-         * Otherwise, the developer will listen on the
-         * native web component, but the v-model will
-         * not have been updated yet.
-         */
-        let emittedValue = e.detail
-        if (e.detail?.value) {
-          emittedValue = e.detail.value
-        }
-        emit(modelUpdateEvent, emittedValue)
-        e.stopImmediatePropagation()
-      })
-    }
-
-    if (componentEvents && componentEvents.length > 0) {
-      componentEvents
-        .filter(e => e !== modelUpdateEvent)
-        .forEach(componentEvent => {
-          if (vnode.el) {
-            vnode.el.addEventListener(componentEvent, (event: CustomEvent<any>) => {
-              let emittedValue = event.detail
-              if (event.detail?.value) {
-                emittedValue = event.detail.value
-              }
-              emit(componentEvent, emittedValue)
-            })
+          /**
+           * We need to emit the change event here
+           * rather than on the web component to ensure
+           * that any v-model bindings have been updated.
+           * Otherwise, the developer will listen on the
+           * native web component, but the v-model will
+           * not have been updated yet.
+           */
+          let emittedValue = e.detail
+          if (e.detail?.value) {
+            emittedValue = e.detail.value
           }
+          emit(modelUpdateEvent, emittedValue)
+          e.stopImmediatePropagation()
         })
-    }
-  }
+      }
 
-  return () => {
-    getComponentClasses(attrs.class).forEach(value => {
-      classes.add(value)
-    })
-
-    let propsToAdd = {
-      ...props,
-      ref: containerRef,
-      class: getElementClasses(containerRef, classes),
-      onClick: (props as any).onClick,
-      onVnodeBeforeMount: onVnodeBeforeMount,
-    }
-
-    if (modelProp) {
-      propsToAdd = {
-        ...propsToAdd,
-        [modelProp]: Object.prototype.hasOwnProperty.call(props, MODEL_VALUE)
-          ? props.modelValue
-          : (props as any)[modelProp as any],
+      if (componentEvents && componentEvents.length > 0) {
+        componentEvents
+          .filter(e => e !== modelUpdateEvent)
+          .forEach(componentEvent => {
+            if (vnode.el) {
+              vnode.el.addEventListener(componentEvent, (event: CustomEvent<any>) => {
+                let emittedValue = event.detail
+                if (event.detail?.value) {
+                  emittedValue = event.detail.value
+                }
+                emit(componentEvent, emittedValue)
+              })
+            }
+          })
       }
     }
 
-    return h(name, propsToAdd, slots.default && slots.default())
+    return () => {
+      getComponentClasses(attrs.class).forEach(value => {
+        classes.add(value)
+      })
+
+      let propsToAdd = {
+        ...props,
+        ref: containerRef,
+        class: getElementClasses(containerRef, classes),
+        onClick: (props as any).onClick,
+        onVnodeBeforeMount: onVnodeBeforeMount,
+      }
+
+      if (modelProp) {
+        propsToAdd = {
+          ...propsToAdd,
+          [modelProp]: Object.prototype.hasOwnProperty.call(props, MODEL_VALUE)
+            ? props.modelValue
+            : (props as any)[modelProp as any],
+        }
+      }
+
+      return h(name, propsToAdd, slots.default && slots.default())
+    }
   }
-}
