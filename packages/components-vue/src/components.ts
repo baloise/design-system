@@ -167,7 +167,7 @@ export const BalButton = /*@__PURE__*/ defineComponent({
       required: false,
     },
     value: {
-      type: [String, Number],
+      type: [Number, String],
       default: '',
       required: false,
     },
@@ -594,7 +594,7 @@ export const BalDatepicker = /*@__PURE__*/ defineComponent({
       required: false,
     },
     allowedDates: {
-      type: Function as PropType<((datestring: string) => boolean) | undefined>,
+      type: Function as PropType<((datestring: string) => boolean)>,
       default: undefined,
       required: false,
     },
@@ -1131,7 +1131,7 @@ export const BalInput = /*@__PURE__*/ defineComponent({
       required: false,
     },
     value: {
-      type: [String, Number],
+      type: [Number, String],
       default: '',
       required: false,
     },
@@ -1606,7 +1606,7 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
       required: false,
     },
     value: {
-      type: String,
+      type: [String, Array as () => Array<string>],
       default: [],
       required: false,
     },
@@ -1720,7 +1720,7 @@ export const BalSlider = /*@__PURE__*/ defineComponent({
       required: false,
     },
     value: {
-      type: [String, Number],
+      type: [Number, String],
       default: '',
       required: false,
     },
