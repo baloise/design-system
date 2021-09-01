@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.2](https://github.com/baloise/design-system/compare/v1.12.1...v1.12.2) (2021-09-01)
+
+
+### Bug Fixes
+
+* **vue:** use detail instead of value from the change event ([5e3c70c](https://github.com/baloise/design-system/commit/5e3c70c09d3fb1d58eb32865ae5ffd5e39cdf5ce))
+
+
+
+
+
 ## [1.12.1](https://github.com/baloise/design-system/compare/v1.12.0...v1.12.1) (2021-09-01)
 
 
