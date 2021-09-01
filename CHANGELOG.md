@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.1](https://github.com/baloise/design-system/compare/v1.12.0...v1.12.1) (2021-09-01)
+
+
+### Bug Fixes
+
+* **vue:** adjust types of the props ([41f29b1](https://github.com/baloise/design-system/commit/41f29b1175a5da6fc4f67f02e0e602b7ad4b64ec))
+
+
+
+
+
 # [1.12.0](https://github.com/baloise/design-system/compare/v1.11.3...v1.12.0) (2021-08-31)
 
 
