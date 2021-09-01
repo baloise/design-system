@@ -9,7 +9,7 @@ export const config: Config = {
   outputTargets: [
     {
       type: 'custom',
-      name: 'vue-bubu-library',
+      name: 'log-output-library',
       async generator(config, compilerCtx, buildCtx) {
         buildCtx.components.forEach(component => {
           if (component.tagName === 'bal-datepicker') {
