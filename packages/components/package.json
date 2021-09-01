@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components",
-  "version": "1.11.1",
+  "version": "1.12.3",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
     "build:components": "node .scripts/components.script.js",
     "build:compile": "stencil build --docs --es5 --prod",
     "clean": "rimraf docs",
+    "log": "stencil build --prod --config stencil.log.config.ts",
     "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* src/assets/fonts",
     "docs": "npm run build:filters && npm run build:utils && npm run build:validators && npm run docs:compile && npm run build:components",
     "docs:compile": "stencil build --docs --es5 --prod --config stencil.docs.config.ts",
@@ -49,12 +50,13 @@
     "serve": "npm run copy:fonts && stencil build --docs --dev --watch --serve --config stencil.dev.config.ts",
     "test": "stencil test --spec --e2e --config stencil.test.config.ts",
     "test:watch": "stencil test --spec --e2e --watchAll",
+    "test:unit": "stencil test --spec",
     "test:unit:watch": "stencil test --spec --watchAll",
     "test:e2e:watch": "stencil test --e2e --watchAll"
   },
   "dependencies": {
-    "@baloise/design-system-fonts": "^1.11.1",
-    "@baloise/design-system-icons": "^1.11.1",
+    "@baloise/design-system-fonts": "^1.12.3",
+    "@baloise/design-system-icons": "^1.12.3",
     "@stencil/core": "^2.7.0",
     "@types/lodash": "^4.14.172",
     "bulma": "^0.9.3",
@@ -64,7 +66,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@baloise/angular-output-target": "^1.0.11",
-    "@baloise/vue-output-target": "^0.1.3",
+    "@baloise/vue-output-target": "^0.2.5",
     "@stencil/postcss": "^2.0.0",
     "@stencil/sass": "^1.4.1",
     "@types/autoprefixer": "^10.2.0",

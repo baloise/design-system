@@ -3,6 +3,80 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.3](https://github.com/baloise/design-system/compare/v1.12.2...v1.12.3) (2021-09-01)
+
+
+### Bug Fixes
+
+* **vue:** use detail instead of value from the change event ([f979fe9](https://github.com/baloise/design-system/commit/f979fe90acbfbc8abbf6071814647b0195f65d6a))
+
+
+
+
+
+## [1.12.2](https://github.com/baloise/design-system/compare/v1.12.1...v1.12.2) (2021-09-01)
+
+**Note:** Version bump only for package @baloise/design-system-components
+
+
+
+
+
+## [1.12.1](https://github.com/baloise/design-system/compare/v1.12.0...v1.12.1) (2021-09-01)
+
+
+### Bug Fixes
+
+* **vue:** adjust types of the props ([41f29b1](https://github.com/baloise/design-system/commit/41f29b1175a5da6fc4f67f02e0e602b7ad4b64ec))
+
+
+
+
+
+# [1.12.0](https://github.com/baloise/design-system/compare/v1.11.3...v1.12.0) (2021-08-31)
+
+
+### Features
+
+* **input:** add number-input with decimal ([ab473de](https://github.com/baloise/design-system/commit/ab473deacb867ffd44f23e76b0ed6f9400d5072e))
+
+
+
+## [1.11.1](https://github.com/baloise/design-system/compare/v1.10.0...v1.11.1) (2021-08-23)
+
+
+### Features
+
+* **input:** add logic for checking if number entered is valid and add decimal property for number formating ([01818a7](https://github.com/baloise/design-system/commit/01818a7a862664b3733b597cd13569989aeb487a))
+
+
+
+# [1.10.0](https://github.com/baloise/design-system/compare/v1.9.0...v1.10.0) (2021-08-16)
+
+
+
+
+
+## [1.11.3](https://github.com/baloise/design-system/compare/v1.11.2...v1.11.3) (2021-08-27)
+
+
+
+## 1.11.1 (2021-08-23)
+
+**Note:** Version bump only for package @baloise/design-system-components
+
+
+
+
+
+## [1.11.2](https://github.com/baloise/design-system/compare/v1.11.1...v1.11.2) (2021-08-27)
+
+**Note:** Version bump only for package @baloise/design-system-components
+
+
+
+
+
 ## [1.11.1](https://github.com/baloise/design-system/compare/v1.11.0...v1.11.1) (2021-08-23)
 
 

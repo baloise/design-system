@@ -107,15 +107,7 @@ export class Select {
 
   @Watch('value')
   valueWatcher() {
-    if (isNil(this.value)) {
-      this.rawValue = []
-    } else {
-      if (isString(this.value)) {
-        this.rawValue = [this.value]
-      } else {
-        this.rawValue = [...this.value]
-      }
-    }
+    this.updateRawValue()
   }
 
   @Watch('rawValue')
@@ -226,17 +218,9 @@ export class Select {
   }
 
   componentWillLoad() {
-    if (isNil(this.value)) {
-      this.rawValue = []
-    } else {
-      if (!isArray(this.value)) {
-        this.rawValue = [this.value]
-      } else {
-        this.rawValue = [...this.value]
-      }
-    }
+    this.updateRawValue()
 
-    if (this.options.size > 0 && length(this.rawValue) === 1) {
+    if (!isNil(this.rawValue) && this.options.size > 0 && length(this.rawValue) === 1) {
       const firstOption = this.options.get(this.rawValue[0])
       if (!isNil(firstOption)) {
         this.inputValue = firstOption.label
@@ -262,6 +246,14 @@ export class Select {
         textContent: element.textContent,
         innerHTML: element.innerHTML,
       })
+    }
+    if (isArray(this.rawValue)) {
+      for (let index = 0; index < this.rawValue.length; index++) {
+        const val = this.rawValue[index]
+        if (!options.has(val)) {
+          this.rawValue = removeValue(this.rawValue, val)
+        }
+      }
     }
     this.options = new Map(options)
     this.syncNativeInput()
@@ -474,6 +466,18 @@ export class Select {
   /********************************************************
    * VALUE & FILTER & SELECTION
    ********************************************************/
+
+  private updateRawValue() {
+    if (isNil(this.value)) {
+      this.rawValue = []
+    } else {
+      if (isString(this.value)) {
+        this.rawValue = [this.value]
+      } else {
+        this.rawValue = [...this.value.filter(v => !isNil(v))]
+      }
+    }
+  }
 
   private optionSelected(selectedOption: BalOptionController) {
     const valuesArray = getValues(this.rawValue)
