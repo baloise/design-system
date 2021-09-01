@@ -50,7 +50,7 @@ export const defineSetup = (name: string, componentEvents: string[] = [], compon
     // Add a listener to tell Vue to update the v-model
     if (vnode.el && modelUpdateEvent && modelProp) {
       vnode.el.addEventListener(modelUpdateEvent, (e: CustomEvent<any>) => {
-        modelPropValue = (e?.target as any)[modelProp]
+        modelPropValue = e?.detail
         emit(UPDATE_VALUE_EVENT, modelPropValue)
 
         /**
