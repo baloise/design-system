@@ -267,7 +267,7 @@ export class Input implements ComponentInterface {
     const input = ev.target as HTMLInputElement | null
 
     if (input) {
-      const value = filterInputValue(input.value, this.value, this.decimal)
+      const value = this.numberInput ? filterInputValue(input.value, this.value, this.decimal) : input.value
       input.value = this.value = value || ''
     }
 
