@@ -48,11 +48,11 @@ We use the `bal-heading` and `bal-text` component to crop the font correctly, ot
 </docs-demo>
 
 ```html
-<bal-heading level="h3">H3 MetaPro Medium</bal-heading>
+<bal-heading level="h4">H3 MetaPro Medium</bal-heading>
 ```
 
 ```html
-<bal-heading level="h3" subtitle>H3 MetaPro Normal</bal-heading>
+<bal-heading level="h4" subtitle>H3 MetaPro Normal</bal-heading>
 ```
 
 ## Paragraph
