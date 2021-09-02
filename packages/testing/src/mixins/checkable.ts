@@ -13,13 +13,13 @@ export interface Checkable<T> {
   assertIsChecked(shouldBeChecked?: boolean): T
 }
 
-export const CheckableMixin: Mixin = ({ selector, creator }) => ({
+export const CheckableMixin: Mixin = ({ element, creator }) => ({
   check: (options?: Partial<Cypress.CheckOptions>) => {
-    cy.get(selector).check(options)
+    element().check(options)
     return creator()
   },
   assertIsChecked: (shouldBeChecked = true) => {
-    cy.get(selector).should(shouldBeChecked ? 'be.checked' : 'not.be.checked')
+    element().should(shouldBeChecked ? 'be.checked' : 'not.be.checked')
     return creator()
   },
 })

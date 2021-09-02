@@ -1,17 +1,17 @@
 /// <reference types="cypress" />
 
-import {Attributable, AttributableMixin} from '../mixins/attributable'
-import {Clickable, ClickableMixin} from '../mixins/clickable'
-import {Containable, ContainableMixin} from '../mixins/containable'
-import {Disableable, DisableableMixin} from '../mixins/disableable'
-import {Existable, ExistableMixin} from '../mixins/existable'
-import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
-import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
-import {Selectable} from '../mixins/selectable'
-import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
-import {Urlable, UrlableMixin} from '../mixins/urlable'
-import {Waitable, WaitableMixin} from '../mixins/waitable'
-import {ListSelectableMixin} from './list.accessor'
+import { Attributable, AttributableMixin } from '../mixins/attributable'
+import { Clickable, ClickableMixin } from '../mixins/clickable'
+import { Containable, ContainableMixin } from '../mixins/containable'
+import { Disableable, DisableableMixin } from '../mixins/disableable'
+import { Existable, ExistableMixin } from '../mixins/existable'
+import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
+import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
+import { Selectable } from '../mixins/selectable'
+import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
+import { Urlable, UrlableMixin } from '../mixins/urlable'
+import { Waitable, WaitableMixin } from '../mixins/waitable'
+import { ListSelectableMixin } from './list.accessor'
 
 interface TabsAccessorType
   extends Selectable<TabsAccessorType>,
@@ -27,12 +27,12 @@ interface TabsAccessorType
   assertVisible(text: string): TabsAccessorType
 }
 
-export const TabsAssertVisibleMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const TabsAssertVisibleMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Assert if tab is visible
    */
   assertVisible: (text: string) => {
-    const field = cy.get(selector).find(`[label="${text}"] .sc-bal-tab-item`)
+    const field = element().find(`[label="${text}"] .sc-bal-tab-item`)
     field.should('be.visible')
     return creator()
   },
@@ -40,7 +40,7 @@ export const TabsAssertVisibleMixin: Mixin = <T>({selector, creator}: MixinConte
    * Selects tab
    */
   select: (index: number) => {
-    cy.get(selector).within(() => {
+    element().within(() => {
       cy.get(`a.sc-bal-tabs:not(.hidden)`).eq(index).click()
     })
     return creator()

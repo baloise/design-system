@@ -42,12 +42,12 @@ interface DropdownAccessorType
   assertOptions(...options: string[]): DropdownAccessorType
 }
 
-export const DropdownClickableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const DropdownClickableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Clicks the dropdown.
    */
   click: (options?: Partial<Cypress.ClickOptions>) => {
-    const button = cy.get(selector).find('button')
+    const button = element().find('button')
     button.click(options)
     return creator()
   },
@@ -55,9 +55,9 @@ export const DropdownClickableMixin: Mixin = <T>({ selector, creator }: MixinCon
 /**
  * Selects dropdown option.
  */
-export const DropDownSelectableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const DropDownSelectableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   select: (index: number) => {
-    cy.get(selector).within(() => {
+    element().within(() => {
       cy.get(`button.dropdown-item`).eq(index).click()
     })
     return creator()
@@ -70,9 +70,9 @@ export const DropDownSelectableMixin: Mixin = <T>({ selector, creator }: MixinCo
  * Selects dropdown sibling option.
  */
 export function SiblingDropDownSelectableMixin(siblingSelector: string): Mixin {
-  return <T>({ selector, creator }: MixinContext<T>) => ({
+  return <T>({ element, creator }: MixinContext<T>) => ({
     select: (index: number) => {
-      cy.get(selector)
+      element()
         .next(siblingSelector)
         .within(() => {
           cy.get(`button.dropdown-item`).eq(index).click()
@@ -87,9 +87,9 @@ export function SiblingDropDownSelectableMixin(siblingSelector: string): Mixin {
 /**
  * Asserts dropdown option.
  */
-export const DropDownAssertableOptionsMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const DropDownAssertableOptionsMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   assertOptions: (...options: string[]) => {
-    cy.get(selector).within(() => {
+    element().within(() => {
       cy.get('.dropdown-item').then(opt => {
         const actual = [...opt.toArray()].map(o => o.textContent)
         expect(actual).to.deep.eq(options)
@@ -101,9 +101,9 @@ export const DropDownAssertableOptionsMixin: Mixin = <T>({ selector, creator }: 
 /**
  * Asserts dropdown sibling option.
  */
-export const SiblingDropDownAssertableOptionsMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const SiblingDropDownAssertableOptionsMixin: Mixin = <T>({ element, selector, creator }: MixinContext<T>) => ({
   assertOptions: (...options: string[]) => {
-    cy.get(selector)
+    element()
       .next(selector)
       .within(() => {
         cy.get('.dropdown-item').then(opt => {
@@ -117,9 +117,9 @@ export const SiblingDropDownAssertableOptionsMixin: Mixin = <T>({ selector, crea
 /**
  * Asserts dropdown containing something.
  */
-export const DropDownContainableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const DropDownContainableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   contains: (content: string | number | RegExp) => {
-    cy.get(selector).find('button.dropdown-button').should('contain', content)
+    element().find('button.dropdown-button').should('contain', content)
     return creator()
   },
 })
@@ -127,9 +127,9 @@ export const DropDownContainableMixin: Mixin = <T>({ selector, creator }: MixinC
  * Asserts dropdown sibling containing something.
  */
 export function SiblingDropDownContainableMixin(siblingSelector: string): Mixin {
-  return <T>({ selector, creator }: MixinContext<T>) => ({
+  return <T>({ element, creator }: MixinContext<T>) => ({
     contains: (content: string | number | RegExp) => {
-      cy.get(selector)
+      element()
         .next(siblingSelector)
         .within(() => {
           cy.get('button.dropdown-button').should('contain', content)

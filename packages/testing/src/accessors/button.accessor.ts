@@ -1,16 +1,16 @@
 /// <reference types="cypress" />
 
-import {Attributable, AttributableMixin} from '../mixins/attributable'
-import {Clickable, ClickableMixin} from '../mixins/clickable'
-import {Containable, ContainableMixin} from '../mixins/containable'
-import {Disableable, DisableableMixin} from '../mixins/disableable'
-import {Existable, ExistableMixin} from '../mixins/existable'
-import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
-import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
-import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
-import {Urlable, UrlableMixin} from '../mixins/urlable'
-import {Visible, VisibleMixin} from '../mixins/visible'
-import {Waitable, WaitableMixin} from '../mixins/waitable'
+import { Attributable, AttributableMixin } from '../mixins/attributable'
+import { Clickable, ClickableMixin } from '../mixins/clickable'
+import { Containable, ContainableMixin } from '../mixins/containable'
+import { Disableable, DisableableMixin } from '../mixins/disableable'
+import { Existable, ExistableMixin } from '../mixins/existable'
+import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
+import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
+import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
+import { Urlable, UrlableMixin } from '../mixins/urlable'
+import { Visible, VisibleMixin } from '../mixins/visible'
+import { Waitable, WaitableMixin } from '../mixins/waitable'
 import {
   Attachable,
   AttachableMixin,
@@ -23,8 +23,8 @@ import {
   Lengthable,
   LengthableMixin,
   Thenable,
-  ThenableMixin
-} from "..";
+  ThenableMixin,
+} from '..'
 
 interface ButtonAccessorType
   extends Clickable<ButtonAccessorType>,
@@ -43,15 +43,14 @@ interface ButtonAccessorType
     Eachable<ButtonAccessorType>,
     Attachable<ButtonAccessorType>,
     Findable<ButtonAccessorType>,
-    Urlable<ButtonAccessorType> {
-}
+    Urlable<ButtonAccessorType> {}
 
-export const ButtonContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const ButtonContainableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Check the content of the label element
    */
   contains: (content: string) => {
-    cy.get(selector).find('bal-text').contains(content)
+    element().find('bal-text').contains(content)
     return creator()
   },
 })
@@ -91,5 +90,5 @@ export const ButtonAccessor: Accessor<ButtonAccessorType> = createAccessor<Butto
   EachableMixin,
   AttachableMixin,
   FindableMixin,
-  UrlableMixin
+  UrlableMixin,
 )

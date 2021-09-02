@@ -1,14 +1,14 @@
 /// <reference types="cypress" />
 
-import {Checkable} from '../mixins/checkable'
-import {Clickable} from '../mixins/clickable'
-import {Containable} from '../mixins/containable'
-import {Disableable} from '../mixins/disableable'
-import {Existable, ExistableMixin} from '../mixins/existable'
-import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
-import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
-import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
-import {Visible, VisibleMixin} from '../mixins/visible'
+import { Checkable } from '../mixins/checkable'
+import { Clickable } from '../mixins/clickable'
+import { Containable } from '../mixins/containable'
+import { Disableable } from '../mixins/disableable'
+import { Existable, ExistableMixin } from '../mixins/existable'
+import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
+import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
+import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
+import { Visible, VisibleMixin } from '../mixins/visible'
 
 interface CheckboxAccessorType
   extends Clickable<CheckboxAccessorType>,
@@ -18,15 +18,14 @@ interface CheckboxAccessorType
     Existable<CheckboxAccessorType>,
     Visible<CheckboxAccessorType>,
     NthSelectable<CheckboxAccessorType>,
-    Shouldable<CheckboxAccessorType> {
-}
+    Shouldable<CheckboxAccessorType> {}
 
-export const CheckboxClickableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const CheckboxClickableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Clicks the checkbox and set checked to true
    */
   click: (options?: Partial<Cypress.ClickOptions>) => {
-    const checkbox = cy.get(selector).find('label')
+    const checkbox = element().find('label')
     checkbox.click(options)
     return creator()
   },
@@ -34,7 +33,7 @@ export const CheckboxClickableMixin: Mixin = <T>({selector, creator}: MixinConte
    * Clicks the checkbox and set checked to true
    */
   check: (options?: Partial<Cypress.CheckOptions>) => {
-    const checkbox = cy.get(selector).find('label')
+    const checkbox = element().find('label')
     checkbox.click(options)
     return creator()
   },
@@ -42,7 +41,7 @@ export const CheckboxClickableMixin: Mixin = <T>({selector, creator}: MixinConte
    * Assert if the checkbox is checked
    */
   assertIsChecked: (shouldBeChecked: boolean = true) => {
-    const checkbox = cy.get(selector).find('input')
+    const checkbox = element().find('input')
     checkbox.should('have.attr', 'aria-checked', `${shouldBeChecked}`)
     return creator()
   },
@@ -50,7 +49,7 @@ export const CheckboxClickableMixin: Mixin = <T>({selector, creator}: MixinConte
    * Assert if the checkbox is disabled
    */
   assertIsDisabled: () => {
-    const checkbox = cy.get(selector).find('input')
+    const checkbox = element().find('input')
     checkbox.should('have.attr', 'aria-disabled', `true`)
     return creator()
   },
@@ -58,18 +57,18 @@ export const CheckboxClickableMixin: Mixin = <T>({selector, creator}: MixinConte
    * Assert if the checkbox is enabled and not disabled
    */
   assertIsEnabled: () => {
-    const checkbox = cy.get(selector).find('input')
+    const checkbox = element().find('input')
     checkbox.should('have.attr', 'aria-disabled', `false`)
     return creator()
   },
 })
 
-export const CheckboxContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const CheckboxContainableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Check the content of the label element
    */
   contains: (content: string) => {
-    const item = cy.get(selector).find('bal-text')
+    const item = element().find('bal-text')
     item.contains(content)
     return creator()
   },

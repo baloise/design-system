@@ -1,33 +1,41 @@
 /// <reference types="cypress" />
 
-import {Mixin} from './mixins'
+import { Mixin } from './mixins'
 
 export interface NthSelectable<T> {
   /**
-   * Selects the option at the given index.
+   * Get A DOM element at a specific index in an array of elements
    */
-  selectNth(index: number): T
+  eq(index: number, options?: Partial<Cypress.Loggable & Cypress.Timeoutable>): T
   /**
-   * Selects the last option.
+   * Get the first DOM element within a set of DOM elements.
    */
-  last(): T;
+  first(options?: Partial<Cypress.Loggable & Cypress.Timeoutable>): T
   /**
-   * Selects the parent option.
+   * Get the last DOM element within a set of DOM elements.
    */
-  parent(): T;
+  last(options?: Partial<Cypress.Loggable & Cypress.Timeoutable>): T
+  /**
+   * Get the parent DOM element of a set of DOM elements.
+   */
+  parent(options?: Partial<Cypress.Loggable & Cypress.Timeoutable>): T
 }
 
-export const NthSelectableMixin: Mixin = ({selector, creator}) => ({
-  selectNth: (index: number) => {
-    cy.get(selector).eq(index)
+export const NthSelectableMixin: Mixin = ({ element, creator }) => ({
+  eq: (index: number, options?: Partial<Cypress.Loggable & Cypress.Timeoutable>) => {
+    element().eq(index, options)
     return creator()
   },
-  last: () => {
-    cy.get(selector).last();
-    return creator();
+  first: (options?: Partial<Cypress.Loggable & Cypress.Timeoutable>) => {
+    element().first(options)
+    return creator()
   },
-  parent: () => {
-    cy.get(selector).parent();
-    return creator();
+  last: (options?: Partial<Cypress.Loggable & Cypress.Timeoutable>) => {
+    element().last(options)
+    return creator()
+  },
+  parent: (options?: Partial<Cypress.Loggable & Cypress.Timeoutable>) => {
+    element().parent(options)
+    return creator()
   },
 })

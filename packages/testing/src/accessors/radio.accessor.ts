@@ -28,7 +28,7 @@ interface RadioAccessorType
     Waitable<RadioAccessorType>,
     Selectable<RadioAccessorType> {}
 
-export const RadioSelectableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const RadioSelectableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Selects option
    */
@@ -36,14 +36,14 @@ export const RadioSelectableMixin: Mixin = <T>({ selector, creator }: MixinConte
     if (typeof indexes === 'number') {
       indexes = [indexes]
     }
-    cy.get(selector).within(() => {
+    element().within(() => {
       ;(indexes as number[]).forEach((index: number) => cy.get(`bal-radio`).eq(index).click())
     })
 
     return creator()
   },
   assertIsSelected: (index: number) => {
-    cy.get(selector).within(() => {
+    element().within(() => {
       cy.get(`bal-radio`).eq(index).find('input').should('be.checked')
     })
 

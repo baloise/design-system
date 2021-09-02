@@ -1,15 +1,15 @@
 /// <reference types="cypress" />
 
-import {Attributable, AttributableMixin} from '../mixins/attributable'
-import {Clickable, ClickableMixin} from '../mixins/clickable'
-import {Containable} from '../mixins/containable'
-import {Existable, ExistableMixin} from '../mixins/existable'
-import {Accessor, createAccessor, Mixin, MixinContext} from '../mixins/mixins'
-import {NthSelectable, NthSelectableMixin} from '../mixins/nthSelectable'
-import {Shouldable, ShouldableMixin} from '../mixins/shouldable'
-import {Urlable, UrlableMixin} from '../mixins/urlable'
-import {Visible, VisibleMixin} from '../mixins/visible'
-import {Waitable, WaitableMixin} from '../mixins/waitable'
+import { Attributable, AttributableMixin } from '../mixins/attributable'
+import { Clickable, ClickableMixin } from '../mixins/clickable'
+import { Containable } from '../mixins/containable'
+import { Existable, ExistableMixin } from '../mixins/existable'
+import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
+import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
+import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
+import { Urlable, UrlableMixin } from '../mixins/urlable'
+import { Visible, VisibleMixin } from '../mixins/visible'
+import { Waitable, WaitableMixin } from '../mixins/waitable'
 
 interface AccordionAccessorType
   extends Clickable<AccordionAccessorType>,
@@ -26,39 +26,39 @@ interface AccordionAccessorType
   assertBodyNotExists(): AccordionAccessorType
 }
 
-export const AccordionClickableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const AccordionClickableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Toggle the accordion
    */
   click: (options?: Partial<Cypress.ClickOptions>) => {
-    cy.get(selector).find('.sc-bal-accordion > button').click(options)
+    element().find('.sc-bal-accordion > button').click(options)
     return creator()
   },
 })
 
-export const AccordionContainableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const AccordionContainableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * It checks that the accordion label contains the given texts
    */
   contains: (content: string) => {
-    cy.get(selector).find('.sc-bal-accordion > button').contains(content)
+    element().find('.sc-bal-accordion > button').contains(content)
     return creator()
   },
 })
 
-export const AccordionAssertableMixin: Mixin = <T>({selector, creator}: MixinContext<T>) => ({
+export const AccordionAssertableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Asserts that accordion is open
    */
   assertBodyExists: () => {
-    cy.get(selector).should('have.attr', 'is-active')
+    element().should('have.attr', 'is-active')
     return creator()
   },
   /**
    * Asserts that accordion is closed
    */
   assertBodyNotExists: () => {
-    cy.get(selector).should('not.have.attr', 'is-active')
+    element().should('not.have.attr', 'is-active')
     return creator()
   },
 })

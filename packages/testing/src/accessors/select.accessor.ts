@@ -30,23 +30,23 @@ interface SelectAccessorType
   assertOptions(...options: string[]): SelectAccessorType
 }
 
-export const SelectClickableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const SelectClickableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Clicks the input
    */
   click: (options?: Partial<Cypress.ClickOptions>) => {
-    const button = cy.get(selector).find('.dropdown-trigger .input')
+    const button = element().find('.dropdown-trigger .input')
     button.click(options)
     return creator()
   },
 })
 
-export const SelectSelectableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const SelectSelectableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Selects dropdown item
    */
   select: (index: number) => {
-    cy.get(selector).within(() => {
+    element().within(() => {
       cy.get(`button.dropdown-item`).eq(index).click()
     })
     return creator()
@@ -58,7 +58,7 @@ export const SelectSelectableMixin: Mixin = <T>({ selector, creator }: MixinCont
     if (!Array.isArray(indexes)) {
       indexes = [indexes]
     }
-    cy.get(selector).within(() => {
+    element().within(() => {
       for (let n = 0; n < (indexes as number[]).length; n++) {
         const index = indexes[n]
         cy.get(`button.dropdown-item`).eq(index).should('have.class', 'is-selected')
@@ -68,12 +68,12 @@ export const SelectSelectableMixin: Mixin = <T>({ selector, creator }: MixinCont
   },
 })
 
-export const SelectAssertableOptionsMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const SelectAssertableOptionsMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Checks the options
    */
   assertOptions: (...options: string[]) => {
-    cy.get(selector).within(() => {
+    element().within(() => {
       cy.get('bal-select-option').then(opt => {
         // @ts-ignore
         const actual = [...opt.toArray()].map(o => o.value)
@@ -84,32 +84,32 @@ export const SelectAssertableOptionsMixin: Mixin = <T>({ selector, creator }: Mi
   },
 })
 
-export const SelectContainableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const SelectContainableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Checks if input have a content
    */
   contains: (content: string | number | RegExp) => {
-    cy.get(selector).find('.dropdown-trigger .input').should('have.value', content)
+    element().find('.dropdown-trigger .input').should('have.value', content)
     return creator()
   },
 })
 
-export const SelectTypeableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const SelectTypeableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Checks if input have a content
    */
   type: (text: string, options?: Partial<Cypress.TypeOptions>) => {
-    cy.get(selector).find('.dropdown-trigger .input').type(text, options)
+    element().find('.dropdown-trigger .input').type(text, options)
     return creator()
   },
 })
 
-export const SelectClearMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+export const SelectClearMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   /**
    * Checks if input have a content
    */
   clear: (options?: Partial<Cypress.ClearOptions>) => {
-    cy.get(selector).invoke('val', '')
+    element().invoke('val', '')
     return creator()
   },
 })

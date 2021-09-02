@@ -10,17 +10,17 @@ export interface Shouldable<T> {
   should(chainers: string, attribute?: string, content?: string): T
 }
 
-export const ShouldableMixin: Mixin = ({ selector, creator }) => ({
+export const ShouldableMixin: Mixin = ({ element, creator }) => ({
   should: function (chainers: string, attribute?: string, content?: string) {
     switch (arguments.length) {
       case 2:
-        cy.get(selector).should(chainers, attribute)
+        element().should(chainers, attribute)
         break
       case 3:
-        cy.get(selector).should(chainers, attribute, content)
+        element().should(chainers, attribute, content)
         break
       default:
-        cy.get(selector).should(chainers)
+        element().should(chainers)
         break
     }
     return creator()

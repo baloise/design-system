@@ -1,17 +1,18 @@
 /// <reference types="cypress" />
 
-import {Mixin} from './mixins'
+import { Element } from '../../../components/dist/types/stencil-public-runtime'
+import { Mixin } from './mixins'
 
 export interface Existable<T> {
   /**
    * Asserts that the element exists/not exists in the DOM
    */
-  assertExists(exists?: boolean): T;
+  assertExists(exists?: boolean): T
 }
 
-export const ExistableMixin: Mixin = ({selector, creator}) => ({
+export const ExistableMixin: Mixin = ({ element, creator }) => ({
   assertExists: (exists = true) => {
-    cy.get(selector).should(exists ? 'exist' : 'not.exist');
-    return creator();
+    element().should(exists ? 'exist' : 'not.exist')
+    return creator()
   },
 })
