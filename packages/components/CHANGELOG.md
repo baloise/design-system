@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.4](https://github.com/baloise/design-system/compare/v1.12.3...v1.12.4) (2021-09-02)
+
+
+### Bug Fixes
+
+* **input:** enable normal input again ([1a29327](https://github.com/baloise/design-system/commit/1a29327d9f0eeeb707cae61863f63a6aca50a117))
+
+
+
+
+
 ## [1.12.3](https://github.com/baloise/design-system/compare/v1.12.2...v1.12.3) (2021-09-01)
 
 
