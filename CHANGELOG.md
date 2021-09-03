@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/baloise/design-system/compare/v1.12.5...v1.13.0) (2021-09-03)
+
+
+### Features
+
+* **angular:** add bal-ng-error ([7f41482](https://github.com/baloise/design-system/commit/7f4148242640d54fc3ec0b33a39b83a43592492b))
+
+
+
+## 1.12.4 (2021-09-02)
+
+
+
+
+
 ## [1.12.5](https://github.com/baloise/design-system/compare/v1.12.4...v1.12.5) (2021-09-03)
 
 
