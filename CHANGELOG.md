@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.1](https://github.com/baloise/design-system/compare/v1.13.0...v1.13.1) (2021-09-06)
+
+
+### Bug Fixes
+
+* **angular:** listens for the first given error ([67bd4c4](https://github.com/baloise/design-system/commit/67bd4c491e0e2425df218903caa19b626e34d615))
+* only format value if number input is active ([23ba116](https://github.com/baloise/design-system/commit/23ba11659e3d6da588881a03cd53352765f8c659))
+* update stencil to version 2.8.0 ([0f80d25](https://github.com/baloise/design-system/commit/0f80d257543619de4e83081cba95b49f55e0581e))
+
+
+
+
+
 # [1.13.0](https://github.com/baloise/design-system/compare/v1.12.5...v1.13.0) (2021-09-03)
 
 
