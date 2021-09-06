@@ -75,7 +75,7 @@ export class ServicesPageComponent {
 | Attribute    | Description                                                    | Type                                                         | Default |
 | :----------- | :------------------------------------------------------------- | :----------------------------------------------------------- | :------ |
 | **color**    | The theme type of the toast. Given by bulma our css framework. | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
-| **duration** | The duration of the toast                                      | `number`                                                     | `0`     |
+| **duration** | The duration of the toast in milliseconds.                     | `number`                                                     | `0`     |
 
 ### Events
 
