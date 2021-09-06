@@ -20,7 +20,7 @@ Cypress.Commands.overwrite('clear', (originalFn, element: Cypress.Chainable<JQue
   if (isSelect(element)) {
     return cy
       .wrap(element)
-      .then($el => $el[0].clear())
+      .then($el => ($el as any)[0].clear())
       .wrap(element)
   }
 

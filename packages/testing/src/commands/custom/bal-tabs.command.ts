@@ -5,7 +5,7 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  (subject, arg1, arg2) => {
+  subject => {
     return cy.wrap(subject).find(selectors.tabs.tabItems)
   },
 )

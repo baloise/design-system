@@ -1,4 +1,4 @@
-import { isSelect, isTabs, selectors, wrapRoot } from '../helpers'
+import { isSelect, isTabs, selectors } from '../helpers'
 
 Cypress.Commands.overwrite('select', (originalFn, element: Cypress.Chainable<JQuery>, values, options) => {
   if (isSelect(element)) {

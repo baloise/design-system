@@ -5,7 +5,7 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  (subject, arg1, arg2) => {
+  subject => {
     return cy.wrap(subject).find(selectors.modal.main).should('have.class', 'is-active')
   },
 )
@@ -15,7 +15,7 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  (subject, arg1, arg2) => {
+  subject => {
     return cy.wrap(subject).find(selectors.modal.main).should('not.have.class', 'is-active')
   },
 )

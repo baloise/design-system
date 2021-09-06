@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 import { isCheckbox, isRadio, selectors, wrapRoot } from '../helpers'
 
 Cypress.Commands.overwrite('check', (originalFn, element: Cypress.Chainable<JQuery>, options) => {

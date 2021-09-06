@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 import { isAccordion, isButton, isCheckbox, isInput, isRadio, selectors, wrapRoot } from '../helpers'
 
 Cypress.Commands.overwrite('contains', (originalFn, element: Cypress.Chainable<JQuery>, content, options) => {

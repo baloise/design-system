@@ -2,7 +2,7 @@
  * Helper fn to identify the element/component
  */
 type isElementType = (el: Cypress.Chainable<JQuery>) => boolean
-const isElement = (el: Cypress.Chainable<JQuery>, name: string) => el[0].nodeName === name
+const isElement = (el: Cypress.Chainable<JQuery>, name: string) => (el as any)[0].nodeName === name
 export const hasClass = (el: Cypress.Chainable<JQuery>, name: string) => {
   return (el as unknown as JQuery).hasClass(name)
 }

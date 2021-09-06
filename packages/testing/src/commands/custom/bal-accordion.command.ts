@@ -3,7 +3,7 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  (subject, arg1, arg2) => {
+  subject => {
     return cy.wrap(subject).should('have.attr', 'is-active', '')
   },
 )
@@ -13,7 +13,7 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  (subject, arg1, arg2) => {
+  subject => {
     return cy.wrap(subject).should('not.have.attr', 'is-active')
   },
 )

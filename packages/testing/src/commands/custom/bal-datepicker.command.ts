@@ -1,8 +1,11 @@
-const year = (date: Date): number => date.getFullYear()
-const month = (date: Date): number => date.getMonth()
-const day = (date: Date): number => date.getDate()
-const pad = (value: number) => (value < 10 ? `0${value}` : `${value}`)
-const isoString = (date: Date) => `${year(date)}-${pad(month(date) + 1)}-${pad(day(date))}`
+// const year = (date: Date): number => date.getFullYear()
+// const month = (date: Date): number => date.getMonth()
+// const day = (date: Date): number => date.getDate()
+// const pad = (value: number) => (value < 10 ? `0${value}` : `${value}`)
+// const isoString = (date: Date) => `${year(date)}-${pad(month(date) + 1)}-${pad(day(date))}`
+
+import { year, month, isoString } from '@baloise/design-system-components'
+
 const selectorDayBox = (date: Date) => `[data-date="${isoString(date)}"]`
 
 Cypress.Commands.add(
@@ -10,7 +13,7 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  (subject, arg1, arg2) => {
+  subject => {
     return cy.wrap(subject).find('.datepicker-trigger-icon').click().wrap(subject)
   },
 )
@@ -20,7 +23,7 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  (subject, arg1, arg2) => {
+  subject => {
     return cy.wrap(subject).find('bal-dropdown').should('have.attr', 'is-active', '').wrap(subject)
   },
 )
@@ -30,7 +33,7 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  (subject, arg1, arg2) => {
+  subject => {
     return cy.wrap(subject).find('bal-dropdown').should('not.have.attr', 'is-active').wrap(subject)
   },
 )
@@ -40,7 +43,7 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  (subject, date, arg2) => {
+  (subject, date) => {
     return cy
       .wrap(subject)
       .balDatepickerIsOpen()
@@ -58,7 +61,7 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  (subject, date, arg2) => {
+  (subject, date) => {
     return cy.wrap(subject).find(selectorDayBox(date)).should('not.have.class', 'is-disabled')
   },
 )
@@ -68,7 +71,7 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  (subject, date, arg2) => {
+  (subject, date) => {
     return cy.wrap(subject).find(selectorDayBox(date)).should('have.class', 'is-disabled')
   },
 )
