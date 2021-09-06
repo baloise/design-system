@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.1](https://github.com/baloise/design-system/compare/v1.13.0...v1.13.1) (2021-09-06)
+
+
+### Bug Fixes
+
+* only format value if number input is active ([23ba116](https://github.com/baloise/design-system/commit/23ba11659e3d6da588881a03cd53352765f8c659))
+* update stencil to version 2.8.0 ([0f80d25](https://github.com/baloise/design-system/commit/0f80d257543619de4e83081cba95b49f55e0581e))
+
+
+
+
+
+# [1.13.0](https://github.com/baloise/design-system/compare/v1.12.5...v1.13.0) (2021-09-03)
+
+**Note:** Version bump only for package @baloise/design-system-components
+
+
+
+
+
+## [1.12.5](https://github.com/baloise/design-system/compare/v1.12.4...v1.12.5) (2021-09-03)
+
+**Note:** Version bump only for package @baloise/design-system-components
+
+
+
+
+
+## [1.12.4](https://github.com/baloise/design-system/compare/v1.12.3...v1.12.4) (2021-09-02)
+
+
+### Bug Fixes
+
+* **input:** enable normal input again ([1a29327](https://github.com/baloise/design-system/commit/1a29327d9f0eeeb707cae61863f63a6aca50a117))
+
+
+
+
+
 ## [1.12.3](https://github.com/baloise/design-system/compare/v1.12.2...v1.12.3) (2021-09-01)
 
 

@@ -1,7 +1,6 @@
 <bal-card class="mt-6">
   <bal-card-content>
     <bal-heading space="bottom">Reactive Form</bal-heading>
-    <bal-heading level="h3" color="warning" space="bottom" subtitle>{{ form.status }}</bal-heading>
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="columns is-multiline mt-0">
       <bal-field class="column is-full py-0" expanded [disabled]="form.get('gender')?.disabled">
         <bal-field-control>
@@ -10,56 +9,41 @@
             <bal-radio name="gender" value="female">Female</bal-radio>
           </bal-radio-group>
         </bal-field-control>
-        <bal-field-message
-          color="danger"
-          *ngIf="form.get('gender')?.dirty && form.get('gender')?.errors && form.get('gender')?.hasError('required')"
-          >Required Field</bal-field-message
-        >
+        <bal-field-message color="danger">
+          <bal-ng-error controlName="gender" error="isRequired">This field is required</bal-ng-error>
+        </bal-field-message>
       </bal-field>
 
       <bal-field class="column is-half py-0" expanded required [disabled]="form.get('firstname')?.disabled">
         <bal-field-label required>Firstname</bal-field-label>
         <bal-field-control>
-          <bal-input
-            name="firstname"
-            placeholder="Enter your firstname"
-            formControlName="firstname"
-            required
-          ></bal-input>
+          <bal-input name="firstname" placeholder="Enter your firstname" formControlName="firstname"></bal-input>
         </bal-field-control>
-        <bal-field-message
-          color="danger"
-          *ngIf="
-            form.get('firstname')?.dirty && form.get('firstname')?.errors && form.get('firstname')?.hasError('required')
-          "
-          >Required Field</bal-field-message
-        >
+        <bal-field-message color="danger">
+          <bal-ng-error controlName="firstname" error="isRequired">This field is required</bal-ng-error>
+          <bal-ng-error controlName="firstname" error="isMinLength">Min length is 4</bal-ng-error>
+          <bal-ng-error controlName="firstname" error="isEmail">Not a valid email</bal-ng-error>
+        </bal-field-message>
       </bal-field>
 
       <bal-field class="column is-half py-0" expanded required [disabled]="form.get('lastname')?.disabled">
         <bal-field-label required>Lastname</bal-field-label>
         <bal-field-control>
-          <bal-input name="lastname" placeholder="Enter your lastname" formControlName="lastname" required></bal-input>
+          <bal-input name="lastname" placeholder="Enter your lastname" formControlName="lastname"></bal-input>
         </bal-field-control>
-        <bal-field-message
-          color="danger"
-          *ngIf="
-            form.get('lastname')?.dirty && form.get('lastname')?.errors && form.get('lastname')?.hasError('required')
-          "
-          >Required Field</bal-field-message
-        >
+        <bal-field-message color="danger">
+          <bal-ng-error controlName="lastname" error="isRequired">This field is required</bal-ng-error>
+        </bal-field-message>
       </bal-field>
 
       <bal-field class="column is-half py-0" expanded required [disabled]="form.get('street')?.disabled">
         <bal-field-label required>Street</bal-field-label>
         <bal-field-control>
-          <bal-input name="street" placeholder="Enter your street" formControlName="street" required></bal-input>
+          <bal-input name="street" placeholder="Enter your street" formControlName="street"></bal-input>
         </bal-field-control>
-        <bal-field-message
-          color="danger"
-          *ngIf="form.get('street')?.dirty && form.get('street')?.errors && form.get('street')?.hasError('required')"
-          >Required Field</bal-field-message
-        >
+        <bal-field-message color="danger">
+          <bal-ng-error controlName="street" error="isRequired">This field is required</bal-ng-error>
+        </bal-field-message>
       </bal-field>
 
       <div class="column is-half pb-0">
@@ -67,35 +51,21 @@
           <bal-field class="column is-one-third py-0" expanded [disabled]="form.get('postalCode')?.disabled">
             <bal-field-label>Postal Code</bal-field-label>
             <bal-field-control>
-              <bal-input
-                name="postalCode"
-                placeholder="1234"
-                formControlName="postalCode"
-                number-keyboard
-                required
-              ></bal-input>
+              <bal-input name="postalCode" placeholder="1234" formControlName="postalCode" number-keyboard></bal-input>
             </bal-field-control>
-            <bal-field-message
-              color="danger"
-              *ngIf="
-                form.get('postalCode')?.dirty &&
-                form.get('postalCode')?.errors &&
-                form.get('postalCode')?.hasError('required')
-              "
-              >Required Field</bal-field-message
-            >
+            <bal-field-message color="danger">
+              <bal-ng-error controlName="postalCode" error="isRequired">This field is required</bal-ng-error>
+            </bal-field-message>
           </bal-field>
 
           <bal-field class="column is-two-thirds py-0" expanded [disabled]="form.get('city')?.disabled">
             <bal-field-label>City</bal-field-label>
             <bal-field-control>
-              <bal-input name="city" placeholder="Vevey" formControlName="city" required></bal-input>
+              <bal-input name="city" placeholder="Vevey" formControlName="city"></bal-input>
             </bal-field-control>
-            <bal-field-message
-              color="danger"
-              *ngIf="form.get('city')?.dirty && form.get('city')?.errors && form.get('city')?.hasError('required')"
-              >Required Field</bal-field-message
-            >
+            <bal-field-message color="danger">
+              <bal-ng-error controlName="city" error="isRequired">This field is required</bal-ng-error>
+            </bal-field-message>
           </bal-field>
         </div>
       </div>
@@ -109,11 +79,9 @@
             </bal-select-option>
           </bal-select>
         </bal-field-control>
-        <bal-field-message
-          color="danger"
-          *ngIf="form.get('canton')?.dirty && form.get('canton')?.errors && form.get('canton')?.hasError('required')"
-          >Required Field</bal-field-message
-        >
+        <bal-field-message color="danger">
+          <bal-ng-error controlName="canton" error="isRequired">This field is required</bal-ng-error>
+        </bal-field-message>
       </bal-field>
 
       <bal-field class="column is-half py-0" expanded [disabled]="form.get('birthdate')?.disabled">
@@ -121,40 +89,39 @@
         <bal-field-control>
           <bal-datepicker placeholder="Select your birthdate" formControlName="birthdate" expanded></bal-datepicker>
         </bal-field-control>
-        <bal-field-message
-          color="danger"
-          *ngIf="form.get('birthdate')?.errors && form.get('birthdate')?.hasError('required')"
-          >Required Field</bal-field-message
-        >
-        <bal-field-message
-          color="danger"
-          *ngIf="
-            form.get('birthdate')?.dirty && form.get('birthdate')?.errors && form.get('birthdate')?.hasError('isAfter')
-          "
-          >Date must be after of today</bal-field-message
-        >
+        <bal-field-message color="danger">
+          <bal-ng-error controlName="birthdate" error="isRequired">This field is required</bal-ng-error>
+        </bal-field-message>
+      </bal-field>
+
+      <bal-field class="column is-full py-0" expanded required [disabled]="form.get('email')?.disabled">
+        <bal-field-label required>Email</bal-field-label>
+        <bal-field-control>
+          <bal-input name="email" placeholder="Enter your email" formControlName="email"></bal-input>
+        </bal-field-control>
+        <bal-field-message color="danger">
+          <bal-ng-error controlName="email" error="isRequired">This field is required</bal-ng-error>
+          <bal-ng-error controlName="email" error="isMinLength">Min length is 4</bal-ng-error>
+          <bal-ng-error controlName="email" error="isEmail">Not a valid email</bal-ng-error>
+        </bal-field-message>
       </bal-field>
 
       <bal-field class="column is-full py-0" expanded [disabled]="form.get('checkbox')?.disabled">
         <bal-field-control>
           <bal-checkbox formControlName="checkbox">Checkbox</bal-checkbox>
         </bal-field-control>
-        <bal-field-message
-          color="danger"
-          *ngIf="form.get('checkbox')?.errors && form.get('checkbox')?.hasError('required')"
-          >Required Field</bal-field-message
-        >
+        <bal-field-message color="danger">
+          <bal-ng-error controlName="checkbox" error="isRequired">This field is required</bal-ng-error>
+        </bal-field-message>
       </bal-field>
       <bal-field class="column is-full py-0" expanded [disabled]="form.get('comment')?.disabled">
         <bal-field-label>Comment</bal-field-label>
         <bal-field-control>
           <bal-textarea formControlName="comment" name="comment" placeholder="Enter your comment"></bal-textarea>
         </bal-field-control>
-        <bal-field-message
-          color="danger"
-          *ngIf="form.get('comment')?.dirty && form.get('comment')?.errors && form.get('comment')?.hasError('required')"
-          >Required Field</bal-field-message
-        >
+        <bal-field-message color="danger">
+          <bal-ng-error controlName="comment" error="isRequired">This field is required</bal-ng-error>
+        </bal-field-message>
       </bal-field>
     </form>
   </bal-card-content>

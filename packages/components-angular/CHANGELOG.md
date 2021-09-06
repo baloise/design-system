@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.1](https://github.com/baloise/design-system/compare/v1.13.0...v1.13.1) (2021-09-06)
+
+
+### Bug Fixes
+
+* **angular:** listens for the first given error ([67bd4c4](https://github.com/baloise/design-system/commit/67bd4c491e0e2425df218903caa19b626e34d615))
+
+
+
+
+
+# [1.13.0](https://github.com/baloise/design-system/compare/v1.12.5...v1.13.0) (2021-09-03)
+
+
+### Features
+
+* **angular:** add bal-ng-error ([7f41482](https://github.com/baloise/design-system/commit/7f4148242640d54fc3ec0b33a39b83a43592492b))
+
+
+
+## 1.12.4 (2021-09-02)
+
+
+
+
+
+## [1.12.5](https://github.com/baloise/design-system/compare/v1.12.4...v1.12.5) (2021-09-03)
+
+**Note:** Version bump only for package @baloise/design-system-components-angular
+
+
+
+
+
+## [1.12.4](https://github.com/baloise/design-system/compare/v1.12.3...v1.12.4) (2021-09-02)
+
+**Note:** Version bump only for package @baloise/design-system-components-angular
+
+
+
+
+
 ## [1.12.3](https://github.com/baloise/design-system/compare/v1.12.2...v1.12.3) (2021-09-01)
 
 **Note:** Version bump only for package @baloise/design-system-components-angular

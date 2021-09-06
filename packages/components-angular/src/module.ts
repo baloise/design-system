@@ -12,6 +12,7 @@ import { FILTERS } from './filters'
 import { BalToastService } from './bal-toast.service'
 import { BalSnackbarService } from './bal-snackbar.service'
 import { AutoFocus } from './focus.directive'
+import { BalNgErrorComponent } from './components/error/error.component'
 
 const DECLARATIONS = [
   // proxies
@@ -19,6 +20,9 @@ const DECLARATIONS = [
 
   // filters
   ...FILTERS,
+
+  // components
+  BalNgErrorComponent,
 
   // directives
   AutoFocus,

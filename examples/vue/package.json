@@ -25,7 +25,7 @@
     "cypress:open": "cypress open"
   },
   "dependencies": {
-    "@baloise/design-system-components-vue": "^1.10.0",
+    "@baloise/design-system-components-vue": "^1.12.3",
     "@baloise/vue-axios": "^1.2.0",
     "ag-grid-community": "^26.0.0",
     "axios": "^0.21.1",
