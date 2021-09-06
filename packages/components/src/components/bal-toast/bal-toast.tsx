@@ -19,7 +19,7 @@ export class Toast {
   @Prop() color: ColorTypes | '' = ''
 
   /**
-   * The duration of the toast
+   * The duration of the toast in milliseconds.
    */
   @Prop() duration: number = 0
 
