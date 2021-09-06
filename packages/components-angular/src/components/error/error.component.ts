@@ -7,12 +7,13 @@ import { AbstractControl, ControlContainer } from '@angular/forms'
   styleUrls: ['./error.component.scss'],
 })
 export class BalNgErrorComponent implements OnChanges {
-  @Input()
-  control: AbstractControl | null
+  control?: AbstractControl | null
+
+  @Input() error?: string
 
   @HostBinding('attr.controlname')
   @Input()
-  controlName: string
+  controlName?: string
 
   constructor(
     @Optional()
@@ -21,14 +22,45 @@ export class BalNgErrorComponent implements OnChanges {
     private controlContainer: ControlContainer,
   ) {}
 
-  get displayError(): boolean {
-    return this.control === null || (this.control.invalid && this.control.touched)
+  get hasError(): boolean {
+    if (
+      this.control === undefined ||
+      this.control === null ||
+      this.controlName === undefined ||
+      this.controlName === null
+    ) {
+      return false
+    } else {
+      if (!this.control.touched) {
+        return false
+      }
+
+      if (this.error === undefined || this.error === null) {
+        return this.control.invalid
+      } else {
+        const errors = this.controlContainer.control?.get(this.controlName)?.errors
+        if (errors) {
+          const keys = Object.keys(errors)
+          if (keys.length > 0) {
+            const isFirstKeyOurError = keys[0] === this.error
+            return isFirstKeyOurError
+          }
+        }
+      }
+    }
+
+    return false
   }
 
   ngOnChanges() {
     if (this.controlContainer) {
-      if (this.controlName !== null && this.controlContainer.control !== null) {
-        this.control = this.controlContainer.control.get(this.controlName)
+      if (this.controlName !== null && this.controlName !== undefined) {
+        this.control = this.controlContainer.control?.get(this.controlName)
+        if (this.control === undefined || this.control === null) {
+          console.warn('[BalNgErrorComponent] Could not find the given controlName in the form control container')
+        }
+      } else {
+        console.warn('[BalNgErrorComponent] Please provide a controlName')
       }
     }
   }
