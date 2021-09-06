@@ -1,34 +1,34 @@
-import { now } from '@baloise/design-system-components'
+import { isoString, now } from '@baloise/design-system-components'
 import { app } from '../support/app'
 
 describe('Datepicker', () => {
   let page = app.getDatepickerPage()
 
-  it('should navigate to Datepicker page and open Datepicker', () => {
+  it('should open and close the datepicker', () => {
     page.open()
-    page.datepicker.get().open()
+    cy.get(page.datepicker).balDatepickerToggle().balDatepickerIsOpen().balDatepickerToggle().balDatepickerIsClosed()
   })
 
-  it('should navigate to Datepicker page and pick the date in Datepicker', () => {
+  it('should pick the date in datepicker', () => {
     page.open()
-    page.datepicker.get().pick(now())
+    cy.get(page.datepicker).balDatepickerToggle().balDatepickerPick(now())
   })
 
-  it('should navigate to Datepicker page and check the date in Datepicker', () => {
+  it('should type and assert the date in the datepicker', () => {
     page.open()
-    page.datepicker.get().pick(new Date())
-    page.datepicker.get().shouldHaveValue(new Date())
+    cy.get(page.datepicker).type('20.02.2021').should('have.value', '20.02.2021')
+    cy.get(page.datepicker).clear().type('03.03.2021').should('not.have.value', '20.02.2021')
   })
 
-  it('should navigate to Datepicker page and write the date in input of the Datepicker', () => {
+  it('should assert that the datepicker is disabled or not', () => {
     page.open()
-    page.datepicker.get().open()
-    page.datepicker.get().write('12.12.2020')
+    cy.get(page.datepicker).should('not.be.disabled')
+    cy.get(page.datepickerDisabled).should('be.disabled')
   })
 
-  it('should navigate to Datepicker page and assert if date is in range in the Datepicker', () => {
+  it('should assert if date is in range in the Datepicker', () => {
     page.open()
-    page.datepicker.get().open()
-    page.datepicker.get().assertDateInRange(new Date(), false)
+    cy.get(page.datepickerRange).balDatepickerIsDateInRange(new Date(2021, 0, 6))
+    cy.get(page.datepickerRange).balDatepickerIsDateNotInRange(new Date(2021, 0, 5))
   })
 })

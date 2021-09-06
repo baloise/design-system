@@ -21,27 +21,34 @@ export interface MixinContext<T, E = unknown> {
 
 export const createAccessor =
   <T, E = unknown>(...mixins: Mixin[]) =>
-  (_selector: string | E): AccessorGetter<T> => ({
-    selector: _selector,
-    get(selector = _selector) {
-      const creator = (selectorCreator?: any) => {
-        if (selectorCreator) {
-          return createAccessor(...mixins)(selectorCreator).get(selectorCreator)
+  (_selector: string | E): AccessorGetter<T> => {
+    console.warn("[DEPRECATED] - Please use cypress instead of the accessors => cy.get(dataTestSelector('accordion'))")
+
+    return {
+      selector: _selector,
+      get(selector = _selector) {
+        console.warn(
+          "[DEPRECATED] - Please use cypress instead of the accessors => cy.get(dataTestSelector('accordion'))",
+        )
+        const creator = (selectorCreator?: any) => {
+          if (selectorCreator) {
+            return createAccessor(...mixins)(selectorCreator).get(selectorCreator)
+          }
+          return createAccessor(...mixins)(selector).get(selector)
         }
-        return createAccessor(...mixins)(selector).get(selector)
-      }
-      const element = (): Cypress.Chainable<JQuery<unknown>> => {
-        if (typeof selector === 'string') {
-          return cy.get(selector)
+        const element = (): Cypress.Chainable<JQuery<unknown>> => {
+          if (typeof selector === 'string') {
+            return cy.get(selector)
+          }
+          return cy.wrap(selector)
         }
-        return cy.wrap(selector)
-      }
-      return mixins.reduce(
-        (acc, mixin) => ({
-          ...acc,
-          ...mixin({ selector, creator, element }),
-        }),
-        {},
-      ) as T
-    },
-  })
+        return mixins.reduce(
+          (acc, mixin) => ({
+            ...acc,
+            ...mixin({ selector, creator, element }),
+          }),
+          {},
+        ) as T
+      },
+    }
+  }

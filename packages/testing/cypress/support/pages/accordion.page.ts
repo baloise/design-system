@@ -1,7 +1,7 @@
-import { AccordionAccessor, dataTestSelector } from '../../../src'
+import { dataTestSelector } from '../../../src'
 
 export class AccordionPage {
-  accordion = AccordionAccessor(dataTestSelector("accordion"))
+  accordion = dataTestSelector('accordion')
   open() {
     cy.visit('/components/bal-accordion')
   }

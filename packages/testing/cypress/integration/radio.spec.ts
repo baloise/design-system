@@ -9,9 +9,9 @@ describe('Radio', () => {
     radio.select(0).assertIsSelected(0)
   })
 
-  it('should select the 2nd select-button', () => {
-    page.open()
-    const selectButton = page.selectButton.get()
-    selectButton.select(1).assertIsSelected(1)
-  })
+  // it('should select the 2nd select-button', () => {
+  //   page.open()
+  //   const selectButton = page.selectButton.get()
+  //   selectButton.select(1).assertIsSelected(1)
+  // })
 })

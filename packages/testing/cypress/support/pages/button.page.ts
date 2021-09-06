@@ -1,8 +1,8 @@
-import { ButtonAccessor, dataTestSelector } from '../../../src'
+import { dataTestSelector } from '../../../src'
 
 export class ButtonPage {
-  primaryButton = ButtonAccessor(dataTestSelector("primary-button"))
-  primaryButtonDisabled = ButtonAccessor(dataTestSelector("primary-button-disabled"))
+  primaryButton = dataTestSelector('primary-button')
+  primaryButtonDisabled = dataTestSelector('primary-button-disabled')
 
   open() {
     cy.visit('/components/bal-button')

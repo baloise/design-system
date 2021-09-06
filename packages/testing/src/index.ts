@@ -2,6 +2,7 @@
 
 export * from './selectors'
 export * from './mixins/mixins'
+export * from './commands'
 
 export * from './mixins/andable'
 export * from './mixins/attachable'

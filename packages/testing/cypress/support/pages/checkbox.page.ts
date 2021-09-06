@@ -1,8 +1,8 @@
-import { dataTestSelector, CheckboxAccessor } from '../../../src/'
+import { dataTestSelector } from '../../../src/'
 
 export class CheckboxPage {
-  normalCheckboxElement = CheckboxAccessor(dataTestSelector('checkbox-normal'))
-  disabledCheckboxElement = CheckboxAccessor(dataTestSelector('checkbox-disabled'))
+  normalCheckboxElement = dataTestSelector('checkbox-normal')
+  disabledCheckboxElement = dataTestSelector('checkbox-disabled')
 
   open() {
     cy.visit('/components/bal-checkbox')
