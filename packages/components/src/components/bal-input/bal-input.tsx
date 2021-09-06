@@ -260,7 +260,10 @@ export class Input implements ComponentInterface {
   private getFormattedValue(): string {
     const value = this.getRawValue()
     const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
-    return `${formatInputValue(value, this.decimal)}${suffix}`
+    if (this.numberInput) {
+      return `${formatInputValue(value, this.decimal)}${suffix}`
+    }
+    return `${value}${suffix}`
   }
 
   private onInput = (ev: InputEvent) => {
