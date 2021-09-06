@@ -11,6 +11,7 @@
     "url": "https://github.com/hirsch88"
   },
   "scripts": {
+    "setup": "npm install && npm run build && npm run bootstrap",
     "postinstall": "npm run bootstrap && npm run docs:install && node .scripts/copy.script.js",
     "bootstrap": "lerna bootstrap",
     "serve": "npm run lib:serve",
