@@ -28,7 +28,7 @@ const parseTypes = (fileContent, filePath) => {
     commands.push({
       name: commandNode.name.escapedText,
       description: commandComment,
-      signature: commandNode.getText(sourceFile),
+      signature: commandNode.getText(sourceFile).replace(commandNode.name.escapedText, ''),
       path: filePath,
       component: filePath.split('/').pop().replace('.types.ts', ''),
     })

@@ -1,4 +1,3 @@
-import { dataTestSelector } from '../../src'
 import { app } from '../support/app'
 
 describe('Accordion', () => {

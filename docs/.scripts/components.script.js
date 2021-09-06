@@ -45,11 +45,11 @@ async function generateSidebar(components) {
   await file.save(path.join(__dirname, '../src/.vuepress/generated/components.json'), JSON.stringify(sidebar))
 }
 
-async function generateComponentMarkdown(component, dir, accessors) {
+async function generateComponentMarkdown(component, dir, commands) {
   const { markdown, scripts } = generateExamples(component)
   JAVASCRIPT_CONTENT.push(scripts)
 
-  const { top, usage, style, slots, code } = await componentDoc.parse(component)
+  const { top, usage, style, slots, code, testingContent } = await componentDoc.parse(component)
 
   const lines = []
   lines.push('---')
@@ -85,9 +85,9 @@ async function generateComponentMarkdown(component, dir, accessors) {
   const componentProps = api.printProp(component)
   const componentEvents = api.printEvents(component)
   const componentMethods = api.printMethods(component)
-  const accessor = accessors.get(component.tag)
+  const command = commands.get(component.tag)
   const hasCodeTab =
-    componentProps.length > 0 || componentEvents.length > 0 || componentMethods.length > 0 || accessor !== undefined
+    componentProps.length > 0 || componentEvents.length > 0 || componentMethods.length > 0 || command !== undefined
   if (hasCodeTab) {
     lines.push('## Code')
     lines.push('')
@@ -115,12 +115,12 @@ async function generateComponentMarkdown(component, dir, accessors) {
       lines.push('')
     }
 
-    if (accessor !== undefined) {
+    if (command !== undefined || testingContent.length > 0) {
       lines.push('### Testing')
       lines.push('')
-      const testingContent = testing.parse(accessor)
-      lines.push('')
       lines.push(testingContent)
+      lines.push('')
+      lines.push(testing.parse(command))
     }
 
     lines.push('')
@@ -142,7 +142,7 @@ async function generateComponentMarkdown(component, dir, accessors) {
 
   lines.push('')
 
-  const githubContent = github.parse(component, accessor)
+  const githubContent = github.parse(component, command)
   lines.push(githubContent)
   lines.push('')
 
@@ -161,14 +161,14 @@ async function generateComponentMarkdown(component, dir, accessors) {
 }
 
 async function generateMarkdown(components) {
-  const accessors = await testingLib.accessors()
+  const commands = await testingLib.commands()
   const dir = path.join(__dirname, `../src/components/components`)
   await forEachComponent(components, async component => {
-    await generateComponentMarkdown(component, dir, accessors)
+    await generateComponentMarkdown(component, dir, commands)
     if (component.childComponents.length > 0) {
       component.childComponents.forEach(async childComponentTag => {
         const childComponent = components.get(childComponentTag)
-        await generateComponentMarkdown(childComponent, dir, accessors)
+        await generateComponentMarkdown(childComponent, dir, commands)
       })
     }
   })

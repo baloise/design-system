@@ -2,23 +2,16 @@ const table = require('markdown-table')
 const { NEWLINE } = require('../../../.scripts/constants')
 const { printCode, printBold } = require('./markdown.util')
 
-const parse = accessor => {
+const parse = command => {
   const lines = []
-  if (accessor) {
-    lines.push(`${accessor.description.join(NEWLINE).trim()}`)
-    lines.push('')
-
-    if (accessor.methods && accessor.methods.length > 0) {
-      lines.push(`### Methods`)
+  if (command) {
+    if (command.length > 0) {
+      lines.push(`#### Commands`)
       lines.push('')
       table(
         [
-          ['Method', 'Description', 'Arguments'],
-          ...accessor.methods.map(method => [
-            printBold(method.name),
-            method.description.join(' ').trim(),
-            printCode(method.signature),
-          ]),
+          ['Command', 'Description', 'Signature'],
+          ...command.map(c => [printBold(c.name), c.description.join(' ').trim(), printCode(c.signature)]),
         ],
         { align: ['l', 'l', 'l'] },
       )

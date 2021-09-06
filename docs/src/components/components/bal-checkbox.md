@@ -93,41 +93,6 @@ Switches are used to toggle between exactly two states (like on and off).
 | **`getInputElement`** | Returns the native `<input>` element used under the hood. | `getInputElement() => Promise<HTMLInputElement>` |
 | **`setFocus`**        | Sets the focus on the checkbox input element.             | `setFocus() => Promise<void>`                    |
 
-### Testing
-
-
-CheckboxAccessor is a helper object for E-2-E testing.
-It maps the checkbox behaviour to the `bal-checkbox` ui component.
-
-```typescript
-import { dataTestSelector, CheckboxAccessor } from '@baloise/design-system-components-testing'
-
-describe('Checkbox', () => {
-  it('should ...', () => {
-     const checkbox = CheckboxAccessor(dataTestSelector('checkbox-id')).get()
-     checkbox.click()
-     checkbox.assertIsChecked()
-     checkbox.contains('Label')
- })
-})
-```
-
-### Methods
-
-| Method               | Description                                                                                                      | Arguments                                                |
-| :------------------- | :--------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
-| **click**            | Clicks the checkbox and set checked to true                                                                      | `options?: Partial<Cypress.ClickOptions>`                |
-| **check**            | Clicks the checkbox and set checked to true                                                                      | `options?: Partial<Cypress.CheckOptions>`                |
-| **assertIsChecked**  | Assert if the checkbox is checked                                                                                | `shouldBeChecked: boolean = true`                        |
-| **assertIsDisabled** | Assert if the checkbox is disabled                                                                               |                                                          |
-| **assertIsEnabled**  | Assert if the checkbox is enabled and not disabled                                                               |                                                          |
-| **contains**         | Check the content of the label element                                                                           | `content: string`                                        |
-| **assertExists**     | Asserts that the element exists/not exists in the DOM                                                            | `exists?: boolean`                                       |
-| **assertVisible**    | Assert that the component is visible or not visible for the user                                                 | `visible?: boolean`                                      |
-| **selectNth**        | Selects the option at the given index.                                                                           | `index: number`                                          |
-| **last**             | Selects the last option.                                                                                         |                                                          |
-| **parent**           | Selects the parent option.                                                                                       |                                                          |
-| **should**           | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax) | `chainers: string, attribute?: string, content?: string` |
 
 ## Usage
 
@@ -141,7 +106,6 @@ describe('Checkbox', () => {
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-checkbox.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-checkbox)
-* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/checkbox.accessor.ts)
 
 ## Feedback
 

@@ -95,42 +95,27 @@ export interface BalOptionValue<T> {
 ### Methods
 
 
-| Method         | Description                                                                 | Signature                                |
-| :------------- | :-------------------------------------------------------------------------- | :--------------------------------------- |
-| **`cancel`**   | Cancel the dropdown                                                         | `cancel() => Promise<void>`              |
-| **`clear`**    | Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´. | `clear() => Promise<void>`               |
-| **`close`**    | Closes the dropdown                                                         | `close() => Promise<void>`               |
-| **`open`**     | Opens the dropdown                                                          | `open() => Promise<void>`                |
-| **`select`**   | Select option by passed value                                               | `select(value: string) => Promise<void>` |
-| **`setFocus`** | Sets the focus on the input element                                         | `setFocus() => Promise<void>`            |
+| Method         | Description                                                                 | Signature                                     |
+| :------------- | :-------------------------------------------------------------------------- | :-------------------------------------------- |
+| **`cancel`**   | Cancel the dropdown                                                         | `cancel() => Promise<void>`                   |
+| **`clear`**    | Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´. | `clear() => Promise<void>`                    |
+| **`close`**    | Closes the dropdown                                                         | `close() => Promise<void>`                    |
+| **`getValue`** | Sets the focus on the input element                                         | `getValue() => Promise<string[] | undefined>` |
+| **`open`**     | Opens the dropdown                                                          | `open() => Promise<void>`                     |
+| **`select`**   | Select option by passed value                                               | `select(value: string) => Promise<void>`      |
+| **`setFocus`** | Sets the focus on the input element                                         | `setFocus() => Promise<void>`                 |
 
 ### Testing
 
 
-SelectAccessor is a helper object for E-2-E testing.
-It maps the select behaviour to the `bal-select` ui component.
 
-```typescript
-import { dataTestSelector, SelectAccessor } from '@baloise/design-system-components-testing'
+#### Commands
 
-describe('Select', () => {
-  it('should ...', () => {
-     const select = SelectAccessor(dataTestSelector('select-id')).get()
-     select.click()
-     select.select(1)
-     select.contains('value')
- })
-})
-```
-
-### Methods
-
-| Method            | Description                    | Arguments                                 |
-| :---------------- | :----------------------------- | :---------------------------------------- |
-| **click**         | Clicks the input               | `options?: Partial<Cypress.ClickOptions>` |
-| **select**        | Selects dropdown item          | `index: number`                           |
-| **assertOptions** | Checks the options             | `...options: string[]`                    |
-| **contains**      | Checks if input have a content | `content: string | number | RegExp`       |
+| Command                        | Description                                                                               | Signature                                                             |
+| :----------------------------- | :---------------------------------------------------------------------------------------- | :-------------------------------------------------------------------- |
+| **balSelectFindOptions**       | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(): Chainable<JQuery>`                                               |
+| **balSelectFindChips**         | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(): Chainable<JQuery>`                                               |
+| **balSelectShouldHaveOptions** | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(labels: string[], dataType?: 'label' | 'value'): Chainable<JQuery>` |
 
 ## Usage
 
@@ -144,7 +129,7 @@ describe('Select', () => {
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-select.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-select)
-* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/select.accessor.ts)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 

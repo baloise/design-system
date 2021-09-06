@@ -4,7 +4,6 @@ sidebarDepth: 0
 
 # Accordion
 
-
 <!-- START: human documentation top -->
 
 Accordions put users in control of showing or hiding content. Accordions also help us organize information to keep screens less cluttered so that users can accomplish tasks in short, intuitive steps. And accordions can help users find content they need. The component can be used standalone, in combination or inside bal-card.
@@ -13,13 +12,11 @@ Accordions put users in control of showing or hiding content. Accordions also he
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-
 ## Examples
 
 ### Basic
 
 <ClientOnly><docs-demo-bal-accordion-0></docs-demo-bal-accordion-0></ClientOnly>
-
 
 ### Colors
 
@@ -27,11 +24,9 @@ The accordion has 2 colors of themes `is-info` and `is-primary`.
 
 <ClientOnly><docs-demo-bal-accordion-1></docs-demo-bal-accordion-1></ClientOnly>
 
-
 ### Open accordion
 
 <ClientOnly><docs-demo-bal-accordion-2></docs-demo-bal-accordion-2></ClientOnly>
-
 
 ### Trigger label & icon
 
@@ -39,19 +34,13 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 
 <ClientOnly><docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
 
-
 ### With card
 
 <ClientOnly><docs-demo-bal-accordion-4></docs-demo-bal-accordion-4></ClientOnly>
 
-
-
 ## Code
 
-
-
 ### Properties
-
 
 | Attribute       | Description                                             | Type                 | Default     |
 | :-------------- | :------------------------------------------------------ | :------------------- | :---------- |
@@ -65,13 +54,11 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 
 ### Events
 
-
 | Event           | Description                            | Type      |
 | :-------------- | :------------------------------------- | :-------- |
 | **balCollapse** | Emmited when the accordion has changed | `boolean` |
 
 ### Methods
-
 
 | Method       | Description            | Signature                   |
 | :----------- | :--------------------- | :-------------------------- |
@@ -81,67 +68,58 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 
 ### Testing
 
-
-AccordionAccessor is a helper object for E-2-E testing.
-It maps the accordion behaviour to the `bal-accordion` ui component.
+<!-- START: human documentation testing -->
 
 ```typescript
-import { dataTestSelector, AccordionAccessor } from '@baloise/design-system-components-testing'
+import { dataTestSelector } from '@baloise/design-system-testing'
 
 describe('Accordion', () => {
+  const accordion = dataTestSelector('my-accordion') // [data-test-id="my-accordion"]
   it('should ...', () => {
-     const accordion = AccordionAccessor(dataTestSelector('accordion-id')).get()
-     accordion.click()
-     accordion.assertBodyExists()
-     accordion.contains('Label')
- })
+    cy.get(accordion).contains('Details einblenden')
+    cy.get(accordion).balAccordionIsClosed()
+    cy.get(accordion)
+      .click()
+      .balAccordionIsOpen()
+    cy.get(page.accordion).contains('Details ausblenden')
+    cy.get(accordion)
+      .click()
+      .balAccordionIsClosed()
+  })
 })
 ```
 
-### Methods
+<!-- END: human documentation testing -->
 
-| Method                         | Description                                                                                                        | Arguments                                                |
-| :----------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
-| **click**                      | Toggle the accordion                                                                                               | `options?: Partial<Cypress.ClickOptions>`                |
-| **contains**                   | It checks that the accordion label contains the given texts                                                        | `content: string`                                        |
-| **assertBodyExists**           | Asserts that accordion is open                                                                                     |                                                          |
-| **assertBodyNotExists**        | Asserts that accordion is closed                                                                                   |                                                          |
-| **click**                      | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                |
-| **clickNth**                   | Triggers n times a click on the element                                                                            | `index: number, options?: Partial<Cypress.ClickOptions>` |
-| **assertExists**               | Asserts that the element exists/not exists in the DOM                                                              | `exists?: boolean`                                       |
-| **should**                     | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string` |
-| **assertVisible**              | Assert that the component is visible or not visible for the user                                                   | `visible?: boolean`                                      |
-| **selectNth**                  | Selects the option at the given index.                                                                             | `index: number`                                          |
-| **last**                       | Selects the last option.                                                                                           |                                                          |
-| **parent**                     | Selects the parent option.                                                                                         |                                                          |
-| **assertAttributeEquals**      | Asserting that the element has the attribute and the value.                                                        | `attribute: string, value: string`                       |
-| **assertAttributeInclude**     | Asserting that the element has the attribute and include the value.                                                | `attribute: string, value: string`                       |
-| **assertDoesNotHaveAttribute** | Asserting that the element does not have the attribute.                                                            | `attribute: string`                                      |
-| **assertFullUrl**              | Asserting if given url argument matches the url of the browser.                                                    | `url: string`                                            |
-| **assertPartUrl**              | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
-| **wait**                       | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
+#### Commands
+
+| Command                  | Description                                                                               | Signature               |
+| :----------------------- | :---------------------------------------------------------------------------------------- | :---------------------- |
+| **balAccordionIsOpen**   | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(): Chainable<JQuery>` |
+| **balAccordionIsClosed** | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(): Chainable<JQuery>` |
 
 ## Usage
 
 <!-- START: human documentation usage -->
+
 WIP! Usage content
+
 <!-- END: human documentation usage -->
 
 ## Style
 
 <!-- START: human documentation style -->
+
 WIP! Style content
+
 <!-- END: human documentation style -->
-
-
 
 ## Edit this page on Github
 
-* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-accordion.md)
-* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-accordion)
-* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/accordion.accessor.ts)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-accordion.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-accordion)
+- [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
-

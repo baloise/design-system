@@ -107,48 +107,6 @@ With decimal property you can set how many decimal places you want and number wi
 | **`setFocus`**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global
 `input.focus()`. | `setFocus() => Promise<void>`                    |
 
-### Testing
-
-
-InputAccessor is a helper object for E-2-E testing.
-It maps the input behaviour to the `bal-input` ui component.
-
-```typescript
-import { dataTestSelector, InputAccessor } from '@baloise/design-system-components-testing'
-
-describe('Input', () => {
-  it('should ...', () => {
-     const input = InputAccessor(dataTestSelector('input-id')).get()
-     input.assertValue('value)
- })
-})
-```
-
-### Methods
-
-| Method                         | Description                                                                                                        | Arguments                                                          |
-| :----------------------------- | :----------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
-| **assertValue**                | Assert if the checkbox have value                                                                                  | `value: any`                                                       |
-| **click**                      | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                          |
-| **clickNth**                   | Triggers n times a click on the element                                                                            | `index: number, options?: Partial<Cypress.ClickOptions>`           |
-| **type**                       | Type into the component                                                                                            | `text: string, options?: Partial<Cypress.TypeOptions>`             |
-| **blur**                       | Lose focus of this element                                                                                         | `options?: Partial<Cypress.BlurOptions>`                           |
-| **should**                     | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string`           |
-| **clear**                      | Clears the value of the element                                                                                    | `options?: Partial<Cypress.TypeOptions>`                           |
-| **contains**                   | Verifies if the content of the element matches                                                                     | `content: string | number | RegExp`                                |
-| **assertExists**               | Asserts that the element exists/not exists in the DOM                                                              | `exists?: boolean`                                                 |
-| **assertIsDisabled**           | Asserts that the element is enabled or disabled.                                                                   | `enabled?: boolean`                                                |
-| **assertVisible**              | Assert that the component is visible or not visible for the user                                                   | `visible?: boolean`                                                |
-| **selectNth**                  | Selects the option at the given index.                                                                             | `index: number`                                                    |
-| **last**                       | Selects the last option.                                                                                           |                                                                    |
-| **parent**                     | Selects the parent option.                                                                                         |                                                                    |
-| **assertAttributeEquals**      | Asserting that the element has the attribute and the value.                                                        | `attribute: string, value: string`                                 |
-| **assertAttributeInclude**     | Asserting that the element has the attribute and include the value.                                                | `attribute: string, value: string`                                 |
-| **assertDoesNotHaveAttribute** | Asserting that the element does not have the attribute.                                                            | `attribute: string`                                                |
-| **assertFullUrl**              | Asserting if given url argument matches the url of the browser.                                                    | `url: string`                                                      |
-| **assertPartUrl**              | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                                      |
-| **wait**                       | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                                     |
-| **attachFile**                 | Upload file.                                                                                                       | `fileLocation: string, attachmentMethod?: 'input' | 'drag-n-drop'` |
 
 ## Usage
 
@@ -162,7 +120,6 @@ describe('Input', () => {
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-input.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-input)
-* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/input.accessor.ts)
 
 ## Feedback
 

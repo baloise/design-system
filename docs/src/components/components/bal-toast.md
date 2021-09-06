@@ -95,41 +95,12 @@ export class ServicesPageComponent {
 ### Testing
 
 
-ToastAccessor is a helper object for E-2-E testing.
-It maps the toast behaviour to the `bal-toast` ui component.
 
-```typescript
-import { dataTestSelector, ToastAccessor } from '@baloise/design-system-components-testing'
+#### Commands
 
-describe('Toast', () => {
-  it('should ...', () => {
-     const toast = ToastAccessor(dataTestSelector('toast-id')).get()
-     toast.click()
- })
-})
-```
-
-### Methods
-
-| Method                         | Description                                                                                                        | Arguments                                                |
-| :----------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
-| **assertToast**                | Assert if the toast have content                                                                                   | `content: string`                                        |
-| **contains**                   | Verifies if the content of the element matches                                                                     | `content: string | number | RegExp`                      |
-| **click**                      | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                |
-| **clickNth**                   | Triggers n times a click on the element                                                                            | `index: number, options?: Partial<Cypress.ClickOptions>` |
-| **assertVisible**              | Assert that the component is visible or not visible for the user                                                   | `visible?: boolean`                                      |
-| **assertExists**               | Asserts that the element exists/not exists in the DOM                                                              | `exists?: boolean`                                       |
-| **assertIsDisabled**           | Asserts that the element is enabled or disabled.                                                                   | `enabled?: boolean`                                      |
-| **should**                     | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string` |
-| **selectNth**                  | Selects the option at the given index.                                                                             | `index: number`                                          |
-| **last**                       | Selects the last option.                                                                                           |                                                          |
-| **parent**                     | Selects the parent option.                                                                                         |                                                          |
-| **assertAttributeEquals**      | Asserting that the element has the attribute and the value.                                                        | `attribute: string, value: string`                       |
-| **assertAttributeInclude**     | Asserting that the element has the attribute and include the value.                                                | `attribute: string, value: string`                       |
-| **assertDoesNotHaveAttribute** | Asserting that the element does not have the attribute.                                                            | `attribute: string`                                      |
-| **assertFullUrl**              | Asserting if given url argument matches the url of the browser.                                                    | `url: string`                                            |
-| **assertPartUrl**              | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
-| **wait**                       | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
+| Command          | Description                                                                               | Signature               |
+| :--------------- | :---------------------------------------------------------------------------------------- | :---------------------- |
+| **balToastFind** | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(): Chainable<JQuery>` |
 
 ## Usage
 
@@ -143,7 +114,7 @@ describe('Toast', () => {
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-toast.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-toast)
-* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/toast.accessor.ts)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 

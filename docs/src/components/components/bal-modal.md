@@ -154,6 +154,16 @@ export default defineComponent({
 | **`close`** | Closes the modal. | `close() => Promise<void>` |
 | **`open`**  | Opens the modal.  | `open() => Promise<void>`  |
 
+### Testing
+
+
+
+#### Commands
+
+| Command              | Description                                                                               | Signature               |
+| :------------------- | :---------------------------------------------------------------------------------------- | :---------------------- |
+| **balModalIsOpen**   | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(): Chainable<JQuery>` |
+| **balModalIsClosed** | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(): Chainable<JQuery>` |
 
 ## Usage
 
@@ -167,6 +177,7 @@ export default defineComponent({
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-modal.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-modal)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 

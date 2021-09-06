@@ -136,31 +136,17 @@ You can specify allowed dates using a function.
 ### Testing
 
 
-DatepickerAccessor is a helper object for E-2-E testing.
-It maps the datepicker behaviour to the `bal-datepicker` ui component.
 
-```typescript
-import { dataTestSelector, DatepickerAccessor } from '@baloise/design-system-components-testing'
+#### Commands
 
-describe('Datepicker', () => {
-  it('should ...', () => {
-     const datepicker = DatepickerAccessor(dataTestSelector('datepicker-id')).get()
-     datepicker.open()
-     datepicker.pick(new Date())
-     datepicker.shouldHaveValue(new Date())
- })
-})
-```
-
-### Methods
-
-| Method                | Description                    | Arguments                                     |
-| :-------------------- | :----------------------------- | :-------------------------------------------- |
-| **write**             | Write in the datepicker        | `date: string`                                |
-| **open**              | Open the datepicker            |                                               |
-| **pick**              | Pick the date                  | `date: Date`                                  |
-| **shouldHaveValue**   | Check if datepicker have value | `date: Date`                                  |
-| **assertDateInRange** | Assert if the date is in range | `date: Date, shouldBeInRange: boolean = true` |
+| Command                           | Description                                                                               | Signature                         |
+| :-------------------------------- | :---------------------------------------------------------------------------------------- | :-------------------------------- |
+| **balDatepickerToggle**           | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(): Chainable<JQuery>`           |
+| **balDatepickerIsOpen**           | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(): Chainable<JQuery>`           |
+| **balDatepickerIsClosed**         | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(): Chainable<JQuery>`           |
+| **balDatepickerPick**             | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(date: Date): Chainable<JQuery>` |
+| **balDatepickerIsDateInRange**    | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(date: Date): Chainable<JQuery>` |
+| **balDatepickerIsDateNotInRange** | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(date: Date): Chainable<JQuery>` |
 
 ## Usage
 
@@ -174,7 +160,7 @@ describe('Datepicker', () => {
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-datepicker.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-datepicker)
-* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/datepicker.accessor.ts)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 
