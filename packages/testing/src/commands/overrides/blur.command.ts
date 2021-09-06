@@ -1,6 +1,17 @@
 /// <reference types="cypress" />
 
-import { selectors, isAccordion, isButton, isCheckbox, isDatepicker, wrapRoot } from '../helpers'
+import {
+  selectors,
+  isAccordion,
+  isButton,
+  isCheckbox,
+  isDatepicker,
+  wrapRoot,
+  isInput,
+  isRadioGroup,
+  isRadio,
+  isSelect,
+} from '../helpers'
 
 Cypress.Commands.overwrite('blur', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
   if (isAccordion(element)) {
@@ -17,6 +28,18 @@ Cypress.Commands.overwrite('blur', (originalFn, element: Cypress.Chainable<JQuer
 
   if (isDatepicker(element)) {
     return wrapRoot(element, selectors.datepicker.input, $el => originalFn($el, options))
+  }
+
+  if (isInput(element)) {
+    return wrapRoot(element, selectors.input.main, $el => originalFn($el, options))
+  }
+
+  if (isRadio(element)) {
+    return wrapRoot(element, selectors.radio.input, $el => originalFn($el, options))
+  }
+
+  if (isSelect(element)) {
+    return wrapRoot(element, selectors.select.input, $el => originalFn($el, options))
   }
 
   return originalFn(element, options)

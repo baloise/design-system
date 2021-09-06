@@ -115,10 +115,20 @@ export class Tabs {
 
   renderOSteps() {
     return (
-      <Host class="bal-o-steps">
+      <Host
+        class="bal-o-steps"
+        data-value={this.tabsOptions
+          .filter(t => t.active)
+          .map(t => t.value)
+          .join(',')}
+        data-label={this.tabsOptions
+          .filter(t => t.active)
+          .map(t => t.label)
+          .join(',')}
+      >
         <div>
           <ul>
-            {this.tabsOptions.map((tab /*index*/) => (
+            {this.tabsOptions.map((tab, index) => (
               <li
                 class={{
                   'is-active': tab.active,
@@ -126,7 +136,11 @@ export class Tabs {
                   'is-done': tab.done,
                   'is-failed': tab.failed,
                   'is-clickable': this.clickable,
+                  'data-test-tab-item': true,
                 }}
+                data-label={tab.label}
+                data-value={tab.value}
+                data-index={index}
               >
                 <a onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}>
                   <span class="step-index">
@@ -145,7 +159,17 @@ export class Tabs {
 
   renderSteps() {
     return (
-      <Host class="bal-steps">
+      <Host
+        class="bal-steps"
+        data-value={this.tabsOptions
+          .filter(t => t.active)
+          .map(t => t.value)
+          .join(',')}
+        data-label={this.tabsOptions
+          .filter(t => t.active)
+          .map(t => t.label)
+          .join(',')}
+      >
         <div class={['tabs is-fullwidth'].join(' ')}>
           <ul>
             {this.tabsOptions.map((tab, index) => (
@@ -155,7 +179,11 @@ export class Tabs {
                   'is-disabled': tab.disabled,
                   'is-done': tab.done,
                   'is-failed': tab.failed,
+                  'data-test-tab-item': true,
                 }}
+                data-label={tab.label}
+                data-value={tab.value}
+                data-index={index}
               >
                 <a onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}>
                   <span class="step-index">{this.stepIndex(tab, index)}</span>
@@ -173,11 +201,30 @@ export class Tabs {
 
   renderTabs() {
     return (
-      <Host class="bal-tabs">
+      <Host
+        class="bal-tabs"
+        data-value={this.tabsOptions
+          .filter(t => t.active)
+          .map(t => t.value)
+          .join(',')}
+        data-label={this.tabsOptions
+          .filter(t => t.active)
+          .map(t => t.label)
+          .join(',')}
+      >
         <div class={['tabs', this.rounded ? 'is-rounded' : '', this.expanded ? 'is-fullwidth' : ''].join(' ')}>
           <ul>
-            {this.tabsOptions.map(tab => (
-              <li class={[tab.active ? 'is-active' : '', tab.disabled ? 'is-disabled' : ''].join(' ')}>
+            {this.tabsOptions.map((tab, index) => (
+              <li
+                class={{
+                  'is-active': tab.active,
+                  'is-disabled': tab.disabled,
+                  'data-test-tab-item': true,
+                }}
+                data-label={tab.label}
+                data-value={tab.value}
+                data-index={index}
+              >
                 <a
                   href={tab.href}
                   aria-current="page"
@@ -199,7 +246,9 @@ export class Tabs {
               </li>
             ))}
             <li class="is-right" style={{ display: this.action ? 'block' : 'none' }}>
-              <bal-button onClick={e => this.actionHasClicked.emit(e)}>{this.actionLabel}</bal-button>
+              <bal-button class="data-test-tabs-action" onClick={e => this.actionHasClicked.emit(e)}>
+                {this.actionLabel}
+              </bal-button>
             </li>
           </ul>
         </div>

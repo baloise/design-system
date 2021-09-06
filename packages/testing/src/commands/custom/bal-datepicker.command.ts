@@ -1,46 +1,9 @@
-/// <reference types="cypress" />
-
 const year = (date: Date): number => date.getFullYear()
 const month = (date: Date): number => date.getMonth()
 const day = (date: Date): number => date.getDate()
 const pad = (value: number) => (value < 10 ? `0${value}` : `${value}`)
 const isoString = (date: Date) => `${year(date)}-${pad(month(date) + 1)}-${pad(day(date))}`
 const selectorDayBox = (date: Date) => `[data-date="${isoString(date)}"]`
-
-declare namespace Cypress {
-  interface Chainable {
-    /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
-     */
-    balDatepickerToggle(): Chainable<JQuery>
-    /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
-     */
-    balDatepickerIsOpen(): Chainable<JQuery>
-    /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
-     */
-    balDatepickerIsClosed(): Chainable<JQuery>
-    /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
-     */
-    balDatepickerPick(date: Date): Chainable<JQuery>
-    /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
-     */
-    balDatepickerIsDateInRange(date: Date): Chainable<JQuery>
-    /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
-     */
-    balDatepickerIsDateNotInRange(date: Date): Chainable<JQuery>
-  }
-}
 
 Cypress.Commands.add(
   'balDatepickerToggle',

@@ -983,6 +983,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * Sets the focus on the input element
+         */
+        "getValue": () => Promise<string[] | undefined>;
+        /**
           * Enables the slide in animation for the option items.
          */
         "hasMovement": boolean;

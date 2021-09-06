@@ -1,16 +1,19 @@
 import { app } from '../support/app'
 
-describe("Modal", () => {
+describe('Modal', () => {
   let page = app.getModalPage()
 
-  it("should navigate to Modal page and open and close Modal", () => {
+  it('should open and close Modal', () => {
     page.open()
-    page.clickOpenModalButton()
-    page.modal.get().closeModal()
+    cy.get(page.modal).balModalIsClosed()
+    cy.get(page.openModalButton).click()
+    cy.get(page.modal).balModalIsOpen()
+    cy.get(page.closeModalButton).click()
+    cy.get(page.modal).balModalIsClosed()
   })
 
-  it("should navigate to Modal page and assert content", () => {
+  it('should contain title', () => {
     page.open()
-    page.clickOpenModalButton().assertBigModalContent('Modal Title')
+    cy.get(page.modal).find('bal-modal-header').contains('Modal Title')
   })
 })

@@ -30,6 +30,7 @@
   "scripts": {
     "serve": "cypress open",
     "test": "cypress run",
+    "cy:install": "cypress install",
     "build": "npm run build:clean && npm run docs && npm run build:index && npm run build:compile && npm run build:bundle",
     "build:clean": "rimraf src/index.ts && rimraf docs && rimraf dist && rimraf dist-transpiled",
     "build:index": "node .scripts/index.script.js",
