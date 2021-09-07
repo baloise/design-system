@@ -28,12 +28,12 @@ jobs:
       - name: Start server in the background
         run: npm run icons:build && npm run lib:build && npm run testing:build
 
-      # - name: Start server in the background
-      #   run: npm ci:server &
+      - name: Start server in the background
+        run: npm ci:server &
 
       - uses: cypress-io/github-action@v2
         with:
-          start: npm ci:server
+          # start: npm ci:server
           working-directory: packages/testing
   # Documentation:
   #   runs-on: ubuntu-latest
