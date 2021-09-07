@@ -1,9 +1,3 @@
-// const year = (date: Date): number => date.getFullYear()
-// const month = (date: Date): number => date.getMonth()
-// const day = (date: Date): number => date.getDate()
-// const pad = (value: number) => (value < 10 ? `0${value}` : `${value}`)
-// const isoString = (date: Date) => `${year(date)}-${pad(month(date) + 1)}-${pad(day(date))}`
-
 import { year, month, isoString } from '@baloise/design-system-components'
 
 const selectorDayBox = (date: Date) => `[data-date="${isoString(date)}"]`
