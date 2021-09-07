@@ -3,29 +3,30 @@ name: Continous
 on: [push]
 
 jobs:
-  # BuildAndTest:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v1
-
-  #     - name: Clean install dependencies
-  #       run: npm ci
-
-  #     - name: Build
-  #       run: npm run build
-
-  #     - name: Test
-  #       run: npm run test
-  Cypress:
+  BuildAndTest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
       - name: Clean install dependencies
         run: npm ci
 
-      - name: Start server in the background
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm run test
+  Cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Clean install dependencies
+        run: npm ci
+
+      - name: Build lib
         run: npm run icons:build && npm run lib:build && npm run testing:build
 
       - name: Start server in the background
@@ -33,27 +34,4 @@ jobs:
 
       - uses: cypress-io/github-action@v2
         with:
-          # start: npm ci:server
           working-directory: packages/testing
-  # Documentation:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v1
-
-  #     - name: Clean install dependencies
-  #       run: npm ci
-
-  #     - name: Build
-  #       run: npm run docs:build
-  # Templates:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v1
-
-  #     - name: Clean install dependencies
-  #       run: npm ci
-
-  #     - name: Build
-  #       run: npm run templates:build
