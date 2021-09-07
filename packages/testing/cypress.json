@@ -1,5 +1,6 @@
 {
   "baseUrl": "http://localhost:3333",
   "screenshotOnRunFailure": false,
-  "video": false
+  "video": false,
+  "ignoreTestFiles": "**/node_modules/**"
 }

@@ -21,7 +21,7 @@
     "types": ["cypress", "node"]
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["cypress"],
+  "exclude": ["cypress", "node_modules"],
   "compileOnSave": false,
   "buildOnSave": false
 }
