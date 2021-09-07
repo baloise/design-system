@@ -4,6 +4,7 @@ sidebarDepth: 0
 
 # Tabs
 
+
 <!-- START: human documentation top -->
 
 Tabs are used to structure the information in sub section on the same page.
@@ -12,31 +13,41 @@ Tabs are used to structure the information in sub section on the same page.
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
+
 ## Examples
 
 ### Main Navigation
 
 <ClientOnly><docs-demo-bal-tabs-103></docs-demo-bal-tabs-103></ClientOnly>
 
+
 ### Sub Navigation
 
 <ClientOnly><docs-demo-bal-tabs-104></docs-demo-bal-tabs-104></ClientOnly>
+
 
 ### Expanded
 
 <ClientOnly><docs-demo-bal-tabs-105></docs-demo-bal-tabs-105></ClientOnly>
 
+
 ### Steps
 
 <ClientOnly><docs-demo-bal-tabs-106></docs-demo-bal-tabs-106></ClientOnly>
+
 
 ### O-Steps
 
 <ClientOnly><docs-demo-bal-tabs-107></docs-demo-bal-tabs-107></ClientOnly>
 
+
+
 ## Code
 
+
+
 ### Properties
+
 
 | Attribute        | Description                                       | Type                                      | Default             |
 | :--------------- | :------------------------------------------------ | :---------------------------------------- | :------------------ |
@@ -49,6 +60,7 @@ Tabs are used to structure the information in sub section on the same page.
 
 ### Events
 
+
 | Event              | Description                                | Type                      |
 | :----------------- | :----------------------------------------- | :------------------------ |
 | **balActionClick** | Emitted when the action button has clicked | <code>MouseEvent</code>   |
@@ -56,10 +68,11 @@ Tabs are used to structure the information in sub section on the same page.
 
 ### Methods
 
+
 | Method     | Description                                               | Signature                                                           |
 | :--------- | :-------------------------------------------------------- | :------------------------------------------------------------------ |
 | **select** | Go to tab with the given value                            | <code>select(tab: BalTabOption) =&#62; Promise&#60;void&#62;</code> |
-| **sync**   | _Internal_ - Rerenders the tabs with their given settings | <code>sync() =&#62; Promise&#60;void&#62;</code>                    |
+| **sync**   | *Internal* - Rerenders the tabs with their given settings | <code>sync() =&#62; Promise&#60;void&#62;</code>                    |
 
 ## Testing
 
@@ -96,12 +109,12 @@ describe('Tabs', () => {
 
 A list of the custom commands for this specific component.
 
-| Command                       | Description                                   | Signature                                                                                                 |
-| :---------------------------- | :-------------------------------------------- | :-------------------------------------------------------------------------------------------------------- |
-| **balTabsFindActionButton**   | Returns the action button element.            | <code>(): Chainable&#60;JQuery&#62;</code>                                                                |
-| **balTabsFindItems**          | Returns the tab items.                        | <code>(): Chainable&#60;JQuery&#62;</code>                                                                |
-| **balTabsShouldHaveItems**    | Assert that the tab has the given item.       | <code>(labels: string[], dataType?: 'label' &#124; 'value'): Chainable&#60;JQuery&#62;</code>             |
-| **balTabItemShouldHaveState** | Assert that the tab item has the given state. | <code>(state: 'done' &#124; 'failed' &#124; 'active' &#124; 'disabled'): Chainable&#60;JQuery&#62;</code> |
+| Command                       | Description                                    | Signature                                                                                                       |
+| :---------------------------- | :--------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
+| **balTabsFindActionButton**   | Returns the action button element.             | <code>(): Chainable&#60;JQuery&#62;</code>                                                                      |
+| **balTabsFindItems**          | Returns the tab items.                         | <code>(): Chainable&#60;JQuery&#62;</code>                                                                      |
+| **balTabsShouldHaveItems**    | Assert that the tab has the given item.        | <code>(labels: string[], dataType?: 'label'  &#124;  'value'): Chainable&#60;JQuery&#62;</code>                 |
+| **balTabItemShouldHaveState** | Assert that the tab item has the  given state. | <code>(state: 'done'  &#124;  'failed'  &#124;  'active'  &#124;  'disabled'): Chainable&#60;JQuery&#62;</code> |
 
 ## Usage
 
@@ -109,12 +122,15 @@ A list of the custom commands for this specific component.
 
 <!-- END: human documentation usage -->
 
+
+
 ## Edit this page on Github
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-tabs.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-tabs)
-- [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-tabs.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-tabs)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

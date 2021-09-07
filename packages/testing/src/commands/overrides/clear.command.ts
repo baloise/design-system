@@ -1,4 +1,4 @@
-import { selectors, isDatepicker, wrapRoot, isCheckbox, isInput, isRadio, isSelect } from '../helpers'
+import { selectors, isDatepicker, wrapRoot, isCheckbox, isInput, isRadio, isSelect, isSlider } from '../helpers'
 
 Cypress.Commands.overwrite('clear', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
   if (isCheckbox(element)) {
@@ -11,6 +11,10 @@ Cypress.Commands.overwrite('clear', (originalFn, element: Cypress.Chainable<JQue
 
   if (isInput(element)) {
     return wrapRoot(element, selectors.input.main, $el => originalFn($el, options))
+  }
+
+  if (isSlider(element)) {
+    return wrapRoot(element, selectors.slider.main, $el => originalFn($el, options))
   }
 
   if (isRadio(element)) {

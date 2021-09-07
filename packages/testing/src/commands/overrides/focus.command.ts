@@ -6,6 +6,7 @@ import {
   isInput,
   isRadio,
   isSelect,
+  isSlider,
   selectors,
   wrapRoot,
 } from '../helpers'
@@ -29,6 +30,10 @@ Cypress.Commands.overwrite('focus', (originalFn, element: Cypress.Chainable<JQue
 
   if (isInput(element)) {
     return wrapRoot(element, selectors.input.main, $el => originalFn($el, options))
+  }
+
+  if (isSlider(element)) {
+    return wrapRoot(element, selectors.slider.main, $el => originalFn($el, options))
   }
 
   if (isRadio(element)) {

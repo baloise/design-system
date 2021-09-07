@@ -8,6 +8,7 @@ import {
   isRadio,
   isTag,
   hasClass,
+  isHint,
 } from '../helpers'
 
 Cypress.Commands.overwrite('click', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
@@ -34,6 +35,10 @@ Cypress.Commands.overwrite('click', (originalFn, element: Cypress.Chainable<JQue
 
   if (isTag(element) && hasClass(element, 'sc-bal-select')) {
     return wrapRoot(element, '.delete', $el => originalFn($el, options))
+  }
+
+  if (isHint(element)) {
+    return wrapRoot(element, selectors.hint.trigger, $el => originalFn($el, options))
   }
 
   return originalFn(element, options)

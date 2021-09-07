@@ -18,6 +18,8 @@ export const isRadio: isElementType = el => isElement(el, 'BAL-RADIO')
 export const isSelect: isElementType = el => isElement(el, 'BAL-SELECT')
 export const isTag: isElementType = el => isElement(el, 'BAL-TAG')
 export const isTabs: isElementType = el => isElement(el, 'BAL-TABS')
+export const isSlider: isElementType = el => isElement(el, 'BAL-SLIDER')
+export const isHint: isElementType = el => isElement(el, 'BAL-HINT')
 
 /**
  * Selectors
@@ -45,6 +47,9 @@ export const selectors = {
   input: {
     main: '> input',
   },
+  slider: {
+    main: 'input.slider',
+  },
   modal: {
     main: 'div.modal',
   },
@@ -64,6 +69,19 @@ export const selectors = {
   },
   toast: {
     main: '.bal-notices > bal-toast',
+  },
+  snackbar: {
+    main: '.bal-notices > bal-snackbar',
+  },
+  pagination: {
+    next: 'button.pagination-next',
+    previous: 'button.pagination-previous',
+    pages: '.pagination-list > li > a',
+  },
+  hint: {
+    trigger: '.data-test-hint-trigger',
+    content: '.data-test-hint-content',
+    close: '.data-test-hint-close',
   },
 }
 

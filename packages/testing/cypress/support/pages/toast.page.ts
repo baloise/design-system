@@ -1,4 +1,4 @@
-import { dataTestSelector } from '../../../src'
+import { dataTestSelector } from '../../../src/selectors'
 
 export class ToastPage {
   toast = dataTestSelector('toast')

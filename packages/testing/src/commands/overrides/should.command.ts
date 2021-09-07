@@ -9,6 +9,7 @@ import {
   isSelect,
   isTabs,
   hasClass,
+  isSlider,
 } from '../helpers'
 
 Cypress.Commands.overwrite(
@@ -67,6 +68,16 @@ Cypress.Commands.overwrite(
         )
       ) {
         return originalFn(element.find(selectors.input.main), condition, key, value, options)
+      }
+    }
+
+    if (isSlider(element)) {
+      if (
+        ['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused', 'have.value', 'not.have.value'].includes(
+          condition,
+        )
+      ) {
+        return originalFn(element.find(selectors.slider.main), condition, key, value, options)
       }
     }
 

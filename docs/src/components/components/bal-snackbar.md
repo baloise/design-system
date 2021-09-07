@@ -4,7 +4,6 @@ sidebarDepth: 0
 
 # Snackbar
 
-
 <!-- START: human documentation top -->
 
 A snackbar is used to inform the user with a simple text message and a action.
@@ -13,19 +12,15 @@ A snackbar is used to inform the user with a simple text message and a action.
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-
 ## Examples
 
 ### Basic
 
 <ClientOnly><docs-demo-bal-snackbar-96></docs-demo-bal-snackbar-96></ClientOnly>
 
-
 ### Colors
 
 <ClientOnly><docs-demo-bal-snackbar-97></docs-demo-bal-snackbar-97></ClientOnly>
-
-
 
 ## Code
 
@@ -72,7 +67,6 @@ export class ServicesPageComponent {
 
 ### Properties
 
-
 | Attribute    | Description                                                       | Type                                                                    | Default         |
 | :----------- | :---------------------------------------------------------------- | :---------------------------------------------------------------------- | :-------------- |
 | **action**   | Label text for the action button                                  | <code>string</code>                                                     | <code>''</code> |
@@ -84,14 +78,12 @@ export class ServicesPageComponent {
 
 ### Events
 
-
 | Event         | Description                               | Type                |
 | :------------ | :---------------------------------------- | :------------------ |
 | **balAction** | Emitted when the action button is clicked | <code>string</code> |
 | **balClose**  | Emitted when snackbar is closed           | <code>string</code> |
 
 ### Methods
-
 
 | Method      | Description                                        | Signature                                                           |
 | :---------- | :------------------------------------------------- | :------------------------------------------------------------------ |
@@ -104,23 +96,45 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 - [More information about the installation and usage](/components/tooling/testing.html)
 
+<!-- START: human documentation testing -->
+
+```typescript
+import { dataTestSelector } from '@baloise/design-system-testing'
+
+describe('Snackbar', () => {
+  it('should ...', () => {
+    cy.balSnackbarFind()
+      .first()
+      .contains('Hi I am a default Snack!')
+  })
+})
+```
+
+<!-- END: human documentation testing -->
+
+### Custom Commands
+
+A list of the custom commands for this specific component.
+
+| Command             | Description                    | Signature                                  |
+| :------------------ | :----------------------------- | :----------------------------------------- |
+| **balSnackbarFind** | Returns the visible snackbars. | <code>(): Chainable&#60;JQuery&#62;</code> |
+
 ## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
-
-
 ## Edit this page on Github
 
-* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-snackbar.md)
-* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-snackbar)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-snackbar.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-snackbar)
+- [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
-
 
 <ClientOnly>
   <docs-component-script tag="balSnackbar"></docs-component-script>
