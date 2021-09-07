@@ -6,7 +6,7 @@ Cypress.Commands.add(
     prevSubject: true,
   },
   subject => {
-    return cy.wrap(subject).find(selectors.pagination.pages)
+    return cy.wrap(subject).find(selectors.pagination.pages + ':visible')
   },
 )
 
@@ -16,7 +16,7 @@ Cypress.Commands.add(
     prevSubject: true,
   },
   subject => {
-    return cy.wrap(subject).find(`${selectors.pagination.pages}.is-current`)
+    return cy.wrap(subject).find(`${selectors.pagination.pages}.is-current:visible`)
   },
 )
 
