@@ -28,7 +28,13 @@ describe('Datepicker', () => {
 
   it('should assert if date is in range in the Datepicker', () => {
     page.open()
+    cy.get(page.datepickerRange).balDatepickerToggle()
     cy.get(page.datepickerRange).balDatepickerIsDateInRange(new Date(2021, 0, 6))
+  })
+
+  it('should assert if date is not in range in the Datepicker', () => {
+    page.open()
+    cy.get(page.datepickerRange).balDatepickerToggle()
     cy.get(page.datepickerRange).balDatepickerIsDateNotInRange(new Date(2021, 0, 5))
   })
 })
