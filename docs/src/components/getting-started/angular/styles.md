@@ -43,6 +43,10 @@ Then we add the defined script `copy:fonts` in our `postinstall` script. Every t
 }
 ```
 
+:::tip
+It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
+:::
+
 ## Sass (recommended)
 
 We recommand to use dart-sass and not node-sass.
@@ -50,6 +54,14 @@ We recommand to use dart-sass and not node-sass.
 ### Install Sass Stylesheets
 
 Place the downloaded fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
+
+::: warning
+
+**Relative path**
+
+If your fonts are not served from the root path and you need to have a relative path change the `$font-path` to '~assets/fonts'.
+
+:::
 
 Import the `global.scss` Sass file into the main `.scss` file of your application.
 
