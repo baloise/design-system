@@ -27,7 +27,7 @@
     "angular:build": "node .scripts/banner.js angular:build && npm --prefix packages/components-angular run build",
     "testing:test": "node .scripts/banner.js testing:run && npm --prefix packages/testing run ci",
     "testing:serve": "node .scripts/banner.js testing:serve && npm --prefix packages/testing run serve",
-    "testing:server": "node .scripts/banner.js testing:server && npm --prefix packages/testing run start-server",
+    "testing:server": "node .scripts/banner.js testing:server && npm --prefix packages/testing run ci:server",
     "testing:build": "node .scripts/banner.js testing:build && npm --prefix packages/testing run build",
     "icons:build": "node .scripts/banner.js icons:build && npm --prefix packages/icons run build",
     "docs:install": "cd docs && npm install",
