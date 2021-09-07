@@ -3,18 +3,15 @@
 declare namespace Cypress {
   interface Chainable {
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Returns the select options.
      */
     balSelectFindOptions(): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Returns the closable select chips (only with multiselect).
      */
     balSelectFindChips(): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Asserts that the select has the given options.
      */
     balSelectShouldHaveOptions(labels: string[], dataType?: 'label' | 'value'): Chainable<JQuery>
   }

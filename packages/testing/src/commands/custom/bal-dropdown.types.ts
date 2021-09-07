@@ -3,31 +3,26 @@
 declare namespace Cypress {
   interface Chainable {
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Opens and closes the dropdown.
      */
     balDropdownToggle(): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Asserts if the dropdown is open.
      */
     balDropdownIsOpen(): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Asserts if the dropdown is closed.
      */
     balDropdownIsClosed(): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Asserts if the trigger button contains the given content.
      */
     balDropdownTriggerContains(
       content: string | number | RegExp,
       options?: Partial<Loggable & Timeoutable & CaseMatchable & Shadow>,
     ): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Asserts if the dropdown menu contains the given content.
      */
     balDropdownMenuContains(
       content: string | number | RegExp,

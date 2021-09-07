@@ -4,6 +4,7 @@ sidebarDepth: 0
 
 # Accordion
 
+
 <!-- START: human documentation top -->
 
 Accordions put users in control of showing or hiding content. Accordions also help us organize information to keep screens less cluttered so that users can accomplish tasks in short, intuitive steps. And accordions can help users find content they need. The component can be used standalone, in combination or inside bal-card.
@@ -12,11 +13,13 @@ Accordions put users in control of showing or hiding content. Accordions also he
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
+
 ## Examples
 
 ### Basic
 
 <ClientOnly><docs-demo-bal-accordion-0></docs-demo-bal-accordion-0></ClientOnly>
+
 
 ### Colors
 
@@ -24,9 +27,11 @@ The accordion has 2 colors of themes `is-info` and `is-primary`.
 
 <ClientOnly><docs-demo-bal-accordion-1></docs-demo-bal-accordion-1></ClientOnly>
 
+
 ### Open accordion
 
 <ClientOnly><docs-demo-bal-accordion-2></docs-demo-bal-accordion-2></ClientOnly>
+
 
 ### Trigger label & icon
 
@@ -34,39 +39,51 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 
 <ClientOnly><docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
 
+
 ### With card
 
 <ClientOnly><docs-demo-bal-accordion-4></docs-demo-bal-accordion-4></ClientOnly>
 
+
+
 ## Code
+
+
 
 ### Properties
 
-| Attribute       | Description                                             | Type                 | Default     |
-| :-------------- | :------------------------------------------------------ | :------------------- | :---------- |
-| **card**        | If `true` the accordion is used on the bottom of a card | `boolean`            | `false`     |
-| **close-icon**  | Bal-Icon of the close trigger button                    | `string`             | `'minus'`   |
-| **close-label** | Label of the close trigger button                       | `string`             | `''`        |
-| **color**       | Type defines the theme of the accordion toggle          | `"info" , "primary"` | `'primary'` |
-| **is-active**   | Controls if the accordion is collapsed or not           | `boolean`            | `false`     |
-| **open-icon**   | Bal-Icon of the open trigger button                     | `string`             | `'plus'`    |
-| **open-label**  | Label of the open trigger button                        | `string`             | `''`        |
+
+| Attribute       | Description                                             | Type                            | Default                |
+| :-------------- | :------------------------------------------------------ | :------------------------------ | :--------------------- |
+| **card**        | If `true` the accordion is used on the bottom of a card | <code>boolean</code>            | <code>false</code>     |
+| **close-icon**  | Bal-Icon of the close trigger button                    | <code>string</code>             | <code>'minus'</code>   |
+| **close-label** | Label of the close trigger button                       | <code>string</code>             | <code>''</code>        |
+| **color**       | Type defines the theme of the accordion toggle          | <code>"info" , "primary"</code> | <code>'primary'</code> |
+| **is-active**   | Controls if the accordion is collapsed or not           | <code>boolean</code>            | <code>false</code>     |
+| **open-icon**   | Bal-Icon of the open trigger button                     | <code>string</code>             | <code>'plus'</code>    |
+| **open-label**  | Label of the open trigger button                        | <code>string</code>             | <code>''</code>        |
 
 ### Events
 
-| Event           | Description                            | Type      |
-| :-------------- | :------------------------------------- | :-------- |
-| **balCollapse** | Emmited when the accordion has changed | `boolean` |
+
+| Event           | Description                            | Type                 |
+| :-------------- | :------------------------------------- | :------------------- |
+| **balCollapse** | Emmited when the accordion has changed | <code>boolean</code> |
 
 ### Methods
 
-| Method       | Description            | Signature                   |
-| :----------- | :--------------------- | :-------------------------- |
-| **`close`**  | Close the accordion    | `close() => Promise<void>`  |
-| **`open`**   | Open the accordion     | `open() => Promise<void>`   |
-| **`toggle`** | Triggers the accordion | `toggle() => Promise<void>` |
 
-### Testing
+| Method     | Description            | Signature                                          |
+| :--------- | :--------------------- | :------------------------------------------------- |
+| **close**  | Close the accordion    | <code>close() =&#62; Promise&#60;void&#62;</code>  |
+| **open**   | Open the accordion     | <code>open() =&#62; Promise&#60;void&#62;</code>   |
+| **toggle** | Triggers the accordion | <code>toggle() =&#62; Promise&#60;void&#62;</code> |
+
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 <!-- START: human documentation testing -->
 
@@ -91,12 +108,14 @@ describe('Accordion', () => {
 
 <!-- END: human documentation testing -->
 
-#### Commands
+### Custom Commands
 
-| Command                  | Description                                                                               | Signature               |
-| :----------------------- | :---------------------------------------------------------------------------------------- | :---------------------- |
-| **balAccordionIsOpen**   | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(): Chainable<JQuery>` |
-| **balAccordionIsClosed** | Custom command to select DOM element by data-cy attribute. @example cy.dataCy('greeting') | `(): Chainable<JQuery>` |
+A list of the custom commands for this specific component.
+
+| Command                  | Description                         | Signature                                  |
+| :----------------------- | :---------------------------------- | :----------------------------------------- |
+| **balAccordionIsOpen**   | Asserts if the accordion is open.   | <code>(): Chainable&#60;JQuery&#62;</code> |
+| **balAccordionIsClosed** | Asserts if the accordion is closed. | <code>(): Chainable&#60;JQuery&#62;</code> |
 
 ## Usage
 
@@ -114,12 +133,15 @@ WIP! Style content
 
 <!-- END: human documentation style -->
 
+
+
 ## Edit this page on Github
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-accordion.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-accordion)
-- [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-accordion.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-accordion)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

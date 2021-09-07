@@ -31,28 +31,33 @@ Generally, pagination is used if there are more than 25 items displayed in one v
 ### Properties
 
 
-| Attribute       | Description                                                      | Type      | Default |
-| :-------------- | :--------------------------------------------------------------- | :-------- | :------ |
-| **disabled**    | Disables component                                               | `boolean` | `false` |
-| **page-range**  | Specify the max visible pages before and after the selected page | `number`  | `2`     |
-| **total-pages** | The total amount of pages                                        | `number`  | `1`     |
-| **value**       | Current selected page                                            | `number`  | `1`     |
+| Attribute       | Description                                                      | Type                 | Default            |
+| :-------------- | :--------------------------------------------------------------- | :------------------- | :----------------- |
+| **disabled**    | Disables component                                               | <code>boolean</code> | <code>false</code> |
+| **page-range**  | Specify the max visible pages before and after the selected page | <code>number</code>  | <code>2</code>     |
+| **total-pages** | The total amount of pages                                        | <code>number</code>  | <code>1</code>     |
+| **value**       | Current selected page                                            | <code>number</code>  | <code>1</code>     |
 
 ### Events
 
 
-| Event         | Description                         | Type     |
-| :------------ | :---------------------------------- | :------- |
-| **balChange** | Triggers when a page change happens | `number` |
+| Event         | Description                         | Type                |
+| :------------ | :---------------------------------- | :------------------ |
+| **balChange** | Triggers when a page change happens | <code>number</code> |
 
 ### Methods
 
 
-| Method         | Description            | Signature                     |
-| :------------- | :--------------------- | :---------------------------- |
-| **`next`**     | Go to the next page    | `next() => Promise<void>`     |
-| **`previous`** | Go to the prvious page | `previous() => Promise<void>` |
+| Method       | Description            | Signature                                            |
+| :----------- | :--------------------- | :--------------------------------------------------- |
+| **next**     | Go to the next page    | <code>next() =&#62; Promise&#60;void&#62;</code>     |
+| **previous** | Go to the prvious page | <code>previous() =&#62; Promise&#60;void&#62;</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 

@@ -3,23 +3,19 @@
 declare namespace Cypress {
   interface Chainable {
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Returns the action button element.
      */
     balTabsFindActionButton(): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Returns the tab items.
      */
     balTabsFindItems(): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Assert that the tab has the given item.
      */
     balTabsShouldHaveItems(labels: string[], dataType?: 'label' | 'value'): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Assert that the tab item has the  given state.
      */
     balTabItemShouldHaveState(state: 'done' | 'failed' | 'active' | 'disabled'): Chainable<JQuery>
   }

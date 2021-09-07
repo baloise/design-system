@@ -44,10 +44,15 @@ A notification is used for alerts or to highlight certain content for the user.
 ### Properties
 
 
-| Attribute | Description                      | Type                                                         | Default |
-| :-------- | :------------------------------- | :----------------------------------------------------------- | :------ |
-| **color** | Defines the color of the element | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
+| Attribute | Description                      | Type                                                                    | Default         |
+| :-------- | :------------------------------- | :---------------------------------------------------------------------- | :-------------- |
+| **color** | Defines the color of the element | <code>"" , "danger" , "info" , "primary" , "success" , "warning"</code> | <code>''</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 

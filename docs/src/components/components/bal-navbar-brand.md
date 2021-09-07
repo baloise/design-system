@@ -22,17 +22,22 @@ sidebarDepth: 0
 ### Properties
 
 
-| Attribute | Description               | Type     | Default |
-| :-------- | :------------------------ | :------- | :------ |
-| **href**  | Link of the logo / title. | `string` | `'/'`   |
+| Attribute | Description               | Type                | Default          |
+| :-------- | :------------------------ | :------------------ | :--------------- |
+| **href**  | Link of the logo / title. | <code>string</code> | <code>'/'</code> |
 
 ### Events
 
 
-| Event           | Description                               | Type         |
-| :-------------- | :---------------------------------------- | :----------- |
-| **balNavigate** | Emitted when the link element has clicked | `MouseEvent` |
+| Event           | Description                               | Type                    |
+| :-------------- | :---------------------------------------- | :---------------------- |
+| **balNavigate** | Emitted when the link element has clicked | <code>MouseEvent</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 
 

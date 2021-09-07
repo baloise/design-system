@@ -49,16 +49,21 @@ Here is how you can change the color:
 ### Properties
 
 
-| Attribute    | Description                                                     | Type                                                                                              | Default  |
-| :----------- | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :------- |
-| **color**    | The theme type of the button. Given by bulma our css framework. | `"danger" , "info" , "info-light" , "link" , "primary" , "primary-light" , "success" , "warning"` | `'info'` |
-| **inverted** | If `true` the button is inverted                                | `boolean`                                                                                         | `false`  |
-| **name**     | Name of the baloise icon.                                       | `string`                                                                                          | `''`     |
-| **rotate**   | If `true` the icon rotates like for a loading spinner           | `boolean`                                                                                         | `false`  |
-| **size**     | Defines the size of the icon.                                   | `"" , "large" , "medium" , "small" , "xsmall"`                                                    | `''`     |
-| **svg**      | Svg content.                                                    | `string`                                                                                          | `''`     |
-| **turn**     | If `true` the icon is rotated 180deg                            | `boolean`                                                                                         | `false`  |
+| Attribute    | Description                                                     | Type                                                                                                         | Default             |
+| :----------- | :-------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------- | :------------------ |
+| **color**    | The theme type of the button. Given by bulma our css framework. | <code>"danger" , "info" , "info-light" , "link" , "primary" , "primary-light" , "success" , "warning"</code> | <code>'info'</code> |
+| **inverted** | If `true` the button is inverted                                | <code>boolean</code>                                                                                         | <code>false</code>  |
+| **name**     | Name of the baloise icon.                                       | <code>string</code>                                                                                          | <code>''</code>     |
+| **rotate**   | If `true` the icon rotates like for a loading spinner           | <code>boolean</code>                                                                                         | <code>false</code>  |
+| **size**     | Defines the size of the icon.                                   | <code>"" , "large" , "medium" , "small" , "xsmall"</code>                                                    | <code>''</code>     |
+| **svg**      | Svg content.                                                    | <code>string</code>                                                                                          | <code>''</code>     |
+| **turn**     | If `true` the icon is rotated 180deg                            | <code>boolean</code>                                                                                         | <code>false</code>  |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 

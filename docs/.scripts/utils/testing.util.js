@@ -6,7 +6,9 @@ const parse = command => {
   const lines = []
   if (command) {
     if (command.length > 0) {
-      lines.push(`#### Commands`)
+      lines.push(`### Custom Commands`)
+      lines.push('')
+      lines.push('A list of the custom commands for this specific component.')
       lines.push('')
       table(
         [

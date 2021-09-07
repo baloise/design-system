@@ -22,20 +22,25 @@ sidebarDepth: 0
 ### Properties
 
 
-| Attribute    | Description                                                           | Type      | Default |
-| :----------- | :-------------------------------------------------------------------- | :-------- | :------ |
-| **disabled** | If `true` the button will get disabled.                               | `boolean` | `false` |
-| **editable** | If `true` a small button with a edit icon will be shown on the right. | `boolean` | `false` |
+| Attribute    | Description                                                           | Type                 | Default            |
+| :----------- | :-------------------------------------------------------------------- | :------------------- | :----------------- |
+| **disabled** | If `true` the button will get disabled.                               | <code>boolean</code> | <code>false</code> |
+| **editable** | If `true` a small button with a edit icon will be shown on the right. | <code>boolean</code> | <code>false</code> |
 
 ### Events
 
 
-| Event        | Description                               | Type         |
-| :----------- | :---------------------------------------- | :----------- |
-| **balBlur**  | Emitted when the edit button loses focus. | `void`       |
-| **balClick** | Emitted when the edit button has focus.   | `MouseEvent` |
-| **balFocus** | Emitted when the edit button has focus.   | `void`       |
+| Event        | Description                               | Type                    |
+| :----------- | :---------------------------------------- | :---------------------- |
+| **balBlur**  | Emitted when the edit button loses focus. | <code>void</code>       |
+| **balClick** | Emitted when the edit button has focus.   | <code>MouseEvent</code> |
+| **balFocus** | Emitted when the edit button has focus.   | <code>void</code>       |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 
 

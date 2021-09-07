@@ -3,13 +3,11 @@
 declare namespace Cypress {
   interface Chainable {
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Asserts if the accordion is open.
      */
     balAccordionIsOpen(): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Asserts if the accordion is closed.
      */
     balAccordionIsClosed(): Chainable<JQuery>
   }

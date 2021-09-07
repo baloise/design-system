@@ -66,32 +66,58 @@ Switches are used to toggle between exactly two states (like on and off).
 ### Properties
 
 
-| Attribute        | Description                                                     | Type                    | Default        |
-| :--------------- | :-------------------------------------------------------------- | :---------------------- | :------------- |
-| **bal-tabindex** | The tabindex of the control.                                    | `number`                | `0`            |
-| **checked**      | If `true`, the checkbox is selected.                            | `boolean`               | `false`        |
-| **disabled**     | If `true`, the user cannot interact with the checkbox.          | `boolean`               | `false`        |
-| **interface**    | Defines the layout of the checkbox button                       | `"checkbox" , "switch"` | `'checkbox'`   |
-| **inverted**     | If `true`, the control works on dark background.                | `boolean`               | `false`        |
-| **name**         | The name of the control, which is submitted with the form data. | `string`                | `this.inputId` |
-| **value**        | The value of the control.                                       | `string`                | `'on'`         |
+| Attribute        | Description                                                     | Type                               | Default                   |
+| :--------------- | :-------------------------------------------------------------- | :--------------------------------- | :------------------------ |
+| **bal-tabindex** | The tabindex of the control.                                    | <code>number</code>                | <code>0</code>            |
+| **checked**      | If `true`, the checkbox is selected.                            | <code>boolean</code>               | <code>false</code>        |
+| **disabled**     | If `true`, the user cannot interact with the checkbox.          | <code>boolean</code>               | <code>false</code>        |
+| **interface**    | Defines the layout of the checkbox button                       | <code>"checkbox" , "switch"</code> | <code>'checkbox'</code>   |
+| **inverted**     | If `true`, the control works on dark background.                | <code>boolean</code>               | <code>false</code>        |
+| **name**         | The name of the control, which is submitted with the form data. | <code>string</code>                | <code>this.inputId</code> |
+| **value**        | The value of the control.                                       | <code>string</code>                | <code>'on'</code>         |
 
 ### Events
 
 
-| Event         | Description                                    | Type         |
-| :------------ | :--------------------------------------------- | :----------- |
-| **balBlur**   | Emitted when the toggle loses focus.           | `FocusEvent` |
-| **balChange** | Emitted when the checked property has changed. | `boolean`    |
-| **balFocus**  | Emitted when the toggle has focus.             | `FocusEvent` |
+| Event         | Description                                    | Type                    |
+| :------------ | :--------------------------------------------- | :---------------------- |
+| **balBlur**   | Emitted when the toggle loses focus.           | <code>FocusEvent</code> |
+| **balChange** | Emitted when the checked property has changed. | <code>boolean</code>    |
+| **balFocus**  | Emitted when the toggle has focus.             | <code>FocusEvent</code> |
 
 ### Methods
 
 
-| Method                | Description                                               | Signature                                        |
-| :-------------------- | :-------------------------------------------------------- | :----------------------------------------------- |
-| **`getInputElement`** | Returns the native `<input>` element used under the hood. | `getInputElement() => Promise<HTMLInputElement>` |
-| **`setFocus`**        | Sets the focus on the checkbox input element.             | `setFocus() => Promise<void>`                    |
+| Method              | Description                                               | Signature                                                               |
+| :------------------ | :-------------------------------------------------------- | :---------------------------------------------------------------------- |
+| **getInputElement** | Returns the native `<input>` element used under the hood. | <code>getInputElement() =&#62; Promise&#60;HTMLInputElement&#62;</code> |
+| **setFocus**        | Sets the focus on the checkbox input element.             | <code>setFocus() =&#62; Promise&#60;void&#62;</code>                    |
+
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
+
+<!-- START: human documentation testing -->
+
+```typescript
+import { dataTestSelector } from '@baloise/design-system-testing'
+
+describe('Checkbox', () => {
+  const checkbox = dataTestSelector('my-checkbox') // [data-test-id="my-checkbox"]
+  it('should ...', () => {
+    cy.get(checkbox)
+      .contains('Label')
+      .check()
+      .should('be.checked')
+      .should('not.be.disabled')
+  })
+})
+```
+
+<!-- END: human documentation testing -->
+
 
 
 ## Usage

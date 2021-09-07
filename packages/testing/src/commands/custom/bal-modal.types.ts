@@ -3,13 +3,11 @@
 declare namespace Cypress {
   interface Chainable {
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Assert if the modal is open.
      */
     balModalIsOpen(): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Assert if the modal is closed.
      */
     balModalIsClosed(): Chainable<JQuery>
   }

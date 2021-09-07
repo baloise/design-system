@@ -39,11 +39,16 @@ A spinner is a animated graphic that lets the user know content is being loaded.
 ### Properties
 
 
-| Attribute    | Description                                            | Type      | Default |
-| :----------- | :----------------------------------------------------- | :-------- | :------ |
-| **inverted** | If `true` the component can be used on dark background | `boolean` | `false` |
-| **small**    | If `true` the component is smaller                     | `boolean` | `false` |
+| Attribute    | Description                                            | Type                 | Default            |
+| :----------- | :----------------------------------------------------- | :------------------- | :----------------- |
+| **inverted** | If `true` the component can be used on dark background | <code>boolean</code> | <code>false</code> |
+| **small**    | If `true` the component is smaller                     | <code>boolean</code> | <code>false</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 

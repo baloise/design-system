@@ -49,12 +49,17 @@ A list present content in a way that makes it easy to identify a specific item i
 ### Properties
 
 
-| Attribute    | Description                                        | Type      | Default |
-| :----------- | :------------------------------------------------- | :-------- | :------ |
-| **border**   | If `true` each list item has a bottom border       | `boolean` | `false` |
-| **disabled** | If `true` the list item can be hovered             | `boolean` | `false` |
-| **inverted** | If `true` the list can be used on a dark backround | `boolean` | `false` |
+| Attribute    | Description                                        | Type                 | Default            |
+| :----------- | :------------------------------------------------- | :------------------- | :----------------- |
+| **border**   | If `true` each list item has a bottom border       | <code>boolean</code> | <code>false</code> |
+| **disabled** | If `true` the list item can be hovered             | <code>boolean</code> | <code>false</code> |
+| **inverted** | If `true` the list can be used on a dark backround | <code>boolean</code> | <code>false</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 

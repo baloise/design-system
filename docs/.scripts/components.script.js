@@ -115,8 +115,15 @@ async function generateComponentMarkdown(component, dir, commands) {
       lines.push('')
     }
 
+    lines.push('## Testing')
+    lines.push('')
+    lines.push(
+      'The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.',
+    )
+    lines.push('')
+    lines.push('- [More information about the installation and usage](/components/tooling/testing.html)')
+
     if (command !== undefined || testingContent.length > 0) {
-      lines.push('### Testing')
       lines.push('')
       lines.push(testingContent)
       lines.push('')

@@ -3,33 +3,27 @@
 declare namespace Cypress {
   interface Chainable {
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Opens and closes the datepicker dropdown.
      */
     balDatepickerToggle(): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Assert if the datepicker dropdown is open.
      */
     balDatepickerIsOpen(): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Assert if the datepicker dropdown is closed.
      */
     balDatepickerIsClosed(): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Picks the date in the datepicker like a human.
      */
     balDatepickerPick(date: Date): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Asserts if the given date is in range in the datepicker dropdown.
      */
     balDatepickerIsDateInRange(date: Date): Chainable<JQuery>
     /**
-     * Custom command to select DOM element by data-cy attribute.
-     * @example cy.dataCy('greeting')
+     * Asserts if the given date is not in range in the datepicker dropdown.
      */
     balDatepickerIsDateNotInRange(date: Date): Chainable<JQuery>
   }

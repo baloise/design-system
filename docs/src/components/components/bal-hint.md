@@ -35,20 +35,25 @@ It can easily combined with the `bal-data` or `bal-field` component.
 ### Properties
 
 
-| Attribute       | Description                                         | Type      | Default   |
-| :-------------- | :-------------------------------------------------- | :-------- | :-------- |
-| **close-label** | Text for the close button.                          | `string`  | `'Close'` |
-| **disabled**    | If `true`, the user cannot interact with the input. | `boolean` | `false`   |
+| Attribute       | Description                                         | Type                 | Default              |
+| :-------------- | :-------------------------------------------------- | :------------------- | :------------------- |
+| **close-label** | Text for the close button.                          | <code>string</code>  | <code>'Close'</code> |
+| **disabled**    | If `true`, the user cannot interact with the input. | <code>boolean</code> | <code>false</code>   |
 
 ### Methods
 
 
-| Method       | Description           | Signature                   |
-| :----------- | :-------------------- | :-------------------------- |
-| **`close`**  | Closes the hint box.  | `close() => Promise<void>`  |
-| **`open`**   | Opens the hint box.   | `open() => Promise<void>`   |
-| **`toggle`** | Toggles the hint box. | `toggle() => Promise<void>` |
+| Method     | Description           | Signature                                          |
+| :--------- | :-------------------- | :------------------------------------------------- |
+| **close**  | Closes the hint box.  | <code>close() =&#62; Promise&#60;void&#62;</code>  |
+| **open**   | Opens the hint box.   | <code>open() =&#62; Promise&#60;void&#62;</code>   |
+| **toggle** | Toggles the hint box. | <code>toggle() =&#62; Promise&#60;void&#62;</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 
