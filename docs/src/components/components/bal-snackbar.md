@@ -4,6 +4,7 @@ sidebarDepth: 0
 
 # Snackbar
 
+
 <!-- START: human documentation top -->
 
 A snackbar is used to inform the user with a simple text message and a action.
@@ -12,15 +13,19 @@ A snackbar is used to inform the user with a simple text message and a action.
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
+
 ## Examples
 
 ### Basic
 
 <ClientOnly><docs-demo-bal-snackbar-96></docs-demo-bal-snackbar-96></ClientOnly>
 
+
 ### Colors
 
 <ClientOnly><docs-demo-bal-snackbar-97></docs-demo-bal-snackbar-97></ClientOnly>
+
+
 
 ## Code
 
@@ -67,6 +72,7 @@ export class ServicesPageComponent {
 
 ### Properties
 
+
 | Attribute    | Description                                                       | Type                                                                    | Default         |
 | :----------- | :---------------------------------------------------------------- | :---------------------------------------------------------------------- | :-------------- |
 | **action**   | Label text for the action button                                  | <code>string</code>                                                     | <code>''</code> |
@@ -78,12 +84,14 @@ export class ServicesPageComponent {
 
 ### Events
 
+
 | Event         | Description                               | Type                |
 | :------------ | :---------------------------------------- | :------------------ |
 | **balAction** | Emitted when the action button is clicked | <code>string</code> |
 | **balClose**  | Emitted when snackbar is closed           | <code>string</code> |
 
 ### Methods
+
 
 | Method      | Description                                        | Signature                                                           |
 | :---------- | :------------------------------------------------- | :------------------------------------------------------------------ |
@@ -126,15 +134,18 @@ A list of the custom commands for this specific component.
 
 <!-- END: human documentation usage -->
 
+
+
 ## Edit this page on Github
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-snackbar.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-snackbar)
-- [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-snackbar.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-snackbar)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balSnackbar"></docs-component-script>

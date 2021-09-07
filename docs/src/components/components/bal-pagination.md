@@ -4,6 +4,7 @@ sidebarDepth: 0
 
 # Pagination
 
+
 <!-- START: human documentation top -->
 
 Pagination allows you to divide large amounts of content into smaller chunks across multiple pages.
@@ -12,17 +13,23 @@ Pagination allows you to divide large amounts of content into smaller chunks acr
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
+
 ## Examples
 
 ### Basic
 
-Generally, pagination is used if there are more than 25 items displayed in one view. The default number displayed will vary depending on the context.
+Generally, pagination is used if there are more than 25 items displayed in one view.  The default number displayed will vary depending on the context.
 
 <ClientOnly><docs-demo-bal-pagination-79></docs-demo-bal-pagination-79></ClientOnly>
 
+
+
 ## Code
 
+
+
 ### Properties
+
 
 | Attribute       | Description                                                      | Type                 | Default            |
 | :-------------- | :--------------------------------------------------------------- | :------------------- | :----------------- |
@@ -33,11 +40,13 @@ Generally, pagination is used if there are more than 25 items displayed in one v
 
 ### Events
 
+
 | Event         | Description                         | Type                |
 | :------------ | :---------------------------------- | :------------------ |
 | **balChange** | Triggers when a page change happens | <code>number</code> |
 
 ### Methods
+
 
 | Method       | Description            | Signature                                            |
 | :----------- | :--------------------- | :--------------------------------------------------- |
@@ -97,12 +106,15 @@ A list of the custom commands for this specific component.
 
 <!-- END: human documentation usage -->
 
+
+
 ## Edit this page on Github
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-pagination.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-pagination)
-- [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-pagination.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-pagination)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
