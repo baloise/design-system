@@ -89,7 +89,6 @@ export class Tabs {
     if (!tab.disabled) {
       tab.navigate.emit(event)
       await this.select(tab)
-      this.tabsDidChange.emit(tab)
     }
   }
 
