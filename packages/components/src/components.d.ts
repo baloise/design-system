@@ -1391,7 +1391,7 @@ export namespace Components {
          */
         "color": ColorTypes | '';
         /**
-          * The duration of the toast
+          * The duration of the toast in milliseconds.
          */
         "duration": number;
     }
@@ -3303,7 +3303,7 @@ declare namespace LocalJSX {
          */
         "color"?: ColorTypes | '';
         /**
-          * The duration of the toast
+          * The duration of the toast in milliseconds.
          */
         "duration"?: number;
         /**
