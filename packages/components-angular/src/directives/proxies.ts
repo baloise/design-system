@@ -1067,7 +1067,7 @@ export class BalRadioGroup {
 export declare interface BalSelect extends Components.BalSelect {}
 @ProxyCmp({
   inputs: ['balTabindex', 'disabled', 'expanded', 'hasMovement', 'inverted', 'loading', 'multiple', 'name', 'noBorder', 'noDataLabel', 'placeholder', 'scrollable', 'typeahead', 'value'],
-  methods: ['setFocus', 'clear', 'open', 'close', 'cancel', 'select']
+  methods: ['setFocus', 'getValue', 'clear', 'open', 'close', 'cancel', 'select']
 })
 @Component({
   selector: 'bal-select',

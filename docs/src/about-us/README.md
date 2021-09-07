@@ -110,19 +110,20 @@ const date = now()
 // Wed Mar 10 2021 20:30:32 GMT+0100 (Central European Standard Time)
 ```
 
-#### Testing Accessors
+#### Testing
 
-As a [E-2-E testing](/guide/tooling/testing.html) tool we use [Cypress](https://www.cypress.io/). With the help of our testing accessors we try to simplify writing tests.
-The accessors hide the complexity of the component and only serves a interface for the simulated user actions like a click.
+As a [E-2-E testing](/components/tooling/testing.html) tool we use [Cypress](https://www.cypress.io/). With the help of our custom and overriden commands we try to simplify writing tests.
+The commands hide the complexity of the component and only serves a interface for the simulated user actions like a click.
 
 ```typescript
-import { dataTestSelector, ButtonAccessor } from '@baloise/design-system-components-testing'
+import { dataTestSelector } from '@baloise/design-system-testing'
 
 describe('Button', () => {
   it('should ...', () => {
-    const button = ButtonAccessor(dataTestSelector('button-id')).get()
-    button.click()
-    button.contains('Label')
+    const button = dataTestSelector('button-id')
+    cy.get(button)
+      .contains('Label')
+      .click()
   })
 })
 ```

@@ -1,4 +1,4 @@
-import { isoString, now } from '@baloise/design-system-components'
+import { now } from '@baloise/design-system-components'
 import { app } from '../support/app'
 
 describe('Datepicker', () => {

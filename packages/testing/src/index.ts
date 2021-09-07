@@ -2,6 +2,7 @@
  * Selector utilities
  */
 import './selectors'
+export * from './selectors'
 
 /**
  * Custom Commands
