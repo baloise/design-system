@@ -59,7 +59,7 @@ Place the downloaded fonts into a folder in the public area. Configure the path 
 
 **Relative path**
 
-If your fonts are not served from the root path and you need to have a relative path change the `$font-path` to '~assets/fonts'.
+To serve the fonts from a relative path inside a angular application adjust `$font-path` variable to `'~assets/fonts'`.
 
 :::
 
