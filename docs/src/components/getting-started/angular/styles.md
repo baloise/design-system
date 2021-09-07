@@ -55,19 +55,25 @@ We recommand to use dart-sass and not node-sass.
 
 Place the downloaded fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
 
+Import the `global.scss` Sass file into the main `.scss` file of your application.
+
+```scss
+@import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
+```
+
 ::: warning
 
 **Relative path**
 
 To serve the fonts from a relative path inside a angular application adjust `$font-path` variable to `'~assets/fonts'`.
 
-:::
-
-Import the `global.scss` Sass file into the main `.scss` file of your application.
-
 ```scss
+$font-path: '~assets/fonts';
+
 @import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
 ```
+
+:::
 
 ### Variables
 
