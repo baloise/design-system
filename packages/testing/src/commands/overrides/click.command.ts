@@ -12,7 +12,6 @@ import {
 } from '../helpers'
 
 Cypress.Commands.overwrite('click', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
-  console.log(element)
   if (isAccordion(element)) {
     return wrapRoot(element, selectors.accordion.button, $el => originalFn($el, options))
   }

@@ -35,12 +35,9 @@ export class FormPageComponent {
   })
 
   radioChange(event: any) {
-    console.log(this.form.get('gender')?.value)
-    this.form.get('gender')?.setValue('female')
-    console.log(this.form.get('gender')?.value)
-    // this.form.patchValue({
-    //   gender: 'female',
-    // })
+    this.form.patchValue({
+      gender: 'female',
+    })
   }
 
   setCommentDisabled() {
