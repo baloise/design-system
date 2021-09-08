@@ -21,16 +21,17 @@ export class FormPageComponent {
   ]
 
   form = new FormGroup({
-    gender: new FormControl(null, [BalValidators.isRequired]),
-    firstname: new FormControl(null, [BalValidators.isRequired]),
-    lastname: new FormControl(null, [BalValidators.isRequired]),
-    street: new FormControl(null, [BalValidators.isRequired]),
-    postalCode: new FormControl(null, [BalValidators.isRequired]),
-    city: new FormControl(null, [BalValidators.isRequired]),
-    birthdate: new FormControl(newDateString(now()), [BalValidators.isRequired]),
-    canton: new FormControl(['AG'], [BalValidators.isRequired]),
-    checkbox: new FormControl(true, [BalValidators.isRequiredTrue]),
-    comment: new FormControl(null, [BalValidators.isRequired]),
+    gender: new FormControl(null, [BalValidators.isRequired()]),
+    firstname: new FormControl(null, [BalValidators.isRequired()]),
+    lastname: new FormControl(null, [BalValidators.isRequired()]),
+    street: new FormControl(null, [BalValidators.isRequired()]),
+    postalCode: new FormControl(null, [BalValidators.isRequired()]),
+    city: new FormControl(null, [BalValidators.isRequired()]),
+    birthdate: new FormControl(newDateString(now()), [BalValidators.isRequired()]),
+    canton: new FormControl(['AG'], [BalValidators.isRequired()]),
+    email: new FormControl(null, [BalValidators.isRequired(), BalValidators.isMinLength(4), BalValidators.isEmail()]),
+    checkbox: new FormControl(true, [BalValidators.isRequiredTrue()]),
+    comment: new FormControl(null, [BalValidators.isRequired()]),
   })
 
   radioChange(event: any) {

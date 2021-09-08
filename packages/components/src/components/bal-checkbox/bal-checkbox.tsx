@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, Listen } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, Listen, State } from '@stencil/core'
 import { isDescendant } from '../../helpers/helpers'
 
 @Component({
@@ -10,6 +10,8 @@ import { isDescendant } from '../../helpers/helpers'
 export class Checkbox {
   private inputId = `bal-cb-${checkboxIds++}`
   private nativeInput?: HTMLInputElement
+
+  @State() hasFocus = false
 
   @Element() el!: HTMLElement
 
@@ -36,7 +38,7 @@ export class Checkbox {
   /**
    * If `true`, the checkbox is selected.
    */
-  @Prop({ mutable: true }) checked = false
+  @Prop({ mutable: true, reflect: true }) checked = false
 
   /**
    * Update the native input element when the value changes
@@ -103,6 +105,16 @@ export class Checkbox {
     this.checked = ev.target.checked
   }
 
+  private onInputFocus = (ev: any) => {
+    this.hasFocus = true
+    this.balFocus.emit(ev)
+  }
+
+  private onInputBlur = (ev: any) => {
+    this.hasFocus = false
+    this.balBlur.emit(ev)
+  }
+
   render() {
     return (
       <Host
@@ -110,6 +122,7 @@ export class Checkbox {
         class={{
           'is-inverted': this.inverted,
           'is-disabled': this.disabled,
+          'is-focused': this.hasFocus,
           'bal-checkbox': this.interface === 'checkbox',
           'bal-switch': this.interface === 'switch',
         }}
@@ -117,6 +130,7 @@ export class Checkbox {
         <input
           class={{
             'is-disabled': this.disabled,
+            'data-test-checkbox-input': true,
           }}
           type="checkbox"
           role="checkbox"
@@ -128,8 +142,8 @@ export class Checkbox {
           aria-checked={this.checked ? 'true' : 'false'}
           disabled={this.disabled}
           aria-disabled={this.disabled ? 'true' : 'false'}
-          onFocus={e => this.balFocus.emit(e)}
-          onBlur={e => this.balBlur.emit(e)}
+          onFocus={e => this.onInputFocus(e)}
+          onBlur={e => this.onInputBlur(e)}
           onInput={this.onInput}
           ref={inputEl => (this.nativeInput = inputEl)}
         />
@@ -137,6 +151,7 @@ export class Checkbox {
           class={{
             'option-label': true,
             'is-disabled': this.disabled,
+            'data-test-checkbox-label': true,
           }}
           htmlFor={this.inputId}
           onClick={(ev: MouseEvent) => {

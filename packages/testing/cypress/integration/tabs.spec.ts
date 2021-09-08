@@ -3,13 +3,28 @@ import { app } from '../support/app'
 describe('Tabs', () => {
   let page = app.getTabsPage()
 
-  it('should navigate to Tabs page and select Tab B on first Tab component on the page', () => {
+  it('should select Tab B', () => {
     page.open()
-    page.tabs.get().select(2)
+    cy.get(page.tabs).select('Tab B').should('have.value', 'Tab B')
+    cy.get(page.tabs).select('Tab A').should('not.have.value', 'Tab B')
   })
 
-  it('should navigate to Tabs page and assert if name of the first Tab component on the page is Tab A', () => {
+  it('should disable Tab D', () => {
     page.open()
-    page.tabs.get().assertVisible('Tab A')
+    cy.get(page.tabs).balTabsFindItems().last().should('have.value', 'Tab D')
+    cy.get(page.tabs).balTabsFindItems().last().should('be.disabled')
+  })
+
+  it('should have Action as button label', () => {
+    page.open()
+    cy.get(page.tabs).balTabsFindActionButton().contains('Action')
+  })
+
+  it('should check step status', () => {
+    page.open()
+    cy.get(page.steps).balTabsFindItems().first().balTabItemShouldHaveState('done')
+    cy.get(page.steps).balTabsFindItems().eq(1).balTabItemShouldHaveState('active')
+    cy.get(page.steps).balTabsFindItems().eq(2).balTabItemShouldHaveState('failed')
+    cy.get(page.steps).balTabsFindItems().last().balTabItemShouldHaveState('disabled')
   })
 })

@@ -79,6 +79,16 @@ Type: `Promise<void>`
 
 
 
+### `getValue() => Promise<string[] | undefined>`
+
+Sets the focus on the input element
+
+#### Returns
+
+Type: `Promise<string[] | undefined>`
+
+
+
 ### `open() => Promise<void>`
 
 Opens the dropdown

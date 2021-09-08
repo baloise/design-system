@@ -84,14 +84,15 @@ export class Hint {
         class={{
           [`is-placed-${this.placement}`]: true,
         }}
+        data-visible={this.isActive}
       >
-        <bal-icon role="button" name="info-circle" size="" onClick={() => this.toggle()}></bal-icon>
+        <bal-icon class="data-test-hint-trigger" role="button" name="info-circle" size="" onClick={() => this.toggle()}></bal-icon>
 
-        <div class="bal-hint-content" style={{ display: this.isActive ? 'inline-block' : 'none' }}>
+        <div class="bal-hint-content data-test-hint-content" style={{ display: this.isActive ? 'inline-block' : 'none' }}>
           <slot></slot>
 
           <div class="buttons is-row-reverse">
-            <bal-button color="info" outlined inverted onClick={() => this.close()}>
+            <bal-button class="data-test-hint-close" color="info" outlined inverted onClick={() => this.close()}>
               {this.closeLabel}
             </bal-button>
           </div>

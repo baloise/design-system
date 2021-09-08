@@ -655,14 +655,14 @@ export class BalIcon {
 
 export declare interface BalInput extends Components.BalInput {}
 @ProxyCmp({
-  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberKeyboard', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
+  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'decimal', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberInput', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
   methods: ['setFocus', 'getInputElement']
 })
 @Component({
   selector: 'bal-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberKeyboard', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
+  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'decimal', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberInput', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
   outputs: ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']
 })
 export class BalInput {
@@ -1067,7 +1067,7 @@ export class BalRadioGroup {
 export declare interface BalSelect extends Components.BalSelect {}
 @ProxyCmp({
   inputs: ['balTabindex', 'disabled', 'expanded', 'hasMovement', 'inverted', 'loading', 'multiple', 'name', 'noBorder', 'noDataLabel', 'placeholder', 'scrollable', 'typeahead', 'value'],
-  methods: ['setFocus', 'clear', 'open', 'close', 'cancel', 'select']
+  methods: ['setFocus', 'getValue', 'clear', 'open', 'close', 'cancel', 'select']
 })
 @Component({
   selector: 'bal-select',

@@ -90,77 +90,103 @@ You can specify allowed dates using a function.
 ### Properties
 
 
-| Attribute           | Description                                                                                                                                                                                                                                                                                                                                                             | Type                                            | Default        |
-| :------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------- | :------------- |
-|                     | Callback to determine which date in the datepicker should be selectable.                                                                                                                                                                                                                                                                                                | `((datestring: string) => boolean) , undefined` | `undefined`    |
-| **bal-tabindex**    | The tabindex of the control.                                                                                                                                                                                                                                                                                                                                            | `number`                                        | `0`            |
-| **close-on-select** | Closes the datepicker dropdown after selection                                                                                                                                                                                                                                                                                                                          | `boolean`                                       | `true`         |
-| **debounce**        | Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.                                                                                                                                                                                                 | `number`                                        | `0`            |
-| **default-date**    | The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).                                                                                                                                                                                                                                                             | `null , string , undefined`                     |                |
-| **disabled**        | If `true` the component is diabled.                                                                                                                                                                                                                                                                                                                                     | `boolean`                                       | `false`        |
-| **expanded**        | If `true` the component uses the whole width.                                                                                                                                                                                                                                                                                                                           | `boolean`                                       | `false`        |
-| **inverted**        | Set this to `true` when the component is placed on a dark background.                                                                                                                                                                                                                                                                                                   | `boolean`                                       | `false`        |
-| **locale**          | If `true` the component uses the whole width.                                                                                                                                                                                                                                                                                                                           | `"de" , "en" , "fr" , "it"`                     | `'en'`         |
-| **max**             | The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.                                        | `string , undefined`                            |                |
-| **max-year**        | Latest year available for selection                                                                                                                                                                                                                                                                                                                                     | `number , undefined`                            | `undefined`    |
-| **min**             | The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today. | `string , undefined`                            |                |
-| **min-year**        | Earliest year available for selection                                                                                                                                                                                                                                                                                                                                   | `number , undefined`                            | `undefined`    |
-| **name**            | The name of the control, which is submitted with the form data.                                                                                                                                                                                                                                                                                                         | `string`                                        | `this.inputId` |
-| **placeholder**     | The text to display when the select is empty.                                                                                                                                                                                                                                                                                                                           | `string , undefined`                            |                |
-| **readonly**        | If `true` the use can only select a date.                                                                                                                                                                                                                                                                                                                               | `boolean`                                       | `false`        |
-| **required**        | If `true` the attribute required is added to the native input.                                                                                                                                                                                                                                                                                                          | `boolean`                                       | `false`        |
-| **trigger-icon**    | If `true` the datepicker only open on click of the icon                                                                                                                                                                                                                                                                                                                 | `boolean`                                       | `false`        |
-| **value**           | The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).                                                                                                                                                                                                                                                                                          | `null , string , undefined`                     |                |
+| Attribute           | Description                                                                                                                                                                                                                                                                                                                                                             | Type                                                           | Default                   |
+| :------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------- | :------------------------ |
+|                     | Callback to determine which date in the datepicker should be selectable.                                                                                                                                                                                                                                                                                                | <code>((datestring: string) =&#62; boolean) , undefined</code> | <code>undefined</code>    |
+| **bal-tabindex**    | The tabindex of the control.                                                                                                                                                                                                                                                                                                                                            | <code>number</code>                                            | <code>0</code>            |
+| **close-on-select** | Closes the datepicker dropdown after selection                                                                                                                                                                                                                                                                                                                          | <code>boolean</code>                                           | <code>true</code>         |
+| **debounce**        | Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.                                                                                                                                                                                                 | <code>number</code>                                            | <code>0</code>            |
+| **default-date**    | The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).                                                                                                                                                                                                                                                             | <code>null , string , undefined</code>                         |                           |
+| **disabled**        | If `true` the component is diabled.                                                                                                                                                                                                                                                                                                                                     | <code>boolean</code>                                           | <code>false</code>        |
+| **expanded**        | If `true` the component uses the whole width.                                                                                                                                                                                                                                                                                                                           | <code>boolean</code>                                           | <code>false</code>        |
+| **inverted**        | Set this to `true` when the component is placed on a dark background.                                                                                                                                                                                                                                                                                                   | <code>boolean</code>                                           | <code>false</code>        |
+| **locale**          | If `true` the component uses the whole width.                                                                                                                                                                                                                                                                                                                           | <code>"de" , "en" , "fr" , "it"</code>                         | <code>'en'</code>         |
+| **max**             | The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.                                        | <code>string , undefined</code>                                |                           |
+| **max-year**        | Latest year available for selection                                                                                                                                                                                                                                                                                                                                     | <code>number , undefined</code>                                | <code>undefined</code>    |
+| **min**             | The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today. | <code>string , undefined</code>                                |                           |
+| **min-year**        | Earliest year available for selection                                                                                                                                                                                                                                                                                                                                   | <code>number , undefined</code>                                | <code>undefined</code>    |
+| **name**            | The name of the control, which is submitted with the form data.                                                                                                                                                                                                                                                                                                         | <code>string</code>                                            | <code>this.inputId</code> |
+| **placeholder**     | The text to display when the select is empty.                                                                                                                                                                                                                                                                                                                           | <code>string , undefined</code>                                |                           |
+| **readonly**        | If `true` the use can only select a date.                                                                                                                                                                                                                                                                                                                               | <code>boolean</code>                                           | <code>false</code>        |
+| **required**        | If `true` the attribute required is added to the native input.                                                                                                                                                                                                                                                                                                          | <code>boolean</code>                                           | <code>false</code>        |
+| **trigger-icon**    | If `true` the datepicker only open on click of the icon                                                                                                                                                                                                                                                                                                                 | <code>boolean</code>                                           | <code>false</code>        |
+| **value**           | The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).                                                                                                                                                                                                                                                                                          | <code>null , string , undefined</code>                         |                           |
 
 ### Events
 
 
-| Event         | Description                             | Type                        |
-| :------------ | :-------------------------------------- | :-------------------------- |
-| **balBlur**   | Emitted when the input loses focus.     | `FocusEvent`                |
-| **balChange** | Emitted when a option got selected.     | `null | string | undefined` |
-| **balFocus**  | Emitted when the input has focus.       | `FocusEvent`                |
-| **balInput**  | Emitted when a keyboard input occurred. | `string`                    |
+| Event         | Description                             | Type                                                 |
+| :------------ | :-------------------------------------- | :--------------------------------------------------- |
+| **balBlur**   | Emitted when the input loses focus.     | <code>FocusEvent</code>                              |
+| **balChange** | Emitted when a option got selected.     | <code>null  &#124;  string  &#124;  undefined</code> |
+| **balFocus**  | Emitted when the input has focus.       | <code>FocusEvent</code>                              |
+| **balInput**  | Emitted when a keyboard input occurred. | <code>string</code>                                  |
 
 ### Methods
 
 
-| Method                | Description                                               | Signature                                        |
-| :-------------------- | :-------------------------------------------------------- | :----------------------------------------------- |
-| **`close`**           | Closes the dropdown                                       | `close() => Promise<void>`                       |
-| **`getInputElement`** | Returns the native `<input>` element used under the hood. | `getInputElement() => Promise<HTMLInputElement>` |
-| **`open`**            | Opens the dropdown                                        | `open() => Promise<void>`                        |
-| **`select`**          | Selects an option                                         | `select(datestring: string) => Promise<void>`    |
-| **`setFocus`**        | Sets the focus on the input element                       | `setFocus() => Promise<void>`                    |
+| Method              | Description                                               | Signature                                                               |
+| :------------------ | :-------------------------------------------------------- | :---------------------------------------------------------------------- |
+| **close**           | Closes the dropdown                                       | <code>close() =&#62; Promise&#60;void&#62;</code>                       |
+| **getInputElement** | Returns the native `<input>` element used under the hood. | <code>getInputElement() =&#62; Promise&#60;HTMLInputElement&#62;</code> |
+| **open**            | Opens the dropdown                                        | <code>open() =&#62; Promise&#60;void&#62;</code>                        |
+| **select**          | Selects an option                                         | <code>select(datestring: string) =&#62; Promise&#60;void&#62;</code>    |
+| **setFocus**        | Sets the focus on the input element                       | <code>setFocus() =&#62; Promise&#60;void&#62;</code>                    |
 
-### Testing
+## Testing
 
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
 
-DatepickerAccessor is a helper object for E-2-E testing.
-It maps the datepicker behaviour to the `bal-datepicker` ui component.
+- [More information about the installation and usage](/components/tooling/testing.html)
+
+<!-- START: human documentation testing -->
 
 ```typescript
-import { dataTestSelector, DatepickerAccessor } from '@baloise/design-system-components-testing'
+import { dataTestSelector } from '@baloise/design-system-testing'
 
 describe('Datepicker', () => {
-  it('should ...', () => {
-     const datepicker = DatepickerAccessor(dataTestSelector('datepicker-id')).get()
-     datepicker.open()
-     datepicker.pick(new Date())
-     datepicker.shouldHaveValue(new Date())
- })
+  const datepicker = dataTestSelector('my-datepicker') // [data-test-id="my-datepicker"]
+
+  it('should open and close the datepicker', () => {
+    cy.get(datepicker)
+      .balDatepickerToggle()
+      .balDatepickerIsOpen()
+      .balDatepickerToggle()
+      .balDatepickerIsClosed()
+  })
+
+  it('should pick the date in datepicker', () => {
+    cy.get(datepicker)
+      .balDatepickerToggle()
+      .balDatepickerPick(now())
+  })
+
+  it('should type and assert the date in the datepicker', () => {
+    cy.get(datepicker)
+      .type('20.02.2021')
+      .should('have.value', '20.02.2021')
+    cy.get(datepicker)
+      .clear()
+      .type('03.03.2021')
+      .should('not.have.value', '20.02.2021')
+  })
 })
 ```
 
-### Methods
+<!-- END: human documentation testing -->
 
-| Method                | Description                    | Arguments                                     |
-| :-------------------- | :----------------------------- | :-------------------------------------------- |
-| **write**             | Write in the datepicker        | `date: string`                                |
-| **open**              | Open the datepicker            |                                               |
-| **pick**              | Pick the date                  | `date: Date`                                  |
-| **shouldHaveValue**   | Check if datepicker have value | `date: Date`                                  |
-| **assertDateInRange** | Assert if the date is in range | `date: Date, shouldBeInRange: boolean = true` |
+### Custom Commands
+
+A list of the custom commands for this specific component.
+
+| Command                           | Description                                                           | Signature                                            |
+| :-------------------------------- | :-------------------------------------------------------------------- | :--------------------------------------------------- |
+| **balDatepickerToggle**           | Opens and closes the datepicker dropdown.                             | <code>(): Chainable&#60;JQuery&#62;</code>           |
+| **balDatepickerIsOpen**           | Assert if the datepicker dropdown is open.                            | <code>(): Chainable&#60;JQuery&#62;</code>           |
+| **balDatepickerIsClosed**         | Assert if the datepicker dropdown is closed.                          | <code>(): Chainable&#60;JQuery&#62;</code>           |
+| **balDatepickerPick**             | Picks the date in the datepicker like a human.                        | <code>(date: Date): Chainable&#60;JQuery&#62;</code> |
+| **balDatepickerIsDateInRange**    | Asserts if the given date is in range in the datepicker dropdown.     | <code>(date: Date): Chainable&#60;JQuery&#62;</code> |
+| **balDatepickerIsDateNotInRange** | Asserts if the given date is not in range in the datepicker dropdown. | <code>(date: Date): Chainable&#60;JQuery&#62;</code> |
 
 ## Usage
 
@@ -174,7 +200,7 @@ describe('Datepicker', () => {
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-datepicker.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-datepicker)
-* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/datepicker.accessor.ts)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 

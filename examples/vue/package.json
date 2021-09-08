@@ -30,7 +30,7 @@
     "@ag-grid-community/core": "^26.0.0",
     "@ag-grid-community/vue3": "^26.0.0",
     "@baloise/design-system-components-table": "^1.11.1",
-    "@baloise/design-system-components-vue": "^1.11.1",
+    "@baloise/design-system-components-vue": "^1.12.3",
     "@baloise/vue-axios": "^1.2.0",
     "axios": "^0.21.1",
     "core-js": "^3.16.2",

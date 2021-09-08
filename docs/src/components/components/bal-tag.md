@@ -44,19 +44,24 @@ A tag highlights a label for quick recognition.
 ### Properties
 
 
-| Attribute    | Description                                                  | Type                                                         | Default |
-| :----------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :------ |
-| **closable** | The theme type of the tag. Given by bulma our css framework. | `boolean`                                                    | `false` |
-| **color**    | The theme type of the tag. Given by bulma our css framework. | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
-| **size**     | The size of the tag element                                  | `"" , "large" , "medium" , "small"`                          | `''`    |
+| Attribute    | Description                                                  | Type                                                                    | Default            |
+| :----------- | :----------------------------------------------------------- | :---------------------------------------------------------------------- | :----------------- |
+| **closable** | The theme type of the tag. Given by bulma our css framework. | <code>boolean</code>                                                    | <code>false</code> |
+| **color**    | The theme type of the tag. Given by bulma our css framework. | <code>"" , "danger" , "info" , "primary" , "success" , "warning"</code> | <code>''</code>    |
+| **size**     | The size of the tag element                                  | <code>"" , "large" , "medium" , "small"</code>                          | <code>''</code>    |
 
 ### Events
 
 
-| Event             | Description                         | Type         |
-| :---------------- | :---------------------------------- | :----------- |
-| **balCloseClick** | Emitted when the input got clicked. | `MouseEvent` |
+| Event             | Description                         | Type                    |
+| :---------------- | :---------------------------------- | :---------------------- |
+| **balCloseClick** | Emitted when the input got clicked. | <code>MouseEvent</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 

@@ -1,7 +1,7 @@
-import { DropdownAccessor, dataTestSelector } from '../../../src'
+import { dataTestSelector } from '../../../src'
 
 export class DropdownPage {
-  dropdown = DropdownAccessor(dataTestSelector("dropdown"))
+  dropdown = dataTestSelector('dropdown')
   open() {
     cy.visit('/components/bal-dropdown')
   }

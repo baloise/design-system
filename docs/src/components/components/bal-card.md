@@ -61,18 +61,23 @@ The position the action buttons to the right side just add the attribute `right`
 ### Properties
 
 
-| Attribute       | Description                                         | Type                                                         | Default |
-| :-------------- | :-------------------------------------------------- | :----------------------------------------------------------- | :------ |
-| **border**      | If `true` a light blue border is added to the card. | `boolean`                                                    | `false` |
-| **color**       | Defines the color of the card.                      | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
-| **flat**        | If `true` the card loses its shadow.                | `boolean`                                                    | `false` |
-| **flat-mobile** | If `true` a card will not have a shadow on mobile.  | `boolean`                                                    | `false` |
-| **inverted**    | If `true` the card background color becomes blue.   | `boolean`                                                    | `false` |
-| **padded**      |                                                     | `boolean`                                                    | `false` |
-| **padding**     | Defines the size of the padding grid                | `"" , "form" , "pure"`                                       | `''`    |
-| **square**      | If `true` the card loses its border radius.         | `boolean`                                                    | `false` |
-| **teaser**      | If `true` the card has a limited width on desktop.  | `boolean`                                                    | `false` |
+| Attribute       | Description                                         | Type                                                                    | Default            |
+| :-------------- | :-------------------------------------------------- | :---------------------------------------------------------------------- | :----------------- |
+| **border**      | If `true` a light blue border is added to the card. | <code>boolean</code>                                                    | <code>false</code> |
+| **color**       | Defines the color of the card.                      | <code>"" , "danger" , "info" , "primary" , "success" , "warning"</code> | <code>''</code>    |
+| **flat**        | If `true` the card loses its shadow.                | <code>boolean</code>                                                    | <code>false</code> |
+| **flat-mobile** | If `true` a card will not have a shadow on mobile.  | <code>boolean</code>                                                    | <code>false</code> |
+| **inverted**    | If `true` the card background color becomes blue.   | <code>boolean</code>                                                    | <code>false</code> |
+| **padded**      |                                                     | <code>boolean</code>                                                    | <code>false</code> |
+| **padding**     | Defines the size of the padding grid                | <code>"" , "form" , "pure"</code>                                       | <code>''</code>    |
+| **square**      | If `true` the card loses its border radius.         | <code>boolean</code>                                                    | <code>false</code> |
+| **teaser**      | If `true` the card has a limited width on desktop.  | <code>boolean</code>                                                    | <code>false</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 

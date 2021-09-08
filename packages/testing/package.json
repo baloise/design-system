@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-testing",
-  "version": "1.11.1",
+  "version": "1.14.0",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -30,31 +30,30 @@
   "scripts": {
     "serve": "cypress open",
     "test": "cypress run",
-    "build": "npm run build:clean && npm run docs && npm run build:index && npm run build:compile && npm run build:bundle",
-    "build:clean": "rimraf src/index.ts && rimraf docs && rimraf dist && rimraf dist-transpiled",
-    "build:index": "node .scripts/index.script.js",
+    "cy:install": "cypress install",
+    "build": "npm run build:clean && npm run docs && npm run build:compile && npm run build:bundle",
+    "build:clean": "rimraf docs && rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p tsconfig.build.json",
     "build:bundle": "rollup --config rollup.config.js",
     "docs": "node .scripts/docs-json.script.js",
-    "ci": "start-server-and-test ci:server http://localhost:3333 test",
     "ci:server": "http-server ../components/www -p 3333 -c-1 --silent"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-components": "^1.11.1"
+    "@baloise/design-system-components": "^1.14.0"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.18",
-    "@types/jquery": "^3.5.1",
-    "@types/node": "^14.14.44",
+    "@types/chai": "^4.2.21",
+    "@types/jquery": "^3.5.6",
+    "@types/node": "^14.17.15",
     "cypress": "8.1.0",
     "cypress-file-upload": "5.0.7",
-    "http-server": "^0.12.3",
+    "http-server": "^13.0.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.47.0",
-    "start-server-and-test": "^1.12.1",
+    "rollup": "^2.56.3",
+    "start-server-and-test": "^1.14.0",
     "ts-node": "^9.0.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.4.2"
   },
   "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca"
 }

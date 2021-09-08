@@ -277,7 +277,7 @@ export class Button implements ComponentInterface {
           <span {...this.spanAttrs}>{/* Empty span to get the correct text height */}</span>
           <bal-spinner {...this.loadingAttrs} class={this.spinnerCssClass} />
           <bal-icon {...this.leftIconAttrs} class="icon-left" name={this.icon} size={this.square ? this.size : 'small'} color={this.color} inverted={this.isIconInverted} />
-          <bal-text {...this.spanAttrs} small={this.size === 'small'} style={{ display: this.loading ? 'none' : 'inline' }}>
+          <bal-text class="data-test-button-label" {...this.spanAttrs} small={this.size === 'small'} style={{ display: this.loading ? 'none' : 'inline' }}>
             <slot />
           </bal-text>
           <bal-icon {...this.leftRightAttrs} class="icon-right" name={this.iconRight} size={'small'} color={this.color} inverted={this.isIconInverted} />

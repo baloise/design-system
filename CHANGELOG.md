@@ -3,70 +3,214 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.11.1](https://github.com/baloise/design-system/compare/v1.11.0...v1.11.1) (2021-08-23)
+# [1.14.0](https://github.com/baloise/design-system/compare/v1.13.3...v1.14.0) (2021-09-08)
 
 
 ### Bug Fixes
 
-* resolve packages ([2c14a4b](https://github.com/baloise/design-system/commit/2c14a4b0d3068661309f5c442c93f9e4a19b5751))
-* **table:** center text of the button ([95945a3](https://github.com/baloise/design-system/commit/95945a39b330a7cb4fcd22b5dd42fad9b1c21e8c))
-
-
-
-
-
-# [1.11.0](https://github.com/baloise/design-system/compare/v1.10.0...v1.11.0) (2021-08-23)
-
-
-### Bug Fixes
-
-* **checkbox:** remplace rem with pixel ([2095880](https://github.com/baloise/design-system/commit/20958801cf871f6082649fbdbc4adb8bd346acde))
-* **input:** enable clipboard content ([4d4032e](https://github.com/baloise/design-system/commit/4d4032e15d457f67e9f404375dc767ca6bf58907))
-* **select:** listen for attribute and text content changes ([9a517e0](https://github.com/baloise/design-system/commit/9a517e0ed6c8bdb05db6dca4fcbcbd55ec4aa7e5))
-* **styles:** remove old client lib variables ([9413e38](https://github.com/baloise/design-system/commit/9413e38f5ff44d911eabab7f400f3c838db8d6cb))
+* **pagination:** reduce number of pages of mobile devices ([33959ec](https://github.com/baloise/design-system/commit/33959ec6c22d190397caabdbdd05f488182c5736))
+* **table:** resolve deps ([00d98a8](https://github.com/baloise/design-system/commit/00d98a896a6961a0e7b3e8f6e82e3ba736421909))
+* **tabs:** only fire tab change event ones ([3a15e4f](https://github.com/baloise/design-system/commit/3a15e4fe937d559c50cd45c83c1408891a53e64d))
 
 
 ### Features
 
-* **components:** update deps ([f650c2b](https://github.com/baloise/design-system/commit/f650c2bf2773a1954dc9f5d99689faac6af0f313))
-* **select:** add single value ([b5b536c](https://github.com/baloise/design-system/commit/b5b536ccd62122663b838fa8411a7ca386760922))
-* **table:** introduce new table package ([0540144](https://github.com/baloise/design-system/commit/05401440fad284092ecb0220c567ab22eda003b4))
-* **table:** update ag-grid usage ([f083875](https://github.com/baloise/design-system/commit/f0838754edc5d8a907b1bec0fdf8b503e16e674d))
-* **vue:** rename function validators to rules ([9bad019](https://github.com/baloise/design-system/commit/9bad019a4a02dbf354b799060d454f1729328d45))
-* **vue:** update deps ([9323c8d](https://github.com/baloise/design-system/commit/9323c8dd8ecf82126f97d412669756d2c2203b7d))
+* **testing:** add and override commands for accordion, button, datepicker and checkbox ([a80a5f6](https://github.com/baloise/design-system/commit/a80a5f603e7083500bc6a9d3aaf47d3fc3207deb))
+* **testing:** add or override cypress commands for dropdown, input, modal, radio, select, tabs and toast ([e088819](https://github.com/baloise/design-system/commit/e088819b946bd5147825a6907bc64861becb2f9c))
+* **testing:** add support for hint, pagination, slider and snackbar ([13f882c](https://github.com/baloise/design-system/commit/13f882c609abc108f014d1cefaa2befe95147022))
+* **testing:** remove mixins and accessors ([8684a68](https://github.com/baloise/design-system/commit/8684a68c6bec275c07b2f810ad93c364bde7df97))
 
 
+
+## [1.13.1](https://github.com/baloise/design-system/compare/v1.12.3...v1.13.1) (2021-09-06)
+
+
+### Bug Fixes
+
+* **text:** add word break ([28260a7](https://github.com/baloise/design-system/commit/28260a7cd71003c50cdd5b1d66b89210032da58c))
+
+
+
+## [1.12.3](https://github.com/baloise/design-system/compare/v1.11.1...v1.12.3) (2021-09-01)
+
+
+### Bug Fixes
+
+* **testing:** improve select of radios ([ee64a27](https://github.com/baloise/design-system/commit/ee64a2756a1c513be38eaf81fc25312fadfa046e))
+
+
+### Features
+
+* **testing:** improve select accessor ([5b5a632](https://github.com/baloise/design-system/commit/5b5a6325c2e69b94c0740255073602848897d6e4))
+
+
+
+## 1.11.1 (2021-08-23)
+
+
+
+
+
+## [1.13.3](https://github.com/baloise/design-system/compare/v1.13.2...v1.13.3) (2021-09-06)
+
+
+### Bug Fixes
+
+* **card:** don't break words ([0f5d2bf](https://github.com/baloise/design-system/commit/0f5d2bfe1ebb3b1cd2623439f761e86ac88062b7))
+
+
+
+
+
+## [1.13.2](https://github.com/baloise/design-system/compare/v1.13.1...v1.13.2) (2021-09-06)
+
+
+### Bug Fixes
+
+* **table:** resolve deps ([00d98a8](https://github.com/baloise/design-system/commit/00d98a896a6961a0e7b3e8f6e82e3ba736421909))
+
+
+
+
+
+## [1.13.1](https://github.com/baloise/design-system/compare/v1.13.0...v1.13.1) (2021-09-06)
+
+### Bug Fixes
+
+- **angular:** listens for the first given error ([67bd4c4](https://github.com/baloise/design-system/commit/67bd4c491e0e2425df218903caa19b626e34d615))
+- only format value if number input is active ([23ba116](https://github.com/baloise/design-system/commit/23ba11659e3d6da588881a03cd53352765f8c659))
+- update stencil to version 2.8.0 ([0f80d25](https://github.com/baloise/design-system/commit/0f80d257543619de4e83081cba95b49f55e0581e))
+
+# [1.13.0](https://github.com/baloise/design-system/compare/v1.12.5...v1.13.0) (2021-09-03)
+
+### Features
+
+- **angular:** add bal-ng-error ([7f41482](https://github.com/baloise/design-system/commit/7f4148242640d54fc3ec0b33a39b83a43592492b))
+
+## [1.12.4](https://github.com/baloise/design-system/compare/v1.12.3...v1.12.4) (2021-09-02)
+
+### Bug Fixes
+
+- **input:** enable normal input again ([1a29327](https://github.com/baloise/design-system/commit/1a29327d9f0eeeb707cae61863f63a6aca50a117))
+
+## [1.12.3](https://github.com/baloise/design-system/compare/v1.12.2...v1.12.3) (2021-09-01)
+
+### Bug Fixes
+
+- **vue:** use detail instead of value from the change event ([f979fe9](https://github.com/baloise/design-system/commit/f979fe90acbfbc8abbf6071814647b0195f65d6a))
+
+## [1.12.2](https://github.com/baloise/design-system/compare/v1.12.1...v1.12.2) (2021-09-01)
+
+### Bug Fixes
+
+- **vue:** use detail instead of value from the change event ([5e3c70c](https://github.com/baloise/design-system/commit/5e3c70c09d3fb1d58eb32865ae5ffd5e39cdf5ce))
+
+## [1.12.1](https://github.com/baloise/design-system/compare/v1.12.0...v1.12.1) (2021-09-01)
+
+### Bug Fixes
+
+- **vue:** adjust types of the props ([41f29b1](https://github.com/baloise/design-system/commit/41f29b1175a5da6fc4f67f02e0e602b7ad4b64ec))
+
+# [1.12.0](https://github.com/baloise/design-system/compare/v1.11.3...v1.12.0) (2021-08-31)
+
+### Features
+
+- **input:** add number-input with decimal ([ab473de](https://github.com/baloise/design-system/commit/ab473deacb867ffd44f23e76b0ed6f9400d5072e))
+
+## [1.11.1](https://github.com/baloise/design-system/compare/v1.10.0...v1.11.1) (2021-08-23)
+
+### Features
+
+- **input:** add logic for checking if number entered is valid and add decimal property for number formating ([01818a7](https://github.com/baloise/design-system/commit/01818a7a862664b3733b597cd13569989aeb487a))
+
+# [1.10.0](https://github.com/baloise/design-system/compare/v1.9.0...v1.10.0) (2021-08-16)
+
+### Bug Fixes
+
+- **input:** enable clipboard content ([4d4032e](https://github.com/baloise/design-system/commit/4d4032e15d457f67e9f404375dc767ca6bf58907))
+
+### Features
+
+- **table:** update ag-grid usage ([f083875](https://github.com/baloise/design-system/commit/f0838754edc5d8a907b1bec0fdf8b503e16e674d))
 
 # [1.9.0](https://github.com/baloise/design-system/compare/v1.8.2...v1.9.0) (2021-08-12)
 
-
 ### Bug Fixes
 
-* **datepicker:** fix fullwidth ([cddd3f2](https://github.com/baloise/design-system/commit/cddd3f2a459e7fb428096bda7b61586a29eda986))
-* **input:** fix autofocus and add directives for angular and vue ([ef76dcf](https://github.com/baloise/design-system/commit/ef76dcf9b4ff160b3a38f2148081233407964b53))
-* **select:** fix fullwidth ([9cf060a](https://github.com/baloise/design-system/commit/9cf060a6cbf269fa7e03f55d56d87497dcabe126))
-
+- **datepicker:** fix fullwidth ([cddd3f2](https://github.com/baloise/design-system/commit/cddd3f2a459e7fb428096bda7b61586a29eda986))
+- **input:** fix autofocus and add directives for angular and vue ([ef76dcf](https://github.com/baloise/design-system/commit/ef76dcf9b4ff160b3a38f2148081233407964b53))
+- **select:** fix fullwidth ([9cf060a](https://github.com/baloise/design-system/commit/9cf060a6cbf269fa7e03f55d56d87497dcabe126))
 
 ### Features
 
-* **testing:** add andable.ts and attachable.ts mixin description ([e918b8a](https://github.com/baloise/design-system/commit/e918b8a2db1e19b7eadd2e42deff697040b83e7d))
-
-
+- **testing:** add andable.ts and attachable.ts mixin description ([e918b8a](https://github.com/baloise/design-system/commit/e918b8a2db1e19b7eadd2e42deff697040b83e7d))
 
 ## [1.8.2](https://github.com/baloise/design-system/compare/v1.8.1...v1.8.2) (2021-08-06)
 
-
 ### Bug Fixes
 
-* **table:** make styles accessable for angular & vue applications ([f5b5de5](https://github.com/baloise/design-system/commit/f5b5de5b9061bd600bf0ad5b9783b825b7b38c1c))
-
-
+- **table:** make styles accessable for angular & vue applications ([f5b5de5](https://github.com/baloise/design-system/commit/f5b5de5b9061bd600bf0ad5b9783b825b7b38c1c))
 
 ## 1.8.1 (2021-08-05)
 
+## [1.11.3](https://github.com/baloise/design-system/compare/v1.11.2...v1.11.3) (2021-08-27)
 
+### Bug Fixes
 
+- **angular:** use .detail instead of .target.value ([4496cdd](https://github.com/baloise/design-system/commit/4496cdd2a06789eb430dbce1b96390644741352a))
 
+## 1.11.1 (2021-08-23)
+
+## [1.11.2](https://github.com/baloise/design-system/compare/v1.11.1...v1.11.2) (2021-08-27)
+
+### Bug Fixes
+
+- **angular:** use .detail instead of .target.value ([4496cdd](https://github.com/baloise/design-system/commit/4496cdd2a06789eb430dbce1b96390644741352a))
+
+## [1.11.1](https://github.com/baloise/design-system/compare/v1.11.0...v1.11.1) (2021-08-23)
+
+### Bug Fixes
+
+- resolve packages ([2c14a4b](https://github.com/baloise/design-system/commit/2c14a4b0d3068661309f5c442c93f9e4a19b5751))
+- **table:** center text of the button ([95945a3](https://github.com/baloise/design-system/commit/95945a39b330a7cb4fcd22b5dd42fad9b1c21e8c))
+
+# [1.11.0](https://github.com/baloise/design-system/compare/v1.10.0...v1.11.0) (2021-08-23)
+
+### Bug Fixes
+
+- **checkbox:** remplace rem with pixel ([2095880](https://github.com/baloise/design-system/commit/20958801cf871f6082649fbdbc4adb8bd346acde))
+- **input:** enable clipboard content ([4d4032e](https://github.com/baloise/design-system/commit/4d4032e15d457f67e9f404375dc767ca6bf58907))
+- **select:** listen for attribute and text content changes ([9a517e0](https://github.com/baloise/design-system/commit/9a517e0ed6c8bdb05db6dca4fcbcbd55ec4aa7e5))
+- **styles:** remove old client lib variables ([9413e38](https://github.com/baloise/design-system/commit/9413e38f5ff44d911eabab7f400f3c838db8d6cb))
+
+### Features
+
+- **components:** update deps ([f650c2b](https://github.com/baloise/design-system/commit/f650c2bf2773a1954dc9f5d99689faac6af0f313))
+- **select:** add single value ([b5b536c](https://github.com/baloise/design-system/commit/b5b536ccd62122663b838fa8411a7ca386760922))
+- **table:** introduce new table package ([0540144](https://github.com/baloise/design-system/commit/05401440fad284092ecb0220c567ab22eda003b4))
+- **table:** update ag-grid usage ([f083875](https://github.com/baloise/design-system/commit/f0838754edc5d8a907b1bec0fdf8b503e16e674d))
+- **vue:** rename function validators to rules ([9bad019](https://github.com/baloise/design-system/commit/9bad019a4a02dbf354b799060d454f1729328d45))
+- **vue:** update deps ([9323c8d](https://github.com/baloise/design-system/commit/9323c8dd8ecf82126f97d412669756d2c2203b7d))
+
+# [1.9.0](https://github.com/baloise/design-system/compare/v1.8.2...v1.9.0) (2021-08-12)
+
+### Bug Fixes
+
+- **datepicker:** fix fullwidth ([cddd3f2](https://github.com/baloise/design-system/commit/cddd3f2a459e7fb428096bda7b61586a29eda986))
+- **input:** fix autofocus and add directives for angular and vue ([ef76dcf](https://github.com/baloise/design-system/commit/ef76dcf9b4ff160b3a38f2148081233407964b53))
+- **select:** fix fullwidth ([9cf060a](https://github.com/baloise/design-system/commit/9cf060a6cbf269fa7e03f55d56d87497dcabe126))
+
+### Features
+
+- **testing:** add andable.ts and attachable.ts mixin description ([e918b8a](https://github.com/baloise/design-system/commit/e918b8a2db1e19b7eadd2e42deff697040b83e7d))
+
+## [1.8.2](https://github.com/baloise/design-system/compare/v1.8.1...v1.8.2) (2021-08-06)
+
+### Bug Fixes
+
+- **table:** make styles accessable for angular & vue applications ([f5b5de5](https://github.com/baloise/design-system/commit/f5b5de5b9061bd600bf0ad5b9783b825b7b38c1c))
+
+## 1.8.1 (2021-08-05)
 
 # [1.10.0](https://github.com/baloise/design-system/compare/v1.9.0...v1.10.0) (2021-08-16)
 

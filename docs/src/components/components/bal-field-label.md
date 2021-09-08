@@ -22,11 +22,16 @@ sidebarDepth: 0
 ### Properties
 
 
-| Attribute    | Description                                        | Type      | Default |
-| :----------- | :------------------------------------------------- | :-------- | :------ |
-| **expanded** | If `true` the component takes the whole width      | `boolean` | `false` |
-| **required** | If `true` a asterix (*) is added to the label text | `boolean` | `false` |
+| Attribute    | Description                                        | Type                 | Default            |
+| :----------- | :------------------------------------------------- | :------------------- | :----------------- |
+| **expanded** | If `true` the component takes the whole width      | <code>boolean</code> | <code>false</code> |
+| **required** | If `true` a asterix (*) is added to the label text | <code>boolean</code> | <code>false</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 
 

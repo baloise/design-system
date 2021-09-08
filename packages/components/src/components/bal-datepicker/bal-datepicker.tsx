@@ -498,6 +498,7 @@ export class Datepicker implements ComponentInterface {
         <input
           class={{
             'input': true,
+            'data-test-input': true,
             'clickable': !this.disabled && !this.triggerIcon,
             'is-inverted': this.inverted,
             'is-disabled': this.disabled,

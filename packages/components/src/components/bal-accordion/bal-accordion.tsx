@@ -91,7 +91,15 @@ export class Accordion {
   render() {
     return (
       <Host class="accordion">
-        <bal-button expanded={true} color={this.buttonType} icon={this.icon} onClick={() => this.toggle()} top-rounded={!this.card} bottomRounded={!this.isActive}>
+        <bal-button
+          class="data-test-accordion-trigger"
+          expanded={true}
+          color={this.buttonType}
+          icon={this.icon}
+          onClick={() => this.toggle()}
+          top-rounded={!this.card}
+          bottomRounded={!this.isActive}
+        >
           {this.label}
         </bal-button>
         <div class={['accordion-content', `is-${this.color}`].join(' ')} style={{ display: this.isActive ? 'block' : 'none' }}>

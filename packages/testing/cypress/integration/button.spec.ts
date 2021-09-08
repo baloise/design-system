@@ -3,18 +3,20 @@ import { app } from '../support/app'
 describe('Button', () => {
   let page = app.getButtonPage()
 
-  it('should navigate to Button page and test enabled Button on the page', () => {
+  it('should contain label', () => {
     page.open()
-    page.primaryButton.get().contains('Primary')
-    page.primaryButton.get().click()
-    page.primaryButton.get().assertIsDisabled(false)
-    page.primaryButton.get().assertExists()
+    cy.get(page.primaryButton).contains('Primary')
+    cy.get(page.primaryButtonDisabled).contains('Primary')
   })
 
-  it('should navigate to Button page and test disabled Button on the page', () => {
+  it('should be clickable & focusable', () => {
     page.open()
-    page.primaryButtonDisabled.get().contains('Primary')
-    page.primaryButtonDisabled.get().assertIsDisabled()
-    page.primaryButtonDisabled.get().assertExists()
+    cy.get(page.primaryButton).click().should('be.focused').blur().should('not.be.focused')
+  })
+
+  it('should be disabled or not', () => {
+    page.open()
+    cy.get(page.primaryButton).should('not.be.disabled')
+    cy.get(page.primaryButtonDisabled).should('be.disabled')
   })
 })

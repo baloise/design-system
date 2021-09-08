@@ -206,10 +206,15 @@ export class TablePageComponent {
 ### Properties
 
 
-| Attribute    | Description                          | Type      | Default |
-| :----------- | :----------------------------------- | :-------- | :------ |
-| **expanded** | If `true` the table has a full width | `boolean` | `false` |
+| Attribute    | Description                          | Type                 | Default            |
+| :----------- | :----------------------------------- | :------------------- | :----------------- |
+| **expanded** | If `true` the table has a full width | <code>boolean</code> | <code>false</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 
 

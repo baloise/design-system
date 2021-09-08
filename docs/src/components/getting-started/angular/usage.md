@@ -101,19 +101,15 @@ The form elements support [Angular Reactive Forms](https://angular.io/guide/reac
 
 ```html
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="columns is-multiline mt-0">
-  <bal-field class="column is-half py-0" expanded [disabled]="form.get('firstname')?.disabled">
+  <bal-field class="column is-full py-0" expanded required [disabled]="form.get('email')?.disabled">
+    <bal-field-label required>Email</bal-field-label>
     <bal-field-control>
-      <bal-input formControlName="firstname"></bal-input>
+      <bal-input name="email" placeholder="Enter your email" formControlName="email"></bal-input>
     </bal-field-control>
-    <bal-field-message
-      color="danger"
-      *ngIf="
-            form.get('firstname')?.dirty && 
-            form.get('firstname')?.errors && 
-            form.get('firstname')?.hasError('required')
-          "
-    >
-      Required Field
+    <bal-field-message color="danger">
+      <bal-ng-error controlName="email" error="isRequired">This field is required</bal-ng-error>
+      <bal-ng-error controlName="email" error="isMinLength">Min length is 4</bal-ng-error>
+      <bal-ng-error controlName="email" error="isEmail">Not a valid email</bal-ng-error>
     </bal-field-message>
   </bal-field>
   <bal-field class="column is-half py-0" expanded>...</bal-field>
@@ -137,7 +133,7 @@ import { BalValidators } from '@baloise/design-system-components-angular'
 })
 export class FormPageComponent {
   form = new FormGroup({
-    firstname: new FormControl(null, [BalValidators.isRequired]),
+    email: new FormControl(null, [BalValidators.isRequired(), BalValidators.isMinLength(4), BalValidators.isEmail()]),
   })
 
   onSubmit() {

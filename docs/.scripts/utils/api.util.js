@@ -2,7 +2,7 @@ const table = require('markdown-table')
 const { NEWLINE } = require('../../../.scripts/constants')
 const { printCode, printBold } = require('./markdown.util')
 
-const printComponentProps = (component) => {
+const printComponentProps = component => {
   const lines = []
 
   if (component.props && component.props.length > 0) {
@@ -26,7 +26,7 @@ const printComponentProps = (component) => {
   return lines.join(NEWLINE)
 }
 
-const printComponentEvents = (component) => {
+const printComponentEvents = component => {
   const lines = []
 
   if (component.events && component.events.length > 0) {
@@ -49,7 +49,7 @@ const printComponentEvents = (component) => {
   return lines.join(NEWLINE)
 }
 
-const printComponentMethods = (component) => {
+const printComponentMethods = component => {
   const lines = []
 
   if (component.methods && component.methods.length > 0) {
@@ -57,11 +57,7 @@ const printComponentMethods = (component) => {
     table(
       [
         ['Method', 'Description', 'Signature'],
-        ...component.methods.map(method => [
-          printBold(printCode(method.name)),
-          method.docs.trim(),
-          printCode(method.signature),
-        ]),
+        ...component.methods.map(method => [printBold(method.name), method.docs.trim(), printCode(method.signature)]),
       ],
       { align: ['l', 'l', 'l'] },
     )
@@ -71,32 +67,6 @@ const printComponentMethods = (component) => {
 
   return lines.join(NEWLINE)
 }
-
-// const hasApiContent = component => {
-//   if (component.props && component.props.length > 0) {
-//     return true
-//   }
-//   if (component.events && component.events.length > 0) {
-//     return true
-//   }
-//   if (component.methods && component.methods.length > 0) {
-//     return true
-//   }
-//   return false
-// }
-
-// const parse = (components, component) => {
-//   const lines = []
-//   if (hasApiContent(component)) {
-//     lines.push(printComponent(component, true))
-//     // component.childComponents.forEach(childTag => {
-//     //   lines.push('')
-//     //   lines.push(printComponent(components.get(childTag), false))
-//     // })
-//   }
-
-//   return lines.join(NEWLINE)
-// }
 
 module.exports = {
   printProp: printComponentProps,

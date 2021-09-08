@@ -22,10 +22,15 @@ sidebarDepth: 0
 ### Properties
 
 
-| Attribute   | Description              | Type     | Default |
-| :---------- | :----------------------- | :------- | :------ |
-| **subject** | Text of the inputs label | `string` | `''`    |
+| Attribute   | Description              | Type                | Default         |
+| :---------- | :----------------------- | :------------------ | :-------------- |
+| **subject** | Text of the inputs label | <code>string</code> | <code>''</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 
 

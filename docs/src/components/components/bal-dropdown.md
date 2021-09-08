@@ -38,77 +38,67 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 ### Properties
 
 
-| Attribute               | Description                                      | Type      | Default |
-| :---------------------- | :----------------------------------------------- | :-------- | :------ |
-| **expanded**            | If `true` the field spans over the whole width.  | `boolean` | `false` |
-| **fixed-content-width** | If `true` the dropdown content has a fixed width | `boolean` | `false` |
-| **is-active**           | If `true` the dropdown content is open.          | `boolean` | `false` |
+| Attribute               | Description                                      | Type                 | Default            |
+| :---------------------- | :----------------------------------------------- | :------------------- | :----------------- |
+| **expanded**            | If `true` the field spans over the whole width.  | <code>boolean</code> | <code>false</code> |
+| **fixed-content-width** | If `true` the dropdown content has a fixed width | <code>boolean</code> | <code>false</code> |
+| **is-active**           | If `true` the dropdown content is open.          | <code>boolean</code> | <code>false</code> |
 
 ### Events
 
 
-| Event                  | Description                                                                     | Type      |
-| :--------------------- | :------------------------------------------------------------------------------ | :-------- |
-| **balCollapse**        | Listen when the dropdown opens or closes. Returns the current `isActive` value. | `boolean` |
-| **balDropdownPrepare** | *Internal* - Use this to close unuesed dropdowns.                               | `string`  |
+| Event                  | Description                                                                     | Type                 |
+| :--------------------- | :------------------------------------------------------------------------------ | :------------------- |
+| **balCollapse**        | Listen when the dropdown opens or closes. Returns the current `isActive` value. | <code>boolean</code> |
+| **balDropdownPrepare** | *Internal* - Use this to close unuesed dropdowns.                               | <code>string</code>  |
 
 ### Methods
 
 
-| Method                  | Description                                         | Signature                                            |
-| :---------------------- | :-------------------------------------------------- | :--------------------------------------------------- |
-| **`close`**             | Closes the dropdown menu.                           | `close() => Promise<void>`                           |
-| **`getContentElement`** | Returns the `HTMLDivElement` of the content element | `getContentElement() => Promise<HTMLElement | null>` |
-| **`open`**              | Open the dropdown menu.                             | `open() => Promise<void>`                            |
-| **`toggle`**            | Open or closes the dropdown.                        | `toggle() => Promise<void>`                          |
+| Method                | Description                                         | Signature                                                                          |
+| :-------------------- | :-------------------------------------------------- | :--------------------------------------------------------------------------------- |
+| **close**             | Closes the dropdown menu.                           | <code>close() =&#62; Promise&#60;void&#62;</code>                                  |
+| **getContentElement** | Returns the `HTMLDivElement` of the content element | <code>getContentElement() =&#62; Promise&#60;HTMLElement  &#124;  null&#62;</code> |
+| **open**              | Open the dropdown menu.                             | <code>open() =&#62; Promise&#60;void&#62;</code>                                   |
+| **toggle**            | Open or closes the dropdown.                        | <code>toggle() =&#62; Promise&#60;void&#62;</code>                                 |
 
-### Testing
+## Testing
 
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
 
-DropdownAccessor is a helper object for E-2-E testing.
-It maps the dropdown behaviour to the `bal-dropdown` ui component.
+- [More information about the installation and usage](/components/tooling/testing.html)
+
+<!-- START: human documentation testing -->
 
 ```typescript
-import { dataTestSelector, DropdownAccessor } from '@baloise/design-system-components-testing'
+import { dataTestSelector } from '@baloise/design-system-testing'
 
 describe('Dropdown', () => {
+  const dropdown = dataTestSelector('my-dropdown') // [data-test-id="my-dropdown"]
   it('should ...', () => {
-     const dropdown = DropdownAccessor(dataTestSelector('dropdown-id')).get()
-     dropdown.click()
- })
+    cy.get(dropdown)
+      .balDropdownIsClosed()
+      .balDropdownToggle()
+      .balDropdownIsOpen()
+      .balDropdownTriggerContains('Trigger button label')
+      .balDropdownMenuContains('Body content')
+  })
 })
 ```
 
-### Methods
+<!-- END: human documentation testing -->
 
-| Method                         | Description                                                                                                        | Arguments                                                |
-| :----------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
-| **click**                      | Clicks the dropdown.                                                                                               | `options?: Partial<Cypress.ClickOptions>`                |
-| **select**                     |                                                                                                                    | `index: number`                                          |
-| **assertIsSelected**           |                                                                                                                    |                                                          |
-| **assertOptions**              |                                                                                                                    | `...options: string[]`                                   |
-| **assertOptions**              |                                                                                                                    | `...options: string[]`                                   |
-| **contains**                   |                                                                                                                    | `content: string | number | RegExp`                      |
-| **and**                        | Use this mixin to chain actions or asserts.                                                                        | `chainers: string, method?: string, value?: string`      |
-| **blur**                       | Lose focus of this element                                                                                         | `options?: Partial<Cypress.BlurOptions>`                 |
-| **assertIsDisabled**           | Asserts that the element is enabled or disabled.                                                                   | `enabled?: boolean`                                      |
-| **should**                     | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string` |
-| **assertVisible**              | Assert that the component is visible or not visible for the user                                                   | `visible?: boolean`                                      |
-| **selectNth**                  | Selects the option at the given index.                                                                             | `index: number`                                          |
-| **last**                       | Selects the last option.                                                                                           |                                                          |
-| **parent**                     | Selects the parent option.                                                                                         |                                                          |
-| **assertAttributeEquals**      | Asserting that the element has the attribute and the value.                                                        | `attribute: string, value: string`                       |
-| **assertAttributeInclude**     | Asserting that the element has the attribute and include the value.                                                | `attribute: string, value: string`                       |
-| **assertDoesNotHaveAttribute** | Asserting that the element does not have the attribute.                                                            | `attribute: string`                                      |
-| **assertFullUrl**              | Asserting if given url argument matches the url of the browser.                                                    | `url: string`                                            |
-| **assertPartUrl**              | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
-| **find**                       | Get the descendent DOM elements of a specific selector.                                                            | `locator: string`                                        |
-| **wait**                       | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
-| **assertExists**               | Asserts that the element exists/not exists in the DOM                                                              | `exists?: boolean`                                       |
-| **then**                       | Enables you to work with the subject yielded from the previous command.                                            | `callBack: Function`                                     |
-| **invoke**                     | Invoke a function on the previously yielded subject.                                                               | `locator: string`                                        |
-| **length**                     | Get number of elements.                                                                                            | `locator: string`                                        |
-| **each**                       | Iterate through an array like structure.                                                                           | `callBack: Function`                                     |
+### Custom Commands
+
+A list of the custom commands for this specific component.
+
+| Command                        | Description                                               | Signature                                                                                                                                                                                |
+| :----------------------------- | :-------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **balDropdownToggle**          | Opens and closes the dropdown.                            | <code>(): Chainable&#60;JQuery&#62;</code>                                                                                                                                               |
+| **balDropdownIsOpen**          | Asserts if the dropdown is open.                          | <code>(): Chainable&#60;JQuery&#62;</code>                                                                                                                                               |
+| **balDropdownIsClosed**        | Asserts if the dropdown is closed.                        | <code>(): Chainable&#60;JQuery&#62;</code>                                                                                                                                               |
+| **balDropdownTriggerContains** | Asserts if the trigger button contains the given content. | <code>(       content: string  &#124;  number  &#124;  RegExp,       options?: Partial&#60;Loggable & Timeoutable & CaseMatchable & Shadow&#62;,     ): Chainable&#60;JQuery&#62;</code> |
+| **balDropdownMenuContains**    | Asserts if the dropdown menu contains the given content.  | <code>(       content: string  &#124;  number  &#124;  RegExp,       options?: Partial&#60;Loggable & Timeoutable & CaseMatchable & Shadow&#62;,     ): Chainable&#60;JQuery&#62;</code> |
 
 ## Usage
 
@@ -122,7 +112,7 @@ describe('Dropdown', () => {
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-dropdown.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-dropdown)
-* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/dropdown.accessor.ts)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 

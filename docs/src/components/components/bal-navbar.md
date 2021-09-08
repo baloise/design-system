@@ -38,12 +38,17 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 ### Properties
 
 
-| Attribute     | Description                                  | Type      | Default |
-| :------------ | :------------------------------------------- | :-------- | :------ |
-| **expanded**  | It `true` the component uses the whole width | `boolean` | `false` |
-| **light**     | It `true` the navbar has a white background  | `boolean` | `false` |
-| **no-burger** | It `true` the burger button is hidden        | `boolean` | `false` |
+| Attribute     | Description                                  | Type                 | Default            |
+| :------------ | :------------------------------------------- | :------------------- | :----------------- |
+| **expanded**  | It `true` the component uses the whole width | <code>boolean</code> | <code>false</code> |
+| **light**     | It `true` the navbar has a white background  | <code>boolean</code> | <code>false</code> |
+| **no-burger** | It `true` the burger button is hidden        | <code>boolean</code> | <code>false</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 

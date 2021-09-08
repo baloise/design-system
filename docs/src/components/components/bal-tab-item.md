@@ -22,33 +22,38 @@ sidebarDepth: 0
 ### Properties
 
 
-| Attribute    | Description                                             | Type      | Default |
-| :----------- | :------------------------------------------------------ | :-------- | :------ |
-| **active**   | Tell's if the tab is active and the content is visible. | `boolean` | `false` |
-| **bubble**   | If `true` a small red bubble is added to the tab.       | `boolean` | `false` |
-| **disabled** | If `true` the tab is disabled.                          | `boolean` | `false` |
-| **done**     | If `true` the step is marked as done.                   | `boolean` | `false` |
-| **failed**   | If `true` the step is marked as failed.                 | `boolean` | `false` |
-| **href**     | Link to path.                                           | `string`  | `''`    |
-| **label**    | Label for the tab.                                      | `string`  | `''`    |
-| **prevent**  | Tell's if the linking is done by a router.              | `boolean` | `false` |
-| **value**    | This is the key of the tab.                             | `string`  | `''`    |
+| Attribute    | Description                                             | Type                 | Default            |
+| :----------- | :------------------------------------------------------ | :------------------- | :----------------- |
+| **active**   | Tell's if the tab is active and the content is visible. | <code>boolean</code> | <code>false</code> |
+| **bubble**   | If `true` a small red bubble is added to the tab.       | <code>boolean</code> | <code>false</code> |
+| **disabled** | If `true` the tab is disabled.                          | <code>boolean</code> | <code>false</code> |
+| **done**     | If `true` the step is marked as done.                   | <code>boolean</code> | <code>false</code> |
+| **failed**   | If `true` the step is marked as failed.                 | <code>boolean</code> | <code>false</code> |
+| **href**     | Link to path.                                           | <code>string</code>  | <code>''</code>    |
+| **label**    | Label for the tab.                                      | <code>string</code>  | <code>''</code>    |
+| **prevent**  | Tell's if the linking is done by a router.              | <code>boolean</code> | <code>false</code> |
+| **value**    | This is the key of the tab.                             | <code>string</code>  | <code>''</code>    |
 
 ### Events
 
 
-| Event           | Description                               | Type         |
-| :-------------- | :---------------------------------------- | :----------- |
-| **balNavigate** | Emitted when the link element has clicked | `MouseEvent` |
+| Event           | Description                               | Type                    |
+| :-------------- | :---------------------------------------- | :---------------------- |
+| **balNavigate** | Emitted when the link element has clicked | <code>MouseEvent</code> |
 
 ### Methods
 
 
-| Method           | Description                               | Signature                                     |
-| :--------------- | :---------------------------------------- | :-------------------------------------------- |
-| **`getOptions`** | Options of the tab like label, value etc. | `getOptions() => Promise<BalTabOption>`       |
-| **`setActive`**  | Sets the tab active.                      | `setActive(active: boolean) => Promise<void>` |
+| Method         | Description                               | Signature                                                            |
+| :------------- | :---------------------------------------- | :------------------------------------------------------------------- |
+| **getOptions** | Options of the tab like label, value etc. | <code>getOptions() =&#62; Promise&#60;BalTabOption&#62;</code>       |
+| **setActive**  | Sets the tab active.                      | <code>setActive(active: boolean) =&#62; Promise&#60;void&#62;</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 
 

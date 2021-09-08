@@ -1,7 +1,9 @@
-import { ToastAccessor, dataTestSelector } from '../../../src'
+import { dataTestSelector } from '../../../src'
 
 export class ToastPage {
-  toast = ToastAccessor(dataTestSelector("toast"))
+  toast = dataTestSelector('toast')
+  toastWarning = dataTestSelector('toast-warning')
+
   open() {
     cy.visit('/components/bal-toast')
   }
