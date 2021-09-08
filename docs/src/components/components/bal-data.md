@@ -34,11 +34,16 @@ A data component display readonly form data.
 ### Properties
 
 
-| Attribute      | Description                                                | Type      | Default |
-| :------------- | :--------------------------------------------------------- | :-------- | :------ |
-| **border**     | If `true` a bottom border is added to the data-item.       | `boolean` | `false` |
-| **horizontal** | If `true` the data list is horizontal instead of vertical. | `boolean` | `false` |
+| Attribute      | Description                                                | Type                 | Default            |
+| :------------- | :--------------------------------------------------------- | :------------------- | :----------------- |
+| **border**     | If `true` a bottom border is added to the data-item.       | <code>boolean</code> | <code>false</code> |
+| **horizontal** | If `true` the data list is horizontal instead of vertical. | <code>boolean</code> | <code>false</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 

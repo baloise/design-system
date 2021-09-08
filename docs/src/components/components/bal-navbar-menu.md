@@ -22,10 +22,15 @@ sidebarDepth: 0
 ### Methods
 
 
-| Method       | Description                                                             | Signature                                        |
-| :----------- | :---------------------------------------------------------------------- | :----------------------------------------------- |
-| **`toggle`** | *Internal* - If the menu is open it closes it and the other way around. | `toggle(isMenuActive: boolean) => Promise<void>` |
+| Method     | Description                                                             | Signature                                                               |
+| :--------- | :---------------------------------------------------------------------- | :---------------------------------------------------------------------- |
+| **toggle** | *Internal* - If the menu is open it closes it and the other way around. | <code>toggle(isMenuActive: boolean) =&#62; Promise&#60;void&#62;</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 
 

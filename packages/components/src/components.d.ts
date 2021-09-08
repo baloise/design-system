@@ -983,6 +983,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * Sets the focus on the input element
+         */
+        "getValue": () => Promise<string[] | undefined>;
+        /**
           * Enables the slide in animation for the option items.
          */
         "hasMovement": boolean;
@@ -1387,7 +1391,7 @@ export namespace Components {
          */
         "color": ColorTypes | '';
         /**
-          * The duration of the toast
+          * The duration of the toast in milliseconds.
          */
         "duration": number;
     }
@@ -3299,7 +3303,7 @@ declare namespace LocalJSX {
          */
         "color"?: ColorTypes | '';
         /**
-          * The duration of the toast
+          * The duration of the toast in milliseconds.
          */
         "duration"?: number;
         /**

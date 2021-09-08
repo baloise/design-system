@@ -273,6 +273,14 @@ export class Select {
   }
 
   /**
+   * Sets the focus on the input element
+   */
+  @Method()
+  async getValue() {
+    return this.rawValue
+  }
+
+  /**
    * Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
    */
   @Method()
@@ -628,6 +636,7 @@ export class Select {
         role="listbox"
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
+        data-value={this.rawValue?.map(v => findLabelByValue(this.options, v)).join(',')}
         class={{
           'is-disabled': this.disabled,
           'is-inverted': this.inverted,
@@ -655,6 +664,7 @@ export class Select {
                     'input': true,
                     'is-inverted': this.inverted,
                     'is-clickable': !this.isDropdownOpen,
+                    'data-test-select-input': true,
                   }}
                   autocomplete={'off'}
                   placeholder={this.inputPlaceholder}

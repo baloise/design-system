@@ -1,7 +1,9 @@
-import { TabsAccessor, dataTestSelector } from '../../../src'
+import { dataTestSelector } from '../../../src'
 
 export class TabsPage {
-  tabs = TabsAccessor(dataTestSelector("tabs"))
+  tabs = dataTestSelector('tabs')
+  steps = dataTestSelector('steps')
+
   open() {
     cy.visit('/components/bal-tabs')
   }

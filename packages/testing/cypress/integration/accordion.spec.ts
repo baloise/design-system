@@ -3,26 +3,29 @@ import { app } from '../support/app'
 describe('Accordion', () => {
   let page = app.getAccordionPage()
 
-  it('should navigate to Accordion page and open all Accordions on the page', () => {
+  it('should verify that all accordions are closed', () => {
     page.open()
-    page.accordion.get().click({ multiple: true })
+    cy.get('bal-accordion').each(el => {
+      cy.wrap(el).balAccordionIsClosed()
+    })
   })
 
-  it('should navigate to Accordion page and check if Accordian contains value', () => {
+  it('should open open and close an accordions', () => {
     page.open()
-    page.accordion.get().contains('Details einblenden')
-    page.accordion.get().click({ multiple: true })
-    page.accordion.get().contains('Details ausblenden')
+    cy.get(page.accordion).balAccordionIsClosed()
+    cy.get(page.accordion).click().balAccordionIsOpen()
+    cy.get(page.accordion).click().balAccordionIsClosed()
   })
 
-  it('should navigate to Accordion page and assert if body exist', () => {
+  it('should check if the accordian contains label', () => {
     page.open()
-    page.accordion.get().click({ multiple: true })
-    page.accordion.get().assertBodyExists()
+    cy.get(page.accordion).contains('Details einblenden')
+    cy.get(page.accordion).click()
+    cy.get(page.accordion).contains('Details ausblenden')
   })
 
-  it('should navigate to Accordion page and assert if body not exist', () => {
+  it('should check if the accordian is not disabled', () => {
     page.open()
-    page.accordion.get().assertBodyNotExists()
+    cy.get(page.accordion).should('not.be.disabled')
   })
 })

@@ -49,70 +49,72 @@ Tabs are used to structure the information in sub section on the same page.
 ### Properties
 
 
-| Attribute        | Description                                       | Type                           | Default  |
-| :--------------- | :------------------------------------------------ | :----------------------------- | :------- |
-| **action**       | If `true` a acation button is added to the right  | `boolean`                      | `false`  |
-| **action-label** | Label for the action button                       | `string`                       | `''`     |
-| **clickable**    | If `true` the tabs or steps can be clicked.       | `boolean`                      | `true`   |
-| **expanded**     | If `true` the field expands over the whole width. | `boolean`                      | `false`  |
-| **interface**    | Defines the layout of the tabs.                   | `"o-steps" , "steps" , "tabs"` | `'tabs'` |
-| **rounded**      | If you want the rounded tab style.                | `boolean`                      | `false`  |
+| Attribute        | Description                                       | Type                                      | Default             |
+| :--------------- | :------------------------------------------------ | :---------------------------------------- | :------------------ |
+| **action**       | If `true` a acation button is added to the right  | <code>boolean</code>                      | <code>false</code>  |
+| **action-label** | Label for the action button                       | <code>string</code>                       | <code>''</code>     |
+| **clickable**    | If `true` the tabs or steps can be clicked.       | <code>boolean</code>                      | <code>true</code>   |
+| **expanded**     | If `true` the field expands over the whole width. | <code>boolean</code>                      | <code>false</code>  |
+| **interface**    | Defines the layout of the tabs.                   | <code>"o-steps" , "steps" , "tabs"</code> | <code>'tabs'</code> |
+| **rounded**      | If you want the rounded tab style.                | <code>boolean</code>                      | <code>false</code>  |
 
 ### Events
 
 
-| Event              | Description                                | Type           |
-| :----------------- | :----------------------------------------- | :------------- |
-| **balActionClick** | Emitted when the action button has clicked | `MouseEvent`   |
-| **balTabChange**   | Emitted when the changes has finished.     | `BalTabOption` |
+| Event              | Description                                | Type                      |
+| :----------------- | :----------------------------------------- | :------------------------ |
+| **balActionClick** | Emitted when the action button has clicked | <code>MouseEvent</code>   |
+| **balTabChange**   | Emitted when the changes has finished.     | <code>BalTabOption</code> |
 
 ### Methods
 
 
-| Method       | Description                                               | Signature                                    |
-| :----------- | :-------------------------------------------------------- | :------------------------------------------- |
-| **`select`** | Go to tab with the given value                            | `select(tab: BalTabOption) => Promise<void>` |
-| **`sync`**   | *Internal* - Rerenders the tabs with their given settings | `sync() => Promise<void>`                    |
+| Method     | Description                                               | Signature                                                           |
+| :--------- | :-------------------------------------------------------- | :------------------------------------------------------------------ |
+| **select** | Go to tab with the given value                            | <code>select(tab: BalTabOption) =&#62; Promise&#60;void&#62;</code> |
+| **sync**   | *Internal* - Rerenders the tabs with their given settings | <code>sync() =&#62; Promise&#60;void&#62;</code>                    |
 
-### Testing
+## Testing
 
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
 
-TabsAccessor is a helper object for E-2-E testing.
-It maps the tabs behaviour to the `bal-tabs` ui component.
+- [More information about the installation and usage](/components/tooling/testing.html)
+
+<!-- START: human documentation testing -->
 
 ```typescript
-import { dataTestSelector, TabsAccessor } from '@baloise/design-system-components-testing'
+import { dataTestSelector } from '@baloise/design-system-testing'
 
 describe('Tabs', () => {
+  const tabs = dataTestSelector('my-tabs') // [data-test-id="my-tabs"]
+  const steps = dataTestSelector('my-steps') // [data-test-id="my-steps"]
   it('should ...', () => {
-     const tabs = TabsAccessor(dataTestSelector('tabs-id')).get()
-     tabs.select(1)
-     tabs.assertVisible('value')
- })
+    cy.get(tabs)
+      .select('Tab B')
+      .should('have.value', 'Tab B')
+    cy.get(tabs)
+      .balTabsFindActionButton()
+      .contains('Action')
+    cy.get(steps)
+      .balTabsFindItems()
+      .first()
+      .balTabItemShouldHaveState('done')
+  })
 })
 ```
 
-### Methods
+<!-- END: human documentation testing -->
 
-| Method                         | Description                                                                                                        | Arguments                                                |
-| :----------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
-| **assertVisible**              | Assert if tab is visible                                                                                           | `text: string`                                           |
-| **select**                     | Selects tab                                                                                                        | `index: number`                                          |
-| **click**                      | Triggers a clicks on the element                                                                                   | `options?: Partial<Cypress.ClickOptions>`                |
-| **clickNth**                   | Triggers n times a click on the element                                                                            | `index: number, options?: Partial<Cypress.ClickOptions>` |
-| **contains**                   | Verifies if the content of the element matches                                                                     | `content: string | number | RegExp`                      |
-| **assertExists**               | Asserts that the element exists/not exists in the DOM                                                              | `exists?: boolean`                                       |
-| **should**                     | Creates an assertion. Find more information here [link](https://docs.cypress.io/api/commands/should.html#Syntax)   | `chainers: string, attribute?: string, content?: string` |
-| **assertIsDisabled**           | Asserts that the element is enabled or disabled.                                                                   | `enabled?: boolean`                                      |
-| **selectNth**                  | Selects the option at the given index.                                                                             | `index: number`                                          |
-| **last**                       | Selects the last option.                                                                                           |                                                          |
-| **parent**                     | Selects the parent option.                                                                                         |                                                          |
-| **assertAttributeEquals**      | Asserting that the element has the attribute and the value.                                                        | `attribute: string, value: string`                       |
-| **assertAttributeInclude**     | Asserting that the element has the attribute and include the value.                                                | `attribute: string, value: string`                       |
-| **assertDoesNotHaveAttribute** | Asserting that the element does not have the attribute.                                                            | `attribute: string`                                      |
-| **assertFullUrl**              | Asserting if given url argument matches the url of the browser.                                                    | `url: string`                                            |
-| **assertPartUrl**              | Asserting if the browser url contains the given url argument.                                                      | `url: string`                                            |
-| **wait**                       | Wait for a number of milliseconds or wait for an aliased resource to resolve before moving on to the next command. | `time: number`                                           |
+### Custom Commands
+
+A list of the custom commands for this specific component.
+
+| Command                       | Description                                    | Signature                                                                                                       |
+| :---------------------------- | :--------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
+| **balTabsFindActionButton**   | Returns the action button element.             | <code>(): Chainable&#60;JQuery&#62;</code>                                                                      |
+| **balTabsFindItems**          | Returns the tab items.                         | <code>(): Chainable&#60;JQuery&#62;</code>                                                                      |
+| **balTabsShouldHaveItems**    | Assert that the tab has the given item.        | <code>(labels: string[], dataType?: 'label'  &#124;  'value'): Chainable&#60;JQuery&#62;</code>                 |
+| **balTabItemShouldHaveState** | Assert that the tab item has the  given state. | <code>(state: 'done'  &#124;  'failed'  &#124;  'active'  &#124;  'disabled'): Chainable&#60;JQuery&#62;</code> |
 
 ## Usage
 
@@ -126,7 +128,7 @@ describe('Tabs', () => {
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-tabs.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-tabs)
-* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/tabs.accessor.ts)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 

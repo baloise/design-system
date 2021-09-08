@@ -12,6 +12,7 @@ bal-text {
   font-weight: $weight-normal;
   font-size: $size-normal !important;
   line-height: 20px;
+  word-break: break-word;
 
   span {
     word-break: break-word;

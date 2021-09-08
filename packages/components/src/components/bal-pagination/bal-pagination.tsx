@@ -88,20 +88,20 @@ export class Pagination {
     )
   }
 
-  render() {
+  private getItems(pageRange: number = 1) {
     const items = []
-    let rangeStart = this._value - this.pageRange
-    let rangeEnd = this._value + this.pageRange
+    let rangeStart = this._value - pageRange
+    let rangeEnd = this._value + pageRange
 
     if (rangeEnd > this.totalPages) {
       rangeEnd = this.totalPages
-      rangeStart = this.totalPages - this.pageRange * 2
+      rangeStart = this.totalPages - pageRange * 2
       rangeStart = rangeStart < 1 ? 1 : rangeStart
     }
 
     if (rangeStart <= 1) {
       rangeStart = 1
-      rangeEnd = Math.min(this.pageRange * 2 + 1, this.totalPages)
+      rangeEnd = Math.min(pageRange * 2 + 1, this.totalPages)
     }
 
     if (rangeStart > 1) {
@@ -118,6 +118,13 @@ export class Pagination {
       items.push(this.renderPageElement(this.totalPages))
     }
 
+    return items
+  }
+
+  render() {
+    const mobileItems = this.getItems()
+    const tabletItems = this.getItems(this.pageRange)
+
     return (
       <Host>
         <nav class="pagination is-centered" role="navigation" aria-label="pagination">
@@ -127,7 +134,8 @@ export class Pagination {
           <button type="button" class="pagination-next" disabled={this._value === this.totalPages} onClick={() => this.next()}>
             <bal-icon name="nav-go-right" size="small" />
           </button>
-          <ul class="pagination-list">{items}</ul>
+          <ul class="pagination-list is-hidden-mobile">{tabletItems}</ul>
+          <ul class="pagination-list is-hidden-tablet">{mobileItems}</ul>
         </nav>
       </Host>
     )

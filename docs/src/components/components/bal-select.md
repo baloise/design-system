@@ -62,75 +62,122 @@ export interface BalOptionValue<T> {
 ### Properties
 
 
-| Attribute         | Description                                                                       | Type                            | Default        |
-| :---------------- | :-------------------------------------------------------------------------------- | :------------------------------ | :------------- |
-| **bal-tabindex**  | The tabindex of the control.                                                      | `number`                        | `0`            |
-| **disabled**      | If `true` the component is diabled.                                               | `boolean`                       | `false`        |
-| **expanded**      | If `true` the component uses the whole width.                                     | `boolean`                       | `false`        |
-| **has-movement**  | Enables the slide in animation for the option items.                              | `boolean`                       | `false`        |
-| **inverted**      | Set this to `true` when the component is placed on a dark background.             | `boolean`                       | `false`        |
-| **loading**       | Defines if the select is in a loading state.                                      | `boolean`                       | `false`        |
-| **multiple**      | If `true` multiple option can be selected                                         | `boolean`                       | `false`        |
-| **name**          | The name of the control, which is submitted with the form data.                   | `string`                        | `this.inputId` |
-| **no-border**     | Removes the border of the input.                                                  | `boolean`                       | `false`        |
-| **no-data-label** | This label is shown if typeahead is active and all the options are filtered out.  | `string , undefined`            |                |
-| **placeholder**   | The text to display when the select is empty.                                     | `string , undefined`            |                |
-| **scrollable**    | Defines the height of the dropdown list.                                          | `number`                        | `250`          |
-| **typeahead**     | If `true` the user can search by typing into the input field.                     | `boolean`                       | `false`        |
-| **value**         | Selected option values. Could also be passed as a string, which gets transformed. | `string , string[] , undefined` | `[]`           |
+| Attribute         | Description                                                                       | Type                                       | Default                   |
+| :---------------- | :-------------------------------------------------------------------------------- | :----------------------------------------- | :------------------------ |
+| **bal-tabindex**  | The tabindex of the control.                                                      | <code>number</code>                        | <code>0</code>            |
+| **disabled**      | If `true` the component is diabled.                                               | <code>boolean</code>                       | <code>false</code>        |
+| **expanded**      | If `true` the component uses the whole width.                                     | <code>boolean</code>                       | <code>false</code>        |
+| **has-movement**  | Enables the slide in animation for the option items.                              | <code>boolean</code>                       | <code>false</code>        |
+| **inverted**      | Set this to `true` when the component is placed on a dark background.             | <code>boolean</code>                       | <code>false</code>        |
+| **loading**       | Defines if the select is in a loading state.                                      | <code>boolean</code>                       | <code>false</code>        |
+| **multiple**      | If `true` multiple option can be selected                                         | <code>boolean</code>                       | <code>false</code>        |
+| **name**          | The name of the control, which is submitted with the form data.                   | <code>string</code>                        | <code>this.inputId</code> |
+| **no-border**     | Removes the border of the input.                                                  | <code>boolean</code>                       | <code>false</code>        |
+| **no-data-label** | This label is shown if typeahead is active and all the options are filtered out.  | <code>string , undefined</code>            |                           |
+| **placeholder**   | The text to display when the select is empty.                                     | <code>string , undefined</code>            |                           |
+| **scrollable**    | Defines the height of the dropdown list.                                          | <code>number</code>                        | <code>250</code>          |
+| **typeahead**     | If `true` the user can search by typing into the input field.                     | <code>boolean</code>                       | <code>false</code>        |
+| **value**         | Selected option values. Could also be passed as a string, which gets transformed. | <code>string , string[] , undefined</code> | <code>[]</code>           |
 
 ### Events
 
 
-| Event           | Description                                                        | Type                            |
-| :-------------- | :----------------------------------------------------------------- | :------------------------------ |
-| **balBlur**     | Emitted when the input loses focus.                                | `FocusEvent`                    |
-| **balCancel**   | Emitted when the user cancels the input.                           | `KeyboardEvent`                 |
-| **balChange**   | Emitted when a option got selected.                                | `string | string[] | undefined` |
-| **balClick**    | Emitted when the input got clicked.                                | `MouseEvent`                    |
-| **balFocus**    | Emitted when the input has focus.                                  | `FocusEvent`                    |
-| **balInput**    | Emitted when a keyboard input occurred.                            | `string`                        |
-| **balKeyPress** | Emitted when the input has focus and key from the keyboard go hit. | `KeyboardEvent`                 |
+| Event           | Description                                                        | Type                                                     |
+| :-------------- | :----------------------------------------------------------------- | :------------------------------------------------------- |
+| **balBlur**     | Emitted when the input loses focus.                                | <code>FocusEvent</code>                                  |
+| **balCancel**   | Emitted when the user cancels the input.                           | <code>KeyboardEvent</code>                               |
+| **balChange**   | Emitted when a option got selected.                                | <code>string  &#124;  string[]  &#124;  undefined</code> |
+| **balClick**    | Emitted when the input got clicked.                                | <code>MouseEvent</code>                                  |
+| **balFocus**    | Emitted when the input has focus.                                  | <code>FocusEvent</code>                                  |
+| **balInput**    | Emitted when a keyboard input occurred.                            | <code>string</code>                                      |
+| **balKeyPress** | Emitted when the input has focus and key from the keyboard go hit. | <code>KeyboardEvent</code>                               |
 
 ### Methods
 
 
-| Method         | Description                                                                 | Signature                                |
-| :------------- | :-------------------------------------------------------------------------- | :--------------------------------------- |
-| **`cancel`**   | Cancel the dropdown                                                         | `cancel() => Promise<void>`              |
-| **`clear`**    | Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´. | `clear() => Promise<void>`               |
-| **`close`**    | Closes the dropdown                                                         | `close() => Promise<void>`               |
-| **`open`**     | Opens the dropdown                                                          | `open() => Promise<void>`                |
-| **`select`**   | Select option by passed value                                               | `select(value: string) => Promise<void>` |
-| **`setFocus`** | Sets the focus on the input element                                         | `setFocus() => Promise<void>`            |
+| Method       | Description                                                                 | Signature                                                                   |
+| :----------- | :-------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| **cancel**   | Cancel the dropdown                                                         | <code>cancel() =&#62; Promise&#60;void&#62;</code>                          |
+| **clear**    | Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´. | <code>clear() =&#62; Promise&#60;void&#62;</code>                           |
+| **close**    | Closes the dropdown                                                         | <code>close() =&#62; Promise&#60;void&#62;</code>                           |
+| **getValue** | Sets the focus on the input element                                         | <code>getValue() =&#62; Promise&#60;string[]  &#124;  undefined&#62;</code> |
+| **open**     | Opens the dropdown                                                          | <code>open() =&#62; Promise&#60;void&#62;</code>                            |
+| **select**   | Select option by passed value                                               | <code>select(value: string) =&#62; Promise&#60;void&#62;</code>             |
+| **setFocus** | Sets the focus on the input element                                         | <code>setFocus() =&#62; Promise&#60;void&#62;</code>                        |
 
-### Testing
+## Testing
 
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
 
-SelectAccessor is a helper object for E-2-E testing.
-It maps the select behaviour to the `bal-select` ui component.
+- [More information about the installation and usage](/components/tooling/testing.html)
+
+<!-- START: human documentation testing -->
 
 ```typescript
-import { dataTestSelector, SelectAccessor } from '@baloise/design-system-components-testing'
+import { dataTestSelector } from '@baloise/design-system-testing'
 
 describe('Select', () => {
+  const select = dataTestSelector('my-select') // [data-test-id="my-select"]
+
   it('should ...', () => {
-     const select = SelectAccessor(dataTestSelector('select-id')).get()
-     select.click()
-     select.select(1)
-     select.contains('value')
- })
+    cy.get(select)
+      .click() // opens the select
+      .select('1995')
+      .should('have.value', '1995')
+
+    cy.get(select)
+      .balSelectFindOptions()
+      .should('have.length', 6)
+
+    cy.get(select).balSelectShouldHaveOptions(['1995', '1996', '1997', '1998', '1999', '2000'])
+  })
+})
+
+describe('typeahead', () => {
+  const typeahead = dataTestSelector('my-typeahead') // [data-test-id="my-typeahead"]
+
+  it('should clear select and search for the Black Widow', () => {
+    cy.get(typeahead)
+      .clear()
+      .type('Black{enter}')
+      .should('have.value', 'Black Widow')
+  })
+})
+
+describe('multiple', () => {
+  const multiple = dataTestSelector('my-multiple') // [data-test-id="my-multiple"]
+
+  it('should ', () => {
+    cy.get(multiple)
+      .click()
+      .select(['Black Widow', 'Black Panter'])
+      .should('have.value', ['Black Widow', 'Black Panter'])
+
+    cy.get(multiple)
+      .balSelectFindOptions()
+      .first()
+      .click()
+
+    cy.get(page.multiple)
+      .balSelectFindChips()
+      .first()
+      .contains('Iron Man')
+      .click() // clicks the chip to remove the selection
+  })
 })
 ```
 
-### Methods
+<!-- END: human documentation testing -->
 
-| Method            | Description                    | Arguments                                 |
-| :---------------- | :----------------------------- | :---------------------------------------- |
-| **click**         | Clicks the input               | `options?: Partial<Cypress.ClickOptions>` |
-| **select**        | Selects dropdown item          | `index: number`                           |
-| **assertOptions** | Checks the options             | `...options: string[]`                    |
-| **contains**      | Checks if input have a content | `content: string | number | RegExp`       |
+### Custom Commands
+
+A list of the custom commands for this specific component.
+
+| Command                        | Description                                                | Signature                                                                                       |
+| :----------------------------- | :--------------------------------------------------------- | :---------------------------------------------------------------------------------------------- |
+| **balSelectFindOptions**       | Returns the select options.                                | <code>(): Chainable&#60;JQuery&#62;</code>                                                      |
+| **balSelectFindChips**         | Returns the closable select chips (only with multiselect). | <code>(): Chainable&#60;JQuery&#62;</code>                                                      |
+| **balSelectShouldHaveOptions** | Asserts that the select has the given options.             | <code>(labels: string[], dataType?: 'label'  &#124;  'value'): Chainable&#60;JQuery&#62;</code> |
 
 ## Usage
 
@@ -144,7 +191,7 @@ describe('Select', () => {
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-select.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-select)
-* [Accessor on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/accessors/select.accessor.ts)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 

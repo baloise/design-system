@@ -51,14 +51,19 @@ This is not a recommanded validation style. Only use this style if you do not ha
 ### Properties
 
 
-| Attribute    | Description                                                                                 | Type      | Default |
-| :----------- | :------------------------------------------------------------------------------------------ | :-------- | :------ |
-| **disabled** | If `true` the field loses opacity                                                           | `boolean` | `false` |
-| **expanded** | If `true` the component takes the whole width                                               | `boolean` | `false` |
-| **invalid**  | If `true` the component gets a invalid style. Only use this if there is no live validation. | `boolean` | `false` |
-| **inverted** | If `true` the field can be used on blue background.                                         | `boolean` | `false` |
-| **loading**  | If `true` a loading spinner is visible at the end of the input                              | `boolean` | `false` |
+| Attribute    | Description                                                                                 | Type                 | Default            |
+| :----------- | :------------------------------------------------------------------------------------------ | :------------------- | :----------------- |
+| **disabled** | If `true` the field loses opacity                                                           | <code>boolean</code> | <code>false</code> |
+| **expanded** | If `true` the component takes the whole width                                               | <code>boolean</code> | <code>false</code> |
+| **invalid**  | If `true` the component gets a invalid style. Only use this if there is no live validation. | <code>boolean</code> | <code>false</code> |
+| **inverted** | If `true` the field can be used on blue background.                                         | <code>boolean</code> | <code>false</code> |
+| **loading**  | If `true` a loading spinner is visible at the end of the input                              | <code>boolean</code> | <code>false</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 

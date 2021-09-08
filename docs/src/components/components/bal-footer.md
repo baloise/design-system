@@ -39,10 +39,15 @@ To configure a sticky footer go to [foundation page layout](../foundation/page-l
 ### Properties
 
 
-| Attribute          | Description                                            | Type      | Default |
-| :----------------- | :----------------------------------------------------- | :-------- | :------ |
-| **has-track-line** | If `true` the footer shows a track line at the bottom. | `boolean` | `false` |
+| Attribute          | Description                                            | Type                 | Default            |
+| :----------------- | :----------------------------------------------------- | :------------------- | :----------------- |
+| **has-track-line** | If `true` the footer shows a track line at the bottom. | <code>boolean</code> | <code>false</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 

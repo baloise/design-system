@@ -42,23 +42,28 @@ sidebarDepth: 0
 ### Properties
 
 
-| Attribute    | Description                                             | Type      | Default |
-| :----------- | :------------------------------------------------------ | :-------- | :------ |
-| **disabled** | If `true` the button is disabled                        | `boolean` | `false` |
-| **inverted** | If `true` the timeinput can be used on blue background. | `boolean` | `false` |
-| **max-time** | Latest date available for selection                     | `string`  | `''`    |
-| **min-time** | Earliest date available for selection                   | `string`  | `''`    |
-| **value**    | The value of the datepicker with the format `hh:mm`.    | `string`  | `''`    |
+| Attribute    | Description                                             | Type                 | Default            |
+| :----------- | :------------------------------------------------------ | :------------------- | :----------------- |
+| **disabled** | If `true` the button is disabled                        | <code>boolean</code> | <code>false</code> |
+| **inverted** | If `true` the timeinput can be used on blue background. | <code>boolean</code> | <code>false</code> |
+| **max-time** | Latest date available for selection                     | <code>string</code>  | <code>''</code>    |
+| **min-time** | Earliest date available for selection                   | <code>string</code>  | <code>''</code>    |
+| **value**    | The value of the datepicker with the format `hh:mm`.    | <code>string</code>  | <code>''</code>    |
 
 ### Events
 
 
-| Event         | Description                                                                                                                                                    | Type         |
-| :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
-| **balBlur**   | Emitted when either the hour or minute input field loses focus.                                                                                                | `FocusEvent` |
+| Event         | Description                                                                                                                                                    | Type                    |
+| :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------- |
+| **balBlur**   | Emitted when either the hour or minute input field loses focus.                                                                                                | <code>FocusEvent</code> |
 | **balChange** | Emitted when either the hour or the minute input has changed.
-It will not be triggert if either hour or time input has never been set (i.e. "--" is selected). | `string`     |
+It will not be triggert if either hour or time input has never been set (i.e. "--" is selected). | <code>string</code>     |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 

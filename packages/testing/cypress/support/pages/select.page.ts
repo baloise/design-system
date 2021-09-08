@@ -1,7 +1,11 @@
-import { SelectAccessor, dataTestSelector } from '../../../src'
+import { dataTestSelector } from '../../../src'
 
 export class SelectPage {
-  select = SelectAccessor(dataTestSelector("select"))
+  select = dataTestSelector('select')
+  selectDisabled = dataTestSelector('select-disabled')
+  typeahead = dataTestSelector('typeahead')
+  multiple = dataTestSelector('multiple')
+
   open() {
     cy.visit('/components/bal-select')
   }

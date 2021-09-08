@@ -22,10 +22,15 @@ sidebarDepth: 0
 ### Properties
 
 
-| Attribute      | Description                                                         | Type     | Default |
-| :------------- | :------------------------------------------------------------------ | :------- | :------ |
-| **scrollable** | Limit the height of the dropdown content. Pass the amount of pixel. | `number` | `0`     |
+| Attribute      | Description                                                         | Type                | Default        |
+| :------------- | :------------------------------------------------------------------ | :------------------ | :------------- |
+| **scrollable** | Limit the height of the dropdown content. Pass the amount of pixel. | <code>number</code> | <code>0</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 
 

@@ -72,7 +72,7 @@ div {
   position: -webkit-sticky;
   position: sticky;
   top: 57px;
-  z-index: 100;
+  z-index: 35;
   width: 100%;
   height: 56px;
   margin: 32px 0;

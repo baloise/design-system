@@ -11,6 +11,8 @@ export class Radio implements ComponentInterface {
   private inputId = `bal-rb-${radioIds++}`
   private inputEl?: HTMLInputElement
 
+  @State() hasFocus = false
+
   @Element() el!: HTMLElement
   @State() hasLabel: boolean = true
 
@@ -42,7 +44,7 @@ export class Radio implements ComponentInterface {
   /**
    * If `true`, the radio is selected.
    */
-  @Prop({ mutable: true }) checked = false
+  @Prop({ mutable: true, reflect: true }) checked = false
 
   /**
    * If `true`, the user cannot interact with the checkbox.
@@ -105,6 +107,16 @@ export class Radio implements ComponentInterface {
     }
   }
 
+  private onInputFocus = (ev: any) => {
+    this.hasFocus = true
+    this.balFocus.emit(ev)
+  }
+
+  private onInputBlur = (ev: any) => {
+    this.hasFocus = false
+    this.balBlur.emit(ev)
+  }
+
   render() {
     const { inputId } = this
     const label = findItemLabel(this.el)
@@ -117,11 +129,13 @@ export class Radio implements ComponentInterface {
           'bal-select-button': this.interface === 'select-button',
           'is-inverted': this.inverted,
           'is-disabled': this.disabled,
+          'is-focused': this.hasFocus,
         }}
       >
         <input
           class={{
             'is-disabled': this.disabled,
+            'data-test-radio-input': true,
           }}
           type="radio"
           role="radio"
@@ -134,14 +148,15 @@ export class Radio implements ComponentInterface {
           disabled={this.disabled}
           checked={this.checked}
           aria-disabled={this.disabled ? 'true' : 'false'}
-          onFocus={e => this.balFocus.emit(e)}
-          onBlur={e => this.balBlur.emit(e)}
+          onFocus={e => this.onInputFocus(e)}
+          onBlur={e => this.onInputBlur(e)}
           ref={inputEl => (this.inputEl = inputEl)}
         />
         <label
           class={{
             'option-label': true,
             'is-disabled': this.disabled,
+            'data-test-radio-label': true,
           }}
           htmlFor={inputId}
           onClick={(ev: MouseEvent) => {

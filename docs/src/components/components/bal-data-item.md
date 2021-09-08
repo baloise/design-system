@@ -22,10 +22,15 @@ sidebarDepth: 0
 ### Properties
 
 
-| Attribute    | Description                                   | Type      | Default |
-| :----------- | :-------------------------------------------- | :-------- | :------ |
-| **disabled** | If `true` the item gets a lighter font color. | `boolean` | `false` |
+| Attribute    | Description                                   | Type                 | Default            |
+| :----------- | :-------------------------------------------- | :------------------- | :----------------- |
+| **disabled** | If `true` the item gets a lighter font color. | <code>boolean</code> | <code>false</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 
 

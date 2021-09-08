@@ -41,7 +41,7 @@ All the library project commands starts with the prefix `testing:`
 
 | Command                   | Description                                                                                       |
 | :------------------------ | :------------------------------------------------------------------------------------------------ |
-| npm run **testing:build** | Builds the testing helper library with the accessors of our components.                           |
+| npm run **testing:build** | Builds the testing helper library with the custom and overriden commands of our components.       |
 | npm run **testing:test**  | Runs all the E2E test in the background.                                                          |
 | npm run **testing:serve** | This opens the Cypress Test Runner. Just start your library server withnpm run `lib:serve` first. |
 

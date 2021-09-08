@@ -43,6 +43,10 @@ Then we add the defined script `copy:fonts` in our `postinstall` script. Every t
 }
 ```
 
+:::tip
+It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
+:::
+
 ## Sass (recommended)
 
 We recommand to use dart-sass and not node-sass.
@@ -56,6 +60,20 @@ Import the `global.scss` Sass file into the main `.scss` file of your applicatio
 ```scss
 @import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
 ```
+
+::: warning
+
+**Relative path**
+
+To serve the fonts from a relative path inside a angular application adjust `$font-path` variable to `'~assets/fonts'`.
+
+```scss
+$font-path: '~assets/fonts';
+
+@import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
+```
+
+:::
 
 ### Variables
 

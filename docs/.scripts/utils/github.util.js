@@ -1,7 +1,7 @@
 const { NEWLINE } = require('../../../.scripts/constants')
 const { convertToDotCase } = require('../../../.scripts/string')
 
-const parse = (component, accessor) => {
+const parse = (component, command) => {
   const baseUrl = 'https://github.com/baloise/design-system/blob/master'
 
   const lines = []
@@ -17,10 +17,10 @@ const parse = (component, accessor) => {
   const componentLink = `* [Implementation on Github](${componentUrl})`
   lines.push(componentLink)
 
-  if (accessor) {
-    const accessorUrl = `${baseUrl}/packages/testing/src/accessors/${convertToDotCase(accessor.name)}.ts`
-    const accessorLink = `* [Accessor on Github](${accessorUrl})`
-    lines.push(accessorLink)
+  if (command) {
+    const commandUrl = `${baseUrl}/packages/testing/src/commands`
+    const commandLink = `* [Cypress commands on Github](${commandUrl})`
+    lines.push(commandLink)
   }
 
   lines.push('')

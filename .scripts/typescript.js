@@ -3,6 +3,7 @@
  * https://ts-ast-viewer.com/
  */
 
+const { SyntaxKind } = require('typescript')
 const ts = require('typescript')
 
 const createSourceFile = fileContent => ts.createSourceFile('x.ts', fileContent, ts.ScriptTarget.Latest)
@@ -33,8 +34,12 @@ const filterInterfaceDeclaration = nodes => {
   return filterInterfaceDeclarations(nodes)[0]
 }
 
+const filterModuleDeclaration = nodes => {
+  return filterDeclarationsAndStatements(nodes, SyntaxKind.ModuleDeclaration)[0]
+}
+
 const filterInterfaceDeclarations = nodes => {
-  return filterDeclarationsAndStatements(nodes, 254)
+  return filterDeclarationsAndStatements(nodes, SyntaxKind.InterfaceDeclaration)
 }
 
 const filterExportedStatements = nodes => {
@@ -106,6 +111,7 @@ module.exports = {
   filterInterfaceDeclaration,
   filterInterfaceDeclarations,
   parseFunctionComment,
+  filterModuleDeclaration,
   parseType,
   parseParameters,
 }

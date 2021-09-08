@@ -141,19 +141,57 @@ export default defineComponent({
 ### Properties
 
 
-| Attribute      | Description                                                                                     | Type      | Default |
-| :------------- | :---------------------------------------------------------------------------------------------- | :-------- | :------ |
-| **card**       | Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot. | `boolean` | `false` |
-| **no-overlay** | If `true` the modal does not run with a background overlay.                                     | `boolean` | `false` |
+| Attribute      | Description                                                                                     | Type                 | Default            |
+| :------------- | :---------------------------------------------------------------------------------------------- | :------------------- | :----------------- |
+| **card**       | Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot. | <code>boolean</code> | <code>false</code> |
+| **no-overlay** | If `true` the modal does not run with a background overlay.                                     | <code>boolean</code> | <code>false</code> |
 
 ### Methods
 
 
-| Method      | Description       | Signature                  |
-| :---------- | :---------------- | :------------------------- |
-| **`close`** | Closes the modal. | `close() => Promise<void>` |
-| **`open`**  | Opens the modal.  | `open() => Promise<void>`  |
+| Method    | Description       | Signature                                         |
+| :-------- | :---------------- | :------------------------------------------------ |
+| **close** | Closes the modal. | <code>close() =&#62; Promise&#60;void&#62;</code> |
+| **open**  | Opens the modal.  | <code>open() =&#62; Promise&#60;void&#62;</code>  |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
+
+<!-- START: human documentation testing -->
+
+```typescript
+import { dataTestSelector } from '@baloise/design-system-testing'
+
+describe('Modal', () => {
+  const modal = dataTestSelector('my-modal') // [data-test-id="my-modal"]
+  const openModalButton = dataTestSelector('my-open-modal')
+  const closeModalButton = dataTestSelector('my-close-modal')
+  it('should ...', () => {
+    cy.get(modal).balModalIsClosed()
+    cy.get(openModalButton).click()
+    cy.get(modal).balModalIsOpen()
+    cy.get(closeModalButton).click()
+    cy.get(modal).balModalIsClosed()
+    cy.get(modal)
+      .find('bal-modal-header')
+      .contains('Modal Title')
+  })
+})
+```
+
+<!-- END: human documentation testing -->
+
+### Custom Commands
+
+A list of the custom commands for this specific component.
+
+| Command              | Description                    | Signature                                  |
+| :------------------- | :----------------------------- | :----------------------------------------- |
+| **balModalIsOpen**   | Assert if the modal is open.   | <code>(): Chainable&#60;JQuery&#62;</code> |
+| **balModalIsClosed** | Assert if the modal is closed. | <code>(): Chainable&#60;JQuery&#62;</code> |
 
 ## Usage
 
@@ -167,6 +205,7 @@ export default defineComponent({
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-modal.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-modal)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 

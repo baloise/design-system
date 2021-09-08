@@ -73,31 +73,60 @@ export class ServicesPageComponent {
 ### Properties
 
 
-| Attribute    | Description                                                       | Type                                                         | Default |
-| :----------- | :---------------------------------------------------------------- | :----------------------------------------------------------- | :------ |
-| **action**   | Label text for the action button                                  | `string`                                                     | `''`    |
-| **color**    | The theme type of the snackbar. Given by bulma our css framework. | `"" , "danger" , "info" , "primary" , "success" , "warning"` | `''`    |
-| **duration** | The duration of the snackbar                                      | `number`                                                     | `0`     |
-| **icon**     | The icon of the snackbar header                                   | `string`                                                     | `''`    |
-| **message**  | The message of the snackbar                                       | `string`                                                     | `''`    |
-| **subject**  | The subject of the snackbar header                                | `string`                                                     | `''`    |
+| Attribute    | Description                                                       | Type                                                                    | Default         |
+| :----------- | :---------------------------------------------------------------- | :---------------------------------------------------------------------- | :-------------- |
+| **action**   | Label text for the action button                                  | <code>string</code>                                                     | <code>''</code> |
+| **color**    | The theme type of the snackbar. Given by bulma our css framework. | <code>"" , "danger" , "info" , "primary" , "success" , "warning"</code> | <code>''</code> |
+| **duration** | The duration of the snackbar                                      | <code>number</code>                                                     | <code>0</code>  |
+| **icon**     | The icon of the snackbar header                                   | <code>string</code>                                                     | <code>''</code> |
+| **message**  | The message of the snackbar                                       | <code>string</code>                                                     | <code>''</code> |
+| **subject**  | The subject of the snackbar header                                | <code>string</code>                                                     | <code>''</code> |
 
 ### Events
 
 
-| Event         | Description                               | Type     |
-| :------------ | :---------------------------------------- | :------- |
-| **balAction** | Emitted when the action button is clicked | `string` |
-| **balClose**  | Emitted when snackbar is closed           | `string` |
+| Event         | Description                               | Type                |
+| :------------ | :---------------------------------------- | :------------------ |
+| **balAction** | Emitted when the action button is clicked | <code>string</code> |
+| **balClose**  | Emitted when snackbar is closed           | <code>string</code> |
 
 ### Methods
 
 
-| Method        | Description                                        | Signature                                    |
-| :------------ | :------------------------------------------------- | :------------------------------------------- |
-| **`close`**   | Closes this snackbar                               | `close() => Promise<void>`                   |
-| **`closeIn`** | Closes the snackbar after the given duration in ms | `closeIn(duration: number) => Promise<void>` |
+| Method      | Description                                        | Signature                                                           |
+| :---------- | :------------------------------------------------- | :------------------------------------------------------------------ |
+| **close**   | Closes this snackbar                               | <code>close() =&#62; Promise&#60;void&#62;</code>                   |
+| **closeIn** | Closes the snackbar after the given duration in ms | <code>closeIn(duration: number) =&#62; Promise&#60;void&#62;</code> |
 
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
+
+<!-- START: human documentation testing -->
+
+```typescript
+import { dataTestSelector } from '@baloise/design-system-testing'
+
+describe('Snackbar', () => {
+  it('should ...', () => {
+    cy.balSnackbarFind()
+      .first()
+      .contains('Hi I am a default Snack!')
+  })
+})
+```
+
+<!-- END: human documentation testing -->
+
+### Custom Commands
+
+A list of the custom commands for this specific component.
+
+| Command             | Description                    | Signature                                  |
+| :------------------ | :----------------------------- | :----------------------------------------- |
+| **balSnackbarFind** | Returns the visible snackbars. | <code>(): Chainable&#60;JQuery&#62;</code> |
 
 ## Usage
 
@@ -111,6 +140,7 @@ export class ServicesPageComponent {
 
 * [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-snackbar.md)
 * [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-snackbar)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 
