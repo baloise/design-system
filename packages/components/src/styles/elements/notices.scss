@@ -17,6 +17,7 @@
   .container {
     width: 100%;
   }
+
   &.bal-notices--snackbar {
     justify-content: flex-start;
     align-items: flex-end;
@@ -28,6 +29,7 @@
       align-self: flex-end;
     }
   }
+
   &.bal-notices--toast {
     justify-content: flex-start;
     align-items: center;

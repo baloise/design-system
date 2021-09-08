@@ -47,13 +47,9 @@ export class Toast {
    */
   @Method()
   async close(): Promise<void> {
+    this.balClose.emit(this.toastId)
+    this.element.remove()
     clearTimeout(this.timer)
-    this.animationClass = 'fadeOut'
-    this.timer = setTimeout(() => {
-      clearTimeout(this.timer)
-      this.balClose.emit(this.toastId)
-      this.element.remove()
-    }, 150)
   }
 
   get colorType() {
