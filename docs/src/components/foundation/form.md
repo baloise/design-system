@@ -93,3 +93,7 @@ With the help of our [CSS Grid](/components/foundation/grid.html) we can assembl
   </bal-field>
 </form>
 ```
+
+### More examples
+
+- [Form Template with a contact form](/components/templates/contact-form.html)
