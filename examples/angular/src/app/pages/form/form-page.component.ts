@@ -34,12 +34,6 @@ export class FormPageComponent {
     comment: new FormControl(null, [BalValidators.isRequired()]),
   })
 
-  radioChange(event: any) {
-    this.form.patchValue({
-      gender: 'female',
-    })
-  }
-
   setCommentDisabled() {
     this.form.get('comment')?.disable()
   }

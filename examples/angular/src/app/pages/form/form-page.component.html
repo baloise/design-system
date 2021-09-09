@@ -4,11 +4,7 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="columns is-multiline mt-0">
       <bal-field class="column is-full py-0" expanded [disabled]="form.get('gender')?.disabled">
         <bal-field-control>
-          <bal-radio-group
-            interface="select-button"
-            [formControlName]="formControlName"
-            (balChange)="radioChange($event)"
-          >
+          <bal-radio-group interface="select-button" [formControlName]="formControlName">
             <bal-radio *ngFor="let g of genders" [name]="formControlName" [value]="g.value">{{ g.label }}</bal-radio>
           </bal-radio-group>
         </bal-field-control>
