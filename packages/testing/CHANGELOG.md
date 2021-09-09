@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.1](https://github.com/baloise/design-system/compare/v1.14.0...v1.14.1) (2021-09-09)
+
+
+### Bug Fixes
+
+* **testing:** remove console log ([e68c022](https://github.com/baloise/design-system/commit/e68c0224605d95eca2871441b45ba0840217da24))
+
+
+
+
+
 # [1.14.0](https://github.com/baloise/design-system/compare/v1.13.3...v1.14.0) (2021-09-08)
 
 

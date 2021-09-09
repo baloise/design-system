@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.1](https://github.com/baloise/design-system/compare/v1.14.0...v1.14.1) (2021-09-09)
+
+
+### Bug Fixes
+
+* **radio:** improve change emitting for faster reaction time ([3e3e6df](https://github.com/baloise/design-system/commit/3e3e6df3d4c6ba23f9637ef732dcb9e0c1e37d9d))
+* **table:** alignt text to center for  buttons ([b561840](https://github.com/baloise/design-system/commit/b561840c94fd63b82a3a272abcff67c182a72351))
+* **toast&snackbar:** fix glitches when leaving the dom ([de9fd0e](https://github.com/baloise/design-system/commit/de9fd0e35430558041ff50e143c51cad3d567142))
+
+
+
+## 1.11.1 (2021-08-23)
+
+
+
+
+
 # [1.14.0](https://github.com/baloise/design-system/compare/v1.13.3...v1.14.0) (2021-09-08)
 
 
