@@ -48,7 +48,8 @@ footer: Apache-2.0 Licensed | Copyright © 2019-present Laurent Tauber, Gery Hir
     <p>Proxy library for the Angular framework with the Baloise Design System components.<br><br>
       <strong>Supported Versions</strong><br> 
       10.2.x ✔<br>
-      11.x.x ✔<br><br>
+      11.x.x ✔<br>
+      12.x.x ✔<br><br>
     </p>
   </div>
   <div class="feature" style="flex-basis: 50%; max-width: 50%;">

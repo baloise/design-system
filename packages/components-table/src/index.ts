@@ -1,4 +1,4 @@
-import '../scss/index.scss'
+import '../scss/design-system-table.scss'
 
 export * from './bal-table-button-renderer'
 export * from './bal-table-tag-renderer'

@@ -6,32 +6,13 @@ This section explains how the Baloise Design System can be included into your HT
 
 ## Installation
 
-### CDN
-
-The easiest way to use the library is via CDN.
-
-Add the following 4 references to your `<head></head>`
-
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/fonts.cdn.css" />
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
-/>
-
-<script
-  type="module"
-  src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
-></script>
-<script
-  nomodule
-  src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
-></script>
-```
-
 ### Node Modules
 
 Open the terminal and run the following commands to install the Baloise Design System.
+
+::: tip
+This is the recommanded setup for HTML5 applications or server-side-rendering application, because it is under version control with the help of npm.
+:::
 
 ```bash
 npm install @baloise/design-system-fonts --save
@@ -54,5 +35,28 @@ Add the following 2 references to your `<head></head>`
 <script
   nomodule
   src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
+></script>
+```
+
+### CDN
+
+A way to easily use the library is via CDN. However we do not recommand this for production usage.
+
+Add the following 4 references to your `<head></head>`
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/fonts.cdn.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
+/>
+
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"
+></script>
+<script
+  nomodule
+  src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
 ></script>
 ```

@@ -2,6 +2,11 @@
 
 The library serve a collection of validator functions.
 
+## Usage examples
+
+- [Angular usage of validators](/components/getting-started/angular/usage.html#form-validation)
+- [Vue usage of validators](/components/getting-started/vue/usage.html#form-validation)
+
 <!-- generated content -->
 
 ## API

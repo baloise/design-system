@@ -8,6 +8,10 @@ import { BalValidators } from '@baloise/design-system-components-angular'
   templateUrl: './form-page.component.html',
 })
 export class FormPageComponent {
+  formControlName = 'gender'
+
+  genders = [NewBalOptionValue('male', 'Male'), NewBalOptionValue('female', 'Female')]
+
   cantons = [
     NewBalOptionValue('AG', 'AG'),
     NewBalOptionValue('BS', 'BS'),

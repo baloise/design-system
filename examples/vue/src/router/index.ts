@@ -13,6 +13,11 @@ export const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "form" */ '../app/pages/Form.vue'),
   },
   {
+    path: '/table',
+    name: 'Table',
+    component: () => import(/* webpackChunkName: "table" */ '../app/pages/Table.vue'),
+  },
+  {
     path: '/pipes',
     name: 'Pipes',
     component: () => import(/* webpackChunkName: "pipes" */ '../app/pages/Pipes.vue'),

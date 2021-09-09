@@ -30,11 +30,17 @@
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
   "types": "./dist/types/index.d.ts",
-  "styles": "./dist/design-system-table.css",
+  "styles": "./css/design-system-table.css",
   "files": [
     "dist/",
+    "css/",
     "scss/"
   ],
+  "directories": {
+    "dist": "dist",
+    "css": "css",
+    "scss": "scss"
+  },
   "license": "Apache-2.0",
   "devDependencies": {
     "@baloise/design-system-components": "^1.14.0",

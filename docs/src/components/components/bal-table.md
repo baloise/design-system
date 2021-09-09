@@ -38,6 +38,12 @@ To use the AG-Grid install the following packages:
 npm install --save @baloise/design-system-components-table ag-grid-community
 ```
 
+Next we need to link the stylesheet into our global scss file.
+
+```scss
+@import 'node_modules/@baloise/design-system-components-table/scss';
+```
+
 The package has three render functions.
 
 #### BalTableButtonRenderer

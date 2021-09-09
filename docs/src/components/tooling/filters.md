@@ -1,4 +1,4 @@
-# Filters
+# Filters / Pipes
 
 Use filter function to transform any kind of data to display.
 
@@ -10,6 +10,11 @@ import { balCapitalize } from '@baloise/design-system-components'
 balCapitalize('baloise')
 // returns 'Baloise'
 ```
+
+## Usage examples
+
+- [Angular usage of pipes](/components/getting-started/angular/usage.html#pipes)
+- [Vue usage of pipes](/components/getting-started/vue/usage.html#filters)
 
 <!-- generated content -->
 
