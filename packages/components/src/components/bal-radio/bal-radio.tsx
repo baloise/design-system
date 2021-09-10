@@ -149,6 +149,7 @@ export class Radio implements ComponentInterface {
           aria-label={label}
           disabled={this.disabled}
           checked={this.checked}
+          aria-checked={this.checked ? 'true' : 'false'}
           aria-disabled={this.disabled ? 'true' : 'false'}
           onFocus={e => this.onInputFocus(e)}
           onBlur={e => this.onInputBlur(e)}
@@ -160,6 +161,9 @@ export class Radio implements ComponentInterface {
             'is-disabled': this.disabled,
             'data-test-radio-label': true,
           }}
+          aria-checked={this.checked ? 'true' : 'false'}
+          aria-disabled={this.disabled ? 'true' : 'false'}
+          aria-focused={this.hasFocus ? 'true' : 'false'}
           htmlFor={inputId}
           onClick={(ev: MouseEvent) => {
             ev.stopPropagation()
