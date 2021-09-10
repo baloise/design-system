@@ -53,6 +53,9 @@ export const selectors = {
   modal: {
     main: 'div.modal',
   },
+  tag: {
+    text: 'bal-text',
+  },
   radio: {
     input: 'input.data-test-radio-input',
     label: 'label.data-test-radio-label',

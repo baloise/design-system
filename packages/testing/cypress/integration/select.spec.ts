@@ -1,6 +1,6 @@
 import { app } from '../support/app'
 
-describe.only('Select', () => {
+describe('Select', () => {
   let page = app.getSelectPage()
 
   describe('select', () => {
@@ -17,7 +17,7 @@ describe.only('Select', () => {
       cy.get(page.select).balSelectShouldHaveOptions(['v1995', 'v1996', 'v1997', 'v1998', 'v1999', 'v2000'], 'value')
     })
 
-    it.only('Should be disabled', () => {
+    it('Should be disabled', () => {
       page.open()
       cy.get(page.select).should('not.be.disabled')
       cy.get(page.selectDisabled).should('be.disabled')
@@ -31,7 +31,7 @@ describe.only('Select', () => {
     })
   })
 
-  describe('multiple', () => {
+  describe.only('multiple', () => {
     it('should ', () => {
       page.open()
       cy.get(page.multiple)
