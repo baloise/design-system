@@ -1,4 +1,4 @@
-import { isAccordion, isButton, isCheckbox, isInput, isRadio, selectors, wrapRoot } from '../helpers'
+import { isAccordion, isButton, isCheckbox, isInput, isRadio, isTag, selectors, wrapRoot } from '../helpers'
 
 Cypress.Commands.overwrite('contains', (originalFn, element: Cypress.Chainable<JQuery>, content, options) => {
   if (isAccordion(element)) {
@@ -19,6 +19,10 @@ Cypress.Commands.overwrite('contains', (originalFn, element: Cypress.Chainable<J
 
   if (isRadio(element)) {
     return wrapRoot(element, selectors.radio.text, $el => originalFn($el, content, options))
+  }
+
+  if (isTag(element)) {
+    return wrapRoot(element, selectors.tag.text, $el => originalFn($el, content, options))
   }
 
   return originalFn(element, content, options)

@@ -23,7 +23,7 @@ describe('Checkbox', () => {
     cy.get(page.disabledCheckboxElement).should('be.disabled')
   })
 
-  it.only('should be focusable', () => {
+  it('should be focusable', () => {
     page.open()
     cy.get(page.normalCheckboxElement).should('not.be.focused')
     cy.get(page.normalCheckboxElement).focus()
