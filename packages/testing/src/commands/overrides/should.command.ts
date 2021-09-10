@@ -12,7 +12,14 @@ import {
   isSlider,
 } from '../helpers'
 
-const shouldAndAndCommand = (originalFn, element: Cypress.Chainable<JQuery>, condition, key, value, options) => {
+const shouldAndAndCommand = (
+  originalFn: any,
+  element: Cypress.Chainable<JQuery>,
+  condition: string,
+  key: any,
+  value: any,
+  options: any,
+) => {
   if (isAccordion(element)) {
     if (['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused'].includes(condition)) {
       return originalFn(element.find(selectors.accordion.button), condition, key, value, options)
