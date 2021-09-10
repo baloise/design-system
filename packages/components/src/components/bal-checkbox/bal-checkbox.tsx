@@ -153,6 +153,9 @@ export class Checkbox {
             'is-disabled': this.disabled,
             'data-test-checkbox-label': true,
           }}
+          aria-checked={this.checked ? 'true' : 'false'}
+          aria-disabled={this.disabled ? 'true' : 'false'}
+          aria-focused={this.hasFocus ? 'true' : 'false'}
           htmlFor={this.inputId}
           onClick={(ev: MouseEvent) => {
             ev.stopPropagation()
