@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.3](https://github.com/baloise/design-system/compare/v1.14.2...v1.14.3) (2021-09-10)
+
+
+### Bug Fixes
+
+* **testing:** look for label instead of input for radio & checkbox ([9c26641](https://github.com/baloise/design-system/commit/9c2664126e1a2e0e0f159755bb1d95d0ac1dfdb3))
+
+
+
+
+
 ## [1.14.2](https://github.com/baloise/design-system/compare/v1.14.1...v1.14.2) (2021-09-10)
 
 
