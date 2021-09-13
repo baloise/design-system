@@ -16,11 +16,10 @@ ng serve
 
 ::: tip
 
-- Choose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more. 
+- Choose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
 - Choose **ESLint** as the default linter tool, because TSLint is deprecated.
 
 :::
-
 
 ::: warning
 
@@ -39,6 +38,53 @@ Open angular.json file and find budgets keyword and adjust the two values.
 ```
 
 :::
+
+## Configure Project
+
+First we need to extend the ESLint rules to improve our linting rules.
+Open the `eslintrc.json` file and add the missing rules.
+
+```json
+...
+"extends": [
+  "eslint:recommended",
+  "plugin:@angular-eslint/recommended",
+  "plugin:@angular-eslint/template/process-inline-templates",
+  "plugin:@typescript-eslint/recommended",
+  "plugin:@typescript-eslint/recommended-requiring-type-checking"
+],
+...
+```
+
+Next lets have a look at the `tsconfig.json` file and add the following options.
+
+```json
+{
+  "compilerOptions": {
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    ...
+  },
+  ...
+}
+```
+
+Also override the `angularCompilerOptions` at the end of the file.
+
+```json
+{
+  ...
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "compilationMode": "partial"
+  }
+}
+```
 
 ## Install Baloise Design System
 
