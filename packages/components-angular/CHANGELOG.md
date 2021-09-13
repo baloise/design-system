@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.4](https://github.com/baloise/design-system/compare/v1.14.3...v1.14.4) (2021-09-13)
+
+
+### Bug Fixes
+
+* **angular:** use event.detail instead of event.target.value ([4709780](https://github.com/baloise/design-system/commit/47097800fc799de3d0c30a43e1a731836d9ed046))
+
+
+
+
+
 ## [1.14.3](https://github.com/baloise/design-system/compare/v1.14.2...v1.14.3) (2021-09-10)
 
 **Note:** Version bump only for package @baloise/design-system-components-angular
