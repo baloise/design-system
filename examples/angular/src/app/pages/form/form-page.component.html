@@ -4,7 +4,7 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="columns is-multiline mt-0">
       <bal-field class="column is-full py-0" expanded [disabled]="form.get('gender')?.disabled">
         <bal-field-control>
-          <bal-radio-group interface="select-button" [formControlName]="formControlName">
+          <bal-radio-group [formControlName]="formControlName">
             <bal-radio *ngFor="let g of genders" [name]="formControlName" [value]="g.value">{{ g.label }}</bal-radio>
           </bal-radio-group>
         </bal-field-control>
@@ -70,7 +70,7 @@
       <bal-field class="column is-half py-0" expanded [disabled]="form.get('canton')?.disabled">
         <bal-field-label>Canton</bal-field-label>
         <bal-field-control>
-          <bal-select placeholder="select your canton" formControlName="canton" expanded>
+          <bal-select placeholder="select your canton" formControlName="canton" expanded (balChange)="bubu($event)">
             <bal-select-option *ngFor="let canton of cantons" [value]="canton.value" [label]="canton.label">
               {{ canton.label }}
             </bal-select-option>

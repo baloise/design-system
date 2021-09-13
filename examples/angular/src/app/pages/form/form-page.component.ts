@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 import { NewBalOptionValue, newDateString, now } from '@baloise/design-system-components'
 import { BalValidators } from '@baloise/design-system-components-angular'
@@ -7,7 +7,17 @@ import { BalValidators } from '@baloise/design-system-components-angular'
   selector: 'app-form-page',
   templateUrl: './form-page.component.html',
 })
-export class FormPageComponent {
+export class FormPageComponent implements OnInit {
+  ngOnInit(): void {
+    this.form.get('canton')?.valueChanges.subscribe(a => {
+      console.log('valueChanges', a)
+    })
+  }
+
+  bubu(e: any) {
+    console.log('balChange', e)
+  }
+
   formControlName = 'gender'
 
   genders = [NewBalOptionValue('male', 'Male'), NewBalOptionValue('female', 'Female')]
