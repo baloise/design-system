@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 import { NewBalOptionValue, newDateString, now } from '@baloise/design-system-components'
 import { BalValidators } from '@baloise/design-system-components-angular'
