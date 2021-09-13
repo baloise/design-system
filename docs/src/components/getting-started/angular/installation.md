@@ -4,12 +4,13 @@
 
 ### Setup Angular Project
 
-Create an Angular project with the [Angular CLI](https://cli.angular.io/).
+Create an Angular project with the [Angular CLI](https://cli.angular.io/) and set Sass and ESLint has defaults.
 
 ```bash
 npm install -g @angular/cli
 ng new bal-app --style=scss
 cd bal-app
+ng add @angular-eslint/schematics
 ng serve
 ```
 
