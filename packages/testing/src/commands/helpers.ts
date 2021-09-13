@@ -7,6 +7,7 @@ export const hasClass = (el: Cypress.Chainable<JQuery>, name: string) => {
   return (el as unknown as JQuery).hasClass(name)
 }
 
+export const isLabel: isElementType = el => isElement(el, 'LABEL')
 export const isAccordion: isElementType = el => isElement(el, 'BAL-ACCORDION')
 export const isButton: isElementType = el => isElement(el, 'BAL-BUTTON')
 export const isCheckbox: isElementType = el => isElement(el, 'BAL-CHECKBOX')

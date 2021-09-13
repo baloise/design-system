@@ -100,13 +100,13 @@
           selectTypeaheadPreview.innerHTML = JSON.stringify(event.detail)
         })
         selectTypeaheadTrigger.addEventListener('click', function () {
-          selectTypeahead.value = ['SpiderMan']
+          selectTypeahead.value = 'SpiderMan'
         })
         selectTypeaheadClear.addEventListener('click', function () {
           selectTypeahead.clear(true)
           selectTypeahead.setFocus()
         })
-        selectTypeahead.value = ['CaptainAmerica']
+        selectTypeahead.value = 'CaptainAmerica'
         selectTypeaheadPreview.innerHTML = JSON.stringify(selectTypeahead.value)
       </script>
 
