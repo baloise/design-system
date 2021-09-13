@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.5](https://github.com/baloise/design-system/compare/v1.14.4...v1.14.5) (2021-09-13)
+
+
+### Bug Fixes
+
+* **testing:** add label support for checkbox & radio ([47c1dbe](https://github.com/baloise/design-system/commit/47c1dbee1359ec3ee59e60cd85489a2ca9bcaab6))
+
+
+
+
+
 ## [1.14.4](https://github.com/baloise/design-system/compare/v1.14.3...v1.14.4) (2021-09-13)
 
 
