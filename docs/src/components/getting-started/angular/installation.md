@@ -6,16 +6,20 @@
 
 Create an Angular project with the [Angular CLI](https://cli.angular.io/).
 
-::: tip
-Choose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
-:::
-
 ```bash
 npm install -g @angular/cli
-ng new bal-app
+ng new bal-app --style=scss
 cd bal-app
 ng serve
 ```
+
+::: tip
+
+- Choose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more. 
+- Choose **ESLint** as the default linter tool, because TSLint is deprecated.
+
+:::
+
 
 ::: warning
 
