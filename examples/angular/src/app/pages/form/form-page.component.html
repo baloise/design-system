@@ -70,7 +70,7 @@
       <bal-field class="column is-half py-0" expanded [disabled]="form.get('canton')?.disabled">
         <bal-field-label>Canton</bal-field-label>
         <bal-field-control>
-          <bal-select placeholder="select your canton" formControlName="canton" expanded (balChange)="bubu($event)">
+          <bal-select placeholder="select your canton" formControlName="canton" expanded>
             <bal-select-option *ngFor="let canton of cantons" [value]="canton.value" [label]="canton.label">
               {{ canton.label }}
             </bal-select-option>

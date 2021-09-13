@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
-// import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 import { AgGridModule } from 'ag-grid-angular'
 
 import { AppRoutingModule } from './app-routing.module'
