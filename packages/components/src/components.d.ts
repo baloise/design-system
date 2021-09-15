@@ -12,6 +12,7 @@ import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
 import { AutocompleteTypes, InputTypes } from "./types/interfaces";
+import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -811,21 +812,49 @@ export namespace Components {
     }
     interface BalModal {
         /**
-          * Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot.
-         */
-        "card": boolean;
-        /**
           * Closes the modal.
+          * @deprecated
          */
         "close": () => Promise<void>;
         /**
-          * If `true` the modal does not run with a background overlay.
+          * The component to display inside of the modal.
          */
-        "noOverlay": boolean;
+        "component": ComponentRef;
+        /**
+          * The data to pass to the modal component.
+         */
+        "componentProps"?: ComponentProps;
+        /**
+          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+         */
+        "cssClass"?: string | string[];
+        "delegate"?: FrameworkDelegate;
+        /**
+          * Closes the presented modal
+         */
+        "dismiss": (data?: any, role?: string | undefined) => Promise<boolean>;
+        /**
+          * If `true`, a backdrop will be displayed behind the modal.
+         */
+        "hasBackdrop": boolean;
+        /**
+          * If `true`, the modal can be closed with the escape key or the little close button.
+         */
+        "isClosable": boolean;
+        /**
+          * Defines the width of the modal body
+         */
+        "modalWidth": number;
         /**
           * Opens the modal.
+          * @deprecated
          */
         "open": () => Promise<void>;
+        "overlayIndex": number;
+        /**
+          * Presents the modal
+         */
+        "present": () => Promise<void>;
     }
     interface BalModalActions {
     }
@@ -2695,13 +2724,47 @@ declare namespace LocalJSX {
     }
     interface BalModal {
         /**
-          * Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot.
+          * The component to display inside of the modal.
          */
-        "card"?: boolean;
+        "component": ComponentRef;
         /**
-          * If `true` the modal does not run with a background overlay.
+          * The data to pass to the modal component.
          */
-        "noOverlay"?: boolean;
+        "componentProps"?: ComponentProps;
+        /**
+          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+         */
+        "cssClass"?: string | string[];
+        "delegate"?: FrameworkDelegate;
+        /**
+          * If `true`, a backdrop will be displayed behind the modal.
+         */
+        "hasBackdrop"?: boolean;
+        /**
+          * If `true`, the modal can be closed with the escape key or the little close button.
+         */
+        "isClosable"?: boolean;
+        /**
+          * Defines the width of the modal body
+         */
+        "modalWidth"?: number;
+        /**
+          * Emitted after the modal has dismissed.
+         */
+        "onBalModalDidDismiss"?: (event: CustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted after the modal has presented.
+         */
+        "onBalModalDidPresent"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted before the modal has dismissed.
+         */
+        "onBalModalWillDismiss"?: (event: CustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted before the modal has presented.
+         */
+        "onBalModalWillPresent"?: (event: CustomEvent<void>) => void;
+        "overlayIndex": number;
     }
     interface BalModalActions {
     }

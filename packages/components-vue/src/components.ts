@@ -1265,21 +1265,54 @@ export const BalListItemTitle = /*@__PURE__*/ defineComponent({
 export const BalModal = /*@__PURE__*/ defineComponent({
   name: 'bal-modal',
   props: {
-    card: {
-      type: Boolean,
-      default: false,
+    overlayIndex: {
+      type: Number,
+      default: undefined,
+      required: true,
+    },
+    delegate: {
+      type: String,
+      default: undefined,
       required: false,
     },
-    noOverlay: {
+    modalWidth: {
+      type: Number,
+      default: 640,
+      required: false,
+    },
+    hasBackdrop: {
       type: Boolean,
-      default: false,
+      default: true,
+      required: false,
+    },
+    isClosable: {
+      type: Boolean,
+      default: true,
+      required: false,
+    },
+    component: {
+      type: String,
+      default: undefined,
+      required: true,
+    },
+    componentProps: {
+      type: String,
+      default: undefined,
+      required: false,
+    },
+    cssClass: {
+      type: [String, Array as () => Array<string>],
+      default: undefined,
       required: false,
     },
   },
   emits: {
-
+    balModalDidPresent: (value: void) => true,
+    balModalWillPresent: (value: void) => true,
+    balModalWillDismiss: (value: Lib.OverlayEventDetail) => true,
+    balModalDidDismiss: (value: Lib.OverlayEventDetail) => true,
   },
-  setup: defineSetup('bal-modal', [], undefined)
+  setup: defineSetup('bal-modal', ['balModalDidPresent','balModalWillPresent','balModalWillDismiss','balModalDidDismiss'], undefined)
 })
 
 export const BalModalActions = /*@__PURE__*/ defineComponent({

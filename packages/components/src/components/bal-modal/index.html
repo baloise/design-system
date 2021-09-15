@@ -7,49 +7,71 @@
     <link rel="stylesheet" href="/build/design-system-components.css" />
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
+    <script type="module">
+      import { balModalController, deepReady } from '/build/index.esm.js'
+
+      window.balModalController = balModalController
+      window.deepReady = deepReady
+    </script>
   </head>
   <body class="bal-app">
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
 
       <section>
-        <bal-modal id="bal-modal-example" data-test-id="modal">
-          <bal-modal-header>Modal Title</bal-modal-header>
-          <bal-modal-body>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-          </bal-modal-body>
-          <bal-modal-footer>
-            <bal-modal-actions>
-              <bal-button color="primary" id="bal-modal-close-1" data-test-id="open-modal-close">Okay</bal-button>
-              <bal-button color="link" id="bal-modal-close-2">Cancel</bal-button>
-            </bal-modal-actions>
-          </bal-modal-footer>
-        </bal-modal>
-
         <bal-button id="bal-modal-trigger-example" data-test-id="open-modal-button">Launch Modal</bal-button>
       </section>
       <script type="text/javascript">
-        const modalElementBasic = document.getElementById('bal-modal-example')
+        customElements.define(
+          'modal-page',
+          class extends HTMLElement {
+            connectedCallback() {
+              this.innerHTML = `
+              <bal-modal-header>Modal Title</bal-modal-header>
+              <bal-modal-body>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </bal-modal-body>
+              <bal-modal-footer>
+                <bal-modal-actions>
+                  <bal-button color="primary" modal-close>Okay</bal-button>
+                  <bal-button color="link" modal-close>Cancel</bal-button>
+                </bal-modal-actions>
+              </bal-modal-footer>`
+            }
+          },
+        )
+
+        async function presentModal() {
+          const modalElement = document.createElement('bal-modal')
+          modalElement.component = 'modal-page'
+          modalElement.cssClass = 'my-custom-class'
+
+          // Define the with of the modal.
+          modalElement.modalWidth = 640 // default
+
+          // Define to have backdrop and that it is closable
+          modalElement.hasBackdrop = true // default
+          modalElement.isClosable = true // default
+
+          // attach the modal to the dom
+          document.body.appendChild(modalElement)
+          await deepReady(modalElement)
+
+          // present the modal for the user
+          return modalElement.present()
+        }
+
         const triggerElementBasic = document.getElementById('bal-modal-trigger-example')
-        const okayElementBasic = document.getElementById('bal-modal-close-1')
-        const cancelElementBasic = document.getElementById('bal-modal-close-2')
-        triggerElementBasic.onclick = function () {
-          modalElementBasic.open()
-        }
-        okayElementBasic.onclick = function () {
-          modalElementBasic.close()
-        }
-        cancelElementBasic.onclick = function () {
-          modalElementBasic.close()
+        triggerElementBasic.onclick = async function () {
+          await presentModal()
         }
       </script>
 
-      <h2 class="title is-size-2">Customize width</h2>
+      <h2 class="title is-size-2">Deprecated open & close</h2>
+
       <section>
-        <bal-modal style="--bal-width: 1000px" id="bal-modal-example-width" data-test-id="modal">
+        <bal-modal id="bal-modal-example-width" data-test-id="modal">
           <bal-modal-header>Modal Title</bal-modal-header>
           <bal-modal-body>
             <p>
@@ -80,154 +102,6 @@
         }
         cancelElementCustomWidth.onclick = function () {
           modalElementCustomWidth.close()
-        }
-      </script>
-
-      <h2 class="title is-size-2">Modal card style</h2>
-      <section>
-        <bal-modal card id="bal-modal-card-example" data-test-id="modal">
-          <bal-modal-header>Modal Title</bal-modal-header>
-          <bal-modal-body>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-          </bal-modal-body>
-          <bal-modal-footer>
-            <bal-modal-actions>
-              <bal-button color="primary" id="bal-modal-close-5">Okay</bal-button>
-              <bal-button color="link" id="bal-modal-close-6">Cancel</bal-button>
-            </bal-modal-actions>
-          </bal-modal-footer>
-        </bal-modal>
-
-        <bal-button id="bal-modal-card-trigger-example">Launch Modal</bal-button>
-      </section>
-      <script type="text/javascript">
-        const modalElementCard = document.getElementById('bal-modal-card-example')
-        const triggerElementCard = document.getElementById('bal-modal-card-trigger-example')
-        const okayElementCard = document.getElementById('bal-modal-close-5')
-        const cancelElementCard = document.getElementById('bal-modal-close-6')
-        triggerElementCard.onclick = function () {
-          modalElementCard.open()
-        }
-        okayElementCard.onclick = function () {
-          modalElementCard.close()
-        }
-        cancelElementCard.onclick = function () {
-          modalElementCard.close()
         }
       </script>
     </div>

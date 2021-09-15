@@ -795,23 +795,33 @@ export class BalListItemTitle {
   }
 }
 
-
+import { OverlayEventDetail } from '@baloise/design-system-components';
 export declare interface BalModal extends Components.BalModal {}
 @ProxyCmp({
-  inputs: ['card', 'noOverlay'],
-  methods: ['open', 'close']
+  inputs: ['component', 'componentProps', 'cssClass', 'hasBackdrop', 'isClosable', 'modalWidth'],
+  methods: ['open', 'close', 'present', 'dismiss']
 })
 @Component({
   selector: 'bal-modal',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['card', 'noOverlay']
+  inputs: ['component', 'componentProps', 'cssClass', 'hasBackdrop', 'isClosable', 'modalWidth'],
+  outputs: ['balModalDidPresent', 'balModalWillPresent', 'balModalWillDismiss', 'balModalDidDismiss']
 })
 export class BalModal {
+  /** Emitted after the modal has presented. */
+  balModalDidPresent!: EventEmitter<CustomEvent<void>>;
+  /** Emitted before the modal has presented. */
+  balModalWillPresent!: EventEmitter<CustomEvent<void>>;
+  /** Emitted before the modal has dismissed. */
+  balModalWillDismiss!: EventEmitter<CustomEvent<OverlayEventDetail<any>>>;
+  /** Emitted after the modal has dismissed. */
+  balModalDidDismiss!: EventEmitter<CustomEvent<OverlayEventDetail<any>>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balModalDidPresent', 'balModalWillPresent', 'balModalWillDismiss', 'balModalDidDismiss']);
   }
 }
 

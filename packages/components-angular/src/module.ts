@@ -13,6 +13,7 @@ import { BalToastService } from './bal-toast.service'
 import { BalSnackbarService } from './bal-snackbar.service'
 import { AutoFocus } from './focus.directive'
 import { BalNgErrorComponent } from './components/error/error.component'
+import { BalModalService } from './overlays/modal.service'
 
 const DECLARATIONS = [
   // proxies
@@ -37,7 +38,7 @@ const DECLARATIONS = [
   declarations: [DECLARATIONS],
   exports: [DECLARATIONS],
   imports: [CommonModule, FormsModule],
-  providers: [BalToastService, BalSnackbarService],
+  providers: [BalToastService, BalSnackbarService, BalModalService],
 })
 export class BaloiseDesignSystemModule {
   static forRoot(): ModuleWithProviders<BaloiseDesignSystemModule> {
