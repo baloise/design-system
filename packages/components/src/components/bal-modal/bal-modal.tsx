@@ -1,5 +1,5 @@
 import { Component, Host, h, State, Method, Listen, Prop, Event, EventEmitter, Element, writeTask } from '@stencil/core'
-import { dismiss, prepareOverlay } from '../../helpers/overlays'
+import { dismiss, eventMethod, prepareOverlay } from '../../helpers/overlays'
 import { attachComponent, detachComponent } from '../../helpers/framework-delegate'
 import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady } from '../../helpers/helpers'
@@ -146,6 +146,22 @@ export class Modal implements OverlayInterface {
 
     this.didDismiss.emit({ data, role })
     return dismissed
+  }
+
+  /**
+   * Returns a promise that resolves when the modal did dismiss.
+   */
+  @Method()
+  onDidDismiss<T = any>(): Promise<OverlayEventDetail<T>> {
+    return eventMethod(this.el, 'balModalDidDismiss')
+  }
+
+  /**
+   * Returns a promise that resolves when the modal will dismiss.
+   */
+  @Method()
+  onWillDismiss<T = any>(): Promise<OverlayEventDetail<T>> {
+    return eventMethod(this.el, 'balModalWillDismiss')
   }
 
   @Listen('click')

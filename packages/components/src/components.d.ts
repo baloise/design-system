@@ -848,6 +848,14 @@ export namespace Components {
          */
         "modalWidth": number;
         /**
+          * Returns a promise that resolves when the modal did dismiss.
+         */
+        "onDidDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
+        /**
+          * Returns a promise that resolves when the modal will dismiss.
+         */
+        "onWillDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
+        /**
           * Opens the modal.
           * @deprecated
          */

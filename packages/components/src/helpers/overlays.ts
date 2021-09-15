@@ -1,5 +1,6 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { OverlayInterface } from '../components/bal-modal/bal-modal.type'
+import { addEventListener, removeEventListener } from './helpers'
 
 let lastId = 0
 
@@ -78,4 +79,21 @@ export const dismiss = async (overlay: OverlayInterface, data: any | undefined, 
 
   overlay.el.remove()
   return true
+}
+
+export const eventMethod = <T>(element: HTMLElement, eventName: string): Promise<T> => {
+  let resolve: (detail: T) => void
+  const promise = new Promise<T>(r => (resolve = r))
+  onceEvent(element, eventName, (event: any) => {
+    resolve(event.detail)
+  })
+  return promise
+}
+
+export const onceEvent = (element: HTMLElement, eventName: string, callback: (ev: Event) => void) => {
+  const handler = (ev: Event) => {
+    removeEventListener(element, eventName, handler)
+    callback(ev)
+  }
+  addEventListener(element, eventName, handler)
 }

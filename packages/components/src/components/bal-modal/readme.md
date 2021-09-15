@@ -47,6 +47,26 @@ Type: `Promise<boolean>`
 
 
 
+### `onDidDismiss<T = any>() => Promise<OverlayEventDetail<T>>`
+
+Returns a promise that resolves when the modal did dismiss.
+
+#### Returns
+
+Type: `Promise<OverlayEventDetail<T>>`
+
+
+
+### `onWillDismiss<T = any>() => Promise<OverlayEventDetail<T>>`
+
+Returns a promise that resolves when the modal will dismiss.
+
+#### Returns
+
+Type: `Promise<OverlayEventDetail<T>>`
+
+
+
 ### `open() => Promise<void>`
 
 <span style="color:red">**[DEPRECATED]**</span> <br/><br/>Opens the modal.

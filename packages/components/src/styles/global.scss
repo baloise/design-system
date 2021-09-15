@@ -3,6 +3,12 @@
 @import './elements/notices.scss';
 @import './layout/sticky-footer.scss';
 
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
 .bal-app {
   position: relative;
 }
@@ -46,9 +52,4 @@
   strong {
     font-family: $family-primary;
   }
-}
-
-body.bal-app {
-  margin: 0;
-  padding: 0;
 }

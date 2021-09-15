@@ -19,6 +19,9 @@ export class ModalPageComponent {
       component: ModalComponent,
     })
     return await modal.present()
+
+    const { data } = await modal.onWillDismiss()
+    console.log(data)
     // this.modal.open()
   }
 

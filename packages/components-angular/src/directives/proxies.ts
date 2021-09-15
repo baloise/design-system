@@ -815,7 +815,7 @@ import { OverlayEventDetail } from '@baloise/design-system-components';
 export declare interface BalModal extends Components.BalModal {}
 @ProxyCmp({
   inputs: ['component', 'componentProps', 'cssClass', 'hasBackdrop', 'isClosable', 'modalWidth'],
-  methods: ['open', 'close', 'present', 'dismiss']
+  methods: ['open', 'close', 'present', 'dismiss', 'onDidDismiss', 'onWillDismiss']
 })
 @Component({
   selector: 'bal-modal',
