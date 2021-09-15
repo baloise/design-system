@@ -3,6 +3,7 @@
 import { App } from 'vue'
 import {
 BalAccordion,
+BalApp,
 BalButton,
 BalCard,
 BalCardActions,
@@ -73,6 +74,7 @@ BalToast
 
 export const applyComponents = (app: App) => {
   app.component('BalAccordion', BalAccordion)
+  app.component('BalApp', BalApp)
   app.component('BalButton', BalButton)
   app.component('BalCard', BalCard)
   app.component('BalCardActions', BalCardActions)

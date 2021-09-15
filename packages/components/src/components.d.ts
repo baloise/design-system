@@ -57,6 +57,8 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
     }
+    interface BalApp {
+    }
     interface BalButton {
         /**
           * If `true` the bottom corners get rounded
@@ -1432,6 +1434,12 @@ declare global {
         prototype: HTMLBalAccordionElement;
         new (): HTMLBalAccordionElement;
     };
+    interface HTMLBalAppElement extends Components.BalApp, HTMLStencilElement {
+    }
+    var HTMLBalAppElement: {
+        prototype: HTMLBalAppElement;
+        new (): HTMLBalAppElement;
+    };
     interface HTMLBalButtonElement extends Components.BalButton, HTMLStencilElement {
     }
     var HTMLBalButtonElement: {
@@ -1830,6 +1838,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "bal-accordion": HTMLBalAccordionElement;
+        "bal-app": HTMLBalAppElement;
         "bal-button": HTMLBalButtonElement;
         "bal-card": HTMLBalCardElement;
         "bal-card-actions": HTMLBalCardActionsElement;
@@ -1932,6 +1941,8 @@ declare namespace LocalJSX {
           * Label of the open trigger button
          */
         "openLabel"?: string;
+    }
+    interface BalApp {
     }
     interface BalButton {
         /**
@@ -3376,6 +3387,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
+        "bal-app": BalApp;
         "bal-button": BalButton;
         "bal-card": BalCard;
         "bal-card-actions": BalCardActions;
@@ -3449,6 +3461,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "bal-accordion": LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
+            "bal-app": LocalJSX.BalApp & JSXBase.HTMLAttributes<HTMLBalAppElement>;
             "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
             "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
             "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;

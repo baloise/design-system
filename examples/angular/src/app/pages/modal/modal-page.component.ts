@@ -1,19 +1,24 @@
 import { Component, ViewChild } from '@angular/core'
 import type { Components } from '@baloise/design-system-components'
 import { BalModalService } from '@baloise/design-system-components-angular'
+import { ModalComponent } from './modal.component'
 
 @Component({
-  selector: 'app-modal',
+  selector: 'app-modal-page',
   templateUrl: './modal-page.component.html',
 })
 export class ModalPageComponent {
   // @ViewChild('modal') modal!: Components.BalModal
 
-  constructor(modal: BalModalService) {}
+  constructor(private modalService: BalModalService) {}
 
   ngOnInit(): void {}
 
-  openModal() {
+  async openModal() {
+    const modal = await this.modalService.create({
+      component: ModalComponent,
+    })
+    return await modal.present()
     // this.modal.open()
   }
 

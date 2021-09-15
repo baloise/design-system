@@ -3,6 +3,7 @@ import * as d from './proxies';
 
 export const DIRECTIVES = [
 d.BalAccordion,
+  d.BalApp,
   d.BalButton,
   d.BalCard,
   d.BalCardActions,

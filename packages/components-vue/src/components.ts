@@ -58,6 +58,17 @@ export const BalAccordion = /*@__PURE__*/ defineComponent({
   })
 })
 
+export const BalApp = /*@__PURE__*/ defineComponent({
+  name: 'bal-app',
+  props: {
+
+  },
+  emits: {
+
+  },
+  setup: defineSetup('bal-app', [], undefined)
+})
+
 export const BalButton = /*@__PURE__*/ defineComponent({
   name: 'bal-button',
   props: {
