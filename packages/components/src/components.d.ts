@@ -815,7 +815,6 @@ export namespace Components {
     interface BalModal {
         /**
           * Closes the modal.
-          * @deprecated
          */
         "close": () => Promise<void>;
         /**
@@ -832,7 +831,7 @@ export namespace Components {
         "cssClass"?: string | string[];
         "delegate"?: FrameworkDelegate;
         /**
-          * Closes the presented modal
+          * Closes the presented modal with the modal controller
          */
         "dismiss": (data?: any, role?: string | undefined) => Promise<boolean>;
         /**
@@ -857,12 +856,11 @@ export namespace Components {
         "onWillDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
         /**
           * Opens the modal.
-          * @deprecated
          */
         "open": () => Promise<void>;
         "overlayIndex": number;
         /**
-          * Presents the modal
+          * Presents the modal through the modal controller
          */
         "present": () => Promise<void>;
     }
@@ -991,6 +989,7 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        "setValue": (value: string) => Promise<void>;
         /**
           * The value of the control.
          */
@@ -1157,10 +1156,12 @@ export namespace Components {
           * Label text for the action button
          */
         "action": string;
+        "actionHandler": () => void;
         /**
           * Closes this snackbar
          */
         "close": () => Promise<void>;
+        "closeHandler": () => void;
         /**
           * Closes the snackbar after the given duration in ms
          */
@@ -1421,6 +1422,7 @@ export namespace Components {
           * Closes this toast
          */
         "close": () => Promise<void>;
+        "closeHandler": () => void;
         /**
           * Closes the toast after the given duration in ms
          */
@@ -1433,6 +1435,10 @@ export namespace Components {
           * The duration of the toast in milliseconds.
          */
         "duration": number;
+        /**
+          * Content message
+         */
+        "message": string;
     }
 }
 declare global {
@@ -3096,6 +3102,8 @@ declare namespace LocalJSX {
           * Label text for the action button
          */
         "action"?: string;
+        "actionHandler"?: () => void;
+        "closeHandler"?: () => void;
         /**
           * The theme type of the snackbar. Given by bulma our css framework.
          */
@@ -3380,6 +3388,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalToast {
+        "closeHandler"?: () => void;
         /**
           * The theme type of the toast. Given by bulma our css framework.
          */
@@ -3388,6 +3397,10 @@ declare namespace LocalJSX {
           * The duration of the toast in milliseconds.
          */
         "duration"?: number;
+        /**
+          * Content message
+         */
+        "message"?: string;
         /**
           * Emitted when toast is closed
          */

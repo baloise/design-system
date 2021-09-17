@@ -101,10 +101,6 @@ export class Checkbox {
     return Promise.resolve(this.nativeInput!)
   }
 
-  private onInput = (ev: any) => {
-    this.checked = ev.target.checked
-  }
-
   private onInputFocus = (ev: any) => {
     this.hasFocus = true
     this.balFocus.emit(ev)
@@ -154,7 +150,6 @@ export class Checkbox {
           disabled={this.disabled}
           onFocus={e => this.onInputFocus(e)}
           onBlur={e => this.onInputBlur(e)}
-          // onInput={this.onInput}
           ref={inputEl => (this.nativeInput = inputEl)}
         />
         <label
@@ -163,10 +158,6 @@ export class Checkbox {
             'is-disabled': this.disabled,
             'data-test-checkbox-label': true,
           }}
-          // htmlFor={this.inputId}
-          // onClick={(ev: MouseEvent) => {
-          //   ev.stopPropagation()
-          // }}
         >
           <bal-text>
             <slot></slot>

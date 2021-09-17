@@ -1413,14 +1413,14 @@ It will not be triggert if either hour or time input has never been set (i.e. "-
 
 export declare interface BalToast extends Components.BalToast {}
 @ProxyCmp({
-  inputs: ['color', 'duration'],
+  inputs: ['color', 'duration', 'message'],
   methods: ['closeIn', 'close']
 })
 @Component({
   selector: 'bal-toast',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color', 'duration'],
+  inputs: ['color', 'duration', 'message'],
   outputs: ['balClose']
 })
 export class BalToast {

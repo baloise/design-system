@@ -62,18 +62,20 @@ export const connectListeners = (doc: Document) => {
   }
 }
 
-export const dismiss = async (overlay: OverlayInterface, data: any | undefined, role: string | undefined): Promise<boolean> => {
+export const dismiss = async (overlay: OverlayInterface, data: any | undefined, role: string | undefined, animation: () => Promise<void>): Promise<boolean> => {
   if (!overlay.presented) {
     return false
   }
-  overlay.presented = false
 
   try {
     // Overlay contents should not be clickable during dismiss
     overlay.el.style.setProperty('pointer-events', 'none')
     overlay.willDismiss.emit({ data, role })
+    await animation()
+    overlay.presented = false
     overlay.didDismiss.emit({ data, role })
   } catch (err) {
+    overlay.presented = false
     console.error(err)
   }
 

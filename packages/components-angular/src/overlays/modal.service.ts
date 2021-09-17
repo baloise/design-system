@@ -4,7 +4,7 @@ import { AngularDelegate } from './angular-delegate'
 import { OverlayBaseController } from './overlay'
 
 @Injectable()
-export class BalModalService extends OverlayBaseController<ModalOptions, HTMLBalModalElement> {
+export class BalModalController extends OverlayBaseController<ModalOptions, HTMLBalModalElement> {
   constructor(
     private angularDelegate: AngularDelegate,
     private resolver: ComponentFactoryResolver,

@@ -2,7 +2,7 @@ import { Component, Host, h, State, Method, Listen, Prop, Event, EventEmitter, E
 import { dismiss, eventMethod, prepareOverlay } from '../../helpers/overlays'
 import { attachComponent, detachComponent } from '../../helpers/framework-delegate'
 import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail, OverlayInterface } from './bal-modal.type'
-import { deepReady } from '../../helpers/helpers'
+import { deepReady, wait } from '../../helpers/helpers'
 import { getClassMap } from '../../helpers/theme'
 
 @Component({
@@ -12,7 +12,8 @@ import { getClassMap } from '../../helpers/theme'
 })
 export class Modal implements OverlayInterface {
   private usersElement?: HTMLElement
-  private modalElement?: HTMLElement
+  private modalContentElement?: HTMLElement
+  private modalBackgroundElement?: HTMLElement
 
   @State() presented = false
 
@@ -81,16 +82,40 @@ export class Modal implements OverlayInterface {
 
   /**
    * Opens the modal.
-   * @deprecated
    */
   @Method()
   async open(): Promise<void> {
+    await deepReady(this.usersElement)
+
+    writeTask(() => {
+      if (this.modalBackgroundElement) {
+        this.modalBackgroundElement.classList.add('fadeIn')
+      }
+      if (this.modalContentElement) {
+        this.modalContentElement.classList.add('fadeInDown')
+      }
+    })
+
+    if (this.presented) {
+      return
+    }
+    this.willPresent.emit()
     this.presented = true
+    await wait(150)
+    writeTask(() => {
+      if (this.modalBackgroundElement) {
+        this.modalBackgroundElement.classList.remove('fadeIn')
+      }
+      if (this.modalContentElement) {
+        this.modalContentElement.classList.remove('fadeInDown')
+      }
+    })
+    this.el.focus()
+    this.didPresent.emit()
   }
 
   /**
    * Closes the modal.
-   * @deprecated
    */
   @Method()
   async close(): Promise<void> {
@@ -98,7 +123,7 @@ export class Modal implements OverlayInterface {
   }
 
   /**
-   * Presents the modal
+   * Presents the modal through the modal controller
    */
   @Method()
   async present(): Promise<void> {
@@ -115,36 +140,30 @@ export class Modal implements OverlayInterface {
       modal: this.el,
     }
     this.usersElement = await attachComponent(this.delegate, container, this.component, [], componentProps)
-    await deepReady(this.usersElement)
-
-    writeTask(() => {
-      if (this.modalElement) {
-        this.modalElement.classList.add('is-active')
-      }
-    })
-
-    if (this.presented) {
-      return
-    }
-    this.willPresent.emit()
-    this.presented = true
-    this.el.focus()
-    this.didPresent.emit()
+    await this.open()
   }
 
   /**
-   * Closes the presented modal
+   * Closes the presented modal with the modal controller
    */
   @Method()
   async dismiss(data?: any, role?: string): Promise<boolean> {
     this.willDismiss.emit({ data, role })
-    const dismissed = await dismiss(this, data, role)
+    const dismissed = await dismiss(this, data, role, async () => {
+      writeTask(() => {
+        if (this.modalBackgroundElement) {
+          this.modalBackgroundElement.classList.add('fadeOut')
+        }
+        if (this.modalContentElement) {
+          this.modalContentElement.classList.add('fadeOutUp')
+        }
+      })
+      await wait(140)
+    })
 
     if (dismissed) {
       await detachComponent(this.delegate, this.usersElement)
     }
-
-    this.didDismiss.emit({ data, role })
     return dismissed
   }
 
@@ -210,7 +229,6 @@ export class Modal implements OverlayInterface {
         }}
       >
         <div
-          ref={el => (this.modalElement = el)}
           class={{
             'modal': true,
             'is-clipped': true,
@@ -218,12 +236,13 @@ export class Modal implements OverlayInterface {
           }}
         >
           <div
+            ref={el => (this.modalBackgroundElement = el)}
             class={{
               'modal-background': true,
               'is-hidden': !this.hasBackdrop,
             }}
           ></div>
-          <div class="modal-content">
+          <div class="modal-content" ref={el => (this.modalContentElement = el)}>
             <div class="box no-border modal-card modal-wrapper">
               <slot></slot>
             </div>

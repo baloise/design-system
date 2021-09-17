@@ -17,8 +17,12 @@ export class ModalPageComponent {
   async openModal() {
     const modal = await this.modalService.create({
       component: ModalComponent,
+      componentProps: {
+        firstName: 'Peter',
+        lastName: 'Parker',
+      },
     })
-    return await modal.present()
+    await modal.present()
 
     const { data } = await modal.onWillDismiss()
     console.log(data)

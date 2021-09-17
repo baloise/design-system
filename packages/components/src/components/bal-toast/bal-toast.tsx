@@ -33,7 +33,7 @@ export class Toast {
   /**
    * @internal Handler for on close event
    */
-  @Prop() closeHandler: () => void = () => undefined
+  @Prop() closeHandler: () => void = () => {}
 
   /**
    * Emitted when toast is closed

@@ -1,5 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface, Listen, State } from '@stencil/core'
-import { isDescendant } from '../../helpers/helpers'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface, State } from '@stencil/core'
 
 @Component({
   tag: 'bal-radio',

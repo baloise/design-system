@@ -29,7 +29,7 @@
 
 ### `close() => Promise<void>`
 
-<span style="color:red">**[DEPRECATED]**</span> <br/><br/>Closes the modal.
+Closes the modal.
 
 #### Returns
 
@@ -39,7 +39,7 @@ Type: `Promise<void>`
 
 ### `dismiss(data?: any, role?: string | undefined) => Promise<boolean>`
 
-Closes the presented modal
+Closes the presented modal with the modal controller
 
 #### Returns
 
@@ -69,7 +69,7 @@ Type: `Promise<OverlayEventDetail<T>>`
 
 ### `open() => Promise<void>`
 
-<span style="color:red">**[DEPRECATED]**</span> <br/><br/>Opens the modal.
+Opens the modal.
 
 #### Returns
 
@@ -79,7 +79,7 @@ Type: `Promise<void>`
 
 ### `present() => Promise<void>`
 
-Presents the modal
+Presents the modal through the modal controller
 
 #### Returns
 

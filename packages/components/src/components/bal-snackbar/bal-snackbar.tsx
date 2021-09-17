@@ -49,12 +49,12 @@ export class Snackbar {
   /**
    * @internal Handler for on close event
    */
-  @Prop() closeHandler: () => void = () => undefined
+  @Prop() closeHandler: () => void = () => {}
 
   /**
    * @internal Handler for on action button click event
    */
-  @Prop() actionHandler: () => void = () => undefined
+  @Prop() actionHandler: () => void = () => {}
 
   /**
    * Emitted when snackbar is closed

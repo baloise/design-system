@@ -54,6 +54,11 @@ bal-modal-footer.modal-card-foot {
   background: transparent;
 }
 
+.modal-background,
+.modal-content {
+  animation-duration: 150ms;
+}
+
 .modal-card {
   max-width: calc(100vw - 32px);
   width: var(--bal-width, $modal-content-width);

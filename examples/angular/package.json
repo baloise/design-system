@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^12.2.6",
     "@angular/platform-browser-dynamic": "^12.2.6",
     "@angular/router": "^12.2.6",
-    "@baloise/design-system-components-angular": "^1.15.0-alpha.4",
+    "@baloise/design-system-components-angular": "^1.15.0-alpha.5",
     "@baloise/design-system-components-table": "^1.14.5",
     "@baloise/web-app-google-utils": "^1.2.0",
     "@baloise/web-app-ng-utils": "^1.3.1",
@@ -33,8 +33,8 @@
     "zone.js": "~0.11.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^12.2.5",
-    "@angular/cli": "^12.2.5",
+    "@angular-devkit/build-angular": "^12.2.6",
+    "@angular/cli": "^12.2.6",
     "@angular/compiler-cli": "^12.2.6",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.20.25",

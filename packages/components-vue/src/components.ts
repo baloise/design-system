@@ -1820,6 +1820,16 @@ export const BalSnackbar = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
+    closeHandler: {
+      type: Function as PropType<() => void>,
+      default: () => {},
+      required: false,
+    },
+    actionHandler: {
+      type: Function as PropType<() => void>,
+      default: () => {},
+      required: false,
+    },
   },
   emits: {
     balClose: (value: string) => true,
@@ -2185,6 +2195,16 @@ export const BalToast = /*@__PURE__*/ defineComponent({
     duration: {
       type: Number,
       default: 0,
+      required: false,
+    },
+    message: {
+      type: String,
+      default: '',
+      required: false,
+    },
+    closeHandler: {
+      type: Function as PropType<() => void>,
+      default: () => {},
       required: false,
     },
   },
