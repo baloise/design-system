@@ -31,11 +31,14 @@ export class BalAccordion {
 
 
 export declare interface BalApp extends Components.BalApp {}
-
+@ProxyCmp({
+  inputs: ['background']
+})
 @Component({
   selector: 'bal-app',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['background']
 })
 export class BalApp {
   protected el: HTMLElement;

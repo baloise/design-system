@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core'
+import { Component, Host, h, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-app',
@@ -6,9 +6,21 @@ import { Component, Host, h } from '@stencil/core'
   shadow: false,
 })
 export class App {
+  /**
+   * If `true` it adds a light background to the app
+   */
+  @Prop() background = false
+
   render() {
     return (
-      <Host class="bal-app">
+      <Host
+        role="application"
+        class={{
+          'bal-app': true,
+          'has-sticky-footer': true,
+          'bal-app-background': this.background,
+        }}
+      >
         <slot></slot>
       </Host>
     )

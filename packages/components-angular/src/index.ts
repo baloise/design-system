@@ -10,7 +10,7 @@ export * as BalValidators from './validators'
 // SERVICES
 export { BalToastService } from './bal-toast.service'
 export { BalSnackbarService } from './bal-snackbar.service'
-export { BalModalController as BalModalService } from './overlays/modal.service'
+export { BalModalService } from './overlays/modal.service'
 export { AngularDelegate } from './overlays/angular-delegate'
 
 // PACKAGE MODULE

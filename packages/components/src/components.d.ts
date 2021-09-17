@@ -58,6 +58,10 @@ export namespace Components {
         "toggle": () => Promise<void>;
     }
     interface BalApp {
+        /**
+          * If `true` it adds a light background to the app
+         */
+        "background": boolean;
     }
     interface BalButton {
         /**
@@ -1957,6 +1961,10 @@ declare namespace LocalJSX {
         "openLabel"?: string;
     }
     interface BalApp {
+        /**
+          * If `true` it adds a light background to the app
+         */
+        "background"?: boolean;
     }
     interface BalButton {
         /**

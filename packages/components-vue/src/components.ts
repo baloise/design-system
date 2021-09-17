@@ -61,7 +61,11 @@ export const BalAccordion = /*@__PURE__*/ defineComponent({
 export const BalApp = /*@__PURE__*/ defineComponent({
   name: 'bal-app',
   props: {
-
+    background: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   emits: {
 
