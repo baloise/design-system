@@ -1,4 +1,5 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Watch, ComponentInterface } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Watch, ComponentInterface, Method } from '@stencil/core'
+import { findItemLabel } from '../../helpers/helpers'
 
 @Component({
   tag: 'bal-radio-group',
@@ -67,23 +68,30 @@ export class RadioGroup implements ComponentInterface {
     return Array.from(this.el.querySelectorAll('bal-radio'))
   }
 
+  /** @internal */
+  @Method()
+  async setValue(value: string) {
+    this.value = value
+  }
+
   private sync() {
-    this.radios.forEach((item: any) => {
-      item.interface = this.interface
-      item.inverted = this.inverted
-      if (item.value === this.value) {
-        item.checked = true
-      } else {
-        item.checked = false
-      }
+    this.radios.forEach((radio: HTMLBalRadioElement) => {
+      radio.interface = this.interface
+      radio.inverted = this.inverted
+      radio.checked = radio.value === this.value
     })
   }
 
   private onClick = (ev: Event) => {
+    const element = ev.target as HTMLAnchorElement
+    if (element.href) {
+      return
+    }
+    ev.preventDefault()
+
     const selectedRadio = ev.target && (ev.target as HTMLElement).closest('bal-radio')
     if (selectedRadio) {
       if (selectedRadio.disabled) {
-        ev.preventDefault()
         ev.stopPropagation()
         return
       }
@@ -96,8 +104,9 @@ export class RadioGroup implements ComponentInterface {
   }
 
   render() {
+    const label = findItemLabel(this.el)
     return (
-      <Host role="radiogroup" onClick={this.onClick} class={`bal-${this.interface}`}>
+      <Host role="radiogroup" aria-labelledby={label?.id} onClick={this.onClick} class={`bal-${this.interface}`}>
         <slot></slot>
       </Host>
     )
