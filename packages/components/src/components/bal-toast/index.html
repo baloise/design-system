@@ -20,20 +20,33 @@
         <bal-button id="toast-default" color="success" data-test-id="toast">Show success Toast</bal-button>
         <bal-button id="toast-warning" color="warning" data-test-id="toast-warning">Show warning Toast</bal-button>
         <bal-button id="toast-danger" color="danger">Show error Toast</bal-button>
+        <br />
+        <br />
+        <bal-button id="toast-clear-all" color="info" outlined>Clear all toasts</bal-button>
       </section>
       <script>
         document.getElementById('toast-default').onclick = function () {
           balToastController.create({
             message: 'Hi I am a default Toast! Hi I am a default Toast!',
-            duration: 1000,
             color: 'success',
+            duration: 1000,
           })
         }
         document.getElementById('toast-warning').onclick = function () {
-          balToastController.create({ message: 'Warning!', color: 'warning' })
+          const toast = balToastController.create({ message: 'Warning!', color: 'warning' })
+          setTimeout(() => toast.close, 2000)
         }
         document.getElementById('toast-danger').onclick = function () {
-          balToastController.create({ message: 'Danger zone!', color: 'danger' })
+          balToastController.create({
+            message: 'Danger zone!',
+            color: 'danger',
+            closeHandler: function () {
+              alert('Toast closed')
+            },
+          })
+        }
+        document.getElementById('toast-clear-all').onclick = function () {
+          balToastController.clearAll()
         }
       </script>
 
