@@ -115,10 +115,24 @@ export class Checkbox {
     this.balBlur.emit(ev)
   }
 
+  private onClick = (ev: any) => {
+    const element = ev.target as HTMLAnchorElement
+    if (element.href) {
+      return
+    }
+    ev.preventDefault()
+
+    this.checked = !this.checked
+  }
+
   render() {
     return (
       <Host
         aria-disabled={this.disabled ? 'true' : null}
+        aria-hidden={this.disabled ? 'true' : null}
+        aria-checked={`${this.checked}`}
+        role="checkbox"
+        onClick={this.onClick}
         class={{
           'is-inverted': this.inverted,
           'is-disabled': this.disabled,
@@ -133,18 +147,14 @@ export class Checkbox {
             'data-test-checkbox-input': true,
           }}
           type="checkbox"
-          role="checkbox"
           id={this.inputId}
-          name={this.name}
-          value={this.value}
           checked={this.checked}
           tabindex={this.balTabindex}
-          aria-checked={this.checked ? 'true' : 'false'}
+          aria-checked={`${this.checked}`}
           disabled={this.disabled}
-          aria-disabled={this.disabled ? 'true' : 'false'}
           onFocus={e => this.onInputFocus(e)}
           onBlur={e => this.onInputBlur(e)}
-          onInput={this.onInput}
+          // onInput={this.onInput}
           ref={inputEl => (this.nativeInput = inputEl)}
         />
         <label
@@ -153,10 +163,10 @@ export class Checkbox {
             'is-disabled': this.disabled,
             'data-test-checkbox-label': true,
           }}
-          htmlFor={this.inputId}
-          onClick={(ev: MouseEvent) => {
-            ev.stopPropagation()
-          }}
+          // htmlFor={this.inputId}
+          // onClick={(ev: MouseEvent) => {
+          //   ev.stopPropagation()
+          // }}
         >
           <bal-text>
             <slot></slot>
