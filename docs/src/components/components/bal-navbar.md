@@ -26,12 +26,12 @@ Please only use this component for internal appilcations.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-navbar-72></docs-demo-bal-navbar-72></ClientOnly>
+<ClientOnly><docs-demo-bal-navbar-73></docs-demo-bal-navbar-73></ClientOnly>
 
 
 ### Light
 
-<ClientOnly><docs-demo-bal-navbar-73></docs-demo-bal-navbar-73></ClientOnly>
+<ClientOnly><docs-demo-bal-navbar-74></docs-demo-bal-navbar-74></ClientOnly>
 
 
 

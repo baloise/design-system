@@ -18,7 +18,7 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-file-upload-48></docs-demo-bal-file-upload-48></ClientOnly>
+<ClientOnly><docs-demo-bal-file-upload-49></docs-demo-bal-file-upload-49></ClientOnly>
 
 
 

@@ -18,17 +18,17 @@ The slider component lets users select from a range of values by moving the slid
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-slider-92></docs-demo-bal-slider-92></ClientOnly>
+<ClientOnly><docs-demo-bal-slider-93></docs-demo-bal-slider-93></ClientOnly>
 
 
 ### With Steps
 
-<ClientOnly><docs-demo-bal-slider-93></docs-demo-bal-slider-93></ClientOnly>
+<ClientOnly><docs-demo-bal-slider-94></docs-demo-bal-slider-94></ClientOnly>
 
 
 ### With Field
 
-<ClientOnly><docs-demo-bal-slider-94></docs-demo-bal-slider-94></ClientOnly>
+<ClientOnly><docs-demo-bal-slider-95></docs-demo-bal-slider-95></ClientOnly>
 
 
 

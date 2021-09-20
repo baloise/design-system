@@ -5,9 +5,21 @@ sidebarDepth: 0
 # App
 
 
+<!-- START: human documentation top -->
 
+App is a container element for an Baloise Design System application. There should only be one `<bal-app>` element per project. An app can have many Design System components. The overlay components get appended to the `<bal-app>` when they are presented.
+
+<!-- END: human documentation top -->
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
+
+
+## Examples
+
+### Basic
+
+<ClientOnly><docs-demo-bal-app-5></docs-demo-bal-app-5></ClientOnly>
+
 
 
 ## Code

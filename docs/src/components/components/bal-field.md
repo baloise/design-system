@@ -23,29 +23,29 @@ A field wraps a form field like input. It provides a clear style structure of ea
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-field-43></docs-demo-bal-field-43></ClientOnly>
+<ClientOnly><docs-demo-bal-field-44></docs-demo-bal-field-44></ClientOnly>
 
 
 ### Inverted
 
-<ClientOnly><docs-demo-bal-field-44></docs-demo-bal-field-44></ClientOnly>
+<ClientOnly><docs-demo-bal-field-45></docs-demo-bal-field-45></ClientOnly>
 
 
 ### Addons
 
-<ClientOnly><docs-demo-bal-field-45></docs-demo-bal-field-45></ClientOnly>
+<ClientOnly><docs-demo-bal-field-46></docs-demo-bal-field-46></ClientOnly>
 
 
 ### Form
 
-<ClientOnly><docs-demo-bal-field-46></docs-demo-bal-field-46></ClientOnly>
+<ClientOnly><docs-demo-bal-field-47></docs-demo-bal-field-47></ClientOnly>
 
 
 ### Validation for all fields
 
 This is not a recommanded validation style. Only use this style if you do not have the possibility to use live validation.
 
-<ClientOnly><docs-demo-bal-field-47></docs-demo-bal-field-47></ClientOnly>
+<ClientOnly><docs-demo-bal-field-48></docs-demo-bal-field-48></ClientOnly>
 
 
 

@@ -25,12 +25,12 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-input-60></docs-demo-bal-input-60></ClientOnly>
+<ClientOnly><docs-demo-bal-input-61></docs-demo-bal-input-61></ClientOnly>
 
 
 ### Inverted
 
-<ClientOnly><docs-demo-bal-input-61></docs-demo-bal-input-61></ClientOnly>
+<ClientOnly><docs-demo-bal-input-62></docs-demo-bal-input-62></ClientOnly>
 
 
 ### Number Input
@@ -39,17 +39,17 @@ With number-input property your can only enter valid numbers, if you start with 
 
 With decimal property you can set how many decimal places you want and number will be formatted accordingly.
 
-<ClientOnly><docs-demo-bal-input-62></docs-demo-bal-input-62></ClientOnly>
+<ClientOnly><docs-demo-bal-input-63></docs-demo-bal-input-63></ClientOnly>
 
 
 ### Suffix
 
-<ClientOnly><docs-demo-bal-input-63></docs-demo-bal-input-63></ClientOnly>
+<ClientOnly><docs-demo-bal-input-64></docs-demo-bal-input-64></ClientOnly>
 
 
 ### HTML input
 
-<ClientOnly><docs-demo-bal-input-64></docs-demo-bal-input-64></ClientOnly>
+<ClientOnly><docs-demo-bal-input-65></docs-demo-bal-input-65></ClientOnly>
 
 
 
