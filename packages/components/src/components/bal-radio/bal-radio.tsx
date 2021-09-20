@@ -1,4 +1,5 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface, State } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface, State, Listen } from '@stencil/core'
+import { isDescendant } from '../../helpers/helpers'
 
 @Component({
   tag: 'bal-radio',
@@ -65,15 +66,15 @@ export class Radio implements ComponentInterface {
    */
   @Event() balBlur!: EventEmitter<FocusEvent>
 
-  // @Listen('click', { capture: true, target: 'document' })
-  // listenOnClick(ev: UIEvent) {
-  //   console.warn('klasjdf')
-  //   if (this.disabled && ev.target && (ev.target === this.el || isDescendant(this.el, ev.target as HTMLElement))) {
-  //     debugger
-  //     ev.preventDefault()
-  //     ev.stopPropagation()
-  //   }
-  // }
+  @Listen('click', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    console.warn('klasjdf')
+    if (this.disabled && ev.target && (ev.target === this.el || isDescendant(this.el, ev.target as HTMLElement))) {
+      debugger
+      ev.preventDefault()
+      ev.stopPropagation()
+    }
+  }
 
   /**
    * Sets the focus on the input element.
@@ -128,6 +129,7 @@ export class Radio implements ComponentInterface {
         aria-checked={`${this.checked}`}
         aria-disabled={this.disabled ? 'true' : null}
         aria-hidden={this.disabled ? 'true' : null}
+        aria-focused={this.hasFocus ? 'true' : null}
         class={{
           'bal-radio': this.interface === 'radio',
           'bal-select-button': this.interface === 'select-button',
@@ -149,6 +151,9 @@ export class Radio implements ComponentInterface {
           value={this.value}
           disabled={this.disabled}
           checked={this.checked}
+          onFocus={e => this.onInputFocus(e)}
+          onBlur={e => this.onInputBlur(e)}
+          ref={inputEl => (this.inputEl = inputEl)}
         />
         <label
           class={{

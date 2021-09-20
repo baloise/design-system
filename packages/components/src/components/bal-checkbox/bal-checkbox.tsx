@@ -127,6 +127,7 @@ export class Checkbox {
         aria-disabled={this.disabled ? 'true' : null}
         aria-hidden={this.disabled ? 'true' : null}
         aria-checked={`${this.checked}`}
+        aria-focused={this.hasFocus ? 'true' : null}
         role="checkbox"
         onClick={this.onClick}
         class={{

@@ -10,6 +10,7 @@ import {
   isTabs,
   hasClass,
   isSlider,
+  isLabel,
 } from '../helpers'
 
 const shouldAndAndCommand = (
@@ -32,25 +33,38 @@ const shouldAndAndCommand = (
     }
   }
 
-  if (isCheckbox(element) || isRadio(element)) {
+  if (
+    isCheckbox(element) ||
+    isRadio(element) ||
+    hasClass(element, 'data-test-radio-label') ||
+    hasClass(element, 'data-test-checkbox-label')
+  ) {
+    if (!isLabel(element)) {
+      element = element.find('label')
+    }
+
     if ('be.checked' === condition) {
-      return originalFn(element, 'have.attr', 'checked', 'checked', options)
+      return originalFn(element, 'have.attr', 'aria-checked', 'true', options)
     }
+
     if ('not.be.checked' === condition) {
-      return originalFn(element, 'not.have.attr', 'checked', options)
+      return originalFn(element, 'have.attr', 'aria-checked', 'false', options)
     }
+
     if ('be.disabled' === condition) {
-      return originalFn(element, 'have.class', 'is-disabled', options)
+      return originalFn(element, 'have.attr', 'aria-disabled', 'true', options)
     }
+
     if ('not.be.disabled' === condition) {
-      return originalFn(element, 'not.have.class', 'is-disabled', options)
+      return originalFn(element, 'have.attr', 'aria-disabled', 'false', options)
     }
 
     if ('be.focused' === condition) {
-      return originalFn(element, 'have.class', 'is-focused', options)
+      return originalFn(element, 'have.attr', 'aria-focused', 'true', options)
     }
+
     if ('not.be.focused' === condition) {
-      return originalFn(element, 'not.have.class', 'is-focused', options)
+      return originalFn(element, 'have.attr', 'aria-focused', 'false', options)
     }
   }
 

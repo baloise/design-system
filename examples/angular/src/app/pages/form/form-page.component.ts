@@ -28,7 +28,7 @@ export class FormPageComponent {
     postalCode: new FormControl(null, [BalValidators.isRequired()]),
     city: new FormControl(null, [BalValidators.isRequired()]),
     birthdate: new FormControl(newDateString(now()), [BalValidators.isRequired()]),
-    canton: new FormControl(['AG'], [BalValidators.isRequired()]),
+    canton: new FormControl('AG', [BalValidators.isRequired()]),
     email: new FormControl(null, [BalValidators.isRequired(), BalValidators.isMinLength(4), BalValidators.isEmail()]),
     checkbox: new FormControl(true, [BalValidators.isRequiredTrue()]),
     comment: new FormControl(null, [BalValidators.isRequired()]),

@@ -4,7 +4,6 @@ sidebarDepth: 0
 
 # Navbar
 
-
 <!-- START: human documentation top -->
 
 A responsive horizontal navbar that can support images, links, buttons, and dropdowns.
@@ -13,10 +12,13 @@ A responsive horizontal navbar that can support images, links, buttons, and drop
 Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/ueber-uns/wer-wir-sind/bilder-logos.html)
 :::
 
+::: danger
+Please only use this component for internal appilcations.
+:::
+
 <!-- END: human documentation top -->
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
-
 
 ## Examples
 
@@ -24,19 +26,13 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 <ClientOnly><docs-demo-bal-navbar-72></docs-demo-bal-navbar-72></ClientOnly>
 
-
 ### Light
 
 <ClientOnly><docs-demo-bal-navbar-73></docs-demo-bal-navbar-73></ClientOnly>
 
-
-
 ## Code
 
-
-
 ### Properties
-
 
 | Attribute     | Description                                  | Type                 | Default            |
 | :------------ | :------------------------------------------- | :------------------- | :----------------- |
@@ -56,14 +52,11 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 <!-- END: human documentation usage -->
 
-
-
 ## Edit this page on Github
 
-* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-navbar.md)
-* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-navbar)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-navbar.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-navbar)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
-
