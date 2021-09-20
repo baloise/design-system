@@ -4,7 +4,6 @@ sidebarDepth: 0
 
 # Modal
 
-
 <!-- START: human documentation top -->
 
 A Modal is a dialog that appears on top of the app's body, and must be dismissed by
@@ -14,19 +13,15 @@ the app before interaction can resume.
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-
 ## Examples
 
 ### Basic
 
 <ClientOnly><docs-demo-bal-modal-70></docs-demo-bal-modal-70></ClientOnly>
 
-
 ### HTML solution with open & close
 
 <ClientOnly><docs-demo-bal-modal-71></docs-demo-bal-modal-71></ClientOnly>
-
-
 
 ## Code
 
@@ -48,7 +43,6 @@ Have a look at the [Vue usage documentation](/components/getting-started/vue/usa
 
 ### Properties
 
-
 | Attribute        | Description                                                                                                      | Type                                                | Default           |
 | :--------------- | :--------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------- | :---------------- |
 | **component**    | The component to display inside of the modal.                                                                    | <code>Function , HTMLElement , null , string</code> |                   |
@@ -60,7 +54,6 @@ Have a look at the [Vue usage documentation](/components/getting-started/vue/usa
 
 ### Events
 
-
 | Event                   | Description                             | Type                                         |
 | :---------------------- | :-------------------------------------- | :------------------------------------------- |
 | **balModalDidDismiss**  | Emitted after the modal has dismissed.  | <code>OverlayEventDetail&#60;any&#62;</code> |
@@ -70,11 +63,10 @@ Have a look at the [Vue usage documentation](/components/getting-started/vue/usa
 
 ### Methods
 
-
 | Method            | Description                                                  | Signature                                                                                           |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------------------------------------------------------------- |
 | **close**         | Closes the modal.                                            | <code>close() =&#62; Promise&#60;void&#62;</code>                                                   |
-| **dismiss**       | Closes the presented modal with the modal controller         | <code>dismiss(data?: any, role?: string  &#124;  undefined) =&#62; Promise&#60;boolean&#62;</code>  |
+| **dismiss**       | Closes the presented modal with the modal controller         | <code>dismiss(data?: any, role?: string &#124; undefined) =&#62; Promise&#60;boolean&#62;</code>    |
 | **onDidDismiss**  | Returns a promise that resolves when the modal did dismiss.  | <code>onDidDismiss&#60;T = any&#62;() =&#62; Promise&#60;OverlayEventDetail&#60;T&#62;&#62;</code>  |
 | **onWillDismiss** | Returns a promise that resolves when the modal will dismiss. | <code>onWillDismiss&#60;T = any&#62;() =&#62; Promise&#60;OverlayEventDetail&#60;T&#62;&#62;</code> |
 | **open**          | Opens the modal.                                             | <code>open() =&#62; Promise&#60;void&#62;</code>                                                    |
@@ -96,11 +88,8 @@ describe('Modal', () => {
   const openModalButton = dataTestSelector('my-open-modal')
   const closeModalButton = dataTestSelector('my-close-modal')
   it('should ...', () => {
-    cy.get(modal).balModalIsClosed()
     cy.get(openModalButton).click()
     cy.get(modal).balModalIsOpen()
-    cy.get(closeModalButton).click()
-    cy.get(modal).balModalIsClosed()
     cy.get(modal)
       .find('bal-modal-header')
       .contains('Modal Title')
@@ -125,18 +114,15 @@ A list of the custom commands for this specific component.
 
 <!-- END: human documentation usage -->
 
-
-
 ## Edit this page on Github
 
-* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-modal.md)
-* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-modal)
-* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
+- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-modal.md)
+- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-modal)
+- [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
-
 
 <ClientOnly>
   <docs-component-script tag="balModal"></docs-component-script>
