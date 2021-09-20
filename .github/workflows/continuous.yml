@@ -1,4 +1,4 @@
-name: Continous
+name: Continuous
 
 on: [push]
 
