@@ -833,6 +833,7 @@ export namespace Components {
           * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
          */
         "cssClass"?: string | string[];
+        "dataTestId"?: string;
         "delegate"?: FrameworkDelegate;
         /**
           * Closes the presented modal with the modal controller
@@ -2768,6 +2769,7 @@ declare namespace LocalJSX {
           * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
          */
         "cssClass"?: string | string[];
+        "dataTestId"?: string;
         "delegate"?: FrameworkDelegate;
         /**
           * If `true`, a backdrop will be displayed behind the modal.

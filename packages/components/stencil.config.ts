@@ -62,6 +62,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
 export const config: Config = {
   namespace: 'design-system-components',
   globalStyle: 'src/styles/global.scss',
+  globalScript: 'src/global.ts',
   plugins: [
     postcss({
       plugins: [autoprefixer()],

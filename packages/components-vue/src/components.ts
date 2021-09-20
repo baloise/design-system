@@ -1290,6 +1290,11 @@ export const BalModal = /*@__PURE__*/ defineComponent({
       default: undefined,
       required: false,
     },
+    dataTestId: {
+      type: String,
+      default: undefined,
+      required: false,
+    },
     modalWidth: {
       type: Number,
       default: 640,
