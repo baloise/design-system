@@ -1,34 +1,24 @@
 import resolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import typescript from '@rollup/plugin-typescript'
+import sourcemaps from 'rollup-plugin-sourcemaps'
 
 export default {
-  input: 'src/index.ts',
+  input: 'dist-transpiled/index',
   output: [
+    {
+      dir: 'dist/',
+      entryFileNames: '[name].esm.js',
+      chunkFileNames: '[name]-[hash].esm.js',
+      format: 'es',
+      sourcemap: true,
+    },
     {
       dir: 'dist/',
       format: 'commonjs',
       preferConst: true,
       sourcemap: true,
     },
-    {
-      dir: 'dist/',
-      entryFileNames: '[name].esm.js',
-      chunkFileNames: '[name]-[hash].esm.js',
-      format: 'esm',
-      preserveModules: false,
-      sourcemap: true,
-    },
   ],
-  plugins: [
-    resolve(),
-    commonjs(),
-    typescript({
-      tsconfig: './tsconfig.json',
-      declaration: true,
-      declarationDir: 'dist',
-    }),
-  ],
+  plugins: [resolve(), sourcemaps()],
   external: [
     '@baloise/design-system-components',
     '@baloise/design-system-components/loader',
