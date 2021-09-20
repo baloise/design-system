@@ -68,7 +68,6 @@ export class Radio implements ComponentInterface {
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
-    console.warn('klasjdf')
     if (this.disabled && ev.target && (ev.target === this.el || isDescendant(this.el, ev.target as HTMLElement))) {
       debugger
       ev.preventDefault()

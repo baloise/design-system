@@ -219,7 +219,7 @@ export class Modal implements OverlayInterface {
     return (
       <Host
         aria-modal="true"
-        aria-presented={this.presented}
+        aria-presented={this.presented ? 'true' : null}
         tabindex="-1"
         class={{
           ...getClassMap(this.cssClass),

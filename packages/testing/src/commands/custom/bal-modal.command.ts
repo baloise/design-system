@@ -6,7 +6,7 @@ Cypress.Commands.add(
     prevSubject: true,
   },
   subject => {
-    return cy.wrap(subject).find(selectors.modal.main).should('have.class', 'is-active')
+    return cy.wrap(subject).should('have.attr', 'aria-presented', 'true')
   },
 )
 
@@ -16,6 +16,11 @@ Cypress.Commands.add(
     prevSubject: true,
   },
   subject => {
-    return cy.wrap(subject).find(selectors.modal.main).should('not.have.class', 'is-active')
+    return cy.wrap(subject).then($modal => {
+      console.log($modal)
+      return cy.wrap($modal).should('not.exist')
+    })
+
+    // .should('not.have.attr', 'aria-presented')
   },
 )

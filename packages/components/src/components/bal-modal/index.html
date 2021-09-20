@@ -35,7 +35,7 @@
               <bal-modal-footer>
                 <bal-modal-actions>
                   <bal-button color="primary" modal-close>Okay</bal-button>
-                  <bal-button color="link" modal-close>Cancel</bal-button>
+                  <bal-button color="link" modal-close data-test-id="open-modal-close">Cancel</bal-button>
                 </bal-modal-actions>
               </bal-modal-footer>`
             }
@@ -46,6 +46,7 @@
           const modalElement = document.createElement('bal-modal')
           modalElement.component = 'modal-page'
           modalElement.cssClass = 'my-custom-class'
+          modalElement.setAttribute('data-test-id', 'modal')
 
           // Define the with of the modal.
           modalElement.modalWidth = 640 // default
@@ -71,7 +72,7 @@
       <h2 class="title is-size-2">HTML solution with open & close</h2>
 
       <section>
-        <bal-modal id="bal-modal-example-width" data-test-id="modal">
+        <bal-modal id="bal-modal-example-width">
           <bal-modal-header>Modal Title</bal-modal-header>
           <bal-modal-body>
             <p>
