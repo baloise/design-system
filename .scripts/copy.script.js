@@ -8,6 +8,7 @@ async function main() {
   await copyReadme('components-angular')
   await copyReadme('components-table')
   await copyReadme('components-vue')
+  await copyReadme('components-react')
   await copyReadme('icons')
   await copyReadme('fonts')
   await copyReadme('testing')
