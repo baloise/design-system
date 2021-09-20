@@ -1,0 +1,16 @@
+apiVersion: v2
+applicationName: baloise-design-system-docs
+previewConfig:
+  host: ${PREVIEW_NAMESPACE}.apps.baloise.dev
+  target:
+    organisation: baloise-incubator
+    repository: okd4-example-apps
+  replace:
+    Chart.yaml:
+      - path: name
+        value: ${PREVIEW_NAMESPACE}
+    values.yaml:
+      - path: baloise-design-system-docs.image.tag
+        value: ${GIT_HASH}
+      - path: baloise-design-system-docs.network.http.ingress.host
+        value: ${PREVIEW_HOST}
