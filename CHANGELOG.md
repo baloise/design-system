@@ -3,13 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.15.0-alpha.12](https://github.com/baloise/design-system/compare/v1.15.0-alpha.11...v1.15.0-alpha.12) (2021-09-20)
+# [1.15.0](https://github.com/baloise/design-system/compare/v1.14.5...v1.15.0) (2021-09-20)
 
-**Note:** Version bump only for package root
+### Bug Fixes
 
+- **radio, checkbox:** improve reaction time
 
+### Features
 
-
+- **modal:** add modal service for angular
+- **app:** introduce app component
+- **toast, snackbar:** improve services and add duplication support
+- **react:** add react proxy library
 
 ## [1.14.5](https://github.com/baloise/design-system/compare/v1.14.4...v1.14.5) (2021-09-13)
 
