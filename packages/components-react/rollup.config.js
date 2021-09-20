@@ -16,7 +16,7 @@ export default {
       entryFileNames: '[name].esm.js',
       chunkFileNames: '[name]-[hash].esm.js',
       format: 'esm',
-      preserveModules: true,
+      preserveModules: false,
       sourcemap: true,
     },
   ],
