@@ -18,6 +18,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -46,5 +47,9 @@
   "devDependencies": {
     "copyfiles": "^2.4.1",
     "sass": "^1.41.1"
+  },
+  "resolutions": {
+    "glob-parent": ">=5.1.2",
+    "browserslist": ">=4.16.5"
   }
 }
