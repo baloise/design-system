@@ -18,27 +18,27 @@ Tabs are used to structure the information in sub section on the same page.
 
 ### Main Navigation
 
-<ClientOnly><docs-demo-bal-tabs-103></docs-demo-bal-tabs-103></ClientOnly>
+<ClientOnly><docs-demo-bal-tabs-102></docs-demo-bal-tabs-102></ClientOnly>
 
 
 ### Sub Navigation
 
-<ClientOnly><docs-demo-bal-tabs-104></docs-demo-bal-tabs-104></ClientOnly>
+<ClientOnly><docs-demo-bal-tabs-103></docs-demo-bal-tabs-103></ClientOnly>
 
 
 ### Expanded
 
-<ClientOnly><docs-demo-bal-tabs-105></docs-demo-bal-tabs-105></ClientOnly>
+<ClientOnly><docs-demo-bal-tabs-104></docs-demo-bal-tabs-104></ClientOnly>
 
 
 ### Steps
 
-<ClientOnly><docs-demo-bal-tabs-106></docs-demo-bal-tabs-106></ClientOnly>
+<ClientOnly><docs-demo-bal-tabs-105></docs-demo-bal-tabs-105></ClientOnly>
 
 
 ### O-Steps
 
-<ClientOnly><docs-demo-bal-tabs-107></docs-demo-bal-tabs-107></ClientOnly>
+<ClientOnly><docs-demo-bal-tabs-106></docs-demo-bal-tabs-106></ClientOnly>
 
 
 

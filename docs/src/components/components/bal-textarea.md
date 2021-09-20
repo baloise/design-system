@@ -4,6 +4,7 @@ sidebarDepth: 0
 
 # Textarea <Badge text="Two-way binding"/>
 
+
 <!-- START: human documentation top -->
 
 A textarea allows a user to write and edit large texts.
@@ -17,15 +18,21 @@ A textarea allows a user to write and edit large texts.
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
+
 ## Examples
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-textarea-116></docs-demo-bal-textarea-116></ClientOnly>
+<ClientOnly><docs-demo-bal-textarea-115></docs-demo-bal-textarea-115></ClientOnly>
+
+
 
 ## Code
 
+
+
 ### Properties
+
 
 | Attribute          | Description                                                                                                                                                                      | Type                                                                                                  | Default                   |
 | :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------- | :------------------------ |
@@ -50,6 +57,7 @@ A textarea allows a user to write and edit large texts.
 
 ### Events
 
+
 | Event           | Description                                | Type                       |
 | :-------------- | :----------------------------------------- | :------------------------- |
 | **balBlur**     | Emitted when a keyboard input occurred.    | <code>FocusEvent</code>    |
@@ -61,11 +69,12 @@ A textarea allows a user to write and edit large texts.
 
 ### Methods
 
-| Method              | Description                                                                                  | Signature                                                                  |
-| :------------------ | :------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------- |
-| **getInputElement** | Returns the native `<textarea>` element used under the hood.                                 | <code>getInputElement() =&#62; Promise&#60;HTMLTextAreaElement&#62;</code> |
-| **setFocus**        | Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global |
-| `textarea.focus()`. | <code>setFocus() =&#62; Promise&#60;void&#62;</code>                                         |
+
+| Method              | Description                                                                                                      | Signature                                                                  |
+| :------------------ | :--------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------- |
+| **getInputElement** | Returns the native `<textarea>` element used under the hood.                                                     | <code>getInputElement() =&#62; Promise&#60;HTMLTextAreaElement&#62;</code> |
+| **setFocus**        | Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global
+`textarea.focus()`. | <code>setFocus() =&#62; Promise&#60;void&#62;</code>                       |
 
 ## Testing
 
@@ -79,14 +88,17 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 <!-- END: human documentation usage -->
 
+
+
 ## Edit this page on Github
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-textarea.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-textarea)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-textarea.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-textarea)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balTextarea"></docs-component-script>

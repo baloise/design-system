@@ -4,6 +4,7 @@ sidebarDepth: 0
 
 # Field
 
+
 <!-- START: human documentation top -->
 
 A field wraps a form field like input. It provides a clear style structure of each control.
@@ -17,23 +18,28 @@ A field wraps a form field like input. It provides a clear style structure of ea
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
+
 ## Examples
 
 ### Basic
 
 <ClientOnly><docs-demo-bal-field-43></docs-demo-bal-field-43></ClientOnly>
 
+
 ### Inverted
 
 <ClientOnly><docs-demo-bal-field-44></docs-demo-bal-field-44></ClientOnly>
+
 
 ### Addons
 
 <ClientOnly><docs-demo-bal-field-45></docs-demo-bal-field-45></ClientOnly>
 
+
 ### Form
 
 <ClientOnly><docs-demo-bal-field-46></docs-demo-bal-field-46></ClientOnly>
+
 
 ### Validation for all fields
 
@@ -41,9 +47,14 @@ This is not a recommanded validation style. Only use this style if you do not ha
 
 <ClientOnly><docs-demo-bal-field-47></docs-demo-bal-field-47></ClientOnly>
 
+
+
 ## Code
 
+
+
 ### Properties
+
 
 | Attribute    | Description                                                                                 | Type                 | Default            |
 | :----------- | :------------------------------------------------------------------------------------------ | :------------------- | :----------------- |
@@ -65,11 +76,14 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 <!-- END: human documentation usage -->
 
+
+
 ## Edit this page on Github
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-field.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-field)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-field.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-field)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+

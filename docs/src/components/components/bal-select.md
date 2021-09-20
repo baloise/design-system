@@ -4,6 +4,9 @@ sidebarDepth: 0
 
 # Select <Badge text="Two-way binding"/>
 
+
+
+
 <!-- START: human documentation top -->
 
 A select is a collection of options, where the user can select a single one or multiple.
@@ -28,31 +31,41 @@ export interface BalOptionValue<T> {
 }
 ```
 
+
 ## Examples
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-select-87></docs-demo-bal-select-87></ClientOnly>
+<ClientOnly><docs-demo-bal-select-86></docs-demo-bal-select-86></ClientOnly>
+
 
 #### Typeahead
 
-<ClientOnly><docs-demo-bal-select-88></docs-demo-bal-select-88></ClientOnly>
+<ClientOnly><docs-demo-bal-select-87></docs-demo-bal-select-87></ClientOnly>
+
 
 #### Multi-Select
 
-<ClientOnly><docs-demo-bal-select-89></docs-demo-bal-select-89></ClientOnly>
+<ClientOnly><docs-demo-bal-select-88></docs-demo-bal-select-88></ClientOnly>
+
 
 #### Multi-Select with typeahead
 
-<ClientOnly><docs-demo-bal-select-90></docs-demo-bal-select-90></ClientOnly>
+<ClientOnly><docs-demo-bal-select-89></docs-demo-bal-select-89></ClientOnly>
+
 
 #### Remote Typeahead
 
-<ClientOnly><docs-demo-bal-select-91></docs-demo-bal-select-91></ClientOnly>
+<ClientOnly><docs-demo-bal-select-90></docs-demo-bal-select-90></ClientOnly>
+
+
 
 ## Code
 
+
+
 ### Properties
+
 
 | Attribute         | Description                                                                       | Type                                       | Default                   |
 | :---------------- | :-------------------------------------------------------------------------------- | :----------------------------------------- | :------------------------ |
@@ -73,27 +86,29 @@ export interface BalOptionValue<T> {
 
 ### Events
 
-| Event           | Description                                                        | Type                                                 |
-| :-------------- | :----------------------------------------------------------------- | :--------------------------------------------------- |
-| **balBlur**     | Emitted when the input loses focus.                                | <code>FocusEvent</code>                              |
-| **balCancel**   | Emitted when the user cancels the input.                           | <code>KeyboardEvent</code>                           |
-| **balChange**   | Emitted when a option got selected.                                | <code>string &#124; string[] &#124; undefined</code> |
-| **balClick**    | Emitted when the input got clicked.                                | <code>MouseEvent</code>                              |
-| **balFocus**    | Emitted when the input has focus.                                  | <code>FocusEvent</code>                              |
-| **balInput**    | Emitted when a keyboard input occurred.                            | <code>string</code>                                  |
-| **balKeyPress** | Emitted when the input has focus and key from the keyboard go hit. | <code>KeyboardEvent</code>                           |
+
+| Event           | Description                                                        | Type                                                     |
+| :-------------- | :----------------------------------------------------------------- | :------------------------------------------------------- |
+| **balBlur**     | Emitted when the input loses focus.                                | <code>FocusEvent</code>                                  |
+| **balCancel**   | Emitted when the user cancels the input.                           | <code>KeyboardEvent</code>                               |
+| **balChange**   | Emitted when a option got selected.                                | <code>string  &#124;  string[]  &#124;  undefined</code> |
+| **balClick**    | Emitted when the input got clicked.                                | <code>MouseEvent</code>                                  |
+| **balFocus**    | Emitted when the input has focus.                                  | <code>FocusEvent</code>                                  |
+| **balInput**    | Emitted when a keyboard input occurred.                            | <code>string</code>                                      |
+| **balKeyPress** | Emitted when the input has focus and key from the keyboard go hit. | <code>KeyboardEvent</code>                               |
 
 ### Methods
 
-| Method       | Description                                                                 | Signature                                                                 |
-| :----------- | :-------------------------------------------------------------------------- | :------------------------------------------------------------------------ |
-| **cancel**   | Cancel the dropdown                                                         | <code>cancel() =&#62; Promise&#60;void&#62;</code>                        |
-| **clear**    | Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´. | <code>clear() =&#62; Promise&#60;void&#62;</code>                         |
-| **close**    | Closes the dropdown                                                         | <code>close() =&#62; Promise&#60;void&#62;</code>                         |
-| **getValue** | Sets the focus on the input element                                         | <code>getValue() =&#62; Promise&#60;string[] &#124; undefined&#62;</code> |
-| **open**     | Opens the dropdown                                                          | <code>open() =&#62; Promise&#60;void&#62;</code>                          |
-| **select**   | Select option by passed value                                               | <code>select(value: string) =&#62; Promise&#60;void&#62;</code>           |
-| **setFocus** | Sets the focus on the input element                                         | <code>setFocus() =&#62; Promise&#60;void&#62;</code>                      |
+
+| Method       | Description                                                                 | Signature                                                                   |
+| :----------- | :-------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| **cancel**   | Cancel the dropdown                                                         | <code>cancel() =&#62; Promise&#60;void&#62;</code>                          |
+| **clear**    | Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´. | <code>clear() =&#62; Promise&#60;void&#62;</code>                           |
+| **close**    | Closes the dropdown                                                         | <code>close() =&#62; Promise&#60;void&#62;</code>                           |
+| **getValue** | Sets the focus on the input element                                         | <code>getValue() =&#62; Promise&#60;string[]  &#124;  undefined&#62;</code> |
+| **open**     | Opens the dropdown                                                          | <code>open() =&#62; Promise&#60;void&#62;</code>                            |
+| **select**   | Select option by passed value                                               | <code>select(value: string) =&#62; Promise&#60;void&#62;</code>             |
+| **setFocus** | Sets the focus on the input element                                         | <code>setFocus() =&#62; Promise&#60;void&#62;</code>                        |
 
 ## Testing
 
@@ -163,11 +178,11 @@ describe('multiple', () => {
 
 A list of the custom commands for this specific component.
 
-| Command                        | Description                                                | Signature                                                                                     |
-| :----------------------------- | :--------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| **balSelectFindOptions**       | Returns the select options.                                | <code>(): Chainable&#60;JQuery&#62;</code>                                                    |
-| **balSelectFindChips**         | Returns the closable select chips (only with multiselect). | <code>(): Chainable&#60;JQuery&#62;</code>                                                    |
-| **balSelectShouldHaveOptions** | Asserts that the select has the given options.             | <code>(labels: string[], dataType?: 'label' &#124; 'value'): Chainable&#60;JQuery&#62;</code> |
+| Command                        | Description                                                | Signature                                                                                       |
+| :----------------------------- | :--------------------------------------------------------- | :---------------------------------------------------------------------------------------------- |
+| **balSelectFindOptions**       | Returns the select options.                                | <code>(): Chainable&#60;JQuery&#62;</code>                                                      |
+| **balSelectFindChips**         | Returns the closable select chips (only with multiselect). | <code>(): Chainable&#60;JQuery&#62;</code>                                                      |
+| **balSelectShouldHaveOptions** | Asserts that the select has the given options.             | <code>(labels: string[], dataType?: 'label'  &#124;  'value'): Chainable&#60;JQuery&#62;</code> |
 
 ## Usage
 
@@ -175,15 +190,18 @@ A list of the custom commands for this specific component.
 
 <!-- END: human documentation usage -->
 
+
+
 ## Edit this page on Github
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-select.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-select)
-- [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-select.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-select)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balSelect"></docs-component-script>

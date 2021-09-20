@@ -22,12 +22,12 @@ Logos and images of Baloise can be found [here](https://www.baloise.com/de/home/
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-navbar-73></docs-demo-bal-navbar-73></ClientOnly>
+<ClientOnly><docs-demo-bal-navbar-72></docs-demo-bal-navbar-72></ClientOnly>
 
 
 ### Light
 
-<ClientOnly><docs-demo-bal-navbar-74></docs-demo-bal-navbar-74></ClientOnly>
+<ClientOnly><docs-demo-bal-navbar-73></docs-demo-bal-navbar-73></ClientOnly>
 
 
 

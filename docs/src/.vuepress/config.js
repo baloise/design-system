@@ -85,7 +85,9 @@ module.exports = {
           children: [
             {
               title: 'HTML 5',
-              path: '/components/getting-started/html',
+              collapsable: true,
+              path: '/components/getting-started/html5/index',
+              children: ['getting-started/html5/installation', 'getting-started/html5/styles'],
             },
             {
               title: 'Anuglar',

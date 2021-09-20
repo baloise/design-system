@@ -18,13 +18,13 @@ The basic table is only css and html provided by the bulma framework.
 
 [Go to the Bulma documentation](https://bulma.io/documentation/elements/table/)
 
-<ClientOnly><docs-demo-bal-table-101></docs-demo-bal-table-101></ClientOnly>
+<ClientOnly><docs-demo-bal-table-100></docs-demo-bal-table-100></ClientOnly>
 
 
 ### Advanced with AG-Grid
 
 <Content slot-key="bal-table-ag-grid" ></Content>
-<ClientOnly><docs-demo-bal-table-102></docs-demo-bal-table-102></ClientOnly>
+<ClientOnly><docs-demo-bal-table-101></docs-demo-bal-table-101></ClientOnly>
 
 
 

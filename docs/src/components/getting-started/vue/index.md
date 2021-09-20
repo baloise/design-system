@@ -2,7 +2,7 @@
 
 <img style="width: 128px;" src="https://vuejs.org/images/logo.png" data-origin="https://vuejs.org/images/logo.png" alt="Vue">
 
-`@baloise/ui-libary-vue` combines the core Baloise Design System experience with the tooling and APIs that are tailored to Vue Developers.
+`@baloise/design-system-components-vue` combines the core Baloise Design System experience with the tooling and APIs that are tailored to Vue Developers.
 
 ::: tip
 Checkout our Vue example app with a form example, service and more. [Vue Example App](https://github.com/baloise/design-system/tree/master/examples/vue)

@@ -4,6 +4,7 @@ sidebarDepth: 0
 
 # Checkbox <Badge text="Two-way binding"/>
 
+
 <!-- START: human documentation top -->
 
 Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.
@@ -17,14 +18,16 @@ Checkboxes allow users to select one or more items from a set. Checkboxes can tu
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
+
 ## Examples
 
 ### Basic
 
 Checkboxes allow the selection of multiple options from a set of options. They appear as checked (ticked) when activated, or unchecked (unticked) when deactivated.
-Checkboxes can be selected as checked by setting the property.
+        Checkboxes can be selected as checked by setting the property.
 
 <ClientOnly><docs-demo-bal-checkbox-23></docs-demo-bal-checkbox-23></ClientOnly>
+
 
 ### Switch
 
@@ -32,13 +35,16 @@ Switches are used to toggle between exactly two states (like on and off).
 
 <ClientOnly><docs-demo-bal-checkbox-24></docs-demo-bal-checkbox-24></ClientOnly>
 
+
 ### Inverted
 
 <ClientOnly><docs-demo-bal-checkbox-25></docs-demo-bal-checkbox-25></ClientOnly>
 
+
 ### With Links
 
 <ClientOnly><docs-demo-bal-checkbox-26></docs-demo-bal-checkbox-26></ClientOnly>
+
 
 ### Events
 
@@ -46,17 +52,24 @@ Switches are used to toggle between exactly two states (like on and off).
 
 <ClientOnly><docs-demo-bal-checkbox-27></docs-demo-bal-checkbox-27></ClientOnly>
 
+
 #### Change value
 
 <ClientOnly><docs-demo-bal-checkbox-28></docs-demo-bal-checkbox-28></ClientOnly>
+
 
 ### Checkbox Boxes
 
 <ClientOnly><docs-demo-bal-checkbox-29></docs-demo-bal-checkbox-29></ClientOnly>
 
+
+
 ## Code
 
+
+
 ### Properties
+
 
 | Attribute        | Description                                                     | Type                               | Default                   |
 | :--------------- | :-------------------------------------------------------------- | :--------------------------------- | :------------------------ |
@@ -70,6 +83,7 @@ Switches are used to toggle between exactly two states (like on and off).
 
 ### Events
 
+
 | Event         | Description                                    | Type                    |
 | :------------ | :--------------------------------------------- | :---------------------- |
 | **balBlur**   | Emitted when the toggle loses focus.           | <code>FocusEvent</code> |
@@ -77,6 +91,7 @@ Switches are used to toggle between exactly two states (like on and off).
 | **balFocus**  | Emitted when the toggle has focus.             | <code>FocusEvent</code> |
 
 ### Methods
+
 
 | Method              | Description                                               | Signature                                                               |
 | :------------------ | :-------------------------------------------------------- | :---------------------------------------------------------------------- |
@@ -108,20 +123,25 @@ describe('Checkbox', () => {
 
 <!-- END: human documentation testing -->
 
+
+
 ## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
+
+
 ## Edit this page on Github
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-checkbox.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-checkbox)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-checkbox.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-checkbox)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balCheckbox"></docs-component-script>

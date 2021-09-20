@@ -1,13 +1,13 @@
 # Architecture
 
-The UI-Libary is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.
+The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.
 
 The architecture is based on web standards and best practices. Moreover, we try to keep it as simple as possible for our contributors and consumers.
 For those reasons we decided to use Web Components, which are supported by all modern browsers. The project fully supports [TypeScript](https://www.typescriptlang.org/).
 
 ## Libraries
 
-Under the hood, UI-Libary uses [Bulma](https://bulma.io/), a clean css framework, and [Stencil](https://stenciljs.com/) as Web Components Compiler. At the end everything will be compiled in a clean web component without any framework specific code.
+Under the hood, Baloise Design System uses [Bulma](https://bulma.io/), a clean css framework, and [Stencil](https://stenciljs.com/) as Web Components Compiler. At the end everything will be compiled in a clean web component without any framework specific code.
 
 The best part is that we depend on only those two libraries, which do not depend on each other, and at the end we have only one simple component library for our consumers!
 

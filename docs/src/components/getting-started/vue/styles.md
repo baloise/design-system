@@ -4,12 +4,14 @@ For the Baloise Design System styles you need to provide the typography and styl
 
 This project is built on top of the [Bulma CSS framework](https://bulma.io/).
 
-Add the `bal-app` to your root element. Within this css-class we are able to use the defined css classes.
+Add the `bal-app` to your root element. Within this component we are able to use the defined css classes.
 
 ```html
 ...
-<body class="bal-app">
-  <!-- Use helpers & elements here -->
+<body>
+  <bal-app>
+    <!-- Use helpers & elements here -->
+  </bal-app>
 </body>
 ...
 ```

@@ -60,18 +60,23 @@ To apply the Baloise Design System styles and typography follow [the instruction
 Do not forget to apply the style, otherwise you components will not look like in this documentation ;-)
 :::
 
-### index.html
+Place the `bal-app` component inside the angular root element in the `src/app/app.component.html` file.
 
-Set the css class `bal-app` to the body of the `src/index.html` file.
-
-```xml
-<body class="bal-app">
-  <app-root></app-root>
+```html
+<body>
+  <app-root>
+    <bal-app>
+      <main>
+        <!-- Your application content -->
+      </main>
+      <footer></footer>
+    </bal-app>
+  </app-root>
 </body>
 ```
 
 ::: tip
-To have light grey background just add the css class `bal-app-background` to the body. Recommended to use with the `bal-card` component.
+To have light grey background just add the attribute `background` to the `bal-app` component. Recommended to use with the `bal-card` component.
 :::
 
 ## Import the ngModule

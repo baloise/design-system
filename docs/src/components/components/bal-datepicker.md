@@ -4,6 +4,9 @@ sidebarDepth: 0
 
 # Datepicker <Badge text="Two-way binding"/>
 
+
+
+
 <!-- START: human documentation top -->
 
 A datepicker allows manual date entry as well as open the dropdown content with a calendar to select a date.
@@ -30,6 +33,7 @@ datepickerDisabled.value = newDateString(2020, 0, 13)
 datepickerDisabled.value = newDateString(new Date(2020, 0, 13))
 ```
 
+
 ## Examples
 
 ### Basic
@@ -38,9 +42,11 @@ In this example the user can only select a date. For that use the property `read
 
 <ClientOnly><docs-demo-bal-datepicker-32></docs-demo-bal-datepicker-32></ClientOnly>
 
+
 ### Disabled
 
 <ClientOnly><docs-demo-bal-datepicker-33></docs-demo-bal-datepicker-33></ClientOnly>
+
 
 ### Manual Input
 
@@ -48,21 +54,26 @@ To enable manual input remove the property `readonly` and add the property `trig
 
 <ClientOnly><docs-demo-bal-datepicker-34></docs-demo-bal-datepicker-34></ClientOnly>
 
+
 ### Inverted & Expanded
 
 <ClientOnly><docs-demo-bal-datepicker-35></docs-demo-bal-datepicker-35></ClientOnly>
+
 
 ### i18n
 
 <ClientOnly><docs-demo-bal-datepicker-36></docs-demo-bal-datepicker-36></ClientOnly>
 
+
 ### Footer
 
 <ClientOnly><docs-demo-bal-datepicker-37></docs-demo-bal-datepicker-37></ClientOnly>
 
+
 ### Range Min & Max
 
 <ClientOnly><docs-demo-bal-datepicker-38></docs-demo-bal-datepicker-38></ClientOnly>
+
 
 ### Allow Dates
 
@@ -70,13 +81,19 @@ You can specify allowed dates using a function.
 
 <ClientOnly><docs-demo-bal-datepicker-39></docs-demo-bal-datepicker-39></ClientOnly>
 
+
 ### Custom Start Date
 
 <ClientOnly><docs-demo-bal-datepicker-40></docs-demo-bal-datepicker-40></ClientOnly>
 
+
+
 ## Code
 
+
+
 ### Properties
+
 
 | Attribute           | Description                                                                                                                                                                                                                                                                                                                                                             | Type                                                           | Default                   |
 | :------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------- | :------------------------ |
@@ -102,14 +119,16 @@ You can specify allowed dates using a function.
 
 ### Events
 
-| Event         | Description                             | Type                                             |
-| :------------ | :-------------------------------------- | :----------------------------------------------- |
-| **balBlur**   | Emitted when the input loses focus.     | <code>FocusEvent</code>                          |
-| **balChange** | Emitted when a option got selected.     | <code>null &#124; string &#124; undefined</code> |
-| **balFocus**  | Emitted when the input has focus.       | <code>FocusEvent</code>                          |
-| **balInput**  | Emitted when a keyboard input occurred. | <code>string</code>                              |
+
+| Event         | Description                             | Type                                                 |
+| :------------ | :-------------------------------------- | :--------------------------------------------------- |
+| **balBlur**   | Emitted when the input loses focus.     | <code>FocusEvent</code>                              |
+| **balChange** | Emitted when a option got selected.     | <code>null  &#124;  string  &#124;  undefined</code> |
+| **balFocus**  | Emitted when the input has focus.       | <code>FocusEvent</code>                              |
+| **balInput**  | Emitted when a keyboard input occurred. | <code>string</code>                                  |
 
 ### Methods
+
 
 | Method              | Description                                               | Signature                                                               |
 | :------------------ | :-------------------------------------------------------- | :---------------------------------------------------------------------- |
@@ -180,15 +199,18 @@ A list of the custom commands for this specific component.
 
 <!-- END: human documentation usage -->
 
+
+
 ## Edit this page on Github
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-datepicker.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-datepicker)
-- [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-datepicker.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-datepicker)
+* [Cypress commands on Github](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balDatepicker"></docs-component-script>

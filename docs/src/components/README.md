@@ -3,7 +3,7 @@
 Since we use css stylesheets and standard web components the library can be integrated in almost any web technology.
 
 <ClientOnly> 
-<div class="bal-app">
+<bal-app>
   <bal-card class="my-5">
     <bal-card-head>
       <img src="https://cdn.iconscout.com/icon/free/png-512/html5-10-569380.png" >
@@ -16,7 +16,7 @@ Since we use css stylesheets and standard web components the library can be inte
     <bal-card-content class="is-hidden-desktop">
       <p class="has-text-blue-light-text">Getting Started for an integration of the Baloise Design System with HTML, CSS and JavaScript. Can be used with all the JS-Frameworks, Server-Sider-Rendering or any other Web-Technology.</p>
     </bal-card-content>
-    <bal-card-button icon-right="nav-go-right" link href="/components/getting-started/html.html">Continue</bal-card-button>
+    <bal-card-button icon-right="nav-go-right" link href="/components/getting-started/html5/index.html">Continue</bal-card-button>
   </bal-card>
   <bal-card class="my-5">
     <bal-card-head>
@@ -60,7 +60,7 @@ Since we use css stylesheets and standard web components the library can be inte
     </bal-card-content>
     <bal-card-button icon-right="nav-go-right" link disabled>Comming soon</bal-card-button>
   </bal-card>
-</div>
+</bal-app>
 </ClientOnly>
 
 :::tip

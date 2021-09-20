@@ -63,20 +63,6 @@ Import the `global.scss` Sass file into the main `.scss` file of your applicatio
 @import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
 ```
 
-::: warning
-
-**Relative path**
-
-To serve the fonts from a relative path inside a angular application adjust `$font-path` variable to `'~assets/fonts'`.
-
-```scss
-$font-path: '~assets/fonts';
-
-@import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
-```
-
-:::
-
 ### Variables
 
 To access the scss variables like [colors](/guide/styles/colors.html) or [responsiveness helpers](/guide/styles/responsiveness.html) import the `global.utilities.scss`.

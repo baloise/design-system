@@ -18,12 +18,12 @@ Toasts are used to inform the user with a simple text message.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-toast-121></docs-demo-bal-toast-121></ClientOnly>
+<ClientOnly><docs-demo-bal-toast-120></docs-demo-bal-toast-120></ClientOnly>
 
 
 ### Colors
 
-<ClientOnly><docs-demo-bal-toast-122></docs-demo-bal-toast-122></ClientOnly>
+<ClientOnly><docs-demo-bal-toast-121></docs-demo-bal-toast-121></ClientOnly>
 
 
 
@@ -76,6 +76,7 @@ export class ServicesPageComponent {
 | :----------- | :------------------------------------------------------------- | :---------------------------------------------------------------------- | :-------------- |
 | **color**    | The theme type of the toast. Given by bulma our css framework. | <code>"" , "danger" , "info" , "primary" , "success" , "warning"</code> | <code>''</code> |
 | **duration** | The duration of the toast in milliseconds.                     | <code>number</code>                                                     | <code>0</code>  |
+| **message**  | Content message                                                | <code>string</code>                                                     | <code>''</code> |
 
 ### Events
 
