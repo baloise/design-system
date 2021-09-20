@@ -5,6 +5,7 @@ import autoprefixer from 'autoprefixer'
 
 import { ComponentModelConfig, vueOutputTarget } from '@baloise/vue-output-target'
 import { angularOutputTarget, ValueAccessorConfig } from '@baloise/angular-output-target'
+import { reactOutputTarget } from '@stencil/react-output-target'
 
 /**
  * Vue Component Models
@@ -127,6 +128,11 @@ export const config: Config = {
       directivesProxyFile: '../components-angular/src/directives/proxies.ts',
       directivesArrayFile: '../components-angular/src/directives/proxies-list.ts',
       valueAccessorConfigs: angularValueAccessorBindings,
+    }),
+    reactOutputTarget({
+      componentCorePackage: '@baloise/design-system-components',
+      proxiesFile: '../components-react/src/components.ts',
+      includeDefineCustomElements: true,
     }),
   ],
 }
