@@ -25,6 +25,9 @@ export class Modal implements OverlayInterface {
   /** @internal */
   @Prop() delegate?: FrameworkDelegate
 
+  /** @internal */
+  @Prop() dataTestId?: string
+
   /**
    * Defines the width of the modal body
    */
@@ -220,6 +223,7 @@ export class Modal implements OverlayInterface {
       <Host
         aria-modal="true"
         aria-presented={this.presented ? 'true' : null}
+        data-test-id={this.dataTestId}
         tabindex="-1"
         class={{
           ...getClassMap(this.cssClass),

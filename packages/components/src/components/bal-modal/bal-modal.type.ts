@@ -16,6 +16,7 @@ export interface ModalOptions<T extends ComponentRef = ComponentRef> {
   cssClass?: string | string[]
   isClosable?: boolean
   hasBackdrop?: boolean
+  dataTestId?: string
   delegate?: FrameworkDelegate
   id?: string
 }
