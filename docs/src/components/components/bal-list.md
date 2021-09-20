@@ -18,27 +18,27 @@ A list present content in a way that makes it easy to identify a specific item i
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-list-65></docs-demo-bal-list-65></ClientOnly>
+<ClientOnly><docs-demo-bal-list-66></docs-demo-bal-list-66></ClientOnly>
 
 
 ### With borders
 
-<ClientOnly><docs-demo-bal-list-66></docs-demo-bal-list-66></ClientOnly>
+<ClientOnly><docs-demo-bal-list-67></docs-demo-bal-list-67></ClientOnly>
 
 
 ### Inverted
 
-<ClientOnly><docs-demo-bal-list-67></docs-demo-bal-list-67></ClientOnly>
+<ClientOnly><docs-demo-bal-list-68></docs-demo-bal-list-68></ClientOnly>
 
 
 ### With Icons
 
-<ClientOnly><docs-demo-bal-list-68></docs-demo-bal-list-68></ClientOnly>
+<ClientOnly><docs-demo-bal-list-69></docs-demo-bal-list-69></ClientOnly>
 
 
 ### Link
 
-<ClientOnly><docs-demo-bal-list-69></docs-demo-bal-list-69></ClientOnly>
+<ClientOnly><docs-demo-bal-list-70></docs-demo-bal-list-70></ClientOnly>
 
 
 

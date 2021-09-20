@@ -39,8 +39,8 @@ const shouldAndAndCommand = (
     hasClass(element, 'data-test-radio-label') ||
     hasClass(element, 'data-test-checkbox-label')
   ) {
-    if (!isLabel(element)) {
-      element = element.find('label')
+    if (isLabel(element)) {
+      element = element.closest(isCheckbox(element) ? '<bal-checkbox>' : '<bal-radio>')
     }
 
     if ('be.checked' === condition) {
@@ -56,7 +56,7 @@ const shouldAndAndCommand = (
     }
 
     if ('not.be.disabled' === condition) {
-      return originalFn(element, 'have.attr', 'aria-disabled', 'false', options)
+      return originalFn(element, 'not.have.attr', 'aria-disabled', options)
     }
 
     if ('be.focused' === condition) {
@@ -64,7 +64,7 @@ const shouldAndAndCommand = (
     }
 
     if ('not.be.focused' === condition) {
-      return originalFn(element, 'have.attr', 'aria-focused', 'false', options)
+      return originalFn(element, 'not.have.attr', 'aria-focused', options)
     }
   }
 

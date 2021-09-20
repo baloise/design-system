@@ -1,5 +1,5 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface, Listen, State } from '@stencil/core'
-import { findItemLabel, isDescendant } from '../../helpers/helpers'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface, State, Listen } from '@stencil/core'
+import { isDescendant } from '../../helpers/helpers'
 
 @Component({
   tag: 'bal-radio',
@@ -69,6 +69,7 @@ export class Radio implements ComponentInterface {
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (this.disabled && ev.target && (ev.target === this.el || isDescendant(this.el, ev.target as HTMLElement))) {
+      debugger
       ev.preventDefault()
       ev.stopPropagation()
     }
@@ -84,26 +85,26 @@ export class Radio implements ComponentInterface {
     }
   }
 
-  get parent(): HTMLBalRadioGroupElement | null {
+  get radioGroup(): HTMLBalRadioGroupElement | null {
     return this.el.closest('bal-radio-group')
   }
 
   connectedCallback() {
-    if (this.parent) {
+    if (this.radioGroup) {
       this.updateState()
-      this.parent.addEventListener('balChange', () => this.updateState())
+      this.radioGroup.addEventListener('balChange', () => this.updateState())
     }
   }
 
   disconnectedCallback() {
-    if (this.parent) {
-      this.parent.removeEventListener('balChange', () => this.updateState())
+    if (this.radioGroup) {
+      this.radioGroup.removeEventListener('balChange', () => this.updateState())
     }
   }
 
   private updateState = () => {
-    if (this.parent) {
-      this.checked = this.parent.value === this.value
+    if (this.radioGroup) {
+      this.checked = this.radioGroup.value === this.value
     }
   }
 
@@ -119,13 +120,15 @@ export class Radio implements ComponentInterface {
 
   render() {
     const { inputId } = this
-    const label = findItemLabel(this.el)
-    const parrentName = this.parent?.name
-    const name = parrentName !== undefined ? parrentName : this.name
 
     return (
       <Host
+        role="radio"
+        tabindex={this.balTabindex}
+        aria-checked={`${this.checked}`}
         aria-disabled={this.disabled ? 'true' : null}
+        aria-hidden={this.disabled ? 'true' : null}
+        aria-focused={this.hasFocus ? 'true' : null}
         class={{
           'bal-radio': this.interface === 'radio',
           'bal-select-button': this.interface === 'select-button',
@@ -133,6 +136,8 @@ export class Radio implements ComponentInterface {
           'is-disabled': this.disabled,
           'is-focused': this.hasFocus,
         }}
+        onFocus={this.onInputFocus}
+        onBlur={this.onInputBlur}
       >
         <input
           class={{
@@ -140,17 +145,11 @@ export class Radio implements ComponentInterface {
             'data-test-radio-input': true,
           }}
           type="radio"
-          role="radio"
           id={inputId}
-          name={name}
-          tabindex={this.balTabindex}
+          tabindex={-1}
           value={this.value}
-          aria-hidden={this.disabled ? 'true' : null}
-          aria-label={label}
           disabled={this.disabled}
           checked={this.checked}
-          aria-checked={this.checked ? 'true' : 'false'}
-          aria-disabled={this.disabled ? 'true' : 'false'}
           onFocus={e => this.onInputFocus(e)}
           onBlur={e => this.onInputBlur(e)}
           ref={inputEl => (this.inputEl = inputEl)}
@@ -161,13 +160,7 @@ export class Radio implements ComponentInterface {
             'is-disabled': this.disabled,
             'data-test-radio-label': true,
           }}
-          aria-checked={this.checked ? 'true' : 'false'}
-          aria-disabled={this.disabled ? 'true' : 'false'}
-          aria-focused={this.hasFocus ? 'true' : 'false'}
           htmlFor={inputId}
-          onClick={(ev: MouseEvent) => {
-            ev.stopPropagation()
-          }}
         >
           <bal-text
             class={{

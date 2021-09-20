@@ -12,6 +12,7 @@ import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
 import { AutocompleteTypes, InputTypes } from "./types/interfaces";
+import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -55,6 +56,12 @@ export namespace Components {
           * Triggers the accordion
          */
         "toggle": () => Promise<void>;
+    }
+    interface BalApp {
+        /**
+          * If `true` it adds a light background to the app
+         */
+        "background": boolean;
     }
     interface BalButton {
         /**
@@ -811,21 +818,56 @@ export namespace Components {
     }
     interface BalModal {
         /**
-          * Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot.
-         */
-        "card": boolean;
-        /**
           * Closes the modal.
          */
         "close": () => Promise<void>;
         /**
-          * If `true` the modal does not run with a background overlay.
+          * The component to display inside of the modal.
          */
-        "noOverlay": boolean;
+        "component": ComponentRef;
+        /**
+          * The data to pass to the modal component.
+         */
+        "componentProps"?: ComponentProps;
+        /**
+          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+         */
+        "cssClass"?: string | string[];
+        "dataTestId"?: string;
+        "delegate"?: FrameworkDelegate;
+        /**
+          * Closes the presented modal with the modal controller
+         */
+        "dismiss": (data?: any, role?: string | undefined) => Promise<boolean>;
+        /**
+          * If `true`, a backdrop will be displayed behind the modal.
+         */
+        "hasBackdrop": boolean;
+        /**
+          * If `true`, the modal can be closed with the escape key or the little close button.
+         */
+        "isClosable": boolean;
+        /**
+          * Defines the width of the modal body
+         */
+        "modalWidth": number;
+        /**
+          * Returns a promise that resolves when the modal did dismiss.
+         */
+        "onDidDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
+        /**
+          * Returns a promise that resolves when the modal will dismiss.
+         */
+        "onWillDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
         /**
           * Opens the modal.
          */
         "open": () => Promise<void>;
+        "overlayIndex": number;
+        /**
+          * Presents the modal through the modal controller
+         */
+        "present": () => Promise<void>;
     }
     interface BalModalActions {
     }
@@ -952,6 +994,7 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        "setValue": (value: string) => Promise<void>;
         /**
           * The value of the control.
          */
@@ -1118,10 +1161,12 @@ export namespace Components {
           * Label text for the action button
          */
         "action": string;
+        "actionHandler": () => void;
         /**
           * Closes this snackbar
          */
         "close": () => Promise<void>;
+        "closeHandler": () => void;
         /**
           * Closes the snackbar after the given duration in ms
          */
@@ -1382,6 +1427,7 @@ export namespace Components {
           * Closes this toast
          */
         "close": () => Promise<void>;
+        "closeHandler": () => void;
         /**
           * Closes the toast after the given duration in ms
          */
@@ -1394,6 +1440,10 @@ export namespace Components {
           * The duration of the toast in milliseconds.
          */
         "duration": number;
+        /**
+          * Content message
+         */
+        "message": string;
     }
 }
 declare global {
@@ -1402,6 +1452,12 @@ declare global {
     var HTMLBalAccordionElement: {
         prototype: HTMLBalAccordionElement;
         new (): HTMLBalAccordionElement;
+    };
+    interface HTMLBalAppElement extends Components.BalApp, HTMLStencilElement {
+    }
+    var HTMLBalAppElement: {
+        prototype: HTMLBalAppElement;
+        new (): HTMLBalAppElement;
     };
     interface HTMLBalButtonElement extends Components.BalButton, HTMLStencilElement {
     }
@@ -1801,6 +1857,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "bal-accordion": HTMLBalAccordionElement;
+        "bal-app": HTMLBalAppElement;
         "bal-button": HTMLBalButtonElement;
         "bal-card": HTMLBalCardElement;
         "bal-card-actions": HTMLBalCardActionsElement;
@@ -1903,6 +1960,12 @@ declare namespace LocalJSX {
           * Label of the open trigger button
          */
         "openLabel"?: string;
+    }
+    interface BalApp {
+        /**
+          * If `true` it adds a light background to the app
+         */
+        "background"?: boolean;
     }
     interface BalButton {
         /**
@@ -2695,13 +2758,48 @@ declare namespace LocalJSX {
     }
     interface BalModal {
         /**
-          * Marks this modal as card-style modal, i.e. having visual lines separating head, body, and foot.
+          * The component to display inside of the modal.
          */
-        "card"?: boolean;
+        "component": ComponentRef;
         /**
-          * If `true` the modal does not run with a background overlay.
+          * The data to pass to the modal component.
          */
-        "noOverlay"?: boolean;
+        "componentProps"?: ComponentProps;
+        /**
+          * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
+         */
+        "cssClass"?: string | string[];
+        "dataTestId"?: string;
+        "delegate"?: FrameworkDelegate;
+        /**
+          * If `true`, a backdrop will be displayed behind the modal.
+         */
+        "hasBackdrop"?: boolean;
+        /**
+          * If `true`, the modal can be closed with the escape key or the little close button.
+         */
+        "isClosable"?: boolean;
+        /**
+          * Defines the width of the modal body
+         */
+        "modalWidth"?: number;
+        /**
+          * Emitted after the modal has dismissed.
+         */
+        "onBalModalDidDismiss"?: (event: CustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted after the modal has presented.
+         */
+        "onBalModalDidPresent"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted before the modal has dismissed.
+         */
+        "onBalModalWillDismiss"?: (event: CustomEvent<OverlayEventDetail>) => void;
+        /**
+          * Emitted before the modal has presented.
+         */
+        "onBalModalWillPresent"?: (event: CustomEvent<void>) => void;
+        "overlayIndex": number;
     }
     interface BalModalActions {
     }
@@ -3014,6 +3112,8 @@ declare namespace LocalJSX {
           * Label text for the action button
          */
         "action"?: string;
+        "actionHandler"?: () => void;
+        "closeHandler"?: () => void;
         /**
           * The theme type of the snackbar. Given by bulma our css framework.
          */
@@ -3298,6 +3398,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalToast {
+        "closeHandler"?: () => void;
         /**
           * The theme type of the toast. Given by bulma our css framework.
          */
@@ -3307,12 +3408,17 @@ declare namespace LocalJSX {
          */
         "duration"?: number;
         /**
+          * Content message
+         */
+        "message"?: string;
+        /**
           * Emitted when toast is closed
          */
         "onBalClose"?: (event: CustomEvent<string>) => void;
     }
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
+        "bal-app": BalApp;
         "bal-button": BalButton;
         "bal-card": BalCard;
         "bal-card-actions": BalCardActions;
@@ -3386,6 +3492,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "bal-accordion": LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
+            "bal-app": LocalJSX.BalApp & JSXBase.HTMLAttributes<HTMLBalAppElement>;
             "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
             "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
             "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;

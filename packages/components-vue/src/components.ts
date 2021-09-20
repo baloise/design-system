@@ -58,6 +58,21 @@ export const BalAccordion = /*@__PURE__*/ defineComponent({
   })
 })
 
+export const BalApp = /*@__PURE__*/ defineComponent({
+  name: 'bal-app',
+  props: {
+    background: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+  },
+  emits: {
+
+  },
+  setup: defineSetup('bal-app', [], undefined)
+})
+
 export const BalButton = /*@__PURE__*/ defineComponent({
   name: 'bal-button',
   props: {
@@ -1265,21 +1280,59 @@ export const BalListItemTitle = /*@__PURE__*/ defineComponent({
 export const BalModal = /*@__PURE__*/ defineComponent({
   name: 'bal-modal',
   props: {
-    card: {
-      type: Boolean,
-      default: false,
+    overlayIndex: {
+      type: Number,
+      default: undefined,
+      required: true,
+    },
+    delegate: {
+      type: String,
+      default: undefined,
       required: false,
     },
-    noOverlay: {
+    dataTestId: {
+      type: String,
+      default: undefined,
+      required: false,
+    },
+    modalWidth: {
+      type: Number,
+      default: 640,
+      required: false,
+    },
+    hasBackdrop: {
       type: Boolean,
-      default: false,
+      default: true,
+      required: false,
+    },
+    isClosable: {
+      type: Boolean,
+      default: true,
+      required: false,
+    },
+    component: {
+      type: String,
+      default: undefined,
+      required: true,
+    },
+    componentProps: {
+      type: String,
+      default: undefined,
+      required: false,
+    },
+    cssClass: {
+      type: [String, Array as () => Array<string>],
+      default: undefined,
       required: false,
     },
   },
   emits: {
-
+    balModalDidPresent: (value: void) => true,
+    balModalWillPresent: (value: void) => true,
+    balModalWillDismiss: (value: Lib.OverlayEventDetail) => true,
+    balModalDidDismiss: (value: Lib.OverlayEventDetail) => true,
   },
-  setup: defineSetup('bal-modal', [], undefined)
+  setup: defineSetup('bal-modal', ['balModalDidPresent','balModalWillPresent','balModalWillDismiss','balModalDidDismiss'], undefined)
 })
 
 export const BalModalActions = /*@__PURE__*/ defineComponent({
@@ -1776,6 +1829,16 @@ export const BalSnackbar = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
+    closeHandler: {
+      type: Function as PropType<() => void>,
+      default: () => {},
+      required: false,
+    },
+    actionHandler: {
+      type: Function as PropType<() => void>,
+      default: () => {},
+      required: false,
+    },
   },
   emits: {
     balClose: (value: string) => true,
@@ -2141,6 +2204,16 @@ export const BalToast = /*@__PURE__*/ defineComponent({
     duration: {
       type: Number,
       default: 0,
+      required: false,
+    },
+    message: {
+      type: String,
+      default: '',
+      required: false,
+    },
+    closeHandler: {
+      type: Function as PropType<() => void>,
+      default: () => {},
       required: false,
     },
   },

@@ -33,11 +33,18 @@ In angular the setup for a sticky footer is slightly diffrent.
 
 #### index.html
 
-The class `has-sticky-footer` must be on the outer element, which contains the `main` and `footer` element.
+Place the `bal-app` component inside the angular root element.
 
 ```html
-<body class="bal-app">
-  <app-root class="has-sticky-footer"></app-root>
+<body>
+  <app-root>
+    <bal-app>
+      <main>
+        <!-- Your application content -->
+      </main>
+      <footer></footer>
+    </bal-app>
+  </app-root>
 </body>
 ```
 

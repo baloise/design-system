@@ -4,6 +4,7 @@ sidebarDepth: 0
 
 # Input <Badge text="Two-way binding"/>
 
+
 <!-- START: human documentation top -->
 
 The input component is a wrapper to the HTML input element with custom styling and additional functionality. It accepts most of the same properties as the HTML input, but works great on desktop devices and integrates with the keyboard on mobile devices.
@@ -19,15 +20,18 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
+
 ## Examples
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-input-60></docs-demo-bal-input-60></ClientOnly>
+<ClientOnly><docs-demo-bal-input-61></docs-demo-bal-input-61></ClientOnly>
+
 
 ### Inverted
 
-<ClientOnly><docs-demo-bal-input-61></docs-demo-bal-input-61></ClientOnly>
+<ClientOnly><docs-demo-bal-input-62></docs-demo-bal-input-62></ClientOnly>
+
 
 ### Number Input
 
@@ -35,19 +39,26 @@ With number-input property your can only enter valid numbers, if you start with 
 
 With decimal property you can set how many decimal places you want and number will be formatted accordingly.
 
-<ClientOnly><docs-demo-bal-input-62></docs-demo-bal-input-62></ClientOnly>
+<ClientOnly><docs-demo-bal-input-63></docs-demo-bal-input-63></ClientOnly>
+
 
 ### Suffix
 
-<ClientOnly><docs-demo-bal-input-63></docs-demo-bal-input-63></ClientOnly>
+<ClientOnly><docs-demo-bal-input-64></docs-demo-bal-input-64></ClientOnly>
+
 
 ### HTML input
 
-<ClientOnly><docs-demo-bal-input-64></docs-demo-bal-input-64></ClientOnly>
+<ClientOnly><docs-demo-bal-input-65></docs-demo-bal-input-65></ClientOnly>
+
+
 
 ## Code
 
+
+
 ### Properties
+
 
 | Attribute          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Default                   |
 | :----------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------ |
@@ -82,22 +93,24 @@ With decimal property you can set how many decimal places you want and number wi
 
 ### Events
 
-| Event           | Description                               | Type                                          |
-| :-------------- | :---------------------------------------- | :-------------------------------------------- |
-| **balBlur**     | Emitted when a keyboard input occurred.   | <code>FocusEvent</code>                       |
-| **balChange**   | Emitted when the input value has changed. | <code>null &#124; number &#124; string</code> |
-| **balClick**    | Emitted when the input has clicked.       | <code>MouseEvent</code>                       |
-| **balFocus**    | Emitted when the input has focus.         | <code>FocusEvent</code>                       |
-| **balInput**    | Emitted when a keyboard input occurred.   | <code>null &#124; number &#124; string</code> |
-| **balKeyPress** | Emitted when a keyboard key has pressed.  | <code>KeyboardEvent</code>                    |
+
+| Event           | Description                               | Type                                              |
+| :-------------- | :---------------------------------------- | :------------------------------------------------ |
+| **balBlur**     | Emitted when a keyboard input occurred.   | <code>FocusEvent</code>                           |
+| **balChange**   | Emitted when the input value has changed. | <code>null  &#124;  number  &#124;  string</code> |
+| **balClick**    | Emitted when the input has clicked.       | <code>MouseEvent</code>                           |
+| **balFocus**    | Emitted when the input has focus.         | <code>FocusEvent</code>                           |
+| **balInput**    | Emitted when a keyboard input occurred.   | <code>null  &#124;  number  &#124;  string</code> |
+| **balKeyPress** | Emitted when a keyboard key has pressed.  | <code>KeyboardEvent</code>                        |
 
 ### Methods
 
-| Method              | Description                                                                            | Signature                                                               |
-| :------------------ | :------------------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
-| **getInputElement** | Returns the native `<input>` element used under the hood.                              | <code>getInputElement() =&#62; Promise&#60;HTMLInputElement&#62;</code> |
-| **setFocus**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global |
-| `input.focus()`.    | <code>setFocus() =&#62; Promise&#60;void&#62;</code>                                   |
+
+| Method              | Description                                                                                             | Signature                                                               |
+| :------------------ | :------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------- |
+| **getInputElement** | Returns the native `<input>` element used under the hood.                                               | <code>getInputElement() =&#62; Promise&#60;HTMLInputElement&#62;</code> |
+| **setFocus**        | Sets focus on the native `input` in `bal-input`. Use this method instead of the global
+`input.focus()`. | <code>setFocus() =&#62; Promise&#60;void&#62;</code>                    |
 
 ## Testing
 
@@ -127,20 +140,25 @@ describe('Input', () => {
 
 <!-- END: human documentation testing -->
 
+
+
 ## Usage
 
 <!-- START: human documentation usage -->
 
 <!-- END: human documentation usage -->
 
+
+
 ## Edit this page on Github
 
-- [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-input.md)
-- [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-input)
+* [Documentation on Github](https://github.com/baloise/design-system/blob/master/docs/src/components/components/bal-input.md)
+* [Implementation on Github](https://github.com/baloise/design-system/blob/master/packages/components/src/components/bal-input)
 
 ## Feedback
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
+
 
 <ClientOnly>
   <docs-component-script tag="balInput"></docs-component-script>

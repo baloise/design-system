@@ -16,7 +16,7 @@ Since we use css stylesheets and standard web components the library can be inte
     <bal-card-content class="is-hidden-desktop">
       <p class="has-text-blue-light-text">Getting Started for an integration of the Baloise Design System with HTML, CSS and JavaScript. Can be used with all the JS-Frameworks, Server-Sider-Rendering or any other Web-Technology.</p>
     </bal-card-content>
-    <bal-card-button icon-right="nav-go-right" link href="/components/getting-started/html.html">Continue</bal-card-button>
+    <bal-card-button icon-right="nav-go-right" link href="/components/getting-started/html5/index.html">Continue</bal-card-button>
   </bal-card>
   <bal-card class="my-5">
     <bal-card-head>
@@ -58,7 +58,7 @@ Since we use css stylesheets and standard web components the library can be inte
     <bal-card-content class="is-hidden-desktop">
       <p class="has-text-blue-light-text">Getting Started for an integration of the Baloise Design System with the React Library and the usage of the Sass variables.</p>
     </bal-card-content>
-    <bal-card-button icon-right="nav-go-right" link disabled>Comming soon</bal-card-button>
+    <bal-card-button icon-right="nav-go-right" link href="/components/getting-started/react/index.html">Continue</bal-card-button>
   </bal-card>
 </div>
 </ClientOnly>

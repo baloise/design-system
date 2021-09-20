@@ -1,0 +1,77 @@
+$modal-z: 40;
+
+$modal-content-width: 640px;
+$modal-content-margin-mobile: 16px;
+$modal-content-spacing-mobile: 160px;
+$modal-content-spacing-tablet: 40px;
+
+$modal-close-dimensions: 40px;
+$modal-close-right: 32px;
+$modal-close-top: 32px;
+
+$modal-card-body-padding: 16px 32px;
+$modal-card-head-radius: 0px;
+$modal-card-head-padding: 32px 32px 16px 32px;
+
+$modal-card-head-radius: 0px;
+$modal-card-foot-radius: 0px;
+
+$modal-card-head-background-color: $scheme-main;
+
+$modal-card-title-size: $size-large;
+
+$modal-card-foot-border-top: 0;
+$modal-card-head-border-bottom: 0;
+
+$modal-background-background-color: bulmaRgba(darken($blue-dark, 10), 0.86);
+
+.modal-background {
+  background: $modal-background-background-color;
+}
+
+.modal-close {
+  position: fixed !important;
+}
+
+bal-modal-header,
+bal-modal-body,
+bal-modal-footer {
+  display: block;
+  position: relative;
+}
+
+bal-modal-header {
+  font-family: $title-family;
+}
+
+bal-modal-body {
+  font-family: $body-family;
+}
+
+bal-modal-header.modal-card-head,
+bal-modal-footer.modal-card-foot {
+  border: none;
+  background: transparent;
+}
+
+.modal-background,
+.modal-content {
+  animation-duration: 150ms;
+}
+
+.modal-card {
+  max-width: calc(100vw - 32px);
+  width: var(--bal-width, $modal-content-width);
+}
+
+.modal-card-foot {
+  padding: 20px 32px 32px 32px;
+
+  .buttons {
+    width: 100%;
+  }
+}
+
+.modal-card-body {
+  max-height: calc(100vh - 88px - 122px - 64px);
+}

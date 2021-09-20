@@ -11,11 +11,12 @@
     "url": "https://github.com/hirsch88"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "setup": "npm install && npm run build && npm run bootstrap",
     "postinstall": "npm run bootstrap && npm run docs:install && node .scripts/copy.script.js",
     "bootstrap": "lerna bootstrap",
     "serve": "npm run lib:serve",
-    "build": "npm run icons:build && npm run lib:build && npm run table:build && npm run vue:build && npm run angular:build && npm run testing:build",
+    "build": "npm run icons:build && npm run lib:build && npm run table:build && npm run vue:build && npm run angular:build && npm run react:build && npm run testing:build",
     "test": "npm run lib:test && npm run vue:test",
     "release": "lerna publish --yes --force-publish --conventional-commits",
     "lib:build": "node .scripts/banner.js lib:build && npm --prefix packages/components run build",
@@ -25,6 +26,7 @@
     "vue:build": "node .scripts/banner.js vue:build && npm --prefix packages/components-vue run build",
     "vue:test": "node .scripts/banner.js vue:test && npm --prefix packages/components-vue run test",
     "angular:build": "node .scripts/banner.js angular:build && npm --prefix packages/components-angular run build",
+    "react:build": "node .scripts/banner.js react:build && npm --prefix packages/components-react run build",
     "testing:test": "node .scripts/banner.js testing:run && npm --prefix packages/testing run ci",
     "testing:serve": "node .scripts/banner.js testing:serve && npm --prefix packages/testing run serve",
     "testing:server": "node .scripts/banner.js testing:server && npm --prefix packages/testing run ci:server",
@@ -57,5 +59,8 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "resolutions": {
+    "tar": ">=4.4.18"
   }
 }

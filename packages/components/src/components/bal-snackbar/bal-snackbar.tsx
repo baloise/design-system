@@ -10,8 +10,10 @@ import { BalButtonColor } from '../bal-button/bal.button.type'
 })
 export class Snackbar {
   @Element() element!: HTMLElement
+
   timer!: NodeJS.Timer
   snackbarId = `bal-snackbar-${snackbarIds++}`
+
   @State() animationClass = 'fadeInDown'
 
   /**
@@ -45,6 +47,16 @@ export class Snackbar {
   @Prop() action: string = ''
 
   /**
+   * @internal Handler for on close event
+   */
+  @Prop() closeHandler: () => void = () => {}
+
+  /**
+   * @internal Handler for on action button click event
+   */
+  @Prop() actionHandler: () => void = () => {}
+
+  /**
    * Emitted when snackbar is closed
    */
   @Event() balClose!: EventEmitter<string>
@@ -73,9 +85,15 @@ export class Snackbar {
    */
   @Method()
   async close(): Promise<void> {
+    clearTimeout(this.timer)
     this.balClose.emit(this.snackbarId)
     this.element.remove()
-    clearTimeout(this.timer)
+    this.closeHandler()
+  }
+
+  onActionHandler = () => {
+    this.balAction.emit(this.snackbarId)
+    this.actionHandler()
   }
 
   get colorType() {
@@ -106,12 +124,12 @@ export class Snackbar {
               </bal-heading>
             </span>
           </div>
-          <bal-text>
+          <bal-text innerHTML={this.message}>
             <slot />
           </bal-text>
           <bal-icon name="close" class="close" inverted={this.color !== ''} size="xsmall" onClick={() => this.close()}></bal-icon>
           <div class="snackbar-footer" style={{ display: this.action === '' ? 'none' : 'inline-block' }}>
-            <bal-button color={this.buttonType} inverted={this.color !== ''} outlined onClick={() => this.balAction.emit()}>
+            <bal-button color={this.buttonType} inverted={this.color !== ''} outlined onClick={() => this.onActionHandler()}>
               {this.action}
             </bal-button>
           </div>

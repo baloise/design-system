@@ -226,3 +226,53 @@ export default defineComponent({
   },
 })
 ```
+
+## Modal
+
+Simply define the modal layout in your custom component and add the element reference with `ref="modalRef"` to the model element.
+In your component register the element reference with `const modalRef = ref<{ $el: Components.BalModal }>()`. With that reference you are able to access the methods of the modal component.
+
+```vue{4,20,25,28,32,36}
+<template>
+  <BalButton @click="openModal()">Open Modal</BalButton>
+
+  <BalModal ref="modalRef">
+    <BalModalHeader>Modal Title</BalModalHeader>
+    <BalModalBody>
+      <p>...</p>
+    </BalModalBody>
+    <BalModalBooter>
+      <BalModalActions>
+        <BalButton color="link" @click="closeModal()">Cancel</BalButton>
+        <BalButton color="primary" @click="closeModal()">Okay</BalButton>
+      </BalModalActions>
+    </BalModalBooter>
+  </BalModal>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+import { Components } from '@baloise/design-system-components'
+
+export default defineComponent({
+  components: { ... },
+  setup() {
+    const modalRef = ref<{ $el: Components.BalModal }>()
+
+    function openModal() {
+      modalRef.value?.$el.open()
+    }
+
+    function closeModal() {
+      modalRef.value?.$el.close()
+    }
+
+    return {
+      modalRef,
+      openModal,
+      closeModal,
+    }
+  },
+})
+</script>
+```

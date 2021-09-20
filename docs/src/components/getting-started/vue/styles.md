@@ -4,14 +4,36 @@ For the Baloise Design System styles you need to provide the typography and styl
 
 This project is built on top of the [Bulma CSS framework](https://bulma.io/).
 
-Add the `bal-app` to your root element. Within this css-class we are able to use the defined css classes.
+Add the `BalApp` to your root element. Within this component we are able to use the defined css classes.
 
-```html
-...
-<body class="bal-app">
-  <!-- Use helpers & elements here -->
-</body>
-...
+```vue
+<template>
+  <BalApp background>
+    <header>
+      <!-- Header content -->
+    </header>
+    <main class="container">
+      <!-- Page content -->
+      <router-view />
+    </main>
+    <bal-footer>
+      <div class="container">
+        <!-- Footer content -->
+        Footer
+      </div>
+    </bal-footer>
+  </BalApp>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { BalApp } from '@baloise/design-system-components-vue'
+
+export default defineComponent({
+  name: 'App',
+  components: { BalApp },
+})
+</script>
 ```
 
 ## Install Typography

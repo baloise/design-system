@@ -30,6 +30,25 @@ export class BalAccordion {
 }
 
 
+export declare interface BalApp extends Components.BalApp {}
+@ProxyCmp({
+  inputs: ['background']
+})
+@Component({
+  selector: 'bal-app',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['background']
+})
+export class BalApp {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface BalButton extends Components.BalButton {}
 @ProxyCmp({
   inputs: ['bottomRounded', 'color', 'disabled', 'download', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'name', 'outlined', 'rel', 'size', 'square', 'target', 'topRounded', 'type', 'value']
@@ -795,23 +814,33 @@ export class BalListItemTitle {
   }
 }
 
-
+import { OverlayEventDetail } from '@baloise/design-system-components';
 export declare interface BalModal extends Components.BalModal {}
 @ProxyCmp({
-  inputs: ['card', 'noOverlay'],
-  methods: ['open', 'close']
+  inputs: ['component', 'componentProps', 'cssClass', 'hasBackdrop', 'isClosable', 'modalWidth'],
+  methods: ['open', 'close', 'present', 'dismiss', 'onDidDismiss', 'onWillDismiss']
 })
 @Component({
   selector: 'bal-modal',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['card', 'noOverlay']
+  inputs: ['component', 'componentProps', 'cssClass', 'hasBackdrop', 'isClosable', 'modalWidth'],
+  outputs: ['balModalDidPresent', 'balModalWillPresent', 'balModalWillDismiss', 'balModalDidDismiss']
 })
 export class BalModal {
+  /** Emitted after the modal has presented. */
+  balModalDidPresent!: EventEmitter<CustomEvent<void>>;
+  /** Emitted before the modal has presented. */
+  balModalWillPresent!: EventEmitter<CustomEvent<void>>;
+  /** Emitted before the modal has dismissed. */
+  balModalWillDismiss!: EventEmitter<CustomEvent<OverlayEventDetail<any>>>;
+  /** Emitted after the modal has dismissed. */
+  balModalDidDismiss!: EventEmitter<CustomEvent<OverlayEventDetail<any>>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['balModalDidPresent', 'balModalWillPresent', 'balModalWillDismiss', 'balModalDidDismiss']);
   }
 }
 
@@ -1387,14 +1416,14 @@ It will not be triggert if either hour or time input has never been set (i.e. "-
 
 export declare interface BalToast extends Components.BalToast {}
 @ProxyCmp({
-  inputs: ['color', 'duration'],
+  inputs: ['color', 'duration', 'message'],
   methods: ['closeIn', 'close']
 })
 @Component({
   selector: 'bal-toast',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color', 'duration'],
+  inputs: ['color', 'duration', 'message'],
   outputs: ['balClose']
 })
 export class BalToast {

@@ -11,6 +11,8 @@ import { TablePageComponent } from './pages/table/table-page.component'
 import { ModalPageComponent } from './pages/modal/modal-page.component'
 import { PipesPageComponent } from './pages/pipes/pipes-page.component'
 import { ServicesPageComponent } from './pages/services/services-page.component'
+import { BaloiseAngularPipesModule } from '@baloise/web-app-ng-utils'
+import { ModalComponent } from './pages/modal/modal.component'
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { ServicesPageComponent } from './pages/services/services-page.component'
     FormPageComponent,
     TablePageComponent,
     ModalPageComponent,
+    ModalComponent,
     PipesPageComponent,
     ServicesPageComponent,
   ],
@@ -28,6 +31,7 @@ import { ServicesPageComponent } from './pages/services/services-page.component'
     ReactiveFormsModule,
     BaloiseDesignSystemModule.forRoot(),
     AgGridModule.withComponents([]),
+    BaloiseAngularPipesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

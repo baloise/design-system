@@ -1,12 +1,6 @@
-# HTML5
+# Installation
 
-<img style="width: 128px;" src="https://cdn.iconscout.com/icon/free/png-512/html5-10-569380.png" data-origin="https://cdn.iconscout.com/icon/free/png-512/html5-10-569380.png" alt="HTML5">
-
-This section explains how the Baloise Design System can be included into your HTML5 Application.
-
-## Installation
-
-### Node Modules
+## Node Modules
 
 Open the terminal and run the following commands to install the Baloise Design System.
 
@@ -38,7 +32,7 @@ Add the following 2 references to your `<head></head>`
 ></script>
 ```
 
-### CDN
+## CDN
 
 A way to easily use the library is via CDN. However we do not recommand this for production usage.
 
@@ -60,3 +54,38 @@ Add the following 4 references to your `<head></head>`
   src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js"
 ></script>
 ```
+
+## Apply styles
+
+To apply the Baloise Design System styles and typography follow [the instruction on the page styling documentation](/components/getting-started/html5/styles.html).
+
+::: warning
+Do not forget to apply the style, otherwise you components will not look like in this documentation ;-)
+:::
+
+### HTML Files
+
+Set the `bal-app` component into the body of the `src/index.html` file.
+
+```xml
+<body>
+  <bal-app>
+    <!-- Your application content -->
+  </bal-app>
+</body>
+```
+
+::: tip
+To have light grey background just add the attribute `background` to the `bal-app` component. Recommended to use with the `bal-card` component.
+
+```xml
+<body>
+  <bal-app background>
+    <bal-card>
+      <!-- Your application content -->
+    </bal-card>
+  </bal-app>
+</body>
+```
+
+:::

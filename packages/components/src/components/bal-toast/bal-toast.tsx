@@ -9,8 +9,10 @@ import { ColorTypes } from '../../types/color.types'
 })
 export class Toast {
   @Element() element!: HTMLBalToastElement
+
   timer!: NodeJS.Timer
   toastId = `bal-toast-${toastIds++}`
+
   @State() animationClass = 'fadeInDown'
 
   /**
@@ -22,6 +24,16 @@ export class Toast {
    * The duration of the toast in milliseconds.
    */
   @Prop() duration: number = 0
+
+  /**
+   * Content message
+   */
+  @Prop() message: string = ''
+
+  /**
+   * @internal Handler for on close event
+   */
+  @Prop() closeHandler: () => void = () => {}
 
   /**
    * Emitted when toast is closed
@@ -47,9 +59,10 @@ export class Toast {
    */
   @Method()
   async close(): Promise<void> {
-    this.balClose.emit(this.toastId)
     this.element.remove()
     clearTimeout(this.timer)
+    this.balClose.emit(this.toastId)
+    this.closeHandler()
   }
 
   get colorType() {
@@ -63,7 +76,7 @@ export class Toast {
     return (
       <Host id={this.toastId}>
         <div role="alert" onClick={() => this.close()} class={`toast ${this.animationClass} ${this.colorType}`}>
-          <bal-text class="toast-message">
+          <bal-text class="toast-message" innerHTML={this.message}>
             <slot />
           </bal-text>
           <bal-icon name="close" class="close" size="xsmall" inverted={this.color !== ''}></bal-icon>

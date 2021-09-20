@@ -18,17 +18,17 @@ A heading provides some additional helpers.
 
 ### Sizes
 
-<ClientOnly><docs-demo-bal-heading-51></docs-demo-bal-heading-51></ClientOnly>
+<ClientOnly><docs-demo-bal-heading-52></docs-demo-bal-heading-52></ClientOnly>
 
 
 ### Colors
 
-<ClientOnly><docs-demo-bal-heading-52></docs-demo-bal-heading-52></ClientOnly>
+<ClientOnly><docs-demo-bal-heading-53></docs-demo-bal-heading-53></ClientOnly>
 
 
 ### Spacing
 
-<ClientOnly><docs-demo-bal-heading-53></docs-demo-bal-heading-53></ClientOnly>
+<ClientOnly><docs-demo-bal-heading-54></docs-demo-bal-heading-54></ClientOnly>
 
 
 
