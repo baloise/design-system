@@ -1,9 +1,11 @@
-name: Release
+name: Documentation
 
-on:
-  push:
-    branches:
-      - master
+# on:
+#   push:
+#     branches:
+#       - master
+
+on: [push]
 
 jobs:
   Publish:
