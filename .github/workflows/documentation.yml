@@ -13,34 +13,34 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '0'
+        # with:
+        #   fetch-depth: '0'
 
-      - name: Git Identity
-        run: |
-          git config --global user.name 'baopso'
-          git config --global user.email 'Group.CH_Open-Source@baloise.ch'
-          git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Git Identity
+      #   run: |
+      #     git config --global user.name 'baopso'
+      #     git config --global user.email 'Group.CH_Open-Source@baloise.ch'
+      #     git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Fetch all Tags and Pull
-        run: |
-          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-          git pull
+      # - name: Fetch all Tags and Pull
+      #   run: |
+      #     git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      #     git pull
 
-      - name: Authenticate with Registry
-        run: |
-          echo "registry=http://registry.npmjs.org/" > .npmrc
-          echo //registry.npmjs.org/:_authToken=$NPM_TOKEN >> .npmrc
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # - name: Authenticate with Registry
+      #   run: |
+      #     echo "registry=http://registry.npmjs.org/" > .npmrc
+      #     echo //registry.npmjs.org/:_authToken=$NPM_TOKEN >> .npmrc
+      #   env:
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Clean install dependencies
-        run: npm ci
+      # - name: Clean install dependencies
+      #   run: npm ci
 
-      - name: Build Docs
-        run: npm run docs:publish
+      # - name: Build Docs
+      #   run: npm run docs:publish
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
