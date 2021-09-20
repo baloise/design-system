@@ -1,6 +1,6 @@
-## Installation
+# Installation
 
-### Node Modules
+## Node Modules
 
 Open the terminal and run the following commands to install the Baloise Design System.
 
@@ -32,7 +32,7 @@ Add the following 2 references to your `<head></head>`
 ></script>
 ```
 
-### CDN
+## CDN
 
 A way to easily use the library is via CDN. However we do not recommand this for production usage.
 
@@ -55,7 +55,7 @@ Add the following 4 references to your `<head></head>`
 ></script>
 ```
 
-### Apply styles
+## Apply styles
 
 To apply the Baloise Design System styles and typography follow [the instruction on the page styling documentation](/components/getting-started/html5/styles.html).
 

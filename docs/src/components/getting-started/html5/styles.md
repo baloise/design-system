@@ -10,7 +10,15 @@ Add the `bal-app` to your root element. Within this component we are able to use
 ...
 <body>
   <bal-app>
-    <!-- Use helpers & elements here -->
+    <header>
+      <!-- Header content -->
+    </header>
+    <main class="container">
+      <!-- Your application content -->
+    </main>
+    <bal-footer>
+      <!-- Footer content -->
+    </bal-footer>
   </bal-app>
 </body>
 ...

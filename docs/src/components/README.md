@@ -3,7 +3,7 @@
 Since we use css stylesheets and standard web components the library can be integrated in almost any web technology.
 
 <ClientOnly> 
-<bal-app>
+<div class="bal-app">
   <bal-card class="my-5">
     <bal-card-head>
       <img src="https://cdn.iconscout.com/icon/free/png-512/html5-10-569380.png" >
@@ -58,9 +58,9 @@ Since we use css stylesheets and standard web components the library can be inte
     <bal-card-content class="is-hidden-desktop">
       <p class="has-text-blue-light-text">Getting Started for an integration of the Baloise Design System with the React Library and the usage of the Sass variables.</p>
     </bal-card-content>
-    <bal-card-button icon-right="nav-go-right" link disabled>Comming soon</bal-card-button>
+    <bal-card-button icon-right="nav-go-right" link href="/components/getting-started/react/index.html">Continue</bal-card-button>
   </bal-card>
-</bal-app>
+</div>
 </ClientOnly>
 
 :::tip

@@ -106,6 +106,16 @@ module.exports = {
               path: '/components/getting-started/vue/index',
               children: ['getting-started/vue/installation', 'getting-started/vue/styles', 'getting-started/vue/usage'],
             },
+            {
+              title: 'React',
+              collapsable: true,
+              path: '/components/getting-started/react/index',
+              children: [
+                'getting-started/react/installation',
+                'getting-started/react/styles',
+                'getting-started/react/usage',
+              ],
+            },
           ],
         },
         {

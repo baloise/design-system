@@ -6,34 +6,20 @@ This project is built on top of the [Bulma CSS framework](https://bulma.io/).
 
 Add the `BalApp` to your root element. Within this component we are able to use the defined css classes.
 
-```vue
-<template>
-  <BalApp background>
-    <header>
-      <!-- Header content -->
-    </header>
-    <main class="container">
-      <!-- Page content -->
-      <router-view />
-    </main>
-    <bal-footer>
-      <div class="container">
-        <!-- Footer content -->
-        Footer
-      </div>
-    </bal-footer>
-  </BalApp>
-</template>
+```typescript
+import React from 'react'
+import { BalApp, BalButton, BalCard, BalCardContent } from '@baloise/design-system-components-react'
+import './App.scss'
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { BalApp } from '@baloise/design-system-components-vue'
+function App() {
+  return (
+    <BalApp background>
+      <main className="container">...</main>
+    </BalApp>
+  )
+}
 
-export default defineComponent({
-  name: 'App',
-  components: { BalApp },
-})
-</script>
+export default App
 ```
 
 ## Install Typography
@@ -47,12 +33,12 @@ npm install copyfiles --save-dev
 After installing the copyfiles dependency we need to define the copy command in our **package.json** file. Add a new script called `copy:fonts` and adjust the second path to your application.
 
 :::tip
-For angular apps the default path would be **src/assets/fonts** instead of **public/assets/fonts**
+For react apps the default path would be **src/assets/fonts** instead of **public/assets/fonts**
 :::
 
 ```json{2}
 "scripts": {
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts"
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* src/assets/fonts"
 }
 ```
 
@@ -61,7 +47,7 @@ Then we add the defined script `copy:fonts` in our `postinstall` script. Every t
 ```json{2}
 "scripts": {
   "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts"
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* src/assets/fonts"
 }
 ```
 

@@ -4,17 +4,25 @@ For the Baloise Design System styles you need to provide the typography and styl
 
 This project is built on top of the [Bulma CSS framework](https://bulma.io/).
 
-Add the `bal-app` to your root element. Within this component we are able to use the defined css classes.
+Place the `bal-app` component inside the angular root element in the `src/app/app.component.html` file.
 
 ```html
-...
-<body>
-  <bal-app>
-    <!-- Use helpers & elements here -->
-  </bal-app>
-</body>
-...
+<bal-app>
+  <header>
+    <!-- Header content -->
+  </header>
+  <main class="container">
+    <!-- Your application content -->
+  </main>
+  <bal-footer>
+    <!-- Footer content -->
+  </bal-footer>
+</bal-app>
 ```
+
+::: tip
+To have light grey background just add the attribute `background` to the `bal-app` component. Recommended to use with the `bal-card` component.
+:::
 
 ## Install Typography
 
