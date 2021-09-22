@@ -15,7 +15,6 @@ Checkout our Angular example app with a form example, service and more. [Angular
 ### Table of Content
 
 - [Installation](./installation.html)
-- [Styles](./styles.html)
 - [Usage](./usage.html)
   - [Component](./usage.html#component)
   - [Toast & Snackbar](./usage.html#toast-snackbar)

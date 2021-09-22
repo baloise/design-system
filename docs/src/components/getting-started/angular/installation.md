@@ -103,12 +103,49 @@ npm install @ngx-translate/core @ngx-translate/http-loader --save
 
 :::
 
-## Apply styles
+## Install Typography
 
-To apply the Baloise Design System styles and typography follow [the instruction on the page styling documentation](/components/getting-started/angular/styles.html).
+To apply the Baloise Design System typography follow [the instruction on the page typography documentation](/design/typography.html#install-web-font).
+
+## Install Theming / Styles
+
+To apply the Baloise Design System theming follow [the instruction on the page styling documentation](/components/getting-started/theming.html).
 
 ::: warning
 Do not forget to apply the style, otherwise you components will not look like in this documentation ;-)
+:::
+
+## HTML Structure
+
+Add the `bal-app` to your `app.component.ts` root element. Within this component we are able to use the defined css classes.
+
+```html
+...
+<bal-app>
+  <header>
+    <!-- Header content -->
+  </header>
+  <main class="container">
+    <!-- Your application content -->
+  </main>
+  <bal-footer>
+    <!-- Footer content -->
+  </bal-footer>
+</bal-app>
+...
+```
+
+::: tip
+To have light grey background just add the attribute `background` to the `bal-app` component. Recommended to use with the `bal-card` component.
+
+```xml
+<bal-app background>
+  <bal-card>
+    <!-- Your application content -->
+  </bal-card>
+</bal-app>
+```
+
 :::
 
 ## Import the ngModule

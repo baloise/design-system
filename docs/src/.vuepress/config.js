@@ -84,18 +84,17 @@ module.exports = {
           collapsable: true,
           children: [
             {
-              title: 'HTML 5',
+              title: 'HTML5 / Server-Side-Rendering',
               collapsable: true,
               path: '/components/getting-started/html5/index',
-              children: ['getting-started/html5/installation', 'getting-started/html5/styles'],
+              children: ['getting-started/html5/installation'],
             },
             {
-              title: 'Anuglar',
+              title: 'Angular',
               collapsable: true,
               path: '/components/getting-started/angular/index',
               children: [
                 'getting-started/angular/installation',
-                'getting-started/angular/styles',
                 'getting-started/angular/usage',
                 'getting-started/angular/ie11',
               ],
@@ -104,17 +103,17 @@ module.exports = {
               title: 'Vue',
               collapsable: true,
               path: '/components/getting-started/vue/index',
-              children: ['getting-started/vue/installation', 'getting-started/vue/styles', 'getting-started/vue/usage'],
+              children: ['getting-started/vue/installation', 'getting-started/vue/usage'],
             },
             {
               title: 'React',
               collapsable: true,
               path: '/components/getting-started/react/index',
-              children: [
-                'getting-started/react/installation',
-                'getting-started/react/styles',
-                'getting-started/react/usage',
-              ],
+              children: ['getting-started/react/installation', 'getting-started/react/usage'],
+            },
+            {
+              title: 'Theming',
+              path: '/components/getting-started/theming',
             },
           ],
         },

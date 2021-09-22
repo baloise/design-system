@@ -55,7 +55,7 @@ createApp(App)
   .use(vueAxios)
   /**
    * Our Baloise component library.
-   * https://baloise-design-system.vercel.app/
+   * https://design.baloise.dev/
    */
   .use(BaloiseDesignSystem, { useVite: false })
   /**

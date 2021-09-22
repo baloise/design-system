@@ -1,4 +1,4 @@
-# HTML5
+# HTML5 / Server-Side-Rendering
 
 <img style="width: 128px;" src="https://cdn.iconscout.com/icon/free/png-512/html5-10-569380.png" data-origin="https://cdn.iconscout.com/icon/free/png-512/html5-10-569380.png" alt="HTML5">
 
@@ -8,7 +8,7 @@ Getting Started for an integration of the Baloise Design System with HTML, CSS a
 - .NET, Java, Node, PHP, ...
 
 :::tip
-For more integration documentation like react or svelte go to the stencil documentation about [Framework Integration](https://stenciljs.com/docs/overview).
+For more integration documentation like svelte go to the stencil documentation about [Framework Integration](https://stenciljs.com/docs/overview).
 :::
 
 This section explains how the Baloise Design System can be included into your HTML5 Application.
@@ -16,4 +16,3 @@ This section explains how the Baloise Design System can be included into your HT
 ### Table of Content
 
 - [Installation](./installation.html)
-- [Styles](./styles.html)

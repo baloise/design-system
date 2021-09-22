@@ -162,7 +162,7 @@ export class Datepicker implements ComponentInterface {
   /**
    * Callback to determine which date in the datepicker should be selectable.
    */
-  @Prop() allowedDates: BalDateCallback | undefined = undefined
+  @Prop({ attribute: 'allowed-dates' }) allowedDates: BalDateCallback | undefined = undefined
 
   /**
    * Emitted when a option got selected.

@@ -11,7 +11,6 @@ Checkout our Vue example app with a form example, service and more. [Vue Example
 ### Table of Content
 
 - [Installation](./installation.html)
-- [Styles](./styles.html)
 - [Usage](./usage.html)
   - [Component](./usage.html#component)
   - [Toast & Snackbar](./usage.html#toast-snackbar)

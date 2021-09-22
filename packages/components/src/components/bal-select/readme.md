@@ -1,14 +1,18 @@
 # Select <Badge text="Two-way binding"/>
 
-For creating a list of options use the `BalOptionValue` interface.
+For creating a list of options use the `BalOptionValue` interface and the functions `NewBalOptionValue` or `NewBalSingleOptionValue`.
 
 ```typescript
+import { BalOptionValue, NewBalOptionValue } from '@baloise/design-system-components'
+
 export interface BalOptionValue<T> {
   value: string
   label: string
-  disabled?: boolean
+  disabled?: boolean // default false
   data?: T
 }
+
+const option = NewBalOptionValue('value', 'label')
 ```
 
 <!-- Auto Generated Below -->

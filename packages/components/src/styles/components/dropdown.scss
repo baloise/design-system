@@ -2,6 +2,10 @@
   display: inline-block;
 
   .dropdown {
+    &.is-active {
+      border-bottom: 0;
+    }
+
     .dropdown-content {
       padding: 0;
     }
