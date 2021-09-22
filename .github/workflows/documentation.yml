@@ -31,7 +31,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: baloise/design-system-docs:${{ GITHUB_SHA }}
+          tags: baloise/design-system-docs:${GITHUB_SHA}
 
       - name: Publish
         uses: mosteo-actions/docker-run@v1
@@ -47,4 +47,4 @@ jobs:
             --organisation "baloise-incubator" \
             --repository-name "okd4-example-apps" \
             --file "baloise-design-system-docs-test/values.yaml" \
-            --values "{baloise-design-system-docs.tag: ${{ GITHUB_SHA }}}"
+            --values "{baloise-design-system-docs.tag: ${GITHUB_SHA}}"
