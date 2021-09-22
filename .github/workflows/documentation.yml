@@ -41,18 +41,27 @@ jobs:
       #     tags: baloise/design-system-docs:${{ steps.vars.outputs.sha_short }}
 
       - name: Deploy
-        uses: mosteo-actions/docker-run@v1
+        uses: addnab/docker-run-action@v3
         with:
+          # registry: gcr.io
           image: baloise/gitopscli:latest
-          command: gitopscli version
-          # command: |
-          #   gitopscli deploy
-          #   --git-provider-url https://github.com \
-          #   --username ${{ secrets.GITOPSCLI_USERNAME }} \
-          #   --password ${{ secrets.GITOPSCLI_PASSWORD }} \
-          #   --git-user "GitOps CLI" \
-          #   --git-email "gitopscli@baloise.dev" \
-          #   --organisation "baloise-incubator" \
-          #   --repository-name "okd4-example-apps" \
-          #   --file "baloise-design-system-docs-test/values.yaml" \
-          #   --values "{baloise-design-system-docs.tag: ${{ steps.vars.outputs.sha_short }}}"
+          # options: -v ${{ github.workspace }}:/work -e ABC=123
+          run: |
+            gitopscli version
+
+      # - name: Deploy
+      #   uses: mosteo-actions/docker-run@v1
+      #   with:
+      #     image: baloise/gitopscli:latest
+      #     command: gitopscli version
+      # command: |
+      #   gitopscli deploy
+      #   --git-provider-url https://github.com \
+      #   --username ${{ secrets.GITOPSCLI_USERNAME }} \
+      #   --password ${{ secrets.GITOPSCLI_PASSWORD }} \
+      #   --git-user "GitOps CLI" \
+      #   --git-email "gitopscli@baloise.dev" \
+      #   --organisation "baloise-incubator" \
+      #   --repository-name "okd4-example-apps" \
+      #   --file "baloise-design-system-docs-test/values.yaml" \
+      #   --values "{baloise-design-system-docs.tag: ${{ steps.vars.outputs.sha_short }}}"
