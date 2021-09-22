@@ -2,21 +2,23 @@
 
 ## Node Modules
 
-Open the terminal and run the following commands to install the Baloise Design System.
-
-::: tip
 This is the recommanded setup for HTML5 applications or server-side-rendering application, because it is under version control with the help of npm.
-:::
+
+First lets create a node project to manage the dependencie versions. Open the terminal and navigate into your project folder. Then run `npm init` to setup the `package.json` file.
 
 ```bash
-npm install @baloise/design-system-fonts --save
+npm init
+```
+
+Now lets install the Baloise Design System.
+
+```bash
 npm install @baloise/design-system-components --save
 ```
 
 Add the following 2 references to your `<head></head>`
 
 ```html
-<link rel="stylesheet" href="node_modules/@baloise/design-system-fonts/lib/fonts.cdn.css" />
 <link
   rel="stylesheet"
   href="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
@@ -34,12 +36,11 @@ Add the following 2 references to your `<head></head>`
 
 ## CDN
 
-A way to easily use the library is via CDN. However we do not recommand this for production usage.
+An other way to easily use the library is via CDN. However we do not recommand this for production usage.
 
 Add the following 4 references to your `<head></head>`
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/fonts.cdn.css" />
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.css"
@@ -55,24 +56,38 @@ Add the following 4 references to your `<head></head>`
 ></script>
 ```
 
-## Apply styles
+## Install Typography
 
-To apply the Baloise Design System styles and typography follow [the instruction on the page styling documentation](/components/getting-started/html5/styles.html).
+To apply the Baloise Design System typography follow [the instruction on the page typography documentation](/design/typography.html#install-web-font).
+
+## Install Theming / Styles
+
+To apply the Baloise Design System theming follow [the instruction on the page styling documentation](/components/getting-started/theming.html).
 
 ::: warning
 Do not forget to apply the style, otherwise you components will not look like in this documentation ;-)
 :::
 
-### HTML Files
+## HTML Structure
 
-Set the `bal-app` component into the body of the `src/index.html` file.
+Add the `bal-app` to your root element. Within this component we are able to use the defined css classes.
 
-```xml
+```html
+...
 <body>
   <bal-app>
-    <!-- Your application content -->
+    <header>
+      <!-- Header content -->
+    </header>
+    <main class="container">
+      <!-- Your application content -->
+    </main>
+    <bal-footer>
+      <!-- Footer content -->
+    </bal-footer>
   </bal-app>
 </body>
+...
 ```
 
 ::: tip

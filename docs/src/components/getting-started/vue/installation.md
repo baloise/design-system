@@ -47,10 +47,56 @@ Vue.use(BaloiseDesignSystem, { useVite: true })
 
 :::
 
-## Apply styles
+## Install Typography
 
-To apply the Baloise Design System styles and typography follow [the instruction on the page styling documentation](/components/getting-started/vue/styles.html).
+To apply the Baloise Design System typography follow [the instruction on the page typography documentation](/design/typography.html#install-web-font).
+
+## Install Theming / Styles
+
+To apply the Baloise Design System theming follow [the instruction on the page styling documentation](/components/getting-started/theming.html).
 
 ::: warning
 Do not forget to apply the style, otherwise you components will not look like in this documentation ;-)
 :::
+
+## HTML Structure
+
+Add the `BalApp` to your root element. Within this component we are able to use the defined css classes.
+
+```vue
+<template>
+  <BalApp background>
+    <header>
+      <!-- Header content -->
+    </header>
+    <main class="container">
+      <!-- Page content -->
+      <router-view />
+    </main>
+    <bal-footer>
+      <div class="container">
+        <!-- Footer content -->
+        Footer
+      </div>
+    </bal-footer>
+  </BalApp>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { BalApp } from '@baloise/design-system-components-vue'
+
+export default defineComponent({
+  name: 'App',
+  components: { BalApp },
+})
+</script>
+```
+
+Now everything is ready to be used. Add some Baloise components and start the app with:
+
+```bash
+npm run serve
+# or for vite
+npm run dev
+```

@@ -28,10 +28,32 @@ Use npm to install the React proxy library.
 npm install @baloise/design-system-components-react
 ```
 
-## Apply styles
+## Install Typography
 
-To apply the Baloise Design System styles and typography follow [the instruction on the page styling documentation](/components/getting-started/react/styles.html).
+To apply the Baloise Design System typography follow [the instruction on the page typography documentation](/design/typography.html#install-web-font).
+
+## Install Theming / Styles
+
+To apply the Baloise Design System theming follow [the instruction on the page styling documentation](/components/getting-started/theming.html).
 
 ::: warning
 Do not forget to apply the style, otherwise you components will not look like in this documentation ;-)
 :::
+
+## HTML Structure
+
+Add the `BalApp` to your root element. Within this component we are able to use the defined css classes.
+
+```typescript
+import React from 'react'
+import { BalApp, BalButton, BalCard, BalCardContent } from '@baloise/design-system-components-react'
+import './App.scss'
+
+function App() {
+  return (
+    <BalApp background>
+      <main className="container">...</main>
+    </BalApp>
+  )
+}
+```

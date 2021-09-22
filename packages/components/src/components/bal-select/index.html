@@ -21,6 +21,7 @@
           <bal-select-option value="v1999" label="1999">1999</bal-select-option>
           <bal-select-option value="v2000" label="2000">2000</bal-select-option>
         </bal-select>
+        <br />
         <bal-select expanded disabled data-test-id="select-disabled" placeholder="Disabled"></bal-select>
         <br />
         <p id="bal-select-year-preview"></p>
@@ -56,7 +57,7 @@
         })
       </script>
 
-      <h3>Typeahead</h3>
+      <h2>Typeahead</h2>
       <section>
         <div class="has-background-blue has-padding">
           <bal-select id="bal-select-typeahaed" typeahead inverted expanded placeholder="Try finding your hero" no-data-label="No option available" data-test-id="typeahead">
@@ -110,7 +111,7 @@
         selectTypeaheadPreview.innerHTML = JSON.stringify(selectTypeahead.value)
       </script>
 
-      <h3>Multi-Select</h3>
+      <h2>Multi-Select</h2>
       <section>
         <bal-select multiple expanded placeholder="Try finding your hero" data-test-id="multiple">
           <bal-select-option checkbox value="BlackWidow" label="Black Widow">
@@ -140,7 +141,7 @@
         </bal-select>
       </section>
 
-      <h3>Multi-Select with typeahead</h3>
+      <h2>Multi-Select with typeahead</h2>
       <section>
         <bal-select multiple typeahead expanded placeholder="Try finding your hero" no-data-label="No option available">
           <bal-select-option checkbox value="BlackWidow" label="Black Widow">
@@ -170,7 +171,7 @@
         </bal-select>
       </section>
 
-      <h3>Remote Typeahead</h3>
+      <h2>Remote Typeahead</h2>
       <section>
         <bal-field id="bal-field-remote" expanded>
           <bal-field-label>Canton</bal-field-label>

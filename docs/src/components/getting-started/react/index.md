@@ -11,6 +11,5 @@ Checkout our React example app with a form example, service and more. [React Exa
 ### Table of Content
 
 - [Installation](./installation.html)
-- [Styles](./styles.html)
 - [Usage](./usage.html)
   - [Component](./usage.html#component)

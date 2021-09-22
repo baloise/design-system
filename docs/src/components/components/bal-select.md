@@ -20,15 +20,19 @@ A select is a collection of options, where the user can select a single one or m
 
 <ClientOnly><docs-component-tabs></docs-component-tabs></ClientOnly>
 
-For creating a list of options use the `BalOptionValue` interface.
+For creating a list of options use the `BalOptionValue` interface and the functions `NewBalOptionValue` or `NewBalSingleOptionValue`.
 
 ```typescript
+import { BalOptionValue, NewBalOptionValue } from '@baloise/design-system-components'
+
 export interface BalOptionValue<T> {
   value: string
   label: string
-  disabled?: boolean
+  disabled?: boolean // default false
   data?: T
 }
+
+const option = NewBalOptionValue('value', 'label')
 ```
 
 
@@ -39,22 +43,22 @@ export interface BalOptionValue<T> {
 <ClientOnly><docs-demo-bal-select-87></docs-demo-bal-select-87></ClientOnly>
 
 
-#### Typeahead
+### Typeahead
 
 <ClientOnly><docs-demo-bal-select-88></docs-demo-bal-select-88></ClientOnly>
 
 
-#### Multi-Select
+### Multi-Select
 
 <ClientOnly><docs-demo-bal-select-89></docs-demo-bal-select-89></ClientOnly>
 
 
-#### Multi-Select with typeahead
+### Multi-Select with typeahead
 
 <ClientOnly><docs-demo-bal-select-90></docs-demo-bal-select-90></ClientOnly>
 
 
-#### Remote Typeahead
+### Remote Typeahead
 
 <ClientOnly><docs-demo-bal-select-91></docs-demo-bal-select-91></ClientOnly>
 
