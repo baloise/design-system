@@ -45,7 +45,7 @@ jobs:
         with:
           image: baloise/gitopscli:latest
           run: |
-            gitopscli deploy
+            gitopscli deploy \
             --git-provider-url https://github.com \
             --username ${{ secrets.GITOPSCLI_USERNAME }} \
             --password ${{ secrets.GITOPSCLI_PASSWORD }} \
