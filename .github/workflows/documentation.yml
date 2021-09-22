@@ -54,4 +54,4 @@ jobs:
             --organisation "baloise-incubator" \
             --repository-name "okd4-example-apps" \
             --file "baloise-design-system-docs-test/values.yaml" \
-            --values "{baloise-design-system-docs.tag: ${{ steps.vars.outputs.sha_short }}}"
+            --values "{baloise-design-system-docs.image.tag: ${{ steps.vars.outputs.sha_short }}}"
