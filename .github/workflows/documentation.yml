@@ -13,34 +13,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        # with:
-        #   fetch-depth: '0'
-
-      # - name: Git Identity
-      #   run: |
-      #     git config --global user.name 'baopso'
-      #     git config --global user.email 'Group.CH_Open-Source@baloise.ch'
-      #     git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Fetch all Tags and Pull
-      #   run: |
-      #     git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-      #     git pull
-
-      # - name: Authenticate with Registry
-      #   run: |
-      #     echo "registry=http://registry.npmjs.org/" > .npmrc
-      #     echo //registry.npmjs.org/:_authToken=$NPM_TOKEN >> .npmrc
-      #   env:
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      # - name: Clean install dependencies
-      #   run: npm ci
-
-      # - name: Build Docs
-      #   run: npm run docs:publish
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -59,4 +31,20 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: baloise/design-system-docs:latest
+          tags: baloise/design-system-docs:${{ GITHUB_SHA }}
+
+      - name: Publish
+        uses: mosteo-actions/docker-run@v1
+        with:
+          image: baloise/gitopscli:latest
+          command: |
+            gitopscli deploy
+            --git-provider-url https://github.com/baloise-incubator \
+            --username ${{ secrets.GITOPSCLI_USERNAME }} \
+            --password ${{ secrets.GITOPSCLI_PASSWORD }} \
+            --git-user "GitOps CLI" \
+            --git-email "gitopscli@baloise.dev" \
+            --organisation "baloise-incubator" \
+            --repository-name "okd4-example-apps" \
+            --file "baloise-design-system-docs-test/values.yaml" \
+            --values "{baloise-design-system-docs.tag: ${{ GITHUB_SHA }}}"
