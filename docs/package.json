@@ -33,7 +33,6 @@
     "vuepress-plugin-tabs": "^0.3.0"
   },
   "resolutions": {
-    "glob-parent": ">=5.1.2",
-    "prismjs": ">=1.25.0"
+    "glob-parent": ">=5.1.2"
   }
 }
