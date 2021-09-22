@@ -19,7 +19,7 @@ This template should help get you started developing with Vue 3 and Typescript i
 
 ## Plugins
 
-- Component library: [Baloise Design System](https://baloise-design-system.vercel.app/)
+- Component library: [Baloise Design System](https://design.baloise.dev/)
 - Router: [Vue Router](https://next.router.vuejs.org/)
 - Form Validation: [VeeValidate](https://vee-validate.logaretm.com/v4/)
 - Internationalization: [Vue i18n](https://vue-i18n.intlify.dev/)

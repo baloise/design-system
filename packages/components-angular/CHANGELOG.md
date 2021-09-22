@@ -407,7 +407,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
     - `BalUiLibraryModule` renamed to `BaloiseDesignSystemModule`
   - package `@baloise/ui-library-testing` renamed to `@baloise/design-system-testing`
 - new font package `@baloise/design-system-fonts`
-  - follow the new style [instalation guide](https://baloise-design-system.vercel.app/components/getting-started/vue/styles.html)
+  - follow the new style [instalation guide](https://design.baloise.dev/components/getting-started/vue/styles.html)
 - new icon package `@baloise/design-system-icons`
 - removed vue-2 proxy libary
 - removed unuesed `bal-teaser-step` component
