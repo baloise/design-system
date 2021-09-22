@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.1](https://github.com/baloise/design-system/compare/v1.15.0...v1.15.1) (2021-09-22)
+
+
+### Bug Fixes
+
+* **dropdown:** remove possible border-bottom effect ([fad665e](https://github.com/baloise/design-system/commit/fad665e13fffa1dd311f39decaeae27ed3fd2bcd))
+
+
+
+
+
 # [1.15.0](https://github.com/baloise/design-system/compare/v1.14.5...v1.15.0) (2021-09-20)
 
 ### Bug Fixes
