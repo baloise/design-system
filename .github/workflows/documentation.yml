@@ -43,14 +43,14 @@ jobs:
       - name: Deploy
         uses: addnab/docker-run-action@v3
         with:
-          image: baloise/gitopscli:latest
+          image: baloise/gitopscli:v5.1.0
           run: |
             gitopscli deploy \
             --git-provider-url https://github.com \
-            --username ${{ secrets.GITOPSCLI_USERNAME }} \
+            --username ${{ secrets.INCUBATOR_GITHUB_USER }} \
             --password ${{ secrets.INCUBATOR_GITHUB_TOKEN }} \
-            --git-user "GitOps CLI" \
-            --git-email "gitopscli@baloise.dev" \
+            --git-user "Baloise Incubator" \
+            --git-email "incubator@baloise.dev" \
             --organisation "baloise-incubator" \
             --repository-name "okd4-example-apps" \
             --file "baloise-design-system-docs-test/values.yaml" \
