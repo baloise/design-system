@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, Listen, State, Event, EventEmitter } from '@stencil/core'
+import { Component, Host, h, Prop, Element, Listen, State, Event, EventEmitter, Method } from '@stencil/core'
 import filesize from 'filesize.js'
 import { FileUploadRejectedFile, FileUploadRejectionReason } from './bal-file-upload.type'
 
@@ -134,7 +134,7 @@ export class FileUpload {
           }
         }
       }
-      if(this.files.length !== list.length) {
+      if (this.files.length !== list.length) {
         this.files = [...list]
         this.balChangeEventEmitter.emit(this.files)
       }
@@ -153,6 +153,11 @@ export class FileUpload {
       this.element.removeEventListener(eventName, this.preventDefaults, false)
       document.body.removeEventListener(eventName, this.preventDefaults, false)
     })
+  }
+
+  @Method()
+  async clear(): Promise<void> {
+    this.files = []
   }
 
   preventDefaults(e: Event) {

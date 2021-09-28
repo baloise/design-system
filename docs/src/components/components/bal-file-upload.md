@@ -47,6 +47,13 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 | **balChange**       | Triggers when a file is added or removed.                                | <code>File[]</code>                 |
 | **balRejectedFile** | Triggers when a file is rejected due to not allowed MIME-Type and so on. | <code>FileUploadRejectedFile</code> |
 
+### Methods
+
+
+| Method    | Description | Signature                                         |
+| :-------- | :---------- | :------------------------------------------------ |
+| **clear** |             | <code>clear() =&#62; Promise&#60;void&#62;</code> |
+
 ## Testing
 
 The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
