@@ -105,16 +105,13 @@
   }
 
   &.is-outlined.is-inverted {
-    &.is-success:hover,
-    &.is-success:focus {
+    &.is-success:hover {
       color: $success;
     }
-    &.is-warning:hover,
-    &.is-warning:focus {
+    &.is-warning:hover {
       color: $warning;
     }
-    &.is-danger:hover,
-    &.is-danger:focus {
+    &.is-danger:hover {
       color: $danger;
     }
   }
@@ -139,6 +136,15 @@
     }
   }
 
+  &:focus {
+    &.is-link {
+      color: $cyan;
+    }
+    &.is-outlined.is-info {
+      color: $blue;
+    }
+  }
+
   &:hover,
   &:active {
     &::before {
@@ -147,10 +153,6 @@
   }
 
   &.is-primary {
-    &:focus,
-    &.is-focused,
-    &:active,
-    &.is-active,
     &:hover,
     &.is-hovered {
       background: $blue;
@@ -190,11 +192,7 @@
   &.is-warning.is-outlined,
   &.is-success.is-outlined {
     &:hover,
-    &.is-hovered,
-    &:focus,
-    &.is-focused,
-    &:active,
-    &.is-active {
+    &.is-hovered {
       color: $white;
     }
   }
@@ -204,11 +202,7 @@
     color: $white;
 
     &:hover,
-    &.is-hovered,
-    &:focus,
-    &.is-focused,
-    &:active,
-    &.is-active {
+    &.is-hovered {
       color: $blue;
       background: $white;
     }
@@ -223,11 +217,7 @@
 
     &:not(.is-disabled) {
       &:hover,
-      &.is-hovered,
-      &:focus,
-      &.is-focused,
-      &:active,
-      &.is-active {
+      &.is-hovered {
         color: $blue;
         background: $blue-light-line;
         border-color: $blue-line;
@@ -237,11 +227,7 @@
 
   &.is-info.is-inverted.is-outlined {
     &:hover,
-    &.is-hovered,
-    &:focus,
-    &.is-focused,
-    &:active,
-    &.is-active {
+    &.is-hovered {
       color: $white;
       background: darken($blue, 10);
     }
@@ -249,11 +235,7 @@
 
   &.is-info.is-inverted {
     &:hover,
-    &.is-hovered,
-    &:focus,
-    &.is-focused,
-    &:active,
-    &.is-active {
+    &.is-hovered {
       color: $white;
       background: $cyan;
     }
@@ -264,11 +246,7 @@
     background: transparent;
 
     &:hover,
-    &.is-hovered,
-    &:focus,
-    &.is-focused,
-    &:active,
-    &.is-active {
+    &.is-hovered {
       color: $blue;
       background: transparent;
       text-decoration: underline;
@@ -282,11 +260,7 @@
     background: $blue-light;
 
     &:hover,
-    &.is-hovered,
-    &:focus,
-    &.is-focused,
-    &:active,
-    &.is-active {
+    &.is-hovered {
       color: $blue;
       background: $blue-light-hover;
     }
@@ -299,11 +273,7 @@
     background: transparent;
 
     &:hover,
-    &.is-hovered,
-    &:focus,
-    &.is-focused,
-    &:active,
-    &.is-active {
+    &.is-hovered {
       color: $blue;
       background: transparent;
     }
@@ -317,11 +287,7 @@
     }
 
     &:hover,
-    &.is-hovered,
-    &:focus,
-    &.is-focused,
-    &:active,
-    &.is-active {
+    &.is-hovered {
       &.is-primary {
         color: $white;
         background: $cyan;

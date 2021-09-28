@@ -190,12 +190,12 @@ export class Button implements ComponentInterface {
   private get spinnerCssClass() {
     return {
       'is-small': true,
-      'is-inverted': !(this.color === 'link' || this.outlined),
+      'is-inverted': !(this.color === 'link' || this.color === 'primary-light' || this.color === 'info-light' || this.outlined),
     }
   }
 
   private get leftIconAttrs() {
-    if (!this.icon) {
+    if (!this.icon || this.loading) {
       return {
         style: { display: 'none' },
       }
@@ -204,7 +204,7 @@ export class Button implements ComponentInterface {
   }
 
   private get leftRightAttrs() {
-    if (!this.iconRight) {
+    if (!this.iconRight || this.loading) {
       return {
         style: { display: 'none' },
       }
