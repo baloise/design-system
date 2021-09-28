@@ -155,6 +155,9 @@ export class FileUpload {
     })
   }
 
+  /**
+   * Sets the file list to an empty list
+   */
   @Method()
   async clear(): Promise<void> {
     this.files = []

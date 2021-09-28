@@ -528,6 +528,7 @@ export namespace Components {
           * Accepted MIME-Types like `image/png,image/jpeg`.
          */
         "accept": string;
+        "clear": () => Promise<void>;
         /**
           * If `true` the button is disabled
          */

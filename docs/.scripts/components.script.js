@@ -205,6 +205,8 @@ function transformScripts(component) {
       `export function ${camelize(component.tag)}(
         balSnackbarController,
         balToastController,
+        balModalController,
+        deepReady,
         BalTableButtonRenderer,
         BalTableTagRenderer,
         BalTableTextRenderer

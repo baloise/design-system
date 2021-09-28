@@ -4,7 +4,7 @@
 
 <script>
 import * as BalComponentScripts from '../generated/components'
-import { balSnackbarController, balToastController } from '../lib/dist'
+import { balSnackbarController, balToastController, balModalController, deepReady } from '../lib/dist'
 import {
   BalTableButtonRenderer,
   BalTableTagRenderer,
@@ -50,6 +50,8 @@ export default {
             fn(
               balSnackbarController,
               balToastController,
+              balModalController,
+              deepReady,
               BalTableButtonRenderer,
               BalTableTagRenderer,
               BalTableTextRenderer,
