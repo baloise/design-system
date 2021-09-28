@@ -11,7 +11,7 @@ $modal-close-top: 32px;
 
 $modal-card-body-padding: 16px 32px;
 $modal-card-head-radius: 0px;
-$modal-card-head-padding: 32px 32px 16px 32px;
+$modal-card-head-padding: 20px 20px 16px 20px;
 
 $modal-card-head-radius: 0px;
 $modal-card-foot-radius: 0px;
@@ -48,6 +48,10 @@ bal-modal-body {
   font-family: $body-family;
 }
 
+bal-modal-header.modal-card-head {
+  padding: $modal-card-head-padding;
+}
+
 bal-modal-header.modal-card-head,
 bal-modal-footer.modal-card-foot {
   border: none;
@@ -60,12 +64,12 @@ bal-modal-footer.modal-card-foot {
 }
 
 .modal-card {
-  max-width: calc(100vw - 32px);
+  max-width: calc(100vw - 20px);
   width: var(--bal-width, $modal-content-width);
 }
 
 .modal-card-foot {
-  padding: 20px 32px 32px 32px;
+  padding: 20px 20px 20px 20px;
 
   .buttons {
     width: 100%;
