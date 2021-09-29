@@ -72,7 +72,7 @@
       <h2 class="title is-size-2">HTML solution with open & close</h2> -->
 
       <section>
-        <bal-modal id="bal-modal-example-width">
+        <bal-modal id="bal-modal-example-width" data-test-id="modal">
           <bal-modal-header>Modal Title</bal-modal-header>
           <bal-modal-body>
             <p>
@@ -88,7 +88,7 @@
           </bal-modal-footer>
         </bal-modal>
 
-        <bal-button id="bal-modal-trigger-example-width">Launch Modal</bal-button>
+        <bal-button id="bal-modal-trigger-example-width" data-test-id="open-modal-button">Launch Modal</bal-button>
       </section>
       <script type="text/javascript">
         const modalElementCustomWidth = document.getElementById('bal-modal-example-width')
