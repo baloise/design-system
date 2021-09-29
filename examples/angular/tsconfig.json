@@ -18,7 +18,8 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
-      "@angular/*": ["./node_modules/@angular/*"]
+      "@angular/*": ["./node_modules/@angular/*"],
+      "@baloise/*": ["./node_modules/@baloise/*"]
     }
   },
   "angularCompilerOptions": {

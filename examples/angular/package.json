@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^12.2.7",
     "@angular/platform-browser-dynamic": "^12.2.7",
     "@angular/router": "^12.2.7",
-    "@baloise/design-system-components-angular": "^1.15.0-alpha.8",
+    "@baloise/design-system-components-angular": "^1.16.1",
     "@baloise/design-system-components-table": "^1.14.5",
     "@baloise/example-angular-shared-lib": "0.0.1",
     "@baloise/web-app-google-utils": "^1.2.0",
