@@ -173,7 +173,7 @@ export class Select {
   }
 
   @Listen('keydown', { target: 'window' })
-  handleKeyDown(event: KeyboardEvent) {
+  async handleKeyDown(event: KeyboardEvent) {
     if (this.isDropdownOpen) {
       if (isArrowDownKey(event) || isArrowUpKey(event)) {
         preventDefault(event)
@@ -198,6 +198,11 @@ export class Select {
       }
       if (isSpaceKey(event) && !this.typeahead) {
         preventDefault(event)
+      }
+    } else {
+      if (isArrowDownKey(event) || isArrowUpKey(event)) {
+        preventDefault(event)
+        await this.open()
       }
     }
   }
@@ -582,7 +587,7 @@ export class Select {
   }
 
   private handleKeyPress = async (event: KeyboardEvent) => {
-    if (isSpaceKey(event) && !this.isDropdownOpen) {
+    if (!this.isDropdownOpen && isSpaceKey(event)) {
       preventDefault(event)
       await this.open()
     }
