@@ -26,6 +26,7 @@ export class Select {
   private didInit = false
   private inputId = `bal-select-${selectIds++}`
   private clearScrollToValue!: NodeJS.Timeout
+  private clearSelectValue!: NodeJS.Timeout
   private mutationO?: MutationObserver
 
   @State() inputValue: string = ''
@@ -33,6 +34,7 @@ export class Select {
   @State() isDropdownOpen: boolean = false
   @State() options: Map<string, BalOptionController> = new Map<string, BalOptionController>()
   @State() labelToScrollTo: string = ''
+  @State() labelToSelectTo: string = ''
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -173,7 +175,7 @@ export class Select {
   }
 
   @Listen('keydown', { target: 'window' })
-  handleKeyDown(event: KeyboardEvent) {
+  async handleKeyDown(event: KeyboardEvent) {
     if (this.isDropdownOpen) {
       if (isArrowDownKey(event) || isArrowUpKey(event)) {
         preventDefault(event)
@@ -198,6 +200,14 @@ export class Select {
       }
       if (isSpaceKey(event) && !this.typeahead) {
         preventDefault(event)
+      }
+    } else {
+      if (isArrowDownKey(event) || isArrowUpKey(event)) {
+        preventDefault(event)
+        await this.open()
+      }
+      if (!this.typeahead && event.key.length === 1) {
+        this.selectOptionByLabel(event.key)
       }
     }
   }
@@ -289,6 +299,7 @@ export class Select {
     if (this.inputElement) {
       this.updateInputValue('')
       this.rawValue = []
+      this.value = this.multiple ? [] : ''
     }
   }
 
@@ -456,6 +467,30 @@ export class Select {
     }, 600)
   }
 
+  private selectOptionByLabel(key: string) {
+    this.labelToSelectTo = this.labelToSelectTo + key
+    clearTimeout(this.clearSelectValue)
+    this.clearSelectValue = setTimeout(() => {
+      this.selectLabel(this.labelToSelectTo)
+      this.labelToSelectTo = ''
+    }, 600)
+  }
+
+  private async selectLabel(label: string) {
+    if (label !== ' ') {
+      const option = this.optionArray.find(o => startsWith(o.label || '', label))
+      if (!isNil(option)) {
+        const optionElement = this.el.querySelector<HTMLButtonElement>(`button#${option.id}`)
+        if (!isNil(optionElement)) {
+          const index = this.optionArray.indexOf(option)
+          this.focusIndex = index
+          this.select(option.value)
+        }
+      }
+      this.labelToScrollTo = ''
+    }
+  }
+
   private async scrollToLabel(label: string) {
     if (label !== ' ') {
       const option = this.optionArray.find(o => startsWith(o.label || '', label))
@@ -582,7 +617,7 @@ export class Select {
   }
 
   private handleKeyPress = async (event: KeyboardEvent) => {
-    if (isSpaceKey(event) && !this.isDropdownOpen) {
+    if (!this.isDropdownOpen && isSpaceKey(event)) {
       preventDefault(event)
       await this.open()
     }

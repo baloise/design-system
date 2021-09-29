@@ -24,6 +24,19 @@
 | `balRejectedFile` | Triggers when a file is rejected due to not allowed MIME-Type and so on. | `CustomEvent<FileUploadRejectedFile>` |
 
 
+## Methods
+
+### `clear() => Promise<void>`
+
+Sets the file list to an empty list
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Depends on

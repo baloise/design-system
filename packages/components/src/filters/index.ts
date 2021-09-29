@@ -5,6 +5,7 @@ import { PhoneNumber } from './balPhoneNumber'
 export { balBlobToUrl } from './balBlobToUrl'
 export { balCapitalize } from './balCapitalize'
 export { balClaimNumber } from './balClaimNumber'
+export { balContractNumber } from './balContractNumber'
 export { balCurrency } from './balCurrency'
 export { balDefaultString } from './balDefaultString'
 export { balFileSize } from './balFileSize'
@@ -18,6 +19,7 @@ export interface BalFiltersStatic {
   balBlobToUrl: (value: Blob) => string
   balCapitalize: (value: string | any | undefined) => string
   balClaimNumber: (value: string | undefined | any | number) => string
+  balContractNumber: (value: string | undefined | any | number) => string
   balCurrency: (value: number | any, currencySign: string, showZero: boolean, decimalLength: number) => string
   balDefaultString: (value: string | undefined | any, defaultString: string) => string
   balFileSize: (value: number) => string

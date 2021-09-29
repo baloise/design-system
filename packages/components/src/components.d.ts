@@ -529,6 +529,10 @@ export namespace Components {
          */
         "accept": string;
         /**
+          * Sets the file list to an empty list
+         */
+        "clear": () => Promise<void>;
+        /**
           * If `true` the button is disabled
          */
         "disabled": boolean;

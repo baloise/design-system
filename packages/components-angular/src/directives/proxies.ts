@@ -540,7 +540,8 @@ export class BalFieldMessage {
 import { FileUploadRejectedFile } from '@baloise/design-system-components';
 export declare interface BalFileUpload extends Components.BalFileUpload {}
 @ProxyCmp({
-  inputs: ['accept', 'disabled', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple']
+  inputs: ['accept', 'disabled', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple'],
+  methods: ['clear']
 })
 @Component({
   selector: 'bal-file-upload',

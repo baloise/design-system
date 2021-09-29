@@ -9,6 +9,10 @@
     width: 100%;
   }
 
+  &.is-disabled {
+    background: $blue-light;
+  }
+
   .bal-select__slot {
     position: relative;
     align-items: center;

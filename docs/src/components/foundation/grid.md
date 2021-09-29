@@ -42,7 +42,7 @@ Each column will have an equal width, no matter the number of columns.
     <div class="column is-full has-background-blue has-text-white">Full column</div>
     <div class="column is-half has-background-primary has-text-white">Half column</div>
     <div class="column is-half has-background-success has-text-white">Half column</div>
-    <div class="column is-third has-background-warning has-text-white">1 Third column</div>
+    <div class="column is-one-third has-background-warning has-text-white">1 Third column</div>
     <div class="column is-two-thirds has-background-danger has-text-white">2 Third column</div>
   </div>
 </docs-demo>
@@ -52,7 +52,7 @@ Each column will have an equal width, no matter the number of columns.
   <div class="column is-full has-background-blue has-text-white">Full column</div>
   <div class="column is-half has-background-primary has-text-white">Half column</div>
   <div class="column is-half has-background-success has-text-white">Half column</div>
-  <div class="column is-third has-background-warning has-text-white">1 Third column</div>
+  <div class="column is-one-third has-background-warning has-text-white">1 Third column</div>
   <div class="column is-two-thirds has-background-danger has-text-white">2 Third column</div>
 </div>
 ```
