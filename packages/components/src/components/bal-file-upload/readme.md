@@ -28,7 +28,7 @@
 
 ### `clear() => Promise<void>`
 
-
+Sets the file list to an empty list
 
 #### Returns
 

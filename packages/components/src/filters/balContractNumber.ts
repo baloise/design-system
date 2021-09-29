@@ -2,10 +2,10 @@
  * Transforms the given string into the correct police-number format.
  *
  * ```typescript
- * balPoliceNumber('501222333') // 50/1.222.333
+ * balContractNumber('501222333') // 50/1.222.333
  * ```
  */
-export function balPoliceNumber(value: string | undefined | null | number): string {
+export function balContractNumber(value: string | undefined | null | number): string {
   if (!value) {
     return ''
   }

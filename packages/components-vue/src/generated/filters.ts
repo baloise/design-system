@@ -5,6 +5,7 @@ import {
   balBlobToUrl,
   balCapitalize,
   balClaimNumber,
+  balContractNumber,
   balCurrency,
   balDefaultString,
   balFileSize,
@@ -19,6 +20,7 @@ export const applyFilters = (app: App) => {
   app.config.globalProperties.$balBlobToUrl = balBlobToUrl
   app.config.globalProperties.$balCapitalize = balCapitalize
   app.config.globalProperties.$balClaimNumber = balClaimNumber
+  app.config.globalProperties.$balContractNumber = balContractNumber
   app.config.globalProperties.$balCurrency = balCurrency
   app.config.globalProperties.$balDefaultString = balDefaultString
   app.config.globalProperties.$balFileSize = balFileSize
