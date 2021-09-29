@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://github.com/baloise/design-system/compare/v1.15.1...v1.16.0) (2021-09-29)
+
+
+### Bug Fixes
+
+* **button:** fix loading state with icons ([5d31e89](https://github.com/baloise/design-system/commit/5d31e892fbdb7de6a00b12c45c9cf47ffff3c8a3))
+* **modal:** adjust paddings ([d13e24b](https://github.com/baloise/design-system/commit/d13e24b55ccce34773ff7805909ecb068d54e509))
+* **radio:** remove debugger statement ([c555113](https://github.com/baloise/design-system/commit/c5551135792e1fe76844c4676b2360b1fc19c011))
+* **select:** improve clear and key navigation ([e77479d](https://github.com/baloise/design-system/commit/e77479df925bff61bc39e224309c0a2c95564512))
+* **select:** improve disabled look ([069b80d](https://github.com/baloise/design-system/commit/069b80d7c6552349922814f65f376c609fae75be))
+* **select:** open dropdown with arrow keys ([f1621dd](https://github.com/baloise/design-system/commit/f1621ddd71651ce8d25e4ac9f1f02b2142201960))
+
+
+### Features
+
+* **file-upload:** add clear method ([ffcaa84](https://github.com/baloise/design-system/commit/ffcaa84f3b7ec49414a709dc50b5111287b0cbde))
+* **filters:** add police number filter ([912e74b](https://github.com/baloise/design-system/commit/912e74b2ac29194e05fa54dc54bc6199a8ed3b26))
+
+
+
+
+
 ## [1.15.1](https://github.com/baloise/design-system/compare/v1.15.0...v1.15.1) (2021-09-22)
 
 
