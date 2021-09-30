@@ -1,7 +1,7 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 import { isEmpty } from 'lodash'
 import { ColorTypes } from '../../types/color.types'
-import { PaddingCardType } from '../../types/padding.types'
+import { PaddingCardType, SpacingCardType } from '../../types/padding.types'
 
 @Component({
   tag: 'bal-card',
@@ -32,6 +32,11 @@ export class BalCard {
   /**
    * Defines the size of the padding grid
    */
+  @Prop() spacing: SpacingCardType = ''
+
+  /**
+   * @deprecated Defines the size of the padding grid
+   */
   @Prop() padding: PaddingCardType = ''
 
   /**
@@ -54,8 +59,22 @@ export class BalCard {
    */
   @Prop() teaser = false
 
-  get paddingTypeClass(): string {
-    return isEmpty(this.padding) ? '' : `has-${this.padding}-padding`
+  get spacingTypeClass(): string {
+    if (isEmpty(this.spacing)) {
+      if (this.padded || isEmpty(this.padding)) {
+        return 'has-medium-padding'
+      }
+
+      if (this.padding === 'pure') {
+        return 'has-none-padding'
+      }
+
+      if (this.padding === 'form') {
+        return 'has-large-padding'
+      }
+    }
+
+    return isEmpty(this.spacing) ? 'has-medium-padding' : `has-${this.spacing}-padding`
   }
 
   get colorTypeClass(): string {
@@ -72,7 +91,7 @@ export class BalCard {
         class={[
           'bal-card',
           this.colorTypeClass,
-          this.paddingTypeClass,
+          this.spacingTypeClass,
           this.teaser ? 'is-teaser' : '',
           this.square ? 'is-square' : '',
           this.border ? 'has-border' : '',
