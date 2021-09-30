@@ -1,18 +1,18 @@
 @mixin cardPadding($padding-value, $image-value) {
-  .bal-card-heading,
-  .bal-card-head,
-  .bal-card-title,
-  .bal-card-subtitle,
-  .bal-card-content,
-  .bal-card-actions {
+  & > .bal-card-heading,
+  & > .bal-card-head,
+  & > .bal-card-title,
+  & > .bal-card-subtitle,
+  & > .bal-card-content,
+  & > .bal-card-actions {
     padding-left: $padding-value;
     padding-right: $padding-value;
   }
 
-  .bal-card-heading + .bal-card-content,
-  .bal-card-title + .bal-card-content,
-  .bal-card-subtitle + .bal-card-content,
-  .bal-card-head + .bal-card-content {
+  & > .bal-card-heading + .bal-card-content,
+  & > .bal-card-title + .bal-card-content,
+  & > .bal-card-subtitle + .bal-card-content,
+  & > .bal-card-head + .bal-card-content {
     padding-top: $padding-value;
   }
 
@@ -24,17 +24,17 @@
     padding-bottom: $padding-value;
   }
 
-  .bal-card-actions {
+  & > .bal-card-actions {
     padding-top: $padding-value;
   }
 
-  bal-accordion,
-  bal-card-button {
+  & > bal-accordion,
+  & > bal-card-button {
     padding-top: $padding-value;
     padding-bottom: 0 !important;
   }
 
-  .bal-card-head {
+  & > .bal-card-head {
     min-height: 60px + $padding-value;
 
     > div {
