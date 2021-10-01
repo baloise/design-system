@@ -1,4 +1,9 @@
 /**
+ * Config
+ */
+export * from './config'
+
+/**
  * Components
  */
 export { Components, JSX } from './components'

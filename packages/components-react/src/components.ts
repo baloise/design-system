@@ -5,9 +5,8 @@ import { createReactComponent } from './react-component-lib';
 
 import type { JSX } from '@baloise/design-system-components';
 
-import { defineCustomElements } from '@baloise/design-system-components/loader';
 
-defineCustomElements();
+
 export const BalAccordion = /*@__PURE__*/createReactComponent<JSX.BalAccordion, HTMLBalAccordionElement>('bal-accordion');
 export const BalApp = /*@__PURE__*/createReactComponent<JSX.BalApp, HTMLBalAppElement>('bal-app');
 export const BalButton = /*@__PURE__*/createReactComponent<JSX.BalButton, HTMLBalButtonElement>('bal-button');

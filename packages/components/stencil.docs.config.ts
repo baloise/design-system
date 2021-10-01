@@ -16,19 +16,17 @@ export const config: Config = {
     }),
     sass(),
   ],
-  buildEs5: true,
   extras: {
-    cssVarsShim: true,
     dynamicImportShim: true,
     initializeNextTick: true,
     safari10: true,
     scriptDataOpts: true,
-    shadowDomShim: true,
+    appendChildSlotFix: true,
+    cloneNodeFix: true,
   },
   outputTargets: [
     {
       type: 'dist',
-      polyfills: true,
       empty: true,
       esmLoaderPath: '../loader',
     },

@@ -70,22 +70,17 @@ export const config: Config = {
     }),
     sass(),
   ],
-  buildEs5: true,
   extras: {
-    cssVarsShim: true,
     dynamicImportShim: true,
     initializeNextTick: true,
     safari10: true,
     scriptDataOpts: true,
-    shadowDomShim: true,
     appendChildSlotFix: true,
     cloneNodeFix: true,
-    slotChildNodesFix: true,
   },
   outputTargets: [
     {
       type: 'dist',
-      polyfills: true,
       empty: true,
       esmLoaderPath: '../loader',
     },
@@ -132,7 +127,7 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '@baloise/design-system-components',
       proxiesFile: '../components-react/src/components.ts',
-      includeDefineCustomElements: true,
+      includeDefineCustomElements: false,
     }),
   ],
 }
