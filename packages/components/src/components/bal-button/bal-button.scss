@@ -1,6 +1,9 @@
 @import '../../styles/global.utilities';
 
 :host {
+  @include margin(0);
+  @include padding(0);
+
   display: inline-block;
   width: auto;
   font-family: $family-primary;
@@ -13,6 +16,8 @@
   vertical-align: -webkit-baseline-middle; // the best for those that support it
   pointer-events: auto;
   font-kerning: none;
+  font-size: 0px;
+  line-height: 0px;
 }
 
 :host(.is-fullwidth) {

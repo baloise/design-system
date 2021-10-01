@@ -1,0 +1,52 @@
+.bal-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -4px;
+  margin-right: -4px;
+
+  &.is-center {
+    justify-content: center;
+  }
+
+  & > bal-button {
+    padding-bottom: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    display: block;
+    flex: 1;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    &.is-full {
+      width: 100%;
+      flex: none;
+    }
+
+    &.is-half {
+      width: 50%;
+      flex: none;
+    }
+
+    &.is-one-third {
+      width: 33.3333%;
+      flex: none;
+    }
+
+    &.is-two-thirds {
+      width: 66.6666%;
+      flex: none;
+    }
+  }
+
+  @include tablet() {
+    & > bal-button {
+      flex: none;
+
+      &.is-half,
+      &.is-full {
+        width: auto;
+      }
+    }
+  }
+}
