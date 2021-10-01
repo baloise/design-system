@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0](https://github.com/baloise/design-system/compare/v1.16.2...v1.17.0) (2021-10-01)
+
+
+### Bug Fixes
+
+* **card:** adjust spacing ([2b7c745](https://github.com/baloise/design-system/commit/2b7c7459897cb080ccd884183928eb5cfe80a30d))
+* **container:** adjust container to new paddings ([d033195](https://github.com/baloise/design-system/commit/d0331959c6de4a7eb53d95f6bfec8582bd36afc6))
+* **select:** fix arrow key navigation on focus ([fd77ff4](https://github.com/baloise/design-system/commit/fd77ff4e7485981f29f12b37f1cba9f144d72b0a))
+* **tabs:** adjust disabled style ([3813bf7](https://github.com/baloise/design-system/commit/3813bf7d7b942fc4e0f4f2b2de68efe12c0f1428))
+
+
+### Features
+
+* **button:** add button group helper css class ([a03dcf3](https://github.com/baloise/design-system/commit/a03dcf3a201dd0cc8c851dbca274adfe6e000780))
+
+
+
+
+
 ## [1.16.2](https://github.com/baloise/design-system/compare/v1.16.1...v1.16.2) (2021-09-29)
 
 
