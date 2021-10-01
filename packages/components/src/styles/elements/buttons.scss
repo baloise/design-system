@@ -44,6 +44,8 @@
       flex: none;
 
       &.is-half,
+      &.is-one-third,
+      &.is-two-thirds,
       &.is-full {
         width: auto;
       }
