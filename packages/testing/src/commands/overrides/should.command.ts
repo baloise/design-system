@@ -21,8 +21,6 @@ const shouldAndAndCommand = (
   value: any,
   options: any,
 ) => {
-  console.log(element)
-
   if (isAccordion(element)) {
     if (['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused'].includes(condition)) {
       return originalFn(element.find(selectors.accordion.button), condition, key, value, options)
