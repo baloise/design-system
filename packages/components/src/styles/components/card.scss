@@ -1,4 +1,63 @@
+@mixin cardPadding($padding-value, $image-value) {
+  & > .bal-card-heading,
+  & > .bal-card-head,
+  & > .bal-card-title,
+  & > .bal-card-subtitle,
+  & > .bal-card-content,
+  & > .bal-card-actions {
+    padding-left: $padding-value;
+    padding-right: $padding-value;
+  }
+
+  & > .bal-card-heading + .bal-card-content,
+  & > .bal-card-title + .bal-card-content,
+  & > .bal-card-subtitle + .bal-card-content,
+  & > .bal-card-head + .bal-card-content {
+    padding-top: $padding-value;
+  }
+
+  & > :first-child:not(.bal-card-steps) {
+    padding-top: $padding-value;
+  }
+
+  & > :last-child:not(.bal-card-steps) {
+    padding-bottom: $padding-value;
+  }
+
+  & > .bal-card-actions {
+    padding-top: $padding-value;
+  }
+
+  & > bal-accordion,
+  & > bal-card-button {
+    padding-top: $padding-value;
+    padding-bottom: 0 !important;
+  }
+
+  & > .bal-card-head {
+    min-height: 60px + $padding-value;
+
+    > div {
+      padding-left: $image-value + $padding-value;
+      padding-right: 60px;
+      min-height: $image-value;
+    }
+
+    > img {
+      width: $image-value;
+      max-width: $image-value;
+      height: $image-value;
+      max-height: $image-value;
+    }
+
+    > bal-checkbox {
+      top: $padding-value + ($image-value / 2) - 13px;
+    }
+  }
+}
+
 .bal-card {
+  @include padding(0);
   display: block;
   max-width: 100%;
   outline: none;
@@ -81,43 +140,8 @@
     display: flex;
   }
 
-  .bal-card-heading,
-  .bal-card-head,
-  .bal-card-title,
-  .bal-card-subtitle,
-  .bal-card-content,
-  .bal-card-actions {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
   .bal-card-content {
     display: block;
-  }
-
-  & > :first-child:not(.bal-card-steps) {
-    padding-top: 20px;
-  }
-
-  & > :last-child:not(.bal-card-steps) {
-    padding-bottom: 20px;
-  }
-
-  bal-accordion,
-  bal-card-button {
-    padding-top: 20px;
-    padding-bottom: 0 !important;
-  }
-
-  &.is-pure-padding {
-    .bal-card-heading,
-    .bal-card-head,
-    .bal-card-title,
-    .bal-card-subtitle,
-    .bal-card-content,
-    .bal-card-actions {
-      padding: 0 !important;
-    }
   }
 
   .bal-card-heading,
@@ -176,19 +200,12 @@
     padding-top: 8px;
   }
 
-  .bal-card-heading + .bal-card-content,
-  .bal-card-title + .bal-card-content,
-  .bal-card-subtitle + .bal-card-content,
-  .bal-card-head + .bal-card-content {
-    padding-top: 20px;
-  }
-
   .bal-card-actions {
     display: flex;
     flex-direction: column;
 
     bal-button {
-      margin-top: 10px;
+      margin-top: 8px;
     }
   }
 
@@ -266,6 +283,24 @@
     }
   }
 
+  @include cardPadding(16px, 64px);
+
+  &.has-none-padding {
+    @include cardPadding(0px, 64px);
+  }
+
+  @include tablet() {
+    &.has-medium-padding {
+      @include cardPadding(32px, 80px);
+    }
+  }
+
+  @include desktop() {
+    &.has-large-padding {
+      @include cardPadding(64px, 80px);
+    }
+  }
+
   @include tablet() {
     .bal-card.is-teaser {
       width: 380px;
@@ -273,10 +308,8 @@
 
     .bal-card-actions {
       flex-direction: row;
-      padding-top: 20px;
 
       bal-button {
-        margin-top: 0;
         margin-right: 10px;
       }
 
@@ -289,38 +322,6 @@
         }
       }
     }
-
-    .bal-card-heading,
-    .bal-card-head,
-    .bal-card-title,
-    .bal-card-subtitle,
-    .bal-card-content,
-    .bal-card-actions {
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-
-    & > :first-child:not(.bal-card-steps) {
-      padding-top: 32px;
-    }
-
-    & > :last-child:not(.bal-card-steps) {
-      padding-bottom: 32px;
-    }
-
-    bal-accordion,
-    bal-card-button {
-      padding-top: 32px;
-    }
-
-    .bal-card-head {
-      min-height: 60px + 40px;
-
-      > bal-checkbox {
-        top: 52px;
-        right: 35px;
-      }
-    }
   }
 
   @include desktop() {
@@ -329,61 +330,12 @@
       width: 570px;
     }
 
-    .bal-card-actions {
-      padding-top: 32px;
-    }
-
-    .bal-card-heading + .bal-card-content,
-    .bal-card-title + .bal-card-content,
-    .bal-card-subtitle + .bal-card-content,
-    .bal-card-head + .bal-card-content {
-      padding-top: 32px;
-    }
-
-    &.has-form-padding {
-      .bal-card-heading,
-      .bal-card-head,
-      .bal-card-title,
-      .bal-card-subtitle,
-      .bal-card-content,
-      .bal-card-actions {
-        padding-left: 120px;
-        padding-right: 120px;
-      }
-
-      & > :first-child:not(.bal-card-steps) {
-        padding-top: 64px;
-      }
-
-      & > :last-child:not(.bal-card-steps) {
-        padding-bottom: 64px;
-      }
-    }
-
     .bal-card-head {
-      min-height: 120px;
-
-      > div {
-        padding-left: 100px;
-        padding-right: 60px;
-      }
-
-      > img {
-        width: 80px;
-        max-width: 80px;
-        height: 80px;
-        max-height: 80px;
-      }
-
       p,
       h5,
       h4,
       h3 {
         line-height: 1.5 !important;
-      }
-
-      > bal-checkbox {
-        top: 63px;
       }
     }
   }

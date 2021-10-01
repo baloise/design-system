@@ -5,7 +5,7 @@ describe('Button', () => {
 
   it('should contain label', () => {
     page.open()
-    cy.get(page.primaryButton).contains('Primary')
+    cy.get(page.primaryButton).contains('Continue')
     cy.get(page.primaryButtonDisabled).contains('Primary')
   })
 

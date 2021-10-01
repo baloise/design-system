@@ -12,34 +12,28 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-button color="primary" data-test-id="primary-button">Primary</bal-button>
-        <bal-button color="info">Info</bal-button>
-        <bal-button color="link">Link</bal-button>
+        <div class="bal-buttons is-center">
+          <bal-button color="primary" data-test-id="primary-button">Continue</bal-button>
+          <bal-button color="link">Back</bal-button>
+        </div>
       </section>
 
-      <h2 class="title is-size-2">Outlined</h2>
+      <h2 class="title is-size-2">Info</h2>
       <section>
-        <bal-button color="info" outlined>Info</bal-button>
+        <div class="bal-buttons">
+          <bal-button color="info">Info</bal-button>
+          <bal-button color="info" outlined>Info Outlined</bal-button>
+        </div>
       </section>
 
       <h2 class="title is-size-2">Inverted</h2>
       <section>
-        <div class="has-background-info has-padding">
-          <bal-button color="primary" inverted>Primary</bal-button>
-          <bal-button color="info" inverted>Info</bal-button>
-          <bal-button color="info" inverted outlined>Info Outlined</bal-button>
-        </div>
-        <div class="has-background-primary has-padding">
-          <bal-button color="primary" inverted outlined>Primary Outlined</bal-button>
-        </div>
-        <div class="has-background-success has-padding">
-          <bal-button color="success" inverted outlined>Success Outlined</bal-button>
-        </div>
-        <div class="has-background-warning has-padding">
-          <bal-button color="warning" inverted outlined>Warning Outlined</bal-button>
-        </div>
-        <div class="has-background-danger has-padding">
-          <bal-button color="danger" inverted outlined>Danger Outlined</bal-button>
+        <div class="has-background-info p-2">
+          <div class="bal-buttons is-flex">
+            <bal-button class="is-full" color="primary" inverted>Primary</bal-button>
+            <bal-button color="info" inverted>Info</bal-button>
+            <bal-button color="info" inverted outlined>Info Outlined</bal-button>
+          </div>
         </div>
       </section>
 
@@ -94,6 +88,27 @@
       <h2 class="title is-size-2">Button Link</h2>
       <section>
         <bal-button link href="https://github.com/baloise/design-system-components" target="_blank">GitHub</bal-button>
+      </section>
+
+      <h2 class="title is-size-2">Button Group</h2>
+      <p>
+        The <code>.bal-buttons</code> css class helps to place button groups together. The buttons stretche on mobile devices according to their css class like
+        <code>.is-full</code>, <code>.is-half</code>, <code>.is-one-third</code> or <code>.is-two-thirds</code>.
+      </p>
+      <section>
+        <div class="bal-buttons is-center">
+          <bal-button class="is-full" color="primary">Full</bal-button>
+          <bal-button class="is-full" color="info">Full</bal-button>
+        </div>
+        <div class="bal-buttons is-center">
+          <bal-button class="is-half" color="primary">Half</bal-button>
+          <bal-button class="is-half" color="info">Half</bal-button>
+        </div>
+        <div class="bal-buttons is-center">
+          <bal-button class="is-one-third" color="primary">Third</bal-button>
+          <bal-button class="is-one-third" color="info">Third</bal-button>
+          <bal-button class="is-one-third" outlined color="info">Third</bal-button>
+        </div>
       </section>
     </div>
   </body>

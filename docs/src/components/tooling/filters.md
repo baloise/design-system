@@ -48,6 +48,16 @@ Transforms the given string into the correct claim-number format.
 balClaimNumber('73001217169') // 73/001217/16.9
 ```
 
+### balContractNumber
+
+`balContractNumber(value: string | undefined | any | number) => string`
+
+Transforms the given string into the correct police-number format.
+
+```typescript
+balContractNumber('501222333') // 50/1.222.333
+```
+
 ### balCurrency
 
 `balCurrency(value: number | any, currencySign: string, showZero: boolean, decimalLength: number) => string`

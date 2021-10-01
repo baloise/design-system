@@ -22,12 +22,12 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-dropdown-42></docs-demo-bal-dropdown-42></ClientOnly>
+<ClientOnly><docs-demo-bal-dropdown-43></docs-demo-bal-dropdown-43></ClientOnly>
 
 
 ### Input
 
-<ClientOnly><docs-demo-bal-dropdown-43></docs-demo-bal-dropdown-43></ClientOnly>
+<ClientOnly><docs-demo-bal-dropdown-44></docs-demo-bal-dropdown-44></ClientOnly>
 
 
 

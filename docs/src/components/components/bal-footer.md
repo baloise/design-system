@@ -27,12 +27,12 @@ Please only use this component for internal appilcations.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-footer-50></docs-demo-bal-footer-50></ClientOnly>
+<ClientOnly><docs-demo-bal-footer-51></docs-demo-bal-footer-51></ClientOnly>
 
 
 ### With Track Line
 
-<ClientOnly><docs-demo-bal-footer-51></docs-demo-bal-footer-51></ClientOnly>
+<ClientOnly><docs-demo-bal-footer-52></docs-demo-bal-footer-52></ClientOnly>
 
 
 

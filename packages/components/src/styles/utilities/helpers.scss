@@ -82,10 +82,10 @@ $space-vertical-small: 16px;
 $space-horizontal-small: 16px;
 
 $space-vertical-normal: 32px;
-$space-horizontal-normal: 40px;
+$space-horizontal-normal: 32px;
 
 $space-vertical-large: 64px;
-$space-horizontal-large: 120px;
+$space-horizontal-large: 64px;
 
 hr {
   border: none;
@@ -104,16 +104,28 @@ hr {
   margin-bottom: $space-vertical-small !important;
 }
 
+.has-padding-top,
+.has-large-padding-top {
+  padding-top: $space-vertical-small !important;
+}
+
+.has-padding-bottom,
+.has-large-padding-bottom {
+  padding-bottom: $space-vertical-small !important;
+}
+
 .is-padded, // @deprecated
 .has-large-padding,
 .has-padding {
-  padding: $space-vertical-small $space-horizontal-small !important;
+  padding-left: $space-horizontal-small !important;
+  padding-right: $space-horizontal-small !important;
 }
 
 @include tablet() {
   .has-large-padding,
   .has-padding {
-    padding: $space-vertical-normal $space-horizontal-normal !important;
+    padding-left: $space-horizontal-normal !important;
+    padding-right: $space-horizontal-normal !important;
   }
 
   .has-margin-top,
@@ -125,11 +137,22 @@ hr {
   .has-large-margin-bottom {
     margin-bottom: $space-vertical-normal !important;
   }
+
+  .has-padding-top,
+  .has-large-padding-top {
+    padding-top: $space-vertical-normal !important;
+  }
+
+  .has-padding-bottom,
+  .has-large-padding-bottom {
+    padding-bottom: $space-vertical-normal !important;
+  }
 }
 
 @include desktop() {
   .has-large-padding {
-    padding: $space-vertical-large $space-horizontal-large !important;
+    padding-left: $space-horizontal-large !important;
+    padding-right: $space-horizontal-large !important;
   }
 
   .has-large-margin-top {
@@ -138,6 +161,14 @@ hr {
 
   .has-large-margin-bottom {
     margin-bottom: $space-vertical-large !important;
+  }
+
+  .has-large-padding-top {
+    padding-top: $space-vertical-large !important;
+  }
+
+  .has-large-padding-bottom {
+    padding-bottom: $space-vertical-large !important;
   }
 }
 
@@ -151,4 +182,16 @@ hr {
 
 .has-no-margin-bottom {
   margin-bottom: 0 !important;
+}
+
+.has-no-padding {
+  padding: 0 !important;
+}
+
+.has-no-padding-top {
+  padding-top: 0 !important;
+}
+
+.has-no-padding-bottom {
+  padding-bottom: 0 !important;
 }

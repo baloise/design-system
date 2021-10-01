@@ -54,6 +54,9 @@ async function generateComponentMarkdown(component, dir, commands) {
   const lines = []
   lines.push('---')
   lines.push('sidebarDepth: 0')
+  if (component.isChild) {
+    lines.push('search: false')
+  }
   lines.push('---')
   lines.push('')
 
