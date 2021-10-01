@@ -18,7 +18,7 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-file-upload-49></docs-demo-bal-file-upload-49></ClientOnly>
+<ClientOnly><docs-demo-bal-file-upload-50></docs-demo-bal-file-upload-50></ClientOnly>
 
 
 
@@ -50,9 +50,9 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 ### Methods
 
 
-| Method    | Description | Signature                                         |
-| :-------- | :---------- | :------------------------------------------------ |
-| **clear** |             | <code>clear() =&#62; Promise&#60;void&#62;</code> |
+| Method    | Description                         | Signature                                         |
+| :-------- | :---------------------------------- | :------------------------------------------------ |
+| **clear** | Sets the file list to an empty list | <code>clear() =&#62; Promise&#60;void&#62;</code> |
 
 ## Testing
 

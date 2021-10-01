@@ -219,6 +219,11 @@ export const BalCard = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
+    spacing: {
+      type: String,
+      default: '',
+      required: false,
+    },
     padding: {
       type: String,
       default: '',

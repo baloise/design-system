@@ -18,17 +18,17 @@ A heading provides some additional helpers.
 
 ### Sizes
 
-<ClientOnly><docs-demo-bal-heading-52></docs-demo-bal-heading-52></ClientOnly>
+<ClientOnly><docs-demo-bal-heading-53></docs-demo-bal-heading-53></ClientOnly>
 
 
 ### Colors
 
-<ClientOnly><docs-demo-bal-heading-53></docs-demo-bal-heading-53></ClientOnly>
+<ClientOnly><docs-demo-bal-heading-54></docs-demo-bal-heading-54></ClientOnly>
 
 
 ### Spacing
 
-<ClientOnly><docs-demo-bal-heading-54></docs-demo-bal-heading-54></ClientOnly>
+<ClientOnly><docs-demo-bal-heading-55></docs-demo-bal-heading-55></ClientOnly>
 
 
 
@@ -45,7 +45,6 @@ A heading provides some additional helpers.
 | **inverted**     | If `true` the button is inverted                                                                                                                        | <code>boolean</code>                                                    | <code>false</code>     |
 | **level**        | The actual heading level used in the HTML markup.                                                                                                       | <code>"h1" , "h2" , "h3" , "h4" , "h5" , "h6"</code>                    | <code>'h1'</code>      |
 | **space**        | Defines at which position the heading has spacing.                                                                                                      | <code>"all" , "bottom" , "none" , "top"</code>                          | <code>'all'</code>     |
-| **spaced**       |                                                                                                                                                         | <code>boolean</code>                                                    | <code>true</code>      |
 | **subtitle**     | If `true` the heading gets displayed slimmer.                                                                                                           | <code>boolean</code>                                                    | <code>false</code>     |
 | **visual-level** | Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup. | <code>"h1" , "h2" , "h3" , "h4" , "h5" , "h6" , undefined</code>        | <code>undefined</code> |
 

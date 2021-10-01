@@ -21,7 +21,7 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 <ClientOnly><docs-demo-bal-button-6></docs-demo-bal-button-6></ClientOnly>
 
 
-### Outlined
+### Info
 
 <ClientOnly><docs-demo-bal-button-7></docs-demo-bal-button-7></ClientOnly>
 
@@ -69,6 +69,13 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 ### Button Link
 
 <ClientOnly><docs-demo-bal-button-16></docs-demo-bal-button-16></ClientOnly>
+
+
+### Button Group
+
+The .bal-buttons css class helps to place button groups together. The buttons stretche on mobile devices according to their css class like .is-full , .is-half , .is-one-third or .is-two-thirds
+
+<ClientOnly><docs-demo-bal-button-17></docs-demo-bal-button-17></ClientOnly>
 
 
 

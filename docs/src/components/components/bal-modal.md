@@ -19,11 +19,6 @@ the app before interaction can resume.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-modal-71></docs-demo-bal-modal-71></ClientOnly>
-
-
-### HTML solution with open & close
-
 <ClientOnly><docs-demo-bal-modal-72></docs-demo-bal-modal-72></ClientOnly>
 
 

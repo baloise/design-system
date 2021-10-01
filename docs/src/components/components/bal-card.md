@@ -18,39 +18,39 @@ Cards contain content and actions about a single subject and can be combined wit
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-card-17></docs-demo-bal-card-17></ClientOnly>
+<ClientOnly><docs-demo-bal-card-18></docs-demo-bal-card-18></ClientOnly>
 
 
 ### Inverted style
 
-<ClientOnly><docs-demo-bal-card-18></docs-demo-bal-card-18></ClientOnly>
+<ClientOnly><docs-demo-bal-card-19></docs-demo-bal-card-19></ClientOnly>
 
 
 ### With accordion
 
-<ClientOnly><docs-demo-bal-card-19></docs-demo-bal-card-19></ClientOnly>
+<ClientOnly><docs-demo-bal-card-20></docs-demo-bal-card-20></ClientOnly>
 
 
 ### With list
 
 The position the action buttons to the right side just add the attribute `right` to the component `bal-card-actions`.
 
-<ClientOnly><docs-demo-bal-card-20></docs-demo-bal-card-20></ClientOnly>
+<ClientOnly><docs-demo-bal-card-21></docs-demo-bal-card-21></ClientOnly>
 
 
 ### Summary card
 
-<ClientOnly><docs-demo-bal-card-21></docs-demo-bal-card-21></ClientOnly>
+<ClientOnly><docs-demo-bal-card-22></docs-demo-bal-card-22></ClientOnly>
 
 
 ### Service card
 
-<ClientOnly><docs-demo-bal-card-22></docs-demo-bal-card-22></ClientOnly>
+<ClientOnly><docs-demo-bal-card-23></docs-demo-bal-card-23></ClientOnly>
 
 
 ### Colors
 
-<ClientOnly><docs-demo-bal-card-23></docs-demo-bal-card-23></ClientOnly>
+<ClientOnly><docs-demo-bal-card-24></docs-demo-bal-card-24></ClientOnly>
 
 
 
@@ -68,8 +68,7 @@ The position the action buttons to the right side just add the attribute `right`
 | **flat**        | If `true` the card loses its shadow.                | <code>boolean</code>                                                    | <code>false</code> |
 | **flat-mobile** | If `true` a card will not have a shadow on mobile.  | <code>boolean</code>                                                    | <code>false</code> |
 | **inverted**    | If `true` the card background color becomes blue.   | <code>boolean</code>                                                    | <code>false</code> |
-| **padded**      |                                                     | <code>boolean</code>                                                    | <code>false</code> |
-| **padding**     | Defines the size of the padding grid                | <code>"" , "form" , "pure"</code>                                       | <code>''</code>    |
+| **spacing**     | Defines the size of the padding grid                | <code>"" , "large" , "medium" , "none" , "small"</code>                 | <code>''</code>    |
 | **square**      | If `true` the card loses its border radius.         | <code>boolean</code>                                                    | <code>false</code> |
 | **teaser**      | If `true` the card has a limited width on desktop.  | <code>boolean</code>                                                    | <code>false</code> |
 

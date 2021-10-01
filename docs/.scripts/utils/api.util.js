@@ -10,12 +10,14 @@ const printComponentProps = component => {
     table(
       [
         ['Attribute', 'Description', 'Type', 'Default'],
-        ...component.props.map(prop => [
-          printBold(prop.attr),
-          prop.docs.replace(/(?:\r\n|\r|\n)/g, ' ').trim(),
-          printCode(prop.type ? prop.type.split('|').join(',') : ''),
-          printCode(prop.default),
-        ]),
+        ...component.props
+          .filter(prop => !!prop.docs)
+          .map(prop => [
+            printBold(prop.attr),
+            prop.docs.replace(/(?:\r\n|\r|\n)/g, ' ').trim(),
+            printCode(prop.type ? prop.type.split('|').join(',') : ''),
+            printCode(prop.default),
+          ]),
       ],
       { align: ['l', 'l', 'l', 'l'] },
     )
@@ -34,11 +36,9 @@ const printComponentEvents = component => {
     table(
       [
         ['Event', 'Description', 'Type'],
-        ...component.events.map(eventItem => [
-          printBold(eventItem.event),
-          eventItem.docs.trim(),
-          printCode(eventItem.detail),
-        ]),
+        ...component.events
+          .filter(eventItem => !!eventItem.docs)
+          .map(eventItem => [printBold(eventItem.event), eventItem.docs.trim(), printCode(eventItem.detail)]),
       ],
       { align: ['l', 'l', 'l'] },
     )
@@ -57,7 +57,9 @@ const printComponentMethods = component => {
     table(
       [
         ['Method', 'Description', 'Signature'],
-        ...component.methods.map(method => [printBold(method.name), method.docs.trim(), printCode(method.signature)]),
+        ...component.methods
+          .filter(method => !!method.docs)
+          .map(method => [printBold(method.name), method.docs.trim(), printCode(method.signature)]),
       ],
       { align: ['l', 'l', 'l'] },
     )
