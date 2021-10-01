@@ -29,6 +29,7 @@ export class Select {
   private clearSelectValue!: NodeJS.Timeout
   private mutationO?: MutationObserver
 
+  @State() hasFocus: boolean = false
   @State() inputValue: string = ''
   @State() focusIndex: number = 0
   @State() isDropdownOpen: boolean = false
@@ -202,12 +203,14 @@ export class Select {
         preventDefault(event)
       }
     } else {
-      if (isArrowDownKey(event) || isArrowUpKey(event)) {
-        preventDefault(event)
-        await this.open()
-      }
-      if (!this.typeahead && event.key.length === 1) {
-        this.selectOptionByLabel(event.key)
+      if (this.hasFocus) {
+        if (isArrowDownKey(event) || isArrowUpKey(event)) {
+          preventDefault(event)
+          await this.open()
+        }
+        if (!this.typeahead && event.key.length === 1) {
+          this.selectOptionByLabel(event.key)
+        }
       }
     }
   }
@@ -604,6 +607,12 @@ export class Select {
   private handleInputBlur = (event: FocusEvent) => {
     this.validateAfterBlur()
     this.balBlur.emit(event)
+    this.hasFocus = false
+  }
+
+  private handleInputFocus = (event: FocusEvent) => {
+    this.balFocus.emit(event)
+    this.hasFocus = true
   }
 
   private handleInputClick = async (event: MouseEvent) => {
@@ -708,9 +717,9 @@ export class Select {
                   tabindex={this.balTabindex}
                   onInput={this.handleInput}
                   onClick={this.handleInputClick}
-                  onBlur={this.handleInputBlur}
                   onChange={this.handleInputChange}
-                  onFocus={this.balFocus.emit}
+                  onFocus={this.handleInputFocus}
+                  onBlur={this.handleInputBlur}
                   onKeyPress={this.handleKeyPress}
                   ref={el => (this.inputElement = el as HTMLInputElement)}
                 />
