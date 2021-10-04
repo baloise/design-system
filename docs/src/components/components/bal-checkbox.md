@@ -71,15 +71,15 @@ Switches are used to toggle between exactly two states (like on and off).
 ### Properties
 
 
-| Attribute        | Description                                                     | Type                               | Default                   |
-| :--------------- | :-------------------------------------------------------------- | :--------------------------------- | :------------------------ |
-| **bal-tabindex** | The tabindex of the control.                                    | <code>number</code>                | <code>0</code>            |
-| **checked**      | If `true`, the checkbox is selected.                            | <code>boolean</code>               | <code>false</code>        |
-| **disabled**     | If `true`, the user cannot interact with the checkbox.          | <code>boolean</code>               | <code>false</code>        |
-| **interface**    | Defines the layout of the checkbox button                       | <code>"checkbox" , "switch"</code> | <code>'checkbox'</code>   |
-| **inverted**     | If `true`, the control works on dark background.                | <code>boolean</code>               | <code>false</code>        |
-| **name**         | The name of the control, which is submitted with the form data. | <code>string</code>                | <code>this.inputId</code> |
-| **value**        | The value of the control.                                       | <code>string</code>                | <code>'on'</code>         |
+| Attribute       | Description                                                     | Type                               | Default                   |
+| :-------------- | :-------------------------------------------------------------- | :--------------------------------- | :------------------------ |
+| **balTabindex** | The tabindex of the control.                                    | <code>number</code>                | <code>0</code>            |
+| **checked**     | If `true`, the checkbox is selected.                            | <code>boolean</code>               | <code>false</code>        |
+| **disabled**    | If `true`, the user cannot interact with the checkbox.          | <code>boolean</code>               | <code>false</code>        |
+| **interface**   | Defines the layout of the checkbox button                       | <code>"checkbox" , "switch"</code> | <code>'checkbox'</code>   |
+| **inverted**    | If `true`, the control works on dark background.                | <code>boolean</code>               | <code>false</code>        |
+| **name**        | The name of the control, which is submitted with the form data. | <code>string</code>                | <code>this.inputId</code> |
+| **value**       | The value of the control.                                       | <code>string</code>                | <code>'on'</code>         |
 
 ### Events
 

@@ -1,5 +1,6 @@
 ---
 sidebarDepth: 0
+search: false
 ---
 
 
@@ -22,15 +23,15 @@ sidebarDepth: 0
 ### Properties
 
 
-| Attribute      | Description                                                                         | Type                                                  | Default               |
-| :------------- | :---------------------------------------------------------------------------------- | :---------------------------------------------------- | :-------------------- |
-| **disabled**   | If `true`, the user cannot interact with the button.                                | <code>boolean</code>                                  | <code>false</code>    |
-| **href**       | Specifies the URL of the page the link goes to                                      | <code>string , undefined</code>                       |                       |
-| **icon**       | Name of the icon like `edit`.                                                       | <code>string</code>                                   | <code>''</code>       |
-| **icon-right** | Name of the right button icon                                                       | <code>string</code>                                   | <code>''</code>       |
-| **loading**    | If `true` the label is hidden and a loading spinner is shown instead.               | <code>boolean</code>                                  | <code>false</code>    |
-| **target**     | Specifies where to display the linked URL. Only applies when an `href` is provided. | <code>" _parent" , "_blank" , "_self" , "_top"</code> | <code>'_self'</code>  |
-| **type**       | The type of button.                                                                 | <code>"button" , "reset" , "submit"</code>            | <code>'button'</code> |
+| Attribute     | Description                                                                         | Type                                                  | Default               |
+| :------------ | :---------------------------------------------------------------------------------- | :---------------------------------------------------- | :-------------------- |
+| **disabled**  | If `true`, the user cannot interact with the button.                                | <code>boolean</code>                                  | <code>false</code>    |
+| **href**      | Specifies the URL of the page the link goes to                                      | <code>string , undefined</code>                       |                       |
+| **icon**      | Name of the icon like `edit`.                                                       | <code>string</code>                                   | <code>''</code>       |
+| **iconRight** | Name of the right button icon                                                       | <code>string</code>                                   | <code>''</code>       |
+| **loading**   | If `true` the label is hidden and a loading spinner is shown instead.               | <code>boolean</code>                                  | <code>false</code>    |
+| **target**    | Specifies where to display the linked URL. Only applies when an `href` is provided. | <code>" _parent" , "_blank" , "_self" , "_top"</code> | <code>'_self'</code>  |
+| **type**      | The type of button.                                                                 | <code>"button" , "reset" , "submit"</code>            | <code>'button'</code> |
 
 ## Testing
 

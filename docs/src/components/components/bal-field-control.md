@@ -1,5 +1,6 @@
 ---
 sidebarDepth: 0
+search: false
 ---
 
 
@@ -22,12 +23,12 @@ sidebarDepth: 0
 ### Properties
 
 
-| Attribute      | Description                                                    | Type                 | Default            |
-| :------------- | :------------------------------------------------------------- | :------------------- | :----------------- |
-| **icon-left**  | Baloise icon for the left side of the input                    | <code>string</code>  | <code>''</code>    |
-| **icon-right** | Baloise icon for the right side of the input                   | <code>string</code>  | <code>''</code>    |
-| **inverted**   | If `true` the field can be used on blue background.            | <code>boolean</code> | <code>false</code> |
-| **loading**    | If `true` a loading spinner is visible at the end of the input | <code>boolean</code> | <code>false</code> |
+| Attribute     | Description                                                    | Type                 | Default            |
+| :------------ | :------------------------------------------------------------- | :------------------- | :----------------- |
+| **iconLeft**  | Baloise icon for the left side of the input                    | <code>string</code>  | <code>''</code>    |
+| **iconRight** | Baloise icon for the right side of the input                   | <code>string</code>  | <code>''</code>    |
+| **inverted**  | If `true` the field can be used on blue background.            | <code>boolean</code> | <code>false</code> |
+| **loading**   | If `true` a loading spinner is visible at the end of the input | <code>boolean</code> | <code>false</code> |
 
 ## Testing
 

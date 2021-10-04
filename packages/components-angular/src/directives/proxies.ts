@@ -392,18 +392,16 @@ export declare interface BalDropdown extends Components.BalDropdown {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   inputs: ['expanded', 'fixedContentWidth', 'isActive'],
-  outputs: ['balCollapse', 'balDropdownPrepare']
+  outputs: ['balCollapse']
 })
 export class BalDropdown {
   /** Listen when the dropdown opens or closes. Returns the current `isActive` value. */
   balCollapse!: EventEmitter<CustomEvent<boolean>>;
-  /** *Internal* - Use this to close unuesed dropdowns. */
-  balDropdownPrepare!: EventEmitter<CustomEvent<string>>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['balCollapse', 'balDropdownPrepare']);
+    proxyOutputs(this, this.el, ['balCollapse']);
   }
 }
 
@@ -953,9 +951,7 @@ export class BalNavbarBrand {
 
 
 export declare interface BalNavbarMenu extends Components.BalNavbarMenu {}
-@ProxyCmp({
-  methods: ['toggle']
-})
+
 @Component({
   selector: 'bal-navbar-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -1290,7 +1286,7 @@ import { BalTabOption } from '@baloise/design-system-components';
 export declare interface BalTabs extends Components.BalTabs {}
 @ProxyCmp({
   inputs: ['action', 'actionLabel', 'clickable', 'expanded', 'interface', 'rounded'],
-  methods: ['select', 'sync']
+  methods: ['select']
 })
 @Component({
   selector: 'bal-tabs',

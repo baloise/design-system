@@ -31,12 +31,12 @@ Tabs are used to structure the information in sub section on the same page.
 <ClientOnly><docs-demo-bal-tabs-105></docs-demo-bal-tabs-105></ClientOnly>
 
 
-### Steps
+### Steps (Stepper)
 
 <ClientOnly><docs-demo-bal-tabs-106></docs-demo-bal-tabs-106></ClientOnly>
 
 
-### O-Steps
+### O-Steps (Stepper)
 
 <ClientOnly><docs-demo-bal-tabs-107></docs-demo-bal-tabs-107></ClientOnly>
 
@@ -49,14 +49,14 @@ Tabs are used to structure the information in sub section on the same page.
 ### Properties
 
 
-| Attribute        | Description                                       | Type                                      | Default             |
-| :--------------- | :------------------------------------------------ | :---------------------------------------- | :------------------ |
-| **action**       | If `true` a acation button is added to the right  | <code>boolean</code>                      | <code>false</code>  |
-| **action-label** | Label for the action button                       | <code>string</code>                       | <code>''</code>     |
-| **clickable**    | If `true` the tabs or steps can be clicked.       | <code>boolean</code>                      | <code>true</code>   |
-| **expanded**     | If `true` the field expands over the whole width. | <code>boolean</code>                      | <code>false</code>  |
-| **interface**    | Defines the layout of the tabs.                   | <code>"o-steps" , "steps" , "tabs"</code> | <code>'tabs'</code> |
-| **rounded**      | If you want the rounded tab style.                | <code>boolean</code>                      | <code>false</code>  |
+| Attribute       | Description                                       | Type                                      | Default             |
+| :-------------- | :------------------------------------------------ | :---------------------------------------- | :------------------ |
+| **action**      | If `true` a acation button is added to the right  | <code>boolean</code>                      | <code>false</code>  |
+| **actionLabel** | Label for the action button                       | <code>string</code>                       | <code>''</code>     |
+| **clickable**   | If `true` the tabs or steps can be clicked.       | <code>boolean</code>                      | <code>true</code>   |
+| **expanded**    | If `true` the field expands over the whole width. | <code>boolean</code>                      | <code>false</code>  |
+| **interface**   | Defines the layout of the tabs.                   | <code>"o-steps" , "steps" , "tabs"</code> | <code>'tabs'</code> |
+| **rounded**     | If you want the rounded tab style.                | <code>boolean</code>                      | <code>false</code>  |
 
 ### Events
 
@@ -69,10 +69,9 @@ Tabs are used to structure the information in sub section on the same page.
 ### Methods
 
 
-| Method     | Description                                               | Signature                                                           |
-| :--------- | :-------------------------------------------------------- | :------------------------------------------------------------------ |
-| **select** | Go to tab with the given value                            | <code>select(tab: BalTabOption) =&#62; Promise&#60;void&#62;</code> |
-| **sync**   | *Internal* - Rerenders the tabs with their given settings | <code>sync() =&#62; Promise&#60;void&#62;</code>                    |
+| Method     | Description                    | Signature                                                           |
+| :--------- | :----------------------------- | :------------------------------------------------------------------ |
+| **select** | Go to tab with the given value | <code>select(tab: BalTabOption) =&#62; Promise&#60;void&#62;</code> |
 
 ## Testing
 

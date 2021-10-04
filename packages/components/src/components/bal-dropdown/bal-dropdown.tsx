@@ -33,7 +33,7 @@ export class Dropdown {
   @Event({ eventName: 'balCollapse' }) balCollapse!: EventEmitter<boolean>
 
   /**
-   * *Internal* - Use this to close unuesed dropdowns.
+   * @internal - Use this to close unuesed dropdowns.
    */
   @Event({ eventName: 'balDropdownPrepare' }) balDropdownPrepare!: EventEmitter<string>
 

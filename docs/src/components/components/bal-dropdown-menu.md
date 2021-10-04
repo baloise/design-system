@@ -1,5 +1,6 @@
 ---
 sidebarDepth: 0
+search: false
 ---
 
 

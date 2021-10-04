@@ -35,16 +35,6 @@ Type: `Promise<void>`
 
 
 
-### `sync() => Promise<void>`
-
-*Internal* - Rerenders the tabs with their given settings
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
 
 ## Dependencies
 

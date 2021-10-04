@@ -29,15 +29,15 @@ The `bal-file-upload` is all in one component. It supports drag&drop and the nor
 ### Properties
 
 
-| Attribute           | Description                                      | Type                            | Default                                 |
-| :------------------ | :----------------------------------------------- | :------------------------------ | :-------------------------------------- |
-| **accept**          | Accepted MIME-Types like `image/png,image/jpeg`. | <code>string</code>             | <code>''</code>                         |
-| **disabled**        | If `true` the button is disabled                 | <code>boolean</code>            | <code>false</code>                      |
-| **label**           | Label of the drop area.                          | <code>string</code>             | <code>'Choose or drop a file...'</code> |
-| **max-bundle-size** | Allowed max bundle size in bytes.                | <code>number , undefined</code> | <code>undefined</code>                  |
-| **max-file-size**   | Allowed max file size in bytes.                  | <code>number , undefined</code> | <code>undefined</code>                  |
-| **max-files**       | Allowed number of files in the bundle.           | <code>number , undefined</code> | <code>undefined</code>                  |
-| **multiple**        | If `true` multiple file upload is possible.      | <code>boolean</code>            | <code>true</code>                       |
+| Attribute         | Description                                      | Type                            | Default                                 |
+| :---------------- | :----------------------------------------------- | :------------------------------ | :-------------------------------------- |
+| **accept**        | Accepted MIME-Types like `image/png,image/jpeg`. | <code>string</code>             | <code>''</code>                         |
+| **disabled**      | If `true` the button is disabled                 | <code>boolean</code>            | <code>false</code>                      |
+| **label**         | Label of the drop area.                          | <code>string</code>             | <code>'Choose or drop a file...'</code> |
+| **maxBundleSize** | Allowed max bundle size in bytes.                | <code>number , undefined</code> | <code>undefined</code>                  |
+| **maxFileSize**   | Allowed max file size in bytes.                  | <code>number , undefined</code> | <code>undefined</code>                  |
+| **maxFiles**      | Allowed number of files in the bundle.           | <code>number , undefined</code> | <code>undefined</code>                  |
+| **multiple**      | If `true` multiple file upload is possible.      | <code>boolean</code>            | <code>true</code>                       |
 
 ### Events
 

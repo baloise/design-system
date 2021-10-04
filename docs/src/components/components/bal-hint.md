@@ -35,10 +35,10 @@ It can easily combined with the `bal-data` or `bal-field` component.
 ### Properties
 
 
-| Attribute       | Description                                         | Type                 | Default              |
-| :-------------- | :-------------------------------------------------- | :------------------- | :------------------- |
-| **close-label** | Text for the close button.                          | <code>string</code>  | <code>'Close'</code> |
-| **disabled**    | If `true`, the user cannot interact with the input. | <code>boolean</code> | <code>false</code>   |
+| Attribute      | Description                                         | Type                 | Default              |
+| :------------- | :-------------------------------------------------- | :------------------- | :------------------- |
+| **closeLabel** | Text for the close button.                          | <code>string</code>  | <code>'Close'</code> |
+| **disabled**   | If `true`, the user cannot interact with the input. | <code>boolean</code> | <code>false</code>   |
 
 ### Methods
 

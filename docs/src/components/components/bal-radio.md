@@ -64,16 +64,16 @@ A radio input is normally displayed in a radio group. The user can only select o
 ### Properties
 
 
-| Attribute        | Description                                                     | Type                                   | Default                   |
-| :--------------- | :-------------------------------------------------------------- | :------------------------------------- | :------------------------ |
-| **bal-tabindex** | The tabindex of the control.                                    | <code>number</code>                    | <code>0</code>            |
-| **checked**      | If `true`, the radio is selected.                               | <code>boolean</code>                   | <code>false</code>        |
-| **disabled**     | If `true`, the user cannot interact with the checkbox.          | <code>boolean</code>                   | <code>false</code>        |
-| **interface**    | Defines the layout of the radio button                          | <code>"radio" , "select-button"</code> | <code>'radio'</code>      |
-| **inverted**     | If `true`, the control works on dark background.                | <code>boolean</code>                   | <code>false</code>        |
-| **is-empty**     | If `true` the radio has no label                                | <code>boolean</code>                   | <code>false</code>        |
-| **name**         | The name of the control, which is submitted with the form data. | <code>string</code>                    | <code>this.inputId</code> |
-| **value**        | The value of the control.                                       | <code>string</code>                    | <code>''</code>           |
+| Attribute       | Description                                                     | Type                                   | Default                   |
+| :-------------- | :-------------------------------------------------------------- | :------------------------------------- | :------------------------ |
+| **balTabindex** | The tabindex of the control.                                    | <code>number</code>                    | <code>0</code>            |
+| **checked**     | If `true`, the radio is selected.                               | <code>boolean</code>                   | <code>false</code>        |
+| **disabled**    | If `true`, the user cannot interact with the checkbox.          | <code>boolean</code>                   | <code>false</code>        |
+| **interface**   | Defines the layout of the radio button                          | <code>"radio" , "select-button"</code> | <code>'radio'</code>      |
+| **inverted**    | If `true`, the control works on dark background.                | <code>boolean</code>                   | <code>false</code>        |
+| **isEmpty**     | If `true` the radio has no label                                | <code>boolean</code>                   | <code>false</code>        |
+| **name**        | The name of the control, which is submitted with the form data. | <code>string</code>                    | <code>this.inputId</code> |
+| **value**       | The value of the control.                                       | <code>string</code>                    | <code>''</code>           |
 
 ### Events
 

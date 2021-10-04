@@ -71,22 +71,22 @@ const option = NewBalOptionValue('value', 'label')
 ### Properties
 
 
-| Attribute         | Description                                                                       | Type                                       | Default                   |
-| :---------------- | :-------------------------------------------------------------------------------- | :----------------------------------------- | :------------------------ |
-| **bal-tabindex**  | The tabindex of the control.                                                      | <code>number</code>                        | <code>0</code>            |
-| **disabled**      | If `true` the component is diabled.                                               | <code>boolean</code>                       | <code>false</code>        |
-| **expanded**      | If `true` the component uses the whole width.                                     | <code>boolean</code>                       | <code>false</code>        |
-| **has-movement**  | Enables the slide in animation for the option items.                              | <code>boolean</code>                       | <code>false</code>        |
-| **inverted**      | Set this to `true` when the component is placed on a dark background.             | <code>boolean</code>                       | <code>false</code>        |
-| **loading**       | Defines if the select is in a loading state.                                      | <code>boolean</code>                       | <code>false</code>        |
-| **multiple**      | If `true` multiple option can be selected                                         | <code>boolean</code>                       | <code>false</code>        |
-| **name**          | The name of the control, which is submitted with the form data.                   | <code>string</code>                        | <code>this.inputId</code> |
-| **no-border**     | Removes the border of the input.                                                  | <code>boolean</code>                       | <code>false</code>        |
-| **no-data-label** | This label is shown if typeahead is active and all the options are filtered out.  | <code>string , undefined</code>            |                           |
-| **placeholder**   | The text to display when the select is empty.                                     | <code>string , undefined</code>            |                           |
-| **scrollable**    | Defines the height of the dropdown list.                                          | <code>number</code>                        | <code>250</code>          |
-| **typeahead**     | If `true` the user can search by typing into the input field.                     | <code>boolean</code>                       | <code>false</code>        |
-| **value**         | Selected option values. Could also be passed as a string, which gets transformed. | <code>string , string[] , undefined</code> | <code>[]</code>           |
+| Attribute       | Description                                                                       | Type                                       | Default                   |
+| :-------------- | :-------------------------------------------------------------------------------- | :----------------------------------------- | :------------------------ |
+| **balTabindex** | The tabindex of the control.                                                      | <code>number</code>                        | <code>0</code>            |
+| **disabled**    | If `true` the component is diabled.                                               | <code>boolean</code>                       | <code>false</code>        |
+| **expanded**    | If `true` the component uses the whole width.                                     | <code>boolean</code>                       | <code>false</code>        |
+| **hasMovement** | Enables the slide in animation for the option items.                              | <code>boolean</code>                       | <code>false</code>        |
+| **inverted**    | Set this to `true` when the component is placed on a dark background.             | <code>boolean</code>                       | <code>false</code>        |
+| **loading**     | Defines if the select is in a loading state.                                      | <code>boolean</code>                       | <code>false</code>        |
+| **multiple**    | If `true` multiple option can be selected                                         | <code>boolean</code>                       | <code>false</code>        |
+| **name**        | The name of the control, which is submitted with the form data.                   | <code>string</code>                        | <code>this.inputId</code> |
+| **noBorder**    | Removes the border of the input.                                                  | <code>boolean</code>                       | <code>false</code>        |
+| **noDataLabel** | This label is shown if typeahead is active and all the options are filtered out.  | <code>string , undefined</code>            |                           |
+| **placeholder** | The text to display when the select is empty.                                     | <code>string , undefined</code>            |                           |
+| **scrollable**  | Defines the height of the dropdown list.                                          | <code>number</code>                        | <code>250</code>          |
+| **typeahead**   | If `true` the user can search by typing into the input field.                     | <code>boolean</code>                       | <code>false</code>        |
+| **value**       | Selected option values. Could also be passed as a string, which gets transformed. | <code>string , string[] , undefined</code> | <code>[]</code>           |
 
 ### Events
 
