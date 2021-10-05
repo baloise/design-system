@@ -93,10 +93,6 @@ The Library supports the following borwers. For more detail go to [Stencil - Bro
     <h2><img style="width: 48px;" src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png"  alt="Edge"></h2>
     <h2>Edge</h2><p>(Chromium)<br/>Last 2 versions ✔</p>
   </div>
-  <div class="feature" style="flex-basis: 20%; max-width: 20%;">
-    <h2><img style="width: 48px;" src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png"  alt="Internet Explorer 11"></h2>
-    <h2>Internet Explorer 11</h2><p>Enabled with pollyfills. Only functional.</p>
-  </div>
 </div>
 
 ## Contributors
