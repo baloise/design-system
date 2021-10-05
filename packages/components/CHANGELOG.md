@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://github.com/baloise/design-system/compare/v1.17.0...v1.18.0) (2021-10-05)
+
+
+### Bug Fixes
+
+* **card:** adjust primary color ([da530b7](https://github.com/baloise/design-system/commit/da530b707e5833cbd9546339e787bebf9913183f))
+* **datepicker:** limit month & year select when using min and max ([d06fd72](https://github.com/baloise/design-system/commit/d06fd7239856bb4e559fc338267507157465a16b))
+* **notification:** adjust padding and link colors ([da48a01](https://github.com/baloise/design-system/commit/da48a010967d9bc151e09513f1aaca7836bb9a1c))
+
+
+### Features
+
+* **modal:** add mobile solution and fix custom width ([3308957](https://github.com/baloise/design-system/commit/3308957eb7971382904fc8fa58fa5ae05848ea5e))
+* **modal:** add mobile view ([0fb0d27](https://github.com/baloise/design-system/commit/0fb0d277bb7213ec29e3855b22f917a2abcca4ea))
+* **stepper:** add stepper template ([4b02cae](https://github.com/baloise/design-system/commit/4b02cae763b40fc8f31d3d15f58abb8caf85fffe))
+
+
+
+
+
 # [1.17.0](https://github.com/baloise/design-system/compare/v1.16.2...v1.17.0) (2021-10-01)
 
 
