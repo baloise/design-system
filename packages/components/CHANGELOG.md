@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.6](https://github.com/baloise/design-system/compare/v1.18.5...v1.18.6) (2021-10-05)
+
+
+### Bug Fixes
+
+* **modal:** add card class on user element ([8515746](https://github.com/baloise/design-system/commit/8515746fb0efc68ef029c86f6e5963e0b8e68fd5))
+
+
+
+
+
 ## [1.18.5](https://github.com/baloise/design-system/compare/v1.18.4...v1.18.5) (2021-10-05)
 
 **Note:** Version bump only for package @baloise/design-system-components
