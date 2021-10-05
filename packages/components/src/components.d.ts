@@ -852,6 +852,10 @@ export namespace Components {
          */
         "hasBackdrop": boolean;
         /**
+          * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
+         */
+        "interface": 'light' | 'card';
+        /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
         "isClosable": boolean;
@@ -2778,6 +2782,10 @@ declare namespace LocalJSX {
           * If `true`, a backdrop will be displayed behind the modal.
          */
         "hasBackdrop"?: boolean;
+        /**
+          * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
+         */
+        "interface"?: 'light' | 'card';
         /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */

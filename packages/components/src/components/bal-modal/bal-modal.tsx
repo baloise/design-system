@@ -44,6 +44,11 @@ export class Modal implements OverlayInterface {
   @Prop() isClosable = true
 
   /**
+   * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
+   */
+  @Prop() interface: 'light' | 'card' = 'light'
+
+  /**
    * The component to display inside of the modal.
    */
   @Prop() component!: ComponentRef
@@ -151,6 +156,11 @@ export class Modal implements OverlayInterface {
    */
   @Method()
   async dismiss(data?: any, role?: string): Promise<boolean> {
+    if (this.delegate === undefined) {
+      await this.close()
+      return true
+    }
+
     this.willDismiss.emit({ data, role })
     const dismissed = await dismiss(this, data, role, async () => {
       writeTask(() => {
@@ -212,7 +222,11 @@ export class Modal implements OverlayInterface {
       if (this.presented && this.isClosable) {
         if (event.key === 'Escape' || event.key === 'Esc') {
           event.preventDefault()
-          await this.dismiss(undefined, 'model-escape')
+          if (this.delegate) {
+            await this.dismiss(undefined, 'model-escape')
+          } else {
+            await this.close()
+          }
         }
       }
     }
@@ -227,6 +241,7 @@ export class Modal implements OverlayInterface {
         tabindex="-1"
         class={{
           ...getClassMap(this.cssClass),
+          [`modal-interface-${this.interface}`]: true,
         }}
         style={{
           '--bal-width': `${this.modalWidth}px`,
@@ -251,15 +266,6 @@ export class Modal implements OverlayInterface {
               <slot></slot>
             </div>
           </div>
-          <button
-            class={{
-              'modal-close': true,
-              'is-large': true,
-              'is-hidden': !this.isClosable,
-            }}
-            aria-label="close"
-            onClick={() => this.dismiss(undefined, 'model-close')}
-          ></button>
         </div>
       </Host>
     )

@@ -11,6 +11,7 @@
 | `componentProps`         | --             | The data to pass to the modal component.                                                                         | `undefined \| { [key: string]: any; }`      | `undefined` |
 | `cssClass`               | `css-class`    | Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces. | `string \| string[] \| undefined`           | `undefined` |
 | `hasBackdrop`            | `has-backdrop` | If `true`, a backdrop will be displayed behind the modal.                                                        | `boolean`                                   | `true`      |
+| `interface`              | `interface`    | Defines the look of the modal. The card interface should be used for scrollable content in the modal.            | `"card" \| "light"`                         | `'light'`   |
 | `isClosable`             | `is-closable`  | If `true`, the modal can be closed with the escape key or the little close button.                               | `boolean`                                   | `true`      |
 | `modalWidth`             | `modal-width`  | Defines the width of the modal body                                                                              | `number`                                    | `640`       |
 
