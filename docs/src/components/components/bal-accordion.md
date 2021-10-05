@@ -53,15 +53,15 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 ### Properties
 
 
-| Attribute      | Description                                             | Type                            | Default                |
-| :------------- | :------------------------------------------------------ | :------------------------------ | :--------------------- |
-| **card**       | If `true` the accordion is used on the bottom of a card | <code>boolean</code>            | <code>false</code>     |
-| **closeIcon**  | Bal-Icon of the close trigger button                    | <code>string</code>             | <code>'minus'</code>   |
-| **closeLabel** | Label of the close trigger button                       | <code>string</code>             | <code>''</code>        |
-| **color**      | Type defines the theme of the accordion toggle          | <code>"info" , "primary"</code> | <code>'primary'</code> |
-| **isActive**   | Controls if the accordion is collapsed or not           | <code>boolean</code>            | <code>false</code>     |
-| **openIcon**   | Bal-Icon of the open trigger button                     | <code>string</code>             | <code>'plus'</code>    |
-| **openLabel**  | Label of the open trigger button                        | <code>string</code>             | <code>''</code>        |
+| Attribute       | Description                                             | Type                            | Default                |
+| :-------------- | :------------------------------------------------------ | :------------------------------ | :--------------------- |
+| **card**        | If `true` the accordion is used on the bottom of a card | <code>boolean</code>            | <code>false</code>     |
+| **close-icon**  | Bal-Icon of the close trigger button                    | <code>string</code>             | <code>'minus'</code>   |
+| **close-label** | Label of the close trigger button                       | <code>string</code>             | <code>''</code>        |
+| **color**       | Type defines the theme of the accordion toggle          | <code>"info" , "primary"</code> | <code>'primary'</code> |
+| **is-active**   | Controls if the accordion is collapsed or not           | <code>boolean</code>            | <code>false</code>     |
+| **open-icon**   | Bal-Icon of the open trigger button                     | <code>string</code>             | <code>'plus'</code>    |
+| **open-label**  | Label of the open trigger button                        | <code>string</code>             | <code>''</code>        |
 
 ### Events
 

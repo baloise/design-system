@@ -49,14 +49,14 @@ Tabs are used to structure the information in sub section on the same page.
 ### Properties
 
 
-| Attribute       | Description                                       | Type                                      | Default             |
-| :-------------- | :------------------------------------------------ | :---------------------------------------- | :------------------ |
-| **action**      | If `true` a acation button is added to the right  | <code>boolean</code>                      | <code>false</code>  |
-| **actionLabel** | Label for the action button                       | <code>string</code>                       | <code>''</code>     |
-| **clickable**   | If `true` the tabs or steps can be clicked.       | <code>boolean</code>                      | <code>true</code>   |
-| **expanded**    | If `true` the field expands over the whole width. | <code>boolean</code>                      | <code>false</code>  |
-| **interface**   | Defines the layout of the tabs.                   | <code>"o-steps" , "steps" , "tabs"</code> | <code>'tabs'</code> |
-| **rounded**     | If you want the rounded tab style.                | <code>boolean</code>                      | <code>false</code>  |
+| Attribute        | Description                                       | Type                                      | Default             |
+| :--------------- | :------------------------------------------------ | :---------------------------------------- | :------------------ |
+| **action**       | If `true` a acation button is added to the right  | <code>boolean</code>                      | <code>false</code>  |
+| **action-label** | Label for the action button                       | <code>string</code>                       | <code>''</code>     |
+| **clickable**    | If `true` the tabs or steps can be clicked.       | <code>boolean</code>                      | <code>true</code>   |
+| **expanded**     | If `true` the field expands over the whole width. | <code>boolean</code>                      | <code>false</code>  |
+| **interface**    | Defines the layout of the tabs.                   | <code>"o-steps" , "steps" , "tabs"</code> | <code>'tabs'</code> |
+| **rounded**      | If you want the rounded tab style.                | <code>boolean</code>                      | <code>false</code>  |
 
 ### Events
 

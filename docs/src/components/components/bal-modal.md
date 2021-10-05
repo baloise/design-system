@@ -48,11 +48,11 @@ Have a look at the [Vue usage documentation](/components/getting-started/vue/usa
 | :----------------- | :--------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------- | :------------------- |
 | **component**      | The component to display inside of the modal.                                                                    | <code>Function , HTMLElement , null , string</code> |                      |
 | **componentProps** | The data to pass to the modal component.                                                                         | <code>undefined , { [key: string]: any; }</code>    |                      |
-| **cssClass**       | Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces. | <code>string , string[] , undefined</code>          |                      |
-| **hasBackdrop**    | If `true`, a backdrop will be displayed behind the modal.                                                        | <code>boolean</code>                                | <code>true</code>    |
+| **css-class**      | Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces. | <code>string , string[] , undefined</code>          |                      |
+| **has-backdrop**   | If `true`, a backdrop will be displayed behind the modal.                                                        | <code>boolean</code>                                | <code>true</code>    |
 | **interface**      | Defines the look of the modal. The card interface should be used for scrollable content in the modal.            | <code>"card" , "light"</code>                       | <code>'light'</code> |
-| **isClosable**     | If `true`, the modal can be closed with the escape key or the little close button.                               | <code>boolean</code>                                | <code>true</code>    |
-| **modalWidth**     | Defines the width of the modal body                                                                              | <code>number</code>                                 | <code>640</code>     |
+| **is-closable**    | If `true`, the modal can be closed with the escape key or the little close button.                               | <code>boolean</code>                                | <code>true</code>    |
+| **modal-width**    | Defines the width of the modal body                                                                              | <code>number</code>                                 | <code>640</code>     |
 
 ### Events
 

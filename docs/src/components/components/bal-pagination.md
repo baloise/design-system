@@ -31,12 +31,12 @@ Generally, pagination is used if there are more than 25 items displayed in one v
 ### Properties
 
 
-| Attribute      | Description                                                      | Type                 | Default            |
-| :------------- | :--------------------------------------------------------------- | :------------------- | :----------------- |
-| **disabled**   | Disables component                                               | <code>boolean</code> | <code>false</code> |
-| **pageRange**  | Specify the max visible pages before and after the selected page | <code>number</code>  | <code>2</code>     |
-| **totalPages** | The total amount of pages                                        | <code>number</code>  | <code>1</code>     |
-| **value**      | Current selected page                                            | <code>number</code>  | <code>1</code>     |
+| Attribute       | Description                                                      | Type                 | Default            |
+| :-------------- | :--------------------------------------------------------------- | :------------------- | :----------------- |
+| **disabled**    | Disables component                                               | <code>boolean</code> | <code>false</code> |
+| **page-range**  | Specify the max visible pages before and after the selected page | <code>number</code>  | <code>2</code>     |
+| **total-pages** | The total amount of pages                                        | <code>number</code>  | <code>1</code>     |
+| **value**       | Current selected page                                            | <code>number</code>  | <code>1</code>     |
 
 ### Events
 

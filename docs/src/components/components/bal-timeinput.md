@@ -46,8 +46,8 @@ sidebarDepth: 0
 | :----------- | :------------------------------------------------------ | :------------------- | :----------------- |
 | **disabled** | If `true` the button is disabled                        | <code>boolean</code> | <code>false</code> |
 | **inverted** | If `true` the timeinput can be used on blue background. | <code>boolean</code> | <code>false</code> |
-| **maxTime**  | Latest date available for selection                     | <code>string</code>  | <code>''</code>    |
-| **minTime**  | Earliest date available for selection                   | <code>string</code>  | <code>''</code>    |
+| **max-time** | Latest date available for selection                     | <code>string</code>  | <code>''</code>    |
+| **min-time** | Earliest date available for selection                   | <code>string</code>  | <code>''</code>    |
 | **value**    | The value of the datepicker with the format `hh:mm`.    | <code>string</code>  | <code>''</code>    |
 
 ### Events

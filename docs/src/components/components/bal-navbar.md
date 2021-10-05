@@ -42,11 +42,11 @@ Please only use this component for internal appilcations.
 ### Properties
 
 
-| Attribute    | Description                                  | Type                 | Default            |
-| :----------- | :------------------------------------------- | :------------------- | :----------------- |
-| **expanded** | It `true` the component uses the whole width | <code>boolean</code> | <code>false</code> |
-| **light**    | It `true` the navbar has a white background  | <code>boolean</code> | <code>false</code> |
-| **noBurger** | It `true` the burger button is hidden        | <code>boolean</code> | <code>false</code> |
+| Attribute     | Description                                  | Type                 | Default            |
+| :------------ | :------------------------------------------- | :------------------- | :----------------- |
+| **expanded**  | It `true` the component uses the whole width | <code>boolean</code> | <code>false</code> |
+| **light**     | It `true` the navbar has a white background  | <code>boolean</code> | <code>false</code> |
+| **no-burger** | It `true` the burger button is hidden        | <code>boolean</code> | <code>false</code> |
 
 ## Testing
 

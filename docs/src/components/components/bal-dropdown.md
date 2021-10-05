@@ -38,11 +38,11 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 ### Properties
 
 
-| Attribute             | Description                                      | Type                 | Default            |
-| :-------------------- | :----------------------------------------------- | :------------------- | :----------------- |
-| **expanded**          | If `true` the field spans over the whole width.  | <code>boolean</code> | <code>false</code> |
-| **fixedContentWidth** | If `true` the dropdown content has a fixed width | <code>boolean</code> | <code>false</code> |
-| **isActive**          | If `true` the dropdown content is open.          | <code>boolean</code> | <code>false</code> |
+| Attribute               | Description                                      | Type                 | Default            |
+| :---------------------- | :----------------------------------------------- | :------------------- | :----------------- |
+| **expanded**            | If `true` the field spans over the whole width.  | <code>boolean</code> | <code>false</code> |
+| **fixed-content-width** | If `true` the dropdown content has a fixed width | <code>boolean</code> | <code>false</code> |
+| **is-active**           | If `true` the dropdown content is open.          | <code>boolean</code> | <code>false</code> |
 
 ### Events
 

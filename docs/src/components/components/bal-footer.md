@@ -43,9 +43,9 @@ Please only use this component for internal appilcations.
 ### Properties
 
 
-| Attribute        | Description                                            | Type                 | Default            |
-| :--------------- | :----------------------------------------------------- | :------------------- | :----------------- |
-| **hasTrackLine** | If `true` the footer shows a track line at the bottom. | <code>boolean</code> | <code>false</code> |
+| Attribute          | Description                                            | Type                 | Default            |
+| :----------------- | :----------------------------------------------------- | :------------------- | :----------------- |
+| **has-track-line** | If `true` the footer shows a track line at the bottom. | <code>boolean</code> | <code>false</code> |
 
 ## Testing
 
