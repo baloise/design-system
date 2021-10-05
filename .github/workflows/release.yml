@@ -40,15 +40,15 @@ jobs:
       - name: Build
         run: npm run build
 
-      - uses: EndBug/add-and-commit@v5
-        with:
-          message: 'chore(): update build artifacts'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - uses: EndBug/add-and-commit@v5
+      #   with:
+      #     message: 'chore(): update build artifacts'
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish to NPM
-        run: 'npm run release'
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Publish to NPM
+      #   run: 'npm run release'
+      #   env:
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

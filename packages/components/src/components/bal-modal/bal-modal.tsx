@@ -148,6 +148,7 @@ export class Modal implements OverlayInterface {
       modal: this.el,
     }
     this.usersElement = await attachComponent(this.delegate, container, this.component, [], componentProps)
+    this.usersElement.classList.add('modal-card')
     await this.open()
   }
 
