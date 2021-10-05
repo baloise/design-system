@@ -57,7 +57,7 @@
   },
   "gitHead": "e0d380309b487bcedee06d025645f5aab37ab192",
   "dependencies": {
-    "@baloise/design-system-components": "^1.18.1"
+    "@baloise/design-system-components": "1.18.1"
   },
   "vetur": {
     "tags": "dist/vetur/tags.json",
