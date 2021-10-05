@@ -11,12 +11,20 @@
   border: 1px solid $blue-light-line;
   color: $text;
   border-radius: $radius-large;
-  padding: 22px 24px 26px 24px;
+  padding: 16px;
+
+  @include tablet() {
+    padding: 32px;
+  }
 
   &.is-primary {
     background: $blue-light;
     border: 1px solid $blue-light-line;
     color: $blue;
+
+    a:not(.button):not(.dropdown-item) {
+      color: $cyan;
+    }
   }
 
   &.is-info {
