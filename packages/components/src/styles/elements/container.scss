@@ -1,20 +1,24 @@
-@import 'node_modules/bulma/sass/elements/container.sass';
+// Container
+// ------------------------------------------------
+//
+// A simple container to center your content horizontally
+// https://bulma.io/documentation/layout/container/
 
 .container {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: $container-offset / 2;
+  padding-right: $container-offset / 2;
 }
 
 @include tablet() {
   .container {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: $container-offset / 2;
+    padding-right: $container-offset / 2;
   }
 }
 
 @include desktop() {
   .container {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: $container-offset;
+    padding-right: $container-offset;
   }
 }

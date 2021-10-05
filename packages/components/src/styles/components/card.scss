@@ -1,3 +1,9 @@
+// Card
+// ------------------------------------------------
+//
+// An all-around flexible and composable component
+// https://bulma.io/documentation/components/card/
+
 @mixin cardPadding($padding-value, $image-value) {
   & > .bal-card-heading,
   & > .bal-card-head,

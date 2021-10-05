@@ -1,11 +1,3 @@
-@import 'node_modules/bulma/sass/elements/icon.sass';
-
-$icon-dimensions: 1.5rem !default;
-$icon-dimensions-small: 1rem !default;
-$icon-dimensions-medium: 2rem !default;
-$icon-dimensions-large: 3rem !default;
-$icon-text-spacing: 0.5em !default;
-
 .icon-text {
   flex-wrap: nowrap;
   word-break: break-word;
