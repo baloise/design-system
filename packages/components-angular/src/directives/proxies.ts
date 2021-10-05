@@ -816,14 +816,14 @@ export class BalListItemTitle {
 import { OverlayEventDetail } from '@baloise/design-system-components';
 export declare interface BalModal extends Components.BalModal {}
 @ProxyCmp({
-  inputs: ['component', 'componentProps', 'cssClass', 'hasBackdrop', 'isClosable', 'modalWidth'],
+  inputs: ['component', 'componentProps', 'cssClass', 'hasBackdrop', 'interface', 'isClosable', 'modalWidth'],
   methods: ['open', 'close', 'present', 'dismiss', 'onDidDismiss', 'onWillDismiss']
 })
 @Component({
   selector: 'bal-modal',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['component', 'componentProps', 'cssClass', 'hasBackdrop', 'isClosable', 'modalWidth'],
+  inputs: ['component', 'componentProps', 'cssClass', 'hasBackdrop', 'interface', 'isClosable', 'modalWidth'],
   outputs: ['balModalDidPresent', 'balModalWillPresent', 'balModalWillDismiss', 'balModalDidDismiss']
 })
 export class BalModal {
