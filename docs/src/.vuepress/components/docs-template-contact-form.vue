@@ -76,8 +76,8 @@
           </form>
         </bal-card-content>
         <bal-card-actions right>
-          <bal-button color="primary">Submit</bal-button>
           <bal-button color="link">Cancel</bal-button>
+          <bal-button color="primary">Submit</bal-button>
         </bal-card-actions>
       </bal-card>
     </div>

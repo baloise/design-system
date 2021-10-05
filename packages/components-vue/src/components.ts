@@ -1315,6 +1315,11 @@ export const BalModal = /*@__PURE__*/ defineComponent({
       default: true,
       required: false,
     },
+    interface: {
+      type: String,
+      default: 'light',
+      required: false,
+    },
     component: {
       type: String,
       default: undefined,

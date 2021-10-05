@@ -131,7 +131,7 @@ module.exports = {
           title: 'Templates',
           collapsable: true,
           // path: '/components/templates/index',
-          children: ['templates/contact-form', 'templates/portal'],
+          children: ['templates/contact-form', 'templates/portal', 'templates/stepper'],
         },
         {
           title: 'Components',

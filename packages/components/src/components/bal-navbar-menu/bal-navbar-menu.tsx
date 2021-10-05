@@ -9,7 +9,7 @@ export class NavbarMenu {
   @State() isMenuActive = false
 
   /**
-   * *Internal* - If the menu is open it closes it and the other way around.
+   * @internal - If the menu is open it closes it and the other way around.
    */
   @Method()
   async toggle(isMenuActive: boolean): Promise<void> {

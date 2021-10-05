@@ -7,19 +7,6 @@
 <!-- Auto Generated Below -->
 
 
-## Methods
-
-### `toggle(isMenuActive: boolean) => Promise<void>`
-
-*Internal* - If the menu is open it closes it and the other way around.
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

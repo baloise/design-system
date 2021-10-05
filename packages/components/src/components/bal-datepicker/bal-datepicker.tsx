@@ -290,15 +290,38 @@ export class Datepicker implements ComponentInterface {
   }
 
   get minYear() {
+    if (this.min) {
+      return parseInt(this.min.substring(0, 4), 10)
+    }
     return this.minYearProp ? this.minYearProp : decreaseYear(now(), 100)
   }
 
   get maxYear() {
+    if (this.max) {
+      return parseInt(this.max.substring(0, 4), 10)
+    }
     return this.maxYearProp ? this.maxYearProp : increaseYear(now(), 100)
   }
 
   get years(): number[] {
     return Array.from({ length: this.maxYear - this.minYear + 1 }, (_, index: number) => this.minYear + index)
+  }
+
+  get months(): { name: string; index: number }[] {
+    const monthNames = i18nDate[this.locale].months
+    let months = monthNames.map((name, index) => ({ name, index }))
+
+    if (this.min) {
+      const minMonth = parseInt(this.min.substring(4, 6), 10)
+      months = months.filter(month => month.index >= minMonth)
+    }
+
+    if (this.max) {
+      const maxMonth = parseInt(this.max.substring(4, 6), 10)
+      months = months.filter(month => month.index <= maxMonth)
+    }
+
+    return months
   }
 
   get weekDays(): string[] {
@@ -583,9 +606,9 @@ export class Datepicker implements ComponentInterface {
               <div class="control month-select">
                 <span class="select">
                   <select onInput={this.onMonthSelect}>
-                    {i18nDate[this.locale].months.map((month, index) => (
-                      <option value={index} selected={this.pointerDate.month === index}>
-                        {month}
+                    {this.months.map(month => (
+                      <option value={month.index} selected={this.pointerDate.month === month.index}>
+                        {month.name}
                       </option>
                     ))}
                   </select>

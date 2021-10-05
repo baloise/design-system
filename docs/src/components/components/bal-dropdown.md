@@ -47,10 +47,9 @@ If you are looking for a dropdown with selectable list items go to the [bal-sele
 ### Events
 
 
-| Event                  | Description                                                                     | Type                 |
-| :--------------------- | :------------------------------------------------------------------------------ | :------------------- |
-| **balCollapse**        | Listen when the dropdown opens or closes. Returns the current `isActive` value. | <code>boolean</code> |
-| **balDropdownPrepare** | *Internal* - Use this to close unuesed dropdowns.                               | <code>string</code>  |
+| Event           | Description                                                                     | Type                 |
+| :-------------- | :------------------------------------------------------------------------------ | :------------------- |
+| **balCollapse** | Listen when the dropdown opens or closes. Returns the current `isActive` value. | <code>boolean</code> |
 
 ### Methods
 

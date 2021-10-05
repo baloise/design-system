@@ -31,12 +31,12 @@ Tabs are used to structure the information in sub section on the same page.
 <ClientOnly><docs-demo-bal-tabs-105></docs-demo-bal-tabs-105></ClientOnly>
 
 
-### Steps
+### Steps (Stepper)
 
 <ClientOnly><docs-demo-bal-tabs-106></docs-demo-bal-tabs-106></ClientOnly>
 
 
-### O-Steps
+### O-Steps (Stepper)
 
 <ClientOnly><docs-demo-bal-tabs-107></docs-demo-bal-tabs-107></ClientOnly>
 
@@ -69,10 +69,9 @@ Tabs are used to structure the information in sub section on the same page.
 ### Methods
 
 
-| Method     | Description                                               | Signature                                                           |
-| :--------- | :-------------------------------------------------------- | :------------------------------------------------------------------ |
-| **select** | Go to tab with the given value                            | <code>select(tab: BalTabOption) =&#62; Promise&#60;void&#62;</code> |
-| **sync**   | *Internal* - Rerenders the tabs with their given settings | <code>sync() =&#62; Promise&#60;void&#62;</code>                    |
+| Method     | Description                    | Signature                                                           |
+| :--------- | :----------------------------- | :------------------------------------------------------------------ |
+| **select** | Go to tab with the given value | <code>select(tab: BalTabOption) =&#62; Promise&#60;void&#62;</code> |
 
 ## Testing
 

@@ -63,7 +63,7 @@ export class Tabs {
   }
 
   /**
-   * *Internal* - Rerenders the tabs with their given settings
+   * @internal - Rerenders the tabs with their given settings
    */
   @Method()
   async sync() {

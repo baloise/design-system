@@ -4,6 +4,10 @@
 // The order of the imports is important to override the variables of the css framework bulma
 //
 
+@import 'card.vars';
+@import 'dropdown.vars';
+@import 'modal.vars';
+
 @import 'node_modules/bulma/sass/components/dropdown.sass';
 @import 'node_modules/bulma/sass/components/modal';
 

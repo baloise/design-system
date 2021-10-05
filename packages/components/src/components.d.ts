@@ -852,6 +852,10 @@ export namespace Components {
          */
         "hasBackdrop": boolean;
         /**
+          * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
+         */
+        "interface": 'light' | 'card';
+        /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
         "isClosable": boolean;
@@ -906,9 +910,6 @@ export namespace Components {
         "href": string;
     }
     interface BalNavbarMenu {
-        /**
-          * *Internal* - If the menu is open it closes it and the other way around.
-         */
         "toggle": (isMenuActive: boolean) => Promise<void>;
     }
     interface BalNavbarMenuEnd {
@@ -1291,9 +1292,6 @@ export namespace Components {
           * Go to tab with the given value
          */
         "select": (tab: BalTabOption) => Promise<void>;
-        /**
-          * *Internal* - Rerenders the tabs with their given settings
-         */
         "sync": () => Promise<void>;
     }
     interface BalTag {
@@ -2380,9 +2378,6 @@ declare namespace LocalJSX {
           * Listen when the dropdown opens or closes. Returns the current `isActive` value.
          */
         "onBalCollapse"?: (event: CustomEvent<boolean>) => void;
-        /**
-          * *Internal* - Use this to close unuesed dropdowns.
-         */
         "onBalDropdownPrepare"?: (event: CustomEvent<string>) => void;
     }
     interface BalDropdownMenu {
@@ -2787,6 +2782,10 @@ declare namespace LocalJSX {
           * If `true`, a backdrop will be displayed behind the modal.
          */
         "hasBackdrop"?: boolean;
+        /**
+          * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
+         */
+        "interface"?: 'light' | 'card';
         /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */

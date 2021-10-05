@@ -1,0 +1,27 @@
+$modal-z: 40;
+
+$modal-content-width: var(--bal-width, 640px);
+
+$modal-content-margin-mobile: 16px;
+$modal-content-spacing-mobile: 0;
+$modal-content-spacing-tablet: 40px;
+
+$modal-close-dimensions: 40px;
+$modal-close-right: 32px;
+$modal-close-top: 32px;
+
+$modal-card-body-padding: 16px;
+$modal-card-head-radius: 0px;
+$modal-card-head-padding: 16px;
+
+$modal-card-head-radius: 0px;
+$modal-card-foot-radius: 0px;
+
+$modal-card-head-background-color: $scheme-main;
+
+$modal-card-title-size: $size-large;
+
+$modal-card-foot-border-top: 1px solid $blue-light-line;
+$modal-card-head-border-bottom: 1px solid $blue-light-line;
+
+$modal-background-background-color: bulmaRgba(darken($blue-dark, 10), 0.86);

@@ -13,7 +13,7 @@ const printComponentProps = component => {
         ...component.props
           .filter(prop => !!prop.docs)
           .map(prop => [
-            printBold(prop.attr),
+            printBold(prop.attr || prop.name),
             prop.docs.replace(/(?:\r\n|\r|\n)/g, ' ').trim(),
             printCode(prop.type ? prop.type.split('|').join(',') : ''),
             printCode(prop.default),
