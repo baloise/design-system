@@ -55,4 +55,16 @@ bal-modal-header {
       max-height: 100%;
     }
   }
+
+  bal-modal-actions {
+    .buttons {
+      width: 100%;
+      display: flex;
+      flex-direction: row !important;
+
+      bal-button {
+        flex: 1;
+      }
+    }
+  }
 }
