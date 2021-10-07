@@ -40,13 +40,18 @@
             (balNavigate)="navigateTo('services')"
             [active]="isTabActive('services')"
           ></bal-tab-item>
+          <bal-tab-item
+            value="shared"
+            label="Shared"
+            (balNavigate)="navigateTo('shared')"
+            [active]="isTabActive('shared')"
+          ></bal-tab-item>
         </bal-tabs>
       </div>
     </div>
   </header>
   <main>
     <div class="container">
-      <!-- Page content -->
       <router-outlet></router-outlet>
     </div>
   </main>
