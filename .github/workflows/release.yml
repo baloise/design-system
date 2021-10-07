@@ -32,24 +32,11 @@ jobs:
           node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
 
-      # - name: Clean install dependencies
-      #   run: npm ci
-
-      # - name: Build
-      #   run: npm run build
-
       - uses: EndBug/add-and-commit@v5
         with:
           message: 'chore(): update build artifacts'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Authenticate with Registry
-      #   run: |
-      #     echo "registry=http://registry.npmjs.org/" > .npmrc
-      #     echo //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN >> .npmrc
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Publish to NPM
         run: 'npm run release'
