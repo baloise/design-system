@@ -32,11 +32,11 @@ jobs:
           node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Clean install dependencies
-        run: npm ci
+      # - name: Clean install dependencies
+      #   run: npm ci
 
-      - name: Build
-        run: npm run build
+      # - name: Build
+      #   run: npm run build
 
       - uses: EndBug/add-and-commit@v5
         with:
@@ -47,14 +47,12 @@ jobs:
       # - name: Authenticate with Registry
       #   run: |
       #     echo "registry=http://registry.npmjs.org/" > .npmrc
-      #     echo //registry.npmjs.org/:_authToken=$NPM_TOKEN >> .npmrc
+      #     echo //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN >> .npmrc
       #   env:
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - name: Publish to NPM
         run: 'npm run release'
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
