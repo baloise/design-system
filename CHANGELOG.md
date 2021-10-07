@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.12](https://github.com/baloise/design-system/compare/v1.18.11...v1.18.12) (2021-10-07)
+
+
+### Bug Fixes
+
+* release workflow ([0a0f8f1](https://github.com/baloise/design-system/commit/0a0f8f1324634d1c6681ee5cc4806237be429323))
+
+
+
+
+
 ## [1.18.7](https://github.com/baloise/design-system/compare/v1.18.6...v1.18.7) (2021-10-07)
 
 ### Bug Fixes
