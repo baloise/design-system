@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.7](https://github.com/baloise/design-system/compare/v1.18.6...v1.18.7) (2021-10-07)
+
+
+### Bug Fixes
+
+* **list:** use flexbox ([2c34f09](https://github.com/baloise/design-system/commit/2c34f09033fa2f8b4c9b2790c9209b225240f668))
+
+
+
+
+
 ## [1.18.6](https://github.com/baloise/design-system/compare/v1.18.5...v1.18.6) (2021-10-05)
 
 **Note:** Version bump only for package @baloise/design-system-testing
