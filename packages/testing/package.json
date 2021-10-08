@@ -39,10 +39,12 @@
     "ci:server": "http-server ../components/www -p 3333 -c-1 --silent"
   },
   "license": "Apache-2.0",
-  "dependencies": {
-    "@baloise/design-system-components": "1.18.13"
+  "dependencies": {},
+  "peerDependencies": {
+    "@baloise/design-system-components": "^1.18.0"
   },
   "devDependencies": {
+    "@baloise/design-system-components": "^1.18.0",
     "@types/chai": "^4.2.22",
     "@types/jquery": "^3.5.6",
     "@types/node": "^14.17.21",
