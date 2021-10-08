@@ -57,6 +57,7 @@
   "dependencies": {
     "@baloise/design-system-fonts": "1.18.13",
     "@baloise/design-system-icons": "1.18.13",
+    "@baloise/web-app-utils": "1.6.1",
     "@stencil/core": "^2.8.0",
     "@types/lodash": "^4.14.172",
     "bulma": "^0.9.3",
