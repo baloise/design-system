@@ -281,29 +281,29 @@ export function toDate(datestring: string | undefined | null): Date | undefined 
     const day = parseInt(isIso ? parts[2] : parts[0], 10)
 
     if (year < 1900) {
-      return
+      return undefined
     }
 
     if (month < 1 || month > 12) {
-      return
+      return undefined
     }
 
     const lastDayOfMonth = new Date(year, month, 0).getDate()
     if (day < 1 || day > lastDayOfMonth) {
-      return
+      return undefined
     }
 
     datestring = newDateString(year, month, day)
   }
 
   if (datestring === '' || datestring.length < 8 || datestring.length > 10) {
-    return
+    return undefined
   }
 
   const date = new Date(datestring)
 
   if (date.toString() === 'Invalid Date') {
-    return
+    return undefined
   }
 
   return date
