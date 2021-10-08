@@ -15,9 +15,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Bootstrap
-        run: npm run bootsrap
-
       - name: Test
         run: npm run test
 
