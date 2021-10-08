@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.13](https://github.com/baloise/design-system/compare/v1.18.12...v1.18.13) (2021-10-08)
+
+**Note:** Version bump only for package @baloise/design-system-testing
+
+
+
+
+
 ## [1.18.12](https://github.com/baloise/design-system/compare/v1.18.11...v1.18.12) (2021-10-07)
 
 **Note:** Version bump only for package @baloise/design-system-testing
