@@ -868,6 +868,16 @@ export const BalFooter = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
+    locale: {
+      type: String,
+      default: 'en',
+      required: false,
+    },
+    hideLinks: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   emits: {
 

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.15](https://github.com/baloise/design-system/compare/v1.18.14...v1.18.15) (2021-10-08)
+
+**Note:** Version bump only for package @baloise/design-system-components
+
+
+
+
+
+## [1.18.14](https://github.com/baloise/design-system/compare/v1.18.13...v1.18.14) (2021-10-08)
+
+
+### Bug Fixes
+
+* **link:** add inverted style ([e801ef6](https://github.com/baloise/design-system/commit/e801ef62237238760e8831ea30398b3bc5e6faf7))
+
+
+
+
+
 ## [1.18.13](https://github.com/baloise/design-system/compare/v1.18.12...v1.18.13) (2021-10-08)
 
 **Note:** Version bump only for package @baloise/design-system-components

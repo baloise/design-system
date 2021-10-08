@@ -17,17 +17,6 @@ jobs:
 
       - name: Test
         run: npm run test
-  Cypress:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Clean install dependencies
-        run: npm ci
-
-      - name: Build lib
-        run: npm run icons:build && npm run lib:build && npm run testing:build
 
       - name: Start server in the background
         run: npm run testing:server &

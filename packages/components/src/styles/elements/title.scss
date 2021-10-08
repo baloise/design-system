@@ -79,11 +79,18 @@ a.is-bold {
   letter-spacing: -1%;
 }
 
-a.is-link:focus,
-a.is-link:active,
-a.is-link:hover,
-a.is-link:visited,
 a.is-link {
   color: $cyan;
   text-decoration: none;
+}
+
+a.is-link.is-inverted {
+  color: $white;
+}
+
+a.is-link:focus,
+a.is-link:active,
+a.is-link:hover,
+a.is-link:visited {
+  text-decoration: underline;
 }

@@ -564,13 +564,13 @@ export class BalFileUpload {
 
 export declare interface BalFooter extends Components.BalFooter {}
 @ProxyCmp({
-  inputs: ['hasTrackLine']
+  inputs: ['hasTrackLine', 'hideLinks', 'locale']
 })
 @Component({
   selector: 'bal-footer',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['hasTrackLine']
+  inputs: ['hasTrackLine', 'hideLinks', 'locale']
 })
 export class BalFooter {
   protected el: HTMLElement;
