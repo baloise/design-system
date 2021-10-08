@@ -1,4 +1,5 @@
-import { Component, Host, h, Prop } from '@stencil/core'
+import { FooterLink, Language, loadFooterLinks } from '@baloise/web-app-utils'
+import { Component, Host, h, Prop, State } from '@stencil/core'
 
 @Component({
   tag: 'bal-footer',
@@ -12,6 +13,23 @@ export class Footer {
    */
   @Prop() hasTrackLine: boolean = false
 
+  /**
+   * The languages in which the links will appear.
+   */
+  @Prop() locale: 'en' | 'de' | 'fr' | 'it' = 'en'
+
+  /**
+   * If `true` the default Baloise links will be hidden.
+   */
+   @Prop() hideLinks: boolean = false;
+
+   @State()
+  links: FooterLink[] = [];
+
+  connectedCallback() {
+    loadFooterLinks(new Language(this.locale)).then(links => this.links = links);
+  }
+
   render() {
     return (
       <Host>
@@ -22,6 +40,13 @@ export class Footer {
           }}
         >
           <slot></slot>
+          { this.hideLinks ? '' :
+            <div class="container">
+            {this.links.map((link) =>
+              <a class="is-link is-inverted pr-4" href={link.link}>{link.label}</a>
+            )}
+            </div>
+          }
         </footer>
       </Host>
     )

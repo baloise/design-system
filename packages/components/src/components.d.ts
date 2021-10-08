@@ -367,7 +367,7 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * Define the local of month and day names.
+          * Define the locale of month and day names.
          */
         "locale": 'en' | 'de' | 'fr' | 'it';
         /**
@@ -566,6 +566,14 @@ export namespace Components {
           * If `true` the footer shows a track line at the bottom.
          */
         "hasTrackLine": boolean;
+        /**
+          * If `true` the default Baloise links will be hidden.
+         */
+        "hideLinks": boolean;
+        /**
+          * The languages in which the links will appear.
+         */
+        "locale": 'en' | 'de' | 'fr' | 'it';
     }
     interface BalHeading {
         /**
@@ -2301,7 +2309,7 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * Define the local of month and day names.
+          * Define the locale of month and day names.
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it';
         /**
@@ -2497,6 +2505,14 @@ declare namespace LocalJSX {
           * If `true` the footer shows a track line at the bottom.
          */
         "hasTrackLine"?: boolean;
+        /**
+          * If `true` the default Baloise links will be hidden.
+         */
+        "hideLinks"?: boolean;
+        /**
+          * The languages in which the links will appear.
+         */
+        "locale"?: 'en' | 'de' | 'fr' | 'it';
     }
     interface BalHeading {
         /**
