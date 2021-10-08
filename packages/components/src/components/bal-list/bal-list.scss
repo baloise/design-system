@@ -3,100 +3,77 @@
 .bal-app {
   .bal-list {
     position: static;
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 100%;
 
-    &.is-inverted .bal-list-item.is-selected {
-      background: $blue-dark;
-    }
+    .bal-list-item {
+      display: flex;
+      flex: 1;
+      width: 100%;
+      min-height: 48px;
+      align-items: center;
 
-    &.is-inverted .bal-list-item:not(.is-selected) {
-      &:hover {
-        background: $blue-dark;
+      .bal-list-item-icon,
+      .bal-list-item-content {
+        display: flex;
+        flex: 1;
       }
-    }
 
-    &.is-disabled .bal-list-item,
-    .bal-list-item.is-disabled {
-      transition: 0;
-      cursor: default;
+      .bal-list-item-icon {
+        justify-content: center;
+        max-width: 48px;
+      }
 
-      &:hover {
+      .bal-list-item-content {
+        display: flex;
+        flex-direction: column;
+      }
+
+      & > button,
+      & > a {
+        text-decoration: none;
+        position: static;
+        display: flex;
+        flex: 1;
+        width: 100%;
+        align-items: center;
+        min-height: 48px;
+
+        flex-direction: row;
         padding: 0;
+        &:focus,
+        &:active,
+        &:hover {
+          color: $blue;
+        }
+      }
+
+      &.is-selected {
+        background: $blue-light-hover;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background: $grey-lightest;
       }
     }
 
-    &.is-disabled .bal-list-item:not(.is-selected):hover {
-      background: transparent;
+    &.is-inverted {
+      .bal-list-item-title {
+        color: $white;
+      }
+
+      .bal-list-item {
+        &:hover {
+          cursor: pointer;
+          background: $blue-dark;
+        }
+      }
     }
 
     &.has-border .bal-list-item {
       border-bottom: 1px solid $blue-light-line;
-    }
-
-    &.has-border.is-inverted .bal-list-item {
-      border-bottom: 1px solid $blue-line-inverted;
-    }
-
-    &.is-inverted .bal-list-item-title {
-      color: $white;
-    }
-  }
-
-  .bal-list-item {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    transition: 0.2s ease-in-out;
-    padding: 0;
-
-    & > a {
-      text-decoration: none;
-      position: static;
-      display: flex;
-      flex-direction: row;
-      padding: 0;
-      flex: 1;
-      &:focus,
-      &:active,
-      &:hover {
-        color: $blue;
-      }
-    }
-
-    &:hover {
-      padding: 0 8px;
-    }
-
-    &.is-selected {
-      background: $blue-light;
-    }
-  }
-
-  .bal-list-item-content,
-  .bal-list-item-icon {
-    position: static;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-  }
-
-  .bal-list-item-content {
-    display: flex;
-    width: 100%;
-    min-height: 48px;
-  }
-
-  .bal-list-item-icon {
-    align-self: flex-start;
-    display: inline-flex;
-    min-width: 24px;
-    margin: 16px 0;
-    margin-right: 24px;
-
-    &.is-right {
-      margin-right: 0;
-      margin-left: 24px;
     }
   }
 
@@ -116,10 +93,8 @@
     position: static;
     box-sizing: border-box;
     max-width: 100%;
-    padding: 0 16px;
     display: block;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: pre-line;
   }
 
   .bal-list-item-title,

@@ -5,6 +5,7 @@ import { TablePageComponent } from './pages/table/table-page.component'
 import { ModalPageComponent } from './pages/modal/modal-page.component'
 import { PipesPageComponent } from './pages/pipes/pipes-page.component'
 import { ServicesPageComponent } from './pages/services/services-page.component'
+import { SharedPageComponent } from './pages/shared/shared-page.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/form', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'modal', component: ModalPageComponent, data: { nav: true } },
   { path: 'pipes', component: PipesPageComponent, data: { nav: true } },
   { path: 'services', component: ServicesPageComponent, data: { nav: true } },
+  { path: 'shared', component: SharedPageComponent, data: { nav: true } },
   { path: '**', redirectTo: '/form' },
 ]
 

@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.13](https://github.com/baloise/design-system/compare/v1.18.12...v1.18.13) (2021-10-08)
+
+**Note:** Version bump only for package @baloise/design-system-icons
+
+
+
+
+
+## [1.18.12](https://github.com/baloise/design-system/compare/v1.18.11...v1.18.12) (2021-10-07)
+
+**Note:** Version bump only for package @baloise/design-system-icons
+
+
+
+
+
+## [1.18.11](https://github.com/baloise/design-system/compare/v1.18.10...v1.18.11) (2021-10-07)
+
+**Note:** Version bump only for package @baloise/design-system-icons
+
+
+
+
+
+## [1.18.10](https://github.com/baloise/design-system/compare/v1.18.9...v1.18.10) (2021-10-07)
+
+**Note:** Version bump only for package @baloise/design-system-icons
+
+
+
+
+
+## [1.18.9](https://github.com/baloise/design-system/compare/v1.18.8...v1.18.9) (2021-10-07)
+
+**Note:** Version bump only for package @baloise/design-system-icons
+
+
+
+
+
+## [1.18.8](https://github.com/baloise/design-system/compare/v1.18.7...v1.18.8) (2021-10-07)
+
+**Note:** Version bump only for package @baloise/design-system-icons
+
+
+
+
+
+## [1.18.7](https://github.com/baloise/design-system/compare/v1.18.6...v1.18.7) (2021-10-07)
+
+**Note:** Version bump only for package @baloise/design-system-icons
+
+
+
+
+
 ## [1.18.6](https://github.com/baloise/design-system/compare/v1.18.5...v1.18.6) (2021-10-05)
 
 **Note:** Version bump only for package @baloise/design-system-icons
