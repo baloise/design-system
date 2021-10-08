@@ -50,7 +50,7 @@ export class Datepicker implements ComponentInterface {
   @Prop() name: string = this.inputId
 
   /**
-   * If `true` the component uses the whole width.
+   * Define the local of month and day names.
    */
   @Prop() locale: 'en' | 'de' | 'fr' | 'it' = 'en'
 
