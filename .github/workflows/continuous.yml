@@ -27,7 +27,7 @@ jobs:
         run: npm ci
 
       - name: Build lib
-        run: npm run icons:build && npm run lib:build && npm run testing:build
+        run: npm run icons:build && npm run lib:build && npm run bootstrap && npm run testing:build
 
       - name: Start server in the background
         run: npm run testing:server &
