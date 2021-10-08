@@ -367,7 +367,7 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * If `true` the component uses the whole width.
+          * Define the local of month and day names.
          */
         "locale": 'en' | 'de' | 'fr' | 'it';
         /**
@@ -2301,7 +2301,7 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * If `true` the component uses the whole width.
+          * Define the local of month and day names.
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it';
         /**
