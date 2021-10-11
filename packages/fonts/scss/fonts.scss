@@ -1,30 +1,34 @@
-$font-normal-ttf: str-insert('/MetaStd-Normal.ttf', $font-path, 0);
-$font-normal-woff: str-insert('/MetaStd-Normal.woff', $font-path, 0);
-$font-normal-woff2: str-insert('/MetaStd-Normal.woff2', $font-path, 0);
+$font-regular-otf: str-insert('/Biennale-Regular.otf', $font-path, 0);
+// $font-normal-ttf: str-insert('/MetaStd-Normal.ttf', $font-path, 0);
+// $font-normal-woff: str-insert('/MetaStd-Normal.woff', $font-path, 0);
+// $font-normal-woff2: str-insert('/MetaStd-Normal.woff2', $font-path, 0);
 
-$font-medium-ttf: str-insert('/MetaStd-Medium.ttf', $font-path, 0);
-$font-medium-woff: str-insert('/MetaStd-Medium.woff', $font-path, 0);
-$font-medium-woff2: str-insert('/MetaStd-Medium.woff2', $font-path, 0);
+$font-bold-otf: str-insert('/Biennale-Bold.otf', $font-path, 0);
+// $font-medium-ttf: str-insert('/MetaStd-Medium.ttf', $font-path, 0);
+// $font-medium-woff: str-insert('/MetaStd-Medium.woff', $font-path, 0);
+// $font-medium-woff2: str-insert('/MetaStd-Medium.woff2', $font-path, 0);
 
 @font-face {
-  font-family: 'MetaPro';
+  font-family: 'Biennale';
   font-style: normal;
   font-weight: 400;
   font-display: fallback;
-  src: local('MetaPro');
-  src: local('MetaStd-Normal');
-  src: url($font-normal-woff2) format('woff2');
-  src: url($font-normal-woff) format('woff');
-  src: url($font-normal-ttf) format('truetype');
+  src: local('Biennale');
+  src: local('Biennale Regular');
+  src: url($font-regular-otf) format('opentype');
+  // src: url($font-normal-woff2) format('woff2');
+  // src: url($font-normal-woff) format('woff');
+  // src: url($font-normal-ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'MetaPro';
+  font-family: 'Biennale';
   font-style: normal;
   font-weight: 700;
   font-display: fallback;
-  src: local('MetaStd-Medium');
-  src: url($font-medium-woff2) format('woff2');
-  src: url($font-medium-woff) format('woff');
-  src: url($font-medium-ttf) format('truetype');
+  src: local('Biennale Bold');
+  src: url($font-bold-otf) format('opentype');
+  // src: url($font-medium-woff2) format('woff2');
+  // src: url($font-medium-woff) format('woff');
+  // src: url($font-medium-ttf) format('truetype');
 }

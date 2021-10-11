@@ -1,11 +1,17 @@
 @import '../../styles/global.utilities';
 
 :host {
-  display: block;
+  display: inline-block;
   position: relative;
-  flex: 1;
-  align-items: center;
-  width: 100%;
-  padding: 0 !important;
-  font-family: $family-primary;
+  min-width: 250px;
+
+  &.is-fullwidth {
+    width: 100%;
+    flex: 1;
+  }
+  // flex: 1;
+  // align-items: center;
+  // width: 100%;
+  // padding: 0 !important;
+  // font-family: $family-primary;
 }

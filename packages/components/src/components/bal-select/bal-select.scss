@@ -2,151 +2,197 @@
 @import 'node_modules/bulma/sass/components/dropdown.sass';
 
 :host {
-  display: block;
+  display: inline-block;
   position: relative;
+  min-width: 250px;
 
   &.is-fullwidth {
     width: 100%;
   }
 
   &.is-disabled {
-    background: $blue-light;
+    background: $input-disabled-background-color;
   }
 
-  .bal-select__slot {
+  &.is-disabled,
+  &.is-disabled bal-dropdown-trigger,
+  &.is-disabled input {
+    cursor: not-allowed !important;
+  }
+}
+
+.bal-select__slot {
+  border: 2px solid $border-color;
+  border-radius: $radius;
+  padding: 0;
+
+  .bal-select__selections {
+    padding-right: 48px;
     position: relative;
-    align-items: center;
-    display: flex;
-    max-width: 100%;
-    min-width: 0;
-    width: 100%;
-    padding-bottom: 1px;
-    border-bottom: 1px solid $blue-light-line;
-    margin-top: -1px;
-
-    &:focus-within,
-    &.is-focused {
-      border-width: 2px;
-      padding-bottom: 0;
-      border-color: $blue;
-      box-shadow: none;
-    }
-
-    .bal-select__selections {
-      align-items: center;
-      display: flex;
-      flex: 1 1;
-      flex-wrap: wrap;
-      line-height: 18px;
-      max-width: 100%;
-      min-width: 0;
-    }
-
-    bal-tag {
-      margin-right: 8px;
-    }
-
-    .input {
-      border: none;
-      box-shadow: none;
-      padding: 0;
-    }
-
-    .value {
-      margin: 7px 4px 7px 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      max-width: 90%;
-    }
   }
 
-  &.is-inverted {
-    .bal-select__slot {
-      border-color: $white;
-
-      &:focus-within,
-      &.is-focused {
-        border-color: $white;
-      }
-    }
+  input.input {
+    border: none !important;
+    min-height: 44px !important;
+    height: 44px !important;
   }
 
-  .bal-select__empty {
-    padding: 10px 20px 13px 20px;
+  bal-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    min-height: 48px;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
-  .bal-select__option {
-    visibility: visible;
-    font-family: $family-primary !important;
-    padding: 10px 20px 13px 20px;
-    transition: padding-left 0.3s ease;
+  &:focus-within,
+  &.is-focused {
+    border-width: 2px;
+    padding-bottom: 0;
+    border-color: $blue;
+    box-shadow: none;
+  }
+}
+
+.bal-select__option {
+  visibility: visible;
+  font-family: $family-primary !important;
+  padding: 0 16px !important;
+  min-height: 48px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+
+  &.is-disabled {
+    user-select: none;
+    opacity: 0.5;
+  }
+
+  &::-moz-focus-inner {
     border: 0;
-    background: transparent;
-    cursor: pointer;
-    outline: none;
+  }
 
-    &.is-disabled {
-      user-select: none;
-      opacity: 0.5;
-    }
+  .select-option__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
-    &::-moz-focus-inner {
-      border: 0;
+  &.has-checkbox {
+    span.checkbox {
+      width: 35px;
     }
+  }
 
-    .select-option__content {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-    }
+  &.is-hidden {
+    display: none !important;
+  }
 
-    &.has-checkbox {
-      span.checkbox {
-        width: 35px;
-      }
-    }
+  span {
+    font-family: $family-primary;
+    font-size: $size-normal;
+  }
 
-    &.is-hidden {
-      display: none !important;
-    }
+  span.label {
+    font-weight: $weight-normal;
+    font-size: $size-normal;
+  }
 
-    span {
-      font-family: $family-primary;
-      font-size: $size-small;
+  &.is-selected {
+    // background: $dropdown-item-active-background-color;
+  }
+
+  &.is-selected:not(.has-checkbox) {
+    span.label {
+      font-weight: $weight-bold;
+      color: $dropdown-item-active-color;
     }
+  }
+
+  &:hover {
+    background: $white;
+  }
+
+  &.is-focused {
+    background: $dropdown-item-hover-background-color;
 
     span.label {
-      font-weight: $weight-normal;
-      font-size: $size-small;
-    }
-
-    &.is-selected {
-      background: $dropdown-item-active-background-color;
-    }
-
-    &.is-selected:not(.has-checkbox) {
-      span.label {
-        font-weight: $weight-bold;
-        color: $dropdown-item-active-color;
-      }
-    }
-
-    &:hover {
-      background: $white;
-    }
-
-    &.is-focused {
-      background: $dropdown-item-hover-background-color;
-
-      span.label {
-        color: $dropdown-item-hover-color;
-      }
-    }
-
-    &.has-movement.is-focused:not(.is-selected):not(.has-checkbox) {
-      padding-left: 30px !important;
+      color: $dropdown-item-hover-color;
     }
   }
 }
+
+//   &.is-disabled {
+//     background: $blue-light;
+//   }
+
+//   .bal-select__slot {
+//     position: relative;
+//     align-items: center;
+//     display: flex;
+//     max-width: 100%;
+//     min-width: 0;
+//     width: 100%;
+//     border input {
+//       border: none !important;
+//       background: transparent !important;
+//       padding: 0 !important;
+//     }
+
+//     &:focus-within,
+//     &.is-focused {
+//       border-width: 2px;
+//       padding-bottom: 0;
+//       border-color: $blue;
+//       box-shadow: none;
+//     }
+
+//     .bal-select__selections {
+//       align-items: center;
+//       display: flex;
+//       flex: 1 1;
+//       flex-wrap: wrap;
+//       line-height: 18px;
+//       max-width: 100%;
+//       min-width: 0;
+//     }
+
+//     bal-tag {
+//       margin-right: 8px;
+//     }
+
+//     .input {
+//       border: none;
+//       box-shadow: none;
+//       padding: 0;
+//     }
+
+//     .value {
+//       margin: 7px 4px 7px 0;
+//       overflow: hidden;
+//       text-overflow: ellipsis;
+//       white-space: nowrap;
+//       max-width: 90%;
+//     }
+//   }
+
+//   &.is-inverted {
+//     .bal-select__slot {
+//       border-color: $white;
+
+//       &:focus-within,
+//       &.is-focused {
+//         border-color: $white;
+//       }
+//     }
+//   }
+
+//   .bal-select__empty {
+//     padding: 10px 20px 13px 20px;
+//   }
+
+// }

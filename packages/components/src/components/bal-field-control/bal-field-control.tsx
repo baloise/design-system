@@ -7,35 +7,33 @@ import { Component, h, Host, Prop } from '@stencil/core'
 })
 export class FieldControl {
   /**
-   * Baloise icon for the right side of the input
+   * @internal
    */
-  @Prop() iconRight: string = ''
+  @Prop() invalid: boolean = false
 
   /**
-   * Baloise icon for the left side of the input
+   * @internal
    */
-  @Prop() iconLeft: string = ''
+  @Prop() touched: boolean = false
 
   /**
-   * If `true` a loading spinner is visible at the end of the input
+   * @internal
    */
   @Prop() loading: boolean = false
 
   /**
-   * If `true` the field can be used on blue background.
+   * @internal
    */
   @Prop() inverted: boolean = false
 
-  get buildIconLeftTemplate() {
-    if (this.iconLeft) {
-      return <bal-icon name={this.iconLeft} color="info" class="is-left" size="small" inverted={this.inverted} />
-    }
-    return ''
-  }
+  /**
+   * @internal
+   */
+  @Prop() disabled: boolean = false
 
-  get buildIconRightTemplate() {
-    if (this.iconRight) {
-      return <bal-icon name={this.iconRight} color="info" class="is-right" size="small" inverted={this.inverted} />
+  get buildValidationIconTemplate() {
+    if (this.touched && !this.loading && !this.disabled) {
+      return <bal-icon class="is-validation-icon" size="small" name={this.invalid ? 'close' : 'check'} color={this.invalid ? 'danger' : 'success'} />
     }
     return ''
   }
@@ -45,13 +43,12 @@ export class FieldControl {
       <Host
         class={{
           'control': true,
-          'has-icons-left': !!this.iconLeft,
-          'has-icons-right': !!this.iconRight || this.loading,
           'is-loading': this.loading,
-        }}>
+          'has-validation-icon': this.touched === true,
+        }}
+      >
         <slot></slot>
-        {this.buildIconLeftTemplate}
-        {this.buildIconRightTemplate}
+        {this.buildValidationIconTemplate}
       </Host>
     )
   }

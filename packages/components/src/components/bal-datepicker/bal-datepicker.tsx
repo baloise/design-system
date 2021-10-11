@@ -34,6 +34,8 @@ export class Datepicker implements ComponentInterface {
   private dropdownElement!: HTMLBalDropdownElement
   private inputId = `bal-dp-${datepickerIds++}`
 
+  @State() private hasFocus = false
+
   @Element() el!: HTMLElement
 
   @State() isDropdownOpen: boolean = false
@@ -43,6 +45,21 @@ export class Datepicker implements ComponentInterface {
     month: month(now()),
     day: day(now()),
   }
+
+  /**
+   * @internal
+   */
+  @Prop() invalid: boolean = false
+
+  /**
+   * @internal
+   */
+  @Prop() touched: boolean = false
+
+  /**
+   * @internal
+   */
+  @Prop() loading: boolean = false
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -308,7 +325,7 @@ export class Datepicker implements ComponentInterface {
   }
 
   get months(): { name: string; index: number }[] {
-    const monthNames = i18nDate[this.locale].months
+    const monthNames = i18nDate[this.locale].monthsShort
     let months = monthNames.map((name, index) => ({ name, index }))
 
     if (this.min) {
@@ -451,10 +468,12 @@ export class Datepicker implements ComponentInterface {
   }
 
   private onInputFocus = (event: FocusEvent) => {
+    this.hasFocus = true
     this.balFocus.emit(event)
   }
 
   private onInputBlur = (event: FocusEvent) => {
+    this.hasFocus = false
     this.balBlur.emit(event)
   }
 
@@ -490,9 +509,10 @@ export class Datepicker implements ComponentInterface {
         class={{
           'is-disabled': this.disabled,
           'is-fullwidth': this.expanded,
+          'is-focused': this.hasFocus,
         }}
       >
-        <bal-dropdown expanded={this.expanded} fixedContentWidth={true} onBalCollapse={this.onDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
+        <bal-dropdown expanded fixedContentWidth={true} onBalCollapse={this.onDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
           <bal-dropdown-trigger>{this.renderInput()}</bal-dropdown-trigger>
           <bal-dropdown-menu>
             <div class="datepicker-popup">
@@ -525,6 +545,9 @@ export class Datepicker implements ComponentInterface {
             'clickable': !this.disabled && !this.triggerIcon,
             'is-inverted': this.inverted,
             'is-disabled': this.disabled,
+            'is-focused': this.hasFocus,
+            'is-success': this.touched && !this.invalid,
+            'is-danger': this.touched && this.invalid,
           }}
           ref={el => (this.inputElement = el as HTMLInputElement)}
           id={this.inputId}
@@ -546,7 +569,18 @@ export class Datepicker implements ComponentInterface {
           onBlur={this.onInputBlur}
           onFocus={this.onInputFocus}
         />
-        <bal-icon class="datepicker-trigger-icon clickable" is-right color="info" inverted={this.inverted} name="date" onClick={this.onIconClick} />
+        <bal-icon
+          class={{
+            'datepicker-trigger-icon is-right': true,
+            'is-hidden': this.loading,
+            'is-clickable': !this.disabled,
+          }}
+          color={this.disabled ? 'gray' : 'primary'}
+          is-right
+          inverted={this.inverted}
+          name="date"
+          onClick={this.onIconClick}
+        />
       </div>
     )
   }
@@ -571,7 +605,9 @@ export class Datepicker implements ComponentInterface {
                     'is-selectable': !cell.isDisabled,
                   }}
                 >
-                  {cell.label}
+                  <div class="content">
+                    <span>{cell.label}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -585,7 +621,9 @@ export class Datepicker implements ComponentInterface {
     return (
       <header class="datepicker-header">
         {this.weekDays.map(weekday => (
-          <div class="datepicker-cell">{weekday}</div>
+          <div class="datepicker-cell">
+            <div class="content">{weekday}</div>
+          </div>
         ))}
       </header>
     )
@@ -596,10 +634,10 @@ export class Datepicker implements ComponentInterface {
       <header class="datepicker-header">
         <div class="pagination field is-centered">
           <a role="button" onClick={() => this.previousMonth()} class="pagination-previous">
-            <bal-icon name="nav-go-left" size="small" />
+            <bal-icon name="nav-go-left" size="small" color="primary" />
           </a>
           <a role="button" onClick={() => this.nextMonth()} class="pagination-next">
-            <bal-icon name="nav-go-right" size="small" />
+            <bal-icon name="nav-go-right" size="small" color="primary" />
           </a>
           <div class="pagination-list">
             <div class="field has-addons">
@@ -612,6 +650,7 @@ export class Datepicker implements ComponentInterface {
                       </option>
                     ))}
                   </select>
+                  <bal-icon size="xsmall" color="primary" name="caret-down" class="select-chevron"></bal-icon>
                 </span>
               </div>
               <div class="control year-select">
@@ -623,6 +662,7 @@ export class Datepicker implements ComponentInterface {
                       </option>
                     ))}
                   </select>
+                  <bal-icon size="xsmall" color="primary" name="caret-down" class="select-chevron"></bal-icon>
                 </span>
               </div>
             </div>

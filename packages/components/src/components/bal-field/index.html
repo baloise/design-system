@@ -12,37 +12,196 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-card padding="form">
+        <bal-card>
           <bal-card-content>
-            <div class="columns is-multiline">
-              <bal-field class="column is-full py-0" expanded>
-                <bal-field-label required>Firstname</bal-field-label>
-                <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
+            <div class="columns is-multiline mt-0">
+              <bal-field class="column is-full py-0" expanded touched="false" invalid="true">
+                <bal-field-label>Initial State</bal-field-label>
                 <bal-field-control>
-                  <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+                  <bal-input placeholder="Placeholder"></bal-input>
                 </bal-field-control>
-                <bal-field-message color="danger">Required Field</bal-field-message>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
               </bal-field>
-              <bal-field class="column is-full py-0" expanded disabled loading>
-                <bal-field-label>Lastname</bal-field-label>
+            </div>
+
+            <div class="columns is-multiline mt-0">
+              <bal-field class="column is-full py-0" expanded touched="true" invalid="true">
+                <bal-field-label>Invalid State</bal-field-label>
                 <bal-field-control>
-                  <bal-input name="lastname" placeholder="Enter your lastname" value="Parker"></bal-input>
+                  <bal-input placeholder="Placeholder"></bal-input>
                 </bal-field-control>
-                <bal-field-message></bal-field-message>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
               </bal-field>
-              <bal-field class="column is-full py-0" expanded>
-                <bal-field-label>Alias</bal-field-label>
-                <bal-field-control icon-left="account" icon-right="check">
-                  <bal-input name="alias" placeholder="Enter your alias" value="Spider-Man"></bal-input>
-                </bal-field-control>
-                <bal-field-message color="success">Correct</bal-field-message>
-              </bal-field>
-              <bal-field class="column is-full py-0" expanded>
-                <bal-field-label>Comment</bal-field-label>
+            </div>
+
+            <div class="columns is-multiline mt-0">
+              <bal-field class="column is-full py-0" expanded touched="true" invalid="false">
+                <bal-field-label>Valid State</bal-field-label>
                 <bal-field-control>
-                  <bal-textarea name="comment" placeholder="Enter your comment"></bal-textarea>
+                  <bal-input placeholder="Placeholder"></bal-input>
                 </bal-field-control>
-                <bal-field-message>Some Message</bal-field-message>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+            </div>
+          </bal-card-content>
+        </bal-card>
+      </section>
+
+      <h2 class="title is-size-2">Disabled</h2>
+      <section>
+        <bal-card>
+          <bal-card-content>
+            <div class="columns is-multiline mt-0">
+              <bal-field class="column is-full py-0" expanded disabled touched="false" invalid="true">
+                <bal-field-label>Initial State</bal-field-label>
+                <bal-field-control>
+                  <bal-input placeholder="Placeholder"></bal-input>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+            </div>
+
+            <div class="columns is-multiline mt-0">
+              <bal-field class="column is-full py-0" expanded disabled touched="true" invalid="true">
+                <bal-field-label>Invalid State</bal-field-label>
+                <bal-field-control>
+                  <bal-input placeholder="Placeholder"></bal-input>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+            </div>
+
+            <div class="columns is-multiline mt-0">
+              <bal-field class="column is-full py-0" expanded disabled touched="true" invalid="false">
+                <bal-field-label>Valid State</bal-field-label>
+                <bal-field-control>
+                  <bal-input placeholder="Placeholder"></bal-input>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+            </div>
+          </bal-card-content>
+        </bal-card>
+      </section>
+
+      <h2 class="title is-size-2">Pickers</h2>
+      <section>
+        <bal-card>
+          <bal-card-content>
+            <div class="columns is-multiline mt-0">
+              <bal-field class="column is-half py-0" expanded touched="false" invalid="true">
+                <bal-field-label>Initial State</bal-field-label>
+                <bal-field-control>
+                  <bal-datepicker placeholder="dd.mm.yyyy"></bal-datepicker>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+              <bal-field class="column is-half py-0" expanded touched="true" invalid="true">
+                <bal-field-label>Invalid State</bal-field-label>
+                <bal-field-control>
+                  <bal-datepicker placeholder="dd.mm.yyyy"></bal-datepicker>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+              <bal-field class="column is-half py-0" expanded touched="true" invalid="false">
+                <bal-field-label>Valid State</bal-field-label>
+                <bal-field-control>
+                  <bal-datepicker placeholder="dd.mm.yyyy"></bal-datepicker>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+              <bal-field class="column is-half py-0" disabled expanded touched="true" invalid="false">
+                <bal-field-label>Disabled State</bal-field-label>
+                <bal-field-control>
+                  <bal-datepicker placeholder="dd.mm.yyyy"></bal-datepicker>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+            </div>
+
+            <div class="columns is-multiline mt-6">
+              <bal-field class="column is-half py-0" expanded touched="false" invalid="true">
+                <bal-field-label>Initial State</bal-field-label>
+                <bal-field-control>
+                  <bal-select name="gender" placeholder="Select gender">
+                    <bal-select-option value="male" label="Male">Male</bal-select-option>
+                    <bal-select-option value="female" label="Female">Female</bal-select-option>
+                  </bal-select>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+              <bal-field class="column is-half py-0" expanded touched="true" invalid="true">
+                <bal-field-label>Invalid State</bal-field-label>
+                <bal-field-control>
+                  <bal-select name="gender" placeholder="Select gender">
+                    <bal-select-option value="male" label="Male">Male</bal-select-option>
+                    <bal-select-option value="female" label="Female">Female</bal-select-option>
+                  </bal-select>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+              <bal-field class="column is-half py-0" expanded touched="true" invalid="false">
+                <bal-field-label>Valid State</bal-field-label>
+                <bal-field-control>
+                  <bal-select name="gender" placeholder="Select gender">
+                    <bal-select-option value="male" label="Male">Male</bal-select-option>
+                    <bal-select-option value="female" label="Female">Female</bal-select-option>
+                  </bal-select>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+              <bal-field class="column is-half py-0" disabled expanded touched="true" invalid="false">
+                <bal-field-label>Disabled State</bal-field-label>
+                <bal-field-control>
+                  <bal-select name="gender" placeholder="Select gender">
+                    <bal-select-option value="male" label="Male">Male</bal-select-option>
+                    <bal-select-option value="female" label="Female">Female</bal-select-option>
+                  </bal-select>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+            </div>
+          </bal-card-content>
+        </bal-card>
+      </section>
+
+      <h2 class="title is-size-2">With Icons</h2>
+      <section>
+        <bal-card>
+          <bal-card-content>
+            <div class="columns is-multiline mt-0">
+              <bal-field class="column is-full py-0" expanded touched="false" invalid="true">
+                <bal-field-label>Initial State</bal-field-label>
+                <bal-field-control class="has-icons-left has-icons-right">
+                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-icon name="message" class="is-left"></bal-icon>
+                  <bal-icon name="read-only" class="is-right clickable"></bal-icon>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+            </div>
+
+            <div class="columns is-multiline mt-0">
+              <bal-field class="column is-full py-0" expanded touched="true" invalid="true">
+                <bal-field-label>Invalid State</bal-field-label>
+                <bal-field-control class="has-icons-left has-icons-right">
+                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-icon name="message" class="is-left"></bal-icon>
+                  <bal-icon name="read-only" class="is-right clickable"></bal-icon>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+            </div>
+
+            <div class="columns is-multiline mt-0">
+              <bal-field class="column is-full py-0" expanded touched="true" invalid="false">
+                <bal-field-label>Valid State</bal-field-label>
+                <bal-field-control class="has-icons-left has-icons-right">
+                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-icon name="message" class="is-left"></bal-icon>
+                  <bal-icon name="read-only" class="is-right clickable"></bal-icon>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
               </bal-field>
             </div>
           </bal-card-content>
@@ -51,22 +210,22 @@
 
       <h2 class="title is-size-2">Inverted</h2>
       <section>
-        <bal-card padding="form" color="info" inverted>
+        <bal-card color="primary">
           <bal-card-content>
-            <bal-field expanded inverted loading>
-              <bal-field-label required>Firstname</bal-field-label>
+            <bal-field expanded inverted>
+              <bal-field-label>Label</bal-field-label>
               <bal-field-control>
-                <bal-input id="bal-input-1" name="firstName" placeholder="Enter your firstname"></bal-input>
+                <bal-input placeholder="Placeholder"></bal-input>
               </bal-field-control>
-              <bal-field-message color="danger">Required Field</bal-field-message>
+              <bal-field-message>Hint or Validation Message</bal-field-message>
             </bal-field>
 
             <bal-field expanded inverted disabled>
-              <bal-field-label>Alias</bal-field-label>
-              <bal-field-control icon-left="account" icon-right="check">
-                <bal-input name="alias" placeholder="Enter your alias" value="Spider-Man"></bal-input>
+              <bal-field-label>Disabled State</bal-field-label>
+              <bal-field-control>
+                <bal-input placeholder="Placeholder"></bal-input>
               </bal-field-control>
-              <bal-field-message>Some Message</bal-field-message>
+              <bal-field-message>Hint or Validation Message</bal-field-message>
             </bal-field>
           </bal-card-content>
         </bal-card>
@@ -74,22 +233,23 @@
 
       <h2 class="title is-size-2">Addons</h2>
       <section>
-        <bal-card padding="form">
+        <bal-card>
           <bal-card-content>
             <div class="columns is-multiline">
               <bal-field class="column is-half py-0" expanded>
-                <bal-field-label required>Search</bal-field-label>
+                <bal-field-label>Label</bal-field-label>
                 <bal-field-control>
-                  <bal-input name="search" placeholder="Search..."></bal-input>
-                  <bal-button size="small" outlined color="info">Search</bal-button>
+                  <bal-input placeholder="Placeholder"></bal-input>
+                  <bal-button color="primary" outlined class="ml-2">Action</bal-button>
                 </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
               </bal-field>
             </div>
           </bal-card-content>
         </bal-card>
       </section>
 
-      <h2 class="title is-size-2">Form</h2>
+      <!-- <h2 class="title is-size-2">Form</h2>
       <section>
         <bal-card padding="form">
           <bal-card-content>
@@ -152,8 +312,9 @@
             </bal-field>
           </bal-card-content>
         </bal-card>
-      </section>
+      </section> -->
 
+      <!--
       <h2 class="title is-size-2">Validation for all fields</h2>
       <p>This is not a recommanded validation style. Only use this style if you do not have the possibility to use live validation.</p>
       <section>
@@ -232,7 +393,7 @@
             </bal-notification>
           </bal-card-content>
         </bal-card>
-      </section>
+      </section> -->
     </div>
   </body>
 </html>

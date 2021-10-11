@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface, Listen } from '@stencil/core'
+import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface, Listen, State } from '@stencil/core'
 import { isNil } from 'lodash'
 import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
@@ -16,9 +16,25 @@ export class Input implements ComponentInterface {
   private inputId = `bal-input-${InputIds++}`
   private nativeInput?: HTMLInputElement
   private didInit = false
-  private hasFocus = false
+
+  @State() private hasFocus = false
 
   @Element() el!: HTMLElement
+
+  /**
+   * @internal
+   */
+  @Prop() invalid: boolean = false
+
+  /**
+   * @internal
+   */
+  @Prop() touched: boolean = false
+
+  /**
+   * If `true` the component uses the whole width.
+   */
+  @Prop() expanded = false
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -327,6 +343,7 @@ export class Input implements ComponentInterface {
     if (label) {
       label.id = labelId
       label.htmlFor = this.inputId
+      label.classList.add('clickable')
     }
     let inputProps = {}
     if (this.pattern) {
@@ -340,7 +357,9 @@ export class Input implements ComponentInterface {
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
+          'is-fullwidth': this.expanded,
           'is-disabled': this.disabled,
+          'is-focused': this.hasFocus,
         }}
       >
         <input
@@ -348,8 +367,11 @@ export class Input implements ComponentInterface {
             'input': true,
             'is-disabled': this.disabled,
             'is-inverted': this.inverted,
+            'is-focused': this.hasFocus,
             'clickable': this.clickable,
             'has-icon-right': this.hasIconRight,
+            'is-success': this.touched && !this.invalid,
+            'is-danger': this.touched && this.invalid,
           }}
           ref={inputEl => (this.nativeInput = inputEl)}
           id={this.inputId}

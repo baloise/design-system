@@ -57,7 +57,7 @@
   }
 
   &.is-primary {
-    fill: $cyan;
+    fill: $primary;
   }
 
   &.is-success {
@@ -66,6 +66,10 @@
 
   &.is-info {
     fill: $info;
+  }
+
+  &.is-gray {
+    fill: $gray;
   }
 
   &.is-inverted {

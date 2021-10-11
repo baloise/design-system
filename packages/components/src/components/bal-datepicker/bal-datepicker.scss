@@ -5,12 +5,26 @@
 @import '../bal-pagination/bal-pagination.scss';
 
 :host {
-  display: block;
+  display: inline-block;
   position: relative;
-  font-family: $family-primary;
+  min-width: 250px;
 
   &.is-fullwidth {
     width: 100%;
+  }
+
+  bal-dropdown,
+  .dropdown {
+    display: block !important;
+  }
+
+  bal-dropdown-menu,
+  .dropdown-content {
+    max-width: 352px;
+  }
+
+  &.is-disabled .datepicker-trigger-icon {
+    cursor: not-allowed !important;
   }
 }
 
@@ -19,11 +33,8 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: 38px;
-}
-
-.datepicker-footer {
-  margin-top: 15px;
+  width: 48px;
+  min-height: 48px;
 }
 
 .pagination {
@@ -43,9 +54,9 @@ select {
 
 .pagination-previous,
 .pagination-next {
-  padding-left: 0.25em;
-  padding-right: 0.25em;
   cursor: pointer;
+  border-radius: 100%;
+  background: $white;
 }
 
 .pagination-previous:active,
@@ -60,18 +71,20 @@ select {
 .month-select,
 .year-select {
   width: 50%;
-}
+  padding-left: 4px;
+  padding-right: 4px;
 
-.month-select,
-.month-select select {
-  text-align: right;
-  text-align-last: right;
-}
+  & > span {
+    position: relative;
+    background: $white;
+    border-radius: $radius !important;
+  }
 
-.year-select,
-.year-select select {
-  text-align: left;
-  text-align-last: left;
+  & > span,
+  & > span > select {
+    width: 100%;
+    height: 40px;
+  }
 }
 
 .select {
@@ -80,11 +93,15 @@ select {
   }
 
   select {
-    padding: 6px 5px 13px 5px !important;
+    z-index: 10;
+    background: transparent;
     color: $blue !important;
     font-size: $size-normal !important;
     font-weight: $weight-semibold;
     font-family: $family-primary !important;
+    padding: 0 18px 0 4px !important;
+    text-align: center;
+    text-align-last: center;
 
     option {
       color: $black !important;
@@ -94,17 +111,32 @@ select {
   }
 }
 
+.select-chevron {
+  position: absolute;
+  top: 6px;
+  height: 100%;
+  right: 14px;
+}
+
 .datepicker-popup {
-  padding: 26px 20px;
+  padding: 8px;
   width: 100%;
   user-select: none;
+  background: $white-ter;
+}
+
+@include tablet() {
+  .datepicker-popup {
+    padding: 16px;
+  }
 }
 
 .datepicker-table {
   display: table;
+  table-layout: fixed;
   border-collapse: collapse;
   width: 100%;
-  margin: 15px auto 0 auto;
+  margin: 8px auto 0 auto;
 
   .datepicker-body {
     display: table-row-group;
@@ -119,41 +151,62 @@ select {
     text-align: center;
     vertical-align: middle;
     display: table-cell;
-    max-width: 0;
-    width: 48px;
-    min-width: 48px;
-    min-height: 40px;
-    height: 40px;
-    border: 1px solid $blue-light-line;
-    color: $blue;
+    width: 2%;
+    border: 4px solid transparent;
     cursor: pointer;
-    font-size: $size-small;
-    font-family: $family-primary;
 
-    &.is-selected {
+    & div.content {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      color: $blue;
+      background: $white;
+      border-radius: $radius;
+      cursor: pointer;
+      font-size: $size-small;
+      font-family: $family-primary;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    &.is-selected div.content {
       background: $blue;
       color: $white;
     }
 
-    &.is-outdated,
-    &.is-disabled {
-      background: $blue-light;
-      background-clip: padding-box;
-      color: $blue-light-text;
-      cursor: default;
+    &.is-selected.is-today div.content::after {
+      background: $white;
     }
 
-    &.is-disabled {
+    &.is-outdated div.content,
+    &.is-disabled div.content {
+      background: transparent;
+      background-clip: padding-box;
+      cursor: pointer;
+
+      & > span {
+        opacity: 24%;
+      }
+    }
+
+    &.is-disabled div.content {
       cursor: not-allowed;
     }
 
-    &.is-selectable:hover {
-      outline: 1px solid $blue;
-      outline-offset: -1px;
+    &.is-selectable:hover > div.content {
+      outline: 2px solid $blue;
+      outline-offset: -2px;
       z-index: 3000;
     }
 
-    &.is-today:after {
+    &.is-today div.content::after {
       content: '';
       position: absolute;
       display: block;
@@ -161,7 +214,7 @@ select {
       height: 3px;
       background: $blue;
       border-radius: $radius-rounded;
-      margin-top: 2px;
+      margin-top: 21px;
       margin-left: -1.5px;
       left: 50%;
     }
@@ -175,21 +228,15 @@ select {
       font-weight: $weight-normal;
       border: none;
       cursor: default;
+
+      div.content {
+        background: transparent;
+      }
     }
   }
 }
 
-@include tablet() {
-  .datepicker-popup {
-    padding: 16px 32px;
-    // width: 48px * 7 + 80px;
-  }
-}
-
-.month-select select {
-  padding: 6px 10px 13px 10px !important;
-}
-
-.year-select select {
-  padding: 6px 10px 13px 10px !important;
+.month-select .select,
+.year-select .select {
+  max-width: 104px;
 }

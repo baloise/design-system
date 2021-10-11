@@ -3,12 +3,28 @@
 /**
  * Colors
  */
-$blue: #003399;
-$cyan: #009ee7;
-$green: #3fc889;
-$yellow: #ff9900;
-$orange: #ff8304;
-$red: #ff3366;
+$blue: #000d6e;
+$blue-light: #8386b7;
+
+$black: #000000;
+$white: #ffffff;
+
+$gray-lighter: #f6f6f6;
+$gray-light: #e8e8e8;
+$gray: #ccc;
+
+$green: #1b5951;
+$green-lightest: #eaefee;
+
+$pink: #d9304c;
+
+$red: $pink;
+$red-lightest: #fcebee;
+
+$rust: #b24a00;
+$orange: #fa9319;
+$yellow: #fae052;
+$cyan: #1c77d2;
 
 $blue-darker: #010102;
 $blue-dark: #002162;
@@ -18,42 +34,74 @@ $blue-line: $blue-lighter-text;
 $blue-light-line: #d1dbed;
 $blue-line-inverted: #204c9d;
 $blue-light-hover: #ebf6fa;
-$blue-light: #f0fbff;
+// $blue-light: #f0fbff;
 
-$black: #222222;
-$black-bis: $blue-darker;
-$black-ter: $blue-dark;
+// $black: #222222;
+// $black-bis: $blue-darker;
+// $black-ter: $blue-dark;
 
-$grey-darkest: #444444;
-$grey-darker: #7e7e7e;
-$grey-dark: #cecfd0;
-$grey: #d8d9d9;
-$grey-light: #e2e3e3;
-$grey-lighter: #ebecec;
-$grey-lightest: #f1f3f5;
+// $gray-darkest: #444444;
+// $gray-darker: #7e7e7e;
+// $gray-dark: #cecfd0;
+// $gray: #d8d9d9;
+// $gray-light: #e2e3e3;
+// $gray-lighter: #ebecec;
+// $gray-lightest: #f1f3f5;
 
+// $white-ter: #f5f5f6;
+// $white-bis: #fafafa;
+// $white: #ffffff;
+
+$black: #000;
+$black-bis: #212529;
+$black-ter: #212529;
+
+$gray-darkest: #343a40;
+$gray-darker: #495057;
+$gray-dark: #868e96;
+$gray: #adb5bd;
+$gray-light: #ced4da;
+$gray-lighter: #dee2e6;
+$gray-lightest: #e9ecef;
+
+$white-ter: #f1f3f5;
+$white-bis: #f8f9fa;
 $white: #ffffff;
-$white-bis: #fafafa;
-$white-ter: #f5f5f6;
+
+$primary: $blue;
+$info: $cyan;
+$link: $blue;
+$warning: $rust;
+$danger: $red;
+$success: $green;
+$success-lightest: $green-lightest;
+$danger: $red;
+$danger-lightest: $red-lightest;
 
 $dark: $blue;
 $light: $white-bis;
-$primary: $cyan;
 $info-light: $blue-light;
-$info: $blue;
 $info-dark: $blue-dark;
-$link: $cyan;
-$warning: $yellow;
 $warning-invert: $white;
-$danger: $red;
 $hint: $blue-light-text;
-$success: $green;
-
 $primary-invert: $white;
 $success-invert: $white;
 
-$text: $black;
-$text-strong: $blue;
+$text: $primary;
+$text-inverted: $primary-invert;
+$text-strong: $primary;
+$text-inverted-strong: $primary-invert;
+
+$opacity-disabled: 64px;
+$opacity-placeholder: 40px;
+
+$border-color: $gray-lightest;
+$hover-color: $text;
+$hover-background: $gray-lighter;
+$focus-color: $text;
+$focus-background: $gray-lighter;
+$active-color: $text;
+$active-background: $gray-lighter;
 
 $colors: mergeColorMaps(
   (
@@ -118,24 +166,17 @@ $colors: mergeColorMaps(
 );
 
 $shades: (
-  'blue-darker': $blue-darker,
-  'blue-dark': $blue-dark,
-  'blue': $blue,
-  'blue-line-inverted': $blue-line-inverted,
-  'blue-light-text': $blue-light-text,
-  'blue-lighter-text': $blue-lighter-text,
-  'blue-line': $blue-line,
-  'blue-light-line': $blue-light-line,
-  'blue-light-hover': $blue-light-hover,
-  'blue-light': $blue-light,
+  'white': $white,
   'white-bis': $white-bis,
   'white-ter': $white-ter,
-  'cyan': $cyan,
+  'gray-lightest': $gray-lightest,
+  'gray-lighter': $gray-lighter,
+  'gray-light': $gray-light,
+  'gray': $gray,
+  'gray-dark': $gray-dark,
+  'gray-darker': $gray-darker,
+  'gray-darkest': $gray-darkest,
   'black': $black,
-  'grey': $grey,
-  'grey-light': $grey-light,
-  'grey-lighter': $grey-lighter,
-  'grey-lightest': $grey-lightest,
 );
 
 $border: $blue-light-line;
@@ -154,7 +195,7 @@ $scheme-invert-ter: $black-ter;
  * Typography
  */
 $font-path: '/assets/fonts' !default;
-$family-sans-serif: MetaPro, Arial, sans-serif;
+$family-sans-serif: 'Biennale', Arial, sans-serif;
 $family-primary: $family-sans-serif;
 $title-family: $family-sans-serif;
 $body-family: $family-sans-serif;

@@ -362,10 +362,12 @@ export namespace Components {
           * Returns the native `<input>` element used under the hood.
          */
         "getInputElement": () => Promise<HTMLInputElement>;
+        "invalid": boolean;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
+        "loading": boolean;
         /**
           * If `true` the component uses the whole width.
          */
@@ -414,6 +416,7 @@ export namespace Components {
           * Sets the focus on the input element
          */
         "setFocus": () => Promise<void>;
+        "touched": boolean;
         /**
           * If `true` the datepicker only open on click of the icon
          */
@@ -482,24 +485,18 @@ export namespace Components {
           * If `true` a loading spinner is visible at the end of the input
          */
         "loading": boolean;
+        "reset": () => Promise<void>;
+        /**
+          * If `true` the component gets a invalid style. Only use this if there is no live validation.
+         */
+        "touched": boolean;
     }
     interface BalFieldControl {
-        /**
-          * Baloise icon for the left side of the input
-         */
-        "iconLeft": string;
-        /**
-          * Baloise icon for the right side of the input
-         */
-        "iconRight": string;
-        /**
-          * If `true` the field can be used on blue background.
-         */
+        "disabled": boolean;
+        "invalid": boolean;
         "inverted": boolean;
-        /**
-          * If `true` a loading spinner is visible at the end of the input
-         */
         "loading": boolean;
+        "touched": boolean;
     }
     interface BalFieldHint {
         /**
@@ -509,23 +506,12 @@ export namespace Components {
     }
     interface BalFieldLabel {
         /**
-          * If `true` the component takes the whole width
-         */
-        "expanded": boolean;
-        /**
           * If `true` a asterix (*) is added to the label text
          */
         "required": boolean;
     }
     interface BalFieldMessage {
-        /**
-          * Defines the color of the message.
-         */
         "color": '' | ColorTypesExtended;
-        /**
-          * If `true` the component takes the whole width
-         */
-        "expanded": boolean;
     }
     interface BalFileUpload {
         /**
@@ -627,7 +613,7 @@ export namespace Components {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color": BalButtonColor;
+        "color": BalButtonColor | 'gray';
         /**
           * If `true` the button is inverted
          */
@@ -699,6 +685,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` the component uses the whole width.
+         */
+        "expanded": boolean;
+        /**
           * Returns the native `<input>` element used under the hood.
          */
         "getInputElement": () => Promise<HTMLInputElement>;
@@ -707,6 +697,7 @@ export namespace Components {
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "invalid": boolean;
         /**
           * If `true` this component can be placed on dark background
          */
@@ -767,6 +758,7 @@ export namespace Components {
           * Adds a suffix the the inputvalue after blur.
          */
         "suffix"?: string;
+        "touched": boolean;
         /**
           * Defines the type of the input (text, number, email ...).
          */
@@ -2296,10 +2288,12 @@ declare namespace LocalJSX {
           * If `true` the component uses the whole width.
          */
         "expanded"?: boolean;
+        "invalid"?: boolean;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
+        "loading"?: boolean;
         /**
           * If `true` the component uses the whole width.
          */
@@ -2352,6 +2346,7 @@ declare namespace LocalJSX {
           * If `true` the attribute required is added to the native input.
          */
         "required"?: boolean;
+        "touched"?: boolean;
         /**
           * If `true` the datepicker only open on click of the icon
          */
@@ -2409,24 +2404,17 @@ declare namespace LocalJSX {
           * If `true` a loading spinner is visible at the end of the input
          */
         "loading"?: boolean;
+        /**
+          * If `true` the component gets a invalid style. Only use this if there is no live validation.
+         */
+        "touched"?: boolean;
     }
     interface BalFieldControl {
-        /**
-          * Baloise icon for the left side of the input
-         */
-        "iconLeft"?: string;
-        /**
-          * Baloise icon for the right side of the input
-         */
-        "iconRight"?: string;
-        /**
-          * If `true` the field can be used on blue background.
-         */
+        "disabled"?: boolean;
+        "invalid"?: boolean;
         "inverted"?: boolean;
-        /**
-          * If `true` a loading spinner is visible at the end of the input
-         */
         "loading"?: boolean;
+        "touched"?: boolean;
     }
     interface BalFieldHint {
         /**
@@ -2436,23 +2424,12 @@ declare namespace LocalJSX {
     }
     interface BalFieldLabel {
         /**
-          * If `true` the component takes the whole width
-         */
-        "expanded"?: boolean;
-        /**
           * If `true` a asterix (*) is added to the label text
          */
         "required"?: boolean;
     }
     interface BalFieldMessage {
-        /**
-          * Defines the color of the message.
-         */
         "color"?: '' | ColorTypesExtended;
-        /**
-          * If `true` the component takes the whole width
-         */
-        "expanded"?: boolean;
     }
     interface BalFileUpload {
         /**
@@ -2546,7 +2523,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color"?: BalButtonColor;
+        "color"?: BalButtonColor | 'gray';
         /**
           * If `true` the button is inverted
          */
@@ -2617,11 +2594,16 @@ declare namespace LocalJSX {
           * If `true` the input is disabled
          */
         "disabled"?: boolean;
+        /**
+          * If `true` the component uses the whole width.
+         */
+        "expanded"?: boolean;
         "hasIconRight"?: boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "invalid"?: boolean;
         /**
           * If `true` this component can be placed on dark background
          */
@@ -2702,6 +2684,7 @@ declare namespace LocalJSX {
           * Adds a suffix the the inputvalue after blur.
          */
         "suffix"?: string;
+        "touched"?: boolean;
         /**
           * Defines the type of the input (text, number, email ...).
          */

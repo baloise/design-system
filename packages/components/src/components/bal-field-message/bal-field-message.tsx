@@ -8,20 +8,14 @@ import { ColorTypesExtended } from '../../types/color.types'
 })
 export class FieldMessage {
   /**
-   * Defines the color of the message.
+   * @internal
    */
   @Prop() color: '' | ColorTypesExtended = ''
-
-  /**
-   * If `true` the component takes the whole width
-   */
-  @Prop() expanded: boolean = false
 
   render() {
     return (
       <Host
         class={{
-          'is-expanded': this.expanded,
           [`help is-${this.color}`]: true,
         }}
       >

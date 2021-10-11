@@ -725,7 +725,12 @@ export class Select {
                 />
               </div>
               <bal-icon
-                class={{ 'is-hidden': this.loading }}
+                class={{
+                  'bal-select-icon': true,
+                  'is-hidden': this.loading,
+                  'is-clickable': !this.disabled,
+                }}
+                color={this.disabled ? 'gray' : 'primary'}
                 name="caret-down"
                 size="xsmall"
                 inverted={this.inverted}

@@ -1,190 +1,336 @@
 @import '../../styles/global.utilities';
 
-.bal-app {
-  @import 'node_modules/bulma/sass/elements/icon.sass';
+bal-field {
+  position: relative;
+  display: block;
+  font-family: $family-primary;
 
-  bal-field {
-    display: inline-block;
+  .form {
     position: relative;
-    min-height: 60px;
+  }
 
-    &.is-expanded {
-      display: block;
-      width: 100%;
+  bal-field-message {
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    width: 100%;
+    margin-top: 0px;
+
+    &:not(.is-danger) {
+      color: $blue-light;
     }
+  }
 
-    &.has-label {
-      min-height: 80px;
-    }
+  bal-field-message + bal-field-message {
+    display: none !important;
+  }
 
-    bal-field-label {
-      user-select: none;
+  bal-field-label > label.label {
+    font-size: $size-small;
+    margin-bottom: 4px;
+  }
 
-      label[for] {
-        cursor: pointer;
-      }
-    }
+  bal-field-control {
+    position: relative;
+    display: flex;
+    padding-bottom: 32px;
+    min-height: 48px;
 
-    bal-field-label,
-    bal-field-control,
-    bal-field-message {
-      position: relative;
-      display: block;
-    }
+    & > bal-icon,
+    & bal-icon.bal-select-icon,
+    & bal-icon.datepicker-trigger-icon {
+      transition: all 0.3s ease-out;
 
-    bal-field-control {
-      margin-bottom: 24px;
-      display: flex;
-
-      bal-button {
-        margin-left: 8px;
-        margin-top: 4px;
-      }
-    }
-
-    bal-field-control + bal-field-message {
-      margin-top: -24px !important;
-    }
-
-    bal-field-label > label > bal-hint {
-      position: absolute;
-      top: -5px;
-    }
-
-    bal-field-label.is-expanded,
-    bal-field-label.is-expanded label,
-    bal-field-message.is-expanded {
-      width: 100%;
-    }
-
-    bal-field-label.is-expanded label,
-    bal-field-message.is-expanded {
-      display: flex !important;
-      justify-content: space-between;
-    }
-
-    .control.is-loading::after,
-    .select.is-loading::after {
-      border-top-color: $blue !important;
-      border-right-color: $blue !important;
-      border-left-color: transparent !important;
-      border-bottom-color: transparent !important;
-      top: 0.4em;
-      height: 0.7em;
-      width: 0.7em;
-    }
-
-    @include desktop() {
-      .control.is-loading::after,
-      .select.is-loading::after {
-        height: 1em;
-        width: 1em;
-      }
-    }
-
-    .form.is-inverted {
-      .control.is-loading::after,
-      .select.is-loading::after {
-        border-top-color: $white !important;
-        border-right-color: $white !important;
-      }
-    }
-
-    .control {
-      min-height: 36px;
-
-      & > bal-input,
-      & > bal-datepicker {
-        margin-top: 1px;
+      svg {
+        transition: all 0.3s ease-out;
       }
 
-      & > bal-checkbox {
-        margin-top: 7px;
+      height: 48px !important;
+      max-height: 48px !important;
+      pointer-events: none !important;
+      position: absolute !important;
+      top: 0 !important;
+      width: 48px !important;
+      z-index: 4 !important;
+
+      align-items: center !important;
+      justify-content: center !important;
+      display: inline-flex !important;
+
+      &:not(.is-success):not(.is-danger) {
+        fill: $gray !important;
       }
 
-      & > bal-radio-group {
-        margin-top: 10px;
+      &.is-validation-icon {
+        right: 0;
       }
-    }
 
-    .control.has-icons-left *::part(input) {
-      padding-left: 38px;
-    }
-
-    bal-field-label,
-    bal-field-hint {
-      display: inline-block !important;
-    }
-
-    bal-field-hint {
-      position: relative;
-
-      bal-hint {
-        position: absolute;
-        top: -20px;
+      &.is-left {
         left: 0;
       }
+
+      &.datepicker-trigger-icon,
+      &.is-right {
+        right: 0;
+      }
     }
 
-    &.is-invalid {
-      bal-field-label label {
-        color: $danger !important;
+    bal-select.is-focused ~ bal-icon.is-validation-icon,
+    bal-select:focus-within ~ bal-icon.is-validation-icon,
+    bal-datepicker.is-focused ~ bal-icon.is-validation-icon,
+    bal-datepicker:focus-within ~ bal-icon.is-validation-icon,
+    bal-input.is-focused ~ bal-icon.is-validation-icon,
+    bal-input:focus-within ~ bal-icon.is-validation-icon {
+      right: 0 !important;
+      width: 0 !important;
+
+      svg {
+        fill: transparent;
       }
+    }
 
-      input.input,
-      bal-select .dropdown-trigger > div {
-        border-color: $danger !important;
-      }
+    input.input.is-focused ~ bal-icon.bal-select-icon,
+    input.input:focus-within ~ bal-icon.bal-select-icon,
+    input.input.is-focused ~ bal-icon.datepicker-trigger-icon,
+    input.input:focus-within ~ bal-icon.datepicker-trigger-icon,
+    bal-input.is-focused ~ bal-icon.is-right,
+    bal-input:focus-within ~ bal-icon.is-right {
+      right: 0;
+    }
 
-      bal-dropdown-trigger bal-icon {
-        fill: $danger !important;
-      }
-
-      bal-checkbox {
-        label {
-          color: $danger !important;
-        }
-        label::after,
-        label::before {
-          border-color: $danger !important;
-        }
-      }
-
-      bal-radio-group:not(.bal-select-button) bal-radio {
-        label {
-          color: $danger !important;
-        }
-        label::after {
-          background: $danger !important;
-          border-color: $danger !important;
-        }
-        label::before {
-          border-color: $danger !important;
-        }
-      }
-
-      bal-radio-group.bal-select-button {
-        border-color: $danger !important;
-
-        bal-radio {
-          input[type='radio']:not(:checked) + label {
-            color: $danger !important;
-          }
-
-          input[type='radio']:checked + label {
-            background: $danger !important;
-            border-color: $danger !important;
-          }
-
-          label::after {
-            background: $danger !important;
-            border-color: $danger !important;
-          }
-          label::before {
-            border-color: $danger !important;
-          }
-        }
+    input.input.is-focused ~ bal-icon.bal-select-icon,
+    input.input:focus-within ~ bal-icon.bal-select-icon,
+    input.input.is-focused ~ bal-icon.datepicker-trigger-icon,
+    input.input:focus-within ~ bal-icon.datepicker-trigger-icon,
+    bal-input.is-focused ~ bal-icon,
+    bal-input:focus-within ~ bal-icon {
+      &:not(.is-success):not(.is-danger) {
+        fill: $blue !important;
       }
     }
   }
+
+  bal-field-control.control.is-loading::after {
+    top: 14px !important;
+    right: 14px !important;
+    border-color: $gray !important;
+    border-right-color: transparent !important;
+    border-top-color: transparent !important;
+  }
+
+  &:not(.is-disabled):not(:focus-within) {
+    bal-field-control.has-validation-icon {
+      input.input:not(.is-focused) {
+        padding-right: 48px + 40px !important;
+      }
+
+      bal-icon.datepicker-trigger-icon,
+      bal-icon.bal-select-icon,
+      bal-icon.is-right {
+        right: 40px !important;
+      }
+    }
+  }
+
+  &.is-inverted {
+    bal-field-label label.label {
+      color: $white !important;
+    }
+  }
+
+  &.is-disabled {
+    bal-field-label label.label,
+    bal-field-message {
+      color: $input-disabled-placeholder-color !important;
+    }
+  }
 }
+
+// .bal-app {
+//   @import 'node_modules/bulma/sass/elements/icon.sass';
+
+//   bal-field {
+//     display: inline-block;
+//     position: relative;
+//     min-height: 60px;
+
+//     &.is-expanded {
+//       display: block;
+//       width: 100%;
+//     }
+
+//     &.has-label {
+//       min-height: 80px;
+//     }
+
+//     bal-field-label {
+//       user-select: none;
+
+//       label[for] {
+//         cursor: pointer;
+//       }
+//     }
+
+//     bal-field-label,
+//     bal-field-control,
+//     bal-field-message {
+//       position: relative;
+//       display: block;
+//     }
+
+//     bal-field-control {
+//       margin-bottom: 24px;
+//       display: flex;
+
+//       bal-button {
+//         margin-left: 8px;
+//         margin-top: 4px;
+//       }
+//     }
+
+//     bal-field-control + bal-field-message {
+//       margin-top: -24px !important;
+//     }
+
+//     bal-field-label > label > bal-hint {
+//       position: absolute;
+//       top: -5px;
+//     }
+
+//     bal-field-label.is-expanded,
+//     bal-field-label.is-expanded label,
+//     bal-field-message.is-expanded {
+//       width: 100%;
+//     }
+
+//     bal-field-label.is-expanded label,
+//     bal-field-message.is-expanded {
+//       display: flex !important;
+//       justify-content: space-between;
+//     }
+
+//     .control.is-loading::after,
+//     .select.is-loading::after {
+//       border-top-color: $blue !important;
+//       border-right-color: $blue !important;
+//       border-left-color: transparent !important;
+//       border-bottom-color: transparent !important;
+//       top: 0.4em;
+//       height: 0.7em;
+//       width: 0.7em;
+//     }
+
+//     @include desktop() {
+//       .control.is-loading::after,
+//       .select.is-loading::after {
+//         height: 1em;
+//         width: 1em;
+//       }
+//     }
+
+//     .form.is-inverted {
+//       .control.is-loading::after,
+//       .select.is-loading::after {
+//         border-top-color: $white !important;
+//         border-right-color: $white !important;
+//       }
+//     }
+
+//     .control {
+//       min-height: 36px;
+
+//       & > bal-input,
+//       & > bal-datepicker {
+//         margin-top: 1px;
+//       }
+
+//       & > bal-checkbox {
+//         margin-top: 7px;
+//       }
+
+//       & > bal-radio-group {
+//         margin-top: 10px;
+//       }
+//     }
+
+//     .control.has-icons-left *::part(input) {
+//       padding-left: 38px;
+//     }
+
+//     bal-field-label,
+//     bal-field-hint {
+//       display: inline-block !important;
+//     }
+
+//     bal-field-hint {
+//       position: relative;
+
+//       bal-hint {
+//         position: absolute;
+//         top: -20px;
+//         left: 0;
+//       }
+//     }
+
+//     &.is-invalid {
+//       bal-field-label label {
+//         color: $danger !important;
+//       }
+
+//       input.input,
+//       bal-select .dropdown-trigger > div {
+//         border-color: $danger !important;
+//       }
+
+//       bal-dropdown-trigger bal-icon {
+//         fill: $danger !important;
+//       }
+
+//       bal-checkbox {
+//         label {
+//           color: $danger !important;
+//         }
+//         label::after,
+//         label::before {
+//           border-color: $danger !important;
+//         }
+//       }
+
+//       bal-radio-group:not(.bal-select-button) bal-radio {
+//         label {
+//           color: $danger !important;
+//         }
+//         label::after {
+//           background: $danger !important;
+//           border-color: $danger !important;
+//         }
+//         label::before {
+//           border-color: $danger !important;
+//         }
+//       }
+
+//       bal-radio-group.bal-select-button {
+//         border-color: $danger !important;
+
+//         bal-radio {
+//           input[type='radio']:not(:checked) + label {
+//             color: $danger !important;
+//           }
+
+//           input[type='radio']:checked + label {
+//             background: $danger !important;
+//             border-color: $danger !important;
+//           }
+
+//           label::after {
+//             background: $danger !important;
+//             border-color: $danger !important;
+//           }
+//           label::before {
+//             border-color: $danger !important;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

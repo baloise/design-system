@@ -14,11 +14,6 @@ export class FieldLabel {
    */
   @Prop() required: boolean = false
 
-  /**
-   * If `true` the component takes the whole width
-   */
-  @Prop() expanded: boolean = false
-
   componentDidLoad() {
     if (this.element) {
       this.parrentBalFieldElement = this.element.closest('bal-field')
@@ -36,11 +31,7 @@ export class FieldLabel {
 
   render() {
     return (
-      <Host
-        class={{
-          'is-expanded': this.expanded,
-        }}
-      >
+      <Host>
         <label class="label">
           <slot></slot>
           {this.required === true ? ' *' : ''}

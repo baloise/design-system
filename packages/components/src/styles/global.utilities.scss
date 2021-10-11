@@ -1,5 +1,20 @@
 @charset "utf-8";
 
 @import './utilities/variables.scss';
+
+@import './components/card.vars.scss';
+@import './components/dropdown.vars.scss';
+@import './components/modal.vars.scss';
+@import './elements/box.vars.scss';
+@import './elements/button.vars.scss';
+@import './elements/container.vars.scss';
+@import './elements/icon.vars.scss';
+@import './elements/notification.vars.scss';
+@import './elements/table.vars.scss';
+@import './elements/tag.vars.scss';
+@import './elements/title.vars.scss';
+@import './form/input-textarea.vars.scss';
+@import './layout/footer.vars.scss';
+
 @import './utilities/mixins.scss';
 @import 'node_modules/bulma/sass/utilities/all.sass';

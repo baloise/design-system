@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element, Watch } from '@stencil/core'
+import { Component, h, Host, Prop, Element, Watch, Method } from '@stencil/core'
 
 @Component({
   tag: 'bal-field',
@@ -20,6 +20,11 @@ export class Field {
   @Prop() invalid: boolean = false
 
   /**
+   * If `true` the component gets a invalid style. Only use this if there is no live validation.
+   */
+  @Prop() touched: boolean = false
+
+  /**
    * If `true` the field loses opacity
    */
   @Prop() disabled: boolean = false
@@ -37,19 +42,38 @@ export class Field {
   @Watch('inverted')
   @Watch('disabled')
   @Watch('expanded')
+  @Watch('touched')
+  @Watch('invalid')
   watchInputHandler() {
     this.updateChildInput()
   }
 
   @Watch('loading')
   @Watch('inverted')
+  @Watch('touched')
+  @Watch('invalid')
+  @Watch('disabled')
   watchFieldHandler() {
     this.updateChildFieldControl()
   }
 
+  @Watch('inverted')
+  @Watch('touched')
+  @Watch('invalid')
+  watchFieldMessageHandler() {
+    this.updateChildFieldMessage()
+  }
+
   componentWillLoad() {
     this.updateChildInput()
+    this.updateChildFieldMessage()
     this.updateChildFieldControl()
+  }
+
+  @Method()
+  async reset() {
+    this.touched = false
+    this.invalid = false
   }
 
   updateChildInput() {
@@ -58,6 +82,8 @@ export class Field {
       input.disabled = this.disabled
       input.inverted = this.inverted
       input.expanded = this.expanded
+      input.touched = this.touched
+      input.invalid = this.invalid
     })
   }
 
@@ -66,11 +92,22 @@ export class Field {
     controls.forEach((control: any) => {
       control.loading = this.loading
       control.inverted = this.inverted
+      control.touched = this.touched
+      control.invalid = this.invalid
+      control.disabled = this.disabled
 
       const selects = this.element.querySelectorAll('bal-select')
       selects.forEach((select: any) => {
         select.loading = this.loading
       })
+    })
+  }
+
+  updateChildFieldMessage() {
+    const messages = this.element.querySelectorAll('bal-field-message')
+    messages.forEach((message: any) => {
+      message.inverted = this.inverted
+      message.color = this.touched && this.invalid ? 'danger' : ''
     })
   }
 
@@ -80,6 +117,8 @@ export class Field {
         class={{
           'is-expanded': this.expanded,
           'is-invalid': this.invalid,
+          'is-disabled': this.disabled,
+          'is-inverted': this.inverted,
         }}
       >
         <div
