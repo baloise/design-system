@@ -1,14 +1,14 @@
 $input-color: $text;
 $input-radius: 4px;
 $input-height: 48px;
-$input-border-color: $border-color;
+$input-border-color: $border;
 $input-background-color: $white;
 $input-shadow: none;
 
-$input-placeholder-color: $blue-light;
+$input-placeholder-color: $placeholder;
 
 $input-hover-color: transparent;
-$input-hover-border-color: $border-color;
+$input-hover-border-color: $border;
 
 $input-focus-box-shadow-size: 0;
 $input-focus-box-shadow-color: none;
@@ -16,7 +16,7 @@ $input-focus-border-color: $blue;
 
 $input-disabled-color: $black;
 $input-disabled-background-color: $white-bis;
-$input-disabled-border-color: $border-color !important;
+$input-disabled-border-color: $border !important;
 $input-disabled-placeholder-color: $gray;
 
 $label-color: $blue;

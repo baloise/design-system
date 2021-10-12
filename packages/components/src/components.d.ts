@@ -105,10 +105,6 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * If `true` the button has a active theme
-         */
-        "isActive": boolean;
-        /**
           * Turn the button in to a link.
          */
         "link": boolean;
@@ -2006,10 +2002,6 @@ declare namespace LocalJSX {
           * If `true` the button is inverted
          */
         "inverted"?: boolean;
-        /**
-          * If `true` the button has a active theme
-         */
-        "isActive"?: boolean;
         /**
           * Turn the button in to a link.
          */

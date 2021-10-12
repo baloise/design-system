@@ -1,6 +1,45 @@
 // https://bulma.io/documentation/elements/button/#variables
 
 $button-family: $family-sans-serif;
-$button-padding-horizontal: 32px;
-$button-focus-box-shadow-size: 0 0 0 0;
-$button-focus-box-shadow-color: transparent;
+
+$button-padding-horizontal: 24px;
+
+$button-hover-color: $primary;
+$button-hover-border-color: $primary;
+
+$button-focus-box-shadow-size: 0 0 0 2px;
+$button-focus-box-shadow-color: bulmaRgba($primary, 0.25);
+
+$button-active-color: $primary-9;
+$button-active-border-color: $primary-9;
+
+$button-disabled-background-color: $gray-2;
+$button-disabled-border-color: $gray-2;
+$button-disabled-shadow: none;
+$button-disabled-opacity: 1;
+
+$button-colors: mergeColorMaps(
+  (
+    'primary': (
+      $primary,
+      $primary-invert,
+    ),
+    'link': (
+      transparent,
+      $link,
+    ),
+    'success': (
+      $success,
+      $success-invert,
+    ),
+    'warning': (
+      $warning,
+      $warning-invert,
+    ),
+    'danger': (
+      $danger,
+      $danger-invert,
+    ),
+  ),
+  $custom-colors
+);

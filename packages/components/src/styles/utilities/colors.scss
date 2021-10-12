@@ -1,0 +1,138 @@
+$black: #000000;
+$white: #ffffff;
+
+$blue: #000d6e;
+$green: #1b5951;
+$red: #99162d;
+$rust: #b24a00;
+$orange: #fa9319;
+$yellow: #fae052;
+
+$primary-0: bulmaLighten(#b3b6cd, 20%);
+$primary-1: bulmaLighten(#b3b6cd, 10%);
+$primary-2: #b3b6cd; //bulmaLighten($blue, 65%);
+$primary-3: #757bac; //bulmaLighten($blue, 55%);
+$primary-4: #5c64a2; //bulmaDarken($primary-3, 5%);
+
+$primary-5: bulmaLighten($blue, 40%);
+$primary-6: bulmaLighten($blue, 20%);
+$primary-7: bulmaLighten($blue, 10%);
+$primary-8: $blue;
+$primary-9: bulmaDarken($blue, 10%);
+$primary: $primary-8;
+$primary-invert: $white;
+
+$gray-0: #f8f9fa;
+$gray-1: #f1f3f5;
+$gray-2: #e9ecef;
+$gray-3: #dee2e6;
+$gray-4: #ced4da;
+$gray-5: #adb5bd;
+$gray-6: #868e96;
+$gray-7: #495057;
+$gray-8: #343a40;
+$gray-9: #212529;
+$gray: $gray-6;
+$black-bis: $gray-9;
+$black-ter: $gray-9;
+$white-ter: $gray-1;
+$white-bis: $gray-0;
+
+$success-0: bulmaLighten($green, 75%);
+$success-1: bulmaLighten($green, 70%);
+$success-2: bulmaLighten($green, 65%);
+$success-3: bulmaLighten($green, 55%);
+$success-4: bulmaLighten($green, 45%);
+$success-5: bulmaLighten($green, 40%);
+$success-6: bulmaLighten($green, 20%);
+$success-7: bulmaLighten($green, 10%);
+$success-8: $green;
+$success-9: bulmaDarken($green, 10%);
+$success: $success-8;
+$success-invert: $white;
+
+$warning-0: bulmaLighten($rust, 60%);
+$warning-1: bulmaLighten($rust, 55%);
+$warning-2: bulmaLighten($rust, 50%);
+$warning-3: bulmaLighten($rust, 45%);
+$warning-4: bulmaLighten($rust, 40%);
+$warning-5: bulmaLighten($rust, 35%);
+$warning-6: bulmaLighten($rust, 25%);
+$warning-7: bulmaLighten($rust, 10%);
+$warning-8: $rust;
+$warning-9: bulmaDarken($rust, 10%);
+$warning: $warning-8;
+$warning-invert: $white;
+
+$danger-0: bulmaLighten($red, 60%);
+$danger-1: bulmaLighten($red, 55%);
+$danger-2: bulmaLighten($red, 50%);
+$danger-3: bulmaLighten($red, 45%);
+$danger-4: bulmaLighten($red, 40%);
+$danger-5: bulmaLighten($red, 35%);
+$danger-6: bulmaLighten($red, 25%);
+$danger-7: bulmaLighten($red, 10%);
+$danger-8: $red;
+$danger-9: bulmaDarken($red, 10%);
+$danger: $danger-8;
+$danger-invert: $white;
+
+$shades: (
+  'primary-0': $primary-0,
+  'primary-1': $primary-1,
+  'primary-2': $primary-2,
+  'primary-3': $primary-3,
+  'primary-4': $primary-4,
+  'primary-5': $primary-5,
+  'primary-6': $primary-6,
+  'primary-7': $primary-7,
+  'primary-8': $primary-8,
+  'primary-9': $primary-9,
+  'primary': $primary,
+  'gray-0': $gray-0,
+  'gray-1': $gray-1,
+  'gray-2': $gray-2,
+  'gray-3': $gray-3,
+  'gray-4': $gray-4,
+  'gray-5': $gray-5,
+  'gray-6': $gray-6,
+  'gray-7': $gray-7,
+  'gray-8': $gray-8,
+  'gray-9': $gray-9,
+  'gray': $gray,
+  'success-0': $success-0,
+  'success-1': $success-1,
+  'success-2': $success-2,
+  'success-3': $success-3,
+  'success-4': $success-4,
+  'success-5': $success-5,
+  'success-6': $success-6,
+  'success-7': $success-7,
+  'success-8': $success-8,
+  'success-9': $success-9,
+  'success': $success,
+  'warning-0': $warning-0,
+  'warning-1': $warning-1,
+  'warning-2': $warning-2,
+  'warning-3': $warning-3,
+  'warning-4': $warning-4,
+  'warning-5': $warning-5,
+  'warning-6': $warning-6,
+  'warning-7': $warning-7,
+  'warning-8': $warning-8,
+  'warning-9': $warning-9,
+  'warning': $warning,
+  'danger-0': $danger-0,
+  'danger-1': $danger-1,
+  'danger-2': $danger-2,
+  'danger-3': $danger-3,
+  'danger-4': $danger-4,
+  'danger-5': $danger-5,
+  'danger-6': $danger-6,
+  'danger-7': $danger-7,
+  'danger-8': $danger-8,
+  'danger-9': $danger-9,
+  'danger': $danger,
+  'white': $white,
+  'black': $black,
+);

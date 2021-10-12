@@ -8,7 +8,7 @@ input.input,
 textarea.textarea {
   border-width: 2px;
   font-family: $family-primary;
-  color: $blue;
+  color: $primary;
   min-height: $input-height;
   height: $input-height;
   display: inline-block;
@@ -20,12 +20,12 @@ textarea.textarea {
 
   &.is-focused.is-success {
     border-color: $success;
-    background: $success-lightest;
+    background: $success-1;
   }
 
   &.is-focused.is-danger {
     border-color: $danger;
-    background: $danger-lightest;
+    background: $danger-1;
   }
 
   // &.is-inverted::placeholder {

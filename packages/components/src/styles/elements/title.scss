@@ -20,6 +20,7 @@ a {
   line-height: 24px;
   margin: 0;
   word-break: break-word;
+  color: $primary;
 }
 
 bal-text a,
@@ -79,11 +80,11 @@ a.is-bold {
   letter-spacing: -1%;
 }
 
-a.is-link:focus,
-a.is-link:active,
-a.is-link:hover,
-a.is-link:visited,
-a.is-link {
-  color: $cyan;
-  text-decoration: none;
-}
+// a.is-link:focus,
+// a.is-link:active,
+// a.is-link:hover,
+// a.is-link:visited,
+// a.is-link {
+//   color: $cyan;
+//   text-decoration: none;
+// }

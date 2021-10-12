@@ -3,7 +3,6 @@
 bal-text {
   @include margin(0);
   @include padding(0);
-  @include lhCrop(1.3);
   @include font-smoothing();
 
   display: inline;
@@ -25,7 +24,6 @@ bal-text {
 
   &.is-small,
   &.is-small span {
-    @include lhCrop(1);
     font-size: $size-small !important;
     line-height: 20px;
   }

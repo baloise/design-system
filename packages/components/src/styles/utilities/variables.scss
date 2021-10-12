@@ -1,93 +1,29 @@
 @import 'node_modules/bulma/sass/utilities/derived-variables.sass';
+@import 'colors.scss';
+
+/**
+ * TODO Replace
+ */
+$blue-light-line: red;
+$blue-dark: red;
+$blue-line: red;
+$blue-line-inverted: red;
+$blue-light: red;
+$blue-light-hover: red;
+$blue-light-text: red;
+$primary-darker: red;
+$gray-lightest: red;
+$gray-lighter: red;
+$gray-light: red;
+$gray-dark: red;
 
 /**
  * Colors
  */
-$blue: #000d6e;
-$blue-light: #8386b7;
-
-$black: #000000;
-$white: #ffffff;
-
-$gray-lighter: #f6f6f6;
-$gray-light: #e8e8e8;
-$gray: #ccc;
-
-$green: #1b5951;
-$green-lightest: #eaefee;
-
-$pink: #d9304c;
-
-$red: $pink;
-$red-lightest: #fcebee;
-
-$rust: #b24a00;
-$orange: #fa9319;
-$yellow: #fae052;
 $cyan: #1c77d2;
 
-$blue-darker: #010102;
-$blue-dark: #002162;
-$blue-light-text: #7188b8;
-$blue-lighter-text: #95adda;
-$blue-line: $blue-lighter-text;
-$blue-light-line: #d1dbed;
-$blue-line-inverted: #204c9d;
-$blue-light-hover: #ebf6fa;
-// $blue-light: #f0fbff;
-
-// $black: #222222;
-// $black-bis: $blue-darker;
-// $black-ter: $blue-dark;
-
-// $gray-darkest: #444444;
-// $gray-darker: #7e7e7e;
-// $gray-dark: #cecfd0;
-// $gray: #d8d9d9;
-// $gray-light: #e2e3e3;
-// $gray-lighter: #ebecec;
-// $gray-lightest: #f1f3f5;
-
-// $white-ter: #f5f5f6;
-// $white-bis: #fafafa;
-// $white: #ffffff;
-
-$black: #000;
-$black-bis: #212529;
-$black-ter: #212529;
-
-$gray-darkest: #343a40;
-$gray-darker: #495057;
-$gray-dark: #868e96;
-$gray: #adb5bd;
-$gray-light: #ced4da;
-$gray-lighter: #dee2e6;
-$gray-lightest: #e9ecef;
-
-$white-ter: #f1f3f5;
-$white-bis: #f8f9fa;
-$white: #ffffff;
-
-$primary: $blue;
-$info: $cyan;
-$link: $blue;
-$warning: $rust;
-$danger: $red;
-$success: $green;
-$success-lightest: $green-lightest;
-$danger: $red;
-$danger-lightest: $red-lightest;
-
-$dark: $blue;
-$light: $white-bis;
-$info-light: $blue-light;
-$info-dark: $blue-dark;
-$warning-invert: $white;
-$hint: $blue-light-text;
-$primary-invert: $white;
-$success-invert: $white;
-
 $text: $primary;
+$hint: $primary-3;
 $text-inverted: $primary-invert;
 $text-strong: $primary;
 $text-inverted-strong: $primary-invert;
@@ -95,13 +31,19 @@ $text-inverted-strong: $primary-invert;
 $opacity-disabled: 64px;
 $opacity-placeholder: 40px;
 
-$border-color: $gray-lightest;
+$placeholder: $primary-4;
+$hint: $primary-3;
+$focus-outline: $primary-2;
+
 $hover-color: $text;
-$hover-background: $gray-lighter;
+$hover-background: purple;
 $focus-color: $text;
-$focus-background: $gray-lighter;
+$focus-background: aqua;
+
 $active-color: $text;
-$active-background: $gray-lighter;
+$active-background: lime;
+$border: $gray-3;
+$form-background: $white;
 
 $colors: mergeColorMaps(
   (
@@ -113,31 +55,11 @@ $colors: mergeColorMaps(
       $black,
       $white,
     ),
-    'light': (
-      $light,
-      $light-invert,
-    ),
-    'dark': (
-      $dark,
-      $dark-invert,
-    ),
     'primary': (
       $primary,
       $primary-invert,
       $primary-light,
       $primary-dark,
-    ),
-    'link': (
-      $link,
-      $link-invert,
-      $link-light,
-      $link-dark,
-    ),
-    'info': (
-      $info,
-      $info-invert,
-      $info-light,
-      $info-dark,
     ),
     'success': (
       $success,
@@ -164,23 +86,6 @@ $colors: mergeColorMaps(
   ),
   $custom-colors
 );
-
-$shades: (
-  'white': $white,
-  'white-bis': $white-bis,
-  'white-ter': $white-ter,
-  'gray-lightest': $gray-lightest,
-  'gray-lighter': $gray-lighter,
-  'gray-light': $gray-light,
-  'gray': $gray,
-  'gray-dark': $gray-dark,
-  'gray-darker': $gray-darker,
-  'gray-darkest': $gray-darkest,
-  'black': $black,
-);
-
-$border: $blue-light-line;
-$form-background: $white-bis;
 
 // General colors
 
@@ -219,8 +124,8 @@ $size-medium: $size-4;
 $size-normal: $size-5;
 $size-small: $size-6;
 
-$title-color: $blue;
-$subtitle-color: $blue;
+$title-color: $primary;
+$subtitle-color: $primary;
 
 /**
  * Spacing
@@ -273,14 +178,14 @@ $tag-radius: 100px;
  * Link
  */
 $link: $primary;
-$link-invert: $blue;
-$link-visited: $primary;
-$link-hover: $blue;
-$link-hover-border: $blue;
-$link-focus: $blue;
-$link-focus-border: $blue;
-$link-active: $blue;
-$link-active-border: $blue;
+$link-invert: $primary-invert;
+$link-visited: $primary-9;
+$link-hover: $primary-7;
+$link-hover-border: transparent;
+$link-focus: $primary-7;
+$link-focus-border: $primary-3;
+$link-active: $primary-7;
+$link-active-border: transparent;
 
 /**
  * Animation
@@ -290,8 +195,8 @@ $easing: ease-out;
 /**
  * Shadow
  */
-$shadow: 0 0 10px 0 rgba(transparentize(#002162, 0.85), 0.15);
-$shadow-hover: 0 0 30px 0 rgba(transparentize(#002162, 0.85), 0.15);
+$shadow: 0 0 10px 0 rgba(transparentize($primary, 0.85), 0.15);
+$shadow-hover: 0 0 30px 0 rgba(transparentize($primary, 0.85), 0.15);
 
 /**
  * Section

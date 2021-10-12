@@ -6,6 +6,7 @@
 html,
 body {
   padding: 0;
+
   margin: 0;
 }
 
@@ -29,7 +30,6 @@ body {
   @import './utilities/animations';
   @import './layout/all';
   @import './form/all';
-
   @import './elements/all';
   @import './components/all';
   @import 'node_modules/bulma/sass/grid/all.sass';
@@ -46,11 +46,9 @@ body {
   b,
   p,
   h1,
-  h2,
-  h3,
+  h2 h3,
   h4,
-  h5,
-  strong {
+  h5 strong {
     font-family: $family-primary;
   }
 }

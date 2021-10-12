@@ -17,7 +17,7 @@ bal-field {
     margin-top: 0px;
 
     &:not(.is-danger) {
-      color: $blue-light;
+      color: $hint;
     }
   }
 
@@ -110,13 +110,13 @@ bal-field {
     }
   }
 
-  bal-field-control.control.is-loading::after {
-    top: 14px !important;
-    right: 14px !important;
-    border-color: $gray !important;
-    border-right-color: transparent !important;
-    border-top-color: transparent !important;
-  }
+  // bal-field-control.control.is-loading::after {
+  //   top: 14px !important;
+  //   right: 14px !important;
+  //   border-color: $gray !important;
+  //   border-right-color: transparent !important;
+  //   border-top-color: transparent !important;
+  // }
 
   &:not(.is-disabled):not(:focus-within) {
     bal-field-control.has-validation-icon {
