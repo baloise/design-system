@@ -18,6 +18,10 @@
   font-kerning: none;
   font-size: 0px;
   line-height: 0px;
+
+  a {
+    text-decoration: none !important;
+  }
 }
 
 :host(.is-fullwidth) {

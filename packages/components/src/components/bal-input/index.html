@@ -33,8 +33,8 @@
       <h2 class="title is-size-2">Inverted</h2>
       <section>
         <div class="has-background-blue p-4">
-          <bal-input inverted name="firstName" placeholder="Enter your firstname"></bal-input>
-          <bal-input inverted name="firstName" placeholder="Enter your firstname" disabled class="mt-2"></bal-input>
+          <bal-input inverted expanded name="firstName" placeholder="Enter your firstname"></bal-input>
+          <bal-input inverted expanded name="firstName" placeholder="Enter your firstname" disabled class="mt-2"></bal-input>
         </div>
       </section>
 
@@ -42,11 +42,11 @@
       <p>With number-input property your can only enter valid numbers, if you start with dot (.) zero will be automatically added in front of it.</p>
       <p>With decimal property you can set how many decimal places you want and number will be formatted accordingly.</p>
       <section>
-        <bal-input data-test-id="input-number" number-input placeholder="Enter a number without decimal"></bal-input>
-        <bal-input data-test-id="input-decimal" id="input-2" number-input placeholder="Enter a number with two decimal points" decimal="2"></bal-input>
-        <bal-input suffix="CHF" number-input placeholder="Enter a number with two decimal places and CHF suffix" decimal="2"></bal-input>
-        <bal-input id="input-2-preview" disabled placeholder="Value after balInput event"></bal-input>
-        <bal-input id="input-2-change" disabled placeholder="Value after balChange event"></bal-input>
+        <bal-input expanded data-test-id="input-number" number-input placeholder="Enter a number without decimal"></bal-input>
+        <bal-input expanded data-test-id="input-decimal" id="input-2" number-input placeholder="Enter a number with two decimal points" decimal="2"></bal-input>
+        <bal-input expanded suffix="CHF" number-input placeholder="Enter a number with two decimal places and CHF suffix" decimal="2"></bal-input>
+        <bal-input expanded id="input-2-preview" disabled placeholder="Value after balInput event"></bal-input>
+        <bal-input expanded id="input-2-change" disabled placeholder="Value after balChange event"></bal-input>
       </section>
       <script>
         var input2 = document.getElementById('input-2')

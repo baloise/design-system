@@ -3,7 +3,7 @@
 :host {
   position: relative;
   display: inline-block;
-  min-height: 24px;
+  min-height: 26px;
   outline: none;
 
   &.bal-checkbox {
@@ -23,13 +23,13 @@
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
+      outline: 0;
     }
 
     label {
       @include font-smoothing();
       @include margin(0);
 
-      line-height: 22px;
       contain: layout style;
 
       display: flex;
@@ -43,7 +43,7 @@
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
-      color: $blue;
+      color: $primary;
       font-family: $body-family;
 
       bal-text {
@@ -68,26 +68,28 @@
       background-color: transparent;
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 24px 24px;
+      background-size: 26px 26px;
     }
 
     label::before {
       content: '';
       left: 0;
       top: 0;
-      height: 24px;
-      width: 24px;
-      border: 1px solid $blue-line;
+      height: 22px;
+      width: 22px;
+      border: 2px solid $primary;
+      border-radius: $radius;
+      transition: background 0.25s ease-in-out;
     }
 
     label::after {
-      content: none;
+      content: '';
       left: 9px;
-      top: 6px;
+      top: 0;
+      height: 0;
       width: 6px;
-      height: 10px;
-      border-bottom: 2px solid $blue;
-      border-right: 2px solid $blue;
+      border-bottom: 0px solid transparent;
+      border-right: 0px solid transparent;
       border-top: 0;
       border-left: 0;
       -moz-transform: rotate(45deg);
@@ -95,36 +97,36 @@
       -o-transform: rotate(45deg);
       -webkit-transform: rotate(45deg);
       transform: rotate(45deg);
+      transition: all 0.3s ease-in-out;
     }
 
-    input[type='checkbox']:disabled + label {
-      cursor: not-allowed;
-      opacity: 0.5;
+    input[type='checkbox']:checked + label::before {
+      background: $primary;
     }
 
     input[type='checkbox']:checked + label::after {
       content: '';
+      top: 5px;
+      height: 10px;
+      border-color: $primary-invert;
+      border-width: 2px;
+    }
+
+    input[type='checkbox']:disabled + label {
+      cursor: not-allowed;
+      color: $input-disabled-color;
+
+      &::before {
+        border-color: $input-disabled-border-color;
+      }
+    }
+
+    input[type='checkbox']:disabled:checked + label::before {
+      background-color: $input-disabled-border-color;
     }
 
     input[type='checkbox']:focus-visible + label::before {
-      outline: 1px dashed $cyan !important;
-    }
-
-    &.is-inverted {
-      label {
-        color: $white;
-      }
-      label::before {
-        border: 1px solid $blue-line;
-      }
-      label::after {
-        border-bottom: 2px solid $white;
-        border-right: 2px solid $white;
-      }
-
-      input[type='checkbox']:hover:not([disabled]) + label:before {
-        border-color: $white;
-      }
+      box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color;
     }
   }
 }

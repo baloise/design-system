@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                    | Type                                                              | Default |
-| ---------- | ---------- | -------------------------------------------------------------- | ----------------------------------------------------------------- | ------- |
-| `color`    | `color`    | The theme type of the toast. Given by bulma our css framework. | `"" \| "danger" \| "info" \| "primary" \| "success" \| "warning"` | `''`    |
-| `duration` | `duration` | The duration of the toast in milliseconds.                     | `number`                                                          | `0`     |
-| `message`  | `message`  | Content message                                                | `string`                                                          | `''`    |
+| Property   | Attribute  | Description                                                    | Type                                                    | Default |
+| ---------- | ---------- | -------------------------------------------------------------- | ------------------------------------------------------- | ------- |
+| `color`    | `color`    | The theme type of the toast. Given by bulma our css framework. | `"" \| "danger" \| "primary" \| "success" \| "warning"` | `''`    |
+| `duration` | `duration` | The duration of the toast in milliseconds.                     | `number`                                                | `0`     |
+| `message`  | `message`  | Content message                                                | `string`                                                | `''`    |
 
 
 ## Events

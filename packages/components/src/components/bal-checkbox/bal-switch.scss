@@ -17,7 +17,6 @@
 
       position: relative;
       padding-left: 56px;
-      line-height: 22px;
       contain: layout style;
 
       display: flex;
@@ -31,7 +30,7 @@
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
-      color: $blue;
+      color: $primary;
       font-family: $body-family;
     }
 
@@ -42,38 +41,56 @@
       top: 0;
       left: 0;
       width: 48px;
-      height: 24px;
-      border: 1.6px solid transparent;
-      background: $blue-line;
+      height: 22px;
+      border: 2px solid transparent;
+      background: $border;
       content: '';
-      transition: all 0.25s ease-out;
+      transition: all 0.25s ease-in-out;
     }
 
     input[type='checkbox'] + label::after {
       border-radius: 50%;
       display: block;
       position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 24px - 3px;
-      height: 24px - 3px;
+      top: 4px;
+      left: 4px;
+      width: 22px - 4px;
+      height: 22px - 4px;
       transform: translate3d(0, 0, 0);
-      background: $white;
-      transition: all 0.25s ease-out;
+      background: $primary;
+      transition: all 0.25s ease-in-out;
       content: '';
     }
 
     input[type='checkbox']:checked + label::before {
-      background: $green;
+      background: $primary;
     }
 
     input[type='checkbox']:checked + label::after {
-      left: 26px;
+      left: 30px;
+      background: $primary-invert;
     }
 
     &.is-disabled {
       input[type='checkbox'] + label {
-        opacity: 0.5;
+        color: $input-disabled-color;
+
+        &::after {
+          background-color: $input-disabled-color;
+        }
+
+        &::before {
+          opacity: 0.64;
+        }
+      }
+      input[type='checkbox']:checked + label {
+        &::after {
+          background-color: $primary-invert;
+        }
+
+        &::before {
+          background-color: $input-disabled-color;
+        }
       }
     }
   }

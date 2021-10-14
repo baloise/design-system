@@ -89,18 +89,6 @@ export namespace Components {
          */
         "href": string | undefined;
         /**
-          * Name of the left button icon
-         */
-        "icon": string;
-        /**
-          * Size of the button
-         */
-        "iconPosition": 'left' | 'right';
-        /**
-          * Name of the right button icon
-         */
-        "iconRight": string;
-        /**
           * If `true` the button is inverted
          */
         "inverted": boolean;
@@ -127,7 +115,7 @@ export namespace Components {
         /**
           * Size of the button
          */
-        "size": 'small' | '';
+        "size": 'small' | 'medium' | 'large';
         /**
           * If `true` the width of the buttons is limited
          */
@@ -1027,10 +1015,6 @@ export namespace Components {
          */
         "getValue": () => Promise<string[] | undefined>;
         /**
-          * Enables the slide in animation for the option items.
-         */
-        "hasMovement": boolean;
-        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
@@ -1171,7 +1155,7 @@ export namespace Components {
         /**
           * The theme type of the snackbar. Given by bulma our css framework.
          */
-        "color": ColorTypes | '';
+        "color": ColorTypes;
         /**
           * The duration of the snackbar
          */
@@ -1987,18 +1971,6 @@ declare namespace LocalJSX {
          */
         "href"?: string | undefined;
         /**
-          * Name of the left button icon
-         */
-        "icon"?: string;
-        /**
-          * Size of the button
-         */
-        "iconPosition"?: 'left' | 'right';
-        /**
-          * Name of the right button icon
-         */
-        "iconRight"?: string;
-        /**
           * If `true` the button is inverted
          */
         "inverted"?: boolean;
@@ -2041,7 +2013,7 @@ declare namespace LocalJSX {
         /**
           * Size of the button
          */
-        "size"?: 'small' | '';
+        "size"?: 'small' | 'medium' | 'large';
         /**
           * If `true` the width of the buttons is limited
          */
@@ -2935,10 +2907,6 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
-          * Enables the slide in animation for the option items.
-         */
-        "hasMovement"?: boolean;
-        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
@@ -3103,7 +3071,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the snackbar. Given by bulma our css framework.
          */
-        "color"?: ColorTypes | '';
+        "color"?: ColorTypes;
         /**
           * The duration of the snackbar
          */

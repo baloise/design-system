@@ -6,6 +6,10 @@
   position: relative;
   min-width: 250px;
 
+  bal-dropdown-menu {
+    width: 100%;
+  }
+
   &.is-fullwidth {
     width: 100%;
   }
@@ -19,180 +23,133 @@
   &.is-disabled input {
     cursor: not-allowed !important;
   }
-}
 
-.bal-select__slot {
-  border: 2px solid $border;
-  border-radius: $radius;
-  padding: 0;
-
-  .bal-select__selections {
-    padding-right: 48px;
+  .bal-select__slot {
     position: relative;
-  }
-
-  input.input {
-    border: none !important;
-    min-height: 44px !important;
-    height: 44px !important;
-  }
-
-  bal-icon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 48px;
-    min-height: 48px;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  &:focus-within,
-  &.is-focused {
-    border-width: 2px;
-    padding-bottom: 0;
-    border-color: $blue;
-    box-shadow: none;
-  }
-}
-
-.bal-select__option {
-  visibility: visible;
-  font-family: $family-primary !important;
-  padding: 0 16px !important;
-  min-height: 48px;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  outline: none;
-
-  &.is-disabled {
-    user-select: none;
-    opacity: 0.5;
-  }
-
-  &::-moz-focus-inner {
-    border: 0;
-  }
-
-  .select-option__content {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
-  }
+    display: flex;
+    border: 2px solid $border;
+    border-radius: $radius;
+    padding: 0 11px;
 
-  &.has-checkbox {
-    span.checkbox {
-      width: 35px;
+    &:focus-within,
+    &.is-focused {
+      border-width: 2px;
+      padding-bottom: 0;
+      border-color: $blue;
+      box-shadow: none;
+    }
+
+    .bal-select__selections {
+      align-items: center;
+      display: flex;
+      flex: 1 1;
+      flex-wrap: wrap;
+      line-height: 18px;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    bal-tag {
+      margin-right: 8px;
+    }
+
+    .input {
+      border: none;
+      box-shadow: none;
+      width: auto;
+      flex: 1;
+      background-color: transparent !important;
+      padding: 0;
+    }
+
+    .value {
+      margin: 7px 4px 7px 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 90%;
     }
   }
 
-  &.is-hidden {
-    display: none !important;
-  }
+  &.is-inverted {
+    .bal-select__slot {
+      border-color: $white;
 
-  span {
-    font-family: $family-primary;
-    font-size: $size-normal;
-  }
-
-  span.label {
-    font-weight: $weight-normal;
-    font-size: $size-normal;
-  }
-
-  &.is-selected {
-    // background: $dropdown-item-active-background-color;
-  }
-
-  &.is-selected:not(.has-checkbox) {
-    span.label {
-      font-weight: $weight-bold;
-      color: $dropdown-item-active-color;
+      &:focus-within,
+      &.is-focused {
+        border-color: $white;
+      }
     }
   }
 
-  &:hover {
-    background: $white;
+  .bal-select__empty {
+    padding: 10px 20px 13px 20px;
   }
 
-  &.is-focused {
-    background: $dropdown-item-hover-background-color;
+  .bal-select__option {
+    visibility: visible;
+    font-family: $family-primary !important;
+    padding: 10px 20px 13px 20px;
+    transition: padding-left 0.3s ease;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+
+    &.is-disabled {
+      user-select: none;
+      opacity: 0.5;
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    .select-option__content {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    &.has-checkbox {
+      span.checkbox {
+        width: 35px;
+      }
+    }
+
+    &.is-hidden {
+      display: none !important;
+    }
+
+    span {
+      font-family: $family-primary;
+      font-size: $size-small;
+    }
 
     span.label {
-      color: $dropdown-item-hover-color;
+      font-weight: $weight-normal;
+      font-size: $size-small;
+    }
+
+    &.is-selected {
+      background: $dropdown-item-active-background-color;
+    }
+
+    &.is-selected:not(.has-checkbox) {
+      span.label {
+        font-weight: $weight-bold;
+        color: $dropdown-item-active-color;
+      }
+    }
+
+    &.is-focused:not(.is-selected) {
+      background: $dropdown-item-hover-background-color;
+
+      span.label {
+        color: $dropdown-item-hover-color;
+      }
     }
   }
 }
-
-//   &.is-disabled {
-//     background: $blue-light;
-//   }
-
-//   .bal-select__slot {
-//     position: relative;
-//     align-items: center;
-//     display: flex;
-//     max-width: 100%;
-//     min-width: 0;
-//     width: 100%;
-//     border input {
-//       border: none !important;
-//       background: transparent !important;
-//       padding: 0 !important;
-//     }
-
-//     &:focus-within,
-//     &.is-focused {
-//       border-width: 2px;
-//       padding-bottom: 0;
-//       border-color: $blue;
-//       box-shadow: none;
-//     }
-
-//     .bal-select__selections {
-//       align-items: center;
-//       display: flex;
-//       flex: 1 1;
-//       flex-wrap: wrap;
-//       line-height: 18px;
-//       max-width: 100%;
-//       min-width: 0;
-//     }
-
-//     bal-tag {
-//       margin-right: 8px;
-//     }
-
-//     .input {
-//       border: none;
-//       box-shadow: none;
-//       padding: 0;
-//     }
-
-//     .value {
-//       margin: 7px 4px 7px 0;
-//       overflow: hidden;
-//       text-overflow: ellipsis;
-//       white-space: nowrap;
-//       max-width: 90%;
-//     }
-//   }
-
-//   &.is-inverted {
-//     .bal-select__slot {
-//       border-color: $white;
-
-//       &:focus-within,
-//       &.is-focused {
-//         border-color: $white;
-//       }
-//     }
-//   }
-
-//   .bal-select__empty {
-//     padding: 10px 20px 13px 20px;
-//   }
-
-// }

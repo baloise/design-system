@@ -21,12 +21,12 @@
           <bal-select-option value="v1999" label="1999">1999</bal-select-option>
           <bal-select-option value="v2000" label="2000">2000</bal-select-option>
         </bal-select>
-        <br />
-        <bal-select expanded disabled data-test-id="select-disabled" placeholder="Disabled"></bal-select>
-        <br />
-        <p id="bal-select-year-preview"></p>
-        <bal-button color="success" id="bal-select-year-add">Add Option</bal-button>
-        <bal-button color="danger" id="bal-select-year-remove">Remove Last Option</bal-button>
+        <!-- <bal-select expanded disabled data-test-id="select-disabled" placeholder="Disabled" class="mt-2"></bal-select> -->
+        <p id="bal-select-year-preview" class="mt-2"></p>
+        <!-- <div class="bal-buttons mt-2">
+          <bal-button color="success" id="bal-select-year-add">Add Option</bal-button>
+          <bal-button color="danger" id="bal-select-year-remove">Remove Last Option</bal-button>
+        </div> -->
       </section>
       <script>
         var year = 2001
@@ -57,7 +57,7 @@
         })
       </script>
 
-      <h2>Typeahead</h2>
+      <!-- <h2>Typeahead</h2>
       <section>
         <div class="has-background-blue p-4">
           <bal-select id="bal-select-typeahaed" typeahead inverted expanded placeholder="Try finding your hero" no-data-label="No option available" data-test-id="typeahead">
@@ -109,7 +109,7 @@
         })
         selectTypeahead.value = 'CaptainAmerica'
         selectTypeaheadPreview.innerHTML = JSON.stringify(selectTypeahead.value)
-      </script>
+      </script>-->
 
       <h2>Multi-Select</h2>
       <section>
@@ -141,7 +141,7 @@
         </bal-select>
       </section>
 
-      <h2>Multi-Select with typeahead</h2>
+      <!-- <h2>Multi-Select with typeahead</h2>
       <section>
         <bal-select multiple typeahead expanded placeholder="Try finding your hero" no-data-label="No option available">
           <bal-select-option checkbox value="BlackWidow" label="Black Widow">
@@ -248,7 +248,7 @@
         selectRemote.addEventListener('balInput', function (event) {
           querySelections(event.detail)
         })
-      </script>
+      </script> -->
     </div>
   </body>
 </html>

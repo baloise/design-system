@@ -1,54 +1,60 @@
 @import '../../styles/global.utilities';
 @import 'node_modules/bulma/sass/elements/icon.sass';
 
+$icon-xsmall: 8px;
+$icon-small: 12px;
+$icon-default: 16px;
+$icon-medium: 24px;
+$icon-large: 48px;
+$icon-xlarge: 64px;
+
 :host {
   display: flex;
   justify-content: center;
   align-items: center;
   position: static;
-  width: 24px;
-  max-height: 24px;
-  fill: $blue;
   pointer-events: visible;
+  fill: $primary;
+  width: $icon-default;
+  max-height: $icon-default;
 
   .bal-icon-inner {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: static;
-    width: 24px;
-    max-height: 24px;
-
-    svg {
-      max-height: 24px;
-    }
+    width: $icon-default;
+    max-height: $icon-default;
   }
 
   &.is-size-xsmall,
   &.is-size-xsmall .bal-icon-inner {
-    width: 10px;
+    width: $icon-xsmall;
+    max-height: $icon-xsmall;
   }
 
   &.is-size-small,
   &.is-size-small .bal-icon-inner {
-    width: 16px;
-    max-height: 16px;
+    width: $icon-small;
+    max-height: $icon-small;
   }
 
   &.is-size-medium,
   &.is-size-medium .bal-icon-inner {
-    width: 32px;
-    max-height: 32px;
+    width: $icon-medium;
+    max-height: $icon-medium;
   }
 
   &.is-size-large,
   &.is-size-large .bal-icon-inner {
-    width: 48px;
-    max-height: 48px;
+    width: $icon-large;
+    max-height: $icon-large;
   }
 
   &.is-size-xlarge,
   &.is-size-xlarge .bal-icon-inner {
-    width: 64px;
-    max-height: 64px;
+    width: $icon-xlarge;
+    max-height: $icon-xlarge;
   }
 
   &.turn .bal-icon-inner {
@@ -64,22 +70,8 @@
     fill: $success;
   }
 
-  &.is-info {
-    fill: $info;
-  }
-
   &.is-gray {
     fill: $gray;
-  }
-
-  &.is-inverted {
-    &.is-primary,
-    &.is-success,
-    &.is-warning,
-    &.is-danger,
-    &.is-info {
-      fill: $white;
-    }
   }
 
   &.is-warning {
@@ -88,5 +80,9 @@
 
   &.is-danger {
     fill: $danger;
+  }
+
+  &.is-inverted {
+    fill: $white;
   }
 }

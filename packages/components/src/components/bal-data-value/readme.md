@@ -36,9 +36,6 @@
 graph TD;
   bal-data-value --> bal-button
   bal-data-value --> bal-icon
-  bal-button --> bal-spinner
-  bal-button --> bal-icon
-  bal-button --> bal-text
   style bal-data-value fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

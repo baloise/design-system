@@ -27,7 +27,7 @@ bal-field {
 
   bal-field-label > label.label {
     font-size: $size-small;
-    margin-bottom: 4px;
+    padding-bottom: 4px;
   }
 
   bal-field-control {
@@ -139,9 +139,11 @@ bal-field {
   }
 
   &.is-disabled {
-    bal-field-label label.label,
-    bal-field-message {
+    bal-field-label label.label {
       color: $input-disabled-placeholder-color !important;
+    }
+    bal-field-message {
+      color: $gray-5 !important;
     }
   }
 }

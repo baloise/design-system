@@ -11,19 +11,6 @@
 | `small`    | `small`    | If `true` the component is smaller                     | `boolean` | `false` |
 
 
-## Dependencies
-
-### Used by
-
- - [bal-button](../bal-button)
-
-### Graph
-```mermaid
-graph TD;
-  bal-button --> bal-spinner
-  style bal-spinner fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

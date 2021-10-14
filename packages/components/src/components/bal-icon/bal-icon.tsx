@@ -28,7 +28,7 @@ export class Icon {
   /**
    * The theme type of the button. Given by bulma our css framework.
    */
-  @Prop() color: BalButtonColor | 'gray' = 'info'
+  @Prop() color: BalButtonColor | 'gray' = 'primary'
 
   /**
    * If `true` the button is inverted

@@ -28,7 +28,7 @@ export class Button implements ComponentInterface {
   /**
    * Size of the button
    */
-  @Prop({ reflect: true }) size: 'small' | '' = ''
+  @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium'
 
   /**
    * Turn the button in to a link.
@@ -60,10 +60,10 @@ export class Button implements ComponentInterface {
    */
   @Prop() download: string | undefined
 
-  /**
-   * Size of the button
-   */
-  @Prop() iconPosition: 'left' | 'right' = 'left'
+  // /**
+  //  * Size of the button
+  //  */
+  // @Prop() iconPosition: 'left' | 'right' = 'left'
 
   /**
    * If `true` the width of the buttons is limited
@@ -100,15 +100,15 @@ export class Button implements ComponentInterface {
    */
   @Prop() bottomRounded = false
 
-  /**
-   * Name of the left button icon
-   */
-  @Prop() icon = ''
+  // /**
+  //  * Name of the left button icon
+  //  */
+  // @Prop() icon = ''
 
-  /**
-   * Name of the right button icon
-   */
-  @Prop() iconRight = ''
+  // /**
+  //  * Name of the right button icon
+  //  */
+  // @Prop() iconRight = ''
 
   /**
    * The name of the button, which is submitted with the form data.
@@ -152,25 +152,25 @@ export class Button implements ComponentInterface {
     this.balDidRender.emit()
   }
 
-  private get isIconInverted() {
-    switch (this.color) {
-      case 'primary':
-      case 'success':
-      case 'warning':
-      case 'danger':
-        return true
+  // private get isIconInverted() {
+  //   switch (this.color) {
+  //     case 'primary':
+  //     case 'success':
+  //     case 'warning':
+  //     case 'danger':
+  //       return true
 
-      default:
-        return false
-    }
-  }
+  //     default:
+  //       return false
+  //   }
+  // }
 
   private get buttonCssClass() {
     return {
       'button': true,
       [`is-${this.color}`]: true,
+      [`is-size-${this.size}`]: true,
       'is-square': this.square,
-      'is-small': this.size,
       'is-inverted': this.inverted,
       'is-outlined': this.outlined,
       'is-fullwidth': this.expanded,
@@ -181,48 +181,48 @@ export class Button implements ComponentInterface {
     }
   }
 
-  private get spinnerCssClass() {
-    return {
-      'is-small': true,
-      'is-inverted': !(this.color === 'link' || this.color === 'primary-light' || this.color === 'info-light' || this.outlined),
-    }
-  }
+  // private get spinnerCssClass() {
+  //   return {
+  //     'is-small': true,
+  //     'is-inverted': !(this.color === 'link' || this.color === 'primary-light' || this.color === 'info-light' || this.outlined),
+  //   }
+  // }
 
-  private get leftIconAttrs() {
-    if (!this.icon || this.loading) {
-      return {
-        style: { display: 'none' },
-      }
-    }
-    return {}
-  }
+  // private get leftIconAttrs() {
+  //   if (!this.icon || this.loading) {
+  //     return {
+  //       style: { display: 'none' },
+  //     }
+  //   }
+  //   return {}
+  // }
 
-  private get leftRightAttrs() {
-    if (!this.iconRight || this.loading) {
-      return {
-        style: { display: 'none' },
-      }
-    }
-    return {}
-  }
+  // private get leftRightAttrs() {
+  //   if (!this.iconRight || this.loading) {
+  //     return {
+  //       style: { display: 'none' },
+  //     }
+  //   }
+  //   return {}
+  // }
 
-  private get spanAttrs() {
-    if (this.square) {
-      return {
-        style: { display: 'none' },
-      }
-    }
-    return {}
-  }
+  // private get spanAttrs() {
+  //   if (this.square) {
+  //     return {
+  //       style: { display: 'none' },
+  //     }
+  //   }
+  //   return {}
+  // }
 
-  private get loadingAttrs() {
-    if (!this.loading) {
-      return {
-        style: { display: 'none' },
-      }
-    }
-    return {}
-  }
+  // private get loadingAttrs() {
+  //   if (!this.loading) {
+  //     return {
+  //       style: { display: 'none' },
+  //     }
+  //   }
+  //   return {}
+  // }
 
   private handleClick(event: MouseEvent) {
     if (this.disabled) {
@@ -268,13 +268,15 @@ export class Button implements ComponentInterface {
         }}
       >
         <TagType {...attrs} type={this.type} class={this.buttonCssClass} part="native" disabled={this.disabled} onFocus={this.onFocus} onBlur={this.onBlur} onClick={this.onClick}>
-          <span {...this.spanAttrs}>{/* Empty span to get the correct text height */}</span>
-          <bal-spinner {...this.loadingAttrs} class={this.spinnerCssClass} />
-          <bal-icon {...this.leftIconAttrs} class="icon-left" name={this.icon} size={this.square ? this.size : 'small'} color={this.color} inverted={this.isIconInverted} />
-          <bal-text bold={true} class="data-test-button-label" {...this.spanAttrs} small={this.size === 'small'} style={{ display: this.loading ? 'none' : 'inline' }}>
+          <span>
+            <slot name="icon-left" />
+          </span>
+          <span>
             <slot />
-          </bal-text>
-          <bal-icon {...this.leftRightAttrs} class="icon-right" name={this.iconRight} size={'small'} color={this.color} inverted={this.isIconInverted} />
+          </span>
+          <span>
+            <slot name="icon-right" />
+          </span>
         </TagType>
       </Host>
     )

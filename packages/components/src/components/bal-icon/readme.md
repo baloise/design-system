@@ -5,22 +5,21 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                     | Type                                                                                                               | Default  |
-| ---------- | ---------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | -------- |
-| `color`    | `color`    | The theme type of the button. Given by bulma our css framework. | `"danger" \| "gray" \| "info" \| "info-light" \| "link" \| "primary" \| "primary-light" \| "success" \| "warning"` | `'info'` |
-| `inverted` | `inverted` | If `true` the button is inverted                                | `boolean`                                                                                                          | `false`  |
-| `name`     | `name`     | Name of the baloise icon.                                       | `string`                                                                                                           | `''`     |
-| `rotate`   | `rotate`   | If `true` the icon rotates like for a loading spinner           | `boolean`                                                                                                          | `false`  |
-| `size`     | `size`     | Defines the size of the icon.                                   | `"" \| "large" \| "medium" \| "small" \| "xsmall"`                                                                 | `''`     |
-| `svg`      | `svg`      | Svg content.                                                    | `string`                                                                                                           | `''`     |
-| `turn`     | `turn`     | If `true` the icon is rotated 180deg                            | `boolean`                                                                                                          | `false`  |
+| Property   | Attribute  | Description                                                     | Type                                                                                                     | Default     |
+| ---------- | ---------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ----------- |
+| `color`    | `color`    | The theme type of the button. Given by bulma our css framework. | `"danger" \| "gray" \| "info-light" \| "link" \| "primary" \| "primary-light" \| "success" \| "warning"` | `'primary'` |
+| `inverted` | `inverted` | If `true` the button is inverted                                | `boolean`                                                                                                | `false`     |
+| `name`     | `name`     | Name of the baloise icon.                                       | `string`                                                                                                 | `''`        |
+| `rotate`   | `rotate`   | If `true` the icon rotates like for a loading spinner           | `boolean`                                                                                                | `false`     |
+| `size`     | `size`     | Defines the size of the icon.                                   | `"" \| "large" \| "medium" \| "small" \| "xsmall"`                                                       | `''`        |
+| `svg`      | `svg`      | Svg content.                                                    | `string`                                                                                                 | `''`        |
+| `turn`     | `turn`     | If `true` the icon is rotated 180deg                            | `boolean`                                                                                                | `false`     |
 
 
 ## Dependencies
 
 ### Used by
 
- - [bal-button](../bal-button)
  - [bal-data-value](../bal-data-value)
  - [bal-datepicker](../bal-datepicker)
  - [bal-field-control](../bal-field-control)
@@ -34,7 +33,6 @@
 ### Graph
 ```mermaid
 graph TD;
-  bal-button --> bal-icon
   bal-data-value --> bal-icon
   bal-datepicker --> bal-icon
   bal-field-control --> bal-icon

@@ -5,15 +5,15 @@
 
 ## Properties
 
-| Property     | Attribute     | Description                                             | Type                  | Default     |
-| ------------ | ------------- | ------------------------------------------------------- | --------------------- | ----------- |
-| `card`       | `card`        | If `true` the accordion is used on the bottom of a card | `boolean`             | `false`     |
-| `closeIcon`  | `close-icon`  | Bal-Icon of the close trigger button                    | `string`              | `'minus'`   |
-| `closeLabel` | `close-label` | Label of the close trigger button                       | `string`              | `''`        |
-| `color`      | `color`       | Type defines the theme of the accordion toggle          | `"info" \| "primary"` | `'primary'` |
-| `isActive`   | `is-active`   | Controls if the accordion is collapsed or not           | `boolean`             | `false`     |
-| `openIcon`   | `open-icon`   | Bal-Icon of the open trigger button                     | `string`              | `'plus'`    |
-| `openLabel`  | `open-label`  | Label of the open trigger button                        | `string`              | `''`        |
+| Property     | Attribute     | Description                                             | Type        | Default     |
+| ------------ | ------------- | ------------------------------------------------------- | ----------- | ----------- |
+| `card`       | `card`        | If `true` the accordion is used on the bottom of a card | `boolean`   | `false`     |
+| `closeIcon`  | `close-icon`  | Bal-Icon of the close trigger button                    | `string`    | `'minus'`   |
+| `closeLabel` | `close-label` | Label of the close trigger button                       | `string`    | `''`        |
+| `color`      | `color`       | Type defines the theme of the accordion toggle          | `"primary"` | `'primary'` |
+| `isActive`   | `is-active`   | Controls if the accordion is collapsed or not           | `boolean`   | `false`     |
+| `openIcon`   | `open-icon`   | Bal-Icon of the open trigger button                     | `string`    | `'plus'`    |
+| `openLabel`  | `open-label`  | Label of the open trigger button                        | `string`    | `''`        |
 
 
 ## Events
@@ -66,9 +66,6 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   bal-accordion --> bal-button
-  bal-button --> bal-spinner
-  bal-button --> bal-icon
-  bal-button --> bal-text
   style bal-accordion fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

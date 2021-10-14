@@ -95,7 +95,6 @@ export class Accordion {
           class="data-test-accordion-trigger"
           expanded={true}
           color={this.buttonType}
-          icon={this.icon}
           onClick={() => this.toggle()}
           top-rounded={!this.card}
           bottomRounded={!this.isActive}

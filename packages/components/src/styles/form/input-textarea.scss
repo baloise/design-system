@@ -18,6 +18,13 @@ textarea.textarea {
     opacity: $opacity-placeholder;
   }
 
+  &:hover,
+  &.is-hoverd {
+    &:not(:focus) {
+      background-color: $gray-0;
+    }
+  }
+
   &.is-focused.is-success {
     border-color: $success;
     background: $success-1;

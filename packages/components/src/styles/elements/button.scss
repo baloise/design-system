@@ -12,8 +12,8 @@ bal-button > .button {
   @include font-smoothing();
   @include margin(0);
 
+  min-height: $height-medium;
   border-width: 2px;
-  min-height: 48px;
   position: relative;
   contain: layout style;
   outline: none;
@@ -36,12 +36,17 @@ bal-button > .button {
   }
 
   &.is-disabled.is-inverted {
-    opacity: 0.64;
+    opacity: 0.48;
   }
 
   @each $name, $pair in $button-colors {
     $color: nth($pair, 1);
     $color-invert: nth($pair, 2);
+    $color-4: nth($pair, 3);
+    $color-3: nth($pair, 4);
+    $color-2: nth($pair, 5);
+    $color-1: nth($pair, 6);
+    $color-0: nth($pair, 7);
 
     &.is-inverted {
       &:hover,
@@ -66,113 +71,36 @@ bal-button > .button {
       &:not(.is-inverted) {
         &:hover,
         &.is-hovered {
-          background-color: bulmaLighten($color, 5%);
+          background-color: $color-3;
         }
         &:active,
         &.is-active {
-          background-color: $color;
+          background-color: $color-4;
         }
       }
       &.is-outlined:not(.is-inverted) {
-        &.is-primary {
+        &:hover,
+        &.is-hovered {
+          color: $color;
+          background-color: $color-0;
+        }
+        &:focus,
+        &.is-focused {
+          color: $color;
+          background-color: transparent;
           &:hover,
           &.is-hovered {
-            color: $color;
-            background-color: bulmaLighten($color, 72%);
-          }
-          &:focus,
-          &.is-focused {
-            color: $color;
-            background-color: transparent;
-            &:hover,
-            &.is-hovered {
-              background-color: bulmaLighten($color, 72%);
-            }
-            &:active,
-            &.is-active {
-              background-color: bulmaLighten($color, 67%);
-            }
+            background-color: $color-0;
           }
           &:active,
           &.is-active {
-            color: $color;
-            background-color: bulmaLighten($color, 67%);
+            background-color: $color-1;
           }
         }
-        &.is-success {
-          &:hover,
-          &.is-hovered {
-            color: $color;
-            background-color: bulmaLighten($color, 72%);
-          }
-          &:focus,
-          &.is-focused {
-            color: $color;
-            background-color: transparent;
-            &:hover,
-            &.is-hovered {
-              background-color: bulmaLighten($color, 72%);
-            }
-            &:active,
-            &.is-active {
-              background-color: bulmaLighten($color, 67%);
-            }
-          }
-          &:active,
-          &.is-active {
-            color: $color;
-            background-color: bulmaLighten($color, 67%);
-          }
-        }
-        &.is-warning {
-          &:hover,
-          &.is-hovered {
-            color: $color;
-            background-color: bulmaLighten($color, 60%);
-          }
-          &:focus,
-          &.is-focused {
-            color: $color;
-            background-color: transparent;
-            &:hover,
-            &.is-hovered {
-              background-color: bulmaLighten($color, 60%);
-            }
-            &:active,
-            &.is-active {
-              background-color: bulmaLighten($color, 55%);
-            }
-          }
-          &:active,
-          &.is-active {
-            color: $color;
-            background-color: bulmaLighten($color, 55%);
-          }
-        }
-        &.is-danger {
-          &:hover,
-          &.is-hovered {
-            color: $color;
-            background-color: bulmaLighten($color, 60%);
-          }
-          &:focus,
-          &.is-focused {
-            color: $color;
-            background-color: transparent;
-            &:hover,
-            &.is-hovered {
-              background-color: bulmaLighten($color, 60%);
-            }
-            &:active,
-            &.is-active {
-              background-color: bulmaLighten($color, 55%);
-            }
-          }
-          &:active,
-          &.is-active {
-            color: $color;
-            background-color: bulmaLighten($color, 55%);
-          }
+        &:active,
+        &.is-active {
+          color: $color;
+          background-color: $color-1;
         }
       }
       &.is-outlined.is-inverted,
@@ -193,13 +121,13 @@ bal-button > .button {
 
         &:active,
         &.is-active {
-          background: bulmaDarken($color, 16%);
-          border-color: bulmaDarken($color, 16%);
+          background: $color-4;
+          border-color: $color-4;
           color: $color-invert;
         }
 
         &.is-disabled {
-          opacity: 0.64;
+          opacity: 0.48;
         }
       }
     }
@@ -218,6 +146,68 @@ bal-button > .button {
       }
     }
   }
+
+  &.is-inverted {
+    &.is-disabled.is-outlined {
+      background-color: transparent !important;
+      color: $button-disabled-border-color !important;
+      border-color: $button-disabled-border-color !important;
+
+      &.is-loading {
+        color: transparent !important;
+        &::after {
+          border-color: transparent transparent $button-disabled-border-color $button-disabled-border-color !important;
+        }
+      }
+    }
+  }
+
+  &.is-square {
+    width: $height-medium;
+    padding: 0;
+  }
+
+  &.is-size-small {
+    min-height: $height-small;
+    max-height: $height-small;
+    min-width: $height-small;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+    font-size: $size-small;
+    line-height: 20px;
+
+    &.is-square {
+      width: $height-small;
+    }
+  }
+
+  @include desktop() {
+    &.is-size-large {
+      min-height: $height-large;
+      max-height: $height-large;
+      min-width: $height-large;
+
+      &.is-square {
+        width: $height-large;
+        padding: 0;
+      }
+    }
+  }
+
+  & > span {
+    &:first-child:not(:empty) {
+      margin-left: -4px;
+      margin-right: 8px;
+    }
+
+    &:last-child:not(:empty) {
+      margin-left: 8px;
+      margin-right: -4px;
+    }
+  }
 }
 
 .is-link {
@@ -228,20 +218,20 @@ bal-button > .button {
   &:not(.is-inverted) {
     &:hover,
     &.is-hovered {
-      color: bulmaLighten($primary, 10%) !important;
+      color: $primary-6 !important;
     }
 
     &:focus,
     &.is-focused {
       &:not(:active):not(:hover) {
-        color: bulmaLighten($primary, 5%) !important;
+        color: $primary-7 !important;
         box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color;
       }
     }
 
     &:active,
     &.is-active {
-      color: bulmaDarken($primary, 10%) !important;
+      color: $primary-9 !important;
     }
   }
 
@@ -260,9 +250,9 @@ bal-button > .button {
 
     &:focus,
     &.is-focused {
-      &:not(:active):not(:hover) {
+      &:not(:active) {
         color: $gray-3 !important;
-        box-shadow: $button-focus-box-shadow-size #c1c2da !important;
+        box-shadow: $button-focus-box-shadow-size $primary-2 !important;
       }
     }
 

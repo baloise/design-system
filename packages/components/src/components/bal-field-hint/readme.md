@@ -30,9 +30,6 @@ graph TD;
   bal-field-hint --> bal-hint-text
   bal-hint --> bal-icon
   bal-hint --> bal-button
-  bal-button --> bal-spinner
-  bal-button --> bal-icon
-  bal-button --> bal-text
   style bal-field-hint fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

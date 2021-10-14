@@ -25,7 +25,6 @@ const option = NewBalOptionValue('value', 'label')
 | `balTabindex` | `bal-tabindex`  | The tabindex of the control.                                                      | `number`                          | `0`            |
 | `disabled`    | `disabled`      | If `true` the component is diabled.                                               | `boolean`                         | `false`        |
 | `expanded`    | `expanded`      | If `true` the component uses the whole width.                                     | `boolean`                         | `false`        |
-| `hasMovement` | `has-movement`  | Enables the slide in animation for the option items.                              | `boolean`                         | `false`        |
 | `inverted`    | `inverted`      | Set this to `true` when the component is placed on a dark background.             | `boolean`                         | `false`        |
 | `loading`     | `loading`       | Defines if the select is in a loading state.                                      | `boolean`                         | `false`        |
 | `multiple`    | `multiple`      | If `true` multiple option can be selected                                         | `boolean`                         | `false`        |

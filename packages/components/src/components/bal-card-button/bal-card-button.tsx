@@ -45,18 +45,7 @@ export class CardButton {
   render() {
     return (
       <Host class="bal-card-button">
-        <bal-button
-          color="primary-light"
-          expanded
-          bottom-rounded
-          icon={this.icon}
-          iconRight={this.iconRight}
-          type={this.type}
-          disabled={this.disabled}
-          href={this.href}
-          target={this.target}
-          loading={this.loading}
-        >
+        <bal-button color="primary-light" expanded bottom-rounded type={this.type} disabled={this.disabled} href={this.href} target={this.target} loading={this.loading}>
           <slot></slot>
         </bal-button>
       </Host>

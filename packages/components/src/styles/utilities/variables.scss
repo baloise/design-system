@@ -36,12 +36,14 @@ $hint: $primary-3;
 $focus-outline: $primary-2;
 
 $hover-color: $text;
-$hover-background: purple;
+$hover-background: $gray-1;
+
 $focus-color: $text;
 $focus-background: aqua;
 
-$active-color: $text;
-$active-background: lime;
+$active-color: $primary-9;
+$active-background: $primary-1;
+
 $border: $gray-3;
 $form-background: $white;
 
@@ -95,6 +97,13 @@ $scheme-main-ter: $white-ter;
 $scheme-invert: $black;
 $scheme-invert-bis: $black-bis;
 $scheme-invert-ter: $black-ter;
+
+/**
+ * Typography
+ */
+$height-large: 56px;
+$height-medium: 48px;
+$height-small: 32px;
 
 /**
  * Typography

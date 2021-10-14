@@ -12,44 +12,32 @@
   flex-direction: row-reverse !important;
 }
 
-.has-background-light {
-  background: $white-bis;
+.has-border {
+  border: 2px solid $border;
 }
 
-.has-border-blue {
-  border: 1px solid $blue-line;
-}
-
-.has-border-blue-dark {
-  border: 1px solid $blue-dark;
+.has-border-primary {
+  border: 2px solid $primary;
 }
 
 .has-border-success {
-  border: 1px solid $success;
+  border: 2px solid $success;
 }
 
 .has-border-danger {
-  border: 1px solid $danger;
+  border: 2px solid $danger;
 }
 
 .has-border-warning {
-  border: 1px solid $danger;
+  border: 2px solid $danger;
 }
 
-.has-border-bold {
-  border-width: 2px;
+.has-border-white {
+  border: 2px solid $white;
 }
 
-.has-border-blue-light {
-  border: 1px solid $blue-light-line;
-}
-
-.has-border-blue-inverted {
-  border: 1px solid $blue-line-inverted;
-}
-
-.has-border-grey {
-  border: 1px solid $gray;
+.has-border-gray {
+  border: 2px solid $gray;
 }
 
 .has-border-radius {

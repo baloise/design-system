@@ -12,10 +12,11 @@
   vertical-align: -webkit-baseline-middle; // the best for those that support it
   pointer-events: auto;
   font-kerning: none;
+  outline: none;
 
   &.bal-radio {
-    min-height: 24px;
-    min-width: 24px;
+    min-height: 26px;
+    min-width: 26px;
     display: inline-block;
     position: relative;
 
@@ -39,7 +40,6 @@
       @include font-smoothing();
       @include margin(0);
 
-      line-height: 22px;
       contain: layout style;
 
       display: flex;
@@ -53,7 +53,7 @@
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
-      color: $blue;
+      color: $primary;
       font-family: $body-family;
     }
 
@@ -63,21 +63,22 @@
       position: absolute;
       left: 0;
       top: 0;
-      height: 24px;
-      width: 24px;
+      height: 22px;
+      width: 22px;
       border-radius: 50%;
-      border: 1px solid $blue;
+      border: 2px solid $primary-invert;
+      transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
 
     input[type='radio'] + label:before {
       content: '';
-      border: 1px solid $blue-line;
+      border-color: $primary;
     }
 
     input[type='radio'] + label:after {
-      content: none;
-      background: $blue;
-      transform: scale(0.4);
+      content: '';
+      background: $primary-invert;
+      transform: scale(0.85);
       top: 0;
       left: 0;
     }
@@ -87,16 +88,22 @@
       opacity: 0.5;
     }
 
+    input[type='radio']:checked + label::before {
+      background-color: $primary;
+    }
+
     input[type='radio']:checked + label::after {
-      content: '';
+      transform: scale(0.3);
     }
 
     input[type='radio']:hover:not([disabled]) + label:before {
-      border-color: $blue;
+      border-color: $primary;
     }
 
-    input[type='radio']:focus-visible + label::before {
-      outline: 1px dashed $cyan !important;
+    &:focus-within {
+      input[type='radio'] + label::before {
+        box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color;
+      }
     }
 
     &.is-inverted {
@@ -123,116 +130,41 @@
       opacity: 0;
     }
 
-    input[type='radio']:focus-visible ~ label {
-      outline: none;
-      border: 2px dashed $cyan;
-    }
-
     label {
       @include font-smoothing();
       @include margin(0);
 
       contain: layout style;
-      line-height: 1.125;
       display: flex;
       flex: 1 1 0;
-      height: 32px;
-      min-height: 32px;
+      height: 48px;
+      min-height: 48px;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      border-radius: 100px;
-      background: transparent;
+      border-radius: $radius;
+      background: $gray-2;
+      color: $primary;
       padding: 0 16px !important;
       border-color: transparent;
       border-width: 2px;
       font-family: $body-family;
       font-size: $size-normal !important;
-
-      &:hover {
-        color: $blue;
-      }
-
       text-align: center;
-      color: $blue-light-text;
-    }
-
-    @include desktop() {
-      label {
-        font-size: $size-normal !important;
-      }
     }
 
     input:checked ~ label {
-      border-color: $blue;
-      background: $blue;
-      color: white;
-
-      &:hover {
-        color: white;
-      }
+      border-color: $primary;
+      background: $primary;
+      color: $primary-invert;
     }
 
     input:disabled ~ label {
       cursor: not-allowed;
-      color: $blue-light-text;
-
-      &:hover {
-        color: $blue-light-text;
-      }
-    }
-
-    input:disabled:checked ~ label {
-      border-color: $blue;
-      background: $blue;
-      opacity: 0.5;
-      color: white;
-
-      &:hover {
-        color: white;
-      }
-    }
-
-    &.is-inverted {
-      label:hover {
-        color: white;
-      }
-
-      input:checked ~ label {
-        border-color: $white;
-        background: $white;
-        color: $blue;
-
-        &:hover {
-          color: $blue;
-        }
-      }
-
-      input[type='radio']:focus-visible ~ label {
-        outline: none;
-        border: 2px dashed $cyan;
-      }
-
-      input:disabled:checked ~ label {
-        border-color: $blue;
-        background: $white;
-        opacity: 0.5;
-        color: $blue;
-
-        &:hover {
-          color: $blue;
-        }
-      }
-
-      input:disabled ~ label {
-        cursor: not-allowed;
-        color: $blue-line;
-
-        &:hover {
-          color: $blue-line;
-        }
-      }
+      color: $input-disabled-color;
+      background-color: $input-disabled-background-color;
+      border-color: $input-disabled-background-color;
     }
   }
 }

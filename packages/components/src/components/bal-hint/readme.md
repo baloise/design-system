@@ -60,9 +60,6 @@ Type: `Promise<void>`
 graph TD;
   bal-hint --> bal-icon
   bal-hint --> bal-button
-  bal-button --> bal-spinner
-  bal-button --> bal-icon
-  bal-button --> bal-text
   bal-field-hint --> bal-hint
   style bal-hint fill:#f9f,stroke:#333,stroke-width:4px
 ```

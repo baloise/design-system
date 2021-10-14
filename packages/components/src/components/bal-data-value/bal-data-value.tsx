@@ -58,7 +58,7 @@ export class DataValue {
           square
           outlined
           size="small"
-          color="info"
+          color="primary"
           disabled={this.disabled}
           onBalBlur={_ => this.balBlur.emit()}
           onBalFocus={_ => this.balFocus.emit()}
