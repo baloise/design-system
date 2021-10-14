@@ -984,6 +984,10 @@ export namespace Components {
           * The value of the control.
          */
         "value": string;
+        /**
+          * If `true` the select buttons are listed verticaly
+         */
+        "vertical": boolean;
     }
     interface BalSelect {
         /**
@@ -2892,6 +2896,10 @@ declare namespace LocalJSX {
           * The value of the control.
          */
         "value"?: string;
+        /**
+          * If `true` the select buttons are listed verticaly
+         */
+        "vertical"?: boolean;
     }
     interface BalSelect {
         /**

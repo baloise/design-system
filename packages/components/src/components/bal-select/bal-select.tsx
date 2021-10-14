@@ -728,12 +728,9 @@ export class Select {
                 }}
                 color={this.disabled ? 'gray' : 'primary'}
                 name="caret-down"
-                size="xsmall"
+                size="small"
                 inverted={this.inverted}
                 turn={this.isDropdownOpen}
-                style={{
-                  marginTop: this.isDropdownOpen ? '8px' : '0px',
-                }}
               ></bal-icon>
             </div>
           </bal-dropdown-trigger>

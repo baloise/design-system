@@ -1,12 +1,39 @@
 @import '../../styles/global.utilities';
 
-:host {
+bal-radio-group {
   display: inline-block;
   position: relative;
   width: 100%;
 
   &.bal-select-button {
-    display: flex;
-    flex: 1;
+    display: block;
+  }
+
+  @include tablet() {
+    &.bal-select-button:not(.is-vertical) {
+      display: flex;
+      flex: 1;
+    }
+  }
+}
+
+@include tablet() {
+  bal-radio-group:not(.is-vertical) {
+    bal-radio.bal-select-button {
+      display: flex;
+      flex-grow: 1;
+      flex-shrink: 1;
+      width: auto;
+      margin-left: 4px;
+      margin-right: 4px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }

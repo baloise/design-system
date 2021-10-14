@@ -19,12 +19,11 @@
     min-width: 26px;
     display: inline-block;
     position: relative;
+    padding-left: 24px;
 
     &:first-child {
       padding-left: 0;
     }
-
-    padding-left: 24px;
 
     input[type='radio'] {
       position: absolute;
@@ -105,25 +104,16 @@
         box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color;
       }
     }
-
-    &.is-inverted {
-      input[type='radio']:hover:not([disabled]) + label:before {
-        border-color: $white;
-      }
-
-      input[type='radio'] + label:after {
-        background: $white;
-      }
-
-      input[type='radio'] + label {
-        color: $white;
-      }
-    }
   }
 
   &.bal-select-button {
-    display: flex;
-    flex: 1;
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     input[type='radio'] {
       position: absolute;
@@ -149,6 +139,7 @@
       padding: 0 16px !important;
       border-color: transparent;
       border-width: 2px;
+      border-style: solid;
       font-family: $body-family;
       font-size: $size-normal !important;
       text-align: center;
@@ -165,6 +156,16 @@
       color: $input-disabled-color;
       background-color: $input-disabled-background-color;
       border-color: $input-disabled-background-color;
+    }
+
+    label:hover {
+      border-color: $primary;
+    }
+
+    &:focus-within {
+      input[type='radio'] + label {
+        box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color;
+      }
     }
   }
 }

@@ -25,6 +25,7 @@ $icon-xlarge: 64px;
     position: static;
     width: $icon-default;
     max-height: $icon-default;
+    transition: transform 0.2s ease-in-out;
   }
 
   &.is-size-xsmall,

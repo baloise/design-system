@@ -5,7 +5,7 @@ import { findItemLabel } from '../../helpers/helpers'
   tag: 'bal-radio-group',
   styleUrl: 'bal-radio-group.scss',
   shadow: false,
-  scoped: true,
+  scoped: false,
 })
 export class RadioGroup implements ComponentInterface {
   private inputId = `bal-rg-${radioGroupIds++}`
@@ -26,6 +26,11 @@ export class RadioGroup implements ComponentInterface {
    * If `true` the component can be used on dark background
    */
   @Prop() inverted: boolean = false
+
+  /**
+   * If `true` the select buttons are listed verticaly
+   */
+  @Prop() vertical: boolean = false
 
   /**
    * If `true`, the user cannot interact with the radios.
@@ -106,7 +111,15 @@ export class RadioGroup implements ComponentInterface {
   render() {
     const label = findItemLabel(this.el)
     return (
-      <Host role="radiogroup" aria-labelledby={label?.id} onClick={this.onClick} class={`bal-${this.interface}`}>
+      <Host
+        class={{
+          [`bal-${this.interface}`]: true,
+          'is-vertical': this.vertical,
+        }}
+        role="radiogroup"
+        aria-labelledby={label?.id}
+        onClick={this.onClick}
+      >
         <slot></slot>
       </Host>
     )

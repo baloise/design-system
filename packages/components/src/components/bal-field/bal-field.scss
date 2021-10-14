@@ -36,8 +36,16 @@ bal-field {
     padding-bottom: 32px;
     min-height: 48px;
 
+    // & .bal-select-icon {
+    //   transition: all 0.3s ease-out;
+
+    //   svg {
+    //     transition: all 0.3s ease-out;
+    //   }
+    // }
+
     & > bal-icon,
-    & bal-icon.bal-select-icon,
+    & .bal-select-icon,
     & bal-icon.datepicker-trigger-icon {
       transition: all 0.3s ease-out;
 
@@ -69,6 +77,7 @@ bal-field {
         left: 0;
       }
 
+      &.bal-select-icon,
       &.datepicker-trigger-icon,
       &.is-right {
         right: 0;

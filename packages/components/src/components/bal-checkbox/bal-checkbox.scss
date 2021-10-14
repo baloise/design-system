@@ -79,24 +79,22 @@
       width: 22px;
       border: 2px solid $primary;
       border-radius: $radius;
-      transition: background 0.25s ease-in-out;
+      transition: background 0.3s ease-in-out;
     }
 
     label::after {
       content: '';
-      left: 9px;
-      top: 0;
+      left: 12px;
+      top: 10px;
       height: 0;
+      width: 0;
+      height: 10px;
       width: 6px;
       border-bottom: 0px solid transparent;
       border-right: 0px solid transparent;
       border-top: 0;
       border-left: 0;
-      -moz-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      -o-transform: rotate(45deg);
-      -webkit-transform: rotate(45deg);
-      transform: rotate(45deg);
+      transform: rotate(45deg) scale(0);
       transition: all 0.3s ease-in-out;
     }
 
@@ -106,10 +104,11 @@
 
     input[type='checkbox']:checked + label::after {
       content: '';
-      top: 5px;
-      height: 10px;
       border-color: $primary-invert;
+      transform: rotate(45deg) scale(1);
       border-width: 2px;
+      left: 9px;
+      top: 5px;
     }
 
     input[type='checkbox']:disabled + label {
