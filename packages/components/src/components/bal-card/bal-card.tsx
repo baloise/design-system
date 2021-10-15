@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 import { isEmpty } from 'lodash'
-import { ColorTypes } from '../../types/color.types'
+import { ColorTypesAll } from '../../types/color.types'
 import { PaddingCardType, SpacingCardType } from '../../types/padding.types'
 
 @Component({
@@ -52,7 +52,7 @@ export class BalCard {
   /**
    * Defines the color of the card.
    */
-  @Prop() color: ColorTypes | '' = ''
+  @Prop() color: ColorTypesAll | '' = ''
 
   /**
    * If `true` the card has a limited width on desktop.
@@ -77,9 +77,9 @@ export class BalCard {
     return isEmpty(this.spacing) ? 'has-medium-padding' : `has-${this.spacing}-padding`
   }
 
-  get colorTypeClass(): string {
-    return isEmpty(this.color) ? '' : `is-${this.color}`
-  }
+  // get colorTypeClass(): string {
+  //   return isEmpty(this.color) ? '' : `is-${this.color}`
+  // }
 
   render() {
     if (this.padded) {
@@ -90,7 +90,8 @@ export class BalCard {
       <Host
         class={[
           'bal-card',
-          this.colorTypeClass,
+          `has-background-${this.color}`,
+          // this.colorTypeClass,
           this.spacingTypeClass,
           this.teaser ? 'is-teaser' : '',
           this.square ? 'is-square' : '',

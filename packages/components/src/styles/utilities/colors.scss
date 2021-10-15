@@ -3,8 +3,6 @@ $white: #ffffff;
 
 $blue: #000d6e;
 $green: #1b5951;
-$red: #99162d;
-$rust: #b24a00;
 $orange: #fa9319;
 $yellow: #fae052;
 $azul: #a7d1fa;
@@ -15,6 +13,9 @@ $pink: #d9304c;
 $pink-light: #ffaca5;
 $orange: #fa9319;
 $yellow: #fae052;
+
+$rust: #b24a00;
+$red: #99162d;
 
 $primary-0: bulmaLighten(#b3b6cd, 20%);
 $primary-1: bulmaLighten(#b3b6cd, 10%);
@@ -40,6 +41,7 @@ $gray-7: #495057;
 $gray-8: #343a40;
 $gray-9: #212529;
 $gray: $gray-6;
+$gray-light: $gray-3;
 $black-bis: $gray-9;
 $black-ter: $gray-9;
 $white-ter: $gray-1;
@@ -117,6 +119,7 @@ $shades: (
   'gray-8': $gray-8,
   'gray-9': $gray-9,
   'gray': $gray,
+  'gray-light': $gray-light,
   'success-0': $success-0,
   'success-1': $success-1,
   'success-2': $success-2,

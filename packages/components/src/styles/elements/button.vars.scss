@@ -9,6 +9,7 @@ $button-hover-border-color: $primary;
 
 $button-focus-box-shadow-size: 0 0 0 2px;
 $button-focus-box-shadow-color: bulmaRgba($primary, 0.25);
+$button-focus-box-shadow-color-invert: bulmaRgba($primary-invert, 0.5);
 
 $button-active-color: $primary-9;
 $button-active-border-color: $primary-9;

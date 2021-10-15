@@ -13,7 +13,7 @@ export class Button implements ComponentInterface {
   /**
    * The color to use from your application's color palette.
    */
-  @Prop() color: BalButtonColor = 'primary'
+  @Prop() color: BalButtonColor | '' = 'primary'
 
   /**
    * The type of button.

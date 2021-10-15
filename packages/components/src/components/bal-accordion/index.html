@@ -12,22 +12,34 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-accordion class="box" open-label="Details einblenden" close-label="Details ausblenden" data-test-id="accordion">
+        <bal-accordion class="box" open-label="Show Details" close-label="Hide Details" data-test-id="accordion">
           <p class="p-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </bal-accordion>
+      </section>
+
+      <h2 class="title is-size-2">Light</h2>
+      <section>
+        <bal-accordion interface="light" open-label="Show Details" close-label="Hide Details">
+          <p class="py-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </bal-accordion>
+        <div class="mt-2 p-2 has-background-primary">
+          <bal-accordion interface="light" inverted open-label="Show Details" close-label="Hide Details">
+            <p class="py-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </bal-accordion>
+        </div>
       </section>
 
       <h2 class="title is-size-2">Colors</h2>
       <p>The accordion has 2 colors of themes `is-info` and `is-primary`.</p>
       <section>
-        <bal-accordion class="box" color="info" open-label="Details einblenden" close-label="Details ausblenden">
+        <bal-accordion class="box" color="info" open-label="Show Details" close-label="Hide Details">
           <p class="p-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </bal-accordion>
       </section>
 
       <h2 class="title is-size-2">Open accordion</h2>
       <section>
-        <bal-accordion class="box" collapsed="false" open-label="Details einblenden" close-label="Details ausblenden">
+        <bal-accordion class="box" collapsed="false" open-label="Show Details" close-label="Hide Details">
           <p class="p-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </bal-accordion>
       </section>

@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
 import { BalButtonColor } from "./components/bal-button/bal.button.type";
 import { PaddingCardType, SpacingCardType } from "./types/padding.types";
+import { ColorTypes, ColorTypesAll, ColorTypesExtended } from "./types/color.types";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
@@ -17,25 +17,21 @@ import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
         /**
-          * If `true` the accordion is used on the bottom of a card
-         */
-        "card": boolean;
-        /**
           * Close the accordion
          */
         "close": () => Promise<void>;
-        /**
-          * Bal-Icon of the close trigger button
-         */
-        "closeIcon": string;
         /**
           * Label of the close trigger button
          */
         "closeLabel": string;
         /**
-          * Type defines the theme of the accordion toggle
+          * Label of the open trigger button
          */
-        "color": ColorTypesBasic;
+        "interface": '' | 'light';
+        /**
+          * If `true` the component is ready for a dark background
+         */
+        "inverted": boolean;
         /**
           * Controls if the accordion is collapsed or not
          */
@@ -44,10 +40,6 @@ export namespace Components {
           * Open the accordion
          */
         "open": () => Promise<void>;
-        /**
-          * Bal-Icon of the open trigger button
-         */
-        "openIcon": string;
         /**
           * Label of the open trigger button
          */
@@ -71,7 +63,7 @@ export namespace Components {
         /**
           * The color to use from your application's color palette.
          */
-        "color": BalButtonColor;
+        "color": BalButtonColor | '';
         /**
           * If `true`, the user cannot interact with the button.
          */
@@ -145,7 +137,7 @@ export namespace Components {
         /**
           * Defines the color of the card.
          */
-        "color": ColorTypes | '';
+        "color": ColorTypesAll | '';
         /**
           * If `true` the card loses its shadow.
          */
@@ -1911,21 +1903,17 @@ declare global {
 declare namespace LocalJSX {
     interface BalAccordion {
         /**
-          * If `true` the accordion is used on the bottom of a card
-         */
-        "card"?: boolean;
-        /**
-          * Bal-Icon of the close trigger button
-         */
-        "closeIcon"?: string;
-        /**
           * Label of the close trigger button
          */
         "closeLabel"?: string;
         /**
-          * Type defines the theme of the accordion toggle
+          * Label of the open trigger button
          */
-        "color"?: ColorTypesBasic;
+        "interface"?: '' | 'light';
+        /**
+          * If `true` the component is ready for a dark background
+         */
+        "inverted"?: boolean;
         /**
           * Controls if the accordion is collapsed or not
          */
@@ -1934,10 +1922,6 @@ declare namespace LocalJSX {
           * Emmited when the accordion has changed
          */
         "onBalCollapse"?: (event: CustomEvent<boolean>) => void;
-        /**
-          * Bal-Icon of the open trigger button
-         */
-        "openIcon"?: string;
         /**
           * Label of the open trigger button
          */
@@ -1957,7 +1941,7 @@ declare namespace LocalJSX {
         /**
           * The color to use from your application's color palette.
          */
-        "color"?: BalButtonColor;
+        "color"?: BalButtonColor | '';
         /**
           * If `true`, the user cannot interact with the button.
          */
@@ -2047,7 +2031,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the card.
          */
-        "color"?: ColorTypes | '';
+        "color"?: ColorTypesAll | '';
         /**
           * If `true` the card loses its shadow.
          */

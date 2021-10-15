@@ -20,6 +20,7 @@
 
 ### Used by
 
+ - [bal-accordion](../bal-accordion)
  - [bal-data-value](../bal-data-value)
  - [bal-datepicker](../bal-datepicker)
  - [bal-field-control](../bal-field-control)
@@ -33,6 +34,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  bal-accordion --> bal-icon
   bal-data-value --> bal-icon
   bal-datepicker --> bal-icon
   bal-field-control --> bal-icon

@@ -39,6 +39,16 @@ bal-button > .button {
     opacity: 0.48;
   }
 
+  &:focus,
+  &:focus:not(:active) {
+    box-shadow: none;
+  }
+
+  &:focus-visible,
+  &:focus-visible:not(:active) {
+    box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color;
+  }
+
   @each $name, $pair in $button-colors {
     $color: nth($pair, 1);
     $color-invert: nth($pair, 2);
@@ -54,7 +64,11 @@ bal-button > .button {
         background: $gray-3;
       }
 
-      &:focus,
+      &:focus {
+        box-shadow: none;
+      }
+
+      &:focus-visible,
       &.is-focused {
         &:not(:active):not(:hover) {
           background: $gray-2;
@@ -69,6 +83,13 @@ bal-button > .button {
 
     &.is-#{$name} {
       &:not(.is-inverted) {
+        &:focus {
+          box-shadow: none;
+        }
+        &:focus-visible,
+        &.is-focused {
+          box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color;
+        }
         &:hover,
         &.is-hovered {
           background-color: $color-3;
@@ -84,10 +105,15 @@ bal-button > .button {
           color: $color;
           background-color: $color-0;
         }
-        &:focus,
+        &:focus {
+          box-shadow: none;
+        }
+        &:focus-visible,
         &.is-focused {
           color: $color;
           background-color: transparent;
+          box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color;
+
           &:hover,
           &.is-hovered {
             background-color: $color-0;
@@ -111,7 +137,11 @@ bal-button > .button {
           border-color: $gray-3;
         }
 
-        &:focus,
+        &:focus {
+          box-shadow: none;
+        }
+
+        &:focus-visible,
         &.is-focused {
           &:not(:active):not(:hover) {
             background: $gray-2;
@@ -221,7 +251,7 @@ bal-button > .button {
       color: $primary-6 !important;
     }
 
-    &:focus,
+    &:focus-visible,
     &.is-focused {
       &:not(:active):not(:hover) {
         color: $primary-7 !important;
@@ -248,7 +278,7 @@ bal-button > .button {
       color: $gray-2 !important;
     }
 
-    &:focus,
+    &:focus-visible,
     &.is-focused {
       &:not(:active) {
         color: $gray-3 !important;
