@@ -1,0 +1,77 @@
+.navbar-brand {
+  a.navbar-item {
+    text-decoration: none;
+
+    span {
+      font-size: $size-medium;
+    }
+
+    &:hover {
+      background: transparent;
+      color: $primary-invert;
+    }
+  }
+}
+
+a.navbar-item {
+  &:active {
+    color: $primary-invert;
+    background: $primary-9;
+  }
+}
+
+.navbar-item.has-dropdown {
+  a:after {
+    margin-top: -0.575em;
+  }
+
+  a:hover:after {
+    border-color: $primary;
+  }
+
+  a:active {
+    color: $primary-invert;
+    background: $primary-9;
+  }
+
+  a:active:after {
+    border-color: $primary-invert;
+  }
+}
+
+.navbar-dropdown {
+  a.navbar-item {
+    border-radius: 0 !important;
+  }
+}
+
+@include desktop() {
+  .navbar-brand {
+    .navbar-item {
+      span {
+        font-size: $size-large;
+      }
+    }
+  }
+
+  .navbar-item.has-dropdown {
+    &:hover .navbar-link {
+      color: $primary;
+      &::after {
+        border-color: $primary;
+      }
+    }
+
+    a:not(.navbar-link) {
+      color: $primary;
+      &::after {
+        border-color: $primary;
+      }
+
+      &:active {
+        color: $primary;
+        background: $gray-3;
+      }
+    }
+  }
+}

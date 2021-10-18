@@ -69,17 +69,19 @@ export class Toast {
     if (this.color === '') {
       return ''
     }
-    return `is-${this.color}`
+    return `has-background-${this.color}`
   }
 
   render() {
     return (
       <Host id={this.toastId}>
         <div role="alert" onClick={() => this.close()} class={`toast ${this.animationClass} ${this.colorType}`}>
-          <bal-text class="toast-message" innerHTML={this.message}>
+          <span class="toast-message" innerHTML={this.message}>
             <slot />
-          </bal-text>
-          <bal-icon name="close" class="close" size="xsmall" inverted={this.color !== ''}></bal-icon>
+          </span>
+          <span class="toast-icon">
+            <bal-icon name="close" class="close" size="small" inverted={this.color !== ''}></bal-icon>
+          </span>
         </div>
       </Host>
     )

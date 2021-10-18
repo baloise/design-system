@@ -7,10 +7,13 @@
 @import 'card.vars';
 @import 'dropdown.vars';
 @import 'modal.vars';
+@import 'navbar.vars';
 
 @import 'node_modules/bulma/sass/components/dropdown.sass';
 @import 'node_modules/bulma/sass/components/modal';
+@import 'node_modules/bulma/sass/components/navbar';
 
 @import 'card';
 @import 'dropdown';
 @import 'modal';
+@import 'navbar';

@@ -1,0 +1,20 @@
+.file {
+  .file-cta {
+    border-style: $file-name-border-style;
+    border-width: $file-name-border-width;
+  }
+
+  &.is-disabled {
+    .file-cta {
+      cursor: not-allowed;
+      background-color: $input-disabled-background-color;
+      border-color: $input-disabled-border-color;
+      color: $input-disabled-color;
+    }
+  }
+}
+
+// $input-disabled-color: $gray;
+// $input-disabled-background-color: $white-bis;
+// $input-disabled-border-color: $border !important;
+// $input-disabled-placeholder-color: $gray-5;

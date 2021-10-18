@@ -1,6 +1,5 @@
 import { Component, Host, h, Prop, Method, Element, State, Event, EventEmitter } from '@stencil/core'
 import { ColorTypes } from '../../types/color.types'
-import { BalButtonColor } from '../bal-button/bal.button.type'
 
 @Component({
   tag: 'bal-snackbar',
@@ -19,7 +18,7 @@ export class Snackbar {
   /**
    * The theme type of the snackbar. Given by bulma our css framework.
    */
-  @Prop() color: ColorTypes = 'primary'
+  @Prop() color: ColorTypes | '' = ''
 
   /**
    * The duration of the snackbar
@@ -97,11 +96,10 @@ export class Snackbar {
   }
 
   get colorType() {
-    return `is-${this.color}`
-  }
-
-  get buttonType(): BalButtonColor {
-    return this.color
+    if (this.color === '') {
+      return ''
+    }
+    return `has-background-${this.color}`
   }
 
   render() {
@@ -111,19 +109,19 @@ export class Snackbar {
           <div class="snackbar-header">
             <span class="icon-text">
               <span class="icon" style={{ display: this.icon ? '' : 'none' }}>
-                <bal-icon name={this.icon} inverted={true}></bal-icon>
+                <bal-icon name={this.icon} size="medium" inverted={this.color !== ''}></bal-icon>
               </span>
-              <bal-heading level="h4" inverted={true} spaced={false}>
+              <bal-heading level="h4" inverted={this.color !== ''} spaced={false}>
                 {this.subject}
               </bal-heading>
             </span>
           </div>
-          <bal-text innerHTML={this.message}>
+          <span innerHTML={this.message} class={{ 'has-text-white': this.color !== '' }}>
             <slot />
-          </bal-text>
-          <bal-icon name="close" class="close" inverted={true} size="xsmall" onClick={() => this.close()}></bal-icon>
+          </span>
+          <bal-icon name="close" class="close" inverted={this.color !== ''} size="small" onClick={() => this.close()}></bal-icon>
           <div class="snackbar-footer" style={{ display: this.action === '' ? 'none' : 'inline-block' }}>
-            <bal-button color={this.buttonType} inverted={true} outlined onClick={() => this.onActionHandler()}>
+            <bal-button color={this.color} inverted={this.color !== ''} outlined onClick={() => this.onActionHandler()}>
               {this.action}
             </bal-button>
           </div>

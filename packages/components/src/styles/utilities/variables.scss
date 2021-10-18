@@ -36,13 +36,28 @@ $hint: $primary-3;
 $focus-outline: $primary-2;
 
 $hover-color: $text;
-$hover-background: $gray-1;
+$hover-background: $gray-0;
+
+$hover-invert-color: $text-inverted;
+$hover-invert-background: $primary-8;
 
 $focus-color: $text;
-$focus-background: aqua;
+$focus-background: $gray-1;
+
+$focus-invert-color: $text-inverted;
+$focus-invert-background: lime;
 
 $active-color: $primary-9;
-$active-background: $primary-1;
+$active-background: $gray-2;
+
+$active-invert-color: $text-inverted;
+$active-invert-background: $primary-8;
+
+$select-color: $primary-9;
+$select-background: $primary-1;
+
+$select-invert-color: $text-inverted;
+$select-invert-background: $primary-9;
 
 $border: $gray-3;
 $form-background: $white;
@@ -132,6 +147,19 @@ $size-large: $size-3;
 $size-medium: $size-4;
 $size-normal: $size-5;
 $size-small: $size-6;
+
+$line-height-1: 48px;
+$line-height-2: 40px;
+$line-height-3: 32px;
+$line-height-4: 28px;
+$line-height-5: 24px;
+$line-height-6: 16px;
+$line-height-7: 16px;
+
+$line-height-large: $line-height-3;
+$line-height-medium: $line-height-4;
+$line-height-normal: $line-height-5;
+$line-height-small: $line-height-6;
 
 $title-color: $primary;
 $subtitle-color: $primary;

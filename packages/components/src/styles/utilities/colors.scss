@@ -19,15 +19,15 @@ $red: #99162d;
 
 $primary-0: bulmaLighten(#b3b6cd, 20%);
 $primary-1: bulmaLighten(#b3b6cd, 10%);
-$primary-2: #b3b6cd; //bulmaLighten($blue, 65%);
-$primary-3: #757bac; //bulmaLighten($blue, 55%);
-$primary-4: #5c64a2; //bulmaDarken($primary-3, 5%);
-$primary-5: bulmaLighten($blue, 18%);
-$primary-6: bulmaLighten($blue, 12%);
-$primary-7: bulmaLighten($blue, 6%);
-$primary-8: $blue;
-$primary-9: bulmaDarken($blue, 6%);
-$primary: $primary-8;
+$primary-2: #b3b6cd;
+$primary-3: #757bac;
+$primary-4: #5c64a2;
+$primary-5: bulmaLighten($blue, 8%);
+$primary-6: bulmaLighten($blue, 4%);
+$primary-7: $blue;
+$primary-8: bulmaDarken($blue, 4%);
+$primary-9: bulmaDarken($blue, 8%);
+$primary: $primary-7;
 $primary-invert: $white;
 
 $gray-0: #f8f9fa;
@@ -57,7 +57,7 @@ $success-6: bulmaLighten($green, 20%);
 $success-7: bulmaLighten($green, 10%);
 $success-8: $green;
 $success-9: bulmaDarken($green, 10%);
-$success: $success-8;
+$success: $success-7;
 $success-invert: $white;
 
 $warning-0: bulmaLighten($rust, 62%);
@@ -70,7 +70,7 @@ $warning-6: bulmaLighten($rust, 25%);
 $warning-7: bulmaLighten($rust, 10%);
 $warning-8: $rust;
 $warning-9: bulmaDarken($rust, 10%);
-$warning: $warning-8;
+$warning: $warning-7;
 $warning-invert: $white;
 
 $danger-0: bulmaLighten($red, 62%);
@@ -83,7 +83,7 @@ $danger-6: bulmaLighten($red, 25%);
 $danger-7: bulmaLighten($red, 10%);
 $danger-8: $red;
 $danger-9: bulmaDarken($red, 10%);
-$danger: $danger-8;
+$danger: $danger-7;
 $danger-invert: $white;
 
 $shades: (

@@ -31,37 +31,11 @@
         </bal-card>
       </section>
 
-      <h2 class="title is-size-2">With borders</h2>
-      <section>
-        <bal-card>
-          <bal-card-content>
-            <bal-list border>
-              <bal-list-item clickable>
-                <bal-list-item-content>
-                  <bal-list-item-title>Single-line item</bal-list-item-title>
-                </bal-list-item-content>
-              </bal-list-item>
-              <bal-list-item clickable selected>
-                <bal-list-item-content>
-                  <bal-list-item-title>Selected item</bal-list-item-title>
-                </bal-list-item-content>
-              </bal-list-item>
-              <bal-list-item disabled>
-                <bal-list-item-content>
-                  <bal-list-item-title>Two-line item</bal-list-item-title>
-                  <bal-list-item-subtitle>Disabled item</bal-list-item-subtitle>
-                </bal-list-item-content>
-              </bal-list-item>
-            </bal-list>
-          </bal-card-content>
-        </bal-card>
-      </section>
-
       <h2 class="title is-size-2">Inverted</h2>
       <section>
-        <bal-card inverted color="info">
+        <bal-card inverted color="primary">
           <bal-card-content>
-            <bal-list inverted border>
+            <bal-list inverted>
               <bal-list-item>
                 <bal-list-item-content>
                   <bal-list-item-title>Two-line item</bal-list-item-title>
@@ -86,31 +60,42 @@
             <bal-list>
               <bal-list-item>
                 <bal-list-item-icon>
-                  <bal-icon name="account"></bal-icon>
+                  <bal-icon name="account" size="medium"></bal-icon>
                 </bal-list-item-icon>
                 <bal-list-item-content>
                   <bal-list-item-title>Tony Stark</bal-list-item-title>
                   <bal-list-item-subtitle>Stark Industries</bal-list-item-subtitle>
                 </bal-list-item-content>
               </bal-list-item>
-              <bal-list-item>
+              <bal-list-item selected>
                 <bal-list-item-icon>
-                  <bal-icon name="check"></bal-icon>
+                  <bal-icon name="check" size="medium" color="success"></bal-icon>
                 </bal-list-item-icon>
                 <bal-list-item-content>
-                  <bal-list-item-title class="has-text-black">Avenger</bal-list-item-title>
+                  <bal-list-item-title class="has-text-success">Selected Avenger</bal-list-item-title>
                 </bal-list-item-content>
               </bal-list-item>
               <bal-list-item>
                 <bal-list-item-icon>
-                  <bal-icon name="document"></bal-icon>
+                  <bal-icon name="document" size="medium"></bal-icon>
+                </bal-list-item-icon>
+                <bal-list-item-content>
+                  <bal-list-item-title>Document.pdf</bal-list-item-title>
+                </bal-list-item-content>
+                <bal-list-item-icon>
+                  <bal-icon name="nav-go-right" size="small"></bal-icon>
+                </bal-list-item-icon>
+              </bal-list-item>
+              <bal-list-item>
+                <bal-list-item-icon>
+                  <bal-icon name="document" size="medium"></bal-icon>
                 </bal-list-item-icon>
                 <bal-list-item-content>
                   <bal-list-item-title>Document.pdf</bal-list-item-title>
                   <bal-list-item-subtitle>20.03.1998</bal-list-item-subtitle>
                 </bal-list-item-content>
-                <bal-list-item-icon right>
-                  <bal-icon name="download"></bal-icon>
+                <bal-list-item-icon>
+                  <bal-icon name="download" size="medium"></bal-icon>
                 </bal-list-item-icon>
               </bal-list-item>
             </bal-list>
@@ -127,16 +112,38 @@
                 <bal-list-item-content>
                   <bal-list-item-title>Link A</bal-list-item-title>
                 </bal-list-item-content>
-                <bal-list-item-icon right>
-                  <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+                <bal-list-item-icon dense>
+                  <bal-icon name="nav-go-right" size="small"></bal-icon>
                 </bal-list-item-icon>
               </bal-list-item>
               <bal-list-item disabled>
                 <bal-list-item-content>
                   <bal-list-item-title>Disabled Link B</bal-list-item-title>
                 </bal-list-item-content>
-                <bal-list-item-icon right>
-                  <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+                <bal-list-item-icon dense>
+                  <bal-icon name="nav-go-right" size="small"></bal-icon>
+                </bal-list-item-icon>
+              </bal-list-item>
+            </bal-list>
+          </bal-card-content>
+        </bal-card>
+        <bal-card color="primary" class="mt-2">
+          <bal-card-content>
+            <bal-list inverted>
+              <bal-list-item href="https://google.com" target="_blank">
+                <bal-list-item-content>
+                  <bal-list-item-title>Link A</bal-list-item-title>
+                </bal-list-item-content>
+                <bal-list-item-icon dense>
+                  <bal-icon name="nav-go-right" inverted size="small"></bal-icon>
+                </bal-list-item-icon>
+              </bal-list-item>
+              <bal-list-item disabled>
+                <bal-list-item-content>
+                  <bal-list-item-title>Disabled Link B</bal-list-item-title>
+                </bal-list-item-content>
+                <bal-list-item-icon dense>
+                  <bal-icon name="nav-go-right" inverted size="small"></bal-icon>
                 </bal-list-item-icon>
               </bal-list-item>
             </bal-list>

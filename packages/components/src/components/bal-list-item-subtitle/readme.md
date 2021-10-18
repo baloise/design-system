@@ -13,14 +13,9 @@
 
  - [bal-file-upload](../bal-file-upload)
 
-### Depends on
-
-- [bal-text](../bal-text)
-
 ### Graph
 ```mermaid
 graph TD;
-  bal-list-item-subtitle --> bal-text
   bal-file-upload --> bal-list-item-subtitle
   style bal-list-item-subtitle fill:#f9f,stroke:#333,stroke-width:4px
 ```

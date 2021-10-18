@@ -59,8 +59,6 @@ graph TD;
   bal-file-upload --> bal-list-item-content
   bal-file-upload --> bal-list-item-title
   bal-file-upload --> bal-list-item-subtitle
-  bal-list-item-title --> bal-text
-  bal-list-item-subtitle --> bal-text
   style bal-file-upload fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

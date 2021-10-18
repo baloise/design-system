@@ -32,12 +32,12 @@ bal-modal-header {
     &:focus,
     &:active,
     &:hover {
-      background: $blue-light;
+      background: $gray-2;
     }
 
     &::after,
     &::before {
-      background: $blue;
+      background: $primary;
     }
   }
 }

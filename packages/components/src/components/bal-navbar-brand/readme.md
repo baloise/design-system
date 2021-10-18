@@ -9,9 +9,9 @@
 
 ## Properties
 
-| Property | Attribute | Description               | Type     | Default |
-| -------- | --------- | ------------------------- | -------- | ------- |
-| `href`   | `href`    | Link of the logo / title. | `string` | `'/'`   |
+| Property | Attribute | Description               | Type                  | Default     |
+| -------- | --------- | ------------------------- | --------------------- | ----------- |
+| `href`   | `href`    | Link of the logo / title. | `string \| undefined` | `undefined` |
 
 
 ## Events

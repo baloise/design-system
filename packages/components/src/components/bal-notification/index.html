@@ -18,13 +18,11 @@
         >
       </section>
 
-      <h2 class="title is-size-2">Types</h2>
+      <h2 class="title is-size-2">Colors</h2>
       <section>
-        <bal-notification>Default</bal-notification>
+        <bal-notification>Default / Gray</bal-notification>
         <br />
         <bal-notification color="primary">Primary</bal-notification>
-        <br />
-        <bal-notification color="info">Info</bal-notification>
         <br />
         <bal-notification color="success">Success</bal-notification>
         <br />
@@ -35,18 +33,19 @@
 
       <h2 class="title is-size-2">Box</h2>
       <section>
-        <bal-notification color="info" class="has-text-centered" style="max-width: 400px">
+        <bal-notification color="primary" class="has-text-centered" style="max-width: 400px">
           <h3 class="title is-size-3 has-text-white" style="margin-top: 0">Title</h3>
+          <p class="has-text-white pb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, voluptate! Excepturi quos quasi quo, enim officia voluptas amet.</p>
           <bal-button color="info" outlined inverted>Action</bal-button>
         </bal-notification>
       </section>
 
       <h2 class="title is-size-2">Error</h2>
       <section>
-        <bal-notification>
+        <bal-notification color="danger">
           <span class="icon-text">
             <span class="icon">
-              <bal-icon color="danger" name="alert-circle"></bal-icon>
+              <bal-icon inverted size="medium" name="alert-circle"></bal-icon>
             </span>
             <span style="margin-left: 10px">
               <strong style="margin-right: 10px">Error!</strong>

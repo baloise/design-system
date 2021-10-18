@@ -5,9 +5,9 @@
 
 ## Properties
 
-| Property | Attribute | Description                      | Type                                                    | Default |
-| -------- | --------- | -------------------------------- | ------------------------------------------------------- | ------- |
-| `color`  | `color`   | Defines the color of the element | `"" \| "danger" \| "primary" \| "success" \| "warning"` | `''`    |
+| Property | Attribute | Description                      | Type                                                              | Default |
+| -------- | --------- | -------------------------------- | ----------------------------------------------------------------- | ------- |
+| `color`  | `color`   | Defines the color of the element | `"" \| "danger" \| "gray" \| "primary" \| "success" \| "warning"` | `''`    |
 
 
 ----------------------------------------------

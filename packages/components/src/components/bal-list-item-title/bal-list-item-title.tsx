@@ -9,9 +9,9 @@ export class ListItemTitle {
   render() {
     return (
       <Host class="bal-list-item-title">
-        <bal-text>
+        <span>
           <slot></slot>
-        </bal-text>
+        </span>
       </Host>
     )
   }

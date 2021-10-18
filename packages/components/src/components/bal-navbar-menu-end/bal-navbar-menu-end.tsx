@@ -9,11 +9,7 @@ export class NavbarMenuEnd {
   render() {
     return (
       <Host class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <slot></slot>
-          </div>
-        </div>
+        <slot></slot>
       </Host>
     )
   }

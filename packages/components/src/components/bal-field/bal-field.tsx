@@ -12,6 +12,11 @@ export class Field {
   /**
    * If `true` the component takes the whole width
    */
+  @Prop() pure: boolean = false
+
+  /**
+   * If `true` the component takes the whole width
+   */
   @Prop() expanded: boolean = false
 
   /**
@@ -119,6 +124,7 @@ export class Field {
           'is-invalid': this.invalid,
           'is-disabled': this.disabled,
           'is-inverted': this.inverted,
+          'is-pure': this.pure,
         }}
       >
         <div

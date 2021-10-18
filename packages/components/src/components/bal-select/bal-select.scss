@@ -11,8 +11,8 @@
   }
 
   .bal-select-icon {
-    min-width: 48px;
-    height: 48px;
+    min-width: 44px;
+    height: 44px;
   }
 
   &.is-fullwidth {
@@ -30,6 +30,7 @@
   }
 
   .bal-select__slot {
+    background: $white;
     position: relative;
     align-items: center;
     display: flex;
@@ -66,6 +67,8 @@
       flex: 1;
       background-color: transparent !important;
       padding: 0;
+      min-height: 44px;
+      height: 44px;
     }
 
     .value {

@@ -7,59 +7,28 @@
 .notification {
   font-family: $family-primary;
   font-size: $size-normal;
-  background: $white-bis;
-  border: 1px solid $blue-light-line;
+  background: $gray-2;
   color: $text;
-  border-radius: $radius-large;
+  border-radius: $radius;
   padding: 16px;
 
   @include tablet() {
     padding: 32px;
   }
 
-  &.is-primary {
-    background: $blue-light;
-    border: 1px solid $blue-light-line;
-    color: $blue;
-
-    a:not(.button):not(.dropdown-item) {
-      color: $cyan;
-    }
+  &.has-background-primary {
+    color: $primary-invert;
   }
 
-  &.is-info {
-    background: $blue;
-    border: 1px solid $blue;
-    color: $white;
+  &.has-background-success {
+    color: $success-invert;
   }
 
-  &.is-link {
-    background: $blue;
-    color: $white;
-    border: none;
+  &.has-background-warning {
+    color: $warning-invert;
   }
 
-  &.is-warning {
-    background: $yellow;
-    color: $white;
-    border: none;
+  &.has-background-danger {
+    color: $danger-invert;
   }
-
-  &.is-danger {
-    background: $red;
-    color: $white;
-    border: none;
-  }
-
-  &.is-success {
-    background: $green;
-    color: $white;
-    border: none;
-  }
-}
-
-@include desktop() {
-  // .notification {
-  //   padding: 40px;
-  // }
 }

@@ -1,49 +1,54 @@
-@import './bal-file-upload.vars.scss';
-@import 'node_modules/bulma/sass/form/shared';
-@import 'node_modules/bulma/sass/form/file';
+// @import './bal-file-upload.vars.scss';
+// @import 'node_modules/bulma/sass/form/shared';
+// @import 'node_modules/bulma/sass/form/file';
 
 :host {
   position: static;
   display: block;
-}
 
-span.file-cta,
-label.file-label {
-  flex: 1;
-}
+  .file {
+    width: 100%;
 
-span.file-cta {
-  height: 90px;
-  justify-content: center;
-  align-items: center;
-  border-style: dashed;
-}
-
-.file-label.is-hovered .file-cta,
-.file-label:hover .file-cta {
-  background: $blue-light;
-  color: $blue;
-}
-
-bal-list {
-  margin-top: 16px;
-}
-
-.file-cta span.file-label {
-  margin-left: 16px;
-}
-
-.file-remove {
-  cursor: pointer;
-}
-
-label.file-label.is-disabled {
-  cursor: not-allowed;
-
-  .file-cta,
-  &.is-hovered .file-cta,
-  &:hover .file-cta {
-    background: $blue-light;
-    color: $black;
+    label.file-label {
+      flex: 1;
+    }
   }
 }
+
+// span.file-cta {
+//   flex-direction: column;
+// }
+
+// span.file-cta,
+// label.file-label {
+//   flex: 1;
+// }
+
+// span.file-icon {
+//   margin: 0;
+// }
+
+// span.file-cta {
+//   justify-content: center;
+//   align-items: center;
+//   border-style: dashed;
+//   border-width: 2px;
+// }
+
+// .file-label.is-hovered .file-cta,
+// .file-label:hover .file-cta {
+//   background: $hover-background;
+//   color: $primary;
+// }
+
+// bal-list {
+//   margin-top: 16px;
+// }
+
+// .file-cta span.file-label {
+//   margin-left: 16px;
+// }
+
+// .file-remove {
+//   cursor: pointer;
+// }

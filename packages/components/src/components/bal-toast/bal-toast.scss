@@ -8,55 +8,63 @@
   flex-grow: 0 !important;
 
   .toast {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     align-self: center;
-    display: inline-flex;
     animation-duration: 150ms;
     margin: 0 0 8px 0;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
     border-radius: $radius-large;
-    padding: 24px 40px 24px 40px;
+    padding: 16px (40px - 24px + 6px) 16px 40px;
     pointer-events: auto;
     max-width: 600px;
     flex-grow: 1;
     font-size: $size-normal;
     font-family: $family-primary;
     position: relative;
-    background: $white;
+    background: $gray-2;
+    color: $primary;
 
-    &.is-primary {
-      background: $primary;
+    &.has-background-primary {
       color: $primary-invert;
     }
 
-    &.is-info {
-      background: $info;
-      color: $info-invert;
+    &.has-background-success {
+      color: $success-invert;
     }
 
-    &.is-success {
-      background: $success;
-      color: $white;
+    &.has-background-warning {
+      color: $warning-invert;
     }
 
-    &.is-warning {
-      background: $warning;
-      color: $white;
+    &.has-background-danger {
+      color: $danger-invert;
     }
 
-    &.is-danger {
-      background: $danger;
-      color: $white;
-    }
+    .alert {
+      & > span {
+        flex: 1;
+      }
 
-    .toast-message {
-      margin-right: 48px;
+      & .toast-icon {
+        max-width: 48px;
+        min-width: 48px;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+      }
     }
 
     .close {
-      position: absolute;
-      top: 50%;
-      right: 40px;
-      margin-top: -12px;
+      width: 48px;
+      min-height: 48px;
     }
+
+    // .toast-message {
+    //   display: flex;
+    //   justify-content: flex-start;
+    //   align-items: center;
+    // }
   }
 }

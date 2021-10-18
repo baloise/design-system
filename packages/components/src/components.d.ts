@@ -461,6 +461,10 @@ export namespace Components {
           * If `true` a loading spinner is visible at the end of the input
          */
         "loading": boolean;
+        /**
+          * If `true` the component takes the whole width
+         */
+        "pure": boolean;
         "reset": () => Promise<void>;
         /**
           * If `true` the component gets a invalid style. Only use this if there is no live validation.
@@ -524,10 +528,6 @@ export namespace Components {
         "multiple": boolean;
     }
     interface BalFooter {
-        /**
-          * If `true` the footer shows a track line at the bottom.
-         */
-        "hasTrackLine": boolean;
     }
     interface BalHeading {
         /**
@@ -746,14 +746,6 @@ export namespace Components {
     }
     interface BalList {
         /**
-          * If `true` each list item has a bottom border
-         */
-        "border": boolean;
-        /**
-          * If `true` the list item can be hovered
-         */
-        "disabled": boolean;
-        /**
           * If `true` the list can be used on a dark backround
          */
         "inverted": boolean;
@@ -783,10 +775,7 @@ export namespace Components {
     interface BalListItemContent {
     }
     interface BalListItemIcon {
-        /**
-          * If `true` the icon is on the right side of the list item. Default is the left side.
-         */
-        "right": boolean;
+        "dense": boolean;
     }
     interface BalListItemSubtitle {
     }
@@ -863,10 +852,6 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
-          * It `true` the navbar has a white background
-         */
-        "light": boolean;
-        /**
           * It `true` the burger button is hidden
          */
         "noBurger": boolean;
@@ -875,7 +860,7 @@ export namespace Components {
         /**
           * Link of the logo / title.
          */
-        "href": string;
+        "href": string | undefined;
     }
     interface BalNavbarMenu {
         "toggle": (isMenuActive: boolean) => Promise<void>;
@@ -888,7 +873,7 @@ export namespace Components {
         /**
           * Defines the color of the element
          */
-        "color": '' | ColorTypes;
+        "color": '' | ColorTypesExtended;
     }
     interface BalPagination {
         /**
@@ -1151,7 +1136,7 @@ export namespace Components {
         /**
           * The theme type of the snackbar. Given by bulma our css framework.
          */
-        "color": ColorTypes;
+        "color": ColorTypes | '';
         /**
           * The duration of the snackbar
          */
@@ -2357,6 +2342,10 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * If `true` the component takes the whole width
+         */
+        "pure"?: boolean;
+        /**
           * If `true` the component gets a invalid style. Only use this if there is no live validation.
          */
         "touched"?: boolean;
@@ -2422,10 +2411,6 @@ declare namespace LocalJSX {
         "onBalRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
     }
     interface BalFooter {
-        /**
-          * If `true` the footer shows a track line at the bottom.
-         */
-        "hasTrackLine"?: boolean;
     }
     interface BalHeading {
         /**
@@ -2648,14 +2633,6 @@ declare namespace LocalJSX {
     }
     interface BalList {
         /**
-          * If `true` each list item has a bottom border
-         */
-        "border"?: boolean;
-        /**
-          * If `true` the list item can be hovered
-         */
-        "disabled"?: boolean;
-        /**
           * If `true` the list can be used on a dark backround
          */
         "inverted"?: boolean;
@@ -2689,10 +2666,7 @@ declare namespace LocalJSX {
     interface BalListItemContent {
     }
     interface BalListItemIcon {
-        /**
-          * If `true` the icon is on the right side of the list item. Default is the left side.
-         */
-        "right"?: boolean;
+        "dense"?: boolean;
     }
     interface BalListItemSubtitle {
     }
@@ -2761,10 +2735,6 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
-          * It `true` the navbar has a white background
-         */
-        "light"?: boolean;
-        /**
           * It `true` the burger button is hidden
          */
         "noBurger"?: boolean;
@@ -2773,7 +2743,7 @@ declare namespace LocalJSX {
         /**
           * Link of the logo / title.
          */
-        "href"?: string;
+        "href"?: string | undefined;
         /**
           * Emitted when the link element has clicked
          */
@@ -2789,7 +2759,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the element
          */
-        "color"?: '' | ColorTypes;
+        "color"?: '' | ColorTypesExtended;
     }
     interface BalPagination {
         /**
@@ -3063,7 +3033,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the snackbar. Given by bulma our css framework.
          */
-        "color"?: ColorTypes;
+        "color"?: ColorTypes | '';
         /**
           * The duration of the snackbar
          */

@@ -11,8 +11,11 @@
       display: flex;
       flex: 1;
       width: 100%;
-      min-height: 48px;
       align-items: center;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid $border;
+      min-height: 48px;
 
       .bal-list-item-icon,
       .bal-list-item-content {
@@ -21,13 +24,55 @@
       }
 
       .bal-list-item-icon {
-        justify-content: center;
         max-width: 48px;
+        min-height: 32px;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+
+        &.is-dense {
+          justify-content: right;
+        }
       }
 
       .bal-list-item-content {
         display: flex;
         flex-direction: column;
+      }
+
+      .bal-list-item-title,
+      .bal-list-item-link,
+      .bal-list-item-subtitle,
+      .bal-list-item-content {
+        font-weight: $weight-normal;
+        font-family: $family-primary;
+        font-size: $size-normal;
+        line-height: $size-normal + 4px;
+      }
+
+      .bal-list-item-title,
+      .bal-list-item-link,
+      .bal-list-item-subtitle {
+        position: static;
+        box-sizing: border-box;
+        max-width: 100%;
+        display: block;
+        white-space: pre-line;
+      }
+
+      .bal-list-item-title,
+      .bal-list-item-link {
+        color: $primary;
+        font-weight: $weight-bold;
+      }
+
+      .bal-list-item-link a {
+        color: $primary;
+        text-decoration: none;
+      }
+
+      .bal-list-item-subtitle {
+        color: $primary-4;
       }
 
       & > button,
@@ -38,77 +83,51 @@
         flex: 1;
         width: 100%;
         align-items: center;
-        min-height: 48px;
-
         flex-direction: row;
         padding: 0;
-        &:focus,
-        &:active,
-        &:hover {
-          color: $blue;
-        }
       }
 
       &.is-selected {
-        background: $blue-light-hover;
+        background: $select-background;
       }
 
-      &:hover {
+      &.is-disabled {
+        cursor: not-allowed;
+      }
+
+      &.is-clickable:not(.is-disabled) {
         cursor: pointer;
-        background: $gray-lightest;
+
+        &:hover {
+          background: $hover-background;
+        }
+
+        &:active {
+          background: $active-background;
+        }
       }
     }
 
     &.is-inverted {
-      .bal-list-item-title {
-        color: $white;
-      }
-
       .bal-list-item {
-        &:hover {
-          cursor: pointer;
-          background: $blue-dark;
+        .bal-list-item-title {
+          color: $primary-invert;
+        }
+
+        .bal-list-item-subtitle {
+          color: $primary-2;
+        }
+
+        &.is-clickable:not(.is-disabled) {
+          &:hover {
+            background: $hover-invert-background;
+          }
+
+          &:active {
+            background: $active-invert-background;
+          }
         }
       }
     }
-
-    &.has-border .bal-list-item {
-      border-bottom: 1px solid $blue-light-line;
-    }
-  }
-
-  .bal-list-item-title,
-  .bal-list-item-link,
-  .bal-list-item-subtitle,
-  .bal-list-item-content {
-    font-weight: $weight-normal;
-    font-family: $family-primary;
-    font-size: $size-normal;
-    line-height: $size-normal;
-  }
-
-  .bal-list-item-title,
-  .bal-list-item-link,
-  .bal-list-item-subtitle {
-    position: static;
-    box-sizing: border-box;
-    max-width: 100%;
-    display: block;
-    white-space: pre-line;
-  }
-
-  .bal-list-item-title,
-  .bal-list-item-link {
-    color: $blue;
-  }
-
-  .bal-list-item-link a {
-    color: $blue;
-    text-decoration: none;
-  }
-
-  .bal-list-item-subtitle {
-    color: $blue-light-text;
-    margin-top: 2px;
   }
 }

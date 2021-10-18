@@ -191,9 +191,24 @@ export class FileUpload {
 
   render() {
     return (
-      <Host class={['bal-file-upload', this.disabled ? 'is-disabled' : ''].join(' ')}>
-        <div class="file">
-          <label class={['file-label', this.isOver ? 'is-hovered' : '', this.disabled ? 'is-disabled' : ''].join(' ')}>
+      <Host
+        class={{
+          'bal-file-upload': true,
+          'is-disabled': this.disabled,
+        }}
+      >
+        <div
+          class={{
+            'is-disabled': this.disabled,
+            'file is-medium is-boxed has-name': true,
+          }}
+        >
+          <label
+            class={{
+              'file-label': true,
+              'is-hovered': this.isOver,
+            }}
+          >
             <input
               class="file-input"
               type="file"
@@ -206,13 +221,13 @@ export class FileUpload {
             />
             <span class="file-cta">
               <span class="file-icon">
-                <bal-icon name="upload" size="medium"></bal-icon>
+                <bal-icon name="upload" size="large" color={this.disabled ? 'gray' : 'primary'}></bal-icon>
               </span>
-              <span class="file-label">{this.label}</span>
+              <span class="file-label is-bold">{this.label}</span>
             </span>
           </label>
         </div>
-        <bal-list disabled border>
+        <bal-list class="mt-2">
           {this.files.map((file, index) => (
             <bal-list-item>
               <bal-list-item-icon>
@@ -222,8 +237,8 @@ export class FileUpload {
                 <bal-list-item-title>{file.name}</bal-list-item-title>
                 <bal-list-item-subtitle>{filesize(file.size)}</bal-list-item-subtitle>
               </bal-list-item-content>
-              <bal-list-item-icon right class="file-remove" onClick={() => this.removeFile(index)}>
-                <bal-icon name="trash" color="danger"></bal-icon>
+              <bal-list-item-icon class="file-remove" onClick={() => this.removeFile(index)}>
+                <bal-icon name="trash" color="primary" size="medium"></bal-icon>
               </bal-list-item-icon>
             </bal-list-item>
           ))}

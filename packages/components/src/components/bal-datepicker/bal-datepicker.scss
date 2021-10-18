@@ -20,6 +20,7 @@
 
   bal-dropdown-menu,
   .dropdown-content {
+    min-width: 352px;
     max-width: 352px;
   }
 
@@ -113,9 +114,9 @@ select {
 
 .select-chevron {
   position: absolute;
-  top: 6px;
+  top: 16px;
   height: 100%;
-  right: 14px;
+  right: 16px;
 }
 
 .datepicker-popup {

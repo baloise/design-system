@@ -13,7 +13,7 @@ export class NavbarBrand {
   /**
    * Link of the logo / title.
    */
-  @Prop() href = '/'
+  @Prop() href: string | undefined = undefined
 
   /**
    * Emitted when the link element has clicked

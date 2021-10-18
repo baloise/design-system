@@ -11,6 +11,7 @@
   <body class="bal-app">
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
+
       <section>
         <p id="bal-file-upload-messages"></p>
         <bal-file-upload id="bal-file-upload-example" accept="image/png,image/jpeg" max-files="3" max-file-size="1000000" max-bundle-size="1000000"></bal-file-upload>
@@ -33,6 +34,11 @@
           fileUpload.clear()
         })
       </script>
+
+      <h2 class="title is-size-2">Disabled</h2>
+      <section>
+        <bal-file-upload disabled accept="image/png,image/jpeg" max-files="3" max-file-size="1000000" max-bundle-size="1000000"></bal-file-upload>
+      </section>
     </div>
   </body>
 </html>

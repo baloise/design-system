@@ -20,7 +20,7 @@
       cursor: pointer;
 
       .inner {
-        background: $blue;
+        background: $primary;
         height: 5px;
         border-radius: 2px;
       }
@@ -30,7 +30,7 @@
       left: 0px;
 
       .inner {
-        background: $blue;
+        background: $primary;
       }
     }
 
@@ -38,7 +38,7 @@
       right: 0px;
 
       .inner {
-        background: $blue-line;
+        background: $gray-3;
       }
     }
   }
@@ -67,7 +67,7 @@
       height: 23px;
       width: 23px;
       border-radius: 50px;
-      background: $blue;
+      background: $primary;
       cursor: pointer;
       -webkit-appearance: none;
       margin-top: 1px;
@@ -77,7 +77,7 @@
       outline: none;
 
       &::-webkit-slider-thumb {
-        background: $blue;
+        background: $primary;
         border: 2px solid $white;
       }
     }
@@ -86,7 +86,7 @@
       outline: none;
 
       &::-webkit-slider-thumb {
-        background: $blue;
+        background: $primary;
         border: 2px solid $primary;
       }
     }
@@ -107,7 +107,7 @@
       height: 23px;
       width: 23px;
       border-radius: 50px;
-      background: $blue;
+      background: $primary;
       cursor: pointer;
     }
 
@@ -139,7 +139,7 @@
       height: 23px;
       width: 23px;
       border-radius: 50px;
-      background: $blue;
+      background: $primary;
       cursor: pointer;
       -webkit-appearance: none;
       margin-top: 3px;
@@ -171,22 +171,22 @@
     .step {
       width: 1px;
       border-radius: 4px;
-      background-color: $blue-line;
+      background-color: $gray-3;
     }
   }
 
   &.is-disabled {
     input[type='range'] {
       &::-ms-thumb {
-        background: $blue-line;
+        background: $input-disabled-color;
       }
 
       &::-webkit-slider-thumb {
-        background: $blue-line;
+        background: $input-disabled-color;
       }
 
       &::-moz-range-thumb {
-        background: $blue-line;
+        background: $input-disabled-color;
       }
     }
 
@@ -194,7 +194,7 @@
       .slider-bg-lower,
       .slider-bg-upper {
         .inner {
-          background: $blue-line;
+          background: $input-disabled-border-color;
         }
       }
     }

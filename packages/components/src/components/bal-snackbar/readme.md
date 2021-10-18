@@ -5,14 +5,14 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                       | Type                                              | Default     |
-| ---------- | ---------- | ----------------------------------------------------------------- | ------------------------------------------------- | ----------- |
-| `action`   | `action`   | Label text for the action button                                  | `string`                                          | `''`        |
-| `color`    | `color`    | The theme type of the snackbar. Given by bulma our css framework. | `"danger" \| "primary" \| "success" \| "warning"` | `'primary'` |
-| `duration` | `duration` | The duration of the snackbar                                      | `number`                                          | `0`         |
-| `icon`     | `icon`     | The icon of the snackbar header                                   | `string`                                          | `''`        |
-| `message`  | `message`  | The message of the snackbar                                       | `string`                                          | `''`        |
-| `subject`  | `subject`  | The subject of the snackbar header                                | `string`                                          | `''`        |
+| Property   | Attribute  | Description                                                       | Type                                                    | Default |
+| ---------- | ---------- | ----------------------------------------------------------------- | ------------------------------------------------------- | ------- |
+| `action`   | `action`   | Label text for the action button                                  | `string`                                                | `''`    |
+| `color`    | `color`    | The theme type of the snackbar. Given by bulma our css framework. | `"" \| "danger" \| "primary" \| "success" \| "warning"` | `''`    |
+| `duration` | `duration` | The duration of the snackbar                                      | `number`                                                | `0`     |
+| `icon`     | `icon`     | The icon of the snackbar header                                   | `string`                                                | `''`    |
+| `message`  | `message`  | The message of the snackbar                                       | `string`                                                | `''`    |
+| `subject`  | `subject`  | The subject of the snackbar header                                | `string`                                                | `''`    |
 
 
 ## Events
@@ -52,7 +52,6 @@ Type: `Promise<void>`
 
 - [bal-icon](../bal-icon)
 - [bal-heading](../bal-heading)
-- [bal-text](../bal-text)
 - [bal-button](../bal-button)
 
 ### Graph
@@ -60,7 +59,6 @@ Type: `Promise<void>`
 graph TD;
   bal-snackbar --> bal-icon
   bal-snackbar --> bal-heading
-  bal-snackbar --> bal-text
   bal-snackbar --> bal-button
   style bal-snackbar fill:#f9f,stroke:#333,stroke-width:4px
 ```

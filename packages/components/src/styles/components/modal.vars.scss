@@ -21,7 +21,7 @@ $modal-card-head-background-color: $scheme-main;
 
 $modal-card-title-size: $size-large;
 
-$modal-card-foot-border-top: 1px solid $blue-light-line;
-$modal-card-head-border-bottom: 1px solid $blue-light-line;
+$modal-card-foot-border-top: 1px solid $border;
+$modal-card-head-border-bottom: 1px solid $border;
 
-$modal-background-background-color: bulmaRgba(darken($blue-dark, 10), 0.86);
+$modal-background-background-color: bulmaRgba($primary-9, 0.86);

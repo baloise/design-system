@@ -12,8 +12,8 @@
     animation-duration: 150ms;
     margin: 8px 0 0 0;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
-    border-radius: $radius-large;
-    background: $white;
+    border-radius: $radius;
+    background: $gray-2;
     padding: 32px;
     pointer-events: auto;
     max-width: 320px;
@@ -22,6 +22,10 @@
     flex-direction: column !important;
     row-gap: 24px;
     position: relative;
+
+    & > span {
+      font-size: $size-normal;
+    }
 
     .snackbar-header {
       @include font-smoothing();
@@ -40,30 +44,30 @@
       }
     }
 
-    &.is-primary {
-      background: $primary;
-      color: $primary-invert;
-    }
+    // &.is-primary {
+    //   background: $primary;
+    //   color: $primary-invert;
+    // }
 
-    &.is-info {
-      background: $info;
-      color: $info-invert;
-    }
+    // &.is-info {
+    //   background: $info;
+    //   color: $info-invert;
+    // }
 
-    &.is-success {
-      background: $success;
-      color: $white;
-    }
+    // &.is-success {
+    //   background: $success;
+    //   color: $white;
+    // }
 
-    &.is-warning {
-      background: $warning;
-      color: $white;
-    }
+    // &.is-warning {
+    //   background: $warning;
+    //   color: $white;
+    // }
 
-    &.is-danger {
-      background: $danger;
-      color: $white;
-    }
+    // &.is-danger {
+    //   background: $danger;
+    //   color: $white;
+    // }
 
     bal-heading,
     bal-text {

@@ -17,25 +17,17 @@
 ### Used by
 
  - [bal-checkbox](../bal-checkbox)
- - [bal-list-item-subtitle](../bal-list-item-subtitle)
- - [bal-list-item-title](../bal-list-item-title)
  - [bal-pagination](../bal-pagination)
  - [bal-radio](../bal-radio)
- - [bal-snackbar](../bal-snackbar)
  - [bal-tag](../bal-tag)
- - [bal-toast](../bal-toast)
 
 ### Graph
 ```mermaid
 graph TD;
   bal-checkbox --> bal-text
-  bal-list-item-subtitle --> bal-text
-  bal-list-item-title --> bal-text
   bal-pagination --> bal-text
   bal-radio --> bal-text
-  bal-snackbar --> bal-text
   bal-tag --> bal-text
-  bal-toast --> bal-text
   style bal-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

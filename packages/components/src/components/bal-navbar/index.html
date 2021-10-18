@@ -15,52 +15,36 @@
         <bal-navbar>
           <bal-navbar-brand>
             <bal-icon name="logo" inverted size="large"></bal-icon>
-            <bal-text style="margin-left: 15px"><strong>App</strong> Title</bal-text>
+            <span class="ml-3"><strong>App</strong> Title</span>
           </bal-navbar-brand>
           <bal-navbar-menu>
             <bal-navbar-menu-start>
-              <a class="navbar-item"><bal-text>Home</bal-text></a>
+              <a class="navbar-item">Home</a>
               <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link"><bal-text>Language</bal-text></a>
+                <a class="navbar-link">Dropdown</a>
                 <div class="navbar-dropdown">
-                  <a class="navbar-item"><bal-text>English</bal-text></a>
-                  <a class="navbar-item"><bal-text>German</bal-text></a>
-                  <a class="navbar-item"><bal-text>French</bal-text></a>
+                  <a class="navbar-item">Dropdown Item</a>
+                  <a class="navbar-item">Dropdown Item</a>
+                  <a class="navbar-item">Dropdown Item</a>
                   <hr class="navbar-divider" />
-                  <a class="navbar-item"><bal-text>Support</bal-text></a>
+                  <a class="navbar-item">Dropdown Item</a>
                 </div>
               </div>
             </bal-navbar-menu-start>
             <bal-navbar-menu-end>
-              <bal-button inverted>Logout</bal-button>
-            </bal-navbar-menu-end>
-          </bal-navbar-menu>
-        </bal-navbar>
-      </section>
-
-      <h2 class="title is-size-2">Light</h2>
-      <section>
-        <bal-navbar light>
-          <bal-navbar-brand>
-            <bal-icon name="logo" size="large"></bal-icon>
-            <bal-text style="margin-left: 15px"><strong>App</strong> Title</bal-text>
-          </bal-navbar-brand>
-          <bal-navbar-menu>
-            <bal-navbar-menu-start>
-              <a class="navbar-item"><bal-text>Home</bal-text></a>
-              <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link"><bal-text>Language</bal-text></a>
-                <div class="navbar-dropdown">
-                  <a class="navbar-item"><bal-text>English</bal-text></a>
-                  <a class="navbar-item"><bal-text>German</bal-text></a>
-                  <a class="navbar-item"><bal-text>French</bal-text></a>
-                  <hr class="navbar-divider" />
-                  <a class="navbar-item"><bal-text>Support</bal-text></a>
-                </div>
-              </div>
-            </bal-navbar-menu-start>
-            <bal-navbar-menu-end>
-              <bal-button>Logout</bal-button>
+              <bal-select value="de" inverted class="navbar-item">
+                <bal-select-option label="German" value="de">German</bal-select-option>
+                <bal-select-option label="French" value="fr">French</bal-select-option>
+                <bal-select-option label="Italian" value="it">Italian</bal-select-option>
+                <bal-select-option label="English" value="en">English</bal-select-option>
+              </bal-select>
+              <bal-field class="navbar-item" pure inverted>
+                <bal-field-control class="has-icons-left">
+                  <bal-icon name="search" class="is-left"></bal-icon>
+                  <bal-input></bal-input>
+                </bal-field-control>
+              </bal-field>
+              <bal-button class="navbar-item" inverted>Logout</bal-button>
             </bal-navbar-menu-end>
           </bal-navbar-menu>
         </bal-navbar>

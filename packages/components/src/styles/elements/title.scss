@@ -62,11 +62,13 @@ h5.subtitle {
   font-weight: $weight-normal;
 }
 
+span.is-small,
 p.is-small,
 a.is-small {
   font-size: $size-small;
 }
 
+span.is-bold,
 p.is-bold,
 a.is-bold {
   font-weight: $weight-bold;
