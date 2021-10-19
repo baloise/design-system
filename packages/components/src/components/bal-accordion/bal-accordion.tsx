@@ -78,7 +78,7 @@ export class Accordion {
           [`is-interface-${this.interface}`]: this.interface.length > 0,
         }}
       >
-        <bal-button color="" class="data-test-accordion-trigger" expanded={true} onClick={() => this.toggle()} bottomRounded={!this.isActive}>
+        <bal-button class="data-test-accordion-trigger" expanded={true} onClick={() => this.toggle()} bottomRounded={!this.isActive}>
           <bal-icon slot={this.interface === 'light' ? 'icon-right' : 'icon-left'} name={this.isActive ? 'minus' : 'plus'}></bal-icon>
           {this.label}
         </bal-button>

@@ -1,4 +1,18 @@
 // https://bulma.io/documentation/elements/title/#variables
 
-$title-weight: $weight-normal;
+$title-color: $primary;
+$title-size: $size-3;
+$title-weight: $weight-bold;
+$title-line-height: 1.125;
+$title-strong-color: inherit;
+$title-strong-weight: inherit;
+$title-sub-size: 0.75em;
+$title-sup-size: 0.75em;
+
+$subtitle-color: $primary-4;
+$subtitle-size: $size-5;
 $subtitle-weight: $weight-normal;
+$subtitle-line-height: 1.25;
+$subtitle-strong-color: $text-strong;
+$subtitle-strong-weight: $weight-semibold;
+$subtitle-negative-margin: -1.25rem;

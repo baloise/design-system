@@ -9,11 +9,6 @@ import { defineComponent, PropType } from 'vue';
 export const BalAccordion = /*@__PURE__*/ defineComponent({
   name: 'bal-accordion',
   props: {
-    color: {
-      type: String,
-      default: 'primary',
-      required: false,
-    },
     isActive: {
       type: Boolean,
       default: false,
@@ -24,24 +19,19 @@ export const BalAccordion = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
-    openIcon: {
+    inverted: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    interface: {
       type: String,
-      default: 'plus',
+      default: '',
       required: false,
     },
     closeLabel: {
       type: String,
       default: '',
-      required: false,
-    },
-    closeIcon: {
-      type: String,
-      default: 'minus',
-      required: false,
-    },
-    card: {
-      type: Boolean,
-      default: false,
       required: false,
     },
     modelValue: {
@@ -93,7 +83,7 @@ export const BalButton = /*@__PURE__*/ defineComponent({
     },
     size: {
       type: String,
-      default: '',
+      default: 'medium',
       required: false,
     },
     link: {
@@ -121,17 +111,7 @@ export const BalButton = /*@__PURE__*/ defineComponent({
       default: undefined,
       required: false,
     },
-    iconPosition: {
-      type: String,
-      default: 'left',
-      required: false,
-    },
     square: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    isActive: {
       type: Boolean,
       default: false,
       required: false,
@@ -164,16 +144,6 @@ export const BalButton = /*@__PURE__*/ defineComponent({
     bottomRounded: {
       type: Boolean,
       default: false,
-      required: false,
-    },
-    icon: {
-      type: String,
-      default: '',
-      required: false,
-    },
-    iconRight: {
-      type: String,
-      default: '',
       required: false,
     },
     name: {
@@ -451,11 +421,6 @@ export const BalCheckbox = /*@__PURE__*/ defineComponent({
 export const BalData = /*@__PURE__*/ defineComponent({
   name: 'bal-data',
   props: {
-    border: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
     horizontal: {
       type: Boolean,
       default: false,
@@ -523,6 +488,21 @@ export const BalDataValue = /*@__PURE__*/ defineComponent({
 export const BalDatepicker = /*@__PURE__*/ defineComponent({
   name: 'bal-datepicker',
   props: {
+    invalid: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    touched: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
     name: {
       type: String,
       default: undefined,
@@ -697,12 +677,22 @@ export const BalDropdownTrigger = /*@__PURE__*/ defineComponent({
 export const BalField = /*@__PURE__*/ defineComponent({
   name: 'bal-field',
   props: {
+    pure: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
     expanded: {
       type: Boolean,
       default: false,
       required: false,
     },
     invalid: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    touched: {
       type: Boolean,
       default: false,
       required: false,
@@ -732,14 +722,14 @@ export const BalField = /*@__PURE__*/ defineComponent({
 export const BalFieldControl = /*@__PURE__*/ defineComponent({
   name: 'bal-field-control',
   props: {
-    iconRight: {
-      type: String,
-      default: '',
+    invalid: {
+      type: Boolean,
+      default: false,
       required: false,
     },
-    iconLeft: {
-      type: String,
-      default: '',
+    touched: {
+      type: Boolean,
+      default: false,
       required: false,
     },
     loading: {
@@ -748,6 +738,11 @@ export const BalFieldControl = /*@__PURE__*/ defineComponent({
       required: false,
     },
     inverted: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    disabled: {
       type: Boolean,
       default: false,
       required: false,
@@ -777,16 +772,7 @@ export const BalFieldHint = /*@__PURE__*/ defineComponent({
 export const BalFieldLabel = /*@__PURE__*/ defineComponent({
   name: 'bal-field-label',
   props: {
-    required: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    expanded: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
+
   },
   emits: {
 
@@ -800,11 +786,6 @@ export const BalFieldMessage = /*@__PURE__*/ defineComponent({
     color: {
       type: String,
       default: '',
-      required: false,
-    },
-    expanded: {
-      type: Boolean,
-      default: false,
       required: false,
     },
   },
@@ -863,11 +844,7 @@ export const BalFileUpload = /*@__PURE__*/ defineComponent({
 export const BalFooter = /*@__PURE__*/ defineComponent({
   name: 'bal-footer',
   props: {
-    hasTrackLine: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
+
   },
   emits: {
 
@@ -982,7 +959,7 @@ export const BalIcon = /*@__PURE__*/ defineComponent({
     },
     color: {
       type: String,
-      default: 'info',
+      default: 'primary',
       required: false,
     },
     inverted: {
@@ -1010,6 +987,21 @@ export const BalIcon = /*@__PURE__*/ defineComponent({
 export const BalInput = /*@__PURE__*/ defineComponent({
   name: 'bal-input',
   props: {
+    invalid: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    touched: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    expanded: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
     name: {
       type: String,
       default: undefined,
@@ -1177,17 +1169,7 @@ export const BalInput = /*@__PURE__*/ defineComponent({
 export const BalList = /*@__PURE__*/ defineComponent({
   name: 'bal-list',
   props: {
-    disabled: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
     inverted: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    border: {
       type: Boolean,
       default: false,
       required: false,
@@ -1248,7 +1230,7 @@ export const BalListItemContent = /*@__PURE__*/ defineComponent({
 export const BalListItemIcon = /*@__PURE__*/ defineComponent({
   name: 'bal-list-item-icon',
   props: {
-    right: {
+    dense: {
       type: Boolean,
       default: false,
       required: false,
@@ -1392,11 +1374,6 @@ export const BalModalHeader = /*@__PURE__*/ defineComponent({
 export const BalNavbar = /*@__PURE__*/ defineComponent({
   name: 'bal-navbar',
   props: {
-    light: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
     noBurger: {
       type: Boolean,
       default: false,
@@ -1419,7 +1396,7 @@ export const BalNavbarBrand = /*@__PURE__*/ defineComponent({
   props: {
     href: {
       type: String,
-      default: '/',
+      default: undefined,
       required: false,
     },
   },
@@ -1576,6 +1553,11 @@ export const BalRadioGroup = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
+    vertical: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
     disabled: {
       type: Boolean,
       default: undefined,
@@ -1603,6 +1585,21 @@ export const BalRadioGroup = /*@__PURE__*/ defineComponent({
 export const BalSelect = /*@__PURE__*/ defineComponent({
   name: 'bal-select',
   props: {
+    invalid: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    touched: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
     name: {
       type: String,
       default: undefined,
@@ -1624,11 +1621,6 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
       required: false,
     },
     noBorder: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    hasMovement: {
       type: Boolean,
       default: false,
       required: false,
@@ -1661,11 +1653,6 @@ export const BalSelect = /*@__PURE__*/ defineComponent({
     scrollable: {
       type: Number,
       default: 250,
-      required: false,
-    },
-    loading: {
-      type: Boolean,
-      default: false,
       required: false,
     },
     value: {
@@ -2181,11 +2168,6 @@ export const BalTimeinput = /*@__PURE__*/ defineComponent({
     minTime: {
       type: String,
       default: '',
-      required: false,
-    },
-    inverted: {
-      type: Boolean,
-      default: false,
       required: false,
     },
     modelValue: {

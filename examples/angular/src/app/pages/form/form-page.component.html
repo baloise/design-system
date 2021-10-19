@@ -14,7 +14,7 @@
       </bal-field>
 
       <bal-field class="column is-half py-0" expanded required [disabled]="form.get('firstname')?.disabled">
-        <bal-field-label required>Firstname</bal-field-label>
+        <bal-field-label>Firstname</bal-field-label>
         <bal-field-control>
           <bal-input name="firstname" placeholder="Enter your firstname" formControlName="firstname"></bal-input>
         </bal-field-control>
@@ -24,7 +24,7 @@
       </bal-field>
 
       <bal-field class="column is-half py-0" expanded required [disabled]="form.get('lastname')?.disabled">
-        <bal-field-label required>Lastname</bal-field-label>
+        <bal-field-label>Lastname</bal-field-label>
         <bal-field-control>
           <bal-input name="lastname" placeholder="Enter your lastname" formControlName="lastname"></bal-input>
         </bal-field-control>
@@ -34,7 +34,7 @@
       </bal-field>
 
       <bal-field class="column is-half py-0" expanded required [disabled]="form.get('street')?.disabled">
-        <bal-field-label required>Street</bal-field-label>
+        <bal-field-label>Street</bal-field-label>
         <bal-field-control>
           <bal-input name="street" placeholder="Enter your street" formControlName="street"></bal-input>
         </bal-field-control>
@@ -91,8 +91,8 @@
         </bal-field-message>
       </bal-field>
 
-      <bal-field class="column is-full py-0" expanded required [disabled]="form.get('email')?.disabled">
-        <bal-field-label required>Email</bal-field-label>
+      <bal-field class="column is-full py-0" expanded [disabled]="form.get('email')?.disabled">
+        <bal-field-label>Email</bal-field-label>
         <bal-field-control>
           <bal-input name="email" placeholder="Enter your email" formControlName="email"></bal-input>
         </bal-field-control>

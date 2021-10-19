@@ -1,7 +1,6 @@
 @import '../../styles/global.utilities';
 @import 'node_modules/bulma/sass/elements/icon.sass';
 
-$icon-xsmall: 8px;
 $icon-small: 12px;
 $icon-default: 16px;
 $icon-medium: 20px;
@@ -26,12 +25,6 @@ $icon-xlarge: 64px;
     width: $icon-default;
     max-height: $icon-default;
     transition: transform 0.2s ease-in-out;
-  }
-
-  &.is-size-xsmall,
-  &.is-size-xsmall .bal-icon-inner {
-    width: $icon-xsmall;
-    max-height: $icon-xsmall;
   }
 
   &.is-size-small,

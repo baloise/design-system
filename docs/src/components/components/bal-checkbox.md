@@ -36,31 +36,26 @@ Switches are used to toggle between exactly two states (like on and off).
 <ClientOnly><docs-demo-bal-checkbox-26></docs-demo-bal-checkbox-26></ClientOnly>
 
 
-### Inverted
-
-<ClientOnly><docs-demo-bal-checkbox-27></docs-demo-bal-checkbox-27></ClientOnly>
-
-
 ### With Links
 
-<ClientOnly><docs-demo-bal-checkbox-28></docs-demo-bal-checkbox-28></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-27></docs-demo-bal-checkbox-27></ClientOnly>
 
 
 ### Events
 
 #### Listen on Changes
 
-<ClientOnly><docs-demo-bal-checkbox-29></docs-demo-bal-checkbox-29></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-28></docs-demo-bal-checkbox-28></ClientOnly>
 
 
 #### Change value
 
-<ClientOnly><docs-demo-bal-checkbox-30></docs-demo-bal-checkbox-30></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-29></docs-demo-bal-checkbox-29></ClientOnly>
 
 
 ### Checkbox Boxes
 
-<ClientOnly><docs-demo-bal-checkbox-31></docs-demo-bal-checkbox-31></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-30></docs-demo-bal-checkbox-30></ClientOnly>
 
 
 

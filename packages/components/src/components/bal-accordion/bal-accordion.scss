@@ -4,52 +4,52 @@ bal-accordion {
   display: block;
   border-radius: $radius-large;
 
-  &.is-interface-light {
-    bal-button button.button {
-      border: 0;
-      border-radius: 0;
-      justify-content: flex-start;
-      padding-left: 0;
-      padding-right: 0;
-      border-bottom: 2px solid $primary;
+  // &.is-interface-light {
+  //   bal-button button.button {
+  //     border: 0;
+  //     border-radius: 0;
+  //     justify-content: flex-start;
+  //     padding-left: 0;
+  //     padding-right: 0;
+  //     border-bottom: 2px solid $primary;
 
-      span:nth-child(2) {
-        flex: 1;
-        text-align: left;
-      }
+  //     span:nth-child(2) {
+  //       flex: 1;
+  //       text-align: left;
+  //     }
 
-      span:nth-child(3) {
-        margin: 0 !important;
-      }
-    }
+  //     span:nth-child(3) {
+  //       margin: 0 !important;
+  //     }
+  //   }
 
-    &.is-active bal-button button.button {
-      border-color: transparent;
-    }
+  //   &.is-active bal-button button.button {
+  //     border-color: transparent;
+  //   }
 
-    .accordion-content {
-      border-bottom: 2px solid $primary;
-    }
+  //   .accordion-content {
+  //     border-bottom: 2px solid $primary;
+  //   }
 
-    &.is-inverted {
-      bal-button button.button {
-        border-bottom: 2px solid $primary-invert;
-        background-color: transparent;
-        color: $primary-invert;
+  //   &.is-inverted {
+  //     bal-button button.button {
+  //       border-bottom: 2px solid $primary-invert;
+  //       background-color: transparent;
+  //       color: $primary-invert;
 
-        bal-icon {
-          fill: $primary-invert;
-        }
+  //       bal-icon {
+  //         fill: $primary-invert;
+  //       }
 
-        &:focus-visible {
-          box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color-invert;
-        }
-      }
+  //       &:focus-visible {
+  //         box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color-invert;
+  //       }
+  //     }
 
-      .accordion-content,
-      .accordion-content > p {
-        color: $primary-invert;
-      }
-    }
-  }
+  //     .accordion-content,
+  //     .accordion-content > p {
+  //       color: $primary-invert;
+  //     }
+  //   }
+  // }
 }

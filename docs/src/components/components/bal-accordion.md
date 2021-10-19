@@ -21,28 +21,33 @@ Accordions put users in control of showing or hiding content. Accordions also he
 <ClientOnly><docs-demo-bal-accordion-0></docs-demo-bal-accordion-0></ClientOnly>
 
 
-### Colors
-
-The accordion has 2 colors of themes `is-info` and `is-primary`.
+### Light
 
 <ClientOnly><docs-demo-bal-accordion-1></docs-demo-bal-accordion-1></ClientOnly>
 
 
-### Open accordion
+### Colors
+
+The accordion has 2 colors of themes `is-info` and `is-primary`.
 
 <ClientOnly><docs-demo-bal-accordion-2></docs-demo-bal-accordion-2></ClientOnly>
+
+
+### Open accordion
+
+<ClientOnly><docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
 
 
 ### Trigger label & icon
 
 Use the properties `open-label` & `open-icon` to change the content of the trigger button.
 
-<ClientOnly><docs-demo-bal-accordion-3></docs-demo-bal-accordion-3></ClientOnly>
+<ClientOnly><docs-demo-bal-accordion-4></docs-demo-bal-accordion-4></ClientOnly>
 
 
 ### With card
 
-<ClientOnly><docs-demo-bal-accordion-4></docs-demo-bal-accordion-4></ClientOnly>
+<ClientOnly><docs-demo-bal-accordion-5></docs-demo-bal-accordion-5></ClientOnly>
 
 
 
@@ -53,15 +58,13 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 ### Properties
 
 
-| Attribute       | Description                                             | Type                            | Default                |
-| :-------------- | :------------------------------------------------------ | :------------------------------ | :--------------------- |
-| **card**        | If `true` the accordion is used on the bottom of a card | <code>boolean</code>            | <code>false</code>     |
-| **close-icon**  | Bal-Icon of the close trigger button                    | <code>string</code>             | <code>'minus'</code>   |
-| **close-label** | Label of the close trigger button                       | <code>string</code>             | <code>''</code>        |
-| **color**       | Type defines the theme of the accordion toggle          | <code>"info" , "primary"</code> | <code>'primary'</code> |
-| **is-active**   | Controls if the accordion is collapsed or not           | <code>boolean</code>            | <code>false</code>     |
-| **open-icon**   | Bal-Icon of the open trigger button                     | <code>string</code>             | <code>'plus'</code>    |
-| **open-label**  | Label of the open trigger button                        | <code>string</code>             | <code>''</code>        |
+| Attribute       | Description                                            | Type                      | Default            |
+| :-------------- | :----------------------------------------------------- | :------------------------ | :----------------- |
+| **close-label** | Label of the close trigger button                      | <code>string</code>       | <code>''</code>    |
+| **interface**   | Label of the open trigger button                       | <code>"" , "light"</code> | <code>''</code>    |
+| **inverted**    | If `true` the component is ready for a dark background | <code>boolean</code>      | <code>false</code> |
+| **is-active**   | Controls if the accordion is collapsed or not          | <code>boolean</code>      | <code>false</code> |
+| **open-label**  | Label of the open trigger button                       | <code>string</code>       | <code>''</code>    |
 
 ### Events
 

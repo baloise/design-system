@@ -2,22 +2,6 @@
 @import 'colors.scss';
 
 /**
- * TODO Replace
- */
-$blue-light-line: red;
-$blue-dark: red;
-$blue-line: red;
-$blue-line-inverted: red;
-$blue-light: red;
-$blue-light-hover: red;
-$blue-light-text: red;
-$primary-darker: red;
-$gray-lightest: red;
-$gray-lighter: red;
-$gray-light: red;
-$gray-dark: red;
-
-/**
  * Colors
  */
 $cyan: #1c77d2;
@@ -132,6 +116,7 @@ $font-path: '/assets/fonts' !default;
 $family-sans-serif: 'Biennale', Arial, sans-serif;
 $family-primary: $family-sans-serif;
 $title-family: $family-sans-serif;
+$subtitle-family: $family-sans-serif;
 $body-family: $family-sans-serif;
 
 $weight-light: 400;
@@ -140,34 +125,18 @@ $weight-medium: 700;
 $weight-semibold: 700;
 $weight-bold: 700;
 
-$size-1: 44px;
-$size-2: 36px;
-$size-3: 28px;
-$size-4: 20px;
-$size-5: 16px;
-$size-6: 14px;
+$size-1: 56px;
+$size-2: 48px;
+$size-3: 40px;
+$size-4: 32px;
+$size-5: 24px;
+$size-6: 16px;
 $size-7: 12px;
 
-$size-large: $size-3;
-$size-medium: $size-4;
-$size-normal: $size-5;
-$size-small: $size-6;
-
-$line-height-1: 48px;
-$line-height-2: 40px;
-$line-height-3: 32px;
-$line-height-4: 28px;
-$line-height-5: 24px;
-$line-height-6: 16px;
-$line-height-7: 16px;
-
-$line-height-large: $line-height-3;
-$line-height-medium: $line-height-4;
-$line-height-normal: $line-height-5;
-$line-height-small: $line-height-6;
-
-$title-color: $primary;
-$subtitle-color: $primary;
+$size-large: $size-4;
+$size-medium: $size-5;
+$size-normal: $size-6;
+$size-small: $size-7;
 
 /**
  * Spacing

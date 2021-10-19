@@ -7,7 +7,7 @@
 :host {
   display: inline-block;
   position: relative;
-  min-width: 250px;
+  min-width: 48px;
 
   &.is-fullwidth {
     width: 100%;
@@ -114,7 +114,7 @@ select {
 
 .select-chevron {
   position: absolute;
-  top: 16px;
+  top: 14px;
   height: 100%;
   right: 16px;
 }
@@ -225,7 +225,7 @@ select {
     display: table-header-group;
 
     .datepicker-cell {
-      color: $blue-light-text;
+      color: $primary-3;
       font-weight: $weight-normal;
       border: none;
       cursor: default;

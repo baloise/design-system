@@ -6,7 +6,7 @@
           <bal-navbar no-burger>
             <bal-navbar-brand>
               <bal-icon name="logo" inverted size="large"></bal-icon>
-              <bal-text style="margin-left: 15px"><strong>Portal</strong></bal-text>
+              <span class="ml-2"><strong>Portal</strong></span>
             </bal-navbar-brand>
           </bal-navbar>
           <div class="container">

@@ -9,7 +9,7 @@
 @require '~vuepress-plugin-tabs/dist/themes/default.styl'
 
 h1, h2, h3, h4, h5, p, b, strong, td, th, a, li, .footer
- font-family: MetaPro, Arial, sans-serif
+ font-family: 'Biennale', Arial, sans-serif
 
 .home .hero img
   max-width 100%
@@ -35,10 +35,10 @@ h1, h2, h3, h4, h5, p, b, strong, td, th, a, li, .footer
   a
     position: relative
     display: flex
-    background: #039
-    background: #009fe6
+    background: #000d6e
+    text-transform: underline
     border-radius: 4px
-    padding: 14px 80px 18px 24px
+    padding: 16px 16px 16px
     margin: 0 8px
     flex-direction: column
     justify-content: center
@@ -50,18 +50,15 @@ h1, h2, h3, h4, h5, p, b, strong, td, th, a, li, .footer
       right: 24px
       top: 30px
     &:hover
-      background: #002b82
-      background: #039
+      background: #000d6e
     small
-      font-size: 14px
+      font-size: 12px
       font-weight: 700
       text-transform: uppercase
-      color: #95adda
-      color: #fafafa
-      color: #d1dbed
+      color: #b3b6cd;
       margin-bottom: 4px
     span
-      font-size: 24px
+      font-size: 20px
       font-weight: 700
       color: #fff
 
@@ -69,10 +66,10 @@ h1, h2, h3, h4, h5, p, b, strong, td, th, a, li, .footer
   color: #fff
 
 #main-title
-  color: #039
+  color: #000d6e
 
 .custom-block.tip
-  border-color: #009ee7;
+  border-color: yellow; //#009ee7;
 
 .bd-color
   border-radius: 2px;
@@ -84,7 +81,7 @@ h1, h2, h3, h4, h5, p, b, strong, td, th, a, li, .footer
   width: 24px;
 
 header.navbar
-  background-color: #039
+  background-color: #000d6e
 
   .logo
     margin-right: 8px
@@ -94,7 +91,7 @@ header.navbar
   .router-link-active,
   .nav-links .repo-link
     color: #fff !important
-    font-family: MetaPro, Arial, sans-serif
+    font-family: 'Biennale', Arial, sans-serif
     font-weight: 400;
     line-height: 1.6;
     b
@@ -122,14 +119,14 @@ header.navbar
   .nav-item > a.router-link-active:after
     content: '';
     height: 3px;
-    background: #00adfd;
+    background: #009ee7;
     position: absolute;
     width: 100%;
     left: 0;
     bottom: -12px;
 
   .links
-    background-color: #039
+    background-color: #000d6e
 
 header.navbar
   z-index: 40;
@@ -173,28 +170,17 @@ header > .links
   padding: 0
   padding-top: 16px
 
-.tabs-component-tabs
-  border-bottom: 1px solid #d1dbed !important
-  border-radius: 0 !important
-  margin: 0
-
 .tabs-component-tab
   border: none
 
-.tabs-component-tab-a
-  font-size: 20px
-  color: #7188b8
-  text-decoration: none !important
-  padding: 12px 16px
-
 .tabs-component-tab-a:hover
-  color: #039
+  color: #000d6e
 
 .tabs-component-tab.is-active
-  border-bottom: 2px solid #039
+  border-bottom: 2px solid #000d6e
 
 .tabs-component-tab.is-active .tabs-component-tab-a
-  color: #039 !important
+  color: #000d6e !important
 
 .custom-block-title > img
   margin-bottom: -8px

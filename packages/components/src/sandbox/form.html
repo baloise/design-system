@@ -8,308 +8,259 @@
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
   </head>
-  <body class="bal-app bal-app-background has-sticky-footer">
-    <header>
-      <bal-navbar no-burger>
-        <bal-navbar-brand>
-          <bal-icon name="logo" inverted size="large"></bal-icon>
-          <bal-text style="margin-left: 15px"><strong>Car</strong> Insurance</bal-text>
-        </bal-navbar-brand>
-      </bal-navbar>
-    </header>
+  <body class="bal-app bal-app-background">
     <main>
       <div class="container">
-        <bal-card flat-mobile class="has-large-margin-top">
-          <bal-card-steps>
-            <bal-tabs interface="steps">
-              <bal-tab-item value="step-a" label="Information" done active>
-                <div class="has-large-padding has-margin-top">
-                  <h4 class="subtitle is-size-4 has-no-margin">Car Insurance</h4>
-                  <h2 class="title is-size-2 has-no-margin-top">Car details</h2>
-                  <div class="columns" class="has-large-margin-top">
-                    <div class="column">
-                      <bal-field expanded>
-                        <bal-field-label>First commissioning</bal-field-label>
-                        <bal-field-hint subject="First commissioning">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita quibusdam officia cum deserunt recusandae laboriosam excepturi, praesentium labore
-                          exercitationem assumenda corrupti numquam, obcaecati officiis iste ducimus enim. Minima, perspiciatis ex.
-                        </bal-field-hint>
-                        <bal-field-control>
-                          <bal-input name="firstCommissioning" placeholder="mm.yyyy"></bal-input>
-                        </bal-field-control>
-                        <bal-field-message color="danger">Required Field</bal-field-message>
-                      </bal-field>
-                    </div>
-                    <div class="column">
-                      <bal-field expanded>
-                        <bal-field-label>Car Search</bal-field-label>
-                        <bal-field-control>
-                          <bal-select typeahead placeholder="Search your car">
-                            <bal-select-option value="1" label="Audi Q5 2.0 TDI quattro S-tronic">
-                              <b style="display: block">Audi Q5</b>
-                              <span>2.0 TDI quattro S-tronic</span>
-                            </bal-select-option>
-                            <bal-select-option value="2" label="Skoda Oktavia TDI 4x4 Style">
-                              <b style="display: block">Skoda Oktavia</b>
-                              <span>TDI 4x4 Style</span>
-                            </bal-select-option>
-                            <bal-select-option value="3" label="VW Golf TDI quattro S-tronic">
-                              <b style="display: block">VW Golf</b>
-                              <span>TDI quattro S-tronic</span>
-                            </bal-select-option>
-                          </bal-select>
-                        </bal-field-control>
-                      </bal-field>
-                    </div>
-                  </div>
-                  <div class="has-background-blue-light has-margin-top p-3">
-                    <div class="columns">
-                      <div class="column is-two-thirds">
-                        <h4 class="subtitle is-size-5 has-no-margin">Car</h4>
-                        <h3 class="title is-size-4 has-no-margin-top">Audi Q5 2.0 TDI quattro S-tronic</h3>
-                      </div>
-                      <div class="column">
-                        <h4 class="subtitle is-size-5 has-no-margin">Price</h4>
-                        <h3 class="title is-size-4 has-no-margin-top"><small>CHF</small> 55'000.00</h3>
-                      </div>
-                    </div>
-                    <p class="has-text-black">170PS, Automatic, Diesel, Kombi</p>
-                  </div>
-                </div>
+        <h1 class="title is-size-1">Form Elements</h1>
+        <h2 class="title is-size-2">Basic</h2>
+        <section>
+          <bal-card>
+            <bal-card-content>
+              <div class="columns is-multiline mt-0">
+                <bal-field class="column is-full py-0" expanded touched="false" invalid="true">
+                  <bal-field-label>Initial State</bal-field-label>
+                  <bal-field-control>
+                    <bal-input placeholder="Placeholder"></bal-input>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+              </div>
 
-                <hr class="is-large" />
+              <div class="columns is-multiline mt-0">
+                <bal-field class="column is-full py-0" expanded touched="true" invalid="true">
+                  <bal-field-label>Invalid State</bal-field-label>
+                  <bal-field-control>
+                    <bal-input placeholder="Placeholder"></bal-input>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+              </div>
 
-                <div class="has-large-padding has-margin-top">
-                  <h2 class="title is-size-2 has-no-margin-top">Details of the policyholder</h2>
-                  <bal-field expanded>
-                    <bal-field-label></bal-field-label>
-                    <bal-field-control>
-                      <bal-radio-group value="male">
-                        <bal-radio name="gender" value="male">Male</bal-radio>
-                        <bal-radio name="gender" value="female">Female</bal-radio>
-                      </bal-radio-group>
-                    </bal-field-control>
-                    <bal-field-message></bal-field-message>
-                  </bal-field>
-                  <div class="columns">
-                    <div class="column">
-                      <bal-field expanded>
-                        <bal-field-label>Birthdate</bal-field-label>
-                        <bal-field-control>
-                          <bal-datepicker placeholder="dd.mm.yyyy"></bal-datepicker>
-                        </bal-field-control>
-                        <bal-field-message></bal-field-message>
-                      </bal-field>
-                    </div>
-                    <div class="column">
-                      <div class="is-flex">
-                        <div style="min-width: 100px">
-                          <bal-field expanded>
-                            <bal-field-label>Postal Code</bal-field-label>
-                            <bal-field-control>
-                              <bal-input name="postalCode"></bal-input>
-                            </bal-field-control>
-                          </bal-field>
-                        </div>
-                        <div style="min-width: 20px"></div>
-                        <div style="flex: 1">
-                          <bal-field expanded>
-                            <bal-field-label>City</bal-field-label>
-                            <bal-field-control>
-                              <bal-input name="city"></bal-input>
-                            </bal-field-control>
-                          </bal-field>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="columns form">
-                    <div class="column">
-                      <label for="leasing" class="label">Is the policyholder the most frequent driver?</label>
-                    </div>
-                    <div class="column">
-                      <bal-radio-group id="leasing" value="1" interface="select-button">
-                        <bal-radio name="leasing" value="1">Yes</bal-radio>
-                        <bal-radio name="leasing" value="2">No</bal-radio>
-                      </bal-radio-group>
-                    </div>
-                  </div>
-                </div>
+              <div class="columns is-multiline mt-0">
+                <bal-field class="column is-full py-0" expanded touched="true" invalid="false">
+                  <bal-field-label>Valid State</bal-field-label>
+                  <bal-field-control>
+                    <bal-input placeholder="Placeholder"></bal-input>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+              </div>
+            </bal-card-content>
+          </bal-card>
+        </section>
 
-                <hr class="is-large" />
+        <h2 class="title is-size-2">Disabled</h2>
+        <section>
+          <bal-card>
+            <bal-card-content>
+              <div class="columns is-multiline mt-0">
+                <bal-field class="column is-full py-0" expanded disabled touched="false" invalid="true">
+                  <bal-field-label>Initial State</bal-field-label>
+                  <bal-field-control>
+                    <bal-input placeholder="Placeholder"></bal-input>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+              </div>
 
-                <div class="has-large-padding has-margin-top has-large-padding-bottom">
-                  <div class="is-flex is-justify-content-center">
-                    <bal-button color="info">Calculate Prime</bal-button>
-                  </div>
-                </div>
-              </bal-tab-item>
-              <bal-tab-item value="step-b" label="Coverage" failed>
-                <div class="has-large-padding has-margin-top">
-                  <h4 class="subtitle is-size-4 has-no-margin">Car Insurance</h4>
-                  <h2 class="title is-size-2 has-no-margin-top">Coverage</h2>
+              <div class="columns is-multiline mt-0">
+                <bal-field class="column is-full py-0" expanded disabled touched="true" invalid="true">
+                  <bal-field-label>Invalid State</bal-field-label>
+                  <bal-field-control>
+                    <bal-input placeholder="Placeholder"></bal-input>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+              </div>
 
-                  <bal-card class="my-4">
-                    <bal-card-head>
-                      <img src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" />
-                      <div>
-                        <h5 class="title is-size-5">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></h5>
-                        <h5 class="subtitle is-size-5 is-hidden-desktop">+ CHF 11.30</h5>
-                        <p class="has-text-blue-light-text is-hidden-touch">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
-                      </div>
-                      <bal-checkbox checked interface="switch"></bal-checkbox>
-                    </bal-card-head>
+              <div class="columns is-multiline mt-0">
+                <bal-field class="column is-full py-0" expanded disabled touched="true" invalid="false">
+                  <bal-field-label>Valid State</bal-field-label>
+                  <bal-field-control>
+                    <bal-input placeholder="Placeholder"></bal-input>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+              </div>
+            </bal-card-content>
+          </bal-card>
+        </section>
 
-                    <bal-card-content class="is-hidden-desktop">
-                      <p class="has-text-blue-light-text">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
-                    </bal-card-content>
+        <h2 class="title is-size-2">Pickers</h2>
+        <section>
+          <bal-card>
+            <bal-card-content>
+              <div class="columns is-multiline mt-0">
+                <bal-field class="column is-half py-0" expanded touched="false" invalid="true">
+                  <bal-field-label>Initial State</bal-field-label>
+                  <bal-field-control>
+                    <bal-datepicker placeholder="dd.mm.yyyy"></bal-datepicker>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+                <bal-field class="column is-half py-0" expanded touched="true" invalid="true">
+                  <bal-field-label>Invalid State</bal-field-label>
+                  <bal-field-control>
+                    <bal-datepicker placeholder="dd.mm.yyyy"></bal-datepicker>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+                <bal-field class="column is-half py-0" expanded touched="true" invalid="false">
+                  <bal-field-label>Valid State</bal-field-label>
+                  <bal-field-control>
+                    <bal-datepicker placeholder="dd.mm.yyyy"></bal-datepicker>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+                <bal-field class="column is-half py-0" disabled expanded touched="true" invalid="false">
+                  <bal-field-label>Disabled State</bal-field-label>
+                  <bal-field-control>
+                    <bal-datepicker placeholder="dd.mm.yyyy"></bal-datepicker>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+              </div>
 
-                    <bal-accordion card open-label="Details einblenden" close-label="Details ausblenden">
-                      <p class="has-padding has-text-blue-light-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                      </p>
-                    </bal-accordion>
-                  </bal-card>
+              <div class="columns is-multiline mt-6">
+                <bal-field class="column is-half py-0" expanded touched="false" invalid="true">
+                  <bal-field-label>Initial State</bal-field-label>
+                  <bal-field-control>
+                    <bal-select name="gender" placeholder="Select gender">
+                      <bal-select-option value="male" label="Male">Male</bal-select-option>
+                      <bal-select-option value="female" label="Female">Female</bal-select-option>
+                    </bal-select>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+                <bal-field class="column is-half py-0" expanded touched="true" invalid="true">
+                  <bal-field-label>Invalid State</bal-field-label>
+                  <bal-field-control>
+                    <bal-select name="gender" placeholder="Select gender">
+                      <bal-select-option value="male" label="Male">Male</bal-select-option>
+                      <bal-select-option value="female" label="Female">Female</bal-select-option>
+                    </bal-select>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+                <bal-field class="column is-half py-0" expanded touched="true" invalid="false">
+                  <bal-field-label>Valid State</bal-field-label>
+                  <bal-field-control>
+                    <bal-select name="gender" placeholder="Select gender">
+                      <bal-select-option value="male" label="Male">Male</bal-select-option>
+                      <bal-select-option value="female" label="Female">Female</bal-select-option>
+                    </bal-select>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+                <bal-field class="column is-half py-0" disabled expanded touched="true" invalid="false">
+                  <bal-field-label>Disabled State</bal-field-label>
+                  <bal-field-control>
+                    <bal-select name="gender" placeholder="Select gender">
+                      <bal-select-option value="male" label="Male">Male</bal-select-option>
+                      <bal-select-option value="female" label="Female">Female</bal-select-option>
+                    </bal-select>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+              </div>
+            </bal-card-content>
+          </bal-card>
+        </section>
 
-                  <bal-card class="my-4">
-                    <bal-card-head>
-                      <img src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" />
-                      <div>
-                        <h5 class="title is-size-5">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></h5>
-                        <h5 class="subtitle is-size-5 is-hidden-desktop">+ CHF 11.30</h5>
-                        <p class="has-text-blue-light-text is-hidden-touch">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
-                      </div>
-                      <bal-checkbox checked interface="switch"></bal-checkbox>
-                    </bal-card-head>
+        <h2 class="title is-size-2">With Icons</h2>
+        <section>
+          <bal-card>
+            <bal-card-content>
+              <div class="columns is-multiline mt-0">
+                <bal-field class="column is-full py-0" expanded touched="false" invalid="true">
+                  <bal-field-label>Initial State</bal-field-label>
+                  <bal-field-control class="has-icons-left has-icons-right">
+                    <bal-input placeholder="Placeholder"></bal-input>
+                    <bal-icon name="message" class="is-left"></bal-icon>
+                    <bal-icon name="read-only" class="is-right clickable"></bal-icon>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+              </div>
 
-                    <bal-card-content class="is-hidden-desktop">
-                      <p class="has-text-blue-light-text">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
-                    </bal-card-content>
+              <div class="columns is-multiline mt-0">
+                <bal-field class="column is-full py-0" expanded touched="true" invalid="true">
+                  <bal-field-label>Invalid State</bal-field-label>
+                  <bal-field-control class="has-icons-left has-icons-right">
+                    <bal-input placeholder="Placeholder"></bal-input>
+                    <bal-icon name="message" class="is-left"></bal-icon>
+                    <bal-icon name="read-only" class="is-right clickable"></bal-icon>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+              </div>
 
-                    <bal-accordion card open-label="Details einblenden" close-label="Details ausblenden">
-                      <p class="has-padding has-text-blue-light-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                      </p>
-                    </bal-accordion>
-                  </bal-card>
+              <div class="columns is-multiline mt-0">
+                <bal-field class="column is-full py-0" expanded touched="true" invalid="false">
+                  <bal-field-label>Valid State</bal-field-label>
+                  <bal-field-control class="has-icons-left has-icons-right">
+                    <bal-input placeholder="Placeholder"></bal-input>
+                    <bal-icon name="message" class="is-left"></bal-icon>
+                    <bal-icon name="read-only" class="is-right clickable"></bal-icon>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+              </div>
+            </bal-card-content>
+          </bal-card>
+        </section>
 
-                  <bal-card class="my-4">
-                    <bal-card-head>
-                      <img src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" />
-                      <div>
-                        <h5 class="title is-size-5">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></h5>
-                        <h5 class="subtitle is-size-5 is-hidden-desktop">+ CHF 11.30</h5>
-                        <p class="has-text-blue-light-text is-hidden-touch">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
-                      </div>
-                      <bal-checkbox checked interface="switch"></bal-checkbox>
-                    </bal-card-head>
+        <h2 class="title is-size-2">Inverted</h2>
+        <section>
+          <bal-card color="primary">
+            <bal-card-content>
+              <bal-field expanded inverted>
+                <bal-field-label>Label</bal-field-label>
+                <bal-field-control>
+                  <bal-input placeholder="Placeholder"></bal-input>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
 
-                    <bal-card-content class="is-hidden-desktop">
-                      <p class="has-text-blue-light-text">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
-                    </bal-card-content>
+              <bal-field expanded inverted disabled>
+                <bal-field-label>Disabled State</bal-field-label>
+                <bal-field-control>
+                  <bal-input placeholder="Placeholder"></bal-input>
+                </bal-field-control>
+                <bal-field-message>Hint or Validation Message</bal-field-message>
+              </bal-field>
+            </bal-card-content>
+          </bal-card>
+        </section>
 
-                    <bal-accordion card open-label="Details einblenden" close-label="Details ausblenden">
-                      <p class="has-padding has-text-blue-light-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                      </p>
-                    </bal-accordion>
-                  </bal-card>
-                </div>
-
-                <hr class="is-large" />
-
-                <div class="has-large-padding has-margin-top has-large-padding-bottom">
-                  <div class="is-flex is-justify-content-center">
-                    <bal-button color="info">Calculate Prime</bal-button>
-                  </div>
-                </div>
-              </bal-tab-item>
-              <bal-tab-item value="step-d" label="Summary">
-                <div class="has-large-padding">
-                  <h4 class="subtitle is-size-4 has-no-margin">Car Insurance</h4>
-                  <h2 class="title is-size-2 has-no-margin-top">Summary</h2>
-
-                  <bal-card>
-                    <bal-card-heading>Insured vehicle</bal-card-heading>
-                    <bal-card-title>Cupra Ateca</bal-card-title>
-                    <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
-                    <bal-card-content>
-                      <bal-data horizontal>
-                        <bal-data-item>
-                          <bal-data-label>Tony</bal-data-label>
-                          <bal-data-value>Stark</bal-data-value>
-                        </bal-data-item>
-                        <bal-data-item>
-                          <bal-data-label>Steve</bal-data-label>
-                          <bal-data-value>Rogers</bal-data-value>
-                        </bal-data-item>
-                        <bal-data-item>
-                          <bal-data-label>Stephen</bal-data-label>
-                          <bal-data-value>Strange</bal-data-value>
-                        </bal-data-item>
-                      </bal-data>
-                    </bal-card-content>
-                    <bal-card-button icon="edit">Edit</bal-card-button>
-                  </bal-card>
-                  <br />
-                  <div class="columns">
-                    <div class="column">
-                      <bal-card>
-                        <bal-card-heading>Insured vehicle</bal-card-heading>
-                        <bal-card-title>Cupra Ateca</bal-card-title>
-                        <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
-
-                        <bal-card-button icon="edit">Edit</bal-card-button>
-                      </bal-card>
-                    </div>
-                    <div class="column">
-                      <bal-card>
-                        <bal-card-heading>Insured vehicle</bal-card-heading>
-                        <bal-card-title>Cupra Ateca</bal-card-title>
-                        <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
-
-                        <bal-card-button icon="edit">Edit</bal-card-button>
-                      </bal-card>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="has-margin-top p-3 has-background-blue-light">
-                  <bal-checkbox>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</bal-checkbox>
-                  <br />
-                  <bal-checkbox
-                    >Perspiciatis eveniet reprehenderit sed ab unde, excepturi, totam perferendis voluptatem officia, dicta iure! Ex ipsam corporis earum? Et assumenda nam quas
-                    saepe!</bal-checkbox
-                  >
-                  <br />
-                  <div class="is-flex is-justify-content-center has-large-margin-top">
-                    <bal-button color="primary">Submit</bal-button>
-                  </div>
-                  <br />
-                  <div class="is-flex is-justify-content-center">
-                    <bal-button color="link">Conditions</bal-button>
-                  </div>
-                </div>
-              </bal-tab-item>
-            </bal-tabs>
-          </bal-card-steps>
-        </bal-card>
+        <h2 class="title is-size-2">Addons</h2>
+        <section>
+          <bal-card>
+            <bal-card-content>
+              <div class="columns is-multiline">
+                <bal-field class="column is-half py-0" expanded>
+                  <bal-field-label>Label</bal-field-label>
+                  <bal-field-control>
+                    <bal-input placeholder="Placeholder"></bal-input>
+                    <bal-button color="primary" outlined class="ml-2">Action</bal-button>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+              </div>
+              <div class="columns is-multiline">
+                <bal-field class="column is-half" expanded disabled>
+                  <bal-field-label>Disabled State</bal-field-label>
+                  <bal-field-control>
+                    <bal-input placeholder="Placeholder"></bal-input>
+                    <bal-button color="primary" outlined class="ml-2" disabled>Action</bal-button>
+                  </bal-field-control>
+                  <bal-field-message>Hint or Validation Message</bal-field-message>
+                </bal-field>
+              </div>
+            </bal-card-content>
+          </bal-card>
+        </section>
       </div>
     </main>
-
-    <footer class="footer has-track-line">
-      <div class="container">
-        <span style="margin-right: 16px">Baloise Group</span>
-        <span style="margin-right: 16px">Legal notice</span>
-        <span style="margin-right: 16px">Cookie policy</span>
-        <span>Data protection</span>
-      </div>
-    </footer>
   </body>
 </html>

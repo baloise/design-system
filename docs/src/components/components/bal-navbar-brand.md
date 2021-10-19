@@ -23,9 +23,9 @@ search: false
 ### Properties
 
 
-| Attribute | Description               | Type                | Default          |
-| :-------- | :------------------------ | :------------------ | :--------------- |
-| **href**  | Link of the logo / title. | <code>string</code> | <code>'/'</code> |
+| Attribute | Description               | Type                            | Default                |
+| :-------- | :------------------------ | :------------------------------ | :--------------------- |
+| **href**  | Link of the logo / title. | <code>string , undefined</code> | <code>undefined</code> |
 
 ### Events
 

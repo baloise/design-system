@@ -579,6 +579,7 @@ export class Datepicker implements ComponentInterface {
           is-right
           inverted={this.inverted}
           name="date"
+          size="medium"
           onClick={this.onIconClick}
         />
       </div>
@@ -650,7 +651,7 @@ export class Datepicker implements ComponentInterface {
                       </option>
                     ))}
                   </select>
-                  <bal-icon size="xsmall" color="primary" name="caret-down" class="select-chevron"></bal-icon>
+                  <bal-icon size="small" color="primary" name="caret-down" class="select-chevron"></bal-icon>
                 </span>
               </div>
               <div class="control year-select">
@@ -662,7 +663,7 @@ export class Datepicker implements ComponentInterface {
                       </option>
                     ))}
                   </select>
-                  <bal-icon size="xsmall" color="primary" name="caret-down" class="select-chevron"></bal-icon>
+                  <bal-icon size="small" color="primary" name="caret-down" class="select-chevron"></bal-icon>
                 </span>
               </div>
             </div>

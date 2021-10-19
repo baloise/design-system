@@ -16,24 +16,6 @@ search: false
 <!-- docs:child of bal-field -->
 
 
-## Code
-
-
-
-### Properties
-
-
-| Attribute    | Description                                   | Type                                               | Default            |
-| :----------- | :-------------------------------------------- | :------------------------------------------------- | :----------------- |
-| **color**    | Defines the color of the message.             | <code>"" , "danger" , "success" , "warning"</code> | <code>''</code>    |
-| **expanded** | If `true` the component takes the whole width | <code>boolean</code>                               | <code>false</code> |
-
-## Testing
-
-The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
-
-- [More information about the installation and usage](/components/tooling/testing.html)
-
 
 
 ## Edit this page on Github

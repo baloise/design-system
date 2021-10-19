@@ -16,22 +16,17 @@ sidebarDepth: 0
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-timeinput-117></docs-demo-bal-timeinput-117></ClientOnly>
-
-
-### Inverted style
-
-<ClientOnly><docs-demo-bal-timeinput-118></docs-demo-bal-timeinput-118></ClientOnly>
+<ClientOnly><docs-demo-bal-timeinput-114></docs-demo-bal-timeinput-114></ClientOnly>
 
 
 ### Min and max time
 
-<ClientOnly><docs-demo-bal-timeinput-119></docs-demo-bal-timeinput-119></ClientOnly>
+<ClientOnly><docs-demo-bal-timeinput-115></docs-demo-bal-timeinput-115></ClientOnly>
 
 
 ### Disabled
 
-<ClientOnly><docs-demo-bal-timeinput-120></docs-demo-bal-timeinput-120></ClientOnly>
+<ClientOnly><docs-demo-bal-timeinput-116></docs-demo-bal-timeinput-116></ClientOnly>
 
 
 
@@ -42,13 +37,12 @@ sidebarDepth: 0
 ### Properties
 
 
-| Attribute    | Description                                             | Type                 | Default            |
-| :----------- | :------------------------------------------------------ | :------------------- | :----------------- |
-| **disabled** | If `true` the button is disabled                        | <code>boolean</code> | <code>false</code> |
-| **inverted** | If `true` the timeinput can be used on blue background. | <code>boolean</code> | <code>false</code> |
-| **max-time** | Latest date available for selection                     | <code>string</code>  | <code>''</code>    |
-| **min-time** | Earliest date available for selection                   | <code>string</code>  | <code>''</code>    |
-| **value**    | The value of the datepicker with the format `hh:mm`.    | <code>string</code>  | <code>''</code>    |
+| Attribute    | Description                                          | Type                 | Default            |
+| :----------- | :--------------------------------------------------- | :------------------- | :----------------- |
+| **disabled** | If `true` the button is disabled                     | <code>boolean</code> | <code>false</code> |
+| **max-time** | Latest date available for selection                  | <code>string</code>  | <code>''</code>    |
+| **min-time** | Earliest date available for selection                | <code>string</code>  | <code>''</code>    |
+| **value**    | The value of the datepicker with the format `hh:mm`. | <code>string</code>  | <code>''</code>    |
 
 ### Events
 

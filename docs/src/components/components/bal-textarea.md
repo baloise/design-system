@@ -23,7 +23,7 @@ A textarea allows a user to write and edit large texts.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-textarea-116></docs-demo-bal-textarea-116></ClientOnly>
+<ClientOnly><docs-demo-bal-textarea-113></docs-demo-bal-textarea-113></ClientOnly>
 
 
 

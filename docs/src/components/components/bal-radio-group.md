@@ -28,6 +28,7 @@ search: false
 | **inverted**  | If `true` the component can be used on dark background          | <code>boolean</code>                   | <code>false</code>        |
 | **name**      | The name of the control, which is submitted with the form data. | <code>string</code>                    | <code>this.inputId</code> |
 | **value**     | The value of the control.                                       | <code>string</code>                    | <code>''</code>           |
+| **vertical**  | If `true` the select buttons are listed verticaly               | <code>boolean</code>                   | <code>false</code>        |
 
 ### Events
 

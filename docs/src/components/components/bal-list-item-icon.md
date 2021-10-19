@@ -23,9 +23,8 @@ search: false
 ### Properties
 
 
-| Attribute | Description                                                                         | Type                 | Default            |
-| :-------- | :---------------------------------------------------------------------------------- | :------------------- | :----------------- |
-| **right** | If `true` the icon is on the right side of the list item. Default is the left side. | <code>boolean</code> | <code>false</code> |
+| Attribute | Description | Type | Default |
+| :-------- | :---------- | :--- | :------ |
 
 ## Testing
 

@@ -12,13 +12,13 @@ The basic layout stepper forms.
     <bal-navbar no-burger>
       <bal-navbar-brand>
         <bal-icon name="logo" inverted size="large"></bal-icon>
-        <bal-text style="margin-left: 15px"><strong>Stepper</strong></bal-text>
+        <span class="ml-2"><strong>Stepper</strong></span>
       </bal-navbar-brand>
     </bal-navbar>
   </header>
   <main>
     <div class="container">
-      <bal-tabs interface="o-steps" class="pt-5">
+      <bal-tabs interface="steps" class="pt-5">
         <bal-tab-item value="step-a" label="Person">
           <bal-card spacing="medium" class="mt-5">
             <bal-card-title>Person</bal-card-title>

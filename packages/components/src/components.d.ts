@@ -481,10 +481,6 @@ export namespace Components {
         "subject": string;
     }
     interface BalFieldLabel {
-        /**
-          * If `true` a asterix (*) is added to the label text
-         */
-        "required": boolean;
     }
     interface BalFieldMessage {
         "color": '' | ColorTypesExtended;
@@ -601,7 +597,7 @@ export namespace Components {
         /**
           * Defines the size of the icon.
          */
-        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+        "size": 'small' | 'medium' | 'large' | '';
         /**
           * Svg content.
          */
@@ -2351,10 +2347,6 @@ declare namespace LocalJSX {
         "subject"?: string;
     }
     interface BalFieldLabel {
-        /**
-          * If `true` a asterix (*) is added to the label text
-         */
-        "required"?: boolean;
     }
     interface BalFieldMessage {
         "color"?: '' | ColorTypesExtended;
@@ -2463,7 +2455,7 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the icon.
          */
-        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+        "size"?: 'small' | 'medium' | 'large' | '';
         /**
           * Svg content.
          */

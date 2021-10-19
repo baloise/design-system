@@ -48,15 +48,9 @@ bal-field {
     position: relative;
     display: flex;
     padding-bottom: 32px;
-    min-height: 48px;
-
-    // & .bal-select-icon {
-    //   transition: all 0.3s ease-out;
-
-    //   svg {
-    //     transition: all 0.3s ease-out;
-    //   }
-    // }
+    min-height: 80px;
+    align-items: center;
+    justify-content: flex-start;
 
     & > bal-icon,
     & .bal-select-icon,
@@ -67,7 +61,7 @@ bal-field {
         transition: all 0.3s ease-out;
       }
 
-      height: 48px !important;
+      height: 48px;
       max-height: 48px !important;
       pointer-events: none !important;
       position: absolute !important;

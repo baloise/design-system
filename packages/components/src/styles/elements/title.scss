@@ -74,6 +74,8 @@ a.is-bold {
   font-weight: $weight-bold;
 }
 
+.title.is-size-1,
+.title.is-size-2,
 .title.is-size-3,
 .title.is-size-4,
 .title.is-size-5,
@@ -81,12 +83,3 @@ a.is-bold {
   font-weight: $weight-bold;
   letter-spacing: -1%;
 }
-
-// a.is-link:focus,
-// a.is-link:active,
-// a.is-link:hover,
-// a.is-link:visited,
-// a.is-link {
-//   color: $cyan;
-//   text-decoration: none;
-// }

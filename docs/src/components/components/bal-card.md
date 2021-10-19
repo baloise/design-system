@@ -61,16 +61,16 @@ The position the action buttons to the right side just add the attribute `right`
 ### Properties
 
 
-| Attribute       | Description                                         | Type                                                                    | Default            |
-| :-------------- | :-------------------------------------------------- | :---------------------------------------------------------------------- | :----------------- |
-| **border**      | If `true` a light blue border is added to the card. | <code>boolean</code>                                                    | <code>false</code> |
-| **color**       | Defines the color of the card.                      | <code>"" , "danger" , "info" , "primary" , "success" , "warning"</code> | <code>''</code>    |
-| **flat**        | If `true` the card loses its shadow.                | <code>boolean</code>                                                    | <code>false</code> |
-| **flat-mobile** | If `true` a card will not have a shadow on mobile.  | <code>boolean</code>                                                    | <code>false</code> |
-| **inverted**    | If `true` the card background color becomes blue.   | <code>boolean</code>                                                    | <code>false</code> |
-| **spacing**     | Defines the size of the padding grid                | <code>"" , "large" , "medium" , "none" , "small"</code>                 | <code>''</code>    |
-| **square**      | If `true` the card loses its border radius.         | <code>boolean</code>                                                    | <code>false</code> |
-| **teaser**      | If `true` the card has a limited width on desktop.  | <code>boolean</code>                                                    | <code>false</code> |
+| Attribute       | Description                                         | Type                                                                                                                                                                                            | Default            |
+| :-------------- | :-------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------- |
+| **border**      | If `true` a light blue border is added to the card. | <code>boolean</code>                                                                                                                                                                            | <code>false</code> |
+| **color**       | Defines the color of the card.                      | <code>"" , "azul" , "blue" , "danger" , "gray" , "green" , "green-light" , "orange" , "pink" , "pink-light" , "primary" , "success" , "violett" , "violett-light" , "warning" , "yellow"</code> | <code>''</code>    |
+| **flat**        | If `true` the card loses its shadow.                | <code>boolean</code>                                                                                                                                                                            | <code>false</code> |
+| **flat-mobile** | If `true` a card will not have a shadow on mobile.  | <code>boolean</code>                                                                                                                                                                            | <code>false</code> |
+| **inverted**    | If `true` the card background color becomes blue.   | <code>boolean</code>                                                                                                                                                                            | <code>false</code> |
+| **spacing**     | Defines the size of the padding grid                | <code>"" , "large" , "medium" , "none" , "small"</code>                                                                                                                                         | <code>''</code>    |
+| **square**      | If `true` the card loses its border radius.         | <code>boolean</code>                                                                                                                                                                            | <code>false</code> |
+| **teaser**      | If `true` the card has a limited width on desktop.  | <code>boolean</code>                                                                                                                                                                            | <code>false</code> |
 
 ## Testing
 

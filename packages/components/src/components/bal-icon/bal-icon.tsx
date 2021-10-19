@@ -23,7 +23,7 @@ export class Icon {
   /**
    * Defines the size of the icon.
    */
-  @Prop() size: 'xsmall' | 'small' | 'medium' | 'large' | '' = ''
+  @Prop() size: 'small' | 'medium' | 'large' | '' = ''
 
   /**
    * The theme type of the button. Given by bulma our css framework.

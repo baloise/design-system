@@ -18,7 +18,7 @@ App is a container element for an Baloise Design System application. There shoul
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-app-5></docs-demo-bal-app-5></ClientOnly>
+<ClientOnly><docs-demo-bal-app-6></docs-demo-bal-app-6></ClientOnly>
 
 
 

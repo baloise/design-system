@@ -23,11 +23,6 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-radio-80></docs-demo-bal-radio-80></ClientOnly>
-
-
-### Inverted
-
 <ClientOnly><docs-demo-bal-radio-81></docs-demo-bal-radio-81></ClientOnly>
 
 
@@ -49,11 +44,6 @@ A radio input is normally displayed in a radio group. The user can only select o
 ### Select Button
 
 <ClientOnly><docs-demo-bal-radio-85></docs-demo-bal-radio-85></ClientOnly>
-
-
-#### Inverted
-
-<ClientOnly><docs-demo-bal-radio-86></docs-demo-bal-radio-86></ClientOnly>
 
 
 

@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Element } from '@stencil/core'
+import { Component, h, Host, Element } from '@stencil/core'
 
 @Component({
   tag: 'bal-field-label',
@@ -8,11 +8,6 @@ import { Component, h, Host, Prop, Element } from '@stencil/core'
 export class FieldLabel {
   @Element() element!: HTMLElement
   parrentBalFieldElement!: HTMLBalFieldElement | null
-
-  /**
-   * If `true` a asterix (*) is added to the label text
-   */
-  @Prop() required: boolean = false
 
   componentDidLoad() {
     if (this.element) {
@@ -34,7 +29,6 @@ export class FieldLabel {
       <Host>
         <label class="label">
           <slot></slot>
-          {this.required === true ? ' *' : ''}
         </label>
       </Host>
     )

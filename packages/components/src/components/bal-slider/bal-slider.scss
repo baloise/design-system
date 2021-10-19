@@ -63,7 +63,7 @@
 
     &::-webkit-slider-thumb {
       box-shadow: none;
-      border: 3px solid $white;
+      border: 3px solid transparent;
       height: 23px;
       width: 23px;
       border-radius: 50px;
@@ -78,7 +78,7 @@
 
       &::-webkit-slider-thumb {
         background: $primary;
-        border: 2px solid $white;
+        border: 2px solid transparent;
       }
     }
 

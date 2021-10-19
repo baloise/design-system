@@ -6,13 +6,13 @@
           <bal-navbar no-burger>
             <bal-navbar-brand>
               <bal-icon name="logo" inverted size="large"></bal-icon>
-              <bal-text style="margin-left: 15px"><strong>Stepper</strong></bal-text>
+              <span class="ml-2"><strong>Stepper</strong></span>
             </bal-navbar-brand>
           </bal-navbar>
         </header>
         <main>
           <div class="container">
-            <bal-tabs interface="o-steps" class="pt-5" :value="activeStep">
+            <bal-tabs interface="steps" class="pt-5" :value="activeStep">
               <bal-tab-item
                 value="step-a"
                 label="Person"

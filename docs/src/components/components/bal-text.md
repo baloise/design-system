@@ -18,22 +18,22 @@ A text provides some additional helpers.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-text-112></docs-demo-bal-text-112></ClientOnly>
+<ClientOnly><docs-demo-bal-text-109></docs-demo-bal-text-109></ClientOnly>
 
 
 ### Small
 
-<ClientOnly><docs-demo-bal-text-113></docs-demo-bal-text-113></ClientOnly>
+<ClientOnly><docs-demo-bal-text-110></docs-demo-bal-text-110></ClientOnly>
 
 
 ### Bold
 
-<ClientOnly><docs-demo-bal-text-114></docs-demo-bal-text-114></ClientOnly>
+<ClientOnly><docs-demo-bal-text-111></docs-demo-bal-text-111></ClientOnly>
 
 
 ### Colors
 
-<ClientOnly><docs-demo-bal-text-115></docs-demo-bal-text-115></ClientOnly>
+<ClientOnly><docs-demo-bal-text-112></docs-demo-bal-text-112></ClientOnly>
 
 
 
@@ -44,11 +44,11 @@ A text provides some additional helpers.
 ### Properties
 
 
-| Attribute | Description                         | Type                                                                             | Default            |
-| :-------- | :---------------------------------- | :------------------------------------------------------------------------------- | :----------------- |
-| **bold**  | If `true` the text is bold          | <code>boolean</code>                                                             | <code>false</code> |
-| **color** | Defines the color of the text.      | <code>"" , "danger" , "hint" , "info" , "primary" , "success" , "warning"</code> | <code>''</code>    |
-| **small** | If `true` the text has a small size | <code>boolean</code>                                                             | <code>false</code> |
+| Attribute | Description                         | Type                                                                    | Default            |
+| :-------- | :---------------------------------- | :---------------------------------------------------------------------- | :----------------- |
+| **bold**  | If `true` the text is bold          | <code>boolean</code>                                                    | <code>false</code> |
+| **color** | Defines the color of the text.      | <code>"" , "danger" , "hint" , "primary" , "success" , "warning"</code> | <code>''</code>    |
+| **small** | If `true` the text has a small size | <code>boolean</code>                                                    | <code>false</code> |
 
 ## Testing
 

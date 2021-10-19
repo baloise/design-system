@@ -33,7 +33,7 @@ export class FieldControl {
 
   get buildValidationIconTemplate() {
     if (this.touched && !this.loading && !this.disabled) {
-      return <bal-icon class="is-validation-icon" size="small" name={this.invalid ? 'close' : 'check'} color={this.invalid ? 'danger' : 'success'} />
+      return <bal-icon class="is-validation-icon" name={this.invalid ? 'close' : 'check'} color={this.invalid ? 'danger' : 'success'} />
     }
     return ''
   }

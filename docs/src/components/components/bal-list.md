@@ -21,24 +21,19 @@ A list present content in a way that makes it easy to identify a specific item i
 <ClientOnly><docs-demo-bal-list-67></docs-demo-bal-list-67></ClientOnly>
 
 
-### With borders
+### Inverted
 
 <ClientOnly><docs-demo-bal-list-68></docs-demo-bal-list-68></ClientOnly>
 
 
-### Inverted
+### With Icons
 
 <ClientOnly><docs-demo-bal-list-69></docs-demo-bal-list-69></ClientOnly>
 
 
-### With Icons
-
-<ClientOnly><docs-demo-bal-list-70></docs-demo-bal-list-70></ClientOnly>
-
-
 ### Link
 
-<ClientOnly><docs-demo-bal-list-71></docs-demo-bal-list-71></ClientOnly>
+<ClientOnly><docs-demo-bal-list-70></docs-demo-bal-list-70></ClientOnly>
 
 
 
@@ -51,8 +46,6 @@ A list present content in a way that makes it easy to identify a specific item i
 
 | Attribute    | Description                                        | Type                 | Default            |
 | :----------- | :------------------------------------------------- | :------------------- | :----------------- |
-| **border**   | If `true` each list item has a bottom border       | <code>boolean</code> | <code>false</code> |
-| **disabled** | If `true` the list item can be hovered             | <code>boolean</code> | <code>false</code> |
 | **inverted** | If `true` the list can be used on a dark backround | <code>boolean</code> | <code>false</code> |
 
 ## Testing

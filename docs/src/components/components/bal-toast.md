@@ -18,12 +18,12 @@ Toasts are used to inform the user with a simple text message.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-toast-121></docs-demo-bal-toast-121></ClientOnly>
+<ClientOnly><docs-demo-bal-toast-117></docs-demo-bal-toast-117></ClientOnly>
 
 
 ### Colors
 
-<ClientOnly><docs-demo-bal-toast-122></docs-demo-bal-toast-122></ClientOnly>
+<ClientOnly><docs-demo-bal-toast-118></docs-demo-bal-toast-118></ClientOnly>
 
 
 
@@ -72,11 +72,11 @@ export class ServicesPageComponent {
 ### Properties
 
 
-| Attribute    | Description                                                    | Type                                                                    | Default         |
-| :----------- | :------------------------------------------------------------- | :---------------------------------------------------------------------- | :-------------- |
-| **color**    | The theme type of the toast. Given by bulma our css framework. | <code>"" , "danger" , "info" , "primary" , "success" , "warning"</code> | <code>''</code> |
-| **duration** | The duration of the toast in milliseconds.                     | <code>number</code>                                                     | <code>0</code>  |
-| **message**  | Content message                                                | <code>string</code>                                                     | <code>''</code> |
+| Attribute    | Description                                                    | Type                                                           | Default         |
+| :----------- | :------------------------------------------------------------- | :------------------------------------------------------------- | :-------------- |
+| **color**    | The theme type of the toast. Given by bulma our css framework. | <code>"" , "danger" , "primary" , "success" , "warning"</code> | <code>''</code> |
+| **duration** | The duration of the toast in milliseconds.                     | <code>number</code>                                            | <code>0</code>  |
+| **message**  | Content message                                                | <code>string</code>                                            | <code>''</code> |
 
 ### Events
 

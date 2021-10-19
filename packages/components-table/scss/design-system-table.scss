@@ -12,14 +12,14 @@
       border-color: $blue,
       header-foreground-color: $blue,
       header-column-separator: false,
-      row-border-color: $blue-light-line,
-      selected-row-background-color: $blue-light-hover,
+      row-border-color: $border,
+      selected-row-background-color: aqua,
       odd-row-background-color: null,
       row-hover-color: $white-bis,
       range-selection-border-color: $primary,
       checkbox-border-radius: 0,
       checkbox-checked-color: $primary,
-      checkbox-unchecked-color: $blue-line,
+      checkbox-unchecked-color: lime,
     )
   );
 
@@ -96,7 +96,7 @@
       top: 0;
       height: 16px;
       width: 16px;
-      border: 1px solid $blue-line;
+      border: 1px solid $border;
     }
 
     &::after {
