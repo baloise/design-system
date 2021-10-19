@@ -8,18 +8,18 @@ import { Component, Host, h, Prop } from '@stencil/core'
 })
 export class Data {
   /**
-   * If `true` a bottom border is added to the data-item.
-   */
-  @Prop() border = false
-
-  /**
    * If `true` the data list is horizontal instead of vertical.
    */
   @Prop() horizontal = false
 
   render() {
     return (
-      <Host class={['bal-data', this.border ? 'has-border' : '', this.horizontal ? 'is-horizontal' : ''].join(' ')}>
+      <Host
+        class={{
+          'bal-data': true,
+          'is-horizontal': this.horizontal,
+        }}
+      >
         <slot></slot>
       </Host>
     )

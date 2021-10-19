@@ -15,7 +15,7 @@ export class Tabs {
   /**
    * Defines the layout of the tabs.
    */
-  @Prop() interface: 'tabs' | 'steps' | 'o-steps' = 'tabs'
+  @Prop() interface: 'tabs' | 'steps' = 'tabs'
 
   /**
    * If `true` the field expands over the whole width.
@@ -95,8 +95,6 @@ export class Tabs {
   render() {
     if (this.interface === 'steps') {
       return this.renderSteps()
-    } else if (this.interface === 'o-steps') {
-      return this.renderOSteps()
     } else {
       return this.renderTabs()
     }
@@ -112,10 +110,10 @@ export class Tabs {
     return <span style={{ marginTop: '-2px' }}>{index + 1}</span>
   }
 
-  renderOSteps() {
+  renderSteps() {
     return (
       <Host
-        class="bal-o-steps"
+        class="bal-steps"
         data-value={this.tabsOptions
           .filter(t => t.active)
           .map(t => t.value)
@@ -152,48 +150,6 @@ export class Tabs {
           </ul>
         </div>
         <slot></slot>
-      </Host>
-    )
-  }
-
-  renderSteps() {
-    return (
-      <Host
-        class="bal-steps"
-        data-value={this.tabsOptions
-          .filter(t => t.active)
-          .map(t => t.value)
-          .join(',')}
-        data-label={this.tabsOptions
-          .filter(t => t.active)
-          .map(t => t.label)
-          .join(',')}
-      >
-        <div class={['tabs is-fullwidth'].join(' ')}>
-          <ul>
-            {this.tabsOptions.map((tab, index) => (
-              <li
-                class={{
-                  'is-active': tab.active,
-                  'is-disabled': tab.disabled,
-                  'is-done': tab.done,
-                  'is-failed': tab.failed,
-                  'data-test-tab-item': true,
-                }}
-                data-label={tab.label}
-                data-value={tab.value}
-                data-index={index}
-              >
-                <a onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}>
-                  <span class="step-index">{this.stepIndex(tab, index)}</span>
-                  <span class="step-label">{tab.label}</span>
-                </a>
-                <span class="bubble" style={{ display: tab.hasBubble ? 'inline' : 'none' }}></span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <slot />
       </Host>
     )
   }

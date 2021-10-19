@@ -82,7 +82,7 @@ export class Pagination {
     return (
       <li>
         <a class={['pagination-link', this._value === pageNumber ? 'is-current' : ''].join(' ')} onClick={() => this.selectPage(pageNumber)}>
-          <bal-text>{pageNumber}</bal-text>
+          <span>{pageNumber}</span>
         </a>
       </li>
     )
@@ -129,10 +129,10 @@ export class Pagination {
       <Host>
         <nav class="pagination is-centered" role="navigation" aria-label="pagination">
           <button type="button" class="pagination-previous" disabled={this._value < 2} onClick={() => this.previous()}>
-            <bal-icon name="nav-go-left" size="small" />
+            <bal-icon name="nav-go-left" color={this._value < 2 ? 'gray' : 'primary'} />
           </button>
           <button type="button" class="pagination-next" disabled={this._value === this.totalPages} onClick={() => this.next()}>
-            <bal-icon name="nav-go-right" size="small" />
+            <bal-icon name="nav-go-right" color={this._value === this.totalPages ? 'gray' : 'primary'} />
           </button>
           <ul class="pagination-list is-hidden-mobile">{tabletItems}</ul>
           <ul class="pagination-list is-hidden-tablet">{mobileItems}</ul>

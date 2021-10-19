@@ -12,6 +12,16 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
+        <bal-navbar no-burger>
+          <bal-navbar-brand>
+            <bal-icon name="logo" inverted size="large"></bal-icon>
+            <span class="ml-3"><strong>App</strong> Title</span>
+          </bal-navbar-brand>
+        </bal-navbar>
+      </section>
+
+      <h2 class="title is-size-2">Links</h2>
+      <section>
         <bal-navbar>
           <bal-navbar-brand>
             <bal-icon name="logo" inverted size="large"></bal-icon>
@@ -31,13 +41,44 @@
                 </div>
               </div>
             </bal-navbar-menu-start>
+          </bal-navbar-menu>
+        </bal-navbar>
+      </section>
+
+      <h2 class="title is-size-2">Language Select</h2>
+      <section>
+        <bal-navbar>
+          <bal-navbar-brand>
+            <bal-icon name="logo" inverted size="large"></bal-icon>
+            <span class="ml-3"><strong>App</strong> Title</span>
+          </bal-navbar-brand>
+          <bal-navbar-menu>
             <bal-navbar-menu-end>
-              <bal-select value="de" inverted class="navbar-item">
-                <bal-select-option label="German" value="de">German</bal-select-option>
-                <bal-select-option label="French" value="fr">French</bal-select-option>
-                <bal-select-option label="Italian" value="it">Italian</bal-select-option>
-                <bal-select-option label="English" value="en">English</bal-select-option>
-              </bal-select>
+              <bal-field class="navbar-item" pure inverted>
+                <bal-field-control class="has-icons-left">
+                  <bal-select value="de" inverted>
+                    <bal-select-option label="German" value="de">German</bal-select-option>
+                    <bal-select-option label="French" value="fr">French</bal-select-option>
+                    <bal-select-option label="Italian" value="it">Italian</bal-select-option>
+                    <bal-select-option label="English" value="en">English</bal-select-option>
+                  </bal-select>
+                </bal-field-control>
+              </bal-field>
+              <bal-button class="navbar-item" inverted>Logout</bal-button>
+            </bal-navbar-menu-end>
+          </bal-navbar-menu>
+        </bal-navbar>
+      </section>
+
+      <h2 class="title is-size-2">Search Field</h2>
+      <section>
+        <bal-navbar>
+          <bal-navbar-brand>
+            <bal-icon name="logo" inverted size="large"></bal-icon>
+            <span class="ml-3"><strong>App</strong> Title</span>
+          </bal-navbar-brand>
+          <bal-navbar-menu>
+            <bal-navbar-menu-end>
               <bal-field class="navbar-item" pure inverted>
                 <bal-field-control class="has-icons-left">
                   <bal-icon name="search" class="is-left"></bal-icon>

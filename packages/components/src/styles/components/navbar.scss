@@ -20,6 +20,30 @@ a.navbar-item {
   }
 }
 
+bal-field.navbar-item {
+  bal-field-control > bal-input {
+    flex: 1;
+  }
+
+  bal-select {
+    display: block;
+    flex: 1;
+
+    bal-dropdown {
+      display: block;
+      flex: 1;
+
+      .dropdown {
+        display: flex;
+
+        bal-dropdown-trigger {
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+
 .navbar-item.has-dropdown {
   a:after {
     margin-top: -0.575em;
@@ -46,10 +70,14 @@ a.navbar-item {
 }
 
 @include desktop() {
+  .navbar {
+    min-height: 80px;
+  }
+
   .navbar-brand {
     .navbar-item {
       span {
-        font-size: $size-large;
+        font-size: $size-large !important;
       }
     }
   }

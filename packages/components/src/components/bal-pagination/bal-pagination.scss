@@ -6,38 +6,15 @@
 }
 
 nav.pagination {
-  & > button {
-    box-shadow: none !important;
-    align-items: center;
-    background: $white;
-
-    &:disabled {
-      background: $blue-light;
-      border-color: $blue-light-line;
-      color: $blue-light-text;
-      cursor: not-allowed;
-    }
-  }
-
-  bal-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -1px;
-  }
-
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-
-    li > a:not(.is-current) {
-      background: $white;
-    }
-  }
-
   button,
   a {
     cursor: pointer;
+    border-width: 2px;
+
+    &:disabled,
+    &.is-disabled {
+      cursor: not-allowed;
+      opacity: 1;
+    }
   }
 }

@@ -42,8 +42,18 @@
     &.is-focused {
       border-width: 2px;
       padding-bottom: 0;
-      border-color: $blue;
+      border-color: $primary;
       box-shadow: none;
+
+      &.is-success {
+        border-color: $success;
+        background: $success-1;
+      }
+
+      &.is-danger {
+        border-color: $danger;
+        background: $danger-1;
+      }
     }
 
     .bal-select__selections {

@@ -19,7 +19,7 @@
       justify-content: flex-start;
       align-items: center;
       flex-wrap: wrap;
-      padding: 8px 0;
+      padding: 0;
 
       .bal-data-label {
         position: relative;
@@ -27,6 +27,7 @@
         color: $blue;
         flex: 1 1;
         flex-basis: 100%;
+        padding: 4px 0;
 
         font-family: $family-primary;
         font-weight: $weight-bold;
@@ -45,6 +46,7 @@
         flex: 1 1;
         flex-basis: 100%;
         margin-top: 10px;
+        padding: 4px 0;
 
         font-family: $family-primary;
         font-weight: $weight-normal;
@@ -58,12 +60,8 @@
 
       &.is-disabled .bal-data-label,
       &.is-disabled .bal-data-value {
-        color: $blue-light-text;
+        color: $disabled-color;
       }
-    }
-
-    &.has-border > .bal-data-item {
-      border-bottom: 1px solid $blue-light-line;
     }
   }
 
@@ -78,10 +76,9 @@
       }
 
       & > div > bal-input input.input {
-        padding-left: 4px;
-        padding-right: 4px;
-        background: $gray-lightest;
         flex: 1;
+        min-height: 40px;
+        height: 40px;
       }
 
       &.is-editable {
@@ -111,6 +108,10 @@
       }
 
       &:not(.is-horizontal) {
+        .bal-data-item {
+          border-bottom: 1px solid $border;
+        }
+
         .bal-data-label {
           font-size: $size-normal;
         }

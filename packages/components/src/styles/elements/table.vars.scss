@@ -3,7 +3,7 @@
 $table-color: $text;
 $table-background-color: $scheme-main;
 
-$table-cell-border: 1px solid $blue-light-line; //$border;
+$table-cell-border: 1px solid $border;
 $table-cell-border-width: 0 0 1px;
 $table-cell-padding: 0.5em 0.75em;
 $table-cell-heading-color: $text-strong;
@@ -17,10 +17,10 @@ $table-head-background-color: transparent;
 $table-body-background-color: transparent;
 $table-foot-background-color: transparent;
 
-$table-row-hover-background-color: $blue-light-hover;
+$table-row-hover-background-color: $hover-background;
 
-$table-row-active-background-color: $primary;
-$table-row-active-color: $primary-invert;
+$table-row-active-background-color: $active-background;
+$table-row-active-color: $active-color;
 
-$table-striped-row-even-background-color: $scheme-main-bis;
-$table-striped-row-even-hover-background-color: $blue-light-hover;
+$table-striped-row-even-background-color: $white;
+$table-striped-row-even-hover-background-color: $hover-background;

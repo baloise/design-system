@@ -17,16 +17,12 @@
 ### Used by
 
  - [bal-checkbox](../bal-checkbox)
- - [bal-pagination](../bal-pagination)
- - [bal-radio](../bal-radio)
  - [bal-tag](../bal-tag)
 
 ### Graph
 ```mermaid
 graph TD;
   bal-checkbox --> bal-text
-  bal-pagination --> bal-text
-  bal-radio --> bal-text
   bal-tag --> bal-text
   style bal-text fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -271,10 +271,6 @@ export namespace Components {
     }
     interface BalData {
         /**
-          * If `true` a bottom border is added to the data-item.
-         */
-        "border": boolean;
-        /**
           * If `true` the data list is horizontal instead of vertical.
          */
         "horizontal": boolean;
@@ -995,13 +991,11 @@ export namespace Components {
           * Sets the focus on the input element
          */
         "getValue": () => Promise<string[] | undefined>;
+        "invalid": boolean;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
-        /**
-          * Defines if the select is in a loading state.
-         */
         "loading": boolean;
         /**
           * If `true` multiple option can be selected
@@ -1039,6 +1033,7 @@ export namespace Components {
           * Sets the focus on the input element
          */
         "setFocus": () => Promise<void>;
+        "touched": boolean;
         /**
           * If `true` the user can search by typing into the input field.
          */
@@ -1236,7 +1231,7 @@ export namespace Components {
         /**
           * Defines the layout of the tabs.
          */
-        "interface": 'tabs' | 'steps' | 'o-steps';
+        "interface": 'tabs' | 'steps';
         /**
           * If you want the rounded tab style.
          */
@@ -1364,10 +1359,6 @@ export namespace Components {
           * If `true` the button is disabled
          */
         "disabled": boolean;
-        /**
-          * If `true` the timeinput can be used on blue background.
-         */
-        "inverted": boolean;
         /**
           * Latest date available for selection
          */
@@ -2154,10 +2145,6 @@ declare namespace LocalJSX {
     }
     interface BalData {
         /**
-          * If `true` a bottom border is added to the data-item.
-         */
-        "border"?: boolean;
-        /**
           * If `true` the data list is horizontal instead of vertical.
          */
         "horizontal"?: boolean;
@@ -2868,13 +2855,11 @@ declare namespace LocalJSX {
           * If `true` the component uses the whole width.
          */
         "expanded"?: boolean;
+        "invalid"?: boolean;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
-        /**
-          * Defines if the select is in a loading state.
-         */
         "loading"?: boolean;
         /**
           * If `true` multiple option can be selected
@@ -2928,6 +2913,7 @@ declare namespace LocalJSX {
           * Defines the height of the dropdown list.
          */
         "scrollable"?: number;
+        "touched"?: boolean;
         /**
           * If `true` the user can search by typing into the input field.
          */
@@ -3137,7 +3123,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the tabs.
          */
-        "interface"?: 'tabs' | 'steps' | 'o-steps';
+        "interface"?: 'tabs' | 'steps';
         /**
           * Emitted when the action button has clicked
          */
@@ -3288,10 +3274,6 @@ declare namespace LocalJSX {
           * If `true` the button is disabled
          */
         "disabled"?: boolean;
-        /**
-          * If `true` the timeinput can be used on blue background.
-         */
-        "inverted"?: boolean;
         /**
           * Latest date available for selection
          */

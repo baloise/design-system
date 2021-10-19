@@ -161,13 +161,13 @@ export class Radio implements ComponentInterface {
           }}
           htmlFor={inputId}
         >
-          <bal-text
+          <span
             class={{
               'pl-5': !this.isEmpty && this.interface !== 'select-button',
             }}
           >
             <slot></slot>
-          </bal-text>
+          </span>
         </label>
       </Host>
     )

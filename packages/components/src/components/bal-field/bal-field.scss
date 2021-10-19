@@ -21,6 +21,20 @@ bal-field {
     }
   }
 
+  bal-field-hint {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 27px;
+  }
+
+  bal-field-label {
+    display: block;
+  }
+
   bal-field-message + bal-field-message {
     display: none !important;
   }
@@ -149,10 +163,10 @@ bal-field {
   }
 
   &.is-pure {
-    padding: 0 !important;
+    padding: 0;
 
     bal-field-control {
-      padding: 0 !important;
+      padding: 0;
     }
   }
 }

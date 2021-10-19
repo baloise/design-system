@@ -5,13 +5,12 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                             | Type      | Default |
-| ---------- | ---------- | ------------------------------------------------------- | --------- | ------- |
-| `disabled` | `disabled` | If `true` the button is disabled                        | `boolean` | `false` |
-| `inverted` | `inverted` | If `true` the timeinput can be used on blue background. | `boolean` | `false` |
-| `maxTime`  | `max-time` | Latest date available for selection                     | `string`  | `''`    |
-| `minTime`  | `min-time` | Earliest date available for selection                   | `string`  | `''`    |
-| `value`    | `value`    | The value of the datepicker with the format `hh:mm`.    | `string`  | `''`    |
+| Property   | Attribute  | Description                                          | Type      | Default |
+| ---------- | ---------- | ---------------------------------------------------- | --------- | ------- |
+| `disabled` | `disabled` | If `true` the button is disabled                     | `boolean` | `false` |
+| `maxTime`  | `max-time` | Latest date available for selection                  | `string`  | `''`    |
+| `minTime`  | `min-time` | Earliest date available for selection                | `string`  | `''`    |
+| `value`    | `value`    | The value of the datepicker with the format `hh:mm`. | `string`  | `''`    |
 
 
 ## Events

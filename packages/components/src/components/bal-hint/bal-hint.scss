@@ -9,9 +9,8 @@ bal-icon[role='button'] {
   user-select: none;
   cursor: pointer;
 
-  &:hover,
-  &:focus {
-    fill: $blue-dark;
+  &:hover {
+    fill: $primary-8;
   }
 }
 
@@ -22,13 +21,13 @@ bal-icon[role='button'] {
   right: 0;
   min-height: 100%;
   z-index: 100;
-  background: $blue;
-  color: $white;
+  background: $primary;
+  color: $primary-invert;
   padding: 32px;
   border-radius: 0;
 
   .title {
-    color: $white;
+    color: $primary-invert;
   }
 
   .buttons {
@@ -45,7 +44,7 @@ bal-icon[role='button'] {
 @include tablet() {
   .bal-hint-content {
     position: absolute;
-    border-radius: $radius-large;
+    border-radius: $radius;
     margin-left: 40px;
     top: -32px;
     bottom: initial;

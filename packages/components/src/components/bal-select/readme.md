@@ -26,7 +26,6 @@ const option = NewBalOptionValue('value', 'label')
 | `disabled`    | `disabled`      | If `true` the component is diabled.                                               | `boolean`                         | `false`        |
 | `expanded`    | `expanded`      | If `true` the component uses the whole width.                                     | `boolean`                         | `false`        |
 | `inverted`    | `inverted`      | Set this to `true` when the component is placed on a dark background.             | `boolean`                         | `false`        |
-| `loading`     | `loading`       | Defines if the select is in a loading state.                                      | `boolean`                         | `false`        |
 | `multiple`    | `multiple`      | If `true` multiple option can be selected                                         | `boolean`                         | `false`        |
 | `name`        | `name`          | The name of the control, which is submitted with the form data.                   | `string`                          | `this.inputId` |
 | `noBorder`    | `no-border`     | Removes the border of the input.                                                  | `boolean`                         | `false`        |

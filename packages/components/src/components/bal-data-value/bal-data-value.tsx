@@ -64,7 +64,7 @@ export class DataValue {
           onBalFocus={_ => this.balFocus.emit()}
           onClick={ev => this.onClickHandler(ev)}
         >
-          <bal-icon name="edit" size="small"></bal-icon>
+          <bal-icon name="edit"></bal-icon>
         </bal-button>
       </Host>
     )

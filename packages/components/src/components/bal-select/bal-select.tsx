@@ -38,6 +38,21 @@ export class Select {
   @State() labelToSelectTo: string = ''
 
   /**
+   * @internal
+   */
+  @Prop() invalid: boolean = false
+
+  /**
+   * @internal
+   */
+  @Prop() touched: boolean = false
+
+  /**
+   * @internal
+   */
+  @Prop() loading: boolean = false
+
+  /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop() name: string = this.inputId
@@ -91,11 +106,6 @@ export class Select {
    * Defines the height of the dropdown list.
    */
   @Prop() scrollable: number = 250
-
-  /**
-   * Defines if the select is in a loading state.
-   */
-  @Prop() loading: boolean = false
 
   /**
    * Selected option values. Could also be passed as a string, which gets transformed.
@@ -690,6 +700,8 @@ export class Select {
                 'is-disabled': this.disabled,
                 'is-focused': this.isDropdownOpen,
                 'has-no-border': this.noBorder,
+                'is-success': this.touched && !this.invalid,
+                'is-danger': this.touched && this.invalid,
               }}
             >
               <div class="bal-select__selections">

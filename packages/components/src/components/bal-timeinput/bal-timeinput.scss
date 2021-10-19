@@ -5,38 +5,39 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
   .stepper {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
+
     .stepper-btn {
       border: none;
       outline: 0;
-      padding: 5px 0 5px 0;
+      padding: 4px 0 4px 0;
       background-color: transparent;
       cursor: pointer;
     }
+
     .stepper-btn:disabled {
       cursor: not-allowed;
       * {
-        color: $blue-line;
-        stroke: $blue-line;
+        color: $border;
+        stroke: $border;
       }
     }
+
     .time-box {
       appearance: none;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      border-width: 1px;
-      border-radius: 0;
+      border-width: 2px;
+      border-radius: $radius;
       box-shadow: none;
-      padding-left: 5px;
-      padding-right: 5px;
+      padding-left: 4px;
+      padding-right: 4px;
       font-size: $size-normal;
       outline: none;
       color: $text;
-      min-height: 45px;
+      min-height: 48px;
 
       &:focus,
       &.is-focused {
@@ -46,7 +47,9 @@
       }
 
       &:disabled {
-        background-color: $blue-light;
+        background-color: $input-disabled-background-color;
+        border-color: $input-disabled-border-color;
+        color: $input-disabled-color;
         cursor: not-allowed;
       }
     }
@@ -66,17 +69,7 @@
       margin-left: 0.35em;
       margin-right: 0.35em;
       border-radius: 50%;
-      background-color: $blue;
-    }
-  }
-  .is-inverted {
-    &:after,
-    &:before {
-      background-color: $white;
-    }
-
-    select {
-      background-color: $white;
+      background-color: $primary;
     }
   }
 }

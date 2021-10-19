@@ -1,65 +1,105 @@
 :host.bal-steps {
-  .tabs {
-    margin: 0 !important;
+  ul {
+    @include margin(0);
+    @include padding(0);
 
-    & > ul {
-      margin: 0;
-      padding: 0;
-      justify-content: center;
-      align-items: center;
-    }
+    display: flex;
+    list-style: none;
+    text-align: center;
 
-    & > ul > li {
+    li {
+      flex-basis: 1rem;
+      flex-grow: 1;
+      flex-shrink: 1;
       position: relative;
-      height: 50px;
-      max-width: 75px;
 
-      & > a {
-        line-height: 1.2;
-        cursor: pointer;
-        display: flex;
-        flex: 1 1;
-        height: 100%;
-        justify-content: center;
+      a {
+        text-decoration: none !important;
+      }
+
+      .step-index {
+        height: 24px;
+        width: 24px;
+        border: 2px solid $border;
+        background-color: $white;
+        background: $white;
+        color: $white;
+        overflow: hidden;
+        position: absolute;
+        left: calc(50% - 1rem);
         align-items: center;
-        padding: 0;
+        display: flex;
+        border-radius: 50%;
+        font-weight: 700;
+        justify-content: center;
+        position: relative;
+        z-index: 5;
+        margin-bottom: 8px;
 
-        span.step-index {
+        .inner {
+          background: $primary;
           border-radius: 50%;
-          border: 1px solid $blue-light-line;
-          display: flex;
-          align-items: center;
-          font-weight: $weight-bold;
-          font-family: $title-family;
-          color: $text-strong;
-          height: 28px;
-          min-width: 28px;
-          line-height: 1.125;
-          justify-content: center;
-          font-size: $size-small;
-          position: relative;
-
-          font-weight: $weight-bold;
-          color: $text-strong;
-          text-align: center;
-        }
-
-        span.step-label {
-          display: none;
+          height: 10px;
+          width: 10px;
         }
       }
 
-      &.is-done {
-        color: $blue;
-        padding-bottom: 0;
+      .step-label {
+        margin-top: 2rem;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+        padding-top: 0.2em;
+        color: $primary-4;
+      }
 
-        span.step-index {
-          position: relative;
-          background: $blue;
-          border-color: $blue !important;
+      &:not(:last-child):after {
+        content: ' ';
+        display: block;
+        position: absolute;
+
+        height: 2px;
+        left: 50%;
+        right: -50%;
+        top: 11px;
+        margin-right: 16px;
+        margin-left: 8px;
+        background-color: $primary;
+      }
+    }
+
+    li.is-failed:not(.is-active) {
+      .step-index {
+        border: 2px solid $danger !important;
+        background: $danger !important;
+
+        .inner {
+          background: $danger !important;
         }
 
-        span.step-index::after {
+        &::after {
+          display: inline-block;
+          position: absolute;
+          background-color: transparent;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 24px 24px;
+          content: '!';
+          font-size: 16px;
+          text-align: center;
+          width: 32px;
+          height: 32px;
+          line-height: 32px;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    li.is-done:not(.is-active) {
+      .step-index {
+        border: 2px solid $success !important;
+        background: $success !important;
+
+        &::after {
           display: inline-block;
           position: absolute;
           background-color: transparent;
@@ -67,11 +107,12 @@
           background-repeat: no-repeat;
           background-size: 24px 24px;
           content: '';
-          top: 5px;
+          top: 50%;
+          margin-top: -7px;
           left: 50%;
-          margin-left: -3px;
+          margin-left: -4px;
           width: 5px;
-          height: 12px;
+          height: 10px;
           border-bottom: 2px solid $white;
           border-right: 2px solid $white;
           border-top: 0;
@@ -82,110 +123,61 @@
           -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
         }
-      }
 
-      &.is-active > a {
-        color: $blue;
-        padding-bottom: 0;
-
-        span.step-index {
-          border-color: $blue;
-        }
-      }
-
-      & > a:hover {
-        span.step-label {
-          color: $blue;
-        }
-      }
-
-      &.is-failed {
-        padding-bottom: 0;
-
-        span.step-index {
-          position: relative;
-          background: $danger;
-          color: $white !important;
-          font-size: $size-normal !important;
-          border-color: $danger !important;
-        }
-      }
-
-      &.is-disabled > a,
-      &.is-disabled > a:hover {
-        cursor: not-allowed;
-        opacity: 0.5;
-
-        span.step-index {
-          border-color: $blue-light-line;
-        }
-
-        span.step-label,
-        span.step-index {
-          color: $blue-light-text;
+        .inner {
+          background: $success !important;
         }
       }
     }
-  }
 
-  @include tablet() {
-    .tabs {
-      border-bottom: 1px solid $blue-light-line;
-      & > ul > li {
-        border-top: 1px solid $blue-light-line;
-        border-left: 1px solid $blue-light-line;
-        max-width: 300px;
-        height: 100px;
+    li.is-clickable:hover {
+      .step-label {
+        color: $primary;
+      }
+    }
 
-        &:last-child {
-          border-right: 1px solid $blue-light-line;
+    li.is-clickable.is-active:hover {
+      .step-label {
+        color: $primary;
+        font-weight: $weight-bold;
+      }
+    }
+
+    li.is-active:after {
+      background-color: $border;
+    }
+
+    li.is-active {
+      .step-index {
+        border: 2px solid $primary;
+
+        .inner {
+          background: $primary;
         }
+      }
+      .step-label {
+        color: $primary;
+        font-weight: $weight-bold;
+      }
+    }
 
-        & > a {
-          padding-bottom: 2px;
-        }
+    li.is-active ~ li:after {
+      background-color: $border;
+    }
 
-        &.is-active > a {
-          border-bottom: 2px solid $blue;
+    li.is-active ~ li {
+      .step-index {
+        border: 2px solid $border;
+
+        .inner {
+          background: $white;
         }
       }
     }
-  }
 
-  @include desktop() {
-    .tabs {
-      & > ul {
-        display: flex;
-        justify-content: center;
-
-        & > li {
-          & > a {
-            flex-wrap: nowrap;
-            padding-left: 20px;
-            padding-right: 20px;
-            color: $blue;
-            font-size: $size-large;
-
-            span.step-index {
-              align-self: center;
-              width: 25px;
-              max-width: 25px;
-            }
-
-            span.step-label {
-              margin-left: 20px;
-              text-align: left;
-              flex-basis: 100%;
-              display: flex;
-              font-size: $size-normal;
-              word-break: break-all;
-              word-wrap: break-word;
-              overflow-wrap: break-word;
-              white-space: normal;
-            }
-          }
-        }
-      }
+    li.is-disabled {
+      cursor: not-allowed;
+      pointer-events: none;
     }
   }
 }
