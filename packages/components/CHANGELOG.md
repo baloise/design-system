@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.19.2](https://github.com/baloise/design-system/compare/v1.19.1...v1.19.2) (2021-11-09)
+
+
+### Bug Fixes
+
+* **footer:** Missing import ([3d4eaeb](https://github.com/baloise/design-system/commit/3d4eaebe336883a7cd72378de25963715af5fa08))
+* **footer:** Update links when locale changes ([7911b9b](https://github.com/baloise/design-system/commit/7911b9b2e039dae52002d09e33e3fdb441c57503))
+
+
+
+
+
 ## [1.19.1](https://github.com/baloise/design-system/compare/v1.19.0...v1.19.1) (2021-10-08)
 
 **Note:** Version bump only for package @baloise/design-system-components
