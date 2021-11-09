@@ -27,6 +27,15 @@ export class Footer {
   links: FooterLink[] = [];
 
   connectedCallback() {
+    this.updateFooterLinks()
+  }
+  
+  @Watch('locale')
+  watchLocaleHandler() {
+    this.updateFooterLinks()
+  }
+  
+  updateFooterLinks() {
     loadFooterLinks(new Language(this.locale)).then(links => this.links = links);
   }
 
