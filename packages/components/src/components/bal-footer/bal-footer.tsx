@@ -1,5 +1,5 @@
 import { FooterLink, Language, loadFooterLinks } from '@baloise/web-app-utils'
-import { Component, Host, h, Prop, State } from '@stencil/core'
+import { Component, Host, h, Prop, State, Watch } from '@stencil/core'
 
 @Component({
   tag: 'bal-footer',
