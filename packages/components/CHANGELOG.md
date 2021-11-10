@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.19.6](https://github.com/baloise/design-system/compare/v1.19.5...v1.19.6) (2021-11-10)
+
+
+### Bug Fixes
+
+* **footer:** update styling ([30d45c3](https://github.com/baloise/design-system/commit/30d45c310ecc6e812f07b82be2a5e1250de7b72f))
+
+
+
+
+
 ## [1.19.5](https://github.com/baloise/design-system/compare/v1.19.4...v1.19.5) (2021-11-10)
 
 **Note:** Version bump only for package @baloise/design-system-components
