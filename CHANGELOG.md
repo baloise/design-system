@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.19.4](https://github.com/baloise/design-system/compare/v1.19.3...v1.19.4) (2021-11-10)
+
+
+### Bug Fixes
+
+* **select:** Skip one single test to test if the build is working ([516021f](https://github.com/baloise/design-system/commit/516021fc3d93beff9819a9667abc29e6aa4cdd73))
+
+
+
+
+
 ## [1.19.3](https://github.com/baloise/design-system/compare/v1.19.2...v1.19.3) (2021-11-09)
 
 **Note:** Version bump only for package root
