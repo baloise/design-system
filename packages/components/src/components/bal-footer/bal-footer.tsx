@@ -29,12 +29,12 @@ export class Footer {
   connectedCallback() {
     this.updateFooterLinks()
   }
-  
+
   @Watch('locale')
   watchLocaleHandler() {
     this.updateFooterLinks()
   }
-  
+
   updateFooterLinks() {
     loadFooterLinks(new Language(this.locale)).then(links => this.links = links);
   }
@@ -50,7 +50,7 @@ export class Footer {
         >
           <slot></slot>
           { this.hideLinks ? '' :
-            <div class="container">
+            <div class="container p-1">
             {this.links.map((link) =>
               <a class="is-link is-inverted pr-4" href={link.link}>{link.label}</a>
             )}
