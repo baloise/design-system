@@ -541,6 +541,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Initial files
+         */
+        "initialFiles": File[];
+        /**
           * Label of the drop area.
          */
         "label": string;
@@ -560,6 +564,10 @@ export namespace Components {
           * If `true` multiple file upload is possible.
          */
         "multiple": boolean;
+        /**
+          * Overrides the default subtitle filesize
+         */
+        "subTitle": ((file: File) => string) | undefined;
     }
     interface BalFooter {
         /**
@@ -2472,6 +2480,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Initial files
+         */
+        "initialFiles"?: File[];
+        /**
           * Label of the drop area.
          */
         "label"?: string;
@@ -2499,6 +2511,10 @@ declare namespace LocalJSX {
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
         "onBalRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
+        /**
+          * Overrides the default subtitle filesize
+         */
+        "subTitle"?: ((file: File) => string) | undefined;
     }
     interface BalFooter {
         /**

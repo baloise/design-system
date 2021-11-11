@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, Listen, State, Event, EventEmitter, Method } from '@stencil/core'
+import { Component, Host, h, Prop, Element, Listen, State, Event, EventEmitter, Method, Watch } from '@stencil/core'
 import filesize from 'filesize.js'
 import { FileUploadRejectedFile, FileUploadRejectionReason } from './bal-file-upload.type'
 
@@ -16,10 +16,16 @@ export class FileUpload {
   @State() isOver = false
   @State() files: File[] = []
 
+  @Watch('initialFiles')
+  onInitialFilesChange() {
+    this.files = this.initialFiles
+  }
+
   /**
    * Label of the drop area.
    */
-  @Prop() label: string = 'Choose or drop a file...'
+  @Prop()
+  label: string = 'Choose or drop a file...'
 
   /**
    * If `true` multiple file upload is possible.
@@ -50,6 +56,16 @@ export class FileUpload {
    * Allowed max bundle size in bytes.
    */
   @Prop() maxBundleSize: number | undefined = undefined
+
+  /**
+   * Initial files
+   */
+  @Prop() initialFiles: File[] = []
+
+  /**
+   * Overrides the default subtitle filesize
+   */
+  @Prop() subTitle: ((file: File) => string) | undefined
 
   /**
    * Triggers when a file is added or removed.
@@ -141,6 +157,10 @@ export class FileUpload {
     }
   }
 
+  componentWillLoad() {
+    this.onInitialFilesChange()
+  }
+
   componentDidLoad() {
     ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
       this.element.addEventListener(eventName, this.preventDefaults, false)
@@ -220,7 +240,7 @@ export class FileUpload {
               </bal-list-item-icon>
               <bal-list-item-content>
                 <bal-list-item-title>{file.name}</bal-list-item-title>
-                <bal-list-item-subtitle>{filesize(file.size)}</bal-list-item-subtitle>
+                <bal-list-item-subtitle>{this.subTitle ? this.subTitle(file) : filesize(file.size)}</bal-list-item-subtitle>
               </bal-list-item-content>
               <bal-list-item-icon right class="file-remove" onClick={() => this.removeFile(index)}>
                 <bal-icon name="trash" color="danger"></bal-icon>

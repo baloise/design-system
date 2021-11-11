@@ -852,6 +852,16 @@ export const BalFileUpload = /*@__PURE__*/ defineComponent({
       default: undefined,
       required: false,
     },
+    initialFiles: {
+      type: Array as () => Array<File>,
+      default: [],
+      required: false,
+    },
+    subTitle: {
+      type: Function as PropType<((file: File) => string)>,
+      default: undefined,
+      required: false,
+    },
   },
   emits: {
     balChange: (value: File[]) => true,
