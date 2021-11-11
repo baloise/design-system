@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.19.7](https://github.com/baloise/design-system/compare/v1.19.6...v1.19.7) (2021-11-11)
+
+
+### Bug Fixes
+
+* **footer:** styling of links ([45abc70](https://github.com/baloise/design-system/commit/45abc70d5e2917e2061f03511b797e273bed061f))
+
+
+
+
+
 ## [1.19.6](https://github.com/baloise/design-system/compare/v1.19.5...v1.19.6) (2021-11-10)
 
 **Note:** Version bump only for package @baloise/design-system-testing
