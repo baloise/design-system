@@ -50,7 +50,7 @@ export class Footer {
         >
           <slot></slot>
           { this.hideLinks ? '' :
-            <div class="container p-1">
+            <div class="footer-links-container p-1">
             {this.links.map((link) =>
               <a class="is-link is-inverted pr-4" href={link.link}>{link.label}</a>
             )}
