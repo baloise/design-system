@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { ColorTypes } from '../../types/color.types'
+import { ColorTypes, ColorTypesNotInBulma } from '../../types/color.types'
 import { HeadingLevels } from './bal-heading.type'
 
 @Component({
@@ -39,7 +39,7 @@ export class Heading {
   /**
    * The theme type of the toast. Given by bulma our css framework.
    */
-  @Prop() color: ColorTypes | '' = ''
+  @Prop() color: ColorTypes | ColorTypesNotInBulma | '' = ''
 
   /**
    * If `true` the button is inverted

@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
+import { ColorTypes, ColorTypesBasic, ColorTypesExtended, ColorTypesNotInBulma } from "./types/color.types";
 import { BalButtonColor } from "./components/bal-button/bal.button.type";
 import { PaddingCardType, SpacingCardType } from "./types/padding.types";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
@@ -579,7 +579,7 @@ export namespace Components {
         /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "color": ColorTypes | '';
+        "color": ColorTypes | ColorTypesNotInBulma | '';
         /**
           * If `true` the button is inverted
          */
@@ -2518,7 +2518,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "color"?: ColorTypes | '';
+        "color"?: ColorTypes | ColorTypesNotInBulma | '';
         /**
           * If `true` the button is inverted
          */
