@@ -13,6 +13,7 @@ import { SnackbarPage } from './pages/snackbar.page'
 import { PaginationPage } from './pages/pagination.page'
 import { SliderPage } from './pages/slider.page'
 import { HintPage } from './pages/hint.page'
+import { TextareaPage } from './pages/textarea.page'
 
 export class App {
   getCheckboxPage = () => new CheckboxPage()
@@ -22,6 +23,7 @@ export class App {
   getDropdownPage = () => new DropdownPage()
   getSelectPage = () => new SelectPage()
   getInputPage = () => new InputPage()
+  getTextareaPage = () => new TextareaPage()
   getModalPage = () => new ModalPage()
   getRadioPage = () => new RadioPage()
   getTabsPage = () => new TabsPage()

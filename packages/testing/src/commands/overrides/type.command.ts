@@ -1,4 +1,4 @@
-import { isDatepicker, isInput, isSlider, selectors, wrapRoot } from '../helpers'
+import { isDatepicker, isInput, isSlider, isTextarea, selectors, wrapRoot } from '../helpers'
 
 Cypress.Commands.overwrite('type', (originalFn, element: Cypress.Chainable<JQuery>, content, options) => {
   if (isDatepicker(element)) {
@@ -7,6 +7,10 @@ Cypress.Commands.overwrite('type', (originalFn, element: Cypress.Chainable<JQuer
 
   if (isInput(element)) {
     return wrapRoot(element, selectors.input.main, $el => originalFn($el, content, options))
+  }
+
+  if (isTextarea(element)) {
+    return wrapRoot(element, selectors.textarea.main, $el => originalFn($el, content, options))
   }
 
   if (isSlider(element)) {
