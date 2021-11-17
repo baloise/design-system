@@ -20,6 +20,7 @@
     "test": "npm run lib:test && npm run vue:test",
     "release": "lerna publish --yes --force-publish --conventional-commits --exact",
     "canary": "lerna publish --canary --preid beta --dist-tag beta --yes --force-publish --exact",
+    "update:lock": "lerna exec -- npm install --package-lock-only",
     "lib:build": "node .scripts/banner.js lib:build && npm --prefix packages/components run build",
     "lib:serve": "node .scripts/banner.js lib:serve && npm --prefix packages/components run serve",
     "lib:test": "node .scripts/banner.js lib:test && cd packages/components && npm run test",

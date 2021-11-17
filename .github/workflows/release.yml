@@ -49,3 +49,12 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Lock files
+        run: 'npm run update:lock'
+
+      - uses: EndBug/add-and-commit@v5
+        with:
+          message: 'chore(): update lock files'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
