@@ -3,6 +3,12 @@ import { app } from '../support/app'
 describe('Textarea', () => {
   let page = app.getTextareaPage()
 
+  it('should verify the existens of the components', () => {
+    page.open()
+    cy.get(page.textarea).should('exist')
+    cy.get('.bubu').should('not.exist')
+  })
+
   it('should have value and typeable', () => {
     page.open()
     cy.get(page.textarea).should('have.value', '')
