@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-components": "1.19.8"
+    "@baloise/design-system-components": "^1.19.8"
   },
   "devDependencies": {
     "@types/chai": "^4.2.22",
