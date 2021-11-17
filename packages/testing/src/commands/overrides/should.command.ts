@@ -11,6 +11,7 @@ import {
   hasClass,
   isSlider,
   isLabel,
+  isTextarea,
 } from '../helpers'
 
 const shouldAndAndCommand = (
@@ -87,6 +88,16 @@ const shouldAndAndCommand = (
       )
     ) {
       return originalFn(element.find(selectors.input.main), condition, key, value, options)
+    }
+  }
+
+  if (isTextarea(element)) {
+    if (
+      ['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused', 'have.value', 'not.have.value'].includes(
+        condition,
+      )
+    ) {
+      return originalFn(element.find(selectors.textarea.main), condition, key, value, options)
     }
   }
 

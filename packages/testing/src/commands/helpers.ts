@@ -25,6 +25,7 @@ export const isTag: isElementType = el => isElement(el, 'BAL-TAG')
 export const isTabs: isElementType = el => isElement(el, 'BAL-TABS')
 export const isSlider: isElementType = el => isElement(el, 'BAL-SLIDER')
 export const isHint: isElementType = el => isElement(el, 'BAL-HINT')
+export const isTextarea: isElementType = el => isElement(el, 'BAL-TEXTAREA')
 
 /**
  * Selectors
@@ -51,6 +52,9 @@ export const selectors = {
   },
   input: {
     main: '> input',
+  },
+  textarea: {
+    main: '> textarea',
   },
   slider: {
     main: 'input.slider',
