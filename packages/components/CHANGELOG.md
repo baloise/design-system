@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.19.9](https://github.com/baloise/design-system/compare/v1.19.8...v1.19.9) (2021-11-17)
+
+
+### Bug Fixes
+
+* **testing:** add textarea ([0b9f7b9](https://github.com/baloise/design-system/commit/0b9f7b9091c1a0a95016c5b8dc02423666a5cf62))
+
+
+
+
+
 ## [1.19.8](https://github.com/baloise/design-system/compare/v1.19.7...v1.19.8) (2021-11-17)
 
 **Note:** Version bump only for package @baloise/design-system-components
