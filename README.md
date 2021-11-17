@@ -1,7 +1,6 @@
 <a href="https://design.baloise.dev" target="blank">
     <img src="https://raw.githubusercontent.com/baloise/design-system/design-system/resources/images/banner.svg?sanitize=true" alt="Baloise Design System" />
 </a>
-
 <br>
 
 [![Continous](https://github.com/baloise/design-system/actions/workflows/continous.yml/badge.svg?branch=master)](https://github.com/baloise/design-system/actions/workflows/continous.yml)
