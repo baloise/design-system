@@ -27,7 +27,8 @@
     "build:filters": "node .scripts/filters.script.js",
     "build:compile": "ng-packagr -p package.json",
     "clean": "rimraf src/filters.ts && rimraf dist",
-    "clean:package": "rimraf dist/package.json && rimraf dist/CHANGELOG.md && rimraf dist/LICENSE && rimraf dist/README.md"
+    "clean:package": "rimraf dist/package.json && rimraf dist/CHANGELOG.md && rimraf dist/LICENSE && rimraf dist/README.md",
+    "preinstall": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "license": "Apache-2.0",
   "dependencies": {

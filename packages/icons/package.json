@@ -28,7 +28,8 @@
     "build:compile": "tsc -p .",
     "build:bundle": "rollup --config rollup.config.js",
     "docs": "npm run build && npm run docs:archive",
-    "docs:archive": "node .scripts/archive.script.js"
+    "docs:archive": "node .scripts/archive.script.js",
+    "preinstall": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",

@@ -9,7 +9,8 @@
     "url": "https://github.com/hirsch88"
   },
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
+    "preinstall": "npm run update:registry && npx npm-force-resolutions",
+    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
     "postinstall": "npm run copy:fonts",
     "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts",
     "serve": "vue-cli-service serve --port 3000",

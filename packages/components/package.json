@@ -52,7 +52,8 @@
     "test:watch": "stencil test --spec --e2e --watchAll",
     "test:unit": "stencil test --spec",
     "test:unit:watch": "stencil test --spec --watchAll",
-    "test:e2e:watch": "stencil test --e2e --watchAll"
+    "test:e2e:watch": "stencil test --e2e --watchAll",
+    "preinstall": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "dependencies": {
     "@baloise/design-system-fonts": "1.19.10",

@@ -30,7 +30,8 @@
     "build:bundle": "rollup --config rollup.config.js",
     "build:web-types": "node ./.scripts/build-web-types.js",
     "build:vetur": "node ./.scripts/build-vetur.js",
-    "test": "jest"
+    "test": "jest",
+    "preinstall": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",

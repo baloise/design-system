@@ -25,7 +25,8 @@
     "build": "npm run build:clean && npm run build:compile && npm run build:bundle",
     "build:clean": "rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p .",
-    "build:bundle": "rollup --config rollup.config.js"
+    "build:bundle": "rollup --config rollup.config.js",
+    "preinstall": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",

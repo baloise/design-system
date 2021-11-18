@@ -11,7 +11,8 @@
     "url": "https://github.com/hirsch88"
   },
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
+    "preinstall": "npm run update:registry && npx npm-force-resolutions",
+    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
     "setup": "npm install && npm run build && npm run bootstrap",
     "postinstall": "npm run bootstrap && npm run docs:install && node .scripts/copy.script.js",
     "bootstrap": "lerna bootstrap",
