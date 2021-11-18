@@ -72,7 +72,6 @@ export const config: Config = {
   ],
   extras: {
     dynamicImportShim: true,
-    initializeNextTick: true,
     safari10: true,
     scriptDataOpts: true,
     appendChildSlotFix: true,
