@@ -1,4 +1,18 @@
 {
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "declarationDir": "dist",
+    "rootDir": "src",
+    "importHelpers": true,
+    "strictPropertyInitialization": false,
+    "baseUrl": ".",
+    "types": ["@baloise/design-system-components"],
+    "paths": {
+      "@baloise/design-system-components/loader": ["../components/loader"],
+      "@baloise/design-system-components": ["../components"]
+    }
+  },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
@@ -7,38 +21,6 @@
     "enableResourceInlining": true,
     "enableIvy": false
   },
-  "compilerOptions": {
-    "outDir": "dist",
-    "alwaysStrict": true,
-    "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
-    "declaration": true,
-    "declarationDir": "dist",
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "lib": ["dom", "es2017"],
-    "module": "es2015",
-    "moduleResolution": "node",
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "pretty": true,
-    "removeComments": false,
-    "importHelpers": true,
-    "rootDir": "src",
-    "strictPropertyInitialization": false,
-    "target": "es5",
-    "baseUrl": ".",
-    "types": ["@baloise/design-system-components"],
-    "paths": {
-      "@baloise/design-system-components/loader": ["../components/loader"],
-      "@baloise/design-system-components": ["../components"]
-    }
-  },
   "exclude": ["node_modules", "src/schematics"],
-  "files": ["src/index.ts"],
-  "compileOnSave": false,
-  "buildOnSave": false
+  "files": ["src/index.ts"]
 }

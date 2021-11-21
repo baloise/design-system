@@ -75,8 +75,8 @@ More documentation to the folder structure for vuepress can be found [here](http
 .
 ├── .scripts # node-scripts to generate documentation and code parts
 ├── src
-│  ├── assets #
-│  ├── components #
+│  ├── assets
+│  ├── components
 │  │  └── bal-<component>
 │  │        ├── bal-<component>.e2e.ts # E2E test file
 │  │        ├── bal-<component>.scss # Specific component style
@@ -85,13 +85,9 @@ More documentation to the folder structure for vuepress can be found [here](http
 │  │        └── readme.md # Generated Readme file
 │  │
 │  ├── constants #
-│  ├── filters #
 │  ├── helpers #
 │  ├── styles #
 │  ├── types #
-│  ├── utils #
-│  ├── validators #
-│  ├── config.ts #
 │  ├── global.ts #
 │  └── config.ts #
 │
