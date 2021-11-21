@@ -26,41 +26,41 @@ Checkboxes allow users to select one or more items from a set. Checkboxes can tu
 Checkboxes allow the selection of multiple options from a set of options. They appear as checked (ticked) when activated, or unchecked (unticked) when deactivated.
         Checkboxes can be selected as checked by setting the property.
 
-<ClientOnly><docs-demo-bal-checkbox-25></docs-demo-bal-checkbox-25></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-26></docs-demo-bal-checkbox-26></ClientOnly>
 
 
 ### Switch
 
 Switches are used to toggle between exactly two states (like on and off).
 
-<ClientOnly><docs-demo-bal-checkbox-26></docs-demo-bal-checkbox-26></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-27></docs-demo-bal-checkbox-27></ClientOnly>
 
 
 ### Inverted
 
-<ClientOnly><docs-demo-bal-checkbox-27></docs-demo-bal-checkbox-27></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-28></docs-demo-bal-checkbox-28></ClientOnly>
 
 
 ### With Links
 
-<ClientOnly><docs-demo-bal-checkbox-28></docs-demo-bal-checkbox-28></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-29></docs-demo-bal-checkbox-29></ClientOnly>
 
 
 ### Events
 
 #### Listen on Changes
 
-<ClientOnly><docs-demo-bal-checkbox-29></docs-demo-bal-checkbox-29></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-30></docs-demo-bal-checkbox-30></ClientOnly>
 
 
 #### Change value
 
-<ClientOnly><docs-demo-bal-checkbox-30></docs-demo-bal-checkbox-30></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-31></docs-demo-bal-checkbox-31></ClientOnly>
 
 
 ### Checkbox Boxes
 
-<ClientOnly><docs-demo-bal-checkbox-31></docs-demo-bal-checkbox-31></ClientOnly>
+<ClientOnly><docs-demo-bal-checkbox-32></docs-demo-bal-checkbox-32></ClientOnly>
 
 
 

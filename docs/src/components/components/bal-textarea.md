@@ -23,7 +23,12 @@ A textarea allows a user to write and edit large texts.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-textarea-116></docs-demo-bal-textarea-116></ClientOnly>
+<ClientOnly><docs-demo-bal-textarea-119></docs-demo-bal-textarea-119></ClientOnly>
+
+
+### Disabled
+
+<ClientOnly><docs-demo-bal-textarea-120></docs-demo-bal-textarea-120></ClientOnly>
 
 
 
@@ -99,7 +104,3 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
 
-
-<ClientOnly>
-  <docs-component-script tag="balTextarea"></docs-component-script>
-</ClientOnly>

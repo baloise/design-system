@@ -115,6 +115,10 @@ module.exports = {
               title: 'Theming',
               path: '/components/getting-started/theming',
             },
+            {
+              title: 'Testing',
+              path: '/components/getting-started/testing',
+            },
           ],
         },
         {
@@ -130,7 +134,6 @@ module.exports = {
         {
           title: 'Templates',
           collapsable: true,
-          // path: '/components/templates/index',
           children: ['templates/contact-form', 'templates/portal', 'templates/stepper'],
         },
         {
@@ -139,33 +142,20 @@ module.exports = {
           children: require('./generated/components.json'),
         },
         {
-          title: 'Tooling',
-          collapsable: true,
-          children: ['tooling/filters', 'tooling/utils', 'tooling/validators', 'tooling/testing'],
-        },
-        {
           title: 'Contributing',
           collapsable: true,
           children: [
+            'contributing/overview',
             'contributing/installation',
+            'contributing/setup',
             'contributing/commands',
             'contributing/component',
             'contributing/controller',
+            'contributing/testing',
             'contributing/release',
           ],
         },
       ],
-      // '/resources/': [
-      //   {
-      //     title: 'Resources',
-      //     collapsable: false,
-      //     children: [
-      //       'changelog',
-      //       ['https://github.com/baloise/design-system/projects/2', 'Roadmap'],
-      //       ['https://github.com/baloise/design-system', 'Github'],
-      //     ],
-      //   },
-      // ],
       '/about-us/': [
         {
           title: 'About Us',

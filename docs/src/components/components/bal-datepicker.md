@@ -40,51 +40,51 @@ datepickerDisabled.value = newDateString(new Date(2020, 0, 13))
 
 In this example the user can only select a date. For that use the property `readonly`.
 
-<ClientOnly><docs-demo-bal-datepicker-34></docs-demo-bal-datepicker-34></ClientOnly>
+<ClientOnly><docs-demo-bal-datepicker-35></docs-demo-bal-datepicker-35></ClientOnly>
 
 
 ### Disabled
 
-<ClientOnly><docs-demo-bal-datepicker-35></docs-demo-bal-datepicker-35></ClientOnly>
+<ClientOnly><docs-demo-bal-datepicker-36></docs-demo-bal-datepicker-36></ClientOnly>
 
 
 ### Manual Input
 
 To enable manual input remove the property `readonly` and add the property `trigger-ico`. The `trigger-ico` property only opens the dropdown when the icon gets clicked.
 
-<ClientOnly><docs-demo-bal-datepicker-36></docs-demo-bal-datepicker-36></ClientOnly>
+<ClientOnly><docs-demo-bal-datepicker-37></docs-demo-bal-datepicker-37></ClientOnly>
 
 
 ### Inverted & Expanded
 
-<ClientOnly><docs-demo-bal-datepicker-37></docs-demo-bal-datepicker-37></ClientOnly>
+<ClientOnly><docs-demo-bal-datepicker-38></docs-demo-bal-datepicker-38></ClientOnly>
 
 
 ### i18n
 
-<ClientOnly><docs-demo-bal-datepicker-38></docs-demo-bal-datepicker-38></ClientOnly>
+<ClientOnly><docs-demo-bal-datepicker-39></docs-demo-bal-datepicker-39></ClientOnly>
 
 
 ### Footer
 
-<ClientOnly><docs-demo-bal-datepicker-39></docs-demo-bal-datepicker-39></ClientOnly>
+<ClientOnly><docs-demo-bal-datepicker-40></docs-demo-bal-datepicker-40></ClientOnly>
 
 
 ### Range Min & Max
 
-<ClientOnly><docs-demo-bal-datepicker-40></docs-demo-bal-datepicker-40></ClientOnly>
+<ClientOnly><docs-demo-bal-datepicker-41></docs-demo-bal-datepicker-41></ClientOnly>
 
 
 ### Allow Dates
 
 You can specify allowed dates using a function.
 
-<ClientOnly><docs-demo-bal-datepicker-41></docs-demo-bal-datepicker-41></ClientOnly>
+<ClientOnly><docs-demo-bal-datepicker-42></docs-demo-bal-datepicker-42></ClientOnly>
 
 
 ### Custom Start Date
 
-<ClientOnly><docs-demo-bal-datepicker-42></docs-demo-bal-datepicker-42></ClientOnly>
+<ClientOnly><docs-demo-bal-datepicker-43></docs-demo-bal-datepicker-43></ClientOnly>
 
 
 
@@ -105,7 +105,7 @@ You can specify allowed dates using a function.
 | **disabled**        | If `true` the component is diabled.                                                                                                                                                                                                                                                                                                                                     | <code>boolean</code>                                           | <code>false</code>        |
 | **expanded**        | If `true` the component uses the whole width.                                                                                                                                                                                                                                                                                                                           | <code>boolean</code>                                           | <code>false</code>        |
 | **inverted**        | Set this to `true` when the component is placed on a dark background.                                                                                                                                                                                                                                                                                                   | <code>boolean</code>                                           | <code>false</code>        |
-| **locale**          | If `true` the component uses the whole width.                                                                                                                                                                                                                                                                                                                           | <code>"de" , "en" , "fr" , "it"</code>                         | <code>'en'</code>         |
+| **locale**          | Define the locale of month and day names.                                                                                                                                                                                                                                                                                                                               | <code>"de" , "en" , "fr" , "it"</code>                         | <code>'en'</code>         |
 | **max**             | The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.                                        | <code>string , undefined</code>                                |                           |
 | **max-year**        | Latest year available for selection                                                                                                                                                                                                                                                                                                                                     | <code>number , undefined</code>                                | <code>undefined</code>    |
 | **min**             | The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today. | <code>string , undefined</code>                                |                           |

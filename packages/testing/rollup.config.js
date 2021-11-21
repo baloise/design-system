@@ -15,5 +15,5 @@ export default {
       sourcemap: true,
     },
   ],
-  external: ['@baloise/design-system-components', 'cypress-file-upload'],
+  external: ['@baloise/design-system-components', '@baloise/web-app-utils', 'cypress-file-upload'],
 }

@@ -1,7 +1,9 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
-import { isArray, isNil, isString } from 'lodash'
+import isArray from 'lodash.isarray'
+import isNil from 'lodash.isnil'
+import isString from 'lodash.isstring'
 import { findItemLabel } from '../../helpers/helpers'
-import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey, isBackspaceKey } from '../../utils'
+import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey, isBackspaceKey } from '@baloise/web-app-utils'
 import { addValue, findLabelByValue, getValues, includes, length, preventDefault, removeValue, startsWith, validateAfterBlur } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 

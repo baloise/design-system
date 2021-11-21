@@ -22,11 +22,9 @@
     "bulma-css"
   ],
   "scripts": {
-    "build": "npm run clean && npm run build:filters && npm run build:validators && npm run build:compile && npm run clean:package",
-    "build:validators": "node .scripts/validators.script.js",
-    "build:filters": "node .scripts/filters.script.js",
+    "build": "npm run clean && npm run build:compile && npm run clean:package",
     "build:compile": "ng-packagr -p package.json",
-    "clean": "rimraf src/filters.ts && rimraf dist",
+    "clean": "rimraf dist",
     "clean:package": "rimraf dist/package.json && rimraf dist/CHANGELOG.md && rimraf dist/LICENSE && rimraf dist/README.md",
     "preinstall": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },

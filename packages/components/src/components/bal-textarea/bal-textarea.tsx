@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface, Listen } from '@stencil/core'
-import { isEmpty } from 'lodash'
+import isEmpty from 'lodash.isempty'
 import { debounceEvent, findItemLabel } from '../../helpers/helpers'
 
 @Component({

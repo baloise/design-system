@@ -40,9 +40,9 @@
   ],
   "license": "Apache-2.0",
   "devDependencies": {
-    "@types/lodash": "^4.14.172",
     "archiver": "^5.3.0",
-    "lodash": "^4.17.21",
+    "lodash.camelcase": "^4.3.0",
+    "lodash.upperfirst": "^4.3.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.2",
     "svgo": "^2.4.0",

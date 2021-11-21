@@ -69,7 +69,6 @@
   },
   "resolutions": {
     "glob-parent": ">=5.1.2",
-    "lodash": ">=4.17.21",
     "minimist": ">=0.2.1 <1.0.0 || >=1.2.3"
   }
 }

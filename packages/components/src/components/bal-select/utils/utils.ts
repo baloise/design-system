@@ -1,4 +1,8 @@
-import { isArray, isNil, lowerCase, trim } from 'lodash'
+import isNil from 'lodash.isnil'
+import isArray from 'lodash.isarray'
+import lowerCase from 'lodash.lowercase'
+import trim from 'lodash.trim'
+
 import { BalOptionController } from '../bal-select'
 
 export function getValues(values: string[] | undefined): string[] {

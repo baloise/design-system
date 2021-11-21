@@ -1,7 +1,8 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 import * as balIcons from '@baloise/design-system-icons'
+import upperFirst from 'lodash.upperfirst'
+import camelCase from 'lodash.camelcase'
 import { BalButtonColor } from '../bal-button/bal.button.type'
-import { upperFirst, camelCase } from 'lodash'
 
 @Component({
   tag: 'bal-icon',

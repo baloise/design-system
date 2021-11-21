@@ -41,7 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-components": "1.19.10"
+    "@baloise/design-system-components": "1.19.10",
+    "@baloise/web-app-utils": "^2.0.5"
   },
   "devDependencies": {
     "@types/chai": "^4.2.22",

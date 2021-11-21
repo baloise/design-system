@@ -6,7 +6,6 @@ import {
   isDatepicker,
   wrapRoot,
   isInput,
-  isRadioGroup,
   isRadio,
   isSelect,
   isSlider,

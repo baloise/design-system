@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core'
-import { isNil } from 'lodash'
+import isNil from 'lodash.isnil'
 
 @Component({
   tag: 'bal-data-value',
