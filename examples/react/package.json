@@ -18,7 +18,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "preinstall": "npm run update:registry && npx npm-force-resolutions",
+    "preinstall": "npx npm-force-resolutions",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
     "start": "react-scripts start",
     "build": "react-scripts build",

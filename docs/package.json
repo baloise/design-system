@@ -9,7 +9,7 @@
   },
   "repository": "https://github.com/baloise/design-system",
   "scripts": {
-    "preinstall": "npm run update:registry && npx npm-force-resolutions",
+    "preinstall": "npx npm-force-resolutions",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
     "serve:light": "vuepress dev src",
     "serve": "npm run setup && vuepress dev src",

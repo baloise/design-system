@@ -37,7 +37,7 @@
     "build:bundle": "rollup --config rollup.config.js",
     "docs": "node .scripts/docs-json.script.js",
     "ci:server": "http-server ../components/www -p 3333 -c-1 --silent",
-    "preinstall": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "license": "Apache-2.0",
   "dependencies": {

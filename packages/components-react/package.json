@@ -26,7 +26,7 @@
     "build:clean": "rimraf dist && rimraf dist-transpiled",
     "build:compile": "npm run tsc && rollup -c",
     "tsc": "tsc -p .",
-    "preinstall": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
