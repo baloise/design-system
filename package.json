@@ -13,6 +13,7 @@
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
     "update:registry": "lerna run update:registry && sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
+    "update:lock": "lerna exec -- npm install --package-lock-only",
     "setup": "npm install && npm run build && npm run bootstrap",
     "postinstall": "npm run bootstrap && npm run docs:install && node .scripts/copy.script.js",
     "bootstrap": "lerna bootstrap",
@@ -21,7 +22,6 @@
     "test": "npm run lib:test",
     "release": "lerna publish --conventional-commits --exact --force-publish --yes",
     "canary": "lerna publish --canary --preid beta --dist-tag beta --exact --force-publish --yes",
-    "update:lock": "lerna exec -- npm install --package-lock-only",
     "lib:build": "node .scripts/banner.js lib:build && npm --prefix packages/components run build",
     "lib:serve": "node .scripts/banner.js lib:serve && npm --prefix packages/components run serve",
     "lib:test": "node .scripts/banner.js lib:test && cd packages/components && npm run test",
