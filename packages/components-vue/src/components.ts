@@ -852,7 +852,7 @@ export const BalFileUpload = /*@__PURE__*/ defineComponent({
       default: undefined,
       required: false,
     },
-    initialFiles: {
+    value: {
       type: Array as () => Array<File>,
       default: [],
       required: false,

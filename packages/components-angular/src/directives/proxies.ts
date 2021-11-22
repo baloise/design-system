@@ -538,14 +538,14 @@ export class BalFieldMessage {
 import { FileUploadRejectedFile } from '@baloise/design-system-components';
 export declare interface BalFileUpload extends Components.BalFileUpload {}
 @ProxyCmp({
-  inputs: ['accept', 'disabled', 'initialFiles', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple', 'subTitle'],
+  inputs: ['accept', 'disabled', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple', 'subTitle', 'value'],
   methods: ['clear']
 })
 @Component({
   selector: 'bal-file-upload',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['accept', 'disabled', 'initialFiles', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple', 'subTitle'],
+  inputs: ['accept', 'disabled', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple', 'subTitle', 'value'],
   outputs: ['balChange', 'balRejectedFile']
 })
 export class BalFileUpload {

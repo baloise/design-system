@@ -9,13 +9,13 @@
 | --------------- | ----------------- | ------------------------------------------------ | --------------------------------------- | ---------------------------- |
 | `accept`        | `accept`          | Accepted MIME-Types like `image/png,image/jpeg`. | `string`                                | `''`                         |
 | `disabled`      | `disabled`        | If `true` the button is disabled                 | `boolean`                               | `false`                      |
-| `initialFiles`  | --                | Initial files                                    | `File[]`                                | `[]`                         |
 | `label`         | `label`           | Label of the drop area.                          | `string`                                | `'Choose or drop a file...'` |
 | `maxBundleSize` | `max-bundle-size` | Allowed max bundle size in bytes.                | `number \| undefined`                   | `undefined`                  |
 | `maxFileSize`   | `max-file-size`   | Allowed max file size in bytes.                  | `number \| undefined`                   | `undefined`                  |
 | `maxFiles`      | `max-files`       | Allowed number of files in the bundle.           | `number \| undefined`                   | `undefined`                  |
 | `multiple`      | `multiple`        | If `true` multiple file upload is possible.      | `boolean`                               | `true`                       |
 | `subTitle`      | --                | Overrides the default subtitle filesize          | `((file: File) => string) \| undefined` | `undefined`                  |
+| `value`         | --                | Input value.                                     | `File[]`                                | `[]`                         |
 
 
 ## Events

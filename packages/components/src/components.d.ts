@@ -541,10 +541,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Initial files
-         */
-        "initialFiles": File[];
-        /**
           * Label of the drop area.
          */
         "label": string;
@@ -568,6 +564,10 @@ export namespace Components {
           * Overrides the default subtitle filesize
          */
         "subTitle": ((file: File) => string) | undefined;
+        /**
+          * Input value.
+         */
+        "value": File[];
     }
     interface BalFooter {
         /**
@@ -2480,10 +2480,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Initial files
-         */
-        "initialFiles"?: File[];
-        /**
           * Label of the drop area.
          */
         "label"?: string;
@@ -2515,6 +2511,10 @@ declare namespace LocalJSX {
           * Overrides the default subtitle filesize
          */
         "subTitle"?: ((file: File) => string) | undefined;
+        /**
+          * Input value.
+         */
+        "value"?: File[];
     }
     interface BalFooter {
         /**

@@ -16,9 +16,9 @@ export class FileUpload {
   @State() isOver = false
   @State() files: File[] = []
 
-  @Watch('initialFiles')
-  onInitialFilesChange() {
-    this.files = this.initialFiles
+  @Watch('value')
+  onValueChange() {
+    this.files = this.value
   }
 
   /**
@@ -58,9 +58,9 @@ export class FileUpload {
   @Prop() maxBundleSize: number | undefined = undefined
 
   /**
-   * Initial files
+   * Input value.
    */
-  @Prop() initialFiles: File[] = []
+  @Prop() value: File[] = []
 
   /**
    * Overrides the default subtitle filesize
@@ -158,7 +158,7 @@ export class FileUpload {
   }
 
   componentWillLoad() {
-    this.onInitialFilesChange()
+    this.onValueChange()
   }
 
   componentDidLoad() {
