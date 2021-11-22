@@ -75,7 +75,7 @@ More documentation to the folder structure for vuepress can be found [here](http
 .
 ├── .scripts # node-scripts to generate documentation and code parts
 ├── src
-│  ├── assets
+│  ├── assets # generated assets folder with the fonts
 │  ├── components
 │  │  └── bal-<component>
 │  │        ├── bal-<component>.e2e.ts # E2E test file
@@ -84,12 +84,12 @@ More documentation to the folder structure for vuepress can be found [here](http
 │  │        ├── index.html # Examples for the component. Is also shown in the documentation
 │  │        └── readme.md # Generated Readme file
 │  │
-│  ├── constants #
-│  ├── helpers #
-│  ├── styles #
-│  ├── types #
-│  ├── global.ts #
-│  └── config.ts #
+│  ├── constants # Global constants.
+│  ├── helpers # Global helper functions.
+│  ├── styles # Global styles witch is extends bulma.css
+│  ├── types # Global types for all the components like colors.
+│  ├── global.ts # Global executed script. Gets executed when the components are ready.
+│  └── config.ts # Global config definitions for the anuglar module and the vue plugin.
 │
 └──  stencil.*.config.ts # stencil output configurations
 ```

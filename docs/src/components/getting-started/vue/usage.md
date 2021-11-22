@@ -97,14 +97,29 @@ export default Vue.extend({
 </script>
 ```
 
-## Filters
+## Filters / Pipes
 
 In Vue 3 just import the filter function and use it in computed functions or return it to the template.
 Vue 3 has removed filters [Link](https://v3.vuejs.org/guide/migration/filters.html).
 
-::: tip
-More filters are listet here [filters](/components/tooling/filters.html)
-:::
+More documentation is [here](https://github.com/baloise/web-app-utils/blob/master/packages/pipes/README.md)
+
+First we need to install the pipes package.
+
+```bash
+npm install @baloise/web-app-pipes-vue
+```
+
+Lets add the PipePlugin to our vue app.
+
+```typescript
+import Vue from 'vue'
+import { BaloisePipes } from '@baloise/web-app-pipes-vue'
+
+Vue.use(BaloisePipes)
+```
+
+After that it can be used in the components template.
 
 ```vue
 <template>
@@ -113,7 +128,7 @@ More filters are listet here [filters](/components/tooling/filters.html)
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
-import { balClaimNumber } from '@baloise/design-system-components'
+import { balClaimNumber } from '@baloise/web-app-pipes-vue'
 
 export default defineComponent({
   setup() {
@@ -139,6 +154,13 @@ First install VeeValidate (Version >= 4.x.x).
 npm add vee-validate@next
 ```
 
+First we need to install the validators package.
+More documentation is [here](https://github.com/baloise/web-app-utils/blob/master/packages/validators/README.md)
+
+```bash
+npm install @baloise/web-app-validators-vue
+```
+
 #### Define i18n validators
 
 In this section we change the return type of our `BalValidators` into the the translated texts.
@@ -149,11 +171,10 @@ Go to [Validators](/components/tooling/validators.html) page to see our collecti
 :::
 
 ```typescript
-import { BalValidators } from '@baloise/design-system-components'
-import { useValidator, ValidatorFn } from '@baloise/design-system-components-vue'
+import { BalValidators, useValidator, ValidatorFn } from '@baloise/web-app-validators-vue'
 import { i18n } from '../../plugins/i18n.plugin'
 
-export { rules } from '@baloise/design-system-components-vue'
+export { rules } from '@baloise/web-app-validators-vue'
 
 const { createValidator } = useValidator(i18n.global.t)
 
@@ -193,7 +214,7 @@ The helper function `validators` helps us to combine validators and to use the p
 
 ```typescript
 import { defineComponent, ref } from 'vue'
-import { rules } from '@baloise/design-system-components-vue'
+import { rules } from '@baloise/web-app-validators-vue'
 import { useField, useForm, useIsFormValid } from 'vee-validate'
 import { isRequired } from '../helpers/validators'
 

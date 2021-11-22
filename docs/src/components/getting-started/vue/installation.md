@@ -8,6 +8,17 @@ To install the Baloise Design System run the following command.
 npm install @baloise/design-system-components-vue --save
 ```
 
+::: tip
+We recomand to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
+
+```bash
+npm install @baloise/web-app-utils --save
+npm install @baloise/web-app-pipes-vue --save
+npm install @baloise/web-app-validators-vue --save
+```
+
+:::
+
 :::tip
 We recommend to use the [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit), because the Design System is already integrated as well as i18n, Sass, form-validation and http-requsts.
 :::

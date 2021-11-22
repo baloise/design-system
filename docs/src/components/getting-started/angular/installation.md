@@ -10,7 +10,11 @@ Create an Angular project with the [Angular CLI](https://cli.angular.io/) and se
 npm install -g @angular/cli
 ng new bal-app --style=scss
 cd bal-app
-ng add @angular-eslint/schematics
+```
+
+Run the app
+
+```bash
 ng serve
 ```
 
@@ -18,6 +22,28 @@ ng serve
 
 - Choose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
 - Choose **ESLint** as the default linter tool, because TSLint is deprecated.
+
+To use eslint add the `@angular-eslint/schematics`.
+
+```bash
+ng add @angular-eslint/schematics
+```
+
+Lets configure eslint rules.
+First we need to extend the ESLint rules to improve our linting rules.
+Open the `eslintrc.json` file and add the missing rules.
+
+```json
+...
+"extends": [
+  "eslint:recommended",
+  "plugin:@angular-eslint/recommended",
+  "plugin:@angular-eslint/template/process-inline-templates",
+  "plugin:@typescript-eslint/recommended",
+  "plugin:@typescript-eslint/recommended-requiring-type-checking"
+],
+...
+```
 
 :::
 
@@ -40,21 +66,6 @@ Open angular.json file and find budgets keyword and adjust the two values.
 :::
 
 ## Configure Project
-
-First we need to extend the ESLint rules to improve our linting rules.
-Open the `eslintrc.json` file and add the missing rules.
-
-```json
-...
-"extends": [
-  "eslint:recommended",
-  "plugin:@angular-eslint/recommended",
-  "plugin:@angular-eslint/template/process-inline-templates",
-  "plugin:@typescript-eslint/recommended",
-  "plugin:@typescript-eslint/recommended-requiring-type-checking"
-],
-...
-```
 
 Next lets have a look at the `tsconfig.json` file and add the following options.
 
@@ -93,6 +104,17 @@ Use npm to install the Angular proxy library.
 ```bash
 npm install @baloise/design-system-components-angular --save
 ```
+
+::: tip
+We recomand to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
+
+```bash
+npm install @baloise/web-app-utils --save
+npm install @baloise/web-app-pipes-angular --save
+npm install @baloise/web-app-validators-angular --save
+```
+
+:::
 
 ::: tip
 We recommand to use the package `@ngx-translate` for the transalations.
@@ -157,13 +179,14 @@ Import the `BaloiseDesignSystemModule` and add it to your angular module. To use
 ```typescript{3,9,12}
 import { BrowserModule } from '@angular/platform-browser'
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
+import { BaloisePipeModule } from '@baloise/@baloise/web-app-pipes-angular'
 import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 
 import { AppComponent } from './app.component'
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, BaloiseDesignSystemModule.forRoot()],
+  imports: [BrowserModule, BaloisePipeModule, BaloiseDesignSystemModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
