@@ -1,12 +1,6 @@
 // DIRECTIVES
 export * from './directives/proxies'
 
-// FILTERS
-export * from './filters'
-
-// VALIDATORS
-export * as BalValidators from './validators'
-
 // SERVICES
 export { BalToastService } from './bal-toast.service'
 export { BalSnackbarService } from './bal-snackbar.service'

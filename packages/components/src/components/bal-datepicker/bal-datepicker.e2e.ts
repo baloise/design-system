@@ -1,5 +1,5 @@
 import { E2EElement, E2EPage, EventSpy, newE2EPage } from '@stencil/core/testing'
-import { format, newDateString, now } from '../../utils/balDateUtil'
+import { format, newDateString, now } from '@baloise/web-app-utils'
 
 describe('bal-datepicker', () => {
   let page: E2EPage

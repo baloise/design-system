@@ -18,22 +18,22 @@ A text provides some additional helpers.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-text-112></docs-demo-bal-text-112></ClientOnly>
+<ClientOnly><docs-demo-bal-text-115></docs-demo-bal-text-115></ClientOnly>
 
 
 ### Small
 
-<ClientOnly><docs-demo-bal-text-113></docs-demo-bal-text-113></ClientOnly>
+<ClientOnly><docs-demo-bal-text-116></docs-demo-bal-text-116></ClientOnly>
 
 
 ### Bold
 
-<ClientOnly><docs-demo-bal-text-114></docs-demo-bal-text-114></ClientOnly>
+<ClientOnly><docs-demo-bal-text-117></docs-demo-bal-text-117></ClientOnly>
 
 
 ### Colors
 
-<ClientOnly><docs-demo-bal-text-115></docs-demo-bal-text-115></ClientOnly>
+<ClientOnly><docs-demo-bal-text-118></docs-demo-bal-text-118></ClientOnly>
 
 
 

@@ -40,27 +40,27 @@ const option = NewBalOptionValue('value', 'label')
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-select-87></docs-demo-bal-select-87></ClientOnly>
+<ClientOnly><docs-demo-bal-select-90></docs-demo-bal-select-90></ClientOnly>
 
 
 ### Typeahead
 
-<ClientOnly><docs-demo-bal-select-88></docs-demo-bal-select-88></ClientOnly>
+<ClientOnly><docs-demo-bal-select-91></docs-demo-bal-select-91></ClientOnly>
 
 
 ### Multi-Select
 
-<ClientOnly><docs-demo-bal-select-89></docs-demo-bal-select-89></ClientOnly>
+<ClientOnly><docs-demo-bal-select-92></docs-demo-bal-select-92></ClientOnly>
 
 
 ### Multi-Select with typeahead
 
-<ClientOnly><docs-demo-bal-select-90></docs-demo-bal-select-90></ClientOnly>
+<ClientOnly><docs-demo-bal-select-93></docs-demo-bal-select-93></ClientOnly>
 
 
 ### Remote Typeahead
 
-<ClientOnly><docs-demo-bal-select-91></docs-demo-bal-select-91></ClientOnly>
+<ClientOnly><docs-demo-bal-select-94></docs-demo-bal-select-94></ClientOnly>
 
 
 

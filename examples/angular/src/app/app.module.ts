@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
 import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+import { BaloisePipeModule } from '@baloise/web-app-pipes-angular'
 import { BaloiseAngularPipesModule } from '@baloise/web-app-ng-utils'
 import { AngularSharedLibModule } from '@baloise/example-angular-shared-lib'
 import { AgGridModule } from 'ag-grid-angular'
@@ -36,6 +37,7 @@ import { SharedPageComponent } from './pages/shared/shared-page.component'
     BaloiseDesignSystemModule.forRoot(),
     AgGridModule.withComponents([]),
     BaloiseAngularPipesModule,
+    BaloisePipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -9,7 +9,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Clean install dependencies
+      - name: Install Lerna globally
+        run: npm install lerna --global
+
+      - name: Update npm registry
+        run: npm run update:registry
+
+      - name: Install dependencies
         run: npm ci
 
       - name: Build

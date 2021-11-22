@@ -5,7 +5,8 @@
  */
 
 const path = require('path')
-const lodash = require('lodash')
+const camelCase = require('lodash.camelcase')
+const upperFirst = require('lodash.upperfirst')
 const file = require('../../../.scripts/file')
 const { title } = require('../../../.scripts/log')
 const libaryLib = require('../../components/.scripts/components.lib')
@@ -15,7 +16,7 @@ const run = async () => {
   const components = await libaryLib.components()
   const componentNames = []
   components.forEach(component => {
-    componentNames.push(lodash.upperFirst(lodash.camelCase(component.tag)))
+    componentNames.push(upperFirst(camelCase(component.tag)))
   })
 
   const appComponents = componentNames.map(name => `  app.component('${name}', ${name})`)

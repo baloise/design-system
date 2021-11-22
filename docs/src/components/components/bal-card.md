@@ -18,39 +18,39 @@ Cards contain content and actions about a single subject and can be combined wit
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-card-18></docs-demo-bal-card-18></ClientOnly>
+<ClientOnly><docs-demo-bal-card-19></docs-demo-bal-card-19></ClientOnly>
 
 
 ### Inverted style
 
-<ClientOnly><docs-demo-bal-card-19></docs-demo-bal-card-19></ClientOnly>
+<ClientOnly><docs-demo-bal-card-20></docs-demo-bal-card-20></ClientOnly>
 
 
 ### With accordion
 
-<ClientOnly><docs-demo-bal-card-20></docs-demo-bal-card-20></ClientOnly>
+<ClientOnly><docs-demo-bal-card-21></docs-demo-bal-card-21></ClientOnly>
 
 
 ### With list
 
 The position the action buttons to the right side just add the attribute `right` to the component `bal-card-actions`.
 
-<ClientOnly><docs-demo-bal-card-21></docs-demo-bal-card-21></ClientOnly>
+<ClientOnly><docs-demo-bal-card-22></docs-demo-bal-card-22></ClientOnly>
 
 
 ### Summary card
 
-<ClientOnly><docs-demo-bal-card-22></docs-demo-bal-card-22></ClientOnly>
+<ClientOnly><docs-demo-bal-card-23></docs-demo-bal-card-23></ClientOnly>
 
 
 ### Service card
 
-<ClientOnly><docs-demo-bal-card-23></docs-demo-bal-card-23></ClientOnly>
+<ClientOnly><docs-demo-bal-card-24></docs-demo-bal-card-24></ClientOnly>
 
 
 ### Colors
 
-<ClientOnly><docs-demo-bal-card-24></docs-demo-bal-card-24></ClientOnly>
+<ClientOnly><docs-demo-bal-card-25></docs-demo-bal-card-25></ClientOnly>
 
 
 

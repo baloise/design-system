@@ -17,11 +17,11 @@ import {
   isoString,
   toDate,
   isValidDateString,
-} from '../../utils/balDateUtil'
-import { isEnterKey } from '../../utils/balKeyUtil'
+  isEnterKey,
+} from '@baloise/web-app-utils'
+import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
-import { isNil } from 'lodash'
 
 @Component({
   tag: 'bal-datepicker',
@@ -368,7 +368,7 @@ export class Datepicker implements ComponentInterface {
       return true
     }
 
-    return this.allowedDates(isoString(dayDatePointer))
+    return (this.allowedDates as BalDateCallback)(isoString(dayDatePointer))
   }
 
   private onIconClick = (event: MouseEvent) => {

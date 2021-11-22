@@ -21,61 +21,66 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 <ClientOnly><docs-demo-bal-button-6></docs-demo-bal-button-6></ClientOnly>
 
 
-### Info
+### Links
 
 <ClientOnly><docs-demo-bal-button-7></docs-demo-bal-button-7></ClientOnly>
 
 
-### Inverted
+### Info
 
 <ClientOnly><docs-demo-bal-button-8></docs-demo-bal-button-8></ClientOnly>
 
 
-### Other colors
+### Inverted
 
 <ClientOnly><docs-demo-bal-button-9></docs-demo-bal-button-9></ClientOnly>
 
 
-### Disabled
+### Other colors
 
 <ClientOnly><docs-demo-bal-button-10></docs-demo-bal-button-10></ClientOnly>
 
 
-### Loading
+### Disabled
 
 <ClientOnly><docs-demo-bal-button-11></docs-demo-bal-button-11></ClientOnly>
 
 
-### Expanded
+### Loading
 
 <ClientOnly><docs-demo-bal-button-12></docs-demo-bal-button-12></ClientOnly>
 
 
-### With icons
+### Expanded
 
 <ClientOnly><docs-demo-bal-button-13></docs-demo-bal-button-13></ClientOnly>
 
 
-### Small buttons
+### With icons
 
 <ClientOnly><docs-demo-bal-button-14></docs-demo-bal-button-14></ClientOnly>
 
 
-### Square buttons
+### Small buttons
 
 <ClientOnly><docs-demo-bal-button-15></docs-demo-bal-button-15></ClientOnly>
 
 
-### Button Link
+### Square buttons
 
 <ClientOnly><docs-demo-bal-button-16></docs-demo-bal-button-16></ClientOnly>
+
+
+### Button Link
+
+<ClientOnly><docs-demo-bal-button-17></docs-demo-bal-button-17></ClientOnly>
 
 
 ### Button Group
 
 The .bal-buttons css class helps to place button groups together. The buttons stretche on mobile devices according to their css class like .is-full , .is-half , .is-one-third or .is-two-thirds .
 
-<ClientOnly><docs-demo-bal-button-17></docs-demo-bal-button-17></ClientOnly>
+<ClientOnly><docs-demo-bal-button-18></docs-demo-bal-button-18></ClientOnly>
 
 
 

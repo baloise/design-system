@@ -1,4 +1,9 @@
 /**
+ * Config
+ */
+export * from './config'
+
+/**
  * Components
  */
 export { Components, JSX } from './components'
@@ -16,9 +21,6 @@ export * from './types/color.types'
 /**
  * Utils
  */
-export * from './utils'
-export * from './filters'
-export * from './validators'
 export * from './components/bal-select/utils/bal-option.util'
 export { shallowReady, deepReady } from './helpers/helpers'
 

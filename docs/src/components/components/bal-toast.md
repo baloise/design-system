@@ -18,12 +18,12 @@ Toasts are used to inform the user with a simple text message.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-toast-121></docs-demo-bal-toast-121></ClientOnly>
+<ClientOnly><docs-demo-bal-toast-125></docs-demo-bal-toast-125></ClientOnly>
 
 
 ### Colors
 
-<ClientOnly><docs-demo-bal-toast-122></docs-demo-bal-toast-122></ClientOnly>
+<ClientOnly><docs-demo-bal-toast-126></docs-demo-bal-toast-126></ClientOnly>
 
 
 

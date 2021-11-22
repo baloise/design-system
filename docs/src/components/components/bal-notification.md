@@ -18,22 +18,22 @@ A notification is used for alerts or to highlight certain content for the user.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-notification-75></docs-demo-bal-notification-75></ClientOnly>
+<ClientOnly><docs-demo-bal-notification-78></docs-demo-bal-notification-78></ClientOnly>
 
 
 ### Types
 
-<ClientOnly><docs-demo-bal-notification-76></docs-demo-bal-notification-76></ClientOnly>
+<ClientOnly><docs-demo-bal-notification-79></docs-demo-bal-notification-79></ClientOnly>
 
 
 ### Box
 
-<ClientOnly><docs-demo-bal-notification-77></docs-demo-bal-notification-77></ClientOnly>
+<ClientOnly><docs-demo-bal-notification-80></docs-demo-bal-notification-80></ClientOnly>
 
 
 ### Error
 
-<ClientOnly><docs-demo-bal-notification-78></docs-demo-bal-notification-78></ClientOnly>
+<ClientOnly><docs-demo-bal-notification-81></docs-demo-bal-notification-81></ClientOnly>
 
 
 
