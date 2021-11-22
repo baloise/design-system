@@ -142,6 +142,11 @@ module.exports = {
           children: require('./generated/components.json'),
         },
         {
+          title: 'Migration',
+          collapsable: true,
+          children: ['migration/migration-from-client-libs.md', 'migration/migration-from-1.x.md'],
+        },
+        {
           title: 'Contributing',
           collapsable: true,
           children: [
