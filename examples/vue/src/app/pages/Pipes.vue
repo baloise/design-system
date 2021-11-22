@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
-import { balCapitalize, balClaimNumber, balCurrency } from '@baloise/design-system-components'
+import { balCapitalize, balClaimNumber, balCurrency } from '@baloise/web-app-pipes-vue'
 
 export default defineComponent({
   components: {},
@@ -35,11 +35,8 @@ export default defineComponent({
     const formatedAmount = computed(() => balCurrency(amount.value))
 
     return {
-      title,
       capitalizedTitle,
-      claimNumber,
       formatedClaimNumber,
-      amount,
       formatedAmount,
     }
   },

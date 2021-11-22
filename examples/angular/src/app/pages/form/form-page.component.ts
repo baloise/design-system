@@ -1,7 +1,8 @@
 import { Component } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
-import { NewBalOptionValue, newDateString, now } from '@baloise/design-system-components'
-import { BalValidators } from '@baloise/design-system-components-angular'
+import { NewBalOptionValue } from '@baloise/design-system-components'
+import { newDateString, now } from '@baloise/web-app-utils'
+import { BalValidators } from '@baloise/web-app-validators-angular'
 
 @Component({
   selector: 'app-form-page',

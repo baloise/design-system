@@ -30,8 +30,8 @@
     "@ag-grid-community/client-side-row-model": "^26.2.0",
     "@ag-grid-community/core": "^26.2.0",
     "@ag-grid-community/vue3": "^26.2.0",
-    "@baloise/design-system-components-table": "^2.0.0-beta.0",
-    "@baloise/design-system-components-vue": "^2.0.0-beta.0",
+    "@baloise/design-system-components-table": "^2.0.0-beta.1",
+    "@baloise/design-system-components-vue": "^2.0.0-beta.1",
     "@baloise/vue-axios": "^1.2.0",
     "@baloise/web-app-pipes-vue": "^2.0.5",
     "@baloise/web-app-utils": "^2.0.5",
@@ -46,7 +46,7 @@
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
-    "@baloise/design-system-testing": "^2.0.0-beta.0",
+    "@baloise/design-system-testing": "^2.0.0-beta.1",
     "@types/jest": "^26.0.24",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
