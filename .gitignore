@@ -109,4 +109,5 @@ dist-transpiled
 .idea
 /temp
 /templates
+/sandbox
 .vscode
