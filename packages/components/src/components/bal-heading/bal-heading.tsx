@@ -56,6 +56,10 @@ export class Heading {
       return `has-text-white`
     }
 
+    if (this.color === 'info') {
+      return `has-text-hint`
+    }
+
     if (this.color !== '') {
       return `has-text-${this.color}`
     }
