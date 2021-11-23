@@ -52,8 +52,7 @@ describe('bal-select', () => {
     expect(balChangeEvent).toHaveReceivedEventDetail(['v1998', 'v2000'])
   })
 
-  // FIXME
-  it.skip('should fire a click event', async () => {
+  it('should fire a click event', async () => {
     balSelectElement.click()
     await page.waitForChanges()
 

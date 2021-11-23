@@ -49,6 +49,7 @@
     "test:watch": "stencil test --spec --e2e --watchAll",
     "test:unit": "stencil test --spec",
     "test:unit:watch": "stencil test --spec --watchAll",
+    "test:e2e": "stencil test --e2e",
     "test:e2e:watch": "stencil test --e2e --watchAll",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
