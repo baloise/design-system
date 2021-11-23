@@ -560,6 +560,14 @@ export namespace Components {
           * If `true` multiple file upload is possible.
          */
         "multiple": boolean;
+        /**
+          * Overrides the default subtitle filesize
+         */
+        "subTitle": ((file: File) => string) | undefined;
+        /**
+          * Input value.
+         */
+        "value": File[];
     }
     interface BalFooter {
         /**
@@ -2499,6 +2507,14 @@ declare namespace LocalJSX {
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
         "onBalRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
+        /**
+          * Overrides the default subtitle filesize
+         */
+        "subTitle"?: ((file: File) => string) | undefined;
+        /**
+          * Input value.
+         */
+        "value"?: File[];
     }
     interface BalFooter {
         /**
