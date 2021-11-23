@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Element, Listen, State, Event, EventEmitter, Method, Watch } from '@stencil/core'
 import filesize from 'filesize.js'
+import { areArraysEqual } from '../../utils'
 import { FileUploadRejectedFile, FileUploadRejectionReason } from './bal-file-upload.type'
 
 @Component({
@@ -18,7 +19,9 @@ export class FileUpload {
 
   @Watch('value')
   onValueChange() {
-    this.files = this.value
+    if (!areArraysEqual(this.files, this.value)) {
+      this.files = this.value
+    }
   }
 
   /**
