@@ -39,7 +39,7 @@
     "docs:setup": "npm --prefix packages/fonts run docs && npm --prefix packages/icons run docs && npm --prefix packages/components run docs && npm --prefix packages/testing run docs && npm --prefix docs run setup",
     "docs:build": "npm run docs:setup && npm --prefix docs run build",
     "docs:publish": "npm run docs:install && npm run docs:build",
-    "sandbox:build": "node .scripts/banner.js sandbox:build"
+    "sandbox:build": "node .scripts/banner.js sandbox:build && npm run icons:build && npm --prefix packages/components run docs:sandbox && node .scripts/sandbox.script.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
