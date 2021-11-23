@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://github.com/baloise/design-system/compare/v2.0.2...v2.0.3) (2021-11-23)
+
+
+### Bug Fixes
+
+* **heading:** add missing subtile color ([7572254](https://github.com/baloise/design-system/commit/7572254cc29ffc298cca4f89327789626f5391ec))
+
+
+
+## 2.0.1 (2021-11-22)
+
+
+
+
+
 ## [2.0.2](https://github.com/baloise/design-system/compare/v2.0.1...v2.0.2) (2021-11-23)
 
 **Note:** Version bump only for package root
