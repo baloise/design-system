@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://github.com/baloise/design-system/compare/v2.0.4...v2.0.5) (2021-11-24)
+
+
+### Bug Fixes
+
+* **file-upload:** using @baloise/web-app-utils for areArraysEqual ([a0b4793](https://github.com/baloise/design-system/commit/a0b47939bc39a5e97755d2f57504ca554971874b))
+
+
+
+## 1.19.7 (2021-11-11)
+
+
+
+
+
 ## [2.0.4](https://github.com/baloise/design-system/compare/v2.0.3...v2.0.4) (2021-11-23)
 
 
