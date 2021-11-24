@@ -3,6 +3,10 @@ www/
 loader/
 docs/
 src/assets/
+src/stories/assets/components.json
+src/stories/assets/components.d.ts
+storybook-static/
+public/
 
 *~
 *.sw[mnpcod]
