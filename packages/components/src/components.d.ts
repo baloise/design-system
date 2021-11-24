@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
 import { BalButtonColor } from "./components/bal-button/bal.button.type";
 import { PaddingCardType, SpacingCardType } from "./types/padding.types";
-import { ColorTypes, ColorTypesAll, ColorTypesExtended } from "./types/color.types";
 import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
@@ -17,21 +17,25 @@ import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
         /**
+          * If `true` the accordion is used on the bottom of a card
+         */
+        "card": boolean;
+        /**
           * Close the accordion
          */
         "close": () => Promise<void>;
+        /**
+          * Bal-Icon of the close trigger button
+         */
+        "closeIcon": string;
         /**
           * Label of the close trigger button
          */
         "closeLabel": string;
         /**
-          * Label of the open trigger button
+          * Type defines the theme of the accordion toggle
          */
-        "interface": '' | 'light';
-        /**
-          * If `true` the component is ready for a dark background
-         */
-        "inverted": boolean;
+        "color": ColorTypesBasic;
         /**
           * Controls if the accordion is collapsed or not
          */
@@ -40,6 +44,10 @@ export namespace Components {
           * Open the accordion
          */
         "open": () => Promise<void>;
+        /**
+          * Bal-Icon of the open trigger button
+         */
+        "openIcon": string;
         /**
           * Label of the open trigger button
          */
@@ -63,7 +71,7 @@ export namespace Components {
         /**
           * The color to use from your application's color palette.
          */
-        "color": BalButtonColor | '';
+        "color": BalButtonColor;
         /**
           * If `true`, the user cannot interact with the button.
          */
@@ -81,9 +89,25 @@ export namespace Components {
          */
         "href": string | undefined;
         /**
+          * Name of the left button icon
+         */
+        "icon": string;
+        /**
+          * Size of the button
+         */
+        "iconPosition": 'left' | 'right';
+        /**
+          * Name of the right button icon
+         */
+        "iconRight": string;
+        /**
           * If `true` the button is inverted
          */
         "inverted": boolean;
+        /**
+          * If `true` the button has a active theme
+         */
+        "isActive": boolean;
         /**
           * Turn the button in to a link.
          */
@@ -107,7 +131,7 @@ export namespace Components {
         /**
           * Size of the button
          */
-        "size": 'small' | 'medium' | 'large';
+        "size": 'small' | '';
         /**
           * If `true` the width of the buttons is limited
          */
@@ -137,7 +161,7 @@ export namespace Components {
         /**
           * Defines the color of the card.
          */
-        "color": ColorTypesAll | '';
+        "color": ColorTypes | '';
         /**
           * If `true` the card loses its shadow.
          */
@@ -271,6 +295,10 @@ export namespace Components {
     }
     interface BalData {
         /**
+          * If `true` a bottom border is added to the data-item.
+         */
+        "border": boolean;
+        /**
           * If `true` the data list is horizontal instead of vertical.
          */
         "horizontal": boolean;
@@ -334,14 +362,12 @@ export namespace Components {
           * Returns the native `<input>` element used under the hood.
          */
         "getInputElement": () => Promise<HTMLInputElement>;
-        "invalid": boolean;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
-        "loading": boolean;
         /**
-          * If `true` the component uses the whole width.
+          * Define the locale of month and day names.
          */
         "locale": 'en' | 'de' | 'fr' | 'it';
         /**
@@ -388,7 +414,6 @@ export namespace Components {
           * Sets the focus on the input element
          */
         "setFocus": () => Promise<void>;
-        "touched": boolean;
         /**
           * If `true` the datepicker only open on click of the icon
          */
@@ -457,22 +482,24 @@ export namespace Components {
           * If `true` a loading spinner is visible at the end of the input
          */
         "loading": boolean;
-        /**
-          * If `true` the component takes the whole width
-         */
-        "pure": boolean;
-        "reset": () => Promise<void>;
-        /**
-          * If `true` the component gets a invalid style. Only use this if there is no live validation.
-         */
-        "touched": boolean;
     }
     interface BalFieldControl {
-        "disabled": boolean;
-        "invalid": boolean;
+        /**
+          * Baloise icon for the left side of the input
+         */
+        "iconLeft": string;
+        /**
+          * Baloise icon for the right side of the input
+         */
+        "iconRight": string;
+        /**
+          * If `true` the field can be used on blue background.
+         */
         "inverted": boolean;
+        /**
+          * If `true` a loading spinner is visible at the end of the input
+         */
         "loading": boolean;
-        "touched": boolean;
     }
     interface BalFieldHint {
         /**
@@ -481,9 +508,24 @@ export namespace Components {
         "subject": string;
     }
     interface BalFieldLabel {
+        /**
+          * If `true` the component takes the whole width
+         */
+        "expanded": boolean;
+        /**
+          * If `true` a asterix (*) is added to the label text
+         */
+        "required": boolean;
     }
     interface BalFieldMessage {
+        /**
+          * Defines the color of the message.
+         */
         "color": '' | ColorTypesExtended;
+        /**
+          * If `true` the component takes the whole width
+         */
+        "expanded": boolean;
     }
     interface BalFileUpload {
         /**
@@ -518,8 +560,28 @@ export namespace Components {
           * If `true` multiple file upload is possible.
          */
         "multiple": boolean;
+        /**
+          * Overrides the default subtitle filesize
+         */
+        "subTitle": ((file: File) => string) | undefined;
+        /**
+          * Input value.
+         */
+        "value": File[];
     }
     interface BalFooter {
+        /**
+          * If `true` the footer shows a track line at the bottom.
+         */
+        "hasTrackLine": boolean;
+        /**
+          * If `true` the default Baloise links will be hidden.
+         */
+        "hideLinks": boolean;
+        /**
+          * The languages in which the links will appear.
+         */
+        "locale": 'en' | 'de' | 'fr' | 'it';
     }
     interface BalHeading {
         /**
@@ -581,7 +643,7 @@ export namespace Components {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color": BalButtonColor | 'gray';
+        "color": BalButtonColor;
         /**
           * If `true` the button is inverted
          */
@@ -597,7 +659,7 @@ export namespace Components {
         /**
           * Defines the size of the icon.
          */
-        "size": 'small' | 'medium' | 'large' | '';
+        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
         /**
           * Svg content.
          */
@@ -653,10 +715,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true` the component uses the whole width.
-         */
-        "expanded": boolean;
-        /**
           * Returns the native `<input>` element used under the hood.
          */
         "getInputElement": () => Promise<HTMLInputElement>;
@@ -665,7 +723,6 @@ export namespace Components {
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
-        "invalid": boolean;
         /**
           * If `true` this component can be placed on dark background
          */
@@ -726,7 +783,6 @@ export namespace Components {
           * Adds a suffix the the inputvalue after blur.
          */
         "suffix"?: string;
-        "touched": boolean;
         /**
           * Defines the type of the input (text, number, email ...).
          */
@@ -737,6 +793,14 @@ export namespace Components {
         "value"?: string | number;
     }
     interface BalList {
+        /**
+          * If `true` each list item has a bottom border
+         */
+        "border": boolean;
+        /**
+          * If `true` the list item can be hovered
+         */
+        "disabled": boolean;
         /**
           * If `true` the list can be used on a dark backround
          */
@@ -767,7 +831,10 @@ export namespace Components {
     interface BalListItemContent {
     }
     interface BalListItemIcon {
-        "dense": boolean;
+        /**
+          * If `true` the icon is on the right side of the list item. Default is the left side.
+         */
+        "right": boolean;
     }
     interface BalListItemSubtitle {
     }
@@ -844,6 +911,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * It `true` the navbar has a white background
+         */
+        "light": boolean;
+        /**
           * It `true` the burger button is hidden
          */
         "noBurger": boolean;
@@ -852,7 +923,7 @@ export namespace Components {
         /**
           * Link of the logo / title.
          */
-        "href": string | undefined;
+        "href": string;
     }
     interface BalNavbarMenu {
         "toggle": (isMenuActive: boolean) => Promise<void>;
@@ -865,7 +936,7 @@ export namespace Components {
         /**
           * Defines the color of the element
          */
-        "color": '' | ColorTypesExtended;
+        "color": '' | ColorTypes;
     }
     interface BalPagination {
         /**
@@ -953,10 +1024,6 @@ export namespace Components {
           * The value of the control.
          */
         "value": string;
-        /**
-          * If `true` the select buttons are listed verticaly
-         */
-        "vertical": boolean;
     }
     interface BalSelect {
         /**
@@ -987,11 +1054,17 @@ export namespace Components {
           * Sets the focus on the input element
          */
         "getValue": () => Promise<string[] | undefined>;
-        "invalid": boolean;
+        /**
+          * Enables the slide in animation for the option items.
+         */
+        "hasMovement": boolean;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
+        /**
+          * Defines if the select is in a loading state.
+         */
         "loading": boolean;
         /**
           * If `true` multiple option can be selected
@@ -1029,7 +1102,6 @@ export namespace Components {
           * Sets the focus on the input element
          */
         "setFocus": () => Promise<void>;
-        "touched": boolean;
         /**
           * If `true` the user can search by typing into the input field.
          */
@@ -1227,7 +1299,7 @@ export namespace Components {
         /**
           * Defines the layout of the tabs.
          */
-        "interface": 'tabs' | 'steps';
+        "interface": 'tabs' | 'steps' | 'o-steps';
         /**
           * If you want the rounded tab style.
          */
@@ -1355,6 +1427,10 @@ export namespace Components {
           * If `true` the button is disabled
          */
         "disabled": boolean;
+        /**
+          * If `true` the timeinput can be used on blue background.
+         */
+        "inverted": boolean;
         /**
           * Latest date available for selection
          */
@@ -1875,17 +1951,21 @@ declare global {
 declare namespace LocalJSX {
     interface BalAccordion {
         /**
+          * If `true` the accordion is used on the bottom of a card
+         */
+        "card"?: boolean;
+        /**
+          * Bal-Icon of the close trigger button
+         */
+        "closeIcon"?: string;
+        /**
           * Label of the close trigger button
          */
         "closeLabel"?: string;
         /**
-          * Label of the open trigger button
+          * Type defines the theme of the accordion toggle
          */
-        "interface"?: '' | 'light';
-        /**
-          * If `true` the component is ready for a dark background
-         */
-        "inverted"?: boolean;
+        "color"?: ColorTypesBasic;
         /**
           * Controls if the accordion is collapsed or not
          */
@@ -1894,6 +1974,10 @@ declare namespace LocalJSX {
           * Emmited when the accordion has changed
          */
         "onBalCollapse"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Bal-Icon of the open trigger button
+         */
+        "openIcon"?: string;
         /**
           * Label of the open trigger button
          */
@@ -1913,7 +1997,7 @@ declare namespace LocalJSX {
         /**
           * The color to use from your application's color palette.
          */
-        "color"?: BalButtonColor | '';
+        "color"?: BalButtonColor;
         /**
           * If `true`, the user cannot interact with the button.
          */
@@ -1931,9 +2015,25 @@ declare namespace LocalJSX {
          */
         "href"?: string | undefined;
         /**
+          * Name of the left button icon
+         */
+        "icon"?: string;
+        /**
+          * Size of the button
+         */
+        "iconPosition"?: 'left' | 'right';
+        /**
+          * Name of the right button icon
+         */
+        "iconRight"?: string;
+        /**
           * If `true` the button is inverted
          */
         "inverted"?: boolean;
+        /**
+          * If `true` the button has a active theme
+         */
+        "isActive"?: boolean;
         /**
           * Turn the button in to a link.
          */
@@ -1973,7 +2073,7 @@ declare namespace LocalJSX {
         /**
           * Size of the button
          */
-        "size"?: 'small' | 'medium' | 'large';
+        "size"?: 'small' | '';
         /**
           * If `true` the width of the buttons is limited
          */
@@ -2003,7 +2103,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the card.
          */
-        "color"?: ColorTypesAll | '';
+        "color"?: ColorTypes | '';
         /**
           * If `true` the card loses its shadow.
          */
@@ -2141,6 +2241,10 @@ declare namespace LocalJSX {
     }
     interface BalData {
         /**
+          * If `true` a bottom border is added to the data-item.
+         */
+        "border"?: boolean;
+        /**
           * If `true` the data list is horizontal instead of vertical.
          */
         "horizontal"?: boolean;
@@ -2208,14 +2312,12 @@ declare namespace LocalJSX {
           * If `true` the component uses the whole width.
          */
         "expanded"?: boolean;
-        "invalid"?: boolean;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
-        "loading"?: boolean;
         /**
-          * If `true` the component uses the whole width.
+          * Define the locale of month and day names.
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it';
         /**
@@ -2266,7 +2368,6 @@ declare namespace LocalJSX {
           * If `true` the attribute required is added to the native input.
          */
         "required"?: boolean;
-        "touched"?: boolean;
         /**
           * If `true` the datepicker only open on click of the icon
          */
@@ -2324,21 +2425,24 @@ declare namespace LocalJSX {
           * If `true` a loading spinner is visible at the end of the input
          */
         "loading"?: boolean;
-        /**
-          * If `true` the component takes the whole width
-         */
-        "pure"?: boolean;
-        /**
-          * If `true` the component gets a invalid style. Only use this if there is no live validation.
-         */
-        "touched"?: boolean;
     }
     interface BalFieldControl {
-        "disabled"?: boolean;
-        "invalid"?: boolean;
+        /**
+          * Baloise icon for the left side of the input
+         */
+        "iconLeft"?: string;
+        /**
+          * Baloise icon for the right side of the input
+         */
+        "iconRight"?: string;
+        /**
+          * If `true` the field can be used on blue background.
+         */
         "inverted"?: boolean;
+        /**
+          * If `true` a loading spinner is visible at the end of the input
+         */
         "loading"?: boolean;
-        "touched"?: boolean;
     }
     interface BalFieldHint {
         /**
@@ -2347,9 +2451,24 @@ declare namespace LocalJSX {
         "subject"?: string;
     }
     interface BalFieldLabel {
+        /**
+          * If `true` the component takes the whole width
+         */
+        "expanded"?: boolean;
+        /**
+          * If `true` a asterix (*) is added to the label text
+         */
+        "required"?: boolean;
     }
     interface BalFieldMessage {
+        /**
+          * Defines the color of the message.
+         */
         "color"?: '' | ColorTypesExtended;
+        /**
+          * If `true` the component takes the whole width
+         */
+        "expanded"?: boolean;
     }
     interface BalFileUpload {
         /**
@@ -2388,8 +2507,28 @@ declare namespace LocalJSX {
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
         "onBalRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
+        /**
+          * Overrides the default subtitle filesize
+         */
+        "subTitle"?: ((file: File) => string) | undefined;
+        /**
+          * Input value.
+         */
+        "value"?: File[];
     }
     interface BalFooter {
+        /**
+          * If `true` the footer shows a track line at the bottom.
+         */
+        "hasTrackLine"?: boolean;
+        /**
+          * If `true` the default Baloise links will be hidden.
+         */
+        "hideLinks"?: boolean;
+        /**
+          * The languages in which the links will appear.
+         */
+        "locale"?: 'en' | 'de' | 'fr' | 'it';
     }
     interface BalHeading {
         /**
@@ -2439,7 +2578,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color"?: BalButtonColor | 'gray';
+        "color"?: BalButtonColor;
         /**
           * If `true` the button is inverted
          */
@@ -2455,7 +2594,7 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the icon.
          */
-        "size"?: 'small' | 'medium' | 'large' | '';
+        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
         /**
           * Svg content.
          */
@@ -2510,16 +2649,11 @@ declare namespace LocalJSX {
           * If `true` the input is disabled
          */
         "disabled"?: boolean;
-        /**
-          * If `true` the component uses the whole width.
-         */
-        "expanded"?: boolean;
         "hasIconRight"?: boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
-        "invalid"?: boolean;
         /**
           * If `true` this component can be placed on dark background
          */
@@ -2600,7 +2734,6 @@ declare namespace LocalJSX {
           * Adds a suffix the the inputvalue after blur.
          */
         "suffix"?: string;
-        "touched"?: boolean;
         /**
           * Defines the type of the input (text, number, email ...).
          */
@@ -2611,6 +2744,14 @@ declare namespace LocalJSX {
         "value"?: string | number;
     }
     interface BalList {
+        /**
+          * If `true` each list item has a bottom border
+         */
+        "border"?: boolean;
+        /**
+          * If `true` the list item can be hovered
+         */
+        "disabled"?: boolean;
         /**
           * If `true` the list can be used on a dark backround
          */
@@ -2645,7 +2786,10 @@ declare namespace LocalJSX {
     interface BalListItemContent {
     }
     interface BalListItemIcon {
-        "dense"?: boolean;
+        /**
+          * If `true` the icon is on the right side of the list item. Default is the left side.
+         */
+        "right"?: boolean;
     }
     interface BalListItemSubtitle {
     }
@@ -2714,6 +2858,10 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
+          * It `true` the navbar has a white background
+         */
+        "light"?: boolean;
+        /**
           * It `true` the burger button is hidden
          */
         "noBurger"?: boolean;
@@ -2722,7 +2870,7 @@ declare namespace LocalJSX {
         /**
           * Link of the logo / title.
          */
-        "href"?: string | undefined;
+        "href"?: string;
         /**
           * Emitted when the link element has clicked
          */
@@ -2738,7 +2886,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the element
          */
-        "color"?: '' | ColorTypesExtended;
+        "color"?: '' | ColorTypes;
     }
     interface BalPagination {
         /**
@@ -2829,10 +2977,6 @@ declare namespace LocalJSX {
           * The value of the control.
          */
         "value"?: string;
-        /**
-          * If `true` the select buttons are listed verticaly
-         */
-        "vertical"?: boolean;
     }
     interface BalSelect {
         /**
@@ -2847,11 +2991,17 @@ declare namespace LocalJSX {
           * If `true` the component uses the whole width.
          */
         "expanded"?: boolean;
-        "invalid"?: boolean;
+        /**
+          * Enables the slide in animation for the option items.
+         */
+        "hasMovement"?: boolean;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
+        /**
+          * Defines if the select is in a loading state.
+         */
         "loading"?: boolean;
         /**
           * If `true` multiple option can be selected
@@ -2905,7 +3055,6 @@ declare namespace LocalJSX {
           * Defines the height of the dropdown list.
          */
         "scrollable"?: number;
-        "touched"?: boolean;
         /**
           * If `true` the user can search by typing into the input field.
          */
@@ -3115,7 +3264,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the tabs.
          */
-        "interface"?: 'tabs' | 'steps';
+        "interface"?: 'tabs' | 'steps' | 'o-steps';
         /**
           * Emitted when the action button has clicked
          */
@@ -3266,6 +3415,10 @@ declare namespace LocalJSX {
           * If `true` the button is disabled
          */
         "disabled"?: boolean;
+        /**
+          * If `true` the timeinput can be used on blue background.
+         */
+        "inverted"?: boolean;
         /**
           * Latest date available for selection
          */

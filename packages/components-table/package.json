@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components-table",
-  "version": "1.18.13",
+  "version": "2.0.4",
   "description": "The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -25,7 +25,8 @@
     "build": "npm run build:clean && npm run build:compile && npm run build:bundle",
     "build:clean": "rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p .",
-    "build:bundle": "rollup --config rollup.config.js"
+    "build:bundle": "rollup --config rollup.config.js",
+    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
@@ -43,8 +44,8 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@baloise/design-system-components": "1.18.13",
-    "@types/lodash": "^4.14.172",
+    "@baloise/design-system-components": "2.0.4",
+    "@types/lodash.isnil": "^4.0.6",
     "ag-grid-community": "^26.0.0",
     "autoprefixer": "^10.3.2",
     "bulma": "^0.9.3",
@@ -56,7 +57,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash.isnil": "^4.0.0"
   },
   "peerDependencies": {
     "@baloise/design-system-components": ">=1.10.1",

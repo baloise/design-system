@@ -18,7 +18,7 @@ The sheet component is used to show content over the whole page at the bottom. T
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-sheet-91></docs-demo-bal-sheet-91></ClientOnly>
+<ClientOnly><docs-demo-bal-sheet-95></docs-demo-bal-sheet-95></ClientOnly>
 
 
 

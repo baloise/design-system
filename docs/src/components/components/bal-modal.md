@@ -19,7 +19,7 @@ the app before interaction can resume.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-modal-71></docs-demo-bal-modal-71></ClientOnly>
+<ClientOnly><docs-demo-bal-modal-75></docs-demo-bal-modal-75></ClientOnly>
 
 
 

@@ -18,35 +18,40 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ### Basic
 
+<ClientOnly><docs-demo-bal-button-6></docs-demo-bal-button-6></ClientOnly>
+
+
+### Links
+
 <ClientOnly><docs-demo-bal-button-7></docs-demo-bal-button-7></ClientOnly>
 
 
-### Colors
+### Info
 
 <ClientOnly><docs-demo-bal-button-8></docs-demo-bal-button-8></ClientOnly>
 
 
-### Sizes
+### Inverted
 
 <ClientOnly><docs-demo-bal-button-9></docs-demo-bal-button-9></ClientOnly>
 
 
-### Disabled
+### Other colors
 
 <ClientOnly><docs-demo-bal-button-10></docs-demo-bal-button-10></ClientOnly>
 
 
-### Loading
+### Disabled
 
 <ClientOnly><docs-demo-bal-button-11></docs-demo-bal-button-11></ClientOnly>
 
 
-### Expanded
+### Loading
 
 <ClientOnly><docs-demo-bal-button-12></docs-demo-bal-button-12></ClientOnly>
 
 
-### Inverted
+### Expanded
 
 <ClientOnly><docs-demo-bal-button-13></docs-demo-bal-button-13></ClientOnly>
 
@@ -56,21 +61,26 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 <ClientOnly><docs-demo-bal-button-14></docs-demo-bal-button-14></ClientOnly>
 
 
-### Square buttons
+### Small buttons
 
 <ClientOnly><docs-demo-bal-button-15></docs-demo-bal-button-15></ClientOnly>
 
 
-### Button Link
+### Square buttons
 
 <ClientOnly><docs-demo-bal-button-16></docs-demo-bal-button-16></ClientOnly>
+
+
+### Button Link
+
+<ClientOnly><docs-demo-bal-button-17></docs-demo-bal-button-17></ClientOnly>
 
 
 ### Button Group
 
 The .bal-buttons css class helps to place button groups together. The buttons stretche on mobile devices according to their css class like .is-full , .is-half , .is-one-third or .is-two-thirds .
 
-<ClientOnly><docs-demo-bal-button-17></docs-demo-bal-button-17></ClientOnly>
+<ClientOnly><docs-demo-bal-button-18></docs-demo-bal-button-18></ClientOnly>
 
 
 
@@ -81,26 +91,30 @@ The .bal-buttons css class helps to place button groups together. The buttons st
 ### Properties
 
 
-| Attribute          | Description                                                                                                                                                                                                                                                                               | Type                                                                                                     | Default                |
-| :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- | :--------------------- |
-| **bottom-rounded** | If `true` the bottom corners get rounded                                                                                                                                                                                                                                                  | <code>boolean</code>                                                                                     | <code>false</code>     |
-| **color**          | The color to use from your application's color palette.                                                                                                                                                                                                                                   | <code>"" , "danger" , "info-light" , "link" , "primary" , "primary-light" , "success" , "warning"</code> | <code>'primary'</code> |
-| **disabled**       | If `true`, the user cannot interact with the button.                                                                                                                                                                                                                                      | <code>boolean</code>                                                                                     | <code>false</code>     |
-| **download**       | This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want). | <code>string , undefined</code>                                                                          |                        |
-| **expanded**       | If `true` the button has a full width                                                                                                                                                                                                                                                     | <code>boolean</code>                                                                                     | <code>false</code>     |
-| **href**           | Specifies the URL of the page the link goes to                                                                                                                                                                                                                                            | <code>string , undefined</code>                                                                          |                        |
-| **inverted**       | If `true` the button is inverted                                                                                                                                                                                                                                                          | <code>boolean</code>                                                                                     | <code>false</code>     |
-| **link**           | Turn the button in to a link.                                                                                                                                                                                                                                                             | <code>boolean</code>                                                                                     | <code>false</code>     |
-| **loading**        | If `true` the label is hidden and a loading spinner is shown instead.                                                                                                                                                                                                                     | <code>boolean</code>                                                                                     | <code>false</code>     |
-| **name**           | The name of the button, which is submitted with the form data.                                                                                                                                                                                                                            | <code>string , undefined</code>                                                                          | <code>''</code>        |
-| **outlined**       | If `true` the button is outlined                                                                                                                                                                                                                                                          | <code>boolean</code>                                                                                     | <code>false</code>     |
-| **rel**            | Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).                                                                                                    | <code>string , undefined</code>                                                                          |                        |
-| **size**           | Size of the button                                                                                                                                                                                                                                                                        | <code>"large" , "medium" , "small"</code>                                                                | <code>'medium'</code>  |
-| **square**         | If `true` the width of the buttons is limited                                                                                                                                                                                                                                             | <code>boolean</code>                                                                                     | <code>false</code>     |
-| **target**         | Specifies where to display the linked URL. Only applies when an `href` is provided.                                                                                                                                                                                                       | <code>" _parent" , "_blank" , "_self" , "_top"</code>                                                    | <code>'_self'</code>   |
-| **top-rounded**    | If `true` the top corners get rounded                                                                                                                                                                                                                                                     | <code>boolean</code>                                                                                     | <code>false</code>     |
-| **type**           | The type of button.                                                                                                                                                                                                                                                                       | <code>"button" , "reset" , "submit"</code>                                                               | <code>'button'</code>  |
-| **value**          | The value of the button, which is submitted with the form data.                                                                                                                                                                                                                           | <code>number , string , undefined</code>                                                                 | <code>''</code>        |
+| Attribute          | Description                                                                                                                                                                                                                                                                               | Type                                                                                                         | Default                |
+| :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------- | :--------------------- |
+| **bottom-rounded** | If `true` the bottom corners get rounded                                                                                                                                                                                                                                                  | <code>boolean</code>                                                                                         | <code>false</code>     |
+| **color**          | The color to use from your application's color palette.                                                                                                                                                                                                                                   | <code>"danger" , "info" , "info-light" , "link" , "primary" , "primary-light" , "success" , "warning"</code> | <code>'primary'</code> |
+| **disabled**       | If `true`, the user cannot interact with the button.                                                                                                                                                                                                                                      | <code>boolean</code>                                                                                         | <code>false</code>     |
+| **download**       | This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want). | <code>string , undefined</code>                                                                              |                        |
+| **expanded**       | If `true` the button has a full width                                                                                                                                                                                                                                                     | <code>boolean</code>                                                                                         | <code>false</code>     |
+| **href**           | Specifies the URL of the page the link goes to                                                                                                                                                                                                                                            | <code>string , undefined</code>                                                                              |                        |
+| **icon**           | Name of the left button icon                                                                                                                                                                                                                                                              | <code>string</code>                                                                                          | <code>''</code>        |
+| **icon-position**  | Size of the button                                                                                                                                                                                                                                                                        | <code>"left" , "right"</code>                                                                                | <code>'left'</code>    |
+| **icon-right**     | Name of the right button icon                                                                                                                                                                                                                                                             | <code>string</code>                                                                                          | <code>''</code>        |
+| **inverted**       | If `true` the button is inverted                                                                                                                                                                                                                                                          | <code>boolean</code>                                                                                         | <code>false</code>     |
+| **is-active**      | If `true` the button has a active theme                                                                                                                                                                                                                                                   | <code>boolean</code>                                                                                         | <code>false</code>     |
+| **link**           | Turn the button in to a link.                                                                                                                                                                                                                                                             | <code>boolean</code>                                                                                         | <code>false</code>     |
+| **loading**        | If `true` the label is hidden and a loading spinner is shown instead.                                                                                                                                                                                                                     | <code>boolean</code>                                                                                         | <code>false</code>     |
+| **name**           | The name of the button, which is submitted with the form data.                                                                                                                                                                                                                            | <code>string , undefined</code>                                                                              | <code>''</code>        |
+| **outlined**       | If `true` the button is outlined                                                                                                                                                                                                                                                          | <code>boolean</code>                                                                                         | <code>false</code>     |
+| **rel**            | Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).                                                                                                    | <code>string , undefined</code>                                                                              |                        |
+| **size**           | Size of the button                                                                                                                                                                                                                                                                        | <code>"" , "small"</code>                                                                                    | <code>''</code>        |
+| **square**         | If `true` the width of the buttons is limited                                                                                                                                                                                                                                             | <code>boolean</code>                                                                                         | <code>false</code>     |
+| **target**         | Specifies where to display the linked URL. Only applies when an `href` is provided.                                                                                                                                                                                                       | <code>" _parent" , "_blank" , "_self" , "_top"</code>                                                        | <code>'_self'</code>   |
+| **top-rounded**    | If `true` the top corners get rounded                                                                                                                                                                                                                                                     | <code>boolean</code>                                                                                         | <code>false</code>     |
+| **type**           | The type of button.                                                                                                                                                                                                                                                                       | <code>"button" , "reset" , "submit"</code>                                                                   | <code>'button'</code>  |
+| **value**          | The value of the button, which is submitted with the form data.                                                                                                                                                                                                                           | <code>number , string , undefined</code>                                                                     | <code>''</code>        |
 
 ### Events
 

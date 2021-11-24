@@ -6,10 +6,10 @@ import {
   isDatepicker,
   wrapRoot,
   isInput,
-  isRadioGroup,
   isRadio,
   isSelect,
   isSlider,
+  isTextarea,
 } from '../helpers'
 
 Cypress.Commands.overwrite('blur', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
@@ -31,6 +31,10 @@ Cypress.Commands.overwrite('blur', (originalFn, element: Cypress.Chainable<JQuer
 
   if (isInput(element)) {
     return wrapRoot(element, selectors.input.main, $el => originalFn($el, options))
+  }
+
+  if (isTextarea(element)) {
+    return wrapRoot(element, selectors.textarea.main, $el => originalFn($el, options))
   }
 
   if (isSlider(element)) {

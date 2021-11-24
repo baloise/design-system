@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "alwaysStrict": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "declaration": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "assumeChangesOnlyAffectDirectDependencies": true,
+    "esModuleInterop": true,
+    "lib": ["dom", "es2017"],
+    "module": "esnext",
+    "target": "es2017",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "pretty": true,
+    "removeComments": false,
+    "inlineSources": true,
+    "sourceMap": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false
+}

@@ -27,9 +27,43 @@ Please only use this component for internal appilcations.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-footer-51></docs-demo-bal-footer-51></ClientOnly>
+<ClientOnly><docs-demo-bal-footer-52></docs-demo-bal-footer-52></ClientOnly>
 
 
+### With Track Line
+
+<ClientOnly><docs-demo-bal-footer-53></docs-demo-bal-footer-53></ClientOnly>
+
+
+### Without Links
+
+<ClientOnly><docs-demo-bal-footer-54></docs-demo-bal-footer-54></ClientOnly>
+
+
+### Links in another language
+
+<ClientOnly><docs-demo-bal-footer-55></docs-demo-bal-footer-55></ClientOnly>
+
+
+
+## Code
+
+
+
+### Properties
+
+
+| Attribute          | Description                                            | Type                                   | Default            |
+| :----------------- | :----------------------------------------------------- | :------------------------------------- | :----------------- |
+| **has-track-line** | If `true` the footer shows a track line at the bottom. | <code>boolean</code>                   | <code>false</code> |
+| **hide-links**     | If `true` the default Baloise links will be hidden.    | <code>boolean</code>                   | <code>false</code> |
+| **locale**         | The languages in which the links will appear.          | <code>"de" , "en" , "fr" , "it"</code> | <code>'en'</code>  |
+
+## Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+- [More information about the installation and usage](/components/tooling/testing.html)
 
 ## Usage
 

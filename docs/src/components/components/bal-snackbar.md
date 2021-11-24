@@ -18,12 +18,12 @@ A snackbar is used to inform the user with a simple text message and a action.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-snackbar-95></docs-demo-bal-snackbar-95></ClientOnly>
+<ClientOnly><docs-demo-bal-snackbar-99></docs-demo-bal-snackbar-99></ClientOnly>
 
 
 ### Colors
 
-<ClientOnly><docs-demo-bal-snackbar-96></docs-demo-bal-snackbar-96></ClientOnly>
+<ClientOnly><docs-demo-bal-snackbar-100></docs-demo-bal-snackbar-100></ClientOnly>
 
 
 
@@ -73,14 +73,14 @@ export class ServicesPageComponent {
 ### Properties
 
 
-| Attribute    | Description                                                       | Type                                                           | Default         |
-| :----------- | :---------------------------------------------------------------- | :------------------------------------------------------------- | :-------------- |
-| **action**   | Label text for the action button                                  | <code>string</code>                                            | <code>''</code> |
-| **color**    | The theme type of the snackbar. Given by bulma our css framework. | <code>"" , "danger" , "primary" , "success" , "warning"</code> | <code>''</code> |
-| **duration** | The duration of the snackbar                                      | <code>number</code>                                            | <code>0</code>  |
-| **icon**     | The icon of the snackbar header                                   | <code>string</code>                                            | <code>''</code> |
-| **message**  | The message of the snackbar                                       | <code>string</code>                                            | <code>''</code> |
-| **subject**  | The subject of the snackbar header                                | <code>string</code>                                            | <code>''</code> |
+| Attribute    | Description                                                       | Type                                                                    | Default         |
+| :----------- | :---------------------------------------------------------------- | :---------------------------------------------------------------------- | :-------------- |
+| **action**   | Label text for the action button                                  | <code>string</code>                                                     | <code>''</code> |
+| **color**    | The theme type of the snackbar. Given by bulma our css framework. | <code>"" , "danger" , "info" , "primary" , "success" , "warning"</code> | <code>''</code> |
+| **duration** | The duration of the snackbar                                      | <code>number</code>                                                     | <code>0</code>  |
+| **icon**     | The icon of the snackbar header                                   | <code>string</code>                                                     | <code>''</code> |
+| **message**  | The message of the snackbar                                       | <code>string</code>                                                     | <code>''</code> |
+| **subject**  | The subject of the snackbar header                                | <code>string</code>                                                     | <code>''</code> |
 
 ### Events
 

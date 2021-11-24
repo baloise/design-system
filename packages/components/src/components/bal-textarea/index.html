@@ -12,17 +12,12 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-textarea id="bal-textarea" name="comment" placeholder="Enter your comment"></bal-textarea>
-        <bal-textarea id="bal-textarea-preview" name="comment" disabled placeholder="Enter your comment"></bal-textarea>
+        <bal-textarea data-test-id="textarea" name="comment" placeholder="Enter your comment"></bal-textarea>
       </section>
-
-      <script type="text/javascript">
-        const textareaElement = document.getElementById('bal-textarea')
-        const textareaPreviewElement = document.getElementById('bal-textarea-preview')
-        textareaElement.addEventListener('balInput', event => {
-          textareaPreviewElement.value = event.detail
-        })
-      </script>
+      <h2 class="title is-size-2">Disabled</h2>
+      <section>
+        <bal-textarea data-test-id="textarea-disabled" name="comment" disabled placeholder="Disabled Textarea"></bal-textarea>
+      </section>
     </div>
   </body>
 </html>

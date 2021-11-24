@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-fonts",
-  "version": "1.18.13",
+  "version": "2.0.4",
   "description": "The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -22,7 +22,8 @@
     "bulma-css"
   ],
   "scripts": {
-    "docs": "node .scripts/archive.script.js"
+    "docs": "node .scripts/archive.script.js",
+    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./lib/fonts.css",
   "files": [

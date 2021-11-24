@@ -23,21 +23,6 @@ A field wraps a form field like input. It provides a clear style structure of ea
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-field-43></docs-demo-bal-field-43></ClientOnly>
-
-
-### Disabled
-
-<ClientOnly><docs-demo-bal-field-44></docs-demo-bal-field-44></ClientOnly>
-
-
-### Pickers
-
-<ClientOnly><docs-demo-bal-field-45></docs-demo-bal-field-45></ClientOnly>
-
-
-### With Icons
-
 <ClientOnly><docs-demo-bal-field-46></docs-demo-bal-field-46></ClientOnly>
 
 
@@ -49,6 +34,18 @@ A field wraps a form field like input. It provides a clear style structure of ea
 ### Addons
 
 <ClientOnly><docs-demo-bal-field-48></docs-demo-bal-field-48></ClientOnly>
+
+
+### Form
+
+<ClientOnly><docs-demo-bal-field-49></docs-demo-bal-field-49></ClientOnly>
+
+
+### Validation for all fields
+
+This is not a recommanded validation style. Only use this style if you do not have the possibility to use live validation.
+
+<ClientOnly><docs-demo-bal-field-50></docs-demo-bal-field-50></ClientOnly>
 
 
 
@@ -66,14 +63,6 @@ A field wraps a form field like input. It provides a clear style structure of ea
 | **invalid**  | If `true` the component gets a invalid style. Only use this if there is no live validation. | <code>boolean</code> | <code>false</code> |
 | **inverted** | If `true` the field can be used on blue background.                                         | <code>boolean</code> | <code>false</code> |
 | **loading**  | If `true` a loading spinner is visible at the end of the input                              | <code>boolean</code> | <code>false</code> |
-| **pure**     | If `true` the component takes the whole width                                               | <code>boolean</code> | <code>false</code> |
-| **touched**  | If `true` the component gets a invalid style. Only use this if there is no live validation. | <code>boolean</code> | <code>false</code> |
-
-### Methods
-
-
-| Method | Description | Signature |
-| :----- | :---------- | :-------- |
 
 ## Testing
 

@@ -2,7 +2,6 @@ import { Plugin } from 'vue'
 import { BaloiseDesignSystemConfig, baloiseDesignSystemDefaultConfig } from '@baloise/design-system-components'
 import { defineCustomElements as defineNativeCustomElements } from '@baloise/design-system-components/dist/custom-elements'
 import { defineCustomElements, applyPolyfills } from '@baloise/design-system-components/loader'
-import { applyFilters } from './generated/filters'
 import { applyComponents } from './generated/components'
 import { applyDirectives } from './directives'
 
@@ -17,7 +16,6 @@ export const BaloiseDesignSystem: Plugin = {
       app.config.isCustomElement = tag => tag.startsWith('bal-')
     }
 
-    applyFilters(app)
     applyComponents(app)
     applyDirectives(app)
 

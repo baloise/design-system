@@ -7,10 +7,10 @@
 
 const path = require('path')
 const svgo = require('svgo')
-const { camelCase, upperFirst } = require('lodash')
+const camelCase = require('lodash.camelcase')
+const upperFirst = require('lodash.upperfirst')
 const file = require('../../../.scripts/file')
 const log = require('../../../.scripts/log')
-const { toPascalCase } = require('../../../.scripts/string')
 const { NEWLINE } = require('../../../.scripts/constants')
 
 const readSVG = async (name, filePath) => {

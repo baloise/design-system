@@ -18,22 +18,27 @@ Tabs are used to structure the information in sub section on the same page.
 
 ### Main Navigation
 
-<ClientOnly><docs-demo-bal-tabs-102></docs-demo-bal-tabs-102></ClientOnly>
+<ClientOnly><docs-demo-bal-tabs-106></docs-demo-bal-tabs-106></ClientOnly>
 
 
 ### Sub Navigation
 
-<ClientOnly><docs-demo-bal-tabs-103></docs-demo-bal-tabs-103></ClientOnly>
+<ClientOnly><docs-demo-bal-tabs-107></docs-demo-bal-tabs-107></ClientOnly>
 
 
 ### Expanded
 
-<ClientOnly><docs-demo-bal-tabs-104></docs-demo-bal-tabs-104></ClientOnly>
+<ClientOnly><docs-demo-bal-tabs-108></docs-demo-bal-tabs-108></ClientOnly>
 
 
 ### Steps (Stepper)
 
-<ClientOnly><docs-demo-bal-tabs-105></docs-demo-bal-tabs-105></ClientOnly>
+<ClientOnly><docs-demo-bal-tabs-109></docs-demo-bal-tabs-109></ClientOnly>
+
+
+### O-Steps (Stepper)
+
+<ClientOnly><docs-demo-bal-tabs-110></docs-demo-bal-tabs-110></ClientOnly>
 
 
 
@@ -44,14 +49,14 @@ Tabs are used to structure the information in sub section on the same page.
 ### Properties
 
 
-| Attribute        | Description                                       | Type                          | Default             |
-| :--------------- | :------------------------------------------------ | :---------------------------- | :------------------ |
-| **action**       | If `true` a acation button is added to the right  | <code>boolean</code>          | <code>false</code>  |
-| **action-label** | Label for the action button                       | <code>string</code>           | <code>''</code>     |
-| **clickable**    | If `true` the tabs or steps can be clicked.       | <code>boolean</code>          | <code>true</code>   |
-| **expanded**     | If `true` the field expands over the whole width. | <code>boolean</code>          | <code>false</code>  |
-| **interface**    | Defines the layout of the tabs.                   | <code>"steps" , "tabs"</code> | <code>'tabs'</code> |
-| **rounded**      | If you want the rounded tab style.                | <code>boolean</code>          | <code>false</code>  |
+| Attribute        | Description                                       | Type                                      | Default             |
+| :--------------- | :------------------------------------------------ | :---------------------------------------- | :------------------ |
+| **action**       | If `true` a acation button is added to the right  | <code>boolean</code>                      | <code>false</code>  |
+| **action-label** | Label for the action button                       | <code>string</code>                       | <code>''</code>     |
+| **clickable**    | If `true` the tabs or steps can be clicked.       | <code>boolean</code>                      | <code>true</code>   |
+| **expanded**     | If `true` the field expands over the whole width. | <code>boolean</code>                      | <code>false</code>  |
+| **interface**    | Defines the layout of the tabs.                   | <code>"o-steps" , "steps" , "tabs"</code> | <code>'tabs'</code> |
+| **rounded**      | If you want the rounded tab style.                | <code>boolean</code>                      | <code>false</code>  |
 
 ### Events
 

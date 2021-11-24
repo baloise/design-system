@@ -1,4 +1,4 @@
-import { year, month, isoString } from '@baloise/design-system-components'
+import { year, month, isoString } from '@baloise/web-app-utils'
 
 const selectorDayBox = (date: Date) => `[data-date="${isoString(date)}"]`
 

@@ -8,7 +8,6 @@ import { DIRECTIVES } from './directives/proxies-list'
 import { BooleanValueAccessor } from './directives/boolean-value-accessor'
 import { TextValueAccessor } from './directives/text-value-accessor'
 import { SelectValueAccessor } from './directives/select-value-accessor'
-import { FILTERS } from './filters'
 
 import { BalToastService } from './bal-toast.service'
 import { BalSnackbarService } from './bal-snackbar.service'
@@ -20,9 +19,6 @@ import { AngularDelegate } from '.'
 const DECLARATIONS = [
   // proxies
   ...DIRECTIVES,
-
-  // filters
-  ...FILTERS,
 
   // components
   BalNgErrorComponent,

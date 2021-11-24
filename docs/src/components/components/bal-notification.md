@@ -18,22 +18,22 @@ A notification is used for alerts or to highlight certain content for the user.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-notification-76></docs-demo-bal-notification-76></ClientOnly>
+<ClientOnly><docs-demo-bal-notification-78></docs-demo-bal-notification-78></ClientOnly>
 
 
-### Colors
+### Types
 
-<ClientOnly><docs-demo-bal-notification-77></docs-demo-bal-notification-77></ClientOnly>
+<ClientOnly><docs-demo-bal-notification-79></docs-demo-bal-notification-79></ClientOnly>
 
 
 ### Box
 
-<ClientOnly><docs-demo-bal-notification-78></docs-demo-bal-notification-78></ClientOnly>
+<ClientOnly><docs-demo-bal-notification-80></docs-demo-bal-notification-80></ClientOnly>
 
 
 ### Error
 
-<ClientOnly><docs-demo-bal-notification-79></docs-demo-bal-notification-79></ClientOnly>
+<ClientOnly><docs-demo-bal-notification-81></docs-demo-bal-notification-81></ClientOnly>
 
 
 
@@ -46,7 +46,7 @@ A notification is used for alerts or to highlight certain content for the user.
 
 | Attribute | Description                      | Type                                                                    | Default         |
 | :-------- | :------------------------------- | :---------------------------------------------------------------------- | :-------------- |
-| **color** | Defines the color of the element | <code>"" , "danger" , "gray" , "primary" , "success" , "warning"</code> | <code>''</code> |
+| **color** | Defines the color of the element | <code>"" , "danger" , "info" , "primary" , "success" , "warning"</code> | <code>''</code> |
 
 ## Testing
 

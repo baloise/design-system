@@ -4,11 +4,11 @@
 type isElementType = (el: Cypress.Chainable<JQuery>) => boolean
 
 const isElement = (el: Cypress.Chainable<JQuery>, name: string) => {
-  return typeof el === 'object' && (el as any)[0].nodeName === name
+  return typeof el === 'object' && (el as any).length > 0 && (el as any)[0].nodeName === name
 }
 
 export const hasClass = (el: Cypress.Chainable<JQuery>, name: string) => {
-  return typeof el === 'object' && (el as unknown as JQuery).hasClass(name)
+  return typeof el === 'object' && (el as any).length > 0 && (el as unknown as JQuery).hasClass(name)
 }
 
 export const isLabel: isElementType = el => isElement(el, 'LABEL')
@@ -25,6 +25,7 @@ export const isTag: isElementType = el => isElement(el, 'BAL-TAG')
 export const isTabs: isElementType = el => isElement(el, 'BAL-TABS')
 export const isSlider: isElementType = el => isElement(el, 'BAL-SLIDER')
 export const isHint: isElementType = el => isElement(el, 'BAL-HINT')
+export const isTextarea: isElementType = el => isElement(el, 'BAL-TEXTAREA')
 
 /**
  * Selectors
@@ -51,6 +52,9 @@ export const selectors = {
   },
   input: {
     main: '> input',
+  },
+  textarea: {
+    main: '> textarea',
   },
   slider: {
     main: 'input.slider',

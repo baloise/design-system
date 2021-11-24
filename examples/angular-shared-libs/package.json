@@ -2,6 +2,7 @@
   "name": "@baloise/example-angular-shared-libs",
   "version": "0.0.0",
   "scripts": {
+    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

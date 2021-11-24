@@ -18,17 +18,22 @@ A tag highlights a label for quick recognition.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-tag-106></docs-demo-bal-tag-106></ClientOnly>
-
-
-### Closable
-
-<ClientOnly><docs-demo-bal-tag-107></docs-demo-bal-tag-107></ClientOnly>
+<ClientOnly><docs-demo-bal-tag-111></docs-demo-bal-tag-111></ClientOnly>
 
 
 ### Size
 
-<ClientOnly><docs-demo-bal-tag-108></docs-demo-bal-tag-108></ClientOnly>
+<ClientOnly><docs-demo-bal-tag-112></docs-demo-bal-tag-112></ClientOnly>
+
+
+### Closable
+
+<ClientOnly><docs-demo-bal-tag-113></docs-demo-bal-tag-113></ClientOnly>
+
+
+### Dense
+
+<ClientOnly><docs-demo-bal-tag-114></docs-demo-bal-tag-114></ClientOnly>
 
 
 
@@ -39,11 +44,11 @@ A tag highlights a label for quick recognition.
 ### Properties
 
 
-| Attribute    | Description                                                  | Type                                                           | Default            |
-| :----------- | :----------------------------------------------------------- | :------------------------------------------------------------- | :----------------- |
-| **closable** | The theme type of the tag. Given by bulma our css framework. | <code>boolean</code>                                           | <code>false</code> |
-| **color**    | The theme type of the tag. Given by bulma our css framework. | <code>"" , "danger" , "primary" , "success" , "warning"</code> | <code>''</code>    |
-| **size**     | The size of the tag element                                  | <code>"" , "large" , "medium" , "small"</code>                 | <code>''</code>    |
+| Attribute    | Description                                                  | Type                                                                    | Default            |
+| :----------- | :----------------------------------------------------------- | :---------------------------------------------------------------------- | :----------------- |
+| **closable** | The theme type of the tag. Given by bulma our css framework. | <code>boolean</code>                                                    | <code>false</code> |
+| **color**    | The theme type of the tag. Given by bulma our css framework. | <code>"" , "danger" , "info" , "primary" , "success" , "warning"</code> | <code>''</code>    |
+| **size**     | The size of the tag element                                  | <code>"" , "large" , "medium" , "small"</code>                          | <code>''</code>    |
 
 ### Events
 

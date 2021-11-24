@@ -26,22 +26,12 @@ Please only use this component for internal appilcations.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-navbar-72></docs-demo-bal-navbar-72></ClientOnly>
+<ClientOnly><docs-demo-bal-navbar-76></docs-demo-bal-navbar-76></ClientOnly>
 
 
-### Links
+### Light
 
-<ClientOnly><docs-demo-bal-navbar-73></docs-demo-bal-navbar-73></ClientOnly>
-
-
-### Language Select
-
-<ClientOnly><docs-demo-bal-navbar-74></docs-demo-bal-navbar-74></ClientOnly>
-
-
-### Search Field
-
-<ClientOnly><docs-demo-bal-navbar-75></docs-demo-bal-navbar-75></ClientOnly>
+<ClientOnly><docs-demo-bal-navbar-77></docs-demo-bal-navbar-77></ClientOnly>
 
 
 
@@ -55,6 +45,7 @@ Please only use this component for internal appilcations.
 | Attribute     | Description                                  | Type                 | Default            |
 | :------------ | :------------------------------------------- | :------------------- | :----------------- |
 | **expanded**  | It `true` the component uses the whole width | <code>boolean</code> | <code>false</code> |
+| **light**     | It `true` the navbar has a white background  | <code>boolean</code> | <code>false</code> |
 | **no-burger** | It `true` the burger button is hidden        | <code>boolean</code> | <code>false</code> |
 
 ## Testing

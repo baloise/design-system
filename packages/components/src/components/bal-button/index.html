@@ -13,111 +13,90 @@
       <h2 class="title is-size-2">Basic</h2>
       <section>
         <div class="bal-buttons is-center">
-          <bal-button color="primary">Primary</bal-button>
-          <bal-button color="primary" outlined>Secondary</bal-button>
-          <bal-button color="link">Link</bal-button>
+          <bal-button color="primary" data-test-id="primary-button">Continue</bal-button>
+          <bal-button color="link">Back</bal-button>
         </div>
       </section>
 
-      <h2 class="title is-size-2">Colors</h2>
+      <h2 class="title is-size-2">Links</h2>
       <section>
-        <div class="bal-buttons">
-          <bal-button color="primary">Primary</bal-button>
-          <bal-button color="success">Success</bal-button>
-          <bal-button color="warning">Warning</bal-button>
-          <bal-button color="danger">Danger</bal-button>
-        </div>
-        <div class="bal-buttons">
-          <bal-button outlined color="primary">Primary</bal-button>
-          <bal-button outlined color="success">Success</bal-button>
-          <bal-button outlined color="warning">Warning</bal-button>
-          <bal-button outlined color="danger">Danger</bal-button>
+        <a href="https://design.baloise.dev/" class="is-link">Link</a>
+
+        <div class="has-background-info p-2">
+          <a href="https://design.baloise.dev/" class="is-link is-inverted">Inverted Link</a>
         </div>
       </section>
 
-      <h2 class="title is-size-2">Sizes</h2>
+      <h2 class="title is-size-2">Info</h2>
       <section>
         <div class="bal-buttons">
-          <bal-button color="primary" size="small">Small</bal-button>
-          <bal-button color="primary" size="medium">Medium</bal-button>
-          <bal-button color="primary" size="large">Large</bal-button>
-        </div>
-      </section>
-
-      <h2 class="title is-size-2">Disabled</h2>
-      <section>
-        <div class="bal-buttons">
-          <bal-button color="primary" disabled>Primary</bal-button>
-          <bal-button color="primary" outlined disabled>Secondary</bal-button>
-          <bal-button color="link" disabled>Link</bal-button>
-        </div>
-      </section>
-
-      <h2 class="title is-size-2">Loading</h2>
-      <section>
-        <div class="bal-buttons">
-          <bal-button color="primary" disabled loading>Primary</bal-button>
-          <bal-button color="primary" outlined disabled loading>Secondary</bal-button>
-        </div>
-      </section>
-
-      <h2 class="title is-size-2">Expanded</h2>
-      <section>
-        <div class="bal-buttons">
-          <bal-button color="primary" expanded>Primary</bal-button>
-          <bal-button color="primary" outlined expanded>Secondary</bal-button>
+          <bal-button color="info">Info</bal-button>
+          <bal-button color="info" outlined>Info Outlined</bal-button>
         </div>
       </section>
 
       <h2 class="title is-size-2">Inverted</h2>
       <section>
-        <div class="has-background-primary p-4">
-          <div class="bal-buttons">
-            <bal-button color="primary" inverted>Primary</bal-button>
-            <bal-button color="primary" outlined inverted>Secondary</bal-button>
-            <bal-button color="link" inverted outlined>Link</bal-button>
-          </div>
-          <div class="bal-buttons">
-            <bal-button color="primary" inverted disabled>Primary</bal-button>
-            <bal-button color="primary" outlined inverted disabled>Secondary</bal-button>
-            <bal-button color="link" inverted disabled>Link</bal-button>
+        <div class="has-background-info p-2">
+          <div class="bal-buttons is-flex">
+            <bal-button class="is-full" color="primary" inverted>Primary</bal-button>
+            <bal-button color="info" inverted>Info</bal-button>
+            <bal-button color="info" inverted outlined>Info Outlined</bal-button>
           </div>
         </div>
+      </section>
+
+      <h2 class="title is-size-2">Other colors</h2>
+      <section>
+        <bal-button color="primary-light" icon="edit">Primary Light</bal-button>
+        <bal-button color="info-light" icon="edit">Info Light</bal-button>
+        <bal-button color="success">Success</bal-button>
+        <bal-button color="warning">Warning</bal-button>
+        <bal-button color="danger">Danger</bal-button>
+      </section>
+
+      <h2 class="title is-size-2">Disabled</h2>
+      <section>
+        <bal-button color="primary" disabled data-test-id="primary-button-disabled">Primary</bal-button>
+        <bal-button color="info" disabled>Info</bal-button>
+        <bal-button color="link" disabled>Link</bal-button>
+      </section>
+
+      <h2 class="title is-size-2">Loading</h2>
+      <section>
+        <bal-button color="primary" loading>Primary</bal-button>
+        <bal-button color="info" loading>Info</bal-button>
+        <bal-button color="info" loading outlined>Info</bal-button>
+      </section>
+
+      <h2 class="title is-size-2">Expanded</h2>
+      <section>
+        <bal-button color="primary" expanded>Primary</bal-button>
+        <br />
+        <bal-button color="info" expanded>Info</bal-button>
       </section>
 
       <h2 class="title is-size-2">With icons</h2>
       <section>
-        <div class="bal-buttons">
-          <bal-button color="primary"> Primary </bal-button>
-          <bal-button color="primary">
-            Primary
-            <bal-icon slot="icon-left" name="edit" inverted></bal-icon>
-          </bal-button>
-          <bal-button color="primary" outlined>
-            Secondary
-            <bal-icon slot="icon-right" name="edit"></bal-icon>
-          </bal-button>
-          <bal-button color="primary" outlined>
-            <bal-icon slot="icon-left" name="edit"></bal-icon>
-            Secondary
-            <bal-icon slot="icon-right" name="edit"></bal-icon>
-          </bal-button>
-        </div>
+        <bal-button color="info" outlined icon="edit">Left Icon</bal-button>
+        <bal-button color="info" outlined icon-right="edit">Right Icon</bal-button>
+      </section>
+
+      <h2 class="title is-size-2">Small buttons</h2>
+      <section>
+        <bal-button color="primary" size="small"> Primary </bal-button>
+        <bal-button color="info" size="small"> Info </bal-button>
       </section>
 
       <h2 class="title is-size-2">Square buttons</h2>
       <section>
-        <bal-button color="primary" square>
-          <bal-icon name="edit" inverted size="medium"></bal-icon>
-        </bal-button>
-        <bal-button color="primary" outlined size="small" square>
-          <bal-icon name="edit"></bal-icon>
-        </bal-button>
+        <bal-button color="info" icon="edit" square outlined></bal-button>
+        <bal-button color="info" size="small" icon="edit" square outlined></bal-button>
       </section>
 
       <h2 class="title is-size-2">Button Link</h2>
       <section>
-        <bal-button link href="https://design.baloise.dev/" target="_blank">GitHub</bal-button>
+        <bal-button link href="https://github.com/baloise/design-system-components" target="_blank">GitHub</bal-button>
       </section>
 
       <h2 class="title is-size-2">Button Group</h2>
@@ -129,20 +108,20 @@
         <div class="bal-buttons is-center">
           <bal-button class="is-full" color="primary">Primary</bal-button>
           <div class="break"></div>
-          <bal-button class="is-full" color="primary" outlined>Secondary</bal-button>
+          <bal-button class="is-full" color="link">Secondary</bal-button>
         </div>
         <div class="bal-buttons is-center">
           <bal-button class="is-full" color="primary">Full</bal-button>
-          <bal-button class="is-full" color="primary" outlined>Full</bal-button>
+          <bal-button class="is-full" color="info">Full</bal-button>
         </div>
         <div class="bal-buttons is-center">
           <bal-button class="is-half" color="primary">Half</bal-button>
-          <bal-button class="is-half" color="primary" outlined>Half</bal-button>
+          <bal-button class="is-half" color="info">Half</bal-button>
         </div>
         <div class="bal-buttons is-center">
           <bal-button class="is-one-third" color="primary">Third</bal-button>
-          <bal-button class="is-one-third" color="primary">Third</bal-button>
-          <bal-button class="is-one-third" outlined color="primary">Third</bal-button>
+          <bal-button class="is-one-third" color="info">Third</bal-button>
+          <bal-button class="is-one-third" outlined color="info">Third</bal-button>
         </div>
       </section>
     </div>

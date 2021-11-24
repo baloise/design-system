@@ -20,7 +20,6 @@ a {
   line-height: 24px;
   margin: 0;
   word-break: break-word;
-  color: $primary;
 }
 
 bal-text a,
@@ -62,24 +61,36 @@ h5.subtitle {
   font-weight: $weight-normal;
 }
 
-span.is-small,
 p.is-small,
 a.is-small {
   font-size: $size-small;
 }
 
-span.is-bold,
 p.is-bold,
 a.is-bold {
   font-weight: $weight-bold;
 }
 
-.title.is-size-1,
-.title.is-size-2,
 .title.is-size-3,
 .title.is-size-4,
 .title.is-size-5,
 .title.is-size-6 {
   font-weight: $weight-bold;
   letter-spacing: -1%;
+}
+
+a.is-link {
+  color: $cyan;
+  text-decoration: none;
+}
+
+a.is-link.is-inverted {
+  color: $white;
+}
+
+a.is-link:focus,
+a.is-link:active,
+a.is-link:hover,
+a.is-link:visited {
+  text-decoration: underline;
 }

@@ -33,6 +33,7 @@ import './styles/main.scss'
  */
 
 import { BaloiseDesignSystem } from '@baloise/design-system-components-vue'
+import { BaloisePipes } from '@baloise/web-app-pipes-vue'
 import { vueAxios } from '@baloise/vue-axios'
 import { router } from './plugins/router.plugin'
 import { i18n } from './plugins/i18n.plugin'
@@ -58,6 +59,7 @@ createApp(App)
    * https://design.baloise.dev/
    */
   .use(BaloiseDesignSystem, { useVite: false })
+  .use(BaloisePipes)
   /**
    * Bind the Vue instance to the HTML DOM.
    */

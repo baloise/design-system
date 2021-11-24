@@ -1,17 +1,18 @@
 # Commands
 
+The commands of the Baloise Design System are managed in the `package.json` file in the section `scripts`.
+
 ## Global
 
-| Command             | Description                                                                                                          |
-| :------------------ | :------------------------------------------------------------------------------------------------------------------- |
-| npm **install**     | Installs all the npm dependencies and bootstrap the lerna project with the symlinks.                                 |
-| npm run **build**   | Builds all packages in the correct order.                                                                            |
-| npm run **test**    | Runs the the cypress e2e test against the example pages (bal-component/index.html) of the components and unit tests. |
-| npm run **release** | Starts the release process of lerna & npm.                                                                           |
+| Command           | Description                                                                                                          |
+| :---------------- | :------------------------------------------------------------------------------------------------------------------- |
+| npm **install**   | Installs all the npm dependencies and bootstrap the lerna project with the symlinks.                                 |
+| npm run **build** | Builds all packages in the correct order.                                                                            |
+| npm run **test**  | Runs the the cypress e2e test against the example pages (bal-component/index.html) of the components and unit tests. |  |
 
-## Library
+## Components
 
-All the library project commands starts with the prefix `lib:`
+All the components project commands starts with the prefix `lib:`
 
 | Command                  | Description                                              |
 | :----------------------- | :------------------------------------------------------- |

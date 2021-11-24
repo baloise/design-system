@@ -19,31 +19,26 @@ Then the build script will automatically optimize the svg and create its own web
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-icon-57></docs-demo-bal-icon-57></ClientOnly>
-
-
-### Import SVG
-
-<ClientOnly><docs-demo-bal-icon-58></docs-demo-bal-icon-58></ClientOnly>
+<ClientOnly><docs-demo-bal-icon-61></docs-demo-bal-icon-61></ClientOnly>
 
 
 ### Size
 
 Here is how you can change the size:
 
-<ClientOnly><docs-demo-bal-icon-59></docs-demo-bal-icon-59></ClientOnly>
+<ClientOnly><docs-demo-bal-icon-62></docs-demo-bal-icon-62></ClientOnly>
 
 
 ### Colors
 
-<ClientOnly><docs-demo-bal-icon-60></docs-demo-bal-icon-60></ClientOnly>
+<ClientOnly><docs-demo-bal-icon-63></docs-demo-bal-icon-63></ClientOnly>
 
 
 ### Custom Color
 
 Here is how you can change the color:
 
-<ClientOnly><docs-demo-bal-icon-61></docs-demo-bal-icon-61></ClientOnly>
+<ClientOnly><docs-demo-bal-icon-64></docs-demo-bal-icon-64></ClientOnly>
 
 
 
@@ -54,15 +49,15 @@ Here is how you can change the color:
 ### Properties
 
 
-| Attribute    | Description                                                     | Type                                                                                                         | Default                |
-| :----------- | :-------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------- | :--------------------- |
-| **color**    | The theme type of the button. Given by bulma our css framework. | <code>"danger" , "gray" , "info-light" , "link" , "primary" , "primary-light" , "success" , "warning"</code> | <code>'primary'</code> |
-| **inverted** | If `true` the button is inverted                                | <code>boolean</code>                                                                                         | <code>false</code>     |
-| **name**     | Name of the baloise icon.                                       | <code>string</code>                                                                                          | <code>''</code>        |
-| **rotate**   | If `true` the icon rotates like for a loading spinner           | <code>boolean</code>                                                                                         | <code>false</code>     |
-| **size**     | Defines the size of the icon.                                   | <code>"" , "large" , "medium" , "small"</code>                                                               | <code>''</code>        |
-| **svg**      | Svg content.                                                    | <code>string</code>                                                                                          | <code>''</code>        |
-| **turn**     | If `true` the icon is rotated 180deg                            | <code>boolean</code>                                                                                         | <code>false</code>     |
+| Attribute    | Description                                                     | Type                                                                                                         | Default             |
+| :----------- | :-------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------- | :------------------ |
+| **color**    | The theme type of the button. Given by bulma our css framework. | <code>"danger" , "info" , "info-light" , "link" , "primary" , "primary-light" , "success" , "warning"</code> | <code>'info'</code> |
+| **inverted** | If `true` the button is inverted                                | <code>boolean</code>                                                                                         | <code>false</code>  |
+| **name**     | Name of the baloise icon.                                       | <code>string</code>                                                                                          | <code>''</code>     |
+| **rotate**   | If `true` the icon rotates like for a loading spinner           | <code>boolean</code>                                                                                         | <code>false</code>  |
+| **size**     | Defines the size of the icon.                                   | <code>"" , "large" , "medium" , "small" , "xsmall"</code>                                                    | <code>''</code>     |
+| **svg**      | Svg content.                                                    | <code>string</code>                                                                                          | <code>''</code>     |
+| **turn**     | If `true` the icon is rotated 180deg                            | <code>boolean</code>                                                                                         | <code>false</code>  |
 
 ## Testing
 
@@ -87,7 +82,3 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system/issues/new).
 
-
-<ClientOnly>
-  <docs-component-script tag="balIcon"></docs-component-script>
-</ClientOnly>

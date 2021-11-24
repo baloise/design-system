@@ -3,6 +3,145 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/baloise/design-system/compare/v2.0.3...v2.0.4) (2021-11-23)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [2.0.3](https://github.com/baloise/design-system/compare/v2.0.2...v2.0.3) (2021-11-23)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [2.0.2](https://github.com/baloise/design-system/compare/v2.0.1...v2.0.2) (2021-11-23)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [2.0.1](https://github.com/baloise/design-system/compare/v2.0.0...v2.0.1) (2021-11-22)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [1.19.10](https://github.com/baloise/design-system/compare/v1.19.9...v1.19.10) (2021-11-17)
+
+
+### Bug Fixes
+
+* lock version issue ([a557276](https://github.com/baloise/design-system/commit/a557276dc09b972d630c7961efda9c1db0fbf823))
+
+
+
+
+
+## [1.19.9](https://github.com/baloise/design-system/compare/v1.19.8...v1.19.9) (2021-11-17)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [1.19.8](https://github.com/baloise/design-system/compare/v1.19.7...v1.19.8) (2021-11-17)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [1.19.7](https://github.com/baloise/design-system/compare/v1.19.6...v1.19.7) (2021-11-11)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [1.19.6](https://github.com/baloise/design-system/compare/v1.19.5...v1.19.6) (2021-11-10)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [1.19.5](https://github.com/baloise/design-system/compare/v1.19.4...v1.19.5) (2021-11-10)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [1.19.4](https://github.com/baloise/design-system/compare/v1.19.3...v1.19.4) (2021-11-10)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [1.19.3](https://github.com/baloise/design-system/compare/v1.19.2...v1.19.3) (2021-11-09)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [1.19.2](https://github.com/baloise/design-system/compare/v1.19.1...v1.19.2) (2021-11-09)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [1.19.1](https://github.com/baloise/design-system/compare/v1.19.0...v1.19.1) (2021-10-08)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+# [1.19.0](https://github.com/baloise/design-system/compare/v1.18.15...v1.19.0) (2021-10-08)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [1.18.15](https://github.com/baloise/design-system/compare/v1.18.14...v1.18.15) (2021-10-08)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
+## [1.18.14](https://github.com/baloise/design-system/compare/v1.18.13...v1.18.14) (2021-10-08)
+
+**Note:** Version bump only for package @baloise/design-system-components-react
+
+
+
+
+
 ## [1.18.13](https://github.com/baloise/design-system/compare/v1.18.12...v1.18.13) (2021-10-08)
 
 **Note:** Version bump only for package @baloise/design-system-components-react

@@ -40,27 +40,27 @@ const option = NewBalOptionValue('value', 'label')
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-select-86></docs-demo-bal-select-86></ClientOnly>
+<ClientOnly><docs-demo-bal-select-90></docs-demo-bal-select-90></ClientOnly>
 
 
 ### Typeahead
 
-<ClientOnly><docs-demo-bal-select-87></docs-demo-bal-select-87></ClientOnly>
+<ClientOnly><docs-demo-bal-select-91></docs-demo-bal-select-91></ClientOnly>
 
 
 ### Multi-Select
 
-<ClientOnly><docs-demo-bal-select-88></docs-demo-bal-select-88></ClientOnly>
+<ClientOnly><docs-demo-bal-select-92></docs-demo-bal-select-92></ClientOnly>
 
 
 ### Multi-Select with typeahead
 
-<ClientOnly><docs-demo-bal-select-89></docs-demo-bal-select-89></ClientOnly>
+<ClientOnly><docs-demo-bal-select-93></docs-demo-bal-select-93></ClientOnly>
 
 
 ### Remote Typeahead
 
-<ClientOnly><docs-demo-bal-select-90></docs-demo-bal-select-90></ClientOnly>
+<ClientOnly><docs-demo-bal-select-94></docs-demo-bal-select-94></ClientOnly>
 
 
 
@@ -76,7 +76,9 @@ const option = NewBalOptionValue('value', 'label')
 | **bal-tabindex**  | The tabindex of the control.                                                      | <code>number</code>                        | <code>0</code>            |
 | **disabled**      | If `true` the component is diabled.                                               | <code>boolean</code>                       | <code>false</code>        |
 | **expanded**      | If `true` the component uses the whole width.                                     | <code>boolean</code>                       | <code>false</code>        |
+| **has-movement**  | Enables the slide in animation for the option items.                              | <code>boolean</code>                       | <code>false</code>        |
 | **inverted**      | Set this to `true` when the component is placed on a dark background.             | <code>boolean</code>                       | <code>false</code>        |
+| **loading**       | Defines if the select is in a loading state.                                      | <code>boolean</code>                       | <code>false</code>        |
 | **multiple**      | If `true` multiple option can be selected                                         | <code>boolean</code>                       | <code>false</code>        |
 | **name**          | The name of the control, which is submitted with the form data.                   | <code>string</code>                        | <code>this.inputId</code> |
 | **no-border**     | Removes the border of the input.                                                  | <code>boolean</code>                       | <code>false</code>        |

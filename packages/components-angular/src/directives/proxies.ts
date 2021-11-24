@@ -8,14 +8,14 @@ import { Components } from '@baloise/design-system-components';
 
 export declare interface BalAccordion extends Components.BalAccordion {}
 @ProxyCmp({
-  inputs: ['closeLabel', 'interface', 'inverted', 'isActive', 'openLabel'],
+  inputs: ['card', 'closeIcon', 'closeLabel', 'color', 'isActive', 'openIcon', 'openLabel'],
   methods: ['open', 'close', 'toggle']
 })
 @Component({
   selector: 'bal-accordion',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['closeLabel', 'interface', 'inverted', 'isActive', 'openLabel'],
+  inputs: ['card', 'closeIcon', 'closeLabel', 'color', 'isActive', 'openIcon', 'openLabel'],
   outputs: ['balCollapse']
 })
 export class BalAccordion {
@@ -51,13 +51,13 @@ export class BalApp {
 
 export declare interface BalButton extends Components.BalButton {}
 @ProxyCmp({
-  inputs: ['bottomRounded', 'color', 'disabled', 'download', 'expanded', 'href', 'inverted', 'link', 'loading', 'name', 'outlined', 'rel', 'size', 'square', 'target', 'topRounded', 'type', 'value']
+  inputs: ['bottomRounded', 'color', 'disabled', 'download', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'name', 'outlined', 'rel', 'size', 'square', 'target', 'topRounded', 'type', 'value']
 })
 @Component({
   selector: 'bal-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['bottomRounded', 'color', 'disabled', 'download', 'expanded', 'href', 'inverted', 'link', 'loading', 'name', 'outlined', 'rel', 'size', 'square', 'target', 'topRounded', 'type', 'value'],
+  inputs: ['bottomRounded', 'color', 'disabled', 'download', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'name', 'outlined', 'rel', 'size', 'square', 'target', 'topRounded', 'type', 'value'],
   outputs: ['balNavigate', 'balFocus', 'balBlur', 'balDidRender']
 })
 export class BalButton {
@@ -270,13 +270,13 @@ export class BalCheckbox {
 
 export declare interface BalData extends Components.BalData {}
 @ProxyCmp({
-  inputs: ['horizontal']
+  inputs: ['border', 'horizontal']
 })
 @Component({
   selector: 'bal-data',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['horizontal']
+  inputs: ['border', 'horizontal']
 })
 export class BalData {
   protected el: HTMLElement;
@@ -443,14 +443,13 @@ export class BalDropdownTrigger {
 
 export declare interface BalField extends Components.BalField {}
 @ProxyCmp({
-  inputs: ['disabled', 'expanded', 'invalid', 'inverted', 'loading', 'pure', 'touched'],
-  methods: ['reset']
+  inputs: ['disabled', 'expanded', 'invalid', 'inverted', 'loading']
 })
 @Component({
   selector: 'bal-field',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'expanded', 'invalid', 'inverted', 'loading', 'pure', 'touched']
+  inputs: ['disabled', 'expanded', 'invalid', 'inverted', 'loading']
 })
 export class BalField {
   protected el: HTMLElement;
@@ -462,11 +461,14 @@ export class BalField {
 
 
 export declare interface BalFieldControl extends Components.BalFieldControl {}
-
+@ProxyCmp({
+  inputs: ['iconLeft', 'iconRight', 'inverted', 'loading']
+})
 @Component({
   selector: 'bal-field-control',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['iconLeft', 'iconRight', 'inverted', 'loading']
 })
 export class BalFieldControl {
   protected el: HTMLElement;
@@ -497,11 +499,14 @@ export class BalFieldHint {
 
 
 export declare interface BalFieldLabel extends Components.BalFieldLabel {}
-
+@ProxyCmp({
+  inputs: ['expanded', 'required']
+})
 @Component({
   selector: 'bal-field-label',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['expanded', 'required']
 })
 export class BalFieldLabel {
   protected el: HTMLElement;
@@ -513,11 +518,14 @@ export class BalFieldLabel {
 
 
 export declare interface BalFieldMessage extends Components.BalFieldMessage {}
-
+@ProxyCmp({
+  inputs: ['color', 'expanded']
+})
 @Component({
   selector: 'bal-field-message',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['color', 'expanded']
 })
 export class BalFieldMessage {
   protected el: HTMLElement;
@@ -530,14 +538,14 @@ export class BalFieldMessage {
 import { FileUploadRejectedFile } from '@baloise/design-system-components';
 export declare interface BalFileUpload extends Components.BalFileUpload {}
 @ProxyCmp({
-  inputs: ['accept', 'disabled', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple'],
+  inputs: ['accept', 'disabled', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple', 'subTitle', 'value'],
   methods: ['clear']
 })
 @Component({
   selector: 'bal-file-upload',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['accept', 'disabled', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple'],
+  inputs: ['accept', 'disabled', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple', 'subTitle', 'value'],
   outputs: ['balChange', 'balRejectedFile']
 })
 export class BalFileUpload {
@@ -555,11 +563,14 @@ export class BalFileUpload {
 
 
 export declare interface BalFooter extends Components.BalFooter {}
-
+@ProxyCmp({
+  inputs: ['hasTrackLine', 'hideLinks', 'locale']
+})
 @Component({
   selector: 'bal-footer',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  inputs: ['hasTrackLine', 'hideLinks', 'locale']
 })
 export class BalFooter {
   protected el: HTMLElement;
@@ -662,14 +673,14 @@ export class BalIcon {
 
 export declare interface BalInput extends Components.BalInput {}
 @ProxyCmp({
-  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'decimal', 'disabled', 'expanded', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberInput', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
+  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'decimal', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberInput', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
   methods: ['setFocus', 'getInputElement']
 })
 @Component({
   selector: 'bal-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'decimal', 'disabled', 'expanded', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberInput', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
+  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'decimal', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberInput', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
   outputs: ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']
 })
 export class BalInput {
@@ -696,13 +707,13 @@ export class BalInput {
 
 export declare interface BalList extends Components.BalList {}
 @ProxyCmp({
-  inputs: ['inverted']
+  inputs: ['border', 'disabled', 'inverted']
 })
 @Component({
   selector: 'bal-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['inverted']
+  inputs: ['border', 'disabled', 'inverted']
 })
 export class BalList {
   protected el: HTMLElement;
@@ -754,13 +765,13 @@ export class BalListItemContent {
 
 export declare interface BalListItemIcon extends Components.BalListItemIcon {}
 @ProxyCmp({
-  inputs: ['dense']
+  inputs: ['right']
 })
 @Component({
   selector: 'bal-list-item-icon',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['dense']
+  inputs: ['right']
 })
 export class BalListItemIcon {
   protected el: HTMLElement;
@@ -899,13 +910,13 @@ export class BalModalHeader {
 
 export declare interface BalNavbar extends Components.BalNavbar {}
 @ProxyCmp({
-  inputs: ['expanded', 'noBurger']
+  inputs: ['expanded', 'light', 'noBurger']
 })
 @Component({
   selector: 'bal-navbar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['expanded', 'noBurger']
+  inputs: ['expanded', 'light', 'noBurger']
 })
 export class BalNavbar {
   protected el: HTMLElement;
@@ -1058,13 +1069,13 @@ export class BalRadio {
 
 export declare interface BalRadioGroup extends Components.BalRadioGroup {}
 @ProxyCmp({
-  inputs: ['disabled', 'interface', 'inverted', 'name', 'value', 'vertical']
+  inputs: ['disabled', 'interface', 'inverted', 'name', 'value']
 })
 @Component({
   selector: 'bal-radio-group',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'interface', 'inverted', 'name', 'value', 'vertical'],
+  inputs: ['disabled', 'interface', 'inverted', 'name', 'value'],
   outputs: ['balChange']
 })
 export class BalRadioGroup {
@@ -1081,14 +1092,14 @@ export class BalRadioGroup {
 
 export declare interface BalSelect extends Components.BalSelect {}
 @ProxyCmp({
-  inputs: ['balTabindex', 'disabled', 'expanded', 'inverted', 'multiple', 'name', 'noBorder', 'noDataLabel', 'placeholder', 'scrollable', 'typeahead', 'value'],
+  inputs: ['balTabindex', 'disabled', 'expanded', 'hasMovement', 'inverted', 'loading', 'multiple', 'name', 'noBorder', 'noDataLabel', 'placeholder', 'scrollable', 'typeahead', 'value'],
   methods: ['setFocus', 'getValue', 'clear', 'open', 'close', 'cancel', 'select']
 })
 @Component({
   selector: 'bal-select',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['balTabindex', 'disabled', 'expanded', 'inverted', 'multiple', 'name', 'noBorder', 'noDataLabel', 'placeholder', 'scrollable', 'typeahead', 'value'],
+  inputs: ['balTabindex', 'disabled', 'expanded', 'hasMovement', 'inverted', 'loading', 'multiple', 'name', 'noBorder', 'noDataLabel', 'placeholder', 'scrollable', 'typeahead', 'value'],
   outputs: ['balChange', 'balClick', 'balInput', 'balBlur', 'balFocus', 'balCancel', 'balKeyPress']
 })
 export class BalSelect {
@@ -1376,13 +1387,13 @@ export class BalTextarea {
 
 export declare interface BalTimeinput extends Components.BalTimeinput {}
 @ProxyCmp({
-  inputs: ['disabled', 'maxTime', 'minTime', 'value']
+  inputs: ['disabled', 'inverted', 'maxTime', 'minTime', 'value']
 })
 @Component({
   selector: 'bal-timeinput',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['disabled', 'maxTime', 'minTime', 'value'],
+  inputs: ['disabled', 'inverted', 'maxTime', 'minTime', 'value'],
   outputs: ['balChange', 'balBlur']
 })
 export class BalTimeinput {

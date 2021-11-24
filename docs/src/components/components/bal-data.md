@@ -18,12 +18,12 @@ A data component display readonly form data.
 
 ### Basic
 
-<ClientOnly><docs-demo-bal-data-31></docs-demo-bal-data-31></ClientOnly>
+<ClientOnly><docs-demo-bal-data-33></docs-demo-bal-data-33></ClientOnly>
 
 
 ### Horizontal
 
-<ClientOnly><docs-demo-bal-data-32></docs-demo-bal-data-32></ClientOnly>
+<ClientOnly><docs-demo-bal-data-34></docs-demo-bal-data-34></ClientOnly>
 
 
 
@@ -36,6 +36,7 @@ A data component display readonly form data.
 
 | Attribute      | Description                                                | Type                 | Default            |
 | :------------- | :--------------------------------------------------------- | :------------------- | :----------------- |
+| **border**     | If `true` a bottom border is added to the data-item.       | <code>boolean</code> | <code>false</code> |
 | **horizontal** | If `true` the data list is horizontal instead of vertical. | <code>boolean</code> | <code>false</code> |
 
 ## Testing
