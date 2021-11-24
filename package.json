@@ -15,7 +15,7 @@
     "update:registry": "lerna run update:registry && sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
     "update:lock": "lerna exec -- npm install --package-lock-only",
     "setup": "npm install && npm run build && npm run bootstrap",
-    "postinstall": "npm run bootstrap node .scripts/copy.script.js",
+    "postinstall": "npm run bootstrap && node .scripts/copy.script.js",
     "bootstrap": "lerna bootstrap",
     "serve": "npm run lib:serve",
     "build": "npm run icons:build && npm run lib:build && npm run table:build && npm run vue:build && npm run angular:build && npm run react:build && npm run testing:build",
