@@ -1,6 +1,6 @@
 import { Component, Host, h, Prop, Element, Listen, State, Event, EventEmitter, Method, Watch } from '@stencil/core'
 import filesize from 'filesize.js'
-import { areArraysEqual } from '../../utils'
+import { areArraysEqual } from '@baloise/web-app-utils'
 import { FileUploadRejectedFile, FileUploadRejectionReason } from './bal-file-upload.type'
 
 @Component({
