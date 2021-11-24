@@ -1,0 +1,25 @@
+import { Story, Preview } from '@storybook/addon-docs'
+import { html } from '../../stories/helpers/docs'
+import { typeahead, multiSelect } from './bal-select.docs.ts'
+
+# Select
+
+Buttons provide a clickable element, which can be used in forms, or anywhere that needs simple, standard button functionality. They may display text, icons, or both. Buttons can be styled with several attributes to look a specific way.
+
+<Preview className="has-visible-overflow" withSource="none">
+  <Story id="02-form-select--basic" />
+</Preview>
+
+## Examples
+
+### Typeahead
+
+<Preview className="has-visible-overflow" mdxSource={typeahead}>
+  {html(typeahead)}
+</Preview>
+
+### Multi-Select
+
+<Preview className="has-visible-overflow" mdxSource={multiSelect}>
+  {html(multiSelect)}
+</Preview>

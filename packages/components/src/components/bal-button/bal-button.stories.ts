@@ -3,7 +3,7 @@ import { BalButton } from '../../../.storybook/vue/components'
 import docs from './bal-button.docs.mdx'
 
 export default {
-  title: '01-Atoms/BalButton',
+  title: '01-Atoms/Button',
   component: BalButton,
   argTypes: generateArgType('bal-button'),
   parameters: {
@@ -16,16 +16,31 @@ export default {
 const Template = args => ({
   components: { BalButton },
   setup: () => ({ args }),
-  template: `<bal-button v-bind="args">{{ args.inner }}</bal-button>`,
+  template: `<bal-button v-bind="args">{{ args.innerHTML }}</bal-button>`,
 })
 
 export const Primary = Template.bind({})
 Primary.args = {
-  inner: 'Primary',
+  innerHTML: 'Primary',
 }
 
 export const Secondary = Template.bind({})
 Secondary.args = {
-  inner: 'Secondary',
+  innerHTML: 'Secondary',
   color: 'link',
+}
+
+export const Link = Template.bind({})
+Link.args = {
+  innerHTML: 'Link',
+  color: 'link',
+}
+
+export const Square = Template.bind({})
+Square.args = {
+  innerHTML: '',
+  color: 'info',
+  icon: 'edit',
+  square: true,
+  outlined: true,
 }

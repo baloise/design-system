@@ -1,1 +1,14 @@
 <link rel="stylesheet" href="build/design-system-components.css" />
+
+<style>
+  div.has-visible-overflow,
+  div.has-visible-overflow.sbdocs-preview,
+  div.has-visible-overflow > .docs-story,
+  div.has-visible-overflow > .docs-story > div:first-child {
+    overflow: visible !important;
+  }
+
+  div.has-visible-overflow > .docs-story > div:nth-child(2) {
+    bottom: 10px;
+  }
+</style>

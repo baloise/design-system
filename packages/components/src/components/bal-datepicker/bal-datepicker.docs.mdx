@@ -1,0 +1,46 @@
+import { Story, Preview, ArgsTable } from '@storybook/addon-docs'
+import { Props } from '@storybook/addon-docs/blocks'
+import { BalDatepicker } from '../../../.storybook/vue/components'
+import { html } from '../../stories/helpers/docs'
+import { manualInput } from './bal-datepicker.docs.ts'
+
+# Datepicker
+
+A datepicker allows manual date entry as well as open the dropdown content with a calendar to select a date.
+In this example the user can only select a date. For that use the property readonly.
+
+<Preview className="has-visible-overflow" withSource="none">
+  <Story id="02-form-datepicker--basic" />
+</Preview>
+
+## Examples
+
+### Manual Input
+
+To enable manual input remove the property `readonly` and add the property `trigger-icon`.
+The `trigger-icon` property only opens the dropdown when the icon gets clicked.
+
+<Preview className="has-visible-overflow" mdxSource={manualInput}>
+  {html(manualInput)}
+</Preview>
+
+## Usage
+
+To set the date use the [date utils](https://github.com/baloise/web-app-utils/blob/master/packages/utils/README.md).
+
+```typescript
+import { newDateString, now } from '@baloise/web-app-utils'
+
+const datepickerDisabled = document.getElementById('datepicker-disabled')
+datepickerDisabled.value = newDateString(now())
+// or
+datepickerDisabled.value = newDateString(2020, 0, 13)
+// or
+datepickerDisabled.value = newDateString(new Date(2020, 0, 13))
+```
+
+## Component API
+
+<ArgsTable of={BalDatepicker} />
+
+<Props />

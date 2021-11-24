@@ -16,6 +16,9 @@ const getControl = prop => {
     case 'string':
       return { type: 'text' }
 
+    case 'boolean':
+      return { type: 'boolean' }
+
     case 'number':
       return { type: 'number', min: 0 }
 
@@ -73,6 +76,18 @@ const findComponent = (tag: string) => {
   }
   return buildCtx.components[index]
 }
+
+export const withInnerHtml = (argType = {}) => ({
+  innerHTML: {
+    description: 'Content of the component',
+    table: {
+      category: 'content',
+      type: { summary: 'string' },
+    },
+    control: { type: 'text' },
+  },
+  ...argType,
+})
 
 export const generateArgType = (tag: string, extendedArgTypes = {}): any => {
   const component = findComponent(tag)

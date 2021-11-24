@@ -57,22 +57,5 @@ export const config: Config = {
       includeDefineCustomElements: false,
       includePolyfills: false,
     }),
-    // {
-    //   type: 'www',
-    //   dir: 'www',
-    //   serviceWorker: false,
-    //   empty: true,
-    //   copy: [
-    //     {
-    //       src: '**/*.html',
-    //     },
-    //     {
-    //       src: 'components.d.ts',
-    //     },
-    //     {
-    //       src: 'assets/fonts',
-    //     },
-    //   ],
-    // },
   ],
 }

@@ -25,7 +25,7 @@ const templateSourceCode = (templateSource, args, argTypes, replacing = ' v-bind
     }
   }
 
-  return templateSource.replace('{{ args.inner }}', args.inner).replace(
+  return templateSource.replace('{{ args.innerHTML }}', args.innerHTML).replace(
     replacing,
     Object.keys(componentArgs)
       .map(key => ' ' + propToSource(paramCase(key), args[key]))
