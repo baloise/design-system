@@ -34,6 +34,7 @@
     "testing:server": "node .scripts/banner.js testing:server && npm --prefix packages/testing run ci:server",
     "testing:build": "node .scripts/banner.js testing:build && npm --prefix packages/testing run build",
     "icons:build": "node .scripts/banner.js icons:build && npm --prefix packages/icons run build",
+    "storybook": "node .scripts/banner.js storybook && npm --prefix packages/components run build:storybook",
     "docs:install": "cd docs && npm install",
     "docs:serve": "npm --prefix docs run serve",
     "docs:setup": "npm --prefix packages/fonts run docs && npm --prefix packages/icons run docs && npm --prefix packages/components run docs && npm --prefix packages/testing run docs && npm --prefix docs run setup",

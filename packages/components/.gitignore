@@ -6,6 +6,7 @@ src/assets/
 src/stories/assets/components.json
 src/stories/assets/components.d.ts
 storybook-static/
+.storybook/vue
 public/
 
 *~

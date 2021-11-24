@@ -55,7 +55,7 @@
     "generate": "stencil generate",
     "dev": "stencil build --watch --config stencil.dev.config.ts",
     "storybook": "start-storybook -s ./public -p 6006",
-    "build:storybook": "build-storybook"
+    "build:storybook": "stencil build --config stencil.dev.config.ts && build-storybook -o ../../storybook"
   },
   "dependencies": {
     "@baloise/design-system-fonts": "2.0.5",
