@@ -1,13 +1,7 @@
-<!-- docs:child of bal-tabs -->
-
-# Tab Item
-
-`bal-tab-item` is a child component of `bal-tabs`.
-
-<!-- Auto Generated Below -->
+### bal-tab-item
 
 
-## Properties
+#### Properties
 
 | Property   | Attribute  | Description                                             | Type      | Default |
 | ---------- | ---------- | ------------------------------------------------------- | --------- | ------- |
@@ -22,36 +16,32 @@
 | `value`    | `value`    | This is the key of the tab.                             | `string`  | `''`    |
 
 
-## Events
+#### Events
 
 | Event         | Description                               | Type                      |
 | ------------- | ----------------------------------------- | ------------------------- |
 | `balNavigate` | Emitted when the link element has clicked | `CustomEvent<MouseEvent>` |
 
 
-## Methods
+#### Methods
 
-### `getOptions() => Promise<BalTabOption>`
+##### `getOptions() => Promise<BalTabOption>`
 
 Options of the tab like label, value etc.
 
-#### Returns
+###### Returns
 
 Type: `Promise<BalTabOption>`
 
 
 
-### `setActive(active: boolean) => Promise<void>`
+##### `setActive(active: boolean) => Promise<void>`
 
 Sets the tab active.
 
-#### Returns
+###### Returns
 
 Type: `Promise<void>`
 
 
 
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*

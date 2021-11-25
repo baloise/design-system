@@ -1,9 +1,7 @@
-# Dropdown
-
-<!-- Auto Generated Below -->
+### bal-dropdown
 
 
-## Properties
+#### Properties
 
 | Property            | Attribute             | Description                                      | Type      | Default |
 | ------------------- | --------------------- | ------------------------------------------------ | --------- | ------- |
@@ -12,71 +10,52 @@
 | `isActive`          | `is-active`           | If `true` the dropdown content is open.          | `boolean` | `false` |
 
 
-## Events
+#### Events
 
 | Event         | Description                                                                     | Type                   |
 | ------------- | ------------------------------------------------------------------------------- | ---------------------- |
 | `balCollapse` | Listen when the dropdown opens or closes. Returns the current `isActive` value. | `CustomEvent<boolean>` |
 
 
-## Methods
+#### Methods
 
-### `close() => Promise<void>`
+##### `close() => Promise<void>`
 
 Closes the dropdown menu.
 
-#### Returns
+###### Returns
 
 Type: `Promise<void>`
 
 
 
-### `getContentElement() => Promise<HTMLElement | null>`
+##### `getContentElement() => Promise<HTMLElement | null>`
 
 Returns the `HTMLDivElement` of the content element
 
-#### Returns
+###### Returns
 
 Type: `Promise<HTMLElement | null>`
 
 
 
-### `open() => Promise<void>`
+##### `open() => Promise<void>`
 
 Open the dropdown menu.
 
-#### Returns
+###### Returns
 
 Type: `Promise<void>`
 
 
 
-### `toggle() => Promise<void>`
+##### `toggle() => Promise<void>`
 
 Open or closes the dropdown.
 
-#### Returns
+###### Returns
 
 Type: `Promise<void>`
 
 
 
-
-## Dependencies
-
-### Used by
-
- - [bal-datepicker](../bal-datepicker)
- - [bal-select](../bal-select)
-
-### Graph
-```mermaid
-graph TD;
-  bal-datepicker --> bal-dropdown
-  bal-select --> bal-dropdown
-  style bal-dropdown fill:#f9f,stroke:#333,stroke-width:4px
-```
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*

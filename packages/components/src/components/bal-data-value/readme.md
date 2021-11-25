@@ -1,13 +1,7 @@
-<!-- docs:child of bal-data -->
-
-# Data Item Value
-
-`bal-data-item` is a child component of `bal-data` that defines the value of the data.
-
-<!-- Auto Generated Below -->
+### bal-data-value
 
 
-## Properties
+#### Properties
 
 | Property   | Attribute  | Description                                                           | Type      | Default |
 | ---------- | ---------- | --------------------------------------------------------------------- | --------- | ------- |
@@ -15,7 +9,7 @@
 | `editable` | `editable` | If `true` a small button with a edit icon will be shown on the right. | `boolean` | `false` |
 
 
-## Events
+#### Events
 
 | Event      | Description                               | Type                      |
 | ---------- | ----------------------------------------- | ------------------------- |
@@ -23,25 +17,3 @@
 | `balClick` | Emitted when the edit button has focus.   | `CustomEvent<MouseEvent>` |
 | `balFocus` | Emitted when the edit button has focus.   | `CustomEvent<void>`       |
 
-
-## Dependencies
-
-### Depends on
-
-- [bal-button](../bal-button)
-- [bal-icon](../bal-icon)
-
-### Graph
-```mermaid
-graph TD;
-  bal-data-value --> bal-button
-  bal-data-value --> bal-icon
-  bal-button --> bal-spinner
-  bal-button --> bal-icon
-  bal-button --> bal-text
-  style bal-data-value fill:#f9f,stroke:#333,stroke-width:4px
-```
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*

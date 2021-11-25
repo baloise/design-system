@@ -623,10 +623,6 @@ export namespace Components {
          */
         "closeLabel": string;
         /**
-          * If `true`, the user cannot interact with the input.
-         */
-        "disabled": boolean;
-        /**
           * Opens the hint box.
          */
         "open": () => Promise<void>;
@@ -2565,10 +2561,6 @@ declare namespace LocalJSX {
           * Text for the close button.
          */
         "closeLabel"?: string;
-        /**
-          * If `true`, the user cannot interact with the input.
-         */
-        "disabled"?: boolean;
     }
     interface BalHintText {
     }

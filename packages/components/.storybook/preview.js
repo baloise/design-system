@@ -25,17 +25,47 @@ const templateSourceCode = (templateSource, args, argTypes, replacing = ' v-bind
     }
   }
 
-  return templateSource.replace('{{ args.innerHTML }}', args.innerHTML).replace(
-    replacing,
-    Object.keys(componentArgs)
-      .map(key => ' ' + propToSource(paramCase(key), args[key]))
-      .join(''),
-  )
+  return templateSource
+    .replace('{{ args.content }}', args.content)
+    .replace('<span v-html="args.content"></span>', args.content)
+    .replace(
+      replacing,
+      Object.keys(componentArgs)
+        .map(key => ' ' + propToSource(paramCase(key), args[key]))
+        .join(''),
+    )
 }
 
 export const parameters = {
   actions: { argTypesRegex: '^bal.*' },
   controls: { expanded: true },
+  a11y: {
+    config: {
+      rules: [
+        {
+          id: 'duplicate-id-active',
+          enabled: false,
+        },
+        {
+          id: 'duplicate-id',
+          enabled: false,
+        },
+      ],
+    },
+  },
+  backgrounds: {
+    default: 'white',
+    values: [
+      {
+        name: 'white',
+        value: '#fff',
+      },
+      {
+        name: 'blue',
+        value: '#039',
+      },
+    ],
+  },
   docs: {
     transformSource(src, ctx) {
       const match = /\b("')?template\1:\s*`([^`]+)`/.exec(src)

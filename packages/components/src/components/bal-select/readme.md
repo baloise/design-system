@@ -1,44 +1,27 @@
-# Select <Badge text="Two-way binding"/>
-
-For creating a list of options use the `BalOptionValue` interface and the functions `NewBalOptionValue` or `NewBalSingleOptionValue`.
-
-```typescript
-import { BalOptionValue, NewBalOptionValue } from '@baloise/design-system-components'
-
-export interface BalOptionValue<T> {
-  value: string
-  label: string
-  disabled?: boolean // default false
-  data?: T
-}
-
-const option = NewBalOptionValue('value', 'label')
-```
-
-<!-- Auto Generated Below -->
+### bal-select
 
 
-## Properties
+#### Properties
 
-| Property      | Attribute       | Description                                                                       | Type                              | Default        |
-| ------------- | --------------- | --------------------------------------------------------------------------------- | --------------------------------- | -------------- |
-| `balTabindex` | `bal-tabindex`  | The tabindex of the control.                                                      | `number`                          | `0`            |
-| `disabled`    | `disabled`      | If `true` the component is diabled.                                               | `boolean`                         | `false`        |
-| `expanded`    | `expanded`      | If `true` the component uses the whole width.                                     | `boolean`                         | `false`        |
-| `hasMovement` | `has-movement`  | Enables the slide in animation for the option items.                              | `boolean`                         | `false`        |
-| `inverted`    | `inverted`      | Set this to `true` when the component is placed on a dark background.             | `boolean`                         | `false`        |
-| `loading`     | `loading`       | Defines if the select is in a loading state.                                      | `boolean`                         | `false`        |
-| `multiple`    | `multiple`      | If `true` multiple option can be selected                                         | `boolean`                         | `false`        |
-| `name`        | `name`          | The name of the control, which is submitted with the form data.                   | `string`                          | `this.inputId` |
-| `noBorder`    | `no-border`     | Removes the border of the input.                                                  | `boolean`                         | `false`        |
-| `noDataLabel` | `no-data-label` | This label is shown if typeahead is active and all the options are filtered out.  | `string \| undefined`             | `undefined`    |
-| `placeholder` | `placeholder`   | The text to display when the select is empty.                                     | `string \| undefined`             | `undefined`    |
-| `scrollable`  | `scrollable`    | Defines the height of the dropdown list.                                          | `number`                          | `250`          |
-| `typeahead`   | `typeahead`     | If `true` the user can search by typing into the input field.                     | `boolean`                         | `false`        |
-| `value`       | `value`         | Selected option values. Could also be passed as a string, which gets transformed. | `string \| string[] \| undefined` | `[]`           |
+| Property      | Attribute       | Description                                                                       | Type                                  | Default        |
+| ------------- | --------------- | --------------------------------------------------------------------------------- | ------------------------------------- | -------------- |
+| `balTabindex` | `bal-tabindex`  | The tabindex of the control.                                                      | `number`                              | `0`            |
+| `disabled`    | `disabled`      | If `true` the component is diabled.                                               | `boolean`                             | `false`        |
+| `expanded`    | `expanded`      | If `true` the component uses the whole width.                                     | `boolean`                             | `false`        |
+| `hasMovement` | `has-movement`  | Enables the slide in animation for the option items.                              | `boolean`                             | `false`        |
+| `inverted`    | `inverted`      | Set this to `true` when the component is placed on a dark background.             | `boolean`                             | `false`        |
+| `loading`     | `loading`       | Defines if the select is in a loading state.                                      | `boolean`                             | `false`        |
+| `multiple`    | `multiple`      | If `true` multiple option can be selected                                         | `boolean`                             | `false`        |
+| `name`        | `name`          | The name of the control, which is submitted with the form data.                   | `string`                              | `this.inputId` |
+| `noBorder`    | `no-border`     | Removes the border of the input.                                                  | `boolean`                             | `false`        |
+| `noDataLabel` | `no-data-label` | This label is shown if typeahead is active and all the options are filtered out.  | `string `, ` undefined`               | `undefined`    |
+| `placeholder` | `placeholder`   | The text to display when the select is empty.                                     | `string `, ` undefined`               | `undefined`    |
+| `scrollable`  | `scrollable`    | Defines the height of the dropdown list.                                          | `number`                              | `250`          |
+| `typeahead`   | `typeahead`     | If `true` the user can search by typing into the input field.                     | `boolean`                             | `false`        |
+| `value`       | `value`         | Selected option values. Could also be passed as a string, which gets transformed. | `string `, ` string[] `, ` undefined` | `[]`           |
 
 
-## Events
+#### Events
 
 | Event         | Description                                                        | Type                                           |
 | ------------- | ------------------------------------------------------------------ | ---------------------------------------------- |
@@ -51,104 +34,75 @@ const option = NewBalOptionValue('value', 'label')
 | `balKeyPress` | Emitted when the input has focus and key from the keyboard go hit. | `CustomEvent<KeyboardEvent>`                   |
 
 
-## Methods
+#### Methods
 
-### `cancel() => Promise<void>`
+##### `cancel() => Promise<void>`
 
 Cancel the dropdown
 
-#### Returns
+###### Returns
 
 Type: `Promise<void>`
 
 
 
-### `clear() => Promise<void>`
+##### `clear() => Promise<void>`
 
 Sets the value to `[]`, the input value to ´''´ and the focus index to ´0´.
 
-#### Returns
+###### Returns
 
 Type: `Promise<void>`
 
 
 
-### `close() => Promise<void>`
+##### `close() => Promise<void>`
 
 Closes the dropdown
 
-#### Returns
+###### Returns
 
 Type: `Promise<void>`
 
 
 
-### `getValue() => Promise<string[] | undefined>`
+##### `getValue() => Promise<string[] | undefined>`
 
 Sets the focus on the input element
 
-#### Returns
+###### Returns
 
 Type: `Promise<string[] | undefined>`
 
 
 
-### `open() => Promise<void>`
+##### `open() => Promise<void>`
 
 Opens the dropdown
 
-#### Returns
+###### Returns
 
 Type: `Promise<void>`
 
 
 
-### `select(value: string) => Promise<void>`
+##### `select(value: string) => Promise<void>`
 
 Select option by passed value
 
-#### Returns
+###### Returns
 
 Type: `Promise<void>`
 
 
 
-### `setFocus() => Promise<void>`
+##### `setFocus() => Promise<void>`
 
 Sets the focus on the input element
 
-#### Returns
+###### Returns
 
 Type: `Promise<void>`
 
 
 
-
-## Dependencies
-
-### Depends on
-
-- [bal-tag](../bal-tag)
-- [bal-dropdown](../bal-dropdown)
-- [bal-dropdown-trigger](../bal-dropdown-trigger)
-- [bal-icon](../bal-icon)
-- [bal-dropdown-menu](../bal-dropdown-menu)
-- [bal-checkbox](../bal-checkbox)
-
-### Graph
-```mermaid
-graph TD;
-  bal-select --> bal-tag
-  bal-select --> bal-dropdown
-  bal-select --> bal-dropdown-trigger
-  bal-select --> bal-icon
-  bal-select --> bal-dropdown-menu
-  bal-select --> bal-checkbox
-  bal-tag --> bal-text
-  bal-checkbox --> bal-text
-  style bal-select fill:#f9f,stroke:#333,stroke-width:4px
-```
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*

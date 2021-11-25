@@ -4,7 +4,7 @@ import { balToastController } from '../../../dist/design-system-components/index
 import docs from './bal-toast.docs.mdx'
 
 export default {
-  title: '01-Atoms/BalToast',
+  title: '01-Components/BalToast',
   component: BalToast,
   subcomponents: { BalButton, BalIcon },
   argTypes: generateArgType('bal-toast'),

@@ -1,5 +1,5 @@
 import upperfirst from 'lodash.upperfirst'
-import buildCtx from '../assets/components.json'
+import { findComponent } from './util'
 
 const decodeEnumType = prop => {
   return {
@@ -69,16 +69,8 @@ const generateEvents = component => {
   return eventTypes
 }
 
-const findComponent = (tag: string) => {
-  const index = buildCtx.components.findIndex(c => c.tag === tag)
-  if (index < 0) {
-    return undefined
-  }
-  return buildCtx.components[index]
-}
-
-export const withInnerHtml = (argType = {}) => ({
-  innerHTML: {
+export const withContent = (argType = {}) => ({
+  content: {
     description: 'Content of the component',
     table: {
       category: 'content',

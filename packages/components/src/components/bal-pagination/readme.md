@@ -1,9 +1,7 @@
-# Pagination
-
-<!-- Auto Generated Below -->
+### bal-pagination
 
 
-## Properties
+#### Properties
 
 | Property     | Attribute     | Description                                                      | Type      | Default |
 | ------------ | ------------- | ---------------------------------------------------------------- | --------- | ------- |
@@ -13,51 +11,32 @@
 | `value`      | `value`       | Current selected page                                            | `number`  | `1`     |
 
 
-## Events
+#### Events
 
 | Event       | Description                         | Type                  |
 | ----------- | ----------------------------------- | --------------------- |
 | `balChange` | Triggers when a page change happens | `CustomEvent<number>` |
 
 
-## Methods
+#### Methods
 
-### `next() => Promise<void>`
+##### `next() => Promise<void>`
 
 Go to the next page
 
-#### Returns
+###### Returns
 
 Type: `Promise<void>`
 
 
 
-### `previous() => Promise<void>`
+##### `previous() => Promise<void>`
 
 Go to the prvious page
 
-#### Returns
+###### Returns
 
 Type: `Promise<void>`
 
 
 
-
-## Dependencies
-
-### Depends on
-
-- [bal-text](../bal-text)
-- [bal-icon](../bal-icon)
-
-### Graph
-```mermaid
-graph TD;
-  bal-pagination --> bal-text
-  bal-pagination --> bal-icon
-  style bal-pagination fill:#f9f,stroke:#333,stroke-width:4px
-```
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
