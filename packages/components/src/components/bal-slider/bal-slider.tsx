@@ -241,7 +241,7 @@ export class Slider {
             readOnly={this.readonly}
             name={this.name}
             required={this.required}
-            tabindex={this.balTabindex}
+            tabIndex={this.balTabindex}
             step={this.step}
             min={this.min}
             max={this.max}

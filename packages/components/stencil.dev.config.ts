@@ -1,17 +1,8 @@
 import { Config } from '@stencil/core'
-import {} from '@stencil/core/compiler'
 import { JsonDocs } from '@stencil/core/internal'
 import { sass } from '@stencil/sass'
-import { postcss } from '@stencil/postcss'
-import autoprefixer from 'autoprefixer'
 import { ComponentModelConfig, vueOutputTarget } from '@baloise/vue-output-target'
-import { writeFileSync } from 'fs'
-import { propsToMarkdown } from './.scripts/readme/markdown-props'
-import { eventsToMarkdown } from './.scripts/readme/markdown-events'
-import { methodsToMarkdown } from './.scripts/readme/markdown-methods'
-import { slotsToMarkdown } from './.scripts/readme/markdown-slots'
-
-const NEWLINE = '\n'
+import { CustomDocumentationGenerator } from './.scripts/readme/custom-documentation'
 
 const vueComponentModels: ComponentModelConfig[] = [
   {
@@ -58,29 +49,14 @@ export const config: Config = {
       type: 'www',
       dir: 'public',
       empty: true,
-      copy: [{ src: 'assets/fonts', warn: true }],
+      copy: [
+        { src: 'assets/fonts', warn: true },
+        { src: '../../components-table/css/design-system-table.css', warn: true },
+      ],
     },
     {
       type: 'docs-custom',
-      generator: (docs: JsonDocs) => {
-        for (let index = 0; index < docs.components.length; index++) {
-          const component = docs.components[index]
-          const content = [
-            `### ${component.tag}`,
-            NEWLINE,
-            ...propsToMarkdown(component.props),
-            ...eventsToMarkdown(component.events),
-            ...methodsToMarkdown(component.methods),
-            ...slotsToMarkdown(component.slots),
-          ]
-
-          try {
-            writeFileSync(component.readmePath, content.join(NEWLINE))
-          } catch (err) {
-            console.error(err)
-          }
-        }
-      },
+      generator: (docs: JsonDocs) => CustomDocumentationGenerator(docs),
     },
     vueOutputTarget({
       componentCorePackage: '../../public/build/design-system-components.esm.js',

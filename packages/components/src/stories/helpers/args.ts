@@ -35,18 +35,20 @@ const generateProps = component => {
   const propTypes = {}
   for (let index = 0; index < props.length; index++) {
     const prop = props[index]
-    propTypes[prop.name] = {
-      description: prop.docs,
-      type: {
-        name: prop.type,
-        required: prop.required,
-      },
-      table: {
-        category: 'props',
-        type: { summary: prop.type },
-        defaultValue: { summary: prop.default || '' },
-      },
-      control: getControl(prop),
+    if (prop.name !== 'balTabindex') {
+      propTypes[prop.name] = {
+        description: prop.docs,
+        type: {
+          name: prop.type,
+          required: prop.required,
+        },
+        table: {
+          category: 'props',
+          type: { summary: prop.type },
+          defaultValue: { summary: prop.default || '' },
+        },
+        control: getControl(prop),
+      }
     }
   }
   return propTypes
