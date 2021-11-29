@@ -1,6 +1,5 @@
 ### bal-list-item
-
-
+ 
 #### Properties
 
 | Property    | Attribute   | Description                                        | Type                                                | Default   |
@@ -18,3 +17,5 @@
 | ------------- | ----------------------------------------- | ------------------------- |
 | `balNavigate` | Emitted when the link element has clicked | `CustomEvent<MouseEvent>` |
 
+
+ 

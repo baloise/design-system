@@ -1,0 +1,167 @@
+import { Meta, Canvas, Description } from '@storybook/addon-docs'
+import { linkTo } from '@storybook/addon-links'
+
+import Banner from './assets/images/banner.svg'
+import Angular from './assets/images/angular.svg'
+import VueLogo from './assets/images/vue.png'
+import ReactLogo from './assets/images/react.svg'
+import Chrome from './assets/images/chrome_48x48.png'
+import Firefox from './assets/images/firefox_48x48.png'
+import Edge from './assets/images/edge_48x48.png'
+import Safari from './assets/images/safari_48x48.png'
+
+import { html } from './helpers/docs'
+
+<Meta
+  title="Getting-Started/Welcome"
+  subTitle="The new Logos in various sizes"
+  parameters={{
+    fullPage: false,
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<img src={Banner} alt="Baloise Design System" style={{ maxWidth: '640px' }} />
+
+# Welcome to the Baloise Design System
+
+The Baloise Design System consists of reusable components and a clearly defined visual style, that can be assembled together to build any number of applications.
+
+<bal-app>
+  <div>
+    <bal-button link href="?path=/story/getting-started-changelog--page">
+      Getting started
+    </bal-button>
+    <bal-button link href="https://github.com/baloise/design-system-components" target="_blank" outlined color="info" class="ml-4" icon="github">
+      Follow on GitHub
+    </bal-button>
+  </div>
+</bal-app>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="features">
+  <div class="feature">
+    <h2>📦 Agnostic</h2>
+    <p>Our Design System work with many popular frameworks right out of the box.</p>
+  </div>
+  <div class="feature">
+    <h2>⚡️ Fast Runtime</h2>
+    <p>Web Components offered a solution by pushing more work to the browser for better performance.</p>
+  </div>
+  <div class="feature">
+    <h2>🛠️ Rich Features</h2>
+    <p>We offer a set of utilities like validators, filters, util functions and testing helpers.</p>
+  </div>
+</div>
+
+<br />
+<br />
+
+## Framework Support
+
+The Baloise Design System can be used with any Web-Technolgie, however we deliver for Angular, Vue and React a deticated library with proxy components.
+
+<div class="features">
+  <div class="feature">
+    <h2 style={{ height: '64px' }}>
+      <img style={{ width: '64px' }} src={Angular} alt="angular" />
+    </h2>
+    <h2>Angular</h2>
+    <p>
+      <strong>Supported Versions</strong>
+      <br />
+      10.2.x ✔<br />
+      11.x.x ✔<br />
+      12.x.x ✔<br />
+      <br />
+    </p>
+  </div>
+  <div class="feature">
+    <h2 style={{ height: '64px' }}>
+      <img style={{ width: '64px' }} src={VueLogo} alt="vue" />
+    </h2>
+    <h2>Vue.js</h2>
+    <p>
+      <strong>Supported Versions</strong>
+      <br />
+      3.x.x ✔<br />
+      <br />
+    </p>
+  </div>
+  <div class="feature">
+    <h2 style={{ height: '64px' }}>
+      <img style={{ width: '64px' }} src={ReactLogo} alt="react" />
+    </h2>
+    <h2>React</h2>
+    <p>
+      <strong>Supported Versions</strong>
+      <br />
+      17.x.x ✔<br />
+      <br />
+    </p>
+  </div>
+</div>
+
+## Browser Support
+
+The Library supports the following borwers. For more detail go to [Stencil - Browser Support](https://stenciljs.com/docs/browser-support).
+
+<br />
+
+<div class="features">
+  <div class="feature" style={{ flexBasis: '25%', maxWidth: '25%' }}>
+    <h2 style={{ height: '48px', textAlign: 'center' }}>
+      <img style={{ width: '48px' }} src={Chrome} alt="Chrome" />
+    </h2>
+    <h5 style={{ textAlign: 'center' }}>Chrome 60+</h5>
+  </div>
+  <div class="feature" style={{ flexBasis: '25%', maxWidth: '25%' }}>
+    <h2 style={{ height: '48px', textAlign: 'center' }}>
+      <img style={{ width: '48px' }} src={Edge} alt="Edge" />
+    </h2>
+    <h5 style={{ textAlign: 'center' }}>Edge 79+</h5>
+  </div>
+  <div class="feature" style={{ flexBasis: '25%', maxWidth: '25%' }}>
+    <h2 style={{ height: '48px', textAlign: 'center' }}>
+      <img style={{ width: '48px' }} src={Firefox} alt="Firefox" />
+    </h2>
+    <h5 style={{ textAlign: 'center' }}>Firefox 63+</h5>
+  </div>
+  <div class="feature" style={{ flexBasis: '25%', maxWidth: '25%' }}>
+    <h2 style={{ height: '48px', textAlign: 'center' }}>
+      <img style={{ width: '48px' }} src={Safari} alt="Safari" />
+    </h2>
+    <h5 style={{ textAlign: 'center' }}>Safari 10.1+</h5>
+  </div>
+</div>
+
+<br />
+<br />
+<br />
+
+## Contributors
+
+This project exists thanks to all the people who contribute.
+
+<br />
+
+import contributors from './contributors.md'
+
+<Description markdown={contributors} />
+
+<br />
+<br />
+<br />
+
+<hr />
+
+<br />
+
+<p style={{ color: '#4e6e8e' }}>Apache-2.0 Licensed | Copyright © 2019-present Laurent Tauber, Gery Hirschfeld & Contributors</p>

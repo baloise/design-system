@@ -1,7 +1,7 @@
-@import './global.utilities';
+@import 'global.utilities';
 @import 'node_modules/@baloise/design-system-fonts/scss/fonts.scss';
-@import './elements/notices.scss';
-@import './layout/sticky-footer.scss';
+@import 'elements/notices.scss';
+@import 'layout/sticky-footer.scss';
 
 html,
 body {
@@ -25,13 +25,13 @@ body {
 
 .bal-app,
 .bal-notices {
-  @import './utilities/helpers';
-  @import './utilities/animations';
-  @import './layout/all';
-  @import './form/all';
+  @import 'utilities/helpers';
+  @import 'utilities/animations';
+  @import 'layout/all';
+  @import 'form/all';
 
-  @import './elements/all';
-  @import './components/all';
+  @import 'elements/all';
+  @import 'components/all';
   @import 'node_modules/bulma/sass/grid/all.sass';
 
   * {

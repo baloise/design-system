@@ -1,6 +1,5 @@
 ### bal-heading
-
-
+ 
 #### Properties
 
 | Property      | Attribute      | Description                                                                                                                                             | Type                                                                        | Default     |
@@ -13,3 +12,5 @@
 | `subtitle`    | `subtitle`     | If `true` the heading gets displayed slimmer.                                                                                                           | `boolean`                                                                   | `false`     |
 | `visualLevel` | `visual-level` | Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup. | `"h1" `, ` "h2" `, ` "h3" `, ` "h4" `, ` "h5" `, ` "h6" `, ` undefined`     | `undefined` |
 
+
+ 

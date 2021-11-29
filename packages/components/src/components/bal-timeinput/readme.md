@@ -1,6 +1,5 @@
 ### bal-timeinput
-
-
+ 
 #### Properties
 
 | Property   | Attribute  | Description                                             | Type      | Default |
@@ -19,3 +18,5 @@
 | `balBlur`   | Emitted when either the hour or minute input field loses focus.                                                                                                | `CustomEvent<FocusEvent>` |
 | `balChange` | Emitted when either the hour or the minute input has changed. It will not be triggert if either hour or time input has never been set (i.e. "--" is selected). | `CustomEvent<string>`     |
 
+
+ 

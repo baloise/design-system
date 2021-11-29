@@ -1,6 +1,7 @@
 import dedent from 'ts-dedent'
 import { paramCase } from 'param-case'
 import { defineCustomElements } from '../dist/custom-elements/index'
+import { DocsPage } from '@storybook/addon-docs/blocks'
 
 defineCustomElements()
 
@@ -36,9 +37,23 @@ const templateSourceCode = (templateSource, args, argTypes, replacing = ' v-bind
     )
 }
 
+export const decorators = [
+  story => ({
+    components: { story },
+    template: '<div class="bal-app"><story /></div>',
+  }),
+]
+
 export const parameters = {
   actions: { argTypesRegex: '^bal.*' },
   controls: { expanded: true },
+  previewTabs: {
+    'storybook/docs/panel': {
+      index: -1,
+      title: 'Documentation',
+    },
+    'canvas': { title: 'Code', hidden: false },
+  },
   a11y: {
     config: {
       rules: [
@@ -54,6 +69,9 @@ export const parameters = {
     },
   },
   backgrounds: {
+    grid: {
+      cellSize: 8,
+    },
     default: 'white',
     values: [
       {
@@ -75,4 +93,25 @@ export const parameters = {
       return src
     },
   },
+  // options: {
+  //   storySort: {
+  //     order: [
+  //       'Getting started',
+  //       [
+  //         'Intro',
+  //         'Installing the Kit',
+  //         'Using the Kit',
+  //         'Recommended libraries',
+  //         'Design resources',
+  //         'Browser support',
+  //         "What's new",
+  //         'Support and Feedback',
+  //         'Credits',
+  //       ],
+  //       'Documentation',
+  //       'Templates',
+  //       'Components',
+  //     ],
+  //   },
+  // },
 }

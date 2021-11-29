@@ -1,14 +1,23 @@
 import upperfirst from 'lodash.upperfirst'
 import { findComponent } from './util'
 
-const decodeEnumType = prop => {
-  return {
-    type: 'select',
-    options: prop.type
-      .split(' | ')
-      .map(o => o.replaceAll('"', ''))
-      .map(o => (o === '' ? 'default' : o)),
+const hasOptions = prop => prop.type && prop.type.indexOf(' | ') >= 0
+
+const decodeOptions = prop => {
+  if (hasOptions(prop)) {
+    return {
+      options: decodeEnumType(prop),
+    }
   }
+
+  return {}
+}
+
+const decodeEnumType = prop => {
+  return prop.type
+    .split(' | ')
+    .map(o => o.replaceAll('"', ''))
+    .map(o => (o === '' ? 'default' : o))
 }
 
 const getControl = prop => {
@@ -23,8 +32,8 @@ const getControl = prop => {
       return { type: 'number', min: 0 }
 
     default:
-      if (prop.name === 'color') {
-        return decodeEnumType(prop)
+      if (hasOptions(prop)) {
+        return { type: 'select' }
       }
       return { type: 'text' }
   }
@@ -38,6 +47,7 @@ const generateProps = component => {
     if (prop.name !== 'balTabindex') {
       propTypes[prop.name] = {
         description: prop.docs,
+        ...decodeOptions(prop),
         type: {
           name: prop.type,
           required: prop.required,

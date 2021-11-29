@@ -1,2 +1,0 @@
-### bal-list-item-content
-

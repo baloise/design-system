@@ -948,11 +948,6 @@ export const BalHint = /*@__PURE__*/ defineComponent({
       default: 'Close',
       required: false,
     },
-    disabled: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
   },
   emits: {
 

@@ -1,6 +1,5 @@
 ### bal-icon
-
-
+ 
 #### Properties
 
 | Property   | Attribute  | Description                                                     | Type                                                                                                                   | Default  |
@@ -13,3 +12,5 @@
 | `svg`      | `svg`      | Svg content.                                                    | `string`                                                                                                               | `''`     |
 | `turn`     | `turn`     | If `true` the icon is rotated 180deg                            | `boolean`                                                                                                              | `false`  |
 
+
+ 

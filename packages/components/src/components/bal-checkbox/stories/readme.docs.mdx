@@ -1,0 +1,46 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../stories/helpers/docs'
+import { inABox, withLink } from './examples.docs.ts'
+import readme from '../readme.md'
+
+<span id="story--01-components-form-checkbox--basic" style={{ opacity: 0 }}></span>
+
+# Checkbox
+
+Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.
+
+<Canvas>
+  <Story id="01-components-form-checkbox--basic" />
+</Canvas>
+
+## Switch
+
+<Canvas>
+  <Story id="01-components-form-checkbox--switch" />
+</Canvas>
+
+## With Link
+
+<Canvas className="bal-app" mdxSource={withLink}>
+  {html(withLink)}
+</Canvas>
+
+## Checkbox Box
+
+<Canvas className="bal-app" mdxSource={inABox}>
+  {html(inABox)}
+</Canvas>
+
+## Component Api
+
+<Description markdown={readme} />
+
+<br />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+import github from './github.md'
+
+<Description markdown={github} />

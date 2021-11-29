@@ -1,6 +1,5 @@
 ### bal-footer
-
-
+ 
 #### Properties
 
 | Property       | Attribute        | Description                                            | Type                                 | Default |
@@ -9,3 +8,5 @@
 | `hideLinks`    | `hide-links`     | If `true` the default Baloise links will be hidden.    | `boolean`                            | `false` |
 | `locale`       | `locale`         | The languages in which the links will appear.          | `"de" `, ` "en" `, ` "fr" `, ` "it"` | `'en'`  |
 
+
+ 

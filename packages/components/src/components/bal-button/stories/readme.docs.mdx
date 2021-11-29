@@ -1,0 +1,80 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../stories/helpers/docs'
+import readme from '../readme.md'
+import { basic, links, colors, expanded, icons, square, buttonLink, group } from './examples.docs.ts'
+
+<span id="story--01-components-button--basic" style={{ opacity: 0 }}></span>
+
+# Button
+
+Buttons provide a clickable element, which can be used in forms, or anywhere that needs simple, standard button functionality. They may display text, icons, or both. Buttons can be styled with several attributes to look a specific way.
+
+<Canvas>
+  <Story id="01-components-button--primary" />
+</Canvas>
+
+## Examples
+
+### Basic
+
+<Canvas className="bal-app" mdxSource={basic}>
+  {html(basic)}
+</Canvas>
+
+### Links
+
+<Canvas className="bal-app" mdxSource={links}>
+  {html(links)}
+</Canvas>
+
+### Colors
+
+<Canvas className="bal-app" mdxSource={colors}>
+  {html(colors)}
+</Canvas>
+
+### Expanded
+
+<Canvas className="bal-app" mdxSource={expanded}>
+  {html(expanded)}
+</Canvas>
+
+### With Icons
+
+<Canvas className="bal-app" mdxSource={icons}>
+  {html(icons)}
+</Canvas>
+
+### Square
+
+<Canvas className="bal-app" mdxSource={square}>
+  {html(square)}
+</Canvas>
+
+### Button Link
+
+<Canvas className="bal-app" mdxSource={buttonLink}>
+  {html(buttonLink)}
+</Canvas>
+
+### Button Group
+
+The .bal-buttons css class helps to place button groups together. The buttons stretche on mobile devices according to their css class like .is-full , .is-half , .is-one-third or .is-two-thirds .
+
+<Canvas className="bal-app" mdxSource={group}>
+  {html(group)}
+</Canvas>
+
+## Component Api
+
+<Description markdown={readme} />
+
+<br />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+import github from './github.md'
+
+<Description markdown={github} />

@@ -1,6 +1,5 @@
 ### bal-snackbar
-
-
+ 
 #### Properties
 
 | Property   | Attribute  | Description                                                       | Type                                                                        | Default |
@@ -43,3 +42,5 @@ Type: `Promise<void>`
 
 
 
+
+ 

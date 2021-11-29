@@ -1,6 +1,5 @@
 ### bal-card
-
-
+ 
 #### Properties
 
 | Property     | Attribute     | Description                                                                                    | Type                                                                        | Default |
@@ -16,3 +15,5 @@
 | `square`     | `square`      | If `true` the card loses its border radius.                                                    | `boolean`                                                                   | `false` |
 | `teaser`     | `teaser`      | If `true` the card has a limited width on desktop.                                             | `boolean`                                                                   | `false` |
 
+
+ 

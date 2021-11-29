@@ -1,0 +1,45 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../stories/helpers/docs'
+import readme from '../readme.md'
+import radioGroup from '../../bal-radio-group/readme.md'
+
+# Radio
+
+A radio input is normally displayed in a radio group. The user can only select one option from a number of choices.
+
+<Canvas>
+  <Story id="01-components-form-radio--radio-group" />
+</Canvas>
+
+## Radio Boxes
+
+<Canvas>
+  <Story id="01-components-form-radio--radio-boxes" />
+</Canvas>
+
+## Radio List
+
+<Canvas>
+  <Story id="01-components-form-radio--radio-list" />
+</Canvas>
+
+## Select Buttons
+
+<Canvas>
+  <Story id="01-components-form-radio--select-button" />
+</Canvas>
+
+## Component Api
+
+<Description markdown={radioGroup} />
+<Description markdown={readme} />
+
+<br />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+import github from './github.md'
+
+<Description markdown={github} />

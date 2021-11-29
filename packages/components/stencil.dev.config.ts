@@ -1,38 +1,9 @@
 import { Config } from '@stencil/core'
-import { JsonDocs } from '@stencil/core/internal'
-import { sass } from '@stencil/sass'
-import { ComponentModelConfig, vueOutputTarget } from '@baloise/vue-output-target'
-import { CustomDocumentationGenerator } from './.scripts/readme/custom-documentation'
-
-const vueComponentModels: ComponentModelConfig[] = [
-  {
-    elements: ['bal-radio-group', 'bal-datepicker', 'bal-timeinput', 'bal-select'],
-    event: 'balChange',
-    targetAttr: 'value',
-  },
-  {
-    elements: ['bal-checkbox'],
-    event: 'balChange',
-    targetAttr: 'checked',
-  },
-  {
-    elements: ['bal-input', 'bal-textarea', 'bal-slider'],
-    event: 'balInput',
-    targetAttr: 'value',
-  },
-  {
-    elements: ['bal-accordion', 'bal-dropdown'],
-    event: 'balCollapsed',
-    targetAttr: 'is-active',
-  },
-]
+import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
+import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 
 export const config: Config = {
-  namespace: 'design-system-components',
-  globalStyle: 'src/styles/global.scss',
-  globalScript: 'src/global.ts',
-  enableCache: true,
-  plugins: [sass()],
+  ...StencilBaseConfig,
   outputTargets: [
     {
       type: 'dist',
@@ -42,28 +13,14 @@ export const config: Config = {
       type: 'dist-custom-elements-bundle',
     },
     {
-      type: 'docs-json',
-      file: 'src/stories/assets/components.json',
-    },
-    {
       type: 'www',
       dir: 'public',
-      empty: true,
       copy: [
         { src: 'assets/fonts', warn: true },
-        { src: '../../components-table/css/design-system-table.css', warn: true },
+        { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
+        { src: '../../components-table/css/design-system-table.css', dest: 'assets/css/design-system-table.css', warn: true },
       ],
     },
-    {
-      type: 'docs-custom',
-      generator: (docs: JsonDocs) => CustomDocumentationGenerator(docs),
-    },
-    vueOutputTarget({
-      componentCorePackage: '../../public/build/design-system-components.esm.js',
-      proxiesFile: './.storybook/vue/components.ts',
-      componentModels: vueComponentModels,
-      includeDefineCustomElements: false,
-      includePolyfills: false,
-    }),
+    VueGenerator('../../public/build/design-system-components.esm.js', './.storybook/vue/components.ts'),
   ],
 }

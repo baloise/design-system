@@ -1,6 +1,5 @@
 ### bal-radio-group
-
-
+ 
 #### Properties
 
 | Property    | Attribute   | Description                                                     | Type                           | Default        |
@@ -18,3 +17,5 @@
 | ----------- | ---------------------------------------------- | --------------------- |
 | `balChange` | Emitted when the checked property has changed. | `CustomEvent<string>` |
 
+
+ 

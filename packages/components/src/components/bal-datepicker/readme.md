@@ -1,6 +1,5 @@
 ### bal-datepicker
-
-
+ 
 #### Properties
 
 | Property        | Attribute         | Description                                                                                                                                                                                                                                                                                                                                                             | Type                                               | Default        |
@@ -88,3 +87,5 @@ Type: `Promise<void>`
 
 
 
+
+ 

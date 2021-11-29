@@ -62,6 +62,10 @@ export namespace Components {
           * If `true` it adds a light background to the app
          */
         "background": boolean;
+        /**
+          * If `true` the bal-app can be used with header, main and footer. The footer will then be sticky to the bottom.
+         */
+        "hasStickyFooter": boolean;
     }
     interface BalButton {
         /**
@@ -1984,6 +1988,10 @@ declare namespace LocalJSX {
           * If `true` it adds a light background to the app
          */
         "background"?: boolean;
+        /**
+          * If `true` the bal-app can be used with header, main and footer. The footer will then be sticky to the bottom.
+         */
+        "hasStickyFooter"?: boolean;
     }
     interface BalButton {
         /**

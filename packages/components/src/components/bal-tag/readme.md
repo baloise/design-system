@@ -1,6 +1,5 @@
 ### bal-tag
-
-
+ 
 #### Properties
 
 | Property   | Attribute  | Description                                                  | Type                                                                        | Default |
@@ -16,3 +15,5 @@
 | --------------- | ----------------------------------- | ------------------------- |
 | `balCloseClick` | Emitted when the input got clicked. | `CustomEvent<MouseEvent>` |
 
+
+ 

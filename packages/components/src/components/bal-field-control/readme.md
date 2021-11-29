@@ -1,6 +1,5 @@
 ### bal-field-control
-
-
+ 
 #### Properties
 
 | Property    | Attribute    | Description                                                    | Type      | Default |
@@ -10,3 +9,5 @@
 | `inverted`  | `inverted`   | If `true` the field can be used on blue background.            | `boolean` | `false` |
 | `loading`   | `loading`    | If `true` a loading spinner is visible at the end of the input | `boolean` | `false` |
 
+
+ 

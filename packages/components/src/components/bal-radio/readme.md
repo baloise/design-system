@@ -1,6 +1,5 @@
 ### bal-radio
-
-
+ 
 #### Properties
 
 | Property      | Attribute      | Description                                                     | Type                           | Default        |
@@ -35,3 +34,5 @@ Type: `Promise<void>`
 
 
 
+
+ 

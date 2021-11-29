@@ -1,6 +1,5 @@
 ### bal-list
-
-
+ 
 #### Properties
 
 | Property   | Attribute  | Description                                        | Type      | Default |
@@ -9,3 +8,5 @@
 | `disabled` | `disabled` | If `true` the list item can be hovered             | `boolean` | `false` |
 | `inverted` | `inverted` | If `true` the list can be used on a dark backround | `boolean` | `false` |
 
+
+ 

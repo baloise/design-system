@@ -1,6 +1,5 @@
 ### bal-card-button
-
-
+ 
 #### Properties
 
 | Property    | Attribute    | Description                                                                         | Type                                                | Default     |
@@ -13,3 +12,5 @@
 | `target`    | `target`     | Specifies where to display the linked URL. Only applies when an `href` is provided. | `" _parent" `, ` "_blank" `, ` "_self" `, ` "_top"` | `'_self'`   |
 | `type`      | `type`       | The type of button.                                                                 | `"button" `, ` "reset" `, ` "submit"`               | `'button'`  |
 
+
+ 

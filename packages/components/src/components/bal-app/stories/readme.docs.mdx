@@ -1,0 +1,35 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../stories/helpers/docs'
+import readme from '../readme.md'
+import { withIcons, withCard } from './examples.docs.ts'
+
+<span id="story--01-components-app--basic" style={{ opacity: 0 }}></span>
+
+# App
+
+App is a container element for an Baloise Design System application. There should
+only be one `<bal-app>` element per project. An app can have many Design System
+components. The overlay components get appended to the `<bal-app>` when they are
+presented. put users in control of showing or hiding content. Accordions also
+help us organize information to keep screens less cluttered so that users can
+accomplish tasks in short, intuitive steps. And accordions can help users find
+content they need. The component can be used standalone, in combination or
+inside bal-card.
+
+<Canvas>
+  <Story id="01-components-app--basic" />
+</Canvas>
+
+## Component Api
+
+<Description markdown={readme} />
+
+<br />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+import github from './github.md'
+
+<Description markdown={github} />

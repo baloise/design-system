@@ -1,6 +1,5 @@
 ### bal-button
-
-
+ 
 #### Properties
 
 | Property        | Attribute        | Description                                                                                                                                                                                                                                                                               | Type                                                                                                                   | Default     |
@@ -38,3 +37,5 @@
 | `balFocus`     | Emitted when the button has focus.          | `CustomEvent<void>`       |
 | `balNavigate`  | Emitted when the link element has clicked.  | `CustomEvent<MouseEvent>` |
 
+
+ 

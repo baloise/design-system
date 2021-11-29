@@ -1,6 +1,5 @@
 ### bal-data-value
-
-
+ 
 #### Properties
 
 | Property   | Attribute  | Description                                                           | Type      | Default |
@@ -17,3 +16,5 @@
 | `balClick` | Emitted when the edit button has focus.   | `CustomEvent<MouseEvent>` |
 | `balFocus` | Emitted when the edit button has focus.   | `CustomEvent<void>`       |
 
+
+ 
