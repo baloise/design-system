@@ -4,7 +4,6 @@ const file = require('./file')
 
 async function main() {
   log.title('copy readme')
-  await copyReadme('docs')
   await copyReadme('packages/components')
   await copyReadme('packages/components-angular')
   await copyReadme('packages/components-table')

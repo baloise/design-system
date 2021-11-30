@@ -23,9 +23,7 @@ export const config: Config = {
         {
           src: 'components.d.ts',
         },
-        {
-          src: 'assets/fonts',
-        },
+        { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
       ],
     },
   ],
