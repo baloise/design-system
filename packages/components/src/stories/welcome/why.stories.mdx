@@ -1,4 +1,8 @@
 import { Meta, Description } from '@storybook/addon-docs'
+import AngularLogo from '../assets/images/angular.svg'
+import ReactLogo from '../assets/images/react.svg'
+import VueLogo from '../assets/images/vue.png'
+import HTMLLogo from '../assets/images/html.png'
 
 <Meta
   title="Why a Design System"
@@ -63,6 +67,41 @@ Perhaps the most appealing benefit of Web Components is that they give your deve
 
 [Quote from Stencil](https://stenciljs.com/docs/faq)
 
+#### Framework Support
+
+The Baloise Design System can be used with any Web-Technolgie, however we deliver for Angular, Vue and React a deticated library with proxy components.
+
+<div className="link-list">
+  <a className="link-item" href="?path=/docs/getting-started-angular-overview--page">
+    <img src={AngularLogo} alt="angular" />
+    <span>
+      <strong>Angular</strong>
+      10.2.x ✔ 11.x.x ✔ 12.x.x ✔
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-react-overview--page">
+    <img src={ReactLogo} alt="react" />
+    <span>
+      <strong>React</strong>
+      17.x.x ✔
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-vue-overview--page">
+    <img src={VueLogo} alt="vue" />
+    <span>
+      <strong>Vue</strong>
+      3.x.x ✔
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-angular-overview--page">
+    <img src={HTMLLogo} alt="html5" />
+    <span>
+      <strong>HTML5</strong>
+      For other web-technologies
+    </span>
+  </a>
+</div>
+
 ### 🎨 Fast style changes
 
 Every change to the corperate style guide has to be implemented by each development team. This costs a lot of time and duplicated work. Let's imagine we have to change a color and make our buttons flat. To do that we only have to change the according [SCSS](https://sass-lang.com/) varibles.
@@ -80,13 +119,17 @@ Style changes will not change the component interface. Which means the developer
 
 [Web Components](https://developer.mozilla.org/de/docs/Web/Web_Components) offered a solution by pushing more work to the browser for better performance. Moreover, the components get lazy loaded when they needed. To keep the initial package size of your project as small as possible.
 
+#### Browser Support
+
+The Library supports the following borwers. For more detail go to [Stencil - Browser Support](https://stenciljs.com/docs/browser-support).
+
 ### 🛠️ Rich Features
 
 On top of the user interaction and style part the library provides a set of utilities.
 
 #### Testing
 
-As a [E-2-E testing](/components/tooling/testing.html) tool we use [Cypress](https://www.cypress.io/). With the help of our custom and overriden commands we try to simplify writing tests.
+As a [E-2-E testing](?path=/docs/getting-started-testing--page) tool we use [Cypress](https://www.cypress.io/). With the help of our custom and overriden commands we try to simplify writing tests.
 The commands hide the complexity of the component and only serves a interface for the simulated user actions like a click.
 
 ```typescript

@@ -29,28 +29,19 @@ git clone https://github.com/baloise/design-system.git design-system
 cd design-system
 ```
 
-- Run `npm install` in the root directory to install library’s dependencies and its packages
+- Run `npm run setup` in the root directory to install library’s dependencies and its packages
 - Run `npm run build` to build the packages
-- Run `npm run lib:serve` to serve Design System demo page
+- Run `npm run start` to serve Design System storybook
 
-> The demo page will be served at `http://localhost:3333/` by default
+> The demo page will be served at `http://localhost:6006/` by default
 
-For more commands visit [Commands](/guide/development/commands.html)
+For more commands visit [Commands](?path=/docs/contributing-commands--page)
 
 > **TIP**
 > All Baloise Design System packages and their respective code can be found under `/packages/`. For example components live in `/packages/components/`.
 
 ## Documentation
 
-To create the documentation out of the written code and comments run the following commands:
+To document our components we use the tool [Storybook](https://storybook.js.org/).
 
-- Run `npm install` in the root directory to install library’s dependencies and its packages
-- Run `npm run docs:build` to generate documentation content and prepare the packages
-- Run `npm run docs:serve` to serve documentation page
-
-> The documentation page will be served at `http://localhost:8080/` by default
-
-For more commands visit [Commands](/guide/development/commands.html)
-
-> **TIP**
-> Documentation that is shown on [design.baloise.dev](https://design.baloise.dev/) can be found from /docs/. Changes to it are automatically deployed if tagged with deploy and merged to master brach.
+The documentation files are in a folder called `/stories` or have `.stories.` in the file name.

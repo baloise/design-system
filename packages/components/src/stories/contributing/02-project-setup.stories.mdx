@@ -54,8 +54,7 @@ For our CI & CD task we use [Github Actions](https://github.com/baloise/design-s
 │  ├── ISSUE_TEMPLATE # templates for the github issues like feature request
 │  └── .workflows # github action
 │
-├── .scripts # node-scripts to generate documentation and code parts
-├── docs # documentation
+├── .build # additional build scripts
 ├── examples # example applications with Angular, Vue and React
 ├── packages # published npm packages
 ├── resources # static resources for the documentation
@@ -63,44 +62,40 @@ For our CI & CD task we use [Github Actions](https://github.com/baloise/design-s
 └── lerna.json # config of the mono-repo
 ```
 
-### /docs
-
-```bash
-.
-├── .scripts # node-scripts to generate documentation and code parts
-├── public # static assets like images and fonts
-└── src
-   ├──.vuepress #
-   └── .<pages> # docu pages written in markdown
-```
-
-::: tip
-More documentation to the folder structure for vuepress can be found [here](https://vuepress.vuejs.org/guide/directory-structure.html).
-:::
-
 ### /packages
 
 #### /components
 
 ```bash
 .
-├── .scripts # node-scripts to generate documentation and code parts
+├── .build # additional build scripts
+├── .storybook # storybook configurations
 ├── src
-│  ├── assets # generated assets folder with the fonts
+│  ├── assets # generated assets folder for the stencil components
 │  ├── components
 │  │  └── bal-<component>
+│  │        ├── stories # documentation folder with the stories
+│  │        │  ├── docs.stories.ts # has the different variants/stories of the component
+│  │        │  ├── examples.docs.ts # HTML templates snippets
+│  │        │  ├── readme.docs.mdx # main documentation file
+│  │        │  ├── github.md # geberated file with the contribution links
+│  │        │  └── testing.md # generated file with the testing api
+│  │        │
 │  │        ├── bal-<component>.e2e.ts # E2E test file
 │  │        ├── bal-<component>.scss # Specific component style
 │  │        ├── bal-<component>.tsx # Component logic
-│  │        ├── index.html # Examples for the component. Is also shown in the documentation
-│  │        └── readme.md # Generated Readme file
+│  │        ├── index.html # Examples for the cypress tests: <deprecated> use storybook instead.
+│  │        └── readme.md # Generated Readme with the components api
 │  │
-│  ├── constants # Global constants.
-│  ├── helpers # Global helper functions.
-│  ├── styles # Global styles witch is extends bulma.css
-│  ├── types # Global types for all the components like colors.
-│  ├── global.ts # Global executed script. Gets executed when the components are ready.
-│  └── config.ts # Global config definitions for the anuglar module and the vue plugin.
+│  ├── constants # global constants.
+│  ├── helpers # global helper functions.
+│  ├── styles # global styles witch is extends bulma.css
+│  │  ├── global.scss # global stylesheet of the Design System
+│  │  └── global.utilities.scss # exports variables, mixins... (no-styles)
+│  │
+│  ├── types # global types for all the components like colors.
+│  ├── global.ts # global executed script. Gets executed when the components are ready.
+│  └── config.ts # global config definitions for the anuglar module and the vue plugin.
 │
 └──  stencil.*.config.ts # stencil output configurations
 ```

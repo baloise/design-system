@@ -1,0 +1,21 @@
+import { Meta, Description } from '@storybook/addon-docs'
+import { html } from '../helpers/docs'
+
+<Meta
+  title="Contributors"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+## Contributors
+
+This project exists thanks to all the people who contribute.
+
+<br />
+
+import contributors from '../contributors.md'
+
+<Description markdown={contributors} />
