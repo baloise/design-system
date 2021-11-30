@@ -28,7 +28,6 @@ const main = async () => {
 
   archive.pipe(output)
 
-  // archive.directory(path.join(__dirname, '../lib'), false)
   archive.glob('*', { cwd: path.join(__dirname, '../lib') })
 
   archive.finalize()
