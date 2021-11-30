@@ -35,7 +35,6 @@
     "build:clean": "rimraf docs && rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p tsconfig.build.json",
     "build:bundle": "rollup --config rollup.config.js",
-    "build:prepare": "node .build/docs-json.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "license": "Apache-2.0",

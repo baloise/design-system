@@ -5,13 +5,6 @@ export const config: Config = {
   ...StencilBaseConfig,
   outputTargets: [
     {
-      type: 'dist',
-      esmLoaderPath: '../loader',
-    },
-    {
-      type: 'dist-custom-elements-bundle',
-    },
-    {
       type: 'www',
       dir: 'www',
       serviceWorker: false,

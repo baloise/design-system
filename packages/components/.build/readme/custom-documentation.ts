@@ -7,7 +7,7 @@ import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
 import { slotsToMarkdown } from './markdown-slots'
 import { NEWLINE, SPACE } from './constants'
-import testingCommands from '../../../testing/docs/commands.json'
+import testingCommands from '../../docs/commands.json'
 import contributors from '../../docs/contributors.json'
 
 export const CustomDocumentationGenerator: OutputTargetDocsCustom = {

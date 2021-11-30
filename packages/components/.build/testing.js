@@ -9,12 +9,7 @@
 const path = require('path')
 const file = require('../../../.build/file')
 const log = require('../../../.build/log')
-const {
-  createSourceFile,
-  parseFunctionComment,
-  filterModuleDeclaration,
-  filterInterfaceDeclaration,
-} = require('../../../.build/typescript')
+const { createSourceFile, parseFunctionComment, filterModuleDeclaration, filterInterfaceDeclaration } = require('../../../.build/typescript')
 
 const parseTypes = (fileContent, filePath) => {
   const sourceFile = createSourceFile(fileContent)
@@ -40,7 +35,7 @@ const parseTypes = (fileContent, filePath) => {
 const run = async () => {
   await log.title('testing : docs-json')
 
-  const pathToTypes = 'src/commands/**/**.types.ts'
+  const pathToTypes = '../testing/src/commands/**/**.types.ts'
   let typeFilePaths = []
   let typeFileContents = []
   let commands = []
@@ -57,9 +52,7 @@ const run = async () => {
     log.error(`Could not find any files with the pattern = ${pathToTypes}`, error)
   }
 
-  commands = typeFileContents
-    .map((m, i) => parseTypes(m, typeFilePaths[i]))
-    .reduce((acc, item) => [...acc, ...item], [])
+  commands = typeFileContents.map((m, i) => parseTypes(m, typeFilePaths[i])).reduce((acc, item) => [...acc, ...item], [])
 
   log.info(`Found ${commands.length} commands:`)
   commands.forEach((c, i) => {
