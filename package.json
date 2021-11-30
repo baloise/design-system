@@ -14,7 +14,7 @@
     "==================== INSTALLATION / SETUP ====================": "================================",
     "setup": "npm install && npm run build && npm run bootstrap",
     "preinstall": "npx npm-force-resolutions",
-    "postinstall": "npm run bootstrap && node .build/copy.script.js",
+    "postinstall": "npm run bootstrap && node .build/copy.js",
     "bootstrap": "lerna bootstrap",
     "update:lock": "lerna exec -- npm install --package-lock-only",
     "update:registry": "lerna run update:registry && sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
