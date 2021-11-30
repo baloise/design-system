@@ -3,7 +3,7 @@ import { generateArgType } from '../../../stories/helpers/args'
 import { BalIcon } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Icon',
+  title: 'Components/Icon',
   component: BalIcon,
   argTypes: generateArgType('bal-icon'),
   parameters: {

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-11-24T16:25:00",
+  "timestamp": "2021-11-30T11:53:05",
   "compiler": {
     "name": "@stencil/core",
     "version": "2.11.0",
@@ -10,7 +10,6 @@
       "filePath": "./src/components/bal-accordion/bal-accordion.tsx",
       "encapsulation": "scoped",
       "tag": "bal-accordion",
-      "readme": "# Accordion\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -203,17 +202,12 @@
           "bal-icon",
           "bal-text"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-accordion class=\"box\" open-label=\"Details einblenden\" close-label=\"Details ausblenden\" data-test-id=\"accordion\">\n          <p class=\"p-4\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\n        </bal-accordion>\n      </section>\n\n      <h2 class=\"title is-size-2\">Colors</h2>\n      <p>The accordion has 2 colors of themes `is-info` and `is-primary`.</p>\n      <section>\n        <bal-accordion class=\"box\" color=\"info\" open-label=\"Details einblenden\" close-label=\"Details ausblenden\">\n          <p class=\"p-4\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\n        </bal-accordion>\n      </section>\n\n      <h2 class=\"title is-size-2\">Open accordion</h2>\n      <section>\n        <bal-accordion class=\"box\" collapsed=\"false\" open-label=\"Details einblenden\" close-label=\"Details ausblenden\">\n          <p class=\"p-4\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\n        </bal-accordion>\n      </section>\n\n      <h2 class=\"title is-size-2\">Trigger label & icon</h2>\n      <p>Use the properties `open-label` & `open-icon` to change the content of the trigger button.</p>\n      <section>\n        <bal-accordion class=\"box\" open-icon=\"edit\" open-label=\"Bearbeiten\" close-label=\"Schliessen\" close-icon=\"close\">\n          <p class=\"p-4\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\n        </bal-accordion>\n      </section>\n\n      <h2 class=\"title is-size-2\">With card</h2>\n      <section>\n        <bal-card>\n          <bal-card-title>BaloiseCombi</bal-card-title>\n          <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>\n\n          <bal-accordion card>\n            <p class=\"p-4\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\n          </bal-accordion>\n        </bal-card>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-app/bal-app.tsx",
       "encapsulation": "none",
       "tag": "bal-app",
-      "readme": "# App\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -234,6 +228,23 @@
           ],
           "optional": false,
           "required": false
+        },
+        {
+          "name": "hasStickyFooter",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "has-sticky-footer",
+          "reflectToAttr": false,
+          "docs": "If `true` the bal-app can be used with header, main and footer. The footer will then be sticky to the bottom.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
         }
       ],
       "methods": [],
@@ -244,17 +255,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-app background>\n          <header class=\"has-background-white\">\n            <bal-navbar no-burger>\n              <bal-navbar-brand>\n                <bal-icon name=\"logo\" inverted size=\"large\"></bal-icon>\n                <bal-text style=\"margin-left: 15px\">Portal</bal-text>\n              </bal-navbar-brand>\n            </bal-navbar>\n          </header>\n          <main>\n            <div class=\"container\">\n              <bal-card class=\"has-margin-top\">\n                <bal-card-title>BaloiseCombi</bal-card-title>\n                <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>\n\n                <bal-card-content> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </bal-card-content>\n\n                <bal-card-actions>\n                  <bal-button>Action</bal-button>\n                  <bal-button>Action 2</bal-button>\n                </bal-card-actions>\n              </bal-card>\n            </div>\n          </main>\n\n          <bal-footer has-track-line>\n            <div class=\"container\">\n              <span style=\"margin-right: 16px\">Baloise Group</span>\n              <span style=\"margin-right: 16px\">Legal notice</span>\n              <span style=\"margin-right: 16px\">Cookie policy</span>\n              <span>Data protection</span>\n            </div>\n          </bal-footer>\n        </bal-app>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-button/bal-button.tsx",
       "encapsulation": "scoped",
       "tag": "bal-button",
-      "readme": "# Button\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -796,17 +802,12 @@
         "bal-tabs": [
           "bal-button"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <div class=\"bal-buttons is-center\">\n          <bal-button color=\"primary\" data-test-id=\"primary-button\">Continue</bal-button>\n          <bal-button color=\"link\">Back</bal-button>\n        </div>\n      </section>\n\n      <h2 class=\"title is-size-2\">Links</h2>\n      <section>\n        <a href=\"https://design.baloise.dev/\" class=\"is-link\">Link</a>\n\n        <div class=\"has-background-info p-2\">\n          <a href=\"https://design.baloise.dev/\" class=\"is-link is-inverted\">Inverted Link</a>\n        </div>\n      </section>\n\n      <h2 class=\"title is-size-2\">Info</h2>\n      <section>\n        <div class=\"bal-buttons\">\n          <bal-button color=\"info\">Info</bal-button>\n          <bal-button color=\"info\" outlined>Info Outlined</bal-button>\n        </div>\n      </section>\n\n      <h2 class=\"title is-size-2\">Inverted</h2>\n      <section>\n        <div class=\"has-background-info p-2\">\n          <div class=\"bal-buttons is-flex\">\n            <bal-button class=\"is-full\" color=\"primary\" inverted>Primary</bal-button>\n            <bal-button color=\"info\" inverted>Info</bal-button>\n            <bal-button color=\"info\" inverted outlined>Info Outlined</bal-button>\n          </div>\n        </div>\n      </section>\n\n      <h2 class=\"title is-size-2\">Other colors</h2>\n      <section>\n        <bal-button color=\"primary-light\" icon=\"edit\">Primary Light</bal-button>\n        <bal-button color=\"info-light\" icon=\"edit\">Info Light</bal-button>\n        <bal-button color=\"success\">Success</bal-button>\n        <bal-button color=\"warning\">Warning</bal-button>\n        <bal-button color=\"danger\">Danger</bal-button>\n      </section>\n\n      <h2 class=\"title is-size-2\">Disabled</h2>\n      <section>\n        <bal-button color=\"primary\" disabled data-test-id=\"primary-button-disabled\">Primary</bal-button>\n        <bal-button color=\"info\" disabled>Info</bal-button>\n        <bal-button color=\"link\" disabled>Link</bal-button>\n      </section>\n\n      <h2 class=\"title is-size-2\">Loading</h2>\n      <section>\n        <bal-button color=\"primary\" loading>Primary</bal-button>\n        <bal-button color=\"info\" loading>Info</bal-button>\n        <bal-button color=\"info\" loading outlined>Info</bal-button>\n      </section>\n\n      <h2 class=\"title is-size-2\">Expanded</h2>\n      <section>\n        <bal-button color=\"primary\" expanded>Primary</bal-button>\n        <br />\n        <bal-button color=\"info\" expanded>Info</bal-button>\n      </section>\n\n      <h2 class=\"title is-size-2\">With icons</h2>\n      <section>\n        <bal-button color=\"info\" outlined icon=\"edit\">Left Icon</bal-button>\n        <bal-button color=\"info\" outlined icon-right=\"edit\">Right Icon</bal-button>\n      </section>\n\n      <h2 class=\"title is-size-2\">Small buttons</h2>\n      <section>\n        <bal-button color=\"primary\" size=\"small\"> Primary </bal-button>\n        <bal-button color=\"info\" size=\"small\"> Info </bal-button>\n      </section>\n\n      <h2 class=\"title is-size-2\">Square buttons</h2>\n      <section>\n        <bal-button color=\"info\" icon=\"edit\" square outlined></bal-button>\n        <bal-button color=\"info\" size=\"small\" icon=\"edit\" square outlined></bal-button>\n      </section>\n\n      <h2 class=\"title is-size-2\">Button Link</h2>\n      <section>\n        <bal-button link href=\"https://github.com/baloise/design-system-components\" target=\"_blank\">GitHub</bal-button>\n      </section>\n\n      <h2 class=\"title is-size-2\">Button Group</h2>\n      <p>\n        The <code>.bal-buttons</code> css class helps to place button groups together. The buttons stretche on mobile devices according to their css class like\n        <code>.is-full</code>, <code>.is-half</code>, <code>.is-one-third</code> or <code>.is-two-thirds</code>.\n      </p>\n      <section>\n        <div class=\"bal-buttons is-center\">\n          <bal-button class=\"is-full\" color=\"primary\">Primary</bal-button>\n          <div class=\"break\"></div>\n          <bal-button class=\"is-full\" color=\"link\">Secondary</bal-button>\n        </div>\n        <div class=\"bal-buttons is-center\">\n          <bal-button class=\"is-full\" color=\"primary\">Full</bal-button>\n          <bal-button class=\"is-full\" color=\"info\">Full</bal-button>\n        </div>\n        <div class=\"bal-buttons is-center\">\n          <bal-button class=\"is-half\" color=\"primary\">Half</bal-button>\n          <bal-button class=\"is-half\" color=\"info\">Half</bal-button>\n        </div>\n        <div class=\"bal-buttons is-center\">\n          <bal-button class=\"is-one-third\" color=\"primary\">Third</bal-button>\n          <bal-button class=\"is-one-third\" color=\"info\">Third</bal-button>\n          <bal-button class=\"is-one-third\" outlined color=\"info\">Third</bal-button>\n        </div>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-card/bal-card.tsx",
       "encapsulation": "none",
       "tag": "bal-card",
-      "readme": "# Card\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -1044,29 +1045,21 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [
-        "bal-card-actions",
-        "bal-card-button",
-        "bal-card-content",
-        "bal-card-head",
-        "bal-card-heading",
-        "bal-card-steps",
-        "bal-card-subtitle",
-        "bal-card-title"
+      "dependents": [
+        "bal-doc-download"
       ],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-card spacing=\"medium\">\n          <bal-card-title>BaloiseCombi</bal-card-title>\n          <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>\n\n          <bal-card-content> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </bal-card-content>\n\n          <bal-card-actions>\n            <bal-button>Main Action</bal-button>\n            <bal-button color=\"info\" outlined>Secondary Action</bal-button>\n          </bal-card-actions>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">Inverted style</h2>\n      <section>\n        <bal-card color=\"info\" inverted>\n          <bal-card-title inverted>BaloiseCombi</bal-card-title>\n          <bal-card-subtitle inverted>Police number 70/2.937.458</bal-card-subtitle>\n\n          <bal-card-content inverted>\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          </bal-card-content>\n\n          <bal-card-actions right>\n            <bal-button inverted color=\"info\" outlined>Secondary Action</bal-button>\n            <bal-button inverted>Main Action</bal-button>\n          </bal-card-actions>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">With accordion</h2>\n      <section>\n        <bal-card>\n          <bal-card-title>BaloiseCombi</bal-card-title>\n          <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>\n\n          <bal-accordion card>\n            <p class=\"p-5\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\n          </bal-accordion>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">With list</h2>\n      <p>The position the action buttons to the right side just add the attribute `right` to the component `bal-card-actions`.</p>\n      <section>\n        <bal-card>\n          <bal-card-title>News</bal-card-title>\n\n          <bal-card-content>\n            <bal-list border>\n              <bal-list-item>\n                <bal-list-item-content>\n                  <bal-list-item-title>News A</bal-list-item-title>\n                </bal-list-item-content>\n                <bal-list-item-icon right>\n                  <bal-icon name=\"nav-go-large\"></bal-icon>\n                </bal-list-item-icon>\n              </bal-list-item>\n              <bal-list-item>\n                <bal-list-item-content>\n                  <bal-list-item-title>News B</bal-list-item-title>\n                </bal-list-item-content>\n                <bal-list-item-icon right>\n                  <bal-icon name=\"nav-go-large\"></bal-icon>\n                </bal-list-item-icon>\n              </bal-list-item>\n            </bal-list>\n          </bal-card-content>\n\n          <bal-card-actions right>\n            <bal-button type=\"is-link\">More</bal-button>\n          </bal-card-actions>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">Summary card</h2>\n      <section>\n        <bal-card>\n          <bal-card-heading>Insured vehicle</bal-card-heading>\n          <bal-card-title>Cupra Ateca</bal-card-title>\n          <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>\n\n          <bal-card-content>\n            <bal-data horizontal>\n              <bal-data-item>\n                <bal-data-label>Tony</bal-data-label>\n                <bal-data-value>Stark</bal-data-value>\n              </bal-data-item>\n              <bal-data-item>\n                <bal-data-label>Steve</bal-data-label>\n                <bal-data-value>Rogers</bal-data-value>\n              </bal-data-item>\n              <bal-data-item>\n                <bal-data-label>Stephen</bal-data-label>\n                <bal-data-value>Strange</bal-data-value>\n              </bal-data-item>\n            </bal-data>\n          </bal-card-content>\n\n          <bal-card-button icon=\"edit\">Edit</bal-card-button>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">Service card</h2>\n      <section>\n        <bal-card>\n          <bal-card-head>\n            <img src=\"https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg\" />\n            <div>\n              <h4 class=\"title is-size-4\">Baustein Parkschaden <small class=\"is-hidden-touch\">(+ CHF 11.30)</small></h4>\n              <h5 class=\"subtitle is-size-5 is-hidden-desktop\">+ CHF 11.30</h5>\n              <p class=\"has-text-blue-light-text is-hidden-touch\">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>\n            </div>\n            <bal-checkbox checked interface=\"switch\"></bal-checkbox>\n          </bal-card-head>\n\n          <bal-card-content class=\"is-hidden-desktop\">\n            <p class=\"has-text-blue-light-text\">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>\n          </bal-card-content>\n\n          <bal-accordion card open-label=\"Details einblenden\" close-label=\"Details ausblenden\">\n            <p class=\"p-4 has-text-blue-light-text\">\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur\n              adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n              incididunt ut labore et dolore magna aliqua.\n            </p>\n          </bal-accordion>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">Colors</h2>\n      <section>\n        <bal-card>\n          <bal-card-content>Default</bal-card-content>\n        </bal-card>\n        <br />\n        <bal-card color=\"primary\">\n          <bal-card-content>Primary</bal-card-content>\n        </bal-card>\n        <br />\n        <bal-card inverted color=\"info\">\n          <bal-card-content>Info</bal-card-content>\n        </bal-card>\n        <br />\n        <bal-card inverted color=\"success\">\n          <bal-card-content>Success</bal-card-content>\n        </bal-card>\n        <br />\n        <bal-card inverted color=\"warning\">\n          <bal-card-content>Warning</bal-card-content>\n        </bal-card>\n        <br />\n        <bal-card inverted color=\"danger\">\n          <bal-card-content>Danger</bal-card-content>\n        </bal-card>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      "dependencies": [],
+      "dependencyGraph": {
+        "bal-doc-download": [
+          "bal-card"
+        ]
+      }
     },
     {
       "filePath": "./src/components/bal-card-actions/bal-card-actions.tsx",
       "encapsulation": "none",
       "tag": "bal-card-actions",
-      "readme": "\n# Card Actions\n\n`bal-card-actions` is a child component of `bal-card` that sets the buttons to the right place.\n",
-      "docs": "<!-- docs:child of bal-card -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -1096,18 +1089,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-card",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-card-button/bal-card-button.tsx",
       "encapsulation": "none",
       "tag": "bal-card-button",
-      "readme": "\n# Card Button\n\n`bal-card-button` is a child component of `bal-card` that sets a block button at the end of the card. Good to use for edit functionality.\n",
-      "docs": "<!-- docs:child of bal-card -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -1274,18 +1262,13 @@
           "bal-icon",
           "bal-text"
         ]
-      },
-      "parent": "bal-card",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      }
     },
     {
       "filePath": "./src/components/bal-card-content/bal-card-content.tsx",
       "encapsulation": "none",
       "tag": "bal-card-content",
-      "readme": "\n# Card Content\n\n`bal-card-content` is a child component of `bal-card`. It is recommended that any text content for a card should be placed in a `bal-card-content`.\n",
-      "docs": "<!-- docs:child of bal-card -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -1313,20 +1296,21 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "bal-doc-download"
+      ],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-card",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {
+        "bal-doc-download": [
+          "bal-card-content"
+        ]
+      }
     },
     {
       "filePath": "./src/components/bal-card-head/bal-card-head.tsx",
       "encapsulation": "none",
       "tag": "bal-card-head",
-      "readme": "\n# Card Head\n\n`bal-card-head` is a child component of `bal-card` that adds a head element for the service card style.\n",
-      "docs": "<!-- docs:child of bal-card -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -1338,18 +1322,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-card",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-card-heading/bal-card-heading.tsx",
       "encapsulation": "none",
       "tag": "bal-card-heading",
-      "readme": "\n# Card Heading\n\n`bal-card-heading` is a child component of `bal-card` that adds a small heading to the card. It is recommended to use this before the `bal-card-title` component.\n",
-      "docs": "<!-- docs:child of bal-card -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -1361,18 +1340,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-card",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-card-steps/bal-card-steps.tsx",
       "encapsulation": "none",
       "tag": "bal-card-steps",
-      "readme": "\n# Card Steps\n\n`bal-card-steps` is a child component of `bal-card` that adds a wrapper for the bal-tabs.\n",
-      "docs": "<!-- docs:child of bal-card -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -1384,18 +1358,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-card",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-card-subtitle/bal-card-subtitle.tsx",
       "encapsulation": "none",
       "tag": "bal-card-subtitle",
-      "readme": "\n# Card Subtitle\n\n`bal-card-subtitle` is a child component of `bal-card` that adds a small subtile below the title. It is recommended to use this after the `bal-card-title` component.\n",
-      "docs": "<!-- docs:child of bal-card -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -1425,18 +1394,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-card",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-card-title/bal-card-title.tsx",
       "encapsulation": "none",
       "tag": "bal-card-title",
-      "readme": "\n# Card Title\n\n`bal-card-title` is a child component of `bal-card` that adds a title to card.\n",
-      "docs": "<!-- docs:child of bal-card -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -1466,17 +1430,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-card",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-checkbox/bal-checkbox.tsx",
       "encapsulation": "scoped",
       "tag": "bal-checkbox",
-      "readme": "# Checkbox <Badge text=\"Two-way binding\"/>\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -1683,17 +1642,12 @@
         "bal-select": [
           "bal-checkbox"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <p>\n        Checkboxes allow the selection of multiple options from a set of options. They appear as checked (ticked) when activated, or unchecked (unticked) when deactivated.\n        Checkboxes can be selected as checked by setting the property.\n      </p>\n      <section>\n        <bal-checkbox data-test-id=\"checkbox-normal\">Label <b>Bold</b></bal-checkbox>\n        <bal-checkbox checked>Checked</bal-checkbox>\n        <bal-checkbox disabled data-test-id=\"checkbox-disabled\">Disabled</bal-checkbox>\n      </section>\n\n      <h2 class=\"title is-size-2\">Switch</h2>\n      <p>Switches are used to toggle between exactly two states (like on and off).</p>\n      <section>\n        <bal-checkbox interface=\"switch\">Label</bal-checkbox>\n        <bal-checkbox checked interface=\"switch\">Checked</bal-checkbox>\n        <bal-checkbox disabled interface=\"switch\">Disabled</bal-checkbox>\n      </section>\n\n      <h2 class=\"title is-size-2\">Inverted</h2>\n      <section>\n        <div class=\"has-background-info p-4\">\n          <bal-checkbox inverted>Label</bal-checkbox>\n          <bal-checkbox inverted checked>Checked</bal-checkbox>\n          <bal-checkbox inverted disabled>Disabled</bal-checkbox>\n        </div>\n      </section>\n\n      <h2 class=\"title is-size-2\">With Links</h2>\n      <section>\n        <bal-checkbox> Random text with a <a class=\"is-link\" target=\"_blank\" href=\"http://baloise.ch\">Link</a> in it. </bal-checkbox>\n      </section>\n\n      <h2 class=\"title is-size-2\">Events</h2>\n      <h3 class=\"title is-size-3\">Listen on Changes</h3>\n      <section>\n        <bal-checkbox id=\"cb-2\">Listen on changes</bal-checkbox>\n        <p class=\"help\" id=\"cb-2-result\">false</p>\n      </section>\n      <script>\n        var checkbox2 = document.getElementById('cb-2')\n        var checkbox2Result = document.getElementById('cb-2-result')\n        checkbox2.addEventListener('balChange', function (event) {\n          checkbox2Result.innerHTML = event.detail\n        })\n      </script>\n\n      <h3 class=\"title is-size-3\">Change value</h3>\n      <section>\n        <bal-checkbox id=\"cb-3\">Value</bal-checkbox>\n        <br />\n        <bal-button color=\"success\" id=\"cb-3-trigger-1\">Set to true</bal-button>\n        <bal-button color=\"danger\" id=\"cb-3-trigger-2\">Set to false</bal-button>\n      </section>\n      <script>\n        var checkbox3 = document.getElementById('cb-3')\n        var checkbox3Trigger1 = document.getElementById('cb-3-trigger-1')\n        var checkbox3Trigger2 = document.getElementById('cb-3-trigger-2')\n        checkbox3Trigger1.addEventListener('click', function (event) {\n          checkbox3.checked = true\n        })\n        checkbox3Trigger2.addEventListener('click', function (event) {\n          checkbox3.checked = false\n        })\n      </script>\n\n      <h2 class=\"title is-size-2\">Checkbox Boxes</h2>\n      <section>\n        <div class=\"columns\" style=\"max-width: 400px\">\n          <div class=\"column\">\n            <div class=\"is-flex px-4 py-2 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius\">\n              <img src=\"https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg\" />\n              <p class=\"has-text-blue is-bold mb-0\">Title</p>\n              <p class=\"has-text-blue mb-3\">Subtitle</p>\n              <p class=\"has-text-blue-light-text is-size-6 mb-4\">More Description</p>\n              <bal-checkbox class=\"mb-3\">Add</bal-checkbox>\n            </div>\n          </div>\n          <div class=\"column\">\n            <div class=\"is-flex px-4 py-2 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius has-background-blue-light\">\n              <img src=\"https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg\" />\n              <p class=\"has-text-blue is-bold mb-0\">Title</p>\n              <p class=\"has-text-blue mb-3\">Subtitle</p>\n              <p class=\"has-text-blue-light-text is-size-6 mb-4\">More Description</p>\n              <bal-checkbox class=\"mb-3\" checked>Add</bal-checkbox>\n            </div>\n          </div>\n        </div>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-data/bal-data.tsx",
       "encapsulation": "none",
       "tag": "bal-data",
-      "readme": "# Data\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -1741,22 +1695,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [
-        "bal-data-item",
-        "bal-data-label",
-        "bal-data-value"
-      ],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-card>\n          <bal-card-content>\n            <bal-data border>\n              <bal-data-item>\n                <bal-data-label>Tony</bal-data-label>\n                <bal-data-value>Stark</bal-data-value>\n              </bal-data-item>\n              <bal-data-item>\n                <bal-data-label>Steve</bal-data-label>\n                <bal-data-value>Rogers</bal-data-value>\n              </bal-data-item>\n              <bal-data-item>\n                <bal-data-label>Maria</bal-data-label>\n                <bal-data-value editable>Hill</bal-data-value>\n              </bal-data-item>\n              <bal-data-item>\n                <bal-data-label>Natasha</bal-data-label>\n                <bal-data-value>\n                  <bal-input value=\"Romanoff\"></bal-input>\n                </bal-data-value>\n              </bal-data-item>\n              <bal-data-item>\n                <bal-data-label>Matt</bal-data-label>\n                <bal-data-value editable>\n                  <bal-input value=\"Murdock\"></bal-input>\n                </bal-data-value>\n              </bal-data-item>\n              <bal-data-item disabled>\n                <bal-data-label>Nick</bal-data-label>\n                <bal-data-value>Fury</bal-data-value>\n              </bal-data-item>\n              <bal-data-item>\n                <bal-data-label>\n                  Peter\n                  <bal-hint>\n                    <bal-hint-title>Spider-Man</bal-hint-title>\n                    <bal-hint-text>\n                      Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He first appeared in the anthology comic book Amazing\n                      Fantasy #15 (August 1962) in the Silver Age of Comic Books. He appears in American comic books published by Marvel Comics, as well as in a number of movies,\n                      television shows, and video game adaptations set in the Marvel Universe.\n                    </bal-hint-text>\n                  </bal-hint>\n                </bal-data-label>\n                <bal-data-value>Parker</bal-data-value>\n              </bal-data-item>\n            </bal-data>\n          </bal-card-content>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">Horizontal</h2>\n      <section>\n        <bal-card>\n          <bal-card-content>\n            <bal-data horizontal>\n              <bal-data-item>\n                <bal-data-label>Tony</bal-data-label>\n                <bal-data-value>Stark</bal-data-value>\n              </bal-data-item>\n              <bal-data-item>\n                <bal-data-label>Steve</bal-data-label>\n                <bal-data-value>Rogers</bal-data-value>\n              </bal-data-item>\n              <bal-data-item>\n                <bal-data-label>Stephen</bal-data-label>\n                <bal-data-value>Strange</bal-data-value>\n              </bal-data-item>\n            </bal-data>\n          </bal-card-content>\n        </bal-card>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-data-item/bal-data-item.tsx",
       "encapsulation": "none",
       "tag": "bal-data-item",
-      "readme": "\n# Data Item\n\n`bal-data-item` is a child component of `bal-data` that adds a new row item.\n",
-      "docs": "<!-- docs:child of bal-data -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -1786,18 +1731,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-data",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-data-label/bal-data-label.tsx",
       "encapsulation": "none",
       "tag": "bal-data-label",
-      "readme": "\n# Data Item Label\n\n`bal-data-item` is a child component of `bal-data` that defines the label of the data.\n",
-      "docs": "<!-- docs:child of bal-data -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -1827,18 +1767,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-data",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-data-value/bal-data-value.tsx",
       "encapsulation": "none",
       "tag": "bal-data-value",
-      "readme": "\n# Data Item Value\n\n`bal-data-item` is a child component of `bal-data` that defines the value of the data.\n",
-      "docs": "<!-- docs:child of bal-data -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -1926,18 +1861,13 @@
           "bal-icon",
           "bal-text"
         ]
-      },
-      "parent": "bal-data",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      }
     },
     {
       "filePath": "./src/components/bal-datepicker/bal-datepicker.tsx",
       "encapsulation": "scoped",
       "tag": "bal-datepicker",
-      "readme": "# Datepicker <Badge text=\"Two-way binding\"/>\n\nTo set the date use the [date utils](/components/tooling/utils.html#dateutil).\n\n```javascript\nimport { newDateString, now } from '@baloise/design-system-components'\n\nconst datepickerDisabled = document.getElementById('datepicker-disabled')\ndatepickerDisabled.value = newDateString(now())\n// or\ndatepickerDisabled.value = newDateString(2020, 0, 13)\n// or\ndatepickerDisabled.value = newDateString(new Date(2020, 0, 13))\n```\n",
-      "docs": "To set the date use the [date utils](/components/tooling/utils.html#dateutil).\n\n```javascript\nimport { newDateString, now } from '@baloise/design-system-components'\n\nconst datepickerDisabled = document.getElementById('datepicker-disabled')\ndatepickerDisabled.value = newDateString(now())\n// or\ndatepickerDisabled.value = newDateString(2020, 0, 13)\n// or\ndatepickerDisabled.value = newDateString(new Date(2020, 0, 13))\n```",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -2422,17 +2352,360 @@
           "bal-dropdown-menu",
           "bal-icon"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <p>In this example the user can only select a date. For that use the property `readonly`.</p>\n      <section>\n        <bal-datepicker id=\"datepicker\" data-test-id=\"datepicker\"></bal-datepicker>\n        <p id=\"datepicker-preview\"></p>\n      </section>\n      <script>\n        var datepicker = document.getElementById('datepicker')\n        var datepickerPreview = document.getElementById('datepicker-preview')\n        datepicker.addEventListener('balChange', event => {\n          datepickerPreview.innerHTML = event.detail\n        })\n      </script>\n\n      <h2 class=\"title is-size-2\">Disabled</h2>\n      <section>\n        <bal-datepicker readonly disabled id=\"datepicker-disabled\" data-test-id=\"datepicker-disabled\"></bal-datepicker>\n      </section>\n      <script>\n        var datepickerDisabled = document.getElementById('datepicker-disabled')\n        datepickerDisabled.value = '2021-01-01'\n      </script>\n\n      <h2 class=\"title is-size-2\">Manual Input</h2>\n      <p>\n        To enable manual input remove the property `readonly` and add the property `trigger-ico`. The `trigger-ico` property only opens the dropdown when the icon gets clicked.\n      </p>\n      <section>\n        <bal-datepicker placeholder=\"DD.MM.YYYY\" trigger-icon></bal-datepicker>\n      </section>\n\n      <h2 class=\"title is-size-2\">Inverted & Expanded</h2>\n      <section>\n        <div class=\"has-background-info p-4\">\n          <bal-datepicker inverted expanded placeholder=\"DD.MM.YYYY\"></bal-datepicker>\n        </div>\n      </section>\n\n      <h2 class=\"title is-size-2\">i18n</h2>\n      <section>\n        <bal-datepicker id=\"datepicker-i18n\" placeholder=\"TT.MM.YYYY\" locale=\"de\">\n          <bal-button expanded outlined color=\"info\" id=\"datepicker-i18n-toggle\">Toggle Locale</bal-button>\n        </bal-datepicker>\n      </section>\n      <script>\n        var datepickerI18n = document.getElementById('datepicker-i18n')\n        var datepickerI18nToggle = document.getElementById('datepicker-i18n-toggle')\n        var locale = 'de'\n        datepickerI18nToggle.addEventListener('click', () => {\n          locale = locale === 'de' ? 'fr' : 'de'\n          datepickerI18n.locale = locale\n        })\n      </script>\n\n      <h2 class=\"title is-size-2\">Footer</h2>\n      <section>\n        <bal-datepicker placeholder=\"DD.MM.YYYY\" readonly>\n          <p style=\"text-align: center\">Choose your arival date!</p>\n        </bal-datepicker>\n      </section>\n\n      <h2 class=\"title is-size-2\">Range Min & Max</h2>\n      <section>\n        <bal-datepicker id=\"datepicker-range\" placeholder=\"DD.MM.YYYY\" data-test-id=\"datepicker-range\"></bal-datepicker>\n      </section>\n      <script>\n        var datepickerRange = document.getElementById('datepicker-range')\n        var today = new Date()\n        datepickerRange.value = `${today.getFullYear()}-01-13`\n        datepickerRange.min = `${today.getFullYear()}-01-05`\n        datepickerRange.max = `${today.getFullYear()}-01-20`\n      </script>\n\n      <h2 class=\"title is-size-2\">Allow Dates</h2>\n      <p>You can specify allowed dates using a function.</p>\n      <section>\n        <bal-datepicker id=\"datepicker-allowed-dates\" placeholder=\"DD.MM.YYYY\"></bal-datepicker>\n      </section>\n      <script>\n        var datepickerAllowedDates = document.getElementById('datepicker-allowed-dates')\n        datepickerAllowedDates.allowedDates = function (datestring) {\n          return parseInt(datestring.split('-')[2], 10) % 2 === 0\n        }\n      </script>\n\n      <h2 class=\"title is-size-2\">Custom Start Date</h2>\n      <section>\n        <bal-datepicker default-date=\"2021-02-20\" placeholder=\"DD.MM.YYYY\"></bal-datepicker>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
+    },
+    {
+      "filePath": "./src/components/docs/bal-doc-color/bal-doc-color.tsx",
+      "encapsulation": "scoped",
+      "tag": "bal-doc-color",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "background",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "background",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "'primary'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "inverted",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "inverted",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "scssVars",
+          "type": "string",
+          "mutable": false,
+          "attr": "scss-vars",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "mutable": false,
+          "attr": "subject",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "'Primary'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "./src/components/docs/bal-doc-download/bal-doc-download.tsx",
+      "encapsulation": "none",
+      "tag": "bal-doc-download",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "iconLeft",
+          "type": "string",
+          "mutable": false,
+          "attr": "icon-left",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "'document'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "iconRight",
+          "type": "string",
+          "mutable": false,
+          "attr": "icon-right",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "'download'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "link",
+          "type": "string",
+          "mutable": false,
+          "attr": "link",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "mutable": false,
+          "attr": "subject",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "subtitle",
+          "type": "string",
+          "mutable": false,
+          "attr": "subtitle",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "bal-card",
+        "bal-card-content",
+        "bal-list",
+        "bal-list-item",
+        "bal-list-item-icon",
+        "bal-icon",
+        "bal-list-item-content",
+        "bal-list-item-title",
+        "bal-list-item-subtitle"
+      ],
+      "dependencyGraph": {
+        "bal-doc-download": [
+          "bal-card",
+          "bal-card-content",
+          "bal-list",
+          "bal-list-item",
+          "bal-list-item-icon",
+          "bal-icon",
+          "bal-list-item-content",
+          "bal-list-item-title",
+          "bal-list-item-subtitle"
+        ],
+        "bal-list-item-title": [
+          "bal-text"
+        ],
+        "bal-list-item-subtitle": [
+          "bal-text"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/docs/bal-doc-icons/bal-doc-icons.tsx",
+      "encapsulation": "none",
+      "tag": "bal-doc-icons",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "icons",
+          "type": "string",
+          "mutable": false,
+          "attr": "icons",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "bal-icon"
+      ],
+      "dependencyGraph": {
+        "bal-doc-icons": [
+          "bal-icon"
+        ]
+      }
+    },
+    {
+      "filePath": "./src/components/docs/bal-doc-image/bal-doc-image.tsx",
+      "encapsulation": "none",
+      "tag": "bal-doc-image",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "src",
+          "type": "string",
+          "mutable": false,
+          "attr": "src",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "mutable": false,
+          "attr": "text",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-dropdown/bal-dropdown.tsx",
       "encapsulation": "none",
       "tag": "bal-dropdown",
-      "readme": "# Dropdown\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -2599,21 +2872,13 @@
         "bal-select": [
           "bal-dropdown"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [
-        "bal-dropdown-menu",
-        "bal-dropdown-trigger"
-      ],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-dropdown id=\"bal-dropdown-1\" is-active=\"false\" data-test-id=\"dropdown\">\n          <bal-dropdown-trigger>\n            <bal-button id=\"bal-dropdown-1-trigger\" aria-haspopup=\"true\" aria-controls=\"dropdown-menu\" color=\"is-info\" outlined>\n              <span id=\"bal-dropdown-1-trigger-label\">Trigger</span>\n            </bal-button>\n          </bal-dropdown-trigger>\n          <bal-dropdown-menu scrollable=\"100\">\n            <div style=\"padding: 0 15px 15px\">\n              <h5 class=\"title is-size-3\" style=\"margin-top: 0px\">Title</h5>\n              <p>\n                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque error quae excepturi molestiae molestias amet ab, explicabo\n                dolor aperiam perferendis mollitia facilis harum vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil dolore nesciunt sed minus doloremque\n                error quae excepturi molestiae molestias amet ab, explicabo dolor aperiam perferendis mollitia facilis harum vero.\n              </p>\n            </div>\n          </bal-dropdown-menu>\n        </bal-dropdown>\n      </section>\n      <script>\n        var dropdown = document.getElementById('bal-dropdown-1')\n        var trigger = document.getElementById('bal-dropdown-1-trigger')\n\n        trigger.addEventListener('click', function (event) {\n          dropdown.toggle()\n        })\n      </script>\n\n      <h2 class=\"title is-size-2\">Input</h2>\n      <section>\n        <bal-dropdown id=\"bal-dropdown-2\" scrollable=\"200\" expanded>\n          <bal-dropdown-trigger>\n            <div class=\"control has-icons-right\">\n              <input type=\"text\" class=\"input clickable\" placeholder=\"Click me\" readonly id=\"bal-dropdown-2-trigger\" />\n              <bal-icon name=\"caret-down\" color=\"info\" size=\"xsmall\" />\n            </div>\n          </bal-dropdown-trigger>\n          <bal-dropdown-menu>\n            <div style=\"padding: 0 15px 15px\">\n              <h5 class=\"title is-size-3\" style=\"margin-top: 0px\">Some Content</h5>\n              <p>Some text</p>\n            </div>\n          </bal-dropdown-menu>\n        </bal-dropdown>\n      </section>\n      <script>\n        var dropdown2 = document.getElementById('bal-dropdown-2')\n        var trigger2 = document.getElementById('bal-dropdown-2-trigger')\n\n        trigger2.addEventListener('click', function (event) {\n          dropdown2.toggle()\n        })\n      </script>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-dropdown-menu/bal-dropdown-menu.tsx",
       "encapsulation": "none",
       "tag": "bal-dropdown-menu",
-      "readme": "\n# Dropdown Menu\n\n`bal-dropdown-menu` is a child component of `bal-dropdown` that defines the value of the data.\n",
-      "docs": "<!-- docs:child of bal-dropdown -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -2653,18 +2918,13 @@
         "bal-select": [
           "bal-dropdown-menu"
         ]
-      },
-      "parent": "bal-dropdown",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      }
     },
     {
       "filePath": "./src/components/bal-dropdown-trigger/bal-dropdown-trigger.tsx",
       "encapsulation": "none",
       "tag": "bal-dropdown-trigger",
-      "readme": "\n# Dropdown Trigger\n\n`bal-dropdown-trigger` is a child component of `bal-dropdown` that defines the value of the data.\n",
-      "docs": "<!-- docs:child of bal-dropdown -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -2686,17 +2946,12 @@
         "bal-select": [
           "bal-dropdown-trigger"
         ]
-      },
-      "parent": "bal-dropdown",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      }
     },
     {
       "filePath": "./src/components/bal-field/bal-field.tsx",
       "encapsulation": "none",
       "tag": "bal-field",
-      "readme": "# Field\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -2795,23 +3050,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [
-        "bal-field-control",
-        "bal-field-hint",
-        "bal-field-label",
-        "bal-field-message"
-      ],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-card padding=\"form\">\n          <bal-card-content>\n            <div class=\"columns is-multiline\">\n              <bal-field class=\"column is-full py-0\" expanded>\n                <bal-field-label required>Firstname</bal-field-label>\n                <bal-field-hint subject=\"Spider-Man\"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>\n                <bal-field-control>\n                  <bal-input id=\"bal-input-1\" name=\"firstName\" placeholder=\"Enter your firstname\"></bal-input>\n                </bal-field-control>\n                <bal-field-message color=\"danger\">Required Field</bal-field-message>\n              </bal-field>\n              <bal-field class=\"column is-full py-0\" expanded disabled loading>\n                <bal-field-label>Lastname</bal-field-label>\n                <bal-field-control>\n                  <bal-input name=\"lastname\" placeholder=\"Enter your lastname\" value=\"Parker\"></bal-input>\n                </bal-field-control>\n                <bal-field-message></bal-field-message>\n              </bal-field>\n              <bal-field class=\"column is-full py-0\" expanded>\n                <bal-field-label>Alias</bal-field-label>\n                <bal-field-control icon-left=\"account\" icon-right=\"check\">\n                  <bal-input name=\"alias\" placeholder=\"Enter your alias\" value=\"Spider-Man\"></bal-input>\n                </bal-field-control>\n                <bal-field-message color=\"success\">Correct</bal-field-message>\n              </bal-field>\n              <bal-field class=\"column is-full py-0\" expanded>\n                <bal-field-label>Comment</bal-field-label>\n                <bal-field-control>\n                  <bal-textarea name=\"comment\" placeholder=\"Enter your comment\"></bal-textarea>\n                </bal-field-control>\n                <bal-field-message>Some Message</bal-field-message>\n              </bal-field>\n            </div>\n          </bal-card-content>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">Inverted</h2>\n      <section>\n        <bal-card padding=\"form\" color=\"info\" inverted>\n          <bal-card-content>\n            <bal-field expanded inverted loading>\n              <bal-field-label required>Firstname</bal-field-label>\n              <bal-field-control>\n                <bal-input id=\"bal-input-1\" name=\"firstName\" placeholder=\"Enter your firstname\"></bal-input>\n              </bal-field-control>\n              <bal-field-message color=\"danger\">Required Field</bal-field-message>\n            </bal-field>\n\n            <bal-field expanded inverted disabled>\n              <bal-field-label>Alias</bal-field-label>\n              <bal-field-control icon-left=\"account\" icon-right=\"check\">\n                <bal-input name=\"alias\" placeholder=\"Enter your alias\" value=\"Spider-Man\"></bal-input>\n              </bal-field-control>\n              <bal-field-message>Some Message</bal-field-message>\n            </bal-field>\n          </bal-card-content>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">Addons</h2>\n      <section>\n        <bal-card padding=\"form\">\n          <bal-card-content>\n            <div class=\"columns is-multiline\">\n              <bal-field class=\"column is-half py-0\" expanded>\n                <bal-field-label required>Search</bal-field-label>\n                <bal-field-control>\n                  <bal-input name=\"search\" placeholder=\"Search...\"></bal-input>\n                  <bal-button size=\"small\" outlined color=\"info\">Search</bal-button>\n                </bal-field-control>\n              </bal-field>\n            </div>\n          </bal-card-content>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">Form</h2>\n      <section>\n        <bal-card padding=\"form\">\n          <bal-card-content>\n            <bal-field expanded>\n              <bal-field-label required>Firstname</bal-field-label>\n              <bal-field-control>\n                <bal-input name=\"firstName\" placeholder=\"Enter your firstname\"></bal-input>\n              </bal-field-control>\n              <bal-field-message></bal-field-message>\n            </bal-field>\n            <bal-field expanded>\n              <bal-field-label required>Year</bal-field-label>\n              <bal-field-control>\n                <bal-select id=\"bal-select-year\" placeholder=\"select a year\">\n                  <bal-select-option value=\"1995\" label=\"1995\">1995</bal-select-option>\n                  <bal-select-option value=\"1996\" label=\"1996\">1996</bal-select-option>\n                  <bal-select-option value=\"1997\" label=\"1997\">1997</bal-select-option>\n                  <bal-select-option value=\"1998\" label=\"1998\">1998</bal-select-option>\n                  <bal-select-option value=\"1999\" label=\"1999\">1999</bal-select-option>\n                  <bal-select-option value=\"2000\" label=\"2000\">2000</bal-select-option>\n                </bal-select>\n              </bal-field-control>\n              <bal-field-message></bal-field-message>\n            </bal-field>\n            <bal-field expanded>\n              <bal-field-label required>Birthdate</bal-field-label>\n              <bal-field-control>\n                <bal-datepicker placeholder=\"pick a date\"></bal-datepicker>\n              </bal-field-control>\n              <bal-field-message></bal-field-message>\n            </bal-field>\n            <bal-field expanded>\n              <bal-field-label required>Remember me?</bal-field-label>\n              <bal-field-control>\n                <bal-checkbox>Yes</bal-checkbox>\n              </bal-field-control>\n              <bal-field-message></bal-field-message>\n            </bal-field>\n            <bal-field expanded>\n              <bal-field-label required>How many cars do you have?</bal-field-label>\n              <bal-field-control>\n                <bal-radio-group value=\"2\" id=\"radio-example\">\n                  <bal-radio name=\"radio-example\" value=\"1\">Label 1</bal-radio>\n                  <bal-radio name=\"radio-example\" value=\"2\">Label 2</bal-radio>\n                  <bal-radio name=\"radio-example\" value=\"3\">Label 3</bal-radio>\n                  <bal-radio name=\"radio-example\" value=\"4\" disabled>Label Disabled</bal-radio>\n                </bal-radio-group>\n              </bal-field-control>\n              <bal-field-message></bal-field-message>\n            </bal-field>\n            <bal-field expanded>\n              <bal-field-label required>Are you sure?</bal-field-label>\n              <bal-field-control>\n                <bal-radio-group value=\"yes\" interface=\"select-button\">\n                  <bal-radio name=\"select-button-example-2\" value=\"yes\">Yes</bal-radio>\n                  <bal-radio name=\"select-button-example-2\" value=\"no\">No</bal-radio>\n                </bal-radio-group>\n              </bal-field-control>\n              <bal-field-message></bal-field-message>\n            </bal-field>\n          </bal-card-content>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">Validation for all fields</h2>\n      <p>This is not a recommanded validation style. Only use this style if you do not have the possibility to use live validation.</p>\n      <section>\n        <bal-card padding=\"form\">\n          <bal-card-content>\n            <bal-field expanded invalid>\n              <bal-field-label required>Firstname</bal-field-label>\n              <bal-field-control>\n                <bal-input name=\"firstName\" placeholder=\"Enter your firstname\"></bal-input>\n              </bal-field-control>\n              <bal-field-message></bal-field-message>\n            </bal-field>\n            <bal-field expanded invalid>\n              <bal-field-label required>Year</bal-field-label>\n              <bal-field-control>\n                <bal-select id=\"bal-select-year\" placeholder=\"select a year\">\n                  <bal-select-option value=\"1995\" label=\"1995\">1995</bal-select-option>\n                  <bal-select-option value=\"1996\" label=\"1996\">1996</bal-select-option>\n                  <bal-select-option value=\"1997\" label=\"1997\">1997</bal-select-option>\n                  <bal-select-option value=\"1998\" label=\"1998\">1998</bal-select-option>\n                  <bal-select-option value=\"1999\" label=\"1999\">1999</bal-select-option>\n                  <bal-select-option value=\"2000\" label=\"2000\">2000</bal-select-option>\n                </bal-select>\n              </bal-field-control>\n              <bal-field-message></bal-field-message>\n            </bal-field>\n            <bal-field expanded invalid>\n              <bal-field-label required>Birthdate</bal-field-label>\n              <bal-field-control>\n                <bal-datepicker placeholder=\"pick a date\"></bal-datepicker>\n              </bal-field-control>\n              <bal-field-message></bal-field-message>\n            </bal-field>\n            <bal-field expanded invalid>\n              <bal-field-label required>Remember me?</bal-field-label>\n              <bal-field-control>\n                <bal-checkbox>Yes</bal-checkbox>\n              </bal-field-control>\n              <bal-field-message></bal-field-message>\n            </bal-field>\n            <bal-field expanded invalid>\n              <bal-field-label required>How many cars do you have?</bal-field-label>\n              <bal-field-control>\n                <bal-radio-group value=\"2\" id=\"radio-example\">\n                  <bal-radio name=\"radio-example\" value=\"1\">Label 1</bal-radio>\n                  <bal-radio name=\"radio-example\" value=\"2\">Label 2</bal-radio>\n                  <bal-radio name=\"radio-example\" value=\"3\">Label 3</bal-radio>\n                  <bal-radio name=\"radio-example\" value=\"4\" disabled>Label Disabled</bal-radio>\n                </bal-radio-group>\n              </bal-field-control>\n              <bal-field-message></bal-field-message>\n            </bal-field>\n            <bal-field expanded invalid>\n              <bal-field-label required>Are you sure?</bal-field-label>\n              <bal-field-control>\n                <bal-radio-group value=\"yes\" interface=\"select-button\">\n                  <bal-radio name=\"select-button-example-2\" value=\"yes\">Yes</bal-radio>\n                  <bal-radio name=\"select-button-example-2\" value=\"no\">No</bal-radio>\n                </bal-radio-group>\n              </bal-field-control>\n              <bal-field-message></bal-field-message>\n            </bal-field>\n            <bal-notification color=\"danger\">\n              <span class=\"icon-text\">\n                <span class=\"icon\">\n                  <bal-icon inverted name=\"alert-circle\"></bal-icon>\n                </span>\n                <span style=\"margin-left: 10px\">\n                  <strong style=\"margin-right: 10px\"> Your Form is invalid. Please check your input and try it again. !</strong>\n                  <ul>\n                    <li>Your Name is required</li>\n                    <li>...</li>\n                  </ul>\n                </span>\n              </span>\n            </bal-notification>\n          </bal-card-content>\n        </bal-card>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-field-control/bal-field-control.tsx",
       "encapsulation": "scoped",
       "tag": "bal-field-control",
-      "readme": "\n# Field Control\n\n`bal-field-control` is a child component of `bal-field`.\n",
-      "docs": "<!-- docs:child of bal-field -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -2898,18 +3143,13 @@
         "bal-field-control": [
           "bal-icon"
         ]
-      },
-      "parent": "bal-field",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      }
     },
     {
       "filePath": "./src/components/bal-field-hint/bal-field-hint.tsx",
       "encapsulation": "scoped",
       "tag": "bal-field-hint",
-      "readme": "\n# Field Hint\n\n`bal-field-hint` is a child component of `bal-field`.\n",
-      "docs": "<!-- docs:child of bal-field -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -2958,18 +3198,13 @@
           "bal-icon",
           "bal-text"
         ]
-      },
-      "parent": "bal-field",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      }
     },
     {
       "filePath": "./src/components/bal-field-label/bal-field-label.tsx",
       "encapsulation": "scoped",
       "tag": "bal-field-label",
-      "readme": "\n# Field Label\n\n`bal-field-label` is a child component of `bal-field`.\n",
-      "docs": "<!-- docs:child of bal-field -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -3016,18 +3251,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-field",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-field-message/bal-field-message.tsx",
       "encapsulation": "none",
       "tag": "bal-field-message",
-      "readme": "\n# Field Message\n\n`bal-field-message` is a child component of `bal-field`.\n",
-      "docs": "<!-- docs:child of bal-field -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -3086,17 +3316,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-field",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-file-upload/bal-file-upload.tsx",
       "encapsulation": "scoped",
       "tag": "bal-file-upload",
-      "readme": "# File Upload\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -3348,17 +3573,12 @@
         "bal-list-item-subtitle": [
           "bal-text"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <p id=\"bal-file-upload-messages\"></p>\n        <bal-file-upload id=\"bal-file-upload-example\" accept=\"image/png,image/jpeg\" max-files=\"3\" max-file-size=\"1000000\" max-bundle-size=\"1000000\"></bal-file-upload>\n        <bal-button class=\"mt-2\" id=\"bal-file-upload-clear\" color=\"danger\">Clear Upload</bal-button>\n      </section>\n      <script>\n        var messages = []\n        var fileUpload = document.getElementById('bal-file-upload-example')\n        var clearButton = document.getElementById('bal-file-upload-clear')\n\n        fileUpload.addEventListener('balRejectedFile', event => {\n          var div = document.createElement('div')\n          var text = document.createTextNode('The file \"' + event.detail.file.name + '\" could not be uploaded, because of \"' + event.detail.reasons.join(', ') + '\"')\n          div.appendChild(text)\n          div.setAttribute('class', 'notification is-warning mb-4')\n          document.getElementById('bal-file-upload-messages').appendChild(div)\n        })\n\n        clearButton.addEventListener('click', () => {\n          fileUpload.clear()\n        })\n      </script>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-footer/bal-footer.tsx",
       "encapsulation": "scoped",
       "tag": "bal-footer",
-      "readme": "# Footer\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -3436,17 +3656,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-footer>\n          <div class=\"container\">Footer</div>\n        </bal-footer>\n      </section>\n\n      <h2 class=\"title is-size-2\">With Track Line</h2>\n      <section>\n        <bal-footer has-track-line>\n          <div class=\"container\">Footer</div>\n        </bal-footer>\n      </section>\n\n      <h2 class=\"title is-size-2\">Without Links</h2>\n      <section>\n        <bal-footer hide-links>\n          <div class=\"container\">Footer without Links</div>\n        </bal-footer>\n      </section>\n\n      <h2 class=\"title is-size-2\">Links in another language</h2>\n      <section>\n        <bal-footer locale=\"de\"></bal-footer>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-heading/bal-heading.tsx",
       "encapsulation": "none",
       "tag": "bal-heading",
-      "readme": "# Heading\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -3669,17 +3884,12 @@
         "bal-snackbar": [
           "bal-heading"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Sizes</h2>\n      <section>\n        <bal-heading level=\"h1\">H1 MetaPro Normal</bal-heading>\n        <bal-heading level=\"h2\">H2 MetaPro Normal</bal-heading>\n        <bal-heading level=\"h3\">H3 MetaPro Medium</bal-heading>\n        <bal-heading level=\"h3\" subtitle>H3 MetaPro Normal</bal-heading>\n        <bal-heading level=\"h4\">H4 MetaPro Medium</bal-heading>\n        <bal-heading level=\"h4\" subtitle>H4 MetaPro Normal</bal-heading>\n      </section>\n\n      <h2 class=\"title is-size-2\">Colors</h2>\n      <section>\n        <bal-heading level=\"h4\" space=\"none\">Default</bal-heading>\n        <bal-heading color=\"primary\" level=\"h4\" space=\"none\">Primary</bal-heading>\n        <bal-heading color=\"info\" level=\"h4\" space=\"none\">Info</bal-heading>\n        <bal-heading color=\"success\" level=\"h4\" space=\"none\">Success</bal-heading>\n        <bal-heading color=\"warning\" level=\"h4\" space=\"none\">Warning</bal-heading>\n        <bal-heading color=\"danger\" level=\"h4\" space=\"none\">Danger</bal-heading>\n      </section>\n\n      <h2 class=\"title is-size-2\">Spacing</h2>\n      <section>\n        <div class=\"has-background-blue-light is-flex mb-3\">\n          <bal-heading color=\"info\" level=\"h4\" space=\"none\">None</bal-heading>\n        </div>\n        <div class=\"has-background-blue-light is-flex mb-3\">\n          <bal-heading color=\"info\" level=\"h4\" space=\"top\">Top</bal-heading>\n        </div>\n        <div class=\"has-background-blue-light is-flex mb-3\">\n          <bal-heading color=\"info\" level=\"h4\" space=\"bottom\">Bottom</bal-heading>\n        </div>\n        <div class=\"has-background-blue-light is-flex\">\n          <bal-heading color=\"info\" level=\"h4\" space=\"all\">All</bal-heading>\n        </div>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-hint/bal-hint.tsx",
       "encapsulation": "scoped",
       "tag": "bal-hint",
-      "readme": "# Hint\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -3696,23 +3906,6 @@
           "values": [
             {
               "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "disabled",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "disabled",
-          "reflectToAttr": false,
-          "docs": "If `true`, the user cannot interact with the input.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
             }
           ],
           "optional": false,
@@ -3804,21 +3997,13 @@
         "bal-field-hint": [
           "bal-hint"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [
-        "bal-hint-text",
-        "bal-hint-title"
-      ],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-hint data-test-id=\"hint\">\n          <bal-hint-title>Spider-Man</bal-hint-title>\n          <bal-hint-text>\n            Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He first appeared in the anthology comic book Amazing Fantasy #15\n            (August 1962) in the Silver Age of Comic Books. He appears in American comic books published by Marvel Comics, as well as in a number of movies, television shows, and\n            video game adaptations set in the Marvel Universe.\n          </bal-hint-text>\n        </bal-hint>\n      </section>\n\n      <h2 class=\"title is-size-2\">Field</h2>\n      <section>\n        <bal-field expanded>\n          <bal-field-label required>Firstname</bal-field-label>\n          <bal-field-hint subject=\"Spider-Man\"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>\n          <bal-field-control>\n            <bal-input id=\"bal-input-1\" name=\"firstName\" placeholder=\"Enter your firstname\"></bal-input>\n          </bal-field-control>\n          <bal-field-message color=\"danger\">Required Field</bal-field-message>\n        </bal-field>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-hint-text/bal-hint-text.tsx",
       "encapsulation": "scoped",
       "tag": "bal-hint-text",
-      "readme": "\n# Hint Text\n\n`bal-hint-text` is a child component of `bal-hint` that defines the text of the hint dialog.\n",
-      "docs": "<!-- docs:child of bal-hint -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -3836,18 +4021,13 @@
         "bal-field-hint": [
           "bal-hint-text"
         ]
-      },
-      "parent": "bal-hint",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      }
     },
     {
       "filePath": "./src/components/bal-hint-title/bal-hint-title.tsx",
       "encapsulation": "scoped",
       "tag": "bal-hint-title",
-      "readme": "\n# Hint Title\n\n`bal-hint-title` is a child component of `bal-hint` that defines the title of the hint dialog.\n",
-      "docs": "<!-- docs:child of bal-hint -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -3865,17 +4045,12 @@
         "bal-field-hint": [
           "bal-hint-title"
         ]
-      },
-      "parent": "bal-hint",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      }
     },
     {
       "filePath": "./src/components/bal-icon/bal-icon.tsx",
       "encapsulation": "scoped",
       "tag": "bal-icon",
-      "readme": "# Icon\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -4055,6 +4230,8 @@
         "bal-button",
         "bal-data-value",
         "bal-datepicker",
+        "bal-doc-download",
+        "bal-doc-icons",
         "bal-field-control",
         "bal-file-upload",
         "bal-hint",
@@ -4072,6 +4249,12 @@
           "bal-icon"
         ],
         "bal-datepicker": [
+          "bal-icon"
+        ],
+        "bal-doc-download": [
+          "bal-icon"
+        ],
+        "bal-doc-icons": [
           "bal-icon"
         ],
         "bal-field-control": [
@@ -4095,17 +4278,12 @@
         "bal-toast": [
           "bal-icon"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <span class=\"icon-text\">\n          <span class=\"icon\">\n            <bal-icon name=\"info-circle\"></bal-icon>\n          </span>\n          <span>info-circle</span>\n        </span>\n      </section>\n\n      <h2 class=\"title is-size-2\">Size</h2>\n      <p>Here is how you can change the size:</p>\n      <section>\n        <bal-icon name=\"date\" size=\"xsmall\"></bal-icon>\n        <bal-icon name=\"date\" size=\"small\"></bal-icon>\n        <bal-icon name=\"date\"></bal-icon>\n        <bal-icon name=\"date\" size=\"medium\"></bal-icon>\n        <bal-icon name=\"date\" size=\"large\"></bal-icon>\n        <bal-icon name=\"date\" size=\"xlarge\"></bal-icon>\n      </section>\n\n      <h2 class=\"title is-size-2\">Colors</h2>\n      <section>\n        <bal-icon color=\"primary\" name=\"github\"></bal-icon>\n        <bal-icon color=\"info\" name=\"github\"></bal-icon>\n        <bal-icon color=\"success\" name=\"github\"></bal-icon>\n        <bal-icon color=\"warning\" name=\"github\"></bal-icon>\n        <bal-icon color=\"danger\" name=\"github\"></bal-icon>\n      </section>\n\n      <h2 class=\"title is-size-2\">Custom Color</h2>\n      <p>Here is how you can change the color:</p>\n      <section>\n        <style type=\"text/css\" scoped>\n          .custom-color {\n            fill: green !important;\n          }\n        </style>\n\n        <bal-icon class=\"custom-color\" name=\"check-circle\"></bal-icon>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-input/bal-input.tsx",
       "encapsulation": "scoped",
       "tag": "bal-input",
-      "readme": "# Input <Badge text=\"Two-way binding\"/>\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -5033,17 +5211,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-input autofocus id=\"input-1\" name=\"firstName\" placeholder=\"Enter your firstname\" data-test-id=\"input\"></bal-input>\n        <bal-input id=\"input-1-preview\" disabled placeholder=\"Value after balInput event\" data-test-id=\"input-disabled\"></bal-input>\n        <bal-input id=\"input-1-change\" disabled placeholder=\"Value after balChange event\"></bal-input>\n      </section>\n\n      <script>\n        var input1 = document.getElementById('input-1')\n        var input1Preview = document.getElementById('input-1-preview')\n        var input1Change = document.getElementById('input-1-change')\n\n        input1.addEventListener('balInput', function (event) {\n          input1Preview.value = event.detail\n        })\n        input1.addEventListener('balChange', function (event) {\n          input1Change.value = event.detail\n        })\n      </script>\n\n      <h2 class=\"title is-size-2\">Inverted</h2>\n      <section>\n        <div class=\"has-background-info p-4\">\n          <bal-input inverted name=\"firstName\" placeholder=\"Enter your firstname\"></bal-input>\n          <bal-input inverted name=\"firstName\" placeholder=\"Enter your firstname\" disabled></bal-input>\n        </div>\n      </section>\n\n      <h2 class=\"title is-size-2\">Number Input</h2>\n      <p>With number-input property your can only enter valid numbers, if you start with dot (.) zero will be automatically added in front of it.</p>\n      <p>With decimal property you can set how many decimal places you want and number will be formatted accordingly.</p>\n      <section>\n        <bal-input data-test-id=\"input-number\" number-input placeholder=\"Enter a number without decimal\"></bal-input>\n        <bal-input data-test-id=\"input-decimal\" id=\"input-2\" number-input placeholder=\"Enter a number with two decimal points\" decimal=\"2\"></bal-input>\n        <bal-input suffix=\"CHF\" number-input placeholder=\"Enter a number with two decimal places and CHF suffix\" decimal=\"2\"></bal-input>\n        <bal-input id=\"input-2-preview\" disabled placeholder=\"Value after balInput event\"></bal-input>\n        <bal-input id=\"input-2-change\" disabled placeholder=\"Value after balChange event\"></bal-input>\n      </section>\n      <script>\n        var input2 = document.getElementById('input-2')\n        var input2Preview = document.getElementById('input-2-preview')\n        var input2Change = document.getElementById('input-2-change')\n\n        input2.addEventListener('balInput', function (event) {\n          input2Preview.value = event.detail\n        })\n        input2.addEventListener('balChange', function (event) {\n          input2Change.value = event.detail\n        })\n      </script>\n      <h2 class=\"title is-size-2\">Suffix</h2>\n      <section>\n        <bal-input data-test-id=\"input-suffix\" suffix=\"%\" name=\"percentage\" placeholder=\"Enter a percentage number\"></bal-input>\n      </section>\n      <h2 class=\"title is-size-2\">HTML input</h2>\n      <section>\n        <input class=\"input\" name=\"firstName\" placeholder=\"Enter your firstname\" />\n        <input class=\"input\" name=\"firstName\" disabled placeholder=\"Enter your firstname\" />\n      </section>\n    </div>\n  </body>\n</html>\n"
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-list/bal-list.tsx",
       "encapsulation": "none",
       "tag": "bal-list",
-      "readme": "# List\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -5107,31 +5280,24 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "bal-doc-download",
         "bal-file-upload"
       ],
       "dependencies": [],
       "dependencyGraph": {
+        "bal-doc-download": [
+          "bal-list"
+        ],
         "bal-file-upload": [
           "bal-list"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [
-        "bal-list-item",
-        "bal-list-item-content",
-        "bal-list-item-icon",
-        "bal-list-item-subtitle",
-        "bal-list-item-title"
-      ],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-card>\n          <bal-card-content>\n            <bal-list disabled>\n              <bal-list-item>\n                <bal-list-item-content>\n                  <bal-list-item-title>Single-line item</bal-list-item-title>\n                </bal-list-item-content>\n              </bal-list-item>\n              <bal-list-item>\n                <bal-list-item-content>\n                  <bal-list-item-title>Two-line item</bal-list-item-title>\n                  <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>\n                </bal-list-item-content>\n              </bal-list-item>\n            </bal-list>\n          </bal-card-content>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">With borders</h2>\n      <section>\n        <bal-card>\n          <bal-card-content>\n            <bal-list border>\n              <bal-list-item clickable>\n                <bal-list-item-content>\n                  <bal-list-item-title>Single-line item</bal-list-item-title>\n                </bal-list-item-content>\n              </bal-list-item>\n              <bal-list-item clickable selected>\n                <bal-list-item-content>\n                  <bal-list-item-title>Selected item</bal-list-item-title>\n                </bal-list-item-content>\n              </bal-list-item>\n              <bal-list-item disabled>\n                <bal-list-item-content>\n                  <bal-list-item-title>Two-line item</bal-list-item-title>\n                  <bal-list-item-subtitle>Disabled item</bal-list-item-subtitle>\n                </bal-list-item-content>\n              </bal-list-item>\n            </bal-list>\n          </bal-card-content>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">Inverted</h2>\n      <section>\n        <bal-card inverted color=\"info\">\n          <bal-card-content>\n            <bal-list inverted border>\n              <bal-list-item>\n                <bal-list-item-content>\n                  <bal-list-item-title>Two-line item</bal-list-item-title>\n                  <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>\n                </bal-list-item-content>\n              </bal-list-item>\n              <bal-list-item>\n                <bal-list-item-content>\n                  <bal-list-item-title>Two-line item</bal-list-item-title>\n                  <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>\n                </bal-list-item-content>\n              </bal-list-item>\n            </bal-list>\n          </bal-card-content>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">With Icons</h2>\n      <section>\n        <bal-card>\n          <bal-card-content>\n            <bal-list>\n              <bal-list-item>\n                <bal-list-item-icon>\n                  <bal-icon name=\"account\"></bal-icon>\n                </bal-list-item-icon>\n                <bal-list-item-content>\n                  <bal-list-item-title>Tony Stark</bal-list-item-title>\n                  <bal-list-item-subtitle>Stark Industries</bal-list-item-subtitle>\n                </bal-list-item-content>\n              </bal-list-item>\n              <bal-list-item>\n                <bal-list-item-icon>\n                  <bal-icon name=\"check\"></bal-icon>\n                </bal-list-item-icon>\n                <bal-list-item-content>\n                  <bal-list-item-title class=\"has-text-black\">Avenger</bal-list-item-title>\n                </bal-list-item-content>\n              </bal-list-item>\n              <bal-list-item>\n                <bal-list-item-icon>\n                  <bal-icon name=\"document\"></bal-icon>\n                </bal-list-item-icon>\n                <bal-list-item-content>\n                  <bal-list-item-title>Document.pdf</bal-list-item-title>\n                  <bal-list-item-subtitle>20.03.1998</bal-list-item-subtitle>\n                </bal-list-item-content>\n                <bal-list-item-icon right>\n                  <bal-icon name=\"download\"></bal-icon>\n                </bal-list-item-icon>\n              </bal-list-item>\n            </bal-list>\n          </bal-card-content>\n        </bal-card>\n      </section>\n\n      <h2 class=\"title is-size-2\">Link</h2>\n      <section>\n        <bal-card>\n          <bal-card-content>\n            <bal-list>\n              <bal-list-item href=\"https://google.com\" target=\"_blank\">\n                <bal-list-item-content>\n                  <bal-list-item-title>Link A</bal-list-item-title>\n                </bal-list-item-content>\n                <bal-list-item-icon right>\n                  <bal-icon name=\"nav-go-right\" size=\"xsmall\"></bal-icon>\n                </bal-list-item-icon>\n              </bal-list-item>\n              <bal-list-item disabled>\n                <bal-list-item-content>\n                  <bal-list-item-title>Disabled Link B</bal-list-item-title>\n                </bal-list-item-content>\n                <bal-list-item-icon right>\n                  <bal-icon name=\"nav-go-right\" size=\"xsmall\"></bal-icon>\n                </bal-list-item-icon>\n              </bal-list-item>\n            </bal-list>\n          </bal-card-content>\n        </bal-card>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-list-item/bal-list-item.tsx",
       "encapsulation": "none",
       "tag": "bal-list-item",
-      "readme": "\n# List item\n",
-      "docs": "<!-- docs:child of bal-list -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -5251,25 +5417,24 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "bal-doc-download",
         "bal-file-upload"
       ],
       "dependencies": [],
       "dependencyGraph": {
+        "bal-doc-download": [
+          "bal-list-item"
+        ],
         "bal-file-upload": [
           "bal-list-item"
         ]
-      },
-      "parent": "bal-list",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      }
     },
     {
       "filePath": "./src/components/bal-list-item-content/bal-list-item-content.tsx",
       "encapsulation": "none",
       "tag": "bal-list-item-content",
-      "readme": "\n# List Item Content\n",
-      "docs": "<!-- docs:child of bal-list -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -5280,25 +5445,24 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "bal-doc-download",
         "bal-file-upload"
       ],
       "dependencies": [],
       "dependencyGraph": {
+        "bal-doc-download": [
+          "bal-list-item-content"
+        ],
         "bal-file-upload": [
           "bal-list-item-content"
         ]
-      },
-      "parent": "bal-list",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      }
     },
     {
       "filePath": "./src/components/bal-list-item-icon/bal-list-item-icon.tsx",
       "encapsulation": "none",
       "tag": "bal-list-item-icon",
-      "readme": "\n# List Item Icon\n\n`bal-list-item-subtitle` is a child component of `bal-list` that defines the subtitle list row element.\n",
-      "docs": "<!-- docs:child of bal-list -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -5327,25 +5491,24 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "bal-doc-download",
         "bal-file-upload"
       ],
       "dependencies": [],
       "dependencyGraph": {
+        "bal-doc-download": [
+          "bal-list-item-icon"
+        ],
         "bal-file-upload": [
           "bal-list-item-icon"
         ]
-      },
-      "parent": "bal-list",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      }
     },
     {
       "filePath": "./src/components/bal-list-item-subtitle/bal-list-item-subtitle.tsx",
       "encapsulation": "none",
       "tag": "bal-list-item-subtitle",
-      "readme": "\n# List Item Subtitle\n\n`bal-list-item-subtitle` is a child component of `bal-list` that defines the subtitle list row element.\n",
-      "docs": "<!-- docs:child of bal-list -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -5356,6 +5519,7 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "bal-doc-download",
         "bal-file-upload"
       ],
       "dependencies": [
@@ -5365,21 +5529,19 @@
         "bal-list-item-subtitle": [
           "bal-text"
         ],
+        "bal-doc-download": [
+          "bal-list-item-subtitle"
+        ],
         "bal-file-upload": [
           "bal-list-item-subtitle"
         ]
-      },
-      "parent": "bal-list",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      }
     },
     {
       "filePath": "./src/components/bal-list-item-title/bal-list-item-title.tsx",
       "encapsulation": "none",
       "tag": "bal-list-item-title",
-      "readme": "\n# List Item Title\n\n`bal-list-item-title` is a child component of `bal-list` that defines the title list row element.\n",
-      "docs": "<!-- docs:child of bal-list -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -5390,6 +5552,7 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "bal-doc-download",
         "bal-file-upload"
       ],
       "dependencies": [
@@ -5399,20 +5562,18 @@
         "bal-list-item-title": [
           "bal-text"
         ],
+        "bal-doc-download": [
+          "bal-list-item-title"
+        ],
         "bal-file-upload": [
           "bal-list-item-title"
         ]
-      },
-      "parent": "bal-list",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      }
     },
     {
       "filePath": "./src/components/bal-modal/bal-modal.tsx",
       "encapsulation": "scoped",
       "tag": "bal-modal",
-      "readme": "# Modal\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -5680,23 +5841,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [
-        "bal-modal-actions",
-        "bal-modal-body",
-        "bal-modal-footer",
-        "bal-modal-header"
-      ],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n    <script type=\"module\">\n      import { balModalController, deepReady } from '/build/index.esm.js'\n\n      window.balModalController = balModalController\n      window.deepReady = deepReady\n    </script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n\n      <!-- <section>\n        <bal-button id=\"bal-modal-trigger-example\" data-test-id=\"open-modal-button\">Launch Modal</bal-button>\n      </section>\n      <script type=\"text/javascript\">\n        customElements.define(\n          'modal-page',\n          class extends HTMLElement {\n            connectedCallback() {\n              this.innerHTML = `\n              <bal-modal-header>Modal Title</bal-modal-header>\n              <bal-modal-body>\n                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\n                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n              </bal-modal-body>\n              <bal-modal-footer>\n                <bal-modal-actions>\n                  <bal-button color=\"primary\" modal-close>Okay</bal-button>\n                  <bal-button color=\"link\" modal-close data-test-id=\"open-modal-close\">Cancel</bal-button>\n                </bal-modal-actions>\n              </bal-modal-footer>`\n            }\n          },\n        )\n\n        async function presentModal() {\n          const modalElement = document.createElement('bal-modal')\n          modalElement.component = 'modal-page'\n          modalElement.cssClass = 'my-custom-class'\n          modalElement.setAttribute('data-test-id', 'modal')\n\n          // Define the with of the modal.\n          modalElement.modalWidth = 640 // default\n\n          // Define to have backdrop and that it is closable\n          modalElement.hasBackdrop = true // default\n          modalElement.isClosable = true // default\n\n          // attach the modal to the dom\n          document.body.appendChild(modalElement)\n          await deepReady(modalElement)\n\n          // present the modal for the user\n          return modalElement.present()\n        }\n\n        const triggerElementBasic = document.getElementById('bal-modal-trigger-example')\n        triggerElementBasic.onclick = async function () {\n          await presentModal()\n        }\n      </script> -->\n\n      <section>\n        <bal-modal id=\"bal-modal-example-width\" data-test-id=\"modal\">\n          <bal-modal-header>Modal Title</bal-modal-header>\n          <bal-modal-body>\n            <p>\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\n              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n            </p>\n          </bal-modal-body>\n          <bal-modal-footer>\n            <bal-modal-actions>\n              <bal-button color=\"link\" id=\"bal-modal-close-4\" data-test-id=\"open-modal-close\">Cancel</bal-button>\n              <bal-button color=\"primary\" id=\"bal-modal-close-3\">Okay</bal-button>\n            </bal-modal-actions>\n          </bal-modal-footer>\n        </bal-modal>\n\n        <bal-button id=\"bal-modal-trigger-example-width\" data-test-id=\"open-modal-button\">Launch Modal</bal-button>\n      </section>\n      <script type=\"text/javascript\">\n        const modalElementCustomWidth = document.getElementById('bal-modal-example-width')\n        const triggerElementCustomWidth = document.getElementById('bal-modal-trigger-example-width')\n        const okayElementCustomWidth = document.getElementById('bal-modal-close-3')\n        const cancelElementCustomWidth = document.getElementById('bal-modal-close-4')\n        triggerElementCustomWidth.onclick = function () {\n          modalElementCustomWidth.open()\n        }\n        okayElementCustomWidth.onclick = function () {\n          modalElementCustomWidth.close()\n        }\n        cancelElementCustomWidth.onclick = function () {\n          modalElementCustomWidth.close()\n        }\n      </script>\n    </div>\n  </body>\n</html>\n"
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-modal-actions/bal-modal-actions.tsx",
       "encapsulation": "scoped",
       "tag": "bal-modal-actions",
-      "readme": "\n# Modal Actions\n\n`bal-modal-actions` is a child component of `bal-modal` that defines the area for the action button at the bottom of the modal.\n",
-      "docs": "<!-- docs:child of bal-modal -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -5708,18 +5859,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-modal",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-modal-body/bal-modal-body.tsx",
       "encapsulation": "none",
       "tag": "bal-modal-body",
-      "readme": "\n# Modal Body\n\n`bal-modal-body` is a child component of `bal-modal` that contains the main content of the modal.\n",
-      "docs": "<!-- docs:child of bal-modal -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -5731,18 +5877,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-modal",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-modal-footer/bal-modal-footer.tsx",
       "encapsulation": "none",
       "tag": "bal-modal-footer",
-      "readme": "\n# Modal Footer\n\n`bal-modal-footer` is a child component of `bal-modal` that normally contains some buttons for that please also use the `bal-modal-actions` component.\n",
-      "docs": "<!-- docs:child of bal-modal -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -5754,18 +5895,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-modal",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-modal-header/bal-modal-header.tsx",
       "encapsulation": "none",
       "tag": "bal-modal-header",
-      "readme": "\n# Modal Header\n\n`bal-modal-header` is a child component of `bal-modal` that has the title of the modal.\n",
-      "docs": "<!-- docs:child of bal-modal -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -5777,17 +5913,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-modal",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-navbar/bal-navbar.tsx",
       "encapsulation": "none",
       "tag": "bal-navbar",
-      "readme": "# Navbar\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -5852,23 +5983,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [
-        "bal-navbar-brand",
-        "bal-navbar-menu",
-        "bal-navbar-menu-end",
-        "bal-navbar-menu-start"
-      ],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-navbar>\n          <bal-navbar-brand>\n            <bal-icon name=\"logo\" inverted size=\"large\"></bal-icon>\n            <bal-text style=\"margin-left: 15px\"><strong>App</strong> Title</bal-text>\n          </bal-navbar-brand>\n          <bal-navbar-menu>\n            <bal-navbar-menu-start>\n              <a class=\"navbar-item\"><bal-text>Home</bal-text></a>\n              <div class=\"navbar-item has-dropdown is-hoverable\">\n                <a class=\"navbar-link\"><bal-text>Language</bal-text></a>\n                <div class=\"navbar-dropdown\">\n                  <a class=\"navbar-item\"><bal-text>English</bal-text></a>\n                  <a class=\"navbar-item\"><bal-text>German</bal-text></a>\n                  <a class=\"navbar-item\"><bal-text>French</bal-text></a>\n                  <hr class=\"navbar-divider\" />\n                  <a class=\"navbar-item\"><bal-text>Support</bal-text></a>\n                </div>\n              </div>\n            </bal-navbar-menu-start>\n            <bal-navbar-menu-end>\n              <bal-button inverted>Logout</bal-button>\n            </bal-navbar-menu-end>\n          </bal-navbar-menu>\n        </bal-navbar>\n      </section>\n\n      <h2 class=\"title is-size-2\">Light</h2>\n      <section>\n        <bal-navbar light>\n          <bal-navbar-brand>\n            <bal-icon name=\"logo\" size=\"large\"></bal-icon>\n            <bal-text style=\"margin-left: 15px\"><strong>App</strong> Title</bal-text>\n          </bal-navbar-brand>\n          <bal-navbar-menu>\n            <bal-navbar-menu-start>\n              <a class=\"navbar-item\"><bal-text>Home</bal-text></a>\n              <div class=\"navbar-item has-dropdown is-hoverable\">\n                <a class=\"navbar-link\"><bal-text>Language</bal-text></a>\n                <div class=\"navbar-dropdown\">\n                  <a class=\"navbar-item\"><bal-text>English</bal-text></a>\n                  <a class=\"navbar-item\"><bal-text>German</bal-text></a>\n                  <a class=\"navbar-item\"><bal-text>French</bal-text></a>\n                  <hr class=\"navbar-divider\" />\n                  <a class=\"navbar-item\"><bal-text>Support</bal-text></a>\n                </div>\n              </div>\n            </bal-navbar-menu-start>\n            <bal-navbar-menu-end>\n              <bal-button>Logout</bal-button>\n            </bal-navbar-menu-end>\n          </bal-navbar-menu>\n        </bal-navbar>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-navbar-brand/bal-navbar-brand.tsx",
       "encapsulation": "none",
       "tag": "bal-navbar-brand",
-      "readme": "\n# Navbar Brand\n\n`bal-navbar-brand` is a child component of `bal-navbar` that defines the area in the navbar where the logo or the title of the applications is.\n",
-      "docs": "<!-- docs:child of bal-navbar -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -5908,18 +6029,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-navbar",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-navbar-menu/bal-navbar-menu.tsx",
       "encapsulation": "none",
       "tag": "bal-navbar-menu",
-      "readme": "\n# Navbar Menu\n\n`bal-navbar-menu` is a child component of `bal-navbar` that defines the area in the navbar where links and actions are.\n",
-      "docs": "<!-- docs:child of bal-navbar -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -5931,18 +6047,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-navbar",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-navbar-menu-end/bal-navbar-menu-end.tsx",
       "encapsulation": "none",
       "tag": "bal-navbar-menu-end",
-      "readme": "\n# Navbar Menu Start\n\n`bal-navbar-menu-start` is a child component of `bal-navbar` which is the left side of the navbar.\n",
-      "docs": "<!-- docs:child of bal-navbar -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -5954,18 +6065,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-navbar",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-navbar-menu-start/bal-navbar-menu-start.tsx",
       "encapsulation": "none",
       "tag": "bal-navbar-menu-start",
-      "readme": "\n# Navbar Menu End\n\n`bal-navbar-menu-end` is a child component of `bal-navbar` which is the right side of the navbar.\n",
-      "docs": "<!-- docs:child of bal-navbar -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [],
@@ -5977,17 +6083,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-navbar",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-notification/bal-notification.tsx",
       "encapsulation": "scoped",
       "tag": "bal-notification",
-      "readme": "# Notification\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -6038,17 +6139,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-notification color=\"primary\"\n          >Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, assumenda in ducimus modi animi enim velit molestiae rerum natus, ad culpa explicabo blanditiis architecto\n          quo expedita incidunt officiis quaerat delectus.</bal-notification\n        >\n      </section>\n\n      <h2 class=\"title is-size-2\">Types</h2>\n      <section>\n        <bal-notification>Default</bal-notification>\n        <br />\n        <bal-notification color=\"primary\">Primary</bal-notification>\n        <br />\n        <bal-notification color=\"info\">Info</bal-notification>\n        <br />\n        <bal-notification color=\"success\">Success</bal-notification>\n        <br />\n        <bal-notification color=\"warning\">Warning</bal-notification>\n        <br />\n        <bal-notification color=\"danger\">Danger</bal-notification>\n      </section>\n\n      <h2 class=\"title is-size-2\">Box</h2>\n      <section>\n        <bal-notification color=\"info\" class=\"has-text-centered\" style=\"max-width: 400px\">\n          <h3 class=\"title is-size-3 has-text-white\" style=\"margin-top: 0\">Title</h3>\n          <bal-button color=\"info\" outlined inverted>Action</bal-button>\n        </bal-notification>\n      </section>\n\n      <h2 class=\"title is-size-2\">Error</h2>\n      <section>\n        <bal-notification>\n          <span class=\"icon-text\">\n            <span class=\"icon\">\n              <bal-icon color=\"danger\" name=\"alert-circle\"></bal-icon>\n            </span>\n            <span style=\"margin-left: 10px\">\n              <strong style=\"margin-right: 10px\">Error!</strong>\n              Lorem ipsum, dolor sit amet consectetur adipisicing elit.\n            </span>\n          </span>\n        </bal-notification>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-pagination/bal-pagination.tsx",
       "encapsulation": "scoped",
       "tag": "bal-pagination",
-      "readme": "# Pagination\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -6171,17 +6267,12 @@
           "bal-text",
           "bal-icon"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <p>\n        Generally, pagination is used if there are more than 25 items displayed in one view. <br />\n        The default number displayed will vary depending on the context.\n      </p>\n      <section>\n        <bal-pagination value=\"2\" page-range=\"3\" total-pages=\"20\" data-test-id=\"pagination\"></bal-pagination>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-radio/bal-radio.tsx",
       "encapsulation": "scoped",
       "tag": "bal-radio",
-      "readme": "# Radio <Badge text=\"Two-way binding\"/>\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -6380,20 +6471,13 @@
         "bal-radio": [
           "bal-text"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [
-        "bal-radio-group"
-      ],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-radio-group value=\"2\" id=\"radio-example\" data-test-id=\"radio\">\n          <bal-radio name=\"radio-example\" value=\"1\">Label 1</bal-radio>\n          <bal-radio name=\"radio-example\" value=\"2\">Label 2</bal-radio>\n          <bal-radio name=\"radio-example\" value=\"3\">Label 3</bal-radio>\n          <bal-radio name=\"radio-example\" value=\"4\" disabled>Label Disabled</bal-radio>\n        </bal-radio-group>\n        <p class=\"help\" id=\"radio-example-result\">2</p>\n        <bal-button id=\"radio-example-action\">Go to 3</bal-button>\n      </section>\n      <script>\n        var radioGroup = document.getElementById('radio-example')\n        var radioResult = document.getElementById('radio-example-result')\n        var radioAction = document.getElementById('radio-example-action')\n        radioGroup.addEventListener('balChange', function (event) {\n          radioResult.innerHTML = event.detail\n        })\n        radioAction.addEventListener('click', function () {\n          radioGroup.value = 3\n        })\n      </script>\n\n      <h2 class=\"title is-size-2\">Inverted</h2>\n      <section>\n        <div class=\"has-background-blue p-4\">\n          <bal-radio-group value=\"3\" inverted>\n            <bal-radio inverted name=\"radio-example-inverted\" value=\"1\">Label 1</bal-radio>\n            <bal-radio inverted name=\"radio-example-inverted\" value=\"2\">Label 2</bal-radio>\n            <bal-radio inverted name=\"radio-example-inverted\" value=\"3\">Label 3</bal-radio>\n            <bal-radio inverted name=\"radio-example-inverted\" value=\"4\" disabled>Label Disabled</bal-radio>\n          </bal-radio-group>\n        </div>\n      </section>\n\n      <h2 class=\"title is-size-2\">With Links</h2>\n      <section>\n        <bal-radio-group value=\"1\">\n          <bal-radio name=\"link-example\" value=\"1\">Random text with a <a class=\"is-link\" target=\"_blank\" href=\"http://baloise.ch\">Link</a> in it</bal-radio>\n          <bal-radio name=\"link-example\" value=\"2\">Label 2 without a link</bal-radio>\n        </bal-radio-group>\n      </section>\n\n      <h2 class=\"title is-size-2\">Radio Boxes</h2>\n      <section>\n        <bal-radio-group value=\"1\">\n          <div class=\"columns\" style=\"max-width: 400px\">\n            <div class=\"column\">\n              <div class=\"is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius has-background-blue-light\">\n                <img src=\"https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg\" />\n                <p class=\"has-text-blue mb-2\">Selected Label</p>\n                <bal-radio class=\"p-0\" name=\"box-example\" value=\"1\" is-empty></bal-radio>\n              </div>\n            </div>\n            <div class=\"column\">\n              <div class=\"is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius\">\n                <img src=\"https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg\" />\n                <p class=\"has-text-blue mb-2\">Other Label</p>\n                <bal-radio class=\"p-0\" name=\"box-example\" value=\"2\" is-empty></bal-radio>\n              </div>\n            </div>\n          </div>\n        </bal-radio-group>\n      </section>\n\n      <h2 class=\"title is-size-2\">Radio List</h2>\n      <section>\n        <bal-radio-group value=\"1\">\n          <div class=\"is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-border-radius has-background-blue-light\">\n            <bal-radio name=\"list-example\" value=\"1\">\n              <span class=\"pl-2\"><b>Year 1</b> (CHF 66.00)</span>\n            </bal-radio>\n          </div>\n\n          <div class=\"is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-border-radius\">\n            <bal-radio name=\"list-example\" class=\"mr-3\" value=\"2\">\n              <div class=\"pl-2\"><b>Year 2</b> (CHF 86.00)</div>\n            </bal-radio>\n          </div>\n        </bal-radio-group>\n      </section>\n\n      <h2 class=\"title is-size-2\">Select Button</h2>\n      <section>\n        <bal-radio-group value=\"1\" interface=\"select-button\" data-test-id=\"select-button\">\n          <bal-radio name=\"select-button-example\" value=\"1\">Label 1</bal-radio>\n          <bal-radio name=\"select-button-example\" value=\"2\">Label 2</bal-radio>\n          <bal-radio name=\"select-button-example\" value=\"3\" disabled>Label Disabled</bal-radio>\n        </bal-radio-group>\n      </section>\n\n      <h3 class=\"title is-size-3\">Inverted</h3>\n      <section>\n        <div class=\"has-background-blue p-4\">\n          <bal-radio-group value=\"yes\" interface=\"select-button\" inverted>\n            <bal-radio name=\"select-button-example-2\" value=\"yes\">Yes</bal-radio>\n            <bal-radio name=\"select-button-example-2\" value=\"no\">No</bal-radio>\n          </bal-radio-group>\n        </div>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-radio-group/bal-radio-group.tsx",
       "encapsulation": "scoped",
       "tag": "bal-radio-group",
-      "readme": "\n# Radio Group\n",
-      "docs": "<!-- docs:child of bal-radio -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -6509,18 +6593,13 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-radio",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-select/bal-select.tsx",
       "encapsulation": "scoped",
       "tag": "bal-select",
-      "readme": "# Select <Badge text=\"Two-way binding\"/>\n\nFor creating a list of options use the `BalOptionValue` interface and the functions `NewBalOptionValue` or `NewBalSingleOptionValue`.\n\n```typescript\nimport { BalOptionValue, NewBalOptionValue } from '@baloise/design-system-components'\n\nexport interface BalOptionValue<T> {\n  value: string\n  label: string\n  disabled?: boolean // default false\n  data?: T\n}\n\nconst option = NewBalOptionValue('value', 'label')\n```\n",
-      "docs": "For creating a list of options use the `BalOptionValue` interface and the functions `NewBalOptionValue` or `NewBalSingleOptionValue`.\n\n```typescript\nimport { BalOptionValue, NewBalOptionValue } from '@baloise/design-system-components'\n\nexport interface BalOptionValue<T> {\n  value: string\n  label: string\n  disabled?: boolean // default false\n  data?: T\n}\n\nconst option = NewBalOptionValue('value', 'label')\n```",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -6958,20 +7037,13 @@
         "bal-checkbox": [
           "bal-text"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [
-        "bal-select-option"
-      ],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-select has-movement expanded id=\"bal-select-year\" placeholder=\"Try finding a year\" data-test-id=\"select\">\n          <bal-select-option value=\"v1995\" label=\"1995\">1995</bal-select-option>\n          <bal-select-option value=\"v1996\" label=\"1996\">1996</bal-select-option>\n          <bal-select-option value=\"v1997\" label=\"1997\">1997</bal-select-option>\n          <bal-select-option value=\"v1998\" label=\"1998\">1998</bal-select-option>\n          <bal-select-option value=\"v1999\" label=\"1999\">1999</bal-select-option>\n          <bal-select-option value=\"v2000\" label=\"2000\">2000</bal-select-option>\n        </bal-select>\n        <br />\n        <bal-select expanded disabled data-test-id=\"select-disabled\" placeholder=\"Disabled\"></bal-select>\n        <br />\n        <p id=\"bal-select-year-preview\"></p>\n        <bal-button color=\"success\" id=\"bal-select-year-add\">Add Option</bal-button>\n        <bal-button color=\"danger\" id=\"bal-select-year-remove\">Remove Last Option</bal-button>\n      </section>\n      <script>\n        var year = 2001\n        var selectYear = document.getElementById('bal-select-year')\n        var selectYearPreview = document.getElementById('bal-select-year-preview')\n        var btnYearAdd = document.getElementById('bal-select-year-add')\n        var btnYearRemove = document.getElementById('bal-select-year-remove')\n\n        btnYearAdd.addEventListener('click', function () {\n          let element = document.createElement('bal-select-option')\n          element.innerHTML = year\n          element.setAttribute('label', year)\n          element.setAttribute('value', `v${year}`)\n          selectYear.appendChild(element)\n          year = year + 1\n        })\n\n        btnYearRemove.addEventListener('click', function () {\n          year = year - 1\n          let element = document.querySelector(`bal-select-option[label=\"${year}\"]`)\n          if (element) {\n            element.remove()\n          }\n        })\n\n        selectYear.addEventListener('balChange', function (event) {\n          selectYearPreview.innerHTML = JSON.stringify(event.detail)\n        })\n      </script>\n\n      <h2>Typeahead</h2>\n      <section>\n        <div class=\"has-background-blue p-4\">\n          <bal-select id=\"bal-select-typeahaed\" typeahead inverted expanded placeholder=\"Try finding your hero\" no-data-label=\"No option available\" data-test-id=\"typeahead\">\n            <bal-select-option value=\"BlackWidow\" label=\"Black Widow\">\n              <b style=\"display: block\">Black Widow</b>\n              <span>S.H.I.E.L.D.</span>\n            </bal-select-option>\n            <bal-select-option value=\"BlackPanter\" label=\"Black Panter\">\n              <b style=\"display: block\">Black Panter</b>\n              <span>Wakanda</span>\n            </bal-select-option>\n            <bal-select-option value=\"IronMan\" label=\"Iron Man\">\n              <b style=\"display: block\">Iron Man</b>\n              <span>Malibu</span>\n            </bal-select-option>\n            <bal-select-option value=\"SpiderMan\" label=\"Spider Man\">\n              <b style=\"display: block\">Spider Man</b>\n              <span>Queens</span>\n            </bal-select-option>\n            <bal-select-option value=\"CaptainAmerica\" label=\"Captain America\">\n              <b style=\"display: block\">Captain America</b>\n              <span>Broklyn</span>\n            </bal-select-option>\n            <bal-select-option value=\"Thor\" label=\"Thor God of Thunder\">\n              <b style=\"display: block\">Thor God of Thunder</b>\n              <span>Asgard</span>\n            </bal-select-option>\n          </bal-select>\n          <br />\n          <p id=\"bal-select-typeahead-preview\" class=\"has-text-white\"></p>\n          <bal-button id=\"bal-select-typeahead-trigger\" inverted color=\"primary\">Select Spider Man</bal-button>\n          <bal-button id=\"bal-select-typeahead-clear\" inverted outlined color=\"info\">Clear & Focus</bal-button>\n        </div>\n      </section>\n      <script>\n        var selectTypeahead = document.getElementById('bal-select-typeahaed')\n        var selectTypeaheadPreview = document.getElementById('bal-select-typeahead-preview')\n        var selectTypeaheadTrigger = document.getElementById('bal-select-typeahead-trigger')\n        var selectTypeaheadClear = document.getElementById('bal-select-typeahead-clear')\n        selectTypeahead.addEventListener('balChange', function (event) {\n          selectTypeaheadPreview.innerHTML = JSON.stringify(event.detail)\n        })\n        selectTypeaheadTrigger.addEventListener('click', function () {\n          selectTypeahead.value = 'SpiderMan'\n        })\n        selectTypeaheadClear.addEventListener('click', function () {\n          selectTypeahead.clear(true)\n          selectTypeahead.setFocus()\n        })\n        selectTypeahead.value = 'CaptainAmerica'\n        selectTypeaheadPreview.innerHTML = JSON.stringify(selectTypeahead.value)\n      </script>\n\n      <h2>Multi-Select</h2>\n      <section>\n        <bal-select multiple expanded placeholder=\"Try finding your hero\" data-test-id=\"multiple\">\n          <bal-select-option checkbox value=\"BlackWidow\" label=\"Black Widow\">\n            <b style=\"display: block\">Black Widow</b>\n            <span>S.H.I.E.L.D.</span>\n          </bal-select-option>\n          <bal-select-option checkbox value=\"BlackPanter\" label=\"Black Panter\">\n            <b style=\"display: block\">Black Panter</b>\n            <span>Wakanda</span>\n          </bal-select-option>\n          <bal-select-option checkbox value=\"IronMan\" label=\"Iron Man\">\n            <b style=\"display: block\">Iron Man</b>\n            <span>Malibu</span>\n          </bal-select-option>\n          <bal-select-option checkbox value=\"SpiderMan\" label=\"Spider Man\">\n            <b style=\"display: block\">Spider Man</b>\n            <span>Queens</span>\n          </bal-select-option>\n          <bal-select-option checkbox value=\"CaptainAmerica\" label=\"Captain America\">\n            <b style=\"display: block\">Captain America</b>\n            <span>Broklyn</span>\n          </bal-select-option>\n          <bal-select-option checkbox value=\"Thor\" label=\"Thor God of Thunder\">\n            <b style=\"display: block\">Thor God of Thunder</b>\n            <span>Asgard</span>\n          </bal-select-option>\n        </bal-select>\n      </section>\n\n      <h2>Multi-Select with typeahead</h2>\n      <section>\n        <bal-select multiple typeahead expanded placeholder=\"Try finding your hero\" no-data-label=\"No option available\">\n          <bal-select-option checkbox value=\"BlackWidow\" label=\"Black Widow\">\n            <b style=\"display: block\">Black Widow</b>\n            <span>S.H.I.E.L.D.</span>\n          </bal-select-option>\n          <bal-select-option checkbox value=\"BlackPanter\" label=\"Black Panter\">\n            <b style=\"display: block\">Black Panter</b>\n            <span>Wakanda</span>\n          </bal-select-option>\n          <bal-select-option checkbox value=\"IronMan\" label=\"Iron Man\">\n            <b style=\"display: block\">Iron Man</b>\n            <span>Malibu</span>\n          </bal-select-option>\n          <bal-select-option checkbox value=\"SpiderMan\" label=\"Spider Man\">\n            <b style=\"display: block\">Spider Man</b>\n            <span>Queens</span>\n          </bal-select-option>\n          <bal-select-option checkbox value=\"CaptainAmerica\" label=\"Captain America\">\n            <b style=\"display: block\">Captain America</b>\n            <span>Broklyn</span>\n          </bal-select-option>\n          <bal-select-option checkbox value=\"Thor\" label=\"Thor God of Thunder\">\n            <b style=\"display: block\">Thor God of Thunder</b>\n            <span>Asgard</span>\n          </bal-select-option>\n        </bal-select>\n      </section>\n\n      <h2>Remote Typeahead</h2>\n      <section>\n        <bal-field id=\"bal-field-remote\" expanded>\n          <bal-field-label>Canton</bal-field-label>\n          <bal-field-control>\n            <bal-select id=\"bal-select-remote\" typeahead expanded placeholder=\"Try finding your canton\"></bal-select>\n          </bal-field-control>\n          <bal-field-message id=\"bal-select-remote-preview\"></bal-field-message>\n        </bal-field>\n      </section>\n      <script>\n        var fieldRemote = document.getElementById('bal-field-remote')\n        var selectRemote = document.getElementById('bal-select-remote')\n        var selectRemotePreview = document.getElementById('bal-select-remote-preview')\n\n        var cantons = [\n          'Zürich',\n          'Bern/Berne',\n          'Luzern',\n          'Uri',\n          'Schwyz',\n          'Unterwalden',\n          'Glarus',\n          'Zug',\n          'Freiburg/Fribourg',\n          'Solothurn',\n          'Basel-Stadt',\n          'Basel-Land',\n          'Schaffhausen',\n          'Appenzell',\n          'SanktGallen',\n          'Graubünden',\n          'Aargau',\n          'Thurgau',\n          'Ticino',\n          'Vaud',\n          'Wallis',\n          'Neuchâtel',\n          'Genève',\n          'Jura',\n        ]\n\n        selectRemote.addEventListener('balChange', function (event) {\n          selectRemotePreview.innerHTML = JSON.stringify(event.detail)\n        })\n\n        function querySelections(value) {\n          fieldRemote.loading = true\n          selectRemote.loading = true\n          // Simulated ajax query\n          setTimeout(() => {\n            var options = selectRemote.querySelectorAll('bal-select-option')\n            if (options) {\n              options.forEach(o => o.remove())\n            }\n\n            var filteredResults = cantons.filter(e => {\n              return (e || '').toLowerCase().indexOf((value || '').toLowerCase()) > -1\n            })\n\n            for (let index = 0; index < filteredResults.length; index++) {\n              const option = filteredResults[index]\n              let element = document.createElement('bal-select-option')\n              element.innerHTML = option\n              element.setAttribute('label', option)\n              element.setAttribute('value', option)\n              selectRemote.appendChild(element)\n            }\n\n            fieldRemote.loading = false\n            selectRemote.loading = false\n          }, 1000)\n        }\n\n        selectRemote.addEventListener('balInput', function (event) {\n          querySelections(event.detail)\n        })\n      </script>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-select-option/bal-select-option.tsx",
       "encapsulation": "none",
       "tag": "bal-select-option",
-      "readme": "\n# Select Option\n",
-      "docs": "<!-- docs:child of bal-select -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -7039,17 +7111,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-select",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-sheet/bal-sheet.tsx",
       "encapsulation": "none",
       "tag": "bal-sheet",
-      "readme": "# Sheet\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -7062,17 +7129,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-sheet>\n          <div class=\"is-hidden-desktop\">\n            <bal-button expanded>Continue with 1'234 CHF</bal-button>\n            <bal-button expanded color=\"link\">Back</bal-button>\n          </div>\n          <div class=\"is-hidden-touch\">\n            <div class=\"columns\">\n              <div class=\"column is-flex is-align-items-center is-justify-content-center\">\n                <h2 class=\"title is-size-2 has-no-margin has-text-right\">1'234 CHF</h2>\n              </div>\n              <div class=\"column is-flex is-align-items-center\">\n                <p class=\"has-no-margin has-text-blue-light-text\">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>\n              </div>\n              <div class=\"column is-2 is-flex is-align-items-center\">\n                <bal-button expanded color=\"link\">Back</bal-button>\n              </div>\n              <div class=\"column is-2 is-flex is-align-items-center\">\n                <bal-button expanded>Next</bal-button>\n              </div>\n            </div>\n          </div>\n        </bal-sheet>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-slider/bal-slider.tsx",
       "encapsulation": "scoped",
       "tag": "bal-slider",
-      "readme": "# Slider\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -7364,17 +7426,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-slider value=\"20\" data-test-id=\"slider\"></bal-slider>\n        <bal-slider disabled value=\"30\" data-test-id=\"slider-disabled\"></bal-slider>\n      </section>\n\n      <h2 class=\"title is-size-2\">With Steps</h2>\n      <section>\n        <bal-slider has-ticks step=\"20\" min=\"0\" max=\"100\" value=\"40\"></bal-slider>\n      </section>\n\n      <h2 class=\"title is-size-2\">With Field</h2>\n      <section>\n        <bal-field expanded>\n          <bal-field-label expanded>\n            <span class=\"is-flex-grow-1\">Employees</span>\n            <span class=\"is-flex-grow-1 has-text-right\">Pensioners</span>\n          </bal-field-label>\n          <bal-field-control>\n            <bal-slider step=\"20\" min=\"0\" max=\"100\" value=\"40\"></bal-slider>\n          </bal-field-control>\n          <bal-field-message expanded>\n            <span class=\"is-flex-grow-1\">40%</span>\n            <span class=\"is-flex-grow-1 has-text-right\">60%</span>\n          </bal-field-message>\n        </bal-field>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-snackbar/bal-snackbar.tsx",
       "encapsulation": "scoped",
       "tag": "bal-snackbar",
-      "readme": "# Snackbar\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -7569,17 +7626,12 @@
           "bal-icon",
           "bal-text"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n    <script type=\"module\">\n      import { balSnackbarController } from '/build/index.esm.js'\n\n      window.balSnackbarController = balSnackbarController\n    </script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-button id=\"snack-default\" color=\"success\" data-test-id=\"snack\">Show success Snack</bal-button>\n        <bal-button id=\"snack-warning\" color=\"warning\" data-test-id=\"snack-warning\">Show warning Snack</bal-button>\n        <bal-button id=\"snack-danger\" color=\"danger\">Show error Snack</bal-button>\n        <br />\n        <br />\n        <bal-button id=\"snackbar-clear-all\" color=\"info\" outlined>Clear all snackbars</bal-button>\n      </section>\n      <script>\n        document.getElementById('snack-default').onclick = function () {\n          balSnackbarController.create({\n            message: 'Hi I am a default Snack!',\n            subject: 'Subject',\n            color: 'success',\n            icon: 'info-circle',\n            duration: 1000,\n          })\n        }\n        document.getElementById('snack-warning').onclick = function () {\n          balSnackbarController.create({\n            message: 'Warning!',\n            color: 'warning',\n            subject: 'Subject',\n            icon: 'info-circle',\n          })\n        }\n        document.getElementById('snack-danger').onclick = function () {\n          const snack = balSnackbarController.create({\n            message: 'Danger zone!',\n            color: 'danger',\n            subject: 'Subject',\n            action: 'More',\n            icon: 'info-circle',\n            actionHandler: function () {\n              alert('Action was clicked')\n              snack.close()\n            },\n            closeHandler: function () {\n              alert('Snackbar closed')\n            },\n          })\n        }\n        document.getElementById('snackbar-clear-all').onclick = function () {\n          balSnackbarController.clearAll()\n        }\n      </script>\n\n      <h2 class=\"title is-size-2\">Colors</h2>\n      <section>\n        <bal-snackbar subject=\"Default\" icon=\"info-circle\" action=\"More\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </bal-snackbar>\n        <bal-snackbar subject=\"Primary\" icon=\"info-circle\" color=\"primary\" action=\"More\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </bal-snackbar>\n        <bal-snackbar subject=\"Info\" icon=\"info-circle\" color=\"info\" action=\"More\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </bal-snackbar>\n        <bal-snackbar subject=\"Success\" icon=\"info-circle\" color=\"success\" action=\"More\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </bal-snackbar>\n        <bal-snackbar subject=\"Warning\" icon=\"info-circle\" color=\"warning\" action=\"More\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </bal-snackbar>\n        <bal-snackbar subject=\"Danger\" icon=\"info-circle\" color=\"danger\" action=\"More\"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </bal-snackbar>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-spinner/bal-spinner.tsx",
       "encapsulation": "scoped",
       "tag": "bal-spinner",
-      "readme": "# Spinner\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -7633,18 +7685,13 @@
         "bal-button": [
           "bal-spinner"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-spinner></bal-spinner>\n      </section>\n\n      <h2 class=\"title is-size-2\">Small</h2>\n      <section>\n        <bal-spinner small></bal-spinner>\n      </section>\n\n      <h2 class=\"title is-size-2\">Inverted</h2>\n      <section>\n        <div class=\"has-background-info p-4\">\n          <bal-spinner inverted></bal-spinner>\n        </div>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-tab-item/bal-tab-item.tsx",
       "encapsulation": "scoped",
       "tag": "bal-tab-item",
-      "readme": "\n# Tab Item\n\n`bal-tab-item` is a child component of `bal-tabs`.\n",
-      "docs": "<!-- docs:child of bal-tabs -->",
+      "docs": "",
       "docsTags": [],
       "usage": {},
       "props": [
@@ -7843,17 +7890,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": "bal-tabs",
-      "isChild": true,
-      "childComponents": [],
-      "examples": null
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-table/bal-table.tsx",
       "encapsulation": "none",
       "tag": "bal-table",
-      "readme": "# Table\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -7884,17 +7926,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n    <script type=\"module\">\n      import { BalTableTagRenderer, BalTableTextRenderer, BalTableButtonRenderer } from 'https://unpkg.com/@baloise/design-system-components-table@1.11.0/dist/index.js'\n      window.BalTableTagRenderer = BalTableTagRenderer\n      window.BalTableTextRenderer = BalTableTextRenderer\n      window.BalTableButtonRenderer = BalTableButtonRenderer\n    </script>\n    <script src=\"https://unpkg.com/ag-grid-community/dist/ag-grid-community.noStyle\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <p>The basic table is only css and html provided by the bulma framework.</p>\n      <p>[Go to the Bulma documentation](https://bulma.io/documentation/elements/table/)</p>\n      <section>\n        <bal-card>\n          <table class=\"table is-fullwidth is-striped is-hoverable p-0\">\n            <thead>\n              <th>Selected</th>\n              <th>Name</th>\n              <th>Status</th>\n              <th></th>\n            </thead>\n            <tbody>\n              <tr>\n                <td>\n                  <bal-checkbox id=\"checkbox1\"></bal-checkbox>\n                </td>\n                <td>Tony Stark</td>\n                <td><bal-tag size=\"small\" color=\"success\">Ready</bal-tag></td>\n                <td class=\"has-buttons\">\n                  <bal-button color=\"info\" size=\"small\" icon=\"edit\" square outlined></bal-button>\n                  <bal-button color=\"info\" size=\"small\" icon=\"trash\" square outlined></bal-button>\n                </td>\n              </tr>\n              <tr>\n                <td>\n                  <bal-checkbox id=\"checkbox2\"></bal-checkbox>\n                </td>\n                <td>Steve Rogers</td>\n                <td><bal-tag size=\"small\" color=\"danger\">Injured</bal-tag></td>\n                <td class=\"has-buttons\">\n                  <bal-button color=\"info\" size=\"small\" icon=\"edit\" square outlined></bal-button>\n                  <bal-button color=\"info\" size=\"small\" icon=\"trash\" square outlined></bal-button>\n                </td>\n              </tr>\n              <tr>\n                <td>\n                  <bal-checkbox id=\"checkbox3\"></bal-checkbox>\n                </td>\n                <td>Peter Parker</td>\n                <td><bal-tag size=\"small\" color=\"warning\">In school</bal-tag></td>\n                <td class=\"has-buttons\">\n                  <bal-button color=\"info\" size=\"small\" icon=\"edit\" square outlined></bal-button>\n                  <bal-button color=\"info\" size=\"small\" icon=\"trash\" square outlined></bal-button>\n                </td>\n              </tr>\n              <tr>\n                <td>\n                  <bal-checkbox id=\"checkbox4\"></bal-checkbox>\n                </td>\n                <td>John Doe</td>\n                <td><bal-tag size=\"small\">Unknown</bal-tag></td>\n                <td class=\"has-buttons\">\n                  <bal-button color=\"info\" size=\"small\" icon=\"edit\" square outlined></bal-button>\n                  <bal-button color=\"info\" size=\"small\" icon=\"trash\" square outlined></bal-button>\n                </td>\n              </tr>\n            </tbody>\n          </table>\n        </bal-card>\n      </section>\n      <h2 class=\"title is-size-2\">Advanced with AG-Grid</h2>\n      <content slot-key=\"bal-table-ag-grid\" />\n      <section>\n        <bal-card>\n          <bal-table class=\"p-0\" id=\"myGrid\" style=\"height: 250px; width: 100%\"></bal-table>\n        </bal-card>\n      </section>\n      <script>\n        setTimeout(() => {\n          const columnDefs = [\n            { field: '', sortable: true, filter: true, checkboxSelection: true },\n            { field: 'number', sortable: true, filter: true },\n            {\n              field: 'textWithIcon',\n              sortable: true,\n              filter: true,\n              cellRenderer: BalTableTextRenderer({\n                icon: params => 'github',\n                iconColor: params => 'primary',\n              }),\n            },\n            {\n              field: 'tag',\n              sortable: true,\n              filter: true,\n              cellRenderer: BalTableTagRenderer({\n                color: params => (params.value === 'Invalid' ? 'danger' : 'success'),\n              }),\n            },\n            {\n              field: 'button',\n              sortable: true,\n              filter: true,\n              cellRenderer: BalTableButtonRenderer({\n                expanded: true,\n                icon: 'github',\n              }),\n            },\n          ]\n\n          // specify the data\n          const rowData = [\n            {\n              number: '1',\n              textWithIcon: 'Base Text',\n              tag: 'OK',\n              button: 'Action',\n            },\n            {\n              number: '2',\n              textWithIcon: 'Base Text',\n              tag: 'Invalid',\n              button: 'Action',\n            },\n            {\n              number: '3',\n              textWithIcon: 'Base Text',\n              tag: 'OK',\n              button: 'Action',\n            },\n          ]\n\n          function onFirstDataRendered(params) {\n            params.api.sizeColumnsToFit()\n          }\n\n          // let the grid know which columns and what data to use\n          const gridOptions = {\n            columnDefs: columnDefs,\n            rowData: rowData,\n            rowSelection: 'multiple',\n            onFirstDataRendered: onFirstDataRendered,\n            onGridReady: function (params) {\n              params.api.sizeColumnsToFit()\n\n              window.addEventListener('resize', function () {\n                setTimeout(function () {\n                  params.api.sizeColumnsToFit()\n                })\n              })\n            },\n          }\n\n          // setup the grid after the page has finished loading\n\n          const gridDiv = document.querySelector('#myGrid')\n          gridDiv.componentOnReady().then(() => {\n            new agGrid.Grid(gridDiv, gridOptions)\n            gridOptions.api.sizeColumnsToFit()\n          })\n        })\n      </script>\n    </div>\n  </body>\n</html>\n"
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-tabs/bal-tabs.tsx",
       "encapsulation": "scoped",
       "tag": "bal-tabs",
-      "readme": "# Tabs\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -8061,19 +8098,12 @@
           "bal-icon",
           "bal-text"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [
-        "bal-tab-item"
-      ],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Main Navigation</h2>\n      <section>\n        <bal-tabs action action-label=\"Action\" data-test-id=\"tabs\">\n          <bal-tab-item value=\"tab-a\" label=\"Tab A\" active=\"true\">Content of Tab A</bal-tab-item>\n          <bal-tab-item value=\"tab-b\" label=\"Tab B\">Content of Tab B</bal-tab-item>\n          <bal-tab-item bubble value=\"tab-c\" label=\"Tab C\">Content of Tab C</bal-tab-item>\n          <bal-tab-item disabled value=\"tab-d\" label=\"Tab D\">Content of Tab D</bal-tab-item>\n        </bal-tabs>\n      </section>\n\n      <h2 class=\"title is-size-2\">Sub Navigation</h2>\n      <section>\n        <bal-tabs rounded>\n          <bal-tab-item value=\"tab-a\" label=\"Tab A\" active=\"true\">Content of Tab A</bal-tab-item>\n          <bal-tab-item value=\"tab-b\" label=\"Tab B\">Content of Tab B</bal-tab-item>\n          <bal-tab-item value=\"tab-c\" label=\"Tab C\">Content of Tab C</bal-tab-item>\n        </bal-tabs>\n      </section>\n\n      <h2 class=\"title is-size-2\">Expanded</h2>\n      <section>\n        <bal-tabs rounded expanded>\n          <bal-tab-item value=\"tab-a\" label=\"Tab A\" active=\"true\">Content of Tab A</bal-tab-item>\n          <bal-tab-item value=\"tab-b\" label=\"Tab B\">Content of Tab B</bal-tab-item>\n          <bal-tab-item value=\"tab-c\" label=\"Tab C\">Content of Tab C</bal-tab-item>\n        </bal-tabs>\n      </section>\n\n      <h2 class=\"title is-size-2\">Steps (Stepper)</h2>\n      <section>\n        <bal-tabs interface=\"steps\">\n          <bal-tab-item value=\"step-a\" label=\"Lorem ipsum dolor sit amet consectetur\" done> Step A Content </bal-tab-item>\n          <bal-tab-item value=\"step-b\" label=\"Step B\" active>Step B Content</bal-tab-item>\n          <bal-tab-item value=\"step-c\" label=\"Step C\" failed>Step C Content</bal-tab-item>\n          <bal-tab-item value=\"step-d\" label=\"Step D\" disabled>Step D Content</bal-tab-item>\n        </bal-tabs>\n      </section>\n\n      <h2 class=\"title is-size-2\">O-Steps (Stepper)</h2>\n      <section>\n        <bal-tabs interface=\"o-steps\" data-test-id=\"steps\">\n          <bal-tab-item value=\"step-a\" label=\"Lorem ipsum dolor sit amet consectetur\" done> Step A Content </bal-tab-item>\n          <bal-tab-item value=\"step-b\" label=\"Step B\" active>Step B Content</bal-tab-item>\n          <bal-tab-item value=\"step-c\" label=\"Step C\" failed>Step C Content</bal-tab-item>\n          <bal-tab-item value=\"step-d\" label=\"Step D\">Step D Content</bal-tab-item>\n          <bal-tab-item value=\"step-d\" label=\"Step D\" disabled>Step D Content</bal-tab-item>\n        </bal-tabs>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-tag/bal-tag.tsx",
       "encapsulation": "none",
       "tag": "bal-tag",
-      "readme": "# Tag\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -8191,17 +8221,12 @@
         "bal-select": [
           "bal-tag"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-tag>Default</bal-tag>\n        <bal-tag color=\"primary\">Primary</bal-tag>\n        <bal-tag color=\"info\">Info</bal-tag>\n        <bal-tag color=\"success\">Success</bal-tag>\n        <bal-tag color=\"warning\">Warning</bal-tag>\n        <bal-tag color=\"danger\">Danger</bal-tag>\n      </section>\n\n      <h2 class=\"title is-size-2\">Size</h2>\n      <section>\n        <bal-tag color=\"primary\" size=\"small\">Small</bal-tag>\n        <bal-tag color=\"info\" size=\"medium\">Medium</bal-tag>\n        <bal-tag color=\"success\" size=\"large\">Large</bal-tag>\n      </section>\n\n      <h2 class=\"title is-size-2\">Closable</h2>\n      <section>\n        <bal-tag color=\"primary\" size=\"small\" closable>Small</bal-tag>\n        <bal-tag color=\"info\" size=\"medium\" closable>Medium</bal-tag>\n        <bal-tag color=\"success\" size=\"large\" closable>Large</bal-tag>\n      </section>\n\n      <h2 class=\"title is-size-2\">Dense</h2>\n      <section>\n        <bal-tag color=\"primary\" size=\"small\" dense closable>Small</bal-tag>\n        <bal-tag color=\"info\" size=\"medium\" dense closable>Medium</bal-tag>\n        <bal-tag color=\"success\" size=\"large\" dense closable>Large</bal-tag>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-text/bal-text.tsx",
       "encapsulation": "none",
       "tag": "bal-text",
-      "readme": "# Text\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -8328,17 +8353,12 @@
         "bal-toast": [
           "bal-text"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>\n      </section>\n\n      <h2 class=\"title is-size-2\">Small</h2>\n      <section>\n        <bal-text small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>\n      </section>\n\n      <h2 class=\"title is-size-2\">Bold</h2>\n      <section>\n        <bal-text bold>Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>\n      </section>\n\n      <h2 class=\"title is-size-2\">Colors</h2>\n      <section>\n        <bal-text color=\"primary\"><strong>Primary</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>\n        <br />\n        <bal-text color=\"info\"><strong>Info</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>\n        <br />\n        <bal-text color=\"hint\"><strong>Hint</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>\n        <br />\n        <bal-text color=\"success\"><strong>Success</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>\n        <br />\n        <bal-text color=\"warning\"><strong>Warning</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>\n        <br />\n        <bal-text color=\"danger\"><strong>Danger</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.</bal-text>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     },
     {
       "filePath": "./src/components/bal-textarea/bal-textarea.tsx",
       "encapsulation": "scoped",
       "tag": "bal-textarea",
-      "readme": "# Textarea <Badge text=\"Two-way binding\"/>\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -8798,17 +8818,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-textarea data-test-id=\"textarea\" name=\"comment\" placeholder=\"Enter your comment\"></bal-textarea>\n      </section>\n      <h2 class=\"title is-size-2\">Disabled</h2>\n      <section>\n        <bal-textarea data-test-id=\"textarea-disabled\" name=\"comment\" disabled placeholder=\"Disabled Textarea\"></bal-textarea>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-timeinput/bal-timeinput.tsx",
       "encapsulation": "scoped",
       "tag": "bal-timeinput",
-      "readme": "# Timeinput\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -8926,17 +8941,12 @@
       "parts": [],
       "dependents": [],
       "dependencies": [],
-      "dependencyGraph": {},
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n\n      <section>\n        <bal-timeinput id=\"bal-timeinput-example\" value=\"12:30\"></bal-timeinput>\n      </section>\n\n      <h2 class=\"title is-size-2\">Inverted style</h2>\n\n      <section class=\"has-background-info has-padding\">\n        <bal-timeinput id=\"bal-timeinput-example\" value=\"12:30\" inverted></bal-timeinput>\n      </section>\n\n      <h2 class=\"title is-size-2\">Min and max time</h2>\n\n      <section>\n        <bal-timeinput value=\"12:30\" min-time=\"09:30\" max-time=\"18:00\"></bal-timeinput>\n      </section>\n\n      <h2 class=\"title is-size-2\">Disabled</h2>\n\n      <section>\n        <bal-timeinput value=\"23:10\" disabled></bal-timeinput>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      "dependencyGraph": {}
     },
     {
       "filePath": "./src/components/bal-toast/bal-toast.tsx",
       "encapsulation": "scoped",
       "tag": "bal-toast",
-      "readme": "# bal-toast\n\n\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -9062,11 +9072,7 @@
           "bal-text",
           "bal-icon"
         ]
-      },
-      "parent": null,
-      "isChild": false,
-      "childComponents": [],
-      "examples": "<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n    <link rel=\"stylesheet\" href=\"/build/design-system-components.css\" />\n    <script type=\"module\" src=\"/build/design-system-components.esm.js\"></script>\n    <script nomodule src=\"/build/design-system-components.js\"></script>\n    <script type=\"module\">\n      import { balToastController } from '/build/index.esm.js'\n\n      window.balToastController = balToastController\n    </script>\n  </head>\n  <body class=\"bal-app\">\n    <div class=\"container\">\n      <h2 class=\"title is-size-2\">Basic</h2>\n      <section>\n        <bal-button id=\"toast-default\" color=\"success\" data-test-id=\"toast\">Show success Toast</bal-button>\n        <bal-button id=\"toast-warning\" color=\"warning\" data-test-id=\"toast-warning\">Show warning Toast</bal-button>\n        <bal-button id=\"toast-danger\" color=\"danger\">Show error Toast</bal-button>\n        <br />\n        <br />\n        <bal-button id=\"toast-clear-all\" color=\"info\" outlined>Clear all toasts</bal-button>\n      </section>\n      <script>\n        document.getElementById('toast-default').onclick = function () {\n          balToastController.create({\n            message: 'Hi I am a default Toast! Hi I am a default Toast!',\n            color: 'success',\n            duration: 1000,\n          })\n        }\n        document.getElementById('toast-warning').onclick = function () {\n          const toast = balToastController.create({ message: 'Warning!', color: 'warning' })\n          setTimeout(() => toast.close, 2000)\n        }\n        document.getElementById('toast-danger').onclick = function () {\n          balToastController.create({\n            message: 'Danger zone!',\n            color: 'danger',\n            closeHandler: function () {\n              alert('Toast closed')\n            },\n          })\n        }\n        document.getElementById('toast-clear-all').onclick = function () {\n          balToastController.clearAll()\n        }\n      </script>\n\n      <h2 class=\"title is-size-2\">Colors</h2>\n      <section>\n        <bal-toast>\n          <strong>Default</strong>\n          Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n        </bal-toast>\n        <bal-toast color=\"primary\">\n          <strong>Primary</strong>\n          Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n        </bal-toast>\n        <bal-toast color=\"info\">\n          <strong>Info</strong>\n          Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n        </bal-toast>\n        <bal-toast color=\"success\">\n          <strong>Success</strong>\n          Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n        </bal-toast>\n        <bal-toast color=\"warning\">\n          <strong>Warning</strong>\n          Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n        </bal-toast>\n        <bal-toast color=\"danger\">\n          <strong>Danger</strong>\n          Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n        </bal-toast>\n      </section>\n    </div>\n  </body>\n</html>\n"
+      }
     }
   ]
 }

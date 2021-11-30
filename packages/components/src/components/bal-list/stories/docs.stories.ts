@@ -3,7 +3,7 @@ import { generateArgType } from '../../../stories/helpers/args'
 import { BalList, BalListItem, BalListItemContent, BalListItemIcon, BalListItemTitle, BalListItemSubtitle } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/List',
+  title: 'Components/List',
   component: BalList,
   subcomponent: { BalListItem, BalListItemContent, BalListItemIcon, BalListItemTitle, BalListItemSubtitle },
   argTypes: generateArgType('bal-list'),

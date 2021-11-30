@@ -1,16 +1,13 @@
 const path = require('path')
-const file = require('../../../.scripts/file')
-const log = require('../../../.scripts/log')
+const file = require('../../../.build/file')
+const log = require('../../../.build/log')
 
-const components = async (isRaw = false) => {
-  const filePath = path.join(__dirname, isRaw ? '../docs/components.raw.json' : '../docs/components.json')
+const components = async () => {
+  const filePath = path.join(__dirname, '../docs/components.json')
   try {
     const content = await file.read(filePath)
     const json = JSON.parse(content)
     log.info(`Read ${json.components.length} components`)
-    if (isRaw) {
-      return json
-    }
     const componentsMap = new Map()
     json.components.forEach(c => {
       if (!c.tag.includes('bal-icon-')) {

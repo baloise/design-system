@@ -3,7 +3,7 @@ import { generateArgType, withContent } from '../../../stories/helpers/args'
 import { BalAccordion } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Accordion',
+  title: 'Components/Accordion',
   component: BalAccordion,
   argTypes: withContent(generateArgType('bal-accordion')),
   parameters: {

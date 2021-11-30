@@ -3,7 +3,7 @@ import { generateArgType } from '../../../stories/helpers/args'
 import { BalFileUpload } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Form/FileUpload',
+  title: 'Components/Form/FileUpload',
   component: BalFileUpload,
   argTypes: generateArgType('bal-file-upload'),
   parameters: {

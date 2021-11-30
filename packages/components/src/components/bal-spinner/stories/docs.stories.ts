@@ -3,7 +3,7 @@ import { generateArgType } from '../../../stories/helpers/args'
 import { BalSpinner } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Spinner',
+  title: 'Components/Spinner',
   component: BalSpinner,
   argTypes: generateArgType('bal-spinner'),
   parameters: {

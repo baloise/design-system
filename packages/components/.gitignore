@@ -8,6 +8,7 @@ storybook-static/
 .storybook/vue
 public/
 old/
+docs/
 
 *~
 *.sw[mnpcod]

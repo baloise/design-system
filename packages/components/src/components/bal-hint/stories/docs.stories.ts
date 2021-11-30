@@ -3,7 +3,7 @@ import { generateArgType, withContent } from '../../../stories/helpers/args'
 import { BalHint, BalHintText, BalHintTitle } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Hint',
+  title: 'Components/Hint',
   component: BalHint,
   subcomponent: { BalHintText, BalHintTitle },
   argTypes: generateArgType('bal-hint'),

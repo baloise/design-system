@@ -3,7 +3,7 @@ import { generateArgType } from '../../../stories/helpers/args'
 import { BalTabs, BalTabItem } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Tabs',
+  title: 'Components/Tabs',
   component: BalTabs,
   subcomponent: { BalTabItem },
   argTypes: generateArgType('bal-tabs'),

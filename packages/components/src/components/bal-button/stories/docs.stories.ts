@@ -3,7 +3,7 @@ import { BalButton } from '../../../../.storybook/vue/components'
 import docs from './readme.docs.mdx'
 
 export default {
-  title: '01-Components/Button',
+  title: 'Components/Button',
   component: BalButton,
   argTypes: withContent(generateArgType('bal-button')),
   parameters: {

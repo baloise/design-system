@@ -24,11 +24,11 @@
   "scripts": {
     "build": "npm run build:clean && npm run build:components && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
     "build:clean": "rimraf dist && rimraf dist-transpiled",
-    "build:components": "node .scripts/components.script.js",
+    "build:components": "node .build/components.js",
     "build:compile": "tsc -p .",
     "build:bundle": "rollup --config rollup.config.js",
-    "build:web-types": "node ./.scripts/build-web-types.js",
-    "build:vetur": "node ./.scripts/build-vetur.js",
+    "build:web-types": "node ./.build/web-types.js",
+    "build:vetur": "node ./.build/vetur.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.js",

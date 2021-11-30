@@ -22,7 +22,7 @@
     "bulma-css"
   ],
   "scripts": {
-    "docs": "node .scripts/archive.script.js",
+    "build": "node .build/archive.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./lib/fonts.css",

@@ -3,7 +3,7 @@ import { generateArgType } from '../../../stories/helpers/args'
 import { BalTimeinput } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Form/Timeinput',
+  title: 'Components/Form/Timeinput',
   component: BalTimeinput,
   argTypes: generateArgType('bal-timeinput'),
   parameters: {

@@ -3,7 +3,7 @@ import { generateArgType } from '../../../stories/helpers/args'
 import { BalDatepicker } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Form/Datepicker',
+  title: 'Components/Form/Datepicker',
   component: BalDatepicker,
   argTypes: generateArgType('bal-datepicker'),
   parameters: {

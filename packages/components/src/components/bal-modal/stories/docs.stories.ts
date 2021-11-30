@@ -4,7 +4,7 @@ import { BalModal, BalModalHeader, BalModalBody, BalModalFooter, BalModalActions
 import docs from './readme.docs.mdx'
 
 export default {
-  title: '01-Components/Modal',
+  title: 'Components/Modal',
   component: BalModal,
   subcomponents: { BalModalHeader, BalModalBody, BalModalFooter, BalModalActions },
   argTypes: generateArgType('bal-modal'),

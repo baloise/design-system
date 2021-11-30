@@ -1,7 +1,7 @@
 import dedent from 'ts-dedent'
 import { paramCase } from 'param-case'
 import { defineCustomElements } from '../dist/custom-elements/index'
-import { DocsPage } from '@storybook/addon-docs/blocks'
+// import { DocsPage } from '@storybook/addon-docs'
 
 defineCustomElements()
 
@@ -93,25 +93,19 @@ export const parameters = {
       return src
     },
   },
-  // options: {
-  //   storySort: {
-  //     order: [
-  //       'Getting started',
-  //       [
-  //         'Intro',
-  //         'Installing the Kit',
-  //         'Using the Kit',
-  //         'Recommended libraries',
-  //         'Design resources',
-  //         'Browser support',
-  //         "What's new",
-  //         'Support and Feedback',
-  //         'Credits',
-  //       ],
-  //       'Documentation',
-  //       'Templates',
-  //       'Components',
-  //     ],
-  //   },
-  // },
+  options: {
+    storySort: {
+      order: [
+        'Welcome',
+        'Why a Design System',
+        'Architecture',
+        'Changelog',
+        'Getting-Started',
+        ['Overview', 'HTML5', 'Angular', 'Vue', 'React'],
+        'Design',
+        ['Overview', 'Colors', 'Typography', 'Breakpoints', 'Spacing', 'Icons', 'Grid', 'Page Layout', 'Form'],
+        'Components',
+      ],
+    },
+  },
 }

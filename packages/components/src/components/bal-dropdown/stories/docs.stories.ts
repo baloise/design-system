@@ -4,7 +4,7 @@ import { generateArgType, withContent } from '../../../stories/helpers/args'
 import { BalDropdown, BalDropdownMenu, BalDropdownTrigger } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Dropdown',
+  title: 'Components/Dropdown',
   component: BalDropdown,
   subcomponent: { BalDropdownMenu, BalDropdownTrigger },
   argTypes: withContent(generateArgType('bal-dropdown')),

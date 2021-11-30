@@ -4,7 +4,7 @@ import { marvelHeros } from './examples.docs'
 import docs from './readme.docs.mdx'
 
 export default {
-  title: '01-Components/Form/Select',
+  title: 'Components/Form/Select',
   component: BalSelect,
   argTypes: generateArgType('bal-select'),
   parameters: {

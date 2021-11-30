@@ -3,7 +3,7 @@ import { generateArgType, withContent } from '../../../stories/helpers/args'
 import { BalNotification } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Notification',
+  title: 'Components/Notification',
   component: BalNotification,
   argTypes: withContent(generateArgType('bal-notification')),
   parameters: {

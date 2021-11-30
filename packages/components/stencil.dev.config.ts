@@ -16,9 +16,12 @@ export const config: Config = {
       type: 'www',
       dir: 'public',
       copy: [
-        { src: 'assets/fonts', warn: true },
+        { src: 'stories/assets/images', dest: 'assets/images', warn: true },
         { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
         { src: '../../components-table/css/design-system-table.css', dest: 'assets/css/design-system-table.css', warn: true },
+        { src: '../../fonts/docs/fonts.zip', dest: 'assets/download/fonts.zip', warn: true },
+        { src: '../../icons/docs/icons.zip', dest: 'assets/download/icons.zip', warn: true },
+        { src: '../../icons/docs/icons.json', dest: '../docs/icons.json', warn: true },
       ],
     },
     VueGenerator('../../public/build/design-system-components.esm.js', './.storybook/vue/components.ts'),

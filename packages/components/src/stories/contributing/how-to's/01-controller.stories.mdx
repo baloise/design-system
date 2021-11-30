@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Contributing/How to's/Controller"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Write your own Controller
+
+Controllers programmatically control the components. For example the `balToastController` adds toasts to the DOM.
+
+## Define Controller File
+
+Create your controller file in the component folder like `src/components/bal-component/bal-component.controller.ts` and add the following code.
+Replace the `Component` placeholder with your component name.
+
+```typescript
+// src/components/bal-component/bal-component.controller.ts
+
+interface BalComponentOptions {
+  // Define your options here
+}
+
+class BalComponentController {
+  method(options: BalComponentOptions): HTMLBalComponentElement {
+    // Define your method logic here
+  }
+}
+
+export const balComponentController = new BalComponentController()
+```
+
+## Link controller to the Project
+
+To register the controller globally we have to add it to the `src/controllers.ts` file.
+
+```typescript
+// src/index.ts
+
+...
+export {balComponentController} from "./components/bal-component/bal-component.controller";
+
+```
+
+## Link controller to the Documentation
+
+To use your controller in your component documentation we have to expose it to the window object.
+Just import your controller in the index.html and add it to the window object.
+
+```html
+<!-- src/index.html -->
+
+...
+<script type="module">
+  import { balComponentController } from '/build/index.esm.js'
+
+  window.balComponentController = balComponentController
+</script>
+...
+```
+
+## Examples
+
+- [Toast](components/bal-toast/readme.md)

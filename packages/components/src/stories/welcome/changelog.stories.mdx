@@ -1,0 +1,13 @@
+import { Meta, Description } from '@storybook/addon-docs'
+import changelog from '../../../CHANGELOG.md'
+
+<Meta
+  title="Changelog"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Description markdown={changelog} />

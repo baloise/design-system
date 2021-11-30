@@ -3,7 +3,7 @@ import { generateArgType } from '../../../stories/helpers/args'
 import { BalSheet } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Sheet',
+  title: 'Components/Sheet',
   component: BalSheet,
   argTypes: generateArgType('bal-sheet'),
   parameters: {

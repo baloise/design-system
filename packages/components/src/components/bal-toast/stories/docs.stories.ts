@@ -4,7 +4,7 @@ import { balToastController } from '../../../../dist/design-system-components/in
 import docs from './readme.docs.mdx'
 
 export default {
-  title: '01-Components/Toast',
+  title: 'Components/Toast',
   component: BalToast,
   argTypes: generateArgType('bal-toast'),
   args: {

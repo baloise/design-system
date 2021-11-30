@@ -3,7 +3,7 @@ import { generateArgType, withContent } from '../../../stories/helpers/args'
 import { BalData, BalDataItem, BalDataLabel, BalDataValue } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Data',
+  title: 'Components/Data',
   component: BalData,
   subcomponents: {
     BalDataItem,

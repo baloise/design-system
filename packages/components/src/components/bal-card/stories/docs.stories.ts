@@ -13,7 +13,7 @@ import {
 } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Card',
+  title: 'Components/Card',
   component: BalCard,
   subcomponents: {
     BalCardActions,

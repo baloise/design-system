@@ -4,7 +4,7 @@ import { balSnackbarController } from '../../../../dist/design-system-components
 import docs from './readme.docs.mdx'
 
 export default {
-  title: '01-Components/Snackbar',
+  title: 'Components/Snackbar',
   component: BalSnackbar,
   argTypes: generateArgType('bal-snackbar'),
   args: {

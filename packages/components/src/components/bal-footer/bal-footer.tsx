@@ -21,10 +21,10 @@ export class Footer {
   /**
    * If `true` the default Baloise links will be hidden.
    */
-   @Prop() hideLinks: boolean = false;
+  @Prop() hideLinks: boolean = false
 
-   @State()
-  links: FooterLink[] = [];
+  @State()
+  links: FooterLink[] = []
 
   connectedCallback() {
     this.updateFooterLinks()
@@ -36,7 +36,9 @@ export class Footer {
   }
 
   updateFooterLinks() {
-    loadFooterLinks(new Language(this.locale)).then(links => this.links = links);
+    if (this.hideLinks) {
+      loadFooterLinks(new Language(this.locale)).then(links => (this.links = links))
+    }
   }
 
   render() {
@@ -49,13 +51,17 @@ export class Footer {
           }}
         >
           <slot></slot>
-          { this.hideLinks ? '' :
+          {this.hideLinks ? (
+            ''
+          ) : (
             <div class="footer-links-container p-1">
-            {this.links.map((link) =>
-              <a class="is-link is-inverted pr-4" href={link.link}>{link.label}</a>
-            )}
+              {this.links.map(link => (
+                <a class="is-link is-inverted pr-4" href={link.link}>
+                  {link.label}
+                </a>
+              ))}
             </div>
-          }
+          )}
         </footer>
       </Host>
     )

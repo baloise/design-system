@@ -3,7 +3,7 @@ import { generateArgType } from '../../../stories/helpers/args'
 import { BalNavbar, BalNavbarBrand, BalNavbarMenu, BalNavbarMenuEnd, BalNavbarMenuStart } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Navbar',
+  title: 'Components/Navbar',
   component: BalNavbar,
   subcomponent: { BalNavbarBrand, BalNavbarMenu, BalNavbarMenuEnd, BalNavbarMenuStart },
   argTypes: generateArgType('bal-navbar'),

@@ -3,7 +3,7 @@ import { generateArgType, withContent } from '../../../stories/helpers/args'
 import { BalInput } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Form/Input',
+  title: 'Components/Form/Input',
   component: BalInput,
   argTypes: generateArgType('bal-input'),
   parameters: {

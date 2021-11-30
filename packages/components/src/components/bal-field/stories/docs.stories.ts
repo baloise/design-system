@@ -3,7 +3,7 @@ import { generateArgType, withContent } from '../../../stories/helpers/args'
 import { BalField, BalFieldControl, BalFieldHint, BalFieldLabel, BalFieldMessage } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Form/Field',
+  title: 'Components/Form/Field',
   component: BalField,
   subcomponent: { BalFieldControl, BalFieldHint, BalFieldLabel, BalFieldMessage },
   argTypes: generateArgType('bal-field'),

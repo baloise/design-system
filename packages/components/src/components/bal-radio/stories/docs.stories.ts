@@ -3,7 +3,7 @@ import { generateArgType } from '../../../stories/helpers/args'
 import { BalRadio, BalRadioGroup } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Form/Radio',
+  title: 'Components/Form/Radio',
   component: BalRadioGroup,
   subcomponent: { BalRadio },
   argTypes: generateArgType('bal-radio-group'),

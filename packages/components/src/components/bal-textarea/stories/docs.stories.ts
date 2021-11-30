@@ -3,7 +3,7 @@ import { generateArgType } from '../../../stories/helpers/args'
 import { BalTextarea } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Form/Textarea',
+  title: 'Components/Form/Textarea',
   component: BalTextarea,
   argTypes: generateArgType('bal-textarea'),
   parameters: {

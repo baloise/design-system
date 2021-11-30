@@ -3,7 +3,7 @@ import { generateArgType, withContent } from '../../../stories/helpers/args'
 import { BalTag } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Tag',
+  title: 'Components/Tag',
   component: BalTag,
   argTypes: withContent(generateArgType('bal-tag')),
   parameters: {

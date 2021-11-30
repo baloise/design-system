@@ -1,0 +1,76 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/Angular/IE 11 Support"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# IE 11 Support
+
+In this section we will explain how to support Internet Explorer 11 with Angular.
+
+## Step 1 - Targeting ES5
+
+Update the target in the `tsconfig.json` file, because IE11 only supports ES5.
+
+```json
+"compilerOptions": {
+    ...
+    "target": "es5"
+}
+```
+
+## Step 2 - Broswerlist
+
+Replace `not IE 9-11` with the following in the `browserlist` file.
+
+```
+not IE 9-10
+IE 11
+```
+
+## Step 3 - Polyfills
+
+The Baloise Baloise Design System & Angular uses features from ES6+, so we have to install polyfills to support those.
+All the polyfills in Angular are managed in the file `polyfills.ts`. First we need to install the required polyfils.
+
+```bash
+npm install --save classlist.js web-animations-js @webcomponents/custom-elements
+```
+
+Near the top of the `polyfills.ts` file add the following polyfills.
+
+```TypeScript
+// for browser not supporting custom elements
+import '@webcomponents/custom-elements/custom-elements.min.js';
+/** For IE 11 */
+import 'core-js/es/promise';
+import 'core-js/es/string';
+import 'core-js/es/map';
+import 'core-js/es/set';
+import 'core-js/es/array';
+```
+
+Uncomment the `classlist.js` import.
+
+```TypeScript
+/**
+ * IE11 requires the following for NgClass support on SVG elements
+ */
+import 'classlist.js';
+```
+
+Uncomment the `web-animations-js` import.
+
+```TypeScript
+/**
+ * Web Animations `@angular/platform-browser/animations`
+ * Only required if AnimationBuilder is used within the application and using IE/Edge or Safari.
+ * Standard animation support in Angular DOES NOT require any polyfills (as of Angular 6.0).
+ */
+import 'web-animations-js';
+```

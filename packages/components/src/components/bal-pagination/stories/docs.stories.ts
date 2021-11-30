@@ -3,7 +3,7 @@ import { generateArgType } from '../../../stories/helpers/args'
 import { BalPagination } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Pagination',
+  title: 'Components/Pagination',
   component: BalPagination,
   argTypes: generateArgType('bal-pagination'),
   parameters: {

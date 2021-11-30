@@ -3,7 +3,7 @@ import { generateArgType, withContent } from '../../../stories/helpers/args'
 import { BalFooter } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Footer',
+  title: 'Components/Footer',
   component: BalFooter,
   argTypes: withContent(generateArgType('bal-footer')),
   parameters: {

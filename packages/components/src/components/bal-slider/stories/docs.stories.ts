@@ -3,7 +3,7 @@ import { generateArgType } from '../../../stories/helpers/args'
 import { BalSlider } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Form/Slider',
+  title: 'Components/Form/Slider',
   component: BalSlider,
   argTypes: generateArgType('bal-slider'),
   parameters: {

@@ -3,7 +3,7 @@ import { generateArgType, withContent } from '../../../stories/helpers/args'
 import { BalApp } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/App',
+  title: 'Components/App',
   component: BalApp,
   argTypes: withContent(generateArgType('bal-app')),
   parameters: {

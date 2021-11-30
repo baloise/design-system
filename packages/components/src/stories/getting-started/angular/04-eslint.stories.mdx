@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/Angular/ESLint"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# ESLint
+
+To use eslint add the `@angular-eslint/schematics`.
+
+```bash
+ng add @angular-eslint/schematics
+```
+
+Lets configure eslint rules.
+First we need to extend the ESLint rules to improve our linting rules.
+Open the `eslintrc.json` file and add the missing rules.

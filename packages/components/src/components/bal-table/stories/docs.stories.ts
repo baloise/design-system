@@ -9,7 +9,7 @@ import { tableHtml } from './examples.docs'
 import { BalTableButtonRenderer, BalTableTagRenderer, BalTableTextRenderer } from '../../../../../components-table/dist/index.esm'
 
 export default {
-  title: '01-Components/Table',
+  title: 'Components/Table',
   component: BalTable,
   argTypes: generateArgType('bal-table'),
   parameters: {

@@ -3,7 +3,7 @@ import { generateArgType, withContent } from '../../../stories/helpers/args'
 import { BalCheckbox } from '../../../../.storybook/vue/components'
 
 export default {
-  title: '01-Components/Form/Checkbox',
+  title: 'Components/Form/Checkbox',
   component: BalCheckbox,
   argTypes: withContent(generateArgType('bal-checkbox')),
   parameters: {

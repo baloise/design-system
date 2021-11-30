@@ -427,6 +427,28 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    interface BalDocColor {
+        "background": boolean;
+        "color": string;
+        "description": string;
+        "inverted": boolean;
+        "scssVars": string;
+        "subject": string;
+    }
+    interface BalDocDownload {
+        "iconLeft": string;
+        "iconRight": string;
+        "link": string;
+        "subject": string;
+        "subtitle": string;
+    }
+    interface BalDocIcons {
+        "icons": string;
+    }
+    interface BalDocImage {
+        "src": string;
+        "text": string;
+    }
     interface BalDropdown {
         /**
           * Closes the dropdown menu.
@@ -1577,6 +1599,30 @@ declare global {
         prototype: HTMLBalDatepickerElement;
         new (): HTMLBalDatepickerElement;
     };
+    interface HTMLBalDocColorElement extends Components.BalDocColor, HTMLStencilElement {
+    }
+    var HTMLBalDocColorElement: {
+        prototype: HTMLBalDocColorElement;
+        new (): HTMLBalDocColorElement;
+    };
+    interface HTMLBalDocDownloadElement extends Components.BalDocDownload, HTMLStencilElement {
+    }
+    var HTMLBalDocDownloadElement: {
+        prototype: HTMLBalDocDownloadElement;
+        new (): HTMLBalDocDownloadElement;
+    };
+    interface HTMLBalDocIconsElement extends Components.BalDocIcons, HTMLStencilElement {
+    }
+    var HTMLBalDocIconsElement: {
+        prototype: HTMLBalDocIconsElement;
+        new (): HTMLBalDocIconsElement;
+    };
+    interface HTMLBalDocImageElement extends Components.BalDocImage, HTMLStencilElement {
+    }
+    var HTMLBalDocImageElement: {
+        prototype: HTMLBalDocImageElement;
+        new (): HTMLBalDocImageElement;
+    };
     interface HTMLBalDropdownElement extends Components.BalDropdown, HTMLStencilElement {
     }
     var HTMLBalDropdownElement: {
@@ -1896,6 +1942,10 @@ declare global {
         "bal-data-label": HTMLBalDataLabelElement;
         "bal-data-value": HTMLBalDataValueElement;
         "bal-datepicker": HTMLBalDatepickerElement;
+        "bal-doc-color": HTMLBalDocColorElement;
+        "bal-doc-download": HTMLBalDocDownloadElement;
+        "bal-doc-icons": HTMLBalDocIconsElement;
+        "bal-doc-image": HTMLBalDocImageElement;
         "bal-dropdown": HTMLBalDropdownElement;
         "bal-dropdown-menu": HTMLBalDropdownMenuElement;
         "bal-dropdown-trigger": HTMLBalDropdownTriggerElement;
@@ -2380,6 +2430,28 @@ declare namespace LocalJSX {
           * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
         "value"?: string | null;
+    }
+    interface BalDocColor {
+        "background"?: boolean;
+        "color"?: string;
+        "description"?: string;
+        "inverted"?: boolean;
+        "scssVars"?: string;
+        "subject"?: string;
+    }
+    interface BalDocDownload {
+        "iconLeft"?: string;
+        "iconRight"?: string;
+        "link"?: string;
+        "subject"?: string;
+        "subtitle"?: string;
+    }
+    interface BalDocIcons {
+        "icons"?: string;
+    }
+    interface BalDocImage {
+        "src"?: string;
+        "text"?: string;
     }
     interface BalDropdown {
         /**
@@ -3478,6 +3550,10 @@ declare namespace LocalJSX {
         "bal-data-label": BalDataLabel;
         "bal-data-value": BalDataValue;
         "bal-datepicker": BalDatepicker;
+        "bal-doc-color": BalDocColor;
+        "bal-doc-download": BalDocDownload;
+        "bal-doc-icons": BalDocIcons;
+        "bal-doc-image": BalDocImage;
         "bal-dropdown": BalDropdown;
         "bal-dropdown-menu": BalDropdownMenu;
         "bal-dropdown-trigger": BalDropdownTrigger;
@@ -3552,6 +3628,10 @@ declare module "@stencil/core" {
             "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
             "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
+            "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
+            "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
+            "bal-doc-icons": LocalJSX.BalDocIcons & JSXBase.HTMLAttributes<HTMLBalDocIconsElement>;
+            "bal-doc-image": LocalJSX.BalDocImage & JSXBase.HTMLAttributes<HTMLBalDocImageElement>;
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
             "bal-dropdown-menu": LocalJSX.BalDropdownMenu & JSXBase.HTMLAttributes<HTMLBalDropdownMenuElement>;
             "bal-dropdown-trigger": LocalJSX.BalDropdownTrigger & JSXBase.HTMLAttributes<HTMLBalDropdownTriggerElement>;
