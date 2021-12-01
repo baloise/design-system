@@ -36,7 +36,7 @@ export const square = `
 </div>`
 
 export const buttonLink = `
-<bal-button link href="https://github.com/baloise/design-system-components" target="_blank">GitHub</bal-button>`
+<bal-button href="https://github.com/baloise/design-system-components" target="_blank">GitHub</bal-button>`
 
 export const group = `
 <div>

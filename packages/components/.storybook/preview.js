@@ -1,7 +1,6 @@
 import dedent from 'ts-dedent'
 import { paramCase } from 'param-case'
 import { defineCustomElements } from '../dist/custom-elements/index'
-// import { DocsPage } from '@storybook/addon-docs'
 
 defineCustomElements()
 

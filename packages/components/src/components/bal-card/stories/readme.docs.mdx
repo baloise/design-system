@@ -2,47 +2,49 @@ import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/helpers/docs'
 import { withCard, withList } from './examples.docs.ts'
 import readme from '../readme.md'
-import cardTitle from '../../bal-card-title/readme.md'
-import cardSubtitle from '../../bal-card-subtitle/readme.md'
-import cardHeading from '../../bal-card-heading/readme.md'
-import cardHead from '../../bal-card-head/readme.md'
-import cardContent from '../../bal-card-content/readme.md'
-import cardSteps from '../../bal-card-steps/readme.md'
-import cardActions from '../../bal-card-actions/readme.md'
-import cardButton from '../../bal-card-button/readme.md'
+import cardTitle from '../bal-card-title/readme.md'
+import cardSubtitle from '../bal-card-subtitle/readme.md'
+import cardHeading from '../bal-card-heading/readme.md'
+import cardHead from '../bal-card-head/readme.md'
+import cardContent from '../bal-card-content/readme.md'
+import cardSteps from '../bal-card-steps/readme.md'
+import cardActions from '../bal-card-actions/readme.md'
+import cardButton from '../bal-card-button/readme.md'
 
-<span id="story--Components-card--basic" style={{ opacity: 0 }}></span>
+<span id="story--components-card--basic" style={{ opacity: 0 }}></span>
 
 # Card
 
 Cards contain content and actions about a single subject and can be combined with other components.
 
 <Canvas>
-  <Story id="Components-card--basic" />
+  <Story id="components-card--basic" />
 </Canvas>
 
 ## With List
 
+The position the action buttons to the right side just add the attribute `right` to the component `bal-card-actions`.
+
 <Canvas>
-  <Story id="Components-card--with-list" />
+  <Story id="components-card--with-list" />
 </Canvas>
 
 ## With Accordion
 
 <Canvas>
-  <Story id="Components-card--with-accordion" />
+  <Story id="components-card--with-accordion" />
 </Canvas>
 
 ## Summary
 
 <Canvas>
-  <Story id="Components-card--summary" />
+  <Story id="components-card--summary" />
 </Canvas>
 
 ## Service
 
 <Canvas>
-  <Story id="Components-card--service" />
+  <Story id="components-card--service" />
 </Canvas>
 
 ## Component Api

@@ -1,0 +1,18 @@
+@import '../../../styles/global.utilities';
+
+:host {
+  position: static;
+  width: 100%;
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  min-width: 100%;
+}
+
+::slotted(bal-button) {
+  margin-right: 8px;
+}
+
+::slotted(bal-button:first-child) {
+  margin-right: 0;
+}

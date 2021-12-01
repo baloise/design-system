@@ -6,10 +6,12 @@
   "command": {
     "publish": {
       "ignoreChanges": [
-        "docs/**",
+        ".build/**",
+        ".github/**",
         "examples/**",
         "resources/**",
         "**/*.md",
+        "**/*.mdx",
         "**/*.html"
       ],
       "message": "chore(): release"

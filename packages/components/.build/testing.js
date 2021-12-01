@@ -63,8 +63,8 @@ const run = async () => {
     }
   })
 
-  await file.makeDir(path.join(__dirname, '../docs'))
-  await file.save(path.join(__dirname, '../docs/commands.json'), JSON.stringify(commands))
+  await file.makeDir(path.join(__dirname, '../generated'))
+  await file.save(path.join(__dirname, '../generated/commands.json'), JSON.stringify(commands))
 }
 
 run()

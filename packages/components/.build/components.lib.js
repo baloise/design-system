@@ -3,7 +3,7 @@ const file = require('../../../.build/file')
 const log = require('../../../.build/log')
 
 const components = async () => {
-  const filePath = path.join(__dirname, '../docs/components.json')
+  const filePath = path.join(__dirname, '../generated/components.json')
   try {
     const content = await file.read(filePath)
     const json = JSON.parse(content)
@@ -16,7 +16,7 @@ const components = async () => {
     })
     return componentsMap
   } catch (error) {
-    log.error(`Could not read file '${filePath}'. Maybe run 'npm run lib:docs' first.`, error)
+    log.error(`Could not read file '${filePath}'. Maybe run 'npm run build' first.`, error)
     return process.exit(1)
   }
 }

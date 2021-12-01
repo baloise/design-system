@@ -12,7 +12,7 @@ const log = require('../../../.build/log')
 const main = async () => {
   await log.title('icons: archive')
 
-  const docsDir = path.join(__dirname, '../docs')
+  const docsDir = path.join(__dirname, '../generated')
   if (!fs.existsSync(docsDir)) {
     fs.mkdirSync(docsDir)
   }

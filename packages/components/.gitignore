@@ -7,8 +7,7 @@ src/stories/assets/components.d.ts
 storybook-static/
 .storybook/vue
 public/
-old/
-docs/
+generated/
 
 *~
 *.sw[mnpcod]

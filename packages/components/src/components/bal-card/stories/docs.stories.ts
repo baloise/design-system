@@ -1,5 +1,5 @@
 import docs from './readme.docs.mdx'
-import { generateArgType, withContent } from '../../../stories/helpers/args'
+import { generateArgType } from '../../../stories/helpers/args'
 import {
   BalCard,
   BalCardActions,

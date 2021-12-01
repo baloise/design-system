@@ -74,7 +74,7 @@ const main = async () => {
 
   await file.save(path.join(__dirname, '../src/icons.ts'), lines.join(NEWLINE))
   await file.save(
-    path.join(__dirname, '../docs/icons.json'),
+    path.join(__dirname, '../generated/icons.json'),
     JSON.stringify([...contents.keys()].map(c => c.replace('icon-', ''))),
   )
 }

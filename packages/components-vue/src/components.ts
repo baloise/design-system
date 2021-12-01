@@ -101,11 +101,6 @@ export const BalButton = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
-    link: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
     href: {
       type: String,
       default: undefined,

@@ -7,8 +7,8 @@ import { eventsToMarkdown } from './markdown-events'
 import { methodsToMarkdown } from './markdown-methods'
 import { slotsToMarkdown } from './markdown-slots'
 import { NEWLINE, SPACE } from './constants'
-import testingCommands from '../../docs/commands.json'
-import contributors from '../../docs/contributors.json'
+import testingCommands from '../../generated/commands.json'
+import contributors from '../../generated/contributors.json'
 
 export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
   type: 'docs-custom',
@@ -36,7 +36,7 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         console.error(err)
       }
 
-      const docsPath = path.join(component.dirPath, 'docs')
+      const docsPath = path.join(component.dirPath, 'generated')
       if (existsSync(docsPath)) {
         // Testing
         try {
@@ -84,7 +84,6 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
             '<!-- END: human documentation -->',
             SPACE,
             ...commandsToMarkdown(componentCommands),
-            SPACE,
           ]
 
           writeFileSync(pathToTestingMarkdown, content.join(NEWLINE))

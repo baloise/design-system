@@ -24,7 +24,7 @@ export const config: Config = {
     },
     {
       type: 'docs-json',
-      file: './docs/components.json',
+      file: './generated/components.json',
     },
     CustomDocumentationGenerator,
     VueGenerator(),

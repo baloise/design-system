@@ -20,3 +20,15 @@ ng add @angular-eslint/schematics
 Lets configure eslint rules.
 First we need to extend the ESLint rules to improve our linting rules.
 Open the `eslintrc.json` file and add the missing rules.
+
+```json
+...
+"extends": [
+  "eslint:recommended",
+  "plugin:@angular-eslint/recommended",
+  "plugin:@angular-eslint/template/process-inline-templates",
+  "plugin:@typescript-eslint/recommended",
+  "plugin:@typescript-eslint/recommended-requiring-type-checking"
+],
+...
+```

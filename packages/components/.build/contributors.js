@@ -13,7 +13,7 @@ async function main() {
       avatar: u.avatar_url,
     }))
 
-  await file.save(path.join(__dirname, '../docs/contributors.json'), JSON.stringify(users))
+  await file.save(path.join(__dirname, '../generated/contributors.json'), JSON.stringify(users))
 }
 
 main()

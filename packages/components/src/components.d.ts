@@ -8,8 +8,8 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
 import { BalButtonColor } from "./components/bal-button/bal.button.type";
 import { PaddingCardType, SpacingCardType } from "./types/padding.types";
-import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
-import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
+import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
+import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
 import { AutocompleteTypes, InputTypes } from "./types/interfaces";
 import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
@@ -112,10 +112,6 @@ export namespace Components {
           * If `true` the button has a active theme
          */
         "isActive": boolean;
-        /**
-          * Turn the button in to a link.
-         */
-        "link": boolean;
         /**
           * If `true` the label is hidden and a loading spinner is shown instead.
          */
@@ -2088,10 +2084,6 @@ declare namespace LocalJSX {
           * If `true` the button has a active theme
          */
         "isActive"?: boolean;
-        /**
-          * Turn the button in to a link.
-         */
-        "link"?: boolean;
         /**
           * If `true` the label is hidden and a loading spinner is shown instead.
          */
