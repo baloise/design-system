@@ -1,4 +1,4 @@
-import { generateArgType } from '../../../stories/helpers/args'
+import { stencilArgType } from '../../../stories/utils'
 import { BalSnackbar } from '../../../../.storybook/vue/components'
 import { balSnackbarController } from '../../../../dist/design-system-components/index.esm'
 import docs from './readme.docs.mdx'
@@ -6,7 +6,9 @@ import docs from './readme.docs.mdx'
 export default {
   title: 'Components/Snackbar',
   component: BalSnackbar,
-  argTypes: generateArgType('bal-snackbar'),
+  argTypes: {
+    ...stencilArgType('bal-snackbar'),
+  },
   args: {
     message: 'Hello World',
     duration: 2000,

@@ -83,7 +83,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@baloise/angular-output-target": "^1.0.15",
-    "@baloise/vue-output-target": "^0.2.6",
+    "@baloise/vue-output-target": "^0.5.0",
     "@stencil/postcss": "^2.1.0",
     "@stencil/react-output-target": "^0.1.0",
     "@stencil/sass": "^1.5.2",
@@ -112,6 +112,7 @@
     "html-react-parser": "^1.4.0",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
+    "js-beautify": "^1.14.0",
     "param-case": "^3.0.4",
     "prettier": "2.5.0",
     "puppeteer": "^10.4.0",

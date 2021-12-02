@@ -81,7 +81,7 @@ const generateEvents = component => {
   return eventTypes
 }
 
-export const withContent = (argType = {}) => ({
+export const withContent = () => ({
   content: {
     description: 'Content of the component',
     table: {
@@ -90,10 +90,9 @@ export const withContent = (argType = {}) => ({
     },
     control: { type: 'text' },
   },
-  ...argType,
 })
 
-export const generateArgType = (tag: string, extendedArgTypes = {}): any => {
+export const stencilArgType = (tag: string): any => {
   const component = findComponent(tag)
   if (!component) {
     return {}
@@ -101,6 +100,5 @@ export const generateArgType = (tag: string, extendedArgTypes = {}): any => {
   return {
     ...generateProps(component),
     ...generateEvents(component),
-    ...extendedArgTypes,
   }
 }

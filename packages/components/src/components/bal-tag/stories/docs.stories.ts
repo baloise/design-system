@@ -1,11 +1,14 @@
 import docs from './readme.docs.mdx'
-import { generateArgType, withContent } from '../../../stories/helpers/args'
+import { stencilArgType, withContent } from '../../../stories/utils'
 import { BalTag } from '../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/Tag',
   component: BalTag,
-  argTypes: withContent(generateArgType('bal-tag')),
+  argTypes: {
+    ...stencilArgType('bal-tag'),
+    ...withContent(),
+  },
   parameters: {
     docs: {
       page: docs,

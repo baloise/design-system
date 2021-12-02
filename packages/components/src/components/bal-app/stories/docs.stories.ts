@@ -1,11 +1,27 @@
 import docs from './readme.docs.mdx'
-import { generateArgType, withContent } from '../../../stories/helpers/args'
-import { BalApp } from '../../../../.storybook/vue/components'
+import { stencilArgType, withContent } from '../../../stories/utils'
+import {
+  BalApp,
+  BalCard,
+  BalFooter,
+  BalButton,
+  BalCardActions,
+  BalCardTitle,
+  BalCardSubtitle,
+  BalCardContent,
+  BalNavbar,
+  BalNavbarBrand,
+  BalText,
+  BalIcon,
+} from '../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/App',
   component: BalApp,
-  argTypes: withContent(generateArgType('bal-app')),
+  argTypes: {
+    ...stencilArgType('bal-app'),
+    ...withContent(),
+  },
   parameters: {
     docs: {
       page: docs,
@@ -14,7 +30,20 @@ export default {
 }
 
 const Template = args => ({
-  components: { BalApp },
+  components: {
+    BalApp,
+    BalCard,
+    BalFooter,
+    BalButton,
+    BalCardActions,
+    BalCardTitle,
+    BalCardSubtitle,
+    BalCardContent,
+    BalNavbar,
+    BalNavbarBrand,
+    BalText,
+    BalIcon,
+  },
   setup: () => ({ args }),
   template: `<bal-app v-bind="args">
   <header class="has-background-white">

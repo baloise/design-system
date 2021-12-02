@@ -1,11 +1,13 @@
 import docs from './readme.docs.mdx'
-import { generateArgType } from '../../../../stories/helpers/args'
+import { stencilArgType } from '../../../../stories/utils'
 import { BalTimeinput } from '../../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/Form/Timeinput',
   component: BalTimeinput,
-  argTypes: generateArgType('bal-timeinput'),
+  argTypes: {
+    ...stencilArgType('bal-timeinput'),
+  },
   parameters: {
     docs: {
       page: docs,

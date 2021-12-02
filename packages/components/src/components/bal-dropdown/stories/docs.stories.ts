@@ -1,13 +1,22 @@
 import { ref, watchEffect } from 'vue'
 import docs from './readme.docs.mdx'
-import { generateArgType, withContent } from '../../../stories/helpers/args'
-import { BalDropdown, BalDropdownMenu, BalDropdownTrigger } from '../../../../.storybook/vue/components'
+import { stencilArgType, withContent } from '../../../stories/utils'
+import { BalDropdown, BalDropdownMenu, BalDropdownTrigger, BalButton } from '../../../../.storybook/vue/components'
+
+const subcomponent = { BalDropdownMenu, BalDropdownTrigger }
+const components = {
+  BalDropdown,
+  ...subcomponent,
+}
 
 export default {
   title: 'Components/Dropdown',
   component: BalDropdown,
-  subcomponent: { BalDropdownMenu, BalDropdownTrigger },
-  argTypes: withContent(generateArgType('bal-dropdown')),
+  subcomponent,
+  argTypes: {
+    ...stencilArgType('bal-dropdown'),
+    ...withContent(),
+  },
   parameters: {
     docs: {
       page: docs,
@@ -16,7 +25,7 @@ export default {
 }
 
 const Template = args => ({
-  components: { BalDropdown, BalDropdownMenu, BalDropdownTrigger },
+  components: { ...components, BalButton },
   setup: () => {
     const isActive = ref(true)
 
@@ -26,7 +35,6 @@ const Template = args => ({
 
     watchEffect(() => {
       isActive.value = args.isActive
-      console.log('watch', args)
     })
 
     return {

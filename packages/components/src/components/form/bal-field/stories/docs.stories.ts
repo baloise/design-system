@@ -1,12 +1,14 @@
 import docs from './readme.docs.mdx'
-import { generateArgType, withContent } from '../../../../stories/helpers/args'
+import { stencilArgType, withContent } from '../../../../stories/utils'
 import { BalField, BalFieldControl, BalFieldHint, BalFieldLabel, BalFieldMessage } from '../../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/Form/Field',
   component: BalField,
   subcomponent: { BalFieldControl, BalFieldHint, BalFieldLabel, BalFieldMessage },
-  argTypes: generateArgType('bal-field'),
+  argTypes: {
+    ...stencilArgType('bal-field'),
+  },
   parameters: {
     docs: {
       page: docs,

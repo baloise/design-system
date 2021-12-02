@@ -1,11 +1,13 @@
 import docs from './readme.docs.mdx'
-import { generateArgType } from '../../../stories/helpers/args'
+import { stencilArgType } from '../../../stories/utils'
 import { BalSlider } from '../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/Form/Slider',
   component: BalSlider,
-  argTypes: generateArgType('bal-slider'),
+  argTypes: {
+    ...stencilArgType('bal-slider'),
+  },
   parameters: {
     docs: {
       page: docs,

@@ -1,11 +1,13 @@
 import docs from './readme.docs.mdx'
-import { generateArgType } from '../../../../stories/helpers/args'
+import { stencilArgType } from '../../../../stories/utils'
 import { BalDatepicker } from '../../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/Form/Datepicker',
   component: BalDatepicker,
-  argTypes: generateArgType('bal-datepicker'),
+  argTypes: {
+    ...stencilArgType('bal-datepicker'),
+  },
   parameters: {
     docs: {
       page: docs,

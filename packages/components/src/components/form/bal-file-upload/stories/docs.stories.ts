@@ -1,11 +1,13 @@
 import docs from './readme.docs.mdx'
-import { generateArgType } from '../../../../stories/helpers/args'
+import { stencilArgType } from '../../../../stories/utils'
 import { BalFileUpload } from '../../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/Form/FileUpload',
   component: BalFileUpload,
-  argTypes: generateArgType('bal-file-upload'),
+  argTypes: {
+    ...stencilArgType('bal-file-upload'),
+  },
   parameters: {
     docs: {
       page: docs,

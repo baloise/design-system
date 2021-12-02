@@ -1,16 +1,25 @@
 import docs from './readme.docs.mdx'
-import { generateArgType, withContent } from '../../../stories/helpers/args'
-import { BalData, BalDataItem, BalDataLabel, BalDataValue } from '../../../../.storybook/vue/components'
+import { stencilArgType } from '../../../stories/utils'
+import { BalData, BalDataItem, BalDataLabel, BalDataValue, BalCard, BalCardContent, BalInput, BalHint, BalHintText, BalHintTitle } from '../../../../.storybook/vue/components'
+
+const subcomponents = {
+  BalDataItem,
+  BalDataLabel,
+  BalDataValue,
+}
+
+const components = {
+  BalData,
+  ...subcomponents,
+}
 
 export default {
   title: 'Components/Data',
   component: BalData,
-  subcomponents: {
-    BalDataItem,
-    BalDataLabel,
-    BalDataValue,
+  subcomponents,
+  argTypes: {
+    ...stencilArgType('bal-data'),
   },
-  argTypes: generateArgType('bal-data'),
   parameters: {
     docs: {
       page: docs,
@@ -19,7 +28,7 @@ export default {
 }
 
 export const Basic = args => ({
-  components: { BalData, BalDataItem, BalDataLabel, BalDataValue },
+  components: { ...components, BalCard, BalCardContent, BalInput, BalHint, BalHintText, BalHintTitle },
   setup: () => ({ args }),
   template: `<bal-card>
   <bal-card-content>
@@ -72,7 +81,7 @@ Basic.args = {
 }
 
 export const Horizontal = args => ({
-  components: { BalData, BalDataItem, BalDataLabel, BalDataValue },
+  components: { ...components, BalCard, BalCardContent },
   setup: () => ({ args }),
   template: `<bal-card>
     <bal-card-content>

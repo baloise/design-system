@@ -1,11 +1,14 @@
-import { generateArgType, withContent } from '../../../stories/helpers/args'
+import { stencilArgType, withContent } from '../../../stories/utils'
 import { BalButton } from '../../../../.storybook/vue/components'
 import docs from './readme.docs.mdx'
 
 export default {
   title: 'Components/Button',
   component: BalButton,
-  argTypes: withContent(generateArgType('bal-button')),
+  argTypes: {
+    ...stencilArgType('bal-button'),
+    ...withContent(),
+  },
   parameters: {
     docs: {
       page: docs,

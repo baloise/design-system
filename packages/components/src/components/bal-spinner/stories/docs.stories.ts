@@ -1,11 +1,13 @@
 import docs from './readme.docs.mdx'
-import { generateArgType } from '../../../stories/helpers/args'
+import { stencilArgType } from '../../../stories/utils'
 import { BalSpinner } from '../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/Spinner',
   component: BalSpinner,
-  argTypes: generateArgType('bal-spinner'),
+  argTypes: {
+    ...stencilArgType('bal-spinner'),
+  },
   parameters: {
     docs: {
       page: docs,

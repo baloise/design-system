@@ -1,13 +1,18 @@
 import { ref } from 'vue'
-import { generateArgType } from '../../../stories/helpers/args'
-import { BalModal, BalModalHeader, BalModalBody, BalModalFooter, BalModalActions } from '../../../../.storybook/vue/components'
+import { stencilArgType } from '../../../stories/utils'
+import { BalModal, BalModalHeader, BalButton, BalModalBody, BalModalFooter, BalModalActions } from '../../../../.storybook/vue/components'
 import docs from './readme.docs.mdx'
+
+const subcomponents = { BalModalHeader, BalModalBody, BalModalFooter, BalModalActions }
+const components = { BalModal, ...subcomponents }
 
 export default {
   title: 'Components/Modal',
   component: BalModal,
-  subcomponents: { BalModalHeader, BalModalBody, BalModalFooter, BalModalActions },
-  argTypes: generateArgType('bal-modal'),
+  subcomponents,
+  argTypes: {
+    ...stencilArgType('bal-modal'),
+  },
   parameters: {
     docs: {
       page: docs,
@@ -16,7 +21,7 @@ export default {
 }
 
 const Template = (args, { argTypes }) => ({
-  components: { BalModal, BalModalHeader, BalModalBody, BalModalFooter, BalModalActions },
+  components: { ...components, BalButton },
   props: Object.keys(argTypes),
   setup: () => {
     const modal = ref()

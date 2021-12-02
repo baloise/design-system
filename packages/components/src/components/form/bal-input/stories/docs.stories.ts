@@ -1,11 +1,13 @@
 import docs from './readme.docs.mdx'
-import { generateArgType, withContent } from '../../../../stories/helpers/args'
+import { stencilArgType } from '../../../../stories/utils'
 import { BalInput } from '../../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/Form/Input',
   component: BalInput,
-  argTypes: generateArgType('bal-input'),
+  argTypes: {
+    ...stencilArgType('bal-input'),
+  },
   parameters: {
     docs: {
       page: docs,

@@ -1,11 +1,13 @@
 import docs from './readme.docs.mdx'
-import { generateArgType } from '../../../../stories/helpers/args'
+import { stencilArgType } from '../../../../stories/utils'
 import { BalTextarea } from '../../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/Form/Textarea',
   component: BalTextarea,
-  argTypes: generateArgType('bal-textarea'),
+  argTypes: {
+    ...stencilArgType('bal-textarea'),
+  },
   parameters: {
     docs: {
       page: docs,

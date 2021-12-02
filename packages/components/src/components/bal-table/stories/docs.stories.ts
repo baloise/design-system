@@ -2,7 +2,7 @@ import { onMounted } from 'vue'
 import { Grid } from 'ag-grid-community'
 
 import docs from './readme.docs.mdx'
-import { generateArgType } from '../../../stories/helpers/args'
+import { stencilArgType } from '../../../stories/utils'
 import { BalTable, BalIcon, BalCheckbox, BalButton, BalTag, BalCard } from '../../../../.storybook/vue/components'
 import { tableHtml } from './examples.docs'
 
@@ -11,7 +11,9 @@ import { BalTableButtonRenderer, BalTableTagRenderer, BalTableTextRenderer } fro
 export default {
   title: 'Components/Table',
   component: BalTable,
-  argTypes: generateArgType('bal-table'),
+  argTypes: {
+    ...stencilArgType('bal-table'),
+  },
   parameters: {
     docs: {
       page: docs,

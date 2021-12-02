@@ -1,4 +1,4 @@
-import { generateArgType } from '../../../stories/helpers/args'
+import { stencilArgType } from '../../../stories/utils'
 import { BalToast } from '../../../../.storybook/vue/components'
 import { balToastController } from '../../../../dist/design-system-components/index.esm'
 import docs from './readme.docs.mdx'
@@ -6,7 +6,9 @@ import docs from './readme.docs.mdx'
 export default {
   title: 'Components/Toast',
   component: BalToast,
-  argTypes: generateArgType('bal-toast'),
+  argTypes: {
+    ...stencilArgType('bal-toast'),
+  },
   args: {
     message: 'Hello World',
     duration: 2000,

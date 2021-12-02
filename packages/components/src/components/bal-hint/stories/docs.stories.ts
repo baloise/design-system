@@ -1,12 +1,18 @@
 import docs from './readme.docs.mdx'
-import { generateArgType, withContent } from '../../../stories/helpers/args'
-import { BalHint, BalHintText, BalHintTitle } from '../../../../.storybook/vue/components'
+import { stencilArgType, withContent } from '../../../stories/utils'
+import { BalHint, BalHintText, BalHintTitle, BalInput, BalField, BalFieldControl, BalFieldMessage, BalFieldLabel, BalFieldHint } from '../../../../.storybook/vue/components'
+
+const subcomponent = { BalHintText, BalHintTitle }
+const components = { BalHint, ...subcomponent }
 
 export default {
   title: 'Components/Hint',
   component: BalHint,
-  subcomponent: { BalHintText, BalHintTitle },
-  argTypes: generateArgType('bal-hint'),
+  subcomponent,
+  argTypes: {
+    ...stencilArgType('bal-hint'),
+    ...withContent(),
+  },
   parameters: {
     docs: {
       page: docs,
@@ -15,7 +21,7 @@ export default {
 }
 
 export const Basic = args => ({
-  components: { BalHint, BalHintText, BalHintTitle },
+  components: { ...components },
   setup: () => ({ args }),
   template: `<bal-hint v-bind="args">
   <bal-hint-title>Spider-Man</bal-hint-title>
@@ -29,7 +35,7 @@ export const Basic = args => ({
 Basic.args = {}
 
 export const FieldHint = args => ({
-  components: { BalHint, BalHintText, BalHintTitle },
+  components: { ...components, BalInput, BalField, BalFieldControl, BalFieldMessage, BalFieldLabel, BalFieldHint },
   setup: () => ({ args }),
   template: `<bal-field expanded>
   <bal-field-label required>Firstname</bal-field-label>

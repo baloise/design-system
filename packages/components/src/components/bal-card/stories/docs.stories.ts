@@ -1,31 +1,53 @@
 import docs from './readme.docs.mdx'
-import { generateArgType } from '../../../stories/helpers/args'
+import { stencilArgType } from '../../../stories/utils'
 import {
   BalCard,
+  BalCardTitle,
+  BalCardSubtitle,
   BalCardActions,
   BalCardButton,
   BalCardContent,
   BalCardHead,
   BalCardHeading,
   BalCardSteps,
-  BalCardSubtitle,
-  BalCardTitle,
+  BalButton,
+  BalAccordion,
+  BalData,
+  BalDataLabel,
+  BalDataValue,
+  BalDataItem,
+  BalList,
+  BalListItem,
+  BalListItemTitle,
+  BalListItemContent,
+  BalListItemIcon,
+  BalIcon,
+  BalCheckbox,
 } from '../../../../.storybook/vue/components'
+
+const subcomponents = {
+  BalCardTitle,
+  BalCardSubtitle,
+  BalCardActions,
+  BalCardButton,
+  BalCardContent,
+  BalCardHead,
+  BalCardHeading,
+  BalCardSteps,
+}
+
+const components = {
+  BalCard,
+  ...subcomponents,
+}
 
 export default {
   title: 'Components/Card',
   component: BalCard,
-  subcomponents: {
-    BalCardActions,
-    BalCardButton,
-    BalCardContent,
-    BalCardHead,
-    BalCardHeading,
-    BalCardSteps,
-    BalCardSubtitle,
-    BalCardTitle,
+  subcomponents,
+  argTypes: {
+    ...stencilArgType('bal-card'),
   },
-  argTypes: generateArgType('bal-card'),
   parameters: {
     docs: {
       page: docs,
@@ -34,7 +56,7 @@ export default {
 }
 
 export const Basic = args => ({
-  components: { BalCard },
+  components: { ...components, BalButton },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-title>BaloiseCombi</bal-card-title>
@@ -50,7 +72,7 @@ export const Basic = args => ({
 })
 
 export const WithList = args => ({
-  components: { BalCard },
+  components: { ...components, BalButton, BalListItemIcon, BalIcon, BalList, BalListItem, BalListItemTitle, BalListItemContent },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-title>News</bal-card-title>
@@ -82,7 +104,7 @@ export const WithList = args => ({
 })
 
 export const WithAccordion = args => ({
-  components: { BalCard },
+  components: { ...components, BalAccordion },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-title>BaloiseCombi</bal-card-title>
@@ -95,7 +117,7 @@ export const WithAccordion = args => ({
 })
 
 export const Summary = args => ({
-  components: { BalCard },
+  components: { ...components, BalData, BalDataItem, BalDataLabel, BalDataValue },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-heading>Insured vehicle</bal-card-heading>
@@ -124,7 +146,7 @@ export const Summary = args => ({
 })
 
 export const Service = args => ({
-  components: { BalCard },
+  components: { ...components, BalCheckbox, BalAccordion },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-head>

@@ -4,38 +4,6 @@ import { defineCustomElements } from '../dist/custom-elements/index'
 
 defineCustomElements()
 
-const templateSourceCode = (templateSource, args, argTypes, replacing = ' v-bind="args"') => {
-  const componentArgs = {}
-  for (const [k, t] of Object.entries(argTypes)) {
-    const val = args[k]
-    if (typeof val !== 'undefined' && t.table && t.table.category === 'props' && val !== t.defaultValue) {
-      componentArgs[k] = val
-    }
-  }
-
-  const propToSource = (key, val) => {
-    const type = typeof val
-    switch (type) {
-      case 'boolean':
-        return val ? key : ''
-      case 'string':
-        return `${key}="${val}"`
-      default:
-        return `:${key}="${val}"`
-    }
-  }
-
-  return templateSource
-    .replace('{{ args.content }}', args.content)
-    .replace('<span v-html="args.content"></span>', args.content)
-    .replace(
-      replacing,
-      Object.keys(componentArgs)
-        .map(key => ' ' + propToSource(paramCase(key), args[key]))
-        .join(''),
-    )
-}
-
 export const decorators = [
   story => ({
     components: { story },
@@ -44,15 +12,8 @@ export const decorators = [
 ]
 
 export const parameters = {
-  actions: { argTypesRegex: '^bal.*' },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: { expanded: true },
-  previewTabs: {
-    'storybook/docs/panel': {
-      index: -1,
-      title: 'Documentation',
-    },
-    'canvas': { title: 'Code', hidden: false },
-  },
   a11y: {
     config: {
       rules: [
@@ -107,4 +68,36 @@ export const parameters = {
       ],
     },
   },
+}
+
+const templateSourceCode = (templateSource, args, argTypes, replacing = ' v-bind="args"') => {
+  const componentArgs = {}
+  for (const [k, t] of Object.entries(argTypes)) {
+    const val = args[k]
+    if (typeof val !== 'undefined' && t.table && t.table.category === 'props' && val !== t.defaultValue) {
+      componentArgs[k] = val
+    }
+  }
+
+  const propToSource = (key, val) => {
+    const type = typeof val
+    switch (type) {
+      case 'boolean':
+        return val ? key : ''
+      case 'string':
+        return `${key}="${val}"`
+      default:
+        return `:${key}="${val}"`
+    }
+  }
+
+  return templateSource
+    .replace('{{ args.content }}', args.content)
+    .replace('<span v-html="args.content"></span>', args.content)
+    .replace(
+      replacing,
+      Object.keys(componentArgs)
+        .map(key => ' ' + propToSource(paramCase(key), args[key]))
+        .join(''),
+    )
 }

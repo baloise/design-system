@@ -1,12 +1,14 @@
 import docs from './readme.docs.mdx'
-import { generateArgType } from '../../../../stories/helpers/args'
+import { stencilArgType } from '../../../../stories/utils'
 import { BalRadio, BalRadioGroup } from '../../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/Form/Radio',
   component: BalRadioGroup,
   subcomponent: { BalRadio },
-  argTypes: generateArgType('bal-radio-group'),
+  argTypes: {
+    ...stencilArgType('bal-radio-group'),
+  },
   parameters: {
     docs: {
       page: docs,

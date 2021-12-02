@@ -29,26 +29,10 @@ const myToast = balToastController.create({ message: 'Danger zone!', color: 'dan
 myToast.close()```
 ````
 
-### Angular
-
-In Angular we provide services to create snackbars and toasts.
-
-```typescript
-import { Component } from '@angular/core'
-import { BalToastService } from '@baloise/design-system-components-angular'
-
-@Component({
-  selector: 'app-services',
-  templateUrl: './services-page.component.html',
-})
-export class ServicesPageComponent {
-  constructor(public toast: BalToastService) {}
-
-  createToast() {
-    this.toast.create({ message: 'I am a nice Toast!' })
-  }
-}
-```
+> **Framework integration**
+>
+> - [Angular Usage](?path=/docs/getting-started-angular-usage--page#toast--snackbar)
+> - [Vue Usage](?path=/docs/getting-started-vue-usage--page#toast--snackbar)
 
 ## Component Api
 

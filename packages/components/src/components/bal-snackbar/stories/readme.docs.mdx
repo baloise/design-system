@@ -27,30 +27,10 @@ const mySnachbar = balSnackbarController.create({ message: 'Hi I am a default sn
 mySnachbar.close()
 ```
 
-### Angular
-
-In Angular we provide services to create snackbars and toasts.
-
-```typescript
-import { Component } from '@angular/core'
-import { BalSnackbarService } from '@baloise/design-system-components-angular'
-
-@Component({
-  selector: 'app-services',
-  templateUrl: './services-page.component.html',
-})
-export class ServicesPageComponent {
-  constructor(public snackbar: BalSnackbarService) {}
-
-  createSnackbar() {
-    this.snackbar.create({
-      icon: 'github',
-      subject: 'Snackbar Title',
-      message: 'I am the body of a nice snackbar',
-    })
-  }
-}
-```
+> **Framework integration**
+>
+> - [Angular Usage](?path=/docs/getting-started-angular-usage--page#toast--snackbar)
+> - [Vue Usage](?path=/docs/getting-started-vue-usage--page#toast--snackbar)
 
 ## Component Api
 

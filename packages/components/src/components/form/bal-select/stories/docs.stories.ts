@@ -1,4 +1,4 @@
-import { generateArgType } from '../../../../stories/helpers/args'
+import { stencilArgType } from '../../../../stories/utils'
 import { BalSelect, BalSelectOption } from '../../../../../.storybook/vue/components'
 import { marvelHeros } from './examples.docs'
 import docs from './readme.docs.mdx'
@@ -6,7 +6,9 @@ import docs from './readme.docs.mdx'
 export default {
   title: 'Components/Form/Select',
   component: BalSelect,
-  argTypes: generateArgType('bal-select'),
+  argTypes: {
+    ...stencilArgType('bal-select'),
+  },
   parameters: {
     docs: {
       page: docs,

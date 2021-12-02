@@ -30,4 +30,5 @@ export const VueGenerator = (componentCorePackage = '@baloise/design-system-comp
     componentModels: vueComponentModels,
     includeDefineCustomElements: false,
     includePolyfills: false,
+    includeUtils: false,
   })

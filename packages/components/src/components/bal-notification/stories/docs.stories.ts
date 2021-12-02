@@ -1,11 +1,14 @@
 import docs from './readme.docs.mdx'
-import { generateArgType, withContent } from '../../../stories/helpers/args'
+import { stencilArgType, withContent } from '../../../stories/utils'
 import { BalNotification } from '../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/Notification',
   component: BalNotification,
-  argTypes: withContent(generateArgType('bal-notification')),
+  argTypes: {
+    ...stencilArgType('bal-notification'),
+    ...withContent(),
+  },
   parameters: {
     docs: {
       page: docs,

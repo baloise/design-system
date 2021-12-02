@@ -1,24 +1,5 @@
-import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../stories/utils'
-import { BalSheet, BalButton } from '../../../../.storybook/vue/components'
-
-export default {
-  title: 'Components/Sheet',
-  component: BalSheet,
-  argTypes: {
-    ...stencilArgType('bal-sheet'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
-
-export const Basic = args => ({
-  components: { BalSheet, BalButton },
-  setup: () => ({ args }),
-  template: `<bal-sheet v-bind="args">
+export const template = `
+<bal-sheet>
   <div class="is-hidden-desktop">
     <bal-button expanded>Continue with 1'234 CHF</bal-button>
     <bal-button expanded color="link">Back</bal-button>
@@ -39,6 +20,4 @@ export const Basic = args => ({
       </div>
     </div>
   </div>
-</bal-sheet>`,
-})
-Basic.args = {}
+</bal-sheet>`

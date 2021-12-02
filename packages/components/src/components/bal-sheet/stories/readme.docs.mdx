@@ -1,13 +1,17 @@
 import { Story, Canvas, Description, Source } from '@storybook/addon-docs'
-import { html } from '../../../stories/helpers/docs'
+import { template } from './template'
+
+<span id="story--components-sheet--basic" style={{ opacity: 0 }}></span>
 
 # Sheet
 
 The sheet component is used to show content over the whole page at the bottom. The element is sticky.
 
-<Source></Source>
+<Source language="html" code={template} />
 
 ## Component Api
+
+import readme from '../readme.md'
 
 <Description markdown={readme} />
 

@@ -1,11 +1,13 @@
 import docs from './readme.docs.mdx'
-import { generateArgType } from '../../../stories/helpers/args'
+import { stencilArgType } from '../../../stories/utils'
 import { BalPagination } from '../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/Pagination',
   component: BalPagination,
-  argTypes: generateArgType('bal-pagination'),
+  argTypes: {
+    ...stencilArgType('bal-pagination'),
+  },
   parameters: {
     docs: {
       page: docs,

@@ -1,11 +1,13 @@
 import docs from './readme.docs.mdx'
-import { generateArgType } from '../../../stories/helpers/args'
+import { stencilArgType } from '../../../stories/utils'
 import { BalIcon } from '../../../../.storybook/vue/components'
 
 export default {
   title: 'Components/Icon',
   component: BalIcon,
-  argTypes: generateArgType('bal-icon'),
+  argTypes: {
+    ...stencilArgType('bal-icon'),
+  },
   parameters: {
     docs: {
       page: docs,
