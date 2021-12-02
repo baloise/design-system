@@ -7,6 +7,6 @@ export class SelectPage {
   multiple = dataTestSelector('multiple')
 
   open() {
-    cy.visit('/components/bal-select')
+    cy.visit('/components/form/bal-select')
   }
 }
