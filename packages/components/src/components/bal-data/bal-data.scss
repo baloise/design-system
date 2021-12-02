@@ -58,12 +58,12 @@
 
       &.is-disabled .bal-data-label,
       &.is-disabled .bal-data-value {
-        color: $blue-light-text;
+        color: $text-light;
       }
     }
 
     &.has-border > .bal-data-item {
-      border-bottom: 1px solid $blue-light-line;
+      border-bottom: 1px solid $info-2;
     }
   }
 
@@ -80,7 +80,7 @@
       & > div > bal-input input.input {
         padding-left: 4px;
         padding-right: 4px;
-        background: $grey-lightest;
+        background: $gray-2;
         flex: 1;
       }
 

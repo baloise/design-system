@@ -219,14 +219,14 @@
   }
 
   &.is-info.is-outlined {
-    border-color: $blue-line;
+    border-color: $info-3;
 
     &:not(.is-disabled) {
       &:hover,
       &.is-hovered {
         color: $blue;
-        background: $blue-light-line;
-        border-color: $blue-line;
+        background: $info-2;
+        border-color: $info-3;
       }
     }
   }
@@ -263,12 +263,12 @@
     border: none;
     border-radius: 0;
     color: $blue;
-    background: $blue-light;
+    background: $info-0;
 
     &:hover,
     &.is-hovered {
       color: $blue;
-      background: $blue-light-hover;
+      background: $info-1;
     }
   }
 

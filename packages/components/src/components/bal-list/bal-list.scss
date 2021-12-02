@@ -50,12 +50,12 @@
       }
 
       &.is-selected {
-        background: $blue-light-hover;
+        background: $info-1;
       }
 
       &:hover {
         cursor: pointer;
-        background: $grey-lightest;
+        background: $gray-2;
       }
     }
 
@@ -67,13 +67,13 @@
       .bal-list-item {
         &:hover {
           cursor: pointer;
-          background: $blue-dark;
+          background: $info-8;
         }
       }
     }
 
     &.has-border .bal-list-item {
-      border-bottom: 1px solid $blue-light-line;
+      border-bottom: 1px solid $info-2;
     }
   }
 
@@ -108,7 +108,7 @@
   }
 
   .bal-list-item-subtitle {
-    color: $blue-light-text;
+    color: $text-light;
     margin-top: 2px;
   }
 }

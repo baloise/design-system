@@ -124,7 +124,7 @@ select {
     min-width: 48px;
     min-height: 40px;
     height: 40px;
-    border: 1px solid $blue-light-line;
+    border: 1px solid $info-2;
     color: $blue;
     cursor: pointer;
     font-size: $size-small;
@@ -137,9 +137,9 @@ select {
 
     &.is-outdated,
     &.is-disabled {
-      background: $blue-light;
+      background: $info-0;
       background-clip: padding-box;
-      color: $blue-light-text;
+      color: $text-light;
       cursor: default;
     }
 
@@ -171,7 +171,7 @@ select {
     display: table-header-group;
 
     .datepicker-cell {
-      color: $blue-light-text;
+      color: $text-light;
       font-weight: $weight-normal;
       border: none;
       cursor: default;

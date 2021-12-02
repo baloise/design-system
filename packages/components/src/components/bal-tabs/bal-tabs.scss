@@ -43,7 +43,7 @@
         border-bottom: 2px solid transparent;
         text-decoration: none;
 
-        color: $blue-light-text;
+        color: $text-light;
         font-size: $size-medium;
         line-height: 1.125;
         display: flex;
@@ -62,7 +62,7 @@
 
       &.is-disabled > a,
       &.is-disabled > a:hover {
-        color: $blue-light-text;
+        color: $text-light;
         cursor: not-allowed;
         opacity: 0.5;
       }

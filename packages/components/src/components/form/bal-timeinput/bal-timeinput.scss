@@ -19,8 +19,8 @@
     .stepper-btn:disabled {
       cursor: not-allowed;
       * {
-        color: $blue-line;
-        stroke: $blue-line;
+        color: $info-3;
+        stroke: $info-3;
       }
     }
     .time-box {
@@ -46,7 +46,7 @@
       }
 
       &:disabled {
-        background-color: $blue-light;
+        background-color: $info-0;
         cursor: not-allowed;
       }
     }

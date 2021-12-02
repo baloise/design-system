@@ -1,9 +1,9 @@
 .form.is-inverted .icon > .font {
-  color: $blue-line !important;
+  color: $info-3 !important;
 }
 
 .help {
-  color: $blue-light-text;
+  color: $text-light;
 }
 
 .form {
@@ -28,7 +28,7 @@
     }
 
     .help:not(.is-danger) {
-      color: $blue-line;
+      color: $info-3;
     }
   }
 }

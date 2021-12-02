@@ -71,7 +71,7 @@
 
     input[type='radio'] + label:before {
       content: '';
-      border: 1px solid $blue-line;
+      border: 1px solid $info-3;
     }
 
     input[type='radio'] + label:after {
@@ -155,7 +155,7 @@
       }
 
       text-align: center;
-      color: $blue-light-text;
+      color: $text-light;
     }
 
     @include desktop() {
@@ -176,10 +176,10 @@
 
     input:disabled ~ label {
       cursor: not-allowed;
-      color: $blue-light-text;
+      color: $text-light;
 
       &:hover {
-        color: $blue-light-text;
+        color: $text-light;
       }
     }
 
@@ -227,10 +227,10 @@
 
       input:disabled ~ label {
         cursor: not-allowed;
-        color: $blue-line;
+        color: $info-3;
 
         &:hover {
-          color: $blue-line;
+          color: $info-3;
         }
       }
     }
