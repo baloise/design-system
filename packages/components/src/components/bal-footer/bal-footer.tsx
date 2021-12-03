@@ -36,7 +36,7 @@ export class Footer {
   }
 
   updateFooterLinks() {
-    if (this.hideLinks) {
+    if (!this.hideLinks) {
       loadFooterLinks(new Language(this.locale)).then(links => (this.links = links))
     }
   }
