@@ -216,7 +216,7 @@ Add the pipe module to your app module.
 
 ```typescript
 import { NgModule } from '@angular/core'
-import { BaloisePipeModule } from '@baloise/@baloise/web-app-pipes-angular'
+import { BaloisePipeModule } from '@baloise/web-app-pipes-angular'
 
 import { AppComponent } from './app.component'
 
