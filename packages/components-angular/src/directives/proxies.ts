@@ -32,13 +32,13 @@ export class BalAccordion {
 
 export declare interface BalApp extends Components.BalApp {}
 @ProxyCmp({
-  inputs: ['background']
+  inputs: ['background', 'hasStickyFooter']
 })
 @Component({
   selector: 'bal-app',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['background']
+  inputs: ['background', 'hasStickyFooter']
 })
 export class BalApp {
   protected el: HTMLElement;
@@ -51,13 +51,13 @@ export class BalApp {
 
 export declare interface BalButton extends Components.BalButton {}
 @ProxyCmp({
-  inputs: ['bottomRounded', 'color', 'disabled', 'download', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'name', 'outlined', 'rel', 'size', 'square', 'target', 'topRounded', 'type', 'value']
+  inputs: ['bottomRounded', 'color', 'disabled', 'download', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'loading', 'name', 'outlined', 'rel', 'size', 'square', 'target', 'topRounded', 'type', 'value']
 })
 @Component({
   selector: 'bal-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['bottomRounded', 'color', 'disabled', 'download', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'link', 'loading', 'name', 'outlined', 'rel', 'size', 'square', 'target', 'topRounded', 'type', 'value'],
+  inputs: ['bottomRounded', 'color', 'disabled', 'download', 'expanded', 'href', 'icon', 'iconPosition', 'iconRight', 'inverted', 'isActive', 'loading', 'name', 'outlined', 'rel', 'size', 'square', 'target', 'topRounded', 'type', 'value'],
   outputs: ['balNavigate', 'balFocus', 'balBlur', 'balDidRender']
 })
 export class BalButton {
@@ -382,6 +382,82 @@ export class BalDatepicker {
 }
 
 
+export declare interface BalDocColor extends Components.BalDocColor {}
+@ProxyCmp({
+  inputs: ['background', 'color', 'description', 'inverted', 'scssVars', 'subject']
+})
+@Component({
+  selector: 'bal-doc-color',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['background', 'color', 'description', 'inverted', 'scssVars', 'subject']
+})
+export class BalDocColor {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalDocDownload extends Components.BalDocDownload {}
+@ProxyCmp({
+  inputs: ['iconLeft', 'iconRight', 'link', 'subject', 'subtitle']
+})
+@Component({
+  selector: 'bal-doc-download',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['iconLeft', 'iconRight', 'link', 'subject', 'subtitle']
+})
+export class BalDocDownload {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalDocIcons extends Components.BalDocIcons {}
+@ProxyCmp({
+  inputs: ['icons']
+})
+@Component({
+  selector: 'bal-doc-icons',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['icons']
+})
+export class BalDocIcons {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalDocImage extends Components.BalDocImage {}
+@ProxyCmp({
+  inputs: ['src', 'text']
+})
+@Component({
+  selector: 'bal-doc-image',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['src', 'text']
+})
+export class BalDocImage {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface BalDropdown extends Components.BalDropdown {}
 @ProxyCmp({
   inputs: ['expanded', 'fixedContentWidth', 'isActive'],
@@ -602,14 +678,14 @@ export class BalHeading {
 
 export declare interface BalHint extends Components.BalHint {}
 @ProxyCmp({
-  inputs: ['closeLabel', 'disabled'],
+  inputs: ['closeLabel'],
   methods: ['toggle', 'open', 'close']
 })
 @Component({
   selector: 'bal-hint',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['closeLabel', 'disabled']
+  inputs: ['closeLabel']
 })
 export class BalHint {
   protected el: HTMLElement;

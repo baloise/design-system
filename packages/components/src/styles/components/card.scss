@@ -113,7 +113,7 @@
   }
 
   &.has-border {
-    border: 1px solid $blue-light-line;
+    border: 1px solid $info-2;
   }
 
   &.is-inverted {
@@ -121,7 +121,7 @@
   }
 
   &.is-primary {
-    background-color: $blue-light;
+    background-color: $info-0;
   }
 
   &.is-info {
@@ -186,7 +186,7 @@
     font-size: $size-small;
     font-weight: $weight-normal;
     line-height: 20px;
-    color: $blue-light-text;
+    color: $text-light;
   }
 
   .bal-card-subtitle.inverted {

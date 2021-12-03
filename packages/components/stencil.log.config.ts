@@ -1,12 +1,8 @@
 import { Config } from '@stencil/core'
+import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
 
-/**
- * Stencil Configurations for logging the generated contexts
- */
 export const config: Config = {
-  namespace: 'design-system-components',
-  globalStyle: 'src/styles/global.scss',
-  globalScript: 'src/global.ts',
+  ...StencilBaseConfig,
   outputTargets: [
     {
       type: 'custom',

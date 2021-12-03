@@ -1,0 +1,28 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs'
+import { portalTemplate } from './portal.template.ts'
+import { html } from '../utils'
+import dedent from 'ts-dedent'
+
+<Meta
+  title="Templates/Portal"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Portal
+
+The basic layout of our portal application.
+
+<Canvas className="bal-app" withSource="none">
+  {html(portalTemplate)}
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${portalTemplate}
+  `}
+/>

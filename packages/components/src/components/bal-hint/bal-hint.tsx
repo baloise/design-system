@@ -16,11 +16,6 @@ export class Hint {
    */
   @Prop() closeLabel = 'Close'
 
-  /**
-   * If `true`, the user cannot interact with the input.
-   */
-  @Prop() disabled = false
-
   @Listen('keyup', { target: 'document' })
   handleKeyUp(event: KeyboardEvent) {
     if (event.key === 'Escape' || event.key === 'Esc') {

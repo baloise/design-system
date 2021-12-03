@@ -1,0 +1,142 @@
+import { Meta, Description } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/Angular/Installation"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Installation
+
+This section describes how to setup the Baloise Design System with an basic Angular applications.
+
+## Prerequisite
+
+Before we can add the Baloise Design System we need to setup the basics.
+
+### Setup Angular Project
+
+Create an Angular project with the [Angular CLI](https://cli.angular.io/) and set Sass and ESLint has defaults.
+
+```bash
+npm install -g @angular/cli
+ng new bal-app --style=scss
+cd bal-app
+```
+
+Run the app
+
+```bash
+ng serve
+```
+
+> **Recommandations**
+>
+> - Choose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
+> - Choose **ESLint** as the default linter tool, because TSLint is deprecated.
+
+### Configure Project
+
+Next lets have a look at the `tsconfig.json` file and add the following options.
+
+```json
+{
+  "compilerOptions": {
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    ...
+  },
+  ...
+}
+```
+
+Also override the `angularCompilerOptions` at the end of the file.
+
+```json
+{
+  ...
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "compilationMode": "partial"
+  }
+}
+```
+
+## Install Baloise Design System
+
+Use npm to install the Angular proxy library.
+
+```bash
+npm install @baloise/design-system-components-angular --save
+```
+
+> **Recommandations**
+>
+> - We recomand to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
+> - We recommand to use the package [@ngx-translate](https://github.com/ngx-translate/core) for the transalations..
+
+import InstallStyles from '../styles/styles-sass.md'
+
+<Description markdown={InstallStyles} />
+
+import InstallFonts from '../styles/styles-fonts.md'
+
+<Description markdown={InstallFonts} />
+
+## HTML Structure
+
+Add the `bal-app` to your `app.component.ts` root element. Within this component we are able to use the defined css classes.
+
+```html
+...
+<bal-app has-sticky-footer>
+  <header>
+    <!-- Header content -->
+  </header>
+  <main class="container">
+    <!-- Your application content -->
+  </main>
+  <bal-footer>
+    <!-- Footer content -->
+  </bal-footer>
+</bal-app>
+...
+```
+
+## Import the ngModule
+
+Import the `BaloiseDesignSystemModule` and add it to your angular module. To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
+
+### app.module.ts
+
+```typescript
+import { BrowserModule } from '@angular/platform-browser'
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
+import { BaloisePipeModule } from '@baloise/web-app-pipes-angular'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+
+import { AppComponent } from './app.component'
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, BaloisePipeModule, BaloiseDesignSystemModule.forRoot()],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}
+```
+
+Now everything is ready to be used. Add some Baloise components and start the app with:
+
+```bash
+npm start
+```

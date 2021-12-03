@@ -1,0 +1,40 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../stories/utils'
+import { inABox, withLink } from './examples.docs.ts'
+import readme from '../readme.md'
+import dataItem from '../bal-data-item/readme.md'
+import dataLabel from '../bal-data-label/readme.md'
+import dataValue from '../bal-data-value/readme.md'
+
+<span id="story--components-data--basic" style={{ opacity: 0 }}></span>
+
+# Data
+
+A data component display readonly form data.
+
+<Canvas>
+  <Story id="components-data--basic" />
+</Canvas>
+
+## Horizontal
+
+<Canvas>
+  <Story id="components-data--horizontal" />
+</Canvas>
+
+## Component Api
+
+<Description markdown={readme} />
+<Description markdown={dataItem} />
+<Description markdown={dataLabel} />
+<Description markdown={dataValue} />
+
+<br />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+import github from './github.md'
+
+<Description markdown={github} />

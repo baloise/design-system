@@ -1,0 +1,28 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs'
+import { stepperTemplate } from './stepper.template.ts'
+import { html } from '../utils'
+import dedent from 'ts-dedent'
+
+<Meta
+  title="Templates/Stepper"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Stepper
+
+The basic layout stepper forms.
+
+<Canvas className="bal-app" withSource="none">
+  {html(stepperTemplate)}
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${stepperTemplate}
+  `}
+/>

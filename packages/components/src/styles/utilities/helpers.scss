@@ -17,11 +17,11 @@
 }
 
 .has-border-blue {
-  border: 1px solid $blue-line;
+  border: 1px solid $info-3;
 }
 
 .has-border-blue-dark {
-  border: 1px solid $blue-dark;
+  border: 1px solid $info-8;
 }
 
 .has-border-success {
@@ -41,11 +41,11 @@
 }
 
 .has-border-blue-light {
-  border: 1px solid $blue-light-line;
+  border: 1px solid $info-2;
 }
 
 .has-border-blue-inverted {
-  border: 1px solid $blue-line-inverted;
+  border: 1px solid $info-5;
 }
 
 .has-border-grey {
@@ -89,7 +89,7 @@ $space-horizontal-large: 64px;
 
 hr {
   border: none;
-  border-top: 1px solid $blue-light-line;
+  border-top: 1px solid $info-2;
   margin: 0;
   padding: 0;
 }

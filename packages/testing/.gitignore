@@ -1,4 +1,4 @@
 /cypress/screenshots
 /cypress/videos
-/docs
+/generated
 .npmrc

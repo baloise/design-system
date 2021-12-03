@@ -1,0 +1,82 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/Testing"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Testing
+
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+
+## Prerequisites
+
+For E-2-E testing we recommand to use the testing framework [Cypress](https://www.cypress.io/).
+
+If you are using Vue or Angular please install Cypress with the provided CLI.
+
+## Install testing library
+
+Install the library directly from npm.
+
+```bash
+npm add -D @baloise/design-system-testing
+```
+
+Next step is to add the commands to our cypress setup. Open the file `cypress/support/commands.ts` and import the testing library.
+
+```typescript
+import '@baloise/design-system-testing'
+```
+
+Now the adjusted commands from the Baloise Design System should be available in your test files.
+
+## Usage
+
+Further documentations for each component commands is documented on the components page.
+
+```typescript
+import { dataTestSelector } from '@baloise/design-system-testing'
+
+describe('Accordion', () => {
+  const accordion = dataTestSelector('my-accordion') // [data-test-id="my-accordion"]
+  it('should ...', () => {
+    cy.get(accordion).contains('Details einblenden')
+    cy.get(accordion).balAccordionIsClosed()
+    cy.get(accordion).click().balAccordionIsOpen()
+    cy.get(page.accordion).contains('Details ausblenden')
+    cy.get(accordion).click().balAccordionIsClosed()
+  })
+})
+```
+
+### dataTestSelector
+
+It is recommanded to set specific test attributes `data-test-id` on the elements to test.
+
+```html
+<bal-button data-test-id="my-button"></bal-button>
+```
+
+To build up the correct selector like this `[data-test-id="my-button"]` we use the helper function `dataTestSelector`. This selector can then be used directly with the cypress commands.
+
+```typescript
+import { dataTestSelector } from '@baloise/design-system-testing'
+
+describe('Button', () => {
+  it('should ...', () => {
+    const button = dataTestSelector('button-id')
+    cy.get(button).click()
+  })
+})
+```
+
+## Links
+
+- [Testing Package](https://github.com/baloise/design-system/blob/master/packages/testing)
+- [Custom Commands](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands/custom)
+- [Overriden Commands](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands/overrides)

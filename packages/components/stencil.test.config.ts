@@ -1,16 +1,23 @@
 import { Config } from '@stencil/core'
-import { sass } from '@stencil/sass'
-import { postcss } from '@stencil/postcss'
-import autoprefixer from 'autoprefixer'
+import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
 
 export const config: Config = {
-  namespace: 'design-system-components',
-  globalStyle: 'src/styles/global.scss',
-  globalScript: 'src/global.ts',
-  plugins: [
-    postcss({
-      plugins: [autoprefixer()],
-    }),
-    sass(),
+  ...StencilBaseConfig,
+  outputTargets: [
+    {
+      type: 'www',
+      dir: 'www',
+      serviceWorker: false,
+      empty: true,
+      copy: [
+        {
+          src: '**/*.html',
+        },
+        {
+          src: 'components.d.ts',
+        },
+        { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
+      ],
+    },
   ],
 }

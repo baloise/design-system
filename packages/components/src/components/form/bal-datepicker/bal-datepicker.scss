@@ -1,0 +1,195 @@
+@import '../../../styles/global.utilities';
+@import 'node_modules/bulma/sass/form/shared';
+@import 'node_modules/bulma/sass/form/tools';
+@import 'node_modules/bulma/sass/form/select';
+@import '../../bal-pagination/bal-pagination.scss';
+
+:host {
+  display: block;
+  position: relative;
+  font-family: $family-primary;
+
+  &.is-fullwidth {
+    width: 100%;
+  }
+}
+
+.datepicker-trigger-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 38px;
+}
+
+.datepicker-footer {
+  margin-top: 15px;
+}
+
+.pagination {
+  flex-wrap: nowrap;
+}
+
+.pagination-list,
+.pagination-list .field {
+  width: 100%;
+}
+
+.pagination-previous,
+.pagination-next,
+select {
+  border: none !important;
+}
+
+.pagination-previous,
+.pagination-next {
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  cursor: pointer;
+}
+
+.pagination-previous:active,
+.pagination-next:active {
+  box-shadow: none;
+}
+
+.pagination-next {
+  order: 3;
+}
+
+.month-select,
+.year-select {
+  width: 50%;
+}
+
+.month-select,
+.month-select select {
+  text-align: right;
+  text-align-last: right;
+}
+
+.year-select,
+.year-select select {
+  text-align: left;
+  text-align-last: left;
+}
+
+.select {
+  &::after {
+    display: none !important;
+  }
+
+  select {
+    padding: 6px 5px 13px 5px !important;
+    color: $blue !important;
+    font-size: $size-normal !important;
+    font-weight: $weight-semibold;
+    font-family: $family-primary !important;
+
+    option {
+      color: $black !important;
+      font-size: $size-small !important;
+      font-weight: $weight-normal !important;
+    }
+  }
+}
+
+.datepicker-popup {
+  padding: 26px 20px;
+  width: 100%;
+  user-select: none;
+}
+
+.datepicker-table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 15px auto 0 auto;
+
+  .datepicker-body {
+    display: table-row-group;
+
+    .datepicker-row {
+      display: table-row;
+    }
+  }
+
+  .datepicker-cell {
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    max-width: 0;
+    width: 48px;
+    min-width: 48px;
+    min-height: 40px;
+    height: 40px;
+    border: 1px solid $info-2;
+    color: $blue;
+    cursor: pointer;
+    font-size: $size-small;
+    font-family: $family-primary;
+
+    &.is-selected {
+      background: $blue;
+      color: $white;
+    }
+
+    &.is-outdated,
+    &.is-disabled {
+      background: $info-0;
+      background-clip: padding-box;
+      color: $text-light;
+      cursor: default;
+    }
+
+    &.is-disabled {
+      cursor: not-allowed;
+    }
+
+    &.is-selectable:hover {
+      outline: 1px solid $blue;
+      outline-offset: -1px;
+      z-index: 3000;
+    }
+
+    &.is-today:after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 3px;
+      height: 3px;
+      background: $blue;
+      border-radius: $radius-rounded;
+      margin-top: 2px;
+      margin-left: -1.5px;
+      left: 50%;
+    }
+  }
+
+  header.datepicker-header {
+    display: table-header-group;
+
+    .datepicker-cell {
+      color: $text-light;
+      font-weight: $weight-normal;
+      border: none;
+      cursor: default;
+    }
+  }
+}
+
+@include tablet() {
+  .datepicker-popup {
+    padding: 16px 32px;
+    // width: 48px * 7 + 80px;
+  }
+}
+
+.month-select select {
+  padding: 6px 10px 13px 10px !important;
+}
+
+.year-select select {
+  padding: 6px 10px 13px 10px !important;
+}

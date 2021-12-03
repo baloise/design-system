@@ -1,0 +1,69 @@
+import { Meta, Description } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/React/Installation"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Installation
+
+This section describes how to setup the Baloise Design System with an basic React applications.
+
+## Prerequisite
+
+Before we can add the Baloise Design System we need to setup the basics.
+
+### Setup React Project
+
+Create an React project with the [React Create App CLI](https://create-react-app.dev/) and set Sass as default.
+
+```bash
+npx create-react-app bal-app --template typescript
+cd bal-app
+npm install -D sass
+```
+
+Rename the `.css` files to `.scss` and adjust there import statement.
+
+> **Recommandations**
+>
+> - Choose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
+> - We recomand to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
+
+## Install Baloise Design System
+
+Use npm to install the React proxy library.
+
+```bash
+npm install @baloise/design-system-components-react
+```
+
+import InstallStyles from '../styles/styles-sass.md'
+
+<Description markdown={InstallStyles} />
+
+import InstallFonts from '../styles/styles-fonts.md'
+
+<Description markdown={InstallFonts} />
+
+## HTML Structure
+
+Add the `BalApp` to your root element. Within this component we are able to use the defined css classes.
+
+```typescript
+import React from 'react'
+import { BalApp } from '@baloise/design-system-components-react'
+import './App.scss'
+
+function App() {
+  return (
+    <BalApp has-sticky-footer>
+      <main className="container">...</main>
+    </BalApp>
+  )
+}
+```

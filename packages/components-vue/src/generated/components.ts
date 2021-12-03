@@ -1,4 +1,4 @@
-// generated file by .scripts/components.script.js
+// generated file by .build/components.js
 
 import { App } from 'vue'
 import {
@@ -20,6 +20,10 @@ BalDataItem,
 BalDataLabel,
 BalDataValue,
 BalDatepicker,
+BalDocColor,
+BalDocDownload,
+BalDocIcons,
+BalDocImage,
 BalDropdown,
 BalDropdownMenu,
 BalDropdownTrigger,
@@ -91,6 +95,10 @@ export const applyComponents = (app: App) => {
   app.component('BalDataLabel', BalDataLabel)
   app.component('BalDataValue', BalDataValue)
   app.component('BalDatepicker', BalDatepicker)
+  app.component('BalDocColor', BalDocColor)
+  app.component('BalDocDownload', BalDocDownload)
+  app.component('BalDocIcons', BalDocIcons)
+  app.component('BalDocImage', BalDocImage)
   app.component('BalDropdown', BalDropdown)
   app.component('BalDropdownMenu', BalDropdownMenu)
   app.component('BalDropdownTrigger', BalDropdownTrigger)

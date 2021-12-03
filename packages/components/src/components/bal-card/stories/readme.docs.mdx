@@ -1,0 +1,70 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../stories/utils'
+import { withCard, withList } from './examples.docs.ts'
+import readme from '../readme.md'
+import cardTitle from '../bal-card-title/readme.md'
+import cardSubtitle from '../bal-card-subtitle/readme.md'
+import cardHeading from '../bal-card-heading/readme.md'
+import cardHead from '../bal-card-head/readme.md'
+import cardContent from '../bal-card-content/readme.md'
+import cardSteps from '../bal-card-steps/readme.md'
+import cardActions from '../bal-card-actions/readme.md'
+import cardButton from '../bal-card-button/readme.md'
+
+<span id="story--components-card--basic" style={{ opacity: 0 }}></span>
+
+# Card
+
+Cards contain content and actions about a single subject and can be combined with other components.
+
+<Canvas>
+  <Story id="components-card--basic" />
+</Canvas>
+
+## With List
+
+The position the action buttons to the right side just add the attribute `right` to the component `bal-card-actions`.
+
+<Canvas>
+  <Story id="components-card--with-list" />
+</Canvas>
+
+## With Accordion
+
+<Canvas>
+  <Story id="components-card--with-accordion" />
+</Canvas>
+
+## Summary
+
+<Canvas>
+  <Story id="components-card--summary" />
+</Canvas>
+
+## Service
+
+<Canvas>
+  <Story id="components-card--service" />
+</Canvas>
+
+## Component Api
+
+<Description markdown={readme} />
+<Description markdown={cardTitle} />
+<Description markdown={cardSubtitle} />
+<Description markdown={cardHeading} />
+<Description markdown={cardHead} />
+<Description markdown={cardContent} />
+<Description markdown={cardSteps} />
+<Description markdown={cardActions} />
+<Description markdown={cardButton} />
+
+<br />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+import github from './github.md'
+
+<Description markdown={github} />

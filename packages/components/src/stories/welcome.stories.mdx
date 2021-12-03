@@ -1,0 +1,32 @@
+import { Meta, Canvas, Description } from '@storybook/addon-docs'
+import Banner from './assets/images/banner.svg'
+import { html } from './utils'
+import { version } from '../../package.json'
+
+<Meta
+  title="Welcome"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<div className="welcome-container bal-app">
+  <h1>Baloise</h1>
+  <h2>Design System v{version}</h2>
+  <p>
+    The Baloise Design System consists of reusable components and
+    <br />
+    a clearly defined visual style, that can be assembled together <br />
+    to build any number of applications.
+  </p>
+  <div style={{ marginTop: '64px' }}>
+    <a class="button is-primary is-inverted" style={{ width: 'auto' }} href="?path=/docs/getting-started-overview--page">
+      Getting Started
+    </a>
+    <bal-button inverted outlined color="info" href="https://github.com/baloise/design-system" target="_blank" class="ml-4">
+      Follow on GitHub
+    </bal-button>
+  </div>
+</div>

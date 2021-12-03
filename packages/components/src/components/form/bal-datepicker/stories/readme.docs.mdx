@@ -1,0 +1,56 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../../stories/utils'
+import readme from '../readme.md'
+
+<span id="story--components-form-datepicker--basic" style={{ opacity: 0 }}></span>
+
+# Datepicker
+
+A datepicker allows manual date entry as well as open the dropdown content with a calendar to select a date.
+
+- [Form Documentation](/?path=/docs/design-form--page)
+- [Form Template with a contact form](?path=/docs/templates-contact-form--page)
+- [Form Usage Angular](?path=/docs/getting-started-angular-usage--page#form--validation)
+- [Form Usage Vue](?path=/docs/getting-started-vue-usage--page#form--validation)
+
+<Canvas className="bal-app has-visible-overflow">
+  <Story id="components-form-datepicker--basic" />
+</Canvas>
+
+## Manual Input
+
+To enable manual input remove the property `readonly` and add the property `trigger-icon`.
+The `trigger-icon` property only opens the dropdown when the icon gets clicked.
+
+<Canvas className="bal-app has-visible-overflow">
+  <Story id="components-form-datepicker--manual-input" />
+</Canvas>
+
+## Usage
+
+To set the date use the [date utils](https://github.com/baloise/web-app-utils/blob/master/packages/utils/README.md).
+
+```typescript
+import { newDateString, now } from '@baloise/web-app-utils'
+
+const datepickerDisabled = document.getElementById('datepicker-disabled')
+datepickerDisabled.value = newDateString(now())
+// or
+datepickerDisabled.value = newDateString(2020, 0, 13)
+// or
+datepickerDisabled.value = newDateString(new Date(2020, 0, 13))
+```
+
+## Component Api
+
+<Description markdown={readme} />
+
+<br />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+import github from './github.md'
+
+<Description markdown={github} />

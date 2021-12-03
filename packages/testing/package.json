@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-testing",
-  "version": "2.0.5",
+  "version": "3.0.0",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -31,17 +31,15 @@
     "serve": "cypress open",
     "test": "cypress run",
     "cy:install": "cypress install",
-    "build": "npm run build:clean && npm run docs && npm run build:compile && npm run build:bundle",
+    "build": "npm run build:clean && npm run build:compile && npm run build:bundle",
     "build:clean": "rimraf docs && rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p tsconfig.build.json",
     "build:bundle": "rollup --config rollup.config.js",
-    "docs": "node .scripts/docs-json.script.js",
-    "ci:server": "http-server ../components/www -p 3333 -c-1 --silent",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-components": "2.0.5",
+    "@baloise/design-system-components": "3.0.0",
     "@baloise/web-app-utils": "^2.0.5"
   },
   "devDependencies": {

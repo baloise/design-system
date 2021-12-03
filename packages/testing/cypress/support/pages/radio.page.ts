@@ -5,6 +5,6 @@ export class RadioPage {
   selectButton = dataTestSelector('select-button')
 
   open() {
-    cy.visit('/components/bal-radio')
+    cy.visit('/components/form/bal-radio')
   }
 }

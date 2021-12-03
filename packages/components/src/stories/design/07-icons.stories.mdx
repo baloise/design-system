@@ -1,0 +1,51 @@
+import { Meta, Canvas } from '@storybook/addon-docs'
+
+<Meta
+  title="Design/Icons"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Icons
+
+## All icons
+
+All our icons are svg based.
+
+import icons from './icons.json'
+
+<bal-app>
+  <bal-doc-icons icons={icons}></bal-doc-icons>
+</bal-app>
+
+## Download
+
+Download our svg icons for print usage below. For web development please continue reading.
+
+<bal-app>
+  <bal-doc-download subject="icons.zip" subtitle="Our svg icons" link="/assets/download/icons.zip"></bal-doc-download>
+</bal-app>
+
+## Install icons
+
+Our icons are provide as a [NPM package](https://www.npmjs.com/package/@baloise/design-system-icons).
+
+> **TIP**
+> The icon package is included in the `@baloise/design-system-components` package.
+
+To install it to your project run the following command.
+
+```bash
+npm install @baloise/design-system-icons
+```
+
+### Usage
+
+```typescript
+import { balIconLogo } from '@baloise/design-system-icons'
+
+// the variable balIconLogo has the svg content
+```

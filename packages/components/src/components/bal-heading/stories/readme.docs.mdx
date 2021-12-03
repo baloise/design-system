@@ -1,0 +1,46 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../stories/utils'
+import { levels, colors, spacing } from './examples.docs.ts'
+import readme from '../readme.md'
+
+<span id="story--components-heading--basic" style={{ opacity: 0 }}></span>
+
+# Heading
+
+A heading provides some additional helpers.
+
+<Canvas className="bal-app">
+  <Story id="components-heading--basic" />
+</Canvas>
+
+## Levels
+
+<Canvas className="bal-app" mdxSource={levels}>
+  {html(levels)}
+</Canvas>
+
+## Colors
+
+<Canvas className="bal-app" mdxSource={colors}>
+  {html(colors)}
+</Canvas>
+
+## Spacing
+
+<Canvas className="bal-app" mdxSource={spacing}>
+  {html(spacing)}
+</Canvas>
+
+## Component Api
+
+<Description markdown={readme} />
+
+<br />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+import github from './github.md'
+
+<Description markdown={github} />

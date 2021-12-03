@@ -1,36 +1,29 @@
 import { Config } from '@stencil/core'
-import { sass } from '@stencil/sass'
-import { postcss } from '@stencil/postcss'
-import autoprefixer from 'autoprefixer'
+import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
+import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 
 export const config: Config = {
-  namespace: 'design-system-components',
-  globalStyle: 'src/styles/global.scss',
-  globalScript: 'src/global.ts',
-  enableCache: true,
-  plugins: [
-    postcss({
-      plugins: [autoprefixer()],
-    }),
-    sass(),
-  ],
+  ...StencilBaseConfig,
   outputTargets: [
     {
+      type: 'dist',
+      esmLoaderPath: '../loader',
+    },
+    {
+      type: 'dist-custom-elements-bundle',
+    },
+    {
       type: 'www',
-      dir: 'www',
-      serviceWorker: false,
-      empty: true,
+      dir: 'public',
       copy: [
-        {
-          src: '**/*.html',
-        },
-        {
-          src: 'components.d.ts',
-        },
-        {
-          src: 'assets/fonts',
-        },
+        { src: 'stories/assets/images', dest: 'assets/images', warn: true },
+        { src: '../../fonts/lib', dest: 'assets/fonts', warn: true },
+        { src: '../../components-table/css/design-system-table.css', dest: 'assets/css/design-system-table.css', warn: true },
+        { src: '../../fonts/generated/fonts.zip', dest: 'assets/download/fonts.zip', warn: true },
+        { src: '../../icons/generated/icons.zip', dest: 'assets/download/icons.zip', warn: true },
+        { src: '../../icons/generated/icons.json', dest: '../generated/icons.json', warn: true },
       ],
     },
+    VueGenerator('../../public/build/design-system-components.esm.js', './.storybook/vue/components.ts'),
   ],
 }

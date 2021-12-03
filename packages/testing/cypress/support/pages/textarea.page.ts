@@ -5,6 +5,6 @@ export class TextareaPage {
   textareaDisabled = dataTestSelector('textarea-disabled')
 
   open() {
-    cy.visit('/components/bal-textarea')
+    cy.visit('/components/form/bal-textarea')
   }
 }

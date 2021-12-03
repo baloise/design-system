@@ -8,8 +8,8 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
 import { BalButtonColor } from "./components/bal-button/bal.button.type";
 import { PaddingCardType, SpacingCardType } from "./types/padding.types";
-import { BalDateCallback } from "./components/bal-datepicker/bal-datepicker.type";
-import { FileUploadRejectedFile } from "./components/bal-file-upload/bal-file-upload.type";
+import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
+import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
 import { AutocompleteTypes, InputTypes } from "./types/interfaces";
 import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
@@ -62,6 +62,10 @@ export namespace Components {
           * If `true` it adds a light background to the app
          */
         "background": boolean;
+        /**
+          * If `true` the bal-app can be used with header, main and footer. The footer will then be sticky to the bottom.
+         */
+        "hasStickyFooter": boolean;
     }
     interface BalButton {
         /**
@@ -108,10 +112,6 @@ export namespace Components {
           * If `true` the button has a active theme
          */
         "isActive": boolean;
-        /**
-          * Turn the button in to a link.
-         */
-        "link": boolean;
         /**
           * If `true` the label is hidden and a loading spinner is shown instead.
          */
@@ -423,6 +423,28 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    interface BalDocColor {
+        "background": boolean;
+        "color": string;
+        "description": string;
+        "inverted": boolean;
+        "scssVars": string;
+        "subject": string;
+    }
+    interface BalDocDownload {
+        "iconLeft": string;
+        "iconRight": string;
+        "link": string;
+        "subject": string;
+        "subtitle": string;
+    }
+    interface BalDocIcons {
+        "icons": string;
+    }
+    interface BalDocImage {
+        "src": string;
+        "text": string;
+    }
     interface BalDropdown {
         /**
           * Closes the dropdown menu.
@@ -622,10 +644,6 @@ export namespace Components {
           * Text for the close button.
          */
         "closeLabel": string;
-        /**
-          * If `true`, the user cannot interact with the input.
-         */
-        "disabled": boolean;
         /**
           * Opens the hint box.
          */
@@ -1577,6 +1595,30 @@ declare global {
         prototype: HTMLBalDatepickerElement;
         new (): HTMLBalDatepickerElement;
     };
+    interface HTMLBalDocColorElement extends Components.BalDocColor, HTMLStencilElement {
+    }
+    var HTMLBalDocColorElement: {
+        prototype: HTMLBalDocColorElement;
+        new (): HTMLBalDocColorElement;
+    };
+    interface HTMLBalDocDownloadElement extends Components.BalDocDownload, HTMLStencilElement {
+    }
+    var HTMLBalDocDownloadElement: {
+        prototype: HTMLBalDocDownloadElement;
+        new (): HTMLBalDocDownloadElement;
+    };
+    interface HTMLBalDocIconsElement extends Components.BalDocIcons, HTMLStencilElement {
+    }
+    var HTMLBalDocIconsElement: {
+        prototype: HTMLBalDocIconsElement;
+        new (): HTMLBalDocIconsElement;
+    };
+    interface HTMLBalDocImageElement extends Components.BalDocImage, HTMLStencilElement {
+    }
+    var HTMLBalDocImageElement: {
+        prototype: HTMLBalDocImageElement;
+        new (): HTMLBalDocImageElement;
+    };
     interface HTMLBalDropdownElement extends Components.BalDropdown, HTMLStencilElement {
     }
     var HTMLBalDropdownElement: {
@@ -1896,6 +1938,10 @@ declare global {
         "bal-data-label": HTMLBalDataLabelElement;
         "bal-data-value": HTMLBalDataValueElement;
         "bal-datepicker": HTMLBalDatepickerElement;
+        "bal-doc-color": HTMLBalDocColorElement;
+        "bal-doc-download": HTMLBalDocDownloadElement;
+        "bal-doc-icons": HTMLBalDocIconsElement;
+        "bal-doc-image": HTMLBalDocImageElement;
         "bal-dropdown": HTMLBalDropdownElement;
         "bal-dropdown-menu": HTMLBalDropdownMenuElement;
         "bal-dropdown-trigger": HTMLBalDropdownTriggerElement;
@@ -1988,6 +2034,10 @@ declare namespace LocalJSX {
           * If `true` it adds a light background to the app
          */
         "background"?: boolean;
+        /**
+          * If `true` the bal-app can be used with header, main and footer. The footer will then be sticky to the bottom.
+         */
+        "hasStickyFooter"?: boolean;
     }
     interface BalButton {
         /**
@@ -2034,10 +2084,6 @@ declare namespace LocalJSX {
           * If `true` the button has a active theme
          */
         "isActive"?: boolean;
-        /**
-          * Turn the button in to a link.
-         */
-        "link"?: boolean;
         /**
           * If `true` the label is hidden and a loading spinner is shown instead.
          */
@@ -2377,6 +2423,28 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    interface BalDocColor {
+        "background"?: boolean;
+        "color"?: string;
+        "description"?: string;
+        "inverted"?: boolean;
+        "scssVars"?: string;
+        "subject"?: string;
+    }
+    interface BalDocDownload {
+        "iconLeft"?: string;
+        "iconRight"?: string;
+        "link"?: string;
+        "subject"?: string;
+        "subtitle"?: string;
+    }
+    interface BalDocIcons {
+        "icons"?: string;
+    }
+    interface BalDocImage {
+        "src"?: string;
+        "text"?: string;
+    }
     interface BalDropdown {
         /**
           * If `true` the field spans over the whole width.
@@ -2565,10 +2633,6 @@ declare namespace LocalJSX {
           * Text for the close button.
          */
         "closeLabel"?: string;
-        /**
-          * If `true`, the user cannot interact with the input.
-         */
-        "disabled"?: boolean;
     }
     interface BalHintText {
     }
@@ -3478,6 +3542,10 @@ declare namespace LocalJSX {
         "bal-data-label": BalDataLabel;
         "bal-data-value": BalDataValue;
         "bal-datepicker": BalDatepicker;
+        "bal-doc-color": BalDocColor;
+        "bal-doc-download": BalDocDownload;
+        "bal-doc-icons": BalDocIcons;
+        "bal-doc-image": BalDocImage;
         "bal-dropdown": BalDropdown;
         "bal-dropdown-menu": BalDropdownMenu;
         "bal-dropdown-trigger": BalDropdownTrigger;
@@ -3552,6 +3620,10 @@ declare module "@stencil/core" {
             "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
             "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
+            "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
+            "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
+            "bal-doc-icons": LocalJSX.BalDocIcons & JSXBase.HTMLAttributes<HTMLBalDocIconsElement>;
+            "bal-doc-image": LocalJSX.BalDocImage & JSXBase.HTMLAttributes<HTMLBalDocImageElement>;
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
             "bal-dropdown-menu": LocalJSX.BalDropdownMenu & JSXBase.HTMLAttributes<HTMLBalDropdownMenuElement>;
             "bal-dropdown-trigger": LocalJSX.BalDropdownTrigger & JSXBase.HTMLAttributes<HTMLBalDropdownTriggerElement>;

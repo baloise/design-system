@@ -66,6 +66,11 @@ export const BalApp = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
+    hasStickyFooter: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   emits: {
 
@@ -94,11 +99,6 @@ export const BalButton = /*@__PURE__*/ defineComponent({
     size: {
       type: String,
       default: '',
-      required: false,
-    },
-    link: {
-      type: Boolean,
-      default: false,
       required: false,
     },
     href: {
@@ -635,6 +635,116 @@ export const BalDatepicker = /*@__PURE__*/ defineComponent({
   })
 })
 
+export const BalDocColor = /*@__PURE__*/ defineComponent({
+  name: 'bal-doc-color',
+  props: {
+    inverted: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    background: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    color: {
+      type: String,
+      default: 'primary',
+      required: false,
+    },
+    subject: {
+      type: String,
+      default: 'Primary',
+      required: false,
+    },
+    description: {
+      type: String,
+      default: '',
+      required: false,
+    },
+    scssVars: {
+      type: String,
+      default: '',
+      required: false,
+    },
+  },
+  emits: {
+
+  },
+  setup: defineSetup('bal-doc-color', [], undefined)
+})
+
+export const BalDocDownload = /*@__PURE__*/ defineComponent({
+  name: 'bal-doc-download',
+  props: {
+    link: {
+      type: String,
+      default: '',
+      required: false,
+    },
+    iconLeft: {
+      type: String,
+      default: 'document',
+      required: false,
+    },
+    iconRight: {
+      type: String,
+      default: 'download',
+      required: false,
+    },
+    subject: {
+      type: String,
+      default: '',
+      required: false,
+    },
+    subtitle: {
+      type: String,
+      default: '',
+      required: false,
+    },
+  },
+  emits: {
+
+  },
+  setup: defineSetup('bal-doc-download', [], undefined)
+})
+
+export const BalDocIcons = /*@__PURE__*/ defineComponent({
+  name: 'bal-doc-icons',
+  props: {
+    icons: {
+      type: String,
+      default: '',
+      required: false,
+    },
+  },
+  emits: {
+
+  },
+  setup: defineSetup('bal-doc-icons', [], undefined)
+})
+
+export const BalDocImage = /*@__PURE__*/ defineComponent({
+  name: 'bal-doc-image',
+  props: {
+    src: {
+      type: String,
+      default: '',
+      required: false,
+    },
+    text: {
+      type: String,
+      default: '',
+      required: false,
+    },
+  },
+  emits: {
+
+  },
+  setup: defineSetup('bal-doc-image', [], undefined)
+})
+
 export const BalDropdown = /*@__PURE__*/ defineComponent({
   name: 'bal-dropdown',
   props: {
@@ -946,11 +1056,6 @@ export const BalHint = /*@__PURE__*/ defineComponent({
     closeLabel: {
       type: String,
       default: 'Close',
-      required: false,
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
       required: false,
     },
   },

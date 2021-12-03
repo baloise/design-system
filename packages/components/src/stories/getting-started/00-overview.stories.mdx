@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/addon-docs'
+import AngularLogo from '../assets/images/angular.svg'
+import ReactLogo from '../assets/images/react.svg'
+import VueLogo from '../assets/images/vue.png'
+import HTMLLogo from '../assets/images/html.png'
+
+<Meta
+  title="Getting-Started/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Getting Started
+
+The Baloise Design System can be used with any Web-Technolgie, however we deliver for Angular, Vue and React a deticated library with proxy components.
+
+> For more integration documentation like react or svelte go to the stencil documentation about [Framework Integration](https://stenciljs.com/docs/overview).
+
+<div className="link-list">
+  <a className="link-item" href="?path=/docs/getting-started-html5-overview--page">
+    <img src={HTMLLogo} alt="html5" />
+    <span>
+      <strong>HTML5</strong>
+      Getting Started for an integration of the Baloise Design System with HTML, CSS and JavaScript. Can be used with all the JS-Frameworks, Server-Sider-Rendering or any other Web-Technology.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-angular-overview--page">
+    <img src={AngularLogo} alt="angular" />
+    <span>
+      <strong>
+        Angular <small>(10.2.x ✔ 11.x.x ✔ 12.x.x ✔)</small>
+      </strong>
+      Getting Started for an integration of the Baloise Design System with the Angular Framework and the usage of the Sass variables.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-vue-overview--page">
+    <img src={VueLogo} alt="vue" />
+    <span>
+      <strong>
+        Vue <small>(3.x.x ✔)</small>
+      </strong>
+      Getting Started for an integration of the Baloise Design System with the Vue.JS Framework and the usage of the Sass variables.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-react-overview--page">
+    <img src={ReactLogo} alt="react" />
+    <span>
+      <strong>
+        React <small>(17.x.x ✔)</small>
+      </strong>
+      Getting Started for an integration of the Baloise Design System with the React Library and the usage of the Sass variables.
+    </span>
+  </a>
+</div>

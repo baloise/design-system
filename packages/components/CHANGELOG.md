@@ -5,395 +5,200 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.0.5](https://github.com/baloise/design-system/compare/v2.0.4...v2.0.5) (2021-11-24)
 
-
 ### Bug Fixes
 
-* **file-upload:** using @baloise/web-app-utils for areArraysEqual ([a0b4793](https://github.com/baloise/design-system/commit/a0b47939bc39a5e97755d2f57504ca554971874b))
-
-
-
-## 1.19.7 (2021-11-11)
-
-
-
-
-
-## [2.0.4](https://github.com/baloise/design-system/compare/v2.0.3...v2.0.4) (2021-11-23)
-
-
-
-## 2.0.1 (2021-11-22)
-
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
+- **file-upload:** using @baloise/web-app-utils for areArraysEqual ([a0b4793](https://github.com/baloise/design-system/commit/a0b47939bc39a5e97755d2f57504ca554971874b))
 
 ## [2.0.3](https://github.com/baloise/design-system/compare/v2.0.2...v2.0.3) (2021-11-23)
 
+### Bug Fixes
+
+- **heading:** add missing subtile color ([7572254](https://github.com/baloise/design-system/commit/7572254cc29ffc298cca4f89327789626f5391ec))
+
+## [2.0.0](https://github.com/baloise/design-system/compare/v1.19.10...v2.0.0) (2021-11-22)
+
+### BREAKING CHANGES
+
+- Moved utils, filters/pipes and validators to [web-app-utils](https://github.com/baloise/web-app-utils) packages.
+  - Follow the migration guide [Migration from 1.x to 2.x](https://design.baloise.dev/components/migration/migration-from-1.x.html)
 
 ### Bug Fixes
 
-* **heading:** add missing subtile color ([7572254](https://github.com/baloise/design-system/commit/7572254cc29ffc298cca4f89327789626f5391ec))
-
-
-
-## 2.0.1 (2021-11-22)
-
-
-
-
-
-## [2.0.2](https://github.com/baloise/design-system/compare/v2.0.1...v2.0.2) (2021-11-23)
-
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
-
-## [2.0.1](https://github.com/baloise/design-system/compare/v2.0.0...v2.0.1) (2021-11-22)
-
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
+- modal: fix width issue with the close button
 
 ## [1.19.10](https://github.com/baloise/design-system/compare/v1.19.9...v1.19.10) (2021-11-17)
 
-
 ### Bug Fixes
 
-* lock version issue ([a557276](https://github.com/baloise/design-system/commit/a557276dc09b972d630c7961efda9c1db0fbf823))
-
-
-
-
+- lock version issue ([a557276](https://github.com/baloise/design-system/commit/a557276dc09b972d630c7961efda9c1db0fbf823))
 
 ## [1.19.9](https://github.com/baloise/design-system/compare/v1.19.8...v1.19.9) (2021-11-17)
 
-
 ### Bug Fixes
 
-* **testing:** add textarea ([0b9f7b9](https://github.com/baloise/design-system/commit/0b9f7b9091c1a0a95016c5b8dc02423666a5cf62))
-
-
-
-
+- **testing:** add textarea ([0b9f7b9](https://github.com/baloise/design-system/commit/0b9f7b9091c1a0a95016c5b8dc02423666a5cf62))
+- **testing:** improve isElemen function ([531e497](https://github.com/baloise/design-system/commit/531e4976cd57b332d39e89c9f5ee1cb419dedff7))
 
 ## [1.19.8](https://github.com/baloise/design-system/compare/v1.19.7...v1.19.8) (2021-11-17)
 
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
+**Note:** Version bump only for package root
 
 ## [1.19.7](https://github.com/baloise/design-system/compare/v1.19.6...v1.19.7) (2021-11-11)
 
-
 ### Bug Fixes
 
-* **footer:** styling of links ([45abc70](https://github.com/baloise/design-system/commit/45abc70d5e2917e2061f03511b797e273bed061f))
-
-
-
-
+- **footer:** styling of links ([45abc70](https://github.com/baloise/design-system/commit/45abc70d5e2917e2061f03511b797e273bed061f))
 
 ## [1.19.6](https://github.com/baloise/design-system/compare/v1.19.5...v1.19.6) (2021-11-10)
 
-
 ### Bug Fixes
 
-* **footer:** update styling ([30d45c3](https://github.com/baloise/design-system/commit/30d45c310ecc6e812f07b82be2a5e1250de7b72f))
-
-
-
-
+- **footer:** update styling ([30d45c3](https://github.com/baloise/design-system/commit/30d45c310ecc6e812f07b82be2a5e1250de7b72f))
 
 ## [1.19.5](https://github.com/baloise/design-system/compare/v1.19.4...v1.19.5) (2021-11-10)
 
-**Note:** Version bump only for package @baloise/design-system-components
+### Bug Fixes
 
+- **select:** Skip one single test to test if the build is working ([516021f](https://github.com/baloise/design-system/commit/516021fc3d93beff9819a9667abc29e6aa4cdd73))
 
-
-
+## 1.19.3 (2021-11-09)
 
 ## [1.19.4](https://github.com/baloise/design-system/compare/v1.19.3...v1.19.4) (2021-11-10)
 
-
 ### Bug Fixes
 
-* **select:** Skip one single test to test if the build is working ([516021f](https://github.com/baloise/design-system/commit/516021fc3d93beff9819a9667abc29e6aa4cdd73))
-
-
-
-
+- **select:** Skip one single test to test if the build is working ([516021f](https://github.com/baloise/design-system/commit/516021fc3d93beff9819a9667abc29e6aa4cdd73))
 
 ## [1.19.3](https://github.com/baloise/design-system/compare/v1.19.2...v1.19.3) (2021-11-09)
 
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
+**Note:** Version bump only for package root
 
 ## [1.19.2](https://github.com/baloise/design-system/compare/v1.19.1...v1.19.2) (2021-11-09)
 
-
 ### Bug Fixes
 
-* **footer:** Missing import ([3d4eaeb](https://github.com/baloise/design-system/commit/3d4eaebe336883a7cd72378de25963715af5fa08))
-* **footer:** Update links when locale changes ([7911b9b](https://github.com/baloise/design-system/commit/7911b9b2e039dae52002d09e33e3fdb441c57503))
-
-
-
-
+- **footer:** Missing import ([3d4eaeb](https://github.com/baloise/design-system/commit/3d4eaebe336883a7cd72378de25963715af5fa08))
+- **footer:** Update links when locale changes ([7911b9b](https://github.com/baloise/design-system/commit/7911b9b2e039dae52002d09e33e3fdb441c57503))
 
 ## [1.19.1](https://github.com/baloise/design-system/compare/v1.19.0...v1.19.1) (2021-10-08)
 
-**Note:** Version bump only for package @baloise/design-system-components
+## 1.18.15 (2021-10-08)
 
-
-
-
+**Note:** Version bump only for package root
 
 # [1.19.0](https://github.com/baloise/design-system/compare/v1.18.15...v1.19.0) (2021-10-08)
 
-
 ### Features
 
-* **footer:** add dynamic baloise links ([263a661](https://github.com/baloise/design-system/commit/263a6617fc59217963149ef480785f89a51de965))
-
-
-
-
+- **footer:** add dynamic baloise links ([263a661](https://github.com/baloise/design-system/commit/263a6617fc59217963149ef480785f89a51de965))
 
 ## [1.18.15](https://github.com/baloise/design-system/compare/v1.18.14...v1.18.15) (2021-10-08)
 
-**Note:** Version bump only for package @baloise/design-system-components
+## 1.18.13 (2021-10-08)
 
-
-
-
+**Note:** Version bump only for package root
 
 ## [1.18.14](https://github.com/baloise/design-system/compare/v1.18.13...v1.18.14) (2021-10-08)
 
-
 ### Bug Fixes
 
-* **link:** add inverted style ([e801ef6](https://github.com/baloise/design-system/commit/e801ef62237238760e8831ea30398b3bc5e6faf7))
-
-
-
-
+- **link:** add inverted style ([e801ef6](https://github.com/baloise/design-system/commit/e801ef62237238760e8831ea30398b3bc5e6faf7))
 
 ## [1.18.13](https://github.com/baloise/design-system/compare/v1.18.12...v1.18.13) (2021-10-08)
 
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
+**Note:** Version bump only for package root
 
 ## [1.18.12](https://github.com/baloise/design-system/compare/v1.18.11...v1.18.12) (2021-10-07)
 
-**Note:** Version bump only for package @baloise/design-system-components
+### Bug Fixes
 
-
-
-
-
-## [1.18.11](https://github.com/baloise/design-system/compare/v1.18.10...v1.18.11) (2021-10-07)
-
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
-
-## [1.18.10](https://github.com/baloise/design-system/compare/v1.18.9...v1.18.10) (2021-10-07)
-
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
-
-## [1.18.9](https://github.com/baloise/design-system/compare/v1.18.8...v1.18.9) (2021-10-07)
-
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
-
-## [1.18.8](https://github.com/baloise/design-system/compare/v1.18.7...v1.18.8) (2021-10-07)
-
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
+- release workflow ([0a0f8f1](https://github.com/baloise/design-system/commit/0a0f8f1324634d1c6681ee5cc4806237be429323))
 
 ## [1.18.7](https://github.com/baloise/design-system/compare/v1.18.6...v1.18.7) (2021-10-07)
 
-
 ### Bug Fixes
 
-* **list:** use flexbox ([2c34f09](https://github.com/baloise/design-system/commit/2c34f09033fa2f8b4c9b2790c9209b225240f668))
-
-
-
-
+- **list:** use flexbox ([2c34f09](https://github.com/baloise/design-system/commit/2c34f09033fa2f8b4c9b2790c9209b225240f668))
 
 ## [1.18.6](https://github.com/baloise/design-system/compare/v1.18.5...v1.18.6) (2021-10-05)
 
-
 ### Bug Fixes
 
-* **modal:** add card class on user element ([8515746](https://github.com/baloise/design-system/commit/8515746fb0efc68ef029c86f6e5963e0b8e68fd5))
-
-
-
-
-
-## [1.18.5](https://github.com/baloise/design-system/compare/v1.18.4...v1.18.5) (2021-10-05)
-
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
-
-## [1.18.4](https://github.com/baloise/design-system/compare/v1.18.3...v1.18.4) (2021-10-05)
-
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
+- **modal:** add card class on user element ([8515746](https://github.com/baloise/design-system/commit/8515746fb0efc68ef029c86f6e5963e0b8e68fd5))
 
 ## [1.18.3](https://github.com/baloise/design-system/compare/v1.18.2...v1.18.3) (2021-10-05)
 
-**Note:** Version bump only for package @baloise/design-system-components
+### Bug Fixes
 
-
-
-
+- add fixed sub package versions ([0ab2c03](https://github.com/baloise/design-system/commit/0ab2c03904b732d227fdd1345d2088b9b3a978aa))
 
 ## [1.18.2](https://github.com/baloise/design-system/compare/v1.18.1...v1.18.2) (2021-10-05)
 
-
 ### Bug Fixes
 
-* add fixed sub package versions ([da41daf](https://github.com/baloise/design-system/commit/da41dafe664826ffc98c33f74c5625399d388a63))
-
-
-
-
-
-## [1.18.1](https://github.com/baloise/design-system/compare/v1.18.0...v1.18.1) (2021-10-05)
-
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
+- add fixed sub package versions ([da41daf](https://github.com/baloise/design-system/commit/da41dafe664826ffc98c33f74c5625399d388a63))
 
 # [1.18.0](https://github.com/baloise/design-system/compare/v1.17.0...v1.18.0) (2021-10-05)
 
-
 ### Bug Fixes
 
-* **card:** adjust primary color ([da530b7](https://github.com/baloise/design-system/commit/da530b707e5833cbd9546339e787bebf9913183f))
-* **datepicker:** limit month & year select when using min and max ([d06fd72](https://github.com/baloise/design-system/commit/d06fd7239856bb4e559fc338267507157465a16b))
-* **notification:** adjust padding and link colors ([da48a01](https://github.com/baloise/design-system/commit/da48a010967d9bc151e09513f1aaca7836bb9a1c))
-
+- **card:** adjust primary color ([da530b7](https://github.com/baloise/design-system/commit/da530b707e5833cbd9546339e787bebf9913183f))
+- **datepicker:** limit month & year select when using min and max ([d06fd72](https://github.com/baloise/design-system/commit/d06fd7239856bb4e559fc338267507157465a16b))
+- **notification:** adjust padding and link colors ([da48a01](https://github.com/baloise/design-system/commit/da48a010967d9bc151e09513f1aaca7836bb9a1c))
 
 ### Features
 
-* **modal:** add mobile solution and fix custom width ([3308957](https://github.com/baloise/design-system/commit/3308957eb7971382904fc8fa58fa5ae05848ea5e))
-* **modal:** add mobile view ([0fb0d27](https://github.com/baloise/design-system/commit/0fb0d277bb7213ec29e3855b22f917a2abcca4ea))
-* **stepper:** add stepper template ([4b02cae](https://github.com/baloise/design-system/commit/4b02cae763b40fc8f31d3d15f58abb8caf85fffe))
-
-
-
-
+- **modal:** add mobile solution and fix custom width ([3308957](https://github.com/baloise/design-system/commit/3308957eb7971382904fc8fa58fa5ae05848ea5e))
+- **modal:** add mobile view ([0fb0d27](https://github.com/baloise/design-system/commit/0fb0d277bb7213ec29e3855b22f917a2abcca4ea))
+- **stepper:** add stepper template ([4b02cae](https://github.com/baloise/design-system/commit/4b02cae763b40fc8f31d3d15f58abb8caf85fffe))
 
 # [1.17.0](https://github.com/baloise/design-system/compare/v1.16.2...v1.17.0) (2021-10-01)
 
-
 ### Bug Fixes
 
-* **card:** adjust spacing ([2b7c745](https://github.com/baloise/design-system/commit/2b7c7459897cb080ccd884183928eb5cfe80a30d))
-* **container:** adjust container to new paddings ([d033195](https://github.com/baloise/design-system/commit/d0331959c6de4a7eb53d95f6bfec8582bd36afc6))
-* **select:** fix arrow key navigation on focus ([fd77ff4](https://github.com/baloise/design-system/commit/fd77ff4e7485981f29f12b37f1cba9f144d72b0a))
-* **tabs:** adjust disabled style ([3813bf7](https://github.com/baloise/design-system/commit/3813bf7d7b942fc4e0f4f2b2de68efe12c0f1428))
-
+- **card:** adjust spacing ([2b7c745](https://github.com/baloise/design-system/commit/2b7c7459897cb080ccd884183928eb5cfe80a30d))
+- **container:** adjust container to new paddings ([d033195](https://github.com/baloise/design-system/commit/d0331959c6de4a7eb53d95f6bfec8582bd36afc6))
+- **select:** fix arrow key navigation on focus ([fd77ff4](https://github.com/baloise/design-system/commit/fd77ff4e7485981f29f12b37f1cba9f144d72b0a))
+- **tabs:** adjust disabled style ([3813bf7](https://github.com/baloise/design-system/commit/3813bf7d7b942fc4e0f4f2b2de68efe12c0f1428))
+- **testing:** fix cy.url().should() ([156d9b4](https://github.com/baloise/design-system/commit/156d9b4d7c38337e6ac5820fa292c527a27e6a14))
 
 ### Features
 
-* **button:** add button group helper css class ([a03dcf3](https://github.com/baloise/design-system/commit/a03dcf3a201dd0cc8c851dbca274adfe6e000780))
-
-
-
-
+- **button:** add button group helper css class ([a03dcf3](https://github.com/baloise/design-system/commit/a03dcf3a201dd0cc8c851dbca274adfe6e000780))
 
 ## [1.16.2](https://github.com/baloise/design-system/compare/v1.16.1...v1.16.2) (2021-09-29)
 
-
-
 # 1.16.0 (2021-09-29)
 
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
+**Note:** Version bump only for package root
 
 ## [1.16.1](https://github.com/baloise/design-system/compare/v1.16.0...v1.16.1) (2021-09-29)
 
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
+**Note:** Version bump only for package root
 
 # [1.16.0](https://github.com/baloise/design-system/compare/v1.15.1...v1.16.0) (2021-09-29)
 
-
 ### Bug Fixes
 
-* **button:** fix loading state with icons ([5d31e89](https://github.com/baloise/design-system/commit/5d31e892fbdb7de6a00b12c45c9cf47ffff3c8a3))
-* **modal:** adjust paddings ([d13e24b](https://github.com/baloise/design-system/commit/d13e24b55ccce34773ff7805909ecb068d54e509))
-* **radio:** remove debugger statement ([c555113](https://github.com/baloise/design-system/commit/c5551135792e1fe76844c4676b2360b1fc19c011))
-* **select:** improve clear and key navigation ([e77479d](https://github.com/baloise/design-system/commit/e77479df925bff61bc39e224309c0a2c95564512))
-* **select:** improve disabled look ([069b80d](https://github.com/baloise/design-system/commit/069b80d7c6552349922814f65f376c609fae75be))
-* **select:** open dropdown with arrow keys ([f1621dd](https://github.com/baloise/design-system/commit/f1621ddd71651ce8d25e4ac9f1f02b2142201960))
-
+- **button:** fix loading state with icons ([5d31e89](https://github.com/baloise/design-system/commit/5d31e892fbdb7de6a00b12c45c9cf47ffff3c8a3))
+- **modal:** adjust paddings ([d13e24b](https://github.com/baloise/design-system/commit/d13e24b55ccce34773ff7805909ecb068d54e509))
+- **radio:** remove debugger statement ([c555113](https://github.com/baloise/design-system/commit/c5551135792e1fe76844c4676b2360b1fc19c011))
+- **select:** improve clear and key navigation ([e77479d](https://github.com/baloise/design-system/commit/e77479df925bff61bc39e224309c0a2c95564512))
+- **select:** improve disabled look ([069b80d](https://github.com/baloise/design-system/commit/069b80d7c6552349922814f65f376c609fae75be))
+- **select:** open dropdown with arrow keys ([f1621dd](https://github.com/baloise/design-system/commit/f1621ddd71651ce8d25e4ac9f1f02b2142201960))
 
 ### Features
 
-* **file-upload:** add clear method ([ffcaa84](https://github.com/baloise/design-system/commit/ffcaa84f3b7ec49414a709dc50b5111287b0cbde))
-* **filters:** add police number filter ([912e74b](https://github.com/baloise/design-system/commit/912e74b2ac29194e05fa54dc54bc6199a8ed3b26))
-
-
-
-
+- **file-upload:** add clear method ([ffcaa84](https://github.com/baloise/design-system/commit/ffcaa84f3b7ec49414a709dc50b5111287b0cbde))
+- **filters:** add police number filter ([912e74b](https://github.com/baloise/design-system/commit/912e74b2ac29194e05fa54dc54bc6199a8ed3b26))
 
 ## [1.15.1](https://github.com/baloise/design-system/compare/v1.15.0...v1.15.1) (2021-09-22)
 
-
 ### Bug Fixes
 
-* **dropdown:** remove possible border-bottom effect ([fad665e](https://github.com/baloise/design-system/commit/fad665e13fffa1dd311f39decaeae27ed3fd2bcd))
+- **dropdown:** remove possible border-bottom effect ([fad665e](https://github.com/baloise/design-system/commit/fad665e13fffa1dd311f39decaeae27ed3fd2bcd))
 
-
-
-
+## 1.14.5 (2021-09-13)
 
 # [1.15.0](https://github.com/baloise/design-system/compare/v1.14.5...v1.15.0) (2021-09-20)
 

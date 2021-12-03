@@ -31,11 +31,6 @@ export class Button implements ComponentInterface {
   @Prop({ reflect: true }) size: 'small' | '' = ''
 
   /**
-   * Turn the button in to a link.
-   */
-  @Prop() link: boolean = false
-
-  /**
    * Specifies the URL of the page the link goes to
    */
   @Prop() href: string | undefined

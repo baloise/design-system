@@ -24,8 +24,11 @@ jobs:
       - name: Test
         run: npm run test
 
+      - name: Build server in the background
+        run: npm run test:build-server
+
       - name: Start server in the background
-        run: npm run testing:server &
+        run: npm run test:start-server &
 
       - uses: cypress-io/github-action@v2
         with:

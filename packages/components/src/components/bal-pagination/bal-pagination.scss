@@ -12,9 +12,9 @@ nav.pagination {
     background: $white;
 
     &:disabled {
-      background: $blue-light;
-      border-color: $blue-light-line;
-      color: $blue-light-text;
+      background: $info-0;
+      border-color: $info-2;
+      color: $text-light;
       cursor: not-allowed;
     }
   }

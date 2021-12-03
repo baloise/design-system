@@ -1,0 +1,167 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs'
+
+<Meta
+  title="Design/Typography"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Typography
+
+We use the `bal-heading` and `bal-text` component to crop the font correctly, otherwise it has font margin top of around 2px.
+
+- [Heading](?path=/docs/Components-heading--basic)
+- [Text](?path=/docs/Components-text--basic)
+
+import { typographyHelper } from './02-typography.templates.ts'
+import { html } from '../utils'
+import dedent from 'ts-dedent'
+
+## Headings
+
+<Canvas className="bal-app" withSource="none">
+  <div>
+    <bal-heading space="bottom" level="h1">
+      H1 MetaPro Normal
+    </bal-heading>
+    <bal-heading space="bottom" level="h2">
+      H2 MetaPro Normal
+    </bal-heading>
+    <bal-heading space="bottom" level="h3">
+      H3 MetaPro Medium
+    </bal-heading>
+    <bal-heading space="bottom" level="h3" subtitle>
+      H3 MetaPro Normal
+    </bal-heading>
+    <bal-heading space="bottom" level="h4">
+      H4 MetaPro Medium
+    </bal-heading>
+    <bal-heading space="none" level="h4" subtitle>
+      H4 MetaPro Normal
+    </bal-heading>
+  </div>
+</Canvas>
+
+## Texts
+
+<Canvas className="bal-app" withSource="none">
+  <div>
+    <bal-text bold>Paragraph MetaPro Normal</bal-text>
+    <bal-text>Paragraph MetaPro Normal</bal-text>
+    <a className="is-link" href="">
+      <bal-text>Link cyan</bal-text>
+    </a>
+    <br />
+    <br />
+    <bal-text small bold>
+      Small Paragraph MetaPro Normal
+    </bal-text>
+    <bal-text small>Small Paragraph MetaPro Normal</bal-text>
+    <a className="is-link" href="">
+      <bal-text small>Small Link cyan</bal-text>
+    </a>
+  </div>
+</Canvas>
+
+## CSS Helper Classes
+
+Out of the typography tokens we create a collection of helper css classes.
+
+[Go to the Bulma documentation](https://bulma.io/documentation/helpers/typography-helpers/)
+
+<Canvas className="bal-app" withSource="none">
+  {html(`<div>${typographyHelper}</div>`)}
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${typographyHelper}
+  `}
+/>
+
+## Download
+
+Download our font for print usage below. For web development please continue reading.
+
+<bal-app>
+  <bal-doc-download subject="fonts.zip" subtitle="Our typography files" link="/assets/download/fonts.zip"></bal-doc-download>
+</bal-app>
+
+## Install web font
+
+Our fonts are provide as a [NPM package](https://www.npmjs.com/package/@baloise/design-system-fonts). Besides the font files the according css and sass file are delivered aswell.
+
+> **TIP**
+> The font package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
+
+To install it direktly to your project run the following command.
+
+```bash
+npm install @baloise/design-system-fonts
+```
+
+### Usage
+
+Next step is to provide the fonts to our web application. To do so we recommand the tool [copyfiles](https://www.npmjs.com/package/copyfiles) to copy the font files into your asset folder.
+
+```bash
+npm install copyfiles --save-dev
+```
+
+After installing our copyfiles dependency we need to define the copy command in our **package.json** file. Add a new script called `copy:fonts` and adjust the second path to your application.
+
+Place the downloaded fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
+
+```scss
+$font-path: 'assets/fonts';
+
+@import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
+```
+
+> **TIP for Angular apps**
+> For angular apps the default path would be `src/assets/fonts` instead of **public/assets/fonts**
+
+> **TIP Relative Path**
+> To serve the fonts from a relative path inside a Angular application adjust `$font-path` variable to `'~assets/fonts'`.
+>
+> ```scss
+> $font-path: '~assets/fonts';
+>
+> @import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
+> ```
+
+Then we add the defined script `copy:fonts` in our `postinstall` script. Every time we install dependencies the `copy:fonts` script gets executed at the end.
+
+```json
+"scripts": {
+  "postinstall": "npm run copy:fonts",
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts"
+}
+```
+
+> **TIP CI&CD**
+> It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
+
+### CDN
+
+Configure the fonts in a css file.
+
+The package `@baloise/design-system-fonts` also delivers a css file with the config for the typography. Add the `fonts.css` into the `head` of the webpage.
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/fonts.css" />
+```
+
+Next [download the font](/design/typography.html#download) to use it with the CDN setup and put them into the path `/assets/fonts` of the webpage.
+
+### Webpack
+
+Import the css directly into your main TypeScript or JavaScript file.
+
+```typescript
+import '@baloise/design-system-components/dist/design-system-fonts/lib/fonts.css'
+```

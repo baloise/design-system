@@ -1,56 +1,36 @@
 @import 'node_modules/bulma/sass/utilities/derived-variables.sass';
+@import 'colors.scss';
 
 /**
  * Colors
  */
-$blue: #003399;
-$cyan: #009ee7;
-$green: #3fc889;
-$yellow: #ff9900;
-$orange: #ff8304;
-$red: #ff3366;
-
-$blue-darker: #010102;
-$blue-dark: #002162;
-$blue-light-text: #7188b8;
-$blue-lighter-text: #95adda;
+$blue-darker: $info-9;
+$blue-dark: $info-8;
+$blue-light-text: $info-4;
+$blue-lighter-text: $info-3;
 $blue-line: $blue-lighter-text;
-$blue-light-line: #d1dbed;
-$blue-line-inverted: #204c9d;
-$blue-light-hover: #ebf6fa;
-$blue-light: #f0fbff;
+$blue-light-line: $info-2;
+$blue-line-inverted: $info-5;
+$blue-light-hover: $info-1;
+$blue-light: $info-0;
 
-$black: #222222;
-$black-bis: $blue-darker;
-$black-ter: $blue-dark;
+$black-bis: $info-9;
+$black-ter: $info-8;
 
-$grey-darkest: #444444;
-$grey-darker: #7e7e7e;
-$grey-dark: #cecfd0;
-$grey: #d8d9d9;
-$grey-light: #e2e3e3;
-$grey-lighter: #ebecec;
-$grey-lightest: #f1f3f5;
+$grey-darkest: $gray-8;
+$grey-darker: $gray-7;
+$grey-dark: $gray-6;
+$grey: $gray-5;
+$grey-light: $gray-4;
+$grey-lighter: $gray-3;
+$grey-lightest: $gray-2;
 
-$white: #ffffff;
-$white-bis: #fafafa;
-$white-ter: #f5f5f6;
-
-$dark: $blue;
+$dark: $info;
 $light: $white-bis;
-$primary: $cyan;
-$info-light: $blue-light;
-$info: $blue;
-$info-dark: $blue-dark;
+$info-light: $info-0;
+$info-dark: $info-8;
 $link: $cyan;
-$warning: $yellow;
-$warning-invert: $white;
-$danger: $red;
 $hint: $blue-light-text;
-$success: $green;
-
-$primary-invert: $white;
-$success-invert: $white;
 
 $text: $black;
 $text-strong: $blue;

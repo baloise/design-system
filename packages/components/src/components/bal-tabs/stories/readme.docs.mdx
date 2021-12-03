@@ -1,0 +1,41 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+
+<span id="story--components-tabs--basic" style={{ opacity: 0 }}></span>
+
+# Tabs
+
+Tabs are used to structure the information in sub section on the same page.
+
+<Canvas>
+  <Story id="components-tabs--basic" />
+</Canvas>
+
+## Rounded
+
+<Canvas>
+  <Story id="components-tabs--round" />
+</Canvas>
+
+## Steps
+
+<Canvas>
+  <Story id="components-tabs--steps" />
+</Canvas>
+
+## Component Api
+
+import readme from '../readme.md'
+import tabItem from '../bal-tab-item/readme.md'
+
+<Description markdown={readme} />
+<Description markdown={tabItem} />
+
+<br />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+import github from './github.md'
+
+<Description markdown={github} />

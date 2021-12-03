@@ -1,9 +1,6 @@
-# Navbar
-
-<!-- Auto Generated Below -->
-
-
-## Properties
+### bal-navbar
+ 
+#### Properties
 
 | Property   | Attribute   | Description                                  | Type      | Default |
 | ---------- | ----------- | -------------------------------------------- | --------- | ------- |
@@ -12,6 +9,4 @@
 | `noBurger` | `no-burger` | It `true` the burger button is hidden        | `boolean` | `false` |
 
 
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+ 

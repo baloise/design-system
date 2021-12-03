@@ -26,7 +26,7 @@
 
         span.step-index {
           border-radius: 50%;
-          border: 1px solid $blue-light-line;
+          border: 1px solid $info-2;
           display: flex;
           align-items: center;
           font-weight: $weight-bold;
@@ -117,12 +117,12 @@
         opacity: 0.5;
 
         span.step-index {
-          border-color: $blue-light-line;
+          border-color: $info-2;
         }
 
         span.step-label,
         span.step-index {
-          color: $blue-light-text;
+          color: $text-light;
         }
       }
     }
@@ -130,15 +130,15 @@
 
   @include tablet() {
     .tabs {
-      border-bottom: 1px solid $blue-light-line;
+      border-bottom: 1px solid $info-2;
       & > ul > li {
-        border-top: 1px solid $blue-light-line;
-        border-left: 1px solid $blue-light-line;
+        border-top: 1px solid $info-2;
+        border-left: 1px solid $info-2;
         max-width: 300px;
         height: 100px;
 
         &:last-child {
-          border-right: 1px solid $blue-light-line;
+          border-right: 1px solid $info-2;
         }
 
         & > a {

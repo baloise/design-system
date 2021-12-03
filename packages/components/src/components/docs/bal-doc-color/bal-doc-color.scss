@@ -1,0 +1,13 @@
+@import '../../../styles/global.utilities.scss';
+
+:host {
+  p {
+    font-family: monospace;
+    font-size: 13px;
+    color: #333;
+  }
+
+  .has-border-top {
+    border-top: 1px solid $info-3;
+  }
+}

@@ -1,0 +1,101 @@
+import { Meta, Description } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/Vue/Installation"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Installation
+
+Before installing the Baloise Design System setup in a Vue Project, we recommend to use this starter kit [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit) or use the [Vue CLI](https://cli.vuejs.org/guide/installation.html) with Sass and TypeScript.
+
+To install the Baloise Design System run the following command.
+
+```bash
+npm install @baloise/design-system-components-vue --save
+```
+
+> **Recommandations**
+>
+> - Choose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
+> - We recomand to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
+
+## Add Plugin
+
+The `@baloise/design-system-components-vue` dependency includes the plugin `BaloiseDesignSystem`, which loads by default the polyfils and defines the components. Moreover, it adds the filtes and conrollers to your vue instance.
+
+### main.ts
+
+```typescript
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import { BaloiseDesignSystem } from '@baloise/design-system-components-vue'
+
+Vue.config.productionTip = false
+
+Vue.use(BaloiseDesignSystem)
+
+new Vue({
+  router,
+  render: h => h(App),
+}).$mount('#app')
+```
+
+> **TIP**
+>
+> To use the Baloise Design System with [ViteJs](https://vitejs.dev/) add the following config: `Vue.use(BaloiseDesignSystem, &#123; useVite: true &#125;)`
+
+import InstallStyles from '../styles/styles-sass.md'
+
+<Description markdown={InstallStyles} />
+
+import InstallFonts from '../styles/styles-fonts.md'
+
+<Description markdown={InstallFonts} />
+
+## HTML Structure
+
+Add the `BalApp` to your root element. Within this component we are able to use the defined css classes.
+
+```html
+<template>
+  <BalApp background has-sticky-footer>
+    <header>
+      <!-- Header content -->
+    </header>
+    <main class="container">
+      <!-- Page content -->
+      <router-view />
+    </main>
+    <BalFooter>
+      <div class="container">
+        <!-- Footer content -->
+        Footer
+      </div>
+    </BalFooter>
+  </BalApp>
+</template>
+
+<script lang="ts">
+  import { defineComponent } from 'vue'
+  import { BalApp, BalFooter } from '@baloise/design-system-components-vue'
+
+  export default defineComponent({
+    name: 'App',
+    components: { BalApp, BalFooter },
+  })
+</script>
+```
+
+Now everything is ready to be used. Add some Baloise components and start the app with:
+
+```bash
+npm run serve
+# or for vite
+npm run dev
+```
