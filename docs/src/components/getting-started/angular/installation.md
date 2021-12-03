@@ -31,7 +31,7 @@ ng add @angular-eslint/schematics
 
 Lets configure eslint rules.
 First we need to extend the ESLint rules to improve our linting rules.
-Open the `eslintrc.json` file and add the missing rules.
+Open the `.eslintrc.json` file and add the missing rules.
 
 ```json
 ...
