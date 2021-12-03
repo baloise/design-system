@@ -7,6 +7,7 @@ module.exports = {
   features: {
     postcss: false,
   },
+  staticDirs: ['../public'],
   webpackFinal: config => {
     // const mdxRule = config.module.rules.find(rule => rule.test.test('.stories.mdx'))
 

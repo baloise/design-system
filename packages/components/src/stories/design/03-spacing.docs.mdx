@@ -1,0 +1,66 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+
+# Spacing
+
+Under the hood we use the [Bulma Spacing Helpers](https://bulma.io/documentation/helpers/spacing-helpers/)
+
+Bulma provides **margin** `m*` and **padding** `p*` helpers in all directions:
+
+- `*t` for **top**
+- `*r` for **right**
+- `*b` for **bottom**
+- `*l` for **left**
+- `*x` **horizontally** for both left and right
+- `*y` **vertically** for both top and bottom
+
+You need to combine a margin/padding prefix with a direction suffix. For example:
+
+- for a `margin-top`, use `mt-*`
+- for a `padding-bottom`, use `pb-_`
+  vfor both margin-left and margin-right, use `mx-_`
+
+## Values
+
+Each of these property-direction combinations needs to be appended with one of 16 value suffixes:
+
+| Suffix | Value Small (Mobile) | Value Medium (Tablet) | Value Large (Desktop) |
+| ------ | -------------------- | --------------------- | --------------------- |
+| `*-0`  | `0`                  | `0`                   | `0`                   |
+| `*-1`  | `4px`                | `4px`                 | `4px`                 |
+| `*-2`  | `8px`                | `8px`                 | `8px`                 |
+| `*-3`  | `12px`               | `12px`                | `12px`                |
+| `*-4`  | `16px`               | `16px`                | `16px`                |
+| `*-5`  | `20px`               | `20px`                | `24px`                |
+| `*-6`  | `24px`               | `24px`                | `32px`                |
+| `*-7`  | `32px`               | `40px`                | `48px`                |
+| `*-8`  | `48px`               | `56px`                | `64px`                |
+
+## Usage
+
+<Canvas className="bal-app">
+  <div className="has-background-primary p-4">
+    <div className="has-background-info has-text-white py-2 px-4">
+      <bal-text>Custom Padding</bal-text>
+    </div>
+  </div>
+</Canvas>
+
+```html
+<div class="has-background-primary p-4">
+  <div class="has-background-info has-text-white py-2 px-4">
+    <bal-text>Custom Padding</bal-text>
+  </div>
+</div>
+```
+
+<Canvas className="bal-app">
+  <div class="has-background-info has-text-white mt-6 p-6">
+    <bal-text>Margin Top with Padding</bal-text>
+  </div>
+</Canvas>
+
+```html
+<div class="has-background-info has-text-white mt-6 p-6">
+  <bal-text>Margin Top with Padding</bal-text>
+</div>
+```

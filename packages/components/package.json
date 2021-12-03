@@ -35,7 +35,7 @@
     "loader/"
   ],
   "scripts": {
-    "start": "concurrently --names \"STENCIL,STORYBOOK\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm:serve\" \"npm:storybook\"",
+    "start": "npm run dev && concurrently --names \"STENCIL,STORYBOOK\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm:serve\" \"npm:storybook\"",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
     "==================== BUILD ====================": "================================",
     "build": "npm run build:contributors && npm run build:testing && stencil build",

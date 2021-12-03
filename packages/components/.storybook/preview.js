@@ -14,6 +14,42 @@ export const decorators = [
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: { expanded: true },
+  viewport: {
+    viewports: {
+      'small': {
+        name: 'Small (Mobile)',
+        styles: {
+          width: '768px',
+          height: '414px',
+        },
+        type: 'mobile',
+      },
+      'medium': {
+        name: 'Medium (Tablet)',
+        styles: {
+          width: '1023px',
+          height: '834px',
+        },
+        type: 'tablet',
+      },
+      'large': {
+        name: 'Large (Desktop)',
+        styles: {
+          width: '1216px',
+          height: '801px',
+        },
+        type: 'desktop',
+      },
+      'x-large': {
+        name: 'X-Large (Desktop)',
+        styles: {
+          width: '1408px',
+          height: '801px',
+        },
+        type: 'desktop',
+      },
+    },
+  },
   a11y: {
     config: {
       rules: [

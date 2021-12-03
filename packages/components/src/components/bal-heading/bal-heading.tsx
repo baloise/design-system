@@ -89,7 +89,7 @@ export class Heading {
           class={{
             'title': this.subtitle === false,
             'subtitle': this.subtitle === true,
-            'has-no-margin': !this.spaced,
+            'm-0': !this.spaced,
             [this.spacing]: true,
             [this.fontSize]: true,
             [this.fontColor]: true,

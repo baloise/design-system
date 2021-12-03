@@ -224,16 +224,6 @@ export const BalCard = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
-    padding: {
-      type: String,
-      default: '',
-      required: false,
-    },
-    padded: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
     inverted: {
       type: Boolean,
       default: false,
