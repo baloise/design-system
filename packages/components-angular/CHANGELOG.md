@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/baloise/design-system/compare/v3.0.0...v3.0.1) (2021-12-06)
+
+**Note:** Version bump only for package @baloise/design-system-components-angular
+
+
+
+
+
 ## [2.0.5](https://github.com/baloise/design-system/compare/v2.0.4...v2.0.5) (2021-11-24)
 
 
