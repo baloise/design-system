@@ -31,3 +31,12 @@ ManualInput.args = {
   placeholder: 'Type a date',
   triggerIcon: true,
 }
+
+export const MinAndMax = Template.bind({})
+MinAndMax.args = {
+  placeholder: 'Type a date',
+  defaultDate: '2022-01-06',
+  min: '2022-01-06',
+  max: '2022-01-12',
+}
+MinAndMax.parameters = { controls: { include: ['min', 'max', 'minYearProp', 'maxYearProp', 'defaultDate', 'placeholder'] } }
