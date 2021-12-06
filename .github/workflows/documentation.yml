@@ -40,18 +40,18 @@ jobs:
           push: true
           tags: baloise/design-system-docs:${{ steps.vars.outputs.sha_short }},baloise/design-system-docs:latest
 
-      # - name: Deploy
-      #   uses: addnab/docker-run-action@v3
-      #   with:
-      #     image: baloise/gitopscli:5.1.0
-      #     run: |
-      #       gitopscli deploy \
-      #       --git-provider-url https://github.com \
-      #       --username ${{ secrets.INCUBATOR_GITHUB_USER }} \
-      #       --password ${{ secrets.INCUBATOR_GITHUB_TOKEN }} \
-      #       --git-user "Baloise Incubator" \
-      #       --git-email "incubator@baloise.dev" \
-      #       --organisation "baloise-incubator" \
-      #       --repository-name "okd4-example-apps" \
-      #       --file "baloise-design-system-docs-test/values.yaml" \
-      #       --values "{baloise-design-system-docs.image.tag: ${{ steps.vars.outputs.sha_short }}}"
+      - name: Deploy
+        uses: addnab/docker-run-action@v3
+        with:
+          image: baloise/gitopscli:5.1.0
+          run: |
+            gitopscli deploy \
+            --git-provider-url https://github.com \
+            --username ${{ secrets.INCUBATOR_GITHUB_USER }} \
+            --password ${{ secrets.INCUBATOR_GITHUB_TOKEN }} \
+            --git-user "Baloise Incubator" \
+            --git-email "incubator@baloise.dev" \
+            --organisation "baloise-incubator" \
+            --repository-name "okd4-example-apps" \
+            --file "baloise-design-system-docs-test/values.yaml" \
+            --values "{baloise-design-system-docs.image.tag: ${{ steps.vars.outputs.sha_short }}}"
