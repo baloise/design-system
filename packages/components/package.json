@@ -58,8 +58,8 @@
     "test:e2e:watch": "stencil test --e2e --watchAll --config stencil.test.config.ts",
     "log": "stencil build --prod --config stencil.log.config.ts --config stencil.test.config.ts",
     "================ DOCUMENTATION ================": "================================",
-    "storybook": "start-storybook -s ./public -p 6006",
-    "build:storybook": "build-storybook -s ./public -o ../../storybook"
+    "storybook": "start-storybook -p 6006",
+    "build:storybook": "build-storybook -o ../../storybook"
   },
   "dependencies": {
     "@baloise/design-system-fonts": "3.0.0",
