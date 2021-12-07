@@ -16,5 +16,23 @@ bal-sheet {
   > div.container {
     background-color: $info-0;
     box-shadow: $shadow;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  @include desktop() {
+    > div.container {
+      background-color: transparent;
+      box-shadow: none;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+
+      > div.inner {
+        background-color: $info-0;
+        box-shadow: $shadow;
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+    }
   }
 }
