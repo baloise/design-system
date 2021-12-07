@@ -1,20 +1,15 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../../stories/utils'
+import { BalComponentStory } from '../../../../stories/utils'
 import { BalRadio, BalRadioGroup } from '../../../../../.storybook/vue/components'
 
-export default {
+const component = BalComponentStory({
   title: 'Components/Form/Radio',
   component: BalRadioGroup,
-  subcomponent: { BalRadio },
-  argTypes: {
-    ...stencilArgType('bal-radio-group'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  subcomponents: { BalRadio },
+  docs,
+})
+
+export default component.story
 
 export const RadioGroup = args => ({
   components: { BalRadio, BalRadioGroup },
@@ -28,6 +23,7 @@ export const RadioGroup = args => ({
 RadioGroup.args = {
   value: '2',
 }
+RadioGroup.parameters = { ...component.sourceCode(RadioGroup) }
 
 export const RadioBoxes = args => ({
   components: { BalRadio, BalRadioGroup },
@@ -54,6 +50,7 @@ export const RadioBoxes = args => ({
 RadioBoxes.args = {
   value: '1',
 }
+RadioBoxes.parameters = { ...component.sourceCode(RadioBoxes) }
 
 export const RadioList = args => ({
   components: { BalRadio, BalRadioGroup },
@@ -75,6 +72,7 @@ export const RadioList = args => ({
 RadioList.args = {
   value: '1',
 }
+RadioList.parameters = { ...component.sourceCode(RadioList) }
 
 export const SelectButton = args => ({
   components: { BalRadio, BalRadioGroup },
@@ -89,3 +87,4 @@ SelectButton.args = {
   value: '1',
   interface: 'select-button',
 }
+SelectButton.parameters = { ...component.sourceCode(SelectButton) }

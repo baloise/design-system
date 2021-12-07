@@ -1,26 +1,17 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../stories/utils'
+import { BalComponentStory } from '../../../stories/utils'
 import { BalNavbar, BalText, BalIcon, BalButton, BalNavbarBrand, BalNavbarMenu, BalNavbarMenuEnd, BalNavbarMenuStart } from '../../../../.storybook/vue/components'
 
-const subcomponents = { BalNavbarBrand, BalNavbarMenu, BalNavbarMenuEnd, BalNavbarMenuStart }
-const components = { BalNavbar, ...subcomponents }
-
-export default {
-  title: 'Components/Navbar',
+const component = BalComponentStory({
   component: BalNavbar,
-  subcomponents,
-  argTypes: {
-    ...stencilArgType('bal-navbar'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  subcomponents: { BalNavbarBrand, BalNavbarMenu, BalNavbarMenuEnd, BalNavbarMenuStart },
+  docs,
+})
+
+export default component.story
 
 export const Basic = args => ({
-  components: { ...components, BalText, BalIcon, BalButton },
+  components: { ...component.components, BalText, BalIcon, BalButton },
   setup: () => ({ args }),
   template: `<bal-navbar v-bind="args">
   <bal-navbar-brand>
@@ -48,3 +39,4 @@ export const Basic = args => ({
 </bal-navbar>`,
 })
 Basic.args = {}
+Basic.parameters = { ...component.sourceCode(Basic) }

@@ -1,20 +1,16 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType, withContent } from '../../../stories/utils'
+import { BalComponentStory, withContent } from '../../../stories/utils'
 import { BalNotification } from '../../../../.storybook/vue/components'
 
-export default {
-  title: 'Components/Notification',
+const component = BalComponentStory({
   component: BalNotification,
   argTypes: {
-    ...stencilArgType('bal-notification'),
     ...withContent(),
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 export const Basic = args => ({
   components: { BalNotification },
@@ -27,3 +23,4 @@ Basic.args = {
   color: 'primary',
   content: '<strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 }
+Basic.parameters = { ...component.sourceCode(Basic) }

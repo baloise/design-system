@@ -1,26 +1,20 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../stories/utils'
+import { BalComponentStory } from '../../../stories/utils'
 import { BalTabs, BalTabItem } from '../../../../.storybook/vue/components'
 
-export default {
-  title: 'Components/Tabs',
+const component = BalComponentStory({
   component: BalTabs,
-  subcomponent: { BalTabItem },
-  argTypes: {
-    ...stencilArgType('bal-tabs'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  subcomponents: { BalTabItem },
+  docs,
+})
+
+export default component.story
 
 const Template = args => ({
   components: { BalTabs, BalTabItem },
   setup: () => ({ args }),
   template: `<bal-tabs v-bind="args">
-  <bal-tab-item value="tab-a" label="Tab A" active="true">Content of Tab A</bal-tab-item>
+  <bal-tab-item value="tab-a" label="Tab A" :active="true">Content of Tab A</bal-tab-item>
   <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
   <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
   <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
@@ -36,6 +30,7 @@ Basic.args = {
   actionLabel: 'Action',
   interface: 'tabs',
 }
+Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const Round = Template.bind({})
 Round.args = {
@@ -46,6 +41,7 @@ Round.args = {
   actionLabel: '',
   interface: 'tabs',
 }
+Round.parameters = { ...component.sourceCode(Round) }
 
 export const Steps = Template.bind({})
 Steps.args = {
@@ -56,3 +52,4 @@ Steps.args = {
   actionLabel: '',
   interface: 'o-steps',
 }
+Steps.parameters = { ...component.sourceCode(Steps) }

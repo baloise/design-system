@@ -1,19 +1,14 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../../stories/utils'
+import { BalComponentStory } from '../../../../stories/utils'
 import { BalFileUpload } from '../../../../../.storybook/vue/components'
 
-export default {
+const component = BalComponentStory({
   title: 'Components/Form/FileUpload',
   component: BalFileUpload,
-  argTypes: {
-    ...stencilArgType('bal-file-upload'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 const Template = args => ({
   components: { BalFileUpload },
@@ -29,3 +24,4 @@ Basic.args = {
   maxFileSize: '1000000',
   maxBundleSize: '1000000',
 }
+Basic.parameters = { ...component.sourceCode(Basic) }

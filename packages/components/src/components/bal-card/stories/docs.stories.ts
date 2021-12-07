@@ -1,5 +1,5 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../stories/utils'
+import { BalComponentStory } from '../../../stories/utils'
 import {
   BalCard,
   BalCardTitle,
@@ -25,54 +25,40 @@ import {
   BalCheckbox,
 } from '../../../../.storybook/vue/components'
 
-const subcomponents = {
-  BalCardTitle,
-  BalCardSubtitle,
-  BalCardActions,
-  BalCardButton,
-  BalCardContent,
-  BalCardHead,
-  BalCardHeading,
-  BalCardSteps,
-}
-
-const components = {
-  BalCard,
-  ...subcomponents,
-}
-
-export default {
-  title: 'Components/Card',
+const component = BalComponentStory({
   component: BalCard,
-  subcomponents,
-  argTypes: {
-    ...stencilArgType('bal-card'),
+  subcomponents: {
+    BalCardTitle,
+    BalCardSubtitle,
+    BalCardActions,
+    BalCardButton,
+    BalCardContent,
+    BalCardHead,
+    BalCardHeading,
+    BalCardSteps,
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 export const Basic = args => ({
-  components: { ...components, BalButton },
+  components: { ...component.components, BalButton },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-title>BaloiseCombi</bal-card-title>
   <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-
   <bal-card-content> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </bal-card-content>
-
   <bal-card-actions>
     <bal-button>Main Action</bal-button>
     <bal-button color="info" outlined>Secondary Action</bal-button>
   </bal-card-actions>
-</bal-card>`,
+  </bal-card>`,
 })
+Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const WithList = args => ({
-  components: { ...components, BalButton, BalListItemIcon, BalIcon, BalList, BalListItem, BalListItemTitle, BalListItemContent },
+  components: { ...component.components, BalButton, BalListItemIcon, BalIcon, BalList, BalListItem, BalListItemTitle, BalListItemContent },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-title>News</bal-card-title>
@@ -100,11 +86,12 @@ export const WithList = args => ({
   <bal-card-actions right>
     <bal-button type="is-link">More</bal-button>
   </bal-card-actions>
-</bal-card>`,
+  </bal-card>`,
 })
+WithList.parameters = { ...component.sourceCode(WithList) }
 
 export const WithAccordion = args => ({
-  components: { ...components, BalAccordion },
+  components: { ...component.components, BalAccordion },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-title>BaloiseCombi</bal-card-title>
@@ -113,11 +100,12 @@ export const WithAccordion = args => ({
   <bal-accordion card>
     <p class="p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </bal-accordion>
-</bal-card>`,
+  </bal-card>`,
 })
+WithAccordion.parameters = { ...component.sourceCode(WithAccordion) }
 
 export const Summary = args => ({
-  components: { ...components, BalData, BalDataItem, BalDataLabel, BalDataValue },
+  components: { ...component.components, BalData, BalDataItem, BalDataLabel, BalDataValue },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-heading>Insured vehicle</bal-card-heading>
@@ -142,11 +130,12 @@ export const Summary = args => ({
   </bal-card-content>
 
   <bal-card-button icon="edit">Edit</bal-card-button>
-</bal-card>`,
+  </bal-card>`,
 })
+Summary.parameters = { ...component.sourceCode(Summary) }
 
 export const Service = args => ({
-  components: { ...components, BalCheckbox, BalAccordion },
+  components: { ...component.components, BalCheckbox, BalAccordion },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-head>
@@ -170,5 +159,6 @@ export const Service = args => ({
       incididunt ut labore et dolore magna aliqua.
     </p>
   </bal-accordion>
-</bal-card>`,
+  </bal-card>`,
 })
+Service.parameters = { ...component.sourceCode(Service) }

@@ -1,5 +1,5 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType, withContent } from '../../../stories/utils'
+import { BalComponentStory, withContent } from '../../../stories/utils'
 import {
   BalApp,
   BalCard,
@@ -15,21 +15,17 @@ import {
   BalIcon,
 } from '../../../../.storybook/vue/components'
 
-export default {
-  title: 'Components/App',
+const component = BalComponentStory({
   component: BalApp,
   argTypes: {
-    ...stencilArgType('bal-app'),
     ...withContent(),
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
 
-const Template = args => ({
+export default component.story
+
+export const Basic = args => ({
   components: {
     BalApp,
     BalCard,
@@ -70,7 +66,7 @@ const Template = args => ({
     </div>
   </main>
 
-  <bal-footer has-track-line>
+  <bal-footer has-track-line hide-links>
     <div class="container">
       <span style="margin-right: 16px">Baloise Group</span>
       <span style="margin-right: 16px">Legal notice</span>
@@ -78,12 +74,11 @@ const Template = args => ({
       <span>Data protection</span>
     </div>
   </bal-footer>
-</bal-app>`,
+  </bal-app>`,
 })
-
-export const Basic = Template.bind({})
 Basic.args = {
   background: true,
   hasStickyFooter: true,
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 }
+Basic.parameters = { ...component.sourceCode(Basic) }

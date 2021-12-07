@@ -1,19 +1,14 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../../stories/utils'
+import { BalComponentStory } from '../../../../stories/utils'
 import { BalTextarea } from '../../../../../.storybook/vue/components'
 
-export default {
+const component = BalComponentStory({
   title: 'Components/Form/Textarea',
   component: BalTextarea,
-  argTypes: {
-    ...stencilArgType('bal-textarea'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 const Template = args => ({
   components: { BalTextarea },
@@ -26,3 +21,4 @@ Basic.args = {
   placeholder: 'Enter a comment',
   disabled: false,
 }
+Basic.parameters = { ...component.sourceCode(Basic) }

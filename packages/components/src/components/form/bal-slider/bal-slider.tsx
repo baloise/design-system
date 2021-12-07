@@ -1,6 +1,6 @@
 import { Component, h, Host, Element, Prop, EventEmitter, Event, Listen, Method, Watch } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { debounceEvent } from '../../helpers/helpers'
+import { debounceEvent } from '../../../helpers/helpers'
 
 @Component({
   tag: 'bal-slider',

@@ -1,24 +1,19 @@
-import { stencilArgType } from '../../../../stories/utils'
+import { BalComponentStory } from '../../../../stories/utils'
 import { BalSelect, BalSelectOption } from '../../../../../.storybook/vue/components'
 import { marvelHeros } from './examples.docs'
 import docs from './readme.docs.mdx'
 
-export default {
+const component = BalComponentStory({
   title: 'Components/Form/Select',
   component: BalSelect,
-  argTypes: {
-    ...stencilArgType('bal-select'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  subcomponents: { BalSelectOption },
+  docs,
+})
 
-export const Basic = (args, { argTypes }) => ({
+export default component.story
+
+export const Basic = args => ({
   components: { BalSelect, BalSelectOption },
-  props: Object.keys(argTypes),
   setup: () => ({ args }),
   template: `
   <bal-select v-bind="args">
@@ -30,10 +25,10 @@ export const Basic = (args, { argTypes }) => ({
     <bal-select-option value="v2000" label="2000">2000</bal-select-option>
   </bal-select>`,
 })
+Basic.parameters = { ...component.sourceCode(Basic) }
 
-export const Typeahead = (args, { argTypes }) => ({
+export const Typeahead = args => ({
   components: { BalSelect, BalSelectOption },
-  props: Object.keys(argTypes),
   setup: () => ({ args }),
   template: `
   <bal-select v-bind="args">
@@ -46,10 +41,10 @@ Typeahead.args = {
   placeholder: 'Try finding your hero',
   noDataLabel: 'No option available',
 }
+Typeahead.parameters = { ...component.sourceCode(Typeahead) }
 
-export const MultiSelect = (args, { argTypes }) => ({
+export const MultiSelect = args => ({
   components: { BalSelect, BalSelectOption },
-  props: Object.keys(argTypes),
   setup: () => ({ args }),
   template: `
   <bal-select v-bind="args">
@@ -60,3 +55,4 @@ MultiSelect.args = {
   multiple: true,
   placeholder: 'Try finding your hero',
 }
+MultiSelect.parameters = { ...component.sourceCode(MultiSelect) }

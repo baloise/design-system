@@ -1,34 +1,28 @@
-import { stencilArgType } from '../../../stories/utils'
-import { BalSnackbar } from '../../../../.storybook/vue/components'
+import { BalComponentStory } from '../../../stories/utils'
+import { BalSnackbar, BalButton } from '../../../../.storybook/vue/components'
 import { balSnackbarController } from '../../../../dist/design-system-components/index.esm'
 import docs from './readme.docs.mdx'
 
-export default {
-  title: 'Components/Snackbar',
+const component = BalComponentStory({
   component: BalSnackbar,
-  argTypes: {
-    ...stencilArgType('bal-snackbar'),
-  },
   args: {
     message: 'Hello World',
     duration: 2000,
     color: '',
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  layout: 'fullscreen',
+  docs,
+})
 
-const Template = (args, { argTypes }) => ({
-  components: { BalSnackbar },
-  props: Object.keys(argTypes),
+export default component.story
+
+const Template = args => ({
+  components: { ...component.components, BalButton },
   setup: () => ({
     args,
     open: () => balSnackbarController.create(args),
   }),
-  template: `<bal-button @click="open">Trigger a Snackbar</bal-button>`,
+  template: `<bal-button @click="open" class="m-4">Trigger a Snackbar</bal-button>`,
 })
 
 export const Basic = Template.bind({})

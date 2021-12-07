@@ -1,30 +1,27 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../stories/utils'
-import { BalSheet, BalButton } from '../../../../.storybook/vue/components'
+import { BalComponentStory, withContent } from '../../../stories/utils'
+import { BalSheet, BalButton, BalCardContent, BalCardSubtitle, BalCardTitle, BalCard, BalCardActions } from '../../../../.storybook/vue/components'
 
-export default {
-  title: 'Components/Sheet',
+const component = BalComponentStory({
   component: BalSheet,
   argTypes: {
-    ...stencilArgType('bal-sheet'),
+    ...withContent(),
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-    layout: 'fullscreen',
-  },
-}
+  docs,
+  layout: 'fullscreen',
+})
+
+export default component.story
 
 export const Basic = args => ({
-  components: { BalSheet, BalButton },
+  components: { ...component.components, BalButton, BalCardContent, BalCardSubtitle, BalCardTitle, BalCard, BalCardActions },
   setup: () => ({ args }),
   template: `<div>
   <div class="container">
     <bal-card>
       <bal-card-title>BaloiseCombi</bal-card-title>
       <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-      <bal-card-content> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </bal-card-content>
+      <bal-card-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</bal-card-content>
       <bal-card-actions>
         <bal-button>Main Action</bal-button>
         <bal-button color="info" outlined>Secondary Action</bal-button>
@@ -42,7 +39,7 @@ export const Basic = args => ({
           <h2 class="title is-size-2 m-0">1'234 CHF</h2>
         </div>
         <div class="column is-flex is-align-items-center">
-          <p class="m-0 has-text-blue-light-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p class="m-0 has-text-blue-light-text">{{ args.content }}</p>
         </div>
         <div class="column is-2 is-flex is-align-items-center">
           <bal-button expanded color="link">Back</bal-button>
@@ -55,4 +52,7 @@ export const Basic = args => ({
   </bal-sheet>
 </div>`,
 })
-Basic.args = {}
+Basic.args = {
+  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+}
+Basic.parameters = { ...component.sourceCode(Basic) }

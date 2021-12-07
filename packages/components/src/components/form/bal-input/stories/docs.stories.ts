@@ -1,22 +1,17 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../../stories/utils'
+import { BalComponentStory } from '../../../../stories/utils'
 import { BalInput } from '../../../../../.storybook/vue/components'
 
-export default {
+const component = BalComponentStory({
   title: 'Components/Form/Input',
   component: BalInput,
-  argTypes: {
-    ...stencilArgType('bal-input'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 const Template = args => ({
-  components: { BalInput },
+  components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-input v-bind="args"></bal-input>`,
 })
@@ -25,6 +20,7 @@ export const TextInput = Template.bind({})
 TextInput.args = {
   placeholder: 'Enter a text',
 }
+TextInput.parameters = { ...component.sourceCode(TextInput) }
 
 export const NumberInput = Template.bind({})
 NumberInput.args = {
@@ -33,3 +29,4 @@ NumberInput.args = {
   suffix: 'CHF',
   decimal: '2',
 }
+NumberInput.parameters = { ...component.sourceCode(NumberInput) }

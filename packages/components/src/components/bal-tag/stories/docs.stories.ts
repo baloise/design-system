@@ -1,20 +1,16 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType, withContent } from '../../../stories/utils'
+import { BalComponentStory, withContent } from '../../../stories/utils'
 import { BalTag } from '../../../../.storybook/vue/components'
 
-export default {
-  title: 'Components/Tag',
+const component = BalComponentStory({
   component: BalTag,
   argTypes: {
-    ...stencilArgType('bal-tag'),
     ...withContent(),
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 const Template = args => ({
   components: { BalTag },
@@ -29,3 +25,13 @@ Basic.args = {
   size: '',
   closable: false,
 }
+Basic.parameters = { ...component.sourceCode(Basic) }
+
+export const Closable = Template.bind({})
+Closable.args = {
+  content: 'Tag',
+  color: 'primary',
+  size: '',
+  closable: true,
+}
+Closable.parameters = { ...component.sourceCode(Closable) }

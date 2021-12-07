@@ -1,25 +1,20 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../stories/utils'
+import { BalComponentStory } from '../../../stories/utils'
 import { BalSpinner } from '../../../../.storybook/vue/components'
 
-export default {
-  title: 'Components/Spinner',
+const component = BalComponentStory({
   component: BalSpinner,
-  argTypes: {
-    ...stencilArgType('bal-spinner'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 const Template = args => ({
-  components: { BalSpinner },
+  components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-spinner v-bind="args"></bal-spinner>`,
 })
 
 export const Basic = Template.bind({})
 Basic.args = {}
+Basic.parameters = { ...component.sourceCode(Basic) }

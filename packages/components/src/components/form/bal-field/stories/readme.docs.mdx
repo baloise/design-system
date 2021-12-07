@@ -1,11 +1,4 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
-import { html } from '../../../../stories/utils'
-import { contactForm } from './examples.docs.ts'
-import readme from '../readme.md'
-import fieldControl from '../bal-field-control/readme.md'
-import fieldHint from '../bal-field-hint/readme.md'
-import fieldLabel from '../bal-field-label/readme.md'
-import fieldMessage from '../bal-field-message/readme.md'
 
 <span id="story--components-form-field--basic" style={{ opacity: 0 }}></span>
 
@@ -30,11 +23,17 @@ A field wraps a form field like input. It provides a clear style structure of ea
 
 ## With the grid
 
-<Canvas className="bal-app" mdxSource={contactForm}>
-  {html(contactForm)}
+<Canvas>
+  <Story id="components-form-field--with-grid" />
 </Canvas>
 
 ## Component Api
+
+import readme from '../readme.md'
+import fieldControl from '../bal-field-control/readme.md'
+import fieldHint from '../bal-field-hint/readme.md'
+import fieldLabel from '../bal-field-label/readme.md'
+import fieldMessage from '../bal-field-message/readme.md'
 
 <Description markdown={readme} />
 <Description markdown={fieldControl} />

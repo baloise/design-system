@@ -1,28 +1,19 @@
 import { ref } from 'vue'
-import { stencilArgType } from '../../../stories/utils'
+import { BalComponentStory } from '../../../stories/utils'
 import { BalModal, BalModalHeader, BalButton, BalModalBody, BalModalFooter, BalModalActions } from '../../../../.storybook/vue/components'
 import docs from './readme.docs.mdx'
 
-const subcomponents = { BalModalHeader, BalModalBody, BalModalFooter, BalModalActions }
-const components = { BalModal, ...subcomponents }
-
-export default {
-  title: 'Components/Modal',
+const component = BalComponentStory({
   component: BalModal,
-  subcomponents,
-  argTypes: {
-    ...stencilArgType('bal-modal'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  subcomponents: { BalModalHeader, BalModalBody, BalModalFooter, BalModalActions },
+  docs,
+  layout: 'fullscreen',
+})
 
-const Template = (args, { argTypes }) => ({
-  components: { ...components, BalButton },
-  props: Object.keys(argTypes),
+export default component.story
+
+const Template = args => ({
+  components: { ...component.components, BalButton },
   setup: () => {
     const modal = ref()
 
@@ -57,8 +48,9 @@ const Template = (args, { argTypes }) => ({
     </bal-modal-actions>
   </bal-modal-footer>
 </bal-modal>
-<bal-button @click="openModal()">Trigger a Modal</bal-button>`,
+<bal-button @click="openModal()" class="m-4">Trigger a Modal</bal-button>`,
 })
 
 export const Basic = Template.bind({})
 Basic.args = {}
+Basic.parameters = { ...component.sourceCode(Basic) }

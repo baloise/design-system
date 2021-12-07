@@ -1,34 +1,21 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../stories/utils'
+import { BalComponentStory } from '../../../stories/utils'
 import { BalData, BalDataItem, BalDataLabel, BalDataValue, BalCard, BalCardContent, BalInput, BalHint, BalHintText, BalHintTitle } from '../../../../.storybook/vue/components'
 
-const subcomponents = {
-  BalDataItem,
-  BalDataLabel,
-  BalDataValue,
-}
-
-const components = {
-  BalData,
-  ...subcomponents,
-}
-
-export default {
-  title: 'Components/Data',
+const component = BalComponentStory({
   component: BalData,
-  subcomponents,
-  argTypes: {
-    ...stencilArgType('bal-data'),
+  subcomponents: {
+    BalDataItem,
+    BalDataLabel,
+    BalDataValue,
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 export const Basic = args => ({
-  components: { ...components, BalCard, BalCardContent, BalInput, BalHint, BalHintText, BalHintTitle },
+  components: { ...component.components, BalCard, BalCardContent, BalInput, BalHint, BalHintText, BalHintTitle },
   setup: () => ({ args }),
   template: `<bal-card>
   <bal-card-content>
@@ -73,36 +60,38 @@ export const Basic = args => ({
       </bal-data-item>
     </bal-data>
   </bal-card-content>
-</bal-card>`,
+  </bal-card>`,
 })
 Basic.args = {
   border: true,
   horizontal: false,
 }
+Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const Horizontal = args => ({
-  components: { ...components, BalCard, BalCardContent },
+  components: { ...component.components, BalCard, BalCardContent },
   setup: () => ({ args }),
   template: `<bal-card>
-    <bal-card-content>
-      <bal-data v-bind="args">
-        <bal-data-item>
-          <bal-data-label>Tony</bal-data-label>
-          <bal-data-value>Stark</bal-data-value>
-        </bal-data-item>
-        <bal-data-item>
-          <bal-data-label>Steve</bal-data-label>
-          <bal-data-value>Rogers</bal-data-value>
-        </bal-data-item>
-        <bal-data-item>
-          <bal-data-label>Stephen</bal-data-label>
-          <bal-data-value>Strange</bal-data-value>
-        </bal-data-item>
-      </bal-data>
-    </bal-card-content>
+  <bal-card-content>
+    <bal-data v-bind="args">
+      <bal-data-item>
+        <bal-data-label>Tony</bal-data-label>
+        <bal-data-value>Stark</bal-data-value>
+      </bal-data-item>
+      <bal-data-item>
+        <bal-data-label>Steve</bal-data-label>
+        <bal-data-value>Rogers</bal-data-value>
+      </bal-data-item>
+      <bal-data-item>
+        <bal-data-label>Stephen</bal-data-label>
+        <bal-data-value>Strange</bal-data-value>
+      </bal-data-item>
+    </bal-data>
+  </bal-card-content>
   </bal-card>`,
 })
 Horizontal.args = {
   border: false,
   horizontal: true,
 }
+Horizontal.parameters = { ...component.sourceCode(Horizontal) }

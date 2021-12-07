@@ -1,19 +1,13 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../stories/utils'
+import { BalComponentStory } from '../../../stories/utils'
 import { BalPagination } from '../../../../.storybook/vue/components'
 
-export default {
-  title: 'Components/Pagination',
+const component = BalComponentStory({
   component: BalPagination,
-  argTypes: {
-    ...stencilArgType('bal-pagination'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 export const Basic = args => ({
   components: { BalPagination },
@@ -26,3 +20,4 @@ Basic.args = {
   totalPages: 20,
   disabled: false,
 }
+Basic.parameters = { ...component.sourceCode(Basic) }

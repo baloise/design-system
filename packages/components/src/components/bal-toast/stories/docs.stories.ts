@@ -1,28 +1,23 @@
-import { stencilArgType } from '../../../stories/utils'
-import { BalToast } from '../../../../.storybook/vue/components'
+import { BalComponentStory } from '../../../stories/utils'
+import { BalToast, BalButtun } from '../../../../.storybook/vue/components'
 import { balToastController } from '../../../../dist/design-system-components/index.esm'
 import docs from './readme.docs.mdx'
 
-export default {
-  title: 'Components/Toast',
+const component = BalComponentStory({
   component: BalToast,
-  argTypes: {
-    ...stencilArgType('bal-toast'),
-  },
   args: {
     message: 'Hello World',
     duration: 2000,
     color: '',
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+  layout: 'fullscreen',
+})
+
+export default component.story
 
 const Template = (args, { argTypes }) => ({
-  components: { BalToast },
+  components: { ...component.components, BalButtun },
   props: Object.keys(argTypes),
   setup: () => ({
     args,

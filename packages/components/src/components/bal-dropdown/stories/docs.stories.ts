@@ -1,31 +1,22 @@
 import { ref, watchEffect } from 'vue'
 import docs from './readme.docs.mdx'
-import { stencilArgType, withContent } from '../../../stories/utils'
+import { withContent } from '../../../stories/utils'
 import { BalDropdown, BalDropdownMenu, BalDropdownTrigger, BalButton } from '../../../../.storybook/vue/components'
+import { BalComponentStory } from '../../../stories/utils/story'
 
-const subcomponent = { BalDropdownMenu, BalDropdownTrigger }
-const components = {
-  BalDropdown,
-  ...subcomponent,
-}
-
-export default {
-  title: 'Components/Dropdown',
+const component = BalComponentStory({
   component: BalDropdown,
-  subcomponent,
+  subcomponents: { BalDropdownMenu, BalDropdownTrigger },
   argTypes: {
-    ...stencilArgType('bal-dropdown'),
     ...withContent(),
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
 
-const Template = args => ({
-  components: { ...components, BalButton },
+export default component.story
+
+export const Basic = args => ({
+  components: { ...component.components, BalButton },
   setup: () => {
     const isActive = ref(true)
 
@@ -59,13 +50,12 @@ const Template = args => ({
       </p>
     </div>
   </bal-dropdown-menu>
-</bal-dropdown>`,
+  </bal-dropdown>`,
 })
-
-export const Basic = Template.bind({})
 Basic.args = {
   isActive: false,
   expanded: true,
   content:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 }
+Basic.parameters = { ...component.sourceCode(Basic) }

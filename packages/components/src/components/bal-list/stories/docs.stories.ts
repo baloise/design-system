@@ -1,25 +1,17 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../stories/utils'
+import { BalComponentStory } from '../../../stories/utils'
 import { BalList, BalListItem, BalListItemContent, BalIcon, BalListItemIcon, BalListItemTitle, BalListItemSubtitle } from '../../../../.storybook/vue/components'
 
-const subcomponents = { BalListItem, BalListItemContent, BalListItemIcon, BalListItemTitle, BalListItemSubtitle }
-const components = { BalList, ...subcomponents }
-export default {
-  title: 'Components/List',
+const component = BalComponentStory({
   component: BalList,
-  subcomponents,
-  argTypes: {
-    ...stencilArgType('bal-list'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  subcomponents: { BalListItem, BalListItemContent, BalListItemIcon, BalListItemTitle, BalListItemSubtitle },
+  docs,
+})
+
+export default component.story
 
 export const Basic = args => ({
-  components: { ...components },
+  components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-list v-bind="args">
   <bal-list-item>
@@ -38,9 +30,10 @@ export const Basic = args => ({
 Basic.args = {
   border: true,
 }
+Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const WithIcons = args => ({
-  components: { ...components, BalIcon },
+  components: { ...component.components, BalIcon },
   setup: () => ({ args }),
   template: `<bal-list v-bind="args">
   <bal-list-item>
@@ -77,9 +70,10 @@ export const WithIcons = args => ({
 WithIcons.args = {
   border: true,
 }
+WithIcons.parameters = { ...component.sourceCode(WithIcons) }
 
 export const LinkList = args => ({
-  components: { ...components, BalIcon },
+  components: { ...component.components, BalIcon },
   setup: () => ({ args }),
   template: `<bal-list v-bind="args">
   <bal-list-item href="https://google.com" target="_blank">
@@ -103,3 +97,4 @@ export const LinkList = args => ({
 LinkList.args = {
   border: true,
 }
+LinkList.parameters = { ...component.sourceCode(LinkList) }

@@ -1,20 +1,16 @@
-import { stencilArgType, withContent } from '../../../stories/utils'
+import { BalComponentStory, withContent } from '../../../stories/utils'
 import { BalButton } from '../../../../.storybook/vue/components'
 import docs from './readme.docs.mdx'
 
-export default {
-  title: 'Components/Button',
+const component = BalComponentStory({
   component: BalButton,
   argTypes: {
-    ...stencilArgType('bal-button'),
     ...withContent(),
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 const Template = args => ({
   components: { BalButton },
@@ -26,6 +22,7 @@ export const Primary = Template.bind({})
 Primary.args = {
   content: 'Primary',
 }
+Primary.parameters = { ...component.sourceCode(Primary) }
 
 export const Secondary = Template.bind({})
 Secondary.args = {

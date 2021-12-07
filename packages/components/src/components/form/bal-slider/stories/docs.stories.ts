@@ -1,19 +1,14 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../stories/utils'
-import { BalSlider } from '../../../../.storybook/vue/components'
+import { BalComponentStory } from '../../../../stories/utils'
+import { BalSlider } from '../../../../../.storybook/vue/components'
 
-export default {
+const component = BalComponentStory({
   title: 'Components/Form/Slider',
   component: BalSlider,
-  argTypes: {
-    ...stencilArgType('bal-slider'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 export const Basic = args => ({
   components: { BalSlider },
@@ -27,3 +22,4 @@ Basic.args = {
   min: 0,
   max: 100,
 }
+Basic.parameters = { ...component.sourceCode(Basic) }

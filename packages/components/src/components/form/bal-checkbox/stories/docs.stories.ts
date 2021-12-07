@@ -1,20 +1,17 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType, withContent } from '../../../../stories/utils'
+import { BalComponentStory, withContent } from '../../../../stories/utils'
 import { BalCheckbox } from '../../../../../.storybook/vue/components'
 
-export default {
+const component = BalComponentStory({
   title: 'Components/Form/Checkbox',
   component: BalCheckbox,
   argTypes: {
-    ...stencilArgType('bal-checkbox'),
     ...withContent(),
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 const Template = args => ({
   components: { BalCheckbox },
@@ -28,9 +25,11 @@ export const Basic = Template.bind({})
 Basic.args = {
   content: 'Label',
 }
+Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const Switch = Template.bind({})
 Switch.args = {
   content: 'Label',
   interface: 'switch',
 }
+Switch.parameters = { ...component.sourceCode(Switch) }
