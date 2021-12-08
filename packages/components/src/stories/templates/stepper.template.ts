@@ -9,7 +9,7 @@ export const stepperTemplate = `
     </bal-navbar>
   </header>
   <main>
-    <div class="container py-6">
+    <div class="container is-compact py-6">
       <bal-tabs interface="o-steps">
         <bal-tab-item value="step-a" label="Person" active="true">
           <bal-card spacing="medium" class="mt-6">
@@ -127,7 +127,7 @@ export const stepperTemplate = `
     </div>
   </main>
   <bal-footer has-track-line>
-    <div class="container">
+    <div class="container is-compact">
       <span style="margin-right: 16px">Baloise Group</span>
       <span style="margin-right: 16px">Legal notice</span>
       <span style="margin-right: 16px">Cookie policy</span>

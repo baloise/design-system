@@ -17,7 +17,7 @@ export const Basic = args => ({
   components: { ...component.components, BalButton, BalCardContent, BalCardSubtitle, BalCardTitle, BalCard, BalCardActions },
   setup: () => ({ args }),
   template: `<div>
-  <div class="container">
+  <div class="container is-compact">
     <bal-card>
       <bal-card-title>BaloiseCombi</bal-card-title>
       <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
@@ -29,22 +29,22 @@ export const Basic = args => ({
     </bal-card>
   </div>
   <bal-sheet v-bind="args">
-    <div class="is-hidden-desktop">
+    <div class="is-hidden-tablet">
       <bal-button expanded>Continue with 1'234 CHF</bal-button>
       <bal-button expanded color="link" class="mt-2">Back</bal-button>
     </div>
-    <div class="is-hidden-touch">
+    <div class="is-hidden-mobile">
       <div class="columns">
-        <div class="column is-3 is-flex is-align-items-center">
-          <h2 class="title is-size-2 m-0">1'234 CHF</h2>
+        <div class="column is-3 is-flex is-align-items-center px-2">
+          <h3 class="title is-size-3 m-0">1'234 CHF</h3>
         </div>
-        <div class="column is-flex is-align-items-center">
-          <p class="m-0 has-text-blue-light-text">{{ args.content }}</p>
+        <div class="column is-flex is-align-items-center px-2">
+          <p class="m-0 has-text-blue-light-text is-small">{{ args.content }}</p>
         </div>
-        <div class="column is-2 is-flex is-align-items-center">
+        <div class="column is-2 is-flex is-align-items-center px-2">
           <bal-button expanded color="link">Back</bal-button>
         </div>
-        <div class="column is-2 is-flex is-align-items-center">
+        <div class="column is-3 is-flex is-align-items-center px-2">
           <bal-button expanded>Next</bal-button>
         </div>
       </div>
@@ -53,6 +53,6 @@ export const Basic = args => ({
 </div>`,
 })
 Basic.args = {
-  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  content: 'Lorem ipsum dolor',
 }
 Basic.parameters = { ...component.sourceCode(Basic) }

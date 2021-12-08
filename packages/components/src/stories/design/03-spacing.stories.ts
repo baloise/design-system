@@ -8,9 +8,6 @@ export default {
     },
     layout: 'fullscreen',
   },
-  args: {
-    content: 'Container',
-  },
 }
 
 export const Paddings = args => ({

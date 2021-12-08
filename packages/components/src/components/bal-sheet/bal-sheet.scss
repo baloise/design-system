@@ -20,7 +20,7 @@ bal-sheet {
     padding-bottom: 16px;
   }
 
-  @include desktop() {
+  @include tablet() {
     > div.container {
       background-color: transparent;
       box-shadow: none;
