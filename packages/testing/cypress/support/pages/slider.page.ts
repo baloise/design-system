@@ -5,6 +5,6 @@ export class SliderPage {
   sliderDisabled = dataTestSelector('slider-disabled')
 
   open() {
-    cy.visit('/components/bal-slider')
+    cy.visit('/components/form/bal-slider')
   }
 }
