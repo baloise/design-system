@@ -221,14 +221,16 @@ a.feature h2 img {
   display: block;
   padding: 20px 30px 20px 15px;
   border: 1px solid #00000010;
-  border-radius: 5px;
+  border-radius: 8px;
   transition: background 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
   color: #333333;
   display: flex;
   align-items: flex-start;
+  background-color: #fefefe;
 }
 
 .link-item:hover {
+  background-color: #fcfcfc;
   border-color: #1ea7fd50;
   transform: translate3d(0, -3px, 0);
   box-shadow: rgba(0, 0, 0, 0.08) 0 3px 10px 0;

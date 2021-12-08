@@ -316,7 +316,6 @@ export class Input implements ComponentInterface {
   }
 
   render() {
-    console.log('render', this.disabled)
     const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)

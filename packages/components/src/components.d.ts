@@ -555,6 +555,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` below the drop-down area it generates a file list.
+         */
+        "hasFileList": boolean;
+        /**
           * Label of the drop area.
          */
         "label": string;
@@ -2527,6 +2531,10 @@ declare namespace LocalJSX {
           * If `true` the button is disabled
          */
         "disabled"?: boolean;
+        /**
+          * If `true` below the drop-down area it generates a file list.
+         */
+        "hasFileList"?: boolean;
         /**
           * Label of the drop area.
          */

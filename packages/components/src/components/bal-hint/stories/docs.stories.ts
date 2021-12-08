@@ -1,5 +1,5 @@
 import docs from './readme.docs.mdx'
-import { withContent, withSoureCode, BalComponentStory } from '../../../stories/utils'
+import { withContent, BalComponentStory } from '../../../stories/utils'
 import { BalHint, BalHintText, BalHintTitle, BalInput, BalField, BalFieldControl, BalFieldMessage, BalFieldLabel, BalFieldHint } from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
@@ -16,7 +16,7 @@ export default component.story
 export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-hint v-bind="args">
+  template: `<bal-hint v-bind="args" class="mt-7">
   <bal-hint-title>Spider-Man</bal-hint-title>
   <bal-hint-text>
     Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He first appeared in the anthology comic book Amazing Fantasy #15
@@ -31,7 +31,7 @@ Basic.parameters = { ...component.sourceCode(Basic) }
 export const FieldHint = args => ({
   components: { ...component.components, BalInput, BalField, BalFieldControl, BalFieldMessage, BalFieldLabel, BalFieldHint },
   setup: () => ({ args }),
-  template: `<bal-field expanded>
+  template: `<bal-field expanded class="mt-7">>
   <bal-field-label required>Firstname</bal-field-label>
   <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
   <bal-field-control>

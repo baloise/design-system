@@ -1,0 +1,82 @@
+import { Meta, Description } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/How to use Storybook"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# How to use Storybook
+
+For our documentation we use the tool [Storybook](https://storybook.js.org/).
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/p-LFh5Y89eM"
+  title="YouTube video player"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
+<br />
+<br />
+
+## Docs
+
+The `Docs` tab as a more in-depth documentation regarding specific props or common functionality.
+To access these, click the Docs tab at the top of the screen. This is also where the component API can be located.
+
+import docsImage from '../assets/images/storybook/docs.png'
+
+<img src={docsImage} alt="docs" style={{ width: '300px' }} />
+<br />
+<br />
+
+## Playground
+
+Each component has a `Docs` tab and a `Canvas` tab. The `Canvas` tab is our playground to test and play around with the variants of our components.
+In our example we have a look at the button component and see 4 variants Primary, Secondary, Link and Square. Each of them has it own canvas / playground.
+
+import sidebarImage from '../assets/images/storybook/sidebar.png'
+
+<img src={sidebarImage} alt="sidebar" style={{ width: '300px' }} />
+<br />
+<br />
+
+### Controls
+
+The the playground / canvas allows users to dig in to specific props that are available to that component.
+This allows you to view the component in different variants and with different data values.
+To access these props, navigate via the controls tab at the bottom of the canvas.
+Keep in mind, not all props are hooked up into the controls tab.
+For a comprehensive list of props available for each component, refer to the Docs tab.
+
+import controlsImage from '../assets/images/storybook/controls.png'
+
+<img src={controlsImage} alt="controls" style={{ width: '600px' }} />
+<br />
+
+### Actions
+
+Within the Playground story, you can also access the Actions tab, which shows the event signature of actions taken on that component.
+
+import actionsImage from '../assets/images/storybook/actions.png'
+
+<img src={actionsImage} alt="actions" style={{ width: '300px' }} />
+<br />
+<br />
+
+### Accessibility
+
+Each component should meet the [Accessibility Guidelines AA](https://www.w3.org/WAI/WCAG2AA-Conformance), therefore we have the tab Accessibility.
+This allows you to see the violations of your component and of course to fix it.
+
+import accessibilityImage from '../assets/images/storybook/accessibility.png'
+
+<img src={accessibilityImage} alt="accessibility" style={{ width: '600px' }} />
+<br />
+<br />

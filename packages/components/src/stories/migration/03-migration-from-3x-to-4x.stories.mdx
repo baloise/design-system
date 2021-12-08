@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Migration/Migration from 3.x to 4.x"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Migration from 3.x to 4.x
+
+The following workflow walks through the steps of migrating from version 2.x to 3.x.
+Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
+
+## Card
+
+We removed the deprecated props `padded` and `padding`. Use the prop `spacing`.
+
+```html
+<!-- - old -->
+<bal-card padded></bal-card>
+<bal-card padding="form"></bal-card>
+
+<!-- + new -->
+<bal-card spacing="medium"></bal-card>
+...
+```
+
+```html
+<!-- - old -->
+<bal-card padding="pure"></bal-card>
+
+<!-- + new -->
+<bal-card spacing="none"></bal-card>
+...
+```
+
+## CSS helper classes
+
+- `has-no-margin` use now `m-0`
+- `has-no-margin-top` use now `mt-0`
+- `has-no-margin-bottom` use now `mb-0`
+- `has-no-padding` use now `p-0`
+- `has-no-padding-top` use now `pt-0`
+- `has-no-padding-bottom` use now `pb-0`
+- `has-margin-top` use now `mt-4`
+- `has-large-margin-top` use now `mt-7`
+- `has-margin-bottom` use now `mb-4`
+- `has-large-margin-bottom` use now `mb-7`
+- `has-padding-top` use now `pt-4`
+- `has-large-padding-top` use now `pt-7`
+- `has-padding-bottom` use now `pb-4`
+- `has-large-padding-bottom` use now `pb-7`
+- `is-padded` use now `px-4`
+- `has-padding` use now `px-4`
+- `has-large-padding` use now `px-7`
+
+## Spacing
+
+We created responsive spacing helper and get rid off the large ones.
+So `9-16` can be replaces with `8`.
+
+[Go to the spacing chapter](?path=/docs/design-spacing--paddings)

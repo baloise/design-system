@@ -19,8 +19,8 @@ export const portalTemplate = `
     </div>
   </header>
   <main>
-    <div class="container">
-      <bal-card class="has-large-margin-top">
+    <div class="container my-7">
+      <bal-card>
       <bal-card-title>BaloiseCombi</bal-card-title>
       <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
 

@@ -1,5 +1,5 @@
 export const stepperTemplate = `
-<bal-app>
+<bal-app background>
   <header class="has-background-white">
     <bal-navbar no-burger>
       <bal-navbar-brand>
@@ -9,10 +9,10 @@ export const stepperTemplate = `
     </bal-navbar>
   </header>
   <main>
-    <div class="container">
-      <bal-tabs interface="o-steps" class="pt-5">
+    <div class="container py-6">
+      <bal-tabs interface="o-steps">
         <bal-tab-item value="step-a" label="Person" active="true">
-          <bal-card spacing="medium" class="mt-5">
+          <bal-card spacing="medium" class="mt-6">
             <bal-card-title>Person</bal-card-title>
             <bal-card-subtitle>Some Description</bal-card-subtitle>
 

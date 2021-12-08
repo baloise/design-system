@@ -20,6 +20,10 @@ export const config: Config = {
   outputTargets: [
     ...outputTargets,
     {
+      type: 'docs-json',
+      file: './generated/components.json',
+    },
+    {
       type: 'www',
       dir: 'public',
       copy: [
