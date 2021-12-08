@@ -1,7 +1,3 @@
-import { defineCustomElements } from '../dist/custom-elements/index'
-
-defineCustomElements()
-
 export const decorators = [
   story => ({
     components: { story },

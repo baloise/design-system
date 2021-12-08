@@ -38,8 +38,31 @@ const filterVueSpecific = (templateSource: string, argTypes = {}, args = {}): st
       .replace(' @click="openModal()"', '')
       .replace(' @click="closeModal()"', '')
       .replace(' @click="closeModal()"', '')
+      .replace(' @click="checkA()"', '')
+      .replace(' @click="checkB()"', '')
+      .replace(' v-model="args.value"', '')
+      .replace(' v-if="args.invalid"', '')
+      .replace(` v-model="selectedA"`, '')
+      .replace(` v-model="selectedB"`, '')
+      .replace(` v-model="value"`, '')
+      .replace(` :class="value === '1' ? 'has-background-blue-light':''"`, '')
+      .replace(` :class="value === '2' ? 'has-background-blue-light':''"`, '')
+      .replace(` :class="selectedA ? 'has-background-blue-light':''"`, '')
+      .replace(` :class="selectedB ? 'has-background-blue-light':''"`, '')
+      .replace(' :expanded="args.expanded"', (args as any).expanded === true ? ' expanded' : '')
+      .replace(' :disabled="args.disabled"', (args as any).disabled === true ? ' disabled' : '')
+      .replace(' :inverted="args.inverted"', (args as any).inverted === true ? ' inverted' : '')
+      .replace(' :invalid="args.invalid"', (args as any).invalid === true ? ' invalid' : '')
+      .replace(` :color="args.invalid ? 'danger' : 'hint'"`, ` color="${(args as any).invalid === true ? 'danger' : 'hint'}"`)
+      .replace(' v-if="args.hasFieldMessage"', '')
       .replace('{{ args.content }}', (args as any).content || 'Content')
       .replace('<span v-html="args.content"></span>', (args as any).content || 'Content')
+      .replace(
+        replacing,
+        Object.keys(componentArgs)
+          .map(key => ' ' + propToSource(paramCase(key), args[key]))
+          .join(''),
+      )
       .replace(
         replacing,
         Object.keys(componentArgs)

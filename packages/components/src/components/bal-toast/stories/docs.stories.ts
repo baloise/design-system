@@ -1,5 +1,5 @@
 import { BalComponentStory } from '../../../stories/utils'
-import { BalToast, BalButtun } from '../../../../.storybook/vue/components'
+import { BalToast, BalButton } from '../../../../.storybook/vue/components'
 import { balToastController } from '../../../../dist/design-system-components/index.esm'
 import docs from './readme.docs.mdx'
 
@@ -17,7 +17,7 @@ const component = BalComponentStory({
 export default component.story
 
 const Template = (args, { argTypes }) => ({
-  components: { ...component.components, BalButtun },
+  components: { ...component.components, BalButton },
   props: Object.keys(argTypes),
   setup: () => ({
     args,

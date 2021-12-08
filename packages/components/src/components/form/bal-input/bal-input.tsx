@@ -137,11 +137,6 @@ export class Input implements ComponentInterface {
   @Prop() clickable = false
 
   /**
-   * The autocomplete attribute specifies whether or not an input field should have autocomplete enabled.
-   */
-  @Prop() autoComplete: boolean = false
-
-  /**
    * If `true` on mobile device the number keypad is active
    */
   @Prop() numberInput = false
@@ -321,6 +316,7 @@ export class Input implements ComponentInterface {
   }
 
   render() {
+    console.log('render', this.disabled)
     const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)

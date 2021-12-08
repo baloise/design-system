@@ -1235,11 +1235,6 @@ export const BalInput = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
-    autoComplete: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
     numberInput: {
       type: Boolean,
       default: false,

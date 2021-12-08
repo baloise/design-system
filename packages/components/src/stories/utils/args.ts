@@ -25,11 +25,15 @@ const getControl = prop => {
     case 'string':
     case 'string | undefined':
     case 'null | string | undefined':
+    case 'number | string | undefined':
       return { type: 'text' }
 
     case 'boolean':
     case 'boolean | undefined':
       return { type: 'boolean' }
+
+    case 'string | string[] | undefined':
+      return { type: 'array' }
 
     case 'number':
     case 'number | undefined':
@@ -104,13 +108,13 @@ export const withContent = () => ({
   },
 })
 
-export const stencilArgType = (tag: string, allowedProps?: string[]): any => {
-  const component = findComponent(tag)
-  if (!component) {
+export const stencilArgType = (component: { name: string }, allowedProps?: string[]): any => {
+  const componentJson = findComponent(component.name)
+  if (!componentJson) {
     return {}
   }
   return {
-    ...generateProps(component, allowedProps),
-    ...generateEvents(component),
+    ...generateProps(componentJson, allowedProps),
+    ...generateEvents(componentJson),
   }
 }

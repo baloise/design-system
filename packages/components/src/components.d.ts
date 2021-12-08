@@ -685,10 +685,6 @@ export namespace Components {
          */
         "accept"?: string;
         /**
-          * The autocomplete attribute specifies whether or not an input field should have autocomplete enabled.
-         */
-        "autoComplete": boolean;
-        /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
         "autocapitalize": string;
@@ -2657,10 +2653,6 @@ declare namespace LocalJSX {
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
          */
         "accept"?: string;
-        /**
-          * The autocomplete attribute specifies whether or not an input field should have autocomplete enabled.
-         */
-        "autoComplete"?: boolean;
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */

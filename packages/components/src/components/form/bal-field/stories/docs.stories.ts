@@ -1,6 +1,24 @@
 import docs from './readme.docs.mdx'
 import { BalComponentStory } from '../../../../stories/utils'
-import { BalField, BalFieldControl, BalFieldHint, BalFieldLabel, BalFieldMessage, BalButton } from '../../../../../.storybook/vue/components'
+import {
+  BalField,
+  BalFieldControl,
+  BalFieldHint,
+  BalFieldLabel,
+  BalFieldMessage,
+  BalButton,
+  BalCard,
+  BalCardActions,
+  BalCardContent,
+  BalInput,
+  BalTextarea,
+  BalRadio,
+  BalRadioGroup,
+  BalCheckbox,
+  BalSelect,
+  BalDatepicker,
+  BalSelectOption,
+} from '../../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   title: 'Components/Form/Field',
@@ -12,7 +30,7 @@ const component = BalComponentStory({
 export default component.story
 
 export const Basic = args => ({
-  components: { ...component.components },
+  components: { ...component.components, BalInput },
   setup: () => ({ args }),
   template: `<bal-field v-bind="args">
   <bal-field-label required>Firstname</bal-field-label>
@@ -26,7 +44,7 @@ Basic.args = { expanded: true }
 Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const Addon = args => ({
-  components: { ...component.components, BalButton },
+  components: { ...component.components, BalButton, BalInput },
   setup: () => ({ args }),
   template: `<bal-field v-bind="args">
   <bal-field-label required>Search</bal-field-label>
@@ -40,7 +58,21 @@ Addon.args = { expanded: true }
 Addon.parameters = { ...component.sourceCode(Addon) }
 
 export const WithGrid = args => ({
-  components: { ...component.components, BalButton },
+  components: {
+    ...component.components,
+    BalButton,
+    BalCard,
+    BalCardActions,
+    BalCardContent,
+    BalInput,
+    BalTextarea,
+    BalRadio,
+    BalRadioGroup,
+    BalCheckbox,
+    BalSelect,
+    BalDatepicker,
+    BalSelectOption,
+  },
   setup: () => ({ args }),
   template: `<bal-card>
   <bal-card-content>

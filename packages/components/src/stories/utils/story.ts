@@ -31,7 +31,7 @@ export interface BalComponentStoryType {
 
 export const BalComponentStory = (story: BalComponentStoryOptions): BalComponentStoryType => {
   const argTypes = {
-    ...stencilArgType(story.component.name),
+    ...stencilArgType(story.component),
     ...story.argTypes,
   }
   return {

@@ -47,17 +47,17 @@
     </h2>
     <h4>culmat</h4>
   </a>
-  <a href="https://github.com/didlika" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/80490488?v=4" alt="didlika" style="width: 64px;">
-    </h2>
-    <h4>didlika</h4>
-  </a>
   <a href="https://github.com/joachimprinzbach" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/4256585?v=4" alt="joachimprinzbach" style="width: 64px;">
     </h2>
     <h4>joachimprinzbach</h4>
+  </a>
+  <a href="https://github.com/didlika" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/80490488?v=4" alt="didlika" style="width: 64px;">
+    </h2>
+    <h4>didlika</h4>
   </a>
   <a href="https://github.com/mladenplaninicic" class="feature">
     <h2>
