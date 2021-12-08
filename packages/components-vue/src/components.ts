@@ -927,6 +927,11 @@ export const BalFileUpload = /*@__PURE__*/ defineComponent({
       default: true,
       required: false,
     },
+    hasFileList: {
+      type: Boolean,
+      default: true,
+      required: false,
+    },
     disabled: {
       type: Boolean,
       default: false,
