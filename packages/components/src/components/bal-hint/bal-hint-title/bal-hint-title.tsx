@@ -10,9 +10,9 @@ export class HintTitle {
   render() {
     return (
       <Host>
-        <h3 class="title is-size-3 has-text-white">
+        <h4 class="title is-size-4 has-text-white">
           <slot></slot>
-        </h3>
+        </h4>
       </Host>
     )
   }
