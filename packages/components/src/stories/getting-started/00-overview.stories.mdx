@@ -3,6 +3,8 @@ import AngularLogo from '../assets/images/angular.svg'
 import ReactLogo from '../assets/images/react.svg'
 import VueLogo from '../assets/images/vue.png'
 import HTMLLogo from '../assets/images/html.png'
+import StorybookLogo from '../assets/images/storybook/logo.svg'
+import CypressLogo from '../assets/images/cypress.png'
 
 <Meta
   title="Getting-Started/Overview"
@@ -14,6 +16,25 @@ import HTMLLogo from '../assets/images/html.png'
 />
 
 # Getting Started
+
+In this section we give a small intro into our toolchain.
+
+## Documentation
+
+To learn how the documentation of this Baloise Design System works visit the page [How to use Storybook](?path=/docs/getting-started-how-to-use-storybook--page).
+
+<div className="link-list" style={{ display: 'block' }}>
+  <a className="link-item" href="?path=/docs/getting-started-how-to-use-storybook--page">
+    <img src={StorybookLogo} alt="storybook" />
+    <span>
+      <strong>How to use Storybook</strong>
+      Storybook is a tool for UI development. It makes development faster and easier by isolating components. This allows you to work on one component at a time. You can develop entire
+      UIs without needing to start up a complex dev stack, force certain data into your database, or navigate around your application.
+    </span>
+  </a>
+</div>
+
+## Integration
 
 The Baloise Design System can be used with any Web-Technolgie, however we deliver for Angular, Vue and React a deticated library with proxy components.
 
@@ -55,3 +76,22 @@ The Baloise Design System can be used with any Web-Technolgie, however we delive
     </span>
   </a>
 </div>
+
+## Testing
+
+We test our web application with the tool [Cypress](https://www.cypress.io/).
+
+<div className="link-list" style={{ display: 'block' }}>
+  <a className="link-item" href="?path=/docs/getting-started-testing--page">
+    <img src={CypressLogo} alt="cypress" />
+    <span>
+      <strong>E-2-E Testing with Cypress</strong>
+      The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like should or click have been overriden to
+      work with our components.
+    </span>
+  </a>
+</div>
+
+<br />
+<br />
+<br />

@@ -37,6 +37,6 @@ export default create({
   inputBorderRadius: 4,
 
   brandTitle: 'Baloise Design System',
-  brandUrl: 'https://www.baloise.com/',
+  brandUrl: 'https://github.com/baloise/design-system',
   brandImage: Logo,
 })

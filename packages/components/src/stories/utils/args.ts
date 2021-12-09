@@ -23,12 +23,20 @@ const decodeEnumType = prop => {
 const getControl = prop => {
   switch (prop.type) {
     case 'string':
+    case 'string | undefined':
+    case 'null | string | undefined':
+    case 'number | string | undefined':
       return { type: 'text' }
 
     case 'boolean':
+    case 'boolean | undefined':
       return { type: 'boolean' }
 
+    case 'string | string[] | undefined':
+      return { type: 'array' }
+
     case 'number':
+    case 'number | undefined':
       return { type: 'number', min: 0 }
 
     default:
@@ -39,12 +47,20 @@ const getControl = prop => {
   }
 }
 
-const generateProps = component => {
+const generateProps = (component, allowedProps?: string[]) => {
   const props = component.props
   const propTypes = {}
+
+  const showProp = (propName: string) => {
+    if (allowedProps !== undefined) {
+      return allowedProps.includes(propName)
+    }
+    return !['debounce', 'balTabindex'].includes(propName)
+  }
+
   for (let index = 0; index < props.length; index++) {
     const prop = props[index]
-    if (prop.name !== 'balTabindex') {
+    if (showProp(prop.name)) {
       propTypes[prop.name] = {
         description: prop.docs,
         ...decodeOptions(prop),
@@ -92,13 +108,13 @@ export const withContent = () => ({
   },
 })
 
-export const stencilArgType = (tag: string): any => {
-  const component = findComponent(tag)
-  if (!component) {
+export const stencilArgType = (component: { name: string }, allowedProps?: string[]): any => {
+  const componentJson = findComponent(component.name)
+  if (!componentJson) {
     return {}
   }
   return {
-    ...generateProps(component),
-    ...generateEvents(component),
+    ...generateProps(componentJson, allowedProps),
+    ...generateEvents(componentJson),
   }
 }

@@ -1,5 +1,7 @@
-const { resolve } = require('path')
-const codesandbox = require('remark-codesandbox')
+// const { resolve } = require('path')
+// const codesandbox = require('remark-codesandbox')
+
+const isDevelopment = process.env.STORYBOOK_MODE === 'dev'
 
 module.exports = {
   stories: ['../src/**/intro.stories.mdx', '../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -7,6 +9,15 @@ module.exports = {
   features: {
     postcss: false,
   },
+  staticDirs: ['../public'],
+  previewHead: head => `
+    ${head}
+    <link rel="stylesheet" type="text/css" href="build/design-system-components.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/design-system-table.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/theme.css" />
+    ${isDevelopment ? '<script type="module" src="build/design-system-components.esm.js"></script>' : ''}
+    ${isDevelopment ? '<script nomodule src="build/design-system-components.js"></script>' : ''}
+  `,
   webpackFinal: config => {
     // const mdxRule = config.module.rules.find(rule => rule.test.test('.stories.mdx'))
 

@@ -158,6 +158,7 @@ export class Button implements ComponentInterface {
       case 'success':
       case 'warning':
       case 'danger':
+      case 'info':
         return true
 
       default:

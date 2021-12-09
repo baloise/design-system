@@ -5,6 +5,13 @@ import { AngularGenerator } from './.build/stencil/stencil.bindings.angular'
 import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 import { ReactGenerator } from './.build/stencil/stencil.bindings.react'
 
+let ProxyGenerators = []
+if (process.env.STENCIL_MODE !== 'docs') {
+  ProxyGenerators = [VueGenerator(), AngularGenerator(), ReactGenerator()]
+} else {
+  ProxyGenerators = [VueGenerator('../../public/build/design-system-components.esm.js', './.storybook/vue/components.ts', true)]
+}
+
 export const config: Config = {
   ...StencilBaseConfig,
   extras: {
@@ -27,8 +34,6 @@ export const config: Config = {
       file: './generated/components.json',
     },
     CustomDocumentationGenerator,
-    VueGenerator(),
-    AngularGenerator(),
-    ReactGenerator(),
+    ...ProxyGenerators,
   ],
 }

@@ -1,5 +1,4 @@
 import { Meta, Canvas, Description } from '@storybook/addon-docs'
-import Banner from './assets/images/banner.svg'
 import { html } from './utils'
 import { version } from '../../package.json'
 
@@ -12,21 +11,48 @@ import { version } from '../../package.json'
   }}
 />
 
+import Wallpaper from './assets/images/wallpaper.svg'
+import AngularLogo from './assets/images/angular.svg'
+import ReactLogo from './assets/images/react.svg'
+import VueLogo from './assets/images/vue.png'
+import HtmlLogo from './assets/images/html.png'
+
 <div className="welcome-container bal-app">
-  <h1>Baloise</h1>
-  <h2>Design System v{version}</h2>
-  <p>
-    The Baloise Design System consists of reusable components and
-    <br />
-    a clearly defined visual style, that can be assembled together <br />
-    to build any number of applications.
-  </p>
-  <div style={{ marginTop: '64px' }}>
-    <a class="button is-primary is-inverted" style={{ width: 'auto' }} href="?path=/docs/getting-started-overview--page">
-      Getting Started
-    </a>
-    <bal-button inverted outlined color="info" href="https://github.com/baloise/design-system" target="_blank" class="ml-4">
-      Follow on GitHub
-    </bal-button>
+  <div class="columns">
+    <div class="column">
+      <h1>Baloise</h1>
+      <h2>Design System v{version}</h2>
+      <p>
+        The Baloise Design System consists of reusable components and
+        <br />
+        a clearly defined visual style, that can be assembled together <br />
+        to build any number of applications.
+      </p>
+      <div class="mt-8">
+        <a class="button is-primary is-inverted" style={{ width: 'auto' }} href="?path=/docs/getting-started-overview--page">
+          Getting Started
+        </a>
+        <bal-button class="github-icon" inverted outlined color="info" href="https://github.com/baloise/design-system" icon="github" target="_blank" class="ml-4">
+          Follow on GitHub
+        </bal-button>
+      </div>
+      <div class="mt-6">
+        <a style={{ width: 'auto' }} href="?path=/docs/getting-started-angular-overview--page">
+          <img src={AngularLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
+        </a>
+        <a class="ml-4" style={{ width: 'auto' }} href="?path=/docs/getting-started-vue-overview--page">
+          <img src={VueLogo} class="m-1" style={{ maxWidth: '50px', maxHeight: '50px' }} />
+        </a>
+        <a class="ml-4" style={{ width: 'auto' }} href="?path=/docs/getting-started-react-overview--page">
+          <img src={ReactLogo} class="m-1" style={{ maxWidth: '50px', maxHeight: '50px' }} />
+        </a>
+        <a class="ml-4" style={{ width: 'auto' }} href="?path=/docs/getting-started-html5-overview--page">
+          <img src={HtmlLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
+        </a>
+      </div>
+    </div>
+    <div class="column is-hidden-mobile	">
+      <img src={Wallpaper} style={{ maxWidth: '80%' }} />
+    </div>
   </div>
 </div>

@@ -224,16 +224,6 @@ export const BalCard = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
-    padding: {
-      type: String,
-      default: '',
-      required: false,
-    },
-    padded: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
     inverted: {
       type: Boolean,
       default: false,
@@ -937,6 +927,11 @@ export const BalFileUpload = /*@__PURE__*/ defineComponent({
       default: true,
       required: false,
     },
+    hasFileList: {
+      type: Boolean,
+      default: true,
+      required: false,
+    },
     disabled: {
       type: Boolean,
       default: false,
@@ -1241,11 +1236,6 @@ export const BalInput = /*@__PURE__*/ defineComponent({
       required: false,
     },
     clickable: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    autoComplete: {
       type: Boolean,
       default: false,
       required: false,

@@ -164,6 +164,14 @@ $subtitle-color: $blue;
 /**
  * Spacing
  */
+$space-vertical-small: 16px;
+$space-horizontal-small: 16px;
+
+$space-vertical-normal: 32px;
+$space-horizontal-normal: 32px;
+
+$space-vertical-large: 64px;
+$space-horizontal-large: 64px;
 $column-gap: 16px;
 $spacing-shortcuts: (
   'margin': 'm',
@@ -181,21 +189,25 @@ $spacing-values: (
   '0': 0,
   '1': 4px,
   '2': 8px,
-  '3': 16px,
-  '4': 24px,
-  '5': 32px,
-  '6': 40px,
-  '7': 48px,
-  '8': 56px,
-  '9': 64px,
-  '10': 72px,
-  '11': 80px,
-  '12': 88px,
-  '13': 96px,
-  '14': 104px,
-  '15': 112px,
-  '16': 120px,
+  '3': 12px,
+  '4': 16px,
+  '5': 20px,
+  '6': 24px,
+  '7': 32px,
+  '8': 48px,
   'auto': auto,
+);
+
+$spacing-values-medium: (
+  '7': 40px,
+  '8': 56px,
+);
+
+$spacing-values-large: (
+  '5': 24px,
+  '6': 32px,
+  '7': 48px,
+  '8': 64px,
 );
 
 /**
@@ -240,7 +252,7 @@ $section-padding: 40px;
 /**
  * Breakpoints
  */
-$tablet: 720px;
-$desktop: 960px;
-$widescreen: 1200px;
-$fullhd: 1200px;
+$tablet: 769px;
+$desktop: 1024px;
+$widescreen: 1216px;
+$fullhd: 1408px;

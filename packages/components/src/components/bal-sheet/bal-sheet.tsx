@@ -10,7 +10,7 @@ export class Sheet {
   render() {
     return (
       <Host>
-        <div class="container">
+        <div class="container is-compact">
           <div class="inner">
             <slot />
           </div>

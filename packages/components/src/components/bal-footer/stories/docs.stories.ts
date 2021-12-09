@@ -1,20 +1,16 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType, withContent } from '../../../stories/utils'
+import { BalComponentStory, withContent } from '../../../stories/utils'
 import { BalFooter } from '../../../../.storybook/vue/components'
 
-export default {
-  title: 'Components/Footer',
+const component = BalComponentStory({
   component: BalFooter,
   argTypes: {
-    ...stencilArgType('bal-footer'),
     ...withContent(),
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 const Template = args => ({
   components: { BalFooter },
@@ -29,6 +25,7 @@ Basic.args = {
   content: 'Footer Content',
   hideLinks: true,
 }
+Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const WithLinks = Template.bind({})
 WithLinks.args = {
@@ -36,3 +33,4 @@ WithLinks.args = {
   locale: 'en',
   hideLinks: false,
 }
+WithLinks.parameters = { ...component.sourceCode(WithLinks) }

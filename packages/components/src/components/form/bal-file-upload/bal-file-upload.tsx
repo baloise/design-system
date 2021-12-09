@@ -27,13 +27,17 @@ export class FileUpload {
   /**
    * Label of the drop area.
    */
-  @Prop()
-  label: string = 'Choose or drop a file...'
+  @Prop() label: string = 'Choose or drop a file...'
 
   /**
    * If `true` multiple file upload is possible.
    */
   @Prop() multiple = true
+
+  /**
+   * If `true` below the drop-down area it generates a file list.
+   */
+  @Prop() hasFileList = true
 
   /**
    * If `true` the button is disabled
@@ -213,6 +217,25 @@ export class FileUpload {
   }
 
   render() {
+    const FileList = () => (
+      <bal-list disabled border>
+        {this.files.map((file, index) => (
+          <bal-list-item>
+            <bal-list-item-icon>
+              <bal-icon name="document"></bal-icon>
+            </bal-list-item-icon>
+            <bal-list-item-content>
+              <bal-list-item-title>{file.name}</bal-list-item-title>
+              <bal-list-item-subtitle>{this.subTitle ? this.subTitle(file) : filesize(file.size)}</bal-list-item-subtitle>
+            </bal-list-item-content>
+            <bal-list-item-icon right class="file-remove" onClick={() => this.removeFile(index)}>
+              <bal-icon name="trash" color="danger"></bal-icon>
+            </bal-list-item-icon>
+          </bal-list-item>
+        ))}
+      </bal-list>
+    )
+
     return (
       <Host class={['bal-file-upload', this.disabled ? 'is-disabled' : ''].join(' ')}>
         <div class="file">
@@ -235,22 +258,7 @@ export class FileUpload {
             </span>
           </label>
         </div>
-        <bal-list disabled border>
-          {this.files.map((file, index) => (
-            <bal-list-item>
-              <bal-list-item-icon>
-                <bal-icon name="document"></bal-icon>
-              </bal-list-item-icon>
-              <bal-list-item-content>
-                <bal-list-item-title>{file.name}</bal-list-item-title>
-                <bal-list-item-subtitle>{this.subTitle ? this.subTitle(file) : filesize(file.size)}</bal-list-item-subtitle>
-              </bal-list-item-content>
-              <bal-list-item-icon right class="file-remove" onClick={() => this.removeFile(index)}>
-                <bal-icon name="trash" color="danger"></bal-icon>
-              </bal-list-item-icon>
-            </bal-list-item>
-          ))}
-        </bal-list>
+        {this.hasFileList ? <FileList /> : ''}
       </Host>
     )
   }

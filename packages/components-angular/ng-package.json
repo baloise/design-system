@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/ng-packagr/package.schema.json",
+  "lib": {
+    "entryFile": "src/index.ts",
+    "umdModuleIds": {
+      "@baloise/design-system-components": "@baloise/design-system-components",
+      "@baloise/design-system-components/loader": "@baloise/design-system-components/loader"
+    }
+  },
+  "whitelistedNonPeerDependencies": [
+    "@baloise/design-system-components"
+  ]
+}

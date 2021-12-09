@@ -18,6 +18,7 @@ import {
   toDate,
   isValidDateString,
   isEnterKey,
+  ceilTime,
 } from '@baloise/web-app-utils'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
@@ -312,12 +313,12 @@ export class Datepicker implements ComponentInterface {
     let months = monthNames.map((name, index) => ({ name, index }))
 
     if (this.min) {
-      const minMonth = parseInt(this.min.substring(4, 6), 10)
+      const minMonth = parseInt(this.min.substring(5, 7), 10) - 1
       months = months.filter(month => month.index >= minMonth)
     }
 
     if (this.max) {
-      const maxMonth = parseInt(this.max.substring(4, 6), 10)
+      const maxMonth = parseInt(this.max.substring(5, 7), 10) - 1
       months = months.filter(month => month.index <= maxMonth)
     }
 
@@ -351,8 +352,8 @@ export class Datepicker implements ComponentInterface {
             label: day(dayDatePointer).toString(),
             isToday: isSameDay(dayDatePointer, now()),
             isSelected: toDate(this.selectedDate) && isSameDay(dayDatePointer, toDate(this.selectedDate) as Date),
-            isDisabled: !this.getAllowedDates(dayDatePointer) || !isInRange(dayDatePointer, toDate(this.min), toDate(this.max)),
-            isOutdated: this.pointerDate.month !== dayDatePointer.getMonth() || !isInRange(dayDatePointer, toDate(this.min), toDate(this.max)),
+            isDisabled: !this.getAllowedDates(dayDatePointer) || !isInRange(ceilTime(dayDatePointer), toDate(this.min), toDate(this.max)),
+            isOutdated: this.pointerDate.month !== dayDatePointer.getMonth() || !isInRange(ceilTime(dayDatePointer), toDate(this.min), toDate(this.max)),
           } as BalCalendarCell,
         ]
         dayDatePointer.setDate(dayDatePointer.getDate() + 1)

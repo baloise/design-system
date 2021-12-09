@@ -2,33 +2,29 @@ import { onMounted } from 'vue'
 import { Grid } from 'ag-grid-community'
 
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../stories/utils'
+import { BalComponentStory } from '../../../stories/utils'
 import { BalTable, BalIcon, BalCheckbox, BalButton, BalTag, BalCard } from '../../../../.storybook/vue/components'
 import { tableHtml } from './examples.docs'
 
 import { BalTableButtonRenderer, BalTableTagRenderer, BalTableTextRenderer } from '../../../../../components-table/dist/index.esm'
 
-export default {
-  title: 'Components/Table',
+const component = BalComponentStory({
   component: BalTable,
-  argTypes: {
-    ...stencilArgType('bal-table'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+  layout: 'fullscreen',
+})
+
+export default component.story
 
 export const HtmlTable = args => ({
-  components: { BalTable, BalIcon, BalCheckbox, BalButton, BalTag, BalCard },
+  components: { ...component.components, BalIcon, BalCheckbox, BalButton, BalTag, BalCard },
   setup: () => ({ args }),
   template: tableHtml,
 })
+HtmlTable.parameters = { ...component.sourceCode(HtmlTable) }
 
 export const AgGrid = args => ({
-  components: { BalTable, BalIcon, BalCheckbox, BalButton, BalTag, BalCard },
+  components: { ...component.components, BalIcon, BalCheckbox, BalButton, BalTag, BalCard },
   setup: () => {
     onMounted(() => {
       const columnDefs = [
@@ -115,7 +111,6 @@ export const AgGrid = args => ({
 
     return { args }
   },
-  template: `<bal-card>
-  <bal-table class="p-0" id="myGrid" style="height: 250px; width: 100%"></bal-table>
-</bal-card>`,
+  template: `<bal-table class="p-0" id="myGrid" style="height: 250px; width: 100%"></bal-table>`,
 })
+AgGrid.parameters = { ...component.sourceCode(AgGrid) }

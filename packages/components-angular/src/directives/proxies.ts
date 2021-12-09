@@ -80,13 +80,13 @@ export class BalButton {
 
 export declare interface BalCard extends Components.BalCard {}
 @ProxyCmp({
-  inputs: ['border', 'color', 'flat', 'flatMobile', 'inverted', 'padded', 'padding', 'spacing', 'square', 'teaser']
+  inputs: ['border', 'color', 'flat', 'flatMobile', 'inverted', 'spacing', 'square', 'teaser']
 })
 @Component({
   selector: 'bal-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['border', 'color', 'flat', 'flatMobile', 'inverted', 'padded', 'padding', 'spacing', 'square', 'teaser']
+  inputs: ['border', 'color', 'flat', 'flatMobile', 'inverted', 'spacing', 'square', 'teaser']
 })
 export class BalCard {
   protected el: HTMLElement;
@@ -614,14 +614,14 @@ export class BalFieldMessage {
 import { FileUploadRejectedFile } from '@baloise/design-system-components';
 export declare interface BalFileUpload extends Components.BalFileUpload {}
 @ProxyCmp({
-  inputs: ['accept', 'disabled', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple', 'subTitle', 'value'],
+  inputs: ['accept', 'disabled', 'hasFileList', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple', 'subTitle', 'value'],
   methods: ['clear']
 })
 @Component({
   selector: 'bal-file-upload',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['accept', 'disabled', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple', 'subTitle', 'value'],
+  inputs: ['accept', 'disabled', 'hasFileList', 'label', 'maxBundleSize', 'maxFileSize', 'maxFiles', 'multiple', 'subTitle', 'value'],
   outputs: ['balChange', 'balRejectedFile']
 })
 export class BalFileUpload {
@@ -749,14 +749,14 @@ export class BalIcon {
 
 export declare interface BalInput extends Components.BalInput {}
 @ProxyCmp({
-  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'decimal', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberInput', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
+  inputs: ['accept', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'decimal', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberInput', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
   methods: ['setFocus', 'getInputElement']
 })
 @Component({
   selector: 'bal-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['accept', 'autoComplete', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'decimal', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberInput', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
+  inputs: ['accept', 'autocapitalize', 'autocomplete', 'autocorrect', 'autofocus', 'balTabindex', 'clickable', 'debounce', 'decimal', 'disabled', 'inputmode', 'inverted', 'max', 'maxLength', 'min', 'minLength', 'multiple', 'name', 'numberInput', 'pattern', 'placeholder', 'readonly', 'required', 'spellcheck', 'suffix', 'type', 'value'],
   outputs: ['balInput', 'balBlur', 'balClick', 'balKeyPress', 'balFocus', 'balChange']
 })
 export class BalInput {

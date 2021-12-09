@@ -1,19 +1,13 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../stories/utils'
+import { BalComponentStory } from '../../../stories/utils'
 import { BalIcon } from '../../../../.storybook/vue/components'
 
-export default {
-  title: 'Components/Icon',
+const component = BalComponentStory({
   component: BalIcon,
-  argTypes: {
-    ...stencilArgType('bal-icon'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 const Template = args => ({
   components: { BalIcon },
@@ -27,3 +21,4 @@ Basic.args = {
   size: 'xlarge',
   color: 'primary',
 }
+Basic.parameters = { ...component.sourceCode(Basic) }

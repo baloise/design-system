@@ -1,0 +1,84 @@
+.has-no-border {
+  border: none !important;
+}
+
+.is-full-width {
+  width: 100% !important;
+}
+
+.is-row-reverse {
+  flex-direction: row-reverse !important;
+}
+
+.has-background-light {
+  background: $white-bis;
+}
+
+.has-border-blue {
+  border: 1px solid $info-3;
+}
+
+.has-border-blue-dark {
+  border: 1px solid $info-8;
+}
+
+.has-border-success {
+  border: 1px solid $success;
+}
+
+.has-border-danger {
+  border: 1px solid $danger;
+}
+
+.has-border-warning {
+  border: 1px solid $danger;
+}
+
+.has-border-bold {
+  border-width: 2px;
+}
+
+.has-border-blue-light {
+  border: 1px solid $info-2;
+}
+
+.has-border-blue-inverted {
+  border: 1px solid $info-5;
+}
+
+.has-border-grey {
+  border: 1px solid $grey;
+}
+
+.has-border-radius {
+  border-radius: $radius;
+}
+
+.clickable {
+  cursor: pointer !important;
+  pointer-events: visible !important;
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+
+.is-display-block {
+  display: block !important;
+}
+
+.is-display-inline-block {
+  display: inline-block !important;
+}
+
+.is-display-flex {
+  display: flex !important;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid $info-2;
+  margin: 0;
+  padding: 0;
+}

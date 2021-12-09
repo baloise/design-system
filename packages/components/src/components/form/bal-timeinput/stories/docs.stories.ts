@@ -1,27 +1,28 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType } from '../../../../stories/utils'
+import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
 import { BalTimeinput } from '../../../../../.storybook/vue/components'
 
-export default {
-  title: 'Components/Form/Timeinput',
+const component = BalComponentStory({
+  title: 'Components/Form/Timeinput (WIP)',
   component: BalTimeinput,
-  argTypes: {
-    ...stencilArgType('bal-timeinput'),
-  },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 const Template = args => ({
-  components: { BalTimeinput },
+  components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-timeinput v-bind="args"></bal-timeinput>`,
+  template: `<bal-timeinput v-bind="args" v-model="args.value"></bal-timeinput>`,
 })
 
 export const Basic = Template.bind({})
 Basic.args = {
   disabled: false,
+}
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: {
+    exclude: [],
+  },
 }

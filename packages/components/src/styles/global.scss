@@ -25,7 +25,7 @@ body {
 
 .bal-app,
 .bal-notices {
-  @import 'utilities/helpers';
+  @import 'helpers/all';
   @import 'utilities/animations';
   @import 'layout/all';
   @import 'form/all';

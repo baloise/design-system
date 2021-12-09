@@ -54,11 +54,7 @@ export const defineSetup =
            * native web component, but the v-model will
            * not have been updated yet.
            */
-          // let emittedValue = e.detail
-          // if (e.detail?.value) {
-          //   emittedValue = e.detail.value
-          // }
-          emit(modelUpdateEvent, e)
+          emit(modelUpdateEvent, { detail: e.detail })
           e.stopImmediatePropagation()
         })
       }
@@ -69,11 +65,7 @@ export const defineSetup =
           .forEach(componentEvent => {
             if (vnode.el) {
               vnode.el.addEventListener(componentEvent, (event: CustomEvent<any>) => {
-                // let emittedValue = event.detail
-                // if (event.detail?.value) {
-                //   emittedValue = event.detail.value
-                // }
-                emit(componentEvent, event)
+                emit(componentEvent, { detail: event.detail })
               })
             }
           })

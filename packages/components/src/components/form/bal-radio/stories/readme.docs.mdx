@@ -1,7 +1,4 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
-import { html } from '../../../../stories/utils'
-import readme from '../readme.md'
-import radioGroup from '../bal-radio-group/readme.md'
 
 # Radio
 
@@ -18,11 +15,15 @@ A radio input is normally displayed in a radio group. The user can only select o
 
 ## Radio Boxes
 
+Add the class `has-background-blue-light` to the selected box (`div` inside the `div.column`).
+
 <Canvas>
   <Story id="components-form-radio--radio-boxes" />
 </Canvas>
 
 ## Radio List
+
+Add the class `has-background-blue-light` to the selected box (`div` inside the `bal-radio-group`).
 
 <Canvas>
   <Story id="components-form-radio--radio-list" />
@@ -35,6 +36,9 @@ A radio input is normally displayed in a radio group. The user can only select o
 </Canvas>
 
 ## Component Api
+
+import readme from '../readme.md'
+import radioGroup from '../bal-radio-group/readme.md'
 
 <Description markdown={radioGroup} />
 <Description markdown={readme} />

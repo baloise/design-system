@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
 import { BalButtonColor } from "./components/bal-button/bal.button.type";
-import { PaddingCardType, SpacingCardType } from "./types/padding.types";
+import { SpacingCardType } from "./types/padding.types";
 import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
@@ -174,14 +174,6 @@ export namespace Components {
           * If `true` the card background color becomes blue.
          */
         "inverted": boolean;
-        /**
-          * @deprecated If `true` the card has padding.
-         */
-        "padded": boolean;
-        /**
-          * @deprecated Defines the size of the padding grid
-         */
-        "padding": PaddingCardType;
         /**
           * Defines the size of the padding grid
          */
@@ -563,6 +555,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` below the drop-down area it generates a file list.
+         */
+        "hasFileList": boolean;
+        /**
           * Label of the drop area.
          */
         "label": string;
@@ -692,10 +688,6 @@ export namespace Components {
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
          */
         "accept"?: string;
-        /**
-          * The autocomplete attribute specifies whether or not an input field should have autocomplete enabled.
-         */
-        "autoComplete": boolean;
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
@@ -2163,14 +2155,6 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * @deprecated If `true` the card has padding.
-         */
-        "padded"?: boolean;
-        /**
-          * @deprecated Defines the size of the padding grid
-         */
-        "padding"?: PaddingCardType;
-        /**
           * Defines the size of the padding grid
          */
         "spacing"?: SpacingCardType;
@@ -2548,6 +2532,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If `true` below the drop-down area it generates a file list.
+         */
+        "hasFileList"?: boolean;
+        /**
           * Label of the drop area.
          */
         "label"?: string;
@@ -2673,10 +2661,6 @@ declare namespace LocalJSX {
           * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
          */
         "accept"?: string;
-        /**
-          * The autocomplete attribute specifies whether or not an input field should have autocomplete enabled.
-         */
-        "autoComplete"?: boolean;
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */

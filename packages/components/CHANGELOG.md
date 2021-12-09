@@ -3,25 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [3.0.2](https://github.com/baloise/design-system/compare/v3.0.1...v3.0.2) (2021-12-06)
+# [4.0.0](https://github.com/baloise/design-system/compare/v3.0.0...v4.0.0) (2021-12-08)
 
+### BREAKING CHANGES
 
+- The breakpoints and spacing helpers are adjusted to new guidlines and duplicated/old css class are removed.
+  - Follow the migration guide [Migration from 3.x to 4.x](https://design.baloise.dev/?path=/story/migration-migration-from-3-x-to-4-x--page)
+
+### Features
+
+- **spacing:** add responsive spacing helpers ([bc8588d](https://github.com/baloise/design-system/commit/bc8588d6f4e777b9769401f77de5b82be8ef41b7))
+- **file-upload:** add prop has-file-list ([5b9d051](https://github.com/baloise/design-system/commit/5b9d051d8293f655d49fc30fd88400870730dfdf))
+- **container:** add compact option ([f509fd3](https://github.com/baloise/design-system/commit/f509fd3481b23f66d3b5fa13b84b18bd761521ca))
+
+### Bug Fixes
+
+- **datepicker:** adjust min max behaviour ([f469440](https://github.com/baloise/design-system/commit/f469440d36fd423443971316d6aad1e29c172d6d))
+- **select:** adjust selected background ([d9e28ae](https://github.com/baloise/design-system/commit/d9e28aeed7e9df65e88653322ef0f544419645d8))
+- **sheet:** improve spacing ([285857f](https://github.com/baloise/design-system/commit/285857f28fd98c14a654da82a5ed68f19af492f1))
+- **hint:** adjust spacing and font size ([f2773b7](https://github.com/baloise/design-system/commit/f2773b78fa1acca194cfad3bfb58b66bf0d92e3f))
 
 # [3.0.0](https://github.com/baloise/design-system/compare/v2.0.5...v3.0.0) (2021-12-03)
 
-**Note:** Version bump only for package @baloise/design-system-components
+### BREAKING CHANGES
 
-
-
-
-
-## [3.0.1](https://github.com/baloise/design-system/compare/v3.0.0...v3.0.1) (2021-12-06)
-
-**Note:** Version bump only for package @baloise/design-system-components
-
-
-
-
+- `has-sticky-footer` has to be set explicit to the `ba-app` component.
+  - Follow the migration guide [Migration from 2.x to 3.x](https://design.baloise.dev/?path=/story/migration-migration-from-2-x-to-3-x--page)
 
 ## [2.0.5](https://github.com/baloise/design-system/compare/v2.0.4...v2.0.5) (2021-11-24)
 
@@ -59,10 +66,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **testing:** add textarea ([0b9f7b9](https://github.com/baloise/design-system/commit/0b9f7b9091c1a0a95016c5b8dc02423666a5cf62))
 - **testing:** improve isElemen function ([531e497](https://github.com/baloise/design-system/commit/531e4976cd57b332d39e89c9f5ee1cb419dedff7))
 
-## [1.19.8](https://github.com/baloise/design-system/compare/v1.19.7...v1.19.8) (2021-11-17)
-
-**Note:** Version bump only for package root
-
 ## [1.19.7](https://github.com/baloise/design-system/compare/v1.19.6...v1.19.7) (2021-11-11)
 
 ### Bug Fixes
@@ -89,10 +92,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **select:** Skip one single test to test if the build is working ([516021f](https://github.com/baloise/design-system/commit/516021fc3d93beff9819a9667abc29e6aa4cdd73))
 
-## [1.19.3](https://github.com/baloise/design-system/compare/v1.19.2...v1.19.3) (2021-11-09)
-
-**Note:** Version bump only for package root
-
 ## [1.19.2](https://github.com/baloise/design-system/compare/v1.19.1...v1.19.2) (2021-11-09)
 
 ### Bug Fixes
@@ -101,10 +100,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **footer:** Update links when locale changes ([7911b9b](https://github.com/baloise/design-system/commit/7911b9b2e039dae52002d09e33e3fdb441c57503))
 
 ## [1.19.1](https://github.com/baloise/design-system/compare/v1.19.0...v1.19.1) (2021-10-08)
-
-## 1.18.15 (2021-10-08)
-
-**Note:** Version bump only for package root
 
 # [1.19.0](https://github.com/baloise/design-system/compare/v1.18.15...v1.19.0) (2021-10-08)
 

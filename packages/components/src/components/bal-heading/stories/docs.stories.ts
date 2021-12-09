@@ -1,20 +1,16 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType, withContent } from '../../../stories/utils'
+import { stencilArgType, withContent, withSoureCode, BalComponentStory } from '../../../stories/utils'
 import { BalHeading } from '../../../../.storybook/vue/components'
 
-export default {
-  title: 'Components/Heading',
+const component = BalComponentStory({
   component: BalHeading,
   argTypes: {
-    ...stencilArgType('bal-heading'),
     ...withContent(),
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
+
+export default component.story
 
 const Template = args => ({
   components: { BalHeading },
@@ -26,6 +22,7 @@ export const Basic = Template.bind({})
 Basic.args = {
   content: 'Heading',
 }
+Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const Subtitle = Template.bind({})
 Subtitle.args = {
@@ -34,3 +31,4 @@ Subtitle.args = {
   subtitle: true,
   space: 'none',
 }
+Subtitle.parameters = { ...component.sourceCode(Subtitle) }

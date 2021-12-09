@@ -1,35 +1,58 @@
 import docs from './readme.docs.mdx'
-import { stencilArgType, withContent } from '../../../stories/utils'
-import { BalAccordion } from '../../../../.storybook/vue/components'
+import { withContent, BalComponentStory } from '../../../stories/utils'
+import { BalAccordion, BalCard, BalCardTitle, BalCardSubtitle } from '../../../../.storybook/vue/components'
 
-export default {
-  title: 'Components/Accordion',
+const component = BalComponentStory({
   component: BalAccordion,
   argTypes: {
-    ...stencilArgType('bal-accordion'),
     ...withContent(),
   },
-  parameters: {
-    docs: {
-      page: docs,
-    },
-  },
-}
+  docs,
+})
 
-const Template = args => ({
+export default component.story
+
+export const Basic = args => ({
   components: { BalAccordion },
   setup: () => ({ args }),
   template: `<bal-accordion v-bind="args" class="box">
-    <p class="p-4">
-     {{ args.content }}
-    </p>
+  <p class="p-4">
+   {{ args.content }}
+  </p>
   </bal-accordion>`,
 })
-
-export const Basic = Template.bind({})
 Basic.args = {
   openLabel: 'Show detail',
   closeLabel: 'Show detail',
   content:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 }
+Basic.parameters = { ...component.sourceCode(Basic) }
+
+export const WithIcons = args => ({
+  components: { BalAccordion },
+  setup: () => ({ args }),
+  template: `<bal-accordion class="box" open-icon="edit" open-label="Bearbeiten" close-label="Schliessen" close-icon="close">
+  <p class="p-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </bal-accordion>`,
+})
+WithIcons.args = {
+  content:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+}
+WithIcons.parameters = { ...component.sourceCode(WithIcons) }
+
+export const WithCard = args => ({
+  components: { BalAccordion, BalCard, BalCardTitle, BalCardSubtitle },
+  setup: () => ({ args }),
+  template: `<bal-card>
+  <bal-card-title>BaloiseCombi</bal-card-title>
+  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
+
+  <bal-accordion card>
+    <p class="p-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </bal-accordion>
+  </bal-card>`,
+})
+WithCard.args = {}
+WithCard.parameters = { ...component.sourceCode(WithCard) }

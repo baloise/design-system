@@ -21,7 +21,7 @@ export class ModalHeader {
   render() {
     return (
       <Host class="modal-card-head">
-        <h3 class="modal-card-title title is-size-3 has-text-blue has-no-margin">
+        <h3 class="modal-card-title title is-size-3 has-text-blue m-0">
           <slot></slot>
         </h3>
         <button

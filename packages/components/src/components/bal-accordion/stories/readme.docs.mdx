@@ -1,6 +1,5 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
-import { withIcons, withCard } from './examples.docs.ts'
 import readme from '../readme.md'
 
 <span id="story--components-accordion--basic" style={{ opacity: 0 }}></span>
@@ -17,14 +16,14 @@ Accordions put users in control of showing or hiding content. Accordions also he
 
 Use the properties `open-label` & `open-icon` to change the content of the trigger button.
 
-<Canvas className="bal-app" mdxSource={withIcons}>
-  {html(withIcons)}
+<Canvas>
+  <Story id="components-accordion--with-icons" />
 </Canvas>
 
 ## With Card
 
-<Canvas className="bal-app" mdxSource={withCard}>
-  {html(withCard)}
+<Canvas>
+  <Story id="components-accordion--with-card" />
 </Canvas>
 
 ## Component Api
