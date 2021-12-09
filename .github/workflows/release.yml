@@ -14,6 +14,12 @@ jobs:
         with:
           fetch-depth: '0'
 
+      - name: Install Lerna globally
+        run: npm install lerna --global
+
+      - name: Update npm registry
+        run: npm run update:registry
+
       - name: Git Identity
         run: |
           git config --global user.name 'baopso'
