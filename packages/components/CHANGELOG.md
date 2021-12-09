@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.3](https://github.com/baloise/design-system/compare/v4.0.2...v4.0.3) (2021-12-09)
+
+
+### Bug Fixes
+
+* **component:** add 100% width to container ([c3aface](https://github.com/baloise/design-system/commit/c3afacec87653953fd290edf004203b5b1a85314))
+* **component:** add 100% width to container ([483ab50](https://github.com/baloise/design-system/commit/483ab5010885afcfd39dda94db7b963c2c058220))
+
+
+
+## 4.0.1 (2021-12-09)
+
+
+
+
+
 ## [4.0.2](https://github.com/baloise/design-system/compare/v4.0.1...v4.0.2) (2021-12-09)
 
 **Note:** Version bump only for package @baloise/design-system-components
