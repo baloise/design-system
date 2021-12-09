@@ -1,6 +1,6 @@
 import { BalComponentStory } from '../../../stories/utils'
 import { BalSnackbar, BalButton } from '../../../../.storybook/vue/components'
-import { balSnackbarController } from '../../../../dist/design-system-components/index.esm'
+import { balSnackbarController } from '../../../../dist/custom-elements'
 import docs from './readme.docs.mdx'
 
 const component = BalComponentStory({
