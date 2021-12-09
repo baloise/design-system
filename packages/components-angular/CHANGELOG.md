@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/baloise/design-system/compare/v4.0.0...v4.0.1) (2021-12-09)
+
+
+### Bug Fixes
+
+* **angular:** use ng-packagr 10.1.2 ([de33875](https://github.com/baloise/design-system/commit/de338758effbc93f6330f2a6f727131430641d18))
+
+
+
+
+
 # [4.0.0](https://github.com/baloise/design-system/compare/v3.0.0...v4.0.0) (2021-12-08)
 
 ### BREAKING CHANGES
