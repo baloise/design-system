@@ -1,11 +1,9 @@
 name: Documentation
 
 on:
-  workflow_run:
-    workflows: ['Release']
-    branches: [master]
-    types:
-      - completed
+  push:
+    branches:
+      - master
 
 jobs:
   Publish:
