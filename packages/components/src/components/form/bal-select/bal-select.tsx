@@ -1,5 +1,4 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
-import isArray from 'lodash.isarray'
 import isNil from 'lodash.isnil'
 import isString from 'lodash.isstring'
 import { findItemLabel } from '../../../helpers/helpers'
@@ -262,7 +261,7 @@ export class Select {
         innerHTML: element.innerHTML,
       })
     }
-    if (isArray(this.rawValue)) {
+    if (Array.isArray(this.rawValue)) {
       for (let index = 0; index < this.rawValue.length; index++) {
         const val = this.rawValue[index]
         if (!options.has(val)) {
