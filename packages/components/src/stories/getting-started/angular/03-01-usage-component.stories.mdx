@@ -1,0 +1,108 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/Angular/Usage of Components"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Usage of Component
+
+After adding the `BaloiseDesignSystemModule` module we can use all the components from the Baloise Design System.
+
+```xml
+// app.component.html
+<bal-button (click)="onButtonClick()">Button</bal-button>
+```
+
+```typescript
+// app.component.ts
+import { Component } from '@angular/core'
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+})
+export class AppComponent {
+  onButtonClick() {
+    console.log('onButtonClick')
+  }
+}
+```
+
+## Properties
+
+The props or input of an component can be set directly in the template file.
+
+```xml
+// app.component.html
+<bal-button color="danger" [disabled]="isDisabled">Button</bal-button>
+```
+
+```typescript
+// app.component.ts
+export class AppComponent {
+  isDisabled = true
+}
+```
+
+## Events
+
+The events or output of an component can be set directly in the template file.
+
+```xml
+// app.component.html
+<bal-tabs action action-label="Action" clickable interface="tabs" (balTabChange)="onTabChange($event.detail)">
+  <bal-tab-item
+    value="tab-a"
+    label="Tab A"
+    [active]="isTabActive('tab-a')"
+    (balNavigate)="navigateTo('tab-a')">
+  </bal-tab-item>
+  <bal-tab-item
+    value="tab-b"
+    label="Tab B"
+    [active]="isTabActive('tab-b')"
+    (balNavigate)="navigateTo('tab-b')">
+  </bal-tab-item>
+</bal-tabs>
+<main>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+```
+
+```typescript
+// app.component.ts
+import { Component } from '@angular/core'
+import { BalTabOption } from '@baloise/design-system-components'
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+})
+export class AppComponent {
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  onTabChange(tab: BalTabOption) {
+    console.log('onTabChange', tab.label)
+  }
+
+  navigateTo(path: string) {
+    this.router.navigate([path])
+  }
+
+  isTabActive(path: string) {
+    return this.router.isActive(path, {
+      fragment: 'exact',
+      matrixParams: 'exact',
+      queryParams: 'exact',
+      paths: 'exact',
+    })
+  }
+}
+```

@@ -1,0 +1,62 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/Angular/Usage of Pipes"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Usage of Pipes
+
+The pipe functions are defined as [Angular Pipes](https://angular.io/guide/pipes).
+More documentation is [here](https://github.com/baloise/web-app-utils/blob/master/packages/pipes/README.md)
+
+First we need to install the pipe package.
+
+```bash
+npm install @baloise/web-app-pipes-angular
+```
+
+Add the pipe module to your app module.
+
+```typescript
+import { NgModule } from '@angular/core'
+import { BaloisePipeModule } from '@baloise/web-app-pipes-angular'
+
+import { AppComponent } from './app.component'
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BaloisePipeModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+After adding the module the pipe can be used directly in the templates.
+
+```html
+<span>{{ 'baloise' | balCapitalize }}</span>
+```
+
+The can be used in the component typescript file aswell.
+
+```typescript
+import { Component } from '@angular/core'
+import { balCapitalize } from '@baloise/design-system-components'
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+})
+export class AppComponent {
+  capitalize(value: string) {
+    return balCapitalize(value)
+  }
+}
+```
