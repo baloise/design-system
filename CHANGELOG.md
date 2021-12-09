@@ -8,9 +8,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package root
 
 
-
-
-
 ## [4.0.1](https://github.com/baloise/design-system/compare/v4.0.0...v4.0.1) (2021-12-09)
 
 
@@ -18,13 +15,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **angular:** use ng-packagr 10.1.2 ([de33875](https://github.com/baloise/design-system/commit/de338758effbc93f6330f2a6f727131430641d18))
 * remove lodash.isArray ([53a642b](https://github.com/baloise/design-system/commit/53a642be572218feab5c3218c7c3969d57d233f0))
-
-
-
-## 3.0.2 (2021-12-06)
-
-
-
 
 
 # [4.0.0](https://github.com/baloise/design-system/compare/v3.0.0...v4.0.0) (2021-12-08)
