@@ -20,15 +20,12 @@ import HtmlLogo from './assets/images/html.png'
 <div className="welcome-container bal-app">
   <div class="columns">
     <div class="column">
-      <h1>Baloise</h1>
-      <h2>Design System v{version}</h2>
-      <p>
-        The Baloise Design System consists of reusable components and
-        <br />
-        a clearly defined visual style, that can be assembled together <br />
-        to build any number of applications.
+      <h1 class="mx-6 mt-6 p-0">Baloise</h1>
+      <h2 class="mx-6 my-0 p-0">Design System v{version}</h2>
+      <p class="mx-6 mt-8 p-0">
+        The Baloise Design System consists of reusable components and a clearly defined visual style, that can be assembled together to build any number of applications.
       </p>
-      <div class="mt-8">
+      <div class="mx-6 mt-8 p-0">
         <a class="button is-primary is-inverted" style={{ width: 'auto' }} href="?path=/docs/getting-started-overview--page">
           Getting Started
         </a>
@@ -36,22 +33,22 @@ import HtmlLogo from './assets/images/html.png'
           Follow on GitHub
         </bal-button>
       </div>
-      <div class="mt-6">
+      <div class="mx-6 mt-8 p-0">
         <a style={{ width: 'auto' }} href="?path=/docs/getting-started-angular-overview--page">
           <img src={AngularLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
         </a>
-        <a class="ml-4" style={{ width: 'auto' }} href="?path=/docs/getting-started-vue-overview--page">
+        <a class="ml-5" style={{ width: 'auto' }} href="?path=/docs/getting-started-vue-overview--page">
           <img src={VueLogo} class="m-1" style={{ maxWidth: '50px', maxHeight: '50px' }} />
         </a>
-        <a class="ml-4" style={{ width: 'auto' }} href="?path=/docs/getting-started-react-overview--page">
+        <a class="ml-5" style={{ width: 'auto' }} href="?path=/docs/getting-started-react-overview--page">
           <img src={ReactLogo} class="m-1" style={{ maxWidth: '50px', maxHeight: '50px' }} />
         </a>
-        <a class="ml-4" style={{ width: 'auto' }} href="?path=/docs/getting-started-html5-overview--page">
+        <a class="ml-5" style={{ width: 'auto' }} href="?path=/docs/getting-started-html5-overview--page">
           <img src={HtmlLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
         </a>
       </div>
     </div>
-    <div class="column is-hidden-mobile	">
+    <div class="column is-hidden-mobile	mt-6">
       <img src={Wallpaper} style={{ maxWidth: '80%' }} />
     </div>
   </div>
