@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "build": "npm run clean && npm run build:compile && npm run clean:package",
-    "build:compile": "ng-packagr -p package.json",
+    "build:compile": "ng-packagr -p ng-package.json",
     "clean": "rimraf dist",
     "clean:package": "rimraf dist/package.json && rimraf dist/CHANGELOG.md && rimraf dist/LICENSE && rimraf dist/README.md",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
@@ -48,7 +48,7 @@
     "@angular/core": "^10.2.5",
     "@angular/forms": "^10.2.5",
     "@angular/platform-browser": "^10.2.5",
-    "ng-packagr": "^13.1.1",
+    "ng-packagr": "^10.1.2",
     "rimraf": "^3.0.2",
     "typescript": "^4.0.7",
     "zone.js": "^0.10.3"
@@ -63,18 +63,5 @@
   "fesm2015": "dist/fesm2015/baloise-design-system-components-angular.js",
   "typings": "dist/baloise-design-system-components-angular.d.ts",
   "metadata": "dist/baloise-design-system-components-angular.metadata.json",
-  "sideEffects": false,
-  "$schema": "./node_modules/ng-packagr/package.schema.json",
-  "ngPackage": {
-    "lib": {
-      "entryFile": "src/index.ts",
-      "umdModuleIds": {
-        "@baloise/design-system-components": "@baloise/design-system-components",
-        "@baloise/design-system-components/loader": "@baloise/design-system-components/loader"
-      }
-    },
-    "whitelistedNonPeerDependencies": [
-      "@baloise/design-system-components"
-    ]
-  }
+  "sideEffects": false
 }
