@@ -3,7 +3,17 @@ import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
 import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 
 let outputTargets = []
-if (process.env.STORYBOOK_MODE !== 'dev') {
+if (process.env.STORYBOOK_MODE === 'prod') {
+  outputTargets = [VueGenerator('../../dist/custom-elements', './.storybook/vue/components.ts', true)]
+} else if (process.env.STORYBOOK_MODE === 'dev') {
+  outputTargets = [
+    {
+      type: 'docs-json',
+      file: './generated/components.json',
+    },
+    VueGenerator('../../public/build/design-system-components.esm.js', './.storybook/vue/components.ts', false),
+  ]
+} else {
   outputTargets = [
     {
       type: 'dist',
@@ -12,6 +22,11 @@ if (process.env.STORYBOOK_MODE !== 'dev') {
     {
       type: 'dist-custom-elements-bundle',
     },
+    {
+      type: 'docs-json',
+      file: './generated/components.json',
+    },
+    VueGenerator('../../dist/custom-elements', './.storybook/vue/components.ts', true),
   ]
 }
 
@@ -19,10 +34,6 @@ export const config: Config = {
   ...StencilBaseConfig,
   outputTargets: [
     ...outputTargets,
-    {
-      type: 'docs-json',
-      file: './generated/components.json',
-    },
     {
       type: 'www',
       dir: 'public',
@@ -36,6 +47,5 @@ export const config: Config = {
         { src: '../../icons/generated/icons.json', dest: '../generated/icons.json', warn: true },
       ],
     },
-    VueGenerator('../../public/build/design-system-components.esm.js', './.storybook/vue/components.ts', process.env.STORYBOOK_MODE !== 'dev'),
   ],
 }
