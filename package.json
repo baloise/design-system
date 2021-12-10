@@ -20,7 +20,7 @@
     "update:registry": "lerna run update:registry && sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
     "==================== START ====================": "================================",
     "start": "npm run components:start",
-    "dev": "npm run components:dev",
+    "dev": "npm run components:serve",
     "components:start": "node .build/banner.js components:start && npm --prefix packages/components run start",
     "components:serve": "node .build/banner.js components:serve && npm --prefix packages/components run serve",
     "testing:serve": "node .build/banner.js testing:serve && npm --prefix packages/testing run serve",

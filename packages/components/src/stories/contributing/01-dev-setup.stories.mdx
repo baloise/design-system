@@ -18,9 +18,9 @@ Baloise Design System is divided into multiple NPM packages. Development for all
 To work with this project a recent LTS version of NodeJS and npm is required. Make sure you've installed and/or updated [Node](https://nodejs.org/en/) before continuing.
 
 > **Warning!**
-> Note that you will need to use npm 6 or higher.
+> Note that you will need to use npm 8 or higher.
 
-## Components
+## Project and Packages
 
 To start building a new web component using Stencil, clone this repo to a new directory:
 
@@ -29,12 +29,21 @@ git clone https://github.com/baloise/design-system.git design-system
 cd design-system
 ```
 
-- Run `npm run setup` in the root directory to install library’s dependencies and its packages
-- Run `npm run start` to serve Design System storybook
+First we install all the dependencies of the packages. Then we make a intial build to have all the needed artifacts and after that we link the packages.
 
-> The demo page will be served at `http://localhost:6006/` by default
+```bash
+npm run setup
+```
 
-For more commands visit [Commands](?path=/docs/contributing-commands--page)
+After the setup we can start the documentation page locally. We use storybook also for the development.
+
+```bash
+npm start
+```
+
+The page is available under [http://localhost:6006](http://localhost:6006).
+
+Go to the [Commands](?path=/docs/contributing-commands--page) page to see more npm scripts.
 
 > **TIP**
 > All Baloise Design System packages and their respective code can be found under `/packages/`. For example components live in `/packages/components/`.

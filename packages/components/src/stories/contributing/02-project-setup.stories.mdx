@@ -55,7 +55,6 @@ For our CI & CD task we use [Github Actions](https://github.com/baloise/design-s
 │  └── .workflows # github action
 │
 ├── .build # additional build scripts
-├── examples # example applications with Angular, Vue and React
 ├── packages # published npm packages
 ├── resources # static resources for the documentation
 ├── Dockerfile # config for the documentation
@@ -74,18 +73,25 @@ For our CI & CD task we use [Github Actions](https://github.com/baloise/design-s
 │  ├── assets # generated assets folder for the stencil components
 │  ├── components
 │  │  └── bal-<component>
+│  │        ├── bal-<component>-<addon> # sub-component
+│  │        │  ├── bal-<component>-<addon>.e2e.ts # E2E test file
+│  │        │  ├── bal-<component>-<addon>.scss # Specific component style
+│  │        │  ├── bal-<component>-<addon>.tsx # Component logic
+│  │        │  ├── index.html # Examples for the cypress tests: <deprecated> use storybook instead.
+│  │        │  └── readme.md # generated Readme with the components api
+│  │        │
 │  │        ├── stories # documentation folder with the stories
 │  │        │  ├── docs.stories.ts # has the different variants/stories of the component
-│  │        │  ├── examples.docs.ts # HTML templates snippets
+│  │        │  ├── examples.docs.ts # HTML templates snippets <optional>
 │  │        │  ├── readme.docs.mdx # main documentation file
-│  │        │  ├── github.md # geberated file with the contribution links
+│  │        │  ├── github.md # generated file with the contribution links
 │  │        │  └── testing.md # generated file with the testing api
 │  │        │
 │  │        ├── bal-<component>.e2e.ts # E2E test file
 │  │        ├── bal-<component>.scss # Specific component style
 │  │        ├── bal-<component>.tsx # Component logic
 │  │        ├── index.html # Examples for the cypress tests: <deprecated> use storybook instead.
-│  │        └── readme.md # Generated Readme with the components api
+│  │        └── readme.md # generated Readme with the components api
 │  │
 │  ├── constants # global constants.
 │  ├── helpers # global helper functions.

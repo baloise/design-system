@@ -49,7 +49,7 @@
     "dev:build": "STORYBOOK_MODE=dev stencil build --config stencil.dev.config.ts",
     "dev:watch": "STORYBOOK_MODE=dev stencil build --config stencil.dev.config.ts --watch",
     "dev:docs": "STORYBOOK_MODE=dev start-storybook -p 6006",
-    "dev:debug": "STORYBOOK_MODE=dev stencil build --config stencil.dev.config.ts --dev",
+    "dev:debug": "npm run dev:build && STORYBOOK_MODE=dev stencil build --config stencil.dev.config.ts --dev --watch",
     "serve": "npm run build:contributors && npm run serve:build && concurrently --names \"STENCIL,STORYBOOK\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm:serve:watch\" \"npm:serve:docs\"",
     "serve:build": "STORYBOOK_MODE=serve stencil build --config stencil.dev.config.ts",
     "serve:watch": "STORYBOOK_MODE=serve stencil build --config stencil.dev.config.ts --watch",
