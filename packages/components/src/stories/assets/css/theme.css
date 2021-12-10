@@ -5,7 +5,6 @@
   left: 0 !important;
   width: 100vw !important;
   height: 100vh !important;
-  padding: 3rem !important;
 }
 
 .welcome-container h1,
@@ -13,8 +12,6 @@
   color: white !important;
   font-size: 3em !important;
   line-height: 1.2 !important;
-  margin: 0 !important;
-  padding: 0 !important;
   border: none !important;
 }
 
@@ -24,7 +21,6 @@
 
 .welcome-container p {
   color: #95adda !important;
-  margin-top: 32px !important;
   font-size: 1.2em !important;
 }
 

@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/Vue/Usage of Filters"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Vue Usage of Filters/Pipe
+
+In Vue 3 just import the filter function and use it in computed functions or return it to the template.
+Vue 3 has removed filters [Link](https://v3.vuejs.org/guide/migration/filters.html).
+
+More documentation is [here](https://github.com/baloise/web-app-utils/blob/master/packages/pipes/README.md)
+
+First we need to install the pipes package.
+
+```bash
+npm install @baloise/web-app-pipes-vue
+```
+
+Lets add the PipePlugin to our vue app.
+
+```typescript
+import Vue from 'vue'
+import { BaloisePipes } from '@baloise/web-app-pipes-vue'
+
+Vue.use(BaloisePipes)
+```
+
+After that it can be used in the components template.
+
+```html
+<template>
+  <p>{{ formatedClaimNumber }}</p>
+</template>
+
+<script lang="ts">
+  import { computed, defineComponent, ref } from 'vue'
+  import { balClaimNumber } from '@baloise/web-app-pipes-vue'
+
+  export default defineComponent({
+    setup() {
+      const claimNumber = ref('73001217169')
+
+      const formatedClaimNumber = computed(() => balClaimNumber(claimNumber.value))
+
+      return {
+        formatedClaimNumber,
+      }
+    },
+  })
+</script>
+```

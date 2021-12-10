@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs'
+import { Meta, Description } from '@storybook/addon-docs'
 
 <Meta
   title="Getting-Started/HTML5/Installation"
@@ -29,18 +29,59 @@ Now lets install the Baloise Design System.
 npm install @baloise/design-system-components --save
 ```
 
-Add the following 2 references to your `<head></head>`
+After that we create a `index.html` file and add the following 2 references to your `<head></head>`.
+
+Add the `bal-app` to your root element. Within this component we are able to use the defined css classes.
 
 ```html
-<link rel="stylesheet" href="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.css" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baloise Design System</title>
+    <link rel="stylesheet" href="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.css" />
 
-<script type="module" src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"></script>
-<script nomodule src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.js"></script>
+    <script type="module" src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"></script>
+    <script nomodule src="node_modules/@baloise/design-system-components/dist/design-system-components/design-system-components.js"></script>
+  </head>
+  <body>
+    <bal-app>
+      <main class="container mt-4">
+        <bal-heading>Hello World</bal-heading>
+        <bal-button>Button</bal-button>
+      </main>
+    </bal-app>
+  </body>
+</html>
 ```
+
+> **HTTP-Server**
+> To run the HTML5 application you need a proper HTTP-Server. However, if there is none we recommand to install Open
+>
+> ```bash
+> npm add -D http-server
+> ```
+>
+> After that add define the start script with the http-server package.
+>
+> ```json
+>   "script": {
+>      "start": "http-server"
+>   }
+> ```
+>
+> Now you can run your server with `npm start` and the server is available under http://127.0.0.1:8080/.
+
+import InstallFonts from '../styles/styles-fonts.md'
+
+<Description markdown={InstallFonts} />
 
 ## CDN
 
-An other way to easily use the library is via CDN. However we do not recommand this for production usage.
+An other way to easily use the library is via CDN. However, we do not recommand this for production usage,
+because it is not version controled and could easily be cached.
 
 Add the following 4 references to your `<head></head>`
 
@@ -49,34 +90,4 @@ Add the following 4 references to your `<head></head>`
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.esm.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/npm/@baloise/design-system-components/dist/design-system-components/design-system-components.js"></script>
-```
-
-## Install Typography
-
-To apply the Baloise Design System typography follow [the instruction on the page typography documentation](/design/typography.html#install-web-font).
-
-## Install Theming / Styles
-
-To apply the Baloise Design System theming follow [the instruction on the page styling documentation](/components/getting-started/theming.html).
-
-## HTML Structure
-
-Add the `bal-app` to your root element. Within this component we are able to use the defined css classes.
-
-```html
-...
-<body>
-  <bal-app has-sticky-footer>
-    <header>
-      <!-- Header content -->
-    </header>
-    <main class="container">
-      <!-- Your application content -->
-    </main>
-    <bal-footer>
-      <!-- Footer content -->
-    </bal-footer>
-  </bal-app>
-</body>
-...
 ```

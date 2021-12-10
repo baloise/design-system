@@ -1,4 +1,4 @@
-## Install Fonts
+<br/>## Install Fonts
 
 The font package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
 
@@ -18,8 +18,16 @@ $font-path: 'assets/fonts';
 @import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
 ```
 
-> **TIP**
-> For angular apps the default path would be `src/assets/` fonts instead of `public/assets/fonts`
+> **Angular**
+> For Angular apps the default path would be `src/assets/fonts` instead of `public/assets/fonts`.
+> Moreover, change the the `$font-path` sass variable to `"~assets/fonts"` to load the fonts correct.
+
+<br/>
+
+> **CSS**
+> If you use the styles with css than just put the fonts into a public/static folder with the path `assets/fonts`.
+
+<br/>
 
 Then we add the defined script copy:fonts in our postinstall script. Every time we install dependencies the copy:fonts script gets executed at the end.
 

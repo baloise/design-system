@@ -1,4 +1,10 @@
 import { Meta } from '@storybook/addon-docs'
+import AngularLogo from '../../assets/images/angular.svg'
+import EslintLogo from '../../assets/images/eslint.svg'
+import CodeSandboxLogo from '../../assets/images/code-sandbox.png'
+import GithubLogo from '../../assets/images/github.png'
+import IconInfo from '../../../../../icons/svg/icon-info.svg'
+import IconAlert from '../../../../../icons/svg/icon-alert-circle.svg'
 
 <Meta
   title="Getting-Started/Angular/Overview"
@@ -9,25 +15,86 @@ import { Meta } from '@storybook/addon-docs'
   }}
 />
 
-# Angular
+<bal-app id="#angular">
+  <div className="columns py-4">
+    <div className="column is-one-quarter is-flex is-justify-content-center">
+      <img style={{ width: '128px' }} src={AngularLogo} alt="angular" />
+    </div>
+    <div className="column is-flex is-justify-content-center is-flex-direction-column">
+      <h4 className="title is-size-4 mb-6">@baloise/design-system-components-angular</h4>
+      <h5 className="subtitle is-size-5">combines the core Baloise Design System experience with the tooling and APIs that are tailored to Angular Developers.</h5>
+    </div>
+  </div>
+</bal-app>
 
-<img
-  style={{ width: '128px' }}
-  src="https://angular.io/assets/images/logos/angular/angular.svg"
-  data-origin="https://angular.io/assets/images/logos/angular/angular.svg"
-  alt="angular"
-/>
-
-`@baloise/design-system-components-angular` combines the core Baloise Design System experience with the tooling and APIs that are tailored to Angular Developers.
-
-### Table of Content
-
-- [Installation](?path=/docs/getting-started-angular-installation--page)
-- [Usage](?path=/docs/getting-started-angular-usage--page)
-  - [Component](?path=/docs/getting-started-angular-usage--page#component)
-  - [Toast & Snackbar](?path=/docs/getting-started-angular-usage--page#toast-snackbar)
-  - [Pipes](?path=/docs/getting-started-angular-usage--page#pipes)
-  - [Form & Validation](?path=/docs/getting-started-angular-usage--page#form-validation)
-- [ESLint](?path=/docs/getting-started-angular-eslint--page)
-- [IE 11 Support](?path=/docs/getting-started-angular-ie-11-support--page)
-- [Troubleshooting](?path=/docs/getting-started-angular-troubleshooting--page)
+<div className="link-list">
+  <a className="link-item" href="?path=/docs/getting-started-angular-installation--page">
+    <img src={IconInfo} alt="installation" />
+    <span>
+      <strong>Installation</strong>
+      Guide how to use the Baloise Design System with a angular application.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-angular-usage-of-components--page">
+    <img src={AngularLogo} alt="installation" />
+    <span>
+      <strong>Component Usage</strong>
+      Explains how to use the Baloise Design System component in your angular application
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-angular-usage-of-toast-snackbars--page">
+    <img src={AngularLogo} alt="installation" />
+    <span>
+      <strong>Toast & Snackbar Usage</strong>
+      Short guide about how to create toasts and snackbars
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-angular-usage-of-modal--page">
+    <img src={AngularLogo} alt="installation" />
+    <span>
+      <strong>Modal Usage</strong>
+      Show how to create a modal.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-angular-usage-of-pipes--page">
+    <img src={AngularLogo} alt="installation" />
+    <span>
+      <strong>Pipes</strong>
+      Guide to install and use the Baloise custom pipes.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-angular-usage-of-form-validation--page">
+    <img src={AngularLogo} alt="installation" />
+    <span>
+      <strong>Form & Validation Usage</strong>
+      Documentation to the reactive forms of angular combined with the Baloise Design System
+    </span>
+  </a>
+  <a className="link-item" href="https://github.com/baloise/design-system-examples/tree/main/angular" target="_blank">
+    <img src={GithubLogo} alt="github" />
+    <span>
+      <strong>Example Repo</strong>A basic angular application with sass and the installed Baloise Design System.
+    </span>
+  </a>
+  <a className="link-item" href="https://codesandbox.io/s/baloise-design-system-angular-uezry" target="_blank">
+    <img src={CodeSandboxLogo} alt="code-sandbox" />
+    <span>
+      <strong>CodeSandbox: Template</strong>
+      Online code editor with the Baloise Design System to play around.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-angular-eslint--page">
+    <img src={EslintLogo} alt="eslint" />
+    <span>
+      <strong>ESLint</strong>
+      Guide how to install and config eslint for your angular project.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-angular-troubleshooting--page">
+    <img src={IconAlert} alt="Troubleshooting" />
+    <span>
+      <strong>Troubleshooting</strong>
+      Common pitfalls with the angular setup.
+    </span>
+  </a>
+</div>

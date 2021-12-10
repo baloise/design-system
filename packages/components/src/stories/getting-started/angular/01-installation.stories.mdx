@@ -19,18 +19,28 @@ Before we can add the Baloise Design System we need to setup the basics.
 
 ### Setup Angular Project
 
-Create an Angular project with the [Angular CLI](https://cli.angular.io/) and set Sass and ESLint as defaults.
+Install the [Angular CLI](https://cli.angular.io/) globally.
 
 ```bash
 npm install -g @angular/cli
+```
+
+Create an Angular project with the [Angular CLI](https://cli.angular.io/) and set Sass and ESLint as defaults.
+
+```bash
 ng new bal-app --style=scss
+```
+
+Navigate into your app root folder.
+
+```bash
 cd bal-app
 ```
 
-Run the app
+Run the app with the npm script.
 
 ```bash
-ng serve
+npm start
 ```
 
 > **Recommandations**
@@ -91,26 +101,6 @@ import InstallFonts from '../styles/styles-fonts.md'
 
 <Description markdown={InstallFonts} />
 
-## HTML Structure
-
-Add the `bal-app` to your `app.component.ts` root element. Within this component we are able to use the defined css classes.
-
-```html
-...
-<bal-app has-sticky-footer>
-  <header>
-    <!-- Header content -->
-  </header>
-  <main class="container">
-    <!-- Your application content -->
-  </main>
-  <bal-footer>
-    <!-- Footer content -->
-  </bal-footer>
-</bal-app>
-...
-```
-
 ## Import the ngModule
 
 Import the `BaloiseDesignSystemModule` and add it to your angular module. To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
@@ -135,8 +125,35 @@ import { AppComponent } from './app.component'
 export class AppModule {}
 ```
 
+## HTML Structure
+
+Add the `bal-app` to your `app.component.ts` root element. Within this component we are able to use the defined css classes.
+
+```html
+...
+<bal-app has-sticky-footer>
+  <header>
+    <!-- Header content -->
+  </header>
+  <main class="container">
+    <!-- Your application content -->
+    <bal-heading>Hello World!</bal-heading>
+    <bal-button>Button</bal-button>
+  </main>
+  <bal-footer>
+    <!-- Footer content -->
+  </bal-footer>
+</bal-app>
+...
+```
+
+## Start the app
+
 Now everything is ready to be used. Add some Baloise components and start the app with:
 
 ```bash
 npm start
 ```
+
+> **TIP**
+> Your app gets served under [http://localhost:4200](http://localhost:4200).

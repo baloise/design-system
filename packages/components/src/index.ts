@@ -22,7 +22,7 @@ export * from './types/color.types'
  * Utils
  */
 export * from './components/form/bal-select/utils/bal-option.util'
-export { shallowReady, deepReady } from './helpers/helpers'
+export { shallowReady, deepReady, wait, getAppRoot, componentOnReady, isDescendant } from './helpers/helpers'
 
 /**
  * Controllers

@@ -11,9 +11,4 @@ export { AngularDelegate } from './overlays/angular-delegate'
 export { BaloiseDesignSystemModule } from './module'
 
 // HELPERS
-export const parseCustomEvent = <T>(event: CustomEvent<T> | Event): T => {
-  if ('detail' in event) {
-    return event.detail
-  }
-  throw Error('Event was not a Custom Event or did not had a detail prop!')
-}
+export { element, parseCustomEvent } from './helpers'

@@ -13,6 +13,10 @@
   pointer-events: auto;
   font-kerning: none;
 
+  .has-padding-left {
+    padding-left: 32px;
+  }
+
   &.bal-radio {
     min-height: 24px;
     min-width: 24px;

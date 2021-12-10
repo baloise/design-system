@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/Angular/Usage of Toast & Snackbars"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Usage of Toast and Snackbars
+
+The Baloise Design System has 2 services `BalToastService` and `BalSnackbarService` to create new notices.
+Just import the service into the component.
+
+**Components:**
+
+- [Snackbar](?path=/docs/components-snackbar--basic)
+- [Toast](?path=/docs/components-toast--basic)
+
+```typescript
+// app.component.ts
+import { Component } from '@angular/core'
+import { BalToastService } from '@baloise/design-system-components-angular'
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+})
+export class AppComponent {
+  myToast?: HTMLBalToastElement
+
+  constructor(public toast: BalToastService) {}
+
+  onButtonClick() {
+    this.myToast = this.toast.create({ message: 'Welcome' })
+  }
+
+  async onSecondBttonClick() {
+    await this.myToast.close()
+  }
+}
+```
