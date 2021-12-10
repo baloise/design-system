@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/baloise/design-system/compare/v4.0.3...v4.1.0) (2021-12-10)
+
+
+### Bug Fixes
+
+* **radio:** adjust space between radio and label ([72f3a88](https://github.com/baloise/design-system/commit/72f3a880ee89cb2884d40c97cefa893544243f38))
+* **vue:** element fn parameter will be unrefed ([e2b1302](https://github.com/baloise/design-system/commit/e2b13020a75f3af8a0cd9accd84900d9c444f2d0))
+
+
+### Features
+
+* **angular:** add element helper function ([6a7e57a](https://github.com/baloise/design-system/commit/6a7e57a0d6bf9f8d6e9f58cfe11b66abb4ef31e1))
+* **component:** return helper functions like wait, getAppRoot, componentOnReady ([7797fb3](https://github.com/baloise/design-system/commit/7797fb394ddb802dde43dc95aec49cd129d53475))
+* return helper isDescendant ([0c1b8ca](https://github.com/baloise/design-system/commit/0c1b8ca51cd1d17d50b1ae031f1a684bd902a2f0))
+
+
+
+
+
 ## [4.0.3](https://github.com/baloise/design-system/compare/v4.0.2...v4.0.3) (2021-12-09)
 
 ### Bug Fixes

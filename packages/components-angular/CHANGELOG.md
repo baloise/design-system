@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/baloise/design-system/compare/v4.0.3...v4.1.0) (2021-12-10)
+
+
+### Features
+
+* **angular:** add element helper function ([6a7e57a](https://github.com/baloise/design-system/commit/6a7e57a0d6bf9f8d6e9f58cfe11b66abb4ef31e1))
+
+
+
+
+
 ## [4.0.3](https://github.com/baloise/design-system/compare/v4.0.2...v4.0.3) (2021-12-09)
 
 **Note:** Version bump only for package @baloise/design-system-components-angular
