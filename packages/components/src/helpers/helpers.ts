@@ -82,7 +82,7 @@ const raf = (h: any) => {
   return setTimeout(h)
 }
 
-export const shallowReady = (el: Element | undefined): Promise<any> => {
+export const shallowReady = (el: any | undefined): Promise<any> => {
   if (el) {
     return new Promise(resolve => componentOnReady(el, resolve))
   }
