@@ -163,7 +163,7 @@ export class Radio implements ComponentInterface {
         >
           <bal-text
             class={{
-              'pl-6': !this.isEmpty && this.interface !== 'select-button',
+              'has-padding-left': !this.isEmpty && this.interface !== 'select-button',
             }}
           >
             <slot></slot>
