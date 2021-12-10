@@ -106,3 +106,36 @@ export class AppComponent {
   }
 }
 ```
+
+## Methods
+
+To call the components method we need the access to the web component, therefore we use [@ViewChild](https://angular.io/api/core/ViewChild).
+
+```xml
+// app.component.html
+<bal-input #inputRef></bal-input
+```
+
+```typescript
+// app.component.ts
+import { Component, ViewChild } from '@angular/core'
+import { element } from '@baloise/design-system-components-angular'
+import { Components, wait, deepReady } from '@baloise/design-system-components'
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+})
+export class AppComponent implements AfterViewInit {
+  @ViewChild('inputRef') inputRef!: Components.BalInput
+
+  async ngAfterViewInit(): Promise<void> {
+    if (inputRef) {
+      const inputNativElement = element<Components.BalInput>(this.inputRef)
+      await wait(100) // wait for the DOM only necessary for setFocus
+      await deepReady(inputNativElement) // wait that the web-component is ready
+      await inputNativElement.setFocus()
+    }
+  }
+}
+```

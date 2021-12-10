@@ -1,5 +1,10 @@
 import { Meta } from '@storybook/addon-docs'
 
+import HtmlLogo from '../../assets/images/html.png'
+import CodeSandboxLogo from '../../assets/images/code-sandbox.png'
+import GithubLogo from '../../assets/images/github.png'
+import IconInfo from '../../../../../icons/svg/icon-info.svg'
+
 <Meta
   title="Getting-Started/HTML5/Overview"
   parameters={{
@@ -9,16 +14,22 @@ import { Meta } from '@storybook/addon-docs'
   }}
 />
 
-# HTML5 / Server-Side-Rendering
+<bal-app id="#html5">
+  <div className="columns py-4">
+    <div className="column is-one-quarter is-flex is-justify-content-center">
+      <img style={{ width: '128px' }} src={HtmlLogo} alt="HTML5" />
+    </div>
+    <div className="column is-flex is-justify-content-center is-flex-direction-column">
+      <h4 className="title is-size-4 mb-6">HTML5 / Server-Side-Rendering</h4>
+      <h5 className="subtitle is-size-5 mb-6">
+        Getting Started for an integration of the Baloise Design System
+        <br /> with HTML, CSS and JavaScript.
+      </h5>
+    </div>
+  </div>
+</bal-app>
 
-<img
-  style={{ width: '128px' }}
-  src="https://cdn.iconscout.com/icon/free/png-512/html5-10-569380.png"
-  data-origin="https://cdn.iconscout.com/icon/free/png-512/html5-10-569380.png"
-  alt="HTML5"
-/>
-
-Getting Started for an integration of the Baloise Design System with HTML, CSS and JavaScript. Can be used with all the JS-Frameworks, Server-Sider-Rendering or any other Web-Technology like:
+Can be used with all the JS-Frameworks, Server-Sider-Rendering or any other Web-Technology like:
 
 - Angular, React, Vue, Svelte, Jquery, ...
 - .NET, Java, Node, PHP, ...
@@ -27,13 +38,6 @@ Getting Started for an integration of the Baloise Design System with HTML, CSS a
   </a>
 
 This section explains how the Baloise Design System can be included into your HTML5 Application.
-
-### Table of Content
-
-import StorybookLogo from '../../assets/images/storybook/logo.svg'
-import CodeSandboxLogo from '../../assets/images/code-sandbox.png'
-import GithubLogo from '../../assets/images/github.png'
-import IconInfo from '../../../../../icons/svg/icon-info.svg'
 
 <div className="link-list">
   <a className="link-item" href="?path=/docs/getting-started-html5-installation--page">

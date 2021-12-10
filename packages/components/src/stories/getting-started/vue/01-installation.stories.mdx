@@ -70,7 +70,8 @@ Add the `BalApp` to your root element. Within this component we are able to use 
     </header>
     <main class="container">
       <!-- Page content -->
-      <router-view />
+      <BalHeading>Hello World!</BalHeading>
+      <BalButton>Button</BalButton>
     </main>
     <BalFooter>
       <div class="container">
@@ -83,14 +84,16 @@ Add the `BalApp` to your root element. Within this component we are able to use 
 
 <script lang="ts">
   import { defineComponent } from 'vue'
-  import { BalApp, BalFooter } from '@baloise/design-system-components-vue'
+  import { BalApp, BalFooter, BalHeading, BalButton } from '@baloise/design-system-components-vue'
 
   export default defineComponent({
     name: 'App',
-    components: { BalApp, BalFooter },
+    components: { BalApp, BalFooter, BalHeading, BalButton },
   })
 </script>
 ```
+
+## Start the app
 
 Now everything is ready to be used. Add some Baloise components and start the app with:
 
@@ -99,3 +102,6 @@ npm run serve
 # or for vite
 npm run dev
 ```
+
+> **TIP**
+> Your app gets served under [http://localhost:3000](http://localhost:3000).

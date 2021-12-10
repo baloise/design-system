@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/Vue/Usage of Toast & Snackbar"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Vue Usage of Toast & Snackbar
+
+The Baloise Design System has 2 controllers `balSnackbarController` and `balToastController` to create new notices.
+Just import the controllers into the component.
+
+**Components:**
+
+- [Snackbar](?path=/docs/components-snackbar--basic)
+- [Toast](?path=/docs/components-toast--basic)
+
+```html
+<template>
+  <div id="app">
+    <BalCheckbox v-model="checkbox"></BalCheckbox>
+    <BalButton @click="createToast()">Create Toast</BalButton>
+  </div>
+</template>
+
+<script lang="ts">
+  import Vue from 'vue'
+  import { BalCheckbox, BalButton } from '@baloise/design-system-components-vue'
+  import { balToastController } from '@baloise/design-system-components'
+
+  export default Vue.extend({
+    components: { BalCheckbox, BalButton },
+    setup() {
+      let myToast?: HTMLBalToastElement>
+      const checkbox = ref(true)
+
+      function createToast() {
+        myToast = balToastController.create({
+          message: 'Message',
+        })
+      }
+
+      async function closeToast() {
+        await myToast.close()
+      }
+
+      return {
+        checkbox,
+        createToast,
+        closeToast,
+      }
+    },
+  })
+</script>
+```

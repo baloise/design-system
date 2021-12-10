@@ -1,4 +1,10 @@
 import { Meta } from '@storybook/addon-docs'
+import AngularLogo from '../../assets/images/angular.svg'
+import EslintLogo from '../../assets/images/eslint.svg'
+import CodeSandboxLogo from '../../assets/images/code-sandbox.png'
+import GithubLogo from '../../assets/images/github.png'
+import IconInfo from '../../../../../icons/svg/icon-info.svg'
+import IconAlert from '../../../../../icons/svg/icon-alert-circle.svg'
 
 <Meta
   title="Getting-Started/Angular/Overview"
@@ -9,25 +15,17 @@ import { Meta } from '@storybook/addon-docs'
   }}
 />
 
-# Angular
-
-<img
-  style={{ width: '128px' }}
-  src="https://angular.io/assets/images/logos/angular/angular.svg"
-  data-origin="https://angular.io/assets/images/logos/angular/angular.svg"
-  alt="angular"
-/>
-
-`@baloise/design-system-components-angular` combines the core Baloise Design System experience with the tooling and APIs that are tailored to Angular Developers.
-
-### Table of Content
-
-import AngularLogo from '../../assets/images/angular.svg'
-import EslintLogo from '../../assets/images/eslint.svg'
-import CodeSandboxLogo from '../../assets/images/code-sandbox.png'
-import GithubLogo from '../../assets/images/github.png'
-import IconInfo from '../../../../../icons/svg/icon-info.svg'
-import IconAlert from '../../../../../icons/svg/icon-alert-circle.svg'
+<bal-app id="#angular">
+  <div className="columns py-4">
+    <div className="column is-one-quarter is-flex is-justify-content-center">
+      <img style={{ width: '128px' }} src={AngularLogo} alt="angular" />
+    </div>
+    <div className="column is-flex is-justify-content-center is-flex-direction-column">
+      <h4 className="title is-size-4 mb-6">@baloise/design-system-components-angular</h4>
+      <h5 className="subtitle is-size-5">combines the core Baloise Design System experience with the tooling and APIs that are tailored to Angular Developers.</h5>
+    </div>
+  </div>
+</bal-app>
 
 <div className="link-list">
   <a className="link-item" href="?path=/docs/getting-started-angular-installation--page">
@@ -44,7 +42,7 @@ import IconAlert from '../../../../../icons/svg/icon-alert-circle.svg'
       Explains how to use the Baloise Design System component in your angular application
     </span>
   </a>
-  <a className="link-item" href="?path=/docs/getting-started-angular-usage-of-toast--page">
+  <a className="link-item" href="?path=/docs/getting-started-angular-usage-of-toast-snackbars--page">
     <img src={AngularLogo} alt="installation" />
     <span>
       <strong>Toast & Snackbar Usage</strong>

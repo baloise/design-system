@@ -1,0 +1,129 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/Vue/Usage of Components"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Vue Usage of Components
+
+All the Baloise Design System components are registered globally, so just use them in your template like the `BalButton`.
+
+After adding the `BaloiseDesignSystem` plugin the components are registerd in the framework and can be used directly in your custom vue components.
+
+To get more typesafty you need to register the components from Baloise Design System in your custom vue components.
+
+```typescript
+import { defineComponent } from 'vue'
+import { BalButton } from '@baloise/design-system-components-vue'
+
+export default defineComponent({
+  components: { BalButton },
+  setup() { ... },
+})
+```
+
+## Properties
+
+To define props we use the [Composition API](https://v3.vuejs.org/api/composition-api.html#setup).
+First define a `ref` variable and set it directly on the Baloise component.
+
+```html
+<template>
+  <BalButton :disabled="disabled">Button</BalButton>
+</template>
+
+<script lang="ts">
+  import { defineComponent, ref } from 'vue'
+  import { BalButton } from '@baloise/design-system-components-vue'
+
+  export default defineComponent({
+    components: { BalButton },
+    setup() {
+      const disabled = ref(false)
+
+      return { disabled }
+    },
+  })
+</script>
+```
+
+## Events
+
+To define event handler we use the [Composition API](https://v3.vuejs.org/api/composition-api.html#setup).
+For the event handler we create a simple function and return it to access it in the template.
+
+```html
+<template>
+  <BalTabs @balTabChange="onTabChange($event)">
+    <BalTabItem label="Tab A" value="tab-a" @balNavigate="onNavigate('tab-a')"></BalTabItem>
+    <BalTabItem label="Tab B" value="tab-b" @balNavigate="onNavigate('tab-b')"></BalTabItem>
+  </BalTabs>
+</template>
+
+<script lang="ts">
+  import { defineComponent } from 'vue'
+  import { BalTabOption } from '@baloise/design-system-components'
+  import { BalTabs, BalTabItem } from '@baloise/design-system-components-vue'
+
+  export default defineComponent({
+    components: { BalTabs, BalTabItem },
+    setup() {
+      const onNavigate = (path: string) => {
+        console.log('onNavigate', path)
+      }
+
+      const onTabChange = (tab: BalTabOption) => {
+        console.log('onTabChange', BalTabOption)
+      }
+
+      return {
+        onNavigate,
+        onTabChange,
+      }
+    },
+  })
+</script>
+```
+
+## Methods
+
+To get access to a native web-component we use [Template Refs](https://v3.vuejs.org/guide/composition-api-template-refs.html).
+
+1. Define the ref variable `inputRef` and return it.
+2. Add the ref to the component in the template section.
+
+```html
+<template>
+  <BalInput ref="inputRef"></BalInput>
+</template>
+
+<script lang="ts">
+  import { defineComponent, ref, onMounted } from 'vue'
+  import { BalInput, element } from '@baloise/design-system-components-vue'
+  import { Components, deepReady, wait } from '@baloise/design-system-components'
+  import HelloWorld, { onConfirm } from '../components/HelloWorld.vue'
+
+  export default defineComponent({
+    components: { BalInput },
+    setup() {
+      const inputRef = ref<Components.BalInput | null>(null)
+
+      onMounted(async () => {
+        if (inputRef.value) {
+          const inputNativElement = element<Components.BalInput>(inputRef)
+          await wait(100) // wait for the DOM only necessary for setFocus
+          await deepReady(inputNativElement) // wait that the web-component is ready
+          await inputNativElement.setFocus()
+        }
+      })
+
+      return { inputRef }
+    },
+  })
+</script>
+```

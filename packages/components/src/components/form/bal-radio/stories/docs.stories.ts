@@ -1,6 +1,6 @@
 import docs from './readme.docs.mdx'
 import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
-import { BalRadio, BalRadioGroup, BalField, BalFieldControl, BalFieldLabel } from '../../../../../.storybook/vue/components'
+import { BalRadio, BalRadioGroup, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage } from '../../../../../.storybook/vue/components'
 import { ref } from 'vue'
 
 const balFieldArgTypes = stencilArgType(BalField)
@@ -31,7 +31,7 @@ export default component.story
 const excludedControls = ['name', 'expanded']
 
 export const RadioGroup = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel },
+  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
   <bal-field :expanded="args.expanded" :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
