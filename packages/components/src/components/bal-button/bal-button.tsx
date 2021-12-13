@@ -1,5 +1,5 @@
 import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface, Listen, Element } from '@stencil/core'
-import { BalButtonColor } from './bal.button.type'
+import { BalButtonColor } from '../../types'
 
 @Component({
   tag: 'bal-button',
@@ -153,6 +153,9 @@ export class Button implements ComponentInterface {
   }
 
   private get isIconInverted() {
+    if (this.outlined) {
+      return false
+    }
     switch (this.color) {
       case 'primary':
       case 'success':
