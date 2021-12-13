@@ -625,6 +625,17 @@ export const BalDatepicker = /*@__PURE__*/ defineComponent({
   })
 })
 
+export const BalDocApp = /*@__PURE__*/ defineComponent({
+  name: 'bal-doc-app',
+  props: {
+
+  },
+  emits: {
+
+  },
+  setup: defineSetup('bal-doc-app', [], undefined)
+})
+
 export const BalDocColor = /*@__PURE__*/ defineComponent({
   name: 'bal-doc-color',
   props: {
@@ -1016,11 +1027,6 @@ export const BalHeading = /*@__PURE__*/ defineComponent({
     subtitle: {
       type: Boolean,
       default: false,
-      required: false,
-    },
-    spaced: {
-      type: Boolean,
-      default: true,
       required: false,
     },
     space: {
@@ -1575,6 +1581,21 @@ export const BalNavbarMenuStart = /*@__PURE__*/ defineComponent({
 
   },
   setup: defineSetup('bal-navbar-menu-start', [], undefined)
+})
+
+export const BalNotices = /*@__PURE__*/ defineComponent({
+  name: 'bal-notices',
+  props: {
+    interface: {
+      type: String,
+      default: 'toast',
+      required: false,
+    },
+  },
+  emits: {
+
+  },
+  setup: defineSetup('bal-notices', [], undefined)
 })
 
 export const BalNotification = /*@__PURE__*/ defineComponent({

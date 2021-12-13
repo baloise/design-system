@@ -382,6 +382,22 @@ export class BalDatepicker {
 }
 
 
+export declare interface BalDocApp extends Components.BalDocApp {}
+
+@Component({
+  selector: 'bal-doc-app',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>'
+})
+export class BalDocApp {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
 export declare interface BalDocColor extends Components.BalDocColor {}
 @ProxyCmp({
   inputs: ['background', 'color', 'description', 'inverted', 'scssVars', 'subject']
@@ -659,13 +675,13 @@ export class BalFooter {
 
 export declare interface BalHeading extends Components.BalHeading {}
 @ProxyCmp({
-  inputs: ['color', 'inverted', 'level', 'space', 'spaced', 'subtitle', 'visualLevel']
+  inputs: ['color', 'inverted', 'level', 'space', 'subtitle', 'visualLevel']
 })
 @Component({
   selector: 'bal-heading',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['color', 'inverted', 'level', 'space', 'spaced', 'subtitle', 'visualLevel']
+  inputs: ['color', 'inverted', 'level', 'space', 'subtitle', 'visualLevel']
 })
 export class BalHeading {
   protected el: HTMLElement;
@@ -1066,6 +1082,25 @@ export declare interface BalNavbarMenuStart extends Components.BalNavbarMenuStar
   template: '<ng-content></ng-content>'
 })
 export class BalNavbarMenuStart {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface BalNotices extends Components.BalNotices {}
+@ProxyCmp({
+  inputs: ['interface']
+})
+@Component({
+  selector: 'bal-notices',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  inputs: ['interface']
+})
+export class BalNotices {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();

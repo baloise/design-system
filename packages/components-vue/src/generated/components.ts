@@ -20,6 +20,7 @@ BalDataItem,
 BalDataLabel,
 BalDataValue,
 BalDatepicker,
+BalDocApp,
 BalDocColor,
 BalDocDownload,
 BalDocIcons,
@@ -56,6 +57,7 @@ BalNavbarBrand,
 BalNavbarMenu,
 BalNavbarMenuEnd,
 BalNavbarMenuStart,
+BalNotices,
 BalNotification,
 BalPagination,
 BalRadio,
@@ -95,6 +97,7 @@ export const applyComponents = (app: App) => {
   app.component('BalDataLabel', BalDataLabel)
   app.component('BalDataValue', BalDataValue)
   app.component('BalDatepicker', BalDatepicker)
+  app.component('BalDocApp', BalDocApp)
   app.component('BalDocColor', BalDocColor)
   app.component('BalDocDownload', BalDocDownload)
   app.component('BalDocIcons', BalDocIcons)
@@ -131,6 +134,7 @@ export const applyComponents = (app: App) => {
   app.component('BalNavbarMenu', BalNavbarMenu)
   app.component('BalNavbarMenuEnd', BalNavbarMenuEnd)
   app.component('BalNavbarMenuStart', BalNavbarMenuStart)
+  app.component('BalNotices', BalNotices)
   app.component('BalNotification', BalNotification)
   app.component('BalPagination', BalPagination)
   app.component('BalRadio', BalRadio)
