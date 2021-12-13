@@ -6,13 +6,13 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
-import { BalButtonColor } from "./components/bal-button/bal.button.type";
+import { BalButtonColor } from "./types";
 import { SpacingCardType } from "./types/padding.types";
 import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
 import { AutocompleteTypes, InputTypes } from "./types/interfaces";
-import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail } from "./components/bal-modal/bal-modal.type";
+import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -415,6 +415,8 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    interface BalDocApp {
+    }
     interface BalDocColor {
         "background": boolean;
         "color": string;
@@ -618,10 +620,6 @@ export namespace Components {
           * Defines at which position the heading has spacing.
          */
         "space": 'all' | 'none' | 'top' | 'bottom';
-        /**
-          * @deprecated If 'false' the margin of the heading gets dropped.
-         */
-        "spaced": boolean;
         /**
           * If `true` the heading gets displayed slimmer.
          */
@@ -941,6 +939,9 @@ export namespace Components {
     interface BalNavbarMenuEnd {
     }
     interface BalNavbarMenuStart {
+    }
+    interface BalNotices {
+        "interface": 'toast' | 'snackbar';
     }
     interface BalNotification {
         /**
@@ -1587,6 +1588,12 @@ declare global {
         prototype: HTMLBalDatepickerElement;
         new (): HTMLBalDatepickerElement;
     };
+    interface HTMLBalDocAppElement extends Components.BalDocApp, HTMLStencilElement {
+    }
+    var HTMLBalDocAppElement: {
+        prototype: HTMLBalDocAppElement;
+        new (): HTMLBalDocAppElement;
+    };
     interface HTMLBalDocColorElement extends Components.BalDocColor, HTMLStencilElement {
     }
     var HTMLBalDocColorElement: {
@@ -1803,6 +1810,12 @@ declare global {
         prototype: HTMLBalNavbarMenuStartElement;
         new (): HTMLBalNavbarMenuStartElement;
     };
+    interface HTMLBalNoticesElement extends Components.BalNotices, HTMLStencilElement {
+    }
+    var HTMLBalNoticesElement: {
+        prototype: HTMLBalNoticesElement;
+        new (): HTMLBalNoticesElement;
+    };
     interface HTMLBalNotificationElement extends Components.BalNotification, HTMLStencilElement {
     }
     var HTMLBalNotificationElement: {
@@ -1930,6 +1943,7 @@ declare global {
         "bal-data-label": HTMLBalDataLabelElement;
         "bal-data-value": HTMLBalDataValueElement;
         "bal-datepicker": HTMLBalDatepickerElement;
+        "bal-doc-app": HTMLBalDocAppElement;
         "bal-doc-color": HTMLBalDocColorElement;
         "bal-doc-download": HTMLBalDocDownloadElement;
         "bal-doc-icons": HTMLBalDocIconsElement;
@@ -1966,6 +1980,7 @@ declare global {
         "bal-navbar-menu": HTMLBalNavbarMenuElement;
         "bal-navbar-menu-end": HTMLBalNavbarMenuEndElement;
         "bal-navbar-menu-start": HTMLBalNavbarMenuStartElement;
+        "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-pagination": HTMLBalPaginationElement;
         "bal-radio": HTMLBalRadioElement;
@@ -2407,6 +2422,8 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    interface BalDocApp {
+    }
     interface BalDocColor {
         "background"?: boolean;
         "color"?: string;
@@ -2603,10 +2620,6 @@ declare namespace LocalJSX {
           * Defines at which position the heading has spacing.
          */
         "space"?: 'all' | 'none' | 'top' | 'bottom';
-        /**
-          * @deprecated If 'false' the margin of the heading gets dropped.
-         */
-        "spaced"?: boolean;
         /**
           * If `true` the heading gets displayed slimmer.
          */
@@ -2929,6 +2942,9 @@ declare namespace LocalJSX {
     interface BalNavbarMenuEnd {
     }
     interface BalNavbarMenuStart {
+    }
+    interface BalNotices {
+        "interface"?: 'toast' | 'snackbar';
     }
     interface BalNotification {
         /**
@@ -3526,6 +3542,7 @@ declare namespace LocalJSX {
         "bal-data-label": BalDataLabel;
         "bal-data-value": BalDataValue;
         "bal-datepicker": BalDatepicker;
+        "bal-doc-app": BalDocApp;
         "bal-doc-color": BalDocColor;
         "bal-doc-download": BalDocDownload;
         "bal-doc-icons": BalDocIcons;
@@ -3562,6 +3579,7 @@ declare namespace LocalJSX {
         "bal-navbar-menu": BalNavbarMenu;
         "bal-navbar-menu-end": BalNavbarMenuEnd;
         "bal-navbar-menu-start": BalNavbarMenuStart;
+        "bal-notices": BalNotices;
         "bal-notification": BalNotification;
         "bal-pagination": BalPagination;
         "bal-radio": BalRadio;
@@ -3604,6 +3622,7 @@ declare module "@stencil/core" {
             "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
             "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
+            "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
             "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
             "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
             "bal-doc-icons": LocalJSX.BalDocIcons & JSXBase.HTMLAttributes<HTMLBalDocIconsElement>;
@@ -3640,6 +3659,7 @@ declare module "@stencil/core" {
             "bal-navbar-menu": LocalJSX.BalNavbarMenu & JSXBase.HTMLAttributes<HTMLBalNavbarMenuElement>;
             "bal-navbar-menu-end": LocalJSX.BalNavbarMenuEnd & JSXBase.HTMLAttributes<HTMLBalNavbarMenuEndElement>;
             "bal-navbar-menu-start": LocalJSX.BalNavbarMenuStart & JSXBase.HTMLAttributes<HTMLBalNavbarMenuStartElement>;
+            "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;

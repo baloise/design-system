@@ -19,22 +19,22 @@ automatically optimize the svg and create its own web component.
 
 Here is how you can change the size:
 
-<Canvas className="bal-app" mdxSource={sizes}>
-  {html(sizes)}
+<Canvas mdxSource={sizes}>
+  <bal-doc-app>{html(sizes)}</bal-doc-app>
 </Canvas>
 
 ## Colors
 
-<Canvas className="bal-app" mdxSource={colors}>
-  {html(colors)}
+<Canvas mdxSource={colors}>
+  <bal-doc-app>{html(colors)}</bal-doc-app>
 </Canvas>
 
 ## Custom Color
 
 Here is how you can change the color:
 
-<Canvas className="bal-app" mdxSource={custom}>
-  {html(custom)}
+<Canvas mdxSource={custom}>
+  <bal-doc-app>{html(custom)}</bal-doc-app>
 </Canvas>
 
 ## Component Api

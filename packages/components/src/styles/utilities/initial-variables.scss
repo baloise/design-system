@@ -1,0 +1,76 @@
+@import 'variables/all';
+
+// Colors
+
+$black-bis: $grey-9 !default;
+$black-ter: $grey-9 !default;
+
+$grey-darkest: $grey-8 !default;
+$grey-darker: $grey-7 !default;
+$grey-dark: $grey-6 !default;
+$grey: $grey-5 !default;
+$grey-light: $grey-4 !default;
+$grey-lighter: $grey-3 !default;
+$grey-lightest: $grey-2 !default;
+
+$blue-darker: $blue-9 !default;
+$blue-dark: $blue-8 !default;
+$blue-light-text: $blue-4 !default;
+$blue-lighter-text: $blue-3 !default;
+$blue-line: $blue-lighter-text !default;
+$blue-light-line: $blue-2 !default;
+$blue-line-inverted: $blue-5 !default;
+$blue-light-hover: $blue-1 !default;
+$blue-light: $blue-0 !default;
+
+$white-ter: $grey-1 !default;
+$white-bis: $grey-0 !default;
+
+// Typography
+
+$family-sans-serif: MetaPro, Arial, sans-serif !default;
+$family-monospace: monospace !default;
+$render-mode: optimizeLegibility !default;
+
+$size-1: 48px !default;
+$size-2: 40px !default;
+$size-3: 32px !default;
+$size-4: 24px !default;
+$size-5: 16px !default;
+$size-6: 14px !default;
+$size-7: 12px !default;
+
+$weight-light: 400 !default;
+$weight-normal: 400 !default;
+$weight-medium: 700 !default;
+$weight-semibold: 700 !default;
+$weight-bold: 700 !default;
+
+// Spacing
+
+$block-spacing: 1.5rem !default;
+
+// Responsiveness
+
+$gap: 16px !default;
+$tablet: 769px !default;
+$desktop: 1024px !default;
+$widescreen: 1216px !default;
+$widescreen-enabled: true !default;
+$fullhd: 1408px !default;
+$fullhd-enabled: true !default;
+
+// Miscellaneous
+
+$easing: ease-out !default;
+$radius-none: 0 !default;
+$radius-small: 4px !default;
+$radius: 4px !default;
+$radius-large: 4px !default;
+$radius-rounded: 9999px !default;
+$speed: 86ms !default;
+
+// Flags
+
+$variable-columns: true !default;
+$rtl: false !default;

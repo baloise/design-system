@@ -10,7 +10,7 @@
   }
 
   &.is-disabled {
-    background: $info-0;
+    background: $blue-0;
   }
 
   .bal-select__slot {
@@ -21,7 +21,7 @@
     min-width: 0;
     width: 100%;
     padding-bottom: 1px;
-    border-bottom: 1px solid $info-2;
+    border-bottom: 1px solid $blue-2;
     margin-top: -1px;
 
     &:focus-within,

@@ -1,3 +1,6 @@
+@import 'node_modules/bulma/sass/utilities/mixins.sass';
+@import 'derived-variables';
+
 @mixin font-smoothing() {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;

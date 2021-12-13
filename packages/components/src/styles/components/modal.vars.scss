@@ -1,27 +1,27 @@
-$modal-z: 40;
+$modal-z: 40 !default;
 
-$modal-content-width: var(--bal-width, 640px);
+$modal-content-width: var(--bal-width, 640px) !default;
 
-$modal-content-margin-mobile: 16px;
-$modal-content-spacing-mobile: 0;
-$modal-content-spacing-tablet: 40px;
+$modal-content-margin-mobile: 16px !default;
+$modal-content-spacing-mobile: 0 !default;
+$modal-content-spacing-tablet: 40px !default;
 
-$modal-close-dimensions: 40px;
-$modal-close-right: 32px;
-$modal-close-top: 32px;
+$modal-close-dimensions: 40px !default;
+$modal-close-right: 32px !default;
+$modal-close-top: 32px !default;
 
-$modal-card-body-padding: 16px;
-$modal-card-head-radius: 0px;
-$modal-card-head-padding: 16px;
+$modal-card-body-padding: 16px !default;
+$modal-card-head-radius: 0px !default;
+$modal-card-head-padding: 16px !default;
 
-$modal-card-head-radius: 0px;
-$modal-card-foot-radius: 0px;
+$modal-card-head-radius: 0px !default;
+$modal-card-foot-radius: 0px !default;
 
-$modal-card-head-background-color: $scheme-main;
+$modal-card-head-background-color: $scheme-main !default;
 
-$modal-card-title-size: $size-large;
+$modal-card-title-size: $size-large !default;
 
-$modal-card-foot-border-top: 1px solid $info-2;
-$modal-card-head-border-bottom: 1px solid $info-2;
+$modal-card-foot-border-top: 1px solid $blue-2 !default;
+$modal-card-head-border-bottom: 1px solid $blue-2 !default;
 
-$modal-background-background-color: bulmaRgba(darken($info-8, 10), 0.86);
+$modal-background-background-color: bulmaRgba(darken($blue-8, 10), 0.86) !default;

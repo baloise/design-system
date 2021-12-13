@@ -1,6 +1,5 @@
 import { Component, Host, h, Prop, Method, Event, EventEmitter } from '@stencil/core'
-import { ColorTypesBasic } from '../../types/color.types'
-import { BalButtonColor } from '../bal-button/bal.button.type'
+import { ColorTypesBasic, BalButtonColor } from '../../types/color.types'
 
 @Component({
   tag: 'bal-accordion',

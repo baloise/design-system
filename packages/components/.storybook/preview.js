@@ -1,7 +1,11 @@
+import { app } from '@storybook/vue3'
+
+app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-doc-')
+
 export const decorators = [
   story => ({
     components: { story },
-    template: '<div class="bal-app"><story /></div>',
+    template: '<bal-doc-app><story /></bal-doc-app>',
   }),
 ]
 

@@ -38,7 +38,7 @@
       right: 0px;
 
       .inner {
-        background: $info-3;
+        background: $blue-3;
       }
     }
   }
@@ -171,22 +171,22 @@
     .step {
       width: 1px;
       border-radius: 4px;
-      background-color: $info-3;
+      background-color: $blue-3;
     }
   }
 
   &.is-disabled {
     input[type='range'] {
       &::-ms-thumb {
-        background: $info-3;
+        background: $blue-3;
       }
 
       &::-webkit-slider-thumb {
-        background: $info-3;
+        background: $blue-3;
       }
 
       &::-moz-range-thumb {
-        background: $info-3;
+        background: $blue-3;
       }
     }
 
@@ -194,7 +194,7 @@
       .slider-bg-lower,
       .slider-bg-upper {
         .inner {
-          background: $info-3;
+          background: $blue-3;
         }
       }
     }

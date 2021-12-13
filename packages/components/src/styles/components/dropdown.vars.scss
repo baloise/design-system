@@ -1,14 +1,14 @@
 // https://bulma.io/documentation/components/dropdown/#variables
 
-$dropdown-menu-min-width: 264px;
-$dropdown-content-radius: 0px;
-$dropdown-content-padding-bottom: 0;
-$dropdown-content-padding-top: 0;
-$dropdown-content-shadow: 0 0 16px 0 rgba(transparentize(#002162, 0.85), 0.15);
+$dropdown-menu-min-width: 264px !default;
+$dropdown-content-radius: 0px !default;
+$dropdown-content-padding-bottom: 0 !default;
+$dropdown-content-padding-top: 0 !default;
+$dropdown-content-shadow: 0 0 16px 0 rgba(transparentize($blue-8, 0.85), 0.15) !default;
 
-$dropdown-item-color: $blue;
-$dropdown-item-hover-color: $blue;
-$dropdown-item-hover-background-color: $gray-2;
-$dropdown-item-active-color: $blue;
-$dropdown-item-active-background-color: $info-0;
-$dropdown-divider-background-color: $info-3;
+$dropdown-item-color: $blue !default;
+$dropdown-item-hover-color: $blue !default;
+$dropdown-item-hover-background-color: $grey-2 !default;
+$dropdown-item-active-color: $blue !default;
+$dropdown-item-active-background-color: $blue-0 !default;
+$dropdown-divider-background-color: $blue-3 !default;

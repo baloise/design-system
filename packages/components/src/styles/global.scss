@@ -1,70 +1,33 @@
-@import 'global.utilities';
-@import 'node_modules/@baloise/design-system-fonts/scss/fonts.scss';
-@import 'elements/notices.scss';
-@import 'layout/sticky-footer.scss';
+@charset "utf-8";
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
+// // custom colors
+// $blue: yellow;
+// $cyan: purple;
+// // custom colors
+
+@import 'utilities/_all';
+@import 'node_modules/bulma/sass/base/minireset.sass';
+@import 'node_modules/@baloise/design-system-fonts/scss/fonts.scss';
+@import 'global/all';
 
 .bal-app {
-  position: relative;
-}
-
-.bal-app.bal-app-background {
-  background: $white;
-}
-
-@include tablet() {
-  .bal-app.bal-app-background {
-    background: $white-ter;
-  }
-}
-
-.bal-app,
-.bal-notices {
-  @import 'helpers/all';
-  @import 'utilities/animations';
-  @import 'layout/all';
-  @import 'form/all';
-
-  @import 'elements/all';
-  @import 'components/all';
-  @import 'node_modules/bulma/sass/grid/all.sass';
+  @import 'base/_all';
+  @import 'elements/_all';
+  @import 'form/_all';
+  @import 'components/_all';
+  @import 'grid/_all';
+  @import 'helpers/_all';
+  @import 'layout/_all';
 
   * {
     box-sizing: border-box;
-    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  span,
-  b,
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  strong {
-    font-family: $family-primary;
-  }
-
-  span.code,
-  code.code {
-    font-family: monospace;
-    line-height: 1;
-    white-space: nowrap;
-    margin: 0 2px;
-    padding: 3px 5px;
-    border-radius: 3px;
-    border: 1px solid $info-2;
-    font-size: 13px;
-    color: rgba(51, 51, 51, 0.9);
-    background-color: $gray-2;
+  &.bal-app-background {
+    background: $white-ter;
   }
 }

@@ -1,26 +1,26 @@
 // https://bulma.io/documentation/elements/table/#variables
 
-$table-color: $text;
-$table-background-color: $scheme-main;
+$table-color: $text !default;
+$table-background-color: $scheme-main !default;
 
-$table-cell-border: 1px solid $info-2; //$border;
-$table-cell-border-width: 0 0 1px;
-$table-cell-padding: 0.5em 0.75em;
-$table-cell-heading-color: $text-strong;
+$table-cell-border: 1px solid $blue-2 !default;
+$table-cell-border-width: 0 0 1px !default;
+$table-cell-padding: 0.5em 0.75em !default;
+$table-cell-heading-color: $text-strong !default;
 
-$table-head-cell-border-width: 0 0 1px;
-$table-head-cell-color: $text-strong;
-$table-foot-cell-border-width: 0 0 0;
-$table-foot-cell-color: $text-strong;
+$table-head-cell-border-width: 0 0 1px !default;
+$table-head-cell-color: $text-strong !default;
+$table-foot-cell-border-width: 0 0 0 !default;
+$table-foot-cell-color: $text-strong !default;
 
-$table-head-background-color: transparent;
-$table-body-background-color: transparent;
-$table-foot-background-color: transparent;
+$table-head-background-color: transparent !default;
+$table-body-background-color: transparent !default;
+$table-foot-background-color: transparent !default;
 
-$table-row-hover-background-color: $info-1;
+$table-row-hover-background-color: $blue-1 !default;
 
-$table-row-active-background-color: $primary;
-$table-row-active-color: $primary-invert;
+$table-row-active-background-color: $primary !default;
+$table-row-active-color: $primary-invert !default;
 
-$table-striped-row-even-background-color: $scheme-main-bis;
-$table-striped-row-even-hover-background-color: $info-1;
+$table-striped-row-even-background-color: $scheme-main-bis !default;
+$table-striped-row-even-hover-background-color: $blue-1 !default;

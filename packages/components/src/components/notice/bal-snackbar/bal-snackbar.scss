@@ -1,0 +1,82 @@
+@import '../../../styles/global.utilities.scss';
+
+:host {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-grow: 0 !important;
+
+  .snackbar {
+    align-self: flex-end;
+    display: inline-flex;
+    animation-duration: 150ms;
+    margin: 8px 0 0 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+    border-radius: $radius-large;
+    background: $white;
+    padding: 32px;
+    pointer-events: auto;
+    max-width: 320px;
+    flex-grow: 1;
+    font-size: $size-small;
+    flex-direction: column !important;
+    row-gap: 24px;
+    position: relative;
+
+    .snackbar-header {
+      @include font-smoothing();
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      font-size: $size-medium;
+      font-weight: $weight-bold;
+
+      & > span {
+        align-items: center;
+      }
+
+      .icon-text .icon:not(:last-child) {
+        margin-right: 0.6em;
+      }
+    }
+
+    &.is-primary {
+      background: $primary;
+      color: $primary-invert;
+    }
+
+    &.is-info {
+      background: $info;
+      color: $blue-invert;
+    }
+
+    &.is-success {
+      background: $success;
+      color: $white;
+    }
+
+    &.is-warning {
+      background: $warning;
+      color: $white;
+    }
+
+    &.is-danger {
+      background: $danger;
+      color: $white;
+    }
+
+    bal-heading,
+    bal-text {
+      word-break: break-all;
+    }
+
+    .close {
+      position: absolute;
+      cursor: pointer;
+      top: 35px;
+      right: 32px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

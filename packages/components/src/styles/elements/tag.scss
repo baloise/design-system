@@ -4,25 +4,16 @@
 // Small tag labels to insert anywhere
 // https://bulma.io/documentation/elements/tag/
 
-.bal-tag {
+bal-tag {
   @include font-smoothing();
   @include margin(0);
 
-  font-family: $family-primary;
   user-select: none;
   pointer-events: auto;
   font-kerning: none;
-  font-weight: $weight-bold;
-  padding-left: 20px;
-  padding-right: 20px;
   line-height: 1;
   vertical-align: top; // the better option for most scenarios
   vertical-align: -webkit-baseline-middle; // the best for those that support it
-
-  .delete {
-    margin-left: 0.3rem;
-    margin-right: -0.1rem;
-  }
 
   &.default {
     background-color: $grey;

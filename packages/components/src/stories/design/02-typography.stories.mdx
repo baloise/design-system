@@ -22,33 +22,56 @@ import dedent from 'ts-dedent'
 
 ## Headings
 
-<Canvas className="bal-app" withSource="none">
-  <div>
-    <bal-heading space="bottom" level="h1">
-      H1 MetaPro Normal
+### Heading 1
+
+<Canvas withSource="none">
+  <bal-doc-app>
+    <bal-heading level="h1" space="none">
+      Heading 1 Normal 48px/56px
     </bal-heading>
-    <bal-heading space="bottom" level="h2">
-      H2 MetaPro Normal
-    </bal-heading>
-    <bal-heading space="bottom" level="h3">
-      H3 MetaPro Medium
-    </bal-heading>
-    <bal-heading space="bottom" level="h3" subtitle>
-      H3 MetaPro Normal
-    </bal-heading>
-    <bal-heading space="bottom" level="h4">
-      H4 MetaPro Medium
-    </bal-heading>
-    <bal-heading space="none" level="h4" subtitle>
-      H4 MetaPro Normal
-    </bal-heading>
-  </div>
+  </bal-doc-app>
 </Canvas>
 
-## Texts
+### Heading 2
 
-<Canvas className="bal-app" withSource="none">
-  <div>
+<Canvas withSource="none">
+  <bal-doc-app>
+    <bal-heading level="h2" space="none">
+      Heading 2 Normal 40px/48px
+    </bal-heading>
+  </bal-doc-app>
+</Canvas>
+
+### Heading 3
+
+<Canvas withSource="none">
+  <bal-doc-app>
+    <bal-heading level="h3" space="none">
+      Heading 3 Bold 32px/40px
+    </bal-heading>
+    <bal-heading level="h3" space="none" subtitle>
+      Heading 3 Normal 32px/40px
+    </bal-heading>
+  </bal-doc-app>
+</Canvas>
+
+### Heading 4
+
+<Canvas withSource="none">
+  <bal-doc-app>
+    <bal-heading level="h4" space="none">
+      Heading 4 Bold 24px/32px
+    </bal-heading>
+    <bal-heading level="h4" space="none" subtitle>
+      Heading 4 Normal 24px/32px
+    </bal-heading>
+  </bal-doc-app>
+</Canvas>
+
+## Paragraphs & Link
+
+<Canvas withSource="none">
+  <bal-doc-app>
     <bal-text bold>Paragraph MetaPro Normal</bal-text>
     <bal-text>Paragraph MetaPro Normal</bal-text>
     <a className="is-link" href="">
@@ -63,7 +86,17 @@ import dedent from 'ts-dedent'
     <a className="is-link" href="">
       <bal-text small>Small Link cyan</bal-text>
     </a>
-  </div>
+  </bal-doc-app>
+</Canvas>
+
+## Others
+
+<Canvas withSource="none">
+  <bal-doc-app>
+    <label className="label">Label</label>
+    <br />
+    <span className="is-small has-text-hint">Field Message</span>
+  </bal-doc-app>
 </Canvas>
 
 ## CSS Helper Classes
@@ -72,8 +105,8 @@ Out of the typography tokens we create a collection of helper css classes.
 
 [Go to the Bulma documentation](https://bulma.io/documentation/helpers/typography-helpers/)
 
-<Canvas className="bal-app" withSource="none">
-  {html(`<div>${typographyHelper}</div>`)}
+<Canvas withSource="none">
+  <bal-doc-app>{html(`<div>${typographyHelper}</div>`)}</bal-doc-app>
 </Canvas>
 
 <Source
@@ -87,9 +120,9 @@ Out of the typography tokens we create a collection of helper css classes.
 
 Download our font for print usage below. For web development please continue reading.
 
-<bal-app>
+<bal-doc-app>
   <bal-doc-download subject="fonts.zip" subtitle="Our typography files" link="/assets/download/fonts.zip"></bal-doc-download>
-</bal-app>
+</bal-doc-app>
 
 ## Install web font
 

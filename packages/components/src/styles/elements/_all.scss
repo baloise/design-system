@@ -1,5 +1,3 @@
-@charset "utf-8";
-
 //
 // The order of the imports is important to override the variables of the css framework bulma
 //
@@ -29,7 +27,6 @@
 @import 'container';
 @import 'title';
 @import 'track-line';
-@import 'notices';
 @import 'table';
 @import 'icon';
 @import 'button';

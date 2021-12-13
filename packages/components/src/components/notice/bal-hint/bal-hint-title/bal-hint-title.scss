@@ -1,0 +1,11 @@
+@import '../../../../styles/global.utilities';
+
+:host {
+  display: block;
+  font-family: $family-primary;
+
+  .title {
+    margin-top: 0;
+    font-family: $family-primary;
+  }
+}

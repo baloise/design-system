@@ -32,7 +32,7 @@
       -ms-user-select: none;
       user-select: none;
       color: $blue;
-      font-family: $body-family;
+      font-family: $family-primary;
     }
 
     input[type='checkbox'] + label::before {
@@ -44,7 +44,7 @@
       width: 48px;
       height: 24px;
       border: 1.6px solid transparent;
-      background: $info-3;
+      background: $blue-3;
       content: '';
       transition: all 0.25s ease-out;
     }

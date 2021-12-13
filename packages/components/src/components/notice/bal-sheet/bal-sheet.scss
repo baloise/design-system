@@ -1,0 +1,38 @@
+@import '../../../styles/global.utilities.scss';
+
+bal-sheet {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 30;
+
+  font-family: $family-primary;
+  font-weight: $weight-normal;
+  font-size: $size-normal;
+
+  > div.container {
+    background-color: $blue-0;
+    box-shadow: $shadow;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  @include tablet() {
+    > div.container {
+      background-color: transparent;
+      box-shadow: none;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+
+      > div.inner {
+        background-color: $blue-0;
+        box-shadow: $shadow;
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+    }
+  }
+}

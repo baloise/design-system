@@ -13,7 +13,7 @@ const component = BalComponentStory({
 export default component.story
 
 export const Basic = args => ({
-  components: { BalAccordion },
+  components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-accordion v-bind="args" class="box">
   <p class="p-4">
@@ -30,7 +30,7 @@ Basic.args = {
 Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const WithIcons = args => ({
-  components: { BalAccordion },
+  components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-accordion class="box" open-icon="edit" open-label="Bearbeiten" close-label="Schliessen" close-icon="close">
   <p class="p-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -43,7 +43,7 @@ WithIcons.args = {
 WithIcons.parameters = { ...component.sourceCode(WithIcons) }
 
 export const WithCard = args => ({
-  components: { BalAccordion, BalCard, BalCardTitle, BalCardSubtitle },
+  components: { ...component.components, BalCard, BalCardTitle, BalCardSubtitle },
   setup: () => ({ args }),
   template: `<bal-card>
   <bal-card-title>BaloiseCombi</bal-card-title>
