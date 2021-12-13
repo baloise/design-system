@@ -52,7 +52,7 @@ export const Basic = args => ({
   </header>
   <main>
     <div class="container">
-      <bal-card class="has-margin-top">
+      <bal-card class="my-6">
         <bal-card-title>BaloiseCombi</bal-card-title>
         <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
 

@@ -1,4 +1,6 @@
 import { Config } from '@stencil/core'
+import { resolve } from 'path'
+import fg from 'fast-glob'
 import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
 import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 
@@ -48,4 +50,17 @@ export const config: Config = {
       ],
     },
   ],
+  rollupPlugins: {
+    before: [
+      {
+        name: 'watch-external',
+        async buildStart() {
+          const styleFiles = await fg(resolve(__dirname, './src/styles/**/*.scss'))
+          for (let file of styleFiles) {
+            this.addWatchFile(file)
+          }
+        },
+      },
+    ],
+  },
 }

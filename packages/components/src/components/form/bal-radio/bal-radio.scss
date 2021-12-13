@@ -58,7 +58,7 @@
       -ms-user-select: none;
       user-select: none;
       color: $blue;
-      font-family: $body-family;
+      font-family: $family-primary;
     }
 
     input[type='radio'] + label::before,
@@ -75,7 +75,7 @@
 
     input[type='radio'] + label:before {
       content: '';
-      border: 1px solid $info-3;
+      border: 1px solid $blue-3;
     }
 
     input[type='radio'] + label:after {
@@ -151,7 +151,7 @@
       padding: 0 16px !important;
       border-color: transparent;
       border-width: 2px;
-      font-family: $body-family;
+      font-family: $family-primary;
       font-size: $size-normal !important;
 
       &:hover {
@@ -231,10 +231,10 @@
 
       input:disabled ~ label {
         cursor: not-allowed;
-        color: $info-3;
+        color: $blue-3;
 
         &:hover {
-          color: $info-3;
+          color: $blue-3;
         }
       }
     }

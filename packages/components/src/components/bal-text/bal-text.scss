@@ -25,8 +25,7 @@ bal-text {
 
   &.is-small,
   &.is-small span {
-    @include lhCrop(1);
     font-size: $size-small !important;
-    line-height: 20px;
+    line-height: 16px !important;
   }
 }

@@ -8,7 +8,7 @@
   font-family: $family-primary;
   font-size: $size-normal;
   background: $white-bis;
-  border: 1px solid $info-2;
+  border: 1px solid $blue-2;
   color: $text;
   border-radius: $radius-large;
   padding: 16px;
@@ -18,8 +18,8 @@
   }
 
   &.is-primary {
-    background: $info-0;
-    border: 1px solid $info-2;
+    background: $blue-0;
+    border: 1px solid $blue-2;
     color: $blue;
 
     a:not(.button):not(.dropdown-item) {

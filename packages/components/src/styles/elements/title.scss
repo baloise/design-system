@@ -10,13 +10,34 @@ h3,
 h4,
 h5 {
   @include padding(0);
-  font-family: $title-family;
   font-family: $family-primary;
+  color: $blue;
+}
+
+// TODO: Define spacing between
+h1 {
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+}
+
+h2 {
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+}
+
+h3 {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+
+h4 {
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
 }
 
 p,
 a {
-  font-family: $body-family;
+  font-family: $family-primary;
   line-height: 24px;
   margin: 0;
   word-break: break-word;
@@ -30,23 +51,23 @@ bal-text p {
 }
 
 .is-size-1 {
-  line-height: 52px;
+  line-height: 56px;
 }
 
 .is-size-2 {
-  line-height: 44px;
+  line-height: 48px;
 }
 
 .is-size-3 {
-  line-height: 36px;
+  line-height: 40px;
 }
 
 .is-size-4 {
-  line-height: 28px;
+  line-height: 32px;
 }
 
 .is-size-5 {
-  line-height: 20px;
+  line-height: 24px;
 }
 
 .is-size-6 {
@@ -61,11 +82,14 @@ h5.subtitle {
   font-weight: $weight-normal;
 }
 
+span.is-small,
 p.is-small,
 a.is-small {
   font-size: $size-small;
+  line-height: 16px;
 }
 
+span.is-bold,
 p.is-bold,
 a.is-bold {
   font-weight: $weight-bold;

@@ -17,17 +17,17 @@ Out of the box access all the colors form the Baloise Design System.
 
 ### Backgrounds
 
-<bal-app>
+<bal-doc-app>
   <div class="columns">
     <bal-doc-color background class="column is-one-third" color="white" subject="White" scss-vars="$white" description="Default Background"></bal-doc-color>
     <bal-doc-color background class="column is-one-third" color="blue" subject="Blue" scss-vars="$blue" description="Brand Color" inverted></bal-doc-color>
-    <bal-doc-color background class="column is-one-third" color="blue-light" subject="Blue Light" scss-vars="$info-0" description="Hint Background"></bal-doc-color>
+    <bal-doc-color background class="column is-one-third" color="blue-light" subject="Blue Light" scss-vars="$blue-0" description="Hint Background"></bal-doc-color>
   </div>
-</bal-app>
+</bal-doc-app>
 
 ### Typography
 
-<bal-app>
+<bal-doc-app>
   <div class="columns">
     <bal-doc-color class="column is-one-third" color="white" subject="White" scss-vars="$white" description="Default Background"></bal-doc-color>
     <bal-doc-color class="column is-one-third" color="blue" subject="Blue" scss-vars="$blue" description="Brand Color" inverted></bal-doc-color>
@@ -40,11 +40,11 @@ Out of the box access all the colors form the Baloise Design System.
       inverted
     ></bal-doc-color>
   </div>
-</bal-app>
+</bal-doc-app>
 
 ### Alert Colors
 
-<bal-app>
+<bal-doc-app>
   <div class="columns">
     <bal-doc-color color="primary" subject="Primary" scss-vars="$primary, $cyan" background inverted class="column is-one-third"></bal-doc-color>
     <bal-doc-color color="info" subject="Info" scss-vars="$info, $blue" background inverted class="column is-one-third"></bal-doc-color>
@@ -54,7 +54,7 @@ Out of the box access all the colors form the Baloise Design System.
     <bal-doc-color color="warning" subject="Warning" scss-vars="$warning" background inverted class="column is-one-third"></bal-doc-color>
     <bal-doc-color color="danger" subject="Danger" scss-vars="$danger" background inverted class="column is-one-third"></bal-doc-color>
   </div>
-</bal-app>
+</bal-doc-app>
 
 ## Usage
 
@@ -74,8 +74,8 @@ import { ColorHelpers } from './01-colors.templates.ts'
 import { html } from '../utils'
 import dedent from 'ts-dedent'
 
-<Canvas className="bal-app" withSource="none">
-  {html(ColorHelpers)}
+<Canvas withSource="none">
+  <bal-doc-app>{html(ColorHelpers)}</bal-doc-app>
 </Canvas>
 
 <Source

@@ -1,0 +1,45 @@
+$space-vertical-small: 16px !default !default;
+$space-horizontal-small: 16px !default;
+
+$space-vertical-normal: 32px !default;
+$space-horizontal-normal: 32px !default;
+
+$space-vertical-large: 64px !default;
+$space-horizontal-large: 64px !default;
+$column-gap: 16px !default;
+$spacing-shortcuts: (
+  'margin': 'm',
+  'padding': 'p',
+) !default;
+$spacing-directions: (
+  'top': 't',
+  'right': 'r',
+  'bottom': 'b',
+  'left': 'l',
+) !default;
+$spacing-horizontal: 'x' !default;
+$spacing-vertical: 'y' !default;
+$spacing-values: (
+  '0': 0,
+  '1': 4px,
+  '2': 8px,
+  '3': 12px,
+  '4': 16px,
+  '5': 20px,
+  '6': 24px,
+  '7': 32px,
+  '8': 48px,
+  'auto': auto,
+) !default;
+
+$spacing-values-medium: (
+  '7': 40px,
+  '8': 56px,
+) !default;
+
+$spacing-values-large: (
+  '5': 24px,
+  '6': 32px,
+  '7': 48px,
+  '8': 64px,
+) !default;

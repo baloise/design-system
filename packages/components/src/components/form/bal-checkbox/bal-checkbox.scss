@@ -44,7 +44,7 @@
       -ms-user-select: none;
       user-select: none;
       color: $blue;
-      font-family: $body-family;
+      font-family: $family-primary;
 
       bal-text {
         padding-left: 32px;
@@ -77,7 +77,7 @@
       top: 0;
       height: 24px;
       width: 24px;
-      border: 1px solid $info-3;
+      border: 1px solid $blue-3;
     }
 
     label::after {
@@ -115,7 +115,7 @@
         color: $white;
       }
       label::before {
-        border: 1px solid $info-3;
+        border: 1px solid $blue-3;
       }
       label::after {
         border-bottom: 2px solid $white;

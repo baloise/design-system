@@ -10,7 +10,7 @@ const component = BalComponentStory({
 export default component.story
 
 export const Basic = args => ({
-  components: { BalPagination },
+  components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-pagination v-bind="args"></bal-pagination>`,
 })

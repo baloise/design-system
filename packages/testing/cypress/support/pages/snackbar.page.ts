@@ -5,6 +5,6 @@ export class SnackbarPage {
   snackbarWarning = dataTestSelector('snack-warning')
 
   open() {
-    cy.visit('/components/bal-snackbar')
+    cy.visit('/components/notice/bal-snackbar')
   }
 }

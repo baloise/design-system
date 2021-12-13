@@ -9,7 +9,7 @@ textarea.textarea {
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: 1px solid $info-2;
+  border-bottom: 1px solid $blue-2;
   border-radius: 0;
   box-shadow: none;
   padding: 1px 0 2px 0;
@@ -29,7 +29,7 @@ textarea.textarea {
 
   &.is-inverted {
     color: $white;
-    border-bottom-color: $info-3;
+    border-bottom-color: $blue-3;
     background: transparent;
 
     &:focus,
@@ -39,7 +39,7 @@ textarea.textarea {
     }
 
     &:disabled {
-      background-color: $info-8;
+      background-color: $blue-8;
     }
   }
 }

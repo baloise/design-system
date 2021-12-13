@@ -1,6 +1,6 @@
 // https://bulma.io/documentation/elements/notification/#variables
 
-$notification-background-color: $white-bis; // was $background from bulma before
-$notification-code-background-color: $scheme-main;
-$notification-radius: 0;
-$notification-padding: 16px;
+$notification-background-color: $white-bis !default;
+$notification-code-background-color: $scheme-main !default;
+$notification-radius: 0 !default;
+$notification-padding: 16px !default;

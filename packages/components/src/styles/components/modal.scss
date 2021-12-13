@@ -1,9 +1,9 @@
 bal-modal-header {
-  font-family: $title-family;
+  font-family: $family-primary;
 }
 
 bal-modal-body {
-  font-family: $body-family;
+  font-family: $family-primary;
 }
 
 .modal-interface-light {
@@ -34,7 +34,7 @@ bal-modal-header {
     &:focus,
     &:active,
     &:hover {
-      background: $info-0;
+      background: $blue-0;
     }
 
     &::after,

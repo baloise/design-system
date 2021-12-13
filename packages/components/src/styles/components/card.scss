@@ -113,7 +113,7 @@
   }
 
   &.has-border {
-    border: 1px solid $info-2;
+    border: 1px solid $blue-2;
   }
 
   &.is-inverted {
@@ -121,11 +121,11 @@
   }
 
   &.is-primary {
-    background-color: $info-0;
+    background-color: $blue-0;
   }
 
   &.is-info {
-    background-color: $info;
+    background-color: $blue;
   }
 
   &.is-success {
@@ -163,7 +163,7 @@
   .bal-card-heading,
   .bal-card-title,
   .bal-card-subtitle {
-    font-family: $title-family;
+    font-family: $family-primary;
   }
 
   .bal-card-heading {
@@ -196,7 +196,7 @@
   .bal-card-content {
     font-size: $size-normal;
     font-weight: $weight-normal;
-    font-family: $body-family;
+    font-family: $family-primary;
   }
 
   .bal-card-content.inverted {

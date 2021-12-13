@@ -1,0 +1,229 @@
+@import 'initial-variables';
+@import 'functions';
+
+$primary: $cyan !default;
+
+$hint: $blue-4 !default;
+$info: $blue !default;
+$success: $green !default;
+$warning: $yellow !default;
+$danger: $red !default;
+
+$light: $white-bis !default;
+$dark: $info !default;
+
+// Invert colors
+
+$orange-invert: findColorInvert($orange) !default;
+$yellow-invert: findColorInvert($yellow) !default;
+$green-invert: findColorInvert($green) !default;
+$cyan-invert: findColorInvert($cyan) !default;
+$blue-invert: findColorInvert($blue) !default;
+$red-invert: findColorInvert($red) !default;
+
+$primary-invert: findColorInvert($primary) !default;
+$primary-light: findLightColor($primary) !default;
+$primary-dark: findDarkColor($primary) !default;
+$hint-invert: findColorInvert($hint) !default;
+$hint-light: findLightColor($hint) !default;
+$hint-dark: findDarkColor($hint) !default;
+$info-invert: findColorInvert($info) !default;
+$info-light: findLightColor($info) !default;
+$info-dark: findDarkColor($info) !default;
+$success-invert: findColorInvert($success) !default;
+$success-light: findLightColor($success) !default;
+$success-dark: findDarkColor($success) !default;
+$warning-invert: findColorInvert($warning) !default;
+$warning-light: findLightColor($warning) !default;
+$warning-dark: findDarkColor($warning) !default;
+$danger-invert: findColorInvert($danger) !default;
+$danger-light: findLightColor($danger) !default;
+$danger-dark: findDarkColor($danger) !default;
+$light-invert: findColorInvert($light) !default;
+$dark-invert: findColorInvert($dark) !default;
+
+// General colors
+
+$scheme-main: $white !default;
+$scheme-main-bis: $white-bis !default;
+$scheme-main-ter: $white-ter !default;
+$scheme-invert: $black !default;
+$scheme-invert-bis: $black-bis !default;
+$scheme-invert-ter: $black-ter !default;
+
+$background: $white-ter !default;
+
+$border: $blue-2 !default;
+$border-hover: $blue-2 !default;
+$border-light: $blue-2 !default;
+$border-light-hover: $blue-2 !default;
+
+// Text colors
+
+$text: $black !default;
+$text-invert: findColorInvert($text) !default;
+$text-light: $blue-4 !default;
+$text-strong: $blue !default;
+
+// Code colors
+
+$code: darken($red, 15%) !default;
+$code-background: $background !default;
+
+$pre: $text !default;
+$pre-background: $background !default;
+
+// Link colors
+
+$link: $cyan !default;
+$link-invert: findColorInvert($link) !default;
+$link-light: findLightColor($link) !default;
+$link-dark: findDarkColor($link) !default;
+$link-visited: $cyan !default;
+
+$link-hover: $blue !default;
+$link-hover-border: $blue !default;
+
+$link-focus: $blue !default;
+$link-focus-border: $blue !default;
+
+$link-active: $blue !default;
+$link-active-border: $blue !default;
+
+// Typography
+
+$family-primary: $family-sans-serif !default;
+$family-secondary: $family-sans-serif !default;
+$family-code: $family-monospace !default;
+
+$size-large: $size-3 !default;
+$size-medium: $size-4 !default;
+$size-normal: $size-5 !default;
+$size-small: $size-6 !default;
+
+// Effects
+
+$shadow: 0 0 10px 0 rgba(transparentize($blue-8, 0.85), 0.15) !default;
+$shadow-hover: 0 0 30px 0 rgba(transparentize($blue-8, 0.85), 0.15) !default;
+
+// Lists and maps
+$custom-colors: null !default;
+$custom-shades: null !default;
+
+$colors: mergeColorMaps(
+  (
+    'white': (
+      $white,
+      $black,
+    ),
+    'black': (
+      $black,
+      $white,
+    ),
+    'light': (
+      $light,
+      $light-invert,
+    ),
+    'dark': (
+      $dark,
+      $dark-invert,
+    ),
+    'primary': (
+      $primary,
+      $primary-invert,
+      $primary-light,
+      $primary-dark,
+    ),
+    'hint': (
+      $hint,
+      $hint-invert,
+      $hint-light,
+      $hint-dark,
+    ),
+    'link': (
+      $link,
+      $link-invert,
+      $link-light,
+      $link-dark,
+    ),
+    'info': (
+      $info,
+      $info-invert,
+      $info-light,
+      $info-dark,
+    ),
+    'success': (
+      $success,
+      $success-invert,
+      $success-light,
+      $success-dark,
+    ),
+    'warning': (
+      $warning,
+      $warning-invert,
+      $warning-light,
+      $warning-dark,
+    ),
+    'danger': (
+      $danger,
+      $danger-invert,
+      $danger-light,
+      $danger-dark,
+    ),
+  ),
+  $custom-colors
+) !default;
+
+$shades: mergeColorMaps(
+  (
+    'black-bis': $black-bis,
+    'black-ter': $black-ter,
+    'grey-darker': $grey-darker,
+    'grey-dark': $grey-dark,
+    'grey': $grey,
+    'grey-light': $grey-light,
+    'grey-lighter': $grey-lighter,
+    'white-ter': $white-ter,
+    'white-bis': $white-bis,
+    'black': $black,
+    'white': $white,
+    'blue': $blue,
+    'cyan': $cyan,
+    'green': $green,
+    'yellow': $yellow,
+    'orange': $orange,
+    'red': $red,
+    'blue-0': $blue-0,
+    'blue-1': $blue-1,
+    'blue-2': $blue-2,
+    'blue-3': $blue-3,
+    'blue-4': $blue-4,
+    'blue-5': $blue-5,
+    'blue-6': $blue-6,
+    'blue-7': $blue-7,
+    'blue-8': $blue-8,
+    'blue-9': $blue-9,
+    'grey-0': $grey-0,
+    'grey-1': $grey-1,
+    'grey-2': $grey-2,
+    'grey-3': $grey-3,
+    'grey-4': $grey-4,
+    'grey-5': $grey-5,
+    'grey-6': $grey-6,
+    'grey-7': $grey-7,
+    'grey-8': $grey-8,
+    'grey-9': $grey-9,
+    'blue-darker': $blue-darker,
+    'blue-dark': $blue-dark,
+    'blue-line-inverted': $blue-line-inverted,
+    'blue-light-text': $blue-light-text,
+    'blue-lighter-text': $blue-lighter-text,
+    'blue-line': $blue-line,
+    'blue-light-line': $blue-light-line,
+    'blue-light-hover': $blue-light-hover,
+    'blue-light': $blue-light,
+  ),
+  $custom-shades
+) !default;
+
+$sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7 !default;

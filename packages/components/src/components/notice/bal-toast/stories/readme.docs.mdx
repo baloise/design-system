@@ -1,0 +1,67 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import readme from '../readme.md'
+
+# Toast
+
+Toasts are used to inform the user with a simple text message.
+
+<Canvas>
+  <bal-doc-app>
+    <bal-toast color="primary">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</bal-toast>
+  </bal-doc-app>
+</Canvas>
+
+```html
+<bal-toast color="primary">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</bal-toast>
+```
+
+## Usage
+
+Toast can be created with the `balToastController`. The default duration is 5000 milliseconds.
+The `create` method return the instance of the created toast, so there you can access all the props and methods of it.
+
+````typescript
+import { balToastController } from '@baloise/design-system-components'
+
+balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
+balToastController.create({ message: 'Warning!', color: 'warning' })
+
+const myToast = balToastController.create({ message: 'Danger zone!', color: 'danger' })
+myToast.close()```
+````
+
+### Framework integration
+
+import AngularLogo from '../../../../stories/assets/images/angular.svg'
+import VueLogo from '../../../../stories/assets/images/vue.png'
+
+<div className="link-list">
+  <a className="link-item" href="?path=/docs/getting-started-angular-usage-of-toast-snackbars--page">
+    <img src={AngularLogo} alt="angular" />
+    <span>
+      <strong>Angular</strong>
+      Usage guide how to use the toast or snackbar with angular.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/docs/getting-started-vue-usage-of-toast-snackbar--page">
+    <img src={VueLogo} alt="vue" />
+    <span>
+      <strong>Vue</strong>
+      Usage guide how to use the toast or snackbar with vue.
+    </span>
+  </a>
+</div>
+
+## Component Api
+
+<Description markdown={readme} />
+
+<br />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+import github from './github.md'
+
+<Description markdown={github} />

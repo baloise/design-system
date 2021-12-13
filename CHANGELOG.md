@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/baloise/design-system/compare/v4.1.0...v4.1.1) (2021-12-13)
+
+
+### Bug Fixes
+
+* **button:** adjust the color of the icon for outlined ([d8f71e0](https://github.com/baloise/design-system/commit/d8f71e0f7ef250e1c55cd6e9a4c62c55ecf2bffe))
+
+
+
+
+
 # [4.1.0](https://github.com/baloise/design-system/compare/v4.0.3...v4.1.0) (2021-12-10)
 
 

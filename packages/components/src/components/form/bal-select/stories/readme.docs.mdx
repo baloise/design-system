@@ -10,20 +10,20 @@ import selectOption from '../bal-select-option/readme.md'
 
 Buttons provide a clickable element, which can be used in forms, or anywhere that needs simple, standard button functionality. They may display text, icons, or both. Buttons can be styled with several attributes to look a specific way.
 
-<Canvas className="bal-app has-visible-overflow" withSource="none">
+<Canvas className="has-visible-overflow" withSource="none">
   <Story id="components-form-select--basic" />
 </Canvas>
 
 ## Typeahead
 
-<Canvas className="bal-app has-visible-overflow" mdxSource={typeahead}>
-  {html(typeahead)}
+<Canvas className="has-visible-overflow" mdxSource={typeahead}>
+  <bal-doc-app>{html(typeahead)}</bal-doc-app>
 </Canvas>
 
 ## Multi-Select
 
-<Canvas className="bal-app has-visible-overflow" mdxSource={multiSelect}>
-  {html(multiSelect)}
+<Canvas className="has-visible-overflow" mdxSource={multiSelect}>
+  <bal-doc-app>{html(multiSelect)}</bal-doc-app>
 </Canvas>
 
 ## Usage

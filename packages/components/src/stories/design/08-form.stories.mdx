@@ -22,16 +22,18 @@ A basic form field has his container element `bal-field` and 3 child elements:
 - `bal-field-control` to contain the control like an input.
 - `bal-field-message` to show validation message or helper messages.
 
-<Canvas className="bal-app" withSource="none">
-  <form className="columns is-multiline mt-0 has-background-white">
-    <bal-field class="column is-full py-0" expanded>
-      <bal-field-label>Firstname</bal-field-label>
-      <bal-field-control>
-        <bal-input placeholder="Enter your firstname"></bal-input>
-      </bal-field-control>
-      <bal-field-message color="danger">Required Field</bal-field-message>
-    </bal-field>
-  </form>
+<Canvas withSource="none">
+  <div-doc-app>
+    <form className="columns is-multiline mt-0 has-background-white">
+      <bal-field class="column is-full py-0" expanded>
+        <bal-field-label>Firstname</bal-field-label>
+        <bal-field-control>
+          <bal-input placeholder="Enter your firstname"></bal-input>
+        </bal-field-control>
+        <bal-field-message color="danger">Required Field</bal-field-message>
+      </bal-field>
+    </form>
+  </div-doc-app>
 </Canvas>
 
 ```html
@@ -55,33 +57,35 @@ With the help of our [CSS Grid](?path=/docs/design-grid--page) we can assemble t
   - `is-full` takes the full width
   - `py-0` removes the padding on top and bottom
 
-<Canvas className="bal-app" withSource="none">
-  <form className="columns is-multiline mt-0 has-background-white">
-    <bal-field class="column is-full py-0" expanded>
-      <bal-field-control>
-        <bal-radio-group>
-          <bal-radio name="gender" value="male">
-            Male
-          </bal-radio>
-          <bal-radio name="gender" value="female">
-            Female
-          </bal-radio>
-        </bal-radio-group>
-      </bal-field-control>
-    </bal-field>
-    <bal-field class="column is-half py-0" expanded>
-      <bal-field-label>Firstname</bal-field-label>
-      <bal-field-control>
-        <bal-input placeholder="Enter your firstname"></bal-input>
-      </bal-field-control>
-    </bal-field>
-    <bal-field class="column is-half py-0" expanded>
-      <bal-field-label>Lastname</bal-field-label>
-      <bal-field-control>
-        <bal-input placeholder="Enter your lastname"></bal-input>
-      </bal-field-control>
-    </bal-field>
-  </form>
+<Canvas withSource="none">
+  <div-doc-app>
+    <form className="columns is-multiline mt-0 has-background-white">
+      <bal-field class="column is-full py-0" expanded>
+        <bal-field-control>
+          <bal-radio-group>
+            <bal-radio name="gender" value="male">
+              Male
+            </bal-radio>
+            <bal-radio name="gender" value="female">
+              Female
+            </bal-radio>
+          </bal-radio-group>
+        </bal-field-control>
+      </bal-field>
+      <bal-field class="column is-half py-0" expanded>
+        <bal-field-label>Firstname</bal-field-label>
+        <bal-field-control>
+          <bal-input placeholder="Enter your firstname"></bal-input>
+        </bal-field-control>
+      </bal-field>
+      <bal-field class="column is-half py-0" expanded>
+        <bal-field-label>Lastname</bal-field-label>
+        <bal-field-control>
+          <bal-input placeholder="Enter your lastname"></bal-input>
+        </bal-field-control>
+      </bal-field>
+    </form>
+  </div-doc-app>
 </Canvas>
 
 ```html

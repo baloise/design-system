@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core'
-import { balToastController, BalToastOptions } from '@baloise/design-system-components'
+import { balToastController, BalToastOptions, Components } from '@baloise/design-system-components'
 
 @Injectable({
   providedIn: 'root',
 })
 export class BalToastService {
-  create(options: BalToastOptions): HTMLBalToastElement {
+  create(options: BalToastOptions): Components.BalToast {
     return balToastController.create(options)
   }
 }
