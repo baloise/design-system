@@ -6,6 +6,6 @@ export class ModalPage {
   closeModalButton = dataTestSelector('open-modal-close')
 
   open() {
-    cy.visit('/components/bal-modal')
+    cy.visit('/components/notice/bal-modal')
   }
 }

@@ -124,7 +124,7 @@ select {
     min-width: 48px;
     min-height: 40px;
     height: 40px;
-    border: 1px solid $info-2;
+    border: 1px solid $blue-2;
     color: $blue;
     cursor: pointer;
     font-size: $size-small;
@@ -137,7 +137,7 @@ select {
 
     &.is-outdated,
     &.is-disabled {
-      background: $info-0;
+      background: $blue-0;
       background-clip: padding-box;
       color: $text-light;
       cursor: default;

@@ -5,6 +5,6 @@ export class ToastPage {
   toastWarning = dataTestSelector('toast-warning')
 
   open() {
-    cy.visit('/components/bal-toast')
+    cy.visit('/components/notice/bal-toast')
   }
 }

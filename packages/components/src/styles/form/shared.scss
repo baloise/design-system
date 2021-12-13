@@ -1,5 +1,5 @@
 .form.is-inverted .icon > .font {
-  color: $info-3 !important;
+  color: $blue-3 !important;
 }
 
 .help {
@@ -28,9 +28,14 @@
     }
 
     .help:not(.is-danger) {
-      color: $info-3;
+      color: $blue-3;
     }
   }
+}
+
+label.label {
+  font-size: $size-small;
+  font-family: $family-primary;
 }
 
 .form .label,

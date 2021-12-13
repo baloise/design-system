@@ -1,6 +1,8 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { OverlayInterface } from '../components/bal-modal/bal-modal.type'
+// import { OverlayInterface } from '../components/bal-modal/bal-modal.type'
 import { addEventListener, removeEventListener } from './helpers'
+
+type OverlayInterface = any
 
 let lastId = 0
 

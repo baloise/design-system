@@ -11,7 +11,7 @@ const component = BalComponentStory({
 export default component.story
 
 const Template = args => ({
-  components: { BalTabs, BalTabItem },
+  components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-tabs v-bind="args">
   <bal-tab-item value="tab-a" label="Tab A" :active="true">Content of Tab A</bal-tab-item>

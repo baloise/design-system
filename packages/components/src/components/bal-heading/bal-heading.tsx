@@ -27,11 +27,6 @@ export class Heading {
   @Prop() subtitle: boolean = false
 
   /**
-   * @deprecated If 'false' the margin of the heading gets dropped.
-   */
-  @Prop() spaced: boolean = true
-
-  /**
    * Defines at which position the heading has spacing.
    */
   @Prop() space: 'all' | 'none' | 'top' | 'bottom' = 'all'
@@ -87,9 +82,8 @@ export class Heading {
       <Host>
         <Heading
           class={{
-            'title': this.subtitle === false,
-            'subtitle': this.subtitle === true,
-            'm-0': !this.spaced,
+            title: this.subtitle === false,
+            subtitle: this.subtitle === true,
             [this.spacing]: true,
             [this.fontSize]: true,
             [this.fontColor]: true,

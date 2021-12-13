@@ -26,11 +26,11 @@
 
         span.step-index {
           border-radius: 50%;
-          border: 1px solid $info-2;
+          border: 1px solid $blue-2;
           display: flex;
           align-items: center;
           font-weight: $weight-bold;
-          font-family: $title-family;
+          font-family: $family-primary;
           color: $text-strong;
           height: 28px;
           min-width: 28px;
@@ -117,7 +117,7 @@
         opacity: 0.5;
 
         span.step-index {
-          border-color: $info-2;
+          border-color: $blue-2;
         }
 
         span.step-label,
@@ -130,15 +130,15 @@
 
   @include tablet() {
     .tabs {
-      border-bottom: 1px solid $info-2;
+      border-bottom: 1px solid $blue-2;
       & > ul > li {
-        border-top: 1px solid $info-2;
-        border-left: 1px solid $info-2;
+        border-top: 1px solid $blue-2;
+        border-left: 1px solid $blue-2;
         max-width: 300px;
         height: 100px;
 
         &:last-child {
-          border-right: 1px solid $info-2;
+          border-right: 1px solid $blue-2;
         }
 
         & > a {

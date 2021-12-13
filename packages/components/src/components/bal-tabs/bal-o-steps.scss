@@ -20,7 +20,7 @@
       .step-index {
         height: 24px;
         width: 24px;
-        border: 2px solid $info-2;
+        border: 2px solid $blue-2;
         background-color: $white;
         background: $white;
         color: $white;
@@ -144,7 +144,7 @@
     }
 
     li.is-active:after {
-      background-color: $info-2;
+      background-color: $blue-2;
     }
 
     li.is-active {
@@ -162,12 +162,12 @@
     }
 
     li.is-active ~ li:after {
-      background-color: $info-2;
+      background-color: $blue-2;
     }
 
     li.is-active ~ li {
       .step-index {
-        border: 2px solid $info-2;
+        border: 2px solid $blue-2;
 
         .inner {
           background: $white;

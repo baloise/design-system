@@ -4,7 +4,6 @@ import { Component, Host, h, Prop } from '@stencil/core'
   tag: 'bal-app',
   scoped: false,
   shadow: false,
-  assetsDirs: ['assets']
 })
 export class App {
   /**

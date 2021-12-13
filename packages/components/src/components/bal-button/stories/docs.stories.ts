@@ -13,7 +13,7 @@ const component = BalComponentStory({
 export default component.story
 
 const Template = args => ({
-  components: { BalButton },
+  components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-button v-bind="args">{{ args.content }}</bal-button>`,
 })

@@ -16,8 +16,8 @@ import dedent from 'ts-dedent'
 
 The basic layout of our portal application.
 
-<Canvas className="bal-app" withSource="none">
-  {html(portalTemplate)}
+<Canvas withSource="none">
+  <bal-doc-app>{html(portalTemplate)}</bal-doc-app>
 </Canvas>
 
 <Source

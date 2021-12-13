@@ -12,7 +12,7 @@ const component = BalComponentStory({
 export default component.story
 
 const Template = args => ({
-  components: { BalFileUpload },
+  components: { ...component.components },
   setup: () => {
     const onBalRejectedFile = (event: any) => {
       if (event && event.detail) {

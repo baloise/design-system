@@ -9,8 +9,4 @@ bal-heading {
   display: block;
   position: static;
   word-break: break-word;
-
-  & + &[subtitle] {
-    margin-top: -1.25rem;
-  }
 }

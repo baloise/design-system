@@ -12,19 +12,19 @@
       border-color: $blue,
       header-foreground-color: $blue,
       header-column-separator: false,
-      row-border-color: $blue-light-line,
-      selected-row-background-color: $blue-light-hover,
+      row-border-color: $blue-2,
+      selected-row-background-color: $blue-1,
       odd-row-background-color: null,
       row-hover-color: $white-bis,
       range-selection-border-color: $primary,
       checkbox-border-radius: 0,
       checkbox-checked-color: $primary,
-      checkbox-unchecked-color: $blue-line,
+      checkbox-unchecked-color: $blue-3,
     )
   );
 
   .ag-cell {
-    font-family: $body-family;
+    font-family: $family-primary;
 
     .bal-table-cell-text > bal-icon,
     .bal-table-cell-text > bal-text {
@@ -96,7 +96,7 @@
       top: 0;
       height: 16px;
       width: 16px;
-      border: 1px solid $blue-line;
+      border: 1px solid $blue-3;
     }
 
     &::after {
