@@ -1,0 +1,58 @@
+import { Meta, Canvas } from '@storybook/addon-docs'
+
+# Page Layout
+
+This is the page layout we recommand to use. The `bal-app` class enables the Baloise Design System styles underneath it.
+
+```html
+<body>
+  <bal-app has-sticky-footer>
+    <main class="container">
+      <!-- Page content -->
+      <bal-heading>Hello World<bal-heading>
+    </main>
+    <footer class="footer">
+      <!-- Footer content -->
+    </footer>
+  </bal-app>
+</body>
+```
+
+- The `.container` is a simple utility class that allows you to center content on larger viewports and to reduce the main space.
+  - Use `container is-compact` for calculator application to reduce the max-width to 768px.
+  - [Bulma Documentation to the container](https://bulma.io/documentation/layout/container/)
+- `has-sticky-footer` attribute sticks the footer element to the bottom of the page.
+
+## Templates
+
+Select the template that matches your case the best and start with that.
+
+import EyeLogo from '../../../../icons/svg/icon-read-only.svg'
+
+<div className="link-list">
+  <a className="link-item" href="?path=/story/design-page-layout--external-calculator">
+    <img src={EyeLogo} alt="Customize" />
+    <span>
+      <strong>External Calculator Application</strong>A narrow template created for our calculators. Optimized for mobile usage.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/story/design-page-layout--external-calculator">
+    <img src={EyeLogo} alt="Customize" />
+    <span>
+      <strong>External Portal Application</strong>
+      The classical template with a main tab navigation on top.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/story/design-page-layout--external-calculator">
+    <img src={EyeLogo} alt="Customize" />
+    <span>
+      <strong>Internal Form Application</strong>A basic form template for internal applications.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/story/design-page-layout--external-calculator">
+    <img src={EyeLogo} alt="Customize" />
+    <span>
+      <strong>Internal Wide Application</strong>A wide template without the .container element to use the whole width of the screen.
+    </span>
+  </a>
+</div>
