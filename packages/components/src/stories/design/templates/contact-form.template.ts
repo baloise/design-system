@@ -1,4 +1,4 @@
-export const contactFormTemplate = `
+export const ContactFormTemplate = `
 <bal-card>
   <bal-card-content>
     <form class="columns is-multiline mt-0">

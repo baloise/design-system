@@ -1,5 +1,14 @@
 import { Meta, Canvas } from '@storybook/addon-docs'
 
+<Meta
+  title="Design/Page Layout"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
 # Page Layout
 
 This is the page layout we recommand to use. The `bal-app` class enables the Baloise Design System styles underneath it.
@@ -30,26 +39,26 @@ Select the template that matches your case the best and start with that.
 import EyeLogo from '../../../../icons/svg/icon-read-only.svg'
 
 <div className="link-list">
-  <a className="link-item" href="?path=/story/design-page-layout--external-calculator">
+  <a className="link-item" href="?path=/story/design-page-templates--external-calculator">
     <img src={EyeLogo} alt="Customize" />
     <span>
       <strong>External Calculator Application</strong>A narrow template created for our calculators. Optimized for mobile usage.
     </span>
   </a>
-  <a className="link-item" href="?path=/story/design-page-layout--external-calculator">
+  <a className="link-item" href="?path=/story/design-page-templates--external-calculator">
     <img src={EyeLogo} alt="Customize" />
     <span>
       <strong>External Portal Application</strong>
       The classical template with a main tab navigation on top.
     </span>
   </a>
-  <a className="link-item" href="?path=/story/design-page-layout--external-calculator">
+  <a className="link-item" href="?path=/story/design-page-templates--external-calculator">
     <img src={EyeLogo} alt="Customize" />
     <span>
       <strong>Internal Form Application</strong>A basic form template for internal applications.
     </span>
   </a>
-  <a className="link-item" href="?path=/story/design-page-layout--external-calculator">
+  <a className="link-item" href="?path=/story/design-page-templates--external-calculator">
     <img src={EyeLogo} alt="Customize" />
     <span>
       <strong>Internal Wide Application</strong>A wide template without the .container element to use the whole width of the screen.

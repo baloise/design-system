@@ -1,4 +1,4 @@
-import docs from './04-breakpoints.docs.mdx'
+import docs from './05-breakpoints.docs.mdx'
 
 export default {
   title: 'Design/Breakpoints',

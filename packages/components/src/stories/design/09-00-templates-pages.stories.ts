@@ -1,16 +1,15 @@
 import { withSoureCode } from '../utils'
-import docs from './06-page-layout.docs.mdx'
-import { ExternalCaluclatorTemplate } from './layouts/external-caluclator.template'
-import { ExternalPortalTemplate } from './layouts/external-portal.template'
-import { InternalFormAppTemplate } from './layouts/internal-form'
-import { InternalWideAppTemplate } from './layouts/internal-wide'
+import { ExternalCaluclatorTemplate } from './templates/external-caluclator.template'
+import { ExternalPortalTemplate } from './templates/external-portal.template'
+import { InternalFormAppTemplate } from './templates/internal-form.template'
+import { InternalWideAppTemplate } from './templates/internal-wide.template'
 import * as Components from '../../../.storybook/vue/components'
 
 export default {
-  title: 'Design/Page Layout',
+  title: 'Design/Page Templates',
   parameters: {
     docs: {
-      page: docs,
+      page: null,
     },
     layout: 'fullscreen',
   },

@@ -1,4 +1,4 @@
-import docs from './03-spacing.docs.mdx'
+import docs from './04-spacing.docs.mdx'
 
 export default {
   title: 'Design/Spacing',
