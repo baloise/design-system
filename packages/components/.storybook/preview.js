@@ -83,7 +83,6 @@ export const parameters = {
       order: [
         'Welcome',
         'Why a Design System',
-        'Architecture',
         'Changelog',
         'Getting-Started',
         ['Overview', 'How to use Storybook', 'HTML5', 'Angular', 'Vue', 'React'],
@@ -92,7 +91,7 @@ export const parameters = {
         'Components',
         'Templates',
         'Contributing',
-        ['Component', 'Controller', 'Testing'],
+        // ['Component', 'Controller', 'Testing'],
       ],
     },
   },

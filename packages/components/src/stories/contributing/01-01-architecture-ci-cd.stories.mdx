@@ -1,0 +1,39 @@
+import { Meta, Description } from '@storybook/addon-docs'
+import ToolingImage from '../assets/images/architecture/tooling.svg'
+import CiCdImage from '../assets/images/architecture/ci-cd.svg'
+
+<Meta
+  title="Contributing/CI & CD"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# CI & CD
+
+> We use opensource tooling to make our processes simpler
+
+We use Github as our software development platform, which is the leading platform for open-spource projects in the world.
+For new features or fixes we develop them in seperate branches which will result in a pull-request. Github Actions, our CI tool, listens on webhooks and starts building & testing our application in a seperate container. Moreover, our deployment platform Now also listens for fired webhooks and automatically deploys the code of the pull request to a preview environment. All this is shown in the open pull request on Github. So other developers and UX specialists can easly review, comment, approve or decline the new changes.
+
+After a pull request has been approved, it will be merged into master, which is our default branch. github Actions reacts on the merge action and starts its configured workflow. There is a slide diffrence to other builds, which is the release part. The release process is fully automated with sematic release.
+Based on the commit messages since the last release, it detects the release type (major, minor or patch).
+
+| Commit message                                                                                                                                                                     | Release type               |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| `fix(pencil): stop graphite breaking when too much pressure applied`                                                                                                               | Patch Release              |
+| `feat(pencil): add 'graphiteWidth' option`                                                                                                                                         | ~~Minor~~ Feature Release  |
+| `perf(pencil): remove graphiteWidth option BREAKING CHANGE: The graphiteWidth option has been removed. The default graphite width of 10mm is always used for performance reasons.` | ~~Major~~ Breaking Release |
+
+After detecting the new version, it also publishes the library to npm. Afterthat, it releases it on Github with a nice changelog, which is generated based on the commit messages. Finally, it gets deployed to the production environment of now.
+
+<img src={CiCdImage} />
+
+| Tool                                    | Description                                                             |
+| --------------------------------------- | ----------------------------------------------------------------------- |
+| [Github](https://github.com/)           | Is the world's leading software development platform.                   |
+| [NPM](https://www.npmjs.com/)           | Software Registry of all the JavaScript & TypeScript packages.          |
+| [Now](https://zeit.co/)                 | ZEIT Now is a cloud platform for static sites and Serverless Functions. |
+| [Lerna](https://github.com/lerna/lerna) | A tool for managing JavaScript projects with multiple packages.         |
