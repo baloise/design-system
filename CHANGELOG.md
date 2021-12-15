@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.2](https://github.com/baloise/design-system/compare/v4.1.1...v4.1.2) (2021-12-15)
+
+
+### Bug Fixes
+
+* **button:** improve icon inverted style ([28a4147](https://github.com/baloise/design-system/commit/28a4147dbebf22cecd142beb26a7ae761769a2bc))
+* **checkbox:** adjust switch style ([fda5174](https://github.com/baloise/design-system/commit/fda517471049fd80a771125882245b872c550313))
+
+
+
+# 4.1.0 (2021-12-10)
+
+
+
+
+
 ## [4.1.1](https://github.com/baloise/design-system/compare/v4.1.0...v4.1.1) (2021-12-13)
 
 
