@@ -1,4 +1,4 @@
-import { filterInputValue, formatInputValue } from './bal-input.utils'
+import { filterInputValue, formatInputValue } from '../bal-input.utils'
 
 describe('bal-input', () => {
   describe('filterInputValue', () => {
