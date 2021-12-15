@@ -7,11 +7,5 @@ export default {
   ...baseConfig,
   input: 'dist-transpiled/index.js',
   plugins: [resolve(), sourcemaps()],
-  external: [
-    '@baloise/design-system-components',
-    '@baloise/design-system-components/loader',
-    '@baloise/design-system-components/dist/custom-elements',
-    'react',
-    'react-dom',
-  ],
+  external: ['@baloise/design-system-components', '@baloise/design-system-components/loader', 'react', 'react-dom'],
 }
