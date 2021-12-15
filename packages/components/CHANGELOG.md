@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.1](https://github.com/baloise/design-system/compare/v4.3.0...v4.3.1) (2021-12-15)
+
+
+### Bug Fixes
+
+* add missing sass files of the components ([2efa8ca](https://github.com/baloise/design-system/commit/2efa8ca11e4f0541f01320485a409ac0a003bf5a))
+
+
+
+
+
 # [4.3.0](https://github.com/baloise/design-system/compare/v4.2.0...v4.3.0) (2021-12-15)
 
 
