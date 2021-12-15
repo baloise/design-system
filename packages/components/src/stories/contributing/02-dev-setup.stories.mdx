@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Contributing/Dev Setup"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Dev Setup
+
+Baloise Design System is divided into multiple NPM packages. Development for all of the packages happens inside one mono repository. Follow the below steps to get the dev environment up and running.
+
+## Prerequisite - NodeJS
+
+To work with this project a recent LTS version of NodeJS and npm is required. Make sure you've installed and/or updated [Node](https://nodejs.org/en/) before continuing.
+
+> **Warning!**
+> Note that you will need to use npm 8 or higher.
+
+## Project and Packages
+
+To start building a new web component using Stencil, clone this repo to a new directory:
+
+```bash
+git clone https://github.com/baloise/design-system.git design-system
+cd design-system
+```
+
+First we install all the dependencies of the packages. Then we make a intial build to have all the needed artifacts and after that we link the packages.
+
+```bash
+npm run setup
+```
+
+After the setup we can start the documentation page locally. We use storybook also for the development.
+
+```bash
+npm start
+```
+
+The page is available under [http://localhost:6006](http://localhost:6006).
+
+Go to the [Commands](?path=/docs/contributing-commands--page) page to see more npm scripts.
+
+> **TIP**
+> All Baloise Design System packages and their respective code can be found under `/packages/`. For example components live in `/packages/components/`.
+
+## Documentation
+
+To document our components we use the tool [Storybook](https://storybook.js.org/).
+
+The documentation files are in a folder called `/stories` or have `.stories.` in the file name.

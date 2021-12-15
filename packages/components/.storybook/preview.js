@@ -5,7 +5,7 @@ app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-doc-')
 export const decorators = [
   story => ({
     components: { story },
-    template: '<bal-doc-app><story /></bal-doc-app>',
+    template: '<bal-doc-app id="custom-wrapper"><story /></bal-doc-app>',
   }),
 ]
 
@@ -83,16 +83,15 @@ export const parameters = {
       order: [
         'Welcome',
         'Why a Design System',
-        'Architecture',
         'Changelog',
         'Getting-Started',
         ['Overview', 'How to use Storybook', 'HTML5', 'Angular', 'Vue', 'React'],
         'Design',
-        ['Overview', 'Colors', 'Typography', 'Breakpoints', 'Spacing', 'Icons', 'Grid', 'Page Layout', 'Form'],
+        ['Overview', 'Figma', 'Colors', 'Typography', 'Icons', 'Spacing', 'Breakpoints', 'Grid', 'Page Layout', 'Templates', 'Form'],
         'Components',
         'Templates',
         'Contributing',
-        ['Component', 'Controller', 'Testing'],
+        // ['Component', 'Controller', 'Testing'],
       ],
     },
   },

@@ -153,7 +153,7 @@ export class Button implements ComponentInterface {
   }
 
   private get isIconInverted() {
-    if (this.outlined) {
+    if (this.outlined && !this.inverted) {
       return false
     }
     switch (this.color) {
