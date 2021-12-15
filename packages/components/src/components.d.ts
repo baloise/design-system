@@ -643,6 +643,10 @@ export namespace Components {
          */
         "open": () => Promise<void>;
         /**
+          * Disables the close button for tablet and desktop
+         */
+        "small": boolean;
+        /**
           * Toggles the hint box.
          */
         "toggle": () => Promise<void>;
@@ -941,6 +945,9 @@ export namespace Components {
     interface BalNavbarMenuStart {
     }
     interface BalNotices {
+        /**
+          * The interface tells the notice where to show the notice.
+         */
         "interface": 'toast' | 'snackbar';
     }
     interface BalNotification {
@@ -2634,6 +2641,10 @@ declare namespace LocalJSX {
           * Text for the close button.
          */
         "closeLabel"?: string;
+        /**
+          * Disables the close button for tablet and desktop
+         */
+        "small"?: boolean;
     }
     interface BalHintText {
     }
@@ -2944,6 +2955,9 @@ declare namespace LocalJSX {
     interface BalNavbarMenuStart {
     }
     interface BalNotices {
+        /**
+          * The interface tells the notice where to show the notice.
+         */
         "interface"?: 'toast' | 'snackbar';
     }
     interface BalNotification {

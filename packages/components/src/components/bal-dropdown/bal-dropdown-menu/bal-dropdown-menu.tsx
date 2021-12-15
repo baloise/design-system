@@ -2,8 +2,6 @@ import { Component, h, Host, Element, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-dropdown-menu',
-  shadow: false,
-  scoped: false,
 })
 export class DropdownMenu {
   @Element() el!: HTMLElement

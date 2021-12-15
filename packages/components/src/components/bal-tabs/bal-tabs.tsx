@@ -3,9 +3,6 @@ import { BalTabOption } from './bal-tab.type'
 
 @Component({
   tag: 'bal-tabs',
-  styleUrl: 'bal-tabs.scss',
-  scoped: true,
-  shadow: false,
 })
 export class Tabs {
   @Element() element!: HTMLElement

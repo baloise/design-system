@@ -1,188 +1,182 @@
-@import '../../../styles/global.utilities';
+bal-field {
+  display: inline-block;
+  position: relative;
+  min-height: 60px;
 
-.bal-app {
-  @import 'node_modules/bulma/sass/elements/icon.sass';
+  &.is-expanded {
+    display: block;
+    width: 100%;
+  }
 
-  bal-field {
-    display: inline-block;
+  &.has-label {
+    min-height: 80px;
+  }
+
+  bal-field-label {
+    user-select: none;
+
+    label[for] {
+      cursor: pointer;
+    }
+  }
+
+  bal-field-label,
+  bal-field-control,
+  bal-field-message {
     position: relative;
-    min-height: 60px;
+    display: block;
+  }
 
-    &.is-expanded {
-      display: block;
-      width: 100%;
+  bal-field-control {
+    margin-bottom: 24px;
+    display: flex;
+
+    bal-button {
+      margin-left: 8px;
+      margin-top: 4px;
     }
+  }
 
-    &.has-label {
-      min-height: 80px;
-    }
+  bal-field-control + bal-field-message {
+    margin-top: -24px !important;
+  }
 
-    bal-field-label {
-      user-select: none;
+  bal-field-label > label > bal-hint {
+    position: absolute;
+    top: -5px;
+  }
 
-      label[for] {
-        cursor: pointer;
-      }
-    }
+  bal-field-label.is-expanded,
+  bal-field-label.is-expanded label,
+  bal-field-message.is-expanded {
+    width: 100%;
+  }
 
-    bal-field-label,
-    bal-field-control,
-    bal-field-message {
-      position: relative;
-      display: block;
-    }
+  bal-field-label.is-expanded label,
+  bal-field-message.is-expanded {
+    display: flex !important;
+    justify-content: space-between;
+  }
 
-    bal-field-control {
-      margin-bottom: 24px;
-      display: flex;
+  .control.is-loading::after,
+  .select.is-loading::after {
+    border-top-color: $blue !important;
+    border-right-color: $blue !important;
+    border-left-color: transparent !important;
+    border-bottom-color: transparent !important;
+    top: 0.4em;
+    height: 0.7em;
+    width: 0.7em;
+  }
 
-      bal-button {
-        margin-left: 8px;
-        margin-top: 4px;
-      }
-    }
-
-    bal-field-control + bal-field-message {
-      margin-top: -24px !important;
-    }
-
-    bal-field-label > label > bal-hint {
-      position: absolute;
-      top: -5px;
-    }
-
-    bal-field-label.is-expanded,
-    bal-field-label.is-expanded label,
-    bal-field-message.is-expanded {
-      width: 100%;
-    }
-
-    bal-field-label.is-expanded label,
-    bal-field-message.is-expanded {
-      display: flex !important;
-      justify-content: space-between;
-    }
-
+  @include desktop() {
     .control.is-loading::after,
     .select.is-loading::after {
-      border-top-color: $blue !important;
-      border-right-color: $blue !important;
-      border-left-color: transparent !important;
-      border-bottom-color: transparent !important;
-      top: 0.4em;
-      height: 0.7em;
-      width: 0.7em;
+      height: 1em;
+      width: 1em;
+    }
+  }
+
+  .form.is-inverted {
+    .control.is-loading::after,
+    .select.is-loading::after {
+      border-top-color: $white !important;
+      border-right-color: $white !important;
+    }
+  }
+
+  .control {
+    min-height: 36px;
+
+    & > bal-input,
+    & > bal-datepicker {
+      margin-top: 1px;
     }
 
-    @include desktop() {
-      .control.is-loading::after,
-      .select.is-loading::after {
-        height: 1em;
-        width: 1em;
-      }
+    & > bal-checkbox {
+      margin-top: 7px;
     }
 
-    .form.is-inverted {
-      .control.is-loading::after,
-      .select.is-loading::after {
-        border-top-color: $white !important;
-        border-right-color: $white !important;
-      }
+    & > bal-radio-group {
+      margin-top: 10px;
+    }
+  }
+
+  .control.has-icons-left *::part(input) {
+    padding-left: 38px;
+  }
+
+  bal-field-label,
+  bal-field-hint {
+    display: inline-block !important;
+  }
+
+  bal-field-hint {
+    position: relative;
+
+    bal-hint {
+      position: absolute;
+      top: -20px;
+      left: 0;
+    }
+  }
+
+  &.is-invalid {
+    bal-field-label label {
+      color: $danger !important;
     }
 
-    .control {
-      min-height: 36px;
-
-      & > bal-input,
-      & > bal-datepicker {
-        margin-top: 1px;
-      }
-
-      & > bal-checkbox {
-        margin-top: 7px;
-      }
-
-      & > bal-radio-group {
-        margin-top: 10px;
-      }
+    input.input,
+    bal-select .dropdown-trigger > div {
+      border-color: $danger !important;
     }
 
-    .control.has-icons-left *::part(input) {
-      padding-left: 38px;
+    bal-dropdown-trigger bal-icon {
+      fill: $danger !important;
     }
 
-    bal-field-label,
-    bal-field-hint {
-      display: inline-block !important;
-    }
-
-    bal-field-hint {
-      position: relative;
-
-      bal-hint {
-        position: absolute;
-        top: -20px;
-        left: 0;
-      }
-    }
-
-    &.is-invalid {
-      bal-field-label label {
+    bal-checkbox {
+      label {
         color: $danger !important;
       }
-
-      input.input,
-      bal-select .dropdown-trigger > div {
+      label::after,
+      label::before {
         border-color: $danger !important;
       }
+    }
 
-      bal-dropdown-trigger bal-icon {
-        fill: $danger !important;
+    bal-radio-group:not(.bal-select-button) bal-radio {
+      label {
+        color: $danger !important;
       }
+      label::after {
+        background: $danger !important;
+        border-color: $danger !important;
+      }
+      label::before {
+        border-color: $danger !important;
+      }
+    }
 
-      bal-checkbox {
-        label {
+    bal-radio-group.bal-select-button {
+      border-color: $danger !important;
+
+      bal-radio {
+        input[type='radio']:not(:checked) + label {
           color: $danger !important;
         }
-        label::after,
-        label::before {
+
+        input[type='radio']:checked + label {
+          background: $danger !important;
           border-color: $danger !important;
         }
-      }
 
-      bal-radio-group:not(.bal-select-button) bal-radio {
-        label {
-          color: $danger !important;
-        }
         label::after {
           background: $danger !important;
           border-color: $danger !important;
         }
         label::before {
           border-color: $danger !important;
-        }
-      }
-
-      bal-radio-group.bal-select-button {
-        border-color: $danger !important;
-
-        bal-radio {
-          input[type='radio']:not(:checked) + label {
-            color: $danger !important;
-          }
-
-          input[type='radio']:checked + label {
-            background: $danger !important;
-            border-color: $danger !important;
-          }
-
-          label::after {
-            background: $danger !important;
-            border-color: $danger !important;
-          }
-          label::before {
-            border-color: $danger !important;
-          }
         }
       }
     }

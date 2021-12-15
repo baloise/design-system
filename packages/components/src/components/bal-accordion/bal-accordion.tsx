@@ -3,9 +3,6 @@ import { ColorTypesBasic, BalButtonColor } from '../../types/color.types'
 
 @Component({
   tag: 'bal-accordion',
-  styleUrl: 'bal-accordion.scss',
-  scoped: true,
-  shadow: false,
 })
 export class Accordion {
   /**

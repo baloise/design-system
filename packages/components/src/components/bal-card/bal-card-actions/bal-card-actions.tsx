@@ -1,9 +1,7 @@
-import { Component, Host, h, Prop } from "@stencil/core"
+import { Component, Host, h, Prop } from '@stencil/core'
 
 @Component({
-  tag: "bal-card-actions",
-  shadow: false,
-  scoped: false,
+  tag: 'bal-card-actions',
 })
 export class CardActions {
   /**
@@ -14,9 +12,7 @@ export class CardActions {
 
   render() {
     return (
-      <Host
-        class={["bal-card-actions", this.right ? "is-right" : ""].join(" ")}
-      >
+      <Host class={['bal-card-actions', this.right ? 'is-right' : ''].join(' ')}>
         <slot></slot>
       </Host>
     )

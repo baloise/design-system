@@ -4,9 +4,6 @@ import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
 
 @Component({
   tag: 'bal-textarea',
-  styleUrl: 'bal-textarea.scss',
-  shadow: false,
-  scoped: true,
 })
 export class Textarea implements ComponentInterface {
   private inputId = `bal-textarea-${TextareaIds++}`

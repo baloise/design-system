@@ -2,9 +2,6 @@ import { Component, Host, h, Prop, State, Watch, Method, Event, EventEmitter } f
 
 @Component({
   tag: 'bal-pagination',
-  styleUrl: 'bal-pagination.scss',
-  scoped: true,
-  shadow: false,
 })
 export class Pagination {
   @State() _value = 1

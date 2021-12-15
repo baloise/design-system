@@ -3,9 +3,6 @@ import { Component, Host, h, Prop, State, Watch } from '@stencil/core'
 
 @Component({
   tag: 'bal-footer',
-  styleUrl: 'bal-footer.scss',
-  scoped: true,
-  shadow: false,
 })
 export class Footer {
   /**

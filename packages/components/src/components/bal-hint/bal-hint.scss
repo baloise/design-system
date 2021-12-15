@@ -63,3 +63,23 @@ bal-hint.is-placed-left {
     min-width: 464px;
   }
 }
+
+bal-hint-title {
+  display: block;
+  font-family: $family-primary;
+
+  .title {
+    margin-top: 0;
+    font-family: $family-primary;
+  }
+}
+
+bal-hint-text {
+  display: block;
+  font-family: $family-primary;
+
+  p {
+    font-weight: initial;
+    font-family: $family-primary;
+  }
+}

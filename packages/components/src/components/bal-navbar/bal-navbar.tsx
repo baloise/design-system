@@ -2,9 +2,6 @@ import { Component, Element, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-navbar',
-  styleUrl: 'bal-navbar.scss',
-  scoped: false,
-  shadow: false,
 })
 export class Navbar {
   @Element() el!: HTMLElement
@@ -31,7 +28,8 @@ export class Navbar {
         style={{
           position: 'reletiv',
           paddingTop: this.light ? '10px' : '',
-        }}>
+        }}
+      >
         <div
           class="bal-track-line"
           style={{
@@ -39,7 +37,8 @@ export class Navbar {
             top: '0',
             left: '0',
             display: !this.light ? 'none' : '',
-          }}></div>
+          }}
+        ></div>
         <nav
           class={{
             'navbar': true,
@@ -48,7 +47,8 @@ export class Navbar {
             'is-info': !this.light,
           }}
           role="navigation"
-          aria-label="main navigation">
+          aria-label="main navigation"
+        >
           <slot></slot>
         </nav>
       </Host>

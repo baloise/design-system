@@ -4,6 +4,9 @@
 // Small tag labels to insert anywhere
 // https://bulma.io/documentation/elements/tag/
 
+@import 'bal-tag.vars';
+@import 'node_modules/bulma/sass/elements/tag';
+
 bal-tag {
   @include font-smoothing();
   @include margin(0);

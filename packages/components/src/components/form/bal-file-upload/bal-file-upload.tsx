@@ -5,9 +5,6 @@ import { FileUploadRejectedFile, FileUploadRejectionReason } from './bal-file-up
 
 @Component({
   tag: 'bal-file-upload',
-  styleUrl: 'bal-file-upload.scss',
-  scoped: true,
-  shadow: false,
 })
 export class FileUpload {
   @Element() element!: HTMLElement

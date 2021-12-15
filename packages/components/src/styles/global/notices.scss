@@ -1,5 +1,7 @@
 .bal-notices {
   @import 'node_modules/bulma/sass/elements/container';
+  @import '../../components/notice/bal-snackbar/bal-snackbar.scss';
+  @import '../../components/notice/bal-toast/bal-toast.scss';
 
   position: fixed;
   display: flex;

@@ -1,6 +1,73 @@
-@import '../../../styles/global.utilities.scss';
+@import 'bal-notification.vars.scss';
+@import 'node_modules/bulma/sass/elements/notification';
 
-:host {
+bal-notification {
   display: block;
   position: static;
+}
+
+// Notification
+// ------------------------------------------------
+//
+// Bold notification blocks, to alert your users of something
+// https://bulma.io/documentation/elements/notification/
+
+.notification {
+  font-family: $family-primary;
+  font-size: $size-normal;
+  background: $white-bis;
+  border: 1px solid $blue-2;
+  color: $text;
+  border-radius: $radius-large;
+  padding: 16px;
+
+  @include tablet() {
+    padding: 32px;
+  }
+
+  &.is-primary {
+    background: $blue-0;
+    border: 1px solid $blue-2;
+    color: $blue;
+
+    a:not(.button):not(.dropdown-item) {
+      color: $cyan;
+    }
+  }
+
+  &.is-info {
+    background: $blue;
+    border: 1px solid $blue;
+    color: $white;
+  }
+
+  &.is-link {
+    background: $blue;
+    color: $white;
+    border: none;
+  }
+
+  &.is-warning {
+    background: $yellow;
+    color: $white;
+    border: none;
+  }
+
+  &.is-danger {
+    background: $red;
+    color: $white;
+    border: none;
+  }
+
+  &.is-success {
+    background: $green;
+    color: $white;
+    border: none;
+  }
+}
+
+@include desktop() {
+  // .notification {
+  //   padding: 40px;
+  // }
 }

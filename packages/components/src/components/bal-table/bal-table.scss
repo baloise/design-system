@@ -1,4 +1,5 @@
-@import '../../styles/global.utilities';
+@import 'bal-table.vars.scss';
+@import 'node_modules/bulma/sass/elements/table.sass';
 
 bal-table {
   display: block;
@@ -8,4 +9,52 @@ bal-table {
 bal-table.is-fullwidth {
   display: flex;
   width: 100%;
+}
+
+// Table
+// ------------------------------------------------
+//
+// The inevitable HTML table, with special case cells
+// https://bulma.io/documentation/elements/table/
+
+table.table {
+  display: table !important;
+  border-spacing: 0;
+  margin: 0;
+
+  thead {
+    tr {
+      border-top: 0;
+    }
+
+    th {
+      border-color: $blue;
+      border-bottom-width: 1px;
+    }
+  }
+
+  td,
+  th {
+    font-size: $size-normal;
+    font-family: $family-primary;
+    vertical-align: middle;
+
+    .bal-checkbox {
+      padding: 0;
+      margin-top: 1px;
+    }
+  }
+
+  td {
+    color: $black;
+  }
+
+  td.has-buttons {
+    padding: 2px;
+
+    .buttons {
+      justify-content: flex-end;
+      padding: 3px;
+    }
+  }
 }

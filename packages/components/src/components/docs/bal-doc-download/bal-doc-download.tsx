@@ -2,8 +2,6 @@ import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-doc-download',
-  shadow: false,
-  scoped: false,
 })
 export class BalDocDownload {
   @Prop() link = ''

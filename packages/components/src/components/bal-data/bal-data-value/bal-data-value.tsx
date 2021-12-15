@@ -3,8 +3,6 @@ import isNil from 'lodash.isnil'
 
 @Component({
   tag: 'bal-data-value',
-  shadow: false,
-  scoped: false,
 })
 export class DataValue {
   @Element() el!: HTMLElement

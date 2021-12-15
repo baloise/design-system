@@ -3,9 +3,6 @@ import { ColorTypes } from '../../../types/color.types'
 
 @Component({
   tag: 'bal-toast',
-  styleUrl: 'bal-toast.scss',
-  scoped: true,
-  shadow: false,
 })
 export class Toast {
   @Element() element!: HTMLBalToastElement

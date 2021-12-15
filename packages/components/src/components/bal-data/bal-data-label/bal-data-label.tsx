@@ -2,8 +2,6 @@ import { Component, Host, h, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-data-label',
-  shadow: false,
-  scoped: false,
 })
 export class DataLabel {
   /**

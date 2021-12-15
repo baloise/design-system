@@ -1,6 +1,4 @@
-@import '../../../styles/global.utilities';
-
-:host {
+bal-slider {
   flex-direction: column;
   position: relative;
 
@@ -201,7 +199,7 @@
   }
 }
 
-:host(.is-fullwidth) {
+bal-slider.is-fullwidth {
   display: flex;
   width: 100%;
 }

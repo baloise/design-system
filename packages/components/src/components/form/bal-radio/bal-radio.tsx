@@ -3,9 +3,6 @@ import { isDescendant } from '../../../helpers/helpers'
 
 @Component({
   tag: 'bal-radio',
-  styleUrl: 'bal-radio.scss',
-  shadow: false,
-  scoped: true,
 })
 export class Radio implements ComponentInterface {
   private inputId = `bal-rb-${radioIds++}`

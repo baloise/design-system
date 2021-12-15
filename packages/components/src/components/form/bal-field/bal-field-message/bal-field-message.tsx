@@ -3,8 +3,6 @@ import { ColorTypesExtended } from '../../../../types/color.types'
 
 @Component({
   tag: 'bal-field-message',
-  shadow: false,
-  scoped: false,
 })
 export class FieldMessage {
   /**

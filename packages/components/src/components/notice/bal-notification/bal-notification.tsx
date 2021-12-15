@@ -3,9 +3,6 @@ import { ColorTypes } from '../../../types/color.types'
 
 @Component({
   tag: 'bal-notification',
-  styleUrl: 'bal-notification.scss',
-  scoped: true,
-  shadow: false,
 })
 export class Notification {
   /**

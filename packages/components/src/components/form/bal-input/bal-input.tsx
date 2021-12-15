@@ -7,9 +7,6 @@ import { filterInputValue, formatInputValue } from './bal-input.utils'
 
 @Component({
   tag: 'bal-input',
-  styleUrl: 'bal-input.scss',
-  shadow: false,
-  scoped: true,
 })
 export class Input implements ComponentInterface {
   private allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]

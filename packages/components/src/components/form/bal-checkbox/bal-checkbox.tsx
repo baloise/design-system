@@ -3,9 +3,6 @@ import { isDescendant } from '../../../helpers/helpers'
 
 @Component({
   tag: 'bal-checkbox',
-  styleUrl: 'bal-checkbox.scss',
-  shadow: false,
-  scoped: true,
 })
 export class Checkbox {
   private inputId = `bal-cb-${checkboxIds++}`

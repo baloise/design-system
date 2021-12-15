@@ -2,9 +2,6 @@ import { Component, h, Host, Prop, Element, Watch } from '@stencil/core'
 
 @Component({
   tag: 'bal-field',
-  styleUrl: 'bal-field.scss',
-  shadow: false,
-  scoped: false,
 })
 export class Field {
   @Element() element!: HTMLElement

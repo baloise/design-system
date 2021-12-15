@@ -1,7 +1,7 @@
-@import '../../styles/global.utilities';
+@import 'bal-icon.vars.scss';
 @import 'node_modules/bulma/sass/elements/icon.sass';
 
-:host {
+bal-icon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,10 +16,6 @@
     position: static;
     width: 24px;
     max-height: 24px;
-
-    svg {
-      max-height: 24px;
-    }
   }
 
   &.is-size-xsmall,
@@ -85,4 +81,9 @@
   &.is-danger {
     fill: $danger;
   }
+}
+
+.icon-text {
+  flex-wrap: nowrap;
+  word-break: break-word;
 }
