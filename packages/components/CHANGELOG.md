@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/baloise/design-system/compare/v4.2.0...v4.3.0) (2021-12-15)
+
+
+### Bug Fixes
+
+* **stencil:** adjust build artifacts for the docs ([fec6c9f](https://github.com/baloise/design-system/commit/fec6c9fb1acfb86a642c4fdd7d58dcf20a8948bd))
+
+
+### Features
+
+* add component style to global sass file for customization ([f57d254](https://github.com/baloise/design-system/commit/f57d25485f19650430aa5218af6e3f501bd858b9))
+* add component style to global sass file for customization ([17bd5e0](https://github.com/baloise/design-system/commit/17bd5e0d28cb55809e903408595f8ee0547b8712))
+* add component style to global sass file for customization ([0b9a471](https://github.com/baloise/design-system/commit/0b9a471a58c7e8d1786819c58153fd0cef9d3c66))
+* **hint:** add small variant ([d33f273](https://github.com/baloise/design-system/commit/d33f273d43702441947b61a3b9cd5112456c7260))
+* **stencil:** update version 2.11.0 ([b9a8c25](https://github.com/baloise/design-system/commit/b9a8c2561d880e8ced0cf413a9eb190841d9b4f5))
+
+
+
+## 4.1.2 (2021-12-15)
+
+
+
+
+
 # [4.2.0](https://github.com/baloise/design-system/compare/v4.1.2...v4.2.0) (2021-12-15)
 
 
