@@ -1,6 +1,6 @@
-@import '../../../styles/global.utilities';
+@import 'bal-radio-group/bal-radio-group.scss';
 
-:host {
+bal-radio {
   display: inline-block;
   width: auto;
   font-family: $family-primary;

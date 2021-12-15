@@ -4,9 +4,6 @@ import { debounceEvent } from '../../../helpers/helpers'
 
 @Component({
   tag: 'bal-slider',
-  styleUrl: 'bal-slider.scss',
-  shadow: false,
-  scoped: true,
 })
 export class Slider {
   @Element() element!: HTMLElement

@@ -2,9 +2,6 @@ import { Component, Host, h, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-data',
-  styleUrl: 'bal-data.scss',
-  shadow: false,
-  scoped: false,
 })
 export class Data {
   /**

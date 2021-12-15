@@ -3,9 +3,6 @@ import { ColorTypes } from '../../types/color.types'
 
 @Component({
   tag: 'bal-text',
-  styleUrl: 'bal-text.scss',
-  shadow: false,
-  scoped: false,
 })
 export class Text {
   /**

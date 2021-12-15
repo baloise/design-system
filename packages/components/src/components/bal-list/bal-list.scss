@@ -1,114 +1,110 @@
-@import '../../styles/global.utilities';
+.bal-list {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 
-.bal-app {
-  .bal-list {
-    position: static;
+  .bal-list-item {
     display: flex;
-    flex-direction: column;
+    flex: 1;
     width: 100%;
+    min-height: 48px;
+    align-items: center;
 
-    .bal-list-item {
+    .bal-list-item-icon,
+    .bal-list-item-content {
+      display: flex;
+      flex: 1;
+    }
+
+    .bal-list-item-icon {
+      justify-content: center;
+      max-width: 48px;
+    }
+
+    .bal-list-item-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & > button,
+    & > a {
+      text-decoration: none;
+      position: static;
       display: flex;
       flex: 1;
       width: 100%;
-      min-height: 48px;
       align-items: center;
+      min-height: 48px;
 
-      .bal-list-item-icon,
-      .bal-list-item-content {
-        display: flex;
-        flex: 1;
+      flex-direction: row;
+      padding: 0;
+      &:focus,
+      &:active,
+      &:hover {
+        color: $blue;
       }
+    }
 
-      .bal-list-item-icon {
-        justify-content: center;
-        max-width: 48px;
-      }
+    &.is-selected {
+      background: $blue-1;
+    }
 
-      .bal-list-item-content {
-        display: flex;
-        flex-direction: column;
-      }
+    &:hover {
+      cursor: pointer;
+      background: $grey-2;
+    }
+  }
 
-      & > button,
-      & > a {
-        text-decoration: none;
-        position: static;
-        display: flex;
-        flex: 1;
-        width: 100%;
-        align-items: center;
-        min-height: 48px;
+  &.is-inverted {
+    .bal-list-item-title {
+      color: $white;
+    }
 
-        flex-direction: row;
-        padding: 0;
-        &:focus,
-        &:active,
-        &:hover {
-          color: $blue;
-        }
-      }
-
-      &.is-selected {
-        background: $blue-1;
-      }
-
+    .bal-list-item {
       &:hover {
         cursor: pointer;
-        background: $grey-2;
+        background: $blue-8;
       }
     }
-
-    &.is-inverted {
-      .bal-list-item-title {
-        color: $white;
-      }
-
-      .bal-list-item {
-        &:hover {
-          cursor: pointer;
-          background: $blue-8;
-        }
-      }
-    }
-
-    &.has-border .bal-list-item {
-      border-bottom: 1px solid $blue-2;
-    }
   }
 
-  .bal-list-item-title,
-  .bal-list-item-link,
-  .bal-list-item-subtitle,
-  .bal-list-item-content {
-    font-weight: $weight-normal;
-    font-family: $family-primary;
-    font-size: $size-normal;
-    line-height: $size-normal;
+  &.has-border .bal-list-item {
+    border-bottom: 1px solid $blue-2;
   }
+}
 
-  .bal-list-item-title,
-  .bal-list-item-link,
-  .bal-list-item-subtitle {
-    position: static;
-    box-sizing: border-box;
-    max-width: 100%;
-    display: block;
-    white-space: pre-line;
-  }
+.bal-list-item-title,
+.bal-list-item-link,
+.bal-list-item-subtitle,
+.bal-list-item-content {
+  font-weight: $weight-normal;
+  font-family: $family-primary;
+  font-size: $size-normal;
+  line-height: $size-normal;
+}
 
-  .bal-list-item-title,
-  .bal-list-item-link {
-    color: $blue;
-  }
+.bal-list-item-title,
+.bal-list-item-link,
+.bal-list-item-subtitle {
+  position: static;
+  box-sizing: border-box;
+  max-width: 100%;
+  display: block;
+  white-space: pre-line;
+}
 
-  .bal-list-item-link a {
-    color: $blue;
-    text-decoration: none;
-  }
+.bal-list-item-title,
+.bal-list-item-link {
+  color: $blue;
+}
 
-  .bal-list-item-subtitle {
-    color: $text-light;
-    margin-top: 2px;
-  }
+.bal-list-item-link a {
+  color: $blue;
+  text-decoration: none;
+}
+
+.bal-list-item-subtitle {
+  color: $text-light;
+  margin-top: 2px;
 }

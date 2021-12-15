@@ -16,9 +16,6 @@ export interface BalOptionController extends BalOptionValue {
 
 @Component({
   tag: 'bal-select',
-  styleUrl: 'bal-select.scss',
-  shadow: false,
-  scoped: true,
 })
 export class Select {
   @Element() private el!: HTMLElement

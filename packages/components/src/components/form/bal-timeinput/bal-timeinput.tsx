@@ -3,9 +3,6 @@ import { BalTimeSelectionOption } from './bal-timeinput-select-option.type'
 
 @Component({
   tag: 'bal-timeinput',
-  styleUrl: 'bal-timeinput.scss',
-  shadow: false,
-  scoped: true,
 })
 export class Timeinput {
   static readonly CLOCK_PATTERN = /^([0-9]{1,2}):([0-9]{1,2})$/

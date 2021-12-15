@@ -1,10 +1,10 @@
 import { onMounted } from 'vue'
 import { Grid } from 'ag-grid-community'
 
-import docs from './bal-table.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
 import { BalTable, BalIcon, BalCheckbox, BalButton, BalTag, BalCard } from '../../../../.storybook/vue/components'
-import { tableHtml } from './examples.docs'
+import docs from './bal-table.docs.mdx'
+import { tableHtml } from './bal-table.templates.ts'
 
 import { BalTableButtonRenderer, BalTableTagRenderer, BalTableTextRenderer } from '../../../../../components-table/dist/index.esm'
 

@@ -22,10 +22,10 @@
     "bulma-css"
   ],
   "main": "dist/index.cjs.js",
-  "module": "dist/custom-elements/index.js",
+  "module": "dist/index.js",
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
-  "types": "dist/custom-elements/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/design-system-components/design-system-components.esm.js",
@@ -68,7 +68,7 @@
   "dependencies": {
     "@baloise/design-system-fonts": "4.1.2",
     "@baloise/design-system-icons": "4.1.2",
-    "@baloise/web-app-utils": "^2.0.8",
+    "@baloise/web-app-utils": "^2.0.10",
     "@stencil/core": "^2.11.0",
     "bulma": "^0.9.3",
     "filesize.js": "^2.0.0",

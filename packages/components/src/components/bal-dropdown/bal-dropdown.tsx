@@ -2,8 +2,6 @@ import { Component, h, Host, Listen, Method, Prop, Element, Event, EventEmitter,
 
 @Component({
   tag: 'bal-dropdown',
-  shadow: false,
-  scoped: false,
 })
 export class Dropdown {
   private dropdownId = `bal-dd-${DropdownIds++}`

@@ -3,9 +3,6 @@ import { BalButtonColor } from '../../types'
 
 @Component({
   tag: 'bal-button',
-  styleUrl: 'bal-button.scss',
-  shadow: false,
-  scoped: true,
 })
 export class Button implements ComponentInterface {
   @Element() el!: HTMLElement

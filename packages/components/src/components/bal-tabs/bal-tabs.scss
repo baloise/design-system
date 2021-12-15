@@ -1,12 +1,12 @@
 @import './bal-tabs.vars';
 @import 'node_modules/bulma/sass/components/tabs.sass';
 
-:host {
+bal-tabs {
   display: block;
   position: static;
 }
 
-:host.bal-tabs {
+bal-tabs.bal-tabs {
   .tabs {
     margin: 0 !important;
 
@@ -105,6 +105,11 @@
       }
     }
   }
+}
+
+bal-tab-item {
+  display: block;
+  position: static;
 }
 
 @import './bal-steps';

@@ -1,6 +1,33 @@
-@import '../../styles/global.utilities';
+// Footer
+// ------------------------------------------------
+//
+// A simple responsive footer which can include anything: lists, headings, columns, icons, buttons, etc.
+// https://bulma.io/documentation/layout/footer/
 
-:host {
+@import 'bal-footer.vars.scss';
+@import 'node_modules/bulma/sass/layout/footer.sass';
+
+footer.footer {
+  position: relative;
+  font-family: $family-primary;
+
+  &.has-track-line {
+    padding-bottom: $footer-padding + 12px;
+  }
+
+  @include tablet() {
+    &.has-track-line {
+      padding-bottom: $footer-padding + 14px;
+    }
+  }
+  @include desktop() {
+    &.has-track-line {
+      padding-bottom: $footer-padding + 18px;
+    }
+  }
+}
+
+bal-footer {
   display: block;
   position: static;
 

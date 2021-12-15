@@ -1,10 +1,4 @@
-@import '../../../styles/global.utilities';
-@import 'node_modules/bulma/sass/form/shared';
-@import 'node_modules/bulma/sass/form/tools';
-@import 'node_modules/bulma/sass/form/select';
-@import '../../bal-pagination/bal-pagination.scss';
-
-:host {
+bal-datepicker {
   display: block;
   position: relative;
   font-family: $family-primary;

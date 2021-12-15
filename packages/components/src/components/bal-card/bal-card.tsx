@@ -5,8 +5,6 @@ import { PaddingCardType, SpacingCardType } from '../../types/padding.types'
 
 @Component({
   tag: 'bal-card',
-  shadow: false,
-  scoped: false,
 })
 export class BalCard {
   /**

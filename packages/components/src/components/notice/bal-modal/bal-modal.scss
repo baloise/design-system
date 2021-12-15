@@ -1,3 +1,6 @@
+@import 'bal-modal.vars.scss';
+@import 'node_modules/bulma/sass/components/modal';
+
 bal-modal-header {
   font-family: $family-primary;
 }
@@ -41,6 +44,23 @@ bal-modal-header {
     &::before {
       background: $blue;
     }
+  }
+}
+
+bal-modal-actions {
+  position: static;
+  width: 100%;
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  min-width: 100%;
+
+  bal-button {
+    margin-right: 8px;
+  }
+
+  bal-button:first-child {
+    margin-right: 0;
   }
 }
 

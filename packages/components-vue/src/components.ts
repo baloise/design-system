@@ -1059,6 +1059,11 @@ export const BalHint = /*@__PURE__*/ defineComponent({
       default: 'Close',
       required: false,
     },
+    small: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   emits: {
 

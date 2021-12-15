@@ -4,9 +4,6 @@ import { HeadingLevels } from './bal-heading.type'
 
 @Component({
   tag: 'bal-heading',
-  styleUrl: 'bal-heading.scss',
-  shadow: false,
-  scoped: false,
 })
 export class Heading {
   /**

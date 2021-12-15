@@ -2,9 +2,6 @@ import { Component, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-spinner',
-  styleUrl: 'bal-spinner.scss',
-  shadow: false,
-  scoped: true,
 })
 export class Spinner {
   /**

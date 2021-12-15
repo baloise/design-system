@@ -1,6 +1,4 @@
-@import '../../styles/global.utilities';
-
-:host {
+bal-hint {
   display: inline-block;
   position: relative;
 }
@@ -35,7 +33,7 @@ bal-icon[role='button'] {
   }
 }
 
-:host.is-placed-left {
+bal-hint.is-placed-left {
   .bal-hint-content {
     right: 40px;
   }
@@ -54,10 +52,34 @@ bal-icon[role='button'] {
     min-height: auto;
     min-width: 320px;
   }
+
+  bal-hint.is-small .buttons {
+    display: none !important;
+  }
 }
 
 @include desktop() {
   .bal-hint-content {
     min-width: 464px;
+  }
+}
+
+bal-hint-title {
+  display: block;
+  font-family: $family-primary;
+
+  .title {
+    margin-top: 0;
+    font-family: $family-primary;
+  }
+}
+
+bal-hint-text {
+  display: block;
+  font-family: $family-primary;
+
+  p {
+    font-weight: initial;
+    font-family: $family-primary;
   }
 }

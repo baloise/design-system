@@ -1,9 +1,7 @@
-import { Component, Host, h, Prop } from "@stencil/core"
+import { Component, Host, h, Prop } from '@stencil/core'
 
 @Component({
-  tag: "bal-card-content",
-  shadow: false,
-  scoped: false,
+  tag: 'bal-card-content',
 })
 export class CardContent {
   /**
@@ -13,10 +11,7 @@ export class CardContent {
 
   render() {
     return (
-      <Host class={[
-        "bal-card-content",
-        this.inverted ? "inverted" : ""
-      ].join(" ")}>
+      <Host class={['bal-card-content', this.inverted ? 'inverted' : ''].join(' ')}>
         <slot></slot>
       </Host>
     )

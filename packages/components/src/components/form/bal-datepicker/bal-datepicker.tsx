@@ -26,9 +26,6 @@ import { i18nDate } from './bal-datepicker.i18n'
 
 @Component({
   tag: 'bal-datepicker',
-  styleUrl: 'bal-datepicker.scss',
-  scoped: true,
-  shadow: false,
 })
 export class Datepicker implements ComponentInterface {
   private inputElement!: HTMLInputElement

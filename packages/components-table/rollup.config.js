@@ -10,7 +10,7 @@ export default {
     'lodash.isnil',
     '@baloise/design-system-components',
     '@baloise/design-system-components/loader',
-    '@baloise/design-system-components/dist/custom-elements',
+    '@baloise/design-system-components/dist/components',
   ],
   plugins: [
     scss({

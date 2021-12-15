@@ -6,9 +6,6 @@ import { BalButtonColor } from '../../types'
 
 @Component({
   tag: 'bal-icon',
-  styleUrl: 'bal-icon.scss',
-  shadow: false,
-  scoped: true,
 })
 export class Icon {
   /**

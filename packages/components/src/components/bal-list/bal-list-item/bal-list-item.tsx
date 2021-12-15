@@ -2,8 +2,6 @@ import { Component, Host, h, Prop, Event, EventEmitter } from '@stencil/core'
 
 @Component({
   tag: 'bal-list-item',
-  shadow: false,
-  scoped: false,
 })
 export class ListItem {
   /**
@@ -46,13 +44,15 @@ export class ListItem {
             'is-disabled': this.disabled,
             'is-selected': this.selected,
             'is-clickable': this.clickable || this.href.length > 0,
-          }}>
+          }}
+        >
           <a
             href={this.href}
             target={this.target}
             onClick={(event: MouseEvent) => {
               this.balNavigate.emit(event)
-            }}>
+            }}
+          >
             <slot></slot>
           </a>
         </Host>
@@ -67,7 +67,8 @@ export class ListItem {
           'is-disabled': this.disabled,
           'is-selected': this.selected,
           'is-clickable': this.clickable || this.href.length > 0,
-        }}>
+        }}
+      >
         <slot></slot>
       </Host>
     )

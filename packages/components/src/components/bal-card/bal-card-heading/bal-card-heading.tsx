@@ -1,9 +1,7 @@
-import { Component, Host, h } from "@stencil/core"
+import { Component, Host, h } from '@stencil/core'
 
 @Component({
-  tag: "bal-card-heading",
-  shadow: false,
-  scoped: false,
+  tag: 'bal-card-heading',
 })
 export class CardHeading {
   render() {

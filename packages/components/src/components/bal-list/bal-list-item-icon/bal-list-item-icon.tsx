@@ -2,8 +2,6 @@ import { Component, Host, h, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-list-item-icon',
-  shadow: false,
-  scoped: false,
 })
 export class ListItemIcon {
   /**

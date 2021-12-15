@@ -3,9 +3,6 @@ import { findItemLabel } from '../../../../helpers/helpers'
 
 @Component({
   tag: 'bal-radio-group',
-  styleUrl: 'bal-radio-group.scss',
-  shadow: false,
-  scoped: true,
 })
 export class RadioGroup implements ComponentInterface {
   private inputId = `bal-rg-${radioGroupIds++}`

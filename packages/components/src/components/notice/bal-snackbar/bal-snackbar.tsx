@@ -3,9 +3,6 @@ import { ColorTypes, BalButtonColor } from '../../../types/color.types'
 
 @Component({
   tag: 'bal-snackbar',
-  styleUrl: 'bal-snackbar.scss',
-  scoped: true,
-  shadow: false,
 })
 export class Snackbar {
   @Element() element!: HTMLElement

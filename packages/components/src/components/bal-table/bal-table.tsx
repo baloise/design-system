@@ -2,9 +2,6 @@ import { Component, h, Prop, Host, ComponentInterface, Element } from '@stencil/
 
 @Component({
   tag: 'bal-table',
-  styleUrl: 'bal-table.scss',
-  shadow: false,
-  scoped: false,
 })
 export class Table implements ComponentInterface {
   @Element() el!: HTMLElement

@@ -4,6 +4,9 @@
 // An interactive dropdown menu for discoverable content
 // https://bulma.io/documentation/components/dropdown/
 
+@import 'bal-dropdown.vars';
+@import 'node_modules/bulma/sass/components/dropdown.sass';
+
 .bal-dropdown {
   display: inline-block;
 

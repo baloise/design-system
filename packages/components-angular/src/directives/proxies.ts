@@ -694,14 +694,14 @@ export class BalHeading {
 
 export declare interface BalHint extends Components.BalHint {}
 @ProxyCmp({
-  inputs: ['closeLabel'],
+  inputs: ['closeLabel', 'small'],
   methods: ['toggle', 'open', 'close']
 })
 @Component({
   selector: 'bal-hint',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
-  inputs: ['closeLabel']
+  inputs: ['closeLabel', 'small']
 })
 export class BalHint {
   protected el: HTMLElement;

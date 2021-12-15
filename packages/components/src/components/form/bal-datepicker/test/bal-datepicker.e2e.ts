@@ -58,7 +58,7 @@ describe('bal-datepicker', () => {
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
   })
 
-  it('should return an empty string, because of a invalid date', async () => {
+  it('should turn short date into a full date', async () => {
     await nativeInputElement.focus()
     await nativeInputElement.press('2')
     await nativeInputElement.press('.')
@@ -67,14 +67,8 @@ describe('bal-datepicker', () => {
     await nativeInputElement.press('1')
     await nativeInputElement.press('Tab')
 
-    expect(await nativeInputElement.getProperty('value')).toBe('')
-    expect(balChangeEvent).toHaveReceivedEventTimes(0)
-  })
-
-  it('should fire a click event', async () => {
-    balDatepickerElement.click()
-    await page.waitForChanges()
-    expect(clickEvent).toHaveReceivedEventTimes(1)
+    expect(await nativeInputElement.getProperty('value')).toBe('02.02.2001')
+    expect(balChangeEvent).toHaveReceivedEventTimes(1)
   })
 
   it('should not fire a click event, because the input is disabled', async () => {

@@ -2,8 +2,6 @@ import { Component, Host, h, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-data-item',
-  shadow: false,
-  scoped: false,
 })
 export class DataItem {
   /**

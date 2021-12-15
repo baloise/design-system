@@ -2,9 +2,6 @@ import { Component, Host, h } from '@stencil/core'
 
 @Component({
   tag: 'bal-hint-title',
-  styleUrl: 'bal-hint-title.scss',
-  scoped: true,
-  shadow: false,
 })
 export class HintTitle {
   render() {

@@ -81,8 +81,6 @@ function ComponentTemplate(tag) {
 
 @Component({
   tag: '${tag}',
-  shadow: false,
-  scoped: false,
 })
 export class ${toClassName(tag)} implements ComponentInterface {
   @Element() el!: HTMLElement
