@@ -1,7 +1,8 @@
-@import '../../../styles/global.utilities';
-@import '../../bal-dropdown/bal-dropdown.vars.scss';
+bal-select-option {
+  display: none !important;
+}
 
-:host {
+bal-select {
   display: block;
   position: relative;
 
@@ -20,8 +21,8 @@
     max-width: 100%;
     min-width: 0;
     width: 100%;
-    padding-bottom: 1px;
     border-bottom: 1px solid $blue-2;
+    padding-bottom: 1px;
     margin-top: -1px;
 
     &:focus-within,

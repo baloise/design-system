@@ -2,9 +2,6 @@ import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-select-option',
-  styleUrl: 'bal-select-option.scss',
-  shadow: false,
-  scoped: false,
 })
 export class SelectOption implements ComponentInterface {
   private inputId = `bal-selopt-${selectOptionIds++}`
@@ -26,7 +23,7 @@ export class SelectOption implements ComponentInterface {
 
   render() {
     return (
-      <Host id={this.inputId}>
+      <Host id={this.inputId} style={{ display: 'none' }}>
         <slot></slot>
       </Host>
     )

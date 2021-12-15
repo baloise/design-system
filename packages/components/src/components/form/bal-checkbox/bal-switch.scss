@@ -1,6 +1,4 @@
-@import '../../../styles/global.utilities';
-
-:host {
+bal-checkbox {
   &.bal-switch {
     input[type='checkbox'] {
       outline: 0;
