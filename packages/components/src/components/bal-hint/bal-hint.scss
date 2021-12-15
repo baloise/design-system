@@ -1,6 +1,4 @@
-@import '../../styles/global.utilities';
-
-:host {
+bal-hint {
   display: inline-block;
   position: relative;
 }
@@ -35,7 +33,7 @@ bal-icon[role='button'] {
   }
 }
 
-:host.is-placed-left {
+bal-hint.is-placed-left {
   .bal-hint-content {
     right: 40px;
   }
@@ -53,6 +51,10 @@ bal-icon[role='button'] {
     box-shadow: $shadow;
     min-height: auto;
     min-width: 320px;
+  }
+
+  bal-hint.is-small .buttons {
+    display: none !important;
   }
 }
 

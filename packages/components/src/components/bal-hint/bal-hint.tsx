@@ -2,9 +2,6 @@ import { Component, Host, h, Method, State, Prop, Element, Listen } from '@stenc
 
 @Component({
   tag: 'bal-hint',
-  styleUrl: 'bal-hint.scss',
-  scoped: true,
-  shadow: false,
 })
 export class Hint {
   @Element() element!: HTMLElement
@@ -15,6 +12,11 @@ export class Hint {
    * Text for the close button.
    */
   @Prop() closeLabel = 'Close'
+
+  /**
+   * Disables the close button for tablet and desktop
+   */
+  @Prop() small = false
 
   @Listen('keyup', { target: 'document' })
   handleKeyUp(event: KeyboardEvent) {
@@ -78,12 +80,13 @@ export class Hint {
       <Host
         class={{
           [`is-placed-${this.placement}`]: true,
+          'is-small': this.small,
         }}
         data-visible={this.isActive}
       >
         <bal-icon class="data-test-hint-trigger" role="button" name="info-circle" size="" onClick={() => this.toggle()}></bal-icon>
 
-        <div class="bal-hint-content data-test-hint-content p-5" style={{ display: this.isActive ? 'inline-block' : 'none' }}>
+        <div class="bal-hint-content data-test-hint-content p-4" style={{ display: this.isActive ? 'inline-block' : 'none' }}>
           <slot></slot>
 
           <div class="buttons is-row-reverse">

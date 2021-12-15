@@ -29,6 +29,20 @@ export const Basic = args => ({
 Basic.args = {}
 Basic.parameters = { ...component.sourceCode(Basic) }
 
+export const Small = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-hint v-bind="args" class="mt-7">
+  <bal-hint-text>
+    Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.
+  </bal-hint-text>
+  </bal-hint>`,
+})
+Small.args = {
+  small: true,
+}
+Basic.parameters = { ...component.sourceCode(Basic) }
+
 export const FieldHint = args => ({
   components: { ...component.components, BalInput, BalField, BalFieldControl, BalFieldMessage, BalFieldLabel, BalFieldHint },
   setup: () => ({ args }),
