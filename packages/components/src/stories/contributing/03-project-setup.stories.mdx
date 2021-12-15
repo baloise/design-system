@@ -74,10 +74,7 @@ For our CI & CD task we use [Github Actions](https://github.com/baloise/design-s
 │  ├── components
 │  │  └── bal-<component>
 │  │        ├── bal-<component>-<addon> # sub-component
-│  │        │  ├── bal-<component>-<addon>.e2e.ts # E2E test file
-│  │        │  ├── bal-<component>-<addon>.scss # Specific component style
 │  │        │  ├── bal-<component>-<addon>.tsx # Component logic
-│  │        │  ├── index.html # Examples for the cypress tests: <deprecated> use storybook instead.
 │  │        │  └── readme.md # generated Readme with the components api
 │  │        │
 │  │        ├── stories # documentation folder with the stories
@@ -99,7 +96,7 @@ For our CI & CD task we use [Github Actions](https://github.com/baloise/design-s
 │  │
 │  ├── constants # global constants.
 │  ├── helpers # global helper functions.
-│  ├── styles # global styles witch is extends bulma.css
+│  ├── styles # global styles which extends the bulma sass files
 │  │  ├── global.scss # global stylesheet of the Design System
 │  │  └── global.utilities.scss # exports variables, mixins... (no-styles)
 │  │
