@@ -1,6 +1,6 @@
 import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
 import { BalSelect, BalSelectOption, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage } from '../../../../../.storybook/vue/components'
-import { marvelHeros } from './examples.docs'
+import { marvelHeros } from './bal-select.templates.ts'
 import docs from './bal-select.docs.mdx'
 
 const balFieldArgTypes = stencilArgType(BalField)

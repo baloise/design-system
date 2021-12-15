@@ -81,13 +81,17 @@ For our CI & CD task we use [Github Actions](https://github.com/baloise/design-s
 │  │        │  └── readme.md # generated Readme with the components api
 │  │        │
 │  │        ├── stories # documentation folder with the stories
-│  │        │  ├── docs.stories.ts # has the different variants/stories of the component
-│  │        │  ├── examples.docs.ts # HTML templates snippets <optional>
-│  │        │  ├── readme.docs.mdx # main documentation file
+│  │        │  ├── bal-<component>.docs.mdx # main documentation file
+│  │        │  ├── bal-<component>.stories.ts # has the different variants/stories of the component
+│  │        │  ├── bal-<component>.templates.ts # HTML templates snippets <optional>
 │  │        │  ├── github.md # generated file with the contribution links
 │  │        │  └── testing.md # generated file with the testing api
 │  │        │
-│  │        ├── bal-<component>.e2e.ts # E2E test file
+│  │        ├── test # documentation folder with the stories
+│  │        │  ├── bal-<component>.e2e.ts # E2E test file
+│  │        │  └── bal-<component>.spec.ts # Unit test file
+│  │        │
+│  │        ├── bal-<component>.vars.scss # Sass variables
 │  │        ├── bal-<component>.scss # Specific component style
 │  │        ├── bal-<component>.tsx # Component logic
 │  │        ├── index.html # Examples for the cypress tests: <deprecated> use storybook instead.
