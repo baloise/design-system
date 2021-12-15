@@ -31,8 +31,9 @@
   "unpkg": "dist/design-system-components/design-system-components.esm.js",
   "files": [
     "dist/",
+    "loader/",
     "src/styles/",
-    "loader/"
+    "src/components/**/*.scss"
   ],
   "scripts": {
     "start": "npm run serve",
