@@ -44,6 +44,7 @@
     "test": "npm run test:components",
     "test:components": "node .build/banner.js test:components && cd packages/components && npm run test",
     "test:cypress": "node .build/banner.js test:cypress && npm --prefix packages/testing run test",
+    "test:serve": "node .build/banner.js test:cypress && npm --prefix packages/testing run serve",
     "test:server": "node .build/banner.js test:server && npm run test:build-server && npm run test:start-server",
     "test:build-server": "npm --prefix packages/components run www",
     "test:start-server": "http-server packages/components/www -p 3333 -c-1 --silent",
