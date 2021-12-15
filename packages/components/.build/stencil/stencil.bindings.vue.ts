@@ -32,7 +32,7 @@ export const VueGenerator = (
     componentCorePackage,
     proxiesFile,
     componentModels: vueComponentModels,
-    customElementsDir: '../../dist/custom-elements',
+    customElementsDir: '../../dist/components',
     includeDefineCustomElements,
     includePolyfills: false,
     includeUtils: false,

@@ -6,7 +6,7 @@ import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 
 let outputTargets = []
 if (process.env.STORYBOOK_MODE === 'prod') {
-  outputTargets = [VueGenerator('../../dist/custom-elements', './.storybook/vue/components.ts', true)]
+  outputTargets = [VueGenerator('../../dist/components', './.storybook/vue/components.ts', true)]
 } else if (process.env.STORYBOOK_MODE === 'dev') {
   outputTargets = [
     {
@@ -22,13 +22,13 @@ if (process.env.STORYBOOK_MODE === 'prod') {
       esmLoaderPath: '../loader',
     },
     {
-      type: 'dist-custom-elements-bundle',
+      type: 'dist-custom-elements',
     },
     {
       type: 'docs-json',
       file: './generated/components.json',
     },
-    VueGenerator('../../dist/custom-elements', './.storybook/vue/components.ts', true),
+    VueGenerator('../../dist/components', './.storybook/vue/components.ts', true),
   ]
 }
 
