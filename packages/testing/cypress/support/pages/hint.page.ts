@@ -4,6 +4,6 @@ export class HintPage {
   hint = dataTestSelector('hint')
 
   open() {
-    cy.visit('/components/notice/bal-hint')
+    cy.visit('/components/bal-hint')
   }
 }
