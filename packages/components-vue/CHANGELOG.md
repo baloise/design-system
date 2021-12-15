@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/baloise/design-system/compare/v4.1.2...v4.2.0) (2021-12-15)
+
+
+### Bug Fixes
+
+* **vue:** need to remove experimental vite support ([749ca74](https://github.com/baloise/design-system/commit/749ca74228f7990da6dad07e161abc421bf183c4))
+
+
+
+
+
 ## [4.1.2](https://github.com/baloise/design-system/compare/v4.1.1...v4.1.2) (2021-12-15)
 
 **Note:** Version bump only for package @baloise/design-system-components-vue
