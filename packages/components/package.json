@@ -35,7 +35,7 @@
     "loader/"
   ],
   "scripts": {
-    "start": "npm run serve",
+    "start": "npm run dev",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
     "==================== BUILD ====================": "================================",
     "build": "npm run build:contributors && npm run build:testing && stencil build",
@@ -61,7 +61,7 @@
     "test:unit:watch": "stencil test --spec --watchAll --config stencil.test.config.ts",
     "test:e2e": "stencil test --e2e --config stencil.test.config.ts",
     "test:e2e:watch": "stencil test --e2e --watchAll --config stencil.test.config.ts",
-    "log": "stencil build --prod --config stencil.log.config.ts --config stencil.test.config.ts",
+    "log": "stencil build --config stencil.log.config.ts",
     "www": "stencil build --config stencil.test.config.ts",
     "www:watch": "stencil build --dev --serve --config stencil.test.config.ts --watch"
   },
