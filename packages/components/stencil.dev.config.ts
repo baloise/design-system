@@ -6,7 +6,7 @@ import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 
 let outputTargets = []
 if (process.env.STORYBOOK_MODE === 'prod') {
-  outputTargets = [VueGenerator('../../loader', './.storybook/vue/components.ts', true)]
+  outputTargets = [VueGenerator('../../dist/components', './.storybook/vue/components.ts', true)]
 } else if (process.env.STORYBOOK_MODE === 'dev') {
   outputTargets = [
     {
