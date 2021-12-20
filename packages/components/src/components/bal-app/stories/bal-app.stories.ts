@@ -1,5 +1,5 @@
 import docs from './bal-app.docs.mdx'
-import { BalComponentStory, withContent } from '../../../stories/utils'
+import { BalComponentStory } from '../../../stories/utils'
 import {
   BalApp,
   BalCard,
@@ -18,7 +18,20 @@ import {
 const component = BalComponentStory({
   component: BalApp,
   argTypes: {
-    ...withContent(),
+    hasBackground: {
+      description: 'Adds a light grey background to increase the contrast to the card elements',
+      table: {
+        category: 'CSS Classes',
+      },
+      control: { type: 'boolean' },
+    },
+    hasStickyFooter: {
+      description: 'Sets the footer sticky to the bottom',
+      table: {
+        category: 'CSS Classes',
+      },
+      control: { type: 'boolean' },
+    },
   },
   docs,
 })
@@ -41,7 +54,7 @@ export const Basic = args => ({
     BalIcon,
   },
   setup: () => ({ args }),
-  template: `<bal-app v-bind="args">
+  template: `<bal-app v-bind="args" :class="{'has-background': args.hasBackground, 'has-sticky-footer': args.hasStickyFooter}">
   <header class="has-background-white">
     <bal-navbar no-burger>
       <bal-navbar-brand>
@@ -56,7 +69,9 @@ export const Basic = args => ({
         <bal-card-title>BaloiseCombi</bal-card-title>
         <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
 
-        <bal-card-content>{{ args.content }}</bal-card-content>
+        <bal-card-content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </bal-card-content>
 
         <bal-card-actions>
           <bal-button>Action</bal-button>
@@ -77,8 +92,7 @@ export const Basic = args => ({
   </bal-app>`,
 })
 Basic.args = {
-  background: true,
-  hasStickyFooter: true,
-  content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  hasBackground: false,
+  hasStickyFooter: false,
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
