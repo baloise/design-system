@@ -9,7 +9,7 @@ export const config: Config = {
       name: 'log-output-library',
       async generator(config, compilerCtx, buildCtx) {
         buildCtx.components.forEach(component => {
-          if (component.tagName === 'bal-datepicker') {
+          if (component.tagName === 'bal-modal') {
             console.log('PROPS')
             component.properties.forEach(prop => {
               console.log(prop.name)

@@ -3,107 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [4.3.1](https://github.com/baloise/design-system/compare/v4.3.0...v4.3.1) (2021-12-15)
+# [5.0.0](https://github.com/baloise/design-system/compare/v4.0.0...v5.0.0) (2021-12-20)
 
+### BREAKING CHANGES
+
+- The component `bal-app` lost his props, due better intrgration for our proxy libraries.
+  - Follow the migration guide [Migration from 4.x to 5.x](https://design.baloise.dev/?path=/story/migration-migration-from-4-x-to-5-x--page)
+
+### Features
+
+- **vue:** add modal controller ([097e08](https://github.com/baloise/design-system/pull/420/commits/097e08a7a01546294ac9a2858e4db1f82e571b50))
+
+## [4.3.1](https://github.com/baloise/design-system/compare/v4.3.0...v4.3.1) (2021-12-15)
 
 ### Bug Fixes
 
-* add missing sass files of the components ([2efa8ca](https://github.com/baloise/design-system/commit/2efa8ca11e4f0541f01320485a409ac0a003bf5a))
-
-
-
-
+- add missing sass files of the components ([2efa8ca](https://github.com/baloise/design-system/commit/2efa8ca11e4f0541f01320485a409ac0a003bf5a))
 
 # [4.3.0](https://github.com/baloise/design-system/compare/v4.2.0...v4.3.0) (2021-12-15)
 
-
 ### Bug Fixes
 
-* **stencil:** adjust build artifacts for the docs ([fec6c9f](https://github.com/baloise/design-system/commit/fec6c9fb1acfb86a642c4fdd7d58dcf20a8948bd))
-* **vue:** need to remove experimental vite support ([749ca74](https://github.com/baloise/design-system/commit/749ca74228f7990da6dad07e161abc421bf183c4))
-
+- **stencil:** adjust build artifacts for the docs ([fec6c9f](https://github.com/baloise/design-system/commit/fec6c9fb1acfb86a642c4fdd7d58dcf20a8948bd))
+- **vue:** need to remove experimental vite support ([749ca74](https://github.com/baloise/design-system/commit/749ca74228f7990da6dad07e161abc421bf183c4))
 
 ### Features
 
-* add component style to global sass file for customization ([f57d254](https://github.com/baloise/design-system/commit/f57d25485f19650430aa5218af6e3f501bd858b9))
-* add component style to global sass file for customization ([17bd5e0](https://github.com/baloise/design-system/commit/17bd5e0d28cb55809e903408595f8ee0547b8712))
-* add component style to global sass file for customization ([0b9a471](https://github.com/baloise/design-system/commit/0b9a471a58c7e8d1786819c58153fd0cef9d3c66))
-* **hint:** add small variant ([d33f273](https://github.com/baloise/design-system/commit/d33f273d43702441947b61a3b9cd5112456c7260))
-* **stencil:** update version 2.11.0 ([b9a8c25](https://github.com/baloise/design-system/commit/b9a8c2561d880e8ced0cf413a9eb190841d9b4f5))
-
-
-
-## 4.1.2 (2021-12-15)
-
-
-
-
+- add component style to global sass file for customization ([f57d254](https://github.com/baloise/design-system/commit/f57d25485f19650430aa5218af6e3f501bd858b9))
+- add component style to global sass file for customization ([17bd5e0](https://github.com/baloise/design-system/commit/17bd5e0d28cb55809e903408595f8ee0547b8712))
+- add component style to global sass file for customization ([0b9a471](https://github.com/baloise/design-system/commit/0b9a471a58c7e8d1786819c58153fd0cef9d3c66))
+- **hint:** add small variant ([d33f273](https://github.com/baloise/design-system/commit/d33f273d43702441947b61a3b9cd5112456c7260))
+- **stencil:** update version 2.11.0 ([b9a8c25](https://github.com/baloise/design-system/commit/b9a8c2561d880e8ced0cf413a9eb190841d9b4f5))
 
 # [4.2.0](https://github.com/baloise/design-system/compare/v4.1.2...v4.2.0) (2021-12-15)
 
-
 ### Bug Fixes
 
-* **vue:** need to remove experimental vite support ([749ca74](https://github.com/baloise/design-system/commit/749ca74228f7990da6dad07e161abc421bf183c4))
-
+- **vue:** need to remove experimental vite support ([749ca74](https://github.com/baloise/design-system/commit/749ca74228f7990da6dad07e161abc421bf183c4))
 
 ### Features
 
-* add component style to global sass file for customization ([f57d254](https://github.com/baloise/design-system/commit/f57d25485f19650430aa5218af6e3f501bd858b9))
-* add component style to global sass file for customization ([17bd5e0](https://github.com/baloise/design-system/commit/17bd5e0d28cb55809e903408595f8ee0547b8712))
-* add component style to global sass file for customization ([0b9a471](https://github.com/baloise/design-system/commit/0b9a471a58c7e8d1786819c58153fd0cef9d3c66))
-* **hint:** add small variant ([d33f273](https://github.com/baloise/design-system/commit/d33f273d43702441947b61a3b9cd5112456c7260))
-* **stencil:** update version 2.11.0 ([b9a8c25](https://github.com/baloise/design-system/commit/b9a8c2561d880e8ced0cf413a9eb190841d9b4f5))
-
-
-
-
+- add component style to global sass file for customization ([f57d254](https://github.com/baloise/design-system/commit/f57d25485f19650430aa5218af6e3f501bd858b9))
+- add component style to global sass file for customization ([17bd5e0](https://github.com/baloise/design-system/commit/17bd5e0d28cb55809e903408595f8ee0547b8712))
+- add component style to global sass file for customization ([0b9a471](https://github.com/baloise/design-system/commit/0b9a471a58c7e8d1786819c58153fd0cef9d3c66))
+- **hint:** add small variant ([d33f273](https://github.com/baloise/design-system/commit/d33f273d43702441947b61a3b9cd5112456c7260))
+- **stencil:** update version 2.11.0 ([b9a8c25](https://github.com/baloise/design-system/commit/b9a8c2561d880e8ced0cf413a9eb190841d9b4f5))
 
 ## [4.1.2](https://github.com/baloise/design-system/compare/v4.1.1...v4.1.2) (2021-12-15)
 
-
 ### Bug Fixes
 
-* **button:** improve icon inverted style ([28a4147](https://github.com/baloise/design-system/commit/28a4147dbebf22cecd142beb26a7ae761769a2bc))
-* **checkbox:** adjust switch style ([fda5174](https://github.com/baloise/design-system/commit/fda517471049fd80a771125882245b872c550313))
-
-
+- **button:** improve icon inverted style ([28a4147](https://github.com/baloise/design-system/commit/28a4147dbebf22cecd142beb26a7ae761769a2bc))
+- **checkbox:** adjust switch style ([fda5174](https://github.com/baloise/design-system/commit/fda517471049fd80a771125882245b872c550313))
 
 # 4.1.0 (2021-12-10)
 
-
-
-
-
 ## [4.1.1](https://github.com/baloise/design-system/compare/v4.1.0...v4.1.1) (2021-12-13)
-
 
 ### Bug Fixes
 
-* **button:** adjust the color of the icon for outlined ([d8f71e0](https://github.com/baloise/design-system/commit/d8f71e0f7ef250e1c55cd6e9a4c62c55ecf2bffe))
-
-
-
-
+- **button:** adjust the color of the icon for outlined ([d8f71e0](https://github.com/baloise/design-system/commit/d8f71e0f7ef250e1c55cd6e9a4c62c55ecf2bffe))
 
 # [4.1.0](https://github.com/baloise/design-system/compare/v4.0.3...v4.1.0) (2021-12-10)
 
-
 ### Bug Fixes
 
-* **radio:** adjust space between radio and label ([72f3a88](https://github.com/baloise/design-system/commit/72f3a880ee89cb2884d40c97cefa893544243f38))
-* **vue:** element fn parameter will be unrefed ([e2b1302](https://github.com/baloise/design-system/commit/e2b13020a75f3af8a0cd9accd84900d9c444f2d0))
-
+- **radio:** adjust space between radio and label ([72f3a88](https://github.com/baloise/design-system/commit/72f3a880ee89cb2884d40c97cefa893544243f38))
+- **vue:** element fn parameter will be unrefed ([e2b1302](https://github.com/baloise/design-system/commit/e2b13020a75f3af8a0cd9accd84900d9c444f2d0))
 
 ### Features
 
-* **angular:** add element helper function ([6a7e57a](https://github.com/baloise/design-system/commit/6a7e57a0d6bf9f8d6e9f58cfe11b66abb4ef31e1))
-* **component:** return helper functions like wait, getAppRoot, componentOnReady ([7797fb3](https://github.com/baloise/design-system/commit/7797fb394ddb802dde43dc95aec49cd129d53475))
-* return helper isDescendant ([0c1b8ca](https://github.com/baloise/design-system/commit/0c1b8ca51cd1d17d50b1ae031f1a684bd902a2f0))
-
-
-
-
+- **angular:** add element helper function ([6a7e57a](https://github.com/baloise/design-system/commit/6a7e57a0d6bf9f8d6e9f58cfe11b66abb4ef31e1))
+- **component:** return helper functions like wait, getAppRoot, componentOnReady ([7797fb3](https://github.com/baloise/design-system/commit/7797fb394ddb802dde43dc95aec49cd129d53475))
+- return helper isDescendant ([0c1b8ca](https://github.com/baloise/design-system/commit/0c1b8ca51cd1d17d50b1ae031f1a684bd902a2f0))
 
 ## [4.0.3](https://github.com/baloise/design-system/compare/v4.0.2...v4.0.3) (2021-12-09)
 

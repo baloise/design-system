@@ -1,0 +1,14 @@
+import { balModalController as coreModalController } from '@baloise/design-system-components'
+import { VueDelegate } from './framework-delegate'
+
+const oldModalCreate = coreModalController.create.bind(coreModalController)
+coreModalController.create = options => {
+  return oldModalCreate({
+    ...options,
+    delegate: {
+      ...(VueDelegate() as any),
+    },
+  })
+}
+
+export const balModalController = coreModalController

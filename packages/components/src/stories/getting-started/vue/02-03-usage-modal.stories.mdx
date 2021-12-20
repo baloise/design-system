@@ -11,6 +11,70 @@ import { Meta } from '@storybook/addon-docs'
 
 # Vue Usage of Modal
 
+## With the controller
+
+### 1 Define the modal content component
+
+Define the component for the content of the modal in a seperate .vue file.
+
+With the help of the `balModalController.dismiss()` we are able to close the modal.
+
+```html
+// MyModal.vue
+<script setup lang="ts">
+  import { defineProps } from 'vue'
+  import { balModalController, BalModalHeader, BalModalBody, BalModalFooter, BalModalActions, BalButton } from '../lib'
+
+  defineProps({
+    firstName: { type: String },
+    lastName: { type: String },
+  })
+
+  const closeModal = () => balModalController.dismiss()
+</script>
+
+<template>
+  <BalModalHeader>Modal Title</BalModalHeader>
+  <BalModalBody>
+    <p>{{ firstName }} {{ lastName }}</p>
+  </BalModalBody>
+  <BalModalFooter>
+    <BalModalActions>
+      <BalButton color="link" @click="closeModal()">Cancel</BalButton>
+      <BalButton color="primary" @click="closeModal()">Okay</BalButton>
+    </BalModalActions>
+  </BalModalFooter>
+</template>
+```
+
+### 2. Use and open Modal
+
+From the main component we can easily create a modal with the `balModalController`.
+
+```html
+<script setup lang="ts">
+  import { balModalController, BalButton } from '../lib'
+  import MyModal from '@/components/MyModal.vue'
+
+  const openModal = async () => {
+    const modal = await balModalController.create({
+      component: MyModal,
+      componentProps: {
+        firstName: 'Peter',
+        lastName: 'Parker',
+      },
+    })
+    return modal.present()
+  }
+</script>
+
+<template>
+  <BalButton @click="openModal()">Open Modal</BalButton>
+</template>
+```
+
+## Without the controller
+
 Simply define the modal layout in your custom component and add the element reference with `ref="modalRef"` to the model element.
 In your component register the element reference with `const modalRef = ref<{ $el: Components.BalModal }>()`. With that reference you are able to access the methods of the modal component.
 

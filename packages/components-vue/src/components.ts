@@ -10,7 +10,7 @@ export const BalAccordion = /*@__PURE__*/ defineComponent({
   name: 'bal-accordion',
   props: {
     color: {
-      type: String,
+      type: String as PropType<'info' | 'primary'>,
       default: 'primary',
       required: false,
     },
@@ -60,21 +60,6 @@ export const BalAccordion = /*@__PURE__*/ defineComponent({
 
 export const BalApp = /*@__PURE__*/ defineComponent({
   name: 'bal-app',
-  props: {
-    background: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    hasStickyFooter: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-app', [], undefined)
 })
 
@@ -82,12 +67,12 @@ export const BalButton = /*@__PURE__*/ defineComponent({
   name: 'bal-button',
   props: {
     color: {
-      type: String,
+      type: String as PropType<'danger' | 'info' | 'info-light' | 'link' | 'primary' | 'primary-light' | 'success' | 'warning'>,
       default: 'primary',
       required: false,
     },
     type: {
-      type: String,
+      type: String as PropType<'button' | 'reset' | 'submit'>,
       default: 'button',
       required: false,
     },
@@ -97,7 +82,7 @@ export const BalButton = /*@__PURE__*/ defineComponent({
       required: false,
     },
     size: {
-      type: String,
+      type: String as PropType<'' | 'small'>,
       default: '',
       required: false,
     },
@@ -107,7 +92,7 @@ export const BalButton = /*@__PURE__*/ defineComponent({
       required: false,
     },
     target: {
-      type: String,
+      type: String as PropType<' _parent' | '_blank' | '_self' | '_top'>,
       default: '_self',
       required: false,
     },
@@ -122,7 +107,7 @@ export const BalButton = /*@__PURE__*/ defineComponent({
       required: false,
     },
     iconPosition: {
-      type: String,
+      type: String as PropType<'left' | 'right'>,
       default: 'left',
       required: false,
     },
@@ -220,7 +205,7 @@ export const BalCard = /*@__PURE__*/ defineComponent({
       required: false,
     },
     spacing: {
-      type: String,
+      type: String as PropType<'' | 'large' | 'medium' | 'none' | 'small'>,
       default: '',
       required: false,
     },
@@ -230,7 +215,7 @@ export const BalCard = /*@__PURE__*/ defineComponent({
       required: false,
     },
     color: {
-      type: String,
+      type: String as PropType<'' | 'danger' | 'info' | 'primary' | 'success' | 'warning'>,
       default: '',
       required: false,
     },
@@ -239,9 +224,6 @@ export const BalCard = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
-  },
-  emits: {
-
   },
   setup: defineSetup('bal-card', [], undefined)
 })
@@ -255,9 +237,6 @@ export const BalCardActions = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-card-actions', [], undefined)
 })
 
@@ -270,7 +249,7 @@ export const BalCardButton = /*@__PURE__*/ defineComponent({
       required: false,
     },
     type: {
-      type: String,
+      type: String as PropType<'button' | 'reset' | 'submit'>,
       default: 'button',
       required: false,
     },
@@ -285,7 +264,7 @@ export const BalCardButton = /*@__PURE__*/ defineComponent({
       required: false,
     },
     target: {
-      type: String,
+      type: String as PropType<' _parent' | '_blank' | '_self' | '_top'>,
       default: '_self',
       required: false,
     },
@@ -300,9 +279,6 @@ export const BalCardButton = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-card-button', [], undefined)
 })
 
@@ -315,42 +291,21 @@ export const BalCardContent = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-card-content', [], undefined)
 })
 
 export const BalCardHead = /*@__PURE__*/ defineComponent({
   name: 'bal-card-head',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-card-head', [], undefined)
 })
 
 export const BalCardHeading = /*@__PURE__*/ defineComponent({
   name: 'bal-card-heading',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-card-heading', [], undefined)
 })
 
 export const BalCardSteps = /*@__PURE__*/ defineComponent({
   name: 'bal-card-steps',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-card-steps', [], undefined)
 })
 
@@ -362,9 +317,6 @@ export const BalCardSubtitle = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
-  },
-  emits: {
-
   },
   setup: defineSetup('bal-card-subtitle', [], undefined)
 })
@@ -378,9 +330,6 @@ export const BalCardTitle = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-card-title', [], undefined)
 })
 
@@ -393,7 +342,7 @@ export const BalCheckbox = /*@__PURE__*/ defineComponent({
       required: false,
     },
     interface: {
-      type: String,
+      type: String as PropType<'checkbox' | 'switch'>,
       default: 'checkbox',
       required: false,
     },
@@ -452,9 +401,6 @@ export const BalData = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-data', [], undefined)
 })
 
@@ -467,9 +413,6 @@ export const BalDataItem = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-data-item', [], undefined)
 })
 
@@ -481,9 +424,6 @@ export const BalDataLabel = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
-  },
-  emits: {
-
   },
   setup: defineSetup('bal-data-label', [], undefined)
 })
@@ -519,7 +459,7 @@ export const BalDatepicker = /*@__PURE__*/ defineComponent({
       required: false,
     },
     locale: {
-      type: String,
+      type: String as PropType<'de' | 'en' | 'fr' | 'it'>,
       default: 'en',
       required: false,
     },
@@ -627,12 +567,6 @@ export const BalDatepicker = /*@__PURE__*/ defineComponent({
 
 export const BalDocApp = /*@__PURE__*/ defineComponent({
   name: 'bal-doc-app',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-doc-app', [], undefined)
 })
 
@@ -670,9 +604,6 @@ export const BalDocColor = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-doc-color', [], undefined)
 })
 
@@ -705,9 +636,6 @@ export const BalDocDownload = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-doc-download', [], undefined)
 })
 
@@ -719,9 +647,6 @@ export const BalDocIcons = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
-  },
-  emits: {
-
   },
   setup: defineSetup('bal-doc-icons', [], undefined)
 })
@@ -739,9 +664,6 @@ export const BalDocImage = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
-  },
-  emits: {
-
   },
   setup: defineSetup('bal-doc-image', [], undefined)
 })
@@ -788,20 +710,11 @@ export const BalDropdownMenu = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-dropdown-menu', [], undefined)
 })
 
 export const BalDropdownTrigger = /*@__PURE__*/ defineComponent({
   name: 'bal-dropdown-trigger',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-dropdown-trigger', [], undefined)
 })
 
@@ -834,9 +747,6 @@ export const BalField = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-field', [], undefined)
 })
 
@@ -864,9 +774,6 @@ export const BalFieldControl = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-field-control', [], undefined)
 })
 
@@ -878,9 +785,6 @@ export const BalFieldHint = /*@__PURE__*/ defineComponent({
       default: '',
       required: false,
     },
-  },
-  emits: {
-
   },
   setup: defineSetup('bal-field-hint', [], undefined)
 })
@@ -899,9 +803,6 @@ export const BalFieldLabel = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-field-label', [], undefined)
 })
 
@@ -909,7 +810,7 @@ export const BalFieldMessage = /*@__PURE__*/ defineComponent({
   name: 'bal-field-message',
   props: {
     color: {
-      type: String,
+      type: String as PropType<'' | 'danger' | 'success' | 'warning'>,
       default: '',
       required: false,
     },
@@ -918,9 +819,6 @@ export const BalFieldMessage = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
-  },
-  emits: {
-
   },
   setup: defineSetup('bal-field-message', [], undefined)
 })
@@ -995,7 +893,7 @@ export const BalFooter = /*@__PURE__*/ defineComponent({
       required: false,
     },
     locale: {
-      type: String,
+      type: String as PropType<'de' | 'en' | 'fr' | 'it'>,
       default: 'en',
       required: false,
     },
@@ -1005,9 +903,6 @@ export const BalFooter = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-footer', [], undefined)
 })
 
@@ -1015,12 +910,12 @@ export const BalHeading = /*@__PURE__*/ defineComponent({
   name: 'bal-heading',
   props: {
     level: {
-      type: String,
+      type: String as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>,
       default: 'h1',
       required: false,
     },
     visualLevel: {
-      type: String,
+      type: String as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>,
       default: undefined,
       required: false,
     },
@@ -1030,12 +925,12 @@ export const BalHeading = /*@__PURE__*/ defineComponent({
       required: false,
     },
     space: {
-      type: String,
+      type: String as PropType<'all' | 'bottom' | 'none' | 'top'>,
       default: 'all',
       required: false,
     },
     color: {
-      type: String,
+      type: String as PropType<'' | 'danger' | 'info' | 'primary' | 'success' | 'warning'>,
       default: '',
       required: false,
     },
@@ -1044,9 +939,6 @@ export const BalHeading = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
-  },
-  emits: {
-
   },
   setup: defineSetup('bal-heading', [], undefined)
 })
@@ -1065,31 +957,16 @@ export const BalHint = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-hint', [], undefined)
 })
 
 export const BalHintText = /*@__PURE__*/ defineComponent({
   name: 'bal-hint-text',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-hint-text', [], undefined)
 })
 
 export const BalHintTitle = /*@__PURE__*/ defineComponent({
   name: 'bal-hint-title',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-hint-title', [], undefined)
 })
 
@@ -1107,12 +984,12 @@ export const BalIcon = /*@__PURE__*/ defineComponent({
       required: false,
     },
     size: {
-      type: String,
+      type: String as PropType<'' | 'large' | 'medium' | 'small' | 'xsmall'>,
       default: '',
       required: false,
     },
     color: {
-      type: String,
+      type: String as PropType<'danger' | 'info' | 'info-light' | 'link' | 'primary' | 'primary-light' | 'success' | 'warning'>,
       default: 'info',
       required: false,
     },
@@ -1132,9 +1009,6 @@ export const BalIcon = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-icon', [], undefined)
 })
 
@@ -1147,7 +1021,7 @@ export const BalInput = /*@__PURE__*/ defineComponent({
       required: false,
     },
     type: {
-      type: String,
+      type: String as PropType<'button' | 'checkbox' | 'color' | 'date' | 'datetime-local' | 'email' | 'file' | 'image' | 'month' | 'number' | 'password' | 'radio' | 'range' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week'>,
       default: 'text',
       required: false,
     },
@@ -1162,12 +1036,12 @@ export const BalInput = /*@__PURE__*/ defineComponent({
       required: false,
     },
     autocomplete: {
-      type: String,
+      type: String as PropType<'email' | 'tel' | 'url' | 'off' | 'on' | 'name' | 'honorific-prefix' | 'given-name' | 'additional-name' | 'family-name' | 'honorific-suffix' | 'nickname' | 'username' | 'new-password' | 'current-password' | 'one-time-code' | 'organization-title' | 'organization' | 'street-address' | 'address-line1' | 'address-line2' | 'address-line3' | 'address-level4' | 'address-level3' | 'address-level2' | 'address-level1' | 'country' | 'country-name' | 'postal-code' | 'cc-name' | 'cc-given-name' | 'cc-additional-name' | 'cc-family-name' | 'cc-number' | 'cc-exp' | 'cc-exp-month' | 'cc-exp-year' | 'cc-csc' | 'cc-type' | 'transaction-currency' | 'transaction-amount' | 'language' | 'bday' | 'bday-day' | 'bday-month' | 'bday-year' | 'sex' | 'tel-country-code' | 'tel-national' | 'tel-area-code' | 'tel-local' | 'tel-extension' | 'impp' | 'photo'>,
       default: 'off',
       required: false,
     },
     autocorrect: {
-      type: String,
+      type: String as PropType<'off' | 'on'>,
       default: 'off',
       required: false,
     },
@@ -1272,7 +1146,7 @@ export const BalInput = /*@__PURE__*/ defineComponent({
       required: false,
     },
     inputmode: {
-      type: String,
+      type: String as PropType<'decimal' | 'email' | 'none' | 'numeric' | 'search' | 'tel' | 'text' | 'url'>,
       default: undefined,
       required: false,
     },
@@ -1319,9 +1193,6 @@ export const BalList = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-list', [], undefined)
 })
 
@@ -1349,7 +1220,7 @@ export const BalListItem = /*@__PURE__*/ defineComponent({
       required: false,
     },
     target: {
-      type: String,
+      type: String as PropType<' _parent' | '_blank' | '_self' | '_top'>,
       default: '_self',
       required: false,
     },
@@ -1362,12 +1233,6 @@ export const BalListItem = /*@__PURE__*/ defineComponent({
 
 export const BalListItemContent = /*@__PURE__*/ defineComponent({
   name: 'bal-list-item-content',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-list-item-content', [], undefined)
 })
 
@@ -1380,31 +1245,16 @@ export const BalListItemIcon = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-list-item-icon', [], undefined)
 })
 
 export const BalListItemSubtitle = /*@__PURE__*/ defineComponent({
   name: 'bal-list-item-subtitle',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-list-item-subtitle', [], undefined)
 })
 
 export const BalListItemTitle = /*@__PURE__*/ defineComponent({
   name: 'bal-list-item-title',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-list-item-title', [], undefined)
 })
 
@@ -1417,7 +1267,7 @@ export const BalModal = /*@__PURE__*/ defineComponent({
       required: true,
     },
     delegate: {
-      type: String,
+      type: Object as PropType<Lib.FrameworkDelegate>,
       default: undefined,
       required: false,
     },
@@ -1442,17 +1292,17 @@ export const BalModal = /*@__PURE__*/ defineComponent({
       required: false,
     },
     interface: {
-      type: String,
+      type: String as PropType<'card' | 'light'>,
       default: 'light',
       required: false,
     },
     component: {
-      type: String,
+      type: [Function, HTMLElement, String],
       default: undefined,
       required: true,
     },
     componentProps: {
-      type: String,
+      type: Object,
       default: undefined,
       required: false,
     },
@@ -1473,45 +1323,21 @@ export const BalModal = /*@__PURE__*/ defineComponent({
 
 export const BalModalActions = /*@__PURE__*/ defineComponent({
   name: 'bal-modal-actions',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-modal-actions', [], undefined)
 })
 
 export const BalModalBody = /*@__PURE__*/ defineComponent({
   name: 'bal-modal-body',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-modal-body', [], undefined)
 })
 
 export const BalModalFooter = /*@__PURE__*/ defineComponent({
   name: 'bal-modal-footer',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-modal-footer', [], undefined)
 })
 
 export const BalModalHeader = /*@__PURE__*/ defineComponent({
   name: 'bal-modal-header',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-modal-header', [], undefined)
 })
 
@@ -1534,9 +1360,6 @@ export const BalNavbar = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-navbar', [], undefined)
 })
 
@@ -1557,34 +1380,16 @@ export const BalNavbarBrand = /*@__PURE__*/ defineComponent({
 
 export const BalNavbarMenu = /*@__PURE__*/ defineComponent({
   name: 'bal-navbar-menu',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-navbar-menu', [], undefined)
 })
 
 export const BalNavbarMenuEnd = /*@__PURE__*/ defineComponent({
   name: 'bal-navbar-menu-end',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-navbar-menu-end', [], undefined)
 })
 
 export const BalNavbarMenuStart = /*@__PURE__*/ defineComponent({
   name: 'bal-navbar-menu-start',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-navbar-menu-start', [], undefined)
 })
 
@@ -1592,13 +1397,10 @@ export const BalNotices = /*@__PURE__*/ defineComponent({
   name: 'bal-notices',
   props: {
     interface: {
-      type: String,
+      type: String as PropType<'snackbar' | 'toast'>,
       default: 'toast',
       required: false,
     },
-  },
-  emits: {
-
   },
   setup: defineSetup('bal-notices', [], undefined)
 })
@@ -1607,13 +1409,10 @@ export const BalNotification = /*@__PURE__*/ defineComponent({
   name: 'bal-notification',
   props: {
     color: {
-      type: String,
+      type: String as PropType<'' | 'danger' | 'info' | 'primary' | 'success' | 'warning'>,
       default: '',
       required: false,
     },
-  },
-  emits: {
-
   },
   setup: defineSetup('bal-notification', [], undefined)
 })
@@ -1657,7 +1456,7 @@ export const BalRadio = /*@__PURE__*/ defineComponent({
       required: false,
     },
     interface: {
-      type: String,
+      type: String as PropType<'radio' | 'select-button'>,
       default: 'radio',
       required: false,
     },
@@ -1703,7 +1502,7 @@ export const BalRadioGroup = /*@__PURE__*/ defineComponent({
   name: 'bal-radio-group',
   props: {
     interface: {
-      type: String,
+      type: String as PropType<'radio' | 'select-button'>,
       default: 'radio',
       required: false,
     },
@@ -1853,20 +1652,11 @@ export const BalSelectOption = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-select-option', [], undefined)
 })
 
 export const BalSheet = /*@__PURE__*/ defineComponent({
   name: 'bal-sheet',
-  props: {
-
-  },
-  emits: {
-
-  },
   setup: defineSetup('bal-sheet', [], undefined)
 })
 
@@ -1951,7 +1741,7 @@ export const BalSnackbar = /*@__PURE__*/ defineComponent({
   name: 'bal-snackbar',
   props: {
     color: {
-      type: String,
+      type: String as PropType<'' | 'danger' | 'info' | 'primary' | 'success' | 'warning'>,
       default: '',
       required: false,
     },
@@ -2011,9 +1801,6 @@ export const BalSpinner = /*@__PURE__*/ defineComponent({
       default: false,
       required: false,
     },
-  },
-  emits: {
-
   },
   setup: defineSetup('bal-spinner', [], undefined)
 })
@@ -2082,9 +1869,6 @@ export const BalTable = /*@__PURE__*/ defineComponent({
       required: false,
     },
   },
-  emits: {
-
-  },
   setup: defineSetup('bal-table', [], undefined)
 })
 
@@ -2092,7 +1876,7 @@ export const BalTabs = /*@__PURE__*/ defineComponent({
   name: 'bal-tabs',
   props: {
     interface: {
-      type: String,
+      type: String as PropType<'o-steps' | 'steps' | 'tabs'>,
       default: 'tabs',
       required: false,
     },
@@ -2133,12 +1917,12 @@ export const BalTag = /*@__PURE__*/ defineComponent({
   name: 'bal-tag',
   props: {
     color: {
-      type: String,
+      type: String as PropType<'' | 'danger' | 'info' | 'primary' | 'success' | 'warning'>,
       default: '',
       required: false,
     },
     size: {
-      type: String,
+      type: String as PropType<'' | 'large' | 'medium' | 'small'>,
       default: '',
       required: false,
     },
@@ -2178,13 +1962,10 @@ export const BalText = /*@__PURE__*/ defineComponent({
       required: false,
     },
     color: {
-      type: String,
+      type: String as PropType<'' | 'danger' | 'hint' | 'info' | 'primary' | 'success' | 'warning'>,
       default: '',
       required: false,
     },
-  },
-  emits: {
-
   },
   setup: defineSetup('bal-text', [], undefined)
 })
@@ -2258,7 +2039,7 @@ export const BalTextarea = /*@__PURE__*/ defineComponent({
       required: false,
     },
     wrap: {
-      type: String,
+      type: String as PropType<'hard' | 'off' | 'soft'>,
       default: undefined,
       required: false,
     },
@@ -2273,7 +2054,7 @@ export const BalTextarea = /*@__PURE__*/ defineComponent({
       required: false,
     },
     inputmode: {
-      type: String,
+      type: String as PropType<'decimal' | 'email' | 'none' | 'numeric' | 'search' | 'tel' | 'text' | 'url'>,
       default: undefined,
       required: false,
     },
@@ -2348,7 +2129,7 @@ export const BalToast = /*@__PURE__*/ defineComponent({
   name: 'bal-toast',
   props: {
     color: {
-      type: String,
+      type: String as PropType<'' | 'danger' | 'info' | 'primary' | 'success' | 'warning'>,
       default: '',
       required: false,
     },
