@@ -1,7 +1,2 @@
 # Default to the system team
-* @baopso
-
-# Gery Hirschfeld is code owner for the Technical parts
-examples/* @hirsch88
-packages/* @hirsch88
-
+* @baopso @hirsch88 @nobilo @yannickholzenkamp @Gagne87
