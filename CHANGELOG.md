@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/baloise/design-system/compare/v5.0.1...v5.0.2) (2021-12-22)
+
+
+### Bug Fixes
+
+* **core:** ignore components.d.ts and export types only in the types.d.ts file ([7b1e705](https://github.com/baloise/design-system/commit/7b1e705d290c9d306890d30f3e65b7b5a06bdf92))
+
+
+
+# [5.0.0](https://github.com/baloise/design-system/compare/v4.3.1...v5.0.0) (2021-12-20)
+
+
+
+## 4.3.1 (2021-12-15)
+
+
+
+
+
 ## [5.0.1](https://github.com/baloise/design-system/compare/v5.0.0...v5.0.1) (2021-12-20)
 
 
