@@ -26,17 +26,8 @@ coverage
 # nyc test coverage
 .nyc_output
 
-# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-
-# Bower dependency directory (https://bower.io/)
-bower_components
-
 # node-waf configuration
 .lock-wscript
-
-# Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
 
 # Dependency directories
 node_modules/
@@ -77,14 +68,14 @@ typings/
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
-# Next.js build output
-.next
-
-# Nuxt.js build / generate output
-.nuxt
-dist
-dist-transpiled
-
+# Generate output
+dist/
+dist-transpiled/
+temp/
+generated/
+public/
+storybook/
+storybook-static/
 
 # Gatsby files
 .cache/
@@ -92,23 +83,32 @@ dist-transpiled
 # https://nextjs.org/blog/next-9-1#public-directory-support
 # public
 
-# vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless/
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# TernJS port file
-.tern-port
+# Editors
 .idea
-/temp
-/templates
-/sandbox
-.vscode
-/storybook
+.vscode/
+
+# Cypress
+cypress/screenshots
+cypress/videos
+
+# Husky
+.husky/_/
+
+# Design System
+storybook/
+packages/*/CHANGELOG.md
+
+packages/components/loader/
+packages/components/www/
+packages/components/.storybook/vue/components.ts
+packages/components/src/assets/fonts
+packages/components/src/components/**/readme.md
+packages/components/src/stories/assets/components.json
+packages/components/src/stories/assets/components.d.ts
+
+packages/components-table/css
+packages/components-vue/src/components.ts
+packages/components-react/src/components.ts
+packages/components-angular/src/directives/proxies.ts
+packages/components-angular/src/directives/proxies-list.ts
+

@@ -13,7 +13,7 @@ export class FieldMessage {
   /**
    * If `true` the component takes the whole width
    */
-  @Prop() expanded: boolean = false
+  @Prop() expanded = false
 
   render() {
     return (

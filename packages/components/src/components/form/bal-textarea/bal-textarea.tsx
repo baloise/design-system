@@ -1,4 +1,16 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface, Listen } from '@stencil/core'
+import {
+  Component,
+  h,
+  Host,
+  Prop,
+  Element,
+  EventEmitter,
+  Event,
+  Method,
+  Watch,
+  ComponentInterface,
+  Listen,
+} from '@stencil/core'
 import isEmpty from 'lodash.isempty'
 import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
 
@@ -51,7 +63,7 @@ export class Textarea implements ComponentInterface {
   /**
    * The tabindex of the control.
    */
-  @Prop() balTabindex: number = 0
+  @Prop() balTabindex = 0
 
   /**
    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
@@ -184,8 +196,8 @@ export class Textarea implements ComponentInterface {
    * Returns the native `<textarea>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLTextAreaElement> {
-    return Promise.resolve(this.nativeInput!)
+  getInputElement(): Promise<HTMLTextAreaElement | undefined> {
+    return Promise.resolve(this.nativeInput)
   }
 
   private getValue(): string {

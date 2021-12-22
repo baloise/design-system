@@ -20,19 +20,19 @@ export class Tag {
   /**
    * The theme type of the tag. Given by bulma our css framework.
    */
-  @Prop() closable: boolean = false
+  @Prop() closable = false
 
   /**
    * @internal
    * Reduces the padding
    */
-  @Prop() dense: boolean = false
+  @Prop() dense = false
 
   /**
    * @internal
    * Sets background color to transparent
    */
-  @Prop() transparent: boolean = false
+  @Prop() transparent = false
 
   /**
    * Emitted when the input got clicked.

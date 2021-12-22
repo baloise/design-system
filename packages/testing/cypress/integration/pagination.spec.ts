@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Pagination', () => {
-  let page = app.getPaginationPage()
+  const page = app.getPaginationPage()
 
   it('should verify the page setup', () => {
     page.open()

@@ -1,6 +1,14 @@
 import docs from './bal-sheet.docs.mdx'
 import { BalComponentStory, withContent } from '../../../../stories/utils'
-import { BalSheet, BalButton, BalCardContent, BalCardSubtitle, BalCardTitle, BalCard, BalCardActions } from '../../../../../.storybook/vue/components'
+import {
+  BalSheet,
+  BalButton,
+  BalCardContent,
+  BalCardSubtitle,
+  BalCardTitle,
+  BalCard,
+  BalCardActions,
+} from '../../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   title: 'Components/Notice/Sheet',
@@ -15,7 +23,15 @@ const component = BalComponentStory({
 export default component.story
 
 export const Basic = args => ({
-  components: { ...component.components, BalButton, BalCardContent, BalCardSubtitle, BalCardTitle, BalCard, BalCardActions },
+  components: {
+    ...component.components,
+    BalButton,
+    BalCardContent,
+    BalCardSubtitle,
+    BalCardTitle,
+    BalCard,
+    BalCardActions,
+  },
   setup: () => ({ args }),
   template: `<div>
   <div class="container is-compact mb-10">

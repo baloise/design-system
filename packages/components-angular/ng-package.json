@@ -7,7 +7,5 @@
       "@baloise/design-system-components/loader": "@baloise/design-system-components/loader"
     }
   },
-  "whitelistedNonPeerDependencies": [
-    "@baloise/design-system-components"
-  ]
+  "whitelistedNonPeerDependencies": ["@baloise/design-system-components"]
 }

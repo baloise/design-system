@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Input', () => {
-  let page = app.getInputPage()
+  const page = app.getInputPage()
 
   it('should have value and typeable', () => {
     page.open()

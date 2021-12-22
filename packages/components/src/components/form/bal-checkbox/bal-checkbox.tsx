@@ -25,12 +25,12 @@ export class Checkbox {
   /**
    * The tabindex of the control.
    */
-  @Prop() balTabindex: number = 0
+  @Prop() balTabindex = 0
 
   /**
    * The value of the control.
    */
-  @Prop() value: string = 'on'
+  @Prop() value = 'on'
 
   /**
    * If `true`, the checkbox is selected.
@@ -94,21 +94,21 @@ export class Checkbox {
    * Returns the native `<input>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLInputElement> {
-    return Promise.resolve(this.nativeInput!)
+  getInputElement(): Promise<HTMLInputElement | undefined> {
+    return Promise.resolve(this.nativeInput)
   }
 
-  private onInputFocus = (ev: any) => {
+  private onInputFocus = (ev: FocusEvent) => {
     this.hasFocus = true
     this.balFocus.emit(ev)
   }
 
-  private onInputBlur = (ev: any) => {
+  private onInputBlur = (ev: FocusEvent) => {
     this.hasFocus = false
     this.balBlur.emit(ev)
   }
 
-  private onClick = (ev: any) => {
+  private onClick = (ev: FocusEvent) => {
     const element = ev.target as HTMLAnchorElement
     if (element.href) {
       return

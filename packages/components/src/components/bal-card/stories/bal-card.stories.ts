@@ -58,7 +58,16 @@ export const Basic = args => ({
 Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const WithList = args => ({
-  components: { ...component.components, BalButton, BalListItemIcon, BalIcon, BalList, BalListItem, BalListItemTitle, BalListItemContent },
+  components: {
+    ...component.components,
+    BalButton,
+    BalListItemIcon,
+    BalIcon,
+    BalList,
+    BalListItem,
+    BalListItemTitle,
+    BalListItemContent,
+  },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-title>News</bal-card-title>

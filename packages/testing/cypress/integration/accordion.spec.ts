@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Accordion', () => {
-  let page = app.getAccordionPage()
+  const page = app.getAccordionPage()
 
   it('should verify that all accordions are closed', () => {
     page.open()

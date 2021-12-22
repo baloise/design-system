@@ -21,7 +21,8 @@ export class NavbarBrand {
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
   componentWillLoad() {
-    var isIE11 = !!window.MSInputMethodContext && !!(document as any).documentMode
+    // eslint-disable-next-line
+    const isIE11 = !!window.MSInputMethodContext && !!(document as any).documentMode
     if (!isIE11 && window.matchMedia) {
       window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
     }
@@ -39,7 +40,7 @@ export class NavbarBrand {
     if (navbar) {
       const navbarMenuElement = navbar.querySelector('bal-navbar-menu')
       if (navbarMenuElement) {
-        await (navbarMenuElement as any).toggle(this.isMenuActive)
+        await navbarMenuElement.toggle(this.isMenuActive)
       }
     }
   }

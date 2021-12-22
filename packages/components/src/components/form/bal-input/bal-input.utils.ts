@@ -1,4 +1,8 @@
-export const filterInputValue = (value: string, oldValue: string | number | undefined, decimalPoints: number | undefined = undefined): string => {
+export const filterInputValue = (
+  value: string,
+  oldValue: string | number | undefined,
+  decimalPoints: number | undefined = undefined,
+): string => {
   const regex = /^(((0|[1-9]\d*)?)(\.\d*)?)$/g
   let regexString = regex.source
   if (decimalPoints === 0) {

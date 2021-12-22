@@ -1,6 +1,12 @@
 import docs from './bal-checkbox.docs.mdx'
 import { BalComponentStory, withContent, stencilArgType } from '../../../../stories/utils'
-import { BalCheckbox, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage } from '../../../../../.storybook/vue/components'
+import {
+  BalCheckbox,
+  BalField,
+  BalFieldControl,
+  BalFieldLabel,
+  BalFieldMessage,
+} from '../../../../../.storybook/vue/components'
 import { isDescendant } from '../../../../../dist'
 import { ref, unref } from 'vue'
 
@@ -120,5 +126,17 @@ export const Box = args => ({
 Box.args = {}
 Box.parameters = {
   ...component.sourceCode(Box),
-  controls: { exclude: [...excludedControls, 'expanded', 'interface', 'invalid', 'checked', 'hasFieldMessage', 'inverted', 'value', 'content'] },
+  controls: {
+    exclude: [
+      ...excludedControls,
+      'expanded',
+      'interface',
+      'invalid',
+      'checked',
+      'hasFieldMessage',
+      'inverted',
+      'value',
+      'content',
+    ],
+  },
 }

@@ -45,7 +45,9 @@ export class Icon {
 
   private get svgContent() {
     if (balIcons && this.name && this.name.length > 0) {
-      const icon: string | undefined = (balIcons as any)[`balIcon${upperFirst(camelCase(this.name))}`]
+      const icon: string | undefined = (balIcons as { [key: string]: string })[
+        `balIcon${upperFirst(camelCase(this.name))}`
+      ]
       if (icon) {
         return icon
       }

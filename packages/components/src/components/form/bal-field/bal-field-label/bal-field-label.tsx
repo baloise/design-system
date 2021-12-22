@@ -12,12 +12,12 @@ export class FieldLabel {
   /**
    * If `true` a asterix (*) is added to the label text
    */
-  @Prop() required: boolean = false
+  @Prop() required = false
 
   /**
    * If `true` the component takes the whole width
    */
-  @Prop() expanded: boolean = false
+  @Prop() expanded = false
 
   componentDidLoad() {
     if (this.element) {

@@ -25,17 +25,17 @@ export class Slider {
   /**
    * Min value of the model.
    */
-  @Prop() min: number = 0
+  @Prop() min = 0
 
   /**
    * Max value of the model.
    */
-  @Prop() max: number = 100
+  @Prop() max = 100
 
   /**
    * The tabindex of the control.
    */
-  @Prop() balTabindex: number = 0
+  @Prop() balTabindex = 0
 
   /**
    * If `true`, the user cannot modify the value.
@@ -146,8 +146,8 @@ export class Slider {
    * Returns the native `<input>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLInputElement> {
-    return Promise.resolve(this.nativeInput!)
+  getInputElement(): Promise<HTMLInputElement | undefined> {
+    return Promise.resolve(this.nativeInput)
   }
 
   get numberOfSteps(): number {
@@ -252,7 +252,7 @@ export class Slider {
           <div class="slider-value slider-value__right"></div>
         </div>
         <div class="steps" style={{ display: this.hasTicks ? 'flex' : 'none' }}>
-          {Array.apply(null, { length: this.numberOfSteps } as any).map((_, step) => (
+          {Array(this.numberOfSteps).map((_, step) => (
             <div class="step" data-step-id={step}></div>
           ))}
         </div>

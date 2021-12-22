@@ -255,7 +255,7 @@ export namespace Components {
         /**
           * Returns the native `<input>` element used under the hood.
          */
-        "getInputElement": () => Promise<HTMLInputElement>;
+        "getInputElement": () => Promise<HTMLInputElement | undefined>;
         /**
           * Defines the layout of the checkbox button
          */
@@ -721,7 +721,7 @@ export namespace Components {
         /**
           * Returns the native `<input>` element used under the hood.
          */
-        "getInputElement": () => Promise<HTMLInputElement>;
+        "getInputElement": () => Promise<HTMLInputElement | undefined>;
         "hasIconRight": boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
@@ -1153,7 +1153,7 @@ export namespace Components {
         /**
           * Returns the native `<input>` element used under the hood.
          */
-        "getInputElement": () => Promise<HTMLInputElement>;
+        "getInputElement": () => Promise<HTMLInputElement | undefined>;
         /**
           * If `true`, small ticks for the steps are shown.
          */
@@ -1382,7 +1382,7 @@ export namespace Components {
         /**
           * Returns the native `<textarea>` element used under the hood.
          */
-        "getInputElement": () => Promise<HTMLTextAreaElement>;
+        "getInputElement": () => Promise<HTMLTextAreaElement | undefined>;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */

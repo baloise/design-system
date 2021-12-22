@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Snackbar', () => {
-  let page = app.getSnackbarPage()
+  const page = app.getSnackbarPage()
 
   it('should open snackbars and check their content', () => {
     page.open()

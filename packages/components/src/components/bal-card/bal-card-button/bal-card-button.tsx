@@ -38,7 +38,7 @@ export class CardButton {
   /**
    * If `true` the label is hidden and a loading spinner is shown instead.
    */
-  @Prop() loading: boolean = false
+  @Prop() loading = false
 
   render() {
     return (

@@ -9,6 +9,7 @@ interface WebComponent<T> {
   el: T
 }
 
+// eslint-disable-next-line
 export const element = <T>(elementReference: any): T => {
   const component: WebComponent<T> = elementReference
   return component.el

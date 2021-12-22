@@ -1,6 +1,13 @@
 import { ref } from 'vue'
 import { BalComponentStory } from '../../../../stories/utils'
-import { BalModal, BalModalHeader, BalButton, BalModalBody, BalModalFooter, BalModalActions } from '../../../../../.storybook/vue/components'
+import {
+  BalModal,
+  BalModalHeader,
+  BalButton,
+  BalModalBody,
+  BalModalFooter,
+  BalModalActions,
+} from '../../../../../.storybook/vue/components'
 import docs from './bal-modal.docs.mdx'
 
 const component = BalComponentStory({

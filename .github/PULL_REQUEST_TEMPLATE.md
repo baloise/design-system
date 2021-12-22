@@ -21,3 +21,4 @@ Closes #
 - @hirsch88
 - @nobilo
 - @yannickholzenkamp
+- @Gagne87

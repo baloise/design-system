@@ -34,22 +34,22 @@ export class Timeinput {
   /**
    * The value of the datepicker with the format `hh:mm`.
    */
-  @Prop({ mutable: true }) value: string = ''
+  @Prop({ mutable: true }) value = ''
 
   /**
    * Latest date available for selection
    */
-  @Prop() maxTime: string = ''
+  @Prop() maxTime = ''
 
   /**
    * Earliest date available for selection
    */
-  @Prop() minTime: string = ''
+  @Prop() minTime = ''
 
   /**
    * If `true` the timeinput can be used on blue background.
    */
-  @Prop() inverted: boolean = false
+  @Prop() inverted = false
 
   /**
    * Emitted when either the hour or the minute input has changed.
@@ -235,7 +235,9 @@ export class Timeinput {
     for (const i of Array.from(Array(Timeinput.MAX_MINUTE + 1).keys())) {
       options.push({
         value: Timeinput.formatTimeBoxValue(i),
-        disabled: this.hour !== undefined && ((this.hour === this.minHour && i < this.minMinute) || (this.hour === this.maxHour && i > this.maxMinute)),
+        disabled:
+          this.hour !== undefined &&
+          ((this.hour === this.minHour && i < this.minMinute) || (this.hour === this.maxHour && i > this.maxMinute)),
       })
     }
     return options
@@ -268,12 +270,21 @@ export class Timeinput {
               </g>
             </svg>
           </button>
-          <select class="input time-box" onBlur={ev => this.balBlur.emit(ev)} onChange={this.onHourChange} disabled={this.disabled}>
+          <select
+            class="input time-box"
+            onBlur={ev => this.balBlur.emit(ev)}
+            onChange={this.onHourChange}
+            disabled={this.disabled}
+          >
             <option value="" disabled selected={this.hour === undefined}>
               --
             </option>
             {this.hourOptions.map(hourOption => (
-              <option selected={hourOption.value === Timeinput.formatTimeBoxValue(this.hour)} disabled={hourOption.disabled} value={hourOption.value}>
+              <option
+                selected={hourOption.value === Timeinput.formatTimeBoxValue(this.hour)}
+                disabled={hourOption.disabled}
+                value={hourOption.value}
+              >
                 {hourOption.value}
               </option>
             ))}
@@ -284,7 +295,9 @@ export class Timeinput {
             onMouseDown={() => this.repeatOnHold(() => this.decHour())}
             onMouseUp={() => this.onMouseLeafOrUp()}
             onMouseLeave={() => this.onMouseLeafOrUp()}
-            disabled={this.disabled || (this.hour !== undefined && this.hour <= this.minHour) || this.hour === undefined}
+            disabled={
+              this.disabled || (this.hour !== undefined && this.hour <= this.minHour) || this.hour === undefined
+            }
             tabindex="-1"
           >
             <svg width="15px" height="10px" version="1.1">
@@ -311,12 +324,21 @@ export class Timeinput {
               </g>
             </svg>
           </button>
-          <select class="time-box" onBlur={ev => this.balBlur.emit(ev)} onChange={this.onMinuteChange} disabled={this.disabled}>
+          <select
+            class="time-box"
+            onBlur={ev => this.balBlur.emit(ev)}
+            onChange={this.onMinuteChange}
+            disabled={this.disabled}
+          >
             <option value="" disabled selected={this.minute === undefined}>
               --
             </option>
             {this.minuteOptions.map(minuteOption => (
-              <option selected={minuteOption.value === Timeinput.formatTimeBoxValue(this.minute)} disabled={minuteOption.disabled} value={minuteOption.value}>
+              <option
+                selected={minuteOption.value === Timeinput.formatTimeBoxValue(this.minute)}
+                disabled={minuteOption.disabled}
+                value={minuteOption.value}
+              >
                 {minuteOption.value}
               </option>
             ))}
@@ -327,7 +349,11 @@ export class Timeinput {
             onMouseDown={() => this.repeatOnHold(() => this.decMinute())}
             onMouseUp={() => this.onMouseLeafOrUp()}
             onMouseLeave={() => this.onMouseLeafOrUp()}
-            disabled={this.disabled || (this.minute !== undefined && this.minute <= this.currentMinMinute) || this.minute === undefined}
+            disabled={
+              this.disabled ||
+              (this.minute !== undefined && this.minute <= this.currentMinMinute) ||
+              this.minute === undefined
+            }
             tabindex="-1"
           >
             <svg width="15px" height="10px" version="1.1">

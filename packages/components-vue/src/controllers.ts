@@ -6,7 +6,7 @@ coreModalController.create = options => {
   return oldModalCreate({
     ...options,
     delegate: {
-      ...(VueDelegate() as any),
+      ...(VueDelegate() as any), // eslint-disable-line
     },
   })
 }

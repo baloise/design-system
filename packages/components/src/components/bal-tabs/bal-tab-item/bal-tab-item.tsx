@@ -12,27 +12,27 @@ export class TabItem {
   /**
    * This is the key of the tab.
    */
-  @Prop() value: string = ''
+  @Prop() value = ''
 
   /**
    * Label for the tab.
    */
-  @Prop() label: string = ''
+  @Prop() label = ''
 
   /**
    * Link to path.
    */
-  @Prop() href: string = ''
+  @Prop() href = ''
 
   /**
    * If `true` a small red bubble is added to the tab.
    */
-  @Prop() bubble: boolean = false
+  @Prop() bubble = false
 
   /**
    * If `true` the tab is disabled.
    */
-  @Prop() disabled: boolean = false
+  @Prop() disabled = false
 
   /**
    * If `true` the step is marked as done.
@@ -47,12 +47,12 @@ export class TabItem {
   /**
    * Tell's if the tab is active and the content is visible.
    */
-  @Prop({ mutable: true }) active: boolean = false
+  @Prop({ mutable: true }) active = false
 
   /**
    * Tell's if the linking is done by a router.
    */
-  @Prop() prevent: boolean = false
+  @Prop() prevent = false
 
   /**
    * Emitted when the link element has clicked

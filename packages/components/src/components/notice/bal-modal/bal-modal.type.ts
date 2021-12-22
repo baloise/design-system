@@ -1,6 +1,7 @@
 import { EventEmitter } from '@stencil/core'
 
 export type ComponentProps = { [key: string]: any }
+// eslint-disable-next-line
 export type ComponentRef = Function | HTMLElement | string | null
 
 export interface FrameworkDelegate {

@@ -20,37 +20,37 @@ export class Snackbar {
   /**
    * The duration of the snackbar
    */
-  @Prop() duration: number = 0
+  @Prop() duration = 0
 
   /**
    * The subject of the snackbar header
    */
-  @Prop() subject: string = ''
+  @Prop() subject = ''
 
   /**
    * The message of the snackbar
    */
-  @Prop() message: string = ''
+  @Prop() message = ''
 
   /**
    * The icon of the snackbar header
    */
-  @Prop() icon: string = ''
+  @Prop() icon = ''
 
   /**
    * Label text for the action button
    */
-  @Prop() action: string = ''
+  @Prop() action = ''
 
   /**
    * @internal Handler for on close event
    */
-  @Prop() closeHandler: () => void = () => {}
+  @Prop() closeHandler: () => void = () => void 0
 
   /**
    * @internal Handler for on action button click event
    */
-  @Prop() actionHandler: () => void = () => {}
+  @Prop() actionHandler: () => void = () => void 0
 
   /**
    * Emitted when snackbar is closed
@@ -123,9 +123,20 @@ export class Snackbar {
           <bal-text innerHTML={this.message}>
             <slot />
           </bal-text>
-          <bal-icon name="close" class="close" inverted={this.color !== ''} size="xsmall" onClick={() => this.close()}></bal-icon>
+          <bal-icon
+            name="close"
+            class="close"
+            inverted={this.color !== ''}
+            size="xsmall"
+            onClick={() => this.close()}
+          ></bal-icon>
           <div class="snackbar-footer" style={{ display: this.action === '' ? 'none' : 'inline-block' }}>
-            <bal-button color={this.buttonType} inverted={this.color !== ''} outlined onClick={() => this.onActionHandler()}>
+            <bal-button
+              color={this.buttonType}
+              inverted={this.color !== ''}
+              outlined
+              onClick={() => this.onActionHandler()}
+            >
               {this.action}
             </bal-button>
           </div>

@@ -8,7 +8,7 @@ export class Footer {
   /**
    * If `true` the footer shows a track line at the bottom.
    */
-  @Prop() hasTrackLine: boolean = false
+  @Prop() hasTrackLine = false
 
   /**
    * The languages in which the links will appear.
@@ -18,7 +18,7 @@ export class Footer {
   /**
    * If `true` the default Baloise links will be hidden.
    */
-  @Prop() hideLinks: boolean = false
+  @Prop() hideLinks = false
 
   @State()
   links: FooterLink[] = []

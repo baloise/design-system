@@ -9,7 +9,7 @@ import { FileUploadRejectedFile, FileUploadRejectionReason } from './bal-file-up
 export class FileUpload {
   @Element() element!: HTMLElement
   fileInput!: HTMLInputElement
-  bundleSize: number = 0
+  bundleSize = 0
 
   @State() isOver = false
   @State() files: File[] = []
@@ -24,7 +24,7 @@ export class FileUpload {
   /**
    * Label of the drop area.
    */
-  @Prop() label: string = 'Choose or drop a file...'
+  @Prop() label = 'Choose or drop a file...'
 
   /**
    * If `true` multiple file upload is possible.
@@ -44,7 +44,7 @@ export class FileUpload {
   /**
    * Accepted MIME-Types like `image/png,image/jpeg`.
    */
-  @Prop() accept: string = ''
+  @Prop() accept = ''
 
   /**
    * Allowed number of files in the bundle.
@@ -223,7 +223,9 @@ export class FileUpload {
             </bal-list-item-icon>
             <bal-list-item-content>
               <bal-list-item-title>{file.name}</bal-list-item-title>
-              <bal-list-item-subtitle>{this.subTitle ? this.subTitle(file) : filesize(file.size)}</bal-list-item-subtitle>
+              <bal-list-item-subtitle>
+                {this.subTitle ? this.subTitle(file) : filesize(file.size)}
+              </bal-list-item-subtitle>
             </bal-list-item-content>
             <bal-list-item-icon right class="file-remove" onClick={() => this.removeFile(index)}>
               <bal-icon name="trash" color="danger"></bal-icon>

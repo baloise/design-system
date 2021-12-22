@@ -48,7 +48,9 @@
       <h2 class="title is-size-2">With Links</h2>
       <section>
         <bal-radio-group value="1">
-          <bal-radio name="link-example" value="1">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
+          <bal-radio name="link-example" value="1"
+            >Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio
+          >
           <bal-radio name="link-example" value="2">Label 2 without a link</bal-radio>
         </bal-radio-group>
       </section>
@@ -58,14 +60,18 @@
         <bal-radio-group value="1">
           <div class="columns" style="max-width: 400px">
             <div class="column">
-              <div class="is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius has-background-blue-light">
+              <div
+                class="is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius has-background-blue-light"
+              >
                 <img src="https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg" />
                 <p class="has-text-blue mb-2">Selected Label</p>
                 <bal-radio class="p-0" name="box-example" value="1" is-empty></bal-radio>
               </div>
             </div>
             <div class="column">
-              <div class="is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius">
+              <div
+                class="is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius"
+              >
                 <img src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" />
                 <p class="has-text-blue mb-2">Other Label</p>
                 <bal-radio class="p-0" name="box-example" value="2" is-empty></bal-radio>
@@ -78,13 +84,17 @@
       <h2 class="title is-size-2">Radio List</h2>
       <section>
         <bal-radio-group value="1">
-          <div class="is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-border-radius has-background-blue-light">
+          <div
+            class="is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-border-radius has-background-blue-light"
+          >
             <bal-radio name="list-example" value="1">
               <span class="pl-2"><b>Year 1</b> (CHF 66.00)</span>
             </bal-radio>
           </div>
 
-          <div class="is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-border-radius">
+          <div
+            class="is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-border-radius"
+          >
             <bal-radio name="list-example" class="mr-3" value="2">
               <div class="pl-2"><b>Year 2</b> (CHF 86.00)</div>
             </bal-radio>

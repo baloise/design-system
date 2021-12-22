@@ -22,7 +22,7 @@ export class ListItem {
   /**
    * Specifies the URL of the page the link goes to
    */
-  @Prop() href: string = ''
+  @Prop() href = ''
 
   /**
    * Specifies where to open the linked document

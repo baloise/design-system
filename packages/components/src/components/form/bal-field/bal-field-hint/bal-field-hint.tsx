@@ -9,7 +9,7 @@ export class FieldHint {
   /**
    * Text of the inputs label
    */
-  @Prop() subject: string = ''
+  @Prop() subject = ''
 
   render() {
     return (

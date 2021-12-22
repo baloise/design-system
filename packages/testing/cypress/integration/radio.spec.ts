@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Radio', () => {
-  let page = app.getRadioPage()
+  const page = app.getRadioPage()
 
   it('should select the 1st radio', () => {
     page.open()

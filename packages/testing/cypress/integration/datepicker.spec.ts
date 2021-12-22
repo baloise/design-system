@@ -2,7 +2,7 @@ import { now } from '@baloise/web-app-utils'
 import { app } from '../support/app'
 
 describe('Datepicker', () => {
-  let page = app.getDatepickerPage()
+  const page = app.getDatepickerPage()
 
   it('should open and close the datepicker', () => {
     page.open()

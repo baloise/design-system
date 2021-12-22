@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Url with should', () => {
-  let page = app.getButtonPage()
+  const page = app.getButtonPage()
 
   it('should include url', () => {
     page.open()

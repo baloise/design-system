@@ -1,4 +1,16 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, ComponentInterface, Listen } from '@stencil/core'
+import {
+  Component,
+  h,
+  Host,
+  Prop,
+  Element,
+  EventEmitter,
+  Event,
+  Method,
+  Watch,
+  ComponentInterface,
+  Listen,
+} from '@stencil/core'
 import isNil from 'lodash.isnil'
 import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
@@ -101,7 +113,7 @@ export class Input implements ComponentInterface {
   /**
    * The tabindex of the control.
    */
-  @Prop() balTabindex: number = 0
+  @Prop() balTabindex = 0
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -240,8 +252,8 @@ export class Input implements ComponentInterface {
    * Returns the native `<input>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLInputElement> {
-    return Promise.resolve(this.nativeInput!)
+  getInputElement(): Promise<HTMLInputElement | undefined> {
+    return Promise.resolve(this.nativeInput)
   }
 
   private getRawValue(): string {

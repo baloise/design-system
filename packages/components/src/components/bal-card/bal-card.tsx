@@ -1,7 +1,7 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 import isEmpty from 'lodash.isempty'
 import { ColorTypes } from '../../types/color.types'
-import { PaddingCardType, SpacingCardType } from '../../types/padding.types'
+import { SpacingCardType } from '../../types/padding.types'
 
 @Component({
   tag: 'bal-card',

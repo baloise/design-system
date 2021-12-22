@@ -1,5 +1,6 @@
 import { componentOnReady } from './helpers'
 
+// eslint-disable-next-line
 export type ComponentRef = Function | HTMLElement | string | null
 
 export interface FrameworkDelegate {
@@ -21,7 +22,10 @@ export const attachComponent = async (
     throw new Error('framework delegate is missing')
   }
 
-  const el: any = typeof component === 'string' ? container.ownerDocument && container.ownerDocument.createElement(component) : component
+  const el: any =
+    typeof component === 'string'
+      ? container.ownerDocument && container.ownerDocument.createElement(component)
+      : component
 
   if (cssClasses) {
     cssClasses.forEach(c => el.classList.add(c))

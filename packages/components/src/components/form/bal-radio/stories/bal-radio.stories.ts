@@ -1,6 +1,13 @@
 import docs from './bal-radio.docs.mdx'
 import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
-import { BalRadio, BalRadioGroup, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage } from '../../../../../.storybook/vue/components'
+import {
+  BalRadio,
+  BalRadioGroup,
+  BalField,
+  BalFieldControl,
+  BalFieldLabel,
+  BalFieldMessage,
+} from '../../../../../.storybook/vue/components'
 import { ref } from 'vue'
 
 const balFieldArgTypes = stencilArgType(BalField)

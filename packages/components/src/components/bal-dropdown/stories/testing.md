@@ -12,7 +12,12 @@ import { dataTestSelector } from '@baloise/design-system-testing'
 describe('Dropdown', () => {
   const dropdown = dataTestSelector('my-dropdown') // [data-test-id="my-dropdown"]
   it('should ...', () => {
-    cy.get(dropdown).balDropdownIsClosed().balDropdownToggle().balDropdownIsOpen().balDropdownTriggerContains('Trigger button label').balDropdownMenuContains('Body content')
+    cy.get(dropdown)
+      .balDropdownIsClosed()
+      .balDropdownToggle()
+      .balDropdownIsOpen()
+      .balDropdownTriggerContains('Trigger button label')
+      .balDropdownMenuContains('Body content')
   })
 })
 ```

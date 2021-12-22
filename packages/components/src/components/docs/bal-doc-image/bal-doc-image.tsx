@@ -4,8 +4,8 @@ import { Component, h, Host, Prop } from '@stencil/core'
   tag: 'bal-doc-image',
 })
 export class BalDocImage {
-  @Prop() src: string = ''
-  @Prop() text: string = ''
+  @Prop() src = ''
+  @Prop() text = ''
 
   render() {
     return (

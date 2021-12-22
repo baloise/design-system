@@ -13,12 +13,12 @@ export class Dropdown {
   /**
    * If `true` the field spans over the whole width.
    */
-  @Prop() expanded: boolean = false
+  @Prop() expanded = false
 
   /**
    * If `true` the dropdown content has a fixed width
    */
-  @Prop() fixedContentWidth: boolean = false
+  @Prop() fixedContentWidth = false
 
   /**
    * If `true` the dropdown content is open.
@@ -110,7 +110,7 @@ export class Dropdown {
 
   @Listen('click', { target: 'document' })
   async clickOnOutside(event: UIEvent) {
-    if (!this.element.contains(event.target as any) && this.isActive) {
+    if (!this.element.contains(event.target as Node) && this.isActive) {
       await this.toggle()
       this.calcIsDropDownContentUp()
     }

@@ -15,11 +15,14 @@ jobs:
       - name: Update npm registry
         run: npm run update:registry
 
-      - name: Install dependencies
+      - name: Install dependencies and Build
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Format
+        run: npm run format:check
+
+      - name: Lint
+        run: npm run lint:check
 
       - name: Test
         run: npm run test

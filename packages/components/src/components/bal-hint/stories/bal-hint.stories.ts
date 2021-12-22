@@ -1,6 +1,16 @@
 import docs from './bal-hint.docs.mdx'
 import { withContent, BalComponentStory } from '../../../stories/utils'
-import { BalHint, BalHintText, BalHintTitle, BalInput, BalField, BalFieldControl, BalFieldMessage, BalFieldLabel, BalFieldHint } from '../../../../.storybook/vue/components'
+import {
+  BalHint,
+  BalHintText,
+  BalHintTitle,
+  BalInput,
+  BalField,
+  BalFieldControl,
+  BalFieldMessage,
+  BalFieldLabel,
+  BalFieldHint,
+} from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   title: 'Components/Hint',
@@ -44,7 +54,15 @@ Small.args = {
 Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const FieldHint = args => ({
-  components: { ...component.components, BalInput, BalField, BalFieldControl, BalFieldMessage, BalFieldLabel, BalFieldHint },
+  components: {
+    ...component.components,
+    BalInput,
+    BalField,
+    BalFieldControl,
+    BalFieldMessage,
+    BalFieldLabel,
+    BalFieldHint,
+  },
   setup: () => ({ args }),
   template: `<bal-field expanded class="mt-7">
   <bal-field-label>Firstname</bal-field-label>

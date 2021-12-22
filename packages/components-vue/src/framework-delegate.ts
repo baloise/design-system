@@ -5,8 +5,8 @@ export const VueDelegate = (addFn = addTeleportedUserComponent, removeFn = remov
   let Component: VNode | undefined
   const attachViewToDom = (
     parentElement: HTMLElement,
-    component: any,
-    componentProps: any = {},
+    component: any, // eslint-disable-line
+    componentProps: any = {}, // eslint-disable-line
     classes?: string[],
   ) => {
     /**

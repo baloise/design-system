@@ -20,17 +20,17 @@ export class Toast {
   /**
    * The duration of the toast in milliseconds.
    */
-  @Prop() duration: number = 0
+  @Prop() duration = 0
 
   /**
    * Content message
    */
-  @Prop() message: string = ''
+  @Prop() message = ''
 
   /**
    * @internal Handler for on close event
    */
-  @Prop() closeHandler: () => void = () => {}
+  @Prop() closeHandler: () => void = () => void 0
 
   /**
    * Emitted when toast is closed

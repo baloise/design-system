@@ -21,7 +21,7 @@ export class Heading {
   /**
    * If `true` the heading gets displayed slimmer.
    */
-  @Prop() subtitle: boolean = false
+  @Prop() subtitle = false
 
   /**
    * Defines at which position the heading has spacing.

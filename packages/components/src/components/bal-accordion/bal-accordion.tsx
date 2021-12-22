@@ -98,7 +98,10 @@ export class Accordion {
         >
           {this.label}
         </bal-button>
-        <div class={['accordion-content', `is-${this.color}`].join(' ')} style={{ display: this.isActive ? 'block' : 'none' }}>
+        <div
+          class={['accordion-content', `is-${this.color}`].join(' ')}
+          style={{ display: this.isActive ? 'block' : 'none' }}
+        >
           <slot></slot>
         </div>
       </Host>

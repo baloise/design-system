@@ -22,6 +22,7 @@ export const Basic = args => ({
 })
 Basic.args = {
   color: 'primary',
-  content: '<strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  content:
+    '<strong>Strong Title </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 }
 Basic.parameters = { ...component.sourceCode(Basic) }

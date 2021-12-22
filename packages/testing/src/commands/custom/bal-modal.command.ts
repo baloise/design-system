@@ -1,5 +1,3 @@
-import { selectors } from '../helpers'
-
 Cypress.Commands.add(
   'balModalIsOpen',
   {

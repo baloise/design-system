@@ -28,7 +28,7 @@ export class Hint {
 
   @Listen('click', { target: 'document' })
   clickOnOutside(event: UIEvent) {
-    if (!this.element.contains(event.target as any) && this.isActive) {
+    if (!this.element.contains(event.target as Node) && this.isActive) {
       this.toggle()
     }
   }
@@ -84,9 +84,18 @@ export class Hint {
         }}
         data-visible={this.isActive}
       >
-        <bal-icon class="data-test-hint-trigger" role="button" name="info-circle" size="" onClick={() => this.toggle()}></bal-icon>
+        <bal-icon
+          class="data-test-hint-trigger"
+          role="button"
+          name="info-circle"
+          size=""
+          onClick={() => this.toggle()}
+        ></bal-icon>
 
-        <div class="bal-hint-content data-test-hint-content p-4" style={{ display: this.isActive ? 'inline-block' : 'none' }}>
+        <div
+          class="bal-hint-content data-test-hint-content p-4"
+          style={{ display: this.isActive ? 'inline-block' : 'none' }}
+        >
           <slot></slot>
 
           <div class="buttons is-row-reverse">

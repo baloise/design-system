@@ -2,8 +2,26 @@ import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, El
 import isNil from 'lodash.isnil'
 import isString from 'lodash.isstring'
 import { findItemLabel } from '../../../helpers/helpers'
-import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey, isBackspaceKey } from '@baloise/web-app-utils'
-import { addValue, findLabelByValue, getValues, includes, length, preventDefault, removeValue, startsWith, validateAfterBlur } from './utils/utils'
+import {
+  areArraysEqual,
+  isArrowDownKey,
+  isArrowUpKey,
+  isEnterKey,
+  isEscapeKey,
+  isSpaceKey,
+  isBackspaceKey,
+} from '@baloise/web-app-utils'
+import {
+  addValue,
+  findLabelByValue,
+  getValues,
+  includes,
+  length,
+  preventDefault,
+  removeValue,
+  startsWith,
+  validateAfterBlur,
+} from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 
 import { BalOptionValue } from './utils/bal-option.type'
@@ -27,13 +45,13 @@ export class Select {
   private clearSelectValue!: NodeJS.Timeout
   private mutationO?: MutationObserver
 
-  @State() hasFocus: boolean = false
-  @State() inputValue: string = ''
-  @State() focusIndex: number = 0
-  @State() isDropdownOpen: boolean = false
+  @State() hasFocus = false
+  @State() inputValue = ''
+  @State() focusIndex = 0
+  @State() isDropdownOpen = false
   @State() options: Map<string, BalOptionController> = new Map<string, BalOptionController>()
-  @State() labelToScrollTo: string = ''
-  @State() labelToSelectTo: string = ''
+  @State() labelToScrollTo = ''
+  @State() labelToSelectTo = ''
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -43,7 +61,7 @@ export class Select {
   /**
    * The tabindex of the control.
    */
-  @Prop() balTabindex: number = 0
+  @Prop() balTabindex = 0
 
   /**
    * If `true` multiple option can be selected
@@ -58,12 +76,12 @@ export class Select {
   /**
    * Removes the border of the input.
    */
-  @Prop() noBorder: boolean = false
+  @Prop() noBorder = false
 
   /**
    * Enables the slide in animation for the option items.
    */
-  @Prop() hasMovement: boolean = false
+  @Prop() hasMovement = false
 
   /**
    * If `true` the user can search by typing into the input field.
@@ -93,12 +111,12 @@ export class Select {
   /**
    * Defines the height of the dropdown list.
    */
-  @Prop() scrollable: number = 250
+  @Prop() scrollable = 250
 
   /**
    * Defines if the select is in a loading state.
    */
-  @Prop() loading: boolean = false
+  @Prop() loading = false
 
   /**
    * Selected option values. Could also be passed as a string, which gets transformed.
@@ -685,7 +703,11 @@ export class Select {
           'is-fullwidth': this.expanded,
         }}
       >
-        <bal-dropdown expanded={this.expanded} onBalCollapse={this.handleDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
+        <bal-dropdown
+          expanded={this.expanded}
+          onBalCollapse={this.handleDropdownChange}
+          ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}
+        >
           <bal-dropdown-trigger>
             <div
               class={{
@@ -758,7 +780,11 @@ export class Select {
               >
                 <div class="select-option__content">
                   <span class="checkbox" style={{ display: this.multiple ? 'flex' : 'none' }}>
-                    <bal-checkbox checked={valuesArray.includes(option.value)} tabindex={-1} onBalChange={preventDefault}></bal-checkbox>
+                    <bal-checkbox
+                      checked={valuesArray.includes(option.value)}
+                      tabindex={-1}
+                      onBalChange={preventDefault}
+                    ></bal-checkbox>
                   </span>
                   <span class="label" innerHTML={option.innerHTML}></span>
                 </div>
