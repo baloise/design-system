@@ -18,7 +18,7 @@
     "bootstrap": "lerna bootstrap",
     "update:lock": "lerna exec -- npm install --package-lock-only",
     "update:registry": "lerna run update:registry && sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
-    "precommit": "echo pre-commit",
+    "precommit": "lint-staged",
     "==================== FORMATTER / LINTER ====================": "================================",
     "format:check": "prettier --check ./packages",
     "format": "prettier --write ./packages",
@@ -71,6 +71,7 @@
     "http-server": "^14.0.0",
     "husky": "^7.0.0",
     "lerna": "^4.0.0",
+    "lint-staged": "^12.1.3",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.3.5"
