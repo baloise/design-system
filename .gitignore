@@ -91,6 +91,9 @@ storybook-static/
 cypress/screenshots
 cypress/videos
 
+# Husky
+.husky/_/
+
 # Design System
 storybook/
 packages/*/CHANGELOG.md

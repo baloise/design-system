@@ -12,12 +12,13 @@
   },
   "scripts": {
     "==================== INSTALLATION / SETUP ====================": "================================",
-    "setup": "npm install && npm run build && npm run bootstrap",
+    "prepare": "husky install && npm run build",
     "preinstall": "npx npm-force-resolutions",
     "postinstall": "npm run bootstrap && node .build/copy.js",
     "bootstrap": "lerna bootstrap",
     "update:lock": "lerna exec -- npm install --package-lock-only",
     "update:registry": "lerna run update:registry && sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
+    "precommit": "echo pre-commit",
     "==================== START ====================": "================================",
     "start": "npm run components:start",
     "dev": "npm run components:serve",
@@ -57,30 +58,23 @@
     "storybook:start": "node .build/banner.js storybook:start && http-server storybook -p 8080"
   },
   "devDependencies": {
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
     "chalk": "^4.1.2",
-    "concurrently": "^6.4.0",
+    "concurrently": "^6.5.1",
     "figlet": "^1.5.2",
-    "glob": "^7.1.7",
+    "fs-extra": "^10.0.0",
+    "glob": "^7.2.0",
     "http-server": "^14.0.0",
-    "husky": "^7.0.1",
+    "husky": "^7.0.0",
     "lerna": "^4.0.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.3.5"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
   "resolutions": {
     "tar": ">=4.4.18"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vue": "^2.6.14"
+  }
 }
