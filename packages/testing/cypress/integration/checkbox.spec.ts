@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Checkbox', () => {
-  let page = app.getCheckboxPage()
+  const page = app.getCheckboxPage()
 
   it('should contain label', () => {
     page.open()

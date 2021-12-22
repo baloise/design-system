@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Textarea', () => {
-  let page = app.getTextareaPage()
+  const page = app.getTextareaPage()
 
   it('should verify the existens of the components', () => {
     page.open()

@@ -13,18 +13,20 @@ module.exports = {
   ],
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
+    '@typescript-eslint/no-namespace': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
       {
-        argsIgnorePattern: '^h$|^_',
-        varsIgnorePattern: '^h$|^_',
+        argsIgnorePattern: '^h$|^_|^Cypress',
+        varsIgnorePattern: '^h$|^_|^Cypress',
       },
     ],
     'no-unused-vars': [
       'error',
       {
-        argsIgnorePattern: '^h$|^_',
-        varsIgnorePattern: '^h$|^_',
+        argsIgnorePattern: '^h$|^_|^Cypress',
+        varsIgnorePattern: '^h$|^_|^Cypress',
       },
     ],
   },

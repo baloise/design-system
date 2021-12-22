@@ -1,6 +1,6 @@
 import { componentOnReady } from './helpers'
 
-export type ComponentRef = Function | HTMLElement | string | null
+export type ComponentRef = () => void | HTMLElement | string | null
 
 export interface FrameworkDelegate {
   attachViewToDom(container: any, component: any, propsOrDataObj?: any, cssClasses?: string[]): Promise<HTMLElement>

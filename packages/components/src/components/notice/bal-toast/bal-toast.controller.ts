@@ -1,7 +1,7 @@
 import { BalNoticeController, BalNoticeOptions } from '../../../helpers/notice.controller'
 import { Components } from '../../../types'
 
-export interface BalToastOptions extends BalNoticeOptions {}
+export type BalToastOptions = BalNoticeOptions
 
 export class BalToastController extends BalNoticeController {
   constructor() {

@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Tabs', () => {
-  let page = app.getTabsPage()
+  const page = app.getTabsPage()
 
   it('should select Tab B', () => {
     page.open()

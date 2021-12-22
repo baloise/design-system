@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Select', () => {
-  let page = app.getSelectPage()
+  const page = app.getSelectPage()
 
   describe('select', () => {
     it('should select label or value', () => {

@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Modal', () => {
-  let page = app.getModalPage()
+  const page = app.getModalPage()
 
   it('should open and close Modal', () => {
     page.open()

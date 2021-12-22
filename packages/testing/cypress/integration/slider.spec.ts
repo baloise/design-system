@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Slider', () => {
-  let page = app.getSliderPage()
+  const page = app.getSliderPage()
 
   it('should have value and typeable', () => {
     page.open()

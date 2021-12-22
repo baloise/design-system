@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Hint', () => {
-  let page = app.getHintPage()
+  const page = app.getHintPage()
 
   it('should open and close the hint overlay', () => {
     page.open()

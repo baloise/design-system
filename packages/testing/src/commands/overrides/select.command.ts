@@ -13,7 +13,7 @@ Cypress.Commands.overwrite('select', (originalFn, element: Cypress.Chainable<JQu
       return cy.wrap(element).clear()
     }
 
-    let selectContext = []
+    const selectContext = []
     for (let index = 0; index < valueArray.length; index++) {
       const val = valueArray[index]
       selectContext.push(`${selectors.select.options}[data-label="${val}"]`)

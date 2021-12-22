@@ -7,7 +7,7 @@ interface BalTableTagRendererOptions {
 }
 
 export function BalTableTagRenderer(options: BalTableTagRendererOptions): ICellRendererComp {
-  function Renderer() {}
+  function Renderer() {} // eslint-disable-line
   Renderer.prototype.params = {}
   Renderer.prototype.options = options
 
@@ -34,7 +34,7 @@ export function BalTableTagRenderer(options: BalTableTagRendererOptions): ICellR
     return this.element
   }
 
-  Renderer.prototype.destroy = function () {}
+  Renderer.prototype.destroy = function () {} // eslint-disable-line
 
-  return Renderer as any
+  return Renderer as any // eslint-disable-line
 }

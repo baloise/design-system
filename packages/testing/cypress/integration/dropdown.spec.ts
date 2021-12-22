@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Dropdown', () => {
-  let page = app.getDropdownPage()
+  const page = app.getDropdownPage()
 
   it('should open and close the dropdown', () => {
     page.open()

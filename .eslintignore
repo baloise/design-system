@@ -21,13 +21,12 @@ packages/components/src/assets/fonts
 packages/components/src/components/**/readme.md
 packages/components/src/stories/assets/components.json
 packages/components/src/stories/assets/components.d.ts
+packages/components/src/stories/utils
 
 packages/components-table/css
 packages/components-vue/src/components.ts
 packages/components-vue/src/vue-component-lib
 packages/components-react/src/components.ts
 packages/components-react/src/react-component-lib
-packages/components-angular/src/directives/angular-component-lib
-packages/components-angular/src/directives/value-accessor.ts
-packages/components-angular/src/directives/proxies.ts
-packages/components-angular/src/directives/proxies-list.ts
+packages/components-angular/src/directives/
+packages/components-angular/src/overlays

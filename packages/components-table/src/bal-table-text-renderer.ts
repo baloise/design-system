@@ -10,7 +10,7 @@ interface BalTableTextRendererOptions {
 }
 
 export function BalTableTextRenderer(options: BalTableTextRendererOptions = {}): ICellRendererComp {
-  function Renderer() {}
+  function Renderer() {} // eslint-disable-line
   Renderer.prototype.params = {}
   Renderer.prototype.options = options
 
@@ -63,7 +63,7 @@ export function BalTableTextRenderer(options: BalTableTextRendererOptions = {}):
     return this.element
   }
 
-  Renderer.prototype.destroy = function () {}
+  Renderer.prototype.destroy = function () {} // eslint-disable-line
 
-  return Renderer as any
+  return Renderer as any // eslint-disable-line
 }

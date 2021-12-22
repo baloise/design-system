@@ -1,7 +1,7 @@
 import { app } from '../support/app'
 
 describe('Button', () => {
-  let page = app.getButtonPage()
+  const page = app.getButtonPage()
 
   it('should contain label', () => {
     page.open()

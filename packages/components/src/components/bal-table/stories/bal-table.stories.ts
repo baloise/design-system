@@ -39,8 +39,8 @@ export const AgGrid = args => ({
           sortable: true,
           filter: true,
           cellRenderer: BalTableTextRenderer({
-            icon: params => 'github',
-            iconColor: params => 'primary',
+            icon: _ => 'github',
+            iconColor: _ => 'primary',
           }),
         },
         {

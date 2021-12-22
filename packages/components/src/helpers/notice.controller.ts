@@ -22,7 +22,7 @@ export abstract class BalNoticeController {
   private container: HTMLElement | null = null
   private queue: HTMLNoticeElement[] = []
   private preQueue: HTMLNoticeElement[] = []
-  private queueLimit: number = 5
+  private queueLimit = 5
 
   constructor(private options: NoticeOptions) {}
 

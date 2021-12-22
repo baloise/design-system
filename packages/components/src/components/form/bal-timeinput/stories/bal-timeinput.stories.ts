@@ -1,5 +1,5 @@
 import docs from './bal-timeinput.docs.mdx'
-import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
+import { BalComponentStory } from '../../../../stories/utils'
 import { BalTimeinput } from '../../../../../.storybook/vue/components'
 
 const component = BalComponentStory({

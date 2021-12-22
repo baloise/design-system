@@ -1,6 +1,6 @@
 import { h, defineComponent, shallowRef, VNode } from 'vue'
 
-const userComponents = shallowRef<any[]>([])
+const userComponents = shallowRef<any[]>([]) // eslint-disable-line
 export const BalApp = defineComponent({
   name: 'BalApp',
   setup(_, { attrs, slots }) {

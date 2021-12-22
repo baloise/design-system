@@ -3,7 +3,7 @@ import { EventEmitter } from '@stencil/core'
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any
 
-export const wait = (ms: number = 0): Promise<void> => {
+export const wait = (ms = 0): Promise<void> => {
   return new Promise(resolve => {
     setTimeout(() => resolve(), ms)
   })
@@ -34,7 +34,7 @@ export const findItemLabel = (componentEl: HTMLElement): HTMLLabelElement | null
 }
 
 export const isDescendant = (parent: HTMLElement, child: HTMLElement) => {
-  var node = child.parentNode
+  let node = child.parentNode
   while (node != null) {
     if (node == parent) {
       return true
