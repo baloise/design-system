@@ -186,7 +186,12 @@ export class Button implements ComponentInterface {
   private get spinnerCssClass() {
     return {
       'is-small': true,
-      'is-inverted': !(this.color === 'link' || this.color === 'primary-light' || this.color === 'info-light' || this.outlined),
+      'is-inverted': !(
+        this.color === 'link' ||
+        this.color === 'primary-light' ||
+        this.color === 'info-light' ||
+        this.outlined
+      ),
     }
   }
 
@@ -269,14 +274,42 @@ export class Button implements ComponentInterface {
           'is-disabled': this.disabled,
         }}
       >
-        <TagType {...attrs} type={this.type} class={this.buttonCssClass} part="native" disabled={this.disabled} onFocus={this.onFocus} onBlur={this.onBlur} onClick={this.onClick}>
+        <TagType
+          {...attrs}
+          type={this.type}
+          class={this.buttonCssClass}
+          part="native"
+          disabled={this.disabled}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          onClick={this.onClick}
+        >
           <span {...this.spanAttrs}>{/* Empty span to get the correct text height */}</span>
           <bal-spinner {...this.loadingAttrs} class={this.spinnerCssClass} />
-          <bal-icon {...this.leftIconAttrs} class="icon-left" name={this.icon} size={this.square ? this.size : 'small'} color={this.color} inverted={this.isIconInverted} />
-          <bal-text class="data-test-button-label" {...this.spanAttrs} small={this.size === 'small'} style={{ display: this.loading ? 'none' : 'inline' }}>
+          <bal-icon
+            {...this.leftIconAttrs}
+            class="icon-left"
+            name={this.icon}
+            size={this.square ? this.size : 'small'}
+            color={this.color}
+            inverted={this.isIconInverted}
+          />
+          <bal-text
+            class="data-test-button-label"
+            {...this.spanAttrs}
+            small={this.size === 'small'}
+            style={{ display: this.loading ? 'none' : 'inline' }}
+          >
             <slot />
           </bal-text>
-          <bal-icon {...this.leftRightAttrs} class="icon-right" name={this.iconRight} size={'small'} color={this.color} inverted={this.isIconInverted} />
+          <bal-icon
+            {...this.leftRightAttrs}
+            class="icon-right"
+            name={this.iconRight}
+            size={'small'}
+            color={this.color}
+            inverted={this.isIconInverted}
+          />
         </TagType>
       </Host>
     )

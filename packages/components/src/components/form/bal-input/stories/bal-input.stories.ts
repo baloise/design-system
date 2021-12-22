@@ -1,6 +1,12 @@
 import docs from './bal-input.docs.mdx'
 import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
-import { BalInput, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage } from '../../../../../.storybook/vue/components'
+import {
+  BalInput,
+  BalField,
+  BalFieldControl,
+  BalFieldLabel,
+  BalFieldMessage,
+} from '../../../../../.storybook/vue/components'
 
 const balFieldArgTypes = stencilArgType(BalField)
 

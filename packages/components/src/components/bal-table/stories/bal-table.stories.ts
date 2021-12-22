@@ -6,7 +6,11 @@ import { BalTable, BalIcon, BalCheckbox, BalButton, BalTag, BalCard } from '../.
 import docs from './bal-table.docs.mdx'
 import { tableHtml } from './bal-table.templates.ts'
 
-import { BalTableButtonRenderer, BalTableTagRenderer, BalTableTextRenderer } from '../../../../../components-table/dist/index.esm'
+import {
+  BalTableButtonRenderer,
+  BalTableTagRenderer,
+  BalTableTextRenderer,
+} from '../../../../../components-table/dist/index.esm'
 
 const component = BalComponentStory({
   component: BalTable,

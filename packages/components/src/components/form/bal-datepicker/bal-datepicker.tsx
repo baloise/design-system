@@ -1,4 +1,17 @@
-import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch, ComponentInterface, Listen } from '@stencil/core'
+import {
+  Component,
+  Host,
+  h,
+  Element,
+  State,
+  Prop,
+  Event,
+  EventEmitter,
+  Method,
+  Watch,
+  ComponentInterface,
+  Listen,
+} from '@stencil/core'
 import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
 import { BalCalendarCell, BalDateCallback, BalPointerDate } from './bal-datepicker.type'
 import {
@@ -349,8 +362,12 @@ export class Datepicker implements ComponentInterface {
             label: day(dayDatePointer).toString(),
             isToday: isSameDay(dayDatePointer, now()),
             isSelected: toDate(this.selectedDate) && isSameDay(dayDatePointer, toDate(this.selectedDate) as Date),
-            isDisabled: !this.getAllowedDates(dayDatePointer) || !isInRange(ceilTime(dayDatePointer), toDate(this.min), toDate(this.max)),
-            isOutdated: this.pointerDate.month !== dayDatePointer.getMonth() || !isInRange(ceilTime(dayDatePointer), toDate(this.min), toDate(this.max)),
+            isDisabled:
+              !this.getAllowedDates(dayDatePointer) ||
+              !isInRange(ceilTime(dayDatePointer), toDate(this.min), toDate(this.max)),
+            isOutdated:
+              this.pointerDate.month !== dayDatePointer.getMonth() ||
+              !isInRange(ceilTime(dayDatePointer), toDate(this.min), toDate(this.max)),
           } as BalCalendarCell,
         ]
         dayDatePointer.setDate(dayDatePointer.getDate() + 1)
@@ -490,7 +507,12 @@ export class Datepicker implements ComponentInterface {
           'is-fullwidth': this.expanded,
         }}
       >
-        <bal-dropdown expanded={this.expanded} fixedContentWidth={true} onBalCollapse={this.onDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
+        <bal-dropdown
+          expanded={this.expanded}
+          fixedContentWidth={true}
+          onBalCollapse={this.onDropdownChange}
+          ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}
+        >
           <bal-dropdown-trigger>{this.renderInput()}</bal-dropdown-trigger>
           <bal-dropdown-menu>
             <div class="datepicker-popup">
@@ -544,7 +566,14 @@ export class Datepicker implements ComponentInterface {
           onBlur={this.onInputBlur}
           onFocus={this.onInputFocus}
         />
-        <bal-icon class="datepicker-trigger-icon clickable" is-right color="info" inverted={this.inverted} name="date" onClick={this.onIconClick} />
+        <bal-icon
+          class="datepicker-trigger-icon clickable"
+          is-right
+          color="info"
+          inverted={this.inverted}
+          name="date"
+          onClick={this.onIconClick}
+        />
       </div>
     )
   }

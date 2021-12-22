@@ -2,8 +2,26 @@ import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, El
 import isNil from 'lodash.isnil'
 import isString from 'lodash.isstring'
 import { findItemLabel } from '../../../helpers/helpers'
-import { areArraysEqual, isArrowDownKey, isArrowUpKey, isEnterKey, isEscapeKey, isSpaceKey, isBackspaceKey } from '@baloise/web-app-utils'
-import { addValue, findLabelByValue, getValues, includes, length, preventDefault, removeValue, startsWith, validateAfterBlur } from './utils/utils'
+import {
+  areArraysEqual,
+  isArrowDownKey,
+  isArrowUpKey,
+  isEnterKey,
+  isEscapeKey,
+  isSpaceKey,
+  isBackspaceKey,
+} from '@baloise/web-app-utils'
+import {
+  addValue,
+  findLabelByValue,
+  getValues,
+  includes,
+  length,
+  preventDefault,
+  removeValue,
+  startsWith,
+  validateAfterBlur,
+} from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 
 import { BalOptionValue } from './utils/bal-option.type'
@@ -685,7 +703,11 @@ export class Select {
           'is-fullwidth': this.expanded,
         }}
       >
-        <bal-dropdown expanded={this.expanded} onBalCollapse={this.handleDropdownChange} ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}>
+        <bal-dropdown
+          expanded={this.expanded}
+          onBalCollapse={this.handleDropdownChange}
+          ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}
+        >
           <bal-dropdown-trigger>
             <div
               class={{
@@ -758,7 +780,11 @@ export class Select {
               >
                 <div class="select-option__content">
                   <span class="checkbox" style={{ display: this.multiple ? 'flex' : 'none' }}>
-                    <bal-checkbox checked={valuesArray.includes(option.value)} tabindex={-1} onBalChange={preventDefault}></bal-checkbox>
+                    <bal-checkbox
+                      checked={valuesArray.includes(option.value)}
+                      tabindex={-1}
+                      onBalChange={preventDefault}
+                    ></bal-checkbox>
                   </span>
                   <span class="label" innerHTML={option.innerHTML}></span>
                 </div>

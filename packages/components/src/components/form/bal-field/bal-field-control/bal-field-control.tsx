@@ -48,7 +48,8 @@ export class FieldControl {
           'has-icons-left': !!this.iconLeft,
           'has-icons-right': !!this.iconRight || this.loading,
           'is-loading': this.loading,
-        }}>
+        }}
+      >
         <slot></slot>
         {this.buildIconLeftTemplate}
         {this.buildIconRightTemplate}

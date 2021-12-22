@@ -13,7 +13,13 @@
       <h2 class="title is-size-2">Basic</h2>
       <section>
         <p id="bal-file-upload-messages"></p>
-        <bal-file-upload id="bal-file-upload-example" accept="image/png,image/jpeg" max-files="3" max-file-size="1000000" max-bundle-size="1000000"></bal-file-upload>
+        <bal-file-upload
+          id="bal-file-upload-example"
+          accept="image/png,image/jpeg"
+          max-files="3"
+          max-file-size="1000000"
+          max-bundle-size="1000000"
+        ></bal-file-upload>
         <bal-button class="mt-2" id="bal-file-upload-clear" color="danger">Clear Upload</bal-button>
       </section>
       <script>
@@ -23,7 +29,13 @@
 
         fileUpload.addEventListener('balRejectedFile', event => {
           var div = document.createElement('div')
-          var text = document.createTextNode('The file "' + event.detail.file.name + '" could not be uploaded, because of "' + event.detail.reasons.join(', ') + '"')
+          var text = document.createTextNode(
+            'The file "' +
+              event.detail.file.name +
+              '" could not be uploaded, because of "' +
+              event.detail.reasons.join(', ') +
+              '"',
+          )
           div.appendChild(text)
           div.setAttribute('class', 'notification is-warning mb-4')
           document.getElementById('bal-file-upload-messages').appendChild(div)

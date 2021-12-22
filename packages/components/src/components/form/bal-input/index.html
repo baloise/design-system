@@ -12,8 +12,19 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
       <section>
-        <bal-input autofocus id="input-1" name="firstName" placeholder="Enter your firstname" data-test-id="input"></bal-input>
-        <bal-input id="input-1-preview" disabled placeholder="Value after balInput event" data-test-id="input-disabled"></bal-input>
+        <bal-input
+          autofocus
+          id="input-1"
+          name="firstName"
+          placeholder="Enter your firstname"
+          data-test-id="input"
+        ></bal-input>
+        <bal-input
+          id="input-1-preview"
+          disabled
+          placeholder="Value after balInput event"
+          data-test-id="input-disabled"
+        ></bal-input>
         <bal-input id="input-1-change" disabled placeholder="Value after balChange event"></bal-input>
       </section>
 
@@ -39,12 +50,28 @@
       </section>
 
       <h2 class="title is-size-2">Number Input</h2>
-      <p>With number-input property your can only enter valid numbers, if you start with dot (.) zero will be automatically added in front of it.</p>
-      <p>With decimal property you can set how many decimal places you want and number will be formatted accordingly.</p>
+      <p>
+        With number-input property your can only enter valid numbers, if you start with dot (.) zero will be
+        automatically added in front of it.
+      </p>
+      <p>
+        With decimal property you can set how many decimal places you want and number will be formatted accordingly.
+      </p>
       <section>
         <bal-input data-test-id="input-number" number-input placeholder="Enter a number without decimal"></bal-input>
-        <bal-input data-test-id="input-decimal" id="input-2" number-input placeholder="Enter a number with two decimal points" decimal="2"></bal-input>
-        <bal-input suffix="CHF" number-input placeholder="Enter a number with two decimal places and CHF suffix" decimal="2"></bal-input>
+        <bal-input
+          data-test-id="input-decimal"
+          id="input-2"
+          number-input
+          placeholder="Enter a number with two decimal points"
+          decimal="2"
+        ></bal-input>
+        <bal-input
+          suffix="CHF"
+          number-input
+          placeholder="Enter a number with two decimal places and CHF suffix"
+          decimal="2"
+        ></bal-input>
         <bal-input id="input-2-preview" disabled placeholder="Value after balInput event"></bal-input>
         <bal-input id="input-2-change" disabled placeholder="Value after balChange event"></bal-input>
       </section>
@@ -62,7 +89,12 @@
       </script>
       <h2 class="title is-size-2">Suffix</h2>
       <section>
-        <bal-input data-test-id="input-suffix" suffix="%" name="percentage" placeholder="Enter a percentage number"></bal-input>
+        <bal-input
+          data-test-id="input-suffix"
+          suffix="%"
+          name="percentage"
+          placeholder="Enter a percentage number"
+        ></bal-input>
       </section>
       <h2 class="title is-size-2">HTML input</h2>
       <section>

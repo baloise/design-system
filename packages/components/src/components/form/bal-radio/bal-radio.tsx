@@ -1,4 +1,16 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, ComponentInterface, State, Listen } from '@stencil/core'
+import {
+  Component,
+  h,
+  Host,
+  Prop,
+  Element,
+  EventEmitter,
+  Event,
+  Method,
+  ComponentInterface,
+  State,
+  Listen,
+} from '@stencil/core'
 import { isDescendant } from '../../../helpers/helpers'
 
 @Component({

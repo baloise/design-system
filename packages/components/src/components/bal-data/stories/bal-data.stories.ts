@@ -1,6 +1,17 @@
 import docs from './bal-data.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalData, BalDataItem, BalDataLabel, BalDataValue, BalCard, BalCardContent, BalInput, BalHint, BalHintText, BalHintTitle } from '../../../../.storybook/vue/components'
+import {
+  BalData,
+  BalDataItem,
+  BalDataLabel,
+  BalDataValue,
+  BalCard,
+  BalCardContent,
+  BalInput,
+  BalHint,
+  BalHintText,
+  BalHintTitle,
+} from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   component: BalData,

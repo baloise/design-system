@@ -64,7 +64,12 @@ export const connectListeners = (doc: Document) => {
   }
 }
 
-export const dismiss = async (overlay: OverlayInterface, data: any | undefined, role: string | undefined, animation: () => Promise<void>): Promise<boolean> => {
+export const dismiss = async (
+  overlay: OverlayInterface,
+  data: any | undefined,
+  role: string | undefined,
+  animation: () => Promise<void>,
+): Promise<boolean> => {
   if (!overlay.presented) {
     return false
   }

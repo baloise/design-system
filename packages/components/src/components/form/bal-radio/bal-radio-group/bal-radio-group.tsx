@@ -1,4 +1,15 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Watch, ComponentInterface, Method } from '@stencil/core'
+import {
+  Component,
+  h,
+  Host,
+  Prop,
+  Element,
+  EventEmitter,
+  Event,
+  Watch,
+  ComponentInterface,
+  Method,
+} from '@stencil/core'
 import { findItemLabel } from '../../../../helpers/helpers'
 
 @Component({

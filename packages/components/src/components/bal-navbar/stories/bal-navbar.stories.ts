@@ -1,6 +1,15 @@
 import docs from './bal-navbar.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalNavbar, BalText, BalIcon, BalButton, BalNavbarBrand, BalNavbarMenu, BalNavbarMenuEnd, BalNavbarMenuStart } from '../../../../.storybook/vue/components'
+import {
+  BalNavbar,
+  BalText,
+  BalIcon,
+  BalButton,
+  BalNavbarBrand,
+  BalNavbarMenu,
+  BalNavbarMenuEnd,
+  BalNavbarMenuStart,
+} from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   component: BalNavbar,

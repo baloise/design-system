@@ -1,4 +1,4 @@
 export interface BalTimeSelectionOption {
-    value: string;
-    disabled: boolean;
+  value: string
+  disabled: boolean
 }

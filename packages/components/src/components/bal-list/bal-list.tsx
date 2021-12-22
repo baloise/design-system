@@ -21,7 +21,15 @@ export class List {
 
   render() {
     return (
-      <Host role="listbox" class={['bal-list', this.disabled ? 'is-disabled' : '', this.inverted ? 'is-inverted' : '', this.border ? 'has-border' : ''].join(' ')}>
+      <Host
+        role="listbox"
+        class={[
+          'bal-list',
+          this.disabled ? 'is-disabled' : '',
+          this.inverted ? 'is-inverted' : '',
+          this.border ? 'has-border' : '',
+        ].join(' ')}
+      >
         <slot></slot>
       </Host>
     )

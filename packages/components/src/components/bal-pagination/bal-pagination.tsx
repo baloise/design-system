@@ -78,7 +78,10 @@ export class Pagination {
   renderPageElement(pageNumber: number) {
     return (
       <li>
-        <a class={['pagination-link', this._value === pageNumber ? 'is-current' : ''].join(' ')} onClick={() => this.selectPage(pageNumber)}>
+        <a
+          class={['pagination-link', this._value === pageNumber ? 'is-current' : ''].join(' ')}
+          onClick={() => this.selectPage(pageNumber)}
+        >
           <bal-text>{pageNumber}</bal-text>
         </a>
       </li>
@@ -128,7 +131,12 @@ export class Pagination {
           <button type="button" class="pagination-previous" disabled={this._value < 2} onClick={() => this.previous()}>
             <bal-icon name="nav-go-left" size="small" />
           </button>
-          <button type="button" class="pagination-next" disabled={this._value === this.totalPages} onClick={() => this.next()}>
+          <button
+            type="button"
+            class="pagination-next"
+            disabled={this._value === this.totalPages}
+            onClick={() => this.next()}
+          >
             <bal-icon name="nav-go-right" size="small" />
           </button>
           <ul class="pagination-list is-hidden-mobile">{tabletItems}</ul>

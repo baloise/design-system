@@ -53,7 +53,12 @@ First we define our template like this.
   <BalField expanded :disabled="isFirstNameDisabled">
     <BalFieldLabel required> {{ $t('form.firstName.label') }} </BalFieldLabel>
     <BalFieldControl>
-      <BalInput v-model="firstName" :name="firstNameName" :placeholder="$t('form.firstName.placeholder')" :disabled="isFirstNameDisabled"></BalInput>
+      <BalInput
+        v-model="firstName"
+        :name="firstNameName"
+        :placeholder="$t('form.firstName.placeholder')"
+        :disabled="isFirstNameDisabled"
+      ></BalInput>
     </BalFieldControl>
     <BalFieldMessage color="danger" v-if="!isFirstNameDisabled"> {{ firstNameErrorMessage }} </BalFieldMessage>
   </BalField>

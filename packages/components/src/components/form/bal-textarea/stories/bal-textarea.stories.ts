@@ -26,7 +26,17 @@ const component = BalComponentStory({
 
 export default component.story
 
-const excludedControls = ['autocapitalize', 'autofocus', 'clickable', 'inputmode', 'maxLength', 'minLength', 'name', 'readonly', 'required']
+const excludedControls = [
+  'autocapitalize',
+  'autofocus',
+  'clickable',
+  'inputmode',
+  'maxLength',
+  'minLength',
+  'name',
+  'readonly',
+  'required',
+]
 
 const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel },

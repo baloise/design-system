@@ -32,7 +32,10 @@ describe('multiple', () => {
   const multiple = dataTestSelector('my-multiple') // [data-test-id="my-multiple"]
 
   it('should ', () => {
-    cy.get(multiple).click().select(['Black Widow', 'Black Panter']).should('have.value', ['Black Widow', 'Black Panter'])
+    cy.get(multiple)
+      .click()
+      .select(['Black Widow', 'Black Panter'])
+      .should('have.value', ['Black Widow', 'Black Panter'])
     cy.get(multiple).balSelectFindOptions().first().click()
     cy.get(page.multiple).balSelectFindChips().first().contains('Iron Man').click() // clicks the chip to remove the selection
   })

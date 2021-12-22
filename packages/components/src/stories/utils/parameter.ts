@@ -18,7 +18,12 @@ const filterVueSpecific = (templateSource: string, argTypes = {}, args = {}): st
   const componentArgs = {}
   for (const [k, t] of Object.entries(argTypes)) {
     const val = args[k]
-    if (typeof val !== 'undefined' && (t as any).table && (t as any).table.category === 'props' && val !== (t as any).defaultValue) {
+    if (
+      typeof val !== 'undefined' &&
+      (t as any).table &&
+      (t as any).table.category === 'props' &&
+      val !== (t as any).defaultValue
+    ) {
       componentArgs[k] = val
     }
   }
@@ -57,7 +62,10 @@ const filterVueSpecific = (templateSource: string, argTypes = {}, args = {}): st
       .replace(' :disabled="args.disabled"', (args as any).disabled === true ? ' disabled' : '')
       .replace(' :inverted="args.inverted"', (args as any).inverted === true ? ' inverted' : '')
       .replace(' :invalid="args.invalid"', (args as any).invalid === true ? ' invalid' : '')
-      .replace(` :color="args.invalid ? 'danger' : 'hint'"`, ` color="${(args as any).invalid === true ? 'danger' : 'hint'}"`)
+      .replace(
+        ` :color="args.invalid ? 'danger' : 'hint'"`,
+        ` color="${(args as any).invalid === true ? 'danger' : 'hint'}"`,
+      )
       .replace(' v-if="args.hasFieldMessage"', '')
       .replace('{{ args.content }}', (args as any).content || 'Content')
       .replace('<span v-html="args.content"></span>', (args as any).content || 'Content')

@@ -1,6 +1,12 @@
 import docs from './bal-datepicker.docs.mdx'
 import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
-import { BalDatepicker, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage } from '../../../../../.storybook/vue/components'
+import {
+  BalDatepicker,
+  BalField,
+  BalFieldControl,
+  BalFieldLabel,
+  BalFieldMessage,
+} from '../../../../../.storybook/vue/components'
 
 const balFieldArgTypes = stencilArgType(BalField)
 

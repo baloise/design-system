@@ -32,7 +32,11 @@ export function addValue(values: string[] | undefined, valueToAdd: string, hasMu
   return [valueToAdd]
 }
 
-export function validateAfterBlur(values: string[] | undefined, options: Map<string, BalOptionController>, typedLabel: string): string[] {
+export function validateAfterBlur(
+  values: string[] | undefined,
+  options: Map<string, BalOptionController>,
+  typedLabel: string,
+): string[] {
   const valuesArray = getValues(values)
 
   if (valuesArray.length > 0) {
@@ -50,7 +54,10 @@ export function validateAfterBlur(values: string[] | undefined, options: Map<str
   return valuesArray
 }
 
-function findOptionByLabelIterator(iterator: IterableIterator<BalOptionController>, label: string): BalOptionController | undefined {
+function findOptionByLabelIterator(
+  iterator: IterableIterator<BalOptionController>,
+  label: string,
+): BalOptionController | undefined {
   const { value, done } = iterator.next()
   if (!isNil(value) && value.label === label) {
     return value
@@ -62,7 +69,10 @@ function findOptionByLabelIterator(iterator: IterableIterator<BalOptionControlle
   return findOptionByLabelIterator(iterator, label)
 }
 
-export function findOptionByLabel(options: Map<string, BalOptionController>, label: string): BalOptionController | undefined {
+export function findOptionByLabel(
+  options: Map<string, BalOptionController>,
+  label: string,
+): BalOptionController | undefined {
   return findOptionByLabelIterator(options.values(), label)
 }
 

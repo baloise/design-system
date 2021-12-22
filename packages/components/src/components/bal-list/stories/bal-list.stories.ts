@@ -1,6 +1,14 @@
 import docs from './bal-list.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalList, BalListItem, BalListItemContent, BalIcon, BalListItemIcon, BalListItemTitle, BalListItemSubtitle } from '../../../../.storybook/vue/components'
+import {
+  BalList,
+  BalListItem,
+  BalListItemContent,
+  BalIcon,
+  BalListItemIcon,
+  BalListItemTitle,
+  BalListItemSubtitle,
+} from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   component: BalList,
