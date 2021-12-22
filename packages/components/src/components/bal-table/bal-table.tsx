@@ -9,7 +9,7 @@ export class Table implements ComponentInterface {
   /**
    * If `true` the table has a full width
    */
-  @Prop() expanded: boolean = false
+  @Prop() expanded = false
 
   render() {
     return (

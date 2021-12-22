@@ -9,27 +9,27 @@ export class Field {
   /**
    * If `true` the component takes the whole width
    */
-  @Prop() expanded: boolean = false
+  @Prop() expanded = false
 
   /**
    * If `true` the component gets a invalid style. Only use this if there is no live validation.
    */
-  @Prop() invalid: boolean = false
+  @Prop() invalid = false
 
   /**
    * If `true` the field loses opacity
    */
-  @Prop() disabled: boolean = false
+  @Prop() disabled = false
 
   /**
    * If `true` the field can be used on blue background.
    */
-  @Prop() inverted: boolean = false
+  @Prop() inverted = false
 
   /**
    * If `true` a loading spinner is visible at the end of the input
    */
-  @Prop() loading: boolean = false
+  @Prop() loading = false
 
   @Watch('inverted')
   @Watch('disabled')
@@ -50,22 +50,22 @@ export class Field {
   }
 
   updateChildInput() {
-    const inputs = this.element.querySelectorAll('bal-input, bal-select, bal-datepicker')
-    inputs.forEach((input: any) => {
+    const inputs = this.element.querySelectorAll<HTMLBalInputElement>('bal-input, bal-select, bal-datepicker')
+    inputs.forEach(input => {
       input.disabled = this.disabled
       input.inverted = this.inverted
-      input.expanded = this.expanded
+      // input.expanded = this.expanded // TODO: check expanded
     })
   }
 
   updateChildFieldControl() {
-    const controls = this.element.querySelectorAll('bal-field-control')
-    controls.forEach((control: any) => {
+    const controls = this.element.querySelectorAll<HTMLBalFieldControlElement>('bal-field-control')
+    controls.forEach(control => {
       control.loading = this.loading
       control.inverted = this.inverted
 
-      const selects = this.element.querySelectorAll('bal-select')
-      selects.forEach((select: any) => {
+      const selects = this.element.querySelectorAll<HTMLBalSelectElement>('bal-select')
+      selects.forEach(select => {
         select.loading = this.loading
       })
     })

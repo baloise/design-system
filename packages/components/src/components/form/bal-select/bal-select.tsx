@@ -45,13 +45,13 @@ export class Select {
   private clearSelectValue!: NodeJS.Timeout
   private mutationO?: MutationObserver
 
-  @State() hasFocus: boolean = false
-  @State() inputValue: string = ''
-  @State() focusIndex: number = 0
-  @State() isDropdownOpen: boolean = false
+  @State() hasFocus = false
+  @State() inputValue = ''
+  @State() focusIndex = 0
+  @State() isDropdownOpen = false
   @State() options: Map<string, BalOptionController> = new Map<string, BalOptionController>()
-  @State() labelToScrollTo: string = ''
-  @State() labelToSelectTo: string = ''
+  @State() labelToScrollTo = ''
+  @State() labelToSelectTo = ''
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -61,7 +61,7 @@ export class Select {
   /**
    * The tabindex of the control.
    */
-  @Prop() balTabindex: number = 0
+  @Prop() balTabindex = 0
 
   /**
    * If `true` multiple option can be selected
@@ -76,12 +76,12 @@ export class Select {
   /**
    * Removes the border of the input.
    */
-  @Prop() noBorder: boolean = false
+  @Prop() noBorder = false
 
   /**
    * Enables the slide in animation for the option items.
    */
-  @Prop() hasMovement: boolean = false
+  @Prop() hasMovement = false
 
   /**
    * If `true` the user can search by typing into the input field.
@@ -111,12 +111,12 @@ export class Select {
   /**
    * Defines the height of the dropdown list.
    */
-  @Prop() scrollable: number = 250
+  @Prop() scrollable = 250
 
   /**
    * Defines if the select is in a loading state.
    */
-  @Prop() loading: boolean = false
+  @Prop() loading = false
 
   /**
    * Selected option values. Could also be passed as a string, which gets transformed.

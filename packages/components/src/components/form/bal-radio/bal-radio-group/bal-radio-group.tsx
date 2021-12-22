@@ -33,7 +33,7 @@ export class RadioGroup implements ComponentInterface {
   /**
    * If `true` the component can be used on dark background
    */
-  @Prop() inverted: boolean = false
+  @Prop() inverted = false
 
   /**
    * If `true`, the user cannot interact with the radios.
@@ -52,7 +52,7 @@ export class RadioGroup implements ComponentInterface {
   /**
    * The value of the control.
    */
-  @Prop({ mutable: true }) value: string = ''
+  @Prop({ mutable: true }) value = ''
 
   @Watch('value')
   valueChanged(value: string, oldValue: string) {

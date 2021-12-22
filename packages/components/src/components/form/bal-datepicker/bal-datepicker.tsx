@@ -47,7 +47,7 @@ export class Datepicker implements ComponentInterface {
 
   @Element() el!: HTMLElement
 
-  @State() isDropdownOpen: boolean = false
+  @State() isDropdownOpen = false
   @State() selectedDate?: string | null = ''
   @State() pointerDate: BalPointerDate = {
     year: year(now()),
@@ -68,7 +68,7 @@ export class Datepicker implements ComponentInterface {
   /**
    * The tabindex of the control.
    */
-  @Prop() balTabindex: number = 0
+  @Prop() balTabindex = 0
 
   /**
    * If `true` the component uses the whole width.
@@ -123,12 +123,12 @@ export class Datepicker implements ComponentInterface {
   /**
    * Closes the datepicker dropdown after selection
    */
-  @Prop() closeOnSelect: boolean = true
+  @Prop() closeOnSelect = true
 
   /**
    * If `true` the datepicker only open on click of the icon
    */
-  @Prop() triggerIcon: boolean = false
+  @Prop() triggerIcon = false
 
   /**
    * Earliest year available for selection
@@ -347,11 +347,11 @@ export class Datepicker implements ComponentInterface {
   }
 
   get calendarGrid(): BalCalendarCell[][] {
-    let weekDatePointer = this.firstDateOfBox
-    let dayDatePointer = this.firstDateOfBox
-    let calendar: any[] = []
+    const weekDatePointer = this.firstDateOfBox
+    const dayDatePointer = this.firstDateOfBox
+    let calendar: any[] = [] // eslint-disable-line
     do {
-      let row: any[] = []
+      let row: any[] = [] // eslint-disable-line
       do {
         row = [
           ...row,
@@ -406,7 +406,7 @@ export class Datepicker implements ComponentInterface {
   }
 
   private onInput = (event: Event) => {
-    let inputValue = (event.target as HTMLInputElement).value
+    const inputValue = (event.target as HTMLInputElement).value
     this.balInput.emit(inputValue)
     event.stopPropagation()
 

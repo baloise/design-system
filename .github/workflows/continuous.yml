@@ -21,6 +21,12 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Format
+        run: npm run format:check
+
+      - name: Link
+        run: npm run lint:check
+
       - name: Test
         run: npm run test
 

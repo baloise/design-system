@@ -9,7 +9,7 @@ import { FileUploadRejectedFile, FileUploadRejectionReason } from './bal-file-up
 export class FileUpload {
   @Element() element!: HTMLElement
   fileInput!: HTMLInputElement
-  bundleSize: number = 0
+  bundleSize = 0
 
   @State() isOver = false
   @State() files: File[] = []
@@ -24,7 +24,7 @@ export class FileUpload {
   /**
    * Label of the drop area.
    */
-  @Prop() label: string = 'Choose or drop a file...'
+  @Prop() label = 'Choose or drop a file...'
 
   /**
    * If `true` multiple file upload is possible.
@@ -44,7 +44,7 @@ export class FileUpload {
   /**
    * Accepted MIME-Types like `image/png,image/jpeg`.
    */
-  @Prop() accept: string = ''
+  @Prop() accept = ''
 
   /**
    * Allowed number of files in the bundle.

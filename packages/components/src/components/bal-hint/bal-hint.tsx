@@ -28,7 +28,7 @@ export class Hint {
 
   @Listen('click', { target: 'document' })
   clickOnOutside(event: UIEvent) {
-    if (!this.element.contains(event.target as any) && this.isActive) {
+    if (!this.element.contains(event.target as Node) && this.isActive) {
       this.toggle()
     }
   }

@@ -88,7 +88,7 @@ export class Pagination {
     )
   }
 
-  private getItems(pageRange: number = 1) {
+  private getItems(pageRange = 1) {
     const items = []
     let rangeStart = this._value - pageRange
     let rangeEnd = this._value + pageRange

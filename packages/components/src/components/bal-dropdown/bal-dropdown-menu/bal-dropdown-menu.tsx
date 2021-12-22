@@ -9,7 +9,7 @@ export class DropdownMenu {
   /**
    * Limit the height of the dropdown content. Pass the amount of pixel.
    */
-  @Prop() scrollable: number = 0
+  @Prop() scrollable = 0
 
   get contentStyle() {
     if (this.scrollable === 0) {

@@ -9,22 +9,22 @@ export class FieldControl {
   /**
    * Baloise icon for the right side of the input
    */
-  @Prop() iconRight: string = ''
+  @Prop() iconRight = ''
 
   /**
    * Baloise icon for the left side of the input
    */
-  @Prop() iconLeft: string = ''
+  @Prop() iconLeft = ''
 
   /**
    * If `true` a loading spinner is visible at the end of the input
    */
-  @Prop() loading: boolean = false
+  @Prop() loading = false
 
   /**
    * If `true` the field can be used on blue background.
    */
-  @Prop() inverted: boolean = false
+  @Prop() inverted = false
 
   get buildIconLeftTemplate() {
     if (this.iconLeft) {

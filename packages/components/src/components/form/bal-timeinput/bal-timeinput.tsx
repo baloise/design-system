@@ -34,22 +34,22 @@ export class Timeinput {
   /**
    * The value of the datepicker with the format `hh:mm`.
    */
-  @Prop({ mutable: true }) value: string = ''
+  @Prop({ mutable: true }) value = ''
 
   /**
    * Latest date available for selection
    */
-  @Prop() maxTime: string = ''
+  @Prop() maxTime = ''
 
   /**
    * Earliest date available for selection
    */
-  @Prop() minTime: string = ''
+  @Prop() minTime = ''
 
   /**
    * If `true` the timeinput can be used on blue background.
    */
-  @Prop() inverted: boolean = false
+  @Prop() inverted = false
 
   /**
    * Emitted when either the hour or the minute input has changed.

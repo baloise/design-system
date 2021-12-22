@@ -14,7 +14,7 @@ export class SelectOption implements ComponentInterface {
   /**
    * If `true`, the user cannot interact with the option.
    */
-  @Prop() disabled: boolean = false
+  @Prop() disabled = false
 
   /**
    * The value of the select option. This value will be returned by the parent `<bal-select>` element.

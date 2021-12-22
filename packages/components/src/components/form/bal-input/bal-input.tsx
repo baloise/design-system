@@ -113,7 +113,7 @@ export class Input implements ComponentInterface {
   /**
    * The tabindex of the control.
    */
-  @Prop() balTabindex: number = 0
+  @Prop() balTabindex = 0
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -252,8 +252,8 @@ export class Input implements ComponentInterface {
    * Returns the native `<input>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLInputElement> {
-    return Promise.resolve(this.nativeInput!)
+  getInputElement(): Promise<HTMLInputElement | undefined> {
+    return Promise.resolve(this.nativeInput)
   }
 
   private getRawValue(): string {

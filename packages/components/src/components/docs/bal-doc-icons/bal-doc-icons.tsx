@@ -4,7 +4,7 @@ import { Component, h, Host, Prop } from '@stencil/core'
   tag: 'bal-doc-icons',
 })
 export class BalDocIcons {
-  @Prop() icons: string = ''
+  @Prop() icons = ''
 
   render() {
     return (

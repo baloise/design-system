@@ -60,37 +60,37 @@ export class Button implements ComponentInterface {
   /**
    * If `true` the width of the buttons is limited
    */
-  @Prop() square: boolean = false
+  @Prop() square = false
 
   /**
    * If `true` the button has a active theme
    */
-  @Prop() isActive: boolean = false
+  @Prop() isActive = false
 
   /**
    * If `true` the button has a full width
    */
-  @Prop() expanded: boolean = false
+  @Prop() expanded = false
 
   /**
    * If `true` the button is outlined
    */
-  @Prop() outlined: boolean = false
+  @Prop() outlined = false
 
   /**
    * If `true` the button is inverted
    */
-  @Prop() inverted: boolean = false
+  @Prop() inverted = false
 
   /**
    * If `true` the label is hidden and a loading spinner is shown instead.
    */
-  @Prop() loading: boolean = false
+  @Prop() loading = false
 
   /**
    * If `true` the top corners get rounded
    */
-  @Prop() topRounded: boolean = false
+  @Prop() topRounded = false
 
   /**
    * If `true` the bottom corners get rounded
@@ -254,7 +254,7 @@ export class Button implements ComponentInterface {
 
   render() {
     const { type, download, href, rel, target, name, value } = this
-    const TagType = this.href === undefined ? 'button' : ('a' as any)
+    const TagType = this.href === undefined ? 'button' : 'a'
     const attrs =
       TagType === 'button'
         ? { type, name, value }

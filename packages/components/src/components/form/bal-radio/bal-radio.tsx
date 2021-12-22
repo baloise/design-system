@@ -23,7 +23,7 @@ export class Radio implements ComponentInterface {
   @State() hasFocus = false
 
   @Element() el!: HTMLElement
-  @State() hasLabel: boolean = true
+  @State() hasLabel = true
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -38,17 +38,17 @@ export class Radio implements ComponentInterface {
   /**
    * The tabindex of the control.
    */
-  @Prop() balTabindex: number = 0
+  @Prop() balTabindex = 0
 
   /**
    * The value of the control.
    */
-  @Prop() value: string = ''
+  @Prop() value = ''
 
   /**
    * If `true` the radio has no label
    */
-  @Prop() isEmpty: boolean = false
+  @Prop() isEmpty = false
 
   /**
    * If `true`, the radio is selected.
@@ -116,12 +116,12 @@ export class Radio implements ComponentInterface {
     }
   }
 
-  private onInputFocus = (ev: any) => {
+  private onInputFocus = (ev: FocusEvent) => {
     this.hasFocus = true
     this.balFocus.emit(ev)
   }
 
-  private onInputBlur = (ev: any) => {
+  private onInputBlur = (ev: FocusEvent) => {
     this.hasFocus = false
     this.balBlur.emit(ev)
   }
