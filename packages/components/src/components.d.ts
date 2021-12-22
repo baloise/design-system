@@ -866,7 +866,7 @@ export namespace Components {
         /**
           * Closes the presented modal with the modal controller
          */
-        "dismiss": <T>(data?: T | undefined, role?: string | undefined) => Promise<boolean>;
+        "dismiss": (data?: any, role?: string | undefined) => Promise<boolean>;
         /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
@@ -886,11 +886,11 @@ export namespace Components {
         /**
           * Returns a promise that resolves when the modal did dismiss.
          */
-        "onDidDismiss": <T>() => Promise<OverlayEventDetail<T>>;
+        "onDidDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
         /**
           * Returns a promise that resolves when the modal will dismiss.
          */
-        "onWillDismiss": <T>() => Promise<OverlayEventDetail<T>>;
+        "onWillDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
         /**
           * Opens the modal.
          */

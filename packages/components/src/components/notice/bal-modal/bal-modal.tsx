@@ -156,7 +156,7 @@ export class Modal implements OverlayInterface {
    * Closes the presented modal with the modal controller
    */
   @Method()
-  async dismiss<T>(data?: T, role?: string): Promise<boolean> {
+  async dismiss(data?: any, role?: string): Promise<boolean> {
     if (this.delegate === undefined) {
       await this.close()
       return true
@@ -185,7 +185,7 @@ export class Modal implements OverlayInterface {
    * Returns a promise that resolves when the modal did dismiss.
    */
   @Method()
-  onDidDismiss<T>(): Promise<OverlayEventDetail<T>> {
+  onDidDismiss<T = any>(): Promise<OverlayEventDetail<T>> {
     return eventMethod(this.el, 'balModalDidDismiss')
   }
 
@@ -193,7 +193,7 @@ export class Modal implements OverlayInterface {
    * Returns a promise that resolves when the modal will dismiss.
    */
   @Method()
-  onWillDismiss<T>(): Promise<OverlayEventDetail<T>> {
+  onWillDismiss<T = any>(): Promise<OverlayEventDetail<T>> {
     return eventMethod(this.el, 'balModalWillDismiss')
   }
 
@@ -213,7 +213,7 @@ export class Modal implements OverlayInterface {
     const modals = Array.from(document.querySelectorAll('bal-modal')).filter(el => el.hasAttribute('aria-presented'))
     const nums = modals
       .map(el => el.overlayIndex)
-      .map(num => parseInt(num as any)) // eslint-disable-line
+      .map(num => parseInt(num as any))
       .filter(num => !Number.isNaN(num))
     const max = Math.max(...nums)
 
