@@ -8,6 +8,7 @@ storybook-static/
 .storybook/vue/components.ts
 public/
 generated/
+src/components.d.ts
 
 *~
 *.sw[mnpcod]

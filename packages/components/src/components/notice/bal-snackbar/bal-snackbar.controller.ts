@@ -1,5 +1,5 @@
 import { BalNoticeController, BalNoticeOptions } from '../../../helpers/notice.controller'
-import { Components } from '../../../components'
+import { Components } from '../../../types'
 
 export interface BalSnackbarOptions extends BalNoticeOptions {
   icon: string
