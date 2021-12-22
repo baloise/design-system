@@ -1,5 +1,6 @@
 {
   "version": "5.0.1",
+  "granularPathspec": false,
   "packages": [
     "packages/*"
   ],
