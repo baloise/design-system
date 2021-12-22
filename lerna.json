@@ -1,24 +1,26 @@
 {
+  "version": "5.0.1",
   "packages": [
     "packages/*"
   ],
-  "version": "5.0.1",
   "command": {
-    "publish": {
-      "ignoreChanges": [
-        ".build/**",
-        ".github/**",
-        "examples/**",
-        "resources/**",
-        "**/*.md",
-        "**/*.mdx",
-        "**/*.html"
-      ],
-      "message": "chore(): release"
-    },
     "version": {
-      "message": "chore(): release",
-      "private": false
+      "message": "chore(release): publish %s"
     }
-  }
+  },
+  "ignoreChanges": [
+    ".build/**",
+    ".github/**",
+    ".husky/**",
+    "resources/**",
+    "**/.build/**",
+    "**/generated/**",
+    "**/stories/**",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.e2e.ts",
+    "**/*.md",
+    "**/*.mdx",
+    "**/*.html"
+  ]
 }

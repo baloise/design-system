@@ -58,6 +58,8 @@ jobs:
 
       - name: Update Lock files
         run: 'npm run update:lock'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       - uses: EndBug/add-and-commit@v5
         with:
