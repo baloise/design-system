@@ -166,12 +166,12 @@ export class Button implements ComponentInterface {
     }
   }
 
-  private get buttonCssClass() {
+  private get buttonCssClass(): { [className: string]: boolean } {
     return {
       'button': true,
       [`is-${this.color}`]: true,
       'is-square': this.square,
-      'is-small': this.size,
+      'is-small': this.size === 'small',
       'is-inverted': this.inverted,
       'is-active': this.isActive,
       'is-outlined': this.outlined,

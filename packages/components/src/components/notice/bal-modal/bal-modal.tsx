@@ -213,7 +213,7 @@ export class Modal implements OverlayInterface {
     const modals = Array.from(document.querySelectorAll('bal-modal')).filter(el => el.hasAttribute('aria-presented'))
     const nums = modals
       .map(el => el.overlayIndex)
-      .map(num => parseInt(num))
+      .map(num => parseInt(num as any)) // eslint-disable-line
       .filter(num => !Number.isNaN(num))
     const max = Math.max(...nums)
 

@@ -41,9 +41,6 @@ jobs:
       - name: Clean install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
-
       - uses: EndBug/add-and-commit@v5
         with:
           message: 'chore(): update build artifacts'
