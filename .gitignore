@@ -107,8 +107,12 @@ dist-transpiled
 # TernJS port file
 .tern-port
 .idea
-/temp
-/templates
-/sandbox
-.vscode
-/storybook
+
+# Generated files and folders
+.vscode/
+temp/
+templates/
+sandbox/
+storybook/
+packages/*/CHANGELOG.md
+packages/*/bubu.md
