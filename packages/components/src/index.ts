@@ -4,6 +4,11 @@
 export * from './config'
 
 /**
+ * Components
+ */
+export { Components, JSX } from './components'
+
+/**
  * Types
  */
 export * from './components/form/bal-select/utils/bal-option.type'
