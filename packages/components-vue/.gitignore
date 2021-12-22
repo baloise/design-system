@@ -1,2 +1,1 @@
-packages/components-vue/src/components.ts
-packages/components-vue/src/vue-component-lib/
+src/components.ts
