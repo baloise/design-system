@@ -108,11 +108,10 @@ dist-transpiled
 .tern-port
 .idea
 
-# Generated files and folders
+# Design System
 .vscode/
 temp/
 templates/
 sandbox/
 storybook/
 packages/*/CHANGELOG.md
-packages/*/bubu.md

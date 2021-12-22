@@ -9,6 +9,7 @@ storybook-static/
 public/
 generated/
 src/components.d.ts
+src/components/*/readme.md
 
 *~
 *.sw[mnpcod]
