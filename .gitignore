@@ -99,7 +99,7 @@ packages/components/loader/
 packages/components/www/
 packages/components/.storybook/vue/components.ts
 packages/components/src/assets/fonts
-packages/components/src/components/*/readme.md
+packages/components/src/components/**/readme.md
 packages/components/src/stories/assets/components.json
 packages/components/src/stories/assets/components.d.ts
 
