@@ -3,11 +3,12 @@ name: Continuous
 on: [push]
 
 jobs:
-  build:
+  BuildAndTest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
       - name: Restore lerna
         uses: actions/cache@v2
         with:
@@ -15,38 +16,31 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
       - name: Install Lerna globally
         run: npm install lerna --global
+
       - name: Update npm registry
         run: npm run update:registry
+
       - name: Install dependencies and Build
         run: npm ci
-  format:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
+
       - name: Format
         run: npm run format:check
-  lint:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
+
       - name: Lint
         run: npm run lint:check
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
+
       - name: Test
         run: npm run test
-  cypress:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
+
       - name: Build server in the background
         run: npm run test:build-server
+
       - name: Start server in the background
         run: npm run test:start-server &
+
       - uses: cypress-io/github-action@v2
         with:
           working-directory: packages/testing
