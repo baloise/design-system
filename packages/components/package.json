@@ -46,7 +46,7 @@
     "build:docs": "STORYBOOK_MODE=prod stencil build --config stencil.dev.config.ts && STORYBOOK_MODE=prod build-storybook -o ../../storybook",
     "================= DEVELOPMENT =================": "================================",
     "generate": "node ./.build/stencil/generate",
-    "dev": "npm run build:contributors && npm run dev:build && concurrently --names \"STENCIL,STORYBOOK\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm:dev:watch\" \"npm:dev:docs\"",
+    "dev": "npm run build:contributors && npm run dev:build && concurrently --names \"_STENCIL_,STORYBOOK\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm:dev:watch\" \"npm:dev:docs\"",
     "dev:build": "STORYBOOK_MODE=dev stencil build --config stencil.dev.config.ts",
     "dev:watch": "STORYBOOK_MODE=dev stencil build --config stencil.dev.config.ts --watch",
     "dev:docs": "STORYBOOK_MODE=dev start-storybook -p 6006",
