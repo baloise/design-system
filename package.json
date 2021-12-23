@@ -1,24 +1,22 @@
 {
   "name": "root",
   "private": true,
-  "publishConfig": {
-    "access": "public"
-  },
   "homepage": "https://design.baloise.dev",
-  "author": {
-    "name": "Gery Hirschfeld",
-    "email": "gerhard.hirschfeld@baloise.ch",
-    "url": "https://github.com/hirsch88"
-  },
+  "contributors": [
+    "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
+    "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
+    "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
+    "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)"
+  ],
   "scripts": {
     "==================== INSTALLATION / SETUP ====================": "================================",
-    "prepare": "husky install && npm run build",
+    "prepare": "husky install",
     "preinstall": "npx npm-force-resolutions",
     "postinstall": "npm run bootstrap && node .build/copy.js",
     "bootstrap": "lerna bootstrap",
     "update:lock": "lerna exec -- npm install --package-lock-only",
     "update:registry": "lerna run update:registry && sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
-    "precommit": "lint-staged",
+    "precommit": "lint-staged --allow-empty",
     "==================== FORMATTER / LINTER ====================": "================================",
     "format:check": "prettier --check ./packages",
     "format": "prettier --write ./packages",
@@ -80,12 +78,9 @@
     "lint-staged": "^12.1.3",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.3.5"
+    "typescript": "4.3.5"
   },
   "resolutions": {
     "tar": ">=4.4.18"
-  },
-  "dependencies": {
-    "vue": "^2.6.14"
   }
 }
