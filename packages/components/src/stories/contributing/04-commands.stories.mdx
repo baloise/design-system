@@ -23,6 +23,23 @@ The commands of the Baloise Design System are managed in the `package.json` file
 | npm run **lint**   | Lints the source files with eslint                                                                                          |
 | npm run **format** | Formats the source file with prettier                                                                                       |
 
+## Build
+
+The build script is devided into 3 phases:
+
+- **Pre Build**
+  - Build resources like icons and fonts for the design system
+- **Core Build**
+  - Builds the components and the global stylesheet
+  - Depends on icons and fonts
+- **Post Build**
+  - Builds the proxy libraries, extensions and the testing library
+  - Depends on components and global stylesheet
+
+import BuildImage from '../assets/images/architecture/build.svg'
+
+<img src={BuildImage} />
+
 ## Debug Components
 
 To be able to debug components we need 2 seperate terminals. One for storybook and the other for stencil.

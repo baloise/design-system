@@ -50,15 +50,25 @@ For our CI & CD task we use [Github Actions](https://github.com/baloise/design-s
 
 ```bash
 .
-├── .github # github related configurations and templates
-│  ├── ISSUE_TEMPLATE # templates for the github issues like feature request
-│  └── .workflows # github action
+├── .build                # additional build scripts
+├── .github               # github related configurations and templates
+│  ├── ISSUE_TEMPLATE     # templates for the github issues like feature request
+│  └── .workflows         # github action
 │
-├── .build # additional build scripts
-├── packages # published npm packages
-├── resources # static resources for the documentation
-├── Dockerfile # config for the documentation
-└── lerna.json # config of the mono-repo
+├── .husky                # git hook to lint commit messsages
+├── packages              # published npm packages
+├── resources             # static resources for the documentation
+├── .editorconfig         # ensures coding styles accross the mutliple IDEs
+├── .eslintignore         # files to ingnore during linting
+├── .eslintrc.js          # config of the linter
+├── .lintstagedrc         # run linters against staged git files
+├── .prettierignore       # files to ingnore during formatting
+├── .prettierrc           # config of our format tool
+├── commitlint.config.js  # config of our commit message linter
+├── Dockerfile            # config for the documentation
+├── lerna.json            # config of the mono-repo
+├── rollup.base.js        # base config of the module bundler
+└── tsconfig.base.json    # base config of typescript
 ```
 
 ### /packages
@@ -67,42 +77,42 @@ For our CI & CD task we use [Github Actions](https://github.com/baloise/design-s
 
 ```bash
 .
-├── .build # additional build scripts
-├── .storybook # storybook configurations
+├── .build      # additional build scripts
+├── .storybook  # storybook configurations
 ├── src
-│  ├── assets # generated assets folder for the stencil components
+│  ├── assets   # generated assets folder for the stencil components
 │  ├── components
 │  │  └── bal-<component>
-│  │        ├── bal-<component>-<addon> # sub-component
-│  │        │  ├── bal-<component>-<addon>.tsx # Component logic
-│  │        │  └── readme.md # generated Readme with the components api
+│  │        ├── bal-<component>-<addon>         # sub-component
+│  │        │  ├── bal-<component>-<addon>.tsx  # Component logic
+│  │        │  └── readme.md                    # generated Readme with the components api
 │  │        │
-│  │        ├── stories # documentation folder with the stories
-│  │        │  ├── bal-<component>.docs.mdx # main documentation file
-│  │        │  ├── bal-<component>.stories.ts # has the different variants/stories of the component
+│  │        ├── stories                         # documentation folder with the stories
+│  │        │  ├── bal-<component>.docs.mdx     # main documentation file
+│  │        │  ├── bal-<component>.stories.ts   # has the different variants/stories of the component
 │  │        │  ├── bal-<component>.templates.ts # HTML templates snippets <optional>
-│  │        │  ├── github.md # generated file with the contribution links
-│  │        │  └── testing.md # generated file with the testing api
+│  │        │  ├── github.md                    # generated file with the contribution links
+│  │        │  └── testing.md                   # generated file with the testing api
 │  │        │
-│  │        ├── test # documentation folder with the stories
-│  │        │  ├── bal-<component>.e2e.ts # E2E test file
-│  │        │  └── bal-<component>.spec.ts # Unit test file
+│  │        ├── test                        # documentation folder with the stories
+│  │        │  ├── bal-<component>.e2e.ts   # E2E test file
+│  │        │  └── bal-<component>.spec.ts  # Unit test file
 │  │        │
 │  │        ├── bal-<component>.vars.scss # Sass variables
-│  │        ├── bal-<component>.scss # Specific component style
-│  │        ├── bal-<component>.tsx # Component logic
-│  │        ├── index.html # Examples for the cypress tests: <deprecated> use storybook instead.
-│  │        └── readme.md # generated Readme with the components api
+│  │        ├── bal-<component>.scss      # Specific component style
+│  │        ├── bal-<component>.tsx       # Component logic
+│  │        ├── index.html                # Examples for the cypress tests: <deprecated> use storybook instead.
+│  │        └── readme.md                 # generated Readme with the components api
 │  │
-│  ├── constants # global constants.
-│  ├── helpers # global helper functions.
-│  ├── styles # global styles which extends the bulma sass files
-│  │  ├── global.scss # global stylesheet of the Design System
-│  │  └── global.utilities.scss # exports variables, mixins... (no-styles)
+│  ├── constants                  # global constants.
+│  ├── helpers                    # global helper functions.
+│  ├── styles                     # global styles which extends the bulma sass files
+│  │  ├── global.scss             # global stylesheet of the Design System
+│  │  └── global.utilities.scss   # exports variables, mixins... (no-styles)
 │  │
-│  ├── types # global types for all the components like colors.
-│  ├── global.ts # global executed script. Gets executed when the components are ready.
-│  └── config.ts # global config definitions for the anuglar module and the vue plugin.
+│  ├── types      # global types for all the components like colors.
+│  ├── global.ts  # global executed script. Gets executed when the components are ready.
+│  └── config.ts  # global config definitions for the anuglar module and the vue plugin.
 │
 └──  stencil.*.config.ts # stencil output configurations
 ```
