@@ -7,11 +7,12 @@
     "url": "https://github.com/baloise/design-system.git"
   },
   "homepage": "https://design.baloise.dev.sh",
-  "author": {
-    "name": "Gery Hirschfeld",
-    "email": "gerhard.hirschfeld@baloise.ch",
-    "url": "https://github.com/hirsch88"
-  },
+  "contributors": [
+    "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
+    "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
+    "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
+    "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)"
+  ],
   "publishConfig": {
     "access": "public"
   },
