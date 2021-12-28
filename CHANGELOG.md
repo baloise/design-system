@@ -3,60 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## 5.0.5 (2021-12-28)
+# [6.0.0](https://github.com/baloise/design-system/compare/v5.0.0...v6.0.0) (2021-12-28)
 
-**Note:** Version bump only for package root
+### BREAKING CHANGES
 
+- Added and improved the css helper classes.
+  - Follow the migration guide [Migration from 5.x to 6.x](https://design.baloise.dev/?path=/story/migration-migration-from-5-x-to-6-x--page)
 
+### Features
 
-
-
-## 5.0.4 (2021-12-23)
-
-**Note:** Version bump only for package root
-
-
-
-
-
-## 5.0.3 (2021-12-23)
-
-**Note:** Version bump only for package root
-
-
-
-
+- **css-helpers:** improve color, border, radius, flexbox, visibility and shadow ([25d1fc](https://github.com/baloise/design-system/commit/25d1fc6c75cb0688e03fd73c7444f39ceb2a49e1))
 
 ## [5.0.2](https://github.com/baloise/design-system/compare/v5.0.1...v5.0.2) (2021-12-22)
 
-
 ### Bug Fixes
 
-* **core:** ignore components.d.ts and export types only in the types.d.ts file ([7b1e705](https://github.com/baloise/design-system/commit/7b1e705d290c9d306890d30f3e65b7b5a06bdf92))
-
-
-
-# [5.0.0](https://github.com/baloise/design-system/compare/v4.3.1...v5.0.0) (2021-12-20)
-
-
-
-## 4.3.1 (2021-12-15)
-
-
-
-
-
-## [5.0.1](https://github.com/baloise/design-system/compare/v5.0.0...v5.0.1) (2021-12-20)
-
-
-
-## 4.3.1 (2021-12-15)
-
-**Note:** Version bump only for package root
-
-
-
-
+- **core:** ignore components.d.ts and export types only in the types.d.ts file ([7b1e705](https://github.com/baloise/design-system/commit/7b1e705d290c9d306890d30f3e65b7b5a06bdf92))
 
 # [5.0.0](https://github.com/baloise/design-system/compare/v4.0.0...v5.0.0) (2021-12-20)
 
