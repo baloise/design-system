@@ -17,7 +17,7 @@ export class BalDocColor {
   render() {
     return (
       <Host class="bal-app">
-        <div class="has-border-blue-light">
+        <div class="has-border-light">
           <div class={`has-background-${this.color} px-2 py-3`} style={{ minHeight: '60px' }}>
             <strong class={this.inverted ? 'has-text-white' : 'has-text-blue'}>{this.background ? 'A-a' : ''}</strong>
           </div>

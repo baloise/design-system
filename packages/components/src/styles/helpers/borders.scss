@@ -1,0 +1,77 @@
+$custom-borders: null !default;
+
+$borders: mergeColorMaps(
+  (
+    // @deprecated
+    'blue-inverted': $blue-5,
+    'grey': $grey,
+    'blue': $border-focused,
+    'focused': $border-focused,
+    'light': $blue-2,
+    'dark': $blue-8,
+    'success': $success,
+    'warning': $warning,
+    'danger': $danger
+  ),
+  $custom-borders
+) !default;
+
+@each $name, $shade in $borders {
+  .has-border-#{$name} {
+    border: 1px solid $shade !important;
+  }
+  .has-border-top-#{$name} {
+    border-top: 1px solid $shade !important;
+  }
+  .has-border-bottom-#{$name} {
+    border-bottom: 1px solid $shade !important;
+  }
+  .has-border-right-#{$name} {
+    border-right: 1px solid $shade !important;
+  }
+  .has-border-left-#{$name} {
+    border-left: 1px solid $shade !important;
+  }
+}
+
+.has-border-none {
+  border: none !important;
+}
+
+.has-border-bold {
+  border-width: 2px !important;
+}
+
+$border-radius: (
+  'none': $radius-none,
+  'small': $radius-small,
+  'normal': $radius,
+  'large': $radius-large,
+  'rounded': $radius-rounded,
+);
+
+@each $name, $value in $border-radius {
+  .has-radius-#{$name} {
+    border-radius: $value !important;
+  }
+  .has-radius-#{$name}-top {
+    border-top-left-radius: $value !important;
+    border-top-right-radius: $value !important;
+  }
+  .has-radius-#{$name}-bottom {
+    border-bottom-left-radius: $value !important;
+    border-bottom-right-radius: $value !important;
+  }
+  .has-radius-#{$name}-top-left {
+    border-top-left-radius: $value !important;
+  }
+  .has-radius-#{$name}-top-right {
+    border-top-right-radius: $value !important;
+  }
+  .has-radius-#{$name}-bottom-left {
+    border-bottom-left-radius: $value !important;
+  }
+  .has-radius-#{$name}-bottom-right {
+    border-bottom-right-radius: $value !important;
+  }
+}

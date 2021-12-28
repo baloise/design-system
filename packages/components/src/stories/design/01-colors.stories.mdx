@@ -132,6 +132,10 @@ These colors/variables can be used within your style sheets, by import the `glob
 
 ```scss
 @import 'node_modules/@baloise/design-system-components/src/styles/global.utilities';
+
+.my-element {
+  background: $blue;
+}
 ```
 
 ## CSS Helper Classes
@@ -140,9 +144,11 @@ Out of the color tokens we create a collection of helper css classes.
 
 [Go to the Bulma documentation](https://bulma.io/documentation/modifiers/color-helpers/).
 
-import { ColorHelpers } from './01-colors.templates.ts'
+import { ColorHelpers } from './09-css-helpers.templates.ts'
 import { html } from '../utils'
 import dedent from 'ts-dedent'
+
+### Colors
 
 <Canvas withSource="none">
   <bal-doc-app>{html(ColorHelpers)}</bal-doc-app>
@@ -152,5 +158,18 @@ import dedent from 'ts-dedent'
   language="html"
   code={dedent`
      ${ColorHelpers}
+  `}
+/>
+
+### Borders
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(BorderHelpers)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${BorderHelpers}
   `}
 />
