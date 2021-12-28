@@ -1,0 +1,156 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs'
+
+<Meta
+  title="Design/CSS Helpers"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# CSS Helpers
+
+Apply helper classes to almost any element, in order to alter their style.
+
+import {
+  ColorHelpers,
+  BorderHelpers,
+  BorderColorsHelpers,
+  RadiusHelpers,
+  ShadowHelpers,
+  FlexboxHelpers,
+  VisabilityHelpers,
+} from './09-css-helpers.templates.ts'
+import { html } from '../utils'
+import dedent from 'ts-dedent'
+
+## Colors
+
+Change the color of the text and/or background
+
+- [Colors](http://localhost:6006/?path=/story/design-colors--page)
+- [Typography](http://localhost:6006/?path=/story/design-typography--page)
+- [Bulma Documentation](https://bulma.io/documentation/helpers/color-helpers/)
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(ColorHelpers)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${ColorHelpers}
+  `}
+/>
+
+### Text Colors
+
+For each [color](http://localhost:6006/?path=/story/design-colors--page) there is a helper css class for text colors.
+
+`has-text-*`
+
+### Background Colors
+
+For each [color](http://localhost:6006/?path=/story/design-colors--page) there is a helper css class for background colors.
+
+`has-background-*`
+
+## Visability
+
+Show/hide content depending on the width of the viewport.
+
+- [Breakpoints](http://localhost:6006/?path=/docs/design-breakpoints--viewports)
+- [Bulma Documentation](https://bulma.io/documentation/helpers/visibility-helpers/)
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(VisabilityHelpers)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${VisabilityHelpers}
+  `}
+/>
+
+## Flexbox
+
+Helpers for all Flexbox properties
+
+- [Bulma Documentation](https://bulma.io/documentation/helpers/flexbox-helpers/)
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(FlexboxHelpers)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${FlexboxHelpers}
+  `}
+/>
+
+## Border
+
+Change or add border styles to a element with the border helper css classes.
+
+`has-border-*`
+
+### Border Colors
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(BorderColorsHelpers)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${BorderColorsHelpers}
+  `}
+/>
+
+### Border Styles
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(BorderHelpers)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${BorderHelpers}
+  `}
+/>
+
+## Radius
+
+Change the border radius of an element with the below css classes.
+
+`has-radius-*`
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(RadiusHelpers)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${RadiusHelpers}
+  `}
+/>
+
+## Shodow
+
+Add a showdow effect to a element with the css class `has-shadow`.
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(ShadowHelpers)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${ShadowHelpers}
+  `}
+/>

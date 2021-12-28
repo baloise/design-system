@@ -10,6 +10,7 @@ storybook-static/
 rollup.config.js
 ngcc.config.js
 *.md
+*.scss
 
 packages/components/src/stories/contributors.md
 packages/components/src/components.d.ts

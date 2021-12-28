@@ -104,7 +104,7 @@ export const Box = args => ({
   template: `
   <div class="columns" style="max-width: 400px">
     <div class="column">
-      <div @click="checkA($event)" :class="selectedA ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-2 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius">
+      <div @click="checkA($event)" :class="selectedA ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-2 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-radius-normal">
         <img src="https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg" >
         <p class="has-text-blue is-bold mb-0">Title</p>
         <p class="has-text-blue mb-3">Subtitle</p>
@@ -113,7 +113,7 @@ export const Box = args => ({
       </div>
     </div>
     <div class="column">
-    <div @click="checkB($event)" :class="selectedB ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-2 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius">
+    <div @click="checkB($event)" :class="selectedB ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-2 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-radius-normal">
       <img src="https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg" >
       <p class="has-text-blue is-bold mb-0">Title</p>
       <p class="has-text-blue mb-3">Subtitle</p>

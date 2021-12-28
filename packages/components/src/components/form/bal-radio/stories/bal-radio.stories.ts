@@ -71,14 +71,14 @@ export const RadioBoxes = args => ({
   <bal-radio-group v-bind="args" v-model="value">
     <div class="columns" style="max-width: 400px">
       <div class="column">
-        <div @click="checkA()" :class="value === '1' ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius">
+        <div @click="checkA()" :class="value === '1' ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-radius-normal">
           <img src="https://www.baloise.ch/dam/jcr:5d0376a5-53ef-40b9-a1d9-c6d7d0c56bf7/Haushalt.svg" >
           <p class="has-text-blue mb-2">Selected Label</p>
           <bal-radio class="p-0" name="box-example" value="1" is-empty></bal-radio>
         </div>
       </div>
       <div class="column">
-        <div @click="checkB()" :class="value === '2' ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-border-radius">
+        <div @click="checkB()" :class="value === '2' ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-3 is-flex-direction-column is-justify-content-center is-align-items-center has-border-blue has-radius-normal">
           <img src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
           <p class="has-text-blue mb-2">Other Label</p>
           <bal-radio class="p-0" name="box-example" value="2" is-empty></bal-radio>
@@ -103,13 +103,13 @@ export const RadioList = args => ({
   },
   template: `
   <bal-radio-group v-bind="args" v-model="value">
-    <div @click="checkA()" :class="value === '1' ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-border-radius">
+    <div @click="checkA()" :class="value === '1' ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-radius-normal">
       <bal-radio name="list-example" value="1">
         <span class="pl-2"><b>Year 1</b> (CHF 66.00)</span>
       </bal-radio>
     </div>
 
-    <div @click="checkB()" :class="value === '2' ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-border-radius">
+    <div @click="checkB()" :class="value === '2' ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-radius-normal">
       <bal-radio name="list-example" class="mr-3" value="2">
         <div class="pl-2"><b>Year 2</b> (CHF 86.00)</div>
       </bal-radio>
