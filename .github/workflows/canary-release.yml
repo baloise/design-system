@@ -2,10 +2,6 @@ name: Canary Release
 
 on:
   workflow_dispatch:
-    inputs:
-      ref:
-        description: 'The branch, tag or SHA to checkout'
-        required: true
 
 jobs:
   Publish:
