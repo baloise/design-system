@@ -1,5 +1,5 @@
-import { BaloiseDesignSystemConfig } from '@baloise/design-system-components'
-import { defineCustomElements, applyPolyfills } from '@baloise/design-system-components/loader'
+import { BaloiseDesignSystemConfig } from '@baloise/design-system-next-components'
+import { defineCustomElements, applyPolyfills } from '@baloise/design-system-next-components/loader'
 
 export const appInitialize = (config: BaloiseDesignSystemConfig) => () => {
   return (): Promise<void> => {

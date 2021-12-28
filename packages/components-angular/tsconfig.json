@@ -7,10 +7,10 @@
     "importHelpers": true,
     "strictPropertyInitialization": false,
     "baseUrl": ".",
-    "types": ["@baloise/design-system-components"],
+    "types": ["@baloise/design-system-next-components"],
     "paths": {
-      "@baloise/design-system-components/loader": ["../components/loader"],
-      "@baloise/design-system-components": ["../components"]
+      "@baloise/design-system-next-components/loader": ["../components/loader"],
+      "@baloise/design-system-next-components": ["../components"]
     }
   },
   "angularCompilerOptions": {

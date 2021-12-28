@@ -1,7 +1,7 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule, NgZone } from '@angular/core'
 import { CommonModule, DOCUMENT } from '@angular/common'
 import { FormsModule } from '@angular/forms'
-import { BaloiseDesignSystemConfig, baloiseDesignSystemDefaultConfig } from '@baloise/design-system-components'
+import { BaloiseDesignSystemConfig, baloiseDesignSystemDefaultConfig } from '@baloise/design-system-next-components'
 
 import { appInitialize } from './app-initialize'
 import { DIRECTIVES } from './directives/proxies-list'

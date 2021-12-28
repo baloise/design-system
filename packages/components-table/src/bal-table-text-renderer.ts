@@ -1,5 +1,5 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community'
-import { ColorTypes } from '@baloise/design-system-components'
+import { ColorTypes } from '@baloise/design-system-next-components'
 import isNil from 'lodash.isnil'
 
 interface BalTableTextRendererOptions {

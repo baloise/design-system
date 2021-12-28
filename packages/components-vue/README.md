@@ -4,7 +4,7 @@
 
 <br>
 
-[![continuous](https://github.com/baloise/design-system/actions/workflows/continuous.yml/badge.svg?branch=master)](https://github.com/baloise/design-system/actions/workflows/continuous.yml)
+[![Continuous](https://github.com/baloise/design-system/actions/workflows/continuous.yml/badge.svg?branch=master)](https://github.com/baloise/design-system/actions/workflows/continuous.yml)
 [![Release](https://github.com/baloise/design-system/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/baloise/design-system/actions/workflows/release.yml)
 
 ![npm](https://img.shields.io/npm/v/@baloise/design-system-components)

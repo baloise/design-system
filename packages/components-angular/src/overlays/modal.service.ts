@@ -1,5 +1,5 @@
 import { ComponentFactoryResolver, Injectable, Injector } from '@angular/core'
-import { balModalController, ModalOptions } from '@baloise/design-system-components'
+import { balModalController, ModalOptions } from '@baloise/design-system-next-components'
 import { AngularDelegate } from './angular-delegate'
 import { OverlayBaseController } from './overlay'
 

@@ -24,7 +24,7 @@ export const vueComponentModels: ComponentModelConfig[] = [
 ]
 
 export const VueGenerator = (
-  componentCorePackage = '@baloise/design-system-components',
+  componentCorePackage = '@baloise/design-system-next-components',
   proxiesFile = '../components-vue/src/components.ts',
   includeDefineCustomElements = false,
 ) =>

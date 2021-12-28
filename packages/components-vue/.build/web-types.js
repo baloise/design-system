@@ -57,7 +57,7 @@ async function main() {
       'description': component.docs,
       'source': {
         module:
-          '@baloise/design-system-components/' +
+          '@baloise/design-system-next-components/' +
           component.filePath.replace('./src/', 'dist/types/').replace('.tsx', '.d.ts'),
         symbol: componentName.substr(3),
       },
@@ -70,7 +70,7 @@ async function main() {
   const webTypes = {
     $schema: 'http://json.schemastore.org/web-types',
     framework: 'vue',
-    name: '@baloise/design-system-components-vue',
+    name: '@baloise/design-system-next-components-vue',
     version: require('../package.json').version,
     contributions: {
       html: {

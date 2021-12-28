@@ -1,6 +1,6 @@
 import { Plugin } from 'vue'
-import { BaloiseDesignSystemConfig, baloiseDesignSystemDefaultConfig } from '@baloise/design-system-components'
-import { defineCustomElements, applyPolyfills } from '@baloise/design-system-components/loader'
+import { BaloiseDesignSystemConfig, baloiseDesignSystemDefaultConfig } from '@baloise/design-system-next-components'
+import { defineCustomElements, applyPolyfills } from '@baloise/design-system-next-components/loader'
 import { applyDirectives } from './directives'
 
 interface BaloiseDesignSystemVueConfig extends BaloiseDesignSystemConfig {

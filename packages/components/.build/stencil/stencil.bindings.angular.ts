@@ -23,7 +23,7 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
 
 export const AngularGenerator = () =>
   angularOutputTarget({
-    componentCorePackage: '@baloise/design-system-components',
+    componentCorePackage: '@baloise/design-system-next-components',
     directivesProxyFile: '../components-angular/src/directives/proxies.ts',
     directivesArrayFile: '../components-angular/src/directives/proxies-list.ts',
     valueAccessorConfigs: angularValueAccessorBindings,

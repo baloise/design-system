@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { balToastController, BalToastOptions, Components } from '@baloise/design-system-components'
+import { balToastController, BalToastOptions, Components } from '@baloise/design-system-next-components'
 
 @Injectable({
   providedIn: 'root',

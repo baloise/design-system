@@ -8,9 +8,9 @@ export default {
   input: 'dist-transpiled/index.js',
   external: [
     'lodash.isnil',
-    '@baloise/design-system-components',
-    '@baloise/design-system-components/loader',
-    '@baloise/design-system-components/dist/components',
+    '@baloise/design-system-next-components',
+    '@baloise/design-system-next-components/loader',
+    '@baloise/design-system-next-components/dist/components',
   ],
   plugins: [
     scss({
