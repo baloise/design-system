@@ -51,12 +51,12 @@
     "vue": ">=3.0.5"
   },
   "gitHead": "e0d380309b487bcedee06d025645f5aab37ab192",
-  "dependencies": {
-    "@baloise/design-system-next-components": "^6.0.0"
-  },
   "vetur": {
     "tags": "dist/vetur/tags.json",
     "attributes": "dist/vetur/attributes.json"
   },
-  "web-types": "dist/web-types.json"
+  "web-types": "dist/web-types.json",
+  "dependencies": {
+    "@baloise/design-system-next-components": "^6.0.0"
+  }
 }
