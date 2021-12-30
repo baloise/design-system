@@ -49,3 +49,5 @@ jobs:
       - uses: cypress-io/github-action@v2
         with:
           working-directory: packages/testing
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
