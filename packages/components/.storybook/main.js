@@ -9,10 +9,10 @@ module.exports = {
   staticDirs: ['../public'],
   previewHead: head => `
     ${head}
-    <link rel="stylesheet" type="text/css" href="assets/css/design-system-table.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/design-system-next-table.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/theme.css" />
-    ${!isDevelopment ? '<link rel="stylesheet" type="text/css" href="build/design-system-components.css" />' : ''}
-    ${isDevelopment ? '<script type="module" src="build/design-system-components.esm.js"></script>' : ''}
-    ${isDevelopment ? '<script nomodule src="build/design-system-components.js"></script>' : ''}
+    ${!isDevelopment ? '<link rel="stylesheet" type="text/css" href="build/design-system-next-components.css" />' : ''}
+    ${isDevelopment ? '<script type="module" src="build/design-system-next-components.esm.js"></script>' : ''}
+    ${isDevelopment ? '<script nomodule src="build/design-system-next-components.js"></script>' : ''}
     `,
 }

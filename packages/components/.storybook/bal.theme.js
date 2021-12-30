@@ -1,38 +1,34 @@
 import { create } from '@storybook/theming'
 import Logo from '../src/stories/assets/images/logo.svg'
 
-const primary = '#009ee7'
-const secondary = '#039'
-const border = '#d1dbed'
-
 export default create({
   base: 'light',
 
-  colorPrimary: primary,
-  colorSecondary: secondary,
+  colorPrimary: '#000d6e',
+  colorSecondary: '#000d6e',
 
   // UI
-  appBg: '#f8f9fa',
-  appContentBg: 'white',
-  appBorderColor: border,
-  appBorderRadius: 4,
+  appBg: '#f6f6f6',
+  appContentBg: '#ffffff',
+  appBorderColor: '#b6b6b6',
+  appBorderRadius: 12,
 
   // Typography
   fontBase: '"Open Sans", sans-serif',
   fontCode: 'monospace',
 
   // Text colors
-  textColor: 'black',
-  textInverseColor: 'rgba(255,255,255,0.9)',
+  textColor: '#000000',
+  textInverseColor: '#ffffff',
 
   // Toolbar default and active colors
-  barTextColor: 'black',
-  barSelectedColor: primary,
-  barBg: '#f1f3f5',
+  barTextColor: '#000000',
+  barSelectedColor: '#000d6e',
+  barBg: '#e8e8e8',
 
   // Form colors
-  inputBg: 'white',
-  inputBorder: border,
+  inputBg: '#ffffff',
+  inputBorder: '#e8e8e8',
   inputTextColor: 'black',
   inputBorderRadius: 4,
 

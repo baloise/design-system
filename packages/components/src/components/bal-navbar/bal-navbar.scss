@@ -57,7 +57,7 @@ bal-navbar {
     &.is-white .navbar-start > .navbar-item:hover,
     &.is-white .navbar-start > .navbar-item:focus > .navbar-link,
     &.is-white .navbar-start > .navbar-item:hover > .navbar-link {
-      background: $blue-0 !important;
+      background: $blue-1 !important;
       color: $blue !important;
     }
 
@@ -117,7 +117,7 @@ bal-navbar {
         a.navbar-item:focus,
         a.navbar-link:hover,
         a.navbar-link:focus {
-          background: $blue-0;
+          background: $blue-1;
           padding-left: 22px;
         }
       }
@@ -137,7 +137,7 @@ bal-navbar {
         transition: padding-left 0.3s ease;
 
         &:hover {
-          background: $blue-0;
+          background: $blue-1;
           color: $blue;
           padding-left: 30px !important;
         }

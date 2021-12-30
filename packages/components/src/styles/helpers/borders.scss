@@ -8,10 +8,10 @@ $borders: mergeColorMaps(
     'blue': $border-focused,
     'focused': $border-focused,
     'light': $blue-2,
-    'dark': $blue-8,
-    'success': $success,
-    'warning': $warning,
-    'danger': $danger
+    'dark': $blue-6,
+    'success': $success-5,
+    'warning': $warning-5,
+    'danger': $danger-5
   ),
   $custom-borders
 ) !default;

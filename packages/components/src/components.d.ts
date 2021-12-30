@@ -413,6 +413,7 @@ export namespace Components {
         "background": boolean;
         "color": string;
         "description": string;
+        "hexVars": string;
         "inverted": boolean;
         "scssVars": string;
         "subject": string;
@@ -2419,6 +2420,7 @@ declare namespace LocalJSX {
         "background"?: boolean;
         "color"?: string;
         "description"?: string;
+        "hexVars"?: string;
         "inverted"?: boolean;
         "scssVars"?: string;
         "subject"?: string;

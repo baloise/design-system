@@ -2,29 +2,21 @@
 
 // Colors
 
-$black-bis: $grey-9 !default;
-$black-ter: $grey-9 !default;
+$black-bis: $grey-6 !default;
+$black-ter: $grey-5 !default;
+$white-ter: $grey-2 !default;
+$white-bis: $grey-1 !default;
 
-$grey-darkest: $grey-8 !default;
-$grey-darker: $grey-7 !default;
-$grey-dark: $grey-6 !default;
-$grey: $grey-5 !default;
-$grey-light: $grey-4 !default;
-$grey-lighter: $grey-3 !default;
-$grey-lightest: $grey-2 !default;
-
-$blue-darker: $blue-9 !default;
-$blue-dark: $blue-8 !default;
+// deprecated
+$blue-darker: $blue-6 !default;
+$blue-dark: $blue-6 !default;
 $blue-light-text: $blue-4 !default;
 $blue-lighter-text: $blue-3 !default;
 $blue-line: $blue-lighter-text !default;
 $blue-light-line: $blue-2 !default;
 $blue-line-inverted: $blue-5 !default;
 $blue-light-hover: $blue-1 !default;
-$blue-light: $blue-0 !default;
-
-$white-ter: $grey-1 !default;
-$white-bis: $grey-0 !default;
+$blue-light: $blue-1 !default;
 
 // Typography
 
@@ -66,7 +58,7 @@ $easing: ease-out !default;
 $radius-none: 0 !default;
 $radius-small: 4px !default;
 $radius: 4px !default;
-$radius-large: 4px !default;
+$radius-large: 12px !default;
 $radius-rounded: 9999px !default;
 $speed: 86ms !default;
 

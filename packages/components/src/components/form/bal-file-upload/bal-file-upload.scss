@@ -19,7 +19,7 @@ span.file-cta {
 
 .file-label.is-hovered .file-cta,
 .file-label:hover .file-cta {
-  background: $blue-0;
+  background: $blue-1;
   color: $blue;
 }
 
@@ -41,7 +41,7 @@ label.file-label.is-disabled {
   .file-cta,
   &.is-hovered .file-cta,
   &:hover .file-cta {
-    background: $blue-0;
+    background: $blue-1;
     color: $black;
   }
 }

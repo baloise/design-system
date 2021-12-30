@@ -1,5 +1,5 @@
 .welcome-container {
-  background: #039 !important;
+  background: #000d6e !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -35,7 +35,7 @@ blockquote.sbdocs {
 }
 
 blockquote.sbdocs p strong:first-child {
-  color: #039;
+  color: #000d6e;
   display: block;
   font-size: 16px;
 }
@@ -70,7 +70,7 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 .sbdocs.sbdocs-h4,
 .sbdocs.sbdocs-h5 {
   font-family: MetaPro, Arial, sans-serif;
-  color: #039;
+  color: #000d6e;
   font-weight: 400;
 }
 
@@ -312,7 +312,7 @@ a.feature h2 img {
 .docs-swot-table th strong {
   font-weight: bold;
   font-size: 1.2em;
-  color: #039;
+  color: #000d6e;
 }
 
 .docs-swot-table strong {

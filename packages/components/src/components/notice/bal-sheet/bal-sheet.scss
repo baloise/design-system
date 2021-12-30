@@ -12,7 +12,7 @@ bal-sheet {
   font-size: $size-normal;
 
   > div.container {
-    background-color: $blue-0;
+    background-color: $blue-1;
     box-shadow: $shadow;
     padding-top: 16px;
     padding-bottom: 16px;
@@ -26,7 +26,7 @@ bal-sheet {
       padding-bottom: 0 !important;
 
       > div.inner {
-        background-color: $blue-0;
+        background-color: $blue-1;
         box-shadow: $shadow;
         padding-left: 32px;
         padding-right: 32px;

@@ -9,22 +9,35 @@ import { Component, h, Host, Prop } from '@stencil/core'
 export class BalDocColor {
   @Prop() inverted = false
   @Prop() background = false
-  @Prop() color = 'primary'
-  @Prop() subject = 'Primary'
+  @Prop() color = ''
+  @Prop() subject = ''
   @Prop() description = ''
   @Prop() scssVars = ''
+  @Prop() hexVars = ''
 
   render() {
+    const subject = this.subject !== '' ? this.subject : this.color.charAt(0).toUpperCase() + this.color.slice(1)
+    const scssVars = this.scssVars !== '' ? this.scssVars : `$${this.color}`
     return (
       <Host class="bal-app">
-        <div class="has-border-light">
-          <div class={`has-background-${this.color} px-2 py-3`} style={{ minHeight: '60px' }}>
-            <strong class={this.inverted ? 'has-text-white' : 'has-text-blue'}>{this.background ? 'A-a' : ''}</strong>
+        <div class="box has-radius-large">
+          <div
+            class={`has-background-${this.color} has-radius-large-top is-flex is-justify-content-center is-align-items-center`}
+          >
+            <strong
+              class={`${this.inverted ? 'has-text-white' : 'has-text-blue'} is-size-2 py-4`}
+              style={{ minHeight: '80px' }}
+            >
+              {this.background ? 'A-a' : ''}
+            </strong>
           </div>
-          <div class="p-2 has-border-top">
-            <h5 class="title is-size-5 my-1">{this.subject}</h5>
-            <small class="has-text-hint mt-2">{this.description}</small>
-            <p>{this.scssVars}</p>
+          <div class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center p-2">
+            <h5 class="title is-size-5 m-0">{subject}</h5>
+            <small class="my-1 has-text-center" style={{ minHeight: '17px' }}>
+              {this.description}
+            </small>
+            <p class="has-text-grey-5">{this.hexVars}</p>
+            <p class="has-text-grey-6">{scssVars}</p>
           </div>
         </div>
       </Host>

@@ -74,7 +74,23 @@ export const parameters = {
       },
       {
         name: 'blue',
-        value: '#039',
+        value: '#000d6e',
+      },
+      {
+        name: 'green',
+        value: '#94e3d4',
+      },
+      {
+        name: 'purple',
+        value: '#b8b2ff',
+      },
+      {
+        name: 'red',
+        value: '#ffaca6',
+      },
+      {
+        name: 'yellow',
+        value: '#fae052',
       },
     ],
   },

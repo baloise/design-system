@@ -13,120 +13,278 @@ import { Meta, Canvas, Source } from '@storybook/addon-docs'
 
 Out of the box access all the colors form the Baloise Design System.
 
-## Variables
+## Core Colors
 
-### Backgrounds
+Blue dictates the visual appearance of Baloise and it is present on every touchpoint. Our logo, text, buttons and links are blue.
 
 <bal-doc-app>
   <div class="columns">
     <bal-doc-color
       background
-      class="column is-one-third"
-      color="white"
-      subject="White"
-      scss-vars="$white"
-      description="Default Background"
-    ></bal-doc-color>
-    <bal-doc-color
-      background
-      class="column is-one-third"
+      class="column is-one-quarter"
       color="blue"
-      subject="Blue"
-      scss-vars="$blue"
+      hex-vars="#000d6e"
       description="Brand Color"
       inverted
-    ></bal-doc-color>
-    <bal-doc-color
-      background
-      class="column is-one-third"
-      color="blue-light"
-      subject="Blue Light"
-      scss-vars="$blue-0"
-      description="Hint Background"
     ></bal-doc-color>
   </div>
 </bal-doc-app>
 
 ### Typography
 
+The main color for text is the core blue color and for dark background the inverted core color white.
+
 <bal-doc-app>
   <div class="columns">
     <bal-doc-color
-      class="column is-one-third"
-      color="white"
-      subject="White"
-      scss-vars="$white"
-      description="Default Background"
-    ></bal-doc-color>
-    <bal-doc-color
-      class="column is-one-third"
+      class="column is-one-quarter"
       color="blue"
       subject="Blue"
+      hex-vars="#000d6e"
       scss-vars="$blue"
-      description="Brand Color"
+      description="Default Text"
       inverted
     ></bal-doc-color>
     <bal-doc-color
-      class="column is-one-third"
-      color="blue-light-text"
-      subject="Blue Light Text"
-      scss-vars="$text-light"
-      description="Subtitles and hint messages"
-      inverted
+      class="column is-one-quarter"
+      color="white"
+      subject="White"
+      hex-vars="#ffffff"
+      scss-vars="$white"
+      description="Inverted Text"
     ></bal-doc-color>
   </div>
 </bal-doc-app>
 
-### Alert Colors
+### Background Colors
+
+There are 6 colors, which can be used for backgrounds. However, the white color is the default and the others should be uses carefully.
 
 <bal-doc-app>
-  <div class="columns">
+  <div class="columns is-multiline">
     <bal-doc-color
-      color="primary"
-      subject="Primary"
-      scss-vars="$primary, $cyan"
       background
-      inverted
-      class="column is-one-third"
+      class="column is-2"
+      color="white"
+      subject="White"
+      hex-vars="#ffffff"
+      scss-vars="$white"
+      description="default"
     ></bal-doc-color>
     <bal-doc-color
-      color="info"
-      subject="Info"
-      scss-vars="$info, $blue"
       background
+      class="column is-2"
+      color="blue"
+      subject="Blue"
+      hex-vars="#000d6e"
+      scss-vars="$blue"
+      description="primary"
       inverted
-      class="column is-one-third"
     ></bal-doc-color>
     <bal-doc-color
-      color="success"
-      subject="Success"
-      scss-vars="$success"
       background
-      inverted
-      class="column is-one-third"
-    ></bal-doc-color>
-  </div>
-  <div class="columns">
-    <bal-doc-color
-      color="warning"
-      subject="Warning"
-      scss-vars="$warning"
-      background
-      inverted
-      class="column is-one-third"
+      class="column is-2"
+      color="green"
+      subject="Green"
+      hex-vars="#94e3d4"
+      scss-vars="$green"
+      description=""
     ></bal-doc-color>
     <bal-doc-color
-      color="danger"
-      subject="Danger"
-      scss-vars="$danger"
       background
-      inverted
-      class="column is-one-third"
+      class="column is-2"
+      color="purple"
+      subject="Purple"
+      hex-vars="#b8b2ff"
+      scss-vars="$purple"
+      description=""
+    ></bal-doc-color>
+    <bal-doc-color
+      background
+      class="column is-2"
+      color="red"
+      subject="Red"
+      hex-vars="#ffaca6"
+      scss-vars="$red"
+      description=""
+    ></bal-doc-color>
+    <bal-doc-color
+      background
+      class="column is-2"
+      color="yellow"
+      subject="Yellow"
+      hex-vars="#fae052"
+      scss-vars="$yellow"
+      description=""
     ></bal-doc-color>
   </div>
 </bal-doc-app>
 
-## Usage
+## Functional Colors
+
+These colors are a functional extension of the core color and they’re meant to be used only for specific cases and situations.
+
+<bal-doc-app>
+  <div class="columns is-multiline">
+    <bal-doc-color
+      description="Pressed"
+      background
+      class="column is-2"
+      color="blue-6"
+      hex-vars="#313131"
+      inverted
+    ></bal-doc-color>
+    <bal-doc-color
+      description="Brand"
+      background
+      class="column is-2"
+      color="blue-5"
+      hex-vars="#747474"
+      inverted
+    ></bal-doc-color>
+    <bal-doc-color
+      description="Hover"
+      background
+      class="column is-2"
+      color="blue-4"
+      hex-vars="#b6b6b6"
+      inverted
+    ></bal-doc-color>
+    <bal-doc-color
+      description=""
+      background
+      class="column is-2"
+      color="blue-3"
+      hex-vars="#e8e8e8"
+      inverted
+    ></bal-doc-color>
+    <bal-doc-color
+      description="Hover Inverted"
+      background
+      class="column is-2"
+      color="blue-2"
+      hex-vars="#f6f6f6"
+    ></bal-doc-color>
+    <bal-doc-color description="" background class="column is-2" color="blue-1" hex-vars="#fafafa"></bal-doc-color>
+  </div>
+</bal-doc-app>
+
+## Neutral colors
+
+Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element.
+
+<bal-doc-app>
+  <div class="columns is-multiline">
+    <bal-doc-color background class="column is-2" color="grey-6" hex-vars="#313131" inverted></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="grey-5" hex-vars="#747474" inverted></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="grey-4" hex-vars="#b6b6b6"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="grey-3" hex-vars="#e8e8e8"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="grey-2" hex-vars="#f6f6f6"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="grey-1" hex-vars="#fafafa"></bal-doc-color>
+  </div>
+</bal-doc-app>
+
+## Border colors
+
+Neutral colors are typically used for text, borders and subtle backgrounds when we don't want to draw too much attention to a particular design element.
+
+<bal-doc-app>
+  <div class="columns is-multiline">
+    <bal-doc-color class="column is-4" color="blue" description="Border for focused form controls"></bal-doc-color>
+    <bal-doc-color class="column is-4" color="grey-3" description="Border for form controls"></bal-doc-color>
+    <bal-doc-color class="column is-4" color="grey-5" description="Not defined yet"></bal-doc-color>
+  </div>
+</bal-doc-app>
+
+## Alert Colors
+
+To draw attention to important informations or actions we used our Alert colors palette.
+
+<bal-doc-app>
+  <div class="columns is-multiline">
+    <bal-doc-color description="$blue" background class="column is-2" color="primary" inverted></bal-doc-color>
+    <bal-doc-color description="$purple" background class="column is-2" color="info" inverted></bal-doc-color>
+    <bal-doc-color description="$green" background class="column is-2" color="success" inverted></bal-doc-color>
+    <bal-doc-color description="$yellow" background class="column is-2" color="warning" inverted></bal-doc-color>
+    <bal-doc-color description="$red" background class="column is-2" color="danger" inverted></bal-doc-color>
+  </div>
+</bal-doc-app>
+
+### Form Validation
+
+<bal-doc-app>
+  <div class="columns is-multiline">
+    <bal-doc-color description="Main valid color" class="column is-4" color="success-5" inverted></bal-doc-color>
+    <bal-doc-color description="Main invalid color" class="column is-4" color="danger-5" inverted></bal-doc-color>
+  </div>
+</bal-doc-app>
+
+The success colors are use in form validation to present the form control as valid to the user.
+
+<bal-doc-app>
+  <div class="columns is-multiline">
+    <bal-doc-color class="column is-2" color="success-6" background inverted></bal-doc-color>
+    <bal-doc-color class="column is-2" color="success-5" background inverted></bal-doc-color>
+    <bal-doc-color class="column is-2" color="success-4" background></bal-doc-color>
+    <bal-doc-color class="column is-2" color="success-3" background></bal-doc-color>
+    <bal-doc-color class="column is-2" color="success-2" background></bal-doc-color>
+    <bal-doc-color class="column is-2" color="success-1" background></bal-doc-color>
+  </div>
+</bal-doc-app>
+
+The danger colors are use in form validation to present the form control as invalid to the user.
+
+<bal-doc-app>
+  <div class="columns is-multiline">
+    <bal-doc-color class="column is-2" color="danger-6" background inverted></bal-doc-color>
+    <bal-doc-color class="column is-2" color="danger-5" background inverted></bal-doc-color>
+    <bal-doc-color class="column is-2" color="danger-4" background></bal-doc-color>
+    <bal-doc-color class="column is-2" color="danger-3" background></bal-doc-color>
+    <bal-doc-color class="column is-2" color="danger-2" background></bal-doc-color>
+    <bal-doc-color class="column is-2" color="danger-1" background></bal-doc-color>
+  </div>
+</bal-doc-app>
+
+## Support Colors
+
+To support our blue core, we have a variety of colors to keep things fresh and interesting. They are used for Baloise Shapes, Illustrations, background colors and to highlight design elements.
+
+<bal-doc-app>
+  <div class="columns is-multiline">
+    <bal-doc-color background class="column is-2" color="green-6" hex-vars="#1b5951" inverted></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="green-5" hex-vars="#00b28f" inverted></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="green-4" hex-vars="#21d9ac"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="green-3" hex-vars="#94e3d4"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="green-2" hex-vars="#cbf2ec"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="green-1" hex-vars="#e9fbf7"></bal-doc-color>
+  </div>
+  <div class="columns is-multiline">
+    <bal-doc-color background class="column is-2" color="purple-6" hex-vars="#6c2273" inverted></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="purple-5" hex-vars="#9f52cc" inverted></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="purple-4" hex-vars="#be82fa"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="purple-3" hex-vars="#b8b2ff"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="purple-2" hex-vars="#e1d9ff"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="purple-1" hex-vars="#f9f3ff"></bal-doc-color>
+  </div>
+  <div class="columns is-multiline">
+    <bal-doc-color background class="column is-2" color="red-6" hex-vars="#99172d" inverted></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="red-5" hex-vars="#d9304c" inverted></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="red-4" hex-vars="#ff596f"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="red-3" hex-vars="#ffaca6"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="red-2" hex-vars="#ffd7d7"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="red-1" hex-vars="#ffeef1"></bal-doc-color>
+  </div>
+  <div class="columns is-multiline">
+    <bal-doc-color background class="column is-2" color="yellow-6" hex-vars="#b24a00" inverted></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="yellow-5" hex-vars="#fa9319"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="yellow-4" hex-vars="#ffbe19"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="yellow-3" hex-vars="#fae052"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="yellow-2" hex-vars="#ffecbc"></bal-doc-color>
+    <bal-doc-color background class="column is-2" color="yellow-1" hex-vars="#fff9eb"></bal-doc-color>
+  </div>
+</bal-doc-app>
+
+## SCSS variables
 
 These colors/variables can be used within your style sheets, by import the `global.utilities` into your scss files.
 
@@ -144,7 +302,7 @@ Out of the color tokens we create a collection of helper css classes.
 
 [Go to the Bulma documentation](https://bulma.io/documentation/modifiers/color-helpers/).
 
-import { ColorHelpers } from './09-css-helpers.templates.ts'
+import { ColorHelpers, BorderHelpers } from './01-colors.templates.ts'
 import { html } from '../utils'
 import dedent from 'ts-dedent'
 
