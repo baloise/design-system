@@ -17,7 +17,6 @@ export class BalNotices {
           'bal-notices': true,
           [`has-${this.interface}`]: true,
         }}
-        style={{ display: 'flex' }}
       >
         <slot></slot>
       </Host>
