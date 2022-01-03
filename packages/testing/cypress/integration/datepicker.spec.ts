@@ -27,15 +27,16 @@ describe('Datepicker', () => {
   })
 
   it('should assert if date is in range in the Datepicker', () => {
+    const today = new Date()
     page.open()
     cy.get(page.datepickerRange).balDatepickerToggle()
-    cy.get(page.datepickerRange).balDatepickerIsDateInRange(new Date(2021, 0, 6))
+    cy.get(page.datepickerRange).balDatepickerIsDateInRange(new Date(today.getFullYear(), 0, 5))
   })
 
-  // todo: fails on github need to investigate why
-  it.skip('should assert if date is not in range in the Datepicker', () => {
+  it('should assert if date is not in range in the Datepicker', () => {
+    const today = new Date()
     page.open()
     cy.get(page.datepickerRange).balDatepickerToggle()
-    cy.get(page.datepickerRange).balDatepickerIsDateNotInRange(new Date(2021, 0, 5))
+    cy.get(page.datepickerRange).balDatepickerIsDateNotInRange(new Date(today.getFullYear(), 0, 4))
   })
 })
