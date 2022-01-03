@@ -50,11 +50,11 @@ export const RadiusHelpers = `
   <p class="pb-4 has-text-blue">has-radius-none</p>
   <div class="p-4 has-radius-small has-background-blue-2">
     <p class="pb-4 has-text-blue">has-radius-small</p>
-    <div class="p-4 has-radius-normal has-background-blue-4">
+    <div class="p-4 has-radius-normal has-background-blue-3">
       <p class="pb-4 has-text-white">has-radius-normal</p>
-      <div class="p-4 has-radius-large has-background-blue-6">
+      <div class="p-4 has-radius-large has-background-blue-4">
         <p class="pb-4 has-text-white">has-radius-large</p>
-          <div class="p-4 has-radius-rounded has-background-blue-8">
+          <div class="p-4 has-radius-rounded has-background-blue-6">
           <p class="has-text-white">has-radius-rounded</p>
         </div>
       </div>
