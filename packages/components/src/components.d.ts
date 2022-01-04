@@ -424,6 +424,9 @@ export namespace Components {
         "subject": string;
         "subtitle": string;
     }
+    interface BalDocGithub {
+        "link": string;
+    }
     interface BalDocIcons {
         "icons": string;
     }
@@ -1605,6 +1608,12 @@ declare global {
         prototype: HTMLBalDocDownloadElement;
         new (): HTMLBalDocDownloadElement;
     };
+    interface HTMLBalDocGithubElement extends Components.BalDocGithub, HTMLStencilElement {
+    }
+    var HTMLBalDocGithubElement: {
+        prototype: HTMLBalDocGithubElement;
+        new (): HTMLBalDocGithubElement;
+    };
     interface HTMLBalDocIconsElement extends Components.BalDocIcons, HTMLStencilElement {
     }
     var HTMLBalDocIconsElement: {
@@ -1945,6 +1954,7 @@ declare global {
         "bal-doc-app": HTMLBalDocAppElement;
         "bal-doc-color": HTMLBalDocColorElement;
         "bal-doc-download": HTMLBalDocDownloadElement;
+        "bal-doc-github": HTMLBalDocGithubElement;
         "bal-doc-icons": HTMLBalDocIconsElement;
         "bal-doc-image": HTMLBalDocImageElement;
         "bal-dropdown": HTMLBalDropdownElement;
@@ -2429,6 +2439,9 @@ declare namespace LocalJSX {
         "link"?: string;
         "subject"?: string;
         "subtitle"?: string;
+    }
+    interface BalDocGithub {
+        "link"?: string;
     }
     interface BalDocIcons {
         "icons"?: string;
@@ -3543,6 +3556,7 @@ declare namespace LocalJSX {
         "bal-doc-app": BalDocApp;
         "bal-doc-color": BalDocColor;
         "bal-doc-download": BalDocDownload;
+        "bal-doc-github": BalDocGithub;
         "bal-doc-icons": BalDocIcons;
         "bal-doc-image": BalDocImage;
         "bal-dropdown": BalDropdown;
@@ -3623,6 +3637,7 @@ declare module "@stencil/core" {
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
             "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
             "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
+            "bal-doc-github": LocalJSX.BalDocGithub & JSXBase.HTMLAttributes<HTMLBalDocGithubElement>;
             "bal-doc-icons": LocalJSX.BalDocIcons & JSXBase.HTMLAttributes<HTMLBalDocIconsElement>;
             "bal-doc-image": LocalJSX.BalDocImage & JSXBase.HTMLAttributes<HTMLBalDocImageElement>;
             "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;

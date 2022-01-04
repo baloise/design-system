@@ -22,7 +22,31 @@ export const Paddings = args => ({
               <div class="p-2 has-background-danger">
                 <div class="p-1 has-background-white">
                   <div class="p-0 has-background-grey">
-                    Spacing
+                    Spacing with Paddings
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`,
+})
+
+export const Margins = args => ({
+  components: {},
+  setup: () => ({ args }),
+  template: `<div class="p-8 has-background-blue-dark">
+    <div class="p-7 has-background-blue">
+      <div class="p-6 has-background-hint">
+        <div class="p-5 has-background-cyan">
+          <div class="p-4 has-background-success">
+            <div class="p-3 has-background-warning">
+              <div class="p-2 has-background-danger">
+                <div class="p-1 has-background-white">
+                  <div class="p-0 has-background-grey">
+                    Spacing with Paddings
                   </div>
                 </div>
               </div>
