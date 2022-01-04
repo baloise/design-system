@@ -22,20 +22,23 @@ async function run() {
   const regex = new RegExp('<bal-doc-github link="\s*.*"><\/bal-doc-github>')
   for (let index = 0; index < stories.length; index++) {
     const story = stories[index];
-    let content = await file.read(story)
-    const hasGithubLink = regex.test(content)
-    if(!hasGithubLink) {
-      content = appendGithubTag(content)
-    }
 
-    const newContent = content.replace(regex, `<bal-doc-github link="${prepareLink(story)}"></bal-doc-github>`)
+    if(!story.includes('stories/welcome.stories.mdx')) {
+      let content = await file.read(story)
+      const hasGithubLink = regex.test(content)
+      if(!hasGithubLink) {
+        content = appendGithubTag(content)
+      }
 
-    if(newContent !== content){
-      try {
-        await file.write(story, newContent)
-        log.success(story)
-      }catch(_){
-        log.error('Could not update story => '+story)
+      const newContent = content.replace(regex, `<bal-doc-github link="${prepareLink(story)}"></bal-doc-github>`)
+
+      if(newContent !== content){
+        try {
+          await file.write(story, newContent)
+          log.success(story)
+        }catch(_){
+          log.error('Could not update story => '+story)
+        }
       }
     }
 
