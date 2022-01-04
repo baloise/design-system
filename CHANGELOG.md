@@ -3,29 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [7.0.1](https://github.com/baloise/design-system/compare/v7.0.0...v7.0.1) (2022-01-04)
+# [7.0.0](https://github.com/baloise/design-system/compare/v6.0.0...v7.0.0) (2022-01-04)
 
-**Note:** Version bump only for package root
+### BREAKING CHANGES
 
-
-
-
-
-## 6.0.2 (2022-01-04)
-
-**Note:** Version bump only for package root
-
-
-
-
-
-## 6.0.1 (2022-01-03)
-
-**Note:** Version bump only for package root
-
-
-
-
+- The unsupported browsers has been moved to [@baloise/web-app-unsupported-browsers](https://github.com/baloise/web-app-utils/tree/master/packages/unsupported-browsers).
+  - Follow the migration guide [Migration from 6.x to 7.x](https://design.baloise.dev/?path=/story/migration-migration-from-6-x-to-7-x--page)
 
 # [6.0.0](https://github.com/baloise/design-system/compare/v5.0.0...v6.0.0) (2021-12-28)
 
