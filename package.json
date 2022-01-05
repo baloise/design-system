@@ -53,8 +53,7 @@
     "test:start-server": "http-server packages/components/www -p 3333 -c-1 --silent",
     "test:ci": "npm run test:build-server && concurrently --names \"SERVER,CYPRESS\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm:test:start-server\" \"npm:test:cypress\"",
     "==================== RELEASE ====================": "================================",
-    "release": "lerna publish --conventional-commits --exact --force-publish --yes",
-    "release:canary": "lerna publish prepatch --canary --preid beta --dist-tag beta --exact --force-publish --yes --no-changelog",
+    "release:canary": "lerna publish prepatch --canary --preid beta --dist-tag beta --yes --no-changelog",
     "==================== DOCUMENTATION ====================": "================================",
     "storybook": "node .build/banner.js storybook:build && npm run build:docs",
     "storybook:start": "node .build/banner.js storybook:start && http-server storybook -p 8080"
@@ -66,6 +65,7 @@
     "@typescript-eslint/parser": "^5.8.0",
     "chalk": "^4.1.2",
     "concurrently": "^6.5.1",
+    "conventional-changelog-conventionalcommits": "^4.6.3",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",

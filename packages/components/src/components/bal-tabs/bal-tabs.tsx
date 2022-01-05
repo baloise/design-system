@@ -12,7 +12,7 @@ export class Tabs {
   /**
    * Defines the layout of the tabs.
    */
-  @Prop() interface: 'tabs' | 'steps' | 'o-steps' = 'tabs'
+  @Prop() interface: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' = 'tabs'
 
   /**
    * If `true` the field expands over the whole width.
@@ -23,11 +23,6 @@ export class Tabs {
    * If `true` the tabs or steps can be clicked.
    */
   @Prop() clickable = true
-
-  /**
-   * If you want the rounded tab style.
-   */
-  @Prop() rounded = false
 
   /**
    * If `true` a acation button is added to the right
@@ -198,7 +193,10 @@ export class Tabs {
   renderTabs() {
     return (
       <Host
-        class="bal-tabs"
+        class={{
+          'bal-tabs': true,
+          'is-sub-navigation': this.interface === 'tabs-sub',
+        }}
         data-value={this.tabsOptions
           .filter(t => t.active)
           .map(t => t.value)
@@ -208,7 +206,7 @@ export class Tabs {
           .map(t => t.label)
           .join(',')}
       >
-        <div class={['tabs', this.rounded ? 'is-rounded' : '', this.expanded ? 'is-fullwidth' : ''].join(' ')}>
+        <div class={['tabs', this.expanded ? 'is-fullwidth' : ''].join(' ')}>
           <ul>
             {this.tabsOptions.map((tab, index) => (
               <li

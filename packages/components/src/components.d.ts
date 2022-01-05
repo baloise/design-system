@@ -722,6 +722,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` the component takes the whole width
+         */
+        "expanded": boolean;
+        /**
           * Returns the native `<input>` element used under the hood.
          */
         "getInputElement": () => Promise<HTMLInputElement | undefined>;
@@ -1312,11 +1316,7 @@ export namespace Components {
         /**
           * Defines the layout of the tabs.
          */
-        "interface": 'tabs' | 'steps' | 'o-steps';
-        /**
-          * If you want the rounded tab style.
-         */
-        "rounded": boolean;
+        "interface": 'tabs' | 'tabs-sub' | 'steps' | 'o-steps';
         /**
           * Go to tab with the given value
          */
@@ -2718,6 +2718,10 @@ declare namespace LocalJSX {
           * If `true` the input is disabled
          */
         "disabled"?: boolean;
+        /**
+          * If `true` the component takes the whole width
+         */
+        "expanded"?: boolean;
         "hasIconRight"?: boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
@@ -3339,7 +3343,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the tabs.
          */
-        "interface"?: 'tabs' | 'steps' | 'o-steps';
+        "interface"?: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps';
         /**
           * Emitted when the action button has clicked
          */
@@ -3348,10 +3352,6 @@ declare namespace LocalJSX {
           * Emitted when the changes has finished.
          */
         "onBalTabChange"?: (event: CustomEvent<BalTabOption>) => void;
-        /**
-          * If you want the rounded tab style.
-         */
-        "rounded"?: boolean;
     }
     interface BalTag {
         /**

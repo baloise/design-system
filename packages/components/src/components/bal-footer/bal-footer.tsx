@@ -20,8 +20,7 @@ export class Footer {
    */
   @Prop() hideLinks = false
 
-  @State()
-  links: FooterLink[] = []
+  @State() links: FooterLink[] = []
 
   connectedCallback() {
     this.updateFooterLinks()
@@ -34,7 +33,9 @@ export class Footer {
 
   updateFooterLinks() {
     if (!this.hideLinks) {
-      loadFooterLinks(new Language(this.locale)).then(links => (this.links = links))
+      if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+        loadFooterLinks(new Language(this.locale)).then(links => (this.links = links))
+      }
     }
   }
 
@@ -48,17 +49,13 @@ export class Footer {
           }}
         >
           <slot></slot>
-          {this.hideLinks ? (
-            ''
-          ) : (
-            <div class="footer-links-container p-1">
-              {this.links.map(link => (
-                <a class="is-link is-inverted pr-4" href={link.link}>
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          )}
+          <div class="footer-links-container p-1" style={{ display: this.hideLinks ? 'none' : 'block' }}>
+            {this.links.map(link => (
+              <a class="is-link is-inverted pr-4" href={link.link}>
+                {link.label}
+              </a>
+            ))}
+          </div>
         </footer>
       </Host>
     )

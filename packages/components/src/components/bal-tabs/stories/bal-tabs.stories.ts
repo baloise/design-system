@@ -21,34 +21,30 @@ const Template = args => ({
 </bal-tabs>`,
 })
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const MainNavigation = Template.bind({})
+MainNavigation.args = {
   action: true,
   expanded: false,
   clickable: true,
-  rounded: false,
   actionLabel: 'Action',
   interface: 'tabs',
 }
-Basic.parameters = { ...component.sourceCode(Basic) }
+MainNavigation.parameters = { ...component.sourceCode(MainNavigation) }
 
-export const Round = Template.bind({})
-Round.args = {
-  action: false,
-  expanded: true,
+export const SubNavigation = Template.bind({})
+SubNavigation.args = {
+  action: true,
+  expanded: false,
   clickable: true,
-  rounded: true,
-  actionLabel: '',
-  interface: 'tabs',
+  interface: 'tabs-sub',
 }
-Round.parameters = { ...component.sourceCode(Round) }
+SubNavigation.parameters = { ...component.sourceCode(SubNavigation) }
 
 export const Steps = Template.bind({})
 Steps.args = {
   action: false,
   expanded: true,
   clickable: true,
-  rounded: true,
   actionLabel: '',
   interface: 'o-steps',
 }
