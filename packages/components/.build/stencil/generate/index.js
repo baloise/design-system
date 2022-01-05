@@ -181,11 +181,6 @@ function DocReadmeTemplate(tag) {
   import testing from './testing.md'
 
   <Description markdown={testing} />
-
-  import github from './github.md'
-
-  <Description markdown={github} />
-
 `
 }
 
