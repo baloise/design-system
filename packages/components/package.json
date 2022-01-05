@@ -38,6 +38,7 @@
   ],
   "scripts": {
     "start": "npm run serve",
+    "preinstall": "npx npm-force-resolutions",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
     "==================== BUILD ====================": "================================",
     "build": "npm run build:meta && npm run build:testing && stencil build",
@@ -113,14 +114,14 @@
     "@types/puppeteer": "^5.4.4",
     "ag-grid-community": "^26.2.0",
     "babel-loader": "^8.2.3",
-    "concurrently": "^6.4.0",
+    "concurrently": "^7.0.0",
     "fast-glob": "^3.2.7",
     "html-react-parser": "^1.4.2",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
     "js-beautify": "^1.14.0",
     "param-case": "^3.0.4",
-    "prettier": "2.5.0",
+    "prettier": "^2.5.1",
     "prompts": "^2.4.2",
     "puppeteer": "^10.4.0",
     "react": "^17.0.2",
@@ -134,6 +135,11 @@
     "vue": "^3.2.24",
     "vue-loader": "^16.8.3",
     "workbox-build": "^4.3.1"
+  },
+  "resolutions": {
+    "trim": "^3.0.0",
+    "immer": "^9.0.6",
+    "glob-parent": "^5.1.2"
   },
   "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca"
 }
