@@ -50,11 +50,13 @@ export class Field {
   }
 
   updateChildInput() {
-    const inputs = this.element.querySelectorAll<HTMLBalInputElement>('bal-input, bal-select, bal-datepicker')
+    const inputs = this.element.querySelectorAll<HTMLBalInputElement | HTMLBalDatepickerElement | HTMLBalSelectElement>(
+      'bal-input, bal-select, bal-datepicker',
+    )
     inputs.forEach(input => {
       input.disabled = this.disabled
       input.inverted = this.inverted
-      // input.expanded = this.expanded // TODO: check expanded
+      input.expanded = this.expanded
     })
   }
 

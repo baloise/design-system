@@ -719,6 +719,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` the component takes the whole width
+         */
+        "expanded": boolean;
+        /**
           * Returns the native `<input>` element used under the hood.
          */
         "getInputElement": () => Promise<HTMLInputElement | undefined>;
@@ -2705,6 +2709,10 @@ declare namespace LocalJSX {
           * If `true` the input is disabled
          */
         "disabled"?: boolean;
+        /**
+          * If `true` the component takes the whole width
+         */
+        "expanded"?: boolean;
         "hasIconRight"?: boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
