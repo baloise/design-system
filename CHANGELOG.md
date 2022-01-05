@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](https://github.com/baloise/design-system/compare/v7.0.1...v8.0.0) (2022-01-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **tabs:** `rounded` prop is removed use `interface` `tabs-sub`
+
+### Features
+
+* **tabs:** add sub-navigation ([7822461](https://github.com/baloise/design-system/commit/7822461d09c88030146a94b03785a7cb53b1c418))
+
+
+### Bug Fixes
+
+* **footer:** adjust hide links ([e48f10f](https://github.com/baloise/design-system/commit/e48f10f5cbbe0335fbc453319dfc98122f968eab))
+* **form:** adjust expanded style ([d5ae8d0](https://github.com/baloise/design-system/commit/d5ae8d0404483fbcfe86cd0d619d4cdf45e01d37))
+* **style:** remove global styles from utilities ([b943436](https://github.com/baloise/design-system/commit/b94343667b912a9a6735e452a5aab431bdd94e25))
+
+
+### Code Refactoring
+
+* **tabs:** remove rounded option ([9da1c71](https://github.com/baloise/design-system/commit/9da1c714ee0fa4a19981de69f673983243794e10))
+
+### [6.0.1](https://github.com/baloise/design-system/compare/v6.0.0...v6.0.1) (2022-01-03)
+
+## 6.0.0 (2021-12-28)
+
+
+
 # [7.0.0](https://github.com/baloise/design-system/compare/v6.0.0...v7.0.0) (2022-01-04)
 
 ### BREAKING CHANGES
