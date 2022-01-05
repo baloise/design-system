@@ -5,18 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### [8.0.1](https://github.com/baloise/design-system/compare/v8.0.0...v8.0.1) (2022-01-05)
 
-
 ### Bug Fixes
 
-* **container:** increase the level of is-compact ([db08332](https://github.com/baloise/design-system/commit/db08332c9947b0c6808d599bdda08a225f03668d))
-
-### [7.0.1](https://github.com/baloise/design-system/compare/v6.0.1...v7.0.1) (2022-01-04)
-
-### [6.0.1](https://github.com/baloise/design-system/compare/v6.0.0...v6.0.1) (2022-01-03)
-
-## 6.0.0 (2021-12-28)
-
-
+- **container:** increase the level of is-compact ([db08332](https://github.com/baloise/design-system/commit/db08332c9947b0c6808d599bdda08a225f03668d))
 
 ## [8.0.0](https://github.com/baloise/design-system/compare/v7.0.1...v8.0.0) (2022-01-05)
 
@@ -38,10 +29,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Code Refactoring
 
 - **tabs:** remove rounded option ([9da1c71](https://github.com/baloise/design-system/commit/9da1c714ee0fa4a19981de69f673983243794e10))
-
-### [6.0.1](https://github.com/baloise/design-system/compare/v6.0.0...v6.0.1) (2022-01-03)
-
-## 6.0.0 (2021-12-28)
 
 # [7.0.0](https://github.com/baloise/design-system/compare/v6.0.0...v7.0.0) (2022-01-04)
 
