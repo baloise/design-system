@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [8.0.1](https://github.com/baloise/design-system/compare/v8.0.0...v8.0.1) (2022-01-05)
+
+
+### Bug Fixes
+
+* **container:** increase the level of is-compact ([db08332](https://github.com/baloise/design-system/commit/db08332c9947b0c6808d599bdda08a225f03668d))
+
+### [7.0.1](https://github.com/baloise/design-system/compare/v6.0.1...v7.0.1) (2022-01-04)
+
+### [6.0.1](https://github.com/baloise/design-system/compare/v6.0.0...v6.0.1) (2022-01-03)
+
+## 6.0.0 (2021-12-28)
+
+
+
 ## [8.0.0](https://github.com/baloise/design-system/compare/v7.0.1...v8.0.0) (2022-01-05)
 
 ### ⚠ BREAKING CHANGES
