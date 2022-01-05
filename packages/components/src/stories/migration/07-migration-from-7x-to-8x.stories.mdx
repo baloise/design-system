@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Migration/Migration from 7.x to 8.x"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Migration from 7.x to 8.x
+
+The following workflow walks through the steps of migrating.
+Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
+
+## Tabs
+
+The property `rounded` was removed and replaced by the `interface="tabs-sub"`
+
+```html
+<!-- - old -->
+<bal-tabs interface="tabs" rounded>...</bal-tabs>
+
+<!-- + new -->
+<bal-tabs interface="tabs-sub">...</bal-tabs>
+...
+```
+
+<bal-doc-github link="/stories/migration/07-migration-from-7x-to-8x.stories.mdx"></bal-doc-github>
