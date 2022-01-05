@@ -25,11 +25,6 @@ export class Tabs {
   @Prop() clickable = true
 
   /**
-   * If you want the rounded tab style.
-   */
-  @Prop() rounded = false
-
-  /**
    * If `true` a acation button is added to the right
    */
   @Prop() action = false
@@ -211,7 +206,7 @@ export class Tabs {
           .map(t => t.label)
           .join(',')}
       >
-        <div class={['tabs', this.rounded ? 'is-rounded' : '', this.expanded ? 'is-fullwidth' : ''].join(' ')}>
+        <div class={['tabs', this.expanded ? 'is-fullwidth' : ''].join(' ')}>
           <ul>
             {this.tabsOptions.map((tab, index) => (
               <li

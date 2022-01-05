@@ -1315,10 +1315,6 @@ export namespace Components {
          */
         "interface": 'tabs' | 'tabs-sub' | 'steps' | 'o-steps';
         /**
-          * If you want the rounded tab style.
-         */
-        "rounded": boolean;
-        /**
           * Go to tab with the given value
          */
         "select": (tab: BalTabOption) => Promise<void>;
@@ -3343,10 +3339,6 @@ declare namespace LocalJSX {
           * Emitted when the changes has finished.
          */
         "onBalTabChange"?: (event: CustomEvent<BalTabOption>) => void;
-        /**
-          * If you want the rounded tab style.
-         */
-        "rounded"?: boolean;
     }
     interface BalTag {
         /**

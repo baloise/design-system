@@ -26,7 +26,6 @@ MainNavigation.args = {
   action: true,
   expanded: false,
   clickable: true,
-  rounded: false,
   actionLabel: 'Action',
   interface: 'tabs',
 }
@@ -37,28 +36,15 @@ SubNavigation.args = {
   action: true,
   expanded: false,
   clickable: true,
-  rounded: false,
   interface: 'tabs-sub',
 }
 SubNavigation.parameters = { ...component.sourceCode(SubNavigation) }
-
-export const Round = Template.bind({})
-Round.args = {
-  action: false,
-  expanded: true,
-  clickable: true,
-  rounded: true,
-  actionLabel: '',
-  interface: 'tabs',
-}
-Round.parameters = { ...component.sourceCode(Round) }
 
 export const Steps = Template.bind({})
 Steps.args = {
   action: false,
   expanded: true,
   clickable: true,
-  rounded: true,
   actionLabel: '',
   interface: 'o-steps',
 }
