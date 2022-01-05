@@ -38,7 +38,6 @@
   ],
   "scripts": {
     "start": "npm run serve",
-    "preinstall": "npx npm-force-resolutions",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
     "==================== BUILD ====================": "================================",
     "build": "npm run build:meta && npm run build:testing && stencil build",
@@ -135,11 +134,6 @@
     "vue": "^3.2.24",
     "vue-loader": "^16.8.3",
     "workbox-build": "^4.3.1"
-  },
-  "resolutions": {
-    "trim": "^3.0.0",
-    "immer": "^9.0.6",
-    "glob-parent": "^5.1.2"
   },
   "gitHead": "8bb3a41da0b577e5606f49a45e588a7bd4521eca"
 }
