@@ -8,9 +8,6 @@
     "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
     "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)"
   ],
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "==================== INSTALLATION / SETUP ====================": "================================",
     "prepare": "husky install",

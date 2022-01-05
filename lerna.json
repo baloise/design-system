@@ -1,7 +1,9 @@
 {
   "version": "7.0.1",
   "granularPathspec": false,
-  "useWorkspaces": true,
+  "packages": [
+    "packages/*"
+  ],
   "command": {
     "version": {
       "message": "chore(release): %s",
