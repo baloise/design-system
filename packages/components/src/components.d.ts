@@ -1309,7 +1309,7 @@ export namespace Components {
         /**
           * Defines the layout of the tabs.
          */
-        "interface": 'tabs' | 'steps' | 'o-steps';
+        "interface": 'tabs' | 'tabs-sub' | 'steps' | 'o-steps';
         /**
           * If you want the rounded tab style.
          */
@@ -3326,7 +3326,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the tabs.
          */
-        "interface"?: 'tabs' | 'steps' | 'o-steps';
+        "interface"?: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps';
         /**
           * Emitted when the action button has clicked
          */

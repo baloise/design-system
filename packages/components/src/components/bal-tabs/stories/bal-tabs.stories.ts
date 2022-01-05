@@ -21,8 +21,8 @@ const Template = args => ({
 </bal-tabs>`,
 })
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const MainNavigation = Template.bind({})
+MainNavigation.args = {
   action: true,
   expanded: false,
   clickable: true,
@@ -30,7 +30,17 @@ Basic.args = {
   actionLabel: 'Action',
   interface: 'tabs',
 }
-Basic.parameters = { ...component.sourceCode(Basic) }
+MainNavigation.parameters = { ...component.sourceCode(MainNavigation) }
+
+export const SubNavigation = Template.bind({})
+SubNavigation.args = {
+  action: true,
+  expanded: false,
+  clickable: true,
+  rounded: false,
+  interface: 'tabs-sub',
+}
+SubNavigation.parameters = { ...component.sourceCode(SubNavigation) }
 
 export const Round = Template.bind({})
 Round.args = {

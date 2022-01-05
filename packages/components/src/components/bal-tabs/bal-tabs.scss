@@ -107,6 +107,28 @@ bal-tabs.bal-tabs {
   }
 }
 
+bal-tabs.bal-tabs.is-sub-navigation {
+  .tabs {
+    & > ul > li {
+      &.is-right {
+        display: none !important;
+      }
+
+      span.bubble {
+        height: 8px;
+        width: 8px;
+        top: 8px;
+        right: 4px;
+      }
+
+      & > a {
+        padding: 12px !important;
+        font-size: 18px !important;
+      }
+    }
+  }
+}
+
 bal-tab-item {
   display: block;
   position: static;
