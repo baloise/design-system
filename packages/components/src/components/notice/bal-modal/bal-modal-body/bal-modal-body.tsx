@@ -8,10 +8,8 @@ import { Component, Host, h } from '@stencil/core'
 export class ModalBody {
   render() {
     return (
-      <Host class="modal-card-body">
-        <div class="content">
-          <slot />
-        </div>
+      <Host class="modal-body p-4">
+        <slot />
       </Host>
     )
   }

@@ -10,7 +10,7 @@ $modal-close-dimensions: 40px !default;
 $modal-close-right: 32px !default;
 $modal-close-top: 32px !default;
 
-$modal-card-body-padding: 16px !default;
+$modal-card-body-padding: 0px !default;
 $modal-card-head-radius: 0px !default;
 $modal-card-head-padding: 16px !default;
 
@@ -21,7 +21,7 @@ $modal-card-head-background-color: $scheme-main !default;
 
 $modal-card-title-size: $size-large !default;
 
-$modal-card-foot-border-top: 1px solid $blue-2 !default;
-$modal-card-head-border-bottom: 1px solid $blue-2 !default;
+$modal-card-foot-border-top: none !default;
+$modal-card-head-border-bottom: none !default;
 
 $modal-background-background-color: bulmaRgba(darken($blue-8, 10), 0.86) !default;

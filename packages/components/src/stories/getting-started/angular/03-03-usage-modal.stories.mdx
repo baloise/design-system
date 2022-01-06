@@ -28,10 +28,14 @@ Create a html and a typscirpt file for your modal component like this.
   </p>
 </bal-modal-body>
 <bal-modal-footer>
-  <bal-modal-actions>
-    <bal-button color="link" (click)="closeModal()">Cancel</bal-button>
-    <bal-button color="primary" (click)="closeModal()">Okay</bal-button>
-  </bal-modal-actions>
+  <div class="field is-grouped is-grouped-right">
+    <p class="control">
+      <bal-button color="link" (click)="closeModal()">Cancel</bal-button>
+    </p>
+    <p class="control">
+      <bal-button color="primary" (click)="closeModal()">Okay</bal-button>
+    </p>
+  </div>
 </bal-modal-footer>
 ```
 
@@ -113,10 +117,14 @@ Simply define the modal layout in your custom component and add the element refe
     <p>...</p>
   </bal-modal-body>
   <bal-modal-footer>
-    <bal-modal-actions>
-      <bal-button color="link" (click)="closeModal()">Cancel</bal-button>
-      <bal-button color="primary" (click)="closeModal()">Okay</bal-button>
-    </bal-modal-actions>
+    <div class="field is-grouped is-grouped-right">
+      <p class="control">
+        <bal-button color="link" (click)="closeModal()">Cancel</bal-button>
+      </p>
+      <p class="control">
+        <bal-button color="primary" (click)="closeModal()">Okay</bal-button>
+      </p>
+    </div>
   </bal-modal-footer>
 </bal-modal>
 ```

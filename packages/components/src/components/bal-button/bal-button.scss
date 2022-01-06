@@ -356,3 +356,13 @@ bal-button.is-fullwidth {
     }
   }
 }
+
+@include mobile() {
+  .field.is-grouped p.control {
+    flex: 1;
+
+    bal-button {
+      width: 100%;
+    }
+  }
+}

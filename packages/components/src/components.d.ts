@@ -13,6 +13,7 @@ import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-fi
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
 import { AutocompleteTypes, InputTypes } from "./types/interfaces";
 import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+import { Placement } from "@popperjs/core";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -319,11 +320,11 @@ export namespace Components {
          */
         "balTabindex": number;
         /**
-          * Closes the dropdown
+          * Closes the popover
          */
         "close": () => Promise<void>;
         /**
-          * Closes the datepicker dropdown after selection
+          * Closes the datepicker popover after selection
          */
         "closeOnSelect": boolean;
         /**
@@ -338,10 +339,6 @@ export namespace Components {
           * If `true` the component is diabled.
          */
         "disabled": boolean;
-        /**
-          * If `true` the component uses the whole width.
-         */
-        "expanded": boolean;
         /**
           * Returns the native `<input>` element used under the hood.
          */
@@ -375,7 +372,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Opens the dropdown
+          * Opens the popover
          */
         "open": () => Promise<void>;
         /**
@@ -434,53 +431,11 @@ export namespace Components {
         "src": string;
         "text": string;
     }
-    interface BalDropdown {
-        /**
-          * Closes the dropdown menu.
-         */
-        "close": () => Promise<void>;
-        /**
-          * If `true` the field spans over the whole width.
-         */
-        "expanded": boolean;
-        /**
-          * If `true` the dropdown content has a fixed width
-         */
-        "fixedContentWidth": boolean;
-        /**
-          * Returns the `HTMLDivElement` of the content element
-         */
-        "getContentElement": () => Promise<HTMLElement | null>;
-        /**
-          * If `true` the dropdown content is open.
-         */
-        "isActive": boolean;
-        /**
-          * Open the dropdown menu.
-         */
-        "open": () => Promise<void>;
-        /**
-          * Open or closes the dropdown.
-         */
-        "toggle": () => Promise<void>;
-    }
-    interface BalDropdownMenu {
-        /**
-          * Limit the height of the dropdown content. Pass the amount of pixel.
-         */
-        "scrollable": number;
-    }
-    interface BalDropdownTrigger {
-    }
     interface BalField {
         /**
           * If `true` the field loses opacity
          */
         "disabled": boolean;
-        /**
-          * If `true` the component takes the whole width
-         */
-        "expanded": boolean;
         /**
           * If `true` the component gets a invalid style. Only use this if there is no live validation.
          */
@@ -520,10 +475,6 @@ export namespace Components {
     }
     interface BalFieldLabel {
         /**
-          * If `true` the component takes the whole width
-         */
-        "expanded": boolean;
-        /**
           * If `true` a asterix (*) is added to the label text
          */
         "required": boolean;
@@ -533,10 +484,6 @@ export namespace Components {
           * Defines the color of the message.
          */
         "color": '' | ColorTypesExtended;
-        /**
-          * If `true` the component takes the whole width
-         */
-        "expanded": boolean;
     }
     interface BalFileUpload {
         /**
@@ -722,10 +669,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true` the component takes the whole width
-         */
-        "expanded": boolean;
-        /**
           * Returns the native `<input>` element used under the hood.
          */
         "getInputElement": () => Promise<HTMLInputElement | undefined>;
@@ -908,8 +851,6 @@ export namespace Components {
          */
         "present": () => Promise<void>;
     }
-    interface BalModalActions {
-    }
     interface BalModalBody {
     }
     interface BalModalFooter {
@@ -981,6 +922,46 @@ export namespace Components {
          */
         "value": number;
     }
+    interface BalPopover {
+        /**
+          * Closes the popover
+         */
+        "close": () => Promise<void>;
+        /**
+          * If `true` the popover content is open.
+         */
+        "isActive": boolean;
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "offsetX": number;
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "offsetY": number;
+        /**
+          * Open the popover
+         */
+        "open": () => Promise<void>;
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "position": Placement;
+        /**
+          * Open or closes the popover
+         */
+        "toggle": () => Promise<void>;
+    }
+    interface BalPopoverContent {
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "contentWidth": number;
+        /**
+          * Limit the height of the popover content. Pass the amount of pixel.
+         */
+        "scrollable": number;
+    }
     interface BalRadio {
         /**
           * The tabindex of the control.
@@ -1048,7 +1029,7 @@ export namespace Components {
          */
         "balTabindex": number;
         /**
-          * Cancel the dropdown
+          * Cancel the popover
          */
         "cancel": () => Promise<void>;
         /**
@@ -1056,17 +1037,13 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
-          * Closes the dropdown
+          * Closes the popover
          */
         "close": () => Promise<void>;
         /**
           * If `true` the component is diabled.
          */
         "disabled": boolean;
-        /**
-          * If `true` the component uses the whole width.
-         */
-        "expanded": boolean;
         /**
           * Sets the focus on the input element
          */
@@ -1100,7 +1077,7 @@ export namespace Components {
          */
         "noDataLabel": string | undefined;
         /**
-          * Opens the dropdown
+          * Opens the popover
          */
         "open": () => Promise<void>;
         /**
@@ -1108,7 +1085,7 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
-          * Defines the height of the dropdown list.
+          * Defines the height of the popover list.
          */
         "scrollable": number;
         /**
@@ -1626,24 +1603,6 @@ declare global {
         prototype: HTMLBalDocImageElement;
         new (): HTMLBalDocImageElement;
     };
-    interface HTMLBalDropdownElement extends Components.BalDropdown, HTMLStencilElement {
-    }
-    var HTMLBalDropdownElement: {
-        prototype: HTMLBalDropdownElement;
-        new (): HTMLBalDropdownElement;
-    };
-    interface HTMLBalDropdownMenuElement extends Components.BalDropdownMenu, HTMLStencilElement {
-    }
-    var HTMLBalDropdownMenuElement: {
-        prototype: HTMLBalDropdownMenuElement;
-        new (): HTMLBalDropdownMenuElement;
-    };
-    interface HTMLBalDropdownTriggerElement extends Components.BalDropdownTrigger, HTMLStencilElement {
-    }
-    var HTMLBalDropdownTriggerElement: {
-        prototype: HTMLBalDropdownTriggerElement;
-        new (): HTMLBalDropdownTriggerElement;
-    };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
     var HTMLBalFieldElement: {
@@ -1764,12 +1723,6 @@ declare global {
         prototype: HTMLBalModalElement;
         new (): HTMLBalModalElement;
     };
-    interface HTMLBalModalActionsElement extends Components.BalModalActions, HTMLStencilElement {
-    }
-    var HTMLBalModalActionsElement: {
-        prototype: HTMLBalModalActionsElement;
-        new (): HTMLBalModalActionsElement;
-    };
     interface HTMLBalModalBodyElement extends Components.BalModalBody, HTMLStencilElement {
     }
     var HTMLBalModalBodyElement: {
@@ -1835,6 +1788,18 @@ declare global {
     var HTMLBalPaginationElement: {
         prototype: HTMLBalPaginationElement;
         new (): HTMLBalPaginationElement;
+    };
+    interface HTMLBalPopoverElement extends Components.BalPopover, HTMLStencilElement {
+    }
+    var HTMLBalPopoverElement: {
+        prototype: HTMLBalPopoverElement;
+        new (): HTMLBalPopoverElement;
+    };
+    interface HTMLBalPopoverContentElement extends Components.BalPopoverContent, HTMLStencilElement {
+    }
+    var HTMLBalPopoverContentElement: {
+        prototype: HTMLBalPopoverContentElement;
+        new (): HTMLBalPopoverContentElement;
     };
     interface HTMLBalRadioElement extends Components.BalRadio, HTMLStencilElement {
     }
@@ -1957,9 +1922,6 @@ declare global {
         "bal-doc-github": HTMLBalDocGithubElement;
         "bal-doc-icons": HTMLBalDocIconsElement;
         "bal-doc-image": HTMLBalDocImageElement;
-        "bal-dropdown": HTMLBalDropdownElement;
-        "bal-dropdown-menu": HTMLBalDropdownMenuElement;
-        "bal-dropdown-trigger": HTMLBalDropdownTriggerElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -1980,7 +1942,6 @@ declare global {
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-modal": HTMLBalModalElement;
-        "bal-modal-actions": HTMLBalModalActionsElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-footer": HTMLBalModalFooterElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
@@ -1992,6 +1953,8 @@ declare global {
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-pagination": HTMLBalPaginationElement;
+        "bal-popover": HTMLBalPopoverElement;
+        "bal-popover-content": HTMLBalPopoverContentElement;
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-group": HTMLBalRadioGroupElement;
         "bal-select": HTMLBalSelectElement;
@@ -2339,7 +2302,7 @@ declare namespace LocalJSX {
          */
         "balTabindex"?: number;
         /**
-          * Closes the datepicker dropdown after selection
+          * Closes the datepicker popover after selection
          */
         "closeOnSelect"?: boolean;
         /**
@@ -2354,10 +2317,6 @@ declare namespace LocalJSX {
           * If `true` the component is diabled.
          */
         "disabled"?: boolean;
-        /**
-          * If `true` the component uses the whole width.
-         */
-        "expanded"?: boolean;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
@@ -2450,42 +2409,11 @@ declare namespace LocalJSX {
         "src"?: string;
         "text"?: string;
     }
-    interface BalDropdown {
-        /**
-          * If `true` the field spans over the whole width.
-         */
-        "expanded"?: boolean;
-        /**
-          * If `true` the dropdown content has a fixed width
-         */
-        "fixedContentWidth"?: boolean;
-        /**
-          * If `true` the dropdown content is open.
-         */
-        "isActive"?: boolean;
-        /**
-          * Listen when the dropdown opens or closes. Returns the current `isActive` value.
-         */
-        "onBalCollapse"?: (event: CustomEvent<boolean>) => void;
-        "onBalDropdownPrepare"?: (event: CustomEvent<string>) => void;
-    }
-    interface BalDropdownMenu {
-        /**
-          * Limit the height of the dropdown content. Pass the amount of pixel.
-         */
-        "scrollable"?: number;
-    }
-    interface BalDropdownTrigger {
-    }
     interface BalField {
         /**
           * If `true` the field loses opacity
          */
         "disabled"?: boolean;
-        /**
-          * If `true` the component takes the whole width
-         */
-        "expanded"?: boolean;
         /**
           * If `true` the component gets a invalid style. Only use this if there is no live validation.
          */
@@ -2525,10 +2453,6 @@ declare namespace LocalJSX {
     }
     interface BalFieldLabel {
         /**
-          * If `true` the component takes the whole width
-         */
-        "expanded"?: boolean;
-        /**
           * If `true` a asterix (*) is added to the label text
          */
         "required"?: boolean;
@@ -2538,10 +2462,6 @@ declare namespace LocalJSX {
           * Defines the color of the message.
          */
         "color"?: '' | ColorTypesExtended;
-        /**
-          * If `true` the component takes the whole width
-         */
-        "expanded"?: boolean;
     }
     interface BalFileUpload {
         /**
@@ -2718,10 +2638,6 @@ declare namespace LocalJSX {
           * If `true` the input is disabled
          */
         "disabled"?: boolean;
-        /**
-          * If `true` the component takes the whole width
-         */
-        "expanded"?: boolean;
         "hasIconRight"?: boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
@@ -2917,8 +2833,6 @@ declare namespace LocalJSX {
         "onBalModalWillPresent"?: (event: CustomEvent<void>) => void;
         "overlayIndex": number;
     }
-    interface BalModalActions {
-    }
     interface BalModalBody {
     }
     interface BalModalFooter {
@@ -2988,6 +2902,39 @@ declare namespace LocalJSX {
           * Current selected page
          */
         "value"?: number;
+    }
+    interface BalPopover {
+        /**
+          * If `true` the popover content is open.
+         */
+        "isActive"?: boolean;
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "offsetX"?: number;
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "offsetY"?: number;
+        /**
+          * Listen when the popover opens or closes. Returns the current `isActive` value.
+         */
+        "onBalCollapse"?: (event: CustomEvent<boolean>) => void;
+        "onBalPopoverPrepare"?: (event: CustomEvent<string>) => void;
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "position"?: Placement;
+    }
+    interface BalPopoverContent {
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "contentWidth"?: number;
+        /**
+          * Limit the height of the popover content. Pass the amount of pixel.
+         */
+        "scrollable"?: number;
     }
     interface BalRadio {
         /**
@@ -3067,10 +3014,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` the component uses the whole width.
-         */
-        "expanded"?: boolean;
-        /**
           * Enables the slide in animation for the option items.
          */
         "hasMovement"?: boolean;
@@ -3131,7 +3074,7 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * Defines the height of the dropdown list.
+          * Defines the height of the popover list.
          */
         "scrollable"?: number;
         /**
@@ -3559,9 +3502,6 @@ declare namespace LocalJSX {
         "bal-doc-github": BalDocGithub;
         "bal-doc-icons": BalDocIcons;
         "bal-doc-image": BalDocImage;
-        "bal-dropdown": BalDropdown;
-        "bal-dropdown-menu": BalDropdownMenu;
-        "bal-dropdown-trigger": BalDropdownTrigger;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -3582,7 +3522,6 @@ declare namespace LocalJSX {
         "bal-list-item-subtitle": BalListItemSubtitle;
         "bal-list-item-title": BalListItemTitle;
         "bal-modal": BalModal;
-        "bal-modal-actions": BalModalActions;
         "bal-modal-body": BalModalBody;
         "bal-modal-footer": BalModalFooter;
         "bal-modal-header": BalModalHeader;
@@ -3594,6 +3533,8 @@ declare namespace LocalJSX {
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
         "bal-pagination": BalPagination;
+        "bal-popover": BalPopover;
+        "bal-popover-content": BalPopoverContent;
         "bal-radio": BalRadio;
         "bal-radio-group": BalRadioGroup;
         "bal-select": BalSelect;
@@ -3640,9 +3581,6 @@ declare module "@stencil/core" {
             "bal-doc-github": LocalJSX.BalDocGithub & JSXBase.HTMLAttributes<HTMLBalDocGithubElement>;
             "bal-doc-icons": LocalJSX.BalDocIcons & JSXBase.HTMLAttributes<HTMLBalDocIconsElement>;
             "bal-doc-image": LocalJSX.BalDocImage & JSXBase.HTMLAttributes<HTMLBalDocImageElement>;
-            "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
-            "bal-dropdown-menu": LocalJSX.BalDropdownMenu & JSXBase.HTMLAttributes<HTMLBalDropdownMenuElement>;
-            "bal-dropdown-trigger": LocalJSX.BalDropdownTrigger & JSXBase.HTMLAttributes<HTMLBalDropdownTriggerElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;
@@ -3663,7 +3601,6 @@ declare module "@stencil/core" {
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
-            "bal-modal-actions": LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-footer": LocalJSX.BalModalFooter & JSXBase.HTMLAttributes<HTMLBalModalFooterElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
@@ -3675,6 +3612,8 @@ declare module "@stencil/core" {
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
+            "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
+            "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;

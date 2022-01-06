@@ -8,7 +8,7 @@ import { Component, Host, h } from '@stencil/core'
 export class ModalFooter {
   render() {
     return (
-      <Host class="modal-card-foot">
+      <Host class="modal-footer p-4">
         <slot />
       </Host>
     )

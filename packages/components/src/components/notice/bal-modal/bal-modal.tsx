@@ -249,6 +249,7 @@ export class Modal implements OverlayInterface {
         }}
       >
         <div
+          ref={el => (this.modalBackgroundElement = el)}
           class={{
             'modal': true,
             'is-clipped': true,
@@ -256,15 +257,19 @@ export class Modal implements OverlayInterface {
           }}
         >
           <div
-            ref={el => (this.modalBackgroundElement = el)}
             class={{
               'modal-background': true,
               'is-hidden': !this.hasBackdrop,
             }}
           ></div>
-          <div class="modal-content" ref={el => (this.modalContentElement = el)}>
-            <div class="box no-border modal-card modal-wrapper">
-              <slot></slot>
+          <div class="modal-container">
+            <div class="modal-content">
+              <div
+                ref={el => (this.modalContentElement = el)}
+                class="has-background-white has-shadow has-radius-normal no-border modal-card modal-wrapper"
+              >
+                <slot></slot>
+              </div>
             </div>
           </div>
         </div>
