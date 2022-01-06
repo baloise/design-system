@@ -18,7 +18,7 @@ Cypress.Commands.add(
     prevSubject: true,
   },
   subject => {
-    return cy.wrap(subject).find('bal-dropdown').should('have.attr', 'is-active', '').wrap(subject)
+    return cy.wrap(subject).find('bal-popover').should('have.attr', 'is-active', '').wrap(subject)
   },
 )
 
@@ -28,7 +28,7 @@ Cypress.Commands.add(
     prevSubject: true,
   },
   subject => {
-    return cy.wrap(subject).find('bal-dropdown').should('not.have.attr', 'is-active').wrap(subject)
+    return cy.wrap(subject).find('bal-popover').should('not.have.attr', 'is-active').wrap(subject)
   },
 )
 

@@ -7,11 +7,6 @@ export class Field {
   @Element() element!: HTMLElement
 
   /**
-   * If `true` the component takes the whole width
-   */
-  @Prop() expanded = false
-
-  /**
    * If `true` the component gets a invalid style. Only use this if there is no live validation.
    */
   @Prop() invalid = false
@@ -33,7 +28,6 @@ export class Field {
 
   @Watch('inverted')
   @Watch('disabled')
-  @Watch('expanded')
   watchInputHandler() {
     this.updateChildInput()
   }
@@ -56,7 +50,6 @@ export class Field {
     inputs.forEach(input => {
       input.disabled = this.disabled
       input.inverted = this.inverted
-      input.expanded = this.expanded
     })
   }
 
@@ -77,7 +70,6 @@ export class Field {
     return (
       <Host
         class={{
-          'is-expanded': this.expanded,
           'is-invalid': this.invalid,
         }}
       >

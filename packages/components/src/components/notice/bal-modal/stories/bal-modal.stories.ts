@@ -80,7 +80,7 @@ export const WithInput = args => ({
   <bal-modal-header>Modal Title</bal-modal-header>
   <bal-modal-body>
     <form class="columns is-multiline mt-0">
-      <bal-field class="column is-full py-0" expanded>
+      <bal-field class="column is-full py-0">
         <bal-field-label>Date</bal-field-label>
         <bal-field-control>
           <bal-datepicker placeholder="Pick a date"></bal-datepicker>

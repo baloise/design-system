@@ -2,7 +2,7 @@ import { CheckboxPage } from './pages/checkbox.page'
 import { ButtonPage } from './pages/button.page'
 import { AccordionPage } from './pages/accordion.page'
 import { DatepickerPage } from './pages/datepicker.page'
-import { DropdownPage } from './pages/dropdown.page'
+import { PopoverPage } from './pages/popover.page'
 import { SelectPage } from './pages/select.page'
 import { InputPage } from './pages/input.page'
 import { ModalPage } from './pages/modal.page'
@@ -20,7 +20,7 @@ export class App {
   getButtonPage = () => new ButtonPage()
   getAccordionPage = () => new AccordionPage()
   getDatepickerPage = () => new DatepickerPage()
-  getDropdownPage = () => new DropdownPage()
+  getPopoverPage = () => new PopoverPage()
   getSelectPage = () => new SelectPage()
   getInputPage = () => new InputPage()
   getTextareaPage = () => new TextareaPage()

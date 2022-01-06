@@ -3,15 +3,15 @@
 declare namespace Cypress {
   interface Chainable {
     /**
-     * Opens and closes the datepicker dropdown.
+     * Opens and closes the datepicker popover.
      */
     balDatepickerToggle(): Chainable<JQuery>
     /**
-     * Assert if the datepicker dropdown is open.
+     * Assert if the datepicker popover is open.
      */
     balDatepickerIsOpen(): Chainable<JQuery>
     /**
-     * Assert if the datepicker dropdown is closed.
+     * Assert if the datepicker popover is closed.
      */
     balDatepickerIsClosed(): Chainable<JQuery>
     /**
@@ -19,11 +19,11 @@ declare namespace Cypress {
      */
     balDatepickerPick(date: Date): Chainable<JQuery>
     /**
-     * Asserts if the given date is in range in the datepicker dropdown.
+     * Asserts if the given date is in range in the datepicker popover.
      */
     balDatepickerIsDateInRange(date: Date): Chainable<JQuery>
     /**
-     * Asserts if the given date is not in range in the datepicker dropdown.
+     * Asserts if the given date is not in range in the datepicker popover.
      */
     balDatepickerIsDateNotInRange(date: Date): Chainable<JQuery>
   }

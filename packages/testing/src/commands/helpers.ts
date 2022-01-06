@@ -46,9 +46,9 @@ export const selectors = {
   datepicker: {
     input: 'input.data-test-input',
   },
-  dropdown: {
-    trigger: 'bal-dropdown-trigger',
-    menu: 'bal-dropdown-menu',
+  popover: {
+    trigger: 'bal-popover-trigger',
+    content: 'bal-popover-content',
   },
   input: {
     main: '> input',

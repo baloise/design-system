@@ -18,7 +18,7 @@ export const ExternalCaluclatorTemplate = `
 
             <bal-card-content>
               <form class="columns is-multiline mt-0">
-                <bal-field class="column is-full py-0" expanded>
+                <bal-field class="column is-full py-0">
                   <bal-field-control>
                     <bal-radio-group>
                       <bal-radio name="gender" value="male">Male</bal-radio>
@@ -26,13 +26,13 @@ export const ExternalCaluclatorTemplate = `
                     </bal-radio-group>
                   </bal-field-control>
                 </bal-field>
-                <bal-field class="column is-half py-0" expanded required>
+                <bal-field class="column is-half py-0" required>
                   <bal-field-label required>Firstname</bal-field-label>
                   <bal-field-control>
                     <bal-input name="firstname" placeholder="Enter your firstname" required></bal-input>
                   </bal-field-control>
                 </bal-field>
-                <bal-field class="column is-half py-0" expanded required>
+                <bal-field class="column is-half py-0" required>
                   <bal-field-label required>Lastname</bal-field-label>
                   <bal-field-control>
                     <bal-input name="lastname" placeholder="Enter your lastname" required></bal-input>
@@ -52,7 +52,7 @@ export const ExternalCaluclatorTemplate = `
 
             <bal-card-content>
               <form class="columns is-multiline mt-0">
-                <bal-field class="column is-half py-0" expanded required>
+                <bal-field class="column is-half py-0" required>
                   <bal-field-label required>Value</bal-field-label>
                   <bal-field-control>
                     <bal-input

@@ -17,7 +17,7 @@ export const vueComponentModels: ComponentModelConfig[] = [
     targetAttr: 'value',
   },
   {
-    elements: ['bal-accordion', 'bal-dropdown'],
+    elements: ['bal-accordion', 'bal-popover'],
     event: 'balCollapsed',
     targetAttr: 'is-active',
   },

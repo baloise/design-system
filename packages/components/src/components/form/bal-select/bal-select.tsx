@@ -38,7 +38,7 @@ export interface BalOptionController extends BalOptionValue {
 export class Select {
   @Element() private el!: HTMLElement
   private inputElement!: HTMLInputElement
-  private dropdownElement!: HTMLBalDropdownElement
+  private popoverElement!: HTMLBalPopoverElement
   private didInit = false
   private inputId = `bal-select-${selectIds++}`
   private clearScrollToValue!: NodeJS.Timeout
@@ -48,7 +48,7 @@ export class Select {
   @State() hasFocus = false
   @State() inputValue = ''
   @State() focusIndex = 0
-  @State() isDropdownOpen = false
+  @State() isPopoverOpen = false
   @State() options: Map<string, BalOptionController> = new Map<string, BalOptionController>()
   @State() labelToScrollTo = ''
   @State() labelToSelectTo = ''
@@ -94,11 +94,6 @@ export class Select {
   @Prop() disabled = false
 
   /**
-   * If `true` the component uses the whole width.
-   */
-  @Prop() expanded = false
-
-  /**
    * Set this to `true` when the component is placed on a dark background.
    */
   @Prop() inverted = false
@@ -109,7 +104,7 @@ export class Select {
   @Prop() placeholder?: string
 
   /**
-   * Defines the height of the dropdown list.
+   * Defines the height of the popover list.
    */
   @Prop() scrollable = 250
 
@@ -193,7 +188,7 @@ export class Select {
 
   @Listen('keydown', { target: 'window' })
   async handleKeyDown(event: KeyboardEvent) {
-    if (this.isDropdownOpen) {
+    if (this.isPopoverOpen) {
       if (isArrowDownKey(event) || isArrowUpKey(event)) {
         preventDefault(event)
         this.navigateWithArrowKey(event)
@@ -323,27 +318,27 @@ export class Select {
   }
 
   /**
-   * Opens the dropdown
+   * Opens the popover
    */
   @Method()
   async open(): Promise<void> {
-    if (!this.disabled && !isNil(this.dropdownElement)) {
-      await this.dropdownElement.open()
+    if (!this.disabled && !isNil(this.popoverElement)) {
+      await this.popoverElement.open()
     }
   }
 
   /**
-   * Closes the dropdown
+   * Closes the popover
    */
   @Method()
   async close(): Promise<void> {
-    if (!this.disabled && !isNil(this.dropdownElement)) {
-      await this.dropdownElement.close()
+    if (!this.disabled && !isNil(this.popoverElement)) {
+      await this.popoverElement.close()
     }
   }
 
   /**
-   * Cancel the dropdown
+   * Cancel the popover
    */
   @Method()
   async cancel(): Promise<void> {
@@ -400,8 +395,8 @@ export class Select {
     return Array.from(this.el.querySelectorAll('bal-select-option'))
   }
 
-  private getDropdownContent() {
-    return this.dropdownElement.querySelector('.dropdown-content')
+  private getPopoverContent() {
+    return this.popoverElement.querySelector('.popover-content .inner')
   }
 
   /********************************************************
@@ -432,31 +427,31 @@ export class Select {
   }
 
   private scrollToFocusedOption(focusedElement?: HTMLElement) {
-    if (focusedElement && this.dropdownElement) {
-      const dropdownContentElement = this.getDropdownContent()
+    if (focusedElement && this.popoverElement) {
+      const popoverContentElement = this.getPopoverContent()
 
-      if (dropdownContentElement) {
+      if (popoverContentElement) {
         // up
         const topOfOption = focusedElement.offsetTop
-        const topOfDropdownContent = dropdownContentElement.scrollTop
-        if (topOfOption < topOfDropdownContent) {
-          dropdownContentElement.scrollTop = topOfOption
+        const topOfPopoverContent = popoverContentElement.scrollTop
+        if (topOfOption < topOfPopoverContent) {
+          popoverContentElement.scrollTop = topOfOption
         }
 
         // down
         const bottomOfOption = focusedElement.offsetTop + focusedElement.clientHeight
-        const bottomOfDropdownContent = dropdownContentElement.scrollTop + dropdownContentElement.clientHeight
-        if (bottomOfOption > bottomOfDropdownContent) {
-          dropdownContentElement.scrollTop = dropdownContentElement.scrollTop + focusedElement.clientHeight
+        const bottomOfPopoverContent = popoverContentElement.scrollTop + popoverContentElement.clientHeight
+        if (bottomOfOption > bottomOfPopoverContent) {
+          popoverContentElement.scrollTop = popoverContentElement.scrollTop + focusedElement.clientHeight
         }
       }
     }
   }
 
   private scrollTo(scrollTop: number) {
-    const dropdownContentElement = this.getDropdownContent()
-    if (dropdownContentElement) {
-      dropdownContentElement.scrollTop = scrollTop
+    const popoverContentElement = this.getPopoverContent()
+    if (popoverContentElement) {
+      popoverContentElement.scrollTop = scrollTop
     }
   }
 
@@ -547,7 +542,7 @@ export class Select {
     this.updateValue(selectedOption.value, !isAlreadySelected)
 
     if (!this.multiple) {
-      this.dropdownElement.close()
+      this.popoverElement.close()
     } else {
       if (this.typeahead) {
         this.setFocus()
@@ -607,9 +602,9 @@ export class Select {
     }
   }
 
-  private handleDropdownChange = (event: CustomEvent<boolean>) => {
-    this.isDropdownOpen = event.detail
-    if (this.isDropdownOpen) {
+  private handlePopoverChange = (event: CustomEvent<boolean>) => {
+    this.isPopoverOpen = event.detail
+    if (this.isPopoverOpen) {
       this.updateFocus()
     } else {
       this.focusIndex = 0
@@ -637,12 +632,12 @@ export class Select {
     } else {
       this.focusIndex = 0
       this.balClick.emit(event)
-      await this.dropdownElement?.open()
+      await this.popoverElement?.open()
     }
   }
 
   private handleKeyPress = async (event: KeyboardEvent) => {
-    if (!this.isDropdownOpen && isSpaceKey(event)) {
+    if (!this.isPopoverOpen && isSpaceKey(event)) {
       preventDefault(event)
       await this.open()
     }
@@ -659,8 +654,8 @@ export class Select {
     if (!this.disabled) {
       this.inputValue = (event.target as HTMLInputElement).value
 
-      if (!this.isDropdownOpen) {
-        this.dropdownElement.open()
+      if (!this.isPopoverOpen) {
+        this.popoverElement.open()
       }
 
       this.focusIndex = 0
@@ -700,63 +695,60 @@ export class Select {
         class={{
           'is-disabled': this.disabled,
           'is-inverted': this.inverted,
-          'is-fullwidth': this.expanded,
         }}
       >
-        <bal-dropdown
-          expanded={this.expanded}
-          onBalCollapse={this.handleDropdownChange}
-          ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}
+        <bal-popover
+          onBalCollapse={this.handlePopoverChange}
+          ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}
         >
-          <bal-dropdown-trigger>
-            <div
-              class={{
-                'bal-select__slot': true,
-                'is-focused': this.isDropdownOpen,
-                'has-no-border': this.noBorder,
-              }}
-            >
-              <div class="bal-select__selections">
-                {valuesArray
-                  .filter(_ => this.multiple)
-                  .map((value: string) => (
-                    <Chip value={value}></Chip>
-                  ))}
-                <input
-                  type="text"
-                  class={{
-                    'input': true,
-                    'is-inverted': this.inverted,
-                    'is-clickable': !this.isDropdownOpen,
-                    'data-test-select-input': true,
-                  }}
-                  autocomplete={'off'}
-                  placeholder={this.inputPlaceholder}
-                  readOnly={!this.typeahead}
-                  disabled={this.disabled}
-                  tabindex={this.balTabindex}
-                  onInput={this.handleInput}
-                  onClick={this.handleInputClick}
-                  onChange={this.handleInputChange}
-                  onFocus={this.handleInputFocus}
-                  onBlur={this.handleInputBlur}
-                  onKeyPress={this.handleKeyPress}
-                  ref={el => (this.inputElement = el as HTMLInputElement)}
-                />
-              </div>
-              <bal-icon
-                class={{ 'is-hidden': this.loading }}
-                name="caret-down"
-                size="xsmall"
-                inverted={this.inverted}
-                turn={this.isDropdownOpen}
-                style={{
-                  marginTop: this.isDropdownOpen ? '8px' : '0px',
+          <div
+            bal-popover-trigger
+            class={{
+              'bal-select__slot': true,
+              'is-focused': this.isPopoverOpen,
+              'has-no-border': this.noBorder,
+            }}
+          >
+            <div class="bal-select__selections">
+              {valuesArray
+                .filter(_ => this.multiple)
+                .map((value: string) => (
+                  <Chip value={value}></Chip>
+                ))}
+              <input
+                type="text"
+                class={{
+                  'input': true,
+                  'is-inverted': this.inverted,
+                  'is-clickable': !this.isPopoverOpen,
+                  'data-test-select-input': true,
                 }}
-              ></bal-icon>
+                autocomplete={'off'}
+                placeholder={this.inputPlaceholder}
+                readOnly={!this.typeahead}
+                disabled={this.disabled}
+                tabindex={this.balTabindex}
+                onInput={this.handleInput}
+                onClick={this.handleInputClick}
+                onChange={this.handleInputChange}
+                onFocus={this.handleInputFocus}
+                onBlur={this.handleInputBlur}
+                onKeyPress={this.handleKeyPress}
+                ref={el => (this.inputElement = el as HTMLInputElement)}
+              />
             </div>
-          </bal-dropdown-trigger>
-          <bal-dropdown-menu scrollable={this.scrollable}>
+            <bal-icon
+              class={{ 'is-hidden': this.loading }}
+              name="caret-down"
+              size="xsmall"
+              inverted={this.inverted}
+              turn={this.isPopoverOpen}
+              style={{
+                marginTop: this.isPopoverOpen ? '8px' : '0px',
+              }}
+            ></bal-icon>
+          </div>
+          <bal-popover-content scrollable={this.scrollable}>
             {this.optionArray.map((option: BalOptionController, index: number) => (
               <button
                 type="button"
@@ -766,7 +758,7 @@ export class Select {
                 data-label={option.label}
                 class={{
                   'bal-select__option ': true,
-                  'dropdown-item': true,
+                  'popover-item': true,
                   'is-selected': valuesArray.includes(option.value),
                   'is-focused': this.focusIndex === index,
                   'has-checkbox': this.multiple,
@@ -798,8 +790,8 @@ export class Select {
             >
               {this.noDataLabel}
             </div>
-          </bal-dropdown-menu>
-        </bal-dropdown>
+          </bal-popover-content>
+        </bal-popover>
       </Host>
     )
   }

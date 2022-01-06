@@ -5,10 +5,7 @@ bal-select-option {
 bal-select {
   display: block;
   position: relative;
-
-  &.is-fullwidth {
-    width: 100%;
-  }
+  width: 100%;
 
   &.is-disabled {
     background: $blue-0;

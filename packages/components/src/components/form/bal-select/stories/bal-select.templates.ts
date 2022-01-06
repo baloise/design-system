@@ -25,11 +25,11 @@ export const marvelHeros = `
   </bal-select-option>`
 
 export const typeahead = `
-<bal-select typeahead expanded placeholder="Try finding your hero" no-data-label="No option available">
+<bal-select typeahead placeholder="Try finding your hero" no-data-label="No option available">
 ${marvelHeros}
 </bal-select>`
 
 export const multiSelect = `
-<bal-select multiple expanded placeholder="Try finding your hero">
+<bal-select multiple placeholder="Try finding your hero">
 ${marvelHeros}
 </bal-select>`

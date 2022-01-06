@@ -33,11 +33,11 @@ describe('Datepicker', () => {
 
 A list of the custom commands for this specific component.
 
-| Command                         | Description                                                           | Signature                         |
-| ------------------------------- | --------------------------------------------------------------------- | --------------------------------- |
-| `balDatepickerToggle`           | Opens and closes the datepicker dropdown.                             | `(): Chainable<JQuery>`           |
-| `balDatepickerIsOpen`           | Assert if the datepicker dropdown is open.                            | `(): Chainable<JQuery>`           |
-| `balDatepickerIsClosed`         | Assert if the datepicker dropdown is closed.                          | `(): Chainable<JQuery>`           |
-| `balDatepickerPick`             | Picks the date in the datepicker like a human.                        | `(date: Date): Chainable<JQuery>` |
-| `balDatepickerIsDateInRange`    | Asserts if the given date is in range in the datepicker dropdown.     | `(date: Date): Chainable<JQuery>` |
-| `balDatepickerIsDateNotInRange` | Asserts if the given date is not in range in the datepicker dropdown. | `(date: Date): Chainable<JQuery>` |
+| Command                         | Description                                                          | Signature                         |
+| ------------------------------- | -------------------------------------------------------------------- | --------------------------------- |
+| `balDatepickerToggle`           | Opens and closes the datepicker popover.                             | `(): Chainable<JQuery>`           |
+| `balDatepickerIsOpen`           | Assert if the datepicker popover is open.                            | `(): Chainable<JQuery>`           |
+| `balDatepickerIsClosed`         | Assert if the datepicker popover is closed.                          | `(): Chainable<JQuery>`           |
+| `balDatepickerPick`             | Picks the date in the datepicker like a human.                       | `(date: Date): Chainable<JQuery>` |
+| `balDatepickerIsDateInRange`    | Asserts if the given date is in range in the datepicker popover.     | `(date: Date): Chainable<JQuery>` |
+| `balDatepickerIsDateNotInRange` | Asserts if the given date is not in range in the datepicker popover. | `(date: Date): Chainable<JQuery>` |

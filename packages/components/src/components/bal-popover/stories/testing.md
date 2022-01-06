@@ -9,15 +9,15 @@ The Baloise Design System provides a collection of custom cypress commands for o
 ```typescript
 import { dataTestSelector } from '@baloise/design-system-testing'
 
-describe('Dropdown', () => {
-  const dropdown = dataTestSelector('my-dropdown') // [data-test-id="my-dropdown"]
+describe('Popover', () => {
+  const popover = dataTestSelector('my-popover') // [data-test-id="my-popover"]
   it('should ...', () => {
-    cy.get(dropdown)
-      .balDropdownIsClosed()
-      .balDropdownToggle()
-      .balDropdownIsOpen()
-      .balDropdownTriggerContains('Trigger button label')
-      .balDropdownMenuContains('Body content')
+    cy.get(popover)
+      .balPopoverIsClosed()
+      .balPopoverToggle()
+      .balPopoverIsOpen()
+      .balPopoverTriggerContains('Trigger button label')
+      .balPopoverContentContains('Body content')
   })
 })
 ```

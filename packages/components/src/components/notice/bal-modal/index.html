@@ -18,57 +18,6 @@
     <div class="container">
       <h2 class="title is-size-2">Basic</h2>
 
-      <!-- <section>
-        <bal-button id="bal-modal-trigger-example" data-test-id="open-modal-button">Launch Modal</bal-button>
-      </section>
-      <script type="text/javascript">
-        customElements.define(
-          'modal-page',
-          class extends HTMLElement {
-            connectedCallback() {
-              this.innerHTML = `
-              <bal-modal-header>Modal Title</bal-modal-header>
-              <bal-modal-body>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </bal-modal-body>
-              <bal-modal-footer>
-                <bal-modal-actions>
-                  <bal-button color="primary" modal-close>Okay</bal-button>
-                  <bal-button color="link" modal-close data-test-id="open-modal-close">Cancel</bal-button>
-                </bal-modal-actions>
-              </bal-modal-footer>`
-            }
-          },
-        )
-
-        async function presentModal() {
-          const modalElement = document.createElement('bal-modal')
-          modalElement.component = 'modal-page'
-          modalElement.cssClass = 'my-custom-class'
-          modalElement.setAttribute('data-test-id', 'modal')
-
-          // Define the with of the modal.
-          modalElement.modalWidth = 640 // default
-
-          // Define to have backdrop and that it is closable
-          modalElement.hasBackdrop = true // default
-          modalElement.isClosable = true // default
-
-          // attach the modal to the dom
-          document.body.appendChild(modalElement)
-          await deepReady(modalElement)
-
-          // present the modal for the user
-          return modalElement.present()
-        }
-
-        const triggerElementBasic = document.getElementById('bal-modal-trigger-example')
-        triggerElementBasic.onclick = async function () {
-          await presentModal()
-        }
-      </script> -->
-
       <section>
         <bal-modal id="bal-modal-example-width" data-test-id="modal">
           <bal-modal-header>Modal Title</bal-modal-header>
@@ -80,10 +29,8 @@
             </p>
           </bal-modal-body>
           <bal-modal-footer>
-            <bal-modal-actions>
-              <bal-button color="link" id="bal-modal-close-4" data-test-id="open-modal-close">Cancel</bal-button>
-              <bal-button color="primary" id="bal-modal-close-3">Okay</bal-button>
-            </bal-modal-actions>
+            <bal-button color="link" id="bal-modal-close-4" data-test-id="open-modal-close">Cancel</bal-button>
+            <bal-button color="primary" id="bal-modal-close-3">Okay</bal-button>
           </bal-modal-footer>
         </bal-modal>
 

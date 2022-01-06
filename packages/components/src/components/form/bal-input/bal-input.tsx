@@ -30,11 +30,6 @@ export class Input implements ComponentInterface {
   @Element() el!: HTMLElement
 
   /**
-   * If `true` the component takes the whole width
-   */
-  @Prop() expanded = false
-
-  /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop() name: string = this.inputId
@@ -355,7 +350,6 @@ export class Input implements ComponentInterface {
         <input
           class={{
             'input': true,
-            'is-fullwidth': this.expanded,
             'is-disabled': this.disabled,
             'is-inverted': this.inverted,
             'clickable': this.clickable,

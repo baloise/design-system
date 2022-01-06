@@ -42,12 +42,12 @@ import { i18nDate } from './bal-datepicker.i18n'
 })
 export class Datepicker implements ComponentInterface {
   private inputElement!: HTMLInputElement
-  private dropdownElement!: HTMLBalDropdownElement
+  private popoverElement!: HTMLBalPopoverElement
   private inputId = `bal-dp-${datepickerIds++}`
 
   @Element() el!: HTMLElement
 
-  @State() isDropdownOpen = false
+  @State() isPopoverOpen = false
   @State() selectedDate?: string | null = ''
   @State() pointerDate: BalPointerDate = {
     year: year(now()),
@@ -69,11 +69,6 @@ export class Datepicker implements ComponentInterface {
    * The tabindex of the control.
    */
   @Prop() balTabindex = 0
-
-  /**
-   * If `true` the component uses the whole width.
-   */
-  @Prop() expanded = false
 
   /**
    * Set this to `true` when the component is placed on a dark background.
@@ -121,7 +116,7 @@ export class Datepicker implements ComponentInterface {
   @Prop({ mutable: true }) max?: string
 
   /**
-   * Closes the datepicker dropdown after selection
+   * Closes the datepicker popover after selection
    */
   @Prop() closeOnSelect = true
 
@@ -214,28 +209,28 @@ export class Datepicker implements ComponentInterface {
   }
 
   /**
-   * Opens the dropdown
+   * Opens the popover
    */
   @Method()
   async open(): Promise<void> {
     if (this.disabled) {
       return
     }
-    if (this.dropdownElement) {
-      this.dropdownElement.open()
+    if (this.popoverElement) {
+      this.popoverElement.open()
     }
   }
 
   /**
-   * Closes the dropdown
+   * Closes the popover
    */
   @Method()
   async close(): Promise<void> {
     if (this.disabled) {
       return undefined
     }
-    if (this.dropdownElement) {
-      this.dropdownElement.close()
+    if (this.popoverElement) {
+      this.popoverElement.close()
     }
   }
 
@@ -249,7 +244,7 @@ export class Datepicker implements ComponentInterface {
     this.updatePointerDates()
 
     if (this.closeOnSelect) {
-      await this.dropdownElement?.toggle()
+      await this.popoverElement?.toggle()
     }
   }
 
@@ -388,20 +383,20 @@ export class Datepicker implements ComponentInterface {
 
   private onIconClick = (event: MouseEvent) => {
     if (!this.disabled) {
-      this.dropdownElement.toggle()
+      this.popoverElement.toggle()
     }
     event.stopPropagation()
   }
 
   private onInputClick = (event: MouseEvent) => {
     if (!this.triggerIcon && !this.disabled) {
-      this.dropdownElement.toggle()
+      this.popoverElement.toggle()
     }
     event.stopPropagation()
   }
 
-  private onDropdownChange = (event: CustomEvent<boolean>) => {
-    this.isDropdownOpen = event.detail
+  private onPopoverChange = (event: CustomEvent<boolean>) => {
+    this.isPopoverOpen = event.detail
     event.stopPropagation()
   }
 
@@ -442,7 +437,7 @@ export class Datepicker implements ComponentInterface {
       const date = toDate(this.inputElement.value)
       const datestring = isoString(date)
 
-      if (this.isDropdownOpen) {
+      if (this.isPopoverOpen) {
         if (this.value === datestring) {
           this.close()
         }
@@ -504,17 +499,14 @@ export class Datepicker implements ComponentInterface {
         aria-disabled={this.disabled ? 'true' : null}
         class={{
           'is-disabled': this.disabled,
-          'is-fullwidth': this.expanded,
         }}
       >
-        <bal-dropdown
-          expanded={this.expanded}
-          fixedContentWidth={true}
-          onBalCollapse={this.onDropdownChange}
-          ref={el => (this.dropdownElement = el as HTMLBalDropdownElement)}
+        <bal-popover
+          onBalCollapse={this.onPopoverChange}
+          ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}
         >
-          <bal-dropdown-trigger>{this.renderInput()}</bal-dropdown-trigger>
-          <bal-dropdown-menu>
+          {this.renderInput()}
+          <bal-popover-content>
             <div class="datepicker-popup">
               {this.renderHeader()}
               {this.renderBody()}
@@ -522,8 +514,8 @@ export class Datepicker implements ComponentInterface {
                 <slot></slot>
               </div>
             </div>
-          </bal-dropdown-menu>
-        </bal-dropdown>
+          </bal-popover-content>
+        </bal-popover>
       </Host>
     )
   }
@@ -537,7 +529,7 @@ export class Datepicker implements ComponentInterface {
     }
 
     return (
-      <div class="control has-icons-right">
+      <div bal-popover-trigger class="control has-icons-right">
         <input
           class={{
             'input': true,

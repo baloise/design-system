@@ -1,0 +1,31 @@
+bal-popover,
+.bal-popover {
+  display: block;
+  @include mobile() {
+    .popover-content {
+      min-width: 100%;
+    }
+  }
+}
+
+bal-select-option {
+  display: none;
+}
+
+bal-popover-content {
+  display: none;
+  z-index: 20;
+  min-width: 260px;
+}
+
+bal-popover.is-active bal-popover-content {
+  display: block;
+}
+
+.popover-item {
+  padding-right: 3rem;
+  text-align: inherit;
+  white-space: nowrap;
+  width: 100%;
+  display: block;
+}

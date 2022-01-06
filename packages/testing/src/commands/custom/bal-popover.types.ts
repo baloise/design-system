@@ -3,28 +3,28 @@
 declare namespace Cypress {
   interface Chainable {
     /**
-     * Opens and closes the dropdown.
+     * Opens and closes the popover.
      */
-    balDropdownToggle(): Chainable<JQuery>
+    balPopoverToggle(): Chainable<JQuery>
     /**
-     * Asserts if the dropdown is open.
+     * Asserts if the popover is open.
      */
-    balDropdownIsOpen(): Chainable<JQuery>
+    balPopoverIsOpen(): Chainable<JQuery>
     /**
-     * Asserts if the dropdown is closed.
+     * Asserts if the popover is closed.
      */
-    balDropdownIsClosed(): Chainable<JQuery>
+    balPopoverIsClosed(): Chainable<JQuery>
     /**
      * Asserts if the trigger button contains the given content.
      */
-    balDropdownTriggerContains(
+    balPopoverTriggerContains(
       content: string | number | RegExp,
       options?: Partial<Loggable & Timeoutable & CaseMatchable & Shadow>,
     ): Chainable<JQuery>
     /**
-     * Asserts if the dropdown menu contains the given content.
+     * Asserts if the popover menu contains the given content.
      */
-    balDropdownMenuContains(
+    balPopoverContentContains(
       content: string | number | RegExp,
       options?: Partial<Loggable & Timeoutable & CaseMatchable & Shadow>,
     ): Chainable<JQuery>

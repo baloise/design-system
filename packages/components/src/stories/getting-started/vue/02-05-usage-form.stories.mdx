@@ -50,7 +50,7 @@ First we define our template like this.
 
 ```html
 <form @submit.prevent="submit">
-  <BalField expanded :disabled="isFirstNameDisabled">
+  <BalField :disabled="isFirstNameDisabled">
     <BalFieldLabel required> {{ $t('form.firstName.label') }} </BalFieldLabel>
     <BalFieldControl>
       <BalInput

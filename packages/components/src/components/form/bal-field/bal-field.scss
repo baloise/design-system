@@ -1,12 +1,7 @@
 bal-field {
-  display: inline-block;
+  display: block;
   position: relative;
   min-height: 60px;
-
-  &.is-expanded {
-    display: block;
-    width: 100%;
-  }
 
   &.has-label {
     min-height: 80px;
@@ -46,14 +41,14 @@ bal-field {
     top: -5px;
   }
 
-  bal-field-label.is-expanded,
-  bal-field-label.is-expanded label,
-  bal-field-message.is-expanded {
+  bal-field-label,
+  bal-field-label label,
+  bal-field-message {
     width: 100%;
   }
 
-  bal-field-label.is-expanded label,
-  bal-field-message.is-expanded {
+  bal-field-label label,
+  bal-field-message {
     display: flex !important;
     justify-content: space-between;
   }
@@ -126,14 +121,14 @@ bal-field {
       color: $danger !important;
     }
 
-    input.input,
-    bal-select .dropdown-trigger > div {
-      border-color: $danger !important;
-    }
+    // input.input,
+    // bal-select .popover-trigger > div {
+    //   border-color: $danger !important;
+    // }
 
-    bal-dropdown-trigger bal-icon {
-      fill: $danger !important;
-    }
+    // bal-popover-trigger bal-icon {
+    //   fill: $danger !important;
+    // }
 
     bal-checkbox {
       label {

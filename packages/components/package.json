@@ -71,6 +71,7 @@
     "@baloise/design-system-fonts": "8.0.1",
     "@baloise/design-system-icons": "8.0.1",
     "@baloise/web-app-utils": "^2.0.10",
+    "@popperjs/core": "^2.11.2",
     "@stencil/core": "^2.11.0",
     "bulma": "^0.9.3",
     "filesize.js": "^2.0.0",

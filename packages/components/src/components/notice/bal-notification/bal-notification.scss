@@ -30,7 +30,8 @@ bal-notification {
     border: 1px solid $blue-2;
     color: $blue;
 
-    a:not(.button):not(.dropdown-item) {
+    a:not(.button):not(.dropdown-item),
+    a:not(.button):not(.popover-item) {
       color: $cyan;
     }
   }

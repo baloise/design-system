@@ -1,17 +1,17 @@
 import { selectors } from '../helpers'
 
 Cypress.Commands.add(
-  'balDropdownToggle',
+  'balPopoverToggle',
   {
     prevSubject: true,
   },
   subject => {
-    return cy.wrap(subject).find(selectors.dropdown.trigger).click().wrap(subject)
+    return cy.wrap(subject).find(`[${selectors.popover.trigger}]`).click().wrap(subject)
   },
 )
 
 Cypress.Commands.add(
-  'balDropdownIsOpen',
+  'balPopoverIsOpen',
   {
     prevSubject: true,
   },
@@ -21,7 +21,7 @@ Cypress.Commands.add(
 )
 
 Cypress.Commands.add(
-  'balDropdownIsClosed',
+  'balPopoverIsClosed',
   {
     prevSubject: true,
   },
@@ -31,21 +31,21 @@ Cypress.Commands.add(
 )
 
 Cypress.Commands.add(
-  'balDropdownTriggerContains',
+  'balPopoverTriggerContains',
   {
     prevSubject: true,
   },
   (subject, content, options) => {
-    return cy.wrap(subject).find(selectors.dropdown.trigger).contains(content, options).wrap(subject)
+    return cy.wrap(subject).find(`[${selectors.popover.trigger}]`).contains(content, options).wrap(subject)
   },
 )
 
 Cypress.Commands.add(
-  'balDropdownMenuContains',
+  'balPopoverContentContains',
   {
     prevSubject: true,
   },
   (subject, content, options) => {
-    return cy.wrap(subject).find(selectors.dropdown.menu).contains(content, options).wrap(subject)
+    return cy.wrap(subject).find(selectors.popover.content).contains(content, options).wrap(subject)
   },
 )
