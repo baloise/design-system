@@ -25,16 +25,16 @@ The commands of the Baloise Design System are managed in the `package.json` file
 
 ## Build
 
-The build script is devided into 3 phases:
+The build script is divided into 3 phases:
 
 - **Pre Build**
   - Build resources like icons and fonts for the design system
 - **Core Build**
-  - Builds the components and the global stylesheet
+  - Builds components and the global stylesheet
   - Depends on icons and fonts
 - **Post Build**
-  - Builds the proxy libraries, extensions and the testing library
-  - Depends on components and global stylesheet
+  - Builds proxy libraries, extensions and the testing library
+  - Depends on components and the global stylesheet
 
 import BuildImage from '../assets/images/architecture/build.svg'
 
@@ -42,7 +42,7 @@ import BuildImage from '../assets/images/architecture/build.svg'
 
 ## Debug Components
 
-To be able to debug components we need 2 seperate terminals. One for storybook and the other for stencil.
+To be able to debug components we need two seperated terminals. One for storybook and another for stencil.
 
 First we navigate into the component package.
 
@@ -51,7 +51,7 @@ cd packages/components
 ```
 
 > **Important**
-> Changes at the components interface (prop, events and methods) will not be published in the debug mode. There for we need to build the stencil components with `npm run dev:build`.
+> Changes on the components interface (prop, events and methods) will not be published in the debug mode. Therefore we need to build the stencil components with `npm run dev:build`.
 
 Then in the first terminal we build the components in the dev mode (no vue storybook output).
 
@@ -65,7 +65,7 @@ In the second terminal we can start the storybook server.
 npm run dev:docs
 ```
 
-Now go to a component lets say `bal-tag` and add the keyword `debugger` to the render function.
+Now go to a component (e.g. `bal-tag`) and add the keyword `debugger` to the render function.
 
 ## Testing
 
