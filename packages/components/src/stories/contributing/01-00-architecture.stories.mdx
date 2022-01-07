@@ -13,14 +13,14 @@ import DocumentationImage from '../assets/images/architecture/documentation.svg'
 
 # Architecture
 
-The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.
+The Baloise Design System is an open source project to build customer centric web applications following the Baloise corporate styling guidelines.
 
 The architecture is based on web standards and best practices. Moreover, we try to keep it as simple as possible for our contributors and consumers.
-For those reasons we decided to use Web Components, which are supported by all modern browsers. The project fully supports [TypeScript](https://www.typescriptlang.org/).
+For those reasons we decided to use Web Components which are supported by all modern browsers. The project fully supports [TypeScript](https://www.typescriptlang.org/).
 
 ## Architecture Library
 
-The project is devided into various packges. The graphic below should ilustrate that a bit more in detail.
+The project is devided into various packges. The graphic below draws a more detailed picture.
 
 <img src={LibraryImage} />
 
@@ -32,10 +32,10 @@ The project is devided into various packges. The graphic below should ilustrate 
 
 ## Architecture Documentation
 
-To document the components and design parts we use the great tool [storybook](https://storybook.js.org/).
+To document the components and design parts we use [storybook](https://storybook.js.org/).
 
 > **TIP**
-> To learn how to use storybook go to the getting started guide [how to use storybook](/?path=/story/getting-started-how-to-use-storybook--page).
+> To learn how to use storybook, go to the getting started guide [how to use storybook](/?path=/story/getting-started-how-to-use-storybook--page).
 
 <img src={DocumentationImage} />
 
@@ -52,8 +52,8 @@ To document the components and design parts we use the great tool [storybook](ht
 ### Here are some advantages
 
 #### Future Friendly
-
-We don't know which is going to be the next big framework on the horizon, but with Stencil we do not have to care. Stencil does not depend on any framework. As mentioned above it is a compiler to generate standards-based [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components), which can be used with any framework.
+ 
+We don't know what will be the next big framework, but by using Stencil that does not matter. Stencil is not dependend on any framework. As mentioned above it is a compiler to generate standard-based [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components), which can be used with any framework.
 
 #### TypeScript Support
 
@@ -61,16 +61,16 @@ TypeScript helps maintaining the code. Additionally, Stencil generates types for
 
 #### Browser Support
 
-For the small minority of browsers that do not support modern browser features and APIs, Stencil will automatically polyfill them on-demand.
+For the small minority of browsers that do not support modern browsers, features and APIs, Stencil will automatically polyfill them on-demand.
 Out-of-the-box browser support includes all modern browsers starting from Internet Explorer 11 ([Browser Support](https://stenciljs.com/docs/browser-support)).
 
 #### Easy to learn
 
-The tiny API and concepts, which are based on web standards, are quite simular to the concepts and APIs of the major JavaScript frameworks like React, Vue and Angular. So it is really simple to get started. The goal is not to create yet-another-framework, but rather provide tooling for developers to generate future-friendly components using APIs already baked within the browser.
+The tiny API and concepts, which are based on web standards, are quite similar to the concepts and APIs of the most known JavaScript frameworks like React, Vue and Angular. So it is really simple to get started. The goal is not to create yet-another-framework, but rather provide tooling for developers to generate future-friendly components using APIs already baked within the browser.
 
 #### Needs no dependencies at runtime
 
-The generated code does not rely on Stencil, but rather it generates highly-optimized, framework-free, stand-alone code which runs natively in the browser.
+The generated code does not rely on Stencil, but rather generates highly-optimized, framework-free, stand-alone code which runs natively in browsers.
 
 ### SWOT analyse of Stencil
 
@@ -160,19 +160,19 @@ Bulmas components are well-documented and have simplified css classes. Every cla
 
 #### CSS only
 
-At the end Bulma is just one CSS file (bulma.css). However, if you just want to use a part of it import the individual .sass source files.
+At the end Bulma is just one CSS file (bulma.css). However, if you just want to use a part of it, import the individual .sass source files.
 
 #### Responsive
 
-Bulma is designed as a mobile-first CSS framework, offering optimum site responsiveness. Build a site once and watch it work across any device.
+Bulma is designed as a mobile-first CSS framework, offering ideal site responsiveness. Try out to build a site and watch how good it work across any device.
 
 #### Well documented
 
-The [Documentation](https://bulma.io/documentation/) helps you getting the most out of this framework. There are a lot examples for each component.
+The [Documentation](https://bulma.io/documentation/) helps you to get the most out of this framework. There are a lot examples for each component.
 
 #### Modular
 
-Bulma is not an all in one framework. It is modular, which means you can only import those components that you need. For that just import the individual sass file.
+Bulma is not an all-in-one framework. It is modular, which means that you can only import the components you need. To do so, just import the individual sass file.
 
 #### Customizable
 
@@ -180,7 +180,7 @@ Of cource, not everyone likes the theme of bulma. No problem, just import the va
 
 ### SWOT analyse of Bulma
 
-This is not another framework. It is a compiler that generates standards-based [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) (more specifically, Custom Elements). They can be used without any framework, because they are just [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
+This is not another framework. It is a compiler that generates standard-based [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) (more specifically, Custom Elements). They can be used without any framework, because they are just [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
 
 With Stencil we are able to develop universal, framework and library agnostic UI elements that can be shared among different projects.
 
@@ -262,8 +262,8 @@ With Stencil we are able to develop universal, framework and library agnostic UI
 
 #### Playground
 
-The developers can create components in a isolated development and have an interactive showcase/playground.
-Change controls/props, have a look at the fired events and more is available in the playground.
+The developers can create components in an isolated environment and have an interactive showcase/playground.
+Change controls/props, have a look at fired events and a lot more is possible with playground.
 
 #### Accessibility
 
@@ -275,7 +275,7 @@ A perfect mix of documentation with markdown and creating stories/variants of co
 
 #### Addons
 
-Storybook has a rich list of available addons and can be integrated like accessibility really easy.
+Storybook has a rich list of available addons which can be integrated very easy, like accessibility checks.
 
 ### SWOT analyse of Storybook
 
