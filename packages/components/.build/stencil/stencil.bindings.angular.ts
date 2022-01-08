@@ -14,12 +14,6 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'boolean',
   },
   {
-    elementSelectors: ['bal-accordion', 'bal-popover'],
-    event: 'balChange',
-    targetAttr: 'value',
-    type: 'boolean',
-  },
-  {
     elementSelectors: ['bal-input', 'bal-textarea', 'bal-slider'],
     event: 'balInput',
     targetAttr: 'value',
