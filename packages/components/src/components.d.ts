@@ -250,10 +250,6 @@ export namespace Components {
          */
         "balTabindex": number;
         /**
-          * If `true`, the checkbox is selected.
-         */
-        "checked": boolean;
-        /**
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled": boolean;
@@ -278,9 +274,9 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
-          * The value of the control.
+          * If `true`, the checkbox is selected.
          */
-        "value": string;
+        "value": boolean;
     }
     interface BalData {
         /**
@@ -2218,10 +2214,6 @@ declare namespace LocalJSX {
          */
         "balTabindex"?: number;
         /**
-          * If `true`, the checkbox is selected.
-         */
-        "checked"?: boolean;
-        /**
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled"?: boolean;
@@ -2242,7 +2234,7 @@ declare namespace LocalJSX {
          */
         "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * Emitted when the checked property has changed.
+          * Emitted when the value property has changed.
          */
         "onBalChange"?: (event: CustomEvent<boolean>) => void;
         /**
@@ -2250,9 +2242,9 @@ declare namespace LocalJSX {
          */
         "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * The value of the control.
+          * If `true`, the checkbox is selected.
          */
-        "value"?: string;
+        "value"?: boolean;
     }
     interface BalData {
         /**

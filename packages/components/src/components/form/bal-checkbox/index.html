@@ -18,7 +18,7 @@
       </p>
       <section>
         <bal-checkbox data-test-id="checkbox-normal">Label <b>Bold</b></bal-checkbox>
-        <bal-checkbox checked>Checked</bal-checkbox>
+        <bal-checkbox value="true">Checked</bal-checkbox>
         <bal-checkbox disabled data-test-id="checkbox-disabled">Disabled</bal-checkbox>
       </section>
 
@@ -26,7 +26,7 @@
       <p>Switches are used to toggle between exactly two states (like on and off).</p>
       <section>
         <bal-checkbox interface="switch">Label</bal-checkbox>
-        <bal-checkbox checked interface="switch">Checked</bal-checkbox>
+        <bal-checkbox value="true" interface="switch">Checked</bal-checkbox>
         <bal-checkbox disabled interface="switch">Disabled</bal-checkbox>
       </section>
 
@@ -34,7 +34,7 @@
       <section>
         <div class="has-background-info p-4">
           <bal-checkbox inverted>Label</bal-checkbox>
-          <bal-checkbox inverted checked>Checked</bal-checkbox>
+          <bal-checkbox inverted value="true">Checked</bal-checkbox>
           <bal-checkbox inverted disabled>Disabled</bal-checkbox>
         </div>
       </section>
@@ -72,10 +72,10 @@
         var checkbox3Trigger1 = document.getElementById('cb-3-trigger-1')
         var checkbox3Trigger2 = document.getElementById('cb-3-trigger-2')
         checkbox3Trigger1.addEventListener('click', function (event) {
-          checkbox3.checked = true
+          checkbox3.value = true
         })
         checkbox3Trigger2.addEventListener('click', function (event) {
-          checkbox3.checked = false
+          checkbox3.value = false
         })
       </script>
 

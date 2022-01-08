@@ -126,15 +126,6 @@ Box.args = {}
 Box.parameters = {
   ...component.sourceCode(Box),
   controls: {
-    exclude: [
-      ...excludedControls,
-      'interface',
-      'invalid',
-      'checked',
-      'hasFieldMessage',
-      'inverted',
-      'value',
-      'content',
-    ],
+    exclude: [...excludedControls, 'interface', 'invalid', 'value', 'hasFieldMessage', 'inverted', 'value', 'content'],
   },
 }
