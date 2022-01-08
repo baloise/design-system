@@ -22,10 +22,6 @@ export namespace Components {
          */
         "card": boolean;
         /**
-          * Close the accordion
-         */
-        "close": () => Promise<void>;
-        /**
           * Bal-Icon of the close trigger button
          */
         "closeIcon": string;
@@ -38,13 +34,13 @@ export namespace Components {
          */
         "color": ColorTypesBasic;
         /**
-          * Controls if the accordion is collapsed or not
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
-        "isActive": boolean;
+        "debounce": number;
         /**
-          * Open the accordion
+          * Close the accordion
          */
-        "open": () => Promise<void>;
+        "dismiss": () => Promise<void>;
         /**
           * Bal-Icon of the open trigger button
          */
@@ -54,9 +50,17 @@ export namespace Components {
          */
         "openLabel": string;
         /**
+          * Open the accordion
+         */
+        "present": () => Promise<void>;
+        /**
           * Triggers the accordion
          */
         "toggle": () => Promise<void>;
+        /**
+          * Controls if the accordion is collapsed or not
+         */
+        "value": boolean;
     }
     interface BalApp {
     }
@@ -573,17 +577,17 @@ export namespace Components {
     }
     interface BalHint {
         /**
-          * Closes the hint box.
-         */
-        "close": () => Promise<void>;
-        /**
           * Text for the close button.
          */
         "closeLabel": string;
         /**
+          * Closes the hint box.
+         */
+        "dismiss": () => Promise<void>;
+        /**
           * Opens the hint box.
          */
-        "open": () => Promise<void>;
+        "present": () => Promise<void>;
         /**
           * Disables the close button for tablet and desktop
          */
@@ -795,9 +799,6 @@ export namespace Components {
     interface BalListItemTitle {
     }
     interface BalModal {
-        /**
-          * Closes the modal.
-         */
         "close": () => Promise<void>;
         /**
           * The component to display inside of the modal.
@@ -841,9 +842,6 @@ export namespace Components {
           * Returns a promise that resolves when the modal will dismiss.
          */
         "onWillDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
-        /**
-          * Opens the modal.
-         */
         "open": () => Promise<void>;
         "overlayIndex": number;
         /**
@@ -924,13 +922,13 @@ export namespace Components {
     }
     interface BalPopover {
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
           * Closes the popover
          */
-        "close": () => Promise<void>;
-        /**
-          * If `true` the popover content is open.
-         */
-        "isActive": boolean;
+        "dismiss": () => Promise<void>;
         /**
           * If `true` the field spans over the whole width.
          */
@@ -940,17 +938,21 @@ export namespace Components {
          */
         "offsetY": number;
         /**
-          * Open the popover
-         */
-        "open": () => Promise<void>;
-        /**
           * If `true` the field spans over the whole width.
          */
         "position": Placement;
         /**
+          * Open the popover
+         */
+        "present": () => Promise<void>;
+        /**
           * Open or closes the popover
          */
         "toggle": () => Promise<void>;
+        /**
+          * If `true` the popover content is open.
+         */
+        "value": boolean;
     }
     interface BalPopoverContent {
         /**
@@ -1223,10 +1225,6 @@ export namespace Components {
     }
     interface BalTabItem {
         /**
-          * Tell's if the tab is active and the content is visible.
-         */
-        "active": boolean;
-        /**
           * If `true` a small red bubble is added to the tab.
          */
         "bubble": boolean;
@@ -1287,6 +1285,10 @@ export namespace Components {
          */
         "clickable": boolean;
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
           * If `true` the field expands over the whole width.
          */
         "expanded": boolean;
@@ -1298,7 +1300,7 @@ export namespace Components {
           * Go to tab with the given value
          */
         "select": (tab: BalTabOption) => Promise<void>;
-        "sync": () => Promise<void>;
+        "value"?: string;
     }
     interface BalTag {
         /**
@@ -1992,13 +1994,13 @@ declare namespace LocalJSX {
          */
         "color"?: ColorTypesBasic;
         /**
-          * Controls if the accordion is collapsed or not
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
-        "isActive"?: boolean;
+        "debounce"?: number;
         /**
           * Emmited when the accordion has changed
          */
-        "onBalCollapse"?: (event: CustomEvent<boolean>) => void;
+        "onBalChange"?: (event: CustomEvent<boolean>) => void;
         /**
           * Bal-Icon of the open trigger button
          */
@@ -2007,6 +2009,10 @@ declare namespace LocalJSX {
           * Label of the open trigger button
          */
         "openLabel"?: string;
+        /**
+          * Controls if the accordion is collapsed or not
+         */
+        "value"?: boolean;
     }
     interface BalApp {
     }
@@ -2905,9 +2911,9 @@ declare namespace LocalJSX {
     }
     interface BalPopover {
         /**
-          * If `true` the popover content is open.
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
-        "isActive"?: boolean;
+        "debounce"?: number;
         /**
           * If `true` the field spans over the whole width.
          */
@@ -2917,14 +2923,18 @@ declare namespace LocalJSX {
          */
         "offsetY"?: number;
         /**
-          * Listen when the popover opens or closes. Returns the current `isActive` value.
+          * Listen when the popover opens or closes. Returns the current value.
          */
-        "onBalCollapse"?: (event: CustomEvent<boolean>) => void;
+        "onBalChange"?: (event: CustomEvent<boolean>) => void;
         "onBalPopoverPrepare"?: (event: CustomEvent<string>) => void;
         /**
           * If `true` the field spans over the whole width.
          */
         "position"?: Placement;
+        /**
+          * If `true` the popover content is open.
+         */
+        "value"?: boolean;
     }
     interface BalPopoverContent {
         /**
@@ -3220,10 +3230,6 @@ declare namespace LocalJSX {
     }
     interface BalTabItem {
         /**
-          * Tell's if the tab is active and the content is visible.
-         */
-        "active"?: boolean;
-        /**
           * If `true` a small red bubble is added to the tab.
          */
         "bubble"?: boolean;
@@ -3280,6 +3286,10 @@ declare namespace LocalJSX {
          */
         "clickable"?: boolean;
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
           * If `true` the field expands over the whole width.
          */
         "expanded"?: boolean;
@@ -3294,7 +3304,8 @@ declare namespace LocalJSX {
         /**
           * Emitted when the changes has finished.
          */
-        "onBalTabChange"?: (event: CustomEvent<BalTabOption>) => void;
+        "onBalChange"?: (event: CustomEvent<string>) => void;
+        "value"?: string;
     }
     interface BalTag {
         /**

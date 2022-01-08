@@ -2,7 +2,15 @@ import { ComponentModelConfig, vueOutputTarget } from '@baloise/vue-output-targe
 
 export const vueComponentModels: ComponentModelConfig[] = [
   {
-    elements: ['bal-radio-group', 'bal-datepicker', 'bal-timeinput', 'bal-select'],
+    elements: [
+      'bal-radio-group',
+      'bal-datepicker',
+      'bal-timeinput',
+      'bal-select',
+      'bal-accordion',
+      'bal-popover',
+      'bal-tabs',
+    ],
     event: 'balChange',
     targetAttr: 'value',
   },
@@ -15,11 +23,6 @@ export const vueComponentModels: ComponentModelConfig[] = [
     elements: ['bal-input', 'bal-textarea', 'bal-slider'],
     event: 'balInput',
     targetAttr: 'value',
-  },
-  {
-    elements: ['bal-accordion', 'bal-popover'],
-    event: 'balCollapsed',
-    targetAttr: 'is-active',
   },
 ]
 
