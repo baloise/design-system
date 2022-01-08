@@ -68,39 +68,32 @@ First we define our template like this.
 Now we have to define the logic of our form with the help of VeeValidate.
 
 ```typescript
-import { defineComponent, ref } from 'vue'
+import { ref } from 'vue'
+import { BalField, BalFieldLabel, BalFieldControl, BalFieldMessage, BalInput } from '@baloise/design-system-components-vue'
 import { rules } from '@baloise/web-app-validators-vue'
 import { useField, useForm, useIsFormValid } from 'vee-validate'
 import { isRequired } from '../helpers/validators'
 
-export default defineComponent({
-  setup() {
-    const { validate } = useForm()
-    const isFormValid = useIsFormValid()
+const { validate } = useForm()
+const isFormValid = useIsFormValid()
 
-    const isFirstNameDisabled = ref(false)
-    const firstnameField = useField('firstname', rules(isFirstNameDisabled, [
-      isRequired(),
-    ]))
+const isFirstNameDisabled = ref(false)
+const {
+  firstname: value,
+  firstNameName: name,
+  firstnameErrorMessage: errorMessage,
+} = useField('firstname', rules(isFirstNameDisabled, [
+  isRequired(),
+]))
 
-    async function submit() {
-      const { valid, errors } = await validate()
-      ...
-    }
+async function submit() {
+  const { valid, errors } = await validate()
+  ...
+}
 
-    function disable() {
-      isFirstNameDisabled.value = !isFirstNameDisabled.value
-    }
-
-    return {
-      firstname: firstnameField.value,
-      firstNameName: firstnameField.name,
-      firstnameErrorMessage: firstnameField.errorMessage,
-      isFirstNameDisabled,
-      isFormValid, disable, submit,
-    }
-  },
-})
+function disable() {
+  isFirstNameDisabled.value = !isFirstNameDisabled.value
+}
 ```
 
 <bal-doc-github link="/stories/getting-started/vue/02-05-usage-form.stories.mdx"></bal-doc-github>

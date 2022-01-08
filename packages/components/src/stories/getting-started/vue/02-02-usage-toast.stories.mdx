@@ -20,42 +20,30 @@ Just import the controllers into the component.
 - [Toast](?path=/docs/components-toast--basic)
 
 ```html
-<template>
-  <div id="app">
-    <BalCheckbox v-model="checkbox"></BalCheckbox>
-    <BalButton @click="createToast()">Create Toast</BalButton>
-  </div>
-</template>
-
-<script lang="ts">
-  import Vue from 'vue'
-  import { BalCheckbox, BalButton } from '@baloise/design-system-components-vue'
+<script setup lang="ts">
+  import { BalApp, BalCheckbox, BalButton } from '@baloise/design-system-components-vue'
   import { balToastController } from '@baloise/design-system-components'
 
-  export default Vue.extend({
-    components: { BalCheckbox, BalButton },
-    setup() {
-      let myToast?: HTMLBalToastElement>
-      const checkbox = ref(true)
+  let myToast?: HTMLBalToastElement>
+  const checkbox = ref(true)
 
-      function createToast() {
-        myToast = balToastController.create({
-          message: 'Message',
-        })
-      }
+  function createToast() {
+    myToast = balToastController.create({
+      message: 'Message',
+    })
+  }
 
-      async function closeToast() {
-        await myToast.close()
-      }
-
-      return {
-        checkbox,
-        createToast,
-        closeToast,
-      }
-    },
-  })
+  async function closeToast() {
+    await myToast.close()
+  }
 </script>
+
+<template>
+  <BalApp>
+    <BalCheckbox v-model="checkbox"></BalCheckbox>
+    <BalButton @click="createToast()">Create Toast</BalButton>
+  </BalApp>
+</template>
 ```
 
 <bal-doc-github link="/stories/getting-started/vue/02-02-usage-toast.stories.mdx"></bal-doc-github>

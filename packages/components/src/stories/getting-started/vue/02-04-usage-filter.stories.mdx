@@ -34,26 +34,17 @@ Vue.use(BaloisePipes)
 After that it can be used in the components template.
 
 ```html
+<script setup lang="ts">
+  import { computed, ref } from 'vue'
+  import { balClaimNumber } from '@baloise/web-app-pipes-vue'
+
+  const claimNumber = ref('73001217169')
+  const formatedClaimNumber = computed(() => balClaimNumber(claimNumber.value))
+</script>
+
 <template>
   <p>{{ formatedClaimNumber }}</p>
 </template>
-
-<script lang="ts">
-  import { computed, defineComponent, ref } from 'vue'
-  import { balClaimNumber } from '@baloise/web-app-pipes-vue'
-
-  export default defineComponent({
-    setup() {
-      const claimNumber = ref('73001217169')
-
-      const formatedClaimNumber = computed(() => balClaimNumber(claimNumber.value))
-
-      return {
-        formatedClaimNumber,
-      }
-    },
-  })
-</script>
 ```
 
 <bal-doc-github link="/stories/getting-started/vue/02-04-usage-filter.stories.mdx"></bal-doc-github>
