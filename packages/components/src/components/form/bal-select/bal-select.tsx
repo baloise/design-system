@@ -37,6 +37,7 @@ export interface BalOptionController extends BalOptionValue {
 })
 export class Select {
   @Element() private el!: HTMLElement
+
   private inputElement!: HTMLInputElement
   private popoverElement!: HTMLBalPopoverElement
   private didInit = false
@@ -323,7 +324,7 @@ export class Select {
   @Method()
   async open(): Promise<void> {
     if (!this.disabled && !isNil(this.popoverElement)) {
-      await this.popoverElement.open()
+      await this.popoverElement.present()
     }
   }
 
@@ -333,7 +334,7 @@ export class Select {
   @Method()
   async close(): Promise<void> {
     if (!this.disabled && !isNil(this.popoverElement)) {
-      await this.popoverElement.close()
+      await this.popoverElement.dismiss()
     }
   }
 
@@ -542,7 +543,7 @@ export class Select {
     this.updateValue(selectedOption.value, !isAlreadySelected)
 
     if (!this.multiple) {
-      this.popoverElement.close()
+      this.popoverElement.dismiss()
     } else {
       if (this.typeahead) {
         this.setFocus()
@@ -632,7 +633,7 @@ export class Select {
     } else {
       this.focusIndex = 0
       this.balClick.emit(event)
-      await this.popoverElement?.open()
+      await this.popoverElement?.present()
     }
   }
 
@@ -655,7 +656,7 @@ export class Select {
       this.inputValue = (event.target as HTMLInputElement).value
 
       if (!this.isPopoverOpen) {
-        this.popoverElement.open()
+        this.popoverElement.present()
       }
 
       this.focusIndex = 0
@@ -698,7 +699,7 @@ export class Select {
         }}
       >
         <bal-popover
-          onBalCollapse={this.handlePopoverChange}
+          onBalChange={this.handlePopoverChange}
           ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}
         >
           <div

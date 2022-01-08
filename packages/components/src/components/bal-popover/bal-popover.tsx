@@ -1,10 +1,12 @@
-import { Component, h, Host, Listen, Method, Prop, Element, Event, EventEmitter } from '@stencil/core'
+import { Component, h, Host, Listen, Method, Prop, Watch, Element, Event, EventEmitter } from '@stencil/core'
 import { createPopper, Instance, Placement } from '@popperjs/core'
+import { debounceEvent } from '../../helpers/helpers'
 
 @Component({
   tag: 'bal-popover',
 })
 export class Popover {
+  private didInit = false
   private popoverId = `bal-po-${PopoverIds++}`
   private popperInstance!: Instance
 
@@ -28,12 +30,32 @@ export class Popover {
   /**
    * If `true` the popover content is open.
    */
-  @Prop({ mutable: true, reflect: true }) isActive = false
+  @Prop({ mutable: true, reflect: true }) value = false
 
   /**
-   * Listen when the popover opens or closes. Returns the current `isActive` value.
+   * Update the native input element when the value changes
    */
-  @Event({ eventName: 'balCollapse' }) balCollapse!: EventEmitter<boolean>
+  @Watch('value')
+  protected async valueChanged(newValue: boolean, oldValue: boolean) {
+    if (this.didInit && newValue !== oldValue) {
+      this.balChange.emit(newValue)
+    }
+  }
+
+  /**
+   * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+   */
+  @Prop() debounce = 0
+
+  @Watch('debounce')
+  protected debounceChanged() {
+    this.balChange = debounceEvent(this.balChange, this.debounce)
+  }
+
+  /**
+   * Listen when the popover opens or closes. Returns the current value.
+   */
+  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<boolean>
 
   /**
    * @internal - Use this to close unuesed popovers.
@@ -43,15 +65,26 @@ export class Popover {
   @Listen('balPopoverPrepare', { target: 'body' })
   handlePopoverPrepare(popoverId: string) {
     if (this.popoverId !== popoverId) {
-      this.close()
+      this.dismiss()
     }
   }
 
   @Listen('keydown', { target: 'window' })
   handleKeyUp(event: KeyboardEvent) {
-    if (this.isActive && (event.key === 'Escape' || event.key === 'Esc')) {
+    if (this.value && (event.key === 'Escape' || event.key === 'Esc')) {
       event.preventDefault()
-      this.close()
+      this.dismiss()
+    }
+  }
+
+  connectedCallback() {
+    this.debounceChanged()
+  }
+
+  componentDidLoad() {
+    this.didInit = true
+    if (this.value !== undefined) {
+      this.valueChanged(this.value, false)
     }
   }
 
@@ -59,11 +92,11 @@ export class Popover {
    * Open the popover
    */
   @Method()
-  async open() {
-    if (!this.isActive) {
+  async present() {
+    if (!this.value) {
       this.balPopoverPrepare.emit(this.popoverId)
-      this.isActive = true
-      this.balCollapse.emit(this.isActive)
+      this.value = true
+      this.balChange.emit(this.value)
     }
   }
 
@@ -71,10 +104,10 @@ export class Popover {
    * Closes the popover
    */
   @Method()
-  async close() {
-    if (this.isActive) {
-      this.isActive = false
-      this.balCollapse.emit(this.isActive)
+  async dismiss() {
+    if (this.value) {
+      this.value = false
+      this.balChange.emit(this.value)
     }
   }
 
@@ -83,12 +116,12 @@ export class Popover {
    */
   @Method()
   async toggle() {
-    if (this.isActive) {
-      await this.close()
+    if (this.value) {
+      await this.dismiss()
     } else {
-      await this.open()
+      await this.present()
     }
-    this.balCollapse.emit(this.isActive)
+    this.balChange.emit(this.value)
   }
 
   /**
@@ -100,14 +133,14 @@ export class Popover {
 
   @Listen('keyup', { target: 'document' })
   async tabOutside(event: KeyboardEvent) {
-    if (event.key === 'Tab' && !this.element.contains(document.activeElement) && this.isActive) {
+    if (event.key === 'Tab' && !this.element.contains(document.activeElement) && this.value) {
       await this.toggle()
     }
   }
 
   @Listen('click', { target: 'document' })
   async clickOnOutside(event: UIEvent) {
-    if (!this.element.contains(event.target as Node) && this.isActive) {
+    if (!this.element.contains(event.target as Node) && this.value) {
       await this.toggle()
     }
   }
@@ -144,7 +177,7 @@ export class Popover {
 
   render() {
     return (
-      <Host data-id={this.popoverId} class={{ 'is-active': this.isActive }}>
+      <Host data-id={this.popoverId} class={{ 'is-active': this.value }}>
         <slot></slot>
       </Host>
     )

@@ -25,7 +25,7 @@ export const Basic = args => ({
     }
 
     watchEffect(() => {
-      isActive.value = args.isActive
+      isActive.value = args.value
     })
 
     return {
@@ -34,7 +34,7 @@ export const Basic = args => ({
       toggle,
     }
   },
-  template: `<bal-popover v-bind="args" :is-active="isActive">
+  template: `<bal-popover v-bind="args" v-model="isActive">
   <bal-button bal-popover-trigger @click="toggle()" aria-haspopup="true" color="is-info" outlined>
     Trigger
   </bal-button>
@@ -51,7 +51,6 @@ export const Basic = args => ({
   </bal-popover>`,
 })
 Basic.args = {
-  isActive: false,
   content:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 }

@@ -217,7 +217,7 @@ export class Datepicker implements ComponentInterface {
       return
     }
     if (this.popoverElement) {
-      this.popoverElement.open()
+      this.popoverElement.present()
     }
   }
 
@@ -230,7 +230,7 @@ export class Datepicker implements ComponentInterface {
       return undefined
     }
     if (this.popoverElement) {
-      this.popoverElement.close()
+      this.popoverElement.dismiss()
     }
   }
 
@@ -501,10 +501,7 @@ export class Datepicker implements ComponentInterface {
           'is-disabled': this.disabled,
         }}
       >
-        <bal-popover
-          onBalCollapse={this.onPopoverChange}
-          ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}
-        >
+        <bal-popover onBalChange={this.onPopoverChange} ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}>
           {this.renderInput()}
           <bal-popover-content>
             <div class="datepicker-popup">
