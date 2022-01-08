@@ -89,7 +89,7 @@ export class Modal implements OverlayInterface {
   }
 
   /**
-   * Opens the modal.
+   * @internal Opens the modal.
    */
   @Method()
   async open(): Promise<void> {
@@ -123,7 +123,7 @@ export class Modal implements OverlayInterface {
   }
 
   /**
-   * Closes the modal.
+   * @internal Closes the modal.
    */
   @Method()
   async close(): Promise<void> {
