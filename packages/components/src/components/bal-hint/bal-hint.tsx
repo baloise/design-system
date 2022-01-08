@@ -22,7 +22,7 @@ export class Hint {
   handleKeyUp(event: KeyboardEvent) {
     if (event.key === 'Escape' || event.key === 'Esc') {
       event.preventDefault()
-      this.close()
+      this.dismiss()
     }
   }
 
@@ -63,7 +63,7 @@ export class Hint {
    * Opens the hint box.
    */
   @Method()
-  async open(): Promise<void> {
+  async present(): Promise<void> {
     this.isActive = true
   }
 
@@ -71,7 +71,7 @@ export class Hint {
    * Closes the hint box.
    */
   @Method()
-  async close(): Promise<void> {
+  async dismiss(): Promise<void> {
     this.isActive = false
   }
 
@@ -99,7 +99,7 @@ export class Hint {
           <slot></slot>
 
           <div class="buttons is-row-reverse">
-            <bal-button class="data-test-hint-close" color="info" outlined inverted onClick={() => this.close()}>
+            <bal-button class="data-test-hint-close" color="info" outlined inverted onClick={() => this.dismiss()}>
               {this.closeLabel}
             </bal-button>
           </div>
