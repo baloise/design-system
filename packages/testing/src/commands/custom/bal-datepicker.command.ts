@@ -18,7 +18,7 @@ Cypress.Commands.add(
     prevSubject: true,
   },
   subject => {
-    return cy.wrap(subject).find('bal-popover').should('have.attr', 'is-active', '').wrap(subject)
+    return cy.wrap(subject).find('bal-popover').should('have.attr', 'aria-presented', 'true').wrap(subject)
   },
 )
 
@@ -28,7 +28,7 @@ Cypress.Commands.add(
     prevSubject: true,
   },
   subject => {
-    return cy.wrap(subject).find('bal-popover').should('not.have.attr', 'is-active').wrap(subject)
+    return cy.wrap(subject).find('bal-popover').should('not.have.attr', 'aria-presented').wrap(subject)
   },
 )
 

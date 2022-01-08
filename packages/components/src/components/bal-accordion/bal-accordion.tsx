@@ -85,7 +85,6 @@ export class Accordion {
   @Method()
   async present() {
     this.value = true
-    // this.balChange.emit(this.value)
   }
 
   /**
@@ -94,7 +93,6 @@ export class Accordion {
   @Method()
   async dismiss() {
     this.value = false
-    // this.balChange.emit(this.value)
   }
 
   /**
@@ -103,7 +101,6 @@ export class Accordion {
   @Method()
   async toggle() {
     this.value = !this.value
-    // this.balChange.emit(this.value)
   }
 
   get buttonType(): BalButtonColor {
@@ -120,7 +117,7 @@ export class Accordion {
 
   render() {
     return (
-      <Host class="accordion">
+      <Host class="accordion" aria-presented={this.value ? 'true' : null}>
         <bal-button
           class="data-test-accordion-trigger"
           expanded={true}

@@ -177,7 +177,7 @@ export class Popover {
 
   render() {
     return (
-      <Host data-id={this.popoverId} class={{ 'is-active': this.value }}>
+      <Host data-id={this.popoverId} class={{ 'is-active': this.value }} aria-presented={this.value ? 'true' : null}>
         <slot></slot>
       </Host>
     )

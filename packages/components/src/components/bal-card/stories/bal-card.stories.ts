@@ -154,7 +154,7 @@ export const Service = args => ({
       <h5 class="subtitle is-size-5 is-hidden-desktop">+ CHF 11.30</h5>
       <p class="has-text-blue-light-text is-hidden-touch">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
     </div>
-    <bal-checkbox checked interface="switch"></bal-checkbox>
+    <bal-checkbox value="true" interface="switch"></bal-checkbox>
   </bal-card-head>
 
   <bal-card-content class="is-hidden-desktop">
