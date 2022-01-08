@@ -15,7 +15,7 @@ export default component.story
 export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-accordion v-bind="args" class="box">
+  template: `<bal-accordion v-bind="args" v-model="args.value" class="box">
   <p class="p-4">
    {{ args.content }}
   </p>

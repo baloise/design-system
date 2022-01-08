@@ -10,7 +10,7 @@ describe('bal-accordion', () => {
     await page.setContent(`
     <bal-accordion open-label="OPEN" close-label="CLOSE">TEST CONTENT</bal-accordion>
     `)
-    balCollapseEvent = await page.spyOnEvent('balCollapse')
+    balCollapseEvent = await page.spyOnEvent('balChange')
     balAccordionTriggerElement = await page.find('bal-accordion bal-button')
   })
 
