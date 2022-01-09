@@ -184,66 +184,6 @@ export namespace Components {
          */
         "teaser": boolean;
     }
-    interface BalCardActions {
-        /**
-          * If `true` the buttons start form right to left.
-         */
-        "right": boolean;
-    }
-    interface BalCardButton {
-        /**
-          * If `true`, the user cannot interact with the button.
-         */
-        "disabled": boolean;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href": string | undefined;
-        /**
-          * Name of the icon like `edit`.
-         */
-        "icon": string;
-        /**
-          * Name of the right button icon
-         */
-        "iconRight": string;
-        /**
-          * If `true` the label is hidden and a loading spinner is shown instead.
-         */
-        "loading": boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target": '_blank' | ' _parent' | '_self' | '_top';
-        /**
-          * The type of button.
-         */
-        "type": 'button' | 'reset' | 'submit';
-    }
-    interface BalCardContent {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted": boolean;
-    }
-    interface BalCardHead {
-    }
-    interface BalCardHeading {
-    }
-    interface BalCardSteps {
-    }
-    interface BalCardSubtitle {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted": boolean;
-    }
-    interface BalCardTitle {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted": boolean;
-    }
     interface BalCheckbox {
         /**
           * The tabindex of the control.
@@ -1221,7 +1161,7 @@ export namespace Components {
     }
     interface BalTabItem {
         /**
-          * Tells if this route is active
+          * Tells if this route is active and overrides the bal-tabs value property.
          */
         "active": boolean;
         /**
@@ -1484,54 +1424,6 @@ declare global {
     var HTMLBalCardElement: {
         prototype: HTMLBalCardElement;
         new (): HTMLBalCardElement;
-    };
-    interface HTMLBalCardActionsElement extends Components.BalCardActions, HTMLStencilElement {
-    }
-    var HTMLBalCardActionsElement: {
-        prototype: HTMLBalCardActionsElement;
-        new (): HTMLBalCardActionsElement;
-    };
-    interface HTMLBalCardButtonElement extends Components.BalCardButton, HTMLStencilElement {
-    }
-    var HTMLBalCardButtonElement: {
-        prototype: HTMLBalCardButtonElement;
-        new (): HTMLBalCardButtonElement;
-    };
-    interface HTMLBalCardContentElement extends Components.BalCardContent, HTMLStencilElement {
-    }
-    var HTMLBalCardContentElement: {
-        prototype: HTMLBalCardContentElement;
-        new (): HTMLBalCardContentElement;
-    };
-    interface HTMLBalCardHeadElement extends Components.BalCardHead, HTMLStencilElement {
-    }
-    var HTMLBalCardHeadElement: {
-        prototype: HTMLBalCardHeadElement;
-        new (): HTMLBalCardHeadElement;
-    };
-    interface HTMLBalCardHeadingElement extends Components.BalCardHeading, HTMLStencilElement {
-    }
-    var HTMLBalCardHeadingElement: {
-        prototype: HTMLBalCardHeadingElement;
-        new (): HTMLBalCardHeadingElement;
-    };
-    interface HTMLBalCardStepsElement extends Components.BalCardSteps, HTMLStencilElement {
-    }
-    var HTMLBalCardStepsElement: {
-        prototype: HTMLBalCardStepsElement;
-        new (): HTMLBalCardStepsElement;
-    };
-    interface HTMLBalCardSubtitleElement extends Components.BalCardSubtitle, HTMLStencilElement {
-    }
-    var HTMLBalCardSubtitleElement: {
-        prototype: HTMLBalCardSubtitleElement;
-        new (): HTMLBalCardSubtitleElement;
-    };
-    interface HTMLBalCardTitleElement extends Components.BalCardTitle, HTMLStencilElement {
-    }
-    var HTMLBalCardTitleElement: {
-        prototype: HTMLBalCardTitleElement;
-        new (): HTMLBalCardTitleElement;
     };
     interface HTMLBalCheckboxElement extends Components.BalCheckbox, HTMLStencilElement {
     }
@@ -1904,14 +1796,6 @@ declare global {
         "bal-app": HTMLBalAppElement;
         "bal-button": HTMLBalButtonElement;
         "bal-card": HTMLBalCardElement;
-        "bal-card-actions": HTMLBalCardActionsElement;
-        "bal-card-button": HTMLBalCardButtonElement;
-        "bal-card-content": HTMLBalCardContentElement;
-        "bal-card-head": HTMLBalCardHeadElement;
-        "bal-card-heading": HTMLBalCardHeadingElement;
-        "bal-card-steps": HTMLBalCardStepsElement;
-        "bal-card-subtitle": HTMLBalCardSubtitleElement;
-        "bal-card-title": HTMLBalCardTitleElement;
         "bal-checkbox": HTMLBalCheckboxElement;
         "bal-data": HTMLBalDataElement;
         "bal-data-item": HTMLBalDataItemElement;
@@ -2151,66 +2035,6 @@ declare namespace LocalJSX {
           * If `true` the card has a limited width on desktop.
          */
         "teaser"?: boolean;
-    }
-    interface BalCardActions {
-        /**
-          * If `true` the buttons start form right to left.
-         */
-        "right"?: boolean;
-    }
-    interface BalCardButton {
-        /**
-          * If `true`, the user cannot interact with the button.
-         */
-        "disabled"?: boolean;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string | undefined;
-        /**
-          * Name of the icon like `edit`.
-         */
-        "icon"?: string;
-        /**
-          * Name of the right button icon
-         */
-        "iconRight"?: string;
-        /**
-          * If `true` the label is hidden and a loading spinner is shown instead.
-         */
-        "loading"?: boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target"?: '_blank' | ' _parent' | '_self' | '_top';
-        /**
-          * The type of button.
-         */
-        "type"?: 'button' | 'reset' | 'submit';
-    }
-    interface BalCardContent {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted"?: boolean;
-    }
-    interface BalCardHead {
-    }
-    interface BalCardHeading {
-    }
-    interface BalCardSteps {
-    }
-    interface BalCardSubtitle {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted"?: boolean;
-    }
-    interface BalCardTitle {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted"?: boolean;
     }
     interface BalCheckbox {
         /**
@@ -3226,7 +3050,7 @@ declare namespace LocalJSX {
     }
     interface BalTabItem {
         /**
-          * Tells if this route is active
+          * Tells if this route is active and overrides the bal-tabs value property.
          */
         "active"?: boolean;
         /**
@@ -3493,14 +3317,6 @@ declare namespace LocalJSX {
         "bal-app": BalApp;
         "bal-button": BalButton;
         "bal-card": BalCard;
-        "bal-card-actions": BalCardActions;
-        "bal-card-button": BalCardButton;
-        "bal-card-content": BalCardContent;
-        "bal-card-head": BalCardHead;
-        "bal-card-heading": BalCardHeading;
-        "bal-card-steps": BalCardSteps;
-        "bal-card-subtitle": BalCardSubtitle;
-        "bal-card-title": BalCardTitle;
         "bal-checkbox": BalCheckbox;
         "bal-data": BalData;
         "bal-data-item": BalDataItem;
@@ -3572,14 +3388,6 @@ declare module "@stencil/core" {
             "bal-app": LocalJSX.BalApp & JSXBase.HTMLAttributes<HTMLBalAppElement>;
             "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
             "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
-            "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;
-            "bal-card-button": LocalJSX.BalCardButton & JSXBase.HTMLAttributes<HTMLBalCardButtonElement>;
-            "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
-            "bal-card-head": LocalJSX.BalCardHead & JSXBase.HTMLAttributes<HTMLBalCardHeadElement>;
-            "bal-card-heading": LocalJSX.BalCardHeading & JSXBase.HTMLAttributes<HTMLBalCardHeadingElement>;
-            "bal-card-steps": LocalJSX.BalCardSteps & JSXBase.HTMLAttributes<HTMLBalCardStepsElement>;
-            "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
-            "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
             "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
             "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
             "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;
