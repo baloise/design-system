@@ -5,10 +5,6 @@ import {
   BalCard,
   BalFooter,
   BalButton,
-  BalCardActions,
-  BalCardTitle,
-  BalCardSubtitle,
-  BalCardContent,
   BalNavbar,
   BalNavbarBrand,
   BalText,
@@ -44,10 +40,6 @@ export const Basic = args => ({
     BalCard,
     BalFooter,
     BalButton,
-    BalCardActions,
-    BalCardTitle,
-    BalCardSubtitle,
-    BalCardContent,
     BalNavbar,
     BalNavbarBrand,
     BalText,
@@ -65,18 +57,18 @@ export const Basic = args => ({
   </header>
   <main>
     <div class="container">
-      <bal-card class="my-6">
-        <bal-card-title>BaloiseCombi</bal-card-title>
-        <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
+      <bal-card class="my-6 p-5">
+        <bal-heading title level="h4" space="none">BaloiseCombi</bal-heading>
+        <bal-heading subtitle level="h5" space="bottom">Police number 70/2.937.458</bal-heading>
 
-        <bal-card-content>
+        <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </bal-card-content>
+        </p>
 
-        <bal-card-actions>
+        <bal-button-group position="right">
           <bal-button>Action</bal-button>
           <bal-button>Action 2</bal-button>
-        </bal-card-actions>
+        </bal-button-group>
       </bal-card>
     </div>
   </main>

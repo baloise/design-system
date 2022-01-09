@@ -12,10 +12,9 @@ export const InternalFormAppTemplate = `
   </header>
   <main>
     <div class="container my-7">
-      <bal-card>
-        <bal-card-title>Contact Person</bal-card-title>
-        <bal-card-subtitle>Subtitle</bal-card-subtitle>
-        <bal-card-content>
+      <bal-card class="p-5">
+        <bal-heading title level="h4" space="none">Contact Person</bal-heading>
+        <bal-heading subtitle level="h5" space="bottom">Subtitle</bal-heading>
         <form class="columns is-multiline mt-0">
       <bal-field class="column is-full py-0">
         <bal-field-control>
@@ -87,11 +86,10 @@ export const InternalFormAppTemplate = `
         </bal-field-control>
       </bal-field>
     </form>
-        </bal-card-content>
-        <bal-card-actions>
+        <bal-button-group position="right">
           <bal-button>Save</bal-button>
           <bal-button color="link">Cancel</bal-button>
-        </bal-card-actions>
+        </bal-button-group>
       </bal-card>
     </div>
   </main>

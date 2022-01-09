@@ -1,6 +1,5 @@
 export const ContactFormTemplate = `
-<bal-card>
-  <bal-card-content>
+<bal-card class="p-5">
     <form class="columns is-multiline mt-0">
       <bal-field class="column is-full py-0">
         <bal-field-control>
@@ -72,9 +71,8 @@ export const ContactFormTemplate = `
         </bal-field-control>
       </bal-field>
     </form>
-  </bal-card-content>
   <bal-card-actions right>
     <bal-button color="primary">Submit</bal-button>
     <bal-button color="link">Cancel</bal-button>
-  </bal-card-actions>
+  </bal-button-group>
 </bal-card>`

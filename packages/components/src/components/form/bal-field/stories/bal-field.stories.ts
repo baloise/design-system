@@ -8,8 +8,6 @@ import {
   BalFieldMessage,
   BalButton,
   BalCard,
-  BalCardActions,
-  BalCardContent,
   BalInput,
   BalTextarea,
   BalRadio,
@@ -73,8 +71,6 @@ export const WithGrid = args => ({
     ...component.components,
     BalButton,
     BalCard,
-    BalCardActions,
-    BalCardContent,
     BalInput,
     BalTextarea,
     BalRadio,
@@ -85,8 +81,7 @@ export const WithGrid = args => ({
     BalSelectOption,
   },
   setup: () => ({ args }),
-  template: `<bal-card>
-  <bal-card-content>
+  template: `<bal-card class="p-5">
     <form class="columns is-multiline mt-0">
       <bal-field class="column is-full py-0">
         <bal-field-control>
@@ -158,11 +153,10 @@ export const WithGrid = args => ({
         </bal-field-control>
       </bal-field>
     </form>
-  </bal-card-content>
-  <bal-card-actions right>
-    <bal-button color="primary">Submit</bal-button>
+  <bal-button-group position="right">
     <bal-button color="link">Cancel</bal-button>
-  </bal-card-actions>
+    <bal-button color="primary">Submit</bal-button>
+  </bal-button-group>
 </bal-card>`,
 })
 WithGrid.args = {}

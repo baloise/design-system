@@ -1,6 +1,6 @@
 import docs from './bal-accordion.docs.mdx'
 import { withContent, BalComponentStory } from '../../../stories/utils'
-import { BalAccordion, BalCard, BalCardTitle, BalCardSubtitle } from '../../../../.storybook/vue/components'
+import { BalAccordion, BalCard, BalHeading } from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   component: BalAccordion,
@@ -43,16 +43,17 @@ WithIcons.args = {
 WithIcons.parameters = { ...component.sourceCode(WithIcons) }
 
 export const WithCard = args => ({
-  components: { ...component.components, BalCard, BalCardTitle, BalCardSubtitle },
+  components: { ...component.components, BalCard, BalHeading },
   setup: () => ({ args }),
-  template: `<bal-card>
-  <bal-card-title>BaloiseCombi</bal-card-title>
-  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-
-  <bal-accordion card>
-    <p class="p-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  template: `<bal-card v-bind="args">
+  <div class="p-5">
+    <bal-heading title level="h4" space="none">BaloiseCombi</bal-heading>
+    <bal-heading subtitle level="h5" space="none" color="info">Police number 70/2.937.458</bal-heading>
+  </div>
+  <bal-accordion>
+    <p class="p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </bal-accordion>
-  </bal-card>`,
+</bal-card>`,
 })
 WithCard.args = {}
 WithCard.parameters = { ...component.sourceCode(WithCard) }

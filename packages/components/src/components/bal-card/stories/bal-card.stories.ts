@@ -30,18 +30,14 @@ export const Basic = args => ({
   setup: () => ({ args }),
   template: `<bal-card v-bind="args" class="p-5">
   <bal-heading title level="h4" space="none">BaloiseCombi</bal-heading>
-  <bal-heading subtitle level="h5" space="bottom" color="hint">Police number 70/2.937.458</bal-heading>
+  <bal-heading subtitle level="h5" space="bottom" color="info">Police number 70/2.937.458</bal-heading>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </p>
-  <div class="field is-grouped is-grouped-right mt-5">
-    <p class="control">
-      <bal-button color="info" outlined>Secondary Action</bal-button>
-    </p>
-    <p class="control">
-      <bal-button>Main Action</bal-button>
-    </p>
-  </div>
+  <bal-button-group position="right" class="mt-5">
+    <bal-button color="info" outlined>Secondary Action</bal-button>
+    <bal-button>Main Action</bal-button>
+  </bal-button-group>
 </bal-card>`,
 })
 Basic.parameters = { ...component.sourceCode(Basic) }
@@ -79,11 +75,9 @@ export const WithList = args => ({
       </bal-list-item-icon>
     </bal-list-item>
   </bal-list>
-  <div class="field is-grouped is-grouped-right mt-5">
-    <p class="control">
-      <bal-button type="is-link">More</bal-button>
-    </p>
-  </div>
+  <bal-button-group position="right" class="mt-5">
+    <bal-button type="is-link">More</bal-button>
+  </bal-button-group>
 </bal-card>`,
 })
 WithList.parameters = { ...component.sourceCode(WithList) }
@@ -94,7 +88,7 @@ export const WithAccordion = args => ({
   template: `<bal-card v-bind="args">
   <div class="p-5">
     <bal-heading title level="h4" space="none">BaloiseCombi</bal-heading>
-    <bal-heading subtitle level="h5" space="none" color="hint">Police number 70/2.937.458</bal-heading>
+    <bal-heading subtitle level="h5" space="none" color="info">Police number 70/2.937.458</bal-heading>
   </div>
   <bal-accordion>
     <p class="p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -110,7 +104,7 @@ export const Summary = args => ({
   <div class="p-5">
     <bal-heading title level="h5" space="none">Insured vehicle</bal-heading>
     <bal-heading title level="h4" space="none">Cupra Ateca</bal-heading>
-    <bal-heading subtitle level="h5" space="bottom" color="hint">
+    <bal-heading subtitle level="h5" space="bottom" color="info">
       Running time: 21.07.2019 - 21.07.2021
     </bal-heading>
     <bal-data horizontal>

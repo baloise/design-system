@@ -7,7 +7,6 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
 import { BalButtonColor } from "./types";
-import { SpacingCardType } from "./types/padding.types";
 import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
@@ -150,6 +149,12 @@ export namespace Components {
          */
         "value"?: string | number;
     }
+    interface BalButtonGroup {
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "position": 'right' | 'center' | '';
+    }
     interface BalCard {
         /**
           * If `true` a light blue border is added to the card.
@@ -164,25 +169,13 @@ export namespace Components {
          */
         "flat": boolean;
         /**
-          * If `true` a card will not have a shadow on mobile.
-         */
-        "flatMobile": boolean;
-        /**
           * If `true` the card background color becomes blue.
          */
         "inverted": boolean;
         /**
-          * Defines the size of the padding grid
-         */
-        "spacing": SpacingCardType;
-        /**
           * If `true` the card loses its border radius.
          */
         "square": boolean;
-        /**
-          * If `true` the card has a limited width on desktop.
-         */
-        "teaser": boolean;
     }
     interface BalCheckbox {
         /**
@@ -786,8 +779,6 @@ export namespace Components {
         "present": () => Promise<void>;
     }
     interface BalModalBody {
-    }
-    interface BalModalFooter {
     }
     interface BalModalHeader {
     }
@@ -1419,6 +1410,12 @@ declare global {
         prototype: HTMLBalButtonElement;
         new (): HTMLBalButtonElement;
     };
+    interface HTMLBalButtonGroupElement extends Components.BalButtonGroup, HTMLStencilElement {
+    }
+    var HTMLBalButtonGroupElement: {
+        prototype: HTMLBalButtonGroupElement;
+        new (): HTMLBalButtonGroupElement;
+    };
     interface HTMLBalCardElement extends Components.BalCard, HTMLStencilElement {
     }
     var HTMLBalCardElement: {
@@ -1623,12 +1620,6 @@ declare global {
         prototype: HTMLBalModalBodyElement;
         new (): HTMLBalModalBodyElement;
     };
-    interface HTMLBalModalFooterElement extends Components.BalModalFooter, HTMLStencilElement {
-    }
-    var HTMLBalModalFooterElement: {
-        prototype: HTMLBalModalFooterElement;
-        new (): HTMLBalModalFooterElement;
-    };
     interface HTMLBalModalHeaderElement extends Components.BalModalHeader, HTMLStencilElement {
     }
     var HTMLBalModalHeaderElement: {
@@ -1795,6 +1786,7 @@ declare global {
         "bal-accordion": HTMLBalAccordionElement;
         "bal-app": HTMLBalAppElement;
         "bal-button": HTMLBalButtonElement;
+        "bal-button-group": HTMLBalButtonGroupElement;
         "bal-card": HTMLBalCardElement;
         "bal-checkbox": HTMLBalCheckboxElement;
         "bal-data": HTMLBalDataElement;
@@ -1829,7 +1821,6 @@ declare global {
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
-        "bal-modal-footer": HTMLBalModalFooterElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
         "bal-navbar": HTMLBalNavbarElement;
         "bal-navbar-brand": HTMLBalNavbarBrandElement;
@@ -2002,6 +1993,12 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    interface BalButtonGroup {
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "position"?: 'right' | 'center' | '';
+    }
     interface BalCard {
         /**
           * If `true` a light blue border is added to the card.
@@ -2016,25 +2013,13 @@ declare namespace LocalJSX {
          */
         "flat"?: boolean;
         /**
-          * If `true` a card will not have a shadow on mobile.
-         */
-        "flatMobile"?: boolean;
-        /**
           * If `true` the card background color becomes blue.
          */
         "inverted"?: boolean;
         /**
-          * Defines the size of the padding grid
-         */
-        "spacing"?: SpacingCardType;
-        /**
           * If `true` the card loses its border radius.
          */
         "square"?: boolean;
-        /**
-          * If `true` the card has a limited width on desktop.
-         */
-        "teaser"?: boolean;
     }
     interface BalCheckbox {
         /**
@@ -2660,8 +2645,6 @@ declare namespace LocalJSX {
         "overlayIndex": number;
     }
     interface BalModalBody {
-    }
-    interface BalModalFooter {
     }
     interface BalModalHeader {
     }
@@ -3316,6 +3299,7 @@ declare namespace LocalJSX {
         "bal-accordion": BalAccordion;
         "bal-app": BalApp;
         "bal-button": BalButton;
+        "bal-button-group": BalButtonGroup;
         "bal-card": BalCard;
         "bal-checkbox": BalCheckbox;
         "bal-data": BalData;
@@ -3350,7 +3334,6 @@ declare namespace LocalJSX {
         "bal-list-item-title": BalListItemTitle;
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
-        "bal-modal-footer": BalModalFooter;
         "bal-modal-header": BalModalHeader;
         "bal-navbar": BalNavbar;
         "bal-navbar-brand": BalNavbarBrand;
@@ -3387,6 +3370,7 @@ declare module "@stencil/core" {
             "bal-accordion": LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
             "bal-app": LocalJSX.BalApp & JSXBase.HTMLAttributes<HTMLBalAppElement>;
             "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
+            "bal-button-group": LocalJSX.BalButtonGroup & JSXBase.HTMLAttributes<HTMLBalButtonGroupElement>;
             "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
             "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
             "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
@@ -3421,7 +3405,6 @@ declare module "@stencil/core" {
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
-            "bal-modal-footer": LocalJSX.BalModalFooter & JSXBase.HTMLAttributes<HTMLBalModalFooterElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;
