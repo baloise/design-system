@@ -23,13 +23,7 @@ With the help of the `balModalController.dismiss()` we are able to close the mod
 // MyModal.vue
 <script setup lang="ts">
   import { defineProps } from 'vue'
-  import {
-    balModalController,
-    BalModalHeader,
-    BalModalBody,
-    BalModalFooter,
-    BalButton,
-  } from '@baloise/design-system-components-vue'
+  import { balModalController, BalModalHeader, BalModalBody, BalButton } from '@baloise/design-system-components-vue'
 
   defineProps({
     firstName: { type: String },
@@ -43,17 +37,11 @@ With the help of the `balModalController.dismiss()` we are able to close the mod
   <BalModalHeader>Modal Title</BalModalHeader>
   <BalModalBody>
     <p>{{ firstName }} {{ lastName }}</p>
+    <BalButtonGroup position="right" class="mt-5">
+      <BalButton color="link" @click="closeModal()">Cancel</BalButton>
+      <BalButton color="primary" @click="closeModal()">Okay</BalButton>
+    </BalButtonGroup>
   </BalModalBody>
-  <BalModalFooter>
-    <div class="field is-grouped is-grouped-right">
-      <p class="control">
-        <BalButton color="link" @click="closeModal()">Cancel</BalButton>
-      </p>
-      <p class="control">
-        <BalButton color="primary" @click="closeModal()">Okay</BalButton>
-      </p>
-    </div>
-  </BalModalFooter>
 </template>
 ```
 
@@ -111,17 +99,11 @@ In your component register the element reference with `const modalRef = ref<{ $e
     <BalModalHeader>Modal Title</BalModalHeader>
     <BalModalBody>
       <p>...</p>
+      <BalButtonGroup position="right" class="mt-5">
+        <BalButton color="link" @click="closeModal()">Cancel</BalButton>
+        <BalButton color="primary" @click="closeModal()">Okay</BalButton>
+      </BalButtonGroup>
     </BalModalBody>
-    <BalModalFooter>
-      <div class="field is-grouped is-grouped-right">
-        <p class="control">
-          <BalButton color="link" @click="closeModal()">Cancel</BalButton>
-        </p>
-        <p class="control">
-          <BalButton color="primary" @click="closeModal()">Okay</BalButton>
-        </p>
-      </div>
-    </BalModalFooter>
   </BalModal>
 </template>
 ```

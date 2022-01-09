@@ -26,17 +26,11 @@ Create a html and a typscirpt file for your modal component like this.
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua.
   </p>
+  <bal-button-group position="right" class="mt-5">
+    <bal-button color="link" (click)="closeModal()">Cancel</bal-button>
+    <bal-button color="primary" (click)="closeModal()">Okay</bal-button>
+  </bal-button-group>
 </bal-modal-body>
-<bal-modal-footer>
-  <div class="field is-grouped is-grouped-right">
-    <p class="control">
-      <bal-button color="link" (click)="closeModal()">Cancel</bal-button>
-    </p>
-    <p class="control">
-      <bal-button color="primary" (click)="closeModal()">Okay</bal-button>
-    </p>
-  </div>
-</bal-modal-footer>
 ```
 
 With the help of the `BalModalService` we are able to close the modal.
@@ -115,17 +109,11 @@ Simply define the modal layout in your custom component and add the element refe
   <bal-modal-header>Modal Title</bal-modal-header>
   <bal-modal-body>
     <p>...</p>
+    <bal-button-group position="right" class="mt-5">
+      <bal-button color="link" (click)="closeModal()">Cancel</bal-button>
+      <bal-button color="primary" (click)="closeModal()">Okay</bal-button>
+    </bal-button-group>
   </bal-modal-body>
-  <bal-modal-footer>
-    <div class="field is-grouped is-grouped-right">
-      <p class="control">
-        <bal-button color="link" (click)="closeModal()">Cancel</bal-button>
-      </p>
-      <p class="control">
-        <bal-button color="primary" (click)="closeModal()">Okay</bal-button>
-      </p>
-    </div>
-  </bal-modal-footer>
 </bal-modal>
 ```
 
