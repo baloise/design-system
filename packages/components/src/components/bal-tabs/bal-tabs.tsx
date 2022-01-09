@@ -119,6 +119,11 @@ export class Tabs {
     await Promise.all(this.tabs.map(value => value.getOptions())).then(tabsOptions => {
       this.tabsOptions = tabsOptions
     })
+    const activeTabs = this.tabsOptions.filter(t => t.active)
+    if (activeTabs.length > 0) {
+      const firstActiveTab = activeTabs[0]
+      this.value = firstActiveTab.value
+    }
   }
 
   private async onSelectTab(event: MouseEvent, tab: BalTabOption) {

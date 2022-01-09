@@ -10,6 +10,11 @@ export class TabItem {
   @State() isActive = false
 
   /**
+   * Tells if this route is active and overrides the bal-tabs value property.
+   */
+  @Prop() active = false
+
+  /**
    * This is the key of the tab.
    */
   @Prop() value = ''
@@ -75,6 +80,7 @@ export class TabItem {
       value: this.value,
       label: this.label,
       href: this.href,
+      active: this.active,
       disabled: this.disabled,
       done: this.done,
       failed: this.failed,

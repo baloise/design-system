@@ -1221,6 +1221,10 @@ export namespace Components {
     }
     interface BalTabItem {
         /**
+          * Tells if this route is active
+         */
+        "active": boolean;
+        /**
           * If `true` a small red bubble is added to the tab.
          */
         "bubble": boolean;
@@ -3221,6 +3225,10 @@ declare namespace LocalJSX {
         "small"?: boolean;
     }
     interface BalTabItem {
+        /**
+          * Tells if this route is active
+         */
+        "active"?: boolean;
         /**
           * If `true` a small red bubble is added to the tab.
          */
