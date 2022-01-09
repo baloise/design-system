@@ -13,7 +13,7 @@ export class Notification {
   render() {
     return (
       <Host>
-        <div class={`notification is-${this.color}`}>
+        <div class={`notification p-4 is-${this.color}`}>
           <slot></slot>
         </div>
       </Host>
