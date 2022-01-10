@@ -33,12 +33,6 @@ bal-icon[role='button'] {
   }
 }
 
-bal-hint.is-placed-left {
-  .bal-hint-content {
-    right: 40px;
-  }
-}
-
 @include tablet() {
   .bal-hint-content {
     position: absolute;
@@ -55,6 +49,12 @@ bal-hint.is-placed-left {
 
   bal-hint.is-small .buttons {
     display: none !important;
+  }
+
+  bal-hint.is-placed-left {
+    .bal-hint-content {
+      right: 40px;
+    }
   }
 }
 
