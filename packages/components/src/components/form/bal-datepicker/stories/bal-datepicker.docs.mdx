@@ -28,6 +28,10 @@ The `trigger-icon` property only opens the popover when the icon gets clicked.
 
 ## Usage
 
+Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime),
+`1996-12-19`. The format does not have to be specific to an exact datetime.
+For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
+
 To set the date use the [date utils](https://github.com/baloise/web-app-utils/blob/master/packages/utils/README.md).
 
 ```typescript
