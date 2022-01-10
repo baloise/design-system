@@ -5,50 +5,47 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [9.0.0](https://github.com/baloise/design-system/compare/v8.0.1...v9.0.0) (2022-01-10)
 
+Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.dev/?path=/story/migration-migration-from-8-x-to-9-x--page)
 
 ### ⚠ BREAKING CHANGES
 
-* **card:** remove all card subcomponents
-* **modal:** remove bal-modal-foooter
-* **card:** remove all the sub components and use css helpers and existing components
-* **angular:** Rename checked to value of the bal-checkbox
-* **tabs:** add value prop,
-rename balTabChange to balChange and remove active tab on tab items
-* **hint:** Rename open to present and close to dismiss
-* **popover:** Renamed is-actvie to value and balCollapse to balChange
-* **accordion:** Renamed is-actvie to value and balCollapse to balChange
-* **form:** Removed prop expanded, removed component bal-dropdown-trigger
-and renamed bal-dropdown to bal-popover
-* **modal:** Removed bal-modal-actions
+- **card:** remove all card subcomponents
+- **modal:** remove bal-modal-foooter
+- **card:** remove all the sub components and use css helpers and existing components
+- **angular:** Rename checked to value of the bal-checkbox
+- **tabs:** add value prop,
+  rename balTabChange to balChange and remove active tab on tab items
+- **hint:** Rename open to present and close to dismiss
+- **popover:** Renamed is-actvie to value and balCollapse to balChange
+- **accordion:** Renamed is-actvie to value and balCollapse to balChange
+- **form:** Removed prop expanded, removed component bal-dropdown-trigger
+  and renamed bal-dropdown to bal-popover
+- **modal:** Removed bal-modal-actions
 
 ### Features
 
-* **accordion:** add two way binding ([eeda1c0](https://github.com/baloise/design-system/commit/eeda1c018259b75eeeec4c62ed94cb9a8e27551c))
-* **button:** add bal-button-group component ([deb9394](https://github.com/baloise/design-system/commit/deb93949d6ccf5ca4c5637f1d884667d1531add9))
-* **card:** simplify usage ([66c2d67](https://github.com/baloise/design-system/commit/66c2d676ccd473f4c0348b62a412afa178ad993c))
-* **popover:** add two way binding ([e3f01d2](https://github.com/baloise/design-system/commit/e3f01d20dc00e5d5b736aa56954e8d9dff6c1d72))
-* **tabs:** able to change value with the active prop on the bal-tab-item ([f9553cb](https://github.com/baloise/design-system/commit/f9553cb501eb390f6964e8dd881228ded36e623c))
-* **tabs:** add two way binding ([aaf41a1](https://github.com/baloise/design-system/commit/aaf41a1f8af91a6f8d7907b085e7c66b64ce664f))
-
+- **accordion:** add two way binding ([eeda1c0](https://github.com/baloise/design-system/commit/eeda1c018259b75eeeec4c62ed94cb9a8e27551c))
+- **button:** add bal-button-group component ([deb9394](https://github.com/baloise/design-system/commit/deb93949d6ccf5ca4c5637f1d884667d1531add9))
+- **card:** simplify usage ([66c2d67](https://github.com/baloise/design-system/commit/66c2d676ccd473f4c0348b62a412afa178ad993c))
+- **popover:** add two way binding ([e3f01d2](https://github.com/baloise/design-system/commit/e3f01d20dc00e5d5b736aa56954e8d9dff6c1d72))
+- **tabs:** able to change value with the active prop on the bal-tab-item ([f9553cb](https://github.com/baloise/design-system/commit/f9553cb501eb390f6964e8dd881228ded36e623c))
+- **tabs:** add two way binding ([aaf41a1](https://github.com/baloise/design-system/commit/aaf41a1f8af91a6f8d7907b085e7c66b64ce664f))
 
 ### Bug Fixes
 
-* **angular:** adjust boolean accessor for two way binding ([ed57dcc](https://github.com/baloise/design-system/commit/ed57dccec735d65887d44d3d79e4f6cdb94f1877))
-* **angular:** enable two way binding ([8602df8](https://github.com/baloise/design-system/commit/8602df8151c075648bed48269a6ca1657f00c80f))
-* **form:** set expanded as default and use popper.js for the popovers ([0845ade](https://github.com/baloise/design-system/commit/0845ade7eb5248a912c5eff36bba9f4aa9ed9c1a))
-* **hint:** use standard method names ([b1f4040](https://github.com/baloise/design-system/commit/b1f40409f8f7ab5e1fb70ba4551c868d209d4811))
-* **modal:** remove action component, improve large content and popovers ([1095dab](https://github.com/baloise/design-system/commit/1095dabee411579744119b03a922e23b8f878d7e))
-* **modal:** simplify usage ([69de08d](https://github.com/baloise/design-system/commit/69de08dc66073340f32833db9139639ace88ec5b))
-* **notices:** add missing padding ([82333e1](https://github.com/baloise/design-system/commit/82333e13493cd6e67e9d70286fb06472f5cc82f3))
-* **notification:** adjust paddings ([f7eab49](https://github.com/baloise/design-system/commit/f7eab497dbe6b84e56ee3da4bbf6966fb37069b7))
-* update deps ([a316a3e](https://github.com/baloise/design-system/commit/a316a3ec535329fbea12c0ae3a5ad1639414c22a))
-
+- **angular:** adjust boolean accessor for two way binding ([ed57dcc](https://github.com/baloise/design-system/commit/ed57dccec735d65887d44d3d79e4f6cdb94f1877))
+- **angular:** enable two way binding ([8602df8](https://github.com/baloise/design-system/commit/8602df8151c075648bed48269a6ca1657f00c80f))
+- **form:** set expanded as default and use popper.js for the popovers ([0845ade](https://github.com/baloise/design-system/commit/0845ade7eb5248a912c5eff36bba9f4aa9ed9c1a))
+- **hint:** use standard method names ([b1f4040](https://github.com/baloise/design-system/commit/b1f40409f8f7ab5e1fb70ba4551c868d209d4811))
+- **modal:** remove action component, improve large content and popovers ([1095dab](https://github.com/baloise/design-system/commit/1095dabee411579744119b03a922e23b8f878d7e))
+- **modal:** simplify usage ([69de08d](https://github.com/baloise/design-system/commit/69de08dc66073340f32833db9139639ace88ec5b))
+- **notices:** add missing padding ([82333e1](https://github.com/baloise/design-system/commit/82333e13493cd6e67e9d70286fb06472f5cc82f3))
+- **notification:** adjust paddings ([f7eab49](https://github.com/baloise/design-system/commit/f7eab497dbe6b84e56ee3da4bbf6966fb37069b7))
+- update deps ([a316a3e](https://github.com/baloise/design-system/commit/a316a3ec535329fbea12c0ae3a5ad1639414c22a))
 
 ### Code Refactoring
 
-* **card:** reduce amount of components ([905bc0c](https://github.com/baloise/design-system/commit/905bc0c872aeb859896aa58259dd9509d6a8fb22))
-
-
+- **card:** reduce amount of components ([905bc0c](https://github.com/baloise/design-system/commit/905bc0c872aeb859896aa58259dd9509d6a8fb22))
 
 ### [8.0.1](https://github.com/baloise/design-system/compare/v8.0.0...v8.0.1) (2022-01-05)
 
