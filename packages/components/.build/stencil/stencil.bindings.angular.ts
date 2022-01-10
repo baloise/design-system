@@ -2,15 +2,15 @@ import { ValueAccessorConfig, angularOutputTarget } from '@baloise/angular-outpu
 
 export const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
-    elementSelectors: ['bal-radio-group', 'bal-select', 'bal-datepicker', 'bal-timeinput'],
+    elementSelectors: ['bal-radio-group', 'bal-select', 'bal-datepicker', 'bal-timeinput', 'bal-tabs'],
     event: 'balChange',
     targetAttr: 'value',
     type: 'select',
   },
   {
-    elementSelectors: ['bal-checkbox'],
+    elementSelectors: ['bal-checkbox', 'bal-popover', 'bal-accordion'],
     event: 'balChange',
-    targetAttr: 'checked',
+    targetAttr: 'value',
     type: 'boolean',
   },
   {

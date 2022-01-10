@@ -19,7 +19,7 @@ describe('bal-checkbox', () => {
   it('should set the checkbos as checked', async () => {
     await nativeInputElement.click()
 
-    expect(await balCheckboxElement.getProperty('checked')).toBe(true)
+    expect(await balCheckboxElement.getProperty('value')).toBe(true)
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
   })
 
@@ -28,7 +28,7 @@ describe('bal-checkbox', () => {
     await page.waitForChanges()
     await nativeInputElement.click()
 
-    expect(await balCheckboxElement.getProperty('checked')).toBe(false)
+    expect(await balCheckboxElement.getProperty('value')).toBe(false)
     expect(balChangeEvent).toHaveReceivedEventTimes(0)
   })
 

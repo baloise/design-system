@@ -28,7 +28,6 @@ const component = BalComponentStory({
   },
   args: {
     invalid: false,
-    expanded: true,
     hasFieldMessage: true,
   },
 })
@@ -41,7 +40,7 @@ export const Basic = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
-  <bal-field :expanded="args.expanded" :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
       <bal-select v-bind="args" v-model="args.value">
@@ -71,7 +70,6 @@ export const Typeahead = args => ({
 })
 Typeahead.args = {
   typeahead: true,
-  expanded: true,
   placeholder: 'Try finding your hero',
   noDataLabel: 'No option available',
 }

@@ -26,29 +26,22 @@ npm install @baloise/design-system-components-vue --save
 
 ## Add Plugin
 
-The `@baloise/design-system-components-vue` dependency includes the plugin `BaloiseDesignSystem`, which loads by default the polyfils and defines the components. Moreover, it adds the filtes and conrollers to your vue instance.
+The `@baloise/design-system-components-vue` dependency includes the plugin `BaloiseDesignSystem`, which loads by default the polyfils and defines the components.
+Moreover, it adds the conrollers to your vue instance.
 
 ### main.ts
 
 ```typescript
-import Vue from 'vue'
+import './main.scss'
+
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+
 import { BaloiseDesignSystem } from '@baloise/design-system-components-vue'
 
-Vue.config.productionTip = false
-
-Vue.use(BaloiseDesignSystem)
-
-new Vue({
-  router,
-  render: h => h(App),
-}).$mount('#app')
+createApp(App).use(router).use(BaloiseDesignSystem).mount('#app')
 ```
-
-> **TIP**
->
-> To use the Baloise Design System with [ViteJs](https://vitejs.dev/) add the following config: `Vue.use(BaloiseDesignSystem, &#123; useVite: true &#125;)`
 
 import InstallStyles from '../styles/styles-sass.md'
 
@@ -63,8 +56,12 @@ import InstallFonts from '../styles/styles-fonts.md'
 Add the `BalApp` to your root element. Within this component we are able to use the defined css classes.
 
 ```html
+<script setup lang="ts">
+  import { BalApp, BalFooter, BalHeading, BalButton } from '@baloise/design-system-components-vue'
+</script>
+
 <template>
-  <BalApp background has-sticky-footer>
+  <BalApp class="has-sticky-footer has-background">
     <header>
       <!-- Header content -->
     </header>
@@ -81,16 +78,6 @@ Add the `BalApp` to your root element. Within this component we are able to use 
     </BalFooter>
   </BalApp>
 </template>
-
-<script lang="ts">
-  import { defineComponent } from 'vue'
-  import { BalApp, BalFooter, BalHeading, BalButton } from '@baloise/design-system-components-vue'
-
-  export default defineComponent({
-    name: 'App',
-    components: { BalApp, BalFooter, BalHeading, BalButton },
-  })
-</script>
 ```
 
 ## Start the app

@@ -23,7 +23,7 @@ With the help of the `balModalController.dismiss()` we are able to close the mod
 // MyModal.vue
 <script setup lang="ts">
   import { defineProps } from 'vue'
-  import { balModalController, BalModalHeader, BalModalBody, BalModalFooter, BalModalActions, BalButton } from '../lib'
+  import { balModalController, BalModalHeader, BalModalBody, BalButton } from '@baloise/design-system-components-vue'
 
   defineProps({
     firstName: { type: String },
@@ -37,13 +37,11 @@ With the help of the `balModalController.dismiss()` we are able to close the mod
   <BalModalHeader>Modal Title</BalModalHeader>
   <BalModalBody>
     <p>{{ firstName }} {{ lastName }}</p>
-  </BalModalBody>
-  <BalModalFooter>
-    <BalModalActions>
+    <BalButtonGroup position="right" class="mt-5">
       <BalButton color="link" @click="closeModal()">Cancel</BalButton>
       <BalButton color="primary" @click="closeModal()">Okay</BalButton>
-    </BalModalActions>
-  </BalModalFooter>
+    </BalButtonGroup>
+  </BalModalBody>
 </template>
 ```
 
@@ -79,6 +77,21 @@ Simply define the modal layout in your custom component and add the element refe
 In your component register the element reference with `const modalRef = ref<{ $el: Components.BalModal }>()`. With that reference you are able to access the methods of the modal component.
 
 ```html
+<script setup lang="ts">
+  import { ref } from 'vue'
+  import { Components } from '@baloise/design-system-components'
+
+  const modalRef = ref<{ $el: Components.BalModal }>()
+
+  function openModal() {
+    modalRef.value?.$el.open()
+  }
+
+  function closeModal() {
+    modalRef.value?.$el.close()
+  }
+</script>
+
 <template>
   <BalButton @click="openModal()">Open Modal</BalButton>
 
@@ -86,41 +99,13 @@ In your component register the element reference with `const modalRef = ref<{ $e
     <BalModalHeader>Modal Title</BalModalHeader>
     <BalModalBody>
       <p>...</p>
-    </BalModalBody>
-    <BalModalBooter>
-      <BalModalActions>
+      <BalButtonGroup position="right" class="mt-5">
         <BalButton color="link" @click="closeModal()">Cancel</BalButton>
         <BalButton color="primary" @click="closeModal()">Okay</BalButton>
-      </BalModalActions>
-    </BalModalBooter>
+      </BalButtonGroup>
+    </BalModalBody>
   </BalModal>
 </template>
-
-<script lang="ts">
-  import { defineComponent, ref } from 'vue'
-  import { Components } from '@baloise/design-system-components'
-
-  export default defineComponent({
-    components: { ... },
-    setup() {
-      const modalRef = ref<{ $el: Components.BalModal }>()
-
-      function openModal() {
-        modalRef.value?.$el.open()
-      }
-
-      function closeModal() {
-        modalRef.value?.$el.close()
-      }
-
-      return {
-        modalRef,
-        openModal,
-        closeModal,
-      }
-    },
-  })
-</script>
 ```
 
 <bal-doc-github link="/stories/getting-started/vue/02-03-usage-modal.stories.mdx"></bal-doc-github>

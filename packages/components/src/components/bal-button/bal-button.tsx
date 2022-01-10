@@ -270,6 +270,7 @@ export class Button implements ComponentInterface {
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
+          'control': true,
           'is-fullwidth': this.expanded,
           'is-disabled': this.disabled,
         }}

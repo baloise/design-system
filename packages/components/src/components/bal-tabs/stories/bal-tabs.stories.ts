@@ -13,8 +13,8 @@ export default component.story
 const Template = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-tabs v-bind="args">
-  <bal-tab-item value="tab-a" label="Tab A" :active="true">Content of Tab A</bal-tab-item>
+  template: `<bal-tabs v-bind="args" v-model="args.value">
+  <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
   <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
   <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
   <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
@@ -23,29 +23,29 @@ const Template = args => ({
 
 export const MainNavigation = Template.bind({})
 MainNavigation.args = {
+  value: 'tab-b',
   action: true,
   expanded: false,
-  clickable: true,
   actionLabel: 'Action',
   interface: 'tabs',
 }
-MainNavigation.parameters = { ...component.sourceCode(MainNavigation) }
+MainNavigation.parameters = { ...component.sourceCode(MainNavigation), controls: { exclude: ['clickable'] } }
 
 export const SubNavigation = Template.bind({})
 SubNavigation.args = {
-  action: true,
+  value: 'tab-b',
   expanded: false,
-  clickable: true,
   interface: 'tabs-sub',
 }
-SubNavigation.parameters = { ...component.sourceCode(SubNavigation) }
+SubNavigation.parameters = {
+  ...component.sourceCode(SubNavigation),
+  controls: { exclude: ['clickable', 'action', 'actionLabel'] },
+}
 
 export const Steps = Template.bind({})
 Steps.args = {
-  action: false,
-  expanded: true,
+  value: 'tab-b',
   clickable: true,
-  actionLabel: '',
   interface: 'o-steps',
 }
-Steps.parameters = { ...component.sourceCode(Steps) }
+Steps.parameters = { ...component.sourceCode(Steps), controls: { exclude: ['expanded', 'action', 'actionLabel'] } }

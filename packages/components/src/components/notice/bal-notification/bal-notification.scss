@@ -19,18 +19,14 @@ bal-notification {
   border: 1px solid $blue-2;
   color: $text;
   border-radius: $radius-large;
-  padding: 16px;
-
-  @include tablet() {
-    padding: 32px;
-  }
 
   &.is-primary {
     background: $blue-0;
     border: 1px solid $blue-2;
     color: $blue;
 
-    a:not(.button):not(.dropdown-item) {
+    a:not(.button):not(.dropdown-item),
+    a:not(.button):not(.popover-item) {
       color: $cyan;
     }
   }
@@ -64,10 +60,4 @@ bal-notification {
     color: $white;
     border: none;
   }
-}
-
-@include desktop() {
-  // .notification {
-  //   padding: 40px;
-  // }
 }

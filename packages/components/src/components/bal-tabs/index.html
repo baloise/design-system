@@ -12,8 +12,8 @@
     <div class="container">
       <h2 class="title is-size-2">Main Navigation</h2>
       <section>
-        <bal-tabs action action-label="Action" data-test-id="tabs">
-          <bal-tab-item value="tab-a" label="Tab A" active="true">Content of Tab A</bal-tab-item>
+        <bal-tabs action action-label="Action" data-test-id="tabs" value="tab-a">
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
           <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
           <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
           <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
@@ -22,8 +22,8 @@
 
       <h2 class="title is-size-2">Sub Navigation</h2>
       <section>
-        <bal-tabs rounded>
-          <bal-tab-item value="tab-a" label="Tab A" active="true">Content of Tab A</bal-tab-item>
+        <bal-tabs rounded value="tab-a">
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
           <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
           <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
         </bal-tabs>
@@ -31,8 +31,8 @@
 
       <h2 class="title is-size-2">Expanded</h2>
       <section>
-        <bal-tabs rounded expanded>
-          <bal-tab-item value="tab-a" label="Tab A" active="true">Content of Tab A</bal-tab-item>
+        <bal-tabs rounded expanded value="tab-a">
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
           <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
           <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
         </bal-tabs>
@@ -40,11 +40,11 @@
 
       <h2 class="title is-size-2">Steps (Stepper)</h2>
       <section>
-        <bal-tabs interface="steps">
+        <bal-tabs interface="steps" value="step-b">
           <bal-tab-item value="step-a" label="Lorem ipsum dolor sit amet consectetur" done>
             Step A Content
           </bal-tab-item>
-          <bal-tab-item value="step-b" label="Step B" active>Step B Content</bal-tab-item>
+          <bal-tab-item value="step-b" label="Step B">Step B Content</bal-tab-item>
           <bal-tab-item value="step-c" label="Step C" failed>Step C Content</bal-tab-item>
           <bal-tab-item value="step-d" label="Step D" disabled>Step D Content</bal-tab-item>
         </bal-tabs>
@@ -52,11 +52,11 @@
 
       <h2 class="title is-size-2">O-Steps (Stepper)</h2>
       <section>
-        <bal-tabs interface="o-steps" data-test-id="steps">
+        <bal-tabs interface="o-steps" value="step-b" data-test-id="steps">
           <bal-tab-item value="step-a" label="Lorem ipsum dolor sit amet consectetur" done>
             Step A Content
           </bal-tab-item>
-          <bal-tab-item value="step-b" label="Step B" active>Step B Content</bal-tab-item>
+          <bal-tab-item value="step-b" label="Step B">Step B Content</bal-tab-item>
           <bal-tab-item value="step-c" label="Step C" failed>Step C Content</bal-tab-item>
           <bal-tab-item value="step-d" label="Step D">Step D Content</bal-tab-item>
           <bal-tab-item value="step-d" label="Step D" disabled>Step D Content</bal-tab-item>

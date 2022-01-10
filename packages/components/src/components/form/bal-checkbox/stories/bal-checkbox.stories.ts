@@ -28,7 +28,6 @@ const component = BalComponentStory({
   },
   args: {
     invalid: false,
-    expanded: true,
     hasFieldMessage: true,
   },
 })
@@ -41,7 +40,7 @@ const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
-  <bal-field :expanded="args.expanded" :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
       <bal-checkbox v-bind="args" v-model="args.value">
@@ -127,16 +126,6 @@ Box.args = {}
 Box.parameters = {
   ...component.sourceCode(Box),
   controls: {
-    exclude: [
-      ...excludedControls,
-      'expanded',
-      'interface',
-      'invalid',
-      'checked',
-      'hasFieldMessage',
-      'inverted',
-      'value',
-      'content',
-    ],
+    exclude: [...excludedControls, 'interface', 'invalid', 'value', 'hasFieldMessage', 'inverted', 'value', 'content'],
   },
 }
