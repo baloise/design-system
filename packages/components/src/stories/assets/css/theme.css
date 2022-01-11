@@ -69,9 +69,9 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 .sbdocs.sbdocs-h3,
 .sbdocs.sbdocs-h4,
 .sbdocs.sbdocs-h5 {
-  font-family: MetaPro, Arial, sans-serif;
+  font-family: BaloiseCreateHeadline, Arial, sans-serif;
   color: #000d6e;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .sbdocs.sbdocs-h1 {

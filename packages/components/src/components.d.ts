@@ -14,6 +14,7 @@ import { AutocompleteTypes, InputTypes } from "./types/interfaces";
 import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { Placement } from "@popperjs/core";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
+import { FontSizeType } from "./types/font.types";
 export namespace Components {
     interface BalAccordion {
         /**
@@ -495,7 +496,7 @@ export namespace Components {
         /**
           * Defines at which position the heading has spacing.
          */
-        "space": 'all' | 'none' | 'top' | 'bottom';
+        "space": 'none' | 'bottom';
         /**
           * If `true` the heading gets displayed slimmer.
          */
@@ -1260,9 +1261,13 @@ export namespace Components {
          */
         "color": ColorTypes | 'hint' | '';
         /**
-          * If `true` the text has a small size
+          * If `true` the text is shown as a block
          */
-        "small": boolean;
+        "paragraph": boolean;
+        /**
+          * Defines the size of the paragraph
+         */
+        "size": FontSizeType;
     }
     interface BalTextarea {
         /**
@@ -2356,7 +2361,7 @@ declare namespace LocalJSX {
         /**
           * Defines at which position the heading has spacing.
          */
-        "space"?: 'all' | 'none' | 'top' | 'bottom';
+        "space"?: 'none' | 'bottom';
         /**
           * If `true` the heading gets displayed slimmer.
          */
@@ -3146,9 +3151,13 @@ declare namespace LocalJSX {
          */
         "color"?: ColorTypes | 'hint' | '';
         /**
-          * If `true` the text has a small size
+          * If `true` the text is shown as a block
          */
-        "small"?: boolean;
+        "paragraph"?: boolean;
+        /**
+          * Defines the size of the paragraph
+         */
+        "size"?: FontSizeType;
     }
     interface BalTextarea {
         /**

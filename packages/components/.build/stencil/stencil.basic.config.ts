@@ -4,7 +4,7 @@ import { postcss } from '@stencil/postcss'
 import autoprefixer from 'autoprefixer'
 
 export const StencilBaseConfig: Config = {
-  namespace: 'design-system-components',
+  namespace: 'design-system-next-components',
   globalStyle: 'src/styles/global.scss',
   watchIgnoredRegex: [/\.stories\.(js|jsx|ts|tsx|mdx)$/, /\/stories\//], // ignore storybook files in --watch mode
   plugins: [

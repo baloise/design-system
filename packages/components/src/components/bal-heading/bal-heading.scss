@@ -4,8 +4,6 @@
 bal-heading {
   @include margin(0);
   @include padding(0);
-  @include lhCrop(1.2);
-  @include font-smoothing();
 
   display: block;
   position: static;
@@ -24,34 +22,39 @@ h3,
 h4,
 h5 {
   @include padding(0);
-  font-family: $family-primary;
+  font-family: BaloiseCreateHeadline, BaloiseCreateText, Arial, sans-serif;
+  font-weight: 700;
   color: $blue;
 }
 
-// TODO: Define spacing between
 h1 {
-  margin-block-start: 0.67em;
-  margin-block-end: 0.67em;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 h2 {
-  margin-block-start: 0.83em;
-  margin-block-end: 0.83em;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 h3 {
-  margin-block-start: 1em;
-  margin-block-end: 1em;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 h4 {
-  margin-block-start: 1.33em;
-  margin-block-end: 1.33em;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 h5 {
-  margin-block-start: 1.33em;
-  margin-block-end: 1.33em;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+h6 {
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 p,
@@ -69,28 +72,33 @@ bal-text p {
   }
 }
 
+.is-size-display {
+  font-size: 80px;
+  line-height: 96px;
+}
+
 .is-size-1 {
-  line-height: 56px;
+  line-height: $line-height-1;
 }
 
 .is-size-2 {
-  line-height: 48px;
+  line-height: $line-height-2;
 }
 
 .is-size-3 {
-  line-height: 40px;
+  line-height: $line-height-3;
 }
 
 .is-size-4 {
-  line-height: 32px;
+  line-height: $line-height-4;
 }
 
 .is-size-5 {
-  line-height: 24px;
+  line-height: $line-height-5;
 }
 
 .is-size-6 {
-  line-height: 20px;
+  line-height: $line-height-6;
 }
 
 h1.subtitle,
@@ -98,7 +106,7 @@ h2.subtitle,
 h3.subtitle,
 h4.subtitle,
 h5.subtitle {
-  font-weight: $weight-normal;
+  font-weight: $weight-light;
 }
 
 span.is-small,
@@ -123,8 +131,7 @@ a.is-bold {
 }
 
 a.is-link {
-  color: $cyan;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a.is-link.is-inverted {
@@ -136,4 +143,41 @@ a.is-link:active,
 a.is-link:hover,
 a.is-link:visited {
   text-decoration: underline;
+}
+
+@include mobile() {
+  .is-size-display {
+    font-size: $size-2;
+    line-height: $line-height-2;
+  }
+
+  .is-size-1 {
+    font-size: $size-3;
+    line-height: $line-height-3;
+  }
+
+  .is-size-2 {
+    font-size: $size-4;
+    line-height: $line-height-4;
+  }
+
+  .is-size-3 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .is-size-4 {
+    font-size: $size-5;
+    line-height: $line-height-5;
+  }
+
+  .is-size-5 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .is-size-6 {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }

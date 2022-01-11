@@ -1,29 +1,53 @@
 bal-text {
   @include margin(0);
   @include padding(0);
-  @include lhCrop(1.3);
-  @include font-smoothing();
 
-  display: inline;
   position: static;
+  word-break: break-word;
+}
+
+a,
+p,
+span {
+  @include padding(0);
+
+  color: $primary;
+  word-break: break-word;
   font-family: $family-primary;
   font-weight: $weight-normal;
-  font-size: $size-normal !important;
-  line-height: 20px;
-  word-break: break-word;
+  margin: 0 0 16px 0;
+}
 
+a.is-lead,
+p.is-lead,
+span.is-lead {
+  @include padding(0);
+
+  font-size: 18px;
+  line-height: 32px;
+  margin: 0 0 16px 0;
+}
+
+a.is-small,
+p.is-small,
+span.is-small {
+  @include padding(0);
+
+  font-size: $size-small;
+  line-height: 16px;
+  margin: 0 0 16px 0;
+}
+
+@include tablet() {
+  a.is-lead,
+  p.is-lead,
+  span.is-lead,
+  a.is-small,
+  p.is-small,
+  span.is-small,
+  a,
+  p,
   span {
-    word-break: break-word;
-  }
-
-  &.is-bold,
-  &.is-bold span {
-    font-weight: $weight-bold !important;
-  }
-
-  &.is-small,
-  &.is-small span {
-    font-size: $size-small !important;
-    line-height: 16px !important;
+    margin: 0 0 24px 0;
   }
 }

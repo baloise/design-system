@@ -20,21 +20,34 @@ $blue-light: $blue-1 !default;
 
 // Typography
 
-$family-sans-serif: MetaPro, Arial, sans-serif !default;
+$family-sans-serif: BaloiseCreateText, monospace, Arial, sans-serif !default;
 $family-monospace: monospace !default;
 $render-mode: optimizeLegibility !default;
 
-$size-1: 48px !default;
-$size-2: 40px !default;
-$size-3: 32px !default;
-$size-4: 24px !default;
-$size-5: 16px !default;
-$size-6: 14px !default;
-$size-7: 12px !default;
+$size-1: 56px !default;
+$line-height-1: 64px !default;
 
-$weight-light: 400 !default;
+$size-2: 48px !default;
+$line-height-2: 56px !default;
+
+$size-3: 40px !default;
+$line-height-3: 48px !default;
+
+$size-4: 32px !default;
+$line-height-4: 40px !default;
+
+$size-5: 24px !default;
+$line-height-5: 32px !default;
+
+$size-6: 16px !default;
+$line-height-6: 24px !default;
+
+$size-7: 12px !default;
+$line-height-7: 16px !default;
+
+$weight-light: 300 !default;
 $weight-normal: 400 !default;
-$weight-medium: 700 !default;
+$weight-medium: 400 !default;
 $weight-semibold: 700 !default;
 $weight-bold: 700 !default;
 

@@ -26,7 +26,7 @@ export class Heading {
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop() space: 'all' | 'none' | 'top' | 'bottom' = 'all'
+  @Prop() space: 'none' | 'bottom' = 'bottom'
 
   /**
    * The theme type of the toast. Given by bulma our css framework.
@@ -39,6 +39,9 @@ export class Heading {
   @Prop() inverted = false
 
   get fontSize(): string {
+    if (this.level === 'display') {
+      return `is-size-display`
+    }
     const size = `${this.level}`
     return `is-size-${size.replace('h', '')}`
   }
@@ -46,10 +49,6 @@ export class Heading {
   get fontColor(): string {
     if (this.inverted) {
       return `has-text-white`
-    }
-
-    if (this.color === 'info') {
-      return `has-text-hint`
     }
 
     if (this.color !== '') {
@@ -60,20 +59,28 @@ export class Heading {
   }
 
   get spacing(): string {
-    switch (this.space) {
-      case 'none':
-        return 'm-0'
-      case 'top':
-        return 'mb-0'
-      case 'bottom':
-        return 'mt-0'
-      default:
-        return ''
+    if (this.space === 'bottom') {
+      switch (this.level) {
+        case 'display':
+          return 'mb-4'
+        case 'h1':
+          return 'mb-3'
+        case 'h2':
+        case 'h3':
+        case 'h4':
+        case 'h5':
+          return 'mb-2'
+        case 'h6':
+          return 'mb-1'
+        default:
+          return ''
+      }
     }
+    return ''
   }
 
   render() {
-    const Heading = this.level
+    const Heading = this.level === 'display' ? 'h1' : this.level
 
     return (
       <Host>

@@ -12,6 +12,7 @@ export class BalDocGithub {
         <section class="mt-8 pt-4 has-border-top-light">
           <p>This page is open source. Noticed a typo? Or something unclear?</p>
           <a
+            class="is-link"
             target="_blank"
             href={'https://github.com/baloise/design-system/blob/master/packages/components/src' + this.link}
           >

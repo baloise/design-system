@@ -298,7 +298,7 @@ export class Button implements ComponentInterface {
           <bal-text
             class="data-test-button-label"
             {...this.spanAttrs}
-            small={this.size === 'small'}
+            size={this.size === 'small' ? 'small' : ''}
             style={{ display: this.loading ? 'none' : 'inline' }}
           >
             <slot />

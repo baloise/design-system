@@ -9,7 +9,7 @@ export const config: Config = {
   ...StencilBaseConfig,
   extras: {
     dynamicImportShim: true,
-    safari10: true,
+    safari10: false,
     scriptDataOpts: true,
     appendChildSlotFix: true,
     cloneNodeFix: true,
