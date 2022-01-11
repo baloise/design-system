@@ -5,7 +5,7 @@ import { ValueAccessor } from './value-accessor'
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
-  selector: 'bal-checkbox',
+  selector: 'bal-checkbox, bal-popover, bal-accordion',
   host: {
     '(balChange)': 'handleChangeEvent($event.detail)',
   },
@@ -22,6 +22,6 @@ export class BooleanValueAccessor extends ValueAccessor {
     super(el)
   }
   writeValue(value: any) {
-    this.el.nativeElement.checked = this.lastValue = value == null ? false : value
+    this.el.nativeElement.value = this.lastValue = value == null ? false : value
   }
 }

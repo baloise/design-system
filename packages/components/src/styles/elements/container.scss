@@ -12,10 +12,6 @@
   padding-right: math.div($container-offset, 2);
 }
 
-.is-compact {
-  max-width: calc($tablet - 1px + $container-offset + $container-offset) !important;
-}
-
 @include tablet() {
   .container {
     padding-left: math.div($container-offset, 2);
@@ -28,4 +24,8 @@
     padding-left: $container-offset;
     padding-right: $container-offset;
   }
+}
+
+.container.is-compact {
+  max-width: calc($tablet - 1px + $container-offset + $container-offset) !important;
 }

@@ -11,11 +11,11 @@ import { Meta } from '@storybook/addon-docs'
 
 # Write your own Testing Command
 
-All our extended or own cypress commands are located in the `packages/testing/src/commands` dir.
+All our extended or own cypress commands are located in the `packages/testing/src/commands` directory.
 
-Before writing or updating a component please finish the [dev setup](?path=/docs/contributing-dev-setup--page)
+Before writing or updating a component, please finish the [dev setup](?path=/docs/contributing-dev-setup--page)
 
-The documentation to the testing can be found [here](?path=/docs/getting-started-testing--page).
+The documentation explaining how to test can be found [here](?path=/docs/getting-started-testing--page).
 
 ## Getting Started
 
@@ -39,12 +39,12 @@ npm run serve
 
 ### Custom Command
 
-The structure of the custom command is importend, because out of it the documentation is automatically generate as well as the type definitions.
+The structure of the custom command is important, because the documentation is automatically generate out of it, as well as the type definitions.
 
-Custom commands are create for our components, therefore the files are suffiex with the name of the component. Each custom command has two files:
+Custom commands are created for our components, therefore the files are suffixed with the name of the component. Each custom command has two files:
 
 - `bal-accordion.command` the execution code of the new command
-- `bal-accordion.type` has the type definitions for the autocompletion for the users.
+- `bal-accordion.type` the type definitions for the autocompletion for users
 
 #### Command
 
@@ -79,9 +79,9 @@ declare namespace Cypress {
 
 Some of the cypress commands like `.type()` needed to be changed to match our components.
 
-In the most cases we need to find the correct native element or change the selectors.
+In most cases we need to find the correct native element or change the selectors.
 
-For each command we override we create a new file like `type.command.ts`. Inside we override the command, but the default return is the command it self. We only catch our special cases (components).
+For each command we override, we create a new file like `type.command.ts`. Inside of this file we override the command, but the default return is the command itself. We only catch our special cases (components).
 
 ```typescript
 import { isInput, selectors, wrapRoot } from '../helpers'
@@ -97,3 +97,5 @@ Cypress.Commands.overwrite('type', (originalFn, element: Cypress.Chainable<JQuer
 
 > **TIP**
 > In the file `src/commands/helpers.ts` the selectors and the component util functions are defined.
+
+<bal-doc-github link="/stories/contributing/how-to's/02-testing.stories.mdx"></bal-doc-github>

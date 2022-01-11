@@ -1,9 +1,17 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - next
+  workflow_dispatch:
+    inputs:
+      version:
+        type: choice
+        description: 'Version level'
+        required: true
+        default: 'patch'
+        options:
+          - patch
+          - minor
+          - major
 
 jobs:
   Publish:
@@ -11,6 +19,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
 
       - uses: actions/setup-node@v2
         with:
@@ -49,7 +59,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to NPM
-        run: 'npm run release'
+        run: 'lerna publish ${{ github.event.inputs.version }} --yes'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

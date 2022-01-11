@@ -1,0 +1,27 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../stories/utils'
+import readme from '../readme.md'
+import menu from '../bal-popover-content/readme.md'
+
+<span id="story--components-popover--basic" style={{ opacity: 0 }}></span>
+
+# Popover
+
+A popover shows and hides content close to the trigger element.
+
+<Canvas className="has-visible-overflow">
+  <Story id="components-popover--basic" />
+</Canvas>
+
+## Component Api
+
+<Description markdown={readme} />
+<Description markdown={menu} />
+
+<br />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+<bal-doc-github link="/components/bal-popover/stories/bal-popover.docs.mdx"></bal-doc-github>

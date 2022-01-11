@@ -356,3 +356,25 @@ bal-button.is-fullwidth {
     }
   }
 }
+
+.field.is-grouped bal-button.control:not(:last-child) {
+  margin-right: 8px;
+}
+
+@include mobile() {
+  .field.is-grouped {
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    bal-button.control {
+      flex-grow: 1;
+      flex-shrink: 1;
+      min-width: 100%;
+      margin-right: 0 !important;
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+  }
+}

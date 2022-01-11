@@ -11,6 +11,12 @@
     </h2>
     <h4>baopso</h4>
   </a>
+  <a href="https://github.com/Gagne87" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/29020214?v=4" alt="Gagne87" style="width: 64px;">
+    </h2>
+    <h4>Gagne87</h4>
+  </a>
   <a href="https://github.com/RCBiczok" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/538973?v=4" alt="RCBiczok" style="width: 64px;">
@@ -34,12 +40,6 @@
       <img src="https://avatars.githubusercontent.com/u/9351023?v=4" alt="yannickholzenkamp" style="width: 64px;">
     </h2>
     <h4>yannickholzenkamp</h4>
-  </a>
-  <a href="https://github.com/Gagne87" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/29020214?v=4" alt="Gagne87" style="width: 64px;">
-    </h2>
-    <h4>Gagne87</h4>
   </a>
   <a href="https://github.com/culmat" class="feature">
     <h2>

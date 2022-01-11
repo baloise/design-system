@@ -40,22 +40,16 @@ export const buttonLink = `
 
 export const group = `
 <div>
-  <div class="bal-buttons is-center">
-    <bal-button class="is-full" color="primary">Primary</bal-button>
-    <div class="break"></div>
-    <bal-button class="is-full" color="link">Secondary</bal-button>
-  </div>
-  <div class="bal-buttons is-center">
-    <bal-button class="is-full" color="primary">Full</bal-button>
-    <bal-button class="is-full" color="info">Full</bal-button>
-  </div>
-  <div class="bal-buttons is-center">
-    <bal-button class="is-half" color="primary">Half</bal-button>
-    <bal-button class="is-half" color="info">Half</bal-button>
-  </div>
-  <div class="bal-buttons is-center">
-    <bal-button class="is-one-third" color="primary">Third</bal-button>
-    <bal-button class="is-one-third" color="info">Third</bal-button>
-    <bal-button class="is-one-third" outlined color="info">Third</bal-button>
-  </div>
+  <bal-button-group>
+    <bal-button>Left</bal-button>
+    <bal-button outlined color="info">Group</bal-button>
+  </bal-button-group>
+  <bal-button-group position="center">
+    <bal-button>Centered</bal-button>
+    <bal-button outlined color="info">Group</bal-button>
+  </bal-button-group>
+  <bal-button-group position="right">
+  <bal-button>Right</bal-button>
+  <bal-button outlined color="info">Group</bal-button>
+</bal-button-group>
 </div>`

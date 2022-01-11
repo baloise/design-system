@@ -1,18 +1,26 @@
-import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop } from '@stencil/core'
+import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch } from '@stencil/core'
+import { debounceEvent } from '../../helpers/helpers'
 import { BalTabOption } from './bal-tab.type'
+import { watchForTabs } from './utils/watch-tabs'
+import { TabList } from './components/tabs'
+import { OStepList } from './components/o-steps'
+import { StepList } from './components/steps'
 
 @Component({
   tag: 'bal-tabs',
 })
 export class Tabs {
-  @Element() element!: HTMLElement
+  @Element() el!: HTMLElement
+
+  private didInit = false
+  private mutationO?: MutationObserver
 
   @State() tabsOptions: BalTabOption[] = []
 
   /**
    * Defines the layout of the tabs.
    */
-  @Prop() interface: 'tabs' | 'steps' | 'o-steps' = 'tabs'
+  @Prop() interface: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' = 'tabs'
 
   /**
    * If `true` the field expands over the whole width.
@@ -25,11 +33,6 @@ export class Tabs {
   @Prop() clickable = true
 
   /**
-   * If you want the rounded tab style.
-   */
-  @Prop() rounded = false
-
-  /**
    * If `true` a acation button is added to the right
    */
   @Prop() action = false
@@ -37,44 +40,90 @@ export class Tabs {
   /**
    * Label for the action button
    */
-  @Prop() actionLabel = ''
+  @Prop() actionLabel = 'Action'
+
+  /**
+   * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+   */
+  @Prop() debounce = 0
+
+  @Watch('debounce')
+  protected debounceChanged() {
+    this.balChange = debounceEvent(this.balChange, this.debounce)
+  }
+
+  @Prop({ mutable: true }) value?: string = undefined
+
+  @Watch('value')
+  protected async valueChanged(newValue?: string, oldValue?: string) {
+    this.tabs.forEach(t => t.setActive(t.value === this.value))
+
+    if (this.didInit && newValue !== oldValue) {
+      this.balChange.emit(newValue)
+    }
+  }
 
   /**
    * Emitted when the changes has finished.
    */
-  @Event({ eventName: 'balTabChange' }) tabsDidChange!: EventEmitter<BalTabOption>
+  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<string>
 
   /**
    * Emitted when the action button has clicked
    */
   @Event({ eventName: 'balActionClick' }) actionHasClicked!: EventEmitter<MouseEvent>
 
+  connectedCallback() {
+    this.debounceChanged()
+    this.updateTabs()
+
+    this.mutationO = watchForTabs<HTMLBalTabItemElement>(this.el, 'bal-tab-item', () => {
+      this.updateTabs()
+    })
+  }
+
+  disconnectedCallback() {
+    if (this.mutationO) {
+      this.mutationO.disconnect()
+      this.mutationO = undefined
+    }
+  }
+
+  componentDidLoad() {
+    this.didInit = true
+    let value = this.value
+    if (value === undefined || value === '') {
+      const availableTabs = this.tabsOptions.filter(t => !t.disabled)
+      if (availableTabs.length > 0) {
+        value = availableTabs[0].value
+      }
+    }
+
+    this.value = value
+    this.valueChanged(value, this.value)
+  }
+
   /**
    * Go to tab with the given value
    */
   @Method()
   async select(tab: BalTabOption) {
-    this.tabs.forEach(t => t.setActive(t.value === tab.value))
-    this.sync()
-    this.tabsDidChange.emit(tab)
-  }
-
-  /**
-   * @internal - Rerenders the tabs with their given settings
-   */
-  @Method()
-  async sync() {
-    Promise.all(this.tabs.map(value => value.getOptions())).then(tabsOptions => {
-      this.tabsOptions = tabsOptions
-    })
-  }
-
-  componentWillLoad() {
-    this.sync()
+    this.value = tab.value
   }
 
   private get tabs(): HTMLBalTabItemElement[] {
-    return Array.from(this.element.querySelectorAll('bal-tab-item'))
+    return Array.from(this.el.querySelectorAll('bal-tab-item'))
+  }
+
+  private async updateTabs() {
+    await Promise.all(this.tabs.map(value => value.getOptions())).then(tabsOptions => {
+      this.tabsOptions = tabsOptions
+    })
+    const activeTabs = this.tabsOptions.filter(t => t.active)
+    if (activeTabs.length > 0) {
+      const firstActiveTab = activeTabs[0]
+      this.value = firstActiveTab.value
+    }
   }
 
   private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
@@ -89,166 +138,41 @@ export class Tabs {
     }
   }
 
+  private isTabActive(tab: BalTabOption): boolean {
+    return tab.value === this.value
+  }
+
   render() {
-    if (this.interface === 'steps') {
-      return this.renderSteps()
-    } else if (this.interface === 'o-steps') {
-      return this.renderOSteps()
-    } else {
-      return this.renderTabs()
-    }
-  }
+    const Tabs = this.interface === 'o-steps' ? OStepList : this.interface === 'steps' ? StepList : TabList
 
-  stepIndex(tab: BalTabOption, index: number): string {
-    if (tab.failed) {
-      return '!'
-    }
-    if (tab.done) {
-      return ''
-    }
-    return <span style={{ marginTop: '-2px' }}>{index + 1}</span>
-  }
-
-  renderOSteps() {
     return (
       <Host
-        class="bal-o-steps"
+        class={{
+          'bal-tabs': this.interface === 'tabs' || this.interface === 'tabs-sub',
+          'bal-steps': this.interface === 'steps',
+          'bal-o-steps': this.interface === 'o-steps',
+          'is-sub-navigation': this.interface === 'tabs-sub',
+        }}
         data-value={this.tabsOptions
-          .filter(t => t.active)
+          .filter(t => this.isTabActive(t))
           .map(t => t.value)
           .join(',')}
         data-label={this.tabsOptions
-          .filter(t => t.active)
+          .filter(t => this.isTabActive(t))
           .map(t => t.label)
           .join(',')}
       >
-        <div>
-          <ul>
-            {this.tabsOptions.map((tab, index) => (
-              <li
-                class={{
-                  'is-active': tab.active,
-                  'is-disabled': tab.disabled,
-                  'is-done': tab.done,
-                  'is-failed': tab.failed,
-                  'is-clickable': this.clickable,
-                  'data-test-tab-item': true,
-                }}
-                data-label={tab.label}
-                data-value={tab.value}
-                data-index={index}
-              >
-                <a onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}>
-                  <span class="step-index">
-                    <span class="inner"></span>
-                  </span>
-                  <span class="step-label is-hidden-mobile">{tab.label}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <Tabs
+          value={this.value}
+          tabs={this.tabsOptions}
+          expanded={this.expanded}
+          clickable={this.clickable}
+          action={this.action}
+          actionLabel={this.actionLabel}
+          onActionClick={e => this.actionHasClicked.emit(e)}
+          onSelectTab={(e, t) => this.onSelectTab(e, t)}
+        ></Tabs>
         <slot></slot>
-      </Host>
-    )
-  }
-
-  renderSteps() {
-    return (
-      <Host
-        class="bal-steps"
-        data-value={this.tabsOptions
-          .filter(t => t.active)
-          .map(t => t.value)
-          .join(',')}
-        data-label={this.tabsOptions
-          .filter(t => t.active)
-          .map(t => t.label)
-          .join(',')}
-      >
-        <div class={['tabs is-fullwidth'].join(' ')}>
-          <ul>
-            {this.tabsOptions.map((tab, index) => (
-              <li
-                class={{
-                  'is-active': tab.active,
-                  'is-disabled': tab.disabled,
-                  'is-done': tab.done,
-                  'is-failed': tab.failed,
-                  'data-test-tab-item': true,
-                }}
-                data-label={tab.label}
-                data-value={tab.value}
-                data-index={index}
-              >
-                <a onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}>
-                  <span class="step-index">{this.stepIndex(tab, index)}</span>
-                  <span class="step-label">{tab.label}</span>
-                </a>
-                <span class="bubble" style={{ display: tab.hasBubble ? 'inline' : 'none' }}></span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <slot />
-      </Host>
-    )
-  }
-
-  renderTabs() {
-    return (
-      <Host
-        class="bal-tabs"
-        data-value={this.tabsOptions
-          .filter(t => t.active)
-          .map(t => t.value)
-          .join(',')}
-        data-label={this.tabsOptions
-          .filter(t => t.active)
-          .map(t => t.label)
-          .join(',')}
-      >
-        <div class={['tabs', this.rounded ? 'is-rounded' : '', this.expanded ? 'is-fullwidth' : ''].join(' ')}>
-          <ul>
-            {this.tabsOptions.map((tab, index) => (
-              <li
-                class={{
-                  'is-active': tab.active,
-                  'is-disabled': tab.disabled,
-                  'data-test-tab-item': true,
-                }}
-                data-label={tab.label}
-                data-value={tab.value}
-                data-index={index}
-              >
-                <a
-                  href={tab.href}
-                  aria-current="page"
-                  onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}
-                  style={{ display: tab.href === '' ? 'none' : '' }}
-                  class={{ hidden: tab.href === '' }}
-                >
-                  {tab.label}
-                </a>
-                <a
-                  aria-current="page"
-                  onClick={(event: MouseEvent) => this.onSelectTab(event, tab)}
-                  style={{ display: tab.href === '' ? '' : 'none' }}
-                  class={{ hidden: tab.href !== '' }}
-                >
-                  {tab.label}
-                </a>
-                <span class="bubble" style={{ display: tab.hasBubble ? 'inline' : 'none' }}></span>
-              </li>
-            ))}
-            <li class="is-right" style={{ display: this.action ? 'block' : 'none' }}>
-              <bal-button class="data-test-tabs-action" onClick={e => this.actionHasClicked.emit(e)}>
-                {this.actionLabel}
-              </bal-button>
-            </li>
-          </ul>
-        </div>
-        <slot />
       </Host>
     )
   }

@@ -2,10 +2,7 @@ bal-datepicker {
   display: block;
   position: relative;
   font-family: $family-primary;
-
-  &.is-fullwidth {
-    width: 100%;
-  }
+  width: 100%;
 }
 
 .datepicker-trigger-icon {

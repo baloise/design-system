@@ -1,6 +1,7 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
 import readme from '../readme.md'
+import buttonGroup from '../bal-button-group/readme.md'
 import { basic, links, colors, expanded, icons, square, buttonLink, group } from './bal-button.templates.ts'
 
 <span id="story--components-button--basic" style={{ opacity: 0 }}></span>
@@ -59,8 +60,6 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 
 ### Button Group
 
-The .bal-buttons css class helps to place button groups together. The buttons stretche on mobile devices according to their css class like .is-full , .is-half , .is-one-third or .is-two-thirds .
-
 <Canvas mdxSource={group}>
   <bal-doc-app>{html(group)}</bal-doc-app>
 </Canvas>
@@ -68,6 +67,7 @@ The .bal-buttons css class helps to place button groups together. The buttons st
 ## Component Api
 
 <Description markdown={readme} />
+<Description markdown={buttonGroup} />
 
 <br />
 
@@ -75,6 +75,4 @@ import testing from './testing.md'
 
 <Description markdown={testing} />
 
-import github from './github.md'
-
-<Description markdown={github} />
+<bal-doc-github link="/components/bal-button/stories/bal-button.docs.mdx"></bal-doc-github>

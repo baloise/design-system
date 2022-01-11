@@ -11,7 +11,7 @@ import { Meta, Canvas, Source } from '@storybook/addon-docs'
 
 # Typography
 
-We use the `bal-heading` and `bal-text` component to crop the font correctly, otherwise it has font margin top of around 2px.
+We use the `bal-heading` and `bal-text` component to crop the font correctly, otherwise the font has a margin-top of around 2px.
 
 - [Heading](?path=/docs/Components-heading--basic)
 - [Text](?path=/docs/Components-text--basic)
@@ -101,7 +101,7 @@ import dedent from 'ts-dedent'
 
 ## CSS Helper Classes
 
-Out of the typography tokens we create a collection of helper css classes.
+Out of the typography tokens a collection of helper css classes is created.
 
 [Go to the Bulma documentation](https://bulma.io/documentation/helpers/typography-helpers/)
 
@@ -118,7 +118,7 @@ Out of the typography tokens we create a collection of helper css classes.
 
 ## Download
 
-Download our font for print usage below. For web development please continue reading.
+Download the following font for print usage. For web development please continue reading.
 
 <bal-doc-app>
   <bal-doc-download
@@ -130,12 +130,12 @@ Download our font for print usage below. For web development please continue rea
 
 ## Install web font
 
-Our fonts are provide as a [NPM package](https://www.npmjs.com/package/@baloise/design-system-fonts). Besides the font files the according css and sass file are delivered aswell.
+Fonts are provided as [NPM package](https://www.npmjs.com/package/@baloise/design-system-fonts). With the font files also css and sass files are delivered.
 
 > **TIP**
 > The font package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
 
-To install it direktly to your project run the following command.
+To install the fonts directly to your project, run the following command:
 
 ```bash
 npm install @baloise/design-system-fonts
@@ -143,15 +143,15 @@ npm install @baloise/design-system-fonts
 
 ### Usage
 
-Next step is to provide the fonts to our web application. To do so we recommand the tool [copyfiles](https://www.npmjs.com/package/copyfiles) to copy the font files into your asset folder.
+In a next step the fonts have to be provided for the web application. It is recommended to use following tool [copyfiles](https://www.npmjs.com/package/copyfiles) to copy the font files into your assets folder.
 
 ```bash
 npm install copyfiles --save-dev
 ```
 
-After installing our copyfiles dependency we need to define the copy command in our **package.json** file. Add a new script called `copy:fonts` and adjust the second path to your application.
+After installing the copyfiles dependency the copy command needs to be defined in our **package.json** file. Therefore a new script called `copy:fonts` has to be added and the second path to your application has to be adapted.
 
-Place the downloaded fonts into a folder in the public area. Configure the path with the Sass variable `$font-path` or use the default `assets/fonts`.
+The downloaded fonts have to be placed in a folder in the public area. The path with the sass variable `$font-path` has to be configured or the default `assets/fonts` has to be used.
 
 ```scss
 $font-path: 'assets/fonts';
@@ -181,13 +181,13 @@ Then we add the defined script `copy:fonts` in our `postinstall` script. Every t
 ```
 
 > **TIP CI&CD**
-> It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
+> It might be that inside the docker container the `postinstall` does not get executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
 
 ### CDN
 
 Configure the fonts in a css file.
 
-The package `@baloise/design-system-fonts` also delivers a css file with the config for the typography. Add the `fonts.css` into the `head` of the webpage.
+The package `@baloise/design-system-fonts` also delivers a css file with the config for typography. Add the `fonts.css` into the `head` of the webpage.
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/design-system-fonts/lib/fonts.css" />
@@ -202,3 +202,5 @@ Import the css directly into your main TypeScript or JavaScript file.
 ```typescript
 import '@baloise/design-system-components/dist/design-system-fonts/lib/fonts.css'
 ```
+
+<bal-doc-github link="/stories/design/02-typography.stories.mdx"></bal-doc-github>

@@ -28,20 +28,19 @@ const component = BalComponentStory({
   },
   args: {
     invalid: false,
-    expanded: true,
     hasFieldMessage: true,
   },
 })
 
 export default component.story
 
-const excludedControls = ['name', 'expanded']
+const excludedControls = ['name']
 
 export const RadioGroup = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
-  <bal-field :expanded="args.expanded" :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
   <bal-field-label>Label</bal-field-label>
   <bal-field-control>
     <bal-radio-group v-bind="args" v-model="args.value">
@@ -125,7 +124,7 @@ export const SelectButton = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `
-  <bal-field :expanded="args.expanded" :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
   <bal-field-label>Label</bal-field-label>
   <bal-field-control>
     <bal-radio-group v-bind="args" v-model="args.value">

@@ -24,7 +24,7 @@ Below is a basic example to use the reactive form together with the Design Styst
 
 ```html
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="columns is-multiline mt-0">
-  <bal-field class="column is-full py-0" expanded required [disabled]="form.get('email')?.disabled">
+  <bal-field class="column is-full py-0" required [disabled]="form.get('email')?.disabled">
     <bal-field-label required>Email</bal-field-label>
     <bal-field-control>
       <bal-input name="email" placeholder="Enter your email" formControlName="email"></bal-input>
@@ -35,7 +35,7 @@ Below is a basic example to use the reactive form together with the Design Styst
       <bal-ng-error controlName="email" error="isEmail">Not a valid email</bal-ng-error>
     </bal-field-message>
   </bal-field>
-  <bal-field class="column is-half py-0" expanded>...</bal-field>
+  <bal-field class="column is-half py-0">...</bal-field>
 </form>
 ```
 
@@ -60,3 +60,5 @@ export class FormPageComponent {
   }
 }
 ```
+
+<bal-doc-github link="/stories/getting-started/angular/03-05-usage-form.stories.mdx"></bal-doc-github>

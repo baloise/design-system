@@ -14,17 +14,17 @@ import { Meta } from '@storybook/addon-docs'
 The Baloise Design System provides a collection of `scss variables`, which can be altered during `build time`.
 
 > **Hint**
-> This section is still **work-in-progress**, therefore it could be that not all components are customizable.
+> This section is still **work-in-progress**, therefore it might be, that by now all components are customizable.
 
-The list of the variables are inherit from the [bulma framework](https://bulma.io/documentation/customize/variables/).
+The list of the variables are inherited from the [bulma framework](https://bulma.io/documentation/customize/variables/).
 
 - [Main Colors](https://github.com/baloise/design-system/tree/master/packages/components/src/styles/utilities/variables/colors.scss)
 - [Spacing values](https://github.com/baloise/design-system/tree/master/packages/components/src/styles/utilities/variables/spacing.scss)
 - [Typography](https://github.com/baloise/design-system/tree/master/packages/components/src/styles/utilities/variables/typography.scss)
 
-Each component can have its own `*.vars.scss` file with custom or inherit values.
+Each component can have its own `*.vars.scss` file with custom or inherited values.
 
-To change some variables define them before the import statement of the `global.scss` file.
+To change some variables, define them before the import statement of the `global.scss` file.
 
 ```scss
 // variables to override
@@ -34,3 +34,5 @@ $blue: yellow;
 // import of the main stylesheet
 @import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
 ```
+
+<bal-doc-github link="/stories/getting-started/03-customize.stories.mdx"></bal-doc-github>

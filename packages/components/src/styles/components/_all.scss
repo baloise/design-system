@@ -2,11 +2,15 @@
 // The order of the imports is important to override the variables of the css framework bulma
 //
 
+@import 'dropdown.vars.scss';
+
+@import 'node_modules/bulma/sass/components/dropdown.sass';
+
 @import '../../components/bal-accordion/bal-accordion.scss';
 @import '../../components/bal-button/bal-button.scss';
 @import '../../components/bal-card/bal-card.scss';
 @import '../../components/bal-data/bal-data.scss';
-@import '../../components/bal-dropdown/bal-dropdown.scss';
+@import '../../components/bal-popover/bal-popover.scss';
 @import '../../components/bal-footer/bal-footer.scss';
 @import '../../components/bal-heading/bal-heading.scss';
 @import '../../components/bal-hint/bal-hint.scss';
@@ -34,3 +38,5 @@
 @import '../../components/notice/bal-sheet/bal-sheet.scss';
 @import '../../components/notice/bal-snackbar/bal-snackbar.scss';
 @import '../../components/notice/bal-toast/bal-toast.scss';
+
+@import 'dropdown.scss';

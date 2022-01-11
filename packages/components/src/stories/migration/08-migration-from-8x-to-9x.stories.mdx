@@ -1,0 +1,119 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Migration/Migration from 8.x to 9.x"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Migration from 8.x to 9.x
+
+The following workflow walks through the steps of migrating.
+Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
+
+## Tabs, Accordion and Popover
+
+The components tabs, accordion and popover can be use with two-way binding (ngModel or v-model).
+
+```html
+<!-- angular -->
+value = 'tab-a'
+<bal-tabs [(ngModel)]="value">...</bal-tabs>
+
+<!-- vue -->
+value = ref('tab-a')
+<bal-tabs v-model="value">...</bal-tabs>
+...
+```
+
+## Dropdown / Popover
+
+bal-dropdown is renamed to bal-popover.
+
+## Hint
+
+Renamed the methods open and close to present and dismiss.
+
+## Form fields
+
+All the fields are set as expanded. All the expanded attributes in the form section can be removed.
+
+## Card
+
+All the supcomponents of the card are removed to simplify the usage and to
+use existing components and css helpers.
+
+```html
+<!-- - old -->
+<bal-card>
+  <bal-card-title>BaloiseCombi</bal-card-title>
+  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
+  <bal-card-content>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua.
+  </bal-card-content>
+  <bal-card-actions>
+    <bal-button>Main Action</bal-button>
+    <bal-button color="info" outlined>Secondary Action</bal-button>
+  </bal-card-actions>
+</bal-card>
+
+<!-- + new -->
+<bal-card class="p-5">
+  <bal-heading title level="h4" space="none">BaloiseCombi</bal-heading>
+  <bal-heading subtitle level="h5" space="bottom">Police number 70/2.937.458</bal-heading>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua.
+  </p>
+  <bal-button-group position="right">
+    <bal-button>Main Action</bal-button>
+    <bal-button color="info" outlined>Secondary Action</bal-button>
+  </bal-button-group>
+</bal-card>
+...
+```
+
+## Modal
+
+The bal-modal-footer and bal-modal-actions are removed due the adjusting the scroll behaviour.
+
+```html
+<!-- - old -->
+<bal-modal>
+  <bal-modal-header>Modal Title</bal-modal-header>
+  <bal-modal-body>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.
+    </p>
+  </bal-modal-body>
+  <bal-modal-footer>
+    <bal-modal-actions>
+      <bal-button color="link">Cancel</bal-button>
+      <bal-button color="primary">Okay</bal-button>
+    </bal-modal-actions>
+  </bal-modal-footer>
+</bal-modal>
+
+<!-- + new -->
+<bal-modal>
+  <bal-modal-header>Modal Title</bal-modal-header>
+  <bal-modal-body>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.
+    </p>
+    <bal-button-group position="right">
+      <bal-button color="link">Cancel</bal-button>
+      <bal-button color="primary">Okay</bal-button>
+    </bal-button-group>
+  </bal-modal-body>
+</bal-modal>
+...
+```
+
+<bal-doc-github link="/stories/migration/08-migration-from-8x-to-9x.stories.mdx"></bal-doc-github>

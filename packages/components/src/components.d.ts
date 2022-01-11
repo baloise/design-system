@@ -7,12 +7,12 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
 import { BalButtonColor } from "./types";
-import { SpacingCardType } from "./types/padding.types";
 import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
 import { AutocompleteTypes, InputTypes } from "./types/interfaces";
 import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+import { Placement } from "@popperjs/core";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -20,10 +20,6 @@ export namespace Components {
           * If `true` the accordion is used on the bottom of a card
          */
         "card": boolean;
-        /**
-          * Close the accordion
-         */
-        "close": () => Promise<void>;
         /**
           * Bal-Icon of the close trigger button
          */
@@ -37,13 +33,13 @@ export namespace Components {
          */
         "color": ColorTypesBasic;
         /**
-          * Controls if the accordion is collapsed or not
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
-        "isActive": boolean;
+        "debounce": number;
         /**
-          * Open the accordion
+          * Close the accordion
          */
-        "open": () => Promise<void>;
+        "dismiss": () => Promise<void>;
         /**
           * Bal-Icon of the open trigger button
          */
@@ -53,9 +49,17 @@ export namespace Components {
          */
         "openLabel": string;
         /**
+          * Open the accordion
+         */
+        "present": () => Promise<void>;
+        /**
           * Triggers the accordion
          */
         "toggle": () => Promise<void>;
+        /**
+          * Controls if the accordion is collapsed or not
+         */
+        "value": boolean;
     }
     interface BalApp {
     }
@@ -145,6 +149,12 @@ export namespace Components {
          */
         "value"?: string | number;
     }
+    interface BalButtonGroup {
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "position": 'right' | 'center' | '';
+    }
     interface BalCard {
         /**
           * If `true` a light blue border is added to the card.
@@ -159,95 +169,19 @@ export namespace Components {
          */
         "flat": boolean;
         /**
-          * If `true` a card will not have a shadow on mobile.
-         */
-        "flatMobile": boolean;
-        /**
           * If `true` the card background color becomes blue.
          */
         "inverted": boolean;
         /**
-          * Defines the size of the padding grid
-         */
-        "spacing": SpacingCardType;
-        /**
           * If `true` the card loses its border radius.
          */
         "square": boolean;
-        /**
-          * If `true` the card has a limited width on desktop.
-         */
-        "teaser": boolean;
-    }
-    interface BalCardActions {
-        /**
-          * If `true` the buttons start form right to left.
-         */
-        "right": boolean;
-    }
-    interface BalCardButton {
-        /**
-          * If `true`, the user cannot interact with the button.
-         */
-        "disabled": boolean;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href": string | undefined;
-        /**
-          * Name of the icon like `edit`.
-         */
-        "icon": string;
-        /**
-          * Name of the right button icon
-         */
-        "iconRight": string;
-        /**
-          * If `true` the label is hidden and a loading spinner is shown instead.
-         */
-        "loading": boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target": '_blank' | ' _parent' | '_self' | '_top';
-        /**
-          * The type of button.
-         */
-        "type": 'button' | 'reset' | 'submit';
-    }
-    interface BalCardContent {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted": boolean;
-    }
-    interface BalCardHead {
-    }
-    interface BalCardHeading {
-    }
-    interface BalCardSteps {
-    }
-    interface BalCardSubtitle {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted": boolean;
-    }
-    interface BalCardTitle {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted": boolean;
     }
     interface BalCheckbox {
         /**
           * The tabindex of the control.
          */
         "balTabindex": number;
-        /**
-          * If `true`, the checkbox is selected.
-         */
-        "checked": boolean;
         /**
           * If `true`, the user cannot interact with the checkbox.
          */
@@ -273,9 +207,9 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
-          * The value of the control.
+          * If `true`, the checkbox is selected.
          */
-        "value": string;
+        "value": boolean;
     }
     interface BalData {
         /**
@@ -319,11 +253,11 @@ export namespace Components {
          */
         "balTabindex": number;
         /**
-          * Closes the dropdown
+          * Closes the popover
          */
         "close": () => Promise<void>;
         /**
-          * Closes the datepicker dropdown after selection
+          * Closes the datepicker popover after selection
          */
         "closeOnSelect": boolean;
         /**
@@ -338,10 +272,6 @@ export namespace Components {
           * If `true` the component is diabled.
          */
         "disabled": boolean;
-        /**
-          * If `true` the component uses the whole width.
-         */
-        "expanded": boolean;
         /**
           * Returns the native `<input>` element used under the hood.
          */
@@ -375,7 +305,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Opens the dropdown
+          * Opens the popover
          */
         "open": () => Promise<void>;
         /**
@@ -425,6 +355,9 @@ export namespace Components {
         "subject": string;
         "subtitle": string;
     }
+    interface BalDocGithub {
+        "link": string;
+    }
     interface BalDocIcons {
         "icons": string;
     }
@@ -432,53 +365,11 @@ export namespace Components {
         "src": string;
         "text": string;
     }
-    interface BalDropdown {
-        /**
-          * Closes the dropdown menu.
-         */
-        "close": () => Promise<void>;
-        /**
-          * If `true` the field spans over the whole width.
-         */
-        "expanded": boolean;
-        /**
-          * If `true` the dropdown content has a fixed width
-         */
-        "fixedContentWidth": boolean;
-        /**
-          * Returns the `HTMLDivElement` of the content element
-         */
-        "getContentElement": () => Promise<HTMLElement | null>;
-        /**
-          * If `true` the dropdown content is open.
-         */
-        "isActive": boolean;
-        /**
-          * Open the dropdown menu.
-         */
-        "open": () => Promise<void>;
-        /**
-          * Open or closes the dropdown.
-         */
-        "toggle": () => Promise<void>;
-    }
-    interface BalDropdownMenu {
-        /**
-          * Limit the height of the dropdown content. Pass the amount of pixel.
-         */
-        "scrollable": number;
-    }
-    interface BalDropdownTrigger {
-    }
     interface BalField {
         /**
           * If `true` the field loses opacity
          */
         "disabled": boolean;
-        /**
-          * If `true` the component takes the whole width
-         */
-        "expanded": boolean;
         /**
           * If `true` the component gets a invalid style. Only use this if there is no live validation.
          */
@@ -518,10 +409,6 @@ export namespace Components {
     }
     interface BalFieldLabel {
         /**
-          * If `true` the component takes the whole width
-         */
-        "expanded": boolean;
-        /**
           * If `true` a asterix (*) is added to the label text
          */
         "required": boolean;
@@ -531,10 +418,6 @@ export namespace Components {
           * Defines the color of the message.
          */
         "color": '' | ColorTypesExtended;
-        /**
-          * If `true` the component takes the whole width
-         */
-        "expanded": boolean;
     }
     interface BalFileUpload {
         /**
@@ -624,17 +507,17 @@ export namespace Components {
     }
     interface BalHint {
         /**
-          * Closes the hint box.
-         */
-        "close": () => Promise<void>;
-        /**
           * Text for the close button.
          */
         "closeLabel": string;
         /**
+          * Closes the hint box.
+         */
+        "dismiss": () => Promise<void>;
+        /**
           * Opens the hint box.
          */
-        "open": () => Promise<void>;
+        "present": () => Promise<void>;
         /**
           * Disables the close button for tablet and desktop
          */
@@ -846,9 +729,6 @@ export namespace Components {
     interface BalListItemTitle {
     }
     interface BalModal {
-        /**
-          * Closes the modal.
-         */
         "close": () => Promise<void>;
         /**
           * The component to display inside of the modal.
@@ -892,9 +772,6 @@ export namespace Components {
           * Returns a promise that resolves when the modal will dismiss.
          */
         "onWillDismiss": <T = any>() => Promise<OverlayEventDetail<T>>;
-        /**
-          * Opens the modal.
-         */
         "open": () => Promise<void>;
         "overlayIndex": number;
         /**
@@ -902,11 +779,7 @@ export namespace Components {
          */
         "present": () => Promise<void>;
     }
-    interface BalModalActions {
-    }
     interface BalModalBody {
-    }
-    interface BalModalFooter {
     }
     interface BalModalHeader {
     }
@@ -975,6 +848,50 @@ export namespace Components {
          */
         "value": number;
     }
+    interface BalPopover {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * Closes the popover
+         */
+        "dismiss": () => Promise<void>;
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "offsetX": number;
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "offsetY": number;
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "position": Placement;
+        /**
+          * Open the popover
+         */
+        "present": () => Promise<void>;
+        /**
+          * Open or closes the popover
+         */
+        "toggle": () => Promise<void>;
+        /**
+          * If `true` the popover content is open.
+         */
+        "value": boolean;
+    }
+    interface BalPopoverContent {
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "contentWidth": number;
+        /**
+          * Limit the height of the popover content. Pass the amount of pixel.
+         */
+        "scrollable": number;
+    }
     interface BalRadio {
         /**
           * The tabindex of the control.
@@ -1042,7 +959,7 @@ export namespace Components {
          */
         "balTabindex": number;
         /**
-          * Cancel the dropdown
+          * Cancel the popover
          */
         "cancel": () => Promise<void>;
         /**
@@ -1050,17 +967,13 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
-          * Closes the dropdown
+          * Closes the popover
          */
         "close": () => Promise<void>;
         /**
           * If `true` the component is diabled.
          */
         "disabled": boolean;
-        /**
-          * If `true` the component uses the whole width.
-         */
-        "expanded": boolean;
         /**
           * Sets the focus on the input element
          */
@@ -1094,7 +1007,7 @@ export namespace Components {
          */
         "noDataLabel": string | undefined;
         /**
-          * Opens the dropdown
+          * Opens the popover
          */
         "open": () => Promise<void>;
         /**
@@ -1102,7 +1015,7 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
-          * Defines the height of the dropdown list.
+          * Defines the height of the popover list.
          */
         "scrollable": number;
         /**
@@ -1240,7 +1153,7 @@ export namespace Components {
     }
     interface BalTabItem {
         /**
-          * Tell's if the tab is active and the content is visible.
+          * Tells if this route is active and overrides the bal-tabs value property.
          */
         "active": boolean;
         /**
@@ -1304,22 +1217,22 @@ export namespace Components {
          */
         "clickable": boolean;
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
           * If `true` the field expands over the whole width.
          */
         "expanded": boolean;
         /**
           * Defines the layout of the tabs.
          */
-        "interface": 'tabs' | 'steps' | 'o-steps';
-        /**
-          * If you want the rounded tab style.
-         */
-        "rounded": boolean;
+        "interface": 'tabs' | 'tabs-sub' | 'steps' | 'o-steps';
         /**
           * Go to tab with the given value
          */
         "select": (tab: BalTabOption) => Promise<void>;
-        "sync": () => Promise<void>;
+        "value"?: string;
     }
     interface BalTag {
         /**
@@ -1498,59 +1411,17 @@ declare global {
         prototype: HTMLBalButtonElement;
         new (): HTMLBalButtonElement;
     };
+    interface HTMLBalButtonGroupElement extends Components.BalButtonGroup, HTMLStencilElement {
+    }
+    var HTMLBalButtonGroupElement: {
+        prototype: HTMLBalButtonGroupElement;
+        new (): HTMLBalButtonGroupElement;
+    };
     interface HTMLBalCardElement extends Components.BalCard, HTMLStencilElement {
     }
     var HTMLBalCardElement: {
         prototype: HTMLBalCardElement;
         new (): HTMLBalCardElement;
-    };
-    interface HTMLBalCardActionsElement extends Components.BalCardActions, HTMLStencilElement {
-    }
-    var HTMLBalCardActionsElement: {
-        prototype: HTMLBalCardActionsElement;
-        new (): HTMLBalCardActionsElement;
-    };
-    interface HTMLBalCardButtonElement extends Components.BalCardButton, HTMLStencilElement {
-    }
-    var HTMLBalCardButtonElement: {
-        prototype: HTMLBalCardButtonElement;
-        new (): HTMLBalCardButtonElement;
-    };
-    interface HTMLBalCardContentElement extends Components.BalCardContent, HTMLStencilElement {
-    }
-    var HTMLBalCardContentElement: {
-        prototype: HTMLBalCardContentElement;
-        new (): HTMLBalCardContentElement;
-    };
-    interface HTMLBalCardHeadElement extends Components.BalCardHead, HTMLStencilElement {
-    }
-    var HTMLBalCardHeadElement: {
-        prototype: HTMLBalCardHeadElement;
-        new (): HTMLBalCardHeadElement;
-    };
-    interface HTMLBalCardHeadingElement extends Components.BalCardHeading, HTMLStencilElement {
-    }
-    var HTMLBalCardHeadingElement: {
-        prototype: HTMLBalCardHeadingElement;
-        new (): HTMLBalCardHeadingElement;
-    };
-    interface HTMLBalCardStepsElement extends Components.BalCardSteps, HTMLStencilElement {
-    }
-    var HTMLBalCardStepsElement: {
-        prototype: HTMLBalCardStepsElement;
-        new (): HTMLBalCardStepsElement;
-    };
-    interface HTMLBalCardSubtitleElement extends Components.BalCardSubtitle, HTMLStencilElement {
-    }
-    var HTMLBalCardSubtitleElement: {
-        prototype: HTMLBalCardSubtitleElement;
-        new (): HTMLBalCardSubtitleElement;
-    };
-    interface HTMLBalCardTitleElement extends Components.BalCardTitle, HTMLStencilElement {
-    }
-    var HTMLBalCardTitleElement: {
-        prototype: HTMLBalCardTitleElement;
-        new (): HTMLBalCardTitleElement;
     };
     interface HTMLBalCheckboxElement extends Components.BalCheckbox, HTMLStencilElement {
     }
@@ -1606,6 +1477,12 @@ declare global {
         prototype: HTMLBalDocDownloadElement;
         new (): HTMLBalDocDownloadElement;
     };
+    interface HTMLBalDocGithubElement extends Components.BalDocGithub, HTMLStencilElement {
+    }
+    var HTMLBalDocGithubElement: {
+        prototype: HTMLBalDocGithubElement;
+        new (): HTMLBalDocGithubElement;
+    };
     interface HTMLBalDocIconsElement extends Components.BalDocIcons, HTMLStencilElement {
     }
     var HTMLBalDocIconsElement: {
@@ -1617,24 +1494,6 @@ declare global {
     var HTMLBalDocImageElement: {
         prototype: HTMLBalDocImageElement;
         new (): HTMLBalDocImageElement;
-    };
-    interface HTMLBalDropdownElement extends Components.BalDropdown, HTMLStencilElement {
-    }
-    var HTMLBalDropdownElement: {
-        prototype: HTMLBalDropdownElement;
-        new (): HTMLBalDropdownElement;
-    };
-    interface HTMLBalDropdownMenuElement extends Components.BalDropdownMenu, HTMLStencilElement {
-    }
-    var HTMLBalDropdownMenuElement: {
-        prototype: HTMLBalDropdownMenuElement;
-        new (): HTMLBalDropdownMenuElement;
-    };
-    interface HTMLBalDropdownTriggerElement extends Components.BalDropdownTrigger, HTMLStencilElement {
-    }
-    var HTMLBalDropdownTriggerElement: {
-        prototype: HTMLBalDropdownTriggerElement;
-        new (): HTMLBalDropdownTriggerElement;
     };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
@@ -1756,23 +1615,11 @@ declare global {
         prototype: HTMLBalModalElement;
         new (): HTMLBalModalElement;
     };
-    interface HTMLBalModalActionsElement extends Components.BalModalActions, HTMLStencilElement {
-    }
-    var HTMLBalModalActionsElement: {
-        prototype: HTMLBalModalActionsElement;
-        new (): HTMLBalModalActionsElement;
-    };
     interface HTMLBalModalBodyElement extends Components.BalModalBody, HTMLStencilElement {
     }
     var HTMLBalModalBodyElement: {
         prototype: HTMLBalModalBodyElement;
         new (): HTMLBalModalBodyElement;
-    };
-    interface HTMLBalModalFooterElement extends Components.BalModalFooter, HTMLStencilElement {
-    }
-    var HTMLBalModalFooterElement: {
-        prototype: HTMLBalModalFooterElement;
-        new (): HTMLBalModalFooterElement;
     };
     interface HTMLBalModalHeaderElement extends Components.BalModalHeader, HTMLStencilElement {
     }
@@ -1827,6 +1674,18 @@ declare global {
     var HTMLBalPaginationElement: {
         prototype: HTMLBalPaginationElement;
         new (): HTMLBalPaginationElement;
+    };
+    interface HTMLBalPopoverElement extends Components.BalPopover, HTMLStencilElement {
+    }
+    var HTMLBalPopoverElement: {
+        prototype: HTMLBalPopoverElement;
+        new (): HTMLBalPopoverElement;
+    };
+    interface HTMLBalPopoverContentElement extends Components.BalPopoverContent, HTMLStencilElement {
+    }
+    var HTMLBalPopoverContentElement: {
+        prototype: HTMLBalPopoverContentElement;
+        new (): HTMLBalPopoverContentElement;
     };
     interface HTMLBalRadioElement extends Components.BalRadio, HTMLStencilElement {
     }
@@ -1928,15 +1787,8 @@ declare global {
         "bal-accordion": HTMLBalAccordionElement;
         "bal-app": HTMLBalAppElement;
         "bal-button": HTMLBalButtonElement;
+        "bal-button-group": HTMLBalButtonGroupElement;
         "bal-card": HTMLBalCardElement;
-        "bal-card-actions": HTMLBalCardActionsElement;
-        "bal-card-button": HTMLBalCardButtonElement;
-        "bal-card-content": HTMLBalCardContentElement;
-        "bal-card-head": HTMLBalCardHeadElement;
-        "bal-card-heading": HTMLBalCardHeadingElement;
-        "bal-card-steps": HTMLBalCardStepsElement;
-        "bal-card-subtitle": HTMLBalCardSubtitleElement;
-        "bal-card-title": HTMLBalCardTitleElement;
         "bal-checkbox": HTMLBalCheckboxElement;
         "bal-data": HTMLBalDataElement;
         "bal-data-item": HTMLBalDataItemElement;
@@ -1946,11 +1798,9 @@ declare global {
         "bal-doc-app": HTMLBalDocAppElement;
         "bal-doc-color": HTMLBalDocColorElement;
         "bal-doc-download": HTMLBalDocDownloadElement;
+        "bal-doc-github": HTMLBalDocGithubElement;
         "bal-doc-icons": HTMLBalDocIconsElement;
         "bal-doc-image": HTMLBalDocImageElement;
-        "bal-dropdown": HTMLBalDropdownElement;
-        "bal-dropdown-menu": HTMLBalDropdownMenuElement;
-        "bal-dropdown-trigger": HTMLBalDropdownTriggerElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -1971,9 +1821,7 @@ declare global {
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
         "bal-list-item-title": HTMLBalListItemTitleElement;
         "bal-modal": HTMLBalModalElement;
-        "bal-modal-actions": HTMLBalModalActionsElement;
         "bal-modal-body": HTMLBalModalBodyElement;
-        "bal-modal-footer": HTMLBalModalFooterElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
         "bal-navbar": HTMLBalNavbarElement;
         "bal-navbar-brand": HTMLBalNavbarBrandElement;
@@ -1983,6 +1831,8 @@ declare global {
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
         "bal-pagination": HTMLBalPaginationElement;
+        "bal-popover": HTMLBalPopoverElement;
+        "bal-popover-content": HTMLBalPopoverContentElement;
         "bal-radio": HTMLBalRadioElement;
         "bal-radio-group": HTMLBalRadioGroupElement;
         "bal-select": HTMLBalSelectElement;
@@ -2020,13 +1870,13 @@ declare namespace LocalJSX {
          */
         "color"?: ColorTypesBasic;
         /**
-          * Controls if the accordion is collapsed or not
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
-        "isActive"?: boolean;
+        "debounce"?: number;
         /**
           * Emmited when the accordion has changed
          */
-        "onBalCollapse"?: (event: CustomEvent<boolean>) => void;
+        "onBalChange"?: (event: CustomEvent<boolean>) => void;
         /**
           * Bal-Icon of the open trigger button
          */
@@ -2035,6 +1885,10 @@ declare namespace LocalJSX {
           * Label of the open trigger button
          */
         "openLabel"?: string;
+        /**
+          * Controls if the accordion is collapsed or not
+         */
+        "value"?: boolean;
     }
     interface BalApp {
     }
@@ -2140,6 +1994,12 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    interface BalButtonGroup {
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "position"?: 'right' | 'center' | '';
+    }
     interface BalCard {
         /**
           * If `true` a light blue border is added to the card.
@@ -2154,95 +2014,19 @@ declare namespace LocalJSX {
          */
         "flat"?: boolean;
         /**
-          * If `true` a card will not have a shadow on mobile.
-         */
-        "flatMobile"?: boolean;
-        /**
           * If `true` the card background color becomes blue.
          */
         "inverted"?: boolean;
         /**
-          * Defines the size of the padding grid
-         */
-        "spacing"?: SpacingCardType;
-        /**
           * If `true` the card loses its border radius.
          */
         "square"?: boolean;
-        /**
-          * If `true` the card has a limited width on desktop.
-         */
-        "teaser"?: boolean;
-    }
-    interface BalCardActions {
-        /**
-          * If `true` the buttons start form right to left.
-         */
-        "right"?: boolean;
-    }
-    interface BalCardButton {
-        /**
-          * If `true`, the user cannot interact with the button.
-         */
-        "disabled"?: boolean;
-        /**
-          * Specifies the URL of the page the link goes to
-         */
-        "href"?: string | undefined;
-        /**
-          * Name of the icon like `edit`.
-         */
-        "icon"?: string;
-        /**
-          * Name of the right button icon
-         */
-        "iconRight"?: string;
-        /**
-          * If `true` the label is hidden and a loading spinner is shown instead.
-         */
-        "loading"?: boolean;
-        /**
-          * Specifies where to display the linked URL. Only applies when an `href` is provided.
-         */
-        "target"?: '_blank' | ' _parent' | '_self' | '_top';
-        /**
-          * The type of button.
-         */
-        "type"?: 'button' | 'reset' | 'submit';
-    }
-    interface BalCardContent {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted"?: boolean;
-    }
-    interface BalCardHead {
-    }
-    interface BalCardHeading {
-    }
-    interface BalCardSteps {
-    }
-    interface BalCardSubtitle {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted"?: boolean;
-    }
-    interface BalCardTitle {
-        /**
-          * If `true` the card text color becomes white.
-         */
-        "inverted"?: boolean;
     }
     interface BalCheckbox {
         /**
           * The tabindex of the control.
          */
         "balTabindex"?: number;
-        /**
-          * If `true`, the checkbox is selected.
-         */
-        "checked"?: boolean;
         /**
           * If `true`, the user cannot interact with the checkbox.
          */
@@ -2264,7 +2048,7 @@ declare namespace LocalJSX {
          */
         "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * Emitted when the checked property has changed.
+          * Emitted when the value property has changed.
          */
         "onBalChange"?: (event: CustomEvent<boolean>) => void;
         /**
@@ -2272,9 +2056,9 @@ declare namespace LocalJSX {
          */
         "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * The value of the control.
+          * If `true`, the checkbox is selected.
          */
-        "value"?: string;
+        "value"?: boolean;
     }
     interface BalData {
         /**
@@ -2330,7 +2114,7 @@ declare namespace LocalJSX {
          */
         "balTabindex"?: number;
         /**
-          * Closes the datepicker dropdown after selection
+          * Closes the datepicker popover after selection
          */
         "closeOnSelect"?: boolean;
         /**
@@ -2345,10 +2129,6 @@ declare namespace LocalJSX {
           * If `true` the component is diabled.
          */
         "disabled"?: boolean;
-        /**
-          * If `true` the component uses the whole width.
-         */
-        "expanded"?: boolean;
         /**
           * Set this to `true` when the component is placed on a dark background.
          */
@@ -2432,6 +2212,9 @@ declare namespace LocalJSX {
         "subject"?: string;
         "subtitle"?: string;
     }
+    interface BalDocGithub {
+        "link"?: string;
+    }
     interface BalDocIcons {
         "icons"?: string;
     }
@@ -2439,42 +2222,11 @@ declare namespace LocalJSX {
         "src"?: string;
         "text"?: string;
     }
-    interface BalDropdown {
-        /**
-          * If `true` the field spans over the whole width.
-         */
-        "expanded"?: boolean;
-        /**
-          * If `true` the dropdown content has a fixed width
-         */
-        "fixedContentWidth"?: boolean;
-        /**
-          * If `true` the dropdown content is open.
-         */
-        "isActive"?: boolean;
-        /**
-          * Listen when the dropdown opens or closes. Returns the current `isActive` value.
-         */
-        "onBalCollapse"?: (event: CustomEvent<boolean>) => void;
-        "onBalDropdownPrepare"?: (event: CustomEvent<string>) => void;
-    }
-    interface BalDropdownMenu {
-        /**
-          * Limit the height of the dropdown content. Pass the amount of pixel.
-         */
-        "scrollable"?: number;
-    }
-    interface BalDropdownTrigger {
-    }
     interface BalField {
         /**
           * If `true` the field loses opacity
          */
         "disabled"?: boolean;
-        /**
-          * If `true` the component takes the whole width
-         */
-        "expanded"?: boolean;
         /**
           * If `true` the component gets a invalid style. Only use this if there is no live validation.
          */
@@ -2514,10 +2266,6 @@ declare namespace LocalJSX {
     }
     interface BalFieldLabel {
         /**
-          * If `true` the component takes the whole width
-         */
-        "expanded"?: boolean;
-        /**
           * If `true` a asterix (*) is added to the label text
          */
         "required"?: boolean;
@@ -2527,10 +2275,6 @@ declare namespace LocalJSX {
           * Defines the color of the message.
          */
         "color"?: '' | ColorTypesExtended;
-        /**
-          * If `true` the component takes the whole width
-         */
-        "expanded"?: boolean;
     }
     interface BalFileUpload {
         /**
@@ -2902,11 +2646,7 @@ declare namespace LocalJSX {
         "onBalModalWillPresent"?: (event: CustomEvent<void>) => void;
         "overlayIndex": number;
     }
-    interface BalModalActions {
-    }
     interface BalModalBody {
-    }
-    interface BalModalFooter {
     }
     interface BalModalHeader {
     }
@@ -2973,6 +2713,43 @@ declare namespace LocalJSX {
           * Current selected page
          */
         "value"?: number;
+    }
+    interface BalPopover {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "offsetX"?: number;
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "offsetY"?: number;
+        /**
+          * Listen when the popover opens or closes. Returns the current value.
+         */
+        "onBalChange"?: (event: CustomEvent<boolean>) => void;
+        "onBalPopoverPrepare"?: (event: CustomEvent<string>) => void;
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "position"?: Placement;
+        /**
+          * If `true` the popover content is open.
+         */
+        "value"?: boolean;
+    }
+    interface BalPopoverContent {
+        /**
+          * If `true` the field spans over the whole width.
+         */
+        "contentWidth"?: number;
+        /**
+          * Limit the height of the popover content. Pass the amount of pixel.
+         */
+        "scrollable"?: number;
     }
     interface BalRadio {
         /**
@@ -3052,10 +2829,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` the component uses the whole width.
-         */
-        "expanded"?: boolean;
-        /**
           * Enables the slide in animation for the option items.
          */
         "hasMovement"?: boolean;
@@ -3116,7 +2889,7 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * Defines the height of the dropdown list.
+          * Defines the height of the popover list.
          */
         "scrollable"?: number;
         /**
@@ -3262,7 +3035,7 @@ declare namespace LocalJSX {
     }
     interface BalTabItem {
         /**
-          * Tell's if the tab is active and the content is visible.
+          * Tells if this route is active and overrides the bal-tabs value property.
          */
         "active"?: boolean;
         /**
@@ -3322,13 +3095,17 @@ declare namespace LocalJSX {
          */
         "clickable"?: boolean;
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
           * If `true` the field expands over the whole width.
          */
         "expanded"?: boolean;
         /**
           * Defines the layout of the tabs.
          */
-        "interface"?: 'tabs' | 'steps' | 'o-steps';
+        "interface"?: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps';
         /**
           * Emitted when the action button has clicked
          */
@@ -3336,11 +3113,8 @@ declare namespace LocalJSX {
         /**
           * Emitted when the changes has finished.
          */
-        "onBalTabChange"?: (event: CustomEvent<BalTabOption>) => void;
-        /**
-          * If you want the rounded tab style.
-         */
-        "rounded"?: boolean;
+        "onBalChange"?: (event: CustomEvent<string>) => void;
+        "value"?: string;
     }
     interface BalTag {
         /**
@@ -3527,15 +3301,8 @@ declare namespace LocalJSX {
         "bal-accordion": BalAccordion;
         "bal-app": BalApp;
         "bal-button": BalButton;
+        "bal-button-group": BalButtonGroup;
         "bal-card": BalCard;
-        "bal-card-actions": BalCardActions;
-        "bal-card-button": BalCardButton;
-        "bal-card-content": BalCardContent;
-        "bal-card-head": BalCardHead;
-        "bal-card-heading": BalCardHeading;
-        "bal-card-steps": BalCardSteps;
-        "bal-card-subtitle": BalCardSubtitle;
-        "bal-card-title": BalCardTitle;
         "bal-checkbox": BalCheckbox;
         "bal-data": BalData;
         "bal-data-item": BalDataItem;
@@ -3545,11 +3312,9 @@ declare namespace LocalJSX {
         "bal-doc-app": BalDocApp;
         "bal-doc-color": BalDocColor;
         "bal-doc-download": BalDocDownload;
+        "bal-doc-github": BalDocGithub;
         "bal-doc-icons": BalDocIcons;
         "bal-doc-image": BalDocImage;
-        "bal-dropdown": BalDropdown;
-        "bal-dropdown-menu": BalDropdownMenu;
-        "bal-dropdown-trigger": BalDropdownTrigger;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -3570,9 +3335,7 @@ declare namespace LocalJSX {
         "bal-list-item-subtitle": BalListItemSubtitle;
         "bal-list-item-title": BalListItemTitle;
         "bal-modal": BalModal;
-        "bal-modal-actions": BalModalActions;
         "bal-modal-body": BalModalBody;
-        "bal-modal-footer": BalModalFooter;
         "bal-modal-header": BalModalHeader;
         "bal-navbar": BalNavbar;
         "bal-navbar-brand": BalNavbarBrand;
@@ -3582,6 +3345,8 @@ declare namespace LocalJSX {
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
         "bal-pagination": BalPagination;
+        "bal-popover": BalPopover;
+        "bal-popover-content": BalPopoverContent;
         "bal-radio": BalRadio;
         "bal-radio-group": BalRadioGroup;
         "bal-select": BalSelect;
@@ -3607,15 +3372,8 @@ declare module "@stencil/core" {
             "bal-accordion": LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
             "bal-app": LocalJSX.BalApp & JSXBase.HTMLAttributes<HTMLBalAppElement>;
             "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
+            "bal-button-group": LocalJSX.BalButtonGroup & JSXBase.HTMLAttributes<HTMLBalButtonGroupElement>;
             "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
-            "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;
-            "bal-card-button": LocalJSX.BalCardButton & JSXBase.HTMLAttributes<HTMLBalCardButtonElement>;
-            "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
-            "bal-card-head": LocalJSX.BalCardHead & JSXBase.HTMLAttributes<HTMLBalCardHeadElement>;
-            "bal-card-heading": LocalJSX.BalCardHeading & JSXBase.HTMLAttributes<HTMLBalCardHeadingElement>;
-            "bal-card-steps": LocalJSX.BalCardSteps & JSXBase.HTMLAttributes<HTMLBalCardStepsElement>;
-            "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
-            "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
             "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
             "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
             "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;
@@ -3625,11 +3383,9 @@ declare module "@stencil/core" {
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
             "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
             "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
+            "bal-doc-github": LocalJSX.BalDocGithub & JSXBase.HTMLAttributes<HTMLBalDocGithubElement>;
             "bal-doc-icons": LocalJSX.BalDocIcons & JSXBase.HTMLAttributes<HTMLBalDocIconsElement>;
             "bal-doc-image": LocalJSX.BalDocImage & JSXBase.HTMLAttributes<HTMLBalDocImageElement>;
-            "bal-dropdown": LocalJSX.BalDropdown & JSXBase.HTMLAttributes<HTMLBalDropdownElement>;
-            "bal-dropdown-menu": LocalJSX.BalDropdownMenu & JSXBase.HTMLAttributes<HTMLBalDropdownMenuElement>;
-            "bal-dropdown-trigger": LocalJSX.BalDropdownTrigger & JSXBase.HTMLAttributes<HTMLBalDropdownTriggerElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;
@@ -3650,9 +3406,7 @@ declare module "@stencil/core" {
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
-            "bal-modal-actions": LocalJSX.BalModalActions & JSXBase.HTMLAttributes<HTMLBalModalActionsElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
-            "bal-modal-footer": LocalJSX.BalModalFooter & JSXBase.HTMLAttributes<HTMLBalModalFooterElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
             "bal-navbar": LocalJSX.BalNavbar & JSXBase.HTMLAttributes<HTMLBalNavbarElement>;
             "bal-navbar-brand": LocalJSX.BalNavbarBrand & JSXBase.HTMLAttributes<HTMLBalNavbarBrandElement>;
@@ -3662,6 +3416,8 @@ declare module "@stencil/core" {
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
+            "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
+            "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
             "bal-radio": LocalJSX.BalRadio & JSXBase.HTMLAttributes<HTMLBalRadioElement>;
             "bal-radio-group": LocalJSX.BalRadioGroup & JSXBase.HTMLAttributes<HTMLBalRadioGroupElement>;
             "bal-select": LocalJSX.BalSelect & JSXBase.HTMLAttributes<HTMLBalSelectElement>;

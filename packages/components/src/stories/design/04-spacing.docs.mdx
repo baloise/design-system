@@ -2,9 +2,9 @@ import { Story, Canvas, Description } from '@storybook/addon-docs'
 
 # Spacing
 
-Under the hood we use the [Bulma Spacing Helpers](https://bulma.io/documentation/helpers/spacing-helpers/)
+In the background [Bulma Spacing Helpers](https://bulma.io/documentation/helpers/spacing-helpers/) is used.
 
-Bulma provides **margin** `m*` and **padding** `p*` helpers in all directions:
+Bulma provides **margin** `m*` and **padding** `p*` helpers for all directions:
 
 - `*t` for **top**
 - `*r` for **right**
@@ -17,11 +17,11 @@ You need to combine a margin/padding prefix with a direction suffix. For example
 
 - for a `margin-top`, use `mt-*`
 - for a `padding-bottom`, use `pb-_`
-  vfor both margin-left and margin-right, use `mx-_`
+- for both margin-left and margin-right, use `mx-_`
 
 ## Values
 
-Each of these property-direction combinations needs to be appended with one of 16 value suffixes:
+Each of these property-direction combinations needs to be appended with one of the following sixteen value suffixes:
 
 | Suffix | Value Small (Mobile) | Value Medium (Tablet) | Value Large (Desktop) |
 | ------ | -------------------- | --------------------- | --------------------- |
@@ -68,3 +68,5 @@ Each of these property-direction combinations needs to be appended with one of 1
   <bal-text>Margin Top with Padding</bal-text>
 </div>
 ```
+
+<bal-doc-github link="/stories/design/04-spacing.docs.mdx"></bal-doc-github>

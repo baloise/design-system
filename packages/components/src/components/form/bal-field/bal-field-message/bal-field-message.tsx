@@ -10,16 +10,10 @@ export class FieldMessage {
    */
   @Prop() color: '' | ColorTypesExtended = ''
 
-  /**
-   * If `true` the component takes the whole width
-   */
-  @Prop() expanded = false
-
   render() {
     return (
       <Host
         class={{
-          'is-expanded': this.expanded,
           [`help is-${this.color}`]: true,
         }}
       >

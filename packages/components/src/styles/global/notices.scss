@@ -3,25 +3,25 @@
   @import '../../components/notice/bal-snackbar/bal-snackbar.scss';
   @import '../../components/notice/bal-toast/bal-toast.scss';
 
-  position: fixed;
-  display: flex;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  z-index: 1000;
-  pointer-events: none;
-  flex-direction: column;
+  position: fixed !important;
+  display: flex !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  padding: 16px !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  z-index: 1000 !important;
+  pointer-events: none !important;
+  flex-direction: column !important;
 
   .container {
-    width: 100%;
+    width: 100% !important;
   }
 
   &.has-snackbar {
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: flex-end;
     flex-direction: column-reverse;
     margin: 0.5em;

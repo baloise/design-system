@@ -61,31 +61,65 @@ npm install @baloise/design-system-components-angular --save
 > - We recomand to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
 > - We recommand to use the package [@ngx-translate](https://github.com/ngx-translate/core) for the transalations..
 
-import InstallStyles from '../styles/styles-sass.md'
+### Install fonts
 
-<Description markdown={InstallStyles} />
+The font package is included in the @baloise/design-system-components package and also in the proxy libraries.
 
-import InstallFonts from '../styles/styles-fonts.md'
+Next step is to provide the fonts to our web application. To do so we recommand the tool copyfiles (opens new window)to copy the font files into your asset folder.
 
-<Description markdown={InstallFonts} />
+```bash
+npm install copyfiles --save-dev
+```
 
-## Import the ngModule
+After installing our copyfiles dependency we need to define the copy command in our package.json file. Add a new script called copy:fonts and adjust the second path to your application.
+
+```json
+"scripts": {
+  "postinstall": "npm run copy:fonts",
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* src/assets/fonts"
+}
+```
+
+To copy the fonts run the following command.
+
+```bash
+npm run copy:fonts
+```
+
+> **TIP**
+>
+> - Add the generated files to the `.gitignore` file.
+> - It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
+
+### Import styles
+
+Import the `global.scss` Sass file into the main `.scss` file of your application.
+
+```scss
+// change variable before the import
+$font-path: '~assets/fonts';
+
+@import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
+
+// add custom styles below
+```
+
+### Import the ngModule
 
 Import the `BaloiseDesignSystemModule` and add it to your angular module. To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
 
-### app.module.ts
+#### app.module.ts
 
 ```typescript
 import { BrowserModule } from '@angular/platform-browser'
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
-import { BaloisePipeModule } from '@baloise/web-app-pipes-angular'
 import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
 
 import { AppComponent } from './app.component'
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, BaloisePipeModule, BaloiseDesignSystemModule.forRoot()],
+  imports: [BrowserModule, BaloiseDesignSystemModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -93,9 +127,9 @@ import { AppComponent } from './app.component'
 export class AppModule {}
 ```
 
-## HTML Structure
+### HTML Structure
 
-Add the `bal-app` to your `app.component.ts` root element. Within this component we are able to use the defined css classes.
+Add the `bal-app` to your `app.component.html` root element. Within this component we are able to use the defined css classes.
 
 ```html
 ...
@@ -125,3 +159,5 @@ npm start
 
 > **TIP**
 > Your app gets served under [http://localhost:4200](http://localhost:4200).
+
+<bal-doc-github link="/stories/getting-started/angular/01-installation.stories.mdx"></bal-doc-github>

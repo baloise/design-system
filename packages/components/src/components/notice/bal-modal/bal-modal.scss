@@ -1,25 +1,16 @@
 @import 'bal-modal.vars.scss';
 @import 'node_modules/bulma/sass/components/modal';
 
-bal-modal-header {
-  font-family: $family-primary;
-}
-
+bal-modal-header,
 bal-modal-body {
   font-family: $family-primary;
 }
 
-.modal-interface-light {
-  .modal-card-head {
-    border-bottom: 0 !important;
-  }
-  .modal-card-foot {
-    border-top: 0 !important;
-  }
-}
-
 bal-modal-header {
+  border: none;
   position: relative;
+  border-radius: $radius-large !important;
+  background-color: transparent !important;
 
   .modal-card-title {
     padding-right: 40px;
@@ -47,46 +38,42 @@ bal-modal-header {
   }
 }
 
-bal-modal-actions {
-  position: static;
-  width: 100%;
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  min-width: 100%;
+.modal-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-x: none;
+  overflow-y: auto;
+}
 
-  bal-button {
-    margin-right: 8px;
-  }
+.modal-content,
+.modal-card {
+  max-height: none !important;
+  overflow: initial !important;
+}
 
-  bal-button:first-child {
-    margin-right: 0;
-  }
+.modal-content {
+  padding: 0;
+  margin-top: 48px;
+  margin-bottom: 48px;
 }
 
 @include mobile() {
+  bal-modal-body {
+    flex: 1;
+  }
+
   .modal-content {
     margin: 0;
-    padding: 0;
+    padding: 8px;
+    min-height: 100%;
     height: 100%;
-    max-height: 100%;
 
     .modal-card {
       margin: 0;
-      height: 100%;
-      max-height: 100%;
-    }
-  }
-
-  bal-modal-actions {
-    .buttons {
-      width: 100%;
-      display: flex;
-      flex-direction: row !important;
-
-      bal-button {
-        flex: 1;
-      }
+      min-height: 100%;
     }
   }
 }

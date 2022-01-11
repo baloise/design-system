@@ -1,12 +1,21 @@
 {
-  "version": "6.1.0",
+  "version": "9.0.0",
   "granularPathspec": false,
   "packages": [
     "packages/*"
   ],
   "command": {
     "version": {
-      "message": "chore(release): publish %s"
+      "message": "chore(release): %s",
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "changelogPreset": "conventionalcommits",
+      "createRelease": "github",
+      "exact": true,
+      "forcePublish": true
+    },
+    "publish": {
+      "tempTag": true
     }
   },
   "ignoreChanges": [
@@ -17,11 +26,13 @@
     "**/.build/**",
     "**/generated/**",
     "**/stories/**",
+    "**/test/**",
     "**/*.spec.ts",
     "**/*.test.ts",
     "**/*.e2e.ts",
     "**/*.md",
     "**/*.mdx",
+    "**/*.stories.ts",
     "**/*.html"
   ]
 }

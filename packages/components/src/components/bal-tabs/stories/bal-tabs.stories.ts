@@ -13,43 +13,39 @@ export default component.story
 const Template = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-tabs v-bind="args">
-  <bal-tab-item value="tab-a" label="Tab A" :active="true">Content of Tab A</bal-tab-item>
+  template: `<bal-tabs v-bind="args" v-model="args.value">
+  <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
   <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
   <bal-tab-item bubble value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
   <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
 </bal-tabs>`,
 })
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const MainNavigation = Template.bind({})
+MainNavigation.args = {
+  value: 'tab-b',
   action: true,
   expanded: false,
-  clickable: true,
-  rounded: false,
   actionLabel: 'Action',
   interface: 'tabs',
 }
-Basic.parameters = { ...component.sourceCode(Basic) }
+MainNavigation.parameters = { ...component.sourceCode(MainNavigation), controls: { exclude: ['clickable'] } }
 
-export const Round = Template.bind({})
-Round.args = {
-  action: false,
-  expanded: true,
-  clickable: true,
-  rounded: true,
-  actionLabel: '',
-  interface: 'tabs',
+export const SubNavigation = Template.bind({})
+SubNavigation.args = {
+  value: 'tab-b',
+  expanded: false,
+  interface: 'tabs-sub',
 }
-Round.parameters = { ...component.sourceCode(Round) }
+SubNavigation.parameters = {
+  ...component.sourceCode(SubNavigation),
+  controls: { exclude: ['clickable', 'action', 'actionLabel'] },
+}
 
 export const Steps = Template.bind({})
 Steps.args = {
-  action: false,
-  expanded: true,
+  value: 'tab-b',
   clickable: true,
-  rounded: true,
-  actionLabel: '',
   interface: 'o-steps',
 }
-Steps.parameters = { ...component.sourceCode(Steps) }
+Steps.parameters = { ...component.sourceCode(Steps), controls: { exclude: ['expanded', 'action', 'actionLabel'] } }

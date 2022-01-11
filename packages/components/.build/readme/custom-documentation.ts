@@ -90,24 +90,6 @@ export const CustomDocumentationGenerator: OutputTargetDocsCustom = {
         } catch (err) {
           console.error(err)
         }
-
-        // Github link
-        try {
-          const content = [
-            '<br />',
-            SPACE,
-            '## Feedback',
-            SPACE,
-            'Help us improve this component by providing feedback, asking questions, and leaving any other comments on [GitHub](https://github.com/baloise/design-system).',
-            SPACE,
-            '<br />',
-            SPACE,
-            `[✍️ Edit on GitHub – PRs welcome!](https://github.com/baloise/design-system/tree/master/packages/components/${component.filePath.replace('./src', 'src')})`,
-          ]
-          writeFileSync(path.join(docsPath, 'github.md'), content.join(NEWLINE))
-        } catch (err) {
-          console.error(err)
-        }
       }
     }
 

@@ -28,22 +28,17 @@ export class Checkbox {
   @Prop() balTabindex = 0
 
   /**
-   * The value of the control.
-   */
-  @Prop() value = 'on'
-
-  /**
    * If `true`, the checkbox is selected.
    */
-  @Prop({ mutable: true, reflect: true }) checked = false
+  @Prop({ mutable: true, reflect: true }) value = false
 
   /**
    * Update the native input element when the value changes
    */
-  @Watch('checked')
+  @Watch('value')
   protected valueChanged(newValue: boolean, oldValue: boolean) {
     if (newValue !== oldValue) {
-      this.balChange.emit(this.checked)
+      this.balChange.emit(this.value)
     }
   }
 
@@ -58,7 +53,7 @@ export class Checkbox {
   @Prop() inverted = false
 
   /**
-   * Emitted when the checked property has changed.
+   * Emitted when the value property has changed.
    */
   @Event() balChange!: EventEmitter<boolean>
 
@@ -115,7 +110,7 @@ export class Checkbox {
     }
     ev.preventDefault()
 
-    this.checked = !this.checked
+    this.value = !this.value
   }
 
   render() {
@@ -123,7 +118,7 @@ export class Checkbox {
       <Host
         aria-disabled={this.disabled ? 'true' : null}
         aria-hidden={this.disabled ? 'true' : null}
-        aria-checked={`${this.checked}`}
+        aria-checked={`${this.value}`}
         aria-focused={this.hasFocus ? 'true' : null}
         role="checkbox"
         onClick={this.onClick}
@@ -142,9 +137,9 @@ export class Checkbox {
           }}
           type="checkbox"
           id={this.inputId}
-          checked={this.checked}
+          checked={this.value}
           tabindex={this.balTabindex}
-          aria-checked={`${this.checked}`}
+          aria-checked={`${this.value}`}
           disabled={this.disabled}
           onFocus={e => this.onInputFocus(e)}
           onBlur={e => this.onInputBlur(e)}

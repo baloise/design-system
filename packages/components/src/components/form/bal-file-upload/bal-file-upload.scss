@@ -3,6 +3,10 @@
 bal-file-upload {
   position: static;
   display: block;
+
+  bal-list {
+    margin-top: 16px;
+  }
 }
 
 span.file-cta,
@@ -21,10 +25,6 @@ span.file-cta {
 .file-label:hover .file-cta {
   background: $blue-1;
   color: $blue;
-}
-
-bal-list {
-  margin-top: 16px;
 }
 
 .file-cta span.file-label {
