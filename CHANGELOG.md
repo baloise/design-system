@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.0.1](https://github.com/baloise/design-system/compare/v9.0.0...v9.0.1) (2022-01-11)
+
+
+### Bug Fixes
+
+* **hint:** adjust mobile view ([df56521](https://github.com/baloise/design-system/commit/df5652119d8dcc5768f417bd47c12176e6a8f61e))
+* **list:** remove margin top ([500753d](https://github.com/baloise/design-system/commit/500753d4ce8b459ca0dae795868e24f9df6efe42))
+
+
+
 ## [9.0.0](https://github.com/baloise/design-system/compare/v8.0.1...v9.0.0) (2022-01-10)
 
 Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.dev/?path=/story/migration-migration-from-8-x-to-9-x--page)
