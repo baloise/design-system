@@ -13,7 +13,7 @@ if (process.env.STORYBOOK_MODE === 'prod') {
       type: 'docs-json',
       file: './generated/components.json',
     },
-    VueGenerator('../../public/build/design-system-components.esm.js', './.storybook/vue/components.ts', false),
+    VueGenerator('../../public/build/design-system-next-components.esm.js', './.storybook/vue/components.ts', false),
   ]
 } else {
   outputTargets = [
