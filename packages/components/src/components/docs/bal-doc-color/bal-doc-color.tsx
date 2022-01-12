@@ -25,19 +25,19 @@ export class BalDocColor {
             class={`has-background-${this.color} has-radius-large-top is-flex is-justify-content-center is-align-items-center`}
           >
             <strong
-              class={`${this.inverted ? 'has-text-white' : 'has-text-blue'} is-size-2 py-4`}
+              class={`${this.inverted ? 'has-text-white' : 'has-text-blue'} is-size-3 py-4`}
               style={{ minHeight: '80px' }}
             >
               {this.background ? 'A-a' : ''}
             </strong>
           </div>
           <div class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center p-2">
-            <h5 class="title is-size-5 m-0">{subject}</h5>
-            <small class="my-1 has-text-center" style={{ minHeight: '17px' }}>
+            <h5 class="title is-size-6 m-0">{subject}</h5>
+            <small class="mb-2 has-text-center" style={{ minHeight: '17px' }}>
               {this.description}
             </small>
-            <p class="has-text-grey-5">{this.hexVars}</p>
-            <p class="has-text-grey-6">{scssVars}</p>
+            <p class="has-text-grey-5 m-0">{this.hexVars}</p>
+            <p class="has-text-grey-5 m-0">{scssVars}</p>
           </div>
         </div>
       </Host>

@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
+import { BackgroundColors, ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
 import { BalButtonColor } from "./types";
 import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
@@ -164,7 +164,7 @@ export namespace Components {
         /**
           * Defines the color of the card.
          */
-        "color": ColorTypes | '';
+        "color": BackgroundColors;
         /**
           * If `true` the card loses its shadow.
          */
@@ -1268,6 +1268,10 @@ export namespace Components {
           * Defines the size of the paragraph
          */
         "size": FontSizeType;
+        /**
+          * Defines at which position the heading has spacing.
+         */
+        "space": 'none' | 'bottom' | 'top' | 'all' | '';
     }
     interface BalTextarea {
         /**
@@ -2013,7 +2017,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the card.
          */
-        "color"?: ColorTypes | '';
+        "color"?: BackgroundColors;
         /**
           * If `true` the card loses its shadow.
          */
@@ -3158,6 +3162,10 @@ declare namespace LocalJSX {
           * Defines the size of the paragraph
          */
         "size"?: FontSizeType;
+        /**
+          * Defines at which position the heading has spacing.
+         */
+        "space"?: 'none' | 'bottom' | 'top' | 'all' | '';
     }
     interface BalTextarea {
         /**

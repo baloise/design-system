@@ -26,16 +26,37 @@ export class Text {
    */
   @Prop() color: ColorTypes | '' = ''
 
+  /**
+   * Defines at which position the heading has spacing.
+   */
+  @Prop() space: 'none' | 'bottom' | 'top' | 'all' | '' = ''
+
+  get spacing(): string {
+    switch (this.space) {
+      case 'all':
+        return 'my-4'
+      case 'top':
+        return 'mt-4'
+      case 'bottom':
+        return 'mb-4'
+      case '':
+        return this.paragraph ? 'mb-4' : ''
+      default:
+        return ''
+    }
+  }
+
   render() {
     const Text = this.paragraph ? 'p' : 'span'
     return (
-      <Host style={{ display: this.paragraph ? 'block' : 'inline' }}>
+      <Host style={{ display: this.paragraph ? 'block' : 'inline' }} class={{ [this.spacing]: true }}>
         <Text
           class={{
             [`has-text-${this.color}`]: this.color !== '',
             'is-small': this.size === 'small',
             'is-lead': this.size === 'lead',
             'is-bold': this.bold,
+            'm-0': true,
           }}
         >
           <slot></slot>

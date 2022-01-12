@@ -21,30 +21,6 @@ bal-card,
   }
 
   &.has-border {
-    border: 1px solid $blue-2;
-  }
-
-  &.is-inverted {
-    color: $white;
-  }
-
-  &.is-primary {
-    background-color: $blue-1;
-  }
-
-  &.is-info {
-    background-color: $blue;
-  }
-
-  &.is-success {
-    background-color: $success;
-  }
-
-  &.is-warning {
-    background-color: $warning;
-  }
-
-  &.is-danger {
-    background-color: $danger;
+    border: 1px solid $border;
   }
 }

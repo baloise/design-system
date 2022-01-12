@@ -2,6 +2,7 @@ bal-text {
   @include margin(0);
   @include padding(0);
 
+  box-sizing: content-box;
   position: static;
   word-break: break-word;
 }
