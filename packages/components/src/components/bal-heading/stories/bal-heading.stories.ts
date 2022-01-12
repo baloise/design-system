@@ -12,7 +12,7 @@ const component = BalComponentStory({
 
 export default component.story
 
-const excludedControls = ['visualLevels']
+const excludedControls = ['visualLevel']
 
 const Template = args => ({
   components: { ...component.components },
@@ -25,8 +25,9 @@ Basic.args = {
   content: 'Heading',
   level: 'h1',
   subtitle: false,
-  inverted: false,
   space: 'bottom',
+  color: '',
+  inverted: false,
 }
 Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
 
@@ -35,7 +36,8 @@ Subtitle.args = {
   content: 'Subtitle',
   level: 'h3',
   subtitle: true,
-  inverted: false,
   space: 'bottom',
+  color: '',
+  inverted: false,
 }
 Subtitle.parameters = { ...component.sourceCode(Subtitle), controls: { exclude: excludedControls } }

@@ -25,5 +25,6 @@ Basic.args = {
   color: '',
   size: '',
   bold: false,
+  paragraph: false,
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
