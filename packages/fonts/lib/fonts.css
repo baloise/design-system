@@ -1,17 +1,43 @@
 @font-face {
-  font-family: 'MetaPro';
-  font-style: normal;
-  font-weight: 400;
-  font-display: fallback;
-  src: local('MetaPro'), local('MetaStd-Normal'), url('/assets/fonts/MetaStd-Normal.woff2') format('woff2'),
-    url('/assets/fonts/MetaStd-Normal.woff') format('woff'), url('/assets/fonts/MetaStd-Normal.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'MetaPro';
+  font-family: 'BaloiseCreateHeadline';
   font-style: normal;
   font-weight: 700;
   font-display: fallback;
-  src: local('MetaStd-Medium'), url('/assets/fonts/MetaStd-Medium.woff2') format('woff2'),
-    url('/assets/fonts/MetaStd-Medium.woff') format('woff'), url('/assets/fonts/MetaStd-Medium.ttf') format('truetype');
+  src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-Bold'),
+    url('/assets/fonts/BaloiseCreateHeadline-Bold.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateHeadline-Bold.woff') format('woff'),
+    url('/assets/fonts/BaloiseCreateHeadline-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BaloiseCreateHeadline';
+  font-style: normal;
+  font-weight: 300;
+  font-display: fallback;
+  src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-Light'),
+    url('/assets/fonts/BaloiseCreateHeadline-Light.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateHeadline-Light.woff') format('woff'),
+    url('/assets/fonts/BaloiseCreateHeadline-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BaloiseCreateText';
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: local('BaloiseCreateText'), local('BaloiseCreateText-Bold'),
+    url('/assets/fonts/BaloiseCreateText-Bold.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateText-Bold.woff') format('woff'),
+    url('/assets/fonts/BaloiseCreateText-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BaloiseCreateText';
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: local('BaloiseCreateText'), local('BaloiseCreateText-Regular'),
+    url('/assets/fonts/BaloiseCreateText-Regular.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateText-Regular.woff') format('woff'),
+    url('/assets/fonts/BaloiseCreateText-Regular.ttf') format('truetype');
 }

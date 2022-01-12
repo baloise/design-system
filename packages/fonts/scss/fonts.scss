@@ -1,30 +1,57 @@
-$font-normal-ttf: str-insert('/MetaStd-Normal.ttf', $font-path, 0);
-$font-normal-woff: str-insert('/MetaStd-Normal.woff', $font-path, 0);
-$font-normal-woff2: str-insert('/MetaStd-Normal.woff2', $font-path, 0);
-
-$font-medium-ttf: str-insert('/MetaStd-Medium.ttf', $font-path, 0);
-$font-medium-woff: str-insert('/MetaStd-Medium.woff', $font-path, 0);
-$font-medium-woff2: str-insert('/MetaStd-Medium.woff2', $font-path, 0);
+$font-heading-bold-ttf: str-insert('/BaloiseCreateHeadline-Bold.ttf', $font-path, 0);
+$font-heading-bold-woff: str-insert('/BaloiseCreateHeadline-Bold.woff', $font-path, 0);
+$font-heading-bold-woff2: str-insert('/BaloiseCreateHeadline-Bold.woff2', $font-path, 0);
 
 @font-face {
-  font-family: 'MetaPro';
-  font-style: normal;
-  font-weight: 400;
-  font-display: fallback;
-  src: local('MetaPro');
-  src: local('MetaStd-Normal');
-  src: url($font-normal-woff2) format('woff2');
-  src: url($font-normal-woff) format('woff');
-  src: url($font-normal-ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'MetaPro';
+  font-family: BaloiseCreateHeadline;
   font-style: normal;
   font-weight: 700;
   font-display: fallback;
-  src: local('MetaStd-Medium');
-  src: url($font-medium-woff2) format('woff2');
-  src: url($font-medium-woff) format('woff');
-  src: url($font-medium-ttf) format('truetype');
+  src: local('BaloiseCreateHeadline');
+  src: local('BaloiseCreateHeadline-Bold');
+  src: url($font-heading-bold-ttf) format('truetype');
+  src: url($font-heading-bold-woff2) format('woff2');
+  src: url($font-heading-bold-woff) format('woff');
+}
+
+$font-heading-light-ttf: str-insert('/BaloiseCreateHeadline-Light.ttf', $font-path, 0);
+$font-heading-light-woff: str-insert('/BaloiseCreateHeadline-Light.woff', $font-path, 0);
+$font-heading-light-woff2: str-insert('/BaloiseCreateHeadline-Light.woff2', $font-path, 0);
+
+@font-face {
+  font-family: BaloiseCreateHeadline;
+  font-style: normal;
+  font-weight: 300;
+  font-display: fallback;
+  src: local('BaloiseCreateHeadline-Light');
+  src: url($font-heading-light-ttf) format('truetype');
+  src: url($font-heading-light-woff2) format('woff2');
+  src: url($font-heading-light-woff) format('woff');
+}
+
+$font-text-bold-woff: str-insert('/BaloiseCreateText-Bold.woff', $font-path, 0);
+$font-text-bold-woff2: str-insert('/BaloiseCreateText-Bold.woff2', $font-path, 0);
+
+@font-face {
+  font-family: BaloiseCreateText;
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: local('BaloiseCreateText-Bold');
+  src: url($font-text-bold-woff2) format('woff2');
+  src: url($font-text-bold-woff) format('woff');
+}
+
+$font-text-regular-woff: str-insert('/BaloiseCreateText-Regular.woff', $font-path, 0);
+$font-text-regular-woff2: str-insert('/BaloiseCreateText-Regular.woff2', $font-path, 0);
+
+@font-face {
+  font-family: BaloiseCreateText;
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: local('BaloiseCreateText');
+  src: local('BaloiseCreateText-Bold');
+  src: url($font-text-regular-woff2) format('woff2');
+  src: url($font-text-regular-woff) format('woff');
 }

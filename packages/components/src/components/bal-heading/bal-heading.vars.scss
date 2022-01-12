@@ -1,5 +1,9 @@
 // https://bulma.io/documentation/elements/title/#variables
 
-$title-weight: $weight-normal !default;
-$subtitle-weight: $weight-normal !default;
+$title-family: BaloiseCreateHeadline, monospace, Arial, sans-serif !default;
+$subtitle-family: BaloiseCreateHeadline, monospace, Arial, sans-serif !default;
+
+$title-weight: $weight-bold !default;
+$title-color: $text-strong !default;
+$subtitle-weight: $weight-light !default;
 $subtitle-color: $text-strong !default;

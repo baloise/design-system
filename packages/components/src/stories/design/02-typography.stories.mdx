@@ -22,12 +22,24 @@ import dedent from 'ts-dedent'
 
 ## Headings
 
+### Display
+
+<Canvas withSource="none">
+  <bal-doc-app>
+    <bal-heading level="display">Display (H1) Bold</bal-heading>
+    <bal-heading subtitle level="display">
+      Display (H1) Light
+    </bal-heading>
+  </bal-doc-app>
+</Canvas>
+
 ### Heading 1
 
 <Canvas withSource="none">
   <bal-doc-app>
-    <bal-heading level="h1" space="none">
-      Heading 1 Normal 48px/56px
+    <bal-heading level="h1">Heading 1 Bold</bal-heading>
+    <bal-heading subtitle level="h1">
+      Heading 1 Light
     </bal-heading>
   </bal-doc-app>
 </Canvas>
@@ -36,8 +48,9 @@ import dedent from 'ts-dedent'
 
 <Canvas withSource="none">
   <bal-doc-app>
-    <bal-heading level="h2" space="none">
-      Heading 2 Normal 40px/48px
+    <bal-heading level="h2">Heading 2 Bold</bal-heading>
+    <bal-heading subtitle level="h2">
+      Heading 2 Light
     </bal-heading>
   </bal-doc-app>
 </Canvas>
@@ -46,12 +59,7 @@ import dedent from 'ts-dedent'
 
 <Canvas withSource="none">
   <bal-doc-app>
-    <bal-heading level="h3" space="none">
-      Heading 3 Bold 32px/40px
-    </bal-heading>
-    <bal-heading level="h3" space="none" subtitle>
-      Heading 3 Normal 32px/40px
-    </bal-heading>
+    <bal-heading level="h3">Heading 3 Bold</bal-heading>
   </bal-doc-app>
 </Canvas>
 
@@ -59,32 +67,44 @@ import dedent from 'ts-dedent'
 
 <Canvas withSource="none">
   <bal-doc-app>
-    <bal-heading level="h4" space="none">
-      Heading 4 Bold 24px/32px
-    </bal-heading>
-    <bal-heading level="h4" space="none" subtitle>
-      Heading 4 Normal 24px/32px
-    </bal-heading>
+    <bal-heading level="h4">Heading 4 Bold</bal-heading>
   </bal-doc-app>
 </Canvas>
 
 ## Paragraphs & Link
 
+### Lead
+
 <Canvas withSource="none">
   <bal-doc-app>
-    <bal-text bold>Paragraph MetaPro Normal</bal-text>
-    <bal-text>Paragraph MetaPro Normal</bal-text>
-    <a className="is-link" href="">
-      <bal-text>Link cyan</bal-text>
+    <p className="is-lead is-bold">Paragraph Lead Bold</p>
+    <p className="is-lead">Paragraph Lead</p>
+    <a className="is-lead is-link" href="">
+      Lead Link
     </a>
-    <br />
-    <br />
-    <bal-text small bold>
-      Small Paragraph MetaPro Normal
-    </bal-text>
-    <bal-text small>Small Paragraph MetaPro Normal</bal-text>
+  </bal-doc-app>
+</Canvas>
+
+### Regular / Normal
+
+<Canvas withSource="none">
+  <bal-doc-app>
+    <p className="is-bold">Paragraph Bold</p>
+    <p>Paragraph</p>
     <a className="is-link" href="">
-      <bal-text small>Small Link cyan</bal-text>
+      Link
+    </a>
+  </bal-doc-app>
+</Canvas>
+
+### Small Text
+
+<Canvas withSource="none">
+  <bal-doc-app>
+    <p className="is-small is-bold">Paragraph Small Bold</p>
+    <p className="is-small">Paragraph Small</p>
+    <a className="is-small is-link" href="">
+      Small Link
     </a>
   </bal-doc-app>
 </Canvas>
@@ -95,7 +115,7 @@ import dedent from 'ts-dedent'
   <bal-doc-app>
     <label className="label">Label</label>
     <br />
-    <span className="is-small has-text-hint">Field Message</span>
+    <span className="is-small has-text-info">Field Message</span>
   </bal-doc-app>
 </Canvas>
 

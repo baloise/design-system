@@ -26,7 +26,7 @@ export class Heading {
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop() space: 'all' | 'none' | 'top' | 'bottom' = 'all'
+  @Prop() space: 'none' | 'bottom' | 'top' | 'all' = 'bottom'
 
   /**
    * The theme type of the toast. Given by bulma our css framework.
@@ -39,6 +39,9 @@ export class Heading {
   @Prop() inverted = false
 
   get fontSize(): string {
+    if (this.level === 'display') {
+      return `is-size-display`
+    }
     const size = `${this.level}`
     return `is-size-${size.replace('h', '')}`
   }
@@ -48,10 +51,6 @@ export class Heading {
       return `has-text-white`
     }
 
-    if (this.color === 'info') {
-      return `has-text-hint`
-    }
-
     if (this.color !== '') {
       return `has-text-${this.color}`
     }
@@ -59,21 +58,40 @@ export class Heading {
     return ''
   }
 
+  margins(spacingLevel: number) {
+    const spacing = []
+
+    if (this.space === 'top' || this.space === 'all') {
+      spacing.push(`mt-${spacingLevel}`)
+    }
+
+    if (this.space === 'bottom' || this.space === 'all') {
+      spacing.push(`mb-${spacingLevel}`)
+    }
+
+    return spacing.join(' ')
+  }
+
   get spacing(): string {
-    switch (this.space) {
-      case 'none':
-        return 'm-0'
-      case 'top':
-        return 'mb-0'
-      case 'bottom':
-        return 'mt-0'
+    switch (this.level) {
+      case 'display':
+        return this.margins(4)
+      case 'h1':
+        return this.margins(3)
+      case 'h2':
+      case 'h3':
+      case 'h4':
+      case 'h5':
+        return this.margins(2)
+      case 'h6':
+        return this.margins(1)
       default:
         return ''
     }
   }
 
   render() {
-    const Heading = this.level
+    const Heading = this.level === 'display' ? 'h1' : this.level
 
     return (
       <Host>

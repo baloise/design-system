@@ -68,33 +68,46 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 .sbdocs.sbdocs-h2,
 .sbdocs.sbdocs-h3,
 .sbdocs.sbdocs-h4,
-.sbdocs.sbdocs-h5 {
-  font-family: MetaPro, Arial, sans-serif;
-  color: #000d6e;
-  font-weight: 400;
+.sbdocs.sbdocs-h5,
+.sbdocs.sbdocs-h6 {
+  font-family: BaloiseCreateHeadline, Arial, sans-serif;
+  color: #000;
+  font-weight: 700;
 }
 
 .sbdocs.sbdocs-h1 {
-  font-size: 44px;
+  font-size: 48px;
+  line-height: 56px;
 }
 
 .sbdocs.sbdocs-h2 {
-  font-size: 36px;
+  font-size: 40px;
+  line-height: 48px;
 }
 
 .sbdocs.sbdocs-h3 {
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
 }
 
 .sbdocs.sbdocs-h4 {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 28px;
+  line-height: 32px;
 }
 
 .sbdocs.sbdocs-h5 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.sbdocs.sbdocs-h6 {
   font-size: 16px;
-  font-weight: 700;
+  line-height: 24px;
+}
+
+.sbdocs-a {
+  color: #000d6e;
+  text-decoration: underline;
 }
 
 /* *************************************** */
