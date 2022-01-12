@@ -17,7 +17,13 @@ export const colors = `<div>
 
 export const spacing = `<div>
 <div class="has-background-blue-1 is-flex mb-3">
+  <bal-heading level="h4" space="all">All</bal-heading>
+</div>
+<div class="has-background-blue-1 is-flex mb-3">
   <bal-heading level="h4" space="none">None</bal-heading>
+</div>
+<div class="has-background-blue-1 is-flex mb-3">
+  <bal-heading level="h4" space="top">Top</bal-heading>
 </div>
 <div class="has-background-blue-1 is-flex mb-3">
   <bal-heading level="h4" space="bottom">Bottom</bal-heading>
