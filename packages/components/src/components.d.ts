@@ -1259,7 +1259,7 @@ export namespace Components {
         /**
           * Defines the color of the text.
          */
-        "color": ColorTypes | 'hint' | '';
+        "color": ColorTypes | '';
         /**
           * If `true` the text is shown as a block
          */
@@ -3149,7 +3149,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the text.
          */
-        "color"?: ColorTypes | 'hint' | '';
+        "color"?: ColorTypes | '';
         /**
           * If `true` the text is shown as a block
          */

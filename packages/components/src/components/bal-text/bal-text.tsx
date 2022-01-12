@@ -24,7 +24,7 @@ export class Text {
   /**
    * Defines the color of the text.
    */
-  @Prop() color: ColorTypes | 'hint' | '' = ''
+  @Prop() color: ColorTypes | '' = ''
 
   render() {
     const Text = this.paragraph ? 'p' : 'span'
