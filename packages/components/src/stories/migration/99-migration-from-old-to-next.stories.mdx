@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Migration/Migration from old to next"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Migration from old to next
+
+The following workflow walks through the steps of migrating.
+Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
+
+## Card
+
+The interface of the card is the same, however the usage of the typography changed.
+The first `bal-heading` has now the level `h5` and the subtitle is changed into a simple paragraph.
+
+```html
+<!-- old -->
+<bal-card class="p-5">
+  <bal-heading level="h4" space="none">BaloiseCombi</bal-heading>
+  <bal-heading subtitle level="h5" space="bottom" color="info">Police number 70/2.937.458</bal-heading>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua.
+  </p>
+  <bal-button-group position="right" class="mt-5">
+    <bal-button color="info" outlined>Secondary Action</bal-button>
+    <bal-button>Main Action</bal-button>
+  </bal-button-group>
+</bal-card>
+
+<!-- new -->
+<bal-card class="p-5">
+  <bal-heading level="h5" space="none">BaloiseCombi</bal-heading>
+  <p>Police number 70/2.937.458</p>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua.
+  </p>
+  <bal-button-group position="right" class="mt-5">
+    <bal-button color="info" outlined>Secondary Action</bal-button>
+    <bal-button>Main Action</bal-button>
+  </bal-button-group>
+</bal-card>
+```

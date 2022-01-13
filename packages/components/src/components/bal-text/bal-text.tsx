@@ -17,9 +17,9 @@ export class Text {
   @Prop() bold = false
 
   /**
-   * If `true` the text is shown as a block
+   * If `true` the text is shown as a display inline
    */
-  @Prop() paragraph = false
+  @Prop() inline = false
 
   /**
    * Defines the color of the text.
@@ -40,16 +40,16 @@ export class Text {
       case 'bottom':
         return 'mb-4'
       case '':
-        return this.paragraph ? 'mb-4' : ''
+        return !this.inline ? 'mb-4' : ''
       default:
         return ''
     }
   }
 
   render() {
-    const Text = this.paragraph ? 'p' : 'span'
+    const Text = this.inline ? 'span' : 'p'
     return (
-      <Host style={{ display: this.paragraph ? 'block' : 'inline' }} class={{ [this.spacing]: true }}>
+      <Host style={{ display: this.inline ? 'inline' : 'block' }} class={{ [this.spacing]: true }}>
         <Text
           class={{
             [`has-text-${this.color}`]: this.color !== '',

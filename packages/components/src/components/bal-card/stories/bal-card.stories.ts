@@ -37,10 +37,10 @@ export const Basic = args => ({
   setup: () => ({ args }),
   template: `<bal-card v-bind="args" class="p-5">
   <bal-heading level="h5" space="none">BaloiseCombi</bal-heading>
-  <bal-text paragraph space="bottom">Police number 70/2.937.458</bal-text>
-  <bal-text paragraph space="bottom">
+  <p>Police number 70/2.937.458</p>
+  <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </bal-text>
+  </p>
   <bal-button-group position="right" class="mt-6">
     <bal-button color="info" outlined>Secondary Action</bal-button>
     <bal-button>Main Action</bal-button>
@@ -57,10 +57,10 @@ export const ServiceCard = args => ({
   setup: () => ({ args }),
   template: `<bal-card v-bind="args" class="p-5">
   <bal-heading level="h5" space="none">BaloiseCombi</bal-heading>
-  <bal-text paragraph space="bottom">Police number 70/2.937.458</bal-text>
-  <bal-text paragraph space="bottom">
+  <p>Police number 70/2.937.458</p>
+  <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </bal-text>
+  </p>
   <bal-button-group position="right" class="mt-6">
     <bal-button color="info" outlined>Secondary Action</bal-button>
     <bal-button>Main Action</bal-button>
@@ -120,7 +120,7 @@ export const AccordionCard = args => ({
   template: `<bal-card v-bind="args">
   <div class="p-5">
     <bal-heading level="h5" space="none">BaloiseCombi</bal-heading>
-    <bal-text paragraph>Police number 70/2.937.458</bal-text>
+    <p>Police number 70/2.937.458</p>
   </div>
   <bal-accordion card>
     <p class="p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -136,9 +136,9 @@ export const SummaryCard = args => ({
   <div class="p-5">
     <bal-heading level="h6" space="none">Insured vehicle</bal-heading>
     <bal-heading level="h5" space="none">Cupra Ateca</bal-heading>
-    <bal-text paragraph>
+    <p>
       Running time: 21.07.2019 - 21.07.2021
-    </bal-text>
+    </p>
     <bal-data horizontal>
       <bal-data-item>
         <bal-data-label>Tony</bal-data-label>
@@ -173,22 +173,22 @@ export const PackageCard = args => ({
       <img class="is-hidden-touch" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
       <div class="is-flex-grow-1 px-3">
         <bal-heading level="h5" space="none">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></bal-heading>
-        <bal-text paragraph space="none" class="is-hidden-desktop">+ CHF 11.30</bal-text>
-        <bal-text paragraph class="is-hidden-touch" space="none">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</bal-text>
+        <bal-text space="none" class="is-hidden-desktop">+ CHF 11.30</bal-text>
+        <bal-text class="is-hidden-touch" space="none">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</bal-text>
       </div>
       <bal-checkbox :value="true" interface="switch"></bal-checkbox>
     </div>
     <div class="is-hidden-desktop my-5 has-background-grey-1 p-1 is-flex is-justify-content-center">
       <img class="" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
     </div>
-    <bal-text paragraph space="all" class="is-hidden-desktop">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</bal-text>
+    <bal-text space="all" class="is-hidden-desktop">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</bal-text>
   </div>
   <bal-accordion card open-label="Details einblenden" close-label="Details ausblenden">
-  <bal-text paragraph class="p-5">
+  <p class="p-5">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
     adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
     incididunt ut labore et dolore magna aliqua.
-  </bal-text>
+  </p>
   </bal-accordion>
 
 </bal-card>`,

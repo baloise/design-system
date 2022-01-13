@@ -1261,9 +1261,9 @@ export namespace Components {
          */
         "color": ColorTypes | '';
         /**
-          * If `true` the text is shown as a block
+          * If `true` the text is shown as a display inline
          */
-        "paragraph": boolean;
+        "inline": boolean;
         /**
           * Defines the size of the paragraph
          */
@@ -3155,9 +3155,9 @@ declare namespace LocalJSX {
          */
         "color"?: ColorTypes | '';
         /**
-          * If `true` the text is shown as a block
+          * If `true` the text is shown as a display inline
          */
-        "paragraph"?: boolean;
+        "inline"?: boolean;
         /**
           * Defines the size of the paragraph
          */
