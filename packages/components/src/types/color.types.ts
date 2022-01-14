@@ -8,4 +8,6 @@ export type BalButtonExtraColor = 'link' | 'primary-light' | 'info-light'
 
 export type BalButtonColor = ColorTypes | BalButtonExtraColor
 
-export type BackgroundColors = 'white' | 'primary' | 'blue' | 'red' | 'purple' | 'yellow' | 'green' | 'grey'
+export type BalIconColor = BackgroundColors | ColorTypesExtended | 'black' | 'info'
+
+export type BackgroundColors = 'white' | 'primary' | 'blue' | 'red' | 'purple' | 'yellow' | 'green'

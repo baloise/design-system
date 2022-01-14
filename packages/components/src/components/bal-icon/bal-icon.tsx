@@ -2,7 +2,7 @@ import { Component, h, Host, Prop } from '@stencil/core'
 import * as balIcons from '@baloise/design-system-next-icons'
 import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
-import { BalButtonColor } from '../../types'
+import { BalIconColor } from '../../types'
 
 @Component({
   tag: 'bal-icon',
@@ -26,7 +26,7 @@ export class Icon {
   /**
    * The theme type of the button. Given by bulma our css framework.
    */
-  @Prop() color: BalButtonColor = 'info'
+  @Prop() color: BalIconColor | '' = ''
 
   /**
    * If `true` the button is inverted
@@ -62,7 +62,7 @@ export class Icon {
         class={{
           [`is-size-${this.size}`]: !!this.size,
           [`is-inverted`]: this.inverted,
-          [`is-${this.color}`]: true,
+          [`is-${this.color}`]: this.color !== '',
           [`turn`]: this.turn,
           [`rotate`]: this.rotate,
         }}

@@ -13,6 +13,8 @@ const file = require('../../../.build/file')
 const log = require('../../../.build/log')
 const { NEWLINE } = require('../../../.build/constants')
 
+const DIRNAME = path.normalize(__dirname)
+
 const readSVG = async (name, filePath) => {
   let svgContent = ''
   try {
@@ -30,12 +32,16 @@ const readSVG = async (name, filePath) => {
           params: { attrs: '(stroke|fill)' },
         },
         {
+          name: 'removeStyleElement'
+        },
+        {
           name: 'removeDimensions',
           params: { removeDimensions: true },
         },
       ],
     })
     svgContent = svg.data
+    // svgContent = svgContent.replace(/style="fill: #000000"/g, '').replace(/style="fill:#000000"/g, '');
   } catch (error) {
     log.error(`Could not optimize the file ${filePath}`, error)
     process.exit(0)
@@ -47,7 +53,7 @@ const readSVG = async (name, filePath) => {
 const main = async () => {
   await log.title('icons: optimize')
 
-  const pathToSvgs = path.join(__dirname, '../svg/*.svg')
+  const pathToSvgs = path.join(DIRNAME, '../svg/*.svg')
   let filePaths = []
   try {
     filePaths = await file.scan(pathToSvgs)
@@ -65,18 +71,22 @@ const main = async () => {
     contents.set(fileName, svgContent)
   }
 
-  const lines = ['// generated file by .build/icon.js', '']
+  const lines = ['// generated file by .build/optimize.js', '']
 
   contents.forEach((value, key) => {
-    lines.push(`export const bal${upperFirst(camelCase(key))} = '${value}';`)
+    lines.push(`export const balIcon${upperFirst(camelCase(key))} = '${value}';`)
     lines.push(``)
   })
 
-  await file.save(path.join(__dirname, '../src/icons.ts'), lines.join(NEWLINE))
+  await file.save(path.join(DIRNAME, '../src/icons.ts'), lines.join(NEWLINE))
   await file.save(
-    path.join(__dirname, '../generated/icons.json'),
-    JSON.stringify([...contents.keys()].map(c => c.replace('icon-', ''))),
+    path.join(DIRNAME, '../generated/icons.json'),
+    JSON.stringify([...contents.keys()]),
   )
+
+  // contents.forEach(async (value, key) => {
+  //   await file.save(path.join(DIRNAME, '../svg', `${key}.svg`), value)
+  // })
 }
 
 main()

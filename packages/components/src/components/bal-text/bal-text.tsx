@@ -24,7 +24,7 @@ export class Text {
   /**
    * Defines the color of the text.
    */
-  @Prop() color: ColorTypes | '' = ''
+  @Prop() color: ColorTypes | 'white' | '' = ''
 
   /**
    * Defines at which position the heading has spacing.

@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BackgroundColors, ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
-import { BalButtonColor } from "./types";
+import { BalButtonColor, BalIconColor } from "./types";
 import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
@@ -536,7 +536,7 @@ export namespace Components {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color": BalButtonColor;
+        "color": BalIconColor | '';
         /**
           * If `true` the button is inverted
          */
@@ -1259,7 +1259,7 @@ export namespace Components {
         /**
           * Defines the color of the text.
          */
-        "color": ColorTypes | '';
+        "color": ColorTypes | 'white' | '';
         /**
           * If `true` the text is shown as a display inline
          */
@@ -2393,7 +2393,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color"?: BalButtonColor;
+        "color"?: BalIconColor | '';
         /**
           * If `true` the button is inverted
          */
@@ -3153,7 +3153,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the text.
          */
-        "color"?: ColorTypes | '';
+        "color"?: ColorTypes | 'white' | '';
         /**
           * If `true` the text is shown as a display inline
          */

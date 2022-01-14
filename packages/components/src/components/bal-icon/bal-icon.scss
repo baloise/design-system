@@ -1,6 +1,25 @@
 @import 'bal-icon.vars.scss';
 @import 'node_modules/bulma/sass/elements/icon.sass';
 
+@mixin svg($name, $value, $inverted) {
+  &.is-#{$name} {
+    svg,
+    svg g,
+    svg path,
+    svg circle {
+      fill: $value !important;
+    }
+  }
+  &.is-inverted.is-#{$name} {
+    svg,
+    svg g,
+    svg path,
+    svg circle {
+      fill: $inverted !important;
+    }
+  }
+}
+
 bal-icon {
   display: flex;
   justify-content: center;
@@ -8,7 +27,6 @@ bal-icon {
   position: static;
   width: 24px;
   max-height: 24px;
-  fill: $blue;
   pointer-events: visible;
 
   .bal-icon-inner {
@@ -52,35 +70,54 @@ bal-icon {
     transform: rotate(180deg);
   }
 
-  &.is-primary {
-    fill: $primary;
-  }
+  @include svg('primary', $primary, $white);
+  @include svg('info', $info, $white);
+  @include svg('warning', $warning, $white);
+  @include svg('danger', $danger, $white);
+  @include svg('success', $success, $white);
+  @include svg('blue', $blue, $white);
+  @include svg('white', $white, $blue);
+  @include svg('black', $black, $white);
+  @include svg('blue', $blue, $white);
+  @include svg('purple', $purple, $white);
+  @include svg('green', $green, $white);
+  @include svg('red', $red, $white);
+  @include svg('yellow', $yellow, $white);
 
-  &.is-success {
-    fill: $success;
-  }
+  // &.is-primary {
+  //   svg,
+  //   svg g,
+  //   svg path,
+  //   svg circle {
+  //     fill: $primary !important;
+  //   }
+  // }
 
-  &.is-info {
-    fill: $info;
-  }
+  // &.is-success {
+  //   fill: $success;
+  // }
 
-  &.is-inverted {
-    &.is-primary,
-    &.is-success,
-    &.is-warning,
-    &.is-danger,
-    &.is-info {
-      fill: $white;
-    }
-  }
+  // &.is-info {
+  //   fill: $info;
+  // }
 
-  &.is-warning {
-    fill: $warning;
-  }
+  // &.is-warning {
+  //   fill: $warning;
+  // }
 
-  &.is-danger {
-    fill: $danger;
-  }
+  // &.is-danger {
+  //   fill: $danger;
+  // }
+
+  // &.is-inverted {
+  //   &.is-primary,
+  //   &.is-success,
+  //   &.is-warning,
+  //   &.is-danger,
+  //   &.is-info {
+  //     fill: $white;
+  //   }
+  // }
 }
 
 .icon-text {
