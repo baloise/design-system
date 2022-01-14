@@ -42,6 +42,7 @@ const write = async (filePath, data) => {
 }
 
 const scan = async filePath => {
+  // glop always returns forward slashes
   return new Promise((resolve, reject) => {
     glob(filePath, (err, filterFilePaths) => {
       if (err) {
