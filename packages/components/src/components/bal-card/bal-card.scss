@@ -48,3 +48,59 @@ bal-card,
     background-color: $danger;
   }
 }
+
+bal-card-title,
+bal-card-subtitle,
+bal-card-content,
+bal-card-actions {
+  display: block;
+  position: static;
+}
+
+bal-card {
+  & > :first-child {
+    padding-top: 20px;
+  }
+
+  & > :last-child {
+    padding-bottom: 20px;
+  }
+
+  & > bal-card-title + bal-card-content,
+  & > bal-card-subtitle + bal-card-content {
+    padding-top: 20px;
+  }
+
+  & > bal-card-actions {
+    padding-top: 20px;
+  }
+
+  & > bal-accordion {
+    padding-bottom: 0 !important;
+  }
+}
+
+@include desktop() {
+  bal-card {
+    & > :first-child {
+      padding-top: 24px;
+    }
+
+    & > :last-child {
+      padding-bottom: 24px;
+    }
+
+    & > bal-card-title + bal-card-content,
+    & > bal-card-subtitle + bal-card-content {
+      padding-top: 24px;
+    }
+
+    & > bal-card-actions {
+      padding-top: 24px;
+    }
+
+    & > bal-accordion {
+      padding-bottom: 0 !important;
+    }
+  }
+}
