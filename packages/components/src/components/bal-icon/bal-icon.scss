@@ -70,6 +70,13 @@ bal-icon {
     transform: rotate(180deg);
   }
 
+  svg,
+  svg g,
+  svg path,
+  svg circle {
+    fill: $blue;
+  }
+
   @include svg('primary', $primary, $white);
   @include svg('info', $info, $white);
   @include svg('warning', $warning, $white);
