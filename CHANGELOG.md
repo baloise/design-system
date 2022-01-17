@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.0.2](https://github.com/baloise/design-system/compare/v9.0.1...v9.0.2) (2022-01-17)
+
+
+### Bug Fixes
+
+* **card:** add missing subcomponents ([49fef91](https://github.com/baloise/design-system/commit/49fef913afefb44d177a98965bfc5bcc1d65f325))
+
+
+
 ### [9.0.1](https://github.com/baloise/design-system/compare/v9.0.0...v9.0.1) (2022-01-11)
 
 
