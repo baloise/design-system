@@ -122,20 +122,21 @@ In your component register the element reference with `@ViewChild('modal')`. Wit
 ```typescript
 import { Component, ViewChild } from '@angular/core'
 import type { Components } from '@baloise/design-system-components'
+import { ProxyComponent } from '@baloise/design-system-components-angular'
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal-page.component.html',
 })
 export class ModalPageComponent {
-  @ViewChild('modal') modal!: Components.BalModal
+  @ViewChild('modal') modal!: ProxyComponent<Components.BalModal>
 
   openModal() {
-    this.modal.open()
+    this.modal.el.open()
   }
 
   closeModal() {
-    this.modal.close()
+    this.modal.el.close()
   }
 }
 ```
