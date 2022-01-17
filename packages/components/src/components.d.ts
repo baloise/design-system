@@ -179,7 +179,11 @@ export namespace Components {
     }
     interface BalCardActions {
         /**
-          * If `true` the buttons start form right to left.
+          * The value of the button, which is submitted with the form data.
+         */
+        "position": 'right' | 'center' | '';
+        /**
+          * @deprecated use position="right" If `true` the buttons start form right to left.
          */
         "right": boolean;
     }
@@ -2108,7 +2112,11 @@ declare namespace LocalJSX {
     }
     interface BalCardActions {
         /**
-          * If `true` the buttons start form right to left.
+          * The value of the button, which is submitted with the form data.
+         */
+        "position"?: 'right' | 'center' | '';
+        /**
+          * @deprecated use position="right" If `true` the buttons start form right to left.
          */
         "right"?: boolean;
     }

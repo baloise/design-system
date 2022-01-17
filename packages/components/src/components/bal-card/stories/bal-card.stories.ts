@@ -39,7 +39,7 @@ export const Basic = args => ({
   <bal-card-content>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </bal-card-content>
-  <bal-card-actions right>
+  <bal-card-actions position="right">
     <bal-button color="info" outlined>Secondary Action</bal-button>
     <bal-button>Main Action</bal-button>
   </bal-card-actions>
@@ -82,7 +82,7 @@ export const WithList = args => ({
     </bal-list-item>
   </bal-list>
   </bal-card-content>
-  <bal-card-actions right>
+  <bal-card-actions position="right">
     <bal-button color="info" outlined>Secondary Action</bal-button>
     <bal-button>Main Action</bal-button>
   </bal-card-actions>
