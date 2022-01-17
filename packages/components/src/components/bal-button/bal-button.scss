@@ -1,3 +1,4 @@
+@import '../bal-heading/bal-heading.vars.scss';
 @import 'bal-button.vars.scss';
 @import 'node_modules/bulma/sass/elements/button.sass';
 @import 'buttons.scss';
@@ -50,6 +51,13 @@ bal-button.is-fullwidth {
   padding: 12px 24px;
   min-height: 48px;
   justify-content: center !important;
+  border: none;
+
+  &,
+  & span {
+    font-weight: 700;
+    font-family: $title-family;
+  }
 
   &::-moz-focus-inner {
     border: 0;
@@ -139,18 +147,6 @@ bal-button.is-fullwidth {
     }
   }
 
-  &.is-outlined.is-inverted {
-    &.is-success:hover {
-      color: $success;
-    }
-    &.is-warning:hover {
-      color: $warning;
-    }
-    &.is-danger:hover {
-      color: $danger;
-    }
-  }
-
   &.is-loading::after {
     display: none;
   }
@@ -159,200 +155,486 @@ bal-button.is-fullwidth {
     border: 0;
   }
 
-  &:focus-visible {
-    &::before {
-      position: absolute;
-      content: '';
-      top: 2px;
-      left: 2px;
-      right: 2px;
-      bottom: 2px;
-      outline: 2px dashed $cyan;
-    }
-  }
+  &,
+  &.is-primary,
+  &.is-outlined,
+  &.is-primary.is-outlined {
+    background: $blue;
+    border-color: $blue;
 
-  &:focus {
-    &.is-link {
-      color: $cyan;
+    bal-icon {
+      svg,
+      svg g,
+      svg path,
+      svg circle {
+        fill: $white !important;
+      }
     }
-    &.is-outlined.is-info {
-      color: $blue;
-    }
-  }
 
-  &:hover,
-  &:active {
-    &::before {
-      outline: none;
+    &,
+    & span {
+      color: $white;
     }
-  }
 
-  &.is-primary {
-    &:hover,
-    &.is-hovered {
+    &:focus {
       background: $blue;
+      border-color: $blue;
+      color: $white;
     }
-  }
 
-  &.is-info {
-    &:hover,
-    &.is-hovered {
-      background: $cyan;
+    &.is-focused,
+    &:focus-visible {
+      background: bulmaLighten($blue, 2%);
+      border-color: bulmaLighten($blue, 2%);
+      color: $white;
     }
-  }
 
-  &.is-success {
-    &:hover,
-    &.is-hovered {
-      background: darken($success, 10);
+    &.is-hovered,
+    &:hover {
+      background: $blue-4;
+      border-color: $blue-4;
+      color: $white;
     }
-  }
 
-  &.is-warning {
-    &:hover,
-    &.is-hovered {
-      background: darken($warning, 10);
-    }
-  }
-
-  &.is-danger {
-    &:hover,
-    &.is-hovered {
-      background: darken($danger, 10);
-    }
-  }
-
-  &.is-success,
-  &.is-warning,
-  &.is-warning.is-outlined,
-  &.is-success.is-outlined {
-    &:hover,
-    &.is-hovered {
+    &.is-active,
+    &:active {
+      background: $blue-6;
+      border-color: $blue-6;
       color: $white;
     }
   }
 
-  &.is-primary.is-inverted {
-    background: $cyan;
-    color: $white;
-
-    &:hover,
-    &.is-hovered {
-      color: $blue;
-      background: $white;
-    }
-  }
-
-  &.is-info.is-outlined:not(.is-inverted) {
-    background: $white;
-  }
-
+  &.is-info,
   &.is-info.is-outlined {
-    border-color: $blue-3;
+    background: transparent;
+    border: 2px solid $blue;
 
-    &:not(.is-disabled) {
-      &:hover,
-      &.is-hovered {
+    bal-icon {
+      svg,
+      svg g,
+      svg path,
+      svg circle {
+        fill: $blue !important;
+      }
+    }
+
+    &,
+    & span {
+      color: $blue;
+    }
+
+    &:focus {
+      background: transparent;
+      border-color: $blue;
+      color: $blue;
+    }
+
+    &.is-focused,
+    &:focus-visible {
+      background: transparent;
+      border-color: bulmaLighten($blue, 2%);
+      color: $blue;
+    }
+
+    &.is-hovered,
+    &:hover {
+      background: transparent;
+      border-color: $blue-4;
+
+      &,
+      & span {
+        color: $blue-4;
+      }
+
+      bal-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $blue-4 !important;
+        }
+      }
+    }
+
+    &.is-active,
+    &:active {
+      background: transparent;
+      border-color: $blue-6;
+
+      &,
+      & span {
+        color: $blue-6;
+      }
+
+      bal-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $blue-6 !important;
+        }
+      }
+    }
+  }
+
+  &.is-link,
+  &.is-link.is-outlined {
+    background: transparent;
+    border-color: transparent;
+
+    bal-icon {
+      svg,
+      svg g,
+      svg path,
+      svg circle {
+        fill: $blue !important;
+      }
+    }
+
+    &,
+    & span {
+      color: $blue;
+    }
+
+    &,
+    bal-text span {
+      text-decoration: underline !important;
+    }
+
+    &.is-focused,
+    &:focus-visible {
+      background: transparent;
+      border-color: transparent;
+      color: bulmaLighten($blue, 2%);
+    }
+
+    &.is-hovered,
+    &:hover {
+      background: transparent;
+      border-color: transparent;
+      color: $blue-4;
+    }
+
+    &.is-active,
+    &:active {
+      background: transparent;
+      border-color: transparent;
+      color: $blue-6;
+    }
+  }
+
+  &.is-success:not(.is-inverted),
+  &.is-success.is-outlined :not(.is-inverted) {
+    background: $success-5;
+    border-color: $success-5;
+    color: $success-invert;
+
+    &.is-focused,
+    &:focus-visible {
+      background: bulmaLighten($success-5, 2%);
+      border-color: bulmaLighten($success-5, 2%);
+      color: $success-invert;
+    }
+
+    &.is-hovered,
+    &:hover {
+      background: bulmaLighten($success-5, 4%);
+      border-color: bulmaLighten($success-5, 4%);
+      color: $success-invert;
+    }
+
+    &.is-active,
+    &:active {
+      background: $success-6;
+      border-color: $success-6;
+      color: $success-invert;
+    }
+  }
+
+  &.is-warning:not(.is-inverted),
+  &.is-warning.is-outlined :not(.is-inverted) {
+    background: $warning-5;
+    border-color: $warning-5;
+    color: $warning-invert;
+
+    &.is-focused,
+    &:focus-visible {
+      background: bulmaLighten($warning-5, 2%);
+      border-color: bulmaLighten($warning-5, 2%);
+      color: $warning-invert;
+    }
+
+    &.is-hovered,
+    &:hover {
+      background: bulmaLighten($warning-5, 6%);
+      border-color: bulmaLighten($warning-5, 6%);
+      color: $warning-invert;
+    }
+
+    &.is-active,
+    &:active {
+      background: $warning-6;
+      border-color: $warning-6;
+      color: $warning-invert;
+    }
+  }
+
+  &.is-danger:not(.is-inverted),
+  &.is-danger.is-outlined :not(.is-inverted) {
+    background: bulmaLighten($danger-5, 2%);
+    border-color: bulmaLighten($danger-5, 2%);
+    color: $danger-invert;
+
+    &.is-focused,
+    &:focus-visible {
+      background: $danger-5;
+      border-color: $danger-5;
+      color: $danger-invert;
+    }
+
+    &.is-hovered,
+    &:hover {
+      background: bulmaLighten($danger-5, 7%);
+      border-color: bulmaLighten($danger-5, 7%);
+      color: $danger-invert;
+    }
+
+    &.is-active,
+    &:active {
+      background: $danger-6;
+      border-color: $danger-6;
+      color: $danger-invert;
+    }
+  }
+
+  &.is-inverted {
+    &,
+    &.is-primary,
+    &.is-success,
+    &.is-warning,
+    &.is-danger {
+      background: $white;
+      border: none;
+
+      bal-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $blue !important;
+        }
+      }
+
+      &,
+      & span {
         color: $blue;
+      }
+
+      &:focus {
+        background: $white;
+        color: $blue;
+      }
+
+      // &.is-focused,
+      // &:focus-visible {
+      //   background: bulmaLighten($blue, 2%);
+      //   border-color: bulmaLighten($blue, 2%);
+      //   color: $white;
+      // }
+
+      &.is-hovered,
+      &:hover {
         background: $blue-2;
-        border-color: $blue-3;
+      }
+
+      &.is-active,
+      &:active {
+        background: $blue-4;
+
+        bal-icon {
+          svg,
+          svg g,
+          svg path,
+          svg circle {
+            fill: $white !important;
+          }
+        }
+
+        &,
+        & span {
+          color: $white;
+        }
       }
     }
-  }
 
-  &.is-info.is-inverted.is-outlined {
-    &:hover,
-    &.is-hovered {
-      color: $white;
-      background: darken($blue, 10);
-    }
-  }
-
-  &.is-info.is-inverted {
-    &:hover,
-    &.is-hovered {
-      color: $white;
-      background: $cyan;
-    }
-  }
-
-  &.is-link {
-    color: $cyan;
-    background: transparent;
-
-    &:hover,
-    &.is-hovered {
-      color: $blue;
+    &.is-info {
       background: transparent;
-      text-decoration: underline;
-    }
-  }
+      border: 2px solid $white;
 
-  &.is-primary-light {
-    border: none;
-    border-radius: 0;
-    color: $blue;
-    background: $blue-1;
-
-    &:hover,
-    &.is-hovered {
-      color: $blue;
-      background: $blue-1;
-    }
-  }
-
-  &.is-info-light {
-    border: none;
-    border-radius: 0;
-    color: $blue;
-    background: transparent;
-
-    &:hover,
-    &.is-hovered {
-      color: $blue;
-      background: transparent;
-    }
-  }
-
-  &[disabled] {
-    &.is-link {
-      text-decoration: none;
-      color: $cyan;
-      background: transparent;
-    }
-
-    &:hover,
-    &.is-hovered {
-      &.is-primary {
-        color: $white;
-        background: $cyan;
+      bal-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $white !important;
+        }
       }
 
-      &.is-info:not(.is-outlined) {
+      &,
+      & span {
         color: $white;
-        background: $blue;
       }
 
-      &.is-warning {
-        color: $white;
-        background: $orange;
-      }
-
-      &.is-danger {
-        color: $white;
-        background: $red;
-      }
-
-      &.is-success {
-        color: $white;
-        background: $green;
-      }
-
-      &.is-link {
-        text-decoration: none;
-        color: $cyan;
+      &:focus {
         background: transparent;
+        color: $white;
       }
+
+      // &.is-focused,
+      // &:focus-visible {
+      //   background: transparent;
+      //   border-color: bulmaLighten($blue, 2%);
+      //   color: $blue;
+      // }
+
+      &.is-hovered,
+      &:hover {
+        background: transparent;
+        border-color: $blue-2;
+      }
+
+      &.is-active,
+      &:active {
+        background: transparent;
+        border-color: $blue-4;
+      }
+    }
+
+    &.is-link {
+      background: transparent;
+      border-color: transparent;
+
+      bal-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $white !important;
+        }
+      }
+
+      &,
+      & span {
+        color: $white;
+      }
+
+      // &.is-focused,
+      // &:focus-visible {
+      //   background: transparent;
+      //   border-color: transparent;
+      //   color: bulmaLighten($blue, 2%);
+      // }
+
+      &.is-hovered,
+      &:hover {
+        background: transparent;
+        border-color: transparent;
+
+        &,
+        & span {
+          color: $white;
+        }
+      }
+
+      &.is-active,
+      &:active {
+        background: transparent;
+        border-color: transparent;
+
+        &,
+        & span {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &[disabled],
+  &.is-disabled {
+    &,
+    &.is-primary,
+    &.is-info,
+    &.is-link,
+    &.is-warning,
+    &.is-danger,
+    &.is-success,
+    &.is-inverted,
+    &.is-outlined,
+    &.is-hovered,
+    &:hover,
+    &.is-focused,
+    &:focus,
+    &:focus-visible,
+    &.is-active,
+    &:active {
+      background: $grey-3 !important;
+      border-color: $grey-3 !important;
+      color: $grey-5 !important;
+      opacity: 1 !important;
+    }
+  }
+
+  &.is-link[disabled],
+  &.is-link.is-disabled {
+    &,
+    &.is-hovered,
+    &:hover,
+    &.is-focused,
+    &:focus,
+    &:focus-visible,
+    &.is-active,
+    &:active,
+    &.is-inverted {
+      background: transparent !important;
+      border-color: transparent !important;
+      color: $grey-5 !important;
+      opacity: 1 !important;
+    }
+  }
+
+  // &.is-outlined.is-inverted {
+  //   &.is-success:hover {
+  //     color: $success;
+  //   }
+  //   &.is-warning:hover {
+  //     color: $warning;
+  //   }
+  //   &.is-danger:hover {
+  //     color: $danger;
+  //   }
+  // }
+
+  &.is-focused,
+  &:focus-visible {
+    &,
+    &.is-info,
+    &.is-success,
+    &.is-warning,
+    &.is-danger,
+    &.is-primary {
+      box-shadow: $blue-2 0 0 0 4px !important;
+    }
+
+    &.is-success:not(.is-inverted) {
+      box-shadow: $success-3 0 0 0 4px !important;
+    }
+
+    &.is-warning:not(.is-inverted) {
+      box-shadow: $warning-3 0 0 0 4px !important;
+    }
+
+    &.is-danger:not(.is-inverted) {
+      box-shadow: $danger-3 0 0 0 4px !important;
     }
   }
 }

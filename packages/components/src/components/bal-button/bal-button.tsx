@@ -1,5 +1,5 @@
 import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface, Listen, Element } from '@stencil/core'
-import { BalButtonColor } from '../../types'
+import { BalButtonColor, BalIconColor } from '../../types'
 
 @Component({
   tag: 'bal-button',
@@ -150,20 +150,21 @@ export class Button implements ComponentInterface {
   }
 
   private get isIconInverted() {
-    if (this.outlined && !this.inverted) {
-      return false
-    }
-    switch (this.color) {
-      case 'primary':
-      case 'success':
-      case 'warning':
-      case 'danger':
-      case 'info':
-        return true
+    return this.inverted
+    // if (this.outlined && !this.inverted) {
+    //   return false
+    // }
+    // switch (this.color) {
+    //   case 'primary':
+    //   case 'success':
+    //   case 'warning':
+    //   case 'danger':
+    //   case 'info':
+    //     return true
 
-      default:
-        return false
-    }
+    //   default:
+    //     return false
+    // }
   }
 
   private get buttonCssClass(): { [className: string]: boolean } {
@@ -186,12 +187,7 @@ export class Button implements ComponentInterface {
   private get spinnerCssClass() {
     return {
       'is-small': true,
-      'is-inverted': !(
-        this.color === 'link' ||
-        this.color === 'primary-light' ||
-        this.color === 'info-light' ||
-        this.outlined
-      ),
+      'is-inverted': !(this.color === 'link' || this.outlined),
     }
   }
 
@@ -213,7 +209,7 @@ export class Button implements ComponentInterface {
     return {}
   }
 
-  private get spanAttrs() {
+  private get spanSquareAttrs() {
     if (this.square) {
       return {
         style: { display: 'none' },
@@ -229,6 +225,13 @@ export class Button implements ComponentInterface {
       }
     }
     return {}
+  }
+
+  private get iconColor(): BalIconColor {
+    if (this.color === 'info') {
+      return 'blue'
+    }
+    return 'white'
   }
 
   private handleClick(event: MouseEvent) {
@@ -285,30 +288,40 @@ export class Button implements ComponentInterface {
           onBlur={this.onBlur}
           onClick={this.onClick}
         >
-          <span {...this.spanAttrs}>{/* Empty span to get the correct text height */}</span>
+          <span {...this.spanSquareAttrs}>{/* Empty span to get the correct text height */}</span>
           <bal-spinner {...this.loadingAttrs} class={this.spinnerCssClass} />
           <bal-icon
             {...this.leftIconAttrs}
             class="icon-left"
             name={this.icon}
             size={this.square ? this.size : 'small'}
-            color={this.color}
             inverted={this.isIconInverted}
           />
-          <bal-text
+          <span
+            class={{
+              'data-test-button-label m-0 p-0': true,
+              'is-small': this.size === 'small',
+              'is-bold': true,
+            }}
+            style={{ display: this.loading ? 'none' : 'inline' }}
+          >
+            <slot />
+          </span>
+          {/* <bal-text
+            heading
+            inline
             class="data-test-button-label"
-            {...this.spanAttrs}
+            {...this.spanSquareAttrs}
             size={this.size === 'small' ? 'small' : ''}
             style={{ display: this.loading ? 'none' : 'inline' }}
           >
             <slot />
-          </bal-text>
+          </bal-text> */}
           <bal-icon
             {...this.leftRightAttrs}
             class="icon-right"
             name={this.iconRight}
             size={'small'}
-            color={this.color}
             inverted={this.isIconInverted}
           />
         </TagType>

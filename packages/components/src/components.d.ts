@@ -1261,6 +1261,10 @@ export namespace Components {
          */
         "color": ColorTypes | 'white' | '';
         /**
+          * If `true` the text has heading font family
+         */
+        "heading": boolean;
+        /**
           * If `true` the text is shown as a display inline
          */
         "inline": boolean;
@@ -3154,6 +3158,10 @@ declare namespace LocalJSX {
           * Defines the color of the text.
          */
         "color"?: ColorTypes | 'white' | '';
+        /**
+          * If `true` the text has heading font family
+         */
+        "heading"?: boolean;
         /**
           * If `true` the text is shown as a display inline
          */
