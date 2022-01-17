@@ -12,6 +12,11 @@ export class Text {
   @Prop() size: FontSizeType = ''
 
   /**
+   * If `true` the text has heading font family
+   */
+  @Prop() heading = false
+
+  /**
    * If `true` the text is bold
    */
   @Prop() bold = false
@@ -56,6 +61,7 @@ export class Text {
             'is-small': this.size === 'small',
             'is-lead': this.size === 'lead',
             'is-bold': this.bold,
+            'is-heading': this.heading,
             'm-0': true,
           }}
         >
