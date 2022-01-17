@@ -12,9 +12,9 @@ export const InternalWideAppTemplate = `
   </header>
   <main>
     <div class="m-7">
-      <bal-card class="p-5">
-        <bal-heading title level="h4" space="none">Table of ****</bal-heading>
-        <bal-heading subtitle level="h5" space="bottom">Subtitle</bal-heading>
+      <bal-card>
+        <bal-card-title>Table of ****</bal-card-title>
+        <bal-card-subtitle>Subtitle</bal-card-subtitle>
         <table class="table is-fullwidth is-striped is-hoverable p-0">
         <thead>
             <th>Selected</th>
@@ -77,9 +77,9 @@ export const InternalWideAppTemplate = `
             </tr>
         </tbody>
     </table>
-        <bal-button-group position="right">
+        <bal-card-actions position="right">
           <bal-pagination page-range="3" total-pages="20" value="2"></bal-pagination>
-        </bal-button-group>
+        </bal-card-actions>
       </bal-card>
     </div>
   </main>

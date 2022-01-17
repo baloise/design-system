@@ -3,6 +3,10 @@ import { BalComponentStory } from '../../../stories/utils'
 import {
   BalApp,
   BalCard,
+  BalCardTitle,
+  BalCardSubtitle,
+  BalCardContent,
+  BalCardActions,
   BalFooter,
   BalButton,
   BalNavbar,
@@ -38,6 +42,10 @@ export const Basic = args => ({
   components: {
     BalApp,
     BalCard,
+    BalCardTitle,
+    BalCardSubtitle,
+    BalCardContent,
+    BalCardActions,
     BalFooter,
     BalButton,
     BalNavbar,
@@ -57,18 +65,18 @@ export const Basic = args => ({
   </header>
   <main>
     <div class="container">
-      <bal-card class="my-6 p-5">
-        <bal-heading title level="h4" space="none">BaloiseCombi</bal-heading>
-        <bal-heading subtitle level="h5" space="bottom">Police number 70/2.937.458</bal-heading>
+      <bal-card class="my-6">
+        <bal-card-title>BaloiseCombi</bal-card-title>
+        <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
 
-        <p>
+        <bal-card-content>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        </bal-card-content>
 
-        <bal-button-group position="right">
+        <bal-card-actions position="right">
           <bal-button>Action</bal-button>
           <bal-button>Action 2</bal-button>
-        </bal-button-group>
+        </bal-card-actions>
       </bal-card>
     </div>
   </main>
