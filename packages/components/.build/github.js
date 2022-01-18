@@ -2,6 +2,8 @@ const path = require('path')
 const file = require('../../../.build/file')
 const log = require('../../../.build/log')
 
+const DIRNAME = path.normalize(__dirname)
+
 function appendGithubTag(content) {
   return `${content}
 
@@ -10,13 +12,13 @@ function appendGithubTag(content) {
 }
 
 function prepareLink(storyPath) {
-  const newLink = storyPath.replace(path.join(__dirname, '..', 'src'), '')
+  const newLink = storyPath.replace(path.join(DIRNAME, '..', 'src'), '')
   return newLink
 }
 
 async function run() {
   log.title('Github Links')
-  const pathToSource = path.join(__dirname, '..', 'src')
+  const pathToSource = path.join(DIRNAME, '..', 'src')
   const stories = await file.scan(path.join(pathToSource, '**/*.mdx'))
 
   const regex = new RegExp('<bal-doc-github link="\s*.*"><\/bal-doc-github>')

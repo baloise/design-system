@@ -3,10 +3,10 @@
   font-style: normal;
   font-weight: 700;
   font-display: fallback;
-  src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-Bold'),
-    url('/assets/fonts/BaloiseCreateHeadline-Bold.woff2') format('woff2'),
-    url('/assets/fonts/BaloiseCreateHeadline-Bold.woff') format('woff'),
-    url('/assets/fonts/BaloiseCreateHeadline-Bold.ttf') format('truetype');
+  src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-bold'),
+    url('/assets/fonts/BaloiseCreateHeadline-bold.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateHeadline-bold.woff') format('woff'),
+    url('/assets/fonts/BaloiseCreateHeadline-bold.ttf') format('truetype');
 }
 
 @font-face {
@@ -14,10 +14,10 @@
   font-style: normal;
   font-weight: 300;
   font-display: fallback;
-  src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-Light'),
-    url('/assets/fonts/BaloiseCreateHeadline-Light.woff2') format('woff2'),
-    url('/assets/fonts/BaloiseCreateHeadline-Light.woff') format('woff'),
-    url('/assets/fonts/BaloiseCreateHeadline-Light.ttf') format('truetype');
+  src: local('BaloiseCreateHeadline'), local('BaloiseCreateHeadline-light'),
+    url('/assets/fonts/BaloiseCreateHeadline-light.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateHeadline-light.woff') format('woff'),
+    url('/assets/fonts/BaloiseCreateHeadline-light.ttf') format('truetype');
 }
 
 @font-face {
@@ -25,10 +25,10 @@
   font-style: normal;
   font-weight: 700;
   font-display: fallback;
-  src: local('BaloiseCreateText'), local('BaloiseCreateText-Bold'),
-    url('/assets/fonts/BaloiseCreateText-Bold.woff2') format('woff2'),
-    url('/assets/fonts/BaloiseCreateText-Bold.woff') format('woff'),
-    url('/assets/fonts/BaloiseCreateText-Bold.ttf') format('truetype');
+  src: local('BaloiseCreateText'), local('BaloiseCreateText-bold'),
+    url('/assets/fonts/BaloiseCreateText-bold.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateText-bold.woff') format('woff'),
+    url('/assets/fonts/BaloiseCreateText-bold.ttf') format('truetype');
 }
 
 @font-face {
@@ -36,8 +36,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: fallback;
-  src: local('BaloiseCreateText'), local('BaloiseCreateText-Regular'),
-    url('/assets/fonts/BaloiseCreateText-Regular.woff2') format('woff2'),
-    url('/assets/fonts/BaloiseCreateText-Regular.woff') format('woff'),
-    url('/assets/fonts/BaloiseCreateText-Regular.ttf') format('truetype');
+  src: local('BaloiseCreateText'), local('BaloiseCreateText-regular'),
+    url('/assets/fonts/BaloiseCreateText-regular.woff2') format('woff2'),
+    url('/assets/fonts/BaloiseCreateText-regular.woff') format('woff'),
+    url('/assets/fonts/BaloiseCreateText-regular.ttf') format('truetype');
 }

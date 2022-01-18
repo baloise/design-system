@@ -1,5 +1,5 @@
 import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface, Listen, Element } from '@stencil/core'
-import { BalButtonColor } from '../../types'
+import { BalButtonColor, BalIconColor } from '../../types'
 
 @Component({
   tag: 'bal-button',
@@ -90,12 +90,12 @@ export class Button implements ComponentInterface {
   /**
    * If `true` the top corners get rounded
    */
-  @Prop() topRounded = false
+  @Prop() topRounded: undefined | boolean = undefined
 
   /**
    * If `true` the bottom corners get rounded
    */
-  @Prop() bottomRounded = false
+  @Prop() bottomRounded: undefined | boolean = undefined
 
   /**
    * Name of the left button icon
@@ -150,20 +150,21 @@ export class Button implements ComponentInterface {
   }
 
   private get isIconInverted() {
-    if (this.outlined && !this.inverted) {
-      return false
-    }
-    switch (this.color) {
-      case 'primary':
-      case 'success':
-      case 'warning':
-      case 'danger':
-      case 'info':
-        return true
+    return this.inverted
+    // if (this.outlined && !this.inverted) {
+    //   return false
+    // }
+    // switch (this.color) {
+    //   case 'primary':
+    //   case 'success':
+    //   case 'warning':
+    //   case 'danger':
+    //   case 'info':
+    //     return true
 
-      default:
-        return false
-    }
+    //   default:
+    //     return false
+    // }
   }
 
   private get buttonCssClass(): { [className: string]: boolean } {
@@ -178,20 +179,17 @@ export class Button implements ComponentInterface {
       'is-fullwidth': this.expanded,
       'is-disabled': this.disabled,
       'is-loading': this.loading,
-      'has-round-top-corners': this.topRounded,
-      'has-round-bottom-corners': this.bottomRounded,
+      'has-round-top-corners': this.topRounded === true,
+      'has-round-bottom-corners': this.bottomRounded === true,
+      'has-no-round-top-corners': this.topRounded === false,
+      'has-no-round-bottom-corners': this.bottomRounded === false,
     }
   }
 
   private get spinnerCssClass() {
     return {
       'is-small': true,
-      'is-inverted': !(
-        this.color === 'link' ||
-        this.color === 'primary-light' ||
-        this.color === 'info-light' ||
-        this.outlined
-      ),
+      'is-inverted': !(this.color === 'link' || this.outlined),
     }
   }
 
@@ -213,7 +211,7 @@ export class Button implements ComponentInterface {
     return {}
   }
 
-  private get spanAttrs() {
+  private get spanSquareAttrs() {
     if (this.square) {
       return {
         style: { display: 'none' },
@@ -229,6 +227,13 @@ export class Button implements ComponentInterface {
       }
     }
     return {}
+  }
+
+  private get iconColor(): BalIconColor {
+    if (this.color === 'info') {
+      return 'blue'
+    }
+    return 'white'
   }
 
   private handleClick(event: MouseEvent) {
@@ -285,30 +290,30 @@ export class Button implements ComponentInterface {
           onBlur={this.onBlur}
           onClick={this.onClick}
         >
-          <span {...this.spanAttrs}>{/* Empty span to get the correct text height */}</span>
+          <span {...this.spanSquareAttrs}>{/* Empty span to get the correct text height */}</span>
           <bal-spinner {...this.loadingAttrs} class={this.spinnerCssClass} />
           <bal-icon
             {...this.leftIconAttrs}
             class="icon-left"
             name={this.icon}
             size={this.square ? this.size : 'small'}
-            color={this.color}
             inverted={this.isIconInverted}
           />
-          <bal-text
-            class="data-test-button-label"
-            {...this.spanAttrs}
-            size={this.size === 'small' ? 'small' : ''}
+          <span
+            class={{
+              'data-test-button-label button-label m-0 p-0': true,
+              'is-small': this.size === 'small',
+              'is-bold': true,
+            }}
             style={{ display: this.loading ? 'none' : 'inline' }}
           >
             <slot />
-          </bal-text>
+          </span>
           <bal-icon
             {...this.leftRightAttrs}
             class="icon-right"
             name={this.iconRight}
             size={'small'}
-            color={this.color}
             inverted={this.isIconInverted}
           />
         </TagType>
