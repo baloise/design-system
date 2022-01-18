@@ -36,7 +36,7 @@ export const selectors = {
   },
   button: {
     main: 'button',
-    label: 'bal-text.data-test-button-label',
+    label: 'span.data-test-button-label',
   },
   checkbox: {
     input: 'input.data-test-checkbox-input',

@@ -5,12 +5,12 @@ export const parseCustomEvent = <T>(event: CustomEvent<T> | Event): T => {
   throw Error('Event was not a Custom Event or did not had a detail prop!')
 }
 
-interface WebComponent<T> {
+export interface ProxyComponent<T> {
   el: T
 }
 
 // eslint-disable-next-line
 export const element = <T>(elementReference: any): T => {
-  const component: WebComponent<T> = elementReference
+  const component: ProxyComponent<T> = elementReference
   return component.el
 }

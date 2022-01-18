@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
-import { BalButtonColor } from "./types";
+import { BalButtonColor, BalIconColor } from "./types";
+import { BackgroundColors, ColorTypes, ColorTypesExtended } from "./types/color.types";
 import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
@@ -30,10 +30,6 @@ export namespace Components {
          */
         "closeLabel": string;
         /**
-          * Type defines the theme of the accordion toggle
-         */
-        "color": ColorTypesBasic;
-        /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
@@ -41,6 +37,10 @@ export namespace Components {
           * Close the accordion
          */
         "dismiss": () => Promise<void>;
+        /**
+          * Controls the style of the accordion
+         */
+        "interface": '' | 'light';
         /**
           * Bal-Icon of the open trigger button
          */
@@ -68,7 +68,7 @@ export namespace Components {
         /**
           * If `true` the bottom corners get rounded
          */
-        "bottomRounded": boolean;
+        "bottomRounded": undefined | boolean;
         /**
           * The color to use from your application's color palette.
          */
@@ -140,7 +140,7 @@ export namespace Components {
         /**
           * If `true` the top corners get rounded
          */
-        "topRounded": boolean;
+        "topRounded": undefined | boolean;
         /**
           * The type of button.
          */
@@ -164,7 +164,7 @@ export namespace Components {
         /**
           * Defines the color of the card.
          */
-        "color": ColorTypes | '';
+        "color": BackgroundColors;
         /**
           * If `true` the card loses its shadow.
          */
@@ -177,6 +177,60 @@ export namespace Components {
           * If `true` the card loses its border radius.
          */
         "square": boolean;
+    }
+    interface BalCardActions {
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "position": 'right' | 'center' | '';
+        /**
+          * @deprecated use position="right" If `true` the buttons start form right to left.
+         */
+        "right": boolean;
+    }
+    interface BalCardButton {
+        /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "disabled": boolean;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href": string | undefined;
+        /**
+          * Name of the icon like `edit`.
+         */
+        "icon": string;
+        /**
+          * Name of the right button icon
+         */
+        "iconRight": string;
+        /**
+          * If `true` the label is hidden and a loading spinner is shown instead.
+         */
+        "loading": boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": '_blank' | ' _parent' | '_self' | '_top';
+        /**
+          * The type of button.
+         */
+        "type": 'button' | 'reset' | 'submit';
+    }
+    interface BalCardContent {
+    }
+    interface BalCardSubtitle {
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "inverted": boolean;
+    }
+    interface BalCardTitle {
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "inverted": boolean;
     }
     interface BalCheckbox {
         /**
@@ -536,7 +590,7 @@ export namespace Components {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color": BalButtonColor;
+        "color": BalIconColor | '';
         /**
           * If `true` the button is inverted
          */
@@ -1259,15 +1313,23 @@ export namespace Components {
         /**
           * Defines the color of the text.
          */
-        "color": ColorTypes | '';
+        "color": ColorTypes | 'white' | '';
         /**
-          * If `true` the text is shown as a block
+          * If `true` the text has heading font family
          */
-        "paragraph": boolean;
+        "heading": boolean;
+        /**
+          * If `true` the text is shown as a display inline
+         */
+        "inline": boolean;
         /**
           * Defines the size of the paragraph
          */
         "size": FontSizeType;
+        /**
+          * Defines at which position the heading has spacing.
+         */
+        "space": 'none' | 'bottom' | 'top' | 'all' | '';
     }
     interface BalTextarea {
         /**
@@ -1427,6 +1489,36 @@ declare global {
     var HTMLBalCardElement: {
         prototype: HTMLBalCardElement;
         new (): HTMLBalCardElement;
+    };
+    interface HTMLBalCardActionsElement extends Components.BalCardActions, HTMLStencilElement {
+    }
+    var HTMLBalCardActionsElement: {
+        prototype: HTMLBalCardActionsElement;
+        new (): HTMLBalCardActionsElement;
+    };
+    interface HTMLBalCardButtonElement extends Components.BalCardButton, HTMLStencilElement {
+    }
+    var HTMLBalCardButtonElement: {
+        prototype: HTMLBalCardButtonElement;
+        new (): HTMLBalCardButtonElement;
+    };
+    interface HTMLBalCardContentElement extends Components.BalCardContent, HTMLStencilElement {
+    }
+    var HTMLBalCardContentElement: {
+        prototype: HTMLBalCardContentElement;
+        new (): HTMLBalCardContentElement;
+    };
+    interface HTMLBalCardSubtitleElement extends Components.BalCardSubtitle, HTMLStencilElement {
+    }
+    var HTMLBalCardSubtitleElement: {
+        prototype: HTMLBalCardSubtitleElement;
+        new (): HTMLBalCardSubtitleElement;
+    };
+    interface HTMLBalCardTitleElement extends Components.BalCardTitle, HTMLStencilElement {
+    }
+    var HTMLBalCardTitleElement: {
+        prototype: HTMLBalCardTitleElement;
+        new (): HTMLBalCardTitleElement;
     };
     interface HTMLBalCheckboxElement extends Components.BalCheckbox, HTMLStencilElement {
     }
@@ -1794,6 +1886,11 @@ declare global {
         "bal-button": HTMLBalButtonElement;
         "bal-button-group": HTMLBalButtonGroupElement;
         "bal-card": HTMLBalCardElement;
+        "bal-card-actions": HTMLBalCardActionsElement;
+        "bal-card-button": HTMLBalCardButtonElement;
+        "bal-card-content": HTMLBalCardContentElement;
+        "bal-card-subtitle": HTMLBalCardSubtitleElement;
+        "bal-card-title": HTMLBalCardTitleElement;
         "bal-checkbox": HTMLBalCheckboxElement;
         "bal-data": HTMLBalDataElement;
         "bal-data-item": HTMLBalDataItemElement;
@@ -1871,13 +1968,13 @@ declare namespace LocalJSX {
          */
         "closeLabel"?: string;
         /**
-          * Type defines the theme of the accordion toggle
-         */
-        "color"?: ColorTypesBasic;
-        /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
+        /**
+          * Controls the style of the accordion
+         */
+        "interface"?: '' | 'light';
         /**
           * Emmited when the accordion has changed
          */
@@ -1901,7 +1998,7 @@ declare namespace LocalJSX {
         /**
           * If `true` the bottom corners get rounded
          */
-        "bottomRounded"?: boolean;
+        "bottomRounded"?: undefined | boolean;
         /**
           * The color to use from your application's color palette.
          */
@@ -1989,7 +2086,7 @@ declare namespace LocalJSX {
         /**
           * If `true` the top corners get rounded
          */
-        "topRounded"?: boolean;
+        "topRounded"?: undefined | boolean;
         /**
           * The type of button.
          */
@@ -2013,7 +2110,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the card.
          */
-        "color"?: ColorTypes | '';
+        "color"?: BackgroundColors;
         /**
           * If `true` the card loses its shadow.
          */
@@ -2026,6 +2123,60 @@ declare namespace LocalJSX {
           * If `true` the card loses its border radius.
          */
         "square"?: boolean;
+    }
+    interface BalCardActions {
+        /**
+          * The value of the button, which is submitted with the form data.
+         */
+        "position"?: 'right' | 'center' | '';
+        /**
+          * @deprecated use position="right" If `true` the buttons start form right to left.
+         */
+        "right"?: boolean;
+    }
+    interface BalCardButton {
+        /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string | undefined;
+        /**
+          * Name of the icon like `edit`.
+         */
+        "icon"?: string;
+        /**
+          * Name of the right button icon
+         */
+        "iconRight"?: string;
+        /**
+          * If `true` the label is hidden and a loading spinner is shown instead.
+         */
+        "loading"?: boolean;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: '_blank' | ' _parent' | '_self' | '_top';
+        /**
+          * The type of button.
+         */
+        "type"?: 'button' | 'reset' | 'submit';
+    }
+    interface BalCardContent {
+    }
+    interface BalCardSubtitle {
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "inverted"?: boolean;
+    }
+    interface BalCardTitle {
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "inverted"?: boolean;
     }
     interface BalCheckbox {
         /**
@@ -2389,7 +2540,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color"?: BalButtonColor;
+        "color"?: BalIconColor | '';
         /**
           * If `true` the button is inverted
          */
@@ -3149,15 +3300,23 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the text.
          */
-        "color"?: ColorTypes | '';
+        "color"?: ColorTypes | 'white' | '';
         /**
-          * If `true` the text is shown as a block
+          * If `true` the text has heading font family
          */
-        "paragraph"?: boolean;
+        "heading"?: boolean;
+        /**
+          * If `true` the text is shown as a display inline
+         */
+        "inline"?: boolean;
         /**
           * Defines the size of the paragraph
          */
         "size"?: FontSizeType;
+        /**
+          * Defines at which position the heading has spacing.
+         */
+        "space"?: 'none' | 'bottom' | 'top' | 'all' | '';
     }
     interface BalTextarea {
         /**
@@ -3312,6 +3471,11 @@ declare namespace LocalJSX {
         "bal-button": BalButton;
         "bal-button-group": BalButtonGroup;
         "bal-card": BalCard;
+        "bal-card-actions": BalCardActions;
+        "bal-card-button": BalCardButton;
+        "bal-card-content": BalCardContent;
+        "bal-card-subtitle": BalCardSubtitle;
+        "bal-card-title": BalCardTitle;
         "bal-checkbox": BalCheckbox;
         "bal-data": BalData;
         "bal-data-item": BalDataItem;
@@ -3383,6 +3547,11 @@ declare module "@stencil/core" {
             "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
             "bal-button-group": LocalJSX.BalButtonGroup & JSXBase.HTMLAttributes<HTMLBalButtonGroupElement>;
             "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
+            "bal-card-actions": LocalJSX.BalCardActions & JSXBase.HTMLAttributes<HTMLBalCardActionsElement>;
+            "bal-card-button": LocalJSX.BalCardButton & JSXBase.HTMLAttributes<HTMLBalCardButtonElement>;
+            "bal-card-content": LocalJSX.BalCardContent & JSXBase.HTMLAttributes<HTMLBalCardContentElement>;
+            "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
+            "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
             "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
             "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
             "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;

@@ -94,12 +94,11 @@ export class Heading {
     const Heading = this.level === 'display' ? 'h1' : this.level
 
     return (
-      <Host>
+      <Host class={{ [this.spacing]: true }}>
         <Heading
           class={{
             title: this.subtitle === false,
             subtitle: this.subtitle === true,
-            [this.spacing]: true,
             [this.fontSize]: true,
             [this.fontColor]: true,
           }}

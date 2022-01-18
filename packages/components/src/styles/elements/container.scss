@@ -27,5 +27,6 @@
 }
 
 .container.is-compact {
-  max-width: calc($tablet - 1px + $container-offset + $container-offset) !important;
+  // max-width: calc($tablet - 1px + $container-offset + $container-offset) !important;
+  max-width: 832px !important;
 }

@@ -59,7 +59,12 @@ export class Tag {
         }}
       >
         <div class="is-flex is-align-items-center	">
-          <bal-text size={this.size === 'small' ? 'small' : ''}>
+          <bal-text
+            bold
+            inline
+            size={this.size === 'small' ? 'small' : ''}
+            color={this.color === 'primary' ? 'white' : ''}
+          >
             <slot />
           </bal-text>
           <div

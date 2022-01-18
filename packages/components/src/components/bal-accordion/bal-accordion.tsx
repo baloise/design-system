@@ -1,6 +1,5 @@
 import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core'
 import { debounceEvent } from '../../helpers/helpers'
-import { ColorTypesBasic, BalButtonColor } from '../../types/color.types'
 
 @Component({
   tag: 'bal-accordion',
@@ -9,9 +8,9 @@ export class Accordion {
   private didInit = false
 
   /**
-   * Type defines the theme of the accordion toggle
+   * Controls the style of the accordion
    */
-  @Prop() color: ColorTypesBasic = 'primary'
+  @Prop() interface: '' | 'light' = ''
 
   /**
    * Controls if the accordion is collapsed or not
@@ -56,7 +55,7 @@ export class Accordion {
   /**
    * Bal-Icon of the close trigger button
    */
-  @Prop() closeIcon = 'minus'
+  @Prop() closeIcon = 'close'
 
   /**
    * If `true` the accordion is used on the bottom of a card
@@ -103,34 +102,40 @@ export class Accordion {
     this.value = !this.value
   }
 
-  get buttonType(): BalButtonColor {
-    return `${this.color}-light` as BalButtonColor
-  }
-
-  get label() {
-    return this.value ? this.closeLabel : this.openLabel
-  }
-
-  get icon() {
-    return this.value ? this.closeIcon : this.openIcon
-  }
-
   render() {
+    const label = this.value ? this.closeLabel : this.openLabel
+    const icon = this.value ? this.closeIcon : this.openIcon
+
     return (
-      <Host class="accordion" aria-presented={this.value ? 'true' : null}>
-        <bal-button
-          class="data-test-accordion-trigger"
-          expanded={true}
-          color={this.buttonType}
-          icon={this.icon}
-          onClick={() => this.toggle()}
-          top-rounded={!this.card}
-          bottomRounded={!this.value}
-        >
-          {this.label}
-        </bal-button>
+      <Host
+        class={{
+          [`bal-accordion-${this.interface}`]: this.interface !== '',
+          'mt-5': this.card,
+        }}
+        aria-presented={this.value ? 'true' : null}
+      >
         <div
-          class={['accordion-content', `is-${this.color}`].join(' ')}
+          class={{
+            'accordion-trigger': true,
+          }}
+        >
+          <bal-button
+            class="data-test-accordion-trigger"
+            expanded={true}
+            color={this.interface === 'light' ? 'info' : 'light'}
+            icon={this.interface !== 'light' ? icon : undefined}
+            iconRight={this.interface === 'light' ? icon : undefined}
+            onClick={() => this.toggle()}
+            topRounded={!this.card && this.interface !== 'light'}
+            bottomRounded={!this.value && this.interface !== 'light'}
+          >
+            {label}
+          </bal-button>
+        </div>
+        <div
+          class={{
+            'accordion-content': true,
+          }}
           style={{ display: this.value ? 'block' : 'none' }}
         >
           <slot></slot>

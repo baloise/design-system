@@ -2,6 +2,8 @@ const path = require('path')
 const file = require('../../../.build/file')
 const log = require('../../../.build/log')
 
+const DIRNAME = path.normalize(__dirname)
+
 function appendGithubTag(content) {
   return `${content}
 

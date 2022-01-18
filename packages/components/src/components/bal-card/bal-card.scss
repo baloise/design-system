@@ -21,30 +21,62 @@ bal-card,
   }
 
   &.has-border {
-    border: 1px solid $blue-2;
+    border: 1px solid $border;
+  }
+}
+
+bal-card-title,
+bal-card-subtitle,
+bal-card-content,
+bal-card-actions {
+  display: block;
+  position: static;
+}
+
+bal-card {
+  & > :first-child {
+    padding-top: 20px;
   }
 
-  &.is-inverted {
-    color: $white;
+  & > :last-child {
+    padding-bottom: 20px;
   }
 
-  &.is-primary {
-    background-color: $blue-1;
+  & > bal-card-title + bal-card-content,
+  & > bal-card-subtitle + bal-card-content {
+    padding-top: 20px;
   }
 
-  &.is-info {
-    background-color: $blue;
+  & > bal-card-actions {
+    padding-top: 20px;
   }
 
-  &.is-success {
-    background-color: $success;
+  & > bal-accordion {
+    padding-bottom: 0 !important;
   }
+}
 
-  &.is-warning {
-    background-color: $warning;
-  }
+@include desktop() {
+  bal-card {
+    & > :first-child {
+      padding-top: 24px;
+    }
 
-  &.is-danger {
-    background-color: $danger;
+    & > :last-child {
+      padding-bottom: 24px;
+    }
+
+    & > bal-card-title + bal-card-content,
+    & > bal-card-subtitle + bal-card-content {
+      padding-top: 24px;
+    }
+
+    & > bal-card-actions {
+      padding-top: 24px;
+    }
+
+    & > bal-accordion {
+      padding-bottom: 0 !important;
+    }
   }
 }
