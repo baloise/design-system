@@ -41,7 +41,7 @@ const readSVG = async (name, filePath) => {
       ],
     })
     svgContent = svg.data
-    // svgContent = svgContent.replace(/style="fill: #000000"/g, '').replace(/style="fill:#000000"/g, '');
+    svgContent = svgContent.replace(/style="fill: #000000"/g, '').replace(/style="fill:#000000"/g, '');
   } catch (error) {
     log.error(`Could not optimize the file ${filePath}`, error)
     process.exit(0)
@@ -84,9 +84,9 @@ const main = async () => {
     JSON.stringify([...contents.keys()]),
   )
 
-  // contents.forEach(async (value, key) => {
-  //   await file.save(path.join(DIRNAME, '../svg', `${key}.svg`), value)
-  // })
+  contents.forEach(async (value, key) => {
+    await file.save(path.join(DIRNAME, '../svg', `${key}.svg`), value)
+  })
 }
 
 main()
