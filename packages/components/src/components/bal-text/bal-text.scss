@@ -1,7 +1,10 @@
+@import '../bal-heading/bal-heading.vars.scss';
+
 bal-text {
   @include margin(0);
   @include padding(0);
 
+  box-sizing: content-box;
   position: static;
   word-break: break-word;
 }
@@ -16,6 +19,13 @@ span {
   font-family: $family-primary;
   font-weight: $weight-normal;
   margin: 0 0 16px 0;
+}
+
+a.is-heading,
+p.is-heading,
+span.is-heading {
+  font-family: $title-family;
+  font-weight: $weight-bold;
 }
 
 a.is-lead,

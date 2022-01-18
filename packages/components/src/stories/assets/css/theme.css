@@ -105,9 +105,9 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   line-height: 24px;
 }
 
-.sbdocs-a {
-  color: #000d6e;
-  text-decoration: underline;
+.sbdocs-a:not(.button) {
+  color: #000d6e !important;
+  text-decoration: underline !important;
 }
 
 /* *************************************** */

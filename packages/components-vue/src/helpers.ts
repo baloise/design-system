@@ -1,15 +1,15 @@
 import { Ref, unref } from 'vue'
 
 /**
- * WebComponent Helpers
+ * ProxyComponent Helpers
  */
 
-interface WebComponent<T> {
+export interface ProxyComponent<T> {
   $el: T
 }
 
 // eslint-disable-next-line
 export const element = <T>(elementReference: Ref<any> | any): T => {
-  const component: WebComponent<T> = unref(elementReference)
+  const component: ProxyComponent<T> = unref(elementReference)
   return component.$el
 }
