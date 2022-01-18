@@ -1,6 +1,12 @@
 import docs from './bal-accordion.docs.mdx'
 import { withContent, BalComponentStory } from '../../../stories/utils'
-import { BalAccordion, BalCard, BalHeading } from '../../../../.storybook/vue/components'
+import {
+  BalAccordion,
+  BalCard,
+  BalCardContent,
+  BalCardTitle,
+  BalCardSubtitle,
+} from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   component: BalAccordion,
@@ -59,13 +65,11 @@ WithIcons.args = {
 WithIcons.parameters = { ...component.sourceCode(WithIcons) }
 
 export const WithCard = args => ({
-  components: { ...component.components, BalCard, BalHeading },
+  components: { ...component.components, BalCard, BalCardContent, BalCardTitle, BalCardSubtitle },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
-  <div class="p-5">
-    <bal-heading title level="h4" space="none">BaloiseCombi</bal-heading>
-    <bal-heading subtitle level="h5" space="none" color="info">Police number 70/2.937.458</bal-heading>
-  </div>
+  <bal-card-title>BaloiseCombi</bal-card-title>
+  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
   <bal-accordion card>
     <p class="p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </bal-accordion>

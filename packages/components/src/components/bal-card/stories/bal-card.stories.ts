@@ -16,10 +16,15 @@ import {
   BalListItemIcon,
   BalIcon,
   BalCheckbox,
+  BalCardTitle,
+  BalCardSubtitle,
+  BalCardContent,
+  BalCardActions,
 } from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   component: BalCard,
+  subcomponents: [BalCardTitle, BalCardSubtitle, BalCardContent, BalCardActions],
   docs,
   args: {
     color: '',
@@ -35,16 +40,16 @@ const excludedControls = ['inverted', 'flatMobile']
 export const Basic = args => ({
   components: { ...component.components, BalButton, BalHeading },
   setup: () => ({ args }),
-  template: `<bal-card v-bind="args" class="p-5">
-  <bal-heading level="h5" space="none">BaloiseCombi</bal-heading>
-  <p>Police number 70/2.937.458</p>
-  <p>
+  template: `<bal-card v-bind="args">
+  <bal-card-title>BaloiseCombi</bal-card-title>
+  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
+  <bal-card-content>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-  <bal-button-group position="right" class="mt-6">
+  </bal-card-content>
+  <bal-card-actions position="right">
     <bal-button color="info" outlined>Secondary Action</bal-button>
     <bal-button>Main Action</bal-button>
-  </bal-button-group>
+  </bal-card-actions>
 </bal-card>`,
 })
 Basic.args = {
@@ -55,16 +60,16 @@ Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: exclud
 export const ServiceCard = args => ({
   components: { ...component.components, BalButton, BalHeading },
   setup: () => ({ args }),
-  template: `<bal-card v-bind="args" class="p-5">
-  <bal-heading level="h5" space="none">BaloiseCombi</bal-heading>
-  <p>Police number 70/2.937.458</p>
-  <p>
+  template: `<bal-card v-bind="args">
+  <bal-card-title level="h5" space="none">BaloiseCombi</bal-card-title>
+  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
+  <bal-card-content>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-  <bal-button-group position="right" class="mt-6">
+  </bal-card-content>
+  <bal-card-actions position="right">
     <bal-button color="info" outlined>Secondary Action</bal-button>
     <bal-button>Main Action</bal-button>
-  </bal-button-group>
+  </bal-card-actions>
 </bal-card>`,
 })
 ServiceCard.args = {
@@ -87,9 +92,10 @@ export const ListCard = args => ({
     BalListItemContent,
   },
   setup: () => ({ args }),
-  template: `<bal-card v-bind="args" class="p-5">
-  <bal-heading title level="h5" space="bottom">Title</bal-heading>
-  <bal-list border class="mt-4">
+  template: `<bal-card v-bind="args">
+  <bal-card-title>Title</bal-card-title>
+  <bal-card-content>
+  <bal-list border>
     <bal-list-item>
       <bal-list-item-content>
         <bal-list-item-title>News A</bal-list-item-title>
@@ -107,9 +113,11 @@ export const ListCard = args => ({
       </bal-list-item-icon>
     </bal-list-item>
   </bal-list>
-  <bal-button-group position="right" class="mt-6">
-    <bal-button type="is-link">More</bal-button>
-  </bal-button-group>
+  </bal-card-content>
+  <bal-card-actions position="right">
+    <bal-button color="info" outlined>Secondary Action</bal-button>
+    <bal-button>Main Action</bal-button>
+  </bal-card-actions>
 </bal-card>`,
 })
 ListCard.parameters = { ...component.sourceCode(ListCard), controls: { exclude: excludedControls } }
@@ -118,10 +126,8 @@ export const AccordionCard = args => ({
   components: { ...component.components, BalAccordion, BalHeading },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
-  <div class="p-5">
-    <bal-heading level="h5" space="none">BaloiseCombi</bal-heading>
-    <p>Police number 70/2.937.458</p>
-  </div>
+  <bal-card-title>BaloiseCombi</bal-card-title>
+  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
   <bal-accordion card>
     <p class="p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </bal-accordion>
@@ -133,12 +139,10 @@ export const SummaryCard = args => ({
   components: { ...component.components, BalHeading, BalButton, BalData, BalDataItem, BalDataLabel, BalDataValue },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
+  <bal-card-content><bal-text inline bold headline>Insured vehicle</bal-text></bal-card-content>
+  <bal-card-title>Cupra Ateca</bal-card-title>
+  <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
   <div class="p-5">
-    <bal-heading level="h6" space="none">Insured vehicle</bal-heading>
-    <bal-heading level="h5" space="none">Cupra Ateca</bal-heading>
-    <p>
-      Running time: 21.07.2019 - 21.07.2021
-    </p>
     <bal-data horizontal>
       <bal-data-item>
         <bal-data-label>Tony</bal-data-label>
@@ -154,8 +158,7 @@ export const SummaryCard = args => ({
       </bal-data-item>
     </bal-data>
   </div>
-
-  <bal-button color="primary-light" bottom-rounded icon="edit" expanded>Edit</bal-button>
+  <bal-card-button icon="edit">Edit</bal-card-button>
   </bal-card>`,
 })
 SummaryCard.args = {
@@ -168,7 +171,7 @@ export const PackageCard = args => ({
   components: { ...component.components, BalCheckbox, BalAccordion, BalHeading },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
-  <div class="p-5">
+  <bal-card-content>
     <div class="is-flex is-justify-content-center	is-align-items-center">
       <img class="is-hidden-touch" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
       <div class="is-flex-grow-1 px-3">
@@ -182,15 +185,14 @@ export const PackageCard = args => ({
       <img class="" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
     </div>
     <bal-text space="all" class="is-hidden-desktop">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</bal-text>
-  </div>
-  <bal-accordion card open-label="Details einblenden" close-label="Details ausblenden">
+  </bal-card-content>
+  <bal-accordion card open-label="Show more" close-label="Show less">
   <p class="p-5">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
     adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
     incididunt ut labore et dolore magna aliqua.
   </p>
   </bal-accordion>
-
 </bal-card>`,
 })
 PackageCard.parameters = { ...component.sourceCode(PackageCard), controls: { exclude: excludedControls } }
