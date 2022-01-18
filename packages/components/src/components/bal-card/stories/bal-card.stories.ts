@@ -61,21 +61,16 @@ export const ServiceCard = args => ({
   components: { ...component.components, BalButton, BalHeading },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
-  <bal-card-title level="h5" space="none">BaloiseCombi</bal-card-title>
-  <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
+  <bal-card-title level="h5" space="none">Services</bal-card-title>
   <bal-card-content>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    TODO Add link list
   </bal-card-content>
-  <bal-card-actions position="right">
-    <bal-button color="info" outlined>Secondary Action</bal-button>
-    <bal-button>Main Action</bal-button>
-  </bal-card-actions>
 </bal-card>`,
 })
 ServiceCard.args = {
   color: 'grey',
   flat: true,
-  square: true,
+  square: false,
 }
 ServiceCard.parameters = { ...component.sourceCode(ServiceCard), controls: { exclude: excludedControls } }
 
@@ -167,7 +162,7 @@ SummaryCard.args = {
 }
 SummaryCard.parameters = { ...component.sourceCode(SummaryCard), controls: { exclude: excludedControls } }
 
-export const PackageCard = args => ({
+export const OptionCard = args => ({
   components: { ...component.components, BalCheckbox, BalAccordion, BalHeading },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
@@ -195,4 +190,4 @@ export const PackageCard = args => ({
   </bal-accordion>
 </bal-card>`,
 })
-PackageCard.parameters = { ...component.sourceCode(PackageCard), controls: { exclude: excludedControls } }
+OptionCard.parameters = { ...component.sourceCode(OptionCard), controls: { exclude: excludedControls } }
