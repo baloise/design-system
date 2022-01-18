@@ -102,15 +102,10 @@ export class Accordion {
     this.value = !this.value
   }
 
-  get label() {
-    return this.value ? this.closeLabel : this.openLabel
-  }
-
-  get icon() {
-    return this.value ? this.closeIcon : this.openIcon
-  }
-
   render() {
+    const label = this.value ? this.closeLabel : this.openLabel
+    const icon = this.value ? this.closeIcon : this.openIcon
+
     return (
       <Host
         class={{
@@ -127,13 +122,13 @@ export class Accordion {
             class="data-test-accordion-trigger"
             expanded={true}
             color={this.interface === 'light' ? 'info' : 'light'}
-            icon={this.interface !== 'light' ? this.icon : undefined}
-            iconRight={this.interface === 'light' ? this.icon : undefined}
+            icon={this.interface !== 'light' ? icon : undefined}
+            iconRight={this.interface === 'light' ? icon : undefined}
             onClick={() => this.toggle()}
             topRounded={!this.card && this.interface !== 'light'}
             bottomRounded={!this.value && this.interface !== 'light'}
           >
-            {this.label}
+            {label}
           </bal-button>
         </div>
         <div
