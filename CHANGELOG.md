@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.0](https://github.com/baloise-incubator/design-system/compare/v9.0.3...v9.1.0) (2022-01-18)
+
+
+### Features
+
+* **accordion:** add new styles ([1956d8e](https://github.com/baloise-incubator/design-system/commit/1956d8e6a47eed23cbae0144970d9eba5dffa234))
+* add new font ([fa631d0](https://github.com/baloise-incubator/design-system/commit/fa631d0e2d911efbbe68b1ad72853f0664e80840))
+* **button:** add new styles ([a7d91e0](https://github.com/baloise-incubator/design-system/commit/a7d91e085e3ae802c2e037b88dc2f80f707ce19f))
+* **card:** add new design ([11c0cbc](https://github.com/baloise-incubator/design-system/commit/11c0cbc3b73eaf39d63ebda0750c80bb3b429f61))
+* **icons:** add new icons ([6078798](https://github.com/baloise-incubator/design-system/commit/60787988872433cdb351172d65704021550c41b1))
+* **text:** add heading attribute to change the font family ([f574c24](https://github.com/baloise-incubator/design-system/commit/f574c242c91dc54a72b75d9337b0c3a85be946d7))
+
+
+### Bug Fixes
+
+* optimize icons ([d7be142](https://github.com/baloise-incubator/design-system/commit/d7be1427c02cb5cfc9106d32fcede5124c324a85))
+* update fonts ([3a01e0d](https://github.com/baloise-incubator/design-system/commit/3a01e0dd7f84bcd803afb5bad8d38b0179c2b917))
+* update icons ([2701297](https://github.com/baloise-incubator/design-system/commit/2701297acba17c9438817c40f9200dc6aa644009))
+* update icons ([241dc39](https://github.com/baloise-incubator/design-system/commit/241dc39160a8d6becc10dacefd199042fccdce08))
+
+### [9.0.1](https://github.com/baloise-incubator/design-system/compare/v9.0.0...v9.0.1) (2022-01-11)
+
+
+### Bug Fixes
+
+* **hint:** adjust mobile view ([df56521](https://github.com/baloise-incubator/design-system/commit/df5652119d8dcc5768f417bd47c12176e6a8f61e))
+* **list:** remove margin top ([500753d](https://github.com/baloise-incubator/design-system/commit/500753d4ce8b459ca0dae795868e24f9df6efe42))
+
+## [9.0.0](https://github.com/baloise-incubator/design-system/compare/v6.1.0...v9.0.0) (2022-01-10)
+
+## 6.1.0 (2021-12-30)
+
+
+
 ### [9.0.3](https://github.com/baloise/design-system/compare/v9.0.2...v9.0.3) (2022-01-18)
 
 ### Bug Fixes
