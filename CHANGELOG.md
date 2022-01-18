@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.0.3](https://github.com/baloise/design-system/compare/v9.0.2...v9.0.3) (2022-01-18)
+
+
+### Bug Fixes
+
+* **container:** use real value for the angular scss compiler ([5257ef4](https://github.com/baloise/design-system/commit/5257ef4c59101a73ba551aa835fdb06d5cc64415))
+* **proxy:** export ProxyComponent interface ([6d7d085](https://github.com/baloise/design-system/commit/6d7d085a3890fce8a544cd594dfea4af2a75ecfe))
+
+
+
 ### [9.0.2](https://github.com/baloise/design-system/compare/v9.0.1...v9.0.2) (2022-01-17)
 
 
