@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BackgroundColors, ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
 import { BalButtonColor, BalIconColor } from "./types";
+import { BackgroundColors, ColorTypes, ColorTypesExtended } from "./types/color.types";
 import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
@@ -30,10 +30,6 @@ export namespace Components {
          */
         "closeLabel": string;
         /**
-          * Type defines the theme of the accordion toggle
-         */
-        "color": ColorTypesBasic;
-        /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
@@ -41,6 +37,10 @@ export namespace Components {
           * Close the accordion
          */
         "dismiss": () => Promise<void>;
+        /**
+          * Controls the style of the accordion
+         */
+        "interface": '' | 'light';
         /**
           * Bal-Icon of the open trigger button
          */
@@ -68,7 +68,7 @@ export namespace Components {
         /**
           * If `true` the bottom corners get rounded
          */
-        "bottomRounded": boolean;
+        "bottomRounded": undefined | boolean;
         /**
           * The color to use from your application's color palette.
          */
@@ -140,7 +140,7 @@ export namespace Components {
         /**
           * If `true` the top corners get rounded
          */
-        "topRounded": boolean;
+        "topRounded": undefined | boolean;
         /**
           * The type of button.
          */
@@ -1879,13 +1879,13 @@ declare namespace LocalJSX {
          */
         "closeLabel"?: string;
         /**
-          * Type defines the theme of the accordion toggle
-         */
-        "color"?: ColorTypesBasic;
-        /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
+        /**
+          * Controls the style of the accordion
+         */
+        "interface"?: '' | 'light';
         /**
           * Emmited when the accordion has changed
          */
@@ -1909,7 +1909,7 @@ declare namespace LocalJSX {
         /**
           * If `true` the bottom corners get rounded
          */
-        "bottomRounded"?: boolean;
+        "bottomRounded"?: undefined | boolean;
         /**
           * The color to use from your application's color palette.
          */
@@ -1997,7 +1997,7 @@ declare namespace LocalJSX {
         /**
           * If `true` the top corners get rounded
          */
-        "topRounded"?: boolean;
+        "topRounded"?: undefined | boolean;
         /**
           * The type of button.
          */

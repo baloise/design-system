@@ -90,12 +90,12 @@ export class Button implements ComponentInterface {
   /**
    * If `true` the top corners get rounded
    */
-  @Prop() topRounded = false
+  @Prop() topRounded: undefined | boolean = undefined
 
   /**
    * If `true` the bottom corners get rounded
    */
-  @Prop() bottomRounded = false
+  @Prop() bottomRounded: undefined | boolean = undefined
 
   /**
    * Name of the left button icon
@@ -179,8 +179,10 @@ export class Button implements ComponentInterface {
       'is-fullwidth': this.expanded,
       'is-disabled': this.disabled,
       'is-loading': this.loading,
-      'has-round-top-corners': this.topRounded,
-      'has-round-bottom-corners': this.bottomRounded,
+      'has-round-top-corners': this.topRounded === true,
+      'has-round-bottom-corners': this.bottomRounded === true,
+      'has-no-round-top-corners': this.topRounded === false,
+      'has-no-round-bottom-corners': this.bottomRounded === false,
     }
   }
 
@@ -299,7 +301,7 @@ export class Button implements ComponentInterface {
           />
           <span
             class={{
-              'data-test-button-label m-0 p-0': true,
+              'data-test-button-label button-label m-0 p-0': true,
               'is-small': this.size === 'small',
               'is-bold': true,
             }}
@@ -307,16 +309,6 @@ export class Button implements ComponentInterface {
           >
             <slot />
           </span>
-          {/* <bal-text
-            heading
-            inline
-            class="data-test-button-label"
-            {...this.spanSquareAttrs}
-            size={this.size === 'small' ? 'small' : ''}
-            style={{ display: this.loading ? 'none' : 'inline' }}
-          >
-            <slot />
-          </bal-text> */}
           <bal-icon
             {...this.leftRightAttrs}
             class="icon-right"

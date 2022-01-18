@@ -46,7 +46,6 @@ bal-button.is-fullwidth {
   z-index: 0;
   box-sizing: border-box;
   appearance: none;
-  transition: background 0.1s ease, color 0.1s ease;
   text-decoration: none !important;
   padding: 12px 24px;
   min-height: 48px;
@@ -75,8 +74,14 @@ bal-button.is-fullwidth {
     border-bottom-right-radius: $radius-large !important;
   }
 
-  &.has-round-top-corners:not(.has-round-bottom-corners),
-  &.has-round-top-corners:not(.has-round-bottom-corners) button {
+  &.has-no-round-top-corners,
+  &.has-no-round-top-corners button {
+    border-top-left-radius: $radius-none !important;
+    border-top-right-radius: $radius-none !important;
+  }
+
+  &.has-no-round-bottom-corners,
+  &.has-no-round-bottom-corners button {
     border-bottom-left-radius: $radius-none !important;
     border-bottom-right-radius: $radius-none !important;
   }
@@ -233,7 +238,11 @@ bal-button.is-fullwidth {
     &:focus-visible {
       background: transparent;
       border-color: bulmaLighten($blue, 2%);
-      color: $blue;
+
+      &,
+      & span {
+        color: $blue;
+      }
     }
 
     &.is-hovered,
@@ -277,6 +286,51 @@ bal-button.is-fullwidth {
     }
   }
 
+  &.is-light,
+  &.is-light.is-outlined {
+    background: $blue-1;
+
+    bal-icon {
+      svg,
+      svg g,
+      svg path,
+      svg circle {
+        fill: $blue !important;
+      }
+    }
+
+    &,
+    & span {
+      color: $blue;
+    }
+
+    &:focus {
+      background: $blue-1;
+      color: $blue;
+    }
+
+    &.is-focused,
+    &:focus-visible {
+      background: $blue-1;
+      border-color: bulmaLighten($blue, 2%);
+
+      &,
+      & span {
+        color: $blue;
+      }
+    }
+
+    &.is-hovered,
+    &:hover {
+      background: bulmaDarken($blue-1, 3%);
+    }
+
+    &.is-active,
+    &:active {
+      background: bulmaDarken($blue-1, 6%);
+    }
+  }
+
   &.is-link,
   &.is-link.is-outlined {
     background: transparent;
@@ -312,14 +366,40 @@ bal-button.is-fullwidth {
     &:hover {
       background: transparent;
       border-color: transparent;
-      color: $blue-4;
+
+      bal-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $blue-4 !important;
+        }
+      }
+
+      &,
+      & span {
+        color: $blue-4;
+      }
     }
 
     &.is-active,
     &:active {
       background: transparent;
       border-color: transparent;
-      color: $blue-6;
+
+      bal-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $blue-6 !important;
+        }
+      }
+
+      &,
+      & span {
+        color: $blue-6;
+      }
     }
   }
 
@@ -410,6 +490,7 @@ bal-button.is-fullwidth {
   &.is-inverted {
     &,
     &.is-primary,
+    &.is-light,
     &.is-success,
     &.is-warning,
     &.is-danger {

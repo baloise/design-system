@@ -1,8 +1,7 @@
 export const basic = `
 <table>
 <tr>
-    <td class="p-2"><bal-button icon="account" color="">Component</bal-button></td>
-    <td class="p-2"><bal-button icon="account" color="primary">Primary</bal-button></td>
+    <td class="p-2"><bal-button icon="account" color="">Primary</bal-button></td>
     <td class="p-2"><bal-button icon="account" color="info">Secondary</bal-button></td>
     <td class="p-2"><bal-button icon="account" color="link">Link</bal-button></td>
     <td class="p-2"><bal-button icon="account" color="success">Success</td>
@@ -10,17 +9,7 @@ export const basic = `
     <td class="p-2"><bal-button icon="account" color="danger">Danger</bal-button></td>
   </tr>
   <tr>
-    <td class="p-2"><button class="button">Default</button></td>
-    <td class="p-2"><button class="button is-primary">Primary</button></td>
-    <td class="p-2"><button class="button is-info">Secondary</button></td>
-    <td class="p-2"><button class="button is-link">Link</button></td>
-    <td class="p-2"><button class="button is-success">Success</button></td>
-    <td class="p-2"><button class="button is-warning">Warning</button></td>
-    <td class="p-2"><button class="button is-danger">Danger</button></td>
-  </tr>
-  <tr>
     <td class="p-2"><button class="button is-focused">Focus</button></td>
-    <td class="p-2"><button class="button is-focused is-primary">Primary</button></td>
     <td class="p-2"><button class="button is-focused is-info">Secondary</button></td>
     <td class="p-2"><button class="button is-focused is-link">Link</button></td>
     <td class="p-2"><button class="button is-focused is-success">Success</button></td>
@@ -29,8 +18,7 @@ export const basic = `
   </tr>
   <tr>
   <td class="p-2"><button class="button is-hovered">Hover</button></td>
-  <td class="p-2"><button class="button is-hovered is-primary"><bal-icon name="plus"></bal-icon>Primary</button></td>
-  <td class="p-2"><button class="button is-hovered is-info"><bal-icon name="plus"></bal-icon>Secondary</button></td>
+  <td class="p-2"><button class="button is-hovered is-info">Secondary</button></td>
   <td class="p-2"><button class="button is-hovered is-link">Link</button></td>
   <td class="p-2"><button class="button is-hovered is-success">Success</button></td>
   <td class="p-2"><button class="button is-hovered is-warning">Warning</button></td>
@@ -38,8 +26,7 @@ export const basic = `
 </tr>
   <tr>
     <td class="p-2"><button class="button is-active">Active</button></td>
-    <td class="p-2"><button class="button is-active is-primary">Primary</button></td>
-    <td class="p-2"><button class="button is-active is-info"><bal-icon name="plus"></bal-icon> Secondary</button></td>
+    <td class="p-2"><button class="button is-active is-info"> Secondary</button></td>
     <td class="p-2"><button class="button is-active is-link">Link</button></td>
     <td class="p-2"><button class="button is-active is-success">Success</button></td>
     <td class="p-2"><button class="button is-active is-warning">Warning</button></td>
@@ -47,7 +34,6 @@ export const basic = `
   </tr>
   <tr>
     <td class="p-2"><button class="button is-disabled" disabled>Disabled</button></td>
-    <td class="p-2"><button class="button is-disabled is-primary" disabled>Primary</button></td>
     <td class="p-2"><button class="button is-disabled is-info" disabled>Secondary</button></td>
     <td class="p-2"><button class="button is-disabled is-link" disabled>Link</button></td>
     <td class="p-2"><button class="button is-disabled is-success" disabled>Success</button></td>
@@ -59,8 +45,7 @@ export const basic = `
 export const inverted = `
 <table class="has-background-blue">
 <tr>
-    <td class="p-2"><bal-button icon="account" inverted color="">Component</bal-button></td>
-    <td class="p-2"><bal-button icon="account" inverted color="primary">Primary</bal-button></td>
+    <td class="p-2"><bal-button icon="account" inverted color="">Primary</bal-button></td>
     <td class="p-2"><bal-button icon="account" inverted color="info">Secondary</bal-button></td>
     <td class="p-2"><bal-button icon="account" inverted color="link">Link</bal-button></td>
     <td class="p-2"><bal-button icon="account" inverted color="success">Success</td>
@@ -68,17 +53,7 @@ export const inverted = `
     <td class="p-2"><bal-button icon="account" inverted color="danger">Danger</bal-button></td>
   </tr>
   <tr>
-    <td class="p-2"><button class="button is-inverted">Default</button></td>
-    <td class="p-2"><button class="button is-inverted is-primary">Primary</button></td>
-    <td class="p-2"><button class="button is-inverted is-info">Secondary</button></td>
-    <td class="p-2"><button class="button is-inverted is-link">Link</button></td>
-    <td class="p-2"><button class="button is-inverted is-success">Success</button></td>
-    <td class="p-2"><button class="button is-inverted is-warning">Warning</button></td>
-    <td class="p-2"><button class="button is-inverted is-danger">Danger</button></td>
-  </tr>
-  <tr>
     <td class="p-2"><button class="button is-inverted is-focused">Focus</button></td>
-    <td class="p-2"><button class="button is-inverted is-focused is-primary">Primary</button></td>
     <td class="p-2"><button class="button is-inverted is-focused is-info">Secondary</button></td>
     <td class="p-2"><button class="button is-inverted is-focused is-link">Link</button></td>
     <td class="p-2"><button class="button is-inverted is-focused is-success">Success</button></td>
@@ -87,7 +62,6 @@ export const inverted = `
   </tr>
   <tr>
   <td class="p-2"><button class="button is-inverted is-hovered">Hover</button></td>
-  <td class="p-2"><button class="button is-inverted is-hovered is-primary">Primary</button></td>
   <td class="p-2"><button class="button is-inverted is-hovered is-info">Secondary</button></td>
   <td class="p-2"><button class="button is-inverted is-hovered is-link">Link</button></td>
   <td class="p-2"><button class="button is-inverted is-hovered is-success">Success</button></td>
@@ -96,7 +70,6 @@ export const inverted = `
 </tr>
   <tr>
     <td class="p-2"><button class="button is-inverted is-active">Active</button></td>
-    <td class="p-2"><button class="button is-inverted is-active is-primary">Primary</button></td>
     <td class="p-2"><button class="button is-inverted is-active is-info">Secondary</button></td>
     <td class="p-2"><button class="button is-inverted is-active is-link">Link</button></td>
     <td class="p-2"><button class="button is-inverted is-active is-success">Success</button></td>
@@ -105,7 +78,6 @@ export const inverted = `
   </tr>
   <tr>
     <td class="p-2"><button class="button is-inverted is-disabled" disabled>Disabled</button></td>
-    <td class="p-2"><button class="button is-inverted is-disabled is-primary" disabled>Primary</button></td>
     <td class="p-2"><button class="button is-inverted is-disabled is-info" disabled>Secondary</button></td>
     <td class="p-2"><button class="button is-inverted is-disabled is-link" disabled>Link</button></td>
     <td class="p-2"><button class="button is-inverted is-disabled is-success" disabled>Success</button></td>
@@ -124,6 +96,7 @@ export const links = `
 
 export const colors = `
 <bal-button-group>
+  <bal-button color="light">Light</bal-button>
   <bal-button color="success">Success</bal-button>
   <bal-button color="warning">Warning</bal-button>
   <bal-button color="danger">Danger</bal-button>
