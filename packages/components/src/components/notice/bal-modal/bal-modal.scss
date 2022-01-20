@@ -12,8 +12,13 @@ bal-modal-header {
   border-radius: $radius-large !important;
   background-color: transparent !important;
 
+  .modal-card-head {
+    word-break: break-word;
+  }
+
   .modal-card-title {
     padding-right: 40px;
+    line-height: 32px;
   }
 
   .modal-close {
