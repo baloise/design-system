@@ -3,7 +3,7 @@ name: 'Breaking change request ⚠️'
 about: Suggest an idea to improve the component interface
 title: 'Breaking change for ???'
 labels: 'enhancement'
-projects: 'Design System / Roadmap'
+projects: '2'
 assignees: 'hirsch88, nobilo, yannickholzenkamp'
 ---
 
