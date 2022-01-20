@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.0.5](https://github.com/baloise/design-system/compare/v9.0.4...v9.0.5) (2022-01-20)
+
+
+### Bug Fixes
+
+* **modal:** break text in modal title ([f7ccd46](https://github.com/baloise/design-system/commit/f7ccd46f30f7db1bec8a97392839b34df86d7323))
+* **vue:** add better vite support ([6503327](https://github.com/baloise/design-system/commit/6503327cb43193f432d5f0bccd47ac5955fefa9a))
+
+### [9.0.3](https://github.com/baloise/design-system/compare/v9.0.0...v9.0.3) (2022-01-18)
+
+
+### Bug Fixes
+
+* **hint:** adjust mobile view ([df56521](https://github.com/baloise/design-system/commit/df5652119d8dcc5768f417bd47c12176e6a8f61e))
+* **list:** remove margin top ([500753d](https://github.com/baloise/design-system/commit/500753d4ce8b459ca0dae795868e24f9df6efe42))
+
+## 9.0.0 (2022-01-10)
+
+
+
 ### [9.0.4](https://github.com/baloise/design-system/compare/v9.0.3...v9.0.4) (2022-01-19)
 
 
