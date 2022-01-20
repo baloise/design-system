@@ -3,6 +3,7 @@ name: 'Breaking change request ⚠️'
 about: Suggest an idea to improve the component interface
 title: 'Breaking change for ???'
 labels: 'enhancement'
+projects: 'Design System / Roadmap'
 assignees: 'hirsch88, nobilo, yannickholzenkamp'
 ---
 
@@ -34,7 +35,8 @@ Please provide code example like below.
 
 ### Next steps
 
-[ ] Present breaking change in the Baloise web community
-    - **Benefit** Show benefits of the change
-    - **Effort** Discuss the impact of current running applications
-    - **Development** Discuss process of development
+Present breaking change in the Baloise web community:
+
+- **Benefit** Show benefits of the change
+- **Effort** Discuss the impact of current running applications
+- **Development** Discuss process of development
