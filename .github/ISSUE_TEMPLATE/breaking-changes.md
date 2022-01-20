@@ -3,7 +3,7 @@ name: 'Breaking change request ⚠️'
 about: Suggest an idea to improve the component interface
 title: 'Breaking change for ???'
 labels: 'enhancement'
-assignees: '@hirsch88 @nobilo @yannickholzenkamp @Gagne87'
+assignees: 'hirsch88, nobilo, yannickholzenkamp'
 ---
 
 Use this template if you want to request a breaking change an existing feature.
@@ -34,8 +34,7 @@ Please provide code example like below.
 
 ### Next steps
 
-[] Present breaking change in the Baloise web community
-
-- **Benefit** Show benefits of the change
-- **Effort** Discuss the impact of current running applications
-- **Development** Discuss process of development
+[ ] Present breaking change in the Baloise web community
+    - **Benefit** Show benefits of the change
+    - **Effort** Discuss the impact of current running applications
+    - **Development** Discuss process of development
