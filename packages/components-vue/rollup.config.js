@@ -9,5 +9,15 @@ export default {
       sourcemap: true,
     },
   ],
-  external: ['@baloise/design-system-components', '@baloise/design-system-components/loader', 'vue'],
+  external: id => {
+    if (/@baloise/.test(id)) {
+      return true
+    }
+
+    if (/vue/.test(id)) {
+      return true
+    }
+
+    return false
+  },
 }
