@@ -9,15 +9,4 @@ export default {
       sourcemap: true,
     },
   ],
-  external: id => {
-    if (/@baloise/.test(id)) {
-      return true
-    }
-
-    if (/vue/.test(id)) {
-      return true
-    }
-
-    return false
-  },
 }
