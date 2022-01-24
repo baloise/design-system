@@ -31,7 +31,7 @@
     "bin/"
   ],
   "license": "Apache-2.0",
-  "devDependencies": {
+  "dependencies": {
     "replace-in-file": "^6.3.2"
   }
 }

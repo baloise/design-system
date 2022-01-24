@@ -31,4 +31,5 @@ export const VueGenerator = (
     proxiesDir,
     componentModels: vueComponentModels,
     includeUtils: false,
+    excludeComponents: ['bal-app']
   })
