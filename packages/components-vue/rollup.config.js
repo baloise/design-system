@@ -9,4 +9,7 @@ export default {
       sourcemap: true,
     },
   ],
+  external: id => {
+    return id.startsWith('vue') || id.startsWith('@baloise')
+  },
 }
