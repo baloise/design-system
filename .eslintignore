@@ -32,3 +32,5 @@ packages/components-react/src/components.ts
 packages/components-react/src/react-component-lib
 packages/components-angular/src/directives/
 packages/components-angular/src/overlays
+
+packages/stencil-vite-fix

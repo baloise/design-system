@@ -1,0 +1,37 @@
+{
+  "name": "@baloise/stencil-vite-fix",
+  "version": "9.0.4",
+  "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baloise/design-system.git"
+  },
+  "homepage": "https://design.baloise.dev",
+  "contributors": [
+    "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/hirsch88)",
+    "Yannick Holzenkamp <yannick.holzenkamp@baloise.ch> (https://github.com/yannickholzenkamp)",
+    "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
+    "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "design-system",
+    "web-components",
+    "stenciljs",
+    "bulma-css"
+  ],
+  "scripts": {},
+  "main": "./bin/index.js",
+  "bin": {
+    "baloiseStencilViteFix": "./bin/index.js"
+  },
+  "files": [
+    "bin/"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "replace-in-file": "^6.3.2"
+  }
+}

@@ -24,15 +24,11 @@ export const vueComponentModels: ComponentModelConfig[] = [
 
 export const VueGenerator = (
   componentCorePackage = '@baloise/design-system-components',
-  proxiesFile = '../components-vue/src/components.ts',
-  includeDefineCustomElements = false,
+  proxiesDir = '../components-vue/src/proxies',
 ) =>
   vueOutputTarget({
     componentCorePackage,
-    proxiesFile,
+    proxiesDir,
     componentModels: vueComponentModels,
-    customElementsDir: '../../loader',
-    includeDefineCustomElements,
-    includePolyfills: false,
     includeUtils: false,
   })
