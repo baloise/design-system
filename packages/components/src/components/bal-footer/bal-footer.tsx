@@ -33,8 +33,11 @@ export class Footer {
 
   updateFooterLinks() {
     if (!this.hideLinks) {
-      if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+      const allowedHosts = ['baloise.ch'] // Allowed origins to fetch footer links
+      if (allowedHosts.some(allowedHost => location.hostname.endsWith(allowedHost))) {
         loadFooterLinks(new Language(this.locale)).then(links => (this.links = links))
+      } else {
+        console.warn('Footer links can not be fetched from this origin.', location.hostname)
       }
     }
   }
