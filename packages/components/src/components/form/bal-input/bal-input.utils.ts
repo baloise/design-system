@@ -1,3 +1,5 @@
+import { getConfig } from '../../../config'
+
 export const filterInputValue = (
   value: string,
   oldValue: string | number | undefined,
@@ -19,7 +21,8 @@ export const filterInputValue = (
 }
 
 export const formatInputValue = (value: string, decimalPoints: number | undefined = undefined): string => {
-  if (value.charAt(0) === '.') {
+  const config = getConfig()
+  if (value.charAt(0) === config.decimalSeperator) {
     value = `0${value}`
   }
 
@@ -37,5 +40,5 @@ export const formatInputValue = (value: string, decimalPoints: number | undefine
     }
   }
 
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'")
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, config.thousandSeperator)
 }

@@ -1,14 +1,16 @@
 import { Plugin } from 'vue'
-import { BaloiseDesignSystemConfig, baloiseDesignSystemDefaultConfig } from '@baloise/design-system-components'
+import { BaloiseDesignSystemUserConfig, initialize } from '@baloise/design-system-components'
 import { applyDirectives } from './directives'
 
-interface BaloiseDesignSystemVueConfig extends BaloiseDesignSystemConfig {
+interface BaloiseDesignSystemVueConfig extends BaloiseDesignSystemUserConfig {
   defineCustomeElementTag?: boolean
 }
 
 export const BaloiseDesignSystem: Plugin = {
-  async install(app, config: BaloiseDesignSystemVueConfig = baloiseDesignSystemDefaultConfig) {
-    if (config && config.defineCustomeElementTag === true) {
+  async install(app, userConfig: BaloiseDesignSystemVueConfig = {}) {
+    initialize(userConfig)
+
+    if (userConfig && userConfig.defineCustomeElementTag === true) {
       app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-')
     }
 

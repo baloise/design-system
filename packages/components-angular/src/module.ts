@@ -1,7 +1,7 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule, NgZone } from '@angular/core'
 import { CommonModule, DOCUMENT } from '@angular/common'
 import { FormsModule } from '@angular/forms'
-import { BaloiseDesignSystemConfig, baloiseDesignSystemDefaultConfig } from '@baloise/design-system-components'
+import { BaloiseDesignSystemUserConfig } from '@baloise/design-system-components'
 
 import { appInitialize } from './app-initialize'
 import { DIRECTIVES } from './directives/proxies-list'
@@ -39,9 +39,7 @@ const DECLARATIONS = [
   providers: [BalToastService, BalSnackbarService, BalModalService, AngularDelegate],
 })
 export class BaloiseDesignSystemModule {
-  static forRoot(
-    config: BaloiseDesignSystemConfig = baloiseDesignSystemDefaultConfig,
-  ): ModuleWithProviders<BaloiseDesignSystemModule> {
+  static forRoot(config: BaloiseDesignSystemUserConfig = {}): ModuleWithProviders<BaloiseDesignSystemModule> {
     return {
       ngModule: BaloiseDesignSystemModule,
       providers: [

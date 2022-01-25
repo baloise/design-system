@@ -110,7 +110,15 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
-createApp(App).use(router).use(BaloiseDesignSystem).mount('#app')
+createApp(App)
+  .use(router)
+  .use(BaloiseDesignSystem, {
+    applyPolyfills: false, // default
+    dateFormat: 'd.M.yyyy', // default
+    decimalSeperator: '.', // default
+    thousandSeperator: "'", // default
+  })
+  .mount('#app')
 ```
 
 ### HTML Structure

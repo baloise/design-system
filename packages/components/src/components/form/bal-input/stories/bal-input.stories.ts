@@ -21,8 +21,24 @@ const component = BalComponentStory({
         category: 'custom',
       },
     },
+    decimalSeperator: {
+      description: 'Global config to define the decimal seperator',
+      table: {
+        category: 'global',
+        defaultValue: { summary: '.' },
+      },
+    },
+    thousandSeperator: {
+      description: 'Global config to define the thousand seperator',
+      table: {
+        category: 'global',
+        defaultValue: { summary: "'" },
+      },
+    },
   },
   args: {
+    decimalSeperator: '.',
+    thousandSeperator: "'",
     invalid: false,
     hasFieldMessage: true,
   },
@@ -53,7 +69,15 @@ const excludedControls = [
 
 const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
-  setup: () => ({ args }),
+  setup: () => {
+    const BDS = (window as any).BaloiseDesignSystem
+    BDS.saveConfig(window, {
+      ...(window as any).BaloiseDesignSystem.config,
+      thousandSeperator: args.thousandSeperator,
+      decimalSeperator: args.decimalSeperator,
+    })
+    return { args }
+  },
   template: `
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>

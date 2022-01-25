@@ -85,12 +85,19 @@ Add the `BalApp` to your root element. Within this component we are able to use 
 
 ```typescript
 import React from 'react'
-import { BalApp } from '@baloise/design-system-components-react'
+import { BalApp, useBaloiseDesignSystem } from '@baloise/design-system-components-react'
 import './App.scss'
+
+useBaloiseDesignSystem({
+  applyPolyfills: false, // default
+  dateFormat: 'd.M.yyyy', // default
+  decimalSeperator: '.', // default
+  thousandSeperator: "'", // default
+})
 
 function App() {
   return (
-    <BalApp has-sticky-footer>
+    <BalApp className="has-sticky-footer">
       <main className="container">...</main>
     </BalApp>
   )
