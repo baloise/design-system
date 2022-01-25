@@ -27,7 +27,7 @@ export const initialize = (userConfig: BaloiseDesignSystemUserConfig = {}) => {
   }
 
   const win = window as any
-  const BaloiseDesignSystem = (win.BaloiseDesignSystem = win.BaloiseDesignSystem || {})
+  const BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 
   BaloiseDesignSystem.config = { ...baloiseDesignSystemDefaultConfig, ...configFromSession(win), ...userConfig }
   win.BaloiseDesignSystem = BaloiseDesignSystem
@@ -42,7 +42,10 @@ export const getConfig = (): BaloiseDesignSystemConfig => {
   }
 
   const win = window
-  const BaloiseDesignSystem = (win as any).BaloiseDesignSystem
+  if (!(win as any).BaloiseDesignSystem) {
+    initialize()
+  }
+  const BaloiseDesignSystem = (win as any).BaloiseDesignSystem || {}
   return BaloiseDesignSystem.config
 }
 

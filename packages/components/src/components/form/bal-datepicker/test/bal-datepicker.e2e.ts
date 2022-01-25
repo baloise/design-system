@@ -32,7 +32,7 @@ describe('bal-datepicker', () => {
     await nativeInputElement.press('8')
     await nativeInputElement.press('Tab')
 
-    expect(await nativeInputElement.getProperty('value')).toBe('02.01.1988')
+    expect(await nativeInputElement.getProperty('value')).toBe('2.1.1988')
     expect(balInputEvent).toHaveReceivedEventTimes(8)
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
     expect(balChangeEvent).toHaveReceivedEventDetail('1988-01-02')
@@ -67,7 +67,7 @@ describe('bal-datepicker', () => {
     await nativeInputElement.press('1')
     await nativeInputElement.press('Tab')
 
-    expect(await nativeInputElement.getProperty('value')).toBe('02.02.2001')
+    expect(await nativeInputElement.getProperty('value')).toBe('2.2.2001')
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
   })
 
