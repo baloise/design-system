@@ -26,6 +26,7 @@ packages/components/src/stories/assets/components.d.ts
 packages/components/src/stories/utils
 
 packages/components-table/css
+packages/components-vue/src/proxies
 packages/components-vue/src/components.ts
 packages/components-vue/src/vue-component-lib
 packages/components-react/src/components.ts
