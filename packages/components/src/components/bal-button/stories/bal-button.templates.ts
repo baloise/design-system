@@ -1,8 +1,8 @@
 export const basic = `
-<div class="bal-buttons is-center">
-  <bal-button color="primary">Continue</bal-button>
+<bal-button-group position="center">
   <bal-button color="link">Back</bal-button>
-</div>`
+  <bal-button color="primary">Continue</bal-button>
+</bal-button-group>`
 
 export const links = `
 <div>

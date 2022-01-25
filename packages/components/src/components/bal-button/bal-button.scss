@@ -364,7 +364,7 @@ bal-button.is-fullwidth {
 @include mobile() {
   .field.is-grouped {
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: column-reverse;
 
     bal-button.control {
       flex-grow: 1;
