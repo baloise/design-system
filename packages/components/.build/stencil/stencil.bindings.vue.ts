@@ -25,11 +25,12 @@ export const vueComponentModels: ComponentModelConfig[] = [
 export const VueGenerator = (
   componentCorePackage = '@baloise/design-system-components',
   proxiesDir = '../components-vue/src/proxies',
+  excludeComponents = ['bal-app']
 ) =>
   vueOutputTarget({
     componentCorePackage,
     proxiesDir,
     componentModels: vueComponentModels,
     includeUtils: false,
-    excludeComponents: ['bal-app']
+    excludeComponents,
   })
