@@ -5,36 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### [9.0.6](https://github.com/baloise/design-system/compare/v9.0.5...v9.0.6) (2022-01-25)
 
-
 ### Bug Fixes
 
-* **footer:** add allow list for origins for which the fetching of footer links works ([30f8e5d](https://github.com/baloise/design-system/commit/30f8e5d53849cd2f7596124eea1380c9a4ec4d34))
-* **modal:** break text in modal title ([f7ccd46](https://github.com/baloise/design-system/commit/f7ccd46f30f7db1bec8a97392839b34df86d7323))
 * **vue:** add vite support ([cf0c356](https://github.com/baloise/design-system/commit/cf0c356db330fad53685146528da23faca4da0cf))
-* **vue:** add vite support ([f586b44](https://github.com/baloise/design-system/commit/f586b445525dc04b8679f0e6e86dec7ce7d6d361))
-* **vue:** add vite support ([145f6cf](https://github.com/baloise/design-system/commit/145f6cf6da2d14109bb832eeebe52e9c5ae1d57d))
-* **vue:** add vite support ([545acdc](https://github.com/baloise/design-system/commit/545acdce6222b644f34d26a5971941ea32bdbc18))
-* **vue:** add vite support ([4d38151](https://github.com/baloise/design-system/commit/4d38151e728295d3e191bdc75f1be5e1b38182c5))
-* **vue:** add vite support ([fdb4ffc](https://github.com/baloise/design-system/commit/fdb4ffcdbea96a533a4c3cb5d04d5fc4cc2ba14f))
-
-### [9.0.4](https://github.com/baloise/design-system/compare/v9.0.3...v9.0.4) (2022-01-19)
-
-
-### Bug Fixes
-
-* **vue:** add better vite support ([6503327](https://github.com/baloise/design-system/commit/6503327cb43193f432d5f0bccd47ac5955fefa9a))
-
-### [9.0.3](https://github.com/baloise/design-system/compare/v9.0.0...v9.0.3) (2022-01-18)
-
-
-### Bug Fixes
-
-* **hint:** adjust mobile view ([df56521](https://github.com/baloise/design-system/commit/df5652119d8dcc5768f417bd47c12176e6a8f61e))
-* **list:** remove margin top ([500753d](https://github.com/baloise/design-system/commit/500753d4ce8b459ca0dae795868e24f9df6efe42))
-
-## 9.0.0 (2022-01-10)
-
-
 
 ### [9.0.5](https://github.com/baloise/design-system/compare/v9.0.4...v9.0.5) (2022-01-20)
 
