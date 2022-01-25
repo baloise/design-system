@@ -5,65 +5,38 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### [9.0.5](https://github.com/baloise/design-system/compare/v9.0.4...v9.0.5) (2022-01-20)
 
-
 ### Bug Fixes
 
-* **modal:** break text in modal title ([f7ccd46](https://github.com/baloise/design-system/commit/f7ccd46f30f7db1bec8a97392839b34df86d7323))
-* **vue:** add better vite support ([6503327](https://github.com/baloise/design-system/commit/6503327cb43193f432d5f0bccd47ac5955fefa9a))
-
-### [9.0.3](https://github.com/baloise/design-system/compare/v9.0.0...v9.0.3) (2022-01-18)
-
-
-### Bug Fixes
-
-* **hint:** adjust mobile view ([df56521](https://github.com/baloise/design-system/commit/df5652119d8dcc5768f417bd47c12176e6a8f61e))
-* **list:** remove margin top ([500753d](https://github.com/baloise/design-system/commit/500753d4ce8b459ca0dae795868e24f9df6efe42))
-
-## 9.0.0 (2022-01-10)
-
-
+- **modal:** break text in modal title ([f7ccd46](https://github.com/baloise/design-system/commit/f7ccd46f30f7db1bec8a97392839b34df86d7323))
+- **vue:** add better vite support ([6503327](https://github.com/baloise/design-system/commit/6503327cb43193f432d5f0bccd47ac5955fefa9a))
 
 ### [9.0.4](https://github.com/baloise/design-system/compare/v9.0.3...v9.0.4) (2022-01-19)
 
-
 ### Bug Fixes
 
-* **hint:** adjust mobile view ([df56521](https://github.com/baloise/design-system/commit/df5652119d8dcc5768f417bd47c12176e6a8f61e))
-* **list:** remove margin top ([500753d](https://github.com/baloise/design-system/commit/500753d4ce8b459ca0dae795868e24f9df6efe42))
-* **vue:** add better vite support ([6503327](https://github.com/baloise/design-system/commit/6503327cb43193f432d5f0bccd47ac5955fefa9a))
-
-## 9.0.0 (2022-01-10)
-
-
+- **hint:** adjust mobile view ([df56521](https://github.com/baloise/design-system/commit/df5652119d8dcc5768f417bd47c12176e6a8f61e))
+- **list:** remove margin top ([500753d](https://github.com/baloise/design-system/commit/500753d4ce8b459ca0dae795868e24f9df6efe42))
+- **vue:** add better vite support ([6503327](https://github.com/baloise/design-system/commit/6503327cb43193f432d5f0bccd47ac5955fefa9a))
 
 ### [9.0.3](https://github.com/baloise/design-system/compare/v9.0.2...v9.0.3) (2022-01-18)
 
-
 ### Bug Fixes
 
-* **container:** use real value for the angular scss compiler ([5257ef4](https://github.com/baloise/design-system/commit/5257ef4c59101a73ba551aa835fdb06d5cc64415))
-* **proxy:** export ProxyComponent interface ([6d7d085](https://github.com/baloise/design-system/commit/6d7d085a3890fce8a544cd594dfea4af2a75ecfe))
-
-
+- **container:** use real value for the angular scss compiler ([5257ef4](https://github.com/baloise/design-system/commit/5257ef4c59101a73ba551aa835fdb06d5cc64415))
+- **proxy:** export ProxyComponent interface ([6d7d085](https://github.com/baloise/design-system/commit/6d7d085a3890fce8a544cd594dfea4af2a75ecfe))
 
 ### [9.0.2](https://github.com/baloise/design-system/compare/v9.0.1...v9.0.2) (2022-01-17)
 
-
 ### Bug Fixes
 
-* **card:** add missing subcomponents ([49fef91](https://github.com/baloise/design-system/commit/49fef913afefb44d177a98965bfc5bcc1d65f325))
-
-
+- **card:** add missing subcomponents ([49fef91](https://github.com/baloise/design-system/commit/49fef913afefb44d177a98965bfc5bcc1d65f325))
 
 ### [9.0.1](https://github.com/baloise/design-system/compare/v9.0.0...v9.0.1) (2022-01-11)
 
-
 ### Bug Fixes
 
-* **hint:** adjust mobile view ([df56521](https://github.com/baloise/design-system/commit/df5652119d8dcc5768f417bd47c12176e6a8f61e))
-* **list:** remove margin top ([500753d](https://github.com/baloise/design-system/commit/500753d4ce8b459ca0dae795868e24f9df6efe42))
-
-
+- **hint:** adjust mobile view ([df56521](https://github.com/baloise/design-system/commit/df5652119d8dcc5768f417bd47c12176e6a8f61e))
+- **list:** remove margin top ([500753d](https://github.com/baloise/design-system/commit/500753d4ce8b459ca0dae795868e24f9df6efe42))
 
 ## [9.0.0](https://github.com/baloise/design-system/compare/v8.0.1...v9.0.0) (2022-01-10)
 

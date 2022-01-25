@@ -1,4 +1,4 @@
-const isDevelopment = process.env.STORYBOOK_MODE === 'dev'
+const isDebugMode = process.env.STORYBOOK_MODE === 'debug'
 
 module.exports = {
   stories: ['../src/**/intro.stories.mdx', '../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -11,8 +11,8 @@ module.exports = {
     ${head}
     <link rel="stylesheet" type="text/css" href="assets/css/design-system-table.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/theme.css" />
-    ${!isDevelopment ? '<link rel="stylesheet" type="text/css" href="build/design-system-components.css" />' : ''}
-    ${isDevelopment ? '<script type="module" src="build/design-system-components.esm.js"></script>' : ''}
-    ${isDevelopment ? '<script nomodule src="build/design-system-components.js"></script>' : ''}
+    ${!isDebugMode ? '<link rel="stylesheet" type="text/css" href="build/design-system-components.css" />' : ''}
+    ${isDebugMode ? '<script type="module" src="build/design-system-components.esm.js"></script>' : ''}
+    ${isDebugMode ? '<script nomodule src="build/design-system-components.js"></script>' : ''}
     `,
 }

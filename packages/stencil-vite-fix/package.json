@@ -1,7 +1,7 @@
 {
-  "name": "@baloise/design-system-fonts",
+  "name": "@baloise/stencil-vite-fix",
   "version": "9.0.5",
-  "description": "The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
+  "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
     "url": "https://github.com/baloise/design-system.git"
@@ -22,22 +22,17 @@
     "stenciljs",
     "bulma-css"
   ],
-  "scripts": {
-    "build": "node .build/archive.js",
-    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+  "scripts": {},
+  "main": "./bin/index.js",
+  "bin": {
+    "baloiseStencilViteFix": "./bin/index.js"
   },
-  "main": "./lib/fonts.css",
   "files": [
-    "lib/",
-    "scss/"
+    "bin/"
   ],
-  "directories": {
-    "lib": "lib",
-    "scss": "scss"
-  },
   "license": "Apache-2.0",
-  "devDependencies": {
-    "archiver": "^5.3.0"
+  "dependencies": {
+    "replace-in-file": "^6.3.2"
   },
   "gitHead": "145f6cf6da2d14109bb832eeebe52e9c5ae1d57d"
 }

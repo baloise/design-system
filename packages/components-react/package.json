@@ -60,5 +60,6 @@
   },
   "dependencies": {
     "@baloise/design-system-components": "9.0.5"
-  }
+  },
+  "gitHead": "145f6cf6da2d14109bb832eeebe52e9c5ae1d57d"
 }
