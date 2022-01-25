@@ -12,30 +12,30 @@ import {
   ComponentInterface,
   Listen,
 } from '@stencil/core'
-import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
-import { BalCalendarCell, BalDateCallback, BalPointerDate } from './bal-datepicker.type'
 import {
-  day,
-  format,
-  month,
-  now,
-  year,
-  decreaseYear,
-  increaseYear,
-  getFirstDayOfTheWeek,
+  addDays,
+  subDays,
+  isBefore,
+  isAfter,
+  getDate,
+  parseISO,
+  getYear,
+  getMonth,
+  addYears,
+  subYears,
+  startOfWeek,
   isSameDay,
-  isInRange,
+  isWithinInterval,
   isSameWeek,
   isSameMonth,
-  isoString,
-  toDate,
-  isValidDateString,
-  isEnterKey,
-  ceilTime,
-} from '@baloise/web-app-utils'
+} from 'date-fns'
+import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
+import { BalCalendarCell, BalDateCallback, BalPointerDate } from './bal-datepicker.type'
+import { isEnterKey } from '@baloise/web-app-utils'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
+import { format, isValidIsoString, now, isoString } from '../../../utils/date.util'
 
 @Component({
   tag: 'bal-datepicker',
@@ -50,9 +50,9 @@ export class Datepicker implements ComponentInterface {
   @State() isPopoverOpen = false
   @State() selectedDate?: string | null = ''
   @State() pointerDate: BalPointerDate = {
-    year: year(now()),
-    month: month(now()),
-    day: day(now()),
+    year: getYear(now()),
+    month: getMonth(now()),
+    day: getDate(now()),
   }
 
   /**
@@ -239,7 +239,7 @@ export class Datepicker implements ComponentInterface {
    */
   @Method()
   async select(datestring: string) {
-    this.inputElement.value = format(datestring)
+    this.inputElement.value = format(parseISO(datestring))
     this.updateValue(datestring)
     this.updatePointerDates()
 
@@ -267,23 +267,24 @@ export class Datepicker implements ComponentInterface {
   }
 
   private updatePointerDates() {
-    let date = toDate(this.selectedDate)
-    if (date === undefined) {
-      if (isNil(this.defaultDate)) {
-        date = now()
-      } else {
-        date = toDate(this.defaultDate)
+    let date = now()
+    if (this.selectedDate) {
+      date = parseISO(this.selectedDate)
+    } else {
+      if (this.defaultDate) {
+        date = parseISO(this.defaultDate)
       }
     }
+
     this.pointerDate = {
-      year: year(date),
-      month: month(date),
-      day: day(date),
+      year: getYear(date),
+      month: getMonth(date),
+      day: getDate(date),
     }
   }
 
   private updateValue(datestring: string | undefined | null) {
-    if (!isValidDateString(datestring)) {
+    if (!isValidIsoString(datestring)) {
       this.selectedDate = undefined
       this.value = undefined
       if (this.inputElement) {
@@ -299,30 +300,42 @@ export class Datepicker implements ComponentInterface {
     if (this.min) {
       return parseInt(this.min.substring(0, 4), 10)
     }
-    return this.minYearProp ? this.minYearProp : decreaseYear(now(), 100)
+    return this.minYearProp ? this.minYearProp : getYear(subYears(now(), 100))
   }
 
   get maxYear() {
     if (this.max) {
       return parseInt(this.max.substring(0, 4), 10)
     }
-    return this.maxYearProp ? this.maxYearProp : increaseYear(now(), 100)
+    return this.maxYearProp ? this.maxYearProp : getYear(addYears(now(), 100))
   }
 
   get years(): number[] {
-    return Array.from({ length: this.maxYear - this.minYear + 1 }, (_, index: number) => this.minYear + index)
+    let years = Array.from({ length: this.maxYear - this.minYear + 1 }, (_, index: number) => this.minYear + index)
+
+    if (this.min && this.pointerDate.month === getMonth(parseISO(this.min))) {
+      const minYear = getYear(parseISO(this.min))
+      years = years.filter(y => y >= minYear)
+    }
+
+    if (this.max && this.pointerDate.month === getMonth(parseISO(this.max))) {
+      const maxYear = getYear(parseISO(this.max))
+      years = years.filter(y => y <= maxYear)
+    }
+
+    return years
   }
 
   get months(): { name: string; index: number }[] {
     const monthNames = i18nDate[this.locale].months
     let months = monthNames.map((name, index) => ({ name, index }))
 
-    if (this.min) {
+    if (this.min && this.pointerDate.year === getYear(parseISO(this.min))) {
       const minMonth = parseInt(this.min.substring(5, 7), 10) - 1
       months = months.filter(month => month.index >= minMonth)
     }
 
-    if (this.max) {
+    if (this.max && this.pointerDate.year === getYear(parseISO(this.max))) {
       const maxMonth = parseInt(this.max.substring(5, 7), 10) - 1
       months = months.filter(month => month.index <= maxMonth)
     }
@@ -338,7 +351,7 @@ export class Datepicker implements ComponentInterface {
 
   get firstDateOfBox(): Date {
     const date = new Date(this.pointerDate.year, this.pointerDate.month, 1)
-    return getFirstDayOfTheWeek(date)
+    return startOfWeek(date)
   }
 
   get calendarGrid(): BalCalendarCell[][] {
@@ -352,17 +365,14 @@ export class Datepicker implements ComponentInterface {
           ...row,
           {
             date: new Date(dayDatePointer),
-            display: format(isoString(dayDatePointer)),
+            display: format(dayDatePointer),
             dateString: isoString(dayDatePointer),
-            label: day(dayDatePointer).toString(),
+            label: getDate(dayDatePointer).toString(),
             isToday: isSameDay(dayDatePointer, now()),
-            isSelected: toDate(this.selectedDate) && isSameDay(dayDatePointer, toDate(this.selectedDate) as Date),
-            isDisabled:
-              !this.getAllowedDates(dayDatePointer) ||
-              !isInRange(ceilTime(dayDatePointer), toDate(this.min), toDate(this.max)),
-            isOutdated:
-              this.pointerDate.month !== dayDatePointer.getMonth() ||
-              !isInRange(ceilTime(dayDatePointer), toDate(this.min), toDate(this.max)),
+            isSelected:
+              parseISO(this.selectedDate as string) && isSameDay(dayDatePointer, parseISO(this.selectedDate as string)),
+            isDisabled: !this.getAllowedDates(dayDatePointer) || !this.isDateInRange(dayDatePointer),
+            isOutdated: this.pointerDate.month !== dayDatePointer.getMonth() || !this.isDateInRange(dayDatePointer),
           } as BalCalendarCell,
         ]
         dayDatePointer.setDate(dayDatePointer.getDate() + 1)
@@ -406,9 +416,9 @@ export class Datepicker implements ComponentInterface {
     event.stopPropagation()
 
     if (inputValue && inputValue.length >= 6) {
-      const date = toDate(inputValue)
+      const date = parseISO(inputValue)
       const datestring = isoString(date)
-      if (isValidDateString(datestring)) {
+      if (isValidIsoString(datestring)) {
         this.selectedDate = datestring
         this.updatePointerDates()
       }
@@ -417,9 +427,9 @@ export class Datepicker implements ComponentInterface {
 
   private onInputChange = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
-    const date = toDate(inputValue)
+    const date = parseISO(inputValue)
     const datestring = isoString(date)
-    const formattedValue = format(datestring)
+    const formattedValue = format(date)
 
     this.inputElement.value = formattedValue
     this.updateValue(datestring)
@@ -434,7 +444,7 @@ export class Datepicker implements ComponentInterface {
 
   private onInputKeyUp = (event: KeyboardEvent) => {
     if (isEnterKey(event) && !this.triggerIcon) {
-      const date = toDate(this.inputElement.value)
+      const date = parseISO(this.inputElement.value)
       const datestring = isoString(date)
 
       if (this.isPopoverOpen) {
@@ -478,9 +488,10 @@ export class Datepicker implements ComponentInterface {
 
   private onYearSelect = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
+    const yearValue = parseInt(inputValue, 10)
     this.pointerDate = {
       ...this.pointerDate,
-      year: parseInt(inputValue, 10),
+      year: yearValue,
     }
   }
 
@@ -541,7 +552,7 @@ export class Datepicker implements ComponentInterface {
           type="text"
           maxlength="10"
           autoComplete="off"
-          value={format(this.value)}
+          value={format(parseISO(this.value || ''))}
           required={this.required}
           disabled={this.disabled}
           readonly={this.readonly}
@@ -611,10 +622,24 @@ export class Datepicker implements ComponentInterface {
     return (
       <header class="datepicker-header">
         <div class="pagination field is-centered">
-          <a role="button" onClick={() => this.previousMonth()} class="pagination-previous">
+          <a
+            role="button"
+            onClick={() => this.previousMonth()}
+            class={{
+              'pagination-previous': true,
+              'is-disabled': this.isPreviousMonthDisabled,
+            }}
+          >
             <bal-icon name="nav-go-left" size="small" />
           </a>
-          <a role="button" onClick={() => this.nextMonth()} class="pagination-next">
+          <a
+            role="button"
+            onClick={() => this.nextMonth()}
+            class={{
+              'pagination-next': true,
+              'is-disabled': this.isNextMonthDisabled,
+            }}
+          >
             <bal-icon name="nav-go-right" size="small" />
           </a>
           <div class="pagination-list">
@@ -649,25 +674,78 @@ export class Datepicker implements ComponentInterface {
   }
 
   private previousMonth() {
-    if (this.pointerDate.year === this.minYear && this.pointerDate.month === 0) {
-      return
-    }
-    if (this.pointerDate.month === 0) {
-      this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year - 1, month: 11 }
-    } else {
-      this.pointerDate = { ...this.pointerDate, month: this.pointerDate.month - 1 }
+    if (!this.isPreviousMonthDisabled) {
+      if (this.pointerDate.year === this.minYear && this.pointerDate.month === 0) {
+        return
+      }
+
+      this.pointerDate = this.calcPreviousMonth()
     }
   }
 
   private nextMonth() {
-    if (this.pointerDate.year === this.maxYear && this.pointerDate.month === 11) {
-      return
+    if (!this.isNextMonthDisabled) {
+      if (this.pointerDate.year === this.maxYear && this.pointerDate.month === 11) {
+        return
+      }
+      this.pointerDate = this.calcNextMonth()
     }
-    if (this.pointerDate.month === 11) {
-      this.pointerDate = { ...this.pointerDate, year: this.pointerDate.year + 1, month: 0 }
+  }
+
+  private calcPreviousMonth(): BalPointerDate {
+    if (this.pointerDate.month === 0) {
+      return { ...this.pointerDate, year: this.pointerDate.year - 1, month: 11 }
     } else {
-      this.pointerDate = { ...this.pointerDate, month: this.pointerDate.month + 1 }
+      return { ...this.pointerDate, month: this.pointerDate.month - 1 }
     }
+  }
+
+  private calcNextMonth(): BalPointerDate {
+    if (this.pointerDate.month === 11) {
+      return { ...this.pointerDate, year: this.pointerDate.year + 1, month: 0 }
+    } else {
+      return { ...this.pointerDate, month: this.pointerDate.month + 1 }
+    }
+  }
+
+  private lastDayOfMonth(year: number, month: number): number {
+    const d = new Date(year, month + 1, 0)
+    return getDate(d)
+  }
+
+  private get isPreviousMonthDisabled() {
+    if (this.min) {
+      const minDate = parseISO(this.min) as Date
+      const lastDayOfMonth = this.lastDayOfMonth(this.calcPreviousMonth().year, this.calcPreviousMonth().month)
+      const beforeDate = new Date(this.calcPreviousMonth().year, this.calcPreviousMonth().month, lastDayOfMonth)
+      return isBefore(beforeDate, subDays(minDate, 1))
+    }
+    return false
+  }
+
+  private get isNextMonthDisabled() {
+    if (this.max) {
+      const maxDate = parseISO(this.max) as Date
+      const beforeDate = new Date(this.calcNextMonth().year, this.calcNextMonth().month, 1)
+      return isAfter(beforeDate, addDays(maxDate, 1))
+    }
+    return false
+  }
+
+  private isDateInRange(cellDate: Date): boolean {
+    if (this.min && this.max) {
+      return isWithinInterval(cellDate, {
+        start: parseISO(this.min),
+        end: parseISO(this.max),
+      })
+    }
+    if (this.min) {
+      return isAfter(cellDate, parseISO(this.min) as Date)
+    }
+    if (this.max) {
+      return isBefore(cellDate, addDays(parseISO(this.max) as Date, 1))
+    }
+    return true
   }
 }
 
