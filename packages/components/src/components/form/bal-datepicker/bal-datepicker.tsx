@@ -35,17 +35,22 @@ import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
 import { parse, format, isValidIsoString, now, isoString } from '../../../utils/date.util'
+import { BaloiseDesignSystemConfig, baloiseDesignSystemConfig } from '../../../config'
+import { BaloiseDesignSystemLanguage } from '../../../config/config.types'
+import { ConfigObserver } from '../../../config/observable/observer'
+import { configStore } from '../../../config/config.container'
 
 @Component({
   tag: 'bal-datepicker',
 })
-export class Datepicker implements ComponentInterface {
+export class Datepicker implements ComponentInterface, ConfigObserver {
   private inputElement!: HTMLInputElement
   private popoverElement!: HTMLBalPopoverElement
   private inputId = `bal-dp-${datepickerIds++}`
 
   @Element() el!: HTMLElement
 
+  @State() language: BaloiseDesignSystemLanguage = baloiseDesignSystemConfig.language
   @State() isPopoverOpen = false
   @State() selectedDate?: string | null = ''
   @State() pointerDate: BalPointerDate = {
@@ -60,9 +65,16 @@ export class Datepicker implements ComponentInterface {
   @Prop() name: string = this.inputId
 
   /**
-   * Define the locale of month and day names.
+   * @deprecated Define the locale of month and day names.
    */
-  @Prop() locale: 'en' | 'de' | 'fr' | 'it' = 'en'
+  @Prop() locale: 'en' | 'de' | 'fr' | 'it' | '' = ''
+
+  @Watch('locale')
+  watchLocaleHandler() {
+    if (this.locale !== '') {
+      this.language = this.locale
+    }
+  }
 
   /**
    * The tabindex of the control.
@@ -205,6 +217,15 @@ export class Datepicker implements ComponentInterface {
 
   connectedCallback() {
     this.debounceChanged()
+    configStore.attach(this)
+  }
+
+  configChanged(config: BaloiseDesignSystemConfig): void {
+    this.language = config.language
+  }
+
+  disconnectedCallback() {
+    configStore.detach(this)
   }
 
   /**
@@ -326,7 +347,8 @@ export class Datepicker implements ComponentInterface {
   }
 
   get months(): { name: string; index: number }[] {
-    const monthNames = i18nDate[this.locale].months
+    console.log(this.language)
+    const monthNames = i18nDate[this.language].months
     let months = monthNames.map((name, index) => ({ name, index }))
 
     if (this.min && this.pointerDate.year === getYear(parse(this.min) as Date)) {
@@ -343,7 +365,7 @@ export class Datepicker implements ComponentInterface {
   }
 
   get weekDays(): string[] {
-    const translations = [...i18nDate[this.locale].weekdaysMin]
+    const translations = [...i18nDate[this.language].weekdaysMin]
     translations.push(translations.shift() || '')
     return translations
   }

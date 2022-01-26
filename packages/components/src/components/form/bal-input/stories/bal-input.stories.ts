@@ -21,24 +21,32 @@ const component = BalComponentStory({
         category: 'custom',
       },
     },
-    decimalSeperator: {
-      description: 'Global config to define the decimal seperator',
+    region: {
+      description: 'Region of the running app.',
       table: {
         category: 'global',
-        defaultValue: { summary: '.' },
+        defaultValue: { summary: 'CH' },
+      },
+      options: ['CH', 'BE', 'DE', 'LU'],
+      control: {
+        type: 'inline-radio',
       },
     },
-    thousandSeperator: {
-      description: 'Global config to define the thousand seperator',
+    language: {
+      description: 'Language of the running app.',
       table: {
         category: 'global',
-        defaultValue: { summary: "'" },
+        defaultValue: { summary: 'de' },
+      },
+      options: ['de', 'fr', 'en', 'it', 'nl'],
+      control: {
+        type: 'inline-radio',
       },
     },
   },
   args: {
-    decimalSeperator: '.',
-    thousandSeperator: "'",
+    region: 'CH',
+    language: 'de',
     invalid: false,
     hasFieldMessage: true,
   },
@@ -71,12 +79,16 @@ const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => {
     const BDS = (window as any).BaloiseDesignSystem
-    BDS.saveConfig(window, {
-      ...(window as any).BaloiseDesignSystem.config,
-      thousandSeperator: args.thousandSeperator,
-      decimalSeperator: args.decimalSeperator,
-    })
-    return { args }
+    BDS.config.region = args.region
+    BDS.config.language = args.language
+    return {
+      args: Object.keys(args)
+        .filter(key => !['region', 'language'].includes(key))
+        .reduce((obj, key) => {
+          obj[key] = args[key]
+          return obj
+        }, {}),
+    }
   },
   template: `
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">

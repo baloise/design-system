@@ -112,12 +112,7 @@ import router from './router'
 
 createApp(App)
   .use(router)
-  .use(BaloiseDesignSystem, {
-    applyPolyfills: false, // default
-    dateFormat: 'd.M.yyyy', // default
-    decimalSeperator: '.', // default
-    thousandSeperator: "'", // default
-  })
+  .use(BaloiseDesignSystem})
   .mount('#app')
 ```
 

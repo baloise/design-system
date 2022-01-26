@@ -335,9 +335,9 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * Define the locale of month and day names.
+          * @deprecated Define the locale of month and day names.
          */
-        "locale": 'en' | 'de' | 'fr' | 'it';
+        "locale": 'en' | 'de' | 'fr' | 'it' | '';
         /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
@@ -528,9 +528,9 @@ export namespace Components {
          */
         "hideLinks": boolean;
         /**
-          * The languages in which the links will appear.
+          * @deprecated The languages in which the links will appear.
          */
-        "locale": 'en' | 'de' | 'fr' | 'it';
+        "locale": 'en' | 'de' | 'fr' | 'it' | '';
     }
     interface BalHeading {
         /**
@@ -2276,9 +2276,9 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * Define the locale of month and day names.
+          * @deprecated Define the locale of month and day names.
          */
-        "locale"?: 'en' | 'de' | 'fr' | 'it';
+        "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
         /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
@@ -2477,9 +2477,9 @@ declare namespace LocalJSX {
          */
         "hideLinks"?: boolean;
         /**
-          * The languages in which the links will appear.
+          * @deprecated The languages in which the links will appear.
          */
-        "locale"?: 'en' | 'de' | 'fr' | 'it';
+        "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
     }
     interface BalHeading {
         /**

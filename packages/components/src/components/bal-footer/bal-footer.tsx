@@ -1,41 +1,59 @@
 import { FooterLink, Language, loadFooterLinks } from '@baloise/web-app-utils'
 import { Component, Host, h, Prop, State, Watch } from '@stencil/core'
+import { BaloiseDesignSystemConfig, baloiseDesignSystemConfig } from '../..'
+import { configStore } from '../../config/config.container'
+import { BaloiseDesignSystemLanguage } from '../../config/config.types'
+import { ConfigObserver } from '../../config/observable/observer'
 
 @Component({
   tag: 'bal-footer',
 })
-export class Footer {
+export class Footer implements ConfigObserver {
+  @State() links: FooterLink[] = []
+  @State() language: BaloiseDesignSystemLanguage = baloiseDesignSystemConfig.language
+
   /**
    * If `true` the footer shows a track line at the bottom.
    */
   @Prop() hasTrackLine = false
 
   /**
-   * The languages in which the links will appear.
+   * @deprecated The languages in which the links will appear.
    */
-  @Prop() locale: 'en' | 'de' | 'fr' | 'it' = 'en'
+  @Prop() locale: 'en' | 'de' | 'fr' | 'it' | '' = ''
 
   /**
    * If `true` the default Baloise links will be hidden.
    */
   @Prop() hideLinks = false
 
-  @State() links: FooterLink[] = []
+  disconnectedCallback() {
+    configStore.detach(this)
+  }
 
   connectedCallback() {
+    configStore.attach(this)
+    this.updateFooterLinks()
+  }
+
+  configChanged(config: BaloiseDesignSystemConfig) {
+    this.language = config.language
     this.updateFooterLinks()
   }
 
   @Watch('locale')
   watchLocaleHandler() {
-    this.updateFooterLinks()
+    if (this.locale !== '') {
+      this.language = this.locale
+      this.updateFooterLinks()
+    }
   }
 
   updateFooterLinks() {
     if (!this.hideLinks) {
       const allowedHosts = ['baloise.ch'] // Allowed origins to fetch footer links
       if (allowedHosts.some(allowedHost => location.hostname.endsWith(allowedHost))) {
-        loadFooterLinks(new Language(this.locale)).then(links => (this.links = links))
+        loadFooterLinks(new Language(this.language)).then(links => (this.links = links))
       } else {
         console.warn('Footer links can not be fetched from this origin.', location.hostname)
       }

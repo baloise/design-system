@@ -1,4 +1,5 @@
-import { getConfig } from '../../../config'
+import { formatLocaleNumber, getDecimalSeperator } from '../../../utils/number.util'
+import isNaN from 'lodash.isnan'
 
 export const filterInputValue = (
   value: string,
@@ -7,6 +8,12 @@ export const filterInputValue = (
 ): string => {
   const regex = /^(((0|[1-9]\d*)?)(\.\d*)?)$/g
   let regexString = regex.source
+
+  const decimalSeperator = getDecimalSeperator()
+  if (decimalSeperator !== '.') {
+    regexString = regexString.replace('(\\.\\d*)?)$', `(\\${decimalSeperator}\\d*)?)$`)
+  }
+
   if (decimalPoints === 0) {
     regexString = /^[0-9]*$/g.source
   } else if (decimalPoints !== undefined && decimalPoints > 0) {
@@ -21,24 +28,10 @@ export const filterInputValue = (
 }
 
 export const formatInputValue = (value: string, decimalPoints: number | undefined = undefined): string => {
-  const config = getConfig()
-  if (value.charAt(0) === config.decimalSeperator) {
+  if (value.charAt(0) === getDecimalSeperator()) {
     value = `0${value}`
   }
 
-  let num: number | string = parseFloat(value)
-
-  if (isNaN(num)) {
-    return ''
-  }
-
-  if (decimalPoints !== undefined) {
-    if (decimalPoints === 0) {
-      num = parseInt(value, 10)
-    } else {
-      num = num.toFixed(decimalPoints)
-    }
-  }
-
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, config.thousandSeperator)
+  const num = decimalPoints === 0 ? parseInt(value, 10) : parseFloat(value)
+  return isNaN(num) ? '' : formatLocaleNumber(num, decimalPoints)
 }

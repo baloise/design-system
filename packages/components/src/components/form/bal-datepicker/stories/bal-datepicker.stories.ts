@@ -22,16 +22,32 @@ const component = BalComponentStory({
         category: 'custom',
       },
     },
-    dateFormat: {
-      description: 'Global config to define the date format',
+    region: {
+      description: 'Region of the running app.',
       table: {
         category: 'global',
-        defaultValue: { summary: 'd.M.yyyy' },
+        defaultValue: { summary: 'CH' },
+      },
+      options: ['CH', 'BE', 'DE', 'LU'],
+      control: {
+        type: 'inline-radio',
+      },
+    },
+    language: {
+      description: 'Language of the running app.',
+      table: {
+        category: 'global',
+        defaultValue: { summary: 'de' },
+      },
+      options: ['de', 'fr', 'en', 'it', 'nl'],
+      control: {
+        type: 'inline-radio',
       },
     },
   },
   args: {
-    dateFormat: 'd.M.yyyy',
+    region: 'CH',
+    language: 'de',
     invalid: false,
     hasFieldMessage: true,
   },
@@ -45,11 +61,16 @@ const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => {
     const BDS = (window as any).BaloiseDesignSystem
-    BDS.saveConfig(window, {
-      ...(window as any).BaloiseDesignSystem.config,
-      dateFormat: args.dateFormat,
-    })
-    return { args }
+    BDS.config.region = args.region
+    BDS.config.language = args.language
+    return {
+      args: Object.keys(args)
+        .filter(key => !['region', 'language'].includes(key))
+        .reduce((obj, key) => {
+          obj[key] = args[key]
+          return obj
+        }, {}),
+    }
   },
   template: `
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">

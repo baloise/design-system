@@ -1,4 +1,6 @@
+/* eslint-disable */
 import { filterInputValue, formatInputValue } from '../bal-input.utils'
+import { baloiseDesignSystemConfig } from '../../../../config/config'
 
 describe('bal-input', () => {
   describe('filterInputValue', () => {
@@ -44,10 +46,10 @@ describe('bal-input', () => {
       expect(formatInputValue('0')).toBe('0')
       expect(formatInputValue('10')).toBe('10')
       expect(formatInputValue('100')).toBe('100')
-      expect(formatInputValue('1000')).toBe("1'000")
-      expect(formatInputValue('10000')).toBe("10'000")
-      expect(formatInputValue('100000')).toBe("100'000")
-      expect(formatInputValue('1000000')).toBe("1'000'000")
+      expect(formatInputValue('1000')).toBe('1’000')
+      expect(formatInputValue('10000')).toBe('10’000')
+      expect(formatInputValue('100000')).toBe('100’000')
+      expect(formatInputValue('1000000')).toBe('1’000’000')
     })
     test('should adjust the decimal points', () => {
       expect(formatInputValue('0')).toBe('0')
@@ -56,6 +58,21 @@ describe('bal-input', () => {
       expect(formatInputValue('.1')).toBe('0.1')
       expect(formatInputValue('.1', 2)).toBe('0.10')
       expect(formatInputValue('.1', 0)).toBe('0')
+    })
+  })
+  describe('filterInputValue for another locale', () => {
+    test('filterInputValue for de-DE', () => {
+      baloiseDesignSystemConfig.region = 'DE'
+      baloiseDesignSystemConfig.language = 'de'
+      expect(filterInputValue('1,4', '', 2)).toBe('1,4')
+    })
+  })
+  describe('formatInputValue for another locale', () => {
+    test('formatInputValue for de-DE', () => {
+      baloiseDesignSystemConfig.region = 'DE'
+      baloiseDesignSystemConfig.language = 'de'
+      expect(formatInputValue('1000000')).toBe('1.000.000')
+      expect(formatInputValue('0.1', 2)).toBe('0,10')
     })
   })
 })

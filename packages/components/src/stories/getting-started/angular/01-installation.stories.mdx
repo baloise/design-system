@@ -119,15 +119,7 @@ import { AppComponent } from './app.component'
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    BaloiseDesignSystemModule.forRoot({
-      applyPolyfills: false, // default
-      dateFormat: 'd.M.yyyy', // default
-      decimalSeperator: '.', // default
-      thousandSeperator: "'", // default
-    }),
-  ],
+  imports: [BrowserModule, BaloiseDesignSystemModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

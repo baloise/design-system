@@ -15,13 +15,13 @@ import isNil from 'lodash.isnil'
 import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../../types/interfaces'
+import { getDecimalSeperator } from '../../../utils/number.util'
 import { filterInputValue, formatInputValue } from './bal-input.utils'
 
 @Component({
   tag: 'bal-input',
 })
 export class Input implements ComponentInterface {
-  private allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]
   private inputId = `bal-input-${InputIds++}`
   private nativeInput?: HTMLInputElement
   private didInit = false
@@ -254,6 +254,10 @@ export class Input implements ComponentInterface {
   @Method()
   getInputElement(): Promise<HTMLInputElement | undefined> {
     return Promise.resolve(this.nativeInput)
+  }
+
+  private get allowedKeys() {
+    return [...NUMBER_KEYS, ...ACTION_KEYS, getDecimalSeperator()]
   }
 
   private getRawValue(): string {
