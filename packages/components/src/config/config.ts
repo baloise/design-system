@@ -1,27 +1,36 @@
-import { configStore } from './config.store'
-import { BaloiseDesignSystemLanguage, BaloiseDesignSystemRegion } from './config.types'
+import { balConfigStore } from './config.store'
+import { BalLanguage, BalRegion } from './config.types'
 
-class BaloiseDesignSystemConfig {
-  get region(): BaloiseDesignSystemRegion {
-    return configStore.state.region
+class BaloiseDesignSystemConfigClass {
+  get region(): BalRegion {
+    return balConfigStore.state.region
   }
 
-  set region(region: BaloiseDesignSystemRegion) {
-    configStore.patch({ region })
+  set region(region: BalRegion) {
+    balConfigStore.patch({ region })
   }
 
-  get language(): BaloiseDesignSystemLanguage {
-    return configStore.state.language
+  get language(): BalLanguage {
+    return balConfigStore.state.language
   }
 
-  set language(language: BaloiseDesignSystemLanguage) {
-    configStore.patch({ language })
+  set language(language: BalLanguage) {
+    balConfigStore.patch({ language })
   }
 
   toString() {
-    return configStore.toString()
+    return balConfigStore.toString()
   }
 }
 
-export const baloiseDesignSystemConfig = new BaloiseDesignSystemConfig()
-export const useConfig = (): BaloiseDesignSystemConfig => baloiseDesignSystemConfig
+export const BaloiseDesignSystemConfig = new BaloiseDesignSystemConfigClass()
+
+export const useBalConfig = (): BaloiseDesignSystemConfigClass => BaloiseDesignSystemConfig
+
+export const updateBalLanguge = (language: BalLanguage): void => {
+  BaloiseDesignSystemConfig.language = language
+}
+
+export const updateBalRegion = (region: BalRegion): void => {
+  BaloiseDesignSystemConfig.region = region
+}

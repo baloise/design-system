@@ -1,5 +1,5 @@
-import { baloiseDesignSystemConfig } from '../config'
+import { BaloiseDesignSystemConfig } from '../config'
 
 export const localstring = (): string => {
-  return `${baloiseDesignSystemConfig.language}-${baloiseDesignSystemConfig.region}`
+  return `${BaloiseDesignSystemConfig.language}-${BaloiseDesignSystemConfig.region}`
 }

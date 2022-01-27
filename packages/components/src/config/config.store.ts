@@ -1,25 +1,25 @@
-import { baloiseDesignSystemConfig } from './config'
+import { BaloiseDesignSystemConfig } from './config'
 import { BALOISE_SESSION_KEY } from './config.const'
-import { BaloiseDesignSystemConfig, BaloiseDesignSystemDynamicConfig } from './config.types'
-import { ConfigObserver } from './observable/observer'
+import { BalConfigState, BalConfig } from './config.types'
+import { BalConfigObserver } from './observable/observer'
 import { Subject } from './observable/subject'
 
-export const defaultState: BaloiseDesignSystemConfig = {
+export const defaultState: BalConfigState = {
   region: 'CH',
   language: 'de',
 }
 
-export class ConfigStore implements Subject {
-  state: BaloiseDesignSystemConfig = {
+export class BalConfigStore implements Subject {
+  state: BalConfigState = {
     region: 'CH',
     language: 'de',
   }
 
-  private observers: ConfigObserver[] = []
+  private observers: BalConfigObserver[] = []
 
   constructor(private win: Window) {}
 
-  attach(observer: ConfigObserver): void {
+  attach(observer: BalConfigObserver): void {
     const isExist = this.observers.includes(observer)
     if (isExist) {
       return console.log('Subject: Observer has been attached already.')
@@ -28,7 +28,7 @@ export class ConfigStore implements Subject {
     this.observers.push(observer)
   }
 
-  detach(observer: ConfigObserver): void {
+  detach(observer: BalConfigObserver): void {
     const observerIndex = this.observers.indexOf(observer)
     if (observerIndex === -1) {
       return console.log('Subject: Nonexistent observer.')
@@ -37,7 +37,7 @@ export class ConfigStore implements Subject {
     this.observers.splice(observerIndex, 1)
   }
 
-  reset(config: BaloiseDesignSystemDynamicConfig): void {
+  reset(config: BalConfig): void {
     this.state = {
       ...defaultState,
       ...this.configFromSession(),
@@ -46,7 +46,7 @@ export class ConfigStore implements Subject {
     this.notify()
   }
 
-  patch(config: BaloiseDesignSystemDynamicConfig): void {
+  patch(config: BalConfig): void {
     this.state = {
       ...this.state,
       ...config,
@@ -61,7 +61,7 @@ export class ConfigStore implements Subject {
   notify() {
     this.attachToWindow()
     for (const observer of this.observers) {
-      observer.configChanged(baloiseDesignSystemConfig)
+      observer.configChanged(BaloiseDesignSystemConfig)
     }
   }
 
@@ -70,7 +70,7 @@ export class ConfigStore implements Subject {
       if (!(this.win as any).BaloiseDesignSystem) {
         ;(this.win as any).BaloiseDesignSystem = {}
       }
-      ;(this.win as any).BaloiseDesignSystem.config = baloiseDesignSystemConfig
+      ;(this.win as any).BaloiseDesignSystem.config = BaloiseDesignSystemConfig
       this.saveConfig()
     }
   }
@@ -93,4 +93,4 @@ export class ConfigStore implements Subject {
   }
 }
 
-export const configStore = new ConfigStore(window)
+export const balConfigStore = new BalConfigStore(window)

@@ -1,16 +1,16 @@
 import { FooterLink, Language, loadFooterLinks } from '@baloise/web-app-utils'
 import { Component, Host, h, Prop, State, Watch } from '@stencil/core'
-import { baloiseDesignSystemConfig } from '../..'
-import { configStore } from '../../config/config.store'
-import { BaloiseDesignSystemConfig, BaloiseDesignSystemLanguage } from '../../config/config.types'
-import { ConfigObserver } from '../../config/observable/observer'
+import { BaloiseDesignSystemConfig } from '../..'
+import { balConfigStore } from '../../config/config.store'
+import { BalConfigState, BalLanguage } from '../../config/config.types'
+import { BalConfigObserver } from '../../config/observable/observer'
 
 @Component({
   tag: 'bal-footer',
 })
-export class Footer implements ConfigObserver {
+export class Footer implements BalConfigObserver {
   @State() links: FooterLink[] = []
-  @State() language: BaloiseDesignSystemLanguage = baloiseDesignSystemConfig.language
+  @State() language: BalLanguage = BaloiseDesignSystemConfig.language
 
   /**
    * If `true` the footer shows a track line at the bottom.
@@ -28,15 +28,15 @@ export class Footer implements ConfigObserver {
   @Prop() hideLinks = false
 
   disconnectedCallback() {
-    configStore.detach(this)
+    balConfigStore.detach(this)
   }
 
   connectedCallback() {
-    configStore.attach(this)
+    balConfigStore.attach(this)
     this.updateFooterLinks()
   }
 
-  configChanged(config: BaloiseDesignSystemConfig) {
+  configChanged(config: BalConfigState) {
     this.language = config.language
     this.updateFooterLinks()
   }

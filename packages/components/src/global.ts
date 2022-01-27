@@ -1,5 +1,5 @@
-import { configStore } from './config/config.store'
+import { balConfigStore } from './config/config.store'
 
 export default function () {
-  configStore.attachToWindow()
+  balConfigStore.attachToWindow()
 }

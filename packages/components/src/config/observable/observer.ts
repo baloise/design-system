@@ -1,5 +1,5 @@
-import { BaloiseDesignSystemConfig } from '../config.types'
+import { BalConfigState } from '../config.types'
 
-export interface ConfigObserver {
-  configChanged(value: BaloiseDesignSystemConfig): void
+export interface BalConfigObserver {
+  configChanged(value: BalConfigState): void
 }

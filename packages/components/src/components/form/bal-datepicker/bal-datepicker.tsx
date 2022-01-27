@@ -35,22 +35,22 @@ import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
 import { parse, format, isValidIsoString, now, isoString } from '../../../utils/date.util'
-import { baloiseDesignSystemConfig } from '../../../config'
-import { BaloiseDesignSystemLanguage, BaloiseDesignSystemConfig } from '../../../config/config.types'
-import { ConfigObserver } from '../../../config/observable/observer'
-import { configStore } from '../../../config/config.store'
+import { BaloiseDesignSystemConfig } from '../../../config'
+import { BalLanguage, BalConfigState } from '../../../config/config.types'
+import { BalConfigObserver } from '../../../config/observable/observer'
+import { balConfigStore } from '../../../config/config.store'
 
 @Component({
   tag: 'bal-datepicker',
 })
-export class Datepicker implements ComponentInterface, ConfigObserver {
+export class Datepicker implements ComponentInterface, BalConfigObserver {
   private inputElement!: HTMLInputElement
   private popoverElement!: HTMLBalPopoverElement
   private inputId = `bal-dp-${datepickerIds++}`
 
   @Element() el!: HTMLElement
 
-  @State() language: BaloiseDesignSystemLanguage = baloiseDesignSystemConfig.language
+  @State() language: BalLanguage = BaloiseDesignSystemConfig.language
   @State() isPopoverOpen = false
   @State() selectedDate?: string | null = ''
   @State() pointerDate: BalPointerDate = {
@@ -217,15 +217,15 @@ export class Datepicker implements ComponentInterface, ConfigObserver {
 
   connectedCallback() {
     this.debounceChanged()
-    configStore.attach(this)
+    balConfigStore.attach(this)
   }
 
-  configChanged(config: BaloiseDesignSystemConfig): void {
+  configChanged(config: BalConfigState): void {
     this.language = config.language
   }
 
   disconnectedCallback() {
-    configStore.detach(this)
+    balConfigStore.detach(this)
   }
 
   /**
