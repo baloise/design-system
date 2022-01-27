@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { filterInputValue, formatInputValue } from '../bal-input.utils'
-import { baloiseDesignSystemConfig } from '../../../../config/config'
+import { BaloiseDesignSystemConfig } from '../../../../config/config'
 
 describe('bal-input', () => {
   describe('filterInputValue', () => {
@@ -62,15 +62,15 @@ describe('bal-input', () => {
   })
   describe('filterInputValue for another locale', () => {
     test('filterInputValue for de-DE', () => {
-      baloiseDesignSystemConfig.region = 'DE'
-      baloiseDesignSystemConfig.language = 'de'
+      BaloiseDesignSystemConfig.region = 'DE'
+      BaloiseDesignSystemConfig.language = 'de'
       expect(filterInputValue('1,4', '', 2)).toBe('1,4')
     })
   })
   describe('formatInputValue for another locale', () => {
     test('formatInputValue for de-DE', () => {
-      baloiseDesignSystemConfig.region = 'DE'
-      baloiseDesignSystemConfig.language = 'de'
+      BaloiseDesignSystemConfig.region = 'DE'
+      BaloiseDesignSystemConfig.language = 'de'
       expect(formatInputValue('1000000')).toBe('1.000.000')
       expect(formatInputValue('0.1', 2)).toBe('0,10')
     })

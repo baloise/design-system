@@ -1,4 +1,4 @@
-import { baloiseDesignSystemConfig } from '../config/config'
+import { BaloiseDesignSystemConfig } from '../config/config'
 import { localstring } from './local.util'
 
 describe('local.util', () => {
@@ -7,8 +7,8 @@ describe('local.util', () => {
       expect(localstring()).toBe('de-CH')
     })
     test('should return the new set default value', () => {
-      baloiseDesignSystemConfig.region = 'BE'
-      baloiseDesignSystemConfig.language = 'fr'
+      BaloiseDesignSystemConfig.region = 'BE'
+      BaloiseDesignSystemConfig.language = 'fr'
       expect(localstring()).toBe('fr-BE')
     })
   })
