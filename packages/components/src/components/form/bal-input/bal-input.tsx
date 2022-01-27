@@ -20,6 +20,7 @@ import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../../types/interfaces'
 import { getDecimalSeperator } from '../../../utils/number.util'
 import { filterInputValue, formatInputValue } from './bal-input.utils'
+import { balConfigStore } from '../../../config/config.store'
 
 @Component({
   tag: 'bal-input',
@@ -233,6 +234,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
 
   connectedCallback() {
     this.debounceChanged()
+    balConfigStore.attach(this)
   }
 
   componentDidLoad() {
@@ -240,6 +242,10 @@ export class Input implements ComponentInterface, BalConfigObserver {
     if (!isNil(this.value) && this.value !== '') {
       this.valueChanged(this.value, undefined)
     }
+  }
+
+  disconnectedCallback() {
+    balConfigStore.detach(this)
   }
 
   configChanged(state: BalConfigState): void {
