@@ -10,8 +10,11 @@ import {
   Watch,
   ComponentInterface,
   Listen,
+  State,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
+import { BalLanguage, BaloiseDesignSystemConfig, BalConfigState } from '../../../config'
+import { BalConfigObserver } from '../../../config/observable/observer'
 import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../../types/interfaces'
@@ -21,13 +24,15 @@ import { filterInputValue, formatInputValue } from './bal-input.utils'
 @Component({
   tag: 'bal-input',
 })
-export class Input implements ComponentInterface {
+export class Input implements ComponentInterface, BalConfigObserver {
   private inputId = `bal-input-${InputIds++}`
   private nativeInput?: HTMLInputElement
   private didInit = false
   private hasFocus = false
 
   @Element() el!: HTMLElement
+
+  @State() language: BalLanguage = BaloiseDesignSystemConfig.language
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -235,6 +240,10 @@ export class Input implements ComponentInterface {
     if (!isNil(this.value) && this.value !== '') {
       this.valueChanged(this.value, undefined)
     }
+  }
+
+  configChanged(state: BalConfigState): void {
+    this.language = state.language
   }
 
   /**
