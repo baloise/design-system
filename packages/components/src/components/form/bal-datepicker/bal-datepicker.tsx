@@ -347,7 +347,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   }
 
   get months(): { name: string; index: number }[] {
-    console.log(this.language)
     const monthNames = i18nDate[this.language].months
     let months = monthNames.map((name, index) => ({ name, index }))
 
