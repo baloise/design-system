@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.0.7](https://github.com/baloise/design-system/compare/v9.0.6...v9.0.7) (2022-01-27)
+
+
+### Bug Fixes
+
+* remove baloiseStencilViteFix from postinstall ([d185d0d](https://github.com/baloise/design-system/commit/d185d0d433f5b48307f78d7f36d0e690b3905f8e))
+
+
+
 ### [9.0.6](https://github.com/baloise/design-system/compare/v9.0.5...v9.0.6) (2022-01-25)
 
 ### Bug Fixes
