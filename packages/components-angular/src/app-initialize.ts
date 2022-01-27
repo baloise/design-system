@@ -1,7 +1,7 @@
 import { BaloiseDesignSystemDynamicConfig, initialize } from '@baloise/design-system-components'
 import { defineCustomElements, applyPolyfills } from '@baloise/design-system-components/loader'
 
-interface BaloiseDesignSystemAngularConfig extends BaloiseDesignSystemDynamicConfig {
+export interface BaloiseDesignSystemAngularConfig extends BaloiseDesignSystemDynamicConfig {
   applyPolyfills?: boolean
 }
 
