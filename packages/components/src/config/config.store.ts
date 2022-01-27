@@ -1,16 +1,16 @@
 import { baloiseDesignSystemConfig } from './config'
 import { BALOISE_SESSION_KEY } from './config.const'
-import {
-  BaloiseDesignSystemBaseConfig,
-  BaloiseDesignSystemDynamicConfig,
-  BaloiseDesignSystemUserConfig,
-} from './config.types'
+import { BaloiseDesignSystemConfig, BaloiseDesignSystemDynamicConfig } from './config.types'
 import { ConfigObserver } from './observable/observer'
 import { Subject } from './observable/subject'
 
+export const defaultState: BaloiseDesignSystemConfig = {
+  region: 'CH',
+  language: 'de',
+}
+
 export class ConfigStore implements Subject {
-  private state: BaloiseDesignSystemBaseConfig = {
-    applyPolyfills: false,
+  state: BaloiseDesignSystemConfig = {
     region: 'CH',
     language: 'de',
   }
@@ -37,19 +37,19 @@ export class ConfigStore implements Subject {
     this.observers.splice(observerIndex, 1)
   }
 
-  reset(userConfig: BaloiseDesignSystemUserConfig): void {
+  reset(config: BaloiseDesignSystemDynamicConfig): void {
     this.state = {
-      ...this.state,
+      ...defaultState,
       ...this.configFromSession(),
-      ...userConfig,
+      ...config,
     }
     this.notify()
   }
 
-  patch(dynamicConfig: BaloiseDesignSystemDynamicConfig): void {
+  patch(config: BaloiseDesignSystemDynamicConfig): void {
     this.state = {
       ...this.state,
-      ...dynamicConfig,
+      ...config,
     }
     this.notify()
   }
@@ -59,15 +59,19 @@ export class ConfigStore implements Subject {
   }
 
   notify() {
+    this.attachToWindow()
+    for (const observer of this.observers) {
+      observer.configChanged(baloiseDesignSystemConfig)
+    }
+  }
+
+  attachToWindow() {
     if (this.win) {
       if (!(this.win as any).BaloiseDesignSystem) {
         ;(this.win as any).BaloiseDesignSystem = {}
       }
       ;(this.win as any).BaloiseDesignSystem.config = baloiseDesignSystemConfig
       this.saveConfig()
-    }
-    for (const observer of this.observers) {
-      observer.configChanged(baloiseDesignSystemConfig)
     }
   }
 

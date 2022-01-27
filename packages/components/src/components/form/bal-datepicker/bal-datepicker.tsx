@@ -35,10 +35,10 @@ import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
 import { parse, format, isValidIsoString, now, isoString } from '../../../utils/date.util'
-import { BaloiseDesignSystemConfig, baloiseDesignSystemConfig } from '../../../config'
-import { BaloiseDesignSystemLanguage } from '../../../config/config.types'
+import { baloiseDesignSystemConfig } from '../../../config'
+import { BaloiseDesignSystemLanguage, BaloiseDesignSystemConfig } from '../../../config/config.types'
 import { ConfigObserver } from '../../../config/observable/observer'
-import { configStore } from '../../../config/config.container'
+import { configStore } from '../../../config/config.store'
 
 @Component({
   tag: 'bal-datepicker',

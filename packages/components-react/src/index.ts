@@ -1,10 +1,13 @@
 export * from './components'
-import { BaloiseDesignSystemUserConfig, initialize, getConfig } from '@baloise/design-system-components'
+import { initialize, BaloiseDesignSystemDynamicConfig } from '@baloise/design-system-components'
 import { defineCustomElements, applyPolyfills } from '@baloise/design-system-components/loader'
 
-export const useBaloiseDesignSystem = async (userConfig: BaloiseDesignSystemUserConfig = {}) => {
-  initialize(userConfig)
-  const config = getConfig()
+interface BaloiseDesignSystemReactConfig extends BaloiseDesignSystemDynamicConfig {
+  applyPolyfills?: boolean
+}
+
+export const useBaloiseDesignSystem = async (config: BaloiseDesignSystemReactConfig = {}) => {
+  initialize(config)
   if (config.applyPolyfills) {
     await applyPolyfills()
   }

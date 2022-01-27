@@ -1,7 +1,7 @@
-import { configStore } from './config.container'
+import { configStore } from './config.store'
 import { BaloiseDesignSystemLanguage, BaloiseDesignSystemRegion } from './config.types'
 
-export class BaloiseDesignSystemConfig {
+class BaloiseDesignSystemConfig {
   get region(): BaloiseDesignSystemRegion {
     return configStore.state.region
   }
@@ -24,3 +24,4 @@ export class BaloiseDesignSystemConfig {
 }
 
 export const baloiseDesignSystemConfig = new BaloiseDesignSystemConfig()
+export const useConfig = (): BaloiseDesignSystemConfig => baloiseDesignSystemConfig

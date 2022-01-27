@@ -1,8 +1,8 @@
 import { FooterLink, Language, loadFooterLinks } from '@baloise/web-app-utils'
 import { Component, Host, h, Prop, State, Watch } from '@stencil/core'
-import { BaloiseDesignSystemConfig, baloiseDesignSystemConfig } from '../..'
-import { configStore } from '../../config/config.container'
-import { BaloiseDesignSystemLanguage } from '../../config/config.types'
+import { baloiseDesignSystemConfig } from '../..'
+import { configStore } from '../../config/config.store'
+import { BaloiseDesignSystemConfig, BaloiseDesignSystemLanguage } from '../../config/config.types'
 import { ConfigObserver } from '../../config/observable/observer'
 
 @Component({
