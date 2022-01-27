@@ -244,6 +244,10 @@ export class Input implements ComponentInterface, BalConfigObserver {
 
   configChanged(state: BalConfigState): void {
     this.language = state.language
+
+    if (!this.hasFocus && this.nativeInput) {
+      this.nativeInput.value = this.getFormattedValue()
+    }
   }
 
   /**

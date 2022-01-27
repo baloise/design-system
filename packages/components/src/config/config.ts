@@ -7,7 +7,9 @@ class BaloiseDesignSystemConfigClass {
   }
 
   set region(region: BalRegion) {
-    balConfigStore.patch({ region })
+    if (region !== balConfigStore.state.region) {
+      balConfigStore.patch({ region })
+    }
   }
 
   get language(): BalLanguage {
@@ -15,7 +17,9 @@ class BaloiseDesignSystemConfigClass {
   }
 
   set language(language: BalLanguage) {
-    balConfigStore.patch({ language })
+    if (language !== balConfigStore.state.language) {
+      balConfigStore.patch({ language })
+    }
   }
 
   toString() {
