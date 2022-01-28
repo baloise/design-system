@@ -27,4 +27,22 @@ Open angular.json file and find budgets keyword and adjust the two values.
 ]
 ```
 
+## lint-staged - ERR_REQUIRE_ESM
+
+The follwing error can be fixed by removing the `node_modules` and
+the `package.lock.json` in the root package and run `npm i` again.
+
+```bash
+const isFullwidthCodePoint = require('is-fullwidth-code-point');
+                             ^
+Error [ERR_REQUIRE_ESM]: require() of ES Module /Users/hirsch/dev/baloise/design-system/node_modules/is-fullwidth-code-point/index.js from /Users/hirsch/dev/baloise/design-system/node_modules/listr2/node_modules/slice-ansi/index.js not supported.
+Instead change the require of /Users/hirsch/dev/baloise/design-system/node_modules/is-fullwidth-code-point/index.js in /Users/hirsch/dev/baloise/design-system/node_modules/listr2/node_modules/slice-ansi/index.js to a dynamic import() which is available in all CommonJS modules.
+    at Object.<anonymous> (/Users/hirsch/dev/baloise/design-system/node_modules/listr2/node_modules/slice-ansi/index.js:2:30)
+    at Object.<anonymous> (/Users/hirsch/dev/baloise/design-system/node_modules/listr2/node_modules/cli-truncate/index.js:2:19)
+    at async Promise.all (index 0) {
+  code: 'ERR_REQUIRE_ESM'
+}
+husky - pre-commit hook exited with code 1 (error)
+```
+
 <bal-doc-github link="/stories/getting-started/angular/06-troubleshooting.stories.mdx"></bal-doc-github>
