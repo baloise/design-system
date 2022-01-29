@@ -26,49 +26,39 @@ export class Field {
    */
   @Prop() loading = false
 
-  @Watch('inverted')
-  @Watch('disabled')
+  private formControlElement = ['bal-field-control']
+  private inputElements = ['bal-input', 'bal-textarea', 'bal-select', 'bal-datepicker']
+  private formElements = [...this.formControlElement, 'bal-field-label', 'bal-field-message']
+
   @Watch('invalid')
-  watchInputHandler() {
-    this.updateChildInput()
-  }
-
-  @Watch('loading')
-  @Watch('inverted')
-  @Watch('invalid')
-  watchFieldHandler() {
-    this.updateChildFieldControl()
-  }
-
-  componentWillLoad() {
-    this.updateChildInput()
-    this.updateChildFieldControl()
-  }
-
-  updateChildInput() {
-    const inputs = this.element.querySelectorAll<HTMLBalInputElement | HTMLBalDatepickerElement | HTMLBalSelectElement>(
-      'bal-input, bal-select, bal-datepicker',
-    )
-    inputs.forEach(input => {
-      input.disabled = this.disabled
-      input.inverted = this.inverted
+  invalidHandler() {
+    this.notifyComponents<{ invalid: boolean }>([...this.inputElements, ...this.formElements], input => {
       input.invalid = this.invalid
     })
   }
 
-  updateChildFieldControl() {
-    const controls = this.element.querySelectorAll<HTMLBalFieldControlElement>('bal-field-control')
-    controls.forEach(control => {
-      control.loading = this.loading
-      control.inverted = this.inverted
-      control.invalid = this.invalid
+  @Watch('disabled')
+  @Watch('loading')
+  @Watch('inverted')
+  restHandler() {
+    this.notifyComponents<{ disabled: boolean; loading: boolean; inverted: boolean }>(
+      [...this.inputElements, ...this.formControlElement],
+      input => {
+        input.disabled = this.disabled
+        input.loading = this.loading
+        input.inverted = this.inverted
+      },
+    )
+  }
 
-      const selects = this.element.querySelectorAll<HTMLBalSelectElement>('bal-select')
-      selects.forEach(select => {
-        select.loading = this.loading
-        select.invalid = this.invalid
-      })
-    })
+  private notifyComponents<T>(selectors: string[], callback: (component: T) => void) {
+    const components = this.element.querySelectorAll<Element>(selectors.join(', '))
+    components.forEach(c => callback(c as any))
+  }
+
+  componentWillLoad() {
+    this.invalidHandler()
+    this.restHandler()
   }
 
   render() {
