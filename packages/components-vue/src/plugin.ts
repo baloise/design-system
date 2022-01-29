@@ -18,3 +18,9 @@ export const BaloiseDesignSystem: Plugin = {
     applyDirectives(app)
   },
 }
+
+export const createBaloiseDesignSystem = (config: BaloiseDesignSystemVueConfig = {}): Plugin => ({
+  async install(app) {
+    return BaloiseDesignSystem.install(app, config)
+  },
+})
