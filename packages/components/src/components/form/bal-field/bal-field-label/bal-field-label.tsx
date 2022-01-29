@@ -14,6 +14,11 @@ export class FieldLabel {
    */
   @Prop() required = false
 
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
+
   componentDidLoad() {
     if (this.element) {
       this.parrentBalFieldElement = this.element.closest('bal-field')

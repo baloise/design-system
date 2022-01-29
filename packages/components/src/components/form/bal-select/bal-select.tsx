@@ -60,6 +60,11 @@ export class Select {
   @Prop() name: string = this.inputId
 
   /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
+
+  /**
    * The tabindex of the control.
    */
   @Prop() balTabindex = 0
@@ -706,6 +711,7 @@ export class Select {
             bal-popover-trigger
             class={{
               'bal-select__slot': true,
+              'is-danger': this.invalid,
               'is-focused': this.isPopoverOpen,
               'has-no-border': this.noBorder,
             }}
@@ -721,6 +727,7 @@ export class Select {
                 class={{
                   'input': true,
                   'is-inverted': this.inverted,
+                  'is-danger': this.invalid,
                   'is-clickable': !this.isPopoverOpen,
                   'data-test-select-input': true,
                 }}
@@ -742,6 +749,7 @@ export class Select {
               class={{ 'is-hidden': this.loading }}
               name="caret-down"
               size="xsmall"
+              color={this.invalid ? 'danger' : 'info'}
               inverted={this.inverted}
               turn={this.isPopoverOpen}
               style={{

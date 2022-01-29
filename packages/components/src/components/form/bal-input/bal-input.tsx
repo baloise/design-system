@@ -41,6 +41,11 @@ export class Input implements ComponentInterface, BalConfigObserver {
   @Prop() name: string = this.inputId
 
   /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
+
+  /**
    * Defines the type of the input (text, number, email ...).
    */
   @Prop() type: InputTypes = 'text'
@@ -374,6 +379,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
           class={{
             'input': true,
             'is-disabled': this.disabled,
+            'is-danger': this.invalid,
             'is-inverted': this.inverted,
             'clickable': this.clickable,
             'has-icon-right': this.hasIconRight,

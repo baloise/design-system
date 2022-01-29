@@ -7,7 +7,7 @@ export class Field {
   @Element() element!: HTMLElement
 
   /**
-   * If `true` the component gets a invalid style. Only use this if there is no live validation.
+   * If `true` the component gets a invalid style.
    */
   @Prop() invalid = false
 
@@ -28,12 +28,14 @@ export class Field {
 
   @Watch('inverted')
   @Watch('disabled')
+  @Watch('invalid')
   watchInputHandler() {
     this.updateChildInput()
   }
 
   @Watch('loading')
   @Watch('inverted')
+  @Watch('invalid')
   watchFieldHandler() {
     this.updateChildFieldControl()
   }
@@ -50,6 +52,7 @@ export class Field {
     inputs.forEach(input => {
       input.disabled = this.disabled
       input.inverted = this.inverted
+      input.invalid = this.invalid
     })
   }
 
@@ -58,10 +61,12 @@ export class Field {
     controls.forEach(control => {
       control.loading = this.loading
       control.inverted = this.inverted
+      control.invalid = this.invalid
 
       const selects = this.element.querySelectorAll<HTMLBalSelectElement>('bal-select')
       selects.forEach(select => {
         select.loading = this.loading
+        select.invalid = this.invalid
       })
     })
   }

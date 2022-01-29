@@ -331,6 +331,10 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement>;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
@@ -424,7 +428,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true` the component gets a invalid style. Only use this if there is no live validation.
+          * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
         /**
@@ -446,6 +450,10 @@ export namespace Components {
          */
         "iconRight": string;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * If `true` the field can be used on blue background.
          */
         "inverted": boolean;
@@ -462,6 +470,10 @@ export namespace Components {
     }
     interface BalFieldLabel {
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * If `true` a asterix (*) is added to the label text
          */
         "required": boolean;
@@ -471,6 +483,10 @@ export namespace Components {
           * Defines the color of the message.
          */
         "color": '' | ColorTypesExtended;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
     }
     interface BalFileUpload {
         /**
@@ -664,6 +680,10 @@ export namespace Components {
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
         /**
           * If `true` this component can be placed on dark background
          */
@@ -1036,6 +1056,10 @@ export namespace Components {
          */
         "hasMovement": boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
@@ -1354,6 +1378,10 @@ export namespace Components {
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
         /**
           * If `true` this component can be placed on dark background
          */
@@ -2272,6 +2300,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
@@ -2369,7 +2401,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` the component gets a invalid style. Only use this if there is no live validation.
+          * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
         /**
@@ -2391,6 +2423,10 @@ declare namespace LocalJSX {
          */
         "iconRight"?: string;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * If `true` the field can be used on blue background.
          */
         "inverted"?: boolean;
@@ -2407,6 +2443,10 @@ declare namespace LocalJSX {
     }
     interface BalFieldLabel {
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * If `true` a asterix (*) is added to the label text
          */
         "required"?: boolean;
@@ -2416,6 +2456,10 @@ declare namespace LocalJSX {
           * Defines the color of the message.
          */
         "color"?: '' | ColorTypesExtended;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
     }
     interface BalFileUpload {
         /**
@@ -2597,6 +2641,10 @@ declare namespace LocalJSX {
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
         /**
           * If `true` this component can be placed on dark background
          */
@@ -2974,6 +3022,10 @@ declare namespace LocalJSX {
          */
         "hasMovement"?: boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
@@ -3324,6 +3376,10 @@ declare namespace LocalJSX {
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
         /**
           * If `true` this component can be placed on dark background
          */

@@ -65,6 +65,11 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   @Prop() name: string = this.inputId
 
   /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
+
+  /**
    * @deprecated Define the locale of month and day names.
    */
   @Prop() locale: 'en' | 'de' | 'fr' | 'it' | '' = ''
@@ -566,6 +571,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
             'clickable': !this.disabled && !this.triggerIcon,
             'is-inverted': this.inverted,
             'is-disabled': this.disabled,
+            'is-danger': this.invalid,
           }}
           ref={el => (this.inputElement = el as HTMLInputElement)}
           id={this.inputId}
@@ -590,7 +596,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
         <bal-icon
           class="datepicker-trigger-icon clickable"
           is-right
-          color="info"
+          color={this.invalid ? 'danger' : 'info'}
           inverted={this.inverted}
           name="date"
           onClick={this.onIconClick}

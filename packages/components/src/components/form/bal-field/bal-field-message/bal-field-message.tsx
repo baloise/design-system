@@ -10,11 +10,16 @@ export class FieldMessage {
    */
   @Prop() color: '' | ColorTypesExtended = ''
 
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
+
   render() {
     return (
       <Host
         class={{
-          [`help is-${this.color}`]: true,
+          [`help is-${this.invalid ? 'danger' : this.color}`]: true,
         }}
       >
         <slot></slot>
