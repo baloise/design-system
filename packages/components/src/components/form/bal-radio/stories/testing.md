@@ -7,10 +7,10 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { dataTestSelector } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/design-system-testing'
 
 describe('Radio', () => {
-  const radioGroup = dataTestSelector('my-radio-group') // [data-test-id="my-radio-group"]
+  const radioGroup = byTestId('my-radio-group') // [data-testid="my-radio-group"]
   it('should ...', () => {
     cy.get(radioGroup).find('bal-radio').first().check().should('be.checked')
   })

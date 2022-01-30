@@ -1,8 +1,8 @@
-import { dataTestSelector } from '../../../src'
+import { byTestId } from '../../../src'
 
 export class TabsPage {
-  tabs = dataTestSelector('tabs')
-  steps = dataTestSelector('steps')
+  tabs = byTestId('tabs')
+  steps = byTestId('steps')
 
   open() {
     cy.visit('/components/bal-tabs')

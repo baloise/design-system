@@ -1,8 +1,8 @@
-import { dataTestSelector } from '../../../src'
+import { byTestId } from '../../../src'
 
 export class SliderPage {
-  slider = dataTestSelector('slider')
-  sliderDisabled = dataTestSelector('slider-disabled')
+  slider = byTestId('slider')
+  sliderDisabled = byTestId('slider-disabled')
 
   open() {
     cy.visit('/components/form/bal-slider')
