@@ -117,4 +117,5 @@ packages/components-vue/src/proxies
 packages/components-react/src/components.ts
 packages/components-angular/src/directives/proxies.ts
 packages/components-angular/src/directives/proxies-list.ts
+packages/components-angular/src/directives/proxies.module.ts
 

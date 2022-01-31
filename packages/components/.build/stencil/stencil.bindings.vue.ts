@@ -25,7 +25,15 @@ export const vueComponentModels: ComponentModelConfig[] = [
 export const VueGenerator = (
   componentCorePackage = '@baloise/design-system-components',
   proxiesDir = '../components-vue/src/proxies',
-  excludeComponents = ['bal-app']
+  excludeComponents = [
+    'bal-app',
+    'bal-doc-app',
+    'bal-doc-color',
+    'bal-doc-download',
+    'bal-doc-github',
+    'bal-doc-icons',
+    'bal-doc-image',
+  ],
 ) =>
   vueOutputTarget({
     componentCorePackage,
