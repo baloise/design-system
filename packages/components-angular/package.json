@@ -55,7 +55,8 @@
     "zone.js": "^0.10.3"
   },
   "files": [
-    "dist/"
+    "dist/",
+    "ngcc.config.js"
   ],
   "main": "dist/bundles/baloise-design-system-components-angular.umd.js",
   "module": "dist/fesm2015/baloise-design-system-components-angular.js",
