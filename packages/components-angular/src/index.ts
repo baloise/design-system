@@ -1,5 +1,6 @@
 // DIRECTIVES
 export * from './directives/proxies'
+export * from './directives/proxies.module'
 
 // SERVICES
 export { BalToastService } from './overlays/toast.service'
