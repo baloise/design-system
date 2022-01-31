@@ -21,9 +21,11 @@ export class ModalHeader {
   render() {
     return (
       <Host class="modal-card-head">
-        <h3 class="modal-card-title title is-size-3 has-text-blue m-0">
-          <slot></slot>
-        </h3>
+        <div>
+          <h4 class="modal-card-title title is-size-4 has-text-blue m-0">
+            <slot></slot>
+          </h4>
+        </div>
         <button
           class={{
             'modal-close': true,

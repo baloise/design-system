@@ -44,6 +44,14 @@ select {
   box-shadow: none;
 }
 
+.pagination-previous,
+.pagination-next {
+  &.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
 .pagination-next {
   order: 3;
 }

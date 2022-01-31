@@ -7,10 +7,10 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { dataTestSelector } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/design-system-testing'
 
 describe('Hint', () => {
-  const hint = dataTestSelector('my-hint') // [data-test-id="my-hint"]
+  const hint = byTestId('my-hint') // [data-testid="my-hint"]
   it('should ...', () => {
     cy.get(hint).click().balHintFindOverlay().should('be.visible')
 

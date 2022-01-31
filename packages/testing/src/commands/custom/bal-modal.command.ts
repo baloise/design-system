@@ -15,10 +15,7 @@ Cypress.Commands.add(
   },
   subject => {
     return cy.wrap(subject).then($modal => {
-      console.log($modal)
       return cy.wrap($modal).should('not.exist')
     })
-
-    // .should('not.have.attr', 'aria-presented')
   },
 )

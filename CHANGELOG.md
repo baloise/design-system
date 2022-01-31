@@ -3,39 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [9.1.0](https://github.com/baloise-incubator/design-system/compare/v9.0.3...v9.1.0) (2022-01-18)
+## [9.1.0](https://github.com/baloise/design-system/compare/v9.0.7...v9.1.0) (2022-01-31)
 
 
 ### Features
 
-* **accordion:** add new styles ([1956d8e](https://github.com/baloise-incubator/design-system/commit/1956d8e6a47eed23cbae0144970d9eba5dffa234))
-* add new font ([fa631d0](https://github.com/baloise-incubator/design-system/commit/fa631d0e2d911efbbe68b1ad72853f0664e80840))
-* **button:** add new styles ([a7d91e0](https://github.com/baloise-incubator/design-system/commit/a7d91e085e3ae802c2e037b88dc2f80f707ce19f))
-* **card:** add new design ([11c0cbc](https://github.com/baloise-incubator/design-system/commit/11c0cbc3b73eaf39d63ebda0750c80bb3b429f61))
-* **icons:** add new icons ([6078798](https://github.com/baloise-incubator/design-system/commit/60787988872433cdb351172d65704021550c41b1))
-* **text:** add heading attribute to change the font family ([f574c24](https://github.com/baloise-incubator/design-system/commit/f574c242c91dc54a72b75d9337b0c3a85be946d7))
+* add internationalization ([d50e3ca](https://github.com/baloise/design-system/commit/d50e3ca7462b8991ce0c3941f0465e262679795a))
+* **config:** add date and number formats to global config ([8e2b9d0](https://github.com/baloise/design-system/commit/8e2b9d09dca8fcbc63d918ccc83e1e5873952bed))
+
+
+### Features
+
+* **button:** adjust button order on mobile ([2640e1c](https://github.com/baloise/design-system/commit/2640e1c4a85bb5915d83d557234e44d51487ac2a)), closes [#475](https://github.com/baloise/design-system/issues/475)
+* **data:** adjust mobile view ([9e3921f](https://github.com/baloise/design-system/commit/9e3921f83bc6a9df18b50b8fb52dc2a124eaca03)), closes [#461](https://github.com/baloise/design-system/issues/461) [#477](https://github.com/baloise/design-system/issues/477)
+* **datepicker:** resolve max attribute logic ([8b200b6](https://github.com/baloise/design-system/commit/8b200b625e0cf426957c488fa65eb14a4f62a94c)), closes [#445](https://github.com/baloise/design-system/issues/445)
+* **form:** improve invalid style ([cf9902f](https://github.com/baloise/design-system/commit/cf9902fa46bf7253153c2a471f51fa05199cd639))
+* **form:** improve sync of props ([98db4a1](https://github.com/baloise/design-system/commit/98db4a1bde80859c8078988cf9ce7d581b9bbfd7))
+* **navbar:** remove margin bottom ([a22a072](https://github.com/baloise/design-system/commit/a22a072280ca9f27c52b3df0fb17c8e38cc5067a))
+* **pagination:** adjust for mobile view ([c25a04d](https://github.com/baloise/design-system/commit/c25a04dd18f6d5c4070e7cb045e032ec97a31426)), closes [#476](https://github.com/baloise/design-system/issues/476)
+* **radio:** remove inconsistent shade ([91aa2e3](https://github.com/baloise/design-system/commit/91aa2e317226eeffc7dcae4a648c5a4c2295ffdf)), closes [#386](https://github.com/baloise/design-system/issues/386)
+* **vue:** add plugin function with better typesafty ([b1b29de](https://github.com/baloise/design-system/commit/b1b29de4833944c9d8265943c7d47e3d28eef9fd))
+
+
+### [9.0.7](https://github.com/baloise/design-system/compare/v9.0.6...v9.0.7) (2022-01-27)
 
 
 ### Bug Fixes
 
-* optimize icons ([d7be142](https://github.com/baloise-incubator/design-system/commit/d7be1427c02cb5cfc9106d32fcede5124c324a85))
-* update fonts ([3a01e0d](https://github.com/baloise-incubator/design-system/commit/3a01e0dd7f84bcd803afb5bad8d38b0179c2b917))
-* update icons ([2701297](https://github.com/baloise-incubator/design-system/commit/2701297acba17c9438817c40f9200dc6aa644009))
-* update icons ([241dc39](https://github.com/baloise-incubator/design-system/commit/241dc39160a8d6becc10dacefd199042fccdce08))
+* remove baloiseStencilViteFix from postinstall ([d185d0d](https://github.com/baloise/design-system/commit/d185d0d433f5b48307f78d7f36d0e690b3905f8e))
 
-### [9.0.1](https://github.com/baloise-incubator/design-system/compare/v9.0.0...v9.0.1) (2022-01-11)
 
+
+### [9.0.6](https://github.com/baloise/design-system/compare/v9.0.5...v9.0.6) (2022-01-25)
 
 ### Bug Fixes
 
-* **hint:** adjust mobile view ([df56521](https://github.com/baloise-incubator/design-system/commit/df5652119d8dcc5768f417bd47c12176e6a8f61e))
-* **list:** remove margin top ([500753d](https://github.com/baloise-incubator/design-system/commit/500753d4ce8b459ca0dae795868e24f9df6efe42))
+* **vue:** add vite support ([cf0c356](https://github.com/baloise/design-system/commit/cf0c356db330fad53685146528da23faca4da0cf))
 
-## [9.0.0](https://github.com/baloise-incubator/design-system/compare/v6.1.0...v9.0.0) (2022-01-10)
+### [9.0.5](https://github.com/baloise/design-system/compare/v9.0.4...v9.0.5) (2022-01-20)
 
-## 6.1.0 (2021-12-30)
+### Bug Fixes
 
+- **modal:** break text in modal title ([f7ccd46](https://github.com/baloise/design-system/commit/f7ccd46f30f7db1bec8a97392839b34df86d7323))
+- **vue:** add better vite support ([6503327](https://github.com/baloise/design-system/commit/6503327cb43193f432d5f0bccd47ac5955fefa9a))
 
+### [9.0.4](https://github.com/baloise/design-system/compare/v9.0.3...v9.0.4) (2022-01-19)
+
+### [9.0.3](https://github.com/baloise/design-system/compare/v9.0.2...v9.0.3) (2022-01-18)
+
+### Bug Fixes
+
+- **container:** use real value for the angular scss compiler ([5257ef4](https://github.com/baloise/design-system/commit/5257ef4c59101a73ba551aa835fdb06d5cc64415))
+- **proxy:** export ProxyComponent interface ([6d7d085](https://github.com/baloise/design-system/commit/6d7d085a3890fce8a544cd594dfea4af2a75ecfe))
+
+### [9.0.2](https://github.com/baloise/design-system/compare/v9.0.1...v9.0.2) (2022-01-17)
+
+### Bug Fixes
+
+- **hint:** adjust mobile view ([df56521](https://github.com/baloise/design-system/commit/df5652119d8dcc5768f417bd47c12176e6a8f61e))
+- **list:** remove margin top ([500753d](https://github.com/baloise/design-system/commit/500753d4ce8b459ca0dae795868e24f9df6efe42))
+- **vue:** add better vite support ([6503327](https://github.com/baloise/design-system/commit/6503327cb43193f432d5f0bccd47ac5955fefa9a))
 
 ### [9.0.3](https://github.com/baloise/design-system/compare/v9.0.2...v9.0.3) (2022-01-18)
 

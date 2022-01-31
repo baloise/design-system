@@ -1,7 +1,7 @@
-import { dataTestSelector } from '../../../src'
+import { byTestId } from '../../../src'
 
 export class HintPage {
-  hint = dataTestSelector('hint')
+  hint = byTestId('hint')
 
   open() {
     cy.visit('/components/bal-hint')

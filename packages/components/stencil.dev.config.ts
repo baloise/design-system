@@ -4,19 +4,14 @@ import fg from 'fast-glob'
 import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
 import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 
-let outputTargets = []
-if (process.env.STORYBOOK_MODE === 'prod') {
-  outputTargets = [VueGenerator('../../dist/components', './.storybook/vue/components.ts', true)]
-} else if (process.env.STORYBOOK_MODE === 'dev') {
-  outputTargets = [
-    {
-      type: 'docs-json',
-      file: './generated/components.json',
-    },
-    VueGenerator('../../public/build/design-system-next-components.esm.js', './.storybook/vue/components.ts', false),
-  ]
-} else {
-  outputTargets = [
+let libPath = '../../..'
+if (process.env.STORYBOOK_MODE === 'debug') {
+  libPath = '../../public/build/design-system-components.esm.js'
+}
+
+export const config: Config = {
+  ...StencilBaseConfig,
+  outputTargets: [
     {
       type: 'dist',
       esmLoaderPath: '../loader',
@@ -28,14 +23,7 @@ if (process.env.STORYBOOK_MODE === 'prod') {
       type: 'docs-json',
       file: './generated/components.json',
     },
-    VueGenerator('../../dist/components', './.storybook/vue/components.ts', true),
-  ]
-}
-
-export const config: Config = {
-  ...StencilBaseConfig,
-  outputTargets: [
-    ...outputTargets,
+    VueGenerator(libPath, './.storybook/vue/components', []),
     {
       type: 'www',
       dir: 'public',

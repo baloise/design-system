@@ -1,4 +1,4 @@
-export * from './components'
+export * from './proxies/index'
 export { BalApp } from './components/BalApp'
 export * from './plugin'
 export * from './helpers'

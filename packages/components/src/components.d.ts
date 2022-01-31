@@ -332,13 +332,17 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement>;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
         /**
-          * Define the locale of month and day names.
+          * @deprecated Define the locale of month and day names.
          */
-        "locale": 'en' | 'de' | 'fr' | 'it';
+        "locale": 'en' | 'de' | 'fr' | 'it' | '';
         /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
@@ -426,7 +430,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true` the component gets a invalid style. Only use this if there is no live validation.
+          * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
         /**
@@ -448,6 +452,10 @@ export namespace Components {
          */
         "iconRight": string;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * If `true` the field can be used on blue background.
          */
         "inverted": boolean;
@@ -464,6 +472,10 @@ export namespace Components {
     }
     interface BalFieldLabel {
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * If `true` a asterix (*) is added to the label text
          */
         "required": boolean;
@@ -473,6 +485,10 @@ export namespace Components {
           * Defines the color of the message.
          */
         "color": '' | ColorTypesExtended;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
     }
     interface BalFileUpload {
         /**
@@ -530,9 +546,9 @@ export namespace Components {
          */
         "hideLinks": boolean;
         /**
-          * The languages in which the links will appear.
+          * @deprecated The languages in which the links will appear.
          */
-        "locale": 'en' | 'de' | 'fr' | 'it';
+        "locale": 'en' | 'de' | 'fr' | 'it' | '';
     }
     interface BalHeading {
         /**
@@ -666,6 +682,10 @@ export namespace Components {
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
         /**
           * If `true` this component can be placed on dark background
          */
@@ -1038,6 +1058,10 @@ export namespace Components {
          */
         "hasMovement": boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
@@ -1368,6 +1392,10 @@ export namespace Components {
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
         /**
           * If `true` this component can be placed on dark background
          */
@@ -2286,13 +2314,17 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
         /**
-          * Define the locale of month and day names.
+          * @deprecated Define the locale of month and day names.
          */
-        "locale"?: 'en' | 'de' | 'fr' | 'it';
+        "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
         /**
           * The maximum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
          */
@@ -2384,7 +2416,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` the component gets a invalid style. Only use this if there is no live validation.
+          * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
         /**
@@ -2406,6 +2438,10 @@ declare namespace LocalJSX {
          */
         "iconRight"?: string;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * If `true` the field can be used on blue background.
          */
         "inverted"?: boolean;
@@ -2422,6 +2458,10 @@ declare namespace LocalJSX {
     }
     interface BalFieldLabel {
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * If `true` a asterix (*) is added to the label text
          */
         "required"?: boolean;
@@ -2431,6 +2471,10 @@ declare namespace LocalJSX {
           * Defines the color of the message.
          */
         "color"?: '' | ColorTypesExtended;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
     }
     interface BalFileUpload {
         /**
@@ -2492,9 +2536,9 @@ declare namespace LocalJSX {
          */
         "hideLinks"?: boolean;
         /**
-          * The languages in which the links will appear.
+          * @deprecated The languages in which the links will appear.
          */
-        "locale"?: 'en' | 'de' | 'fr' | 'it';
+        "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
     }
     interface BalHeading {
         /**
@@ -2612,6 +2656,10 @@ declare namespace LocalJSX {
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
         /**
           * If `true` this component can be placed on dark background
          */
@@ -2989,6 +3037,10 @@ declare namespace LocalJSX {
          */
         "hasMovement"?: boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
@@ -3351,6 +3403,10 @@ declare namespace LocalJSX {
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
         "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
         /**
           * If `true` this component can be placed on dark background
          */

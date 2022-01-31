@@ -7,11 +7,11 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { dataTestSelector } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/design-system-testing'
 
 describe('Tabs', () => {
-  const tabs = dataTestSelector('my-tabs') // [data-test-id="my-tabs"]
-  const steps = dataTestSelector('my-steps') // [data-test-id="my-steps"]
+  const tabs = byTestId('my-tabs') // [data-testid="my-tabs"]
+  const steps = byTestId('my-steps') // [data-testid="my-steps"]
   it('should ...', () => {
     cy.get(tabs).select('Tab B').should('have.value', 'Tab B')
     cy.get(tabs).balTabsFindActionButton().contains('Action')

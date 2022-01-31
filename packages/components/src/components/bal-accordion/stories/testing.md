@@ -7,10 +7,10 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { dataTestSelector } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/design-system-testing'
 
 describe('Accordion', () => {
-  const accordion = dataTestSelector('my-accordion') // [data-test-id="my-accordion"]
+  const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
   it('should ...', () => {
     cy.get(accordion).contains('Details einblenden')
     cy.get(accordion).balAccordionIsClosed()

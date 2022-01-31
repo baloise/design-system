@@ -1,0 +1,160 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Getting-Started/Internationalization"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Internationalization
+
+The [Internationalization API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) of the browser
+provides the Design System number and date formats.
+
+The following **regions** and **languages** are supported
+
+| Region | Languages      | Interface               |
+| ------ | -------------- | ----------------------- |
+| CH     | de, fr, it, en | `BalSwissLanguage`      |
+| BE     | fr, nl         | `BalBelgiumLanguage`    |
+| DE     | de             | `BalGermanLanguage`     |
+| LU     | fr, de, en     | `BalLuxembourgLanguage` |
+
+## Initialize with default values
+
+The initialize of the Design System config defines the default values.
+
+This example below is for HTML5 applications.
+However, for Angular, Vue or React there are usage examples below.
+
+```typescript
+import { initialize } from '@baloise/design-system-components'
+
+initialize({
+  region: 'CH',
+  language: 'de',
+})
+```
+
+### Angular
+
+In the Angular framework define them with the module.
+
+```typescript
+import { BrowserModule } from '@angular/platform-browser'
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+
+import { AppComponent } from './app.component'
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    BaloiseDesignSystemModule.forRoot({
+      defaults: {
+        region: 'DE',
+        language: 'de',
+      },
+    }),
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}
+```
+
+### Vue
+
+Simply pass the default config value through the plugin.
+
+```typescript
+import './main.scss'
+import { BaloiseDesignSystem } from '@baloise/design-system-components-vue'
+
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+
+createApp(App)
+  .use(router)
+  .use(BaloiseDesignSystem, {
+    defaults: {
+      region: 'LU',
+      language: 'fr',
+    },
+  })
+  .mount('#app')
+```
+
+### React
+
+Import the **useBaloiseDesignSystem** function and pass the default values of the config.
+
+```typescript
+import { useBaloiseDesignSystem } from '@baloise/design-system-components-react'
+
+useBaloiseDesignSystem({
+  defaults: {
+    region: 'BE',
+    language: 'fr',
+  },
+})
+```
+
+## Change language or region on runtime
+
+To change the language or region during run time use the two functions `updateBalLanguge` and `updateBalRegion`.
+
+```typescript
+import { updateBalLanguge, updateBalRegion } from '@baloise/design-system-components'
+
+updateBalLanguge('de')
+updateBalRegion('CH')
+```
+
+The config can be access with `useConfig`.
+
+```typescript
+import { useConfig } from '@baloise/design-system-components'
+
+const config = useConfig()
+config.language = 'de'
+config.region = 'CH'
+```
+
+Both variants have the same effect.
+
+### Angular
+
+```typescript
+import { Component, OnInit } from '@angular/core'
+import { updateBalLanguge, BalSwissLanguage } from '@baloise/design-system-components'
+
+@Component({
+  selector: 'app-app-tab-a',
+  templateUrl: './app-tab-a.component.html',
+  styleUrls: ['./app-tab-a.component.scss'],
+})
+export class AppTabAComponent {
+  changeLang(lang: BalSwissLanguage) {
+    updateBalLanguge(lang)
+  }
+}
+```
+
+### Vue
+
+```typescript
+import { updateBalLanguge, BalSwissLanguage } from '@baloise/design-system-components'
+
+const changeLang = (lang: BalSwissLanguage) {
+  updateBalLanguge(lang)
+}
+```
+
+<bal-doc-github link="/stories/getting-started/04-internationalization.stories.mdx"></bal-doc-github>

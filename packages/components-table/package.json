@@ -59,5 +59,6 @@
   },
   "peerDependencies": {
     "ag-grid-community": ">=25.2.1"
-  }
+  },
+  "gitHead": "145f6cf6da2d14109bb832eeebe52e9c5ae1d57d"
 }

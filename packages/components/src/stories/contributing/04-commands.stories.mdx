@@ -13,15 +13,15 @@ import { Meta } from '@storybook/addon-docs'
 
 The commands of the Baloise Design System are managed in the `package.json` file in the section `scripts`.
 
-| Command            | Description                                                                                                                 |
-| :----------------- | :-------------------------------------------------------------------------------------------------------------------------- |
-| npm **install**    | Installs all the npm dependencies and bootstrap the lerna project with the symlinks and builds the library.                 |
-| npm run **build**  | Builds all packages in the correct order.                                                                                   |
-| npm run **test**   | Runs the components tests.                                                                                                  |
-| npm run **start**  | Starts storybook with custom elements and watches for changes. Like in production (Recommanded for development)             |
-| npm run **dev**    | Starts storybook with optimized build to fasten up the build process and watches for changes. (Recommanded for development) |
-| npm run **lint**   | Lints the source files with eslint                                                                                          |
-| npm run **format** | Formats the source file with prettier                                                                                       |
+| Command                              | Description                                                                                                 |
+| :----------------------------------- | :---------------------------------------------------------------------------------------------------------- |
+| npm **install**                      | Installs all the npm dependencies and bootstrap the lerna project with the symlinks and builds the library. |
+| npm run **build**                    | Builds all packages in the correct order.                                                                   |
+| npm run **test**                     | Runs the components tests.                                                                                  |
+| npm run **start** or npm run **dev** | Starts storybook with custom elements and watches for changes. Like in production.                          |
+| npm run **debug**                    | Starts storybook with stencil builds and watches for changes. Enables debugging.                            |
+| npm run **lint**                     | Lints the source files with eslint                                                                          |
+| npm run **format**                   | Formats the source file with prettier                                                                       |
 
 ## Build
 
@@ -42,30 +42,7 @@ import BuildImage from '../assets/images/architecture/build.svg'
 
 ## Debug Components
 
-To be able to debug components we need two seperated terminals. One for storybook and another for stencil.
-
-First we navigate into the component package.
-
-```bash
-cd packages/components
-```
-
-> **Important**
-> Changes on the components interface (prop, events and methods) will not be published in the debug mode. Therefore we need to build the stencil components with `npm run dev:build`.
-
-Then in the first terminal we build the components in the dev mode (no vue storybook output).
-
-```bash
-npm run dev:debug
-```
-
-In the second terminal we can start the storybook server.
-
-```bash
-npm run dev:docs
-```
-
-Now go to a component (e.g. `bal-tag`) and add the keyword `debugger` to the render function.
+Set a `debugger` keyword in the components code and run it with `npm run dev`
 
 ## Testing
 

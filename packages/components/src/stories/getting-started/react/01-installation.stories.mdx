@@ -85,16 +85,20 @@ Add the `BalApp` to your root element. Within this component we are able to use 
 
 ```typescript
 import React from 'react'
-import { BalApp } from '@baloise/design-system-components-react'
+import { BalApp, useBaloiseDesignSystem } from '@baloise/design-system-components-react'
 import './App.scss'
+
+useBaloiseDesignSystem()
 
 function App() {
   return (
-    <BalApp has-sticky-footer>
+    <BalApp className="has-sticky-footer">
       <main className="container">...</main>
     </BalApp>
   )
 }
 ```
+
+> **Internationalization** To run the Design System in a different region then `CH` or to change the lauguage to `fr` follow thge documentation of [internationalization](?path=/docs/getting-started-internationalization--page).
 
 <bal-doc-github link="/stories/getting-started/react/01-installation.stories.mdx"></bal-doc-github>

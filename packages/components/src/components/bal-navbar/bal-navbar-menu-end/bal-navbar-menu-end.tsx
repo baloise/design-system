@@ -10,7 +10,7 @@ export class NavbarMenuEnd {
     return (
       <Host class="navbar-end">
         <div class="navbar-item">
-          <div class="buttons">
+          <div class="buttons mb-0">
             <slot></slot>
           </div>
         </div>

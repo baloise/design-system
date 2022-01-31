@@ -1,7 +1,7 @@
-import { dataTestSelector } from '../../../src'
+import { byTestId } from '../../../src'
 
 export class AccordionPage {
-  accordion = dataTestSelector('accordion')
+  accordion = byTestId('accordion')
   open() {
     cy.visit('/components/bal-accordion')
   }

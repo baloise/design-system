@@ -8,7 +8,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
 
 ```typescript
 describe('Select', () => {
-  const select = dataTestSelector('my-select') // [data-test-id="my-select"]
+  const select = byTestId('my-select') // [data-testid="my-select"]
 
   it('should ...', () => {
     cy.get(select)
@@ -21,7 +21,7 @@ describe('Select', () => {
 })
 
 describe('typeahead', () => {
-  const typeahead = dataTestSelector('my-typeahead') // [data-test-id="my-typeahead"]
+  const typeahead = byTestId('my-typeahead') // [data-testid="my-typeahead"]
 
   it('should clear select and search for the Black Widow', () => {
     cy.get(typeahead).clear().type('Black{enter}').should('have.value', 'Black Widow')
@@ -29,7 +29,7 @@ describe('typeahead', () => {
 })
 
 describe('multiple', () => {
-  const multiple = dataTestSelector('my-multiple') // [data-test-id="my-multiple"]
+  const multiple = byTestId('my-multiple') // [data-testid="my-multiple"]
 
   it('should ', () => {
     cy.get(multiple)

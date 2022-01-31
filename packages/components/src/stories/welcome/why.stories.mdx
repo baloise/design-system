@@ -115,11 +115,11 @@ As a [E-2-E testing](?path=/docs/getting-started-testing--page) tool we use [Cyp
 The commands hide the complexity of the component and only serve as an interface for simulated user actions like a click.
 
 ```typescript
-import { dataTestSelector } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/design-system-testing'
 
 describe('Button', () => {
   it('should ...', () => {
-    const button = dataTestSelector('button-id')
+    const button = byTestId('button-id')
     cy.get(button).contains('Label').click()
   })
 })

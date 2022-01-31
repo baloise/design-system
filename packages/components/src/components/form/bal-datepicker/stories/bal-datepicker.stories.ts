@@ -22,8 +22,32 @@ const component = BalComponentStory({
         category: 'custom',
       },
     },
+    region: {
+      description: 'Region of the running app.',
+      table: {
+        category: 'global',
+        defaultValue: { summary: 'CH' },
+      },
+      options: ['CH', 'BE', 'DE', 'LU'],
+      control: {
+        type: 'inline-radio',
+      },
+    },
+    language: {
+      description: 'Language of the running app.',
+      table: {
+        category: 'global',
+        defaultValue: { summary: 'de' },
+      },
+      options: ['de', 'fr', 'en', 'it', 'nl'],
+      control: {
+        type: 'inline-radio',
+      },
+    },
   },
   args: {
+    region: 'CH',
+    language: 'de',
     invalid: false,
     hasFieldMessage: true,
   },
@@ -35,7 +59,19 @@ const excludedControls = ['allowedDates', 'readonly', 'name', 'required']
 
 const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
-  setup: () => ({ args }),
+  setup: () => {
+    const BDS = (window as any).BaloiseDesignSystem
+    BDS.config.region = args.region
+    BDS.config.language = args.language
+    return {
+      args: Object.keys(args)
+        .filter(key => !['region', 'language'].includes(key))
+        .reduce((obj, key) => {
+          obj[key] = args[key]
+          return obj
+        }, {}),
+    }
+  },
   template: `
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
   <bal-field-label>Label</bal-field-label>
@@ -59,11 +95,27 @@ ManualInput.args = {
 }
 ManualInput.parameters = { ...component.sourceCode(ManualInput), controls: { exclude: excludedControls } }
 
+export const Min = Template.bind({})
+Min.args = {
+  placeholder: 'Type a date',
+  defaultDate: '2022-02-07',
+  min: '2022-02-06',
+}
+Min.parameters = { ...component.sourceCode(Min), controls: { exclude: excludedControls } }
+
+export const Max = Template.bind({})
+Max.args = {
+  placeholder: 'Type a date',
+  defaultDate: '2022-02-11',
+  max: '2022-02-12',
+}
+Max.parameters = { ...component.sourceCode(Max), controls: { exclude: excludedControls } }
+
 export const MinAndMax = Template.bind({})
 MinAndMax.args = {
   placeholder: 'Type a date',
-  defaultDate: '2022-01-06',
-  min: '2022-01-06',
-  max: '2022-01-12',
+  defaultDate: '2022-02-07',
+  min: '2022-02-06',
+  max: '2022-03-12',
 }
 MinAndMax.parameters = { ...component.sourceCode(MinAndMax), controls: { exclude: excludedControls } }

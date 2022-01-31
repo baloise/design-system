@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { app } from '../support/app'
 
 describe('Input', () => {
@@ -27,8 +28,8 @@ describe('Input', () => {
 
   it('should only accept numbers', () => {
     cy.get(page.inputNumber).type('bubu').should('have.value', '')
-    cy.get(page.inputNumber).type('1234').should('have.value', '1234').blur().should('have.value', "1'234")
-    cy.get(page.inputDecimal).type('1234.5678').should('have.value', '1234.56').blur().should('have.value', "1'234.56")
+    cy.get(page.inputNumber).type('1234').should('have.value', '1234').blur().should('have.value', '1’234')
+    cy.get(page.inputDecimal).type('1234.5678').should('have.value', '1234.56').blur().should('have.value', '1’234.56')
   })
 
   it('should add suffix after blur', () => {

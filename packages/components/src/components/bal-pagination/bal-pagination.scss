@@ -19,6 +19,10 @@ nav.pagination {
     }
   }
 
+  a.pagination-link {
+    margin: 0;
+  }
+
   bal-icon {
     display: flex;
     justify-content: center;

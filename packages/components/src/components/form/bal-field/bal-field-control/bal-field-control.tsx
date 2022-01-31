@@ -22,6 +22,11 @@ export class FieldControl {
   @Prop() loading = false
 
   /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
+
+  /**
    * If `true` the field can be used on blue background.
    */
   @Prop() inverted = false

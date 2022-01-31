@@ -238,7 +238,7 @@ export class Modal implements OverlayInterface {
       <Host
         aria-modal="true"
         aria-presented={this.presented ? 'true' : null}
-        data-test-id={this.dataTestId}
+        data-testid={this.dataTestId}
         tabindex="-1"
         class={{
           ...getClassMap(this.cssClass),

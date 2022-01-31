@@ -1,23 +1,26 @@
 import { Plugin } from 'vue'
-import { BaloiseDesignSystemConfig, baloiseDesignSystemDefaultConfig } from '@baloise/design-system-next-components'
-import { defineCustomElements, applyPolyfills } from '@baloise/design-system-next-components/loader'
+import { BalConfig, initialize } from '@baloise/design-system-next-components'
 import { applyDirectives } from './directives'
 
-interface BaloiseDesignSystemVueConfig extends BaloiseDesignSystemConfig {
+interface BaloiseDesignSystemVueConfig {
   defineCustomeElementTag?: boolean
+  defaults?: BalConfig
 }
 
 export const BaloiseDesignSystem: Plugin = {
-  async install(app, config: BaloiseDesignSystemVueConfig = baloiseDesignSystemDefaultConfig) {
+  async install(app, config: BaloiseDesignSystemVueConfig = {}) {
+    initialize(config.defaults)
+
     if (config && config.defineCustomeElementTag === true) {
       app.config.compilerOptions.isCustomElement = tag => tag.startsWith('bal-')
     }
 
     applyDirectives(app)
-
-    if (config.applyPolyfills) {
-      await applyPolyfills()
-    }
-    await defineCustomElements()
   },
 }
+
+export const createBaloiseDesignSystem = (config: BaloiseDesignSystemVueConfig = {}): Plugin => ({
+  async install(app) {
+    return BaloiseDesignSystem.install(app, config)
+  },
+})

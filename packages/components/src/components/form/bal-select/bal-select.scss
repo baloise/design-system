@@ -22,6 +22,10 @@ bal-select {
     padding-bottom: 1px;
     margin-top: -1px;
 
+    &.is-danger {
+      border-color: $danger;
+    }
+
     &:focus-within,
     &.is-focused {
       border-width: 2px;
