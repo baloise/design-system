@@ -111,21 +111,38 @@ Import the `BaloiseDesignSystemModule` and add it to your angular module. To use
 #### app.module.ts
 
 ```typescript
-import { BrowserModule } from '@angular/platform-browser'
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
-import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+import { BrowserModule } from '@angular/platform-browser'
+import { FormsModule } from '@angular/forms'
+import { CommonModule } from '@angular/common'
+import {
+  BalCoreModule,
+  BalButtonModule,
+  BalHeadingModule,
+  BalFooterModule,
+} from '@baloise/design-system-components-angular'
 
 import { AppComponent } from './app.component'
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, BaloiseDesignSystemModule.forRoot()],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    BalCoreModule.forRoot(),
+    BalButtonModule,
+    BalHeadingModule,
+    BalFooterModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
 ```
+
+> **Modules** Each component has its own module (sub-components are integrated) or use `BalAllComponentsModule` to load all components at once.
 
 > **Internationalization** To run the Design System in a different region then `CH` or to change the lauguage to `fr` follow thge documentation of [internationalization](?path=/docs/getting-started-internationalization--page).
 
