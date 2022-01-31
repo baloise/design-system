@@ -31,6 +31,11 @@ export class Textarea implements ComponentInterface {
   @Prop() name: string = this.inputId
 
   /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
+
+  /**
    * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
    */
   @Prop() autocapitalize = 'none'
@@ -252,6 +257,7 @@ export class Textarea implements ComponentInterface {
             'textarea': true,
             'is-inverted': this.inverted,
             'is-disabled': this.disabled,
+            'is-danger': this.invalid,
             'clickable': this.clickable,
           }}
           ref={inputEl => (this.nativeInput = inputEl)}

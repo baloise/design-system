@@ -7,10 +7,10 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { dataTestSelector } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/design-system-testing'
 
 describe('Slider', () => {
-  const slider = dataTestSelector('my-slider') // [data-test-id="my-slider"]
+  const slider = byTestId('my-slider') // [data-testid="my-slider"]
   it('should ...', () => {
     cy.get(slider).type('30').should('have.value', '30')
   })

@@ -1,7 +1,7 @@
-import { dataTestSelector } from '../../../src'
+import { byTestId } from '../../../src'
 
 export class PopoverPage {
-  popover = dataTestSelector('popover')
+  popover = byTestId('popover')
   open() {
     cy.visit('/components/bal-popover')
   }

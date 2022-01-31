@@ -16,7 +16,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    padding: 8px 0;
+    padding: 16px 0;
 
     .bal-data-label {
       position: relative;
@@ -41,12 +41,21 @@
       display: block;
       flex: 1 1;
       flex-basis: 100%;
-      margin-top: 10px;
+      margin-top: 4px;
+      min-height: 24px;
 
       font-family: $family-primary;
       font-weight: $weight-normal;
       font-size: $size-normal;
       line-height: $size-normal;
+
+      &,
+      & > div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+      }
 
       .bal-data-value-btn {
         display: none;
@@ -97,6 +106,7 @@
   .bal-data {
     .bal-data-item {
       flex-wrap: no-wrap;
+      padding: 8px 0;
 
       .bal-data-label {
         flex-basis: 0;

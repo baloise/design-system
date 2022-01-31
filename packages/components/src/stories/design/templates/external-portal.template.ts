@@ -10,7 +10,7 @@ export const ExternalPortalTemplate = `
       </bal-navbar-brand>
     </bal-navbar>
     <div class="container">
-      <bal-tabs action action-label="Action" data-test-id="tabs">
+      <bal-tabs action action-label="Action" data-testid="tabs">
         <bal-tab-item value="tab-a" label="Tab A" active="true"></bal-tab-item>
         <bal-tab-item value="tab-b" label="Tab B"></bal-tab-item>
         <bal-tab-item bubble value="tab-c" label="Tab C"></bal-tab-item>

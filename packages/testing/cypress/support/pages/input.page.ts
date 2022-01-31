@@ -1,11 +1,11 @@
-import { dataTestSelector } from '../../../src'
+import { byTestId } from '../../../src'
 
 export class InputPage {
-  input = dataTestSelector('input')
-  inputDisabled = dataTestSelector('input-disabled')
-  inputNumber = dataTestSelector('input-number')
-  inputDecimal = dataTestSelector('input-decimal')
-  inputSuffix = dataTestSelector('input-suffix')
+  input = byTestId('input')
+  inputDisabled = byTestId('input-disabled')
+  inputNumber = byTestId('input-number')
+  inputDecimal = byTestId('input-decimal')
+  inputSuffix = byTestId('input-suffix')
 
   open() {
     cy.visit('/components/form/bal-input')

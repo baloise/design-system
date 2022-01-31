@@ -1,8 +1,8 @@
-import { dataTestSelector } from '../../../src'
+import { byTestId } from '../../../src'
 
 export class RadioPage {
-  radio = dataTestSelector('radio')
-  selectButton = dataTestSelector('select-button')
+  radio = byTestId('radio')
+  selectButton = byTestId('select-button')
 
   open() {
     cy.visit('/components/form/bal-radio')

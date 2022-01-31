@@ -1,7 +1,7 @@
-import { dataTestSelector } from '../../../src'
+import { byTestId } from '../../../src'
 
 export class PaginationPage {
-  pagination = dataTestSelector('pagination')
+  pagination = byTestId('pagination')
 
   open() {
     cy.visit('/components/bal-pagination')

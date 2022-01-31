@@ -1,8 +1,8 @@
-import { dataTestSelector } from '../../../src'
+import { byTestId } from '../../../src'
 
 export class TextareaPage {
-  textarea = dataTestSelector('textarea')
-  textareaDisabled = dataTestSelector('textarea-disabled')
+  textarea = byTestId('textarea')
+  textareaDisabled = byTestId('textarea-disabled')
 
   open() {
     cy.visit('/components/form/bal-textarea')

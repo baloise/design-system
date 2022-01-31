@@ -15,6 +15,10 @@ function main() {
   const viteCacheFile = path.join('./node_modules/.vite/@stencil_core_internal_client.js')
   const viteCacheFiles = path.join('./node_modules/.vite/@stencil_core*.js')
   adjustDynamicImport(viteCacheFile, viteCacheFiles)
+
+  const viteBalCacheFile = path.join('./node_modules/.vite/@baloise_design-system-components-vue.js')
+  const viteBalCacheFiles = path.join('./node_modules/.vite/@baloise*.js')
+  adjustDynamicImport(viteBalCacheFile, viteBalCacheFiles)
 }
 
 function adjustDynamicImport(filePath, files) {

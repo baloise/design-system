@@ -7,12 +7,12 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { dataTestSelector } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/design-system-testing'
 
 describe('Modal', () => {
-  const modal = dataTestSelector('my-modal') // [data-test-id="my-modal"]
-  const openModalButton = dataTestSelector('my-open-modal')
-  const closeModalButton = dataTestSelector('my-close-modal')
+  const modal = byTestId('my-modal') // [data-testid="my-modal"]
+  const openModalButton = byTestId('my-open-modal')
+  const closeModalButton = byTestId('my-close-modal')
   it('should ...', () => {
     cy.get(openModalButton).click()
     cy.get(modal).balModalIsOpen()

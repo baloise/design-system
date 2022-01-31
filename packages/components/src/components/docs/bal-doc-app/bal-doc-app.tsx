@@ -1,4 +1,5 @@
 import { Component, Host, h } from '@stencil/core'
+import { initialize } from '../../../config'
 
 @Component({
   tag: 'bal-doc-app',
@@ -7,6 +8,10 @@ import { Component, Host, h } from '@stencil/core'
   styleUrl: '../../../styles/global.scss',
 })
 export class DocApp {
+  connectedCallback() {
+    initialize()
+  }
+
   render() {
     return (
       <Host role="application" class={{ 'bal-app': true }}>

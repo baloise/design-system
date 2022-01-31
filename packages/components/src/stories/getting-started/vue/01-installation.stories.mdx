@@ -110,8 +110,13 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
-createApp(App).use(router).use(BaloiseDesignSystem).mount('#app')
+createApp(App)
+  .use(router)
+  .use(BaloiseDesignSystem})
+  .mount('#app')
 ```
+
+> **Internationalization** To run the Design System in a different region then `CH` or to change the lauguage to `fr` follow thge documentation of [internationalization](?path=/docs/getting-started-internationalization--page).
 
 ### HTML Structure
 

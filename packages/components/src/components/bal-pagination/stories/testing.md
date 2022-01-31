@@ -7,10 +7,10 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { dataTestSelector } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/design-system-testing'
 
 describe('Pagination', () => {
-  const pagination = dataTestSelector('my-pagination') // [data-test-id="my-pagination"]
+  const pagination = byTestId('my-pagination') // [data-testid="my-pagination"]
   it('should ...', () => {
     cy.get(pagination).balPaginationFindPages().first().contains('1')
     cy.get(pagination).balPaginationFindCurrentPage().contains('2')

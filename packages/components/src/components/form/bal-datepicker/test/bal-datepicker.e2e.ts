@@ -1,5 +1,5 @@
 import { E2EElement, E2EPage, EventSpy, newE2EPage } from '@stencil/core/testing'
-import { format, newDateString, now } from '@baloise/web-app-utils'
+import { format, now } from '../../../../utils/date.util'
 
 describe('bal-datepicker', () => {
   let page: E2EPage
@@ -32,7 +32,7 @@ describe('bal-datepicker', () => {
     await nativeInputElement.press('8')
     await nativeInputElement.press('Tab')
 
-    expect(await nativeInputElement.getProperty('value')).toBe('02.01.1988')
+    expect(await nativeInputElement.getProperty('value')).toBe('2.1.1988')
     expect(balInputEvent).toHaveReceivedEventTimes(8)
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
     expect(balChangeEvent).toHaveReceivedEventDetail('1988-01-02')
@@ -44,7 +44,7 @@ describe('bal-datepicker', () => {
     todayCellElement.click()
     await page.waitForChanges()
 
-    expect(await nativeInputElement.getProperty('value')).toBe(format(newDateString(now())))
+    expect(await nativeInputElement.getProperty('value')).toBe(format(now()))
     expect(balInputEvent).toHaveReceivedEventTimes(0)
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
   })
@@ -67,7 +67,7 @@ describe('bal-datepicker', () => {
     await nativeInputElement.press('1')
     await nativeInputElement.press('Tab')
 
-    expect(await nativeInputElement.getProperty('value')).toBe('02.02.2001')
+    expect(await nativeInputElement.getProperty('value')).toBe('2.2.2001')
     expect(balChangeEvent).toHaveReceivedEventTimes(1)
   })
 

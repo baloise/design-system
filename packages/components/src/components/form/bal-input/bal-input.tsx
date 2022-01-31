@@ -10,18 +10,22 @@ import {
   Watch,
   ComponentInterface,
   Listen,
+  State,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
+import { BalLanguage, BaloiseDesignSystemConfig, BalConfigState } from '../../../config'
+import { BalConfigObserver } from '../../../config/observable/observer'
 import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../../types/interfaces'
+import { getDecimalSeperator } from '../../../utils/number.util'
 import { filterInputValue, formatInputValue } from './bal-input.utils'
+import { balConfigStore } from '../../../config/config.store'
 
 @Component({
   tag: 'bal-input',
 })
-export class Input implements ComponentInterface {
-  private allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]
+export class Input implements ComponentInterface, BalConfigObserver {
   private inputId = `bal-input-${InputIds++}`
   private nativeInput?: HTMLInputElement
   private didInit = false
@@ -29,10 +33,17 @@ export class Input implements ComponentInterface {
 
   @Element() el!: HTMLElement
 
+  @State() language: BalLanguage = BaloiseDesignSystemConfig.language
+
   /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop() name: string = this.inputId
+
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
 
   /**
    * Defines the type of the input (text, number, email ...).
@@ -228,12 +239,25 @@ export class Input implements ComponentInterface {
 
   connectedCallback() {
     this.debounceChanged()
+    balConfigStore.attach(this)
   }
 
   componentDidLoad() {
     this.didInit = true
     if (!isNil(this.value) && this.value !== '') {
       this.valueChanged(this.value, undefined)
+    }
+  }
+
+  disconnectedCallback() {
+    balConfigStore.detach(this)
+  }
+
+  configChanged(state: BalConfigState): void {
+    this.language = state.language
+
+    if (!this.hasFocus && this.nativeInput) {
+      this.nativeInput.value = this.getFormattedValue()
     }
   }
 
@@ -254,6 +278,10 @@ export class Input implements ComponentInterface {
   @Method()
   getInputElement(): Promise<HTMLInputElement | undefined> {
     return Promise.resolve(this.nativeInput)
+  }
+
+  private get allowedKeys() {
+    return [...NUMBER_KEYS, ...ACTION_KEYS, getDecimalSeperator()]
   }
 
   private getRawValue(): string {
@@ -351,6 +379,7 @@ export class Input implements ComponentInterface {
           class={{
             'input': true,
             'is-disabled': this.disabled,
+            'is-danger': this.invalid,
             'is-inverted': this.inverted,
             'clickable': this.clickable,
             'has-icon-right': this.hasIconRight,

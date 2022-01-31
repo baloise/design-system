@@ -7,10 +7,10 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { dataTestSelector } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/design-system-testing'
 
 describe('Button', () => {
-  const button = dataTestSelector('my-button') // [data-test-id="my-button"]
+  const button = byTestId('my-button') // [data-testid="my-button"]
   it('should ...', () => {
     cy.get(button).contains('Label').click().should('not.be.disabled')
   })

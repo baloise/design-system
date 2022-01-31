@@ -17,6 +17,7 @@
 
   &.is-disabled {
     .label,
+    .help,
     .control {
       opacity: 0.6;
     }

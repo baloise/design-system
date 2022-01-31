@@ -21,8 +21,32 @@ const component = BalComponentStory({
         category: 'custom',
       },
     },
+    region: {
+      description: 'Region of the running app.',
+      table: {
+        category: 'global',
+        defaultValue: { summary: 'CH' },
+      },
+      options: ['CH', 'BE', 'DE', 'LU'],
+      control: {
+        type: 'inline-radio',
+      },
+    },
+    language: {
+      description: 'Language of the running app.',
+      table: {
+        category: 'global',
+        defaultValue: { summary: 'de' },
+      },
+      options: ['de', 'fr', 'en', 'it', 'nl'],
+      control: {
+        type: 'inline-radio',
+      },
+    },
   },
   args: {
+    region: 'CH',
+    language: 'de',
     invalid: false,
     hasFieldMessage: true,
   },
@@ -53,7 +77,19 @@ const excludedControls = [
 
 const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
-  setup: () => ({ args }),
+  setup: () => {
+    const BDS = (window as any).BaloiseDesignSystem
+    BDS.config.region = args.region
+    BDS.config.language = args.language
+    return {
+      args: Object.keys(args)
+        .filter(key => !['region', 'language'].includes(key))
+        .reduce((obj, key) => {
+          obj[key] = args[key]
+          return obj
+        }, {}),
+    }
+  },
   template: `
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>

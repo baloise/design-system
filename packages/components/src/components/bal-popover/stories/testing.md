@@ -7,10 +7,10 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { dataTestSelector } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/design-system-testing'
 
 describe('Popover', () => {
-  const popover = dataTestSelector('my-popover') // [data-test-id="my-popover"]
+  const popover = byTestId('my-popover') // [data-testid="my-popover"]
   it('should ...', () => {
     cy.get(popover)
       .balPopoverIsClosed()
