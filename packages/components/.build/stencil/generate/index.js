@@ -17,6 +17,26 @@ const toTag = value => {
   return value
 }
 
+const toStoryTitle = value => {
+  const tag = toTag(value)
+  const componentPath = value.replace(COMPONENT_PATH, '')
+    .split('/')
+    .filter(v => !v.startsWith(tag))
+    .map(v => toTitle(v))
+    .join('/')
+  return `${componentPath}${componentPath.length ? '/': ''}${toTitle(tag.replace('bal-', ''))}`
+}
+
+const toStoryId = value => {
+  const tag = toTag(value)
+  const componentName = tag.replace('bal-', '')
+  const componentPath = value.replace(COMPONENT_PATH, '')
+    .split('/')
+    .filter(v => !v.startsWith(tag))
+    .join('/')
+  return `${componentPath}${componentPath.length ? '-': ''}${componentName}`
+}
+
 ;(async () => {
   log.title(`Component Generator`)
 
@@ -61,6 +81,8 @@ const toTag = value => {
   const tag = toTag(response.component)
   const componentFolder = path.join(COMPONENT_PATH, response.component)
   await file.write(path.join(componentFolder, `${tag}.tsx`), ComponentTemplate(tag))
+  await file.write(path.join(componentFolder, `readme.md`), `# ${tag}
+`)
 
   if (response.extras.includes('style')) {
     await file.write(path.join(componentFolder, `${tag}.vars.scss`), StyleVarsTemplate(tag))
@@ -73,7 +95,8 @@ const toTag = value => {
 
   if (response.extras.includes('story')) {
     await file.write(path.join(componentFolder, `stories/${tag}.stories.ts`), DocStoryTemplate(response.component))
-    await file.write(path.join(componentFolder, `stories/${tag}.docs.mdx`), DocReadmeTemplate(tag))
+    await file.write(path.join(componentFolder, `stories/${tag}.docs.mdx`), DocReadmeTemplate(response.component))
+    await file.write(path.join(componentFolder, `stories/testing.md`), '')
   }
 
   log.success(`Created component ${tag}`)
@@ -92,6 +115,7 @@ export class ${toClassName(tag)} implements ComponentInterface {
   render() {
     return (
       <Host>
+        <p>Hello World</p>
         <slot></slot>
       </Host>
     )
@@ -103,7 +127,7 @@ export class ${toClassName(tag)} implements ComponentInterface {
 function StyleVarsTemplate(tag) {
   return `// define variables for your component here with !default.
 
-  // $${tag.replace('bal-', '')}-color: $text !default;
+// $${tag.replace('bal-', '')}-color: $text !default;
 
 `
 }
@@ -111,29 +135,27 @@ function StyleVarsTemplate(tag) {
 function StyleMainTemplate(tag) {
   return `@import './${tag}.vars.scss';
 
-  // TODO: import this stylesheet in src/styles/components/_all.scss
+// TODO: import this stylesheet in src/styles/components/_all.scss
 
-  ${tag} {
-    position: static;
-    display: block;
-  }
-
+${tag} {
+  position: static;
+  display: block;
+}
 `
 }
 
 function TestTemplate(tag) {
-  return `import { newE2EPage } from '@stencil/core/testing';
+  return `import { newE2EPage } from '@stencil/core/testing'
 
 describe('${tag}', () => {
   it('renders', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<${tag}></${tag}>');
+    const page = await newE2EPage()
+    await page.setContent('<${tag}></${tag}>')
 
-    const element = await page.find('${tag}');
-    expect(element).toHaveClass('hydrated');
-  });
-});
-
+    const element = await page.find('${tag}')
+    expect(element).toHaveClass('hydrated')
+  })
+})
 `
 }
 
@@ -141,50 +163,53 @@ function DocStoryTemplate(filePath) {
   const tag = toTag(filePath)
   const depth = filePath.split('/').reduce(acc => `../${acc}`, '')
   return `import docs from './${tag}.docs.mdx'
-  import { BalComponentStory } from '../../${depth}stories/utils'
-  import { ${toPascalCase(tag)} } from '../../../${depth}.storybook/vue/components'
+import { BalComponentStory } from '../../${depth}stories/utils'
+import { ${toPascalCase(tag)} } from '../../../${depth}.storybook/vue/components'
 
-  const component = BalComponentStory({
-    component: ${toPascalCase(tag)},
-    docs,
-  })
+const component = BalComponentStory({
+  title: 'Components/${toStoryTitle(filePath)}',
+  component: ${toPascalCase(tag)},
+  docs,
+})
 
-  export default component.story
+export default component.story
 
-  export const Basic = args => ({
-    components: { ...component.components },
-    setup: () => ({ args }),
-    template: \`<${tag} v-bind="args"></${tag}>\`,
-  })
-  Basic.args = {}
-  Basic.parameters = { ...component.sourceCode(Basic) }
-
+export const Basic = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: \`<${tag} v-bind="args"></${tag}>\`,
+})
+Basic.args = {}
+Basic.parameters = { ...component.sourceCode(Basic) }
 `
 }
 
-function DocReadmeTemplate(tag) {
+function DocReadmeTemplate(filePath) {
+  const tag = toTag(filePath)
+  const storyId = toStoryId(filePath)
+
   return `import { Story, Canvas, Description } from '@storybook/addon-docs'
-  import readme from '../readme.md'
+import readme from '../readme.md'
 
-  <span id="story--components-${tag.replace('bal-', '')}--basic" style={{ opacity: 0 }}></span>
+<span id="story--components-${storyId}--basic" style={{ opacity: 0 }}></span>
 
-  # ${toTitle(tag)}
+# ${toTitle(tag.replace('bal-', ''))}
 
-  Todo add some description to the component and its purpose
+Todo add some description to the component and its purpose
 
-  <Canvas>
-    <Story id="components-${tag.replace('bal-', '')}--basic" />
-  </Canvas>
+<Canvas>
+  <Story id="components-${storyId}--basic" />
+</Canvas>
 
-  ## Component Api
+## Component Api
 
-  <Description markdown={readme} />
+<Description markdown={readme} />
 
-  <br />
+<br />
 
-  import testing from './testing.md'
+import testing from './testing.md'
 
-  <Description markdown={testing} />
+<Description markdown={testing} />
 `
 }
 
