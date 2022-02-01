@@ -115,7 +115,9 @@ export class RadioGroup implements ComponentInterface {
     const label = findItemLabel(this.el)
     return (
       <Host role="radiogroup" aria-labelledby={label?.id} onClick={this.onClick} class={`bal-${this.interface}`}>
-        <slot></slot>
+        <div>
+          <slot></slot>
+        </div>
       </Host>
     )
   }

@@ -1,0 +1,16 @@
+bal-checkbox-group {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+
+  & > div {
+    margin-top: 6px;
+    margin-left: -16px;
+    margin-right: -16px;
+
+    bal-checkbox {
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+  }
+}

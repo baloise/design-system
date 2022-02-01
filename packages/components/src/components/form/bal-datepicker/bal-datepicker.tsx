@@ -579,6 +579,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
           type="text"
           maxlength="10"
           autoComplete="off"
+          name={this.name}
           value={format(parse(this.value || ''))}
           required={this.required}
           disabled={this.disabled}

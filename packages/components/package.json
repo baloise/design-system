@@ -85,8 +85,9 @@
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@baloise/angular-output-target": "^1.0.26",
-    "@baloise/stencil-vite-fix": "9.1.0",
+    "@baloise/stencil-vite-fix": "9.2.0",
     "@baloise/vue-output-target": "^0.7.0",
+    "@etchteam/storybook-addon-status": "^4.2.0",
     "@stencil/postcss": "^2.1.0",
     "@stencil/react-output-target": "^0.2.0",
     "@stencil/sass": "^1.5.2",
