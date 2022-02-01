@@ -261,6 +261,7 @@ export class Textarea implements ComponentInterface {
             'clickable': this.clickable,
           }}
           ref={inputEl => (this.nativeInput = inputEl)}
+          name={this.name}
           id={this.inputId}
           aria-labelledby={labelId}
           disabled={this.disabled}
@@ -270,7 +271,6 @@ export class Textarea implements ComponentInterface {
           maxLength={this.maxLength}
           placeholder={this.placeholder}
           inputMode={this.inputmode}
-          name={this.name}
           value={this.value}
           tabindex={this.balTabindex}
           readonly={this.readonly}
