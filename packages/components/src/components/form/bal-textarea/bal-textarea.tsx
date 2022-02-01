@@ -271,7 +271,6 @@ export class Textarea implements ComponentInterface {
           maxLength={this.maxLength}
           placeholder={this.placeholder}
           inputMode={this.inputmode}
-          name={this.name}
           value={this.value}
           tabindex={this.balTabindex}
           readonly={this.readonly}
