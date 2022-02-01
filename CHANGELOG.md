@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.0](https://github.com/baloise/design-system/compare/v9.1.0...v9.2.0) (2022-02-01)
+
+
+### Features
+
+* **checkbox:** add group component ([3c5b611](https://github.com/baloise/design-system/commit/3c5b611d33b585a8e5c9408d2f92f787501e0b42))
+
+
+### Bug Fixes
+
+* **accordion:** add missing spacing in combination with cards ([adc4e85](https://github.com/baloise/design-system/commit/adc4e85779ee44a2e65efeb5b8610f260beb76f8))
+* **form:** add name attribute to form controls ([5491305](https://github.com/baloise/design-system/commit/5491305179341b2d3249921287004f2aef8e0f70))
+* **radio:** adjust spacing between radio buttons ([8822469](https://github.com/baloise/design-system/commit/8822469ef0fe0944f4eb16420519838719911597))
+
+
+
 ## [9.1.0](https://github.com/baloise/design-system/compare/v9.0.7...v9.1.0) (2022-01-31)
 
 
