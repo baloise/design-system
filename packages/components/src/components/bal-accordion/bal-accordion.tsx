@@ -110,6 +110,7 @@ export class Accordion {
       <Host
         class={{
           [`bal-accordion-${this.interface}`]: this.interface !== '',
+          'accordion': true,
           'mt-5': this.card,
         }}
         aria-presented={this.value ? 'true' : null}

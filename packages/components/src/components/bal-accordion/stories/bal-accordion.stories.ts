@@ -67,10 +67,10 @@ WithIcons.parameters = { ...component.sourceCode(WithIcons) }
 export const WithCard = args => ({
   components: { ...component.components, BalCard, BalCardContent, BalCardTitle, BalCardSubtitle },
   setup: () => ({ args }),
-  template: `<bal-card v-bind="args">
+  template: `<bal-card>
   <bal-card-title>BaloiseCombi</bal-card-title>
   <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
-  <bal-accordion card>
+  <bal-accordion card v-bind="args">
     <p class="p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </bal-accordion>
 </bal-card>`,

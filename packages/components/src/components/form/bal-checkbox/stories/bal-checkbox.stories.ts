@@ -43,9 +43,17 @@ const Template = args => ({
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
+      <bal-checkbox-group>
+        <bal-checkbox v-bind="args" v-model="args.value">
+          {{ args.content }}
+        </bal-checkbox>
+        <bal-checkbox v-bind="args" v-model="args.value">
+        {{ args.content }}
+      </bal-checkbox>
       <bal-checkbox v-bind="args" v-model="args.value">
         {{ args.content }}
       </bal-checkbox>
+      </bal-checkbox-group>
     </bal-field-control>
     <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
   </bal-field>`,

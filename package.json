@@ -25,6 +25,7 @@
     "==================== START ====================": "================================",
     "start": "npm run components:start",
     "dev": "npm run components:start",
+    "generate": "node .build/banner.js components:generate && npm --prefix packages/components run generate",
     "components:start": "node .build/banner.js components:start && npm --prefix packages/components run start",
     "components:debug": "node .build/banner.js components:debug && npm --prefix packages/components run debug",
     "testing:serve": "node .build/banner.js testing:serve && npm --prefix packages/testing run serve",
