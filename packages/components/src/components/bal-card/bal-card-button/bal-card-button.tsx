@@ -44,7 +44,7 @@ export class CardButton {
     return (
       <Host class="pb-0">
         <bal-button
-          color="light"
+          color="info"
           expanded
           bottom-rounded
           icon={this.icon}

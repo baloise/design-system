@@ -16,11 +16,11 @@ export default create({
   fontBase: '"Open Sans", sans-serif',
   fontCode: 'monospace',
 
-  barTextColor: '#c5c5c5',
+  barTextColor: '#e5e7f0',
   barBg: '#181D41',
 
-  inputBg: '#15212a',
-  inputBorder: '#c5c5c5',
+  inputBg: '#12152D',
+  inputBorder: '#e5e7f0',
   inputBorderRadius: 4,
 
   brandTitle: 'Baloise Design System',

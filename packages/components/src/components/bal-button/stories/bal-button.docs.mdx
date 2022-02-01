@@ -2,7 +2,7 @@ import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
 import readme from '../readme.md'
 import buttonGroup from '../bal-button-group/readme.md'
-import { basic, inverted, links, colors, expanded, icons, square, buttonLink, group } from './bal-button.templates.ts'
+import { basic, links, alertButtons, expanded, icons, square, buttonLink, group } from './bal-button.templates.ts'
 
 <span id="story--components-button--basic" style={{ opacity: 0 }}></span>
 
@@ -22,16 +22,10 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
   <bal-doc-app>{html(basic)}</bal-doc-app>
 </Canvas>
 
-### Inverted
+### Alert Buttons
 
-<Canvas mdxSource={inverted}>
-  <bal-doc-app>{html(inverted)}</bal-doc-app>
-</Canvas>
-
-### Colors
-
-<Canvas mdxSource={colors}>
-  <bal-doc-app>{html(colors)}</bal-doc-app>
+<Canvas mdxSource={alertButtons}>
+  <bal-doc-app>{html(alertButtons)}</bal-doc-app>
 </Canvas>
 
 ### Links

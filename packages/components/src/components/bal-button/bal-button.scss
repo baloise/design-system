@@ -247,7 +247,7 @@ bal-button.is-fullwidth {
 
     &.is-hovered,
     &:hover {
-      background: transparent;
+      background: $blue-1;
       border-color: $blue-4;
 
       &,
@@ -283,51 +283,6 @@ bal-button.is-fullwidth {
           fill: $blue-6 !important;
         }
       }
-    }
-  }
-
-  &.is-light,
-  &.is-light.is-outlined {
-    background: $blue-1;
-
-    bal-icon {
-      svg,
-      svg g,
-      svg path,
-      svg circle {
-        fill: $blue !important;
-      }
-    }
-
-    &,
-    & span {
-      color: $blue;
-    }
-
-    &:focus {
-      background: $blue-1;
-      color: $blue;
-    }
-
-    &.is-focused,
-    &:focus-visible {
-      background: $blue-1;
-      border-color: bulmaLighten($blue, 2%);
-
-      &,
-      & span {
-        color: $blue;
-      }
-    }
-
-    &.is-hovered,
-    &:hover {
-      background: bulmaDarken($blue-1, 3%);
-    }
-
-    &.is-active,
-    &:active {
-      background: bulmaDarken($blue-1, 6%);
     }
   }
 
@@ -490,7 +445,6 @@ bal-button.is-fullwidth {
   &.is-inverted {
     &,
     &.is-primary,
-    &.is-light,
     &.is-success,
     &.is-warning,
     &.is-danger {
