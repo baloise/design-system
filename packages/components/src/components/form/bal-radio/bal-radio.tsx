@@ -155,6 +155,7 @@ export class Radio implements ComponentInterface {
           type="radio"
           id={inputId}
           tabindex={-1}
+          name={this.name}
           value={this.value}
           disabled={this.disabled}
           checked={this.checked}

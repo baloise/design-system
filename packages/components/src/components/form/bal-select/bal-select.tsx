@@ -731,6 +731,7 @@ export class Select {
                   'is-clickable': !this.isPopoverOpen,
                   'data-test-select-input': true,
                 }}
+                name={this.name}
                 autocomplete={'off'}
                 placeholder={this.inputPlaceholder}
                 readOnly={!this.typeahead}

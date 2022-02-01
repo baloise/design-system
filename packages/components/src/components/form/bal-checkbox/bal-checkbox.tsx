@@ -136,6 +136,7 @@ export class Checkbox {
             'data-test-checkbox-input': true,
           }}
           type="checkbox"
+          name={this.name}
           id={this.inputId}
           checked={this.value}
           tabindex={this.balTabindex}
