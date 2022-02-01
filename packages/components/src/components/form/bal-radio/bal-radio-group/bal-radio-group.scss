@@ -3,11 +3,23 @@ bal-radio-group {
   position: relative;
   width: 100%;
 
-  &.bal-select-button {
+  &.bal-select-button > div {
     display: flex;
     flex: 1;
     border: 1px solid $blue-2;
     border-radius: 100px;
     padding: 4px;
+  }
+
+  &:not(.bal-select-button) {
+    & > div {
+      margin-left: -16px;
+      margin-right: -16px;
+
+      bal-radio {
+        margin-left: 16px;
+        margin-right: 16px;
+      }
+    }
   }
 }

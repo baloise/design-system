@@ -24,12 +24,6 @@ bal-radio {
     position: relative;
     outline-style: none;
 
-    &:first-child {
-      padding-left: 0;
-    }
-
-    padding-left: 24px;
-
     input[type='radio'] {
       position: absolute;
       left: 0;
