@@ -54,6 +54,10 @@ const toTag = value => {
     },
   ])
 
+  if(!response.component) {
+    return
+  }
+
   const tag = toTag(response.component)
   const componentFolder = path.join(COMPONENT_PATH, response.component)
   await file.write(path.join(componentFolder, `${tag}.tsx`), ComponentTemplate(tag))
