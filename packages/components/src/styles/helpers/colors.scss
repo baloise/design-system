@@ -1,22 +1,31 @@
-.has-text-danger,
+.has-text-danger {
+  color: $danger-text !important;
+}
+
 .has-text-red {
-  color: $red-5 !important;
+  color: $red-text !important;
 }
 
-.has-text-success,
+.has-text-success {
+  color: $success-text !important;
+}
+
 .has-text-green {
-  color: $green-5 !important;
+  color: $green-text !important;
 }
 
-.has-text-warning,
+.has-text-warning {
+  color: $warning-text !important;
+}
+
 .has-text-yellow {
-  color: $yellow-5 !important;
+  color: $yellow-text !important;
 }
 
 .has-text-purple {
-  color: $purple-5 !important;
+  color: $purple-text !important;
 }
 
 .has-text-info {
-  color: $blue-3 !important;
+  color: $info-text !important;
 }

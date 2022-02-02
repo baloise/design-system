@@ -426,6 +426,12 @@ export namespace Components {
         "src": string;
         "text": string;
     }
+    interface BalDocShades {
+        "color": string;
+    }
+    interface BalDocSupportColor {
+        "color": string;
+    }
     interface BalField {
         /**
           * If `true` the field loses opacity
@@ -1628,6 +1634,18 @@ declare global {
         prototype: HTMLBalDocImageElement;
         new (): HTMLBalDocImageElement;
     };
+    interface HTMLBalDocShadesElement extends Components.BalDocShades, HTMLStencilElement {
+    }
+    var HTMLBalDocShadesElement: {
+        prototype: HTMLBalDocShadesElement;
+        new (): HTMLBalDocShadesElement;
+    };
+    interface HTMLBalDocSupportColorElement extends Components.BalDocSupportColor, HTMLStencilElement {
+    }
+    var HTMLBalDocSupportColorElement: {
+        prototype: HTMLBalDocSupportColorElement;
+        new (): HTMLBalDocSupportColorElement;
+    };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
     var HTMLBalFieldElement: {
@@ -1940,6 +1958,8 @@ declare global {
         "bal-doc-github": HTMLBalDocGithubElement;
         "bal-doc-icons": HTMLBalDocIconsElement;
         "bal-doc-image": HTMLBalDocImageElement;
+        "bal-doc-shades": HTMLBalDocShadesElement;
+        "bal-doc-support-color": HTMLBalDocSupportColorElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -2420,6 +2440,12 @@ declare namespace LocalJSX {
     interface BalDocImage {
         "src"?: string;
         "text"?: string;
+    }
+    interface BalDocShades {
+        "color"?: string;
+    }
+    interface BalDocSupportColor {
+        "color"?: string;
     }
     interface BalField {
         /**
@@ -3556,6 +3582,8 @@ declare namespace LocalJSX {
         "bal-doc-github": BalDocGithub;
         "bal-doc-icons": BalDocIcons;
         "bal-doc-image": BalDocImage;
+        "bal-doc-shades": BalDocShades;
+        "bal-doc-support-color": BalDocSupportColor;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -3633,6 +3661,8 @@ declare module "@stencil/core" {
             "bal-doc-github": LocalJSX.BalDocGithub & JSXBase.HTMLAttributes<HTMLBalDocGithubElement>;
             "bal-doc-icons": LocalJSX.BalDocIcons & JSXBase.HTMLAttributes<HTMLBalDocIconsElement>;
             "bal-doc-image": LocalJSX.BalDocImage & JSXBase.HTMLAttributes<HTMLBalDocImageElement>;
+            "bal-doc-shades": LocalJSX.BalDocShades & JSXBase.HTMLAttributes<HTMLBalDocShadesElement>;
+            "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;

@@ -19,6 +19,8 @@ span {
   font-family: $family-primary;
   font-weight: $weight-normal;
   margin: 0 0 16px 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a.is-heading,

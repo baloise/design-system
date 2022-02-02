@@ -7,6 +7,9 @@ export default {
       page: docs,
     },
     layout: 'fullscreen',
+    status: {
+      type: 'stable',
+    },
   },
 }
 

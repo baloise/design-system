@@ -6,6 +6,7 @@ import { Meta, Canvas } from '@storybook/addon-docs'
     previewTabs: {
       canvas: { hidden: true },
     },
+    status: { type: 'stable' },
   }}
 />
 
@@ -18,11 +19,14 @@ Icons are from <a href="https://www.streamlinehq.com">https://streamlinehq.com</
 <br />
 <br />
 
-import icons from './icons.json'
+import icons from '../../../generated/icons.json'
 
 <bal-doc-app>
   <bal-doc-icons icons={icons}></bal-doc-icons>
 </bal-doc-app>
+
+<br />
+<br />
 
 ## Download
 

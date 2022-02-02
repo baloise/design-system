@@ -1,7 +1,6 @@
 @import '../bal-heading/bal-heading.vars.scss';
 @import 'bal-button.vars.scss';
 @import 'node_modules/bulma/sass/elements/button.sass';
-@import 'buttons.scss';
 
 bal-button {
   @include margin(0);
@@ -189,22 +188,22 @@ bal-button.is-fullwidth {
 
     &.is-focused,
     &:focus-visible {
-      background: bulmaLighten($blue, 2%);
-      border-color: bulmaLighten($blue, 2%);
+      background: $blue;
+      border-color: $blue;
       color: $white;
     }
 
     &.is-hovered,
     &:hover {
-      background: $blue-4;
-      border-color: $blue-4;
+      background: $light-blue-dark;
+      border-color: $light-blue-dark;
       color: $white;
     }
 
     &.is-active,
     &:active {
-      background: $blue-6;
-      border-color: $blue-6;
+      background: $blue-dark;
+      border-color: $blue-dark;
       color: $white;
     }
   }
@@ -237,7 +236,7 @@ bal-button.is-fullwidth {
     &.is-focused,
     &:focus-visible {
       background: transparent;
-      border-color: bulmaLighten($blue, 2%);
+      border-color: $blue;
 
       &,
       & span {
@@ -247,12 +246,12 @@ bal-button.is-fullwidth {
 
     &.is-hovered,
     &:hover {
-      background: $blue-1;
-      border-color: $blue-4;
+      background: $light-blue-light;
+      border-color: $light-blue-dark;
 
       &,
       & span {
-        color: $blue-4;
+        color: $light-blue-dark;
       }
 
       bal-icon {
@@ -260,19 +259,19 @@ bal-button.is-fullwidth {
         svg g,
         svg path,
         svg circle {
-          fill: $blue-4 !important;
+          fill: $light-blue-dark !important;
         }
       }
     }
 
     &.is-active,
     &:active {
-      background: transparent;
-      border-color: $blue-6;
+      background: $light-blue-light;
+      border-color: $blue-dark;
 
       &,
       & span {
-        color: $blue-6;
+        color: $blue-dark;
       }
 
       bal-icon {
@@ -280,7 +279,7 @@ bal-button.is-fullwidth {
         svg g,
         svg path,
         svg circle {
-          fill: $blue-6 !important;
+          fill: $blue-dark !important;
         }
       }
     }
@@ -327,13 +326,13 @@ bal-button.is-fullwidth {
         svg g,
         svg path,
         svg circle {
-          fill: $blue-4 !important;
+          fill: $light-blue-dark !important;
         }
       }
 
       &,
       & span {
-        color: $blue-4;
+        color: $light-blue-dark;
       }
     }
 
@@ -347,97 +346,97 @@ bal-button.is-fullwidth {
         svg g,
         svg path,
         svg circle {
-          fill: $blue-6 !important;
+          fill: $blue-dark !important;
         }
       }
 
       &,
       & span {
-        color: $blue-6;
+        color: $blue-dark;
       }
     }
   }
 
   &.is-success:not(.is-inverted),
   &.is-success.is-outlined :not(.is-inverted) {
-    background: $success-5;
-    border-color: $success-5;
+    background: $success;
+    border-color: $success;
     color: $success-invert;
 
     &.is-focused,
     &:focus-visible {
-      background: bulmaLighten($success-5, 2%);
-      border-color: bulmaLighten($success-5, 2%);
+      background: $success;
+      border-color: $success;
       color: $success-invert;
     }
 
     &.is-hovered,
     &:hover {
-      background: bulmaLighten($success-5, 4%);
-      border-color: bulmaLighten($success-5, 4%);
+      background: $success-6;
+      border-color: $success-6;
       color: $success-invert;
     }
 
     &.is-active,
     &:active {
-      background: $success-6;
-      border-color: $success-6;
+      background: $success-dark;
+      border-color: $success-dark;
       color: $success-invert;
     }
   }
 
   &.is-warning:not(.is-inverted),
   &.is-warning.is-outlined :not(.is-inverted) {
-    background: $warning-5;
-    border-color: $warning-5;
+    background: $warning;
+    border-color: $warning;
     color: $warning-invert;
 
     &.is-focused,
     &:focus-visible {
-      background: bulmaLighten($warning-5, 2%);
-      border-color: bulmaLighten($warning-5, 2%);
+      background: $warning;
+      border-color: $warning;
       color: $warning-invert;
     }
 
     &.is-hovered,
     &:hover {
-      background: bulmaLighten($warning-5, 6%);
-      border-color: bulmaLighten($warning-5, 6%);
+      background: $warning-6;
+      border-color: $warning-6;
       color: $warning-invert;
     }
 
     &.is-active,
     &:active {
-      background: $warning-6;
-      border-color: $warning-6;
+      background: $warning-dark;
+      border-color: $warning-dark;
       color: $warning-invert;
     }
   }
 
   &.is-danger:not(.is-inverted),
   &.is-danger.is-outlined :not(.is-inverted) {
-    background: bulmaLighten($danger-5, 2%);
-    border-color: bulmaLighten($danger-5, 2%);
+    background: $danger;
+    border-color: $danger;
     color: $danger-invert;
 
     &.is-focused,
     &:focus-visible {
-      background: $danger-5;
-      border-color: $danger-5;
+      background: $danger;
+      border-color: $danger;
       color: $danger-invert;
     }
 
     &.is-hovered,
     &:hover {
-      background: bulmaLighten($danger-5, 7%);
-      border-color: bulmaLighten($danger-5, 7%);
+      background: $danger-6;
+      border-color: $danger-6;
       color: $danger-invert;
     }
 
     &.is-active,
     &:active {
-      background: $danger-6;
-      border-color: $danger-6;
+      background: $danger-dark;
+      border-color: $danger-dark;
       color: $danger-invert;
     }
   }
@@ -470,21 +469,23 @@ bal-button.is-fullwidth {
         color: $blue;
       }
 
-      // &.is-focused,
-      // &:focus-visible {
-      //   background: bulmaLighten($blue, 2%);
-      //   border-color: bulmaLighten($blue, 2%);
-      //   color: $white;
-      // }
+      &.is-focused,
+      &:focus-visible {
+        background: $white;
+        border-color: $white;
+        color: $blue;
+      }
 
       &.is-hovered,
       &:hover {
-        background: $blue-2;
+        background: $light-blue;
+        border-color: $light-blue;
       }
 
       &.is-active,
       &:active {
-        background: $blue-4;
+        background: $light-blue-dark;
+        border-color: $light-blue-dark;
 
         bal-icon {
           svg,
@@ -525,23 +526,25 @@ bal-button.is-fullwidth {
         color: $white;
       }
 
-      // &.is-focused,
-      // &:focus-visible {
-      //   background: transparent;
-      //   border-color: bulmaLighten($blue, 2%);
-      //   color: $blue;
-      // }
+      &.is-focused,
+      &:focus-visible {
+        background: transparent;
+        border-color: $white;
+        color: $white;
+      }
 
       &.is-hovered,
       &:hover {
-        background: transparent;
-        border-color: $blue-2;
+        background: rgba(232, 241, 251, 0.2);
+        border-color: $light-blue-2;
+        color: $white;
       }
 
       &.is-active,
       &:active {
-        background: transparent;
-        border-color: $blue-4;
+        background: rgba(232, 241, 251, 0.2);
+        border-color: $light-blue-dark;
+        color: $white;
       }
     }
 
@@ -563,12 +566,12 @@ bal-button.is-fullwidth {
         color: $white;
       }
 
-      // &.is-focused,
-      // &:focus-visible {
-      //   background: transparent;
-      //   border-color: transparent;
-      //   color: bulmaLighten($blue, 2%);
-      // }
+      &.is-focused,
+      &:focus-visible {
+        background: transparent;
+        border-color: transparent;
+        color: $white;
+      }
 
       &.is-hovered,
       &:hover {
@@ -577,7 +580,7 @@ bal-button.is-fullwidth {
 
         &,
         & span {
-          color: $white;
+          color: $light-blue-light;
         }
       }
 
@@ -588,7 +591,7 @@ bal-button.is-fullwidth {
 
         &,
         & span {
-          color: $white;
+          color: $light-blue;
         }
       }
     }
@@ -612,9 +615,9 @@ bal-button.is-fullwidth {
     &:focus-visible,
     &.is-active,
     &:active {
-      background: $grey-3 !important;
-      border-color: $grey-3 !important;
-      color: $grey-5 !important;
+      background: $grey-2 !important;
+      border-color: $grey-2 !important;
+      color: $grey-7 !important;
       opacity: 1 !important;
     }
   }
@@ -632,22 +635,10 @@ bal-button.is-fullwidth {
     &.is-inverted {
       background: transparent !important;
       border-color: transparent !important;
-      color: $grey-5 !important;
+      color: $grey-7 !important;
       opacity: 1 !important;
     }
   }
-
-  // &.is-outlined.is-inverted {
-  //   &.is-success:hover {
-  //     color: $success;
-  //   }
-  //   &.is-warning:hover {
-  //     color: $warning;
-  //   }
-  //   &.is-danger:hover {
-  //     color: $danger;
-  //   }
-  // }
 
   &.is-focused,
   &:focus-visible {
@@ -657,19 +648,23 @@ bal-button.is-fullwidth {
     &.is-warning,
     &.is-danger,
     &.is-primary {
-      box-shadow: $blue-2 0 0 0 4px !important;
+      box-shadow: $white 0 0 0 2px, $purple-dark 0 0 0 5px !important;
+    }
+
+    &.is-inverted {
+      box-shadow: $blue 0 0 0 2px, $yellow-3 0 0 0 5px !important;
     }
 
     &.is-success:not(.is-inverted) {
-      box-shadow: $success-3 0 0 0 4px !important;
+      box-shadow: $white 0 0 0 2px, $success-dark 0 0 0 5px !important;
     }
 
     &.is-warning:not(.is-inverted) {
-      box-shadow: $warning-3 0 0 0 4px !important;
+      box-shadow: $white 0 0 0 2px, $warning-dark 0 0 0 5px !important;
     }
 
     &.is-danger:not(.is-inverted) {
-      box-shadow: $danger-3 0 0 0 4px !important;
+      box-shadow: $white 0 0 0 2px, $danger-dark 0 0 0 5px !important;
     }
   }
 }

@@ -25,6 +25,8 @@ h5 {
   font-family: BaloiseCreateHeadline, BaloiseCreateText, Arial, sans-serif;
   font-weight: 700;
   color: $blue;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
