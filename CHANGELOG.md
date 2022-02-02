@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.2.1](https://github.com/baloise-incubator/design-system/compare/v9.1.0...v9.2.1) (2022-02-02)
+
+
+### Features
+
+* add internationalization ([d50e3ca](https://github.com/baloise-incubator/design-system/commit/d50e3ca7462b8991ce0c3941f0465e262679795a))
+* **checkbox:** add group component ([3c5b611](https://github.com/baloise-incubator/design-system/commit/3c5b611d33b585a8e5c9408d2f92f787501e0b42))
+* **config:** add date and number formats to global config ([8e2b9d0](https://github.com/baloise-incubator/design-system/commit/8e2b9d09dca8fcbc63d918ccc83e1e5873952bed))
+
+
+### Bug Fixes
+
+* accordion ([86d1b1a](https://github.com/baloise-incubator/design-system/commit/86d1b1a39db0a5798de9ccc314d243eff7a78819))
+* **accordion:** add missing spacing in combination with cards ([adc4e85](https://github.com/baloise-incubator/design-system/commit/adc4e85779ee44a2e65efeb5b8610f260beb76f8))
+* **button:** adjust button order on mobile ([2640e1c](https://github.com/baloise-incubator/design-system/commit/2640e1c4a85bb5915d83d557234e44d51487ac2a)), closes [#475](https://github.com/baloise-incubator/design-system/issues/475)
+* **data:** adjust mobile view ([9e3921f](https://github.com/baloise-incubator/design-system/commit/9e3921f83bc6a9df18b50b8fb52dc2a124eaca03)), closes [#461](https://github.com/baloise-incubator/design-system/issues/461) [#477](https://github.com/baloise-incubator/design-system/issues/477)
+* **datepicker:** resolve max attribute logic ([8b200b6](https://github.com/baloise-incubator/design-system/commit/8b200b625e0cf426957c488fa65eb14a4f62a94c)), closes [#445](https://github.com/baloise-incubator/design-system/issues/445)
+* **footer:** add allow list for origins for which the fetching of footer links works ([30f8e5d](https://github.com/baloise-incubator/design-system/commit/30f8e5d53849cd2f7596124eea1380c9a4ec4d34))
+* **form:** add name attribute to form controls ([5491305](https://github.com/baloise-incubator/design-system/commit/5491305179341b2d3249921287004f2aef8e0f70))
+* **form:** improve invalid style ([cf9902f](https://github.com/baloise-incubator/design-system/commit/cf9902fa46bf7253153c2a471f51fa05199cd639))
+* **form:** improve sync of props ([98db4a1](https://github.com/baloise-incubator/design-system/commit/98db4a1bde80859c8078988cf9ce7d581b9bbfd7))
+* **modal:** break text in modal title ([f7ccd46](https://github.com/baloise-incubator/design-system/commit/f7ccd46f30f7db1bec8a97392839b34df86d7323))
+* **navbar:** remove margin bottom ([a22a072](https://github.com/baloise-incubator/design-system/commit/a22a072280ca9f27c52b3df0fb17c8e38cc5067a))
+* **pagination:** adjust for mobile view ([c25a04d](https://github.com/baloise-incubator/design-system/commit/c25a04dd18f6d5c4070e7cb045e032ec97a31426)), closes [#476](https://github.com/baloise-incubator/design-system/issues/476)
+* **radio:** adjust spacing between radio buttons ([8822469](https://github.com/baloise-incubator/design-system/commit/8822469ef0fe0944f4eb16420519838719911597))
+* **radio:** remove inconsistent shade ([91aa2e3](https://github.com/baloise-incubator/design-system/commit/91aa2e317226eeffc7dcae4a648c5a4c2295ffdf)), closes [#386](https://github.com/baloise-incubator/design-system/issues/386)
+* remove baloiseStencilViteFix from postinstall ([d185d0d](https://github.com/baloise-incubator/design-system/commit/d185d0d433f5b48307f78d7f36d0e690b3905f8e))
+* **vue:** add better vite support ([6503327](https://github.com/baloise-incubator/design-system/commit/6503327cb43193f432d5f0bccd47ac5955fefa9a))
+* **vue:** add plugin function with better typesafty ([b1b29de](https://github.com/baloise-incubator/design-system/commit/b1b29de4833944c9d8265943c7d47e3d28eef9fd))
+* **vue:** add vite support ([cf0c356](https://github.com/baloise-incubator/design-system/commit/cf0c356db330fad53685146528da23faca4da0cf))
+* **vue:** add vite support ([f586b44](https://github.com/baloise-incubator/design-system/commit/f586b445525dc04b8679f0e6e86dec7ce7d6d361))
+* **vue:** add vite support ([145f6cf](https://github.com/baloise-incubator/design-system/commit/145f6cf6da2d14109bb832eeebe52e9c5ae1d57d))
+* **vue:** add vite support ([545acdc](https://github.com/baloise-incubator/design-system/commit/545acdce6222b644f34d26a5971941ea32bdbc18))
+* **vue:** add vite support ([4d38151](https://github.com/baloise-incubator/design-system/commit/4d38151e728295d3e191bdc75f1be5e1b38182c5))
+* **vue:** add vite support ([fdb4ffc](https://github.com/baloise-incubator/design-system/commit/fdb4ffcdbea96a533a4c3cb5d04d5fc4cc2ba14f))
+
+### [9.0.3](https://github.com/baloise-incubator/design-system/compare/v9.0.1...v9.0.3) (2022-01-18)
+
+
+### Features
+
+* add new font ([fa631d0](https://github.com/baloise-incubator/design-system/commit/fa631d0e2d911efbbe68b1ad72853f0664e80840))
+
+
+### Bug Fixes
+
+* **build:** add cross-env in order to enable env variables on windows ([ce7501d](https://github.com/baloise-incubator/design-system/commit/ce7501dec80fb767d6b8099f44554ead63dee300))
+* **build:** improve build of documention in order to work on windows ([88cdfc6](https://github.com/baloise-incubator/design-system/commit/88cdfc6d7231c6a3f08d621121799ae3425391fd))
+
+### [9.0.1](https://github.com/baloise-incubator/design-system/compare/v9.0.0...v9.0.1) (2022-01-11)
+
+
+### Bug Fixes
+
+* **hint:** adjust mobile view ([df56521](https://github.com/baloise-incubator/design-system/commit/df5652119d8dcc5768f417bd47c12176e6a8f61e))
+* **list:** remove margin top ([500753d](https://github.com/baloise-incubator/design-system/commit/500753d4ce8b459ca0dae795868e24f9df6efe42))
+
+## [9.0.0](https://github.com/baloise-incubator/design-system/compare/v6.1.0...v9.0.0) (2022-01-10)
+
+## 6.1.0 (2021-12-30)
+
+
+
 ## [9.2.0](https://github.com/baloise/design-system/compare/v9.1.0...v9.2.0) (2022-02-01)
 
 
