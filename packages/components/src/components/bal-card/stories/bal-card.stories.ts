@@ -31,6 +31,7 @@ const component = BalComponentStory({
     flat: false,
     square: false,
   },
+  status: 'beta',
 })
 
 export default component.story

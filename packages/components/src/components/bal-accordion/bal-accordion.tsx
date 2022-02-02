@@ -117,29 +117,41 @@ export class Accordion {
       >
         <div
           class={{
-            'accordion-trigger': true,
+            'is-flex': true,
+            'is-flex-direction-column': this.interface === 'light',
+            'is-flex-direction-column-reverse': this.interface !== 'light',
           }}
         >
-          <bal-button
-            class="data-test-accordion-trigger"
-            expanded={true}
-            color={this.interface === 'light' ? 'info' : 'light'}
-            icon={this.interface !== 'light' ? icon : undefined}
-            iconRight={this.interface === 'light' ? icon : undefined}
-            onClick={() => this.toggle()}
-            topRounded={!this.card && this.interface !== 'light'}
-            bottomRounded={!this.value && this.interface !== 'light'}
+          <div
+            class={{
+              'accordion-trigger': true,
+              'px-5': this.interface !== 'light' && this.card,
+              'pb-5': this.card,
+            }}
           >
-            {label}
-          </bal-button>
-        </div>
-        <div
-          class={{
-            'accordion-content': true,
-          }}
-          style={{ display: this.value ? 'block' : 'none' }}
-        >
-          <slot></slot>
+            <bal-button
+              class={{
+                'data-test-accordion-trigger': true,
+              }}
+              expanded={true}
+              color={'info'}
+              icon={this.interface !== 'light' ? icon : undefined}
+              iconRight={this.interface === 'light' ? icon : undefined}
+              onClick={() => this.toggle()}
+            >
+              {label}
+            </bal-button>
+          </div>
+          <div
+            class={{
+              'accordion-content': true,
+            }}
+            style={{
+              display: this.value ? 'block' : 'none',
+            }}
+          >
+            <slot></slot>
+          </div>
         </div>
       </Host>
     )

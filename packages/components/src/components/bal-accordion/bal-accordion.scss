@@ -49,6 +49,25 @@ bal-accordion {
       bal-icon.icon-right {
         margin-right: 0px !important;
       }
+
+      &:hover,
+      &.is-hovered,
+      &:focus,
+      &:focus-visible,
+      &.is-focused,
+      &:active,
+      &.is-active {
+        background: transparent !important;
+      }
+    }
+  }
+
+  &:not(.bal-accordion-light) {
+    .accordion-content {
+      & > .p-5 {
+        padding-top: 0 !important;
+        margin-bottom: 0 !important;
+      }
     }
   }
 }

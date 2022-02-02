@@ -1,35 +1,26 @@
-import { create } from '@storybook/theming'
+import { create, themes } from '@storybook/theming'
 import Logo from '../src/stories/assets/images/logo.svg'
 
 export default create({
-  base: 'light',
+  ...themes.dark,
 
-  colorPrimary: '#000d6e',
-  colorSecondary: '#000d6e',
-
-  // UI
-  appBg: '#f6f6f6',
-  appContentBg: '#ffffff',
-  appBorderColor: '#b6b6b6',
+  appBg: '#15212a',
+  appBg: '#161A38',
+  appBg: '#13162D',
+  appBg: '#12152D',
+  appContentBg: '#1b2730',
+  appContentBg: '#181D41',
+  appContentBg: '#1E234A',
   appBorderRadius: 12,
 
-  // Typography
   fontBase: '"Open Sans", sans-serif',
   fontCode: 'monospace',
 
-  // Text colors
-  textColor: '#000000',
-  textInverseColor: '#ffffff',
+  barTextColor: '#e5e7f0',
+  barBg: '#181D41',
 
-  // Toolbar default and active colors
-  barTextColor: '#000000',
-  barSelectedColor: '#000d6e',
-  barBg: '#e8e8e8',
-
-  // Form colors
-  inputBg: '#ffffff',
-  inputBorder: '#e8e8e8',
-  inputTextColor: 'black',
+  inputBg: '#12152D',
+  inputBorder: '#e5e7f0',
   inputBorderRadius: 4,
 
   brandTitle: 'Baloise Design System',

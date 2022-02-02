@@ -14,6 +14,7 @@ const component = BalComponentStory({
     ...withContent(),
   },
   docs,
+  status: 'stable',
 })
 
 export default component.story
@@ -22,10 +23,8 @@ export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-accordion v-bind="args" v-model="args.value">
-  <p class="p-4">
-   {{ args.content }}
-  </p>
-  </bal-accordion>`,
+  <p>{{ args.content }}</p>
+</bal-accordion>`,
 })
 Basic.args = {
   openLabel: 'Show more',
@@ -40,7 +39,7 @@ export const Light = args => ({
   setup: () => ({ args }),
   template: `<bal-accordion v-bind="args" v-model="args.value">
   <p>{{ args.content }}</p>
-  </bal-accordion>`,
+</bal-accordion>`,
 })
 Light.args = {
   interface: 'light',
@@ -54,9 +53,9 @@ Light.parameters = { ...component.sourceCode(Light) }
 export const WithIcons = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
-  template: `<bal-accordion class="box" open-icon="edit" open-label="Bearbeiten" close-label="Schliessen" close-icon="close">
-  <p class="p-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  </bal-accordion>`,
+  template: `<bal-accordion open-icon="edit" open-label="Bearbeiten" close-label="Schliessen" close-icon="close">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</bal-accordion>`,
 })
 WithIcons.args = {
   content:
@@ -75,5 +74,8 @@ export const WithCard = args => ({
   </bal-accordion>
 </bal-card>`,
 })
-WithCard.args = {}
+WithCard.args = {
+  openLabel: 'Show more',
+  closeLabel: 'Show less',
+}
 WithCard.parameters = { ...component.sourceCode(WithCard) }

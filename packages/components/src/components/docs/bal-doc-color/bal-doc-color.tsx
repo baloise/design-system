@@ -16,7 +16,7 @@ export class BalDocColor {
   @Prop() hexVars = ''
 
   render() {
-    const subject = this.subject !== '' ? this.subject : this.color.charAt(0).toUpperCase() + this.color.slice(1)
+    const subject = this.subject !== '' ? this.subject : this.color
     const scssVars = this.scssVars !== '' ? this.scssVars : `$${this.color}`
     return (
       <Host class="bal-app">
@@ -33,11 +33,11 @@ export class BalDocColor {
           </div>
           <div class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center p-2">
             <h5 class="title is-size-6 m-0">{subject}</h5>
-            <small class="mb-2 has-text-center" style={{ minHeight: '17px' }}>
+            <bal-text size="small" style={{ textAlign: 'center' }}>
               {this.description}
-            </small>
-            <p class="has-text-grey-5 m-0">{this.hexVars}</p>
-            <p class="has-text-grey-5 m-0">{scssVars}</p>
+            </bal-text>
+            <p class="has-text-grey-5 is-small m-0">{this.hexVars}</p>
+            <p class="has-text-grey-5 is-small m-0">{scssVars}</p>
           </div>
         </div>
       </Host>

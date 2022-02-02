@@ -1,71 +1,22 @@
 @import 'initial-variables';
 @import 'functions';
 
-$primary: $blue !default;
-$info: $purple !default;
-$success: $green !default;
-$warning: $yellow !default;
-$danger: $red !default;
 $light: $white-bis !default;
 $dark: $blue !default;
 
-$primary-1: $blue-1 !default;
-$primary-2: $blue-2 !default;
-$primary-3: $blue-3 !default;
-$primary-4: $blue-4 !default;
-$primary-5: $blue-5 !default;
-$primary-6: $blue-6 !default;
-
-$info-1: $blue-1 !default;
-$info-2: $blue-2 !default;
-$info-3: $blue-3 !default;
-$info-4: $blue-4 !default;
-$info-5: $blue-5 !default;
-$info-6: $blue-6 !default;
-
-$success-1: $green-1 !default;
-$success-2: $green-2 !default;
-$success-3: $green-3 !default;
-$success-4: $green-4 !default;
-$success-5: $green-5 !default;
-$success-6: $green-6 !default;
-
-$warning-1: $yellow-1 !default;
-$warning-2: $yellow-2 !default;
-$warning-3: $yellow-3 !default;
-$warning-4: $yellow-4 !default;
-$warning-5: $yellow-5 !default;
-$warning-6: $yellow-6 !default;
-
-$danger-1: $red-1 !default;
-$danger-2: $red-2 !default;
-$danger-3: $red-3 !default;
-$danger-4: $red-4 !default;
-$danger-5: $red-5 !default;
-$danger-6: $red-6 !default;
-
 // Invert colors
+$grey-invert: $white !default;
 $blue-invert: $white !default;
+$light-blue-invert: $white !default;
 $green-invert: $white !default;
 $purple-invert: $white !default;
 $red-invert: $white !default;
 $yellow-invert: $white !default;
-
 $primary-invert: $white !default;
-$primary-light: $primary-1 !default;
-$primary-dark: $primary-5 !default;
 $info-invert: $white !default;
-$info-light: $info-1 !default;
-$info-dark: $info-5 !default;
 $success-invert: $white !default;
-$success-light: $success-1 !default;
-$success-dark: $success-5 !default;
 $warning-invert: $white !default;
-$warning-light: $warning-1 !default;
-$warning-dark: $warning-5 !default;
 $danger-invert: $white !default;
-$danger-light: $danger-1 !default;
-$danger-dark: $danger-5 !default;
 $light-invert: $white !default;
 $dark-invert: $white !default;
 
@@ -90,7 +41,7 @@ $border-light-hover: $grey-3 !default;
 
 $text: $blue !default;
 $text-invert: $white !default;
-$text-light: $blue-4 !default;
+$text-light: $blue-text-light !default;
 $text-strong: $blue !default;
 
 // Code colors
@@ -192,6 +143,48 @@ $colors: mergeColorMaps(
       $danger-light,
       $danger-dark,
     ),
+    'grey': (
+      $grey,
+      $grey-invert,
+      $grey-light,
+      $grey-dark,
+    ),
+    'blue': (
+      $blue,
+      $blue-invert,
+      $blue-light,
+      $blue-dark,
+    ),
+    'light-blue': (
+      $light-blue,
+      $light-blue-invert,
+      $light-blue-light,
+      $light-blue-dark,
+    ),
+    'purple': (
+      $purple,
+      $purple-invert,
+      $purple-light,
+      $purple-dark,
+    ),
+    'red': (
+      $red,
+      $red-invert,
+      $red-light,
+      $red-dark,
+    ),
+    'green': (
+      $green,
+      $green-invert,
+      $green-light,
+      $green-dark,
+    ),
+    'yellow': (
+      $yellow,
+      $yellow-invert,
+      $yellow-light,
+      $yellow-dark,
+    ),
   ),
   $custom-colors
 ) !default;
@@ -200,70 +193,138 @@ $shades: mergeColorMaps(
   (
     'black-bis': $black-bis,
     'black-ter': $black-ter,
-    'grey': $grey,
     'white-ter': $white-ter,
     'white-bis': $white-bis,
-    'black': $black,
-    'white': $white,
-    'blue': $blue,
-    'green': $green,
-    'yellow': $yellow,
-    'purple': $purple,
-    'red': $red,
+    'blue-text': $blue-text,
+    'blue-text-light': $blue-text-light,
+    'blue-0': $blue-0,
     'blue-1': $blue-1,
     'blue-2': $blue-2,
     'blue-3': $blue-3,
     'blue-4': $blue-4,
     'blue-5': $blue-5,
     'blue-6': $blue-6,
+    'blue-7': $blue-7,
+    'blue-8': $blue-8,
+    'blue-9': $blue-9,
+    'light-blue-0': $light-blue-0,
+    'light-blue-1': $light-blue-1,
+    'light-blue-2': $light-blue-2,
+    'light-blue-3': $light-blue-3,
+    'light-blue-4': $light-blue-4,
+    'light-blue-5': $light-blue-5,
+    'light-blue-6': $light-blue-6,
+    'light-blue-7': $light-blue-7,
+    'light-blue-8': $light-blue-8,
+    'light-blue-9': $light-blue-9,
+    'grey-0': $grey-0,
     'grey-1': $grey-1,
     'grey-2': $grey-2,
     'grey-3': $grey-3,
     'grey-4': $grey-4,
     'grey-5': $grey-5,
     'grey-6': $grey-6,
+    'grey-7': $grey-7,
+    'grey-8': $grey-8,
+    'grey-9': $grey-9,
+    'purple-0': $purple-0,
     'purple-1': $purple-1,
     'purple-2': $purple-2,
     'purple-3': $purple-3,
     'purple-4': $purple-4,
     'purple-5': $purple-5,
     'purple-6': $purple-6,
+    'purple-7': $purple-7,
+    'purple-8': $purple-8,
+    'purple-9': $purple-9,
+    'green-0': $green-0,
     'green-1': $green-1,
     'green-2': $green-2,
     'green-3': $green-3,
     'green-4': $green-4,
     'green-5': $green-5,
     'green-6': $green-6,
+    'green-7': $green-7,
+    'green-8': $green-8,
+    'green-9': $green-9,
+    'red-0': $red-0,
     'red-1': $red-1,
     'red-2': $red-2,
     'red-3': $red-3,
     'red-4': $red-4,
     'red-5': $red-5,
     'red-6': $red-6,
+    'red-7': $red-7,
+    'red-8': $red-8,
+    'red-9': $red-9,
+    'yellow-0': $yellow-0,
     'yellow-1': $yellow-1,
     'yellow-2': $yellow-2,
     'yellow-3': $yellow-3,
     'yellow-4': $yellow-4,
     'yellow-5': $yellow-5,
     'yellow-6': $yellow-6,
+    'yellow-7': $yellow-7,
+    'yellow-8': $yellow-8,
+    'yellow-9': $yellow-9,
+    'success-0': $success-0,
     'success-1': $success-1,
     'success-2': $success-2,
     'success-3': $success-3,
     'success-4': $success-4,
     'success-5': $success-5,
     'success-6': $success-6,
-    'danger-1': $danger-1,
-    'danger-2': $danger-2,
-    'danger-3': $danger-3,
-    'danger-4': $danger-4,
-    'danger-5': $danger-5,
-    'danger-6': $danger-6,
+    'success-7': $success-7,
+    'success-8': $success-8,
+    'success-9': $success-9,
+    'info-0': $info-0,
+    'info-1': $info-1,
+    'info-2': $info-2,
+    'info-3': $info-3,
+    'info-4': $info-4,
+    'info-5': $info-5,
+    'info-6': $info-6,
+    'info-7': $info-7,
+    'info-8': $info-8,
+    'info-9': $info-9,
+    'primary-0': $primary-0,
+    'primary-1': $primary-1,
+    'primary-2': $primary-2,
+    'primary-3': $primary-3,
+    'primary-4': $primary-4,
+    'primary-5': $primary-5,
+    'primary-6': $primary-6,
+    'primary-7': $primary-7,
+    'primary-8': $primary-8,
+    'primary-9': $primary-9,
+    'warning-0': $warning-0,
     'warning-1': $warning-1,
     'warning-2': $warning-2,
     'warning-3': $warning-3,
     'warning-4': $warning-4,
     'warning-5': $warning-5,
     'warning-6': $warning-6,
+    'warning-7': $warning-7,
+    'warning-8': $warning-8,
+    'warning-9': $warning-9,
+    'danger-0': $danger-0,
+    'danger-1': $danger-1,
+    'danger-2': $danger-2,
+    'danger-3': $danger-3,
+    'danger-4': $danger-4,
+    'danger-5': $danger-5,
+    'danger-6': $danger-6,
+    'danger-7': $danger-7,
+    'danger-8': $danger-8,
+    'danger-9': $danger-9,
+    'info-text': $info-text,
+    'success-text': $success-text,
+    'warning-text': $warning-text,
+    'danger-text': $danger-text,
+    'purple-text': $purple-text,
+    'green-text': $green-text,
+    'yellow-text': $yellow-text,
+    'red-text': $red-text,
   ),
   $custom-shades
 ) !default;
