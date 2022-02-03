@@ -7,6 +7,7 @@ import {
   BalFieldLabel,
   BalFieldMessage,
 } from '../../../../../.storybook/vue/components'
+import { configArgTypes, configDefaultArgs, reduceConfigArgs, setConfig } from '../../../../stories/utils/config'
 
 const balFieldArgTypes = stencilArgType(BalField)
 
@@ -22,32 +23,10 @@ const component = BalComponentStory({
         category: 'custom',
       },
     },
-    region: {
-      description: 'Region of the running app.',
-      table: {
-        category: 'global',
-        defaultValue: { summary: 'CH' },
-      },
-      options: ['CH', 'BE', 'DE', 'LU'],
-      control: {
-        type: 'inline-radio',
-      },
-    },
-    language: {
-      description: 'Language of the running app.',
-      table: {
-        category: 'global',
-        defaultValue: { summary: 'de' },
-      },
-      options: ['de', 'fr', 'en', 'it', 'nl'],
-      control: {
-        type: 'inline-radio',
-      },
-    },
+    ...configArgTypes,
   },
   args: {
-    region: 'CH',
-    language: 'de',
+    ...configDefaultArgs,
     invalid: false,
     hasFieldMessage: true,
   },
@@ -60,16 +39,9 @@ const excludedControls = ['allowedDates', 'readonly', 'name', 'required']
 const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => {
-    const BDS = (window as any).BaloiseDesignSystem
-    BDS.config.region = args.region
-    BDS.config.language = args.language
+    setConfig(args)
     return {
-      args: Object.keys(args)
-        .filter(key => !['region', 'language'].includes(key))
-        .reduce((obj, key) => {
-          obj[key] = args[key]
-          return obj
-        }, {}),
+      args: reduceConfigArgs(args),
     }
   },
   template: `
