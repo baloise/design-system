@@ -1,6 +1,7 @@
 import { Plugin } from 'vue'
 import { BalConfig, initialize } from '@baloise/design-system-components'
 import { applyDirectives } from './directives'
+import { applyComponents } from './components.generated'
 
 interface BaloiseDesignSystemVueConfig {
   defineCustomeElementTag?: boolean
@@ -16,6 +17,7 @@ export const BaloiseDesignSystem: Plugin = {
     }
 
     applyDirectives(app)
+    applyComponents(app)
   },
 }
 
