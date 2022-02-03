@@ -10,7 +10,7 @@ import {
   getDate,
 } from 'date-fns'
 import padStart from 'lodash.padstart'
-import { useBalConfig, defaultConfig } from '../config'
+import { useBalConfig, defaultLocale } from '../config'
 
 export const ISO_PATTERN = 'yyyy-MM-dd'
 export const DATE_PATTERN = 'dd-MM-yyyy'
@@ -27,7 +27,7 @@ export const isValidIsoString = (datestring: string | undefined | null) =>
 
 function intlFormat(date: Date): string {
   const config = useBalConfig()
-  const intl = new Intl.DateTimeFormat((config && config.locale) || defaultConfig.language)
+  const intl = new Intl.DateTimeFormat((config && config.locale) || defaultLocale)
   return intl.format(date)
 }
 
@@ -59,7 +59,7 @@ export const getDatePattern = () => {
 
 export const getDateSeperator = (): string => {
   const config = useBalConfig()
-  return new Intl.DateTimeFormat((config && config.locale) || defaultConfig.language)
+  return new Intl.DateTimeFormat((config && config.locale) || defaultLocale)
     .format(now())
     .replace(/\p{Number}/gu, '')
     .charAt(0)

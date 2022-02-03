@@ -6,6 +6,8 @@ export const defaultConfig: BalConfigState = {
   language: 'de',
 }
 
+export const defaultLocale = `${defaultConfig.language}-${defaultConfig.region}`
+
 export const initialize = (userConfig: BalConfig = {}) => {
   if (typeof (window as any) === 'undefined') {
     return
