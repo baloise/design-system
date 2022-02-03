@@ -1,15 +1,15 @@
-import { useBalConfig } from '../config'
+import { defaultConfig, useBalConfig } from '../config'
 
 export const getDecimalSeperator = (): string => {
   const config = useBalConfig()
-  return Intl.NumberFormat((config && config.locale) || 'de-CH')
+  return Intl.NumberFormat((config && config.locale) || defaultConfig.language)
     .format(1.1)
     .replace(/\p{Number}/gu, '')
 }
 
 export const getThousandSeparator = (): string => {
   const config = useBalConfig()
-  return Intl.NumberFormat((config && config.locale) || 'de-CH')
+  return Intl.NumberFormat((config && config.locale) || defaultConfig.language)
     .format(11111)
     .replace(/\p{Number}/gu, '')
 }
@@ -17,7 +17,7 @@ export const getThousandSeparator = (): string => {
 export const formatLocaleNumber = (number: number, minimumFractionDigits?: number): string => {
   const config = useBalConfig()
   const options = minimumFractionDigits !== undefined ? { minimumFractionDigits } : {}
-  return Intl.NumberFormat((config && config.locale) || 'de-CH', {
+  return Intl.NumberFormat((config && config.locale) || defaultConfig.language, {
     ...options,
   }).format(number)
 }
