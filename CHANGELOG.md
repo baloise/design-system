@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.2.1](https://github.com/baloise/design-system/compare/v9.2.0...v9.2.1) (2022-02-03)
+
+
+### Bug Fixes
+
+* improve config usage with proxy libs ([196873c](https://github.com/baloise/design-system/commit/196873ccba17f9807c4bc439591b802ca03fa485))
+
+
+
 ## [9.2.0](https://github.com/baloise/design-system/compare/v9.1.0...v9.2.0) (2022-02-01)
 
 
