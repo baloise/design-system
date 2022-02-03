@@ -17,7 +17,7 @@ async function main() {
     `import { App } from 'vue'`,
     `import {`,
     ...importNames.map(n => `  ${n},`),
-    `} from './proxies'`,
+    `} from './proxies/index'`,
     ``,
     `export const applyComponents = (app: App) => {`,
     ...defineComponents,
