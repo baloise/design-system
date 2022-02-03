@@ -1,6 +1,26 @@
-import { BalConfig } from './config.types'
-import { balConfigStore } from './config.store'
+import { config, configFromSession } from './config'
+import { BalConfig, BalConfigState } from './config.types'
 
-export const initialize = (defaultConfig: BalConfig = {}) => {
-  balConfigStore.reset(defaultConfig)
+export const defaultConfig: BalConfigState = {
+  region: 'CH',
+  language: 'de',
 }
+
+export const initialize = (userConfig: BalConfig = {}) => {
+  if (typeof (window as any) === 'undefined') {
+    return
+  }
+
+  const win = window as any
+  const BaloiseDesignSystem = (win.BaloiseDesignSystem = win.BaloiseDesignSystem || {})
+
+  config.reset({
+    ...defaultConfig,
+    ...configFromSession(win),
+    ...userConfig,
+  })
+
+  BaloiseDesignSystem.config = config
+}
+
+export default initialize

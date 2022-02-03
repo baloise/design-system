@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { filterInputValue, formatInputValue } from '../bal-input.utils'
-import { BaloiseDesignSystemConfig } from '../../../../config/config'
+import { BaloiseDesignSystemConfig } from '../../../../config/old/config'
 
 describe('bal-input', () => {
   describe('filterInputValue', () => {
