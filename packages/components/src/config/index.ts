@@ -8,7 +8,6 @@ export * from './config'
 export * from './observable/observer'
 
 export const useBalConfig = (): Config | undefined => {
-  debugger
   if (typeof (window as any) === 'undefined') {
     return
   }
