@@ -60,31 +60,4 @@ describe('bal-input', () => {
       expect(formatInputValue('.1', 0)).toBe('0')
     })
   })
-  describe('filterInputValue for another locale', () => {
-    test('filterInputValue for de-DE', () => {
-      const BaloiseDesignSystem = jest.fn()
-      Object.defineProperty(window, 'BaloiseDesignSystem', BaloiseDesignSystem)
-      BaloiseDesignSystem.mockImplementation(() => ({
-        config: {
-          language: 'de',
-          region: 'DE',
-        },
-      }))
-      expect(filterInputValue('1,4', '', 2)).toBe('1,4')
-    })
-  })
-  describe('formatInputValue for another locale', () => {
-    test('formatInputValue for de-DE', () => {
-      const BaloiseDesignSystem = jest.fn()
-      Object.defineProperty(window, 'BaloiseDesignSystem', BaloiseDesignSystem)
-      BaloiseDesignSystem.mockImplementation(() => ({
-        config: {
-          language: 'de',
-          region: 'DE',
-        },
-      }))
-      expect(formatInputValue('1000000')).toBe('1.000.000')
-      expect(formatInputValue('0.1', 2)).toBe('0,10')
-    })
-  })
 })
