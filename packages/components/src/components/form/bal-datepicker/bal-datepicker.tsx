@@ -35,10 +35,8 @@ import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
 import { parse, format, isValidIsoString, now, isoString } from '../../../utils/date.util'
-import { BaloiseDesignSystemConfig } from '../../../config'
 import { BalLanguage, BalConfigState } from '../../../config/config.types'
-import { BalConfigObserver } from '../../../config/observable/observer'
-import { balConfigStore } from '../../../config/config.store'
+import { detachComponentToConfig, defaultConfig, BalConfigObserver, attachComponentToConfig } from '../../../config'
 
 @Component({
   tag: 'bal-datepicker',
@@ -50,7 +48,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
 
   @Element() el!: HTMLElement
 
-  @State() language: BalLanguage = BaloiseDesignSystemConfig.language
+  @State() language: BalLanguage = defaultConfig.language
   @State() isPopoverOpen = false
   @State() selectedDate?: string | null = ''
   @State() pointerDate: BalPointerDate = {
@@ -222,7 +220,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
 
   connectedCallback() {
     this.debounceChanged()
-    balConfigStore.attach(this)
+    attachComponentToConfig(this)
   }
 
   configChanged(config: BalConfigState): void {
@@ -230,7 +228,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   }
 
   disconnectedCallback() {
-    balConfigStore.detach(this)
+    detachComponentToConfig(this)
   }
 
   /**

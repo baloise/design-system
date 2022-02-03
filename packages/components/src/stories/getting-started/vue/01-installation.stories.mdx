@@ -11,39 +11,72 @@ import { Meta, Description } from '@storybook/addon-docs'
 
 # Installation
 
-This section describes how to setup the Baloise Design System with an basic Vue applications.
+This section describes how to setup the Baloise Design System with an basic Vue application.
 
-## Prerequisite
+> **Pre-requisites**
+>
+> - Familiarity with the command line
+> - Install [Node.js LTS](https://nodejs.org/en/)
 
-Before we can add the Baloise Design System we need to setup the basics.
+Depending on your use case and preference, you can use Vue setup the application with our template or the cli.
 
-### Setup a Vue 3 Project
+## With the Baloise Template
 
-There are two ways to start.
+<img width="120px" src="https://github.com/baloise/vue-starter-kit/raw/master/src/assets/logo.svg" />
 
-- Use this starter kit [baloise/vue-starter-kit](https://github.com/baloise/vue-starter-kit)
-- Use the [Vue CLI](https://cli.vuejs.org/guide/installation.html) with Sass and TypeScript.
+The big advandage of using the template is that the Design System is already included.
 
-#### Vue CLI
-
-Install the [Vue CLI](https://cli.vuejs.org/) globally.
+To get stared clone the vue-starter-kit repository to your machine.
 
 ```bash
-npm install -g @vue/cli
+npx degit baloise/vue-starter-kit new-project-name
 ```
 
-To create a new project run `vue create` with the Baloise preset(Typescript + Sass + Cypress).
+Once the project is created, follow the instructions to install dependencies and start the dev server:
 
 ```bash
-vue create --preset baloise/vue-preset bal-app
+cd new-project-name
+npm install
+npm run dev
+```
+
+## With create vue cli
+
+Follow the instructions of the offical Vue page [Quick Start - With Build Tools](https://staging.vuejs.org/guide/quick-start.html#with-build-tools)
+
+```sh
+npm init vue@latest
+```
+
+This command will install and execute [create-vue](https://github.com/vuejs/create-vue), the official
+Vue project scaffolding tool. Below are the recommanded prompts.
+
+```sh
+✔ Project name: … <your-project-name>
+✔ Add TypeScript? … Yes
+✔ Add JSX Support? … No
+✔ Add Vue Router for Single Page Application development? … Yes
+✔ Add Pinia for state management? … Yes
+✔ Add Cypress for testing? … Yes
+
+Scaffolding project in ./<your-project-name>...
+Done.
+```
+
+Once the project is created, follow the instructions to install dependencies and start the dev server:
+
+```bash
+cd new-project-name
+npm install
+npm run dev
 ```
 
 > **Recommandations**
 >
-> - Choose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
+> - Install **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
 > - We recomand to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
 
-## Install Baloise Design System
+### Install Baloise Design System
 
 The `@baloise/design-system-components-vue` dependency includes the plugin `BaloiseDesignSystem`, which loads by default the polyfils and defines the components.
 Moreover, it adds the conrollers to your vue instance.
@@ -54,7 +87,7 @@ To install the Baloise Design System run the following command.
 npm install @baloise/design-system-components-vue --save
 ```
 
-### Import fonts
+#### Import fonts
 
 The font package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
 
@@ -84,11 +117,17 @@ npm run copy:fonts
 > - Add the generated files to the `.gitignore` file.
 > - It could be that inside the docker container the `postinstall` gets not executed. Therefore, use `npm run ci --unsafe-perm` to execute postinstall after the install script.
 
-### Import styles
+#### Import styles
 
-Create a new file called `main.scss` in the `src` folder.
+If `sass` is yet not istalled run:
 
-Import the `global.scss` Sass file into the `main.scss` file.
+```sh
+npm add -D sass
+```
+
+Then create a new file called `main.scss` in the `src` folder.
+
+Import the `global.scss` Sass file of the Design System into the `main.scss` file.
 
 ```scss
 // change variable before the import
@@ -98,13 +137,13 @@ Import the `global.scss` Sass file into the `main.scss` file.
 // add custom styles below
 ```
 
-### Use Plugin
+#### Use Plugin
 
 Inside the `main.ts` file add the created `main.scss` and import the `BaloiseDesignSystem` plugin.
 
 ```typescript
 import './main.scss'
-import { BaloiseDesignSystem } from '@baloise/design-system-components-vue'
+import { createBaloiseDesignSystem } from '@baloise/design-system-components-vue'
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -112,13 +151,20 @@ import router from './router'
 
 createApp(App)
   .use(router)
-  .use(BaloiseDesignSystem})
+  .use(
+    createBaloiseDesignSystem({
+      defaults: {
+        region: 'CH',
+        language: 'en',
+      },
+    }),
+  )
   .mount('#app')
 ```
 
 > **Internationalization** To run the Design System in a different region then `CH` or to change the lauguage to `fr` follow thge documentation of [internationalization](?path=/docs/getting-started-internationalization--page).
 
-### HTML Structure
+#### HTML Structure
 
 Add the `BalApp` to your root element (App.vue). Within this component we are able to use the defined css classes.
 
@@ -133,9 +179,9 @@ Add the `BalApp` to your root element (App.vue). Within this component we are ab
       <!-- Header content -->
     </header>
     <main class="container">
-      <!-- Page content -->
       <BalHeading>Hello World!</BalHeading>
       <BalButton>Button</BalButton>
+      <!-- Page content -->
     </main>
     <BalFooter>
       <div class="container">
@@ -147,13 +193,11 @@ Add the `BalApp` to your root element (App.vue). Within this component we are ab
 </template>
 ```
 
-## Start the app
+### Start the app
 
 Now everything is ready to be used. Add some Baloise components and start the app with:
 
 ```bash
-npm run serve
-# or for vite
 npm run dev
 ```
 
