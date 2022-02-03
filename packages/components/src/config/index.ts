@@ -8,14 +8,13 @@ export * from './config'
 export * from './observable/observer'
 
 export const useBalConfig = (): Config | undefined => {
+  debugger
   if (typeof (window as any) === 'undefined') {
     return
   }
 
   const win = window as any
-  const config = win && win.BaloiseDesignSystem && win.BaloiseDesignSystem.config
-
-  return config
+  return win && win.BaloiseDesignSystem && win.BaloiseDesignSystem.config
 }
 
 export const attachComponentToConfig = (observer: BalConfigObserver): void => {
