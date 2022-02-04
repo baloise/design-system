@@ -39,6 +39,8 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@baloise/stencil-vite-fix": "9.2.3",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.3",
     "@types/lodash.camelcase": "^4.3.6",
     "@types/lodash.upperfirst": "^4.3.6",
     "ag-grid-community": "^26.0.0",
