@@ -8,6 +8,7 @@
     "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
     "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)"
   ],
+  "license": "Apache-2.0",
   "scripts": {
     "==================== INSTALLATION / SETUP ====================": "================================",
     "prepare": "husky install",

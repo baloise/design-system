@@ -30,7 +30,7 @@
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.js",
-  "module": "./dist/index.esm.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/types/index.d.ts",
   "styles": "./css/design-system-table.css",
   "files": [
@@ -46,6 +46,8 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@baloise/design-system-components": "9.2.3-beta.1+be51095a",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.3",
     "@types/lodash.isnil": "^4.0.6",
     "ag-grid-community": "^26.0.0",
     "autoprefixer": "^10.3.2",
@@ -53,6 +55,7 @@
     "postcss": "^8.3.6",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.3",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-scss": "^3.0.0",
     "sass": "^1.38.0",
     "typescript": "^4.3.5"

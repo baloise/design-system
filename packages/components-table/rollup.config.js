@@ -1,22 +1,24 @@
 import scss from 'rollup-plugin-scss'
+import baseConfig from '../../rollup.base'
 import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
-import baseConfig from '../../rollup.base'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
+import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 
 export default {
   ...baseConfig,
-  input: 'dist-transpiled/index.js',
-  external: [
-    'lodash.isnil',
-    '@baloise/design-system-components',
-    '@baloise/design-system-components/loader',
-    '@baloise/design-system-components/dist/components',
-  ],
+  external: id => {
+    return id.startsWith('lodash') || id.startsWith('@baloise')
+  },
   plugins: [
     scss({
       processor: () => postcss([autoprefixer()]),
       outputStyle: 'compressed',
       output: 'css/design-system-table.css',
     }),
+    nodeResolve(),
+    commonjs(),
+    peerDepsExternal(),
   ],
 }
