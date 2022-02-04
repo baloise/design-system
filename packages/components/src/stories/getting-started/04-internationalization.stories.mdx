@@ -168,7 +168,6 @@ import { onBalConfigChange, BalConfigState } from '@baloise/design-system-compon
 
 onBalConfigChange((config: BalConfigState) => {
   // do something with the updated config here
-  console.log('config', config)
 })
 ```
 
@@ -186,7 +185,7 @@ import { onBalConfigChange, BalConfigState } from '@baloise/design-system-compon
 export class SampleComponent {
   constructor(private yourLangService: YourLangService) {
     onBalConfigChange((config: BalConfigState) => {
-      // when the language is changed e.g. in the footer you probably want to update it in your translations service
+      // when the language is changed, e.g. in the footer, you probably want to update it in your translations service
       this.yourLangService.changeLanguage(config.language)
     })
   }
