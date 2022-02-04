@@ -74,7 +74,36 @@ export class Footer implements BalConfigObserver {
           }}
         >
           <slot></slot>
-          <div class="footer-links-container p-1" style={{ display: this.hideLinks ? 'none' : 'block' }}>
+          <div class="container footer-links-container">
+            <div class="legal-links pt-4" style={{ display: this.hideLinks ? 'flex' : 'flex' }}>
+              <a class="is-link is-inverted pr-4" href="/">
+                Impressum
+              </a>
+              <a class="is-link is-inverted pr-4" href="/">
+                Rechtliche Hinweise
+              </a>
+              <a class="is-link is-inverted pr-4" href="/">
+                Datenschutz
+              </a>
+              <a class="is-link is-inverted pr-4" href="/">
+                Cookie Policy
+              </a>
+              <a class="is-link is-inverted pr-4" href="/">
+                Baloise Group
+              </a>
+            </div>
+            <div class="language-links pt-4">
+              <a class="is-link is-inverted pr-4" href="/">
+                DE
+              </a>
+              <a class="is-link is-inverted pr-4" href="/">
+                FR
+              </a>
+              <a class="is-link is-inverted pr-4" href="/">
+                IT
+              </a>
+            </div>
+
             {this.links.map(link => (
               <a class="is-link is-inverted pr-4" href={link.link}>
                 {link.label}
