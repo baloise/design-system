@@ -1,20 +1,23 @@
 import pkg from './package.json'
+import lerna from './lerna.json'
 
 function getAuthors(pkg) {
-  const { contributors, author } = pkg
+  const { contributors } = pkg
 
   const authors = new Set()
   if (contributors && contributors)
     contributors.forEach(contributor => {
-      authors.add(contributor.name)
+      const cs = contributor.split(' ')
+      cs.pop()
+      cs.pop()
+      authors.add(cs.join(' '))
     })
-  if (author) authors.add(author.name)
 
   return Array.from(authors).join(', ')
 }
 
 const banner = `/*!
-  * ${pkg.name} v${pkg.version}
+  * Baloise Design System v${lerna.version}
   * (c) ${new Date().getFullYear()} ${getAuthors(pkg)}
   * @license ${pkg.license}
   */`
