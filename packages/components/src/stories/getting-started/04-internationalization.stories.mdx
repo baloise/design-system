@@ -117,7 +117,7 @@ updateBalLanguge('de')
 updateBalRegion('CH')
 ```
 
-The config can be access with `useConfig`.
+The config can be accessed with `useConfig`.
 
 ```typescript
 import { useConfig } from '@baloise/design-system-components'
@@ -158,3 +158,47 @@ const changeLang = (lang: BalSwissLanguage) {
 ```
 
 <bal-doc-github link="/stories/getting-started/04-internationalization.stories.mdx"></bal-doc-github>
+
+## Subscribe for changes in region or language
+
+To subscribe to changes of the region or language during runtime you can register your callback function using `onBalConfigChange`.
+
+```typescript
+import { onBalConfigChange, BalConfigState } from '@baloise/design-system-components'
+
+onBalConfigChange((config: BalConfigState) => {
+  // do something with the updated config here
+  console.log('config', config)
+})
+```
+
+### Angular
+
+```typescript
+import { Component } from '@angular/core'
+import { onBalConfigChange, BalConfigState } from '@baloise/design-system-components'
+
+@Component({
+  selector: 'app-sample',
+  templateUrl: './sample.component.html',
+  styleUrls: ['./sample.component.scss'],
+})
+export class SampleComponent {
+  constructor(private yourLangService: YourLangService) {
+    onBalConfigChange((config: BalConfigState) => {
+      // when the language is changed e.g. in the footer you probably want to update it in your translations service
+      this.yourLangService.changeLanguage(config.language)
+    })
+  }
+}
+```
+
+### Vue
+
+```typescript
+import { onBalConfigChange, BalConfigState } from '@baloise/design-system-components'
+
+onBalConfigChange((config: BalConfigState) => {
+  // handle the change of the language here
+})
+```
