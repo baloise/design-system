@@ -20,17 +20,18 @@
     "bulma-css"
   ],
   "scripts": {
-    "build": "npm run build:clean && npm run build:vite && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
+    "build": "npm run build:clean && npm run build:vite && npm run build:components && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
     "build:clean": "rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p .",
     "build:bundle": "rollup --config rollup.config.js",
+    "build:components": "node ./.build/components.js",
     "build:web-types": "node ./.build/web-types.js",
     "build:vetur": "node ./.build/vetur.js",
     "build:vite": "baloiseStencilViteFix",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
-  "main": "./dist/index.esm.js",
-  "module": "./dist/index.esm.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/types/index.d.ts",
   "files": [
     "dist/"
@@ -46,6 +47,7 @@
     "lodash.upperfirst": "^4.3.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "typescript": "^4.3.5",
     "vue": "^3.2.4"
   },

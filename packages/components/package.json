@@ -61,8 +61,8 @@
     "www:watch": "stencil build --dev --serve --config stencil.test.config.ts --watch"
   },
   "dependencies": {
-    "@baloise/design-system-next-fonts": "9.2.3",
-    "@baloise/design-system-next-icons": "9.2.3",
+    "@baloise/design-system-fonts": "9.2.3",
+    "@baloise/design-system-icons": "9.2.3",
     "@baloise/web-app-utils": "^2.0.10",
     "@popperjs/core": "^2.11.2",
     "@stencil/core": "^2.11.0",
@@ -137,5 +137,5 @@
     "vue-loader": "^16.8.3",
     "workbox-build": "^4.3.1"
   },
-  "gitHead": "145f6cf6da2d14109bb832eeebe52e9c5ae1d57d"
+  "gitHead": "be51095ac1032fffbdf492cbbc96f3aaf34bba42"
 }

@@ -1,7 +1,12 @@
 import baseConfig from '../../rollup.base'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
+import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 
 export default {
   ...baseConfig,
-  input: 'dist-transpiled/index.js',
-  external: ['@baloise/design-system-next-components', '@baloise/web-app-utils', 'cypress-file-upload'],
+  external: id => {
+    return id.startsWith('cypress') || id.startsWith('@baloise')
+  },
+  plugins: [nodeResolve(), commonjs(), peerDepsExternal()],
 }

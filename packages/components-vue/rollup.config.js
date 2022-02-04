@@ -1,15 +1,12 @@
+import baseConfig from '../../rollup.base'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
+import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+
 export default {
-  input: 'dist-transpiled/index.js',
-  output: [
-    {
-      dir: 'dist/',
-      entryFileNames: '[name].esm.js',
-      chunkFileNames: '[name]-[hash].esm.js',
-      format: 'es',
-      sourcemap: true,
-    },
-  ],
+  ...baseConfig,
   external: id => {
     return id.startsWith('vue') || id.startsWith('@baloise')
   },
+  plugins: [nodeResolve(), commonjs(), peerDepsExternal()],
 }

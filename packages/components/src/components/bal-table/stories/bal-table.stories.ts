@@ -10,7 +10,7 @@ import {
   BalTableButtonRenderer,
   BalTableTagRenderer,
   BalTableTextRenderer,
-} from '../../../../../components-table/dist/index.esm'
+} from '../../../../../components-table/dist/index.mjs'
 
 const component = BalComponentStory({
   component: BalTable,
