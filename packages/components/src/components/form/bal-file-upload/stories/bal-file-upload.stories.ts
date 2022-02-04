@@ -1,7 +1,7 @@
 import docs from './bal-file-upload.docs.mdx'
 import { BalComponentStory } from '../../../../stories/utils'
 import { BalFileUpload } from '../../../../../.storybook/vue/components'
-import { balToastController } from '../../../../../dist/design-system-components/index.esm'
+import { balToastController } from '../../../../../dist/design-system-components/index.mjs'
 
 const component = BalComponentStory({
   title: 'Components/Form/FileUpload',
