@@ -7,6 +7,7 @@ import { DIRECTIVES } from './directives/proxies-list'
 import { BooleanValueAccessor } from './directives/boolean-value-accessor'
 import { TextValueAccessor } from './directives/text-value-accessor'
 import { SelectValueAccessor } from './directives/select-value-accessor'
+import { CheckboxValueAccessor } from './directives/checkbox-accessor'
 
 import { BalToastService } from './bal-toast.service'
 import { BalSnackbarService } from './bal-snackbar.service'
@@ -26,6 +27,7 @@ const DECLARATIONS = [
   AutoFocus,
 
   // ngModel accessors
+  CheckboxValueAccessor,
   BooleanValueAccessor,
   TextValueAccessor,
   SelectValueAccessor,
