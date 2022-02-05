@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-icons",
-  "version": "9.2.3-beta.3+8dc72b75",
+  "version": "9.2.3-beta.6+ff17bcb4",
   "description": "The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -51,5 +51,5 @@
     "svgo": "^2.4.0",
     "typescript": "^4.3.5"
   },
-  "gitHead": "8dc72b75b2acbf567712f41b6b852a706f3afd24"
+  "gitHead": "ff17bcb42f321a0cf76771a71889dc38490bb368"
 }
