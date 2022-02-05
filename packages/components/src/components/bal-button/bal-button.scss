@@ -209,9 +209,14 @@ bal-button.is-fullwidth {
   }
 
   &.is-info,
-  &.is-info.is-outlined {
+  &.is-info.is-outlined,
+  &.is-text,
+  &.is-text.is-outlined {
     background: transparent;
-    border: 2px solid $blue;
+
+    &:not(.is-text) {
+      border: 2px solid $blue;
+    }
 
     bal-icon {
       svg,
@@ -229,14 +234,20 @@ bal-button.is-fullwidth {
 
     &:focus {
       background: transparent;
-      border-color: $blue;
       color: $blue;
+
+      &:not(.is-text) {
+        border-color: $blue;
+      }
     }
 
     &.is-focused,
     &:focus-visible {
       background: transparent;
-      border-color: $blue;
+
+      &:not(.is-text) {
+        border-color: $blue;
+      }
 
       &,
       & span {
@@ -247,7 +258,10 @@ bal-button.is-fullwidth {
     &.is-hovered,
     &:hover {
       background: $light-blue-light;
-      border-color: $light-blue-dark;
+
+      &:not(.is-text) {
+        border-color: $blue;
+      }
 
       &,
       & span {
@@ -267,7 +281,10 @@ bal-button.is-fullwidth {
     &.is-active,
     &:active {
       background: $light-blue-light;
-      border-color: $blue-dark;
+
+      &:not(.is-text) {
+        border-color: $blue-dark;
+      }
 
       &,
       & span {
@@ -302,11 +319,6 @@ bal-button.is-fullwidth {
     &,
     & span {
       color: $blue;
-    }
-
-    &,
-    bal-text span {
-      text-decoration: underline !important;
     }
 
     &.is-focused,
@@ -353,6 +365,32 @@ bal-button.is-fullwidth {
       &,
       & span {
         color: $blue-dark;
+      }
+    }
+  }
+
+  &.is-link,
+  &.is-link.is-outlined {
+    span.button-label:after {
+      display: block;
+      content: '';
+      height: 2px;
+      width: 100%;
+      background: $blue;
+      margin-top: -2px;
+    }
+
+    &.is-hovered,
+    &:hover {
+      span.button-label:after {
+        background: $light-blue-dark;
+      }
+    }
+
+    &.is-active,
+    &:active {
+      span.button-label:after {
+        background: $blue-dark;
       }
     }
   }
@@ -503,9 +541,13 @@ bal-button.is-fullwidth {
       }
     }
 
-    &.is-info {
+    &.is-info,
+    &.is-text {
       background: transparent;
-      border: 2px solid $white;
+
+      &:not(.is-text) {
+        border: 2px solid $white;
+      }
 
       bal-icon {
         svg,
@@ -529,22 +571,31 @@ bal-button.is-fullwidth {
       &.is-focused,
       &:focus-visible {
         background: transparent;
-        border-color: $white;
         color: $white;
+
+        &:not(.is-text) {
+          border-color: $white;
+        }
       }
 
       &.is-hovered,
       &:hover {
         background: rgba(232, 241, 251, 0.2);
-        border-color: $light-blue-2;
         color: $white;
+
+        &:not(.is-text) {
+          border-color: $light-blue-2;
+        }
       }
 
       &.is-active,
       &:active {
         background: rgba(232, 241, 251, 0.2);
-        border-color: $light-blue-dark;
         color: $white;
+
+        &:not(.is-text) {
+          border-color: $light-blue-dark;
+        }
       }
     }
 
@@ -564,6 +615,10 @@ bal-button.is-fullwidth {
       &,
       & span {
         color: $white;
+
+        &:after {
+          background: $white;
+        }
       }
 
       &.is-focused,
@@ -602,6 +657,7 @@ bal-button.is-fullwidth {
     &,
     &.is-primary,
     &.is-info,
+    &.is-text,
     &.is-link,
     &.is-warning,
     &.is-danger,
@@ -617,8 +673,22 @@ bal-button.is-fullwidth {
     &:active {
       background: $grey-2 !important;
       border-color: $grey-2 !important;
-      color: $grey-7 !important;
       opacity: 1 !important;
+      cursor: not-allowed;
+
+      bal-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $grey-7 !important;
+        }
+      }
+
+      &,
+      & > span {
+        color: $grey-7 !important;
+      }
     }
   }
 
@@ -637,6 +707,10 @@ bal-button.is-fullwidth {
       border-color: transparent !important;
       color: $grey-7 !important;
       opacity: 1 !important;
+
+      span:after {
+        background: $grey-7 !important;
+      }
     }
   }
 
@@ -644,6 +718,7 @@ bal-button.is-fullwidth {
   &:focus-visible {
     &,
     &.is-info,
+    &.is-text,
     &.is-success,
     &.is-warning,
     &.is-danger,

@@ -4,7 +4,7 @@ export type ColorTypesExtended = 'success' | 'warning' | 'danger'
 
 export type ColorTypes = ColorTypesBasic | ColorTypesExtended
 
-export type BalButtonExtraColor = 'link'
+export type BalButtonExtraColor = 'link' | 'text'
 
 export type BalButtonColor = ColorTypes | BalButtonExtraColor
 

@@ -1230,6 +1230,10 @@ export namespace Components {
     }
     interface BalSpinner {
         /**
+          * Defines the color of the spinner.
+         */
+        "color": 'blue' | 'white' | 'grey';
+        /**
           * If `true` the component can be used on dark background
          */
         "inverted": boolean;
@@ -3269,6 +3273,10 @@ declare namespace LocalJSX {
         "subject"?: string;
     }
     interface BalSpinner {
+        /**
+          * Defines the color of the spinner.
+         */
+        "color"?: 'blue' | 'white' | 'grey';
         /**
           * If `true` the component can be used on dark background
          */
