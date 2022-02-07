@@ -186,13 +186,6 @@ export class Button implements ComponentInterface {
     }
   }
 
-  private get spinnerCssClass() {
-    return {
-      'is-small': true,
-      'is-inverted': !(this.color === 'link' || this.outlined),
-    }
-  }
-
   private get leftIconAttrs() {
     if (!this.icon || this.loading) {
       return {
@@ -226,7 +219,9 @@ export class Button implements ComponentInterface {
         style: { display: 'none' },
       }
     }
-    return {}
+    return {
+      style: { position: 'absolute' },
+    }
   }
 
   private get iconColor(): BalIconColor {
@@ -270,6 +265,23 @@ export class Button implements ComponentInterface {
             target,
           }
 
+    const spinnerColor = () => {
+      if (this.disabled) {
+        return 'grey'
+      }
+
+      switch (this.color) {
+        case 'primary':
+        case 'success':
+        case 'warning':
+        case 'danger':
+          return this.inverted ? 'blue' : 'white'
+
+        default:
+          return this.inverted ? 'white' : 'blue'
+      }
+    }
+
     return (
       <Host
         onClick={this.handleClick}
@@ -290,8 +302,8 @@ export class Button implements ComponentInterface {
           onBlur={this.onBlur}
           onClick={this.onClick}
         >
-          <span {...this.spanSquareAttrs}>{/* Empty span to get the correct text height */}</span>
-          <bal-spinner {...this.loadingAttrs} class={this.spinnerCssClass} />
+          {/* <span {...this.spanSquareAttrs}>Empty span to get the correct text height</span> */}
+          <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} />
           <bal-icon
             {...this.leftIconAttrs}
             class="icon-left"
@@ -305,7 +317,7 @@ export class Button implements ComponentInterface {
               'is-small': this.size === 'small',
               'is-bold': true,
             }}
-            style={{ display: this.loading ? 'none' : 'inline' }}
+            style={{ opacity: this.loading || this.square ? '0' : '1' }}
           >
             <slot />
           </span>
