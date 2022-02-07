@@ -237,6 +237,10 @@ export namespace Components {
          */
         "balTabindex": number;
         /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean;
+        /**
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled": boolean;
@@ -261,9 +265,9 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
-          * If `true`, the checkbox is selected.
+          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
-        "value": boolean;
+        "value": string;
     }
     interface BalCheckboxGroup {
     }
@@ -2207,6 +2211,10 @@ declare namespace LocalJSX {
          */
         "balTabindex"?: number;
         /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean;
+        /**
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled"?: boolean;
@@ -2227,7 +2235,7 @@ declare namespace LocalJSX {
          */
         "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * Emitted when the value property has changed.
+          * Emitted when the checked property has changed.
          */
         "onBalChange"?: (event: CustomEvent<boolean>) => void;
         /**
@@ -2235,9 +2243,9 @@ declare namespace LocalJSX {
          */
         "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * If `true`, the checkbox is selected.
+          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
-        "value"?: boolean;
+        "value"?: string;
     }
     interface BalCheckboxGroup {
     }

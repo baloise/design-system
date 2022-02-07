@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms'
 
 import { appInitialize, BaloiseDesignSystemAngularConfig } from './app-initialize'
 import { DIRECTIVES } from './directives/proxies-list'
+import { CheckboxValueAccessor } from './directives/checkbox-accessor'
 import { BooleanValueAccessor } from './directives/boolean-value-accessor'
 import { TextValueAccessor } from './directives/text-value-accessor'
 import { SelectValueAccessor } from './directives/select-value-accessor'
@@ -26,6 +27,7 @@ const DECLARATIONS = [
   AutoFocus,
 
   // ngModel accessors
+  CheckboxValueAccessor,
   BooleanValueAccessor,
   TextValueAccessor,
   SelectValueAccessor,
