@@ -302,7 +302,6 @@ export class Button implements ComponentInterface {
           onBlur={this.onBlur}
           onClick={this.onClick}
         >
-          {/* <span {...this.spanSquareAttrs}>Empty span to get the correct text height</span> */}
           <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} />
           <bal-icon
             {...this.leftIconAttrs}
@@ -317,7 +316,7 @@ export class Button implements ComponentInterface {
               'is-small': this.size === 'small',
               'is-bold': true,
             }}
-            style={{ opacity: this.loading || this.square ? '0' : '1' }}
+            style={{ opacity: this.loading ? '0' : '1' }}
           >
             <slot />
           </span>
