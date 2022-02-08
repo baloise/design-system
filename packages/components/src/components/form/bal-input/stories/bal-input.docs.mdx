@@ -12,6 +12,24 @@ It is meant for text type inputs only, such as "text", "password", "email", "num
   <Story id="components-form-input--text-input" />
 </Canvas>
 
+### Angular Usage
+
+To recover a string value use `toString()`.
+
+```html
+<bal-input
+  [value]="myValue"
+  (balInput)="setValue($event.detail?.toString())"
+  (balChange)="setValue($event.detail?.toString())"
+></bal-input>
+```
+
+```typescript
+setValue(value: string | undefined) {
+  if(value) { /* do stuff */ }
+}
+```
+
 ## Number Input
 
 With number-input property your can only enter valid numbers, if you start with dot (.) zero will be automatically added in front of it.
@@ -21,6 +39,26 @@ With decimal property you can set how many decimal places you want and number wi
 <Canvas>
   <Story id="components-form-input--number-input" />
 </Canvas>
+
+### Angular Usage
+
+To recover a number value use `parseInt($event.detail, 10)` or `pareFloat($event.detail)`.
+
+```html
+<bal-input
+  number-input
+  decimal="2"
+  [value]="myNumber"
+  (balInput)="setNumber(pareFloat($event.detail))"
+  (balChange)="setNumber(pareFloat($event.detail))"
+></bal-input>
+```
+
+```typescript
+setNumber(value: number | undefined) {
+  if(value) { /* do stuff */ }
+}
+```
 
 ## Invalid Input
 
@@ -34,6 +72,8 @@ import AngularLogo from '../../../../stories/assets/images/angular.svg'
 import VueLogo from '../../../../stories/assets/images/vue.png'
 import IconDocument from '../../../../../../icons/svg/icon-document.svg'
 import IconAccount from '../../../../../../icons/svg/icon-account.svg'
+
+### Form Validation
 
 <div className="link-list">
   <a className="link-item" href="?path=/docs/design-form--page">
