@@ -18,6 +18,32 @@ const component = BalComponentStory({
 
 export default component.story
 
+export const Native = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<div>
+  <ul class="is-list mb-4">
+    <li>List Item 1</li>
+    <li>List Item 2</li>
+    <li>List Item 3</li>
+  </ul>
+  <ul class="is-list has-bullet-check mb-4">
+    <li>List Item 1</li>
+    <li>List Item 2</li>
+    <li>List Item 3</li>
+  </ul>
+  <ol class="is-list">
+    <li>List Item 1</li>
+    <li>List Item 2</li>
+    <li>List Item 3</li>
+  </ol>
+</div>`,
+})
+Native.args = {
+  border: true,
+}
+Native.parameters = { ...component.sourceCode(Native) }
+
 export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
