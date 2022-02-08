@@ -200,7 +200,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
   @Watch('value')
   protected async valueChanged(newValue: string | number | undefined, oldValue: string | number | undefined) {
     if (this.didInit && !this.hasFocus && newValue !== oldValue) {
-      this.balChange.emit(this.getFormattedValue())
+      this.balChange.emit(this.getRawValue())
     }
   }
 
