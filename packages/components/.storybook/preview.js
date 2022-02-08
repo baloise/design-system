@@ -15,9 +15,9 @@ export const parameters = {
   viewport: {
     viewports: {
       'small': {
-        name: 'Small (Mobile) from 375px to 768px',
+        name: 'Small (Mobile) from 320px to 768px',
         styles: {
-          width: '375px',
+          width: '320px',
           height: '667px',
         },
         type: 'mobile',
