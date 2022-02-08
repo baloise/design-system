@@ -39,6 +39,11 @@ export class Heading {
   @Prop() inverted = false
 
   get fontSize(): string {
+    if (this.visualLevel) {
+      const size = `${this.visualLevel}`
+      return `is-size-${size.replace('h', '')}`
+    }
+
     const size = `${this.level}`
     return `is-size-${size.replace('h', '')}`
   }
