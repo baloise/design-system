@@ -466,6 +466,14 @@ export namespace Components {
     }
     interface BalFieldHint {
         /**
+          * Text for the close button.
+         */
+        "closeLabel": string;
+        /**
+          * Disables the close button for tablet and desktop
+         */
+        "small": boolean;
+        /**
           * Text of the inputs label
          */
         "subject": string;
@@ -2447,6 +2455,14 @@ declare namespace LocalJSX {
         "loading"?: boolean;
     }
     interface BalFieldHint {
+        /**
+          * Text for the close button.
+         */
+        "closeLabel"?: string;
+        /**
+          * Disables the close button for tablet and desktop
+         */
+        "small"?: boolean;
         /**
           * Text of the inputs label
          */
