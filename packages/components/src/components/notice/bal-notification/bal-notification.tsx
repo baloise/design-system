@@ -7,6 +7,7 @@ import { ColorTypes } from '../../../types/color.types'
 export class Notification {
   /**
    * Defines the color of the element
+   * Color type primary is deprecated, please use info instead.
    */
   @Prop() color: '' | ColorTypes = ''
 

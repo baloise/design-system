@@ -9,7 +9,7 @@ bal-snackbar {
     align-self: flex-end;
     display: inline-flex;
     animation-duration: 150ms;
-    margin: 8px 0 0 0; // why?
+    margin: 8px 0 0 0;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
     border-radius: $radius-large;
     background: $white;
@@ -68,7 +68,7 @@ bal-snackbar {
     .close {
       position: absolute;
       cursor: pointer;
-      top: 21px;
+      top: 17px;
       right: 16px;
       width: 24px;
       height: 24px;
@@ -83,11 +83,19 @@ bal-snackbar {
 @include tablet() {
   bal-snackbar {
     max-width: 288px;
+
+    .snackbar .close {
+      top: 21px;
+    }
   }
 }
 
 @include desktop() {
   bal-snackbar {
     max-width: 288px;
+
+    .snackbar .close {
+      top: 21px;
+    }
   }
 }

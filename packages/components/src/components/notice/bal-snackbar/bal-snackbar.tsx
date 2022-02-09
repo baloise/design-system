@@ -120,7 +120,11 @@ export class Snackbar {
               </bal-heading>
             </span>
           </div>
-          <bal-text space="none" color={this.color == 'primary' ? 'white' : ''} innerHTML={this.message}>
+          <bal-text
+            space={this.action === '' ? 'bottom' : 'none'}
+            color={this.color == 'primary' ? 'white' : ''}
+            innerHTML={this.message}
+          >
             <slot />
           </bal-text>
           <bal-icon

@@ -901,7 +901,7 @@ export namespace Components {
     }
     interface BalNotification {
         /**
-          * Defines the color of the element
+          * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
         "color": '' | ColorTypes;
     }
@@ -2933,7 +2933,7 @@ declare namespace LocalJSX {
     }
     interface BalNotification {
         /**
-          * Defines the color of the element
+          * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
         "color"?: '' | ColorTypes;
     }
