@@ -151,20 +151,6 @@ export class Button implements ComponentInterface {
 
   private get isIconInverted() {
     return this.inverted
-    // if (this.outlined && !this.inverted) {
-    //   return false
-    // }
-    // switch (this.color) {
-    //   case 'primary':
-    //   case 'success':
-    //   case 'warning':
-    //   case 'danger':
-    //   case 'info':
-    //     return true
-
-    //   default:
-    //     return false
-    // }
   }
 
   private get buttonCssClass(): { [className: string]: boolean } {
@@ -267,7 +253,7 @@ export class Button implements ComponentInterface {
 
     const spinnerColor = () => {
       if (this.disabled) {
-        return 'grey'
+        return 'blue'
       }
 
       switch (this.color) {
@@ -302,7 +288,6 @@ export class Button implements ComponentInterface {
           onBlur={this.onBlur}
           onClick={this.onClick}
         >
-          {/* <span {...this.spanSquareAttrs}>Empty span to get the correct text height</span> */}
           <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} />
           <bal-icon
             {...this.leftIconAttrs}
@@ -317,7 +302,7 @@ export class Button implements ComponentInterface {
               'is-small': this.size === 'small',
               'is-bold': true,
             }}
-            style={{ opacity: this.loading || this.square ? '0' : '1' }}
+            style={{ opacity: this.loading || (this.square && this.icon !== '') ? '0' : '1' }}
           >
             <slot />
           </span>

@@ -28,6 +28,7 @@ const component = BalComponentStory({
   },
   args: {
     invalid: false,
+    disabled: false,
     hasFieldMessage: true,
   },
 })
@@ -128,9 +129,8 @@ export const SelectButton = args => ({
   <bal-field-label>Label</bal-field-label>
   <bal-field-control>
     <bal-radio-group v-bind="args" v-model="args.value">
-      <bal-radio name="radio-example" value="1">Label 1</bal-radio>
-      <bal-radio name="radio-example" value="2">Label 2</bal-radio>
-      <bal-radio name="radio-example" value="3">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
+      <bal-radio name="radio-example" value="yes">Yes</bal-radio>
+      <bal-radio name="radio-example" value="no">No</bal-radio>
     </bal-radio-group>
   </bal-field-control>
   <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>

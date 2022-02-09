@@ -1,102 +1,113 @@
-.form.is-inverted .icon > .font {
-  color: $blue-3 !important;
+label.label {
+  font-family: $family-primary;
+  font-size: $size-7;
 }
 
 .help {
   color: $text-light;
-}
-
-.form {
-  .help {
-    text-align: left;
-  }
-
-  &.is-expanded {
-    width: 100%;
-  }
-
-  &.is-disabled {
-    .label,
-    .help,
-    .control {
-      opacity: 0.6;
-    }
-  }
-
-  &.is-inverted {
-    .label {
-      color: $white;
-    }
-
-    .help:not(.is-danger) {
-      color: $blue-3;
-    }
-  }
-}
-
-label.label {
-  font-size: $size-small;
   font-family: $family-primary;
+  font-size: $size-8;
 }
 
-.form .label,
-.form .help {
-  font-family: $family-primary;
-}
+// .form.is-inverted .icon > .font {
+//   color: $blue-3 !important;
+// }
 
-.form .label {
-  font-size: $size-small !important;
-  margin-bottom: 0 !important;
-}
+// .help {
+//   color: $text-light;
+// }
 
-@include desktop() {
-  .form .label {
-    font-size: $size-small !important;
-  }
-}
+// .form {
+//   .help {
+//     text-align: left;
+//   }
 
-.help {
-  min-height: 23px;
-  margin-bottom: 0 !important;
-  font-size: $size-small !important;
-}
+//   &.is-expanded {
+//     width: 100%;
+//   }
 
-@include desktop() {
-  .help {
-    font-size: $size-small !important;
-  }
-}
+//   &.is-disabled {
+//     .label,
+//     .help,
+//     .control {
+//       opacity: 0.6;
+//     }
+//   }
 
-.control.has-icons-left bal-icon,
-.control.has-icons-right bal-icon {
-  min-height: 28px;
-  height: 28px;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  width: 28px;
-  z-index: 1;
-}
+//   &.is-inverted {
+//     .label {
+//       color: $white;
+//     }
 
-@include desktop() {
-  .control.has-icons-left bal-icon,
-  .control.has-icons-right bal-icon {
-    min-height: 36px;
-    height: 36px;
-    top: -4px;
-    width: 36px;
-  }
-}
+//     .help:not(.is-danger) {
+//       color: $blue-3;
+//     }
+//   }
+// }
 
-.control.has-icons-right bal-icon:not(.is-left) {
-  right: 0;
-}
+// label.label {
+//   font-size: $size-small;
+//   font-family: $family-primary;
+// }
 
-.button .label {
-  font-weight: $weight-normal;
-}
+// .form .label,
+// .form .help {
+//   font-family: $family-primary;
+// }
 
-.is-disabled {
-  cursor: default;
-  pointer-events: none !important;
-}
+// .form .label {
+//   font-size: $size-small !important;
+//   margin-bottom: 0 !important;
+// }
+
+// @include desktop() {
+//   .form .label {
+//     font-size: $size-small !important;
+//   }
+// }
+
+// .help {
+//   min-height: 23px;
+//   margin-bottom: 0 !important;
+//   font-size: $size-small !important;
+// }
+
+// @include desktop() {
+//   .help {
+//     font-size: $size-small !important;
+//   }
+// }
+
+// .control.has-icons-left bal-icon,
+// .control.has-icons-right bal-icon {
+//   min-height: 28px;
+//   height: 28px;
+//   pointer-events: none;
+//   position: absolute;
+//   top: 0;
+//   width: 28px;
+//   z-index: 1;
+// }
+
+// @include desktop() {
+//   .control.has-icons-left bal-icon,
+//   .control.has-icons-right bal-icon {
+//     min-height: 36px;
+//     height: 36px;
+//     top: -4px;
+//     width: 36px;
+//   }
+// }
+
+// .control.has-icons-right bal-icon:not(.is-left) {
+//   right: 0;
+// }
+
+// .button .label {
+//   font-weight: $weight-normal;
+// }
+
+// .is-disabled {
+//   cursor: default;
+//   pointer-events: none !important;
+// }

@@ -11,6 +11,7 @@ if (process.env.STORYBOOK_MODE === 'debug') {
 
 export const config: Config = {
   ...StencilBaseConfig,
+  enableCache: true,
   outputTargets: [
     {
       type: 'dist',

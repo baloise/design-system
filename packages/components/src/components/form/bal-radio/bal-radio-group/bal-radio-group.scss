@@ -5,10 +5,10 @@ bal-radio-group {
 
   &.bal-select-button > div {
     display: flex;
+    flex-wrap: wrap;
     flex: 1;
-    border: 1px solid $blue-2;
-    border-radius: 100px;
-    padding: 4px;
+    gap: 8px;
+    flex-direction: column;
   }
 
   &:not(.bal-select-button) {
@@ -20,6 +20,14 @@ bal-radio-group {
         margin-left: 16px;
         margin-right: 16px;
       }
+    }
+  }
+}
+
+@include tablet() {
+  bal-radio-group {
+    &.bal-select-button > div {
+      flex-direction: row;
     }
   }
 }

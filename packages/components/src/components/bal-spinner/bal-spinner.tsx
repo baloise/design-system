@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop, Element } from '@stencil/core'
-import Lottie from 'lottie-web'
-import type { AnimationItem, AnimationDirection } from 'lottie-web'
+import Lottie from 'lottie-web/build/player/lottie_light_html'
+import type { AnimationItem, AnimationDirection } from 'lottie-web/build/player/lottie_light_html'
 import { SpinnerAnimationData } from './bal-spinner.animation'
 
 @Component({
@@ -17,7 +17,7 @@ export class Spinner {
   /**
    * Defines the color of the spinner.
    */
-  @Prop() color: 'blue' | 'white' | 'grey' = 'blue'
+  @Prop() color: 'blue' | 'white' = 'blue'
 
   /**
    * If `true` the component is smaller
@@ -38,10 +38,6 @@ export class Spinner {
       return '#ffffff'
     }
 
-    if (this.color === 'grey') {
-      return '#a4a4a4'
-    }
-
     return '#151f6d'
   }
 
@@ -49,7 +45,6 @@ export class Spinner {
     if (this.animation) {
       this.animation.destroy()
     }
-    let direction: AnimationDirection = 1
     this.animation = Lottie.loadAnimation({
       container: this.el,
       renderer: 'svg',
@@ -57,6 +52,7 @@ export class Spinner {
       autoplay: true,
       animationData: SpinnerAnimationData(this.getColor()),
     })
+    let direction: AnimationDirection = 1
     this.animation.setSpeed(0.75)
     this.animation.addEventListener('complete', () => {
       direction = (direction * -1) as AnimationDirection

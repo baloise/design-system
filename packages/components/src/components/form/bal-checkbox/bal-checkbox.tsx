@@ -53,6 +53,11 @@ export class Checkbox {
   @Prop() inverted = false
 
   /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
+
+  /**
    * Emitted when the value property has changed.
    */
   @Event() balChange!: EventEmitter<boolean>
@@ -153,7 +158,7 @@ export class Checkbox {
             'data-test-checkbox-label': true,
           }}
         >
-          <bal-text>
+          <bal-text inline color={this.disabled ? 'grey' : this.invalid ? 'danger' : 'primary'}>
             <slot></slot>
           </bal-text>
         </label>

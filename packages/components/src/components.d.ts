@@ -250,6 +250,10 @@ export namespace Components {
          */
         "interface": 'checkbox' | 'switch';
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * If `true`, the control works on dark background.
          */
         "inverted": boolean;
@@ -993,6 +997,10 @@ export namespace Components {
          */
         "interface": 'radio' | 'select-button';
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * If `true`, the control works on dark background.
          */
         "inverted": boolean;
@@ -1232,7 +1240,7 @@ export namespace Components {
         /**
           * Defines the color of the spinner.
          */
-        "color": 'blue' | 'white' | 'grey';
+        "color": 'blue' | 'white';
         /**
           * If `true` the component can be used on dark background
          */
@@ -1349,7 +1357,7 @@ export namespace Components {
         /**
           * Defines the color of the text.
          */
-        "color": ColorTypes | 'white' | '';
+        "color": ColorTypes | 'white' | 'grey' | '';
         /**
           * If `true` the text has heading font family
          */
@@ -2253,6 +2261,10 @@ declare namespace LocalJSX {
          */
         "interface"?: 'checkbox' | 'switch';
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * If `true`, the control works on dark background.
          */
         "inverted"?: boolean;
@@ -3014,6 +3026,10 @@ declare namespace LocalJSX {
          */
         "interface"?: 'radio' | 'select-button';
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * If `true`, the control works on dark background.
          */
         "inverted"?: boolean;
@@ -3276,7 +3292,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the spinner.
          */
-        "color"?: 'blue' | 'white' | 'grey';
+        "color"?: 'blue' | 'white';
         /**
           * If `true` the component can be used on dark background
          */
@@ -3397,7 +3413,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the text.
          */
-        "color"?: ColorTypes | 'white' | '';
+        "color"?: ColorTypes | 'white' | 'grey' | '';
         /**
           * If `true` the text has heading font family
          */
