@@ -1486,7 +1486,7 @@ export namespace Components {
          */
         "closeIn": (duration: number) => Promise<void>;
         /**
-          * The theme type of the toast. Given by bulma our css framework.
+          * The theme type of the toast. Given by bulma our css framework. Color type primary is deprecated, please use info instead.
          */
         "color": ColorTypes | '';
         /**
@@ -3550,7 +3550,7 @@ declare namespace LocalJSX {
     interface BalToast {
         "closeHandler"?: () => void;
         /**
-          * The theme type of the toast. Given by bulma our css framework.
+          * The theme type of the toast. Given by bulma our css framework. Color type primary is deprecated, please use info instead.
          */
         "color"?: ColorTypes | '';
         /**

@@ -14,6 +14,7 @@ export class Toast {
 
   /**
    * The theme type of the toast. Given by bulma our css framework.
+   * Color type primary is deprecated, please use info instead.
    */
   @Prop() color: ColorTypes | '' = ''
 
@@ -72,8 +73,8 @@ export class Toast {
   render() {
     return (
       <Host id={this.toastId}>
-        <div role="alert" onClick={() => this.close()} class={`toast ${this.animationClass} ${this.colorType}`}>
-          <bal-text class="toast-message" innerHTML={this.message}>
+        <div role="alert" onClick={() => this.close()} class={`toast ${this.animationClass} ${this.colorType} p-4`}>
+          <bal-text class="toast-message" space="none" innerHTML={this.message}>
             <slot />
           </bal-text>
           <bal-icon name="close" class="close" size="xsmall" inverted={this.color !== ''}></bal-icon>

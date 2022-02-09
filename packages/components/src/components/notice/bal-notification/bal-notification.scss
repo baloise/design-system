@@ -1,16 +1,9 @@
 @import 'bal-notification.vars.scss';
-@import 'node_modules/bulma/sass/elements/notification';
 
 bal-notification {
   display: block;
   position: static;
 }
-
-// Notification
-// ------------------------------------------------
-//
-// Bold notification blocks, to alert your users of something
-// https://bulma.io/documentation/elements/notification/
 
 .notification {
   font-family: $family-primary;
@@ -21,9 +14,9 @@ bal-notification {
   border-radius: $radius-large;
 
   &.is-primary {
-    background: $blue-1;
-    border: 1px solid $blue-2;
-    color: $blue;
+    background: $info-light;
+    border: none;
+    color: $white;
 
     a:not(.button):not(.dropdown-item),
     a:not(.button):not(.popover-item) {
@@ -32,8 +25,8 @@ bal-notification {
   }
 
   &.is-info {
-    background: $blue;
-    border: 1px solid $blue;
+    background: $info-light;
+    border: none;
     color: $white;
   }
 
@@ -44,19 +37,19 @@ bal-notification {
   }
 
   &.is-warning {
-    background: $yellow;
+    background: $warning-light;
     color: $white;
     border: none;
   }
 
   &.is-danger {
-    background: $red;
+    background: $danger-light;
     color: $white;
     border: none;
   }
 
   &.is-success {
-    background: $green;
+    background: $success-light;
     color: $white;
     border: none;
   }

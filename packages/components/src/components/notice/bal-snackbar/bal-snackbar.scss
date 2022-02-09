@@ -16,7 +16,6 @@ bal-snackbar {
     pointer-events: auto;
     max-width: 320px;
     flex-grow: 1;
-    // font-size: $size-small;
     flex-direction: column !important;
     row-gap: 16px;
     position: relative;
@@ -32,6 +31,7 @@ bal-snackbar {
       }
 
       .icon-text {
+        align-items: center;
         margin-bottom: 0;
 
         .icon {
@@ -42,27 +42,22 @@ bal-snackbar {
 
     &.is-primary {
       background: $primary;
-      color: $white;
     }
 
     &.is-info {
       background: $info-light;
-      color: $blue;
     }
 
     &.is-success {
       background: $success-light;
-      color: $blue;
     }
 
     &.is-warning {
       background: $warning-light;
-      color: $blue;
     }
 
     &.is-danger {
       background: $danger-light;
-      color: $blue;
     }
 
     bal-heading,
@@ -73,7 +68,7 @@ bal-snackbar {
     .close {
       position: absolute;
       cursor: pointer;
-      top: 17px;
+      top: 21px;
       right: 16px;
       width: 24px;
       height: 24px;
