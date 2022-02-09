@@ -108,12 +108,12 @@ useBaloiseDesignSystem({
 
 ## Change language or region on runtime
 
-To change the language or region during run time use the two functions `updateBalLanguge` and `updateBalRegion`.
+To change the language or region during run time use the two functions `updateBalLanguage` and `updateBalRegion`.
 
 ```typescript
-import { updateBalLanguge, updateBalRegion } from '@baloise/design-system-components'
+import { updateBalLanguage, updateBalRegion } from '@baloise/design-system-components'
 
-updateBalLanguge('de')
+updateBalLanguage('de')
 updateBalRegion('CH')
 ```
 
@@ -133,7 +133,7 @@ Both variants have the same effect.
 
 ```typescript
 import { Component, OnInit } from '@angular/core'
-import { updateBalLanguge, BalSwissLanguage } from '@baloise/design-system-components'
+import { updateBalLanguage, BalSwissLanguage } from '@baloise/design-system-components'
 
 @Component({
   selector: 'app-app-tab-a',
@@ -142,7 +142,7 @@ import { updateBalLanguge, BalSwissLanguage } from '@baloise/design-system-compo
 })
 export class AppTabAComponent {
   changeLang(lang: BalSwissLanguage) {
-    updateBalLanguge(lang)
+    updateBalLanguage(lang)
   }
 }
 ```
@@ -150,10 +150,10 @@ export class AppTabAComponent {
 ### Vue
 
 ```typescript
-import { updateBalLanguge, BalSwissLanguage } from '@baloise/design-system-components'
+import { updateBalLanguage, BalSwissLanguage } from '@baloise/design-system-components'
 
 const changeLang = (lang: BalSwissLanguage) {
-  updateBalLanguge(lang)
+  updateBalLanguage(lang)
 }
 ```
 
