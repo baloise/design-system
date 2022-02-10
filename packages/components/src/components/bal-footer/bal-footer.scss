@@ -44,6 +44,10 @@ bal-footer {
 
       a {
         white-space: nowrap;
+
+        &.is-current {
+          text-decoration: underline;
+        }
       }
     }
 

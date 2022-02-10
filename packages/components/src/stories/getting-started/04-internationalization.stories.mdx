@@ -14,7 +14,7 @@ import { Meta } from '@storybook/addon-docs'
 The [Internationalization API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) of the browser
 provides the Design System number and date formats.
 
-The following **regions** and **languages** are supported
+The following **regions** and **languages** are supported:
 
 | Region | Languages      | Interface               |
 | ------ | -------------- | ----------------------- |
@@ -22,6 +22,9 @@ The following **regions** and **languages** are supported
 | BE     | fr, nl         | `BalBelgiumLanguage`    |
 | DE     | de             | `BalGermanLanguage`     |
 | LU     | fr, de, en     | `BalLuxembourgLanguage` |
+
+Additionally an **allowedLanguages** should be passed to the configuration.
+It is used to display the language selection for the user.
 
 ## Initialize with default values
 
@@ -36,6 +39,7 @@ import { initialize } from '@baloise/design-system-components'
 initialize({
   region: 'CH',
   language: 'de',
+  allowedLanguages: ['de', 'fr', 'it', 'en'],
 })
 ```
 
@@ -58,6 +62,7 @@ import { AppComponent } from './app.component'
       defaults: {
         region: 'DE',
         language: 'de',
+        allowedLanguages: ['de', 'fr', 'it', 'en'],
       },
     }),
   ],
@@ -86,6 +91,7 @@ createApp(App)
     defaults: {
       region: 'LU',
       language: 'fr',
+      allowedLanguages: ['de', 'fr', 'it', 'en'],
     },
   })
   .mount('#app')
@@ -102,6 +108,7 @@ useBaloiseDesignSystem({
   defaults: {
     region: 'BE',
     language: 'fr',
+    allowedLanguages: ['de', 'fr', 'it', 'en'],
   },
 })
 ```
@@ -111,10 +118,11 @@ useBaloiseDesignSystem({
 To change the language or region during run time use the two functions `updateBalLanguage` and `updateBalRegion`.
 
 ```typescript
-import { updateBalLanguage, updateBalRegion } from '@baloise/design-system-components'
+import { updateBalAllowedLanguages, updateBalLanguage, updateBalRegion } from '@baloise/design-system-components'
 
 updateBalLanguage('de')
 updateBalRegion('CH')
+updateBalAllowedLanguages(['fr', 'it'])
 ```
 
 The config can be accessed with `useConfig`.
@@ -125,6 +133,7 @@ import { useConfig } from '@baloise/design-system-components'
 const config = useConfig()
 config.language = 'de'
 config.region = 'CH'
+config.allowedLanguages = ['de', 'fr', 'it', 'en']
 ```
 
 Both variants have the same effect.

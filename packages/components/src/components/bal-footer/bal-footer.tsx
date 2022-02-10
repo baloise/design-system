@@ -7,6 +7,7 @@ import {
   BalLanguage,
   detachComponentToConfig,
   attachComponentToConfig,
+  updateBalLanguage,
 } from '../../config'
 
 @Component({
@@ -15,6 +16,7 @@ import {
 export class Footer implements BalConfigObserver {
   @State() links: FooterLink[] = []
   @State() language: BalLanguage = defaultConfig.language
+  @State() allowedLanguages: BalLanguage[] = defaultConfig.allowedLanguages
 
   /**
    * If `true` the footer shows a track line at the bottom.
@@ -42,6 +44,7 @@ export class Footer implements BalConfigObserver {
 
   configChanged(config: BalConfigState) {
     this.language = config.language
+    this.allowedLanguages = config.allowedLanguages
     this.updateFooterLinks()
   }
 
@@ -51,6 +54,10 @@ export class Footer implements BalConfigObserver {
       this.language = this.locale
       this.updateFooterLinks()
     }
+  }
+
+  changeLanguage(language: BalLanguage) {
+    updateBalLanguage(language)
   }
 
   updateFooterLinks() {
@@ -75,40 +82,28 @@ export class Footer implements BalConfigObserver {
         >
           <slot></slot>
           <div class="container footer-links-container">
-            <div class="legal-links pt-4" style={{ display: this.hideLinks ? 'flex' : 'flex' }}>
-              <a class="is-link is-inverted pr-4" href="/">
-                Impressum
-              </a>
-              <a class="is-link is-inverted pr-4" href="/">
-                Rechtliche Hinweise
-              </a>
-              <a class="is-link is-inverted pr-4" href="/">
-                Datenschutz
-              </a>
-              <a class="is-link is-inverted pr-4" href="/">
-                Cookie Policy
-              </a>
-              <a class="is-link is-inverted pr-4" href="/">
-                Baloise Group
-              </a>
+            <div class="legal-links pt-4" style={{ display: this.hideLinks ? 'none' : 'flex' }}>
+              {this.links.map(link => (
+                <a class="is-link is-inverted pr-4" href={link.link}>
+                  {link.label}
+                </a>
+              ))}
             </div>
             <div class="language-links pt-4">
-              <a class="is-link is-inverted pr-4" href="/">
-                DE
-              </a>
-              <a class="is-link is-inverted pr-4" href="/">
-                FR
-              </a>
-              <a class="is-link is-inverted pr-4" href="/">
-                IT
-              </a>
+              {this.allowedLanguages.map(lang => (
+                <a
+                  class={[
+                    'is-link',
+                    'is-inverted',
+                    'pr-4',
+                    this.language.toLowerCase() == lang.toLowerCase() ? 'is-current' : '',
+                  ].join(' ')}
+                  onClick={() => this.changeLanguage(lang)}
+                >
+                  {lang.toUpperCase()}
+                </a>
+              ))}
             </div>
-
-            {this.links.map(link => (
-              <a class="is-link is-inverted pr-4" href={link.link}>
-                {link.label}
-              </a>
-            ))}
           </div>
         </footer>
       </Host>
