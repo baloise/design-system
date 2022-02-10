@@ -61,6 +61,20 @@ npm install @baloise/design-system-components-angular --save
 > - We recomand to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
 > - We recommend to use the package [@ngx-translate](https://github.com/ngx-translate/core) for the transalations..
 
+### Deep import config
+
+To use/ignore deep imports in an Angular applications create a file called `ngcc.config.js` in the root folder and add the following content.
+
+```javascript
+module.exports = {
+  packages: {
+    '@baloise/design-system-components-angular': {
+      ignorableDeepImportMatchers: [/@baloise\//],
+    },
+  },
+}
+```
+
 ### Install fonts
 
 The font package is included in the @baloise/design-system-components package and also in the proxy libraries.
@@ -111,15 +125,30 @@ Import the `BaloiseDesignSystemModule` and add it to your angular module. To use
 #### app.module.ts
 
 ```typescript
-import { BrowserModule } from '@angular/platform-browser'
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
-import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+import { BrowserModule } from '@angular/platform-browser'
+import { FormsModule } from '@angular/forms'
+import { CommonModule } from '@angular/common'
+import {
+  BalCoreModule,
+  BalButtonModule,
+  BalHeadingModule,
+  BalFooterModule,
+} from '@baloise/design-system-components-angular'
 
 import { AppComponent } from './app.component'
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, BaloiseDesignSystemModule.forRoot()],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    BalCoreModule.forRoot(),
+    BalButtonModule,
+    BalHeadingModule,
+    BalFooterModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
