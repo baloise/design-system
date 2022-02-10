@@ -42,7 +42,7 @@ export const detachComponentToConfig = (observer: BalConfigObserver): void => {
   }
 }
 
-export const updateBalLanguge = (language: BalLanguage): void => {
+export const updateBalLanguage = (language: BalLanguage): void => {
   const config = useBalConfig()
 
   if (config) {

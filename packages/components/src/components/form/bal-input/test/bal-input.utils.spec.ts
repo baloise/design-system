@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { updateBalLanguge, updateBalRegion } from '../../../../config'
+import { updateBalLanguage, updateBalRegion } from '../../../../config'
 import { filterInputValue, formatInputValue } from '../bal-input.utils'
 
 describe('bal-input', () => {
