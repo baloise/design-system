@@ -8,7 +8,7 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'select',
   },
   {
-    elementSelectors: ['bal-checkbox', 'bal-popover', 'bal-accordion'],
+    elementSelectors: ['bal-popover', 'bal-accordion'],
     event: 'balChange',
     targetAttr: 'value',
     type: 'boolean',

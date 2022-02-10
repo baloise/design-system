@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-testing",
-  "version": "9.1.0",
+  "version": "9.2.3-beta.1+be51095a",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     "bulma-css"
   ],
   "main": "./dist/index.js",
-  "module": "./dist/index.esm.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/types/index.d.ts",
   "files": [
     "dist/"
@@ -40,10 +40,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-components": "9.1.0",
+    "@baloise/design-system-components": "9.2.3-beta.1+be51095a",
     "@baloise/web-app-utils": "^2.0.5"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.3",
     "@types/chai": "^4.2.22",
     "@types/jquery": "^3.5.6",
     "@types/node": "^14.17.21",
@@ -52,9 +54,10 @@
     "http-server": "^13.0.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.58.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "start-server-and-test": "^1.14.0",
     "ts-node": "^9.0.0",
     "typescript": "^4.4.3"
   },
-  "gitHead": "145f6cf6da2d14109bb832eeebe52e9c5ae1d57d"
+  "gitHead": "be51095ac1032fffbdf492cbbc96f3aaf34bba42"
 }

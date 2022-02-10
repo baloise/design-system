@@ -6,6 +6,7 @@ import { appInitialize, BaloiseDesignSystemAngularConfig } from './app-initializ
 import { BooleanValueAccessor } from './directives/boolean-value-accessor'
 import { TextValueAccessor } from './directives/text-value-accessor'
 import { SelectValueAccessor } from './directives/select-value-accessor'
+import { CheckboxValueAccessor } from './directives/checkbox-accessor'
 
 import { AutoFocus } from './focus.directive'
 import { AngularDelegate, BalAppModule } from '.'
@@ -15,6 +16,7 @@ const DECLARATIONS = [
   AutoFocus,
 
   // ngModel accessors
+  CheckboxValueAccessor,
   BooleanValueAccessor,
   TextValueAccessor,
   SelectValueAccessor,

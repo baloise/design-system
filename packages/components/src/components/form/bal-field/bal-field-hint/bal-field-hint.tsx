@@ -11,10 +11,20 @@ export class FieldHint {
    */
   @Prop() subject = ''
 
+  /**
+   * Text for the close button.
+   */
+  @Prop() closeLabel = 'Close'
+
+  /**
+   * Disables the close button for tablet and desktop
+   */
+  @Prop() small = false
+
   render() {
     return (
       <Host>
-        <bal-hint>
+        <bal-hint closeLabel={this.closeLabel} small={this.small}>
           <bal-hint-title>{this.subject}</bal-hint-title>
           <bal-hint-text>
             <slot></slot>

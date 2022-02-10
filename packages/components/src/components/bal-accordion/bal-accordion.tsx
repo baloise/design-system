@@ -117,7 +117,13 @@ export class Accordion {
 
   render() {
     return (
-      <Host class="accordion" aria-presented={this.value ? 'true' : null}>
+      <Host
+        class={{
+          'accordion': true,
+          'mt-5': this.card,
+        }}
+        aria-presented={this.value ? 'true' : null}
+      >
         <bal-button
           class="data-test-accordion-trigger"
           expanded={true}

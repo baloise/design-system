@@ -1,0 +1,38 @@
+.is-list {
+  margin-left: 40px;
+}
+
+ul.is-list:not(.has-bullet-check) {
+  li::before {
+    content: '\2022';
+    color: $blue;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+}
+
+ul.is-list.has-bullet-check {
+  li::before {
+    content: '';
+    display: inline-block;
+    margin-left: -14px;
+    margin-right: 8px;
+    width: 6px;
+    height: 10px;
+    border-bottom: 2px solid $blue;
+    border-right: 2px solid $blue;
+    border-top: 0;
+    border-left: 0;
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}
+
+.is-list li {
+  font-family: $family-primary;
+}

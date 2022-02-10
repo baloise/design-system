@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-icons",
-  "version": "9.1.0",
+  "version": "9.2.3-beta.1+be51095a",
   "description": "The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -32,7 +32,7 @@
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.js",
-  "module": "./dist/index.esm.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/types/index.d.ts",
   "files": [
     "dist/",
@@ -40,13 +40,16 @@
   ],
   "license": "Apache-2.0",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.3",
     "archiver": "^5.3.0",
     "lodash.camelcase": "^4.3.0",
     "lodash.upperfirst": "^4.3.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "svgo": "^2.4.0",
     "typescript": "^4.3.5"
   },
-  "gitHead": "145f6cf6da2d14109bb832eeebe52e9c5ae1d57d"
+  "gitHead": "be51095ac1032fffbdf492cbbc96f3aaf34bba42"
 }

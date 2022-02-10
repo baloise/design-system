@@ -13,14 +13,19 @@ import {
   State,
 } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import { BalLanguage, BaloiseDesignSystemConfig, BalConfigState } from '../../../config'
-import { BalConfigObserver } from '../../../config/observable/observer'
 import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../../types/interfaces'
 import { getDecimalSeperator } from '../../../utils/number.util'
 import { filterInputValue, formatInputValue } from './bal-input.utils'
-import { balConfigStore } from '../../../config/config.store'
+import {
+  defaultConfig,
+  BalLanguage,
+  BalConfigObserver,
+  BalConfigState,
+  attachComponentToConfig,
+  detachComponentToConfig,
+} from '../../../config'
 
 @Component({
   tag: 'bal-input',
@@ -33,7 +38,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
 
   @Element() el!: HTMLElement
 
-  @State() language: BalLanguage = BaloiseDesignSystemConfig.language
+  @State() language: BalLanguage = defaultConfig.language
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -195,7 +200,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
   @Watch('value')
   protected async valueChanged(newValue: string | number | undefined, oldValue: string | number | undefined) {
     if (this.didInit && !this.hasFocus && newValue !== oldValue) {
-      this.balChange.emit(this.getFormattedValue())
+      this.balChange.emit(this.getRawValue())
     }
   }
 
@@ -239,7 +244,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
 
   connectedCallback() {
     this.debounceChanged()
-    balConfigStore.attach(this)
+    attachComponentToConfig(this)
   }
 
   componentDidLoad() {
@@ -250,7 +255,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
   }
 
   disconnectedCallback() {
-    balConfigStore.detach(this)
+    detachComponentToConfig(this)
   }
 
   configChanged(state: BalConfigState): void {

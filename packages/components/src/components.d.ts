@@ -237,6 +237,10 @@ export namespace Components {
          */
         "balTabindex": number;
         /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean;
+        /**
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled": boolean;
@@ -261,9 +265,11 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
-          * If `true`, the checkbox is selected.
+          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
-        "value": boolean;
+        "value": string;
+    }
+    interface BalCheckboxGroup {
     }
     interface BalData {
         /**
@@ -463,6 +469,14 @@ export namespace Components {
         "loading": boolean;
     }
     interface BalFieldHint {
+        /**
+          * Text for the close button.
+         */
+        "closeLabel": string;
+        /**
+          * Disables the close button for tablet and desktop
+         */
+        "small": boolean;
         /**
           * Text of the inputs label
          */
@@ -1540,6 +1554,12 @@ declare global {
         prototype: HTMLBalCheckboxElement;
         new (): HTMLBalCheckboxElement;
     };
+    interface HTMLBalCheckboxGroupElement extends Components.BalCheckboxGroup, HTMLStencilElement {
+    }
+    var HTMLBalCheckboxGroupElement: {
+        prototype: HTMLBalCheckboxGroupElement;
+        new (): HTMLBalCheckboxGroupElement;
+    };
     interface HTMLBalDataElement extends Components.BalData, HTMLStencilElement {
     }
     var HTMLBalDataElement: {
@@ -1906,6 +1926,7 @@ declare global {
         "bal-card-subtitle": HTMLBalCardSubtitleElement;
         "bal-card-title": HTMLBalCardTitleElement;
         "bal-checkbox": HTMLBalCheckboxElement;
+        "bal-checkbox-group": HTMLBalCheckboxGroupElement;
         "bal-data": HTMLBalDataElement;
         "bal-data-item": HTMLBalDataItemElement;
         "bal-data-label": HTMLBalDataLabelElement;
@@ -2198,6 +2219,10 @@ declare namespace LocalJSX {
          */
         "balTabindex"?: number;
         /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean;
+        /**
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled"?: boolean;
@@ -2218,7 +2243,7 @@ declare namespace LocalJSX {
          */
         "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * Emitted when the value property has changed.
+          * Emitted when the checked property has changed.
          */
         "onBalChange"?: (event: CustomEvent<boolean>) => void;
         /**
@@ -2226,9 +2251,11 @@ declare namespace LocalJSX {
          */
         "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * If `true`, the checkbox is selected.
+          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
-        "value"?: boolean;
+        "value"?: string;
+    }
+    interface BalCheckboxGroup {
     }
     interface BalData {
         /**
@@ -2436,6 +2463,14 @@ declare namespace LocalJSX {
         "loading"?: boolean;
     }
     interface BalFieldHint {
+        /**
+          * Text for the close button.
+         */
+        "closeLabel"?: string;
+        /**
+          * Disables the close button for tablet and desktop
+         */
+        "small"?: boolean;
         /**
           * Text of the inputs label
          */
@@ -3506,6 +3541,7 @@ declare namespace LocalJSX {
         "bal-card-subtitle": BalCardSubtitle;
         "bal-card-title": BalCardTitle;
         "bal-checkbox": BalCheckbox;
+        "bal-checkbox-group": BalCheckboxGroup;
         "bal-data": BalData;
         "bal-data-item": BalDataItem;
         "bal-data-label": BalDataLabel;
@@ -3582,6 +3618,7 @@ declare module "@stencil/core" {
             "bal-card-subtitle": LocalJSX.BalCardSubtitle & JSXBase.HTMLAttributes<HTMLBalCardSubtitleElement>;
             "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
             "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
+            "bal-checkbox-group": LocalJSX.BalCheckboxGroup & JSXBase.HTMLAttributes<HTMLBalCheckboxGroupElement>;
             "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
             "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;
             "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;

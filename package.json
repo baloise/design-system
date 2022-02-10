@@ -8,6 +8,7 @@
     "Petar Nobilo <petar.nobilo@baloise.ch> (https://github.com/nobilo)",
     "Laurent Tauber <laurent.tauber@baloise.ch> (https://github.com/Gagne87)"
   ],
+  "license": "Apache-2.0",
   "scripts": {
     "==================== INSTALLATION / SETUP ====================": "================================",
     "prepare": "husky install",
@@ -25,6 +26,7 @@
     "==================== START ====================": "================================",
     "start": "npm run components:start",
     "dev": "npm run components:start",
+    "generate": "node .build/banner.js components:generate && npm --prefix packages/components run generate",
     "components:start": "node .build/banner.js components:start && npm --prefix packages/components run start",
     "components:debug": "node .build/banner.js components:debug && npm --prefix packages/components run debug",
     "testing:serve": "node .build/banner.js testing:serve && npm --prefix packages/testing run serve",

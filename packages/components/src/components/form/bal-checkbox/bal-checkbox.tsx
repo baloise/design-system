@@ -18,6 +18,13 @@ export class Checkbox {
   @Prop() name: string = this.inputId
 
   /**
+   * A DOMString representing the value of the checkbox. This is not displayed on the
+   * client-side, but on the server this is the value given to the data
+   * submitted with the checkbox's name.
+   */
+  @Prop() value = 'on'
+
+  /**
    * Defines the layout of the checkbox button
    */
   @Prop() interface: 'checkbox' | 'switch' = 'checkbox'
@@ -30,15 +37,15 @@ export class Checkbox {
   /**
    * If `true`, the checkbox is selected.
    */
-  @Prop({ mutable: true, reflect: true }) value = false
+  @Prop({ mutable: true, reflect: true }) checked = false
 
   /**
-   * Update the native input element when the value changes
+   * Update the native input element when the checked changes
    */
-  @Watch('value')
-  protected valueChanged(newValue: boolean, oldValue: boolean) {
-    if (newValue !== oldValue) {
-      this.balChange.emit(this.value)
+  @Watch('checked')
+  protected checkedChanged(newChecked: boolean, oldChecked: boolean) {
+    if (newChecked !== oldChecked) {
+      this.balChange.emit(this.checked)
     }
   }
 
@@ -53,7 +60,7 @@ export class Checkbox {
   @Prop() inverted = false
 
   /**
-   * Emitted when the value property has changed.
+   * Emitted when the checked property has changed.
    */
   @Event() balChange!: EventEmitter<boolean>
 
@@ -110,7 +117,7 @@ export class Checkbox {
     }
     ev.preventDefault()
 
-    this.value = !this.value
+    this.checked = !this.checked
   }
 
   render() {
@@ -118,7 +125,7 @@ export class Checkbox {
       <Host
         aria-disabled={this.disabled ? 'true' : null}
         aria-hidden={this.disabled ? 'true' : null}
-        aria-checked={`${this.value}`}
+        aria-checked={`${this.checked}`}
         aria-focused={this.hasFocus ? 'true' : null}
         role="checkbox"
         onClick={this.onClick}
@@ -136,10 +143,12 @@ export class Checkbox {
             'data-test-checkbox-input': true,
           }}
           type="checkbox"
+          name={this.name}
           id={this.inputId}
-          checked={this.value}
+          checked={this.checked}
+          value={this.value}
           tabindex={this.balTabindex}
-          aria-checked={`${this.value}`}
+          aria-checked={`${this.checked}`}
           disabled={this.disabled}
           onFocus={e => this.onInputFocus(e)}
           onBlur={e => this.onInputBlur(e)}
