@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-testing",
-  "version": "9.2.3-beta.1+be51095a",
+  "version": "10.0.0",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-components": "9.2.3-beta.1+be51095a",
+    "@baloise/design-system-components": "10.0.0",
     "@baloise/web-app-utils": "^2.0.5"
   },
   "devDependencies": {
