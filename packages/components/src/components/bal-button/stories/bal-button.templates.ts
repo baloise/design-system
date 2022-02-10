@@ -7,7 +7,7 @@ export const basic = `
 export const links = `
 <div>
 <a href="https://design.baloise.dev/" class="is-link">Link</a>
-<div class="has-background-info p-2">
+<div class="has-background-blue p-2">
   <a href="https://design.baloise.dev/" class="is-link is-inverted">Inverted Link</a>
 </div>
 </div>`
