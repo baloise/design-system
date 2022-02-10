@@ -540,7 +540,7 @@ export namespace Components {
          */
         "multiple": boolean;
         /**
-          * Overrides the default subtitle filesize
+          * Overrides the default subtitle file size
          */
         "subTitle": ((file: File) => string) | undefined;
         /**
@@ -678,7 +678,7 @@ export namespace Components {
          */
         "debounce": number;
         /**
-          * Defins the allowed decimal points for the `number-input`.
+          * Defines the allowed decimal points for the `number-input`.
          */
         "decimal"?: number;
         /**
@@ -777,7 +777,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true` the list can be used on a dark backround
+          * If `true` the list can be used on a dark background
          */
         "inverted": boolean;
     }
@@ -923,7 +923,7 @@ export namespace Components {
          */
         "pageRange": number;
         /**
-          * Go to the prvious page
+          * Go to the previous page
          */
         "previous": () => Promise<void>;
         /**
@@ -1296,7 +1296,7 @@ export namespace Components {
     }
     interface BalTabs {
         /**
-          * If `true` a acation button is added to the right
+          * If `true` a action button is added to the right
          */
         "action": boolean;
         /**
@@ -2011,7 +2011,7 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
-          * Emmited when the accordion has changed
+          * Emitted when the accordion has changed
          */
         "onBalChange"?: (event: CustomEvent<boolean>) => void;
         /**
@@ -2538,7 +2538,7 @@ declare namespace LocalJSX {
          */
         "onBalRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
         /**
-          * Overrides the default subtitle filesize
+          * Overrides the default subtitle file size
          */
         "subTitle"?: ((file: File) => string) | undefined;
         /**
@@ -2664,7 +2664,7 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
-          * Defins the allowed decimal points for the `number-input`.
+          * Defines the allowed decimal points for the `number-input`.
          */
         "decimal"?: number;
         /**
@@ -2779,7 +2779,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` the list can be used on a dark backround
+          * If `true` the list can be used on a dark background
          */
         "inverted"?: boolean;
     }
@@ -3311,7 +3311,7 @@ declare namespace LocalJSX {
     }
     interface BalTabs {
         /**
-          * If `true` a acation button is added to the right
+          * If `true` a action button is added to the right
          */
         "action"?: boolean;
         /**
@@ -3502,7 +3502,7 @@ declare namespace LocalJSX {
          */
         "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * Emitted when either the hour or the minute input has changed. It will not be triggert if either hour or time input has never been set (i.e. "--" is selected).
+          * Emitted when either the hour or the minute input has changed. It will not be triggered if either hour or time input has never been set (i.e. "--" is selected).
          */
         "onBalChange"?: (event: CustomEvent<string>) => void;
         /**
