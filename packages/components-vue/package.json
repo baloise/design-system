@@ -41,6 +41,7 @@
   ],
   "license": "Apache-2.0",
   "devDependencies": {
+    "@babel/types": "^7.17.0",
     "@baloise/stencil-vite-fix": "9.2.3-beta.1+be51095a",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.3",
