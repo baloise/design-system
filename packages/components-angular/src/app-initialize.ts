@@ -1,5 +1,5 @@
 import { BalConfig, initialize } from '@baloise/design-system-next-components'
-import { defineCustomElements, applyPolyfills } from '@baloise/design-system-next-components/loader'
+import { applyPolyfills } from '@baloise/design-system-next-components/loader'
 
 export interface BaloiseDesignSystemAngularConfig {
   applyPolyfills?: boolean
@@ -7,13 +7,10 @@ export interface BaloiseDesignSystemAngularConfig {
 }
 
 export const appInitialize = (config: BaloiseDesignSystemAngularConfig) => () => {
-  return (): Promise<void> => {
+  return async (): Promise<void> => {
     initialize(config.defaults)
     if (config.applyPolyfills) {
-      return applyPolyfills().then(() => {
-        return defineCustomElements()
-      })
+      await applyPolyfills()
     }
-    return defineCustomElements()
   }
 }

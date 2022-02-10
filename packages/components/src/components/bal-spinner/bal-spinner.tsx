@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop, Element } from '@stencil/core'
-import Lottie from 'lottie-web'
-import type { AnimationItem, AnimationDirection } from 'lottie-web'
+import Lottie from 'lottie-web/build/player/lottie_light_html'
+import type { AnimationItem, AnimationDirection } from 'lottie-web/build/player/lottie_light_html'
 import { SpinnerAnimationData } from './bal-spinner.animation'
 
 @Component({

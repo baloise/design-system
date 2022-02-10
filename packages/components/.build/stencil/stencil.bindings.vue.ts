@@ -10,10 +10,16 @@ export const vueComponentModels: ComponentModelConfig[] = [
       'bal-accordion',
       'bal-popover',
       'bal-tabs',
-      'bal-checkbox',
     ],
     event: 'balChange',
     targetAttr: 'value',
+  },
+  {
+    elements: [
+      'bal-checkbox',
+    ],
+    event: 'balChange',
+    targetAttr: 'checked',
   },
   {
     elements: ['bal-input', 'bal-textarea', 'bal-slider'],
@@ -25,7 +31,15 @@ export const vueComponentModels: ComponentModelConfig[] = [
 export const VueGenerator = (
   componentCorePackage = '@baloise/design-system-next-components',
   proxiesDir = '../components-vue/src/proxies',
-  excludeComponents = ['bal-app']
+  excludeComponents = [
+    'bal-app',
+    'bal-doc-app',
+    'bal-doc-color',
+    'bal-doc-download',
+    'bal-doc-github',
+    'bal-doc-icons',
+    'bal-doc-image',
+  ],
 ) =>
   vueOutputTarget({
     componentCorePackage,

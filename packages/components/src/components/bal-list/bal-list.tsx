@@ -10,7 +10,7 @@ export class List {
   @Prop() disabled = false
 
   /**
-   * If `true` the list can be used on a dark backround
+   * If `true` the list can be used on a dark background
    */
   @Prop() inverted = false
 
