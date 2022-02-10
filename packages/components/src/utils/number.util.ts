@@ -1,6 +1,6 @@
 import { defaultLocale, useBalConfig } from '../config'
 
-export const getDecimalSeperator = (): string => {
+export const getDecimalSeparator = (): string => {
   const config = useBalConfig()
   return Intl.NumberFormat((config && config.locale) || defaultLocale)
     .format(1.1)
@@ -24,7 +24,7 @@ export const formatLocaleNumber = (number: number, minimumFractionDigits?: numbe
 
 export const parseLocaleNumber = (stringNumber: string): number => {
   const thousandSeparator = getThousandSeparator()
-  const decimalSeparator = getDecimalSeperator()
+  const decimalSeparator = getDecimalSeparator()
 
   return parseFloat(
     stringNumber

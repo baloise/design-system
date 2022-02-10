@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Element, Listen, State, Event, EventEmitter, Method, Watch } from '@stencil/core'
-import filesize from 'filesize.js'
+import fileSize from 'filesize.js'
 import { areArraysEqual } from '@baloise/web-app-utils'
 import { FileUploadRejectedFile, FileUploadRejectionReason } from './bal-file-upload.type'
 
@@ -67,7 +67,7 @@ export class FileUpload {
   @Prop() value: File[] = []
 
   /**
-   * Overrides the default subtitle filesize
+   * Overrides the default subtitle file size
    */
   @Prop() subTitle: ((file: File) => string) | undefined
 
@@ -224,7 +224,7 @@ export class FileUpload {
             <bal-list-item-content>
               <bal-list-item-title>{file.name}</bal-list-item-title>
               <bal-list-item-subtitle>
-                {this.subTitle ? this.subTitle(file) : filesize(file.size)}
+                {this.subTitle ? this.subTitle(file) : fileSize(file.size)}
               </bal-list-item-subtitle>
             </bal-list-item-content>
             <bal-list-item-icon right class="file-remove" onClick={() => this.removeFile(index)}>

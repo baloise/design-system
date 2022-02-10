@@ -1,6 +1,6 @@
 ## Testing
 
-The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.
 
 - [More information about the installation and usage](/components/tooling/testing.html)
 
@@ -48,8 +48,8 @@ describe('multiple', () => {
 
 A list of the custom commands for this specific component.
 
-| Command                      | Description                                                | Signature                                                              |
-| ---------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `balSelectFindOptions`       | Returns the select options.                                | `(): Chainable<JQuery>`                                                |
-| `balSelectFindChips`         | Returns the closable select chips (only with multiselect). | `(): Chainable<JQuery>`                                                |
-| `balSelectShouldHaveOptions` | Asserts that the select has the given options.             | `(labels: string[], dataType?: 'label' \| 'value'): Chainable<JQuery>` |
+| Command                      | Description                                                 | Signature                                                              |
+| ---------------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `balSelectFindOptions`       | Returns the select options.                                 | `(): Chainable<JQuery>`                                                |
+| `balSelectFindChips`         | Returns the closable select chips (only with multi-select). | `(): Chainable<JQuery>`                                                |
+| `balSelectShouldHaveOptions` | Asserts that the select has the given options.              | `(labels: string[], dataType?: 'label' \| 'value'): Chainable<JQuery>` |

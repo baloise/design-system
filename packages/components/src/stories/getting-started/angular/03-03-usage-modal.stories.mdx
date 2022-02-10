@@ -11,11 +11,11 @@ import { Meta } from '@storybook/addon-docs'
 
 # Usage of Modal
 
-For the angular framework we provide a `ModalService` to create more easaly and dynamic.
+For the angular framework we provide a `ModalService` to create more easily and dynamic.
 
 ## 1. Define the modal component
 
-Create a html and a typscirpt file for your modal component like this.
+Create a html and a typescript file for your modal component like this.
 
 ```html
 <bal-modal-header>Modal Title</bal-modal-header>
@@ -88,7 +88,7 @@ export class ModalPageComponent {
     })
     await this.modal.present()
 
-    // Collect the data from the modal through the disiss event
+    // Collect the data from the modal through the dismiss event
     const { data } = await this.modal.onWillDismiss()
   }
 

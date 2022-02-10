@@ -131,10 +131,10 @@ export class AppComponent implements AfterViewInit {
 
   async ngAfterViewInit(): Promise<void> {
     if (inputRef) {
-      const inputNativElement = element<Components.BalInput>(this.inputRef)
+      const inputNativeElement = element<Components.BalInput>(this.inputRef)
       await wait(100) // wait for the DOM only necessary for setFocus
-      await deepReady(inputNativElement) // wait that the web-component is ready
-      await inputNativElement.setFocus()
+      await deepReady(inputNativeElement) // wait that the web-component is ready
+      await inputNativeElement.setFocus()
     }
   }
 }

@@ -39,11 +39,11 @@ After that it can be used in the components template.
   import { balClaimNumber } from '@baloise/web-app-pipes-vue'
 
   const claimNumber = ref('73001217169')
-  const formatedClaimNumber = computed(() => balClaimNumber(claimNumber.value))
+  const formattedClaimNumber = computed(() => balClaimNumber(claimNumber.value))
 </script>
 
 <template>
-  <p>{{ formatedClaimNumber }}</p>
+  <p>{{ formattedClaimNumber }}</p>
 </template>
 ```
 

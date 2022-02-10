@@ -8,7 +8,7 @@ export const FlexboxHelpers = `
   <p class="has-text-white">is-flex is-justify-content-center is-align-items-center</p>
 </div>`
 
-export const VisabilityHelpers = `
+export const VisibilityHelpers = `
 <div class="columns">
   <div class="column is-hidden-mobile has-background-success"><p>is-hidden-mobile</p></div>
   <div class="column is-hidden-tablet has-background-warning"><p>is-hidden-tablet</p></div>

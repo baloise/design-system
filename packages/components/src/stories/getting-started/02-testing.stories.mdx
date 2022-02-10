@@ -11,7 +11,7 @@ import { Meta } from '@storybook/addon-docs'
 
 # Testing
 
-The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.
 
 ## Prerequisites
 
@@ -45,10 +45,10 @@ import { byTestId } from '@baloise/design-system-testing'
 describe('Accordion', () => {
   const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
   it('should ...', () => {
-    cy.get(accordion).contains('Details einblenden')
+    cy.get(accordion).contains('Show more')
     cy.get(accordion).balAccordionIsClosed()
     cy.get(accordion).click().balAccordionIsOpen()
-    cy.get(page.accordion).contains('Details ausblenden')
+    cy.get(page.accordion).contains('Show less')
     cy.get(accordion).click().balAccordionIsClosed()
   })
 })
@@ -79,6 +79,6 @@ describe('Button', () => {
 
 - [Testing Package](https://github.com/baloise/design-system/blob/master/packages/testing)
 - [Custom Commands](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands/custom)
-- [Overriden Commands](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands/overrides)
+- [Override Commands](https://github.com/baloise/design-system/blob/master/packages/testing/src/commands/overrides)
 
 <bal-doc-github link="/stories/getting-started/02-testing.stories.mdx"></bal-doc-github>

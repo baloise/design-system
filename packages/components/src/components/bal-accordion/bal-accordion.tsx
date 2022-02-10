@@ -64,7 +64,7 @@ export class Accordion {
   @Prop() card = false
 
   /**
-   * Emmited when the accordion has changed
+   * Emitted when the accordion has changed
    */
   @Event() balChange!: EventEmitter<boolean>
 

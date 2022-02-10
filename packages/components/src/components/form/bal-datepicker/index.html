@@ -91,8 +91,8 @@
       </section>
       <script>
         var datepickerAllowedDates = document.getElementById('datepicker-allowed-dates')
-        datepickerAllowedDates.allowedDates = function (datestring) {
-          return parseInt(datestring.split('-')[2], 10) % 2 === 0
+        datepickerAllowedDates.allowedDates = function (dateString) {
+          return parseInt(dateString.split('-')[2], 10) % 2 === 0
         }
       </script>
 

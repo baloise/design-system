@@ -329,7 +329,7 @@ export namespace Components {
          */
         "defaultDate"?: string | null;
         /**
-          * If `true` the component is diabled.
+          * If `true` the component is disabled.
          */
         "disabled": boolean;
         /**
@@ -387,7 +387,7 @@ export namespace Components {
         /**
           * Selects an option
          */
-        "select": (datestring: string) => Promise<void>;
+        "select": (dateString: string) => Promise<void>;
         /**
           * Sets the focus on the input element
          */
@@ -755,7 +755,7 @@ export namespace Components {
          */
         "spellcheck": boolean;
         /**
-          * Adds a suffix the the inputvalue after blur.
+          * Adds a suffix the the input-value after blur.
          */
         "suffix"?: string;
         /**
@@ -1058,7 +1058,7 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
-          * If `true` the component is diabled.
+          * If `true` the component is disabled.
          */
         "disabled": boolean;
         /**
@@ -2323,7 +2323,7 @@ declare namespace LocalJSX {
          */
         "defaultDate"?: string | null;
         /**
-          * If `true` the component is diabled.
+          * If `true` the component is disabled.
          */
         "disabled"?: boolean;
         /**
@@ -2757,7 +2757,7 @@ declare namespace LocalJSX {
          */
         "spellcheck"?: boolean;
         /**
-          * Adds a suffix the the inputvalue after blur.
+          * Adds a suffix the the input-value after blur.
          */
         "suffix"?: string;
         /**
@@ -3049,7 +3049,7 @@ declare namespace LocalJSX {
          */
         "balTabindex"?: number;
         /**
-          * If `true` the component is diabled.
+          * If `true` the component is disabled.
          */
         "disabled"?: boolean;
         /**

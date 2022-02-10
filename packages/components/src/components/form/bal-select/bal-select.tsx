@@ -95,7 +95,7 @@ export class Select {
   @Prop() typeahead = false
 
   /**
-   * If `true` the component is diabled.
+   * If `true` the component is disabled.
    */
   @Prop() disabled = false
 

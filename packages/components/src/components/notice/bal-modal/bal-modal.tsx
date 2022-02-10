@@ -211,11 +211,11 @@ export class Modal implements OverlayInterface {
   @Listen('keyup', { target: 'body' })
   async handleKeyUp(event: KeyboardEvent) {
     const modals = Array.from(document.querySelectorAll('bal-modal')).filter(el => el.hasAttribute('aria-presented'))
-    const nums = modals
+    const numbers = modals
       .map(el => el.overlayIndex)
       .map(num => parseInt(num as any))
       .filter(num => !Number.isNaN(num))
-    const max = Math.max(...nums)
+    const max = Math.max(...numbers)
 
     if (this.overlayIndex === max) {
       event.preventDefault()
