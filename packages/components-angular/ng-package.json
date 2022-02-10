@@ -16,6 +16,7 @@
       "@baloise/design-system-components/dist/components/bal-card-subtitle": "balCardSubtitle",
       "@baloise/design-system-components/dist/components/bal-card-title": "balCardTitle",
       "@baloise/design-system-components/dist/components/bal-checkbox": "balCheckbox",
+      "@baloise/design-system-components/dist/components/bal-checkbox-group": "balCheckboxGroup",
       "@baloise/design-system-components/dist/components/bal-data": "balData",
       "@baloise/design-system-components/dist/components/bal-data-item": "balDataItem",
       "@baloise/design-system-components/dist/components/bal-data-label": "balDataLabel",
