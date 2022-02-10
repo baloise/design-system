@@ -38,6 +38,9 @@ export const AngularGenerator = () =>
       'bal-button': {
         components: ['bal-button-group'],
       },
+      'bal-checkbox': {
+        components: ['bal-checkbox-group'],
+      },
       'bal-card': {
         components: [
           'bal-card-title',
