@@ -114,6 +114,7 @@ packages/vite
 packages/components-table/css
 packages/components-vue/src/components.ts
 packages/components-vue/src/proxies
+packages/components-vue/src/components.generated.ts
 packages/components-react/src/components.ts
 packages/components-angular/src/directives/proxies.ts
 packages/components-angular/src/directives/proxies-list.ts

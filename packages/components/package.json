@@ -87,7 +87,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@babel/core": "^7.16.0",
-    "@baloise/angular-output-target": "1.1.1",
+    "@baloise/angular-output-target": "^1.1.2",
     "@baloise/stencil-vite-fix": "9.1.0",
     "@baloise/vue-output-target": "0.7.2",
     "@stencil/postcss": "^2.1.0",
