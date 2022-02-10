@@ -29,9 +29,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **sheet:** adjust spacing ([c1e83a5](https://github.com/baloise/design-system/commit/c1e83a551176f135b3aa34ec1a702afa5f5e1085))
 * **vue:** improve exports ([be51095](https://github.com/baloise/design-system/commit/be51095ac1032fffbdf492cbbc96f3aaf34bba42))
 
-## 9.1.0 (2022-01-31)
-
-
 
 ### [9.2.1](https://github.com/baloise/design-system/compare/v9.2.0...v9.2.1) (2022-02-03)
 
