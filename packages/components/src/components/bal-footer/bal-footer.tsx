@@ -29,9 +29,14 @@ export class Footer implements BalConfigObserver {
   @Prop() locale: 'en' | 'de' | 'fr' | 'it' | '' = ''
 
   /**
-   * If `true` the default Baloise links will be hidden.
+   * If `true` the legal Baloise links will be hidden.
    */
   @Prop() hideLinks = false
+
+  /**
+   * If `true` the language selection will be hidden.
+   */
+  @Prop() hideLanguageSelection = false
 
   disconnectedCallback() {
     detachComponentToConfig(this)
@@ -89,7 +94,10 @@ export class Footer implements BalConfigObserver {
                 </a>
               ))}
             </div>
-            <div class="language-links pt-4">
+            <div
+              class="language-links pt-4"
+              style={{ display: this.hideLanguageSelection || this.allowedLanguages.length <= 1 ? 'none' : 'flex' }}
+            >
               {this.allowedLanguages.map(lang => (
                 <a
                   class={[
