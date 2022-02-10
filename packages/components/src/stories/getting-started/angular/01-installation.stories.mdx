@@ -43,7 +43,7 @@ Run the app with the npm script.
 npm start
 ```
 
-> **Recommandations**
+> **Recommendations**
 >
 > - Choose **SCSS** as the stylesheet format, because it gives access to the internal Baloise Design System variables like colors and much more.
 > - Choose **ESLint** as the default linter tool, because TSLint is deprecated.
@@ -56,16 +56,30 @@ Use npm to install the Angular proxy library.
 npm install @baloise/design-system-components-angular --save
 ```
 
-> **Recommandations**
+> **Recommendations**
 >
 > - We recomand to install our [utility libraries](https://github.com/baloise/web-app-utils) for validations and pipes.
-> - We recommand to use the package [@ngx-translate](https://github.com/ngx-translate/core) for the transalations..
+> - We recommend to use the package [@ngx-translate](https://github.com/ngx-translate/core) for the transalations..
+
+### Deep import config
+
+To use/ignore deep imports in an Angular applications create a file called `ngcc.config.js` in the root folder and add the following content.
+
+```javascript
+module.exports = {
+  packages: {
+    '@baloise/design-system-components-angular': {
+      ignorableDeepImportMatchers: [/@baloise\//],
+    },
+  },
+}
+```
 
 ### Install fonts
 
 The font package is included in the @baloise/design-system-components package and also in the proxy libraries.
 
-Next step is to provide the fonts to our web application. To do so we recommand the tool copyfiles (opens new window)to copy the font files into your asset folder.
+Next step is to provide the fonts to our web application. To do so we recommend the tool copyfiles (opens new window) to copy the font files into your asset folder.
 
 ```bash
 npm install copyfiles --save-dev
@@ -111,15 +125,30 @@ Import the `BaloiseDesignSystemModule` and add it to your angular module. To use
 #### app.module.ts
 
 ```typescript
-import { BrowserModule } from '@angular/platform-browser'
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
-import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+import { BrowserModule } from '@angular/platform-browser'
+import { FormsModule } from '@angular/forms'
+import { CommonModule } from '@angular/common'
+import {
+  BalCoreModule,
+  BalButtonModule,
+  BalHeadingModule,
+  BalFooterModule,
+} from '@baloise/design-system-components-angular'
 
 import { AppComponent } from './app.component'
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, BaloiseDesignSystemModule.forRoot()],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    BalCoreModule.forRoot(),
+    BalButtonModule,
+    BalHeadingModule,
+    BalFooterModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

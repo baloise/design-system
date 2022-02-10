@@ -5,4 +5,12 @@ export const ReactGenerator = () =>
     componentCorePackage: '@baloise/design-system-components',
     proxiesFile: '../components-react/src/components.ts',
     includeDefineCustomElements: false,
+    excludeComponents: [
+      'bal-doc-app',
+      'bal-doc-color',
+      'bal-doc-download',
+      'bal-doc-github',
+      'bal-doc-icons',
+      'bal-doc-image',
+    ],
   })

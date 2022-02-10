@@ -1,11 +1,21 @@
 import { BalConfigObserver } from '../types'
 import { Config } from './config'
-import { BalLanguage, BalRegion } from './config.types'
+import { BalConfigState, BalLanguage, BalRegion } from './config.types'
 
 export * from './initialize'
 export * from './config.types'
 export * from './config'
 export * from './observable/observer'
+
+export type BalConfigChangeFn = (config: BalConfigState) => void
+
+export const onBalConfigChange = (callback: BalConfigChangeFn) => {
+  attachComponentToConfig({
+    configChanged(state) {
+      callback(state)
+    },
+  })
+}
 
 export const useBalConfig = (): Config | undefined => {
   if (typeof (window as any) === 'undefined') {
@@ -32,7 +42,7 @@ export const detachComponentToConfig = (observer: BalConfigObserver): void => {
   }
 }
 
-export const updateBalLanguge = (language: BalLanguage): void => {
+export const updateBalLanguage = (language: BalLanguage): void => {
   const config = useBalConfig()
 
   if (config) {
