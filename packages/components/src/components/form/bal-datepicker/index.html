@@ -44,7 +44,7 @@
 
       <h2 class="title is-size-2">Inverted</h2>
       <section>
-        <div class="has-background-info p-4">
+        <div class="has-background-blue p-4">
           <bal-datepicker inverted placeholder="DD.MM.YYYY"></bal-datepicker>
         </div>
       </section>
@@ -91,8 +91,8 @@
       </section>
       <script>
         var datepickerAllowedDates = document.getElementById('datepicker-allowed-dates')
-        datepickerAllowedDates.allowedDates = function (datestring) {
-          return parseInt(datestring.split('-')[2], 10) % 2 === 0
+        datepickerAllowedDates.allowedDates = function (dateString) {
+          return parseInt(dateString.split('-')[2], 10) % 2 === 0
         }
       </script>
 

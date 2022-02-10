@@ -3,75 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-### [9.2.2](https://github.com/baloise/design-system/compare/v9.2.1...v9.2.2) (2022-02-03)
-
-**Note:** Version bump only for package root
-
-
-
-
-
 ### [9.2.1](https://github.com/baloise/design-system/compare/v9.2.0...v9.2.1) (2022-02-03)
-
 
 ### Bug Fixes
 
-* improve config usage with proxy libs ([196873c](https://github.com/baloise/design-system/commit/196873ccba17f9807c4bc439591b802ca03fa485))
-
-
+- improve config usage with proxy libs ([196873c](https://github.com/baloise/design-system/commit/196873ccba17f9807c4bc439591b802ca03fa485))
 
 ## [9.2.0](https://github.com/baloise/design-system/compare/v9.1.0...v9.2.0) (2022-02-01)
 
-
 ### Features
 
-* **checkbox:** add group component ([3c5b611](https://github.com/baloise/design-system/commit/3c5b611d33b585a8e5c9408d2f92f787501e0b42))
-
+- **checkbox:** add group component ([3c5b611](https://github.com/baloise/design-system/commit/3c5b611d33b585a8e5c9408d2f92f787501e0b42))
 
 ### Bug Fixes
 
-* **accordion:** add missing spacing in combination with cards ([adc4e85](https://github.com/baloise/design-system/commit/adc4e85779ee44a2e65efeb5b8610f260beb76f8))
-* **form:** add name attribute to form controls ([5491305](https://github.com/baloise/design-system/commit/5491305179341b2d3249921287004f2aef8e0f70))
-* **radio:** adjust spacing between radio buttons ([8822469](https://github.com/baloise/design-system/commit/8822469ef0fe0944f4eb16420519838719911597))
-
-
+- **accordion:** add missing spacing in combination with cards ([adc4e85](https://github.com/baloise/design-system/commit/adc4e85779ee44a2e65efeb5b8610f260beb76f8))
+- **form:** add name attribute to form controls ([5491305](https://github.com/baloise/design-system/commit/5491305179341b2d3249921287004f2aef8e0f70))
+- **radio:** adjust spacing between radio buttons ([8822469](https://github.com/baloise/design-system/commit/8822469ef0fe0944f4eb16420519838719911597))
 
 ## [9.1.0](https://github.com/baloise/design-system/compare/v9.0.7...v9.1.0) (2022-01-31)
 
-
 ### Features
 
-* add internationalization ([d50e3ca](https://github.com/baloise/design-system/commit/d50e3ca7462b8991ce0c3941f0465e262679795a))
-* **config:** add date and number formats to global config ([8e2b9d0](https://github.com/baloise/design-system/commit/8e2b9d09dca8fcbc63d918ccc83e1e5873952bed))
-
+- add internationalization ([d50e3ca](https://github.com/baloise/design-system/commit/d50e3ca7462b8991ce0c3941f0465e262679795a))
+- **config:** add date and number formats to global config ([8e2b9d0](https://github.com/baloise/design-system/commit/8e2b9d09dca8fcbc63d918ccc83e1e5873952bed))
 
 ### Bug Fixes
 
-* **button:** adjust button order on mobile ([2640e1c](https://github.com/baloise/design-system/commit/2640e1c4a85bb5915d83d557234e44d51487ac2a)), closes [#475](https://github.com/baloise/design-system/issues/475)
-* **data:** adjust mobile view ([9e3921f](https://github.com/baloise/design-system/commit/9e3921f83bc6a9df18b50b8fb52dc2a124eaca03)), closes [#461](https://github.com/baloise/design-system/issues/461) [#477](https://github.com/baloise/design-system/issues/477)
-* **datepicker:** resolve max attribute logic ([8b200b6](https://github.com/baloise/design-system/commit/8b200b625e0cf426957c488fa65eb14a4f62a94c)), closes [#445](https://github.com/baloise/design-system/issues/445)
-* **form:** improve invalid style ([cf9902f](https://github.com/baloise/design-system/commit/cf9902fa46bf7253153c2a471f51fa05199cd639))
-* **form:** improve sync of props ([98db4a1](https://github.com/baloise/design-system/commit/98db4a1bde80859c8078988cf9ce7d581b9bbfd7))
-* **navbar:** remove margin bottom ([a22a072](https://github.com/baloise/design-system/commit/a22a072280ca9f27c52b3df0fb17c8e38cc5067a))
-* **pagination:** adjust for mobile view ([c25a04d](https://github.com/baloise/design-system/commit/c25a04dd18f6d5c4070e7cb045e032ec97a31426)), closes [#476](https://github.com/baloise/design-system/issues/476)
-* **radio:** remove inconsistent shade ([91aa2e3](https://github.com/baloise/design-system/commit/91aa2e317226eeffc7dcae4a648c5a4c2295ffdf)), closes [#386](https://github.com/baloise/design-system/issues/386)
-* **vue:** add plugin function with better typesafty ([b1b29de](https://github.com/baloise/design-system/commit/b1b29de4833944c9d8265943c7d47e3d28eef9fd))
-
+- **button:** adjust button order on mobile ([2640e1c](https://github.com/baloise/design-system/commit/2640e1c4a85bb5915d83d557234e44d51487ac2a)), closes [#475](https://github.com/baloise/design-system/issues/475)
+- **data:** adjust mobile view ([9e3921f](https://github.com/baloise/design-system/commit/9e3921f83bc6a9df18b50b8fb52dc2a124eaca03)), closes [#461](https://github.com/baloise/design-system/issues/461) [#477](https://github.com/baloise/design-system/issues/477)
+- **datepicker:** resolve max attribute logic ([8b200b6](https://github.com/baloise/design-system/commit/8b200b625e0cf426957c488fa65eb14a4f62a94c)), closes [#445](https://github.com/baloise/design-system/issues/445)
+- **form:** improve invalid style ([cf9902f](https://github.com/baloise/design-system/commit/cf9902fa46bf7253153c2a471f51fa05199cd639))
+- **form:** improve sync of props ([98db4a1](https://github.com/baloise/design-system/commit/98db4a1bde80859c8078988cf9ce7d581b9bbfd7))
+- **navbar:** remove margin bottom ([a22a072](https://github.com/baloise/design-system/commit/a22a072280ca9f27c52b3df0fb17c8e38cc5067a))
+- **pagination:** adjust for mobile view ([c25a04d](https://github.com/baloise/design-system/commit/c25a04dd18f6d5c4070e7cb045e032ec97a31426)), closes [#476](https://github.com/baloise/design-system/issues/476)
+- **radio:** remove inconsistent shade ([91aa2e3](https://github.com/baloise/design-system/commit/91aa2e317226eeffc7dcae4a648c5a4c2295ffdf)), closes [#386](https://github.com/baloise/design-system/issues/386)
+- **vue:** add plugin function with better typesafty ([b1b29de](https://github.com/baloise/design-system/commit/b1b29de4833944c9d8265943c7d47e3d28eef9fd))
 
 ### [9.0.7](https://github.com/baloise/design-system/compare/v9.0.6...v9.0.7) (2022-01-27)
 
-
 ### Bug Fixes
 
-* remove baloiseStencilViteFix from postinstall ([d185d0d](https://github.com/baloise/design-system/commit/d185d0d433f5b48307f78d7f36d0e690b3905f8e))
-
-
+- remove baloiseStencilViteFix from postinstall ([d185d0d](https://github.com/baloise/design-system/commit/d185d0d433f5b48307f78d7f36d0e690b3905f8e))
 
 ### [9.0.6](https://github.com/baloise/design-system/compare/v9.0.5...v9.0.6) (2022-01-25)
 
 ### Bug Fixes
 
-* **vue:** add vite support ([cf0c356](https://github.com/baloise/design-system/commit/cf0c356db330fad53685146528da23faca4da0cf))
+- **vue:** add vite support ([cf0c356](https://github.com/baloise/design-system/commit/cf0c356db330fad53685146528da23faca4da0cf))
 
 ### [9.0.5](https://github.com/baloise/design-system/compare/v9.0.4...v9.0.5) (2022-01-20)
 
@@ -114,15 +93,15 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 
 ### ⚠ BREAKING CHANGES
 
-- **card:** remove all card subcomponents
-- **modal:** remove bal-modal-foooter
+- **card:** remove all card sub-components
+- **modal:** remove bal-modal-footer
 - **card:** remove all the sub components and use css helpers and existing components
 - **angular:** Rename checked to value of the bal-checkbox
 - **tabs:** add value prop,
   rename balTabChange to balChange and remove active tab on tab items
 - **hint:** Rename open to present and close to dismiss
-- **popover:** Renamed is-actvie to value and balCollapse to balChange
-- **accordion:** Renamed is-actvie to value and balCollapse to balChange
+- **popover:** Renamed is-active to value and balCollapse to balChange
+- **accordion:** Renamed is-active to value and balCollapse to balChange
 - **form:** Removed prop expanded, removed component bal-dropdown-trigger
   and renamed bal-dropdown to bal-popover
 - **modal:** Removed bal-modal-actions
@@ -207,7 +186,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 
 ### BREAKING CHANGES
 
-- The component `bal-app` lost his props, due better intrgration for our proxy libraries.
+- The component `bal-app` lost his props, due better integration for our proxy libraries.
   - Follow the migration guide [Migration from 4.x to 5.x](https://design.baloise.dev/?path=/story/migration-migration-from-4-x-to-5-x--page)
 
 ### Features
@@ -269,7 +248,7 @@ Follow the migration guide [Migration from 8.x to 9.x](https://design.baloise.de
 ### Bug Fixes
 
 - **radio:** adjust space between radio and label ([72f3a88](https://github.com/baloise/design-system/commit/72f3a880ee89cb2884d40c97cefa893544243f38))
-- **vue:** element fn parameter will be unrefed ([e2b1302](https://github.com/baloise/design-system/commit/e2b13020a75f3af8a0cd9accd84900d9c444f2d0))
+- **vue:** element fn parameter will be used as unref ([e2b1302](https://github.com/baloise/design-system/commit/e2b13020a75f3af8a0cd9accd84900d9c444f2d0))
 
 ### Features
 

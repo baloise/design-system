@@ -147,7 +147,7 @@ export const Service = args => ({
     </div>
     <p class="mt-2 has-text-blue-light-text is-hidden-desktop">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</p>
   </bal-card-content>
-  <bal-accordion card open-label="Details einblenden" close-label="Details ausblenden">
+  <bal-accordion card open-label="Show more" close-label="Show less">
   <p class="p-5 has-text-blue-light-text">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
     adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

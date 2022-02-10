@@ -53,7 +53,7 @@ export class Timeinput {
 
   /**
    * Emitted when either the hour or the minute input has changed.
-   * It will not be triggert if either hour or time input has never been set (i.e. "--" is selected).
+   * It will not be triggered if either hour or time input has never been set (i.e. "--" is selected).
    */
   @Event({ eventName: 'balChange' }) balTimeinputChange!: EventEmitter<string>
 

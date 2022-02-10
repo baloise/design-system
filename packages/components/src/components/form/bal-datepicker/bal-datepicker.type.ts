@@ -29,4 +29,4 @@ export interface BalPointerDate {
   day: number
 }
 
-export type BalDateCallback = (datestring: string) => boolean
+export type BalDateCallback = (dateString: string) => boolean
