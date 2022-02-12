@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalButtonColor, BalIconColor } from "./types";
-import { BackgroundColors, ColorTypes, ColorTypesExtended } from "./types/color.types";
+import { BackgroundColors, ColorTypes, ColorTypesExtended, SupportColors } from "./types/color.types";
 import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
@@ -253,6 +253,10 @@ export namespace Components {
           * Defines the layout of the checkbox button
          */
         "interface": 'checkbox' | 'switch';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
         /**
           * If `true`, the control works on dark background.
          */
@@ -1009,6 +1013,10 @@ export namespace Components {
          */
         "interface": 'radio' | 'select-button';
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * If `true`, the control works on dark background.
          */
         "inverted": boolean;
@@ -1082,7 +1090,7 @@ export namespace Components {
          */
         "getValue": () => Promise<string[] | undefined>;
         /**
-          * Enables the slide in animation for the option items.
+          * @deprecated Enables the slide in animation for the option items.
          */
         "hasMovement": boolean;
         /**
@@ -1090,7 +1098,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
         /**
@@ -1106,7 +1114,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Removes the border of the input.
+          * @deprecated Removes the border of the input.
          */
         "noBorder": boolean;
         /**
@@ -1252,7 +1260,7 @@ export namespace Components {
         /**
           * Defines the color of the spinner.
          */
-        "color": 'blue' | 'white' | 'grey';
+        "color": 'blue' | 'white';
         /**
           * If `true` the component can be used on dark background
          */
@@ -1353,7 +1361,7 @@ export namespace Components {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "color": ColorTypes | '';
+        "color": ColorTypes | SupportColors | '';
         "dense": boolean;
         /**
           * The size of the tag element
@@ -1369,7 +1377,7 @@ export namespace Components {
         /**
           * Defines the color of the text.
          */
-        "color": ColorTypes | 'white' | '';
+        "color": ColorTypes | 'white' | 'grey' | '';
         /**
           * If `true` the text has heading font family
          */
@@ -2277,6 +2285,10 @@ declare namespace LocalJSX {
          */
         "interface"?: 'checkbox' | 'switch';
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * If `true`, the control works on dark background.
          */
         "inverted"?: boolean;
@@ -2289,7 +2301,7 @@ declare namespace LocalJSX {
          */
         "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * Emitted when the checked property has changed.
+          * Emitted when the value property has changed.
          */
         "onBalChange"?: (event: CustomEvent<boolean>) => void;
         /**
@@ -3050,6 +3062,10 @@ declare namespace LocalJSX {
          */
         "interface"?: 'radio' | 'select-button';
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * If `true`, the control works on dark background.
          */
         "inverted"?: boolean;
@@ -3114,7 +3130,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Enables the slide in animation for the option items.
+          * @deprecated Enables the slide in animation for the option items.
          */
         "hasMovement"?: boolean;
         /**
@@ -3122,7 +3138,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
         /**
@@ -3138,7 +3154,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Removes the border of the input.
+          * @deprecated Removes the border of the input.
          */
         "noBorder"?: boolean;
         /**
@@ -3316,7 +3332,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the spinner.
          */
-        "color"?: 'blue' | 'white' | 'grey';
+        "color"?: 'blue' | 'white';
         /**
           * If `true` the component can be used on dark background
          */
@@ -3417,7 +3433,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "color"?: ColorTypes | '';
+        "color"?: ColorTypes | SupportColors | '';
         "dense"?: boolean;
         /**
           * Emitted when the input got clicked.
@@ -3437,7 +3453,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the text.
          */
-        "color"?: ColorTypes | 'white' | '';
+        "color"?: ColorTypes | 'white' | 'grey' | '';
         /**
           * If `true` the text has heading font family
          */

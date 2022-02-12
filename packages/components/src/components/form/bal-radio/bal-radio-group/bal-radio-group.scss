@@ -3,19 +3,12 @@ bal-radio-group {
   position: relative;
   width: 100%;
 
-  &.bal-select-button {
-    > div {
-      display: flex;
-      flex: 1;
-      border: 1px solid $blue-2;
-      border-radius: 100px;
-      padding: 4px;
-    }
-
-    &.is-vertical-mobile > div {
-      flex-direction: column;
-      border-radius: 12px;
-    }
+  &.bal-select-button > div {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 8px;
+    flex-direction: column;
   }
 
   &:not(.bal-select-button) {
@@ -34,6 +27,14 @@ bal-radio-group {
     &.bal-select-button.is-vertical-mobile > div {
       flex-direction: row;
       border-radius: 100px;
+    }
+  }
+}
+
+@include tablet() {
+  bal-radio-group {
+    &.bal-select-button > div {
+      flex-direction: row;
     }
   }
 }

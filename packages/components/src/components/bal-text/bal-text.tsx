@@ -29,7 +29,7 @@ export class Text {
   /**
    * Defines the color of the text.
    */
-  @Prop() color: ColorTypes | 'white' | '' = ''
+  @Prop() color: ColorTypes | 'white' | 'grey' | '' = ''
 
   /**
    * Defines at which position the heading has spacing.

@@ -27,7 +27,7 @@ export class Field {
   @Prop() loading = false
 
   private formControlElement = ['bal-field-control']
-  private inputElements = ['bal-input', 'bal-textarea', 'bal-select', 'bal-datepicker']
+  private inputElements = ['bal-input', 'bal-textarea', 'bal-select', 'bal-datepicker', 'bal-checkbox', 'bal-radio']
   private formElements = [...this.formControlElement, 'bal-field-label', 'bal-field-message']
 
   @Watch('invalid')
@@ -66,6 +66,7 @@ export class Field {
       <Host
         class={{
           'is-invalid': this.invalid,
+          'is-disabled': this.disabled,
         }}
       >
         <div
