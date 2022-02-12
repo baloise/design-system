@@ -1,26 +1,79 @@
 .is-list {
-  margin-left: 40px;
+  margin-bottom: 24px;
+  margin-left: 24px;
 }
 
-ul.is-list:not(.has-bullet-check) {
-  li::before {
-    content: '\2022';
-    color: $blue;
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
+@include desktop() {
+  .is-list {
+    margin-bottom: 32px;
   }
 }
 
-ul.is-list.has-bullet-check {
-  li::before {
+.is-list li {
+  font-family: $family-primary;
+  color: $blue;
+  margin-bottom: 12px;
+
+  &::marker {
+    color: $blue;
+  }
+}
+
+ul.is-list li {
+  list-style: disc;
+}
+
+ul.is-list.has-bullet-circle li {
+  &::marker {
+    content: none;
+  }
+  &::before {
     content: '';
     display: inline-block;
-    margin-left: -14px;
-    margin-right: 8px;
-    width: 6px;
-    height: 10px;
+    margin-left: -18px;
+    margin-right: 7px;
+    width: 11px;
+    height: 11px;
+    border-radius: $radius-rounded;
+    background: $green-3;
+  }
+}
+
+ul.is-list.has-bullet-circle.has-bullet-red li {
+  &::before {
+    background: $red-3;
+  }
+}
+
+ul.is-list.has-bullet-circle.has-bullet-yellow li {
+  &::before {
+    background: $yellow-3;
+  }
+}
+
+ul.is-list.has-bullet-circle.has-bullet-green li {
+  &::before {
+    background: $green-3;
+  }
+}
+
+ul.is-list.has-bullet-circle.has-bullet-purple li {
+  &::before {
+    background: $purple-3;
+  }
+}
+
+ul.is-list.has-bullet-check li {
+  &::marker {
+    content: none;
+  }
+  &::before {
+    content: '';
+    display: inline-block;
+    margin-left: -16px;
+    margin-right: 9px;
+    width: 7px;
+    height: 13px;
     border-bottom: 2px solid $blue;
     border-right: 2px solid $blue;
     border-top: 0;
@@ -33,6 +86,14 @@ ul.is-list.has-bullet-check {
   }
 }
 
-.is-list li {
-  font-family: $family-primary;
+.is-list.is-inverted {
+  li,
+  li::marker {
+    color: $white;
+  }
+
+  &.has-bullet-check li::before {
+    border-bottom-color: $white;
+    border-right-color: $white;
+  }
 }

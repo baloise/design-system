@@ -788,6 +788,10 @@ export namespace Components {
           * If `true` the list can be used on a dark background
          */
         "inverted": boolean;
+        /**
+          * Defines the min height of the list item
+         */
+        "size": '' | 'large';
     }
     interface BalListItem {
         /**
@@ -2827,6 +2831,10 @@ declare namespace LocalJSX {
           * If `true` the list can be used on a dark background
          */
         "inverted"?: boolean;
+        /**
+          * Defines the min height of the list item
+         */
+        "size"?: '' | 'large';
     }
     interface BalListItem {
         /**
