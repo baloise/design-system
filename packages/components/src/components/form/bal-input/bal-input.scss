@@ -1,9 +1,9 @@
-bal-input {
+bal-input,
+.bal-input {
   display: block;
   position: relative;
-  flex: 1;
-  align-items: center;
   width: 100%;
-  padding: 0 !important;
+  flex: 1;
   font-family: $family-primary;
+  padding: 0 !important;
 }

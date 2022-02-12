@@ -1090,7 +1090,7 @@ export namespace Components {
          */
         "getValue": () => Promise<string[] | undefined>;
         /**
-          * Enables the slide in animation for the option items.
+          * @deprecated Enables the slide in animation for the option items.
          */
         "hasMovement": boolean;
         /**
@@ -1098,7 +1098,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
         /**
@@ -1114,7 +1114,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Removes the border of the input.
+          * @deprecated Removes the border of the input.
          */
         "noBorder": boolean;
         /**
@@ -3130,7 +3130,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Enables the slide in animation for the option items.
+          * @deprecated Enables the slide in animation for the option items.
          */
         "hasMovement"?: boolean;
         /**
@@ -3138,7 +3138,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
         /**
@@ -3154,7 +3154,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Removes the border of the input.
+          * @deprecated Removes the border of the input.
          */
         "noBorder"?: boolean;
         /**

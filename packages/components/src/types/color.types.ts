@@ -8,7 +8,7 @@ export type BalButtonExtraColor = 'link' | 'text'
 
 export type BalButtonColor = ColorTypes | BalButtonExtraColor
 
-export type BalIconColor = BackgroundColors | ColorTypesExtended | 'black' | 'info'
+export type BalIconColor = BackgroundColors | ColorTypesExtended | 'black' | 'info' | 'grey'
 
 export type BackgroundColors = 'white' | 'primary' | 'blue' | 'red' | 'purple' | 'yellow' | 'green'
 
