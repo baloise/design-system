@@ -3,6 +3,7 @@ bal-snackbar {
   position: relative;
   width: 100%;
   flex-grow: 0 !important;
+  justify-content: center !important;
 
   .snackbar {
     align-self: flex-end;
@@ -12,13 +13,11 @@ bal-snackbar {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
     border-radius: $radius-large;
     background: $white;
-    padding: 32px;
     pointer-events: auto;
     max-width: 320px;
     flex-grow: 1;
-    font-size: $size-small;
     flex-direction: column !important;
-    row-gap: 24px;
+    row-gap: 16px;
     position: relative;
 
     .snackbar-header {
@@ -26,41 +25,39 @@ bal-snackbar {
       display: flex;
       align-items: center;
       column-gap: 8px;
-      font-size: $size-medium;
-      font-weight: $weight-bold;
-
-      & > span {
-        align-items: center;
-      }
 
       .icon-text .icon:not(:last-child) {
         margin-right: 0.6em;
+      }
+
+      .icon-text {
+        align-items: center;
+        margin-bottom: 0;
+
+        .icon {
+          margin-bottom: 0;
+        }
       }
     }
 
     &.is-primary {
       background: $primary;
-      color: $primary-invert;
     }
 
     &.is-info {
-      background: $info;
-      color: $blue-invert;
+      background: $info-light;
     }
 
     &.is-success {
-      background: $success;
-      color: $white;
+      background: $success-light;
     }
 
     &.is-warning {
-      background: $warning;
-      color: $white;
+      background: $warning-light;
     }
 
     &.is-danger {
-      background: $danger;
-      color: $white;
+      background: $danger-light;
     }
 
     bal-heading,
@@ -71,10 +68,34 @@ bal-snackbar {
     .close {
       position: absolute;
       cursor: pointer;
-      top: 35px;
-      right: 32px;
+      top: 17px;
+      right: 16px;
       width: 24px;
       height: 24px;
+    }
+  }
+
+  .snackbar-footer {
+    justify-content: start;
+  }
+}
+
+@include tablet() {
+  bal-snackbar {
+    max-width: 288px;
+
+    .snackbar .close {
+      top: 21px;
+    }
+  }
+}
+
+@include desktop() {
+  bal-snackbar {
+    max-width: 288px;
+
+    .snackbar .close {
+      top: 21px;
     }
   }
 }
