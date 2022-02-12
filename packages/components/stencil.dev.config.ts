@@ -11,6 +11,7 @@ if (process.env.STORYBOOK_MODE === 'debug') {
 
 export const config: Config = {
   ...StencilBaseConfig,
+  enableCache: true,
   outputTargets: [
     {
       type: 'dist',
@@ -23,7 +24,7 @@ export const config: Config = {
       type: 'docs-json',
       file: './generated/components.json',
     },
-    VueGenerator(libPath, './.storybook/vue/components', []),
+    VueGenerator(libPath, './.storybook/vue/components', ['bal-app']),
     {
       type: 'www',
       dir: 'public',

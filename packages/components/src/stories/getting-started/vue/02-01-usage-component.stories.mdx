@@ -13,9 +13,9 @@ import { Meta } from '@storybook/addon-docs'
 
 All the Baloise Design System components are registered globally, so just use them in your template like the `BalButton`.
 
-After adding the `BaloiseDesignSystem` plugin the components are registerd in the framework and can be used directly in your custom vue components.
+After adding the `BaloiseDesignSystem` plugin the components are registered in the framework and can be used directly in your custom vue components.
 
-To get more typesafty you need to register the components from Baloise Design System in your custom vue components.
+To get more type-safety you need to register the components from Baloise Design System in your custom vue components.
 
 ```typescript
 import { BalButton } from '@baloise/design-system-components-vue'
@@ -84,10 +84,10 @@ To get access to a native web-component we use [Template Refs](https://v3.vuejs.
 
   onMounted(async () => {
     if (inputRef.value) {
-      const inputNativElement = element<Components.BalInput>(inputRef)
+      const inputNativeElement = element<Components.BalInput>(inputRef)
       await wait(100) // wait for the DOM only necessary for setFocus
-      await deepReady(inputNativElement) // wait that the web-component is ready
-      await inputNativElement.setFocus()
+      await deepReady(inputNativeElement) // wait that the web-component is ready
+      await inputNativeElement.setFocus()
     }
   })
 </script>

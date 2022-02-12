@@ -13,11 +13,15 @@ Bulma provides **margin** `m*` and **padding** `p*` helpers for all directions:
 - `*x` **horizontally** for both left and right
 - `*y` **vertically** for both top and bottom
 
-You need to combine a margin/padding prefix with a direction suffix. For example:
+You need to combine a **margin/padding** prefix with a direction suffix. For example:
 
 - for a `margin-top`, use `mt-*`
 - for a `padding-bottom`, use `pb-_`
 - for both margin-left and margin-right, use `mx-_`
+
+For **flexbox** there are spacing values also available as `gaps`.
+
+- for a `gap`, use `fg-*`
 
 ## Values
 
@@ -37,10 +41,12 @@ Each of these property-direction combinations needs to be appended with one of t
 
 ## Usage
 
+### Margin & Padding
+
 <Canvas>
   <bal-doc-app>
     <div className="has-background-primary p-4">
-      <div className="has-background-info has-text-white py-2 px-4">
+      <div className="has-background-blue has-text-white py-2 px-4">
         <bal-text>Custom Padding</bal-text>
       </div>
     </div>
@@ -49,7 +55,7 @@ Each of these property-direction combinations needs to be appended with one of t
 
 ```html
 <div class="has-background-primary p-4">
-  <div class="has-background-info has-text-white py-2 px-4">
+  <div class="has-background-blue has-text-white py-2 px-4">
     <bal-text>Custom Padding</bal-text>
   </div>
 </div>
@@ -57,15 +63,47 @@ Each of these property-direction combinations needs to be appended with one of t
 
 <Canvas>
   <bal-doc-app>
-    <div className="has-background-info has-text-white mt-6 p-6">
+    <div className="has-background-blue has-text-white mt-6 p-6">
       <bal-text>Margin Top with Padding</bal-text>
     </div>
   </bal-doc-app>
 </Canvas>
 
 ```html
-<div class="has-background-info has-text-white mt-6 p-6">
+<div class="has-background-blue has-text-white mt-6 p-6">
   <bal-text>Margin Top with Padding</bal-text>
+</div>
+```
+
+### Flexbox Gaps
+
+For more detailed documentation go to [Flexbox Helpers](/?path=/docs/design-flexbox-helpers--page).
+
+<Canvas>
+  <bal-doc-app>
+    <div className="has-background-blue is-flex fg-5">
+      <div className="has-background-danger is-flex-grow-1 p-3"></div>
+      <div className="has-background-danger is-flex-grow-1 p-3"></div>
+      <div className="has-background-danger is-flex-grow-1 p-3"></div>
+    </div>
+    <div className="has-background-blue is-flex fg-8 mt-3">
+      <div className="has-background-danger is-flex-grow-1 p-3"></div>
+      <div className="has-background-danger is-flex-grow-1 p-3"></div>
+      <div className="has-background-danger is-flex-grow-1 p-3"></div>
+    </div>
+  </bal-doc-app>
+</Canvas>
+
+```html
+<div class="has-background-blue is-flex fg-5">
+  <div class="has-background-danger is-flex-grow-1 p-3"></div>
+  <div class="has-background-danger is-flex-grow-1 p-3"></div>
+  <div class="has-background-danger is-flex-grow-1 p-3"></div>
+</div>
+<div class="has-background-blue is-flex fg-8 mt-3">
+  <div class="has-background-danger is-flex-grow-1 p-3"></div>
+  <div class="has-background-danger is-flex-grow-1 p-3"></div>
+  <div class="has-background-danger is-flex-grow-1 p-3"></div>
 </div>
 ```
 

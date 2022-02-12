@@ -1,0 +1,21 @@
+@each $name, $value in $spacing-values {
+  .fg-#{$name} {
+    gap: $value !important;
+  }
+}
+
+@include tablet() {
+  @each $name, $value in $spacing-values-medium {
+    .fg-#{$name} {
+      gap: $value !important;
+    }
+  }
+}
+
+@include desktop() {
+  @each $name, $value in $spacing-values-large {
+    .fg-#{$name} {
+      gap: $value !important;
+    }
+  }
+}

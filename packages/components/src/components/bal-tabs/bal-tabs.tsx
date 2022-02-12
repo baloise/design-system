@@ -36,7 +36,7 @@ export class Tabs {
   @Prop() clickable = true
 
   /**
-   * If `true` a acation button is added to the right
+   * If `true` a action button is added to the right
    */
   @Prop() action = false
 

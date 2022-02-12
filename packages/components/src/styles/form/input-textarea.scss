@@ -6,99 +6,30 @@
 
 input.input,
 textarea.textarea {
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid $blue-2;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 1px 0 2px 0;
+  border-width: 2px;
+  border-radius: $radius;
   font-size: $size-normal;
-  outline: none;
-  color: $text;
-  height: 2.2em;
   font-family: $family-primary;
+  color: $text;
+  outline: none;
+  box-shadow: none;
 
-  &:focus,
-  &.is-focused {
-    border-width: 2px;
-    border-color: $blue;
-    padding: 1px 0 1px 0;
-    box-shadow: none;
+  &.is-danger {
+    color: $danger-dark;
+    background: $danger-light;
   }
 
-  &.is-inverted {
-    color: $white;
-    border-bottom-color: $blue-3;
-    background: transparent;
+  &.is-success {
+    color: $success-dark;
+    background: $success-light;
+  }
 
-    &:focus,
-    &.is-focused {
-      border-width: 2px;
-      border-bottom-color: $white;
-    }
-
-    &:disabled {
-      background-color: $blue-6;
-    }
+  &.is-warning {
+    color: $warning-dark;
+    background: $warning-light;
   }
 }
 
 input.input {
-  display: inline-block;
-  flex: 1;
-  width: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  outline: none;
-  background: transparent;
-  box-sizing: border-box;
-  appearance: none;
-  pointer-events: auto;
-
-  &.has-icon-right {
-    padding-right: 32px !important;
-  }
-
-  &::placeholder {
-    font-family: inherit;
-  }
-
-  &:-webkit-autofill {
-    background-color: transparent;
-  }
-
-  &:invalid {
-    box-shadow: none;
-  }
-
-  &::-ms-clear {
-    display: none;
-  }
-}
-
-.textarea::placeholder,
-.input::placeholder {
-  font-family: $family-primary !important;
-}
-
-.textarea.is-inverted::placeholder,
-.input.is-inverted::placeholder {
-  color: $text-light !important;
-  font-family: $family-primary !important;
-  opacity: 1;
-}
-
-@include desktop() {
-  input.input,
-  textarea.textarea {
-    font-size: $size-normal;
-  }
-}
-
-input[type='radio'] + label,
-input[type='checkbox'] + label {
-  span {
-    font-size: $size-normal !important;
-  }
+  min-height: 48px;
 }

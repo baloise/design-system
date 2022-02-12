@@ -61,7 +61,7 @@ export const Addon = args => ({
   <bal-field-label required>Search</bal-field-label>
   <bal-field-control>
     <bal-input name="search" placeholder="Search..."></bal-input>
-    <bal-button size="small" outlined color="info">Search</bal-button>
+    <bal-button color="info">Search</bal-button>
   </bal-field-control>
   </bal-field>`,
 })
@@ -160,8 +160,8 @@ export const WithGrid = args => ({
     </form>
   </bal-card-content>
   <bal-card-actions position="right">
-    <bal-button color="link">Cancel</bal-button>
     <bal-button color="primary">Submit</bal-button>
+    <bal-button color="text">Cancel</bal-button>
   </bal-card-actions>
 </bal-card>`,
 })

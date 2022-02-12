@@ -37,6 +37,9 @@ jobs:
       - name: Lint
         run: npm run lint:check
 
+      - name: Spell Check
+        run: npm run spell
+
       - name: Test
         run: npm run test
 

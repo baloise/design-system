@@ -16,7 +16,7 @@ import isNil from 'lodash.isnil'
 import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../constants/keys.constant'
 import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../../types/interfaces'
-import { getDecimalSeperator } from '../../../utils/number.util'
+import { getDecimalSeparator } from '../../../utils/number.util'
 import { filterInputValue, formatInputValue } from './bal-input.utils'
 import {
   defaultConfig,
@@ -167,12 +167,12 @@ export class Input implements ComponentInterface, BalConfigObserver {
   @Prop() numberInput = false
 
   /**
-   * Defins the allowed decimal points for the `number-input`.
+   * Defines the allowed decimal points for the `number-input`.
    */
   @Prop() decimal?: number
 
   /**
-   * Adds a suffix the the inputvalue after blur.
+   * Adds a suffix the the input-value after blur.
    */
   @Prop() suffix?: string
 
@@ -200,7 +200,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
   @Watch('value')
   protected async valueChanged(newValue: string | number | undefined, oldValue: string | number | undefined) {
     if (this.didInit && !this.hasFocus && newValue !== oldValue) {
-      this.balChange.emit(this.getFormattedValue())
+      this.balChange.emit(this.getRawValue())
     }
   }
 
@@ -286,7 +286,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
   }
 
   private get allowedKeys() {
-    return [...NUMBER_KEYS, ...ACTION_KEYS, getDecimalSeperator()]
+    return [...NUMBER_KEYS, ...ACTION_KEYS, getDecimalSeparator()]
   }
 
   private getRawValue(): string {

@@ -8,6 +8,7 @@ const component = BalComponentStory({
   title: 'Components/Form/Textarea',
   component: BalTextarea,
   docs,
+  status: 'stable',
   argTypes: {
     invalid: balFieldArgTypes.invalid,
     hasFieldMessage: {

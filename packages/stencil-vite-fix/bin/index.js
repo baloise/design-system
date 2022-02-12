@@ -24,7 +24,6 @@ function main() {
 function adjustDynamicImport(filePath, files) {
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
-      console.log('File does not exist!', filePath)
       return
     }
 
