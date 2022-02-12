@@ -22,4 +22,12 @@ export interface TabProps {
   tabs: BalTabOption[]
   onSelectTab: (event: MouseEvent, tab: BalTabOption) => void
   onActionClick: (event: MouseEvent) => void
+  lineWidth?: number
+  lineOffsetLeft?: number
+}
+
+export interface TabItemProps {
+  href: string | undefined
+  label: string | undefined
+  onSelectTab: (event: MouseEvent) => void
 }

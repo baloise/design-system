@@ -16,6 +16,9 @@ export class Tabs {
   private mutationO?: MutationObserver
 
   @State() tabsOptions: BalTabOption[] = []
+  @State() lineWidth = 0
+  @State() lineOffsetLeft = 0
+  @State() isReady = false
 
   /**
    * Defines the layout of the tabs.
@@ -60,6 +63,7 @@ export class Tabs {
 
     if (this.didInit && newValue !== oldValue) {
       this.balChange.emit(newValue)
+      this.isReady = true
     }
   }
 
@@ -103,6 +107,14 @@ export class Tabs {
     this.valueChanged(value, this.value)
   }
 
+  componentDidRender() {
+    setTimeout(() => {
+      if (this.interface === 'tabs' || this.interface === 'tabs-sub') {
+        this.moveLine(this.getTargetElement(this.value))
+      }
+    }, 0)
+  }
+
   /**
    * Go to tab with the given value
    */
@@ -138,13 +150,31 @@ export class Tabs {
     }
   }
 
+  private moveLine(element: HTMLElement) {
+    if (element) {
+      const listElement = element.closest('li')
+
+      if (listElement?.clientWidth !== undefined) {
+        this.lineWidth = listElement.clientWidth - 32
+      }
+
+      if (listElement?.offsetLeft !== undefined) {
+        this.lineOffsetLeft = listElement.offsetLeft + 16
+      }
+    }
+  }
+
+  private getTargetElement(value?: string) {
+    const elements = Array.from(this.el.querySelectorAll('.data-test-tab-item')) as HTMLElement[]
+    return elements.filter(element => element.getAttribute('data-value') == value)[0]
+  }
+
   private isTabActive(tab: BalTabOption): boolean {
     return tab.value === this.value
   }
 
   render() {
     const Tabs = this.interface === 'o-steps' ? OStepList : this.interface === 'steps' ? StepList : TabList
-
     return (
       <Host
         class={{
@@ -152,6 +182,7 @@ export class Tabs {
           'bal-steps': this.interface === 'steps',
           'bal-o-steps': this.interface === 'o-steps',
           'is-sub-navigation': this.interface === 'tabs-sub',
+          'is-ready': this.isReady,
         }}
         data-value={this.tabsOptions
           .filter(t => this.isTabActive(t))
@@ -171,6 +202,8 @@ export class Tabs {
           actionLabel={this.actionLabel}
           onActionClick={e => this.actionHasClicked.emit(e)}
           onSelectTab={(e, t) => this.onSelectTab(e, t)}
+          lineWidth={this.lineWidth}
+          lineOffsetLeft={this.lineOffsetLeft}
         ></Tabs>
         <slot></slot>
       </Host>
