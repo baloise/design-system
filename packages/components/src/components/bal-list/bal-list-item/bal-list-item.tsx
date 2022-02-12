@@ -59,6 +59,29 @@ export class ListItem {
       )
     }
 
+    if (this.clickable) {
+      return (
+        <Host
+          role="listitem"
+          class={{
+            'bal-list-item': true,
+            'is-disabled': this.disabled,
+            'is-selected': this.selected,
+            'is-clickable': this.clickable || this.href.length > 0,
+          }}
+        >
+          <button
+            disabled={this.disabled}
+            onClick={(event: MouseEvent) => {
+              this.balNavigate.emit(event)
+            }}
+          >
+            <slot></slot>
+          </button>
+        </Host>
+      )
+    }
+
     return (
       <Host
         role="listitem"

@@ -51,19 +51,13 @@ export const Basic = args => ({
       <bal-button expanded color="link" class="mt-2">Back</bal-button>
     </div>
     <div class="is-hidden-mobile">
-      <div class="columns">
-        <div class="column is-3 is-flex is-align-items-center px-2">
-          <h3 class="title is-size-3 m-0">1'234 CHF</h3>
-        </div>
-        <div class="column is-flex is-align-items-center px-2">
-          <p class="m-0 has-text-blue-light-text is-small">{{ args.content }}</p>
-        </div>
-        <div class="column is-2 is-flex is-align-items-center px-2">
-          <bal-button expanded color="link">Back</bal-button>
-        </div>
-        <div class="column is-3 is-flex is-align-items-center px-2">
-          <bal-button expanded>Next</bal-button>
-        </div>
+      <div class="is-flex is-align-items-center fg-4">
+        <h3 class="title is-size-3 m-0">1'234 CHF</h3>
+        <p class="has-text-blue-light-text is-small m-0 is-flex-grow-1">{{ args.content }}</p>
+        <bal-button-group>
+          <bal-button color="link">Back</bal-button>
+          <bal-button>Next</bal-button>
+        </bal-button-group>
       </div>
     </div>
   </bal-sheet>
@@ -73,3 +67,18 @@ Basic.args = {
   content: 'Lorem ipsum dolor',
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
+
+// <div class="columns">
+// <div class="column is-3 is-flex is-align-items-center px-2">
+//   <h3 class="title is-size-3 m-0">1'234 CHF</h3>
+// </div>
+// <div class="column is-flex is-align-items-center px-2">
+//   <p class="m-0 has-text-blue-light-text is-small">{{ args.content }}</p>
+// </div>
+// <div class="column is-2 is-flex is-align-items-center px-2">
+//   <bal-button expanded color="link">Back</bal-button>
+// </div>
+// <div class="column is-3 is-flex is-align-items-center px-2">
+//   <bal-button expanded>Next</bal-button>
+// </div>
+// </div>

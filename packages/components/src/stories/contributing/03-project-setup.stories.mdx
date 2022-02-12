@@ -15,16 +15,16 @@ The Baloise Design System is divided into multiple NPM packages. Development for
 
 ## Packages
 
-| Library                                                                              | Status                                                                         | Description                                                            |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
-| [Components](https://design.baloise.dev/components/)                                 | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components)         | Core package build with web components and global styling.             |
-| [Components Angular](https://design.baloise.dev/components/getting-started/angular/) | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-angular) | Angular component proxies based on the the core package.               |
-| [Components Vue](https://design.baloise.dev/components/getting-started/vue/)         | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-vue)     | Vue component proxies based on the the core package.                   |
-| [Components React](https://design.baloise.dev/components/getting-started/react/)     | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-react)   | React component proxies based on the the core package.                 |
-| [Components Table](https://design.baloise.dev/components/components/bal-table.html)  | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-table)   | Integration library for AG-Grid with styles and renderer functions     |
-| [Icons](https://design.baloise.dev/design/icons.html#all-icons)                      | ![npm](https://img.shields.io/npm/v/@baloise/design-system-icons)              | SVG icons of the design system.                                        |
-| [Fonts](https://design.baloise.dev/design/typography.html)                           | ![npm](https://img.shields.io/npm/v/@baloise/design-system-fonts)              | Web-Font of the design system.                                         |
-| [Testing](https://design.baloise.dev/components/tooling/testing.html)                | ![npm](https://img.shields.io/npm/v/@baloise/design-system-testing)            | Testing package with custom and overriden commands for each component. |
+| Library                                                                              | Status                                                                         | Description                                                             |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| [Components](https://design.baloise.dev/components/)                                 | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components)         | Core package build with web components and global styling.              |
+| [Components Angular](https://design.baloise.dev/components/getting-started/angular/) | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-angular) | Angular component proxies based on the the core package.                |
+| [Components Vue](https://design.baloise.dev/components/getting-started/vue/)         | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-vue)     | Vue component proxies based on the the core package.                    |
+| [Components React](https://design.baloise.dev/components/getting-started/react/)     | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-react)   | React component proxies based on the the core package.                  |
+| [Components Table](https://design.baloise.dev/components/components/bal-table.html)  | ![npm](https://img.shields.io/npm/v/@baloise/design-system-components-table)   | Integration library for AG-Grid with styles and renderer functions      |
+| [Icons](https://design.baloise.dev/design/icons.html#all-icons)                      | ![npm](https://img.shields.io/npm/v/@baloise/design-system-icons)              | SVG icons of the design system.                                         |
+| [Fonts](https://design.baloise.dev/design/typography.html)                           | ![npm](https://img.shields.io/npm/v/@baloise/design-system-fonts)              | Web-Font of the design system.                                          |
+| [Testing](https://design.baloise.dev/components/tooling/testing.html)                | ![npm](https://img.shields.io/npm/v/@baloise/design-system-testing)            | Testing package with custom and overridden commands for each component. |
 
 ## Architecture
 
@@ -55,14 +55,14 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 │  ├── ISSUE_TEMPLATE     # templates for the github issues like feature request
 │  └── .workflows         # github action
 │
-├── .husky                # git hook to lint commit messsages
+├── .husky                # git hook to lint commit messages
 ├── packages              # published npm packages
 ├── resources             # static resources for the documentation
-├── .editorconfig         # ensures coding styles accross the mutliple IDEs
-├── .eslintignore         # files to ingnore during linting
+├── .editorconfig         # ensures coding styles across the multiple IDEs
+├── .eslintignore         # files to ignore during linting
 ├── .eslintrc.js          # config of the linter
 ├── .lintstagedrc         # run linters against staged git files
-├── .prettierignore       # files to ingnore during formatting
+├── .prettierignore       # files to ignore during formatting
 ├── .prettierrc           # config of our format tool
 ├── commitlint.config.js  # config of our commit message linter
 ├── Dockerfile            # config for the documentation
@@ -110,7 +110,7 @@ For our CI & CD tasks we use [Github Actions](https://github.com/baloise/design-
 │  │  └── global.utilities.scss   # exports variables, mixins... (no-styles)
 │  │
 │  ├── types      # global types for all the components like colors.
-│  └── config.ts  # global config definitions for the anuglar module and the vue plugin.
+│  └── config.ts  # global config definitions for the angular module and the vue plugin.
 │
 └──  stencil.*.config.ts # stencil output configurations
 ```

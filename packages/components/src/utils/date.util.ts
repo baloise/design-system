@@ -22,8 +22,8 @@ export const isoString = (date: Date): string => {
   return date && isValid(date) ? formatISO(date, { representation: 'date' }) : ''
 }
 
-export const isValidIsoString = (datestring: string | undefined | null) =>
-  !!datestring ? isMatch(datestring, ISO_PATTERN) : false
+export const isValidIsoString = (dateString: string | undefined | null) =>
+  !!dateString ? isMatch(dateString, ISO_PATTERN) : false
 
 function intlFormat(date: Date): string {
   const config = useBalConfig()
@@ -35,18 +35,18 @@ export const format = (date?: Date) => {
   return isValid(date) ? intlFormat(date as Date) : ''
 }
 
-export const parse = (datestring: string): Date | undefined => {
-  if (isMatch(datestring, ISO_PATTERN)) {
-    const d = parseISO(datestring + TIMEZONE)
+export const parse = (dateString: string): Date | undefined => {
+  if (isMatch(dateString, ISO_PATTERN)) {
+    const d = parseISO(dateString + TIMEZONE)
     if (d && isValid(d)) {
       return validateYear(d)
     }
-    const [year, month, day] = `${datestring}`.split('-').map(d => parseInt(d, 10))
+    const [year, month, day] = `${dateString}`.split('-').map(d => parseInt(d, 10))
     return generateIsoDate([year, month, day])
   }
 
-  if (isMatch(datestring, getDatePattern())) {
-    const d = dateFnsParse(datestring, getDatePattern(), now())
+  if (isMatch(dateString, getDatePattern())) {
+    const d = dateFnsParse(dateString, getDatePattern(), now())
     return generateIsoDate([getYear(d), getMonth(d) + 1, getDate(d)])
   }
 

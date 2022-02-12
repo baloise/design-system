@@ -1,6 +1,6 @@
 ## Testing
 
-The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overriden to work with our components.
+The Baloise Design System provides a collection of custom cypress commands for our components. Moreover, some basic cypress commands like `should` or `click` have been overridden to work with our components.
 
 - [More information about the installation and usage](/components/tooling/testing.html)
 
@@ -12,10 +12,10 @@ import { byTestId } from '@baloise/design-system-testing'
 describe('Accordion', () => {
   const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
   it('should ...', () => {
-    cy.get(accordion).contains('Details einblenden')
+    cy.get(accordion).contains('Show more')
     cy.get(accordion).balAccordionIsClosed()
     cy.get(accordion).click().balAccordionIsOpen()
-    cy.get(page.accordion).contains('Details ausblenden')
+    cy.get(page.accordion).contains('Show less')
     cy.get(accordion).click().balAccordionIsClosed()
   })
 })

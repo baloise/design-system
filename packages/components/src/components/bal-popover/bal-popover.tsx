@@ -58,7 +58,7 @@ export class Popover {
   @Event({ eventName: 'balChange' }) balChange!: EventEmitter<boolean>
 
   /**
-   * @internal - Use this to close unuesed popovers.
+   * @internal - Use this to close unused popovers.
    */
   @Event({ eventName: 'balPopoverPrepare' }) balPopoverPrepare!: EventEmitter<string>
 

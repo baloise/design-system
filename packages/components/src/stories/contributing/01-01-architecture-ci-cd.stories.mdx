@@ -15,10 +15,10 @@ import CiCdImage from '../assets/images/architecture/ci-cd.svg'
 
 > We use open-source tooling to make our simplify our workflows
 
-We use Github as our software development platform, which is the leading platform for open-spource projects in the world.
-For new features or fixes we use seperated braches resulting in pull-requests. Github actions and our CI tool listens on webhooks and starts building and testing the application in separate containers. Furthermore our deployment platform also listens to fired webhooks and automatically deploys code of pull requests to a preview environment. All of this is shown in open pull requests on Github, so that other developers and UX specialists can easily review, comment, approve or decline changes.
+We use Github as our software development platform, which is the leading platform for open-source projects in the world.
+For new features or fixes we use separated branches resulting in pull-requests. Github actions and our CI tool listens on webhooks and starts building and testing the application in separate containers. Furthermore our deployment platform also listens to fired webhooks and automatically deploys code of pull requests to a preview environment. All of this is shown in open pull requests on Github, so that other developers and UX specialists can easily review, comment, approve or decline changes.
 
-After a pull request was approved, it will be merged into the master, which is our default branch. Github actions are reacting on the merge action and starts its configured workflow. There is a slite diffrence to other builds, which is the release part. The release process is fully automated with the sematic release.
+After a pull request was approved, it will be merged into the master, which is our default branch. Github actions are reacting on the merge action and starts its configured workflow. There is a slide difference to other builds, which is the release part. The release process is fully automated with the sematic release.
 Based on the commit messages since the last release, it detects the release type (major, minor or patch).
 
 | Commit message                                                                                                                                                                     | Release type               |
@@ -27,7 +27,7 @@ Based on the commit messages since the last release, it detects the release type
 | `feat(pencil): add 'graphiteWidth' option`                                                                                                                                         | ~~Minor~~ Feature Release  |
 | `perf(pencil): remove graphiteWidth option BREAKING CHANGE: The graphiteWidth option has been removed. The default graphite width of 10mm is always used for performance reasons.` | ~~Major~~ Breaking Release |
 
-After detecting the new version, it also publishes the library to npm. Afterthat, it releases it on Github with a nice changelog, which is generated based on the commit messages. Finally, it gets deployed to the production environment of now.
+After detecting the new version, it also publishes the library to npm. After that, it releases it on Github with a nice changelog, which is generated based on the commit messages. Finally, it gets deployed to the production environment of now.
 
 <img src={CiCdImage} />
 

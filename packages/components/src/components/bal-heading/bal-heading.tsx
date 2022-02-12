@@ -42,6 +42,12 @@ export class Heading {
     if (this.level === 'display') {
       return `is-size-display`
     }
+
+    if (this.visualLevel) {
+      const size = `${this.visualLevel}`
+      return `is-size-${size.replace('h', '')}`
+    }
+
     const size = `${this.level}`
     return `is-size-${size.replace('h', '')}`
   }

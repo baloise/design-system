@@ -1,0 +1,88 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Migration/Migration from 9.x to 10.x"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Migration from 9.x to 10.x
+
+The following workflow walks through the steps of migrating.
+Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
+
+## Grouped Checkboxes
+
+There is the need to [group checkboxes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#attr-value). To do so the attribute name and value is used.
+
+- [GitHub Issue](https://github.com/baloise/design-system/issues/497)
+
+If the property `value` was used rename it to `checked`.
+
+```html
+<!-- - old -->
+<bal-checkbox value></bal-checkbox>
+<bal-checkbox value="true"></bal-checkbox>
+<bal-checkbox value="false"></bal-checkbox>
+
+<!-- - new -->
+<bal-checkbox checked></bal-checkbox>
+<bal-checkbox checked="true"></bal-checkbox>
+<bal-checkbox checked="false"></bal-checkbox>
+```
+
+> When the checkbox is used with reactive forms, ng-model or v-model there is no breaking change.
+
+## Angular Component Modules
+
+To goal is to have an Angular Module for each component set.
+This enables a component based migration instead of big bang.
+
+- [GitHub Issue](https://github.com/baloise/design-system/issues/486)
+
+### old
+
+```typescript
+import { BrowserModule } from '@angular/platform-browser'
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
+import { BaloiseDesignSystemModule } from '@baloise/design-system-components-angular'
+
+import { AppComponent } from './app.component'
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, BaloiseDesignSystemModule.forRoot()],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}
+```
+
+### new
+
+Replace the `BaloiseDesignSystemModule` with `BalCoreModule`. Moreover, import all the component modules you need.
+
+```typescript
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { FormsModule } from '@angular/forms'
+import { CommonModule } from '@angular/common'
+import { BalCoreModule, BalButtonModule, BalHeadingModule } from '@baloise/design-system-components-angular'
+
+import { AppComponent } from './app.component'
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, CommonModule, FormsModule, BalCoreModule.forRoot(), BalButtonModule, BalHeadingModule],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}
+```
+
+<bal-doc-github link="/stories/migration/09-migration-from-9x-to-10x.stories.mdx"></bal-doc-github>

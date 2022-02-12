@@ -1,4 +1,5 @@
 {
   "packages/**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}": ["prettier --write"],
-  "packages/**/*.{js,jsx,ts,tsx,json}": ["eslint --ext .tsx,.ts packages/ --fix"]
+  "packages/**/*.{js,jsx,ts,tsx,json}": ["eslint --ext .tsx,.ts packages/ --fix"],
+  "packages/components/src/**/*.{md,mdx,tsx}": ["cspell \"packages/components/src/**/*.{md,mdx,tsx}\" --no-summary --no-progress"]
 }

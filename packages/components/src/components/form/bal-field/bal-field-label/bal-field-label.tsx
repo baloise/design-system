@@ -7,7 +7,7 @@ import { Component, h, Host, Prop, Element } from '@stencil/core'
 })
 export class FieldLabel {
   @Element() element!: HTMLElement
-  parrentBalFieldElement!: HTMLBalFieldElement | null
+  parentBalFieldElement!: HTMLBalFieldElement | null
 
   /**
    * If `true` a asterix (*) is added to the label text
@@ -21,16 +21,16 @@ export class FieldLabel {
 
   componentDidLoad() {
     if (this.element) {
-      this.parrentBalFieldElement = this.element.closest('bal-field')
-      if (this.parrentBalFieldElement) {
-        this.parrentBalFieldElement.classList.add('has-label')
+      this.parentBalFieldElement = this.element.closest('bal-field')
+      if (this.parentBalFieldElement) {
+        this.parentBalFieldElement.classList.add('has-label')
       }
     }
   }
 
   disconnectedCallback() {
-    if (this.parrentBalFieldElement) {
-      this.parrentBalFieldElement.classList.remove('has-label')
+    if (this.parentBalFieldElement) {
+      this.parentBalFieldElement.classList.remove('has-label')
     }
   }
 

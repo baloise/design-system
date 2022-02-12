@@ -95,7 +95,7 @@ export class Select {
   @Prop() typeahead = false
 
   /**
-   * If `true` the component is diabled.
+   * If `true` the component is disabled.
    */
   @Prop() disabled = false
 
@@ -783,7 +783,7 @@ export class Select {
                 <div class="select-option__content">
                   <span class="checkbox" style={{ display: this.multiple ? 'flex' : 'none' }}>
                     <bal-checkbox
-                      value={valuesArray.includes(option.value)}
+                      checked={valuesArray.includes(option.value)}
                       tabindex={-1}
                       onBalChange={preventDefault}
                     ></bal-checkbox>

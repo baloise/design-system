@@ -22,6 +22,13 @@ bal-radio-group {
       }
     }
   }
+
+  @include tablet() {
+    &.bal-select-button.is-vertical-mobile > div {
+      flex-direction: row;
+      border-radius: 100px;
+    }
+  }
 }
 
 @include tablet() {

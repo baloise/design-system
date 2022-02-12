@@ -19,9 +19,9 @@ describe('Accordion', () => {
 
   it('should check if the accordian contains label', () => {
     page.open()
-    cy.get(page.accordion).contains('Details einblenden')
+    cy.get(page.accordion).contains('Show more')
     cy.get(page.accordion).click()
-    cy.get(page.accordion).contains('Details ausblenden')
+    cy.get(page.accordion).contains('Show less')
   })
 
   it('should check if the accordian is not disabled', () => {
