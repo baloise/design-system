@@ -1,4 +1,4 @@
-import { formatLocaleNumber, getDecimalSeperator } from '../../../utils/number.util'
+import { formatLocaleNumber, getDecimalSeparator } from '../../../utils/number.util'
 import isNaN from 'lodash.isnan'
 
 export const filterInputValue = (
@@ -9,7 +9,7 @@ export const filterInputValue = (
   const regex = /^(((0|[1-9]\d*)?)(\.\d*)?)$/g
   let regexString = regex.source
 
-  const decimalSeperator = getDecimalSeperator()
+  const decimalSeperator = getDecimalSeparator()
   if (decimalSeperator !== '.') {
     regexString = regexString.replace('(\\.\\d*)?)$', `(\\${decimalSeperator}\\d*)?)$`)
   }
@@ -28,7 +28,7 @@ export const filterInputValue = (
 }
 
 export const formatInputValue = (value: string, decimalPoints: number | undefined = undefined): string => {
-  if (value.charAt(0) === getDecimalSeperator()) {
+  if (value.charAt(0) === getDecimalSeparator()) {
     value = `0${value}`
   }
 

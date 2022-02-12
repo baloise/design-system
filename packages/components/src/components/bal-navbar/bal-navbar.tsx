@@ -26,7 +26,7 @@ export class Navbar {
       <Host
         class={{ 'no-burger': this.noBurger }}
         style={{
-          position: 'reletiv',
+          position: 'relative',
           paddingTop: this.light ? '10px' : '',
         }}
       >

@@ -1,5 +1,5 @@
 import docs from './bal-checkbox.docs.mdx'
-import { BalComponentStory, withContent, stencilArgType } from '../../../../stories/utils'
+import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
 import {
   BalCheckbox,
   BalField,
@@ -16,8 +16,8 @@ const component = BalComponentStory({
   title: 'Components/Form/Checkbox',
   component: BalCheckbox,
   docs,
+  status: 'stable',
   argTypes: {
-    ...withContent(),
     invalid: balFieldArgTypes.invalid,
     hasFieldMessage: {
       description: 'Show a hint or validation message below the control',
@@ -45,14 +45,14 @@ const Template = args => ({
     <bal-field-control>
       <bal-checkbox-group>
         <bal-checkbox v-bind="args" v-model="args.value">
-          {{ args.content }}
+          Label
         </bal-checkbox>
         <bal-checkbox v-bind="args" v-model="args.value">
-        {{ args.content }}
-      </bal-checkbox>
-      <bal-checkbox v-bind="args" v-model="args.value">
-        {{ args.content }}
-      </bal-checkbox>
+          Label
+        </bal-checkbox>
+        <bal-checkbox v-bind="args" v-model="args.value">
+          Label
+        </bal-checkbox>
       </bal-checkbox-group>
     </bal-field-control>
     <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>

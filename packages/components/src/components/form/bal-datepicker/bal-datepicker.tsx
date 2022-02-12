@@ -100,7 +100,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   @Prop() readonly = false
 
   /**
-   * If `true` the component is diabled.
+   * If `true` the component is disabled.
    */
   @Prop() disabled = false
 
@@ -261,9 +261,9 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
    * Selects an option
    */
   @Method()
-  async select(datestring: string) {
-    this.inputElement.value = format(parse(datestring))
-    this.updateValue(datestring)
+  async select(dateString: string) {
+    this.inputElement.value = format(parse(dateString))
+    this.updateValue(dateString)
     this.updatePointerDates()
 
     if (this.closeOnSelect) {
@@ -306,8 +306,8 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
     }
   }
 
-  private updateValue(datestring: string | undefined | null) {
-    if (!isValidIsoString(datestring)) {
+  private updateValue(dateString: string | undefined | null) {
+    if (!isValidIsoString(dateString)) {
       this.selectedDate = undefined
       this.value = undefined
       if (this.inputElement) {
@@ -316,7 +316,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
       return
     }
 
-    this.value = datestring
+    this.value = dateString
   }
 
   get minYear() {
@@ -441,9 +441,9 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
 
     if (inputValue && inputValue.length >= 6) {
       const date = parse(inputValue)
-      const datestring = isoString(date as Date)
-      if (isValidIsoString(datestring)) {
-        this.selectedDate = datestring
+      const dateString = isoString(date as Date)
+      if (isValidIsoString(dateString)) {
+        this.selectedDate = dateString
         this.updatePointerDates()
       }
     }
@@ -452,11 +452,11 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   private onInputChange = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
     const date = parse(inputValue)
-    const datestring = isoString(date as Date)
+    const dateString = isoString(date as Date)
     const formattedValue = format(date)
 
     this.inputElement.value = formattedValue
-    this.updateValue(datestring)
+    this.updateValue(dateString)
     this.updatePointerDates()
   }
 
@@ -469,14 +469,14 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   private onInputKeyUp = (event: KeyboardEvent) => {
     if (isEnterKey(event) && !this.triggerIcon) {
       const date = parse(this.inputElement.value)
-      const datestring = isoString(date as Date)
+      const dateString = isoString(date as Date)
 
       if (this.isPopoverOpen) {
-        if (this.value === datestring) {
+        if (this.value === dateString) {
           this.close()
         }
       } else {
-        if (this.value !== datestring) {
+        if (this.value !== dateString) {
           this.open()
         }
       }

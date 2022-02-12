@@ -41,13 +41,19 @@ span.is-lead {
 }
 
 a.is-small,
-p.is-small,
-span.is-small {
+p.is-small {
   @include padding(0);
 
   font-size: $size-small;
   line-height: 16px;
   margin: 0 0 16px 0;
+}
+
+span.is-small,
+b.is-small,
+small.is-small {
+  font-size: $size-small;
+  line-height: 16px;
 }
 
 @include tablet() {

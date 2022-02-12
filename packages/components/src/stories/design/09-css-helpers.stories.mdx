@@ -20,7 +20,7 @@ import {
   RadiusHelpers,
   ShadowHelpers,
   FlexboxHelpers,
-  VisabilityHelpers,
+  VisibilityHelpers,
 } from './09-css-helpers.templates.ts'
 import { html } from '../utils'
 import dedent from 'ts-dedent'
@@ -56,7 +56,7 @@ For each [color](http://localhost:6006/?path=/story/design-colors--page) there i
 
 `has-background-*`
 
-## Visability
+## Visibility
 
 Show/hide content depending on the width of the viewport.
 
@@ -64,13 +64,13 @@ Show/hide content depending on the width of the viewport.
 - [Bulma Documentation](https://bulma.io/documentation/helpers/visibility-helpers/)
 
 <Canvas withSource="none">
-  <bal-doc-app>{html(VisabilityHelpers)}</bal-doc-app>
+  <bal-doc-app>{html(VisibilityHelpers)}</bal-doc-app>
 </Canvas>
 
 <Source
   language="html"
   code={dedent`
-     ${VisabilityHelpers}
+     ${VisibilityHelpers}
   `}
 />
 
@@ -142,7 +142,7 @@ Change the border radius of an element with the css classes shown below.
 
 ## Shadow
 
-Add a showdow effect to an element with the css class `has-shadow`.
+Add a shadow effect to an element with the css class `has-shadow`.
 
 <Canvas withSource="none">
   <bal-doc-app>{html(ShadowHelpers)}</bal-doc-app>

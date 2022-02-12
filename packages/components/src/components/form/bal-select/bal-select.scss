@@ -1,37 +1,61 @@
+@import 'bal-select-option/bal-select-option.scss';
+
 bal-select-option {
   display: none !important;
 }
 
-bal-select {
+bal-select,
+.bal-select {
   display: block;
   position: relative;
   width: 100%;
-
-  &.is-disabled {
-    background: $blue-1;
-  }
+  flex: 1;
+  font-family: $family-primary;
 
   .bal-select__slot {
-    position: relative;
-    align-items: center;
     display: flex;
-    max-width: 100%;
-    min-width: 0;
-    width: 100%;
-    border-bottom: 1px solid $blue-2;
-    padding-bottom: 1px;
-    margin-top: -1px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $grey-2;
+    border-radius: $radius;
+    background: $white;
+    font-size: $size-normal;
+    font-family: $family-primary;
+    color: $text;
+    outline: none;
+    box-shadow: none;
+    padding-right: calc(0.75em - 1px);
 
-    &.is-danger {
-      border-color: $danger;
+    & > bal-icon {
+      min-height: 100%;
+      max-height: 100%;
     }
 
-    &:focus-within,
-    &.is-focused {
-      border-width: 2px;
-      padding-bottom: 0;
-      border-color: $blue;
+    input.input {
+      border: none;
       box-shadow: none;
+      background: transparent;
+      outline: none;
+      outline-width: 0;
+      flex: 1;
+      min-height: 44px !important;
+      padding-bottom: calc(0.5em - 3px);
+      padding-left: calc(0.75em - 1px);
+      padding-right: calc(0.75em - 1px);
+      padding-top: calc(0.5em - 3px);
+
+      &:read-only {
+        user-select: none !important;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        &::selection {
+          background: transparent;
+        }
+
+        &::-moz-selection {
+          background: transparent;
+        }
+      }
     }
 
     .bal-select__selections {
@@ -42,16 +66,15 @@ bal-select {
       line-height: 18px;
       max-width: 100%;
       min-width: 0;
+      gap: 4px;
     }
 
-    bal-tag {
-      margin-right: 8px;
+    bal-tag:first-child {
+      margin-left: calc(0.75em - 1px);
     }
 
-    .input {
-      border: none;
-      box-shadow: none;
-      padding: 0;
+    bal-tag + .input {
+      padding-left: calc(0.75em - 8px);
     }
 
     .value {
@@ -61,94 +84,43 @@ bal-select {
       white-space: nowrap;
       max-width: 90%;
     }
+
+    &.is-focused,
+    &:focus-within {
+      border-color: $blue;
+    }
+
+    &.is-danger {
+      border-color: $danger;
+      background: $danger-light;
+    }
   }
 
-  &.is-inverted {
+  &.is-disabled {
     .bal-select__slot {
-      border-color: $white;
+      background: $grey-2;
+      border-color: $grey-5;
 
-      &:focus-within,
-      &.is-focused {
-        border-color: $white;
+      &,
+      & input {
+        cursor: default !important;
+        user-select: none !important;
+        pointer-events: none !important;
+      }
+
+      bal-tag {
+        background-color: $grey-5 !important;
+        span {
+          color: $white !important;
+        }
       }
     }
   }
 
-  .bal-select__empty {
-    padding: 10px 20px 13px 20px;
-  }
-
-  .bal-select__option {
-    visibility: visible;
-    font-family: $family-primary !important;
-    padding: 10px 20px 13px 20px;
-    transition: padding-left 0.3s ease;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    outline: none;
-
-    &.is-disabled {
-      user-select: none;
-      opacity: 0.5;
-    }
-
-    &::-moz-focus-inner {
-      border: 0;
-    }
-
-    .select-option__content {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-    }
-
-    &.has-checkbox {
-      span.checkbox {
-        width: 35px;
-      }
-    }
-
-    &.is-hidden {
-      display: none !important;
-    }
-
-    span {
-      font-family: $family-primary;
-      font-size: $size-small;
-    }
-
-    span.label {
-      font-weight: $weight-normal;
-      font-size: $size-small;
-    }
-
-    &.is-selected {
-      background: $dropdown-item-active-background-color;
-    }
-
-    &.is-selected:not(.has-checkbox) {
-      span.label {
-        font-weight: $weight-bold;
-        color: $dropdown-item-active-color;
-      }
-    }
-
-    &:hover {
-      background: $white;
-    }
-
-    &.is-focused {
-      background: $dropdown-item-hover-background-color;
-
-      span.label {
-        color: $dropdown-item-hover-color;
-      }
-    }
-
-    &.has-movement.is-focused:not(.is-selected):not(.has-checkbox) {
-      padding-left: 30px !important;
-    }
+  .popover-content {
+    border: 2px solid $grey-2;
+    border-radius: $radius;
+    background: $white;
+    margin-top: 4px;
   }
 }

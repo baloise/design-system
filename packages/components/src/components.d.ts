@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalButtonColor, BalIconColor } from "./types";
-import { BackgroundColors, ColorTypes, ColorTypesExtended } from "./types/color.types";
+import { BackgroundColors, ColorTypes, ColorTypesExtended, SupportColors } from "./types/color.types";
 import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
@@ -238,6 +238,10 @@ export namespace Components {
          */
         "balTabindex": number;
         /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean;
+        /**
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled": boolean;
@@ -249,6 +253,10 @@ export namespace Components {
           * Defines the layout of the checkbox button
          */
         "interface": 'checkbox' | 'switch';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
         /**
           * If `true`, the control works on dark background.
          */
@@ -262,9 +270,9 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
-          * If `true`, the checkbox is selected.
+          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
-        "value": boolean;
+        "value": string;
     }
     interface BalCheckboxGroup {
     }
@@ -326,7 +334,7 @@ export namespace Components {
          */
         "defaultDate"?: string | null;
         /**
-          * If `true` the component is diabled.
+          * If `true` the component is disabled.
          */
         "disabled": boolean;
         /**
@@ -384,7 +392,7 @@ export namespace Components {
         /**
           * Selects an option
          */
-        "select": (datestring: string) => Promise<void>;
+        "select": (dateString: string) => Promise<void>;
         /**
           * Sets the focus on the input element
          */
@@ -474,6 +482,14 @@ export namespace Components {
     }
     interface BalFieldHint {
         /**
+          * Text for the close button.
+         */
+        "closeLabel": string;
+        /**
+          * Disables the close button for tablet and desktop
+         */
+        "small": boolean;
+        /**
           * Text of the inputs label
          */
         "subject": string;
@@ -536,7 +552,7 @@ export namespace Components {
          */
         "multiple": boolean;
         /**
-          * Overrides the default subtitle filesize
+          * Overrides the default subtitle file size
          */
         "subTitle": ((file: File) => string) | undefined;
         /**
@@ -674,7 +690,7 @@ export namespace Components {
          */
         "debounce": number;
         /**
-          * Defins the allowed decimal points for the `number-input`.
+          * Defines the allowed decimal points for the `number-input`.
          */
         "decimal"?: number;
         /**
@@ -751,7 +767,7 @@ export namespace Components {
          */
         "spellcheck": boolean;
         /**
-          * Adds a suffix the the inputvalue after blur.
+          * Adds a suffix the the input-value after blur.
          */
         "suffix"?: string;
         /**
@@ -773,9 +789,13 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true` the list can be used on a dark backround
+          * If `true` the list can be used on a dark background
          */
         "inverted": boolean;
+        /**
+          * Defines the min height of the list item
+         */
+        "size": '' | 'large';
     }
     interface BalListItem {
         /**
@@ -919,7 +939,7 @@ export namespace Components {
          */
         "pageRange": number;
         /**
-          * Go to the prvious page
+          * Go to the previous page
          */
         "previous": () => Promise<void>;
         /**
@@ -993,6 +1013,10 @@ export namespace Components {
          */
         "interface": 'radio' | 'select-button';
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * If `true`, the control works on dark background.
          */
         "inverted": boolean;
@@ -1035,6 +1059,10 @@ export namespace Components {
           * The value of the control.
          */
         "value": string;
+        /**
+          * If `true`, the controls will be vertically on mobile devices.
+         */
+        "verticalOnMobile": boolean;
     }
     interface BalSelect {
         /**
@@ -1054,7 +1082,7 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
-          * If `true` the component is diabled.
+          * If `true` the component is disabled.
          */
         "disabled": boolean;
         /**
@@ -1062,7 +1090,7 @@ export namespace Components {
          */
         "getValue": () => Promise<string[] | undefined>;
         /**
-          * Enables the slide in animation for the option items.
+          * @deprecated Enables the slide in animation for the option items.
          */
         "hasMovement": boolean;
         /**
@@ -1070,7 +1098,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
         /**
@@ -1086,7 +1114,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Removes the border of the input.
+          * @deprecated Removes the border of the input.
          */
         "noBorder": boolean;
         /**
@@ -1232,7 +1260,7 @@ export namespace Components {
         /**
           * Defines the color of the spinner.
          */
-        "color": 'blue' | 'white' | 'grey';
+        "color": 'blue' | 'white';
         /**
           * If `true` the component can be used on dark background
          */
@@ -1296,7 +1324,7 @@ export namespace Components {
     }
     interface BalTabs {
         /**
-          * If `true` a acation button is added to the right
+          * If `true` a action button is added to the right
          */
         "action": boolean;
         /**
@@ -1333,7 +1361,7 @@ export namespace Components {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "color": ColorTypes | '';
+        "color": ColorTypes | SupportColors | '';
         "dense": boolean;
         /**
           * The size of the tag element
@@ -1349,7 +1377,7 @@ export namespace Components {
         /**
           * Defines the color of the text.
          */
-        "color": ColorTypes | 'white' | '';
+        "color": ColorTypes | 'white' | 'grey' | '';
         /**
           * If `true` the text has heading font family
          */
@@ -2037,7 +2065,7 @@ declare namespace LocalJSX {
          */
         "interface"?: '' | 'light';
         /**
-          * Emmited when the accordion has changed
+          * Emitted when the accordion has changed
          */
         "onBalChange"?: (event: CustomEvent<boolean>) => void;
         /**
@@ -2245,6 +2273,10 @@ declare namespace LocalJSX {
          */
         "balTabindex"?: number;
         /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean;
+        /**
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled"?: boolean;
@@ -2252,6 +2284,10 @@ declare namespace LocalJSX {
           * Defines the layout of the checkbox button
          */
         "interface"?: 'checkbox' | 'switch';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
         /**
           * If `true`, the control works on dark background.
          */
@@ -2273,9 +2309,9 @@ declare namespace LocalJSX {
          */
         "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * If `true`, the checkbox is selected.
+          * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
-        "value"?: boolean;
+        "value"?: string;
     }
     interface BalCheckboxGroup {
     }
@@ -2345,7 +2381,7 @@ declare namespace LocalJSX {
          */
         "defaultDate"?: string | null;
         /**
-          * If `true` the component is diabled.
+          * If `true` the component is disabled.
          */
         "disabled"?: boolean;
         /**
@@ -2493,6 +2529,14 @@ declare namespace LocalJSX {
     }
     interface BalFieldHint {
         /**
+          * Text for the close button.
+         */
+        "closeLabel"?: string;
+        /**
+          * Disables the close button for tablet and desktop
+         */
+        "small"?: boolean;
+        /**
           * Text of the inputs label
          */
         "subject"?: string;
@@ -2559,7 +2603,7 @@ declare namespace LocalJSX {
          */
         "onBalRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
         /**
-          * Overrides the default subtitle filesize
+          * Overrides the default subtitle file size
          */
         "subTitle"?: ((file: File) => string) | undefined;
         /**
@@ -2685,7 +2729,7 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
-          * Defins the allowed decimal points for the `number-input`.
+          * Defines the allowed decimal points for the `number-input`.
          */
         "decimal"?: number;
         /**
@@ -2778,7 +2822,7 @@ declare namespace LocalJSX {
          */
         "spellcheck"?: boolean;
         /**
-          * Adds a suffix the the inputvalue after blur.
+          * Adds a suffix the the input-value after blur.
          */
         "suffix"?: string;
         /**
@@ -2800,9 +2844,13 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` the list can be used on a dark backround
+          * If `true` the list can be used on a dark background
          */
         "inverted"?: boolean;
+        /**
+          * Defines the min height of the list item
+         */
+        "size"?: '' | 'large';
     }
     interface BalListItem {
         /**
@@ -3014,6 +3062,10 @@ declare namespace LocalJSX {
          */
         "interface"?: 'radio' | 'select-button';
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * If `true`, the control works on dark background.
          */
         "inverted"?: boolean;
@@ -3063,6 +3115,10 @@ declare namespace LocalJSX {
           * The value of the control.
          */
         "value"?: string;
+        /**
+          * If `true`, the controls will be vertically on mobile devices.
+         */
+        "verticalOnMobile"?: boolean;
     }
     interface BalSelect {
         /**
@@ -3070,11 +3126,11 @@ declare namespace LocalJSX {
          */
         "balTabindex"?: number;
         /**
-          * If `true` the component is diabled.
+          * If `true` the component is disabled.
          */
         "disabled"?: boolean;
         /**
-          * Enables the slide in animation for the option items.
+          * @deprecated Enables the slide in animation for the option items.
          */
         "hasMovement"?: boolean;
         /**
@@ -3082,7 +3138,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
         /**
@@ -3098,7 +3154,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Removes the border of the input.
+          * @deprecated Removes the border of the input.
          */
         "noBorder"?: boolean;
         /**
@@ -3276,7 +3332,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the spinner.
          */
-        "color"?: 'blue' | 'white' | 'grey';
+        "color"?: 'blue' | 'white';
         /**
           * If `true` the component can be used on dark background
          */
@@ -3336,7 +3392,7 @@ declare namespace LocalJSX {
     }
     interface BalTabs {
         /**
-          * If `true` a acation button is added to the right
+          * If `true` a action button is added to the right
          */
         "action"?: boolean;
         /**
@@ -3377,7 +3433,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "color"?: ColorTypes | '';
+        "color"?: ColorTypes | SupportColors | '';
         "dense"?: boolean;
         /**
           * Emitted when the input got clicked.
@@ -3397,7 +3453,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the text.
          */
-        "color"?: ColorTypes | 'white' | '';
+        "color"?: ColorTypes | 'white' | 'grey' | '';
         /**
           * If `true` the text has heading font family
          */
@@ -3539,7 +3595,7 @@ declare namespace LocalJSX {
          */
         "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * Emitted when either the hour or the minute input has changed. It will not be triggert if either hour or time input has never been set (i.e. "--" is selected).
+          * Emitted when either the hour or the minute input has changed. It will not be triggered if either hour or time input has never been set (i.e. "--" is selected).
          */
         "onBalChange"?: (event: CustomEvent<string>) => void;
         /**

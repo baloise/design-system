@@ -52,7 +52,7 @@ export class Pagination {
   }
 
   /**
-   * Go to the prvious page
+   * Go to the previous page
    */
   @Method()
   async previous() {

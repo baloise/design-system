@@ -59,6 +59,12 @@
     </h2>
     <h4>didlika</h4>
   </a>
+  <a href="https://github.com/MarkusTiede" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/1764012?v=4" alt="MarkusTiede" style="width: 64px;">
+    </h2>
+    <h4>MarkusTiede</h4>
+  </a>
   <a href="https://github.com/mladenplaninicic" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/28272339?v=4" alt="mladenplaninicic" style="width: 64px;">
@@ -76,12 +82,6 @@
       <img src="https://avatars.githubusercontent.com/u/47270471?v=4" alt="Flapmax" style="width: 64px;">
     </h2>
     <h4>Flapmax</h4>
-  </a>
-  <a href="https://github.com/MarkusTiede" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/1764012?v=4" alt="MarkusTiede" style="width: 64px;">
-    </h2>
-    <h4>MarkusTiede</h4>
   </a>
   <a href="https://github.com/aymenfurter" class="feature">
     <h2>

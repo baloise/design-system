@@ -14,8 +14,8 @@ bal-checkbox {
       @include margin(0);
 
       position: relative;
-      padding-left: 56px;
-      line-height: 22px;
+      padding-left: 48px;
+      line-height: 24px;
       contain: layout style;
 
       display: flex;
@@ -23,7 +23,7 @@ bal-checkbox {
       justify-content: flex-start;
       text-align: left;
 
-      min-height: 26px;
+      min-height: 24px;
       cursor: pointer;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -39,10 +39,10 @@ bal-checkbox {
       display: block;
       top: 0;
       left: 0;
-      width: 48px;
+      width: 40px;
       height: 24px;
       border: 1.6px solid transparent;
-      background: $blue-3;
+      background: $blue-light;
       content: '';
       transition: all 0.25s ease-out;
     }
@@ -51,28 +51,39 @@ bal-checkbox {
       border-radius: 50%;
       display: block;
       position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 24px - 3px;
-      height: 24px - 4px;
+      top: 4px;
+      left: 4px;
+      width: 16px;
+      height: 16px;
       transform: translate3d(0, 0, 0);
-      background: $white;
+      background: $blue;
       transition: all 0.25s ease-out;
       content: '';
     }
 
+    input[type='checkbox'] + label:hover::after {
+      background: $light-blue-dark;
+    }
+
     input[type='checkbox']:checked + label::before {
-      background: $green;
+      background: $success-6;
     }
 
     input[type='checkbox']:checked + label::after {
-      left: 24px;
+      left: 20px;
+      background: $white;
     }
 
-    &.is-disabled {
-      input[type='checkbox'] + label {
-        opacity: 0.5;
-      }
+    input[type='checkbox']:checked + label:hover::before {
+      background: $success-7;
+    }
+
+    input[type='checkbox'] + label.is-disabled::before {
+      background: $grey-2;
+    }
+
+    input[type='checkbox'] + label.is-disabled::after {
+      background: $grey-7;
     }
   }
 }
