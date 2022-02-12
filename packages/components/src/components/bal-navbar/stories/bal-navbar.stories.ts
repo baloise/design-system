@@ -13,6 +13,7 @@ import {
 
 const component = BalComponentStory({
   component: BalNavbar,
+  status: 'stable',
   subcomponents: { BalNavbarBrand, BalNavbarMenu, BalNavbarMenuEnd, BalNavbarMenuStart },
   docs,
 })
@@ -24,22 +25,13 @@ export const Basic = args => ({
   setup: () => ({ args }),
   template: `<bal-navbar v-bind="args">
   <bal-navbar-brand>
-    <bal-icon name="logo" inverted size="large"></bal-icon>
-    <bal-text style="margin-left: 15px"><strong>App</strong> Title</bal-text>
+    <bal-icon name="github" color="white" size="medium"></bal-icon>
+    <bal-text headline inline color="white" style="margin-left: 15px"><strong>App</strong> Title</bal-text>
   </bal-navbar-brand>
   <bal-navbar-menu>
     <bal-navbar-menu-start>
-      <a class="navbar-item"><bal-text>Home</bal-text></a>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link"><bal-text>Language</bal-text></a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item"><bal-text>English</bal-text></a>
-          <a class="navbar-item"><bal-text>German</bal-text></a>
-          <a class="navbar-item"><bal-text>French</bal-text></a>
-          <hr class="navbar-divider" >
-          <a class="navbar-item"><bal-text>Support</bal-text></a>
-        </div>
-      </div>
+      <a class="navbar-item"><bal-text headline inline bold color="white">Home</bal-text></a>
+      <a class="navbar-item"><bal-text headline inline bold color="white">About</bal-text></a>
     </bal-navbar-menu-start>
     <bal-navbar-menu-end>
       <bal-button inverted>Logout</bal-button>

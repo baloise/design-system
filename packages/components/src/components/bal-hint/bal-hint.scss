@@ -20,17 +20,8 @@ bal-icon[role='button'] {
   right: 0;
   min-height: 100%;
   z-index: 100;
-  background: $blue;
-  color: $white;
+  background: $grey-2;
   border-radius: 0;
-
-  .title {
-    color: $white;
-  }
-
-  .buttons {
-    margin-top: 24px;
-  }
 }
 
 @include tablet() {

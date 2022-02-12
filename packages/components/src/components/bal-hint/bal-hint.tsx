@@ -98,11 +98,11 @@ export class Hint {
         >
           <slot></slot>
 
-          <div class="buttons is-row-reverse">
-            <bal-button class="data-test-hint-close" color="info" outlined inverted onClick={() => this.dismiss()}>
+          <bal-button-group>
+            <bal-button class="data-test-hint-close" color="info" onClick={() => this.dismiss()}>
               {this.closeLabel}
             </bal-button>
-          </div>
+          </bal-button-group>
         </div>
       </Host>
     )

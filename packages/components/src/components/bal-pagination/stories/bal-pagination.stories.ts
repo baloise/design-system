@@ -4,6 +4,7 @@ import { BalPagination } from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   component: BalPagination,
+  status: 'stable',
   docs,
 })
 

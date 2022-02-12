@@ -5,6 +5,7 @@ import { BalNotification } from '../../../../../.storybook/vue/components'
 const component = BalComponentStory({
   title: 'Components/Notice/Notification',
   component: BalNotification,
+  status: 'stable',
   argTypes: {
     ...withContent(),
   },

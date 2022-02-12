@@ -266,7 +266,7 @@ export class Modal implements OverlayInterface {
             <div class="modal-content">
               <div
                 ref={el => (this.modalContentElement = el)}
-                class="has-background-white has-shadow has-radius-normal no-border modal-card modal-wrapper"
+                class="has-background-white has-shadow has-radius-large no-border modal-card modal-wrapper"
               >
                 <slot></slot>
               </div>

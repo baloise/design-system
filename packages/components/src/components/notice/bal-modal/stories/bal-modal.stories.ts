@@ -6,6 +6,7 @@ import docs from './bal-modal.docs.mdx'
 const component = BalComponentStory({
   title: 'Components/Notice/Modal',
   component: BalModal,
+  status: 'stable',
   subcomponents: { BalModalHeader, BalModalBody },
   docs,
   layout: 'fullscreen',
@@ -39,7 +40,7 @@ export const Confirm = args => ({
   <bal-modal-body>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing?</p>
     <bal-button-group position="right" class="mt-5">
-      <bal-button color="link" @click="closeModal()">Cancel</bal-button>
+      <bal-button color="text" @click="closeModal()">Cancel</bal-button>
       <bal-button color="primary" @click="closeModal()">Okay</bal-button>
     </bal-button-group>
   </bal-modal-body>

@@ -11,54 +11,48 @@ bal-navbar {
     }
   }
 
+  .navbar-burger {
+    span {
+      color: $white !important;
+    }
+  }
+
+  a,
+  button {
+    margin-bottom: 0 !important;
+  }
+
   a.navbar-item {
     text-decoration: none !important;
   }
 
+  bal-text {
+    margin-bottom: 0 !important;
+    color: $white !important;
+  }
+
   .navbar {
-    &.is-info::after,
-    &.is-info::before {
+    &.is-primary::after,
+    &.is-primary::before {
       opacity: 0 !important;
     }
 
-    &.bal-track-line::after,
-    &.bal-track-line::before {
-      top: 0;
-    }
-
-    &.is-info .navbar-brand > a.navbar-item:focus,
-    &.is-info .navbar-brand > a.navbar-item:hover {
+    &.is-primary .navbar-brand > a.navbar-item:focus,
+    &.is-primary .navbar-brand > a.navbar-item:hover {
       background: $blue !important;
-    }
-
-    &.is-white .navbar-brand > a.navbar-item:focus,
-    &.is-white .navbar-brand > a.navbar-item:hover {
-      background: $white !important;
     }
 
     .app-title {
       text-decoration: none !important;
 
       bal-text {
-        font-size: $size-medium !important;
+        font-size: 24px !important;
         text-decoration: none !important;
       }
     }
 
-    &.is-info .app-title {
+    &.is-primary .app-title {
       color: $white !important;
-    }
-
-    &.is-white .app-title {
-      color: $blue !important;
-    }
-
-    &.is-white .navbar-start > .navbar-item:focus,
-    &.is-white .navbar-start > .navbar-item:hover,
-    &.is-white .navbar-start > .navbar-item:focus > .navbar-link,
-    &.is-white .navbar-start > .navbar-item:hover > .navbar-link {
-      background: $blue-1 !important;
-      color: $blue !important;
     }
 
     .navbar-start > .navbar-item > .navbar-link::after {
@@ -68,7 +62,7 @@ bal-navbar {
       border-right: 5px solid transparent;
       border-bottom: 5px solid transparent;
       transform: rotate(0deg);
-      border-top: 5px solid $white !important;
+      border-top: 5px solid $grey-2 !important;
       border-radius: 0;
       margin-top: -2px;
     }
@@ -76,14 +70,6 @@ bal-navbar {
     .navbar-start > .navbar-item:hover > .navbar-link::after {
       transform: rotate(180deg);
       margin-top: -7.5px;
-    }
-
-    &.is-white .navbar-start > .navbar-item > .navbar-link::after {
-      border-top: 5px solid $black !important;
-    }
-
-    &.is-white .navbar-start > .navbar-item:hover > .navbar-link::after {
-      border-top: 5px solid $blue !important;
     }
 
     .navbar-menu.is-active {
@@ -109,43 +95,40 @@ bal-navbar {
     .is-active {
       .navbar-start,
       .navbar-end {
-        a {
-          transition: padding-left 0.3s ease;
-        }
-
         a.navbar-item:hover,
         a.navbar-item:focus,
         a.navbar-link:hover,
         a.navbar-link:focus {
-          background: $blue-1;
-          padding-left: 22px;
+          background: $blue-4;
         }
       }
     }
 
     .navbar-dropdown {
-      border-radius: 0px !important;
+      border-radius: $radius;
       border: none;
       z-index: 32 !important;
-      padding-top: 10px;
-      padding-bottom: 10px;
       min-width: 160px;
+
+      bal-text,
+      bal-text span {
+        color: $blue !important;
+      }
 
       .navbar-item {
         font-size: $size-small;
         padding: 10px 20px 13px 20px;
-        transition: padding-left 0.3s ease;
+        border-radius: 0;
 
         &:hover {
           background: $blue-1;
           color: $blue;
-          padding-left: 30px !important;
         }
       }
 
       .navbar-divider {
-        background-color: $blue-2;
-        height: 1px;
+        background-color: $grey-2;
+        height: 2px;
       }
     }
   }

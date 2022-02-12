@@ -13,6 +13,7 @@ import {
 const component = BalComponentStory({
   title: 'Components/Notice/Sheet',
   component: BalSheet,
+  status: 'stable',
   argTypes: {
     ...withContent(),
   },
@@ -48,14 +49,14 @@ export const Basic = args => ({
   <bal-sheet v-bind="args">
     <div class="is-hidden-tablet">
       <bal-button expanded>Continue with 1'234 CHF</bal-button>
-      <bal-button expanded color="link" class="mt-2">Back</bal-button>
+      <bal-button expanded color="info" class="mt-2">Back</bal-button>
     </div>
     <div class="is-hidden-mobile">
       <div class="is-flex is-align-items-center fg-4">
-        <h3 class="title is-size-3 m-0">1'234 CHF</h3>
+        <h5 class="title is-size-5 m-0">1'234 CHF</h5>
         <p class="has-text-blue-light-text is-small m-0 is-flex-grow-1">{{ args.content }}</p>
         <bal-button-group>
-          <bal-button color="link">Back</bal-button>
+          <bal-button color="info">Back</bal-button>
           <bal-button>Next</bal-button>
         </bal-button-group>
       </div>

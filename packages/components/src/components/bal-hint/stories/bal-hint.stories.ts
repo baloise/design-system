@@ -15,6 +15,7 @@ import {
 const component = BalComponentStory({
   title: 'Components/Hint',
   component: BalHint,
+  status: 'stable',
   subcomponents: { BalHintText, BalHintTitle },
   argTypes: {
     ...withContent(),

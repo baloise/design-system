@@ -892,10 +892,6 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
-          * It `true` the navbar has a white background
-         */
-        "light": boolean;
-        /**
           * It `true` the burger button is hidden
          */
         "noBurger": boolean;
@@ -2948,10 +2944,6 @@ declare namespace LocalJSX {
           * It `true` the component uses the whole width
          */
         "expanded"?: boolean;
-        /**
-          * It `true` the navbar has a white background
-         */
-        "light"?: boolean;
         /**
           * It `true` the burger button is hidden
          */
