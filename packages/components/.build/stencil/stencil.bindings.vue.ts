@@ -39,6 +39,8 @@ export const VueGenerator = (
     'bal-doc-github',
     'bal-doc-icons',
     'bal-doc-image',
+    'bal-doc-shades',
+    'bal-doc-support-color',
   ],
 ) =>
   vueOutputTarget({
