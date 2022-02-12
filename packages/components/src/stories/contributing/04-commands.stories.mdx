@@ -18,6 +18,7 @@ The commands of the Baloise Design System are managed in the `package.json` file
 | npm **install**                      | Installs all the npm dependencies and bootstrap the lerna project with the symlinks and builds the library. |
 | npm run **build**                    | Builds all packages in the correct order.                                                                   |
 | npm run **test**                     | Runs the components tests.                                                                                  |
+| npm run **test:e2e**                 | Runs cypress e2e tests.                                                                                     |
 | npm run **start** or npm run **dev** | Starts storybook with custom elements and watches for changes. Like in production.                          |
 | npm run **debug**                    | Starts storybook with stencil builds and watches for changes. Enables debugging.                            |
 | npm run **lint**                     | Lints the source files with eslint                                                                          |
@@ -50,8 +51,8 @@ All the library project commands starts with the prefix `testing:`
 
 | Command                     | Description                                                             |
 | :-------------------------- | :---------------------------------------------------------------------- |
+| npm run **test:e2e**        | Runs the cypress components tests.                                      |
 | npm run **test:components** | Runs the components tests.                                              |
-| npm run **test:cypress**    | Runs the cypress components tests (test server is needed).              |
 | npm run **test:ci**         | Builds and starts the test server and runs the cypress test against it. |
 
 ## Documentation (Storybook)
