@@ -1051,6 +1051,10 @@ export namespace Components {
           * The value of the control.
          */
         "value": string;
+        /**
+          * If `true`, the controls will be vertically on mobile devices.
+         */
+        "verticalOnMobile": boolean;
     }
     interface BalSelect {
         /**
@@ -3095,6 +3099,10 @@ declare namespace LocalJSX {
           * The value of the control.
          */
         "value"?: string;
+        /**
+          * If `true`, the controls will be vertically on mobile devices.
+         */
+        "verticalOnMobile"?: boolean;
     }
     interface BalSelect {
         /**
