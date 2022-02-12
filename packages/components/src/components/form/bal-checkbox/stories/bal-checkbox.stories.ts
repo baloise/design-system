@@ -16,6 +16,7 @@ const component = BalComponentStory({
   title: 'Components/Form/Checkbox',
   component: BalCheckbox,
   docs,
+  status: 'stable',
   argTypes: {
     invalid: balFieldArgTypes.invalid,
     hasFieldMessage: {

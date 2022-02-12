@@ -16,6 +16,7 @@ const component = BalComponentStory({
   title: 'Components/Form/Radio',
   component: BalRadioGroup,
   subcomponents: { BalRadio },
+  status: 'stable',
   docs,
   argTypes: {
     invalid: balFieldArgTypes.invalid,

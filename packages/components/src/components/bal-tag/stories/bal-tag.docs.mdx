@@ -1,5 +1,7 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
+import { html } from '../../../stories/utils'
+import dedent from 'ts-dedent'
 
 <span id="story--components-tag--basic" style={{ opacity: 0 }}></span>
 
@@ -10,6 +12,34 @@ A tag highlights a label for quick recognition.
 <Canvas>
   <Story id="components-tag--basic" />
 </Canvas>
+
+import { sizes, colors } from './bal.tag.templates.ts'
+
+## Sizes
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(sizes)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${sizes}
+  `}
+/>
+
+## Colors
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(colors)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${colors}
+  `}
+/>
 
 ## Component Api
 

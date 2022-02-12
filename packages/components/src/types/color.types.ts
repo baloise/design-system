@@ -11,3 +11,5 @@ export type BalButtonColor = ColorTypes | BalButtonExtraColor
 export type BalIconColor = BackgroundColors | ColorTypesExtended | 'black' | 'info'
 
 export type BackgroundColors = 'white' | 'primary' | 'blue' | 'red' | 'purple' | 'yellow' | 'green'
+
+export type SupportColors = 'blue' | 'red' | 'purple' | 'yellow' | 'green'
