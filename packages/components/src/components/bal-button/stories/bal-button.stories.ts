@@ -27,14 +27,24 @@ Primary.parameters = { ...component.sourceCode(Primary) }
 export const Secondary = Template.bind({})
 Secondary.args = {
   content: 'Secondary',
-  color: 'link',
+  color: 'info',
 }
+Secondary.parameters = { ...component.sourceCode(Secondary) }
+
+export const Tertiary = Template.bind({})
+Tertiary.args = {
+  content: 'Tertiary',
+  color: 'info',
+  outlined: true,
+}
+Tertiary.parameters = { ...component.sourceCode(Tertiary) }
 
 export const Link = Template.bind({})
 Link.args = {
   content: 'Link',
   color: 'link',
 }
+Link.parameters = { ...component.sourceCode(Link) }
 
 export const Square = Template.bind({})
 Square.args = {
@@ -44,3 +54,4 @@ Square.args = {
   square: true,
   outlined: true,
 }
+Square.parameters = { ...component.sourceCode(Square) }

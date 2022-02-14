@@ -1,5 +1,5 @@
 import { stencilArgType } from './args'
-import { withSoureCode } from './parameter'
+import { withSourceCode } from './parameter'
 
 export type ComponentStatus = 'beta' | 'stable' | 'deprecated' | 'releaseCandidate'
 
@@ -63,7 +63,7 @@ export const BalComponentStory = (story: BalComponentStoryOptions): BalComponent
     },
     sourceCode: (variant: (args: any) => { template: string }): { docs: { source: { code: string } } } => {
       const template = variant({}).template
-      return withSoureCode(template, argTypes, { ...story.args, ...(variant as any).args })
+      return withSourceCode(template, argTypes, { ...story.args, ...(variant as any).args })
     },
   }
 }

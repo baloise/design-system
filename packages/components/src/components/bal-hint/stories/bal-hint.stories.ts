@@ -51,7 +51,7 @@ export const Small = args => ({
 Small.args = {
   small: true,
 }
-Basic.parameters = { ...component.sourceCode(Basic) }
+Small.parameters = { ...component.sourceCode(Small) }
 
 export const FieldHint = args => ({
   components: {

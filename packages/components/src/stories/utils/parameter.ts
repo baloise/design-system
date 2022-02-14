@@ -1,7 +1,7 @@
 import { paramCase } from 'param-case'
 import { htmlBeautify } from './html'
 
-export const withSoureCode = (code: string, argTypes = {}, args = {}) => {
+export const withSourceCode = (code: string, argTypes = {}, args = {}) => {
   const template = htmlBeautify(filterVueSpecific(code, argTypes, args))
   return {
     docs: {
