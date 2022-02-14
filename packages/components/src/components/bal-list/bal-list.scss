@@ -1,99 +1,57 @@
 @import 'native-list.scss';
 
-.bal-list {
-  position: static;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-  .bal-list-item {
-    display: flex;
-    flex: 1;
-    width: 100%;
-    min-height: 48px;
-    align-items: center;
-
-    .bal-list-item-icon,
-    .bal-list-item-content {
-      display: flex;
-      flex: 1;
-    }
-
-    .bal-list-item-icon {
-      justify-content: center;
-      max-width: 48px;
-    }
-
-    .bal-list-item-content {
-      display: flex;
-      flex-direction: column;
-    }
-
-    & > button,
-    & > a {
-      text-decoration: none;
-      position: static;
-      display: flex;
-      flex: 1;
-      width: 100%;
-      align-items: center;
-      min-height: 48px;
-
-      flex-direction: row;
-      padding: 0;
-      &:focus,
-      &:active,
-      &:hover {
-        color: $blue;
-      }
-    }
-
-    &.is-selected {
-      background: $blue-1;
-    }
-
-    &:hover {
-      cursor: pointer;
-      background: $grey-2;
-    }
-  }
-
-  &.is-inverted {
-    .bal-list-item-title {
-      color: $white;
-    }
-
-    .bal-list-item {
-      &:hover {
-        cursor: pointer;
-        background: $blue-8;
-      }
-    }
-  }
-
-  &.has-border .bal-list-item {
-    border-bottom: 1px solid $blue-2;
-  }
-}
-
+.bal-list,
+.bal-list-item,
+.bal-list-item a,
+.bal-list-item button,
+.bal-list-item-icon,
 .bal-list-item-title,
 .bal-list-item-link,
 .bal-list-item-subtitle,
 .bal-list-item-content {
-  font-weight: $weight-normal;
-  font-family: $family-primary;
-  font-size: $size-normal;
-  line-height: $size-normal;
+  position: static;
+  display: flex;
 }
 
-.bal-list-item-title,
-.bal-list-item-link,
-.bal-list-item-subtitle {
-  position: static;
-  box-sizing: border-box;
-  max-width: 100%;
-  display: block;
-  white-space: pre-line;
+.bal-list,
+.bal-list-item-content {
+  flex-direction: column;
+}
+
+.bal-list,
+.bal-list-item,
+.bal-list-item a,
+.bal-list-item button {
+  width: 100%;
+}
+
+.bal-list-item,
+.bal-list-item a,
+.bal-list-item button {
+  align-items: center;
+  gap: 4px;
+  min-height: 48px;
+}
+
+.bal-list-item a,
+.bal-list-item button {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  border-radius: $radius;
+}
+
+.bal-list-item {
+  position: relative;
+}
+
+.bal-list-item a {
+  text-decoration: none;
+}
+
+.bal-list-item button {
+  background: transparent;
+  border: none;
 }
 
 .bal-list-item-title,
@@ -101,12 +59,127 @@
   color: $blue;
 }
 
-.bal-list-item-link a {
-  color: $blue;
-  text-decoration: none;
-}
-
 .bal-list-item-subtitle {
   color: $text-light;
-  margin-top: 2px;
+}
+
+.bal-list-item,
+.bal-list-item a,
+.bal-list-item button,
+.bal-list-item-content {
+  flex: 1;
+}
+
+.bal-list-item-content {
+  justify-content: center;
+}
+
+.bal-list-item-icon {
+  min-width: 48px;
+  min-height: 48px;
+  justify-content: center;
+  align-items: center;
+}
+
+.bal-list.has-size-large {
+  .bal-list-item,
+  .bal-list-item a,
+  .bal-list-item button {
+    min-height: 72px;
+  }
+}
+
+.bal-list-item.is-clickable {
+  a,
+  button {
+    cursor: pointer;
+  }
+}
+
+.bal-list.is-inverted {
+  h6,
+  p {
+    color: $white;
+  }
+
+  svg,
+  svg g,
+  svg path,
+  svg circle {
+    fill: $white;
+  }
+}
+
+.bal-list.is-disabled {
+  &,
+  .bal-list-item,
+  .bal-list-item a,
+  .bal-list-item button {
+    cursor: default !important;
+    pointer-events: none !important;
+    user-select: none !important;
+  }
+}
+
+.bal-list.has-border .bal-list-item {
+  padding-bottom: 1px;
+
+  &:not(:focus-within) {
+    &:after {
+      content: '';
+      height: 1px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+.bal-list:not(.is-inverted).has-border .bal-list-item {
+  &:after {
+    background: $blue-2;
+  }
+}
+
+.bal-list.is-inverted.has-border .bal-list-item {
+  &:after {
+    background: $blue-4;
+  }
+}
+
+.bal-list:not(.is-disabled):not(.is-inverted) .bal-list-item {
+  &.is-clickable:hover {
+    background: $grey-2;
+  }
+}
+
+.bal-list:not(.is-disabled).is-inverted.has-border .bal-list-item {
+  &.is-clickable {
+    &:hover,
+    &:active {
+      &:after {
+        background: $white;
+      }
+    }
+  }
+}
+
+.bal-list-item.is-disabled {
+  &,
+  a,
+  button {
+    cursor: default !important;
+    pointer-events: none !important;
+    user-select: none !important;
+  }
+}
+
+bal-card > bal-list.p-0 {
+  bal-list-item:last-child {
+    &:after {
+      content: none !important;
+    }
+  }
 }
