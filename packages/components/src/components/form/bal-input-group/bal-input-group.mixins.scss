@@ -1,0 +1,16 @@
+@mixin inputGroupTheme($name, $light, $dark) {
+  &.is-#{$name} {
+    &,
+    .input {
+      border-color: $dark;
+      background: $light;
+    }
+
+    svg,
+    svg g,
+    svg path,
+    svg circle {
+      fill: $dark;
+    }
+  }
+}

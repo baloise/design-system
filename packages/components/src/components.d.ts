@@ -126,6 +126,10 @@ export namespace Components {
          */
         "rel": string | undefined;
         /**
+          * If `true` the button is rounded.
+         */
+        "rounded": boolean;
+        /**
           * Size of the button
          */
         "size": 'small' | '';
@@ -532,6 +536,10 @@ export namespace Components {
          */
         "hasFileList": boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * Label of the drop area.
          */
         "label": string;
@@ -561,10 +569,6 @@ export namespace Components {
         "value": File[];
     }
     interface BalFooter {
-        /**
-          * If `true` the footer shows a track line at the bottom.
-         */
-        "hasTrackLine": boolean;
         /**
           * If `true` the default Baloise links will be hidden.
          */
@@ -771,6 +775,10 @@ export namespace Components {
          */
         "suffix"?: string;
         /**
+          * Defines the text align of the input value.
+         */
+        "textAlign": 'center' | 'left' | 'right';
+        /**
           * Defines the type of the input (text, number, email ...).
          */
         "type": InputTypes;
@@ -778,6 +786,16 @@ export namespace Components {
           * The value of the input.
          */
         "value"?: string | number;
+    }
+    interface BalInputGroup {
+        /**
+          * If `true` the component is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
     }
     interface BalList {
         /**
@@ -1752,6 +1770,12 @@ declare global {
         prototype: HTMLBalInputElement;
         new (): HTMLBalInputElement;
     };
+    interface HTMLBalInputGroupElement extends Components.BalInputGroup, HTMLStencilElement {
+    }
+    var HTMLBalInputGroupElement: {
+        prototype: HTMLBalInputGroupElement;
+        new (): HTMLBalInputGroupElement;
+    };
     interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
     }
     var HTMLBalListElement: {
@@ -2001,6 +2025,7 @@ declare global {
         "bal-hint-title": HTMLBalHintTitleElement;
         "bal-icon": HTMLBalIconElement;
         "bal-input": HTMLBalInputElement;
+        "bal-input-group": HTMLBalInputGroupElement;
         "bal-list": HTMLBalListElement;
         "bal-list-item": HTMLBalListItemElement;
         "bal-list-item-content": HTMLBalListItemContentElement;
@@ -2156,6 +2181,10 @@ declare namespace LocalJSX {
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
         "rel"?: string | undefined;
+        /**
+          * If `true` the button is rounded.
+         */
+        "rounded"?: boolean;
         /**
           * Size of the button
          */
@@ -2571,6 +2600,10 @@ declare namespace LocalJSX {
          */
         "hasFileList"?: boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * Label of the drop area.
          */
         "label"?: string;
@@ -2608,10 +2641,6 @@ declare namespace LocalJSX {
         "value"?: File[];
     }
     interface BalFooter {
-        /**
-          * If `true` the footer shows a track line at the bottom.
-         */
-        "hasTrackLine"?: boolean;
         /**
           * If `true` the default Baloise links will be hidden.
          */
@@ -2822,6 +2851,10 @@ declare namespace LocalJSX {
          */
         "suffix"?: string;
         /**
+          * Defines the text align of the input value.
+         */
+        "textAlign"?: 'center' | 'left' | 'right';
+        /**
           * Defines the type of the input (text, number, email ...).
          */
         "type"?: InputTypes;
@@ -2829,6 +2862,16 @@ declare namespace LocalJSX {
           * The value of the input.
          */
         "value"?: string | number;
+    }
+    interface BalInputGroup {
+        /**
+          * If `true` the component is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
     }
     interface BalList {
         /**
@@ -3653,6 +3696,7 @@ declare namespace LocalJSX {
         "bal-hint-title": BalHintTitle;
         "bal-icon": BalIcon;
         "bal-input": BalInput;
+        "bal-input-group": BalInputGroup;
         "bal-list": BalList;
         "bal-list-item": BalListItem;
         "bal-list-item-content": BalListItemContent;
@@ -3732,6 +3776,7 @@ declare module "@stencil/core" {
             "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
+            "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
             "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
             "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;

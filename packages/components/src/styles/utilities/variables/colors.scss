@@ -181,3 +181,8 @@ $danger-light: $danger-1 !default;
 $danger: $danger-7 !default;
 $danger-dark: $danger-9 !default;
 $danger-text: $danger-7 !default;
+
+$invalid-light: $danger-0;
+$invalid-background: $invalid-light;
+$invalid-dark: $danger-7;
+$invalid-border: $invalid-dark;

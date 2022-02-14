@@ -6,9 +6,15 @@
   flex-direction: row-reverse !important;
 }
 
-.clickable {
+.clickable,
+.is-clickable {
   cursor: pointer !important;
   pointer-events: visible !important;
+}
+
+.is-not-clickable {
+  cursor: default !important;
+  pointer-events: none !important;
 }
 
 strong,

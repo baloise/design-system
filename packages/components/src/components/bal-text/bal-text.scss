@@ -18,9 +18,13 @@ span {
   word-break: break-word;
   font-family: $family-primary;
   font-weight: $weight-normal;
-  margin: 0 0 16px 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a,
+p {
+  margin: 0 0 16px 0;
 }
 
 a.is-heading,
@@ -37,6 +41,10 @@ span.is-lead {
 
   font-size: 18px;
   line-height: 32px;
+}
+
+a.is-lead,
+p.is-lead {
   margin: 0 0 16px 0;
 }
 
@@ -62,10 +70,8 @@ small.is-small {
   span.is-lead,
   a.is-small,
   p.is-small,
-  span.is-small,
   a,
-  p,
-  span {
+  p {
     margin: 0 0 24px 0;
   }
 }

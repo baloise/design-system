@@ -1,7 +1,7 @@
 import docs from './bal-app.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
+import { BalApp } from '../../../../.storybook/vue/components/bal-app'
 import {
-  BalApp,
   BalCard,
   BalCardTitle,
   BalCardSubtitle,
@@ -17,6 +17,7 @@ import {
 
 const component = BalComponentStory({
   component: BalApp,
+  status: 'stable',
   argTypes: {
     hasBackground: {
       description: 'Adds a light grey background to increase the contrast to the card elements',
@@ -81,12 +82,12 @@ export const Basic = args => ({
     </div>
   </main>
 
-  <bal-footer has-track-line hide-links>
+  <bal-footer hide-links>
     <div class="container">
-      <span style="margin-right: 16px">Baloise Group</span>
-      <span style="margin-right: 16px">Legal notice</span>
-      <span style="margin-right: 16px">Cookie policy</span>
-      <span>Data protection</span>
+      <span class="has-text-white" style="margin-right: 16px">Baloise Group</span>
+      <span class="has-text-white" style="margin-right: 16px">Legal notice</span>
+      <span class="has-text-white" style="margin-right: 16px">Cookie policy</span>
+      <span class="has-text-white">Data protection</span>
     </div>
   </bal-footer>
   </bal-app>`,

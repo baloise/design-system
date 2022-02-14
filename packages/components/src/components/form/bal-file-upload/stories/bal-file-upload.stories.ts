@@ -6,6 +6,7 @@ import { balToastController } from '../../../../../dist/design-system-next-compo
 const component = BalComponentStory({
   title: 'Components/Form/FileUpload',
   component: BalFileUpload,
+  status: 'stable',
   docs,
 })
 
@@ -29,7 +30,13 @@ const Template = args => ({
       onBalRejectedFile,
     }
   },
-  template: `<bal-file-upload @balRejectedFile="onBalRejectedFile($event)" v-bind="args"></bal-file-upload>`,
+  template: `<bal-field v-bind="args">
+  <bal-field-label required>Upload Label</bal-field-label>
+  <bal-field-control>
+    <bal-file-upload @balRejectedFile="onBalRejectedFile($event)" v-bind="args"></bal-file-upload>
+  </bal-field-control>
+  <bal-field-message>Upload size per file is 20Mb.</bal-field-message>
+  </bal-field>`,
 })
 
 export const Basic = Template.bind({})

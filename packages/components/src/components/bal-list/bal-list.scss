@@ -297,3 +297,11 @@
     }
   }
 }
+
+bal-card > bal-list.p-0 {
+  bal-list-item:last-child {
+    &:after {
+      content: none !important;
+    }
+  }
+}

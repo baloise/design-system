@@ -15,8 +15,8 @@ textarea.textarea {
   box-shadow: none;
 
   &.is-danger {
-    color: $danger-dark;
-    background: $danger-light;
+    color: $invalid-dark;
+    background: $invalid-light;
   }
 
   &.is-success {

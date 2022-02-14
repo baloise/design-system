@@ -33,7 +33,7 @@ bal-field {
     display: flex;
     align-items: center;
 
-    bal-button {
+    & > bal-button {
       margin-left: 8px;
     }
   }

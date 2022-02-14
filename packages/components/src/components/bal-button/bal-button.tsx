@@ -88,6 +88,11 @@ export class Button implements ComponentInterface {
   @Prop() loading = false
 
   /**
+   * If `true` the button is rounded.
+   */
+  @Prop() rounded = false
+
+  /**
    * If `true` the top corners get rounded
    */
   @Prop() topRounded: undefined | boolean = undefined
@@ -165,6 +170,7 @@ export class Button implements ComponentInterface {
       'is-fullwidth': this.expanded,
       'is-disabled': this.disabled,
       'is-loading': this.loading,
+      'has-radius-rounded': this.rounded === true,
       'has-round-top-corners': this.topRounded === true,
       'has-round-bottom-corners': this.bottomRounded === true,
       'has-no-round-top-corners': this.topRounded === false,

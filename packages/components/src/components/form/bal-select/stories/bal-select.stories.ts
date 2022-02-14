@@ -42,9 +42,7 @@ const excludedControls = ['loading', 'multiple', 'name', 'hasMovement', 'noBorde
 export const Basic = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
-  template: `
- <div class="columns">
- <bal-field class="column" :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
+  template: `<bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
  <bal-field-label>Label</bal-field-label>
  <bal-field-control>
    <bal-select v-bind="args" v-model="args.value">
@@ -57,15 +55,7 @@ export const Basic = args => ({
    </bal-select>
  </bal-field-control>
  <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
-</bal-field>
-<bal-field class="column" :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
-<bal-field-label>Label</bal-field-label>
-<bal-field-control>
-  <bal-input value="Value"></bal-input>
-</bal-field-control>
-<bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
-</bal-field>
- </div>`,
+</bal-field>`,
 })
 Basic.args = {
   value: ['v2000'],
