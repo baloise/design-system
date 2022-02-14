@@ -70,7 +70,9 @@ export class Pagination {
   renderEllipsisElement() {
     return (
       <li>
-        <span class="pagination-ellipsis">&hellip;</span>
+        <div class="pagination-more">
+          <bal-text bold>&hellip;</bal-text>
+        </div>
       </li>
     )
   }
@@ -78,12 +80,14 @@ export class Pagination {
   renderPageElement(pageNumber: number) {
     return (
       <li>
-        <a
-          class={['pagination-link', this._value === pageNumber ? 'is-current' : ''].join(' ')}
+        <bal-button
+          square
+          outlined={this._value !== pageNumber}
+          color={this._value === pageNumber ? 'primary' : 'info'}
           onClick={() => this.selectPage(pageNumber)}
         >
-          <bal-text>{pageNumber}</bal-text>
-        </a>
+          {pageNumber}
+        </bal-button>
       </li>
     )
   }
@@ -127,18 +131,25 @@ export class Pagination {
 
     return (
       <Host>
-        <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-          <button type="button" class="pagination-previous" disabled={this._value < 2} onClick={() => this.previous()}>
+        <nav class="pagination" role="navigation" aria-label="pagination">
+          <bal-button
+            square
+            color="link"
+            class="pagination-previous"
+            disabled={this._value < 2}
+            onClick={() => this.previous()}
+          >
             <bal-icon name="nav-go-left" size="small" />
-          </button>
-          <button
-            type="button"
+          </bal-button>
+          <bal-button
+            square
+            color="link"
             class="pagination-next"
             disabled={this._value === this.totalPages}
             onClick={() => this.next()}
           >
             <bal-icon name="nav-go-right" size="small" />
-          </button>
+          </bal-button>
           <ul class="pagination-list is-hidden-mobile">{tabletItems}</ul>
           <ul class="pagination-list is-hidden-tablet">{mobileItems}</ul>
         </nav>
