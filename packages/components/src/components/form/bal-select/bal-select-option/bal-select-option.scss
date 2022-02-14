@@ -45,22 +45,15 @@
       font-weight: $weight-normal;
       line-height: 18px;
     }
-
-    .checkbox {
-    }
   }
 
   &:hover,
   &.is-focused {
     background: $grey-1;
-
-    .label {
-      font-weight: $weight-bold;
-    }
   }
 
   &.is-selected {
-    background: $blue-1;
+    background: $blue-0;
 
     .label {
       font-weight: $weight-bold;
