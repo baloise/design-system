@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.0.1](https://github.com/baloise-incubator/design-system/compare/v10.0.0...v10.0.1) (2022-02-14)
+
+
+### Features
+
+* add file upload ([7c76ce0](https://github.com/baloise-incubator/design-system/commit/7c76ce0730aab49fda7ed666962d2be41f32db04))
+* **list:** migrated list ([595fb46](https://github.com/baloise-incubator/design-system/commit/595fb463b25b7330a47365d720860d7fda2e8b9e))
+* navbar & hint ([a2d5f6a](https://github.com/baloise-incubator/design-system/commit/a2d5f6a5919101648e232085f9c9b1536c6c0b0a))
+* **select:** rebranded ([acb5e53](https://github.com/baloise-incubator/design-system/commit/acb5e530d8795e2e13ac18443f22eeaa8d450abb))
+* update form elements ([9285041](https://github.com/baloise-incubator/design-system/commit/928504131fcefdbe3c5b08392ff56b7dfb5828f5))
+
+
+### Bug Fixes
+
+* **bal-pagination:** change pagination style ([e4f8f62](https://github.com/baloise-incubator/design-system/commit/e4f8f622c0fe2f3fd159319bdc45752be40d321c))
+* **bal-pagination:** fix tests ([2fc77a9](https://github.com/baloise-incubator/design-system/commit/2fc77a9a681498ad40c5b8d804fb206677a3e2a3))
+* **bal-snackbar:** adjust close button ([bca6341](https://github.com/baloise-incubator/design-system/commit/bca63411988a75dfaf352a09baa5730b5e6cd4eb))
+* **bal-snackbar:** change snackbar style ([fad9731](https://github.com/baloise-incubator/design-system/commit/fad9731b72cf09de8f2e5851fe16b6aec0a34e4b))
+* **bal-tabs:** change tabs style ([1496975](https://github.com/baloise-incubator/design-system/commit/14969756e4f575fd40b40adb5778919b54f2e517))
+* **bal-toast:** change toast and notification style ([d4de2bf](https://github.com/baloise-incubator/design-system/commit/d4de2bf2fd41d2d7d8dc5c0445295756a109a9ad))
+* **select-button:** add support for mobile devices ([75647d2](https://github.com/baloise-incubator/design-system/commit/75647d2a8424e80b012650b78329f9d86aeedac6))
+* **spinner:** add spinner ([7ece8f0](https://github.com/baloise-incubator/design-system/commit/7ece8f0b7a6997ae47e5adbd646bedbcd186fdd8))
+* **vue:** improve exports ([be51095](https://github.com/baloise-incubator/design-system/commit/be51095ac1032fffbdf492cbbc96f3aaf34bba42))
+
+### [9.2.3](https://github.com/baloise-incubator/design-system/compare/v9.2.2...v9.2.3) (2022-02-03)
+
+### 9.2.2 (2022-02-03)
+
+
+
 ## [10.0.0](https://github.com/baloise/design-system/compare/v9.2.2...v10.0.0) (2022-02-10)
 
 
