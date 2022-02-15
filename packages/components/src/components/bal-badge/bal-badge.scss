@@ -1,0 +1,33 @@
+@import './bal-badge.vars.scss';
+
+bal-badge {
+  position: static;
+}
+
+.bal-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $family-primary;
+
+  width: 24px;
+  height: 24px;
+
+  bal-icon {
+    margin-top: -3px;
+  }
+
+  &.has-size-small {
+    width: 8px;
+    height: 8px;
+
+    bal-text {
+      display: none !important;
+    }
+  }
+
+  &.has-size-large {
+    width: 32px;
+    height: 32px;
+  }
+}
