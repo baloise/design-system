@@ -30,7 +30,8 @@ export const LoadingCard = args => ({
   setup: () => ({ args }),
   template: `<bal-card>
   <bal-card-content class="is-flex is-justify-content-center">
-    <bal-spinner v-bind="args"></bal-spinner>
+    <bal-spinner v-bind="args" class="my-5"></bal-spinner>
+    <bal-heading level="h5" space="all">Please wait...</bal-heading>
   </bal-card-content>
 </bal-card>`,
 })
