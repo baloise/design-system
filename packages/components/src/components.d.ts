@@ -771,6 +771,16 @@ export namespace Components {
          */
         "value"?: string | number;
     }
+    interface BalInputGroup {
+        /**
+          * If `true` the component is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+    }
     interface BalList {
         /**
           * If `true` each list item has a bottom border
@@ -1720,6 +1730,12 @@ declare global {
         prototype: HTMLBalInputElement;
         new (): HTMLBalInputElement;
     };
+    interface HTMLBalInputGroupElement extends Components.BalInputGroup, HTMLStencilElement {
+    }
+    var HTMLBalInputGroupElement: {
+        prototype: HTMLBalInputGroupElement;
+        new (): HTMLBalInputGroupElement;
+    };
     interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
     }
     var HTMLBalListElement: {
@@ -1967,6 +1983,7 @@ declare global {
         "bal-hint-title": HTMLBalHintTitleElement;
         "bal-icon": HTMLBalIconElement;
         "bal-input": HTMLBalInputElement;
+        "bal-input-group": HTMLBalInputGroupElement;
         "bal-list": HTMLBalListElement;
         "bal-list-item": HTMLBalListItemElement;
         "bal-list-item-content": HTMLBalListItemContentElement;
@@ -2789,6 +2806,16 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    interface BalInputGroup {
+        /**
+          * If `true` the component is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+    }
     interface BalList {
         /**
           * If `true` each list item has a bottom border
@@ -3598,6 +3625,7 @@ declare namespace LocalJSX {
         "bal-hint-title": BalHintTitle;
         "bal-icon": BalIcon;
         "bal-input": BalInput;
+        "bal-input-group": BalInputGroup;
         "bal-list": BalList;
         "bal-list-item": BalListItem;
         "bal-list-item-content": BalListItemContent;
@@ -3675,6 +3703,7 @@ declare module "@stencil/core" {
             "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
+            "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
             "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
             "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;
