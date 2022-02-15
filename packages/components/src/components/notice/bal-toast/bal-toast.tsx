@@ -76,7 +76,7 @@ export class Toast {
           <bal-text class="toast-message" innerHTML={this.message}>
             <slot />
           </bal-text>
-          <bal-icon name="close" class="close" size="xsmall" inverted={this.color !== ''}></bal-icon>
+          <bal-close class="close" size="medium" inverted={this.color !== ''}></bal-close>
         </div>
       </Host>
     )

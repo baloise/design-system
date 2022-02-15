@@ -21,7 +21,7 @@ bal-modal-header {
     line-height: 32px;
   }
 
-  .modal-close {
+  bal-close {
     position: absolute;
     right: 16px;
     top: 16px;
@@ -29,17 +29,6 @@ bal-modal-header {
     max-width: 32px;
     min-height: 32px;
     max-height: 32px;
-
-    &:focus,
-    &:active,
-    &:hover {
-      background: $blue-0;
-    }
-
-    &::after,
-    &::before {
-      background: $blue;
-    }
   }
 }
 
