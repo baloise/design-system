@@ -65,9 +65,21 @@ bal-modal-header {
   margin-bottom: 48px;
 }
 
+bal-modal-body {
+  bal-button-group {
+    margin-top: 24px;
+  }
+}
+
 @include mobile() {
   bal-modal-body {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    bal-button-group {
+      margin-top: auto !important;
+    }
   }
 
   .modal-content {
