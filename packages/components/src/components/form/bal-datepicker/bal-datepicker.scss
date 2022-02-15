@@ -18,59 +18,80 @@ bal-datepicker {
 }
 
 .pagination {
-  flex-wrap: nowrap;
+  display: flex;
+  gap: 8px;
 }
 
-.pagination-list,
-.pagination-list .field {
-  width: 100%;
-}
-
-.pagination-previous,
-.pagination-next,
-select {
-  border: none !important;
-}
-
-.pagination-previous,
-.pagination-next {
-  padding-left: 0.25em;
-  padding-right: 0.25em;
-  cursor: pointer;
-}
-
-.pagination-previous:active,
-.pagination-next:active {
-  box-shadow: none;
+.pagination-list {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
 }
 
 .pagination-previous,
 .pagination-next {
-  &.is-disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
+  min-height: 48px;
+  min-width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.pagination bal-button {
+  margin: 0;
+
+  .bal-icon-inner {
+    margin-top: -4px;
+    width: 16px !important;
+    max-height: 16px !important;
   }
-}
-
-.pagination-next {
-  order: 3;
 }
 
 .month-select,
 .year-select {
-  width: 50%;
+  position: relative;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  min-width: 50%;
+  min-height: 48px;
+
+  .select {
+    min-height: 48px;
+  }
+
+  .select select {
+    padding: 0 4px !important;
+    border-radius: $radius;
+    border: none;
+    min-height: 48px;
+    color: $blue;
+    font-size: 1rem;
+    font-weight: $weight-bold;
+  }
 }
 
-.month-select,
-.month-select select {
-  text-align: right;
-  text-align-last: right;
+.month-select {
+  justify-content: flex-end;
+
+  select {
+    text-align: right;
+  }
 }
 
-.year-select,
-.year-select select {
-  text-align: left;
-  text-align-last: left;
+.year-select {
+  justify-content: flex-start;
+
+  select {
+    text-align: left;
+  }
 }
 
 .select {

@@ -647,53 +647,45 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   renderHeader() {
     return (
       <header class="datepicker-header">
-        <div class="pagination field is-centered">
-          <a
-            role="button"
+        <div class="pagination field">
+          <bal-button
+            square
+            color="link"
+            icon="nav-go-left"
+            disabled={this.isPreviousMonthDisabled}
             onClick={() => this.previousMonth()}
-            class={{
-              'pagination-previous': true,
-              'is-disabled': this.isPreviousMonthDisabled,
-            }}
-          >
-            <bal-icon name="nav-go-left" size="small" />
-          </a>
-          <a
-            role="button"
-            onClick={() => this.nextMonth()}
-            class={{
-              'pagination-next': true,
-              'is-disabled': this.isNextMonthDisabled,
-            }}
-          >
-            <bal-icon name="nav-go-right" size="small" />
-          </a>
+          ></bal-button>
           <div class="pagination-list">
-            <div class="field has-addons">
-              <div class="control month-select">
-                <span class="select">
-                  <select onInput={this.onMonthSelect}>
-                    {this.months.map(month => (
-                      <option value={month.index} selected={this.pointerDate.month === month.index}>
-                        {month.name}
-                      </option>
-                    ))}
-                  </select>
-                </span>
+            <div class="month-select">
+              <div class="select">
+                <select onInput={this.onMonthSelect}>
+                  {this.months.map(month => (
+                    <option value={month.index} selected={this.pointerDate.month === month.index}>
+                      {month.name}
+                    </option>
+                  ))}
+                </select>
               </div>
-              <div class="control year-select">
-                <span class="select">
-                  <select onInput={this.onYearSelect}>
-                    {this.years.map(year => (
-                      <option value={year} selected={this.pointerDate.year === year}>
-                        {year}
-                      </option>
-                    ))}
-                  </select>
-                </span>
+            </div>
+            <div class="year-select">
+              <div class="select">
+                <select onInput={this.onYearSelect}>
+                  {this.years.map(year => (
+                    <option value={year} selected={this.pointerDate.year === year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
           </div>
+          <bal-button
+            square
+            color="link"
+            icon="nav-go-right"
+            disabled={this.isNextMonthDisabled}
+            onClick={() => this.nextMonth()}
+          ></bal-button>
         </div>
       </header>
     )
