@@ -1,6 +1,6 @@
 import docs from './bal-spinner.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalSpinner } from '../../../../.storybook/vue/components'
+import { BalSpinner, BalCard, BalCardContent } from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   component: BalSpinner,
@@ -26,7 +26,7 @@ LoadingButton.args = {}
 LoadingButton.parameters = { ...component.sourceCode(LoadingButton) }
 
 export const LoadingCard = args => ({
-  components: { ...component.components },
+  components: { ...component.components, BalCard, BalCardContent },
   setup: () => ({ args }),
   template: `<bal-card>
   <bal-card-content class="is-flex is-justify-content-center">
