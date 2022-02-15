@@ -19,16 +19,22 @@ export class List {
    */
   @Prop() border = false
 
+  /**
+   * Defines the min height of the list item
+   */
+  @Prop() size: '' | 'large' = ''
+
   render() {
     return (
       <Host
         role="listbox"
-        class={[
-          'bal-list',
-          this.disabled ? 'is-disabled' : '',
-          this.inverted ? 'is-inverted' : '',
-          this.border ? 'has-border' : '',
-        ].join(' ')}
+        class={{
+          'bal-list': true,
+          'is-disabled': this.disabled,
+          'is-inverted': this.inverted,
+          'has-border': this.border,
+          'has-size-large': this.size === 'large',
+        }}
       >
         <slot></slot>
       </Host>
