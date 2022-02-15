@@ -270,6 +270,10 @@ export namespace Components {
         "value": string;
     }
     interface BalCheckboxGroup {
+        /**
+          * Displays the checkboxes vertically
+         */
+        "vertical": boolean;
     }
     interface BalData {
         /**
@@ -780,6 +784,10 @@ export namespace Components {
           * If `true` the list can be used on a dark background
          */
         "inverted": boolean;
+        /**
+          * Defines the min height of the list item
+         */
+        "size": '' | 'large';
     }
     interface BalListItem {
         /**
@@ -1039,6 +1047,10 @@ export namespace Components {
           * The value of the control.
          */
         "value": string;
+        /**
+          * Displays the checkboxes vertically
+         */
+        "vertical": boolean;
         /**
           * If `true`, the controls will be vertically on mobile devices.
          */
@@ -2260,6 +2272,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalCheckboxGroup {
+        /**
+          * Displays the checkboxes vertically
+         */
+        "vertical"?: boolean;
     }
     interface BalData {
         /**
@@ -2786,6 +2802,10 @@ declare namespace LocalJSX {
           * If `true` the list can be used on a dark background
          */
         "inverted"?: boolean;
+        /**
+          * Defines the min height of the list item
+         */
+        "size"?: '' | 'large';
     }
     interface BalListItem {
         /**
@@ -3046,6 +3066,10 @@ declare namespace LocalJSX {
           * The value of the control.
          */
         "value"?: string;
+        /**
+          * Displays the checkboxes vertically
+         */
+        "vertical"?: boolean;
         /**
           * If `true`, the controls will be vertically on mobile devices.
          */

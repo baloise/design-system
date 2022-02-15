@@ -4,8 +4,8 @@ import { addons, types } from '@storybook/addons'
 import { useParameter } from '@storybook/api'
 import { AddonPanel } from '@storybook/components'
 
-const PARAM_KEY = 'mySource'
-const ADDON_ID = 'mysource'
+const PARAM_KEY = 'vueSource'
+const ADDON_ID = 'vuesource'
 const PANEL_ID = `${ADDON_ID}/panel`
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
@@ -34,7 +34,7 @@ const MyPanel = () => {
 addons.register(ADDON_ID, api => {
   addons.add(PANEL_ID, {
     type: types.PANEL,
-    title: 'Source',
+    title: 'Vue',
     render: ({ active, key }) => (
       <AddonPanel active={active} key={key}>
         <MyPanel />

@@ -1,4 +1,4 @@
-import { withSoureCode } from '../utils'
+import { withSourceCode } from '../utils'
 import { ContactFormTemplate } from './templates/contact-form.template'
 import * as Components from '../../../.storybook/vue/components'
 
@@ -18,5 +18,5 @@ export const ContactForm = args => ({
   template: ContactFormTemplate,
 })
 ContactForm.parameters = {
-  ...withSoureCode(ContactFormTemplate),
+  ...withSourceCode(ContactFormTemplate),
 }

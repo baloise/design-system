@@ -40,6 +40,8 @@ export const BalComponentStory = (story: BalComponentStoryOptions): BalComponent
     ...stencilArgType(story.component),
     ...story.argTypes,
   }
+
+  const components = { [toPascalCase(story.component.name)]: story.component, ...story.subcomponents }
   return {
     story: {
       title: story.title || `Components/${toPascalCase(story.component.name).substring(3)}`,
@@ -57,13 +59,13 @@ export const BalComponentStory = (story: BalComponentStoryOptions): BalComponent
         },
       },
     },
-    components: {
-      [toPascalCase(story.component.name)]: story.component,
-      ...story.subcomponents,
-    },
-    sourceCode: (variant: (args: any) => { template: string }): { docs: { source: { code: string } } } => {
+    components,
+    sourceCode: (
+      variant: (args: any) => { template: string; components: any },
+    ): { docs: { source: { code: string } } } => {
       const template = variant({}).template
-      return withSourceCode(template, argTypes, { ...story.args, ...(variant as any).args })
+      const cs = Object.values(variant({}).components).map((c: any) => toPascalCase(c.name))
+      return withSourceCode(template, argTypes, { ...story.args, ...(variant as any).args }, cs)
     },
   }
 }
