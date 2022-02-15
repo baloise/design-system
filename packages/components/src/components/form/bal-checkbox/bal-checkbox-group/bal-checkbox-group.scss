@@ -3,7 +3,7 @@ bal-checkbox-group {
   position: relative;
   width: 100%;
 
-  & > div {
+  &:not(.is-vertical) > div {
     margin-top: 6px;
     margin-left: -16px;
     margin-right: -16px;
@@ -11,6 +11,19 @@ bal-checkbox-group {
     bal-checkbox {
       margin-left: 16px;
       margin-right: 16px;
+    }
+  }
+
+  &.is-vertical > div {
+    margin-top: 6px;
+
+    bal-checkbox {
+      display: block;
+      margin-bottom: 8px;
+
+      &:last-child {
+        margin-bottom: 4px;
+      }
     }
   }
 }

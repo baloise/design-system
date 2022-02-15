@@ -25,9 +25,16 @@ const component = BalComponentStory({
         category: 'custom',
       },
     },
+    vertical: {
+      description: 'Displays the checkbox vertically',
+      table: {
+        category: 'CheckboxGroup',
+      },
+    },
   },
   args: {
     invalid: false,
+    vertical: false,
     hasFieldMessage: true,
   },
 })
@@ -43,7 +50,7 @@ const Template = args => ({
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
-      <bal-checkbox-group>
+      <bal-checkbox-group :vertical="args.vertical">
         <bal-checkbox v-bind="args" v-model="args.value">
           {{ args.content }}
         </bal-checkbox>
@@ -65,6 +72,16 @@ Basic.args = {
 }
 Basic.parameters = {
   ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
+
+export const Vertical = Template.bind({})
+Vertical.args = {
+  content: 'Label',
+  vertical: true,
+}
+Vertical.parameters = {
+  ...component.sourceCode(Vertical),
   controls: { exclude: excludedControls },
 }
 
