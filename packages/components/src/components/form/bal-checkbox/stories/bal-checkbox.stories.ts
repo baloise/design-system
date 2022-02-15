@@ -6,6 +6,7 @@ import {
   BalFieldControl,
   BalFieldLabel,
   BalFieldMessage,
+  BalCheckboxGroup,
 } from '../../../../../.storybook/vue/components'
 import { isDescendant } from '../../../../../dist'
 import { ref, unref } from 'vue'
@@ -15,6 +16,7 @@ const balFieldArgTypes = stencilArgType(BalField)
 const component = BalComponentStory({
   title: 'Components/Form/Checkbox',
   component: BalCheckbox,
+  subcomponents: { BalCheckboxGroup },
   docs,
   argTypes: {
     ...withContent(),
