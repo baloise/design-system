@@ -19,13 +19,28 @@ bal-radio-group {
   }
 
   &:not(.bal-select-button) {
-    & > div {
-      margin-left: -16px;
-      margin-right: -16px;
+    &:not(.is-vertical) {
+      & > div {
+        margin-left: -16px;
+        margin-right: -16px;
 
-      bal-radio {
-        margin-left: 16px;
-        margin-right: 16px;
+        bal-radio {
+          margin-left: 16px;
+          margin-right: 16px;
+        }
+      }
+    }
+
+    &.is-vertical {
+      & > div {
+        bal-radio {
+          display: block;
+          margin-bottom: 8px;
+
+          &:last-child {
+            margin-bottom: 4px;
+          }
+        }
       }
     }
   }
