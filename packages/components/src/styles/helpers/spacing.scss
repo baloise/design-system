@@ -1,3 +1,7 @@
+.mt-auto {
+  margin-top: auto !important;
+}
+
 @include tablet() {
   @each $property, $shortcut in $spacing-shortcuts {
     @each $name, $value in $spacing-values-medium {
