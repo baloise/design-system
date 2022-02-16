@@ -361,6 +361,10 @@ bal-button.is-fullwidth {
   margin-right: 8px;
 }
 
+.field.is-grouped {
+  width: 100%;
+}
+
 @include mobile() {
   .field.is-grouped {
     flex-wrap: wrap;

@@ -123,13 +123,7 @@ export class Snackbar {
           <bal-text innerHTML={this.message}>
             <slot />
           </bal-text>
-          <bal-icon
-            name="close"
-            class="close"
-            inverted={this.color !== ''}
-            size="xsmall"
-            onClick={() => this.close()}
-          ></bal-icon>
+          <bal-close class="close" size="medium" inverted={this.color !== ''} onClick={() => this.close()}></bal-close>
           <div class="snackbar-footer" style={{ display: this.action === '' ? 'none' : 'inline-block' }}>
             <bal-button
               color={this.buttonType}

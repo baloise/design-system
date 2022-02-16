@@ -52,6 +52,10 @@ bal-icon {
     transform: rotate(180deg);
   }
 
+  &.is-white {
+    fill: $white;
+  }
+
   &.is-primary {
     fill: $primary;
   }

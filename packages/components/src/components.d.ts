@@ -63,6 +63,24 @@ export namespace Components {
     }
     interface BalApp {
     }
+    interface BalBadge {
+        /**
+          * Define the alert color for the badge.
+         */
+        "color": 'danger' | 'warning' | 'success';
+        /**
+          * Name of the icon to show. If a icon is present text should be hidden.
+         */
+        "icon"?: string;
+        /**
+          * If `true` the badge is added to the top right corner of the card.
+         */
+        "position": 'card' | 'button' | 'tabs' | '';
+        /**
+          * Define the size of badge. Small is recommended for tabs.
+         */
+        "size": 'small' | 'large' | '';
+    }
     interface BalButton {
         /**
           * If `true` the bottom corners get rounded
@@ -270,6 +288,24 @@ export namespace Components {
         "value": string;
     }
     interface BalCheckboxGroup {
+        /**
+          * Displays the checkboxes vertically
+         */
+        "vertical": boolean;
+    }
+    interface BalClose {
+        /**
+          * If `true` it has a light background.
+         */
+        "background": boolean;
+        /**
+          * If `true` it supports dark backgrounds.
+         */
+        "inverted": boolean;
+        /**
+          * Define the size of badge. Small is recommended for tabs.
+         */
+        "size": 'small' | 'large' | 'medium' | '';
     }
     interface BalData {
         /**
@@ -618,7 +654,7 @@ export namespace Components {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color": BalButtonColor;
+        "color": BalButtonColor | 'white';
         /**
           * If `true` the button is inverted
          */
@@ -767,6 +803,16 @@ export namespace Components {
          */
         "value"?: string | number;
     }
+    interface BalInputGroup {
+        /**
+          * If `true` the component is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+    }
     interface BalList {
         /**
           * If `true` each list item has a bottom border
@@ -780,6 +826,10 @@ export namespace Components {
           * If `true` the list can be used on a dark background
          */
         "inverted": boolean;
+        /**
+          * Defines the min height of the list item
+         */
+        "size": '' | 'large';
     }
     interface BalListItem {
         /**
@@ -1039,6 +1089,10 @@ export namespace Components {
           * The value of the control.
          */
         "value": string;
+        /**
+          * Displays the checkboxes vertically
+         */
+        "vertical": boolean;
         /**
           * If `true`, the controls will be vertically on mobile devices.
          */
@@ -1504,6 +1558,12 @@ declare global {
         prototype: HTMLBalAppElement;
         new (): HTMLBalAppElement;
     };
+    interface HTMLBalBadgeElement extends Components.BalBadge, HTMLStencilElement {
+    }
+    var HTMLBalBadgeElement: {
+        prototype: HTMLBalBadgeElement;
+        new (): HTMLBalBadgeElement;
+    };
     interface HTMLBalButtonElement extends Components.BalButton, HTMLStencilElement {
     }
     var HTMLBalButtonElement: {
@@ -1563,6 +1623,12 @@ declare global {
     var HTMLBalCheckboxGroupElement: {
         prototype: HTMLBalCheckboxGroupElement;
         new (): HTMLBalCheckboxGroupElement;
+    };
+    interface HTMLBalCloseElement extends Components.BalClose, HTMLStencilElement {
+    }
+    var HTMLBalCloseElement: {
+        prototype: HTMLBalCloseElement;
+        new (): HTMLBalCloseElement;
     };
     interface HTMLBalDataElement extends Components.BalData, HTMLStencilElement {
     }
@@ -1707,6 +1773,12 @@ declare global {
     var HTMLBalInputElement: {
         prototype: HTMLBalInputElement;
         new (): HTMLBalInputElement;
+    };
+    interface HTMLBalInputGroupElement extends Components.BalInputGroup, HTMLStencilElement {
+    }
+    var HTMLBalInputGroupElement: {
+        prototype: HTMLBalInputGroupElement;
+        new (): HTMLBalInputGroupElement;
     };
     interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
     }
@@ -1921,6 +1993,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "bal-accordion": HTMLBalAccordionElement;
         "bal-app": HTMLBalAppElement;
+        "bal-badge": HTMLBalBadgeElement;
         "bal-button": HTMLBalButtonElement;
         "bal-button-group": HTMLBalButtonGroupElement;
         "bal-card": HTMLBalCardElement;
@@ -1931,6 +2004,7 @@ declare global {
         "bal-card-title": HTMLBalCardTitleElement;
         "bal-checkbox": HTMLBalCheckboxElement;
         "bal-checkbox-group": HTMLBalCheckboxGroupElement;
+        "bal-close": HTMLBalCloseElement;
         "bal-data": HTMLBalDataElement;
         "bal-data-item": HTMLBalDataItemElement;
         "bal-data-label": HTMLBalDataLabelElement;
@@ -1955,6 +2029,7 @@ declare global {
         "bal-hint-title": HTMLBalHintTitleElement;
         "bal-icon": HTMLBalIconElement;
         "bal-input": HTMLBalInputElement;
+        "bal-input-group": HTMLBalInputGroupElement;
         "bal-list": HTMLBalListElement;
         "bal-list-item": HTMLBalListItemElement;
         "bal-list-item-content": HTMLBalListItemContentElement;
@@ -2032,6 +2107,24 @@ declare namespace LocalJSX {
         "value"?: boolean;
     }
     interface BalApp {
+    }
+    interface BalBadge {
+        /**
+          * Define the alert color for the badge.
+         */
+        "color"?: 'danger' | 'warning' | 'success';
+        /**
+          * Name of the icon to show. If a icon is present text should be hidden.
+         */
+        "icon"?: string;
+        /**
+          * If `true` the badge is added to the top right corner of the card.
+         */
+        "position"?: 'card' | 'button' | 'tabs' | '';
+        /**
+          * Define the size of badge. Small is recommended for tabs.
+         */
+        "size"?: 'small' | 'large' | '';
     }
     interface BalButton {
         /**
@@ -2260,6 +2353,24 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalCheckboxGroup {
+        /**
+          * Displays the checkboxes vertically
+         */
+        "vertical"?: boolean;
+    }
+    interface BalClose {
+        /**
+          * If `true` it has a light background.
+         */
+        "background"?: boolean;
+        /**
+          * If `true` it supports dark backgrounds.
+         */
+        "inverted"?: boolean;
+        /**
+          * Define the size of badge. Small is recommended for tabs.
+         */
+        "size"?: 'small' | 'large' | 'medium' | '';
     }
     interface BalData {
         /**
@@ -2608,7 +2719,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color"?: BalButtonColor;
+        "color"?: BalButtonColor | 'white';
         /**
           * If `true` the button is inverted
          */
@@ -2773,6 +2884,16 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    interface BalInputGroup {
+        /**
+          * If `true` the component is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+    }
     interface BalList {
         /**
           * If `true` each list item has a bottom border
@@ -2786,6 +2907,10 @@ declare namespace LocalJSX {
           * If `true` the list can be used on a dark background
          */
         "inverted"?: boolean;
+        /**
+          * Defines the min height of the list item
+         */
+        "size"?: '' | 'large';
     }
     interface BalListItem {
         /**
@@ -3046,6 +3171,10 @@ declare namespace LocalJSX {
           * The value of the control.
          */
         "value"?: string;
+        /**
+          * Displays the checkboxes vertically
+         */
+        "vertical"?: boolean;
         /**
           * If `true`, the controls will be vertically on mobile devices.
          */
@@ -3540,6 +3669,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "bal-accordion": BalAccordion;
         "bal-app": BalApp;
+        "bal-badge": BalBadge;
         "bal-button": BalButton;
         "bal-button-group": BalButtonGroup;
         "bal-card": BalCard;
@@ -3550,6 +3680,7 @@ declare namespace LocalJSX {
         "bal-card-title": BalCardTitle;
         "bal-checkbox": BalCheckbox;
         "bal-checkbox-group": BalCheckboxGroup;
+        "bal-close": BalClose;
         "bal-data": BalData;
         "bal-data-item": BalDataItem;
         "bal-data-label": BalDataLabel;
@@ -3574,6 +3705,7 @@ declare namespace LocalJSX {
         "bal-hint-title": BalHintTitle;
         "bal-icon": BalIcon;
         "bal-input": BalInput;
+        "bal-input-group": BalInputGroup;
         "bal-list": BalList;
         "bal-list-item": BalListItem;
         "bal-list-item-content": BalListItemContent;
@@ -3617,6 +3749,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "bal-accordion": LocalJSX.BalAccordion & JSXBase.HTMLAttributes<HTMLBalAccordionElement>;
             "bal-app": LocalJSX.BalApp & JSXBase.HTMLAttributes<HTMLBalAppElement>;
+            "bal-badge": LocalJSX.BalBadge & JSXBase.HTMLAttributes<HTMLBalBadgeElement>;
             "bal-button": LocalJSX.BalButton & JSXBase.HTMLAttributes<HTMLBalButtonElement>;
             "bal-button-group": LocalJSX.BalButtonGroup & JSXBase.HTMLAttributes<HTMLBalButtonGroupElement>;
             "bal-card": LocalJSX.BalCard & JSXBase.HTMLAttributes<HTMLBalCardElement>;
@@ -3627,6 +3760,7 @@ declare module "@stencil/core" {
             "bal-card-title": LocalJSX.BalCardTitle & JSXBase.HTMLAttributes<HTMLBalCardTitleElement>;
             "bal-checkbox": LocalJSX.BalCheckbox & JSXBase.HTMLAttributes<HTMLBalCheckboxElement>;
             "bal-checkbox-group": LocalJSX.BalCheckboxGroup & JSXBase.HTMLAttributes<HTMLBalCheckboxGroupElement>;
+            "bal-close": LocalJSX.BalClose & JSXBase.HTMLAttributes<HTMLBalCloseElement>;
             "bal-data": LocalJSX.BalData & JSXBase.HTMLAttributes<HTMLBalDataElement>;
             "bal-data-item": LocalJSX.BalDataItem & JSXBase.HTMLAttributes<HTMLBalDataItemElement>;
             "bal-data-label": LocalJSX.BalDataLabel & JSXBase.HTMLAttributes<HTMLBalDataLabelElement>;
@@ -3651,6 +3785,7 @@ declare module "@stencil/core" {
             "bal-hint-title": LocalJSX.BalHintTitle & JSXBase.HTMLAttributes<HTMLBalHintTitleElement>;
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
+            "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
             "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
             "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;

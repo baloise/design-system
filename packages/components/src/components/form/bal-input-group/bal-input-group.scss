@@ -1,0 +1,104 @@
+@import './bal-input-group.mixins.scss';
+
+bal-input-group,
+.bal-input-group {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-bottom: 1px solid $blue-2;
+  background: $white;
+
+  .input {
+    min-height: 44px;
+    border: none;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: calc(0.5em - 2px);
+    padding-top: calc(0.5em - 2px);
+  }
+
+  bal-icon {
+    min-width: 48px;
+  }
+
+  & > *:first-child.bal-input {
+    .input {
+      padding-left: calc(0.75em - 1px);
+    }
+  }
+
+  & > *:last-child.bal-input {
+    .input {
+      padding-right: calc(0.75em - 1px);
+    }
+  }
+
+  & > *:first-child.input {
+    padding-left: calc(0.75em - 1px);
+  }
+
+  & > *:last-child.input {
+    padding-right: calc(0.75em - 1px);
+  }
+
+  & > *:last-child.tag {
+    margin-right: calc(0.75em - 1px);
+  }
+
+  & > *:first-child.tag {
+    margin-left: calc(0.75em - 1px);
+  }
+
+  &.is-danger {
+    &,
+    .input {
+      border-color: $danger;
+    }
+
+    svg {
+      g,
+      path,
+      circle {
+        fill: $danger;
+      }
+    }
+  }
+
+  &.is-disabled {
+    background: $input-disabled-background-color;
+    opacity: 0.6;
+
+    &,
+    .input {
+      cursor: default !important;
+      pointer-events: none !important;
+      user-select: none !important;
+
+      color: $input-disabled-color;
+
+      ::placeholder {
+        color: $input-disabled-placeholder-color;
+      }
+    }
+
+    .tag {
+      background-color: $grey-5;
+
+      span {
+        color: $white;
+      }
+
+      .delete {
+        display: none !important;
+      }
+    }
+  }
+
+  &:not(.is-disabled) {
+    &:focus-within {
+      border-color: $blue;
+    }
+  }
+}

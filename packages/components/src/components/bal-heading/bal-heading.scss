@@ -22,7 +22,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   @include padding(0);
   font-family: $family-primary;
   color: $blue;
@@ -50,6 +51,11 @@ h4 {
 }
 
 h5 {
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+}
+
+h6 {
   margin-block-start: 1.33em;
   margin-block-end: 1.33em;
 }
@@ -97,7 +103,8 @@ h1.subtitle,
 h2.subtitle,
 h3.subtitle,
 h4.subtitle,
-h5.subtitle {
+h5.subtitle,
+h6.subtitle {
   font-weight: $weight-normal;
 }
 

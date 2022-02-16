@@ -67,3 +67,21 @@ export const ShadowHelpers = `
 <div class="p-4 has-shadow">
   <p>Has shadow</p>
 </div>`
+
+export const OpacityHelpers = `
+<div class="p-4 has-background-blue has-opacity-100">
+  <p class="has-text-white">Has opacity 1</p>
+</div>
+<div class="p-4 mt-4 has-background-blue has-opacity-80">
+  <p class="has-text-white">Has opacity 0.8</p>
+</div>
+<div class="p-4 mt-4 has-background-blue has-opacity-60">
+  <p class="has-text-white">Has opacity 0.6</p>
+</div>
+<div class="p-4 mt-4 has-background-blue has-opacity-30">
+  <p class="has-text-white">Has opacity 0.3</p>
+</div>
+<div class="p-4 mt-4 has-background-blue has-opacity-0">
+  <p class="has-text-white">Has opacity 0</p>
+</div>
+`

@@ -34,17 +34,15 @@ Value must be a date string following the [ISO 8601 datetime format standard](ht
 `1996-12-19`. The format does not have to be specific to an exact datetime.
 For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
 
-To set the date use the [date utils](https://github.com/baloise/web-app-utils/blob/master/packages/utils/README.md).
-
 ```typescript
-import { newDateString, now } from '@baloise/web-app-utils'
+import { isoString, now } from '@baloise/design-system-components'
 
 const datepickerDisabled = document.getElementById('datepicker-disabled')
-datepickerDisabled.value = newDateString(now())
+datepickerDisabled.value = isoString(now())
 // or
-datepickerDisabled.value = newDateString(2020, 0, 13)
+datepickerDisabled.value = isoString(2020, 0, 13)
 // or
-datepickerDisabled.value = newDateString(new Date(2020, 0, 13))
+datepickerDisabled.value = isoString(new Date(2020, 0, 13))
 ```
 
 import AngularLogo from '../../../../stories/assets/images/angular.svg'

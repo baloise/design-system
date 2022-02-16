@@ -62,16 +62,14 @@ export class Tag {
           <bal-text small={this.size === 'small'}>
             <slot />
           </bal-text>
-          <div
+          <bal-close
             style={{
               display: this.closable ? 'inline-block' : 'none',
             }}
-            class={{
-              'delete': true,
-              'is-small': true,
-            }}
+            inverted
+            background
             onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
-          ></div>
+          ></bal-close>
         </div>
       </Host>
     )

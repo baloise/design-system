@@ -1,4 +1,4 @@
-import { withSoureCode } from '../utils'
+import { withSourceCode } from '../utils'
 import { ExternalCaluclatorTemplate } from './templates/external-caluclator.template'
 import { ExternalPortalTemplate } from './templates/external-portal.template'
 import { InternalFormAppTemplate } from './templates/internal-form.template'
@@ -21,7 +21,7 @@ export const ExternalCalculator = args => ({
   template: ExternalCaluclatorTemplate,
 })
 ExternalCalculator.parameters = {
-  ...withSoureCode(ExternalCaluclatorTemplate),
+  ...withSourceCode(ExternalCaluclatorTemplate),
 }
 
 export const ExternalPortalApp = args => ({
@@ -30,7 +30,7 @@ export const ExternalPortalApp = args => ({
   template: ExternalPortalTemplate,
 })
 ExternalPortalApp.parameters = {
-  ...withSoureCode(ExternalPortalTemplate),
+  ...withSourceCode(ExternalPortalTemplate),
 }
 
 export const InternalFormApp = args => ({
@@ -39,7 +39,7 @@ export const InternalFormApp = args => ({
   template: InternalFormAppTemplate,
 })
 InternalFormApp.parameters = {
-  ...withSoureCode(InternalFormAppTemplate),
+  ...withSourceCode(InternalFormAppTemplate),
 }
 
 export const InternalWideApp = args => ({
@@ -48,5 +48,5 @@ export const InternalWideApp = args => ({
   template: InternalWideAppTemplate,
 })
 InternalWideApp.parameters = {
-  ...withSoureCode(InternalWideAppTemplate),
+  ...withSourceCode(InternalWideAppTemplate),
 }

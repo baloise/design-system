@@ -28,6 +28,7 @@ const component = BalComponentStory({
   },
   args: {
     invalid: false,
+    vertical: false,
     hasFieldMessage: true,
   },
 })
@@ -56,6 +57,16 @@ RadioGroup.args = {
   value: '2',
 }
 RadioGroup.parameters = { ...component.sourceCode(RadioGroup), controls: { exclude: excludedControls } }
+
+export const Vertical = RadioGroup.bind({})
+Vertical.args = {
+  content: 'Label',
+  vertical: true,
+}
+Vertical.parameters = {
+  ...component.sourceCode(Vertical),
+  controls: { exclude: excludedControls },
+}
 
 export const RadioBoxes = args => ({
   components: { ...component.components },

@@ -14,6 +14,12 @@ const component = BalComponentStory({
   component: BalList,
   subcomponents: { BalListItem, BalListItemContent, BalListItemIcon, BalListItemTitle, BalListItemSubtitle },
   docs,
+  args: {
+    inverted: false,
+    disabled: false,
+    border: true,
+    size: 'large',
+  },
 })
 
 export default component.story
@@ -45,7 +51,7 @@ Native.args = {
 Native.parameters = { ...component.sourceCode(Native) }
 
 export const Basic = args => ({
-  components: { ...component.components },
+  components: { ...component.components, BalIcon },
   setup: () => ({ args }),
   template: `<bal-list v-bind="args">
   <bal-list-item>
@@ -59,76 +65,127 @@ export const Basic = args => ({
       <bal-list-item-subtitle>Secondary text</bal-list-item-subtitle>
     </bal-list-item-content>
   </bal-list-item>
+  <bal-list-item clickable>
+    <bal-list-item-content>
+      <bal-list-item-title>Clickable item</bal-list-item-title>
+    </bal-list-item-content>
+  </bal-list-item>
+  <bal-list-item disabled>
+    <bal-list-item-content>
+      <bal-list-item-title>Disabled item</bal-list-item-title>
+      <bal-list-item-subtitle>Subtitle</bal-list-item-subtitle>
+    </bal-list-item-content>
+  </bal-list-item>
 </bal-list>`,
 })
 Basic.args = {
   border: true,
+  size: '',
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
 
-export const WithIcons = args => ({
+export const LinkedList = args => ({
   components: { ...component.components, BalIcon },
   setup: () => ({ args }),
   template: `<bal-list v-bind="args">
-  <bal-list-item>
-  <bal-list-item-icon>
-    <bal-icon name="account"></bal-icon>
-  </bal-list-item-icon>
-  <bal-list-item-content>
-    <bal-list-item-title>Tony Stark</bal-list-item-title>
-    <bal-list-item-subtitle>Stark Industries</bal-list-item-subtitle>
-  </bal-list-item-content>
-</bal-list-item>
-<bal-list-item>
-  <bal-list-item-icon>
-    <bal-icon name="check"></bal-icon>
-  </bal-list-item-icon>
-  <bal-list-item-content>
-    <bal-list-item-title class="has-text-black">Avenger</bal-list-item-title>
-  </bal-list-item-content>
-</bal-list-item>
-<bal-list-item>
-  <bal-list-item-icon>
-    <bal-icon name="document"></bal-icon>
-  </bal-list-item-icon>
-  <bal-list-item-content>
-    <bal-list-item-title>Document.pdf</bal-list-item-title>
-    <bal-list-item-subtitle>20.03.1998</bal-list-item-subtitle>
-  </bal-list-item-content>
-  <bal-list-item-icon right>
-    <bal-icon name="download"></bal-icon>
-  </bal-list-item-icon>
-</bal-list-item>
+  <bal-list-item clickable href="www.baloise.com" target="_blank">
+    <bal-list-item-content>
+      <bal-list-item-title>External Link</bal-list-item-title>
+      <bal-list-item-subtitle>Description</bal-list-item-subtitle>
+    </bal-list-item-content>
+    <bal-list-item-icon right>
+      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+    </bal-list-item-icon>
+  </bal-list-item>
+  <bal-list-item disabled clickable href="http://www.baloise.com" target="_blank">
+    <bal-list-item-content>
+      <bal-list-item-title>Disabled Link</bal-list-item-title>
+      <bal-list-item-subtitle>Description</bal-list-item-subtitle>
+    </bal-list-item-content>
+    <bal-list-item-icon right>
+      <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+    </bal-list-item-icon>
+  </bal-list-item>
 </bal-list>`,
 })
-WithIcons.args = {
+LinkedList.args = {
   border: true,
+  size: 'large',
 }
-WithIcons.parameters = { ...component.sourceCode(WithIcons) }
+LinkedList.parameters = { ...component.sourceCode(LinkedList) }
 
-export const LinkList = args => ({
+export const DownloadList = args => ({
   components: { ...component.components, BalIcon },
   setup: () => ({ args }),
   template: `<bal-list v-bind="args">
-  <bal-list-item href="https://google.com" target="_blank">
-  <bal-list-item-content>
-    <bal-list-item-title>Link A</bal-list-item-title>
-  </bal-list-item-content>
-  <bal-list-item-icon right>
-    <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-  </bal-list-item-icon>
-</bal-list-item>
-<bal-list-item disabled>
-  <bal-list-item-content>
-    <bal-list-item-title>Disabled Link B</bal-list-item-title>
-  </bal-list-item-content>
-  <bal-list-item-icon right>
-    <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-  </bal-list-item-icon>
-</bal-list-item>
+  <bal-list-item clickable>
+    <bal-list-item-icon>
+      <bal-icon name="document"></bal-icon>
+    </bal-list-item-icon>
+    <bal-list-item-content>
+      <bal-list-item-title>Document</bal-list-item-title>
+      <bal-list-item-subtitle>PDF - 98KB</bal-list-item-subtitle>
+    </bal-list-item-content>
+    <bal-list-item-icon right>
+      <bal-icon name="download" size="small"></bal-icon>
+    </bal-list-item-icon>
+  </bal-list-item>
+
+  <bal-list-item clickable>
+    <bal-list-item-icon>
+      <bal-icon name="document"></bal-icon>
+    </bal-list-item-icon>
+    <bal-list-item-content>
+      <bal-list-item-title>Picture</bal-list-item-title>
+      <bal-list-item-subtitle>PNG - 140KB</bal-list-item-subtitle>
+    </bal-list-item-content>
+    <bal-list-item-icon right>
+      <bal-icon name="download" size="small"></bal-icon>
+    </bal-list-item-icon>
+  </bal-list-item>
+
+  <bal-list-item clickable>
+    <bal-list-item-icon>
+      <bal-icon name="document"></bal-icon>
+    </bal-list-item-icon>
+    <bal-list-item-content>
+      <bal-list-item-title>Video File</bal-list-item-title>
+      <bal-list-item-subtitle>MP4 - 61MB</bal-list-item-subtitle>
+    </bal-list-item-content>
+    <bal-list-item-icon right>
+      <bal-icon name="download" size="small"></bal-icon>
+    </bal-list-item-icon>
+  </bal-list-item>
+
+  <bal-list-item clickable>
+    <bal-list-item-icon>
+      <bal-icon name="document"></bal-icon>
+    </bal-list-item-icon>
+    <bal-list-item-content>
+      <bal-list-item-title>Audio File</bal-list-item-title>
+      <bal-list-item-subtitle>MP3 - 3MB</bal-list-item-subtitle>
+    </bal-list-item-content>
+    <bal-list-item-icon right>
+      <bal-icon name="download" size="small"></bal-icon>
+    </bal-list-item-icon>
+  </bal-list-item>
+
+  <bal-list-item disabled>
+    <bal-list-item-icon>
+      <bal-icon name="document"></bal-icon>
+    </bal-list-item-icon>
+    <bal-list-item-content>
+      <bal-list-item-title>Disabled Document</bal-list-item-title>
+      <bal-list-item-subtitle>PDF - 98KB</bal-list-item-subtitle>
+    </bal-list-item-content>
+    <bal-list-item-icon right>
+      <bal-icon name="download" size="small"></bal-icon>
+    </bal-list-item-icon>
+  </bal-list-item>
 </bal-list>`,
 })
-LinkList.args = {
+DownloadList.args = {
   border: true,
+  size: 'large',
 }
-LinkList.parameters = { ...component.sourceCode(LinkList) }
+DownloadList.parameters = { ...component.sourceCode(DownloadList) }

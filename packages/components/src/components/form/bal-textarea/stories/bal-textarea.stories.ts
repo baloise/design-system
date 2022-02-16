@@ -1,6 +1,12 @@
 import docs from './bal-textarea.docs.mdx'
 import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
-import { BalTextarea, BalField, BalFieldControl, BalFieldLabel } from '../../../../../.storybook/vue/components'
+import {
+  BalTextarea,
+  BalField,
+  BalFieldControl,
+  BalFieldLabel,
+  BalFieldMessage,
+} from '../../../../../.storybook/vue/components'
 
 const balFieldArgTypes = stencilArgType(BalField)
 
@@ -38,7 +44,7 @@ const excludedControls = [
 ]
 
 const Template = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel },
+  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
