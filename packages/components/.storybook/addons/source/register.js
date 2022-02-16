@@ -24,7 +24,7 @@ const MyPanel = () => {
 
   return (
     <div className="my-source-code">
-      <SyntaxHighlighter language="html" style={atomDark}>
+      <SyntaxHighlighter language="html" style={atomDark} wrapLongLines={true} wrapLines={true}>
         {value}
       </SyntaxHighlighter>
     </div>

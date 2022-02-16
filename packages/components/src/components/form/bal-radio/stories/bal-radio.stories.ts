@@ -29,7 +29,7 @@ const component = BalComponentStory({
   },
   args: {
     invalid: false,
-    disabled: false,
+    vertical: false,
     hasFieldMessage: true,
   },
 })
@@ -58,6 +58,16 @@ RadioGroup.args = {
   value: '2',
 }
 RadioGroup.parameters = { ...component.sourceCode(RadioGroup), controls: { exclude: excludedControls } }
+
+export const Vertical = RadioGroup.bind({})
+Vertical.args = {
+  content: 'Label',
+  vertical: true,
+}
+Vertical.parameters = {
+  ...component.sourceCode(Vertical),
+  controls: { exclude: excludedControls },
+}
 
 export const RadioBoxes = args => ({
   components: { ...component.components },
@@ -104,13 +114,13 @@ export const RadioList = args => ({
   },
   template: `
   <bal-radio-group v-bind="args" v-model="value">
-    <div @click="checkA()" :class="value === '1' ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-radius-normal">
+    <div @click="checkA()" :class="value === '1' ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-1 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-radius-normal">
       <bal-radio name="list-example" value="1">
         <span class="pl-2"><b>Year 1</b> (CHF 66.00)</span>
       </bal-radio>
     </div>
 
-    <div @click="checkB()" :class="value === '2' ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-3 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-radius-normal">
+    <div @click="checkB()" :class="value === '2' ? 'has-background-blue-light':''" class="clickable is-flex px-4 py-1 mb-2 is-flex-direction-row is-justify-content-start is-align-items-center has-border-blue has-radius-normal">
       <bal-radio name="list-example" class="mr-3" value="2">
         <div class="pl-2"><b>Year 2</b> (CHF 86.00)</div>
       </bal-radio>

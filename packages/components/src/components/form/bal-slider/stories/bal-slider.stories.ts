@@ -1,6 +1,12 @@
 import docs from './bal-slider.docs.mdx'
 import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
-import { BalSlider, BalField, BalFieldControl, BalFieldLabel } from '../../../../../.storybook/vue/components'
+import {
+  BalSlider,
+  BalField,
+  BalFieldControl,
+  BalFieldLabel,
+  BalFieldMessage,
+} from '../../../../../.storybook/vue/components'
 
 const balFieldArgTypes = stencilArgType(BalField)
 
@@ -27,7 +33,7 @@ const component = BalComponentStory({
 export default component.story
 
 export const Basic = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel },
+  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">

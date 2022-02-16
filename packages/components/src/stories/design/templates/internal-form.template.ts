@@ -89,9 +89,9 @@ export const InternalFormAppTemplate = `
       </bal-field>
     </form>
     </bal-card-content>
-        <bal-card-actions position="right">
+        <bal-card-actions>
           <bal-button>Save</bal-button>
-          <bal-button color="link">Cancel</bal-button>
+          <bal-button color="info">Cancel</bal-button>
         </bal-card-actions>
       </bal-card>
     </div>

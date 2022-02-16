@@ -2,9 +2,16 @@
 
 bal-checkbox {
   position: relative;
-  display: inline-block;
-  min-height: 24px;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
   outline: none;
+  min-width: 24px;
+  min-height: 48px;
+
+  &.is-dense {
+    min-height: 24px;
+  }
 
   &.bal-checkbox {
     input[type='checkbox'] {

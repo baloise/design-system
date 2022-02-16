@@ -36,6 +36,11 @@ export class Radio implements ComponentInterface {
   @Prop() interface: 'radio' | 'select-button' = 'radio'
 
   /**
+   * If `true`, the radio has a reduced height.
+   */
+  @Prop() dense = false
+
+  /**
    * The tabindex of the control.
    */
   @Prop() balTabindex = 0
@@ -153,6 +158,7 @@ export class Radio implements ComponentInterface {
           'bal-radio': this.interface === 'radio',
           'bal-select-button': this.interface === 'select-button',
           'is-inverted': this.inverted,
+          'is-dense': this.dense,
           'is-disabled': this.disabled,
           'is-focused': this.hasFocus,
         }}

@@ -1,5 +1,3 @@
-@import 'bal-pagination.vars';
-
 bal-pagination {
   display: block;
 }
@@ -25,18 +23,18 @@ nav.pagination {
     display: flex;
     justify-content: center;
     text-align: center;
-    gap: 8px;
+    gap: 4px;
   }
 
   @include tablet() {
     .pagination-list {
-      gap: 16px;
+      gap: 8px;
     }
   }
 
   @include desktop() {
     .pagination-list {
-      gap: 16px;
+      gap: 8px;
     }
   }
 }

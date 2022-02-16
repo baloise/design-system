@@ -2,22 +2,17 @@
 @import 'select-button.scss';
 
 bal-radio.bal-radio:not(.bal-select-button) {
-  display: inline-block;
-  width: auto;
-  font-family: $family-primary;
-  text-align: center;
-  text-decoration: none;
-  text-overflow: ellipsis;
-  user-select: none;
-  vertical-align: top; // the better option for most scenarios
-  vertical-align: -webkit-baseline-middle; // the best for those that support it
-  pointer-events: auto;
-  font-kerning: none;
-  outline: none;
-  outline-style: none;
   position: relative;
-  min-height: 24px;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  outline: none;
   min-width: 24px;
+  min-height: 48px;
+
+  &.is-dense {
+    min-height: 24px;
+  }
 
   .has-padding-left {
     padding-left: 32px;

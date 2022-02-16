@@ -29,7 +29,7 @@ bal-field {
   }
 
   bal-field-control {
-    margin-bottom: 24px;
+    margin-bottom: 32px;
     display: flex;
     align-items: center;
 
@@ -39,7 +39,7 @@ bal-field {
   }
 
   bal-field-control + bal-field-message {
-    margin-top: -20px !important;
+    margin-top: -28px !important;
   }
 
   bal-field-label > label > bal-hint {

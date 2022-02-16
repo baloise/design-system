@@ -4,13 +4,24 @@ bal-checkbox-group {
   width: 100%;
 
   & > div {
-    margin-top: 6px;
-    margin-left: -16px;
-    margin-right: -16px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &:not(.is-vertical) > div {
+    margin-left: -12px;
+    margin-right: -12px;
 
     bal-checkbox {
-      margin-left: 16px;
-      margin-right: 16px;
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+  }
+
+  &.is-vertical > div {
+    bal-checkbox {
+      display: flex;
     }
   }
 }

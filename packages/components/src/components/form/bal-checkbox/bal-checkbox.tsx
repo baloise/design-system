@@ -40,6 +40,11 @@ export class Checkbox {
   @Prop({ mutable: true, reflect: true }) checked = false
 
   /**
+   * If `true`, the checkbox has a reduced height.
+   */
+  @Prop() dense = false
+
+  /**
    * Update the native input element when the checked changes
    */
   @Watch('checked')
@@ -135,6 +140,7 @@ export class Checkbox {
         role="checkbox"
         onClick={this.onClick}
         class={{
+          'is-dense': this.dense,
           'is-inverted': this.inverted,
           'is-disabled': this.disabled,
           'is-focused': this.hasFocus,

@@ -21,6 +21,7 @@ import {
   ShadowHelpers,
   FlexboxHelpers,
   VisibilityHelpers,
+  OpacityHelpers,
 } from './09-css-helpers.templates.ts'
 import { html } from '../utils'
 import dedent from 'ts-dedent'
@@ -152,6 +153,23 @@ Add a shadow effect to an element with the css class `has-shadow`.
   language="html"
   code={dedent`
      ${ShadowHelpers}
+  `}
+/>
+
+<bal-doc-github link="/stories/design/09-css-helpers.stories.mdx"></bal-doc-github>
+
+## Opacity
+
+Add opacity effect to an element with the class `has-opacity-**`.
+
+<Canvas withSource="none">
+  <bal-doc-app>{html(OpacityHelpers)}</bal-doc-app>
+</Canvas>
+
+<Source
+  language="html"
+  code={dedent`
+     ${OpacityHelpers}
   `}
 />
 

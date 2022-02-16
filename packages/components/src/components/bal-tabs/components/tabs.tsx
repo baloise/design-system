@@ -28,7 +28,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
           data-index={index}
         >
           <TabItem href={tab.href} label={tab.label} onSelectTab={e => onSelectTab(e, tab)}></TabItem>
-          <span class="bubble" style={{ display: tab.hasBubble ? 'inline' : 'none' }}></span>
+          <bal-badge size="small" position="tabs" class={{ 'is-hidden': !tab.hasBubble }}></bal-badge>
         </li>
       ))}
       <li class="is-right" style={{ display: action ? 'block' : 'none' }}>

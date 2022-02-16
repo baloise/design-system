@@ -421,11 +421,13 @@ export class Select {
       }
 
       const option = visibleOptions[this.focusIndex]
-      const focusedElement = this.el.querySelector<HTMLElement>(`button#${option.id}`)
-      if (focusedElement) {
-        setTimeout(() => {
-          this.scrollToFocusedOption(focusedElement)
-        }, 0)
+      if (option && option.id) {
+        const focusedElement = this.el.querySelector<HTMLElement>(`button#${option.id}`)
+        if (focusedElement) {
+          setTimeout(() => {
+            this.scrollToFocusedOption(focusedElement)
+          }, 0)
+        }
       }
     } else {
       this.focusIndex = 0

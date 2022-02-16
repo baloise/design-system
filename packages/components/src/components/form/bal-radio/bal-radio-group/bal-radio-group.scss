@@ -7,18 +7,35 @@ bal-radio-group {
     display: flex;
     flex-wrap: wrap;
     flex: 1;
-    gap: 8px;
     flex-direction: column;
   }
 
-  &:not(.bal-select-button) {
-    & > div {
-      margin-left: -16px;
-      margin-right: -16px;
+  &.bal-select-button.is-vertical > div {
+    flex-direction: column;
+  }
 
-      bal-radio {
-        margin-left: 16px;
-        margin-right: 16px;
+  &.bal-select-button > div {
+    gap: 8px;
+  }
+
+  &:not(.bal-select-button) {
+    &:not(.is-vertical) {
+      & > div {
+        margin-left: -12px;
+        margin-right: -12px;
+
+        bal-radio {
+          margin-left: 12px;
+          margin-right: 12px;
+        }
+      }
+    }
+
+    &.is-vertical {
+      & > div {
+        bal-radio {
+          display: flex;
+        }
       }
     }
   }

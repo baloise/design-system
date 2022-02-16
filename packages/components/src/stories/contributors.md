@@ -113,6 +113,12 @@
     </h2>
     <h4>gagarine</h4>
   </a>
+  <a href="https://github.com/tschneichel" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/28190748?v=4" alt="tschneichel" style="width: 64px;">
+    </h2>
+    <h4>tschneichel</h4>
+  </a>
   <a href="https://github.com/jochenpilger" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/39954544?v=4" alt="jochenpilger" style="width: 64px;">

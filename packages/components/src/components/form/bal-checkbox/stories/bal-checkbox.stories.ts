@@ -6,6 +6,7 @@ import {
   BalFieldControl,
   BalFieldLabel,
   BalFieldMessage,
+  BalCheckboxGroup,
 } from '../../../../../.storybook/vue/components'
 import { isDescendant } from '../../../../../dist'
 import { ref, unref } from 'vue'
@@ -15,6 +16,7 @@ const balFieldArgTypes = stencilArgType(BalField)
 const component = BalComponentStory({
   title: 'Components/Form/Checkbox',
   component: BalCheckbox,
+  subcomponents: { BalCheckboxGroup },
   docs,
   status: 'stable',
   argTypes: {
@@ -25,9 +27,16 @@ const component = BalComponentStory({
         category: 'custom',
       },
     },
+    vertical: {
+      description: 'Displays the checkbox vertically',
+      table: {
+        category: 'CheckboxGroup',
+      },
+    },
   },
   args: {
     invalid: false,
+    vertical: false,
     hasFieldMessage: true,
   },
 })
@@ -43,7 +52,7 @@ const Template = args => ({
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
-      <bal-checkbox-group>
+      <bal-checkbox-group :vertical="args.vertical">
         <bal-checkbox v-bind="args" v-model="args.value">
           Label
         </bal-checkbox>
@@ -65,6 +74,16 @@ Basic.args = {
 }
 Basic.parameters = {
   ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
+
+export const Vertical = Template.bind({})
+Vertical.args = {
+  content: 'Label',
+  vertical: true,
+}
+Vertical.parameters = {
+  ...component.sourceCode(Vertical),
   controls: { exclude: excludedControls },
 }
 
