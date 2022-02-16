@@ -5,6 +5,14 @@ bal-navbar {
   display: block;
   position: relative;
 
+  bal-logo {
+    margin-top: 6px;
+  }
+
+  bal-logo + bal-text {
+    padding-left: 32px;
+  }
+
   &.no-burger {
     .navbar-burger {
       display: none !important;

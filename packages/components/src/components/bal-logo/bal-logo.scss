@@ -1,0 +1,18 @@
+bal-logo {
+  position: static;
+  display: block;
+
+  svg,
+  svg g,
+  svg path {
+    fill: $blue !important;
+  }
+
+  &.has-color-white {
+    svg,
+    svg g,
+    svg path {
+      fill: $white !important;
+    }
+  }
+}

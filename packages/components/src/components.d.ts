@@ -865,6 +865,16 @@ export namespace Components {
     }
     interface BalListItemTitle {
     }
+    interface BalLogo {
+        /**
+          * Defines the which branded logo.
+         */
+        "brand": 'group' | 'soba' | 'insurance';
+        /**
+          * Defines the color of the logo.
+         */
+        "color": 'blue' | 'white';
+    }
     interface BalModal {
         "close": () => Promise<void>;
         /**
@@ -1816,6 +1826,12 @@ declare global {
         prototype: HTMLBalListItemTitleElement;
         new (): HTMLBalListItemTitleElement;
     };
+    interface HTMLBalLogoElement extends Components.BalLogo, HTMLStencilElement {
+    }
+    var HTMLBalLogoElement: {
+        prototype: HTMLBalLogoElement;
+        new (): HTMLBalLogoElement;
+    };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
     var HTMLBalModalElement: {
@@ -2036,6 +2052,7 @@ declare global {
         "bal-list-item-icon": HTMLBalListItemIconElement;
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
         "bal-list-item-title": HTMLBalListItemTitleElement;
+        "bal-logo": HTMLBalLogoElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
@@ -2950,6 +2967,16 @@ declare namespace LocalJSX {
     }
     interface BalListItemTitle {
     }
+    interface BalLogo {
+        /**
+          * Defines the which branded logo.
+         */
+        "brand"?: 'group' | 'soba' | 'insurance';
+        /**
+          * Defines the color of the logo.
+         */
+        "color"?: 'blue' | 'white';
+    }
     interface BalModal {
         /**
           * The component to display inside of the modal.
@@ -3712,6 +3739,7 @@ declare namespace LocalJSX {
         "bal-list-item-icon": BalListItemIcon;
         "bal-list-item-subtitle": BalListItemSubtitle;
         "bal-list-item-title": BalListItemTitle;
+        "bal-logo": BalLogo;
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
@@ -3792,6 +3820,7 @@ declare module "@stencil/core" {
             "bal-list-item-icon": LocalJSX.BalListItemIcon & JSXBase.HTMLAttributes<HTMLBalListItemIconElement>;
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
+            "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
