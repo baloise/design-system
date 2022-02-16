@@ -58,12 +58,17 @@ bal-card-actions {
 }
 
 bal-card {
-  & > :first-child {
+  & > :not(bal-badge):first-child {
     padding-top: 20px;
   }
 
-  & > :last-child {
+  & > :not(bal-badge):last-child {
     padding-bottom: 20px;
+  }
+
+  & > bal-badge + bal-card-title,
+  & > bal-badge + bal-card-content {
+    padding-top: 20px;
   }
 
   & > bal-card-title + bal-card-content,
@@ -82,12 +87,17 @@ bal-card {
 
 @include desktop() {
   bal-card {
-    & > :first-child {
+    & > :not(bal-badge):first-child {
       padding-top: 24px;
     }
 
-    & > :last-child {
+    & > :not(bal-badge):last-child {
       padding-bottom: 24px;
+    }
+
+    & > bal-badge + bal-card-title,
+    & > bal-badge + bal-card-content {
+      padding-top: 24px;
     }
 
     & > bal-card-title + bal-card-content,

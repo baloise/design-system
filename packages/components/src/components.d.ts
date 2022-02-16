@@ -73,6 +73,10 @@ export namespace Components {
          */
         "icon"?: string;
         /**
+          * If `true` the badge is added to the top right corner of the card.
+         */
+        "position": 'card' | 'button' | 'tabs' | '';
+        /**
           * Define the size of badge. Small is recommended for tabs.
          */
         "size": 'small' | 'large' | '';
@@ -2113,6 +2117,10 @@ declare namespace LocalJSX {
           * Name of the icon to show. If a icon is present text should be hidden.
          */
         "icon"?: string;
+        /**
+          * If `true` the badge is added to the top right corner of the card.
+         */
+        "position"?: 'card' | 'button' | 'tabs' | '';
         /**
           * Define the size of badge. Small is recommended for tabs.
          */

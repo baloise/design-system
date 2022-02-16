@@ -21,6 +21,11 @@ export class Badge implements ComponentInterface {
    */
   @Prop() color: 'danger' | 'warning' | 'success' = 'danger'
 
+  /**
+   * If `true` the badge is added to the top right corner of the card.
+   */
+  @Prop() position: 'card' | 'button' | 'tabs' | '' = ''
+
   render() {
     return (
       <Host
@@ -29,6 +34,7 @@ export class Badge implements ComponentInterface {
           'has-radius-rounded': true,
           'has-text-white': true,
           [`has-background-${this.color}`]: true,
+          [`has-position-${this.position}`]: this.position !== '',
           [`has-size-${this.size}`]: this.size !== '',
         }}
       >

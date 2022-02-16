@@ -2,6 +2,7 @@
 
 bal-badge {
   position: static;
+  user-select: none;
 }
 
 .bal-badge {
@@ -29,5 +30,33 @@ bal-badge {
   &.has-size-large {
     width: 32px;
     height: 32px;
+  }
+
+  &.has-position-card,
+  &.has-position-button,
+  &.has-position-tabs {
+    position: absolute;
+  }
+
+  &.has-position-card,
+  &.has-position-button,
+  &.has-position-tabs {
+    right: -8px;
+    top: -8px;
+
+    &.has-size-small {
+      right: -4px;
+      top: -4px;
+    }
+
+    &.has-size-large {
+      right: -12px;
+      top: -12px;
+    }
+  }
+
+  &.has-position-tabs {
+    right: 12px;
+    top: 20px;
   }
 }
