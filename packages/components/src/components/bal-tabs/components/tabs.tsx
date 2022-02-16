@@ -40,7 +40,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
           >
             {tab.label}
           </a>
-          <bal-badge size="small" position="tabs" class={{ 'is-hidden': tab.hasBubble }}></bal-badge>
+          <bal-badge size="small" position="tabs" class={{ 'is-hidden': !tab.hasBubble }}></bal-badge>
         </li>
       ))}
       <li class="is-right" style={{ display: action ? 'block' : 'none' }}>
