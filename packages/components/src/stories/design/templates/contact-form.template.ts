@@ -56,6 +56,7 @@ export const ContactFormTemplate = `
       </bal-field>
       <bal-field class="column is-half py-0">
         <bal-field-label>Birthdate</bal-field-label>
+        <bal-field-hint subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>
         <bal-field-control>
           <bal-datepicker placeholder="Select your birthdate"></bal-datepicker>
         </bal-field-control>
