@@ -16,7 +16,7 @@ Cypress.Commands.add(
     prevSubject: true,
   },
   subject => {
-    return cy.wrap(subject).find(`${selectors.pagination.button}.is-primary`)
+    return cy.wrap(subject).find(`${selectors.pagination.button}.is-primary:visible`)
   },
 )
 

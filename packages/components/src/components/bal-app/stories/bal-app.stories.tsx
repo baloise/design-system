@@ -19,13 +19,6 @@ const component = BalComponentStory({
   component: BalApp,
   status: 'stable',
   argTypes: {
-    hasBackground: {
-      description: 'Adds a light grey background to increase the contrast to the card elements',
-      table: {
-        category: 'CSS Classes',
-      },
-      control: { type: 'boolean' },
-    },
     hasStickyFooter: {
       description: 'Sets the footer sticky to the bottom',
       table: {
@@ -55,7 +48,7 @@ export const Basic = args => ({
     BalIcon,
   },
   setup: () => ({ args }),
-  template: `<bal-app v-bind="args" :class="{'has-background': args.hasBackground, 'has-sticky-footer': args.hasStickyFooter}">
+  template: `<bal-app v-bind="args" :class="{'has-sticky-footer': args.hasStickyFooter}">
   <header class="has-background-white">
     <bal-navbar no-burger>
       <bal-navbar-brand>

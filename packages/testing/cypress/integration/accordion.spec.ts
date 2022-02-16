@@ -17,14 +17,14 @@ describe('Accordion', () => {
     cy.get(page.accordion).click().balAccordionIsClosed()
   })
 
-  it('should check if the accordian contains label', () => {
+  it('should check if the accordion contains label', () => {
     page.open()
     cy.get(page.accordion).contains('Show more')
     cy.get(page.accordion).click()
     cy.get(page.accordion).contains('Show less')
   })
 
-  it('should check if the accordian is not disabled', () => {
+  it('should check if the accordion is not disabled', () => {
     page.open()
     cy.get(page.accordion).should('not.be.disabled')
   })

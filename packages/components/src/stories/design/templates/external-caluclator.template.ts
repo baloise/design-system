@@ -1,5 +1,5 @@
 export const ExternalCaluclatorTemplate = `
-<bal-app class="has-background">
+<bal-app>
   <header class="has-background-white">
     <bal-navbar no-burger>
       <bal-navbar-brand>
