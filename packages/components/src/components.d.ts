@@ -813,6 +813,44 @@ export namespace Components {
          */
         "invalid": boolean;
     }
+    interface BalInputStepper {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement | undefined>;
+        /**
+          * If `true` the input is shown as invalid
+         */
+        "invalid": boolean;
+        /**
+          * The max value the input can have
+         */
+        "max": number;
+        /**
+          * The min value the input can have
+         */
+        "min": number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * The steps in which the input increases or decreases
+         */
+        "steps": number;
+        /**
+          * The value of the input. Only allows values in the range of the min max attribute.
+         */
+        "value": number;
+    }
     interface BalList {
         /**
           * If `true` each list item has a bottom border
@@ -1780,6 +1818,12 @@ declare global {
         prototype: HTMLBalInputGroupElement;
         new (): HTMLBalInputGroupElement;
     };
+    interface HTMLBalInputStepperElement extends Components.BalInputStepper, HTMLStencilElement {
+    }
+    var HTMLBalInputStepperElement: {
+        prototype: HTMLBalInputStepperElement;
+        new (): HTMLBalInputStepperElement;
+    };
     interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
     }
     var HTMLBalListElement: {
@@ -2030,6 +2074,7 @@ declare global {
         "bal-icon": HTMLBalIconElement;
         "bal-input": HTMLBalInputElement;
         "bal-input-group": HTMLBalInputGroupElement;
+        "bal-input-stepper": HTMLBalInputStepperElement;
         "bal-list": HTMLBalListElement;
         "bal-list-item": HTMLBalListItemElement;
         "bal-list-item-content": HTMLBalListItemContentElement;
@@ -2894,6 +2939,44 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
     }
+    interface BalInputStepper {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the input is shown as invalid
+         */
+        "invalid"?: boolean;
+        /**
+          * The max value the input can have
+         */
+        "max"?: number;
+        /**
+          * The min value the input can have
+         */
+        "min"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onBalChange"?: (event: CustomEvent<number>) => void;
+        /**
+          * The steps in which the input increases or decreases
+         */
+        "steps"?: number;
+        /**
+          * The value of the input. Only allows values in the range of the min max attribute.
+         */
+        "value"?: number;
+    }
     interface BalList {
         /**
           * If `true` each list item has a bottom border
@@ -3706,6 +3789,7 @@ declare namespace LocalJSX {
         "bal-icon": BalIcon;
         "bal-input": BalInput;
         "bal-input-group": BalInputGroup;
+        "bal-input-stepper": BalInputStepper;
         "bal-list": BalList;
         "bal-list-item": BalListItem;
         "bal-list-item-content": BalListItemContent;
@@ -3786,6 +3870,7 @@ declare module "@stencil/core" {
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
             "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
+            "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
             "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
             "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;
