@@ -1,0 +1,34 @@
+import { Story, Canvas, Description } from '@storybook/addon-docs'
+import readme from '../readme.md'
+
+<span id="story--components-stage--basic" style={{ opacity: 0 }}></span>
+
+# Stage
+
+An imposing stage banner to showcase something.
+
+The stage component allows you to add a full width banner to your webpage, which can optionally cover the full height of the page as well.
+
+- [Bulma Documentation](https://bulma.io/documentation/layout/hero/)
+
+<Canvas>
+  <Story id="components-stage--basic" />
+</Canvas>
+
+## With Background Image
+
+<Canvas>
+  <Story id="components-stage--stage-with-image" />
+</Canvas>
+
+## Component Api
+
+<Description markdown={readme} />
+
+<br />
+
+import testing from './testing.md'
+
+<Description markdown={testing} />
+
+<bal-doc-github link="/components/bal-stage/stories/bal-stage.docs.mdx"></bal-doc-github>

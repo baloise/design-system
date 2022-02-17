@@ -1300,6 +1300,32 @@ export namespace Components {
          */
         "small": boolean;
     }
+    interface BalStage {
+        /**
+          * Defines the background color of the stage section
+         */
+        "color": 'blue' | 'white';
+        /**
+          * Defines the height of the stage section.
+         */
+        "size": 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight';
+    }
+    interface BalStageBody {
+        /**
+          * If `true` the inner container uses the compact layout.
+         */
+        "compact": boolean;
+    }
+    interface BalStageFoot {
+    }
+    interface BalStageHead {
+    }
+    interface BalStageImage {
+        /**
+          * Source of the background image.
+         */
+        "src": string;
+    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -1942,6 +1968,36 @@ declare global {
         prototype: HTMLBalSpinnerElement;
         new (): HTMLBalSpinnerElement;
     };
+    interface HTMLBalStageElement extends Components.BalStage, HTMLStencilElement {
+    }
+    var HTMLBalStageElement: {
+        prototype: HTMLBalStageElement;
+        new (): HTMLBalStageElement;
+    };
+    interface HTMLBalStageBodyElement extends Components.BalStageBody, HTMLStencilElement {
+    }
+    var HTMLBalStageBodyElement: {
+        prototype: HTMLBalStageBodyElement;
+        new (): HTMLBalStageBodyElement;
+    };
+    interface HTMLBalStageFootElement extends Components.BalStageFoot, HTMLStencilElement {
+    }
+    var HTMLBalStageFootElement: {
+        prototype: HTMLBalStageFootElement;
+        new (): HTMLBalStageFootElement;
+    };
+    interface HTMLBalStageHeadElement extends Components.BalStageHead, HTMLStencilElement {
+    }
+    var HTMLBalStageHeadElement: {
+        prototype: HTMLBalStageHeadElement;
+        new (): HTMLBalStageHeadElement;
+    };
+    interface HTMLBalStageImageElement extends Components.BalStageImage, HTMLStencilElement {
+    }
+    var HTMLBalStageImageElement: {
+        prototype: HTMLBalStageImageElement;
+        new (): HTMLBalStageImageElement;
+    };
     interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
     }
     var HTMLBalTabItemElement: {
@@ -2057,6 +2113,11 @@ declare global {
         "bal-slider": HTMLBalSliderElement;
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
+        "bal-stage": HTMLBalStageElement;
+        "bal-stage-body": HTMLBalStageBodyElement;
+        "bal-stage-foot": HTMLBalStageFootElement;
+        "bal-stage-head": HTMLBalStageHeadElement;
+        "bal-stage-image": HTMLBalStageImageElement;
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-table": HTMLBalTableElement;
         "bal-tabs": HTMLBalTabsElement;
@@ -3398,6 +3459,32 @@ declare namespace LocalJSX {
          */
         "small"?: boolean;
     }
+    interface BalStage {
+        /**
+          * Defines the background color of the stage section
+         */
+        "color"?: 'blue' | 'white';
+        /**
+          * Defines the height of the stage section.
+         */
+        "size"?: 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight';
+    }
+    interface BalStageBody {
+        /**
+          * If `true` the inner container uses the compact layout.
+         */
+        "compact"?: boolean;
+    }
+    interface BalStageFoot {
+    }
+    interface BalStageHead {
+    }
+    interface BalStageImage {
+        /**
+          * Source of the background image.
+         */
+        "src"?: string;
+    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -3733,6 +3820,11 @@ declare namespace LocalJSX {
         "bal-slider": BalSlider;
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
+        "bal-stage": BalStage;
+        "bal-stage-body": BalStageBody;
+        "bal-stage-foot": BalStageFoot;
+        "bal-stage-head": BalStageHead;
+        "bal-stage-image": BalStageImage;
         "bal-tab-item": BalTabItem;
         "bal-table": BalTable;
         "bal-tabs": BalTabs;
@@ -3813,6 +3905,11 @@ declare module "@stencil/core" {
             "bal-slider": LocalJSX.BalSlider & JSXBase.HTMLAttributes<HTMLBalSliderElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
+            "bal-stage": LocalJSX.BalStage & JSXBase.HTMLAttributes<HTMLBalStageElement>;
+            "bal-stage-body": LocalJSX.BalStageBody & JSXBase.HTMLAttributes<HTMLBalStageBodyElement>;
+            "bal-stage-foot": LocalJSX.BalStageFoot & JSXBase.HTMLAttributes<HTMLBalStageFootElement>;
+            "bal-stage-head": LocalJSX.BalStageHead & JSXBase.HTMLAttributes<HTMLBalStageHeadElement>;
+            "bal-stage-image": LocalJSX.BalStageImage & JSXBase.HTMLAttributes<HTMLBalStageImageElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

@@ -1,0 +1,24 @@
+@import './bal-stage.vars.scss';
+@import 'node_modules/bulma/sass/layout/hero.sass';
+
+bal-stage {
+  position: static;
+  display: block;
+
+  .hero.has-background {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-background {
+    position: absolute;
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+    height: 100%;
+
+    img {
+      min-height: 100%;
+    }
+  }
+}
