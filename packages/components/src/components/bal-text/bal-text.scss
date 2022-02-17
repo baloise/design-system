@@ -9,11 +9,13 @@ bal-text {
   font-family: $family-primary;
   font-weight: $weight-normal;
   font-size: $size-normal !important;
-  line-height: 20px;
+  line-height: 1.25rem;
   word-break: break-word;
 
   span {
     word-break: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   &.is-bold,
@@ -24,6 +26,6 @@ bal-text {
   &.is-small,
   &.is-small span {
     font-size: $size-small !important;
-    line-height: 16px !important;
+    line-height: 1rem !important;
   }
 }
