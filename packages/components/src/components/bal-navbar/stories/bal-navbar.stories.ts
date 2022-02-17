@@ -24,8 +24,8 @@ export const Basic = args => ({
   setup: () => ({ args }),
   template: `<bal-navbar v-bind="args">
   <bal-navbar-brand>
-    <bal-icon name="logo" inverted size="large"></bal-icon>
-    <bal-text style="margin-left: 15px"><strong>App</strong> Title</bal-text>
+    <bal-logo brand="group" color="white"></bal-logo>
+    <bal-text><strong>App</strong> Title</bal-text>
   </bal-navbar-brand>
   <bal-navbar-menu>
     <bal-navbar-menu-start>
