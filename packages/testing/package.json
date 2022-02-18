@@ -23,7 +23,7 @@
     "bulma-css"
   ],
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.esm.js",
   "types": "./dist/types/index.d.ts",
   "files": [
     "dist/"

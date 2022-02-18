@@ -30,7 +30,7 @@
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.esm.js",
   "types": "./dist/types/index.d.ts",
   "styles": "./css/design-system-table.css",
   "files": [
