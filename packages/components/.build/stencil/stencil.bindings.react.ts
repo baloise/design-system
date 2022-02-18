@@ -4,7 +4,7 @@ export const ReactGenerator = () =>
   reactOutputTarget({
     componentCorePackage: '@baloise/design-system-components',
     proxiesFile: '../components-react/src/components.ts',
-    includeDefineCustomElements: false,
+    includeDefineCustomElements: true,
     excludeComponents: [
       'bal-doc-app',
       'bal-doc-color',
