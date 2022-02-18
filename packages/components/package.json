@@ -66,7 +66,7 @@
     "@baloise/design-system-fonts": "^9.2.2",
     "@baloise/design-system-icons": "^9.2.2",
     "@baloise/stencil-vite-fix": "^9.2.3",
-    "@baloise/web-app-utils": "^2.0.10",
+    "@baloise/web-app-utils": "^3.0.0",
     "@popperjs/core": "^2.11.2",
     "@stencil/core": "^2.11.0",
     "bulma": "^0.9.3",
