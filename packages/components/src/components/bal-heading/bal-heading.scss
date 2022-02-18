@@ -26,10 +26,12 @@ h5,
 h6 {
   @include padding(0);
   font-family: $family-primary;
+  font-weight: $weight-bold;
   color: $blue;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-// TODO: Define spacing between
 h1 {
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;
@@ -63,7 +65,7 @@ h6 {
 p,
 a {
   font-family: $family-primary;
-  line-height: 24px;
+  line-height: 1.5rem;
   margin: 0;
   word-break: break-word;
 }
@@ -76,27 +78,31 @@ bal-text p {
 }
 
 .is-size-1 {
-  line-height: 56px;
+  line-height: $line-height-1 !important;
 }
 
 .is-size-2 {
-  line-height: 48px;
+  line-height: $line-height-2 !important;
 }
 
 .is-size-3 {
-  line-height: 40px;
+  line-height: $line-height-3 !important;
 }
 
 .is-size-4 {
-  line-height: 32px;
+  line-height: $line-height-4 !important;
 }
 
 .is-size-5 {
-  line-height: 24px;
+  line-height: $line-height-5 !important;
 }
 
 .is-size-6 {
-  line-height: 20px;
+  line-height: $line-height-6 !important;
+}
+
+.is-size-7 {
+  line-height: $line-height-7 !important;
 }
 
 h1.subtitle,
@@ -112,7 +118,7 @@ span.is-small,
 p.is-small,
 a.is-small {
   font-size: $size-small;
-  line-height: 16px;
+  line-height: 1rem;
 }
 
 .is-bold,
@@ -144,4 +150,36 @@ a.is-link:active,
 a.is-link:hover,
 a.is-link:visited {
   text-decoration: underline;
+}
+
+@include mobile() {
+  .is-size-1 {
+    font-size: $size-3 !important;
+    line-height: $line-height-3 !important;
+  }
+
+  .is-size-2 {
+    font-size: $size-4 !important;
+    line-height: $line-height-4 !important;
+  }
+
+  .is-size-3 {
+    font-size: 1.75rem !important;
+    line-height: 2rem !important;
+  }
+
+  .is-size-4 {
+    font-size: $size-5 !important;
+    line-height: $line-height-5 !important;
+  }
+
+  .is-size-5 {
+    font-size: 1.25rem !important;
+    line-height: 1.5rem !important;
+  }
+
+  .is-size-6 {
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+  }
 }
