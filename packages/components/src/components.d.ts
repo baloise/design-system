@@ -590,7 +590,11 @@ export namespace Components {
          */
         "hasTrackLine": boolean;
         /**
-          * If `true` the default Baloise links will be hidden.
+          * If `true` the language selection will be hidden.
+         */
+        "hideLanguageSelection": boolean;
+        /**
+          * If `true` the legal Baloise links will be hidden.
          */
         "hideLinks": boolean;
         /**
@@ -2684,7 +2688,11 @@ declare namespace LocalJSX {
          */
         "hasTrackLine"?: boolean;
         /**
-          * If `true` the default Baloise links will be hidden.
+          * If `true` the language selection will be hidden.
+         */
+        "hideLanguageSelection"?: boolean;
+        /**
+          * If `true` the legal Baloise links will be hidden.
          */
         "hideLinks"?: boolean;
         /**
