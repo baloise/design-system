@@ -42,9 +42,20 @@ SubNavigation.parameters = {
   controls: { exclude: ['clickable', 'action', 'actionLabel'] },
 }
 
-export const Steps = Template.bind({})
+export const Steps = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-tabs v-bind="args" v-model="args.value">
+  <bal-tab-item done value="tab-a" label="Finished Step">Content of Tab A</bal-tab-item>
+  <bal-tab-item failed value="tab-b" label="Failed Step">Content of Tab B</bal-tab-item>
+  <bal-tab-item value="tab-c" label="Active Step">Content of Tab C</bal-tab-item>
+  <bal-tab-item value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
+  <bal-tab-item disabled value="tab-e" label="Disabled Step">Content of Tab E</bal-tab-item>
+</bal-tabs>`,
+})
+
 Steps.args = {
-  value: 'tab-b',
+  value: 'tab-c',
   clickable: true,
   interface: 'o-steps',
 }

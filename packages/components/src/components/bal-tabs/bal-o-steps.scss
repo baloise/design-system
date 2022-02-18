@@ -35,23 +35,10 @@ bal-tabs.bal-o-steps {
         z-index: 5;
         margin-bottom: 8px;
 
-        .check-icon {
-          display: block;
-          height: 30px;
-          width: 30px;
-          max-height: 30px;
-
-          .bal-icon-inner {
-            height: 30px;
-            width: 30px;
-            max-height: 30px;
-          }
-        }
-
         .inner-text {
-          display: none;
           margin: 0;
           font-weight: 700;
+          color: $text-light;
         }
       }
 
@@ -60,10 +47,9 @@ bal-tabs.bal-o-steps {
         margin-left: 0.5em;
         margin-right: 0.5em;
         padding-top: 0.2em;
-        // color: $text-light;
+        color: $text-light;
         font-weight: 700;
         font-family: $title-family;
-        color: $blue-7;
       }
 
       &:not(:last-child):after {
@@ -118,33 +104,48 @@ bal-tabs.bal-o-steps {
 
     li.is-done:not(.is-active) {
       .step-index {
-        border: 2px solid $success !important;
-        background: $success !important;
+        border: 2px solid $blue-7;
 
-        &::after {
-          display: inline-block;
-          position: absolute;
-          background-color: transparent;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: 24px 24px;
-          content: '';
-          top: 50%;
-          margin-top: -7px;
-          left: 50%;
-          margin-left: -4px;
-          width: 5px;
-          height: 10px;
-          border-bottom: 2px solid $white;
-          border-right: 2px solid $white;
-          border-top: 0;
-          border-left: 0;
-          -moz-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          -o-transform: rotate(45deg);
-          -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+        .check-icon {
+          height: 30px;
+          width: 30px;
+          max-height: 30px;
+
+          .bal-icon-inner {
+            height: 30px;
+            width: 30px;
+            max-height: 30px;
+          }
         }
+
+        // &::after {
+        //   display: inline-block;
+        //   position: absolute;
+        //   background-color: transparent;
+        //   background-position: center;
+        //   background-repeat: no-repeat;
+        //   background-size: 24px 24px;
+        //   content: '';
+        //   top: 50%;
+        //   margin-top: -7px;
+        //   left: 50%;
+        //   margin-left: -4px;
+        //   width: 5px;
+        //   height: 10px;
+        //   border-bottom: 2px solid $white;
+        //   border-right: 2px solid $white;
+        //   border-top: 0;
+        //   border-left: 0;
+        //   -moz-transform: rotate(45deg);
+        //   -ms-transform: rotate(45deg);
+        //   -o-transform: rotate(45deg);
+        //   -webkit-transform: rotate(45deg);
+        //   transform: rotate(45deg);
+        // }
+      }
+
+      .step-label {
+        color: $blue-7;
       }
     }
 
@@ -155,13 +156,30 @@ bal-tabs.bal-o-steps {
 
       .step-index {
         border: 2px solid $light-blue-7;
+
+        .inner-text {
+          color: $blue-7;
+        }
       }
     }
 
     li.is-clickable.is-active:hover {
       .step-label {
         color: $blue-7;
-        font-weight: $weight-bold;
+      }
+
+      .step-index {
+        border: 2px solid $blue-7;
+
+        .inner-text {
+          color: $white;
+        }
+      }
+    }
+
+    li.is-clickable.is-done:hover {
+      .step-label {
+        color: $blue-7;
       }
 
       .step-index {
@@ -176,10 +194,6 @@ bal-tabs.bal-o-steps {
     li.is-active {
       .step-index {
         background-color: $blue-7;
-
-        .check-icon {
-          display: none;
-        }
 
         .inner-text {
           display: block;
@@ -199,14 +213,6 @@ bal-tabs.bal-o-steps {
     li.is-active ~ li {
       .step-index {
         border: 2px solid $blue-2;
-
-        .check-icon {
-          display: none;
-        }
-
-        .inner-text {
-          display: block;
-        }
       }
 
       .step-label {
@@ -225,6 +231,28 @@ bal-tabs.bal-o-steps {
         .inner-text {
           color: #747474;
         }
+      }
+
+      .step-label {
+        color: #747474 !important;
+      }
+    }
+
+    li.is-disabled:hover {
+      cursor: not-allowed !important;
+      pointer-events: none;
+
+      .step-index {
+        border: 2px solid $grey-2 !important;
+        background: $grey-2;
+
+        .inner-text {
+          color: #747474;
+        }
+      }
+
+      .step-label {
+        color: #747474;
       }
     }
 
