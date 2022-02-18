@@ -7,7 +7,7 @@ const getLocale = (): string => {
 }
 
 export const getDecimalSeparator = (): string => {
-  return BaloiseWebAppUtils.getThousandSeparator(getLocale())
+  return BaloiseWebAppUtils.getDecimalSeparator(getLocale())
 }
 
 export const getThousandSeparator = (): string => {

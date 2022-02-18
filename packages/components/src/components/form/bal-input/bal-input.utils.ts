@@ -9,9 +9,9 @@ export const filterInputValue = (
   const regex = /^(((0|[1-9]\d*)?)(\.\d*)?)$/g
   let regexString = regex.source
 
-  const decimalSeperator = getDecimalSeparator()
-  if (decimalSeperator !== '.') {
-    regexString = regexString.replace('(\\.\\d*)?)$', `(\\${decimalSeperator}\\d*)?)$`)
+  const decimalSeparator = getDecimalSeparator()
+  if (decimalSeparator !== '.') {
+    regexString = regexString.replace('(\\.\\d*)?)$', `(\\${decimalSeparator}\\d*)?)$`)
   }
 
   if (decimalPoints === 0) {
