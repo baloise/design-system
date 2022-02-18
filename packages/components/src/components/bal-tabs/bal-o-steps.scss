@@ -18,9 +18,8 @@ bal-tabs.bal-o-steps {
       }
 
       .step-index {
-        height: 24px;
-        width: 24px;
-        border: 2px solid $blue-2;
+        height: 30px;
+        width: 30px;
         background-color: $white;
         background: $white;
         color: $white;
@@ -36,11 +35,23 @@ bal-tabs.bal-o-steps {
         z-index: 5;
         margin-bottom: 8px;
 
-        .inner {
-          background: $blue;
-          border-radius: 50%;
-          height: 10px;
-          width: 10px;
+        .check-icon {
+          display: block;
+          height: 30px;
+          width: 30px;
+          max-height: 30px;
+
+          .bal-icon-inner {
+            height: 30px;
+            width: 30px;
+            max-height: 30px;
+          }
+        }
+
+        .inner-text {
+          display: none;
+          margin: 0;
+          font-weight: 700;
         }
       }
 
@@ -49,7 +60,10 @@ bal-tabs.bal-o-steps {
         margin-left: 0.5em;
         margin-right: 0.5em;
         padding-top: 0.2em;
-        color: $text-light;
+        // color: $text-light;
+        font-weight: 700;
+        font-family: $title-family;
+        color: $blue-7;
       }
 
       &:not(:last-child):after {
@@ -60,20 +74,21 @@ bal-tabs.bal-o-steps {
         height: 2px;
         left: 50%;
         right: -50%;
-        top: 11px;
-        margin-right: 16px;
-        margin-left: 8px;
+        top: 15px;
+        margin-right: 20px;
+        margin-left: 18px;
         background-color: $blue;
+        border-radius: 5px;
       }
     }
 
     li.is-failed:not(.is-active) {
       .step-index {
-        border: 2px solid $danger !important;
-        background: $danger !important;
+        border: 2px solid #ea1800 !important;
+        background: #ea1800 !important;
 
-        .inner {
-          background: $danger !important;
+        .inner-text {
+          display: none;
         }
 
         &::after {
@@ -90,6 +105,13 @@ bal-tabs.bal-o-steps {
           height: 32px;
           line-height: 32px;
           vertical-align: middle;
+        }
+      }
+
+      a {
+        .step-label {
+          color: #ea1800;
+          font-weight: bold;
         }
       }
     }
@@ -123,23 +145,27 @@ bal-tabs.bal-o-steps {
           -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
         }
-
-        .inner {
-          background: $success !important;
-        }
       }
     }
 
     li.is-clickable:hover {
       .step-label {
-        color: $black;
+        color: $light-blue-7;
+      }
+
+      .step-index {
+        border: 2px solid $light-blue-7;
       }
     }
 
     li.is-clickable.is-active:hover {
       .step-label {
-        color: $black;
+        color: $blue-7;
         font-weight: $weight-bold;
+      }
+
+      .step-index {
+        border: 2px solid $blue-7;
       }
     }
 
@@ -149,14 +175,19 @@ bal-tabs.bal-o-steps {
 
     li.is-active {
       .step-index {
-        border: 2px solid $blue;
+        background-color: $blue-7;
 
-        .inner {
-          background: $blue;
+        .check-icon {
+          display: none;
+        }
+
+        .inner-text {
+          display: block;
+          color: $white;
         }
       }
       .step-label {
-        color: $black;
+        color: $blue-7;
         font-weight: $weight-bold;
       }
     }
@@ -169,15 +200,68 @@ bal-tabs.bal-o-steps {
       .step-index {
         border: 2px solid $blue-2;
 
-        .inner {
-          background: $white;
+        .check-icon {
+          display: none;
         }
+
+        .inner-text {
+          display: block;
+        }
+      }
+
+      .step-label {
+        color: $text-light;
       }
     }
 
     li.is-disabled {
-      cursor: not-allowed;
+      cursor: not-allowed !important;
       pointer-events: none;
+
+      .step-index {
+        border: 2px solid $grey-2 !important;
+        background: $grey-2;
+
+        .inner-text {
+          color: #747474;
+        }
+      }
+    }
+
+    @include mobile() {
+      li {
+        .step-index {
+          height: 24px;
+          width: 24px;
+
+          .check-icon {
+            height: 24px;
+            width: 24px;
+            max-height: 24px;
+
+            .bal-icon-inner {
+              height: 24px;
+              width: 24px;
+              max-height: 24px;
+            }
+          }
+        }
+
+        &:not(:last-child):after {
+          content: ' ';
+          display: block;
+          position: absolute;
+
+          height: 2px;
+          left: 44%;
+          right: -50%;
+          top: 11px;
+          margin-right: 20px;
+          margin-left: 18px;
+          background-color: $blue;
+          border-radius: 5px;
+        }
+      }
     }
   }
 }
