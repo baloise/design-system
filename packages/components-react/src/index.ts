@@ -1,5 +1,3 @@
-export * from './components'
-
 import { initialize, BalConfig } from '@baloise/design-system-components'
 
 interface BaloiseDesignSystemReactConfig {
@@ -9,3 +7,5 @@ interface BaloiseDesignSystemReactConfig {
 export const useBaloiseDesignSystem = (config: BaloiseDesignSystemReactConfig = {}) => {
   initialize(config.defaults)
 }
+
+export * from './components'
