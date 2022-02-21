@@ -115,9 +115,15 @@ bal-datepicker {
 }
 
 .datepicker-popup {
-  padding: 26px 20px;
+  padding: 8px;
   width: 100%;
   user-select: none;
+}
+
+@include tablet() {
+  .datepicker-popup {
+    padding: 16px;
+  }
 }
 
 .datepicker-table {
@@ -139,9 +145,9 @@ bal-datepicker {
     text-align: center;
     vertical-align: middle;
     display: table-cell;
-    max-width: 0;
-    width: 48px;
-    min-width: 48px;
+    max-width: 48px;
+    min-width: 24px;
+    width: 24px;
     min-height: 40px;
     height: 40px;
     border: 1px solid $blue-2;
@@ -202,7 +208,15 @@ bal-datepicker {
 @include tablet() {
   .datepicker-popup {
     padding: 16px 32px;
-    // width: 48px * 7 + 80px;
+  }
+
+  .datepicker-table {
+    .datepicker-cell {
+      width: 48px;
+      min-width: 48px;
+      min-height: 48px;
+      height: 48px;
+    }
   }
 }
 
