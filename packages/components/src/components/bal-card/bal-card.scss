@@ -58,16 +58,21 @@ bal-card-actions {
 }
 
 bal-card {
-  & > :not(bal-badge):first-child {
+  & > :not(bal-badge):not(bal-tag):first-child {
     padding-top: 20px;
   }
 
-  & > :not(bal-badge):last-child {
+  & > :not(bal-badge):not(bal-tag):last-child {
     padding-bottom: 20px;
   }
 
   & > bal-badge + bal-card-title,
   & > bal-badge + bal-card-content {
+    padding-top: 20px;
+  }
+
+  & > bal-tag + bal-card-title,
+  & > bal-tag + bal-card-content {
     padding-top: 20px;
   }
 
@@ -87,16 +92,21 @@ bal-card {
 
 @include desktop() {
   bal-card {
-    & > :not(bal-badge):first-child {
+    & > :not(bal-badge):not(bal-tag):first-child {
       padding-top: 24px;
     }
 
-    & > :not(bal-badge):last-child {
+    & > :not(bal-badge):not(bal-tag):last-child {
       padding-bottom: 24px;
     }
 
     & > bal-badge + bal-card-title,
     & > bal-badge + bal-card-content {
+      padding-top: 24px;
+    }
+
+    & > bal-tag + bal-card-title,
+    & > bal-tag + bal-card-content {
       padding-top: 24px;
     }
 

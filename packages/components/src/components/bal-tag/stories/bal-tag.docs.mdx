@@ -1,4 +1,6 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { html } from '../../../stories/utils'
+import { colors, closable } from './bal-tag.templates.ts'
 import readme from '../readme.md'
 
 <span id="story--components-tag--basic" style={{ opacity: 0 }}></span>
@@ -9,6 +11,18 @@ A tag highlights a label for quick recognition.
 
 <Canvas>
   <Story id="components-tag--basic" />
+</Canvas>
+
+### Colors
+
+<Canvas mdxSource={colors}>
+  <bal-doc-app>{html(colors)}</bal-doc-app>
+</Canvas>
+
+### Closable
+
+<Canvas mdxSource={closable}>
+  <bal-doc-app>{html(closable)}</bal-doc-app>
 </Canvas>
 
 ## Component Api

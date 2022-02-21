@@ -1476,6 +1476,10 @@ export namespace Components {
         "color": ColorTypes | '';
         "dense": boolean;
         /**
+          * If `true` a light version of the color is displayed
+         */
+        "light": boolean;
+        /**
           * The size of the tag element
          */
         "size": 'small' | 'medium' | 'large' | '';
@@ -3704,6 +3708,10 @@ declare namespace LocalJSX {
          */
         "color"?: ColorTypes | '';
         "dense"?: boolean;
+        /**
+          * If `true` a light version of the color is displayed
+         */
+        "light"?: boolean;
         /**
           * Emitted when the input got clicked.
          */

@@ -35,3 +35,23 @@ Closable.args = {
   closable: true,
 }
 Closable.parameters = { ...component.sourceCode(Closable) }
+
+export const TagCard = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-card class="mt-4">
+  <bal-tag v-bind="args">{{ args.content }}</bal-tag>
+  <bal-card-title>Title</bal-card-title>
+  <bal-card-content>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </bal-card-content>
+</bal-card>`,
+})
+TagCard.args = {
+  content: 'Bestseller',
+  color: 'success',
+  light: true,
+  size: 'small',
+  closable: false,
+}
+TagCard.parameters = { ...component.sourceCode(TagCard) }
