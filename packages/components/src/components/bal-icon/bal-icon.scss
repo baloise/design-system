@@ -90,41 +90,7 @@ bal-icon {
   @include svg('green', $green, $white);
   @include svg('red', $red, $white);
   @include svg('yellow', $yellow, $white);
-
-  // &.is-primary {
-  //   svg,
-  //   svg g,
-  //   svg path,
-  //   svg circle {
-  //     fill: $primary !important;
-  //   }
-  // }
-
-  // &.is-success {
-  //   fill: $success;
-  // }
-
-  // &.is-info {
-  //   fill: $info;
-  // }
-
-  // &.is-warning {
-  //   fill: $warning;
-  // }
-
-  // &.is-danger {
-  //   fill: $danger;
-  // }
-
-  // &.is-inverted {
-  //   &.is-primary,
-  //   &.is-success,
-  //   &.is-warning,
-  //   &.is-danger,
-  //   &.is-info {
-  //     fill: $white;
-  //   }
-  // }
+  @include svg('grey', $grey-5, $white);
 }
 
 .icon-text {

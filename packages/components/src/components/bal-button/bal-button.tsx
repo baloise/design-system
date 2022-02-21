@@ -88,6 +88,11 @@ export class Button implements ComponentInterface {
   @Prop() loading = false
 
   /**
+   * If `true` the button is rounded.
+   */
+  @Prop() rounded = false
+
+  /**
    * If `true` the top corners get rounded
    */
   @Prop() topRounded: undefined | boolean = undefined
@@ -151,20 +156,6 @@ export class Button implements ComponentInterface {
 
   private get isIconInverted() {
     return this.inverted
-    // if (this.outlined && !this.inverted) {
-    //   return false
-    // }
-    // switch (this.color) {
-    //   case 'primary':
-    //   case 'success':
-    //   case 'warning':
-    //   case 'danger':
-    //   case 'info':
-    //     return true
-
-    //   default:
-    //     return false
-    // }
   }
 
   private get buttonCssClass(): { [className: string]: boolean } {
@@ -179,6 +170,7 @@ export class Button implements ComponentInterface {
       'is-fullwidth': this.expanded,
       'is-disabled': this.disabled,
       'is-loading': this.loading,
+      'has-radius-rounded': this.rounded === true,
       'has-round-top-corners': this.topRounded === true,
       'has-round-bottom-corners': this.bottomRounded === true,
       'has-no-round-top-corners': this.topRounded === false,
@@ -267,7 +259,7 @@ export class Button implements ComponentInterface {
 
     const spinnerColor = () => {
       if (this.disabled) {
-        return 'grey'
+        return 'blue'
       }
 
       switch (this.color) {
@@ -302,7 +294,6 @@ export class Button implements ComponentInterface {
           onBlur={this.onBlur}
           onClick={this.onClick}
         >
-          {/* <span {...this.spanSquareAttrs}>Empty span to get the correct text height</span> */}
           <bal-spinner color={spinnerColor()} small {...this.loadingAttrs} />
           <bal-icon
             {...this.leftIconAttrs}
@@ -317,7 +308,7 @@ export class Button implements ComponentInterface {
               'is-small': this.size === 'small',
               'is-bold': true,
             }}
-            style={{ opacity: this.loading || this.square ? '0' : '1' }}
+            style={{ opacity: this.loading || (this.square && this.icon !== '') ? '0' : '1' }}
           >
             <slot />
           </span>

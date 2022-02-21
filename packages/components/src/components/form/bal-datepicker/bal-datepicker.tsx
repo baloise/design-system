@@ -350,7 +350,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   }
 
   get months(): { name: string; index: number }[] {
-    const monthNames = i18nDate[this.language].months
+    const monthNames = i18nDate[this.language].monthsShort
     let months = monthNames.map((name, index) => ({ name, index }))
 
     if (this.min && this.pointerDate.year === getYear(parse(this.min) as Date)) {
@@ -561,45 +561,45 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
     }
 
     return (
-      <div bal-popover-trigger class="control has-icons-right">
-        <input
-          class={{
-            'input': true,
-            'data-test-input': true,
-            'clickable': !this.disabled && !this.triggerIcon,
-            'is-inverted': this.inverted,
-            'is-disabled': this.disabled,
-            'is-danger': this.invalid,
-          }}
-          ref={el => (this.inputElement = el as HTMLInputElement)}
-          id={this.inputId}
-          aria-labelledby={labelId}
-          type="text"
-          maxlength="10"
-          autoComplete="off"
-          name={this.name}
-          value={format(parse(this.value || ''))}
-          required={this.required}
-          disabled={this.disabled}
-          readonly={this.readonly}
-          placeholder={this.placeholder}
-          tabindex={this.balTabindex}
-          onKeyDown={e => this.onInputKeyDown(e)}
-          onKeyUp={e => this.onInputKeyUp(e)}
-          onInput={this.onInput}
-          onClick={this.onInputClick}
-          onChange={this.onInputChange}
-          onBlur={this.onInputBlur}
-          onFocus={this.onInputFocus}
-        />
-        <bal-icon
-          class="datepicker-trigger-icon clickable"
-          is-right
-          color={this.invalid ? 'danger' : 'info'}
-          inverted={this.inverted}
-          name="date"
-          onClick={this.onIconClick}
-        />
+      <div bal-popover-trigger class="control">
+        <bal-input-group disabled={this.disabled} invalid={this.invalid}>
+          <input
+            class={{
+              'input': true,
+              'data-test-input': true,
+              'clickable': !this.disabled && !this.triggerIcon,
+              'is-inverted': this.inverted,
+              'is-disabled': this.disabled,
+              'is-danger': this.invalid,
+            }}
+            ref={el => (this.inputElement = el as HTMLInputElement)}
+            id={this.inputId}
+            aria-labelledby={labelId}
+            type="text"
+            maxlength="10"
+            autoComplete="off"
+            name={this.name}
+            value={format(parse(this.value || ''))}
+            required={this.required}
+            disabled={this.disabled}
+            readonly={this.readonly}
+            placeholder={this.placeholder}
+            tabindex={this.balTabindex}
+            onKeyDown={e => this.onInputKeyDown(e)}
+            onKeyUp={e => this.onInputKeyUp(e)}
+            onInput={this.onInput}
+            onClick={this.onInputClick}
+            onChange={this.onInputChange}
+            onBlur={this.onInputBlur}
+            onFocus={this.onInputFocus}
+          />
+          <bal-icon
+            name="date"
+            class="datepicker-trigger-icon is-clickable"
+            color={this.disabled ? 'grey' : this.invalid ? 'danger' : 'primary'}
+            onClick={this.onIconClick}
+          />
+        </bal-input-group>
       </div>
     )
   }
@@ -624,7 +624,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
                     'is-selectable': !cell.isDisabled,
                   }}
                 >
-                  {cell.label}
+                  <div class="inner">{cell.label}</div>
                 </div>
               ))}
             </div>
@@ -647,53 +647,49 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   renderHeader() {
     return (
       <header class="datepicker-header">
-        <div class="pagination field is-centered">
-          <a
-            role="button"
+        <div class="pagination field">
+          <bal-button
+            square
+            inverted
+            rounded
+            color="primary"
+            icon="nav-go-left"
+            disabled={this.isPreviousMonthDisabled}
             onClick={() => this.previousMonth()}
-            class={{
-              'pagination-previous': true,
-              'is-disabled': this.isPreviousMonthDisabled,
-            }}
-          >
-            <bal-icon name="nav-go-left" size="small" />
-          </a>
-          <a
-            role="button"
-            onClick={() => this.nextMonth()}
-            class={{
-              'pagination-next': true,
-              'is-disabled': this.isNextMonthDisabled,
-            }}
-          >
-            <bal-icon name="nav-go-right" size="small" />
-          </a>
+          ></bal-button>
           <div class="pagination-list">
-            <div class="field has-addons">
-              <div class="control month-select">
-                <span class="select">
-                  <select onInput={this.onMonthSelect}>
-                    {this.months.map(month => (
-                      <option value={month.index} selected={this.pointerDate.month === month.index}>
-                        {month.name}
-                      </option>
-                    ))}
-                  </select>
-                </span>
+            <div class="month-select">
+              <div class="select">
+                <select onInput={this.onMonthSelect}>
+                  {this.months.map(month => (
+                    <option value={month.index} selected={this.pointerDate.month === month.index}>
+                      {month.name}
+                    </option>
+                  ))}
+                </select>
               </div>
-              <div class="control year-select">
-                <span class="select">
-                  <select onInput={this.onYearSelect}>
-                    {this.years.map(year => (
-                      <option value={year} selected={this.pointerDate.year === year}>
-                        {year}
-                      </option>
-                    ))}
-                  </select>
-                </span>
+            </div>
+            <div class="year-select">
+              <div class="select">
+                <select onInput={this.onYearSelect}>
+                  {this.years.map(year => (
+                    <option value={year} selected={this.pointerDate.year === year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
           </div>
+          <bal-button
+            square
+            inverted
+            rounded
+            color="primary"
+            icon="nav-go-right"
+            disabled={this.isNextMonthDisabled}
+            onClick={() => this.nextMonth()}
+          ></bal-button>
         </div>
       </header>
     )

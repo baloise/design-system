@@ -1,5 +1,5 @@
 import { Component, EventEmitter, h, Host, Prop, Event } from '@stencil/core'
-import { ColorTypes } from '../../types/color.types'
+import { ColorTypes, SupportColors } from '../../types/color.types'
 
 @Component({
   tag: 'bal-tag',
@@ -10,7 +10,7 @@ export class Tag {
   /**
    * The theme type of the tag. Given by bulma our css framework.
    */
-  @Prop() color: ColorTypes | '' = ''
+  @Prop() color: ColorTypes | SupportColors | '' = ''
 
   /**
    * The size of the tag element
@@ -40,7 +40,10 @@ export class Tag {
   @Event() balCloseClick!: EventEmitter<MouseEvent>
 
   get colorCssClass(): string {
-    return this.color !== '' ? `is-${this.color}` : 'default'
+    if (['danger', 'warning', 'success', 'info'].includes(this.color)) {
+      return this.color !== '' ? `has-background-${this.color}-light` : ''
+    }
+    return this.color !== '' ? `is-${this.color}` : ''
   }
 
   get sizeCssClass(): string {
@@ -63,20 +66,18 @@ export class Tag {
             bold
             inline
             size={this.size === 'small' ? 'small' : ''}
-            color={this.color === 'primary' ? 'white' : ''}
+            color={this.color === 'primary' || this.color === 'blue' ? 'white' : ''}
           >
             <slot />
           </bal-text>
-          <div
+          <bal-close
             style={{
               display: this.closable ? 'inline-block' : 'none',
             }}
-            class={{
-              'delete': true,
-              'is-small': true,
-            }}
+            inverted
+            background
             onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
-          ></div>
+          ></bal-close>
         </div>
       </Host>
     )

@@ -73,8 +73,8 @@ export const ContactFormTemplate = `
       </bal-field>
     </form>
   </bal-card-content>
-  <bal-card-actions position="right">
+  <bal-card-actions>
     <bal-button color="primary">Submit</bal-button>
-    <bal-button color="link">Cancel</bal-button>
+    <bal-button color="info">Cancel</bal-button>
   </bal-card-actions>
 </bal-card>`

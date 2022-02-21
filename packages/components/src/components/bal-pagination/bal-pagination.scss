@@ -1,47 +1,40 @@
-@import 'bal-pagination.vars';
-@import 'node_modules/bulma/sass/components/pagination';
-
 bal-pagination {
   display: block;
 }
 
 nav.pagination {
-  & > button {
-    box-shadow: none !important;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  .pagination-previous {
+    order: 1;
+  }
+
+  .pagination-next {
+    order: 3;
+  }
+
+  .pagination-list {
+    order: 2;
+    width: unset;
     align-items: center;
-    background: $white;
-
-    &:disabled {
-      background: $blue-1;
-      border-color: $blue-2;
-      color: $text-light;
-      cursor: not-allowed;
-    }
-  }
-
-  a.pagination-link {
-    margin: 0;
-  }
-
-  bal-icon {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: -1px;
+    text-align: center;
+    gap: 4px;
   }
 
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-
-    li > a:not(.is-current) {
-      background: $white;
+  @include tablet() {
+    .pagination-list {
+      gap: 8px;
     }
   }
 
-  button,
-  a {
-    cursor: pointer;
+  @include desktop() {
+    .pagination-list {
+      gap: 8px;
+    }
   }
 }

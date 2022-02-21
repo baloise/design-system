@@ -10,21 +10,6 @@
 footer.footer {
   position: relative;
   font-family: $family-primary;
-
-  &.has-track-line {
-    padding-bottom: $footer-padding + 12px;
-  }
-
-  @include tablet() {
-    &.has-track-line {
-      padding-bottom: $footer-padding + 14px;
-    }
-  }
-  @include desktop() {
-    &.has-track-line {
-      padding-bottom: $footer-padding + 18px;
-    }
-  }
 }
 
 bal-footer {

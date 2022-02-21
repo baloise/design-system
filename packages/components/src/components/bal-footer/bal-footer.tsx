@@ -17,11 +17,6 @@ export class Footer implements BalConfigObserver {
   @State() language: BalLanguage = defaultConfig.language
 
   /**
-   * If `true` the footer shows a track line at the bottom.
-   */
-  @Prop() hasTrackLine = false
-
-  /**
    * @deprecated The languages in which the links will appear.
    */
   @Prop() locale: 'en' | 'de' | 'fr' | 'it' | '' = ''
@@ -69,8 +64,7 @@ export class Footer implements BalConfigObserver {
       <Host>
         <footer
           class={{
-            'footer': true,
-            'has-track-line': this.hasTrackLine,
+            footer: true,
           }}
         >
           <slot></slot>

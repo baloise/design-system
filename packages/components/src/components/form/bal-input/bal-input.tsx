@@ -51,6 +51,11 @@ export class Input implements ComponentInterface, BalConfigObserver {
   @Prop() invalid = false
 
   /**
+   * Defines the text align of the input value.
+   */
+  @Prop() textAlign: 'center' | 'left' | 'right' = 'left'
+
+  /**
    * Defines the type of the input (text, number, email ...).
    */
   @Prop() type: InputTypes = 'text'
@@ -377,17 +382,21 @@ export class Input implements ComponentInterface, BalConfigObserver {
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
+          'bal-input': true,
           'is-disabled': this.disabled,
         }}
       >
         <input
           class={{
             'input': true,
+            'data-test-input': true,
             'is-disabled': this.disabled,
             'is-danger': this.invalid,
             'is-inverted': this.inverted,
             'clickable': this.clickable,
             'has-icon-right': this.hasIconRight,
+            'has-text-centered': this.textAlign === 'center',
+            'has-text-right': this.textAlign === 'right',
           }}
           ref={inputEl => (this.nativeInput = inputEl)}
           id={this.inputId}

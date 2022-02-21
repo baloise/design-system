@@ -8,10 +8,6 @@ bal-app,
   position: relative;
   display: block;
 
-  &.has-background {
-    background: $grey-1;
-  }
-
   * {
     box-sizing: border-box;
     text-rendering: optimizeLegibility;

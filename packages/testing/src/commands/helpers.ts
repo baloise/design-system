@@ -86,9 +86,10 @@ export const selectors = {
     main: '.bal-notices > bal-snackbar',
   },
   pagination: {
-    next: 'button.pagination-next',
-    previous: 'button.pagination-previous',
-    pages: '.pagination-list > li > a',
+    next: 'bal-button.pagination-next',
+    previous: 'bal-button.pagination-previous',
+    pages: '.pagination-list > li > bal-button',
+    button: '.pagination-list > li > bal-button > button',
   },
   hint: {
     trigger: '.data-test-hint-trigger',

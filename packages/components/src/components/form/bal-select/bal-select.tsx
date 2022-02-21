@@ -80,12 +80,12 @@ export class Select {
   @Prop() noDataLabel: string | undefined
 
   /**
-   * Removes the border of the input.
+   * @deprecated  Removes the border of the input.
    */
   @Prop() noBorder = false
 
   /**
-   * Enables the slide in animation for the option items.
+   * @deprecated Enables the slide in animation for the option items.
    */
   @Prop() hasMovement = false
 
@@ -100,7 +100,7 @@ export class Select {
   @Prop() disabled = false
 
   /**
-   * Set this to `true` when the component is placed on a dark background.
+   * @deprecated  Set this to `true` when the component is placed on a dark background.
    */
   @Prop() inverted = false
 
@@ -421,11 +421,13 @@ export class Select {
       }
 
       const option = visibleOptions[this.focusIndex]
-      const focusedElement = this.el.querySelector<HTMLElement>(`button#${option.id}`)
-      if (focusedElement) {
-        setTimeout(() => {
-          this.scrollToFocusedOption(focusedElement)
-        }, 0)
+      if (option && option.id) {
+        const focusedElement = this.el.querySelector<HTMLElement>(`button#${option.id}`)
+        if (focusedElement) {
+          setTimeout(() => {
+            this.scrollToFocusedOption(focusedElement)
+          }, 0)
+        }
       }
     } else {
       this.focusIndex = 0
@@ -570,9 +572,11 @@ export class Select {
   }
 
   private removeValue = (value: string) => {
-    this.rawValue = removeValue(this.rawValue, value)
-    if (this.multiple && this.typeahead) {
-      this.setFocus()
+    if (!this.disabled) {
+      this.rawValue = removeValue(this.rawValue, value)
+      if (this.multiple && this.typeahead) {
+        this.setFocus()
+      }
     }
   }
 
@@ -685,7 +689,7 @@ export class Select {
     }
 
     const Chip = (props: { value: string }) => (
-      <bal-tag size="small" dense closable onBalCloseClick={_ => this.removeValue(props.value)}>
+      <bal-tag color="primary" closable={!this.disabled} onBalCloseClick={_ => this.removeValue(props.value)}>
         {findLabelByValue(this.options, props.value)}
       </bal-tag>
     )
@@ -713,7 +717,6 @@ export class Select {
               'bal-select__slot': true,
               'is-danger': this.invalid,
               'is-focused': this.isPopoverOpen,
-              'has-no-border': this.noBorder,
             }}
           >
             <div class="bal-select__selections">
@@ -735,6 +738,7 @@ export class Select {
                 autocomplete={'off'}
                 placeholder={this.inputPlaceholder}
                 readOnly={!this.typeahead}
+                contentEditable={this.typeahead}
                 disabled={this.disabled}
                 tabindex={this.balTabindex}
                 onInput={this.handleInput}
@@ -750,12 +754,8 @@ export class Select {
               class={{ 'is-hidden': this.loading }}
               name="caret-down"
               size="xsmall"
-              color={this.invalid ? 'danger' : 'info'}
-              inverted={this.inverted}
+              color={this.disabled ? 'grey' : this.invalid ? 'danger' : 'primary'}
               turn={this.isPopoverOpen}
-              style={{
-                marginTop: this.isPopoverOpen ? '8px' : '0px',
-              }}
             ></bal-icon>
           </div>
           <bal-popover-content scrollable={this.scrollable}>
@@ -772,7 +772,6 @@ export class Select {
                   'is-selected': valuesArray.includes(option.value),
                   'is-focused': this.focusIndex === index,
                   'has-checkbox': this.multiple,
-                  'has-movement': this.hasMovement,
                   'is-disabled': option.disabled === true,
                 }}
                 disabled={option.disabled}

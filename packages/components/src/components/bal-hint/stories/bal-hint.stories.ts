@@ -15,6 +15,7 @@ import {
 const component = BalComponentStory({
   title: 'Components/Hint',
   component: BalHint,
+  status: 'stable',
   subcomponents: { BalHintText, BalHintTitle },
   argTypes: {
     ...withContent(),
@@ -51,7 +52,7 @@ export const Small = args => ({
 Small.args = {
   small: true,
 }
-Basic.parameters = { ...component.sourceCode(Basic) }
+Small.parameters = { ...component.sourceCode(Small) }
 
 export const FieldHint = args => ({
   components: {

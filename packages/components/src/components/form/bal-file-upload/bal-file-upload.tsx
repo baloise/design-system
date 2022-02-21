@@ -42,6 +42,11 @@ export class FileUpload {
   @Prop() disabled = false
 
   /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
+
+  /**
    * Accepted MIME-Types like `image/png,image/jpeg`.
    */
   @Prop() accept = ''
@@ -215,29 +220,41 @@ export class FileUpload {
 
   render() {
     const FileList = () => (
-      <bal-list disabled border>
-        {this.files.map((file, index) => (
-          <bal-list-item>
-            <bal-list-item-icon>
-              <bal-icon name="document"></bal-icon>
-            </bal-list-item-icon>
-            <bal-list-item-content>
-              <bal-list-item-title>{file.name}</bal-list-item-title>
-              <bal-list-item-subtitle>
-                {this.subTitle ? this.subTitle(file) : fileSize(file.size)}
-              </bal-list-item-subtitle>
-            </bal-list-item-content>
-            <bal-list-item-icon right class="file-remove" onClick={() => this.removeFile(index)}>
-              <bal-icon name="trash" color="danger"></bal-icon>
-            </bal-list-item-icon>
-          </bal-list-item>
-        ))}
-      </bal-list>
+      <bal-card flat border class="mt-4" style={{ display: this.files.length ? 'block' : 'none' }}>
+        <bal-list border size="large" class="p-0">
+          {this.files.map((file, index) => (
+            <bal-list-item>
+              <bal-list-item-icon>
+                <bal-icon name="document"></bal-icon>
+              </bal-list-item-icon>
+              <bal-list-item-content>
+                <bal-list-item-title>{file.name}</bal-list-item-title>
+                <bal-list-item-subtitle>
+                  {this.subTitle ? this.subTitle(file) : fileSize(file.size)}
+                </bal-list-item-subtitle>
+              </bal-list-item-content>
+              <bal-list-item-icon right class="file-remove clickable" onClick={() => this.removeFile(index)}>
+                <bal-icon size="small" name="trash" color="danger"></bal-icon>
+              </bal-list-item-icon>
+            </bal-list-item>
+          ))}
+        </bal-list>
+      </bal-card>
     )
 
     return (
-      <Host class={['bal-file-upload', this.disabled ? 'is-disabled' : ''].join(' ')}>
-        <div class="file">
+      <Host
+        class={{
+          'bal-file-upload': true,
+          'is-invalid': this.invalid,
+          'is-disabled': this.disabled,
+        }}
+      >
+        <div
+          class={{
+            'file is-normal is-boxed is-centered': true,
+          }}
+        >
           <label class={['file-label', this.isOver ? 'is-hovered' : '', this.disabled ? 'is-disabled' : ''].join(' ')}>
             <input
               class="file-input"
@@ -251,7 +268,7 @@ export class FileUpload {
             />
             <span class="file-cta">
               <span class="file-icon">
-                <bal-icon name="upload" size="medium"></bal-icon>
+                <bal-icon name="upload" size=""></bal-icon>
               </span>
               <span class="file-label">{this.label}</span>
             </span>

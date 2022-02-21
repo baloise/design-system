@@ -22,13 +22,17 @@ bal-tag {
     background-color: $grey;
   }
 
+  bal-close {
+    display: flex !important;
+  }
+
   &.is-dense {
     padding-top: 0;
     padding-bottom: 0;
     padding-left: 8px;
     padding-right: 8px;
 
-    .delete {
+    bal-close {
       margin-left: 0.25rem;
       margin-right: -0.1rem;
     }

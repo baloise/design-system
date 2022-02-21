@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BalButtonColor, BalIconColor } from "./types";
-import { BackgroundColors, ColorTypes, ColorTypesExtended } from "./types/color.types";
+import { BackgroundColors, ColorTypes, ColorTypesExtended, SupportColors } from "./types/color.types";
 import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
@@ -144,6 +144,10 @@ export namespace Components {
          */
         "rel": string | undefined;
         /**
+          * If `true` the button is rounded.
+         */
+        "rounded": boolean;
+        /**
           * Size of the button
          */
         "size": 'small' | '';
@@ -260,6 +264,10 @@ export namespace Components {
          */
         "checked": boolean;
         /**
+          * If `true`, the checkbox has a reduced height.
+         */
+        "dense": boolean;
+        /**
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled": boolean;
@@ -271,6 +279,10 @@ export namespace Components {
           * Defines the layout of the checkbox button
          */
         "interface": 'checkbox' | 'switch';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
         /**
           * If `true`, the control works on dark background.
          */
@@ -289,6 +301,10 @@ export namespace Components {
         "value": string;
     }
     interface BalCheckboxGroup {
+        /**
+          * Displays the checkboxes vertically
+         */
+        "vertical": boolean;
     }
     interface BalClose {
         /**
@@ -560,6 +576,10 @@ export namespace Components {
          */
         "hasFileList": boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
           * Label of the drop area.
          */
         "label": string;
@@ -589,10 +609,6 @@ export namespace Components {
         "value": File[];
     }
     interface BalFooter {
-        /**
-          * If `true` the footer shows a track line at the bottom.
-         */
-        "hasTrackLine": boolean;
         /**
           * If `true` the default Baloise links will be hidden.
          */
@@ -799,6 +815,10 @@ export namespace Components {
          */
         "suffix"?: string;
         /**
+          * Defines the text align of the input value.
+         */
+        "textAlign": 'center' | 'left' | 'right';
+        /**
           * Defines the type of the input (text, number, email ...).
          */
         "type": InputTypes;
@@ -830,6 +850,10 @@ export namespace Components {
           * If `true` the list can be used on a dark background
          */
         "inverted": boolean;
+        /**
+          * Defines the min height of the list item
+         */
+        "size": '' | 'large';
     }
     interface BalListItem {
         /**
@@ -926,10 +950,6 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
-          * It `true` the navbar has a white background
-         */
-        "light": boolean;
-        /**
           * It `true` the burger button is hidden
          */
         "noBurger": boolean;
@@ -955,7 +975,7 @@ export namespace Components {
     }
     interface BalNotification {
         /**
-          * Defines the color of the element
+          * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
         "color": '' | ColorTypes;
     }
@@ -1039,6 +1059,10 @@ export namespace Components {
          */
         "checked": boolean;
         /**
+          * If `true`, the radio has a reduced height.
+         */
+        "dense": boolean;
+        /**
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled": boolean;
@@ -1046,6 +1070,10 @@ export namespace Components {
           * Defines the layout of the radio button
          */
         "interface": 'radio' | 'select-button';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
         /**
           * If `true`, the control works on dark background.
          */
@@ -1089,6 +1117,14 @@ export namespace Components {
           * The value of the control.
          */
         "value": string;
+        /**
+          * Displays the checkboxes vertically
+         */
+        "vertical": boolean;
+        /**
+          * If `true`, the controls will be vertically on mobile devices.
+         */
+        "verticalOnMobile": boolean;
     }
     interface BalSelect {
         /**
@@ -1116,7 +1152,7 @@ export namespace Components {
          */
         "getValue": () => Promise<string[] | undefined>;
         /**
-          * Enables the slide in animation for the option items.
+          * @deprecated Enables the slide in animation for the option items.
          */
         "hasMovement": boolean;
         /**
@@ -1124,7 +1160,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
         /**
@@ -1140,7 +1176,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Removes the border of the input.
+          * @deprecated Removes the border of the input.
          */
         "noBorder": boolean;
         /**
@@ -1286,7 +1322,7 @@ export namespace Components {
         /**
           * Defines the color of the spinner.
          */
-        "color": 'blue' | 'white' | 'grey';
+        "color": 'blue' | 'white';
         /**
           * If `true` the component can be used on dark background
          */
@@ -1387,7 +1423,7 @@ export namespace Components {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "color": ColorTypes | '';
+        "color": ColorTypes | SupportColors | '';
         "dense": boolean;
         /**
           * The size of the tag element
@@ -1403,7 +1439,7 @@ export namespace Components {
         /**
           * Defines the color of the text.
          */
-        "color": ColorTypes | 'white' | '';
+        "color": ColorTypes | 'white' | 'grey' | '';
         /**
           * If `true` the text has heading font family
          */
@@ -1540,7 +1576,7 @@ export namespace Components {
          */
         "closeIn": (duration: number) => Promise<void>;
         /**
-          * The theme type of the toast. Given by bulma our css framework.
+          * The theme type of the toast. Given by bulma our css framework. Color type primary is deprecated, please use info instead.
          */
         "color": ColorTypes | '';
         /**
@@ -2226,6 +2262,10 @@ declare namespace LocalJSX {
          */
         "rel"?: string | undefined;
         /**
+          * If `true` the button is rounded.
+         */
+        "rounded"?: boolean;
+        /**
           * Size of the button
          */
         "size"?: 'small' | '';
@@ -2342,6 +2382,10 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
+          * If `true`, the checkbox has a reduced height.
+         */
+        "dense"?: boolean;
+        /**
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled"?: boolean;
@@ -2349,6 +2393,10 @@ declare namespace LocalJSX {
           * Defines the layout of the checkbox button
          */
         "interface"?: 'checkbox' | 'switch';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
         /**
           * If `true`, the control works on dark background.
          */
@@ -2362,7 +2410,7 @@ declare namespace LocalJSX {
          */
         "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * Emitted when the checked property has changed.
+          * Emitted when the value property has changed.
          */
         "onBalChange"?: (event: CustomEvent<boolean>) => void;
         /**
@@ -2375,6 +2423,10 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalCheckboxGroup {
+        /**
+          * Displays the checkboxes vertically
+         */
+        "vertical"?: boolean;
     }
     interface BalClose {
         /**
@@ -2650,6 +2702,10 @@ declare namespace LocalJSX {
          */
         "hasFileList"?: boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
           * Label of the drop area.
          */
         "label"?: string;
@@ -2687,10 +2743,6 @@ declare namespace LocalJSX {
         "value"?: File[];
     }
     interface BalFooter {
-        /**
-          * If `true` the footer shows a track line at the bottom.
-         */
-        "hasTrackLine"?: boolean;
         /**
           * If `true` the default Baloise links will be hidden.
          */
@@ -2901,6 +2953,10 @@ declare namespace LocalJSX {
          */
         "suffix"?: string;
         /**
+          * Defines the text align of the input value.
+         */
+        "textAlign"?: 'center' | 'left' | 'right';
+        /**
           * Defines the type of the input (text, number, email ...).
          */
         "type"?: InputTypes;
@@ -2932,6 +2988,10 @@ declare namespace LocalJSX {
           * If `true` the list can be used on a dark background
          */
         "inverted"?: boolean;
+        /**
+          * Defines the min height of the list item
+         */
+        "size"?: '' | 'large';
     }
     interface BalListItem {
         /**
@@ -3030,10 +3090,6 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
-          * It `true` the navbar has a white background
-         */
-        "light"?: boolean;
-        /**
           * It `true` the burger button is hidden
          */
         "noBurger"?: boolean;
@@ -3062,7 +3118,7 @@ declare namespace LocalJSX {
     }
     interface BalNotification {
         /**
-          * Defines the color of the element
+          * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
         "color"?: '' | ColorTypes;
     }
@@ -3135,6 +3191,10 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
+          * If `true`, the radio has a reduced height.
+         */
+        "dense"?: boolean;
+        /**
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled"?: boolean;
@@ -3142,6 +3202,10 @@ declare namespace LocalJSX {
           * Defines the layout of the radio button
          */
         "interface"?: 'radio' | 'select-button';
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
         /**
           * If `true`, the control works on dark background.
          */
@@ -3192,6 +3256,14 @@ declare namespace LocalJSX {
           * The value of the control.
          */
         "value"?: string;
+        /**
+          * Displays the checkboxes vertically
+         */
+        "vertical"?: boolean;
+        /**
+          * If `true`, the controls will be vertically on mobile devices.
+         */
+        "verticalOnMobile"?: boolean;
     }
     interface BalSelect {
         /**
@@ -3203,7 +3275,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Enables the slide in animation for the option items.
+          * @deprecated Enables the slide in animation for the option items.
          */
         "hasMovement"?: boolean;
         /**
@@ -3211,7 +3283,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
         /**
@@ -3227,7 +3299,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Removes the border of the input.
+          * @deprecated Removes the border of the input.
          */
         "noBorder"?: boolean;
         /**
@@ -3405,7 +3477,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the spinner.
          */
-        "color"?: 'blue' | 'white' | 'grey';
+        "color"?: 'blue' | 'white';
         /**
           * If `true` the component can be used on dark background
          */
@@ -3506,7 +3578,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "color"?: ColorTypes | '';
+        "color"?: ColorTypes | SupportColors | '';
         "dense"?: boolean;
         /**
           * Emitted when the input got clicked.
@@ -3526,7 +3598,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the text.
          */
-        "color"?: ColorTypes | 'white' | '';
+        "color"?: ColorTypes | 'white' | 'grey' | '';
         /**
           * If `true` the text has heading font family
          */
@@ -3679,7 +3751,7 @@ declare namespace LocalJSX {
     interface BalToast {
         "closeHandler"?: () => void;
         /**
-          * The theme type of the toast. Given by bulma our css framework.
+          * The theme type of the toast. Given by bulma our css framework. Color type primary is deprecated, please use info instead.
          */
         "color"?: ColorTypes | '';
         /**

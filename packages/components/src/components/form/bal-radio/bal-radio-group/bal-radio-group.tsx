@@ -36,9 +36,19 @@ export class RadioGroup implements ComponentInterface {
   @Prop() inverted = false
 
   /**
+   * Displays the checkboxes vertically
+   */
+  @Prop() vertical = false
+
+  /**
    * If `true`, the user cannot interact with the radios.
    */
   @Prop() disabled?: boolean = undefined
+
+  /**
+   * If `true`, the controls will be vertically on mobile devices.
+   */
+  @Prop() verticalOnMobile = false
 
   @Watch('disabled')
   disabledChanged(value: boolean | undefined) {
@@ -114,7 +124,16 @@ export class RadioGroup implements ComponentInterface {
   render() {
     const label = findItemLabel(this.el)
     return (
-      <Host role="radiogroup" aria-labelledby={label?.id} onClick={this.onClick} class={`bal-${this.interface}`}>
+      <Host
+        role="radiogroup"
+        aria-labelledby={label?.id}
+        onClick={this.onClick}
+        class={{
+          [`bal-${this.interface}`]: true,
+          'is-vertical-mobile': this.verticalOnMobile,
+          'is-vertical': this.vertical,
+        }}
+      >
         <div>
           <slot></slot>
         </div>

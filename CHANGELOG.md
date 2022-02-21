@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.0](https://github.com/baloise/design-system/compare/v10.0.0...v10.1.0) (2022-02-16)
+
+
+### Features
+
+* **badge:** add new component ([1be6bb6](https://github.com/baloise/design-system/commit/1be6bb6d347d821932ae760b9611acfde035c48e))
+* **badge:** add postion for button, tabs and card ([e250a99](https://github.com/baloise/design-system/commit/e250a994fc6c8cc9402f7685fd6e25c2e5d28301))
+* **checkbox:** add vertical prop ([85fab4e](https://github.com/baloise/design-system/commit/85fab4e6dd3320ed4d2df5f61668491cf8e2e57e))
+* **close:** add new component ([9376e65](https://github.com/baloise/design-system/commit/9376e6541c7a138264d3d23db1b63a459f57916a))
+* **input-group:** add new component ([368846f](https://github.com/baloise/design-system/commit/368846f0f2c7daafff45aa2b063046d1c84d7069))
+* **radio:** add vertical prop ([ed63b7e](https://github.com/baloise/design-system/commit/ed63b7ef8ca50f9b7d94a701677fd3cb54df7488))
+* **spacing:** add mt-auto ([82d71a0](https://github.com/baloise/design-system/commit/82d71a090613aa50f1754d848d0099fe44f82fe8))
+* **style:** add opacity css helpers ([d3fd351](https://github.com/baloise/design-system/commit/d3fd3516f70bf83ab45d953b065d7e437ef55051))
+
+
+### Bug Fixes
+
+* **button-group:** use whole width ([a481f87](https://github.com/baloise/design-system/commit/a481f874c591e934833a049219933557b7a18f66))
+* **heading:** add missing styles for h6 ([067153b](https://github.com/baloise/design-system/commit/067153b79308bd923b1af2abae9eb32db4d9ea8b))
+* **list:** add large size ([55d6dcf](https://github.com/baloise/design-system/commit/55d6dcfeee47ece4944e0aa9ba3ba90697ac097b))
+* **list:** adjust spacing for content items ([50e21a0](https://github.com/baloise/design-system/commit/50e21a0f4d92912b663e4d436e7c48b8fa5e031b))
+* **list:** rework flexbox ([0c422b5](https://github.com/baloise/design-system/commit/0c422b58da537a98ee4a4642bcd30d4710e9dacf))
+* **modal:** on mobile buttons are at the bottom ([ff93cde](https://github.com/baloise/design-system/commit/ff93cde897fc687b208333d6e7c697f7436df6e1))
+* **pagination:** use bal-button ([540cc3f](https://github.com/baloise/design-system/commit/540cc3f40eb73e74deab91cce41f7c04e16bbacb))
+* **select-button:** add support for mobile devices ([75647d2](https://github.com/baloise/design-system/commit/75647d2a8424e80b012650b78329f9d86aeedac6))
+* **select:** check if option is there ([1fc58d9](https://github.com/baloise/design-system/commit/1fc58d9e9ebd5cd586a96d9216592dbb56b7dd51))
+
+
+
 ## [10.0.0](https://github.com/baloise/design-system/compare/v9.2.2...v10.0.0) (2022-02-10)
 
 

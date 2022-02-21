@@ -72,5 +72,5 @@
       "@baloise/design-system-next-components/dist/components/bal-toast": "balToast"
     }
   },
-  "whitelistedNonPeerDependencies": ["@baloise/design-system-next-next-components"]
+  "whitelistedNonPeerDependencies": ["@baloise/design-system-next-components"]
 }

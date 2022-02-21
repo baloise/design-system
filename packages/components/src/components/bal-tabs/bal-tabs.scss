@@ -9,14 +9,34 @@ bal-tabs {
 bal-tabs.bal-tabs {
   .tabs {
     margin: 0 !important;
+    position: relative;
 
     & > ul {
       margin: 0;
       padding: 0;
     }
 
+    .selected-tab-line {
+      height: 3px;
+      bottom: 0;
+      background: $blue;
+      position: absolute;
+      z-index: 1;
+      border-radius: 10px;
+    }
+
+    .line {
+      width: 100%;
+      height: 2px;
+      background: $grey-2;
+      position: absolute;
+      bottom: 0;
+    }
+
     & > ul > li {
       position: relative;
+      padding-top: 4px;
+      padding-bottom: 4px;
 
       @include tablet() {
         &.is-right {
@@ -27,24 +47,25 @@ bal-tabs.bal-tabs {
 
       span.bubble {
         background: $danger;
-        height: 12px;
-        width: 12px;
+        height: 8px;
+        width: 8px;
         border-radius: 50%;
         position: absolute;
         display: block;
-        top: 18px;
-        right: 5px;
+        top: 12px;
+        right: 4px;
       }
 
       & > a {
-        padding: 26px 20px 24px 20px;
+        padding: 16px;
         line-height: 1.2;
         cursor: pointer;
-        border-bottom: 2px solid transparent;
         text-decoration: none;
 
         color: $text-light;
-        font-size: $size-medium;
+        font-family: $title-family;
+        font-weight: bold;
+        font-size: 16px;
         line-height: 1.125;
         display: flex;
         justify-content: center;
@@ -52,7 +73,6 @@ bal-tabs.bal-tabs {
       }
 
       &.is-active > a {
-        border-bottom: 2px solid $blue;
         color: $blue;
       }
 
@@ -62,10 +82,15 @@ bal-tabs.bal-tabs {
 
       &.is-disabled > a,
       &.is-disabled > a:hover {
-        color: $text-light;
+        color: $blue;
         cursor: not-allowed;
         opacity: 0.5;
       }
+    }
+  }
+  &.is-ready {
+    .selected-tab-line {
+      transition: 0.8s;
     }
   }
 }
@@ -80,15 +105,21 @@ bal-tabs.bal-tabs.is-sub-navigation {
       span.bubble {
         height: 8px;
         width: 8px;
-        top: 8px;
+        top: 12px;
         right: 4px;
       }
 
       & > a {
         min-height: 48px !important;
-        padding: 12px !important;
-        font-size: 18px !important;
+        padding: 16px !important;
+        font-size: 16px !important;
       }
+    }
+
+    .bottom-line {
+      width: 100%;
+      height: 3px;
+      border-bottom: 2px solid $grey-2;
     }
   }
 }

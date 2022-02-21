@@ -11,9 +11,9 @@ bal-toast {
     margin: 0 0 8px 0;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
     border-radius: $radius-large;
-    padding: 24px 40px 24px 40px;
     pointer-events: auto;
-    max-width: 600px;
+    width: 288px;
+    min-height: 56px;
     flex-grow: 1;
     font-size: $size-normal;
     font-family: $family-primary;
@@ -21,27 +21,27 @@ bal-toast {
     background: $white;
 
     &.is-primary {
-      background: $primary;
-      color: $primary-invert;
+      background: $info-light;
+      color: $blue-invert;
     }
 
     &.is-info {
-      background: $info;
+      background: $info-light;
       color: $blue-invert;
     }
 
     &.is-success {
-      background: $success;
+      background: $success-light;
       color: $white;
     }
 
     &.is-warning {
-      background: $warning;
+      background: $warning-light;
       color: $white;
     }
 
     &.is-danger {
-      background: $danger;
+      background: $danger-light;
       color: $white;
     }
 
@@ -53,7 +53,23 @@ bal-toast {
       position: absolute;
       top: 50%;
       right: 40px;
-      margin-top: -12px;
+      margin-top: -13px;
+    }
+  }
+}
+
+@include tablet() {
+  bal-toast {
+    .toast {
+      width: 460px;
+    }
+  }
+}
+
+@include desktop() {
+  bal-toast {
+    .toast {
+      width: 480px;
     }
   }
 }

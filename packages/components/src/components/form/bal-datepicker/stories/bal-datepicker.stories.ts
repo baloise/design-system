@@ -15,6 +15,7 @@ const component = BalComponentStory({
   title: 'Components/Form/Datepicker',
   component: BalDatepicker,
   docs,
+  status: 'stable',
   argTypes: {
     invalid: balFieldArgTypes.invalid,
     hasFieldMessage: {

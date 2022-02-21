@@ -1,0 +1,116 @@
+@import './bal-input-group.mixins.scss';
+
+bal-input-group,
+.bal-input-group {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 2px solid $grey-2;
+  border-radius: $radius;
+  background: $white;
+
+  .input {
+    min-height: 44px;
+    border: none;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: calc(0.5em - 2px);
+    padding-top: calc(0.5em - 2px);
+  }
+
+  bal-icon {
+    min-width: 48px;
+  }
+
+  & > *:first-child.bal-input {
+    .input {
+      padding-left: calc(0.75em - 1px);
+    }
+  }
+
+  & > *:last-child.bal-input {
+    .input {
+      padding-right: calc(0.75em - 1px);
+    }
+  }
+
+  & > *:first-child.input {
+    padding-left: calc(0.75em - 1px);
+  }
+
+  & > *:last-child.input {
+    padding-right: calc(0.75em - 1px);
+  }
+
+  & > *:last-child.tag {
+    margin-right: calc(0.75em - 1px);
+  }
+
+  & > *:first-child.tag {
+    margin-left: calc(0.75em - 1px);
+  }
+
+  &.is-hovered,
+  &:hover {
+    &,
+    .input {
+      background: $grey-0;
+    }
+  }
+
+  &.is-danger {
+    &,
+    .input {
+      border-color: $danger-dark;
+      background: $danger-0;
+    }
+
+    svg {
+      g,
+      path,
+      circle {
+        fill: $danger-dark;
+      }
+    }
+  }
+
+  @include inputGroupTheme('danger', $invalid-light, $invalid-dark);
+  @include inputGroupTheme('success', $success-0, $success-dark);
+  @include inputGroupTheme('warning', $warning-0, $warning-dark);
+  @include inputGroupTheme('disabled', $grey-2, $grey-7);
+
+  &.is-disabled {
+    &,
+    .input {
+      cursor: default !important;
+      pointer-events: none !important;
+      user-select: none !important;
+
+      color: $grey-7;
+
+      ::placeholder {
+        color: $grey-5;
+      }
+    }
+
+    .tag {
+      background-color: $grey-5;
+
+      span {
+        color: $white;
+      }
+
+      .delete {
+        display: none !important;
+      }
+    }
+  }
+
+  &:not(.is-disabled) {
+    &:focus-within {
+      border-color: $blue;
+    }
+  }
+}

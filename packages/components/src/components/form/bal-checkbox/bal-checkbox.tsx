@@ -40,6 +40,11 @@ export class Checkbox {
   @Prop({ mutable: true, reflect: true }) checked = false
 
   /**
+   * If `true`, the checkbox has a reduced height.
+   */
+  @Prop() dense = false
+
+  /**
    * Update the native input element when the checked changes
    */
   @Watch('checked')
@@ -60,7 +65,12 @@ export class Checkbox {
   @Prop() inverted = false
 
   /**
-   * Emitted when the checked property has changed.
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
+
+  /**
+   * Emitted when the value property has changed.
    */
   @Event() balChange!: EventEmitter<boolean>
 
@@ -130,6 +140,7 @@ export class Checkbox {
         role="checkbox"
         onClick={this.onClick}
         class={{
+          'is-dense': this.dense,
           'is-inverted': this.inverted,
           'is-disabled': this.disabled,
           'is-focused': this.hasFocus,
@@ -161,7 +172,7 @@ export class Checkbox {
             'data-test-checkbox-label': true,
           }}
         >
-          <bal-text>
+          <bal-text inline color={this.disabled ? 'grey' : this.invalid ? 'danger' : 'primary'}>
             <slot></slot>
           </bal-text>
         </label>

@@ -1,11 +1,12 @@
 import docs from './bal-checkbox.docs.mdx'
-import { BalComponentStory, withContent, stencilArgType } from '../../../../stories/utils'
+import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
 import {
   BalCheckbox,
   BalField,
   BalFieldControl,
   BalFieldLabel,
   BalFieldMessage,
+  BalCheckboxGroup,
 } from '../../../../../.storybook/vue/components'
 import { isDescendant } from '../../../../../dist'
 import { ref, unref } from 'vue'
@@ -15,9 +16,10 @@ const balFieldArgTypes = stencilArgType(BalField)
 const component = BalComponentStory({
   title: 'Components/Form/Checkbox',
   component: BalCheckbox,
+  subcomponents: { BalCheckboxGroup },
   docs,
+  status: 'stable',
   argTypes: {
-    ...withContent(),
     invalid: balFieldArgTypes.invalid,
     hasFieldMessage: {
       description: 'Show a hint or validation message below the control',
@@ -25,9 +27,16 @@ const component = BalComponentStory({
         category: 'custom',
       },
     },
+    vertical: {
+      description: 'Displays the checkbox vertically',
+      table: {
+        category: 'CheckboxGroup',
+      },
+    },
   },
   args: {
     invalid: false,
+    vertical: false,
     hasFieldMessage: true,
   },
 })
@@ -43,16 +52,16 @@ const Template = args => ({
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
-      <bal-checkbox-group>
+      <bal-checkbox-group :vertical="args.vertical">
         <bal-checkbox v-bind="args" v-model="args.value">
-          {{ args.content }}
+          Label
         </bal-checkbox>
         <bal-checkbox v-bind="args" v-model="args.value">
-        {{ args.content }}
-      </bal-checkbox>
-      <bal-checkbox v-bind="args" v-model="args.value">
-        {{ args.content }}
-      </bal-checkbox>
+          Label
+        </bal-checkbox>
+        <bal-checkbox v-bind="args" v-model="args.value">
+          Label
+        </bal-checkbox>
       </bal-checkbox-group>
     </bal-field-control>
     <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
@@ -65,6 +74,16 @@ Basic.args = {
 }
 Basic.parameters = {
   ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
+
+export const Vertical = Template.bind({})
+Vertical.args = {
+  content: 'Label',
+  vertical: true,
+}
+Vertical.parameters = {
+  ...component.sourceCode(Vertical),
   controls: { exclude: excludedControls },
 }
 

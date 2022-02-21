@@ -26,13 +26,7 @@ export class ModalHeader {
             <slot></slot>
           </h4>
         </div>
-        <button
-          class={{
-            'modal-close': true,
-          }}
-          aria-label="close"
-          onClick={this.closeHandler}
-        ></button>
+        <bal-close size="large" onClick={this.closeHandler}></bal-close>
       </Host>
     )
   }

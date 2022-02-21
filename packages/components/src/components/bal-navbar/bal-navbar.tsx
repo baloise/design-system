@@ -7,11 +7,6 @@ export class Navbar {
   @Element() el!: HTMLElement
 
   /**
-   * It `true` the navbar has a white background
-   */
-  @Prop() light = false
-
-  /**
    * It `true` the burger button is hidden
    */
   @Prop() noBurger = false
@@ -27,24 +22,13 @@ export class Navbar {
         class={{ 'no-burger': this.noBurger }}
         style={{
           position: 'relative',
-          paddingTop: this.light ? '10px' : '',
         }}
       >
-        <div
-          class="bal-track-line"
-          style={{
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            display: !this.light ? 'none' : '',
-          }}
-        ></div>
         <nav
           class={{
             'navbar': true,
             'is-spaced': !this.expanded,
-            'is-white': this.light,
-            'is-info': !this.light,
+            'is-primary': true,
           }}
           role="navigation"
           aria-label="main navigation"

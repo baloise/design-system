@@ -36,6 +36,11 @@ export class Radio implements ComponentInterface {
   @Prop() interface: 'radio' | 'select-button' = 'radio'
 
   /**
+   * If `true`, the radio has a reduced height.
+   */
+  @Prop() dense = false
+
+  /**
    * The tabindex of the control.
    */
   @Prop() balTabindex = 0
@@ -59,6 +64,11 @@ export class Radio implements ComponentInterface {
    * If `true`, the user cannot interact with the checkbox.
    */
   @Prop() disabled = false
+
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() invalid = false
 
   /**
    * If `true`, the control works on dark background.
@@ -126,13 +136,20 @@ export class Radio implements ComponentInterface {
     this.balBlur.emit(ev)
   }
 
+  private getTextColor() {
+    if (this.interface === 'radio') {
+      return this.disabled ? 'grey' : this.invalid ? 'danger' : 'primary'
+    } else {
+      return this.disabled ? 'grey' : this.checked ? 'white' : 'primary'
+    }
+  }
+
   render() {
     const { inputId } = this
 
     return (
       <Host
         role="radio"
-        tabindex={this.balTabindex}
         aria-checked={`${this.checked}`}
         aria-disabled={this.disabled ? 'true' : null}
         aria-hidden={this.disabled ? 'true' : null}
@@ -141,6 +158,7 @@ export class Radio implements ComponentInterface {
           'bal-radio': this.interface === 'radio',
           'bal-select-button': this.interface === 'select-button',
           'is-inverted': this.inverted,
+          'is-dense': this.dense,
           'is-disabled': this.disabled,
           'is-focused': this.hasFocus,
         }}
@@ -154,7 +172,6 @@ export class Radio implements ComponentInterface {
           }}
           type="radio"
           id={inputId}
-          tabindex={-1}
           name={this.name}
           value={this.value}
           disabled={this.disabled}
@@ -172,6 +189,8 @@ export class Radio implements ComponentInterface {
           htmlFor={inputId}
         >
           <bal-text
+            inline
+            color={this.getTextColor()}
             class={{
               'has-padding-left': !this.isEmpty && this.interface !== 'select-button',
             }}

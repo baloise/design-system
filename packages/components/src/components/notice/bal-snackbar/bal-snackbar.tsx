@@ -109,34 +109,33 @@ export class Snackbar {
   render() {
     return (
       <Host id={this.snackbarId}>
-        <div role="alert" class={`snackbar ${this.animationClass} ${this.colorType}`}>
+        <div role="alert" class={`snackbar ${this.animationClass} ${this.colorType} p-4`}>
           <div class="snackbar-header">
             <span class="icon-text">
               <span class="icon" style={{ display: this.icon ? '' : 'none' }}>
-                <bal-icon name={this.icon} inverted={this.color !== ''}></bal-icon>
+                <bal-icon name={this.icon} color={this.color == 'primary' ? 'white' : 'primary'}></bal-icon>
               </span>
-              <bal-heading level="h4" inverted={this.color !== ''} space="none">
+              <bal-heading level="h5" inverted={this.color == 'primary'} space="none">
                 {this.subject}
               </bal-heading>
             </span>
           </div>
-          <bal-text innerHTML={this.message}>
+          <bal-text
+            space={this.action === '' ? 'bottom' : 'none'}
+            color={this.color == 'primary' ? 'white' : ''}
+            innerHTML={this.message}
+          >
             <slot />
           </bal-text>
-          <bal-icon
-            name="close"
+          <bal-close
             class="close"
-            inverted={this.color !== ''}
-            size="xsmall"
+            size="medium"
+            inverted={true}
+            background={false}
             onClick={() => this.close()}
-          ></bal-icon>
-          <div class="snackbar-footer" style={{ display: this.action === '' ? 'none' : 'inline-block' }}>
-            <bal-button
-              color={this.buttonType}
-              inverted={this.color !== ''}
-              outlined
-              onClick={() => this.onActionHandler()}
-            >
+          ></bal-close>
+          <div class="snackbar-footer" style={{ display: this.action === '' ? 'none' : 'inline-flex' }}>
+            <bal-button color="info" inverted={this.color == 'primary'} onClick={() => this.onActionHandler()}>
               {this.action}
             </bal-button>
           </div>

@@ -5,21 +5,53 @@ bal-radio-group {
 
   &.bal-select-button > div {
     display: flex;
+    flex-wrap: wrap;
     flex: 1;
-    border: 1px solid $blue-2;
-    border-radius: 100px;
-    padding: 4px;
+    flex-direction: column;
+  }
+
+  &.bal-select-button.is-vertical > div {
+    flex-direction: column;
+  }
+
+  &.bal-select-button > div {
+    gap: 8px;
   }
 
   &:not(.bal-select-button) {
-    & > div {
-      margin-left: -16px;
-      margin-right: -16px;
+    &:not(.is-vertical) {
+      & > div {
+        margin-left: -12px;
+        margin-right: -12px;
 
-      bal-radio {
-        margin-left: 16px;
-        margin-right: 16px;
+        bal-radio {
+          margin-left: 12px;
+          margin-right: 12px;
+        }
       }
+    }
+
+    &.is-vertical {
+      & > div {
+        bal-radio {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  @include tablet() {
+    &.bal-select-button.is-vertical-mobile > div {
+      flex-direction: row;
+      border-radius: 100px;
+    }
+  }
+}
+
+@include tablet() {
+  bal-radio-group {
+    &.bal-select-button > div {
+      flex-direction: row;
     }
   }
 }
