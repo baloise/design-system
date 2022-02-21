@@ -57,6 +57,7 @@ bal-tabs.bal-tabs {
       }
 
       & > a {
+        min-height: 48px !important;
         padding: 16px;
         line-height: 1.2;
         cursor: pointer;
@@ -98,6 +99,9 @@ bal-tabs.bal-tabs {
 bal-tabs.bal-tabs.is-sub-navigation {
   .tabs {
     & > ul > li {
+      padding-top: 0;
+      padding-bottom: 0;
+
       &.is-right {
         display: none !important;
       }
@@ -110,7 +114,7 @@ bal-tabs.bal-tabs.is-sub-navigation {
       }
 
       & > a {
-        min-height: 48px !important;
+        min-height: 48px;
         padding: 16px !important;
         font-size: 16px !important;
       }
@@ -130,3 +134,91 @@ bal-tab-item {
 }
 
 @import './bal-o-steps';
+
+bal-tabs.bal-tabs.is-vertical {
+  .tabs {
+    margin: 0 !important;
+    position: relative;
+
+    & > ul {
+      margin: 0;
+      padding: 0;
+
+      align-items: center;
+      border-bottom-color: #b3b6d4;
+      border-bottom-style: solid;
+      border-bottom-width: 0;
+      display: flex;
+      flex-grow: unset;
+      flex-shrink: 0;
+      justify-content: flex-start;
+      flex-direction: column;
+
+      li {
+        padding-top: 0;
+        padding-bottom: 0;
+
+        & > a {
+          min-height: 24px !important;
+          height: 24px !important;
+        }
+
+        bal-badge {
+          right: 4px !important;
+          top: 4px !important;
+        }
+      }
+    }
+
+    .selected-tab-vertical-line {
+      width: 3px;
+      left: 0;
+      background: $blue;
+      position: absolute;
+      z-index: 1;
+      border-radius: 10px;
+    }
+
+    .line {
+      width: 3px;
+      height: 100%;
+      background: $grey-2;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  &.is-ready {
+    .selected-tab-vertical-line {
+      transition: 0.8s;
+    }
+  }
+}
+
+bal-tabs.bal-tabs.is-sub-navigation.is-vertical {
+  .tabs {
+    & > ul > li {
+      &.is-right {
+        display: none !important;
+      }
+
+      & > a {
+        min-height: 24px !important;
+        height: 24px !important;
+        padding: 16px !important;
+        font-size: 16px !important;
+      }
+
+      bal-badge {
+        right: 4px !important;
+        top: 4px !important;
+      }
+    }
+
+    .bottom-line {
+      width: 100%;
+      height: 3px;
+      border-bottom: 2px solid $grey-2;
+    }
+  }
+}

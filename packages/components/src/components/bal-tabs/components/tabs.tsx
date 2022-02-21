@@ -12,9 +12,19 @@ export const TabList: FunctionalComponent<TabProps> = ({
   onActionClick,
   lineWidth,
   lineOffsetLeft,
+  lineHeight,
+  lineOffsetTop,
+  vertical,
 }) => (
   <div class={['tabs', expanded ? 'is-fullwidth' : ''].join(' ')}>
-    <div class="selected-tab-line" style={{ left: `${lineOffsetLeft || 0}px`, width: `${lineWidth || 0}px` }}></div>
+    <div
+      class="selected-tab-line"
+      style={{ display: !vertical ? 'block' : 'none', left: `${lineOffsetLeft || 0}px`, width: `${lineWidth || 0}px` }}
+    ></div>
+    <div
+      class="selected-tab-vertical-line"
+      style={{ display: vertical ? 'block' : 'none', top: `${lineOffsetTop || 0}px`, height: `${lineHeight || 0}px` }}
+    ></div>
     <ul>
       {tabs.map((tab, index) => (
         <li

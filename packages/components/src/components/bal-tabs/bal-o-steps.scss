@@ -73,10 +73,6 @@ bal-tabs.bal-o-steps {
         border: 2px solid #ea1800 !important;
         background: #ea1800 !important;
 
-        .inner-text {
-          display: none;
-        }
-
         &::after {
           display: inline-block;
           position: absolute;
@@ -118,31 +114,6 @@ bal-tabs.bal-o-steps {
             max-height: 30px;
           }
         }
-
-        // &::after {
-        //   display: inline-block;
-        //   position: absolute;
-        //   background-color: transparent;
-        //   background-position: center;
-        //   background-repeat: no-repeat;
-        //   background-size: 24px 24px;
-        //   content: '';
-        //   top: 50%;
-        //   margin-top: -7px;
-        //   left: 50%;
-        //   margin-left: -4px;
-        //   width: 5px;
-        //   height: 10px;
-        //   border-bottom: 2px solid $white;
-        //   border-right: 2px solid $white;
-        //   border-top: 0;
-        //   border-left: 0;
-        //   -moz-transform: rotate(45deg);
-        //   -ms-transform: rotate(45deg);
-        //   -o-transform: rotate(45deg);
-        //   -webkit-transform: rotate(45deg);
-        //   transform: rotate(45deg);
-        // }
       }
 
       .step-label {
@@ -206,6 +177,45 @@ bal-tabs.bal-o-steps {
       .step-label {
         color: $blue-7;
         font-weight: $weight-bold;
+      }
+    }
+
+    li.is-active.is-failed {
+      .step-index {
+        border: 2px solid #ea1800 !important;
+        background: #ea1800 !important;
+
+        &::after {
+          display: inline-block;
+          position: absolute;
+          background-color: transparent;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 24px 24px;
+          content: '!';
+          font-size: 16px;
+          text-align: center;
+          width: 32px;
+          height: 32px;
+          line-height: 32px;
+          vertical-align: middle;
+          font-weight: 700;
+        }
+      }
+
+      a {
+        .step-label {
+          color: #ea1800;
+          font-weight: bold;
+        }
+      }
+
+      &:hover {
+        a {
+          .step-label {
+            color: #ea1800;
+          }
+        }
       }
     }
 

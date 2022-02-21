@@ -1414,6 +1414,10 @@ export namespace Components {
          */
         "select": (tab: BalTabOption) => Promise<void>;
         "value"?: string;
+        /**
+          * If `true` tabs are align vertically.
+         */
+        "vertical": boolean;
     }
     interface BalTag {
         /**
@@ -3569,6 +3573,10 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: CustomEvent<string>) => void;
         "value"?: string;
+        /**
+          * If `true` tabs are align vertically.
+         */
+        "vertical"?: boolean;
     }
     interface BalTag {
         /**
