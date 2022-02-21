@@ -144,7 +144,6 @@ export class Tabs {
 
   render() {
     const Tabs = this.interface === 'o-steps' ? OStepList : this.interface === 'steps' ? StepList : TabList
-    console.log('render')
     return (
       <Host
         class={{
