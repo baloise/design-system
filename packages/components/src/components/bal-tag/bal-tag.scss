@@ -22,10 +22,6 @@ bal-tag {
     background-color: $grey;
   }
 
-  bal-close {
-    display: flex !important;
-  }
-
   &.is-dense {
     padding-top: 0;
     padding-bottom: 0;
@@ -41,5 +37,45 @@ bal-tag {
   &.is-transparent {
     background-color: transparent !important;
     border-color: transparent !important;
+  }
+
+  &.is-light {
+    border: 1px solid $grey-dark;
+
+    &.is-info {
+      border-color: $info-dark;
+    }
+
+    &.is-primary {
+      border-color: $primary-dark;
+    }
+
+    &.is-success {
+      border-color: $success-dark;
+    }
+
+    &.is-warning {
+      border-color: $warning-dark;
+    }
+
+    &.is-danger {
+      border-color: $danger-dark;
+    }
+  }
+}
+
+bal-card {
+  & > bal-tag {
+    position: absolute;
+    left: 16px;
+    top: -16px;
+  }
+}
+
+@include desktop() {
+  bal-card {
+    & > bal-tag {
+      left: 24px;
+    }
   }
 }

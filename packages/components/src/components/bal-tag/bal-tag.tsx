@@ -23,6 +23,11 @@ export class Tag {
   @Prop() closable = false
 
   /**
+   * If `true` a light version of the color is displayed
+   */
+  @Prop() light = false
+
+  /**
    * @internal
    * Reduces the padding
    */
@@ -52,6 +57,7 @@ export class Tag {
       <Host
         class={{
           'tag': true,
+          'is-light': this.light,
           'is-dense': this.dense,
           'is-transparent': this.transparent,
           [this.colorCssClass]: true,
@@ -64,7 +70,7 @@ export class Tag {
           </bal-text>
           <bal-close
             style={{
-              display: this.closable ? 'inline-block' : 'none',
+              display: this.closable ? 'flex' : 'none',
             }}
             inverted
             background
