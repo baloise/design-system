@@ -67,20 +67,11 @@ bal-card {
   }
 
   & > bal-badge + bal-card-title,
-  & > bal-badge + bal-card-content {
-    padding-top: 20px;
-  }
-
+  & > bal-badge + bal-card-content,
   & > bal-tag + bal-card-title,
-  & > bal-tag + bal-card-content {
-    padding-top: 20px;
-  }
-
+  & > bal-tag + bal-card-content,
   & > bal-card-title + bal-card-content,
-  & > bal-card-subtitle + bal-card-content {
-    padding-top: 20px;
-  }
-
+  & > bal-card-subtitle + bal-card-content,
   & > bal-card-actions {
     padding-top: 20px;
   }
@@ -101,20 +92,11 @@ bal-card {
     }
 
     & > bal-badge + bal-card-title,
-    & > bal-badge + bal-card-content {
-      padding-top: 24px;
-    }
-
+    & > bal-badge + bal-card-content,
     & > bal-tag + bal-card-title,
-    & > bal-tag + bal-card-content {
-      padding-top: 24px;
-    }
-
+    & > bal-tag + bal-card-content,
     & > bal-card-title + bal-card-content,
-    & > bal-card-subtitle + bal-card-content {
-      padding-top: 24px;
-    }
-
+    & > bal-card-subtitle + bal-card-content,
     & > bal-card-actions {
       padding-top: 24px;
     }
