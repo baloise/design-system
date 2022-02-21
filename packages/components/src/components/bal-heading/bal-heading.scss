@@ -159,27 +159,17 @@ a.is-link:visited {
   }
 
   .is-size-2 {
-    font-size: $size-4 !important;
-    line-height: $line-height-4 !important;
-  }
-
-  .is-size-3 {
     font-size: 1.75rem !important;
     line-height: 2rem !important;
   }
 
+  .is-size-3 {
+    font-size: $size-4 !important;
+    line-height: $line-height-4 !important;
+  }
+
   .is-size-4 {
-    font-size: $size-5 !important;
-    line-height: $line-height-5 !important;
-  }
-
-  .is-size-5 {
     font-size: 1.25rem !important;
-    line-height: 1.5rem !important;
-  }
-
-  .is-size-6 {
-    font-size: 1rem !important;
     line-height: 1.5rem !important;
   }
 }
