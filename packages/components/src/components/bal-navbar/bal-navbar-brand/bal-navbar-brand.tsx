@@ -16,6 +16,11 @@ export class NavbarBrand {
   @Prop() href = '/'
 
   /**
+   * If `true` the navbar does not have a mobil version. Only shows logo and an app title.
+   */
+  @Prop() simple = false
+
+  /**
    * Emitted when the link element has clicked
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
@@ -29,7 +34,7 @@ export class NavbarBrand {
   }
 
   async resetIsMenuActive(ev: MediaQueryListEvent) {
-    if (ev.matches) {
+    if (ev.matches && !this.simple) {
       this.toggle(false)
     }
   }
@@ -39,14 +44,16 @@ export class NavbarBrand {
     const navbar = this.el.closest('bal-navbar')
     if (navbar) {
       const navbarMenuElement = navbar.querySelector('bal-navbar-menu')
-      if (navbarMenuElement) {
+      if (navbarMenuElement && !this.simple) {
         await navbarMenuElement.toggle(this.isMenuActive)
       }
     }
   }
 
   async onClick() {
-    this.toggle(!this.isMenuActive)
+    if (!this.simple) {
+      this.toggle(!this.isMenuActive)
+    }
   }
 
   render() {
@@ -58,7 +65,11 @@ export class NavbarBrand {
 
         <a
           role="button"
-          class={'navbar-burger' + (this.isMenuActive ? ' is-active' : '')}
+          class={{
+            'navbar-burger': true,
+            'is-active': this.isMenuActive,
+            'is-hidden': this.simple,
+          }}
           aria-label="menu"
           aria-expanded={this.isMenuActive ? 'true' : 'false'}
           onClick={() => this.onClick()}

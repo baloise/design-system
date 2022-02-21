@@ -7,12 +7,14 @@ export class Navbar {
   @Element() el!: HTMLElement
 
   /**
-   * It `true` the navbar has a white background
+   * @deprecated
+   * It `true` the navbar has a white background. Always use the blue header.
    */
   @Prop() light = false
 
   /**
-   * It `true` the burger button is hidden
+   * @deprecated
+   * It `true` the burger button is hidden. Use simple on the navbar-brand component.
    */
   @Prop() noBurger = false
 

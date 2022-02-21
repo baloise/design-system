@@ -153,6 +153,9 @@ export class Button implements ComponentInterface {
     if (this.outlined && !this.inverted) {
       return false
     }
+    if (this.inverted && this.color === 'info') {
+      return false
+    }
     switch (this.color) {
       case 'primary':
       case 'success':

@@ -55,3 +55,13 @@ Square.args = {
   outlined: true,
 }
 Square.parameters = { ...component.sourceCode(Square) }
+
+export const ButtonGroup = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-button-group>
+  <bal-button>First</bal-button>
+  <bal-button color="info">Second</bal-button>
+</bal-button-group>
+  `,
+})
