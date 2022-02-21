@@ -978,11 +978,11 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
-          * It `true` the navbar has a white background
+          * @deprecated It `true` the navbar has a white background. Always use the blue header.
          */
         "light": boolean;
         /**
-          * It `true` the burger button is hidden
+          * @deprecated It `true` the burger button is hidden. Use simple on the navbar-brand component.
          */
         "noBurger": boolean;
     }
@@ -991,6 +991,10 @@ export namespace Components {
           * Link of the logo / title.
          */
         "href": string;
+        /**
+          * If `true` the navbar does not have a mobil version. Only shows logo and an app title.
+         */
+        "simple": boolean;
     }
     interface BalNavbarMenu {
         "toggle": (isMenuActive: boolean) => Promise<void>;
@@ -1454,7 +1458,7 @@ export namespace Components {
         /**
           * Defines the layout of the tabs.
          */
-        "interface": 'tabs' | 'tabs-sub' | 'steps' | 'o-steps';
+        "interface": 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar';
         /**
           * Go to tab with the given value
          */
@@ -3188,11 +3192,11 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
-          * It `true` the navbar has a white background
+          * @deprecated It `true` the navbar has a white background. Always use the blue header.
          */
         "light"?: boolean;
         /**
-          * It `true` the burger button is hidden
+          * @deprecated It `true` the burger button is hidden. Use simple on the navbar-brand component.
          */
         "noBurger"?: boolean;
     }
@@ -3205,6 +3209,10 @@ declare namespace LocalJSX {
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * If `true` the navbar does not have a mobil version. Only shows logo and an app title.
+         */
+        "simple"?: boolean;
     }
     interface BalNavbarMenu {
     }
@@ -3675,7 +3683,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the tabs.
          */
-        "interface"?: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps';
+        "interface"?: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar';
         /**
           * Emitted when the action button has clicked
          */
