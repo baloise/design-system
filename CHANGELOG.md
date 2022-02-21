@@ -6,10 +6,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## [10.2.0](https://github.com/baloise/design-system/compare/v10.1.0...v10.2.0) (2022-02-21)
 
 
-### ⚠ BREAKING CHANGES
-
-* **checkbox:** use checked as the new value property
-
 ### Features
 
 * **field:** add hint props to bal-flield-hint ([a4ee057](https://github.com/baloise/design-system/commit/a4ee057abd1261e136997add251ebfeb58b600e8))
@@ -43,21 +39,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * use utils from web-app-utils ([ef7432c](https://github.com/baloise/design-system/commit/ef7432c02cec65a6ea09a63ac8869e7f919f83bf))
 * **vue:** improve exports ([be51095](https://github.com/baloise/design-system/commit/be51095ac1032fffbdf492cbbc96f3aaf34bba42))
 
-### [9.2.2](https://github.com/baloise/design-system/compare/v9.1.0...v9.2.2) (2022-02-03)
-
-
-### ⚠ BREAKING CHANGES
-
-* **angular:** rename core module and need to add the used component modules.
-
-### Features
-
-* **angular:** component based modules instead of one ([5395696](https://github.com/baloise/design-system/commit/5395696d3d659928a67bebfff216615a9bf6a98a))
-
-## 9.1.0 (2022-01-31)
-
-
-
 ## [10.1.0](https://github.com/baloise/design-system/compare/v10.0.0...v10.1.0) (2022-02-16)
 
 
@@ -84,7 +65,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **pagination:** use bal-button ([540cc3f](https://github.com/baloise/design-system/commit/540cc3f40eb73e74deab91cce41f7c04e16bbacb))
 * **select-button:** add support for mobile devices ([75647d2](https://github.com/baloise/design-system/commit/75647d2a8424e80b012650b78329f9d86aeedac6))
 * **select:** check if option is there ([1fc58d9](https://github.com/baloise/design-system/commit/1fc58d9e9ebd5cd586a96d9216592dbb56b7dd51))
-
 
 
 ## [10.0.0](https://github.com/baloise/design-system/compare/v9.2.2...v10.0.0) (2022-02-10)
