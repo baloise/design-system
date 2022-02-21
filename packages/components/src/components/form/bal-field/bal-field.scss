@@ -23,7 +23,7 @@ bal-field {
   }
 
   bal-field-control {
-    margin-bottom: 24px;
+    margin-bottom: 32px;
     display: flex;
 
     bal-button {
@@ -33,7 +33,7 @@ bal-field {
   }
 
   bal-field-control + bal-field-message {
-    margin-top: -24px !important;
+    margin-top: -32px !important;
   }
 
   bal-field-label > label > bal-hint {
