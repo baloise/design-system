@@ -90,6 +90,7 @@ bal-tabs.bal-o-steps {
           height: 32px;
           line-height: 32px;
           vertical-align: middle;
+          margin-top: -2px;
         }
       }
     }
@@ -108,9 +109,9 @@ bal-tabs.bal-o-steps {
           background-size: 24px 24px;
           content: '';
           top: 50%;
-          margin-top: -7px;
+          margin-top: -6px;
           left: 50%;
-          margin-left: -4px;
+          margin-left: -3px;
           width: 5px;
           height: 10px;
           border-bottom: 2px solid $white;
