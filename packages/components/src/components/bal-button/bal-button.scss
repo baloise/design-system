@@ -261,8 +261,18 @@ bal-button.is-fullwidth {
   }
 
   &.is-info.is-inverted.is-outlined {
+    svg g,
+    svg path,
+    svg circle {
+      fill: $white;
+    }
+
+    &:focus,
+    &.is-focused,
     &:hover,
-    &.is-hovered {
+    &.is-hovered,
+    &:active,
+    &.is-active {
       color: $white;
       background: darken($blue, 10);
     }
@@ -273,6 +283,12 @@ bal-button.is-fullwidth {
     &.is-hovered {
       color: $white;
       background: $cyan;
+
+      svg g,
+      svg path,
+      svg circle {
+        fill: $white;
+      }
     }
   }
 
@@ -364,7 +380,7 @@ bal-button.is-fullwidth {
 @include mobile() {
   .field.is-grouped {
     flex-wrap: wrap;
-    flex-direction: column-reverse;
+    flex-direction: column;
 
     bal-button.control {
       flex-grow: 1;
@@ -372,7 +388,7 @@ bal-button.is-fullwidth {
       min-width: 100%;
       margin-right: 0 !important;
 
-      &:not(:first-child) {
+      &:not(:last-child) {
         margin-bottom: 8px;
       }
     }
