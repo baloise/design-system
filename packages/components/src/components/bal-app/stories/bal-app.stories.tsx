@@ -81,14 +81,7 @@ export const Basic = args => ({
     </div>
   </main>
 
-  <bal-footer has-track-line hide-links>
-    <div class="container">
-      <span style="margin-right: 16px">Baloise Group</span>
-      <span style="margin-right: 16px">Legal notice</span>
-      <span style="margin-right: 16px">Cookie policy</span>
-      <span>Data protection</span>
-    </div>
-  </bal-footer>
+  <bal-footer has-track-line></bal-footer>
   </bal-app>`,
 })
 Basic.args = {
