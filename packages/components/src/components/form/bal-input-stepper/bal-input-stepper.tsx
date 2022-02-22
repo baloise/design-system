@@ -146,10 +146,10 @@ export class InputStepper implements ComponentInterface {
             size="small"
             square
             outlined={!this.invalid}
-            icon="plus"
+            icon="minus"
             color={this.invalid ? 'danger' : 'info'}
-            disabled={this.disabled || this.value >= this.max}
-            onClick={_ => this.increase()}
+            disabled={this.disabled || this.value <= this.min}
+            onClick={_ => this.decrease()}
           ></bal-button>
           <bal-text color={this.disabled ? 'hint' : this.invalid ? 'danger' : ''} bold>
             {this.value}
@@ -158,10 +158,10 @@ export class InputStepper implements ComponentInterface {
             size="small"
             square
             outlined={!this.invalid}
-            icon="minus"
+            icon="plus"
             color={this.invalid ? 'danger' : 'info'}
-            disabled={this.disabled || this.value <= this.min}
-            onClick={_ => this.decrease()}
+            disabled={this.disabled || this.value >= this.max}
+            onClick={_ => this.increase()}
           ></bal-button>
         </div>
         <input
