@@ -30,13 +30,19 @@ import {
 } from 'date-fns'
 import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
 import { BalCalendarCell, BalDateCallback, BalPointerDate } from './bal-datepicker.type'
-import { isEnterKey } from '@baloise/web-app-utils'
+import { isEnterKey, parse, format, isValidIsoString, now, formatDateString } from '@baloise/web-app-utils'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
-import { parse, format, isValidIsoString, now, isoString } from '../../../utils/date.util'
 import { BalLanguage, BalConfigState } from '../../../config/config.types'
-import { detachComponentToConfig, defaultConfig, BalConfigObserver, attachComponentToConfig } from '../../../config'
+import {
+  detachComponentToConfig,
+  defaultConfig,
+  BalConfigObserver,
+  attachComponentToConfig,
+  useBalConfig,
+  defaultLocale,
+} from '../../../config'
 
 @Component({
   tag: 'bal-datepicker',
@@ -262,7 +268,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
    */
   @Method()
   async select(dateString: string) {
-    this.inputElement.value = format(parse(dateString))
+    this.inputElement.value = format(this.getLocale(), parse(dateString))
     this.updateValue(dateString)
     this.updatePointerDates()
 
@@ -377,6 +383,11 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
     return startOfWeek(date)
   }
 
+  getLocale(): string {
+    const config = useBalConfig()
+    return (config && config.locale) || defaultLocale
+  }
+
   get calendarGrid(): BalCalendarCell[][] {
     const weekDatePointer = this.firstDateOfBox
     const dayDatePointer = this.firstDateOfBox
@@ -388,8 +399,8 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
           ...row,
           {
             date: new Date(dayDatePointer),
-            display: format(dayDatePointer),
-            dateString: isoString(dayDatePointer),
+            display: format(this.getLocale(), dayDatePointer),
+            dateString: formatDateString(dayDatePointer),
             label: getDate(dayDatePointer).toString(),
             isToday: isSameDay(dayDatePointer, now()),
             isSelected:
@@ -412,7 +423,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
       return true
     }
 
-    return (this.allowedDates as BalDateCallback)(isoString(dayDatePointer))
+    return (this.allowedDates as BalDateCallback)(formatDateString(dayDatePointer))
   }
 
   private onIconClick = (event: MouseEvent) => {
@@ -441,7 +452,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
 
     if (inputValue && inputValue.length >= 6) {
       const date = parse(inputValue)
-      const dateString = isoString(date as Date)
+      const dateString = formatDateString(date as Date)
       if (isValidIsoString(dateString)) {
         this.selectedDate = dateString
         this.updatePointerDates()
@@ -452,8 +463,8 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   private onInputChange = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
     const date = parse(inputValue)
-    const dateString = isoString(date as Date)
-    const formattedValue = format(date)
+    const dateString = formatDateString(date as Date)
+    const formattedValue = format(this.getLocale(), date)
 
     this.inputElement.value = formattedValue
     this.updateValue(dateString)
@@ -469,7 +480,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   private onInputKeyUp = (event: KeyboardEvent) => {
     if (isEnterKey(event) && !this.triggerIcon) {
       const date = parse(this.inputElement.value)
-      const dateString = isoString(date as Date)
+      const dateString = formatDateString(date as Date)
 
       if (this.isPopoverOpen) {
         if (this.value === dateString) {
@@ -579,7 +590,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
             maxlength="10"
             autoComplete="off"
             name={this.name}
-            value={format(parse(this.value || ''))}
+            value={format(this.getLocale(), parse(this.value || ''))}
             required={this.required}
             disabled={this.disabled}
             readonly={this.readonly}
@@ -594,9 +605,11 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
             onFocus={this.onInputFocus}
           />
           <bal-icon
-            name="date"
-            class="datepicker-trigger-icon is-clickable"
+            class="datepicker-trigger-icon clickable"
+            is-right
             color={this.disabled ? 'grey' : this.invalid ? 'danger' : 'primary'}
+            inverted={this.inverted}
+            name="date"
             onClick={this.onIconClick}
           />
         </bal-input-group>

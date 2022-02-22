@@ -610,7 +610,11 @@ export namespace Components {
     }
     interface BalFooter {
         /**
-          * If `true` the default Baloise links will be hidden.
+          * If `true` the language selection will be hidden.
+         */
+        "hideLanguageSelection": boolean;
+        /**
+          * If `true` the legal Baloise links will be hidden.
          */
         "hideLinks": boolean;
         /**
@@ -837,6 +841,44 @@ export namespace Components {
          */
         "invalid": boolean;
     }
+    interface BalInputStepper {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement | undefined>;
+        /**
+          * If `true` the input is shown as invalid
+         */
+        "invalid": boolean;
+        /**
+          * The max value the input can have
+         */
+        "max": number;
+        /**
+          * The min value the input can have
+         */
+        "min": number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * The steps in which the input increases or decreases
+         */
+        "steps": number;
+        /**
+          * The value of the input. Only allows values in the range of the min max attribute.
+         */
+        "value": number;
+    }
     interface BalList {
         /**
           * If `true` each list item has a bottom border
@@ -888,6 +930,12 @@ export namespace Components {
     interface BalListItemSubtitle {
     }
     interface BalListItemTitle {
+    }
+    interface BalLogo {
+        /**
+          * Defines the color of the logo.
+         */
+        "color": 'blue' | 'white';
     }
     interface BalModal {
         "close": () => Promise<void>;
@@ -950,7 +998,11 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
-          * It `true` the burger button is hidden
+          * @deprecated It `true` the navbar has a white background. Always use the blue header.
+         */
+        "light": boolean;
+        /**
+          * @deprecated It `true` the burger button is hidden. Use simple on the navbar-brand component.
          */
         "noBurger": boolean;
     }
@@ -959,6 +1011,10 @@ export namespace Components {
           * Link of the logo / title.
          */
         "href": string;
+        /**
+          * If `true` the navbar does not have a mobil version. Only shows logo and an app title.
+         */
+        "simple": boolean;
     }
     interface BalNavbarMenu {
         "toggle": (isMenuActive: boolean) => Promise<void>;
@@ -1332,6 +1388,32 @@ export namespace Components {
          */
         "small": boolean;
     }
+    interface BalStage {
+        /**
+          * Defines the background color of the stage section
+         */
+        "color": 'blue' | 'white' | 'purple' | 'green' | 'red' | 'yellow';
+        /**
+          * Defines the height of the stage section.
+         */
+        "size": 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight';
+    }
+    interface BalStageBody {
+        /**
+          * If `true` the inner container uses the compact layout.
+         */
+        "compact": boolean;
+    }
+    interface BalStageFoot {
+    }
+    interface BalStageHead {
+    }
+    interface BalStageImage {
+        /**
+          * Source of the background image.
+         */
+        "src": string;
+    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -1408,7 +1490,7 @@ export namespace Components {
         /**
           * Defines the layout of the tabs.
          */
-        "interface": 'tabs' | 'tabs-sub' | 'steps' | 'o-steps';
+        "interface": 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar';
         /**
           * Go to tab with the given value
          */
@@ -1425,6 +1507,10 @@ export namespace Components {
          */
         "color": ColorTypes | SupportColors | '';
         "dense": boolean;
+        /**
+          * If `true` a light version of the color is displayed
+         */
+        "light": boolean;
         /**
           * The size of the tag element
          */
@@ -1836,6 +1922,12 @@ declare global {
         prototype: HTMLBalInputGroupElement;
         new (): HTMLBalInputGroupElement;
     };
+    interface HTMLBalInputStepperElement extends Components.BalInputStepper, HTMLStencilElement {
+    }
+    var HTMLBalInputStepperElement: {
+        prototype: HTMLBalInputStepperElement;
+        new (): HTMLBalInputStepperElement;
+    };
     interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
     }
     var HTMLBalListElement: {
@@ -1871,6 +1963,12 @@ declare global {
     var HTMLBalListItemTitleElement: {
         prototype: HTMLBalListItemTitleElement;
         new (): HTMLBalListItemTitleElement;
+    };
+    interface HTMLBalLogoElement extends Components.BalLogo, HTMLStencilElement {
+    }
+    var HTMLBalLogoElement: {
+        prototype: HTMLBalLogoElement;
+        new (): HTMLBalLogoElement;
     };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
@@ -1998,6 +2096,36 @@ declare global {
         prototype: HTMLBalSpinnerElement;
         new (): HTMLBalSpinnerElement;
     };
+    interface HTMLBalStageElement extends Components.BalStage, HTMLStencilElement {
+    }
+    var HTMLBalStageElement: {
+        prototype: HTMLBalStageElement;
+        new (): HTMLBalStageElement;
+    };
+    interface HTMLBalStageBodyElement extends Components.BalStageBody, HTMLStencilElement {
+    }
+    var HTMLBalStageBodyElement: {
+        prototype: HTMLBalStageBodyElement;
+        new (): HTMLBalStageBodyElement;
+    };
+    interface HTMLBalStageFootElement extends Components.BalStageFoot, HTMLStencilElement {
+    }
+    var HTMLBalStageFootElement: {
+        prototype: HTMLBalStageFootElement;
+        new (): HTMLBalStageFootElement;
+    };
+    interface HTMLBalStageHeadElement extends Components.BalStageHead, HTMLStencilElement {
+    }
+    var HTMLBalStageHeadElement: {
+        prototype: HTMLBalStageHeadElement;
+        new (): HTMLBalStageHeadElement;
+    };
+    interface HTMLBalStageImageElement extends Components.BalStageImage, HTMLStencilElement {
+    }
+    var HTMLBalStageImageElement: {
+        prototype: HTMLBalStageImageElement;
+        new (): HTMLBalStageImageElement;
+    };
     interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
     }
     var HTMLBalTabItemElement: {
@@ -2088,12 +2216,14 @@ declare global {
         "bal-icon": HTMLBalIconElement;
         "bal-input": HTMLBalInputElement;
         "bal-input-group": HTMLBalInputGroupElement;
+        "bal-input-stepper": HTMLBalInputStepperElement;
         "bal-list": HTMLBalListElement;
         "bal-list-item": HTMLBalListItemElement;
         "bal-list-item-content": HTMLBalListItemContentElement;
         "bal-list-item-icon": HTMLBalListItemIconElement;
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
         "bal-list-item-title": HTMLBalListItemTitleElement;
+        "bal-logo": HTMLBalLogoElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
@@ -2115,6 +2245,11 @@ declare global {
         "bal-slider": HTMLBalSliderElement;
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
+        "bal-stage": HTMLBalStageElement;
+        "bal-stage-body": HTMLBalStageBodyElement;
+        "bal-stage-foot": HTMLBalStageFootElement;
+        "bal-stage-head": HTMLBalStageHeadElement;
+        "bal-stage-image": HTMLBalStageImageElement;
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-table": HTMLBalTableElement;
         "bal-tabs": HTMLBalTabsElement;
@@ -2744,7 +2879,11 @@ declare namespace LocalJSX {
     }
     interface BalFooter {
         /**
-          * If `true` the default Baloise links will be hidden.
+          * If `true` the language selection will be hidden.
+         */
+        "hideLanguageSelection"?: boolean;
+        /**
+          * If `true` the legal Baloise links will be hidden.
          */
         "hideLinks"?: boolean;
         /**
@@ -2975,6 +3114,44 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
     }
+    interface BalInputStepper {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the input is shown as invalid
+         */
+        "invalid"?: boolean;
+        /**
+          * The max value the input can have
+         */
+        "max"?: number;
+        /**
+          * The min value the input can have
+         */
+        "min"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onBalChange"?: (event: CustomEvent<number>) => void;
+        /**
+          * The steps in which the input increases or decreases
+         */
+        "steps"?: number;
+        /**
+          * The value of the input. Only allows values in the range of the min max attribute.
+         */
+        "value"?: number;
+    }
     interface BalList {
         /**
           * If `true` each list item has a bottom border
@@ -3030,6 +3207,12 @@ declare namespace LocalJSX {
     interface BalListItemSubtitle {
     }
     interface BalListItemTitle {
+    }
+    interface BalLogo {
+        /**
+          * Defines the color of the logo.
+         */
+        "color"?: 'blue' | 'white';
     }
     interface BalModal {
         /**
@@ -3090,7 +3273,11 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
-          * It `true` the burger button is hidden
+          * @deprecated It `true` the navbar has a white background. Always use the blue header.
+         */
+        "light"?: boolean;
+        /**
+          * @deprecated It `true` the burger button is hidden. Use simple on the navbar-brand component.
          */
         "noBurger"?: boolean;
     }
@@ -3103,6 +3290,10 @@ declare namespace LocalJSX {
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * If `true` the navbar does not have a mobil version. Only shows logo and an app title.
+         */
+        "simple"?: boolean;
     }
     interface BalNavbarMenu {
     }
@@ -3487,6 +3678,32 @@ declare namespace LocalJSX {
          */
         "small"?: boolean;
     }
+    interface BalStage {
+        /**
+          * Defines the background color of the stage section
+         */
+        "color"?: 'blue' | 'white' | 'purple' | 'green' | 'red' | 'yellow';
+        /**
+          * Defines the height of the stage section.
+         */
+        "size"?: 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight';
+    }
+    interface BalStageBody {
+        /**
+          * If `true` the inner container uses the compact layout.
+         */
+        "compact"?: boolean;
+    }
+    interface BalStageFoot {
+    }
+    interface BalStageHead {
+    }
+    interface BalStageImage {
+        /**
+          * Source of the background image.
+         */
+        "src"?: string;
+    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -3559,7 +3776,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the tabs.
          */
-        "interface"?: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps';
+        "interface"?: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar';
         /**
           * Emitted when the action button has clicked
          */
@@ -3580,6 +3797,10 @@ declare namespace LocalJSX {
          */
         "color"?: ColorTypes | SupportColors | '';
         "dense"?: boolean;
+        /**
+          * If `true` a light version of the color is displayed
+         */
+        "light"?: boolean;
         /**
           * Emitted when the input got clicked.
          */
@@ -3809,12 +4030,14 @@ declare namespace LocalJSX {
         "bal-icon": BalIcon;
         "bal-input": BalInput;
         "bal-input-group": BalInputGroup;
+        "bal-input-stepper": BalInputStepper;
         "bal-list": BalList;
         "bal-list-item": BalListItem;
         "bal-list-item-content": BalListItemContent;
         "bal-list-item-icon": BalListItemIcon;
         "bal-list-item-subtitle": BalListItemSubtitle;
         "bal-list-item-title": BalListItemTitle;
+        "bal-logo": BalLogo;
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
@@ -3836,6 +4059,11 @@ declare namespace LocalJSX {
         "bal-slider": BalSlider;
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
+        "bal-stage": BalStage;
+        "bal-stage-body": BalStageBody;
+        "bal-stage-foot": BalStageFoot;
+        "bal-stage-head": BalStageHead;
+        "bal-stage-image": BalStageImage;
         "bal-tab-item": BalTabItem;
         "bal-table": BalTable;
         "bal-tabs": BalTabs;
@@ -3891,12 +4119,14 @@ declare module "@stencil/core" {
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
             "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
+            "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
             "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
             "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;
             "bal-list-item-icon": LocalJSX.BalListItemIcon & JSXBase.HTMLAttributes<HTMLBalListItemIconElement>;
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
+            "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
@@ -3918,6 +4148,11 @@ declare module "@stencil/core" {
             "bal-slider": LocalJSX.BalSlider & JSXBase.HTMLAttributes<HTMLBalSliderElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
+            "bal-stage": LocalJSX.BalStage & JSXBase.HTMLAttributes<HTMLBalStageElement>;
+            "bal-stage-body": LocalJSX.BalStageBody & JSXBase.HTMLAttributes<HTMLBalStageBodyElement>;
+            "bal-stage-foot": LocalJSX.BalStageFoot & JSXBase.HTMLAttributes<HTMLBalStageFootElement>;
+            "bal-stage-head": LocalJSX.BalStageHead & JSXBase.HTMLAttributes<HTMLBalStageHeadElement>;
+            "bal-stage-image": LocalJSX.BalStageImage & JSXBase.HTMLAttributes<HTMLBalStageImageElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

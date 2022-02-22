@@ -22,10 +22,6 @@ bal-tag {
     background-color: $grey;
   }
 
-  bal-close {
-    display: flex !important;
-  }
-
   &.is-dense {
     padding-top: 0;
     padding-bottom: 0;
@@ -41,5 +37,21 @@ bal-tag {
   &.is-transparent {
     background-color: transparent !important;
     border-color: transparent !important;
+  }
+}
+
+bal-card {
+  & > bal-tag {
+    position: absolute;
+    left: 16px;
+    top: -16px;
+  }
+}
+
+@include desktop() {
+  bal-card {
+    & > bal-tag {
+      left: 24px;
+    }
   }
 }

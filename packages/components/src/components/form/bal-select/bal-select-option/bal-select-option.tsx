@@ -23,7 +23,7 @@ export class SelectOption implements ComponentInterface {
 
   render() {
     return (
-      <Host id={this.inputId} style={{ display: 'none' }}>
+      <Host aria-id={this.inputId} style={{ display: 'none' }}>
         <slot></slot>
       </Host>
     )

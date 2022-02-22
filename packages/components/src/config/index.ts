@@ -57,3 +57,11 @@ export const updateBalRegion = (region: BalRegion): void => {
     config.region = region
   }
 }
+
+export const updateBalAllowedLanguages = (allowedLanguages: BalLanguage[]): void => {
+  const config = useBalConfig()
+
+  if (config) {
+    config.allowedLanguages = allowedLanguages
+  }
+}

@@ -21,7 +21,6 @@ export * from './types/color.types'
 /**
  * Utils
  */
-export * from './utils/date.util'
 export * from './components/form/bal-select/utils/bal-option.util'
 export { shallowReady, deepReady, wait, getAppRoot, componentOnReady, isDescendant } from './helpers/helpers'
 

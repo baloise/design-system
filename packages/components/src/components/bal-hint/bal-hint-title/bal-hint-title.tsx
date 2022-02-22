@@ -7,7 +7,7 @@ export class HintTitle {
   render() {
     return (
       <Host>
-        <bal-heading level="h5" color="primary" space="bottom">
+        <bal-heading level="h4" color="primary" space="bottom">
           <slot></slot>
         </bal-heading>
       </Host>

@@ -91,7 +91,7 @@
   a,
   button {
     &:hover {
-      h6,
+      h5,
       p {
         color: $light-blue-dark !important;
       }
@@ -105,7 +105,7 @@
     }
 
     &:active {
-      h6,
+      h5,
       p {
         color: $blue-dark !important;
       }
@@ -134,7 +134,7 @@
 }
 
 .bal-list.is-inverted {
-  h6,
+  h5,
   p {
     color: $white;
   }
@@ -234,7 +234,7 @@
   &,
   a,
   button {
-    h6,
+    h5,
     p {
       color: $grey-7 !important;
     }
@@ -255,7 +255,7 @@
     &,
     &:hover,
     &:active {
-      h6,
+      h5,
       p {
         color: $grey-7 !important;
       }
@@ -283,7 +283,7 @@
     &,
     &:hover,
     &:active {
-      h6,
+      h5,
       p {
         color: $blue-4 !important;
       }

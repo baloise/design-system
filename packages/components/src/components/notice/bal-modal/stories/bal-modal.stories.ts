@@ -46,7 +46,7 @@ export const Confirm = args => ({
   <bal-modal-body>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing?</p>
     <bal-button-group position="right">
-      <bal-button color="link" @click="closeModal()">Cancel</bal-button>
+      <bal-button color="text" @click="closeModal()">Cancel</bal-button>
       <bal-button color="primary" @click="closeModal()">Okay</bal-button>
     </bal-button-group>
   </bal-modal-body>
@@ -89,7 +89,7 @@ export const WithInput = args => ({
       </bal-field>
     </form>
     <bal-button-group position="right">
-      <bal-button color="link" @click="closeModal()">Cancel</bal-button>
+      <bal-button color="text" @click="closeModal()">Cancel</bal-button>
       <bal-button color="primary" @click="closeModal()">Okay</bal-button>
     </bal-button-group>
   </bal-modal-body>
@@ -135,7 +135,7 @@ export const LargeContent = args => ({
     dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum¨
     </p>
     <bal-button-group position="right">
-      <bal-button color="link" @click="closeModal()">Cancel</bal-button>
+      <bal-button color="text" @click="closeModal()">Cancel</bal-button>
       <bal-button color="primary" @click="closeModal()">Okay</bal-button>
     </bal-button-group>
   </bal-modal-body>

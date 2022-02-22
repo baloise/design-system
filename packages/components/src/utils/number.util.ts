@@ -1,25 +1,21 @@
 import { defaultLocale, useBalConfig } from '../config'
+import * as BaloiseWebAppUtils from '@baloise/web-app-utils'
+
+const getLocale = (): string => {
+  const config = useBalConfig()
+  return (config && config.locale) || defaultLocale
+}
 
 export const getDecimalSeparator = (): string => {
-  const config = useBalConfig()
-  return Intl.NumberFormat((config && config.locale) || defaultLocale)
-    .format(1.1)
-    .replace(/\p{Number}/gu, '')
+  return BaloiseWebAppUtils.getDecimalSeparator(getLocale())
 }
 
 export const getThousandSeparator = (): string => {
-  const config = useBalConfig()
-  return Intl.NumberFormat((config && config.locale) || defaultLocale)
-    .format(11111)
-    .replace(/\p{Number}/gu, '')
+  return BaloiseWebAppUtils.getThousandSeparator(getLocale())
 }
 
 export const formatLocaleNumber = (number: number, minimumFractionDigits?: number): string => {
-  const config = useBalConfig()
-  const options = minimumFractionDigits !== undefined ? { minimumFractionDigits } : {}
-  return Intl.NumberFormat((config && config.locale) || defaultLocale, {
-    ...options,
-  }).format(number)
+  return BaloiseWebAppUtils.formatLocaleNumber(getLocale(), number, minimumFractionDigits)
 }
 
 export const parseLocaleNumber = (stringNumber: string): number => {

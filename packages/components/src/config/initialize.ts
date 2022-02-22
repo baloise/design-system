@@ -4,6 +4,7 @@ import { BalConfig, BalConfigState } from './config.types'
 export const defaultConfig: BalConfigState = {
   region: 'CH',
   language: 'de',
+  allowedLanguages: ['de', 'fr', 'it', 'en'],
 }
 
 export const defaultLocale = `${defaultConfig.language}-${defaultConfig.region}`

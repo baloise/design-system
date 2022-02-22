@@ -75,14 +75,7 @@ export const Basic = args => ({
     </div>
   </main>
 
-  <bal-footer hide-links>
-    <div class="container">
-      <span class="has-text-white" style="margin-right: 16px">Baloise Group</span>
-      <span class="has-text-white" style="margin-right: 16px">Legal notice</span>
-      <span class="has-text-white" style="margin-right: 16px">Cookie policy</span>
-      <span class="has-text-white">Data protection</span>
-    </div>
-  </bal-footer>
+  <bal-footer has-track-line></bal-footer>
   </bal-app>`,
 })
 Basic.args = {

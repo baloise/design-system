@@ -67,3 +67,14 @@ Square.args = {
   square: true,
 }
 Square.parameters = { ...component.sourceCode(Square), controls: { exclude: excludedControls } }
+
+export const ButtonGroup = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-button-group>
+  <bal-button>First</bal-button>
+  <bal-button color="info">Second</bal-button>
+</bal-button-group>
+  `,
+})
+ButtonGroup.parameters = { ...component.sourceCode(ButtonGroup), controls: { exclude: excludedControls } }

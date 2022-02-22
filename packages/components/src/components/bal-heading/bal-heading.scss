@@ -25,7 +25,7 @@ h5,
 h6 {
   @include padding(0);
   font-family: $family-primary;
-  font-weight: 700;
+  font-weight: $weight-bold;
   color: $blue;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -129,7 +129,7 @@ span.is-small,
 p.is-small,
 a.is-small {
   font-size: $size-small;
-  line-height: 16px;
+  line-height: 1rem;
 }
 
 .is-bold,

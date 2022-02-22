@@ -9,7 +9,7 @@ export class ListItemTitle {
   render() {
     return (
       <Host class="bal-list-item-title">
-        <bal-heading level="h6" space="none">
+        <bal-heading level="h5" space="none">
           <slot></slot>
         </bal-heading>
       </Host>

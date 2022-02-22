@@ -675,6 +675,7 @@ bal-button.is-fullwidth {
       border-color: $grey-2 !important;
       opacity: 1 !important;
       cursor: not-allowed;
+      pointer-events: none !important;
 
       bal-icon {
         svg,
@@ -751,7 +752,7 @@ bal-button.is-fullwidth {
 @include mobile() {
   .field.is-grouped {
     flex-wrap: wrap;
-    flex-direction: column-reverse;
+    flex-direction: column;
 
     bal-button.control {
       flex-grow: 1;
@@ -759,7 +760,7 @@ bal-button.is-fullwidth {
       min-width: 100%;
       margin-right: 0 !important;
 
-      &:not(:first-child) {
+      &:not(:last-child) {
         margin-bottom: 8px;
       }
     }

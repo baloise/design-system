@@ -94,19 +94,6 @@ bal-field {
 
   .control {
     min-height: 48px;
-
-    // & > bal-input,
-    // & > bal-datepicker {
-    //   margin-top: 1px;
-    // }
-
-    // & > bal-checkbox {
-    //   margin-top: 7px;
-    // }
-
-    // & > bal-radio-group {
-    //   margin-top: 10px;
-    // }
   }
 
   .control.has-icons-left *::part(input) {
