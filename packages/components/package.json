@@ -63,8 +63,8 @@
     "www:watch": "stencil build --dev --serve --config stencil.test.config.ts --watch"
   },
   "dependencies": {
-    "@baloise/design-system-fonts": "^9.2.2",
-    "@baloise/design-system-icons": "^9.2.2",
+    "@baloise/design-system-fonts": "^10.2.0",
+    "@baloise/design-system-icons": "^10.2.0",
     "@baloise/stencil-vite-fix": "^9.2.3",
     "@baloise/web-app-utils": "^3.0.0",
     "@popperjs/core": "^2.11.2",
