@@ -4,6 +4,7 @@
 bal-heading {
   @include margin(0);
   @include padding(0);
+  @include font-smoothing();
 
   display: block;
   position: static;
@@ -23,7 +24,7 @@ h4,
 h5,
 h6 {
   @include padding(0);
-  font-family: BaloiseCreateHeadline, BaloiseCreateText, Arial, sans-serif;
+  font-family: $family-primary;
   font-weight: 700;
   color: $blue;
   -webkit-font-smoothing: antialiased;
@@ -68,7 +69,7 @@ h6 {
 p,
 a {
   font-family: $family-primary;
-  line-height: 24px;
+  line-height: 1.5rem;
   margin: 0;
   word-break: break-word;
 }
@@ -80,9 +81,15 @@ bal-text p {
   }
 }
 
+.is-size-display-1,
 .is-size-display {
-  font-size: 80px;
-  line-height: 96px;
+  font-size: $size-display-1;
+  line-height: $line-height-display-1;
+}
+
+.is-size-display-2 {
+  font-size: $size-display-2;
+  line-height: $line-height-display-2;
 }
 
 .is-size-1 {

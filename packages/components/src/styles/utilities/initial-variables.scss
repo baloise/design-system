@@ -24,29 +24,32 @@ $family-sans-serif: BaloiseCreateText, monospace, Arial, sans-serif !default;
 $family-monospace: monospace !default;
 $render-mode: optimizeLegibility !default;
 
-$size-1: 56px !default;
-$line-height-1: 64px !default;
+$size-display-1: 5rem !default;
+$line-height-display-1: 6rem !default;
 
-$size-2: 48px !default;
-$line-height-2: 56px !default;
+$size-display-2: 3.5rem !default;
+$line-height-display-2: 4rem !default;
 
-$size-3: 40px !default;
-$line-height-3: 48px !default;
+$size-1: 3rem !default;
+$line-height-1: 3.5rem !default;
 
-$size-4: 32px !default;
-$line-height-4: 40px !default;
+$size-2: 2.5rem !default;
+$line-height-2: 3rem !default;
 
-$size-5: 24px !default;
-$line-height-5: 32px !default;
+$size-3: 2rem !default;
+$line-height-3: 2.5rem !default;
 
-$size-6: 16px !default;
-$line-height-6: 24px !default;
+$size-4: 1.5rem !default;
+$line-height-4: 2rem !default;
 
-$size-7: 14px !default;
-$line-height-7: 16px !default;
+$size-5: 1rem !default;
+$line-height-5: 1.5rem !default;
 
-$size-8: 12px !default;
-$line-height-8: 16px !default;
+$size-6: 0.875rem !default;
+$line-height-6: 1rem !default;
+
+$size-7: 0.75 !default;
+$line-height-7: 1rem !default;
 
 $weight-light: 300 !default;
 $weight-normal: 400 !default;
