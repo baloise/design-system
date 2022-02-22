@@ -42,7 +42,6 @@ export const Basic = args => ({
     <bal-logo brand="group" color="white"></bal-logo>
     <bal-text><strong>App</strong> Title</bal-text>
   </bal-navbar-brand>
-  <bal-navbar-menu>
 </bal-navbar>`,
 })
 Basic.args = {}
