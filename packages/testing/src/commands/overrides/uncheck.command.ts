@@ -1,6 +1,6 @@
 import { isCheckbox, isRadio, selectors, wrapRoot } from '../helpers'
 
-Cypress.Commands.overwrite('check', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
+Cypress.Commands.overwrite('uncheck', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
   if (isCheckbox(element)) {
     return wrapRoot(element, selectors.checkbox.input, $el => {
       originalFn($el, {

@@ -30,10 +30,11 @@ import './commands/custom/bal-tabs.command'
 import './commands/custom/bal-toast.command'
 
 /**
- * Overriede Commands
+ * Overrides Commands
  */
 import './commands/overrides/blur.command'
 import './commands/overrides/check.command'
+import './commands/overrides/uncheck.command'
 import './commands/overrides/clear.command'
 import './commands/overrides/click.command'
 import './commands/overrides/contains.command'

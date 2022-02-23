@@ -62,7 +62,9 @@ export class Spinner {
   }
 
   disconnectedCallback() {
-    this.animation.destroy()
+    if (this.animation && this.animation.destroy) {
+      this.animation.destroy()
+    }
   }
 
   render() {
