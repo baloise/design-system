@@ -23,7 +23,7 @@ import {
 
 const component = BalComponentStory({
   component: BalNavbar,
-  status: 'stable',
+  status: 'beta',
   subcomponents: { BalNavbarBrand, BalNavbarMenu, BalNavbarMenuEnd, BalNavbarMenuStart },
   docs,
   args: {
