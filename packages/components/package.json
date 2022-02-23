@@ -81,6 +81,7 @@
     "lodash.round": "^4.0.4",
     "lodash.trim": "^4.5.1",
     "lodash.upperfirst": "^4.3.1",
+    "lottie-colorify": "^0.8.0",
     "lottie-web": "^5.8.1"
   },
   "license": "Apache-2.0",
