@@ -183,6 +183,7 @@ export class Tabs {
           'bal-o-steps': this.interface === 'o-steps',
           'is-sub-navigation': this.interface === 'tabs-sub',
           'is-navbar-tabs': this.interface === 'navbar',
+          'is-ready': this.isReady,
         }}
         data-value={this.tabsOptions
           .filter(t => this.isTabActive(t))
