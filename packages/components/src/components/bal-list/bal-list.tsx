@@ -27,7 +27,7 @@ export class List {
   render() {
     return (
       <Host
-        role="listbox"
+        role="list"
         class={{
           'bal-list': true,
           'is-disabled': this.disabled,
