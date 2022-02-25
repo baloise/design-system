@@ -12,6 +12,7 @@ import {
   isSlider,
   isLabel,
   isTextarea,
+  isNumberInput,
 } from '../helpers'
 
 const shouldAndAndCommand = (
@@ -81,7 +82,7 @@ const shouldAndAndCommand = (
     }
   }
 
-  if (isInput(element)) {
+  if (isInput(element) || isNumberInput(element)) {
     if (
       ['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused', 'have.value', 'not.have.value'].includes(
         condition,

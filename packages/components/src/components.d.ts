@@ -3034,7 +3034,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string | number | null>) => void;
+        "onBalChange"?: (event: CustomEvent<string | undefined | null>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3046,7 +3046,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | number | null>) => void;
+        "onBalInput"?: (event: CustomEvent<string | undefined | null>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -3123,6 +3123,10 @@ declare namespace LocalJSX {
           * Emitted when the input value has changed.
          */
         "onBalChange"?: (event: CustomEvent<number>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onBalInput"?: (event: CustomEvent<number>) => void;
         /**
           * The steps in which the input increases or decreases
          */

@@ -10,6 +10,7 @@ export const vueComponentModels: ComponentModelConfig[] = [
       'bal-accordion',
       'bal-popover',
       'bal-tabs',
+      'bal-input-stepper',
     ],
     event: 'balChange',
     targetAttr: 'value',

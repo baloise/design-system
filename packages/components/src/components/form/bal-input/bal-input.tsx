@@ -216,7 +216,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<string | number | null>
+  @Event() balInput!: EventEmitter<string | undefined | null>
 
   /**
    * Emitted when a keyboard input occurred.
@@ -241,7 +241,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<string | number | null>
+  @Event() balChange!: EventEmitter<string | undefined | null>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
