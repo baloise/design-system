@@ -3,6 +3,9 @@ import * as BaloiseWebAppUtils from '@baloise/web-app-utils'
 
 const getLocale = (): string => {
   const config = useBalConfig()
+  if (config?.region === 'CH') {
+    return 'de-CH'
+  }
   return (config && config.locale) || defaultLocale
 }
 

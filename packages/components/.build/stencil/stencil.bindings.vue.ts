@@ -22,7 +22,7 @@ export const vueComponentModels: ComponentModelConfig[] = [
     targetAttr: 'checked',
   },
   {
-    elements: ['bal-input', 'bal-textarea', 'bal-slider'],
+    elements: ['bal-input', 'bal-number-input', 'bal-textarea', 'bal-slider'],
     event: 'balInput',
     targetAttr: 'value',
   },

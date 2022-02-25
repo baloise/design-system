@@ -1,7 +1,7 @@
-import docs from './bal-input.docs.mdx'
+import docs from './bal-number-input.docs.mdx'
 import { BalComponentStory, stencilArgType } from '../../../../stories/utils'
 import {
-  BalInput,
+  BalNumberInput,
   BalField,
   BalFieldControl,
   BalFieldLabel,
@@ -12,8 +12,8 @@ import { configArgTypes, configDefaultArgs, reduceConfigArgs, setConfig } from '
 const balFieldArgTypes = stencilArgType(BalField)
 
 const component = BalComponentStory({
-  title: 'Components/Form/Input',
-  component: BalInput,
+  title: 'Components/Form/NumberInput',
+  component: BalNumberInput,
   argTypes: {
     invalid: balFieldArgTypes.invalid,
     hasFieldMessage: {
@@ -34,25 +34,7 @@ const component = BalComponentStory({
 
 export default component.story
 
-const excludedControls = [
-  'autocomplete',
-  'autoComplete',
-  'multiple',
-  'spellcheck',
-  'autocorrect',
-  'autocapitalize',
-  'autofocus',
-  'clickable',
-  'inputmode',
-  'maxLength',
-  'minLength',
-  'min',
-  'max',
-  'name',
-  'readonly',
-  'required',
-  'accept',
-]
+const excludedControls = ['name']
 
 const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
@@ -66,35 +48,37 @@ const Template = args => ({
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
-    <bal-input v-bind="args" v-model="args.value"></bal-input>
+    <bal-number-input v-bind="args" v-model="args.value"></bal-number-input>
     </bal-field-control>
     <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
   </bal-field>`,
 })
 
-export const TextInput = Template.bind({})
-TextInput.args = {
-  placeholder: 'Enter a text',
+export const Basic = Template.bind({})
+Basic.args = {
+  placeholder: 'Enter a number',
   inverted: false,
   disabled: false,
   invalid: false,
-  type: 'text',
 }
-TextInput.parameters = {
-  ...component.sourceCode(TextInput),
+Basic.parameters = {
+  ...component.sourceCode(Basic),
   controls: {
     exclude: excludedControls,
   },
 }
 
-export const InvalidInput = Template.bind({})
-InvalidInput.args = {
-  value: 'Value',
-  invalid: true,
-  hasFieldMessage: true,
+export const Currency = Template.bind({})
+Currency.args = {
+  value: 1234.45,
+  suffix: 'CHF',
+  decimal: 2,
+  inverted: false,
+  disabled: false,
+  invalid: false,
 }
-InvalidInput.parameters = {
-  ...component.sourceCode(InvalidInput),
+Currency.parameters = {
+  ...component.sourceCode(Currency),
   controls: {
     exclude: excludedControls,
   },
