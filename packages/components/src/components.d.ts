@@ -267,6 +267,10 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement | undefined>;
         /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "hidden": boolean;
+        /**
           * Defines the layout of the checkbox button
          */
         "interface": 'checkbox' | 'switch';
@@ -2458,6 +2462,10 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled"?: boolean;
+        /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "hidden"?: boolean;
         /**
           * Defines the layout of the checkbox button
          */
