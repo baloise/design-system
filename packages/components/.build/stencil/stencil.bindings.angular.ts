@@ -115,7 +115,7 @@ export const AngularGenerator = () =>
         ],
       },
       'bal-modal': {
-        components: ['bal-modal-header', 'bal-modal-body'],
+        components: ['bal-modal-header', 'bal-modal-body', 'bal-close'],
         providers: [{
           name: 'BalModalService',
           import: 'overlays/modal.service.ts'
@@ -125,13 +125,21 @@ export const AngularGenerator = () =>
         providers: [{
           name: 'BalToastService',
           import: 'overlays/toast.service.ts'
-        }]
+        }],
+        components: [
+          'bal-close',
+          'bal-notice',
+        ],
       },
       'bal-snackbar': {
         providers: [{
           name: 'BalSnackbarService',
           import: 'overlays/snackbar.service.ts'
-        }]
+        }],
+        components: [
+          'bal-close',
+          'bal-notice',
+        ],
       }
     }
   })
