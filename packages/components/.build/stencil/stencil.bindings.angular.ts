@@ -69,6 +69,14 @@ export const AngularGenerator = () =>
           'bal-hint-text',
         ],
       },
+      'bal-stage': {
+        components: [
+          'bal-stage-body',
+          'bal-stage-foot',
+          'bal-stage-head',
+          'bal-stage-image',
+        ],
+      },
       'bal-list': {
         components: [
           'bal-list-item',
