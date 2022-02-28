@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-fonts",
-  "version": "10.2.1-beta.6+f1beac18",
+  "version": "10.2.1-beta.7+a7ab7b1c",
   "description": "The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -39,5 +39,5 @@
   "devDependencies": {
     "archiver": "^5.3.0"
   },
-  "gitHead": "f1beac1820bd30cb0a9ce13331a6f5d3178e8212"
+  "gitHead": "a7ab7b1ccecc90e169f4c1a7903dbe4374390c27"
 }
