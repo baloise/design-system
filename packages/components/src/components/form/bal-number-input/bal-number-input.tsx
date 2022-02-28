@@ -61,7 +61,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver {
   /**
    * Adds a suffix the the input-value after blur.
    */
-  @Prop() suffix = ''
+  @Prop() suffix?: string
 
   /**
    * Instructional text that shows before the input has a value.
@@ -222,16 +222,26 @@ export class NumberInput implements ComponentInterface, BalConfigObserver {
       if (!isNaN(parsedValue)) {
         this.value = parsedValue
       } else {
-        this.value = null
-        input.value = ''
+        if (this.decimal === 0 || input.value !== getDecimalSeparator()) {
+          this.value = null
+          input.value = ''
+        }
       }
     }
     this.balInput.emit(this.value)
   }
 
   private onBlur = (ev: FocusEvent) => {
+    const input = ev.target as HTMLInputElement | null
+
     this.hasFocus = false
     this.balBlur.emit(ev)
+
+    if (input && input.value === getDecimalSeparator()) {
+      this.value = null
+      input.value = ''
+    }
+
     if (this.cachedValue !== this.value) {
       this.balChange.emit(this.value)
     }
@@ -283,7 +293,6 @@ export class NumberInput implements ComponentInterface, BalConfigObserver {
 
   render() {
     const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
-    console.log('render', this.value, value)
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
     if (label) {

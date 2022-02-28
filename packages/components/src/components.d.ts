@@ -1063,7 +1063,7 @@ export namespace Components {
         /**
           * Adds a suffix the the input-value after blur.
          */
-        "suffix": string;
+        "suffix"?: string;
         /**
           * The value of the input.
          */
