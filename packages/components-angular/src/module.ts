@@ -9,7 +9,7 @@ import { SelectValueAccessor } from './directives/select-value-accessor'
 import { CheckboxValueAccessor } from './directives/checkbox-accessor'
 
 import { AutoFocus } from './focus.directive'
-import { AngularDelegate, BalAppModule, BalNoticesModule, BalCloseModule } from '.'
+import { AngularDelegate, BalAppModule, BalNoticesModule } from '.'
 
 const DECLARATIONS = [
   // directives
@@ -22,10 +22,12 @@ const DECLARATIONS = [
   SelectValueAccessor,
 ]
 
+const MODULES = [BalAppModule, BalNoticesModule]
+
 @NgModule({
   declarations: [DECLARATIONS],
-  exports: [DECLARATIONS, BalAppModule, BalNoticesModule, BalCloseModule],
-  imports: [CommonModule, FormsModule, BalAppModule, BalNoticesModule, BalCloseModule],
+  exports: [DECLARATIONS, MODULES],
+  imports: [CommonModule, FormsModule, MODULES],
   providers: [AngularDelegate],
 })
 export class BalCoreModule {
