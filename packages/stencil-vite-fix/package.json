@@ -1,6 +1,6 @@
 {
   "name": "@baloise/stencil-vite-fix",
-  "version": "10.2.1-beta.8+1dbd53da",
+  "version": "10.2.1-beta.9+c615f5d0",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -34,5 +34,5 @@
   "dependencies": {
     "replace-in-file": "^6.3.2"
   },
-  "gitHead": "1dbd53da2f1ff44f6f667efe1351cf3bf1b83c85"
+  "gitHead": "c615f5d0b822e586dfc89c202f22a42e81975b2f"
 }
