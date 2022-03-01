@@ -73,6 +73,12 @@
       "@baloise/design-system-components/dist/components/bal-text": "balText",
       "@baloise/design-system-components/dist/components/bal-textarea": "balTextarea",
       "@baloise/design-system-components/dist/components/bal-timeinput": "balTimeinput",
+      "@baloise/design-system-components/dist/components/bal-input-stepper": "balInputStepper",
+      "@baloise/design-system-components/dist/components/bal-stage": "balStage",
+      "@baloise/design-system-components/dist/components/bal-stage-body": "balStageBody",
+      "@baloise/design-system-components/dist/components/bal-stage-foot": "balStageFoot",
+      "@baloise/design-system-components/dist/components/bal-stage-head": "balStageHead",
+      "@baloise/design-system-components/dist/components/bal-stage-image": "balStageImage",
       "@baloise/design-system-components/dist/components/bal-toast": "balToast"
     }
   },
