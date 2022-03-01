@@ -55,6 +55,11 @@ export class Checkbox {
   @Prop() disabled = false
 
   /**
+   * If `true`, the value will not be send with a form submit
+   */
+  @Prop() hidden = false
+
+  /**
    * If `true`, the control works on dark background.
    */
   @Prop() inverted = false
@@ -149,7 +154,7 @@ export class Checkbox {
           value={this.value}
           tabindex={this.balTabindex}
           aria-checked={`${this.checked}`}
-          disabled={this.disabled}
+          disabled={this.disabled || this.hidden}
           onFocus={e => this.onInputFocus(e)}
           onBlur={e => this.onInputBlur(e)}
           ref={inputEl => (this.nativeInput = inputEl)}

@@ -705,6 +705,15 @@ export class Select {
           'is-inverted': this.inverted,
         }}
       >
+        <select class="is-hidden" name={this.name} multiple={this.multiple}>
+          {valuesArray
+            .filter(_ => this.multiple)
+            .map((value: string) => (
+              <option value={value} selected>
+                {value}
+              </option>
+            ))}
+        </select>
         <bal-popover
           onBalChange={this.handlePopoverChange}
           ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}
@@ -787,6 +796,7 @@ export class Select {
                     <bal-checkbox
                       checked={valuesArray.includes(option.value)}
                       tabindex={-1}
+                      hidden
                       onBalChange={preventDefault}
                     ></bal-checkbox>
                   </span>
