@@ -11,7 +11,7 @@ export const OStepList: FunctionalComponent<TabProps> = ({ value, clickable, tab
             'is-disabled': tab.disabled,
             'is-done': tab.done,
             'is-failed': tab.failed,
-            'is-clickable': clickable,
+            'is-clickable': clickable && !tab.disabled,
             'data-test-tab-item': true,
           }}
           data-label={tab.label}
