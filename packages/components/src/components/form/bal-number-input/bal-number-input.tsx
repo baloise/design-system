@@ -34,8 +34,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver {
   private nativeInput?: HTMLInputElement
   private inputId = `bal-number-input-${numberInputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
-  private didInit = false
-  private cachedValue = this.value
+  private inputValue = this.value
 
   @State() hasFocus = false
   @State() language: BalLanguage = defaultConfig.language
@@ -99,16 +98,6 @@ export class NumberInput implements ComponentInterface, BalConfigObserver {
   @Prop({ mutable: true }) value?: number | null = undefined
 
   /**
-   * Update the native input element when the value changes
-   */
-  @Watch('value')
-  protected valueChanged(newValue: number | null | undefined, oldValue: number | null | undefined) {
-    if (this.didInit && newValue !== oldValue && !this.hasFocus) {
-      this.balChange.emit(this.value)
-    }
-  }
-
-  /**
    * Emitted when a keyboard input occurred.
    */
   @Event() balInput!: EventEmitter<number | null | undefined>
@@ -143,13 +132,6 @@ export class NumberInput implements ComponentInterface, BalConfigObserver {
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
-  }
-
-  componentDidLoad() {
-    this.didInit = true
-    if (!isNil(this.value)) {
-      this.valueChanged(this.value, undefined)
-    }
   }
 
   connectedCallback() {
@@ -220,36 +202,36 @@ export class NumberInput implements ComponentInterface, BalConfigObserver {
     if (input) {
       const parsedValue = parseFloat(parseFloat(input.value).toFixed(this.decimal))
       if (!isNaN(parsedValue)) {
-        this.value = parsedValue
+        this.inputValue = parsedValue
       } else {
-        if (this.decimal === 0 || input.value !== getDecimalSeparator()) {
-          this.value = null
+        if (!this.decimal || input.value !== getDecimalSeparator()) {
+          this.inputValue = null
           input.value = ''
         }
       }
     }
-    this.balInput.emit(this.value)
+    this.balInput.emit(this.inputValue)
   }
 
   private onBlur = (ev: FocusEvent) => {
-    const input = ev.target as HTMLInputElement | null
-
     this.hasFocus = false
     this.balBlur.emit(ev)
 
+    const input = ev.target as HTMLInputElement | null
     if (input && input.value === getDecimalSeparator()) {
-      this.value = null
+      this.inputValue = null
       input.value = ''
     }
 
-    if (this.cachedValue !== this.value) {
+    if (this.value !== this.inputValue) {
+      this.value = this.inputValue
       this.balChange.emit(this.value)
     }
   }
 
   private onFocus = (ev: FocusEvent) => {
     this.hasFocus = true
-    this.cachedValue = this.value
+    this.inputValue = this.value
     this.balFocus.emit(ev)
   }
 
