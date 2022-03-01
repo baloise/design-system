@@ -58,8 +58,8 @@ interface LinkAccessorType
   assertHrefEquals(href: string): LinkAccessorType
 }
 
-const getLink = element => {
-  return element.then(el => (isButton(el as any) ? element.find('a') : element))
+const getLink = (element: any) => {
+  return element.then((el: any) => (isButton(el) ? element.find('a') : element))
 }
 
 export const LinkClickableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
