@@ -89,9 +89,9 @@ export const createReactComponent = <
        * React.createElement causes all elements to be rendered
        * as <tagname> instead of the actual Web Component.
        */
-      const component = createElement(tagName, newProps, children)
-      const fragment = createElement(Fragment, {}, component)
-      return fragment
+      const fragment = createElement(Fragment, {}, children)
+      const component = createElement(tagName, newProps, fragment)
+      return component
     }
 
     static get displayName() {
