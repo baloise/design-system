@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components",
-  "version": "10.2.1-beta.6+53d65477",
+  "version": "10.2.1-beta.7+3943bb4c",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -63,8 +63,8 @@
     "www:watch": "stencil build --dev --serve --config stencil.test.config.ts --watch"
   },
   "dependencies": {
-    "@baloise/design-system-fonts": "10.2.1-beta.6+53d65477",
-    "@baloise/design-system-icons": "10.2.1-beta.6+53d65477",
+    "@baloise/design-system-fonts": "10.2.1-beta.7+3943bb4c",
+    "@baloise/design-system-icons": "10.2.1-beta.7+3943bb4c",
     "@baloise/stencil-vite-fix": "^9.2.3",
     "@baloise/web-app-utils": "^3.0.0",
     "@popperjs/core": "^2.11.2",
@@ -143,5 +143,5 @@
     "vue-loader": "^16.8.3",
     "workbox-build": "^4.3.1"
   },
-  "gitHead": "53d6547763b262494b3b7051edc23b1f56b5f22e"
+  "gitHead": "3943bb4ceb1cbdecd2ec315583a522d32894329b"
 }
