@@ -125,13 +125,13 @@ export const AngularGenerator = () =>
         providers: [{
           name: 'BalToastService',
           import: 'overlays/toast.service.ts'
-        }]
+        }],
       },
       'bal-snackbar': {
         providers: [{
           name: 'BalSnackbarService',
           import: 'overlays/snackbar.service.ts'
-        }]
+        }],
       }
     }
   })

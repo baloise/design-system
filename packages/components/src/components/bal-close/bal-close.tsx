@@ -25,6 +25,7 @@ export class Close implements ComponentInterface {
     return (
       <Host>
         <button
+          type="button"
           tabIndex={-1}
           aria-label="close"
           class={{
