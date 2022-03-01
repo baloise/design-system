@@ -1,21 +1,29 @@
 /// <reference types="cypress" />
 
-import { Attributable, AttributableMixin } from '../mixins/attributable'
-import { Checkable, CheckableMixin } from '../mixins/checkable'
-import { Clickable, ClickableMixin } from '../mixins/clickable'
-import { Containable, ContainableMixin } from '../mixins/containable'
-import { Disableable, DisableableMixin } from '../mixins/disableable'
-import { Existable, ExistableMixin } from '../mixins/existable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
-import { Selectable } from '../mixins/selectable'
-import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
-import { Urlable, UrlableMixin } from '../mixins/urlable'
-import { Visible, VisibleMixin } from '../mixins/visible'
-import { Waitable, WaitableMixin } from '../mixins/waitable'
+import { Andable, AndableMixin } from './mixins/andable'
+import { Attributable, AttributableMixin } from './mixins/attributable'
+import { Blurable, BlurableMixin } from './mixins/blurable'
+import { Checkable, CheckableMixin } from './mixins/checkable'
+import { Clickable, ClickableMixin } from './mixins/clickable'
+import { Containable, ContainableMixin } from './mixins/containable'
+import { Disableable, DisableableMixin } from './mixins/disableable'
+import { Eachable, EachableMixin } from './mixins/eachable'
+import { Existable, ExistableMixin } from './mixins/existable'
+import { Findable, FindableMixin } from './mixins/findable'
+import { Invokable, InvokableMixin } from './mixins/invokable'
+import { Lengthable, LengthableMixin } from './mixins/lengthable'
+import { Accessor, createAccessor } from './mixins/mixins'
+import { NthSelectable, NthSelectableMixin } from './mixins/nthSelectable'
+import { Shouldable, ShouldableMixin } from './mixins/shouldable'
+import { Thenable, ThenableMixin } from './mixins/thenable'
+import { Urlable, UrlableMixin } from './mixins/urlable'
+import { Visible, VisibleMixin } from './mixins/visible'
+import { Waitable, WaitableMixin } from './mixins/waitable'
 
 interface RadioAccessorType
-  extends Checkable<RadioAccessorType>,
+  extends Andable<RadioAccessorType>,
+    Blurable<RadioAccessorType>,
+    Checkable<RadioAccessorType>,
     Containable<RadioAccessorType>,
     Clickable<RadioAccessorType>,
     Existable<RadioAccessorType>,
@@ -25,41 +33,16 @@ interface RadioAccessorType
     NthSelectable<RadioAccessorType>,
     Attributable<RadioAccessorType>,
     Urlable<RadioAccessorType>,
+    Findable<RadioAccessorType>,
     Waitable<RadioAccessorType>,
-    Selectable<RadioAccessorType> {}
+    Invokable<RadioAccessorType>,
+    Thenable<RadioAccessorType>,
+    Lengthable<RadioAccessorType>,
+    Eachable<RadioAccessorType> {}
 
-export const SelectButtonSelectableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
-  /**
-   * Selects option
-   */
-  select: (indexes: number | number[]) => {
-    if (typeof indexes === 'number') {
-      indexes = [indexes]
-    }
-    cy.get(selector).within(() => {
-      ;(indexes as number[]).forEach((index: number) => cy.get(`bal-radio`).eq(index).click())
-    })
-
-    return creator()
-  },
-})
-
-/**
- * RadioAccessor is a helper object for E-2-E testing.
- * It maps the radio behaviour to the `bal-radio` ui component.
- *
- * ```typescript
- * import { dataTestSelector, RadioAccessor } from '@baloise/design-system-components-testing'
- *
- * describe('Radio', () => {
- *   it('should ...', () => {
- *      const radio = RadioAccessor(dataTestSelector('radio-id')).get()
- *      radio.select(1)
- *  })
- * })
- * ```
- */
 export const RadioAccessor: Accessor<RadioAccessorType> = createAccessor<RadioAccessorType>(
+  AndableMixin,
+  BlurableMixin,
   CheckableMixin,
   ClickableMixin,
   ContainableMixin,
@@ -70,6 +53,10 @@ export const RadioAccessor: Accessor<RadioAccessorType> = createAccessor<RadioAc
   NthSelectableMixin,
   AttributableMixin,
   UrlableMixin,
+  FindableMixin,
   WaitableMixin,
-  SelectButtonSelectableMixin,
+  InvokableMixin,
+  ThenableMixin,
+  LengthableMixin,
+  EachableMixin,
 )

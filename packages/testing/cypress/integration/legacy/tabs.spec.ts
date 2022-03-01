@@ -1,6 +1,6 @@
 import { app } from '../../support/legacy/app'
 
-describe('Tabs', () => {
+describe('Legacy - Tabs', () => {
   const page = app.getTabsPage()
 
   it('should navigate to Tabs page and select Tab B on first Tab component on the page', () => {

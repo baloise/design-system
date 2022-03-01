@@ -1,20 +1,26 @@
 /// <reference types="cypress" />
 
-import { Attributable, AttributableMixin } from '../mixins/attributable'
-import { Clickable, ClickableMixin } from '../mixins/clickable'
-import { Containable, ContainableMixin } from '../mixins/containable'
-import { Disableable, DisableableMixin } from '../mixins/disableable'
-import { Existable, ExistableMixin } from '../mixins/existable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
-import { Selectable } from '../mixins/selectable'
-import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
-import { Urlable, UrlableMixin } from '../mixins/urlable'
-import { Waitable, WaitableMixin } from '../mixins/waitable'
-import { ListSelectableMixin } from './list.accessor'
+import { Andable, AndableMixin } from './mixins/andable'
+import { Attributable, AttributableMixin } from './mixins/attributable'
+import { Clickable, ClickableMixin } from './mixins/clickable'
+import { Containable, ContainableMixin } from './mixins/containable'
+import { Disableable, DisableableMixin } from './mixins/disableable'
+import { Eachable, EachableMixin } from './mixins/eachable'
+import { Existable, ExistableMixin } from './mixins/existable'
+import { Findable, FindableMixin } from './mixins/findable'
+import { Invokable, InvokableMixin } from './mixins/invokable'
+import { Lengthable, LengthableMixin } from './mixins/lengthable'
+import { Accessor, createAccessor, Mixin, MixinContext } from './mixins/mixins'
+import { NthSelectable, NthSelectableMixin } from './mixins/nthSelectable'
+import { Selectable } from './mixins/selectable'
+import { Shouldable, ShouldableMixin } from './mixins/shouldable'
+import { Thenable, ThenableMixin } from './mixins/thenable'
+import { Urlable, UrlableMixin } from './mixins/urlable'
+import { Waitable, WaitableMixin } from './mixins/waitable'
 
 interface TabsAccessorType
-  extends Selectable<TabsAccessorType>,
+  extends Andable<TabsAccessorType>,
+    Selectable<TabsAccessorType>,
     Containable<TabsAccessorType>,
     Clickable<TabsAccessorType>,
     Existable<TabsAccessorType>,
@@ -23,45 +29,36 @@ interface TabsAccessorType
     NthSelectable<TabsAccessorType>,
     Attributable<TabsAccessorType>,
     Urlable<TabsAccessorType>,
-    Waitable<TabsAccessorType> {
+    Findable<TabsAccessorType>,
+    Waitable<TabsAccessorType>,
+    Invokable<TabsAccessorType>,
+    Thenable<TabsAccessorType>,
+    Lengthable<TabsAccessorType>,
+    Eachable<TabsAccessorType> {
   assertVisible(text: string): TabsAccessorType
+  select(index: number, options?: Partial<Cypress.ClickOptions>): TabsAccessorType
+  assertIsSelected(label: string): TabsAccessorType
 }
 
-export const TabsAssertVisibleMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
-  /**
-   * Assert if tab is visible
-   */
+export const TabsAssertVisibleMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
   assertVisible: (text: string) => {
-    const field = cy.get(selector).find(`[label="${text}"]`)
+    const field = element.find(`[data-label="${text}"]`)
     field.should('be.visible')
     return creator()
   },
-  /**
-   * Selects tab
-   */
-  select: (index: number) => {
-    cy.get(selector).balTabsFindItems().eq(index).click()
+  select: (index: number, options?: Partial<Cypress.ClickOptions>) => {
+    element.balTabsFindItems().eq(index).click(options)
+    return creator()
+  },
+  assertIsSelected: (label: string) => {
+    element.should('have.value', label)
     return creator()
   },
 })
 
-/**
- * TabsAccessor is a helper object for E-2-E testing.
- * It maps the tabs behaviour to the `bal-tabs` ui component.
- *
- * ```typescript
- * import { dataTestSelector, TabsAccessor } from '@baloise/design-system-components-testing'
- *
- * describe('Tabs', () => {
- *   it('should ...', () => {
- *      const tabs = TabsAccessor(dataTestSelector('tabs-id')).get()
- *      tabs.select(1)
- *      tabs.assertVisible('value')
- *  })
- * })
- * ```
- */
 export const TabsAccessor: Accessor<TabsAccessorType> = createAccessor<TabsAccessorType>(
+  AndableMixin,
+  TabsAssertVisibleMixin,
   ClickableMixin,
   ContainableMixin,
   ExistableMixin,
@@ -71,6 +68,9 @@ export const TabsAccessor: Accessor<TabsAccessorType> = createAccessor<TabsAcces
   AttributableMixin,
   UrlableMixin,
   WaitableMixin,
-  ListSelectableMixin,
-  TabsAssertVisibleMixin,
+  FindableMixin,
+  InvokableMixin,
+  ThenableMixin,
+  LengthableMixin,
+  EachableMixin,
 )

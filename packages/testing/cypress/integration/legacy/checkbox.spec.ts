@@ -1,6 +1,6 @@
 import { app } from '../../support/legacy/app'
 
-describe('Checkbox', () => {
+describe('Legacy - Checkbox', () => {
   const page = app.getCheckboxPage()
 
   it('Can be checked and unchecked', () => {

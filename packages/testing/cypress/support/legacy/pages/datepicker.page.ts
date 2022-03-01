@@ -1,7 +1,7 @@
-import { DatepickerAccessor, byTestId } from '../../../../src'
+import { byTestId, DatePickerAccessor } from '../../../../src'
 
 export class DatepickerPage {
-  datepicker = DatepickerAccessor(byTestId('datepicker'))
+  datepicker = DatePickerAccessor(byTestId('datepicker'))
   open() {
     cy.visit('/components/form/bal-datepicker')
   }

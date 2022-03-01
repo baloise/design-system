@@ -1,6 +1,6 @@
 import { app } from '../../support/legacy/app'
 
-describe('Accordion', () => {
+describe('Legacy - Accordion', () => {
   const page = app.getAccordionPage()
 
   it('should navigate to Accordion page and open all Accordions on the page', () => {
@@ -8,7 +8,7 @@ describe('Accordion', () => {
     page.accordion.get().click({ multiple: true })
   })
 
-  it('should navigate to Accordion page and check if Accordian contains value', () => {
+  it('should navigate to Accordion page and check if Accordion contains value', () => {
     page.open()
     page.accordion.get().contains('Show more')
     page.accordion.get().click({ multiple: true })

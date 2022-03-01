@@ -1,94 +1,93 @@
 /// <reference types="cypress" />
 
-import { Attributable, AttributableMixin } from '../mixins/attributable'
-import { Clickable, ClickableMixin } from '../mixins/clickable'
-import { Containable } from '../mixins/containable'
-import { Existable, ExistableMixin } from '../mixins/existable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
-import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
-import { Urlable, UrlableMixin } from '../mixins/urlable'
-import { Visible, VisibleMixin } from '../mixins/visible'
-import { Waitable, WaitableMixin } from '../mixins/waitable'
+import { Andable, AndableMixin } from './mixins/andable'
+import { Attributable, AttributableMixin } from './mixins/attributable'
+import { Blurable, BlurableMixin } from './mixins/blurable'
+import { Clickable } from './mixins/clickable'
+import { Containable } from './mixins/containable'
+import { Eachable, EachableMixin } from './mixins/eachable'
+import { Existable, ExistableMixin } from './mixins/existable'
+import { Findable, FindableMixin } from './mixins/findable'
+import { Invokable, InvokableMixin } from './mixins/invokable'
+import { Lengthable, LengthableMixin } from './mixins/lengthable'
+import { Accessor, createAccessor, Mixin, MixinContext } from './mixins/mixins'
+import { NthSelectable, NthSelectableMixin } from './mixins/nthSelectable'
+import { Shouldable, ShouldableMixin } from './mixins/shouldable'
+import { Thenable, ThenableMixin } from './mixins/thenable'
+import { Urlable, UrlableMixin } from './mixins/urlable'
+import { Visible, VisibleMixin } from './mixins/visible'
+import { Waitable, WaitableMixin } from './mixins/waitable'
 
-interface AccordionAccessorType
-  extends Clickable<AccordionAccessorType>,
-    Existable<AccordionAccessorType>,
-    Shouldable<AccordionAccessorType>,
-    Containable<AccordionAccessorType>,
-    Visible<AccordionAccessorType>,
-    NthSelectable<AccordionAccessorType>,
-    Attributable<AccordionAccessorType>,
-    Urlable<AccordionAccessorType>,
-    Waitable<AccordionAccessorType> {
-  assertBodyExists(): AccordionAccessorType
-  assertBodyNotExists(): AccordionAccessorType
+interface AccordionTileAccessorType
+  extends Andable<AccordionTileAccessorType>,
+    Blurable<AccordionTileAccessorType>,
+    Clickable<AccordionTileAccessorType>,
+    Existable<AccordionTileAccessorType>,
+    Visible<AccordionTileAccessorType>,
+    Containable<AccordionTileAccessorType>,
+    Shouldable<AccordionTileAccessorType>,
+    NthSelectable<AccordionTileAccessorType>,
+    Attributable<AccordionTileAccessorType>,
+    Urlable<AccordionTileAccessorType>,
+    Findable<AccordionTileAccessorType>,
+    Waitable<AccordionTileAccessorType>,
+    Invokable<AccordionTileAccessorType>,
+    Thenable<AccordionTileAccessorType>,
+    Lengthable<AccordionTileAccessorType>,
+    Eachable<AccordionTileAccessorType> {
+  assertBodyExists(): AccordionTileAccessorType
+
+  assertBodyNotExists(): AccordionTileAccessorType
+
+  clickBody(options?: Partial<Cypress.ClickOptions>): AccordionTileAccessorType
 }
 
-export const AccordionClickableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
-  /**
-   * Toggle the accordion
-   */
-  click: (options?: Partial<Cypress.ClickOptions>) => {
-    cy.get(selector).find('bal-button > button').click(options)
+export const AccordionTileClickableMixin: Mixin = <T>({ element, creator }: MixinContext<T>) => ({
+  clickBody: (options?: Partial<Cypress.ClickOptions>) => {
+    element.find('.show-body-link-container.bal-divider-top').click(options)
     return creator()
   },
 })
-
+export const AccordionClickableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
+  click: (options?: Partial<Cypress.ClickOptions>) => {
+    cy.get(selector).click(options)
+    return creator()
+  },
+})
 export const AccordionContainableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
-  /**
-   * It checks that the accordion label contains the given texts
-   */
   contains: (content: string) => {
     cy.get(selector).contains(content)
     return creator()
   },
 })
-
 export const AccordionAssertableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
-  /**
-   * Asserts that accordion is open
-   */
   assertBodyExists: () => {
     cy.get(selector).balAccordionIsOpen()
     return creator()
   },
-  /**
-   * Asserts that accordion is closed
-   */
   assertBodyNotExists: () => {
     cy.get(selector).balAccordionIsClosed()
     return creator()
   },
 })
 
-/**
- * AccordionAccessor is a helper object for E-2-E testing.
- * It maps the accordion behaviour to the `bal-accordion` ui component.
- *
- * ```typescript
- * import { dataTestSelector, AccordionAccessor } from '@baloise/design-system-components-testing'
- *
- * describe('Accordion', () => {
- *   it('should ...', () => {
- *      const accordion = AccordionAccessor(dataTestSelector('accordion-id')).get()
- *      accordion.click()
- *      accordion.assertBodyExists()
- *      accordion.contains('Label')
- *  })
- * })
- * ```
- */
-export const AccordionAccessor: Accessor<AccordionAccessorType> = createAccessor<AccordionAccessorType>(
-  ClickableMixin,
-  ExistableMixin,
-  ShouldableMixin,
+export const AccordionAccessor: Accessor<AccordionTileAccessorType> = createAccessor<AccordionTileAccessorType>(
+  AndableMixin,
   AccordionClickableMixin,
-  AccordionContainableMixin,
   AccordionAssertableMixin,
+  AccordionContainableMixin,
+  ExistableMixin,
+  AccordionTileClickableMixin,
+  BlurableMixin,
   VisibleMixin,
+  ShouldableMixin,
   NthSelectableMixin,
   AttributableMixin,
   UrlableMixin,
+  FindableMixin,
   WaitableMixin,
+  InvokableMixin,
+  LengthableMixin,
+  ThenableMixin,
+  EachableMixin,
 )

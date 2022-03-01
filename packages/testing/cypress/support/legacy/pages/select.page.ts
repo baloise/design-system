@@ -1,7 +1,8 @@
-import { SelectAccessor, byTestId } from '../../../../src'
+import { DropDownAccessor, TypeaheadAccessor, byTestId } from '../../../../src'
 
 export class SelectPage {
-  select = SelectAccessor(byTestId('select'))
+  dropdown = DropDownAccessor(byTestId('select'))
+  typeahead = TypeaheadAccessor(byTestId('typeahead'))
   open() {
     cy.visit('/components/form/bal-select')
   }

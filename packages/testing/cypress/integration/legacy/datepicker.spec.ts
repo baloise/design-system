@@ -1,7 +1,7 @@
 import { now } from '@baloise/web-app-utils'
 import { app } from '../../support/legacy/app'
 
-describe('Datepicker', () => {
+describe('Legacy - Datepicker', () => {
   const page = app.getDatepickerPage()
 
   it('should navigate to Datepicker page and open Datepicker', () => {

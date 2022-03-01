@@ -1,19 +1,29 @@
 /// <reference types="cypress" />
 
-import { Attributable, AttributableMixin } from '../mixins/attributable'
-import { Clickable, ClickableMixin } from '../mixins/clickable'
-import { Containable, ContainableMixin } from '../mixins/containable'
-import { Disableable, DisableableMixin } from '../mixins/disableable'
-import { Existable, ExistableMixin } from '../mixins/existable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
-import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
-import { Urlable, UrlableMixin } from '../mixins/urlable'
-import { Visible, VisibleMixin } from '../mixins/visible'
-import { Waitable, WaitableMixin } from '../mixins/waitable'
+import { Andable, AndableMixin } from './mixins/andable'
+import { Attachable, AttachableMixin } from './mixins/attachable'
+import { Attributable, AttributableMixin } from './mixins/attributable'
+import { Blurable, BlurableMixin } from './mixins/blurable'
+import { Clickable, ClickableMixin } from './mixins/clickable'
+import { Containable, ContainableMixin } from './mixins/containable'
+import { Disableable, DisableableMixin } from './mixins/disableable'
+import { Eachable, EachableMixin } from './mixins/eachable'
+import { Existable, ExistableMixin } from './mixins/existable'
+import { Findable, FindableMixin } from './mixins/findable'
+import { Invokable, InvokableMixin } from './mixins/invokable'
+import { Lengthable, LengthableMixin } from './mixins/lengthable'
+import { Accessor, createAccessor } from './mixins/mixins'
+import { NthSelectable, NthSelectableMixin } from './mixins/nthSelectable'
+import { Shouldable, ShouldableMixin } from './mixins/shouldable'
+import { Thenable, ThenableMixin } from './mixins/thenable'
+import { Urlable, UrlableMixin } from './mixins/urlable'
+import { Visible, VisibleMixin } from './mixins/visible'
+import { Waitable, WaitableMixin } from './mixins/waitable'
 
 interface ButtonAccessorType
-  extends Clickable<ButtonAccessorType>,
+  extends Andable<ButtonAccessorType>,
+    Blurable<ButtonAccessorType>,
+    Clickable<ButtonAccessorType>,
     Existable<ButtonAccessorType>,
     Shouldable<ButtonAccessorType>,
     Containable<ButtonAccessorType>,
@@ -22,45 +32,19 @@ interface ButtonAccessorType
     NthSelectable<ButtonAccessorType>,
     Attributable<ButtonAccessorType>,
     Urlable<ButtonAccessorType>,
-    Waitable<ButtonAccessorType> {}
+    Findable<ButtonAccessorType>,
+    Waitable<ButtonAccessorType>,
+    Invokable<ButtonAccessorType>,
+    Thenable<ButtonAccessorType>,
+    Lengthable<ButtonAccessorType>,
+    Eachable<ButtonAccessorType>,
+    Attachable<ButtonAccessorType> {}
 
-export const ButtonContainableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
-  /**
-   * Check the content of the label element
-   */
-  contains: (content: string) => {
-    cy.get(selector).contains(content)
-    return creator()
-  },
-  /**
-   * Asserts that button is disabled
-   */
-  assertIsDisabled: () => {
-    cy.get(selector).should('be.disabled')
-    return creator()
-  },
-})
-
-/**
- * ButtonAccessor is a helper object for E-2-E testing.
- * It maps the button behaviour to the `bal-button` ui component.
- *
- * ```typescript
- * import { dataTestSelector, ButtonAccessor } from '@baloise/design-system-components-testing'
- *
- * describe('Button', () => {
- *   it('should ...', () => {
- *      const button = ButtonAccessor(dataTestSelector('button-id')).get()
- *      button.click()
- *      button.assertIsEnabled()
- *      button.contains('Label')
- *  })
- * })
- * ```
- */
 export const ButtonAccessor: Accessor<ButtonAccessorType> = createAccessor<ButtonAccessorType>(
+  AndableMixin,
   ClickableMixin,
   ExistableMixin,
+  BlurableMixin,
   ShouldableMixin,
   ContainableMixin,
   DisableableMixin,
@@ -68,6 +52,11 @@ export const ButtonAccessor: Accessor<ButtonAccessorType> = createAccessor<Butto
   NthSelectableMixin,
   AttributableMixin,
   UrlableMixin,
+  FindableMixin,
   WaitableMixin,
-  ButtonContainableMixin,
+  InvokableMixin,
+  ThenableMixin,
+  LengthableMixin,
+  EachableMixin,
+  AttachableMixin,
 )

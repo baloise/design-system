@@ -1,101 +1,97 @@
 /// <reference types="cypress" />
 
-import { Checkable } from '../mixins/checkable'
-import { Clickable } from '../mixins/clickable'
-import { Containable } from '../mixins/containable'
-import { Disableable } from '../mixins/disableable'
-import { Existable, ExistableMixin } from '../mixins/existable'
-import { Accessor, createAccessor, Mixin, MixinContext } from '../mixins/mixins'
-import { NthSelectable, NthSelectableMixin } from '../mixins/nthSelectable'
-import { Shouldable, ShouldableMixin } from '../mixins/shouldable'
-import { Visible, VisibleMixin } from '../mixins/visible'
+import { Andable, AndableMixin } from './mixins/andable'
+import { Attributable, AttributableMixin } from './mixins/attributable'
+import { Blurable, BlurableMixin } from './mixins/blurable'
+import { Checkable } from './mixins/checkable'
+import { Clickable } from './mixins/clickable'
+import { Containable } from './mixins/containable'
+import { Disableable } from './mixins/disableable'
+import { Eachable, EachableMixin } from './mixins/eachable'
+import { Existable, ExistableMixin } from './mixins/existable'
+import { Findable, FindableMixin } from './mixins/findable'
+import { Invokable, InvokableMixin } from './mixins/invokable'
+import { Lengthable, LengthableMixin } from './mixins/lengthable'
+import { Accessor, createAccessor, Mixin, MixinContext } from './mixins/mixins'
+import { NthSelectable, NthSelectableMixin } from './mixins/nthSelectable'
+import { Shouldable, ShouldableMixin } from './mixins/shouldable'
+import { Thenable, ThenableMixin } from './mixins/thenable'
+import { Urlable, UrlableMixin } from './mixins/urlable'
+import { Visible, VisibleMixin } from './mixins/visible'
+import { Waitable, WaitableMixin } from './mixins/waitable'
 
 interface CheckboxAccessorType
-  extends Clickable<CheckboxAccessorType>,
+  extends Andable<CheckboxAccessorType>,
+    Blurable<CheckboxAccessorType>,
+    Clickable<CheckboxAccessorType>,
     Disableable<CheckboxAccessorType>,
     Checkable<CheckboxAccessorType>,
     Containable<CheckboxAccessorType>,
     Existable<CheckboxAccessorType>,
     Visible<CheckboxAccessorType>,
     NthSelectable<CheckboxAccessorType>,
-    Shouldable<CheckboxAccessorType> {}
+    Shouldable<CheckboxAccessorType>,
+    Attributable<CheckboxAccessorType>,
+    Urlable<CheckboxAccessorType>,
+    Findable<CheckboxAccessorType>,
+    Waitable<CheckboxAccessorType>,
+    Invokable<CheckboxAccessorType>,
+    Thenable<CheckboxAccessorType>,
+    Lengthable<CheckboxAccessorType>,
+    Eachable<CheckboxAccessorType> {}
 
 export const CheckboxClickableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
-  /**
-   * Clicks the checkbox and set checked to true
-   */
   click: (options?: Partial<Cypress.ClickOptions>) => {
-    const checkbox = cy.get(selector).find('label')
-    checkbox.click(options)
+    cy.get(selector).click(options)
     return creator()
   },
-  /**
-   * Clicks the checkbox and set checked to true
-   */
+
   check: (options?: Partial<Cypress.CheckOptions>) => {
-    const checkbox = cy.get(selector).find('label')
-    checkbox.click(options)
+    cy.get(selector).check(options)
     return creator()
   },
-  /**
-   * Assert if the checkbox is checked
-   */
+
   assertIsChecked: (shouldBeChecked = true) => {
-    const checkbox = cy.get(selector).find('input')
-    checkbox.should('have.attr', 'aria-checked', `${shouldBeChecked}`)
+    if (shouldBeChecked) {
+      cy.get(selector).should('be.checked')
+    } else {
+      cy.get(selector).should('not.be.checked')
+    }
     return creator()
   },
-  /**
-   * Assert if the checkbox is disabled
-   */
+
   assertIsDisabled: () => {
-    const checkbox = cy.get(selector).find('input')
-    checkbox.should('have.attr', 'aria-disabled', `true`)
+    cy.get(selector).should('be.disabled')
     return creator()
   },
-  /**
-   * Assert if the checkbox is enabled and not disabled
-   */
+
   assertIsEnabled: () => {
-    const checkbox = cy.get(selector).find('input')
-    checkbox.should('have.attr', 'aria-disabled', `false`)
+    cy.get(selector).should('not.be.disabled')
     return creator()
   },
 })
-
-export const CheckboxContainableMixin: Mixin = <T>({ selector, creator }: MixinContext<T>) => ({
-  /**
-   * Check the content of the label element
-   */
+export const CheckboxContainableMixin: Mixin = <T>({ creator, selector }: MixinContext<T>) => ({
   contains: (content: string) => {
-    const item = cy.get(selector).find('bal-text')
-    item.contains(content)
+    cy.get(selector).contains(content)
     return creator()
   },
 })
 
-/**
- * CheckboxAccessor is a helper object for E-2-E testing.
- * It maps the checkbox behaviour to the `bal-checkbox` ui component.
- *
- * ```typescript
- * import { dataTestSelector, CheckboxAccessor } from '@baloise/design-system-components-testing'
- *
- * describe('Checkbox', () => {
- *   it('should ...', () => {
- *      const checkbox = CheckboxAccessor(dataTestSelector('checkbox-id')).get()
- *      checkbox.click()
- *      checkbox.assertIsChecked()
- *      checkbox.contains('Label')
- *  })
- * })
- * ```
- */
 export const CheckboxAccessor: Accessor<CheckboxAccessorType> = createAccessor<CheckboxAccessorType>(
+  AndableMixin,
   CheckboxClickableMixin,
   CheckboxContainableMixin,
   ExistableMixin,
   VisibleMixin,
   NthSelectableMixin,
+  BlurableMixin,
   ShouldableMixin,
+  AttributableMixin,
+  UrlableMixin,
+  WaitableMixin,
+  FindableMixin,
+  InvokableMixin,
+  ThenableMixin,
+  LengthableMixin,
+  EachableMixin,
 )

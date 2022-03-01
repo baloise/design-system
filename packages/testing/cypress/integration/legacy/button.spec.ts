@@ -1,13 +1,13 @@
 import { app } from '../../support/legacy/app'
 
-describe('Button', () => {
+describe('Legacy - Button', () => {
   const page = app.getButtonPage()
 
   it('should navigate to Button page and test enabled Button on the page', () => {
     page.open()
     page.primaryButton.get().contains('Continue')
     page.primaryButton.get().click()
-    page.primaryButton.get().assertIsEnabled()
+    page.primaryButton.get().assertIsDisabled(false)
     page.primaryButton.get().assertExists()
   })
 
