@@ -142,12 +142,13 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
     if (element.href) {
       return
     }
-    stopEventBubbling(ev)
 
     if (!this.disabled) {
       this.checked = !this.checked
       this.balChange.emit(this.checked)
       this.balClick.emit(ev)
+    } else {
+      stopEventBubbling(ev)
     }
   }
 
@@ -166,7 +167,6 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           'bal-checkbox': this.interface === 'checkbox',
           'bal-switch': this.interface === 'switch',
         }}
-        onClick={this.onClick}
         {...this.inheritedAttributes}
       >
         <input
@@ -184,6 +184,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           disabled={this.disabled || this.hidden}
           onFocus={e => this.onInputFocus(e)}
           onBlur={e => this.onInputBlur(e)}
+          onClick={this.onClick}
           ref={inputEl => (this.nativeInput = inputEl)}
         />
         <label
