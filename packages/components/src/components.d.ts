@@ -251,10 +251,6 @@ export namespace Components {
     }
     interface BalCheckbox {
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex": number;
-        /**
           * If `true`, the checkbox is selected.
          */
         "checked": boolean;
@@ -279,9 +275,17 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * If `true` the radio has no label
+         */
+        "labelHidden": boolean;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
         /**
           * Sets the focus on the checkbox input element.
          */
@@ -349,10 +353,6 @@ export namespace Components {
          */
         "allowedDates": BalDateCallback | undefined;
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex": number;
-        /**
           * Closes the popover
          */
         "close": () => Promise<void>;
@@ -367,7 +367,7 @@ export namespace Components {
         /**
           * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "defaultDate"?: string | null;
+        "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -429,7 +429,11 @@ export namespace Components {
          */
         "select": (dateString: string) => Promise<void>;
         /**
-          * Sets the focus on the input element
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
@@ -439,7 +443,7 @@ export namespace Components {
         /**
           * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "value"?: string | null;
+        "value"?: string;
     }
     interface BalDocApp {
     }
@@ -710,10 +714,6 @@ export namespace Components {
          */
         "autofocus": boolean;
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex": number;
-        /**
           * If `true` the input gets a clickable cursor style
          */
         "clickable": boolean;
@@ -732,7 +732,7 @@ export namespace Components {
         /**
           * Returns the native `<input>` element used under the hood.
          */
-        "getInputElement": () => Promise<HTMLInputElement | undefined>;
+        "getInputElement": () => Promise<HTMLInputElement>;
         "hasIconRight": boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
@@ -781,7 +781,7 @@ export namespace Components {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -790,6 +790,10 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        /**
+          * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
         /**
           * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
          */
@@ -1047,7 +1051,7 @@ export namespace Components {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -1057,11 +1061,11 @@ export namespace Components {
          */
         "required": boolean;
         /**
-          * Sets blur on the native `input` in `ion-input`. Use this method instead of the global `input.blur()`.
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
         "setBlur": () => Promise<void>;
         /**
-          * Sets focus on the native `input` in `ion-input`. Use this method instead of the global `input.focus()`.
+          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
@@ -1071,7 +1075,7 @@ export namespace Components {
         /**
           * The value of the input.
          */
-        "value"?: number | null;
+        "value"?: number;
     }
     interface BalPagination {
         /**
@@ -1145,10 +1149,6 @@ export namespace Components {
     }
     interface BalRadio {
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex": number;
-        /**
           * If `true`, the radio is selected.
          */
         "checked": boolean;
@@ -1165,15 +1165,23 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * If `true` the radio has no label
+          * @deprecated If `true` the radio has no label
          */
         "isEmpty": boolean;
+        /**
+          * If `true` the radio has no label
+         */
+        "labelHidden": boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
         /**
-          * Sets the focus on the input element.
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets the focus on the checkbox input element.
          */
         "setFocus": () => Promise<void>;
         /**
@@ -1567,10 +1575,6 @@ export namespace Components {
          */
         "autofocus": boolean;
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex": number;
-        /**
           * If `true` the input gets a clickable cursor style
          */
         "clickable": boolean;
@@ -1631,7 +1635,11 @@ export namespace Components {
          */
         "rows"?: number;
         /**
-          * Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global `textarea.focus()`.
+          * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
@@ -2512,10 +2520,6 @@ declare namespace LocalJSX {
     }
     interface BalCheckbox {
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex"?: number;
-        /**
           * If `true`, the checkbox is selected.
          */
         "checked"?: boolean;
@@ -2536,6 +2540,10 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
+          * If `true` the radio has no label
+         */
+        "labelHidden"?: boolean;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
@@ -2547,6 +2555,10 @@ declare namespace LocalJSX {
           * Emitted when the checked property has changed.
          */
         "onBalChange"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the toggle has focus.
          */
@@ -2626,10 +2638,6 @@ declare namespace LocalJSX {
          */
         "allowedDates"?: BalDateCallback | undefined;
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex"?: number;
-        /**
           * Closes the datepicker popover after selection
          */
         "closeOnSelect"?: boolean;
@@ -2640,7 +2648,7 @@ declare namespace LocalJSX {
         /**
           * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "defaultDate"?: string | null;
+        "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -2684,7 +2692,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: CustomEvent<string | undefined | null>) => void;
+        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -2692,7 +2704,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string>) => void;
+        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * The text to display when the select is empty.
          */
@@ -2712,7 +2724,7 @@ declare namespace LocalJSX {
         /**
           * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "value"?: string | null;
+        "value"?: string;
     }
     interface BalDocApp {
     }
@@ -2975,10 +2987,6 @@ declare namespace LocalJSX {
          */
         "autofocus"?: boolean;
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex"?: number;
-        /**
           * If `true` the input gets a clickable cursor style
          */
         "clickable"?: boolean;
@@ -3042,7 +3050,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string | undefined | null>) => void;
+        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3054,7 +3062,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | undefined | null>) => void;
+        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -3066,7 +3074,7 @@ declare namespace LocalJSX {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -3130,11 +3138,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<number>) => void;
+        "onBalChange"?: (event: CustomEvent<number | undefined>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onBalInput"?: (event: CustomEvent<number>) => void;
+        "onBalInput"?: (event: CustomEvent<number | undefined>) => void;
         /**
           * The steps in which the input increases or decreases
          */
@@ -3337,7 +3345,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<number | null | undefined>) => void;
+        "onBalChange"?: (event: CustomEvent<number | undefined>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -3345,7 +3357,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<number | null | undefined>) => void;
+        "onBalInput"?: (event: CustomEvent<number | undefined>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -3353,7 +3365,7 @@ declare namespace LocalJSX {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -3369,7 +3381,7 @@ declare namespace LocalJSX {
         /**
           * The value of the input.
          */
-        "value"?: number | null;
+        "value"?: number;
     }
     interface BalPagination {
         /**
@@ -3432,10 +3444,6 @@ declare namespace LocalJSX {
     }
     interface BalRadio {
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex"?: number;
-        /**
           * If `true`, the radio is selected.
          */
         "checked"?: boolean;
@@ -3452,9 +3460,13 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * If `true` the radio has no label
+          * @deprecated If `true` the radio has no label
          */
         "isEmpty"?: boolean;
+        /**
+          * If `true` the radio has no label
+         */
+        "labelHidden"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -3463,6 +3475,14 @@ declare namespace LocalJSX {
           * Emitted when the toggle loses focus.
          */
         "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the checked property has changed.
+         */
+        "onBalChange"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the toggle has focus.
          */
@@ -3881,10 +3901,6 @@ declare namespace LocalJSX {
          */
         "autofocus"?: boolean;
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex"?: number;
-        /**
           * If `true` the input gets a clickable cursor style
          */
         "clickable"?: boolean;
@@ -3931,7 +3947,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed..
          */
-        "onBalChange"?: (event: CustomEvent<string>) => void;
+        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3943,7 +3959,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string>) => void;
+        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */

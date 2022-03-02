@@ -41,7 +41,7 @@ describe('bal-input', () => {
 
     expect(await nativeInputElement.getProperty('value')).toBe('88')
     expect(balInputEvent).not.toHaveReceivedEvent()
-    expect(balChangeEvent).toHaveReceivedEventTimes(1)
+    expect(balChangeEvent).toHaveReceivedEventTimes(0)
   })
 
   it('should fire no balChange and no balInput, beacuse the field has still a focus', async () => {

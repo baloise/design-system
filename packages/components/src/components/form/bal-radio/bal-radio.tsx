@@ -10,19 +10,30 @@ import {
   ComponentInterface,
   State,
   Listen,
+  Watch,
 } from '@stencil/core'
+import {
+  FormInput,
+  inputHandleBlur,
+  inputHandleFocus,
+  inputSetBlur,
+  inputSetFocus,
+  stopEventBubbling,
+} from '../../../helpers/form-input.helpers'
 import { isDescendant } from '../../../helpers/helpers'
 
 @Component({
   tag: 'bal-radio',
 })
-export class Radio implements ComponentInterface {
+export class Radio implements ComponentInterface, FormInput<any> {
   private inputId = `bal-rb-${radioIds++}`
-  private inputEl?: HTMLInputElement
+  private inheritedAttributes: { [k: string]: any } = {}
 
-  @State() hasFocus = false
+  nativeInput?: HTMLInputElement
 
   @Element() el!: HTMLElement
+
+  @State() hasFocus = false
   @State() hasLabel = true
 
   /**
@@ -36,24 +47,28 @@ export class Radio implements ComponentInterface {
   @Prop() interface: 'radio' | 'select-button' = 'radio'
 
   /**
-   * The tabindex of the control.
-   */
-  @Prop() balTabindex = 0
-
-  /**
    * The value of the control.
    */
   @Prop() value = ''
 
   /**
-   * If `true` the radio has no label
+   * @deprecated If `true` the radio has no label
    */
   @Prop() isEmpty = false
+  @Watch('isEmpty') isEmptyHandler() {
+    this.labelHidden = this.isEmpty
+    console.warn('[DEPRECATED] - Use label-hidden instead')
+  }
+
+  /**
+   * If `true` the radio has no label
+   */
+  @Prop() labelHidden = false
 
   /**
    * If `true`, the radio is selected.
    */
-  @Prop({ mutable: true, reflect: true }) checked = false
+  @Prop({ mutable: true }) checked = false
 
   /**
    * If `true`, the user cannot interact with the checkbox.
@@ -75,22 +90,39 @@ export class Radio implements ComponentInterface {
    */
   @Event() balBlur!: EventEmitter<FocusEvent>
 
+  /**
+   * Emitted when the checked property has changed.
+   */
+  @Event() balChange!: EventEmitter<boolean>
+
+  /**
+   * Emitted when the input has clicked.
+   */
+  @Event() balClick!: EventEmitter<MouseEvent>
+
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (this.disabled && ev.target && (ev.target === this.el || isDescendant(this.el, ev.target as HTMLElement))) {
-      ev.preventDefault()
-      ev.stopPropagation()
+      stopEventBubbling(ev)
     }
   }
 
   /**
-   * Sets the focus on the input element.
+   * Sets the focus on the checkbox input element.
    */
   @Method()
   async setFocus() {
-    if (this.inputEl) {
-      this.inputEl.focus()
-    }
+    inputSetFocus<any>(this)
+  }
+
+  /**
+   * Sets blur on the native `input`. Use this method instead of the global
+   * `input.blur()`.
+   * @internal
+   */
+  @Method()
+  async setBlur() {
+    inputSetBlur<any>(this)
   }
 
   get radioGroup(): HTMLBalRadioGroupElement | null {
@@ -116,14 +148,17 @@ export class Radio implements ComponentInterface {
     }
   }
 
-  private onInputFocus = (ev: FocusEvent) => {
-    this.hasFocus = true
-    this.balFocus.emit(ev)
-  }
+  private onInputFocus = (ev: FocusEvent) => inputHandleFocus<any>(this, ev)
 
-  private onInputBlur = (ev: FocusEvent) => {
-    this.hasFocus = false
-    this.balBlur.emit(ev)
+  private onInputBlur = (ev: FocusEvent) => inputHandleBlur<any>(this, ev)
+
+  private onClick = (ev: MouseEvent) => {
+    if (!this.disabled) {
+      this.balChange.emit(this.checked)
+      this.balClick.emit(ev)
+    } else {
+      stopEventBubbling(ev)
+    }
   }
 
   render() {
@@ -132,7 +167,6 @@ export class Radio implements ComponentInterface {
     return (
       <Host
         role="radio"
-        tabindex={this.balTabindex}
         aria-checked={`${this.checked}`}
         aria-disabled={this.disabled ? 'true' : null}
         aria-hidden={this.disabled ? 'true' : null}
@@ -144,8 +178,10 @@ export class Radio implements ComponentInterface {
           'is-disabled': this.disabled,
           'is-focused': this.hasFocus,
         }}
+        onClick={this.onClick}
         onFocus={this.onInputFocus}
         onBlur={this.onInputBlur}
+        {...this.inheritedAttributes}
       >
         <input
           class={{
@@ -154,14 +190,14 @@ export class Radio implements ComponentInterface {
           }}
           type="radio"
           id={inputId}
-          tabindex={-1}
           name={this.name}
+          tabindex={-1}
           value={this.value}
           disabled={this.disabled}
           checked={this.checked}
           onFocus={e => this.onInputFocus(e)}
           onBlur={e => this.onInputBlur(e)}
-          ref={inputEl => (this.inputEl = inputEl)}
+          ref={inputEl => (this.nativeInput = inputEl)}
         />
         <label
           class={{
@@ -173,7 +209,7 @@ export class Radio implements ComponentInterface {
         >
           <bal-text
             class={{
-              'has-padding-left': !this.isEmpty && this.interface !== 'select-button',
+              'has-padding-left': !this.labelHidden && this.interface !== 'select-button',
             }}
           >
             <slot></slot>

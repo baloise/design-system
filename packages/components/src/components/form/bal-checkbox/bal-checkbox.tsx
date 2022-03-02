@@ -1,21 +1,48 @@
-import { Component, h, Host, Prop, Element, EventEmitter, Event, Method, Watch, Listen, State } from '@stencil/core'
-import { isDescendant } from '../../../helpers/helpers'
+import {
+  Component,
+  h,
+  Host,
+  Prop,
+  Element,
+  EventEmitter,
+  Event,
+  Method,
+  Listen,
+  State,
+  ComponentInterface,
+} from '@stencil/core'
+import {
+  FormInput,
+  inputHandleBlur,
+  inputHandleFocus,
+  inputSetBlur,
+  inputSetFocus,
+  stopEventBubbling,
+} from '../../../helpers/form-input.helpers'
+import { inheritAttributes, isDescendant } from '../../../helpers/helpers'
 
 @Component({
   tag: 'bal-checkbox',
 })
-export class Checkbox {
+export class Checkbox implements ComponentInterface, FormInput<any> {
   private inputId = `bal-cb-${checkboxIds++}`
-  private nativeInput?: HTMLInputElement
+  private inheritedAttributes: { [k: string]: any } = {}
 
-  @State() hasFocus = false
+  nativeInput?: HTMLInputElement
 
   @Element() el!: HTMLElement
+
+  @State() hasFocus = false
 
   /**
    * The name of the control, which is submitted with the form data.
    */
   @Prop() name: string = this.inputId
+
+  /**
+   * If `true` the radio has no label
+   */
+  @Prop() labelHidden = false
 
   /**
    * A DOMString representing the value of the checkbox. This is not displayed on the
@@ -30,24 +57,9 @@ export class Checkbox {
   @Prop() interface: 'checkbox' | 'switch' = 'checkbox'
 
   /**
-   * The tabindex of the control.
-   */
-  @Prop() balTabindex = 0
-
-  /**
    * If `true`, the checkbox is selected.
    */
-  @Prop({ mutable: true, reflect: true }) checked = false
-
-  /**
-   * Update the native input element when the checked changes
-   */
-  @Watch('checked')
-  protected checkedChanged(newChecked: boolean, oldChecked: boolean) {
-    if (newChecked !== oldChecked) {
-      this.balChange.emit(this.checked)
-    }
-  }
+  @Prop({ mutable: true }) checked = false
 
   /**
    * If `true`, the user cannot interact with the checkbox.
@@ -79,12 +91,20 @@ export class Checkbox {
    */
   @Event() balBlur!: EventEmitter<FocusEvent>
 
+  /**
+   * Emitted when the input has clicked.
+   */
+  @Event() balClick!: EventEmitter<MouseEvent>
+
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
     if (this.disabled && ev.target && (ev.target === this.el || isDescendant(this.el, ev.target as HTMLElement))) {
-      ev.preventDefault()
-      ev.stopPropagation()
+      stopEventBubbling(ev)
     }
+  }
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
   /**
@@ -92,9 +112,17 @@ export class Checkbox {
    */
   @Method()
   async setFocus() {
-    if (this.nativeInput) {
-      this.nativeInput.focus()
-    }
+    inputSetFocus<any>(this)
+  }
+
+  /**
+   * Sets blur on the native `input`. Use this method instead of the global
+   * `input.blur()`.
+   * @internal
+   */
+  @Method()
+  async setBlur() {
+    inputSetBlur<any>(this)
   }
 
   /**
@@ -105,35 +133,33 @@ export class Checkbox {
     return Promise.resolve(this.nativeInput)
   }
 
-  private onInputFocus = (ev: FocusEvent) => {
-    this.hasFocus = true
-    this.balFocus.emit(ev)
-  }
+  private onInputFocus = (ev: FocusEvent) => inputHandleFocus<any>(this, ev)
 
-  private onInputBlur = (ev: FocusEvent) => {
-    this.hasFocus = false
-    this.balBlur.emit(ev)
-  }
+  private onInputBlur = (ev: FocusEvent) => inputHandleBlur<any>(this, ev)
 
-  private onClick = (ev: FocusEvent) => {
+  private onClick = (ev: MouseEvent) => {
     const element = ev.target as HTMLAnchorElement
     if (element.href) {
       return
     }
-    ev.preventDefault()
 
-    this.checked = !this.checked
+    if (!this.disabled) {
+      this.checked = !this.checked
+      this.balChange.emit(this.checked)
+      this.balClick.emit(ev)
+    } else {
+      stopEventBubbling(ev)
+    }
   }
 
   render() {
     return (
       <Host
+        role="checkbox"
+        aria-checked={`${this.checked}`}
         aria-disabled={this.disabled ? 'true' : null}
         aria-hidden={this.disabled ? 'true' : null}
-        aria-checked={`${this.checked}`}
         aria-focused={this.hasFocus ? 'true' : null}
-        role="checkbox"
-        onClick={this.onClick}
         class={{
           'is-inverted': this.inverted,
           'is-disabled': this.disabled,
@@ -141,6 +167,7 @@ export class Checkbox {
           'bal-checkbox': this.interface === 'checkbox',
           'bal-switch': this.interface === 'switch',
         }}
+        {...this.inheritedAttributes}
       >
         <input
           class={{
@@ -148,15 +175,16 @@ export class Checkbox {
             'data-test-checkbox-input': true,
           }}
           type="checkbox"
-          name={this.name}
           id={this.inputId}
+          name={this.name}
+          tabindex={-1}
           checked={this.checked}
           value={this.value}
-          tabindex={this.balTabindex}
           aria-checked={`${this.checked}`}
           disabled={this.disabled || this.hidden}
           onFocus={e => this.onInputFocus(e)}
           onBlur={e => this.onInputBlur(e)}
+          onClick={this.onClick}
           ref={inputEl => (this.nativeInput = inputEl)}
         />
         <label
@@ -165,8 +193,13 @@ export class Checkbox {
             'is-disabled': this.disabled,
             'data-test-checkbox-label': true,
           }}
+          htmlFor={this.inputId}
         >
-          <bal-text>
+          <bal-text
+            class={{
+              'has-padding-left': !this.labelHidden,
+            }}
+          >
             <slot></slot>
           </bal-text>
         </label>

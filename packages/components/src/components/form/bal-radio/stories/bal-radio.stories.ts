@@ -132,7 +132,7 @@ RadioList.args = {
 RadioList.parameters = { ...component.sourceCode(RadioList), controls: { exclude: excludedControls } }
 
 export const SelectButton = args => ({
-  components: { ...component.components },
+  components: { ...component.components, BalField, BalFieldLabel, BalFieldControl, BalFieldMessage },
   setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">

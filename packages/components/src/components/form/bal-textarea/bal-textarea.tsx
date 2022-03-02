@@ -10,20 +10,35 @@ import {
   Watch,
   ComponentInterface,
   Listen,
+  State,
 } from '@stencil/core'
-import isEmpty from 'lodash.isempty'
-import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
+import {
+  FormInput,
+  getInputTarget,
+  inputHandleBlur,
+  inputHandleChange,
+  inputHandleClick,
+  inputHandleFocus,
+  inputHandleHostClick,
+  inputListenOnClick,
+  inputSetBlur,
+  inputSetFocus,
+} from '../../../helpers/form-input.helpers'
+import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
 
 @Component({
   tag: 'bal-textarea',
 })
-export class Textarea implements ComponentInterface {
+export class Textarea implements ComponentInterface, FormInput<string | undefined> {
   private inputId = `bal-textarea-${TextareaIds++}`
-  private nativeInput?: HTMLTextAreaElement
-  private didInit = false
-  private hasFocus = false
+  private inheritedAttributes: { [k: string]: any } = {}
+
+  nativeInput?: HTMLTextAreaElement
+  inputValue = this.value
 
   @Element() el!: HTMLElement
+
+  @State() hasFocus = false
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -64,11 +79,6 @@ export class Textarea implements ComponentInterface {
    * Instructional text that shows before the input has a value.
    */
   @Prop() placeholder?: string
-
-  /**
-   * The tabindex of the control.
-   */
-  @Prop() balTabindex = 0
 
   /**
    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
@@ -128,24 +138,14 @@ export class Textarea implements ComponentInterface {
   @Prop({ mutable: true }) value?: string = ''
 
   /**
-   * Update the native input element when the value changes
-   */
-  @Watch('value')
-  protected valueChanged(newValue: string | number | null | undefined, oldValue: string | number | null | undefined) {
-    if (this.didInit && !this.hasFocus && newValue !== oldValue) {
-      this.balChange.emit(this.getValue())
-    }
-  }
-
-  /**
    * Emitted when the input value has changed..
    */
-  @Event() balChange!: EventEmitter<string>
+  @Event() balChange!: EventEmitter<string | undefined>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<string>
+  @Event() balInput!: EventEmitter<string | undefined>
 
   /**
    * Emitted when a keyboard input occurred.
@@ -168,33 +168,39 @@ export class Textarea implements ComponentInterface {
   @Event() balFocus!: EventEmitter<FocusEvent>
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(ev: UIEvent) {
-    if (this.disabled && ev.target && ev.target === this.el) {
-      ev.preventDefault()
-      ev.stopPropagation()
-    }
-  }
-
-  componentDidLoad() {
-    this.didInit = true
-    if (isEmpty(this.value)) {
-      this.valueChanged(this.value, undefined)
-    }
+  listenOnClick(event: UIEvent) {
+    inputListenOnClick(this, event)
   }
 
   connectedCallback() {
     this.debounceChanged()
   }
 
+  componentDidLoad() {
+    this.inputValue = this.value
+  }
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
+
   /**
-   * Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global
-   * `textarea.focus()`.
+   * Sets focus on the native `input` in `bal-input`. Use this method instead of the global
+   * `input.focus()`.
    */
   @Method()
   async setFocus() {
-    if (this.nativeInput) {
-      this.nativeInput.focus()
-    }
+    inputSetFocus(this)
+  }
+
+  /**
+   * Sets blur on the native `input` in `bal-input`. Use this method instead of the global
+   * `input.blur()`.
+   * @internal
+   */
+  @Method()
+  async setBlur() {
+    inputSetBlur(this)
   }
 
   /**
@@ -209,31 +215,32 @@ export class Textarea implements ComponentInterface {
     return this.value || ''
   }
 
-  private onInput = (ev: Event) => {
-    const textarea = ev.target as HTMLTextAreaElement | null
-    if (textarea) {
-      this.value = textarea.value || ''
+  private onInput = (ev: InputEvent) => {
+    const input = getInputTarget(ev)
+
+    if (input) {
+      this.inputValue = input.value
     }
-    this.balInput.emit(this.value || '')
+
+    this.balInput.emit(this.inputValue)
   }
 
-  private onFocus = (ev: FocusEvent) => {
-    this.hasFocus = true
-    this.balFocus.emit(ev)
-  }
+  private onFocus = (event: FocusEvent) => inputHandleFocus(this, event)
 
   private onBlur = (ev: FocusEvent) => {
-    this.hasFocus = false
-    this.balBlur.emit(ev)
-    this.balChange.emit(this.getValue())
+    inputHandleBlur(this, ev)
+
+    const input = ev.target as HTMLInputElement | null
+    if (input) {
+      input.value = this.getValue()
+    }
+
+    inputHandleChange(this)
   }
 
-  private handleClick = (event: MouseEvent) => {
-    if (this.disabled) {
-      event.preventDefault()
-      event.stopPropagation()
-    }
-  }
+  private onClick = (event: MouseEvent) => inputHandleClick(this, event)
+
+  private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
 
   render() {
     const value = this.getValue()
@@ -272,16 +279,16 @@ export class Textarea implements ComponentInterface {
           placeholder={this.placeholder}
           inputMode={this.inputmode}
           value={this.value}
-          tabindex={this.balTabindex}
           readonly={this.readonly}
           cols={this.cols}
           rows={this.rows}
           wrap={this.wrap}
-          onInput={this.onInput}
-          onBlur={this.onBlur}
           onFocus={this.onFocus}
-          onClick={e => this.balClick.emit(e)}
+          onInput={ev => this.onInput(ev as InputEvent)}
+          onBlur={this.onBlur}
+          onClick={this.onClick}
           onKeyPress={e => this.balKeyPress.emit(e)}
+          {...this.inheritedAttributes}
         >
           {value}
         </textarea>
