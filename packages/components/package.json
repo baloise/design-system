@@ -66,7 +66,7 @@
     "@baloise/design-system-fonts": "10.2.1-beta.8+942fb79c",
     "@baloise/design-system-icons": "10.2.1-beta.8+942fb79c",
     "@baloise/stencil-vite-fix": "^9.2.3",
-    "@baloise/web-app-utils": "^3.0.0",
+    "@baloise/web-app-utils": "^3.0.1",
     "@popperjs/core": "^2.11.2",
     "@stencil/core": "^2.11.0",
     "@types/big.js": "^6.1.3",

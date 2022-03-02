@@ -9,14 +9,17 @@ import {
   Watch,
   ComponentInterface,
   Method,
+  Listen,
 } from '@stencil/core'
-import { findItemLabel } from '../../../../helpers/helpers'
+import { stopEventBubbling } from '../../../../helpers/form-input.helpers'
+import { findItemLabel, inheritAttributes, isDescendant } from '../../../../helpers/helpers'
 
 @Component({
   tag: 'bal-radio-group',
 })
 export class RadioGroup implements ComponentInterface {
   private inputId = `bal-rg-${radioGroupIds++}`
+  private inheritedAttributes: { [k: string]: any } = {}
 
   @Element() el!: HTMLElement
 
@@ -77,7 +80,15 @@ export class RadioGroup implements ComponentInterface {
    */
   @Event() balChange!: EventEmitter<string>
 
+  @Listen('balChange', { capture: true, target: 'document' })
+  listenOnClick(ev: UIEvent) {
+    if (isDescendant(this.el, ev.target as HTMLElement)) {
+      stopEventBubbling(ev)
+    }
+  }
+
   componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
     this.sync()
     this.disabledChanged(this.disabled)
   }
@@ -127,12 +138,14 @@ export class RadioGroup implements ComponentInterface {
       <Host
         role="radiogroup"
         aria-labelledby={label?.id}
+        aria-disabled={this.disabled ? 'true' : null}
         onClick={this.onClick}
         class={{
           [`bal-${this.interface}`]: true,
           'is-vertical-mobile': this.verticalOnMobile,
           'is-vertical': this.vertical,
         }}
+        {...this.inheritedAttributes}
       >
         <div>
           <slot></slot>

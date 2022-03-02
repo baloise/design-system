@@ -139,11 +139,6 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   @Prop() pattern?: string | undefined
 
   /**
-   * The tabindex of the control.
-   */
-  @Prop() balTabindex = 0
-
-  /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop() required = false
@@ -282,7 +277,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   }
 
   /**
-   * Sets focus on the native `input` in `ion-input`. Use this method instead of the global
+   * Sets focus on the native `input` in `bal-input`. Use this method instead of the global
    * `input.focus()`.
    */
   @Method()
@@ -291,7 +286,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   }
 
   /**
-   * Sets blur on the native `input` in `ion-input`. Use this method instead of the global
+   * Sets blur on the native `input` in `bal-input`. Use this method instead of the global
    * `input.blur()`.
    * @internal
    */
@@ -425,12 +420,12 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
           spellcheck={this.spellcheck}
           type={this.type}
           value={value}
-          {...inputProps}
           onFocus={this.onFocus}
           onInput={ev => this.onInput(ev as InputEvent)}
           onBlur={this.onBlur}
           onClick={this.onClick}
           onKeyPress={e => this.balKeyPress.emit(e)}
+          {...inputProps}
           {...this.inheritedAttributes}
         />
       </Host>

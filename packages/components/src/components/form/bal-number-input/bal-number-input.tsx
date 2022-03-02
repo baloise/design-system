@@ -175,7 +175,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   /**
-   * Sets focus on the native `input` in `ion-input`. Use this method instead of the global
+   * Sets focus on the native `input`. Use this method instead of the global
    * `input.focus()`.
    */
   @Method()
@@ -184,7 +184,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   }
 
   /**
-   * Sets blur on the native `input` in `ion-input`. Use this method instead of the global
+   * Sets blur on the native `input`. Use this method instead of the global
    * `input.blur()`.
    * @internal
    */

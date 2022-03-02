@@ -6,11 +6,10 @@ export interface FormInput<Value> {
   hasFocus: boolean
   value?: Value
   inputValue?: Value
-  nativeInput?: HTMLInputElement
-  balClick: EventEmitter<MouseEvent>
-  balFocus: EventEmitter<FocusEvent>
-  balBlur: EventEmitter<FocusEvent>
-  balInput: EventEmitter<Value>
+  nativeInput?: HTMLInputElement | HTMLTextAreaElement
+  balClick?: EventEmitter<MouseEvent>
+  balFocus?: EventEmitter<FocusEvent>
+  balBlur?: EventEmitter<FocusEvent>
   balChange: EventEmitter<Value>
 }
 
@@ -58,7 +57,7 @@ export const inputHandleHostClick = <Value>(component: FormInput<Value>, event: 
 }
 
 export const inputHandleClick = <Value>(component: FormInput<Value>, event: MouseEvent) => {
-  if (!component.disabled) {
+  if (!component.disabled && component.balClick) {
     component.balClick.emit(event)
   }
 }
@@ -66,12 +65,16 @@ export const inputHandleClick = <Value>(component: FormInput<Value>, event: Mous
 export const inputHandleFocus = <Value>(component: FormInput<Value>, event: FocusEvent) => {
   component.hasFocus = true
   component.inputValue = component.value
-  component.balFocus.emit(event)
+  if (component.balFocus) {
+    component.balFocus.emit(event)
+  }
 }
 
 export const inputHandleBlur = <Value>(component: FormInput<Value>, event: FocusEvent) => {
   component.hasFocus = false
-  component.balBlur.emit(event)
+  if (component.balBlur) {
+    component.balBlur.emit(event)
+  }
 }
 
 export const inputHandleChange = <Value>(component: FormInput<Value>) => {

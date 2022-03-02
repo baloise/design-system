@@ -28,13 +28,13 @@ import {
   isSameWeek,
   isSameMonth,
 } from 'date-fns'
-import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
+import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
 import { BalCalendarCell, BalDateCallback, BalPointerDate } from './bal-datepicker.type'
-import { isEnterKey, parse, format, isValidIsoString, now, formatDateString } from '@baloise/web-app-utils'
+import { isSpaceKey, parse, format, isValidIsoString, now, formatDateString, isEnterKey } from '@baloise/web-app-utils'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
-import { BalLanguage, BalConfigState } from '../../../config/config.types'
+import { BalLanguage, BalConfigState, BalRegion } from '../../../config/config.types'
 import {
   detachComponentToConfig,
   defaultConfig,
@@ -43,18 +43,35 @@ import {
   useBalConfig,
   defaultLocale,
 } from '../../../config'
+import {
+  FormInput,
+  getInputTarget,
+  inputHandleBlur,
+  inputHandleFocus,
+  inputHandleHostClick,
+  inputListenOnClick,
+  inputSetBlur,
+  inputSetFocus,
+  stopEventBubbling,
+} from '../../../helpers/form-input.helpers'
 
 @Component({
   tag: 'bal-datepicker',
 })
-export class Datepicker implements ComponentInterface, BalConfigObserver {
-  private inputElement!: HTMLInputElement
-  private popoverElement!: HTMLBalPopoverElement
+export class Datepicker implements ComponentInterface, BalConfigObserver, FormInput<string | null | undefined> {
   private inputId = `bal-dp-${datepickerIds++}`
+  private inheritedAttributes: { [k: string]: any } = {}
+  private popoverElement!: HTMLBalPopoverElement
+
+  nativeInput!: HTMLInputElement
+  inputValue = this.value
 
   @Element() el!: HTMLElement
 
   @State() language: BalLanguage = defaultConfig.language
+  @State() region: BalRegion = defaultConfig.region
+
+  @State() hasFocus = false
   @State() isPopoverOpen = false
   @State() selectedDate?: string | null = ''
   @State() pointerDate: BalPointerDate = {
@@ -84,11 +101,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
       this.language = this.locale
     }
   }
-
-  /**
-   * The tabindex of the control.
-   */
-  @Prop() balTabindex = 0
 
   /**
    * Set this to `true` when the component is placed on a dark background.
@@ -182,7 +194,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   protected valueChanged() {
     this.selectedDate = this.value
     this.updatePointerDates()
-    this.balChange.emit(this.value)
   }
 
   /**
@@ -198,7 +209,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<string>
+  @Event() balInput!: EventEmitter<string | undefined | null>
 
   /**
    * Emitted when the input loses focus.
@@ -210,18 +221,14 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
    */
   @Event() balFocus!: EventEmitter<FocusEvent>
 
-  @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(ev: UIEvent) {
-    if (this.disabled && ev.target && ev.target === this.el) {
-      ev.preventDefault()
-      ev.stopPropagation()
-    }
-  }
+  /**
+   * Emitted when the input has clicked.
+   */
+  @Event() balClick!: EventEmitter<MouseEvent>
 
-  componentWillLoad() {
-    this.selectedDate = this.value
-    this.updatePointerDates()
-    this.updateValue(this.value)
+  @Listen('click', { capture: true, target: 'document' })
+  listenOnClick(event: UIEvent) {
+    inputListenOnClick(this, event)
   }
 
   connectedCallback() {
@@ -229,12 +236,25 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
     attachComponentToConfig(this)
   }
 
-  configChanged(config: BalConfigState): void {
-    this.language = config.language
+  componentDidLoad() {
+    this.inputValue = this.value
+  }
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+
+    this.selectedDate = this.value
+    this.updatePointerDates()
+    this.updateValue(this.value)
   }
 
   disconnectedCallback() {
     detachComponentToConfig(this)
+  }
+
+  configChanged(config: BalConfigState): void {
+    this.language = config.language
+    this.region = config.region
   }
 
   /**
@@ -268,7 +288,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
    */
   @Method()
   async select(dateString: string) {
-    this.inputElement.value = format(this.getLocale(), parse(dateString))
+    this.nativeInput.value = format(this.getLocale(), parse(dateString))
     this.updateValue(dateString)
     this.updatePointerDates()
 
@@ -278,13 +298,22 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   }
 
   /**
-   * Sets the focus on the input element
+   * Sets focus on the native `input`. Use this method instead of the global
+   * `input.focus()`.
    */
   @Method()
   async setFocus() {
-    if (this.inputElement) {
-      this.inputElement.focus()
-    }
+    inputSetFocus(this)
+  }
+
+  /**
+   * Sets blur on the native `input`. Use this method instead of the global
+   * `input.blur()`.
+   * @internal
+   */
+  @Method()
+  async setBlur() {
+    inputSetBlur(this)
   }
 
   /**
@@ -292,7 +321,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
    */
   @Method()
   getInputElement(): Promise<HTMLInputElement> {
-    return Promise.resolve(this.inputElement)
+    return Promise.resolve(this.nativeInput)
   }
 
   private updatePointerDates() {
@@ -316,13 +345,16 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
     if (!isValidIsoString(dateString)) {
       this.selectedDate = undefined
       this.value = undefined
-      if (this.inputElement) {
-        this.inputElement.value = ''
+      if (this.nativeInput) {
+        this.nativeInput.value = ''
       }
       return
     }
 
-    this.value = dateString
+    if (this.value !== dateString) {
+      this.value = dateString
+      this.balChange.emit(this.value)
+    }
   }
 
   get minYear() {
@@ -430,14 +462,18 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
     if (!this.disabled) {
       this.popoverElement.toggle()
     }
-    event.stopPropagation()
+    stopEventBubbling(event)
+    this.balClick.emit(event)
   }
 
   private onInputClick = (event: MouseEvent) => {
     if (!this.triggerIcon && !this.disabled) {
       this.popoverElement.toggle()
     }
-    event.stopPropagation()
+    stopEventBubbling(event)
+    if (!this.triggerIcon) {
+      this.balClick.emit(event)
+    }
   }
 
   private onPopoverChange = (event: CustomEvent<boolean>) => {
@@ -446,18 +482,21 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   }
 
   private onInput = (event: Event) => {
-    const inputValue = (event.target as HTMLInputElement).value
-    this.balInput.emit(inputValue)
-    event.stopPropagation()
+    const input = getInputTarget(event)
 
-    if (inputValue && inputValue.length >= 6) {
-      const date = parse(inputValue)
-      const dateString = formatDateString(date as Date)
-      if (isValidIsoString(dateString)) {
-        this.selectedDate = dateString
-        this.updatePointerDates()
+    if (input) {
+      this.inputValue = input.value
+      if (this.inputValue && this.inputValue.length >= 6) {
+        const date = parse(this.inputValue)
+        const dateString = formatDateString(date as Date)
+        if (isValidIsoString(dateString)) {
+          this.selectedDate = dateString
+          this.updatePointerDates()
+        }
       }
     }
+
+    this.balInput.emit(this.inputValue)
   }
 
   private onInputChange = (event: Event) => {
@@ -466,7 +505,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
     const dateString = formatDateString(date as Date)
     const formattedValue = format(this.getLocale(), date)
 
-    this.inputElement.value = formattedValue
+    this.nativeInput.value = formattedValue
     this.updateValue(dateString)
     this.updatePointerDates()
   }
@@ -478,17 +517,21 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
   }
 
   private onInputKeyUp = (event: KeyboardEvent) => {
+    if (isSpaceKey(event) && !this.triggerIcon) {
+      if (this.isPopoverOpen) {
+        this.close()
+      } else {
+        this.open()
+      }
+    }
+
     if (isEnterKey(event) && !this.triggerIcon) {
-      const date = parse(this.inputElement.value)
+      const date = parse(this.nativeInput.value)
       const dateString = formatDateString(date as Date)
 
       if (this.isPopoverOpen) {
         if (this.value === dateString) {
           this.close()
-        }
-      } else {
-        if (this.value !== dateString) {
-          this.open()
         }
       }
     }
@@ -503,14 +546,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
     if (event.key === 'Tab') {
       this.close()
     }
-  }
-
-  private onInputFocus = (event: FocusEvent) => {
-    this.balFocus.emit(event)
-  }
-
-  private onInputBlur = (event: FocusEvent) => {
-    this.balBlur.emit(event)
   }
 
   private onMonthSelect = (event: Event) => {
@@ -530,17 +565,15 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
     }
   }
 
-  private handleClick = (event: MouseEvent) => {
-    if (this.disabled) {
-      event.preventDefault()
-      event.stopPropagation()
-    }
-  }
+  private onInputFocus = (event: FocusEvent) => inputHandleFocus(this, event)
+
+  private onInputBlur = (event: FocusEvent) => inputHandleBlur(this, event)
+
+  private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
 
   render() {
     return (
       <Host
-        role="datepicker"
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
@@ -582,7 +615,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
             'is-disabled': this.disabled,
             'is-danger': this.invalid,
           }}
-          ref={el => (this.inputElement = el as HTMLInputElement)}
+          ref={el => (this.nativeInput = el as HTMLInputElement)}
           id={this.inputId}
           aria-labelledby={labelId}
           type="text"
@@ -594,7 +627,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
           disabled={this.disabled}
           readonly={this.readonly}
           placeholder={this.placeholder}
-          tabindex={this.balTabindex}
           onKeyDown={e => this.onInputKeyDown(e)}
           onKeyUp={e => this.onInputKeyUp(e)}
           onInput={this.onInput}
@@ -602,6 +634,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver {
           onChange={this.onInputChange}
           onBlur={this.onInputBlur}
           onFocus={this.onInputFocus}
+          {...this.inheritedAttributes}
         />
         <bal-icon
           class="datepicker-trigger-icon clickable"
