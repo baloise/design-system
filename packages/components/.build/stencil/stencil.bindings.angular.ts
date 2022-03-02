@@ -14,7 +14,13 @@ export const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'boolean',
   },
   {
-    elementSelectors: ['bal-input', 'bal-textarea', 'bal-slider'],
+    elementSelectors: ['bal-number-input', 'bal-input-stepper'],
+    event: 'balInput',
+    targetAttr: 'value',
+    type: 'number',
+  },
+  {
+    elementSelectors: ['bal-input','bal-textarea', 'bal-slider'],
     event: 'balInput',
     targetAttr: 'value',
     type: 'text',
@@ -61,6 +67,14 @@ export const AngularGenerator = () =>
         components: [
           'bal-hint-title',
           'bal-hint-text',
+        ],
+      },
+      'bal-stage': {
+        components: [
+          'bal-stage-body',
+          'bal-stage-foot',
+          'bal-stage-head',
+          'bal-stage-image',
         ],
       },
       'bal-list': {

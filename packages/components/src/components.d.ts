@@ -722,7 +722,7 @@ export namespace Components {
          */
         "debounce": number;
         /**
-          * Defines the allowed decimal points for the `number-input`.
+          * @deprecated Defines the allowed decimal points for the `number-input`. Use the <bal-number-input> component instead.
          */
         "decimal"?: number;
         /**
@@ -771,7 +771,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * If `true` on mobile device the number keypad is active
+          * @deprecated If `true` on mobile device the number keypad is active. Use the <bal-number-input> component instead.
          */
         "numberInput": boolean;
         /**
@@ -809,7 +809,7 @@ export namespace Components {
         /**
           * The value of the input.
          */
-        "value"?: string | number;
+        "value"?: string;
     }
     interface BalInputGroup {
         /**
@@ -1018,6 +1018,60 @@ export namespace Components {
           * Defines the color of the element
          */
         "color": '' | ColorTypes;
+    }
+    interface BalNumberInput {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * Defines the allowed decimal points for the `number-input`.
+         */
+        "decimal": number;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Sets blur on the native `input` in `ion-input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input` in `ion-input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Adds a suffix the the input-value after blur.
+         */
+        "suffix"?: string;
+        /**
+          * The value of the input.
+         */
+        "value"?: number | null;
     }
     interface BalPagination {
         /**
@@ -1978,6 +2032,12 @@ declare global {
         prototype: HTMLBalNotificationElement;
         new (): HTMLBalNotificationElement;
     };
+    interface HTMLBalNumberInputElement extends Components.BalNumberInput, HTMLStencilElement {
+    }
+    var HTMLBalNumberInputElement: {
+        prototype: HTMLBalNumberInputElement;
+        new (): HTMLBalNumberInputElement;
+    };
     interface HTMLBalPaginationElement extends Components.BalPagination, HTMLStencilElement {
     }
     var HTMLBalPaginationElement: {
@@ -2180,6 +2240,7 @@ declare global {
         "bal-navbar-menu-start": HTMLBalNavbarMenuStartElement;
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
+        "bal-number-input": HTMLBalNumberInputElement;
         "bal-pagination": HTMLBalPaginationElement;
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
@@ -2926,7 +2987,7 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
-          * Defines the allowed decimal points for the `number-input`.
+          * @deprecated Defines the allowed decimal points for the `number-input`. Use the <bal-number-input> component instead.
          */
         "decimal"?: number;
         /**
@@ -2971,7 +3032,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * If `true` on mobile device the number keypad is active
+          * @deprecated If `true` on mobile device the number keypad is active. Use the <bal-number-input> component instead.
          */
         "numberInput"?: boolean;
         /**
@@ -2981,7 +3042,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string | number | null>) => void;
+        "onBalChange"?: (event: CustomEvent<string | undefined | null>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -2993,7 +3054,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | number | null>) => void;
+        "onBalInput"?: (event: CustomEvent<string | undefined | null>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -3029,7 +3090,7 @@ declare namespace LocalJSX {
         /**
           * The value of the input.
          */
-        "value"?: string | number;
+        "value"?: string;
     }
     interface BalInputGroup {
         /**
@@ -3070,6 +3131,10 @@ declare namespace LocalJSX {
           * Emitted when the input value has changed.
          */
         "onBalChange"?: (event: CustomEvent<number>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onBalInput"?: (event: CustomEvent<number>) => void;
         /**
           * The steps in which the input increases or decreases
          */
@@ -3243,6 +3308,68 @@ declare namespace LocalJSX {
           * Defines the color of the element
          */
         "color"?: '' | ColorTypes;
+    }
+    interface BalNumberInput {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * Defines the allowed decimal points for the `number-input`.
+         */
+        "decimal"?: number;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBalChange"?: (event: CustomEvent<number | null | undefined>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalInput"?: (event: CustomEvent<number | null | undefined>) => void;
+        /**
+          * Emitted when a keyboard key has pressed.
+         */
+        "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string | null;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * Adds a suffix the the input-value after blur.
+         */
+        "suffix"?: string;
+        /**
+          * The value of the input.
+         */
+        "value"?: number | null;
     }
     interface BalPagination {
         /**
@@ -3953,6 +4080,7 @@ declare namespace LocalJSX {
         "bal-navbar-menu-start": BalNavbarMenuStart;
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
+        "bal-number-input": BalNumberInput;
         "bal-pagination": BalPagination;
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
@@ -4040,6 +4168,7 @@ declare module "@stencil/core" {
             "bal-navbar-menu-start": LocalJSX.BalNavbarMenuStart & JSXBase.HTMLAttributes<HTMLBalNavbarMenuStartElement>;
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
+            "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;

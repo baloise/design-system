@@ -27,7 +27,7 @@ export const filterInputValue = (
   return oldValue === undefined ? '' : `${oldValue}`
 }
 
-export const formatInputValue = (value: string, decimalPoints: number | undefined = undefined): string => {
+export const formatInputValue = (value: string, decimalPoints = 0): string => {
   if (value.charAt(0) === getDecimalSeparator()) {
     value = `0${value}`
   }

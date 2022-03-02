@@ -1,6 +1,7 @@
 import {
   isAccordion,
   isButton,
+  isNumberInput,
   isCardTitle,
   isCheckbox,
   isHeading,
@@ -26,7 +27,7 @@ Cypress.Commands.overwrite('contains', (originalFn, element: Cypress.Chainable<J
     return wrapRoot(element, selectors.checkbox.text, $el => originalFn($el, content, options))
   }
 
-  if (isInput(element)) {
+  if (isInput(element) || isNumberInput(element)) {
     return wrapRoot(element, selectors.input.main, $el => originalFn($el, content, options))
   }
 

@@ -73,6 +73,7 @@ export class InputStepper implements ComponentInterface {
   @Watch('value')
   protected async valueChanged(newValue: number, oldValue: number) {
     if (this.didInit && newValue !== oldValue) {
+      this.balInput.emit(newValue)
       this.balChange.emit(newValue)
     }
   }
@@ -81,6 +82,11 @@ export class InputStepper implements ComponentInterface {
    * Emitted when the input value has changed.
    */
   @Event() balChange!: EventEmitter<number>
+
+  /**
+   * Emitted when the input value has changed.
+   */
+  @Event() balInput!: EventEmitter<number>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
@@ -113,6 +119,7 @@ export class InputStepper implements ComponentInterface {
     const newValue = new Big(this.value).plus(this.steps).toNumber()
     if (newValue <= this.max) {
       this.value = newValue
+      this.balInput.emit(newValue)
       this.balChange.emit(newValue)
     }
   }
@@ -121,6 +128,7 @@ export class InputStepper implements ComponentInterface {
     const newValue = new Big(this.value).minus(this.steps).toNumber()
     if (newValue >= this.min) {
       this.value = newValue
+      this.balInput.emit(newValue)
       this.balChange.emit(newValue)
     }
   }
