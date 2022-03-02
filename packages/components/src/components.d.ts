@@ -732,7 +732,7 @@ export namespace Components {
         /**
           * Returns the native `<input>` element used under the hood.
          */
-        "getInputElement": () => Promise<HTMLInputElement | undefined>;
+        "getInputElement": () => Promise<HTMLInputElement>;
         "hasIconRight": boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
@@ -791,7 +791,11 @@ export namespace Components {
          */
         "required": boolean;
         /**
-          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
+          * Sets blur on the native `input` in `ion-input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input` in `ion-input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
@@ -809,7 +813,7 @@ export namespace Components {
         /**
           * The value of the input.
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface BalInputGroup {
         /**
@@ -3090,7 +3094,7 @@ declare namespace LocalJSX {
         /**
           * The value of the input.
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface BalInputGroup {
         /**
@@ -3338,6 +3342,10 @@ declare namespace LocalJSX {
           * Emitted when the value has changed.
          */
         "onBalChange"?: (event: CustomEvent<number | null | undefined>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
