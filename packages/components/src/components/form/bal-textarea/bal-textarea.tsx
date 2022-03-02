@@ -29,7 +29,7 @@ import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helper
 @Component({
   tag: 'bal-textarea',
 })
-export class Textarea implements ComponentInterface, FormInput<string | undefined | null> {
+export class Textarea implements ComponentInterface, FormInput<string | undefined> {
   private inputId = `bal-textarea-${TextareaIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -140,12 +140,12 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   /**
    * Emitted when the input value has changed..
    */
-  @Event() balChange!: EventEmitter<string | undefined | null>
+  @Event() balChange!: EventEmitter<string | undefined>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<string | undefined | null>
+  @Event() balInput!: EventEmitter<string | undefined>
 
   /**
    * Emitted when a keyboard input occurred.

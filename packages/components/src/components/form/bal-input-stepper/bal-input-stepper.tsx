@@ -29,7 +29,7 @@ import {
 @Component({
   tag: 'bal-input-stepper',
 })
-export class InputStepper implements ComponentInterface, BalConfigObserver, FormInput<number | undefined | null> {
+export class InputStepper implements ComponentInterface, BalConfigObserver, FormInput<number | undefined> {
   private inputId = `bal-input-stepper${InputStepperIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -97,12 +97,12 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<number | null | undefined>
+  @Event() balChange!: EventEmitter<number | undefined>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balInput!: EventEmitter<number | null | undefined>
+  @Event() balInput!: EventEmitter<number | undefined>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {

@@ -58,7 +58,7 @@ import {
 @Component({
   tag: 'bal-datepicker',
 })
-export class Datepicker implements ComponentInterface, BalConfigObserver, FormInput<string | null | undefined> {
+export class Datepicker implements ComponentInterface, BalConfigObserver, FormInput<string | undefined> {
   private inputId = `bal-dp-${datepickerIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private popoverElement!: HTMLBalPopoverElement
@@ -73,7 +73,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   @State() hasFocus = false
   @State() isPopoverOpen = false
-  @State() selectedDate?: string | null = ''
+  @State() selectedDate?: string = ''
   @State() pointerDate: BalPointerDate = {
     year: getYear(now()),
     month: getMonth(now()),
@@ -180,12 +180,12 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   /**
    * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
    */
-  @Prop() defaultDate?: string | null
+  @Prop() defaultDate?: string
 
   /**
    * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
    */
-  @Prop({ mutable: true }) value?: string | null
+  @Prop({ mutable: true }) value?: string
 
   /**
    * Update the native input element when the value changes
@@ -204,12 +204,12 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<string | undefined | null>
+  @Event() balChange!: EventEmitter<string | undefined>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<string | undefined | null>
+  @Event() balInput!: EventEmitter<string | undefined>
 
   /**
    * Emitted when the input loses focus.
@@ -341,7 +341,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     }
   }
 
-  private updateValue(dateString: string | undefined | null) {
+  private updateValue(dateString: string | undefined) {
     if (!isValidIsoString(dateString)) {
       this.selectedDate = undefined
       this.value = undefined

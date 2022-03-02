@@ -367,7 +367,7 @@ export namespace Components {
         /**
           * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "defaultDate"?: string | null;
+        "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -443,7 +443,7 @@ export namespace Components {
         /**
           * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "value"?: string | null;
+        "value"?: string;
     }
     interface BalDocApp {
     }
@@ -781,7 +781,7 @@ export namespace Components {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -813,7 +813,7 @@ export namespace Components {
         /**
           * The value of the input.
          */
-        "value"?: string | null;
+        "value"?: string;
     }
     interface BalInputGroup {
         /**
@@ -1051,7 +1051,7 @@ export namespace Components {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -1075,7 +1075,7 @@ export namespace Components {
         /**
           * The value of the input.
          */
-        "value"?: number | null;
+        "value"?: number;
     }
     interface BalPagination {
         /**
@@ -2648,7 +2648,7 @@ declare namespace LocalJSX {
         /**
           * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "defaultDate"?: string | null;
+        "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -2692,7 +2692,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: CustomEvent<string | undefined | null>) => void;
+        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -2704,7 +2704,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | undefined | null>) => void;
+        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * The text to display when the select is empty.
          */
@@ -2724,7 +2724,7 @@ declare namespace LocalJSX {
         /**
           * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "value"?: string | null;
+        "value"?: string;
     }
     interface BalDocApp {
     }
@@ -3050,7 +3050,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string | undefined | null>) => void;
+        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3062,7 +3062,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | undefined | null>) => void;
+        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -3074,7 +3074,7 @@ declare namespace LocalJSX {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -3098,7 +3098,7 @@ declare namespace LocalJSX {
         /**
           * The value of the input.
          */
-        "value"?: string | null;
+        "value"?: string;
     }
     interface BalInputGroup {
         /**
@@ -3138,11 +3138,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<number | null | undefined>) => void;
+        "onBalChange"?: (event: CustomEvent<number | undefined>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onBalInput"?: (event: CustomEvent<number | null | undefined>) => void;
+        "onBalInput"?: (event: CustomEvent<number | undefined>) => void;
         /**
           * The steps in which the input increases or decreases
          */
@@ -3345,7 +3345,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<number | null | undefined>) => void;
+        "onBalChange"?: (event: CustomEvent<number | undefined>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3357,7 +3357,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<number | null | undefined>) => void;
+        "onBalInput"?: (event: CustomEvent<number | undefined>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -3365,7 +3365,7 @@ declare namespace LocalJSX {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -3381,7 +3381,7 @@ declare namespace LocalJSX {
         /**
           * The value of the input.
          */
-        "value"?: number | null;
+        "value"?: number;
     }
     interface BalPagination {
         /**
@@ -3947,7 +3947,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed..
          */
-        "onBalChange"?: (event: CustomEvent<string | undefined | null>) => void;
+        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3959,7 +3959,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | undefined | null>) => void;
+        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */

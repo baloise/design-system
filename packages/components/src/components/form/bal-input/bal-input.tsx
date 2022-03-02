@@ -39,7 +39,7 @@ import {
 @Component({
   tag: 'bal-input',
 })
-export class Input implements ComponentInterface, BalConfigObserver, FormInput<string | undefined | null> {
+export class Input implements ComponentInterface, BalConfigObserver, FormInput<string | undefined> {
   private inputId = `bal-input-${InputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -106,7 +106,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   /**
    * Instructional text that shows before the input has a value.
    */
-  @Prop() placeholder?: string | null
+  @Prop() placeholder?: string
 
   /**
    * The maximum value, which must not be less than its minimum (min attribute) value.
@@ -213,12 +213,12 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   /**
    * The value of the input.
    */
-  @Prop({ mutable: true }) value?: string | null = undefined
+  @Prop({ mutable: true }) value?: string = undefined
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<string | undefined | null>
+  @Event() balInput!: EventEmitter<string | undefined>
 
   /**
    * Emitted when a keyboard input occurred.
@@ -243,7 +243,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<string | undefined | null>
+  @Event() balChange!: EventEmitter<string | undefined>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {
@@ -346,7 +346,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
      * @deprecated should be removed in the next breaking change release.
      */
     if (this.numberInput) {
-      const numberValue: number | null | undefined = !this.value ? null : parseFloat(this.value)
+      const numberValue: number | undefined = !this.value ? undefined : parseFloat(this.value)
       return (
         <bal-number-input
           value={numberValue}

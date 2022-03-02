@@ -45,7 +45,7 @@ import { formatInputValue } from './bal-input.utils'
 @Component({
   tag: 'bal-number-input',
 })
-export class NumberInput implements ComponentInterface, BalConfigObserver, FormInput<number | undefined | null> {
+export class NumberInput implements ComponentInterface, BalConfigObserver, FormInput<number | undefined> {
   private inputId = `bal-number-input-${numberInputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -81,7 +81,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   /**
    * Instructional text that shows before the input has a value.
    */
-  @Prop() placeholder?: string | null
+  @Prop() placeholder?: string
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -111,17 +111,17 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   /**
    * The value of the input.
    */
-  @Prop({ mutable: true }) value?: number | null = undefined
+  @Prop({ mutable: true }) value?: number = undefined
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<number | null | undefined>
+  @Event() balInput!: EventEmitter<number | undefined>
 
   /**
    * Emitted when the value has changed.
    */
-  @Event() balChange!: EventEmitter<number | null | undefined>
+  @Event() balChange!: EventEmitter<number | undefined>
 
   /**
    * Emitted when the input loses focus.
@@ -224,7 +224,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
         this.inputValue = parsedValue
       } else {
         if (!this.decimal || input.value !== getDecimalSeparator()) {
-          this.inputValue = null
+          this.inputValue = undefined
           input.value = ''
         }
       }
@@ -238,7 +238,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
 
     const input = getInputTarget(event)
     if (input && input.value === getDecimalSeparator()) {
-      this.inputValue = null
+      this.inputValue = undefined
       input.value = ''
     }
 
