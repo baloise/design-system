@@ -25,7 +25,7 @@ export class Tabs {
   /**
    * Defines the layout of the tabs.
    */
-  @Prop() interface: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' = 'tabs'
+  @Prop() interface: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' = 'tabs'
 
   /**
    * If `true` the field expands over the whole width.
@@ -197,10 +197,11 @@ export class Tabs {
     return (
       <Host
         class={{
-          'bal-tabs': this.interface === 'tabs' || this.interface === 'tabs-sub',
+          'bal-tabs': this.interface === 'tabs' || this.interface === 'tabs-sub' || this.interface === 'navbar',
           'bal-steps': this.interface === 'steps',
           'bal-o-steps': this.interface === 'o-steps',
           'is-sub-navigation': this.interface === 'tabs-sub',
+          'is-navbar-tabs': this.interface === 'navbar',
           'is-ready': this.isReady,
           'is-vertical': this.vertical,
         }}

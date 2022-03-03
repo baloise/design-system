@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-components",
-  "version": "10.0.1",
+  "version": "10.3.0",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -21,8 +21,8 @@
   ],
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
+  "es2015": "dist/esm/index.esm.js",
+  "es2017": "dist/esm/index.esm.js",
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
@@ -60,11 +60,13 @@
     "www:watch": "stencil build --dev --serve --config stencil.test.config.ts --watch"
   },
   "dependencies": {
-    "@baloise/design-system-next-fonts": "10.0.1",
-    "@baloise/design-system-next-icons": "10.0.1",
-    "@baloise/web-app-utils": "^2.0.10",
+    "@baloise/design-system-next-fonts": "10.3.0",
+    "@baloise/design-system-next-icons": "10.3.0",
+    "@baloise/web-app-utils": "^3.0.1",
     "@popperjs/core": "^2.11.2",
     "@stencil/core": "^2.11.0",
+    "@types/big.js": "^6.1.3",
+    "big.js": "^6.1.1",
     "bulma": "^0.9.3",
     "date-fns": "^2.28.0",
     "filesize.js": "^2.0.0",
@@ -79,12 +81,14 @@
     "lodash.round": "^4.0.4",
     "lodash.trim": "^4.5.1",
     "lodash.upperfirst": "^4.3.1",
+    "lottie-colorify": "^0.8.0",
     "lottie-web": "^5.8.1"
   },
   "license": "Apache-2.0",
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@baloise/angular-output-target": "^1.0.26",
+    "@baloise/react-output-target": "^0.4.2",
     "@baloise/stencil-vite-fix": "9.2.3",
     "@baloise/vue-output-target": "^0.7.0",
     "@etchteam/storybook-addon-status": "^4.2.0",
@@ -138,5 +142,5 @@
     "vue-loader": "^16.8.3",
     "workbox-build": "^4.3.1"
   },
-  "gitHead": "be51095ac1032fffbdf492cbbc96f3aaf34bba42"
+  "gitHead": "942fb79c8ff2fb991d815f91ffee0bb95ea6756f"
 }

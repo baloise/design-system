@@ -256,10 +256,6 @@ export namespace Components {
     }
     interface BalCheckbox {
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex": number;
-        /**
           * If `true`, the checkbox is selected.
          */
         "checked": boolean;
@@ -276,6 +272,10 @@ export namespace Components {
          */
         "getInputElement": () => Promise<HTMLInputElement | undefined>;
         /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "hidden": boolean;
+        /**
           * Defines the layout of the checkbox button
          */
         "interface": 'checkbox' | 'switch';
@@ -288,9 +288,17 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * If `true` the radio has no label
+         */
+        "labelHidden": boolean;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
         /**
           * Sets the focus on the checkbox input element.
          */
@@ -358,10 +366,6 @@ export namespace Components {
          */
         "allowedDates": BalDateCallback | undefined;
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex": number;
-        /**
           * Closes the popover
          */
         "close": () => Promise<void>;
@@ -376,7 +380,7 @@ export namespace Components {
         /**
           * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "defaultDate"?: string | null;
+        "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -438,7 +442,11 @@ export namespace Components {
          */
         "select": (dateString: string) => Promise<void>;
         /**
-          * Sets the focus on the input element
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
@@ -448,7 +456,7 @@ export namespace Components {
         /**
           * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "value"?: string | null;
+        "value"?: string;
     }
     interface BalDocApp {
     }
@@ -610,7 +618,11 @@ export namespace Components {
     }
     interface BalFooter {
         /**
-          * If `true` the default Baloise links will be hidden.
+          * If `true` the language selection will be hidden.
+         */
+        "hideLanguageSelection": boolean;
+        /**
+          * If `true` the legal Baloise links will be hidden.
          */
         "hideLinks": boolean;
         /**
@@ -722,10 +734,6 @@ export namespace Components {
          */
         "autofocus": boolean;
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex": number;
-        /**
           * If `true` the input gets a clickable cursor style
          */
         "clickable": boolean;
@@ -734,7 +742,7 @@ export namespace Components {
          */
         "debounce": number;
         /**
-          * Defines the allowed decimal points for the `number-input`.
+          * @deprecated Defines the allowed decimal points for the `number-input`. Use the <bal-number-input> component instead.
          */
         "decimal"?: number;
         /**
@@ -744,7 +752,7 @@ export namespace Components {
         /**
           * Returns the native `<input>` element used under the hood.
          */
-        "getInputElement": () => Promise<HTMLInputElement | undefined>;
+        "getInputElement": () => Promise<HTMLInputElement>;
         "hasIconRight": boolean;
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
@@ -783,7 +791,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * If `true` on mobile device the number keypad is active
+          * @deprecated If `true` on mobile device the number keypad is active. Use the <bal-number-input> component instead.
          */
         "numberInput": boolean;
         /**
@@ -793,7 +801,7 @@ export namespace Components {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -802,6 +810,10 @@ export namespace Components {
           * If `true`, the user must fill in a value before submitting a form.
          */
         "required": boolean;
+        /**
+          * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
         /**
           * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
          */
@@ -825,7 +837,7 @@ export namespace Components {
         /**
           * The value of the input.
          */
-        "value"?: string | number;
+        "value"?: string;
     }
     interface BalInputGroup {
         /**
@@ -836,6 +848,44 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
+    }
+    interface BalInputStepper {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement | undefined>;
+        /**
+          * If `true` the input is shown as invalid
+         */
+        "invalid": boolean;
+        /**
+          * The max value the input can have
+         */
+        "max": number;
+        /**
+          * The min value the input can have
+         */
+        "min": number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * The steps in which the input increases or decreases
+         */
+        "steps": number;
+        /**
+          * The value of the input. Only allows values in the range of the min max attribute.
+         */
+        "value": number;
     }
     interface BalList {
         /**
@@ -888,6 +938,12 @@ export namespace Components {
     interface BalListItemSubtitle {
     }
     interface BalListItemTitle {
+    }
+    interface BalLogo {
+        /**
+          * Defines the color of the logo.
+         */
+        "color": 'blue' | 'white';
     }
     interface BalModal {
         "close": () => Promise<void>;
@@ -950,7 +1006,11 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
-          * It `true` the burger button is hidden
+          * @deprecated It `true` the navbar has a white background. Always use the blue header.
+         */
+        "light": boolean;
+        /**
+          * @deprecated It `true` the burger button is hidden. Use simple on the navbar-brand component.
          */
         "noBurger": boolean;
     }
@@ -959,6 +1019,10 @@ export namespace Components {
           * Link of the logo / title.
          */
         "href": string;
+        /**
+          * If `true` the navbar does not have a mobil version. Only shows logo and an app title.
+         */
+        "simple": boolean;
     }
     interface BalNavbarMenu {
         "toggle": (isMenuActive: boolean) => Promise<void>;
@@ -978,6 +1042,60 @@ export namespace Components {
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
         "color": '' | ColorTypes;
+    }
+    interface BalNumberInput {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * Defines the allowed decimal points for the `number-input`.
+         */
+        "decimal": number;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required": boolean;
+        /**
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Adds a suffix the the input-value after blur.
+         */
+        "suffix"?: string;
+        /**
+          * The value of the input.
+         */
+        "value"?: number;
     }
     interface BalPagination {
         /**
@@ -1051,10 +1169,6 @@ export namespace Components {
     }
     interface BalRadio {
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex": number;
-        /**
           * If `true`, the radio is selected.
          */
         "checked": boolean;
@@ -1079,19 +1193,27 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * If `true` the radio has no label
+          * @deprecated If `true` the radio has no label
          */
         "isEmpty": boolean;
+        /**
+          * If `true` the radio has no label
+         */
+        "labelHidden": boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
         /**
-          * Sets the focus on the input element.
+          * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets the focus on the checkbox input element.
          */
         "setFocus": () => Promise<void>;
         /**
-          * The value of the control.
+          * The tabindex of the control.
          */
         "value": string;
     }
@@ -1332,6 +1454,32 @@ export namespace Components {
          */
         "small": boolean;
     }
+    interface BalStage {
+        /**
+          * Defines the background color of the stage section
+         */
+        "color": 'blue' | 'white' | 'purple' | 'green' | 'red' | 'yellow';
+        /**
+          * Defines the height of the stage section.
+         */
+        "size": 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight';
+    }
+    interface BalStageBody {
+        /**
+          * If `true` the inner container uses the compact layout.
+         */
+        "compact": boolean;
+    }
+    interface BalStageFoot {
+    }
+    interface BalStageHead {
+    }
+    interface BalStageImage {
+        /**
+          * Source of the background image.
+         */
+        "src": string;
+    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -1408,7 +1556,7 @@ export namespace Components {
         /**
           * Defines the layout of the tabs.
          */
-        "interface": 'tabs' | 'tabs-sub' | 'steps' | 'o-steps';
+        "interface": 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar';
         /**
           * Go to tab with the given value
          */
@@ -1429,6 +1577,10 @@ export namespace Components {
          */
         "color": ColorTypes | SupportColors | '';
         "dense": boolean;
+        /**
+          * If `true` a light version of the color is displayed
+         */
+        "light": boolean;
         /**
           * The size of the tag element
          */
@@ -1470,10 +1622,6 @@ export namespace Components {
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
         "autofocus": boolean;
-        /**
-          * The tabindex of the control.
-         */
-        "balTabindex": number;
         /**
           * If `true` the input gets a clickable cursor style
          */
@@ -1535,7 +1683,11 @@ export namespace Components {
          */
         "rows"?: number;
         /**
-          * Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global `textarea.focus()`.
+          * Sets blur on the native `input` in `bal-input`. Use this method instead of the global `input.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the native `input` in `bal-input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
         /**
@@ -1840,6 +1992,12 @@ declare global {
         prototype: HTMLBalInputGroupElement;
         new (): HTMLBalInputGroupElement;
     };
+    interface HTMLBalInputStepperElement extends Components.BalInputStepper, HTMLStencilElement {
+    }
+    var HTMLBalInputStepperElement: {
+        prototype: HTMLBalInputStepperElement;
+        new (): HTMLBalInputStepperElement;
+    };
     interface HTMLBalListElement extends Components.BalList, HTMLStencilElement {
     }
     var HTMLBalListElement: {
@@ -1875,6 +2033,12 @@ declare global {
     var HTMLBalListItemTitleElement: {
         prototype: HTMLBalListItemTitleElement;
         new (): HTMLBalListItemTitleElement;
+    };
+    interface HTMLBalLogoElement extends Components.BalLogo, HTMLStencilElement {
+    }
+    var HTMLBalLogoElement: {
+        prototype: HTMLBalLogoElement;
+        new (): HTMLBalLogoElement;
     };
     interface HTMLBalModalElement extends Components.BalModal, HTMLStencilElement {
     }
@@ -1935,6 +2099,12 @@ declare global {
     var HTMLBalNotificationElement: {
         prototype: HTMLBalNotificationElement;
         new (): HTMLBalNotificationElement;
+    };
+    interface HTMLBalNumberInputElement extends Components.BalNumberInput, HTMLStencilElement {
+    }
+    var HTMLBalNumberInputElement: {
+        prototype: HTMLBalNumberInputElement;
+        new (): HTMLBalNumberInputElement;
     };
     interface HTMLBalPaginationElement extends Components.BalPagination, HTMLStencilElement {
     }
@@ -2001,6 +2171,36 @@ declare global {
     var HTMLBalSpinnerElement: {
         prototype: HTMLBalSpinnerElement;
         new (): HTMLBalSpinnerElement;
+    };
+    interface HTMLBalStageElement extends Components.BalStage, HTMLStencilElement {
+    }
+    var HTMLBalStageElement: {
+        prototype: HTMLBalStageElement;
+        new (): HTMLBalStageElement;
+    };
+    interface HTMLBalStageBodyElement extends Components.BalStageBody, HTMLStencilElement {
+    }
+    var HTMLBalStageBodyElement: {
+        prototype: HTMLBalStageBodyElement;
+        new (): HTMLBalStageBodyElement;
+    };
+    interface HTMLBalStageFootElement extends Components.BalStageFoot, HTMLStencilElement {
+    }
+    var HTMLBalStageFootElement: {
+        prototype: HTMLBalStageFootElement;
+        new (): HTMLBalStageFootElement;
+    };
+    interface HTMLBalStageHeadElement extends Components.BalStageHead, HTMLStencilElement {
+    }
+    var HTMLBalStageHeadElement: {
+        prototype: HTMLBalStageHeadElement;
+        new (): HTMLBalStageHeadElement;
+    };
+    interface HTMLBalStageImageElement extends Components.BalStageImage, HTMLStencilElement {
+    }
+    var HTMLBalStageImageElement: {
+        prototype: HTMLBalStageImageElement;
+        new (): HTMLBalStageImageElement;
     };
     interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
     }
@@ -2092,12 +2292,14 @@ declare global {
         "bal-icon": HTMLBalIconElement;
         "bal-input": HTMLBalInputElement;
         "bal-input-group": HTMLBalInputGroupElement;
+        "bal-input-stepper": HTMLBalInputStepperElement;
         "bal-list": HTMLBalListElement;
         "bal-list-item": HTMLBalListItemElement;
         "bal-list-item-content": HTMLBalListItemContentElement;
         "bal-list-item-icon": HTMLBalListItemIconElement;
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
         "bal-list-item-title": HTMLBalListItemTitleElement;
+        "bal-logo": HTMLBalLogoElement;
         "bal-modal": HTMLBalModalElement;
         "bal-modal-body": HTMLBalModalBodyElement;
         "bal-modal-header": HTMLBalModalHeaderElement;
@@ -2108,6 +2310,7 @@ declare global {
         "bal-navbar-menu-start": HTMLBalNavbarMenuStartElement;
         "bal-notices": HTMLBalNoticesElement;
         "bal-notification": HTMLBalNotificationElement;
+        "bal-number-input": HTMLBalNumberInputElement;
         "bal-pagination": HTMLBalPaginationElement;
         "bal-popover": HTMLBalPopoverElement;
         "bal-popover-content": HTMLBalPopoverContentElement;
@@ -2119,6 +2322,11 @@ declare global {
         "bal-slider": HTMLBalSliderElement;
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
+        "bal-stage": HTMLBalStageElement;
+        "bal-stage-body": HTMLBalStageBodyElement;
+        "bal-stage-foot": HTMLBalStageFootElement;
+        "bal-stage-head": HTMLBalStageHeadElement;
+        "bal-stage-image": HTMLBalStageImageElement;
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-table": HTMLBalTableElement;
         "bal-tabs": HTMLBalTabsElement;
@@ -2378,10 +2586,6 @@ declare namespace LocalJSX {
     }
     interface BalCheckbox {
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex"?: number;
-        /**
           * If `true`, the checkbox is selected.
          */
         "checked"?: boolean;
@@ -2393,6 +2597,10 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled"?: boolean;
+        /**
+          * If `true`, the value will not be send with a form submit
+         */
+        "hidden"?: boolean;
         /**
           * Defines the layout of the checkbox button
          */
@@ -2406,6 +2614,10 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
+          * If `true` the radio has no label
+         */
+        "labelHidden"?: boolean;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
@@ -2417,6 +2629,10 @@ declare namespace LocalJSX {
           * Emitted when the value property has changed.
          */
         "onBalChange"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the toggle has focus.
          */
@@ -2496,10 +2712,6 @@ declare namespace LocalJSX {
          */
         "allowedDates"?: BalDateCallback | undefined;
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex"?: number;
-        /**
           * Closes the datepicker popover after selection
          */
         "closeOnSelect"?: boolean;
@@ -2510,7 +2722,7 @@ declare namespace LocalJSX {
         /**
           * The date to defines where the datepicker popup starts. The prop accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "defaultDate"?: string | null;
+        "defaultDate"?: string;
         /**
           * If `true` the component is disabled.
          */
@@ -2554,7 +2766,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: CustomEvent<string | undefined | null>) => void;
+        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
         /**
           * Emitted when the input has focus.
          */
@@ -2562,7 +2778,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string>) => void;
+        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * The text to display when the select is empty.
          */
@@ -2582,7 +2798,7 @@ declare namespace LocalJSX {
         /**
           * The value of the form field, which accepts ISO 8601 date strings (YYYY-MM-DD).
          */
-        "value"?: string | null;
+        "value"?: string;
     }
     interface BalDocApp {
     }
@@ -2748,7 +2964,11 @@ declare namespace LocalJSX {
     }
     interface BalFooter {
         /**
-          * If `true` the default Baloise links will be hidden.
+          * If `true` the language selection will be hidden.
+         */
+        "hideLanguageSelection"?: boolean;
+        /**
+          * If `true` the legal Baloise links will be hidden.
          */
         "hideLinks"?: boolean;
         /**
@@ -2848,10 +3068,6 @@ declare namespace LocalJSX {
          */
         "autofocus"?: boolean;
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex"?: number;
-        /**
           * If `true` the input gets a clickable cursor style
          */
         "clickable"?: boolean;
@@ -2860,7 +3076,7 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
-          * Defines the allowed decimal points for the `number-input`.
+          * @deprecated Defines the allowed decimal points for the `number-input`. Use the <bal-number-input> component instead.
          */
         "decimal"?: number;
         /**
@@ -2905,7 +3121,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * If `true` on mobile device the number keypad is active
+          * @deprecated If `true` on mobile device the number keypad is active. Use the <bal-number-input> component instead.
          */
         "numberInput"?: boolean;
         /**
@@ -2915,7 +3131,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string | number | null>) => void;
+        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -2927,7 +3143,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | number | null>) => void;
+        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -2939,7 +3155,7 @@ declare namespace LocalJSX {
         /**
           * Instructional text that shows before the input has a value.
          */
-        "placeholder"?: string | null;
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -2967,7 +3183,7 @@ declare namespace LocalJSX {
         /**
           * The value of the input.
          */
-        "value"?: string | number;
+        "value"?: string;
     }
     interface BalInputGroup {
         /**
@@ -2978,6 +3194,48 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
+    }
+    interface BalInputStepper {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the input is shown as invalid
+         */
+        "invalid"?: boolean;
+        /**
+          * The max value the input can have
+         */
+        "max"?: number;
+        /**
+          * The min value the input can have
+         */
+        "min"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onBalChange"?: (event: CustomEvent<number | undefined>) => void;
+        /**
+          * Emitted when the input value has changed.
+         */
+        "onBalInput"?: (event: CustomEvent<number | undefined>) => void;
+        /**
+          * The steps in which the input increases or decreases
+         */
+        "steps"?: number;
+        /**
+          * The value of the input. Only allows values in the range of the min max attribute.
+         */
+        "value"?: number;
     }
     interface BalList {
         /**
@@ -3034,6 +3292,12 @@ declare namespace LocalJSX {
     interface BalListItemSubtitle {
     }
     interface BalListItemTitle {
+    }
+    interface BalLogo {
+        /**
+          * Defines the color of the logo.
+         */
+        "color"?: 'blue' | 'white';
     }
     interface BalModal {
         /**
@@ -3094,7 +3358,11 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
-          * It `true` the burger button is hidden
+          * @deprecated It `true` the navbar has a white background. Always use the blue header.
+         */
+        "light"?: boolean;
+        /**
+          * @deprecated It `true` the burger button is hidden. Use simple on the navbar-brand component.
          */
         "noBurger"?: boolean;
     }
@@ -3107,6 +3375,10 @@ declare namespace LocalJSX {
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * If `true` the navbar does not have a mobil version. Only shows logo and an app title.
+         */
+        "simple"?: boolean;
     }
     interface BalNavbarMenu {
     }
@@ -3125,6 +3397,72 @@ declare namespace LocalJSX {
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
         "color"?: '' | ColorTypes;
+    }
+    interface BalNumberInput {
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * Defines the allowed decimal points for the `number-input`.
+         */
+        "decimal"?: number;
+        /**
+          * If `true` the input is disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "invalid"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBalChange"?: (event: CustomEvent<number | undefined>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onBalInput"?: (event: CustomEvent<number | undefined>) => void;
+        /**
+          * Emitted when a keyboard key has pressed.
+         */
+        "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
+        /**
+          * Instructional text that shows before the input has a value.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+         */
+        "required"?: boolean;
+        /**
+          * Adds a suffix the the input-value after blur.
+         */
+        "suffix"?: string;
+        /**
+          * The value of the input.
+         */
+        "value"?: number;
     }
     interface BalPagination {
         /**
@@ -3187,10 +3525,6 @@ declare namespace LocalJSX {
     }
     interface BalRadio {
         /**
-          * The tabindex of the control.
-         */
-        "balTabindex"?: number;
-        /**
           * If `true`, the radio is selected.
          */
         "checked"?: boolean;
@@ -3215,9 +3549,13 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * If `true` the radio has no label
+          * @deprecated If `true` the radio has no label
          */
         "isEmpty"?: boolean;
+        /**
+          * If `true` the radio has no label
+         */
+        "labelHidden"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -3227,11 +3565,19 @@ declare namespace LocalJSX {
          */
         "onBalBlur"?: (event: CustomEvent<FocusEvent>) => void;
         /**
+          * Emitted when the checked property has changed.
+         */
+        "onBalChange"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * Emitted when the input has clicked.
+         */
+        "onBalClick"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
           * Emitted when the toggle has focus.
          */
         "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-          * The value of the control.
+          * The tabindex of the control.
          */
         "value"?: string;
     }
@@ -3491,6 +3837,32 @@ declare namespace LocalJSX {
          */
         "small"?: boolean;
     }
+    interface BalStage {
+        /**
+          * Defines the background color of the stage section
+         */
+        "color"?: 'blue' | 'white' | 'purple' | 'green' | 'red' | 'yellow';
+        /**
+          * Defines the height of the stage section.
+         */
+        "size"?: 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight';
+    }
+    interface BalStageBody {
+        /**
+          * If `true` the inner container uses the compact layout.
+         */
+        "compact"?: boolean;
+    }
+    interface BalStageFoot {
+    }
+    interface BalStageHead {
+    }
+    interface BalStageImage {
+        /**
+          * Source of the background image.
+         */
+        "src"?: string;
+    }
     interface BalTabItem {
         /**
           * Tells if this route is active and overrides the bal-tabs value property.
@@ -3563,7 +3935,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the tabs.
          */
-        "interface"?: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps';
+        "interface"?: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar';
         /**
           * Emitted when the action button has clicked
          */
@@ -3588,6 +3960,10 @@ declare namespace LocalJSX {
          */
         "color"?: ColorTypes | SupportColors | '';
         "dense"?: boolean;
+        /**
+          * If `true` a light version of the color is displayed
+         */
+        "light"?: boolean;
         /**
           * Emitted when the input got clicked.
          */
@@ -3633,10 +4009,6 @@ declare namespace LocalJSX {
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
         "autofocus"?: boolean;
-        /**
-          * The tabindex of the control.
-         */
-        "balTabindex"?: number;
         /**
           * If `true` the input gets a clickable cursor style
          */
@@ -3684,7 +4056,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed..
          */
-        "onBalChange"?: (event: CustomEvent<string>) => void;
+        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3696,7 +4068,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string>) => void;
+        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -3817,12 +4189,14 @@ declare namespace LocalJSX {
         "bal-icon": BalIcon;
         "bal-input": BalInput;
         "bal-input-group": BalInputGroup;
+        "bal-input-stepper": BalInputStepper;
         "bal-list": BalList;
         "bal-list-item": BalListItem;
         "bal-list-item-content": BalListItemContent;
         "bal-list-item-icon": BalListItemIcon;
         "bal-list-item-subtitle": BalListItemSubtitle;
         "bal-list-item-title": BalListItemTitle;
+        "bal-logo": BalLogo;
         "bal-modal": BalModal;
         "bal-modal-body": BalModalBody;
         "bal-modal-header": BalModalHeader;
@@ -3833,6 +4207,7 @@ declare namespace LocalJSX {
         "bal-navbar-menu-start": BalNavbarMenuStart;
         "bal-notices": BalNotices;
         "bal-notification": BalNotification;
+        "bal-number-input": BalNumberInput;
         "bal-pagination": BalPagination;
         "bal-popover": BalPopover;
         "bal-popover-content": BalPopoverContent;
@@ -3844,6 +4219,11 @@ declare namespace LocalJSX {
         "bal-slider": BalSlider;
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
+        "bal-stage": BalStage;
+        "bal-stage-body": BalStageBody;
+        "bal-stage-foot": BalStageFoot;
+        "bal-stage-head": BalStageHead;
+        "bal-stage-image": BalStageImage;
         "bal-tab-item": BalTabItem;
         "bal-table": BalTable;
         "bal-tabs": BalTabs;
@@ -3899,12 +4279,14 @@ declare module "@stencil/core" {
             "bal-icon": LocalJSX.BalIcon & JSXBase.HTMLAttributes<HTMLBalIconElement>;
             "bal-input": LocalJSX.BalInput & JSXBase.HTMLAttributes<HTMLBalInputElement>;
             "bal-input-group": LocalJSX.BalInputGroup & JSXBase.HTMLAttributes<HTMLBalInputGroupElement>;
+            "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
             "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
             "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;
             "bal-list-item-icon": LocalJSX.BalListItemIcon & JSXBase.HTMLAttributes<HTMLBalListItemIconElement>;
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
             "bal-list-item-title": LocalJSX.BalListItemTitle & JSXBase.HTMLAttributes<HTMLBalListItemTitleElement>;
+            "bal-logo": LocalJSX.BalLogo & JSXBase.HTMLAttributes<HTMLBalLogoElement>;
             "bal-modal": LocalJSX.BalModal & JSXBase.HTMLAttributes<HTMLBalModalElement>;
             "bal-modal-body": LocalJSX.BalModalBody & JSXBase.HTMLAttributes<HTMLBalModalBodyElement>;
             "bal-modal-header": LocalJSX.BalModalHeader & JSXBase.HTMLAttributes<HTMLBalModalHeaderElement>;
@@ -3915,6 +4297,7 @@ declare module "@stencil/core" {
             "bal-navbar-menu-start": LocalJSX.BalNavbarMenuStart & JSXBase.HTMLAttributes<HTMLBalNavbarMenuStartElement>;
             "bal-notices": LocalJSX.BalNotices & JSXBase.HTMLAttributes<HTMLBalNoticesElement>;
             "bal-notification": LocalJSX.BalNotification & JSXBase.HTMLAttributes<HTMLBalNotificationElement>;
+            "bal-number-input": LocalJSX.BalNumberInput & JSXBase.HTMLAttributes<HTMLBalNumberInputElement>;
             "bal-pagination": LocalJSX.BalPagination & JSXBase.HTMLAttributes<HTMLBalPaginationElement>;
             "bal-popover": LocalJSX.BalPopover & JSXBase.HTMLAttributes<HTMLBalPopoverElement>;
             "bal-popover-content": LocalJSX.BalPopoverContent & JSXBase.HTMLAttributes<HTMLBalPopoverContentElement>;
@@ -3926,6 +4309,11 @@ declare module "@stencil/core" {
             "bal-slider": LocalJSX.BalSlider & JSXBase.HTMLAttributes<HTMLBalSliderElement>;
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
+            "bal-stage": LocalJSX.BalStage & JSXBase.HTMLAttributes<HTMLBalStageElement>;
+            "bal-stage-body": LocalJSX.BalStageBody & JSXBase.HTMLAttributes<HTMLBalStageBodyElement>;
+            "bal-stage-foot": LocalJSX.BalStageFoot & JSXBase.HTMLAttributes<HTMLBalStageFootElement>;
+            "bal-stage-head": LocalJSX.BalStageHead & JSXBase.HTMLAttributes<HTMLBalStageHeadElement>;
+            "bal-stage-image": LocalJSX.BalStageImage & JSXBase.HTMLAttributes<HTMLBalStageImageElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

@@ -27,8 +27,8 @@ export default {
   output: [
     {
       dir: 'dist/',
-      entryFileNames: '[name].mjs',
-      chunkFileNames: '[name]-[hash].mjs',
+      entryFileNames: '[name].esm.js',
+      chunkFileNames: '[name]-[hash].esm.js',
       format: 'es',
       banner,
       sourcemap: true,

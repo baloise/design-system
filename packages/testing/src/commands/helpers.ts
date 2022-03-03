@@ -1,9 +1,9 @@
 /**
  * Helper fn to identify the element/component
  */
-type isElementType = (el: Cypress.Chainable<JQuery>) => boolean
+export type isElementType = (el: Cypress.Chainable<JQuery>) => boolean
 
-const isElement = (el: Cypress.Chainable<JQuery>, name: string) => {
+export const isElement = (el: Cypress.Chainable<JQuery>, name: string) => {
   return typeof el === 'object' && (el as any).length > 0 && (el as any)[0].nodeName === name
 }
 
@@ -17,6 +17,7 @@ export const isButton: isElementType = el => isElement(el, 'BAL-BUTTON')
 export const isCheckbox: isElementType = el => isElement(el, 'BAL-CHECKBOX')
 export const isDatepicker: isElementType = el => isElement(el, 'BAL-DATEPICKER')
 export const isInput: isElementType = el => isElement(el, 'BAL-INPUT')
+export const isNumberInput: isElementType = el => isElement(el, 'BAL-NUMBER-INPUT')
 export const isModal: isElementType = el => isElement(el, 'BAL-MODAL')
 export const isRadioGroup: isElementType = el => isElement(el, 'BAL-RADIO-GROUP')
 export const isRadio: isElementType = el => isElement(el, 'BAL-RADIO')
@@ -26,6 +27,9 @@ export const isTabs: isElementType = el => isElement(el, 'BAL-TABS')
 export const isSlider: isElementType = el => isElement(el, 'BAL-SLIDER')
 export const isHint: isElementType = el => isElement(el, 'BAL-HINT')
 export const isTextarea: isElementType = el => isElement(el, 'BAL-TEXTAREA')
+export const isCardTitle: isElementType = el => isElement(el, 'BAL-CARD-TITLE')
+export const isHeading: isElementType = el => isElement(el, 'BAL-HEADING')
+export const isText: isElementType = el => isElement(el, 'BAL-TEXT')
 
 /**
  * Selectors
@@ -64,6 +68,12 @@ export const selectors = {
   },
   tag: {
     text: 'bal-text',
+  },
+  heading: {
+    content: '.data-test-heading',
+  },
+  card: {
+    title: 'bal-heading',
   },
   radio: {
     input: 'input.data-test-radio-input',

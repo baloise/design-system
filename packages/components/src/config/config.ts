@@ -7,6 +7,7 @@ export class Config {
   private _config: BalConfigState = {
     region: 'CH',
     language: 'de',
+    allowedLanguages: ['de', 'fr', 'it', 'en'],
   }
 
   get locale(): string {
@@ -31,6 +32,17 @@ export class Config {
   set language(language: BalLanguage) {
     if (language !== this._config.language) {
       this._config.language = language
+      this._notify()
+    }
+  }
+
+  get allowedLanguages(): BalLanguage[] {
+    return this._config.allowedLanguages
+  }
+
+  set allowedLanguages(allowedLanguages: BalLanguage[]) {
+    if (allowedLanguages !== this._config.allowedLanguages) {
+      this._config.allowedLanguages = allowedLanguages
       this._notify()
     }
   }

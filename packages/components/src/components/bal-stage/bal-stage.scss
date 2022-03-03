@@ -1,0 +1,36 @@
+@import './bal-stage.vars.scss';
+@import 'node_modules/bulma/sass/layout/hero.sass';
+
+bal-stage {
+  position: static;
+  display: block;
+
+  .hero.has-background {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-background {
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-height: 100%;
+      min-width: 100%;
+    }
+  }
+
+  .hero.is-purple .title,
+  .hero.is-purple .subtitle,
+  .hero.is-red .title,
+  .hero.is-red .subtitle,
+  .hero.is-green .title,
+  .hero.is-green .subtitle,
+  .hero.is-yellow .title,
+  .hero.is-yellow .subtitle {
+    color: $blue;
+  }
+}

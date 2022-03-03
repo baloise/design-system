@@ -45,6 +45,23 @@ export default component.story
 
 const excludedControls = ['name']
 
+const SingleTemplate = args => ({
+  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  setup: () => ({ args }),
+  template: `
+  <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
+    <bal-field-label>Label</bal-field-label>
+    <bal-field-control>
+      <bal-checkbox-group :vertical="args.vertical">
+        <bal-checkbox v-bind="args" v-model="args.checked">
+          {{ args.content }}
+        </bal-checkbox>
+      </bal-checkbox-group>
+    </bal-field-control>
+    <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
+  </bal-field>`,
+})
+
 const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
@@ -53,22 +70,22 @@ const Template = args => ({
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
       <bal-checkbox-group :vertical="args.vertical">
-        <bal-checkbox v-bind="args" v-model="args.value">
-          Label
+        <bal-checkbox v-bind="args" v-model="args.checked">
+          {{ args.content }}
         </bal-checkbox>
-        <bal-checkbox v-bind="args" v-model="args.value">
-          Label
-        </bal-checkbox>
-        <bal-checkbox v-bind="args" v-model="args.value">
-          Label
-        </bal-checkbox>
+        <bal-checkbox v-bind="args" v-model="args.checked">
+        {{ args.content }}
+      </bal-checkbox>
+      <bal-checkbox v-bind="args" v-model="args.checked">
+        {{ args.content }}
+      </bal-checkbox>
       </bal-checkbox-group>
     </bal-field-control>
     <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
   </bal-field>`,
 })
 
-export const Basic = Template.bind({})
+export const Basic = SingleTemplate.bind({})
 Basic.args = {
   content: 'Label',
 }
@@ -87,7 +104,7 @@ Vertical.parameters = {
   controls: { exclude: excludedControls },
 }
 
-export const Switch = Template.bind({})
+export const Switch = SingleTemplate.bind({})
 Switch.args = {
   content: 'Label',
   interface: 'switch',

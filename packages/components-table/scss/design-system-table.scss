@@ -12,14 +12,14 @@
       border-color: $blue,
       header-foreground-color: $blue,
       header-column-separator: false,
-      row-border-color: $blue-2,
+      row-border-color: $grey-2,
       selected-row-background-color: $blue-1,
       odd-row-background-color: null,
       row-hover-color: $white-bis,
       range-selection-border-color: $primary,
-      checkbox-border-radius: 0,
-      checkbox-checked-color: $primary,
-      checkbox-unchecked-color: $blue-3,
+      checkbox-border-radius: 4px,
+      checkbox-checked-color: $blue,
+      checkbox-unchecked-color: $grey-2,
     )
   );
 
@@ -76,9 +76,18 @@
     }
   }
 
+  .ag-row,
+  .ag-header {
+    border-width: 2px;
+  }
+
   .ag-checkbox-input-wrapper {
     outline: none !important;
     box-shadow: none !important;
+    font-size: 20px;
+    line-height: 20px;
+    width: 20px;
+    height: 20px;
 
     &::before,
     &::after {
@@ -87,26 +96,28 @@
       background-color: transparent;
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 16px 16px;
+      background-size: 20px 20px;
     }
 
     &::before {
       content: '';
       left: 0;
       top: 0;
-      height: 16px;
-      width: 16px;
-      border: 1px solid $blue-3;
+      height: 20px;
+      width: 20px;
+      border: 2px solid $grey-2;
+      background: $white;
+      border-radius: 4px;
     }
 
     &::after {
       content: none;
-      left: 5px !important;
-      top: 2px !important;
+      left: 7px !important;
+      top: 3px !important;
       width: 6px;
-      height: 9px;
-      border-bottom: 2px solid $blue;
-      border-right: 2px solid $blue;
+      height: 12px;
+      border-bottom: 2px solid $white;
+      border-right: 2px solid $white;
       border-top: 0;
       border-left: 0;
       -moz-transform: rotate(45deg);
@@ -118,6 +129,11 @@
 
     &.ag-checked::after {
       content: '';
+    }
+
+    &.ag-checked::before {
+      background: $blue;
+      border-color: $blue;
     }
   }
 }

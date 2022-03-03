@@ -12,12 +12,8 @@ import {
   Listen,
   State,
 } from '@stencil/core'
-import isNil from 'lodash.isnil'
-import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../constants/keys.constant'
-import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
+import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
 import { AutocompleteTypes, InputTypes } from '../../../types/interfaces'
-import { getDecimalSeparator } from '../../../utils/number.util'
-import { filterInputValue, formatInputValue } from './bal-input.utils'
 import {
   defaultConfig,
   BalLanguage,
@@ -25,20 +21,36 @@ import {
   BalConfigState,
   attachComponentToConfig,
   detachComponentToConfig,
+  BalRegion,
 } from '../../../config'
+import {
+  FormInput,
+  getInputTarget,
+  inputHandleBlur,
+  inputHandleChange,
+  inputHandleClick,
+  inputHandleFocus,
+  inputHandleHostClick,
+  inputListenOnClick,
+  inputSetBlur,
+  inputSetFocus,
+} from '../../../helpers/form-input.helpers'
 
 @Component({
   tag: 'bal-input',
 })
-export class Input implements ComponentInterface, BalConfigObserver {
+export class Input implements ComponentInterface, BalConfigObserver, FormInput<string | undefined> {
   private inputId = `bal-input-${InputIds++}`
-  private nativeInput?: HTMLInputElement
-  private didInit = false
-  private hasFocus = false
+  private inheritedAttributes: { [k: string]: any } = {}
+
+  nativeInput?: HTMLInputElement
+  inputValue = this.value
 
   @Element() el!: HTMLElement
 
+  @State() hasFocus = false
   @State() language: BalLanguage = defaultConfig.language
+  @State() region: BalRegion = defaultConfig.region
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -99,7 +111,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
   /**
    * Instructional text that shows before the input has a value.
    */
-  @Prop() placeholder?: string | null
+  @Prop() placeholder?: string
 
   /**
    * The maximum value, which must not be less than its minimum (min attribute) value.
@@ -132,11 +144,6 @@ export class Input implements ComponentInterface, BalConfigObserver {
   @Prop() pattern?: string | undefined
 
   /**
-   * The tabindex of the control.
-   */
-  @Prop() balTabindex = 0
-
-  /**
    * If `true`, the user must fill in a value before submitting a form.
    */
   @Prop() required = false
@@ -167,14 +174,28 @@ export class Input implements ComponentInterface, BalConfigObserver {
   @Prop() clickable = false
 
   /**
-   * If `true` on mobile device the number keypad is active
+   * @deprecated
+   * If `true` on mobile device the number keypad is active. Use the <bal-number-input> component instead.
    */
   @Prop() numberInput = false
+  @Watch('numberInput')
+  numberInputHandler() {
+    if (this.numberInput) {
+      console.warn('[DEPRECATED] - Please use the component <bal-number-input> instead')
+    }
+  }
 
   /**
-   * Defines the allowed decimal points for the `number-input`.
+   * @deprecated
+   * Defines the allowed decimal points for the `number-input`. Use the <bal-number-input> component instead.
    */
   @Prop() decimal?: number
+  @Watch('decimal')
+  decimalHandler() {
+    if (this.decimal) {
+      console.warn('[DEPRECATED] - Please use the component <bal-number-input> instead')
+    }
+  }
 
   /**
    * Adds a suffix the the input-value after blur.
@@ -197,22 +218,12 @@ export class Input implements ComponentInterface, BalConfigObserver {
   /**
    * The value of the input.
    */
-  @Prop({ mutable: true }) value?: string | number = ''
-
-  /**
-   * Update the native input element when the value changes
-   */
-  @Watch('value')
-  protected async valueChanged(newValue: string | number | undefined, oldValue: string | number | undefined) {
-    if (this.didInit && !this.hasFocus && newValue !== oldValue) {
-      this.balChange.emit(this.getRawValue())
-    }
-  }
+  @Prop({ mutable: true }) value?: string = undefined
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<string | number | null>
+  @Event() balInput!: EventEmitter<string | undefined>
 
   /**
    * Emitted when a keyboard input occurred.
@@ -237,14 +248,11 @@ export class Input implements ComponentInterface, BalConfigObserver {
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<string | number | null>
+  @Event() balChange!: EventEmitter<string | undefined>
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(ev: UIEvent) {
-    if (this.disabled && ev.target && ev.target === this.el) {
-      ev.preventDefault()
-      ev.stopPropagation()
-    }
+  listenOnClick(event: UIEvent) {
+    inputListenOnClick(this, event)
   }
 
   connectedCallback() {
@@ -253,10 +261,11 @@ export class Input implements ComponentInterface, BalConfigObserver {
   }
 
   componentDidLoad() {
-    this.didInit = true
-    if (!isNil(this.value) && this.value !== '') {
-      this.valueChanged(this.value, undefined)
-    }
+    this.inputValue = this.value
+  }
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
   disconnectedCallback() {
@@ -265,6 +274,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
 
   configChanged(state: BalConfigState): void {
     this.language = state.language
+    this.region = state.region
 
     if (!this.hasFocus && this.nativeInput) {
       this.nativeInput.value = this.getFormattedValue()
@@ -277,92 +287,93 @@ export class Input implements ComponentInterface, BalConfigObserver {
    */
   @Method()
   async setFocus() {
-    if (this.nativeInput) {
-      this.nativeInput.focus()
-    }
+    inputSetFocus(this)
+  }
+
+  /**
+   * Sets blur on the native `input` in `bal-input`. Use this method instead of the global
+   * `input.blur()`.
+   * @internal
+   */
+  @Method()
+  async setBlur() {
+    inputSetBlur(this)
   }
 
   /**
    * Returns the native `<input>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLInputElement | undefined> {
-    return Promise.resolve(this.nativeInput)
-  }
-
-  private get allowedKeys() {
-    return [...NUMBER_KEYS, ...ACTION_KEYS, getDecimalSeparator()]
+  getInputElement(): Promise<HTMLInputElement> {
+    return Promise.resolve(this.nativeInput!)
   }
 
   private getRawValue(): string {
-    const value = typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString()
+    const value = (this.value || '').toString()
     return value
   }
 
   private getFormattedValue(): string {
     const value = this.getRawValue()
     const suffix = this.suffix !== undefined && value !== undefined && value !== '' ? ' ' + this.suffix : ''
-    if (this.numberInput) {
-      return `${formatInputValue(value, this.decimal)}${suffix}`
-    }
     return `${value}${suffix}`
   }
 
   private onInput = (ev: InputEvent) => {
-    const input = ev.target as HTMLInputElement | null
+    const input = getInputTarget(ev)
 
     if (input) {
-      const value = this.numberInput ? filterInputValue(input.value, this.value, this.decimal) : input.value
-      input.value = this.value = value || ''
+      this.inputValue = input.value
     }
 
-    this.balInput.emit(this.value)
+    this.balInput.emit(this.inputValue)
   }
 
-  private onKeyDown = (event: KeyboardEvent) => {
-    if (this.numberInput) {
-      if (!isCtrlOrCommandKey(event) && this.allowedKeys.indexOf(event.key) < 0) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
-    }
-  }
-
-  private onFocus = (ev: FocusEvent) => {
-    this.hasFocus = true
-    this.balFocus.emit(ev)
-
-    const input = ev.target as HTMLInputElement | null
-    if (input) {
-      input.value = this.getRawValue()
-    }
-  }
+  private onFocus = (event: FocusEvent) => inputHandleFocus(this, event)
 
   private onBlur = (ev: FocusEvent) => {
-    this.hasFocus = false
-    this.balBlur.emit(ev)
-    this.balChange.emit(this.getRawValue())
+    inputHandleBlur(this, ev)
 
     const input = ev.target as HTMLInputElement | null
     if (input) {
       input.value = this.getFormattedValue()
     }
+
+    inputHandleChange(this)
   }
 
-  private onClick = (ev: MouseEvent) => {
-    if (!this.disabled) {
-      this.balClick.emit(ev)
-    }
-  }
+  private onClick = (event: MouseEvent) => inputHandleClick(this, event)
 
-  private handleClick = (event: MouseEvent) => {
-    if (this.disabled) {
-      event.preventDefault()
-      event.stopPropagation()
-    }
-  }
+  private handleClick = (event: MouseEvent) => inputHandleHostClick(this, event)
 
   render() {
+    /**
+     * @deprecated should be removed in the next breaking change release.
+     */
+    if (this.numberInput) {
+      const numberValue: number | undefined = !this.value ? undefined : parseFloat(this.value)
+      return (
+        <bal-number-input
+          value={numberValue}
+          name={this.name}
+          disabled={this.disabled}
+          invalid={this.invalid}
+          decimal={this.decimal}
+          suffix={this.suffix}
+          placeholder={this.placeholder}
+          required={this.required}
+          readonly={this.readonly}
+          debounce={this.debounce}
+          onBalFocus={e => this.balFocus.emit(e.detail)}
+          onBalBlur={e => this.balBlur.emit(e.detail)}
+          onBalInput={e => this.balInput.emit(e.detail?.toString())}
+          onBalChange={e => this.balChange.emit(e.detail?.toString())}
+          onBalKeyPress={e => this.balKeyPress.emit(e.detail)}
+          onBalClick={e => this.balClick.emit(e.detail)}
+        ></bal-number-input>
+      )
+    }
+
     const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
@@ -374,9 +385,7 @@ export class Input implements ComponentInterface, BalConfigObserver {
     if (this.pattern) {
       inputProps = { pattern: this.pattern }
     }
-    if (this.numberInput) {
-      inputProps = { pattern: '[0-9]*' }
-    }
+
     return (
       <Host
         onClick={this.handleClick}
@@ -419,15 +428,14 @@ export class Input implements ComponentInterface, BalConfigObserver {
           required={this.required}
           spellcheck={this.spellcheck}
           type={this.type}
-          tabindex={this.balTabindex}
           value={value}
-          {...inputProps}
-          onInput={ev => this.onInput(ev as InputEvent)}
-          onKeyDown={this.onKeyDown}
-          onBlur={this.onBlur}
           onFocus={this.onFocus}
+          onInput={ev => this.onInput(ev as InputEvent)}
+          onBlur={this.onBlur}
           onClick={this.onClick}
           onKeyPress={e => this.balKeyPress.emit(e)}
+          {...inputProps}
+          {...this.inheritedAttributes}
         />
       </Host>
     )

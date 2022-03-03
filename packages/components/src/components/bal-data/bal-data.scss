@@ -69,7 +69,7 @@
   }
 
   &.has-border > .bal-data-item {
-    border-bottom: 1px solid $blue-2;
+    border-bottom: 2px solid $grey-2;
   }
 }
 
@@ -84,9 +84,6 @@
     }
 
     & > div > bal-input input.input {
-      padding-left: 4px;
-      padding-right: 4px;
-      background: $grey-2;
       flex: 1;
     }
 

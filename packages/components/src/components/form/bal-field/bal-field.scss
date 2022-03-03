@@ -1,10 +1,10 @@
 bal-field {
   display: block;
   position: relative;
-  min-height: 60px;
+  min-height: 48px + 32px;
 
   &.has-label {
-    min-height: 80px;
+    min-height: 28px + 48px + 32px;
   }
 
   bal-field-label {
@@ -13,7 +13,7 @@ bal-field {
 
     label {
       font-family: $body-family;
-      font-size: $size-7;
+      font-size: $size-6;
     }
 
     label[for] {
@@ -94,19 +94,6 @@ bal-field {
 
   .control {
     min-height: 48px;
-
-    // & > bal-input,
-    // & > bal-datepicker {
-    //   margin-top: 1px;
-    // }
-
-    // & > bal-checkbox {
-    //   margin-top: 7px;
-    // }
-
-    // & > bal-radio-group {
-    //   margin-top: 10px;
-    // }
   }
 
   .control.has-icons-left *::part(input) {

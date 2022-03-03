@@ -1,6 +1,7 @@
-import { year, month, isoString } from '@baloise/web-app-utils'
+import { formatDateString } from '@baloise/web-app-utils'
+import { getYear, getMonth } from 'date-fns'
 
-const selectorDayBox = (date: Date) => `[data-date="${isoString(date)}"]`
+const selectorDayBox = (date: Date) => `[data-date="${formatDateString(date)}"]`
 
 Cypress.Commands.add(
   'balDatepickerToggle',
@@ -42,8 +43,8 @@ Cypress.Commands.add(
       .wrap(subject)
       .balDatepickerIsOpen()
       .within(() => {
-        cy.get('.month-select select').first().select(month(date).toString())
-        cy.get('.year-select select').first().select(year(date).toString())
+        cy.get('.month-select select').first().select(getMonth(date).toString())
+        cy.get('.year-select select').first().select(getYear(date).toString())
         cy.get(selectorDayBox(date)).click()
       })
       .wrap(subject)

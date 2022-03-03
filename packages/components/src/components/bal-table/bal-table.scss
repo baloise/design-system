@@ -29,7 +29,7 @@ table.table {
 
     th {
       border-color: $blue;
-      border-bottom-width: 1px;
+      border-bottom-width: 2px;
     }
   }
 
@@ -38,6 +38,7 @@ table.table {
     font-size: $size-normal;
     font-family: $family-primary;
     vertical-align: middle;
+    color: $blue;
 
     .bal-checkbox {
       padding: 0;
@@ -52,9 +53,8 @@ table.table {
   td.has-buttons {
     padding: 2px;
 
-    .buttons {
-      justify-content: flex-end;
-      padding: 3px;
+    bal-button:not(:last-child) {
+      margin-right: 8px;
     }
   }
 }

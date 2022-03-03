@@ -1,5 +1,3 @@
-/* eslint-disable */
-import { updateBalLanguage, updateBalRegion } from '../../../../config'
 import { filterInputValue, formatInputValue } from '../bal-input.utils'
 
 describe('bal-input', () => {
@@ -17,7 +15,7 @@ describe('bal-input', () => {
       expect(filterInputValue('0.4', '')).toBe('0.4')
       expect(filterInputValue('1.4', '')).toBe('1.4')
     })
-    test('should filter input value for a valid decmial number', () => {
+    test('should filter input value for a valid decimal number', () => {
       expect(filterInputValue('a', '', 2)).toBe('')
       expect(filterInputValue('0', '', 2)).toBe('0')
       expect(filterInputValue('3', '', 2)).toBe('3')
@@ -42,7 +40,7 @@ describe('bal-input', () => {
     })
   })
   describe('formatInputValue', () => {
-    test('should add delemiter', () => {
+    test('should add delimiter', () => {
       expect(formatInputValue('0')).toBe('0')
       expect(formatInputValue('10')).toBe('10')
       expect(formatInputValue('100')).toBe('100')
@@ -55,7 +53,6 @@ describe('bal-input', () => {
       expect(formatInputValue('0')).toBe('0')
       expect(formatInputValue('0.1', 2)).toBe('0.10')
       expect(formatInputValue('a')).toBe('')
-      expect(formatInputValue('.1')).toBe('0.1')
       expect(formatInputValue('.1', 2)).toBe('0.10')
       expect(formatInputValue('.1', 0)).toBe('0')
     })

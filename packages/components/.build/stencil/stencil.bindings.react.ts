@@ -1,10 +1,10 @@
-import { reactOutputTarget } from '@stencil/react-output-target'
+import { reactOutputTarget } from '@baloise/react-output-target'
 
 export const ReactGenerator = () =>
   reactOutputTarget({
     componentCorePackage: '@baloise/design-system-next-components',
     proxiesFile: '../components-react/src/components.ts',
-    includeDefineCustomElements: false,
+    includeDefineCustomElements: true,
     excludeComponents: [
       'bal-doc-app',
       'bal-doc-color',

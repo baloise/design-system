@@ -88,21 +88,6 @@ TextInput.parameters = {
   },
 }
 
-export const NumberInput = Template.bind({})
-NumberInput.args = {
-  placeholder: 'Enter a number',
-  numberInput: true,
-  invalid: false,
-  suffix: 'CHF',
-  decimal: '2',
-}
-NumberInput.parameters = {
-  ...component.sourceCode(NumberInput),
-  controls: {
-    exclude: excludedControls,
-  },
-}
-
 export const InvalidInput = Template.bind({})
 InvalidInput.args = {
   value: 'Value',

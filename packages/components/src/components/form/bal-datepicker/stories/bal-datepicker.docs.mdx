@@ -35,14 +35,14 @@ Value must be a date string following the [ISO 8601 datetime format standard](ht
 For example, the maximum could just be the year, such as `1994`. Defaults to the end of this year.
 
 ```typescript
-import { isoString, now } from '@baloise/design-system-components'
+import { formatDateString, now } from '@baloise/web-app-utils'
 
 const datepickerDisabled = document.getElementById('datepicker-disabled')
-datepickerDisabled.value = isoString(now())
+datepickerDisabled.value = formatDateString(now())
 // or
-datepickerDisabled.value = isoString(2020, 0, 13)
+datepickerDisabled.value = formatDateString(2020, 0, 13)
 // or
-datepickerDisabled.value = isoString(new Date(2020, 0, 13))
+datepickerDisabled.value = formatDateString(new Date(2020, 0, 13))
 ```
 
 import AngularLogo from '../../../../stories/assets/images/angular.svg'

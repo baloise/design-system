@@ -88,7 +88,7 @@ export class Hint {
           class="data-test-hint-trigger"
           role="button"
           name="info-circle"
-          size=""
+          size="small"
           onClick={() => this.toggle()}
         ></bal-icon>
 

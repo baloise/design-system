@@ -10,9 +10,11 @@ export type BalLanguage = BalSwissLanguage | BalLuxembourgLanguage | BalBelgiumL
 export interface BalConfig {
   region?: BalRegion
   language?: BalLanguage
+  allowedLanguages?: BalLanguage[]
 }
 
 export interface BalConfigState {
   region: BalRegion
   language: BalLanguage
+  allowedLanguages: BalLanguage[]
 }

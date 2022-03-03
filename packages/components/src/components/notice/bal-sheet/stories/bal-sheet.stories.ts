@@ -51,15 +51,13 @@ export const Basic = args => ({
       <bal-button expanded>Continue with 1'234 CHF</bal-button>
       <bal-button expanded color="info" class="mt-2">Back</bal-button>
     </div>
-    <div class="is-hidden-mobile">
-      <div class="is-flex is-align-items-center fg-4">
-        <h5 class="title is-size-5 m-0">1'234 CHF</h5>
-        <p class="has-text-blue-light-text is-small m-0 is-flex-grow-1">{{ args.content }}</p>
-        <bal-button-group>
-          <bal-button color="info">Back</bal-button>
-          <bal-button>Next</bal-button>
-        </bal-button-group>
-      </div>
+    <div class="is-hidden-mobile is-flex is-align-items-center fg-4">
+      <h4 class="title is-size-4 m-0">1'234 CHF</h4>
+      <p class="has-text-blue-light-text is-small m-0 is-flex-grow-1">{{ args.content }}</p>
+      <bal-button-group>
+        <bal-button color="info">Back</bal-button>
+        <bal-button>Next</bal-button>
+      </bal-button-group>
     </div>
   </bal-sheet>
 </div>`,
@@ -68,18 +66,3 @@ Basic.args = {
   content: 'Lorem ipsum dolor',
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
-
-// <div class="columns">
-// <div class="column is-3 is-flex is-align-items-center px-2">
-//   <h3 class="title is-size-3 m-0">1'234 CHF</h3>
-// </div>
-// <div class="column is-flex is-align-items-center px-2">
-//   <p class="m-0 has-text-blue-light-text is-small">{{ args.content }}</p>
-// </div>
-// <div class="column is-2 is-flex is-align-items-center px-2">
-//   <bal-button expanded color="link">Back</bal-button>
-// </div>
-// <div class="column is-3 is-flex is-align-items-center px-2">
-//   <bal-button expanded>Next</bal-button>
-// </div>
-// </div>

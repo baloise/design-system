@@ -176,7 +176,7 @@ export const OptionCard = args => ({
     <div class="is-flex is-justify-content-center	is-align-items-center">
       <img class="is-hidden-touch" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
       <div class="is-flex-grow-1 px-3">
-        <bal-heading level="h5" space="none">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></bal-heading>
+        <bal-heading level="h4" space="none">Baustein Parkschaden <small class="is-hidden-touch">(+ CHF 11.30)</small></bal-heading>
         <bal-text space="none" class="is-hidden-desktop">+ CHF 11.30</bal-text>
         <bal-text class="is-hidden-touch" space="none">Schäden am parkierten Fahrzeug durch unbekannte Dritte.</bal-text>
       </div>
@@ -220,7 +220,7 @@ export const Teasers = args => ({
   <div class="column is-one-third">
     <bal-card  v-bind="args">
       <bal-card-content>
-        <div style="min-height: 240px;" class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
+        <div style="min-height: 280px;" class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
           <bal-heading level="h4" space="none">Title & Title</bal-heading>
           <bal-heading subtitle level="h5" space="bottom" color="info">Subtitle</bal-heading>
           <img class="mb-4" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
@@ -236,7 +236,7 @@ export const Teasers = args => ({
   <div class="column is-one-third">
     <bal-card  v-bind="args">
       <bal-card-content>
-        <div style="min-height: 240px;" class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
+        <div style="min-height: 280px;" class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
           <img class="mb-4" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
           <bal-heading level="h4" space="bottom">Title & Title</bal-heading>
           <bal-button-group position="center" class="mt-auto">
@@ -247,15 +247,15 @@ export const Teasers = args => ({
     </bal-card>
   </div>
   <div class="column is-one-third">
-    <bal-card v-bind="args" color="info">
+    <bal-card v-bind="args" color="purple">
       <bal-card-content>
-        <div style="min-height: 240px;" class="is-flex is-justify-content-start is-flex-direction-column">
-          <bal-heading color="white" level="h4" space="bottom">Title & Title</bal-heading>
-          <bal-text color="white" class="mb-4">
+        <div style="min-height: 280px;" class="is-flex is-justify-content-start is-flex-direction-column">
+          <bal-heading level="h4" space="bottom">Title & Title</bal-heading>
+          <bal-text class="mb-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </bal-text>
           <bal-button-group position="center" class="mt-auto">
-            <bal-button expanded outlined inverted color="info">Button</bal-button>
+            <bal-button expanded outlined color="info">Button</bal-button>
           </bal-button-group>
         </div>
         </bal-card-content>
@@ -264,7 +264,7 @@ export const Teasers = args => ({
   <div class="column is-one-third">
     <bal-card v-bind="args">
       <bal-card-content>
-        <div style="min-height: 240px;" class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
+        <div style="min-height: 280px;" class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
           <img class="mb-4 has-opacity-60" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
           <bal-heading level="h4" space="bottom" class="has-opacity-60">Title & Title</bal-heading>
           <bal-button-group position="center" class="mt-auto">
@@ -277,7 +277,7 @@ export const Teasers = args => ({
   <div class="column is-one-third">
     <bal-card v-bind="args">
       <bal-card-content>
-        <div style="min-height: 240px;" class="is-flex is-justify-content-start is-flex-direction-column">
+        <div style="min-height: 280px;" class="is-flex is-justify-content-start is-flex-direction-column">
           <div class="is-flex">
             <bal-heading class="is-flex-grow-1" level="h4" space="none">List</bal-heading>
             <a class="is-link">Show All</a>
@@ -312,7 +312,7 @@ export const Teasers = args => ({
   <div class="column is-one-third">
     <bal-card v-bind="args">
       <bal-card-content>
-        <div style="min-height: 240px;" class="is-flex is-justify-content-start is-flex-direction-column">
+        <div style="min-height: 280px;" class="is-flex is-justify-content-start is-flex-direction-column">
           <bal-heading level="h4" space="bottom">Title & Title</bal-heading>
           <bal-input-group>
             <bal-icon size="small" name="search"></bal-icon>

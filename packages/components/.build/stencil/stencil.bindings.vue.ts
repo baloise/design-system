@@ -10,6 +10,7 @@ export const vueComponentModels: ComponentModelConfig[] = [
       'bal-accordion',
       'bal-popover',
       'bal-tabs',
+      'bal-input-stepper',
     ],
     event: 'balChange',
     targetAttr: 'value',
@@ -22,7 +23,7 @@ export const vueComponentModels: ComponentModelConfig[] = [
     targetAttr: 'checked',
   },
   {
-    elements: ['bal-input', 'bal-textarea', 'bal-slider'],
+    elements: ['bal-input', 'bal-number-input', 'bal-textarea', 'bal-slider'],
     event: 'balInput',
     targetAttr: 'value',
   },

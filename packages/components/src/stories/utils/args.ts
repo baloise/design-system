@@ -34,6 +34,7 @@ const getControl = prop => {
 
     case 'number':
     case 'number | undefined':
+    case 'null | number | undefined':
       return { type: 'number', min: 0 }
 
     default:
