@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-components",
-  "version": "10.3.0",
+  "version": "10.4.0",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -60,8 +60,8 @@
     "www:watch": "stencil build --dev --serve --config stencil.test.config.ts --watch"
   },
   "dependencies": {
-    "@baloise/design-system-next-fonts": "10.3.0",
-    "@baloise/design-system-next-icons": "10.3.0",
+    "@baloise/design-system-next-fonts": "10.4.0",
+    "@baloise/design-system-next-icons": "10.4.0",
     "@baloise/web-app-utils": "^3.0.1",
     "@popperjs/core": "^2.11.2",
     "@stencil/core": "^2.11.0",
