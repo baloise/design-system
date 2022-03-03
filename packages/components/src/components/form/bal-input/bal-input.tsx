@@ -1,27 +1,18 @@
 import {
   Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
   h,
   Host,
-  Prop,
-  Element,
-  EventEmitter,
-  Event,
-  Method,
-  Watch,
-  ComponentInterface,
   Listen,
+  Method,
+  Prop,
   State,
+  Watch,
 } from '@stencil/core'
 import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
-import {
-  defaultConfig,
-  BalLanguage,
-  BalConfigObserver,
-  BalConfigState,
-  attachComponentToConfig,
-  detachComponentToConfig,
-  BalRegion,
-} from '../../../config'
 import {
   FormInput,
   getInputTarget,
@@ -39,7 +30,7 @@ import { Props } from '../../../props'
 @Component({
   tag: 'bal-input',
 })
-export class Input implements ComponentInterface, BalConfigObserver, FormInput<string | undefined> {
+export class Input implements ComponentInterface, FormInput<string | undefined> {
   private inputId = `bal-input-${InputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -49,8 +40,6 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   @Element() el!: HTMLElement
 
   @State() hasFocus = false
-  @State() language: BalLanguage = defaultConfig.language
-  @State() region: BalRegion = defaultConfig.region
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -173,6 +162,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
    * If `true` on mobile device the number keypad is active. Use the <bal-number-input> component instead.
    */
   @Prop() numberInput = false
+
   @Watch('numberInput')
   numberInputHandler() {
     if (this.numberInput) {
@@ -185,6 +175,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
    * Defines the allowed decimal points for the `number-input`. Use the <bal-number-input> component instead.
    */
   @Prop() decimal?: number
+
   @Watch('decimal')
   decimalHandler() {
     if (this.decimal) {
@@ -214,6 +205,11 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
    * The value of the input.
    */
   @Prop({ mutable: true }) value?: string = undefined
+
+  /**
+   * Mask of the input field. It defines what the user can enter and how the format looks like. Currently only for Switzerland
+   */
+  @Prop() mask?: 'contract-number' | 'claim-number' | 'offer-number' = undefined
 
   /**
    * Emitted when a keyboard input occurred.
@@ -252,7 +248,6 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
 
   connectedCallback() {
     this.debounceChanged()
-    attachComponentToConfig(this)
   }
 
   componentDidLoad() {
@@ -261,19 +256,6 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
-  }
-
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-  }
-
-  configChanged(state: BalConfigState): void {
-    this.language = state.language
-    this.region = state.region
-
-    if (!this.hasFocus && this.nativeInput) {
-      this.nativeInput.value = this.getFormattedValue()
-    }
   }
 
   /**

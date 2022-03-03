@@ -120,3 +120,8 @@ packages/components-angular/src/directives/proxies.ts
 packages/components-angular/src/directives/proxies-list.ts
 packages/components-angular/src/directives/proxies.module.ts
 
+packages/fonts/docs/fonts.zip
+packages/icons/docs/icons.json
+packages/icons/docs/icons.zip
+packages/components/docs/**
+docs/

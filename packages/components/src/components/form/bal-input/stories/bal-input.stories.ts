@@ -7,7 +7,6 @@ import {
   BalFieldLabel,
   BalFieldMessage,
 } from '../../../../../.storybook/vue/components'
-import { configArgTypes, configDefaultArgs, reduceConfigArgs, setConfig } from '../../../../stories/utils/config'
 
 const balFieldArgTypes = stencilArgType(BalField)
 
@@ -22,10 +21,8 @@ const component = BalComponentStory({
         category: 'custom',
       },
     },
-    ...configArgTypes,
   },
   args: {
-    ...configDefaultArgs,
     invalid: false,
     hasFieldMessage: true,
   },
@@ -56,12 +53,7 @@ const excludedControls = [
 
 const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
-  setup: () => {
-    setConfig(args)
-    return {
-      args: reduceConfigArgs(args),
-    }
-  },
+  setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
@@ -95,6 +87,17 @@ InvalidInput.args = {
 }
 InvalidInput.parameters = {
   ...component.sourceCode(InvalidInput),
+  controls: {
+    exclude: excludedControls,
+  },
+}
+
+export const ContractNumberInput = Template.bind({})
+ContractNumberInput.args = {
+  mask: 'contract-number',
+}
+ContractNumberInput.parameters = {
+  ...component.sourceCode(ContractNumberInput),
   controls: {
     exclude: excludedControls,
   },

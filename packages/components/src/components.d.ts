@@ -802,6 +802,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently only for Switzerland
+         */
+        "mask"?: 'contract-number' | 'claim-number' | 'offer-number';
+        /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
          */
         "max"?: string;
@@ -3194,6 +3198,10 @@ declare namespace LocalJSX {
           * If `true` this component can be placed on dark background
          */
         "inverted"?: boolean;
+        /**
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently only for Switzerland
+         */
+        "mask"?: 'contract-number' | 'claim-number' | 'offer-number';
         /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
          */
