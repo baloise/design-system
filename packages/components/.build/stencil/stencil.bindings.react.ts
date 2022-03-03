@@ -1,4 +1,4 @@
-import { reactOutputTarget } from '@stencil/react-output-target'
+import { reactOutputTarget } from '@baloise/react-output-target'
 
 export const ReactGenerator = () =>
   reactOutputTarget({

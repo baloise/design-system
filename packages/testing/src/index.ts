@@ -5,6 +5,11 @@ import './selectors'
 export * from './selectors'
 
 /**
+ * Legacy Commands
+ */
+export * from './legacy'
+
+/**
  * Custom Commands
  */
 import './commands/custom/bal-accordion.types'
@@ -30,7 +35,7 @@ import './commands/custom/bal-tabs.command'
 import './commands/custom/bal-toast.command'
 
 /**
- * Overrides Commands
+ * Override Commands
  */
 import './commands/overrides/blur.command'
 import './commands/overrides/check.command'

@@ -10,20 +10,36 @@ import {
   EventEmitter,
   Listen,
   Method,
+  State,
 } from '@stencil/core'
-import isNil from 'lodash.isnil'
 import Big from 'big.js'
+import { formatLocaleNumber } from '@baloise/web-app-utils'
 import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
+import { FormInput, inputListenOnClick } from '../../../helpers/form-input.helpers'
+import {
+  attachComponentToConfig,
+  BalConfigObserver,
+  BalConfigState,
+  BalLanguage,
+  BalRegion,
+  defaultConfig,
+  detachComponentToConfig,
+} from '../../../config'
 
 @Component({
   tag: 'bal-input-stepper',
 })
-export class InputStepper implements ComponentInterface {
+export class InputStepper implements ComponentInterface, BalConfigObserver, FormInput<number | undefined> {
+  private inputId = `bal-input-stepper${InputStepperIds++}`
+  private inheritedAttributes: { [k: string]: any } = {}
+
+  nativeInput?: HTMLInputElement
+
   @Element() el!: HTMLElement
 
-  private inputId = `bal-input-stepper${InputStepperIds++}`
-  private nativeInput?: HTMLInputElement
-  private didInit = false
+  @State() hasFocus = false
+  @State() language: BalLanguage = defaultConfig.language
+  @State() region: BalRegion = defaultConfig.region
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -70,35 +86,41 @@ export class InputStepper implements ComponentInterface {
    */
   @Prop({ mutable: true }) value = 0
 
-  @Watch('value')
-  protected async valueChanged(newValue: number, oldValue: number) {
-    if (this.didInit && newValue !== oldValue) {
-      this.balChange.emit(newValue)
-    }
-  }
+  // @Watch('value')
+  // protected async valueChanged(newValue: number, oldValue: number) {
+  //   if (this.didInit && newValue !== oldValue) {
+  //     this.balInput.emit(newValue)
+  //     this.balChange.emit(newValue)
+  //   }
+  // }
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<number>
+  @Event() balChange!: EventEmitter<number | undefined>
+
+  /**
+   * Emitted when the input value has changed.
+   */
+  @Event() balInput!: EventEmitter<number | undefined>
 
   @Listen('click', { capture: true, target: 'document' })
-  listenOnClick(ev: UIEvent) {
-    if (this.disabled && ev.target && ev.target === this.el) {
-      ev.preventDefault()
-      ev.stopPropagation()
-    }
+  listenOnClick(event: UIEvent) {
+    inputListenOnClick(this, event)
   }
 
   connectedCallback() {
     this.debounceChanged()
+    attachComponentToConfig(this)
   }
 
-  componentDidLoad() {
-    this.didInit = true
-    if (!isNil(this.value) && this.value !== 0) {
-      this.valueChanged(this.value, 0)
-    }
+  disconnectedCallback() {
+    detachComponentToConfig(this)
+  }
+
+  configChanged(state: BalConfigState): void {
+    this.language = state.language
+    this.region = state.region
   }
 
   /**
@@ -113,6 +135,7 @@ export class InputStepper implements ComponentInterface {
     const newValue = new Big(this.value).plus(this.steps).toNumber()
     if (newValue <= this.max) {
       this.value = newValue
+      this.balInput.emit(newValue)
       this.balChange.emit(newValue)
     }
   }
@@ -121,6 +144,7 @@ export class InputStepper implements ComponentInterface {
     const newValue = new Big(this.value).minus(this.steps).toNumber()
     if (newValue >= this.min) {
       this.value = newValue
+      this.balInput.emit(newValue)
       this.balChange.emit(newValue)
     }
   }
@@ -146,22 +170,22 @@ export class InputStepper implements ComponentInterface {
             size="small"
             square
             outlined={!this.invalid}
-            icon="plus"
+            icon="minus"
             color={this.invalid ? 'danger' : 'info'}
-            disabled={this.disabled || this.value >= this.max}
-            onClick={_ => this.increase()}
+            disabled={this.disabled || this.value <= this.min}
+            onClick={_ => this.decrease()}
           ></bal-button>
           <bal-text space="none" color={this.disabled ? 'info' : this.invalid ? 'danger' : ''} bold>
-            {this.value}
+            {formatLocaleNumber(`${this.language}-${this.region}`, this.value)}
           </bal-text>
           <bal-button
             size="small"
             square
             outlined={!this.invalid}
-            icon="minus"
+            icon="plus"
             color={this.invalid ? 'danger' : 'info'}
-            disabled={this.disabled || this.value <= this.min}
-            onClick={_ => this.decrease()}
+            disabled={this.disabled || this.value >= this.max}
+            onClick={_ => this.increase()}
           ></bal-button>
         </div>
         <input

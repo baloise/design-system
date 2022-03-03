@@ -53,7 +53,6 @@ describe('bal-input', () => {
       expect(formatInputValue('0')).toBe('0')
       expect(formatInputValue('0.1', 2)).toBe('0.10')
       expect(formatInputValue('a')).toBe('')
-      expect(formatInputValue('.1')).toBe('0.1')
       expect(formatInputValue('.1', 2)).toBe('0.10')
       expect(formatInputValue('.1', 0)).toBe('0')
     })

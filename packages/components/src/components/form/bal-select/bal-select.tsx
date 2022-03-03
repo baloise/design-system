@@ -501,7 +501,7 @@ export class Select {
   private async selectLabel(label: string) {
     if (label !== ' ') {
       const option = this.optionArray.find(o => startsWith(o.label || '', label))
-      if (!isNil(option)) {
+      if (!isNil(option) && option.id) {
         const optionElement = this.el.querySelector<HTMLButtonElement>(`button#${option.id}`)
         if (!isNil(optionElement)) {
           const index = this.optionArray.indexOf(option)
@@ -516,7 +516,7 @@ export class Select {
   private async scrollToLabel(label: string) {
     if (label !== ' ') {
       const option = this.optionArray.find(o => startsWith(o.label || '', label))
-      if (!isNil(option)) {
+      if (!isNil(option) && option.id) {
         const optionElement = this.el.querySelector<HTMLButtonElement>(`button#${option.id}`)
         if (!isNil(optionElement)) {
           const index = this.optionArray.indexOf(option)
@@ -707,6 +707,15 @@ export class Select {
           'is-inverted': this.inverted,
         }}
       >
+        <select class="is-hidden" name={this.name} multiple={this.multiple}>
+          {valuesArray
+            .filter(_ => this.multiple)
+            .map((value: string) => (
+              <option value={value} selected>
+                {value}
+              </option>
+            ))}
+        </select>
         <bal-popover
           onBalChange={this.handlePopoverChange}
           ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}
@@ -734,7 +743,6 @@ export class Select {
                   'is-clickable': !this.isPopoverOpen,
                   'data-test-select-input': true,
                 }}
-                name={this.name}
                 autocomplete={'off'}
                 placeholder={this.inputPlaceholder}
                 readOnly={!this.typeahead}
@@ -784,6 +792,7 @@ export class Select {
                     <bal-checkbox
                       checked={valuesArray.includes(option.value)}
                       tabindex={-1}
+                      hidden
                       onBalChange={preventDefault}
                     ></bal-checkbox>
                   </span>

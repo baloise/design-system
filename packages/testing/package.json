@@ -38,7 +38,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@baloise/design-system-next-components": "10.3.0",
-    "@baloise/web-app-utils": "^3.0.0",
+    "@baloise/web-app-utils": "^3.0.1",
     "date-fns": "^2.28.0"
   },
   "devDependencies": {
@@ -57,5 +57,5 @@
     "ts-node": "^9.0.0",
     "typescript": "^4.4.3"
   },
-  "gitHead": "be51095ac1032fffbdf492cbbc96f3aaf34bba42"
+  "gitHead": "942fb79c8ff2fb991d815f91ffee0bb95ea6756f"
 }

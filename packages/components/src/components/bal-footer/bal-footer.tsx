@@ -62,7 +62,7 @@ export class Footer implements BalConfigObserver {
 
   updateFooterLinks() {
     if (!this.hideLinks) {
-      const allowedHosts = ['baloise.ch'] // Allowed origins to fetch footer links
+      const allowedHosts = ['baloise.ch', 'baloise.dev'] // Allowed origins to fetch footer links
       if (allowedHosts.some(allowedHost => location.hostname.endsWith(allowedHost))) {
         loadFooterLinks(new Language(this.language)).then(links => (this.links = links))
       } else {

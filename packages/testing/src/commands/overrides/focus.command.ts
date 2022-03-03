@@ -4,6 +4,7 @@ import {
   isCheckbox,
   isDatepicker,
   isInput,
+  isNumberInput,
   isRadio,
   isSelect,
   isSlider,
@@ -29,7 +30,7 @@ Cypress.Commands.overwrite('focus', (originalFn, element: Cypress.Chainable<JQue
     return wrapRoot(element, selectors.datepicker.input, $el => originalFn($el, options))
   }
 
-  if (isInput(element)) {
+  if (isInput(element) || isNumberInput(element)) {
     return wrapRoot(element, selectors.input.main, $el => originalFn($el, options))
   }
 

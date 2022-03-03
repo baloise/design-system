@@ -1,11 +1,9 @@
-@import './bal-input-stepper.vars.scss';
-
 bal-input-stepper {
   position: static;
   display: inline-block;
 
   & > div > bal-text {
-    min-width: 40px;
+    min-width: 48px;
     text-align: center;
   }
 

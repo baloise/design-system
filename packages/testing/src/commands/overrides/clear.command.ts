@@ -8,6 +8,7 @@ import {
   isSelect,
   isSlider,
   isTextarea,
+  isNumberInput,
 } from '../helpers'
 
 Cypress.Commands.overwrite('clear', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
@@ -19,7 +20,7 @@ Cypress.Commands.overwrite('clear', (originalFn, element: Cypress.Chainable<JQue
     return wrapRoot(element, selectors.datepicker.input, $el => originalFn($el, options))
   }
 
-  if (isInput(element)) {
+  if (isInput(element) || isNumberInput(element)) {
     return wrapRoot(element, selectors.input.main, $el => originalFn($el, options))
   }
 
