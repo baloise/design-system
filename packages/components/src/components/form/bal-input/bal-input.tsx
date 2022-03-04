@@ -207,8 +207,10 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
   @Prop({ mutable: true }) value?: string = undefined
 
   /**
-   * Mask of the input field. It defines what the user can enter and how the format looks like. Currently only for Switzerland
-   */
+   * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted.
+   * Formatting for 'contract-number': ' 00/0.000.000'
+   * Formatting for 'claim-number': ('73/001217/16.9')
+   // */
   @Prop() mask?: 'contract-number' | 'claim-number' | 'offer-number' = undefined
 
   /**
@@ -300,10 +302,90 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     const input = getInputTarget(ev)
 
     if (input) {
-      this.inputValue = input.value
+      switch (this.mask) {
+        case 'contract-number': {
+          this.inputValue = input.value.replace(/\D/g, '')
+          if (this.inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
+            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
+          }
+          input.value = this.formatPolicy(this.inputValue)
+          break
+        }
+        case 'claim-number': {
+          this.inputValue = input.value.replace(/\D/g, '')
+          if (this.inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
+            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
+          }
+          input.value = this.formatClaim(this.inputValue)
+          break
+        }
+        default:
+          this.inputValue = input.value
+      }
     }
 
     this.balInput.emit(this.inputValue)
+  }
+
+  /**
+   *
+   * @param value - input number
+   * @output 73/001217/16.9
+   * @private
+   */
+  private formatClaim(value: string) {
+    if (!value) {
+      return ''
+    }
+    const newValue = `${value}`.trim()
+    const parts = [
+      newValue.substring(0, 2),
+      newValue.substring(2, 8),
+      newValue.substring(8, 10),
+      newValue.substring(10, 11),
+    ].filter(val => val.length > 0)
+    switch (parts.length) {
+      case 1:
+        return `${value}`
+      case 2:
+        return `${parts[0]}/${parts[1]}`
+      case 3:
+        return `${parts[0]}/${parts[1]}/${parts[2]}`
+      default:
+        return `${parts[0]}/${parts[1]}/${parts[2]}.${parts[3]}`
+    }
+  }
+
+  /**
+   *
+   * @param value: input number
+   * @output 00/0.000.000
+   * @private
+   */
+  private formatPolicy(value: string) {
+    if (!value) {
+      return ''
+    }
+    let newValue = `${value}`.trim()
+    if (newValue[0] !== '0') {
+      newValue = `0${value}`
+    }
+    const parts = [
+      newValue.substring(0, 2),
+      newValue.substring(2, 3),
+      newValue.substring(3, 6),
+      newValue.substring(6, 9),
+    ].filter(val => val.length > 0)
+    switch (parts.length) {
+      case 1:
+        return `${newValue}`
+      case 2:
+        return `${parts[0]}/${parts[1]}`
+      case 3:
+        return `${parts[0]}/${parts[1]}.${parts[2]}`
+      default:
+        return `${parts[0]}/${parts[1]}.${parts[2]}.${parts[3]}`
+    }
   }
 
   private onFocus = (event: FocusEvent) => inputHandleFocus(this, event)
@@ -313,10 +395,26 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
 
     const input = ev.target as HTMLInputElement | null
     if (input) {
+      if (this.mask !== undefined) {
+        return
+      }
       input.value = this.getFormattedValue()
     }
 
     inputHandleChange(this)
+  }
+
+  private getAllowedKeys() {
+    return [...NUMBER_KEYS, ...ACTION_KEYS]
+  }
+
+  private onKeydown = (event: KeyboardEvent) => {
+    if (this.mask !== undefined && !isNil(event) && !isCtrlOrCommandKey(event)) {
+      if (!this.getAllowedKeys().includes(event.key)) {
+        // do not trigger next event -> on input
+        return stopEventBubbling(event)
+      }
+    }
   }
 
   private onClick = (event: MouseEvent) => inputHandleClick(this, event)
@@ -404,6 +502,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
           value={value}
           onFocus={this.onFocus}
           onInput={ev => this.onInput(ev as InputEvent)}
+          onKeyDown={e => this.onKeydown(e)}
           onBlur={this.onBlur}
           onClick={this.onClick}
           onKeyPress={e => this.balKeyPress.emit(e)}
@@ -416,3 +515,5 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
 }
 
 let InputIds = 0
+const MAX_LENGTH_CONTRACT_NUMBER = 9
+const MAX_LENGTH_CLAIM_NUMBER = 11
