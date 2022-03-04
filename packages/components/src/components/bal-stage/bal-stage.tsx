@@ -16,6 +16,11 @@ export class Stage implements ComponentInterface {
    */
   @Prop() size: 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight' = ''
 
+  /**
+   * Defines the height of the stage section.
+   */
+  @Prop() rounded = false
+
   render() {
     return (
       <Host>
@@ -23,6 +28,7 @@ export class Stage implements ComponentInterface {
           class={{
             'hero': true,
             'has-background': true,
+            'has-radius-large': this.rounded,
             'is-info': this.color === 'blue',
             [`is-${this.size}`]: this.size !== '',
           }}
