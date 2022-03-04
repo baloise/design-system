@@ -29,7 +29,12 @@ export class Icon {
   @Prop() color: BalButtonColor | 'white' = 'info'
 
   /**
-   * If `true` the button is inverted
+   * If `true` the icon has display inline style
+   */
+  @Prop() inline = false
+
+  /**
+   * If `true` the icon is inverted
    */
   @Prop() inverted = false
 
@@ -65,6 +70,7 @@ export class Icon {
           [`is-${this.color}`]: true,
           [`turn`]: this.turn,
           [`rotate`]: this.rotate,
+          [`is-inline`]: this.inline,
         }}
       >
         <div class="bal-icon-inner" innerHTML={this.svgContent}></div>
