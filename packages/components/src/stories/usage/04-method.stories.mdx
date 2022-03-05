@@ -1,0 +1,159 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Usage/Method"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<bal-doc-banner id="overview" subtitle="Usage">Method</bal-doc-banner>
+
+<bal-doc-tabs>
+  <a href="#overview">Overview</a>
+  <a href="#usage-with-basic-html5">HTML</a>
+  <a href="#usage-with-angular">Angular</a>
+  <a href="#usage-with-vue">Vue</a>
+  <a href="#usage-with-react">React</a>
+</bal-doc-tabs>
+
+<bal-doc-lead>
+  Some of the Baloise Design System components offering methods to setFocus or returning native HTML elements.
+</bal-doc-lead>
+
+To demonstrate the usage of the methods we try to set the value of the bal-select to tennis.
+
+<Canvas withSource="none">
+  <bal-app>
+    <bal-select placeholder="Choose your hobby">
+      <bal-select-option label="Tennis" value="tennis">
+        Tennis
+      </bal-select-option>
+      <bal-select-option label="Soccer" value="soccer">
+        Soccer
+      </bal-select-option>
+      <bal-select-option label="Other" value="other">
+        Other
+      </bal-select-option>
+    </bal-select>
+  </bal-app>
+</Canvas>
+
+## Usage with basic HTML5
+
+```js
+;(async () => {
+  await customElements.whenDefined('bal-select')
+  const todoListElement = document.querySelector('bal-select')
+  await todoListElement.select('tennis')
+})()
+```
+
+## Usage with Angular
+
+To create a reference to a component use the property decorator [@ViewChild](https://angular.io/api/core/ViewChild).
+Mark the component in the template with `#yourReferenceName` and link it to the `@ViewChild` in the component class.
+To access the method of the component use the reference directly.
+
+**app.component.html**
+
+```html
+<bal-select #mySelect placeholder="Choose your hobby">
+  <bal-select-option label="Tennis" value="tennis">Tennis</bal-select-option>
+  <bal-select-option label="Soccer" value="soccer">Soccer</bal-select-option>
+  <bal-select-option label="Other" value="other">Other</bal-select-option>
+</bal-select>
+<bal-button class="mt-4" (click)="chooseTennis()">Choose Tennis</bal-button>
+```
+
+**app.component.ts**
+
+```ts
+import { Component, ViewChild } from '@angular/core'
+import type { Components } from '@baloise/design-system-components'
+import { ProxyComponent } from '@baloise/design-system-components-angular'
+
+@Component({
+  selector: 'app-method',
+  templateUrl: './method.component.html',
+})
+export class MethodComponent {
+  @ViewChild('mySelect') mySelect!: ProxyComponent<Components.BalSelect>
+
+  chooseTennis(): void {
+    this.mySelect.el.select('tennis')
+  }
+}
+```
+
+## Usage with Vue
+
+To access the components use the [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) of Vue.js.
+First define the reference and than mark it with the property/attribute `ref`.
+After that the methods of the components can be used directly.
+
+```html
+<script setup lang="ts">
+  import { ref } from 'vue'
+  import { ProxyComponent, BalSelect, BalSelectOption, BalButton } from '@baloise/design-system-components-vue'
+  import { Components } from '@baloise/design-system-components'
+
+  const mySelect = ref<ProxyComponent<Components.BalSelect>>()
+
+  function chooseTennis() {
+    mySelect.value?.$el.select('tennis')
+  }
+</script>
+
+<template>
+  <BalSelect ref="mySelect" placeholder="Choose your hobby">
+    <BalSelectOption label="Tennis" value="tennis">Tennis</BalSelectOption>
+    <BalSelectOption label="Soccer" value="soccer">Soccer</BalSelectOption>
+    <BalSelectOption label="Other" value="other">Other</BalSelectOption>
+  </BalSelect>
+  <BalButton class="mt-4" @click="chooseTennis()">Choose Tennis</BalButton>
+</template>
+```
+
+## Usage with React
+
+To access the component use [useRef](https://reactjs.org/docs/hooks-reference.html#useref) in React.
+Link then the ref with the element, after that the methods of the component can be accessed.
+
+```tsx
+import { BalSelect, BalSelectOption, BalButton } from '@baloise/design-system-components-react'
+import { useRef } from 'react'
+
+function MethodComponent() {
+  const selectRef = useRef<HTMLBalSelectElement>(null)
+
+  function chooseTennis() {
+    selectRef.current?.select('tennis')
+  }
+
+  return (
+    <div>
+      <BalSelect ref={selectRef} placeholder="Choose your hobby">
+        <BalSelectOption label="Tennis" value="tennis">
+          Tennis
+        </BalSelectOption>
+        <BalSelectOption label="Soccer" value="soccer">
+          Soccer
+        </BalSelectOption>
+        <BalSelectOption label="Other" value="other">
+          Other
+        </BalSelectOption>
+      </BalSelect>
+      <BalButton class="mt-4" onClick={() => chooseTennis()}>
+        Choose Tennis
+      </BalButton>
+    </div>
+  )
+}
+
+export default MethodComponent
+```
+
+<bal-doc-github link="/stories/usage/04-method.stories.mdx"></bal-doc-github>

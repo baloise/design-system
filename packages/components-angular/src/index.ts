@@ -11,4 +11,4 @@ export { AngularDelegate } from './overlays/angular-delegate'
 export { BalCoreModule } from './module'
 
 // HELPERS
-export { element, parseCustomEvent } from './helpers'
+export { element, parseCustomEvent, ProxyComponent } from './helpers'

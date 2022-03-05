@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs'
 
 <Meta
-  title="Getting-Started/Angular/Usage of Modal"
+  title="Usage/Modal"
   parameters={{
     previewTabs: {
       canvas: { hidden: true },
@@ -9,13 +9,29 @@ import { Meta } from '@storybook/addon-docs'
   }}
 />
 
-# Usage of Modal
+<bal-doc-banner id="overview" subtitle="Usage">Modal</bal-doc-banner>
+
+<bal-doc-tabs>
+  <a href="#overview">Overview</a>
+  {/* <a href="#usage-with-basic-html5">HTML</a> */}
+  <a href="#usage-with-angular">Angular</a>
+  <a href="#usage-with-vue">Vue</a>
+  {/* <a href="#usage-with-react">React</a> */}
+</bal-doc-tabs>
+
+<bal-doc-lead>
+  Some of the Baloise Design System components offering methods to setFocus or returning native HTML elements.
+</bal-doc-lead>
+
+<!-- ## Usage with basic HTML5 -->
+
+## Usage with Angular
 
 For the angular framework we provide a `ModalService` to create more easily and dynamic.
 
-## 1. Define the modal component
-
 Create a html and a typescript file for your modal component like this.
+
+**modal.component.html**
 
 ```html
 <bal-modal-header>Modal Title</bal-modal-header>
@@ -34,6 +50,8 @@ Create a html and a typescript file for your modal component like this.
 ```
 
 With the help of the `BalModalService` we are able to close the modal.
+
+**modal.component.ts**
 
 ```typescript
 import { Component, Input } from '@angular/core'
@@ -60,9 +78,9 @@ export class ModalComponent {
 }
 ```
 
-## 2. Create the modal
-
 From the main component we can easily create a modal with the `BalModalService`.
+
+**app.component.ts**
 
 ```typescript
 import { Component } from '@angular/core'
@@ -98,47 +116,65 @@ export class ModalPageComponent {
 }
 ```
 
-## Modal without the service
+## Usage with Vue
 
-Simply define the modal layout in your custom component and add the element reference with `#modal` to the model element.
+Define the component for the content of the modal in a separate .vue file.
+
+With the help of the `balModalController.dismiss()` we are able to close the modal.
+
+**MyModal.vue**
 
 ```html
-<bal-button (click)="openModal()">Open Modal</bal-button>
+<script setup lang="ts">
+  import { defineProps } from 'vue'
+  import { balModalController, BalModalHeader, BalModalBody, BalButton } from '@baloise/design-system-components-vue'
 
-<bal-modal #modal>
-  <bal-modal-header>Modal Title</bal-modal-header>
-  <bal-modal-body>
-    <p>...</p>
-    <bal-button-group position="right" class="mt-5">
-      <bal-button color="link" (click)="closeModal()">Cancel</bal-button>
-      <bal-button color="primary" (click)="closeModal()">Okay</bal-button>
-    </bal-button-group>
-  </bal-modal-body>
-</bal-modal>
+  defineProps({
+    firstName: { type: String },
+    lastName: { type: String },
+  })
+
+  const closeModal = () => balModalController.dismiss()
+</script>
+
+<template>
+  <BalModalHeader>Modal Title</BalModalHeader>
+  <BalModalBody>
+    <p>{{ firstName }} {{ lastName }}</p>
+    <BalButtonGroup position="right" class="mt-5">
+      <BalButton color="link" @click="closeModal()">Cancel</BalButton>
+      <BalButton color="primary" @click="closeModal()">Okay</BalButton>
+    </BalButtonGroup>
+  </BalModalBody>
+</template>
 ```
 
-In your component register the element reference with `@ViewChild('modal')`. With that reference you are able to access the methods of the modal component.
+From the main component we can easily create a modal with the `balModalController`.
 
-```typescript
-import { Component, ViewChild } from '@angular/core'
-import type { Components } from '@baloise/design-system-components'
-import { ProxyComponent } from '@baloise/design-system-components-angular'
+**App.vue**
 
-@Component({
-  selector: 'app-modal',
-  templateUrl: './modal-page.component.html',
-})
-export class ModalPageComponent {
-  @ViewChild('modal') modal!: ProxyComponent<Components.BalModal>
+```html
+<script setup lang="ts">
+  import { balModalController, BalButton } from '@baloise/design-system-components-vue'
+  import MyModal from '@/components/MyModal.vue'
 
-  openModal() {
-    this.modal.el.open()
+  const openModal = async () => {
+    const modal = await balModalController.create({
+      component: MyModal,
+      componentProps: {
+        firstName: 'Peter',
+        lastName: 'Parker',
+      },
+    })
+    return modal.present()
   }
+</script>
 
-  closeModal() {
-    this.modal.el.close()
-  }
-}
+<template>
+  <BalButton @click="openModal()">Open Modal</BalButton>
+</template>
 ```
 
-<bal-doc-github link="/stories/getting-started/angular/03-03-usage-modal.stories.mdx"></bal-doc-github>
+<!-- ## Usage with React -->
+
+<bal-doc-github link="/stories/usage/04-method.stories.mdx"></bal-doc-github>

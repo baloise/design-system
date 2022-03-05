@@ -1,0 +1,124 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Usage/Property"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<bal-doc-banner id="overview" subtitle="Usage">Property</bal-doc-banner>
+
+<bal-doc-tabs>
+  <a href="#overview">Overview</a>
+  <a href="#usage-with-basic-html5">HTML</a>
+  <a href="#usage-with-angular">Angular</a>
+  <a href="#usage-with-vue">Vue</a>
+  <a href="#usage-with-react">React</a>
+</bal-doc-tabs>
+
+<bal-doc-lead>
+  Properties are custom attributes/properties exposed publicly on an HTML element. They allow developers to pass data to
+  a component to render or otherwise use. Like to set a value for a input or change the color of a button.
+</bal-doc-lead>
+
+To demonstrate how to interact with properties we try to change the color property of the button component.
+
+<Canvas withSource="none">
+  <bal-app>
+    <bal-button color="info">My info button</bal-button>
+  </bal-app>
+</Canvas>
+
+```html
+<bal-button color="info">My info button</bal-button>
+```
+
+If the property is of type `boolean` it is enough to just set the property without a value:
+
+<Canvas withSource="none">
+  <bal-app>
+    <bal-button disabled>My disabled button</bal-button>
+  </bal-app>
+</Canvas>
+
+```html
+<bal-button disabled>My info button</bal-button>
+```
+
+## Usage with basic HTML5
+
+```html
+<bal-button color="info">My info button</bal-button>
+<bal-button id="my-info-button">My info button</bal-button>
+
+<script>
+  const buttonElement = document.querySelector('#my-info-button')
+  buttonElement.color = 'info'
+</script>
+```
+
+## Usage with Angular
+
+**app.component.ts**
+
+```ts
+import { Component } from '@angular/core'
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+})
+export class AppComponent {
+  buttonColor = 'info'
+}
+```
+
+**app.component.html**
+
+```html
+<bal-button color="info">My info button</bal-button>
+
+<!-- To bind a value use the [] around the prop -->
+<bal-button [color]="buttonColor">My info button</bal-button>
+```
+
+## Usage with Vue
+
+```html
+<script setup lang="ts">
+  import { ref } from 'vue'
+  import { BalButton } from '@baloise/design-system-components-vue'
+
+  const buttonColor = ref('info')
+</script>
+
+<template>
+  <BalButton color="info">My info button</BalButton>
+
+  <!-- To bind a value use the : before the prop -->
+  <BalButton :color="buttonColor">My info button</BalButton>
+</template>
+```
+
+## Usage with React
+
+```tsx
+import React from "react";
+import { BalButton } from "@baloise/design-system-components-react";
+
+function App() {
+  const [color, setColor] = useState('info');
+
+  return (
+    <BalButton color='info'>My info button</BalButton>
+    <BalButton color={color}>My info button</BalButton>
+  );
+}
+
+export default App;
+```
+
+<bal-doc-github link="/stories/usage/02-property.stories.mdx"></bal-doc-github>

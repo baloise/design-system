@@ -1,0 +1,45 @@
+bal-doc-link-list {
+  a {
+    display: block;
+    padding: 20px 30px 20px 15px;
+    border: 1px solid #00000010;
+    border-radius: 8px;
+    transition: background 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
+    color: #333333;
+    background-color: #fefefe;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  a:hover {
+    background-color: #fcfcfc;
+    border-color: #1ea7fd50;
+    transform: translate3d(0, -3px, 0);
+    box-shadow: rgba(0, 0, 0, 0.08) 0 3px 10px 0;
+  }
+
+  a:active {
+    border-color: #1ea7fd;
+    transform: translate3d(0, 0, 0);
+  }
+
+  a strong {
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  a img {
+    height: 40px;
+    width: 40px;
+    margin-right: 15px;
+    flex: none;
+  }
+
+  a span {
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+  }
+}

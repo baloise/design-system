@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth !important;
+}
+
 .welcome-container {
   background: #039 !important;
   position: fixed !important;
@@ -61,7 +65,7 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 }
 
 .sbdocs-wrapper {
-  padding: 32px !important;
+  padding: 16px 32px !important;
 }
 
 .sbdocs.sbdocs-h1,
@@ -80,6 +84,8 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 
 .sbdocs.sbdocs-h2 {
   font-size: 36px;
+  padding-top: 64px !important;
+  margin-top: 0 !important;
 }
 
 .sbdocs.sbdocs-h3 {
@@ -251,7 +257,7 @@ a.feature h2 img {
 }
 
 .link-item span {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   color: #333;
 }
@@ -357,4 +363,11 @@ a.feature h2 img {
 .docs-swot-table .rotate div {
   transform: rotate(-90deg);
   vertical-align: middle;
+}
+
+a.sbdocs.sbdocs-a,
+p.sbdocs.sbdocs-p,
+li.sbdocs.sbdocs-li {
+  font-size: 16px;
+  line-height: 32px;
 }

@@ -1,0 +1,14 @@
+@import '../../../styles/global.utilities.scss';
+
+bal-doc-usage {
+  position: static;
+  display: block;
+
+  bal-doc-usage-when > div {
+    border-left: 4px solid $success;
+  }
+
+  bal-doc-usage-dont > div {
+    border-left: 4px solid $danger;
+  }
+}

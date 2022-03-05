@@ -127,7 +127,7 @@ Import the `BaloiseDesignSystemModule` and add it to your angular module. To use
 ```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'
 import {
   BalCoreModule,
@@ -143,14 +143,19 @@ import { AppComponent } from './app.component'
   imports: [
     BrowserModule,
     CommonModule,
+    // Enables the usage of ngModel on form components
     FormsModule,
+    ReactiveFormsModule,
+    // Enables the Design System globally for your application
     BalCoreModule.forRoot(),
+    // Import the Design System components
     BalButtonModule,
     BalHeadingModule,
     BalFooterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
+  // To enable the usage of Web Components inside the Angular templates.
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
@@ -190,5 +195,17 @@ npm start
 
 > **TIP**
 > Your app gets served under [http://localhost:4200](http://localhost:4200).
+
+## Component Usage
+
+How to import Baloise Design System component, set properties, listen to events and call methods is described int the Component Usage section.
+
+<br />
+
+<bal-doc-app>
+  <a class="button is-primary is-inline" href="?path=/docs/usage-component--page#usage-with-angular">
+    Go to Component Usage
+  </a>
+</bal-doc-app>
 
 <bal-doc-github link="/stories/getting-started/angular/01-installation.stories.mdx"></bal-doc-github>

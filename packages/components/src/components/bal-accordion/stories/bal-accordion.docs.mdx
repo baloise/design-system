@@ -2,25 +2,40 @@ import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
 import readme from '../readme.md'
 
-<span id="story--components-accordion--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-accordion--basic">Accordion</bal-doc-banner>
 
-# Accordion
+<bal-doc-tabs>
+  <a href="#story--components-accordion--basic">Overview</a>
+  <a href="#examples">Examples</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#implementation">Implementation</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-Accordions put users in control of showing or hiding content. Accordions also help us organize information to keep screens less cluttered so that users can accomplish tasks in short, intuitive steps. And accordions can help users find content they need. The component can be used standalone, in combination or inside bal-card.
+<bal-doc-lead>
+  <b>Accordions</b> put users in control of showing or hiding content. Accordions also help us organize information to
+  keep screens less cluttered so that users can accomplish tasks in short, intuitive steps. And accordions can help
+  users find content they need. The component can be used standalone, in combination or inside bal-card.
+</bal-doc-lead>
 
 <Canvas>
   <Story id="components-accordion--basic" />
 </Canvas>
 
-## With Icons
+## Examples
 
-Use the properties `open-label` & `open-icon` to change the content of the trigger button.
+### With Icons
+
+With the properties `open-label` & `close-label` the content of the button can be changed. Same with the the icon use the properties `open-icon` and `close-icon`
 
 <Canvas>
   <Story id="components-accordion--with-icons" />
 </Canvas>
 
-## With Card
+### With Card
+
+The accordion can be combined with the card component to hide some information.
 
 <Canvas>
   <Story id="components-accordion--with-card" />
@@ -32,8 +47,42 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 
 <br />
 
+<!-- ## Usage
+
+<bal-doc-usage>
+  <bal-doc-usage-when>
+    <li>asdf</li>
+  </bal-doc-usage-when>
+  <bal-doc-usage-dont>
+    <li>asdf</li>
+  </bal-doc-usage-dont>
+</bal-doc-usage> -->
+
+## Implementation
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
+
 import testing from './testing.md'
 
 <Description markdown={testing} />
+
+## Troubleshooting
+
+If you experience any issues while using a component, please head over to the [Support page](?path=/docs/support--page) for more guidelines and help.
 
 <bal-doc-github link="/components/bal-accordion/stories/bal-accordion.docs.mdx"></bal-doc-github>

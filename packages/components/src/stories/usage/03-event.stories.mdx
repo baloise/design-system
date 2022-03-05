@@ -1,0 +1,133 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Usage/Event"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<bal-doc-banner id="overview" subtitle="Usage">Event</bal-doc-banner>
+
+<bal-doc-tabs>
+  <a href="#overview">Overview</a>
+  <a href="#usage-with-basic-html5">HTML</a>
+  <a href="#usage-with-angular">Angular</a>
+  <a href="#usage-with-vue">Vue</a>
+  <a href="#usage-with-react">React</a>
+</bal-doc-tabs>
+
+<bal-doc-lead>
+  The most of the Baloise Design System components can emit data and events using the Custom events.
+</bal-doc-lead>
+
+To demonstrate how to interact with events we try to listen to the input event of an input component.
+
+<Canvas withSource="none">
+  <bal-app>
+    <bal-input placeholder="Tell us your name"></bal-input>
+  </bal-app>
+</Canvas>
+
+```html
+<bal-input placeholder="Tell us your name"></bal-input>
+```
+
+## Usage with basic HTML5
+
+Since our components are using [dom events](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events)
+we can easily listen to them with `addEventListener`.
+
+```html
+<bal-input id="my-input" placeholder="Tell us your name"></bal-input>
+<bal-text id="my-name"></bal-text>
+
+<script>
+  const myInput = document.getElementById('my-input')
+  const myName = document.getElementById('my-name')
+
+  myInput.addEventListener('balInput', event => {
+    myName.textNode = event.detail
+  })
+</script>
+```
+
+## Usage with Angular
+
+In Angular the events are written like that `(balEventName)="yourComponentHandler($event.detail)"`.
+`$event.detail` returns the main value of the event.
+
+**app.component.html**
+
+```html
+<bal-input placeholder="Tell us your name" [value]="myName" (balInput)="updateName($event.detail)"></bal-input>
+<bal-text>My name is {{ myName }}</bal-text>
+```
+
+**app.component.ts**
+
+```ts
+import { Component } from '@angular/core'
+
+@Component({
+  selector: 'app-event',
+  templateUrl: './event.component.html',
+})
+export class EventComponent {
+  myName?: string
+
+  updateName(value: string | undefined) {
+    this.myName = value
+  }
+}
+```
+
+## Usage with Vue
+
+In Vue the the events are written with the `@` simple similar to Angular.
+`$event` returns the main value of the event.
+
+```html
+<script setup lang="ts">
+  import { ref } from 'vue'
+  import { BalInput, BalText } from '@baloise/design-system-components-vue'
+
+  const myName = ref<string | undefined>()
+
+  function updateName(value?: string) {
+    myName.value = value
+  }
+</script>
+
+<template>
+  <BalInput placeholder="Tell us your name" :value="myName" @balInput="updateName($event)"></BalInput>
+  <BalText>My name is {{ myName }}</BalText>
+</template>
+```
+
+## Usage with React
+
+Each event in React is prefixed with `on`. `balInput` becomes `onBalInput`.
+`$event.detail` returns the main value of the event.
+
+```tsx
+import { useState } from 'react'
+import { BalInput, BalText } from '@baloise/design-system-components-react'
+
+function EventComponent() {
+  const [myName, setMyName] = useState<string | undefined>()
+
+  return (
+    <div>
+      <BalInput placeholder="Tell us your name" value={myName} onBalInput={e => setMyName(e.detail)}></BalInput>
+      <BalText>My name is {myName}</BalText>
+    </div>
+  )
+}
+
+export default EventComponent
+```
+
+<bal-doc-github link="/stories/usage/03-event.stories.mdx"></bal-doc-github>

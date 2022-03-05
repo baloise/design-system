@@ -447,6 +447,9 @@ export namespace Components {
     }
     interface BalDocApp {
     }
+    interface BalDocBanner {
+        "subtitle": string;
+    }
     interface BalDocColor {
         "background": boolean;
         "color": string;
@@ -471,6 +474,23 @@ export namespace Components {
     interface BalDocImage {
         "src": string;
         "text": string;
+    }
+    interface BalDocLead {
+    }
+    interface BalDocLinkList {
+    }
+    interface BalDocLinkListItem {
+        "image": string;
+        "subject": string;
+        "template": '' | 'html5' | 'angular' | 'vue' | 'react';
+    }
+    interface BalDocTabs {
+    }
+    interface BalDocUsage {
+    }
+    interface BalDocUsageDont {
+    }
+    interface BalDocUsageWhen {
     }
     interface BalField {
         /**
@@ -668,7 +688,11 @@ export namespace Components {
          */
         "color": BalButtonColor | 'white';
         /**
-          * If `true` the button is inverted
+          * If `true` the icon has display inline style
+         */
+        "inline": boolean;
+        /**
+          * If `true` the icon is inverted
          */
         "inverted": boolean;
         /**
@@ -1430,6 +1454,10 @@ export namespace Components {
         /**
           * Defines the height of the stage section.
          */
+        "rounded": boolean;
+        /**
+          * Defines the height of the stage section.
+         */
         "size": 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight';
     }
     interface BalStageBody {
@@ -1818,6 +1846,12 @@ declare global {
         prototype: HTMLBalDocAppElement;
         new (): HTMLBalDocAppElement;
     };
+    interface HTMLBalDocBannerElement extends Components.BalDocBanner, HTMLStencilElement {
+    }
+    var HTMLBalDocBannerElement: {
+        prototype: HTMLBalDocBannerElement;
+        new (): HTMLBalDocBannerElement;
+    };
     interface HTMLBalDocColorElement extends Components.BalDocColor, HTMLStencilElement {
     }
     var HTMLBalDocColorElement: {
@@ -1847,6 +1881,48 @@ declare global {
     var HTMLBalDocImageElement: {
         prototype: HTMLBalDocImageElement;
         new (): HTMLBalDocImageElement;
+    };
+    interface HTMLBalDocLeadElement extends Components.BalDocLead, HTMLStencilElement {
+    }
+    var HTMLBalDocLeadElement: {
+        prototype: HTMLBalDocLeadElement;
+        new (): HTMLBalDocLeadElement;
+    };
+    interface HTMLBalDocLinkListElement extends Components.BalDocLinkList, HTMLStencilElement {
+    }
+    var HTMLBalDocLinkListElement: {
+        prototype: HTMLBalDocLinkListElement;
+        new (): HTMLBalDocLinkListElement;
+    };
+    interface HTMLBalDocLinkListItemElement extends Components.BalDocLinkListItem, HTMLStencilElement {
+    }
+    var HTMLBalDocLinkListItemElement: {
+        prototype: HTMLBalDocLinkListItemElement;
+        new (): HTMLBalDocLinkListItemElement;
+    };
+    interface HTMLBalDocTabsElement extends Components.BalDocTabs, HTMLStencilElement {
+    }
+    var HTMLBalDocTabsElement: {
+        prototype: HTMLBalDocTabsElement;
+        new (): HTMLBalDocTabsElement;
+    };
+    interface HTMLBalDocUsageElement extends Components.BalDocUsage, HTMLStencilElement {
+    }
+    var HTMLBalDocUsageElement: {
+        prototype: HTMLBalDocUsageElement;
+        new (): HTMLBalDocUsageElement;
+    };
+    interface HTMLBalDocUsageDontElement extends Components.BalDocUsageDont, HTMLStencilElement {
+    }
+    var HTMLBalDocUsageDontElement: {
+        prototype: HTMLBalDocUsageDontElement;
+        new (): HTMLBalDocUsageDontElement;
+    };
+    interface HTMLBalDocUsageWhenElement extends Components.BalDocUsageWhen, HTMLStencilElement {
+    }
+    var HTMLBalDocUsageWhenElement: {
+        prototype: HTMLBalDocUsageWhenElement;
+        new (): HTMLBalDocUsageWhenElement;
     };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
@@ -2211,11 +2287,19 @@ declare global {
         "bal-data-value": HTMLBalDataValueElement;
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-doc-app": HTMLBalDocAppElement;
+        "bal-doc-banner": HTMLBalDocBannerElement;
         "bal-doc-color": HTMLBalDocColorElement;
         "bal-doc-download": HTMLBalDocDownloadElement;
         "bal-doc-github": HTMLBalDocGithubElement;
         "bal-doc-icons": HTMLBalDocIconsElement;
         "bal-doc-image": HTMLBalDocImageElement;
+        "bal-doc-lead": HTMLBalDocLeadElement;
+        "bal-doc-link-list": HTMLBalDocLinkListElement;
+        "bal-doc-link-list-item": HTMLBalDocLinkListItemElement;
+        "bal-doc-tabs": HTMLBalDocTabsElement;
+        "bal-doc-usage": HTMLBalDocUsageElement;
+        "bal-doc-usage-dont": HTMLBalDocUsageDontElement;
+        "bal-doc-usage-when": HTMLBalDocUsageWhenElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -2728,6 +2812,9 @@ declare namespace LocalJSX {
     }
     interface BalDocApp {
     }
+    interface BalDocBanner {
+        "subtitle"?: string;
+    }
     interface BalDocColor {
         "background"?: boolean;
         "color"?: string;
@@ -2752,6 +2839,23 @@ declare namespace LocalJSX {
     interface BalDocImage {
         "src"?: string;
         "text"?: string;
+    }
+    interface BalDocLead {
+    }
+    interface BalDocLinkList {
+    }
+    interface BalDocLinkListItem {
+        "image"?: string;
+        "subject"?: string;
+        "template"?: '' | 'html5' | 'angular' | 'vue' | 'react';
+    }
+    interface BalDocTabs {
+    }
+    interface BalDocUsage {
+    }
+    interface BalDocUsageDont {
+    }
+    interface BalDocUsageWhen {
     }
     interface BalField {
         /**
@@ -2941,7 +3045,11 @@ declare namespace LocalJSX {
          */
         "color"?: BalButtonColor | 'white';
         /**
-          * If `true` the button is inverted
+          * If `true` the icon has display inline style
+         */
+        "inline"?: boolean;
+        /**
+          * If `true` the icon is inverted
          */
         "inverted"?: boolean;
         /**
@@ -3752,6 +3860,10 @@ declare namespace LocalJSX {
         /**
           * Defines the height of the stage section.
          */
+        "rounded"?: boolean;
+        /**
+          * Defines the height of the stage section.
+         */
         "size"?: 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight';
     }
     interface BalStageBody {
@@ -4059,11 +4171,19 @@ declare namespace LocalJSX {
         "bal-data-value": BalDataValue;
         "bal-datepicker": BalDatepicker;
         "bal-doc-app": BalDocApp;
+        "bal-doc-banner": BalDocBanner;
         "bal-doc-color": BalDocColor;
         "bal-doc-download": BalDocDownload;
         "bal-doc-github": BalDocGithub;
         "bal-doc-icons": BalDocIcons;
         "bal-doc-image": BalDocImage;
+        "bal-doc-lead": BalDocLead;
+        "bal-doc-link-list": BalDocLinkList;
+        "bal-doc-link-list-item": BalDocLinkListItem;
+        "bal-doc-tabs": BalDocTabs;
+        "bal-doc-usage": BalDocUsage;
+        "bal-doc-usage-dont": BalDocUsageDont;
+        "bal-doc-usage-when": BalDocUsageWhen;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -4147,11 +4267,19 @@ declare module "@stencil/core" {
             "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
+            "bal-doc-banner": LocalJSX.BalDocBanner & JSXBase.HTMLAttributes<HTMLBalDocBannerElement>;
             "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
             "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
             "bal-doc-github": LocalJSX.BalDocGithub & JSXBase.HTMLAttributes<HTMLBalDocGithubElement>;
             "bal-doc-icons": LocalJSX.BalDocIcons & JSXBase.HTMLAttributes<HTMLBalDocIconsElement>;
             "bal-doc-image": LocalJSX.BalDocImage & JSXBase.HTMLAttributes<HTMLBalDocImageElement>;
+            "bal-doc-lead": LocalJSX.BalDocLead & JSXBase.HTMLAttributes<HTMLBalDocLeadElement>;
+            "bal-doc-link-list": LocalJSX.BalDocLinkList & JSXBase.HTMLAttributes<HTMLBalDocLinkListElement>;
+            "bal-doc-link-list-item": LocalJSX.BalDocLinkListItem & JSXBase.HTMLAttributes<HTMLBalDocLinkListItemElement>;
+            "bal-doc-tabs": LocalJSX.BalDocTabs & JSXBase.HTMLAttributes<HTMLBalDocTabsElement>;
+            "bal-doc-usage": LocalJSX.BalDocUsage & JSXBase.HTMLAttributes<HTMLBalDocUsageElement>;
+            "bal-doc-usage-dont": LocalJSX.BalDocUsageDont & JSXBase.HTMLAttributes<HTMLBalDocUsageDontElement>;
+            "bal-doc-usage-when": LocalJSX.BalDocUsageWhen & JSXBase.HTMLAttributes<HTMLBalDocUsageWhenElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;
