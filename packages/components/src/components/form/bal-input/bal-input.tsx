@@ -208,8 +208,9 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
 
   /**
    * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted.
-   * Formatting for 'contract-number': ' 00/0.000.000'
+   * Formatting for 'contract-number': '00/0.000.000'
    * Formatting for 'claim-number': ('73/001217/16.9')
+   * Formatting for 'offer-number': ('98/7.654.321')
    // */
   @Prop() mask?: 'contract-number' | 'claim-number' | 'offer-number' = undefined
 
@@ -311,6 +312,14 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
           input.value = this.formatPolicy(this.inputValue)
           break
         }
+        case 'offer-number': {
+          this.inputValue = input.value.replace(/\D/g, '')
+          if (this.inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
+            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
+          }
+          input.value = this.formatOffer(this.inputValue)
+          break
+        }
         case 'claim-number': {
           this.inputValue = input.value.replace(/\D/g, '')
           if (this.inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
@@ -333,7 +342,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
    * @output 73/001217/16.9
    * @private
    */
-  private formatClaim(value: string) {
+  private formatClaim(value: string): string {
     if (!value) {
       return ''
     }
@@ -362,7 +371,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
    * @output 00/0.000.000
    * @private
    */
-  private formatPolicy(value: string) {
+  private formatPolicy(value: string): string {
     if (!value) {
       return ''
     }
@@ -370,6 +379,20 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     if (newValue[0] !== '0') {
       newValue = `0${value}`
     }
+    return this.formatOffer(newValue)
+  }
+
+  /**
+   *
+   * @param value: input number
+   * @output 98/7.654.321
+   * @private
+   */
+  private formatOffer(value: string): string {
+    if (!value) {
+      return ''
+    }
+    const newValue = `${value}`.trim()
     const parts = [
       newValue.substring(0, 2),
       newValue.substring(2, 3),
@@ -516,4 +539,5 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
 
 let InputIds = 0
 const MAX_LENGTH_CONTRACT_NUMBER = 9
+const MAX_LENGTH_OFFER_NUMBER = 9
 const MAX_LENGTH_CLAIM_NUMBER = 11

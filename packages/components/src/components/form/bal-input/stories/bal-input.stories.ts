@@ -95,9 +95,34 @@ InvalidInput.parameters = {
 export const ContractNumberInput = Template.bind({})
 ContractNumberInput.args = {
   mask: 'contract-number',
+  placeholder: 'Enter only numbers which will be formatted',
 }
 ContractNumberInput.parameters = {
   ...component.sourceCode(ContractNumberInput),
+  controls: {
+    exclude: excludedControls,
+  },
+}
+
+export const ClaimNumberInput = Template.bind({})
+ClaimNumberInput.args = {
+  mask: 'claim-number',
+  placeholder: 'Enter only numbers which will be formatted',
+}
+ClaimNumberInput.parameters = {
+  ...component.sourceCode(ClaimNumberInput),
+  controls: {
+    exclude: excludedControls,
+  },
+}
+
+export const OfferNumberInput = Template.bind({})
+OfferNumberInput.args = {
+  mask: 'offer-number',
+  placeholder: 'Enter only numbers which will be formatted',
+}
+OfferNumberInput.parameters = {
+  ...component.sourceCode(OfferNumberInput),
   controls: {
     exclude: excludedControls,
   },
