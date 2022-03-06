@@ -1,4 +1,5 @@
 import { Component, Host, h, Method, State, Prop, Element, Listen } from '@stencil/core'
+import { Props } from '../../props'
 
 @Component({
   tag: 'bal-hint',
@@ -6,7 +7,7 @@ import { Component, Host, h, Method, State, Prop, Element, Listen } from '@stenc
 export class Hint {
   @Element() element!: HTMLElement
   @State() isActive = false
-  @State() placement: 'left' | 'right' = 'right'
+  @State() placement: Props.BalHintPlacement = 'right'
 
   /**
    * Text for the close button.

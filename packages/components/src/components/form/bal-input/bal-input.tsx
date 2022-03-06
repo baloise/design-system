@@ -13,7 +13,6 @@ import {
   State,
 } from '@stencil/core'
 import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
-import { AutocompleteTypes, InputTypes } from '../../../types/interfaces'
 import {
   defaultConfig,
   BalLanguage,
@@ -35,6 +34,7 @@ import {
   inputSetBlur,
   inputSetFocus,
 } from '../../../helpers/form-input.helpers'
+import { Props } from '../../../props'
 
 @Component({
   tag: 'bal-input',
@@ -65,7 +65,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   /**
    * Defines the type of the input (text, number, email ...).
    */
-  @Prop() type: InputTypes = 'text'
+  @Prop() type: Props.BalInputInputType = 'text'
 
   /**
    * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
@@ -81,12 +81,12 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
-  @Prop() autocomplete: AutocompleteTypes = 'off'
+  @Prop() autocomplete: Props.BalInputAutocomplete = 'off'
 
   /**
    * Whether auto correction should be enabled when the user is entering/editing the text value.
    */
-  @Prop() autocorrect: 'on' | 'off' = 'off'
+  @Prop() autocorrect: Props.BalInputAutocorrect = 'off'
 
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
@@ -208,7 +208,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
    * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
    * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
    */
-  @Prop() inputmode?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
+  @Prop() inputmode?: Props.BalInputInputMode
 
   /**
    * The value of the input.

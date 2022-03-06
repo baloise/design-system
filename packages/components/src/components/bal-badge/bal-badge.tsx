@@ -1,4 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-badge',
@@ -14,17 +15,17 @@ export class Badge implements ComponentInterface {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop() size: 'small' | 'large' | '' = ''
+  @Prop() size: Props.BalBadgeSize = ''
 
   /**
    * Define the alert color for the badge.
    */
-  @Prop() color: 'danger' | 'warning' | 'success' = 'danger'
+  @Prop() color: Props.BalBadgeColor = 'danger'
 
   /**
    * If `true` the badge is added to the top right corner of the card.
    */
-  @Prop() position: 'card' | 'button' | 'tabs' | '' = ''
+  @Prop() position: Props.BalBadgePosition = ''
 
   render() {
     return (

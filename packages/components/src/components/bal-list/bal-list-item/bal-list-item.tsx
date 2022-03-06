@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, Event, EventEmitter } from '@stencil/core'
+import { Props } from '../../../props'
 
 @Component({
   tag: 'bal-list-item',
@@ -27,7 +28,7 @@ export class ListItem {
   /**
    * Specifies where to open the linked document
    */
-  @Prop() target: '_blank' | ' _parent' | '_self' | '_top' = '_self'
+  @Prop() target: Props.BalListItemTarget = '_self'
 
   /**
    * Emitted when the link element has clicked

@@ -2,7 +2,7 @@ import { Component, h, Host, Prop } from '@stencil/core'
 import * as balIcons from '@baloise/design-system-icons'
 import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
-import { BalButtonColor } from '../../types'
+import { Props } from '../../props'
 
 @Component({
   tag: 'bal-icon',
@@ -26,7 +26,7 @@ export class Icon {
   /**
    * The theme type of the button. Given by bulma our css framework.
    */
-  @Prop() color: BalButtonColor | 'white' = 'info'
+  @Prop() color: Props.BalIconSize = 'info'
 
   /**
    * If `true` the icon has display inline style

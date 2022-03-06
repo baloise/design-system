@@ -21,6 +21,7 @@ import {
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
 import { isDescendant } from '../../../helpers/helpers'
+import { Props } from '../../../props'
 
 @Component({
   tag: 'bal-radio',
@@ -44,7 +45,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
   /**
    * Defines the layout of the radio button
    */
-  @Prop() interface: 'radio' | 'select-button' = 'radio'
+  @Prop() interface: Props.BalRadioInterface = 'radio'
 
   /**
    * The value of the control.

@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Method, Element, State, Event, EventEmitter } from '@stencil/core'
-import { ColorTypes } from '../../../types/color.types'
+import { Props } from '../../../props'
 
 @Component({
   tag: 'bal-toast',
@@ -15,7 +15,7 @@ export class Toast {
   /**
    * The theme type of the toast. Given by bulma our css framework.
    */
-  @Prop() color: ColorTypes | '' = ''
+  @Prop() color: Props.BalTostColor = ''
 
   /**
    * The duration of the toast in milliseconds.

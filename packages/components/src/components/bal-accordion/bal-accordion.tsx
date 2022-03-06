@@ -1,6 +1,6 @@
 import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core'
 import { debounceEvent } from '../../helpers/helpers'
-import { ColorTypesBasic, BalButtonColor } from '../../types/color.types'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-accordion',
@@ -11,7 +11,7 @@ export class Accordion {
   /**
    * Type defines the theme of the accordion toggle
    */
-  @Prop() color: ColorTypesBasic = 'primary'
+  @Prop() color: Props.BalAccordionColor = 'primary'
 
   /**
    * Controls if the accordion is collapsed or not
@@ -103,8 +103,8 @@ export class Accordion {
     this.value = !this.value
   }
 
-  get buttonType(): BalButtonColor {
-    return `${this.color}-light` as BalButtonColor
+  get buttonType(): Props.BalButtonColor {
+    return `${this.color}-light` as Props.BalButtonColor
   }
 
   get label() {

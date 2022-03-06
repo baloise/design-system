@@ -20,6 +20,7 @@ import {
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
 import { inheritAttributes, isDescendant } from '../../../helpers/helpers'
+import { Props } from '../../../props'
 
 @Component({
   tag: 'bal-checkbox',
@@ -54,7 +55,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   /**
    * Defines the layout of the checkbox button
    */
-  @Prop() interface: 'checkbox' | 'switch' = 'checkbox'
+  @Prop() interface: Props.BalCheckboxInterface = 'checkbox'
 
   /**
    * If `true`, the checkbox is selected.

@@ -5,7 +5,7 @@ import { Component, Host, h, Prop } from '@stencil/core'
 })
 export class BalNotices {
   /**
-   * The interface tells the notice where to show the notice.
+   * @internal The interface tells the notice where to show the notice.
    */
   @Prop() interface: 'toast' | 'snackbar' = 'toast'
 

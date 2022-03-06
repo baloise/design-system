@@ -29,7 +29,7 @@ import {
   isSameMonth,
 } from 'date-fns'
 import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
-import { BalCalendarCell, BalDateCallback, BalPointerDate } from './bal-datepicker.type'
+import { BalCalendarCell, BalPointerDate } from './bal-datepicker.type'
 import { isSpaceKey, parse, format, isValidIsoString, now, formatDateString, isEnterKey } from '@baloise/web-app-utils'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
@@ -54,6 +54,7 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
+import { Props } from '../../../props'
 
 @Component({
   tag: 'bal-datepicker',
@@ -199,7 +200,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   /**
    * Callback to determine which date in the datepicker should be selectable.
    */
-  @Prop({ attribute: 'allowed-dates' }) allowedDates: BalDateCallback | undefined = undefined
+  @Prop({ attribute: 'allowed-dates' }) allowedDates: Props.BalDatepickerCallback | undefined = undefined
 
   /**
    * Emitted when a option got selected.
@@ -455,7 +456,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
       return true
     }
 
-    return (this.allowedDates as BalDateCallback)(formatDateString(dayDatePointer))
+    return (this.allowedDates as Props.BalDatepickerCallback)(formatDateString(dayDatePointer))
   }
 
   private onIconClick = (event: MouseEvent) => {

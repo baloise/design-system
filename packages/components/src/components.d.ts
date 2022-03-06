@@ -5,14 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ColorTypes, ColorTypesBasic, ColorTypesExtended } from "./types/color.types";
-import { BalButtonColor } from "./types";
-import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
+import { Props } from "./types";
+import { Props as Props1 } from "./props";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
-import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
-import { AutocompleteTypes, InputTypes } from "./types/interfaces";
 import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
-import { Placement } from "@popperjs/core";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -31,7 +27,7 @@ export namespace Components {
         /**
           * Type defines the theme of the accordion toggle
          */
-        "color": ColorTypesBasic;
+        "color": Props.BalAccordionColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -67,7 +63,7 @@ export namespace Components {
         /**
           * Define the alert color for the badge.
          */
-        "color": 'danger' | 'warning' | 'success';
+        "color": Props.BalBadgeColor;
         /**
           * Name of the icon to show. If a icon is present text should be hidden.
          */
@@ -75,11 +71,11 @@ export namespace Components {
         /**
           * If `true` the badge is added to the top right corner of the card.
          */
-        "position": 'card' | 'button' | 'tabs' | '';
+        "position": Props.BalBadgePosition;
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size": 'small' | 'large' | '';
+        "size": Props.BalBadgeSize;
     }
     interface BalButton {
         /**
@@ -89,7 +85,7 @@ export namespace Components {
         /**
           * The color to use from your application's color palette.
          */
-        "color": BalButtonColor;
+        "color": Props.BalButtonColor;
         /**
           * If `true`, the user cannot interact with the button.
          */
@@ -113,7 +109,7 @@ export namespace Components {
         /**
           * Size of the button
          */
-        "iconPosition": 'left' | 'right';
+        "iconPosition": Props.BalButtonIconPosition;
         /**
           * Name of the right button icon
          */
@@ -145,7 +141,7 @@ export namespace Components {
         /**
           * Size of the button
          */
-        "size": 'small' | '';
+        "size": Props.BalButtonSize;
         /**
           * If `true` the width of the buttons is limited
          */
@@ -153,7 +149,7 @@ export namespace Components {
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
-        "target": '_blank' | ' _parent' | '_self' | '_top';
+        "target": Props.BalButtonTarget;
         /**
           * If `true` the top corners get rounded
          */
@@ -161,7 +157,7 @@ export namespace Components {
         /**
           * The type of button.
          */
-        "type": 'button' | 'reset' | 'submit';
+        "type": Props.BalButtonType;
         /**
           * The value of the button, which is submitted with the form data.
          */
@@ -171,7 +167,7 @@ export namespace Components {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "position": 'right' | 'center' | '';
+        "position": Props.BalButtonGroupPosition;
     }
     interface BalCard {
         /**
@@ -181,7 +177,7 @@ export namespace Components {
         /**
           * Defines the color of the card.
          */
-        "color": ColorTypes | '';
+        "color": Props.BalCardColor;
         /**
           * If `true` the card loses its shadow.
          */
@@ -199,7 +195,7 @@ export namespace Components {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "position": 'right' | 'center' | '';
+        "position": Props.BalCardActionsPosition;
         /**
           * @deprecated use position="right" If `true` the buttons start form right to left.
          */
@@ -229,11 +225,11 @@ export namespace Components {
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
-        "target": '_blank' | ' _parent' | '_self' | '_top';
+        "target": Props.BalCardButtonTarget;
         /**
           * The type of button.
          */
-        "type": 'button' | 'reset' | 'submit';
+        "type": Props.BalCardButtonType;
     }
     interface BalCardContent {
     }
@@ -269,7 +265,7 @@ export namespace Components {
         /**
           * Defines the layout of the checkbox button
          */
-        "interface": 'checkbox' | 'switch';
+        "interface": Props.BalCheckboxInterface;
         /**
           * If `true`, the control works on dark background.
          */
@@ -313,7 +309,7 @@ export namespace Components {
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size": 'small' | 'large' | 'medium' | '';
+        "size": Props.BalCloseSize;
     }
     interface BalData {
         /**
@@ -351,7 +347,7 @@ export namespace Components {
         /**
           * Callback to determine which date in the datepicker should be selectable.
          */
-        "allowedDates": BalDateCallback | undefined;
+        "allowedDates": Props.BalDatepickerCallback | undefined;
         /**
           * Closes the popover
          */
@@ -560,7 +556,7 @@ export namespace Components {
         /**
           * Defines the color of the message.
          */
-        "color": '' | ColorTypesExtended;
+        "color": Props.BalFieldMessageColor;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -634,7 +630,7 @@ export namespace Components {
         /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "color": ColorTypes | '';
+        "color": Props.BalHeadingColor;
         /**
           * If `true` the button is inverted
          */
@@ -642,7 +638,7 @@ export namespace Components {
         /**
           * The actual heading level used in the HTML markup.
          */
-        "level": HeadingLevels;
+        "level": Props.BalHeadingLevel;
         /**
           * Defines at which position the heading has spacing.
          */
@@ -654,7 +650,7 @@ export namespace Components {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel": HeadingLevels | undefined;
+        "visualLevel": Props.BalHeadingLevel | undefined;
     }
     interface BalHint {
         /**
@@ -686,7 +682,7 @@ export namespace Components {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color": BalButtonColor | 'white';
+        "color": Props.BalIconSize;
         /**
           * If `true` the icon has display inline style
          */
@@ -728,11 +724,11 @@ export namespace Components {
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
          */
-        "autocomplete": AutocompleteTypes;
+        "autocomplete": Props.BalInputAutocomplete;
         /**
           * Whether auto correction should be enabled when the user is entering/editing the text value.
          */
-        "autocorrect": 'on' | 'off';
+        "autocorrect": Props.BalInputAutocorrect;
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
@@ -761,7 +757,7 @@ export namespace Components {
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
-        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "inputmode"?: Props.BalInputInputMode;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -833,7 +829,7 @@ export namespace Components {
         /**
           * Defines the type of the input (text, number, email ...).
          */
-        "type": InputTypes;
+        "type": Props.BalInputInputType;
         /**
           * The value of the input.
          */
@@ -903,7 +899,7 @@ export namespace Components {
         /**
           * Defines the min height of the list item
          */
-        "size": '' | 'large';
+        "size": Props.BalListSize;
     }
     interface BalListItem {
         /**
@@ -925,7 +921,7 @@ export namespace Components {
         /**
           * Specifies where to open the linked document
          */
-        "target": '_blank' | ' _parent' | '_self' | '_top';
+        "target": Props.BalListItemTarget;
     }
     interface BalListItemContent {
     }
@@ -943,11 +939,11 @@ export namespace Components {
         /**
           * Defines the which branded logo.
          */
-        "brand": 'group' | 'soba' | 'insurance';
+        "brand": Props.BalLogoBrand;
         /**
           * Defines the color of the logo.
          */
-        "color": 'blue' | 'white';
+        "color": Props.BalLogoColor;
     }
     interface BalModal {
         "close": () => Promise<void>;
@@ -976,7 +972,7 @@ export namespace Components {
         /**
           * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
          */
-        "interface": 'light' | 'card';
+        "interface": Props.BalModalInterface;
         /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
@@ -1036,16 +1032,13 @@ export namespace Components {
     interface BalNavbarMenuStart {
     }
     interface BalNotices {
-        /**
-          * The interface tells the notice where to show the notice.
-         */
         "interface": 'toast' | 'snackbar';
     }
     interface BalNotification {
         /**
           * Defines the color of the element
          */
-        "color": '' | ColorTypes;
+        "color": Props.BalNotificationColor;
     }
     interface BalNumberInput {
         /**
@@ -1147,7 +1140,7 @@ export namespace Components {
         /**
           * If `true` the field spans over the whole width.
          */
-        "position": Placement;
+        "position": Props.BalPopoverPlacement;
         /**
           * Open the popover
          */
@@ -1183,7 +1176,7 @@ export namespace Components {
         /**
           * Defines the layout of the radio button
          */
-        "interface": 'radio' | 'select-button';
+        "interface": Props.BalRadioInterface;
         /**
           * If `true`, the control works on dark background.
          */
@@ -1221,7 +1214,7 @@ export namespace Components {
         /**
           * Defines the layout of the radio button
          */
-        "interface": 'radio' | 'select-button';
+        "interface": Props.BalRadioGroupInterface;
         /**
           * If `true` the component can be used on dark background
          */
@@ -1418,7 +1411,7 @@ export namespace Components {
         /**
           * The theme type of the snackbar. Given by bulma our css framework.
          */
-        "color": ColorTypes | '';
+        "color": Props.BalSnackbarColor;
         /**
           * The duration of the snackbar
          */
@@ -1450,7 +1443,7 @@ export namespace Components {
         /**
           * Defines the background color of the stage section
          */
-        "color": 'blue' | 'white';
+        "color": Props.BalStageColor;
         /**
           * Defines the height of the stage section.
          */
@@ -1458,7 +1451,7 @@ export namespace Components {
         /**
           * Defines the height of the stage section.
          */
-        "size": 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight';
+        "size": Props.BalStageSize;
     }
     interface BalStageBody {
         /**
@@ -1552,7 +1545,7 @@ export namespace Components {
         /**
           * Defines the layout of the tabs.
          */
-        "interface": 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar';
+        "interface": Props.BalTabsInterface;
         /**
           * Go to tab with the given value
          */
@@ -1567,7 +1560,7 @@ export namespace Components {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "color": ColorTypes | '';
+        "color": Props.BalTagColor;
         "dense": boolean;
         /**
           * If `true` a light version of the color is displayed
@@ -1576,7 +1569,7 @@ export namespace Components {
         /**
           * The size of the tag element
          */
-        "size": 'small' | 'medium' | 'large' | '';
+        "size": Props.BalTagSize;
         "transparent": boolean;
     }
     interface BalText {
@@ -1587,7 +1580,7 @@ export namespace Components {
         /**
           * Defines the color of the text.
          */
-        "color": ColorTypes | 'hint' | '';
+        "color": Props.BalTextColor;
         /**
           * If `true` the text has a small size
          */
@@ -1625,7 +1618,7 @@ export namespace Components {
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
-        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "inputmode"?: Props.BalTextareaInputMode;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -1677,7 +1670,7 @@ export namespace Components {
         /**
           * Indicates how the control wraps text.
          */
-        "wrap"?: 'hard' | 'soft' | 'off';
+        "wrap"?: Props.BalTextareaWrap;
     }
     interface BalTimeinput {
         /**
@@ -1714,7 +1707,7 @@ export namespace Components {
         /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "color": ColorTypes | '';
+        "color": Props.BalTostColor;
         /**
           * The duration of the toast in milliseconds.
          */
@@ -2376,7 +2369,7 @@ declare namespace LocalJSX {
         /**
           * Type defines the theme of the accordion toggle
          */
-        "color"?: ColorTypesBasic;
+        "color"?: Props.BalAccordionColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -2404,7 +2397,7 @@ declare namespace LocalJSX {
         /**
           * Define the alert color for the badge.
          */
-        "color"?: 'danger' | 'warning' | 'success';
+        "color"?: Props.BalBadgeColor;
         /**
           * Name of the icon to show. If a icon is present text should be hidden.
          */
@@ -2412,11 +2405,11 @@ declare namespace LocalJSX {
         /**
           * If `true` the badge is added to the top right corner of the card.
          */
-        "position"?: 'card' | 'button' | 'tabs' | '';
+        "position"?: Props.BalBadgePosition;
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size"?: 'small' | 'large' | '';
+        "size"?: Props.BalBadgeSize;
     }
     interface BalButton {
         /**
@@ -2426,7 +2419,7 @@ declare namespace LocalJSX {
         /**
           * The color to use from your application's color palette.
          */
-        "color"?: BalButtonColor;
+        "color"?: Props.BalButtonColor;
         /**
           * If `true`, the user cannot interact with the button.
          */
@@ -2450,7 +2443,7 @@ declare namespace LocalJSX {
         /**
           * Size of the button
          */
-        "iconPosition"?: 'left' | 'right';
+        "iconPosition"?: Props.BalButtonIconPosition;
         /**
           * Name of the right button icon
          */
@@ -2498,7 +2491,7 @@ declare namespace LocalJSX {
         /**
           * Size of the button
          */
-        "size"?: 'small' | '';
+        "size"?: Props.BalButtonSize;
         /**
           * If `true` the width of the buttons is limited
          */
@@ -2506,7 +2499,7 @@ declare namespace LocalJSX {
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
-        "target"?: '_blank' | ' _parent' | '_self' | '_top';
+        "target"?: Props.BalButtonTarget;
         /**
           * If `true` the top corners get rounded
          */
@@ -2514,7 +2507,7 @@ declare namespace LocalJSX {
         /**
           * The type of button.
          */
-        "type"?: 'button' | 'reset' | 'submit';
+        "type"?: Props.BalButtonType;
         /**
           * The value of the button, which is submitted with the form data.
          */
@@ -2524,7 +2517,7 @@ declare namespace LocalJSX {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "position"?: 'right' | 'center' | '';
+        "position"?: Props.BalButtonGroupPosition;
     }
     interface BalCard {
         /**
@@ -2534,7 +2527,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the card.
          */
-        "color"?: ColorTypes | '';
+        "color"?: Props.BalCardColor;
         /**
           * If `true` the card loses its shadow.
          */
@@ -2552,7 +2545,7 @@ declare namespace LocalJSX {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "position"?: 'right' | 'center' | '';
+        "position"?: Props.BalCardActionsPosition;
         /**
           * @deprecated use position="right" If `true` the buttons start form right to left.
          */
@@ -2582,11 +2575,11 @@ declare namespace LocalJSX {
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
-        "target"?: '_blank' | ' _parent' | '_self' | '_top';
+        "target"?: Props.BalCardButtonTarget;
         /**
           * The type of button.
          */
-        "type"?: 'button' | 'reset' | 'submit';
+        "type"?: Props.BalCardButtonType;
     }
     interface BalCardContent {
     }
@@ -2618,7 +2611,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the checkbox button
          */
-        "interface"?: 'checkbox' | 'switch';
+        "interface"?: Props.BalCheckboxInterface;
         /**
           * If `true`, the control works on dark background.
          */
@@ -2670,7 +2663,7 @@ declare namespace LocalJSX {
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size"?: 'small' | 'large' | 'medium' | '';
+        "size"?: Props.BalCloseSize;
     }
     interface BalData {
         /**
@@ -2720,7 +2713,7 @@ declare namespace LocalJSX {
         /**
           * Callback to determine which date in the datepicker should be selectable.
          */
-        "allowedDates"?: BalDateCallback | undefined;
+        "allowedDates"?: Props.BalDatepickerCallback | undefined;
         /**
           * Closes the datepicker popover after selection
          */
@@ -2925,7 +2918,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the message.
          */
-        "color"?: '' | ColorTypesExtended;
+        "color"?: Props.BalFieldMessageColor;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -3003,7 +2996,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "color"?: ColorTypes | '';
+        "color"?: Props.BalHeadingColor;
         /**
           * If `true` the button is inverted
          */
@@ -3011,7 +3004,7 @@ declare namespace LocalJSX {
         /**
           * The actual heading level used in the HTML markup.
          */
-        "level"?: HeadingLevels;
+        "level"?: Props.BalHeadingLevel;
         /**
           * Defines at which position the heading has spacing.
          */
@@ -3023,7 +3016,7 @@ declare namespace LocalJSX {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel"?: HeadingLevels | undefined;
+        "visualLevel"?: Props.BalHeadingLevel | undefined;
     }
     interface BalHint {
         /**
@@ -3043,7 +3036,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color"?: BalButtonColor | 'white';
+        "color"?: Props.BalIconSize;
         /**
           * If `true` the icon has display inline style
          */
@@ -3085,11 +3078,11 @@ declare namespace LocalJSX {
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
          */
-        "autocomplete"?: AutocompleteTypes;
+        "autocomplete"?: Props.BalInputAutocomplete;
         /**
           * Whether auto correction should be enabled when the user is entering/editing the text value.
          */
-        "autocorrect"?: 'on' | 'off';
+        "autocorrect"?: Props.BalInputAutocorrect;
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
@@ -3114,7 +3107,7 @@ declare namespace LocalJSX {
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
-        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "inputmode"?: Props.BalInputInputMode;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -3202,7 +3195,7 @@ declare namespace LocalJSX {
         /**
           * Defines the type of the input (text, number, email ...).
          */
-        "type"?: InputTypes;
+        "type"?: Props.BalInputInputType;
         /**
           * The value of the input.
          */
@@ -3276,7 +3269,7 @@ declare namespace LocalJSX {
         /**
           * Defines the min height of the list item
          */
-        "size"?: '' | 'large';
+        "size"?: Props.BalListSize;
     }
     interface BalListItem {
         /**
@@ -3302,7 +3295,7 @@ declare namespace LocalJSX {
         /**
           * Specifies where to open the linked document
          */
-        "target"?: '_blank' | ' _parent' | '_self' | '_top';
+        "target"?: Props.BalListItemTarget;
     }
     interface BalListItemContent {
     }
@@ -3320,11 +3313,11 @@ declare namespace LocalJSX {
         /**
           * Defines the which branded logo.
          */
-        "brand"?: 'group' | 'soba' | 'insurance';
+        "brand"?: Props.BalLogoBrand;
         /**
           * Defines the color of the logo.
          */
-        "color"?: 'blue' | 'white';
+        "color"?: Props.BalLogoColor;
     }
     interface BalModal {
         /**
@@ -3348,7 +3341,7 @@ declare namespace LocalJSX {
         /**
           * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
          */
-        "interface"?: 'light' | 'card';
+        "interface"?: Props.BalModalInterface;
         /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
@@ -3414,16 +3407,13 @@ declare namespace LocalJSX {
     interface BalNavbarMenuStart {
     }
     interface BalNotices {
-        /**
-          * The interface tells the notice where to show the notice.
-         */
         "interface"?: 'toast' | 'snackbar';
     }
     interface BalNotification {
         /**
           * Defines the color of the element
          */
-        "color"?: '' | ColorTypes;
+        "color"?: Props.BalNotificationColor;
     }
     interface BalNumberInput {
         /**
@@ -3534,7 +3524,7 @@ declare namespace LocalJSX {
         /**
           * If `true` the field spans over the whole width.
          */
-        "position"?: Placement;
+        "position"?: Props.BalPopoverPlacement;
         /**
           * If `true` the popover content is open.
          */
@@ -3562,7 +3552,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the radio button
          */
-        "interface"?: 'radio' | 'select-button';
+        "interface"?: Props.BalRadioInterface;
         /**
           * If `true`, the control works on dark background.
          */
@@ -3608,7 +3598,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the radio button
          */
-        "interface"?: 'radio' | 'select-button';
+        "interface"?: Props.BalRadioGroupInterface;
         /**
           * If `true` the component can be used on dark background
          */
@@ -3816,7 +3806,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the snackbar. Given by bulma our css framework.
          */
-        "color"?: ColorTypes | '';
+        "color"?: Props.BalSnackbarColor;
         /**
           * The duration of the snackbar
          */
@@ -3856,7 +3846,7 @@ declare namespace LocalJSX {
         /**
           * Defines the background color of the stage section
          */
-        "color"?: 'blue' | 'white';
+        "color"?: Props.BalStageColor;
         /**
           * Defines the height of the stage section.
          */
@@ -3864,7 +3854,7 @@ declare namespace LocalJSX {
         /**
           * Defines the height of the stage section.
          */
-        "size"?: 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight';
+        "size"?: Props.BalStageSize;
     }
     interface BalStageBody {
         /**
@@ -3954,7 +3944,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the tabs.
          */
-        "interface"?: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar';
+        "interface"?: Props.BalTabsInterface;
         /**
           * Emitted when the action button has clicked
          */
@@ -3973,7 +3963,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "color"?: ColorTypes | '';
+        "color"?: Props.BalTagColor;
         "dense"?: boolean;
         /**
           * If `true` a light version of the color is displayed
@@ -3986,7 +3976,7 @@ declare namespace LocalJSX {
         /**
           * The size of the tag element
          */
-        "size"?: 'small' | 'medium' | 'large' | '';
+        "size"?: Props.BalTagSize;
         "transparent"?: boolean;
     }
     interface BalText {
@@ -3997,7 +3987,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the text.
          */
-        "color"?: ColorTypes | 'hint' | '';
+        "color"?: Props.BalTextColor;
         /**
           * If `true` the text has a small size
          */
@@ -4031,7 +4021,7 @@ declare namespace LocalJSX {
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
-        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "inputmode"?: Props.BalTextareaInputMode;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -4099,7 +4089,7 @@ declare namespace LocalJSX {
         /**
           * Indicates how the control wraps text.
          */
-        "wrap"?: 'hard' | 'soft' | 'off';
+        "wrap"?: Props.BalTextareaWrap;
     }
     interface BalTimeinput {
         /**
@@ -4136,7 +4126,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "color"?: ColorTypes | '';
+        "color"?: Props.BalTostColor;
         /**
           * The duration of the toast in milliseconds.
          */

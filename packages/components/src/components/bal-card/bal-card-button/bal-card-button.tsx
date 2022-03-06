@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core'
+import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-card-button',
@@ -12,7 +13,7 @@ export class CardButton {
   /**
    * The type of button.
    */
-  @Prop() type: 'button' | 'reset' | 'submit' = 'button'
+  @Prop() type: Props.BalCardButtonType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
@@ -28,7 +29,7 @@ export class CardButton {
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: '_blank' | ' _parent' | '_self' | '_top' = '_self'
+  @Prop() target: Props.BalCardButtonTarget = '_self'
 
   /**
    * Name of the right button icon

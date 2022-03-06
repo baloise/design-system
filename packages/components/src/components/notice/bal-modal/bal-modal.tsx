@@ -4,6 +4,7 @@ import { attachComponent, detachComponent } from '../../../helpers/framework-del
 import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady, wait } from '../../../helpers/helpers'
 import { getClassMap } from '../../../helpers/theme'
+import { Props } from '../../../props'
 
 @Component({
   tag: 'bal-modal',
@@ -46,7 +47,7 @@ export class Modal implements OverlayInterface {
   /**
    * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
    */
-  @Prop() interface: 'light' | 'card' = 'light'
+  @Prop() interface: Props.BalModalInterface = 'light'
 
   /**
    * The component to display inside of the modal.

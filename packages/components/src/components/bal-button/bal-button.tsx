@@ -1,5 +1,5 @@
 import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface, Listen, Element } from '@stencil/core'
-import { BalButtonColor } from '../../types'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-button',
@@ -10,12 +10,12 @@ export class Button implements ComponentInterface {
   /**
    * The color to use from your application's color palette.
    */
-  @Prop() color: BalButtonColor = 'primary'
+  @Prop() color: Props.BalButtonColor = 'primary'
 
   /**
    * The type of button.
    */
-  @Prop() type: 'button' | 'reset' | 'submit' = 'button'
+  @Prop() type: Props.BalButtonType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
@@ -25,7 +25,7 @@ export class Button implements ComponentInterface {
   /**
    * Size of the button
    */
-  @Prop({ reflect: true }) size: 'small' | '' = ''
+  @Prop({ reflect: true }) size: Props.BalButtonSize = ''
 
   /**
    * Specifies the URL of the page the link goes to
@@ -36,7 +36,7 @@ export class Button implements ComponentInterface {
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: '_blank' | ' _parent' | '_self' | '_top' = '_self'
+  @Prop() target: Props.BalButtonTarget = '_self'
 
   /**
    * Specifies the relationship of the target object to the link object.
@@ -55,7 +55,7 @@ export class Button implements ComponentInterface {
   /**
    * Size of the button
    */
-  @Prop() iconPosition: 'left' | 'right' = 'left'
+  @Prop() iconPosition: Props.BalButtonIconPosition = 'left'
 
   /**
    * If `true` the width of the buttons is limited
