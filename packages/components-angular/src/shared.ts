@@ -24,7 +24,7 @@ const DECLARATIONS = [
 
 @NgModule({
   declarations: [DECLARATIONS],
-  exports: [DECLARATIONS],
+  exports: [DECLARATIONS, CommonModule],
   imports: [CommonModule, FormsModule],
 })
 export class BalSharedModule {}
