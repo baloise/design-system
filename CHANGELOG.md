@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.3.3](https://github.com/baloise/design-system/compare/v10.3.2...v10.3.3) (2022-03-07)
+
+
+### Bug Fixes
+
+* **angular:** filter errorType key of the ng-error component ([54c0869](https://github.com/baloise/design-system/commit/54c0869c6886795bb9d9adb2a0be248300dc1b5b))
+* **hint:** make subject on field hint optional ([6fe3eae](https://github.com/baloise/design-system/commit/6fe3eaeb3b4b729da9477de42332d302b1118705))
+
+
+
 ### [10.3.2](https://github.com/baloise/design-system/compare/v10.3.1...v10.3.2) (2022-03-07)
 
 
