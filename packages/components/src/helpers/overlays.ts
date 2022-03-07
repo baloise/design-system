@@ -1,5 +1,4 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
-// import { OverlayInterface } from '../components/bal-modal/bal-modal.type'
 import { addEventListener, removeEventListener } from './helpers'
 
 type OverlayInterface = any
@@ -18,9 +17,6 @@ export type BackButtonEvent = CustomEvent<BackButtonEventDetail>
 
 export interface HTMLBalOverlayElement extends HTMLStencilElement {
   overlayIndex: number
-  // backdropDismiss?: boolean;
-  // lastFocus?: HTMLElement;
-
   dismiss(data?: any, role?: string): Promise<boolean>
 }
 
