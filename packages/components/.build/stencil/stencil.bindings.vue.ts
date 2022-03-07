@@ -11,6 +11,7 @@ export const vueComponentModels: ComponentModelConfig[] = [
       'bal-popover',
       'bal-tabs',
       'bal-input-stepper',
+      'bal-checkbox-group',
     ],
     event: 'balChange',
     targetAttr: 'value',
