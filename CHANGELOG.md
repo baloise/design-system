@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.4.1](https://github.com/baloise/design-system/compare/v10.4.0...v10.4.1) (2022-03-07)
+
+
+### Features
+
+* **checkbox:** group can act as a form control ([55b718f](https://github.com/baloise/design-system/commit/55b718fe7c493744976a28f3a61e3aa8aec638b4))
+
+
+### Bug Fixes
+
+* **angular:** add shared module to each component ([f6d7fa2](https://github.com/baloise/design-system/commit/f6d7fa2991473bf6a0bf1bf10cd433244ac11354))
+* **angular:** add shared module to each component ([3eca007](https://github.com/baloise/design-system/commit/3eca007fe0be1b4be040c2f1c49810d62622911b))
+* **button:** remove unused css for button in order to fix bal-badge ([3b61c18](https://github.com/baloise/design-system/commit/3b61c187e3c00a8efd0c742a69e30d8de5931f1d))
+
+### [10.3.3](https://github.com/baloise/design-system/compare/v10.3.2...v10.3.3) (2022-03-07)
+
+### 10.3.2 (2022-03-07)
+
+
+
 ## [10.4.0](https://github.com/baloise/design-system/compare/v10.3.3...v10.4.0) (2022-03-07)
 
 **Note:** Version bump only for package root
