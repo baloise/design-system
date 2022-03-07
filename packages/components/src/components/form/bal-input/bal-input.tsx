@@ -301,7 +301,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
 
   private onInput = (ev: InputEvent) => {
     const input = getInputTarget(ev)
-
+    // TODO dispatch action only if changed, edit in cursor position
     if (input) {
       switch (this.mask) {
         case 'contract-number': {
@@ -418,13 +418,13 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
 
     const input = ev.target as HTMLInputElement | null
     if (input) {
-      if (this.mask !== undefined) {
-        return
+      if (this.mask === undefined) {
+        input.value = this.getFormattedValue()
+        inputHandleChange(this)
+      } else {
+        this.balChange.emit(this.inputValue)
       }
-      input.value = this.getFormattedValue()
     }
-
-    inputHandleChange(this)
   }
 
   private getAllowedKeys() {
