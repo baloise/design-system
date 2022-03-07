@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.3.2](https://github.com/baloise/design-system/compare/v10.3.1...v10.3.2) (2022-03-07)
+
+
+### Bug Fixes
+
+* **angular:** create shared module to have access to the value accessors ([4c37480](https://github.com/baloise/design-system/commit/4c374802455ca68bf850944cfc4c71d5ffa27a0e))
+
+
+
 ### [10.3.1](https://github.com/baloise/design-system/compare/v10.3.0...v10.3.1) (2022-03-07)
 
 
