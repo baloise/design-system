@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.3.1](https://github.com/baloise/design-system/compare/v10.3.0...v10.3.1) (2022-03-07)
+
+
+### Bug Fixes
+
+* **angular:** update angular output lib ([2fd80a8](https://github.com/baloise/design-system/commit/2fd80a8f53acf48d8855c13410a69a8890a14d8a))
+* **angular:** update angular output lib ([222d792](https://github.com/baloise/design-system/commit/222d79278b302eb4eaaf476f34e8d5a94b8ddc2b))
+
+
+
 ## [10.3.0](https://github.com/baloise/design-system/compare/v10.2.0...v10.3.0) (2022-03-03)
 
 
