@@ -120,7 +120,8 @@ $font-path: '~assets/fonts';
 
 ### Import the ngModule
 
-Import the `BaloiseDesignSystemModule` and add it to your angular module. To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
+Import the `BalCoreModule.forRoot()` and add it to your angular root module. To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
+Import each angular module of the components you need one by one.
 
 #### app.module.ts
 
