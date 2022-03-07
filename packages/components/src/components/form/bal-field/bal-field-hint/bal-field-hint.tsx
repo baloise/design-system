@@ -9,7 +9,7 @@ export class FieldHint {
   /**
    * Text of the inputs label
    */
-  @Prop() subject = ''
+  @Prop() subject?: string = ''
 
   /**
    * Text for the close button.
@@ -25,7 +25,7 @@ export class FieldHint {
     return (
       <Host>
         <bal-hint closeLabel={this.closeLabel} small={this.small}>
-          <bal-hint-title>{this.subject}</bal-hint-title>
+          {this.subject ? <bal-hint-title>{this.subject}</bal-hint-title> : ''}
           <bal-hint-text>
             <slot></slot>
           </bal-hint-text>

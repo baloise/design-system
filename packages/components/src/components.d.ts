@@ -524,7 +524,7 @@ export namespace Components {
         /**
           * Text of the inputs label
          */
-        "subject": string;
+        "subject"?: string;
     }
     interface BalFieldLabel {
         /**
