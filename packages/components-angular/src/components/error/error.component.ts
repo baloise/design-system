@@ -40,7 +40,7 @@ export class BalNgErrorComponent implements OnChanges {
       } else {
         const errors = this.controlContainer.control?.get(this.controlName)?.errors
         if (errors) {
-          const keys = Object.keys(errors)
+          const keys = Object.keys(errors).filter(k => k !== 'errorType')
           if (keys.length > 0) {
             const isFirstKeyOurError = keys[0] === this.error
             return isFirstKeyOurError
