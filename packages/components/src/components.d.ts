@@ -297,6 +297,23 @@ export namespace Components {
     }
     interface BalCheckboxGroup {
         /**
+          * If `true` it acts as the main form control
+         */
+        "control": boolean;
+        /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "disabled"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        "setValue": (value: string[]) => Promise<void>;
+        /**
+          * The value of the control.
+         */
+        "value": string[];
+        /**
           * Displays the checkboxes vertically
          */
         "vertical": boolean;
@@ -2569,6 +2586,26 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalCheckboxGroup {
+        /**
+          * If `true` it acts as the main form control
+         */
+        "control"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "disabled"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the checked property has changed.
+         */
+        "onBalChange"?: (event: CustomEvent<string[]>) => void;
+        /**
+          * The value of the control.
+         */
+        "value"?: string[];
         /**
           * Displays the checkboxes vertically
          */
