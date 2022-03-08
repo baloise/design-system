@@ -1204,7 +1204,7 @@ export namespace Components {
         /**
           * The value of the control.
          */
-        "value": string;
+        "value": number | string | boolean;
     }
     interface BalRadioGroup {
         /**
@@ -1223,11 +1223,11 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        "setValue": (value: string) => Promise<void>;
+        "setValue": (value: number | string | boolean) => Promise<void>;
         /**
           * The value of the control.
          */
-        "value": string;
+        "value": number | string | boolean;
         /**
           * Displays the checkboxes vertically
          */
@@ -3527,7 +3527,7 @@ declare namespace LocalJSX {
         /**
           * The value of the control.
          */
-        "value"?: string;
+        "value"?: number | string | boolean;
     }
     interface BalRadioGroup {
         /**
@@ -3549,11 +3549,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string>) => void;
+        "onBalChange"?: (event: CustomEvent<number | string | boolean>) => void;
         /**
           * The value of the control.
          */
-        "value"?: string;
+        "value"?: number | string | boolean;
         /**
           * Displays the checkboxes vertically
          */

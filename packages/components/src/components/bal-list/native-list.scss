@@ -20,7 +20,7 @@ ul.is-list.has-bullet-check {
     margin-left: -14px;
     margin-right: 8px;
     width: 6px;
-    height: 10px;
+    height: 12px;
     border-bottom: 2px solid $blue;
     border-right: 2px solid $blue;
     border-top: 0;
@@ -35,4 +35,5 @@ ul.is-list.has-bullet-check {
 
 .is-list li {
   font-family: $family-primary;
+  margin-bottom: 8px;
 }
