@@ -84,14 +84,18 @@ export const Horizontal = args => ({
   setup: () => ({ args }),
   template: `<bal-card class="p-5">
   <bal-data v-bind="args">
-    <bal-data-item>
-      <bal-data-label>Tony</bal-data-label>
-      <bal-data-value>Stark</bal-data-value>
-    </bal-data-item>
-    <bal-data-item>
-      <bal-data-label>Steve</bal-data-label>
-      <bal-data-value>Rogers</bal-data-value>
-    </bal-data-item>
+    <div>
+      <bal-data-item>
+        <bal-data-label>Tony</bal-data-label>
+        <bal-data-value>Stark</bal-data-value>
+      </bal-data-item>
+    </div>
+    <div>
+      <bal-data-item>
+        <bal-data-label>Steve</bal-data-label>
+        <bal-data-value>Rogers</bal-data-value>
+      </bal-data-item>
+    </div>
     <bal-data-item>
       <bal-data-label>Stephen</bal-data-label>
       <bal-data-value>Strange</bal-data-value>
