@@ -306,7 +306,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     if (input) {
       switch (this.mask) {
         case 'contract-number': {
-          //getUpcomingValue
           this.inputValue = input.value.replace(/\D/g, '')
           if (this.inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
             this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
@@ -431,10 +430,8 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     if (input) {
       if (this.mask === undefined) {
         input.value = this.getFormattedValue()
-        inputHandleChange(this)
-      } else {
-        this.balChange.emit(this.inputValue)
       }
+      inputHandleChange(this)
     }
   }
 
@@ -482,8 +479,19 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
         ></bal-number-input>
       )
     }
-
-    const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
+    let value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
+    if (this.mask !== undefined) {
+      switch (this.mask) {
+        case 'contract-number':
+          value = this.formatPolicy(value)
+          break
+        case 'claim-number':
+          value = this.formatClaim(value)
+          break
+        case 'offer-number':
+          value = this.formatOffer(value)
+      }
+    }
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
     if (label) {
