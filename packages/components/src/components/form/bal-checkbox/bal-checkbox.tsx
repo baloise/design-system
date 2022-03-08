@@ -49,7 +49,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
    * client-side, but on the server this is the value given to the data
    * submitted with the checkbox's name.
    */
-  @Prop() value = 'on'
+  @Prop() value: string | number = 'on'
 
   /**
    * Defines the layout of the checkbox button

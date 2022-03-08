@@ -1,3 +1,4 @@
+import { areArraysEqual } from '@baloise/web-app-utils'
 import {
   Component,
   h,
@@ -57,12 +58,12 @@ export class CheckboxGroup implements ComponentInterface {
   /**
    * The value of the control.
    */
-  @Prop({ mutable: true }) value: string[] = []
+  @Prop({ mutable: true }) value: any[] = []
 
   @Watch('value')
-  valueChanged(value: string[], oldValue: string[]) {
+  valueChanged(value: any[], oldValue: any[]) {
     if (this.control) {
-      if (value !== oldValue) {
+      if (!areArraysEqual(this.value, oldValue)) {
         this.sync()
       }
       setTimeout(() => this.balChange.emit(value))
@@ -72,7 +73,7 @@ export class CheckboxGroup implements ComponentInterface {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<string[]>
+  @Event() balChange!: EventEmitter<any[]>
 
   @Listen('balChange', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
@@ -97,7 +98,7 @@ export class CheckboxGroup implements ComponentInterface {
 
   /** @internal */
   @Method()
-  async setValue(value: string[]) {
+  async setValue(value: any[]) {
     if (this.control) {
       this.value = value
     }
@@ -106,7 +107,15 @@ export class CheckboxGroup implements ComponentInterface {
   private sync() {
     if (this.control) {
       this.children.forEach((checkbox: HTMLBalCheckboxElement) => {
-        checkbox.checked = this.value.includes(checkbox.value)
+        checkbox.checked = false
+      })
+      this.children.forEach((checkbox: HTMLBalCheckboxElement) => {
+        for (let index = 0; index < this.value.length; index++) {
+          const item = this.value[index]
+          if (item.toString() === checkbox.value.toString()) {
+            checkbox.checked = true
+          }
+        }
       })
     }
   }
@@ -122,20 +131,24 @@ export class CheckboxGroup implements ComponentInterface {
     }
     stopEventBubbling(ev)
 
+    // toggle clicked checkbox
     const selectedCheckbox = ev.target && (ev.target as HTMLElement).closest('bal-checkbox')
     if (selectedCheckbox) {
       selectedCheckbox.checked = !selectedCheckbox.checked
     }
 
+    // generate new value array out of the checked checkboxes
     const checkboxes = this.children
-    const newValue: string[] = []
+    const newValue: any[] = []
     checkboxes.forEach(cb => {
       if (cb.checked) {
         newValue.push(cb.value)
       }
     })
 
-    this.value = [...newValue]
+    if (!areArraysEqual(this.value, newValue)) {
+      this.value = [...newValue]
+    }
   }
 
   render() {
