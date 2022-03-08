@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.4.4](https://github.com/baloise/design-system/compare/v10.4.3...v10.4.4) (2022-03-08)
+
+
+### Bug Fixes
+
+* **card:** remove usless margin bottom ([d31f5a8](https://github.com/baloise/design-system/commit/d31f5a83f5b117f76c85772fed0da9ad34075726))
+* **checkbox:** enabling numbers ([768a58c](https://github.com/baloise/design-system/commit/768a58c98164ff8ec81b9bfedcecd6036217705d))
+* **data:** enables custom elements between bal-data and bal-data-item ([a4608d0](https://github.com/baloise/design-system/commit/a4608d0bafc654c9d6018f85a2bb9d4a5b7dae04))
+* **radio:** enable boolean ([c834292](https://github.com/baloise/design-system/commit/c834292e524fe160d793453c034860d443ef13b5))
+
+### 10.4.2 (2022-03-08)
+
+
+
 ### [10.4.3](https://github.com/baloise/design-system/compare/v10.4.2...v10.4.3) (2022-03-08)
 
 
