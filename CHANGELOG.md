@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.4.2](https://github.com/baloise/design-system/compare/v10.4.1...v10.4.2) (2022-03-08)
+
+
+### Bug Fixes
+
+* **card:** remove inner p to simplify usage ([0a27202](https://github.com/baloise/design-system/commit/0a27202e3620fddc245a31eaab4a5fef595d0b08))
+* **card:** reset spacing of the batton-group ([4775a85](https://github.com/baloise/design-system/commit/4775a85f6111d6fd003d6998a8cc8bab8cedf874))
+* **datepicker:** set week start to monday instead of sunday ([66ceaf0](https://github.com/baloise/design-system/commit/66ceaf00003a41f21cab49c32d9defa02d3897b0))
+* **file-upload:** adjust styles for field usage ([a3d95df](https://github.com/baloise/design-system/commit/a3d95dfa402be98245a377b536124f5cbf9a3d8c))
+* **modal:** disable scroll on body ([b09bd81](https://github.com/baloise/design-system/commit/b09bd81bce780b38297f16011adb73d77d787680))
+
+
+
 ### [10.4.1](https://github.com/baloise/design-system/compare/v10.4.0...v10.4.1) (2022-03-07)
 
 
