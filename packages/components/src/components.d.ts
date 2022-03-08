@@ -293,7 +293,7 @@ export namespace Components {
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
-        "value": string;
+        "value": string | number;
     }
     interface BalCheckboxGroup {
         /**
@@ -308,11 +308,11 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        "setValue": (value: string[]) => Promise<void>;
+        "setValue": (value: any[]) => Promise<void>;
         /**
           * The value of the control.
          */
-        "value": string[];
+        "value": any[];
         /**
           * Displays the checkboxes vertically
          */
@@ -2583,7 +2583,7 @@ declare namespace LocalJSX {
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     interface BalCheckboxGroup {
         /**
@@ -2601,11 +2601,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string[]>) => void;
+        "onBalChange"?: (event: CustomEvent<any[]>) => void;
         /**
           * The value of the control.
          */
-        "value"?: string[];
+        "value"?: any[];
         /**
           * Displays the checkboxes vertically
          */

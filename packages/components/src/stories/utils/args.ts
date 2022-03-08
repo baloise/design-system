@@ -30,6 +30,8 @@ const getControl = prop => {
       return { type: 'boolean' }
 
     case 'string | string[] | undefined':
+    case 'any[] | undefined':
+    case 'any[]':
       return { type: 'array' }
 
     case 'number':

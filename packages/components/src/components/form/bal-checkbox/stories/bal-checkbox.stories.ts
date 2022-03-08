@@ -66,15 +66,15 @@ const GroupTemplate = args => ({
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
       <bal-checkbox-group v-bind="args" v-model="args.value">
-        <bal-checkbox value="Apple">
+        <bal-checkbox :value="1">
           Apple
         </bal-checkbox>
-        <bal-checkbox value="Pineapple">
+        <bal-checkbox :value="2">
           Pineapple
         </bal-checkbox>
-        <bal-checkbox value="Orange">
-        Orange
-      </bal-checkbox>
+        <bal-checkbox :value="3">
+          Orange
+        </bal-checkbox>
       </bal-checkbox-group>
     </bal-field-control>
     <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
@@ -115,7 +115,7 @@ Basic.parameters = {
 
 export const Group = GroupTemplate.bind({})
 Group.args = {
-  content: 'Label',
+  value: [2],
   control: true,
 }
 Group.parameters = {
