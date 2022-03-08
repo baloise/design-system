@@ -185,6 +185,14 @@ bal-button.is-fullwidth {
     &:hover,
     &.is-hovered {
       background: $cyan;
+
+      svg {
+        path,
+        g,
+        circle {
+          fill: $white;
+        }
+      }
     }
   }
 
@@ -192,6 +200,29 @@ bal-button.is-fullwidth {
     &:hover,
     &.is-hovered {
       background: darken($success, 10);
+
+      svg {
+        path,
+        g,
+        circle {
+          fill: $white;
+        }
+      }
+    }
+
+    &:active,
+    &:focus,
+    &.is-focused,
+    &.is-active {
+      background: darken($success, 15);
+
+      svg {
+        path,
+        g,
+        circle {
+          fill: $white;
+        }
+      }
     }
   }
 
@@ -199,23 +230,80 @@ bal-button.is-fullwidth {
     &:hover,
     &.is-hovered {
       background: darken($warning, 10);
+
+      svg {
+        path,
+        g,
+        circle {
+          fill: $white;
+        }
+      }
+    }
+
+    &:active,
+    &:focus,
+    &.is-focused,
+    &.is-active {
+      background: darken($warning, 15);
+
+      svg {
+        path,
+        g,
+        circle {
+          fill: $white;
+        }
+      }
     }
   }
 
-  &.is-danger {
+  &.is-danger,
+  &.is-danger.is-outlined {
     &:hover,
+    &:focus,
+    &.is-focused,
     &.is-hovered {
       background: darken($danger, 10);
+
+      svg {
+        path,
+        g,
+        circle {
+          fill: $white;
+        }
+      }
+    }
+
+    &:active,
+    &.is-active {
+      background: darken($danger, 15);
+
+      svg {
+        path,
+        g,
+        circle {
+          fill: $white;
+        }
+      }
     }
   }
 
   &.is-success,
   &.is-warning,
+  &.is-danger,
+  &.is-danger.is-outlined,
   &.is-warning.is-outlined,
   &.is-success.is-outlined {
     &:hover,
     &.is-hovered {
       color: $white;
+
+      svg {
+        path,
+        g,
+        circle {
+          fill: $white;
+        }
+      }
     }
   }
 
@@ -227,6 +315,14 @@ bal-button.is-fullwidth {
     &.is-hovered {
       color: $blue;
       background: $white;
+
+      svg {
+        path,
+        g,
+        circle {
+          fill: $white;
+        }
+      }
     }
   }
 

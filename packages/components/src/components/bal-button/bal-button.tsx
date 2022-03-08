@@ -302,7 +302,7 @@ export class Button implements ComponentInterface {
             class="data-test-button-label"
             {...this.spanAttrs}
             small={this.size === 'small'}
-            style={{ display: this.loading ? 'none' : 'inline' }}
+            style={{ display: this.loading || this.square ? 'none' : 'inline' }}
           >
             <slot />
           </bal-text>
