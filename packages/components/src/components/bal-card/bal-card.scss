@@ -57,6 +57,13 @@ bal-card-actions {
   position: static;
 }
 
+bal-card-content {
+  font-family: $family-primary;
+  word-break: break-word;
+  font-size: $size-5;
+  line-height: $line-height-5;
+}
+
 bal-card {
   & > :not(bal-badge):not(bal-tag):first-child {
     padding-top: 20px;

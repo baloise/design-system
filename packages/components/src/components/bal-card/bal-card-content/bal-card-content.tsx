@@ -7,9 +7,7 @@ export class CardContent {
   render() {
     return (
       <Host class="mx-5">
-        <p>
-          <slot></slot>
-        </p>
+        <slot></slot>
       </Host>
     )
   }
