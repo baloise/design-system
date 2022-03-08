@@ -1,8 +1,9 @@
 @import './bal-file-upload.vars.scss';
 
 bal-file-upload {
-  position: static;
-  display: block;
+  position: relative;
+  display: inline-block;
+  width: 100%;
 
   bal-list {
     margin-top: 16px;
