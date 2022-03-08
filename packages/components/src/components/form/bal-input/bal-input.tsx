@@ -301,15 +301,20 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
 
   private onInput = (ev: InputEvent) => {
     const input = getInputTarget(ev)
-    // TODO dispatch action only if changed, edit in cursor position
+    const cursorPositionStart = (ev as any).target?.selectionStart
+    const cursorPositionEnd = (ev as any).target?.selectionEnd
     if (input) {
       switch (this.mask) {
         case 'contract-number': {
+          //getUpcomingValue
           this.inputValue = input.value.replace(/\D/g, '')
           if (this.inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
             this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
           }
           input.value = this.formatPolicy(this.inputValue)
+          if (cursorPositionStart < this.inputValue.length) {
+            input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+          }
           break
         }
         case 'offer-number': {
@@ -318,6 +323,9 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
             this.inputValue = this.inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
           }
           input.value = this.formatOffer(this.inputValue)
+          if (cursorPositionStart < this.inputValue.length) {
+            input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+          }
           break
         }
         case 'claim-number': {
@@ -326,6 +334,9 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
             this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
           }
           input.value = this.formatClaim(this.inputValue)
+          if (cursorPositionStart < this.inputValue.length) {
+            input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+          }
           break
         }
         default:
