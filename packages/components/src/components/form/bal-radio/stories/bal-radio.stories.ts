@@ -152,3 +152,24 @@ SelectButton.args = {
   interface: 'select-button',
 }
 SelectButton.parameters = { ...component.sourceCode(SelectButton), controls: { exclude: excludedControls } }
+
+export const YesNo = args => ({
+  components: { ...component.components, BalField, BalFieldLabel, BalFieldControl, BalFieldMessage },
+  setup: () => ({ args }),
+  template: `
+  <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field-label>Label</bal-field-label>
+  <bal-field-control>
+    <bal-radio-group v-bind="args" v-model="args.value">
+      <bal-radio name="radio-example" :value="true">Yes</bal-radio>
+      <bal-radio name="radio-example" :value="false">No</bal-radio>
+    </bal-radio-group>
+  </bal-field-control>
+  <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
+</bal-field>`,
+})
+YesNo.args = {
+  value: false,
+  interface: 'select-button',
+}
+YesNo.parameters = { ...component.sourceCode(YesNo), controls: { exclude: excludedControls } }
