@@ -19,6 +19,10 @@ bal-input-group,
     padding-top: calc(0.5em - 2px);
   }
 
+  .bal-select__slot {
+    border: none !important;
+  }
+
   bal-icon {
     min-width: 48px;
   }
