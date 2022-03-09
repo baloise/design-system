@@ -57,11 +57,22 @@
 
       &,
       & > div {
+        font-family: $family-primary;
+        font-weight: $weight-normal;
+        font-size: $size-normal;
+        line-height: 1.25rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         min-width: 0;
         padding-bottom: 2px;
+      }
+
+      &.is-multiline {
+        &,
+        & > div {
+          white-space: normal;
+        }
       }
 
       .bal-data-value-btn {

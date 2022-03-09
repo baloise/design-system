@@ -185,14 +185,6 @@ bal-button.is-fullwidth {
     &:hover,
     &.is-hovered {
       background: $cyan;
-
-      svg {
-        path,
-        g,
-        circle {
-          fill: $white;
-        }
-      }
     }
   }
 
