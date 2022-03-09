@@ -294,3 +294,20 @@ export const Service = args => ({
 </bal-card>`,
 })
 Service.parameters = { ...component.sourceCode(Service) }
+
+export const ClickableAndSelected = args => ({
+  components: { ...component.components, BalButton, BalHeading },
+  setup: () => ({ args }),
+  template: `<bal-card v-bind="args">
+  <bal-card-content>
+    <div class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
+      <bal-heading level="h4">Hover me</bal-heading>
+    </div>
+    </bal-card-content>
+</bal-card>`,
+})
+ClickableAndSelected.args = {
+  clickable: true,
+  selected: true,
+}
+ClickableAndSelected.parameters = { ...component.sourceCode(ClickableAndSelected) }
