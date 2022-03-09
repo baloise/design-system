@@ -36,4 +36,8 @@ ul.is-list.has-bullet-check {
 .is-list li {
   font-family: $family-primary;
   margin-bottom: 8px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }

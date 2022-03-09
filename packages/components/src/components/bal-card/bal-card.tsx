@@ -27,6 +27,16 @@ export class BalCard {
   @Prop() inverted = false
 
   /**
+   * If `true` the card has a hover effect.
+   */
+  @Prop() clickable = false
+
+  /**
+   * If `true` the card gets a light background to indicate a selection.
+   */
+  @Prop() selected = false
+
+  /**
    * Defines the color of the card.
    */
   @Prop() color: ColorTypes | '' = ''
@@ -44,6 +54,8 @@ export class BalCard {
           'has-border': this.border,
           'is-inverted': this.inverted,
           'has-shadow': !this.flat,
+          'is-clickable': this.clickable,
+          'is-selected': this.selected,
           'has-radius-large': !this.square,
         }}
       >

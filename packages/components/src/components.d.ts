@@ -179,6 +179,10 @@ export namespace Components {
          */
         "border": boolean;
         /**
+          * If `true` the card has a hover effect.
+         */
+        "clickable": boolean;
+        /**
           * Defines the color of the card.
          */
         "color": ColorTypes | '';
@@ -190,6 +194,10 @@ export namespace Components {
           * If `true` the card background color becomes blue.
          */
         "inverted": boolean;
+        /**
+          * If `true` the card gets a light background to indicate a selection.
+         */
+        "selected": boolean;
         /**
           * If `true` the card loses its border radius.
          */
@@ -363,6 +371,10 @@ export namespace Components {
           * If `true` a small button with a edit icon will be shown on the right.
          */
         "editable": boolean;
+        /**
+          * If `true` the text will break and the height of the item increases.
+         */
+        "multiline": boolean;
     }
     interface BalDatepicker {
         /**
@@ -2465,6 +2477,10 @@ declare namespace LocalJSX {
          */
         "border"?: boolean;
         /**
+          * If `true` the card has a hover effect.
+         */
+        "clickable"?: boolean;
+        /**
           * Defines the color of the card.
          */
         "color"?: ColorTypes | '';
@@ -2476,6 +2492,10 @@ declare namespace LocalJSX {
           * If `true` the card background color becomes blue.
          */
         "inverted"?: boolean;
+        /**
+          * If `true` the card gets a light background to indicate a selection.
+         */
+        "selected"?: boolean;
         /**
           * If `true` the card loses its border radius.
          */
@@ -2656,6 +2676,10 @@ declare namespace LocalJSX {
           * If `true` a small button with a edit icon will be shown on the right.
          */
         "editable"?: boolean;
+        /**
+          * If `true` the text will break and the height of the item increases.
+         */
+        "multiline"?: boolean;
         /**
           * Emitted when the edit button loses focus.
          */
@@ -2901,6 +2925,14 @@ declare namespace LocalJSX {
           * Triggers when a file is added or removed.
          */
         "onBalChange"?: (event: CustomEvent<File[]>) => void;
+        /**
+          * Triggers when a file is added.
+         */
+        "onBalFilesAdded"?: (event: CustomEvent<File[]>) => void;
+        /**
+          * Triggers when a file is removed.
+         */
+        "onBalFilesRemoved"?: (event: CustomEvent<File[]>) => void;
         /**
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */

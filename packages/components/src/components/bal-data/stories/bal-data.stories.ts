@@ -32,32 +32,45 @@ export const Basic = args => ({
   <bal-card-content>
     <bal-data v-bind="args">
       <bal-data-item>
-        <bal-data-label>Tony</bal-data-label>
-        <bal-data-value>Stark</bal-data-value>
+        <bal-data-label>Label</bal-data-label>
+        <bal-data-value>A very long value, that should go break to the next line. I really hope that this works :-)</bal-data-value>
       </bal-data-item>
       <bal-data-item>
-        <bal-data-label>Maria</bal-data-label>
-        <bal-data-value editable>Hill</bal-data-value>
+        <bal-data-label>Multiline Label</bal-data-label>
+        <bal-data-value multiline>A very long value, that should go break to the next line. I really hope that this works :-)</bal-data-value>
       </bal-data-item>
       <bal-data-item>
-        <bal-data-label>Natasha</bal-data-label>
-        <bal-data-value>
-          <bal-input value="Romanoff"></bal-input>
+        <bal-data-label>List Value</bal-data-label>
+        <bal-data-value multiline>
+          <ul class="is-list ml-4">
+            <li>Value 1</li>
+            <li>Value 2</li>
+          </ul>
         </bal-data-value>
       </bal-data-item>
       <bal-data-item>
-        <bal-data-label>Matt</bal-data-label>
+        <bal-data-label>Label</bal-data-label>
+        <bal-data-value editable>Value</bal-data-value>
+      </bal-data-item>
+      <bal-data-item>
+        <bal-data-label>Label</bal-data-label>
+        <bal-data-value>
+          <bal-input value="Value"></bal-input>
+        </bal-data-value>
+      </bal-data-item>
+      <bal-data-item>
+        <bal-data-label>Label</bal-data-label>
         <bal-data-value editable>
-          <bal-input value="Murdock"></bal-input>
+          <bal-input value="Value"></bal-input>
         </bal-data-value>
       </bal-data-item>
       <bal-data-item disabled>
-        <bal-data-label>Nick</bal-data-label>
-        <bal-data-value>Fury</bal-data-value>
+        <bal-data-label>Label</bal-data-label>
+        <bal-data-value>Value</bal-data-value>
       </bal-data-item>
       <bal-data-item>
         <bal-data-label>
-          Peter
+          Label
           <bal-hint>
             <bal-hint-title>Spider-Man</bal-hint-title>
             <bal-hint-text>
@@ -67,7 +80,7 @@ export const Basic = args => ({
             </bal-hint-text>
           </bal-hint>
         </bal-data-label>
-        <bal-data-value>Parker</bal-data-value>
+        <bal-data-value>Value</bal-data-value>
       </bal-data-item>
     </bal-data>
   </bal-card-content>
@@ -86,19 +99,19 @@ export const Horizontal = args => ({
   <bal-data v-bind="args">
     <div>
       <bal-data-item>
-        <bal-data-label>Tony</bal-data-label>
-        <bal-data-value>Stark</bal-data-value>
+        <bal-data-label>Label</bal-data-label>
+        <bal-data-value>Value</bal-data-value>
       </bal-data-item>
     </div>
     <div>
       <bal-data-item>
-        <bal-data-label>Steve</bal-data-label>
-        <bal-data-value>Rogers</bal-data-value>
+        <bal-data-label>Label</bal-data-label>
+        <bal-data-value>A very long value, that should go break to the next line. I really hope that this works :-)</bal-data-value>
       </bal-data-item>
     </div>
     <bal-data-item>
-      <bal-data-label>Stephen</bal-data-label>
-      <bal-data-value>Strange</bal-data-value>
+      <bal-data-label>Label</bal-data-label>
+      <bal-data-value>Value</bal-data-value>
     </bal-data-item>
   </bal-data>
 </bal-card>`,

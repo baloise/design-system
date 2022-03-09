@@ -47,6 +47,17 @@ bal-card,
   &.is-danger {
     background-color: $danger;
   }
+
+  &.is-clickable {
+    &:active,
+    &:hover {
+      box-shadow: $shadow-hover;
+    }
+  }
+
+  &.is-selected {
+    background: $blue-0;
+  }
 }
 
 bal-card-title,
