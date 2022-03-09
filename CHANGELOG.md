@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.5.0](https://github.com/baloise/design-system/compare/v10.4.4...v10.5.0) (2022-03-09)
+
+
+### Features
+
+* **card:** cards can have a hover effect and a selected background ([8cc7182](https://github.com/baloise/design-system/commit/8cc71827324566f82c78c1053345b2d95c87e88e))
+* **data:** add multiline prop ([cc93a3a](https://github.com/baloise/design-system/commit/cc93a3a37ea725c66ad9d00b14bcc7f76f182bb8))
+* **file-upload:** add events balFilesAdded and balFilesRemoved ([8c869d7](https://github.com/baloise/design-system/commit/8c869d77be3dbde2bbe1e23a28e5845d888ad87d))
+* **select:** can be combined with icons and other inputs ([d35aff4](https://github.com/baloise/design-system/commit/d35aff4f989202060a2654b7149539238acef89a))
+
+
+### Bug Fixes
+
+* **button:** adjust style for danger outlined button ([c901e47](https://github.com/baloise/design-system/commit/c901e479e8590c7c36a013f6fc914d32588b8c94))
+* **button:** hide slot content when square prop is set ([90ced0a](https://github.com/baloise/design-system/commit/90ced0ad8bba8a973f70c82deda808db6d91bd2c))
+* **card:** remove usless margin bottom ([d31f5a8](https://github.com/baloise/design-system/commit/d31f5a83f5b117f76c85772fed0da9ad34075726))
+* **checkbox:** enabling numbers ([768a58c](https://github.com/baloise/design-system/commit/768a58c98164ff8ec81b9bfedcecd6036217705d))
+* **data:** enables custom elements between bal-data and bal-data-item ([a4608d0](https://github.com/baloise/design-system/commit/a4608d0bafc654c9d6018f85a2bb9d4a5b7dae04))
+* **field:** only add margin to addon button ([d840066](https://github.com/baloise/design-system/commit/d8400668d28a65581a492628b4a9dd909f45a8e7))
+* **radio:** enable boolean ([c834292](https://github.com/baloise/design-system/commit/c834292e524fe160d793453c034860d443ef13b5))
+
+### 10.4.2 (2022-03-08)
+
+
+
 ### [10.4.4](https://github.com/baloise/design-system/compare/v10.4.3...v10.4.4) (2022-03-08)
 
 
