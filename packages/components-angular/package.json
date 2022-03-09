@@ -37,7 +37,6 @@
   "peerDependencies": {
     "@angular/common": ">=10.2.4",
     "@angular/core": ">=10.2.4",
-    "@angular/forms": ">=10.2.4",
     "@angular/platform-browser": ">=10.2.4",
     "zone.js": ">=0.8.26"
   },
@@ -47,7 +46,6 @@
     "@angular/compiler": "^10.2.5",
     "@angular/compiler-cli": "^10.2.5",
     "@angular/core": "^10.2.5",
-    "@angular/forms": "^10.2.5",
     "@angular/platform-browser": "^10.2.5",
     "ng-packagr": "^10.1.2",
     "rimraf": "^3.0.2",
