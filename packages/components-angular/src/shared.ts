@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { FormsModule } from '@angular/forms'
 
 import { BooleanValueAccessor } from './directives/boolean-value-accessor'
 import { TextValueAccessor } from './directives/text-value-accessor'
@@ -24,6 +25,6 @@ const DECLARATIONS = [
 @NgModule({
   declarations: [DECLARATIONS],
   exports: [DECLARATIONS],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
 })
 export class BalSharedModule {}
