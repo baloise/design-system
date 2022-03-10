@@ -9,6 +9,7 @@ export { AngularDelegate } from './overlays/angular-delegate'
 
 // PACKAGE MODULE
 export { BalCoreModule } from './module'
+export { BalSharedModule } from './shared'
 
 // HELPERS
 export { element, parseCustomEvent, ProxyComponent } from './helpers'

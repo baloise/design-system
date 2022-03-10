@@ -175,6 +175,10 @@ export namespace Components {
          */
         "border": boolean;
         /**
+          * If `true` the card has a hover effect.
+         */
+        "clickable": boolean;
+        /**
           * Defines the color of the card.
          */
         "color": Props.BalCardColor;
@@ -186,6 +190,10 @@ export namespace Components {
           * If `true` the card background color becomes blue.
          */
         "inverted": boolean;
+        /**
+          * If `true` the card gets a light background to indicate a selection.
+         */
+        "selected": boolean;
         /**
           * If `true` the card loses its border radius.
          */
@@ -289,9 +297,26 @@ export namespace Components {
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
-        "value": string;
+        "value": string | number;
     }
     interface BalCheckboxGroup {
+        /**
+          * If `true` it acts as the main form control
+         */
+        "control": boolean;
+        /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "disabled"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        "setValue": (value: any[]) => Promise<void>;
+        /**
+          * The value of the control.
+         */
+        "value": any[];
         /**
           * Displays the checkboxes vertically
          */
@@ -342,6 +367,10 @@ export namespace Components {
           * If `true` a small button with a edit icon will be shown on the right.
          */
         "editable": boolean;
+        /**
+          * If `true` the text will break and the height of the item increases.
+         */
+        "multiline": boolean;
     }
     interface BalDatepicker {
         /**
@@ -540,7 +569,7 @@ export namespace Components {
         /**
           * Text of the inputs label
          */
-        "subject": string;
+        "subject"?: string;
     }
     interface BalFieldLabel {
         /**
@@ -1204,7 +1233,7 @@ export namespace Components {
         /**
           * The value of the control.
          */
-        "value": string;
+        "value": number | string | boolean;
     }
     interface BalRadioGroup {
         /**
@@ -1223,11 +1252,11 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        "setValue": (value: string) => Promise<void>;
+        "setValue": (value: number | string | boolean) => Promise<void>;
         /**
           * The value of the control.
          */
-        "value": string;
+        "value": number | string | boolean;
         /**
           * Displays the checkboxes vertically
          */
@@ -2525,6 +2554,10 @@ declare namespace LocalJSX {
          */
         "border"?: boolean;
         /**
+          * If `true` the card has a hover effect.
+         */
+        "clickable"?: boolean;
+        /**
           * Defines the color of the card.
          */
         "color"?: Props.BalCardColor;
@@ -2536,6 +2569,10 @@ declare namespace LocalJSX {
           * If `true` the card background color becomes blue.
          */
         "inverted"?: boolean;
+        /**
+          * If `true` the card gets a light background to indicate a selection.
+         */
+        "selected"?: boolean;
         /**
           * If `true` the card loses its border radius.
          */
@@ -2643,9 +2680,29 @@ declare namespace LocalJSX {
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     interface BalCheckboxGroup {
+        /**
+          * If `true` it acts as the main form control
+         */
+        "control"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "disabled"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the checked property has changed.
+         */
+        "onBalChange"?: (event: CustomEvent<any[]>) => void;
+        /**
+          * The value of the control.
+         */
+        "value"?: any[];
         /**
           * Displays the checkboxes vertically
          */
@@ -2696,6 +2753,10 @@ declare namespace LocalJSX {
           * If `true` a small button with a edit icon will be shown on the right.
          */
         "editable"?: boolean;
+        /**
+          * If `true` the text will break and the height of the item increases.
+         */
+        "multiline"?: boolean;
         /**
           * Emitted when the edit button loses focus.
          */
@@ -2961,6 +3022,14 @@ declare namespace LocalJSX {
           * Triggers when a file is added or removed.
          */
         "onBalChange"?: (event: CustomEvent<File[]>) => void;
+        /**
+          * Triggers when a file is added.
+         */
+        "onBalFilesAdded"?: (event: CustomEvent<File[]>) => void;
+        /**
+          * Triggers when a file is removed.
+         */
+        "onBalFilesRemoved"?: (event: CustomEvent<File[]>) => void;
         /**
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
@@ -3588,7 +3657,7 @@ declare namespace LocalJSX {
         /**
           * The value of the control.
          */
-        "value"?: string;
+        "value"?: number | string | boolean;
     }
     interface BalRadioGroup {
         /**
@@ -3610,11 +3679,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string>) => void;
+        "onBalChange"?: (event: CustomEvent<number | string | boolean>) => void;
         /**
           * The value of the control.
          */
-        "value"?: string;
+        "value"?: number | string | boolean;
         /**
           * Displays the checkboxes vertically
          */

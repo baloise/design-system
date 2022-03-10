@@ -66,20 +66,19 @@ export class RadioGroup implements ComponentInterface {
   /**
    * The value of the control.
    */
-  @Prop({ mutable: true }) value = ''
+  @Prop({ mutable: true }) value: number | string | boolean = ''
 
   @Watch('value')
-  valueChanged(value: string, oldValue: string) {
+  valueChanged(value: number | string | boolean, oldValue: number | string | boolean) {
     if (value !== oldValue) {
       this.sync()
     }
-    setTimeout(() => this.balChange.emit(value))
   }
 
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<string>
+  @Event() balChange!: EventEmitter<number | string | boolean>
 
   @Listen('balChange', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
@@ -100,7 +99,7 @@ export class RadioGroup implements ComponentInterface {
 
   /** @internal */
   @Method()
-  async setValue(value: string) {
+  async setValue(value: number | string | boolean) {
     this.value = value
   }
 
@@ -129,6 +128,7 @@ export class RadioGroup implements ComponentInterface {
       const newValue = selectedRadio.value
       if (newValue !== currentValue) {
         this.value = newValue
+        this.balChange.emit(this.value)
       }
     }
   }

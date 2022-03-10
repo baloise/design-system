@@ -9,6 +9,12 @@
   overflow-wrap: break-word;
   white-space: normal;
 
+  & > * {
+    display: flex;
+    flex: 1 1;
+    flex-wrap: wrap;
+  }
+
   .bal-data-item {
     display: flex;
     flex: 1 1;
@@ -51,10 +57,22 @@
 
       &,
       & > div {
+        font-family: $family-primary;
+        font-weight: $weight-normal;
+        font-size: $size-normal;
+        line-height: 1.25rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         min-width: 0;
+        padding-bottom: 2px;
+      }
+
+      &.is-multiline {
+        &,
+        & > div {
+          white-space: normal;
+        }
       }
 
       .bal-data-value-btn {
@@ -68,7 +86,7 @@
     }
   }
 
-  &.has-border > .bal-data-item {
+  &.has-border .bal-data-item {
     border-bottom: 1px solid $blue-2;
   }
 }
@@ -104,6 +122,10 @@
 
 @include tablet() {
   .bal-data {
+    & > * {
+      flex-wrap: no-wrap;
+    }
+
     .bal-data-item {
       flex-wrap: no-wrap;
       padding: 8px 0;
@@ -129,11 +151,15 @@
     &.is-horizontal {
       flex-direction: row;
 
-      & > .bal-data-item {
+      & > * {
+        flex-wrap: wrap;
+      }
+
+      & .bal-data-item {
         flex-wrap: wrap;
 
-        & > .bal-data-label,
-        & > .bal-data-value {
+        & .bal-data-label,
+        & .bal-data-value {
           flex-basis: 100%;
           width: 100%;
         }

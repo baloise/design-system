@@ -95,6 +95,7 @@ export class Modal implements OverlayInterface {
   @Method()
   async open(): Promise<void> {
     await deepReady(this.usersElement)
+    this.setModalActiveOnBody()
 
     writeTask(() => {
       if (this.modalBackgroundElement) {
@@ -128,6 +129,7 @@ export class Modal implements OverlayInterface {
    */
   @Method()
   async close(): Promise<void> {
+    this.unsetModalActiveOnBody()
     this.presented = false
   }
 
@@ -136,6 +138,8 @@ export class Modal implements OverlayInterface {
    */
   @Method()
   async present(): Promise<void> {
+    this.setModalActiveOnBody()
+
     if (this.presented) {
       return
     }
@@ -158,6 +162,8 @@ export class Modal implements OverlayInterface {
    */
   @Method()
   async dismiss(data?: any, role?: string): Promise<boolean> {
+    this.unsetModalActiveOnBody()
+
     if (this.delegate === undefined) {
       await this.close()
       return true
@@ -231,6 +237,18 @@ export class Modal implements OverlayInterface {
           }
         }
       }
+    }
+  }
+
+  private setModalActiveOnBody() {
+    if (document && document.body && !document.body.classList.contains('bal-modal-active')) {
+      document.body.classList.add('bal-modal-active')
+    }
+  }
+
+  private unsetModalActiveOnBody() {
+    if (document && document.body) {
+      document.body.classList.remove('bal-modal-active')
     }
   }
 

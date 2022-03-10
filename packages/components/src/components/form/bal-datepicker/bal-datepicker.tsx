@@ -413,7 +413,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   get firstDateOfBox(): Date {
     const date = new Date(this.pointerDate.year, this.pointerDate.month, 1)
-    return startOfWeek(date)
+    return startOfWeek(date, { weekStartsOn: 1 })
   }
 
   getLocale(): string {
@@ -444,7 +444,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
           } as BalCalendarCell,
         ]
         dayDatePointer.setDate(dayDatePointer.getDate() + 1)
-      } while (isSameWeek(dayDatePointer, weekDatePointer))
+      } while (isSameWeek(dayDatePointer, weekDatePointer, { weekStartsOn: 1 }))
       calendar = [...calendar, row]
       weekDatePointer.setDate(weekDatePointer.getDate() + 7)
     } while (isSameMonth(new Date(this.pointerDate.year, this.pointerDate.month, this.pointerDate.day), dayDatePointer))

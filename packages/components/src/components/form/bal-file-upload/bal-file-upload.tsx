@@ -77,6 +77,16 @@ export class FileUpload {
   @Event({ eventName: 'balChange' }) balChangeEventEmitter!: EventEmitter<File[]>
 
   /**
+   * Triggers when a file is added.
+   */
+  @Event({ eventName: 'balFilesAdded' }) balFilesAddedEmitter!: EventEmitter<File[]>
+
+  /**
+   * Triggers when a file is removed.
+   */
+  @Event({ eventName: 'balFilesRemoved' }) balFilesRemovedEmitter!: EventEmitter<File[]>
+
+  /**
    * Triggers when a file is rejected due to not allowed MIME-Type and so on.
    */
   @Event({ eventName: 'balRejectedFile' }) balRejectedFileEventEmitter!: EventEmitter<FileUploadRejectedFile>
@@ -116,6 +126,7 @@ export class FileUpload {
   handleFiles = (files: FileList): void => {
     if (!this.disabled) {
       const list = [...this.files]
+      const filesAdded: File[] = []
       for (let index = 0; index < files.length; index++) {
         const file = files.item(index)
         if (file) {
@@ -151,12 +162,16 @@ export class FileUpload {
             })
           } else {
             list.push(file)
+            filesAdded.push(file)
           }
         }
       }
       if (this.files.length !== list.length) {
         this.files = [...list]
         this.balChangeEventEmitter.emit(this.files)
+      }
+      if (filesAdded.length > 0) {
+        this.balFilesAddedEmitter.emit(filesAdded)
       }
     }
   }
@@ -195,13 +210,17 @@ export class FileUpload {
   removeFile(indexToRemove: number): void {
     if (!this.disabled) {
       const list = []
+      const removedFiles = []
       for (let index = 0; index < this.files.length; index++) {
         if (index !== indexToRemove) {
           list.push(this.files[index])
+        } else {
+          removedFiles.push(this.files[index])
         }
       }
       this.files = [...list]
       this.balChangeEventEmitter.emit(this.files)
+      this.balFilesRemovedEmitter.emit(removedFiles)
     }
   }
 

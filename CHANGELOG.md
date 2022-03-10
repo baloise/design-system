@@ -3,6 +3,132 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.5.1](https://github.com/baloise/design-system/compare/v10.5.0...v10.5.1) (2022-03-10)
+
+
+### Bug Fixes
+
+* **angular:** add new output ([7c196bf](https://github.com/baloise/design-system/commit/7c196bf14f780e3ce2ab77e2c8fec2d21e5f9c2f))
+* **button:** enable custom content for square buttons ([ea1b7d6](https://github.com/baloise/design-system/commit/ea1b7d673a58a8f6b33e8571a058f8ae60f773f2))
+
+
+
+## [10.5.0](https://github.com/baloise/design-system/compare/v10.4.4...v10.5.0) (2022-03-09)
+
+
+### Features
+
+* **card:** cards can have a hover effect and a selected background ([8cc7182](https://github.com/baloise/design-system/commit/8cc71827324566f82c78c1053345b2d95c87e88e))
+* **data:** add multiline prop ([cc93a3a](https://github.com/baloise/design-system/commit/cc93a3a37ea725c66ad9d00b14bcc7f76f182bb8))
+* **file-upload:** add events balFilesAdded and balFilesRemoved ([8c869d7](https://github.com/baloise/design-system/commit/8c869d77be3dbde2bbe1e23a28e5845d888ad87d))
+* **select:** can be combined with icons and other inputs ([d35aff4](https://github.com/baloise/design-system/commit/d35aff4f989202060a2654b7149539238acef89a))
+
+
+### Bug Fixes
+
+* **button:** adjust style for danger outlined button ([c901e47](https://github.com/baloise/design-system/commit/c901e479e8590c7c36a013f6fc914d32588b8c94))
+* **button:** hide slot content when square prop is set ([90ced0a](https://github.com/baloise/design-system/commit/90ced0ad8bba8a973f70c82deda808db6d91bd2c))
+* **card:** remove usless margin bottom ([d31f5a8](https://github.com/baloise/design-system/commit/d31f5a83f5b117f76c85772fed0da9ad34075726))
+* **checkbox:** enabling numbers ([768a58c](https://github.com/baloise/design-system/commit/768a58c98164ff8ec81b9bfedcecd6036217705d))
+* **data:** enables custom elements between bal-data and bal-data-item ([a4608d0](https://github.com/baloise/design-system/commit/a4608d0bafc654c9d6018f85a2bb9d4a5b7dae04))
+* **field:** only add margin to addon button ([d840066](https://github.com/baloise/design-system/commit/d8400668d28a65581a492628b4a9dd909f45a8e7))
+* **radio:** enable boolean ([c834292](https://github.com/baloise/design-system/commit/c834292e524fe160d793453c034860d443ef13b5))
+
+### 10.4.2 (2022-03-08)
+
+
+
+### [10.4.4](https://github.com/baloise/design-system/compare/v10.4.3...v10.4.4) (2022-03-08)
+
+
+### Bug Fixes
+
+* **card:** remove usless margin bottom ([d31f5a8](https://github.com/baloise/design-system/commit/d31f5a83f5b117f76c85772fed0da9ad34075726))
+* **checkbox:** enabling numbers ([768a58c](https://github.com/baloise/design-system/commit/768a58c98164ff8ec81b9bfedcecd6036217705d))
+* **data:** enables custom elements between bal-data and bal-data-item ([a4608d0](https://github.com/baloise/design-system/commit/a4608d0bafc654c9d6018f85a2bb9d4a5b7dae04))
+* **radio:** enable boolean ([c834292](https://github.com/baloise/design-system/commit/c834292e524fe160d793453c034860d443ef13b5))
+
+
+### [10.4.3](https://github.com/baloise/design-system/compare/v10.4.2...v10.4.3) (2022-03-08)
+
+
+### Bug Fixes
+
+* **checkbox:** enabling numbers ([768a58c](https://github.com/baloise/design-system/commit/768a58c98164ff8ec81b9bfedcecd6036217705d))
+* **data:** enables custom elements between bal-data and bal-data-item ([a4608d0](https://github.com/baloise/design-system/commit/a4608d0bafc654c9d6018f85a2bb9d4a5b7dae04))
+
+
+
+### [10.4.2](https://github.com/baloise/design-system/compare/v10.4.1...v10.4.2) (2022-03-08)
+
+
+### Bug Fixes
+
+* **card:** remove inner p to simplify usage ([0a27202](https://github.com/baloise/design-system/commit/0a27202e3620fddc245a31eaab4a5fef595d0b08))
+* **card:** reset spacing of the batton-group ([4775a85](https://github.com/baloise/design-system/commit/4775a85f6111d6fd003d6998a8cc8bab8cedf874))
+* **datepicker:** set week start to monday instead of sunday ([66ceaf0](https://github.com/baloise/design-system/commit/66ceaf00003a41f21cab49c32d9defa02d3897b0))
+* **file-upload:** adjust styles for field usage ([a3d95df](https://github.com/baloise/design-system/commit/a3d95dfa402be98245a377b536124f5cbf9a3d8c))
+* **modal:** disable scroll on body ([b09bd81](https://github.com/baloise/design-system/commit/b09bd81bce780b38297f16011adb73d77d787680))
+
+
+
+### [10.4.1](https://github.com/baloise/design-system/compare/v10.4.0...v10.4.1) (2022-03-07)
+
+
+### Features
+
+* **checkbox:** group can act as a form control ([55b718f](https://github.com/baloise/design-system/commit/55b718fe7c493744976a28f3a61e3aa8aec638b4))
+
+
+### Bug Fixes
+
+* **angular:** add shared module to each component ([f6d7fa2](https://github.com/baloise/design-system/commit/f6d7fa2991473bf6a0bf1bf10cd433244ac11354))
+* **angular:** add shared module to each component ([3eca007](https://github.com/baloise/design-system/commit/3eca007fe0be1b4be040c2f1c49810d62622911b))
+* **button:** remove unused css for button in order to fix bal-badge ([3b61c18](https://github.com/baloise/design-system/commit/3b61c187e3c00a8efd0c742a69e30d8de5931f1d))
+
+### [10.3.3](https://github.com/baloise/design-system/compare/v10.3.2...v10.3.3) (2022-03-07)
+
+### 10.3.2 (2022-03-07)
+
+
+
+## [10.4.0](https://github.com/baloise/design-system/compare/v10.3.3...v10.4.0) (2022-03-07)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+### [10.3.3](https://github.com/baloise/design-system/compare/v10.3.2...v10.3.3) (2022-03-07)
+
+
+### Bug Fixes
+
+* **angular:** filter errorType key of the ng-error component ([54c0869](https://github.com/baloise/design-system/commit/54c0869c6886795bb9d9adb2a0be248300dc1b5b))
+* **hint:** make subject on field hint optional ([6fe3eae](https://github.com/baloise/design-system/commit/6fe3eaeb3b4b729da9477de42332d302b1118705))
+
+
+
+### [10.3.2](https://github.com/baloise/design-system/compare/v10.3.1...v10.3.2) (2022-03-07)
+
+
+### Bug Fixes
+
+* **angular:** create shared module to have access to the value accessors ([4c37480](https://github.com/baloise/design-system/commit/4c374802455ca68bf850944cfc4c71d5ffa27a0e))
+
+
+
+### [10.3.1](https://github.com/baloise/design-system/compare/v10.3.0...v10.3.1) (2022-03-07)
+
+
+### Bug Fixes
+
+* **angular:** update angular output lib ([2fd80a8](https://github.com/baloise/design-system/commit/2fd80a8f53acf48d8855c13410a69a8890a14d8a))
+* **angular:** update angular output lib ([222d792](https://github.com/baloise/design-system/commit/222d79278b302eb4eaaf476f34e8d5a94b8ddc2b))
+
+
+
 ## [10.3.0](https://github.com/baloise/design-system/compare/v10.2.0...v10.3.0) (2022-03-03)
 
 

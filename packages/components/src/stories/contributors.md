@@ -65,17 +65,17 @@
     </h2>
     <h4>MarkusTiede</h4>
   </a>
-  <a href="https://github.com/mladenplaninicic" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/28272339?v=4" alt="mladenplaninicic" style="width: 64px;">
-    </h2>
-    <h4>mladenplaninicic</h4>
-  </a>
   <a href="https://github.com/nobilo" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/11984467?v=4" alt="nobilo" style="width: 64px;">
     </h2>
     <h4>nobilo</h4>
+  </a>
+  <a href="https://github.com/mladenplaninicic" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/28272339?v=4" alt="mladenplaninicic" style="width: 64px;">
+    </h2>
+    <h4>mladenplaninicic</h4>
   </a>
   <a href="https://github.com/Flapmax" class="feature">
     <h2>

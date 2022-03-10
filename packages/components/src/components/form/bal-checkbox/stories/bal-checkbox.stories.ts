@@ -12,6 +12,7 @@ import { isDescendant } from '../../../../../dist'
 import { ref, unref } from 'vue'
 
 const balFieldArgTypes = stencilArgType(BalField)
+const balCheckboxGroupArgTypes = stencilArgType(BalCheckboxGroup)
 
 const component = BalComponentStory({
   title: 'Components/Form/Checkbox',
@@ -20,17 +21,12 @@ const component = BalComponentStory({
   docs,
   argTypes: {
     ...withContent(),
+    ...balCheckboxGroupArgTypes,
     invalid: balFieldArgTypes.invalid,
     hasFieldMessage: {
       description: 'Show a hint or validation message below the control',
       table: {
         category: 'custom',
-      },
-    },
-    vertical: {
-      description: 'Displays the checkbox vertically',
-      table: {
-        category: 'CheckboxGroup',
       },
     },
   },
@@ -52,9 +48,32 @@ const SingleTemplate = args => ({
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
-      <bal-checkbox-group :vertical="args.vertical">
-        <bal-checkbox v-bind="args" v-model="args.checked">
+      <bal-checkbox-group>
+        <bal-checkbox v-bind="args" v-model="args.value">
           {{ args.content }}
+        </bal-checkbox>
+      </bal-checkbox-group>
+    </bal-field-control>
+    <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
+  </bal-field>`,
+})
+
+const GroupTemplate = args => ({
+  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  setup: () => ({ args }),
+  template: `
+  <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
+    <bal-field-label>Label</bal-field-label>
+    <bal-field-control>
+      <bal-checkbox-group v-bind="args" v-model="args.value">
+        <bal-checkbox :value="1">
+          Apple
+        </bal-checkbox>
+        <bal-checkbox :value="2">
+          Pineapple
+        </bal-checkbox>
+        <bal-checkbox :value="3">
+          Orange
         </bal-checkbox>
       </bal-checkbox-group>
     </bal-field-control>
@@ -91,6 +110,16 @@ Basic.args = {
 }
 Basic.parameters = {
   ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
+
+export const Group = GroupTemplate.bind({})
+Group.args = {
+  value: [2],
+  control: true,
+}
+Group.parameters = {
+  ...component.sourceCode(Group),
   controls: { exclude: excludedControls },
 }
 

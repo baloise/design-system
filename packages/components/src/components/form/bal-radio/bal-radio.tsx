@@ -50,7 +50,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
   /**
    * The value of the control.
    */
-  @Prop() value = ''
+  @Prop() value: number | string | boolean = ''
 
   /**
    * @deprecated If `true` the radio has no label
@@ -164,6 +164,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
 
   render() {
     const { inputId } = this
+    const value = typeof this.value === 'boolean' ? JSON.stringify(this.value) : this.value
 
     return (
       <Host
@@ -193,7 +194,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
           id={inputId}
           name={this.name}
           tabindex={-1}
-          value={this.value}
+          value={value}
           disabled={this.disabled}
           checked={this.checked}
           onFocus={e => this.onInputFocus(e)}

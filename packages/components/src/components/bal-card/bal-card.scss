@@ -47,6 +47,17 @@ bal-card,
   &.is-danger {
     background-color: $danger;
   }
+
+  &.is-clickable {
+    &:active,
+    &:hover {
+      box-shadow: $shadow-hover;
+    }
+  }
+
+  &.is-selected {
+    background: $blue-0;
+  }
 }
 
 bal-card-title,
@@ -55,6 +66,13 @@ bal-card-content,
 bal-card-actions {
   display: block;
   position: static;
+}
+
+bal-card-content {
+  font-family: $family-primary;
+  word-break: break-word;
+  font-size: $size-5;
+  line-height: $line-height-5;
 }
 
 bal-card {

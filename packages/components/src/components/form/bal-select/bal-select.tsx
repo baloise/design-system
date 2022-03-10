@@ -766,6 +766,7 @@ export class Select {
               style={{
                 marginTop: this.isPopoverOpen ? '8px' : '0px',
               }}
+              onClick={this.handleInputClick}
             ></bal-icon>
           </div>
           <bal-popover-content scrollable={this.scrollable}>
