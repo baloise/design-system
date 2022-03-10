@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.5.1](https://github.com/baloise/design-system/compare/v10.5.0...v10.5.1) (2022-03-10)
+
+
+### Bug Fixes
+
+* **angular:** add new output ([7c196bf](https://github.com/baloise/design-system/commit/7c196bf14f780e3ce2ab77e2c8fec2d21e5f9c2f))
+* **button:** enable custom content for square buttons ([ea1b7d6](https://github.com/baloise/design-system/commit/ea1b7d673a58a8f6b33e8571a058f8ae60f773f2))
+
+
+
 ## [10.5.0](https://github.com/baloise/design-system/compare/v10.4.4...v10.5.0) (2022-03-09)
 
 
