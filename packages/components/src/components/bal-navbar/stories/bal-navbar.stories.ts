@@ -47,116 +47,6 @@ export const Basic = args => ({
 Basic.args = {}
 Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
 
-export const WithTabs = args => ({
-  components: { ...component.components, BalLogo, BalTabs, BalTabItem },
-  setup: () => ({ args }),
-  template: `<bal-navbar v-bind="args">
-  <bal-navbar-brand>
-    <bal-logo brand="group" :color="args.light ? 'blue' : 'white'"></bal-logo>
-  </bal-navbar-brand>
-  <bal-navbar-menu>
-    <bal-navbar-menu-start>
-      <bal-tabs interface="navbar">
-        <bal-tab-item label="Home" value="home"></bal-tab-item>
-        <bal-tab-item label="About" value="about"></bal-tab-item>
-        <bal-tab-item label="Third" value="third"></bal-tab-item>
-      </bal-tabs>
-    </bal-navbar-menu-start>
-  </bal-navbar-menu>
-</bal-navbar>`,
-})
-WithTabs.args = {}
-WithTabs.parameters = { ...component.sourceCode(WithTabs), controls: { exclude: excludedControls } }
-
-export const WithButton = args => ({
-  components: { ...component.components, BalLogo, BalButton, BalButtonGroup },
-  setup: () => ({ args }),
-  template: `<bal-navbar v-bind="args">
-  <bal-navbar-brand>
-    <bal-logo brand="group" :color="args.light ? 'blue' : 'white'"></bal-logo>
-  </bal-navbar-brand>
-  <bal-navbar-menu>
-    <bal-navbar-menu-end>
-      <bal-button-group>
-        <bal-button outlined inverted square color="info" icon="account"></bal-button>
-        <bal-button inverted>Action</bal-button>
-      </bal-button-group>
-    </bal-navbar-menu-end>
-  </bal-navbar-menu>
-</bal-navbar>`,
-})
-WithButton.args = {}
-WithButton.parameters = { ...component.sourceCode(WithButton), controls: { exclude: excludedControls } }
-
-export const WithPopover = args => ({
-  components: {
-    ...component.components,
-    BalList,
-    BalListItem,
-    BalListItemContent,
-    BalListItemTitle,
-    BalButton,
-    BalButtonGroup,
-    BalLogo,
-    BalPopover,
-    BalPopoverContent,
-  },
-  setup: () => {
-    const isActive = ref(true)
-
-    const toggle = () => {
-      isActive.value = !isActive.value
-    }
-
-    watchEffect(() => {
-      isActive.value = args.value
-    })
-
-    return {
-      args,
-      isActive,
-      toggle,
-    }
-  },
-  template: `<bal-navbar v-bind="args">
-  <bal-navbar-brand>
-    <bal-logo brand="group" :color="args.light ? 'blue' : 'white'"></bal-logo>
-  </bal-navbar-brand>
-  <bal-navbar-menu>
-    <bal-navbar-menu-end>
-      <bal-button-group>
-        <bal-popover v-model="isActive">
-          <bal-button bal-popover-trigger @click="toggle()" inverted square color="info">
-              DE
-          </bal-button>
-          <bal-popover-content class="p-2">
-            <bal-list>
-              <bal-list-item clickable>
-                <bal-list-item-content>
-                  <bal-list-item-title>English</bal-list-item-title>
-                </bal-list-item-content>
-              </bal-list-item>
-              <bal-list-item clickable>
-                <bal-list-item-content>
-                  <bal-list-item-title>Français</bal-list-item-title>
-                </bal-list-item-content>
-              </bal-list-item>
-              <bal-list-item clickable>
-                <bal-list-item-content>
-                  <bal-list-item-title>Italiano</bal-list-item-title>
-                </bal-list-item-content>
-              </bal-list-item>
-            </bal-list>
-          </bal-popover-content>
-        </bal-popover>
-      </bal-button-group>
-    </bal-navbar-menu-end>
-  </bal-navbar-menu>
-</bal-navbar>`,
-})
-WithButton.args = {}
-WithButton.parameters = { ...component.sourceCode(WithButton), controls: { exclude: excludedControls } }
-
 export const NavbarCombi = args => ({
   components: {
     ...component.components,
@@ -169,6 +59,8 @@ export const NavbarCombi = args => ({
     BalLogo,
     BalPopover,
     BalPopoverContent,
+    BalTabs,
+    BalTabItem,
   },
   setup: () => {
     const isActive = ref(true)
@@ -231,5 +123,5 @@ export const NavbarCombi = args => ({
   </bal-navbar-menu>
 </bal-navbar>`,
 })
-WithButton.args = {}
-WithButton.parameters = { ...component.sourceCode(WithButton), controls: { exclude: excludedControls } }
+NavbarCombi.args = {}
+NavbarCombi.parameters = { ...component.sourceCode(NavbarCombi), controls: { exclude: excludedControls } }

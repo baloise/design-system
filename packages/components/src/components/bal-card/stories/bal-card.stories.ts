@@ -6,6 +6,7 @@ import {
   BalCardSubtitle,
   BalCardContent,
   BalCardActions,
+  BalCardButton,
   BalButton,
   BalHeading,
   BalAccordion,
@@ -29,11 +30,13 @@ import {
 
 const component = BalComponentStory({
   component: BalCard,
-  subcomponents: { BalCardTitle, BalCardSubtitle, BalCardContent, BalCardActions },
+  subcomponents: { BalCardTitle, BalCardSubtitle, BalCardContent, BalCardActions, BalCardButton },
   docs,
 })
 
 export default component.story
+
+const excludedControls = ['inverted']
 
 export const Basic = args => ({
   components: { ...component.components, BalButton, BalHeading },
@@ -50,9 +53,9 @@ export const Basic = args => ({
   </bal-card-actions>
 </bal-card>`,
 })
-Basic.parameters = { ...component.sourceCode(Basic) }
+Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
 
-export const Teasers = args => ({
+export const TeaserCards = args => ({
   components: {
     ...component.components,
     BalButton,
@@ -70,164 +73,92 @@ export const Teasers = args => ({
     BalButtonGroup,
   },
   setup: () => ({ args }),
-  template: `<div class="columns is-multiline">
-  <div class="column is-one-third">
-    <bal-card  v-bind="args">
-      <bal-card-content>
-        <div style="min-height: 240px;" class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
-          <bal-heading level="h4" space="none">Title & Title</bal-heading>
-          <bal-heading subtitle level="h5" space="bottom" color="info">Subtitle</bal-heading>
-          <img class="mb-4" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
-          <bal-button-group position="center" class="mt-auto">
-            <bal-button color="link">Button</bal-button>
-            <bal-text bold color="grey" class="is-flex is-align-items-center" style="min-height: 48px">|</bal-text>
-            <bal-button color="link">Button</bal-button>
-          </bal-button-group>
-        </div>
-        </bal-card-content>
-    </bal-card>
-  </div>
-  <div class="column is-one-third">
-    <bal-card  v-bind="args">
-      <bal-card-content>
-        <div style="min-height: 240px;" class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
-          <img class="mb-4" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
-          <bal-heading level="h4" space="bottom">Title & Title</bal-heading>
-          <bal-button-group position="center" class="mt-auto">
-            <bal-button expanded outlined color="info">Button</bal-button>
-          </bal-button-group>
-        </div>
-        </bal-card-content>
-    </bal-card>
-  </div>
-  <div class="column is-one-third">
-    <bal-card v-bind="args" color="info">
-      <bal-card-content>
-        <div style="min-height: 240px;" class="is-flex is-justify-content-start is-flex-direction-column">
-          <bal-heading color="white" level="h4" space="bottom">Title & Title</bal-heading>
-          <bal-text color="white" class="mb-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </bal-text>
-          <bal-button-group position="center" class="mt-auto">
-            <bal-button expanded outlined inverted color="info">Button</bal-button>
-          </bal-button-group>
-        </div>
-        </bal-card-content>
-    </bal-card>
-  </div>
-  <div class="column is-one-third">
-    <bal-card v-bind="args">
-      <bal-card-content>
-        <div style="min-height: 240px;" class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
-          <img class="mb-4 has-opacity-60" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
-          <bal-heading level="h4" space="bottom" class="has-opacity-60">Title & Title</bal-heading>
-          <bal-button-group position="center" class="mt-auto">
-            <bal-button outlined color="info">Button</bal-button>
-          </bal-button-group>
-        </div>
-        </bal-card-content>
-    </bal-card>
-  </div>
-  <div class="column is-one-third">
-    <bal-card v-bind="args">
-      <bal-card-content>
-        <div style="min-height: 240px;" class="is-flex is-justify-content-start is-flex-direction-column">
-          <div class="is-flex">
-            <bal-heading class="is-flex-grow-1" level="h4" space="none">List</bal-heading>
-            <a class="is-link">Show All</a>
+  template: `
+<div class="container">
+  <div class="columns is-multiline">
+    <div class="column is-half">
+      <bal-card v-bind="args" clickable>
+        <bal-card-content>
+          <div class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
+            <img class="mb-4" style="max-width: 88px" src="https://www.baloise.ch/dam/jcr:3635255e-33e7-4adf-8b3e-99954faf6036/reiseversicherung.svg" >
+            <bal-heading level="h4" space="bottom">Clickable Card</bal-heading>
           </div>
-          <bal-list border size="large">
-          <bal-list-item clickable href="www.baloise.com" target="_blank">
-              <bal-list-item-content>
-                  <bal-list-item-title>External Link</bal-list-item-title>
-                  <bal-list-item-subtitle>Description</bal-list-item-subtitle>
-              </bal-list-item-content>
-              <bal-list-item-icon right>
-                  <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-              </bal-list-item-icon>
-          </bal-list-item>
-          <bal-list-item disabled clickable href="http://www.baloise.com" target="_blank">
-              <bal-list-item-content>
-                  <bal-list-item-title>Disabled Link</bal-list-item-title>
-                  <bal-list-item-subtitle>Description</bal-list-item-subtitle>
-              </bal-list-item-content>
-              <bal-list-item-icon right>
-                  <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
-              </bal-list-item-icon>
-          </bal-list-item>
-      </bal-list>
-          <bal-button-group position="center" class="mt-auto">
-            <bal-button expanded outlined color="info">Button</bal-button>
-          </bal-button-group>
-        </div>
         </bal-card-content>
-    </bal-card>
-  </div>
-  <div class="column is-one-third">
-    <bal-card v-bind="args">
-      <bal-card-content>
-        <div style="min-height: 240px;" class="is-flex is-justify-content-start is-flex-direction-column">
-          <bal-heading level="h4" space="bottom">Title & Title</bal-heading>
-          <bal-input-group>
-            <bal-icon size="small" name="search"></bal-icon>
-            <bal-input placeholder="Placeholder"></bal-input>
-            </bal-input-group>
+      </bal-card>
+    </div>
+    <div class="column is-half">
+      <bal-card v-bind="args" color="info">
+        <bal-card-content>
+          <div class="is-flex is-justify-content-start is-flex-direction-column">
+            <bal-heading color="white" level="h4" space="bottom">Info Card</bal-heading>
+            <bal-text color="white" class="mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </bal-text>
             <bal-button-group position="center" class="mt-auto">
-              <bal-button expanded outlined color="info" class="mt-4">Search</bal-button>
+              <bal-button expanded outlined inverted color="info">Button</bal-button>
             </bal-button-group>
-        </div>
-        </bal-card-content>
-    </bal-card>
+          </div>
+          </bal-card-content>
+      </bal-card>
+    </div>
+    <div class="column is-half">
+      <bal-card v-bind="args">
+        <bal-card-content>
+          <div class="is-flex is-justify-content-start is-flex-direction-column">
+            <div class="is-flex">
+              <bal-heading class="is-flex-grow-1" level="h4" space="none">List Card</bal-heading>
+              <a class="is-link">Show All</a>
+            </div>
+            <bal-list border size="large" class="mb-4">
+            <bal-list-item clickable href="www.baloise.com" target="_blank">
+                <bal-list-item-content>
+                    <bal-list-item-title>External Link</bal-list-item-title>
+                    <bal-list-item-subtitle>Description</bal-list-item-subtitle>
+                </bal-list-item-content>
+                <bal-list-item-icon right>
+                    <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+                </bal-list-item-icon>
+            </bal-list-item>
+            <bal-list-item disabled clickable href="http://www.baloise.com" target="_blank">
+                <bal-list-item-content>
+                    <bal-list-item-title>Disabled Link</bal-list-item-title>
+                    <bal-list-item-subtitle>Description</bal-list-item-subtitle>
+                </bal-list-item-content>
+                <bal-list-item-icon right>
+                    <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+                </bal-list-item-icon>
+            </bal-list-item>
+        </bal-list>
+            <bal-button-group position="center" class="mt-auto">
+              <bal-button expanded outlined color="info">Button</bal-button>
+            </bal-button-group>
+          </div>
+          </bal-card-content>
+      </bal-card>
+    </div>
+    <div class="column is-half">
+      <bal-card v-bind="args">
+        <bal-card-content>
+          <div class="is-flex is-justify-content-start is-flex-direction-column">
+            <bal-heading level="h4" space="bottom">Action Card</bal-heading>
+            <bal-input-group>
+              <bal-icon size="small" name="search"></bal-icon>
+              <bal-input placeholder="Placeholder"></bal-input>
+              </bal-input-group>
+              <bal-button-group position="center" class="mt-auto">
+                <bal-button expanded outlined color="info" class="mt-4">Search</bal-button>
+              </bal-button-group>
+          </div>
+          </bal-card-content>
+      </bal-card>
+    </div>
   </div>
 </div>
 `,
 })
-Teasers.parameters = { ...component.sourceCode(Teasers) }
+TeaserCards.parameters = { ...component.sourceCode(TeaserCards), controls: { exclude: excludedControls } }
 
-export const WithList = args => ({
-  components: {
-    ...component.components,
-    BalButton,
-    BalHeading,
-    BalListItemIcon,
-    BalIcon,
-    BalList,
-    BalListItem,
-    BalListItemTitle,
-    BalListItemContent,
-  },
-  setup: () => ({ args }),
-  template: `<bal-card v-bind="args">
-  <bal-card-title>Title</bal-card-title>
-  <bal-card-content>
-  <bal-list border>
-    <bal-list-item>
-      <bal-list-item-content>
-        <bal-list-item-title>News A</bal-list-item-title>
-      </bal-list-item-content>
-      <bal-list-item-icon right>
-        <bal-icon name="nav-go-large"></bal-icon>
-      </bal-list-item-icon>
-    </bal-list-item>
-    <bal-list-item>
-      <bal-list-item-content>
-        <bal-list-item-title>News B</bal-list-item-title>
-      </bal-list-item-content>
-      <bal-list-item-icon right>
-        <bal-icon name="nav-go-large"></bal-icon>
-      </bal-list-item-icon>
-    </bal-list-item>
-  </bal-list>
-  </bal-card-content>
-  <bal-card-actions position="right">
-    <bal-button color="info" outlined>Secondary Action</bal-button>
-    <bal-button>Main Action</bal-button>
-  </bal-card-actions>
-</bal-card>`,
-})
-WithList.parameters = { ...component.sourceCode(WithList) }
-
-export const WithAccordion = args => ({
+export const AccordionCard = args => ({
   components: { ...component.components, BalAccordion, BalHeading },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
@@ -238,9 +169,9 @@ export const WithAccordion = args => ({
   </bal-accordion>
   </bal-card>`,
 })
-WithAccordion.parameters = { ...component.sourceCode(WithAccordion) }
+AccordionCard.parameters = { ...component.sourceCode(AccordionCard), controls: { exclude: excludedControls } }
 
-export const Summary = args => ({
+export const SummaryCard = args => ({
   components: { ...component.components, BalHeading, BalButton, BalData, BalDataItem, BalDataLabel, BalDataValue },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
@@ -266,9 +197,9 @@ export const Summary = args => ({
   <bal-card-button icon="edit">Edit</bal-card-button>
   </bal-card>`,
 })
-Summary.parameters = { ...component.sourceCode(Summary) }
+SummaryCard.parameters = { ...component.sourceCode(SummaryCard), controls: { exclude: excludedControls } }
 
-export const Service = args => ({
+export const ServiceCard = args => ({
   components: { ...component.components, BalCheckbox, BalAccordion, BalHeading },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
@@ -293,21 +224,4 @@ export const Service = args => ({
   </bal-accordion>
 </bal-card>`,
 })
-Service.parameters = { ...component.sourceCode(Service) }
-
-export const ClickableAndSelected = args => ({
-  components: { ...component.components, BalButton, BalHeading },
-  setup: () => ({ args }),
-  template: `<bal-card v-bind="args">
-  <bal-card-content>
-    <div class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column">
-      <bal-heading level="h4">Hover me</bal-heading>
-    </div>
-    </bal-card-content>
-</bal-card>`,
-})
-ClickableAndSelected.args = {
-  clickable: true,
-  selected: true,
-}
-ClickableAndSelected.parameters = { ...component.sourceCode(ClickableAndSelected) }
+ServiceCard.parameters = { ...component.sourceCode(ServiceCard), controls: { exclude: excludedControls } }

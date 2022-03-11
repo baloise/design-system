@@ -1,4 +1,4 @@
-import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
 import readme from '../readme.md'
 
@@ -9,33 +9,46 @@ import readme from '../readme.md'
   <a href="#examples">Examples</a>
   <a href="#component-api">API</a>
   {/* <a href="#usage">Usage</a> */}
-  <a href="#implementation">Implementation</a>
+  <a href="#integration">Integration</a>
   <a href="#testing">Testing</a>
 </bal-doc-tabs>
 
 <bal-doc-lead>
   <b>Accordions</b> put users in control of showing or hiding content. Accordions also help us organize information to
   keep screens less cluttered so that users can accomplish tasks in short, intuitive steps. And accordions can help
-  users find content they need. The component can be used standalone, in combination or inside bal-card.
+  users find content they need. The component can be used standalone, in combination or inside{' '}
+  <a href="?path=/docs/components-card--basic">BalCard</a>.
 </bal-doc-lead>
 
-<Canvas>
+<Canvas withSource="open">
   <Story id="components-accordion--basic" />
 </Canvas>
 
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-accordion--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
+
 ## Examples
+
+<span id="story--components-accordion--with-icons" style={{ opacity: 0 }}></span>
 
 ### With Icons
 
-With the properties `open-label` & `close-label` the content of the button can be changed. Same with the the icon use the properties `open-icon` and `close-icon`
+To change the label use the properties `open-label` & `close-label`. The icon can be changed with the properties `open-icon` and `close-icon`.
 
 <Canvas>
   <Story id="components-accordion--with-icons" />
 </Canvas>
 
+<span id="story--components-accordion--with-card" style={{ opacity: 0 }}></span>
+
 ### With Card
 
-The accordion can be combined with the card component to hide some information.
+The accordion can be combined with the card component to hide some secondary information.
 
 <Canvas>
   <Story id="components-accordion--with-card" />
@@ -47,18 +60,33 @@ The accordion can be combined with the card component to hide some information.
 
 <br />
 
-<!-- ## Usage
+## Usage
 
 <bal-doc-usage>
-  <bal-doc-usage-when>
-    <li>asdf</li>
-  </bal-doc-usage-when>
-  <bal-doc-usage-dont>
-    <li>asdf</li>
-  </bal-doc-usage-dont>
-</bal-doc-usage> -->
+  <bal-doc-usage-item theme="do">
+    <li>To hide secondary information with lower priority.</li>
+    <li>To reduce the page size when content is not crucial to read in full.</li>
+  </bal-doc-usage-item>
+  <bal-doc-usage-item theme="dont">
+    <li>For required information or actions.</li>
+    <li>For hiding form controls.</li>
+  </bal-doc-usage-item>
+</bal-doc-usage>
 
-## Implementation
+import UsageImage from './usage/usage.png'
+
+<bal-doc-usage>
+  <bal-doc-usage-item image theme="do">
+    <img src={UsageImage} alt="UsageImage" />
+    <p>To hide secondary information with lower priority.</p>
+  </bal-doc-usage-item>
+  <bal-doc-usage-item image theme="dont">
+    <img src={UsageImage} alt="UsageImage" />
+    <p>For required information or actions.</p>
+  </bal-doc-usage-item>
+</bal-doc-usage>
+
+## Integration
 
 This documentation explains how to implement and use Baloise Design System components across different technologies.
 
@@ -80,9 +108,5 @@ This documentation explains how to implement and use Baloise Design System compo
 import testing from './testing.md'
 
 <Description markdown={testing} />
-
-## Troubleshooting
-
-If you experience any issues while using a component, please head over to the [Support page](?path=/docs/support--page) for more guidelines and help.
 
 <bal-doc-github link="/components/bal-accordion/stories/bal-accordion.docs.mdx"></bal-doc-github>

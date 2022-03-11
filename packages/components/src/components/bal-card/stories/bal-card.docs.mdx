@@ -7,38 +7,65 @@ import cardContent from '../bal-card-content/readme.md'
 import cardActions from '../bal-card-actions/readme.md'
 import cardButton from '../bal-card-button/readme.md'
 
-<span id="story--components-card--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-card--basic">Card</bal-doc-banner>
 
-# Card
+<bal-doc-tabs>
+  <a href="#story--components-accordion--basic">Overview</a>
+  <a href="#examples">Examples</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-Cards contain content and actions about a single subject and can be combined with other components.
+<bal-doc-lead>
+  <b>Cards</b> contain content and actions about a single subject and can be combined with other components.
+</bal-doc-lead>
 
-<Canvas>
+<Canvas withSource="open">
   <Story id="components-card--basic" />
 </Canvas>
 
-## With List
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-card--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
+
+## Examples
+
+<span id="story--components-card--teaser-cards" style={{ opacity: 0 }}></span>
+
+### Teaser Cards
 
 <Canvas>
-  <Story id="components-card--with-list" />
+  <Story id="components-card--teaser-cards" />
 </Canvas>
 
-## With Accordion
+<span id="story--components-card--accordion-card" style={{ opacity: 0 }}></span>
+
+## Accordion Card
 
 <Canvas>
-  <Story id="components-card--with-accordion" />
+  <Story id="components-card--accordion-card" />
 </Canvas>
 
-## Summary
+<span id="story--components-card--summary-card" style={{ opacity: 0 }}></span>
+
+## Summary Card
 
 <Canvas>
-  <Story id="components-card--summary" />
+  <Story id="components-card--summary-card" />
 </Canvas>
 
-## Service
+<span id="story--components-card--service-card" style={{ opacity: 0 }}></span>
+
+## Service Card
 
 <Canvas>
-  <Story id="components-card--service" />
+  <Story id="components-card--service-card" />
 </Canvas>
 
 ## Component Api
@@ -51,6 +78,25 @@ Cards contain content and actions about a single subject and can be combined wit
 <Description markdown={cardButton} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

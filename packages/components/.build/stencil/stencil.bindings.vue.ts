@@ -46,8 +46,7 @@ export const VueGenerator = (
     'bal-doc-link-list-item',
     'bal-doc-link-tabs',
     'bal-doc-link-usage',
-    'bal-doc-link-usage-dont',
-    'bal-doc-link-usage-when',
+    'bal-doc-link-usage-item',
   ],
 ) =>
   vueOutputTarget({

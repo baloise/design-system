@@ -2,23 +2,59 @@ import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
 import readme from '../readme.md'
 
-<span id="story--components-pagination--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-pagination--basic">Pagination</bal-doc-banner>
 
-# Pagination
+<bal-doc-tabs>
+  <a href="#story--components-pagination--basic">Overview</a>
+  <a href="#examples">Examples</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-Pagination allows you to divide large amounts of content into smaller chunks across multiple pages.
+<bal-doc-lead>
+  <b>Pagination</b> allows you to divide large amounts of content into smaller chunks across multiple pages. Generally,
+  pagination is used if there are more than 25 items displayed in one view. The default number displayed will vary
+  depending on the context.
+</bal-doc-lead>
 
-Generally, pagination is used if there are more than 25 items displayed in one view. The default number displayed will vary depending on the context.
-
-<Canvas>
+<Canvas withSource="open">
   <Story id="components-pagination--basic" />
 </Canvas>
+
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-pagination--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
 
 ## Component Api
 
 <Description markdown={readme} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

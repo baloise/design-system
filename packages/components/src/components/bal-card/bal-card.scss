@@ -49,9 +49,16 @@ bal-card,
   }
 
   &.is-clickable {
+    transition: border 150ms ease-out, transform 150ms ease-out;
+
     &:active,
     &:hover {
       box-shadow: $shadow-hover;
+      transform: translate3d(0, -2px, 0);
+    }
+
+    &:active {
+      outline: 1px solid $blue-2;
     }
   }
 
@@ -123,4 +130,10 @@ bal-card {
       padding-bottom: 0 !important;
     }
   }
+}
+
+.column bal-card,
+.column bal-card bal-card-content,
+.column bal-card bal-card-content > .is-flex {
+  height: 100%;
 }

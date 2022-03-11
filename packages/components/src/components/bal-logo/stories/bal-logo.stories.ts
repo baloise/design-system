@@ -28,12 +28,12 @@ const Template = args => ({
   template: `<bal-logo v-bind="args"></bal-logo>`,
 })
 
-export const BaloiseGroup = Template.bind({})
-BaloiseGroup.args = {
+export const Basic = Template.bind({})
+Basic.args = {
   brand: 'group',
   color: 'blue',
 }
-BaloiseGroup.parameters = { ...component.sourceCode(BaloiseGroup) }
+Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const BaloiseInsurance = Template.bind({})
 BaloiseInsurance.args = {
