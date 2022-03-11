@@ -708,13 +708,11 @@ export class Select {
         }}
       >
         <select class="is-hidden" name={this.name} multiple={this.multiple}>
-          {valuesArray
-            .filter(_ => this.multiple)
-            .map((value: string) => (
-              <option value={value} selected>
-                {value}
-              </option>
-            ))}
+          {valuesArray.map((value: string) => (
+            <option value={value} selected>
+              {value}
+            </option>
+          ))}
         </select>
         <bal-popover
           onBalChange={this.handlePopoverChange}
