@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Props } from "./types";
 import { Props as Props1 } from "./props";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
-import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -17,7 +17,7 @@ export namespace Components {
          */
         "card": boolean;
         /**
-          * Bal-Icon of the close trigger button
+          * BalIcon of the close trigger button
          */
         "closeIcon": string;
         /**
@@ -25,7 +25,7 @@ export namespace Components {
          */
         "closeLabel": string;
         /**
-          * Type defines the theme of the accordion toggle
+          * Defines the color of the accordion.
          */
         "color": Props.BalAccordionColor;
         /**
@@ -33,11 +33,11 @@ export namespace Components {
          */
         "debounce": number;
         /**
-          * Close the accordion
+          * Closes the accordion
          */
         "dismiss": () => Promise<void>;
         /**
-          * Bal-Icon of the open trigger button
+          * BalIcon of the open trigger button
          */
         "openIcon": string;
         /**
@@ -45,7 +45,7 @@ export namespace Components {
          */
         "openLabel": string;
         /**
-          * Open the accordion
+          * Opens the accordion
          */
         "present": () => Promise<void>;
         /**
@@ -53,7 +53,7 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
         /**
-          * Controls if the accordion is collapsed or not
+          * If `true` the accordion is open.
          */
         "value": boolean;
     }
@@ -93,7 +93,7 @@ export namespace Components {
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
          */
-        "download": string | undefined;
+        "download"?: string;
         /**
           * If `true` the button has a full width
          */
@@ -101,7 +101,7 @@ export namespace Components {
         /**
           * Specifies the URL of the page the link goes to
          */
-        "href": string | undefined;
+        "href"?: string;
         /**
           * Name of the left button icon
          */
@@ -137,7 +137,7 @@ export namespace Components {
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
-        "rel": string | undefined;
+        "rel"?: string;
         /**
           * Size of the button
          */
@@ -217,7 +217,7 @@ export namespace Components {
         /**
           * Specifies the URL of the page the link goes to
          */
-        "href": string | undefined;
+        "href"?: string;
         /**
           * Name of the icon like `edit`.
          */
@@ -420,7 +420,7 @@ export namespace Components {
         /**
           * Latest year available for selection
          */
-        "maxYearProp": number | undefined;
+        "maxYearProp"?: number;
         /**
           * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
          */
@@ -428,7 +428,7 @@ export namespace Components {
         /**
           * Earliest year available for selection
          */
-        "minYearProp": number | undefined;
+        "minYearProp"?: number;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -440,7 +440,7 @@ export namespace Components {
         /**
           * The text to display when the select is empty.
          */
-        "placeholder": string | undefined;
+        "placeholder"?: string;
         /**
           * If `true` the use can only select a date.
          */
@@ -513,9 +513,10 @@ export namespace Components {
     }
     interface BalDocUsage {
     }
-    interface BalDocUsageDont {
-    }
-    interface BalDocUsageWhen {
+    interface BalDocUsageItem {
+        "image"?: boolean;
+        "subject"?: string;
+        "theme": 'do' | 'dont';
     }
     interface BalField {
         /**
@@ -615,15 +616,15 @@ export namespace Components {
         /**
           * Allowed max bundle size in bytes.
          */
-        "maxBundleSize": number | undefined;
+        "maxBundleSize"?: number;
         /**
           * Allowed max file size in bytes.
          */
-        "maxFileSize": number | undefined;
+        "maxFileSize"?: number;
         /**
           * Allowed number of files in the bundle.
          */
-        "maxFiles": number | undefined;
+        "maxFiles"?: number;
         /**
           * If `true` multiple file upload is possible.
          */
@@ -631,7 +632,7 @@ export namespace Components {
         /**
           * Overrides the default subtitle file size
          */
-        "subTitle": ((file: File) => string) | undefined;
+        "subTitle"?: (file: File) => string;
         /**
           * Input value.
          */
@@ -679,7 +680,7 @@ export namespace Components {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel": Props.BalHeadingLevel | undefined;
+        "visualLevel"?: Props.BalHeadingLevel;
     }
     interface BalHint {
         /**
@@ -802,7 +803,7 @@ export namespace Components {
         /**
           * Defines the max length of the value.
          */
-        "maxLength": number | undefined;
+        "maxLength"?: number;
         /**
           * The minimum value, which must not be greater than its maximum (max attribute) value.
          */
@@ -810,7 +811,7 @@ export namespace Components {
         /**
           * Defines the min length of the value.
          */
-        "minLength": number | undefined;
+        "minLength"?: number;
         /**
           * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
          */
@@ -826,7 +827,7 @@ export namespace Components {
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
-        "pattern"?: string | undefined;
+        "pattern"?: string;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -979,17 +980,17 @@ export namespace Components {
         /**
           * The component to display inside of the modal.
          */
-        "component": ComponentRef;
+        "component": Props.ComponentRef;
         /**
           * The data to pass to the modal component.
          */
-        "componentProps"?: ComponentProps;
+        "componentProps"?: Props.ComponentProps;
         /**
           * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
          */
         "cssClass"?: string | string[];
         "dataTestId"?: string;
-        "delegate"?: FrameworkDelegate;
+        "delegate"?: Props.FrameworkDelegate;
         /**
           * Closes the presented modal with the modal controller
          */
@@ -1322,7 +1323,7 @@ export namespace Components {
         /**
           * This label is shown if typeahead is active and all the options are filtered out.
          */
-        "noDataLabel": string | undefined;
+        "noDataLabel"?: string;
         /**
           * Opens the popover
          */
@@ -1350,7 +1351,7 @@ export namespace Components {
         /**
           * Selected option values. Could also be passed as a string, which gets transformed.
          */
-        "value": string | string[] | undefined;
+        "value"?: string | string[];
     }
     interface BalSelectOption {
         /**
@@ -1360,11 +1361,11 @@ export namespace Components {
         /**
           * Label will be shown in the input element when it got selected
          */
-        "label": string | undefined;
+        "label"?: string;
         /**
           * The value of the select option. This value will be returned by the parent `<bal-select>` element.
          */
-        "value": string | undefined;
+        "value"?: string;
     }
     interface BalSheet {
     }
@@ -1934,17 +1935,11 @@ declare global {
         prototype: HTMLBalDocUsageElement;
         new (): HTMLBalDocUsageElement;
     };
-    interface HTMLBalDocUsageDontElement extends Components.BalDocUsageDont, HTMLStencilElement {
+    interface HTMLBalDocUsageItemElement extends Components.BalDocUsageItem, HTMLStencilElement {
     }
-    var HTMLBalDocUsageDontElement: {
-        prototype: HTMLBalDocUsageDontElement;
-        new (): HTMLBalDocUsageDontElement;
-    };
-    interface HTMLBalDocUsageWhenElement extends Components.BalDocUsageWhen, HTMLStencilElement {
-    }
-    var HTMLBalDocUsageWhenElement: {
-        prototype: HTMLBalDocUsageWhenElement;
-        new (): HTMLBalDocUsageWhenElement;
+    var HTMLBalDocUsageItemElement: {
+        prototype: HTMLBalDocUsageItemElement;
+        new (): HTMLBalDocUsageItemElement;
     };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
@@ -2320,8 +2315,7 @@ declare global {
         "bal-doc-link-list-item": HTMLBalDocLinkListItemElement;
         "bal-doc-tabs": HTMLBalDocTabsElement;
         "bal-doc-usage": HTMLBalDocUsageElement;
-        "bal-doc-usage-dont": HTMLBalDocUsageDontElement;
-        "bal-doc-usage-when": HTMLBalDocUsageWhenElement;
+        "bal-doc-usage-item": HTMLBalDocUsageItemElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -2388,7 +2382,7 @@ declare namespace LocalJSX {
          */
         "card"?: boolean;
         /**
-          * Bal-Icon of the close trigger button
+          * BalIcon of the close trigger button
          */
         "closeIcon"?: string;
         /**
@@ -2396,7 +2390,7 @@ declare namespace LocalJSX {
          */
         "closeLabel"?: string;
         /**
-          * Type defines the theme of the accordion toggle
+          * Defines the color of the accordion.
          */
         "color"?: Props.BalAccordionColor;
         /**
@@ -2404,11 +2398,11 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
-          * Emitted when the accordion has changed
+          * Emitted when the accordion has opened or closed
          */
         "onBalChange"?: (event: CustomEvent<boolean>) => void;
         /**
-          * Bal-Icon of the open trigger button
+          * BalIcon of the open trigger button
          */
         "openIcon"?: string;
         /**
@@ -2416,7 +2410,7 @@ declare namespace LocalJSX {
          */
         "openLabel"?: string;
         /**
-          * Controls if the accordion is collapsed or not
+          * If `true` the accordion is open.
          */
         "value"?: boolean;
     }
@@ -2456,7 +2450,7 @@ declare namespace LocalJSX {
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
          */
-        "download"?: string | undefined;
+        "download"?: string;
         /**
           * If `true` the button has a full width
          */
@@ -2464,7 +2458,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the URL of the page the link goes to
          */
-        "href"?: string | undefined;
+        "href"?: string;
         /**
           * Name of the left button icon
          */
@@ -2516,7 +2510,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
-        "rel"?: string | undefined;
+        "rel"?: string;
         /**
           * Size of the button
          */
@@ -2596,7 +2590,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the URL of the page the link goes to
          */
-        "href"?: string | undefined;
+        "href"?: string;
         /**
           * Name of the icon like `edit`.
          */
@@ -2810,7 +2804,7 @@ declare namespace LocalJSX {
         /**
           * Latest year available for selection
          */
-        "maxYearProp"?: number | undefined;
+        "maxYearProp"?: number;
         /**
           * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
          */
@@ -2818,7 +2812,7 @@ declare namespace LocalJSX {
         /**
           * Earliest year available for selection
          */
-        "minYearProp"?: number | undefined;
+        "minYearProp"?: number;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -2846,7 +2840,7 @@ declare namespace LocalJSX {
         /**
           * The text to display when the select is empty.
          */
-        "placeholder"?: string | undefined;
+        "placeholder"?: string;
         /**
           * If `true` the use can only select a date.
          */
@@ -2907,9 +2901,10 @@ declare namespace LocalJSX {
     }
     interface BalDocUsage {
     }
-    interface BalDocUsageDont {
-    }
-    interface BalDocUsageWhen {
+    interface BalDocUsageItem {
+        "image"?: boolean;
+        "subject"?: string;
+        "theme"?: 'do' | 'dont';
     }
     interface BalField {
         /**
@@ -3005,15 +3000,15 @@ declare namespace LocalJSX {
         /**
           * Allowed max bundle size in bytes.
          */
-        "maxBundleSize"?: number | undefined;
+        "maxBundleSize"?: number;
         /**
           * Allowed max file size in bytes.
          */
-        "maxFileSize"?: number | undefined;
+        "maxFileSize"?: number;
         /**
           * Allowed number of files in the bundle.
          */
-        "maxFiles"?: number | undefined;
+        "maxFiles"?: number;
         /**
           * If `true` multiple file upload is possible.
          */
@@ -3037,7 +3032,7 @@ declare namespace LocalJSX {
         /**
           * Overrides the default subtitle file size
          */
-        "subTitle"?: ((file: File) => string) | undefined;
+        "subTitle"?: (file: File) => string;
         /**
           * Input value.
          */
@@ -3085,7 +3080,7 @@ declare namespace LocalJSX {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel"?: Props.BalHeadingLevel | undefined;
+        "visualLevel"?: Props.BalHeadingLevel;
     }
     interface BalHint {
         /**
@@ -3192,7 +3187,7 @@ declare namespace LocalJSX {
         /**
           * Defines the max length of the value.
          */
-        "maxLength"?: number | undefined;
+        "maxLength"?: number;
         /**
           * The minimum value, which must not be greater than its maximum (max attribute) value.
          */
@@ -3200,7 +3195,7 @@ declare namespace LocalJSX {
         /**
           * Defines the min length of the value.
          */
-        "minLength"?: number | undefined;
+        "minLength"?: number;
         /**
           * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
          */
@@ -3240,7 +3235,7 @@ declare namespace LocalJSX {
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
-        "pattern"?: string | undefined;
+        "pattern"?: string;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -3392,17 +3387,17 @@ declare namespace LocalJSX {
         /**
           * The component to display inside of the modal.
          */
-        "component": ComponentRef;
+        "component": Props.ComponentRef;
         /**
           * The data to pass to the modal component.
          */
-        "componentProps"?: ComponentProps;
+        "componentProps"?: Props.ComponentProps;
         /**
           * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
          */
         "cssClass"?: string | string[];
         "dataTestId"?: string;
-        "delegate"?: FrameworkDelegate;
+        "delegate"?: Props.FrameworkDelegate;
         /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
@@ -3733,7 +3728,7 @@ declare namespace LocalJSX {
         /**
           * This label is shown if typeahead is active and all the options are filtered out.
          */
-        "noDataLabel"?: string | undefined;
+        "noDataLabel"?: string;
         /**
           * Emitted when the input loses focus.
          */
@@ -3777,7 +3772,7 @@ declare namespace LocalJSX {
         /**
           * Selected option values. Could also be passed as a string, which gets transformed.
          */
-        "value"?: string | string[] | undefined;
+        "value"?: string | string[];
     }
     interface BalSelectOption {
         /**
@@ -3787,11 +3782,11 @@ declare namespace LocalJSX {
         /**
           * Label will be shown in the input element when it got selected
          */
-        "label"?: string | undefined;
+        "label"?: string;
         /**
           * The value of the select option. This value will be returned by the parent `<bal-select>` element.
          */
-        "value"?: string | undefined;
+        "value"?: string;
     }
     interface BalSheet {
     }
@@ -4241,8 +4236,7 @@ declare namespace LocalJSX {
         "bal-doc-link-list-item": BalDocLinkListItem;
         "bal-doc-tabs": BalDocTabs;
         "bal-doc-usage": BalDocUsage;
-        "bal-doc-usage-dont": BalDocUsageDont;
-        "bal-doc-usage-when": BalDocUsageWhen;
+        "bal-doc-usage-item": BalDocUsageItem;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -4337,8 +4331,7 @@ declare module "@stencil/core" {
             "bal-doc-link-list-item": LocalJSX.BalDocLinkListItem & JSXBase.HTMLAttributes<HTMLBalDocLinkListItemElement>;
             "bal-doc-tabs": LocalJSX.BalDocTabs & JSXBase.HTMLAttributes<HTMLBalDocTabsElement>;
             "bal-doc-usage": LocalJSX.BalDocUsage & JSXBase.HTMLAttributes<HTMLBalDocUsageElement>;
-            "bal-doc-usage-dont": LocalJSX.BalDocUsageDont & JSXBase.HTMLAttributes<HTMLBalDocUsageDontElement>;
-            "bal-doc-usage-when": LocalJSX.BalDocUsageWhen & JSXBase.HTMLAttributes<HTMLBalDocUsageWhenElement>;
+            "bal-doc-usage-item": LocalJSX.BalDocUsageItem & JSXBase.HTMLAttributes<HTMLBalDocUsageItemElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;

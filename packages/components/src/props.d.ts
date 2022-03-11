@@ -54,6 +54,13 @@ export namespace Props {
   export type BalTextColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | 'hint' | ''
 
   export type BalModalInterface = 'light' | 'card'
+  export type ComponentProps = { [key: string]: any }
+  // eslint-disable-next-line
+  export type ComponentRef = Function | HTMLElement | string | null
+  export interface FrameworkDelegate {
+    attachViewToDom(container: any, component: any, propsOrDataObj?: any, cssClasses?: string[]): Promise<HTMLElement>
+    removeViewFromDom(container: any, component: any): Promise<void>
+  }
 
   export type BalNotificationColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | ''
   export type BalTostColor = BalNotificationColor

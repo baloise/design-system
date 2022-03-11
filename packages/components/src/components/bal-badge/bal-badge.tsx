@@ -10,7 +10,7 @@ export class Badge implements ComponentInterface {
   /**
    * Name of the icon to show. If a icon is present text should be hidden.
    */
-  @Prop() icon?: string = undefined
+  @Prop() icon?: string
 
   /**
    * Define the size of badge. Small is recommended for tabs.

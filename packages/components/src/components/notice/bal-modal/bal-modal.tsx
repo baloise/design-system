@@ -1,7 +1,7 @@
 import { Component, Host, h, State, Method, Listen, Prop, Event, EventEmitter, Element, writeTask } from '@stencil/core'
 import { dismiss, eventMethod, prepareOverlay } from '../../../helpers/overlays'
 import { attachComponent, detachComponent } from '../../../helpers/framework-delegate'
-import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail, OverlayInterface } from './bal-modal.type'
+import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady, wait } from '../../../helpers/helpers'
 import { getClassMap } from '../../../helpers/theme'
 import { Props } from '../../../props'
@@ -24,7 +24,7 @@ export class Modal implements OverlayInterface {
   @Prop({ mutable: true }) overlayIndex!: number
 
   /** @internal */
-  @Prop() delegate?: FrameworkDelegate
+  @Prop() delegate?: Props.FrameworkDelegate
 
   /** @internal */
   @Prop() dataTestId?: string
@@ -52,12 +52,12 @@ export class Modal implements OverlayInterface {
   /**
    * The component to display inside of the modal.
    */
-  @Prop() component!: ComponentRef
+  @Prop() component!: Props.ComponentRef
 
   /**
    * The data to pass to the modal component.
    */
-  @Prop() componentProps?: ComponentProps
+  @Prop() componentProps?: Props.ComponentProps
 
   /**
    * Additional classes to apply for custom CSS. If multiple classes are

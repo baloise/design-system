@@ -9,18 +9,14 @@ export class Accordion {
   private didInit = false
 
   /**
-   * Type defines the theme of the accordion toggle
+   * Defines the color of the accordion.
    */
   @Prop() color: Props.BalAccordionColor = 'primary'
 
   /**
-   * Controls if the accordion is collapsed or not
+   * If `true` the accordion is open.
    */
   @Prop({ mutable: true, reflect: true }) value = false
-
-  /**
-   * Update the native input element when the value changes
-   */
   @Watch('value')
   protected async valueChanged(newValue: boolean, oldValue: boolean) {
     if (this.didInit && newValue !== oldValue) {
@@ -32,7 +28,6 @@ export class Accordion {
    * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
    */
   @Prop() debounce = 0
-
   @Watch('debounce')
   protected debounceChanged() {
     this.balChange = debounceEvent(this.balChange, this.debounce)
@@ -44,7 +39,7 @@ export class Accordion {
   @Prop() openLabel = ''
 
   /**
-   * Bal-Icon of the open trigger button
+   * BalIcon of the open trigger button
    */
   @Prop() openIcon = 'plus'
 
@@ -54,7 +49,7 @@ export class Accordion {
   @Prop() closeLabel = ''
 
   /**
-   * Bal-Icon of the close trigger button
+   * BalIcon of the close trigger button
    */
   @Prop() closeIcon = 'minus'
 
@@ -64,7 +59,7 @@ export class Accordion {
   @Prop() card = false
 
   /**
-   * Emitted when the accordion has changed
+   * Emitted when the accordion has opened or closed
    */
   @Event() balChange!: EventEmitter<boolean>
 
@@ -80,7 +75,7 @@ export class Accordion {
   }
 
   /**
-   * Open the accordion
+   * Opens the accordion
    */
   @Method()
   async present() {
@@ -88,7 +83,7 @@ export class Accordion {
   }
 
   /**
-   * Close the accordion
+   * Closes the accordion
    */
   @Method()
   async dismiss() {

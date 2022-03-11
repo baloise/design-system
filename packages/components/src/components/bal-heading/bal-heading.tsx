@@ -15,7 +15,7 @@ export class Heading {
    * This option allows you to make e.g. h1 visually look like h3,
    * but still keep it h1 in the markup.
    */
-  @Prop() visualLevel: Props.BalHeadingLevel | undefined = undefined
+  @Prop() visualLevel?: Props.BalHeadingLevel
 
   /**
    * If `true` the heading gets displayed slimmer.

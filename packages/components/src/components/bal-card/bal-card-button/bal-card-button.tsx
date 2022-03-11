@@ -23,7 +23,7 @@ export class CardButton {
   /**
    * Specifies the URL of the page the link goes to
    */
-  @Prop() href: string | undefined
+  @Prop() href?: string
 
   /**
    * Specifies where to display the linked URL.

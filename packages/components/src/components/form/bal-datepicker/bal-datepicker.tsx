@@ -126,7 +126,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   /**
    * The text to display when the select is empty.
    */
-  @Prop() placeholder: string | undefined
+  @Prop() placeholder?: string
 
   /**
    * The minimum datetime allowed. Value must be a date string
@@ -161,12 +161,12 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   /**
    * Earliest year available for selection
    */
-  @Prop({ attribute: 'min-year' }) minYearProp: number | undefined = undefined
+  @Prop({ attribute: 'min-year' }) minYearProp?: number
 
   /**
    * Latest year available for selection
    */
-  @Prop({ attribute: 'max-year' }) maxYearProp: number | undefined = undefined
+  @Prop({ attribute: 'max-year' }) maxYearProp?: number
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.

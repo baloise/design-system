@@ -116,7 +116,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   /**
    * Defines the max length of the value.
    */
-  @Prop() maxLength: number | undefined = undefined
+  @Prop() maxLength?: number
 
   /**
    * The minimum value, which must not be greater than its maximum (max attribute) value.
@@ -126,7 +126,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   /**
    * Defines the min length of the value.
    */
-  @Prop() minLength: number | undefined = undefined
+  @Prop() minLength?: number
 
   /**
    * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
@@ -136,7 +136,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   /**
    * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
    */
-  @Prop() pattern?: string | undefined
+  @Prop() pattern?: string
 
   /**
    * If `true`, the user must fill in a value before submitting a form.

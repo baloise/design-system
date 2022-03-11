@@ -30,7 +30,7 @@ export class Button implements ComponentInterface {
   /**
    * Specifies the URL of the page the link goes to
    */
-  @Prop() href: string | undefined
+  @Prop() href?: string
 
   /**
    * Specifies where to display the linked URL.
@@ -42,7 +42,7 @@ export class Button implements ComponentInterface {
    * Specifies the relationship of the target object to the link object.
    * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
    */
-  @Prop() rel: string | undefined
+  @Prop() rel?: string
 
   /**
    * This attribute instructs browsers to download a URL instead of navigating to
@@ -50,7 +50,7 @@ export class Button implements ComponentInterface {
    * has a value, it is used as the pre-filled file name in the Save prompt
    * (the user can still change the file name if they want).
    */
-  @Prop() download: string | undefined
+  @Prop() download?: string
 
   /**
    * Size of the button

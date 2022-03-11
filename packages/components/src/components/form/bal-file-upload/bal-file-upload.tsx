@@ -49,17 +49,17 @@ export class FileUpload {
   /**
    * Allowed number of files in the bundle.
    */
-  @Prop() maxFiles: number | undefined = undefined
+  @Prop() maxFiles?: number
 
   /**
    * Allowed max file size in bytes.
    */
-  @Prop() maxFileSize: number | undefined = undefined
+  @Prop() maxFileSize?: number
 
   /**
    * Allowed max bundle size in bytes.
    */
-  @Prop() maxBundleSize: number | undefined = undefined
+  @Prop() maxBundleSize?: number
 
   /**
    * Input value.
@@ -69,7 +69,7 @@ export class FileUpload {
   /**
    * Overrides the default subtitle file size
    */
-  @Prop() subTitle: ((file: File) => string) | undefined
+  @Prop() subTitle?: (file: File) => string
 
   /**
    * Triggers when a file is added or removed.
