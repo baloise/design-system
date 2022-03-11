@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.4.1](https://github.com/baloise-incubator/design-system/compare/v10.4.0...v10.4.1) (2022-03-11)
+
+
+### Bug Fixes
+
+* **select:** enable form submit for single select ([fdf723b](https://github.com/baloise-incubator/design-system/commit/fdf723b0c8f9db2bf80fed69fcc59f24473a3da6))
+
+
+
 ## [10.4.0](https://github.com/baloise-incubator/design-system/compare/v10.3.0...v10.4.0) (2022-03-03)
 
 
