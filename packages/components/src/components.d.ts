@@ -503,6 +503,7 @@ export namespace Components {
     interface BalDocLead {
     }
     interface BalDocLinkList {
+        "oneColumn": boolean;
     }
     interface BalDocLinkListItem {
         "image": string;
@@ -2891,6 +2892,7 @@ declare namespace LocalJSX {
     interface BalDocLead {
     }
     interface BalDocLinkList {
+        "oneColumn"?: boolean;
     }
     interface BalDocLinkListItem {
         "image"?: string;

@@ -3,17 +3,40 @@ import { html } from '../../../../stories/utils'
 import { withLink } from './bal-checkbox.templates.ts'
 import readme from '../readme.md'
 
-<span id="story--components-form-checkbox--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-form-checkbox--basic">Checkbox</bal-doc-banner>
 
-# Checkbox
+<bal-doc-tabs>
+  <a href="#story--components-form-checkbox--basic">Overview</a>
+  <a href="#examples">Examples</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#tutorials-and-templates">Tutorials and Templates</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off.
+<bal-doc-lead>
+  <b>Checkboxes</b> allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or
+  off.
+</bal-doc-lead>
 
-<Canvas>
+<Canvas withSource="open">
   <Story id="components-form-checkbox--basic" />
 </Canvas>
 
-## Switch
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-form-checkbox--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
+
+## Examples
+
+<span id="story--components-form-checkbox--switch" style={{ opacity: 0 }}></span>
+
+### Switch
 
 Switches are used to toggle between exactly two states (like on and off).
 
@@ -21,13 +44,25 @@ Switches are used to toggle between exactly two states (like on and off).
   <Story id="components-form-checkbox--switch" />
 </Canvas>
 
-## With Link
+<span id="story--components-form-checkbox--group" style={{ opacity: 0 }}></span>
 
-<Canvas mdxSource={withLink}>
-  <bal-doc-app>{html(withLink)}</bal-doc-app>
+### Group
+
+<Canvas>
+  <Story id="components-form-checkbox--group" />
 </Canvas>
 
-## Checkbox Box
+<span id="story--components-form-checkbox--vertical" style={{ opacity: 0 }}></span>
+
+#### Vertical Group
+
+<Canvas>
+  <Story id="components-form-checkbox--vertical" />
+</Canvas>
+
+<span id="story--components-form-checkbox--box" style={{ opacity: 0 }}></span>
+
+### Checkbox Box
 
 Add the class `has-background-blue-light` to the selected box (`div` inside the `div.column`).
 
@@ -35,48 +70,51 @@ Add the class `has-background-blue-light` to the selected box (`div` inside the 
   <Story id="components-form-checkbox--box" />
 </Canvas>
 
-## Usage
-
-import AngularLogo from '../../../../stories/assets/images/angular.svg'
-import VueLogo from '../../../../stories/assets/images/vue.png'
-import IconDocument from '../../../../../../icons/svg/icon-document.svg'
-import IconAccount from '../../../../../../icons/svg/icon-account.svg'
-
-<div className="link-list">
-  <a className="link-item" href="?path=/docs/design-form--page">
-    <img src={IconDocument} alt="documentation" />
-    <span>
-      <strong>Form</strong>
-      Documentation how to build forms and how to use the components.
-    </span>
-  </a>
-  <a className="link-item" href="?path=/story/design-common-templates--contact-form">
-    <img src={IconAccount} alt="template" />
-    <span>
-      <strong>Template Contact Form</strong>A template with to illustrate the structure of a form.
-    </span>
-  </a>
-  <a className="link-item" href="?path=/docs/getting-started-angular-usage-of-form-validation--page">
-    <img src={AngularLogo} alt="angular" />
-    <span>
-      <strong>Angular</strong>
-      Usage guide how to structure the form elements and to use form validation.
-    </span>
-  </a>
-  <a className="link-item" href="?path=/docs/getting-started-vue-usage-of-form-validation--page">
-    <img src={VueLogo} alt="vue" />
-    <span>
-      <strong>Vue</strong>
-      Usage guide how to structure the form elements and to use form validation.
-    </span>
-  </a>
-</div>
-
 ## Component Api
 
 <Description markdown={readme} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
+
+## Tutorials and Templates
+
+A list of tutorials how to use or create this component and templates to see how it can
+be combined with other components.
+
+import IconDocument from '../../../../../../icons/svg/icon-document.svg'
+import IconAccount from '../../../../../../icons/svg/icon-account.svg'
+
+<bal-doc-link-list one-column>
+  <a href="?path=/story/implementation-form--page">
+    <bal-doc-link-list-item image={IconDocument} subject="Form Tutorial">
+      Documentation how to build forms and how to use the components.
+    </bal-doc-link-list-item>
+  </a>
+  <a href="?path=/story/design-common-templates--contact-form">
+    <bal-doc-link-list-item image={IconAccount} subject="Template Contact Form">
+      A template with to illustrate the structure of a form.
+    </bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

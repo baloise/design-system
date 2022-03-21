@@ -1,6 +1,10 @@
 bal-doc-link-list {
   margin-bottom: 24px;
 
+  &.has-one-column {
+    grid-template-columns: 1fr !important;
+  }
+
   a {
     display: block;
     padding: 20px 30px 20px 15px;
@@ -10,7 +14,8 @@ bal-doc-link-list {
     color: #333333;
     background-color: #fefefe;
     display: flex;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   a:hover {

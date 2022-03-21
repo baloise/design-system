@@ -1,4 +1,4 @@
-import { Component, h, ComponentInterface, Host, Element } from '@stencil/core'
+import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
 
 @Component({
   tag: 'bal-doc-link-list',
@@ -7,9 +7,16 @@ import { Component, h, ComponentInterface, Host, Element } from '@stencil/core'
 export class DocLinkList implements ComponentInterface {
   @Element() el!: HTMLElement
 
+  @Prop() oneColumn = false
+
   render() {
     return (
-      <Host className="link-list">
+      <Host
+        class={{
+          'link-list': true,
+          'has-one-column': this.oneColumn,
+        }}
+      >
         <slot></slot>
       </Host>
     )

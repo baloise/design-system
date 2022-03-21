@@ -1,13 +1,25 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
 
-# Snackbar
+<bal-doc-banner id="story--components-notice-snackbar--basic">Snackbar</bal-doc-banner>
 
-A snackbar is used to inform the user with a simple text message and a action.
+<bal-doc-tabs>
+  <a href="#story--components-notice-snackbar--basic">Overview</a>
+  {/* <a href="#examples">Examples</a> */}
+  <a href="#controller">Controller</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
+
+<bal-doc-lead>
+  <b>Snackbar</b> is used to inform the user with a simple text message and a action.
+</bal-doc-lead>
 
 <Canvas>
   <bal-doc-app>
-    <bal-snackbar subject="Default" icon="info-circle" action="More">
+    <bal-snackbar subject="Default" icon="info-circle" action="More" color="info">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
     </bal-snackbar>
   </bal-doc-app>
@@ -19,38 +31,56 @@ A snackbar is used to inform the user with a simple text message and a action.
 </bal-snackbar>
 ```
 
-## Usage
+## Controller
 
 Snackbar can be created with the balSnackbarController. The default duration is 5000 milliseconds. The create method return the instance of the created snackbar, so there you can access all the props and methods of it.
 
 ```typescript
 import { balSnackbarController } from '@baloise/design-system-components'
 
+// Creates and opens a new unique snackbar
 const mySnackbar = balSnackbarController.create({ message: 'Hi I am a default snackbar!', duration: 1000 })
+
+// Closes the snackbar again
 mySnackbar.close()
 ```
 
-### Framework integration
+<Canvas withSource="none" className="has-visible-overflow">
+  <Story id="components-notice-snackbar--basic" />
+</Canvas>
 
-Usage guide how to use the toast or snackbar with a JS framework.
-
-<bal-doc-link-list>
-  <a href="?path=/docs/usage-toast-snackbar--page#usage-with-angular">
-    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/usage-toast-snackbar--page#usage-with-vue">
-    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
-  </a>
-  <a href="?path=/docs/usage-toast-snackbar--page#usage-with-react">
-    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
-  </a>
-</bal-doc-link-list>
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-notice-snackbar--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
 
 ## Component Api
 
 <Description markdown={readme} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

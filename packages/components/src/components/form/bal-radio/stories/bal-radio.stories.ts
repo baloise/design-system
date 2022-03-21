@@ -37,7 +37,7 @@ export default component.story
 
 const excludedControls = ['name']
 
-export const RadioGroup = args => ({
+export const Basic = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
@@ -53,12 +53,12 @@ export const RadioGroup = args => ({
   <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
 </bal-field>`,
 })
-RadioGroup.args = {
+Basic.args = {
   value: '2',
 }
-RadioGroup.parameters = { ...component.sourceCode(RadioGroup), controls: { exclude: excludedControls } }
+Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
 
-export const Vertical = RadioGroup.bind({})
+export const Vertical = Basic.bind({})
 Vertical.args = {
   content: 'Label',
   vertical: true,
