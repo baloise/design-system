@@ -2,8 +2,10 @@
 
 bal-input-group,
 .bal-input-group {
-  position: static;
+  position: relative;
   display: flex;
+  flex: 1;
+  width: 100%;
   align-items: center;
   gap: 4px;
   border-bottom: 1px solid $blue-2;
