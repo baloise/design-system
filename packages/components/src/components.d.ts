@@ -713,7 +713,7 @@ export namespace Components {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color": Props.BalIconSize;
+        "color": Props.BalIconColor;
         /**
           * If `true` the icon has display inline style
          */
@@ -733,7 +733,7 @@ export namespace Components {
         /**
           * Defines the size of the icon.
          */
-        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+        "size": Props.BalIconSize;
         /**
           * Svg content.
          */
@@ -3102,7 +3102,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color"?: Props.BalIconSize;
+        "color"?: Props.BalIconColor;
         /**
           * If `true` the icon has display inline style
          */
@@ -3122,7 +3122,7 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the icon.
          */
-        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+        "size"?: Props.BalIconSize;
         /**
           * Svg content.
          */

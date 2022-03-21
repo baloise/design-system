@@ -31,7 +31,8 @@ export namespace Props {
   export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | ''
 
   export type BalHintPlacement = 'left' | 'right'
-  export type BalIconSize = BalButtonColor | 'white'
+  export type BalIconColor = BalButtonColor | 'white'
+  export type BalIconSize = 'xsmall' | 'small' | 'medium' | 'large' | ''
 
   export type BalListItemTarget = BalButtonTarget
   export type BalListSize = 'large' | ''

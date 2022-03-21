@@ -1,9 +1,9 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community'
-import { ColorTypes } from '@baloise/design-system-components'
+import { Props } from '@baloise/design-system-components'
 import isNil from 'lodash.isnil'
 
 interface BalTableTagRendererOptions {
-  color?: (params: ICellRendererParams) => ColorTypes
+  color?: (params: ICellRendererParams) => Props.BalTagColor
 }
 
 export function BalTableTagRenderer(options: BalTableTagRendererOptions): ICellRendererComp {
