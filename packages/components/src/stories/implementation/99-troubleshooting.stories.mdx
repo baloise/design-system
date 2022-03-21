@@ -9,9 +9,9 @@ import { Meta } from '@storybook/addon-docs'
   }}
 />
 
-# Troubleshooting
+<bal-doc-banner id="troubleshooting" subtitle="Implementation">Troubleshooting</bal-doc-banner>
 
-## Bundle size warning
+## Angular - Bundle size warning
 
 **WARNING in budgets, maximum exceeded for initial**
 
@@ -27,7 +27,7 @@ Open angular.json file and find budgets keyword and adjust the two values.
 ]
 ```
 
-## lint-staged - ERR_REQUIRE_ESM
+## Design System - lint-staged - ERR_REQUIRE_ESM
 
 The following error can be fixed by removing the `node_modules` and
 the `package.lock.json` in the root package and run `npm i` again.

@@ -87,29 +87,29 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 }
 
 .sbdocs.sbdocs-h1,
-.sbdocs.sbdocs-h1 > a {
+.sbdocs.sbdocs-h1 > a.sbdocs.sbdocs-a {
   font-size: 44px;
 }
 
 .sbdocs.sbdocs-h2,
-.sbdocs.sbdocs-h2 > a {
+.sbdocs.sbdocs-h2 > a.sbdocs.sbdocs-a {
   font-size: 36px;
 }
 
 .sbdocs.sbdocs-h3,
-.sbdocs.sbdocs-h3 > a {
+.sbdocs.sbdocs-h3 > a.sbdocs.sbdocs-a {
   font-size: 28px;
   font-weight: 700;
 }
 
 .sbdocs.sbdocs-h4,
-.sbdocs.sbdocs-h4 > a {
+.sbdocs.sbdocs-h4 > a.sbdocs.sbdocs-a {
   font-size: 20px;
   font-weight: 700;
 }
 
 .sbdocs.sbdocs-h5,
-.sbdocs.sbdocs-h5 > a {
+.sbdocs.sbdocs-h5 > a.sbdocs.sbdocs-a {
   font-size: 16px;
   font-weight: 700;
 }
