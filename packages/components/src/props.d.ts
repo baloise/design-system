@@ -1,5 +1,3 @@
-import { Placement } from '@popperjs/core'
-
 export namespace Props {
   export type BalAccordionColor = 'primary' | 'info'
 
@@ -41,7 +39,22 @@ export namespace Props {
   export type BalLogoColor = 'blue' | 'white'
   export type BalLogoBrand = 'group' | 'soba' | 'insurance'
 
-  export type BalPopoverPlacement = Placement
+  export type BalPopoverPlacement =
+    | 'auto'
+    | 'auto-start'
+    | 'auto-end'
+    | 'top'
+    | 'left'
+    | 'bottom'
+    | 'right'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right-start'
+    | 'right-end'
+    | 'left-start'
+    | 'left-end'
 
   export type BalStageColor = 'blue' | 'white'
   export type BalStageSize = 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight'
