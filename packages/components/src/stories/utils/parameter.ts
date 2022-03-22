@@ -110,6 +110,7 @@ const filterVueSpecific = (templateSource: string, argTypes = {}, args = {}): st
   return (
     templateSource
       // TODO: write regex to replace events
+      .replace(' @balRejectedFile="onBalRejectedFile($event)"', '')
       .replace(' @click="openModal()"', '')
       .replace(' @click="closeModal()"', '')
       .replace(' @click="closeModal()"', '')
