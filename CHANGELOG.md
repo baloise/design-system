@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.5.2](https://github.com/baloise/design-system/compare/v10.5.1...v10.5.2) (2022-03-18)
+
+
+### Bug Fixes
+
+* try to fix file upload by adding passive:false to drag and drop events ([62c8390](https://github.com/baloise/design-system/commit/62c839037e184f330f6a02eeb2ad937e79fc7819))
+
+
+
 ### [10.5.1](https://github.com/baloise/design-system/compare/v10.5.0...v10.5.1) (2022-03-10)
 
 

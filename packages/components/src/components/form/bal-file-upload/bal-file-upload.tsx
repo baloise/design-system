@@ -91,28 +91,28 @@ export class FileUpload {
    */
   @Event({ eventName: 'balRejectedFile' }) balRejectedFileEventEmitter!: EventEmitter<FileUploadRejectedFile>
 
-  @Listen('dragenter', { capture: false })
+  @Listen('dragenter', { capture: false, passive: false })
   dragenterHandler() {
     if (!this.disabled) {
       this.isOver = true
     }
   }
 
-  @Listen('dragover', { capture: false })
+  @Listen('dragover', { capture: false, passive: false })
   dragoverHandler() {
     if (!this.disabled) {
       this.isOver = true
     }
   }
 
-  @Listen('dragleave', { capture: false })
+  @Listen('dragleave', { capture: false, passive: false })
   dragleaveHandler() {
     if (!this.disabled) {
       this.isOver = false
     }
   }
 
-  @Listen('drop', { capture: false })
+  @Listen('drop', { capture: false, passive: false })
   dropHandler(event: DragEvent) {
     if (!this.disabled) {
       this.isOver = false
@@ -182,8 +182,8 @@ export class FileUpload {
 
   componentDidLoad() {
     ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-      this.element.addEventListener(eventName, this.preventDefaults, false)
-      document.body.addEventListener(eventName, this.preventDefaults, false)
+      this.element.addEventListener(eventName, this.preventDefaults, { passive: false })
+      document.body.addEventListener(eventName, this.preventDefaults, { passive: false })
     })
   }
 
