@@ -97,7 +97,7 @@ bal-checkbox {
       transform: rotate(45deg);
     }
 
-    input[type='checkbox']:disabled + label {
+    input[type='checkbox']:disabled:not(.is-disabled-hidden) + label {
       cursor: not-allowed;
       opacity: 0.5;
     }
