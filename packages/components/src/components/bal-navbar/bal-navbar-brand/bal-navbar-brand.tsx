@@ -26,9 +26,7 @@ export class NavbarBrand {
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
   componentWillLoad() {
-    // eslint-disable-next-line
-    const isIE11 = !!window.MSInputMethodContext && !!(document as any).documentMode
-    if (!isIE11 && window.matchMedia) {
+    if (window.matchMedia) {
       window.matchMedia('(min-width: 960px)').addEventListener('change', this.resetIsMenuActive.bind(this))
     }
   }
