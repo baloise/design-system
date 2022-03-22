@@ -615,6 +615,10 @@ export namespace Components {
          */
         "label": string;
         /**
+          * If `true` the file upload is disabled and shows a spinner
+         */
+        "loading": boolean;
+        /**
           * Allowed max bundle size in bytes.
          */
         "maxBundleSize"?: number;
@@ -2999,6 +3003,10 @@ declare namespace LocalJSX {
           * Label of the drop area.
          */
         "label"?: string;
+        /**
+          * If `true` the file upload is disabled and shows a spinner
+         */
+        "loading"?: boolean;
         /**
           * Allowed max bundle size in bytes.
          */
