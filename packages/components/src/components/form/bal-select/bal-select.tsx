@@ -14,6 +14,7 @@ import {
 import {
   addValue,
   findLabelByValue,
+  findOptionByLabel,
   getValues,
   includes,
   length,
@@ -95,6 +96,12 @@ export class Select {
   @Prop() typeahead = false
 
   /**
+   * If `true` the options are a proposal and the user can also create his
+   * own value. Can only be used with the typeahead property.
+   */
+  @Prop() selectionOptional = false
+
+  /**
    * If `true` the component is disabled.
    */
   @Prop() disabled = false
@@ -134,17 +141,19 @@ export class Select {
   rawValueWatcher(newValue: string[], oldValue: string[]) {
     if (!areArraysEqual(newValue, oldValue)) {
       this.syncNativeInput()
-      if (this.multiple) {
-        if (isNil(this.rawValue)) {
-          this.balChange.emit([])
+      if (this.didInit) {
+        if (this.multiple) {
+          if (isNil(this.rawValue)) {
+            this.balChange.emit([])
+          } else {
+            this.balChange.emit([...(this.rawValue as string[])])
+          }
         } else {
-          this.balChange.emit([...(this.rawValue as string[])])
-        }
-      } else {
-        if (isNil(this.rawValue) || length(this.rawValue) === 0) {
-          this.balChange.emit(undefined)
-        } else {
-          this.balChange.emit(this.rawValue[0])
+          if (isNil(this.rawValue) || length(this.rawValue) === 0) {
+            this.balChange.emit(undefined)
+          } else {
+            this.balChange.emit(this.rawValue[0])
+          }
         }
       }
     }
@@ -277,7 +286,7 @@ export class Select {
         innerHTML: element.innerHTML,
       })
     }
-    if (Array.isArray(this.rawValue)) {
+    if (!this.selectionOptional && Array.isArray(this.rawValue)) {
       for (let index = 0; index < this.rawValue.length; index++) {
         const val = this.rawValue[index]
         if (!options.has(val)) {
@@ -579,8 +588,17 @@ export class Select {
   }
 
   private validateAfterBlur() {
-    if (!this.multiple && this.didInit) {
-      this.rawValue = validateAfterBlur(this.rawValue, this.options, this.inputElement.value)
+    if (this.didInit && !this.multiple) {
+      if (this.selectionOptional && this.typeahead) {
+        const typedOption = findOptionByLabel(this.options, this.inputElement.value)
+        if (typedOption) {
+          this.rawValue = [typedOption.value]
+        } else {
+          this.rawValue = [this.inputElement.value]
+        }
+      } else {
+        this.rawValue = validateAfterBlur(this.rawValue, this.options, this.inputElement.value)
+      }
     }
   }
 
@@ -595,7 +613,11 @@ export class Select {
     if (!this.multiple) {
       if (length(this.rawValue) > 0) {
         const valuesArray = getValues(this.rawValue)
-        this.updateInputValue(findLabelByValue(this.options, valuesArray[0]))
+        let label = findLabelByValue(this.options, valuesArray[0])
+        if (!this.multiple && this.typeahead && this.selectionOptional && label === '') {
+          label = valuesArray.join(', ')
+        }
+        this.updateInputValue(label)
       }
     }
   }
@@ -688,12 +710,11 @@ export class Select {
 
     const Chip = (props: { value: string }) => (
       <bal-tag size="small" dense closable onBalCloseClick={_ => this.removeValue(props.value)}>
-        {findLabelByValue(this.options, props.value)}
+        {findLabelByValue(this.options, props.value) || props.value}
       </bal-tag>
     )
 
     const valuesArray = getValues(this.rawValue)
-    console.log('valuesArray', valuesArray)
 
     return (
       <Host
@@ -806,7 +827,8 @@ export class Select {
             <div
               class={{
                 'bal-select__empty': true,
-                'is-hidden': this.noDataLabel === undefined || this.hasOptions() || !this.typeahead,
+                'is-hidden':
+                  this.noDataLabel === undefined || this.hasOptions() || !this.typeahead || this.selectionOptional,
               }}
             >
               {this.noDataLabel}
