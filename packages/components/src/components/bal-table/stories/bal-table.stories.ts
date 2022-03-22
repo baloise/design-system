@@ -20,12 +20,12 @@ const component = BalComponentStory({
 
 export default component.story
 
-export const HtmlTable = args => ({
+export const Basic = args => ({
   components: { ...component.components, BalIcon, BalCheckbox, BalButton, BalTag, BalCard },
   setup: () => ({ args }),
   template: tableHtml,
 })
-HtmlTable.parameters = { ...component.sourceCode(HtmlTable) }
+Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const AgGrid = args => ({
   components: { ...component.components, BalIcon, BalCheckbox, BalButton, BalTag, BalCard },

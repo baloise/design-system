@@ -12,7 +12,7 @@ import { configArgTypes, configDefaultArgs, reduceConfigArgs, setConfig } from '
 const balFieldArgTypes = stencilArgType(BalField)
 
 const component = BalComponentStory({
-  title: 'Components/Form/NumberInput',
+  title: 'Components/Form/Number Input',
   component: BalNumberInput,
   argTypes: {
     invalid: balFieldArgTypes.invalid,

@@ -9,6 +9,8 @@ export const propsToMarkdown = (props: d.JsonDocsProp[]) => {
 
   content.push(`#### Properties`)
   content.push(``)
+  content.push(`Follow the [Property Usage](https://design.baloise.dev/?path=/docs/usage-property--page) guide to learn how to change properties of the component.`)
+  content.push(``)
 
   const table = new MarkdownTable()
 

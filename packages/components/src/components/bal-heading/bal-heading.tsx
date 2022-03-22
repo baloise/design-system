@@ -1,6 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { ColorTypes } from '../../types/color.types'
-import { HeadingLevels } from './bal-heading.type'
+import { Props } from '../../props'
 
 @Component({
   tag: 'bal-heading',
@@ -9,14 +8,14 @@ export class Heading {
   /**
    * The actual heading level used in the HTML markup.
    */
-  @Prop() level: HeadingLevels = 'h1'
+  @Prop() level: Props.BalHeadingLevel = 'h1'
 
   /**
    * Make the visual style mimic a specific heading level.
    * This option allows you to make e.g. h1 visually look like h3,
    * but still keep it h1 in the markup.
    */
-  @Prop() visualLevel: HeadingLevels | undefined = undefined
+  @Prop() visualLevel?: Props.BalHeadingLevel
 
   /**
    * If `true` the heading gets displayed slimmer.
@@ -31,7 +30,7 @@ export class Heading {
   /**
    * The theme type of the toast. Given by bulma our css framework.
    */
-  @Prop() color: ColorTypes | '' = ''
+  @Prop() color: Props.BalHeadingColor = ''
 
   /**
    * If `true` the button is inverted

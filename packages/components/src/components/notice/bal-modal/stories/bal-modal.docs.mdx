@@ -3,37 +3,51 @@ import readme from '../readme.md'
 import modalHeader from '../bal-modal-header/readme.md'
 import modalBody from '../bal-modal-body/readme.md'
 
-<span id="story--components-notice-modal--confirm" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-notice-modal--basic">Modal</bal-doc-banner>
 
-# Modal
+<bal-doc-tabs>
+  <a href="#story--components-notice-modal--basic">Overview</a>
+  <a href="#examples">Examples</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-A Modal is a dialog that appears on top of the app's body, and must be dismissed by the app before interaction can resume.
+<bal-doc-lead>
+  <b>Modal</b> is a dialog that appears on top of the app's body, and must be dismissed by the app before interaction
+  can resume.
+</bal-doc-lead>
 
-<Canvas>
-  <Story id="components-notice-modal--confirm" />
+<Canvas withSource="open" className="has-visible-overflow">
+  <Story id="components-notice-modal--basic" />
 </Canvas>
 
-## Usage
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-notice-modal--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
 
-import AngularLogo from '../../../../stories/assets/images/angular.svg'
-import VueLogo from '../../../../stories/assets/images/vue.png'
+## Examples
 
-<div className="link-list">
-  <a className="link-item" href="?path=/docs/getting-started-angular-usage-of-modal--page">
-    <img src={AngularLogo} alt="angular" />
-    <span>
-      <strong>Angular</strong>
-      Usage guide how to use the modal with angular.
-    </span>
-  </a>
-  <a className="link-item" href="?path=/docs/getting-started-vue-usage-of-modal--page">
-    <img src={VueLogo} alt="vue" />
-    <span>
-      <strong>Vue</strong>
-      Usage guide how to use the modal with vue.
-    </span>
-  </a>
-</div>
+<span id="story--components-notice-modal--with-input" style={{ opacity: 0 }}></span>
+
+### With Input
+
+<Canvas className="has-visible-overflow">
+  <Story id="components-notice-modal--with-input" />
+</Canvas>
+
+<span id="story--components-notice-modal--large-content" style={{ opacity: 0 }}></span>
+
+### With large content
+
+<Canvas className="has-visible-overflow">
+  <Story id="components-notice-modal--large-content" />
+</Canvas>
 
 ## Component Api
 
@@ -42,6 +56,25 @@ import VueLogo from '../../../../stories/assets/images/vue.png'
 <Description markdown={modalBody} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

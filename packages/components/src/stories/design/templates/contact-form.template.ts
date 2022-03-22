@@ -48,7 +48,7 @@ export const ContactFormTemplate = `
         <bal-field class="column is-half py-0">
           <bal-field-label>Canton</bal-field-label>
           <bal-field-control>
-            <bal-select placeholder="select your canton" name="canton" multiple typeahead>
+            <bal-select placeholder="select your canton" name="canton">
               <bal-select-option value="AG" label="AG">AG</bal-select-option>
               <bal-select-option value="BS" label="BS">BS</bal-select-option>
               <bal-select-option value="BL" label="BL">BL</bal-select-option>

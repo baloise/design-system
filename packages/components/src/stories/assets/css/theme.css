@@ -1,3 +1,15 @@
+html {
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 64px !important;
+}
+
+h3:target:before {
+  content: '';
+  display: block;
+  height: 124px;
+  margin: -124px 0 0;
+}
+
 .welcome-container {
   background: #039 !important;
   position: fixed !important;
@@ -61,7 +73,7 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 }
 
 .sbdocs-wrapper {
-  padding: 32px !important;
+  padding: 16px 32px !important;
 }
 
 .sbdocs.sbdocs-h1,
@@ -74,25 +86,30 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   font-weight: 400;
 }
 
-.sbdocs.sbdocs-h1 {
+.sbdocs.sbdocs-h1,
+.sbdocs.sbdocs-h1 > a.sbdocs.sbdocs-a {
   font-size: 44px;
 }
 
-.sbdocs.sbdocs-h2 {
+.sbdocs.sbdocs-h2,
+.sbdocs.sbdocs-h2 > a.sbdocs.sbdocs-a {
   font-size: 36px;
 }
 
-.sbdocs.sbdocs-h3 {
+.sbdocs.sbdocs-h3,
+.sbdocs.sbdocs-h3 > a.sbdocs.sbdocs-a {
   font-size: 28px;
   font-weight: 700;
 }
 
-.sbdocs.sbdocs-h4 {
+.sbdocs.sbdocs-h4,
+.sbdocs.sbdocs-h4 > a.sbdocs.sbdocs-a {
   font-size: 20px;
   font-weight: 700;
 }
 
-.sbdocs.sbdocs-h5 {
+.sbdocs.sbdocs-h5,
+.sbdocs.sbdocs-h5 > a.sbdocs.sbdocs-a {
   font-size: 16px;
   font-weight: 700;
 }
@@ -251,7 +268,7 @@ a.feature h2 img {
 }
 
 .link-item span {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   color: #333;
 }
@@ -357,4 +374,11 @@ a.feature h2 img {
 .docs-swot-table .rotate div {
   transform: rotate(-90deg);
   vertical-align: middle;
+}
+
+a.sbdocs.sbdocs-a,
+p.sbdocs.sbdocs-p,
+li.sbdocs.sbdocs-li {
+  font-size: 16px;
+  line-height: 32px;
 }

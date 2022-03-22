@@ -30,6 +30,8 @@ h6 {
   color: $blue;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  align-items: center;
+  display: block;
 }
 
 h1 {
@@ -68,6 +70,13 @@ a {
   line-height: 1.5rem;
   margin: 0;
   word-break: break-word;
+}
+
+p.is-lead,
+p.is-lead > a {
+  font-size: 1.2rem !important;
+  line-height: 1.6rem !important;
+  word-spacing: 0.05rem;
 }
 
 bal-text a,

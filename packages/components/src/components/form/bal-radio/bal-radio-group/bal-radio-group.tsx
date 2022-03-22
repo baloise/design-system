@@ -13,6 +13,7 @@ import {
 } from '@stencil/core'
 import { stopEventBubbling } from '../../../../helpers/form-input.helpers'
 import { findItemLabel, inheritAttributes, isDescendant } from '../../../../helpers/helpers'
+import { Props } from '../../../../props'
 
 @Component({
   tag: 'bal-radio-group',
@@ -26,7 +27,7 @@ export class RadioGroup implements ComponentInterface {
   /**
    * Defines the layout of the radio button
    */
-  @Prop() interface: 'radio' | 'select-button' = 'radio'
+  @Prop() interface: Props.BalRadioGroupInterface = 'radio'
 
   /**
    * The name of the control, which is submitted with the form data.

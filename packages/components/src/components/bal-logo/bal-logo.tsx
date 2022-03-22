@@ -8,6 +8,7 @@ import {
   detachComponentToConfig,
 } from '../../'
 import { logos } from './logos'
+import { Props } from '../../props'
 
 @Component({
   tag: 'bal-logo',
@@ -20,12 +21,12 @@ export class Logo implements ComponentInterface, BalConfigObserver {
   /**
    * Defines the color of the logo.
    */
-  @Prop() color: 'blue' | 'white' = 'blue'
+  @Prop() color: Props.BalLogoColor = 'blue'
 
   /**
    * Defines the which branded logo.
    */
-  @Prop() brand: 'group' | 'soba' | 'insurance' = 'group'
+  @Prop() brand: Props.BalLogoBrand = 'group'
 
   connectedCallback() {
     attachComponentToConfig(this)

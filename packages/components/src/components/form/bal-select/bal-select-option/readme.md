@@ -2,6 +2,8 @@
  
 #### Properties
 
+Follow the [Property Usage](https://design.baloise.dev/?path=/docs/usage-property--page) guide to learn how to change properties of the component.
+
 | Property   | Attribute  | Description                                                                                       | Type                    | Default     |
 | ---------- | ---------- | ------------------------------------------------------------------------------------------------- | ----------------------- | ----------- |
 | `disabled` | `disabled` | If `true`, the user cannot interact with the option.                                              | `boolean`               | `false`     |

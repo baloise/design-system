@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core'
+import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-card-actions',
@@ -13,9 +14,9 @@ export class CardActions {
   /**
    * The value of the button, which is submitted with the form data.
    */
-  @Prop() position: 'right' | 'center' | '' = ''
+  @Prop() position: Props.BalCardActionsPosition = ''
 
-  get buttonGroupPosition(): 'right' | 'center' | '' {
+  get buttonGroupPosition(): Props.BalCardActionsPosition {
     if (this.right) {
       return 'right'
     }

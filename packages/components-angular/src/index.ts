@@ -12,4 +12,4 @@ export { BalCoreModule } from './module'
 export { BalSharedModule } from './shared'
 
 // HELPERS
-export { element, parseCustomEvent } from './helpers'
+export { element, parseCustomEvent, ProxyComponent } from './helpers'

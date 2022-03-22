@@ -1,4 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-close',
@@ -9,7 +10,7 @@ export class Close implements ComponentInterface {
   /**
    * Define the size of badge. Small is recommended for tabs.
    */
-  @Prop() size: 'small' | 'large' | 'medium' | '' = ''
+  @Prop() size: Props.BalCloseSize = ''
 
   /**
    * If `true` it supports dark backgrounds.

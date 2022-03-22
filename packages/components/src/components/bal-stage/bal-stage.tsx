@@ -1,4 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Props } from '../../props'
 
 @Component({
   tag: 'bal-stage',
@@ -9,12 +10,17 @@ export class Stage implements ComponentInterface {
   /**
    * Defines the background color of the stage section
    */
-  @Prop() color: 'blue' | 'white' = 'blue'
+  @Prop() color: Props.BalStageColor = 'blue'
 
   /**
    * Defines the height of the stage section.
    */
-  @Prop() size: 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight' = ''
+  @Prop() size: Props.BalStageSize = ''
+
+  /**
+   * Defines the height of the stage section.
+   */
+  @Prop() rounded = false
 
   render() {
     return (
@@ -23,6 +29,7 @@ export class Stage implements ComponentInterface {
           class={{
             'hero': true,
             'has-background': true,
+            'has-radius-large': this.rounded,
             'is-info': this.color === 'blue',
             [`is-${this.size}`]: this.size !== '',
           }}

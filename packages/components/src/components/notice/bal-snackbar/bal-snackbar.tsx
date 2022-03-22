@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Method, Element, State, Event, EventEmitter } from '@stencil/core'
-import { ColorTypes, BalButtonColor } from '../../../types/color.types'
+import { Props } from '../../../props'
 
 @Component({
   tag: 'bal-snackbar',
@@ -15,7 +15,7 @@ export class Snackbar {
   /**
    * The theme type of the snackbar. Given by bulma our css framework.
    */
-  @Prop() color: ColorTypes | '' = ''
+  @Prop() color: Props.BalSnackbarColor = ''
 
   /**
    * The duration of the snackbar
@@ -99,7 +99,7 @@ export class Snackbar {
     return `is-${this.color}`
   }
 
-  get buttonType(): BalButtonColor {
+  get buttonType(): Props.BalButtonColor {
     if (this.color === '') {
       return 'info'
     }

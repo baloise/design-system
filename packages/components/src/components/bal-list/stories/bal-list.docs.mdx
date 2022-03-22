@@ -7,23 +7,54 @@ import listItemSubtitle from '../bal-list-item-subtitle/readme.md'
 import listItemContent from '../bal-list-item-content/readme.md'
 import listItemIcon from '../bal-list-item-icon/readme.md'
 
-<span id="story--components-list--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-list--basic">List</bal-doc-banner>
 
-# List
+<bal-doc-tabs>
+  <a href="#story--components-list--basic">Overview</a>
+  <a href="#examples">Examples</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-A list present content in a way that makes it easy to identify a specific item in a collection.
+<bal-doc-lead>
+  <b>List</b> present content in a way that makes it easy to identify a specific item in a collection.
+</bal-doc-lead>
 
-<Canvas>
+<Canvas withSource="open">
   <Story id="components-list--basic" />
 </Canvas>
 
-## Linked List
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-list--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
+
+## Examples
+
+<span id="story--components-list--native-list" style={{ opacity: 0 }}></span>
+
+### Native List
+
+<Canvas>
+  <Story id="components-list--native-list" />
+</Canvas>
+
+<span id="story--components-list--linked-list" style={{ opacity: 0 }}></span>
+
+### Linked List
 
 <Canvas>
   <Story id="components-list--linked-list" />
 </Canvas>
 
-## Download List
+<span id="story--components-list--download-list" style={{ opacity: 0 }}></span>
+
+### Download List
 
 <Canvas>
   <Story id="components-list--download-list" />
@@ -39,6 +70,25 @@ A list present content in a way that makes it easy to identify a specific item i
 <Description markdown={listItemIcon} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

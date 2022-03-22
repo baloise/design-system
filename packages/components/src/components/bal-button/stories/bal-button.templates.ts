@@ -4,6 +4,12 @@ export const basic = `
   <bal-button color="primary">Continue</bal-button>
 </bal-button-group>`
 
+export const variants = `
+<bal-button-group>
+  <bal-button>Primary</bal-button>
+  <bal-button color="info">Secondary</bal-button>
+</bal-button-group>`
+
 export const links = `
 <div>
 <a href="https://design.baloise.dev/" class="is-link">Link</a>

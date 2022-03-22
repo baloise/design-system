@@ -77,7 +77,7 @@ export class Select {
   /**
    * This label is shown if typeahead is active and all the options are filtered out.
    */
-  @Prop() noDataLabel: string | undefined
+  @Prop() noDataLabel?: string
 
   /**
    * Removes the border of the input.
@@ -122,7 +122,7 @@ export class Select {
   /**
    * Selected option values. Could also be passed as a string, which gets transformed.
    */
-  @Prop({ mutable: true }) value: string | string[] | undefined = []
+  @Prop({ mutable: true }) value?: string | string[] = []
   @State() rawValue: string[] | undefined = []
 
   @Watch('value')
@@ -693,6 +693,7 @@ export class Select {
     )
 
     const valuesArray = getValues(this.rawValue)
+    console.log('valuesArray', valuesArray)
 
     return (
       <Host
@@ -706,13 +707,11 @@ export class Select {
         }}
       >
         <select class="is-hidden" name={this.name} multiple={this.multiple}>
-          {valuesArray
-            .filter(_ => this.multiple)
-            .map((value: string) => (
-              <option value={value} selected>
-                {value}
-              </option>
-            ))}
+          {valuesArray.map((value: string) => (
+            <option value={value} selected>
+              {value}
+            </option>
+          ))}
         </select>
         <bal-popover
           onBalChange={this.handlePopoverChange}

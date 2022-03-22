@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { ColorTypes } from '../../types/color.types'
+import { Props } from '../../props'
 
 @Component({
   tag: 'bal-text',
@@ -18,7 +18,7 @@ export class Text {
   /**
    * Defines the color of the text.
    */
-  @Prop() color: ColorTypes | 'hint' | '' = ''
+  @Prop() color: Props.BalTextColor = ''
 
   render() {
     return (

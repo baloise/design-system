@@ -49,17 +49,17 @@ export class FileUpload {
   /**
    * Allowed number of files in the bundle.
    */
-  @Prop() maxFiles: number | undefined = undefined
+  @Prop() maxFiles?: number
 
   /**
    * Allowed max file size in bytes.
    */
-  @Prop() maxFileSize: number | undefined = undefined
+  @Prop() maxFileSize?: number
 
   /**
    * Allowed max bundle size in bytes.
    */
-  @Prop() maxBundleSize: number | undefined = undefined
+  @Prop() maxBundleSize?: number
 
   /**
    * Input value.
@@ -67,9 +67,14 @@ export class FileUpload {
   @Prop() value: File[] = []
 
   /**
+   * If `true` the file upload is disabled and shows a spinner
+   */
+  @Prop() loading = false
+
+  /**
    * Overrides the default subtitle file size
    */
-  @Prop() subTitle: ((file: File) => string) | undefined
+  @Prop() subTitle?: (file: File) => string
 
   /**
    * Triggers when a file is added or removed.
@@ -255,25 +260,37 @@ export class FileUpload {
     )
 
     return (
-      <Host class={['bal-file-upload', this.disabled ? 'is-disabled' : ''].join(' ')}>
+      <Host class={['bal-file-upload', this.disabled || this.loading ? 'is-disabled' : ''].join(' ')}>
         <div class="file">
-          <label class={['file-label', this.isOver ? 'is-hovered' : '', this.disabled ? 'is-disabled' : ''].join(' ')}>
+          <label
+            class={[
+              'file-label',
+              this.isOver ? 'is-hovered' : '',
+              this.disabled || this.loading ? 'is-disabled' : '',
+            ].join(' ')}
+          >
             <input
               class="file-input"
               type="file"
               name="resume"
               multiple={this.multiple}
-              disabled={this.disabled}
+              disabled={this.disabled || this.loading}
               accept={this.accept}
               onChange={this.onChange}
               ref={el => (this.fileInput = el as HTMLInputElement)}
             />
-            <span class="file-cta">
-              <span class="file-icon">
-                <bal-icon name="upload" size="medium"></bal-icon>
+            {this.loading ? (
+              <span class="file-cta">
+                <bal-spinner></bal-spinner>
               </span>
-              <span class="file-label">{this.label}</span>
-            </span>
+            ) : (
+              <span class="file-cta">
+                <span class="file-icon">
+                  <bal-icon name="upload" size="medium"></bal-icon>
+                </span>
+                <span class="file-label">{this.label}</span>
+              </span>
+            )}
           </label>
         </div>
         {this.hasFileList ? <FileList /> : ''}

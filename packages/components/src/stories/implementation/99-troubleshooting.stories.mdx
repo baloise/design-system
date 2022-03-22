@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs'
 
 <Meta
-  title="Getting-Started/Angular/Troubleshooting"
+  title="Implementation/Troubleshooting"
   parameters={{
     previewTabs: {
       canvas: { hidden: true },
@@ -9,9 +9,9 @@ import { Meta } from '@storybook/addon-docs'
   }}
 />
 
-# Troubleshooting
+<bal-doc-banner id="troubleshooting" subtitle="Implementation">Troubleshooting</bal-doc-banner>
 
-## Bundle size warning
+## Angular - Bundle size warning
 
 **WARNING in budgets, maximum exceeded for initial**
 
@@ -27,7 +27,7 @@ Open angular.json file and find budgets keyword and adjust the two values.
 ]
 ```
 
-## lint-staged - ERR_REQUIRE_ESM
+## Design System - lint-staged - ERR_REQUIRE_ESM
 
 The following error can be fixed by removing the `node_modules` and
 the `package.lock.json` in the root package and run `npm i` again.
@@ -45,4 +45,4 @@ Instead change the require of /Users/hirsch/dev/baloise/design-system/node_modul
 husky - pre-commit hook exited with code 1 (error)
 ```
 
-<bal-doc-github link="/stories/getting-started/angular/06-troubleshooting.stories.mdx"></bal-doc-github>
+<bal-doc-github link="/stories/implementation/99-troubleshooting.stories.mdx"></bal-doc-github>

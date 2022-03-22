@@ -1,62 +1,83 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
 
-# Toast
+<bal-doc-banner id="story--components-notice-toast--basic">Toast</bal-doc-banner>
 
-Toasts are used to inform the user with a simple text message.
+<bal-doc-tabs>
+  <a href="#story--components-notice-toast--basic">Overview</a>
+  {/* <a href="#examples">Examples</a> */}
+  <a href="#controller">Controller</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
+
+<bal-doc-lead>
+  <b>Toasts</b> are used to inform the user with a simple text message..
+</bal-doc-lead>
 
 <Canvas>
   <bal-doc-app>
-    <bal-toast color="primary">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</bal-toast>
+    <bal-toast color="success">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</bal-toast>
   </bal-doc-app>
 </Canvas>
 
 ```html
-<bal-toast color="primary">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</bal-toast>
+<bal-toast color="success">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</bal-toast>
 ```
 
-## Usage
+## Controller
 
 Toast can be created with the `balToastController`. The default duration is 5000 milliseconds.
 The `create` method return the instance of the created toast, so there you can access all the props and methods of it.
 
-````typescript
+```typescript
 import { balToastController } from '@baloise/design-system-components'
 
 balToastController.create({ message: 'Hi I am a default Toast!', duration: 1000 })
 balToastController.create({ message: 'Warning!', color: 'warning' })
 
 const myToast = balToastController.create({ message: 'Danger zone!', color: 'danger' })
-myToast.close()```
-````
+myToast.close()
+```
 
-### Framework integration
+<Canvas withSource="none" className="has-visible-overflow">
+  <Story id="components-notice-toast--basic" />
+</Canvas>
 
-import AngularLogo from '../../../../stories/assets/images/angular.svg'
-import VueLogo from '../../../../stories/assets/images/vue.png'
-
-<div className="link-list">
-  <a className="link-item" href="?path=/docs/getting-started-angular-usage-of-toast-snackbars--page">
-    <img src={AngularLogo} alt="angular" />
-    <span>
-      <strong>Angular</strong>
-      Usage guide how to use the toast or snackbar with angular.
-    </span>
-  </a>
-  <a className="link-item" href="?path=/docs/getting-started-vue-usage-of-toast-snackbar--page">
-    <img src={VueLogo} alt="vue" />
-    <span>
-      <strong>Vue</strong>
-      Usage guide how to use the toast or snackbar with vue.
-    </span>
-  </a>
-</div>
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-notice-toast--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
 
 ## Component Api
 
 <Description markdown={readme} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

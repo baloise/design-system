@@ -1,13 +1,33 @@
 import { Story, Canvas, Description, Source } from '@storybook/addon-docs'
-import { template } from './template'
+
+<bal-doc-banner id="story--components-notice-sheet--basic">Sheet</bal-doc-banner>
+
+<bal-doc-tabs>
+  <a href="#story--components-notice-sheet--basic">Overview</a>
+  {/* <a href="#examples">Examples</a> */}
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
+
+<bal-doc-lead>
+  <b>Sheet</b> component is used to show content over the whole page at the bottom. The element is sticky.
+</bal-doc-lead>
+
+<Canvas withSource="open" className="has-visible-overflow">
+  <Story id="components-notice-sheet--basic" />
+</Canvas>
+
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-notice-sheet--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
 
 <span id="story--components-notice-sheet--basic" style={{ opacity: 0 }}></span>
-
-# Sheet
-
-The sheet component is used to show content over the whole page at the bottom. The element is sticky.
-
-<Source language="html" code={template} />
 
 ## Component Api
 
@@ -16,6 +36,25 @@ import readme from '../readme.md'
 <Description markdown={readme} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

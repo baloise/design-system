@@ -11,6 +11,10 @@ bal-icon {
   fill: $blue;
   pointer-events: visible;
 
+  &.is-inline {
+    display: inline-flex !important;
+  }
+
   .bal-icon-inner {
     display: block;
     position: static;
