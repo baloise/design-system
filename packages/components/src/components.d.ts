@@ -1346,6 +1346,10 @@ export namespace Components {
          */
         "select": (value: string) => Promise<void>;
         /**
+          * If `true` the options are a proposal and the user can also create his own value. Can only be used with the typeahead property.
+         */
+        "selectionOptional": boolean;
+        /**
           * Sets the focus on the input element
          */
         "setFocus": () => Promise<void>;
@@ -3775,6 +3779,10 @@ declare namespace LocalJSX {
           * Defines the height of the popover list.
          */
         "scrollable"?: number;
+        /**
+          * If `true` the options are a proposal and the user can also create his own value. Can only be used with the typeahead property.
+         */
+        "selectionOptional"?: boolean;
         /**
           * If `true` the user can search by typing into the input field.
          */

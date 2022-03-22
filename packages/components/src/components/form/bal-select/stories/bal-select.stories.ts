@@ -64,7 +64,7 @@ export const Typeahead = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `
-  <bal-select v-bind="args">
+  <bal-select v-bind="args" v-model="args.value">
   ${marvelHeros}
 </bal-select>`,
 })
@@ -79,7 +79,7 @@ export const MultiSelect = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `
-  <bal-select v-bind="args">
+  <bal-select v-bind="args" v-model="args.value">
   ${marvelHeros}
 </bal-select>`,
 })

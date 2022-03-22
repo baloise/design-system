@@ -173,6 +173,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
         <input
           class={{
             'is-disabled': this.disabled,
+            'is-disabled-hidden': this.hidden,
             'data-test-checkbox-input': true,
           }}
           type="checkbox"
