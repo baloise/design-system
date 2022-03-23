@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.6.0](https://github.com/baloise/design-system/compare/v10.5.2...v10.6.0) (2022-03-23)
+
+
+### Features
+
+* **file-upload:** add loading state ([37e60dd](https://github.com/baloise/design-system/commit/37e60ddabdbf7f6262835f6d96cb8fc3fad98bd2))
+* **select:** list of options in a typeahead can be uses as a proposal ([ac6f2f2](https://github.com/baloise/design-system/commit/ac6f2f2d8165b10ea5ad1f3deffea6b576da5483))
+* update dependencies ([9d76470](https://github.com/baloise/design-system/commit/9d764700d2174aff19a3e74b5694cc2364f5309a))
+
+
+### Bug Fixes
+
+* **checkbox:** remove opacity from hidden option ([ac49eae](https://github.com/baloise/design-system/commit/ac49eae3d32fbb93e6d60089bc93c6affc631dc8))
+* **heading:** set to display block ([9b831df](https://github.com/baloise/design-system/commit/9b831df9774335e7faf430e414e2219eba9ae41c))
+* **input-group:** set to width 100% ([44c37ff](https://github.com/baloise/design-system/commit/44c37ff3f0ec95af28ed16a1b8f0408ea83391a2))
+* **navbar:** remove ie11 support ([900d76d](https://github.com/baloise/design-system/commit/900d76df88c3a2f94d9a3a220b28e3e3c7b99dc6))
+
+### [10.5.1](https://github.com/baloise/design-system/compare/v10.3.0...v10.5.1) (2022-03-10)
+
+
+### Features
+
+* export prop types ([6eb0939](https://github.com/baloise/design-system/commit/6eb093919f230434dec69c11b8b26380e46d8930))
+* **icon:** inline prop to set display inline-flex ([16f7865](https://github.com/baloise/design-system/commit/16f78657fd5ab10959e207cb45ca628aa77f03bd))
+* **stage:** add prop rounded to change the border-radius ([fb8a8e6](https://github.com/baloise/design-system/commit/fb8a8e63cb716c9832dc75997081a11ee5659d0f))
+
+
+### Bug Fixes
+
+* **heading:** center text with icons ([d1ae35a](https://github.com/baloise/design-system/commit/d1ae35aba5d36724b6537e309313c57aaa46ed95))
+
+## 10.3.0 (2022-03-03)
+
+
+
 ### [10.5.2](https://github.com/baloise/design-system/compare/v10.5.1...v10.5.2) (2022-03-18)
 
 
