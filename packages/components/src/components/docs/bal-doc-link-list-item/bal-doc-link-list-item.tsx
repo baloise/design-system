@@ -16,22 +16,26 @@ export class DocLinkListItem implements ComponentInterface {
 
     if (this.template === 'html5') {
       subject = 'HTML5'
-      image = 'static/media/src/stories/assets/images/html.png'
+      image =
+        'https://raw.githubusercontent.com/baloise/design-system/master/packages/components/src/stories/assets/images/html.png'
     }
 
     if (this.template === 'angular') {
       subject = 'Angular'
-      image = 'static/media/src/stories/assets/images/angular.svg'
+      image =
+        'https://raw.githubusercontent.com/baloise/design-system/master/packages/components/src/stories/assets/images/angular.svg'
     }
 
     if (this.template === 'vue') {
       subject = 'Vue'
-      image = 'static/media/src/stories/assets/images/vue.png'
+      image =
+        'https://raw.githubusercontent.com/baloise/design-system/master/packages/components/src/stories/assets/images/vue.png'
     }
 
     if (this.template === 'react') {
       subject = 'React'
-      image = 'static/media/src/stories/assets/images/react.svg'
+      image =
+        'https://raw.githubusercontent.com/baloise/design-system/master/packages/components/src/stories/assets/images/react.svg'
     }
 
     return (
