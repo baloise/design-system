@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.6.1](https://github.com/baloise/design-system/compare/v10.6.0...v10.6.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* **modal:** remove focus of element to eliminate window scrolling ([f2264df](https://github.com/baloise/design-system/commit/f2264df4362db484b7fefbdd8de445b281626b7f))
+
+
+
 ## [10.6.0](https://github.com/baloise/design-system/compare/v10.5.2...v10.6.0) (2022-03-23)
 
 ### Features
