@@ -10,6 +10,7 @@ import {
   isTag,
   isText,
   isTextarea,
+  isModal,
   selectors,
   wrapRoot,
 } from '../helpers'
@@ -49,6 +50,10 @@ Cypress.Commands.overwrite('contains', (originalFn, element: Cypress.Chainable<J
 
   if (isText(element)) {
     return wrapRoot(element, 'span', $el => originalFn($el, content, options))
+  }
+
+  if (isModal(element)) {
+    return wrapRoot(element, '.modal-card', $el => originalFn($el, content, options))
   }
 
   return originalFn(element, content, options)
