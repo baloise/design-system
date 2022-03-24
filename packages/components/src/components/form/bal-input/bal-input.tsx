@@ -24,9 +24,19 @@ import {
   inputListenOnClick,
   inputSetBlur,
   inputSetFocus,
+  stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
 import { Props } from '../../../props'
-
+import {
+  formatClaim,
+  formatOffer,
+  formatPolicy,
+  MAX_LENGTH_CLAIM_NUMBER,
+  MAX_LENGTH_CONTRACT_NUMBER,
+  MAX_LENGTH_OFFER_NUMBER,
+} from './bal-input-util'
+import isNil from 'lodash.isnil'
+import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
 @Component({
   tag: 'bal-input',
 })
@@ -211,7 +221,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
    * Formatting for 'contract-number': '00/0.000.000'
    * Formatting for 'claim-number': ('73/001217/16.9')
    * Formatting for 'offer-number': ('98/7.654.321')
-   // */
+   */
   @Prop() mask?: 'contract-number' | 'claim-number' | 'offer-number' = undefined
 
   /**
@@ -310,7 +320,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
           if (this.inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
             this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
           }
-          input.value = this.formatPolicy(this.inputValue)
+          input.value = formatPolicy(this.inputValue)
           if (cursorPositionStart < this.inputValue.length) {
             input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
           }
@@ -321,7 +331,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
           if (this.inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
             this.inputValue = this.inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
           }
-          input.value = this.formatOffer(this.inputValue)
+          input.value = formatOffer(this.inputValue)
           if (cursorPositionStart < this.inputValue.length) {
             input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
           }
@@ -332,7 +342,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
           if (this.inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
             this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
           }
-          input.value = this.formatClaim(this.inputValue)
+          input.value = formatClaim(this.inputValue)
           if (cursorPositionStart < this.inputValue.length) {
             input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
           }
@@ -344,81 +354,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     }
 
     this.balInput.emit(this.inputValue)
-  }
-
-  /**
-   *
-   * @param value - input number
-   * @output 73/001217/16.9
-   * @private
-   */
-  private formatClaim(value: string): string {
-    if (!value) {
-      return ''
-    }
-    const newValue = `${value}`.trim()
-    const parts = [
-      newValue.substring(0, 2),
-      newValue.substring(2, 8),
-      newValue.substring(8, 10),
-      newValue.substring(10, 11),
-    ].filter(val => val.length > 0)
-    switch (parts.length) {
-      case 1:
-        return `${value}`
-      case 2:
-        return `${parts[0]}/${parts[1]}`
-      case 3:
-        return `${parts[0]}/${parts[1]}/${parts[2]}`
-      default:
-        return `${parts[0]}/${parts[1]}/${parts[2]}.${parts[3]}`
-    }
-  }
-
-  /**
-   *
-   * @param value: input number
-   * @output 00/0.000.000
-   * @private
-   */
-  private formatPolicy(value: string): string {
-    if (!value) {
-      return ''
-    }
-    let newValue = `${value}`.trim()
-    if (newValue[0] !== '0') {
-      newValue = `0${value}`
-    }
-    return this.formatOffer(newValue)
-  }
-
-  /**
-   *
-   * @param value: input number
-   * @output 98/7.654.321
-   * @private
-   */
-  private formatOffer(value: string): string {
-    if (!value) {
-      return ''
-    }
-    const newValue = `${value}`.trim()
-    const parts = [
-      newValue.substring(0, 2),
-      newValue.substring(2, 3),
-      newValue.substring(3, 6),
-      newValue.substring(6, 9),
-    ].filter(val => val.length > 0)
-    switch (parts.length) {
-      case 1:
-        return `${newValue}`
-      case 2:
-        return `${parts[0]}/${parts[1]}`
-      case 3:
-        return `${parts[0]}/${parts[1]}.${parts[2]}`
-      default:
-        return `${parts[0]}/${parts[1]}.${parts[2]}.${parts[3]}`
-    }
   }
 
   private onFocus = (event: FocusEvent) => inputHandleFocus(this, event)
@@ -483,13 +418,13 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     if (this.mask !== undefined) {
       switch (this.mask) {
         case 'contract-number':
-          value = this.formatPolicy(value)
+          value = formatPolicy(value)
           break
         case 'claim-number':
-          value = this.formatClaim(value)
+          value = formatClaim(value)
           break
         case 'offer-number':
-          value = this.formatOffer(value)
+          value = formatOffer(value)
       }
     }
     const labelId = this.inputId + '-lbl'
@@ -557,6 +492,3 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
 }
 
 let InputIds = 0
-const MAX_LENGTH_CONTRACT_NUMBER = 9
-const MAX_LENGTH_OFFER_NUMBER = 9
-const MAX_LENGTH_CLAIM_NUMBER = 11
