@@ -26,7 +26,7 @@ export class ModalHeader {
             <slot></slot>
           </h4>
         </div>
-        <bal-close size="large" onClick={this.closeHandler}></bal-close>
+        <bal-close class="data-test-modal-close" size="large" onClick={this.closeHandler}></bal-close>
       </Host>
     )
   }

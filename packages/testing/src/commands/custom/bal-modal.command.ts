@@ -15,7 +15,19 @@ Cypress.Commands.add(
   },
   subject => {
     return cy.wrap(subject).then($modal => {
-      return cy.wrap($modal).should('not.exist')
+      return cy.wrap($modal).should('not.have.attr', 'aria-presented')
+    })
+  },
+)
+
+Cypress.Commands.add(
+  'balModalClose',
+  {
+    prevSubject: true,
+  },
+  subject => {
+    return cy.wrap(subject).then($modal => {
+      return cy.wrap($modal).find('.data-test-modal-close').click()
     })
   },
 )
