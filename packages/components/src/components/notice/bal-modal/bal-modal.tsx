@@ -120,7 +120,6 @@ export class Modal implements OverlayInterface {
         this.modalContentElement.classList.remove('fadeInDown')
       }
     })
-    this.el.focus()
     this.didPresent.emit()
   }
 
