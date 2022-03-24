@@ -12,6 +12,11 @@ bal-radio-group {
       padding: 4px;
     }
 
+    &.is-vertical > div {
+      flex-direction: column;
+      border-radius: 12px;
+    }
+
     &.is-vertical-mobile > div {
       flex-direction: column;
       border-radius: 12px;
