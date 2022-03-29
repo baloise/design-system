@@ -22,6 +22,7 @@ import './commands/custom/bal-select.types'
 import './commands/custom/bal-snackbar.types'
 import './commands/custom/bal-tabs.types'
 import './commands/custom/bal-toast.types'
+import './commands/custom/bal-field.types'
 
 import './commands/custom/bal-accordion.command'
 import './commands/custom/bal-datepicker.command'
@@ -33,6 +34,7 @@ import './commands/custom/bal-select.command'
 import './commands/custom/bal-snackbar.command'
 import './commands/custom/bal-tabs.command'
 import './commands/custom/bal-toast.command'
+import './commands/custom/bal-field.command'
 
 /**
  * Override Commands

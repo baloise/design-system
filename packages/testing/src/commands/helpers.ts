@@ -38,6 +38,9 @@ export const selectors = {
   accordion: {
     button: '.data-test-accordion-trigger > button',
   },
+  field: {
+    hint: 'bal-field-hint > bal-hint',
+  },
   button: {
     main: 'button',
     label: 'bal-text.data-test-button-label',
