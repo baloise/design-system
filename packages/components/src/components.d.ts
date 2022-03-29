@@ -699,7 +699,7 @@ export namespace Components {
         /**
           * Text for the close button.
          */
-        "closeLabel": string;
+        "closeLabel"?: string;
         /**
           * Closes the hint box.
          */
