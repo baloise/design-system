@@ -1030,6 +1030,10 @@ export namespace Components {
           * Presents the modal through the modal controller
          */
         "present": () => Promise<void>;
+        /**
+          * Defines the space/padding of the modal
+         */
+        "space": Props.BalModalSpace;
     }
     interface BalModalBody {
     }
@@ -3445,6 +3449,10 @@ declare namespace LocalJSX {
          */
         "onBalModalWillPresent"?: (event: CustomEvent<void>) => void;
         "overlayIndex": number;
+        /**
+          * Defines the space/padding of the modal
+         */
+        "space"?: Props.BalModalSpace;
     }
     interface BalModalBody {
     }

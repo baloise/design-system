@@ -68,6 +68,7 @@ export namespace Props {
   export type BalTextColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | 'hint' | ''
 
   export type BalModalInterface = 'light' | 'card'
+  export type BalModalSpace = 'small' | 'medium' | 'large'
   export type ComponentProps = { [key: string]: any }
   // eslint-disable-next-line
   export type ComponentRef = Function | HTMLElement | string | null

@@ -35,6 +35,11 @@ export class Modal implements OverlayInterface {
   @Prop() modalWidth = 640
 
   /**
+   * Defines the space/padding of the modal
+   */
+  @Prop() space: Props.BalModalSpace = 'small'
+
+  /**
    * If `true`, a backdrop will be displayed behind the modal.
    */
   @Prop() hasBackdrop = true
@@ -284,7 +289,10 @@ export class Modal implements OverlayInterface {
             <div class="modal-content">
               <div
                 ref={el => (this.modalContentElement = el)}
-                class="has-background-white has-shadow has-radius-normal no-border modal-card modal-wrapper"
+                class={{
+                  'has-background-white has-shadow has-radius-normal no-border modal-card modal-wrapper': true,
+                  [`has-space-${this.space}`]: true,
+                }}
               >
                 <slot></slot>
               </div>
