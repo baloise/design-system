@@ -243,6 +243,14 @@ export namespace Components {
     }
     interface BalCardSubtitle {
         /**
+          * If `true` the card text color is bold.
+         */
+        "bold": boolean;
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "color": Props.BalHeadingColor;
+        /**
           * If `true` the card text color becomes white.
          */
         "inverted": boolean;
@@ -2628,6 +2636,14 @@ declare namespace LocalJSX {
     interface BalCardContent {
     }
     interface BalCardSubtitle {
+        /**
+          * If `true` the card text color is bold.
+         */
+        "bold"?: boolean;
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "color"?: Props.BalHeadingColor;
         /**
           * If `true` the card text color becomes white.
          */

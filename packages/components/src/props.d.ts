@@ -28,7 +28,7 @@ export namespace Props {
   export type BalCloseSize = 'small' | 'large' | 'medium' | ''
 
   export type BalHeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | ''
+  export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue'
 
   export type BalHintPlacement = 'left' | 'right'
   export type BalIconColor = BalButtonColor | 'white'
