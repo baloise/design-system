@@ -56,8 +56,12 @@ bal-modal-header {
 
 bal-modal-body {
   bal-button-group {
-    margin-top: 24px;
+    margin-top: 20px;
   }
+}
+
+bal-modal-header + bal-modal-body {
+  padding-top: 0 !important;
 }
 
 @include mobile() {
@@ -93,9 +97,24 @@ bal-modal-body {
 
 @include tablet() {
   .modal-card {
+    &.has-space-small {
+      bal-modal-header {
+        padding: 24px;
+
+        bal-close {
+          right: 24px;
+          top: 24px;
+        }
+      }
+
+      bal-modal-body {
+        padding: 24px;
+      }
+    }
+
     &.has-space-medium {
       bal-modal-header {
-        padding: 32px 32px 0 32px;
+        padding: 32px;
 
         bal-close {
           right: 32px;
@@ -110,7 +129,7 @@ bal-modal-body {
 
     &.has-space-large {
       bal-modal-header {
-        padding: 48px 48px 0 48px;
+        padding: 48px;
 
         bal-close {
           right: 48px;
