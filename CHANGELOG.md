@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.7.3](https://github.com/baloise/design-system/compare/v10.7.2...v10.7.3) (2022-03-30)
+
+
+### Bug Fixes
+
+* **datepicker:** adds missing days to february ([31a399a](https://github.com/baloise/design-system/commit/31a399a1f6b0e4b12fb770730e22a5231e4737dd))
+* **datepicker:** adjust spacing to level 5 ([ca45062](https://github.com/baloise/design-system/commit/ca45062ec94d84cd9e9bfc22af1a5280263ff0a9))
+* **file-upload:** label text breaks if to long ([4c66172](https://github.com/baloise/design-system/commit/4c66172b6a3d525a54b4f4add12939ec61de8c5b))
+* **font:** move css files to a css folder ([8e20378](https://github.com/baloise/design-system/commit/8e203782ae556b17b179409f5ca700e17eb32676))
+* **hint:** adjust spacing to level 5 ([5bc5f21](https://github.com/baloise/design-system/commit/5bc5f213cf42e5da741309edc00450198800b5bd))
+* **hint:** close label is now optional ([04cd2b3](https://github.com/baloise/design-system/commit/04cd2b3dd962086f2ce2a3780d7e9606cc92312c))
+* **modal:** adjust spacing to level 5 ([59b8630](https://github.com/baloise/design-system/commit/59b86303fb4cf88a089a2ebe8ce1989d38660b27))
+* **notification:** adjust spacing to level 5 ([d61024c](https://github.com/baloise/design-system/commit/d61024c72480948956053878a1363a7c9cad4a46))
+* **sheet:** adjust spacing to level 5 ([454ca7e](https://github.com/baloise/design-system/commit/454ca7e4704c32e283f36dfa58e0b2cc34e39032))
+* **snackbar:** adjust spacing to level 5 ([bb63127](https://github.com/baloise/design-system/commit/bb63127b7fdb713824659dcad72ad4a200b4830b))
+
+### [10.7.1](https://github.com/baloise/design-system/compare/v10.7.0...v10.7.1) (2022-03-29)
+
+
+### Bug Fixes
+
+* **modal:** set space as optional ([de62b2d](https://github.com/baloise/design-system/commit/de62b2dcce59e2966bd8e2b352c7f5b2f8e3e186))
+
+## [10.7.0](https://github.com/baloise/design-system/compare/v10.6.3...v10.7.0) (2022-03-29)
+
+
+### Features
+
+* add contract-number mask in bal-input component ([e4ebdb6](https://github.com/baloise/design-system/commit/e4ebdb68d2dd6d08c37a0f706cc41dc60aee7a3c))
+* add format offer option for bal-input ([bec0c3e](https://github.com/baloise/design-system/commit/bec0c3e46fce102299fbef957e6259a782d923a7))
+* **modal:** add space property ([103348d](https://github.com/baloise/design-system/commit/103348d01ab1d2f49de73f3d9d042842e2c4f85c))
+
+
+### Bug Fixes
+
+* **card:** subtitle can have diffrent color and be bold ([be858a8](https://github.com/baloise/design-system/commit/be858a85da35315aba0f4301dd5253bcd5474667))
+* **testing:** add missing hint commands ([547f420](https://github.com/baloise/design-system/commit/547f420b3f8d5b5468f9f9eae00349cafcda835b))
+
+### [10.6.3](https://github.com/baloise/design-system/compare/v10.6.1...v10.6.3) (2022-03-24)
+
+### 10.6.1 (2022-03-24)
+
+
+
 ### [10.7.2](https://github.com/baloise/design-system/compare/v10.7.1...v10.7.2) (2022-03-29)
 
 ### Bug Fixes
