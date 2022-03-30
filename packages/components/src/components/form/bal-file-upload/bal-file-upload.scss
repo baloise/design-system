@@ -20,6 +20,7 @@ span.file-cta {
   justify-content: center;
   align-items: center;
   border-style: dashed;
+  white-space: normal !important;
 }
 
 .file-label.is-hovered .file-cta,
