@@ -109,7 +109,7 @@ export class Snackbar {
   render() {
     return (
       <Host id={this.snackbarId}>
-        <div role="alert" class={`snackbar ${this.animationClass} ${this.colorType}`}>
+        <div role="alert" class={`snackbar ${this.animationClass} ${this.colorType} p-5`}>
           <div class="snackbar-header">
             <span class="icon-text">
               <span class="icon" style={{ display: this.icon ? '' : 'none' }}>
