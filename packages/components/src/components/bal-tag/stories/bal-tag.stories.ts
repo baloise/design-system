@@ -28,15 +28,6 @@ Basic.args = {
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
 
-export const Closable = Template.bind({})
-Closable.args = {
-  content: 'Tag',
-  color: 'primary',
-  size: '',
-  closable: true,
-}
-Closable.parameters = { ...component.sourceCode(Closable) }
-
 export const TagCard = args => ({
   components: { ...component.components },
   setup: () => ({ args }),

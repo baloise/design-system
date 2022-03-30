@@ -3,29 +3,60 @@ import { html } from '../../../stories/utils'
 import { levels, colors, spacing } from './bal-heading.templates.ts'
 import readme from '../readme.md'
 
-<span id="story--components-heading--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-heading--basic">Heading</bal-doc-banner>
 
-# Heading
+<bal-doc-tabs>
+  <a href="#story--components-heading--basic">Overview</a>
+  <a href="#examples">Examples</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-A heading provides some additional helpers.
+<bal-doc-lead>
+  <b>Heading</b> provides some additional helpers.
+</bal-doc-lead>
 
-<Canvas>
+<Canvas withSource="open">
   <Story id="components-heading--basic" />
 </Canvas>
 
-## Levels
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-heading--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
+
+<span id="story--components-heading--basic" style={{ opacity: 0 }}></span>
+
+## Examples
+
+<span id="story--components-heading--subtitle" style={{ opacity: 0 }}></span>
+
+### Subtitle
+
+<Canvas>
+  <Story id="components-heading--subtitle" />
+</Canvas>
+
+<span id="story--components-heading--native-heading" style={{ opacity: 0 }}></span>
+
+### Levels
 
 <Canvas mdxSource={levels}>
   <bal-doc-app>{html(levels)}</bal-doc-app>
 </Canvas>
 
-## Colors
+### Colors
 
 <Canvas mdxSource={colors}>
   <bal-doc-app>{html(colors)}</bal-doc-app>
 </Canvas>
 
-## Spacing
+### Spacing
 
 <Canvas mdxSource={spacing}>
   <bal-doc-app>{html(spacing)}</bal-doc-app>
@@ -36,6 +67,25 @@ A heading provides some additional helpers.
 <Description markdown={readme} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

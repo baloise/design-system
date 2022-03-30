@@ -70,10 +70,10 @@ ul.is-list.has-bullet-check li {
   &::before {
     content: '';
     display: inline-block;
-    margin-left: -16px;
-    margin-right: 9px;
-    width: 7px;
-    height: 13px;
+    margin-left: -14px;
+    margin-right: 8px;
+    width: 6px;
+    height: 12px;
     border-bottom: 2px solid $blue;
     border-right: 2px solid $blue;
     border-top: 0;
@@ -95,5 +95,14 @@ ul.is-list.has-bullet-check li {
   &.has-bullet-check li::before {
     border-bottom-color: $white;
     border-right-color: $white;
+  }
+}
+
+.is-list li {
+  font-family: $family-primary;
+  margin-bottom: 8px;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }

@@ -3,17 +3,49 @@ import readme from '../readme.md'
 import hintText from '../bal-hint-text/readme.md'
 import hintTitle from '../bal-hint-title/readme.md'
 
-<span id="story--components-hint--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-hint--basic">Hint</bal-doc-banner>
 
-# Hint
+<bal-doc-tabs>
+  <a href="#story--components-hint--basic">Overview</a>
+  <a href="#examples">Examples</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-A hint hides content with some additional description and shows it by clicking the icon. It can easily combined with the bal-data or bal-field component.
+<bal-doc-lead>
+  <b>Hint</b> hides content with some additional description and shows it by clicking the icon. It can easily combined
+  with the bal-data or bal-field component.
+</bal-doc-lead>
 
-<Canvas className="has-visible-overflow">
+<Canvas withSource="open" className="has-visible-overflow">
   <Story id="components-hint--basic" />
 </Canvas>
 
-## Field Hint
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-hint--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
+
+<span id="story--components-hint--basic" style={{ opacity: 0 }}></span>
+
+## Examples
+
+<span id="story--components-hint--tooltip-hint" style={{ opacity: 0 }}></span>
+
+### Tooltip Hint
+
+<Canvas className="has-visible-overflow">
+  <Story id="components-hint--tooltip-hint" />
+</Canvas>
+
+<span id="story--components-hint--field-hint" style={{ opacity: 0 }}></span>
+
+### Field Hint
 
 <Canvas className="has-visible-overflow">
   <Story id="components-hint--field-hint" />
@@ -26,6 +58,25 @@ A hint hides content with some additional description and shows it by clicking t
 <Description markdown={hintTitle} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

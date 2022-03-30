@@ -23,6 +23,24 @@ bal-card,
   &.has-border {
     border: 2px solid $border;
   }
+
+  &.is-clickable {
+    transition: border 150ms ease-out, transform 150ms ease-out;
+
+    &:active,
+    &:hover {
+      box-shadow: $shadow-hover;
+      transform: translate3d(0, -2px, 0);
+    }
+
+    &:active {
+      outline: 1px solid $blue-2;
+    }
+  }
+
+  &.is-selected {
+    background: $blue-0;
+  }
 }
 
 bal-card-title,
@@ -31,6 +49,13 @@ bal-card-content,
 bal-card-actions {
   display: block;
   position: static;
+}
+
+bal-card-content {
+  font-family: $family-primary;
+  word-break: break-word;
+  font-size: $size-5;
+  line-height: $line-height-5;
 }
 
 bal-card {
@@ -81,4 +106,10 @@ bal-card {
       padding-bottom: 0 !important;
     }
   }
+}
+
+.column bal-card,
+.column bal-card bal-card-content,
+.column bal-card bal-card-content > .is-flex {
+  height: 100%;
 }

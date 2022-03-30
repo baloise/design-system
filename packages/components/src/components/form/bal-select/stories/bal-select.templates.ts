@@ -23,13 +23,3 @@ export const marvelHeros = `
     <b style="display: block">Thor God of Thunder</b>
     <span class="is-small">Asgard</span>
   </bal-select-option>`
-
-export const typeahead = `
-<bal-select typeahead placeholder="Try finding your hero" no-data-label="No option available">
-${marvelHeros}
-</bal-select>`
-
-export const multiSelect = `
-<bal-select multiple placeholder="Try finding your hero">
-${marvelHeros}
-</bal-select>`

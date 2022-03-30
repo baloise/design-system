@@ -1,5 +1,5 @@
 import { Component, EventEmitter, h, Host, Prop, Event } from '@stencil/core'
-import { ColorTypes, SupportColors } from '../../types/color.types'
+import { Props } from '../../props'
 
 @Component({
   tag: 'bal-tag',
@@ -10,12 +10,12 @@ export class Tag {
   /**
    * The theme type of the tag. Given by bulma our css framework.
    */
-  @Prop() color: ColorTypes | SupportColors | '' = ''
+  @Prop() color: Props.BalTagColor = ''
 
   /**
    * The size of the tag element
    */
-  @Prop() size: 'small' | 'medium' | 'large' | '' = ''
+  @Prop() size: Props.BalTagSize = ''
 
   /**
    * The theme type of the tag. Given by bulma our css framework.

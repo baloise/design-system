@@ -3,3 +3,7 @@
   border-radius: 0 !important;
   background: rgb(39, 40, 34) !important;
 }
+
+html {
+  font-size: 16px;
+}

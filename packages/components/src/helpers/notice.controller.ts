@@ -1,10 +1,10 @@
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { ColorTypes } from '..'
+import { Props } from '../props'
 
 export interface BalNoticeOptions {
   message: string
   duration?: number
-  color?: ColorTypes | ''
+  color?: Props.BalNotificationColor | ''
   closeHandler?: () => void
 }
 

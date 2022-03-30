@@ -20,6 +20,7 @@ export interface ModalOptions<T extends ComponentRef = ComponentRef> {
   dataTestId?: string
   delegate?: FrameworkDelegate
   id?: string
+  space?: 'small' | 'medium' | 'large'
 }
 
 export interface OverlayEventDetail<T = any> {

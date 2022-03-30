@@ -66,7 +66,7 @@ export const Typeahead = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `
-  <bal-select v-bind="args"  v-model="args.value">
+  <bal-select v-bind="args" v-model="args.value">
   ${marvelHeros}
 </bal-select>`,
 })

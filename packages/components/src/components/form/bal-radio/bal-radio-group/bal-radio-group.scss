@@ -10,41 +10,43 @@ bal-radio-group {
     flex-direction: column;
   }
 
-  &.bal-select-button.is-vertical > div {
+  &.is-vertical > div {
     flex-direction: column;
+    border-radius: 12px;
   }
 
-  &.bal-select-button > div {
-    gap: 8px;
+  &.is-vertical-mobile > div {
+    flex-direction: column;
+    border-radius: 12px;
   }
+}
 
-  &:not(.bal-select-button) {
-    &:not(.is-vertical) {
-      & > div {
-        margin-left: -12px;
-        margin-right: -12px;
+&:not(.bal-select-button) {
+  &:not(.is-vertical) {
+    & > div {
+      margin-left: -12px;
+      margin-right: -12px;
 
-        bal-radio {
-          margin-left: 12px;
-          margin-right: 12px;
-        }
-      }
-    }
-
-    &.is-vertical {
-      & > div {
-        bal-radio {
-          display: flex;
-        }
+      bal-radio {
+        margin-left: 12px;
+        margin-right: 12px;
       }
     }
   }
 
-  @include tablet() {
-    &.bal-select-button.is-vertical-mobile > div {
-      flex-direction: row;
-      border-radius: 100px;
+  &.is-vertical {
+    & > div {
+      bal-radio {
+        display: flex;
+      }
     }
+  }
+}
+
+@include tablet() {
+  &.bal-select-button.is-vertical-mobile > div {
+    flex-direction: row;
+    border-radius: 100px;
   }
 }
 

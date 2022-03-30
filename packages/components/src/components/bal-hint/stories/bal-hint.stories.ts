@@ -11,6 +11,7 @@ import {
   BalFieldLabel,
   BalFieldHint,
 } from '../../../../.storybook/vue/components'
+import { configArgTypes, configDefaultArgs, reduceConfigArgs, setConfig } from '../../../stories/utils/config'
 
 const component = BalComponentStory({
   title: 'Components/Hint',
@@ -19,6 +20,10 @@ const component = BalComponentStory({
   subcomponents: { BalHintText, BalHintTitle },
   argTypes: {
     ...withContent(),
+    ...configArgTypes,
+  },
+  args: {
+    ...configDefaultArgs,
   },
   docs,
 })
@@ -27,8 +32,13 @@ export default component.story
 
 export const Basic = args => ({
   components: { ...component.components },
-  setup: () => ({ args }),
-  template: `<bal-hint v-bind="args" class="mt-7">
+  setup: () => {
+    setConfig(args)
+    return {
+      args: reduceConfigArgs(args),
+    }
+  },
+  template: `<bal-hint v-bind="args" class="mt-6">
   <bal-hint-title>Spider-Man</bal-hint-title>
   <bal-hint-text>
     Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. He first appeared in the anthology comic book Amazing Fantasy #15
@@ -40,19 +50,24 @@ export const Basic = args => ({
 Basic.args = {}
 Basic.parameters = { ...component.sourceCode(Basic) }
 
-export const Small = args => ({
+export const TooltipHint = args => ({
   components: { ...component.components },
-  setup: () => ({ args }),
-  template: `<bal-hint v-bind="args" class="mt-7">
+  setup: () => {
+    setConfig(args)
+    return {
+      args: reduceConfigArgs(args),
+    }
+  },
+  template: `<bal-hint v-bind="args" class="mt-6">
   <bal-hint-text>
     Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko.
   </bal-hint-text>
   </bal-hint>`,
 })
-Small.args = {
+TooltipHint.args = {
   small: true,
 }
-Small.parameters = { ...component.sourceCode(Small) }
+TooltipHint.parameters = { ...component.sourceCode(TooltipHint) }
 
 export const FieldHint = args => ({
   components: {
@@ -64,7 +79,12 @@ export const FieldHint = args => ({
     BalFieldLabel,
     BalFieldHint,
   },
-  setup: () => ({ args }),
+  setup: () => {
+    setConfig(args)
+    return {
+      args: reduceConfigArgs(args),
+    }
+  },
   template: `<bal-field expanded class="mt-7">
   <bal-field-label>Firstname</bal-field-label>
   <bal-field-hint v-bind="args" subject="Spider-Man"> Spider-Man is a fictional superhero created by writer-editor Stan Lee and writer-artist Steve Ditko. </bal-field-hint>

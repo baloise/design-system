@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core'
+import { Props } from '../../props'
 
 @Component({
   tag: 'bal-list',
@@ -22,7 +23,7 @@ export class List {
   /**
    * Defines the min height of the list item
    */
-  @Prop() size: '' | 'large' = ''
+  @Prop() size: Props.BalListSize = ''
 
   render() {
     return (

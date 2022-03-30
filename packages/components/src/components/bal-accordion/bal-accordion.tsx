@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core'
 import { debounceEvent } from '../../helpers/helpers'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-accordion',
@@ -12,14 +13,15 @@ export class Accordion {
    */
   @Prop() interface: '' | 'light' = ''
 
-  /**
-   * Controls if the accordion is collapsed or not
+  /*
+   * Defines the color of the accordion.
    */
-  @Prop({ mutable: true, reflect: true }) value = false
+  @Prop() color: Props.BalAccordionColor = 'primary'
 
   /**
-   * Update the native input element when the value changes
+   * If `true` the accordion is open.
    */
+  @Prop({ mutable: true, reflect: true }) value = false
   @Watch('value')
   protected async valueChanged(newValue: boolean, oldValue: boolean) {
     if (this.didInit && newValue !== oldValue) {
@@ -31,7 +33,6 @@ export class Accordion {
    * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
    */
   @Prop() debounce = 0
-
   @Watch('debounce')
   protected debounceChanged() {
     this.balChange = debounceEvent(this.balChange, this.debounce)
@@ -43,7 +44,7 @@ export class Accordion {
   @Prop() openLabel = ''
 
   /**
-   * Bal-Icon of the open trigger button
+   * BalIcon of the open trigger button
    */
   @Prop() openIcon = 'plus'
 
@@ -53,7 +54,7 @@ export class Accordion {
   @Prop() closeLabel = ''
 
   /**
-   * Bal-Icon of the close trigger button
+   * BalIcon of the close trigger button
    */
   @Prop() closeIcon = 'close'
 
@@ -63,7 +64,7 @@ export class Accordion {
   @Prop() card = false
 
   /**
-   * Emitted when the accordion has changed
+   * Emitted when the accordion has opened or closed
    */
   @Event() balChange!: EventEmitter<boolean>
 
@@ -79,7 +80,7 @@ export class Accordion {
   }
 
   /**
-   * Open the accordion
+   * Opens the accordion
    */
   @Method()
   async present() {
@@ -87,7 +88,7 @@ export class Accordion {
   }
 
   /**
-   * Close the accordion
+   * Closes the accordion
    */
   @Method()
   async dismiss() {
@@ -100,6 +101,18 @@ export class Accordion {
   @Method()
   async toggle() {
     this.value = !this.value
+  }
+
+  get buttonType(): Props.BalButtonColor {
+    return `${this.color}-light` as Props.BalButtonColor
+  }
+
+  get label() {
+    return this.value ? this.closeLabel : this.openLabel
+  }
+
+  get icon() {
+    return this.value ? this.closeIcon : this.openIcon
   }
 
   render() {

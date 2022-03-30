@@ -2,7 +2,7 @@ import { Component, h, Host, Prop } from '@stencil/core'
 import * as balIcons from '@baloise/design-system-next-icons'
 import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
-import { BalIconColor } from '../../types'
+import { Props } from '../../props'
 
 @Component({
   tag: 'bal-icon',
@@ -21,15 +21,20 @@ export class Icon {
   /**
    * Defines the size of the icon.
    */
-  @Prop() size: 'xsmall' | 'small' | 'medium' | 'large' | '' = ''
+  @Prop() size: Props.BalIconSize = ''
 
   /**
    * The theme type of the button. Given by bulma our css framework.
    */
-  @Prop() color: BalIconColor | '' = ''
+  @Prop() color: Props.BalIconColor = ''
 
   /**
-   * If `true` the button is inverted
+   * If `true` the icon has display inline style
+   */
+  @Prop() inline = false
+
+  /**
+   * If `true` the icon is inverted
    */
   @Prop() inverted = false
 
@@ -65,6 +70,7 @@ export class Icon {
           [`is-${this.color}`]: this.color !== '',
           [`turn`]: this.turn,
           [`rotate`]: this.rotate,
+          [`is-inline`]: this.inline,
         }}
       >
         <div class="bal-icon-inner" innerHTML={this.svgContent}></div>

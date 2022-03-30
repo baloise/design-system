@@ -1,4 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { Props } from '../../props'
 
 @Component({
   tag: 'bal-logo',
@@ -9,7 +10,7 @@ export class Logo implements ComponentInterface {
   /**
    * Defines the color of the logo.
    */
-  @Prop() color: 'blue' | 'white' = 'blue'
+  @Prop() color: Props.BalLogoColor = 'blue'
 
   render() {
     return (

@@ -20,6 +20,7 @@ import {
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
 import { inheritAttributes, isDescendant } from '../../../helpers/helpers'
+import { Props } from '../../../props'
 
 @Component({
   tag: 'bal-checkbox',
@@ -49,12 +50,12 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
    * client-side, but on the server this is the value given to the data
    * submitted with the checkbox's name.
    */
-  @Prop() value = 'on'
+  @Prop() value: string | number = 'on'
 
   /**
    * Defines the layout of the checkbox button
    */
-  @Prop() interface: 'checkbox' | 'switch' = 'checkbox'
+  @Prop() interface: Props.BalCheckboxInterface = 'checkbox'
 
   /**
    * If `true`, the checkbox is selected.
@@ -183,6 +184,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
         <input
           class={{
             'is-disabled': this.disabled,
+            'is-disabled-hidden': this.hidden,
             'data-test-checkbox-input': true,
           }}
           type="checkbox"

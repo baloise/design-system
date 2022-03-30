@@ -1,26 +1,54 @@
-import { Story, Canvas, Description } from '@storybook/addon-docs'
+import { Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
 import readme from '../readme.md'
 
-<span id="story--components-accordion--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-accordion--basic">Accordion</bal-doc-banner>
 
-# Accordion
+<bal-doc-tabs>
+  <a href="#story--components-accordion--basic">Overview</a>
+  <a href="#examples">Examples</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-Accordions put users in control of showing or hiding content. Accordions also help us organize information to keep screens less cluttered so that users can accomplish tasks in short, intuitive steps. And accordions can help users find content they need. The component can be used standalone, in combination or inside bal-card.
+<bal-doc-lead>
+  <b>Accordions</b> put users in control of showing or hiding content. Accordions also help us organize information to
+  keep screens less cluttered so that users can accomplish tasks in short, intuitive steps. And accordions can help
+  users find content they need. The component can be used standalone, in combination or inside{' '}
+  <a href="?path=/docs/components-card--basic">BalCard</a>.
+</bal-doc-lead>
 
-<Canvas>
+<Canvas withSource="open">
   <Story id="components-accordion--basic" />
 </Canvas>
 
-## With Icons
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-accordion--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
 
-Use the properties `open-label` & `open-icon` to change the content of the trigger button.
+## Examples
+
+<span id="story--components-accordion--with-icons" style={{ opacity: 0 }}></span>
+
+### With Icons
+
+To change the label use the properties `open-label` & `close-label`. The icon can be changed with the properties `open-icon` and `close-icon`.
 
 <Canvas>
   <Story id="components-accordion--with-icons" />
 </Canvas>
 
-## With Card
+<span id="story--components-accordion--with-card" style={{ opacity: 0 }}></span>
+
+### With Card
+
+The accordion can be combined with the card component to hide some secondary information.
 
 <Canvas>
   <Story id="components-accordion--with-card" />
@@ -37,6 +65,51 @@ Use the properties `open-label` & `open-icon` to change the content of the trigg
 <Description markdown={readme} />
 
 <br />
+
+<!-- ## Usage
+
+<bal-doc-usage>
+  <bal-doc-usage-item theme="do">
+    <li>To hide secondary information with lower priority.</li>
+    <li>To reduce the page size when content is not crucial to read in full.</li>
+  </bal-doc-usage-item>
+  <bal-doc-usage-item theme="dont">
+    <li>For required information or actions.</li>
+    <li>For hiding form controls.</li>
+  </bal-doc-usage-item>
+</bal-doc-usage>
+
+import UsageImage from './usage/usage.png'
+
+<bal-doc-usage>
+  <bal-doc-usage-item image theme="do">
+    <img src={UsageImage} alt="UsageImage" />
+    <p>To hide secondary information with lower priority.</p>
+  </bal-doc-usage-item>
+  <bal-doc-usage-item image theme="dont">
+    <img src={UsageImage} alt="UsageImage" />
+    <p>For required information or actions.</p>
+  </bal-doc-usage-item>
+</bal-doc-usage> -->
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

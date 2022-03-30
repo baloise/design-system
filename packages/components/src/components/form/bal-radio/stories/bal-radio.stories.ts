@@ -38,7 +38,7 @@ export default component.story
 
 const excludedControls = ['name']
 
-export const RadioGroup = args => ({
+export const Basic = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
@@ -54,12 +54,12 @@ export const RadioGroup = args => ({
   <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
 </bal-field>`,
 })
-RadioGroup.args = {
+Basic.args = {
   value: '2',
 }
-RadioGroup.parameters = { ...component.sourceCode(RadioGroup), controls: { exclude: excludedControls } }
+Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
 
-export const Vertical = RadioGroup.bind({})
+export const Vertical = Basic.bind({})
 Vertical.args = {
   content: 'Label',
   vertical: true,
@@ -152,3 +152,24 @@ SelectButton.args = {
   interface: 'select-button',
 }
 SelectButton.parameters = { ...component.sourceCode(SelectButton), controls: { exclude: excludedControls } }
+
+export const YesNo = args => ({
+  components: { ...component.components, BalField, BalFieldLabel, BalFieldControl, BalFieldMessage },
+  setup: () => ({ args }),
+  template: `
+  <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field-label>Label</bal-field-label>
+  <bal-field-control>
+    <bal-radio-group v-bind="args" v-model="args.value">
+      <bal-radio name="radio-example" :value="true">Yes</bal-radio>
+      <bal-radio name="radio-example" :value="false">No</bal-radio>
+    </bal-radio-group>
+  </bal-field-control>
+  <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
+</bal-field>`,
+})
+YesNo.args = {
+  value: false,
+  interface: 'select-button',
+}
+YesNo.parameters = { ...component.sourceCode(YesNo), controls: { exclude: excludedControls } }

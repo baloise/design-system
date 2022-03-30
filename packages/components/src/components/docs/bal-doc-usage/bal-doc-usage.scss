@@ -1,0 +1,34 @@
+@import '../../../styles/global.utilities.scss';
+
+bal-doc-usage {
+  position: static;
+  display: block;
+
+  bal-doc-usage-item img {
+    background: $white;
+    padding: 4px;
+    border-radius: 4px;
+  }
+
+  bal-doc-usage-item > div {
+    height: 100%;
+    border-left: 4px solid $success;
+  }
+
+  bal-doc-usage-item[theme='dont'] > div {
+    border-left: 4px solid $danger;
+  }
+
+  bal-doc-usage-item p {
+    display: block;
+    text-align: left;
+    color: $text;
+    font-family: $family-primary;
+    font-size: $size-5;
+    line-height: $line-height-5;
+    font-weight: $weight-normal;
+    margin-top: 8px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

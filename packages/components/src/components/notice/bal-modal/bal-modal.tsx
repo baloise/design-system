@@ -1,9 +1,10 @@
 import { Component, Host, h, State, Method, Listen, Prop, Event, EventEmitter, Element, writeTask } from '@stencil/core'
 import { dismiss, eventMethod, prepareOverlay } from '../../../helpers/overlays'
 import { attachComponent, detachComponent } from '../../../helpers/framework-delegate'
-import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail, OverlayInterface } from './bal-modal.type'
+import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady, wait } from '../../../helpers/helpers'
 import { getClassMap } from '../../../helpers/theme'
+import { Props } from '../../../props'
 
 @Component({
   tag: 'bal-modal',
@@ -23,7 +24,7 @@ export class Modal implements OverlayInterface {
   @Prop({ mutable: true }) overlayIndex!: number
 
   /** @internal */
-  @Prop() delegate?: FrameworkDelegate
+  @Prop() delegate?: Props.FrameworkDelegate
 
   /** @internal */
   @Prop() dataTestId?: string
@@ -32,6 +33,11 @@ export class Modal implements OverlayInterface {
    * Defines the width of the modal body
    */
   @Prop() modalWidth = 640
+
+  /**
+   * Defines the space/padding of the modal
+   */
+  @Prop() space: Props.BalModalSpace = 'small'
 
   /**
    * If `true`, a backdrop will be displayed behind the modal.
@@ -46,17 +52,17 @@ export class Modal implements OverlayInterface {
   /**
    * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
    */
-  @Prop() interface: 'light' | 'card' = 'light'
+  @Prop() interface: Props.BalModalInterface = 'light'
 
   /**
    * The component to display inside of the modal.
    */
-  @Prop() component!: ComponentRef
+  @Prop() component!: Props.ComponentRef
 
   /**
    * The data to pass to the modal component.
    */
-  @Prop() componentProps?: ComponentProps
+  @Prop() componentProps?: Props.ComponentProps
 
   /**
    * Additional classes to apply for custom CSS. If multiple classes are
@@ -94,6 +100,7 @@ export class Modal implements OverlayInterface {
   @Method()
   async open(): Promise<void> {
     await deepReady(this.usersElement)
+    this.setModalActiveOnBody()
 
     writeTask(() => {
       if (this.modalBackgroundElement) {
@@ -118,7 +125,6 @@ export class Modal implements OverlayInterface {
         this.modalContentElement.classList.remove('fadeInDown')
       }
     })
-    this.el.focus()
     this.didPresent.emit()
   }
 
@@ -127,6 +133,7 @@ export class Modal implements OverlayInterface {
    */
   @Method()
   async close(): Promise<void> {
+    this.unsetModalActiveOnBody()
     this.presented = false
   }
 
@@ -135,6 +142,8 @@ export class Modal implements OverlayInterface {
    */
   @Method()
   async present(): Promise<void> {
+    this.setModalActiveOnBody()
+
     if (this.presented) {
       return
     }
@@ -157,6 +166,8 @@ export class Modal implements OverlayInterface {
    */
   @Method()
   async dismiss(data?: any, role?: string): Promise<boolean> {
+    this.unsetModalActiveOnBody()
+
     if (this.delegate === undefined) {
       await this.close()
       return true
@@ -233,6 +244,18 @@ export class Modal implements OverlayInterface {
     }
   }
 
+  private setModalActiveOnBody() {
+    if (document && document.body && !document.body.classList.contains('bal-modal-active')) {
+      document.body.classList.add('bal-modal-active')
+    }
+  }
+
+  private unsetModalActiveOnBody() {
+    if (document && document.body) {
+      document.body.classList.remove('bal-modal-active')
+    }
+  }
+
   render() {
     return (
       <Host
@@ -266,7 +289,10 @@ export class Modal implements OverlayInterface {
             <div class="modal-content">
               <div
                 ref={el => (this.modalContentElement = el)}
-                class="has-background-white has-shadow has-radius-large no-border modal-card modal-wrapper"
+                class={{
+                  'has-background-white has-shadow has-radius-large no-border modal-card modal-wrapper': true,
+                  [`has-space-${this.space}`]: true,
+                }}
               >
                 <slot></slot>
               </div>

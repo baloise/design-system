@@ -2,7 +2,7 @@ import { ValueAccessorConfig, angularOutputTarget } from '@baloise/angular-outpu
 
 export const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
-    elementSelectors: ['bal-radio-group', 'bal-select', 'bal-datepicker', 'bal-timeinput', 'bal-tabs'],
+    elementSelectors: ['bal-radio-group', 'bal-checkbox-group', 'bal-select', 'bal-datepicker', 'bal-timeinput', 'bal-tabs'],
     event: 'balChange',
     targetAttr: 'value',
     type: 'select',
@@ -34,6 +34,7 @@ export const AngularGenerator = () =>
     valueAccessorConfigs: angularValueAccessorBindings,
     excludeComponents: [
       'bal-doc-app',
+      'bal-doc-banner',
       'bal-doc-color',
       'bal-doc-download',
       'bal-doc-github',
@@ -41,6 +42,15 @@ export const AngularGenerator = () =>
       'bal-doc-image',
       'bal-doc-shades',
       'bal-doc-support-color',
+      'bal-doc-lead',
+      'bal-doc-tabs',
+      'bal-doc-usage',
+      'bal-doc-usage-item',
+      'bal-doc-link-list',
+      'bal-doc-link-list-item',
+      'bal-doc-link-tabs',
+      'bal-doc-link-usage',
+      'bal-doc-link-usage-item',
     ],
     componentGroups: {
       'bal-button': {

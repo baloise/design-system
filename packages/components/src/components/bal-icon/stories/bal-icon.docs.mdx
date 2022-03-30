@@ -3,19 +3,39 @@ import { html } from '../../../stories/utils'
 import { sizes, colors, custom } from './bal-icon.templates.ts'
 import readme from '../readme.md'
 
-<span id="story--components-icon--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-icon--basic">Icon</bal-doc-banner>
 
-# Icon
+<bal-doc-tabs>
+  <a href="#story--components-icon--basic">Overview</a>
+  <a href="#examples">Examples</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-All our icons are pure svg files. To add a new icon just place your svg file into the
-folder `packages/library/src/components/bal-icon/svg`. Then the build script will
-automatically optimize the svg and create its own web component.
+<bal-doc-lead>
+  <b>Icons</b> are pure svg files. To add a new icon just place your svg file into the{' '}
+  <a href="https://github.com/baloise/design-system/tree/master/packages/icons/svg">folder</a>. Then the build script
+  will automatically optimize the svg and provide it to the component. It is important that the svg icons are made with
+  fill elements instead of strokes.
+</bal-doc-lead>
 
-<Canvas>
+<Canvas withSource="open">
   <Story id="components-icon--basic" />
 </Canvas>
 
-## Sizes
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-icon--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
+
+## Examples
+
+### Sizes
 
 Here is how you can change the size:
 
@@ -23,13 +43,13 @@ Here is how you can change the size:
   <bal-doc-app>{html(sizes)}</bal-doc-app>
 </Canvas>
 
-## Colors
+### Colors
 
 <Canvas mdxSource={colors}>
   <bal-doc-app>{html(colors)}</bal-doc-app>
 </Canvas>
 
-## Custom Color
+### Custom Color
 
 Here is how you can change the color:
 
@@ -37,11 +57,28 @@ Here is how you can change the color:
   <bal-doc-app>{html(custom)}</bal-doc-app>
 </Canvas>
 
-## Component Api
+### Component Api
 
 <Description markdown={readme} />
 
 <br />
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

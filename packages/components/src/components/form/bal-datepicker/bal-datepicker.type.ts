@@ -28,5 +28,3 @@ export interface BalPointerDate {
   month: number
   day: number
 }
-
-export type BalDateCallback = (dateString: string) => boolean

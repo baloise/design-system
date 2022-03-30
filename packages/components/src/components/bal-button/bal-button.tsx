@@ -1,5 +1,5 @@
 import { Component, h, Prop, Host, Event, EventEmitter, ComponentInterface, Listen, Element } from '@stencil/core'
-import { BalButtonColor, BalIconColor } from '../../types'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-button',
@@ -10,12 +10,12 @@ export class Button implements ComponentInterface {
   /**
    * The color to use from your application's color palette.
    */
-  @Prop() color: BalButtonColor = 'primary'
+  @Prop() color: Props.BalButtonColor = 'primary'
 
   /**
    * The type of button.
    */
-  @Prop() type: 'button' | 'reset' | 'submit' = 'button'
+  @Prop() type: Props.BalButtonType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
@@ -25,24 +25,24 @@ export class Button implements ComponentInterface {
   /**
    * Size of the button
    */
-  @Prop({ reflect: true }) size: 'small' | '' = ''
+  @Prop({ reflect: true }) size: Props.BalButtonSize = ''
 
   /**
    * Specifies the URL of the page the link goes to
    */
-  @Prop() href: string | undefined
+  @Prop() href?: string
 
   /**
    * Specifies where to display the linked URL.
    * Only applies when an `href` is provided.
    */
-  @Prop() target: '_blank' | ' _parent' | '_self' | '_top' = '_self'
+  @Prop() target: Props.BalButtonTarget = '_self'
 
   /**
    * Specifies the relationship of the target object to the link object.
    * The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
    */
-  @Prop() rel: string | undefined
+  @Prop() rel?: string
 
   /**
    * This attribute instructs browsers to download a URL instead of navigating to
@@ -50,12 +50,12 @@ export class Button implements ComponentInterface {
    * has a value, it is used as the pre-filled file name in the Save prompt
    * (the user can still change the file name if they want).
    */
-  @Prop() download: string | undefined
+  @Prop() download?: string
 
   /**
    * Size of the button
    */
-  @Prop() iconPosition: 'left' | 'right' = 'left'
+  @Prop() iconPosition: Props.BalButtonIconPosition = 'left'
 
   /**
    * If `true` the width of the buttons is limited
@@ -216,11 +216,8 @@ export class Button implements ComponentInterface {
     }
   }
 
-  private get iconColor(): BalIconColor {
-    if (this.color === 'info') {
-      return 'blue'
-    }
-    return 'white'
+  private get iconColor(): Props.BalIconColor {
+    return this.color
   }
 
   private handleClick(event: MouseEvent) {

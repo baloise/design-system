@@ -25,46 +25,6 @@ const component = BalComponentStory({
 
 export default component.story
 
-export const NativeList = args => ({
-  components: { ...component.components },
-  setup: () => ({ args }),
-  template: `<div>
-  <ul class="is-list ${args.inverted ? 'is-inverted' : ''}">
-    <li>List Item 1</li>
-    <li>List Item 2</li>
-    <li>List Item 3</li>
-  </ul>
-  <ul class="is-list has-bullet-circle ${args.inverted ? 'is-inverted' : ''}">
-    <li>List Item 1</li>
-    <li>List Item 2</li>
-    <li>List Item 3</li>
-  </ul>
-  <ul class="is-list has-bullet-circle has-bullet-red ${args.inverted ? 'is-inverted' : ''}">
-    <li>List Item 1</li>
-  </ul>
-  <ul class="is-list has-bullet-circle has-bullet-yellow ${args.inverted ? 'is-inverted' : ''}">
-    <li>List Item 1</li>
-  </ul>
-  <ul class="is-list has-bullet-circle has-bullet-purple ${args.inverted ? 'is-inverted' : ''}">
-    <li>List Item 1</li>
-  </ul>
-  <ul class="is-list has-bullet-check ${args.inverted ? 'is-inverted' : ''}">
-    <li>List Item 1</li>
-    <li>List Item 2</li>
-    <li>List Item 3</li>
-  </ul>
-  <ol class="is-list ${args.inverted ? 'is-inverted' : ''}">
-    <li>List Item 1</li>
-    <li>List Item 2</li>
-    <li>List Item 3</li>
-  </ol>
-</div>`,
-})
-NativeList.args = {
-  border: true,
-}
-NativeList.parameters = { ...component.sourceCode(NativeList), controls: { exclude: ['disabled', 'size', 'border'] } }
-
 export const Basic = args => ({
   components: { ...component.components, BalIcon },
   setup: () => ({ args }),
@@ -98,6 +58,32 @@ Basic.args = {
   size: '',
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
+
+export const NativeList = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<div>
+  <ul class="is-list mb-4">
+    <li>List Item 1</li>
+    <li>List Item 2</li>
+    <li>List Item 3</li>
+  </ul>
+  <ul class="is-list has-bullet-check mb-4">
+    <li>List Item 1</li>
+    <li>List Item 2</li>
+    <li>List Item 3</li>
+  </ul>
+  <ol class="is-list">
+    <li>List Item 1</li>
+    <li>List Item 2</li>
+    <li>List Item 3</li>
+  </ol>
+</div>`,
+})
+NativeList.args = {
+  border: true,
+}
+NativeList.parameters = { ...component.sourceCode(NativeList) }
 
 export const LinkedList = args => ({
   components: { ...component.components, BalIcon },

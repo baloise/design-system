@@ -1,6 +1,7 @@
 import { Component, h, Host, Listen, Method, Prop, Watch, Element, Event, EventEmitter } from '@stencil/core'
-import { createPopper, Instance, Placement } from '@popperjs/core'
+import { createPopper, Instance } from '@popperjs/core'
 import { debounceEvent } from '../../helpers/helpers'
+import { Props } from '../../props'
 
 @Component({
   tag: 'bal-popover',
@@ -25,7 +26,7 @@ export class Popover {
   /**
    * If `true` the field spans over the whole width.
    */
-  @Prop() position: Placement = 'bottom-start'
+  @Prop() position: Props.BalPopoverPlacement = 'bottom-start'
 
   /**
    * If `true` the popover content is open.

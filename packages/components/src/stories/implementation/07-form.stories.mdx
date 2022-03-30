@@ -1,0 +1,274 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Implementation/Form"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<bal-doc-banner id="overview" subtitle="Implementation">Form</bal-doc-banner>
+
+<bal-doc-tabs>
+  <a href="#overview">Overview</a>
+  {/* <a href="#usage-with-basic-html5">HTML</a> */}
+  <a href="#usage-with-angular">Angular</a>
+  <a href="#usage-with-vue">Vue</a>
+  {/* <a href="#usage-with-react">React</a> */}
+</bal-doc-tabs>
+
+<bal-doc-lead>
+  Some of the Baloise Design System components offering methods to setFocus or returning native HTML elements.
+</bal-doc-lead>
+
+The indispensable form controls, designed for maximum clarity.
+Form elements are used in combination with the CSS grid system.
+
+### Form fields
+
+A basic form field has his container element `bal-field` and 3 child elements:
+
+- `bal-field-label` for adding a label to the form control.
+- `bal-field-control` to contain the control like an input.
+- `bal-field-message` to show validation message or helper messages.
+
+<Canvas withSource="none">
+  <bal-doc-app>
+    <form className="columns is-multiline mt-0 has-background-white">
+      <bal-field class="column is-full py-0">
+        <bal-field-label>Firstname</bal-field-label>
+        <bal-field-control>
+          <bal-input placeholder="Enter your firstname"></bal-input>
+        </bal-field-control>
+        <bal-field-message color="danger">Required Field</bal-field-message>
+      </bal-field>
+    </form>
+  </bal-doc-app>
+</Canvas>
+
+```html
+<bal-field>
+  <bal-field-label>Firstname</bal-field-label>
+  <bal-field-control>
+    <bal-input placeholder="Enter your firstname"></bal-input>
+  </bal-field-control>
+  <bal-field-message color="danger">Required Field</bal-field-message>
+</bal-field>
+```
+
+### Combine fields
+
+With the help of our [CSS Grid](?path=/docs/design-grid--page) we can assemble the form fields to nice looking form.
+
+- First we add the container element `<form class="columns is-multiline mt-0">`
+  - `is-multiline` enables us to have multiple rows in our form grid
+  - `mt-0` resets the margin top to 0px
+- Each field is used as a column `<bal-field class="column is-full py-0">`
+  - `is-full` takes the full width
+  - `py-0` removes the padding on top and bottom
+
+<Canvas withSource="none">
+  <bal-doc-app>
+    <form className="columns is-multiline mt-0 has-background-white">
+      <bal-field class="column is-full py-0">
+        <bal-field-control>
+          <bal-radio-group>
+            <bal-radio name="gender" value="male">
+              Male
+            </bal-radio>
+            <bal-radio name="gender" value="female">
+              Female
+            </bal-radio>
+          </bal-radio-group>
+        </bal-field-control>
+      </bal-field>
+      <bal-field class="column is-half py-0">
+        <bal-field-label>Firstname</bal-field-label>
+        <bal-field-control>
+          <bal-input placeholder="Enter your firstname"></bal-input>
+        </bal-field-control>
+      </bal-field>
+      <bal-field class="column is-half py-0">
+        <bal-field-label>Lastname</bal-field-label>
+        <bal-field-control>
+          <bal-input placeholder="Enter your lastname"></bal-input>
+        </bal-field-control>
+      </bal-field>
+    </form>
+  </bal-doc-app>
+</Canvas>
+
+```html
+<form class="columns is-multiline mt-0">
+  <bal-field class="column is-full py-0">
+    <bal-field-control>
+      <bal-radio-group>
+        <bal-radio name="gender" value="male">Male</bal-radio>
+        <bal-radio name="gender" value="female">Female</bal-radio>
+      </bal-radio-group>
+    </bal-field-control>
+  </bal-field>
+  <bal-field class="column is-half py-0">
+    <bal-field-label>Firstname</bal-field-label>
+    <bal-field-control>
+      <bal-input placeholder="Enter your firstname"></bal-input>
+    </bal-field-control>
+  </bal-field>
+  <bal-field class="column is-half py-0">
+    <bal-field-label>Lastname</bal-field-label>
+    <bal-field-control>
+      <bal-input placeholder="Enter your lastname"></bal-input>
+    </bal-field-control>
+  </bal-field>
+</form>
+```
+
+#### More examples
+
+- [Form Template with a contact form](?path=/story/design-common-templates--contact-form)
+- [Stepper Template with some basic form](?path=/docs/templates-stepper--page)
+
+<!-- ## Usage with basic HTML5 -->
+
+## Usage with Angular
+
+The form elements support [Angular Reactive Forms](https://angular.io/guide/reactive-forms).
+More documentation is [here](https://github.com/baloise/web-app-utils/blob/master/packages/validators/README.md)
+
+First we need to install the validators package.
+
+```bash
+npm install @baloise/web-app-validators-angular
+```
+
+Below is a basic example to use the reactive form together with the Design System.
+
+```html
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="columns is-multiline mt-0">
+  <bal-field class="column is-full py-0" required [disabled]="form.get('email')?.disabled">
+    <bal-field-label required>Email</bal-field-label>
+    <bal-field-control>
+      <bal-input name="email" placeholder="Enter your email" formControlName="email"></bal-input>
+    </bal-field-control>
+    <bal-field-message color="danger">
+      <bal-ng-error controlName="email" error="isRequired">This field is required</bal-ng-error>
+      <bal-ng-error controlName="email" error="isMinLength">Min length is 4</bal-ng-error>
+      <bal-ng-error controlName="email" error="isEmail">Not a valid email</bal-ng-error>
+    </bal-field-message>
+  </bal-field>
+  <bal-field class="column is-half py-0">...</bal-field>
+</form>
+```
+
+In the component class wen can define the validators for the form control.
+
+```typescript
+import { Component } from '@angular/core'
+import { FormControl, FormGroup } from '@angular/forms'
+import { BalValidators } from '@baloise/web-app-validators-angular'
+
+@Component({
+  selector: 'app-form-page',
+  templateUrl: './form-page.component.html',
+})
+export class FormPageComponent {
+  form = new FormGroup({
+    email: new FormControl(null, [BalValidators.isRequired(), BalValidators.isMinLength(4), BalValidators.isEmail()]),
+  })
+
+  onSubmit() {
+    alert('Form is submitted!')
+  }
+}
+```
+
+## Usage with Vue
+
+For Vue we use the library [VeeValidate](https://vee-validate.logaretm.com/v4/) together with the [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html).
+
+First install VeeValidate (Version >= 4.x.x).
+
+```bash
+npm add vee-validate@next
+```
+
+First we need to install the validators package.
+More documentation is [here](https://github.com/baloise/web-app-utils/blob/master/packages/validators/README.md)
+
+```bash
+npm install @baloise/web-app-validators-vue
+```
+
+#### Define i18n validators
+
+In this section we change the return type of our `BalValidators` into the the translated texts.
+Pass your i18n translation function to the `useValidator` helper and then use the returned helper function `createValidator` to map the `BalValidators` with your translations.
+
+```typescript
+import { BalValidators, useValidator, ValidatorFn } from '@baloise/web-app-validators-vue'
+import { i18n } from '../../plugins/i18n.plugin'
+
+export { rules } from '@baloise/web-app-validators-vue'
+
+const { createValidator } = useValidator(i18n.global.t)
+
+export const isRequired = (): ValidatorFn => createValidator(BalValidators.isRequired(), 'validator.required')
+```
+
+#### Create form
+
+First we define our template like this.
+
+```html
+<form @submit.prevent="submit">
+  <BalField :disabled="isFirstNameDisabled">
+    <BalFieldLabel required> {{ $t('form.firstName.label') }} </BalFieldLabel>
+    <BalFieldControl>
+      <BalInput
+        v-model="firstName"
+        :name="firstNameName"
+        :placeholder="$t('form.firstName.placeholder')"
+        :disabled="isFirstNameDisabled"
+      ></BalInput>
+    </BalFieldControl>
+    <BalFieldMessage color="danger" v-if="!isFirstNameDisabled"> {{ firstNameErrorMessage }} </BalFieldMessage>
+  </BalField>
+</form>
+```
+
+Now we have to define the logic of our form with the help of VeeValidate.
+
+```typescript
+import { ref } from 'vue'
+import { BalField, BalFieldLabel, BalFieldControl, BalFieldMessage, BalInput } from '@baloise/design-system-components-vue'
+import { rules } from '@baloise/web-app-validators-vue'
+import { useField, useForm, useIsFormValid } from 'vee-validate'
+import { isRequired } from '../helpers/validators'
+
+const { validate } = useForm()
+const isFormValid = useIsFormValid()
+
+const isFirstNameDisabled = ref(false)
+const {
+  firstname: value,
+  firstNameName: name,
+  firstnameErrorMessage: errorMessage,
+} = useField('firstname', rules(isFirstNameDisabled, [
+  isRequired(),
+]))
+
+async function submit() {
+  const { valid, errors } = await validate()
+  ...
+}
+
+function disable() {
+  isFirstNameDisabled.value = !isFirstNameDisabled.value
+}
+```
+
+<!-- ## Usage with React -->
+
+<bal-doc-github link="/stories/implementation/07-form.stories.mdx"></bal-doc-github>

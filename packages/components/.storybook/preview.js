@@ -98,10 +98,12 @@ export const parameters = {
     storySort: {
       order: [
         'Welcome',
-        'Why a Design System',
+        'Design System',
         'Changelog',
+        'Support',
         'Getting-Started',
         ['Overview', 'How to use Storybook', 'Figma', 'HTML5', 'Angular', 'Vue', 'React'],
+        'Implementation',
         'Design',
         ['Overview','Colors', 'Typography', 'Icons', 'Spacing', 'Breakpoints', 'Grid', 'Page Layout', 'Templates', 'Form'],
         'Components',

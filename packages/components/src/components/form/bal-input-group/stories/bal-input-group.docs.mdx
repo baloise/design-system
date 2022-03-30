@@ -1,21 +1,79 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
 
-<span id="story--components-form-input-group--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-form-input-group--basic">Input Group</bal-doc-banner>
 
-# Input Group
+<bal-doc-tabs>
+  <a href="#story--components-form-input-group--basic">Overview</a>
+  {/* <a href="#examples">Examples</a> */}
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#tutorials-and-templates">Tutorials and Templates</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-Todo add some description to the component and its purpose
+<bal-doc-lead>
+  <b>Input Group</b> can combine various components to one field control.
+</bal-doc-lead>
 
-<Canvas>
+<Canvas withSource="open">
   <Story id="components-form-input-group--basic" />
 </Canvas>
+
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-form-input-group--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
 
 ## Component Api
 
 <Description markdown={readme} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
+
+## Tutorials and Templates
+
+A list of tutorials how to use or create this component and templates to see how it can
+be combined with other components.
+
+import IconDocument from '../../../../../../icons/svg/icon-document.svg'
+import IconAccount from '../../../../../../icons/svg/icon-account.svg'
+
+<bal-doc-link-list one-column>
+  <a href="?path=/story/implementation-form--page">
+    <bal-doc-link-list-item image={IconDocument} subject="Form Tutorial">
+      Documentation how to build forms and how to use the components.
+    </bal-doc-link-list-item>
+  </a>
+  <a href="?path=/story/design-common-templates--contact-form">
+    <bal-doc-link-list-item image={IconAccount} subject="Template Contact Form">
+      A template with to illustrate the structure of a form.
+    </bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

@@ -25,6 +25,7 @@ import {
   inputSetFocus,
 } from '../../../helpers/form-input.helpers'
 import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
+import { Props } from '../../../props'
 
 @Component({
   tag: 'bal-textarea',
@@ -113,7 +114,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   /**
    * Indicates how the control wraps text.
    */
-  @Prop() wrap?: 'hard' | 'soft' | 'off'
+  @Prop() wrap?: Props.BalTextareaWrap
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -130,7 +131,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
    * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
    * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
    */
-  @Prop() inputmode?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
+  @Prop() inputmode?: Props.BalTextareaInputMode
 
   /**
    * The value of the textarea.

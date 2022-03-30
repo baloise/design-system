@@ -3,7 +3,7 @@ import { BalComponentStory } from '../../../../stories/utils'
 import { BalTimeinput } from '../../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
-  title: 'Components/Form/Timeinput',
+  title: 'Components/Form/Time Input',
   component: BalTimeinput,
   docs,
   status: 'beta',

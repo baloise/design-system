@@ -14,7 +14,7 @@ import {
 } from '@stencil/core'
 import Big from 'big.js'
 import { formatLocaleNumber } from '@baloise/web-app-utils'
-import { debounceEvent, findItemLabel } from '../../../helpers/helpers'
+import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
 import { FormInput, inputListenOnClick } from '../../../helpers/form-input.helpers'
 import {
   attachComponentToConfig,
@@ -86,14 +86,6 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
    */
   @Prop({ mutable: true }) value = 0
 
-  // @Watch('value')
-  // protected async valueChanged(newValue: number, oldValue: number) {
-  //   if (this.didInit && newValue !== oldValue) {
-  //     this.balInput.emit(newValue)
-  //     this.balChange.emit(newValue)
-  //   }
-  // }
-
   /**
    * Emitted when the input value has changed.
    */
@@ -112,6 +104,10 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
   connectedCallback() {
     this.debounceChanged()
     attachComponentToConfig(this)
+  }
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
   disconnectedCallback() {
@@ -196,6 +192,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           id={this.inputId}
           aria-labelledby={labelId}
           disabled={this.disabled}
+          {...this.inheritedAttributes}
         />
       </Host>
     )

@@ -18,6 +18,11 @@ export class DataValue {
   @Prop() disabled = false
 
   /**
+   * If `true` the text will break and the height of the item increases.
+   */
+  @Prop() multiline = false
+
+  /**
    * Emitted when the edit button has focus.
    */
   @Event() balClick!: EventEmitter<MouseEvent>
@@ -46,6 +51,7 @@ export class DataValue {
         class={{
           'bal-data-value': true,
           'is-editable': this.editable,
+          'is-multiline': this.multiline,
         }}
       >
         <div>
@@ -57,13 +63,12 @@ export class DataValue {
           outlined
           color="text"
           size="small"
+          icon="edit"
           disabled={this.disabled}
           onBalBlur={_ => this.balBlur.emit()}
           onBalFocus={_ => this.balFocus.emit()}
           onClick={ev => this.onClickHandler(ev)}
-        >
-          <bal-icon name="edit" size="small"></bal-icon>
-        </bal-button>
+        ></bal-button>
       </Host>
     )
   }

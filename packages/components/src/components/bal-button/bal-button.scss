@@ -85,19 +85,6 @@ bal-button.is-fullwidth {
     border-bottom-right-radius: $radius-none !important;
   }
 
-  &:focus span,
-  &:active span,
-  &:focus bal-text,
-  &:active bal-text,
-  &:focus bal-icon,
-  &:active bal-icon,
-  &:focus bal-spinner,
-  &:active bal-spinner {
-    position: relative;
-    top: 0;
-    left: 0;
-  }
-
   .icon-left,
   .icon-right {
     align-items: center;

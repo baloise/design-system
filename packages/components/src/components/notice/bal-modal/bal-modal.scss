@@ -56,8 +56,12 @@ bal-modal-header {
 
 bal-modal-body {
   bal-button-group {
-    margin-top: 24px;
+    margin-top: 20px;
   }
+}
+
+bal-modal-header + bal-modal-body {
+  padding-top: 0 !important;
 }
 
 @include mobile() {
@@ -80,6 +84,62 @@ bal-modal-body {
     .modal-card {
       margin: 0;
       min-height: 100%;
+    }
+  }
+}
+
+.modal-card {
+  bal-modal-header,
+  bal-modal-body {
+    padding: 16px;
+  }
+}
+
+@include tablet() {
+  .modal-card {
+    &.has-space-small {
+      bal-modal-header {
+        padding: 24px;
+
+        bal-close {
+          right: 24px;
+          top: 24px;
+        }
+      }
+
+      bal-modal-body {
+        padding: 24px;
+      }
+    }
+
+    &.has-space-medium {
+      bal-modal-header {
+        padding: 32px;
+
+        bal-close {
+          right: 32px;
+          top: 32px;
+        }
+      }
+
+      bal-modal-body {
+        padding: 32px;
+      }
+    }
+
+    &.has-space-large {
+      bal-modal-header {
+        padding: 48px;
+
+        bal-close {
+          right: 48px;
+          top: 48px;
+        }
+      }
+
+      bal-modal-body {
+        padding: 48px;
+      }
     }
   }
 }

@@ -1,35 +1,15 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule, NgZone } from '@angular/core'
 import { CommonModule, DOCUMENT } from '@angular/common'
-import { FormsModule } from '@angular/forms'
 
 import { appInitialize, BaloiseDesignSystemAngularConfig } from './app-initialize'
-import { BooleanValueAccessor } from './directives/boolean-value-accessor'
-import { TextValueAccessor } from './directives/text-value-accessor'
-import { SelectValueAccessor } from './directives/select-value-accessor'
-import { CheckboxValueAccessor } from './directives/checkbox-accessor'
-import { NumericValueAccessor } from './directives/number-value-accessor'
-
-import { AutoFocus } from './focus.directive'
 import { AngularDelegate, BalAppModule, BalNoticesModule } from '.'
-
-const DECLARATIONS = [
-  // directives
-  AutoFocus,
-
-  // ngModel accessors
-  CheckboxValueAccessor,
-  BooleanValueAccessor,
-  TextValueAccessor,
-  SelectValueAccessor,
-  NumericValueAccessor,
-]
 
 const MODULES = [BalAppModule, BalNoticesModule]
 
 @NgModule({
-  declarations: [DECLARATIONS],
-  exports: [DECLARATIONS, MODULES],
-  imports: [CommonModule, FormsModule, MODULES],
+  declarations: [],
+  exports: [MODULES],
+  imports: [CommonModule, MODULES],
   providers: [AngularDelegate],
 })
 export class BalCoreModule {

@@ -5,6 +5,7 @@ import { watchForTabs } from './utils/watch-tabs'
 import { TabList } from './components/tabs'
 import { OStepList } from './components/o-steps'
 import { StepList } from './components/steps'
+import { Props } from '../../props'
 
 @Component({
   tag: 'bal-tabs',
@@ -23,7 +24,7 @@ export class Tabs {
   /**
    * Defines the layout of the tabs.
    */
-  @Prop() interface: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' = 'tabs'
+  @Prop() interface: Props.BalTabsInterface = 'tabs'
 
   /**
    * If `true` the field expands over the whole width.

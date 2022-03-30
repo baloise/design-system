@@ -29,6 +29,10 @@ bal-icon {
   max-height: 24px;
   pointer-events: visible;
 
+  &.is-inline {
+    display: inline-flex !important;
+  }
+
   .bal-icon-inner {
     display: block;
     position: static;
