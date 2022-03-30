@@ -222,7 +222,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
    * Formatting for 'claim-number': ('73/001217/16.9')
    * Formatting for 'offer-number': ('98/7.654.321')
    */
-  @Prop() mask?: 'contract-number' | 'claim-number' | 'offer-number' = undefined
+  @Prop() mask?: Props.BalInputMask = undefined
 
   /**
    * Emitted when a keyboard input occurred.

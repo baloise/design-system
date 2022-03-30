@@ -97,6 +97,8 @@ export namespace Props {
 
   export type BalInputInputMode = 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
 
+  export type BalInputMask = 'contract-number' | 'claim-number' | 'offer-number'
+
   // From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types
   export type BalInputInputType =
     | 'button'

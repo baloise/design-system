@@ -812,7 +812,7 @@ export namespace Components {
         /**
           * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '00/0.000.000' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
          */
-        "mask"?: 'contract-number' | 'claim-number' | 'offer-number';
+        "mask"?: Props.BalInputMask;
         /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
          */
@@ -3221,7 +3221,7 @@ declare namespace LocalJSX {
         /**
           * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '00/0.000.000' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
          */
-        "mask"?: 'contract-number' | 'claim-number' | 'offer-number';
+        "mask"?: Props.BalInputMask;
         /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
          */
