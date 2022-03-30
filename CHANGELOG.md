@@ -5,98 +5,70 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### [10.7.2](https://github.com/baloise/design-system/compare/v10.7.1...v10.7.2) (2022-03-29)
 
-
 ### Bug Fixes
 
-* **datepicker:** adds missing days to february ([31a399a](https://github.com/baloise/design-system/commit/31a399a1f6b0e4b12fb770730e22a5231e4737dd))
-* **hint:** close label is now optional ([04cd2b3](https://github.com/baloise/design-system/commit/04cd2b3dd962086f2ce2a3780d7e9606cc92312c))
-* **modal:** set space as optional ([de62b2d](https://github.com/baloise/design-system/commit/de62b2dcce59e2966bd8e2b352c7f5b2f8e3e186))
+- **datepicker:** adds missing days to february ([31a399a](https://github.com/baloise/design-system/commit/31a399a1f6b0e4b12fb770730e22a5231e4737dd))
+- **hint:** close label is now optional ([04cd2b3](https://github.com/baloise/design-system/commit/04cd2b3dd962086f2ce2a3780d7e9606cc92312c))
+- **modal:** set space as optional ([de62b2d](https://github.com/baloise/design-system/commit/de62b2dcce59e2966bd8e2b352c7f5b2f8e3e186))
 
 ## [10.7.0](https://github.com/baloise/design-system/compare/v10.6.3...v10.7.0) (2022-03-29)
 
-
 ### Features
 
-* **modal:** add space property ([103348d](https://github.com/baloise/design-system/commit/103348d01ab1d2f49de73f3d9d042842e2c4f85c))
-
+- **modal:** add space property ([103348d](https://github.com/baloise/design-system/commit/103348d01ab1d2f49de73f3d9d042842e2c4f85c))
 
 ### Bug Fixes
 
-* **card:** subtitle can have diffrent color and be bold ([be858a8](https://github.com/baloise/design-system/commit/be858a85da35315aba0f4301dd5253bcd5474667))
-* **testing:** add missing hint commands ([547f420](https://github.com/baloise/design-system/commit/547f420b3f8d5b5468f9f9eae00349cafcda835b))
-
-### 10.6.3 (2022-03-24)
-
-
+- **card:** subtitle can have diffrent color and be bold ([be858a8](https://github.com/baloise/design-system/commit/be858a85da35315aba0f4301dd5253bcd5474667))
+- **testing:** add missing hint commands ([547f420](https://github.com/baloise/design-system/commit/547f420b3f8d5b5468f9f9eae00349cafcda835b))
 
 ### [10.7.1](https://github.com/baloise/design-system/compare/v10.7.0...v10.7.1) (2022-03-29)
 
-
 ### Features
 
-* **modal:** add space property ([103348d](https://github.com/baloise/design-system/commit/103348d01ab1d2f49de73f3d9d042842e2c4f85c))
-
+- **modal:** add space property ([103348d](https://github.com/baloise/design-system/commit/103348d01ab1d2f49de73f3d9d042842e2c4f85c))
 
 ### Bug Fixes
 
-* **card:** subtitle can have diffrent color and be bold ([be858a8](https://github.com/baloise/design-system/commit/be858a85da35315aba0f4301dd5253bcd5474667))
-* **modal:** set space as optional ([de62b2d](https://github.com/baloise/design-system/commit/de62b2dcce59e2966bd8e2b352c7f5b2f8e3e186))
-* **testing:** add missing hint commands ([547f420](https://github.com/baloise/design-system/commit/547f420b3f8d5b5468f9f9eae00349cafcda835b))
-
-### 10.6.3 (2022-03-24)
-
-
+- **card:** subtitle can have diffrent color and be bold ([be858a8](https://github.com/baloise/design-system/commit/be858a85da35315aba0f4301dd5253bcd5474667))
+- **modal:** set space as optional ([de62b2d](https://github.com/baloise/design-system/commit/de62b2dcce59e2966bd8e2b352c7f5b2f8e3e186))
+- **testing:** add missing hint commands ([547f420](https://github.com/baloise/design-system/commit/547f420b3f8d5b5468f9f9eae00349cafcda835b))
 
 ## [10.7.0](https://github.com/baloise/design-system/compare/v10.6.3...v10.7.0) (2022-03-29)
 
-
 ### Features
 
-* **modal:** add space property ([103348d](https://github.com/baloise/design-system/commit/103348d01ab1d2f49de73f3d9d042842e2c4f85c))
-
+- **modal:** add space property ([103348d](https://github.com/baloise/design-system/commit/103348d01ab1d2f49de73f3d9d042842e2c4f85c))
 
 ### Bug Fixes
 
-* **card:** subtitle can have diffrent color and be bold ([be858a8](https://github.com/baloise/design-system/commit/be858a85da35315aba0f4301dd5253bcd5474667))
-* **testing:** add missing hint commands ([547f420](https://github.com/baloise/design-system/commit/547f420b3f8d5b5468f9f9eae00349cafcda835b))
-
-
+- **card:** subtitle can have diffrent color and be bold ([be858a8](https://github.com/baloise/design-system/commit/be858a85da35315aba0f4301dd5253bcd5474667))
+- **testing:** add missing hint commands ([547f420](https://github.com/baloise/design-system/commit/547f420b3f8d5b5468f9f9eae00349cafcda835b))
 
 ### [10.6.3](https://github.com/baloise/design-system/compare/v10.6.2...v10.6.3) (2022-03-24)
 
-
 ### Bug Fixes
 
-* **modal:** adjust tesing commands ([00b0f7e](https://github.com/baloise/design-system/commit/00b0f7eaa50e7064d50567a7effe8926fef5b5c3))
-* **modal:** remove focus of element to eliminate window scrolling ([f2264df](https://github.com/baloise/design-system/commit/f2264df4362db484b7fefbdd8de445b281626b7f))
-* **select-button:** add vertical style ([26199e8](https://github.com/baloise/design-system/commit/26199e818656f8addca35757a2d9465a3e94be64))
-* **select-button:** adjust for long labels ([c4496c8](https://github.com/baloise/design-system/commit/c4496c8c38a7c51e0239b78392366945c59b2c2b))
-
-## 10.6.0 (2022-03-23)
-
-
+- **modal:** adjust tesing commands ([00b0f7e](https://github.com/baloise/design-system/commit/00b0f7eaa50e7064d50567a7effe8926fef5b5c3))
+- **modal:** remove focus of element to eliminate window scrolling ([f2264df](https://github.com/baloise/design-system/commit/f2264df4362db484b7fefbdd8de445b281626b7f))
+- **select-button:** add vertical style ([26199e8](https://github.com/baloise/design-system/commit/26199e818656f8addca35757a2d9465a3e94be64))
+- **select-button:** adjust for long labels ([c4496c8](https://github.com/baloise/design-system/commit/c4496c8c38a7c51e0239b78392366945c59b2c2b))
 
 ### [10.6.2](https://github.com/baloise/design-system/compare/v10.6.1...v10.6.2) (2022-03-24)
 
-
 ### Bug Fixes
 
-* **modal:** remove focus of element to eliminate window scrolling ([f2264df](https://github.com/baloise/design-system/commit/f2264df4362db484b7fefbdd8de445b281626b7f))
-* **select-button:** add vertical style ([26199e8](https://github.com/baloise/design-system/commit/26199e818656f8addca35757a2d9465a3e94be64))
-* **select-button:** adjust for long labels ([c4496c8](https://github.com/baloise/design-system/commit/c4496c8c38a7c51e0239b78392366945c59b2c2b))
+- **modal:** remove focus of element to eliminate window scrolling ([f2264df](https://github.com/baloise/design-system/commit/f2264df4362db484b7fefbdd8de445b281626b7f))
+- **select-button:** add vertical style ([26199e8](https://github.com/baloise/design-system/commit/26199e818656f8addca35757a2d9465a3e94be64))
+- **select-button:** adjust for long labels ([c4496c8](https://github.com/baloise/design-system/commit/c4496c8c38a7c51e0239b78392366945c59b2c2b))
 
 ## 10.6.0 (2022-03-23)
 
-
-
 ### [10.6.1](https://github.com/baloise/design-system/compare/v10.6.0...v10.6.1) (2022-03-24)
-
 
 ### Bug Fixes
 
-* **modal:** remove focus of element to eliminate window scrolling ([f2264df](https://github.com/baloise/design-system/commit/f2264df4362db484b7fefbdd8de445b281626b7f))
-
-
+- **modal:** remove focus of element to eliminate window scrolling ([f2264df](https://github.com/baloise/design-system/commit/f2264df4362db484b7fefbdd8de445b281626b7f))
 
 ## [10.6.0](https://github.com/baloise/design-system/compare/v10.5.2...v10.6.0) (2022-03-23)
 
