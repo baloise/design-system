@@ -13,10 +13,6 @@ bal-datepicker {
   width: 38px;
 }
 
-.datepicker-footer {
-  margin-top: 15px;
-}
-
 .pagination {
   display: flex;
   gap: 8px;
@@ -120,17 +116,11 @@ bal-datepicker {
   user-select: none;
 }
 
-@include tablet() {
-  .datepicker-popup {
-    padding: 16px;
-  }
-}
-
 .datepicker-table {
   display: table;
   border-collapse: collapse;
   width: 100%;
-  margin: 15px auto 0 auto;
+  margin: 8px auto 0 auto;
 
   .datepicker-body {
     display: table-row-group;
@@ -207,7 +197,7 @@ bal-datepicker {
 
 @include tablet() {
   .datepicker-popup {
-    padding: 16px 32px;
+    padding: 16px 24px 24px 24px;
   }
 
   .datepicker-table {
