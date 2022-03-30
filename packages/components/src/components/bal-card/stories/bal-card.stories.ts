@@ -42,6 +42,7 @@ export const Basic = args => ({
   components: { ...component.components, BalButton, BalHeading },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
+  <bal-card-subtitle bold color="blue">Your Product</bal-card-subtitle>
   <bal-card-title>BaloiseCombi</bal-card-title>
   <bal-card-subtitle>Police number 70/2.937.458</bal-card-subtitle>
   <bal-card-content>

@@ -14,5 +14,18 @@ describe('Hint', () => {
   it('should contain spider man in the overlay', () => {
     page.open()
     cy.get(page.hint).click().balHintFindOverlay().contains('Spider-Man')
+    cy.get('body').click()
+  })
+
+  it('should contain spider man in the overlay', () => {
+    page.open()
+    cy.get(page.dataHint).click().balHintFindOverlay().contains('Spider-Man')
+    cy.get('body').click()
+  })
+
+  it('should contain spider man in the overlay', () => {
+    page.open()
+    cy.get(page.fieldHint).balFieldFindHint().click().balHintFindOverlay().contains('Spider-Man')
+    cy.get('body').click()
   })
 })

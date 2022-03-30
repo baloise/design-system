@@ -327,6 +327,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private updatePointerDates() {
     let date = now()
+    date.setDate(1)
     if (this.selectedDate) {
       date = parse(this.selectedDate) as Date
     } else {

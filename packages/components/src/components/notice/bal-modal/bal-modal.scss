@@ -83,3 +83,44 @@ bal-modal-body {
     }
   }
 }
+
+.modal-card {
+  bal-modal-header,
+  bal-modal-body {
+    padding: 16px;
+  }
+}
+
+@include tablet() {
+  .modal-card {
+    &.has-space-medium {
+      bal-modal-header {
+        padding: 32px 32px 0 32px;
+
+        bal-close {
+          right: 32px;
+          top: 32px;
+        }
+      }
+
+      bal-modal-body {
+        padding: 32px;
+      }
+    }
+
+    &.has-space-large {
+      bal-modal-header {
+        padding: 48px 48px 0 48px;
+
+        bal-close {
+          right: 48px;
+          top: 48px;
+        }
+      }
+
+      bal-modal-body {
+        padding: 48px;
+      }
+    }
+  }
+}

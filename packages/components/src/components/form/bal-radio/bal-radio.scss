@@ -135,7 +135,6 @@ bal-radio {
       line-height: 1.125;
       display: flex;
       flex: 1 1 0;
-      height: 32px;
       min-height: 32px;
       flex-direction: column;
       align-items: center;
@@ -143,7 +142,7 @@ bal-radio {
       cursor: pointer;
       border-radius: 100px;
       background: transparent;
-      padding: 0 16px !important;
+      padding: 4px 16px !important;
       border-color: transparent;
       border-width: 2px;
       font-family: $family-primary;

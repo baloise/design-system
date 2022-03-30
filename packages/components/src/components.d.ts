@@ -243,6 +243,14 @@ export namespace Components {
     }
     interface BalCardSubtitle {
         /**
+          * If `true` the card text color is bold.
+         */
+        "bold": boolean;
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "color": Props.BalHeadingColor;
+        /**
           * If `true` the card text color becomes white.
          */
         "inverted": boolean;
@@ -691,7 +699,7 @@ export namespace Components {
         /**
           * Text for the close button.
          */
-        "closeLabel": string;
+        "closeLabel"?: string;
         /**
           * Closes the hint box.
          */
@@ -1034,6 +1042,10 @@ export namespace Components {
           * Presents the modal through the modal controller
          */
         "present": () => Promise<void>;
+        /**
+          * Defines the space/padding of the modal
+         */
+        "space": Props.BalModalSpace;
     }
     interface BalModalBody {
     }
@@ -2629,6 +2641,14 @@ declare namespace LocalJSX {
     }
     interface BalCardSubtitle {
         /**
+          * If `true` the card text color is bold.
+         */
+        "bold"?: boolean;
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "color"?: Props.BalHeadingColor;
+        /**
           * If `true` the card text color becomes white.
          */
         "inverted"?: boolean;
@@ -3453,6 +3473,10 @@ declare namespace LocalJSX {
          */
         "onBalModalWillPresent"?: (event: CustomEvent<void>) => void;
         "overlayIndex": number;
+        /**
+          * Defines the space/padding of the modal
+         */
+        "space"?: Props.BalModalSpace;
     }
     interface BalModalBody {
     }
