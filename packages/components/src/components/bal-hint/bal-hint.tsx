@@ -126,7 +126,7 @@ export class Hint implements BalConfigObserver {
         ></bal-icon>
 
         <div
-          class="bal-hint-content data-test-hint-content p-4"
+          class="bal-hint-content data-test-hint-content p-5"
           style={{ display: this.isActive ? 'inline-block' : 'none' }}
         >
           <slot></slot>
