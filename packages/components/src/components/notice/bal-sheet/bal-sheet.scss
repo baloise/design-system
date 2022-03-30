@@ -14,8 +14,6 @@ bal-sheet {
   > div.container {
     background-color: $blue-0;
     box-shadow: $shadow;
-    padding-top: 8px;
-    padding-bottom: 8px;
   }
 
   @include tablet() {
@@ -28,7 +26,6 @@ bal-sheet {
       > div.inner {
         background-color: $blue-0;
         box-shadow: $shadow;
-        padding: 12px 16px;
       }
     }
   }
