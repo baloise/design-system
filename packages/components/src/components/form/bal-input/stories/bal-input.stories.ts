@@ -7,7 +7,6 @@ import {
   BalFieldLabel,
   BalFieldMessage,
 } from '../../../../../.storybook/vue/components'
-import { configArgTypes, configDefaultArgs, reduceConfigArgs, setConfig } from '../../../../stories/utils/config'
 
 const balFieldArgTypes = stencilArgType(BalField)
 
@@ -22,10 +21,8 @@ const component = BalComponentStory({
         category: 'custom',
       },
     },
-    ...configArgTypes,
   },
   args: {
-    ...configDefaultArgs,
     invalid: false,
     hasFieldMessage: true,
   },
@@ -56,12 +53,7 @@ const excludedControls = [
 
 const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
-  setup: () => {
-    setConfig(args)
-    return {
-      args: reduceConfigArgs(args),
-    }
-  },
+  setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
@@ -95,6 +87,42 @@ InvalidInput.args = {
 }
 InvalidInput.parameters = {
   ...component.sourceCode(InvalidInput),
+  controls: {
+    exclude: excludedControls,
+  },
+}
+
+export const ContractNumberInput = Template.bind({})
+ContractNumberInput.args = {
+  mask: 'contract-number',
+  placeholder: 'Enter only numbers which will be formatted',
+}
+ContractNumberInput.parameters = {
+  ...component.sourceCode(ContractNumberInput),
+  controls: {
+    exclude: excludedControls,
+  },
+}
+
+export const ClaimNumberInput = Template.bind({})
+ClaimNumberInput.args = {
+  mask: 'claim-number',
+  placeholder: 'Enter only numbers which will be formatted',
+}
+ClaimNumberInput.parameters = {
+  ...component.sourceCode(ClaimNumberInput),
+  controls: {
+    exclude: excludedControls,
+  },
+}
+
+export const OfferNumberInput = Template.bind({})
+OfferNumberInput.args = {
+  mask: 'offer-number',
+  placeholder: 'Enter only numbers which will be formatted',
+}
+OfferNumberInput.parameters = {
+  ...component.sourceCode(OfferNumberInput),
   controls: {
     exclude: excludedControls,
   },
