@@ -36,7 +36,9 @@
     "build:clean": "rimraf docs && rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p tsconfig.build.json",
     "build:bundle": "rollup --config rollup.config.js",
-    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
+    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
+    "base": "cypress run --env type=base --config screenshotsFolder=cypress/snapshots/base,testFiles=\"**/*visual.spec.ts\"",
+    "actual": "cypress run --env type=actual --config testFiles=\"**/*visual.spec.ts\""
   },
   "license": "Apache-2.0",
   "dependencies": {

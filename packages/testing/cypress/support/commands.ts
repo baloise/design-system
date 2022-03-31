@@ -25,3 +25,10 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import 'cypress-file-upload'
 import '../../src'
+
+import * as compareSnapshotCommand from 'cypress-visual-regression/dist/command'
+
+const compareSnapshotCommandAsAny = compareSnapshotCommand as any
+compareSnapshotCommandAsAny({
+  capture: 'fullPage',
+})

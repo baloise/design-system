@@ -12,10 +12,9 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
-/**
- * @type {Cypress.PluginConfig}
- */
-module.exports = () => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
+import * as getCompareSnapshotsPlugin from 'cypress-visual-regression/dist/plugin'
+
+export default function configurePlugins(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) {
+  const getCompareSnapshotsPluginAsAny = getCompareSnapshotsPlugin as any
+  getCompareSnapshotsPluginAsAny(on, config)
 }

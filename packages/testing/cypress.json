@@ -2,5 +2,10 @@
   "baseUrl": "http://localhost:3333",
   "screenshotOnRunFailure": false,
   "video": false,
-  "ignoreTestFiles": "**/node_modules/**"
+  "ignoreTestFiles": "**/node_modules/**",
+  "screenshotsFolder": "./cypress/snapshots/actual",
+  "trashAssetsBeforeRuns": true,
+  "env": {
+    "failSilently": false
+  }
 }
