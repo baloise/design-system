@@ -58,7 +58,7 @@ export const selectors = {
     content: 'bal-popover-content',
   },
   input: {
-    main: '> input',
+    main: 'input',
   },
   textarea: {
     main: '> textarea',
