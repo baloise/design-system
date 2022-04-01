@@ -29,16 +29,16 @@
     "dist/"
   ],
   "scripts": {
-    "serve": "cypress open",
-    "test": "cypress run",
     "cy:install": "cypress install",
+    "serve": "cypress open --env type=actual",
+    "test": "cypress run --env type=actual",
+    "visual:base": "cypress run --env type=base --config screenshotsFolder=cypress/snapshots/base,testFiles=\"**/*visual.spec.ts\"",
+    "visual:actual": "cypress run --env type=actual --config testFiles=\"**/*visual.spec.ts\"",
     "build": "npm run build:clean && npm run build:compile && npm run build:bundle",
     "build:clean": "rimraf docs && rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p tsconfig.build.json",
     "build:bundle": "rollup --config rollup.config.js",
-    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
-    "visual:base": "cypress run --env type=base --config screenshotsFolder=cypress/snapshots/base,testFiles=\"**/*visual.spec.ts\"",
-    "visual:actual": "cypress run --env type=actual --config testFiles=\"**/*visual.spec.ts\""
+    "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "license": "Apache-2.0",
   "dependencies": {
