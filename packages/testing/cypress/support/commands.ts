@@ -27,8 +27,16 @@ import 'cypress-file-upload'
 import '../../src'
 
 import * as compareSnapshotCommand from 'cypress-visual-regression/dist/command'
+import { deepReady } from '@baloise/design-system-components'
 
 const compareSnapshotCommandAsAny = compareSnapshotCommand as any
 compareSnapshotCommandAsAny({
   capture: 'fullPage',
+})
+
+Cypress.Commands.add('visitPage', (url: string) => {
+  cy.visit(url)
+  cy.get('bal-doc-app').then(async $app => {
+    await deepReady($app.get(0))
+  })
 })

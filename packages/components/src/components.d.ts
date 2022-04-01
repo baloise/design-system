@@ -1628,7 +1628,6 @@ export namespace Components {
           * The theme type of the tag. Given by bulma our css framework.
          */
         "color": Props.BalTagColor;
-        "dense": boolean;
         /**
           * If `true` a light version of the color is displayed
          */
@@ -4102,7 +4101,6 @@ declare namespace LocalJSX {
           * The theme type of the tag. Given by bulma our css framework.
          */
         "color"?: Props.BalTagColor;
-        "dense"?: boolean;
         /**
           * If `true` a light version of the color is displayed
          */

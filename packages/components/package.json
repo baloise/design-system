@@ -60,7 +60,7 @@
     "test:e2e:watch": "stencil test --e2e --watchAll --config stencil.test.config.ts",
     "log": "stencil build --config stencil.log.config.ts",
     "www": "stencil build --config stencil.test.config.ts",
-    "www:watch": "stencil build --dev --serve --config stencil.test.config.ts --watch"
+    "serve": "stencil build --dev --serve --config stencil.test.config.ts --watch"
   },
   "dependencies": {
     "@baloise/design-system-fonts": "10.7.3",

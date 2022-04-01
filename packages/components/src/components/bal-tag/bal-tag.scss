@@ -7,7 +7,9 @@
 @import 'bal-tag.vars';
 @import 'node_modules/bulma/sass/elements/tag';
 
-bal-tag {
+.tag,
+bal-tag,
+bal-tag.tag {
   @include font-smoothing();
   @include margin(0);
 
@@ -17,26 +19,38 @@ bal-tag {
   line-height: 1;
   vertical-align: top; // the better option for most scenarios
   vertical-align: -webkit-baseline-middle; // the best for those that support it
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  &.is-large {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 
   &.default {
     background-color: $grey;
   }
 
-  &.is-dense {
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 8px;
-    padding-right: 8px;
+  border: 1px solid $grey;
 
-    bal-close {
-      margin-left: 0.25rem;
-      margin-right: 0.1rem;
-    }
+  &.is-info {
+    border-color: $info;
   }
 
-  &.is-transparent {
-    background-color: transparent !important;
-    border-color: transparent !important;
+  &.is-primary {
+    border-color: $primary;
+  }
+
+  &.is-success {
+    border-color: $success;
+  }
+
+  &.is-warning {
+    border-color: $warning;
+  }
+
+  &.is-danger {
+    border-color: $danger;
   }
 
   &.is-light {
@@ -61,6 +75,11 @@ bal-tag {
     &.is-danger {
       border-color: $danger-dark;
     }
+  }
+
+  &.is-transparent {
+    background-color: transparent !important;
+    border-color: transparent !important;
   }
 }
 

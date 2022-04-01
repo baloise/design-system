@@ -29,12 +29,6 @@ export class Tag {
 
   /**
    * @internal
-   * Reduces the padding
-   */
-  @Prop() dense = false
-
-  /**
-   * @internal
    * Sets background color to transparent
    */
   @Prop() transparent = false
@@ -58,7 +52,6 @@ export class Tag {
         class={{
           'tag': true,
           'is-light': this.light,
-          'is-dense': this.dense,
           'is-transparent': this.transparent,
           [this.colorCssClass]: true,
           [this.sizeCssClass]: true,
