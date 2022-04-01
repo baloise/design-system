@@ -662,7 +662,16 @@ export class Select {
     } else {
       this.focusIndex = 0
       this.balClick.emit(event)
-      await this.popoverElement?.present()
+
+      if (this.multiple || this.typeahead) {
+        await this.popoverElement?.present()
+      } else {
+        if (this.isPopoverOpen) {
+          await this.popoverElement?.dismiss()
+        } else {
+          await this.popoverElement?.present()
+        }
+      }
     }
   }
 

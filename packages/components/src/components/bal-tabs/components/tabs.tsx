@@ -4,13 +4,20 @@ import { TabProps } from '../bal-tab.type'
 export const TabList: FunctionalComponent<TabProps> = ({
   value,
   expanded,
+  border,
   tabs,
   onSelectTab,
   action,
   actionLabel,
   onActionClick,
 }) => (
-  <div class={['tabs', expanded ? 'is-fullwidth' : ''].join(' ')}>
+  <div
+    class={{
+      'tabs': true,
+      'is-fullwidth': expanded,
+      'has-border-bottom-light': border,
+    }}
+  >
     <ul>
       {tabs.map((tab, index) => (
         <li

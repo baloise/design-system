@@ -1472,6 +1472,10 @@ export namespace Components {
          */
         "duration": number;
         /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
           * The icon of the snackbar header
          */
         "icon": string;
@@ -1483,6 +1487,10 @@ export namespace Components {
           * The subject of the snackbar header
          */
         "subject": string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
     }
     interface BalSpinner {
         /**
@@ -1585,6 +1593,10 @@ export namespace Components {
           * Label for the action button
          */
         "actionLabel": string;
+        /**
+          * If `true` a light border is shown for the tabs.
+         */
+        "border": boolean;
         /**
           * If `true` the tabs or steps can be clicked.
          */
@@ -3926,6 +3938,10 @@ declare namespace LocalJSX {
          */
         "duration"?: number;
         /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
           * The icon of the snackbar header
          */
         "icon"?: string;
@@ -3945,6 +3961,10 @@ declare namespace LocalJSX {
           * The subject of the snackbar header
          */
         "subject"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
     }
     interface BalSpinner {
         /**
@@ -4043,6 +4063,10 @@ declare namespace LocalJSX {
           * Label for the action button
          */
         "actionLabel"?: string;
+        /**
+          * If `true` a light border is shown for the tabs.
+         */
+        "border"?: boolean;
         /**
           * If `true` the tabs or steps can be clicked.
          */

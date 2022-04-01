@@ -4,6 +4,7 @@
 bal-modal-header,
 bal-modal-body {
   font-family: $family-primary;
+  display: block;
 }
 
 bal-modal-header {
@@ -129,7 +130,7 @@ bal-modal-header + bal-modal-body {
 
     &.has-space-large {
       bal-modal-header {
-        padding: 48px;
+        padding: 48px 48px 32px 48px;
 
         bal-close {
           right: 48px;
