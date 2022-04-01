@@ -1,4 +1,14 @@
 Cypress.Commands.add(
+  'balModalFindOpen',
+  {
+    prevSubject: false,
+  },
+  () => {
+    return cy.get('bal-modal[aria-presented="true"] .sc-bal-modal')
+  },
+)
+
+Cypress.Commands.add(
   'balModalIsOpen',
   {
     prevSubject: true,
