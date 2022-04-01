@@ -53,6 +53,17 @@ export class Snackbar {
   @Prop() actionHandler: () => void = () => void 0
 
   /**
+   * Specifies the URL of the page the link goes to
+   */
+  @Prop() href?: string
+
+  /**
+   * Specifies where to display the linked URL.
+   * Only applies when an `href` is provided.
+   */
+  @Prop() target: Props.BalButtonTarget = '_self'
+
+  /**
    * Emitted when snackbar is closed
    */
   @Event() balClose!: EventEmitter<string>
@@ -129,6 +140,8 @@ export class Snackbar {
               color={this.buttonType}
               inverted={this.color !== ''}
               outlined
+              href={this.href}
+              target={this.target}
               onClick={() => this.onActionHandler()}
             >
               {this.action}
