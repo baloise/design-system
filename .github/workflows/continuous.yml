@@ -52,3 +52,10 @@ jobs:
       - uses: cypress-io/github-action@v2
         with:
           working-directory: packages/testing
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@latest
+        if: failure()
+        with:
+            name: cypress-snapshots
+            path: packages/testing/cypress/snapshots
