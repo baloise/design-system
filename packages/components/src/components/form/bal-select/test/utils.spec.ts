@@ -1,5 +1,5 @@
 import { BalOptionController } from '../bal-select'
-import { addValue, removeValue, validateAfterBlur, findLabelByValue, findOptionByLabel } from './utils'
+import { addValue, removeValue, validateAfterBlur, findLabelByValue, findOptionByLabel } from '../utils/utils'
 
 describe('bal-select', () => {
   let optionA: BalOptionController
