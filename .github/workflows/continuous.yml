@@ -54,7 +54,7 @@ jobs:
           working-directory: packages/testing
 
       - name: Upload screenshots
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@3
         if: failure()
         with:
             name: cypress-snapshots
