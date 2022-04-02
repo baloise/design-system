@@ -64,12 +64,12 @@
     "storybook:start": "node .build/banner.js storybook:start && http-server storybook -p 8080"
   },
   "devDependencies": {
-    "@commitlint/cli": "^15.0.0",
-    "@commitlint/config-conventional": "^15.0.0",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "^5.8.0",
     "chalk": "^4.1.2",
-    "concurrently": "^6.5.1",
+    "concurrently": "^7.0.0",
     "conventional-changelog-conventionalcommits": "^4.6.3",
     "cspell": "^5.18.4",
     "eslint": "^8.5.0",
