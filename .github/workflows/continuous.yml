@@ -51,7 +51,6 @@ jobs:
 
       - uses: cypress-io/github-action@v2
         with:
-          parallel: true
           working-directory: packages/components
           env: type=actual
         env:
