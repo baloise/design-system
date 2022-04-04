@@ -22,8 +22,11 @@ import '../../../testing/src'
 import 'cypress-file-upload'
 
 import * as compareSnapshotCommand from 'cypress-visual-regression/dist/command'
-
 const compareSnapshotCommandAsAny = compareSnapshotCommand as any
 compareSnapshotCommandAsAny({
   capture: 'fullPage',
 })
+
+import * as installLogsCollector from 'cypress-terminal-report/src/installLogsCollector'
+const installLogs = installLogsCollector as any
+installLogs()

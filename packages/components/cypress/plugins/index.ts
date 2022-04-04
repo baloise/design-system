@@ -13,8 +13,12 @@
 // the project's config changing)
 
 import * as getCompareSnapshotsPlugin from 'cypress-visual-regression/dist/plugin'
+import * as installLogsPrinterPlugin from 'cypress-terminal-report/src/installLogsPrinter'
 
 export default function configurePlugins(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) {
   const getCompareSnapshotsPluginAsAny = getCompareSnapshotsPlugin as any
   getCompareSnapshotsPluginAsAny(on, config)
+
+  const installLogsPrinter = installLogsPrinterPlugin as any
+  installLogsPrinter(on)
 }
