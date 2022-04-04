@@ -31,8 +31,8 @@ jobs:
 
       - uses: cypress-io/github-action@v2
         with:
+          build: npm run cy:build
           start: npm run cy:start
-          wait-on-timeout: 2000
           wait-on: 'http://localhost:3333'
           working-directory: packages/components
           browser: chrome
@@ -55,6 +55,6 @@ jobs:
 
       - uses: EndBug/add-and-commit@v5
         with:
-          message: 'chore(): update lock files'
+          message: 'chore(): update base images'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
