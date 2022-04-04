@@ -43,15 +43,20 @@ jobs:
       # - name: Test
       #   run: npm run test
 
-      - name: Build server in the background
-        run: npm run test:build-server
+      # - name: Build server in the background
+      #   run: npm run test:build-server
 
-      - name: Start server in the background
-        run: npm run test:start-server &
+      # - name: Start server in the background
+      #   run: npm run test:start-server &
 
       - uses: cypress-io/github-action@v2
         with:
+          build: npm run test:build-server
+          start: npm run test:start-server
+          wait-on-timeout: 120
+          wait-on: 'http://localhost:3333'
           working-directory: packages/components
+          browser: chrome
           env: type=actual
           spec: cypress/integration/visual/*
         env:

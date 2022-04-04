@@ -62,10 +62,10 @@
     "www": "stencil build --config stencil.test.config.ts",
     "serve": "stencil build --dev --serve --config stencil.test.config.ts --watch",
     "cy:install": "cypress install",
-    "cy:run": "cypress run --env type=actual",
-    "cy:open": "cypress open --env type=actual",
-    "cy:visual:base": "cypress run --env type=base --config screenshotsFolder=cypress/snapshots/base,testFiles=\"visual/*spec.ts\"",
-    "cy:visual:actual": "cypress run --env type=actual --config testFiles=\"visual/*spec.ts\""
+    "cy:run": "cypress run --env type=actual --browser chrome",
+    "cy:open": "cypress open --env type=actual --browser chrome",
+    "cy:visual:base": "cypress run --browser chrome --env type=base --config screenshotsFolder=cypress/snapshots/base,testFiles=\"visual/*spec.ts\"",
+    "cy:visual:actual": "cypress run --browser chrome --env type=actual --config testFiles=\"visual/*spec.ts\""
   },
   "dependencies": {
     "@baloise/design-system-fonts": "10.7.3",
