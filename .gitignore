@@ -122,6 +122,9 @@ packages/components-angular/src/directives/proxies.module.ts
 packages/testing/cypress/snapshots/actual
 packages/testing/cypress/snapshots/diff
 
+packages/components/cypress/snapshots/actual
+packages/components/cypress/snapshots/diff
+
 packages/fonts/docs/fonts.zip
 packages/icons/docs/icons.json
 packages/icons/docs/icons.zip

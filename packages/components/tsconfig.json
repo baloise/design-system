@@ -6,5 +6,5 @@
     "outDir": ".tmp"
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/stories", "**/*.stories.*"]
+  "exclude": ["node_modules", "**/stories", "**/test", "cypress"]
 }

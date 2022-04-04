@@ -51,11 +51,11 @@ jobs:
 
       - uses: cypress-io/github-action@v2
         with:
-          working-directory: packages/testing
+          working-directory: packages/components
           env: type=actual
 
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: cypress-snapshots
-          path: packages/testing/cypress/snapshots
+          path: packages/components/cypress/snapshots
