@@ -23,7 +23,7 @@ export class DocBanner implements ComponentInterface {
             <bal-heading space="none" inverted>
               <slot></slot>
             </bal-heading>
-            <bal-heading space="none" subtitle level="h4" color="info">
+            <bal-heading space="none" subtitle level="h4" inverted>
               {this.subtitle}
             </bal-heading>
           </div>

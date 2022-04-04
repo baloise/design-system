@@ -18,14 +18,14 @@ export class CardSubtitle {
   /**
    * If `true` the card text color becomes white.
    */
-  @Prop() color: Props.BalHeadingColor = 'info'
+  @Prop() color: Props.BalHeadingColor = ''
 
   render() {
     return (
       <Host class="mx-5">
-        <bal-heading subtitle={!this.bold} level="h5" space="none" color={this.color} inverted={this.inverted}>
+        <bal-text bold={this.bold} space="none" color={this.inverted ? 'white' : this.color}>
           <slot></slot>
-        </bal-heading>
+        </bal-text>
       </Host>
     )
   }

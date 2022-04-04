@@ -94,15 +94,15 @@ export const TeaserCards = args => ({
       </bal-card>
     </div>
     <div class="column is-half">
-      <bal-card v-bind="args" color="info">
+      <bal-card v-bind="args" color="purple">
         <bal-card-content>
           <div class="is-flex is-justify-content-start is-flex-direction-column">
-            <bal-heading color="white" level="h4" space="bottom">Info Card</bal-heading>
-            <bal-text color="white" class="mb-4">
+            <bal-heading level="h4" space="bottom">Info Card</bal-heading>
+            <bal-text class="mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </bal-text>
             <bal-button-group position="center" class="mt-auto">
-              <bal-button expanded outlined inverted color="info">Button</bal-button>
+              <bal-button expanded>Button</bal-button>
             </bal-button-group>
           </div>
           </bal-card-content>

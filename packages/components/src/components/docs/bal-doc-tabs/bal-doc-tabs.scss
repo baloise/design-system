@@ -27,7 +27,7 @@ bal-doc-tabs {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: none !important;
     color: $text-light !important;
     font-size: 1.2rem !important;
     font-family: $family-primary !important;

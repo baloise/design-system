@@ -19,25 +19,25 @@ bal-radio-group {
     flex-direction: column;
     border-radius: 12px;
   }
-}
 
-&:not(.bal-select-button) {
-  &:not(.is-vertical) {
-    & > div {
-      margin-left: -12px;
-      margin-right: -12px;
+  &:not(.bal-select-button) {
+    &:not(.is-vertical) {
+      & > div {
+        margin-left: -12px;
+        margin-right: -12px;
 
-      bal-radio {
-        margin-left: 12px;
-        margin-right: 12px;
+        bal-radio {
+          margin-left: 12px;
+          margin-right: 12px;
+        }
       }
     }
-  }
 
-  &.is-vertical {
-    & > div {
-      bal-radio {
-        display: flex;
+    &.is-vertical {
+      & > div {
+        bal-radio {
+          display: flex;
+        }
       }
     }
   }

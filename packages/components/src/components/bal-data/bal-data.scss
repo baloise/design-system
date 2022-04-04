@@ -66,6 +66,10 @@
         text-overflow: ellipsis;
         min-width: 0;
         padding-bottom: 2px;
+
+        > ul {
+          margin-bottom: 0 !important;
+        }
       }
 
       &.is-multiline {

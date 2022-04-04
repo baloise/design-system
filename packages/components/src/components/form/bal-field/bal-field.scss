@@ -33,7 +33,7 @@ bal-field {
     display: flex;
     align-items: center;
 
-    bal-input + bal-button[size='small'] {
+    bal-input + bal-button {
       margin-left: 8px;
     }
   }

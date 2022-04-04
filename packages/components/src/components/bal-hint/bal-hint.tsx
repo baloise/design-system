@@ -133,6 +133,7 @@ export class Hint implements BalConfigObserver {
           <bal-button-group
             class={{
               'buttons is-row-reverse': true,
+              'mt-5': true,
               'is-hidden-desktop': this.small,
             }}
           >

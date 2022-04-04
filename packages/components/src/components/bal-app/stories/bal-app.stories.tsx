@@ -52,8 +52,8 @@ export const Basic = args => ({
   <header class="has-background-white">
     <bal-navbar no-burger>
       <bal-navbar-brand>
-        <bal-icon name="logo" inverted size="large"></bal-icon>
-        <bal-text style="margin-left: 15px">Portal</bal-text>
+        <bal-logo color="white"></bal-logo>
+        <bal-text class="ml-2" >Portal</bal-text>
       </bal-navbar-brand>
     </bal-navbar>
   </header>

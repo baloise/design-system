@@ -148,7 +148,7 @@ export class RadioGroup implements ComponentInterface {
         }}
         {...this.inheritedAttributes}
       >
-        <div>
+        <div class="fg-2">
           <slot></slot>
         </div>
       </Host>

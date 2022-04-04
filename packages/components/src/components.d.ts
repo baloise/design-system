@@ -10,7 +10,6 @@ import { Props as Props1 } from "./props";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
-import { FontSizeType } from "./types/font.types";
 export namespace Components {
     interface BalAccordion {
         /**
@@ -25,9 +24,6 @@ export namespace Components {
           * Label of the close trigger button
          */
         "closeLabel": string;
-        /**
-          * Defines the color of the accordion.
-         */
         "color": Props.BalAccordionColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -37,6 +33,10 @@ export namespace Components {
           * Closes the accordion
          */
         "dismiss": () => Promise<void>;
+        /**
+          * Controls the style of the accordion
+         */
+        "interface": '' | 'light';
         /**
           * BalIcon of the open trigger button
          */
@@ -532,6 +532,12 @@ export namespace Components {
         "subject": string;
         "template": '' | 'html5' | 'angular' | 'vue' | 'react';
     }
+    interface BalDocShades {
+        "color": string;
+    }
+    interface BalDocSupportColor {
+        "color": string;
+    }
     interface BalDocTabs {
     }
     interface BalDocUsage {
@@ -1001,10 +1007,6 @@ export namespace Components {
     interface BalListItemTitle {
     }
     interface BalLogo {
-        /**
-          * Defines the which branded logo.
-         */
-        "brand": Props.BalLogoBrand;
         /**
           * Defines the color of the logo.
          */
@@ -1677,11 +1679,11 @@ export namespace Components {
         /**
           * Defines the size of the paragraph
          */
-        "size": FontSizeType;
+        "size": Props.BalTextSize;
         /**
           * Defines at which position the heading has spacing.
          */
-        "space": 'none' | 'bottom' | 'top' | 'all' | '';
+        "space": Props.BalTextSpace;
     }
     interface BalTextarea {
         /**
@@ -1989,6 +1991,18 @@ declare global {
     var HTMLBalDocLinkListItemElement: {
         prototype: HTMLBalDocLinkListItemElement;
         new (): HTMLBalDocLinkListItemElement;
+    };
+    interface HTMLBalDocShadesElement extends Components.BalDocShades, HTMLStencilElement {
+    }
+    var HTMLBalDocShadesElement: {
+        prototype: HTMLBalDocShadesElement;
+        new (): HTMLBalDocShadesElement;
+    };
+    interface HTMLBalDocSupportColorElement extends Components.BalDocSupportColor, HTMLStencilElement {
+    }
+    var HTMLBalDocSupportColorElement: {
+        prototype: HTMLBalDocSupportColorElement;
+        new (): HTMLBalDocSupportColorElement;
     };
     interface HTMLBalDocTabsElement extends Components.BalDocTabs, HTMLStencilElement {
     }
@@ -2380,6 +2394,8 @@ declare global {
         "bal-doc-lead": HTMLBalDocLeadElement;
         "bal-doc-link-list": HTMLBalDocLinkListElement;
         "bal-doc-link-list-item": HTMLBalDocLinkListItemElement;
+        "bal-doc-shades": HTMLBalDocShadesElement;
+        "bal-doc-support-color": HTMLBalDocSupportColorElement;
         "bal-doc-tabs": HTMLBalDocTabsElement;
         "bal-doc-usage": HTMLBalDocUsageElement;
         "bal-doc-usage-item": HTMLBalDocUsageItemElement;
@@ -2456,14 +2472,15 @@ declare namespace LocalJSX {
           * Label of the close trigger button
          */
         "closeLabel"?: string;
-        /**
-          * Defines the color of the accordion.
-         */
         "color"?: Props.BalAccordionColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
+        /**
+          * Controls the style of the accordion
+         */
+        "interface"?: '' | 'light';
         /**
           * Emitted when the accordion has opened or closed
          */
@@ -2986,6 +3003,12 @@ declare namespace LocalJSX {
         "subject"?: string;
         "template"?: '' | 'html5' | 'angular' | 'vue' | 'react';
     }
+    interface BalDocShades {
+        "color"?: string;
+    }
+    interface BalDocSupportColor {
+        "color"?: string;
+    }
     interface BalDocTabs {
     }
     interface BalDocUsage {
@@ -3475,10 +3498,6 @@ declare namespace LocalJSX {
     interface BalListItemTitle {
     }
     interface BalLogo {
-        /**
-          * Defines the which branded logo.
-         */
-        "brand"?: Props.BalLogoBrand;
         /**
           * Defines the color of the logo.
          */
@@ -4184,11 +4203,11 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the paragraph
          */
-        "size"?: FontSizeType;
+        "size"?: Props.BalTextSize;
         /**
           * Defines at which position the heading has spacing.
          */
-        "space"?: 'none' | 'bottom' | 'top' | 'all' | '';
+        "space"?: Props.BalTextSpace;
     }
     interface BalTextarea {
         /**
@@ -4367,6 +4386,8 @@ declare namespace LocalJSX {
         "bal-doc-lead": BalDocLead;
         "bal-doc-link-list": BalDocLinkList;
         "bal-doc-link-list-item": BalDocLinkListItem;
+        "bal-doc-shades": BalDocShades;
+        "bal-doc-support-color": BalDocSupportColor;
         "bal-doc-tabs": BalDocTabs;
         "bal-doc-usage": BalDocUsage;
         "bal-doc-usage-item": BalDocUsageItem;
@@ -4462,6 +4483,8 @@ declare module "@stencil/core" {
             "bal-doc-lead": LocalJSX.BalDocLead & JSXBase.HTMLAttributes<HTMLBalDocLeadElement>;
             "bal-doc-link-list": LocalJSX.BalDocLinkList & JSXBase.HTMLAttributes<HTMLBalDocLinkListElement>;
             "bal-doc-link-list-item": LocalJSX.BalDocLinkListItem & JSXBase.HTMLAttributes<HTMLBalDocLinkListItemElement>;
+            "bal-doc-shades": LocalJSX.BalDocShades & JSXBase.HTMLAttributes<HTMLBalDocShadesElement>;
+            "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
             "bal-doc-tabs": LocalJSX.BalDocTabs & JSXBase.HTMLAttributes<HTMLBalDocTabsElement>;
             "bal-doc-usage": LocalJSX.BalDocUsage & JSXBase.HTMLAttributes<HTMLBalDocUsageElement>;
             "bal-doc-usage-item": LocalJSX.BalDocUsageItem & JSXBase.HTMLAttributes<HTMLBalDocUsageItemElement>;

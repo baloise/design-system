@@ -116,8 +116,8 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
 }
 
 .sbdocs-a:not(.button) {
-  color: #000d6e !important;
-  text-decoration: underline !important;
+  color: #000d6e;
+  text-decoration: underline;
 }
 
 /* *************************************** */

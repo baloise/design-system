@@ -24,12 +24,12 @@ export class DocUsageItem implements ComponentInterface {
             [`has-background-${color}-light`]: true,
           }}
         >
-          <h3 class="is-size-4 mt-0">
+          <h3 class="is-size-4 mt-0 mb-4">
             <bal-icon name={icon} inline size="" color={color} class="mr-3"></bal-icon>
             {title}
           </h3>
           {this.image ? (
-            <div class="">
+            <div>
               <slot></slot>
             </div>
           ) : (

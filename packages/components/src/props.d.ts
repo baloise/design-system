@@ -24,15 +24,32 @@ export namespace Props {
   export type BalCardActionsPosition = 'right' | 'center' | ''
   export type BalCardButtonType = BalButtonType
   export type BalCardButtonTarget = BalButtonTarget
-  export type BalCardColor = 'white' | 'primary' | 'info' | 'success' | 'warning' | 'danger' | ''
+  export type BalCardColor =
+    | 'white'
+    | 'primary'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | ''
+    | 'grey'
+    | 'blue'
+    | 'red'
+    | 'yellow'
+    | 'purple'
+    | 'green'
+    | 'red-light'
+    | 'yellow-light'
+    | 'purple-light'
+    | 'green-light'
 
   export type BalCloseSize = 'small' | 'large' | 'medium' | ''
 
-  export type BalHeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  export type BalHeadingLevel = 'display' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue'
 
   export type BalHintPlacement = 'left' | 'right'
-  export type BalIconColor = BalButtonColor | 'white' | ''
+  export type BalIconColor = BalButtonColor | 'white' | 'grey' | ''
   export type BalIconSize = 'xsmall' | 'small' | 'medium' | 'large' | ''
 
   export type BalListItemTarget = BalButtonTarget
@@ -63,7 +80,7 @@ export namespace Props {
 
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar'
 
-  export type BalTagColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | ''
+  export type BalTagColor = 'blue' | 'grey' | 'primary' | 'info' | 'success' | 'warning' | 'danger' | ''
   export type BalTagSize = 'small' | 'medium' | 'large' | ''
 
   export type BalTextSize = 'small' | 'lead' | ''

@@ -12,11 +12,6 @@ bal-doc-usage {
 
   bal-doc-usage-item > div {
     height: 100%;
-    border-left: 4px solid $success;
-  }
-
-  bal-doc-usage-item[theme='dont'] > div {
-    border-left: 4px solid $danger;
   }
 
   bal-doc-usage-item p {
