@@ -31,17 +31,17 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Format
-        run: npm run format:check
+      # - name: Format
+      #   run: npm run format:check
 
-      - name: Lint
-        run: npm run lint:check
+      # - name: Lint
+      #   run: npm run lint:check
 
-      - name: Spell Check
-        run: npm run spell
+      # - name: Spell Check
+      #   run: npm run spell
 
-      - name: Test
-        run: npm run test
+      # - name: Test
+      #   run: npm run test
 
       - name: Build server in the background
         run: npm run test:build-server
@@ -52,12 +52,9 @@ jobs:
       - uses: cypress-io/github-action@v2
         with:
           working-directory: packages/components
-          env: type=actual
-          record: true
-          parallel: true
+          env: type=actual,
+          spec: cypress/integration/visual/*
         env:
-          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -67,3 +64,7 @@ jobs:
         with:
           name: cypress-snapshots
           path: packages/components/cypress/snapshots
+        env:
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

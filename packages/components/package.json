@@ -65,8 +65,7 @@
     "cy:run": "cypress run --env type=actual",
     "cy:open": "cypress open --env type=actual",
     "cy:visual:base": "cypress run --env type=base --config screenshotsFolder=cypress/snapshots/base,testFiles=\"visual/*spec.ts\"",
-    "cy:visual:actual": "cypress run --env type=actual --config testFiles=\"visual/*spec.ts\"",
-    "cy:dashboard": "cypress run --env type=actual --record --key b839088a-80b1-41dc-b850-c8a31855101c"
+    "cy:visual:actual": "cypress run --env type=actual --config testFiles=\"visual/*spec.ts\""
   },
   "dependencies": {
     "@baloise/design-system-fonts": "10.7.3",
