@@ -57,7 +57,6 @@ jobs:
           working-directory: packages/components
           browser: chrome
           env: type=actual
-          spec: cypress/integration/visual/*
         env:
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks

@@ -33,7 +33,6 @@ jobs:
         with:
           build: npm run cy:build
           start: npm run cy:start
-          wait-on-timeout: 2000
           wait-on: 'http://localhost:3333'
           working-directory: packages/components
           browser: chrome
