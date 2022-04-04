@@ -51,8 +51,13 @@ jobs:
 
       - uses: cypress-io/github-action@v2
         with:
+          parallel: true
           working-directory: packages/components
           env: type=actual
+        env:
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-artifact@v3
         if: failure()
