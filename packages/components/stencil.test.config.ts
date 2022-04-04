@@ -3,6 +3,10 @@ import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
 
 export const config: Config = {
   ...StencilBaseConfig,
+  testing: {
+    rootDir: 'src',
+    modulePathIgnorePatterns: ['cypress'],
+  },
   outputTargets: [
     {
       type: 'www',

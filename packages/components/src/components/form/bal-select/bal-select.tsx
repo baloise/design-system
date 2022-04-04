@@ -718,7 +718,7 @@ export class Select {
     }
 
     const Chip = (props: { value: string }) => (
-      <bal-tag size="small" dense closable onBalCloseClick={_ => this.removeValue(props.value)}>
+      <bal-tag size="small" closable onBalCloseClick={_ => this.removeValue(props.value)}>
         {findLabelByValue(this.options, props.value) || props.value}
       </bal-tag>
     )

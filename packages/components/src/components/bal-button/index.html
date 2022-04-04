@@ -8,18 +8,20 @@
     <script type="module" src="/build/design-system-components.esm.js"></script>
     <script nomodule src="/build/design-system-components.js"></script>
   </head>
-  <body class="bal-app">
-    <div class="container">
-      <bal-button color="primary" data-testid="primary-button">Continue</bal-button>
-      <a data-testid="link" href="https://design.baloise.dev/" class="is-link">Link</a>
-      <bal-button color="primary" disabled data-testid="primary-button-disabled">Primary</bal-button>
-      <bal-button
-        data-testid="button-link"
-        link
-        href="https://github.com/baloise/design-system-components"
-        target="_blank"
-        >GitHub</bal-button
-      >
-    </div>
+  <body>
+    <bal-app>
+      <div class="container">
+        <bal-button color="primary" data-testid="primary-button">Continue</bal-button>
+        <a data-testid="link" href="https://design.baloise.dev/" class="is-link">Link</a>
+        <bal-button color="primary" disabled data-testid="primary-button-disabled">Primary</bal-button>
+        <bal-button
+          data-testid="button-link"
+          link
+          href="https://github.com/baloise/design-system-components"
+          target="_blank"
+          >GitHub</bal-button
+        >
+      </div>
+    </bal-app>
   </body>
 </html>
