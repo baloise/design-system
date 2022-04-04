@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.8.0](https://github.com/baloise/design-system/compare/v10.7.3...v10.8.0) (2022-04-04)
+
+
+### Features
+
+* **snackbar:** button can also be a link ([57ba176](https://github.com/baloise/design-system/commit/57ba1763332d54b6d2667ba52a6ffe062b759bef))
+* **tabs:** can have a bottom border ([e4e6967](https://github.com/baloise/design-system/commit/e4e69675eba25b354d5d325978df56fd96ac11d4))
+* **testing:** add command to find open modal ([7783760](https://github.com/baloise/design-system/commit/778376011042c3c192f0e7e30f551d1a31886d55))
+
+
+### Bug Fixes
+
+* **modal:** body and header can be used in nested elements ([dbda58b](https://github.com/baloise/design-system/commit/dbda58b47017250fc8b472d7e08e34fd5489861c))
+* **modal:** reduce spacing header ([924236d](https://github.com/baloise/design-system/commit/924236d3d1a22fd678702c6d59f30b3bc1fc9bef))
+* **select:** basic select opens and closes on input click ([21aa983](https://github.com/baloise/design-system/commit/21aa98386cc74fb93e0dab750f62d438a057521b))
+* **testing:** fix input selector for number-inputs ([dc643d7](https://github.com/baloise/design-system/commit/dc643d79d853db66d420db1c8e3ff415db4610fc))
+
+
+
 ### [10.7.3](https://github.com/baloise/design-system/compare/v10.7.2...v10.7.3) (2022-03-30)
 
 
