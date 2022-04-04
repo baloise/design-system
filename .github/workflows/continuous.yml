@@ -52,7 +52,7 @@ jobs:
       - uses: cypress-io/github-action@v2
         with:
           working-directory: packages/components
-          env: type=actual,
+          env: type=actual
           spec: cypress/integration/visual/*
         env:
           # Recommended: pass the GitHub token lets this action correctly
