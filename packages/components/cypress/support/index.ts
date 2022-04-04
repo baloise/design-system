@@ -17,8 +17,9 @@
 import './commands'
 import './commands.types'
 
-import 'cypress-file-upload'
 import '../../../testing/src'
+
+import 'cypress-file-upload'
 
 import * as compareSnapshotCommand from 'cypress-visual-regression/dist/command'
 

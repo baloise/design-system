@@ -7,5 +7,5 @@
     "baseUrl": "."
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "node_modules/cypress/types/*", "node_modules/@stencil/core/compiler/lib.es2015.proxy.d.ts"]
+  "include": ["**/*.ts", "node_modules/cypress", "node_modules/@stencil/core/compiler/lib.es2015.proxy.d.ts"]
 }
