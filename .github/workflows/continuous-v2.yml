@@ -1,0 +1,65 @@
+name: Continuous@v2
+
+on: [push]
+
+jobs:
+  BuildAndTest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Restore lerna
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update npm registry
+        run: npm run update:registry
+
+      - name: Install dependencies
+        run: npm install
+
+      # - name: Build
+      #   run: npm run build
+
+      # - name: Format
+      #   run: npm run format:check
+
+      # - name: Lint
+      #   run: npm run lint:check
+
+      # - name: Spell Check
+      #   run: npm run spell
+
+      # - name: Test
+      #   run: npm run test
+
+      # - uses: cypress-io/github-action@v2
+      #   with:
+      #     build: npm run cy:build
+      #     start: npm run cy:start
+      #     wait-on: 'http://localhost:3333'
+      #     working-directory: packages/components
+      #     browser: chrome
+      #     env: type=actual
+      #   env:
+      #     # Recommended: pass the GitHub token lets this action correctly
+      #     # determine the unique run id necessary to re-run the checks
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # - uses: actions/upload-artifact@v3
+      #   if: failure()
+      #   with:
+      #     name: cypress-snapshots
+      #     path: packages/components/cypress/snapshots
+      #   env:
+      #     # Recommended: pass the GitHub token lets this action correctly
+      #     # determine the unique run id necessary to re-run the checks
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
