@@ -38,41 +38,41 @@ jobs:
       - name: Spell Check
         run: npm run spell
 
+      - name: Test
+        run: npm run test
+
       - name: Save build folder
         uses: actions/upload-artifact@v3
         with:
           name: build
           if-no-files-found: error
           path: |
-            packages/components/src/components.d.ts
             packages/components/www
-            packages/icons/dist
-            packages/fonts/dist
 
-  UnitTests:
-    runs-on: ubuntu-latest
-    needs: InstallAndBuild
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # UnitTests:
+  #   runs-on: ubuntu-latest
+  #   needs: InstallAndBuild
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Restore lerna
-        uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+  #     - name: Restore lerna
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: '**/node_modules'
+  #         key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: build
+  #     - name: Download the build folders
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: build
+  #         path: build
 
-      - name: Lerna bootstrap
-        run: npm run bootstrap
+  #     - name: Lerna bootstrap
+  #       run: npm run bootstrap
 
-      - name: Test
-        run: npm run test
+  #     - name: Test
+  #       run: npm run test
 
       # - uses: cypress-io/github-action@v2
       #   with:
