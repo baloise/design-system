@@ -46,6 +46,8 @@ jobs:
           path: |
             packages/components/src/components.d.ts
             packages/components/www
+            packages/icons/dist
+            packages/fonts/dist
 
   UnitTests:
     runs-on: ubuntu-latest
