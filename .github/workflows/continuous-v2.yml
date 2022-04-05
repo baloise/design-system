@@ -68,6 +68,9 @@ jobs:
           name: build
           path: build
 
+      - name: Lerna bootstrap
+        run: npm run bootstrap
+
       - name: Test
         run: npm run test
 
