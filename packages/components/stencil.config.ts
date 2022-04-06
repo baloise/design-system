@@ -7,6 +7,7 @@ import { ReactGenerator } from './.build/stencil/stencil.bindings.react'
 
 export const config: Config = {
   ...StencilBaseConfig,
+  buildEs5: 'prod',
   extras: {
     dynamicImportShim: true,
     safari10: true,
