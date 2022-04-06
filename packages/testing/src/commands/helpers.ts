@@ -123,7 +123,7 @@ export const wrapRoot = <E = unknown>(
 ) => {
   return cy
     .wrap(element)
-    .then($el => deepReady($el[0]))
+    .then(($el: any) => deepReady($el[0]))
     .find(selector)
     .then($el => fn($el))
     .wrap(element)
