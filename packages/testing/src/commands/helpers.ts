@@ -114,6 +114,7 @@ export const selectors = {
 /**
  * Executes a command on a child element and wraps back to the main element/component
  */
+import { deepReady } from '@baloise/design-system-components'
 export const wrapRoot = <E = unknown>(
   element: E,
   selector: string,
@@ -121,6 +122,7 @@ export const wrapRoot = <E = unknown>(
 ) => {
   return cy
     .wrap(element)
+    .then(($el: any) => deepReady($el.get(0)))
     .find(selector)
     .then($el => fn($el))
     .wrap(element)
