@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.8.1](https://github.com/baloise/design-system/compare/v10.8.0...v10.8.1) (2022-04-06)
+
+
+### Bug Fixes
+
+* add es5 build to support no module scripts ([5daf384](https://github.com/baloise/design-system/commit/5daf38499626f55778c07d214d3dadfcb09b4303))
+
+
+
 ## [10.8.0](https://github.com/baloise/design-system/compare/v10.7.3...v10.8.0) (2022-04-04)
 
 
