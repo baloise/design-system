@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-components",
-  "version": "10.8.1",
+  "version": "10.8.2",
   "description": "The Baloise Design-System  is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -70,8 +70,8 @@
     "cy:visual:actual": "cypress run --browser chrome --env type=actual --config testFiles=\"visual/*spec.ts\""
   },
   "dependencies": {
-    "@baloise/design-system-fonts": "10.8.1",
-    "@baloise/design-system-icons": "10.8.1",
+    "@baloise/design-system-fonts": "10.8.2",
+    "@baloise/design-system-icons": "10.8.2",
     "@baloise/web-app-utils": "^3.1.0",
     "@popperjs/core": "^2.11.4",
     "@stencil/core": "^2.14.2",
@@ -97,7 +97,7 @@
     "@babel/core": "^7.17.8",
     "@baloise/angular-output-target": "^1.2.8",
     "@baloise/react-output-target": "^0.4.8",
-    "@baloise/stencil-vite-fix": "10.8.1",
+    "@baloise/stencil-vite-fix": "10.8.2",
     "@baloise/vue-output-target": "^0.8.1",
     "@etchteam/storybook-addon-status": "^4.2.0",
     "@stencil/postcss": "^2.1.0",

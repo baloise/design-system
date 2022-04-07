@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.8.2](https://github.com/baloise/design-system/compare/v10.8.1...v10.8.2) (2022-04-07)
+
+
+### Bug Fixes
+
+* **testing:** wait until ce is ready ([a8f7531](https://github.com/baloise/design-system/commit/a8f7531f51938a5ee02eac1706e615e82a63d330))
+
+
+
 ### [10.8.1](https://github.com/baloise/design-system/compare/v10.8.0...v10.8.1) (2022-04-06)
 
 
