@@ -1,19 +1,41 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
 
-<span id="story--components-form-datepicker--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-form-datepicker--basic">Datepicker</bal-doc-banner>
 
-# Datepicker
+<bal-doc-tabs>
+  <a href="#story--components-form-datepicker--basic">Overview</a>
+  <a href="#examples">Examples</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#tutorials-and-templates">Tutorials and Templates</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-A datepicker allows manual date entry as well as open the popover content with a calendar to select a date.
+<bal-doc-lead>
+  <b>Datepicker</b> allows manual date entry as well as open the popover content with a calendar to select a date.
+</bal-doc-lead>
 
 > **Internationalization** To run this component in a different region then `CH` or to change the language to `fr` follow the documentation of [internationalization](?path=/docs/getting-started-internationalization--page).
 
-<Canvas className="has-visible-overflow">
+<Canvas withSource="open" className="has-visible-overflow">
   <Story id="components-form-datepicker--basic" />
 </Canvas>
 
-## Manual Input
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-form-datepicker--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
+
+## Examples
+
+<span id="story--components-form-datepicker--manual-input" style={{ opacity: 0 }}></span>
+
+### Manual Input
 
 To enable manual input remove the property `readonly` and add the property `trigger-icon`.
 The `trigger-icon` property only opens the popover when the icon gets clicked.
@@ -22,13 +44,23 @@ The `trigger-icon` property only opens the popover when the icon gets clicked.
   <Story id="components-form-datepicker--manual-input" />
 </Canvas>
 
-## Min and Max
+<span id="story--components-form-datepicker--min" style={{ opacity: 0 }}></span>
+<span id="story--components-form-datepicker--max" style={{ opacity: 0 }}></span>
+<span id="story--components-form-datepicker--min-and-max" style={{ opacity: 0 }}></span>
+
+### Min and Max
 
 <Canvas className="has-visible-overflow">
   <Story id="components-form-datepicker--min-and-max" />
 </Canvas>
 
-## Usage
+## Component Api
+
+<Description markdown={readme} />
+
+<br />
+
+## Integration
 
 Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime),
 `1996-12-19`. The format does not have to be specific to an exact datetime.
@@ -45,46 +77,43 @@ datepickerDisabled.value = formatDateString(2020, 0, 13)
 datepickerDisabled.value = formatDateString(new Date(2020, 0, 13))
 ```
 
-import AngularLogo from '../../../../stories/assets/images/angular.svg'
-import VueLogo from '../../../../stories/assets/images/vue.png'
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
+
+## Tutorials and Templates
+
+A list of tutorials how to use or create this component and templates to see how it can
+be combined with other components.
+
 import IconDocument from '../../../../../../icons/svg/document.svg'
 import IconAccount from '../../../../../../icons/svg/account.svg'
 
-<div className="link-list">
-  <a className="link-item" href="?path=/docs/design-form--page">
-    <img src={IconDocument} alt="documentation" />
-    <span>
-      <strong>Form</strong>
+<bal-doc-link-list one-column>
+  <a href="?path=/story/implementation-form--page">
+    <bal-doc-link-list-item image={IconDocument} subject="Form Tutorial">
       Documentation how to build forms and how to use the components.
-    </span>
+    </bal-doc-link-list-item>
   </a>
-  <a className="link-item" href="?path=/story/design-common-templates--contact-form">
-    <img src={IconAccount} alt="template" />
-    <span>
-      <strong>Template Contact Form</strong>A template with to illustrate the structure of a form.
-    </span>
+  <a href="?path=/story/design-common-templates--contact-form">
+    <bal-doc-link-list-item image={IconAccount} subject="Template Contact Form">
+      A template with to illustrate the structure of a form.
+    </bal-doc-link-list-item>
   </a>
-  <a className="link-item" href="?path=/docs/getting-started-angular-usage-of-form-validation--page">
-    <img src={AngularLogo} alt="angular" />
-    <span>
-      <strong>Angular</strong>
-      Usage guide how to structure the form elements and to use form validation.
-    </span>
-  </a>
-  <a className="link-item" href="?path=/docs/getting-started-vue-usage-of-form-validation--page">
-    <img src={VueLogo} alt="vue" />
-    <span>
-      <strong>Vue</strong>
-      Usage guide how to structure the form elements and to use form validation.
-    </span>
-  </a>
-</div>
-
-## Component Api
-
-<Description markdown={readme} />
-
-<br />
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

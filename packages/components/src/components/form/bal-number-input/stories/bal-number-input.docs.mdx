@@ -1,16 +1,45 @@
 import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
 
-<span id="story--components-form-number-input--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-form-number-input--basic">Number Input</bal-doc-banner>
 
-# Number Input
+<bal-doc-tabs>
+  <a href="#story--components-form-number-input--basic">Overview</a>
+  <a href="#examples">Examples</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#tutorials-and-templates">Tutorials and Templates</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-With number-input property your can only enter valid numbers, if you start with dot (.) zero will be automatically added in front of it.
+<bal-doc-lead>
+  <b>Number Input</b> only allows to enter valid numbers. With decimal property you can set how many decimal places you
+  want and number will be formatted accordingly.
+</bal-doc-lead>
 
-With decimal property you can set how many decimal places you want and number will be formatted accordingly.
+<Canvas withSource="open">
+  <Story id="components-form-number-input--basic" />
+</Canvas>
+
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-form-number-input--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
+
+## Examples
+
+<span id="story--components-form-number-input--currency" style={{ opacity: 0 }}></span>
+
+### Currency
+
+If you start with dot (.) zero will be automatically added in front of it.
 
 <Canvas>
-  <Story id="components-form-number-input--basic" />
+  <Story id="components-form-number-input--currency" />
 </Canvas>
 
 ## Component Api
@@ -18,6 +47,46 @@ With decimal property you can set how many decimal places you want and number wi
 <Description markdown={readme} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
+
+## Tutorials and Templates
+
+A list of tutorials how to use or create this component and templates to see how it can
+be combined with other components.
+
+import IconDocument from '../../../../../../icons/svg/document.svg'
+import IconAccount from '../../../../../../icons/svg/account.svg'
+
+<bal-doc-link-list one-column>
+  <a href="?path=/story/implementation-form--page">
+    <bal-doc-link-list-item image={IconDocument} subject="Form Tutorial">
+      Documentation how to build forms and how to use the components.
+    </bal-doc-link-list-item>
+  </a>
+  <a href="?path=/story/design-common-templates--contact-form">
+    <bal-doc-link-list-item image={IconAccount} subject="Template Contact Form">
+      A template with to illustrate the structure of a form.
+    </bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

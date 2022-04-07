@@ -1,6 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import { ColorTypes } from '../../types/color.types'
-import { FontSizeType } from '../../types/font.types'
+import { Props } from '../../props'
 
 @Component({
   tag: 'bal-text',
@@ -9,7 +8,7 @@ export class Text {
   /**
    * Defines the size of the paragraph
    */
-  @Prop() size: FontSizeType = ''
+  @Prop() size: Props.BalTextSize = ''
 
   /**
    * If `true` the text has heading font family
@@ -29,12 +28,12 @@ export class Text {
   /**
    * Defines the color of the text.
    */
-  @Prop() color: ColorTypes | 'white' | 'grey' | '' = ''
+  @Prop() color: Props.BalTextColor = ''
 
   /**
    * Defines at which position the heading has spacing.
    */
-  @Prop() space: 'none' | 'bottom' | 'top' | 'all' | '' = ''
+  @Prop() space: Props.BalTextSpace = ''
 
   get spacing(): string {
     switch (this.space) {

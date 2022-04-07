@@ -54,17 +54,17 @@ export class FileUpload {
   /**
    * Allowed number of files in the bundle.
    */
-  @Prop() maxFiles: number | undefined = undefined
+  @Prop() maxFiles?: number
 
   /**
    * Allowed max file size in bytes.
    */
-  @Prop() maxFileSize: number | undefined = undefined
+  @Prop() maxFileSize?: number
 
   /**
    * Allowed max bundle size in bytes.
    */
-  @Prop() maxBundleSize: number | undefined = undefined
+  @Prop() maxBundleSize?: number
 
   /**
    * Input value.
@@ -72,9 +72,14 @@ export class FileUpload {
   @Prop() value: File[] = []
 
   /**
+   * If `true` the file upload is disabled and shows a spinner
+   */
+  @Prop() loading = false
+
+  /**
    * Overrides the default subtitle file size
    */
-  @Prop() subTitle: ((file: File) => string) | undefined
+  @Prop() subTitle?: (file: File) => string
 
   /**
    * Triggers when a file is added or removed.
@@ -82,32 +87,42 @@ export class FileUpload {
   @Event({ eventName: 'balChange' }) balChangeEventEmitter!: EventEmitter<File[]>
 
   /**
+   * Triggers when a file is added.
+   */
+  @Event({ eventName: 'balFilesAdded' }) balFilesAddedEmitter!: EventEmitter<File[]>
+
+  /**
+   * Triggers when a file is removed.
+   */
+  @Event({ eventName: 'balFilesRemoved' }) balFilesRemovedEmitter!: EventEmitter<File[]>
+
+  /**
    * Triggers when a file is rejected due to not allowed MIME-Type and so on.
    */
   @Event({ eventName: 'balRejectedFile' }) balRejectedFileEventEmitter!: EventEmitter<FileUploadRejectedFile>
 
-  @Listen('dragenter', { capture: false })
+  @Listen('dragenter', { capture: false, passive: false })
   dragenterHandler() {
     if (!this.disabled) {
       this.isOver = true
     }
   }
 
-  @Listen('dragover', { capture: false })
+  @Listen('dragover', { capture: false, passive: false })
   dragoverHandler() {
     if (!this.disabled) {
       this.isOver = true
     }
   }
 
-  @Listen('dragleave', { capture: false })
+  @Listen('dragleave', { capture: false, passive: false })
   dragleaveHandler() {
     if (!this.disabled) {
       this.isOver = false
     }
   }
 
-  @Listen('drop', { capture: false })
+  @Listen('drop', { capture: false, passive: false })
   dropHandler(event: DragEvent) {
     if (!this.disabled) {
       this.isOver = false
@@ -121,6 +136,7 @@ export class FileUpload {
   handleFiles = (files: FileList): void => {
     if (!this.disabled) {
       const list = [...this.files]
+      const filesAdded: File[] = []
       for (let index = 0; index < files.length; index++) {
         const file = files.item(index)
         if (file) {
@@ -156,12 +172,16 @@ export class FileUpload {
             })
           } else {
             list.push(file)
+            filesAdded.push(file)
           }
         }
       }
       if (this.files.length !== list.length) {
         this.files = [...list]
         this.balChangeEventEmitter.emit(this.files)
+      }
+      if (filesAdded.length > 0) {
+        this.balFilesAddedEmitter.emit(filesAdded)
       }
     }
   }
@@ -172,8 +192,8 @@ export class FileUpload {
 
   componentDidLoad() {
     ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-      this.element.addEventListener(eventName, this.preventDefaults, false)
-      document.body.addEventListener(eventName, this.preventDefaults, false)
+      this.element.addEventListener(eventName, this.preventDefaults, { passive: false })
+      document.body.addEventListener(eventName, this.preventDefaults, { passive: false })
     })
   }
 
@@ -200,13 +220,17 @@ export class FileUpload {
   removeFile(indexToRemove: number): void {
     if (!this.disabled) {
       const list = []
+      const removedFiles = []
       for (let index = 0; index < this.files.length; index++) {
         if (index !== indexToRemove) {
           list.push(this.files[index])
+        } else {
+          removedFiles.push(this.files[index])
         }
       }
       this.files = [...list]
       this.balChangeEventEmitter.emit(this.files)
+      this.balFilesRemovedEmitter.emit(removedFiles)
     }
   }
 
@@ -247,31 +271,39 @@ export class FileUpload {
         class={{
           'bal-file-upload': true,
           'is-invalid': this.invalid,
-          'is-disabled': this.disabled,
+          'is-disabled': this.disabled || this.loading,
         }}
       >
-        <div
-          class={{
-            'file is-normal is-boxed is-centered': true,
-          }}
-        >
-          <label class={['file-label', this.isOver ? 'is-hovered' : '', this.disabled ? 'is-disabled' : ''].join(' ')}>
+        <div class="file is-normal is-boxed is-centered">
+          <label
+            class={[
+              'file-label',
+              this.isOver ? 'is-hovered' : '',
+              this.disabled || this.loading ? 'is-disabled' : '',
+            ].join(' ')}
+          >
             <input
               class="file-input"
               type="file"
               name="resume"
               multiple={this.multiple}
-              disabled={this.disabled}
+              disabled={this.disabled || this.loading}
               accept={this.accept}
               onChange={this.onChange}
               ref={el => (this.fileInput = el as HTMLInputElement)}
             />
-            <span class="file-cta">
-              <span class="file-icon">
-                <bal-icon name="upload" size=""></bal-icon>
+            {this.loading ? (
+              <span class="file-cta">
+                <bal-spinner></bal-spinner>
               </span>
-              <span class="file-label">{this.label}</span>
-            </span>
+            ) : (
+              <span class="file-cta">
+                <span class="file-icon">
+                  <bal-icon name="upload" size="medium"></bal-icon>
+                </span>
+                <span class="file-label">{this.label}</span>
+              </span>
+            )}
           </label>
         </div>
         {this.hasFileList ? <FileList /> : ''}

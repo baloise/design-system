@@ -8,10 +8,13 @@ import * as Components from '../../../.storybook/vue/components'
 export default {
   title: 'Design/Page Templates',
   parameters: {
+    layout: 'fullscreen',
     docs: {
       page: null,
     },
-    layout: 'fullscreen',
+    previewTabs: {
+      'storybook/docs/panel': { hidden: true },
+    },
   },
 }
 

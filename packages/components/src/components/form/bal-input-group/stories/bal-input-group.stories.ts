@@ -28,6 +28,16 @@ export const Basic = args => ({
   </bal-input-group>
 
   <bal-input-group v-bind="args" class="mb-4">
+    <bal-icon name="call"></bal-icon>
+    <bal-select style="max-width: 106px" value="DE">
+      <bal-select-option label="DE" value="DE">DE</bal-select-option>
+      <bal-select-option label="FR" value="FR">FR</bal-select-option>
+      <bal-select-option label="IT" value="IT">IT</bal-select-option>
+    </bal-select>
+    <bal-input placeholder="79 123 45 67" v-model="args.value"></bal-input>
+  </bal-input-group>
+
+  <bal-input-group v-bind="args" class="mb-4">
     <bal-icon name="date" class="is-clickable"></bal-icon>
     <bal-input placeholder="Enter text here" v-model="args.value"></bal-input>
     <bal-icon name="date" class="is-clickable"></bal-icon>

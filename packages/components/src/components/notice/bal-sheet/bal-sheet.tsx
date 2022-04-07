@@ -8,7 +8,7 @@ export class Sheet {
     return (
       <Host>
         <div class="container is-compact">
-          <div class="inner">
+          <div class="inner px-5 py-4">
             <slot />
           </div>
         </div>

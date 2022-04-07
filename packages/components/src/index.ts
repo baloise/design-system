@@ -7,6 +7,7 @@ export * from './config'
  * Components
  */
 export { Components, JSX } from './components'
+export { Props } from './props'
 
 /**
  * Types
@@ -14,9 +15,7 @@ export { Components, JSX } from './components'
 export * from './components/form/bal-select/utils/bal-option.type'
 export * from './components/bal-tabs/bal-tab.type'
 export * from './components/form/bal-file-upload/bal-file-upload.type'
-export * from './components/bal-heading/bal-heading.type'
 export * from './components/notice/bal-modal/bal-modal.type'
-export * from './types/color.types'
 
 /**
  * Utils

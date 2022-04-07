@@ -5,16 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BalButtonColor, BalIconColor } from "./types";
-import { BackgroundColors, ColorTypes, ColorTypesExtended, SupportColors } from "./types/color.types";
-import { BalDateCallback } from "./components/form/bal-datepicker/bal-datepicker.type";
+import { Props } from "./types";
+import { Props as Props1 } from "./props";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
-import { HeadingLevels } from "./components/bal-heading/bal-heading.type";
-import { AutocompleteTypes, InputTypes } from "./types/interfaces";
-import { ComponentProps, ComponentRef, FrameworkDelegate, OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
-import { Placement } from "@popperjs/core";
+import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
-import { FontSizeType } from "./types/font.types";
 export namespace Components {
     interface BalAccordion {
         /**
@@ -22,19 +17,20 @@ export namespace Components {
          */
         "card": boolean;
         /**
-          * Bal-Icon of the close trigger button
+          * BalIcon of the close trigger button
          */
         "closeIcon": string;
         /**
           * Label of the close trigger button
          */
         "closeLabel": string;
+        "color": Props.BalAccordionColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
         /**
-          * Close the accordion
+          * Closes the accordion
          */
         "dismiss": () => Promise<void>;
         /**
@@ -42,7 +38,7 @@ export namespace Components {
          */
         "interface": '' | 'light';
         /**
-          * Bal-Icon of the open trigger button
+          * BalIcon of the open trigger button
          */
         "openIcon": string;
         /**
@@ -50,7 +46,7 @@ export namespace Components {
          */
         "openLabel": string;
         /**
-          * Open the accordion
+          * Opens the accordion
          */
         "present": () => Promise<void>;
         /**
@@ -58,7 +54,7 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
         /**
-          * Controls if the accordion is collapsed or not
+          * If `true` the accordion is open.
          */
         "value": boolean;
     }
@@ -68,7 +64,7 @@ export namespace Components {
         /**
           * Define the alert color for the badge.
          */
-        "color": 'danger' | 'warning' | 'success';
+        "color": Props.BalBadgeColor;
         /**
           * Name of the icon to show. If a icon is present text should be hidden.
          */
@@ -76,11 +72,11 @@ export namespace Components {
         /**
           * If `true` the badge is added to the top right corner of the card.
          */
-        "position": 'card' | 'button' | 'tabs' | '';
+        "position": Props.BalBadgePosition;
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size": 'small' | 'large' | '';
+        "size": Props.BalBadgeSize;
     }
     interface BalButton {
         /**
@@ -90,7 +86,7 @@ export namespace Components {
         /**
           * The color to use from your application's color palette.
          */
-        "color": BalButtonColor;
+        "color": Props.BalButtonColor;
         /**
           * If `true`, the user cannot interact with the button.
          */
@@ -98,7 +94,7 @@ export namespace Components {
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
          */
-        "download": string | undefined;
+        "download"?: string;
         /**
           * If `true` the button has a full width
          */
@@ -106,7 +102,7 @@ export namespace Components {
         /**
           * Specifies the URL of the page the link goes to
          */
-        "href": string | undefined;
+        "href"?: string;
         /**
           * Name of the left button icon
          */
@@ -114,7 +110,7 @@ export namespace Components {
         /**
           * Size of the button
          */
-        "iconPosition": 'left' | 'right';
+        "iconPosition": Props.BalButtonIconPosition;
         /**
           * Name of the right button icon
          */
@@ -142,7 +138,7 @@ export namespace Components {
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
-        "rel": string | undefined;
+        "rel"?: string;
         /**
           * If `true` the button is rounded.
          */
@@ -150,7 +146,7 @@ export namespace Components {
         /**
           * Size of the button
          */
-        "size": 'small' | '';
+        "size": Props.BalButtonSize;
         /**
           * If `true` the width of the buttons is limited
          */
@@ -158,7 +154,7 @@ export namespace Components {
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
-        "target": '_blank' | ' _parent' | '_self' | '_top';
+        "target": Props.BalButtonTarget;
         /**
           * If `true` the top corners get rounded
          */
@@ -166,7 +162,7 @@ export namespace Components {
         /**
           * The type of button.
          */
-        "type": 'button' | 'reset' | 'submit';
+        "type": Props.BalButtonType;
         /**
           * The value of the button, which is submitted with the form data.
          */
@@ -176,7 +172,7 @@ export namespace Components {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "position": 'right' | 'center' | '';
+        "position": Props.BalButtonGroupPosition;
     }
     interface BalCard {
         /**
@@ -184,9 +180,13 @@ export namespace Components {
          */
         "border": boolean;
         /**
+          * If `true` the card has a hover effect.
+         */
+        "clickable": boolean;
+        /**
           * Defines the color of the card.
          */
-        "color": BackgroundColors;
+        "color": Props.BalCardColor;
         /**
           * If `true` the card loses its shadow.
          */
@@ -196,6 +196,10 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * If `true` the card gets a light background to indicate a selection.
+         */
+        "selected": boolean;
+        /**
           * If `true` the card loses its border radius.
          */
         "square": boolean;
@@ -204,7 +208,7 @@ export namespace Components {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "position": 'right' | 'center' | '';
+        "position": Props.BalCardActionsPosition;
         /**
           * @deprecated use position="right" If `true` the buttons start form right to left.
          */
@@ -218,7 +222,7 @@ export namespace Components {
         /**
           * Specifies the URL of the page the link goes to
          */
-        "href": string | undefined;
+        "href"?: string;
         /**
           * Name of the icon like `edit`.
          */
@@ -234,15 +238,23 @@ export namespace Components {
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
-        "target": '_blank' | ' _parent' | '_self' | '_top';
+        "target": Props.BalCardButtonTarget;
         /**
           * The type of button.
          */
-        "type": 'button' | 'reset' | 'submit';
+        "type": Props.BalCardButtonType;
     }
     interface BalCardContent {
     }
     interface BalCardSubtitle {
+        /**
+          * If `true` the card text color is bold.
+         */
+        "bold": boolean;
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "color": Props.BalHeadingColor;
         /**
           * If `true` the card text color becomes white.
          */
@@ -278,7 +290,7 @@ export namespace Components {
         /**
           * Defines the layout of the checkbox button
          */
-        "interface": 'checkbox' | 'switch';
+        "interface": Props.BalCheckboxInterface;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -306,9 +318,26 @@ export namespace Components {
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
-        "value": string;
+        "value": string | number;
     }
     interface BalCheckboxGroup {
+        /**
+          * If `true` it acts as the main form control
+         */
+        "control": boolean;
+        /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "disabled"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        "setValue": (value: any[]) => Promise<void>;
+        /**
+          * The value of the control.
+         */
+        "value": any[];
         /**
           * Displays the checkboxes vertically
          */
@@ -326,7 +355,7 @@ export namespace Components {
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size": 'small' | 'large' | 'medium' | '';
+        "size": Props.BalCloseSize;
     }
     interface BalData {
         /**
@@ -359,12 +388,16 @@ export namespace Components {
           * If `true` a small button with a edit icon will be shown on the right.
          */
         "editable": boolean;
+        /**
+          * If `true` the text will break and the height of the item increases.
+         */
+        "multiline": boolean;
     }
     interface BalDatepicker {
         /**
           * Callback to determine which date in the datepicker should be selectable.
          */
-        "allowedDates": BalDateCallback | undefined;
+        "allowedDates": Props.BalDatepickerCallback | undefined;
         /**
           * Closes the popover
          */
@@ -408,7 +441,7 @@ export namespace Components {
         /**
           * Latest year available for selection
          */
-        "maxYearProp": number | undefined;
+        "maxYearProp"?: number;
         /**
           * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
          */
@@ -416,7 +449,7 @@ export namespace Components {
         /**
           * Earliest year available for selection
          */
-        "minYearProp": number | undefined;
+        "minYearProp"?: number;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -428,7 +461,7 @@ export namespace Components {
         /**
           * The text to display when the select is empty.
          */
-        "placeholder": string | undefined;
+        "placeholder"?: string;
         /**
           * If `true` the use can only select a date.
          */
@@ -460,6 +493,9 @@ export namespace Components {
     }
     interface BalDocApp {
     }
+    interface BalDocBanner {
+        "subtitle": string;
+    }
     interface BalDocColor {
         "background": boolean;
         "color": string;
@@ -486,11 +522,30 @@ export namespace Components {
         "src": string;
         "text": string;
     }
+    interface BalDocLead {
+    }
+    interface BalDocLinkList {
+        "oneColumn": boolean;
+    }
+    interface BalDocLinkListItem {
+        "image": string;
+        "subject": string;
+        "template": '' | 'html5' | 'angular' | 'vue' | 'react';
+    }
     interface BalDocShades {
         "color": string;
     }
     interface BalDocSupportColor {
         "color": string;
+    }
+    interface BalDocTabs {
+    }
+    interface BalDocUsage {
+    }
+    interface BalDocUsageItem {
+        "image"?: boolean;
+        "subject"?: string;
+        "theme": 'do' | 'dont';
     }
     interface BalField {
         /**
@@ -544,7 +599,7 @@ export namespace Components {
         /**
           * Text of the inputs label
          */
-        "subject": string;
+        "subject"?: string;
     }
     interface BalFieldLabel {
         /**
@@ -560,7 +615,7 @@ export namespace Components {
         /**
           * Defines the color of the message.
          */
-        "color": '' | ColorTypesExtended;
+        "color": Props.BalFieldMessageColor;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -592,17 +647,21 @@ export namespace Components {
          */
         "label": string;
         /**
+          * If `true` the file upload is disabled and shows a spinner
+         */
+        "loading": boolean;
+        /**
           * Allowed max bundle size in bytes.
          */
-        "maxBundleSize": number | undefined;
+        "maxBundleSize"?: number;
         /**
           * Allowed max file size in bytes.
          */
-        "maxFileSize": number | undefined;
+        "maxFileSize"?: number;
         /**
           * Allowed number of files in the bundle.
          */
-        "maxFiles": number | undefined;
+        "maxFiles"?: number;
         /**
           * If `true` multiple file upload is possible.
          */
@@ -610,7 +669,7 @@ export namespace Components {
         /**
           * Overrides the default subtitle file size
          */
-        "subTitle": ((file: File) => string) | undefined;
+        "subTitle"?: (file: File) => string;
         /**
           * Input value.
          */
@@ -634,7 +693,7 @@ export namespace Components {
         /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "color": ColorTypes | '';
+        "color": Props.BalHeadingColor;
         /**
           * If `true` the button is inverted
          */
@@ -642,7 +701,7 @@ export namespace Components {
         /**
           * The actual heading level used in the HTML markup.
          */
-        "level": HeadingLevels;
+        "level": Props.BalHeadingLevel;
         /**
           * Defines at which position the heading has spacing.
          */
@@ -654,13 +713,13 @@ export namespace Components {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel": HeadingLevels | undefined;
+        "visualLevel"?: Props.BalHeadingLevel;
     }
     interface BalHint {
         /**
           * Text for the close button.
          */
-        "closeLabel": string;
+        "closeLabel"?: string;
         /**
           * Closes the hint box.
          */
@@ -686,9 +745,13 @@ export namespace Components {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color": BalIconColor | '';
+        "color": Props.BalIconColor;
         /**
-          * If `true` the button is inverted
+          * If `true` the icon has display inline style
+         */
+        "inline": boolean;
+        /**
+          * If `true` the icon is inverted
          */
         "inverted": boolean;
         /**
@@ -702,7 +765,7 @@ export namespace Components {
         /**
           * Defines the size of the icon.
          */
-        "size": 'xsmall' | 'small' | 'medium' | 'large' | '';
+        "size": Props.BalIconSize;
         /**
           * Svg content.
          */
@@ -724,11 +787,11 @@ export namespace Components {
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
          */
-        "autocomplete": AutocompleteTypes;
+        "autocomplete": Props.BalInputAutocomplete;
         /**
           * Whether auto correction should be enabled when the user is entering/editing the text value.
          */
-        "autocorrect": 'on' | 'off';
+        "autocorrect": Props.BalInputAutocorrect;
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
@@ -757,7 +820,7 @@ export namespace Components {
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
-        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "inputmode"?: Props.BalInputInputMode;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -767,13 +830,17 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '00/0.000.000' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+         */
+        "mask"?: Props.BalInputMask;
+        /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
          */
         "max"?: string;
         /**
           * Defines the max length of the value.
          */
-        "maxLength": number | undefined;
+        "maxLength"?: number;
         /**
           * The minimum value, which must not be greater than its maximum (max attribute) value.
          */
@@ -781,7 +848,7 @@ export namespace Components {
         /**
           * Defines the min length of the value.
          */
-        "minLength": number | undefined;
+        "minLength"?: number;
         /**
           * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
          */
@@ -797,7 +864,7 @@ export namespace Components {
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
-        "pattern"?: string | undefined;
+        "pattern"?: string;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -833,7 +900,7 @@ export namespace Components {
         /**
           * Defines the type of the input (text, number, email ...).
          */
-        "type": InputTypes;
+        "type": Props.BalInputInputType;
         /**
           * The value of the input.
          */
@@ -903,7 +970,7 @@ export namespace Components {
         /**
           * Defines the min height of the list item
          */
-        "size": '' | 'large';
+        "size": Props.BalListSize;
     }
     interface BalListItem {
         /**
@@ -925,7 +992,7 @@ export namespace Components {
         /**
           * Specifies where to open the linked document
          */
-        "target": '_blank' | ' _parent' | '_self' | '_top';
+        "target": Props.BalListItemTarget;
     }
     interface BalListItemContent {
     }
@@ -943,24 +1010,24 @@ export namespace Components {
         /**
           * Defines the color of the logo.
          */
-        "color": 'blue' | 'white';
+        "color": Props.BalLogoColor;
     }
     interface BalModal {
         "close": () => Promise<void>;
         /**
           * The component to display inside of the modal.
          */
-        "component": ComponentRef;
+        "component": Props.ComponentRef;
         /**
           * The data to pass to the modal component.
          */
-        "componentProps"?: ComponentProps;
+        "componentProps"?: Props.ComponentProps;
         /**
           * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
          */
         "cssClass"?: string | string[];
         "dataTestId"?: string;
-        "delegate"?: FrameworkDelegate;
+        "delegate"?: Props.FrameworkDelegate;
         /**
           * Closes the presented modal with the modal controller
          */
@@ -972,7 +1039,7 @@ export namespace Components {
         /**
           * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
          */
-        "interface": 'light' | 'card';
+        "interface": Props.BalModalInterface;
         /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
@@ -995,6 +1062,10 @@ export namespace Components {
           * Presents the modal through the modal controller
          */
         "present": () => Promise<void>;
+        /**
+          * Defines the space/padding of the modal
+         */
+        "space": Props.BalModalSpace;
     }
     interface BalModalBody {
     }
@@ -1032,16 +1103,13 @@ export namespace Components {
     interface BalNavbarMenuStart {
     }
     interface BalNotices {
-        /**
-          * The interface tells the notice where to show the notice.
-         */
         "interface": 'toast' | 'snackbar';
     }
     interface BalNotification {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color": '' | ColorTypes;
+        "color": Props.BalNotificationColor;
     }
     interface BalNumberInput {
         /**
@@ -1143,7 +1211,7 @@ export namespace Components {
         /**
           * If `true` the field spans over the whole width.
          */
-        "position": Placement;
+        "position": Props.BalPopoverPlacement;
         /**
           * Open the popover
          */
@@ -1183,7 +1251,7 @@ export namespace Components {
         /**
           * Defines the layout of the radio button
          */
-        "interface": 'radio' | 'select-button';
+        "interface": Props.BalRadioInterface;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -1215,7 +1283,7 @@ export namespace Components {
         /**
           * The tabindex of the control.
          */
-        "value": string;
+        "value": number | string | boolean;
     }
     interface BalRadioGroup {
         /**
@@ -1225,7 +1293,7 @@ export namespace Components {
         /**
           * Defines the layout of the radio button
          */
-        "interface": 'radio' | 'select-button';
+        "interface": Props.BalRadioGroupInterface;
         /**
           * If `true` the component can be used on dark background
          */
@@ -1234,11 +1302,11 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        "setValue": (value: string) => Promise<void>;
+        "setValue": (value: number | string | boolean) => Promise<void>;
         /**
           * The value of the control.
          */
-        "value": string;
+        "value": number | string | boolean;
         /**
           * Displays the checkboxes vertically
          */
@@ -1304,7 +1372,7 @@ export namespace Components {
         /**
           * This label is shown if typeahead is active and all the options are filtered out.
          */
-        "noDataLabel": string | undefined;
+        "noDataLabel"?: string;
         /**
           * Opens the popover
          */
@@ -1322,6 +1390,10 @@ export namespace Components {
          */
         "select": (value: string) => Promise<void>;
         /**
+          * If `true` the options are a proposal and the user can also create his own value. Can only be used with the typeahead property.
+         */
+        "selectionOptional": boolean;
+        /**
           * Sets the focus on the input element
          */
         "setFocus": () => Promise<void>;
@@ -1332,7 +1404,7 @@ export namespace Components {
         /**
           * Selected option values. Could also be passed as a string, which gets transformed.
          */
-        "value": string | string[] | undefined;
+        "value"?: string | string[];
     }
     interface BalSelectOption {
         /**
@@ -1342,11 +1414,11 @@ export namespace Components {
         /**
           * Label will be shown in the input element when it got selected
          */
-        "label": string | undefined;
+        "label"?: string;
         /**
           * The value of the select option. This value will be returned by the parent `<bal-select>` element.
          */
-        "value": string | undefined;
+        "value"?: string;
     }
     interface BalSheet {
     }
@@ -1422,7 +1494,7 @@ export namespace Components {
         /**
           * The theme type of the snackbar. Given by bulma our css framework.
          */
-        "color": ColorTypes | '';
+        "color": Props.BalSnackbarColor;
         /**
           * The duration of the snackbar
          */
@@ -1458,11 +1530,15 @@ export namespace Components {
         /**
           * Defines the background color of the stage section
          */
-        "color": 'blue' | 'white' | 'purple' | 'green' | 'red' | 'yellow';
+        "color": Props.BalStageColor;
         /**
           * Defines the height of the stage section.
          */
-        "size": 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight';
+        "rounded": boolean;
+        /**
+          * Defines the height of the stage section.
+         */
+        "size": Props.BalStageSize;
     }
     interface BalStageBody {
         /**
@@ -1556,7 +1632,7 @@ export namespace Components {
         /**
           * Defines the layout of the tabs.
          */
-        "interface": 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar';
+        "interface": Props.BalTabsInterface;
         /**
           * Go to tab with the given value
          */
@@ -1575,7 +1651,7 @@ export namespace Components {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "color": ColorTypes | SupportColors | '';
+        "color": Props.BalTagColor;
         "dense": boolean;
         /**
           * If `true` a light version of the color is displayed
@@ -1584,7 +1660,7 @@ export namespace Components {
         /**
           * The size of the tag element
          */
-        "size": 'small' | 'medium' | 'large' | '';
+        "size": Props.BalTagSize;
         "transparent": boolean;
     }
     interface BalText {
@@ -1595,7 +1671,7 @@ export namespace Components {
         /**
           * Defines the color of the text.
          */
-        "color": ColorTypes | 'white' | 'grey' | '';
+        "color": Props.BalTextColor;
         /**
           * If `true` the text has heading font family
          */
@@ -1607,11 +1683,11 @@ export namespace Components {
         /**
           * Defines the size of the paragraph
          */
-        "size": FontSizeType;
+        "size": Props.BalTextSize;
         /**
           * Defines at which position the heading has spacing.
          */
-        "space": 'none' | 'bottom' | 'top' | 'all' | '';
+        "space": Props.BalTextSpace;
     }
     interface BalTextarea {
         /**
@@ -1645,7 +1721,7 @@ export namespace Components {
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
-        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "inputmode"?: Props.BalTextareaInputMode;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -1697,7 +1773,7 @@ export namespace Components {
         /**
           * Indicates how the control wraps text.
          */
-        "wrap"?: 'hard' | 'soft' | 'off';
+        "wrap"?: Props.BalTextareaWrap;
     }
     interface BalTimeinput {
         /**
@@ -1734,7 +1810,7 @@ export namespace Components {
         /**
           * The theme type of the toast. Given by bulma our css framework. Color type primary is deprecated, please use info instead.
          */
-        "color": ColorTypes | '';
+        "color": Props.BalTostColor;
         /**
           * The duration of the toast in milliseconds.
          */
@@ -1866,6 +1942,12 @@ declare global {
         prototype: HTMLBalDocAppElement;
         new (): HTMLBalDocAppElement;
     };
+    interface HTMLBalDocBannerElement extends Components.BalDocBanner, HTMLStencilElement {
+    }
+    var HTMLBalDocBannerElement: {
+        prototype: HTMLBalDocBannerElement;
+        new (): HTMLBalDocBannerElement;
+    };
     interface HTMLBalDocColorElement extends Components.BalDocColor, HTMLStencilElement {
     }
     var HTMLBalDocColorElement: {
@@ -1896,6 +1978,24 @@ declare global {
         prototype: HTMLBalDocImageElement;
         new (): HTMLBalDocImageElement;
     };
+    interface HTMLBalDocLeadElement extends Components.BalDocLead, HTMLStencilElement {
+    }
+    var HTMLBalDocLeadElement: {
+        prototype: HTMLBalDocLeadElement;
+        new (): HTMLBalDocLeadElement;
+    };
+    interface HTMLBalDocLinkListElement extends Components.BalDocLinkList, HTMLStencilElement {
+    }
+    var HTMLBalDocLinkListElement: {
+        prototype: HTMLBalDocLinkListElement;
+        new (): HTMLBalDocLinkListElement;
+    };
+    interface HTMLBalDocLinkListItemElement extends Components.BalDocLinkListItem, HTMLStencilElement {
+    }
+    var HTMLBalDocLinkListItemElement: {
+        prototype: HTMLBalDocLinkListItemElement;
+        new (): HTMLBalDocLinkListItemElement;
+    };
     interface HTMLBalDocShadesElement extends Components.BalDocShades, HTMLStencilElement {
     }
     var HTMLBalDocShadesElement: {
@@ -1907,6 +2007,24 @@ declare global {
     var HTMLBalDocSupportColorElement: {
         prototype: HTMLBalDocSupportColorElement;
         new (): HTMLBalDocSupportColorElement;
+    };
+    interface HTMLBalDocTabsElement extends Components.BalDocTabs, HTMLStencilElement {
+    }
+    var HTMLBalDocTabsElement: {
+        prototype: HTMLBalDocTabsElement;
+        new (): HTMLBalDocTabsElement;
+    };
+    interface HTMLBalDocUsageElement extends Components.BalDocUsage, HTMLStencilElement {
+    }
+    var HTMLBalDocUsageElement: {
+        prototype: HTMLBalDocUsageElement;
+        new (): HTMLBalDocUsageElement;
+    };
+    interface HTMLBalDocUsageItemElement extends Components.BalDocUsageItem, HTMLStencilElement {
+    }
+    var HTMLBalDocUsageItemElement: {
+        prototype: HTMLBalDocUsageItemElement;
+        new (): HTMLBalDocUsageItemElement;
     };
     interface HTMLBalFieldElement extends Components.BalField, HTMLStencilElement {
     }
@@ -2271,13 +2389,20 @@ declare global {
         "bal-data-value": HTMLBalDataValueElement;
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-doc-app": HTMLBalDocAppElement;
+        "bal-doc-banner": HTMLBalDocBannerElement;
         "bal-doc-color": HTMLBalDocColorElement;
         "bal-doc-download": HTMLBalDocDownloadElement;
         "bal-doc-github": HTMLBalDocGithubElement;
         "bal-doc-icons": HTMLBalDocIconsElement;
         "bal-doc-image": HTMLBalDocImageElement;
+        "bal-doc-lead": HTMLBalDocLeadElement;
+        "bal-doc-link-list": HTMLBalDocLinkListElement;
+        "bal-doc-link-list-item": HTMLBalDocLinkListItemElement;
         "bal-doc-shades": HTMLBalDocShadesElement;
         "bal-doc-support-color": HTMLBalDocSupportColorElement;
+        "bal-doc-tabs": HTMLBalDocTabsElement;
+        "bal-doc-usage": HTMLBalDocUsageElement;
+        "bal-doc-usage-item": HTMLBalDocUsageItemElement;
         "bal-field": HTMLBalFieldElement;
         "bal-field-control": HTMLBalFieldControlElement;
         "bal-field-hint": HTMLBalFieldHintElement;
@@ -2344,13 +2469,14 @@ declare namespace LocalJSX {
          */
         "card"?: boolean;
         /**
-          * Bal-Icon of the close trigger button
+          * BalIcon of the close trigger button
          */
         "closeIcon"?: string;
         /**
           * Label of the close trigger button
          */
         "closeLabel"?: string;
+        "color"?: Props.BalAccordionColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -2360,11 +2486,11 @@ declare namespace LocalJSX {
          */
         "interface"?: '' | 'light';
         /**
-          * Emitted when the accordion has changed
+          * Emitted when the accordion has opened or closed
          */
         "onBalChange"?: (event: CustomEvent<boolean>) => void;
         /**
-          * Bal-Icon of the open trigger button
+          * BalIcon of the open trigger button
          */
         "openIcon"?: string;
         /**
@@ -2372,7 +2498,7 @@ declare namespace LocalJSX {
          */
         "openLabel"?: string;
         /**
-          * Controls if the accordion is collapsed or not
+          * If `true` the accordion is open.
          */
         "value"?: boolean;
     }
@@ -2382,7 +2508,7 @@ declare namespace LocalJSX {
         /**
           * Define the alert color for the badge.
          */
-        "color"?: 'danger' | 'warning' | 'success';
+        "color"?: Props.BalBadgeColor;
         /**
           * Name of the icon to show. If a icon is present text should be hidden.
          */
@@ -2390,11 +2516,11 @@ declare namespace LocalJSX {
         /**
           * If `true` the badge is added to the top right corner of the card.
          */
-        "position"?: 'card' | 'button' | 'tabs' | '';
+        "position"?: Props.BalBadgePosition;
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size"?: 'small' | 'large' | '';
+        "size"?: Props.BalBadgeSize;
     }
     interface BalButton {
         /**
@@ -2404,7 +2530,7 @@ declare namespace LocalJSX {
         /**
           * The color to use from your application's color palette.
          */
-        "color"?: BalButtonColor;
+        "color"?: Props.BalButtonColor;
         /**
           * If `true`, the user cannot interact with the button.
          */
@@ -2412,7 +2538,7 @@ declare namespace LocalJSX {
         /**
           * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
          */
-        "download"?: string | undefined;
+        "download"?: string;
         /**
           * If `true` the button has a full width
          */
@@ -2420,7 +2546,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the URL of the page the link goes to
          */
-        "href"?: string | undefined;
+        "href"?: string;
         /**
           * Name of the left button icon
          */
@@ -2428,7 +2554,7 @@ declare namespace LocalJSX {
         /**
           * Size of the button
          */
-        "iconPosition"?: 'left' | 'right';
+        "iconPosition"?: Props.BalButtonIconPosition;
         /**
           * Name of the right button icon
          */
@@ -2472,7 +2598,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
-        "rel"?: string | undefined;
+        "rel"?: string;
         /**
           * If `true` the button is rounded.
          */
@@ -2480,7 +2606,7 @@ declare namespace LocalJSX {
         /**
           * Size of the button
          */
-        "size"?: 'small' | '';
+        "size"?: Props.BalButtonSize;
         /**
           * If `true` the width of the buttons is limited
          */
@@ -2488,7 +2614,7 @@ declare namespace LocalJSX {
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
-        "target"?: '_blank' | ' _parent' | '_self' | '_top';
+        "target"?: Props.BalButtonTarget;
         /**
           * If `true` the top corners get rounded
          */
@@ -2496,7 +2622,7 @@ declare namespace LocalJSX {
         /**
           * The type of button.
          */
-        "type"?: 'button' | 'reset' | 'submit';
+        "type"?: Props.BalButtonType;
         /**
           * The value of the button, which is submitted with the form data.
          */
@@ -2506,7 +2632,7 @@ declare namespace LocalJSX {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "position"?: 'right' | 'center' | '';
+        "position"?: Props.BalButtonGroupPosition;
     }
     interface BalCard {
         /**
@@ -2514,9 +2640,13 @@ declare namespace LocalJSX {
          */
         "border"?: boolean;
         /**
+          * If `true` the card has a hover effect.
+         */
+        "clickable"?: boolean;
+        /**
           * Defines the color of the card.
          */
-        "color"?: BackgroundColors;
+        "color"?: Props.BalCardColor;
         /**
           * If `true` the card loses its shadow.
          */
@@ -2526,6 +2656,10 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
+          * If `true` the card gets a light background to indicate a selection.
+         */
+        "selected"?: boolean;
+        /**
           * If `true` the card loses its border radius.
          */
         "square"?: boolean;
@@ -2534,7 +2668,7 @@ declare namespace LocalJSX {
         /**
           * The value of the button, which is submitted with the form data.
          */
-        "position"?: 'right' | 'center' | '';
+        "position"?: Props.BalCardActionsPosition;
         /**
           * @deprecated use position="right" If `true` the buttons start form right to left.
          */
@@ -2548,7 +2682,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the URL of the page the link goes to
          */
-        "href"?: string | undefined;
+        "href"?: string;
         /**
           * Name of the icon like `edit`.
          */
@@ -2564,15 +2698,23 @@ declare namespace LocalJSX {
         /**
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
-        "target"?: '_blank' | ' _parent' | '_self' | '_top';
+        "target"?: Props.BalCardButtonTarget;
         /**
           * The type of button.
          */
-        "type"?: 'button' | 'reset' | 'submit';
+        "type"?: Props.BalCardButtonType;
     }
     interface BalCardContent {
     }
     interface BalCardSubtitle {
+        /**
+          * If `true` the card text color is bold.
+         */
+        "bold"?: boolean;
+        /**
+          * If `true` the card text color becomes white.
+         */
+        "color"?: Props.BalHeadingColor;
         /**
           * If `true` the card text color becomes white.
          */
@@ -2604,7 +2746,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the checkbox button
          */
-        "interface"?: 'checkbox' | 'switch';
+        "interface"?: Props.BalCheckboxInterface;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -2640,9 +2782,29 @@ declare namespace LocalJSX {
         /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     interface BalCheckboxGroup {
+        /**
+          * If `true` it acts as the main form control
+         */
+        "control"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "disabled"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the checked property has changed.
+         */
+        "onBalChange"?: (event: CustomEvent<any[]>) => void;
+        /**
+          * The value of the control.
+         */
+        "value"?: any[];
         /**
           * Displays the checkboxes vertically
          */
@@ -2660,7 +2822,7 @@ declare namespace LocalJSX {
         /**
           * Define the size of badge. Small is recommended for tabs.
          */
-        "size"?: 'small' | 'large' | 'medium' | '';
+        "size"?: Props.BalCloseSize;
     }
     interface BalData {
         /**
@@ -2694,6 +2856,10 @@ declare namespace LocalJSX {
          */
         "editable"?: boolean;
         /**
+          * If `true` the text will break and the height of the item increases.
+         */
+        "multiline"?: boolean;
+        /**
           * Emitted when the edit button loses focus.
          */
         "onBalBlur"?: (event: CustomEvent<void>) => void;
@@ -2710,7 +2876,7 @@ declare namespace LocalJSX {
         /**
           * Callback to determine which date in the datepicker should be selectable.
          */
-        "allowedDates"?: BalDateCallback | undefined;
+        "allowedDates"?: Props.BalDatepickerCallback | undefined;
         /**
           * Closes the datepicker popover after selection
          */
@@ -2746,7 +2912,7 @@ declare namespace LocalJSX {
         /**
           * Latest year available for selection
          */
-        "maxYearProp"?: number | undefined;
+        "maxYearProp"?: number;
         /**
           * The minimum datetime allowed. Value must be a date string following the [ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime), such as `1996-12-19`. The format does not have to be specific to an exact datetime. For example, the minimum could just be the year, such as `1994`. Defaults to the beginning of the year, 100 years ago from today.
          */
@@ -2754,7 +2920,7 @@ declare namespace LocalJSX {
         /**
           * Earliest year available for selection
          */
-        "minYearProp"?: number | undefined;
+        "minYearProp"?: number;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -2782,7 +2948,7 @@ declare namespace LocalJSX {
         /**
           * The text to display when the select is empty.
          */
-        "placeholder"?: string | undefined;
+        "placeholder"?: string;
         /**
           * If `true` the use can only select a date.
          */
@@ -2801,6 +2967,9 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface BalDocApp {
+    }
+    interface BalDocBanner {
+        "subtitle"?: string;
     }
     interface BalDocColor {
         "background"?: boolean;
@@ -2828,11 +2997,30 @@ declare namespace LocalJSX {
         "src"?: string;
         "text"?: string;
     }
+    interface BalDocLead {
+    }
+    interface BalDocLinkList {
+        "oneColumn"?: boolean;
+    }
+    interface BalDocLinkListItem {
+        "image"?: string;
+        "subject"?: string;
+        "template"?: '' | 'html5' | 'angular' | 'vue' | 'react';
+    }
     interface BalDocShades {
         "color"?: string;
     }
     interface BalDocSupportColor {
         "color"?: string;
+    }
+    interface BalDocTabs {
+    }
+    interface BalDocUsage {
+    }
+    interface BalDocUsageItem {
+        "image"?: boolean;
+        "subject"?: string;
+        "theme"?: 'do' | 'dont';
     }
     interface BalField {
         /**
@@ -2902,7 +3090,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the message.
          */
-        "color"?: '' | ColorTypesExtended;
+        "color"?: Props.BalFieldMessageColor;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -2930,17 +3118,21 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * If `true` the file upload is disabled and shows a spinner
+         */
+        "loading"?: boolean;
+        /**
           * Allowed max bundle size in bytes.
          */
-        "maxBundleSize"?: number | undefined;
+        "maxBundleSize"?: number;
         /**
           * Allowed max file size in bytes.
          */
-        "maxFileSize"?: number | undefined;
+        "maxFileSize"?: number;
         /**
           * Allowed number of files in the bundle.
          */
-        "maxFiles"?: number | undefined;
+        "maxFiles"?: number;
         /**
           * If `true` multiple file upload is possible.
          */
@@ -2950,13 +3142,21 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: CustomEvent<File[]>) => void;
         /**
+          * Triggers when a file is added.
+         */
+        "onBalFilesAdded"?: (event: CustomEvent<File[]>) => void;
+        /**
+          * Triggers when a file is removed.
+         */
+        "onBalFilesRemoved"?: (event: CustomEvent<File[]>) => void;
+        /**
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
         "onBalRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
         /**
           * Overrides the default subtitle file size
          */
-        "subTitle"?: ((file: File) => string) | undefined;
+        "subTitle"?: (file: File) => string;
         /**
           * Input value.
          */
@@ -2980,7 +3180,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the toast. Given by bulma our css framework.
          */
-        "color"?: ColorTypes | '';
+        "color"?: Props.BalHeadingColor;
         /**
           * If `true` the button is inverted
          */
@@ -2988,7 +3188,7 @@ declare namespace LocalJSX {
         /**
           * The actual heading level used in the HTML markup.
          */
-        "level"?: HeadingLevels;
+        "level"?: Props.BalHeadingLevel;
         /**
           * Defines at which position the heading has spacing.
          */
@@ -3000,7 +3200,7 @@ declare namespace LocalJSX {
         /**
           * Make the visual style mimic a specific heading level. This option allows you to make e.g. h1 visually look like h3, but still keep it h1 in the markup.
          */
-        "visualLevel"?: HeadingLevels | undefined;
+        "visualLevel"?: Props.BalHeadingLevel;
     }
     interface BalHint {
         /**
@@ -3020,9 +3220,13 @@ declare namespace LocalJSX {
         /**
           * The theme type of the button. Given by bulma our css framework.
          */
-        "color"?: BalIconColor | '';
+        "color"?: Props.BalIconColor;
         /**
-          * If `true` the button is inverted
+          * If `true` the icon has display inline style
+         */
+        "inline"?: boolean;
+        /**
+          * If `true` the icon is inverted
          */
         "inverted"?: boolean;
         /**
@@ -3036,7 +3240,7 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the icon.
          */
-        "size"?: 'xsmall' | 'small' | 'medium' | 'large' | '';
+        "size"?: Props.BalIconSize;
         /**
           * Svg content.
          */
@@ -3058,11 +3262,11 @@ declare namespace LocalJSX {
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
          */
-        "autocomplete"?: AutocompleteTypes;
+        "autocomplete"?: Props.BalInputAutocomplete;
         /**
           * Whether auto correction should be enabled when the user is entering/editing the text value.
          */
-        "autocorrect"?: 'on' | 'off';
+        "autocorrect"?: Props.BalInputAutocorrect;
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
          */
@@ -3087,7 +3291,7 @@ declare namespace LocalJSX {
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
-        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "inputmode"?: Props.BalInputInputMode;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -3097,13 +3301,17 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '00/0.000.000' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+         */
+        "mask"?: Props.BalInputMask;
+        /**
           * The maximum value, which must not be less than its minimum (min attribute) value.
          */
         "max"?: string;
         /**
           * Defines the max length of the value.
          */
-        "maxLength"?: number | undefined;
+        "maxLength"?: number;
         /**
           * The minimum value, which must not be greater than its maximum (max attribute) value.
          */
@@ -3111,7 +3319,7 @@ declare namespace LocalJSX {
         /**
           * Defines the min length of the value.
          */
-        "minLength"?: number | undefined;
+        "minLength"?: number;
         /**
           * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
          */
@@ -3151,7 +3359,7 @@ declare namespace LocalJSX {
         /**
           * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
          */
-        "pattern"?: string | undefined;
+        "pattern"?: string;
         /**
           * Instructional text that shows before the input has a value.
          */
@@ -3179,7 +3387,7 @@ declare namespace LocalJSX {
         /**
           * Defines the type of the input (text, number, email ...).
          */
-        "type"?: InputTypes;
+        "type"?: Props.BalInputInputType;
         /**
           * The value of the input.
          */
@@ -3253,7 +3461,7 @@ declare namespace LocalJSX {
         /**
           * Defines the min height of the list item
          */
-        "size"?: '' | 'large';
+        "size"?: Props.BalListSize;
     }
     interface BalListItem {
         /**
@@ -3279,7 +3487,7 @@ declare namespace LocalJSX {
         /**
           * Specifies where to open the linked document
          */
-        "target"?: '_blank' | ' _parent' | '_self' | '_top';
+        "target"?: Props.BalListItemTarget;
     }
     interface BalListItemContent {
     }
@@ -3297,23 +3505,23 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the logo.
          */
-        "color"?: 'blue' | 'white';
+        "color"?: Props.BalLogoColor;
     }
     interface BalModal {
         /**
           * The component to display inside of the modal.
          */
-        "component": ComponentRef;
+        "component": Props.ComponentRef;
         /**
           * The data to pass to the modal component.
          */
-        "componentProps"?: ComponentProps;
+        "componentProps"?: Props.ComponentProps;
         /**
           * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
          */
         "cssClass"?: string | string[];
         "dataTestId"?: string;
-        "delegate"?: FrameworkDelegate;
+        "delegate"?: Props.FrameworkDelegate;
         /**
           * If `true`, a backdrop will be displayed behind the modal.
          */
@@ -3321,7 +3529,7 @@ declare namespace LocalJSX {
         /**
           * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
          */
-        "interface"?: 'light' | 'card';
+        "interface"?: Props.BalModalInterface;
         /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
@@ -3347,6 +3555,10 @@ declare namespace LocalJSX {
          */
         "onBalModalWillPresent"?: (event: CustomEvent<void>) => void;
         "overlayIndex": number;
+        /**
+          * Defines the space/padding of the modal
+         */
+        "space"?: Props.BalModalSpace;
     }
     interface BalModalBody {
     }
@@ -3387,16 +3599,13 @@ declare namespace LocalJSX {
     interface BalNavbarMenuStart {
     }
     interface BalNotices {
-        /**
-          * The interface tells the notice where to show the notice.
-         */
         "interface"?: 'toast' | 'snackbar';
     }
     interface BalNotification {
         /**
           * Defines the color of the element Color type primary is deprecated, please use info instead.
          */
-        "color"?: '' | ColorTypes;
+        "color"?: Props.BalNotificationColor;
     }
     interface BalNumberInput {
         /**
@@ -3507,7 +3716,7 @@ declare namespace LocalJSX {
         /**
           * If `true` the field spans over the whole width.
          */
-        "position"?: Placement;
+        "position"?: Props.BalPopoverPlacement;
         /**
           * If `true` the popover content is open.
          */
@@ -3539,7 +3748,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the radio button
          */
-        "interface"?: 'radio' | 'select-button';
+        "interface"?: Props.BalRadioInterface;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -3579,7 +3788,7 @@ declare namespace LocalJSX {
         /**
           * The tabindex of the control.
          */
-        "value"?: string;
+        "value"?: number | string | boolean;
     }
     interface BalRadioGroup {
         /**
@@ -3589,7 +3798,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the radio button
          */
-        "interface"?: 'radio' | 'select-button';
+        "interface"?: Props.BalRadioGroupInterface;
         /**
           * If `true` the component can be used on dark background
          */
@@ -3601,11 +3810,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string>) => void;
+        "onBalChange"?: (event: CustomEvent<number | string | boolean>) => void;
         /**
           * The value of the control.
          */
-        "value"?: string;
+        "value"?: number | string | boolean;
         /**
           * Displays the checkboxes vertically
          */
@@ -3655,7 +3864,7 @@ declare namespace LocalJSX {
         /**
           * This label is shown if typeahead is active and all the options are filtered out.
          */
-        "noDataLabel"?: string | undefined;
+        "noDataLabel"?: string;
         /**
           * Emitted when the input loses focus.
          */
@@ -3693,13 +3902,17 @@ declare namespace LocalJSX {
          */
         "scrollable"?: number;
         /**
+          * If `true` the options are a proposal and the user can also create his own value. Can only be used with the typeahead property.
+         */
+        "selectionOptional"?: boolean;
+        /**
           * If `true` the user can search by typing into the input field.
          */
         "typeahead"?: boolean;
         /**
           * Selected option values. Could also be passed as a string, which gets transformed.
          */
-        "value"?: string | string[] | undefined;
+        "value"?: string | string[];
     }
     interface BalSelectOption {
         /**
@@ -3709,11 +3922,11 @@ declare namespace LocalJSX {
         /**
           * Label will be shown in the input element when it got selected
          */
-        "label"?: string | undefined;
+        "label"?: string;
         /**
           * The value of the select option. This value will be returned by the parent `<bal-select>` element.
          */
-        "value"?: string | undefined;
+        "value"?: string;
     }
     interface BalSheet {
     }
@@ -3797,7 +4010,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the snackbar. Given by bulma our css framework.
          */
-        "color"?: ColorTypes | '';
+        "color"?: Props.BalSnackbarColor;
         /**
           * The duration of the snackbar
          */
@@ -3841,11 +4054,15 @@ declare namespace LocalJSX {
         /**
           * Defines the background color of the stage section
          */
-        "color"?: 'blue' | 'white' | 'purple' | 'green' | 'red' | 'yellow';
+        "color"?: Props.BalStageColor;
         /**
           * Defines the height of the stage section.
          */
-        "size"?: 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight';
+        "rounded"?: boolean;
+        /**
+          * Defines the height of the stage section.
+         */
+        "size"?: Props.BalStageSize;
     }
     interface BalStageBody {
         /**
@@ -3935,7 +4152,7 @@ declare namespace LocalJSX {
         /**
           * Defines the layout of the tabs.
          */
-        "interface"?: 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar';
+        "interface"?: Props.BalTabsInterface;
         /**
           * Emitted when the action button has clicked
          */
@@ -3958,7 +4175,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the tag. Given by bulma our css framework.
          */
-        "color"?: ColorTypes | SupportColors | '';
+        "color"?: Props.BalTagColor;
         "dense"?: boolean;
         /**
           * If `true` a light version of the color is displayed
@@ -3971,7 +4188,7 @@ declare namespace LocalJSX {
         /**
           * The size of the tag element
          */
-        "size"?: 'small' | 'medium' | 'large' | '';
+        "size"?: Props.BalTagSize;
         "transparent"?: boolean;
     }
     interface BalText {
@@ -3982,7 +4199,7 @@ declare namespace LocalJSX {
         /**
           * Defines the color of the text.
          */
-        "color"?: ColorTypes | 'white' | 'grey' | '';
+        "color"?: Props.BalTextColor;
         /**
           * If `true` the text has heading font family
          */
@@ -3994,11 +4211,11 @@ declare namespace LocalJSX {
         /**
           * Defines the size of the paragraph
          */
-        "size"?: FontSizeType;
+        "size"?: Props.BalTextSize;
         /**
           * Defines at which position the heading has spacing.
          */
-        "space"?: 'none' | 'bottom' | 'top' | 'all' | '';
+        "space"?: Props.BalTextSpace;
     }
     interface BalTextarea {
         /**
@@ -4028,7 +4245,7 @@ declare namespace LocalJSX {
         /**
           * A hint to the browser for which keyboard to display. Possible values: `"none"`, `"text"`, `"tel"`, `"url"`, `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
          */
-        "inputmode"?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "inputmode"?: Props.BalTextareaInputMode;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -4096,7 +4313,7 @@ declare namespace LocalJSX {
         /**
           * Indicates how the control wraps text.
          */
-        "wrap"?: 'hard' | 'soft' | 'off';
+        "wrap"?: Props.BalTextareaWrap;
     }
     interface BalTimeinput {
         /**
@@ -4133,7 +4350,7 @@ declare namespace LocalJSX {
         /**
           * The theme type of the toast. Given by bulma our css framework. Color type primary is deprecated, please use info instead.
          */
-        "color"?: ColorTypes | '';
+        "color"?: Props.BalTostColor;
         /**
           * The duration of the toast in milliseconds.
          */
@@ -4168,13 +4385,20 @@ declare namespace LocalJSX {
         "bal-data-value": BalDataValue;
         "bal-datepicker": BalDatepicker;
         "bal-doc-app": BalDocApp;
+        "bal-doc-banner": BalDocBanner;
         "bal-doc-color": BalDocColor;
         "bal-doc-download": BalDocDownload;
         "bal-doc-github": BalDocGithub;
         "bal-doc-icons": BalDocIcons;
         "bal-doc-image": BalDocImage;
+        "bal-doc-lead": BalDocLead;
+        "bal-doc-link-list": BalDocLinkList;
+        "bal-doc-link-list-item": BalDocLinkListItem;
         "bal-doc-shades": BalDocShades;
         "bal-doc-support-color": BalDocSupportColor;
+        "bal-doc-tabs": BalDocTabs;
+        "bal-doc-usage": BalDocUsage;
+        "bal-doc-usage-item": BalDocUsageItem;
         "bal-field": BalField;
         "bal-field-control": BalFieldControl;
         "bal-field-hint": BalFieldHint;
@@ -4258,13 +4482,20 @@ declare module "@stencil/core" {
             "bal-data-value": LocalJSX.BalDataValue & JSXBase.HTMLAttributes<HTMLBalDataValueElement>;
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
+            "bal-doc-banner": LocalJSX.BalDocBanner & JSXBase.HTMLAttributes<HTMLBalDocBannerElement>;
             "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
             "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
             "bal-doc-github": LocalJSX.BalDocGithub & JSXBase.HTMLAttributes<HTMLBalDocGithubElement>;
             "bal-doc-icons": LocalJSX.BalDocIcons & JSXBase.HTMLAttributes<HTMLBalDocIconsElement>;
             "bal-doc-image": LocalJSX.BalDocImage & JSXBase.HTMLAttributes<HTMLBalDocImageElement>;
+            "bal-doc-lead": LocalJSX.BalDocLead & JSXBase.HTMLAttributes<HTMLBalDocLeadElement>;
+            "bal-doc-link-list": LocalJSX.BalDocLinkList & JSXBase.HTMLAttributes<HTMLBalDocLinkListElement>;
+            "bal-doc-link-list-item": LocalJSX.BalDocLinkListItem & JSXBase.HTMLAttributes<HTMLBalDocLinkListItemElement>;
             "bal-doc-shades": LocalJSX.BalDocShades & JSXBase.HTMLAttributes<HTMLBalDocShadesElement>;
             "bal-doc-support-color": LocalJSX.BalDocSupportColor & JSXBase.HTMLAttributes<HTMLBalDocSupportColorElement>;
+            "bal-doc-tabs": LocalJSX.BalDocTabs & JSXBase.HTMLAttributes<HTMLBalDocTabsElement>;
+            "bal-doc-usage": LocalJSX.BalDocUsage & JSXBase.HTMLAttributes<HTMLBalDocUsageElement>;
+            "bal-doc-usage-item": LocalJSX.BalDocUsageItem & JSXBase.HTMLAttributes<HTMLBalDocUsageItemElement>;
             "bal-field": LocalJSX.BalField & JSXBase.HTMLAttributes<HTMLBalFieldElement>;
             "bal-field-control": LocalJSX.BalFieldControl & JSXBase.HTMLAttributes<HTMLBalFieldControlElement>;
             "bal-field-hint": LocalJSX.BalFieldHint & JSXBase.HTMLAttributes<HTMLBalFieldHintElement>;

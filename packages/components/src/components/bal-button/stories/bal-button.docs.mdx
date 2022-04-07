@@ -2,66 +2,77 @@ import { Story, Canvas, Description } from '@storybook/addon-docs'
 import { html } from '../../../stories/utils'
 import readme from '../readme.md'
 import buttonGroup from '../bal-button-group/readme.md'
-import { basic, links, alertButtons, expanded, icons, square, buttonLink, group } from './bal-button.templates.ts'
+import { basic, variants, links, colors, expanded, icons, square, buttonLink, group } from './bal-button.templates.ts'
 
-<span id="story--components-button--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-button--basic">Button</bal-doc-banner>
 
-# Button
+<bal-doc-tabs>
+  <a href="#story--components-button--basic">Overview</a>
+  <a href="#examples">Examples</a>
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#implementation">Implementation</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
-Buttons provide a clickable element, which can be used in forms, or anywhere that needs simple, standard button functionality. They may display text, icons, or both. Buttons can be styled with several attributes to look a specific way.
+<bal-doc-lead>
+  <b>Buttons</b> provide a clickable element, which can be used in forms, or anywhere that needs simple, standard button
+  functionality. They may display text, icons, or both. Buttons can be styled with several attributes to look a specific
+  way.
+</bal-doc-lead>
 
-<Canvas>
-  <Story id="components-button--primary" />
+<Canvas withSource="open">
+  <Story id="components-button--basic" />
 </Canvas>
+
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-button--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
 
 ## Examples
 
-### Basic
+<span id="story--components-button--button-variants" style={{ opacity: 0 }}></span>
 
-<Canvas mdxSource={basic}>
-  <bal-doc-app>{html(basic)}</bal-doc-app>
+### Variants
+
+<Canvas>
+  <Story id="components-button--button-variants" />
 </Canvas>
+
+<span id="story--components-button--button-states" style={{ opacity: 0 }}></span>
+
+### States
+
+<Canvas>
+  <Story id="components-button--button-states" />
+</Canvas>
+
+<span id="story--components-button--alert-buttons" style={{ opacity: 0 }}></span>
 
 ### Alert Buttons
 
-<Canvas mdxSource={alertButtons}>
-  <bal-doc-app>{html(alertButtons)}</bal-doc-app>
+<Canvas>
+  <Story id="components-button--alert-buttons" />
 </Canvas>
 
-### Links
+<span id="story--components-button--square-buttons" style={{ opacity: 0 }}></span>
 
-<Canvas mdxSource={links}>
-  <bal-doc-app>{html(links)}</bal-doc-app>
+### Square Buttons
+
+<Canvas>
+  <Story id="components-button--square-buttons" />
 </Canvas>
 
-### Expanded
-
-<Canvas mdxSource={expanded}>
-  <bal-doc-app>{html(expanded)}</bal-doc-app>
-</Canvas>
-
-### With Icons
-
-<Canvas mdxSource={icons}>
-  <bal-doc-app>{html(icons)}</bal-doc-app>
-</Canvas>
-
-### Square
-
-<Canvas mdxSource={square}>
-  <bal-doc-app>{html(square)}</bal-doc-app>
-</Canvas>
-
-### Button Link
-
-<Canvas mdxSource={buttonLink}>
-  <bal-doc-app>{html(buttonLink)}</bal-doc-app>
-</Canvas>
+<span id="story--components-button--button-group" style={{ opacity: 0 }}></span>
 
 ### Button Group
 
-<Canvas mdxSource={group}>
-  <bal-doc-app>{html(group)}</bal-doc-app>
+<Canvas>
+  <Story id="components-button--button-group" />
 </Canvas>
 
 ## Component Api
@@ -70,6 +81,25 @@ Buttons provide a clickable element, which can be used in forms, or anywhere tha
 <Description markdown={buttonGroup} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

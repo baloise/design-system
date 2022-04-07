@@ -1,28 +1,18 @@
 import {
   Component,
+  ComponentInterface,
+  Element,
+  Event,
+  EventEmitter,
   h,
   Host,
-  Prop,
-  Element,
-  EventEmitter,
-  Event,
-  Method,
-  Watch,
-  ComponentInterface,
   Listen,
+  Method,
+  Prop,
   State,
+  Watch,
 } from '@stencil/core'
 import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
-import { AutocompleteTypes, InputTypes } from '../../../types/interfaces'
-import {
-  defaultConfig,
-  BalLanguage,
-  BalConfigObserver,
-  BalConfigState,
-  attachComponentToConfig,
-  detachComponentToConfig,
-  BalRegion,
-} from '../../../config'
 import {
   FormInput,
   getInputTarget,
@@ -34,12 +24,23 @@ import {
   inputListenOnClick,
   inputSetBlur,
   inputSetFocus,
+  stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
-
+import { Props } from '../../../props'
+import {
+  formatClaim,
+  formatOffer,
+  formatPolicy,
+  MAX_LENGTH_CLAIM_NUMBER,
+  MAX_LENGTH_CONTRACT_NUMBER,
+  MAX_LENGTH_OFFER_NUMBER,
+} from './bal-input-util'
+import isNil from 'lodash.isnil'
+import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
 @Component({
   tag: 'bal-input',
 })
-export class Input implements ComponentInterface, BalConfigObserver, FormInput<string | undefined> {
+export class Input implements ComponentInterface, FormInput<string | undefined> {
   private inputId = `bal-input-${InputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
 
@@ -49,8 +50,6 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   @Element() el!: HTMLElement
 
   @State() hasFocus = false
-  @State() language: BalLanguage = defaultConfig.language
-  @State() region: BalRegion = defaultConfig.region
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -70,7 +69,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   /**
    * Defines the type of the input (text, number, email ...).
    */
-  @Prop() type: InputTypes = 'text'
+  @Prop() type: Props.BalInputInputType = 'text'
 
   /**
    * If the value of the type attribute is `"file"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.
@@ -86,12 +85,12 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   /**
    * Indicates whether the value of the control can be automatically completed by the browser.
    */
-  @Prop() autocomplete: AutocompleteTypes = 'off'
+  @Prop() autocomplete: Props.BalInputAutocomplete = 'off'
 
   /**
    * Whether auto correction should be enabled when the user is entering/editing the text value.
    */
-  @Prop() autocorrect: 'on' | 'off' = 'off'
+  @Prop() autocorrect: Props.BalInputAutocorrect = 'off'
 
   /**
    * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
@@ -121,7 +120,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   /**
    * Defines the max length of the value.
    */
-  @Prop() maxLength: number | undefined = undefined
+  @Prop() maxLength?: number
 
   /**
    * The minimum value, which must not be greater than its maximum (max attribute) value.
@@ -131,7 +130,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   /**
    * Defines the min length of the value.
    */
-  @Prop() minLength: number | undefined = undefined
+  @Prop() minLength?: number
 
   /**
    * If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `"email"` or `"file"`, otherwise it is ignored.
@@ -141,7 +140,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
   /**
    * A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, `"date"`, or `"password"`, otherwise it is ignored. When the type attribute is `"date"`, `pattern` will only be used in browsers that do not support the `"date"` input type natively. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date for more information.
    */
-  @Prop() pattern?: string | undefined
+  @Prop() pattern?: string
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -178,6 +177,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
    * If `true` on mobile device the number keypad is active. Use the <bal-number-input> component instead.
    */
   @Prop() numberInput = false
+
   @Watch('numberInput')
   numberInputHandler() {
     if (this.numberInput) {
@@ -190,6 +190,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
    * Defines the allowed decimal points for the `number-input`. Use the <bal-number-input> component instead.
    */
   @Prop() decimal?: number
+
   @Watch('decimal')
   decimalHandler() {
     if (this.decimal) {
@@ -213,12 +214,20 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
    * Possible values: `"none"`, `"text"`, `"tel"`, `"url"`,
    * `"email"`, `"numeric"`, `"decimal"`, and `"search"`.
    */
-  @Prop() inputmode?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
+  @Prop() inputmode?: Props.BalInputInputMode
 
   /**
    * The value of the input.
    */
   @Prop({ mutable: true }) value?: string = undefined
+
+  /**
+   * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted.
+   * Formatting for 'contract-number': '00/0.000.000'
+   * Formatting for 'claim-number': ('73/001217/16.9')
+   * Formatting for 'offer-number': ('98/7.654.321')
+   */
+  @Prop() mask?: Props.BalInputMask = undefined
 
   /**
    * Emitted when a keyboard input occurred.
@@ -257,7 +266,6 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
 
   connectedCallback() {
     this.debounceChanged()
-    attachComponentToConfig(this)
   }
 
   componentDidLoad() {
@@ -266,19 +274,6 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
-  }
-
-  disconnectedCallback() {
-    detachComponentToConfig(this)
-  }
-
-  configChanged(state: BalConfigState): void {
-    this.language = state.language
-    this.region = state.region
-
-    if (!this.hasFocus && this.nativeInput) {
-      this.nativeInput.value = this.getFormattedValue()
-    }
   }
 
   /**
@@ -321,9 +316,46 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
 
   private onInput = (ev: InputEvent) => {
     const input = getInputTarget(ev)
-
+    const cursorPositionStart = (ev as any).target?.selectionStart
+    const cursorPositionEnd = (ev as any).target?.selectionEnd
     if (input) {
-      this.inputValue = input.value
+      switch (this.mask) {
+        case 'contract-number': {
+          this.inputValue = input.value.replace(/\D/g, '')
+          if (this.inputValue.length > MAX_LENGTH_CONTRACT_NUMBER) {
+            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CONTRACT_NUMBER)
+          }
+          input.value = formatPolicy(this.inputValue)
+          if (cursorPositionStart < this.inputValue.length) {
+            input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+          }
+          break
+        }
+        case 'offer-number': {
+          this.inputValue = input.value.replace(/\D/g, '')
+          if (this.inputValue.length > MAX_LENGTH_OFFER_NUMBER) {
+            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_OFFER_NUMBER)
+          }
+          input.value = formatOffer(this.inputValue)
+          if (cursorPositionStart < this.inputValue.length) {
+            input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+          }
+          break
+        }
+        case 'claim-number': {
+          this.inputValue = input.value.replace(/\D/g, '')
+          if (this.inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
+            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
+          }
+          input.value = formatClaim(this.inputValue)
+          if (cursorPositionStart < this.inputValue.length) {
+            input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
+          }
+          break
+        }
+        default:
+          this.inputValue = input.value
+      }
     }
 
     this.balInput.emit(this.inputValue)
@@ -336,10 +368,24 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
 
     const input = ev.target as HTMLInputElement | null
     if (input) {
-      input.value = this.getFormattedValue()
+      if (this.mask === undefined) {
+        input.value = this.getFormattedValue()
+      }
+      inputHandleChange(this)
     }
+  }
 
-    inputHandleChange(this)
+  private getAllowedKeys() {
+    return [...NUMBER_KEYS, ...ACTION_KEYS]
+  }
+
+  private onKeydown = (event: KeyboardEvent) => {
+    if (this.mask !== undefined && !isNil(event) && !isCtrlOrCommandKey(event)) {
+      if (!this.getAllowedKeys().includes(event.key)) {
+        // do not trigger next event -> on input
+        return stopEventBubbling(event)
+      }
+    }
   }
 
   private onClick = (event: MouseEvent) => inputHandleClick(this, event)
@@ -373,8 +419,19 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
         ></bal-number-input>
       )
     }
-
-    const value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
+    let value = this.hasFocus ? this.getRawValue() : this.getFormattedValue()
+    if (this.mask !== undefined) {
+      switch (this.mask) {
+        case 'contract-number':
+          value = formatPolicy(value)
+          break
+        case 'claim-number':
+          value = formatClaim(value)
+          break
+        case 'offer-number':
+          value = formatOffer(value)
+      }
+    }
     const labelId = this.inputId + '-lbl'
     const label = findItemLabel(this.el)
     if (label) {
@@ -431,6 +488,7 @@ export class Input implements ComponentInterface, BalConfigObserver, FormInput<s
           value={value}
           onFocus={this.onFocus}
           onInput={ev => this.onInput(ev as InputEvent)}
+          onKeyDown={e => this.onKeydown(e)}
           onBlur={this.onBlur}
           onClick={this.onClick}
           onKeyPress={e => this.balKeyPress.emit(e)}

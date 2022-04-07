@@ -30,11 +30,9 @@ export const LoadingCard = args => ({
   components: { ...component.components, BalCard, BalCardContent },
   setup: () => ({ args }),
   template: `<bal-card>
-  <bal-card-content>
-    <div class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
-      <bal-spinner v-bind="args" class="my-5"></bal-spinner>
-      <bal-heading level="h5" space="all">Please wait...</bal-heading>
-    </div>
+  <bal-card-content class="is-flex is-align-items-center is-flex-direction-column is-justify-content-center">
+    <bal-spinner v-bind="args" class="my-5"></bal-spinner>
+    <bal-heading level="h5" space="all">Please wait...</bal-heading>
   </bal-card-content>
 </bal-card>`,
 })

@@ -14,6 +14,7 @@ import {
 import {
   addValue,
   findLabelByValue,
+  findOptionByLabel,
   getValues,
   includes,
   length,
@@ -77,7 +78,7 @@ export class Select {
   /**
    * This label is shown if typeahead is active and all the options are filtered out.
    */
-  @Prop() noDataLabel: string | undefined
+  @Prop() noDataLabel?: string
 
   /**
    * @deprecated  Removes the border of the input.
@@ -93,6 +94,12 @@ export class Select {
    * If `true` the user can search by typing into the input field.
    */
   @Prop() typeahead = false
+
+  /**
+   * If `true` the options are a proposal and the user can also create his
+   * own value. Can only be used with the typeahead property.
+   */
+  @Prop() selectionOptional = false
 
   /**
    * If `true` the component is disabled.
@@ -122,7 +129,7 @@ export class Select {
   /**
    * Selected option values. Could also be passed as a string, which gets transformed.
    */
-  @Prop({ mutable: true }) value: string | string[] | undefined = []
+  @Prop({ mutable: true }) value?: string | string[] = []
   @State() rawValue: string[] | undefined = []
 
   @Watch('value')
@@ -134,17 +141,19 @@ export class Select {
   rawValueWatcher(newValue: string[], oldValue: string[]) {
     if (!areArraysEqual(newValue, oldValue)) {
       this.syncNativeInput()
-      if (this.multiple) {
-        if (isNil(this.rawValue)) {
-          this.balChange.emit([])
+      if (this.didInit) {
+        if (this.multiple) {
+          if (isNil(this.rawValue)) {
+            this.balChange.emit([])
+          } else {
+            this.balChange.emit([...(this.rawValue as string[])])
+          }
         } else {
-          this.balChange.emit([...(this.rawValue as string[])])
-        }
-      } else {
-        if (isNil(this.rawValue) || length(this.rawValue) === 0) {
-          this.balChange.emit(undefined)
-        } else {
-          this.balChange.emit(this.rawValue[0])
+          if (isNil(this.rawValue) || length(this.rawValue) === 0) {
+            this.balChange.emit(undefined)
+          } else {
+            this.balChange.emit(this.rawValue[0])
+          }
         }
       }
     }
@@ -277,7 +286,7 @@ export class Select {
         innerHTML: element.innerHTML,
       })
     }
-    if (Array.isArray(this.rawValue)) {
+    if (!this.selectionOptional && Array.isArray(this.rawValue)) {
       for (let index = 0; index < this.rawValue.length; index++) {
         const val = this.rawValue[index]
         if (!options.has(val)) {
@@ -581,8 +590,17 @@ export class Select {
   }
 
   private validateAfterBlur() {
-    if (!this.multiple && this.didInit) {
-      this.rawValue = validateAfterBlur(this.rawValue, this.options, this.inputElement.value)
+    if (this.didInit && !this.multiple) {
+      if (this.selectionOptional && this.typeahead) {
+        const typedOption = findOptionByLabel(this.options, this.inputElement.value)
+        if (typedOption) {
+          this.rawValue = [typedOption.value]
+        } else {
+          this.rawValue = [this.inputElement.value]
+        }
+      } else {
+        this.rawValue = validateAfterBlur(this.rawValue, this.options, this.inputElement.value)
+      }
     }
   }
 
@@ -597,7 +615,11 @@ export class Select {
     if (!this.multiple) {
       if (length(this.rawValue) > 0) {
         const valuesArray = getValues(this.rawValue)
-        this.updateInputValue(findLabelByValue(this.options, valuesArray[0]))
+        let label = findLabelByValue(this.options, valuesArray[0])
+        if (!this.multiple && this.typeahead && this.selectionOptional && label === '') {
+          label = valuesArray.join(', ')
+        }
+        this.updateInputValue(label)
       }
     }
   }
@@ -690,7 +712,7 @@ export class Select {
 
     const Chip = (props: { value: string }) => (
       <bal-tag color="primary" closable={!this.disabled} onBalCloseClick={_ => this.removeValue(props.value)}>
-        {findLabelByValue(this.options, props.value)}
+        {findLabelByValue(this.options, props.value) || props.value}
       </bal-tag>
     )
 
@@ -708,13 +730,11 @@ export class Select {
         }}
       >
         <select class="is-hidden" name={this.name} multiple={this.multiple}>
-          {valuesArray
-            .filter(_ => this.multiple)
-            .map((value: string) => (
-              <option value={value} selected>
-                {value}
-              </option>
-            ))}
+          {valuesArray.map((value: string) => (
+            <option value={value} selected>
+              {value}
+            </option>
+          ))}
         </select>
         <bal-popover
           onBalChange={this.handlePopoverChange}
@@ -764,6 +784,10 @@ export class Select {
               size="xsmall"
               color={this.disabled ? 'grey' : this.invalid ? 'danger' : 'primary'}
               turn={this.isPopoverOpen}
+              style={{
+                marginTop: this.isPopoverOpen ? '8px' : '0px',
+              }}
+              onClick={this.handleInputClick}
             ></bal-icon>
           </div>
           <bal-popover-content scrollable={this.scrollable}>
@@ -803,7 +827,8 @@ export class Select {
             <div
               class={{
                 'bal-select__empty': true,
-                'is-hidden': this.noDataLabel === undefined || this.hasOptions() || !this.typeahead,
+                'is-hidden':
+                  this.noDataLabel === undefined || this.hasOptions() || !this.typeahead || this.selectionOptional,
               }}
             >
               {this.noDataLabel}

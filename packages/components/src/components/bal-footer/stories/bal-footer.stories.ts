@@ -27,21 +27,16 @@ const Template = args => ({
     }
   },
   template: `<bal-footer v-bind="args">
-  <div class="container">{{ args.content }}</div>
+  <div class="container">
+    <bal-logo color="white"></bal-logo>
+    <p class="mt-2">{{ args.content }}</p>
+  </div>
 </bal-footer>`,
 })
 
 export const Basic = Template.bind({})
 Basic.args = {
   content: 'Footer Content',
-  hideLinks: true,
-}
-Basic.parameters = { ...component.sourceCode(Basic) }
-
-export const WithLinks = Template.bind({})
-WithLinks.args = {
-  content: '',
-  locale: 'en',
   hideLinks: false,
 }
-WithLinks.parameters = { ...component.sourceCode(WithLinks) }
+Basic.parameters = { ...component.sourceCode(Basic) }

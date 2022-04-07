@@ -72,5 +72,9 @@ bal-hint-text {
   p {
     font-weight: initial;
     font-family: $family-primary;
+
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
   }
 }

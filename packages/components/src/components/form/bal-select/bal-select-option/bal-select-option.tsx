@@ -9,7 +9,7 @@ export class SelectOption implements ComponentInterface {
   /**
    * Label will be shown in the input element when it got selected
    */
-  @Prop() label: string | undefined
+  @Prop() label?: string
 
   /**
    * If `true`, the user cannot interact with the option.
@@ -19,7 +19,7 @@ export class SelectOption implements ComponentInterface {
   /**
    * The value of the select option. This value will be returned by the parent `<bal-select>` element.
    */
-  @Prop() value: string | undefined
+  @Prop() value?: string
 
   render() {
     return (

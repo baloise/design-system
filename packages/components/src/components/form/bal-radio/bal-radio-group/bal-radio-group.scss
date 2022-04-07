@@ -10,12 +10,14 @@ bal-radio-group {
     flex-direction: column;
   }
 
-  &.bal-select-button.is-vertical > div {
+  &.is-vertical > div {
     flex-direction: column;
+    border-radius: 12px;
   }
 
-  &.bal-select-button > div {
-    gap: 8px;
+  &.is-vertical-mobile > div {
+    flex-direction: column;
+    border-radius: 12px;
   }
 
   &:not(.bal-select-button) {
@@ -39,12 +41,12 @@ bal-radio-group {
       }
     }
   }
+}
 
-  @include tablet() {
-    &.bal-select-button.is-vertical-mobile > div {
-      flex-direction: row;
-      border-radius: 100px;
-    }
+@include tablet() {
+  &.bal-select-button.is-vertical-mobile > div {
+    flex-direction: row;
+    border-radius: 100px;
   }
 }
 

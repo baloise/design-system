@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core'
 import isEmpty from 'lodash.isempty'
-import { BackgroundColors } from '../../types/color.types'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-card',
@@ -27,9 +27,19 @@ export class BalCard {
   @Prop() inverted = false
 
   /**
+   * If `true` the card has a hover effect.
+   */
+  @Prop() clickable = false
+
+  /**
+   * If `true` the card gets a light background to indicate a selection.
+   */
+  @Prop() selected = false
+
+  /**
    * Defines the color of the card.
    */
-  @Prop() color: BackgroundColors = 'white'
+  @Prop() color: Props.BalCardColor = 'white'
 
   get colorTypeClass(): string {
     return isEmpty(this.color) ? '' : `has-background-${this.color}`
@@ -44,6 +54,8 @@ export class BalCard {
           'has-border': this.border,
           'is-inverted': this.inverted,
           'has-shadow': !this.flat,
+          'is-clickable': this.clickable,
+          'is-selected': this.selected,
           'has-radius-large': !this.square,
         }}
       >

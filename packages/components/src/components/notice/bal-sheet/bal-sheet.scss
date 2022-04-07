@@ -15,8 +15,6 @@ bal-sheet {
     border-radius: $radius-large;
     background-color: $white;
     box-shadow: $shadow;
-    padding-top: 8px;
-    padding-bottom: 8px;
   }
 
   @include tablet() {
@@ -31,7 +29,6 @@ bal-sheet {
         border-radius: $radius-large;
         background-color: $white;
         box-shadow: $shadow;
-        padding: 12px 16px;
       }
     }
   }

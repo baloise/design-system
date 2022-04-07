@@ -24,3 +24,7 @@ bal-app,
   @import 'layout/_all';
   @import 'components/_all';
 }
+
+.bal-modal-active {
+  overflow: hidden;
+}

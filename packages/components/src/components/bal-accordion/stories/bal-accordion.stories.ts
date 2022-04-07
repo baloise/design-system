@@ -23,8 +23,10 @@ export const Basic = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-accordion v-bind="args" v-model="args.value">
-  <p>{{ args.content }}</p>
-</bal-accordion>`,
+  <p class="p-5">
+   {{ args.content }}
+  </p>
+  </bal-accordion>`,
 })
 Basic.args = {
   openLabel: 'Show more',
@@ -54,8 +56,8 @@ export const WithIcons = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
   template: `<bal-accordion open-icon="edit" open-label="Bearbeiten" close-label="Schliessen" close-icon="close">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</bal-accordion>`,
+  <p class="p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </bal-accordion>`,
 })
 WithIcons.args = {
   content:

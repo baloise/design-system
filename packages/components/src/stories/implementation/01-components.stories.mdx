@@ -1,0 +1,148 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Implementation/Component"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<bal-doc-banner id="overview" subtitle="Implementation">Component</bal-doc-banner>
+
+<bal-doc-tabs>
+  <a href="#overview">Overview</a>
+  <a href="#usage-with-basic-html5">HTML</a>
+  <a href="#usage-with-angular">Angular</a>
+  <a href="#usage-with-vue">Vue</a>
+  <a href="#usage-with-react">React</a>
+</bal-doc-tabs>
+
+<bal-doc-lead>
+  By using the standardized web platform APIs and Web Components we achieved that the components of the Baloise Design
+  System can be used across any framework or no framework at all.
+</bal-doc-lead>
+
+> **Before Continuing** Please take a look a the [integration guides](?path=/docs/getting-started-overview--page#integration) before reading the usage section.
+
+## Usage with basic HTML5
+
+Once the [HTML5 integration](?path=/docs/getting-started-html5-installation--page) has been accomplished the components can be used inside the `bal-app` component.
+
+```html
+<bal-app>
+  <main class="container">
+    <bal-heading>Hello World</bal-heading>
+  <main>
+</bal-app>
+```
+
+### When is the component ready
+
+The [CustomElementRegistry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) interface provides methods for registering custom elements and
+querying registered elements. To get an instance of it, use the window.customElements property.
+
+The [whenDefined](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined) method of the CustomElementRegistry interface returns a Promise that
+resolves when the named element is defined.
+
+```js
+window.customElements.whenDefined('bal-button').then(() => {
+  console.log('Baloise Design System Button is defined!')
+})
+```
+
+The `whenDefined()` tells when the component is added to the browser.
+Additionally to know when the component has fully rendered ou could use `componentOnReady()` that our components provide.
+
+```js
+await customElements.whenDefined('bal-button')
+await document.querySelector('bal-button').componentOnReady()
+```
+
+## Usage with Angular
+
+Once the [Angular integration](?path=/docs/getting-started-angular-installation--page) has been accomplished the components can be used inside the `bal-app` component
+
+**app.module.ts**
+
+```typescript
+import { BalCoreModule, BalHeadingModule } from '@baloise/design-system-components-angular';
+
+@NgModule({
+  ...
+  imports: [
+    BalCoreModule.forRoot(),
+    // Each component set needs to be imported
+    BalHeadingModule,
+  ],
+  ...
+})
+export class AppModule {}
+```
+
+Each component set has its own module like the BalCardModule has all his sub-components already included, so no need to also try to import a BalCardTitleModule.
+After importing the Baloise Design System Angular components, the components can be used inside the `bal-app` component.
+
+**app.component.html**
+
+```html
+<bal-app>
+  <main class="container">
+    <bal-heading>Hello World</bal-heading>
+  <main>
+</bal-app>
+```
+
+## Usage with Vue
+
+Once the [Vue integration](?path=/docs/getting-started-vue-installation--page) has been accomplished the components can be used inside the `bal-app` component
+
+After importing the Baloise Design System Vue components, the components can be used inside the `BalApp` component.
+
+**App.vue**
+
+```html
+<script setup lang="ts">
+  import { BalApp, BalHeading } from '@baloise/design-system-components-vue'
+</script>
+
+<template>
+  <BalApp>
+    <main class="container">
+      <BalHeading>Hello World</BalHeading>
+    <main>
+  </BalApp>
+</template>
+```
+
+Import the components that are used inside the template and that is it.
+
+## Usage with React
+
+Once the [React integration](?path=/docs/getting-started-react-installation--page) has been accomplished the components can be used inside the `bal-app` component
+
+After importing the Baloise Design System React components, the components can be used inside the `BalApp` component.
+
+**App.tsx**
+
+```tsx
+import React from "react";
+import { BalApp, BalHeading } from "@baloise/design-system-components-react";
+
+function App() {
+  return (
+    <BalApp>
+      <main class="container">
+        <BalHeading>Hello World</BalHeading>
+      <main>
+    </BalApp>
+  );
+}
+
+export default App;
+```
+
+Import the components that are used inside the template and that is it.
+
+<bal-doc-github link="/stories/implementation/01-components.stories.mdx"></bal-doc-github>

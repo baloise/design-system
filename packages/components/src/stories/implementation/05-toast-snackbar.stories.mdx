@@ -1,0 +1,119 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+  title="Implementation/Toast & Snackbar"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<bal-doc-banner id="overview" subtitle="Implementation">Toast & Snackbar</bal-doc-banner>
+
+<bal-doc-tabs>
+  <a href="#overview">Overview</a>
+  {/* <a href="#usage-with-basic-html5">HTML</a> */}
+  <a href="#usage-with-angular">Angular</a>
+  <a href="#usage-with-vue">Vue</a>
+  <a href="#usage-with-react">React</a>
+</bal-doc-tabs>
+
+<bal-doc-lead>
+  Toasts are used to inform the user with a simple text message and a snackbar is used to inform the user with a simple
+  text message and a action.
+</bal-doc-lead>
+
+**Components:**
+
+- [Snackbar](?path=/docs/components-snackbar--basic)
+- [Toast](?path=/docs/components-toast--basic)
+
+<!-- ## Usage with basic HTML5 -->
+
+## Usage with Angular
+
+The Baloise Design System has 2 services `BalToastService` and `BalSnackbarService` to create new notices.
+Just import the service into the component.
+
+```typescript
+// app.component.ts
+import { Component } from '@angular/core'
+import { BalToastService } from '@baloise/design-system-components-angular'
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+})
+export class AppComponent {
+  myToast?: HTMLBalToastElement
+
+  constructor(public toast: BalToastService) {}
+
+  onButtonClick() {
+    this.myToast = this.toast.create({ message: 'Welcome' })
+  }
+
+  async onSecondButtonClick() {
+    await this.myToast.close()
+  }
+}
+```
+
+## Usage with Vue
+
+The Baloise Design System has 2 controllers `balSnackbarController` and `balToastController` to create new notices.
+Just import the controllers into the component.
+
+```html
+<script setup lang="ts">
+  import { BalApp, BalButton } from '@baloise/design-system-components-vue'
+  import { balToastController } from '@baloise/design-system-components'
+
+  let myToast?: HTMLBalToastElement>
+
+  function createToast() {
+    myToast = balToastController.create({
+      message: 'Message',
+    })
+  }
+
+  async function closeToast() {
+    await myToast.close()
+  }
+</script>
+
+<template>
+  <BalApp>
+    <BalButton @click="createToast()">Create Toast</BalButton>
+  </BalApp>
+</template>
+```
+
+## Usage with React
+
+The Baloise Design System has 2 controllers `balSnackbarController` and `balToastController` to create new notices.
+Just import the controllers into the component.
+
+```tsx
+import React from 'react'
+import { BalButton } from '@baloise/design-system-components-react'
+import { balToastController } from '@baloise/design-system-components'
+
+function MyComponent() {
+  return (
+    <BalButton
+      onClick={ev =>
+        balToastController.create({
+          message: 'Message',
+        })
+      }
+    ></BalButton>
+  )
+}
+
+export default MyComponent
+```
+
+<bal-doc-github link="/stories/implementation/05-toast-snackbar.stories.mdx"></bal-doc-github>

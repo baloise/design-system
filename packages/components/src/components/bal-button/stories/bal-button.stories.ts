@@ -1,12 +1,9 @@
-import { BalComponentStory, withContent } from '../../../stories/utils'
-import { BalButton } from '../../../../.storybook/vue/components'
+import { BalComponentStory } from '../../../stories/utils'
+import { BalButton, BalButtonGroup } from '../../../../.storybook/vue/components'
 import docs from './bal-button.docs.mdx'
 
 const component = BalComponentStory({
   component: BalButton,
-  argTypes: {
-    ...withContent(),
-  },
   docs,
   status: 'stable',
   args: {
@@ -24,7 +21,17 @@ const component = BalComponentStory({
 
 export default component.story
 
-const excludedControls = ['outlined', 'rel', 'topRounded', 'value', 'bottomRounded', 'download']
+const excludedControls = [
+  'bottomRounded',
+  'download',
+  'isActive',
+  'name',
+  'rel',
+  'target',
+  'topRounded',
+  'type',
+  'value',
+]
 
 const Template = args => ({
   components: { ...component.components },
@@ -32,49 +39,108 @@ const Template = args => ({
   template: `<bal-button v-bind="args">{{ args.content }}</bal-button>`,
 })
 
-export const Primary = Template.bind({})
-Primary.args = {}
-Primary.parameters = { ...component.sourceCode(Primary), controls: { exclude: excludedControls } }
-
-export const Secondary = Template.bind({})
-Secondary.args = {
-  content: 'Secondary',
-  color: 'info',
+export const Basic = Template.bind({})
+Basic.args = {
+  content: 'Primary',
 }
-Secondary.parameters = { ...component.sourceCode(Secondary), controls: { exclude: excludedControls } }
+Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
 
-export const Link = Template.bind({})
-Link.args = {
-  content: 'Link',
-  color: 'link',
-  icon: 'link',
-}
-Link.parameters = { ...component.sourceCode(Link), controls: { exclude: excludedControls } }
-
-export const Text = Template.bind({})
-Text.args = {
-  content: 'Text',
-  color: 'text',
-  icon: 'plus',
-}
-Text.parameters = { ...component.sourceCode(Text), controls: { exclude: excludedControls } }
-
-export const Square = Template.bind({})
-Square.args = {
-  content: '',
-  color: 'info',
-  icon: 'edit',
-  square: true,
-}
-Square.parameters = { ...component.sourceCode(Square), controls: { exclude: excludedControls } }
-
-export const ButtonGroup = args => ({
-  components: { ...component.components },
+export const ButtonVariants = args => ({
+  components: { ...component.components, BalButtonGroup },
   setup: () => ({ args }),
   template: `<bal-button-group>
-  <bal-button>First</bal-button>
-  <bal-button color="info">Second</bal-button>
-</bal-button-group>
-  `,
+  <bal-button v-bind="args">Primary</bal-button>
+  <bal-button v-bind="args" color="info">Secondary</bal-button>
+  <bal-button v-bind="args" color="info" outlined>Tertiary</bal-button>
+  <bal-button v-bind="args" color="link">Link</bal-button>
+</bal-button-group>`,
 })
-ButtonGroup.parameters = { ...component.sourceCode(ButtonGroup), controls: { exclude: excludedControls } }
+ButtonVariants.parameters = {
+  ...component.sourceCode(ButtonVariants),
+  controls: { exclude: [...excludedControls, 'color', 'expanded', 'href'] },
+}
+
+export const ButtonStates = args => ({
+  components: { ...component.components, BalButtonGroup },
+  setup: () => ({ args }),
+  template: `<bal-button-group>
+  <bal-button loading>Loading</bal-button>
+  <bal-button disabled>Disabled</bal-button>
+</bal-button-group>`,
+})
+ButtonStates.parameters = {
+  ...component.sourceCode(ButtonStates),
+  controls: { exclude: [...excludedControls, 'color', 'expanded', 'href'] },
+}
+
+export const AlertButtons = args => ({
+  components: { ...component.components, BalButtonGroup },
+  setup: () => ({ args }),
+  template: `<bal-button-group>
+  <bal-button v-bind="args" color="success">Success</bal-button>
+  <bal-button v-bind="args" color="warning">Warning</bal-button>
+  <bal-button v-bind="args" color="danger">Danger</bal-button>
+</bal-button-group>`,
+})
+AlertButtons.parameters = {
+  ...component.sourceCode(AlertButtons),
+  controls: { exclude: [...excludedControls, 'color', 'expanded', 'href'] },
+}
+
+export const SquareButtons = args => ({
+  components: { ...component.components, BalButtonGroup },
+  setup: () => ({ args }),
+  template: `<bal-button-group>
+  <bal-button v-bind="args" icon="plus"></bal-button>
+  <bal-button v-bind="args" color="info" icon="account"></bal-button>
+  <bal-button v-bind="args" color="info" outlined>42</bal-button>
+</bal-button-group>`,
+})
+SquareButtons.args = {
+  square: true,
+}
+SquareButtons.parameters = {
+  ...component.sourceCode(SquareButtons),
+  controls: { exclude: [...excludedControls, 'color', 'expanded', 'href'] },
+}
+
+export const ButtonGroup = args => ({
+  components: { ...component.components, BalButtonGroup },
+  setup: () => ({ args }),
+  template: `<bal-button-group>
+  <bal-button v-bind="args" color="link">Left</bal-button>
+  <bal-button v-bind="args">Aligned</bal-button>
+</bal-button-group>
+<bal-button-group position="center">
+  <bal-button v-bind="args" color="link">Center</bal-button>
+  <bal-button v-bind="args">Aligned</bal-button>
+</bal-button-group>
+<bal-button-group position="right">
+  <bal-button v-bind="args" color="link">Right</bal-button>
+  <bal-button v-bind="args">Aligned</bal-button>
+</bal-button-group>`,
+})
+ButtonGroup.parameters = {
+  ...component.sourceCode(ButtonGroup),
+  controls: { exclude: [...excludedControls, 'color', 'expanded', 'href'] },
+}
+
+// export const Square = Template.bind({})
+// Square.args = {
+//   content: '',
+//   color: 'info',
+//   icon: 'edit',
+//   square: true,
+//   outlined: true,
+// }
+// Square.parameters = { ...component.sourceCode(Square) }
+
+// export const ButtonGroup = args => ({
+//   components: { ...component.components },
+//   setup: () => ({ args }),
+//   template: `<bal-button-group>
+//   <bal-button>First</bal-button>
+//   <bal-button color="info">Second</bal-button>
+// </bal-button-group>
+//   `,
+// })
