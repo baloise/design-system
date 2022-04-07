@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.8.3](https://github.com/baloise/design-system/compare/v10.8.2...v10.8.3) (2022-04-07)
+
+
+### Bug Fixes
+
+* **datepicker:** enable locale typing ([2ed6004](https://github.com/baloise/design-system/commit/2ed60043cf32238595b8a7515f75a8176f30f49e))
+
+
+
 ### [10.8.2](https://github.com/baloise/design-system/compare/v10.8.1...v10.8.2) (2022-04-07)
 
 
