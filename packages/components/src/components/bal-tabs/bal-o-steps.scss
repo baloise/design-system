@@ -68,6 +68,12 @@ bal-tabs.bal-o-steps {
       }
     }
 
+    li:not(.is-done, .is-failed, .is-active, .is-disabled) {
+      .step-index {
+        border: 2px solid $blue-2;
+      }
+    }
+
     li.is-failed:not(.is-active) {
       .step-index {
         .alert-icon {
