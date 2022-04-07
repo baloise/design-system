@@ -161,8 +161,6 @@ export class Tabs {
   private moveLine(element: HTMLElement) {
     if (element) {
       const listElement = element.closest('li')
-      console.log('clientHeight', listElement?.clientHeight)
-      console.log('offsetTop', listElement?.offsetTop)
 
       if (this.vertical) {
         if (listElement?.clientHeight !== undefined) {
