@@ -1500,6 +1500,10 @@ export namespace Components {
          */
         "duration": number;
         /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
           * The icon of the snackbar header
          */
         "icon": string;
@@ -1511,6 +1515,10 @@ export namespace Components {
           * The subject of the snackbar header
          */
         "subject": string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
     }
     interface BalSpinner {
         /**
@@ -1618,6 +1626,10 @@ export namespace Components {
          */
         "actionLabel": string;
         /**
+          * If `true` a light border is shown for the tabs.
+         */
+        "border": boolean;
+        /**
           * If `true` the tabs or steps can be clicked.
          */
         "clickable": boolean;
@@ -1648,7 +1660,6 @@ export namespace Components {
           * The theme type of the tag. Given by bulma our css framework.
          */
         "color": Props.BalTagColor;
-        "dense": boolean;
         /**
           * If `true` a light version of the color is displayed
          */
@@ -4012,6 +4023,10 @@ declare namespace LocalJSX {
          */
         "duration"?: number;
         /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
           * The icon of the snackbar header
          */
         "icon"?: string;
@@ -4031,6 +4046,10 @@ declare namespace LocalJSX {
           * The subject of the snackbar header
          */
         "subject"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
     }
     interface BalSpinner {
         /**
@@ -4134,6 +4153,10 @@ declare namespace LocalJSX {
          */
         "actionLabel"?: string;
         /**
+          * If `true` a light border is shown for the tabs.
+         */
+        "border"?: boolean;
+        /**
           * If `true` the tabs or steps can be clicked.
          */
         "clickable"?: boolean;
@@ -4168,7 +4191,6 @@ declare namespace LocalJSX {
           * The theme type of the tag. Given by bulma our css framework.
          */
         "color"?: Props.BalTagColor;
-        "dense"?: boolean;
         /**
           * If `true` a light version of the color is displayed
          */

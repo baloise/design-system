@@ -3,6 +3,10 @@
 declare namespace Cypress {
   interface Chainable {
     /**
+     * Finds the open modal and returns it.
+     */
+    balModalFindOpen(): Chainable<JQuery>
+    /**
      * Assert if the modal is open.
      */
     balModalIsOpen(): Chainable<JQuery>

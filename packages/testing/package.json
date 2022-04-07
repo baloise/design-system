@@ -26,9 +26,6 @@
     "dist/"
   ],
   "scripts": {
-    "serve": "cypress open",
-    "test": "cypress run",
-    "cy:install": "cypress install",
     "build": "npm run build:clean && npm run build:compile && npm run build:bundle",
     "build:clean": "rimraf docs && rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p tsconfig.build.json",

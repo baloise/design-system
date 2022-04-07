@@ -30,7 +30,16 @@ import {
 } from 'date-fns'
 import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
 import { BalCalendarCell, BalPointerDate } from './bal-datepicker.type'
-import { isSpaceKey, parse, format, isValidIsoString, now, formatDateString, isEnterKey } from '@baloise/web-app-utils'
+import {
+  isSpaceKey,
+  parse,
+  format,
+  isValidIsoString,
+  now,
+  formatDateString,
+  isEnterKey,
+  dateSeparator,
+} from '@baloise/web-app-utils'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
@@ -489,7 +498,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     if (input) {
       this.inputValue = input.value
       if (this.inputValue && this.inputValue.length >= 6) {
-        const date = parse(this.inputValue)
+        const date = parse(this.inputValue, this.getLocale())
         const dateString = formatDateString(date as Date)
         if (isValidIsoString(dateString)) {
           this.selectedDate = dateString
@@ -503,7 +512,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private onInputChange = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
-    const date = parse(inputValue)
+    const date = parse(inputValue, this.getLocale())
     const dateString = formatDateString(date as Date)
     const formattedValue = format(this.getLocale(), date)
 
@@ -528,7 +537,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     }
 
     if (isEnterKey(event) && !this.triggerIcon) {
-      const date = parse(this.nativeInput.value)
+      const date = parse(this.nativeInput.value, this.getLocale())
       const dateString = formatDateString(date as Date)
 
       if (this.isPopoverOpen) {
@@ -540,7 +549,8 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   private onInputKeyDown = (event: KeyboardEvent) => {
-    const allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]
+    const separator = dateSeparator(this.getLocale())
+    const allowedKeys = [...NUMBER_KEYS, separator, ...ACTION_KEYS]
     if (!isCtrlOrCommandKey(event) && allowedKeys.indexOf(event.key) < 0) {
       event.preventDefault()
       event.stopPropagation()

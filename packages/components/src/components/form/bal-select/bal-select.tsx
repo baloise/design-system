@@ -664,7 +664,16 @@ export class Select {
     } else {
       this.focusIndex = 0
       this.balClick.emit(event)
-      await this.popoverElement?.present()
+
+      if (this.multiple || this.typeahead) {
+        await this.popoverElement?.present()
+      } else {
+        if (this.isPopoverOpen) {
+          await this.popoverElement?.dismiss()
+        } else {
+          await this.popoverElement?.present()
+        }
+      }
     }
   }
 
@@ -711,7 +720,12 @@ export class Select {
     }
 
     const Chip = (props: { value: string }) => (
-      <bal-tag color="primary" closable={!this.disabled} onBalCloseClick={_ => this.removeValue(props.value)}>
+      <bal-tag
+        color="primary"
+        size="small"
+        closable={!this.disabled}
+        onBalCloseClick={_ => this.removeValue(props.value)}
+      >
         {findLabelByValue(this.options, props.value) || props.value}
       </bal-tag>
     )

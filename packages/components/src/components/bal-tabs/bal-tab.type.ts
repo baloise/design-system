@@ -16,6 +16,7 @@ export interface BalTabOption {
 export interface TabProps {
   value: string | undefined
   expanded: boolean
+  border: boolean
   clickable: boolean
   action: boolean
   actionLabel: string
