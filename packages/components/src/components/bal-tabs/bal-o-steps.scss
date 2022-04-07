@@ -70,30 +70,22 @@ bal-tabs.bal-o-steps {
 
     li.is-failed:not(.is-active) {
       .step-index {
-        border: 2px solid #ea1800 !important;
-        background: #ea1800 !important;
+        .alert-icon {
+          height: 30px;
+          width: 30px;
+          max-height: 30px;
 
-        &::after {
-          display: inline-block;
-          position: absolute;
-          background-color: transparent;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: 24px 24px;
-          content: '!';
-          font-size: 16px;
-          text-align: center;
-          width: 32px;
-          height: 32px;
-          line-height: 32px;
-          vertical-align: middle;
-          font-weight: 700;
+          .bal-icon-inner {
+            height: 30px;
+            width: 30px;
+            max-height: 30px;
+          }
         }
       }
 
       a {
         .step-label {
-          color: #ea1800;
+          color: $danger-7;
           font-weight: bold;
         }
       }
@@ -101,8 +93,6 @@ bal-tabs.bal-o-steps {
 
     li.is-done:not(.is-active) {
       .step-index {
-        border: 2px solid $blue-7;
-
         .check-icon {
           height: 30px;
           width: 30px;
@@ -121,6 +111,24 @@ bal-tabs.bal-o-steps {
       }
     }
 
+    li.is-done {
+      .step-index {
+        background-color: none !important;
+
+        .check-icon {
+          height: 30px;
+          width: 30px;
+          max-height: 30px;
+
+          .bal-icon-inner {
+            height: 30px;
+            width: 30px;
+            max-height: 30px;
+          }
+        }
+      }
+    }
+
     li.is-clickable {
       &:hover {
         .step-label {
@@ -128,10 +136,10 @@ bal-tabs.bal-o-steps {
         }
 
         .step-index {
-          border: 2px solid $light-blue-7;
+          border: 2px solid $light-blue-7 !important;
 
           .inner-text {
-            color: $blue-7;
+            color: $light-blue-7;
           }
         }
       }
@@ -142,7 +150,7 @@ bal-tabs.bal-o-steps {
         }
 
         .step-index {
-          border: 2px solid $blue-7;
+          border: 2px solid $blue-7 !important;
 
           .inner-text {
             color: $white;
@@ -156,7 +164,19 @@ bal-tabs.bal-o-steps {
         }
 
         .step-index {
-          border: 2px solid $blue-7;
+          border: 2px solid $blue-7 !important;
+        }
+      }
+
+      &.is-failed:hover {
+        .step-index {
+          border: 2px solid $danger-7 !important;
+        }
+      }
+
+      &:not(.is-done, .is-failed, .is-active, .is-disabled) {
+        .step-index {
+          border: 2px solid $blue-2;
         }
       }
     }
@@ -166,12 +186,14 @@ bal-tabs.bal-o-steps {
     }
 
     li.is-active {
-      .step-index {
-        background-color: $blue-7;
+      &:not(.is-done) {
+        .step-index {
+          background-color: $blue-7;
 
-        .inner-text {
-          display: block;
-          color: $white;
+          .inner-text {
+            display: block;
+            color: $white;
+          }
         }
       }
       .step-label {
@@ -182,30 +204,24 @@ bal-tabs.bal-o-steps {
 
     li.is-active.is-failed {
       .step-index {
-        border: 2px solid #ea1800 !important;
-        background: #ea1800 !important;
+        background: $white;
 
-        &::after {
-          display: inline-block;
-          position: absolute;
-          background-color: transparent;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: 24px 24px;
-          content: '!';
-          font-size: 16px;
-          text-align: center;
-          width: 32px;
-          height: 32px;
-          line-height: 32px;
-          vertical-align: middle;
-          font-weight: 700;
+        .alert-icon {
+          height: 30px;
+          width: 30px;
+          max-height: 30px;
+
+          .bal-icon-inner {
+            height: 30px;
+            width: 30px;
+            max-height: 30px;
+          }
         }
       }
 
       a {
         .step-label {
-          color: #ea1800;
+          color: $danger-7;
           font-weight: bold;
         }
       }
@@ -213,7 +229,7 @@ bal-tabs.bal-o-steps {
       &:hover {
         a {
           .step-label {
-            color: #ea1800;
+            color: $danger-7;
           }
         }
       }
@@ -221,16 +237,6 @@ bal-tabs.bal-o-steps {
 
     li.is-active ~ li:after {
       background-color: $blue-2;
-    }
-
-    li.is-active ~ li {
-      .step-index {
-        border: 2px solid $blue-2;
-      }
-
-      .step-label {
-        color: $text-light;
-      }
     }
 
     li.is-disabled {
@@ -242,12 +248,12 @@ bal-tabs.bal-o-steps {
         background: $grey-2;
 
         .inner-text {
-          color: #747474;
+          color: $grey-7;
         }
       }
 
       .step-label {
-        color: #747474 !important;
+        color: $grey-7 !important;
       }
 
       &:hover {
@@ -259,12 +265,12 @@ bal-tabs.bal-o-steps {
           background: $grey-2;
 
           .inner-text {
-            color: #747474;
+            color: $grey-7;
           }
         }
 
         .step-label {
-          color: #747474;
+          color: $grey-7;
         }
       }
     }

@@ -25,6 +25,12 @@ export const OStepList: FunctionalComponent<TabProps> = ({ value, clickable, tab
                 name="check-circle"
                 class="check-icon"
               ></bal-icon>
+              <bal-icon
+                style={{ display: tab.failed ? 'block' : 'none' }}
+                name="alert-circle"
+                class="alert-icon"
+                color="danger"
+              ></bal-icon>
               <span style={{ display: !tab.done && !tab.failed ? 'block' : 'none' }} class="inner-text">
                 {index + 1}
               </span>
