@@ -67,4 +67,7 @@ Steps.args = {
   clickable: true,
   interface: 'o-steps',
 }
-Steps.parameters = { ...component.sourceCode(Steps), controls: { exclude: ['expanded', 'action', 'actionLabel'] } }
+Steps.parameters = {
+  ...component.sourceCode(Steps),
+  controls: { exclude: ['expanded', 'action', 'actionLabel', 'vertical'] },
+}
