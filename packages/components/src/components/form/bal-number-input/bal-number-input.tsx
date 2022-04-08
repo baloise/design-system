@@ -103,6 +103,11 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
    */
   @Prop() debounce = 0
 
+  /**
+   * If `true` the input value has 0 as default value
+   */
+  @Prop() exactNumber = false
+
   @Watch('debounce')
   protected debounceChanged() {
     this.balChange = debounceEvent(this.balChange, this.debounce)
@@ -240,6 +245,11 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     if (input && input.value === getDecimalSeparator()) {
       this.inputValue = undefined
       input.value = ''
+    }
+
+    if (this.exactNumber && input && (input.value == undefined || input.value == '')) {
+      this.inputValue = 0
+      input.value = '0'
     }
 
     inputHandleChange(this)
