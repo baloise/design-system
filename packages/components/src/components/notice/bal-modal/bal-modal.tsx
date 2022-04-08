@@ -266,6 +266,7 @@ export class Modal implements OverlayInterface {
         class={{
           ...getClassMap(this.cssClass),
           [`modal-interface-${this.interface}`]: true,
+          'is-closable': this.isClosable,
         }}
         style={{
           '--bal-width': `${this.modalWidth}px`,

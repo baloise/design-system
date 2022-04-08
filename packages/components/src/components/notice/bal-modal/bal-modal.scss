@@ -1,6 +1,12 @@
 @import 'bal-modal.vars.scss';
 @import 'node_modules/bulma/sass/components/modal';
 
+bal-modal:not(.is-closable) {
+  bal-modal-header bal-close {
+    display: none;
+  }
+}
+
 bal-modal-header,
 bal-modal-body {
   font-family: $family-primary;
