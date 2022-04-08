@@ -1642,6 +1642,10 @@ export namespace Components {
           * If `true` tabs are align vertically.
          */
         "vertical": boolean;
+        /**
+          * If `true` tabs are align vertically on the mobile.
+         */
+        "verticalOnMobile": boolean;
     }
     interface BalTag {
         /**
@@ -4166,6 +4170,10 @@ declare namespace LocalJSX {
           * If `true` tabs are align vertically.
          */
         "vertical"?: boolean;
+        /**
+          * If `true` tabs are align vertically on the mobile.
+         */
+        "verticalOnMobile"?: boolean;
     }
     interface BalTag {
         /**

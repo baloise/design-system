@@ -58,6 +58,11 @@ export class Tabs {
    */
   @Prop() vertical = false
 
+  /**
+   * If `true` tabs are align vertically on the mobile.
+   */
+  @Prop() verticalOnMobile = false
+
   @Watch('debounce')
   protected debounceChanged() {
     this.balChange = debounceEvent(this.balChange, this.debounce)
@@ -170,6 +175,22 @@ export class Tabs {
         if (listElement?.offsetTop !== undefined) {
           this.lineOffsetTop = listElement.offsetTop + 4
         }
+      } else if (this.verticalOnMobile) {
+        if (listElement?.clientHeight !== undefined) {
+          this.lineHeight = listElement.clientHeight - 8
+        }
+
+        if (listElement?.offsetTop !== undefined) {
+          this.lineOffsetTop = listElement.offsetTop + 4
+        }
+
+        if (listElement?.clientWidth !== undefined) {
+          this.lineWidth = listElement.clientWidth - 32
+        }
+
+        if (listElement?.offsetLeft !== undefined) {
+          this.lineOffsetLeft = listElement.offsetLeft + 16
+        }
       } else {
         if (listElement?.clientWidth !== undefined) {
           this.lineWidth = listElement.clientWidth - 32
@@ -203,6 +224,7 @@ export class Tabs {
           'is-navbar-tabs': this.interface === 'navbar',
           'is-ready': this.isReady,
           'is-vertical': this.vertical,
+          'is-vertical-on-mobile': this.verticalOnMobile,
         }}
         data-value={this.tabsOptions
           .filter(t => this.isTabActive(t))
@@ -227,6 +249,7 @@ export class Tabs {
           lineHeight={this.lineHeight}
           lineOffsetTop={this.lineOffsetTop}
           vertical={this.vertical}
+          verticalOnMobile={this.verticalOnMobile}
         ></Tabs>
         <slot></slot>
       </Host>

@@ -15,15 +15,20 @@ export const TabList: FunctionalComponent<TabProps> = ({
   lineHeight,
   lineOffsetTop,
   vertical,
+  verticalOnMobile,
 }) => (
   <div class={['tabs', expanded ? 'is-fullwidth' : ''].join(' ')}>
     <div
       class="selected-tab-line"
-      style={{ display: !vertical ? 'block' : 'none', left: `${lineOffsetLeft || 0}px`, width: `${lineWidth || 0}px` }}
+      style={{ display: vertical ? 'none' : 'block', left: `${lineOffsetLeft || 0}px`, width: `${lineWidth || 0}px` }}
     ></div>
     <div
       class="selected-tab-vertical-line"
-      style={{ display: vertical ? 'block' : 'none', top: `${lineOffsetTop || 0}px`, height: `${lineHeight || 0}px` }}
+      style={{
+        display: vertical || verticalOnMobile ? 'block' : 'none',
+        top: `${lineOffsetTop || 0}px`,
+        height: `${lineHeight || 0}px`,
+      }}
     ></div>
     <ul>
       {tabs.map((tab, index) => (

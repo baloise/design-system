@@ -27,6 +27,7 @@ export interface TabProps {
   lineHeight?: number
   lineOffsetTop?: number
   vertical: boolean
+  verticalOnMobile: boolean
 }
 
 export interface TabItemProps {
