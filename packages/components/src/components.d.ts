@@ -1105,7 +1105,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true` the input value has 0 as default value
+          * If `true` the input has 0 as a default value
          */
         "exactNumber": boolean;
         /**
@@ -3554,7 +3554,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` the input value has 0 as default value
+          * If `true` the input has 0 as a default value
          */
         "exactNumber"?: boolean;
         /**

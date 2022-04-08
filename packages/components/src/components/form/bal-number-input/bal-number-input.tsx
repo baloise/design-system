@@ -104,7 +104,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   @Prop() debounce = 0
 
   /**
-   * If `true` the input value has 0 as default value
+   * If `true` the input has 0 as a default value
    */
   @Prop() exactNumber = false
 
