@@ -22,13 +22,19 @@ bal-icon[role='button'] {
   z-index: 100;
   background: $grey-2;
   border-radius: 0;
+  display: flex;
+  flex-direction: column;
+
+  bal-button-group {
+    margin-top: auto !important;
+  }
 }
 
 @include tablet() {
   .bal-hint-content {
     position: absolute;
     border-radius: $radius-large;
-    margin-left: 40px;
+    margin-left: 32px;
     top: -32px;
     bottom: initial;
     left: initial;
@@ -68,6 +74,7 @@ bal-hint-title {
 bal-hint-text {
   display: block;
   font-family: $family-primary;
+  margin-bottom: 24px;
 
   p {
     font-weight: initial;

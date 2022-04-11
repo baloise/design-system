@@ -21,7 +21,6 @@ const component = BalComponentStory({
   docs,
   status: 'stable',
   argTypes: {
-    ...withContent(),
     ...balCheckboxGroupArgTypes,
     invalid: balFieldArgTypes.invalid,
     hasFieldMessage: {
@@ -51,7 +50,7 @@ const SingleTemplate = args => ({
     <bal-field-control>
       <bal-checkbox-group>
         <bal-checkbox v-bind="args" v-model="args.value">
-          {{ args.content }}
+          Label
         </bal-checkbox>
       </bal-checkbox-group>
     </bal-field-control>
@@ -91,13 +90,13 @@ const Template = args => ({
     <bal-field-control>
       <bal-checkbox-group :vertical="args.vertical">
         <bal-checkbox v-bind="args" v-model="args.checked">
-          {{ args.content }}
+          Label
         </bal-checkbox>
         <bal-checkbox v-bind="args" v-model="args.checked">
-        {{ args.content }}
+        Label
       </bal-checkbox>
       <bal-checkbox v-bind="args" v-model="args.checked">
-        {{ args.content }}
+        Label
       </bal-checkbox>
       </bal-checkbox-group>
     </bal-field-control>

@@ -114,7 +114,7 @@ export const selectors = {
 /**
  * Executes a command on a child element and wraps back to the main element/component
  */
-import { deepReady } from '@baloise/design-system-components'
+import { deepReady } from '@baloise/design-system-next-components'
 
 export const wrapRoot = <E = unknown>(
   element: E,
