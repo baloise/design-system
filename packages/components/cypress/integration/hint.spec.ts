@@ -7,7 +7,7 @@ describe('Hint', () => {
     page.open()
     cy.get(page.hint).balHintFindOverlay().should('not.be.visible')
     cy.get(page.hint).click().balHintFindOverlay().should('be.visible')
-    cy.get(page.hint).balHintFindCloseButton().contains('Close').click()
+    cy.get(page.hint).balHintFindCloseButton().contains('Schliessen').click()
     cy.get(page.hint).balHintFindOverlay().should('not.be.visible')
   })
 

@@ -4,11 +4,6 @@ import fg from 'fast-glob'
 import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
 import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 
-let libPath = '../../..'
-if (process.env.STORYBOOK_MODE === 'debug') {
-  libPath = '../../public/build/design-system-components.esm.js'
-}
-
 export const config: Config = {
   ...StencilBaseConfig,
   outputTargets: [
@@ -23,7 +18,7 @@ export const config: Config = {
       type: 'docs-json',
       file: './generated/components.json',
     },
-    VueGenerator(libPath, './.storybook/vue/components', []),
+    VueGenerator('../../..', './.storybook/vue/components', []),
     {
       type: 'www',
       dir: 'public',
