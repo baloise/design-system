@@ -96,7 +96,7 @@
     "@babel/core": "^7.17.8",
     "@baloise/angular-output-target": "^1.2.8",
     "@baloise/react-output-target": "^0.4.8",
-    "@baloise/stencil-vite-fix": "10.8.3",
+    "@baloise/stencil-vite-fix": "10.8.4",
     "@baloise/vue-output-target": "^0.8.1",
     "@etchteam/storybook-addon-status": "^4.2.0",
     "@stencil/postcss": "^2.1.0",

@@ -1,5 +1,5 @@
 import { Component, Host, h } from '@stencil/core'
-import { initialize } from '../../../config'
+import globalScript from '../../../global'
 
 @Component({
   tag: 'bal-doc-app',
@@ -9,7 +9,7 @@ import { initialize } from '../../../config'
 })
 export class DocApp {
   connectedCallback() {
-    initialize()
+    globalScript()
   }
 
   render() {

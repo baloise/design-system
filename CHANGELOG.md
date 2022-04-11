@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.8.4](https://github.com/baloise/design-system/compare/v10.8.3...v10.8.4) (2022-04-11)
+
+
+### Bug Fixes
+
+* attach controllers to the window ([f946e22](https://github.com/baloise/design-system/commit/f946e22ae077ab6068bdce926e46cf56f7b5c3e1))
+* change spacing variables to use rem instead of px ([7b4a1b7](https://github.com/baloise/design-system/commit/7b4a1b723f6b98392cca95885379bb44b156babb))
+* **modal:** hide close button when modal is not closable ([2c57eb9](https://github.com/baloise/design-system/commit/2c57eb93abd4cd2c8956fa367c8fdf5353def19a))
+* trigger globalscript in bal-app ([6d0070a](https://github.com/baloise/design-system/commit/6d0070ac26b957642ae39abc2061507a89733b81))
+
+### 10.8.2 (2022-04-07)
+
+
+
 ### [10.8.3](https://github.com/baloise/design-system/compare/v10.8.2...v10.8.3) (2022-04-07)
 
 
