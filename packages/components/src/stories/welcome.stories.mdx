@@ -11,58 +11,57 @@ import { version } from '../../package.json'
   }}
 />
 
-import Wallpaper from './assets/images/wallpaper.svg'
 import AngularLogo from './assets/images/angular.svg'
 import ReactLogo from './assets/images/react.svg'
 import VueLogo from './assets/images/vue.png'
 import HtmlLogo from './assets/images/html.png'
 
-<div className="welcome-container bal-app">
-  <div class="columns">
-    <div class="column is-7">
-      <h1 class="mx-6 mt-6 mb-0 p-0 is-size-2 subtitle">Baloise</h1>
-      <h2 class="mx-6 my-0 p-0 is-size-2 title">Design System v{version}</h2>
-      <p class="mx-6 mt-6 p-0">
-        The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
-        implementations and design artifacts to build any number of web applications.
-      </p>
-      <div class="mx-6 mt-8 p-0">
-        <a
-          class="button is-primary is-inverted"
-          style={{ width: 'auto' }}
-          href="?path=/docs/getting-started-overview--page"
-        >
-          Getting Started
-        </a>
-        <bal-button
-          class="github-icon"
-          inverted
-          color="info"
-          href="https://github.com/baloise/design-system"
-          icon="github"
-          target="_blank"
-          class="ml-4"
-        >
-          Follow on GitHub
-        </bal-button>
+<bal-doc-app>
+  <div className="welcome-container bal-app">
+    <div class="columns">
+      <div class="column is-7">
+        <h1 class="mx-6 mt-6 mb-0 p-0 is-size-2 subtitle">Baloise</h1>
+        <h2 class="mx-6 my-0 p-0 is-size-2 title">Design System v{version}</h2>
+        <p class="mx-6 mt-6 p-0">
+          The Baloise Design System consists of UI components and a clearly defined visual style, released as both code
+          implementations and design artifacts to build any number of web applications.
+        </p>
+        <div class="mx-6 mt-8 p-0">
+          <a
+            class="button is-primary is-inverted"
+            style={{ width: 'auto' }}
+            href="?path=/docs/getting-started-overview--page"
+          >
+            Getting Started
+          </a>
+          <bal-button
+            class="github-icon"
+            inverted
+            color="info"
+            href="https://github.com/baloise/design-system"
+            icon="github"
+            target="_blank"
+            class="ml-4"
+          >
+            Follow on GitHub
+          </bal-button>
+        </div>
+        <div class="mx-6 mt-8 p-0">
+          <a style={{ width: 'auto' }} href="?path=/docs/getting-started-angular-overview--page">
+            <img src={AngularLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
+          </a>
+          <a class="ml-5" style={{ width: 'auto' }} href="?path=/docs/getting-started-vue-overview--page">
+            <img src={VueLogo} class="m-1" style={{ maxWidth: '50px', maxHeight: '50px' }} />
+          </a>
+          <a class="ml-5" style={{ width: 'auto' }} href="?path=/docs/getting-started-react-overview--page">
+            <img src={ReactLogo} class="m-1" style={{ maxWidth: '50px', maxHeight: '50px' }} />
+          </a>
+          <a class="ml-5" style={{ width: 'auto' }} href="?path=/docs/getting-started-html5-overview--page">
+            <img src={HtmlLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
+          </a>
+        </div>
       </div>
-      <div class="mx-6 mt-8 p-0">
-        <a style={{ width: 'auto' }} href="?path=/docs/getting-started-angular-overview--page">
-          <img src={AngularLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
-        </a>
-        <a class="ml-5" style={{ width: 'auto' }} href="?path=/docs/getting-started-vue-overview--page">
-          <img src={VueLogo} class="m-1" style={{ maxWidth: '50px', maxHeight: '50px' }} />
-        </a>
-        <a class="ml-5" style={{ width: 'auto' }} href="?path=/docs/getting-started-react-overview--page">
-          <img src={ReactLogo} class="m-1" style={{ maxWidth: '50px', maxHeight: '50px' }} />
-        </a>
-        <a class="ml-5" style={{ width: 'auto' }} href="?path=/docs/getting-started-html5-overview--page">
-          <img src={HtmlLogo} style={{ maxWidth: '60px', maxHeight: '60px' }} />
-        </a>
-      </div>
-    </div>
-    <div class="column is-hidden-mobile	mt-6">
-      <img src={Wallpaper} style={{ maxWidth: '80%' }} />
+      <div class="column is-hidden-mobile	mt-6">{/* <img src={Wallpaper} style={{ maxWidth: '80%' }} /> */}</div>
     </div>
   </div>
-</div>
+</bal-doc-app>
