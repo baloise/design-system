@@ -1,12 +1,12 @@
-$space-vertical-small: 16px !default !default;
-$space-horizontal-small: 16px !default;
+$space-vertical-small: 1rem !default !default;
+$space-horizontal-small: 1rem !default;
 
-$space-vertical-normal: 32px !default;
-$space-horizontal-normal: 32px !default;
+$space-vertical-normal: 2rem !default;
+$space-horizontal-normal: 2rem !default;
 
-$space-vertical-large: 64px !default;
-$space-horizontal-large: 64px !default;
-$column-gap: 16px !default;
+$space-vertical-large: 4rem !default;
+$space-horizontal-large: 4rem !default;
+$column-gap: 1rem !default;
 $spacing-shortcuts: (
   'margin': 'm',
   'padding': 'p',
@@ -21,25 +21,25 @@ $spacing-horizontal: 'x' !default;
 $spacing-vertical: 'y' !default;
 $spacing-values: (
   '0': 0,
-  '1': 4px,
-  '2': 8px,
-  '3': 12px,
-  '4': 16px,
-  '5': 20px,
-  '6': 24px,
-  '7': 32px,
-  '8': 48px,
+  '1': 0.25rem,
+  '2': 0.5rem,
+  '3': 0.7rem,
+  '4': 1rem,
+  '5': 1.25rem,
+  '6': 1.5rem,
+  '7': 2rem,
+  '8': 3rem,
   'auto': auto,
 ) !default;
 
 $spacing-values-medium: (
-  '7': 40px,
-  '8': 56px,
+  '7': 2.5rem,
+  '8': 3.5rem,
 ) !default;
 
 $spacing-values-large: (
-  '5': 24px,
-  '6': 32px,
-  '7': 48px,
-  '8': 64px,
+  '5': 1.5rem,
+  '6': 2rem,
+  '7': 3rem,
+  '8': 4rem,
 ) !default;
