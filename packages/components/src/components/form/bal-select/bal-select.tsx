@@ -771,6 +771,8 @@ export class Select {
                   'is-clickable': !this.isPopoverOpen,
                   'data-test-select-input': true,
                 }}
+                aria-labelledby={labelId}
+                id={this.inputId}
                 autocomplete={'off'}
                 placeholder={this.inputPlaceholder}
                 readOnly={!this.typeahead}
@@ -786,7 +788,7 @@ export class Select {
               />
             </div>
             <bal-icon
-              class={{ 'is-hidden': this.loading }}
+              class={{ 'is-hidden': this.loading, 'is-clickable': true }}
               name="caret-down"
               size="xsmall"
               color={this.invalid ? 'danger' : 'info'}
@@ -798,7 +800,7 @@ export class Select {
               onClick={this.handleInputClick}
             ></bal-icon>
           </div>
-          <bal-popover-content scrollable={this.scrollable}>
+          <bal-popover-content scrollable={this.scrollable} style={{ width: '100%' }}>
             {this.optionArray.map((option: BalOptionController, index: number) => (
               <button
                 type="button"
