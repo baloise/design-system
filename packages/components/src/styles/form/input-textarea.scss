@@ -39,7 +39,7 @@ textarea.textarea {
     }
 
     &.is-disabled,
-    &:disabled {
+    &.is-disabled {
       background-color: $blue-8;
     }
   }

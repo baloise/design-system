@@ -81,7 +81,7 @@ bal-radio {
       left: 0;
     }
 
-    input[type='radio']:disabled + label {
+    input[type='radio'].is-disabled + label {
       cursor: default;
       opacity: 0.5;
     }
@@ -172,7 +172,7 @@ bal-radio {
       }
     }
 
-    input:disabled ~ label {
+    input.is-disabled ~ label {
       cursor: default;
       color: $text-light;
 
@@ -181,7 +181,7 @@ bal-radio {
       }
     }
 
-    input:disabled:checked ~ label {
+    input.is-disabled:checked ~ label {
       border-color: $blue;
       background: $blue;
       opacity: 0.5;
@@ -212,7 +212,7 @@ bal-radio {
         border: 2px dashed $cyan;
       }
 
-      input:disabled:checked ~ label {
+      input.is-disabled:checked ~ label {
         border-color: $blue;
         background: $white;
         opacity: 0.5;
@@ -223,7 +223,7 @@ bal-radio {
         }
       }
 
-      input:disabled ~ label {
+      input.is-disabled ~ label {
         cursor: default;
         color: $blue-3;
 
