@@ -123,14 +123,14 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   @Prop() required = false
 
   /**
-   * If `true` the use can only select a date.
-   */
-  @Prop() readonly = false
-
-  /**
-   * If `true` the component is disabled.
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly = false
 
   /**
    * The text to display when the select is empty.
@@ -470,7 +470,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   private onIconClick = (event: MouseEvent) => {
-    if (!this.disabled) {
+    if (!this.disabled && !this.readonly) {
       this.popoverElement.toggle()
     }
     stopEventBubbling(event)
@@ -478,7 +478,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   private onInputClick = (event: MouseEvent) => {
-    if (!this.triggerIcon && !this.disabled) {
+    if (!this.triggerIcon && !this.disabled && !this.readonly) {
       this.popoverElement.toggle()
     }
     stopEventBubbling(event)
@@ -589,7 +589,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
-          'is-disabled': this.disabled,
+          'is-disabled': this.disabled || this.readonly,
         }}
       >
         <bal-popover onBalChange={this.onPopoverChange} ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}>
@@ -622,9 +622,9 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
           class={{
             'input': true,
             'data-test-input': true,
-            'clickable': !this.disabled && !this.triggerIcon,
+            'clickable': !this.disabled && !this.readonly && !this.triggerIcon,
             'is-inverted': this.inverted,
-            'is-disabled': this.disabled,
+            'is-disabled': this.disabled || this.readonly,
             'is-danger': this.invalid,
           }}
           ref={el => (this.nativeInput = el as HTMLInputElement)}

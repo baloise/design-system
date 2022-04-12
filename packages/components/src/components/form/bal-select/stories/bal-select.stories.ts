@@ -40,7 +40,7 @@ export const Basic = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
-  <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :readonly="args.readOnly" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
       <bal-select v-bind="args" v-model="args.value">

@@ -37,9 +37,14 @@ export class FileUpload {
   @Prop() hasFileList = true
 
   /**
-   * If `true` the button is disabled
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly = false
 
   /**
    * Accepted MIME-Types like `image/png,image/jpeg`.
@@ -98,28 +103,28 @@ export class FileUpload {
 
   @Listen('dragenter', { capture: false, passive: false })
   dragenterHandler() {
-    if (!this.disabled) {
+    if (!this.disabled && !this.readonly) {
       this.isOver = true
     }
   }
 
   @Listen('dragover', { capture: false, passive: false })
   dragoverHandler() {
-    if (!this.disabled) {
+    if (!this.disabled && !this.readonly) {
       this.isOver = true
     }
   }
 
   @Listen('dragleave', { capture: false, passive: false })
   dragleaveHandler() {
-    if (!this.disabled) {
+    if (!this.disabled && !this.readonly) {
       this.isOver = false
     }
   }
 
   @Listen('drop', { capture: false, passive: false })
   dropHandler(event: DragEvent) {
-    if (!this.disabled) {
+    if (!this.disabled && !this.readonly) {
       this.isOver = false
       const dataTransfer = event.dataTransfer
       if (dataTransfer) {
@@ -213,7 +218,7 @@ export class FileUpload {
   }
 
   removeFile(indexToRemove: number): void {
-    if (!this.disabled) {
+    if (!this.disabled && !this.readonly) {
       const list = []
       const removedFiles = []
       for (let index = 0; index < this.files.length; index++) {
@@ -260,13 +265,13 @@ export class FileUpload {
     )
 
     return (
-      <Host class={['bal-file-upload', this.disabled || this.loading ? 'is-disabled' : ''].join(' ')}>
+      <Host class={['bal-file-upload', this.disabled || this.loading || this.readonly ? 'is-disabled' : ''].join(' ')}>
         <div class="file">
           <label
             class={[
               'file-label',
               this.isOver ? 'is-hovered' : '',
-              this.disabled || this.loading ? 'is-disabled' : '',
+              this.disabled || this.loading || this.readonly ? 'is-disabled' : '',
             ].join(' ')}
           >
             <input
@@ -275,6 +280,7 @@ export class FileUpload {
               name="resume"
               multiple={this.multiple}
               disabled={this.disabled || this.loading}
+              readonly={this.readonly}
               accept={this.accept}
               onChange={this.onChange}
               ref={el => (this.fileInput = el as HTMLInputElement)}

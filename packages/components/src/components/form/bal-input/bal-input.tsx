@@ -153,14 +153,14 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
   @Prop() inverted = false
 
   /**
-   * If `true`, the user cannot modify the value.
-   */
-  @Prop() readonly = false
-
-  /**
-   * If `true` the input is disabled
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly = false
 
   /**
    * If `true` the input gets a clickable cursor style
@@ -398,12 +398,12 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
           value={numberValue}
           name={this.name}
           disabled={this.disabled}
+          readonly={this.readonly}
           invalid={this.invalid}
           decimal={this.decimal}
           suffix={this.suffix}
           placeholder={this.placeholder}
           required={this.required}
-          readonly={this.readonly}
           debounce={this.debounce}
           onBalFocus={e => this.balFocus.emit(e.detail)}
           onBalBlur={e => this.balBlur.emit(e.detail)}
@@ -443,13 +443,13 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
-          'is-disabled': this.disabled,
+          'is-disabled': this.disabled || this.readonly,
         }}
       >
         <input
           class={{
             'input': true,
-            'is-disabled': this.disabled,
+            'is-disabled': this.disabled || this.readonly,
             'is-danger': this.invalid,
             'is-inverted': this.inverted,
             'clickable': this.clickable,
@@ -472,7 +472,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
           multiple={this.multiple}
           name={this.name}
           placeholder={this.placeholder || ''}
-          readOnly={this.readonly}
+          readonly={this.readonly}
           required={this.required}
           spellcheck={this.spellcheck}
           type={this.type}
