@@ -40,7 +40,6 @@ const excludedControls = [
   'maxLength',
   'minLength',
   'name',
-  'readonly',
   'required',
 ]
 
@@ -48,7 +47,7 @@ const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
-  <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
       <bal-textarea v-bind="args" v-model="args.value"></bal-textarea>
@@ -61,6 +60,7 @@ export const Basic = Template.bind({})
 Basic.args = {
   placeholder: 'Enter a comment',
   disabled: false,
+  readonly: false,
   inverted: false,
   value: '',
 }

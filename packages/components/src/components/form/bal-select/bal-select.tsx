@@ -102,12 +102,18 @@ export class Select {
   @Prop() selectionOptional = false
 
   /**
-   * If `true` the component is disabled.
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
 
   /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly = false
+
+  /**
    * @deprecated  Set this to `true` when the component is placed on a dark background.
+   * Set this to `true` when the component is placed on a dark background.
    */
   @Prop() inverted = false
 
@@ -337,7 +343,7 @@ export class Select {
    */
   @Method()
   async open(): Promise<void> {
-    if (!this.disabled && !isNil(this.popoverElement)) {
+    if (!this.disabled && !this.readonly && !isNil(this.popoverElement)) {
       await this.popoverElement.present()
     }
   }
@@ -347,7 +353,7 @@ export class Select {
    */
   @Method()
   async close(): Promise<void> {
-    if (!this.disabled && !isNil(this.popoverElement)) {
+    if (!this.disabled && !this.readonly && !isNil(this.popoverElement)) {
       await this.popoverElement.dismiss()
     }
   }
@@ -629,7 +635,7 @@ export class Select {
    ********************************************************/
 
   private handleClick = (event: MouseEvent) => {
-    if (this.disabled) {
+    if (this.disabled || this.readonly) {
       preventDefault(event)
     }
   }
@@ -659,7 +665,7 @@ export class Select {
   }
 
   private handleInputClick = async (event: MouseEvent) => {
-    if (this.disabled) {
+    if (this.disabled || this.readonly) {
       preventDefault(event)
     } else {
       this.focusIndex = 0
@@ -686,13 +692,13 @@ export class Select {
   }
 
   private handleInputChange = (event: Event) => {
-    if (!this.disabled) {
+    if (!this.disabled && !this.readonly) {
       this.inputValue = (event.target as HTMLInputElement).value
     }
   }
 
   private handleInput = async (event: Event) => {
-    if (!this.disabled) {
+    if (!this.disabled && !this.readonly) {
       this.inputValue = (event.target as HTMLInputElement).value
 
       if (!this.isPopoverOpen) {
@@ -739,7 +745,7 @@ export class Select {
         aria-disabled={this.disabled ? 'true' : null}
         data-value={this.rawValue?.map(v => findLabelByValue(this.options, v)).join(',')}
         class={{
-          'is-disabled': this.disabled,
+          'is-disabled': this.disabled || this.readonly,
           'is-inverted': this.inverted,
         }}
       >
@@ -774,12 +780,12 @@ export class Select {
                   'input': true,
                   'is-inverted': this.inverted,
                   'is-danger': this.invalid,
-                  'is-clickable': !this.isPopoverOpen,
+                  'is-clickable': !this.isPopoverOpen && !this.disabled && !this.readonly,
                   'data-test-select-input': true,
                 }}
                 autocomplete={'off'}
                 placeholder={this.inputPlaceholder}
-                readOnly={!this.typeahead}
+                readonly={!this.typeahead || this.disabled || this.readonly}
                 contentEditable={this.typeahead}
                 disabled={this.disabled}
                 tabindex={this.balTabindex}
@@ -804,7 +810,7 @@ export class Select {
               onClick={this.handleInputClick}
             ></bal-icon>
           </div>
-          <bal-popover-content scrollable={this.scrollable}>
+          <bal-popover-content scrollable={this.scrollable} expanded>
             {this.optionArray.map((option: BalOptionController, index: number) => (
               <button
                 type="button"

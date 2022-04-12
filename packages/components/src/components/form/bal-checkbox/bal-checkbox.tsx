@@ -63,14 +63,14 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   @Prop({ mutable: true }) checked = false
 
   /**
-   * If `true`, the checkbox has a reduced height.
-   */
-  @Prop() dense = false
-
-  /**
-   * If `true`, the user cannot interact with the checkbox.
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly = false
 
   /**
    * If `true`, the value will not be send with a form submit
@@ -172,9 +172,8 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
         aria-hidden={this.disabled ? 'true' : null}
         aria-focused={this.hasFocus ? 'true' : null}
         class={{
-          'is-dense': this.dense,
           'is-inverted': this.inverted,
-          'is-disabled': this.disabled,
+          'is-disabled': this.disabled || this.readonly,
           'is-focused': this.hasFocus,
           'bal-checkbox': this.interface === 'checkbox',
           'bal-switch': this.interface === 'switch',
@@ -183,7 +182,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
       >
         <input
           class={{
-            'is-disabled': this.disabled,
+            'is-disabled': this.disabled || this.readonly,
             'is-disabled-hidden': this.hidden,
             'data-test-checkbox-input': true,
           }}
@@ -195,6 +194,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           value={this.value}
           aria-checked={`${this.checked}`}
           disabled={this.disabled || this.hidden}
+          readonly={this.readonly}
           onFocus={e => this.onInputFocus(e)}
           onBlur={e => this.onInputBlur(e)}
           onClick={this.onClick}
@@ -203,7 +203,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
         <label
           class={{
             'option-label': true,
-            'is-disabled': this.disabled,
+            'is-disabled': this.disabled || this.readonly,
             'data-test-checkbox-label': true,
           }}
           htmlFor={this.inputId}

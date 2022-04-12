@@ -11,7 +11,7 @@ export class Icon {
   /**
    * Name of the baloise icon.
    */
-  @Prop() name = ''
+  @Prop({ reflect: true }) name = ''
 
   /**
    * Svg content.

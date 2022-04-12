@@ -35,7 +35,7 @@ const component = BalComponentStory({
 
 export default component.story
 
-const excludedControls = ['allowedDates', 'readonly', 'name', 'required']
+const excludedControls = ['allowedDates', 'name', 'required']
 
 const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
@@ -46,7 +46,7 @@ const Template = args => ({
     }
   },
   template: `
-  <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :readonly="args.readOnly" :inverted="args.inverted" :invalid="args.invalid">
   <bal-field-label>Label</bal-field-label>
   <bal-field-control>
     <bal-datepicker v-bind="args" v-model="args.value"></bal-datepicker>

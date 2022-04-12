@@ -33,3 +33,16 @@ textarea.textarea {
 input.input {
   min-height: 48px;
 }
+
+input.input,
+textarea.textarea {
+  &.is-disabled {
+    color: $input-disabled-color;
+    background: $input-disabled-background-color;
+    border-color: $input-disabled-border-color;
+    ::placeholder,
+    :-ms-input-placeholder {
+      color: $input-disabled-placeholder-color;
+    }
+  }
+}

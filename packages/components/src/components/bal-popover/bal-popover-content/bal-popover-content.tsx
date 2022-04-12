@@ -12,17 +12,17 @@ export class PopoverContent {
   @Prop() scrollable = 0
 
   /**
-   * If `true` the field spans over the whole width.
+   * Define the max width of the popover content.
    */
   @Prop() contentWidth = 0
 
-  get contentStyle() {
-    let scrollable = {}
-    let contentWidth = {}
+  /**
+   * If `true` the content has a min width of 100%.
+   */
+  @Prop() expanded = false
 
-    if (this.contentWidth > 0) {
-      contentWidth = { 'max-width': this.contentWidth }
-    }
+  get innerStyle() {
+    let scrollable = {}
 
     if (this.scrollable > 0) {
       scrollable = {
@@ -33,14 +33,32 @@ export class PopoverContent {
 
     return {
       ...scrollable,
+    }
+  }
+
+  get contentStyle() {
+    let contentWidth = {}
+
+    if (this.contentWidth > 0) {
+      contentWidth = { 'max-width': `${this.contentWidth}px` }
+    }
+
+    return {
       ...contentWidth,
     }
   }
 
   render() {
     return (
-      <Host class="popover-content has-background-white has-radius-normal has-shadow" role="menu">
-        <div class="inner" style={this.contentStyle}>
+      <Host
+        class={{
+          'popover-content has-background-white has-radius-normal has-shadow': true,
+          'is-expanded': this.expanded,
+        }}
+        role="menu"
+        style={this.contentStyle}
+      >
+        <div class="inner" style={this.innerStyle}>
           <slot></slot>
         </div>
       </Host>

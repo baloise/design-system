@@ -62,9 +62,14 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
   @Prop() steps = 1
 
   /**
-   * If `true` the input is disabled
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly = false
 
   /**
    * If `true` the input is shown as invalid
@@ -157,7 +162,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
       <Host
         aria-disabled={this.disabled ? 'true' : null}
         class={{
-          'is-disabled': this.disabled,
+          'is-disabled': this.disabled || this.readonly,
           'is-invalid': this.invalid,
         }}
       >
@@ -168,10 +173,10 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
             outlined={!this.invalid}
             icon="minus"
             color={this.invalid ? 'danger' : 'info'}
-            disabled={this.disabled || this.value <= this.min}
+            disabled={this.disabled || this.readonly || this.value <= this.min}
             onClick={_ => this.decrease()}
           ></bal-button>
-          <bal-text space="none" color={this.disabled ? 'info' : this.invalid ? 'danger' : ''} bold>
+          <bal-text space="none" color={this.disabled || this.readonly ? 'info' : this.invalid ? 'danger' : ''} bold>
             {formatLocaleNumber(`${this.language}-${this.region}`, this.value)}
           </bal-text>
           <bal-button
@@ -180,7 +185,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
             outlined={!this.invalid}
             icon="plus"
             color={this.invalid ? 'danger' : 'info'}
-            disabled={this.disabled || this.value >= this.max}
+            disabled={this.disabled || this.readonly || this.value >= this.max}
             onClick={_ => this.increase()}
           ></bal-button>
         </div>
@@ -191,6 +196,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           ref={inputEl => (this.nativeInput = inputEl)}
           id={this.inputId}
           aria-labelledby={labelId}
+          readonly={this.readonly}
           disabled={this.disabled}
           {...this.inheritedAttributes}
         />

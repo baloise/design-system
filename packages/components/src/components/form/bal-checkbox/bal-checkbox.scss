@@ -9,10 +9,6 @@ bal-checkbox {
   min-width: 24px;
   min-height: 48px;
 
-  &.is-dense {
-    min-height: 24px;
-  }
-
   &.bal-checkbox {
     input[type='checkbox'] {
       position: absolute;
@@ -106,14 +102,14 @@ bal-checkbox {
       transform: rotate(45deg);
     }
 
-    input[type='checkbox']:not(:disabled) + label:hover {
+    input[type='checkbox']:not(.is-disabled) + label:hover {
       &::before {
         background: $grey-1;
         border-color: $light-blue-dark;
       }
     }
 
-    input[type='checkbox']:checked:not(:disabled) + label:hover {
+    input[type='checkbox']:checked:not(.is-disabled) + label:hover {
       &::before {
         border-color: $light-blue-dark;
         background: $light-blue-dark;
