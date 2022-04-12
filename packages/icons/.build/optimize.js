@@ -63,6 +63,7 @@ const main = async () => {
     const fileName = path.parse(filePath).name
     svgContent = await readSVG(fileName, filePath)
     contents.set(fileName, svgContent)
+    await file.save(path.join(__dirname, '../svg', `${fileName}.svg`), svgContent)
   }
 
   const lines = ['// generated file by .build/icon.js', '']
