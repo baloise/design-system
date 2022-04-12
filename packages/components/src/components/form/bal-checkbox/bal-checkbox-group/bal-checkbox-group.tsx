@@ -56,6 +56,22 @@ export class CheckboxGroup implements ComponentInterface {
   }
 
   /**
+   * If `true`, the user cannot interact with the radios.
+   */
+  @Prop() readonly?: boolean = undefined
+
+  @Watch('readonly')
+  readonlyChanged(value: boolean | undefined) {
+    if (this.control) {
+      if (value !== undefined) {
+        this.children.forEach(radio => {
+          radio.readonly = value
+        })
+      }
+    }
+  }
+
+  /**
    * The value of the control.
    */
   @Prop({ mutable: true }) value: any[] = []
@@ -89,6 +105,7 @@ export class CheckboxGroup implements ComponentInterface {
       this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
       this.sync()
       this.disabledChanged(this.disabled)
+      this.readonlyChanged(this.readonly)
     }
   }
 
