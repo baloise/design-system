@@ -632,7 +632,7 @@ export class Select {
    ********************************************************/
 
   private handleClick = (event: MouseEvent) => {
-    if (this.disabled && this.readonly) {
+    if (this.disabled || this.readonly) {
       preventDefault(event)
     }
   }

@@ -1285,7 +1285,7 @@ export namespace Components {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
         /**
           * Defines the layout of the radio button
          */
@@ -1301,7 +1301,7 @@ export namespace Components {
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
-        "readonly": boolean;
+        "readonly"?: boolean;
         "setValue": (value: number | string | boolean) => Promise<void>;
         /**
           * The value of the control.

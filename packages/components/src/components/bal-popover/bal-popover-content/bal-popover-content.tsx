@@ -49,7 +49,6 @@ export class PopoverContent {
   }
 
   render() {
-    console.log('render', this.contentStyle, this.contentWidth)
     return (
       <Host
         class={{

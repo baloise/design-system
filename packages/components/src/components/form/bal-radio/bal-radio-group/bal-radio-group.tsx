@@ -47,7 +47,7 @@ export class RadioGroup implements ComponentInterface {
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled = false
+  @Prop() disabled?: boolean = undefined
   @Watch('disabled')
   disabledChanged(value: boolean | undefined) {
     if (value !== undefined) {
@@ -60,7 +60,7 @@ export class RadioGroup implements ComponentInterface {
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly = false
+  @Prop() readonly?: boolean = undefined
   @Watch('readonly')
   readonlyChanged(value: boolean | undefined) {
     if (value !== undefined) {
