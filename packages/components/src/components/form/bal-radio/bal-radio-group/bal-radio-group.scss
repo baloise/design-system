@@ -40,11 +40,6 @@ bal-radio-group {
       & > div {
         bal-radio {
           display: block;
-          margin-bottom: 8px;
-
-          &:last-child {
-            margin-bottom: 4px;
-          }
         }
       }
     }
