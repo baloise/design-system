@@ -75,7 +75,6 @@ export class Config {
       ...this._config,
       ...config,
     }
-    this._notify()
   }
 
   private _notify() {
