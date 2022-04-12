@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.9.0](https://github.com/baloise/design-system/compare/v10.8.4...v10.9.0) (2022-04-12)
+
+
+### Features
+
+* **form:** add prop readonly ([03ff671](https://github.com/baloise/design-system/commit/03ff671b7ca90fa5da388a9554dd51ca8f6e5dcc))
+* **icon:** add new icon logout, youtube and web ([ec7bdbf](https://github.com/baloise/design-system/commit/ec7bdbf7a75c5928306d7f79f5e694f26d4db502))
+* **popover:** add prop expanded to use the fullwidth ([9b4dfa6](https://github.com/baloise/design-system/commit/9b4dfa607af52402e7758ac0ef38b30224a4e20c))
+
+
+
 ### [10.8.4](https://github.com/baloise/design-system/compare/v10.8.3...v10.8.4) (2022-04-11)
 
 
