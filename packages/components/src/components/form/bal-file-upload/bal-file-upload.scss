@@ -38,7 +38,7 @@ span.file-cta {
 }
 
 label.file-label.is-disabled {
-  cursor: not-allowed;
+  cursor: default;
 
   .file-cta,
   &.is-hovered .file-cta,

@@ -160,7 +160,7 @@ bal-datepicker {
     }
 
     &.is-disabled {
-      cursor: not-allowed;
+      cursor: default;
     }
 
     &.is-selectable:hover {

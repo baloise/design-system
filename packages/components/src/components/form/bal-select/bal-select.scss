@@ -9,11 +9,11 @@ bal-select {
 
   &.is-disabled {
     background: $blue-0;
-    cursor: not-allowed !important;
+    cursor: default !important;
 
     input,
     bal-icon {
-      cursor: not-allowed !important;
+      cursor: default !important;
     }
   }
 

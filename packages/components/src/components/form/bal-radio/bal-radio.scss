@@ -82,7 +82,7 @@ bal-radio {
     }
 
     input[type='radio']:disabled + label {
-      cursor: not-allowed;
+      cursor: default;
       opacity: 0.5;
     }
 
@@ -173,7 +173,7 @@ bal-radio {
     }
 
     input:disabled ~ label {
-      cursor: not-allowed;
+      cursor: default;
       color: $text-light;
 
       &:hover {
@@ -224,7 +224,7 @@ bal-radio {
       }
 
       input:disabled ~ label {
-        cursor: not-allowed;
+        cursor: default;
         color: $blue-3;
 
         &:hover {
