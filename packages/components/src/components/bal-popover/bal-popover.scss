@@ -16,6 +16,10 @@ bal-popover-content {
   display: none;
   z-index: 20;
   min-width: 260px;
+
+  &.is-expanded {
+    min-width: 100%;
+  }
 }
 
 bal-popover.is-active bal-popover-content {

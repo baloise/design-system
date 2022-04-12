@@ -72,11 +72,6 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   }
 
   /**
-   * If `true`, the user cannot interact with the textarea.
-   */
-  @Prop() disabled = false
-
-  /**
    * Instructional text that shows before the input has a value.
    */
   @Prop() placeholder?: string
@@ -97,7 +92,12 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
   @Prop() inverted = false
 
   /**
-   * If `true`, the user cannot modify the value.
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   */
+  @Prop() disabled = false
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
    */
   @Prop() readonly = false
 
@@ -257,14 +257,14 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
-          'is-disabled': this.disabled,
+          'is-disabled': this.disabled || this.readonly,
         }}
       >
         <textarea
           class={{
             'textarea': true,
             'is-inverted': this.inverted,
-            'is-disabled': this.disabled,
+            'is-disabled': this.disabled || this.readonly,
             'is-danger': this.invalid,
             'clickable': this.clickable,
           }}
@@ -273,6 +273,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
           id={this.inputId}
           aria-labelledby={labelId}
           disabled={this.disabled}
+          readonly={this.readonly}
           autoCapitalize={this.autocapitalize}
           autoFocus={this.autofocus}
           minLength={this.minLength}
@@ -280,7 +281,6 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
           placeholder={this.placeholder}
           inputMode={this.inputmode}
           value={this.value}
-          readonly={this.readonly}
           cols={this.cols}
           rows={this.rows}
           wrap={this.wrap}

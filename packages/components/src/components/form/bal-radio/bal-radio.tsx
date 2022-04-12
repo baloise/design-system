@@ -72,9 +72,14 @@ export class Radio implements ComponentInterface, FormInput<any> {
   @Prop({ mutable: true }) checked = false
 
   /**
-   * If `true`, the user cannot interact with the checkbox.
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly = false
 
   /**
    * If `true`, the control works on dark background.
@@ -154,7 +159,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
   private onInputBlur = (ev: FocusEvent) => inputHandleBlur<any>(this, ev)
 
   private onClick = (ev: MouseEvent) => {
-    if (!this.disabled) {
+    if (!this.disabled && !this.readonly) {
       this.balChange.emit(this.checked)
       this.balClick.emit(ev)
     } else {
@@ -177,7 +182,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
           'bal-radio': this.interface === 'radio',
           'bal-select-button': this.interface === 'select-button',
           'is-inverted': this.inverted,
-          'is-disabled': this.disabled,
+          'is-disabled': this.disabled || this.readonly,
           'is-focused': this.hasFocus,
         }}
         onClick={this.onClick}
@@ -187,7 +192,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
       >
         <input
           class={{
-            'is-disabled': this.disabled,
+            'is-disabled': this.disabled || this.readonly,
             'data-test-radio-input': true,
           }}
           type="radio"
@@ -196,6 +201,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
           tabindex={-1}
           value={value}
           disabled={this.disabled}
+          readonly={this.readonly}
           checked={this.checked}
           onFocus={e => this.onInputFocus(e)}
           onBlur={e => this.onInputBlur(e)}
@@ -204,7 +210,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
         <label
           class={{
             'option-label': true,
-            'is-disabled': this.disabled,
+            'is-disabled': this.disabled || this.readonly,
             'data-test-radio-label': true,
           }}
           htmlFor={inputId}

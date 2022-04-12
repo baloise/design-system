@@ -38,6 +38,7 @@ textarea.textarea {
       border-bottom-color: $white;
     }
 
+    &.is-disabled,
     &:disabled {
       background-color: $blue-8;
     }
@@ -100,5 +101,18 @@ input[type='radio'] + label,
 input[type='checkbox'] + label {
   span {
     font-size: $size-normal !important;
+  }
+}
+
+input.input,
+textarea.textarea {
+  &.is-disabled {
+    color: $input-disabled-color;
+    background: $input-disabled-background-color;
+    border-color: $input-disabled-border-color;
+    ::placeholder,
+    :-ms-input-placeholder {
+      color: $input-disabled-placeholder-color;
+    }
   }
 }

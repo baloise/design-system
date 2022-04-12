@@ -89,14 +89,14 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   @Prop() required = false
 
   /**
-   * If `true`, the user cannot modify the value.
-   */
-  @Prop() readonly = false
-
-  /**
-   * If `true` the input is disabled
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly = false
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -289,13 +289,13 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
-          'is-disabled': this.disabled,
+          'is-disabled': this.disabled || this.readonly,
         }}
       >
         <input
           class={{
             'input': true,
-            'is-disabled': this.disabled,
+            'is-disabled': this.disabled || this.readonly,
             'is-danger': this.invalid,
           }}
           ref={input => (this.nativeInput = input)}
@@ -304,7 +304,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
           name={this.name}
           disabled={this.disabled}
           placeholder={this.placeholder || ''}
-          readOnly={this.readonly}
+          readonly={this.readonly}
           required={this.required}
           pattern={'[0-9]*'}
           value={value}

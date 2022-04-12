@@ -16,7 +16,7 @@
   }
 
   &.is-disabled {
-    .label,
+    label.label,
     .help,
     .control {
       opacity: 0.6;
@@ -24,7 +24,7 @@
   }
 
   &.is-inverted {
-    .label {
+    label.label {
       color: $white;
     }
 
@@ -39,18 +39,18 @@ label.label {
   font-family: $family-primary;
 }
 
-.form .label,
+.form label.label,
 .form .help {
   font-family: $family-primary;
 }
 
-.form .label {
+.form label.label {
   font-size: $size-small !important;
   margin-bottom: 0 !important;
 }
 
 @include desktop() {
-  .form .label {
+  .form label.label {
     font-size: $size-small !important;
   }
 }
