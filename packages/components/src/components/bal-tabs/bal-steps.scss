@@ -113,7 +113,7 @@ bal-tabs.bal-steps {
 
       &.is-disabled > a,
       &.is-disabled > a:hover {
-        cursor: not-allowed;
+        cursor: default;
         opacity: 0.5;
 
         span.step-index {

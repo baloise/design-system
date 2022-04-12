@@ -176,7 +176,7 @@ bal-tabs.bal-o-steps {
     }
 
     li.is-disabled {
-      cursor: not-allowed;
+      cursor: default;
       pointer-events: none;
     }
   }

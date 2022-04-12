@@ -661,7 +661,7 @@ bal-button.is-fullwidth {
       background: $grey-2 !important;
       border-color: $grey-2 !important;
       opacity: 1 !important;
-      cursor: not-allowed;
+      cursor: default;
       pointer-events: none !important;
 
       bal-icon {

@@ -15,7 +15,7 @@ bal-timeinput {
       cursor: pointer;
     }
     .stepper-btn:disabled {
-      cursor: not-allowed;
+      cursor: default;
       * {
         color: $blue-3;
         stroke: $blue-3;
@@ -45,7 +45,7 @@ bal-timeinput {
 
       &:disabled {
         background-color: $blue-1;
-        cursor: not-allowed;
+        cursor: default;
       }
     }
   }
