@@ -324,6 +324,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "readonly"?: boolean;
         "setValue": (value: any[]) => Promise<void>;
         /**
           * The value of the control.
@@ -2777,6 +2781,10 @@ declare namespace LocalJSX {
           * Emitted when the checked property has changed.
          */
         "onBalChange"?: (event: CustomEvent<any[]>) => void;
+        /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "readonly"?: boolean;
         /**
           * The value of the control.
          */

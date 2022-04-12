@@ -104,7 +104,7 @@ export class Slider {
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
-    if (this.disabled && ev.target && ev.target === this.element) {
+    if ((this.disabled || this.readonly) && ev.target && ev.target === this.element) {
       ev.preventDefault()
       ev.stopPropagation()
     }

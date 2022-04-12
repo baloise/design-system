@@ -108,7 +108,11 @@ export class Radio implements ComponentInterface, FormInput<any> {
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
-    if (this.disabled && ev.target && (ev.target === this.el || isDescendant(this.el, ev.target as HTMLElement))) {
+    if (
+      (this.disabled || this.readonly) &&
+      ev.target &&
+      (ev.target === this.el || isDescendant(this.el, ev.target as HTMLElement))
+    ) {
       stopEventBubbling(ev)
     }
   }
