@@ -40,10 +40,28 @@ export default component.story
 const excludedControls = ['loading', 'multiple', 'name', 'hasMovement', 'noBorder', 'inverted']
 
 export const Basic = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `
+  <bal-select v-bind="args" v-model="args.value">
+    <bal-select-option value="v1995" label="1995">1995</bal-select-option>
+    <bal-select-option value="v1996" label="1996">1996</bal-select-option>
+    <bal-select-option value="v1997" label="1997">1997</bal-select-option>
+    <bal-select-option value="v1998" label="1998">1998</bal-select-option>
+    <bal-select-option value="v1999" label="1999">1999</bal-select-option>
+    <bal-select-option value="v2000" label="2000">2000</bal-select-option>
+  </bal-select>`,
+})
+Basic.args = {
+  value: ['v2000'],
+}
+Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+
+export const FieldControl = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
-  <bal-field :disabled="args.disabled" :readonly="args.readOnly" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
       <bal-select v-bind="args" v-model="args.value">
@@ -58,10 +76,10 @@ export const Basic = args => ({
     <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
   </bal-field>`,
 })
-Basic.args = {
+FieldControl.args = {
   value: ['v2000'],
 }
-Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+FieldControl.parameters = { ...component.sourceCode(FieldControl), controls: { exclude: excludedControls } }
 
 export const Typeahead = args => ({
   components: { ...component.components },

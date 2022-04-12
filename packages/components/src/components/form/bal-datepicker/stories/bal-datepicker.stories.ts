@@ -37,6 +37,21 @@ export default component.story
 
 const excludedControls = ['allowedDates', 'name', 'required']
 
+export const Basic = args => ({
+  components: { ...component.components },
+  setup: () => {
+    setConfig(args)
+    return {
+      args: reduceConfigArgs(args),
+    }
+  },
+  template: `<bal-datepicker v-bind="args" v-model="args.value"></bal-datepicker>`,
+})
+Basic.args = {
+  placeholder: 'Pick a date',
+}
+Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+
 const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => {
@@ -46,7 +61,7 @@ const Template = args => ({
     }
   },
   template: `
-  <bal-field :disabled="args.disabled" :readonly="args.readOnly" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
   <bal-field-label>Label</bal-field-label>
   <bal-field-control>
     <bal-datepicker v-bind="args" v-model="args.value"></bal-datepicker>
@@ -55,11 +70,11 @@ const Template = args => ({
 </bal-field>`,
 })
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const FieldControl = Template.bind({})
+FieldControl.args = {
   placeholder: 'Pick a date',
 }
-Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+FieldControl.parameters = { ...component.sourceCode(FieldControl), controls: { exclude: excludedControls } }
 
 export const ManualInput = Template.bind({})
 ManualInput.args = {

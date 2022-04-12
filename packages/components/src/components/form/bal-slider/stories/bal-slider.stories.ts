@@ -33,16 +33,9 @@ const component = BalComponentStory({
 export default component.story
 
 export const Basic = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  components: { ...component.components },
   setup: () => ({ args }),
-  template: `
-  <bal-field :disabled="args.disabled" :readonly="args.readOnly" :inverted="args.inverted" :invalid="args.invalid">
-    <bal-field-label>Label</bal-field-label>
-    <bal-field-control>
-      <bal-slider v-bind="args" v-model="args.value"></bal-slider>
-    </bal-field-control>
-    <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
-  </bal-field>`,
+  template: `<bal-slider v-bind="args" v-model="args.value"></bal-slider>`,
 })
 Basic.args = {
   value: '20',
@@ -51,4 +44,31 @@ Basic.args = {
   min: 0,
   max: 100,
 }
-Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: ['name', 'readonly', 'required'] } }
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: { exclude: ['name', 'required'] },
+}
+
+export const FieldControl = args => ({
+  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  setup: () => ({ args }),
+  template: `
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
+    <bal-field-label>Label</bal-field-label>
+    <bal-field-control>
+      <bal-slider v-bind="args" v-model="args.value"></bal-slider>
+    </bal-field-control>
+    <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
+  </bal-field>`,
+})
+FieldControl.args = {
+  value: '20',
+  hasTicks: true,
+  step: 20,
+  min: 0,
+  max: 100,
+}
+FieldControl.parameters = {
+  ...component.sourceCode(FieldControl),
+  controls: { exclude: ['name', 'readonly', 'required'] },
+}

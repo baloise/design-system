@@ -41,11 +41,25 @@ export default component.story
 
 const excludedControls = ['name']
 
-const SingleTemplate = args => ({
+export const Basic = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
-  <bal-field :disabled="args.disabled" :readonly="args.readOnly" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-checkbox v-bind="args" v-model="args.value">{{ args.content }}</bal-checkbox>`,
+})
+Basic.args = {
+  content: 'Label',
+}
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
+
+const FieldTemplate = args => ({
+  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  setup: () => ({ args }),
+  template: `
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
       <bal-checkbox-group>
@@ -62,7 +76,7 @@ const GroupTemplate = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
-  <bal-field :disabled="args.disabled" :readonly="args.readOnly" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
       <bal-checkbox-group v-bind="args" v-model="args.value">
@@ -85,7 +99,7 @@ const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
-  <bal-field :disabled="args.disabled" :readonly="args.readOnly" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
       <bal-checkbox-group :vertical="args.vertical">
@@ -104,12 +118,12 @@ const Template = args => ({
   </bal-field>`,
 })
 
-export const Basic = SingleTemplate.bind({})
-Basic.args = {
+export const FieldControl = FieldTemplate.bind({})
+FieldControl.args = {
   content: 'Label',
 }
-Basic.parameters = {
-  ...component.sourceCode(Basic),
+FieldControl.parameters = {
+  ...component.sourceCode(FieldControl),
   controls: { exclude: excludedControls },
 }
 
@@ -133,7 +147,7 @@ Vertical.parameters = {
   controls: { exclude: excludedControls },
 }
 
-export const Switch = SingleTemplate.bind({})
+export const Switch = FieldTemplate.bind({})
 Switch.args = {
   content: 'Label',
   interface: 'switch',

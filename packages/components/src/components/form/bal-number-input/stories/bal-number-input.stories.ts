@@ -36,6 +36,29 @@ export default component.story
 
 const excludedControls = ['name']
 
+export const Basic = args => ({
+  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  setup: () => {
+    setConfig(args)
+    return {
+      args: reduceConfigArgs(args),
+    }
+  },
+  template: `<bal-number-input v-bind="args" v-model="args.value"></bal-number-input>`,
+})
+Basic.args = {
+  placeholder: 'Enter a number',
+  inverted: false,
+  disabled: false,
+  invalid: false,
+}
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: {
+    exclude: excludedControls,
+  },
+}
+
 const Template = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => {
@@ -45,7 +68,7 @@ const Template = args => ({
     }
   },
   template: `
-  <bal-field :disabled="args.disabled" :readonly="args.readOnly" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
     <bal-number-input v-bind="args" v-model="args.value"></bal-number-input>
@@ -54,15 +77,15 @@ const Template = args => ({
   </bal-field>`,
 })
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const FieldControl = Template.bind({})
+FieldControl.args = {
   placeholder: 'Enter a number',
   inverted: false,
   disabled: false,
   invalid: false,
 }
-Basic.parameters = {
-  ...component.sourceCode(Basic),
+FieldControl.parameters = {
+  ...component.sourceCode(FieldControl),
   controls: {
     exclude: excludedControls,
   },

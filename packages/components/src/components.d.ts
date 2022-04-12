@@ -333,6 +333,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "readonly"?: boolean;
         "setValue": (value: any[]) => Promise<void>;
         /**
           * The value of the control.
@@ -916,13 +920,17 @@ export namespace Components {
     }
     interface BalInputGroup {
         /**
-          * If `true` the component is disabled.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
         /**
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
     }
     interface BalInputStepper {
         /**
@@ -1370,7 +1378,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * @deprecated Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background. Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
         /**
@@ -2833,6 +2841,10 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: CustomEvent<any[]>) => void;
         /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "readonly"?: boolean;
+        /**
           * The value of the control.
          */
         "value"?: any[];
@@ -3434,13 +3446,17 @@ declare namespace LocalJSX {
     }
     interface BalInputGroup {
         /**
-          * If `true` the component is disabled.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         /**
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
     }
     interface BalInputStepper {
         /**
@@ -3829,15 +3845,11 @@ declare namespace LocalJSX {
          */
         "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
-<<<<<<< HEAD
-          * The tabindex of the control.
-=======
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
         /**
-          * The value of the control.
->>>>>>> master
+          * The tabindex of the control.
          */
         "value"?: number | string | boolean;
     }
@@ -3897,7 +3909,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * @deprecated Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background. Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
         /**

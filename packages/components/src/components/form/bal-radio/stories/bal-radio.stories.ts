@@ -28,7 +28,7 @@ const component = BalComponentStory({
     },
   },
   args: {
-    readOnly: false,
+    readonly: false,
     invalid: false,
     vertical: false,
     hasFieldMessage: true,
@@ -43,25 +43,37 @@ export const Basic = args => ({
   components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
   setup: () => ({ args }),
   template: `
-  <bal-field :disabled="args.disabled" :readonly="args.readOnly" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-radio-group v-bind="args" v-model="args.value">
+    <bal-radio name="radio-example" value="1">Label 1</bal-radio>
+    <bal-radio name="radio-example" value="2">Label 2</bal-radio>
+    <bal-radio name="radio-example" value="3" disabled>Disabled</bal-radio>
+    <bal-radio name="radio-example" value="4">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
+  </bal-radio-group>`,
+})
+Basic.args = {}
+Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+
+export const FieldControl = args => ({
+  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  setup: () => ({ args }),
+  template: `
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
   <bal-field-label>Label</bal-field-label>
   <bal-field-control>
     <bal-radio-group v-bind="args" v-model="args.value">
       <bal-radio name="radio-example" value="1">Label 1</bal-radio>
       <bal-radio name="radio-example" value="2">Label 2</bal-radio>
-      <bal-radio name="radio-example" value="3" disabled>Disabled</bal-radio>
-      <bal-radio name="radio-example" value="4">Random text with a <a class="is-link" target="_blank" href="http://baloise.ch">Link</a> in it</bal-radio>
     </bal-radio-group>
   </bal-field-control>
   <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
 </bal-field>`,
 })
-Basic.args = {
+FieldControl.args = {
   value: '2',
 }
-Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+FieldControl.parameters = { ...component.sourceCode(FieldControl), controls: { exclude: excludedControls } }
 
-export const Vertical = Basic.bind({})
+export const Vertical = FieldControl.bind({})
 Vertical.args = {
   content: 'Label',
   vertical: true,
@@ -138,7 +150,7 @@ export const SelectButton = args => ({
   components: { ...component.components, BalField, BalFieldLabel, BalFieldControl, BalFieldMessage },
   setup: () => ({ args }),
   template: `
-  <bal-field :disabled="args.disabled" :readonly="args.readOnly" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
   <bal-field-label>Label</bal-field-label>
   <bal-field-control>
     <bal-radio-group v-bind="args" v-model="args.value">
@@ -159,7 +171,7 @@ export const YesNo = args => ({
   components: { ...component.components, BalField, BalFieldLabel, BalFieldControl, BalFieldMessage },
   setup: () => ({ args }),
   template: `
-  <bal-field :disabled="args.disabled" :readonly="args.readOnly" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
   <bal-field-label>Label</bal-field-label>
   <bal-field-control>
     <bal-radio-group v-bind="args" v-model="args.value">
