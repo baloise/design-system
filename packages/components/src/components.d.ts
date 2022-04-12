@@ -896,13 +896,17 @@ export namespace Components {
     }
     interface BalInputGroup {
         /**
-          * If `true` the component is disabled.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
         /**
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
     }
     interface BalInputStepper {
         /**
@@ -3364,13 +3368,17 @@ declare namespace LocalJSX {
     }
     interface BalInputGroup {
         /**
-          * If `true` the component is disabled.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         /**
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
     }
     interface BalInputStepper {
         /**
