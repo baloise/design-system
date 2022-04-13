@@ -44,7 +44,7 @@ jobs:
         run: npm run test
 
       - name: Install Cypress
-        run: npm test:cy:install
+        run: npm run test:cy:install
 
       - uses: cypress-io/github-action@v2
         with:
