@@ -214,7 +214,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
         >
           <bal-text
             inline
-            color={this.disabled ? 'grey' : this.invalid ? 'danger' : 'primary'}
+            color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
             class={{
               'has-padding-left': !this.labelHidden,
             }}

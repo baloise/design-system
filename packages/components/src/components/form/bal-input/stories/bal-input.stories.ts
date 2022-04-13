@@ -26,6 +26,11 @@ const component = BalComponentStory({
   args: {
     invalid: false,
     hasFieldMessage: true,
+    placeholder: 'Enter a text',
+    disabled: false,
+    readonly: false,
+    invalid: false,
+    type: 'text',
   },
   docs,
 })
@@ -58,8 +63,8 @@ export const Basic = args => ({
 })
 Basic.args = {
   placeholder: 'Enter a text',
-  inverted: false,
   disabled: false,
+  readonly: false,
   invalid: false,
   type: 'text',
 }

@@ -623,7 +623,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
             class={{
               'input': true,
               'data-test-input': true,
-              'clickable': !this.disabled && !this.triggerIcon && !this.readonly,
+              'is-clickable': !this.disabled && !this.triggerIcon && !this.readonly,
               'is-inverted': this.inverted,
               'is-disabled': this.disabled || this.readonly,
               'is-danger': this.invalid,
@@ -650,7 +650,10 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
             {...this.inheritedAttributes}
           />
           <bal-icon
-            class="datepicker-trigger-icon clickable"
+            class={{
+              'datepicker-trigger-icon': true,
+              'is-clickable': !this.disabled && !this.readonly,
+            }}
             is-right
             color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
             inverted={this.inverted}

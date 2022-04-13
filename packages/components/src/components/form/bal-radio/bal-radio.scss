@@ -82,7 +82,7 @@ bal-radio.bal-radio:not(.bal-select-button) {
     content: '';
   }
 
-  input[type='radio']:hover:not([disabled]) + label:before {
+  input[type='radio']:hover:not(.is-disabled) + label:before {
     border-color: $blue;
   }
 

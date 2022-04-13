@@ -176,7 +176,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
             disabled={this.disabled || this.readonly || this.value <= this.min}
             onClick={_ => this.decrease()}
           ></bal-button>
-          <bal-text space="none" color={this.disabled || this.readonly ? 'info' : this.invalid ? 'danger' : ''} bold>
+          <bal-text space="none" color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : ''} bold>
             {formatLocaleNumber(`${this.language}-${this.region}`, this.value)}
           </bal-text>
           <bal-button

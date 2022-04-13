@@ -780,6 +780,7 @@ export class Select {
                   'input': true,
                   'is-inverted': this.inverted,
                   'is-danger': this.invalid,
+                  'is-disabled': this.disabled || this.readonly,
                   'is-clickable': !this.isPopoverOpen && !this.disabled && !this.readonly,
                   'data-test-select-input': true,
                 }}
@@ -802,7 +803,7 @@ export class Select {
               class={{ 'is-hidden': this.loading }}
               name="caret-down"
               size="xsmall"
-              color={this.disabled ? 'grey' : this.invalid ? 'danger' : 'primary'}
+              color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
               turn={this.isPopoverOpen}
               style={{
                 marginTop: this.isPopoverOpen ? '8px' : '0px',

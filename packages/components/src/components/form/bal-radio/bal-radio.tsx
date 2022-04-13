@@ -178,9 +178,9 @@ export class Radio implements ComponentInterface, FormInput<any> {
 
   private getTextColor() {
     if (this.interface === 'radio') {
-      return this.disabled ? 'grey' : this.invalid ? 'danger' : 'primary'
+      return this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'
     } else {
-      return this.disabled ? 'grey' : this.checked ? 'white' : 'primary'
+      return this.disabled || this.readonly ? 'grey' : this.checked ? 'white' : 'primary'
     }
   }
 
