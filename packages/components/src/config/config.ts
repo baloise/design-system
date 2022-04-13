@@ -3,6 +3,7 @@ import { BalConfig, BalConfigState, BalLanguage, BalRegion } from './config.type
 import { BalConfigObserver } from './observable/observer'
 
 export class Config {
+  private _componentObservers: BalConfigObserver[] = []
   private _observers: BalConfigObserver[] = []
   private _config: BalConfigState = {
     region: 'CH',
@@ -66,6 +67,25 @@ export class Config {
     this._observers.splice(observerIndex, 1)
   }
 
+  attachComponent(observer: BalConfigObserver): void {
+    const isExist = this._componentObservers.includes(observer)
+    if (isExist) {
+      return console.log('Subject: Observer has been attached already.')
+    }
+
+    this._componentObservers.push(observer)
+    observer.configChanged(this._config)
+  }
+
+  detachComponent(observer: BalConfigObserver): void {
+    const observerIndex = this._componentObservers.indexOf(observer)
+    if (observerIndex === -1) {
+      return console.log('Subject: Nonexistent observer.')
+    }
+
+    this._componentObservers.splice(observerIndex, 1)
+  }
+
   toString() {
     return JSON.stringify(this._config)
   }
@@ -75,12 +95,20 @@ export class Config {
       ...this._config,
       ...config,
     }
+    this._notify(false)
   }
 
-  private _notify() {
-    for (const observer of this._observers) {
+  private _notify(all = true) {
+    for (const observer of this._componentObservers) {
       observer.configChanged(this._config)
     }
+
+    if (all) {
+      for (const observer of this._observers) {
+        observer.configChanged(this._config)
+      }
+    }
+
     saveConfig(window, this._config)
   }
 }

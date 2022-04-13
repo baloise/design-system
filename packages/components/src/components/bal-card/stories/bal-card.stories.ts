@@ -138,7 +138,7 @@ export const TeaserCards = args => ({
       </bal-card>
     </div>
     <div class="column is-half">
-      <bal-card v-bind="args">
+      <bal-card v-bind="args" class="has-height-auto">
         <bal-card-content>
           <div class="is-flex is-justify-content-start is-flex-direction-column">
             <bal-heading level="h4" space="bottom">Action Card</bal-heading>

@@ -12,6 +12,18 @@ The library supports following four breakpoints.
 | Widescreen | 1216px                 |
 | Fullhd     | 1408px                 |
 
+## JavaScript utility
+
+`isPlatform` returns a boolean if the Design System is running in the given **device**.
+
+```typescript
+import { isPlatform } from '@baloise/design-system-component'
+
+isPlatform(window, 'mobile')
+isPlatform(window, 'tablet')
+isPlatform(window, 'desktop')
+```
+
 ## Sass mixins
 
 There are nine responsive mixins, which can be easily used in your sass files.
