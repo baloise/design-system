@@ -104,14 +104,16 @@ input[type='checkbox'] + label {
   }
 }
 
+.input,
+.textarea,
 input.input,
 textarea.textarea {
   &.is-disabled {
     color: $input-disabled-color;
     background: $input-disabled-background-color;
     border-color: $input-disabled-border-color;
-    ::placeholder,
-    :-ms-input-placeholder {
+
+    @include placeholder {
       color: $input-disabled-placeholder-color;
     }
   }
