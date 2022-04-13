@@ -1129,6 +1129,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` the input value has 0 as default value
+         */
+        "exactNumber": boolean;
+        /**
           * Returns the native `<input>` element used under the hood.
          */
         "getInputElement": () => Promise<HTMLInputElement>;
@@ -3613,6 +3617,10 @@ declare namespace LocalJSX {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        /**
+          * If `true` the input value has 0 as default value
+         */
+        "exactNumber"?: boolean;
         /**
           * If `true` the component gets a invalid style.
          */
