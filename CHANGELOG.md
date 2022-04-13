@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.9.1](https://github.com/baloise/design-system/compare/v10.9.0...v10.9.1) (2022-04-13)
+
+
+### Bug Fixes
+
+* **checkbox-group:** add missing readonly prop ([bd63b9a](https://github.com/baloise/design-system/commit/bd63b9aeb296896119c2788807c90e51aa1b62c0))
+* **config:** do not notify after initialize ([521cd21](https://github.com/baloise/design-system/commit/521cd211d50acd712331f850eecfab78f53a233a))
+* if readonly do not react on user interactions ([aa844de](https://github.com/baloise/design-system/commit/aa844ded9c413cc806954b58ab3803209e70b9dc))
+* **input-group:** add missing prop ([4a821dd](https://github.com/baloise/design-system/commit/4a821dd3041883f7f7e77d26c6b3bc38ebb95dcd))
+* **input:** set placeholder color for readonly and disabled ([23606e1](https://github.com/baloise/design-system/commit/23606e1e6dc486da2c4d4781e660a6a8bcddb0b2))
+* **radio:** adjust alignment ([8cc37fa](https://github.com/baloise/design-system/commit/8cc37fa55281d1a6f5118f888cae8b22992a380a))
+* **table:** set text align default to left and add spacing for buttons ([015a81e](https://github.com/baloise/design-system/commit/015a81e4c86cd9588538de20c0457fa0225d4e22))
+* use default cursor for disabled controls ([2668fb5](https://github.com/baloise/design-system/commit/2668fb51d74b8da8c6172e889e6462083ee5a528))
+* **viewport:** set tablet breakpoint to 768px ([dd4e0b6](https://github.com/baloise/design-system/commit/dd4e0b618abd6a5d7a501124f03d567167c9ae98))
+
+### 10.8.4 (2022-04-11)
+
+
+
 ## [10.9.0](https://github.com/baloise/design-system/compare/v10.8.4...v10.9.0) (2022-04-12)
 
 
