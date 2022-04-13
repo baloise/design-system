@@ -132,8 +132,8 @@ bal-card {
   }
 }
 
-.column bal-card,
-.column bal-card bal-card-content,
-.column bal-card bal-card-content > .is-flex {
+.column bal-card:not(.has-height-auto),
+.column bal-card:not(.has-height-auto) bal-card-content,
+.column bal-card:not(.has-height-auto) bal-card-content > .is-flex {
   height: 100%;
 }
