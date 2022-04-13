@@ -31,17 +31,17 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Format
-        run: npm run format:check
+      # - name: Format
+      #   run: npm run format:check
 
-      - name: Lint
-        run: npm run lint:check
+      # - name: Lint
+      #   run: npm run lint:check
 
-      - name: Spell Check
-        run: npm run spell
+      # - name: Spell Check
+      #   run: npm run spell
 
-      - name: Test
-        run: npm run test
+      # - name: Test
+      #   run: npm run test
 
       - uses: cypress-io/github-action@v2
         with:
@@ -51,6 +51,7 @@ jobs:
           working-directory: packages/components
           browser: chrome
           env: type=actual
+          install: false
         env:
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
