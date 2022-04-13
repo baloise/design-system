@@ -99,6 +99,11 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   @Prop() readonly = false
 
   /**
+   * If `true` the input value has 0 as default value
+   */
+  @Prop() exactNumber = false
+
+  /**
    * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
    */
   @Prop() debounce = 0
@@ -240,6 +245,11 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
     if (input && input.value === getDecimalSeparator()) {
       this.inputValue = undefined
       input.value = ''
+    }
+
+    if (this.exactNumber && input && (input.value == undefined || input.value == '')) {
+      this.inputValue = 0
+      input.value = '0'
     }
 
     inputHandleChange(this)
