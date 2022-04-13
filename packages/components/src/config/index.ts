@@ -10,7 +10,7 @@ export * from './observable/observer'
 export type BalConfigChangeFn = (config: BalConfigState) => void
 
 export const onBalConfigChange = (callback: BalConfigChangeFn) => {
-  attachComponentToConfig({
+  attachToConfig({
     configChanged(state) {
       callback(state)
     },
@@ -26,7 +26,7 @@ export const useBalConfig = (): Config | undefined => {
   return win && win.BaloiseDesignSystem && win.BaloiseDesignSystem.config
 }
 
-export const attachComponentToConfig = (observer: BalConfigObserver): void => {
+export const attachToConfig = (observer: BalConfigObserver): void => {
   const config = useBalConfig()
 
   if (config) {
@@ -34,11 +34,19 @@ export const attachComponentToConfig = (observer: BalConfigObserver): void => {
   }
 }
 
+export const attachComponentToConfig = (observer: BalConfigObserver): void => {
+  const config = useBalConfig()
+
+  if (config) {
+    config.attachComponent(observer)
+  }
+}
+
 export const detachComponentToConfig = (observer: BalConfigObserver): void => {
   const config = useBalConfig()
 
   if (config) {
-    config.detach(observer)
+    config.detachComponent(observer)
   }
 }
 
