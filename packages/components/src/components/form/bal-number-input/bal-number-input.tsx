@@ -247,7 +247,7 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
       input.value = ''
     }
 
-    if (this.exactNumber && input && (input.value == undefined || input.value == '')) {
+    if (this.exactNumber && input && (input.value === undefined || input.value === '' || input.value === null)) {
       this.inputValue = 0
       input.value = '0'
     }
