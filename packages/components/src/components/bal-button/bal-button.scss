@@ -93,6 +93,13 @@ bal-button.is-fullwidth {
     margin-top: -5px;
   }
 
+  &.is-link {
+    .icon-left,
+    .icon-right {
+      margin-top: -2px;
+    }
+  }
+
   .icon-left {
     margin-left: -4px;
     margin-right: 8px;
@@ -144,6 +151,12 @@ bal-button.is-fullwidth {
 
   &::-moz-focus-inner {
     border: 0;
+  }
+
+  &.is-flat {
+    padding: 0;
+    height: 1.5rem;
+    min-height: 1.5rem;
   }
 
   &,

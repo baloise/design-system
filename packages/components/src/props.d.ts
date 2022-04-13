@@ -19,7 +19,6 @@ export namespace Props {
   export type BalButtonType = 'button' | 'reset' | 'submit'
   export type BalButtonSize = 'small' | ''
   export type BalButtonTarget = '_blank' | ' _parent' | '_self' | '_top'
-  export type BalButtonIconPosition = 'left' | 'right'
 
   export type BalCardActionsPosition = 'right' | 'center' | ''
   export type BalCardButtonType = BalButtonType

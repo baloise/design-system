@@ -100,6 +100,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * If `true` the button has no padding and a reduced height
+         */
+        "flat": boolean;
+        /**
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
@@ -107,10 +111,6 @@ export namespace Components {
           * Name of the left button icon
          */
         "icon": string;
-        /**
-          * Size of the button
-         */
-        "iconPosition": Props.BalButtonIconPosition;
         /**
           * Name of the right button icon
          */
@@ -2583,6 +2583,10 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
+          * If `true` the button has no padding and a reduced height
+         */
+        "flat"?: boolean;
+        /**
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
@@ -2590,10 +2594,6 @@ declare namespace LocalJSX {
           * Name of the left button icon
          */
         "icon"?: string;
-        /**
-          * Size of the button
-         */
-        "iconPosition"?: Props.BalButtonIconPosition;
         /**
           * Name of the right button icon
          */
