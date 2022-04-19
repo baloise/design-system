@@ -150,6 +150,11 @@
 
     &.is-horizontal {
       flex-direction: row;
+      gap: 8px;
+
+      &.has-border {
+        border-bottom: 1px solid $blue-2;
+      }
 
       & > * {
         flex-wrap: wrap;
@@ -157,11 +162,19 @@
 
       & .bal-data-item {
         flex-wrap: wrap;
+        min-width: 80px;
+        align-items: flex-start;
+        border-bottom: none;
+
+        & .bal-data-value {
+          min-height: 100%;
+        }
 
         & .bal-data-label,
         & .bal-data-value {
           flex-basis: 100%;
           width: 100%;
+          align-self: flex-start;
         }
       }
     }

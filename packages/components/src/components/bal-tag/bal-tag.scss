@@ -98,3 +98,9 @@ bal-card {
     }
   }
 }
+
+bal-tag-group,
+.bal-tag-group {
+  display: flex;
+  gap: 4px;
+}

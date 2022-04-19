@@ -56,6 +56,32 @@ export const Basic = args => ({
 })
 Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
 
+export const CardTitle = args => ({
+  components: { ...component.components, BalButton, BalHeading },
+  setup: () => ({ args }),
+  template: `<bal-card v-bind="args">
+  <bal-card-title>
+    BaloiseCombi
+    <bal-tag-group>
+      <bal-tag>My Tag 1</bal-tag>
+      <bal-tag>My Tag 2</bal-tag>
+    </bal-tag-group>
+    <bal-button-group position="right">
+      <bal-button>Button 1</bal-button>
+      <bal-button>Button 2</bal-button>
+    </bal-button-group>
+  </bal-card-title>
+  <bal-card-content>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </bal-card-content>
+  <bal-card-actions position="right">
+    <bal-button color="info" outlined>Secondary Action</bal-button>
+    <bal-button>Main Action</bal-button>
+  </bal-card-actions>
+</bal-card>`,
+})
+CardTitle.parameters = { ...component.sourceCode(CardTitle), controls: { exclude: excludedControls } }
+
 export const TeaserCards = args => ({
   components: {
     ...component.components,
