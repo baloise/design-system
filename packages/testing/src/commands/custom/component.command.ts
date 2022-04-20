@@ -11,7 +11,6 @@ Cypress.Commands.add(
     return cy
       .wrap(subject, o)
       .then(($el: any) => areComponentsReady($el))
-      .wait(1, o)
       .wrap(subject, o)
   },
 )

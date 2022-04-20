@@ -78,7 +78,7 @@ Cypress.Commands.add(
     const o = wrapOptions(options)
     return cy
       .wrapComponent(subject, o)
-      .find(selectorDayBox(date), o)
+      .find(selectorDayBox(date), { ...o, force: true })
       .should('not.have.class', 'is-disabled')
       .wrapComponent(subject, o)
   },
@@ -95,7 +95,7 @@ Cypress.Commands.add(
     console.log('o', options, o)
     return cy
       .wrapComponent(subject, o)
-      .find(selectorDayBox(date), o)
+      .find(selectorDayBox(date), { ...o, force: true })
       .should('have.class', 'is-disabled')
       .wrapComponent(subject, o)
   },

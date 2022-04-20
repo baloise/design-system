@@ -363,7 +363,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
     if (this.value !== dateString) {
       this.value = dateString
-      console.warn('balChange.emit', this.value)
       this.balChange.emit(this.value)
     }
   }
