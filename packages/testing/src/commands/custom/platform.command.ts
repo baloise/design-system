@@ -1,6 +1,4 @@
-import { Platforms } from '@baloise/design-system-components'
-
-Cypress.Commands.add('platform', (platform: Platforms) => {
+Cypress.Commands.add<any>('platform', platform => {
   Cypress.log({
     name: 'platform',
     displayName: 'platform',

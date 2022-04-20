@@ -3,7 +3,7 @@ import { areComponentsReady, log, wrapOptions } from '../helpers'
 Cypress.Commands.add(
   'waitForComponents',
   {
-    prevSubject: true,
+    prevSubject: 'element',
   },
   (subject, options?: Partial<Cypress.Loggable>) => {
     log('waitForComponents', '', subject, options)

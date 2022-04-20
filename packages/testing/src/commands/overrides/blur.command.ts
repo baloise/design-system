@@ -14,8 +14,8 @@ import {
   wrapCommand,
 } from '../helpers'
 
-Cypress.Commands.overwrite('blur', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
-  const command = wrapCommand('blur', element, '', $el => originalFn($el, wrapOptions(options)))
+Cypress.Commands.overwrite<any, any>('blur', (originalFn: any, element: Cypress.Chainable<JQuery>, options) => {
+  const command = wrapCommand('blur', element, '', _ => originalFn(element, wrapOptions(options)))
 
   if (isAccordion(element)) {
     return command(selectors.accordion.button)

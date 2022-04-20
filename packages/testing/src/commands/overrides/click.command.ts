@@ -12,7 +12,7 @@ import {
   wrapOptions,
 } from '../helpers'
 
-Cypress.Commands.overwrite('click', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
+Cypress.Commands.overwrite<any, any>('click', (originalFn: any, element: Cypress.Chainable<JQuery>, options) => {
   const command = wrapCommand('click', element, '', $el => originalFn($el, wrapOptions(options)))
 
   if (isAccordion(element)) {

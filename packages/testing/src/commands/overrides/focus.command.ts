@@ -14,7 +14,7 @@ import {
   wrapOptions,
 } from '../helpers'
 
-Cypress.Commands.overwrite('focus', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
+Cypress.Commands.overwrite<any, any>('focus', (originalFn: any, element: Cypress.Chainable<JQuery>, options) => {
   const command = wrapCommand('focus', element, '', $el => originalFn($el, wrapOptions(options)))
 
   if (isAccordion(element)) {

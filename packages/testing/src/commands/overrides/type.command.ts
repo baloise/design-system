@@ -1,6 +1,6 @@
 import { isInput, isNumberInput, isSlider, isTextarea, selectors, wrapCommand, wrapOptions } from '../helpers'
 
-Cypress.Commands.overwrite('type', (originalFn, element: Cypress.Chainable<JQuery>, content, options) => {
+Cypress.Commands.overwrite('type', (originalFn: any, element: any, content: any, options) => {
   const command = wrapCommand('type', element, content, $el => originalFn($el, content, wrapOptions(options)))
 
   if (isInput(element) || isNumberInput(element)) {

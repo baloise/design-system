@@ -1,7 +1,7 @@
 import { deepReady } from '@baloise/design-system-components'
 
-Cypress.Commands.overwrite('visit', (originalFn, element: Cypress.Chainable<JQuery>, content, options) => {
-  originalFn(element, content, options)
+Cypress.Commands.overwrite<any>('visit', (originalFn, url) => {
+  originalFn(url as any)
   cy.get('bal-app,bal-doc-app,.bal-app', { log: false })
     .first({ log: false })
     .then($app => {

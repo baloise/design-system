@@ -1,6 +1,6 @@
 import { isCheckbox, isRadio } from '../helpers'
 
-Cypress.Commands.overwrite('check', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
+Cypress.Commands.overwrite('check', (originalFn: any, element: any, options) => {
   if (isRadio(element) || isCheckbox(element)) {
     return cy.wrapComponent(element, { log: false }).click()
   }

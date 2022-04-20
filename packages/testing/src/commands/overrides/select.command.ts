@@ -1,8 +1,8 @@
 import { isSelect, isTabs, selectors } from '../helpers'
 
-Cypress.Commands.overwrite('select', (originalFn, element: Cypress.Chainable<JQuery>, values, options) => {
+Cypress.Commands.overwrite('select', (originalFn: any, element: any, values: any, options) => {
   if (isSelect(element)) {
-    let valueArray = []
+    let valueArray: any[] = []
     if (typeof values === 'string') {
       valueArray.push(values)
     } else {

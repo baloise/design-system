@@ -163,5 +163,5 @@ const shouldAndAndCommand = (
   return originalFn(element, condition, key, value, options)
 }
 
-Cypress.Commands.overwrite('should', shouldAndAndCommand)
-Cypress.Commands.overwrite('and', shouldAndAndCommand)
+Cypress.Commands.overwrite('should', shouldAndAndCommand as any)
+Cypress.Commands.overwrite('and', shouldAndAndCommand as any)

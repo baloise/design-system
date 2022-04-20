@@ -12,7 +12,7 @@ import {
   wrapOptions,
 } from '../helpers'
 
-Cypress.Commands.overwrite('clear', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
+Cypress.Commands.overwrite<any, any>('clear', (originalFn: any, element: Cypress.Chainable<JQuery>, options) => {
   const command = wrapCommand('clear', element, '', $el => originalFn($el, wrapOptions(options)))
 
   if (isCheckbox(element)) {

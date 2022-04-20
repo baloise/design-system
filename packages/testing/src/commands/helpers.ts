@@ -147,18 +147,18 @@ export const wrapCommand = (
 }
 
 export const shouldLog = (options?: Partial<Cypress.Loggable>) => options === undefined || options.log !== false
-export const log = (displayName: string, message = '', $el = null, options?: Partial<Cypress.Loggable>) => {
+export const log = (displayName: string, message: any = '', $el: any, options?: Partial<Cypress.Loggable>) => {
   if (shouldLog(options)) {
     Cypress.log({
       type: 'parent',
-      $el,
+      $el: $el as any,
       displayName,
       message,
     })
   }
 }
 
-export const areComponentsReady = $el => {
+export const areComponentsReady = ($el: any) => {
   const queue = []
   for (let index = 0; index < $el.length; index++) {
     const element = $el[index]
