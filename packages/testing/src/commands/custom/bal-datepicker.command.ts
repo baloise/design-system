@@ -92,7 +92,6 @@ Cypress.Commands.add(
   (subject, date, options) => {
     log('balDatepickerIsDateNotInRange', formatDateString(date), subject, options)
     const o = wrapOptions(options)
-    console.log('o', options, o)
     return cy
       .wrapComponent(subject, o)
       .find(selectorDayBox(date), { ...o, force: true })
