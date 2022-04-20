@@ -1,4 +1,4 @@
-import { log, wrapOptions } from "../helpers"
+import { log, wrapOptions } from '../helpers'
 
 Cypress.Commands.add(
   'balAccordionIsOpen',

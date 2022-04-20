@@ -10,7 +10,9 @@ describe('Checkbox', () => {
 
   it('should be checkable', () => {
     page.open()
-    cy.get(page.normalCheckboxElement).should('not.be.checked').and('not.be.disabled')
+    cy.get(page.normalCheckboxElement)
+      .should('not.be.checked')
+      .and('not.be.disabled')
     cy.get(page.normalCheckboxElement).check()
     cy.get(page.normalCheckboxElement).should('be.checked')
     cy.get(page.normalCheckboxElement).check()

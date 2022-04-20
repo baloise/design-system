@@ -13,10 +13,17 @@ declare namespace Cypress {
     /**
      * Assert that the tab has the given item.
      */
-    balTabsShouldHaveItems(labels: string[], dataType?: 'label' | 'value', options?: Partial<Loggable>): Chainable<JQuery>
+    balTabsShouldHaveItems(
+      labels: string[],
+      dataType?: 'label' | 'value',
+      options?: Partial<Loggable>,
+    ): Chainable<JQuery>
     /**
      * Assert that the tab item has the  given state.
      */
-    balTabItemShouldHaveState(state: 'done' | 'failed' | 'active' | 'disabled', options?: Partial<Loggable>): Chainable<JQuery>
+    balTabItemShouldHaveState(
+      state: 'done' | 'failed' | 'active' | 'disabled',
+      options?: Partial<Loggable>,
+    ): Chainable<JQuery>
   }
 }

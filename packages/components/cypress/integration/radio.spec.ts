@@ -31,7 +31,11 @@ describe('Radio', () => {
 
   it('should select second select button', () => {
     page.open()
-    cy.get(page.selectButton).find('bal-radio').eq(1).check().should('be.checked')
+    cy.get(page.selectButton)
+      .find('bal-radio')
+      .eq(1)
+      .check()
+      .should('be.checked')
     cy.get(page.selectButton).find('bal-radio').first().should('not.be.checked')
     cy.get(page.selectButton).find('bal-radio').last().should('not.be.checked')
   })

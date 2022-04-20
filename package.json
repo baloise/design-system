@@ -17,7 +17,7 @@
     "update:lock": "lerna exec -- npm install --package-lock-only",
     "update:registry": "lerna run update:registry && sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n",
     "precommitold": "lint-staged --allow-empty",
-    "precommit": "echo 'blubb'",
+    "precommit": "echo 'bubu'",
     "==================== FORMATTER / LINTER ====================": "================================",
     "format:check": "prettier --check ./packages",
     "format": "prettier --write ./packages",

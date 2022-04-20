@@ -13,6 +13,10 @@ declare namespace Cypress {
     /**
      * Asserts that the select has the given options.
      */
-    balSelectShouldHaveOptions(labels: string[], dataType?: 'label' | 'value', options?: Partial<Loggable>): Chainable<JQuery>
+    balSelectShouldHaveOptions(
+      labels: string[],
+      dataType?: 'label' | 'value',
+      options?: Partial<Loggable>,
+    ): Chainable<JQuery>
   }
 }

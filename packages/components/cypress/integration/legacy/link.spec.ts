@@ -19,6 +19,8 @@ describe('Link', () => {
   it('should have href', () => {
     page.open()
     page.link.get().assertHrefEquals('https://design.baloise.dev/')
-    page.linkButton.get().assertHrefEquals('https://github.com/baloise/design-system-components')
+    page.linkButton
+      .get()
+      .assertHrefEquals('https://github.com/baloise/design-system-components')
   })
 })

@@ -8,12 +8,23 @@ describe('Input', () => {
     page.open()
     cy.get(page.input).should('have.value', '')
     cy.get(page.input).type('bubu').should('have.value', 'bubu')
-    cy.get(page.input).clear().should('not.have.value', 'bubu').should('have.value', '')
+    cy.get(page.input)
+      .clear()
+      .should('not.have.value', 'bubu')
+      .should('have.value', '')
   })
 
   it('should have placeholder', () => {
-    cy.get(page.input).should('have.attr', 'placeholder', 'Enter your firstname')
-    cy.get(page.input).should('not.have.attr', 'placeholder', 'Enter your lastname')
+    cy.get(page.input).should(
+      'have.attr',
+      'placeholder',
+      'Enter your firstname',
+    )
+    cy.get(page.input).should(
+      'not.have.attr',
+      'placeholder',
+      'Enter your lastname',
+    )
   })
 
   it('should be disabled', () => {

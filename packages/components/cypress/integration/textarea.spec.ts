@@ -13,12 +13,23 @@ describe('Textarea', () => {
     page.open()
     cy.get(page.textarea).should('have.value', '')
     cy.get(page.textarea).type('bubu').should('have.value', 'bubu')
-    cy.get(page.textarea).clear().should('not.have.value', 'bubu').should('have.value', '')
+    cy.get(page.textarea)
+      .clear()
+      .should('not.have.value', 'bubu')
+      .should('have.value', '')
   })
 
   it('should have placeholder', () => {
-    cy.get(page.textarea).should('have.attr', 'placeholder', 'Enter your comment')
-    cy.get(page.textareaDisabled).should('not.have.attr', 'placeholder', 'Enter your comment')
+    cy.get(page.textarea).should(
+      'have.attr',
+      'placeholder',
+      'Enter your comment',
+    )
+    cy.get(page.textareaDisabled).should(
+      'not.have.attr',
+      'placeholder',
+      'Enter your comment',
+    )
   })
 
   it('should be disabled', () => {
