@@ -11,8 +11,11 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version: '16.x'
+          node-version: '16'
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Node Version
+        run: node -v
 
       - name: Restore lerna
         uses: actions/cache@v2
