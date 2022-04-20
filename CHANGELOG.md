@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.9.2](https://github.com/baloise-incubator/design-system/compare/v10.9.1...v10.9.2) (2022-04-20)
+
+
+### Features
+
+* **icons:** add social icons¨ ([1655121](https://github.com/baloise-incubator/design-system/commit/1655121a44ee0d1802b839b4d610cd1299578777))
+
+
+### Bug Fixes
+
+* **form:** adjust alignment for safari [#17](https://github.com/baloise-incubator/design-system/issues/17) ([6be811e](https://github.com/baloise-incubator/design-system/commit/6be811ebf440d4263b794522ac20b102fe02be8e))
+* **link:** improve link handling [#23](https://github.com/baloise-incubator/design-system/issues/23) ([0e0209d](https://github.com/baloise-incubator/design-system/commit/0e0209ddba2aa65f91fcbbec2b2c706ab14fd9c0))
+
+
+
 ### [10.9.1](https://github.com/baloise-incubator/design-system/compare/v10.8.5...v10.9.1) (2022-04-13)
 
 
