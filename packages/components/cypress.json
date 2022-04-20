@@ -1,11 +1,10 @@
 {
   "baseUrl": "http://localhost:3333/",
-  "video": true,
+  "video": false,
   "screenshotOnRunFailure": true,
   "ignoreTestFiles": "**/node_modules/**",
   "screenshotsFolder": "./cypress/snapshots/actual",
   "trashAssetsBeforeRuns": true,
-  "nodeVersion": "16",
   "env": {
     "failSilently": false
   }

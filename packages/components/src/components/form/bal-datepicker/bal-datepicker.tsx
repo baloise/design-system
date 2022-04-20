@@ -39,6 +39,7 @@ import {
   formatDateString,
   isEnterKey,
   dateSeparator,
+  ceilTime,
 } from '@baloise/web-app-utils'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
@@ -807,7 +808,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private isDateInRange(cellDate: Date): boolean {
     if (this.min && this.max) {
-      return isWithinInterval(cellDate, {
+      return isWithinInterval(ceilTime(cellDate), {
         start: subDays(parse(this.min) as Date, 1),
         end: parse(this.max) as Date,
       })
