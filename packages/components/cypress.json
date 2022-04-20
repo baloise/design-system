@@ -5,6 +5,7 @@
   "ignoreTestFiles": "**/node_modules/**",
   "screenshotsFolder": "./cypress/snapshots/actual",
   "trashAssetsBeforeRuns": true,
+  "nodeVersion": "16",
   "env": {
     "failSilently": false
   }
