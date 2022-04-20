@@ -1,5 +1,4 @@
 import { deepReady, Platforms } from '@baloise/design-system-components'
-import { Suite } from 'mocha'
 
 /**
  * Helper fn to identify the element/component

@@ -1,5 +1,5 @@
 import { Props } from '../../src'
-import { byTestId, testOnPlatforms } from '../../../testing/src'
+import { testOnPlatforms } from '../../../testing/src'
 
 describe('Tag', () => {
   testOnPlatforms(['mobile', 'desktop'], () => {
@@ -14,21 +14,14 @@ describe('Tag', () => {
     })
 
     it('should fire close event', () => {
-      cy.getByTestId('closable-tag')
-        .spyEvent('balCloseClick')
-        .find('bal-close')
-        .click()
+      cy.getByTestId('closable-tag').spyEvent('balCloseClick').find('bal-close').click()
 
       cy.get('@balCloseClick').should('have.been.calledOnce')
     })
   })
 
   context('a11y', () => {
-    before(() =>
-      cy
-        .platform('desktop')
-        .pageA11y('/components/bal-tag/test/bal-tag.cy.html'),
-    )
+    before(() => cy.platform('desktop').pageA11y('/components/bal-tag/test/bal-tag.cy.html'))
 
     describe('have the AA standard', () => {
       it('basic', () => {

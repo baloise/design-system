@@ -3,45 +3,23 @@ import { addDays, addWeeks, subDays, subWeeks } from 'date-fns'
 import { byTestId, DatePickerAccessor } from '../../../testing/src'
 
 describe('Datepicker', () => {
-  const basic = byTestId('basic')
-
-  beforeEach(() =>
-    cy
-      .platform('desktop')
-      .page('/components/form/bal-datepicker/test/bal-datepicker.cy.html'),
-  )
+  beforeEach(() => cy.platform('desktop').page('/components/form/bal-datepicker/test/bal-datepicker.cy.html'))
 
   describe('open & close', () => {
     it('should open and close', () => {
-      cy.getByTestId('basic')
-        .balDatepickerToggle()
-        .balDatepickerIsOpen()
-        .balDatepickerToggle()
-        .balDatepickerIsClosed()
+      cy.getByTestId('basic').balDatepickerToggle().balDatepickerIsOpen().balDatepickerToggle().balDatepickerIsClosed()
     })
   })
 
   describe('type', () => {
     it('should type the date in datepicker and fire one change event', () => {
       const today = format('de-CH', now())
-      cy.getByTestId('basic')
-        .spyEvent('balChange')
-        .type(`${today}{enter}`)
-        .blur()
-        .contains(today)
+      cy.getByTestId('basic').spyEvent('balChange').type(`${today}{enter}`).blur().contains(today)
 
-      cy.get('@balChange')
-        .should('have.been.calledOnce')
-        .shouldHaveEventDetail(formatDateString(now()))
+      cy.get('@balChange').should('have.been.calledOnce').shouldHaveEventDetail(formatDateString(now()))
 
-      cy.getByTestId('basic')
-        .clear()
-        .type('{enter}')
-        .blur()
-        .balDatepickerIsClosed()
-      cy.get('@balChange')
-        .should('have.been.calledTwice')
-        .shouldHaveEventDetail('', 1)
+      cy.getByTestId('basic').clear().type('{enter}').blur().balDatepickerIsClosed()
+      cy.get('@balChange').should('have.been.calledTwice').shouldHaveEventDetail('', 1)
     })
   })
 
@@ -54,18 +32,10 @@ describe('Datepicker', () => {
         .balDatepickerIsClosed()
         .contains(format('de-CH', now()))
 
-      cy.get('@balChange')
-        .should('have.been.calledOnce')
-        .shouldHaveEventDetail(formatDateString(now()))
+      cy.get('@balChange').should('have.been.calledOnce').shouldHaveEventDetail(formatDateString(now()))
 
-      cy.getByTestId('basic')
-        .clear()
-        .type('{enter}')
-        .blur()
-        .balDatepickerIsClosed()
-      cy.get('@balChange')
-        .should('have.been.calledTwice')
-        .shouldHaveEventDetail('', 1)
+      cy.getByTestId('basic').clear().type('{enter}').blur().balDatepickerIsClosed()
+      cy.get('@balChange').should('have.been.calledTwice').shouldHaveEventDetail('', 1)
     })
   })
 

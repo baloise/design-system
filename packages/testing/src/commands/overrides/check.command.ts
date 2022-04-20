@@ -1,4 +1,4 @@
-import { isCheckbox, isRadio, selectors, wrapCommand, wrapOptions } from '../helpers'
+import { isCheckbox, isRadio } from '../helpers'
 
 Cypress.Commands.overwrite('check', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
   if (isRadio(element) || isCheckbox(element)) {

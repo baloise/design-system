@@ -11,11 +11,7 @@ describe('Button', () => {
 
   it('should be clickable & focusable', () => {
     page.open()
-    cy.get(page.primaryButton)
-      .click()
-      .should('be.focused')
-      .blur()
-      .should('not.be.focused')
+    cy.get(page.primaryButton).click().should('be.focused').blur().should('not.be.focused')
   })
 
   it('should be disabled or not', () => {

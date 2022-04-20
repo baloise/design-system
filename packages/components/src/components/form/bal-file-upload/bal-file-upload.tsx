@@ -94,12 +94,14 @@ export class FileUpload {
   /**
    * Triggers when a file is removed.
    */
-  @Event({ eventName: 'balFilesRemoved' }) balFilesRemovedEmitter!: EventEmitter<File[]>
+  @Event({ eventName: 'balFilesRemoved' })
+  balFilesRemovedEmitter!: EventEmitter<File[]>
 
   /**
    * Triggers when a file is rejected due to not allowed MIME-Type and so on.
    */
-  @Event({ eventName: 'balRejectedFile' }) balRejectedFileEventEmitter!: EventEmitter<FileUploadRejectedFile>
+  @Event({ eventName: 'balRejectedFile' })
+  balRejectedFileEventEmitter!: EventEmitter<FileUploadRejectedFile>
 
   @Listen('dragenter', { capture: false, passive: false })
   dragenterHandler() {
@@ -192,8 +194,12 @@ export class FileUpload {
 
   componentDidLoad() {
     ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-      this.element.addEventListener(eventName, this.preventDefaults, { passive: false })
-      document.body.addEventListener(eventName, this.preventDefaults, { passive: false })
+      this.element.addEventListener(eventName, this.preventDefaults, {
+        passive: false,
+      })
+      document.body.addEventListener(eventName, this.preventDefaults, {
+        passive: false,
+      })
     })
   }
 

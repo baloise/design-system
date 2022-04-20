@@ -16,7 +16,13 @@ export class Spinner {
 
   render() {
     return (
-      <Host class={{ 'is-inverted': this.inverted, 'is-small': this.small, 'bal-spinner': true }}>
+      <Host
+        class={{
+          'is-inverted': this.inverted,
+          'is-small': this.small,
+          'bal-spinner': true,
+        }}
+      >
         <div class="bounce1"></div>
         <div class="bounce2"></div>
         <div class="bounce3"></div>

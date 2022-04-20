@@ -8,7 +8,10 @@ export interface Attachable<T> {
 
 export const AttachableMixin: Mixin = ({ element, creator }) => ({
   attachFile: (fileLocation: string, attachmentMethod = 'drag-n-drop') => {
-    element.attachFile(fileLocation, { subjectType: attachmentMethod ? 'input' : 'drag-n-drop', force: true })
+    element.attachFile(fileLocation, {
+      subjectType: attachmentMethod ? 'input' : 'drag-n-drop',
+      force: true,
+    })
     return creator()
   },
 })

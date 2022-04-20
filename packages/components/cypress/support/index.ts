@@ -15,7 +15,7 @@
 
 /// <reference types="cypress" />
 
-import type { ContextObject, RunOptions } from 'axe-core'
+import type { RunOptions } from 'axe-core'
 
 declare global {
   namespace Cypress {

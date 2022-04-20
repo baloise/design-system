@@ -26,7 +26,15 @@ const component = BalComponentStory({
 export default component.story
 
 export const Basic = args => ({
-  components: { ...component.components, BalCard, BalCardContent, BalInput, BalHint, BalHintText, BalHintTitle },
+  components: {
+    ...component.components,
+    BalCard,
+    BalCardContent,
+    BalInput,
+    BalHint,
+    BalHintText,
+    BalHintTitle,
+  },
   setup: () => ({ args }),
   template: `<bal-card>
   <bal-card-content>
@@ -74,7 +82,15 @@ Horizontal.args = {
 Horizontal.parameters = { ...component.sourceCode(Horizontal) }
 
 export const DataTypes = args => ({
-  components: { ...component.components, BalCard, BalCardContent, BalInput, BalHint, BalHintText, BalHintTitle },
+  components: {
+    ...component.components,
+    BalCard,
+    BalCardContent,
+    BalInput,
+    BalHint,
+    BalHintText,
+    BalHintTitle,
+  },
   setup: () => ({ args }),
   template: `<bal-card>
   <bal-card-content>

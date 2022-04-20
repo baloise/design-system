@@ -12,7 +12,7 @@ export class BalDocGithub {
         <section class="mt-8 pt-4 has-border-top-light">
           <p class="mb-3">
             If you experience any issues while using a component, please head over to the{' '}
-            <a href="https://design.baloise.dev/?path=/docs/support--page">Support page</a> for more guidelines and{' '}
+            <a href="https://design.baloise.dev/?path=/docs/support--page">Support page</a> for more guidelines and
             help.
           </p>
           <p>This page is open source. Noticed a typo? Or something unclear?</p>

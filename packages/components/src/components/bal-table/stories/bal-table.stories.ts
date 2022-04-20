@@ -21,14 +21,28 @@ const component = BalComponentStory({
 export default component.story
 
 export const Basic = args => ({
-  components: { ...component.components, BalIcon, BalCheckbox, BalButton, BalTag, BalCard },
+  components: {
+    ...component.components,
+    BalIcon,
+    BalCheckbox,
+    BalButton,
+    BalTag,
+    BalCard,
+  },
   setup: () => ({ args }),
   template: tableHtml,
 })
 Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const AgGrid = args => ({
-  components: { ...component.components, BalIcon, BalCheckbox, BalButton, BalTag, BalCard },
+  components: {
+    ...component.components,
+    BalIcon,
+    BalCheckbox,
+    BalButton,
+    BalTag,
+    BalCard,
+  },
   setup: () => {
     onMounted(() => {
       const columnDefs = [
