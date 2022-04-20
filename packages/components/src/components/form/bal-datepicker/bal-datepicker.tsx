@@ -353,17 +353,18 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   private updateValue(dateString: string | undefined) {
+    console.warn('updateValue', dateString)
     if (!isValidIsoString(dateString)) {
       this.selectedDate = undefined
       this.value = undefined
       if (this.nativeInput) {
         this.nativeInput.value = ''
       }
-      return
     }
 
     if (this.value !== dateString) {
       this.value = dateString
+      console.warn('balChange.emit', this.value)
       this.balChange.emit(this.value)
     }
   }
@@ -809,7 +810,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   private isDateInRange(cellDate: Date): boolean {
     if (this.min && this.max) {
       return isWithinInterval(cellDate, {
-        start: parse(this.min) as Date,
+        start: subDays(parse(this.min) as Date, 1),
         end: parse(this.max) as Date,
       })
     }

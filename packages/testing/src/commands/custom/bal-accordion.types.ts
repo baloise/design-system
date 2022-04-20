@@ -5,10 +5,10 @@ declare namespace Cypress {
     /**
      * Asserts if the accordion is open.
      */
-    balAccordionIsOpen(): Chainable<JQuery>
+    balAccordionIsOpen(options?: Partial<Loggable>): Chainable<JQuery>
     /**
      * Asserts if the accordion is closed.
      */
-    balAccordionIsClosed(): Chainable<JQuery>
+    balAccordionIsClosed(options?: Partial<Loggable>): Chainable<JQuery>
   }
 }

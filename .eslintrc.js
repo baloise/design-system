@@ -30,5 +30,6 @@ module.exports = {
         varsIgnorePattern: '^h$|^_|^Cypress',
       },
     ],
+    'prettier/prettier': ['error', { printWidth: false }],
   },
 }

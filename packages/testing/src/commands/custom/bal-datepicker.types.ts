@@ -5,26 +5,26 @@ declare namespace Cypress {
     /**
      * Opens and closes the datepicker popover.
      */
-    balDatepickerToggle(): Chainable<JQuery>
+    balDatepickerToggle(options?: Partial<Loggable>): Chainable<JQuery>
     /**
      * Assert if the datepicker popover is open.
      */
-    balDatepickerIsOpen(): Chainable<JQuery>
+    balDatepickerIsOpen(options?: Partial<Loggable>): Chainable<JQuery>
     /**
      * Assert if the datepicker popover is closed.
      */
-    balDatepickerIsClosed(): Chainable<JQuery>
+    balDatepickerIsClosed(options?: Partial<Loggable>): Chainable<JQuery>
     /**
      * Picks the date in the datepicker like a human.
      */
-    balDatepickerPick(date: Date): Chainable<JQuery>
+    balDatepickerPick(date: Date, options?: Partial<Loggable>): Chainable<JQuery>
     /**
      * Asserts if the given date is in range in the datepicker popover.
      */
-    balDatepickerIsDateInRange(date: Date): Chainable<JQuery>
+    balDatepickerIsDateInRange(date: Date, options?: Partial<Loggable>): Chainable<JQuery>
     /**
      * Asserts if the given date is not in range in the datepicker popover.
      */
-    balDatepickerIsDateNotInRange(date: Date): Chainable<JQuery>
+    balDatepickerIsDateNotInRange(date: Date, options?: Partial<Loggable>): Chainable<JQuery>
   }
 }

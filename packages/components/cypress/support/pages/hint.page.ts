@@ -6,6 +6,6 @@ export class HintPage {
   dataHint = byTestId('data-hint')
 
   open() {
-    cy.visit('/components/bal-hint')
+    cy.page('/components/bal-hint')
   }
 }

@@ -4,50 +4,53 @@ import {
   isButton,
   isCheckbox,
   isDatepicker,
-  wrapRoot,
   isInput,
   isRadio,
   isSelect,
   isSlider,
   isTextarea,
   isNumberInput,
+  wrapOptions,
+  wrapCommand,
 } from '../helpers'
 
 Cypress.Commands.overwrite('blur', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
+  const command = wrapCommand('blur', element, '', $el => originalFn($el, wrapOptions(options)))
+
   if (isAccordion(element)) {
-    return wrapRoot(element, selectors.accordion.button, $el => originalFn($el, options))
+    return command(selectors.accordion.button)
   }
 
   if (isButton(element)) {
-    return wrapRoot(element, selectors.button.main, $el => originalFn($el, options))
+    return command(selectors.button.main)
   }
 
   if (isCheckbox(element)) {
-    return wrapRoot(element, selectors.checkbox.input, $el => originalFn($el, options))
+    return command(selectors.checkbox.input)
   }
 
   if (isDatepicker(element)) {
-    return wrapRoot(element, selectors.datepicker.input, $el => originalFn($el, options))
+    return command(selectors.datepicker.input)
   }
 
   if (isInput(element) || isNumberInput(element)) {
-    return wrapRoot(element, selectors.input.main, $el => originalFn($el, options))
+    return command(selectors.input.main)
   }
 
   if (isTextarea(element)) {
-    return wrapRoot(element, selectors.textarea.main, $el => originalFn($el, options))
+    return command(selectors.textarea.main)
   }
 
   if (isSlider(element)) {
-    return wrapRoot(element, selectors.slider.main, $el => originalFn($el, options))
+    return command(selectors.slider.main)
   }
 
   if (isRadio(element)) {
-    return wrapRoot(element, selectors.radio.input, $el => originalFn($el, options))
+    return command(selectors.radio.input)
   }
 
   if (isSelect(element)) {
-    return wrapRoot(element, selectors.select.input, $el => originalFn($el, options))
+    return command(selectors.select.input)
   }
 
   return originalFn(element, options)

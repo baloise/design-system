@@ -5,6 +5,6 @@ export class RadioPage {
   selectButton = byTestId('select-button')
 
   open() {
-    cy.visit('/components/form/bal-radio')
+    cy.page('/components/form/bal-radio')
   }
 }

@@ -4,40 +4,43 @@ import {
   isButton,
   isCheckbox,
   isDatepicker,
-  wrapRoot,
   isRadio,
   isTag,
   hasClass,
   isHint,
+  wrapCommand,
+  wrapOptions,
 } from '../helpers'
 
 Cypress.Commands.overwrite('click', (originalFn, element: Cypress.Chainable<JQuery>, options) => {
+  const command = wrapCommand('click', element, '', $el => originalFn($el, wrapOptions(options)))
+
   if (isAccordion(element)) {
-    return wrapRoot(element, selectors.accordion.button, $el => originalFn($el, options))
+    return command(selectors.accordion.button)
   }
 
   if (isButton(element)) {
-    return wrapRoot(element, selectors.button.main, $el => originalFn($el, options))
+    return command(selectors.button.main)
   }
 
   if (isCheckbox(element)) {
-    return wrapRoot(element, selectors.checkbox.label, $el => originalFn($el, options))
+    return command(selectors.checkbox.label)
   }
 
   if (isDatepicker(element)) {
-    return wrapRoot(element, selectors.datepicker.input, $el => originalFn($el, options))
+    return command(selectors.datepicker.input)
   }
 
   if (isRadio(element)) {
-    return wrapRoot(element, selectors.radio.label, $el => originalFn($el, options))
+    return command(selectors.radio.label)
   }
 
   if (isTag(element) && hasClass(element, 'sc-bal-select')) {
-    return wrapRoot(element, '.delete', $el => originalFn($el, options))
+    return command('.delete')
   }
 
   if (isHint(element)) {
-    return wrapRoot(element, selectors.hint.trigger, $el => originalFn($el, options))
+    return command(selectors.hint.trigger)
   }
 
   return originalFn(element, options)

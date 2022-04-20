@@ -5,6 +5,6 @@ declare namespace Cypress {
     /**
      * Returns the hint component of the label.
      */
-    balFieldFindHint(): Chainable<JQuery>
+    balFieldFindHint(options?: Partial<Loggable>): Chainable<JQuery>
   }
 }

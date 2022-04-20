@@ -1,25 +1,23 @@
-import { isDatepicker, isInput, isNumberInput, isSlider, isTextarea, selectors, wrapRoot } from '../helpers'
+import { isInput, isNumberInput, isSlider, isTextarea, selectors, wrapCommand, wrapOptions } from '../helpers'
 
 Cypress.Commands.overwrite('type', (originalFn, element: Cypress.Chainable<JQuery>, content, options) => {
-  if (isDatepicker(element)) {
-    return wrapRoot(element, selectors.datepicker.input, $el => originalFn($el, content, options))
-  }
+  const command = wrapCommand('type', element, content, $el => originalFn($el, content, wrapOptions(options)))
 
   if (isInput(element) || isNumberInput(element)) {
-    return wrapRoot(element, selectors.input.main, $el => originalFn($el, content, options))
+    return command(selectors.input.main)
   }
 
   if (isTextarea(element)) {
-    return wrapRoot(element, selectors.textarea.main, $el => originalFn($el, content, options))
+    return command(selectors.textarea.main)
   }
 
   if (isSlider(element)) {
     return cy
-      .wrap(element)
-      .find(selectors.slider.main)
+      .wrap(element, { log: false })
+      .find(selectors.slider.main, { log: false })
       .invoke('val', parseFloat(content))
-      .trigger('change')
-      .wrap(element)
+      .trigger('change', { log: false })
+      .wrap(element, { log: false })
   }
 
   return originalFn(element, content, options)

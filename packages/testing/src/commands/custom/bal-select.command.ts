@@ -1,12 +1,20 @@
-import { selectors } from '../helpers'
+import { log, selectors, wrapOptions } from '../helpers'
 
 Cypress.Commands.add(
   'balSelectFindOptions',
   {
     prevSubject: true,
   },
-  subject => {
-    return cy.wrap(subject).find(selectors.select.options)
+  (subject, options) => {
+    const o = wrapOptions(options)
+    return cy
+      .wrapComponent(subject, o)
+      .find(selectors.select.options, o)
+      .then($el => {
+        log('balSelectFindOptions', '', $el, options)
+        return $el
+      })
+      .waitForComponents(o)
   },
 )
 
@@ -15,10 +23,12 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  (subject, labels, dataKey = 'label') => {
+  (subject, labels, dataKey = 'label', options) => {
+    log('balAccordionIsOpen', '', subject, options)
+    const o = wrapOptions(options)
     return cy
-      .wrap(subject)
-      .balSelectFindOptions()
+      .wrapComponent(subject, o)
+      .balSelectFindOptions(o)
       .should($o => {
         const dataItems = $o.map((_, el) => Cypress.$(el).attr(`data-${dataKey}`))
         expect(dataItems.get()).to.deep.eq(labels)
@@ -31,7 +41,15 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  subject => {
-    return cy.wrap(subject).find(selectors.select.chips)
+  (subject, options) => {
+    const o = wrapOptions(options)
+    return cy
+      .wrapComponent(subject, o)
+      .find(selectors.select.chips, o)
+      .then($el => {
+        log('balSelectFindChips', '', $el, options)
+        return $el
+      })
+      .waitForComponents(o)
   },
 )

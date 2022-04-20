@@ -5,18 +5,18 @@ declare namespace Cypress {
     /**
      * Returns all the page buttons.
      */
-    balPaginationFindPages(): Chainable<JQuery>
+    balPaginationFindPages(options?: Partial<Loggable>): Chainable<JQuery>
     /**
      * Returns the current listed page button.
      */
-    balPaginationFindCurrentPage(): Chainable<JQuery>
+    balPaginationFindCurrentPage(options?: Partial<Loggable>): Chainable<JQuery>
     /**
      * Returns the next button to navigate to next page.
      */
-    balPaginationFindNextButton(): Chainable<JQuery>
+    balPaginationFindNextButton(options?: Partial<Loggable>): Chainable<JQuery>
     /**
      * Returns the previous button to navigate to previous page.
      */
-    balPaginationFindPreviousButton(): Chainable<JQuery>
+    balPaginationFindPreviousButton(options?: Partial<Loggable>): Chainable<JQuery>
   }
 }

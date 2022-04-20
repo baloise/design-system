@@ -5,6 +5,6 @@ export class SliderPage {
   sliderDisabled = byTestId('slider-disabled')
 
   open() {
-    cy.visit('/components/form/bal-slider')
+    cy.page('/components/form/bal-slider')
   }
 }
