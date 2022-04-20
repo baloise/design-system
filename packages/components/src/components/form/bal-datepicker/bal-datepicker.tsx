@@ -353,7 +353,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   private updateValue(dateString: string | undefined) {
-    console.warn('updateValue', dateString)
     if (!isValidIsoString(dateString)) {
       this.selectedDate = undefined
       this.value = undefined

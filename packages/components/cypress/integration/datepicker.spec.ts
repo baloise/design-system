@@ -63,7 +63,7 @@ describe('Datepicker', () => {
     })
   })
 
-  describe('range', () => {
+  describe.only('range', () => {
     it('should have attribute readonly', () => {
       const today = new Date(2022, 3, 16)
       const future = addWeeks(today, 1)
@@ -79,8 +79,8 @@ describe('Datepicker', () => {
         .balDatepickerIsDateInRange(today)
         .balDatepickerIsDateInRange(past)
         .balDatepickerIsDateInRange(future)
-        .balDatepickerIsDateNotInRange(pastDisabled)
-        .balDatepickerIsDateNotInRange(futureDisabled)
+        .balDatepickerIsDateNotInRange(pastDisabled, { log: true })
+        .balDatepickerIsDateNotInRange(futureDisabled, { log: true })
     })
   })
 

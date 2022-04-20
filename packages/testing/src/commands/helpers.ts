@@ -117,7 +117,7 @@ export const selectors = {
  * Executes a command on a child element and wraps back to the main element/component
  */
 
-export const wrapOptions = (options: any) => ({ ...options, log: false })
+export const wrapOptions = (options: any) => ({ log: false, ...options })
 
 export const wrapCommand = (
   displayName: string,
