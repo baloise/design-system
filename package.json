@@ -54,6 +54,7 @@
     "test:cypress": "node .build/banner.js test:cypress && npm --prefix packages/components run cy:run",
     "test:build-server": "npm --prefix packages/components run www",
     "test:start-server": "http-server packages/components/www -p 3333 -c-1 --silent",
+    "test:cy:install": "npm --prefix packages/components run cy:install",
     "test:ci": "npm run test:build-server && concurrently --names \"SERVER,CYPRESS\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm:test:start-server\" \"npm:test:cypress\"",
     "test:visual:base": "npm --prefix packages/components run cy:visual:base",
     "test:visual:actual": "npm --prefix packages/components run cy:visual:actual",
