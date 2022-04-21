@@ -9,7 +9,7 @@ export const eventsToMarkdown = (events: d.JsonDocsEvent[]) => {
 
   content.push(`#### Events`)
   content.push(``)
-  content.push(`Follow the [Event Usage](https://design.baloise.dev/?path=/docs/usage-event--page) guide to learn how to listen to component events.`)
+  content.push(`Follow the [Event Usage](https://design.baloise.dev/?path=/docs/implementation-event--page) guide to learn how to listen to component events.`)
   content.push(``)
 
   const table = new MarkdownTable()

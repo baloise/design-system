@@ -9,7 +9,7 @@ export const methodsToMarkdown = (methods: d.JsonDocsMethod[]) => {
 
   content.push(`#### Methods`)
   content.push(``)
-  content.push(`Follow the [Method Usage](https://design.baloise.dev/?path=/docs/usage-method--page) guide to learn how to call component methods.`)
+  content.push(`Follow the [Method Usage](https://design.baloise.dev/?path=/docs/implementation-method--page) guide to learn how to call component methods.`)
   content.push(``)
 
   methods.forEach(method => {
