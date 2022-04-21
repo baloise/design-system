@@ -1,3 +1,5 @@
+$font-path: '/assets/fonts' !default;
+
 $font-normal-ttf: str-insert('/MetaStd-Normal.ttf', $font-path, 0);
 $font-normal-woff: str-insert('/MetaStd-Normal.woff', $font-path, 0);
 $font-normal-woff2: str-insert('/MetaStd-Normal.woff2', $font-path, 0);
