@@ -31,7 +31,10 @@ export const Basic = Template.bind({})
 Basic.args = {
   content: 'Primary',
 }
-Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
 
 export const ButtonVariants = args => ({
   components: { ...component.components, BalButtonGroup },

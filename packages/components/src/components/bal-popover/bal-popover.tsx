@@ -61,7 +61,8 @@ export class Popover {
   /**
    * @internal - Use this to close unused popovers.
    */
-  @Event({ eventName: 'balPopoverPrepare' }) balPopoverPrepare!: EventEmitter<string>
+  @Event({ eventName: 'balPopoverPrepare' })
+  balPopoverPrepare!: EventEmitter<string>
 
   @Listen('balPopoverPrepare', { target: 'body' })
   handlePopoverPrepare(popoverId: string) {

@@ -25,13 +25,13 @@ const shouldAndAndCommand = (
 ) => {
   if (isAccordion(element)) {
     if (['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused'].includes(condition)) {
-      return originalFn(element.find(selectors.accordion.button), condition, key, value, options)
+      return originalFn(element.find(selectors.accordion.button, { log: false }), condition, key, value, options)
     }
   }
 
   if (isButton(element)) {
     if (['be.disabled', 'not.be.disabled', 'be.focused', 'not.be.focused'].includes(condition)) {
-      return originalFn(element.find(selectors.button.main), condition, key, value, options)
+      return originalFn(element.find(selectors.button.main, { log: false }), condition, key, value, options)
     }
   }
 
@@ -42,7 +42,7 @@ const shouldAndAndCommand = (
     hasClass(element, 'data-test-checkbox-label')
   ) {
     if (isLabel(element)) {
-      element = element.closest(isCheckbox(element) ? '<bal-checkbox>' : '<bal-radio>')
+      element = element.closest(isCheckbox(element) ? '<bal-checkbox>' : '<bal-radio>', { log: false })
     }
 
     if ('be.checked' === condition) {
@@ -78,7 +78,7 @@ const shouldAndAndCommand = (
       case 'not.have.value':
       case 'be.disabled':
       case 'not.be.disabled':
-        return originalFn(element.find(selectors.datepicker.input), condition, key, value, options)
+        return originalFn(element.find(selectors.datepicker.input, { log: false }), condition, key, value, options)
     }
   }
 
@@ -88,7 +88,7 @@ const shouldAndAndCommand = (
         condition,
       )
     ) {
-      return originalFn(element.find(selectors.input.main), condition, key, value, options)
+      return originalFn(element.find(selectors.input.main, { log: false }), condition, key, value, options)
     }
   }
 
@@ -98,7 +98,7 @@ const shouldAndAndCommand = (
         condition,
       )
     ) {
-      return originalFn(element.find(selectors.textarea.main), condition, key, value, options)
+      return originalFn(element.find(selectors.textarea.main, { log: false }), condition, key, value, options)
     }
   }
 
@@ -108,7 +108,7 @@ const shouldAndAndCommand = (
         condition,
       )
     ) {
-      return originalFn(element.find(selectors.slider.main), condition, key, value, options)
+      return originalFn(element.find(selectors.slider.main, { log: false }), condition, key, value, options)
     }
   }
 
@@ -118,17 +118,17 @@ const shouldAndAndCommand = (
       case 'not.have.focus':
       case 'be.disabled':
       case 'not.be.disabled':
-        return originalFn(element.find(selectors.select.input), condition, key, value, options)
+        return originalFn(element.find(selectors.select.input, { log: false }), condition, key, value, options)
 
       case 'have.value':
         if (typeof key === 'string') {
-          return originalFn(element.find(selectors.select.input), condition, key, value, options)
+          return originalFn(element.find(selectors.select.input, { log: false }), condition, key, value, options)
         }
         return originalFn(element, 'have.attr', 'data-value', key.join(','), value)
 
       case 'not.have.value':
         if (typeof key === 'string') {
-          return originalFn(element.find(selectors.select.input), condition, key, value, options)
+          return originalFn(element.find(selectors.select.input, { log: false }), condition, key, value, options)
         }
         return originalFn(element, 'not.have.attr', 'data-value', key.join(','), value)
     }
@@ -163,5 +163,5 @@ const shouldAndAndCommand = (
   return originalFn(element, condition, key, value, options)
 }
 
-Cypress.Commands.overwrite('should', shouldAndAndCommand)
-Cypress.Commands.overwrite('and', shouldAndAndCommand)
+Cypress.Commands.overwrite('should', shouldAndAndCommand as any)
+Cypress.Commands.overwrite('and', shouldAndAndCommand as any)

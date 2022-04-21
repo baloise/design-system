@@ -5,15 +5,15 @@ declare namespace Cypress {
     /**
      * Opens and closes the popover.
      */
-    balPopoverToggle(): Chainable<JQuery>
+    balPopoverToggle(options?: Partial<Loggable>): Chainable<JQuery>
     /**
      * Asserts if the popover is open.
      */
-    balPopoverIsOpen(): Chainable<JQuery>
+    balPopoverIsOpen(options?: Partial<Loggable>): Chainable<JQuery>
     /**
      * Asserts if the popover is closed.
      */
-    balPopoverIsClosed(): Chainable<JQuery>
+    balPopoverIsClosed(options?: Partial<Loggable>): Chainable<JQuery>
     /**
      * Asserts if the trigger button contains the given content.
      */

@@ -30,7 +30,13 @@ import {
 
 const component = BalComponentStory({
   component: BalCard,
-  subcomponents: { BalCardTitle, BalCardSubtitle, BalCardContent, BalCardActions, BalCardButton },
+  subcomponents: {
+    BalCardTitle,
+    BalCardSubtitle,
+    BalCardContent,
+    BalCardActions,
+    BalCardButton,
+  },
   docs,
 })
 
@@ -54,7 +60,10 @@ export const Basic = args => ({
   </bal-card-actions>
 </bal-card>`,
 })
-Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
 
 export const CardTitle = args => ({
   components: { ...component.components, BalButton, BalHeading },
@@ -183,7 +192,10 @@ export const TeaserCards = args => ({
 </div>
 `,
 })
-TeaserCards.parameters = { ...component.sourceCode(TeaserCards), controls: { exclude: excludedControls } }
+TeaserCards.parameters = {
+  ...component.sourceCode(TeaserCards),
+  controls: { exclude: excludedControls },
+}
 
 export const AccordionCard = args => ({
   components: { ...component.components, BalAccordion, BalHeading },
@@ -196,10 +208,21 @@ export const AccordionCard = args => ({
   </bal-accordion>
   </bal-card>`,
 })
-AccordionCard.parameters = { ...component.sourceCode(AccordionCard), controls: { exclude: excludedControls } }
+AccordionCard.parameters = {
+  ...component.sourceCode(AccordionCard),
+  controls: { exclude: excludedControls },
+}
 
 export const SummaryCard = args => ({
-  components: { ...component.components, BalHeading, BalButton, BalData, BalDataItem, BalDataLabel, BalDataValue },
+  components: {
+    ...component.components,
+    BalHeading,
+    BalButton,
+    BalData,
+    BalDataItem,
+    BalDataLabel,
+    BalDataValue,
+  },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-content class="is-bold has-text-blue">Insured vehicle</bal-card-content>
@@ -224,10 +247,18 @@ export const SummaryCard = args => ({
   <bal-card-button icon="edit">Edit</bal-card-button>
   </bal-card>`,
 })
-SummaryCard.parameters = { ...component.sourceCode(SummaryCard), controls: { exclude: excludedControls } }
+SummaryCard.parameters = {
+  ...component.sourceCode(SummaryCard),
+  controls: { exclude: excludedControls },
+}
 
 export const ServiceCard = args => ({
-  components: { ...component.components, BalCheckbox, BalAccordion, BalHeading },
+  components: {
+    ...component.components,
+    BalCheckbox,
+    BalAccordion,
+    BalHeading,
+  },
   setup: () => ({ args }),
   template: `<bal-card v-bind="args">
   <bal-card-content>
@@ -251,4 +282,7 @@ export const ServiceCard = args => ({
   </bal-accordion>
 </bal-card>`,
 })
-ServiceCard.parameters = { ...component.sourceCode(ServiceCard), controls: { exclude: excludedControls } }
+ServiceCard.parameters = {
+  ...component.sourceCode(ServiceCard),
+  controls: { exclude: excludedControls },
+}

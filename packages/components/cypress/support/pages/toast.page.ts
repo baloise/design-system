@@ -5,6 +5,6 @@ export class ToastPage {
   toastWarning = byTestId('toast-warning')
 
   open() {
-    cy.visit('/components/notice/bal-toast')
+    cy.page('/components/notice/bal-toast')
   }
 }

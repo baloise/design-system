@@ -359,7 +359,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
       if (this.nativeInput) {
         this.nativeInput.value = ''
       }
-      return
     }
 
     if (this.value !== dateString) {
@@ -807,17 +806,18 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   private isDateInRange(cellDate: Date): boolean {
+    const parsedCellDate = parse(formatDateString(cellDate)) as Date
     if (this.min && this.max) {
-      return isWithinInterval(cellDate, {
+      return isWithinInterval(parsedCellDate, {
         start: parse(this.min) as Date,
         end: parse(this.max) as Date,
       })
     }
     if (this.min) {
-      return isAfter(cellDate, parse(this.min) as Date)
+      return isAfter(parsedCellDate, parse(this.min) as Date)
     }
     if (this.max) {
-      return isBefore(cellDate, addDays(parse(this.max) as Date, 1))
+      return isBefore(parsedCellDate, addDays(parse(this.max) as Date, 1))
     }
     return true
   }

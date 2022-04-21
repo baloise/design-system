@@ -6,6 +6,6 @@ export class ModalPage {
   closeModalButton = byTestId('open-modal-close')
 
   open() {
-    cy.visit('/components/notice/bal-modal')
+    cy.page('/components/notice/bal-modal')
   }
 }

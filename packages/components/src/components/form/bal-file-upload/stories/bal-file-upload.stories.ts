@@ -43,4 +43,7 @@ Basic.args = {
   maxFileSize: 1000000,
   maxBundleSize: 1000000,
 }
-Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: ['subTitle', 'value'] } }
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: { exclude: ['subTitle', 'value'] },
+}

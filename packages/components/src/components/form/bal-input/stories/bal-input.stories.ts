@@ -51,7 +51,13 @@ const excludedControls = [
 ]
 
 export const Basic = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   setup: () => ({ args }),
   template: `<bal-input v-bind="args" v-model="args.value"></bal-input>`,
 })
@@ -70,7 +76,13 @@ Basic.parameters = {
 }
 
 const Template = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">

@@ -5,6 +5,6 @@ declare namespace Cypress {
     /**
      * Returns the visible toasts.
      */
-    balToastFind(): Chainable<JQuery>
+    balToastFind(options?: Partial<Loggable>): Chainable<JQuery>
   }
 }

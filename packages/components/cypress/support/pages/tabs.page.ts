@@ -5,6 +5,6 @@ export class TabsPage {
   steps = byTestId('steps')
 
   open() {
-    cy.visit('/components/bal-tabs')
+    cy.page('/components/bal-tabs')
   }
 }

@@ -21,4 +21,15 @@ export default function configurePlugins(on: Cypress.PluginEvents, config: Cypre
 
   const installLogsPrinter = installLogsPrinterPlugin as any
   installLogsPrinter(on)
+
+  on('task', {
+    log(message) {
+      console.log(message)
+      return null
+    },
+    table(message) {
+      console.table(message)
+      return null
+    },
+  })
 }

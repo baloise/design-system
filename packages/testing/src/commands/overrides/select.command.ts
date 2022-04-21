@@ -1,8 +1,8 @@
 import { isSelect, isTabs, selectors } from '../helpers'
 
-Cypress.Commands.overwrite('select', (originalFn, element: Cypress.Chainable<JQuery>, values, options) => {
+Cypress.Commands.overwrite('select', (originalFn: any, element: any, values: any, options) => {
   if (isSelect(element)) {
-    let valueArray = []
+    let valueArray: any[] = []
     if (typeof values === 'string') {
       valueArray.push(values)
     } else {
@@ -21,21 +21,21 @@ Cypress.Commands.overwrite('select', (originalFn, element: Cypress.Chainable<JQu
     }
 
     return cy
-      .wrap(element)
+      .wrap(element, { log: false })
       .find(selectContext.join(', '))
       .click({ multiple: values.length > 1 })
-      .wrap(element)
+      .wrap(element, { log: false })
   }
 
   if (isTabs(element)) {
     if (typeof values === 'string') {
       return cy
-        .wrap(element)
+        .wrap(element, { log: false })
         .find(
           `${selectors.tabs.tabItems}[data-label="${values}"], ${selectors.tabs.tabItems}[data-value="${values}"], ${selectors.tabs.tabItems}[data-index="${values}"]`,
         )
         .click()
-        .wrap(element)
+        .wrap(element, { log: false })
     }
   }
 

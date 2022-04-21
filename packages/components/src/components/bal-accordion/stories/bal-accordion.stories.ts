@@ -49,7 +49,13 @@ WithIcons.args = {
 WithIcons.parameters = { ...component.sourceCode(WithIcons) }
 
 export const WithCard = args => ({
-  components: { ...component.components, BalCard, BalCardContent, BalCardTitle, BalCardSubtitle },
+  components: {
+    ...component.components,
+    BalCard,
+    BalCardContent,
+    BalCardTitle,
+    BalCardSubtitle,
+  },
   setup: () => ({ args }),
   template: `<bal-card>
   <bal-card-title>BaloiseCombi</bal-card-title>

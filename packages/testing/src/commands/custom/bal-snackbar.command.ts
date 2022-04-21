@@ -1,11 +1,18 @@
-import { selectors } from '../helpers'
+import { log, selectors, wrapOptions } from '../helpers'
 
 Cypress.Commands.add(
   'balSnackbarFind',
   {
     prevSubject: false,
   },
-  () => {
-    return cy.get(selectors.snackbar.main)
+  options => {
+    const o = wrapOptions(options)
+    return cy
+      .getComponent(selectors.snackbar.main, o)
+      .then($el => {
+        log('balSnackbarFind', '', $el, options)
+        return $el
+      })
+      .waitForComponents(o)
   },
 )

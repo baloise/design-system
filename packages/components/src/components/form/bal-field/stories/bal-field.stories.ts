@@ -23,7 +23,12 @@ import {
 const component = BalComponentStory({
   title: 'Components/Form/Field',
   component: BalField,
-  subcomponents: { BalFieldControl, BalFieldHint, BalFieldLabel, BalFieldMessage },
+  subcomponents: {
+    BalFieldControl,
+    BalFieldHint,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   docs,
   argTypes: {
     hasFieldMessage: {

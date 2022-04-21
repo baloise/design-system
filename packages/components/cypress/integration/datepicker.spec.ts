@@ -1,42 +1,98 @@
-import { now } from '@baloise/web-app-utils'
-import { app } from '../support/app'
+import { now, formatDateString, format } from '@baloise/web-app-utils'
+import { addDays, addWeeks, subDays, subWeeks } from 'date-fns'
+import { byTestId, DatePickerAccessor } from '../../../testing/src'
 
 describe('Datepicker', () => {
-  const page = app.getDatepickerPage()
+  beforeEach(() => cy.platform('desktop').page('/components/form/bal-datepicker/test/bal-datepicker.cy.html'))
 
-  it('should open and close the datepicker', () => {
-    page.open()
-    cy.get(page.datepicker).balDatepickerToggle().balDatepickerIsOpen().balDatepickerToggle().balDatepickerIsClosed()
+  describe('open & close', () => {
+    it('should open and close', () => {
+      cy.getByTestId('basic').balDatepickerToggle().balDatepickerIsOpen().balDatepickerToggle().balDatepickerIsClosed()
+    })
   })
 
-  it('should pick the date in datepicker', () => {
-    page.open()
-    cy.get(page.datepicker).balDatepickerToggle().balDatepickerPick(now())
+  describe('type', () => {
+    it('should type the date in datepicker and fire one change event', () => {
+      const today = format('de-CH', now())
+      cy.getByTestId('basic').spyEvent('balChange').type(`${today}{enter}`).blur().contains(today)
+
+      cy.get('@balChange').should('have.been.calledOnce').shouldHaveEventDetail(formatDateString(now()))
+
+      cy.getByTestId('basic').clear().type('{enter}').blur().balDatepickerIsClosed()
+      cy.get('@balChange').should('have.been.calledTwice').shouldHaveEventDetail('', 1)
+    })
   })
 
-  it('should type and assert the date in the datepicker', () => {
-    page.open()
-    cy.get(page.datepicker).type('20.02.2021').should('have.value', '20.02.2021')
-    cy.get(page.datepicker).clear().type('03.03.2021').should('not.have.value', '20.02.2021')
+  describe('pick', () => {
+    it('should pick the date in datepicker and fire one change event', () => {
+      cy.getByTestId('basic')
+        .spyEvent('balChange')
+        .balDatepickerToggle()
+        .balDatepickerPick(now())
+        .balDatepickerIsClosed()
+        .contains(format('de-CH', now()))
+
+      cy.get('@balChange').should('have.been.calledOnce').shouldHaveEventDetail(formatDateString(now()))
+
+      cy.getByTestId('basic').clear().type('{enter}').blur().balDatepickerIsClosed()
+      cy.get('@balChange').should('have.been.calledTwice').shouldHaveEventDetail('', 1)
+    })
   })
 
-  it('should assert that the datepicker is disabled or not', () => {
-    page.open()
-    cy.get(page.datepicker).should('not.be.disabled')
-    cy.get(page.datepickerDisabled).should('be.disabled')
+  describe('disabled', () => {
+    it('should have attribute disabled', () => {
+      cy.getByTestId('basic')
+        .setProperty('disabled', true)
+        .hasProperty('disabled', 'disabled')
+        .find('input')
+        .hasProperty('disabled', 'disabled')
+
+      cy.getByTestId('basic').removeProperty('disabled')
+    })
   })
 
-  it.skip('should assert if date is in range in the Datepicker', () => {
-    const today = new Date()
-    page.open()
-    cy.get(page.datepickerRange).balDatepickerToggle()
-    cy.get(page.datepickerRange).balDatepickerIsDateInRange(new Date(today.getFullYear(), 0, 5))
+  describe('readonly', () => {
+    it('should have attribute readonly', () => {
+      cy.getByTestId('basic')
+        .setProperty('readonly', true)
+        .hasProperty('readonly', 'readonly')
+        .find('input')
+        .hasProperty('readonly', 'readonly')
+
+      cy.getByTestId('basic').removeProperty('readonly')
+    })
   })
 
-  it.skip('should assert if date is not in range in the Datepicker', () => {
-    const today = new Date()
-    page.open()
-    cy.get(page.datepickerRange).balDatepickerToggle()
-    cy.get(page.datepickerRange).balDatepickerIsDateNotInRange(new Date(today.getFullYear(), 0, 4))
+  describe('range', () => {
+    it('should have a min and max date', () => {
+      const today = new Date(2022, 3, 16)
+      const future = addWeeks(today, 1)
+      const futureDisabled = addDays(future, 1)
+      const past = subWeeks(today, 1)
+      const pastDisabled = subDays(past, 1)
+
+      cy.getByTestId('basic')
+        .setProperty('min', formatDateString(past))
+        .setProperty('max', formatDateString(future))
+        .balDatepickerToggle()
+        .balDatepickerIsOpen()
+        .balDatepickerIsDateInRange(today)
+        .balDatepickerIsDateInRange(past)
+        .balDatepickerIsDateInRange(future)
+        .balDatepickerIsDateNotInRange(futureDisabled)
+        .balDatepickerIsDateNotInRange(pastDisabled)
+    })
+  })
+
+  describe('legacy (deprecated)', () => {
+    it('should be able to use the legacy accessors', () => {
+      const accessor = DatePickerAccessor(byTestId('basic'))
+      accessor.get().open()
+      cy.getByTestId('basic').balDatepickerIsOpen().balDatepickerToggle()
+      accessor.get().pick(now()).shouldHaveValue(new Date())
+      cy.getByTestId('basic').clear().type('{enter}')
+      accessor.get().write('12.12.2020')
+      cy.getByTestId('basic').contains('12.12.2020')
+    })
   })
 })

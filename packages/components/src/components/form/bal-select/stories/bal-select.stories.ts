@@ -52,10 +52,19 @@ export const Basic = args => ({
 Basic.args = {
   value: ['v2000'],
 }
-Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
 
 export const FieldControl = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
@@ -76,7 +85,10 @@ export const FieldControl = args => ({
 FieldControl.args = {
   value: ['v2000'],
 }
-FieldControl.parameters = { ...component.sourceCode(FieldControl), controls: { exclude: excludedControls } }
+FieldControl.parameters = {
+  ...component.sourceCode(FieldControl),
+  controls: { exclude: excludedControls },
+}
 
 export const Typeahead = args => ({
   components: { ...component.components },
@@ -91,7 +103,10 @@ Typeahead.args = {
   placeholder: 'Try finding your hero',
   noDataLabel: 'No option available',
 }
-Typeahead.parameters = { ...component.sourceCode(Typeahead), controls: { exclude: excludedControls } }
+Typeahead.parameters = {
+  ...component.sourceCode(Typeahead),
+  controls: { exclude: excludedControls },
+}
 
 export const MultiSelect = args => ({
   components: { ...component.components },
@@ -105,4 +120,7 @@ MultiSelect.args = {
   multiple: true,
   placeholder: 'Try finding your hero',
 }
-MultiSelect.parameters = { ...component.sourceCode(MultiSelect), controls: { exclude: excludedControls } }
+MultiSelect.parameters = {
+  ...component.sourceCode(MultiSelect),
+  controls: { exclude: excludedControls },
+}

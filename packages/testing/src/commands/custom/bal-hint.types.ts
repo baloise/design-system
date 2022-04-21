@@ -5,10 +5,10 @@ declare namespace Cypress {
     /**
      * Returns the hint content overlay with the title, content and the close button.
      */
-    balHintFindOverlay(): Chainable<JQuery>
+    balHintFindOverlay(options?: Partial<Loggable>): Chainable<JQuery>
     /**
      * Returns the close button of the overlay content.
      */
-    balHintFindCloseButton(): Chainable<JQuery>
+    balHintFindCloseButton(options?: Partial<Loggable>): Chainable<JQuery>
   }
 }

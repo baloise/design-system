@@ -40,21 +40,18 @@ Now the adjusted commands from the Baloise Design System should be available in 
 Further documentations for each component commands is documented on the components page.
 
 ```typescript
-import { byTestId } from '@baloise/design-system-testing'
-
 describe('Accordion', () => {
-  const accordion = byTestId('my-accordion') // [data-testid="my-accordion"]
   it('should ...', () => {
-    cy.get(accordion).contains('Show more')
-    cy.get(accordion).balAccordionIsClosed()
-    cy.get(accordion).click().balAccordionIsOpen()
-    cy.get(page.accordion).contains('Show less')
-    cy.get(accordion).click().balAccordionIsClosed()
+    cy.getByTestId('my-accordion').contains('Show more')
+    cy.getByTestId('my-accordion').balAccordionIsClosed()
+    cy.getByTestId('my-accordion').click().balAccordionIsOpen()
+    cy.getByTestId('my-accordion').contains('Show less')
+    cy.getByTestId('my-accordion').click().balAccordionIsClosed()
   })
 })
 ```
 
-### byTestId
+### Selectors
 
 It is recommended to set specific test attributes `data-testid` on the elements to test.
 
@@ -69,10 +66,60 @@ import { byTestId } from '@baloise/design-system-testing'
 
 describe('Button', () => {
   it('should ...', () => {
+    cy.getByTestId('button-id').click()
+  })
+
+  // or with the selector function
+
+  it('should ...', () => {
     const button = byTestId('button-id')
     cy.get(button).click()
   })
 })
+```
+
+### Component Commands
+
+#### getByTestId
+
+Gets the element / component by the attribute `data-testid` and waits until fully loaded.
+
+```typescript
+cy.getByTestId('button')
+```
+
+#### getComponent
+
+Gets the element / component by jquery selector and waits until fully loaded.
+
+```typescript
+cy.getComponent('bal-button')
+```
+
+#### wrapComponent
+
+Wraps the element / component and waits until fully loaded.
+
+```typescript
+cy.wrapComponent($el)
+```
+
+#### waitForComponents
+
+Waits until the component has fully loaded.
+
+```typescript
+cy.get('button').waitForComponents()
+```
+
+### Viewport / Platform
+
+The `platform` commands allows to switch between the breakpoints of the Design System
+
+```typescript
+cy.platform('mobile')
+cy.platform('tablet')
+cy.platform('desktop')
 ```
 
 ## Links

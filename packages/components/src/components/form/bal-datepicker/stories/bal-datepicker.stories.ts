@@ -49,10 +49,19 @@ export const Basic = args => ({
 Basic.args = {
   placeholder: 'Pick a date',
 }
-Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
 
 const Template = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   setup: () => {
     setConfig(args)
     return {
@@ -73,14 +82,20 @@ export const FieldControl = Template.bind({})
 FieldControl.args = {
   placeholder: 'Pick a date',
 }
-FieldControl.parameters = { ...component.sourceCode(FieldControl), controls: { exclude: excludedControls } }
+FieldControl.parameters = {
+  ...component.sourceCode(FieldControl),
+  controls: { exclude: excludedControls },
+}
 
 export const ManualInput = Template.bind({})
 ManualInput.args = {
   placeholder: 'Type a date',
   triggerIcon: true,
 }
-ManualInput.parameters = { ...component.sourceCode(ManualInput), controls: { exclude: excludedControls } }
+ManualInput.parameters = {
+  ...component.sourceCode(ManualInput),
+  controls: { exclude: excludedControls },
+}
 
 export const Min = Template.bind({})
 Min.args = {
@@ -88,7 +103,10 @@ Min.args = {
   defaultDate: '2022-02-07',
   min: '2022-02-06',
 }
-Min.parameters = { ...component.sourceCode(Min), controls: { exclude: excludedControls } }
+Min.parameters = {
+  ...component.sourceCode(Min),
+  controls: { exclude: excludedControls },
+}
 
 export const Max = Template.bind({})
 Max.args = {
@@ -96,7 +114,10 @@ Max.args = {
   defaultDate: '2022-02-11',
   max: '2022-02-12',
 }
-Max.parameters = { ...component.sourceCode(Max), controls: { exclude: excludedControls } }
+Max.parameters = {
+  ...component.sourceCode(Max),
+  controls: { exclude: excludedControls },
+}
 
 export const MinAndMax = Template.bind({})
 MinAndMax.args = {
@@ -105,4 +126,7 @@ MinAndMax.args = {
   min: '2022-02-06',
   max: '2022-03-12',
 }
-MinAndMax.parameters = { ...component.sourceCode(MinAndMax), controls: { exclude: excludedControls } }
+MinAndMax.parameters = {
+  ...component.sourceCode(MinAndMax),
+  controls: { exclude: excludedControls },
+}
