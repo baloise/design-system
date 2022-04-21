@@ -57,6 +57,9 @@ export const AngularGenerator = () =>
       'bal-checkbox': {
         components: ['bal-checkbox-group'],
       },
+      'bal-tag': {
+        components: ['bal-tag-group'],
+      },
       'bal-card': {
         components: [
           'bal-card-title',
