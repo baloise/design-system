@@ -1,6 +1,7 @@
 @charset "utf-8";
 
-@import 'utilities/_all';
+@import 'global.base.scss';
+@import 'global.utilities.scss';
 @import 'global/all';
 
 bal-app,
