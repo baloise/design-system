@@ -9,13 +9,12 @@ export const defaultConfig: BalConfigState = {
 
 export const defaultLocale = `${defaultConfig.language}-${defaultConfig.region}`
 
-export const initialize = (userConfig: BalConfig = {}) => {
+export const initialize = (userConfig: BalConfig = {}, win = window as any) => {
   if (typeof (window as any) === 'undefined') {
     return
   }
 
-  const win = window as any
-  const BaloiseDesignSystem = (win.BaloiseDesignSystem = win.BaloiseDesignSystem || {})
+  win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 
   config.reset({
     ...defaultConfig,
@@ -23,7 +22,7 @@ export const initialize = (userConfig: BalConfig = {}) => {
     ...userConfig,
   })
 
-  BaloiseDesignSystem.config = config
+  win.BaloiseDesignSystem.config = config
 }
 
 export default initialize

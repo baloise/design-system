@@ -5,6 +5,6 @@ export class ButtonPage {
   primaryButtonDisabled = ButtonAccessor(byTestId('primary-button-disabled'))
 
   open() {
-    cy.visit('/components/bal-button')
+    cy.page('/components/bal-button')
   }
 }

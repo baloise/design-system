@@ -5,6 +5,6 @@ export class CheckboxPage {
   disabledCheckboxElement = byTestId('checkbox-disabled')
 
   open() {
-    cy.visit('/components/form/bal-checkbox')
+    cy.page('/components/form/bal-checkbox')
   }
 }

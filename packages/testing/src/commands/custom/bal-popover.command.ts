@@ -1,12 +1,14 @@
-import { selectors } from '../helpers'
+import { log, selectors, wrapOptions } from '../helpers'
 
 Cypress.Commands.add(
   'balPopoverToggle',
   {
     prevSubject: true,
   },
-  subject => {
-    return cy.wrap(subject).find(`[${selectors.popover.trigger}]`).click().wrap(subject)
+  (subject, options) => {
+    log('balPopoverToggle', '', subject, options)
+    const o = wrapOptions(options)
+    return cy.wrapComponent(subject, o).find(`[${selectors.popover.trigger}]`, o).click(o).wrapComponent(subject, o)
   },
 )
 
@@ -15,8 +17,10 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  subject => {
-    return cy.wrap(subject).should('have.attr', 'aria-presented', 'true')
+  (subject, options) => {
+    log('balPopoverIsOpen', '', subject, options)
+    const o = wrapOptions(options)
+    return cy.wrapComponent(subject, o).should('have.attr', 'aria-presented', 'true')
   },
 )
 
@@ -25,8 +29,10 @@ Cypress.Commands.add(
   {
     prevSubject: true,
   },
-  subject => {
-    return cy.wrap(subject).should('not.have.attr', 'aria-presented')
+  (subject, options) => {
+    log('balPopoverIsClosed', '', subject, options)
+    const o = wrapOptions(options)
+    return cy.wrapComponent(subject, o).should('not.have.attr', 'aria-presented')
   },
 )
 
@@ -36,7 +42,13 @@ Cypress.Commands.add(
     prevSubject: true,
   },
   (subject, content, options) => {
-    return cy.wrap(subject).find(`[${selectors.popover.trigger}]`).contains(content, options).wrap(subject)
+    log('balPopoverTriggerContains', content, subject, options)
+    const o = wrapOptions(options)
+    return cy
+      .wrapComponent(subject, o)
+      .find(`[${selectors.popover.trigger}]`, o)
+      .contains(content, options)
+      .wrapComponent(subject, o)
   },
 )
 
@@ -46,6 +58,12 @@ Cypress.Commands.add(
     prevSubject: true,
   },
   (subject, content, options) => {
-    return cy.wrap(subject).find(selectors.popover.content).contains(content, options).wrap(subject)
+    log('balPopoverContentContains', content, subject, options)
+    const o = wrapOptions(options)
+    return cy
+      .wrapComponent(subject, o)
+      .find(selectors.popover.content, o)
+      .contains(content, options)
+      .wrapComponent(subject, o)
   },
 )

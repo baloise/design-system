@@ -33,12 +33,17 @@ table.table {
     }
   }
 
+  th:not([align]) {
+    text-align: left;
+  }
+
   td,
   th {
     font-size: $size-normal;
     font-family: $family-primary;
     vertical-align: middle;
     color: $blue;
+    text-align: left;
 
     .bal-checkbox {
       padding: 0;
@@ -53,8 +58,17 @@ table.table {
   td.has-buttons {
     padding: 2px;
 
-    bal-button:not(:last-child) {
-      margin-right: 8px;
+    bal-button {
+      margin-right: 4px;
+
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+
+    .buttons {
+      justify-content: flex-end;
+      padding: 3px;
     }
   }
 }

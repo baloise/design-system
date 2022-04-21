@@ -247,115 +247,148 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **form:** add prop readonly ([03ff671](https://github.com/baloise/design-system/commit/03ff671b7ca90fa5da388a9554dd51ca8f6e5dcc))
-* **icon:** add new icon logout, youtube and web ([ec7bdbf](https://github.com/baloise/design-system/commit/ec7bdbf7a75c5928306d7f79f5e694f26d4db502))
-* **popover:** add prop expanded to use the fullwidth ([9b4dfa6](https://github.com/baloise/design-system/commit/9b4dfa607af52402e7758ac0ef38b30224a4e20c))
+* **bal-number-input:** add exactNumber property to define 0 as a default value ([57b3abb](https://github.com/baloise/design-system/commit/57b3abb6b873ee9a0ca9589edecebb7c37b08603))
+* **breakpoint:** add isPlatform util ([a213e29](https://github.com/baloise/design-system/commit/a213e295ff0cc9a8c712239d65ef7910b839a296))
+* **testing:** add new custom commands and improve logging ([34f1be4](https://github.com/baloise/design-system/commit/34f1be446c2abca0eb7330dd96d665a33ca64c47))
+* **testing:** add new cypress commands ([86b05d9](https://github.com/baloise/design-system/commit/86b05d93a37016844c490ea18f7b0b2f0d950dcf))
 
 
+### Bug Fixes
+
+* **card:** add auto height ([07c8f2d](https://github.com/baloise/design-system/commit/07c8f2d244360b71d638f2926784addf537f841c))
+* **card:** alignment for buttons and tags inside the card-title component ([09780bb](https://github.com/baloise/design-system/commit/09780bbb6e891265842906fb4693fe24f80b209f))
+* **card:** alignment for buttons and tags inside the card-title component ([a04193f](https://github.com/baloise/design-system/commit/a04193f79f192e4ed84435ddb4123e7c2cd8034a))
+* **data:** alignment horizontal ([cdfbf84](https://github.com/baloise/design-system/commit/cdfbf847a733d6925148039539c18453f8c7bb94))
+* **i18n:** notify component always ([05217a8](https://github.com/baloise/design-system/commit/05217a8e6213bcb5c98f7ba7581fd384061bf3c5))
+* simplify theme customization ([e90e095](https://github.com/baloise/design-system/commit/e90e09514cfc1164ceb04f1e968ca864da38c2bb))
+* simplify theme customization ([1e66023](https://github.com/baloise/design-system/commit/1e6602388dd6881402edeee8201982d8634f4227))
+
+### 10.9.1 (2022-04-13)
+
+
+
+## [10.10.0](https://github.com/baloise/design-system/compare/v10.9.1...v10.10.0) (2022-04-21)
+
+
+### Features
+
+* **bal-number-input:** add exactNumber property to define 0 as a default value ([57b3abb](https://github.com/baloise/design-system/commit/57b3abb6b873ee9a0ca9589edecebb7c37b08603))
+* **breakpoint:** add isPlatform util ([a213e29](https://github.com/baloise/design-system/commit/a213e295ff0cc9a8c712239d65ef7910b839a296))
+* **testing:** add new custom commands and improve logging ([34f1be4](https://github.com/baloise/design-system/commit/34f1be446c2abca0eb7330dd96d665a33ca64c47))
+* **testing:** add new cypress commands ([86b05d9](https://github.com/baloise/design-system/commit/86b05d93a37016844c490ea18f7b0b2f0d950dcf))
+
+
+### Bug Fixes
+
+* **card:** add auto height ([07c8f2d](https://github.com/baloise/design-system/commit/07c8f2d244360b71d638f2926784addf537f841c))
+* **card:** alignment for buttons and tags inside the card-title component ([09780bb](https://github.com/baloise/design-system/commit/09780bbb6e891265842906fb4693fe24f80b209f))
+* **card:** alignment for buttons and tags inside the card-title component ([a04193f](https://github.com/baloise/design-system/commit/a04193f79f192e4ed84435ddb4123e7c2cd8034a))
+* **data:** alignment horizontal ([cdfbf84](https://github.com/baloise/design-system/commit/cdfbf847a733d6925148039539c18453f8c7bb94))
+* **i18n:** notify component always ([05217a8](https://github.com/baloise/design-system/commit/05217a8e6213bcb5c98f7ba7581fd384061bf3c5))
+
+
+
+### [10.9.1](https://github.com/baloise/design-system/compare/v10.9.0...v10.9.1) (2022-04-13)
+
+### Bug Fixes
+
+- **checkbox-group:** add missing readonly prop ([bd63b9a](https://github.com/baloise/design-system/commit/bd63b9aeb296896119c2788807c90e51aa1b62c0))
+- **config:** do not notify after initialize ([521cd21](https://github.com/baloise/design-system/commit/521cd211d50acd712331f850eecfab78f53a233a))
+- if readonly do not react on user interactions ([aa844de](https://github.com/baloise/design-system/commit/aa844ded9c413cc806954b58ab3803209e70b9dc))
+- **input-group:** add missing prop ([4a821dd](https://github.com/baloise/design-system/commit/4a821dd3041883f7f7e77d26c6b3bc38ebb95dcd))
+- **input:** set placeholder color for readonly and disabled ([23606e1](https://github.com/baloise/design-system/commit/23606e1e6dc486da2c4d4781e660a6a8bcddb0b2))
+- **radio:** adjust alignment ([8cc37fa](https://github.com/baloise/design-system/commit/8cc37fa55281d1a6f5118f888cae8b22992a380a))
+- **table:** set text align default to left and add spacing for buttons ([015a81e](https://github.com/baloise/design-system/commit/015a81e4c86cd9588538de20c0457fa0225d4e22))
+- use default cursor for disabled controls ([2668fb5](https://github.com/baloise/design-system/commit/2668fb51d74b8da8c6172e889e6462083ee5a528))
+- **viewport:** set tablet breakpoint to 768px ([dd4e0b6](https://github.com/baloise/design-system/commit/dd4e0b618abd6a5d7a501124f03d567167c9ae98))
+
+## [10.9.0](https://github.com/baloise/design-system/compare/v10.8.4...v10.9.0) (2022-04-12)
+
+### Features
+
+- **form:** add prop readonly ([03ff671](https://github.com/baloise/design-system/commit/03ff671b7ca90fa5da388a9554dd51ca8f6e5dcc))
+- **icon:** add new icon logout, youtube and web ([ec7bdbf](https://github.com/baloise/design-system/commit/ec7bdbf7a75c5928306d7f79f5e694f26d4db502))
+- **popover:** add prop expanded to use the fullwidth ([9b4dfa6](https://github.com/baloise/design-system/commit/9b4dfa607af52402e7758ac0ef38b30224a4e20c))
 
 ### [10.8.4](https://github.com/baloise/design-system/compare/v10.8.3...v10.8.4) (2022-04-11)
 
-
 ### Bug Fixes
 
-* attach controllers to the window ([f946e22](https://github.com/baloise/design-system/commit/f946e22ae077ab6068bdce926e46cf56f7b5c3e1))
-* change spacing variables to use rem instead of px ([7b4a1b7](https://github.com/baloise/design-system/commit/7b4a1b723f6b98392cca95885379bb44b156babb))
-* **modal:** hide close button when modal is not closable ([2c57eb9](https://github.com/baloise/design-system/commit/2c57eb93abd4cd2c8956fa367c8fdf5353def19a))
-* trigger globalscript in bal-app ([6d0070a](https://github.com/baloise/design-system/commit/6d0070ac26b957642ae39abc2061507a89733b81))
-
-### 10.8.2 (2022-04-07)
-
-
+- attach controllers to the window ([f946e22](https://github.com/baloise/design-system/commit/f946e22ae077ab6068bdce926e46cf56f7b5c3e1))
+- change spacing variables to use rem instead of px ([7b4a1b7](https://github.com/baloise/design-system/commit/7b4a1b723f6b98392cca95885379bb44b156babb))
+- **modal:** hide close button when modal is not closable ([2c57eb9](https://github.com/baloise/design-system/commit/2c57eb93abd4cd2c8956fa367c8fdf5353def19a))
+- trigger globalscript in bal-app ([6d0070a](https://github.com/baloise/design-system/commit/6d0070ac26b957642ae39abc2061507a89733b81))
 
 ### [10.8.3](https://github.com/baloise/design-system/compare/v10.8.2...v10.8.3) (2022-04-07)
 
-
 ### Bug Fixes
 
-* **datepicker:** enable locale typing ([2ed6004](https://github.com/baloise/design-system/commit/2ed60043cf32238595b8a7515f75a8176f30f49e))
-
-
+- **datepicker:** enable locale typing ([2ed6004](https://github.com/baloise/design-system/commit/2ed60043cf32238595b8a7515f75a8176f30f49e))
 
 ### [10.8.2](https://github.com/baloise/design-system/compare/v10.8.1...v10.8.2) (2022-04-07)
 
-
 ### Bug Fixes
 
-* **testing:** wait until ce is ready ([a8f7531](https://github.com/baloise/design-system/commit/a8f7531f51938a5ee02eac1706e615e82a63d330))
-
-
+- **testing:** wait until ce is ready ([a8f7531](https://github.com/baloise/design-system/commit/a8f7531f51938a5ee02eac1706e615e82a63d330))
 
 ### [10.8.1](https://github.com/baloise/design-system/compare/v10.8.0...v10.8.1) (2022-04-06)
 
-
 ### Bug Fixes
 
-* add es5 build to support no module scripts ([5daf384](https://github.com/baloise/design-system/commit/5daf38499626f55778c07d214d3dadfcb09b4303))
-
-
+- add es5 build to support no module scripts ([5daf384](https://github.com/baloise/design-system/commit/5daf38499626f55778c07d214d3dadfcb09b4303))
 
 ## [10.8.0](https://github.com/baloise/design-system/compare/v10.7.3...v10.8.0) (2022-04-04)
 
-
 ### Features
 
-* **snackbar:** button can also be a link ([57ba176](https://github.com/baloise/design-system/commit/57ba1763332d54b6d2667ba52a6ffe062b759bef))
-* **tabs:** can have a bottom border ([e4e6967](https://github.com/baloise/design-system/commit/e4e69675eba25b354d5d325978df56fd96ac11d4))
-* **testing:** add command to find open modal ([7783760](https://github.com/baloise/design-system/commit/778376011042c3c192f0e7e30f551d1a31886d55))
-
+- **snackbar:** button can also be a link ([57ba176](https://github.com/baloise/design-system/commit/57ba1763332d54b6d2667ba52a6ffe062b759bef))
+- **tabs:** can have a bottom border ([e4e6967](https://github.com/baloise/design-system/commit/e4e69675eba25b354d5d325978df56fd96ac11d4))
+- **testing:** add command to find open modal ([7783760](https://github.com/baloise/design-system/commit/778376011042c3c192f0e7e30f551d1a31886d55))
 
 ### Bug Fixes
 
-* **modal:** body and header can be used in nested elements ([dbda58b](https://github.com/baloise/design-system/commit/dbda58b47017250fc8b472d7e08e34fd5489861c))
-* **modal:** reduce spacing header ([924236d](https://github.com/baloise/design-system/commit/924236d3d1a22fd678702c6d59f30b3bc1fc9bef))
-* **select:** basic select opens and closes on input click ([21aa983](https://github.com/baloise/design-system/commit/21aa98386cc74fb93e0dab750f62d438a057521b))
-* **testing:** fix input selector for number-inputs ([dc643d7](https://github.com/baloise/design-system/commit/dc643d79d853db66d420db1c8e3ff415db4610fc))
-
-
+- **modal:** body and header can be used in nested elements ([dbda58b](https://github.com/baloise/design-system/commit/dbda58b47017250fc8b472d7e08e34fd5489861c))
+- **modal:** reduce spacing header ([924236d](https://github.com/baloise/design-system/commit/924236d3d1a22fd678702c6d59f30b3bc1fc9bef))
+- **select:** basic select opens and closes on input click ([21aa983](https://github.com/baloise/design-system/commit/21aa98386cc74fb93e0dab750f62d438a057521b))
+- **testing:** fix input selector for number-inputs ([dc643d7](https://github.com/baloise/design-system/commit/dc643d79d853db66d420db1c8e3ff415db4610fc))
 
 ### [10.7.3](https://github.com/baloise/design-system/compare/v10.7.2...v10.7.3) (2022-03-30)
 
-
 ### Bug Fixes
 
-* **datepicker:** adds missing days to february ([31a399a](https://github.com/baloise/design-system/commit/31a399a1f6b0e4b12fb770730e22a5231e4737dd))
-* **datepicker:** adjust spacing to level 5 ([ca45062](https://github.com/baloise/design-system/commit/ca45062ec94d84cd9e9bfc22af1a5280263ff0a9))
-* **file-upload:** label text breaks if to long ([4c66172](https://github.com/baloise/design-system/commit/4c66172b6a3d525a54b4f4add12939ec61de8c5b))
-* **font:** move css files to a css folder ([8e20378](https://github.com/baloise/design-system/commit/8e203782ae556b17b179409f5ca700e17eb32676))
-* **hint:** adjust spacing to level 5 ([5bc5f21](https://github.com/baloise/design-system/commit/5bc5f213cf42e5da741309edc00450198800b5bd))
-* **hint:** close label is now optional ([04cd2b3](https://github.com/baloise/design-system/commit/04cd2b3dd962086f2ce2a3780d7e9606cc92312c))
-* **modal:** adjust spacing to level 5 ([59b8630](https://github.com/baloise/design-system/commit/59b86303fb4cf88a089a2ebe8ce1989d38660b27))
-* **notification:** adjust spacing to level 5 ([d61024c](https://github.com/baloise/design-system/commit/d61024c72480948956053878a1363a7c9cad4a46))
-* **sheet:** adjust spacing to level 5 ([454ca7e](https://github.com/baloise/design-system/commit/454ca7e4704c32e283f36dfa58e0b2cc34e39032))
-* **snackbar:** adjust spacing to level 5 ([bb63127](https://github.com/baloise/design-system/commit/bb63127b7fdb713824659dcad72ad4a200b4830b))
+- **datepicker:** adds missing days to february ([31a399a](https://github.com/baloise/design-system/commit/31a399a1f6b0e4b12fb770730e22a5231e4737dd))
+- **datepicker:** adjust spacing to level 5 ([ca45062](https://github.com/baloise/design-system/commit/ca45062ec94d84cd9e9bfc22af1a5280263ff0a9))
+- **file-upload:** label text breaks if to long ([4c66172](https://github.com/baloise/design-system/commit/4c66172b6a3d525a54b4f4add12939ec61de8c5b))
+- **font:** move css files to a css folder ([8e20378](https://github.com/baloise/design-system/commit/8e203782ae556b17b179409f5ca700e17eb32676))
+- **hint:** adjust spacing to level 5 ([5bc5f21](https://github.com/baloise/design-system/commit/5bc5f213cf42e5da741309edc00450198800b5bd))
+- **hint:** close label is now optional ([04cd2b3](https://github.com/baloise/design-system/commit/04cd2b3dd962086f2ce2a3780d7e9606cc92312c))
+- **modal:** adjust spacing to level 5 ([59b8630](https://github.com/baloise/design-system/commit/59b86303fb4cf88a089a2ebe8ce1989d38660b27))
+- **notification:** adjust spacing to level 5 ([d61024c](https://github.com/baloise/design-system/commit/d61024c72480948956053878a1363a7c9cad4a46))
+- **sheet:** adjust spacing to level 5 ([454ca7e](https://github.com/baloise/design-system/commit/454ca7e4704c32e283f36dfa58e0b2cc34e39032))
+- **snackbar:** adjust spacing to level 5 ([bb63127](https://github.com/baloise/design-system/commit/bb63127b7fdb713824659dcad72ad4a200b4830b))
 
 ### [10.7.1](https://github.com/baloise/design-system/compare/v10.7.0...v10.7.1) (2022-03-29)
 
-
 ### Bug Fixes
 
-* **modal:** set space as optional ([de62b2d](https://github.com/baloise/design-system/commit/de62b2dcce59e2966bd8e2b352c7f5b2f8e3e186))
+- **modal:** set space as optional ([de62b2d](https://github.com/baloise/design-system/commit/de62b2dcce59e2966bd8e2b352c7f5b2f8e3e186))
 
 ## [10.7.0](https://github.com/baloise/design-system/compare/v10.6.3...v10.7.0) (2022-03-29)
 
-
 ### Features
 
-* add contract-number mask in bal-input component ([e4ebdb6](https://github.com/baloise/design-system/commit/e4ebdb68d2dd6d08c37a0f706cc41dc60aee7a3c))
-* add format offer option for bal-input ([bec0c3e](https://github.com/baloise/design-system/commit/bec0c3e46fce102299fbef957e6259a782d923a7))
-* **modal:** add space property ([103348d](https://github.com/baloise/design-system/commit/103348d01ab1d2f49de73f3d9d042842e2c4f85c))
-
+- add contract-number mask in bal-input component ([e4ebdb6](https://github.com/baloise/design-system/commit/e4ebdb68d2dd6d08c37a0f706cc41dc60aee7a3c))
+- add format offer option for bal-input ([bec0c3e](https://github.com/baloise/design-system/commit/bec0c3e46fce102299fbef957e6259a782d923a7))
+- **modal:** add space property ([103348d](https://github.com/baloise/design-system/commit/103348d01ab1d2f49de73f3d9d042842e2c4f85c))
 
 ### Bug Fixes
 
-* **card:** subtitle can have diffrent color and be bold ([be858a8](https://github.com/baloise/design-system/commit/be858a85da35315aba0f4301dd5253bcd5474667))
-* **testing:** add missing hint commands ([547f420](https://github.com/baloise/design-system/commit/547f420b3f8d5b5468f9f9eae00349cafcda835b))
+- **card:** subtitle can have diffrent color and be bold ([be858a8](https://github.com/baloise/design-system/commit/be858a85da35315aba0f4301dd5253bcd5474667))
+- **testing:** add missing hint commands ([547f420](https://github.com/baloise/design-system/commit/547f420b3f8d5b5468f9f9eae00349cafcda835b))
 
 ### [10.6.3](https://github.com/baloise/design-system/compare/v10.6.1...v10.6.3) (2022-03-24)
 
 ### 10.6.1 (2022-03-24)
-
-
 
 ### [10.7.2](https://github.com/baloise/design-system/compare/v10.7.1...v10.7.2) (2022-03-29)
 

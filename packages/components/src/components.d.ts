@@ -1145,6 +1145,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` the input value has 0 as default value
+         */
+        "exactNumber": boolean;
+        /**
           * Returns the native `<input>` element used under the hood.
          */
         "getInputElement": () => Promise<HTMLInputElement>;
@@ -1701,6 +1705,8 @@ export namespace Components {
          */
         "size": Props.BalTagSize;
         "transparent": boolean;
+    }
+    interface BalTagGroup {
     }
     interface BalText {
         /**
@@ -2383,6 +2389,12 @@ declare global {
         prototype: HTMLBalTagElement;
         new (): HTMLBalTagElement;
     };
+    interface HTMLBalTagGroupElement extends Components.BalTagGroup, HTMLStencilElement {
+    }
+    var HTMLBalTagGroupElement: {
+        prototype: HTMLBalTagGroupElement;
+        new (): HTMLBalTagGroupElement;
+    };
     interface HTMLBalTextElement extends Components.BalText, HTMLStencilElement {
     }
     var HTMLBalTextElement: {
@@ -2495,6 +2507,7 @@ declare global {
         "bal-table": HTMLBalTableElement;
         "bal-tabs": HTMLBalTabsElement;
         "bal-tag": HTMLBalTagElement;
+        "bal-tag-group": HTMLBalTagGroupElement;
         "bal-text": HTMLBalTextElement;
         "bal-textarea": HTMLBalTextareaElement;
         "bal-timeinput": HTMLBalTimeinputElement;
@@ -3680,6 +3693,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If `true` the input value has 0 as default value
+         */
+        "exactNumber"?: boolean;
+        /**
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
@@ -4269,6 +4286,8 @@ declare namespace LocalJSX {
         "size"?: Props.BalTagSize;
         "transparent"?: boolean;
     }
+    interface BalTagGroup {
+    }
     interface BalText {
         /**
           * If `true` the text is bold
@@ -4530,6 +4549,7 @@ declare namespace LocalJSX {
         "bal-table": BalTable;
         "bal-tabs": BalTabs;
         "bal-tag": BalTag;
+        "bal-tag-group": BalTagGroup;
         "bal-text": BalText;
         "bal-textarea": BalTextarea;
         "bal-timeinput": BalTimeinput;
@@ -4627,6 +4647,7 @@ declare module "@stencil/core" {
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
+            "bal-tag-group": LocalJSX.BalTagGroup & JSXBase.HTMLAttributes<HTMLBalTagGroupElement>;
             "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
             "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
             "bal-timeinput": LocalJSX.BalTimeinput & JSXBase.HTMLAttributes<HTMLBalTimeinputElement>;

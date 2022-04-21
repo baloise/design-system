@@ -1,30 +1,5 @@
 @charset "utf-8";
 
-@import 'utilities/_all';
-@import 'global/all';
-
-bal-app,
-.bal-app {
-  position: relative;
-  display: block;
-
-  * {
-    box-sizing: border-box;
-    text-rendering: optimizeLegibility;
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  @import 'base/_all';
-  @import 'elements/_all';
-  @import 'form/_all';
-  @import 'grid/_all';
-  @import 'helpers/_all';
-  @import 'layout/_all';
-  @import 'components/_all';
-}
-
-.bal-modal-active {
-  overflow: hidden;
-}
+@import 'global.base.scss';
+@import 'global.utilities.scss';
+@import 'global.core.scss';

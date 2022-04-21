@@ -6,6 +6,6 @@ export class DatepickerPage {
   datepickerRange = byTestId('datepicker-range')
 
   open() {
-    cy.visit('/components/form/bal-datepicker')
+    cy.page('/components/form/bal-datepicker')
   }
 }

@@ -1,11 +1,19 @@
-import { selectors } from '../helpers'
+import { log, selectors, wrapOptions } from '../helpers'
 
 Cypress.Commands.add(
   'balFieldFindHint',
   {
     prevSubject: true,
   },
-  subject => {
-    return cy.wrap(subject).find(selectors.field.hint)
+  (subject, options) => {
+    const o = wrapOptions(options)
+    return cy
+      .wrapComponent(subject, o)
+      .find(selectors.field.hint, o)
+      .then($el => {
+        log('balFieldFindHint', '', $el, options)
+        return $el
+      })
+      .waitForComponents()
   },
 )

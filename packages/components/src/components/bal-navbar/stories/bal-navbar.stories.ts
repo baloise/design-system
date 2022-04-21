@@ -46,7 +46,10 @@ export const Basic = args => ({
 </bal-navbar>`,
 })
 Basic.args = {}
-Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
 
 export const NavbarCombi = args => ({
   components: {
@@ -125,4 +128,7 @@ export const NavbarCombi = args => ({
 </bal-navbar>`,
 })
 NavbarCombi.args = {}
-NavbarCombi.parameters = { ...component.sourceCode(NavbarCombi), controls: { exclude: excludedControls } }
+NavbarCombi.parameters = {
+  ...component.sourceCode(NavbarCombi),
+  controls: { exclude: excludedControls },
+}

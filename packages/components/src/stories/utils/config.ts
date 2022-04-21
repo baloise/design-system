@@ -30,11 +30,12 @@ export const configArgTypes = {
   },
 }
 
-export const setConfig = (args: any) =>
+export const setConfig = (args: any) => {
   initialize({
     region: args.region,
     language: args.language,
   })
+}
 
 export const reduceConfigArgs = (args: any) =>
   Object.keys(args)

@@ -12,7 +12,13 @@ import {
 
 const component = BalComponentStory({
   component: BalList,
-  subcomponents: { BalListItem, BalListItemContent, BalListItemIcon, BalListItemTitle, BalListItemSubtitle },
+  subcomponents: {
+    BalListItem,
+    BalListItemContent,
+    BalListItemIcon,
+    BalListItemTitle,
+    BalListItemSubtitle,
+  },
   docs,
   status: 'stable',
   args: {

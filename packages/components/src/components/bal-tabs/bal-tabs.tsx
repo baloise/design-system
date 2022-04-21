@@ -81,7 +81,8 @@ export class Tabs {
   /**
    * Emitted when the action button has clicked
    */
-  @Event({ eventName: 'balActionClick' }) actionHasClicked!: EventEmitter<MouseEvent>
+  @Event({ eventName: 'balActionClick' })
+  actionHasClicked!: EventEmitter<MouseEvent>
 
   connectedCallback() {
     this.debounceChanged()

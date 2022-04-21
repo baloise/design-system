@@ -1,3 +1,5 @@
+import { deepReady, Platforms } from '@baloise/design-system-next-components'
+
 /**
  * Helper fn to identify the element/component
  */
@@ -114,17 +116,63 @@ export const selectors = {
 /**
  * Executes a command on a child element and wraps back to the main element/component
  */
-import { deepReady } from '@baloise/design-system-next-components'
+export const wrapOptions = (options: any) => ({ log: false, ...options })
 
-export const wrapRoot = <E = unknown>(
-  element: E,
-  selector: string,
+export const wrapCommand = (
+  displayName: string,
+  element: Cypress.Chainable<JQuery>,
+  message: any,
   fn: ($el: any) => Cypress.Chainable<JQuery> | void,
 ) => {
-  return cy
-    .wrap(element)
-    .then(($el: any) => deepReady($el[0]))
-    .find(selector)
-    .then($el => fn($el))
-    .wrap(element)
+  return (selector: string) => {
+    return cy
+      .wrapComponent(element as any, { log: false })
+      .find(selector, { log: false })
+      .then($el => {
+        console.log($el)
+        Cypress.log({
+          type: 'parent',
+          $el,
+          displayName,
+          message,
+        })
+        if (displayName !== 'contains') {
+          return fn($el)
+        }
+        fn($el)
+      })
+      .wrapComponent(element as any, { log: false })
+  }
+}
+
+export const shouldLog = (options?: Partial<Cypress.Loggable>) => options === undefined || options.log !== false
+export const log = (displayName: string, message: any = '', $el: any, options?: Partial<Cypress.Loggable>) => {
+  if (shouldLog(options)) {
+    Cypress.log({
+      type: 'parent',
+      $el: $el as any,
+      displayName,
+      message,
+    })
+  }
+}
+
+export const areComponentsReady = ($el: any) => {
+  const queue = []
+  for (let index = 0; index < $el.length; index++) {
+    const element = $el[index]
+    queue.push(deepReady(element))
+  }
+  return Promise.all(queue)
+}
+
+export const testOnPlatforms = (platforms: Platforms[], fn: any) => {
+  for (let index = 0; index < platforms.length; index++) {
+    const platform = platforms[index]
+
+    context(`on ${platform}`, () => {
+      beforeEach(() => cy.platform(platform))
+      fn()
+    })
+  }
 }

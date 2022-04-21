@@ -1,24 +1,43 @@
-import { byTestId } from '../../../testing/src'
+import { Props } from '../../src'
+import { testOnPlatforms } from '../../../testing/src'
 
 describe('Tag', () => {
-  const basicTag = byTestId('tag')
-  const closableTag = byTestId('closable-tag')
+  testOnPlatforms(['mobile', 'desktop'], () => {
+    beforeEach(() => cy.page('/components/bal-tag/test/bal-tag.cy.html'))
 
-  before(() => cy.visitPage('/components/bal-tag/test/bal-tag.cy.html'))
+    it('should have content', () => {
+      cy.getByTestId('tag').contains('My tag')
+    })
 
-  it('should have content', () => {
-    cy.get(basicTag).contains('My tag')
+    it('should have prop color', () => {
+      cy.getByTestId('tag').should('have.attr', 'color', 'danger')
+    })
+
+    it('should fire close event', () => {
+      cy.getByTestId('closable-tag').spyEvent('balCloseClick').find('bal-close').click()
+
+      cy.get('@balCloseClick').should('have.been.calledOnce')
+    })
   })
 
-  it('should have prop color', () => {
-    cy.get(basicTag).should('have.attr', 'color', 'danger')
-  })
+  context('a11y', () => {
+    before(() => cy.platform('desktop').pageA11y('/components/bal-tag/test/bal-tag.cy.html'))
 
-  it('should fire close event', () => {
-    cy.get(closableTag)
-      .then($el => $el.on('balCloseClick', cy.stub().as('balCloseClick')))
-      .find('bal-close')
-      .click()
-    cy.get('@balCloseClick').should('have.been.called')
+    describe('have the AA standard', () => {
+      it('basic', () => {
+        cy.getByTestId('tag').removeProperty('color').testA11y()
+      })
+
+      testColorA11y(['danger', 'info', 'primary', 'success', 'warning'])
+    })
   })
 })
+
+function testColorA11y(colors: Props.BalTagColor[]) {
+  for (let index = 0; index < colors.length; index++) {
+    const color = colors[index]
+    it(`color ${color}`, () => {
+      cy.getByTestId('tag').setProperty('color', color).testA11y()
+    })
+  }
+}

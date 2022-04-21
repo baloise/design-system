@@ -44,7 +44,7 @@
     "@types/chai": "^4.2.22",
     "@types/jquery": "^3.5.6",
     "@types/node": "^14.17.21",
-    "cypress": "^8.5.0",
+    "cypress": "^9.5.4",
     "cypress-file-upload": "^5.0.8",
     "http-server": "^13.0.2",
     "rimraf": "^3.0.2",

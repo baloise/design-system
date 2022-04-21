@@ -40,7 +40,13 @@ export default component.story
 const excludedControls = ['name']
 
 export const Basic = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   setup: () => ({ args }),
   template: `
   <bal-radio-group v-bind="args" v-model="args.value">
@@ -51,10 +57,19 @@ export const Basic = args => ({
   </bal-radio-group>`,
 })
 Basic.args = {}
-Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
 
 export const FieldControl = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
@@ -71,7 +86,10 @@ export const FieldControl = args => ({
 FieldControl.args = {
   value: '2',
 }
-FieldControl.parameters = { ...component.sourceCode(FieldControl), controls: { exclude: excludedControls } }
+FieldControl.parameters = {
+  ...component.sourceCode(FieldControl),
+  controls: { exclude: excludedControls },
+}
 
 export const Vertical = FieldControl.bind({})
 Vertical.args = {
@@ -115,7 +133,10 @@ export const RadioBoxes = args => ({
 RadioBoxes.args = {
   value: '1',
 }
-RadioBoxes.parameters = { ...component.sourceCode(RadioBoxes), controls: { exclude: excludedControls } }
+RadioBoxes.parameters = {
+  ...component.sourceCode(RadioBoxes),
+  controls: { exclude: excludedControls },
+}
 
 export const RadioList = args => ({
   components: { ...component.components },
@@ -144,10 +165,19 @@ export const RadioList = args => ({
 RadioList.args = {
   value: '1',
 }
-RadioList.parameters = { ...component.sourceCode(RadioList), controls: { exclude: excludedControls } }
+RadioList.parameters = {
+  ...component.sourceCode(RadioList),
+  controls: { exclude: excludedControls },
+}
 
 export const SelectButton = args => ({
-  components: { ...component.components, BalField, BalFieldLabel, BalFieldControl, BalFieldMessage },
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldLabel,
+    BalFieldControl,
+    BalFieldMessage,
+  },
   setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
@@ -165,10 +195,19 @@ SelectButton.args = {
   value: '1',
   interface: 'select-button',
 }
-SelectButton.parameters = { ...component.sourceCode(SelectButton), controls: { exclude: excludedControls } }
+SelectButton.parameters = {
+  ...component.sourceCode(SelectButton),
+  controls: { exclude: excludedControls },
+}
 
 export const YesNo = args => ({
-  components: { ...component.components, BalField, BalFieldLabel, BalFieldControl, BalFieldMessage },
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldLabel,
+    BalFieldControl,
+    BalFieldMessage,
+  },
   setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
@@ -186,4 +225,7 @@ YesNo.args = {
   value: false,
   interface: 'select-button',
 }
-YesNo.parameters = { ...component.sourceCode(YesNo), controls: { exclude: excludedControls } }
+YesNo.parameters = {
+  ...component.sourceCode(YesNo),
+  controls: { exclude: excludedControls },
+}

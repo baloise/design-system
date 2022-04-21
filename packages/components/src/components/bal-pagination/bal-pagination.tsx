@@ -34,7 +34,8 @@ export class Pagination {
   /**
    * Triggers when a page change happens
    */
-  @Event({ eventName: 'balChange' }) balChangeEventEmitter!: EventEmitter<number>
+  @Event({ eventName: 'balChange' })
+  balChangeEventEmitter!: EventEmitter<number>
 
   componentWillLoad() {
     this._value = this.value

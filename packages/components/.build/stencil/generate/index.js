@@ -6,6 +6,7 @@ const file = require('../../../../../.build/file')
 const log = require('../../../../../.build/log')
 
 const COMPONENT_PATH = path.join(__dirname, '../../../src/components')
+const CYPRESS_PATH = path.join(__dirname, '../../../cypress/integration')
 
 const toClassName = tag => toPascalCase(tag.replace('bal-', ''))
 
@@ -69,7 +70,8 @@ const toStoryId = value => {
       choices: [
         { title: 'Storybook (/stories)', value: 'story', selected: true },
         { title: 'Stylesheet (.scss)', value: 'style', selected: true },
-        { title: 'E2E Test (.e2e.ts)', value: 'test', selected: true },
+        { title: 'E2E Test (/test)', value: 'test', selected: true },
+        { title: 'Unit Test (/test)', value: 'unit', selected: false },
       ],
     },
   ])
@@ -90,7 +92,13 @@ const toStoryId = value => {
   }
 
   if (response.extras.includes('test')) {
-    await file.write(path.join(componentFolder, `test/${tag}.e2e.ts`), TestTemplate(tag))
+    await file.write(path.join(componentFolder, `test/${tag}.cy.html`), TestTemplate(tag))
+    await file.write(path.join(componentFolder, `test/${tag}.visual.html`), TestTemplate(tag))
+    await file.write(path.join(CYPRESS_PATH, `${tag.replace('bal-', '')}.spec.ts`), TestScriptTemplate(tag))
+  }
+
+  if (response.extras.includes('unit')) {
+    await file.write(path.join(componentFolder, `test/${tag}.spec.ts`), TestUnitTemplate(tag))
   }
 
   if (response.extras.includes('story')) {
@@ -145,15 +153,46 @@ ${tag} {
 }
 
 function TestTemplate(tag) {
-  return `import { newE2EPage } from '@stencil/core/testing'
+  return `<!DOCTYPE html>
+  <html dir="ltr" lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      <script type="module" src="/build/design-system-components.esm.js"></script>
+      <script nomodule src="/build/design-system-components.js"></script>
+    </head>
+    <body>
+      <bal-doc-app>
+        <main class="container py-5">
+          <${tag} data-testid="${tag.replace('bal-', '')}"></${tag}>
+        </main>
+      </bal-doc-app>
+    </body>
+  </html>
 
-describe('${tag}', () => {
-  it('renders', async () => {
-    const page = await newE2EPage()
-    await page.setContent('<${tag}></${tag}>')
+`
+}
 
-    const element = await page.find('${tag}')
-    expect(element).toHaveClass('hydrated')
+function TestScriptTemplate(tag) {
+  return `import { byTestId } from '../../../testing/src'
+
+describe('${toClassName(tag)}', () => {
+  const basic = byTestId('${tag.replace('bal-', '')}')
+
+  before(() => cy.visitPage('/components/${tag}/test/${tag}.cy.html'))
+
+  it('should have content', () => {
+    cy.get(basic).contains('Hello World')
+  })
+})
+`
+}
+
+function TestUnitTemplate(tag) {
+  return `describe('${toClassName(tag)}', () => {
+  it('should be true', () => {
+    expect(true)
   })
 })
 `
@@ -191,21 +230,57 @@ function DocReadmeTemplate(filePath) {
   return `import { Story, Canvas, Description } from '@storybook/addon-docs'
 import readme from '../readme.md'
 
-<span id="story--components-${storyId}--basic" style={{ opacity: 0 }}></span>
+<bal-doc-banner id="story--components-${storyId}--basic">${toTitle(tag.replace('bal-', ''))}</bal-doc-banner>
 
-# ${toTitle(tag.replace('bal-', ''))}
+<bal-doc-tabs>
+  <a href="#story--components-accordion--basic">Overview</a>
+  {/* <a href="#examples">Examples</a> */}
+  <a href="#component-api">API</a>
+  {/* <a href="#usage">Usage</a> */}
+  <a href="#integration">Integration</a>
+  <a href="#testing">Testing</a>
+</bal-doc-tabs>
 
+<bal-doc-lead>
 Todo add some description to the component and its purpose
+</bal-doc-lead>
 
-<Canvas>
+<Canvas withSource="open">
   <Story id="components-${storyId}--basic" />
 </Canvas>
+
+<bal-doc-app>
+  <bal-button-group class="mb-6" position="center">
+    <a class="button is-info is-outlined" href="?path=/story/components-${storyId}--basic">
+      Go to playground (Canvas)
+    </a>
+  </bal-button-group>
+</bal-doc-app>
 
 ## Component Api
 
 <Description markdown={readme} />
 
 <br />
+
+## Integration
+
+This documentation explains how to implement and use Baloise Design System components across different technologies.
+
+<bal-doc-link-list>
+  <a href="?path=/docs/getting-started-html5-overview--page">
+    <bal-doc-link-list-item template="html5"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-vue-overview--page">
+    <bal-doc-link-list-item template="vue"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-angular-overview--page">
+    <bal-doc-link-list-item template="angular"></bal-doc-link-list-item>
+  </a>
+  <a href="?path=/docs/getting-started-react-overview--page">
+    <bal-doc-link-list-item template="react"></bal-doc-link-list-item>
+  </a>
+</bal-doc-link-list>
 
 import testing from './testing.md'
 

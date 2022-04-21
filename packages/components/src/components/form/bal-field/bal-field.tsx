@@ -47,15 +47,17 @@ export class Field {
   @Watch('loading')
   @Watch('inverted')
   restHandler() {
-    this.notifyComponents<{ readonly: boolean; disabled: boolean; loading: boolean; inverted: boolean }>(
-      [...this.inputElements, ...this.formControlElement],
-      input => {
-        input.readonly = this.readonly
-        input.disabled = this.disabled
-        input.loading = this.loading
-        input.inverted = this.inverted
-      },
-    )
+    this.notifyComponents<{
+      readonly: boolean
+      disabled: boolean
+      loading: boolean
+      inverted: boolean
+    }>([...this.inputElements, ...this.formControlElement], input => {
+      input.readonly = this.readonly
+      input.disabled = this.disabled
+      input.loading = this.loading
+      input.inverted = this.inverted
+    })
   }
 
   private notifyComponents<T>(selectors: string[], callback: (component: T) => void) {

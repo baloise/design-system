@@ -32,4 +32,39 @@ $blue: yellow;
 @import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
 ```
 
+To be able to have two different themes create two separate stylesheets. Lets call the first one blue.scss and the other yellow.scss.
+It is important that at the end we have 2 css files.
+
+**blue.scss**
+
+```scss
+$font-path: '~assets/fonts';
+
+@import 'node_modules/@baloise/design-system-components/src/styles/global.base';
+@import 'node_modules/@baloise/design-system-components/src/styles/global.utilities';
+
+.app-bg-blue {
+  @import 'node_modules/@baloise/design-system-components/src/styles/global.core';
+}
+```
+
+**yellow.scss**
+
+In the yellow stylesheet we change the scss variables like that.
+
+```scss
+$font-path: '~assets/fonts';
+$blue: #fcc419;
+$cyan: #ff922b;
+
+@import 'node_modules/@baloise/design-system-components/src/styles/global.base';
+@import 'node_modules/@baloise/design-system-components/src/styles/global.utilities';
+
+.app-bg-yellow {
+  @import 'node_modules/@baloise/design-system-components/src/styles/global.core';
+}
+```
+
+To change the style change the css class on the body to `app-bg-blue` or `app-bg-yellow`.
+
 <bal-doc-github link="/stories/implementation/21-customize.stories.mdx"></bal-doc-github>

@@ -42,7 +42,13 @@ export default component.story
 const excludedControls = ['name']
 
 export const Basic = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   setup: () => ({ args }),
   template: `
   <bal-checkbox v-bind="args" v-model="args.value">{{ args.content }}</bal-checkbox>`,
@@ -56,7 +62,13 @@ Basic.parameters = {
 }
 
 const FieldTemplate = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
@@ -73,7 +85,13 @@ const FieldTemplate = args => ({
 })
 
 const GroupTemplate = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
@@ -96,7 +114,13 @@ const GroupTemplate = args => ({
 })
 
 const Template = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   setup: () => ({ args }),
   template: `
   <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">

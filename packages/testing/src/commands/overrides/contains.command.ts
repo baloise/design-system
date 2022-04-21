@@ -11,49 +11,57 @@ import {
   isText,
   isTextarea,
   isModal,
+  isDatepicker,
   selectors,
-  wrapRoot,
+  wrapCommand,
+  wrapOptions,
 } from '../helpers'
 
-Cypress.Commands.overwrite('contains', (originalFn, element: Cypress.Chainable<JQuery>, content, options) => {
+Cypress.Commands.overwrite('contains', (originalFn: any, element: any, content, options) => {
+  const command = wrapCommand('contains', element, content, $el => originalFn($el, content, wrapOptions(options)))
+
   if (isAccordion(element)) {
-    return wrapRoot(element, selectors.accordion.button, $el => originalFn($el, content, options))
+    return command(selectors.accordion.button)
   }
 
   if (isButton(element)) {
-    return wrapRoot(element, selectors.button.label, $el => originalFn($el, content, options))
+    return command(selectors.button.label)
   }
 
   if (isCheckbox(element)) {
-    return wrapRoot(element, selectors.checkbox.text, $el => originalFn($el, content, options))
+    return command(selectors.checkbox.text)
   }
 
   if (isInput(element) || isNumberInput(element)) {
-    return wrapRoot(element, selectors.input.main, $el => originalFn($el, content, options))
+    return command(selectors.input.main)
   }
 
   if (isTextarea(element)) {
-    return wrapRoot(element, selectors.textarea.main, $el => originalFn($el, content, options))
+    return command(selectors.textarea.main)
   }
 
   if (isRadio(element)) {
-    return wrapRoot(element, selectors.radio.text, $el => originalFn($el, content, options))
+    return command(selectors.radio.text)
   }
 
   if (isTag(element)) {
-    return wrapRoot(element, selectors.tag.text, $el => originalFn($el, content, options))
+    return command(selectors.tag.text)
   }
 
   if (isHeading(element) || isCardTitle(element)) {
-    return wrapRoot(element, selectors.heading.content, $el => originalFn($el, content, options))
+    return command(selectors.heading.content)
   }
 
   if (isText(element)) {
-    return wrapRoot(element, 'span', $el => originalFn($el, content, options))
+    return command('span')
   }
 
   if (isModal(element)) {
-    return wrapRoot(element, '.modal-card', $el => originalFn($el, content, options))
+    return command('.modal-card')
+  }
+
+  if (isDatepicker(element)) {
+    return command(selectors.datepicker.input)
   }
 
   return originalFn(element, content, options)

@@ -8,6 +8,6 @@ export class InputPage {
   inputSuffix = byTestId('input-suffix')
 
   open() {
-    cy.visit('/components/form/bal-input')
+    cy.page('/components/form/bal-input')
   }
 }
