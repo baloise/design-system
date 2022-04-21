@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.10.2](https://github.com/baloise/design-system/compare/v10.10.1...v10.10.2) (2022-04-21)
+
+
+### Bug Fixes
+
+* **tag:** add group component to BalTagModule ([db1eb99](https://github.com/baloise/design-system/commit/db1eb99ee06fe560cd9a1a43b86714fa041f1245))
+
+
+
 ### [10.10.1](https://github.com/baloise/design-system/compare/v10.10.0...v10.10.1) (2022-04-21)
 
 ### Bug Fixes
