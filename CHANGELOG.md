@@ -5,49 +5,26 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### [10.10.1](https://github.com/baloise/design-system/compare/v10.10.0...v10.10.1) (2022-04-21)
 
-
-### Features
-
-* **bal-number-input:** add exactNumber property to define 0 as a default value ([57b3abb](https://github.com/baloise/design-system/commit/57b3abb6b873ee9a0ca9589edecebb7c37b08603))
-* **breakpoint:** add isPlatform util ([a213e29](https://github.com/baloise/design-system/commit/a213e295ff0cc9a8c712239d65ef7910b839a296))
-* **testing:** add new custom commands and improve logging ([34f1be4](https://github.com/baloise/design-system/commit/34f1be446c2abca0eb7330dd96d665a33ca64c47))
-* **testing:** add new cypress commands ([86b05d9](https://github.com/baloise/design-system/commit/86b05d93a37016844c490ea18f7b0b2f0d950dcf))
-
-
 ### Bug Fixes
 
-* **card:** add auto height ([07c8f2d](https://github.com/baloise/design-system/commit/07c8f2d244360b71d638f2926784addf537f841c))
-* **card:** alignment for buttons and tags inside the card-title component ([09780bb](https://github.com/baloise/design-system/commit/09780bbb6e891265842906fb4693fe24f80b209f))
-* **card:** alignment for buttons and tags inside the card-title component ([a04193f](https://github.com/baloise/design-system/commit/a04193f79f192e4ed84435ddb4123e7c2cd8034a))
-* **data:** alignment horizontal ([cdfbf84](https://github.com/baloise/design-system/commit/cdfbf847a733d6925148039539c18453f8c7bb94))
-* **i18n:** notify component always ([05217a8](https://github.com/baloise/design-system/commit/05217a8e6213bcb5c98f7ba7581fd384061bf3c5))
-* simplify theme customization ([e90e095](https://github.com/baloise/design-system/commit/e90e09514cfc1164ceb04f1e968ca864da38c2bb))
-* simplify theme customization ([1e66023](https://github.com/baloise/design-system/commit/1e6602388dd6881402edeee8201982d8634f4227))
-
-### 10.9.1 (2022-04-13)
-
-
+- simplify theme customization ([e90e095](https://github.com/baloise/design-system/commit/e90e09514cfc1164ceb04f1e968ca864da38c2bb))
 
 ## [10.10.0](https://github.com/baloise/design-system/compare/v10.9.1...v10.10.0) (2022-04-21)
 
-
 ### Features
 
-* **bal-number-input:** add exactNumber property to define 0 as a default value ([57b3abb](https://github.com/baloise/design-system/commit/57b3abb6b873ee9a0ca9589edecebb7c37b08603))
-* **breakpoint:** add isPlatform util ([a213e29](https://github.com/baloise/design-system/commit/a213e295ff0cc9a8c712239d65ef7910b839a296))
-* **testing:** add new custom commands and improve logging ([34f1be4](https://github.com/baloise/design-system/commit/34f1be446c2abca0eb7330dd96d665a33ca64c47))
-* **testing:** add new cypress commands ([86b05d9](https://github.com/baloise/design-system/commit/86b05d93a37016844c490ea18f7b0b2f0d950dcf))
-
+- **bal-number-input:** add exactNumber property to define 0 as a default value ([57b3abb](https://github.com/baloise/design-system/commit/57b3abb6b873ee9a0ca9589edecebb7c37b08603))
+- **breakpoint:** add isPlatform util ([a213e29](https://github.com/baloise/design-system/commit/a213e295ff0cc9a8c712239d65ef7910b839a296))
+- **testing:** add new custom commands and improve logging ([34f1be4](https://github.com/baloise/design-system/commit/34f1be446c2abca0eb7330dd96d665a33ca64c47))
+- **testing:** add new cypress commands ([86b05d9](https://github.com/baloise/design-system/commit/86b05d93a37016844c490ea18f7b0b2f0d950dcf))
 
 ### Bug Fixes
 
-* **card:** add auto height ([07c8f2d](https://github.com/baloise/design-system/commit/07c8f2d244360b71d638f2926784addf537f841c))
-* **card:** alignment for buttons and tags inside the card-title component ([09780bb](https://github.com/baloise/design-system/commit/09780bbb6e891265842906fb4693fe24f80b209f))
-* **card:** alignment for buttons and tags inside the card-title component ([a04193f](https://github.com/baloise/design-system/commit/a04193f79f192e4ed84435ddb4123e7c2cd8034a))
-* **data:** alignment horizontal ([cdfbf84](https://github.com/baloise/design-system/commit/cdfbf847a733d6925148039539c18453f8c7bb94))
-* **i18n:** notify component always ([05217a8](https://github.com/baloise/design-system/commit/05217a8e6213bcb5c98f7ba7581fd384061bf3c5))
-
-
+- **card:** add auto height ([07c8f2d](https://github.com/baloise/design-system/commit/07c8f2d244360b71d638f2926784addf537f841c))
+- **card:** alignment for buttons and tags inside the card-title component ([09780bb](https://github.com/baloise/design-system/commit/09780bbb6e891265842906fb4693fe24f80b209f))
+- **card:** alignment for buttons and tags inside the card-title component ([a04193f](https://github.com/baloise/design-system/commit/a04193f79f192e4ed84435ddb4123e7c2cd8034a))
+- **data:** alignment horizontal ([cdfbf84](https://github.com/baloise/design-system/commit/cdfbf847a733d6925148039539c18453f8c7bb94))
+- **i18n:** notify component always ([05217a8](https://github.com/baloise/design-system/commit/05217a8e6213bcb5c98f7ba7581fd384061bf3c5))
 
 ### [10.9.1](https://github.com/baloise/design-system/compare/v10.9.0...v10.9.1) (2022-04-13)
 
