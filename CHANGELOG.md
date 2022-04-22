@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.10.5](https://github.com/baloise/design-system/compare/v10.10.4...v10.10.5) (2022-04-22)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 ### [10.10.4](https://github.com/baloise/design-system/compare/v10.10.3...v10.10.4) (2022-04-22)
 
 
