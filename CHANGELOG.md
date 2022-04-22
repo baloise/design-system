@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.10.3](https://github.com/baloise/design-system/compare/v10.10.2...v10.10.3) (2022-04-22)
+
+
+### Bug Fixes
+
+* **footer:** fetch links from all domains ([e2e120e](https://github.com/baloise/design-system/commit/e2e120ed6b0939794af85ee313cbfe1eb9e8c052))
+* **footer:** version of web-app-utils for fetching the baloise data from the correct URLs ([241f37b](https://github.com/baloise/design-system/commit/241f37b919af594210e0bf293086b923481b3057))
+* **integration:** update lock ([12fbb96](https://github.com/baloise/design-system/commit/12fbb964428e51ee0480df7c68589283e03bbfa5))
+
+### 10.10.1 (2022-04-21)
+
+
+
 ### [10.10.2](https://github.com/baloise/design-system/compare/v10.10.1...v10.10.2) (2022-04-21)
 
 
