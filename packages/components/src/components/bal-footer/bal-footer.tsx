@@ -8,7 +8,7 @@ import {
   detachComponentToConfig,
   attachComponentToConfig,
   updateBalLanguage,
-  useBalConfig,
+  BalRegion,
 } from '../../config'
 
 @Component({
@@ -17,6 +17,7 @@ import {
 export class Footer implements BalConfigObserver {
   @State() links: FooterLink[] = []
   @State() language: BalLanguage = defaultConfig.language
+  @State() region: BalRegion = defaultConfig.region
   @State() allowedLanguages: BalLanguage[] = defaultConfig.allowedLanguages
 
   /**
@@ -50,6 +51,7 @@ export class Footer implements BalConfigObserver {
 
   configChanged(config: BalConfigState) {
     this.language = config.language
+    this.region = config.region
     this.allowedLanguages = config.allowedLanguages
     this.updateFooterLinks()
   }
@@ -67,12 +69,9 @@ export class Footer implements BalConfigObserver {
   }
 
   updateFooterLinks() {
-    if (!this.hideLinks) {
-      const config = useBalConfig()
-      if (config?.region === 'CH') {
-        // The following footer links only apply to swiss applications
-        loadFooterLinks(new Language(this.language)).then(links => (this.links = links))
-      }
+    if (!this.hideLinks && this.region === 'CH') {
+      // The following footer links only apply to swiss applications
+      loadFooterLinks(new Language(this.language)).then(links => (this.links = links))
     }
   }
 
