@@ -181,7 +181,7 @@ onBalConfigChange((config: BalConfigState) => {
 ### Angular
 
 ```typescript
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { onBalConfigChange, BalConfigState } from '@baloise/design-system-components'
 
 @Component({
@@ -189,8 +189,11 @@ import { onBalConfigChange, BalConfigState } from '@baloise/design-system-compon
   templateUrl: './sample.component.html',
   styleUrls: ['./sample.component.scss'],
 })
-export class SampleComponent {
-  constructor(private yourLangService: YourLangService) {
+export class SampleComponent implements OnInit {
+  constructor(private yourLangService: YourLangService) {}
+
+  ngOnInit(): void {
+    // IMPORTANT: register your config update callback in the ngOnInit instead of the constructor
     onBalConfigChange((config: BalConfigState) => {
       // when the language is changed, e.g. in the footer, you probably want to update it in your translations service
       this.yourLangService.changeLanguage(config.language)
