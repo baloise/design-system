@@ -37,11 +37,11 @@ export const Basic = args => ({
   template: `<bal-slider v-bind="args" v-model="args.value"></bal-slider>`,
 })
 Basic.args = {
-  value: '20000',
+  value: '20',
   hasTicks: true,
-  step: 5000,
+  step: 20,
   min: 0,
-  max: 50000,
+  max: 100,
 }
 Basic.parameters = {
   ...component.sourceCode(Basic),
