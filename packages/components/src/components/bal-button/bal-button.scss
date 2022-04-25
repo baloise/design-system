@@ -633,9 +633,22 @@ bal-button.is-fullwidth {
         background: transparent;
         border-color: transparent;
 
+        span.button-label:after {
+          background: $light-blue-2;
+        }
+
         &,
         & span {
-          color: $light-blue-light;
+          color: $light-blue-2;
+        }
+
+        bal-icon {
+          svg,
+          svg g,
+          svg path,
+          svg circle {
+            fill: $light-blue-2 !important;
+          }
         }
       }
 
@@ -644,9 +657,22 @@ bal-button.is-fullwidth {
         background: transparent;
         border-color: transparent;
 
+        span.button-label:after {
+          background: $light-blue-4;
+        }
+
         &,
         & span {
-          color: $light-blue;
+          color: $light-blue-4;
+        }
+
+        bal-icon {
+          svg,
+          svg g,
+          svg path,
+          svg circle {
+            fill: $light-blue-4 !important;
+          }
         }
       }
     }
@@ -711,6 +737,15 @@ bal-button.is-fullwidth {
 
       span:after {
         background: $grey-7 !important;
+      }
+
+      bal-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $grey-7 !important;
+        }
       }
     }
   }
