@@ -32,7 +32,7 @@
 .bal-list-item > div,
 .bal-list-item > button {
   align-items: center;
-  gap: 16px;
+  column-gap: 16px;
   min-height: 48px;
 }
 
@@ -86,42 +86,48 @@
   }
 }
 
-.bal-list-item.is-clickable {
+.bal-list-item.is-list-item-clickable {
+  bal-list-item-accordion-head,
   a,
   button {
     cursor: pointer;
+    pointer-events: inherit;
   }
 }
 
-.bal-list:not(.is-disabled):not(.is-on-background-dark) .bal-list-item.is-clickable {
-  & > div,
+.bal-list:not(.is-disabled):not(.is-on-background-dark) .bal-list-item.is-list-item-clickable {
+  bal-list-item-accordion-head,
   a,
   button {
     &:hover {
-      h5,
-      p {
+      .bal-list-item-title h5,
+      .bal-list-item-subtitle p {
         color: $light-blue-dark !important;
       }
 
-      svg,
-      svg g,
-      svg path,
-      svg circle {
-        fill: $light-blue-dark !important;
+      .bal-list-item-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $light-blue-dark !important;
+        }
       }
     }
 
     &:active {
-      h5,
-      p {
+      .bal-list-item-title h5,
+      .bal-list-item-subtitle p {
         color: $blue-dark !important;
       }
 
-      svg,
-      svg g,
-      svg path,
-      svg circle {
-        fill: $blue-dark !important;
+      .bal-list-item-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $blue-dark !important;
+        }
       }
     }
 
@@ -135,48 +141,54 @@
 }
 
 .bal-list.is-on-background-dark {
-  h5,
-  p {
+  .bal-list-item-title h5,
+  .bal-list-item-subtitle p {
     color: $white;
   }
 
-  svg,
-  svg g,
-  svg path,
-  svg circle {
-    fill: $white;
+  .bal-list-item-icon {
+    svg,
+    svg g,
+    svg path,
+    svg circle {
+      fill: $white;
+    }
   }
 }
 
-.bal-list:not(.is-disabled).is-on-background-dark .bal-list-item.is-clickable {
-  & > div,
+.bal-list:not(.is-disabled).is-on-background-dark .bal-list-item.is-list-item-clickable {
+  bal-list-item-accordion-head,
   a,
   button {
     &:hover {
-      h5,
-      p {
+      .bal-list-item-title h5,
+      .bal-list-item-subtitle p {
         color: $light-blue-2 !important;
       }
 
-      svg,
-      svg g,
-      svg path,
-      svg circle {
-        fill: $light-blue-2 !important;
+      .bal-list-item-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $light-blue-2 !important;
+        }
       }
     }
 
     &:active {
-      h5,
-      p {
+      .bal-list-item-title h5,
+      .bal-list-item-subtitle p {
         color: $light-blue-4 !important;
       }
 
-      svg,
-      svg g,
-      svg path,
-      svg circle {
-        fill: $light-blue-4 !important;
+      .bal-list-item-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $light-blue-4 !important;
+        }
       }
     }
 
@@ -227,7 +239,7 @@
     }
   }
 
-  .bal-list-item:not(.is-disabled).is-clickable {
+  .bal-list-item:not(.is-disabled).is-list-item-clickable {
     & > div:hover:after,
     a:hover:after,
     button:hover:after {
@@ -275,7 +287,7 @@
       }
     }
 
-    .bal-list-item:not(.is-disabled).is-clickable {
+    .bal-list-item:not(.is-disabled).is-list-item-clickable {
       & > div:hover:after,
       a:hover:after,
       button:hover:after {
@@ -294,16 +306,18 @@
   &,
   a,
   button {
-    h5,
-    p {
+    .bal-list-item-title h5,
+    .bal-list-item-subtitle p {
       color: $grey-7 !important;
     }
 
-    svg,
-    svg g,
-    svg path,
-    svg circle {
-      fill: $grey-7 !important;
+    .bal-list-item-icon {
+      svg,
+      svg g,
+      svg path,
+      svg circle {
+        fill: $grey-7 !important;
+      }
     }
   }
 }
@@ -315,16 +329,18 @@
     &,
     &:hover,
     &:active {
-      h5,
-      p {
+      .bal-list-item-title h5,
+      .bal-list-item-subtitle p {
         color: $grey-7 !important;
       }
 
-      svg,
-      svg g,
-      svg path,
-      svg circle {
-        fill: $grey-7 !important;
+      .bal-list-item-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $grey-7 !important;
+        }
       }
     }
   }
@@ -338,16 +354,18 @@
     &,
     &:hover,
     &:active {
-      h5,
-      p {
+      .bal-list-item-title h5,
+      .bal-list-item-subtitle p {
         color: $blue-4 !important;
       }
 
-      svg,
-      svg g,
-      svg path,
-      svg circle {
-        fill: $blue-4 !important;
+      .bal-list-item-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $blue-4 !important;
+        }
       }
     }
   }
@@ -359,4 +377,32 @@ bal-card > bal-list.p-0 {
       content: none !important;
     }
   }
+}
+
+.bal-list-item.is-accordion > div {
+  flex-direction: column;
+}
+
+.bal-list-item-accordion-head {
+  bal-icon.trigger-icon {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &.is-open bal-icon.trigger-icon {
+    transform: rotate(45deg);
+  }
+}
+
+.bal-list-item-accordion-body {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.bal-list.is-on-background-dark bal-list-item-accordion-body bal-list-item-content > p {
+  color: $white;
 }

@@ -1002,6 +1002,10 @@ export namespace Components {
     }
     interface BalListItem {
         /**
+          * If `true` the list item can be used as a accordion
+         */
+        "accordion": boolean;
+        /**
           * If `true` the list item shows that it is clickable
          */
         "clickable": boolean;
@@ -1021,6 +1025,14 @@ export namespace Components {
           * Specifies where to open the linked document
          */
         "target": Props.BalListItemTarget;
+    }
+    interface BalListItemAccordionBody {
+        /**
+          * If `true` the body will be open and visible
+         */
+        "open": boolean;
+    }
+    interface BalListItemAccordionHead {
     }
     interface BalListItemContent {
     }
@@ -2181,6 +2193,18 @@ declare global {
         prototype: HTMLBalListItemElement;
         new (): HTMLBalListItemElement;
     };
+    interface HTMLBalListItemAccordionBodyElement extends Components.BalListItemAccordionBody, HTMLStencilElement {
+    }
+    var HTMLBalListItemAccordionBodyElement: {
+        prototype: HTMLBalListItemAccordionBodyElement;
+        new (): HTMLBalListItemAccordionBodyElement;
+    };
+    interface HTMLBalListItemAccordionHeadElement extends Components.BalListItemAccordionHead, HTMLStencilElement {
+    }
+    var HTMLBalListItemAccordionHeadElement: {
+        prototype: HTMLBalListItemAccordionHeadElement;
+        new (): HTMLBalListItemAccordionHeadElement;
+    };
     interface HTMLBalListItemContentElement extends Components.BalListItemContent, HTMLStencilElement {
     }
     var HTMLBalListItemContentElement: {
@@ -2479,6 +2503,8 @@ declare global {
         "bal-input-stepper": HTMLBalInputStepperElement;
         "bal-list": HTMLBalListElement;
         "bal-list-item": HTMLBalListItemElement;
+        "bal-list-item-accordion-body": HTMLBalListItemAccordionBodyElement;
+        "bal-list-item-accordion-head": HTMLBalListItemAccordionHeadElement;
         "bal-list-item-content": HTMLBalListItemContentElement;
         "bal-list-item-icon": HTMLBalListItemIconElement;
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
@@ -3553,6 +3579,10 @@ declare namespace LocalJSX {
     }
     interface BalListItem {
         /**
+          * If `true` the list item can be used as a accordion
+         */
+        "accordion"?: boolean;
+        /**
           * If `true` the list item shows that it is clickable
          */
         "clickable"?: boolean;
@@ -3576,6 +3606,18 @@ declare namespace LocalJSX {
           * Specifies where to open the linked document
          */
         "target"?: Props.BalListItemTarget;
+    }
+    interface BalListItemAccordionBody {
+        /**
+          * If `true` the body will be open and visible
+         */
+        "open"?: boolean;
+    }
+    interface BalListItemAccordionHead {
+        /**
+          * Emitted when the accordion state is changed
+         */
+        "onBalAccordionChange"?: (event: CustomEvent<boolean>) => void;
     }
     interface BalListItemContent {
     }
@@ -4529,6 +4571,8 @@ declare namespace LocalJSX {
         "bal-input-stepper": BalInputStepper;
         "bal-list": BalList;
         "bal-list-item": BalListItem;
+        "bal-list-item-accordion-body": BalListItemAccordionBody;
+        "bal-list-item-accordion-head": BalListItemAccordionHead;
         "bal-list-item-content": BalListItemContent;
         "bal-list-item-icon": BalListItemIcon;
         "bal-list-item-subtitle": BalListItemSubtitle;
@@ -4627,6 +4671,8 @@ declare module "@stencil/core" {
             "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
             "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
+            "bal-list-item-accordion-body": LocalJSX.BalListItemAccordionBody & JSXBase.HTMLAttributes<HTMLBalListItemAccordionBodyElement>;
+            "bal-list-item-accordion-head": LocalJSX.BalListItemAccordionHead & JSXBase.HTMLAttributes<HTMLBalListItemAccordionHeadElement>;
             "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;
             "bal-list-item-icon": LocalJSX.BalListItemIcon & JSXBase.HTMLAttributes<HTMLBalListItemIconElement>;
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
