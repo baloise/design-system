@@ -57,7 +57,7 @@
     "test:e2e:watch": "stencil test --e2e --watchAll --config stencil.test.config.ts",
     "log": "stencil build --config stencil.log.config.ts",
     "www": "stencil build --config stencil.test.config.ts",
-    "serve": "stencil build --config stencil.test.config.ts --dev --serve --watch",
+    "serve": "stencil build --config stencil.test.config.ts --prod --serve --watch",
     "cy:build": "npm run www",
     "cy:start": "node ./web-server.js",
     "cy:install": "cypress install",
@@ -69,6 +69,7 @@
   "dependencies": {
     "@baloise/design-system-next-fonts": "10.9.2",
     "@baloise/design-system-next-icons": "10.9.2",
+    "@baloise/design-system-next-tokens": "^10.9.2",
     "@baloise/web-app-utils": "^3.3.2",
     "@popperjs/core": "^2.11.4",
     "@stencil/core": "^2.14.2",

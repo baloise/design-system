@@ -1,0 +1,357 @@
+/*! minireset.css v0.0.7 | MIT License | github.com/jgthms/minireset.css */
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+input,
+select {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+:root {
+  --bal-color-white: #ffffff;
+  --bal-color-blue-0: #e5e7f0;
+  --bal-color-blue-1: #cccfe2;
+  --bal-color-blue-2: #b3b6d4;
+  --bal-color-blue-3: #999ec5;
+  --bal-color-blue-4: #8086b7;
+  --bal-color-blue-5: #666ea8;
+  --bal-color-blue-6: #333d8b;
+  --bal-color-blue-7: #000d6e;
+  --bal-color-blue-8: #00094d;
+  --bal-color-blue-9: #000739;
+  --bal-color-blue: #000d6e;
+}
+
+.has-background-white {
+  background: var(--bal-color-white);
+}
+
+.has-text-white {
+  color: var(--bal-color-white);
+}
+
+.has-background-blue-0 {
+  background: var(--bal-color-blue-0);
+}
+
+.has-text-blue-0 {
+  color: var(--bal-color-blue-0);
+}
+
+.has-background-blue-1 {
+  background: var(--bal-color-blue-1);
+}
+
+.has-text-blue-1 {
+  color: var(--bal-color-blue-1);
+}
+
+.has-background-blue-2 {
+  background: var(--bal-color-blue-2);
+}
+
+.has-text-blue-2 {
+  color: var(--bal-color-blue-2);
+}
+
+.has-background-blue-3 {
+  background: var(--bal-color-blue-3);
+}
+
+.has-text-blue-3 {
+  color: var(--bal-color-blue-3);
+}
+
+.has-background-blue-4 {
+  background: var(--bal-color-blue-4);
+}
+
+.has-text-blue-4 {
+  color: var(--bal-color-blue-4);
+}
+
+.has-background-blue-5 {
+  background: var(--bal-color-blue-5);
+}
+
+.has-text-blue-5 {
+  color: var(--bal-color-blue-5);
+}
+
+.has-background-blue-6 {
+  background: var(--bal-color-blue-6);
+}
+
+.has-text-blue-6 {
+  color: var(--bal-color-blue-6);
+}
+
+.has-background-blue-7 {
+  background: var(--bal-color-blue-7);
+}
+
+.has-text-blue-7 {
+  color: var(--bal-color-blue-7);
+}
+
+.has-background-blue-8 {
+  background: var(--bal-color-blue-8);
+}
+
+.has-text-blue-8 {
+  color: var(--bal-color-blue-8);
+}
+
+.has-background-blue-9 {
+  background: var(--bal-color-blue-9);
+}
+
+.has-text-blue-9 {
+  color: var(--bal-color-blue-9);
+}
+
+.has-background-blue {
+  background: var(--bal-color-blue);
+}
+
+.has-text-blue {
+  color: var(--bal-color-blue);
+}
+
+:root {
+  --bal-tablet: 769px;
+  --bal-desktop: 1024px;
+}
+
+:root {
+  --bal-radius-none: 0;
+  --bal-radius-small: 4px;
+  --bal-radius: 4px;
+  --bal-radius-large: 12px;
+  --bal-radius-rounded: 9999px;
+}
+
+.has-radius-none {
+  border-radius: var(--bal-radius-none);
+}
+
+.has-radius-top-none {
+  border-top-left-radius: var(--bal-radius-none);
+  border-top-right-radius: var(--bal-radius-none);
+}
+
+.has-radius-top-left-none {
+  border-top-left-radius: var(--bal-radius-none);
+}
+
+.has-radius-top-right-none {
+  border-top-right-radius: var(--bal-radius-none);
+}
+
+.has-radius-bottom-none {
+  border-bottom-left-radius: var(--bal-radius-none);
+  border-bottom-right-radius: var(--bal-radius-none);
+}
+
+.has-radius-bottom-left-none {
+  border-bottom-left-radius: var(--bal-radius-none);
+}
+
+.has-radius-bottom-right-none {
+  border-bottom-right-radius: var(--bal-radius-none);
+}
+
+.has-radius-small {
+  border-radius: var(--bal-radius-small);
+}
+
+.has-radius-top-small {
+  border-top-left-radius: var(--bal-radius-small);
+  border-top-right-radius: var(--bal-radius-small);
+}
+
+.has-radius-top-left-small {
+  border-top-left-radius: var(--bal-radius-small);
+}
+
+.has-radius-top-right-small {
+  border-top-right-radius: var(--bal-radius-small);
+}
+
+.has-radius-bottom-small {
+  border-bottom-left-radius: var(--bal-radius-small);
+  border-bottom-right-radius: var(--bal-radius-small);
+}
+
+.has-radius-bottom-left-small {
+  border-bottom-left-radius: var(--bal-radius-small);
+}
+
+.has-radius-bottom-right-small {
+  border-bottom-right-radius: var(--bal-radius-small);
+}
+
+.has-radius {
+  border-radius: var(--bal-radius);
+}
+
+.has-radius-top {
+  border-top-left-radius: var(--bal-radius);
+  border-top-right-radius: var(--bal-radius);
+}
+
+.has-radius-top-left {
+  border-top-left-radius: var(--bal-radius);
+}
+
+.has-radius-top-right {
+  border-top-right-radius: var(--bal-radius);
+}
+
+.has-radius-bottom {
+  border-bottom-left-radius: var(--bal-radius);
+  border-bottom-right-radius: var(--bal-radius);
+}
+
+.has-radius-bottom-left {
+  border-bottom-left-radius: var(--bal-radius);
+}
+
+.has-radius-bottom-right {
+  border-bottom-right-radius: var(--bal-radius);
+}
+
+.has-radius-large {
+  border-radius: var(--bal-radius-large);
+}
+
+.has-radius-top-large {
+  border-top-left-radius: var(--bal-radius-large);
+  border-top-right-radius: var(--bal-radius-large);
+}
+
+.has-radius-top-left-large {
+  border-top-left-radius: var(--bal-radius-large);
+}
+
+.has-radius-top-right-large {
+  border-top-right-radius: var(--bal-radius-large);
+}
+
+.has-radius-bottom-large {
+  border-bottom-left-radius: var(--bal-radius-large);
+  border-bottom-right-radius: var(--bal-radius-large);
+}
+
+.has-radius-bottom-left-large {
+  border-bottom-left-radius: var(--bal-radius-large);
+}
+
+.has-radius-bottom-right-large {
+  border-bottom-right-radius: var(--bal-radius-large);
+}
+
+.has-radius-rounded {
+  border-radius: var(--bal-radius-rounded);
+}
+
+.has-radius-top-rounded {
+  border-top-left-radius: var(--bal-radius-rounded);
+  border-top-right-radius: var(--bal-radius-rounded);
+}
+
+.has-radius-top-left-rounded {
+  border-top-left-radius: var(--bal-radius-rounded);
+}
+
+.has-radius-top-right-rounded {
+  border-top-right-radius: var(--bal-radius-rounded);
+}
+
+.has-radius-bottom-rounded {
+  border-bottom-left-radius: var(--bal-radius-rounded);
+  border-bottom-right-radius: var(--bal-radius-rounded);
+}
+
+.has-radius-bottom-left-rounded {
+  border-bottom-left-radius: var(--bal-radius-rounded);
+}
+
+.has-radius-bottom-right-rounded {
+  border-bottom-right-radius: var(--bal-radius-rounded);
+}
+
+.bubu {
+  background-color: var(--bal-color-blue);
+}
+
+/*# sourceMappingURL=baloise-design-system.css.map */

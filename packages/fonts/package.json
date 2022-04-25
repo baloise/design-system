@@ -36,5 +36,8 @@
   "devDependencies": {
     "archiver": "^5.3.0"
   },
-  "gitHead": "942fb79c8ff2fb991d815f91ffee0bb95ea6756f"
+  "gitHead": "942fb79c8ff2fb991d815f91ffee0bb95ea6756f",
+  "dependencies": {
+    "@baloise/design-system-next-tokens": "^10.9.2"
+  }
 }

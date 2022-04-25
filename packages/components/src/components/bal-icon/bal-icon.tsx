@@ -1,7 +1,8 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-import * as balIcons from '@baloise/design-system-next-icons'
-import upperFirst from 'lodash.upperfirst'
-import camelCase from 'lodash.camelcase'
+// import * as balIcons from '@baloise/design-system-next-icons'
+import { balIconAccount } from '@baloise/design-system-next-icons'
+// import upperFirst from 'lodash.upperfirst'
+// import camelCase from 'lodash.camelcase'
 import { Props } from '../../props'
 
 @Component({
@@ -49,16 +50,17 @@ export class Icon {
   @Prop() turn = false
 
   private get svgContent() {
-    if (balIcons && this.name && this.name.length > 0) {
-      const icon: string | undefined = (balIcons as { [key: string]: string })[
-        `balIcon${upperFirst(camelCase(this.name))}`
-      ]
-      if (icon) {
-        return icon
-      }
-    }
+    // if (balIcons && this.name && this.name.length > 0) {
+    //   const icon: string | undefined = (balIcons as { [key: string]: string })[
+    //     `balIcon${upperFirst(camelCase(this.name))}`
+    //   ]
+    //   if (icon) {
+    //     return icon
+    //   }
+    // }
 
-    return this.svg || ''
+    // return this.svg || ''
+    return balIconAccount
   }
 
   render() {

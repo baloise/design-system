@@ -58,6 +58,7 @@
     "react-dom": ">=17.0.0"
   },
   "dependencies": {
-    "@baloise/design-system-next-components": "10.9.2"
+    "@baloise/design-system-next-components": "10.9.2",
+    "@baloise/design-system-next-tokens": "^10.9.2"
   }
 }
