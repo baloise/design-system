@@ -24,7 +24,6 @@ export namespace Components {
           * Label of the close trigger button
          */
         "closeLabel": string;
-        "color": Props.BalAccordionColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -33,10 +32,6 @@ export namespace Components {
           * Closes the accordion
          */
         "dismiss": () => Promise<void>;
-        /**
-          * Controls the style of the accordion
-         */
-        "interface": '' | 'light';
         /**
           * BalIcon of the open trigger button
          */
@@ -2562,15 +2557,10 @@ declare namespace LocalJSX {
           * Label of the close trigger button
          */
         "closeLabel"?: string;
-        "color"?: Props.BalAccordionColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
-        /**
-          * Controls the style of the accordion
-         */
-        "interface"?: '' | 'light';
         /**
           * Emitted when the accordion has opened or closed
          */

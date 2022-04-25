@@ -17,17 +17,17 @@
     </h2>
     <h4>Gagne87</h4>
   </a>
-  <a href="https://github.com/RCBiczok" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/538973?v=4" alt="RCBiczok" style="width: 64px;">
-    </h2>
-    <h4>RCBiczok</h4>
-  </a>
   <a href="https://github.com/yannickholzenkamp" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/9351023?v=4" alt="yannickholzenkamp" style="width: 64px;">
     </h2>
     <h4>yannickholzenkamp</h4>
+  </a>
+  <a href="https://github.com/RCBiczok" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/538973?v=4" alt="RCBiczok" style="width: 64px;">
+    </h2>
+    <h4>RCBiczok</h4>
   </a>
   <a href="https://github.com/dweber019" class="feature">
     <h2>
