@@ -276,6 +276,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` the control is no padding
+         */
+        "flat": boolean;
+        /**
           * Returns the native `<input>` element used under the hood.
          */
         "getInputElement": () => Promise<HTMLInputElement | undefined>;
@@ -2791,6 +2795,10 @@ declare namespace LocalJSX {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        /**
+          * If `true` the control is no padding
+         */
+        "flat"?: boolean;
         /**
           * If `true`, the value will not be send with a form submit
          */

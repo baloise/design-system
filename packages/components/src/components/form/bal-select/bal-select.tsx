@@ -838,6 +838,7 @@ export class Select {
                       checked={valuesArray.includes(option.value)}
                       tabindex={-1}
                       hidden
+                      flat
                       onBalChange={preventDefault}
                     ></bal-checkbox>
                   </span>
