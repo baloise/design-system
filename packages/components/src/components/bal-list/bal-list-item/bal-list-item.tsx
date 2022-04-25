@@ -93,7 +93,9 @@ export class ListItem {
           'is-clickable': this.clickable || this.href.length > 0,
         }}
       >
-        <slot></slot>
+        <div>
+          <slot></slot>
+        </div>
       </Host>
     )
   }

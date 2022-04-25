@@ -53,6 +53,7 @@ export namespace Props {
 
   export type BalListItemTarget = BalButtonTarget
   export type BalListSize = 'large' | ''
+  export type BalListBackground = 'light' | 'color' | 'dark'
 
   export type BalLogoColor = 'blue' | 'white'
   export type BalLogoBrand = 'group' | 'soba' | 'insurance'

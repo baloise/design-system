@@ -976,15 +976,19 @@ export namespace Components {
     }
     interface BalList {
         /**
+          * If `true` the list can be used on a light, dark or colored backgrounds
+         */
+        "background": Props.BalListBackground;
+        /**
           * If `true` each list item has a bottom border
          */
         "border": boolean;
         /**
-          * If `true` the list item can be hovered
+          * If `true` the list item can not be hovered
          */
         "disabled": boolean;
         /**
-          * If `true` the list can be used on a dark background
+          * @deprecated If `true` the list can be used on a dark background
          */
         "inverted": boolean;
         /**
@@ -3519,15 +3523,19 @@ declare namespace LocalJSX {
     }
     interface BalList {
         /**
+          * If `true` the list can be used on a light, dark or colored backgrounds
+         */
+        "background"?: Props.BalListBackground;
+        /**
           * If `true` each list item has a bottom border
          */
         "border"?: boolean;
         /**
-          * If `true` the list item can be hovered
+          * If `true` the list item can not be hovered
          */
         "disabled"?: boolean;
         /**
-          * If `true` the list can be used on a dark background
+          * @deprecated If `true` the list can be used on a dark background
          */
         "inverted"?: boolean;
         /**

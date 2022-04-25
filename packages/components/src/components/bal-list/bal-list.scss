@@ -2,8 +2,9 @@
 
 .bal-list,
 .bal-list-item,
-.bal-list-item a,
-.bal-list-item button,
+.bal-list-item > a,
+.bal-list-item > button,
+.bal-list-item > div,
 .bal-list-item-icon,
 .bal-list-item-title,
 .bal-list-item-link,
@@ -20,21 +21,24 @@
 
 .bal-list,
 .bal-list-item,
-.bal-list-item a,
-.bal-list-item button {
+.bal-list-item > div,
+.bal-list-item > a,
+.bal-list-item > button {
   width: 100%;
 }
 
 .bal-list-item,
-.bal-list-item a,
-.bal-list-item button {
+.bal-list-item > a,
+.bal-list-item > div,
+.bal-list-item > button {
   align-items: center;
   gap: 16px;
   min-height: 48px;
 }
 
-.bal-list-item a,
-.bal-list-item button {
+.bal-list-item > a,
+.bal-list-item > div,
+.bal-list-item > button {
   padding: 0;
   margin: 0;
   outline: none;
@@ -55,8 +59,9 @@
 }
 
 .bal-list-item,
-.bal-list-item a,
-.bal-list-item button,
+.bal-list-item > a,
+.bal-list-item > div,
+.bal-list-item > button,
 .bal-list-item-content {
   flex: 1;
 }
@@ -74,8 +79,9 @@
 
 .bal-list.has-size-large {
   .bal-list-item,
-  .bal-list-item a,
-  .bal-list-item button {
+  .bal-list-item > a,
+  .bal-list-item > div,
+  .bal-list-item > button {
     min-height: 72px;
   }
 }
@@ -87,7 +93,8 @@
   }
 }
 
-.bal-list:not(.is-disabled):not(.is-inverted) .bal-list-item.is-clickable {
+.bal-list:not(.is-disabled):not(.is-on-background-dark) .bal-list-item.is-clickable {
+  & > div,
   a,
   button {
     &:hover {
@@ -120,20 +127,14 @@
 
     &:focus-visible {
       box-shadow: $white 0 0 0 2px, $purple-dark 0 0 0 5px !important;
+      &:after {
+        content: none !important;
+      }
     }
   }
 }
 
-.bal-list:not(.is-disabled).is-inverted .bal-list-item.is-clickable {
-  a,
-  button {
-    &:focus-visible {
-      box-shadow: $white 0 0 0 2px, $yellow-3 0 0 0 5px !important;
-    }
-  }
-}
-
-.bal-list.is-inverted {
+.bal-list.is-on-background-dark {
   h5,
   p {
     color: $white;
@@ -144,6 +145,47 @@
   svg path,
   svg circle {
     fill: $white;
+  }
+}
+
+.bal-list:not(.is-disabled).is-on-background-dark .bal-list-item.is-clickable {
+  & > div,
+  a,
+  button {
+    &:hover {
+      h5,
+      p {
+        color: $light-blue-2 !important;
+      }
+
+      svg,
+      svg g,
+      svg path,
+      svg circle {
+        fill: $light-blue-2 !important;
+      }
+    }
+
+    &:active {
+      h5,
+      p {
+        color: $light-blue-4 !important;
+      }
+
+      svg,
+      svg g,
+      svg path,
+      svg circle {
+        fill: $light-blue-4 !important;
+      }
+    }
+
+    &:focus-visible {
+      box-shadow: $white 0 0 0 2px, $yellow-3 0 0 0 5px !important;
+      &:after {
+        content: none !important;
+      }
+    }
   }
 }
 
@@ -161,76 +203,94 @@
 .bal-list.has-border .bal-list-item {
   padding-bottom: 2px;
 
-  &:not(:focus-within) {
-    &:after {
-      content: '';
-      height: 2px;
-      width: 100%;
-      border-radius: $radius;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+  & > div:after,
+  a:after,
+  button:after {
+    content: '';
+    height: 2px;
+    width: 100%;
+    border-radius: $radius;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.bal-list.has-border {
+  .bal-list-item,
+  .bal-list-item.is-disabled {
+    & > div:after,
+    a:after,
+    button:after {
+      background: $grey-2;
     }
   }
-}
 
-.bal-list:not(.is-inverted).has-border .bal-list-item {
-  &:after {
-    background: $grey-2;
+  .bal-list-item:not(.is-disabled).is-clickable {
+    & > div:hover:after,
+    a:hover:after,
+    button:hover:after {
+      background: $light-blue-7;
+    }
+    & > div:active:after,
+    a:active:after,
+    button:active:after {
+      background: $blue-9;
+    }
   }
-}
 
-.bal-list.is-inverted.has-border .bal-list-item {
-  &:after {
-    background: $blue-4;
-  }
-}
-
-.bal-list:not(.is-disabled):not(.is-inverted).has-border .bal-list-item {
-  &.is-clickable {
-    &:hover {
-      &:after {
-        background: $light-blue-dark;
+  &.is-on-background-color {
+    .bal-list-item {
+      & > div:after,
+      a:after,
+      button:after {
+        background: $blue;
       }
     }
 
-    &:active {
-      &:after {
-        background: $blue-dark;
+    .bal-list-item.is-disabled {
+      & > div:after,
+      a:after,
+      button:after {
+        background: $blue-4;
       }
     }
   }
-}
 
-.bal-list:not(.is-disabled).is-inverted.has-border .bal-list-item {
-  &.is-clickable {
-    &:hover,
-    &:active {
-      &:after {
+  &.is-on-background-dark {
+    .bal-list-item {
+      & > div:after,
+      a:after,
+      button:after {
         background: $white;
       }
     }
+
+    .bal-list-item.is-disabled {
+      & > div:after,
+      a:after,
+      button:after {
+        background: $blue-4;
+      }
+    }
+
+    .bal-list-item:not(.is-disabled).is-clickable {
+      & > div:hover:after,
+      a:hover:after,
+      button:hover:after {
+        background: $light-blue-2;
+      }
+      & > div:active:after,
+      a:active:after,
+      button:active:after {
+        background: $light-blue-4;
+      }
+    }
   }
 }
 
-.bal-list-item.is-disabled {
-  &,
-  a,
-  button {
-    cursor: default !important;
-    pointer-events: none !important;
-    user-select: none !important;
-  }
-}
-
-.bal-list:not(.is-inverted) .bal-list-item.is-disabled {
-  &:after {
-    background: $grey-2 !important;
-  }
-}
-
-.bal-list:not(.is-inverted) .bal-list-item.is-disabled {
+.bal-list:not(.is-on-background-dark) .bal-list-item.is-disabled {
   &,
   a,
   button {
@@ -248,7 +308,7 @@
   }
 }
 
-.bal-list:not(.is-disabled):not(.is-inverted) .bal-list-item.is-disabled {
+.bal-list:not(.is-disabled):not(.is-on-background-dark) .bal-list-item.is-disabled {
   &,
   a,
   button {
@@ -270,13 +330,8 @@
   }
 }
 
-.bal-list.is-inverted .bal-list-item.is-disabled {
-  &:after {
-    background: $blue-4 !important;
-  }
-}
-
-.bal-list:not(.is-disabled).is-inverted .bal-list-item.is-disabled {
+.bal-list:not(.is-disabled).is-on-background-color .bal-list-item.is-disabled,
+.bal-list:not(.is-disabled).is-on-background-dark .bal-list-item.is-disabled {
   &,
   a,
   button {
