@@ -805,9 +805,6 @@ export class Select {
               size="xsmall"
               color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
               turn={this.isPopoverOpen}
-              style={{
-                marginTop: this.isPopoverOpen ? '8px' : '0px',
-              }}
               onClick={this.handleInputClick}
             ></bal-icon>
           </div>
