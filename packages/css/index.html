@@ -7,8 +7,292 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/baloise-design-system.css" />
   </head>
-  <body>
-    <div class="bubu has-radius-rounded">Bubu</div>
-    <div class="has-background-blue-0 has-text-white">Bubu</div>
+  <body class="bal-app has-sticky-footer has-background-grey-0">
+    <main class="container py-4">
+      <section class="has-background-white has-radius has-shadow p-4 mb-4">
+        <h1 class="title is-3">Grid</h1>
+        <div class="columns is-multiline m-0">
+          <div class="column is-1 has-background-danger">1</div>
+          <div class="column is-2 has-background-warning">2</div>
+          <div class="column has-background-success">AUTO</div>
+        </div>
+      </section>
+      <section class="has-background-white has-radius has-shadow p-4 mb-4">
+        <h1 class="title is-3">List</h1>
+        <ul class="is-list">
+          <li>List Item 1</li>
+          <li>List Item 2</li>
+          <li>List Item 3</li>
+        </ul>
+        <ul class="is-list has-bullet-circle">
+          <li>List Item 1</li>
+          <li>List Item 2</li>
+          <li>List Item 3</li>
+        </ul>
+        <ul class="is-list has-bullet-check">
+          <li>List Item 1</li>
+          <li>List Item 2</li>
+          <li>List Item 3</li>
+        </ul>
+      </section>
+      <section class="has-background-white has-radius has-shadow p-4 mb-4">
+        <h1 class="title is-3">Border & Radius</h1>
+        <div class="has-border-blue p-2 mb-2 has-radius-none">Blue / None</div>
+        <div class="has-border-normal p-2 mb-2 has-radius-small">Normal / Small</div>
+        <div class="has-border-hover p-2 mb-2 has-radius">Hover / Normal</div>
+        <div class="has-border-active p-2 mb-2 has-radius-large">Active / Large</div>
+        <div class="has-border-valid p-2 mb-2 has-radius-rounded">Valid / Rounded</div>
+        <div class="has-border-invalid p-2 mb-2 has-radius-rounded">Invalid / Rounded</div>
+        <div class="has-border-disabled p-2 mb-2 has-radius-rounded">Disabled / Rounded</div>
+      </section>
+      <section class="has-background-white has-radius has-shadow p-4 mb-4">
+        <h1 class="title is-3">Typography</h1>
+        <div class="columns m-0">
+          <div class="column has-background-blue-0">
+            <h1 class="title is-size-display-1">Display 1</h1>
+            <h1 class="title is-size-display-2">Display 2</h1>
+            <h1 class="title is-size-1">Title 1</h1>
+            <h2 class="title is-size-2">Title 2</h2>
+            <h3 class="title is-size-3">Title 3</h3>
+            <h4 class="title is-size-4">Title 4</h4>
+            <h5 class="title is-size-5">Title 5</h5>
+            <h6 class="title is-size-6">Title 6</h6>
+          </div>
+          <div class="column has-background-blue-2">
+            <h1 class="subtitle is-size-display-1">Display 1</h1>
+            <h1 class="subtitle is-size-display-2">Display 2</h1>
+            <h1 class="subtitle is-size-1">Subtitle 1</h1>
+            <h2 class="subtitle is-size-2">Subtitle 2</h2>
+            <h3 class="subtitle is-size-3">Subtitle 3</h3>
+            <h4 class="subtitle is-size-4">Subtitle 4</h4>
+            <h5 class="subtitle is-size-5">Subtitle 5</h5>
+            <h6 class="subtitle is-size-6">Subtitle 6</h6>
+          </div>
+        </div>
+
+        <div class="columns m-0 mt-6">
+          <div class="column has-background-blue-0">
+            <p class="is-lead">Lead</p>
+            <p class="">Default</p>
+            <p class="is-bold">Bold</p>
+            <p class="is-small">Small</p>
+          </div>
+          <div class="column has-background-blue-2">
+            <a class="is-link">Link</a>
+          </div>
+        </div>
+      </section>
+      <section class="has-background-white has-radius has-shadow p-4 mb-4">
+        <h1 class="title is-3">Table</h1>
+        <table class="table is-fullwidth is-striped is-hoverable p-0">
+          <thead>
+            <th>ID</th>
+            <th>Name</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Tony Stark</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="has-background-white has-radius has-shadow p-4 mb-4">
+        <h1 class="title is-3">Form</h1>
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Text input" />
+          </div>
+          <p class="help">This username is available</p>
+        </div>
+        <div class="field">
+          <label class="label is-disabled">Name</label>
+          <div class="control">
+            <input class="input is-disabled" disabled type="text" placeholder="Text input" />
+          </div>
+          <p class="help is-disabled">This username is available</p>
+        </div>
+        <div class="field">
+          <label class="label is-success">Name</label>
+          <div class="control">
+            <input class="input is-success" type="text" placeholder="Text input" />
+          </div>
+          <p class="help is-success">This username is available</p>
+        </div>
+        <div class="field">
+          <label class="label is-danger">Name</label>
+          <div class="control">
+            <input class="input is-danger" type="text" placeholder="Text input" />
+          </div>
+          <p class="help is-danger">This username is available</p>
+        </div>
+        <div class="field">
+          <label class="label">Message</label>
+          <div class="control">
+            <textarea class="textarea" placeholder="Textarea"></textarea>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Subject</label>
+          <div class="control">
+            <div class="select">
+              <select>
+                <option>Select dropdown</option>
+                <option>With options</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="has-background-white has-radius has-shadow p-4 mb-4">
+        <h1 class="title is-3">Button</h1>
+        <button class="button">Default</button>
+        <button class="button is-primary">Primary</button>
+        <button class="button is-info">Secondary</button>
+        <button class="button is-text">Text</button>
+        <button class="button is-link">Link</button>
+      </section>
+      <section class="has-background-white has-radius has-shadow p-4 mb-4">
+        <h1 class="title is-3">Colors</h1>
+        <div class="columns m-0">
+          <div class="column is-1 has-background-blue-0">0</div>
+          <div class="column is-1 has-background-blue-1">1</div>
+          <div class="column is-1 has-background-blue-2">2</div>
+          <div class="column is-1 has-background-blue-3">3</div>
+          <div class="column is-1 has-background-blue-4">4</div>
+          <div class="column is-1 has-background-blue-5">5</div>
+          <div class="column is-1 has-background-blue-6 has-text-white">6</div>
+          <div class="column is-1 has-background-blue-7 has-text-white">7</div>
+          <div class="column is-1 has-background-blue-8 has-text-white">8</div>
+          <div class="column is-1 has-background-blue-9 has-text-white">9</div>
+        </div>
+        <div class="columns m-0">
+          <div class="column is-1 has-background-light-blue-0">0</div>
+          <div class="column is-1 has-background-light-blue-1">1</div>
+          <div class="column is-1 has-background-light-blue-2">2</div>
+          <div class="column is-1 has-background-light-blue-3">3</div>
+          <div class="column is-1 has-background-light-blue-4">4</div>
+          <div class="column is-1 has-background-light-blue-5">5</div>
+          <div class="column is-1 has-background-light-blue-6 has-text-white">6</div>
+          <div class="column is-1 has-background-light-blue-7 has-text-white">7</div>
+          <div class="column is-1 has-background-light-blue-8 has-text-white">8</div>
+          <div class="column is-1 has-background-light-blue-9 has-text-white">9</div>
+        </div>
+        <div class="columns m-0">
+          <div class="column is-1 has-background-grey-0">0</div>
+          <div class="column is-1 has-background-grey-1">1</div>
+          <div class="column is-1 has-background-grey-2">2</div>
+          <div class="column is-1 has-background-grey-3">3</div>
+          <div class="column is-1 has-background-grey-4">4</div>
+          <div class="column is-1 has-background-grey-5">5</div>
+          <div class="column is-1 has-background-grey-6 has-text-white">6</div>
+          <div class="column is-1 has-background-grey-7 has-text-white">7</div>
+          <div class="column is-1 has-background-grey-8 has-text-white">8</div>
+          <div class="column is-1 has-background-grey-9 has-text-white">9</div>
+        </div>
+        <div class="columns m-0">
+          <div class="column is-1 has-background-purple-0">0</div>
+          <div class="column is-1 has-background-purple-1">1</div>
+          <div class="column is-1 has-background-purple-2">2</div>
+          <div class="column is-1 has-background-purple-3">3</div>
+          <div class="column is-1 has-background-purple-4">4</div>
+          <div class="column is-1 has-background-purple-5">5</div>
+          <div class="column is-1 has-background-purple-6 has-text-white">6</div>
+          <div class="column is-1 has-background-purple-7 has-text-white">7</div>
+          <div class="column is-1 has-background-purple-8 has-text-white">8</div>
+          <div class="column is-1 has-background-purple-9 has-text-white">9</div>
+        </div>
+        <div class="columns m-0">
+          <div class="column is-1 has-background-red-0">0</div>
+          <div class="column is-1 has-background-red-1">1</div>
+          <div class="column is-1 has-background-red-2">2</div>
+          <div class="column is-1 has-background-red-3">3</div>
+          <div class="column is-1 has-background-red-4">4</div>
+          <div class="column is-1 has-background-red-5">5</div>
+          <div class="column is-1 has-background-red-6 has-text-white">6</div>
+          <div class="column is-1 has-background-red-7 has-text-white">7</div>
+          <div class="column is-1 has-background-red-8 has-text-white">8</div>
+          <div class="column is-1 has-background-red-9 has-text-white">9</div>
+        </div>
+        <div class="columns m-0">
+          <div class="column is-1 has-background-yellow-0">0</div>
+          <div class="column is-1 has-background-yellow-1">1</div>
+          <div class="column is-1 has-background-yellow-2">2</div>
+          <div class="column is-1 has-background-yellow-3">3</div>
+          <div class="column is-1 has-background-yellow-4">4</div>
+          <div class="column is-1 has-background-yellow-5">5</div>
+          <div class="column is-1 has-background-yellow-6 has-text-white">6</div>
+          <div class="column is-1 has-background-yellow-7 has-text-white">7</div>
+          <div class="column is-1 has-background-yellow-8 has-text-white">8</div>
+          <div class="column is-1 has-background-yellow-9 has-text-white">9</div>
+        </div>
+        <div class="columns m-0">
+          <div class="column is-1 has-background-green-0">0</div>
+          <div class="column is-1 has-background-green-1">1</div>
+          <div class="column is-1 has-background-green-2">2</div>
+          <div class="column is-1 has-background-green-3">3</div>
+          <div class="column is-1 has-background-green-4">4</div>
+          <div class="column is-1 has-background-green-5">5</div>
+          <div class="column is-1 has-background-green-6 has-text-white">6</div>
+          <div class="column is-1 has-background-green-7 has-text-white">7</div>
+          <div class="column is-1 has-background-green-8 has-text-white">8</div>
+          <div class="column is-1 has-background-green-9 has-text-white">9</div>
+        </div>
+        <div class="columns m-0">
+          <div class="column is-1 has-background-info-0">0</div>
+          <div class="column is-1 has-background-info-1">1</div>
+          <div class="column is-1 has-background-info-2">2</div>
+          <div class="column is-1 has-background-info-3">3</div>
+          <div class="column is-1 has-background-info-4">4</div>
+          <div class="column is-1 has-background-info-5">5</div>
+          <div class="column is-1 has-background-info-6 has-text-white">6</div>
+          <div class="column is-1 has-background-info-7 has-text-white">7</div>
+          <div class="column is-1 has-background-info-8 has-text-white">8</div>
+          <div class="column is-1 has-background-info-9 has-text-white">9</div>
+        </div>
+        <div class="columns m-0">
+          <div class="column is-1 has-background-success-0">0</div>
+          <div class="column is-1 has-background-success-1">1</div>
+          <div class="column is-1 has-background-success-2">2</div>
+          <div class="column is-1 has-background-success-3">3</div>
+          <div class="column is-1 has-background-success-4">4</div>
+          <div class="column is-1 has-background-success-5">5</div>
+          <div class="column is-1 has-background-success-6 has-text-white">6</div>
+          <div class="column is-1 has-background-success-7 has-text-white">7</div>
+          <div class="column is-1 has-background-success-8 has-text-white">8</div>
+          <div class="column is-1 has-background-success-9 has-text-white">9</div>
+        </div>
+        <div class="columns m-0">
+          <div class="column is-1 has-background-warning-0">0</div>
+          <div class="column is-1 has-background-warning-1">1</div>
+          <div class="column is-1 has-background-warning-2">2</div>
+          <div class="column is-1 has-background-warning-3">3</div>
+          <div class="column is-1 has-background-warning-4">4</div>
+          <div class="column is-1 has-background-warning-5">5</div>
+          <div class="column is-1 has-background-warning-6 has-text-white">6</div>
+          <div class="column is-1 has-background-warning-7 has-text-white">7</div>
+          <div class="column is-1 has-background-warning-8 has-text-white">8</div>
+          <div class="column is-1 has-background-warning-9 has-text-white">9</div>
+        </div>
+        <div class="columns m-0">
+          <div class="column is-1 has-background-danger-0">0</div>
+          <div class="column is-1 has-background-danger-1">1</div>
+          <div class="column is-1 has-background-danger-2">2</div>
+          <div class="column is-1 has-background-danger-3">3</div>
+          <div class="column is-1 has-background-danger-4">4</div>
+          <div class="column is-1 has-background-danger-5">5</div>
+          <div class="column is-1 has-background-danger-6 has-text-white">6</div>
+          <div class="column is-1 has-background-danger-7 has-text-white">7</div>
+          <div class="column is-1 has-background-danger-8 has-text-white">8</div>
+          <div class="column is-1 has-background-danger-9 has-text-white">9</div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer has-background-blue">
+      <div class="container py-4">
+        <p class="has-text-white is-bold">Sticky Footer</p>
+      </div>
+    </footer>
   </body>
 </html>

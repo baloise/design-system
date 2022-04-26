@@ -1,0 +1,49 @@
+$input-arrow: $blue !default
+
+.select
+  display: inline-block
+  max-width: 100%
+  width: 100%
+  position: relative
+  vertical-align: top
+  &:not(.is-multiple)
+    height: $input-height
+  &:not(.is-multiple):not(.is-loading)
+    &::after
+      @extend %arrow
+      border-color: $input-arrow
+      +ltr-position(1.125em)
+      z-index: 4
+  select
+    @extend %input
+    cursor: pointer
+    display: block
+    font-size: 1em
+    max-width: 100%
+    width: 100%
+    outline: none
+    border-radius: $radius-small
+    &::-ms-expand
+      display: none
+    &[disabled]:hover,
+    fieldset[disabled] &:hover
+      border-color: $input-disabled-border-color
+    &:not([multiple])
+      +ltr-property("padding", 2.5em)
+    &[multiple]
+      height: auto
+      padding: 0
+      option
+        padding: 0.5em 1em
+  // States
+  &:not(.is-multiple):not(.is-loading):hover
+    &::after
+      border-color: $light-blue-7
+  // Modifiers
+  &.is-disabled
+    &::after
+      border-color: $input-disabled-color
+  &.is-fullwidth
+    width: 100%
+    select
+      width: 100%

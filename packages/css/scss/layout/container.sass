@@ -1,0 +1,24 @@
+@use 'sass:math'
+
+.container
+  flex-grow: 1
+  margin: 0 auto
+  position: relative
+  width: auto
+  width: 100% !important
+  padding-left: math.div($container-offset, 2)
+  padding-right: math.div($container-offset, 2)
+  &.is-fluid
+    max-width: none !important
+    padding-left: $gap
+    padding-right: $gap
+    width: 100%
+  &.is-compact
+    max-width: 832px !important
+  +tablet
+    padding-left: math.div($container-offset, 2)
+    padding-right: math.div($container-offset, 2)
+  +desktop
+    padding-left: $container-offset
+    padding-right: $container-offset
+    max-width: $desktop - $container-offset

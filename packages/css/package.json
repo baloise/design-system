@@ -20,13 +20,14 @@
     "bulma-css"
   ],
   "scripts": {
-    "build": "npm run build:clean && npm run build:compile && npm run build:bundle && npm run build:scss && npm run build:css && npm run build:css:min",
-    "build:clean": "rimraf dist && rimraf dist-transpiled && rimraf css && rimraf scss/generated",
-    "build:scss": "node dist",
+    "build": "npm run build:clean && npm run build:scss && npm run build:css && npm run build:css:min",
+    "serve": "npm run serve:fonts && npm run serve:http",
+    "serve:fonts": "copyfiles --flat node_modules/@baloise/design-system-next-fonts/lib/* assets/fonts",
+    "serve:http": "http-server --cors -c-1",
+    "build:clean": "rimraf css && rimraf scss/generated",
+    "build:scss": "node ./.build/generate.js",
     "build:css": "sass ./scss/baloise-design-system.sass ./css/baloise-design-system.css",
     "build:css:min": "sass ./scss/baloise-design-system.sass ./css/baloise-design-system.min.css --style compressed",
-    "build:compile": "tsc -p .",
-    "build:bundle": "rollup --config rollup.config.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.js",
@@ -39,21 +40,21 @@
   ],
   "license": "Apache-2.0",
   "devDependencies": {
+    "@baloise/design-system-next-tokens": "^10.9.2",
+    "@baloise/design-system-next-fonts": "^10.9.2",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.3",
     "bulma": "^0.9.3",
+    "copyfiles": "^2.4.1",
+    "http-server": "^14.1.0",
     "minireset.css": "^0.0.7",
+    "normalize.css": "^8.0.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "sass": "^1.50.1",
+    "ts-node": "^10.7.0",
     "typescript": "^4.3.5"
   },
-  "gitHead": "942fb79c8ff2fb991d815f91ffee0bb95ea6756f",
-  "dependencies": {
-    "@baloise/design-system-next-fonts": "^10.9.2",
-    "@baloise/design-system-next-tokens": "^10.9.2",
-    "http-server": "^14.1.0",
-    "ts-node": "^10.7.0"
-  }
+  "gitHead": "942fb79c8ff2fb991d815f91ffee0bb95ea6756f"
 }

@@ -5,6 +5,6 @@
     "declarationDir": "dist/types",
     "jsx": "react"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/tokens.ts"],
   "exclude": ["node_modules"]
 }

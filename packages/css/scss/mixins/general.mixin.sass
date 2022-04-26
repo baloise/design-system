@@ -1,0 +1,89 @@
+=ltr-property($property, $spacing, $right: true)
+  $normal: if($right, "right", "left")
+  $opposite: if($right, "left", "right")
+  @if $rtl
+    #{$property}-#{$opposite}: $spacing
+  @else
+    #{$property}-#{$normal}: $spacing
+
+=overflow-touch
+  -webkit-overflow-scrolling: touch
+
+=placeholder
+  $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input'
+  @each $placeholder in $placeholders
+    &:#{$placeholder}-placeholder
+      @content
+
+=font-smoothing
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+
+=block($spacing: $block-spacing)
+  &:not(:last-child)
+    margin-bottom: $spacing
+
+=typography($font-size: 1rem, $line-height: 1.5rem, $spacing: $block-spacing)
+  font-size: $font-size
+  line-height: $line-height
+  &:not(:last-child)
+    margin-bottom: $spacing
+
+=ltr
+  @if not $rtl
+    @content
+
+=rtl
+  @if $rtl
+    @content
+
+=ltr-position($spacing, $right: true)
+  $normal: if($right, "right", "left")
+  $opposite: if($right, "left", "right")
+  @if $rtl
+    #{$opposite}: $spacing
+  @else
+    #{$normal}: $spacing
+
+=ltr-property($property, $spacing, $right: true)
+  $normal: if($right, "right", "left")
+  $opposite: if($right, "left", "right")
+  @if $rtl
+    #{$property}-#{$opposite}: $spacing
+  @else
+    #{$property}-#{$normal}: $spacing
+
+=loader
+  animation: spinAround 500ms infinite linear
+  border: 2px solid $grey-1
+  border-radius: $radius-rounded
+  border-right-color: transparent
+  border-top-color: transparent
+  content: ""
+  display: block
+  height: 1em
+  position: relative
+  width: 1em
+
+=arrow($color: transparent)
+  border: 3px solid $color
+  border-radius: 2px
+  border-right: 0
+  border-top: 0
+  content: " "
+  display: block
+  height: 0.625em
+  margin-top: -0.6rem
+  pointer-events: none
+  position: absolute
+  top: 50%
+  transform: rotate(-45deg)
+  transform-origin: center
+  width: 0.625em
+
+=unselectable
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none

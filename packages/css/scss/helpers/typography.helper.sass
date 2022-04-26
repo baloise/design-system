@@ -1,0 +1,181 @@
+//
+// HEADINGS
+// -------------------------------------------------
+$title-color: $text-strong !default
+$title-family: $font-family-title !default
+$title-size: $size-3 !default
+$title-weight: $weight-bold !default
+$title-line-height: 1.125 !default
+$title-strong-color: inherit !default
+$title-strong-weight: inherit !default
+$title-sub-size: 0.75em !default
+$title-sup-size: 0.75em !default
+
+$subtitle-color: $text-strong !default
+$subtitle-family: $font-family-title !default
+$subtitle-size: $size-5 !default
+$subtitle-weight: $weight-normal !default
+$subtitle-line-height: 1.25 !default
+$subtitle-strong-color: $text-strong !default
+$subtitle-strong-weight: $weight-semibold !default
+$subtitle-negative-margin: -1.25rem !default
+
+.title,
+.subtitle
+  @extend %block
+  word-break: break-word
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  em,
+  span
+    font-weight: inherit
+  sub
+    font-size: $title-sub-size
+  sup
+    font-size: $title-sup-size
+
+.title
+  color: $title-color
+  @if $title-family
+    font-family: $title-family
+    font-size: $title-size
+    font-weight: $title-weight
+    line-height: $title-line-height
+  strong
+    color: $title-strong-color
+    font-weight: $title-strong-weight
+  &:not(.is-spaced) + .subtitle
+    margin-top: $subtitle-negative-margin
+
+.subtitle
+  color: $subtitle-color
+  @if $subtitle-family
+    font-family: $subtitle-family
+    font-size: $subtitle-size
+    font-weight: $subtitle-weight
+    line-height: $subtitle-line-height
+  strong
+    color: $subtitle-strong-color
+    font-weight: $subtitle-strong-weight
+  &:not(.is-spaced) + .title
+    margin-top: $subtitle-negative-margin
+
+.title.is-size-3,
+.title.is-size-4,
+.title.is-size-5,
+.title.is-size-6,
+.title.is-3,
+.title.is-4,
+.title.is-5,
+.title.is-6
+  font-weight: $weight-bold
+  letter-spacing: -1%
+
+//
+// PARAGRAGH & LINKS
+// -------------------------------------------------
+p
+  +block($space-5)
+
++tablet
+  p
+    +block($space-4)
+
+.is-bold,
+span.is-bold,
+p.is-bold,
+a.is-bold,
+.is-text-bold,
+.is-text-bold span
+  font-weight: $weight-bold
+
+span.is-small,
+p.is-small,
+a.is-small,
+.is-text-small,
+.is-text-small span
+  font-size: $size-small
+  line-height: 1rem
+
+p,
+a
+  font-family: $family-primary
+  line-height: 1.5rem
+  margin: 0
+  word-break: break-word
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+p.is-lead,
+p.is-lead > a
+  font-size: 1.2rem
+  line-height: 1.6rem
+  word-spacing: 0.05rem
+
+//
+// GENERAL HELPERS
+// -------------------------------------------------
+
+$alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'right': 'right')
+
+@each $alignment, $text-align in $alignments
+  .has-text-#{$alignment}
+    text-align: #{$text-align}
+
+@each $alignment, $text-align in $alignments
+  +mobile
+    .has-text-#{$alignment}-mobile
+      text-align: #{$text-align}
+  +tablet
+    .has-text-#{$alignment}-tablet
+      text-align: #{$text-align}
+  +tablet-only
+    .has-text-#{$alignment}-tablet-only
+      text-align: #{$text-align}
+  +touch
+    .has-text-#{$alignment}-touch
+      text-align: #{$text-align}
+  +desktop
+    .has-text-#{$alignment}-desktop
+      text-align: #{$text-align}
+
+.is-capitalized
+  text-transform: capitalize
+
+.is-lowercase
+  text-transform: lowercase
+
+.is-uppercase
+  text-transform: uppercase
+
+.is-italic
+  font-style: italic
+
+.has-text-weight-light
+  font-weight: $weight-light
+.has-text-weight-normal
+  font-weight: $weight-normal
+.has-text-weight-medium
+  font-weight: $weight-medium
+.has-text-weight-semibold
+  font-weight: $weight-semibold
+.has-text-weight-bold
+  font-weight: $weight-bold
+
+.is-family-primary
+  font-family: $family-primary
+
+.is-family-secondary
+  font-family: $family-secondary
+
+.is-family-text
+  font-family: $font-family-text
+
+.is-family-title
+  font-family: $font-family-title
+
+.is-family-monospace
+  font-family: $family-monospace
+
+.is-family-code
+  font-family: $family-code
