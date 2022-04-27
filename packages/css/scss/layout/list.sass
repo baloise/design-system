@@ -4,14 +4,14 @@
   +desktop
     margin-bottom: 32px
   li
-    font-family: $family-primary
-    color: $blue
+    font-family: var(--bal-font-family-text)
+    color: var(--bal-color-blue)
     list-style: disc
     margin-bottom: 8px
     &:last-child
       margin-bottom: 0
     &::marker
-      color: $blue
+      color: var(--bal-color-blue)
   &.has-bullet-circle li
     &::marker
       content: none
@@ -22,17 +22,17 @@
       margin-right: 7px
       width: 11px
       height: 11px
-      border-radius: $radius-rounded
-      background: $green-3
+      border-radius: var(--bal-radius-rounded)
+      background: var(--bal-color-green-3)
   &.has-bullet-circle
     &.has-bullet-red li::before
-      background: $red-3
+      background: var(--bal-color-red-3)
     &.has-bullet-yellow li::before
-      background: $yellow-3
+      background: var(--bal-color-yellow-3)
     &.has-bullet-green li::before
-      background: $green-3
+      background: var(--bal-color-green-3)
     &.has-bullet-purple li::before
-      background: $purple-3
+      background: var(--bal-color-purple-3)
   &.has-bullet-check li
     &::marker
       content: none
@@ -43,8 +43,8 @@
       margin-right: 8px
       width: 6px
       height: 12px
-      border-bottom: 2px solid $blue
-      border-right: 2px solid $blue
+      border-bottom: 2px solid var(--bal-color-blue)
+      border-right: 2px solid var(--bal-color-blue)
       border-top: 0
       border-left: 0
       -moz-transform: rotate(45deg)
@@ -55,7 +55,7 @@
   &.is-inverted
     li,
     li::marker
-      color: $white
+      color: var(--bal-color-white)
     &.has-bullet-check li::before
-      border-bottom-color: $white
-      border-right-color: $white
+      border-bottom-color: var(--bal-color-white)
+      border-right-color: var(--bal-color-white)

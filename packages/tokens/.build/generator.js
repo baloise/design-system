@@ -34,6 +34,18 @@ function generateSassVariables() {
       sassVar(color, colors[color].hex)
       cssVar(`color-${color}`, color)
     }
+
+    const typographyColors = BaloiseDesignToken.typography.colors
+    for (const color in typographyColors) {
+      sassVar(`text-${color}`, `$${typographyColors[color]}`)
+      cssVar(`color-text-${color}`, `text-${color}`)
+    }
+
+    const borderColors = BaloiseDesignToken.border.colors
+    for (const color in borderColors) {
+      sassVar(`border-${color}`, `$${borderColors[color]}`)
+      cssVar(`color-border-${color}`, `border-${color}`)
+    }
   }
 
   function generateBreakpoint() {

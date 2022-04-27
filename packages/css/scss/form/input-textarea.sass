@@ -4,7 +4,6 @@ $textarea-min-height: 8em !default
 
 %input-textarea
   @extend %input
-  box-shadow: $input-shadow
   max-width: 100%
   width: 100%
   &[readonly]
@@ -39,32 +38,21 @@ $textarea-min-height: 8em !default
 input.input,
 textarea.textarea
   border-width: 2px
-  border-radius: $radius
-  font-size: $size-normal
-  font-family: $family-primary
-  color: $text
+  border-radius: var(--bal-radius)
+  font-size: var(--bal-size-normal)
+  font-family: var(--bal-font-family-text)
+  color: var(--bal-color-blue)
   outline: none
   box-shadow: none
   &.is-danger
-    border-color: $danger-7
-    background: $danger-0
+    border-color: var(--bal-color-border-danger)
+    background: var(--bal-color-danger-light)
   &.is-success
-    border-color: $success-7
-    background: $success-0
+    border-color: var(--bal-color-border-success)
+    background: var(--bal-color-success-light)
   &.is-warning
-    border-color: $warning-7
-    background: $warning-0
+    border-color: var(--bal-color-border-warning)
+    background: var(--bal-color-warning-light)
 
 input.input
   min-height: 48px
-
-// .input,
-// .textarea,
-// input.input,
-// textarea.textarea
-//   &.is-disabled
-//     color: $input-disabled-color
-//     background: $input-disabled-background-color
-//     border-color: $input-disabled-border-color
-//     @include placeholder
-//       color: $input-disabled-placeholder-color

@@ -1,4 +1,3 @@
-$input-arrow: $blue !default
 
 .select
   display: inline-block
@@ -11,7 +10,7 @@ $input-arrow: $blue !default
   &:not(.is-multiple):not(.is-loading)
     &::after
       @extend %arrow
-      border-color: $input-arrow
+      border-color: var(--bal-color-blue)
       +ltr-position(1.125em)
       z-index: 4
   select
@@ -22,12 +21,12 @@ $input-arrow: $blue !default
     max-width: 100%
     width: 100%
     outline: none
-    border-radius: $radius-small
+    border-radius: var(--bal-radius-small)
     &::-ms-expand
       display: none
     &[disabled]:hover,
     fieldset[disabled] &:hover
-      border-color: $input-disabled-border-color
+      border-color: var(--bal-color-border-disabled)
     &:not([multiple])
       +ltr-property("padding", 2.5em)
     &[multiple]
@@ -38,11 +37,11 @@ $input-arrow: $blue !default
   // States
   &:not(.is-multiple):not(.is-loading):hover
     &::after
-      border-color: $light-blue-7
+      border-color: $light-blue-6
   // Modifiers
   &.is-disabled
     &::after
-      border-color: $input-disabled-color
+      border-color: var(--bal-color-border-disabled)
   &.is-fullwidth
     width: 100%
     select

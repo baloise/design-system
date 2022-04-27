@@ -9,126 +9,82 @@ const tokens = {
     'white': { hex: '#ffffff' },
     'black': { hex: '#000000' },
 
-    'grey-0': { hex: '#fafafa' },
-    'grey-1': { hex: '#f6f6f6' },
-    'grey-2': { hex: '#e8e8e8' },
-    'grey-3': { hex: '#d1d1d1' },
+    'grey-1': { hex: '#fafafa' },
+    'grey-2': { hex: '#f6f6f6' },
+    'grey-3': { hex: '#e8e8e8' },
     'grey-4': { hex: '#b6b6b6' },
-    'grey-5': { hex: '#a4a4a4' },
-    'grey-6': { hex: '#909090' },
-    'grey-7': { hex: '#747474' },
-    'grey-8': { hex: '#313131' },
-    'grey-9': { hex: '#171717' },
+    'grey-5': { hex: '#747474' },
+    'grey-6': { hex: '#313131' },
 
-    'blue-0': { hex: '#e5e7f0' },
-    'blue-1': { hex: '#cccfe2' },
-    'blue-2': { hex: '#b3b6d4' },
-    'blue-3': { hex: '#999ec5' },
-    'blue-4': { hex: '#8086b7' },
-    'blue-5': { hex: '#666ea8' },
-    'blue-6': { hex: '#333d8b' },
-    'blue-7': { hex: '#000d6e' },
-    'blue-8': { hex: '#00094d' },
-    'blue-9': { hex: '#000739' },
+    'blue-1': { hex: '#e5e7f0' }, // blue -0.10
+    'blue-2': { hex: '#b3b6d4' }, // #293485
+    'blue-3': { hex: '#656ea8' },
+    'blue-4': { hex: '#293485' },
+    'blue-5': { hex: '#000d6e' },
+    'blue-6': { hex: '#000739' },
 
-    'light-blue-0': { hex: '#e7f2fe' },
-    'light-blue-1': { hex: '#b7d9fb' },
-    'light-blue-2': { hex: '#a7d1fa' },
-    'light-blue-3': { hex: '#86c0f8' },
-    'light-blue-4': { hex: '#56a7f5' },
-    'light-blue-5': { hex: '#6672cc' },
-    'light-blue-6': { hex: '#3343bb' },
-    'light-blue-7': { hex: '#0014aa' },
-    'light-blue-8': { hex: '#001088' },
-    'light-blue-9': { hex: '#000a55' },
+    'light-blue-1': { hex: '#e5f1fe' }, // blue 3 70%
+    'light-blue-2': { hex: '#a7d1fa' }, // blue 3
+    'light-blue-3': { hex: '#56a7f5' },
+    'light-blue-4': { hex: '#6672cc' },
+    'light-blue-5': { hex: '#0014aa' }, // hover blue
+    'light-blue-6': { hex: '#000a55' },
 
-    'purple-0': { hex: '#f9f3ff' },
     'purple-1': { hex: '#f9f3ff' },
     'purple-2': { hex: '#e1d9ff' },
     'purple-3': { hex: '#b8b2ff' },
     'purple-4': { hex: '#be82fa' },
     'purple-5': { hex: '#9f52cc' },
     'purple-6': { hex: '#6c2273' },
-    'purple-7': { hex: '#6c2273' },
-    'purple-8': { hex: '#6c2273' },
-    'purple-9': { hex: '#6c2273' },
 
-    'green-0': { hex: '#e9fbf7' },
     'green-1': { hex: '#e9fbf7' },
     'green-2': { hex: '#cbf2ec' },
     'green-3': { hex: '#94e3d4' },
     'green-4': { hex: '#21d9ac' },
     'green-5': { hex: '#00b28f' },
     'green-6': { hex: '#1b5951' },
-    'green-7': { hex: '#1b5951' },
-    'green-8': { hex: '#1b5951' },
-    'green-9': { hex: '#1b5951' },
 
-    'yellow-0': { hex: '#fff9e8' },
     'yellow-1': { hex: '#fff9e8' },
     'yellow-2': { hex: '#ffecbc' },
     'yellow-3': { hex: '#fae052' },
     'yellow-4': { hex: '#ffbe19' },
     'yellow-5': { hex: '#fa9319' },
     'yellow-6': { hex: '#b24a00' },
-    'yellow-7': { hex: '#b24a00' },
-    'yellow-8': { hex: '#b24a00' },
-    'yellow-9': { hex: '#b24a00' },
 
-    'red-0': { hex: '#ffeef1' },
     'red-1': { hex: '#ffeef1' },
     'red-2': { hex: '#ffd7d7' },
     'red-3': { hex: '#ffaca6' },
     'red-4': { hex: '#ff596f' },
     'red-5': { hex: '#d9304c' },
     'red-6': { hex: '#99172d' },
-    'red-7': { hex: '#99172d' },
-    'red-8': { hex: '#99172d' },
-    'red-9': { hex: '#99172d' },
 
-    'info-0': { hex: '#ebf1f7' },
-    'info-1': { hex: '#c4d6e8' },
-    'info-2': { hex: '#9dbad8' },
-    'info-3': { hex: '#89add1' },
-    'info-4': { hex: '#6291c2' },
-    'info-5': { hex: '#4f84ba' },
-    'info-6': { hex: '#2869ab' },
-    'info-7': { hex: '#145ba3' },
-    'info-8': { hex: '#0f447a' },
-    'info-9': { hex: '#0a2e52' },
+    'info-1': { hex: '#e8f1fb' },
+    'info-2': { hex: '#a4c9ed' },
+    'info-3': { hex: '#60a0e0' },
+    'info-4': { hex: '#1c77d2' },
+    'info-5': { hex: '#155ba3' },
+    'info-6': { hex: '#0e457b' },
 
-    'success-0': { hex: '#d7e6dc' },
-    'success-1': { hex: '#c3dacc' },
-    'success-2': { hex: '#afcdbb' },
-    'success-3': { hex: '#9bc1aa' },
-    'success-4': { hex: '#88b599' },
-    'success-5': { hex: '#609c77' },
-    'success-6': { hex: '#398456' },
-    'success-7': { hex: '#116b34' },
-    'success-8': { hex: '#0d5027' },
-    'success-9': { hex: '#09361a' },
+    'success-1': { hex: '#e8f3ec' },
+    'success-2': { hex: '#a1cfb3' },
+    'success-3': { hex: '#5bab7a' },
+    'success-4': { hex: '#168741' },
+    'success-5': { hex: '#116b34' },
+    'success-6': { hex: '#0b5227' },
 
-    'warning-0': { hex: '#feedd8' },
-    'warning-1': { hex: '#fddbb2' },
-    'warning-2': { hex: '#fcc98c' },
-    'warning-3': { hex: '#fcb765' },
-    'warning-4': { hex: '#fba53f' },
-    'warning-5': { hex: '#fa9319' },
-    'warning-6': { hex: '#d17b15' },
-    'warning-7': { hex: '#a76211' },
-    'warning-8': { hex: '#7e4a0d' },
-    'warning-9': { hex: '#543108' },
+    'warning-1': { hex: '#fff9e8' },
+    'warning-2': { hex: '#ffe5a3' },
+    'warning-3': { hex: '#ffd25e' },
+    'warning-4': { hex: '#ffbe19' },
+    'warning-5': { hex: '#f99319' },
+    'warning-6': { hex: '#c97612' },
 
-    'danger-0': { hex: '#faebe9' },
-    'danger-1': { hex: '#f2c4be' },
-    'danger-2': { hex: '#e99d94' },
-    'danger-3': { hex: '#e58a7f' },
-    'danger-4': { hex: '#e1766a' },
-    'danger-5': { hex: '#dc6355' },
-    'danger-6': { hex: '#d43c2a' },
-    'danger-7': { hex: '#cb1500' },
-    'danger-8': { hex: '#981000' },
-    'danger-9': { hex: '#660b00' },
+    'danger-1': { hex: '#fce8e6' },
+    'danger-2': { hex: '#f7a299' },
+    'danger-3': { hex: '#f05d4d' },
+    'danger-4': { hex: '#ea1800' },
+    'danger-5': { hex: '#cb1501' },
+    'danger-6': { hex: '#a01100' },
   },
   breakpoint: {
     tablet: '769px',
@@ -186,12 +142,17 @@ const tokens = {
     width: '2px',
     colors: {
       blue: 'blue',
-      normal: 'grey-2',
-      hover: 'grey-2',
+      normal: 'grey-3',
+      hover: 'grey-3',
       active: 'blue',
+      // 'focus': 'purple-6',
+      // 'focus-inverted': 'yellow-3',
+      warning: 'warning-5',
+      success: 'success-4',
+      danger: 'danger-4',
       valid: 'success-4',
       invalid: 'danger-4',
-      disabled: 'grey-2',
+      disabled: 'grey-3',
     },
   },
   typography: {
@@ -279,85 +240,94 @@ const tokens = {
       },
       desktop: {},
     },
+    colors: {
+      'blue': 'blue',
+      'black': 'black',
+      'normal': 'blue',
+      'light-blue': 'light-blue-5',
+      'hover': 'light-blue-5',
+      'blue-dark': 'blue-6',
+      'active': 'blue-6',
+      'white': 'white',
+      'blue-light': 'blue-3',
+      'hint': 'blue-3',
+      'help': 'blue-3',
+      'success': 'success-4',
+      'valid': 'success-4',
+      'danger': 'danger-4',
+      'invalid': 'danger-4',
+      'warning': 'warning-5',
+      'grey': 'grey-5',
+      'disabled': 'grey-5',
+    },
   },
 } as BaloiseDesignTokens
 
 /************************************************************
  * Aliases
+ *
  ***********************************************************/
-tokens.color['grey-light'] = tokens.color['grey-0']
-tokens.color['grey'] = tokens.color['grey-3']
+tokens.color['grey-light'] = tokens.color['grey-1']
 tokens.color['grey-dark'] = tokens.color['grey-5']
-tokens.color['grey-text'] = tokens.color['grey-7']
+tokens.color['grey'] = tokens.color['grey-3']
 
-tokens.color['blue-light'] = tokens.color['blue-0']
-tokens.color['blue'] = tokens.color['blue-7']
-tokens.color['blue-dark'] = tokens.color['blue-9']
-tokens.color['blue-text-light'] = tokens.color['blue-5']
-tokens.color['blue-text'] = tokens.color['blue-7']
+tokens.color['blue-light'] = tokens.color['blue-1']
+tokens.color['blue-dark'] = tokens.color['blue-6']
+tokens.color['blue'] = tokens.color['blue-5']
 
-tokens.color['light-blue-light'] = tokens.color['light-blue-0']
-tokens.color['light-blue'] = tokens.color['light-blue-2']
-tokens.color['light-blue-dark'] = tokens.color['light-blue-7']
+tokens.color['blue-hover'] = tokens.color['light-blue-5']
+tokens.color['blue-active'] = tokens.color['blue-6']
+
+tokens.color['light-blue'] = tokens.color['light-blue-1']
+tokens.color['light-blue-dark'] = tokens.color['light-blue-5']
+tokens.color['light-blue-hover'] = tokens.color['light-blue-1']
+tokens.color['light-blue-active'] = tokens.color['light-blue-1']
 
 tokens.color['purple-light'] = tokens.color['purple-1']
-tokens.color['purple'] = tokens.color['purple-3']
 tokens.color['purple-dark'] = tokens.color['purple-6']
-tokens.color['purple-text'] = tokens.color['purple-6']
+tokens.color['purple'] = tokens.color['purple-3']
 
 tokens.color['green-light'] = tokens.color['green-1']
-tokens.color['green'] = tokens.color['green-3']
 tokens.color['green-dark'] = tokens.color['green-6']
-tokens.color['green-text'] = tokens.color['green-6']
+tokens.color['green'] = tokens.color['green-3']
 
 tokens.color['yellow-light'] = tokens.color['yellow-1']
-tokens.color['yellow'] = tokens.color['yellow-3']
 tokens.color['yellow-dark'] = tokens.color['yellow-6']
-tokens.color['yellow-text'] = tokens.color['yellow-6']
+tokens.color['yellow'] = tokens.color['yellow-3']
 
 tokens.color['red-light'] = tokens.color['red-1']
-tokens.color['red'] = tokens.color['red-3']
 tokens.color['red-dark'] = tokens.color['red-6']
-tokens.color['red-text'] = tokens.color['red-6']
+tokens.color['red'] = tokens.color['red-3']
 
-tokens.color['primary-0'] = tokens.color['blue-0']
 tokens.color['primary-1'] = tokens.color['blue-1']
 tokens.color['primary-2'] = tokens.color['blue-2']
 tokens.color['primary-3'] = tokens.color['blue-3']
 tokens.color['primary-4'] = tokens.color['blue-4']
 tokens.color['primary-5'] = tokens.color['blue-5']
 tokens.color['primary-6'] = tokens.color['blue-6']
-tokens.color['primary-7'] = tokens.color['blue-7']
-tokens.color['primary-8'] = tokens.color['blue-8']
-tokens.color['primary-9'] = tokens.color['blue-9']
-tokens.color['primary-light'] = tokens.color['blue-0']
-tokens.color['primary'] = tokens.color['blue-7']
-tokens.color['primary-dark'] = tokens.color['blue-9']
-tokens.color['primary-text-light'] = tokens.color['blue-5']
-tokens.color['primary-text'] = tokens.color['blue-7']
+
+tokens.color['primary-light'] = tokens.color['blue-1']
+tokens.color['primary'] = tokens.color['blue-5']
+tokens.color['primary-dark'] = tokens.color['blue-6']
 
 tokens.color['info-light'] = tokens.color['info-1']
 tokens.color['info'] = tokens.color['info-3']
 tokens.color['info-dark'] = tokens.color['info-6']
-tokens.color['info-text'] = tokens.color['info-6']
 
 tokens.color['success-light'] = tokens.color['success-1']
 tokens.color['success'] = tokens.color['success-3']
 tokens.color['success-dark'] = tokens.color['success-6']
-tokens.color['success-text'] = tokens.color['success-6']
 
 tokens.color['warning-light'] = tokens.color['warning-1']
 tokens.color['warning'] = tokens.color['warning-3']
 tokens.color['warning-dark'] = tokens.color['warning-6']
-tokens.color['warning-text'] = tokens.color['warning-6']
 
 tokens.color['danger-light'] = tokens.color['danger-1']
 tokens.color['danger'] = tokens.color['danger-3']
 tokens.color['danger-dark'] = tokens.color['danger-6']
-tokens.color['danger-text'] = tokens.color['danger-6']
 
-tokens.color['valid'] = tokens.color['success-1']
-tokens.color['invalid'] = tokens.color['danger-1']
+tokens.color['valid'] = tokens.color['success-light']
+tokens.color['invalid'] = tokens.color['danger-light']
 tokens.color['disabled'] = tokens.color['grey-2']
 
 tokens.typography.sizes.mobile['large'] = tokens.typography.sizes.mobile['3']
@@ -406,6 +376,9 @@ export interface BaloiseDesignTokens {
   typography: {
     familyTitle: string
     familyText: string
+    colors: {
+      [key: string]: string
+    }
     sizes: {
       mobile: {
         [key: string]: {

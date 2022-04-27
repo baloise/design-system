@@ -1,95 +1,22 @@
-$file-border-color: $blue-2 !default
-$file-radius: $radius !default
-
-$file-cta-background-color: $grey-0 !default
-$file-cta-color: $text !default
-$file-cta-hover-color: $text-strong !default
-$file-cta-active-color: $text-strong !default
-
-$file-name-border-color: $blue-2 !default
-$file-name-border-style: solid !default
-$file-name-border-width: 1px 1px 1px 0 !default
-$file-name-max-width: 16em !default
-
 .file
   @extend %unselectable
   align-items: stretch
   display: flex
   justify-content: flex-start
   position: relative
-  // Sizes
-  &.is-small
-    font-size: $size-small
-  &.is-normal
-    font-size: $size-normal
-  &.is-medium
-    font-size: $size-medium
-    .file-icon
-      .fa
-        font-size: 21px
-  &.is-large
-    font-size: $size-large
-    .file-icon
-      .fa
-        font-size: 28px
-  // Modifiers
-  &.has-name
-    .file-cta
-      border-bottom-right-radius: 0
-      border-top-right-radius: 0
-    .file-name
-      border-bottom-left-radius: 0
-      border-top-left-radius: 0
-    &.is-empty
-      .file-cta
-        border-radius: $file-radius
-      .file-name
-        display: none
-  &.is-boxed
-    .file-label
-      flex-direction: column
-    .file-cta
-      flex-direction: column
-      height: auto
-      padding: 1em 3em
-    .file-name
-      border-width: 0 1px 1px
-    .file-icon
-      height: 1.5em
-      width: 1.5em
-      .fa
-        font-size: 21px
-    &.is-small
-      .file-icon .fa
-        font-size: 14px
-    &.is-medium
-      .file-icon .fa
-        font-size: 28px
-    &.is-large
-      .file-icon .fa
-        font-size: 35px
-    &.has-name
-      .file-cta
-        border-radius: $file-radius $file-radius 0 0
-      .file-name
-        border-radius: 0 0 $file-radius $file-radius
-        border-width: 0 1px 1px
-  &.is-centered
-    justify-content: center
-  &.is-fullwidth
-    .file-label
-      width: 100%
-    .file-name
-      flex-grow: 1
-      max-width: none
-  &.is-right
-    justify-content: flex-end
-    .file-cta
-      border-radius: 0 $file-radius $file-radius 0
-    .file-name
-      border-radius: $file-radius 0 0 $file-radius
-      border-width: 1px 0 1px 1px
-      order: -1
+  width: 100%
+  font-size: var(--bal-size-normal)
+  justify-content: center
+  .file-label
+    width: 100%
+    flex-direction: column
+  .file-cta
+    flex-direction: column
+    height: auto
+    padding: 1em 3em
+  .file-icon
+    height: 1.5em
+    width: 1.5em
 
 .file-label
   align-items: stretch
@@ -98,18 +25,25 @@ $file-name-max-width: 16em !default
   justify-content: flex-start
   overflow: hidden
   position: relative
+  gap: 8px
+  font-weight: $weight-bold
+  color: var(--bal-color-blue)
+  text-align: center
   &:hover
+    .file-cta,
+    .file-label
+      color: var(--bal-color-light-blue-dark)
     .file-cta
-      background-color: bulmaDarken($file-cta-background-color, 2.5%)
-      color: $file-cta-hover-color
-    .file-name
-      border-color: bulmaDarken($file-name-border-color, 2.5%)
-  &:active
+      background-color: var(--bal-color-grey-1)
+      border-color: var(--bal-color-border-normal)
+  &:active,
+  &:focus-within
+    .file-cta,
+    .file-label
+      color: var(--bal-color-blue-dark)
     .file-cta
-      background-color: bulmaDarken($file-cta-background-color, 5%)
-      color: $file-cta-active-color
-    .file-name
-      border-color: bulmaDarken($file-name-border-color, 5%)
+      background-color: var(--bal-color-grey-1)
+      border-color: var(--bal-color-border-active)
 
 .file-input
   height: 100%
@@ -120,29 +54,20 @@ $file-name-max-width: 16em !default
   top: 0
   width: 100%
 
-.file-cta,
-.file-name
+.file-cta
   @extend %control
-  border-color: $file-border-color
-  border-radius: $file-radius
+  border-style: dashed
+  border-color: var(--bal-color-border-normal)
+  border-radius: var(--bal-radius)
+  background: var(--bal-color-white)
   font-size: 1em
   padding-left: 1em
   padding-right: 1em
   white-space: nowrap
 
 .file-cta
-  background-color: $file-cta-background-color
-  color: $file-cta-color
-
-.file-name
-  border-color: $file-name-border-color
-  border-style: $file-name-border-style
-  border-width: $file-name-border-width
-  display: block
-  max-width: $file-name-max-width
-  overflow: hidden
-  text-align: inherit
-  text-overflow: ellipsis
+  background-color: var(--bal-color-white)
+  color: var(--bal-color-blue)
 
 .file-icon
   align-items: center
@@ -151,5 +76,12 @@ $file-name-max-width: 16em !default
   justify-content: center
   +ltr-property("margin", 0.5em)
   width: 1em
-  .fa
-    font-size: 14px
+
+.file.is-disabled
+  .file-label,
+  .file-cta
+    @extend %disabled
+    color: var(--bal-color-text-disabled)
+  .file-cta
+    border-color: var(--bal-color-border-disabled)
+    background: var(--bal-color-disabled)

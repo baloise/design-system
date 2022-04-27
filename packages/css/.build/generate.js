@@ -5,31 +5,47 @@ const BaloiseDesignToken = require('../node_modules/@baloise/design-system-next-
 const SASS_PATH = path.join(__dirname, '..', 'scss/generated')
 
 async function main() {
-  generateColors()
+  generateBackgroundColors()
+  generateTextColors()
   generateBorders()
   generateRadius()
   generateShadow()
   generateTypography()
 }
 
-async function generateColors() {
+async function generateBackgroundColors() {
   const colors = BaloiseDesignToken.color
   const lines = []
+
+  lines.push(`.has-background-transparent`)
+  lines.push(`  background: transparent`)
+  lines.push(`.has-fill-transparent`)
+  lines.push(`  fill: transparent`)
+  lines.push(`  @include fillSvg(transparent)`)
+  lines.push(``)
 
   for (const color in colors) {
     lines.push(`.has-background-${color}`)
     lines.push(`  background: var(--bal-color-${color})`)
-    lines.push(``)
-    lines.push(`.has-text-${color}`)
-    lines.push(`  color: var(--bal-color-${color})`)
-    lines.push(``)
     lines.push(`.has-fill-${color}`)
     lines.push(`  fill: var(--bal-color-${color})`)
     lines.push(`  @include fillSvg(var(--bal-color-${color}))`)
     lines.push(``)
   }
 
-  await file.write(path.join(SASS_PATH, 'color.helpers.sass'), [...lines, ''].join('\n'))
+  await file.write(path.join(SASS_PATH, 'color.background.helpers.sass'), [...lines, ''].join('\n'))
+}
+
+async function generateTextColors() {
+  const typographyColors = BaloiseDesignToken.typography.colors
+  const lines = []
+
+  for (const color in typographyColors) {
+    lines.push(`.has-text-${color}`)
+    lines.push(`  color: var(--bal-color-${typographyColors[color]})`)
+  }
+
+  await file.write(path.join(SASS_PATH, 'color.text.helpers.sass'), [...lines, ''].join('\n'))
 }
 
 async function  generateBorders() {
@@ -45,7 +61,6 @@ async function  generateBorders() {
     const p = pos[index]
     lines.push(`.has-border-${p}-none`)
     lines.push(`  border-${p}: none`)
-    lines.push(``)
   }
 
   for (const c in borderColors) {

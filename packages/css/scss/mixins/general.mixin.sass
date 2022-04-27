@@ -9,6 +9,12 @@
 =overflow-touch
   -webkit-overflow-scrolling: touch
 
+=focus-shadow
+  box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-purple-dark) 0 0 0 5px !important
+
+=focus-inverted-shadow
+  box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-yellow)  0 0 0 5px !important
+
 =placeholder
   $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input'
   @each $placeholder in $placeholders
@@ -87,3 +93,16 @@
   -moz-user-select: none
   -ms-user-select: none
   user-select: none
+
+=disabled
+  cursor: not-allowed !important
+  pointer-events: none !important
+
+=center($width, $height: 0)
+  position: absolute
+  @if $height != 0
+    left: calc(50% - (#{$width} / 2))
+    top: calc(50% - (#{$height} / 2))
+  @else
+    left: calc(50% - (#{$width} / 2))
+    top: calc(50% - (#{$width} / 2))
