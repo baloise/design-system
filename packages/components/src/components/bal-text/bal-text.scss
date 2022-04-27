@@ -53,7 +53,7 @@ p.is-small {
   @include padding(0);
 
   font-size: $size-small;
-  line-height: 16px;
+  line-height: 1.25rem;
   margin: 0 0 16px 0;
 }
 
@@ -61,7 +61,7 @@ span.is-small,
 b.is-small,
 small.is-small {
   font-size: $size-small;
-  line-height: 16px;
+  line-height: 1.25rem;
 }
 
 @include tablet() {
