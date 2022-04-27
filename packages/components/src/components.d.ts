@@ -613,10 +613,6 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
-        /**
-          * If `true` a asterix (*) is added to the label text
-         */
-        "required": boolean;
     }
     interface BalFieldMessage {
         /**
@@ -3169,10 +3165,6 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
-        /**
-          * If `true` a asterix (*) is added to the label text
-         */
-        "required"?: boolean;
     }
     interface BalFieldMessage {
         /**

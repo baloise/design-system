@@ -71,6 +71,16 @@ Basic.parameters = {
   controls: { exclude: excludedControls },
 }
 
+export const FlatCard = Basic.bind({})
+FlatCard.args = {
+  color: '',
+  flat: true,
+}
+FlatCard.parameters = {
+  ...component.sourceCode(FlatCard),
+  controls: { exclude: excludedControls },
+}
+
 export const CardTitle = args => ({
   components: { ...component.components, BalButton, BalHeading },
   setup: () => ({ args }),

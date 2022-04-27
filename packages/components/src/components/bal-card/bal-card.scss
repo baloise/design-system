@@ -5,6 +5,7 @@
 bal-card,
 .bal-card {
   display: block;
+  background: transparent;
 
   &.is-flat {
     box-shadow: none;
