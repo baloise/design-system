@@ -10,11 +10,6 @@ export class FieldLabel {
   parentBalFieldElement!: HTMLBalFieldElement | null
 
   /**
-   * If `true` a asterix (*) is added to the label text
-   */
-  @Prop() required = false
-
-  /**
    * If `true` the component gets a invalid style.
    */
   @Prop() invalid = false
@@ -39,7 +34,6 @@ export class FieldLabel {
       <Host>
         <label class="label">
           <slot></slot>
-          {this.required === true ? ' *' : ''}
         </label>
       </Host>
     )
