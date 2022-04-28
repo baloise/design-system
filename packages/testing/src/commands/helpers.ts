@@ -130,7 +130,6 @@ export const wrapCommand = (
       .wrapComponent(element as any, { log: false })
       .find(selector, { log: false })
       .then($el => {
-        console.log($el)
         Cypress.log({
           type: 'parent',
           $el,
