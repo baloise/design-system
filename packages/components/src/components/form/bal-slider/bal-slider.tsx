@@ -159,12 +159,14 @@ export class Slider {
     return ~~(max / this.step) + 1
   }
 
-  cssWidth(isUpper = false): string {
-    const setValue: number = this.value === '' ? 0 : (this.value as number)
+  private cssWidth(isUpper = false): string {
+    const a: number = this.value === '' ? 0 : (this.value as number)
+    const b: number = (100 / this.max) * a
+
     if (!isUpper) {
-      return `${100 - setValue}%`
+      return `${100 - b}%`
     }
-    return `${setValue}%`
+    return `${b}%`
   }
 
   private onInput = (ev: Event) => {
@@ -197,6 +199,14 @@ export class Slider {
     if (!this.disabled && !this.readonly) {
       this.balClick.emit(ev)
     }
+  }
+
+  private getNumberOfSteps() {
+    const steps = []
+    for (let step = 0; step < this.numberOfSteps; step++) {
+      steps.push(step)
+    }
+    return steps
   }
 
   render() {
@@ -252,7 +262,7 @@ export class Slider {
           <div class="slider-value slider-value__right"></div>
         </div>
         <div class="steps" style={{ display: this.hasTicks ? 'flex' : 'none' }}>
-          {Array(this.numberOfSteps).map((_, step) => (
+          {this.getNumberOfSteps().map(step => (
             <div class="step" data-step-id={step}></div>
           ))}
         </div>

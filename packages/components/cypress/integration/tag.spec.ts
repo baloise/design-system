@@ -9,12 +9,8 @@ describe('Tag', () => {
       cy.getByTestId('tag').contains('My tag')
     })
 
-    it('should have prop color', () => {
-      cy.getByTestId('tag').should('have.attr', 'color', 'danger')
-    })
-
     it('should fire close event', () => {
-      cy.getByTestId('closable-tag').spyEvent('balCloseClick').find('bal-close').click()
+      cy.getByTestId('tag').setProperty('closable', true).spyEvent('balCloseClick').find('bal-close').click()
 
       cy.get('@balCloseClick').should('have.been.calledOnce')
     })
@@ -25,7 +21,7 @@ describe('Tag', () => {
 
     describe('have the AA standard', () => {
       it('basic', () => {
-        cy.getByTestId('tag').removeProperty('color').testA11y()
+        cy.getByTestId('tag').testA11y()
       })
 
       testColorA11y(['danger', 'info', 'primary', 'success', 'warning'])

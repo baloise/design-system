@@ -9,10 +9,12 @@ export const defaultConfig: BalConfigState = {
 
 export const defaultLocale = `${defaultConfig.language}-${defaultConfig.region}`
 
-export const initialize = (userConfig: BalConfig = {}, win = window as any) => {
+export const initialize = (userConfig: BalConfig = {}, win = {} as any) => {
   if (typeof (window as any) === 'undefined') {
     return
   }
+
+  win = window
 
   win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 

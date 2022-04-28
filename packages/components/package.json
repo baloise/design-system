@@ -69,7 +69,7 @@
   "dependencies": {
     "@baloise/design-system-next-fonts": "10.10.3",
     "@baloise/design-system-next-icons": "10.10.3",
-    "@baloise/web-app-utils": "^3.3.2",
+    "@baloise/web-app-utils": "^3.3.3",
     "@popperjs/core": "^2.11.4",
     "@stencil/core": "^2.14.2",
     "@types/big.js": "^6.1.3",
@@ -96,7 +96,7 @@
     "@babel/core": "^7.17.8",
     "@baloise/angular-output-target": "^1.2.8",
     "@baloise/react-output-target": "^0.4.8",
-    "@baloise/stencil-vite-fix": "10.10.1",
+    "@baloise/stencil-vite-fix": "10.10.7",
     "@baloise/vue-output-target": "^0.8.1",
     "@etchteam/storybook-addon-status": "^4.2.0",
     "@stencil/postcss": "^2.1.0",
