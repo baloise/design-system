@@ -251,7 +251,7 @@ Todo add some description to the component and its purpose
 
 <bal-doc-app>
   <bal-button-group class="mb-6" position="center">
-    <a class="button is-info is-outlined" href="?path=/story/components-${storyId}--basic">
+    <a class="button is-primary" href="?path=/story/components-${storyId}--basic">
       Go to playground (Canvas)
     </a>
   </bal-button-group>

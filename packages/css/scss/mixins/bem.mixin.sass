@@ -1,0 +1,24 @@
+$componentPrefix: 'bal-'
+
+=component($name)
+  #{$componentPrefix}#{$name}
+    @content
+
+=block($name)
+  .#{$componentPrefix}#{$name}
+    @content
+
+=element($name)
+  &__#{$name}
+    @content
+
+=elements($names...)
+  $selector: ()
+  @each $name in $names
+    $selector: append($selector, unquote('&__#{$name}'), comma)
+  #{$selector}
+    @content
+
+=modifier($name)
+  &--#{$name}
+    @content

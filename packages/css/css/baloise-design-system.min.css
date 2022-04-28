@@ -62,7 +62,7 @@
   --bal-color-light-blue-3: #56a7f5;
   --bal-color-light-blue-4: #6672cc;
   --bal-color-light-blue-5: #0014aa;
-  --bal-color-light-blue-6: #000a55;
+  --bal-color-light-blue-6: #000739;
   --bal-color-purple-1: #f9f3ff;
   --bal-color-purple-2: #e1d9ff;
   --bal-color-purple-3: #b8b2ff;
@@ -269,10 +269,10 @@
   --bal-space-desktop-7: 3rem;
   --bal-space-desktop-8: 4rem;
 }
-.title:not(:last-child),
-.subtitle:not(:last-child),
 .table-container:not(:last-child),
-.table:not(:last-child) {
+.table:not(:last-child),
+.title:not(:last-child),
+.subtitle:not(:last-child) {
   margin-bottom: 1.5rem;
 }
 .button,
@@ -334,13 +334,16 @@ fieldset[disabled] .input {
   cursor: not-allowed;
 }
 .button:focus-visible:not(:active),
-.button.is-focused:not(:active) {
+.button.is-focused:not(:active),
+a.is-link:focus:not(:active) {
   box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-purple-dark) 0 0 0 5px !important;
 }
 .button.is-light:focus-visible:not(:active),
 .button.is-light.is-focused:not(:active),
 .button.is-inverted:focus-visible:not(:active),
-.button.is-inverted.is-focused:not(:active) {
+.button.is-inverted.is-focused:not(:active),
+a.is-link.is-inverted:focus:not(:active),
+a.is-link.is-inverted:focus-visible:not(:active) {
   box-shadow: var(--bal-color-white) 0 0 0 2px, var(--bal-color-yellow) 0 0 0 5px !important;
 }
 .select:not(.is-multiple):not(.is-loading)::after {
@@ -617,12 +620,6 @@ select,
 textarea {
   font-family: BaloiseCreateText, Arial, sans-serif;
 }
-code,
-pre {
-  -moz-osx-font-smoothing: auto;
-  -webkit-font-smoothing: auto;
-  font-family: monospace;
-}
 body {
   color: #000d6e;
   font-size: 1em;
@@ -639,13 +636,6 @@ a strong {
 }
 a:hover {
   color: #000d6e;
-}
-code {
-  background-color: #fafafa;
-  color: #d9304c;
-  font-size: 0.875em;
-  font-weight: normal;
-  padding: 0.25em 0.5em 0.25em;
 }
 hr {
   background-color: #b3b6d4;
@@ -675,22 +665,6 @@ strong {
 }
 fieldset {
   border: none;
-}
-pre {
-  -webkit-overflow-scrolling: touch;
-  background-color: #fafafa;
-  color: #000d6e;
-  font-size: 0.875em;
-  overflow-x: auto;
-  padding: 1.25rem 1.5rem;
-  white-space: pre;
-  word-wrap: normal;
-}
-pre code {
-  background-color: rgba(0, 0, 0, 0);
-  color: currentColor;
-  font-size: 1em;
-  padding: 0;
 }
 table td,
 table th {
@@ -733,6 +707,104 @@ table th {
     padding-right: 32px;
     max-width: 992px;
   }
+}
+.title,
+.subtitle {
+  word-break: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.title em,
+.title span,
+.subtitle em,
+.subtitle span {
+  font-weight: inherit;
+}
+.title sub,
+.subtitle sub {
+  font-size: 0.75em;
+}
+.title sup,
+.subtitle sup {
+  font-size: 0.75em;
+}
+.title {
+  color: #000d6e;
+  font-family: BaloiseCreateHeadline, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.125;
+}
+.title strong {
+  color: inherit;
+  font-weight: inherit;
+}
+.title:not(.is-spaced) + .subtitle {
+  margin-top: -1.25rem;
+}
+.subtitle {
+  color: #000d6e;
+  font-family: BaloiseCreateHeadline, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+.subtitle strong {
+  color: #000d6e;
+  font-weight: 600;
+}
+.subtitle:not(.is-spaced) + .title {
+  margin-top: -1.25rem;
+}
+.title.is-size-3,
+.title.is-size-4,
+.title.is-size-5,
+.title.is-size-6,
+.title.is-3,
+.title.is-4,
+.title.is-5,
+.title.is-6 {
+  font-weight: 700;
+  letter-spacing: -1%;
+}
+p:not(:last-child) {
+  margin-bottom: 1.25rem;
+}
+@media screen and (min-width: 769px), print {
+  p:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+.is-bold,
+span.is-bold,
+p.is-bold,
+a.is-bold,
+.is-text-bold,
+.is-text-bold span {
+  font-weight: 700;
+}
+span.is-small,
+p.is-small,
+a.is-small,
+.is-text-small,
+.is-text-small span {
+  font-size: var(--bal-size-small);
+  line-height: 1rem;
+}
+p,
+a {
+  font-family: BaloiseCreateText, Arial, sans-serif;
+  line-height: 1.5rem;
+  margin: 0;
+  word-break: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+p.is-lead,
+p.is-lead > a {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  word-spacing: 0.05rem;
 }
 .bal-app.has-sticky-footer,
 .bal-app .has-sticky-footer {
@@ -903,15 +975,73 @@ table.table td.has-buttons .buttons {
 a.is-link {
   font-weight: 700;
   text-decoration: underline;
+  border-radius: var(--bal-radius-small);
+  color: var(--bal-color-blue);
+}
+a.is-link svg,
+a.is-link g,
+a.is-link path,
+a.is-link circle {
+  fill: var(--bal-color-blue);
+}
+a.is-link:hover {
+  text-decoration: underline;
+  color: var(--bal-color-light-blue-dark);
+}
+a.is-link:hover svg,
+a.is-link:hover g,
+a.is-link:hover path,
+a.is-link:hover circle {
+  fill: var(--bal-color-light-blue-dark);
+}
+a.is-link:active,
+a.is-link:visited {
+  text-decoration: underline;
+  color: var(--bal-color-blue-dark);
+}
+a.is-link:active svg,
+a.is-link:active g,
+a.is-link:active path,
+a.is-link:active circle,
+a.is-link:visited svg,
+a.is-link:visited g,
+a.is-link:visited path,
+a.is-link:visited circle {
+  fill: var(--bal-color-blue-dark);
 }
 a.is-link.is-inverted {
   color: var(--bal-color-white);
 }
-a.is-link:focus,
-a.is-link:active,
-a.is-link:hover,
-a.is-link:visited {
+a.is-link.is-inverted svg,
+a.is-link.is-inverted g,
+a.is-link.is-inverted path,
+a.is-link.is-inverted circle {
+  fill: var(--bal-color-white);
+}
+a.is-link.is-inverted:hover {
   text-decoration: underline;
+  color: var(--bal-color-light-blue-2);
+}
+a.is-link.is-inverted:hover svg,
+a.is-link.is-inverted:hover g,
+a.is-link.is-inverted:hover path,
+a.is-link.is-inverted:hover circle {
+  fill: var(--bal-color-light-blue-2);
+}
+a.is-link.is-inverted:active,
+a.is-link.is-inverted:visited {
+  text-decoration: underline;
+  color: var(--bal-color-info-3);
+}
+a.is-link.is-inverted:active svg,
+a.is-link.is-inverted:active g,
+a.is-link.is-inverted:active path,
+a.is-link.is-inverted:active circle,
+a.is-link.is-inverted:visited svg,
+a.is-link.is-inverted:visited g,
+a.is-link.is-inverted:visited path,
+a.is-link.is-inverted:visited circle {
+  fill: var(--bal-color-info-3);
 }
 .is-list {
   margin-bottom: 24px;
@@ -1192,7 +1322,7 @@ fieldset[disabled] .select select:hover {
   padding: 0.5em 1em;
 }
 .select:not(.is-multiple):not(.is-loading):hover::after {
-  border-color: #000a55;
+  border-color: #000739;
 }
 .select.is-disabled::after {
   border-color: var(--bal-color-border-disabled);
@@ -1504,6 +1634,27 @@ fieldset[disabled] .select select:hover {
   position: relative;
   text-align: inherit;
 }
+.field.is-grouped .control:not(:last-child) {
+  margin-right: 8px;
+}
+@media screen and (max-width: 768px) {
+  .field.is-grouped {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .field.is-grouped .control {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 100%;
+    margin-right: 0 !important;
+  }
+  .field.is-grouped .control .button {
+    min-width: 100%;
+  }
+  .field.is-grouped .control:not(:last-child) {
+    margin-bottom: 8px;
+  }
+}
 .button {
   border-color: var(--bal-color-blue);
   color: var(--bal-color-blue);
@@ -1523,11 +1674,35 @@ fieldset[disabled] .select select:hover {
   appearance: none;
   text-decoration: none;
 }
+.button svg,
+.button g,
+.button path,
+.button circle {
+  fill: var(--bal-color-blue);
+}
+.button span,
 .button strong {
   color: inherit;
+  font-family: var(--bal-font-family-title);
+  font-weight: 700;
 }
 .button::-moz-focus-inner {
   border: 0;
+}
+.button .icon-left,
+.button .icon-right {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  margin-top: -3px;
+}
+.button .icon-left {
+  margin-left: -4px;
+  margin-right: 8px;
+}
+.button .icon-right {
+  margin-right: -4px;
+  margin-left: 8px;
 }
 .button.is-fullwidth {
   width: 100%;
@@ -1535,6 +1710,12 @@ fieldset[disabled] .select select:hover {
 .button.is-square {
   width: 48px;
   padding: 0;
+}
+.button.is-square .icon-left {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .button.is-flat {
   padding: 0;
@@ -1571,16 +1752,42 @@ fieldset[disabled] .select select:hover {
   border-color: var(--bal-color-light-blue-dark);
   color: var(--bal-color-light-blue-dark);
 }
+.button:hover svg,
+.button:hover g,
+.button:hover path,
+.button:hover circle,
+.button.is-hovered svg,
+.button.is-hovered g,
+.button.is-hovered path,
+.button.is-hovered circle {
+  fill: var(--bal-color-light-blue-dark);
+}
 .button:active,
 .button.is-active {
   background: var(--bal-color-light-blue);
   border-color: var(--bal-color-blue-dark);
   color: var(--bal-color-blue-dark);
 }
+.button:active svg,
+.button:active g,
+.button:active path,
+.button:active circle,
+.button.is-active svg,
+.button.is-active g,
+.button.is-active path,
+.button.is-active circle {
+  fill: var(--bal-color-blue-dark);
+}
 .button.is-primary {
   background: var(--bal-color-blue);
   border-color: var(--bal-color-blue);
   color: var(--bal-color-white);
+}
+.button.is-primary svg,
+.button.is-primary g,
+.button.is-primary path,
+.button.is-primary circle {
+  fill: var(--bal-color-white);
 }
 .button.is-primary:hover,
 .button.is-primary.is-hovered {
@@ -1610,11 +1817,31 @@ fieldset[disabled] .select select:hover {
   border-color: rgba(0, 0, 0, 0);
   color: var(--bal-color-light-blue-dark);
 }
+.button.is-link:hover svg,
+.button.is-link:hover g,
+.button.is-link:hover path,
+.button.is-link:hover circle,
+.button.is-link.is-hovered svg,
+.button.is-link.is-hovered g,
+.button.is-link.is-hovered path,
+.button.is-link.is-hovered circle {
+  fill: var(--bal-color-light-blue-dark);
+}
 .button.is-link:active,
 .button.is-link.is-active {
   background: rgba(0, 0, 0, 0);
   border-color: rgba(0, 0, 0, 0);
   color: var(--bal-color-blue-dark);
+}
+.button.is-link:active svg,
+.button.is-link:active g,
+.button.is-link:active path,
+.button.is-link:active circle,
+.button.is-link.is-active svg,
+.button.is-link.is-active g,
+.button.is-link.is-active path,
+.button.is-link.is-active circle {
+  fill: var(--bal-color-blue-dark);
 }
 .button.is-link:hover,
 .button.is-link.is-hovered {
@@ -1622,16 +1849,42 @@ fieldset[disabled] .select select:hover {
   border-color: var(--bal-color-light-blue);
   color: var(--bal-color-light-blue-dark);
 }
+.button.is-link:hover svg,
+.button.is-link:hover g,
+.button.is-link:hover path,
+.button.is-link:hover circle,
+.button.is-link.is-hovered svg,
+.button.is-link.is-hovered g,
+.button.is-link.is-hovered path,
+.button.is-link.is-hovered circle {
+  fill: var(--bal-color-light-blue-dark);
+}
 .button.is-link:active,
 .button.is-link.is-active {
   background: var(--bal-color-light-blue);
   border-color: var(--bal-color-light-blue);
   color: var(--bal-color-blue-dark);
 }
+.button.is-link:active svg,
+.button.is-link:active g,
+.button.is-link:active path,
+.button.is-link:active circle,
+.button.is-link.is-active svg,
+.button.is-link.is-active g,
+.button.is-link.is-active path,
+.button.is-link.is-active circle {
+  fill: var(--bal-color-blue-dark);
+}
 .button.is-success {
   background: var(--bal-color-success-1);
   border-color: var(--bal-color-success-4);
   color: var(--bal-color-success-4);
+}
+.button.is-success svg,
+.button.is-success g,
+.button.is-success path,
+.button.is-success circle {
+  fill: var(--bal-color-success-4);
 }
 .button.is-success:hover,
 .button.is-success.is-hovered {
@@ -1639,16 +1892,42 @@ fieldset[disabled] .select select:hover {
   border-color: var(--bal-color-success-4);
   color: var(--bal-color-white);
 }
+.button.is-success:hover svg,
+.button.is-success:hover g,
+.button.is-success:hover path,
+.button.is-success:hover circle,
+.button.is-success.is-hovered svg,
+.button.is-success.is-hovered g,
+.button.is-success.is-hovered path,
+.button.is-success.is-hovered circle {
+  fill: var(--bal-color-white);
+}
 .button.is-success:active,
 .button.is-success.is-active {
   background: var(--bal-color-success-6);
   border-color: var(--bal-color-success-6);
   color: var(--bal-color-white);
 }
+.button.is-success:active svg,
+.button.is-success:active g,
+.button.is-success:active path,
+.button.is-success:active circle,
+.button.is-success.is-active svg,
+.button.is-success.is-active g,
+.button.is-success.is-active path,
+.button.is-success.is-active circle {
+  fill: var(--bal-color-white);
+}
 .button.is-warning {
   background: var(--bal-color-warning-1);
   border-color: var(--bal-color-warning-5);
   color: var(--bal-color-warning-5);
+}
+.button.is-warning svg,
+.button.is-warning g,
+.button.is-warning path,
+.button.is-warning circle {
+  fill: var(--bal-color-warning-5);
 }
 .button.is-warning:hover,
 .button.is-warning.is-hovered {
@@ -1656,16 +1935,42 @@ fieldset[disabled] .select select:hover {
   border-color: var(--bal-color-warning-5);
   color: var(--bal-color-white);
 }
+.button.is-warning:hover svg,
+.button.is-warning:hover g,
+.button.is-warning:hover path,
+.button.is-warning:hover circle,
+.button.is-warning.is-hovered svg,
+.button.is-warning.is-hovered g,
+.button.is-warning.is-hovered path,
+.button.is-warning.is-hovered circle {
+  fill: var(--bal-color-white);
+}
 .button.is-warning:active,
 .button.is-warning.is-active {
   background: var(--bal-color-warning-6);
   border-color: var(--bal-color-warning-6);
   color: var(--bal-color-white);
 }
+.button.is-warning:active svg,
+.button.is-warning:active g,
+.button.is-warning:active path,
+.button.is-warning:active circle,
+.button.is-warning.is-active svg,
+.button.is-warning.is-active g,
+.button.is-warning.is-active path,
+.button.is-warning.is-active circle {
+  fill: var(--bal-color-white);
+}
 .button.is-danger {
   background: var(--bal-color-danger-1);
   border-color: var(--bal-color-danger-4);
   color: var(--bal-color-danger-4);
+}
+.button.is-danger svg,
+.button.is-danger g,
+.button.is-danger path,
+.button.is-danger circle {
+  fill: var(--bal-color-danger-4);
 }
 .button.is-danger:hover,
 .button.is-danger.is-hovered {
@@ -1673,16 +1978,42 @@ fieldset[disabled] .select select:hover {
   border-color: var(--bal-color-danger-4);
   color: var(--bal-color-white);
 }
+.button.is-danger:hover svg,
+.button.is-danger:hover g,
+.button.is-danger:hover path,
+.button.is-danger:hover circle,
+.button.is-danger.is-hovered svg,
+.button.is-danger.is-hovered g,
+.button.is-danger.is-hovered path,
+.button.is-danger.is-hovered circle {
+  fill: var(--bal-color-white);
+}
 .button.is-danger:active,
 .button.is-danger.is-active {
   background: var(--bal-color-danger-6);
   border-color: var(--bal-color-danger-6);
   color: var(--bal-color-white);
 }
+.button.is-danger:active svg,
+.button.is-danger:active g,
+.button.is-danger:active path,
+.button.is-danger:active circle,
+.button.is-danger.is-active svg,
+.button.is-danger.is-active g,
+.button.is-danger.is-active path,
+.button.is-danger.is-active circle {
+  fill: var(--bal-color-white);
+}
 .button.is-inverted {
   background: rgba(0, 0, 0, 0);
   border-color: var(--bal-color-white);
   color: var(--bal-color-white);
+}
+.button.is-inverted svg,
+.button.is-inverted g,
+.button.is-inverted path,
+.button.is-inverted circle {
+  fill: var(--bal-color-white);
 }
 .button.is-inverted:hover,
 .button.is-inverted.is-hovered {
@@ -1690,16 +2021,42 @@ fieldset[disabled] .select select:hover {
   border-color: var(--bal-color-light-blue-3);
   color: var(--bal-color-white);
 }
+.button.is-inverted:hover svg,
+.button.is-inverted:hover g,
+.button.is-inverted:hover path,
+.button.is-inverted:hover circle,
+.button.is-inverted.is-hovered svg,
+.button.is-inverted.is-hovered g,
+.button.is-inverted.is-hovered path,
+.button.is-inverted.is-hovered circle {
+  fill: var(--bal-color-white);
+}
 .button.is-inverted:active,
 .button.is-inverted.is-active {
   background: var(--bal-color-blue-3);
   border-color: var(--bal-color-light-blue-5);
   color: var(--bal-color-white);
 }
+.button.is-inverted:active svg,
+.button.is-inverted:active g,
+.button.is-inverted:active path,
+.button.is-inverted:active circle,
+.button.is-inverted.is-active svg,
+.button.is-inverted.is-active g,
+.button.is-inverted.is-active path,
+.button.is-inverted.is-active circle {
+  fill: var(--bal-color-white);
+}
 .button.is-inverted.is-primary {
   background: var(--bal-color-white);
   border-color: var(--bal-color-white);
   color: var(--bal-color-blue);
+}
+.button.is-inverted.is-primary svg,
+.button.is-inverted.is-primary g,
+.button.is-inverted.is-primary path,
+.button.is-inverted.is-primary circle {
+  fill: var(--bal-color-blue);
 }
 .button.is-inverted.is-primary:hover,
 .button.is-inverted.is-primary.is-hovered {
@@ -1707,11 +2064,31 @@ fieldset[disabled] .select select:hover {
   border-color: var(--bal-color-light-blue-2);
   color: var(--bal-color-blue);
 }
+.button.is-inverted.is-primary:hover svg,
+.button.is-inverted.is-primary:hover g,
+.button.is-inverted.is-primary:hover path,
+.button.is-inverted.is-primary:hover circle,
+.button.is-inverted.is-primary.is-hovered svg,
+.button.is-inverted.is-primary.is-hovered g,
+.button.is-inverted.is-primary.is-hovered path,
+.button.is-inverted.is-primary.is-hovered circle {
+  fill: var(--bal-color-blue);
+}
 .button.is-inverted.is-primary:active,
 .button.is-inverted.is-primary.is-active {
   background: var(--bal-color-light-blue-5);
   border-color: var(--bal-color-light-blue-5);
   color: var(--bal-color-white);
+}
+.button.is-inverted.is-primary:active svg,
+.button.is-inverted.is-primary:active g,
+.button.is-inverted.is-primary:active path,
+.button.is-inverted.is-primary:active circle,
+.button.is-inverted.is-primary.is-active svg,
+.button.is-inverted.is-primary.is-active g,
+.button.is-inverted.is-primary.is-active path,
+.button.is-inverted.is-primary.is-active circle {
+  fill: var(--bal-color-white);
 }
 .button.is-inverted.is-link,
 .button.is-inverted.is-text {
@@ -1756,17 +2133,43 @@ fieldset[disabled] .select select:hover {
   border-color: var(--bal-color-blue-3);
   color: var(--bal-color-white);
 }
+.button.is-light svg,
+.button.is-light g,
+.button.is-light path,
+.button.is-light circle {
+  fill: var(--bal-color-white);
+}
 .button.is-light:hover,
 .button.is-light.is-hovered {
-  background: var(--bal-color-white);
-  border-color: var(--bal-color-white);
-  color: var(--bal-color-light-blue-dark);
+  background: var(--bal-color-light-blue-2);
+  border-color: var(--bal-color-light-blue-2);
+  color: var(--bal-color-blue);
+}
+.button.is-light:hover svg,
+.button.is-light:hover g,
+.button.is-light:hover path,
+.button.is-light:hover circle,
+.button.is-light.is-hovered svg,
+.button.is-light.is-hovered g,
+.button.is-light.is-hovered path,
+.button.is-light.is-hovered circle {
+  fill: var(--bal-color-blue);
 }
 .button.is-light:active,
 .button.is-light.is-active {
   background: var(--bal-color-white);
   border-color: var(--bal-color-white);
-  color: var(--bal-color-blue-dark);
+  color: var(--bal-color-blue);
+}
+.button.is-light:active svg,
+.button.is-light:active g,
+.button.is-light:active path,
+.button.is-light:active circle,
+.button.is-light.is-active svg,
+.button.is-light.is-active g,
+.button.is-light.is-active path,
+.button.is-light.is-active circle {
+  fill: var(--bal-color-blue);
 }
 .button.is-disabled.is-inverted,
 .button.is-disabled,
@@ -1776,6 +2179,24 @@ fieldset[disabled] .select select:hover {
   border-color: var(--bal-color-grey);
   color: var(--bal-color-grey-dark);
   opacity: 1;
+}
+.button.is-disabled.is-inverted svg,
+.button.is-disabled.is-inverted g,
+.button.is-disabled.is-inverted path,
+.button.is-disabled.is-inverted circle,
+.button.is-disabled svg,
+.button.is-disabled g,
+.button.is-disabled path,
+.button.is-disabled circle,
+.button.is-inverted:disabled svg,
+.button.is-inverted:disabled g,
+.button.is-inverted:disabled path,
+.button.is-inverted:disabled circle,
+.button:disabled svg,
+.button:disabled g,
+.button:disabled path,
+.button:disabled circle {
+  fill: var(--bal-color-grey-dark);
 }
 .button.is-disabled.is-inverted > span::after,
 .button.is-disabled > span::after,
@@ -1855,10 +2276,10 @@ fieldset[disabled] .select select:hover {
   margin-right: 0.25rem;
 }
 .has-background-transparent {
-  background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0) !important;
 }
 .has-fill-transparent {
-  fill: rgba(0, 0, 0, 0);
+  fill: rgba(0, 0, 0, 0) !important;
 }
 .has-fill-transparent svg,
 .has-fill-transparent g,
@@ -1867,10 +2288,10 @@ fieldset[disabled] .select select:hover {
   fill: rgba(0, 0, 0, 0);
 }
 .has-background-white {
-  background: var(--bal-color-white);
+  background: var(--bal-color-white) !important;
 }
 .has-fill-white {
-  fill: var(--bal-color-white);
+  fill: var(--bal-color-white) !important;
 }
 .has-fill-white svg,
 .has-fill-white g,
@@ -1879,10 +2300,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-white);
 }
 .has-background-black {
-  background: var(--bal-color-black);
+  background: var(--bal-color-black) !important;
 }
 .has-fill-black {
-  fill: var(--bal-color-black);
+  fill: var(--bal-color-black) !important;
 }
 .has-fill-black svg,
 .has-fill-black g,
@@ -1891,10 +2312,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-black);
 }
 .has-background-grey-1 {
-  background: var(--bal-color-grey-1);
+  background: var(--bal-color-grey-1) !important;
 }
 .has-fill-grey-1 {
-  fill: var(--bal-color-grey-1);
+  fill: var(--bal-color-grey-1) !important;
 }
 .has-fill-grey-1 svg,
 .has-fill-grey-1 g,
@@ -1903,10 +2324,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-grey-1);
 }
 .has-background-grey-2 {
-  background: var(--bal-color-grey-2);
+  background: var(--bal-color-grey-2) !important;
 }
 .has-fill-grey-2 {
-  fill: var(--bal-color-grey-2);
+  fill: var(--bal-color-grey-2) !important;
 }
 .has-fill-grey-2 svg,
 .has-fill-grey-2 g,
@@ -1915,10 +2336,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-grey-2);
 }
 .has-background-grey-3 {
-  background: var(--bal-color-grey-3);
+  background: var(--bal-color-grey-3) !important;
 }
 .has-fill-grey-3 {
-  fill: var(--bal-color-grey-3);
+  fill: var(--bal-color-grey-3) !important;
 }
 .has-fill-grey-3 svg,
 .has-fill-grey-3 g,
@@ -1927,10 +2348,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-grey-3);
 }
 .has-background-grey-4 {
-  background: var(--bal-color-grey-4);
+  background: var(--bal-color-grey-4) !important;
 }
 .has-fill-grey-4 {
-  fill: var(--bal-color-grey-4);
+  fill: var(--bal-color-grey-4) !important;
 }
 .has-fill-grey-4 svg,
 .has-fill-grey-4 g,
@@ -1939,10 +2360,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-grey-4);
 }
 .has-background-grey-5 {
-  background: var(--bal-color-grey-5);
+  background: var(--bal-color-grey-5) !important;
 }
 .has-fill-grey-5 {
-  fill: var(--bal-color-grey-5);
+  fill: var(--bal-color-grey-5) !important;
 }
 .has-fill-grey-5 svg,
 .has-fill-grey-5 g,
@@ -1951,10 +2372,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-grey-5);
 }
 .has-background-grey-6 {
-  background: var(--bal-color-grey-6);
+  background: var(--bal-color-grey-6) !important;
 }
 .has-fill-grey-6 {
-  fill: var(--bal-color-grey-6);
+  fill: var(--bal-color-grey-6) !important;
 }
 .has-fill-grey-6 svg,
 .has-fill-grey-6 g,
@@ -1963,10 +2384,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-grey-6);
 }
 .has-background-blue-1 {
-  background: var(--bal-color-blue-1);
+  background: var(--bal-color-blue-1) !important;
 }
 .has-fill-blue-1 {
-  fill: var(--bal-color-blue-1);
+  fill: var(--bal-color-blue-1) !important;
 }
 .has-fill-blue-1 svg,
 .has-fill-blue-1 g,
@@ -1975,10 +2396,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-blue-1);
 }
 .has-background-blue-2 {
-  background: var(--bal-color-blue-2);
+  background: var(--bal-color-blue-2) !important;
 }
 .has-fill-blue-2 {
-  fill: var(--bal-color-blue-2);
+  fill: var(--bal-color-blue-2) !important;
 }
 .has-fill-blue-2 svg,
 .has-fill-blue-2 g,
@@ -1987,10 +2408,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-blue-2);
 }
 .has-background-blue-3 {
-  background: var(--bal-color-blue-3);
+  background: var(--bal-color-blue-3) !important;
 }
 .has-fill-blue-3 {
-  fill: var(--bal-color-blue-3);
+  fill: var(--bal-color-blue-3) !important;
 }
 .has-fill-blue-3 svg,
 .has-fill-blue-3 g,
@@ -1999,10 +2420,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-blue-3);
 }
 .has-background-blue-4 {
-  background: var(--bal-color-blue-4);
+  background: var(--bal-color-blue-4) !important;
 }
 .has-fill-blue-4 {
-  fill: var(--bal-color-blue-4);
+  fill: var(--bal-color-blue-4) !important;
 }
 .has-fill-blue-4 svg,
 .has-fill-blue-4 g,
@@ -2011,10 +2432,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-blue-4);
 }
 .has-background-blue-5 {
-  background: var(--bal-color-blue-5);
+  background: var(--bal-color-blue-5) !important;
 }
 .has-fill-blue-5 {
-  fill: var(--bal-color-blue-5);
+  fill: var(--bal-color-blue-5) !important;
 }
 .has-fill-blue-5 svg,
 .has-fill-blue-5 g,
@@ -2023,10 +2444,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-blue-5);
 }
 .has-background-blue-6 {
-  background: var(--bal-color-blue-6);
+  background: var(--bal-color-blue-6) !important;
 }
 .has-fill-blue-6 {
-  fill: var(--bal-color-blue-6);
+  fill: var(--bal-color-blue-6) !important;
 }
 .has-fill-blue-6 svg,
 .has-fill-blue-6 g,
@@ -2035,10 +2456,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-blue-6);
 }
 .has-background-light-blue-1 {
-  background: var(--bal-color-light-blue-1);
+  background: var(--bal-color-light-blue-1) !important;
 }
 .has-fill-light-blue-1 {
-  fill: var(--bal-color-light-blue-1);
+  fill: var(--bal-color-light-blue-1) !important;
 }
 .has-fill-light-blue-1 svg,
 .has-fill-light-blue-1 g,
@@ -2047,10 +2468,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-light-blue-1);
 }
 .has-background-light-blue-2 {
-  background: var(--bal-color-light-blue-2);
+  background: var(--bal-color-light-blue-2) !important;
 }
 .has-fill-light-blue-2 {
-  fill: var(--bal-color-light-blue-2);
+  fill: var(--bal-color-light-blue-2) !important;
 }
 .has-fill-light-blue-2 svg,
 .has-fill-light-blue-2 g,
@@ -2059,10 +2480,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-light-blue-2);
 }
 .has-background-light-blue-3 {
-  background: var(--bal-color-light-blue-3);
+  background: var(--bal-color-light-blue-3) !important;
 }
 .has-fill-light-blue-3 {
-  fill: var(--bal-color-light-blue-3);
+  fill: var(--bal-color-light-blue-3) !important;
 }
 .has-fill-light-blue-3 svg,
 .has-fill-light-blue-3 g,
@@ -2071,10 +2492,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-light-blue-3);
 }
 .has-background-light-blue-4 {
-  background: var(--bal-color-light-blue-4);
+  background: var(--bal-color-light-blue-4) !important;
 }
 .has-fill-light-blue-4 {
-  fill: var(--bal-color-light-blue-4);
+  fill: var(--bal-color-light-blue-4) !important;
 }
 .has-fill-light-blue-4 svg,
 .has-fill-light-blue-4 g,
@@ -2083,10 +2504,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-light-blue-4);
 }
 .has-background-light-blue-5 {
-  background: var(--bal-color-light-blue-5);
+  background: var(--bal-color-light-blue-5) !important;
 }
 .has-fill-light-blue-5 {
-  fill: var(--bal-color-light-blue-5);
+  fill: var(--bal-color-light-blue-5) !important;
 }
 .has-fill-light-blue-5 svg,
 .has-fill-light-blue-5 g,
@@ -2095,10 +2516,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-light-blue-5);
 }
 .has-background-light-blue-6 {
-  background: var(--bal-color-light-blue-6);
+  background: var(--bal-color-light-blue-6) !important;
 }
 .has-fill-light-blue-6 {
-  fill: var(--bal-color-light-blue-6);
+  fill: var(--bal-color-light-blue-6) !important;
 }
 .has-fill-light-blue-6 svg,
 .has-fill-light-blue-6 g,
@@ -2107,10 +2528,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-light-blue-6);
 }
 .has-background-purple-1 {
-  background: var(--bal-color-purple-1);
+  background: var(--bal-color-purple-1) !important;
 }
 .has-fill-purple-1 {
-  fill: var(--bal-color-purple-1);
+  fill: var(--bal-color-purple-1) !important;
 }
 .has-fill-purple-1 svg,
 .has-fill-purple-1 g,
@@ -2119,10 +2540,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-purple-1);
 }
 .has-background-purple-2 {
-  background: var(--bal-color-purple-2);
+  background: var(--bal-color-purple-2) !important;
 }
 .has-fill-purple-2 {
-  fill: var(--bal-color-purple-2);
+  fill: var(--bal-color-purple-2) !important;
 }
 .has-fill-purple-2 svg,
 .has-fill-purple-2 g,
@@ -2131,10 +2552,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-purple-2);
 }
 .has-background-purple-3 {
-  background: var(--bal-color-purple-3);
+  background: var(--bal-color-purple-3) !important;
 }
 .has-fill-purple-3 {
-  fill: var(--bal-color-purple-3);
+  fill: var(--bal-color-purple-3) !important;
 }
 .has-fill-purple-3 svg,
 .has-fill-purple-3 g,
@@ -2143,10 +2564,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-purple-3);
 }
 .has-background-purple-4 {
-  background: var(--bal-color-purple-4);
+  background: var(--bal-color-purple-4) !important;
 }
 .has-fill-purple-4 {
-  fill: var(--bal-color-purple-4);
+  fill: var(--bal-color-purple-4) !important;
 }
 .has-fill-purple-4 svg,
 .has-fill-purple-4 g,
@@ -2155,10 +2576,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-purple-4);
 }
 .has-background-purple-5 {
-  background: var(--bal-color-purple-5);
+  background: var(--bal-color-purple-5) !important;
 }
 .has-fill-purple-5 {
-  fill: var(--bal-color-purple-5);
+  fill: var(--bal-color-purple-5) !important;
 }
 .has-fill-purple-5 svg,
 .has-fill-purple-5 g,
@@ -2167,10 +2588,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-purple-5);
 }
 .has-background-purple-6 {
-  background: var(--bal-color-purple-6);
+  background: var(--bal-color-purple-6) !important;
 }
 .has-fill-purple-6 {
-  fill: var(--bal-color-purple-6);
+  fill: var(--bal-color-purple-6) !important;
 }
 .has-fill-purple-6 svg,
 .has-fill-purple-6 g,
@@ -2179,10 +2600,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-purple-6);
 }
 .has-background-green-1 {
-  background: var(--bal-color-green-1);
+  background: var(--bal-color-green-1) !important;
 }
 .has-fill-green-1 {
-  fill: var(--bal-color-green-1);
+  fill: var(--bal-color-green-1) !important;
 }
 .has-fill-green-1 svg,
 .has-fill-green-1 g,
@@ -2191,10 +2612,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-green-1);
 }
 .has-background-green-2 {
-  background: var(--bal-color-green-2);
+  background: var(--bal-color-green-2) !important;
 }
 .has-fill-green-2 {
-  fill: var(--bal-color-green-2);
+  fill: var(--bal-color-green-2) !important;
 }
 .has-fill-green-2 svg,
 .has-fill-green-2 g,
@@ -2203,10 +2624,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-green-2);
 }
 .has-background-green-3 {
-  background: var(--bal-color-green-3);
+  background: var(--bal-color-green-3) !important;
 }
 .has-fill-green-3 {
-  fill: var(--bal-color-green-3);
+  fill: var(--bal-color-green-3) !important;
 }
 .has-fill-green-3 svg,
 .has-fill-green-3 g,
@@ -2215,10 +2636,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-green-3);
 }
 .has-background-green-4 {
-  background: var(--bal-color-green-4);
+  background: var(--bal-color-green-4) !important;
 }
 .has-fill-green-4 {
-  fill: var(--bal-color-green-4);
+  fill: var(--bal-color-green-4) !important;
 }
 .has-fill-green-4 svg,
 .has-fill-green-4 g,
@@ -2227,10 +2648,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-green-4);
 }
 .has-background-green-5 {
-  background: var(--bal-color-green-5);
+  background: var(--bal-color-green-5) !important;
 }
 .has-fill-green-5 {
-  fill: var(--bal-color-green-5);
+  fill: var(--bal-color-green-5) !important;
 }
 .has-fill-green-5 svg,
 .has-fill-green-5 g,
@@ -2239,10 +2660,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-green-5);
 }
 .has-background-green-6 {
-  background: var(--bal-color-green-6);
+  background: var(--bal-color-green-6) !important;
 }
 .has-fill-green-6 {
-  fill: var(--bal-color-green-6);
+  fill: var(--bal-color-green-6) !important;
 }
 .has-fill-green-6 svg,
 .has-fill-green-6 g,
@@ -2251,10 +2672,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-green-6);
 }
 .has-background-yellow-1 {
-  background: var(--bal-color-yellow-1);
+  background: var(--bal-color-yellow-1) !important;
 }
 .has-fill-yellow-1 {
-  fill: var(--bal-color-yellow-1);
+  fill: var(--bal-color-yellow-1) !important;
 }
 .has-fill-yellow-1 svg,
 .has-fill-yellow-1 g,
@@ -2263,10 +2684,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-yellow-1);
 }
 .has-background-yellow-2 {
-  background: var(--bal-color-yellow-2);
+  background: var(--bal-color-yellow-2) !important;
 }
 .has-fill-yellow-2 {
-  fill: var(--bal-color-yellow-2);
+  fill: var(--bal-color-yellow-2) !important;
 }
 .has-fill-yellow-2 svg,
 .has-fill-yellow-2 g,
@@ -2275,10 +2696,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-yellow-2);
 }
 .has-background-yellow-3 {
-  background: var(--bal-color-yellow-3);
+  background: var(--bal-color-yellow-3) !important;
 }
 .has-fill-yellow-3 {
-  fill: var(--bal-color-yellow-3);
+  fill: var(--bal-color-yellow-3) !important;
 }
 .has-fill-yellow-3 svg,
 .has-fill-yellow-3 g,
@@ -2287,10 +2708,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-yellow-3);
 }
 .has-background-yellow-4 {
-  background: var(--bal-color-yellow-4);
+  background: var(--bal-color-yellow-4) !important;
 }
 .has-fill-yellow-4 {
-  fill: var(--bal-color-yellow-4);
+  fill: var(--bal-color-yellow-4) !important;
 }
 .has-fill-yellow-4 svg,
 .has-fill-yellow-4 g,
@@ -2299,10 +2720,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-yellow-4);
 }
 .has-background-yellow-5 {
-  background: var(--bal-color-yellow-5);
+  background: var(--bal-color-yellow-5) !important;
 }
 .has-fill-yellow-5 {
-  fill: var(--bal-color-yellow-5);
+  fill: var(--bal-color-yellow-5) !important;
 }
 .has-fill-yellow-5 svg,
 .has-fill-yellow-5 g,
@@ -2311,10 +2732,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-yellow-5);
 }
 .has-background-yellow-6 {
-  background: var(--bal-color-yellow-6);
+  background: var(--bal-color-yellow-6) !important;
 }
 .has-fill-yellow-6 {
-  fill: var(--bal-color-yellow-6);
+  fill: var(--bal-color-yellow-6) !important;
 }
 .has-fill-yellow-6 svg,
 .has-fill-yellow-6 g,
@@ -2323,10 +2744,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-yellow-6);
 }
 .has-background-red-1 {
-  background: var(--bal-color-red-1);
+  background: var(--bal-color-red-1) !important;
 }
 .has-fill-red-1 {
-  fill: var(--bal-color-red-1);
+  fill: var(--bal-color-red-1) !important;
 }
 .has-fill-red-1 svg,
 .has-fill-red-1 g,
@@ -2335,10 +2756,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-red-1);
 }
 .has-background-red-2 {
-  background: var(--bal-color-red-2);
+  background: var(--bal-color-red-2) !important;
 }
 .has-fill-red-2 {
-  fill: var(--bal-color-red-2);
+  fill: var(--bal-color-red-2) !important;
 }
 .has-fill-red-2 svg,
 .has-fill-red-2 g,
@@ -2347,10 +2768,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-red-2);
 }
 .has-background-red-3 {
-  background: var(--bal-color-red-3);
+  background: var(--bal-color-red-3) !important;
 }
 .has-fill-red-3 {
-  fill: var(--bal-color-red-3);
+  fill: var(--bal-color-red-3) !important;
 }
 .has-fill-red-3 svg,
 .has-fill-red-3 g,
@@ -2359,10 +2780,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-red-3);
 }
 .has-background-red-4 {
-  background: var(--bal-color-red-4);
+  background: var(--bal-color-red-4) !important;
 }
 .has-fill-red-4 {
-  fill: var(--bal-color-red-4);
+  fill: var(--bal-color-red-4) !important;
 }
 .has-fill-red-4 svg,
 .has-fill-red-4 g,
@@ -2371,10 +2792,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-red-4);
 }
 .has-background-red-5 {
-  background: var(--bal-color-red-5);
+  background: var(--bal-color-red-5) !important;
 }
 .has-fill-red-5 {
-  fill: var(--bal-color-red-5);
+  fill: var(--bal-color-red-5) !important;
 }
 .has-fill-red-5 svg,
 .has-fill-red-5 g,
@@ -2383,10 +2804,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-red-5);
 }
 .has-background-red-6 {
-  background: var(--bal-color-red-6);
+  background: var(--bal-color-red-6) !important;
 }
 .has-fill-red-6 {
-  fill: var(--bal-color-red-6);
+  fill: var(--bal-color-red-6) !important;
 }
 .has-fill-red-6 svg,
 .has-fill-red-6 g,
@@ -2395,10 +2816,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-red-6);
 }
 .has-background-info-1 {
-  background: var(--bal-color-info-1);
+  background: var(--bal-color-info-1) !important;
 }
 .has-fill-info-1 {
-  fill: var(--bal-color-info-1);
+  fill: var(--bal-color-info-1) !important;
 }
 .has-fill-info-1 svg,
 .has-fill-info-1 g,
@@ -2407,10 +2828,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-info-1);
 }
 .has-background-info-2 {
-  background: var(--bal-color-info-2);
+  background: var(--bal-color-info-2) !important;
 }
 .has-fill-info-2 {
-  fill: var(--bal-color-info-2);
+  fill: var(--bal-color-info-2) !important;
 }
 .has-fill-info-2 svg,
 .has-fill-info-2 g,
@@ -2419,10 +2840,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-info-2);
 }
 .has-background-info-3 {
-  background: var(--bal-color-info-3);
+  background: var(--bal-color-info-3) !important;
 }
 .has-fill-info-3 {
-  fill: var(--bal-color-info-3);
+  fill: var(--bal-color-info-3) !important;
 }
 .has-fill-info-3 svg,
 .has-fill-info-3 g,
@@ -2431,10 +2852,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-info-3);
 }
 .has-background-info-4 {
-  background: var(--bal-color-info-4);
+  background: var(--bal-color-info-4) !important;
 }
 .has-fill-info-4 {
-  fill: var(--bal-color-info-4);
+  fill: var(--bal-color-info-4) !important;
 }
 .has-fill-info-4 svg,
 .has-fill-info-4 g,
@@ -2443,10 +2864,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-info-4);
 }
 .has-background-info-5 {
-  background: var(--bal-color-info-5);
+  background: var(--bal-color-info-5) !important;
 }
 .has-fill-info-5 {
-  fill: var(--bal-color-info-5);
+  fill: var(--bal-color-info-5) !important;
 }
 .has-fill-info-5 svg,
 .has-fill-info-5 g,
@@ -2455,10 +2876,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-info-5);
 }
 .has-background-info-6 {
-  background: var(--bal-color-info-6);
+  background: var(--bal-color-info-6) !important;
 }
 .has-fill-info-6 {
-  fill: var(--bal-color-info-6);
+  fill: var(--bal-color-info-6) !important;
 }
 .has-fill-info-6 svg,
 .has-fill-info-6 g,
@@ -2467,10 +2888,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-info-6);
 }
 .has-background-success-1 {
-  background: var(--bal-color-success-1);
+  background: var(--bal-color-success-1) !important;
 }
 .has-fill-success-1 {
-  fill: var(--bal-color-success-1);
+  fill: var(--bal-color-success-1) !important;
 }
 .has-fill-success-1 svg,
 .has-fill-success-1 g,
@@ -2479,10 +2900,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-success-1);
 }
 .has-background-success-2 {
-  background: var(--bal-color-success-2);
+  background: var(--bal-color-success-2) !important;
 }
 .has-fill-success-2 {
-  fill: var(--bal-color-success-2);
+  fill: var(--bal-color-success-2) !important;
 }
 .has-fill-success-2 svg,
 .has-fill-success-2 g,
@@ -2491,10 +2912,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-success-2);
 }
 .has-background-success-3 {
-  background: var(--bal-color-success-3);
+  background: var(--bal-color-success-3) !important;
 }
 .has-fill-success-3 {
-  fill: var(--bal-color-success-3);
+  fill: var(--bal-color-success-3) !important;
 }
 .has-fill-success-3 svg,
 .has-fill-success-3 g,
@@ -2503,10 +2924,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-success-3);
 }
 .has-background-success-4 {
-  background: var(--bal-color-success-4);
+  background: var(--bal-color-success-4) !important;
 }
 .has-fill-success-4 {
-  fill: var(--bal-color-success-4);
+  fill: var(--bal-color-success-4) !important;
 }
 .has-fill-success-4 svg,
 .has-fill-success-4 g,
@@ -2515,10 +2936,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-success-4);
 }
 .has-background-success-5 {
-  background: var(--bal-color-success-5);
+  background: var(--bal-color-success-5) !important;
 }
 .has-fill-success-5 {
-  fill: var(--bal-color-success-5);
+  fill: var(--bal-color-success-5) !important;
 }
 .has-fill-success-5 svg,
 .has-fill-success-5 g,
@@ -2527,10 +2948,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-success-5);
 }
 .has-background-success-6 {
-  background: var(--bal-color-success-6);
+  background: var(--bal-color-success-6) !important;
 }
 .has-fill-success-6 {
-  fill: var(--bal-color-success-6);
+  fill: var(--bal-color-success-6) !important;
 }
 .has-fill-success-6 svg,
 .has-fill-success-6 g,
@@ -2539,10 +2960,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-success-6);
 }
 .has-background-warning-1 {
-  background: var(--bal-color-warning-1);
+  background: var(--bal-color-warning-1) !important;
 }
 .has-fill-warning-1 {
-  fill: var(--bal-color-warning-1);
+  fill: var(--bal-color-warning-1) !important;
 }
 .has-fill-warning-1 svg,
 .has-fill-warning-1 g,
@@ -2551,10 +2972,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-warning-1);
 }
 .has-background-warning-2 {
-  background: var(--bal-color-warning-2);
+  background: var(--bal-color-warning-2) !important;
 }
 .has-fill-warning-2 {
-  fill: var(--bal-color-warning-2);
+  fill: var(--bal-color-warning-2) !important;
 }
 .has-fill-warning-2 svg,
 .has-fill-warning-2 g,
@@ -2563,10 +2984,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-warning-2);
 }
 .has-background-warning-3 {
-  background: var(--bal-color-warning-3);
+  background: var(--bal-color-warning-3) !important;
 }
 .has-fill-warning-3 {
-  fill: var(--bal-color-warning-3);
+  fill: var(--bal-color-warning-3) !important;
 }
 .has-fill-warning-3 svg,
 .has-fill-warning-3 g,
@@ -2575,10 +2996,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-warning-3);
 }
 .has-background-warning-4 {
-  background: var(--bal-color-warning-4);
+  background: var(--bal-color-warning-4) !important;
 }
 .has-fill-warning-4 {
-  fill: var(--bal-color-warning-4);
+  fill: var(--bal-color-warning-4) !important;
 }
 .has-fill-warning-4 svg,
 .has-fill-warning-4 g,
@@ -2587,10 +3008,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-warning-4);
 }
 .has-background-warning-5 {
-  background: var(--bal-color-warning-5);
+  background: var(--bal-color-warning-5) !important;
 }
 .has-fill-warning-5 {
-  fill: var(--bal-color-warning-5);
+  fill: var(--bal-color-warning-5) !important;
 }
 .has-fill-warning-5 svg,
 .has-fill-warning-5 g,
@@ -2599,10 +3020,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-warning-5);
 }
 .has-background-warning-6 {
-  background: var(--bal-color-warning-6);
+  background: var(--bal-color-warning-6) !important;
 }
 .has-fill-warning-6 {
-  fill: var(--bal-color-warning-6);
+  fill: var(--bal-color-warning-6) !important;
 }
 .has-fill-warning-6 svg,
 .has-fill-warning-6 g,
@@ -2611,10 +3032,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-warning-6);
 }
 .has-background-danger-1 {
-  background: var(--bal-color-danger-1);
+  background: var(--bal-color-danger-1) !important;
 }
 .has-fill-danger-1 {
-  fill: var(--bal-color-danger-1);
+  fill: var(--bal-color-danger-1) !important;
 }
 .has-fill-danger-1 svg,
 .has-fill-danger-1 g,
@@ -2623,10 +3044,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-danger-1);
 }
 .has-background-danger-2 {
-  background: var(--bal-color-danger-2);
+  background: var(--bal-color-danger-2) !important;
 }
 .has-fill-danger-2 {
-  fill: var(--bal-color-danger-2);
+  fill: var(--bal-color-danger-2) !important;
 }
 .has-fill-danger-2 svg,
 .has-fill-danger-2 g,
@@ -2635,10 +3056,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-danger-2);
 }
 .has-background-danger-3 {
-  background: var(--bal-color-danger-3);
+  background: var(--bal-color-danger-3) !important;
 }
 .has-fill-danger-3 {
-  fill: var(--bal-color-danger-3);
+  fill: var(--bal-color-danger-3) !important;
 }
 .has-fill-danger-3 svg,
 .has-fill-danger-3 g,
@@ -2647,10 +3068,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-danger-3);
 }
 .has-background-danger-4 {
-  background: var(--bal-color-danger-4);
+  background: var(--bal-color-danger-4) !important;
 }
 .has-fill-danger-4 {
-  fill: var(--bal-color-danger-4);
+  fill: var(--bal-color-danger-4) !important;
 }
 .has-fill-danger-4 svg,
 .has-fill-danger-4 g,
@@ -2659,10 +3080,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-danger-4);
 }
 .has-background-danger-5 {
-  background: var(--bal-color-danger-5);
+  background: var(--bal-color-danger-5) !important;
 }
 .has-fill-danger-5 {
-  fill: var(--bal-color-danger-5);
+  fill: var(--bal-color-danger-5) !important;
 }
 .has-fill-danger-5 svg,
 .has-fill-danger-5 g,
@@ -2671,10 +3092,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-danger-5);
 }
 .has-background-danger-6 {
-  background: var(--bal-color-danger-6);
+  background: var(--bal-color-danger-6) !important;
 }
 .has-fill-danger-6 {
-  fill: var(--bal-color-danger-6);
+  fill: var(--bal-color-danger-6) !important;
 }
 .has-fill-danger-6 svg,
 .has-fill-danger-6 g,
@@ -2683,10 +3104,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-danger-6);
 }
 .has-background-grey-light {
-  background: var(--bal-color-grey-light);
+  background: var(--bal-color-grey-light) !important;
 }
 .has-fill-grey-light {
-  fill: var(--bal-color-grey-light);
+  fill: var(--bal-color-grey-light) !important;
 }
 .has-fill-grey-light svg,
 .has-fill-grey-light g,
@@ -2695,10 +3116,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-grey-light);
 }
 .has-background-grey-dark {
-  background: var(--bal-color-grey-dark);
+  background: var(--bal-color-grey-dark) !important;
 }
 .has-fill-grey-dark {
-  fill: var(--bal-color-grey-dark);
+  fill: var(--bal-color-grey-dark) !important;
 }
 .has-fill-grey-dark svg,
 .has-fill-grey-dark g,
@@ -2707,10 +3128,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-grey-dark);
 }
 .has-background-grey {
-  background: var(--bal-color-grey);
+  background: var(--bal-color-grey) !important;
 }
 .has-fill-grey {
-  fill: var(--bal-color-grey);
+  fill: var(--bal-color-grey) !important;
 }
 .has-fill-grey svg,
 .has-fill-grey g,
@@ -2719,10 +3140,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-grey);
 }
 .has-background-blue-light {
-  background: var(--bal-color-blue-light);
+  background: var(--bal-color-blue-light) !important;
 }
 .has-fill-blue-light {
-  fill: var(--bal-color-blue-light);
+  fill: var(--bal-color-blue-light) !important;
 }
 .has-fill-blue-light svg,
 .has-fill-blue-light g,
@@ -2731,10 +3152,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-blue-light);
 }
 .has-background-blue-dark {
-  background: var(--bal-color-blue-dark);
+  background: var(--bal-color-blue-dark) !important;
 }
 .has-fill-blue-dark {
-  fill: var(--bal-color-blue-dark);
+  fill: var(--bal-color-blue-dark) !important;
 }
 .has-fill-blue-dark svg,
 .has-fill-blue-dark g,
@@ -2743,10 +3164,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-blue-dark);
 }
 .has-background-blue {
-  background: var(--bal-color-blue);
+  background: var(--bal-color-blue) !important;
 }
 .has-fill-blue {
-  fill: var(--bal-color-blue);
+  fill: var(--bal-color-blue) !important;
 }
 .has-fill-blue svg,
 .has-fill-blue g,
@@ -2755,10 +3176,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-blue);
 }
 .has-background-blue-hover {
-  background: var(--bal-color-blue-hover);
+  background: var(--bal-color-blue-hover) !important;
 }
 .has-fill-blue-hover {
-  fill: var(--bal-color-blue-hover);
+  fill: var(--bal-color-blue-hover) !important;
 }
 .has-fill-blue-hover svg,
 .has-fill-blue-hover g,
@@ -2767,10 +3188,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-blue-hover);
 }
 .has-background-blue-active {
-  background: var(--bal-color-blue-active);
+  background: var(--bal-color-blue-active) !important;
 }
 .has-fill-blue-active {
-  fill: var(--bal-color-blue-active);
+  fill: var(--bal-color-blue-active) !important;
 }
 .has-fill-blue-active svg,
 .has-fill-blue-active g,
@@ -2779,10 +3200,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-blue-active);
 }
 .has-background-light-blue {
-  background: var(--bal-color-light-blue);
+  background: var(--bal-color-light-blue) !important;
 }
 .has-fill-light-blue {
-  fill: var(--bal-color-light-blue);
+  fill: var(--bal-color-light-blue) !important;
 }
 .has-fill-light-blue svg,
 .has-fill-light-blue g,
@@ -2791,10 +3212,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-light-blue);
 }
 .has-background-light-blue-dark {
-  background: var(--bal-color-light-blue-dark);
+  background: var(--bal-color-light-blue-dark) !important;
 }
 .has-fill-light-blue-dark {
-  fill: var(--bal-color-light-blue-dark);
+  fill: var(--bal-color-light-blue-dark) !important;
 }
 .has-fill-light-blue-dark svg,
 .has-fill-light-blue-dark g,
@@ -2803,10 +3224,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-light-blue-dark);
 }
 .has-background-light-blue-hover {
-  background: var(--bal-color-light-blue-hover);
+  background: var(--bal-color-light-blue-hover) !important;
 }
 .has-fill-light-blue-hover {
-  fill: var(--bal-color-light-blue-hover);
+  fill: var(--bal-color-light-blue-hover) !important;
 }
 .has-fill-light-blue-hover svg,
 .has-fill-light-blue-hover g,
@@ -2815,10 +3236,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-light-blue-hover);
 }
 .has-background-light-blue-active {
-  background: var(--bal-color-light-blue-active);
+  background: var(--bal-color-light-blue-active) !important;
 }
 .has-fill-light-blue-active {
-  fill: var(--bal-color-light-blue-active);
+  fill: var(--bal-color-light-blue-active) !important;
 }
 .has-fill-light-blue-active svg,
 .has-fill-light-blue-active g,
@@ -2827,10 +3248,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-light-blue-active);
 }
 .has-background-purple-light {
-  background: var(--bal-color-purple-light);
+  background: var(--bal-color-purple-light) !important;
 }
 .has-fill-purple-light {
-  fill: var(--bal-color-purple-light);
+  fill: var(--bal-color-purple-light) !important;
 }
 .has-fill-purple-light svg,
 .has-fill-purple-light g,
@@ -2839,10 +3260,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-purple-light);
 }
 .has-background-purple-dark {
-  background: var(--bal-color-purple-dark);
+  background: var(--bal-color-purple-dark) !important;
 }
 .has-fill-purple-dark {
-  fill: var(--bal-color-purple-dark);
+  fill: var(--bal-color-purple-dark) !important;
 }
 .has-fill-purple-dark svg,
 .has-fill-purple-dark g,
@@ -2851,10 +3272,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-purple-dark);
 }
 .has-background-purple {
-  background: var(--bal-color-purple);
+  background: var(--bal-color-purple) !important;
 }
 .has-fill-purple {
-  fill: var(--bal-color-purple);
+  fill: var(--bal-color-purple) !important;
 }
 .has-fill-purple svg,
 .has-fill-purple g,
@@ -2863,10 +3284,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-purple);
 }
 .has-background-green-light {
-  background: var(--bal-color-green-light);
+  background: var(--bal-color-green-light) !important;
 }
 .has-fill-green-light {
-  fill: var(--bal-color-green-light);
+  fill: var(--bal-color-green-light) !important;
 }
 .has-fill-green-light svg,
 .has-fill-green-light g,
@@ -2875,10 +3296,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-green-light);
 }
 .has-background-green-dark {
-  background: var(--bal-color-green-dark);
+  background: var(--bal-color-green-dark) !important;
 }
 .has-fill-green-dark {
-  fill: var(--bal-color-green-dark);
+  fill: var(--bal-color-green-dark) !important;
 }
 .has-fill-green-dark svg,
 .has-fill-green-dark g,
@@ -2887,10 +3308,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-green-dark);
 }
 .has-background-green {
-  background: var(--bal-color-green);
+  background: var(--bal-color-green) !important;
 }
 .has-fill-green {
-  fill: var(--bal-color-green);
+  fill: var(--bal-color-green) !important;
 }
 .has-fill-green svg,
 .has-fill-green g,
@@ -2899,10 +3320,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-green);
 }
 .has-background-yellow-light {
-  background: var(--bal-color-yellow-light);
+  background: var(--bal-color-yellow-light) !important;
 }
 .has-fill-yellow-light {
-  fill: var(--bal-color-yellow-light);
+  fill: var(--bal-color-yellow-light) !important;
 }
 .has-fill-yellow-light svg,
 .has-fill-yellow-light g,
@@ -2911,10 +3332,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-yellow-light);
 }
 .has-background-yellow-dark {
-  background: var(--bal-color-yellow-dark);
+  background: var(--bal-color-yellow-dark) !important;
 }
 .has-fill-yellow-dark {
-  fill: var(--bal-color-yellow-dark);
+  fill: var(--bal-color-yellow-dark) !important;
 }
 .has-fill-yellow-dark svg,
 .has-fill-yellow-dark g,
@@ -2923,10 +3344,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-yellow-dark);
 }
 .has-background-yellow {
-  background: var(--bal-color-yellow);
+  background: var(--bal-color-yellow) !important;
 }
 .has-fill-yellow {
-  fill: var(--bal-color-yellow);
+  fill: var(--bal-color-yellow) !important;
 }
 .has-fill-yellow svg,
 .has-fill-yellow g,
@@ -2935,10 +3356,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-yellow);
 }
 .has-background-red-light {
-  background: var(--bal-color-red-light);
+  background: var(--bal-color-red-light) !important;
 }
 .has-fill-red-light {
-  fill: var(--bal-color-red-light);
+  fill: var(--bal-color-red-light) !important;
 }
 .has-fill-red-light svg,
 .has-fill-red-light g,
@@ -2947,10 +3368,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-red-light);
 }
 .has-background-red-dark {
-  background: var(--bal-color-red-dark);
+  background: var(--bal-color-red-dark) !important;
 }
 .has-fill-red-dark {
-  fill: var(--bal-color-red-dark);
+  fill: var(--bal-color-red-dark) !important;
 }
 .has-fill-red-dark svg,
 .has-fill-red-dark g,
@@ -2959,10 +3380,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-red-dark);
 }
 .has-background-red {
-  background: var(--bal-color-red);
+  background: var(--bal-color-red) !important;
 }
 .has-fill-red {
-  fill: var(--bal-color-red);
+  fill: var(--bal-color-red) !important;
 }
 .has-fill-red svg,
 .has-fill-red g,
@@ -2971,10 +3392,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-red);
 }
 .has-background-primary-1 {
-  background: var(--bal-color-primary-1);
+  background: var(--bal-color-primary-1) !important;
 }
 .has-fill-primary-1 {
-  fill: var(--bal-color-primary-1);
+  fill: var(--bal-color-primary-1) !important;
 }
 .has-fill-primary-1 svg,
 .has-fill-primary-1 g,
@@ -2983,10 +3404,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-primary-1);
 }
 .has-background-primary-2 {
-  background: var(--bal-color-primary-2);
+  background: var(--bal-color-primary-2) !important;
 }
 .has-fill-primary-2 {
-  fill: var(--bal-color-primary-2);
+  fill: var(--bal-color-primary-2) !important;
 }
 .has-fill-primary-2 svg,
 .has-fill-primary-2 g,
@@ -2995,10 +3416,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-primary-2);
 }
 .has-background-primary-3 {
-  background: var(--bal-color-primary-3);
+  background: var(--bal-color-primary-3) !important;
 }
 .has-fill-primary-3 {
-  fill: var(--bal-color-primary-3);
+  fill: var(--bal-color-primary-3) !important;
 }
 .has-fill-primary-3 svg,
 .has-fill-primary-3 g,
@@ -3007,10 +3428,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-primary-3);
 }
 .has-background-primary-4 {
-  background: var(--bal-color-primary-4);
+  background: var(--bal-color-primary-4) !important;
 }
 .has-fill-primary-4 {
-  fill: var(--bal-color-primary-4);
+  fill: var(--bal-color-primary-4) !important;
 }
 .has-fill-primary-4 svg,
 .has-fill-primary-4 g,
@@ -3019,10 +3440,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-primary-4);
 }
 .has-background-primary-5 {
-  background: var(--bal-color-primary-5);
+  background: var(--bal-color-primary-5) !important;
 }
 .has-fill-primary-5 {
-  fill: var(--bal-color-primary-5);
+  fill: var(--bal-color-primary-5) !important;
 }
 .has-fill-primary-5 svg,
 .has-fill-primary-5 g,
@@ -3031,10 +3452,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-primary-5);
 }
 .has-background-primary-6 {
-  background: var(--bal-color-primary-6);
+  background: var(--bal-color-primary-6) !important;
 }
 .has-fill-primary-6 {
-  fill: var(--bal-color-primary-6);
+  fill: var(--bal-color-primary-6) !important;
 }
 .has-fill-primary-6 svg,
 .has-fill-primary-6 g,
@@ -3043,10 +3464,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-primary-6);
 }
 .has-background-primary-light {
-  background: var(--bal-color-primary-light);
+  background: var(--bal-color-primary-light) !important;
 }
 .has-fill-primary-light {
-  fill: var(--bal-color-primary-light);
+  fill: var(--bal-color-primary-light) !important;
 }
 .has-fill-primary-light svg,
 .has-fill-primary-light g,
@@ -3055,10 +3476,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-primary-light);
 }
 .has-background-primary {
-  background: var(--bal-color-primary);
+  background: var(--bal-color-primary) !important;
 }
 .has-fill-primary {
-  fill: var(--bal-color-primary);
+  fill: var(--bal-color-primary) !important;
 }
 .has-fill-primary svg,
 .has-fill-primary g,
@@ -3067,10 +3488,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-primary);
 }
 .has-background-primary-dark {
-  background: var(--bal-color-primary-dark);
+  background: var(--bal-color-primary-dark) !important;
 }
 .has-fill-primary-dark {
-  fill: var(--bal-color-primary-dark);
+  fill: var(--bal-color-primary-dark) !important;
 }
 .has-fill-primary-dark svg,
 .has-fill-primary-dark g,
@@ -3079,10 +3500,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-primary-dark);
 }
 .has-background-info-light {
-  background: var(--bal-color-info-light);
+  background: var(--bal-color-info-light) !important;
 }
 .has-fill-info-light {
-  fill: var(--bal-color-info-light);
+  fill: var(--bal-color-info-light) !important;
 }
 .has-fill-info-light svg,
 .has-fill-info-light g,
@@ -3091,10 +3512,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-info-light);
 }
 .has-background-info {
-  background: var(--bal-color-info);
+  background: var(--bal-color-info) !important;
 }
 .has-fill-info {
-  fill: var(--bal-color-info);
+  fill: var(--bal-color-info) !important;
 }
 .has-fill-info svg,
 .has-fill-info g,
@@ -3103,10 +3524,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-info);
 }
 .has-background-info-dark {
-  background: var(--bal-color-info-dark);
+  background: var(--bal-color-info-dark) !important;
 }
 .has-fill-info-dark {
-  fill: var(--bal-color-info-dark);
+  fill: var(--bal-color-info-dark) !important;
 }
 .has-fill-info-dark svg,
 .has-fill-info-dark g,
@@ -3115,10 +3536,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-info-dark);
 }
 .has-background-success-light {
-  background: var(--bal-color-success-light);
+  background: var(--bal-color-success-light) !important;
 }
 .has-fill-success-light {
-  fill: var(--bal-color-success-light);
+  fill: var(--bal-color-success-light) !important;
 }
 .has-fill-success-light svg,
 .has-fill-success-light g,
@@ -3127,10 +3548,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-success-light);
 }
 .has-background-success {
-  background: var(--bal-color-success);
+  background: var(--bal-color-success) !important;
 }
 .has-fill-success {
-  fill: var(--bal-color-success);
+  fill: var(--bal-color-success) !important;
 }
 .has-fill-success svg,
 .has-fill-success g,
@@ -3139,10 +3560,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-success);
 }
 .has-background-success-dark {
-  background: var(--bal-color-success-dark);
+  background: var(--bal-color-success-dark) !important;
 }
 .has-fill-success-dark {
-  fill: var(--bal-color-success-dark);
+  fill: var(--bal-color-success-dark) !important;
 }
 .has-fill-success-dark svg,
 .has-fill-success-dark g,
@@ -3151,10 +3572,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-success-dark);
 }
 .has-background-warning-light {
-  background: var(--bal-color-warning-light);
+  background: var(--bal-color-warning-light) !important;
 }
 .has-fill-warning-light {
-  fill: var(--bal-color-warning-light);
+  fill: var(--bal-color-warning-light) !important;
 }
 .has-fill-warning-light svg,
 .has-fill-warning-light g,
@@ -3163,10 +3584,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-warning-light);
 }
 .has-background-warning {
-  background: var(--bal-color-warning);
+  background: var(--bal-color-warning) !important;
 }
 .has-fill-warning {
-  fill: var(--bal-color-warning);
+  fill: var(--bal-color-warning) !important;
 }
 .has-fill-warning svg,
 .has-fill-warning g,
@@ -3175,10 +3596,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-warning);
 }
 .has-background-warning-dark {
-  background: var(--bal-color-warning-dark);
+  background: var(--bal-color-warning-dark) !important;
 }
 .has-fill-warning-dark {
-  fill: var(--bal-color-warning-dark);
+  fill: var(--bal-color-warning-dark) !important;
 }
 .has-fill-warning-dark svg,
 .has-fill-warning-dark g,
@@ -3187,10 +3608,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-warning-dark);
 }
 .has-background-danger-light {
-  background: var(--bal-color-danger-light);
+  background: var(--bal-color-danger-light) !important;
 }
 .has-fill-danger-light {
-  fill: var(--bal-color-danger-light);
+  fill: var(--bal-color-danger-light) !important;
 }
 .has-fill-danger-light svg,
 .has-fill-danger-light g,
@@ -3199,10 +3620,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-danger-light);
 }
 .has-background-danger {
-  background: var(--bal-color-danger);
+  background: var(--bal-color-danger) !important;
 }
 .has-fill-danger {
-  fill: var(--bal-color-danger);
+  fill: var(--bal-color-danger) !important;
 }
 .has-fill-danger svg,
 .has-fill-danger g,
@@ -3211,10 +3632,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-danger);
 }
 .has-background-danger-dark {
-  background: var(--bal-color-danger-dark);
+  background: var(--bal-color-danger-dark) !important;
 }
 .has-fill-danger-dark {
-  fill: var(--bal-color-danger-dark);
+  fill: var(--bal-color-danger-dark) !important;
 }
 .has-fill-danger-dark svg,
 .has-fill-danger-dark g,
@@ -3223,10 +3644,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-danger-dark);
 }
 .has-background-valid {
-  background: var(--bal-color-valid);
+  background: var(--bal-color-valid) !important;
 }
 .has-fill-valid {
-  fill: var(--bal-color-valid);
+  fill: var(--bal-color-valid) !important;
 }
 .has-fill-valid svg,
 .has-fill-valid g,
@@ -3235,10 +3656,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-valid);
 }
 .has-background-invalid {
-  background: var(--bal-color-invalid);
+  background: var(--bal-color-invalid) !important;
 }
 .has-fill-invalid {
-  fill: var(--bal-color-invalid);
+  fill: var(--bal-color-invalid) !important;
 }
 .has-fill-invalid svg,
 .has-fill-invalid g,
@@ -3247,10 +3668,10 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-invalid);
 }
 .has-background-disabled {
-  background: var(--bal-color-disabled);
+  background: var(--bal-color-disabled) !important;
 }
 .has-fill-disabled {
-  fill: var(--bal-color-disabled);
+  fill: var(--bal-color-disabled) !important;
 }
 .has-fill-disabled svg,
 .has-fill-disabled g,
@@ -3259,347 +3680,347 @@ fieldset[disabled] .select select:hover {
   fill: var(--bal-color-disabled);
 }
 .has-text-blue {
-  color: var(--bal-color-blue);
+  color: var(--bal-color-blue) !important;
 }
 .has-text-black {
-  color: var(--bal-color-black);
+  color: var(--bal-color-black) !important;
 }
 .has-text-normal {
-  color: var(--bal-color-blue);
+  color: var(--bal-color-blue) !important;
 }
 .has-text-light-blue {
-  color: var(--bal-color-light-blue-5);
+  color: var(--bal-color-light-blue-5) !important;
 }
 .has-text-hover {
-  color: var(--bal-color-light-blue-5);
+  color: var(--bal-color-light-blue-5) !important;
 }
 .has-text-blue-dark {
-  color: var(--bal-color-blue-6);
+  color: var(--bal-color-blue-6) !important;
 }
 .has-text-active {
-  color: var(--bal-color-blue-6);
+  color: var(--bal-color-blue-6) !important;
 }
 .has-text-white {
-  color: var(--bal-color-white);
+  color: var(--bal-color-white) !important;
 }
 .has-text-blue-light {
-  color: var(--bal-color-blue-3);
+  color: var(--bal-color-blue-3) !important;
 }
 .has-text-hint {
-  color: var(--bal-color-blue-3);
+  color: var(--bal-color-blue-3) !important;
 }
 .has-text-help {
-  color: var(--bal-color-blue-3);
+  color: var(--bal-color-blue-3) !important;
 }
 .has-text-success {
-  color: var(--bal-color-success-4);
+  color: var(--bal-color-success-4) !important;
 }
 .has-text-valid {
-  color: var(--bal-color-success-4);
+  color: var(--bal-color-success-4) !important;
 }
 .has-text-danger {
-  color: var(--bal-color-danger-4);
+  color: var(--bal-color-danger-4) !important;
 }
 .has-text-invalid {
-  color: var(--bal-color-danger-4);
+  color: var(--bal-color-danger-4) !important;
 }
 .has-text-warning {
-  color: var(--bal-color-warning-5);
+  color: var(--bal-color-warning-5) !important;
 }
 .has-text-grey {
-  color: var(--bal-color-grey-5);
+  color: var(--bal-color-grey-5) !important;
 }
 .has-text-disabled {
-  color: var(--bal-color-grey-5);
+  color: var(--bal-color-grey-5) !important;
 }
 .has-border-none {
-  border: none;
+  border: none !important;
 }
 .has-border-top-none {
-  border-top: none;
+  border-top: none !important;
 }
 .has-border-left-none {
-  border-left: none;
+  border-left: none !important;
 }
 .has-border-right-none {
-  border-right: none;
+  border-right: none !important;
 }
 .has-border-bottom-none {
-  border-bottom: none;
+  border-bottom: none !important;
 }
 .has-border-blue {
-  border: 2px solid var(--bal-color-blue);
+  border: 2px solid var(--bal-color-blue) !important;
 }
 .has-border-top-blue {
-  border-top: 2px solid var(--bal-color-blue);
+  border-top: 2px solid var(--bal-color-blue) !important;
 }
 .has-border-left-blue {
-  border-left: 2px solid var(--bal-color-blue);
+  border-left: 2px solid var(--bal-color-blue) !important;
 }
 .has-border-right-blue {
-  border-right: 2px solid var(--bal-color-blue);
+  border-right: 2px solid var(--bal-color-blue) !important;
 }
 .has-border-bottom-blue {
-  border-bottom: 2px solid var(--bal-color-blue);
+  border-bottom: 2px solid var(--bal-color-blue) !important;
 }
 .has-border-normal {
-  border: 2px solid var(--bal-color-grey-3);
+  border: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-top-normal {
-  border-top: 2px solid var(--bal-color-grey-3);
+  border-top: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-left-normal {
-  border-left: 2px solid var(--bal-color-grey-3);
+  border-left: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-right-normal {
-  border-right: 2px solid var(--bal-color-grey-3);
+  border-right: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-bottom-normal {
-  border-bottom: 2px solid var(--bal-color-grey-3);
+  border-bottom: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-hover {
-  border: 2px solid var(--bal-color-grey-3);
+  border: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-top-hover {
-  border-top: 2px solid var(--bal-color-grey-3);
+  border-top: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-left-hover {
-  border-left: 2px solid var(--bal-color-grey-3);
+  border-left: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-right-hover {
-  border-right: 2px solid var(--bal-color-grey-3);
+  border-right: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-bottom-hover {
-  border-bottom: 2px solid var(--bal-color-grey-3);
+  border-bottom: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-active {
-  border: 2px solid var(--bal-color-blue);
+  border: 2px solid var(--bal-color-blue) !important;
 }
 .has-border-top-active {
-  border-top: 2px solid var(--bal-color-blue);
+  border-top: 2px solid var(--bal-color-blue) !important;
 }
 .has-border-left-active {
-  border-left: 2px solid var(--bal-color-blue);
+  border-left: 2px solid var(--bal-color-blue) !important;
 }
 .has-border-right-active {
-  border-right: 2px solid var(--bal-color-blue);
+  border-right: 2px solid var(--bal-color-blue) !important;
 }
 .has-border-bottom-active {
-  border-bottom: 2px solid var(--bal-color-blue);
+  border-bottom: 2px solid var(--bal-color-blue) !important;
 }
 .has-border-warning {
-  border: 2px solid var(--bal-color-warning-5);
+  border: 2px solid var(--bal-color-warning-5) !important;
 }
 .has-border-top-warning {
-  border-top: 2px solid var(--bal-color-warning-5);
+  border-top: 2px solid var(--bal-color-warning-5) !important;
 }
 .has-border-left-warning {
-  border-left: 2px solid var(--bal-color-warning-5);
+  border-left: 2px solid var(--bal-color-warning-5) !important;
 }
 .has-border-right-warning {
-  border-right: 2px solid var(--bal-color-warning-5);
+  border-right: 2px solid var(--bal-color-warning-5) !important;
 }
 .has-border-bottom-warning {
-  border-bottom: 2px solid var(--bal-color-warning-5);
+  border-bottom: 2px solid var(--bal-color-warning-5) !important;
 }
 .has-border-success {
-  border: 2px solid var(--bal-color-success-4);
+  border: 2px solid var(--bal-color-success-4) !important;
 }
 .has-border-top-success {
-  border-top: 2px solid var(--bal-color-success-4);
+  border-top: 2px solid var(--bal-color-success-4) !important;
 }
 .has-border-left-success {
-  border-left: 2px solid var(--bal-color-success-4);
+  border-left: 2px solid var(--bal-color-success-4) !important;
 }
 .has-border-right-success {
-  border-right: 2px solid var(--bal-color-success-4);
+  border-right: 2px solid var(--bal-color-success-4) !important;
 }
 .has-border-bottom-success {
-  border-bottom: 2px solid var(--bal-color-success-4);
+  border-bottom: 2px solid var(--bal-color-success-4) !important;
 }
 .has-border-danger {
-  border: 2px solid var(--bal-color-danger-4);
+  border: 2px solid var(--bal-color-danger-4) !important;
 }
 .has-border-top-danger {
-  border-top: 2px solid var(--bal-color-danger-4);
+  border-top: 2px solid var(--bal-color-danger-4) !important;
 }
 .has-border-left-danger {
-  border-left: 2px solid var(--bal-color-danger-4);
+  border-left: 2px solid var(--bal-color-danger-4) !important;
 }
 .has-border-right-danger {
-  border-right: 2px solid var(--bal-color-danger-4);
+  border-right: 2px solid var(--bal-color-danger-4) !important;
 }
 .has-border-bottom-danger {
-  border-bottom: 2px solid var(--bal-color-danger-4);
+  border-bottom: 2px solid var(--bal-color-danger-4) !important;
 }
 .has-border-valid {
-  border: 2px solid var(--bal-color-success-4);
+  border: 2px solid var(--bal-color-success-4) !important;
 }
 .has-border-top-valid {
-  border-top: 2px solid var(--bal-color-success-4);
+  border-top: 2px solid var(--bal-color-success-4) !important;
 }
 .has-border-left-valid {
-  border-left: 2px solid var(--bal-color-success-4);
+  border-left: 2px solid var(--bal-color-success-4) !important;
 }
 .has-border-right-valid {
-  border-right: 2px solid var(--bal-color-success-4);
+  border-right: 2px solid var(--bal-color-success-4) !important;
 }
 .has-border-bottom-valid {
-  border-bottom: 2px solid var(--bal-color-success-4);
+  border-bottom: 2px solid var(--bal-color-success-4) !important;
 }
 .has-border-invalid {
-  border: 2px solid var(--bal-color-danger-4);
+  border: 2px solid var(--bal-color-danger-4) !important;
 }
 .has-border-top-invalid {
-  border-top: 2px solid var(--bal-color-danger-4);
+  border-top: 2px solid var(--bal-color-danger-4) !important;
 }
 .has-border-left-invalid {
-  border-left: 2px solid var(--bal-color-danger-4);
+  border-left: 2px solid var(--bal-color-danger-4) !important;
 }
 .has-border-right-invalid {
-  border-right: 2px solid var(--bal-color-danger-4);
+  border-right: 2px solid var(--bal-color-danger-4) !important;
 }
 .has-border-bottom-invalid {
-  border-bottom: 2px solid var(--bal-color-danger-4);
+  border-bottom: 2px solid var(--bal-color-danger-4) !important;
 }
 .has-border-disabled {
-  border: 2px solid var(--bal-color-grey-3);
+  border: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-top-disabled {
-  border-top: 2px solid var(--bal-color-grey-3);
+  border-top: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-left-disabled {
-  border-left: 2px solid var(--bal-color-grey-3);
+  border-left: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-right-disabled {
-  border-right: 2px solid var(--bal-color-grey-3);
+  border-right: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-border-bottom-disabled {
-  border-bottom: 2px solid var(--bal-color-grey-3);
+  border-bottom: 2px solid var(--bal-color-grey-3) !important;
 }
 .has-radius-none {
-  border-radius: var(--bal-radius-none);
+  border-radius: var(--bal-radius-none) !important;
 }
 .has-radius-top-none {
-  border-top-left-radius: var(--bal-radius-none);
-  border-top-right-radius: var(--bal-radius-none);
+  border-top-left-radius: var(--bal-radius-none) !important;
+  border-top-right-radius: var(--bal-radius-none) !important;
 }
 .has-radius-top-left-none {
-  border-top-left-radius: var(--bal-radius-none);
+  border-top-left-radius: var(--bal-radius-none) !important;
 }
 .has-radius-top-right-none {
-  border-top-right-radius: var(--bal-radius-none);
+  border-top-right-radius: var(--bal-radius-none) !important;
 }
 .has-radius-bottom-none {
-  border-bottom-left-radius: var(--bal-radius-none);
-  border-bottom-right-radius: var(--bal-radius-none);
+  border-bottom-left-radius: var(--bal-radius-none) !important;
+  border-bottom-right-radius: var(--bal-radius-none) !important;
 }
 .has-radius-bottom-left-none {
-  border-bottom-left-radius: var(--bal-radius-none);
+  border-bottom-left-radius: var(--bal-radius-none) !important;
 }
 .has-radius-bottom-right-none {
-  border-bottom-right-radius: var(--bal-radius-none);
+  border-bottom-right-radius: var(--bal-radius-none) !important;
 }
 .has-radius-small {
-  border-radius: var(--bal-radius-small);
+  border-radius: var(--bal-radius-small) !important;
 }
 .has-radius-top-small {
-  border-top-left-radius: var(--bal-radius-small);
-  border-top-right-radius: var(--bal-radius-small);
+  border-top-left-radius: var(--bal-radius-small) !important;
+  border-top-right-radius: var(--bal-radius-small) !important;
 }
 .has-radius-top-left-small {
-  border-top-left-radius: var(--bal-radius-small);
+  border-top-left-radius: var(--bal-radius-small) !important;
 }
 .has-radius-top-right-small {
-  border-top-right-radius: var(--bal-radius-small);
+  border-top-right-radius: var(--bal-radius-small) !important;
 }
 .has-radius-bottom-small {
-  border-bottom-left-radius: var(--bal-radius-small);
-  border-bottom-right-radius: var(--bal-radius-small);
+  border-bottom-left-radius: var(--bal-radius-small) !important;
+  border-bottom-right-radius: var(--bal-radius-small) !important;
 }
 .has-radius-bottom-left-small {
-  border-bottom-left-radius: var(--bal-radius-small);
+  border-bottom-left-radius: var(--bal-radius-small) !important;
 }
 .has-radius-bottom-right-small {
-  border-bottom-right-radius: var(--bal-radius-small);
+  border-bottom-right-radius: var(--bal-radius-small) !important;
 }
 .has-radius {
-  border-radius: var(--bal-radius);
+  border-radius: var(--bal-radius) !important;
 }
 .has-radius-top {
-  border-top-left-radius: var(--bal-radius);
-  border-top-right-radius: var(--bal-radius);
+  border-top-left-radius: var(--bal-radius) !important;
+  border-top-right-radius: var(--bal-radius) !important;
 }
 .has-radius-top-left {
-  border-top-left-radius: var(--bal-radius);
+  border-top-left-radius: var(--bal-radius) !important;
 }
 .has-radius-top-right {
-  border-top-right-radius: var(--bal-radius);
+  border-top-right-radius: var(--bal-radius) !important;
 }
 .has-radius-bottom {
-  border-bottom-left-radius: var(--bal-radius);
-  border-bottom-right-radius: var(--bal-radius);
+  border-bottom-left-radius: var(--bal-radius) !important;
+  border-bottom-right-radius: var(--bal-radius) !important;
 }
 .has-radius-bottom-left {
-  border-bottom-left-radius: var(--bal-radius);
+  border-bottom-left-radius: var(--bal-radius) !important;
 }
 .has-radius-bottom-right {
-  border-bottom-right-radius: var(--bal-radius);
+  border-bottom-right-radius: var(--bal-radius) !important;
 }
 .has-radius-large {
-  border-radius: var(--bal-radius-large);
+  border-radius: var(--bal-radius-large) !important;
 }
 .has-radius-top-large {
-  border-top-left-radius: var(--bal-radius-large);
-  border-top-right-radius: var(--bal-radius-large);
+  border-top-left-radius: var(--bal-radius-large) !important;
+  border-top-right-radius: var(--bal-radius-large) !important;
 }
 .has-radius-top-left-large {
-  border-top-left-radius: var(--bal-radius-large);
+  border-top-left-radius: var(--bal-radius-large) !important;
 }
 .has-radius-top-right-large {
-  border-top-right-radius: var(--bal-radius-large);
+  border-top-right-radius: var(--bal-radius-large) !important;
 }
 .has-radius-bottom-large {
-  border-bottom-left-radius: var(--bal-radius-large);
-  border-bottom-right-radius: var(--bal-radius-large);
+  border-bottom-left-radius: var(--bal-radius-large) !important;
+  border-bottom-right-radius: var(--bal-radius-large) !important;
 }
 .has-radius-bottom-left-large {
-  border-bottom-left-radius: var(--bal-radius-large);
+  border-bottom-left-radius: var(--bal-radius-large) !important;
 }
 .has-radius-bottom-right-large {
-  border-bottom-right-radius: var(--bal-radius-large);
+  border-bottom-right-radius: var(--bal-radius-large) !important;
 }
 .has-radius-rounded {
-  border-radius: var(--bal-radius-rounded);
+  border-radius: var(--bal-radius-rounded) !important;
 }
 .has-radius-top-rounded {
-  border-top-left-radius: var(--bal-radius-rounded);
-  border-top-right-radius: var(--bal-radius-rounded);
+  border-top-left-radius: var(--bal-radius-rounded) !important;
+  border-top-right-radius: var(--bal-radius-rounded) !important;
 }
 .has-radius-top-left-rounded {
-  border-top-left-radius: var(--bal-radius-rounded);
+  border-top-left-radius: var(--bal-radius-rounded) !important;
 }
 .has-radius-top-right-rounded {
-  border-top-right-radius: var(--bal-radius-rounded);
+  border-top-right-radius: var(--bal-radius-rounded) !important;
 }
 .has-radius-bottom-rounded {
-  border-bottom-left-radius: var(--bal-radius-rounded);
-  border-bottom-right-radius: var(--bal-radius-rounded);
+  border-bottom-left-radius: var(--bal-radius-rounded) !important;
+  border-bottom-right-radius: var(--bal-radius-rounded) !important;
 }
 .has-radius-bottom-left-rounded {
-  border-bottom-left-radius: var(--bal-radius-rounded);
+  border-bottom-left-radius: var(--bal-radius-rounded) !important;
 }
 .has-radius-bottom-right-rounded {
-  border-bottom-right-radius: var(--bal-radius-rounded);
+  border-bottom-right-radius: var(--bal-radius-rounded) !important;
 }
 .has-shadow-none {
-  box-shadow: var(--bal-shadow-none);
+  box-shadow: var(--bal-shadow-none) !important;
 }
 .has-shadow {
-  box-shadow: var(--bal-shadow);
+  box-shadow: var(--bal-shadow) !important;
 }
 .has-shadow-large {
-  box-shadow: var(--bal-shadow-large);
+  box-shadow: var(--bal-shadow-large) !important;
 }
 .title.is-1,
 .title.is-size-1,
@@ -3874,260 +4295,165 @@ fieldset[disabled] .select select:hover {
 .subtitle.is-size-medium:not(:last-child) {
   margin-bottom: 0.5rem;
 }
-.title,
-.subtitle {
-  word-break: break-word;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.title em,
-.title span,
-.subtitle em,
-.subtitle span {
-  font-weight: inherit;
-}
-.title sub,
-.subtitle sub {
-  font-size: 0.75em;
-}
-.title sup,
-.subtitle sup {
-  font-size: 0.75em;
-}
-.title {
-  color: #000d6e;
-  font-family: BaloiseCreateHeadline, Arial, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.125;
-}
-.title strong {
-  color: inherit;
-  font-weight: inherit;
-}
-.title:not(.is-spaced) + .subtitle {
-  margin-top: -1.25rem;
-}
-.subtitle {
-  color: #000d6e;
-  font-family: BaloiseCreateHeadline, Arial, sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.25;
-}
-.subtitle strong {
-  color: #000d6e;
-  font-weight: 600;
-}
-.subtitle:not(.is-spaced) + .title {
-  margin-top: -1.25rem;
-}
-.title.is-size-3,
-.title.is-size-4,
-.title.is-size-5,
-.title.is-size-6,
-.title.is-3,
-.title.is-4,
-.title.is-5,
-.title.is-6 {
-  font-weight: 700;
-  letter-spacing: -1%;
-}
-p:not(:last-child) {
-  margin-bottom: 1.25rem;
-}
-@media screen and (min-width: 769px), print {
-  p:not(:last-child) {
-    margin-bottom: 1rem;
-  }
-}
-.is-bold,
-span.is-bold,
-p.is-bold,
-a.is-bold,
-.is-text-bold,
-.is-text-bold span {
-  font-weight: 700;
-}
-span.is-small,
-p.is-small,
-a.is-small,
-.is-text-small,
-.is-text-small span {
-  font-size: var(--bal-size-small);
-  line-height: 1rem;
-}
-p,
-a {
-  font-family: BaloiseCreateText, Arial, sans-serif;
-  line-height: 1.5rem;
-  margin: 0;
-  word-break: break-word;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-p.is-lead,
-p.is-lead > a {
-  font-size: 1.2rem;
-  line-height: 1.6rem;
-  word-spacing: 0.05rem;
+.has-no-wrap {
+  white-space: nowrap !important;
 }
 .has-text-centered {
-  text-align: center;
+  text-align: center !important;
 }
 .has-text-justified {
-  text-align: justify;
+  text-align: justify !important;
 }
 .has-text-left {
-  text-align: left;
+  text-align: left !important;
 }
 .has-text-right {
-  text-align: right;
+  text-align: right !important;
 }
 @media screen and (max-width: 768px) {
   .has-text-centered-mobile {
-    text-align: center;
+    text-align: center !important;
   }
 }
 @media screen and (min-width: 769px), print {
   .has-text-centered-tablet {
-    text-align: center;
+    text-align: center !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
   .has-text-centered-tablet-only {
-    text-align: center;
+    text-align: center !important;
   }
 }
 @media screen and (max-width: 1023px) {
   .has-text-centered-touch {
-    text-align: center;
+    text-align: center !important;
   }
 }
 @media screen and (min-width: 1024px) {
   .has-text-centered-desktop {
-    text-align: center;
+    text-align: center !important;
   }
 }
 @media screen and (max-width: 768px) {
   .has-text-justified-mobile {
-    text-align: justify;
+    text-align: justify !important;
   }
 }
 @media screen and (min-width: 769px), print {
   .has-text-justified-tablet {
-    text-align: justify;
+    text-align: justify !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
   .has-text-justified-tablet-only {
-    text-align: justify;
+    text-align: justify !important;
   }
 }
 @media screen and (max-width: 1023px) {
   .has-text-justified-touch {
-    text-align: justify;
+    text-align: justify !important;
   }
 }
 @media screen and (min-width: 1024px) {
   .has-text-justified-desktop {
-    text-align: justify;
+    text-align: justify !important;
   }
 }
 @media screen and (max-width: 768px) {
   .has-text-left-mobile {
-    text-align: left;
+    text-align: left !important;
   }
 }
 @media screen and (min-width: 769px), print {
   .has-text-left-tablet {
-    text-align: left;
+    text-align: left !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
   .has-text-left-tablet-only {
-    text-align: left;
+    text-align: left !important;
   }
 }
 @media screen and (max-width: 1023px) {
   .has-text-left-touch {
-    text-align: left;
+    text-align: left !important;
   }
 }
 @media screen and (min-width: 1024px) {
   .has-text-left-desktop {
-    text-align: left;
+    text-align: left !important;
   }
 }
 @media screen and (max-width: 768px) {
   .has-text-right-mobile {
-    text-align: right;
+    text-align: right !important;
   }
 }
 @media screen and (min-width: 769px), print {
   .has-text-right-tablet {
-    text-align: right;
+    text-align: right !important;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
   .has-text-right-tablet-only {
-    text-align: right;
+    text-align: right !important;
   }
 }
 @media screen and (max-width: 1023px) {
   .has-text-right-touch {
-    text-align: right;
+    text-align: right !important;
   }
 }
 @media screen and (min-width: 1024px) {
   .has-text-right-desktop {
-    text-align: right;
+    text-align: right !important;
   }
 }
 .is-capitalized {
-  text-transform: capitalize;
+  text-transform: capitalize !important;
 }
 .is-lowercase {
-  text-transform: lowercase;
+  text-transform: lowercase !important;
 }
 .is-uppercase {
-  text-transform: uppercase;
+  text-transform: uppercase !important;
 }
 .is-italic {
-  font-style: italic;
+  font-style: italic !important;
 }
 .has-text-weight-light {
-  font-weight: 300;
+  font-weight: 300 !important;
 }
 .has-text-weight-normal {
-  font-weight: 400;
+  font-weight: 400 !important;
 }
 .has-text-weight-medium {
-  font-weight: 500;
+  font-weight: 500 !important;
 }
 .has-text-weight-semibold {
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 .has-text-weight-bold {
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 .is-family-primary {
-  font-family: BaloiseCreateText, Arial, sans-serif;
+  font-family: BaloiseCreateText, Arial, sans-serif !important;
 }
 .is-family-secondary {
-  font-family: BaloiseCreateText, Arial, sans-serif;
+  font-family: BaloiseCreateText, Arial, sans-serif !important;
 }
 .is-family-text {
-  font-family: BaloiseCreateText, Arial, sans-serif;
+  font-family: BaloiseCreateText, Arial, sans-serif !important;
 }
 .is-family-title {
-  font-family: BaloiseCreateHeadline, Arial, sans-serif;
+  font-family: BaloiseCreateHeadline, Arial, sans-serif !important;
 }
 .is-family-monospace {
-  font-family: monospace;
+  font-family: monospace !important;
 }
 .is-family-code {
-  font-family: monospace;
+  font-family: monospace !important;
 }
 .column {
   display: block;

@@ -36,14 +36,14 @@ bal-file-upload {
 
   &:not(.is-disabled).is-invalid {
     .file-cta {
-      background: $danger-0;
+      background: $danger-1;
       border-color: $danger;
     }
 
     label.file-label:focus-within .file-cta,
     label.file-label:active .file-cta {
       border-color: $danger;
-      background: $danger-0;
+      background: $danger-1;
     }
 
     span.file-cta {
@@ -72,14 +72,14 @@ bal-file-upload {
       border-color: $grey-5 !important;
 
       span.file-label {
-        color: $grey-7 !important;
+        color: $grey-5 !important;
       }
 
       svg {
         g,
         path,
         circle {
-          fill: $grey-7 !important;
+          fill: $grey-5 !important;
         }
       }
     }

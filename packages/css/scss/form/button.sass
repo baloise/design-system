@@ -12,6 +12,7 @@
   @extend %font-smoothing
   border-color: var(--bal-color-blue)
   color: var(--bal-color-blue)
+  +fillSvg(var(--bal-color-blue))
   font-family: var(--bal-font-family-title)
   font-weight: $weight-bold
   background-color: transparent
@@ -27,16 +28,34 @@
   box-sizing: border-box
   appearance: none
   text-decoration: none
+  span,
   strong
     color: inherit
+    font-family: var(--bal-font-family-title)
+    font-weight: $weight-bold
   &::-moz-focus-inner
     border: 0
+  // Icons
+  .icon-left,
+  .icon-right
+    align-items: center
+    display: inline-flex
+    justify-content: center
+    margin-top: -3px
+  .icon-left
+    margin-left: -4px
+    margin-right: 8px
+  .icon-right
+    margin-right: -4px
+    margin-left: 8px
   // Modifiers
   &.is-fullwidth
     width: 100%
   &.is-square
     width: 48px
     padding: 0
+    .icon-left
+      +margin(0)
   &.is-flat
     padding: 0
     height: 1.5rem
@@ -68,6 +87,7 @@
     background: var(--bal-color-light-blue)
     border-color: var(--bal-color-light-blue-dark)
     color: var(--bal-color-light-blue-dark)
+    +fillSvg(var(--bal-color-light-blue-dark))
   &:focus-visible,
   &.is-focused
     &:not(:active)
@@ -77,11 +97,13 @@
     background: var(--bal-color-light-blue)
     border-color: var(--bal-color-blue-dark)
     color: var(--bal-color-blue-dark)
+    +fillSvg(var(--bal-color-blue-dark))
   // Colors
   &.is-primary
     background: var(--bal-color-blue)
     border-color: var(--bal-color-blue)
     color: var(--bal-color-white)
+    +fillSvg(var(--bal-color-white))
     // States
     &:hover,
     &.is-hovered
@@ -108,11 +130,13 @@
       background: transparent
       border-color: transparent
       color: var(--bal-color-light-blue-dark)
+      +fillSvg(var(--bal-color-light-blue-dark))
     &:active,
     &.is-active
       background: transparent
       border-color: transparent
       color: var(--bal-color-blue-dark)
+      +fillSvg(var(--bal-color-blue-dark))
   &.is-link
     // States
     &:hover,
@@ -120,66 +144,79 @@
       background: var(--bal-color-light-blue)
       border-color: var(--bal-color-light-blue)
       color: var(--bal-color-light-blue-dark)
+      +fillSvg(var(--bal-color-light-blue-dark))
     &:active,
     &.is-active
       background: var(--bal-color-light-blue)
       border-color: var(--bal-color-light-blue)
       color: var(--bal-color-blue-dark)
+      +fillSvg(var(--bal-color-blue-dark))
   &.is-success
     background: var(--bal-color-success-1)
     border-color: var(--bal-color-success-4)
     color: var(--bal-color-success-4)
+    +fillSvg(var(--bal-color-success-4))
     // States
     &:hover,
     &.is-hovered
       background: var(--bal-color-success-4)
       border-color: var(--bal-color-success-4)
       color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
     &:active,
     &.is-active
       background: var(--bal-color-success-6)
       border-color: var(--bal-color-success-6)
       color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
   &.is-warning
     background: var(--bal-color-warning-1)
     border-color: var(--bal-color-warning-5)
     color: var(--bal-color-warning-5)
+    +fillSvg(var(--bal-color-warning-5))
     // States
     &:hover,
     &.is-hovered
       background: var(--bal-color-warning-5)
       border-color: var(--bal-color-warning-5)
       color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
     &:active,
     &.is-active
       background: var(--bal-color-warning-6)
       border-color: var(--bal-color-warning-6)
       color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
   &.is-danger
     background: var(--bal-color-danger-1)
     border-color: var(--bal-color-danger-4)
     color: var(--bal-color-danger-4)
+    +fillSvg(var(--bal-color-danger-4))
     // States
     &:hover,
     &.is-hovered
       background: var(--bal-color-danger-4)
       border-color: var(--bal-color-danger-4)
       color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
     &:active,
     &.is-active
       background: var(--bal-color-danger-6)
       border-color: var(--bal-color-danger-6)
       color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
   &.is-inverted
     background: transparent
     border-color: var(--bal-color-white)
     color: var(--bal-color-white)
+    +fillSvg(var(--bal-color-white))
     // States
     &:hover,
     &.is-hovered
       background: var(--bal-color-blue-3)
       border-color: var(--bal-color-light-blue-3)
       color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
     &:focus-visible,
     &.is-focused
       &:not(:active)
@@ -189,21 +226,25 @@
       background: var(--bal-color-blue-3)
       border-color: var(--bal-color-light-blue-5)
       color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
     &.is-primary
       background: var(--bal-color-white)
       border-color: var(--bal-color-white)
       color: var(--bal-color-blue)
+      +fillSvg(var(--bal-color-blue))
       // States
       &:hover,
       &.is-hovered
         background: var(--bal-color-light-blue-2)
         border-color: var(--bal-color-light-blue-2)
         color: var(--bal-color-blue)
+        +fillSvg(var(--bal-color-blue))
       &:active,
       &.is-active
         background: var(--bal-color-light-blue-5)
         border-color: var(--bal-color-light-blue-5)
         color: var(--bal-color-white)
+        +fillSvg(var(--bal-color-white))
     &.is-link,
     &.is-text
       background: transparent
@@ -230,12 +271,14 @@
     background: var(--bal-color-blue-3)
     border-color: var(--bal-color-blue-3)
     color: var(--bal-color-white)
+    +fillSvg(var(--bal-color-white))
     // States
     &:hover,
     &.is-hovered
-      background: var(--bal-color-white)
-      border-color: var(--bal-color-white)
-      color: var(--bal-color-light-blue-dark)
+      background: var(--bal-color-light-blue-2)
+      border-color: var(--bal-color-light-blue-2)
+      color: var(--bal-color-blue)
+      +fillSvg(var(--bal-color-blue))
     &:focus-visible,
     &.is-focused
       &:not(:active)
@@ -244,7 +287,8 @@
     &.is-active
       background: var(--bal-color-white)
       border-color: var(--bal-color-white)
-      color: var(--bal-color-blue-dark)
+      color: var(--bal-color-blue)
+      +fillSvg(var(--bal-color-blue))
   // Disabled
   &.is-disabled.is-inverted,
   &.is-disabled,
@@ -254,6 +298,7 @@
     background: var(--bal-color-grey)
     border-color: var(--bal-color-grey)
     color: var(--bal-color-grey-dark)
+    +fillSvg(var(--bal-color-grey-dark))
     opacity: 1
     & > span::after
       display: none

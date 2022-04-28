@@ -13,7 +13,7 @@ const component = BalComponentStory({
 
 export default component.story
 
-const excludedControls = ['visualLevel']
+const excludedControls = []
 
 const Template = args => ({
   components: { ...component.components },

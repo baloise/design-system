@@ -1,0 +1,76 @@
+=iconSize($size: 1.5rem)
+  width: $size
+  max-height: $size
+
+bal-icon,
+.bal-icon
+  display: flex
+  justify-content: center
+  align-items: center
+  position: static
+  pointer-events: visible
+  +iconSize(1.5rem)
+  +fillSvg(var(--bal-color-blue))
+  &.is-inline
+    display: inline-flex
+  .bal-icon-inner
+    display: block
+    position: static
+    +iconSize(1.5rem)
+  &.turn .bal-icon-inner
+    transform: rotate(180deg)
+  &.is-xsmall,
+  &.is-xsmall .bal-icon-inner
+    width: 0.625rem
+  &.is-small,
+  &.is-small .bal-icon-inner
+    +iconSize(1rem)
+  &.is-medium,
+  &.is-medium .bal-icon-inner
+    +iconSize(2rem)
+  &.is-large,
+  &.is-large .bal-icon-inner
+    +iconSize(3rem)
+  &.is-xlarge,
+  &.is-xlarge .bal-icon-inner
+    +iconSize(4rem)
+  &.is-grey
+    +fillSvg(var(--bal-color-grey-dark))
+  &.is-success
+    +fillSvg(var(--bal-color-success))
+  &.is-warning
+    +fillSvg(var(--bal-color-warning))
+  &.is-danger
+    +fillSvg(var(--bal-color-danger))
+  &.is-white,
+  &.is-inverted
+    +fillSvg(var(--bal-color-white))
+  &.is-white.is-inverted
+    +fillSvg(var(--bal-color-blue))
+
+.icon-text
+  align-items: flex-start
+  color: inherit
+  display: inline-flex
+  vertical-align: top
+  flex-wrap: nowrap
+  word-break: break-word
+  line-height: 1.5rem
+  &.is-small
+    line-height: 1rem
+  &.is-medium
+    line-height: 2rem
+  &.is-large
+    line-height: 3rem
+  &.is-xlarge
+    line-height: 4rem
+  .icon
+    flex-grow: 0
+    flex-shrink: 0
+    &:not(:last-child)
+      margin-right: 0.5rem
+    &:not(:first-child)
+      margin-right: 0.5rem
+
+div.icon-text
+  display: flex

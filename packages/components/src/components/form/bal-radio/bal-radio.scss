@@ -100,7 +100,7 @@ bal-radio.bal-radio:not(.bal-select-button) {
 
   input[type='radio']:checked.is-disabled + label:after {
     cursor: default;
-    background: $grey-7;
+    background: $grey-5;
   }
 
   input[type='radio']:focus-visible + label:before {

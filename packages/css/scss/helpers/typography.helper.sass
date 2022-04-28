@@ -1,181 +1,66 @@
-//
-// HEADINGS
-// -------------------------------------------------
-$title-color: $text-strong !default
-$title-family: $font-family-title !default
-$title-size: $size-3 !default
-$title-weight: $weight-bold !default
-$title-line-height: 1.125 !default
-$title-strong-color: inherit !default
-$title-strong-weight: inherit !default
-$title-sub-size: 0.75em !default
-$title-sup-size: 0.75em !default
-
-$subtitle-color: $text-strong !default
-$subtitle-family: $font-family-title !default
-$subtitle-size: $size-5 !default
-$subtitle-weight: $weight-normal !default
-$subtitle-line-height: 1.25 !default
-$subtitle-strong-color: $text-strong !default
-$subtitle-strong-weight: $weight-semibold !default
-$subtitle-negative-margin: -1.25rem !default
-
-.title,
-.subtitle
-  @extend %block
-  word-break: break-word
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-  em,
-  span
-    font-weight: inherit
-  sub
-    font-size: $title-sub-size
-  sup
-    font-size: $title-sup-size
-
-.title
-  color: $title-color
-  @if $title-family
-    font-family: $title-family
-    font-size: $title-size
-    font-weight: $title-weight
-    line-height: $title-line-height
-  strong
-    color: $title-strong-color
-    font-weight: $title-strong-weight
-  &:not(.is-spaced) + .subtitle
-    margin-top: $subtitle-negative-margin
-
-.subtitle
-  color: $subtitle-color
-  @if $subtitle-family
-    font-family: $subtitle-family
-    font-size: $subtitle-size
-    font-weight: $subtitle-weight
-    line-height: $subtitle-line-height
-  strong
-    color: $subtitle-strong-color
-    font-weight: $subtitle-strong-weight
-  &:not(.is-spaced) + .title
-    margin-top: $subtitle-negative-margin
-
-.title.is-size-3,
-.title.is-size-4,
-.title.is-size-5,
-.title.is-size-6,
-.title.is-3,
-.title.is-4,
-.title.is-5,
-.title.is-6
-  font-weight: $weight-bold
-  letter-spacing: -1%
-
-//
-// PARAGRAGH & LINKS
-// -------------------------------------------------
-p
-  +block($space-5)
-
-+tablet
-  p
-    +block($space-4)
-
-.is-bold,
-span.is-bold,
-p.is-bold,
-a.is-bold,
-.is-text-bold,
-.is-text-bold span
-  font-weight: $weight-bold
-
-span.is-small,
-p.is-small,
-a.is-small,
-.is-text-small,
-.is-text-small span
-  font-size: var(--bal-size-small)
-  line-height: 1rem
-
-p,
-a
-  font-family: $family-primary
-  line-height: 1.5rem
-  margin: 0
-  word-break: break-word
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-
-p.is-lead,
-p.is-lead > a
-  font-size: 1.2rem
-  line-height: 1.6rem
-  word-spacing: 0.05rem
-
-//
-// GENERAL HELPERS
-// -------------------------------------------------
+.has-no-wrap
+  white-space: nowrap !important
 
 $alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'right': 'right')
 
 @each $alignment, $text-align in $alignments
   .has-text-#{$alignment}
-    text-align: #{$text-align}
+    text-align: #{$text-align} !important
 
 @each $alignment, $text-align in $alignments
   +mobile
     .has-text-#{$alignment}-mobile
-      text-align: #{$text-align}
+      text-align: #{$text-align} !important
   +tablet
     .has-text-#{$alignment}-tablet
-      text-align: #{$text-align}
+      text-align: #{$text-align} !important
   +tablet-only
     .has-text-#{$alignment}-tablet-only
-      text-align: #{$text-align}
+      text-align: #{$text-align} !important
   +touch
     .has-text-#{$alignment}-touch
-      text-align: #{$text-align}
+      text-align: #{$text-align} !important
   +desktop
     .has-text-#{$alignment}-desktop
-      text-align: #{$text-align}
+      text-align: #{$text-align} !important
 
 .is-capitalized
-  text-transform: capitalize
+  text-transform: capitalize !important
 
 .is-lowercase
-  text-transform: lowercase
+  text-transform: lowercase !important
 
 .is-uppercase
-  text-transform: uppercase
+  text-transform: uppercase !important
 
 .is-italic
-  font-style: italic
+  font-style: italic !important
 
 .has-text-weight-light
-  font-weight: $weight-light
+  font-weight: $weight-light !important
 .has-text-weight-normal
-  font-weight: $weight-normal
+  font-weight: $weight-normal !important
 .has-text-weight-medium
-  font-weight: $weight-medium
+  font-weight: $weight-medium !important
 .has-text-weight-semibold
-  font-weight: $weight-semibold
+  font-weight: $weight-semibold !important
 .has-text-weight-bold
-  font-weight: $weight-bold
+  font-weight: $weight-bold !important
 
 .is-family-primary
-  font-family: $family-primary
+  font-family: $family-primary !important
 
 .is-family-secondary
-  font-family: $family-secondary
+  font-family: $family-secondary !important
 
 .is-family-text
-  font-family: $font-family-text
+  font-family: $font-family-text !important
 
 .is-family-title
-  font-family: $font-family-title
+  font-family: $font-family-title !important
 
 .is-family-monospace
-  font-family: $family-monospace
+  font-family: $family-monospace !important
 
 .is-family-code
-  font-family: $family-code
+  font-family: $family-code !important

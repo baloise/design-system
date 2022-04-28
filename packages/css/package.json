@@ -39,8 +39,8 @@
     "scss/"
   ],
   "license": "Apache-2.0",
-  "@baloise/design-system-next-tokens": "^10.10.3",
   "devDependencies": {
+    "@baloise/design-system-next-tokens": "^10.10.3",
     "@baloise/design-system-next-fonts": "^10.10.3",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.3",

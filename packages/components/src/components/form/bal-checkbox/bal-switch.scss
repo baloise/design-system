@@ -75,7 +75,7 @@ bal-checkbox {
     }
 
     input[type='checkbox']:checked + label:hover::before {
-      background: $success-7;
+      background: $success-5;
     }
 
     input[type='checkbox'] + label.is-disabled::before {
@@ -83,7 +83,7 @@ bal-checkbox {
     }
 
     input[type='checkbox'] + label.is-disabled::after {
-      background: $grey-7;
+      background: $grey-5;
     }
   }
 }

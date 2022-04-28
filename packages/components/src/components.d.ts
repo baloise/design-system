@@ -766,10 +766,6 @@ export namespace Components {
          */
         "name": string;
         /**
-          * If `true` the icon rotates like for a loading spinner
-         */
-        "rotate": boolean;
-        /**
           * Defines the size of the icon.
          */
         "size": Props.BalIconSize;
@@ -3325,10 +3321,6 @@ declare namespace LocalJSX {
           * Name of the baloise icon.
          */
         "name"?: string;
-        /**
-          * If `true` the icon rotates like for a loading spinner
-         */
-        "rotate"?: boolean;
         /**
           * Defines the size of the icon.
          */

@@ -1,8 +1,7 @@
 import { Component, h, Host, Prop } from '@stencil/core'
-// import * as balIcons from '@baloise/design-system-next-icons'
-import { balIconAccount } from '@baloise/design-system-next-icons'
-// import upperFirst from 'lodash.upperfirst'
-// import camelCase from 'lodash.camelcase'
+import * as balIcons from '@baloise/design-system-next-icons'
+import upperFirst from 'lodash.upperfirst'
+import camelCase from 'lodash.camelcase'
 import { Props } from '../../props'
 
 @Component({
@@ -40,42 +39,42 @@ export class Icon {
   @Prop() inverted = false
 
   /**
-   * If `true` the icon rotates like for a loading spinner
-   */
-  @Prop() rotate = false
-
-  /**
    * If `true` the icon is rotated 180deg
    */
   @Prop() turn = false
 
   private get svgContent() {
-    // if (balIcons && this.name && this.name.length > 0) {
-    //   const icon: string | undefined = (balIcons as { [key: string]: string })[
-    //     `balIcon${upperFirst(camelCase(this.name))}`
-    //   ]
-    //   if (icon) {
-    //     return icon
-    //   }
-    // }
+    if (balIcons && this.name && this.name.length > 0) {
+      const icon: string | undefined = (balIcons as { [key: string]: string })[
+        `balIcon${upperFirst(camelCase(this.name))}`
+      ]
+      if (icon) {
+        return icon
+      }
+    }
 
-    // return this.svg || ''
-    return balIconAccount
+    return this.svg || ''
   }
 
   render() {
+    const color = ['white', 'blue', 'grey', 'danger', 'warning', 'success'].includes(this.color) ? this.color : 'blue'
     return (
       <Host
         class={{
-          [`is-size-${this.size}`]: !!this.size,
-          [`is-inverted`]: this.inverted,
-          [`is-${this.color}`]: this.color !== '',
-          [`turn`]: this.turn,
-          [`rotate`]: this.rotate,
-          [`is-inline`]: this.inline,
+          'bal-icon': true,
+          [`is-${this.size}`]: !!this.size,
+          'is-inverted': this.inverted,
+          [`is-${color}`]: true,
+          'is-inline': this.inline,
         }}
       >
-        <div class="bal-icon-inner" innerHTML={this.svgContent}></div>
+        <div
+          class={{
+            'bal-icon-inner': true,
+            [`turn`]: this.turn,
+          }}
+          innerHTML={this.svgContent}
+        ></div>
       </Host>
     )
   }

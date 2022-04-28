@@ -197,15 +197,6 @@ export class Button implements ComponentInterface {
     return {}
   }
 
-  private get spanSquareAttrs() {
-    if (this.square) {
-      return {
-        style: { display: 'none' },
-      }
-    }
-    return {}
-  }
-
   private get loadingAttrs() {
     if (!this.loading) {
       return {
@@ -215,10 +206,6 @@ export class Button implements ComponentInterface {
     return {
       style: { position: 'absolute' },
     }
-  }
-
-  private get iconColor(): Props.BalIconColor {
-    return this.color
   }
 
   private handleClick(event: MouseEvent) {
@@ -277,6 +264,7 @@ export class Button implements ComponentInterface {
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
+          'bal-button': true,
           'control': true,
           'is-fullwidth': this.expanded,
           'is-disabled': this.disabled,
@@ -302,9 +290,8 @@ export class Button implements ComponentInterface {
           />
           <span
             class={{
-              'data-test-button-label button-label m-0 p-0': true,
+              'data-test-button-label button-label': true,
               'is-small': this.size === 'small',
-              'is-bold': true,
             }}
             style={{ opacity: this.loading || (this.square && this.icon !== '') ? '0' : '1' }}
           >

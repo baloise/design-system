@@ -243,12 +243,12 @@
     & > div:hover:after,
     a:hover:after,
     button:hover:after {
-      background: $light-blue-7;
+      background: $blue-6;
     }
     & > div:active:after,
     a:active:after,
     button:active:after {
-      background: $blue-9;
+      background: $blue-6;
     }
   }
 
@@ -308,7 +308,7 @@
   button {
     .bal-list-item-title h5,
     .bal-list-item-subtitle p {
-      color: $grey-7 !important;
+      color: $grey-5 !important;
     }
 
     .bal-list-item-icon {
@@ -316,7 +316,7 @@
       svg g,
       svg path,
       svg circle {
-        fill: $grey-7 !important;
+        fill: $grey-5 !important;
       }
     }
   }
@@ -331,7 +331,7 @@
     &:active {
       .bal-list-item-title h5,
       .bal-list-item-subtitle p {
-        color: $grey-7 !important;
+        color: $grey-5 !important;
       }
 
       .bal-list-item-icon {
@@ -339,7 +339,7 @@
         svg g,
         svg path,
         svg circle {
-          fill: $grey-7 !important;
+          fill: $grey-5 !important;
         }
       }
     }

@@ -18,17 +18,17 @@ async function generateBackgroundColors() {
   const lines = []
 
   lines.push(`.has-background-transparent`)
-  lines.push(`  background: transparent`)
+  lines.push(`  background: transparent !important`)
   lines.push(`.has-fill-transparent`)
-  lines.push(`  fill: transparent`)
+  lines.push(`  fill: transparent !important`)
   lines.push(`  @include fillSvg(transparent)`)
   lines.push(``)
 
   for (const color in colors) {
     lines.push(`.has-background-${color}`)
-    lines.push(`  background: var(--bal-color-${color})`)
+    lines.push(`  background: var(--bal-color-${color}) !important`)
     lines.push(`.has-fill-${color}`)
-    lines.push(`  fill: var(--bal-color-${color})`)
+    lines.push(`  fill: var(--bal-color-${color}) !important`)
     lines.push(`  @include fillSvg(var(--bal-color-${color}))`)
     lines.push(``)
   }
@@ -42,7 +42,7 @@ async function generateTextColors() {
 
   for (const color in typographyColors) {
     lines.push(`.has-text-${color}`)
-    lines.push(`  color: var(--bal-color-${typographyColors[color]})`)
+    lines.push(`  color: var(--bal-color-${typographyColors[color]}) !important`)
   }
 
   await file.write(path.join(SASS_PATH, 'color.text.helpers.sass'), [...lines, ''].join('\n'))
@@ -54,25 +54,25 @@ async function  generateBorders() {
   const pos = ['top', 'left', 'right', 'bottom']
 
   lines.push(`.has-border-none`)
-  lines.push(`  border: none`)
+  lines.push(`  border: none !important`)
   lines.push(``)
 
   for (let index = 0; index < pos.length; index++) {
     const p = pos[index]
     lines.push(`.has-border-${p}-none`)
-    lines.push(`  border-${p}: none`)
+    lines.push(`  border-${p}: none !important`)
   }
 
   for (const c in borderColors) {
     const value = `2px solid var(--bal-color-${borderColors[c]})`
     lines.push(`.has-border-${c}`)
-    lines.push(`  border: ${value}`)
+    lines.push(`  border: ${value} !important`)
     lines.push(``)
 
     for (let index = 0; index < pos.length; index++) {
       const p = pos[index]
       lines.push(`.has-border-${p}-${c}`)
-      lines.push(`  border-${p}: ${value}`)
+      lines.push(`  border-${p}: ${value} !important`)
       lines.push(``)
     }
   }
@@ -85,33 +85,33 @@ async function generateRadius() {
   const lines = []
   for (const r in radius) {
     lines.push(`.has-radius${parseKey(r)}`)
-    lines.push(`  border-radius: var(--bal-radius${parseKey(r)})`)
+    lines.push(`  border-radius: var(--bal-radius${parseKey(r)}) !important`)
     lines.push(``)
 
     lines.push(`.has-radius-top${parseKey(r)}`)
-    lines.push(`  border-top-left-radius: var(--bal-radius${parseKey(r)})`)
-    lines.push(`  border-top-right-radius: var(--bal-radius${parseKey(r)})`)
+    lines.push(`  border-top-left-radius: var(--bal-radius${parseKey(r)}) !important`)
+    lines.push(`  border-top-right-radius: var(--bal-radius${parseKey(r)}) !important`)
     lines.push(``)
 
     lines.push(`.has-radius-top-left${parseKey(r)}`)
-    lines.push(`  border-top-left-radius: var(--bal-radius${parseKey(r)})`)
+    lines.push(`  border-top-left-radius: var(--bal-radius${parseKey(r)}) !important`)
     lines.push(``)
 
     lines.push(`.has-radius-top-right${parseKey(r)}`)
-    lines.push(`  border-top-right-radius: var(--bal-radius${parseKey(r)})`)
+    lines.push(`  border-top-right-radius: var(--bal-radius${parseKey(r)}) !important`)
     lines.push(``)
 
     lines.push(`.has-radius-bottom${parseKey(r)}`)
-    lines.push(`  border-bottom-left-radius: var(--bal-radius${parseKey(r)})`)
-    lines.push(`  border-bottom-right-radius: var(--bal-radius${parseKey(r)})`)
+    lines.push(`  border-bottom-left-radius: var(--bal-radius${parseKey(r)}) !important`)
+    lines.push(`  border-bottom-right-radius: var(--bal-radius${parseKey(r)}) !important`)
     lines.push(``)
 
     lines.push(`.has-radius-bottom-left${parseKey(r)}`)
-    lines.push(`  border-bottom-left-radius: var(--bal-radius${parseKey(r)})`)
+    lines.push(`  border-bottom-left-radius: var(--bal-radius${parseKey(r)}) !important`)
     lines.push(``)
 
     lines.push(`.has-radius-bottom-right${parseKey(r)}`)
-    lines.push(`  border-bottom-right-radius: var(--bal-radius${parseKey(r)})`)
+    lines.push(`  border-bottom-right-radius: var(--bal-radius${parseKey(r)}) !important`)
     lines.push(``)
   }
 
@@ -123,14 +123,13 @@ async function generateShadow() {
   const lines = []
   for (const r in shadow) {
     lines.push(`.has-shadow${parseKey(r)}`)
-    lines.push(`  box-shadow: var(--bal-shadow${parseKey(r)})`)
+    lines.push(`  box-shadow: var(--bal-shadow${parseKey(r)}) !important`)
     lines.push(``)
   }
   await file.write(path.join(SASS_PATH, 'shadow.helpers.sass'), [...lines, ''].join('\n'))
 }
 
 async function generateTypography() {
-  const typography = BaloiseDesignToken.typography
   const sizes = BaloiseDesignToken.typography.sizes
   const spacing = BaloiseDesignToken.spacing
   const lines = []

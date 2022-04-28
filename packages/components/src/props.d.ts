@@ -44,11 +44,11 @@ export namespace Props {
 
   export type BalCloseSize = 'small' | 'large' | 'medium' | ''
 
-  export type BalHeadingLevel = 'display' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue'
+  export type BalHeadingLevel = 'display' | 'display-1' | 'display-2' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue' | 'white'
 
   export type BalHintPlacement = 'left' | 'right'
-  export type BalIconColor = BalButtonColor | 'white' | 'grey' | ''
+  export type BalIconColor = 'blue' | 'success' | 'danger' | 'warning' | 'white' | 'grey' | '' | string
   export type BalIconSize = 'xsmall' | 'small' | 'medium' | 'large' | ''
 
   export type BalListItemTarget = BalButtonTarget

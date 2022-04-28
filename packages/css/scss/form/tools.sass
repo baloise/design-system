@@ -159,3 +159,20 @@
   font-size: var(--bal-size-normal)
   position: relative
   text-align: inherit
+
+.field.is-grouped .control:not(:last-child)
+  margin-right: 8px
+
++mobile()
+  .field.is-grouped
+    flex-wrap: wrap
+    flex-direction: column
+    .control
+      flex-grow: 1
+      flex-shrink: 1
+      min-width: 100%
+      margin-right: 0 !important
+      .button
+        min-width: 100%
+      &:not(:last-child)
+        margin-bottom: 8px
