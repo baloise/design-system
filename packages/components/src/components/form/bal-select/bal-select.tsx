@@ -805,9 +805,6 @@ export class Select {
               size="xsmall"
               color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
               turn={this.isPopoverOpen}
-              style={{
-                marginTop: this.isPopoverOpen ? '8px' : '0px',
-              }}
               onClick={this.handleInputClick}
             ></bal-icon>
           </div>
@@ -838,6 +835,7 @@ export class Select {
                       checked={valuesArray.includes(option.value)}
                       tabindex={-1}
                       hidden
+                      flat
                       onBalChange={preventDefault}
                     ></bal-checkbox>
                   </span>

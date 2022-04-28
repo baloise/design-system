@@ -46,6 +46,11 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   @Prop() labelHidden = false
 
   /**
+   * If `true` the control is no padding
+   */
+  @Prop() flat = false
+
+  /**
    * A DOMString representing the value of the checkbox. This is not displayed on the
    * client-side, but on the server this is the value given to the data
    * submitted with the checkbox's name.
@@ -176,6 +181,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
         aria-hidden={this.disabled ? 'true' : null}
         aria-focused={this.hasFocus ? 'true' : null}
         class={{
+          'is-flat': this.flat,
           'is-inverted': this.inverted,
           'is-disabled': this.disabled || this.readonly,
           'is-focused': this.hasFocus,

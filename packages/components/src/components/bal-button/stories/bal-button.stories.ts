@@ -135,7 +135,8 @@ export const Link = args => ({
 })
 Link.args = {
   color: 'link',
-  flat: true,
+  flat: false,
+  inverted: false,
   iconRight: 'plus',
 }
 Link.parameters = { ...component.sourceCode(Link), controls: { exclude: excludedControls } }

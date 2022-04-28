@@ -9,6 +9,10 @@ bal-checkbox {
   min-width: 24px;
   min-height: 48px;
 
+  &.is-flat {
+    min-height: 24px;
+  }
+
   &.bal-checkbox {
     input[type='checkbox'] {
       position: absolute;

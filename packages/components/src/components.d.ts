@@ -24,7 +24,6 @@ export namespace Components {
           * Label of the close trigger button
          */
         "closeLabel": string;
-        "color": Props.BalAccordionColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -33,10 +32,6 @@ export namespace Components {
           * Closes the accordion
          */
         "dismiss": () => Promise<void>;
-        /**
-          * Controls the style of the accordion
-         */
-        "interface": '' | 'light';
         /**
           * BalIcon of the open trigger button
          */
@@ -275,6 +270,10 @@ export namespace Components {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
+        /**
+          * If `true` the control is no padding
+         */
+        "flat": boolean;
         /**
           * Returns the native `<input>` element used under the hood.
          */
@@ -614,10 +613,6 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
-        /**
-          * If `true` a asterix (*) is added to the label text
-         */
-        "required": boolean;
     }
     interface BalFieldMessage {
         /**
@@ -976,15 +971,19 @@ export namespace Components {
     }
     interface BalList {
         /**
+          * If `true` the list can be used on a light, dark or colored backgrounds
+         */
+        "background": Props.BalListBackground;
+        /**
           * If `true` each list item has a bottom border
          */
         "border": boolean;
         /**
-          * If `true` the list item can be hovered
+          * If `true` the list item can not be hovered
          */
         "disabled": boolean;
         /**
-          * If `true` the list can be used on a dark background
+          * @deprecated If `true` the list can be used on a dark background
          */
         "inverted": boolean;
         /**
@@ -993,6 +992,10 @@ export namespace Components {
         "size": Props.BalListSize;
     }
     interface BalListItem {
+        /**
+          * If `true` the list item can be used as a accordion
+         */
+        "accordion": boolean;
         /**
           * If `true` the list item shows that it is clickable
          */
@@ -1013,6 +1016,14 @@ export namespace Components {
           * Specifies where to open the linked document
          */
         "target": Props.BalListItemTarget;
+    }
+    interface BalListItemAccordionBody {
+        /**
+          * If `true` the body will be open and visible
+         */
+        "open": boolean;
+    }
+    interface BalListItemAccordionHead {
     }
     interface BalListItemContent {
     }
@@ -1686,6 +1697,14 @@ export namespace Components {
          */
         "select": (tab: BalTabOption) => Promise<void>;
         "value"?: string;
+        /**
+          * If `true` tabs are align vertically.
+         */
+        "vertical": boolean;
+        /**
+          * If `true` tabs are align vertically on the mobile.
+         */
+        "verticalOnMobile": boolean;
     }
     interface BalTag {
         /**
@@ -2173,6 +2192,18 @@ declare global {
         prototype: HTMLBalListItemElement;
         new (): HTMLBalListItemElement;
     };
+    interface HTMLBalListItemAccordionBodyElement extends Components.BalListItemAccordionBody, HTMLStencilElement {
+    }
+    var HTMLBalListItemAccordionBodyElement: {
+        prototype: HTMLBalListItemAccordionBodyElement;
+        new (): HTMLBalListItemAccordionBodyElement;
+    };
+    interface HTMLBalListItemAccordionHeadElement extends Components.BalListItemAccordionHead, HTMLStencilElement {
+    }
+    var HTMLBalListItemAccordionHeadElement: {
+        prototype: HTMLBalListItemAccordionHeadElement;
+        new (): HTMLBalListItemAccordionHeadElement;
+    };
     interface HTMLBalListItemContentElement extends Components.BalListItemContent, HTMLStencilElement {
     }
     var HTMLBalListItemContentElement: {
@@ -2471,6 +2502,8 @@ declare global {
         "bal-input-stepper": HTMLBalInputStepperElement;
         "bal-list": HTMLBalListElement;
         "bal-list-item": HTMLBalListItemElement;
+        "bal-list-item-accordion-body": HTMLBalListItemAccordionBodyElement;
+        "bal-list-item-accordion-head": HTMLBalListItemAccordionHeadElement;
         "bal-list-item-content": HTMLBalListItemContentElement;
         "bal-list-item-icon": HTMLBalListItemIconElement;
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
@@ -2528,15 +2561,10 @@ declare namespace LocalJSX {
           * Label of the close trigger button
          */
         "closeLabel"?: string;
-        "color"?: Props.BalAccordionColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
-        /**
-          * Controls the style of the accordion
-         */
-        "interface"?: '' | 'light';
         /**
           * Emitted when the accordion has opened or closed
          */
@@ -2787,6 +2815,10 @@ declare namespace LocalJSX {
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        /**
+          * If `true` the control is no padding
+         */
+        "flat"?: boolean;
         /**
           * If `true`, the value will not be send with a form submit
          */
@@ -3141,10 +3173,6 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
-        /**
-          * If `true` a asterix (*) is added to the label text
-         */
-        "required"?: boolean;
     }
     interface BalFieldMessage {
         /**
@@ -3519,15 +3547,19 @@ declare namespace LocalJSX {
     }
     interface BalList {
         /**
+          * If `true` the list can be used on a light, dark or colored backgrounds
+         */
+        "background"?: Props.BalListBackground;
+        /**
           * If `true` each list item has a bottom border
          */
         "border"?: boolean;
         /**
-          * If `true` the list item can be hovered
+          * If `true` the list item can not be hovered
          */
         "disabled"?: boolean;
         /**
-          * If `true` the list can be used on a dark background
+          * @deprecated If `true` the list can be used on a dark background
          */
         "inverted"?: boolean;
         /**
@@ -3536,6 +3568,10 @@ declare namespace LocalJSX {
         "size"?: Props.BalListSize;
     }
     interface BalListItem {
+        /**
+          * If `true` the list item can be used as a accordion
+         */
+        "accordion"?: boolean;
         /**
           * If `true` the list item shows that it is clickable
          */
@@ -3560,6 +3596,18 @@ declare namespace LocalJSX {
           * Specifies where to open the linked document
          */
         "target"?: Props.BalListItemTarget;
+    }
+    interface BalListItemAccordionBody {
+        /**
+          * If `true` the body will be open and visible
+         */
+        "open"?: boolean;
+    }
+    interface BalListItemAccordionHead {
+        /**
+          * Emitted when the accordion state is changed
+         */
+        "onBalAccordionChange"?: (event: CustomEvent<boolean>) => void;
     }
     interface BalListItemContent {
     }
@@ -4262,6 +4310,14 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: CustomEvent<string>) => void;
         "value"?: string;
+        /**
+          * If `true` tabs are align vertically.
+         */
+        "vertical"?: boolean;
+        /**
+          * If `true` tabs are align vertically on the mobile.
+         */
+        "verticalOnMobile"?: boolean;
     }
     interface BalTag {
         /**
@@ -4513,6 +4569,8 @@ declare namespace LocalJSX {
         "bal-input-stepper": BalInputStepper;
         "bal-list": BalList;
         "bal-list-item": BalListItem;
+        "bal-list-item-accordion-body": BalListItemAccordionBody;
+        "bal-list-item-accordion-head": BalListItemAccordionHead;
         "bal-list-item-content": BalListItemContent;
         "bal-list-item-icon": BalListItemIcon;
         "bal-list-item-subtitle": BalListItemSubtitle;
@@ -4611,6 +4669,8 @@ declare module "@stencil/core" {
             "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
             "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
+            "bal-list-item-accordion-body": LocalJSX.BalListItemAccordionBody & JSXBase.HTMLAttributes<HTMLBalListItemAccordionBodyElement>;
+            "bal-list-item-accordion-head": LocalJSX.BalListItemAccordionHead & JSXBase.HTMLAttributes<HTMLBalListItemAccordionHeadElement>;
             "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;
             "bal-list-item-icon": LocalJSX.BalListItemIcon & JSXBase.HTMLAttributes<HTMLBalListItemIconElement>;
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;

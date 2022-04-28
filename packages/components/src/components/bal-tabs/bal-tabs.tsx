@@ -19,6 +19,8 @@ export class Tabs {
   @State() tabsOptions: BalTabOption[] = []
   @State() lineWidth = 0
   @State() lineOffsetLeft = 0
+  @State() lineHeight = 0
+  @State() lineOffsetTop = 0
   @State() isReady = false
 
   /**
@@ -55,6 +57,16 @@ export class Tabs {
    * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
    */
   @Prop() debounce = 0
+
+  /**
+   * If `true` tabs are align vertically.
+   */
+  @Prop() vertical = false
+
+  /**
+   * If `true` tabs are align vertically on the mobile.
+   */
+  @Prop() verticalOnMobile = false
 
   @Watch('debounce')
   protected debounceChanged() {
@@ -146,14 +158,16 @@ export class Tabs {
   }
 
   private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
-    if (tab.prevent) {
+    if (tab.prevent || tab.disabled || !this.clickable) {
       event.preventDefault()
       event.stopPropagation()
     }
 
     if (!tab.disabled) {
       tab.navigate.emit(event)
-      await this.select(tab)
+      if (this.clickable) {
+        await this.select(tab)
+      }
     }
   }
 
@@ -161,12 +175,38 @@ export class Tabs {
     if (element) {
       const listElement = element.closest('li')
 
-      if (listElement?.clientWidth !== undefined) {
-        this.lineWidth = listElement.clientWidth - 32
-      }
+      if (this.vertical) {
+        if (listElement?.clientHeight !== undefined) {
+          this.lineHeight = listElement.clientHeight - 8
+        }
 
-      if (listElement?.offsetLeft !== undefined) {
-        this.lineOffsetLeft = listElement.offsetLeft + 16
+        if (listElement?.offsetTop !== undefined) {
+          this.lineOffsetTop = listElement.offsetTop + 4
+        }
+      } else if (this.verticalOnMobile) {
+        if (listElement?.clientHeight !== undefined) {
+          this.lineHeight = listElement.clientHeight - 8
+        }
+
+        if (listElement?.offsetTop !== undefined) {
+          this.lineOffsetTop = listElement.offsetTop + 4
+        }
+
+        if (listElement?.clientWidth !== undefined) {
+          this.lineWidth = listElement.clientWidth - 32
+        }
+
+        if (listElement?.offsetLeft !== undefined) {
+          this.lineOffsetLeft = listElement.offsetLeft + 16
+        }
+      } else {
+        if (listElement?.clientWidth !== undefined) {
+          this.lineWidth = listElement.clientWidth - 32
+        }
+
+        if (listElement?.offsetLeft !== undefined) {
+          this.lineOffsetLeft = listElement.offsetLeft + 16
+        }
       }
     }
   }
@@ -191,6 +231,8 @@ export class Tabs {
           'is-sub-navigation': this.interface === 'tabs-sub',
           'is-navbar-tabs': this.interface === 'navbar',
           'is-ready': this.isReady,
+          'is-vertical': this.vertical,
+          'is-vertical-on-mobile': this.verticalOnMobile,
         }}
         data-value={this.tabsOptions
           .filter(t => this.isTabActive(t))
@@ -213,6 +255,10 @@ export class Tabs {
           onSelectTab={(e, t) => this.onSelectTab(e, t)}
           lineWidth={this.lineWidth}
           lineOffsetLeft={this.lineOffsetLeft}
+          lineHeight={this.lineHeight}
+          lineOffsetTop={this.lineOffsetTop}
+          vertical={this.vertical}
+          verticalOnMobile={this.verticalOnMobile}
         ></Tabs>
         <slot></slot>
       </Host>

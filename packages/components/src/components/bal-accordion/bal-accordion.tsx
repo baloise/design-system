@@ -1,22 +1,11 @@
 import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core'
 import { debounceEvent } from '../../helpers/helpers'
-import { Props } from '../../types'
 
 @Component({
   tag: 'bal-accordion',
 })
 export class Accordion {
   private didInit = false
-
-  /**
-   * Controls the style of the accordion
-   */
-  @Prop() interface: '' | 'light' = ''
-
-  /*
-   * Defines the color of the accordion.
-   */
-  @Prop() color: Props.BalAccordionColor = 'primary'
 
   /**
    * If `true` the accordion is open.
@@ -103,10 +92,6 @@ export class Accordion {
     this.value = !this.value
   }
 
-  get buttonType(): Props.BalButtonColor {
-    return `${this.color}-light` as Props.BalButtonColor
-  }
-
   get label() {
     return this.value ? this.closeLabel : this.openLabel
   }
@@ -122,7 +107,6 @@ export class Accordion {
     return (
       <Host
         class={{
-          [`bal-accordion-${this.interface}`]: this.interface !== '',
           'accordion': true,
           'mt-5': this.card,
         }}
@@ -130,15 +114,13 @@ export class Accordion {
       >
         <div
           class={{
-            'is-flex': true,
-            'is-flex-direction-column': this.interface === 'light',
-            'is-flex-direction-column-reverse': this.interface !== 'light',
+            'is-flex is-flex-direction-column-reverse': true,
           }}
         >
           <div
             class={{
               'accordion-trigger': true,
-              'px-5': this.interface !== 'light' && this.card,
+              'px-5': this.card,
               'pb-5': this.card,
             }}
           >
@@ -148,8 +130,7 @@ export class Accordion {
               }}
               expanded={true}
               color={'info'}
-              icon={this.interface !== 'light' ? icon : undefined}
-              iconRight={this.interface === 'light' ? icon : undefined}
+              icon={icon}
               onClick={() => this.toggle()}
             >
               {label}
