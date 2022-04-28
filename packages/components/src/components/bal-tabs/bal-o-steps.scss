@@ -246,7 +246,7 @@ bal-tabs.bal-o-steps {
     }
 
     li.is-disabled {
-      cursor: not-allowed !important;
+      cursor: default !important;
       pointer-events: none;
 
       .step-index {
@@ -263,7 +263,7 @@ bal-tabs.bal-o-steps {
       }
 
       &:hover {
-        cursor: not-allowed !important;
+        cursor: default !important;
         pointer-events: none;
 
         .step-index {

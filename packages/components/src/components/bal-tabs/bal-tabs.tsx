@@ -158,14 +158,16 @@ export class Tabs {
   }
 
   private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
-    if (tab.prevent) {
+    if (tab.prevent || tab.disabled || !this.clickable) {
       event.preventDefault()
       event.stopPropagation()
     }
 
     if (!tab.disabled) {
       tab.navigate.emit(event)
-      await this.select(tab)
+      if (this.clickable) {
+        await this.select(tab)
+      }
     }
   }
 

@@ -35,8 +35,8 @@ bal-tabs.bal-tabs {
 
     & > ul > li {
       position: relative;
-      padding-top: 4px;
-      padding-bottom: 4px;
+      padding-top: 8px;
+      padding-bottom: 8px;
 
       @include tablet() {
         &.is-right {
@@ -60,7 +60,6 @@ bal-tabs.bal-tabs {
         min-height: 48px !important;
         padding: 16px;
         line-height: 1.2;
-        cursor: pointer;
         text-decoration: none;
 
         color: $text-light;
