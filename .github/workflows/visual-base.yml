@@ -1,0 +1,60 @@
+name: Visual Regression Test - Base Image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  BuildAndTest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Update npm registry
+        run: npm run update:registry
+
+      - name: Install dependencies
+        run: npm ci
+
+      - uses: cypress-io/github-action@v2
+        with:
+          build: npm run cy:build
+          start: npm run cy:start
+          wait-on: 'http://localhost:3333'
+          working-directory: packages/components
+          browser: chrome
+          env: type=base
+          spec: cypress/integration/visual/*
+        env:
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-snapshots
+          path: packages/components/cypress/snapshots
+        env:
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: EndBug/add-and-commit@v5
+        with:
+          message: 'chore(): update base images'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

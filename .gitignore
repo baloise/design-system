@@ -88,7 +88,6 @@ storybook-static/
 .vscode/
 
 # Cypress
-cypress/screenshots
 cypress/videos
 
 # Husky
@@ -120,8 +119,15 @@ packages/components-angular/src/directives/proxies.ts
 packages/components-angular/src/directives/proxies-list.ts
 packages/components-angular/src/directives/proxies.module.ts
 
+packages/testing/cypress/snapshots/actual
+packages/testing/cypress/snapshots/diff
+
+packages/components/cypress/snapshots/actual
+packages/components/cypress/snapshots/diff
+
 packages/fonts/docs/fonts.zip
 packages/icons/docs/icons.json
 packages/icons/docs/icons.zip
 packages/components/docs/**
 docs/
+packages/components/cypress/videos

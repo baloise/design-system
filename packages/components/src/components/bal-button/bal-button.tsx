@@ -53,11 +53,6 @@ export class Button implements ComponentInterface {
   @Prop() download?: string
 
   /**
-   * Size of the button
-   */
-  @Prop() iconPosition: Props.BalButtonIconPosition = 'left'
-
-  /**
    * If `true` the width of the buttons is limited
    */
   @Prop() square = false
@@ -71,6 +66,11 @@ export class Button implements ComponentInterface {
    * If `true` the button has a full width
    */
   @Prop() expanded = false
+
+  /**
+   * If `true` the button has no padding and a reduced height
+   */
+  @Prop() flat = false
 
   /**
    * If `true` the button is outlined
@@ -162,6 +162,7 @@ export class Button implements ComponentInterface {
     return {
       'button': true,
       [`is-${this.color}`]: true,
+      'is-flat': this.flat,
       'is-square': this.square,
       'is-small': this.size === 'small',
       'is-inverted': this.inverted,

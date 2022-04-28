@@ -9,6 +9,7 @@ storybook/
 storybook-static/
 rollup.config.js
 ngcc.config.js
+web-server.js
 *.md
 *.scss
 

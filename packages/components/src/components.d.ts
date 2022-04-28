@@ -24,7 +24,6 @@ export namespace Components {
           * Label of the close trigger button
          */
         "closeLabel": string;
-        "color": Props.BalAccordionColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -33,10 +32,6 @@ export namespace Components {
           * Closes the accordion
          */
         "dismiss": () => Promise<void>;
-        /**
-          * Controls the style of the accordion
-         */
-        "interface": '' | 'light';
         /**
           * BalIcon of the open trigger button
          */
@@ -100,6 +95,10 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * If `true` the button has no padding and a reduced height
+         */
+        "flat": boolean;
+        /**
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
@@ -107,10 +106,6 @@ export namespace Components {
           * Name of the left button icon
          */
         "icon": string;
-        /**
-          * Size of the button
-         */
-        "iconPosition": Props.BalButtonIconPosition;
         /**
           * Name of the right button icon
          */
@@ -272,13 +267,13 @@ export namespace Components {
          */
         "checked": boolean;
         /**
-          * If `true`, the checkbox has a reduced height.
-         */
-        "dense": boolean;
-        /**
-          * If `true`, the user cannot interact with the checkbox.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
+        /**
+          * If `true` the control is no padding
+         */
+        "flat": boolean;
         /**
           * Returns the native `<input>` element used under the hood.
          */
@@ -308,6 +303,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
+        /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
         "setBlur": () => Promise<void>;
@@ -333,6 +332,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "readonly"?: boolean;
         "setValue": (value: any[]) => Promise<void>;
         /**
           * The value of the control.
@@ -415,7 +418,7 @@ export namespace Components {
          */
         "defaultDate"?: string;
         /**
-          * If `true` the component is disabled.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
         /**
@@ -463,7 +466,7 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
-          * If `true` the use can only select a date.
+          * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
         /**
@@ -549,7 +552,7 @@ export namespace Components {
     }
     interface BalField {
         /**
-          * If `true` the field loses opacity
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
         /**
@@ -564,6 +567,10 @@ export namespace Components {
           * If `true` a loading spinner is visible at the end of the input
          */
         "loading": boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
     }
     interface BalFieldControl {
         /**
@@ -606,10 +613,6 @@ export namespace Components {
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
-        /**
-          * If `true` a asterix (*) is added to the label text
-         */
-        "required": boolean;
     }
     interface BalFieldMessage {
         /**
@@ -631,7 +634,7 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
-          * If `true` the button is disabled
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
         /**
@@ -666,6 +669,10 @@ export namespace Components {
           * If `true` multiple file upload is possible.
          */
         "multiple": boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
         /**
           * Overrides the default subtitle file size
          */
@@ -809,7 +816,7 @@ export namespace Components {
          */
         "decimal"?: number;
         /**
-          * If `true` the input is disabled
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
         /**
@@ -870,7 +877,7 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
         /**
@@ -908,13 +915,17 @@ export namespace Components {
     }
     interface BalInputGroup {
         /**
-          * If `true` the component is disabled.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
         /**
           * If `true` the component gets a invalid style.
          */
         "invalid": boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
     }
     interface BalInputStepper {
         /**
@@ -922,7 +933,7 @@ export namespace Components {
          */
         "debounce": number;
         /**
-          * If `true` the input is disabled
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
         /**
@@ -946,6 +957,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
+        /**
           * The steps in which the input increases or decreases
          */
         "steps": number;
@@ -956,15 +971,19 @@ export namespace Components {
     }
     interface BalList {
         /**
+          * If `true` the list can be used on a light, dark or colored backgrounds
+         */
+        "background": Props.BalListBackground;
+        /**
           * If `true` each list item has a bottom border
          */
         "border": boolean;
         /**
-          * If `true` the list item can be hovered
+          * If `true` the list item can not be hovered
          */
         "disabled": boolean;
         /**
-          * If `true` the list can be used on a dark background
+          * @deprecated If `true` the list can be used on a dark background
          */
         "inverted": boolean;
         /**
@@ -973,6 +992,10 @@ export namespace Components {
         "size": Props.BalListSize;
     }
     interface BalListItem {
+        /**
+          * If `true` the list item can be used as a accordion
+         */
+        "accordion": boolean;
         /**
           * If `true` the list item shows that it is clickable
          */
@@ -993,6 +1016,14 @@ export namespace Components {
           * Specifies where to open the linked document
          */
         "target": Props.BalListItemTarget;
+    }
+    interface BalListItemAccordionBody {
+        /**
+          * If `true` the body will be open and visible
+         */
+        "open": boolean;
+    }
+    interface BalListItemAccordionHead {
     }
     interface BalListItemContent {
     }
@@ -1121,9 +1152,13 @@ export namespace Components {
          */
         "decimal": number;
         /**
-          * If `true` the input is disabled
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
+        /**
+          * If `true` the input value has 0 as default value
+         */
+        "exactNumber": boolean;
         /**
           * Returns the native `<input>` element used under the hood.
          */
@@ -1141,7 +1176,7 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
         /**
@@ -1227,9 +1262,13 @@ export namespace Components {
     }
     interface BalPopoverContent {
         /**
-          * If `true` the field spans over the whole width.
+          * Define the max width of the popover content.
          */
         "contentWidth": number;
+        /**
+          * If `true` the content has a min width of 100%.
+         */
+        "expanded": boolean;
         /**
           * Limit the height of the popover content. Pass the amount of pixel.
          */
@@ -1241,11 +1280,7 @@ export namespace Components {
          */
         "checked": boolean;
         /**
-          * If `true`, the radio has a reduced height.
-         */
-        "dense": boolean;
-        /**
-          * If `true`, the user cannot interact with the checkbox.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
         /**
@@ -1273,6 +1308,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
+        /**
           * Sets blur on the native `input`. Use this method instead of the global `input.blur()`.
          */
         "setBlur": () => Promise<void>;
@@ -1287,7 +1326,7 @@ export namespace Components {
     }
     interface BalRadioGroup {
         /**
-          * If `true`, the user cannot interact with the radios.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         /**
@@ -1302,6 +1341,10 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
         "setValue": (value: number | string | boolean) => Promise<void>;
         /**
           * The value of the control.
@@ -1334,7 +1377,7 @@ export namespace Components {
          */
         "close": () => Promise<void>;
         /**
-          * If `true` the component is disabled.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
         /**
@@ -1350,7 +1393,7 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * @deprecated Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background. Set this to `true` when the component is placed on a dark background.
          */
         "inverted": boolean;
         /**
@@ -1381,6 +1424,10 @@ export namespace Components {
           * The text to display when the select is empty.
          */
         "placeholder"?: string;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
         /**
           * Defines the height of the popover list.
          */
@@ -1432,7 +1479,7 @@ export namespace Components {
          */
         "debounce": number;
         /**
-          * If `true` the input is disabled
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
         /**
@@ -1456,7 +1503,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * If `true`, the user cannot modify the value.
+          * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
         /**
@@ -1500,6 +1547,10 @@ export namespace Components {
          */
         "duration": number;
         /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
           * The icon of the snackbar header
          */
         "icon": string;
@@ -1511,6 +1562,10 @@ export namespace Components {
           * The subject of the snackbar header
          */
         "subject": string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target": Props.BalButtonTarget;
     }
     interface BalSpinner {
         /**
@@ -1618,6 +1673,10 @@ export namespace Components {
          */
         "actionLabel": string;
         /**
+          * If `true` a light border is shown for the tabs.
+         */
+        "border": boolean;
+        /**
           * If `true` the tabs or steps can be clicked.
          */
         "clickable": boolean;
@@ -1656,7 +1715,6 @@ export namespace Components {
           * The theme type of the tag. Given by bulma our css framework.
          */
         "color": Props.BalTagColor;
-        "dense": boolean;
         /**
           * If `true` a light version of the color is displayed
          */
@@ -1666,6 +1724,8 @@ export namespace Components {
          */
         "size": Props.BalTagSize;
         "transparent": boolean;
+    }
+    interface BalTagGroup {
     }
     interface BalText {
         /**
@@ -1715,7 +1775,7 @@ export namespace Components {
          */
         "debounce": number;
         /**
-          * If `true`, the user cannot interact with the textarea.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled": boolean;
         /**
@@ -1751,7 +1811,7 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
         /**
@@ -2132,6 +2192,18 @@ declare global {
         prototype: HTMLBalListItemElement;
         new (): HTMLBalListItemElement;
     };
+    interface HTMLBalListItemAccordionBodyElement extends Components.BalListItemAccordionBody, HTMLStencilElement {
+    }
+    var HTMLBalListItemAccordionBodyElement: {
+        prototype: HTMLBalListItemAccordionBodyElement;
+        new (): HTMLBalListItemAccordionBodyElement;
+    };
+    interface HTMLBalListItemAccordionHeadElement extends Components.BalListItemAccordionHead, HTMLStencilElement {
+    }
+    var HTMLBalListItemAccordionHeadElement: {
+        prototype: HTMLBalListItemAccordionHeadElement;
+        new (): HTMLBalListItemAccordionHeadElement;
+    };
     interface HTMLBalListItemContentElement extends Components.BalListItemContent, HTMLStencilElement {
     }
     var HTMLBalListItemContentElement: {
@@ -2348,6 +2420,12 @@ declare global {
         prototype: HTMLBalTagElement;
         new (): HTMLBalTagElement;
     };
+    interface HTMLBalTagGroupElement extends Components.BalTagGroup, HTMLStencilElement {
+    }
+    var HTMLBalTagGroupElement: {
+        prototype: HTMLBalTagGroupElement;
+        new (): HTMLBalTagGroupElement;
+    };
     interface HTMLBalTextElement extends Components.BalText, HTMLStencilElement {
     }
     var HTMLBalTextElement: {
@@ -2424,6 +2502,8 @@ declare global {
         "bal-input-stepper": HTMLBalInputStepperElement;
         "bal-list": HTMLBalListElement;
         "bal-list-item": HTMLBalListItemElement;
+        "bal-list-item-accordion-body": HTMLBalListItemAccordionBodyElement;
+        "bal-list-item-accordion-head": HTMLBalListItemAccordionHeadElement;
         "bal-list-item-content": HTMLBalListItemContentElement;
         "bal-list-item-icon": HTMLBalListItemIconElement;
         "bal-list-item-subtitle": HTMLBalListItemSubtitleElement;
@@ -2460,6 +2540,7 @@ declare global {
         "bal-table": HTMLBalTableElement;
         "bal-tabs": HTMLBalTabsElement;
         "bal-tag": HTMLBalTagElement;
+        "bal-tag-group": HTMLBalTagGroupElement;
         "bal-text": HTMLBalTextElement;
         "bal-textarea": HTMLBalTextareaElement;
         "bal-timeinput": HTMLBalTimeinputElement;
@@ -2480,15 +2561,10 @@ declare namespace LocalJSX {
           * Label of the close trigger button
          */
         "closeLabel"?: string;
-        "color"?: Props.BalAccordionColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
-        /**
-          * Controls the style of the accordion
-         */
-        "interface"?: '' | 'light';
         /**
           * Emitted when the accordion has opened or closed
          */
@@ -2548,6 +2624,10 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
+          * If `true` the button has no padding and a reduced height
+         */
+        "flat"?: boolean;
+        /**
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
@@ -2555,10 +2635,6 @@ declare namespace LocalJSX {
           * Name of the left button icon
          */
         "icon"?: string;
-        /**
-          * Size of the button
-         */
-        "iconPosition"?: Props.BalButtonIconPosition;
         /**
           * Name of the right button icon
          */
@@ -2736,13 +2812,13 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
-          * If `true`, the checkbox has a reduced height.
-         */
-        "dense"?: boolean;
-        /**
-          * If `true`, the user cannot interact with the checkbox.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        /**
+          * If `true` the control is no padding
+         */
+        "flat"?: boolean;
         /**
           * If `true`, the value will not be send with a form submit
          */
@@ -2784,6 +2860,10 @@ declare namespace LocalJSX {
          */
         "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
           * A DOMString representing the value of the checkbox. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the checkbox's name.
          */
         "value"?: string | number;
@@ -2805,6 +2885,10 @@ declare namespace LocalJSX {
           * Emitted when the checked property has changed.
          */
         "onBalChange"?: (event: CustomEvent<any[]>) => void;
+        /**
+          * If `true`, the user cannot interact with the radios.
+         */
+        "readonly"?: boolean;
         /**
           * The value of the control.
          */
@@ -2894,7 +2978,7 @@ declare namespace LocalJSX {
          */
         "defaultDate"?: string;
         /**
-          * If `true` the component is disabled.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         /**
@@ -2954,7 +3038,7 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * If `true` the use can only select a date.
+          * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
         /**
@@ -3028,7 +3112,7 @@ declare namespace LocalJSX {
     }
     interface BalField {
         /**
-          * If `true` the field loses opacity
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         /**
@@ -3043,6 +3127,10 @@ declare namespace LocalJSX {
           * If `true` a loading spinner is visible at the end of the input
          */
         "loading"?: boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
     }
     interface BalFieldControl {
         /**
@@ -3085,10 +3173,6 @@ declare namespace LocalJSX {
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
-        /**
-          * If `true` a asterix (*) is added to the label text
-         */
-        "required"?: boolean;
     }
     interface BalFieldMessage {
         /**
@@ -3106,7 +3190,7 @@ declare namespace LocalJSX {
          */
         "accept"?: string;
         /**
-          * If `true` the button is disabled
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         /**
@@ -3157,6 +3241,10 @@ declare namespace LocalJSX {
           * Triggers when a file is rejected due to not allowed MIME-Type and so on.
          */
         "onBalRejectedFile"?: (event: CustomEvent<FileUploadRejectedFile>) => void;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
         /**
           * Overrides the default subtitle file size
          */
@@ -3288,7 +3376,7 @@ declare namespace LocalJSX {
          */
         "decimal"?: number;
         /**
-          * If `true` the input is disabled
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         "hasIconRight"?: boolean;
@@ -3369,7 +3457,7 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
         /**
@@ -3399,13 +3487,17 @@ declare namespace LocalJSX {
     }
     interface BalInputGroup {
         /**
-          * If `true` the component is disabled.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         /**
           * If `true` the component gets a invalid style.
          */
         "invalid"?: boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
     }
     interface BalInputStepper {
         /**
@@ -3413,7 +3505,7 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
-          * If `true` the input is disabled
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         /**
@@ -3441,6 +3533,10 @@ declare namespace LocalJSX {
          */
         "onBalInput"?: (event: CustomEvent<number | undefined>) => void;
         /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
           * The steps in which the input increases or decreases
          */
         "steps"?: number;
@@ -3451,15 +3547,19 @@ declare namespace LocalJSX {
     }
     interface BalList {
         /**
+          * If `true` the list can be used on a light, dark or colored backgrounds
+         */
+        "background"?: Props.BalListBackground;
+        /**
           * If `true` each list item has a bottom border
          */
         "border"?: boolean;
         /**
-          * If `true` the list item can be hovered
+          * If `true` the list item can not be hovered
          */
         "disabled"?: boolean;
         /**
-          * If `true` the list can be used on a dark background
+          * @deprecated If `true` the list can be used on a dark background
          */
         "inverted"?: boolean;
         /**
@@ -3468,6 +3568,10 @@ declare namespace LocalJSX {
         "size"?: Props.BalListSize;
     }
     interface BalListItem {
+        /**
+          * If `true` the list item can be used as a accordion
+         */
+        "accordion"?: boolean;
         /**
           * If `true` the list item shows that it is clickable
          */
@@ -3492,6 +3596,18 @@ declare namespace LocalJSX {
           * Specifies where to open the linked document
          */
         "target"?: Props.BalListItemTarget;
+    }
+    interface BalListItemAccordionBody {
+        /**
+          * If `true` the body will be open and visible
+         */
+        "open"?: boolean;
+    }
+    interface BalListItemAccordionHead {
+        /**
+          * Emitted when the accordion state is changed
+         */
+        "onBalAccordionChange"?: (event: CustomEvent<boolean>) => void;
     }
     interface BalListItemContent {
     }
@@ -3621,9 +3737,13 @@ declare namespace LocalJSX {
          */
         "decimal"?: number;
         /**
-          * If `true` the input is disabled
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
+        /**
+          * If `true` the input value has 0 as default value
+         */
+        "exactNumber"?: boolean;
         /**
           * If `true` the component gets a invalid style.
          */
@@ -3661,7 +3781,7 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
         /**
@@ -3728,9 +3848,13 @@ declare namespace LocalJSX {
     }
     interface BalPopoverContent {
         /**
-          * If `true` the field spans over the whole width.
+          * Define the max width of the popover content.
          */
         "contentWidth"?: number;
+        /**
+          * If `true` the content has a min width of 100%.
+         */
+        "expanded"?: boolean;
         /**
           * Limit the height of the popover content. Pass the amount of pixel.
          */
@@ -3742,11 +3866,7 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
-          * If `true`, the radio has a reduced height.
-         */
-        "dense"?: boolean;
-        /**
-          * If `true`, the user cannot interact with the checkbox.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         /**
@@ -3790,13 +3910,17 @@ declare namespace LocalJSX {
          */
         "onBalFocus"?: (event: CustomEvent<FocusEvent>) => void;
         /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
           * The tabindex of the control.
          */
         "value"?: number | string | boolean;
     }
     interface BalRadioGroup {
         /**
-          * If `true`, the user cannot interact with the radios.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         /**
@@ -3816,6 +3940,10 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: CustomEvent<number | string | boolean>) => void;
         /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
           * The value of the control.
          */
         "value"?: number | string | boolean;
@@ -3834,7 +3962,7 @@ declare namespace LocalJSX {
          */
         "balTabindex"?: number;
         /**
-          * If `true` the component is disabled.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         /**
@@ -3846,7 +3974,7 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * @deprecated Set this to `true` when the component is placed on a dark background.
+          * @deprecated Set this to `true` when the component is placed on a dark background. Set this to `true` when the component is placed on a dark background.
          */
         "inverted"?: boolean;
         /**
@@ -3902,6 +4030,10 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
           * Defines the height of the popover list.
          */
         "scrollable"?: number;
@@ -3944,7 +4076,7 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
-          * If `true` the input is disabled
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         /**
@@ -3988,7 +4120,7 @@ declare namespace LocalJSX {
          */
         "onBalKeyPress"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
-          * If `true`, the user cannot modify the value.
+          * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
         /**
@@ -4020,6 +4152,10 @@ declare namespace LocalJSX {
          */
         "duration"?: number;
         /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href"?: string;
+        /**
           * The icon of the snackbar header
          */
         "icon"?: string;
@@ -4039,6 +4175,10 @@ declare namespace LocalJSX {
           * The subject of the snackbar header
          */
         "subject"?: string;
+        /**
+          * Specifies where to display the linked URL. Only applies when an `href` is provided.
+         */
+        "target"?: Props.BalButtonTarget;
     }
     interface BalSpinner {
         /**
@@ -4142,6 +4282,10 @@ declare namespace LocalJSX {
          */
         "actionLabel"?: string;
         /**
+          * If `true` a light border is shown for the tabs.
+         */
+        "border"?: boolean;
+        /**
           * If `true` the tabs or steps can be clicked.
          */
         "clickable"?: boolean;
@@ -4184,7 +4328,6 @@ declare namespace LocalJSX {
           * The theme type of the tag. Given by bulma our css framework.
          */
         "color"?: Props.BalTagColor;
-        "dense"?: boolean;
         /**
           * If `true` a light version of the color is displayed
          */
@@ -4198,6 +4341,8 @@ declare namespace LocalJSX {
          */
         "size"?: Props.BalTagSize;
         "transparent"?: boolean;
+    }
+    interface BalTagGroup {
     }
     interface BalText {
         /**
@@ -4247,7 +4392,7 @@ declare namespace LocalJSX {
          */
         "debounce"?: number;
         /**
-          * If `true`, the user cannot interact with the textarea.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
         "disabled"?: boolean;
         /**
@@ -4303,7 +4448,7 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
         /**
@@ -4424,6 +4569,8 @@ declare namespace LocalJSX {
         "bal-input-stepper": BalInputStepper;
         "bal-list": BalList;
         "bal-list-item": BalListItem;
+        "bal-list-item-accordion-body": BalListItemAccordionBody;
+        "bal-list-item-accordion-head": BalListItemAccordionHead;
         "bal-list-item-content": BalListItemContent;
         "bal-list-item-icon": BalListItemIcon;
         "bal-list-item-subtitle": BalListItemSubtitle;
@@ -4460,6 +4607,7 @@ declare namespace LocalJSX {
         "bal-table": BalTable;
         "bal-tabs": BalTabs;
         "bal-tag": BalTag;
+        "bal-tag-group": BalTagGroup;
         "bal-text": BalText;
         "bal-textarea": BalTextarea;
         "bal-timeinput": BalTimeinput;
@@ -4521,6 +4669,8 @@ declare module "@stencil/core" {
             "bal-input-stepper": LocalJSX.BalInputStepper & JSXBase.HTMLAttributes<HTMLBalInputStepperElement>;
             "bal-list": LocalJSX.BalList & JSXBase.HTMLAttributes<HTMLBalListElement>;
             "bal-list-item": LocalJSX.BalListItem & JSXBase.HTMLAttributes<HTMLBalListItemElement>;
+            "bal-list-item-accordion-body": LocalJSX.BalListItemAccordionBody & JSXBase.HTMLAttributes<HTMLBalListItemAccordionBodyElement>;
+            "bal-list-item-accordion-head": LocalJSX.BalListItemAccordionHead & JSXBase.HTMLAttributes<HTMLBalListItemAccordionHeadElement>;
             "bal-list-item-content": LocalJSX.BalListItemContent & JSXBase.HTMLAttributes<HTMLBalListItemContentElement>;
             "bal-list-item-icon": LocalJSX.BalListItemIcon & JSXBase.HTMLAttributes<HTMLBalListItemIconElement>;
             "bal-list-item-subtitle": LocalJSX.BalListItemSubtitle & JSXBase.HTMLAttributes<HTMLBalListItemSubtitleElement>;
@@ -4557,6 +4707,7 @@ declare module "@stencil/core" {
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;
             "bal-tag": LocalJSX.BalTag & JSXBase.HTMLAttributes<HTMLBalTagElement>;
+            "bal-tag-group": LocalJSX.BalTagGroup & JSXBase.HTMLAttributes<HTMLBalTagGroupElement>;
             "bal-text": LocalJSX.BalText & JSXBase.HTMLAttributes<HTMLBalTextElement>;
             "bal-textarea": LocalJSX.BalTextarea & JSXBase.HTMLAttributes<HTMLBalTextareaElement>;
             "bal-timeinput": LocalJSX.BalTimeinput & JSXBase.HTMLAttributes<HTMLBalTimeinputElement>;

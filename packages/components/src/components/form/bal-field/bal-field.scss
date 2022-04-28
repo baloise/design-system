@@ -110,7 +110,7 @@ bal-field {
 
     bal-hint {
       position: absolute;
-      top: -20px;
+      top: -13px;
       left: 0;
     }
   }
@@ -144,7 +144,7 @@ bal-field {
     }
 
     bal-radio-group:not(.bal-select-button) bal-radio {
-      input[type='radio']:not(:disabled) {
+      input[type='radio']:not(.is-disabled) {
         & + label {
           color: $danger !important;
         }
@@ -168,7 +168,7 @@ bal-field {
       border-color: $danger !important;
 
       bal-radio {
-        input[type='radio']:not(:disabled) {
+        input[type='radio']:not(.is-disabled) {
           &:not(:checked) + label {
             color: $danger !important;
           }

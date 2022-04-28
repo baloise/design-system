@@ -28,7 +28,10 @@ Basic.args = {
   actionLabel: 'Action',
   interface: 'tabs',
 }
-Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: ['clickable'] } }
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: { exclude: ['clickable'] },
+}
 
 export const SubNavigation = args => ({
   components: { ...component.components },

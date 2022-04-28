@@ -8,11 +8,19 @@ import {
   BalListItemIcon,
   BalListItemTitle,
   BalListItemSubtitle,
+  BalListItemAccordionHead,
+  BalListItemAccordionBody,
 } from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   component: BalList,
-  subcomponents: { BalListItem, BalListItemContent, BalListItemIcon, BalListItemTitle, BalListItemSubtitle },
+  subcomponents: {
+    BalListItem,
+    BalListItemContent,
+    BalListItemIcon,
+    BalListItemTitle,
+    BalListItemSubtitle,
+  },
   docs,
   status: 'stable',
   args: {
@@ -190,3 +198,46 @@ DownloadList.args = {
   size: 'large',
 }
 DownloadList.parameters = { ...component.sourceCode(DownloadList) }
+
+export const AccordionList = args => ({
+  components: { ...component.components, BalIcon, BalListItemAccordionHead, BalListItemAccordionBody },
+  setup: () => ({ args }),
+  template: `<bal-list v-bind="args">
+  <bal-list-item accordion>
+    <bal-list-item-accordion-head>
+      <bal-list-item-icon>
+        <bal-icon name="account"></bal-icon>
+      </bal-list-item-icon>
+      <bal-list-item-content>
+        <bal-list-item-title>Accordion List Item</bal-list-item-title>
+      </bal-list-item-content>
+    </bal-list-item-accordion-head>
+    <bal-list-item-accordion-body>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </bal-list-item-accordion-body>
+  </bal-list-item>
+  <bal-list-item accordion>
+  <bal-list-item-accordion-head>
+    <bal-list-item-icon>
+      <bal-icon name="location"></bal-icon>
+    </bal-list-item-icon>
+    <bal-list-item-content>
+      <bal-list-item-title>Accordion List Item</bal-list-item-title>
+      <bal-list-item-subtitle>With subtitle</bal-list-item-subtitle>
+    </bal-list-item-content>
+  </bal-list-item-accordion-head>
+  <bal-list-item-accordion-body>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+  </bal-list-item-accordion-body>
+</bal-list-item>
+</bal-list>`,
+})
+AccordionList.args = {
+  border: true,
+  size: 'large',
+}
+AccordionList.parameters = { ...component.sourceCode(AccordionList) }

@@ -4,11 +4,6 @@ import fg from 'fast-glob'
 import { StencilBaseConfig } from './.build/stencil/stencil.basic.config'
 import { VueGenerator } from './.build/stencil/stencil.bindings.vue'
 
-let libPath = '../../..'
-if (process.env.STORYBOOK_MODE === 'debug') {
-  libPath = '../../public/build/design-system-components.esm.js'
-}
-
 export const config: Config = {
   ...StencilBaseConfig,
   enableCache: true,
@@ -24,7 +19,7 @@ export const config: Config = {
       type: 'docs-json',
       file: './generated/components.json',
     },
-    VueGenerator(libPath, './.storybook/vue/components', []),
+    VueGenerator('../../..', './.storybook/vue/components', []),
     {
       type: 'www',
       dir: 'public',
@@ -37,9 +32,21 @@ export const config: Config = {
           dest: 'assets/css/design-system-table.css',
           warn: true,
         },
-        { src: '../../fonts/generated/fonts.zip', dest: 'assets/download/fonts.zip', warn: true },
-        { src: '../../icons/generated/icons.zip', dest: 'assets/download/icons.zip', warn: true },
-        { src: '../../icons/generated/icons.json', dest: '../generated/icons.json', warn: true },
+        {
+          src: '../../fonts/generated/fonts.zip',
+          dest: 'assets/download/fonts.zip',
+          warn: true,
+        },
+        {
+          src: '../../icons/generated/icons.zip',
+          dest: 'assets/download/icons.zip',
+          warn: true,
+        },
+        {
+          src: '../../icons/generated/icons.json',
+          dest: '../generated/icons.json',
+          warn: true,
+        },
       ],
     },
   ],

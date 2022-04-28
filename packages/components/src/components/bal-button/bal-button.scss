@@ -2,6 +2,12 @@
 @import 'bal-button.vars.scss';
 @import 'node_modules/bulma/sass/elements/button.sass';
 
+button.button {
+  overflow: hidden;
+  white-space: normal !important;
+  height: auto !important;
+}
+
 bal-button {
   @include margin(0);
   @include padding(0);
@@ -11,8 +17,6 @@ bal-button {
   font-family: $family-primary;
   text-align: center;
   text-decoration: none;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   user-select: none;
   vertical-align: top; // the better option for most scenarios
   vertical-align: -webkit-baseline-middle; // the best for those that support it
@@ -20,6 +24,21 @@ bal-button {
   font-kerning: none;
   font-size: 0px;
   line-height: 0px;
+
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+  // overflow-wrap: break-word;
+  // word-wrap: break-word;
+  // hyphens: auto;
+
+  // button,
+  // span {
+  //   text-overflow: ellipsis;
+  //   white-space: nowrap;
+  //   overflow-wrap: break-word;
+  //   word-wrap: break-word;
+  //   hyphens: auto;
+  // }
 }
 
 bal-button.is-fullwidth {
@@ -50,9 +69,9 @@ bal-button.is-fullwidth {
   min-height: 48px;
   justify-content: center !important;
   border: none;
-
-  &,
-  & span {
+  overflow: hidden;
+  white-space: normal !important;
+  height: auto !important &, & span {
     font-weight: 700;
     font-family: $title-family;
   }
@@ -91,6 +110,13 @@ bal-button.is-fullwidth {
     display: inline-flex;
     justify-content: center;
     margin-top: -5px;
+  }
+
+  &.is-link {
+    .icon-left,
+    .icon-right {
+      margin-top: -2px;
+    }
   }
 
   .icon-left {
@@ -144,6 +170,12 @@ bal-button.is-fullwidth {
 
   &::-moz-focus-inner {
     border: 0;
+  }
+
+  &.is-flat {
+    padding: 0;
+    height: 1.5rem;
+    min-height: 1.5rem;
   }
 
   &,
@@ -620,9 +652,22 @@ bal-button.is-fullwidth {
         background: transparent;
         border-color: transparent;
 
+        span.button-label:after {
+          background: $light-blue-2;
+        }
+
         &,
         & span {
-          color: $light-blue-light;
+          color: $light-blue-2;
+        }
+
+        bal-icon {
+          svg,
+          svg g,
+          svg path,
+          svg circle {
+            fill: $light-blue-2 !important;
+          }
         }
       }
 
@@ -631,9 +676,22 @@ bal-button.is-fullwidth {
         background: transparent;
         border-color: transparent;
 
+        span.button-label:after {
+          background: $light-blue-4;
+        }
+
         &,
         & span {
-          color: $light-blue;
+          color: $light-blue-4;
+        }
+
+        bal-icon {
+          svg,
+          svg g,
+          svg path,
+          svg circle {
+            fill: $light-blue-4 !important;
+          }
         }
       }
     }
@@ -661,7 +719,7 @@ bal-button.is-fullwidth {
       background: $grey-2 !important;
       border-color: $grey-2 !important;
       opacity: 1 !important;
-      cursor: not-allowed;
+      cursor: default;
       pointer-events: none !important;
 
       bal-icon {
@@ -698,6 +756,15 @@ bal-button.is-fullwidth {
 
       span:after {
         background: $grey-7 !important;
+      }
+
+      bal-icon {
+        svg,
+        svg g,
+        svg path,
+        svg circle {
+          fill: $grey-7 !important;
+        }
       }
     }
   }

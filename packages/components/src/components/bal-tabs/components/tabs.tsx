@@ -5,6 +5,7 @@ import { TabItem } from './tab-item'
 export const TabList: FunctionalComponent<TabProps> = ({
   value,
   expanded,
+  border,
   tabs,
   onSelectTab,
   action,
@@ -17,7 +18,13 @@ export const TabList: FunctionalComponent<TabProps> = ({
   vertical,
   verticalOnMobile,
 }) => (
-  <div class={['tabs', expanded ? 'is-fullwidth' : ''].join(' ')}>
+  <div
+    class={{
+      'tabs': true,
+      'is-fullwidth': expanded,
+      'has-border-bottom-light': border,
+    }}
+  >
     <div
       class="selected-tab-line"
       style={{ display: vertical ? 'none' : 'block', left: `${lineOffsetLeft || 0}px`, width: `${lineWidth || 0}px` }}

@@ -30,7 +30,16 @@ import {
 } from 'date-fns'
 import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
 import { BalCalendarCell, BalPointerDate } from './bal-datepicker.type'
-import { isSpaceKey, parse, format, isValidIsoString, now, formatDateString, isEnterKey } from '@baloise/web-app-utils'
+import {
+  isSpaceKey,
+  parse,
+  format,
+  isValidIsoString,
+  now,
+  formatDateString,
+  isEnterKey,
+  dateSeparator,
+} from '@baloise/web-app-utils'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
 import { i18nDate } from './bal-datepicker.i18n'
@@ -114,14 +123,14 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   @Prop() required = false
 
   /**
-   * If `true` the use can only select a date.
-   */
-  @Prop() readonly = false
-
-  /**
-   * If `true` the component is disabled.
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly = false
 
   /**
    * The text to display when the select is empty.
@@ -350,7 +359,6 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
       if (this.nativeInput) {
         this.nativeInput.value = ''
       }
-      return
     }
 
     if (this.value !== dateString) {
@@ -461,7 +469,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   private onIconClick = (event: MouseEvent) => {
-    if (!this.disabled) {
+    if (!this.disabled && !this.readonly) {
       this.popoverElement.toggle()
     }
     stopEventBubbling(event)
@@ -469,7 +477,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   private onInputClick = (event: MouseEvent) => {
-    if (!this.triggerIcon && !this.disabled) {
+    if (!this.triggerIcon && !this.disabled && !this.readonly) {
       this.popoverElement.toggle()
     }
     stopEventBubbling(event)
@@ -489,7 +497,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     if (input) {
       this.inputValue = input.value
       if (this.inputValue && this.inputValue.length >= 6) {
-        const date = parse(this.inputValue)
+        const date = parse(this.inputValue, this.getLocale())
         const dateString = formatDateString(date as Date)
         if (isValidIsoString(dateString)) {
           this.selectedDate = dateString
@@ -503,7 +511,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
   private onInputChange = (event: Event) => {
     const inputValue = (event.target as HTMLInputElement).value
-    const date = parse(inputValue)
+    const date = parse(inputValue, this.getLocale())
     const dateString = formatDateString(date as Date)
     const formattedValue = format(this.getLocale(), date)
 
@@ -528,7 +536,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
     }
 
     if (isEnterKey(event) && !this.triggerIcon) {
-      const date = parse(this.nativeInput.value)
+      const date = parse(this.nativeInput.value, this.getLocale())
       const dateString = formatDateString(date as Date)
 
       if (this.isPopoverOpen) {
@@ -540,7 +548,8 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   private onInputKeyDown = (event: KeyboardEvent) => {
-    const allowedKeys = [...NUMBER_KEYS, '.', ...ACTION_KEYS]
+    const separator = dateSeparator(this.getLocale())
+    const allowedKeys = [...NUMBER_KEYS, separator, ...ACTION_KEYS]
     if (!isCtrlOrCommandKey(event) && allowedKeys.indexOf(event.key) < 0) {
       event.preventDefault()
       event.stopPropagation()
@@ -579,7 +588,7 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
-          'is-disabled': this.disabled,
+          'is-disabled': this.disabled || this.readonly,
         }}
       >
         <bal-popover onBalChange={this.onPopoverChange} ref={el => (this.popoverElement = el as HTMLBalPopoverElement)}>
@@ -608,14 +617,14 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
 
     return (
       <div bal-popover-trigger class="control">
-        <bal-input-group disabled={this.disabled} invalid={this.invalid}>
+        <bal-input-group disabled={this.disabled || this.readonly} invalid={this.invalid}>
           <input
             class={{
               'input': true,
               'data-test-input': true,
-              'clickable': !this.disabled && !this.triggerIcon,
+              'is-clickable': !this.disabled && !this.triggerIcon && !this.readonly,
               'is-inverted': this.inverted,
-              'is-disabled': this.disabled,
+              'is-disabled': this.disabled || this.readonly,
               'is-danger': this.invalid,
             }}
             ref={el => (this.nativeInput = el as HTMLInputElement)}
@@ -640,9 +649,12 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
             {...this.inheritedAttributes}
           />
           <bal-icon
-            class="datepicker-trigger-icon clickable"
+            class={{
+              'datepicker-trigger-icon': true,
+              'is-clickable': !this.disabled && !this.readonly,
+            }}
             is-right
-            color={this.disabled ? 'grey' : this.invalid ? 'danger' : 'primary'}
+            color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
             inverted={this.inverted}
             name="date"
             onClick={this.onIconClick}
@@ -803,17 +815,18 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   }
 
   private isDateInRange(cellDate: Date): boolean {
+    const parsedCellDate = parse(formatDateString(cellDate)) as Date
     if (this.min && this.max) {
-      return isWithinInterval(cellDate, {
+      return isWithinInterval(parsedCellDate, {
         start: parse(this.min) as Date,
         end: parse(this.max) as Date,
       })
     }
     if (this.min) {
-      return isAfter(cellDate, parse(this.min) as Date)
+      return isAfter(parsedCellDate, parse(this.min) as Date)
     }
     if (this.max) {
-      return isBefore(cellDate, addDays(parse(this.max) as Date, 1))
+      return isBefore(parsedCellDate, addDays(parse(this.max) as Date, 1))
     }
     return true
   }

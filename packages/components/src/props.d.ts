@@ -19,7 +19,6 @@ export namespace Props {
   export type BalButtonType = 'button' | 'reset' | 'submit'
   export type BalButtonSize = 'small' | ''
   export type BalButtonTarget = '_blank' | ' _parent' | '_self' | '_top'
-  export type BalButtonIconPosition = 'left' | 'right'
 
   export type BalCardActionsPosition = 'right' | 'center' | ''
   export type BalCardButtonType = BalButtonType
@@ -54,6 +53,7 @@ export namespace Props {
 
   export type BalListItemTarget = BalButtonTarget
   export type BalListSize = 'large' | ''
+  export type BalListBackground = 'light' | 'color' | 'dark'
 
   export type BalLogoColor = 'blue' | 'white'
   export type BalLogoBrand = 'group' | 'soba' | 'insurance'

@@ -5,6 +5,6 @@ declare namespace Cypress {
     /**
      * Returns the visible snackbars.
      */
-    balSnackbarFind(): Chainable<JQuery>
+    balSnackbarFind(options?: Partial<Loggable>): Chainable<JQuery>
   }
 }

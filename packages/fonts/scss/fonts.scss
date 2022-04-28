@@ -1,3 +1,5 @@
+$font-path: '/assets/fonts' !default;
+
 $font-heading-bold-ttf: str-insert('/BaloiseCreateHeadline-bold.ttf', $font-path, 0);
 $font-heading-bold-woff: str-insert('/BaloiseCreateHeadline-bold.woff', $font-path, 0);
 $font-heading-bold-woff2: str-insert('/BaloiseCreateHeadline-bold.woff2', $font-path, 0);

@@ -35,7 +35,7 @@ const parseTypes = (fileContent, filePath) => {
 const run = async () => {
   await log.title('testing : docs-json')
 
-  const pathToTypes = '../testing/src/commands/**/**.types.ts'
+  const pathToTypes = '../testing/src/commands/**/bal-**.types.ts'
   let typeFilePaths = []
   let typeFileContents = []
   let commands = []

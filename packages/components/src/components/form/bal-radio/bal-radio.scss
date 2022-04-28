@@ -36,6 +36,7 @@ bal-radio.bal-radio:not(.bal-select-button) {
     contain: layout style;
 
     display: flex;
+    align-self: baseline;
     align-items: center;
     justify-content: flex-start;
     text-align: left;
@@ -82,23 +83,23 @@ bal-radio.bal-radio:not(.bal-select-button) {
     content: '';
   }
 
-  input[type='radio']:hover:not([disabled]) + label:before {
+  input[type='radio']:hover:not(.is-disabled) + label:before {
     border-color: $blue;
   }
 
-  input[type='radio']:disabled + label {
+  input[type='radio'].is-disabled + label {
     opacity: 1;
-    cursor: not-allowed;
+    cursor: default;
   }
 
-  input[type='radio']:disabled + label:before {
-    cursor: not-allowed;
+  input[type='radio'].is-disabled + label:before {
+    cursor: default;
     background: $grey-2;
     border-color: $grey-2;
   }
 
-  input[type='radio']:checked:disabled + label:after {
-    cursor: not-allowed;
+  input[type='radio']:checked.is-disabled + label:after {
+    cursor: default;
     background: $grey-7;
   }
 

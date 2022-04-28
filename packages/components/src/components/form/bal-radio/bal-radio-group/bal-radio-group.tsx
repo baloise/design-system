@@ -45,15 +45,9 @@ export class RadioGroup implements ComponentInterface {
   @Prop() vertical = false
 
   /**
-   * If `true`, the user cannot interact with the radios.
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled?: boolean = undefined
-
-  /**
-   * If `true`, the controls will be vertically on mobile devices.
-   */
-  @Prop() verticalOnMobile = false
-
   @Watch('disabled')
   disabledChanged(value: boolean | undefined) {
     if (value !== undefined) {
@@ -62,6 +56,24 @@ export class RadioGroup implements ComponentInterface {
       })
     }
   }
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly?: boolean = undefined
+  @Watch('readonly')
+  readonlyChanged(value: boolean | undefined) {
+    if (value !== undefined) {
+      this.radios.forEach(radio => {
+        radio.readonly = value
+      })
+    }
+  }
+
+  /**
+   * If `true`, the controls will be vertically on mobile devices.
+   */
+  @Prop() verticalOnMobile = false
 
   /**
    * The value of the control.
@@ -91,6 +103,7 @@ export class RadioGroup implements ComponentInterface {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
     this.sync()
     this.disabledChanged(this.disabled)
+    this.readonlyChanged(this.readonly)
   }
 
   private get radios(): HTMLBalRadioElement[] {
@@ -120,7 +133,7 @@ export class RadioGroup implements ComponentInterface {
 
     const selectedRadio = ev.target && (ev.target as HTMLElement).closest('bal-radio')
     if (selectedRadio) {
-      if (selectedRadio.disabled) {
+      if (selectedRadio.disabled || selectedRadio.readonly) {
         ev.stopPropagation()
         return
       }

@@ -53,6 +53,17 @@ export class Snackbar {
   @Prop() actionHandler: () => void = () => void 0
 
   /**
+   * Specifies the URL of the page the link goes to
+   */
+  @Prop() href?: string
+
+  /**
+   * Specifies where to display the linked URL.
+   * Only applies when an `href` is provided.
+   */
+  @Prop() target: Props.BalButtonTarget = '_self'
+
+  /**
    * Emitted when snackbar is closed
    */
   @Event() balClose!: EventEmitter<string>
@@ -127,9 +138,22 @@ export class Snackbar {
           >
             <slot />
           </bal-text>
-          <bal-close class="close" size="medium" background={false} onClick={() => this.close()}></bal-close>
+          <bal-close
+            class="close"
+            size="medium"
+            background={false}
+            inverted={this.color !== ''}
+            onClick={() => this.close()}
+          ></bal-close>
           <div class="snackbar-footer" style={{ display: this.action === '' ? 'none' : 'inline-flex' }}>
-            <bal-button color="info" inverted={this.color == 'primary'} onClick={() => this.onActionHandler()}>
+            <bal-button
+              color={this.buttonType}
+              inverted={this.color !== ''}
+              outlined
+              href={this.href}
+              target={this.target}
+              onClick={() => this.onActionHandler()}
+            >
               {this.action}
             </bal-button>
           </div>

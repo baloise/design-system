@@ -40,15 +40,38 @@ const excludedControls = [
   'maxLength',
   'minLength',
   'name',
-  'readonly',
   'required',
 ]
 
+export const Basic = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-textarea v-bind="args" v-model="args.value"></bal-textarea>`,
+})
+
+Basic.args = {
+  placeholder: 'Enter a comment',
+  disabled: false,
+  readonly: false,
+  inverted: false,
+  value: '',
+}
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
+
 const Template = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   setup: () => ({ args }),
   template: `
-  <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
       <bal-textarea v-bind="args" v-model="args.value"></bal-textarea>
@@ -57,15 +80,16 @@ const Template = args => ({
   </bal-field>`,
 })
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const FieldControl = Template.bind({})
+FieldControl.args = {
   placeholder: 'Enter a comment',
   disabled: false,
+  readonly: false,
   inverted: false,
   value: '',
 }
-Basic.parameters = {
-  ...component.sourceCode(Basic),
+FieldControl.parameters = {
+  ...component.sourceCode(FieldControl),
   controls: { exclude: excludedControls },
 }
 

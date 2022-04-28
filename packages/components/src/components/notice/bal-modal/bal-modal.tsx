@@ -83,12 +83,14 @@ export class Modal implements OverlayInterface {
   /**
    * Emitted before the modal has dismissed.
    */
-  @Event({ eventName: 'balModalWillDismiss' }) willDismiss!: EventEmitter<OverlayEventDetail>
+  @Event({ eventName: 'balModalWillDismiss' })
+  willDismiss!: EventEmitter<OverlayEventDetail>
 
   /**
    * Emitted after the modal has dismissed.
    */
-  @Event({ eventName: 'balModalDidDismiss' }) didDismiss!: EventEmitter<OverlayEventDetail>
+  @Event({ eventName: 'balModalDidDismiss' })
+  didDismiss!: EventEmitter<OverlayEventDetail>
 
   connectedCallback() {
     prepareOverlay(this)
@@ -266,6 +268,7 @@ export class Modal implements OverlayInterface {
         class={{
           ...getClassMap(this.cssClass),
           [`modal-interface-${this.interface}`]: true,
+          'is-closable': this.isClosable,
         }}
         style={{
           '--bal-width': `${this.modalWidth}px`,

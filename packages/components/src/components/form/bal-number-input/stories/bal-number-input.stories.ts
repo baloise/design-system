@@ -36,25 +36,22 @@ export default component.story
 
 const excludedControls = ['name']
 
-const Template = args => ({
-  components: { ...component.components, BalField, BalFieldControl, BalFieldLabel, BalFieldMessage },
+export const Basic = args => ({
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
   setup: () => {
     setConfig(args)
     return {
       args: reduceConfigArgs(args),
     }
   },
-  template: `
-  <bal-field :disabled="args.disabled" :inverted="args.inverted" :invalid="args.invalid">
-    <bal-field-label>Label</bal-field-label>
-    <bal-field-control>
-    <bal-number-input v-bind="args" v-model="args.value"></bal-number-input>
-    </bal-field-control>
-    <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
-  </bal-field>`,
+  template: `<bal-number-input v-bind="args" v-model="args.value"></bal-number-input>`,
 })
-
-export const Basic = Template.bind({})
 Basic.args = {
   placeholder: 'Enter a number',
   inverted: false,
@@ -63,6 +60,44 @@ Basic.args = {
 }
 Basic.parameters = {
   ...component.sourceCode(Basic),
+  controls: {
+    exclude: excludedControls,
+  },
+}
+
+const Template = args => ({
+  components: {
+    ...component.components,
+    BalField,
+    BalFieldControl,
+    BalFieldLabel,
+    BalFieldMessage,
+  },
+  setup: () => {
+    setConfig(args)
+    return {
+      args: reduceConfigArgs(args),
+    }
+  },
+  template: `
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
+    <bal-field-label>Label</bal-field-label>
+    <bal-field-control>
+    <bal-number-input v-bind="args" v-model="args.value"></bal-number-input>
+    </bal-field-control>
+    <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
+  </bal-field>`,
+})
+
+export const FieldControl = Template.bind({})
+FieldControl.args = {
+  placeholder: 'Enter a number',
+  inverted: false,
+  disabled: false,
+  invalid: false,
+}
+FieldControl.parameters = {
+  ...component.sourceCode(FieldControl),
   controls: {
     exclude: excludedControls,
   },

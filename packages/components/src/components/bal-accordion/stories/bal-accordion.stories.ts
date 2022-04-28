@@ -36,22 +36,6 @@ Basic.args = {
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
 
-export const Light = args => ({
-  components: { ...component.components },
-  setup: () => ({ args }),
-  template: `<bal-accordion v-bind="args" v-model="args.value">
-  <p>{{ args.content }}</p>
-</bal-accordion>`,
-})
-Light.args = {
-  interface: 'light',
-  openLabel: 'Show more',
-  closeLabel: 'Show less',
-  content:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-}
-Light.parameters = { ...component.sourceCode(Light) }
-
 export const WithIcons = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
@@ -66,7 +50,13 @@ WithIcons.args = {
 WithIcons.parameters = { ...component.sourceCode(WithIcons) }
 
 export const WithCard = args => ({
-  components: { ...component.components, BalCard, BalCardContent, BalCardTitle, BalCardSubtitle },
+  components: {
+    ...component.components,
+    BalCard,
+    BalCardContent,
+    BalCardTitle,
+    BalCardSubtitle,
+  },
   setup: () => ({ args }),
   template: `<bal-card>
   <bal-card-title>BaloiseCombi</bal-card-title>

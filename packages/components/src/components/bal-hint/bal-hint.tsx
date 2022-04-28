@@ -125,10 +125,7 @@ export class Hint implements BalConfigObserver {
           onClick={() => this.toggle()}
         ></bal-icon>
 
-        <div
-          class="bal-hint-content data-test-hint-content p-5"
-          style={{ display: this.isActive ? 'inline-block' : 'none' }}
-        >
+        <div class="bal-hint-content data-test-hint-content p-5" style={{ display: this.isActive ? 'flex' : 'none' }}>
           <slot></slot>
           <bal-button-group
             class={{

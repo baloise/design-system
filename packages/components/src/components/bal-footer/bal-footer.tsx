@@ -90,7 +90,9 @@ export class Footer implements BalConfigObserver {
             </div>
             <div
               class="language-links pt-4"
-              style={{ display: this.hideLanguageSelection || this.allowedLanguages.length <= 1 ? 'none' : 'flex' }}
+              style={{
+                display: this.hideLanguageSelection || this.allowedLanguages.length <= 1 ? 'none' : 'flex',
+              }}
             >
               {this.allowedLanguages.map(lang => (
                 <a

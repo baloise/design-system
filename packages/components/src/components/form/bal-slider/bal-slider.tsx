@@ -38,14 +38,14 @@ export class Slider {
   @Prop() balTabindex = 0
 
   /**
-   * If `true`, the user cannot modify the value.
-   */
-  @Prop() readonly = false
-
-  /**
-   * If `true` the input is disabled
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -104,7 +104,7 @@ export class Slider {
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {
-    if (this.disabled && ev.target && ev.target === this.element) {
+    if ((this.disabled || this.readonly) && ev.target && ev.target === this.element) {
       ev.preventDefault()
       ev.stopPropagation()
     }
@@ -176,7 +176,7 @@ export class Slider {
   }
 
   private handleClick = (event: MouseEvent) => {
-    if (this.disabled) {
+    if (this.disabled || this.readonly) {
       event.preventDefault()
       event.stopPropagation()
     }
@@ -194,7 +194,7 @@ export class Slider {
   }
 
   private onClick = (ev: MouseEvent) => {
-    if (!this.disabled) {
+    if (!this.disabled && !this.readonly) {
       this.balClick.emit(ev)
     }
   }
@@ -204,10 +204,10 @@ export class Slider {
       <Host
         class={{
           'is-fullwidth': true,
-          'is-disabled': this.disabled,
+          'is-disabled': this.disabled || this.readonly,
         }}
         onClick={this.handleClick}
-        aria-disabled={this.disabled ? 'true' : null}
+        aria-disabled={this.disabled || this.readonly ? 'true' : null}
       >
         <div class="slider-bg">
           <div
@@ -235,7 +235,7 @@ export class Slider {
             ref={inputEl => (this.nativeInput = inputEl)}
             id={this.inputId}
             disabled={this.disabled}
-            readOnly={this.readonly}
+            readonly={this.readonly}
             name={this.name}
             required={this.required}
             tabIndex={this.balTabindex}

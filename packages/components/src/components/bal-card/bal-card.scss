@@ -5,6 +5,7 @@
 bal-card,
 .bal-card {
   display: block;
+  background: transparent;
 
   &.is-flat {
     box-shadow: none;
@@ -82,6 +83,26 @@ bal-card {
   }
 }
 
+bal-card-title {
+  bal-tag-group,
+  .bal-tag-group,
+  bal-button-group,
+  .bal-button-group,
+  .field.is-grouped {
+    margin-top: 8px;
+  }
+}
+
+@include tablet() {
+  bal-card-title {
+    bal-tag-group,
+    .bal-tag-group {
+      display: inline-flex;
+      vertical-align: bottom;
+    }
+  }
+}
+
 @include desktop() {
   bal-card {
     & > :not(bal-badge):not(bal-tag):first-child {
@@ -105,11 +126,42 @@ bal-card {
     & > bal-accordion {
       padding-bottom: 0 !important;
     }
+
+    bal-card-title {
+      .title {
+        display: flex;
+        gap: 8px;
+        width: 100%;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+
+      bal-tag-group,
+      .bal-tag-group,
+      bal-button-group,
+      .bal-button-group,
+      .field.is-grouped {
+        display: inline-flex;
+        margin-top: 0;
+      }
+
+      bal-button-group,
+      .bal-button-group,
+      .field.is-grouped {
+        flex: 1;
+        margin-top: -7px;
+      }
+
+      bal-tag-group,
+      .bal-tag-group {
+        margin-top: 5px;
+      }
+    }
   }
 }
 
-.column bal-card,
-.column bal-card bal-card-content,
-.column bal-card bal-card-content > .is-flex {
+.column bal-card:not(.has-height-auto),
+.column bal-card:not(.has-height-auto) bal-card-content,
+.column bal-card:not(.has-height-auto) bal-card-content > .is-flex {
   height: 100%;
 }

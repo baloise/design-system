@@ -11,8 +11,11 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version: '16.x'
+          node-version: '16'
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Node Version
+        run: node -v
 
       - name: Restore lerna
         uses: actions/cache@v2
@@ -43,14 +46,40 @@ jobs:
       - name: Test
         run: npm run test
 
-      - name: Build server in the background
-        run: npm run test:build-server
-
-      - name: Start server in the background
-        run: npm run test:start-server &
+      - name: Install Cypress
+        run: npm run test:cy:install
 
       - uses: cypress-io/github-action@v2
         with:
-          working-directory: packages/testing
+          build: npm run cy:build
+          start: npm run cy:start
+          wait-on: 'http://localhost:3333'
+          working-directory: packages/components
+          browser: chrome
+          env: type=actual
+          install: false
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-snapshots
+          path: packages/components/cypress/snapshots
+        env:
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-videos
+          path: packages/components/cypress/videos
+        env:
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

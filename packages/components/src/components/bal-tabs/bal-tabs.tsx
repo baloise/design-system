@@ -44,6 +44,11 @@ export class Tabs {
   @Prop() action = false
 
   /**
+   * If `true` a light border is shown for the tabs.
+   */
+  @Prop() border = false
+
+  /**
    * Label for the action button
    */
   @Prop() actionLabel = 'Action'
@@ -88,7 +93,8 @@ export class Tabs {
   /**
    * Emitted when the action button has clicked
    */
-  @Event({ eventName: 'balActionClick' }) actionHasClicked!: EventEmitter<MouseEvent>
+  @Event({ eventName: 'balActionClick' })
+  actionHasClicked!: EventEmitter<MouseEvent>
 
   connectedCallback() {
     this.debounceChanged()
@@ -238,6 +244,7 @@ export class Tabs {
         <Tabs
           value={this.value}
           tabs={this.tabsOptions}
+          border={this.border}
           expanded={this.expanded}
           clickable={this.clickable}
           action={this.action}

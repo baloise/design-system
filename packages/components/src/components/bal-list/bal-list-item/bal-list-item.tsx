@@ -1,10 +1,12 @@
-import { Component, Host, h, Prop, Event, EventEmitter } from '@stencil/core'
+import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core'
 import { Props } from '../../../props'
 
 @Component({
   tag: 'bal-list-item',
 })
 export class ListItem {
+  @Element() el!: HTMLElement
+
   /**
    * If `true` the list item can be hovered
    */
@@ -21,6 +23,11 @@ export class ListItem {
   @Prop() selected = false
 
   /**
+   * If `true` the list item can be used as a accordion
+   */
+  @Prop() accordion = false
+
+  /**
    * Specifies the URL of the page the link goes to
    */
   @Prop() href = ''
@@ -35,6 +42,36 @@ export class ListItem {
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
+  findAccordionHead(): any | null {
+    return this.el.querySelector('bal-list-item-accordion-head')
+  }
+
+  findAccordionBody(): any | null {
+    return this.el.querySelector('bal-list-item-accordion-body')
+  }
+
+  connectedCallback() {
+    const accordionHead = this.findAccordionHead()
+    if (accordionHead) {
+      accordionHead.addEventListener('balAccordionChange', (e: CustomEvent<boolean>) => this.updateState(e))
+    }
+  }
+
+  disconnectedCallback() {
+    const accordionHead = this.findAccordionHead()
+    if (accordionHead) {
+      accordionHead.removeEventListener('balAccordionChange', (e: CustomEvent<boolean>) => this.updateState(e))
+    }
+  }
+
+  updateState(event: CustomEvent<boolean>) {
+    const accordionBody = this.findAccordionBody()
+    if (accordionBody) {
+      const isAccordionOpen = event.detail
+      accordionBody.open = isAccordionOpen
+    }
+  }
+
   render() {
     if (this.href.length > 0 && !this.disabled) {
       return (
@@ -42,9 +79,10 @@ export class ListItem {
           role="listitem"
           class={{
             'bal-list-item': true,
+            'is-accordion': this.accordion,
             'is-disabled': this.disabled,
             'is-selected': this.selected,
-            'is-clickable': this.clickable || this.href.length > 0,
+            'is-list-item-clickable': this.clickable || this.href.length > 0,
           }}
         >
           <a
@@ -68,7 +106,7 @@ export class ListItem {
             'bal-list-item': true,
             'is-disabled': this.disabled,
             'is-selected': this.selected,
-            'is-clickable': this.clickable || this.href.length > 0,
+            'is-list-item-clickable': this.clickable || this.href.length > 0,
           }}
         >
           <button
@@ -83,6 +121,24 @@ export class ListItem {
       )
     }
 
+    if (this.accordion) {
+      return (
+        <Host
+          role="listitem"
+          class={{
+            'bal-list-item': true,
+            'is-accordion': this.accordion,
+            'is-disabled': this.disabled,
+            'is-list-item-clickable': this.accordion,
+          }}
+        >
+          <div>
+            <slot></slot>
+          </div>
+        </Host>
+      )
+    }
+
     return (
       <Host
         role="listitem"
@@ -90,10 +146,12 @@ export class ListItem {
           'bal-list-item': true,
           'is-disabled': this.disabled,
           'is-selected': this.selected,
-          'is-clickable': this.clickable || this.href.length > 0,
+          'is-list-item-clickable': this.clickable || this.href.length > 0,
         }}
       >
-        <slot></slot>
+        <div>
+          <slot></slot>
+        </div>
       </Host>
     )
   }

@@ -12,9 +12,14 @@ export class InputGroup implements ComponentInterface {
   @Prop() invalid = false
 
   /**
-   * If `true` the component is disabled.
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly = false
 
   render() {
     return (
@@ -22,7 +27,7 @@ export class InputGroup implements ComponentInterface {
         class={{
           'bal-input-group': true,
           'is-danger': this.invalid,
-          'is-disabled': this.disabled,
+          'is-disabled': this.disabled || this.readonly,
         }}
       >
         <slot></slot>

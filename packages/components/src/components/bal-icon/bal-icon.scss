@@ -38,6 +38,11 @@ bal-icon {
     position: static;
     width: 24px;
     max-height: 24px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &.turn .bal-icon-inner {
+    transform: rotate(180deg);
   }
 
   &.is-size-xsmall,
@@ -67,11 +72,6 @@ bal-icon {
   &.is-size-xlarge .bal-icon-inner {
     width: 64px;
     max-height: 64px;
-  }
-
-  &.turn .bal-icon-inner {
-    rotate: 180deg;
-    transform: rotate(180deg);
   }
 
   svg,

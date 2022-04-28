@@ -43,7 +43,10 @@ export const Basic = Template.bind({})
 Basic.args = {
   content: 'Primary',
 }
-Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
+Basic.parameters = {
+  ...component.sourceCode(Basic),
+  controls: { exclude: excludedControls },
+}
 
 export const ButtonVariants = args => ({
   components: { ...component.components, BalButtonGroup },
@@ -125,22 +128,23 @@ ButtonGroup.parameters = {
   controls: { exclude: [...excludedControls, 'color', 'expanded', 'href'] },
 }
 
-// export const Square = Template.bind({})
-// Square.args = {
-//   content: '',
-//   color: 'info',
-//   icon: 'edit',
-//   square: true,
-//   outlined: true,
-// }
-// Square.parameters = { ...component.sourceCode(Square) }
+export const Link = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-button v-bind="args">Link</bal-button>`,
+})
+Link.args = {
+  color: 'link',
+  flat: false,
+  inverted: false,
+  iconRight: 'plus',
+}
+Link.parameters = { ...component.sourceCode(Link), controls: { exclude: excludedControls } }
 
-// export const ButtonGroup = args => ({
-//   components: { ...component.components },
-//   setup: () => ({ args }),
-//   template: `<bal-button-group>
-//   <bal-button>First</bal-button>
-//   <bal-button color="info">Second</bal-button>
-// </bal-button-group>
-//   `,
-// })
+export const NativeLink = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<a class="is-link">Link</a>`,
+})
+NativeLink.args = {}
+NativeLink.parameters = { ...component.sourceCode(NativeLink), controls: { exclude: excludedControls } }

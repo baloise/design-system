@@ -9,7 +9,7 @@ bal-checkbox {
   min-width: 24px;
   min-height: 48px;
 
-  &.is-dense {
+  &.is-flat {
     min-height: 24px;
   }
 
@@ -40,6 +40,7 @@ bal-checkbox {
       contain: layout style;
 
       display: flex;
+      align-self: baseline;
       align-items: center;
       justify-content: flex-start;
       text-align: left;
@@ -106,14 +107,14 @@ bal-checkbox {
       transform: rotate(45deg);
     }
 
-    input[type='checkbox']:not(:disabled) + label:hover {
+    input[type='checkbox']:not(.is-disabled) + label:hover {
       &::before {
         background: $grey-1;
         border-color: $light-blue-dark;
       }
     }
 
-    input[type='checkbox']:checked:not(:disabled) + label:hover {
+    input[type='checkbox']:checked:not(.is-disabled) + label:hover {
       &::before {
         border-color: $light-blue-dark;
         background: $light-blue-dark;
@@ -128,20 +129,20 @@ bal-checkbox {
       content: '';
     }
 
-    input[type='checkbox']:disabled + label {
-      cursor: not-allowed;
+    input[type='checkbox'].is-disabled + label {
+      cursor: default;
     }
 
-    input[type='checkbox']:disabled + label:before {
+    input[type='checkbox'].is-disabled + label:before {
       background: $grey-2;
       border-color: $grey-2;
     }
 
-    input[type='checkbox']:checked:disabled + label:before {
+    input[type='checkbox']:checked.is-disabled + label:before {
       background: $grey-2;
     }
 
-    input[type='checkbox']:checked:disabled + label:after {
+    input[type='checkbox']:checked.is-disabled + label:after {
       border-color: $grey-7;
     }
 

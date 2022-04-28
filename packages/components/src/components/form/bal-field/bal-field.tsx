@@ -12,9 +12,14 @@ export class Field {
   @Prop() invalid = false
 
   /**
-   * If `true` the field loses opacity
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
   @Prop() disabled = false
+
+  /**
+   * If `true` the element can not mutated, meaning the user can not edit the control.
+   */
+  @Prop() readonly = false
 
   /**
    * If `true` the field can be used on blue background.
@@ -37,18 +42,22 @@ export class Field {
     })
   }
 
+  @Watch('readonly')
   @Watch('disabled')
   @Watch('loading')
   @Watch('inverted')
   restHandler() {
-    this.notifyComponents<{ disabled: boolean; loading: boolean; inverted: boolean }>(
-      [...this.inputElements, ...this.formControlElement],
-      input => {
-        input.disabled = this.disabled
-        input.loading = this.loading
-        input.inverted = this.inverted
-      },
-    )
+    this.notifyComponents<{
+      readonly: boolean
+      disabled: boolean
+      loading: boolean
+      inverted: boolean
+    }>([...this.inputElements, ...this.formControlElement], input => {
+      input.readonly = this.readonly
+      input.disabled = this.disabled
+      input.loading = this.loading
+      input.inverted = this.inverted
+    })
   }
 
   private notifyComponents<T>(selectors: string[], callback: (component: T) => void) {
@@ -73,7 +82,7 @@ export class Field {
           class={{
             'form': true,
             'is-inverted': this.inverted,
-            'is-disabled': this.disabled,
+            'is-disabled': this.disabled || this.readonly,
           }}
         >
           <slot></slot>
