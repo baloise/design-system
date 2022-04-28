@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.10.3](https://github.com/baloise-incubator/design-system/compare/v10.10.2...v10.10.3) (2022-04-28)
+
+
+### Bug Fixes
+
+* **button:** long labels break [#32](https://github.com/baloise-incubator/design-system/issues/32) ([55de801](https://github.com/baloise-incubator/design-system/commit/55de801120d4e5cf10d4ff68d91b5bcf15a042c5))
+* **card:** add flat transparent story ([2c31c09](https://github.com/baloise-incubator/design-system/commit/2c31c096464891b24dfce34124a0687262c26d2a))
+* **icons:** update svg files ([932062c](https://github.com/baloise-incubator/design-system/commit/932062c1efc8908af01ce66059a32f9d9966424b))
+* **label:** remove asterix ([37e33b7](https://github.com/baloise-incubator/design-system/commit/37e33b741118486b685db948c314ca5a6b5d135f))
+* **text:** small line-height [#29](https://github.com/baloise-incubator/design-system/issues/29) ([7834f5c](https://github.com/baloise-incubator/design-system/commit/7834f5c7527c85db868e5bd4ed47ad91123cf135))
+
+
+
 ### [10.10.2](https://github.com/baloise-incubator/design-system/compare/v10.9.2...v10.10.2) (2022-04-25)
 
 
