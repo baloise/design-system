@@ -69,7 +69,6 @@
   "dependencies": {
     "@baloise/design-system-next-fonts": "10.10.3",
     "@baloise/design-system-next-icons": "10.10.3",
-    "@baloise/design-system-next-tokens": "10.10.3",
     "@baloise/web-app-utils": "^3.3.3",
     "@popperjs/core": "^2.11.4",
     "@stencil/core": "^2.14.2",

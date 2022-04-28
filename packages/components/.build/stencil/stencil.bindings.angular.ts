@@ -99,6 +99,8 @@ export const AngularGenerator = () =>
           'bal-list-item-subtitle',
           'bal-list-item-content',
           'bal-list-item-icon',
+          'bal-list-item-accordion-head',
+          'bal-list-item-accordion-body',
         ],
       },
       'bal-navbar': {

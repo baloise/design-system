@@ -32,7 +32,6 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "@baloise/design-system-next-tokens": "^10.9.2",
     "replace-in-file": "^6.3.2"
   },
   "gitHead": "942fb79c8ff2fb991d815f91ffee0bb95ea6756f"

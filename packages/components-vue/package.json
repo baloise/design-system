@@ -64,7 +64,6 @@
   },
   "web-types": "dist/web-types.json",
   "dependencies": {
-    "@baloise/design-system-next-components": "10.9.2",
-    "@baloise/design-system-next-tokens": "10.9.2"
+    "@baloise/design-system-next-components": "10.10.3"
   }
 }

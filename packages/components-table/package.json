@@ -57,8 +57,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@baloise/design-system-next-components": "10.9.2",
-    "@baloise/design-system-next-tokens": "10.9.2",
+    "@baloise/design-system-next-components": "10.10.3",
     "lodash.isnil": "^4.0.0"
   },
   "peerDependencies": {
