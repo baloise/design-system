@@ -20,7 +20,20 @@ export const OStepList: FunctionalComponent<TabProps> = ({ value, clickable, tab
         >
           <a onClick={(event: MouseEvent) => onSelectTab(event, tab)}>
             <span class="step-index">
-              <span class="inner"></span>
+              <bal-icon
+                style={{ display: tab.done ? 'block' : 'none' }}
+                name="check-circle"
+                class="check-icon"
+              ></bal-icon>
+              <bal-icon
+                style={{ display: tab.failed ? 'block' : 'none' }}
+                name="alert-circle"
+                class="alert-icon"
+                color="danger"
+              ></bal-icon>
+              <span style={{ display: !tab.done && !tab.failed ? 'block' : 'none' }} class="inner-text">
+                {index + 1}
+              </span>
             </span>
             <span class="step-label is-hidden-mobile">{tab.label}</span>
           </a>

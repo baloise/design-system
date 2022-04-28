@@ -25,6 +25,10 @@ export interface TabProps {
   onActionClick: (event: MouseEvent) => void
   lineWidth?: number
   lineOffsetLeft?: number
+  lineHeight?: number
+  lineOffsetTop?: number
+  vertical: boolean
+  verticalOnMobile: boolean
 }
 
 export interface TabItemProps {

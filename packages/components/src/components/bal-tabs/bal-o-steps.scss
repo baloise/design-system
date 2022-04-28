@@ -18,9 +18,8 @@ bal-tabs.bal-o-steps {
       }
 
       .step-index {
-        height: 24px;
-        width: 24px;
-        border: 2px solid $blue-2;
+        height: 30px;
+        width: 30px;
         background-color: $white;
         background: $white;
         color: $white;
@@ -36,11 +35,10 @@ bal-tabs.bal-o-steps {
         z-index: 5;
         margin-bottom: 8px;
 
-        .inner {
-          background: $blue;
-          border-radius: 50%;
-          height: 10px;
-          width: 10px;
+        .inner-text {
+          margin: 0;
+          font-weight: 700;
+          color: $text-light;
         }
       }
 
@@ -50,6 +48,8 @@ bal-tabs.bal-o-steps {
         margin-right: 0.5em;
         padding-top: 0.2em;
         color: $text-light;
+        font-weight: 700;
+        font-family: $title-family;
       }
 
       &:not(:last-child):after {
@@ -60,86 +60,130 @@ bal-tabs.bal-o-steps {
         height: 2px;
         left: 50%;
         right: -50%;
-        top: 11px;
-        margin-right: 16px;
-        margin-left: 8px;
+        top: 15px;
+        margin-right: 20px;
+        margin-left: 18px;
         background-color: $blue;
+        border-radius: 5px;
+      }
+    }
+
+    li:not(.is-done, .is-failed, .is-active, .is-disabled) {
+      .step-index {
+        border: 2px solid $blue-2;
       }
     }
 
     li.is-failed:not(.is-active) {
       .step-index {
-        border: 2px solid $danger !important;
-        background: $danger !important;
+        .alert-icon {
+          height: 30px;
+          width: 30px;
+          max-height: 30px;
 
-        .inner {
-          background: $danger !important;
+          .bal-icon-inner {
+            height: 30px;
+            width: 30px;
+            max-height: 30px;
+          }
         }
+      }
 
-        &::after {
-          display: inline-block;
-          position: absolute;
-          background-color: transparent;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: 24px 24px;
-          content: '!';
-          font-size: 16px;
-          text-align: center;
-          width: 32px;
-          height: 32px;
-          line-height: 32px;
-          vertical-align: middle;
+      a {
+        .step-label {
+          color: $danger-7;
+          font-weight: bold;
         }
       }
     }
 
     li.is-done:not(.is-active) {
       .step-index {
-        border: 2px solid $success !important;
-        background: $success !important;
+        .check-icon {
+          height: 30px;
+          width: 30px;
+          max-height: 30px;
 
-        &::after {
-          display: inline-block;
-          position: absolute;
-          background-color: transparent;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: 24px 24px;
-          content: '';
-          top: 50%;
-          margin-top: -6px;
-          left: 50%;
-          margin-left: -3px;
-          width: 5px;
-          height: 10px;
-          border-bottom: 2px solid $white;
-          border-right: 2px solid $white;
-          border-top: 0;
-          border-left: 0;
-          -moz-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          -o-transform: rotate(45deg);
-          -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+          .bal-icon-inner {
+            height: 30px;
+            width: 30px;
+            max-height: 30px;
+          }
         }
+      }
 
-        .inner {
-          background: $success !important;
+      .step-label {
+        color: $blue-7;
+      }
+    }
+
+    li.is-done {
+      .step-index {
+        background-color: none !important;
+
+        .check-icon {
+          height: 30px;
+          width: 30px;
+          max-height: 30px;
+
+          .bal-icon-inner {
+            height: 30px;
+            width: 30px;
+            max-height: 30px;
+          }
         }
       }
     }
 
-    li.is-clickable:hover {
-      .step-label {
-        color: $black;
-      }
-    }
+    li.is-clickable {
+      &:hover {
+        .step-label {
+          color: $light-blue-7;
+        }
 
-    li.is-clickable.is-active:hover {
-      .step-label {
-        color: $black;
-        font-weight: $weight-bold;
+        .step-index {
+          border: 2px solid $light-blue-7 !important;
+
+          .inner-text {
+            color: $light-blue-7;
+          }
+        }
+      }
+
+      &.is-active:hover {
+        .step-label {
+          color: $blue-7;
+        }
+
+        .step-index {
+          border: 2px solid $blue-7 !important;
+
+          .inner-text {
+            color: $white;
+          }
+        }
+      }
+
+      &.is-done:hover {
+        .step-label {
+          color: $blue-7;
+        }
+
+        .step-index {
+          border: 2px solid $blue-7 !important;
+        }
+      }
+
+      &.is-failed:hover {
+        .step-index {
+          border: 2px solid $danger-7 !important;
+        }
+      }
+
+      &:not(.is-done, .is-failed, .is-active, .is-disabled) {
+        .step-index {
+          border: 2px solid $blue-2;
+        }
       }
     }
 
@@ -148,16 +192,52 @@ bal-tabs.bal-o-steps {
     }
 
     li.is-active {
-      .step-index {
-        border: 2px solid $blue;
+      &:not(.is-done) {
+        .step-index {
+          background-color: $blue-7;
 
-        .inner {
-          background: $blue;
+          .inner-text {
+            display: block;
+            color: $white;
+          }
         }
       }
       .step-label {
-        color: $black;
+        color: $blue-7;
         font-weight: $weight-bold;
+      }
+    }
+
+    li.is-active.is-failed {
+      .step-index {
+        background: $white;
+
+        .alert-icon {
+          height: 30px;
+          width: 30px;
+          max-height: 30px;
+
+          .bal-icon-inner {
+            height: 30px;
+            width: 30px;
+            max-height: 30px;
+          }
+        }
+      }
+
+      a {
+        .step-label {
+          color: $danger-7;
+          font-weight: bold;
+        }
+      }
+
+      &:hover {
+        a {
+          .step-label {
+            color: $danger-7;
+          }
+        }
       }
     }
 
@@ -165,19 +245,76 @@ bal-tabs.bal-o-steps {
       background-color: $blue-2;
     }
 
-    li.is-active ~ li {
-      .step-index {
-        border: 2px solid $blue-2;
+    li.is-disabled {
+      cursor: default !important;
+      pointer-events: none;
 
-        .inner {
-          background: $white;
+      .step-index {
+        border: 2px solid $grey-2 !important;
+        background: $grey-2;
+
+        .inner-text {
+          color: $grey-7;
+        }
+      }
+
+      .step-label {
+        color: $grey-7 !important;
+      }
+
+      &:hover {
+        cursor: default !important;
+        pointer-events: none;
+
+        .step-index {
+          border: 2px solid $grey-2 !important;
+          background: $grey-2;
+
+          .inner-text {
+            color: $grey-7;
+          }
+        }
+
+        .step-label {
+          color: $grey-7;
         }
       }
     }
 
-    li.is-disabled {
-      cursor: default;
-      pointer-events: none;
+    @include mobile() {
+      li {
+        .step-index {
+          height: 24px;
+          width: 24px;
+
+          .check-icon {
+            height: 24px;
+            width: 24px;
+            max-height: 24px;
+
+            .bal-icon-inner {
+              height: 24px;
+              width: 24px;
+              max-height: 24px;
+            }
+          }
+        }
+
+        &:not(:last-child):after {
+          content: ' ';
+          display: block;
+          position: absolute;
+
+          height: 2px;
+          left: 44%;
+          right: -50%;
+          top: 11px;
+          margin-right: 20px;
+          margin-left: 18px;
+          background-color: $blue;
+          border-radius: 5px;
+        }
+      }
     }
   }
 }
