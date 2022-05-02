@@ -1,0 +1,19 @@
+@import '../../../styles/mixins/_all'
+
++block(snackbar)
+  +alert-wrapper
+  display: flex
+  justify-content: end
+  +element(inner)
+    +alert-inner(var(--bal-color-white))
+    align-self: flex-end
+    flex-direction: column !important
+    row-gap: 1rem
+  +element(header)
+    display: flex
+    align-items: center
+    column-gap: .5rem
+  +element(footer)
+    justify-content: start
+  +element(close)
+    +alert-close

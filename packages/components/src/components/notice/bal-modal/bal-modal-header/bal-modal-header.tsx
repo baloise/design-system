@@ -20,13 +20,17 @@ export class ModalHeader {
 
   render() {
     return (
-      <Host class="modal-card-head">
-        <div>
-          <h4 class="modal-card-title title is-size-4 has-text-blue m-0">
+      <Host class="bal-modal__header">
+        <div class="bal-modal__header__title">
+          <h4 class="title is-size-4 m-0">
             <slot></slot>
           </h4>
         </div>
-        <bal-close class="data-test-modal-close" size="large" onClick={this.closeHandler}></bal-close>
+        <bal-close
+          class="bal-modal__header__close data-test-modal-close"
+          size="medium"
+          onClick={this.closeHandler}
+        ></bal-close>
       </Host>
     )
   }

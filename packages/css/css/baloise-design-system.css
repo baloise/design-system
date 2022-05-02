@@ -1259,7 +1259,6 @@ a.is-link.is-inverted:visited circle {
 .is-list li {
   font-family: var(--bal-font-family-text);
   color: var(--bal-color-blue);
-  list-style: disc;
   margin-bottom: 8px;
 }
 .is-list li:last-child {
@@ -1320,6 +1319,10 @@ a.is-link.is-inverted:visited circle {
 .is-list.is-inverted.has-bullet-check li::before {
   border-bottom-color: var(--bal-color-white);
   border-right-color: var(--bal-color-white);
+}
+
+ul.is.list li {
+  list-style: disc;
 }
 
 .select select,
@@ -8702,10 +8705,6 @@ fieldset[disabled] .select select:hover {
 
 .is-display-inline-flex {
   display: inline-flex !important;
-}
-
-.bal-bubu--mod__element {
-  color: lime;
 }
 
 /*# sourceMappingURL=baloise-design-system.css.map */

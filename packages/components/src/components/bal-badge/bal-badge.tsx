@@ -32,27 +32,23 @@ export class Badge implements ComponentInterface {
       <Host
         class={{
           'bal-badge': true,
-          'has-radius-rounded': true,
-          'has-text-white': true,
-          [`has-background-${this.color}`]: true,
-          [`has-position-${this.position}`]: this.position !== '',
-          [`has-size-${this.size}`]: this.size !== '',
+          [`bal-badge--has-background-${this.color}`]: true,
+          [`bal-badge--has-position-${this.position}`]: this.position !== '',
+          [`bal-badge--has-size-${this.size}`]: this.size !== '',
         }}
       >
-        <bal-text
-          bold
-          inline
-          color="white"
-          size={this.size !== 'large' ? 'small' : ''}
+        <span
           class={{
-            'is-hidden': !!this.icon,
+            'bal-badge__label': true,
+            'is-hidden': !!this.icon || this.size === 'small',
           }}
         >
           <slot></slot>
-        </bal-text>
+        </span>
         <bal-icon
           class={{
-            'is-hidden': !this.icon,
+            'bal-badge__icon': true,
+            'is-hidden': !this.icon || this.size === 'small',
           }}
           size={this.size === '' ? 'xsmall' : 'small'}
           name={this.icon}

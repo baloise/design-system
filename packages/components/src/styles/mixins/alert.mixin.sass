@@ -1,0 +1,39 @@
+=alert-wrapper
+  +unselectable
+  display: inline-flex
+  position: relative
+  flex-grow: 0 !important
+
+=alert($background: var(--bal-color-white))
+  min-height: 56px
+  border-radius: var(--bal-radius-large)
+  font-size: var(--bal-size-normal)
+  font-family: var(--bal-font-family-text)
+  background: $background
+  +modifier(is-primary)
+    background: $background
+  +modifier(is-info)
+    background: var(--bal-color-info-2)
+  +modifier(is-danger)
+    background: var(--bal-color-danger-2)
+  +modifier(is-warning)
+    background: var(--bal-color-warning-2)
+  +modifier(is-success)
+    background: var(--bal-color-success-2)
+
+=alert-inner($background: var(--bal-color-white))
+  +alert
+  position: relative
+  display: inline-flex
+  flex-grow: 1
+  margin: 0.5rem 0 0 0
+  box-shadow: var(--bal-shadow)
+  width: 288px
+  max-width: 288px
+
+=alert-close
+  position: absolute
+  right: 1rem
+  top: 1rem
+  width: 1.5rem
+  height: 1.5rem

@@ -16,7 +16,8 @@ export class Logo implements ComponentInterface {
     return (
       <Host
         class={{
-          [`has-color-${this.color}`]: true,
+          'bal-logo': true,
+          [`bal-logo--has-color-${this.color}`]: true,
         }}
       >
         <div>

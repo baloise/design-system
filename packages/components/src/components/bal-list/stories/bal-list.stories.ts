@@ -76,6 +76,11 @@ export const NativeList = args => ({
     <li>List Item 2</li>
     <li>List Item 3</li>
   </ul>
+  <ul class="is-list has-bullet-circle mb-4">
+    <li>List Item 1</li>
+    <li>List Item 2</li>
+    <li>List Item 3</li>
+  </ul>
   <ul class="is-list has-bullet-check mb-4">
     <li>List Item 1</li>
     <li>List Item 2</li>

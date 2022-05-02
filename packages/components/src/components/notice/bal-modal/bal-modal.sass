@@ -1,0 +1,233 @@
+$modal-breakpoint: $tablet !default
+$modal-content-width: 640px !default
+$modal-content-margin-mobile: 24px !default
+$modal-content-spacing-mobile: 160px !default
+$modal-content-spacing-tablet: 48px !default
+
++block(modal)
+  @extend %overlay
+  align-items: center
+  display: none
+  flex-direction: column
+  justify-content: flex-start
+  overflow: hidden
+  position: fixed
+  z-index: 40
+  // modifiers
+  +modifier(is-active)
+    display: flex
+  // background overlay
+  +element(background)
+    @extend %overlay
+    background-color: rgba($blue-dark, .8)
+  +element(header)
+    +element(title)
+      padding-right: 2.5rem
+      line-height: 2rem
+    +element(close)
+      position: absolute
+      right: 20px
+      top: 24px
+      min-width: 2rem
+      max-width: 2rem
+      min-height: 2rem
+      max-height: 2rem
+  +element(container)
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    overflow-x: none
+    overflow-y: auto
+    -ms-overflow-y: visible
+    padding: .5rem
+    +from($modal-breakpoint)
+      padding: 0
+  +element(content)
+    overflow: none
+    position: relative
+    width: 100%
+    display: flex
+    flex-direction: column
+    background: var(--bal-color-white)
+    border-radius: var(--bal-radius-large)
+    // responsiveness
+    +from($modal-breakpoint)
+      margin: 3rem auto
+      width: $modal-content-width
+    // spacing
+    padding: 1rem
+    .bal-modal__header
+      padding-bottom: 1rem
+    +modifier(has-spacing-small)
+      padding: 1.5rem
+      .bal-modal__header
+        padding-bottom: 1.5rem
+      .bal-modal__header__close
+        right: 20px
+        top: 24px
+    +modifier(has-spacing-medium)
+      padding: 2rem
+      .bal-modal__header
+        padding-bottom: 2rem
+    +modifier(has-spacing-large)
+      padding: 2.5rem
+      .bal-modal__header
+        padding-bottom: 2.5rem
+  +element(body)
+    & > bal-button-group
+      padding-top: 1rem
+
+  // @import 'bal-modal.vars';
+// @import 'node_modules/bulma/sass/components/modal';
+
+// bal-modal:not(.is-closable) {
+//   bal-modal-header bal-close {
+//     display: none;
+//   }
+// }
+
+// bal-modal-header,
+// bal-modal-body {
+//   font-family: $family-primary;
+//   display: block;
+// }
+
+// bal-modal-header {
+//   border: none;
+//   position: relative;
+//   border-radius: $radius-large !important;
+//   background-color: transparent !important;
+
+//   .modal-card-head {
+//     word-break: break-word;
+//   }
+
+//   .modal-card-title {
+//     padding-right: 40px;
+//     line-height: 32px;
+//   }
+
+//   bal-close {
+//     position: absolute;
+//     right: 16px;
+//     top: 16px;
+//     min-width: 32px;
+//     max-width: 32px;
+//     min-height: 32px;
+//     max-height: 32px;
+//   }
+// }
+
+// .modal-container {
+//   position: fixed;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   overflow-x: none;
+//   overflow-y: auto;
+// }
+
+// .modal-content,
+// .modal-card {
+//   max-height: none !important;
+//   overflow: initial !important;
+// }
+
+// .modal-content {
+//   padding: 0;
+//   margin-top: 48px;
+//   margin-bottom: 48px;
+// }
+
+// bal-modal-body {
+//   bal-button-group {
+//     margin-top: 20px;
+//   }
+// }
+
+// bal-modal-header + bal-modal-body {
+//   padding-top: 0 !important;
+// }
+
+// @include mobile() {
+//   bal-modal-body {
+//     flex: 1;
+//     display: flex;
+//     flex-direction: column;
+
+//     bal-button-group {
+//       margin-top: auto !important;
+//     }
+//   }
+
+//   .modal-content {
+//     margin: 0;
+//     padding: 8px;
+//     min-height: 100%;
+//     height: 100%;
+
+//     .modal-card {
+//       margin: 0;
+//       min-height: 100%;
+//     }
+//   }
+// }
+
+// .modal-card {
+//   bal-modal-header,
+//   bal-modal-body {
+//     padding: 16px;
+//   }
+// }
+
+// @include tablet() {
+//   .modal-card {
+//     &.has-space-small {
+//       bal-modal-header {
+//         padding: 24px;
+
+//         bal-close {
+//           right: 24px;
+//           top: 24px;
+//         }
+//       }
+
+//       bal-modal-body {
+//         padding: 24px;
+//       }
+//     }
+
+//     &.has-space-medium {
+//       bal-modal-header {
+//         padding: 32px;
+
+//         bal-close {
+//           right: 32px;
+//           top: 32px;
+//         }
+//       }
+
+//       bal-modal-body {
+//         padding: 32px;
+//       }
+//     }
+
+//     &.has-space-large {
+//       bal-modal-header {
+//         padding: 48px 48px 32px 48px;
+
+//         bal-close {
+//           right: 48px;
+//           top: 48px;
+//         }
+//       }
+
+//       bal-modal-body {
+//         padding: 48px;
+//       }
+//     }
+//   }
+// }
