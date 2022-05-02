@@ -1843,36 +1843,36 @@ fieldset[disabled] .select select:hover {
 .button.is-link.is-active circle {
   fill: var(--bal-color-blue-dark);
 }
-.button.is-link:hover,
-.button.is-link.is-hovered {
+.button.is-text:hover,
+.button.is-text.is-hovered {
   background: var(--bal-color-light-blue);
   border-color: var(--bal-color-light-blue);
   color: var(--bal-color-light-blue-dark);
 }
-.button.is-link:hover svg,
-.button.is-link:hover g,
-.button.is-link:hover path,
-.button.is-link:hover circle,
-.button.is-link.is-hovered svg,
-.button.is-link.is-hovered g,
-.button.is-link.is-hovered path,
-.button.is-link.is-hovered circle {
+.button.is-text:hover svg,
+.button.is-text:hover g,
+.button.is-text:hover path,
+.button.is-text:hover circle,
+.button.is-text.is-hovered svg,
+.button.is-text.is-hovered g,
+.button.is-text.is-hovered path,
+.button.is-text.is-hovered circle {
   fill: var(--bal-color-light-blue-dark);
 }
-.button.is-link:active,
-.button.is-link.is-active {
+.button.is-text:active,
+.button.is-text.is-active {
   background: var(--bal-color-light-blue);
   border-color: var(--bal-color-light-blue);
   color: var(--bal-color-blue-dark);
 }
-.button.is-link:active svg,
-.button.is-link:active g,
-.button.is-link:active path,
-.button.is-link:active circle,
-.button.is-link.is-active svg,
-.button.is-link.is-active g,
-.button.is-link.is-active path,
-.button.is-link.is-active circle {
+.button.is-text:active svg,
+.button.is-text:active g,
+.button.is-text:active path,
+.button.is-text:active circle,
+.button.is-text.is-active svg,
+.button.is-text.is-active g,
+.button.is-text.is-active path,
+.button.is-text.is-active circle {
   fill: var(--bal-color-blue-dark);
 }
 .button.is-success {
@@ -7593,4 +7593,7 @@ fieldset[disabled] .select select:hover {
 }
 .is-display-inline-flex {
   display: inline-flex !important;
+}
+.bal-bubu--mod__element {
+  color: lime;
 } /*# sourceMappingURL=baloise-design-system.min.css.map */

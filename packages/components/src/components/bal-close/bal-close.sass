@@ -1,0 +1,80 @@
++block(close)
+  position: static
+  display: inline-block
+  button
+    +unselectable
+    -moz-appearance: none
+    -webkit-appearance: none
+    background-color: transparent
+    border: none
+    border-radius: var(--bal-radius-rounded)
+    cursor: pointer
+    pointer-events: auto
+    display: inline-block
+    flex-grow: 0
+    flex-shrink: 0
+    font-size: 0
+    height: 1.5rem
+    max-height: 1.5rem
+    max-width: 1.5rem
+    min-height: 1.5rem
+    min-width: 1.5rem
+    width: 1.5rem
+    outline: none
+    position: relative
+    vertical-align: top
+    &::before,
+    &::after
+      background-color: var(--bal-color-blue)
+      content: ""
+      display: block
+      left: 50%
+      position: absolute
+      top: 50%
+      transform: translateX(-50%) translateY(-50%) rotate(45deg)
+      transform-origin: center center
+      border-radius: var(--bal-radius-rounded)
+    &::before
+      height: 2px
+      width: 60%
+    &::after
+      height: 60%
+      width: 2px
+    &:hover
+      background: rgba($blue-dark, 0.1)
+    &:active
+      background: rgba($blue-dark, 0.3)
+      &::before,
+      &::after
+        background-color: var(--bal-color-blue-dark)
+    // Color
+    &.is-inverted
+      &::before,
+      &::after
+        background-color: var(--bal-color-white)
+      &:hover
+        background: rgba($white, 0.3)
+      &:active
+        background: rgba($white, 0.5)
+    // Sizes
+    &.is-small
+      height: 1rem
+      max-height: 1rem
+      max-width: 1rem
+      min-height: 1rem
+      min-width: 1rem
+      width: 1rem
+    &.is-medium
+      height: 2rem
+      max-height: 2rem
+      max-width: 2rem
+      min-height: 2rem
+      min-width: 2rem
+      width: 2rem
+    &.is-large
+      height: 2.5rem
+      max-height: 2.5rem
+      max-width: 2.5rem
+      min-height: 2.5rem
+      min-width: 2.5rem
+      width: 2.5rem

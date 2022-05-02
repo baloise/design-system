@@ -37,6 +37,11 @@ export class BalCard {
   @Prop() selected = false
 
   /**
+   * If `true` the card uses 100% of the available height.
+   */
+  @Prop() fullheight = false
+
+  /**
    * Defines the color of the card.
    */
   @Prop() color: Props.BalCardColor = 'white'
@@ -56,6 +61,7 @@ export class BalCard {
           'bal-card--is-clickable': this.clickable,
           'bal-card--is-selected': this.selected,
           'bal-card--is-square': this.square,
+          'bal-card--has-fullheight': this.fullheight,
         }}
       >
         <slot></slot>

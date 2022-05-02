@@ -8,6 +8,13 @@ $componentPrefix: 'bal-'
   .#{$componentPrefix}#{$name}
     @content
 
+=blocks($names...)
+  $selector: ()
+  @each $name in $names
+    $selector: append($selector, unquote('.#{$componentPrefix}#{$name}'), comma)
+  #{$selector}
+    @content
+
 =element($name)
   &__#{$name}
     @content
@@ -21,4 +28,11 @@ $componentPrefix: 'bal-'
 
 =modifier($name)
   &--#{$name}
+    @content
+
+=modifiers($names...)
+  $selector: ()
+  @each $name in $names
+    $selector: append($selector, unquote('&--#{$name}'), comma)
+  #{$selector}
     @content

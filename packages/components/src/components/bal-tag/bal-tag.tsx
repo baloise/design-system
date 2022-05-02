@@ -28,6 +28,7 @@ export class Tag {
   @Prop() light = false
 
   /**
+   * @deprecated
    * @internal
    * Sets background color to transparent
    */
@@ -38,46 +39,33 @@ export class Tag {
    */
   @Event() balCloseClick!: EventEmitter<MouseEvent>
 
-  get colorCssClass(): string {
-    if (['danger', 'warning', 'success', 'info'].includes(this.color)) {
-      return this.color !== '' ? `has-background-${this.color}-light` : ''
-    }
-    return this.color !== '' ? `is-${this.color}` : ''
-  }
-
-  get sizeCssClass(): string {
-    return this.size === '' ? '' : `is-${this.size}`
-  }
-
   render() {
     return (
       <Host
         class={{
-          'tag': true,
-          'is-light': this.light,
-          'is-transparent': this.transparent,
-          [this.colorCssClass]: true,
-          [this.sizeCssClass]: true,
+          'bal-tag': true,
+          [`bal-tag--is-${this.size}`]: this.size !== '',
+          [`bal-tag--is-${this.color}${this.light ? '-light' : ''}`]: this.color !== '',
         }}
       >
-        <div class="is-flex is-align-items-center	">
-          <bal-text
-            bold
-            inline
-            size={this.size === 'small' ? 'small' : ''}
-            color={this.color === 'primary' || this.color === 'blue' ? 'white' : ''}
-          >
-            <slot />
-          </bal-text>
-          <bal-close
-            style={{
-              display: this.closable ? 'flex' : 'none',
-            }}
-            inverted
-            background
-            onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
-          ></bal-close>
-        </div>
+        <span
+          class={{
+            'bal-tag__label': true,
+            [`bal-tag__label--is-${this.size}`]: this.size !== '',
+            [`bal-tag__label--is-${this.color}${this.light ? '-light' : ''}`]: this.color !== '',
+          }}
+        >
+          <slot />
+        </span>
+        <bal-close
+          class="bal-tag__close"
+          style={{
+            display: this.closable ? 'flex' : 'none',
+          }}
+          size={this.size}
+          inverted={['blue', 'primary', 'info', 'success', 'warning', 'danger', ''].includes(this.color) && !this.light}
+          onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
+        ></bal-close>
       </Host>
     )
   }

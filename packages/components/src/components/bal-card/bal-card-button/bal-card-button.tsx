@@ -43,7 +43,7 @@ export class CardButton {
 
   render() {
     return (
-      <Host class="bal-card-button pb-0">
+      <Host class="bal-card-button mx-5 pb-5">
         <bal-button
           color="info"
           expanded

@@ -187,6 +187,10 @@ export namespace Components {
          */
         "flat": boolean;
         /**
+          * If `true` the card uses 100% of the available height.
+         */
+        "fullheight": boolean;
+        /**
           * If `true` the card background color becomes blue.
          */
         "inverted": boolean;
@@ -347,10 +351,6 @@ export namespace Components {
         "vertical": boolean;
     }
     interface BalClose {
-        /**
-          * If `true` it has a light background.
-         */
-        "background": boolean;
         /**
           * If `true` it supports dark backgrounds.
          */
@@ -1719,6 +1719,9 @@ export namespace Components {
           * The size of the tag element
          */
         "size": Props.BalTagSize;
+        /**
+          * @deprecated
+         */
         "transparent": boolean;
     }
     interface BalTagGroup {
@@ -2728,6 +2731,10 @@ declare namespace LocalJSX {
          */
         "flat"?: boolean;
         /**
+          * If `true` the card uses 100% of the available height.
+         */
+        "fullheight"?: boolean;
+        /**
           * If `true` the card background color becomes blue.
          */
         "inverted"?: boolean;
@@ -2895,10 +2902,6 @@ declare namespace LocalJSX {
         "vertical"?: boolean;
     }
     interface BalClose {
-        /**
-          * If `true` it has a light background.
-         */
-        "background"?: boolean;
         /**
           * If `true` it supports dark backgrounds.
          */
@@ -4332,6 +4335,9 @@ declare namespace LocalJSX {
           * The size of the tag element
          */
         "size"?: Props.BalTagSize;
+        /**
+          * @deprecated
+         */
         "transparent"?: boolean;
     }
     interface BalTagGroup {

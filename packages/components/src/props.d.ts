@@ -80,7 +80,19 @@ export namespace Props {
 
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar'
 
-  export type BalTagColor = 'blue' | 'grey' | 'primary' | 'info' | 'success' | 'warning' | 'danger' | ''
+  export type BalTagColor =
+    | 'blue'
+    | 'grey'
+    | 'primary'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'green'
+    | 'yellow'
+    | 'red'
+    | 'purple'
+    | ''
   export type BalTagSize = 'small' | 'medium' | 'large' | ''
 
   export type BalTextSize = 'small' | 'lead' | ''

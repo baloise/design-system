@@ -17,22 +17,16 @@ export class Close implements ComponentInterface {
    */
   @Prop() inverted = false
 
-  /**
-   * If `true` it has a light background.
-   */
-  @Prop() background = false
-
   render() {
     return (
-      <Host>
+      <Host class="bal-close">
         <button
           type="button"
           tabIndex={-1}
           aria-label="close"
           class={{
-            'delete': true,
+            // 'delete': true,
             'is-inverted': this.inverted,
-            'has-background': this.background,
             [`is-${this.size}`]: this.size !== '',
           }}
         ></button>

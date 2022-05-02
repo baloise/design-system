@@ -75,6 +75,7 @@ export const FlatCard = Basic.bind({})
 FlatCard.args = {
   color: '',
   flat: true,
+  border: true,
 }
 FlatCard.parameters = {
   ...component.sourceCode(FlatCard),
@@ -88,8 +89,8 @@ export const CardTitle = args => ({
   <bal-card-title>
     BaloiseCombi
     <bal-tag-group>
-      <bal-tag>My Tag 1</bal-tag>
-      <bal-tag>My Tag 2</bal-tag>
+      <bal-tag color="yellow">My Tag 1</bal-tag>
+      <bal-tag color="green">My Tag 2</bal-tag>
     </bal-tag-group>
     <bal-button-group position="right">
       <bal-button>Button 1</bal-button>
@@ -139,7 +140,7 @@ export const TeaserCards = args => ({
       </bal-card>
     </div>
     <div class="column is-half">
-      <bal-card v-bind="args" color="purple">
+      <bal-card v-bind="args" color="purple" flat>
         <bal-card-content>
           <div class="is-flex is-justify-content-start is-flex-direction-column">
             <bal-heading level="h4" space="bottom">Info Card</bal-heading>
@@ -189,7 +190,7 @@ export const TeaserCards = args => ({
       </bal-card>
     </div>
     <div class="column is-half">
-      <bal-card v-bind="args" class="has-height-auto">
+      <bal-card v-bind="args">
         <bal-card-content>
           <div class="is-flex is-justify-content-start is-flex-direction-column">
             <bal-heading level="h4" space="bottom">Action Card</bal-heading>
@@ -208,6 +209,9 @@ export const TeaserCards = args => ({
 </div>
 `,
 })
+TeaserCards.args = {
+  fullheight: true,
+}
 TeaserCards.parameters = {
   ...component.sourceCode(TeaserCards),
   controls: { exclude: excludedControls },
@@ -244,7 +248,7 @@ export const SummaryCard = args => ({
   <bal-card-content class="is-bold has-text-blue">Insured vehicle</bal-card-content>
   <bal-card-title>Cupra Ateca</bal-card-title>
   <bal-card-subtitle>Running time: 21.07.2019 - 21.07.2021</bal-card-subtitle>
-  <div class="p-5">
+  <bal-card-content>
     <bal-data horizontal>
       <bal-data-item>
         <bal-data-label>Tony</bal-data-label>
@@ -259,7 +263,7 @@ export const SummaryCard = args => ({
         <bal-data-value>Strange</bal-data-value>
       </bal-data-item>
     </bal-data>
-  </div>
+  </bal-card-content>
   <bal-card-button icon="edit">Edit</bal-card-button>
   </bal-card>`,
 })
