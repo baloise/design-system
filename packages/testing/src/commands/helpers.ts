@@ -72,7 +72,7 @@ export const selectors = {
     main: 'div.modal',
   },
   tag: {
-    text: 'bal-text',
+    text: '.bal-tag__label',
   },
   heading: {
     content: '.data-test-heading',
@@ -95,10 +95,10 @@ export const selectors = {
     action: '.data-test-tabs-action',
   },
   toast: {
-    main: '.bal-notices > bal-toast',
+    main: '.bal-notices > .bal-toast',
   },
   snackbar: {
-    main: '.bal-notices > bal-snackbar',
+    main: '.bal-notices > .bal-snackbar',
   },
   pagination: {
     next: 'bal-button.pagination-next',
