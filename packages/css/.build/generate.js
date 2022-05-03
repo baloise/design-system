@@ -138,7 +138,8 @@ async function generateTypography() {
     return `.title.is-${key},
 .title.is-size-${key},
 .subtitle.is-${key},
-.subtitle.is-size-${key}
+.subtitle.is-size-${key},
+.is-size-${key}
   +typography(${fontSize}, ${lineHeight}, ${space})
 `
   }

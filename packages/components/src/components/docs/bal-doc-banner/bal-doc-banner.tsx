@@ -29,7 +29,7 @@ export class DocBanner implements ComponentInterface {
             <bal-heading space="none" subtitle level="h4" inverted>
               {this.subtitle}
             </bal-heading>
-            <div class="mt-4">
+            <div class="mt-4" style={{ display: this.subtitle === 'Component' ? 'block' : 'none' }}>
               <bal-doc-banner-status context={this.status.split(',').map(s => s.trim()) as any} />
             </div>
           </div>
