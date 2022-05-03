@@ -1,4 +1,5 @@
 import { ValueAccessorConfig, angularOutputTarget } from '@baloise/angular-output-target'
+import { docComponents } from './doc.components'
 
 export const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
@@ -32,26 +33,7 @@ export const AngularGenerator = () =>
     componentCorePackage: '@baloise/design-system-next-components',
     directivesProxyFile: '../components-angular/src/directives/proxies.ts',
     valueAccessorConfigs: angularValueAccessorBindings,
-    excludeComponents: [
-      'bal-doc-app',
-      'bal-doc-banner',
-      'bal-doc-color',
-      'bal-doc-download',
-      'bal-doc-github',
-      'bal-doc-icons',
-      'bal-doc-image',
-      'bal-doc-shades',
-      'bal-doc-support-color',
-      'bal-doc-lead',
-      'bal-doc-tabs',
-      'bal-doc-usage',
-      'bal-doc-usage-item',
-      'bal-doc-link-list',
-      'bal-doc-link-list-item',
-      'bal-doc-link-tabs',
-      'bal-doc-link-usage',
-      'bal-doc-link-usage-item',
-    ],
+    excludeComponents: [...docComponents],
     componentGroups: {
       'bal-button': {
         components: ['bal-button-group'],
@@ -99,6 +81,8 @@ export const AngularGenerator = () =>
           'bal-list-item-subtitle',
           'bal-list-item-content',
           'bal-list-item-icon',
+          'bal-list-item-accordion-head',
+          'bal-list-item-accordion-body',
         ],
       },
       'bal-navbar': {

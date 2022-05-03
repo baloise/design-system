@@ -1,0 +1,178 @@
+.label
+  color: var(--bal-color-blue)
+  display: block
+  font-size: var(--bal-size-6)
+  font-weight: $weight-bold
+  &:not(:last-child)
+    margin-bottom: 4px
+  &.is-danger
+    color: var(--bal-color-text-danger)
+  &.is-warning
+    color: var(--bal-color-text-warning)
+  &.is-success
+    color: var(--bal-color-text-success)
+  &.is-disabled
+    color: var(--bal-color-text-disabled)
+
+.help
+  display: block
+  margin-top: 2px
+  font-size: var(--bal-size-7)
+  color: var(--bal-color-text-help)
+  &.is-danger
+    color: var(--bal-color-text-danger)
+  &.is-success
+    color: var(--bal-color-text-success)
+  &.is-warning
+    color: var(--bal-color-text-warning)
+  &.is-disabled
+    color: var(--bal-color-text-disabled)
+
+// Containers
+
+.field
+  &:not(:last-child)
+    margin-bottom: 0.75rem
+  // Modifiers
+  &.has-addons
+    display: flex
+    justify-content: flex-start
+    .control
+      &:not(:last-child)
+        +ltr-property("margin", -1px)
+      &:not(:first-child):not(:last-child)
+        .button,
+        .input,
+        .select select
+          border-radius: 0
+      &:first-child:not(:only-child)
+        .button,
+        .input,
+        .select select
+          +ltr
+            border-bottom-right-radius: 0
+            border-top-right-radius: 0
+          +rtl
+            border-bottom-left-radius: 0
+            border-top-left-radius: 0
+      &:last-child:not(:only-child)
+        .button,
+        .input,
+        .select select
+          +ltr
+            border-bottom-left-radius: 0
+            border-top-left-radius: 0
+          +rtl
+            border-bottom-right-radius: 0
+            border-top-right-radius: 0
+      .button,
+      .input,
+      .select select
+        &:not([disabled])
+          &:hover,
+          &.is-hovered
+            z-index: 2
+          &:focus,
+          &.is-focused,
+          &:active,
+          &.is-active
+            z-index: 3
+            &:hover
+              z-index: 4
+      &.is-expanded
+        flex-grow: 1
+        flex-shrink: 1
+    &.has-addons-centered
+      justify-content: center
+    &.has-addons-right
+      justify-content: flex-end
+    &.has-addons-fullwidth
+      .control
+        flex-grow: 1
+        flex-shrink: 0
+  &.is-grouped
+    display: flex
+    justify-content: flex-start
+    & > .control
+      flex-shrink: 0
+      &:not(:last-child)
+        margin-bottom: 0
+        +ltr-property("margin", 0.75rem)
+      &.is-expanded
+        flex-grow: 1
+        flex-shrink: 1
+    &.is-grouped-centered
+      justify-content: center
+    &.is-grouped-right
+      justify-content: flex-end
+    &.is-grouped-multiline
+      flex-wrap: wrap
+      & > .control
+        &:last-child,
+        &:not(:last-child)
+          margin-bottom: 0.75rem
+      &:last-child
+        margin-bottom: -0.75rem
+      &:not(:last-child)
+        margin-bottom: 0
+  &.is-horizontal
+    +tablet
+      display: flex
+
+.field-label
+  .label
+    font-size: inherit
+  +mobile
+    margin-bottom: 0.5rem
+  +tablet
+    flex-basis: 0
+    flex-grow: 1
+    flex-shrink: 0
+    +ltr-property("margin", 1.5rem)
+    text-align: right
+    &.is-small
+      font-size: var(--bal-size-small)
+      padding-top: 0.375em
+    &.is-normal
+      padding-top: 0.375em
+
+.field-body
+  .field .field
+    margin-bottom: 0
+  +tablet
+    display: flex
+    flex-basis: 0
+    flex-grow: 5
+    flex-shrink: 1
+    .field
+      margin-bottom: 0
+    & > .field
+      flex-shrink: 1
+      &:not(.is-narrow)
+        flex-grow: 1
+      &:not(:last-child)
+        +ltr-property("margin", 0.75rem)
+
+.control
+  box-sizing: border-box
+  clear: both
+  font-size: var(--bal-size-normal)
+  position: relative
+  text-align: inherit
+
+.field.is-grouped .control:not(:last-child)
+  margin-right: 8px
+
++mobile()
+  .field.is-grouped
+    flex-wrap: wrap
+    flex-direction: column
+    .control
+      flex-grow: 1
+      flex-shrink: 1
+      min-width: 100%
+      margin-right: 0 !important
+      .button
+        min-width: 100%
+      &:not(:last-child)
+        margin-bottom: 8px

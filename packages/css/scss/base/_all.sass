@@ -1,0 +1,87 @@
+@import './minireset'
+@import './normalize'
+
+html
+  background-color: $body-background-color
+  font-size: $body-size
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  min-width: $body-min-width
+  overflow-x: $body-overflow-x
+  overflow-y: $body-overflow-y
+  text-rendering: $body-rendering
+  text-size-adjust: 100%
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section
+  display: block
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea
+  font-family: $body-family
+
+body
+  color: $body-color
+  font-size: $body-font-size
+  font-weight: $body-weight
+  line-height: $body-line-height
+
+// Inline
+
+a
+  color: $link
+  cursor: pointer
+  text-decoration: none
+  strong
+    color: currentColor
+  &:hover
+    color: $link-hover
+
+hr
+  background-color: $hr-background-color
+  border: none
+  display: block
+  height: $hr-height
+  margin: $hr-margin
+
+img
+  height: auto
+  max-width: 100%
+
+input[type="checkbox"],
+input[type="radio"]
+  vertical-align: baseline
+
+small
+  font-size: $small-font-size
+
+span
+  font-style: inherit
+  font-weight: inherit
+
+strong
+  color: $strong-color
+  font-weight: $strong-weight
+
+// Block
+
+fieldset
+  border: none
+
+table
+  td,
+  th
+    vertical-align: top
+    &:not([align])
+      text-align: inherit
+  th
+    color: $text-strong

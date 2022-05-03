@@ -42,6 +42,7 @@ const Template = args => ({
 export const Basic = Template.bind({})
 Basic.args = {
   content: 'Primary',
+  icon: 'plus',
 }
 Basic.parameters = {
   ...component.sourceCode(Basic),

@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core'
+import { Component, Host, h, Prop, Event, EventEmitter, Element, Watch } from '@stencil/core'
 import { Props } from '../../../props'
 
 @Component({
@@ -28,6 +28,14 @@ export class ListItem {
   @Prop() accordion = false
 
   /**
+   * If `true` the list accordion is open
+   */
+  @Prop() accordionOpen = false
+  @Watch('accordionOpen')
+  accordionHandler() {
+    this.updateState(this.accordionOpen)
+  }
+  /**
    * Specifies the URL of the page the link goes to
    */
   @Prop() href = ''
@@ -42,6 +50,27 @@ export class ListItem {
    */
   @Event() balNavigate!: EventEmitter<MouseEvent>
 
+  connectedCallback() {
+    const accordionHead = this.findAccordionHead()
+    if (accordionHead) {
+      accordionHead.addEventListener('balAccordionChange', (event: CustomEvent<boolean>) =>
+        this.updateState(event.detail),
+      )
+    }
+    if (this.accordionOpen) {
+      this.accordionHandler()
+    }
+  }
+
+  disconnectedCallback() {
+    const accordionHead = this.findAccordionHead()
+    if (accordionHead) {
+      accordionHead.removeEventListener('balAccordionChange', (event: CustomEvent<boolean>) =>
+        this.updateState(event.detail),
+      )
+    }
+  }
+
   findAccordionHead(): any | null {
     return this.el.querySelector('bal-list-item-accordion-head')
   }
@@ -50,24 +79,9 @@ export class ListItem {
     return this.el.querySelector('bal-list-item-accordion-body')
   }
 
-  connectedCallback() {
-    const accordionHead = this.findAccordionHead()
-    if (accordionHead) {
-      accordionHead.addEventListener('balAccordionChange', (e: CustomEvent<boolean>) => this.updateState(e))
-    }
-  }
-
-  disconnectedCallback() {
-    const accordionHead = this.findAccordionHead()
-    if (accordionHead) {
-      accordionHead.removeEventListener('balAccordionChange', (e: CustomEvent<boolean>) => this.updateState(e))
-    }
-  }
-
-  updateState(event: CustomEvent<boolean>) {
+  updateState(isAccordionOpen: boolean) {
     const accordionBody = this.findAccordionBody()
     if (accordionBody) {
-      const isAccordionOpen = event.detail
       accordionBody.open = isAccordionOpen
     }
   }

@@ -1,0 +1,80 @@
+$modal-breakpoint: $tablet !default
+$modal-content-width: 640px !default
+$modal-content-margin-mobile: 24px !default
+$modal-content-spacing-mobile: 160px !default
+$modal-content-spacing-tablet: 48px !default
+
++block(modal)
+  @extend %overlay
+  align-items: center
+  display: none
+  flex-direction: column
+  justify-content: flex-start
+  overflow: hidden
+  position: fixed
+  z-index: 40
+  // modifiers
+  +modifier(is-active)
+    display: flex
+  // background overlay
+  +element(background)
+    @extend %overlay
+    background-color: rgba($blue-dark, .8)
+  +element(header)
+    +element(title)
+      padding-right: 2.5rem
+      line-height: 2rem
+    +element(close)
+      position: absolute
+      right: 20px
+      top: 24px
+      min-width: 2rem
+      max-width: 2rem
+      min-height: 2rem
+      max-height: 2rem
+  +element(container)
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    overflow-x: none
+    overflow-y: auto
+    -ms-overflow-y: visible
+    padding: .5rem
+    +from($modal-breakpoint)
+      padding: 0
+  +element(content)
+    overflow: none
+    position: relative
+    width: 100%
+    display: flex
+    flex-direction: column
+    background: var(--bal-color-white)
+    border-radius: var(--bal-radius-large)
+    // responsiveness
+    +from($modal-breakpoint)
+      margin: 3rem auto
+      width: $modal-content-width
+    // spacing
+    padding: 1rem
+    .bal-modal__header
+      padding-bottom: 1rem
+    +modifier(has-spacing-small)
+      padding: 1.5rem
+      .bal-modal__header
+        padding-bottom: 1.5rem
+      .bal-modal__header__close
+        right: 20px
+        top: 24px
+    +modifier(has-spacing-medium)
+      padding: 2rem
+      .bal-modal__header
+        padding-bottom: 2rem
+    +modifier(has-spacing-large)
+      padding: 2.5rem
+      .bal-modal__header
+        padding-bottom: 2.5rem
+  +element(body)
+    & > bal-button-group
+      padding-top: 1rem

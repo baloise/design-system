@@ -61,7 +61,7 @@ bal-input-group,
   &:hover {
     &,
     .input {
-      background: $grey-0;
+      background: $grey-1;
     }
   }
 
@@ -69,7 +69,7 @@ bal-input-group,
     &,
     .input {
       border-color: $danger-dark;
-      background: $danger-0;
+      background: $danger-1;
     }
 
     svg {
@@ -81,10 +81,10 @@ bal-input-group,
     }
   }
 
-  @include inputGroupTheme('danger', $invalid-light, $invalid-dark);
-  @include inputGroupTheme('success', $success-0, $success-dark);
-  @include inputGroupTheme('warning', $warning-0, $warning-dark);
-  @include inputGroupTheme('disabled', $grey-2, $grey-7);
+  @include inputGroupTheme('danger', $danger-1, $danger-dark);
+  @include inputGroupTheme('success', $success-1, $success-dark);
+  @include inputGroupTheme('warning', $warning-1, $warning-dark);
+  @include inputGroupTheme('disabled', $grey-2, $grey-5);
 
   &.is-disabled {
     &,
@@ -93,7 +93,7 @@ bal-input-group,
       pointer-events: none !important;
       user-select: none !important;
 
-      color: $grey-7;
+      color: $grey-5;
 
       ::placeholder {
         color: $grey-5;

@@ -1,0 +1,76 @@
++block(tag)
+  +unselectable
+  position: static
+  display: inline-flex
+  align-items: center
+  background-color: var(--bal-color-blue)
+  border-radius: var(--bal-radius-rounded)
+  color: var(--bal-color-white)
+  font-size: var(--bal-size-small) !important
+  font-family: var(--bal-font-family-text)
+  height: 2rem
+  max-height: 2rem
+  justify-content: center
+  line-height: 1.5
+  padding-left: 0.75rem
+  padding-right: 0.75rem
+  white-space: nowrap
+  // sizes
+  +modifier(is-small)
+    height: 1.5rem
+  +modifier(is-medium)
+    height: 2.5rem
+  +modifier(is-large)
+    height: 3rem
+  // colors
+  +modifier(is-grey)
+    background: var(--bal-color-grey)
+  +modifier(is-success)
+    background: var(--bal-color-success)
+  +modifier(is-info)
+    background: var(--bal-color-info)
+  +modifier(is-warning)
+    background: var(--bal-color-warning)
+  +modifier(is-danger)
+    background: var(--bal-color-danger)
+  +modifier(is-purple)
+    background: var(--bal-color-purple)
+  +modifier(is-red)
+    background: var(--bal-color-red)
+  +modifier(is-yellow)
+    background: var(--bal-color-yellow)
+  +modifier(is-green)
+    background: var(--bal-color-green)
+  +modifier(is-purple-light)
+    background: var(--bal-color-purple-light)
+  +modifier(is-red-light)
+    background: var(--bal-color-red-light)
+  +modifier(is-yellow-light)
+    background: var(--bal-color-yellow-light)
+  +modifier(is-green-light)
+    background: var(--bal-color-green-light)
+  //
+  // tag label
+  +element(label)
+    font-weight: $weight-bold !important
+    display: inline-flex
+    align-items: center
+    gap: .25rem
+    // sizes
+    +modifier(is-small)
+      font-size: var(--bal-size-small) !important
+    +modifier(is-medium)
+      font-size: var(--bal-size-medium) !important
+    +modifier(is-large)
+      font-size: var(--bal-size-large) !important
+    +modifiers(is-grey, is-purple, is-red, is-green, is-yellow, is-purple-light, is-red-light, is-green-light, is-yellow-light)
+      color: var(--bal-color-blue)
+  //
+  // close button
+  +element(close)
+    margin-left: 0.25rem
+    margin-right: -0.5rem
+
++block(tag-group)
+  display: flex
+  gap: 0.25rem

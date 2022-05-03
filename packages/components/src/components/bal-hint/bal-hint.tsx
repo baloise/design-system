@@ -112,6 +112,7 @@ export class Hint implements BalConfigObserver {
     return (
       <Host
         class={{
+          'bal-hint': true,
           [`is-placed-${this.placement}`]: true,
           'is-small': this.small,
         }}

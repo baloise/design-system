@@ -1,0 +1,66 @@
+.has-no-wrap
+  white-space: nowrap !important
+
+$alignments: ('centered': 'center', 'justified': 'justify', 'left': 'left', 'right': 'right')
+
+@each $alignment, $text-align in $alignments
+  .has-text-#{$alignment}
+    text-align: #{$text-align} !important
+
+@each $alignment, $text-align in $alignments
+  +mobile
+    .has-text-#{$alignment}-mobile
+      text-align: #{$text-align} !important
+  +tablet
+    .has-text-#{$alignment}-tablet
+      text-align: #{$text-align} !important
+  +tablet-only
+    .has-text-#{$alignment}-tablet-only
+      text-align: #{$text-align} !important
+  +touch
+    .has-text-#{$alignment}-touch
+      text-align: #{$text-align} !important
+  +desktop
+    .has-text-#{$alignment}-desktop
+      text-align: #{$text-align} !important
+
+.is-capitalized
+  text-transform: capitalize !important
+
+.is-lowercase
+  text-transform: lowercase !important
+
+.is-uppercase
+  text-transform: uppercase !important
+
+.is-italic
+  font-style: italic !important
+
+.has-text-weight-light
+  font-weight: $weight-light !important
+.has-text-weight-normal
+  font-weight: $weight-normal !important
+.has-text-weight-medium
+  font-weight: $weight-medium !important
+.has-text-weight-semibold
+  font-weight: $weight-semibold !important
+.has-text-weight-bold
+  font-weight: $weight-bold !important
+
+.is-family-primary
+  font-family: $family-primary !important
+
+.is-family-secondary
+  font-family: $family-secondary !important
+
+.is-family-text
+  font-family: $font-family-text !important
+
+.is-family-title
+  font-family: $font-family-title !important
+
+.is-family-monospace
+  font-family: $family-monospace !important
+
+.is-family-code
+  font-family: $family-code !important

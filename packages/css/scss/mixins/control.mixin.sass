@@ -1,0 +1,31 @@
+$control-border-width: 2px !default
+$control-padding-vertical: calc(0.5em - #{$control-border-width}) !default
+$control-padding-horizontal: calc(0.75em - #{$control-border-width}) !default
+
+=control
+  -moz-appearance: none
+  -webkit-appearance: none
+  align-items: center
+  border: $control-border-width solid transparent
+  border-radius: var(--bal-radius-small)
+  box-shadow: none
+  display: inline-flex
+  font-size: var(----bal-size-normal)
+  height: 48px
+  justify-content: flex-start
+  line-height: 1.5
+  padding-bottom: $control-padding-vertical
+  padding-left: $control-padding-horizontal
+  padding-right: $control-padding-horizontal
+  padding-top: $control-padding-vertical
+  position: relative
+  vertical-align: top
+  // States
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-active
+    outline: none
+  &[disabled],
+  fieldset[disabled] &
+    cursor: not-allowed

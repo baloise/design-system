@@ -35,7 +35,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@baloise/design-system-next-components": "10.10.3",
-    "@baloise/web-app-utils": "^3.0.1",
+    "@baloise/web-app-utils": "^3.3.3",
     "date-fns": "^2.28.0"
   },
   "devDependencies": {

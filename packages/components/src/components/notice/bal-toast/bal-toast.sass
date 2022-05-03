@@ -1,0 +1,17 @@
+@import '../../../styles/mixins/_all'
+
++block(toast)
+  +alert-wrapper
+  +element(inner)
+    +alert-inner(var(--bal-color-info-2))
+    // responsive
+    +tablet
+      width: 460px
+    +desktop
+      width: 480px
+  +element(label)
+    margin-right: 3rem
+  +element(close)
+    +alert-close
+    top: 50%
+    margin-top: -.75rem

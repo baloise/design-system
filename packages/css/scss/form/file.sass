@@ -1,0 +1,88 @@
+.file
+  @extend %unselectable
+  align-items: stretch
+  display: flex
+  justify-content: flex-start
+  position: relative
+  width: 100%
+  font-size: var(--bal-size-normal)
+  justify-content: center
+  .file-label
+    width: 100%
+    flex-direction: column
+  .file-cta
+    flex-direction: column
+    height: auto
+    padding: 1em 3em
+  .file-icon
+    height: 1.5em
+    width: 1.5em
+
+.file-label
+  align-items: stretch
+  display: flex
+  cursor: pointer
+  justify-content: flex-start
+  overflow: hidden
+  position: relative
+  gap: 8px
+  font-weight: $weight-bold
+  color: var(--bal-color-blue)
+  text-align: center
+  &:hover
+    .file-cta,
+    .file-label
+      color: var(--bal-color-light-blue-dark)
+    .file-cta
+      background-color: var(--bal-color-grey-1)
+      border-color: var(--bal-color-border-normal)
+  &:active,
+  &:focus-within
+    .file-cta,
+    .file-label
+      color: var(--bal-color-blue-dark)
+    .file-cta
+      background-color: var(--bal-color-grey-1)
+      border-color: var(--bal-color-border-active)
+
+.file-input
+  height: 100%
+  left: 0
+  opacity: 0
+  outline: none
+  position: absolute
+  top: 0
+  width: 100%
+
+.file-cta
+  @extend %control
+  border-style: dashed
+  border-color: var(--bal-color-border-normal)
+  border-radius: var(--bal-radius)
+  background: var(--bal-color-white)
+  font-size: 1em
+  padding-left: 1em
+  padding-right: 1em
+  white-space: nowrap
+  gap: .5rem
+
+.file-cta
+  background-color: var(--bal-color-white)
+  color: var(--bal-color-blue)
+
+.file-icon
+  align-items: center
+  display: flex
+  height: 1em
+  justify-content: center
+  +ltr-property("margin", 0.5em)
+  width: 1em
+
+.file.is-disabled
+  .file-label,
+  .file-cta
+    @extend %disabled
+    color: var(--bal-color-text-disabled)
+  .file-cta
+    border-color: var(--bal-color-border-disabled)
+    background: var(--bal-color-disabled)

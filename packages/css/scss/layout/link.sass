@@ -1,0 +1,34 @@
+a.is-link
+  font-weight: $weight-bold
+  text-decoration: underline
+  border-radius: var(--bal-radius-small)
+  color: var(--bal-color-blue)
+  +fillSvg(var(--bal-color-blue))
+  &:hover
+    text-decoration: underline
+    color: var(--bal-color-light-blue-dark)
+    +fillSvg(var(--bal-color-light-blue-dark))
+  &:focus
+    &:not(:active)
+      @extend %focus-shadow
+  &:active,
+  &:visited
+    text-decoration: underline
+    color: var(--bal-color-blue-dark)
+    +fillSvg(var(--bal-color-blue-dark))
+  &.is-inverted
+    color: var(--bal-color-white)
+    +fillSvg(var(--bal-color-white))
+    &:hover
+      text-decoration: underline
+      color: var(--bal-color-light-blue-2)
+      +fillSvg(var(--bal-color-light-blue-2))
+    &:focus,
+    &:focus-visible
+      &:not(:active)
+        @extend %focus-inverted-shadow
+    &:active,
+    &:visited
+      text-decoration: underline
+      color: var(--bal-color-info-3)
+      +fillSvg(var(--bal-color-info-3))

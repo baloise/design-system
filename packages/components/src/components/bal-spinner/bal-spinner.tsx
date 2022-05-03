@@ -1,14 +1,17 @@
-import { Component, h, Host, Prop, Element } from '@stencil/core'
+import { Component, h, Host, Prop, Element, getAssetPath, Watch } from '@stencil/core'
 import Lottie from 'lottie-web/build/player/lottie_light_html'
 import type { AnimationItem } from 'lottie-web/build/player/lottie_light_html'
-import { SpinnerAnimationData } from './bal-spinner.animation'
 import { flatten } from 'lottie-colorify'
+import { getSpinnerAnimationData, spinnerContent } from './request'
 
 @Component({
   tag: 'bal-spinner',
+  assetsDirs: ['assets'],
 })
 export class Spinner {
   @Element() el!: HTMLElement
+
+  animationData: any
 
   /**
    * If `true` the component can be used on dark background
@@ -27,10 +30,28 @@ export class Spinner {
 
   animation!: AnimationItem
 
+  connectedCallback() {
+    this.loadAnimation()
+  }
+
   componentDidUpdate() {
     this.resetAnimation()
   }
   componentDidLoad() {
+    this.resetAnimation()
+  }
+
+  @Watch('color')
+  async loadAnimation() {
+    const isStorybook = document.getElementsByTagName('bal-doc-app').length > 0
+    let url = ''
+    if (!isStorybook) {
+      url = getAssetPath('./assets/animation.json')
+    } else {
+      url = `${location.origin}/build/assets/animation.json`
+    }
+    await getSpinnerAnimationData(url)
+    this.animationData = spinnerContent.get(url)
     this.resetAnimation()
   }
 
@@ -43,16 +64,18 @@ export class Spinner {
   }
 
   resetAnimation() {
-    if (this.animation) {
-      this.animation.destroy()
+    if (this.animationData) {
+      if (this.animation) {
+        this.animation.destroy()
+      }
+      this.animation = Lottie.loadAnimation({
+        container: this.el,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: flatten(this.getColor(), this.animationData),
+      })
     }
-    this.animation = Lottie.loadAnimation({
-      container: this.el,
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      animationData: flatten(this.getColor(), SpinnerAnimationData(this.getColor())),
-    })
   }
 
   disconnectedCallback() {

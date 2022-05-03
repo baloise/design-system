@@ -1,0 +1,36 @@
++block(badge)
+  +unselectable
+  position: static
+  display: flex
+  justify-content: center
+  align-items: center
+  background: var(--bal-color-danger)
+  border-radius: var(--bal-radius-rounded)
+  width: 1.5rem
+  height: 1.5rem
+  // @deprecated // size
+  // +modifier(has-size-small)
+  //   width: .5rem
+  //   height: .5rem
+  // +modifier(has-size-large)
+  //   width: 2rem
+  //   height: 2rem
+  // colors
+  +modifier(is-danger)
+    background: var(--bal-color-danger)
+  +modifier(is-warning)
+    background: var(--bal-color-warning)
+  +modifier(is-success)
+    background: var(--bal-color-success)
+  // position
+  +modifiers(has-position-card, has-position-button, has-position-tabs)
+    position: absolute
+    right: -0.5rem
+    top: -0.5rem
+  // label
+  +element(label)
+    font-weight: $weight-bold !important
+    font-family: var(--bal-font-family-text) !important
+    font-size: var(--bal-size-small) !important
+    color: var(--bal-color-white)
+    line-height: 1.5rem !important

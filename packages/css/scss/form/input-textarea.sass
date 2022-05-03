@@ -1,0 +1,58 @@
+$textarea-padding: $control-padding-horizontal !default
+$textarea-max-height: 40em !default
+$textarea-min-height: 8em !default
+
+%input-textarea
+  @extend %input
+  max-width: 100%
+  width: 100%
+  &[readonly]
+    box-shadow: none
+  // Modifiers
+  &.is-fullwidth
+    display: block
+    width: 100%
+  &.is-inline
+    display: inline
+    width: auto
+
+.input
+  @extend %input-textarea
+
+.textarea
+  @extend %input-textarea
+  display: block
+  max-width: 100%
+  min-width: 100%
+  padding: $textarea-padding
+  resize: vertical
+  &:not([rows])
+    max-height: $textarea-max-height
+    min-height: $textarea-min-height
+  &[rows]
+    height: initial
+  // Modifiers
+  &.has-fixed-size
+    resize: none
+
+input.input,
+textarea.textarea
+  border-width: 2px
+  border-radius: var(--bal-radius)
+  font-size: var(--bal-size-normal)
+  font-family: var(--bal-font-family-text)
+  color: var(--bal-color-blue)
+  outline: none
+  box-shadow: none
+  &.is-danger
+    border-color: var(--bal-color-border-danger)
+    background: var(--bal-color-danger-light)
+  &.is-success
+    border-color: var(--bal-color-border-success)
+    background: var(--bal-color-success-light)
+  &.is-warning
+    border-color: var(--bal-color-border-warning)
+    background: var(--bal-color-warning-light)
+
+input.input
+  min-height: 48px

@@ -107,7 +107,7 @@ export class Snackbar {
     if (this.color === '') {
       return ''
     }
-    return `is-${this.color}`
+    return `bal-snackbar__inner--is-${this.color}`
   }
 
   get buttonType(): Props.BalButtonColor {
@@ -119,41 +119,24 @@ export class Snackbar {
 
   render() {
     return (
-      <Host id={this.snackbarId}>
-        <div role="alert" class={`snackbar ${this.animationClass} ${this.colorType} p-5`}>
-          <div class="snackbar-header">
-            <span class="icon-text">
+      <Host id={this.snackbarId} class="bal-snackbar">
+        <div role="alert" class={`bal-snackbar__inner ${this.animationClass} ${this.colorType} p-5`}>
+          <div class="bal-snackbar__header">
+            <span class="icon-text is-small">
               <span class="icon" style={{ display: this.icon ? '' : 'none' }}>
-                <bal-icon name={this.icon} color={this.color == 'primary' ? 'white' : 'primary'}></bal-icon>
+                <bal-icon name={this.icon} color={'primary'} size="small"></bal-icon>
               </span>
-              <bal-heading level="h5" inverted={this.color == 'primary'} space="none">
+              <bal-heading level="h5" space="none">
                 {this.subject}
               </bal-heading>
             </span>
           </div>
-          <bal-text
-            space={this.action === '' ? 'bottom' : 'none'}
-            color={this.color == 'primary' ? 'white' : ''}
-            innerHTML={this.message}
-          >
+          <bal-text class="bal-snackbar__label" space={this.action === '' ? 'bottom' : 'none'} innerHTML={this.message}>
             <slot />
           </bal-text>
-          <bal-close
-            class="close"
-            size="medium"
-            background={false}
-            inverted={this.color !== ''}
-            onClick={() => this.close()}
-          ></bal-close>
-          <div class="snackbar-footer" style={{ display: this.action === '' ? 'none' : 'inline-flex' }}>
-            <bal-button
-              color={this.buttonType}
-              inverted={this.color !== ''}
-              outlined
-              href={this.href}
-              target={this.target}
-              onClick={() => this.onActionHandler()}
-            >
+          <bal-close class="bal-snackbar__close" size="medium" onClick={() => this.close()}></bal-close>
+          <div class="bal-snackbar__footer" style={{ display: this.action === '' ? 'none' : 'inline-flex' }}>
+            <bal-button color="info" href={this.href} target={this.target} onClick={() => this.onActionHandler()}>
               {this.action}
             </bal-button>
           </div>

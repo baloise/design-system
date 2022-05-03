@@ -8,6 +8,6 @@ describe('Toast', () => {
     cy.get(page.toast).click()
     cy.get(page.toastWarning).click()
     cy.balToastFind().first().contains('Hi I am a default Toast! Hi I am a default Toast!')
-    cy.wait(1000).balToastFind().first().contains('Warning!').should('be.visible')
+    cy.balToastFind().eq(1).contains('Warning!')
   })
 })

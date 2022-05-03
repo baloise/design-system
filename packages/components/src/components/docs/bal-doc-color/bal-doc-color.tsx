@@ -18,14 +18,15 @@ export class BalDocColor {
   render() {
     const subject = this.subject !== '' ? this.subject : this.color
     const scssVars = this.scssVars !== '' ? this.scssVars : `$${this.color}`
+    console.log(scssVars, this.scssVars, this.color)
     return (
       <Host class="bal-app">
-        <div class="box has-radius-large">
+        <div class="has-radius-large has-shadow">
           <div
-            class={`has-background-${this.color} has-radius-large-top is-flex is-justify-content-center is-align-items-center`}
+            class={`has-background-${this.color} has-radius-top-large is-flex is-justify-content-center is-align-items-center`}
           >
             <strong
-              class={`${this.inverted ? 'has-text-white' : 'has-text-blue'} is-size-3 py-4`}
+              class={`${this.inverted ? 'has-text-white' : 'has-text-blue'} has-font-title is-size-3 py-4`}
               style={{ minHeight: '80px' }}
             >
               {this.background ? 'A-a' : ''}

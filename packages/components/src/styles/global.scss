@@ -1,5 +1,6 @@
 @charset "utf-8";
 
-@import 'global.base.scss';
-@import 'global.utilities.scss';
-@import 'global.core.scss';
+@import 'global.utilities';
+@import 'global.base';
+@import 'global.core';
+@import 'global.helpers';

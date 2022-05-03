@@ -1,0 +1,30 @@
+$input-height: 48px !default
+
+=input
+  @extend %control
+  background-color: var(--bal-color-white)
+  border-color: var(--bal-color-border-normal)
+  border-radius: var(--bal-radius-small)
+  color: var(--bal-color-blue)
+  +placeholder
+    color: var(--bal-color-text-blue-light)
+  &:hover,
+  &.is-hovered
+    border-color: var(--bal-color-border-normal)
+    background-color: var(--bal-color-grey-0)
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-active
+    border-color: var(--bal-color-border-blue)
+  &[disabled],
+  fieldset[disabled] &
+    background-color: var(--bal-color-disabled)
+    border-color: var(--bal-color-border-disabled)
+    box-shadow: none
+    color: var(--bal-color-text-disabled)
+    +placeholder
+      color: var(--bal-color-grey-4)
+
+%input
+  +input

@@ -13,8 +13,8 @@ export class Notification {
 
   render() {
     return (
-      <Host>
-        <div class={`notification p-5 is-${this.color}`}>
+      <Host class="bal-notification">
+        <div class={`bal-notification__inner p-5 bal-notification__inner--is-${this.color}`}>
           <slot></slot>
         </div>
       </Host>

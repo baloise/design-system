@@ -22,7 +22,7 @@ export class CardSubtitle {
 
   render() {
     return (
-      <Host class="mx-5">
+      <Host class="bal-card-subtitle mx-5">
         <bal-text bold={this.bold} space="none" color={this.inverted ? 'white' : this.color}>
           <slot></slot>
         </bal-text>

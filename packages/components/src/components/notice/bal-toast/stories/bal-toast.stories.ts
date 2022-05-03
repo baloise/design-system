@@ -8,7 +8,7 @@ const component = BalComponentStory({
   component: BalToast,
   status: 'stable',
   args: {
-    message: 'Hello World',
+    message: '<b>Message: </b>Hello World Hello World Hello World Hello World Hello World Hello World Hello World',
     duration: 2000,
     color: '',
   },

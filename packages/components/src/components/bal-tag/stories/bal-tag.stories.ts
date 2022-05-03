@@ -28,6 +28,18 @@ Basic.args = {
 }
 Basic.parameters = { ...component.sourceCode(Basic) }
 
+export const TagGroup = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-tag-group>
+  <bal-tag>Primary</bal-tag>
+  <bal-tag color="success">Success</bal-tag>
+  <bal-tag color="danger">Danger</bal-tag>
+</bal-tag-group>`,
+})
+TagGroup.args = {}
+TagGroup.parameters = { ...component.sourceCode(TagGroup) }
+
 export const TagCard = args => ({
   components: { ...component.components },
   setup: () => ({ args }),

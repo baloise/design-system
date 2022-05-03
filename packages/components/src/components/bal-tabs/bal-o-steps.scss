@@ -91,7 +91,7 @@ bal-tabs.bal-o-steps {
 
       a {
         .step-label {
-          color: $danger-7;
+          color: $danger-5;
           font-weight: bold;
         }
       }
@@ -113,7 +113,7 @@ bal-tabs.bal-o-steps {
       }
 
       .step-label {
-        color: $blue-7;
+        color: $blue-5;
       }
     }
 
@@ -138,25 +138,25 @@ bal-tabs.bal-o-steps {
     li.is-clickable {
       &:hover {
         .step-label {
-          color: $light-blue-7;
+          color: $blue-6;
         }
 
         .step-index {
-          border: 2px solid $light-blue-7 !important;
+          border: 2px solid $blue-6 !important;
 
           .inner-text {
-            color: $light-blue-7;
+            color: $blue-6;
           }
         }
       }
 
       &.is-active:hover {
         .step-label {
-          color: $blue-7;
+          color: $blue-5;
         }
 
         .step-index {
-          border: 2px solid $blue-7 !important;
+          border: 2px solid $blue-5 !important;
 
           .inner-text {
             color: $white;
@@ -166,17 +166,17 @@ bal-tabs.bal-o-steps {
 
       &.is-done:hover {
         .step-label {
-          color: $blue-7;
+          color: $blue-5;
         }
 
         .step-index {
-          border: 2px solid $blue-7 !important;
+          border: 2px solid $blue-5 !important;
         }
       }
 
       &.is-failed:hover {
         .step-index {
-          border: 2px solid $danger-7 !important;
+          border: 2px solid $danger-5 !important;
         }
       }
 
@@ -194,7 +194,7 @@ bal-tabs.bal-o-steps {
     li.is-active {
       &:not(.is-done) {
         .step-index {
-          background-color: $blue-7;
+          background-color: $blue-5;
 
           .inner-text {
             display: block;
@@ -203,7 +203,7 @@ bal-tabs.bal-o-steps {
         }
       }
       .step-label {
-        color: $blue-7;
+        color: $blue-5;
         font-weight: $weight-bold;
       }
     }
@@ -227,7 +227,7 @@ bal-tabs.bal-o-steps {
 
       a {
         .step-label {
-          color: $danger-7;
+          color: $danger-5;
           font-weight: bold;
         }
       }
@@ -235,7 +235,7 @@ bal-tabs.bal-o-steps {
       &:hover {
         a {
           .step-label {
-            color: $danger-7;
+            color: $danger-5;
           }
         }
       }
@@ -254,12 +254,12 @@ bal-tabs.bal-o-steps {
         background: $grey-2;
 
         .inner-text {
-          color: $grey-7;
+          color: $grey-5;
         }
       }
 
       .step-label {
-        color: $grey-7 !important;
+        color: $grey-5 !important;
       }
 
       &:hover {
@@ -271,12 +271,12 @@ bal-tabs.bal-o-steps {
           background: $grey-2;
 
           .inner-text {
-            color: $grey-7;
+            color: $grey-5;
           }
         }
 
         .step-label {
-          color: $grey-7;
+          color: $grey-5;
         }
       }
     }

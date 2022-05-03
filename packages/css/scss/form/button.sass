@@ -1,0 +1,360 @@
+// The button sizes use mixins so they can be used at different breakpoints
+=button-small
+  &:not(.is-rounded)
+    border-radius: var(--bal-radius-small)
+    font-size: var(--bal-size-small)
+=button-normal
+  font-size: var(--bal-size-normal)
+
+.button
+  @extend %control
+  @extend %unselectable
+  @extend %font-smoothing
+  border-color: var(--bal-color-blue)
+  color: var(--bal-color-blue)
+  +fillSvg(var(--bal-color-blue))
+  font-family: var(--bal-font-family-title)
+  font-weight: $weight-bold
+  background-color: transparent
+  border-width: 2px
+  cursor: pointer
+  justify-content: center
+  padding: 12px 24px
+  min-height: 48px
+  text-align: center
+  white-space: nowrap
+  outline: none
+  z-index: 0
+  box-sizing: border-box
+  appearance: none
+  text-decoration: none
+  span,
+  strong
+    color: inherit
+    font-family: var(--bal-font-family-title)
+    font-weight: $weight-bold
+  &::-moz-focus-inner
+    border: 0
+  // Icons
+  .icon-left,
+  .icon-right
+    align-items: center
+    display: inline-flex
+    justify-content: center
+    margin-top: -3px
+  .icon-left
+    margin-left: -4px
+    margin-right: 8px
+  .icon-right
+    margin-right: -4px
+    margin-left: 8px
+  // Modifiers
+  &.is-fullwidth
+    width: 100%
+  &.is-square
+    width: 48px
+    padding: 0
+    .icon-left
+      +margin(0)
+  &.is-flat
+    padding: 0
+    height: 1.5rem
+    min-height: 1.5rem
+  // Sizes
+  &.is-small
+    min-height: 32px
+    max-height: 32px
+    min-width: 32px
+    padding-left: 12px
+    padding-right: 12px
+    padding-top: 0px
+    padding-bottom: 0px
+    font-size: var(--bal-size-small)
+    line-height: 20px
+    &.is-square
+      width: 32px
+      padding: 0
+  &.is-large
+    min-height: 56px
+    max-height: 56px
+    padding: 16px 24px
+    &.is-square
+      width: 56px
+      padding: 0
+  // States
+  &:hover,
+  &.is-hovered
+    background: var(--bal-color-light-blue)
+    border-color: var(--bal-color-light-blue-dark)
+    color: var(--bal-color-light-blue-dark)
+    +fillSvg(var(--bal-color-light-blue-dark))
+  &:focus-visible,
+  &.is-focused
+    &:not(:active)
+      @extend %focus-shadow
+  &:active,
+  &.is-active
+    background: var(--bal-color-light-blue)
+    border-color: var(--bal-color-blue-dark)
+    color: var(--bal-color-blue-dark)
+    +fillSvg(var(--bal-color-blue-dark))
+  // Colors
+  &.is-primary
+    background: var(--bal-color-blue)
+    border-color: var(--bal-color-blue)
+    color: var(--bal-color-white)
+    +fillSvg(var(--bal-color-white))
+    // States
+    &:hover,
+    &.is-hovered
+      background: var(--bal-color-light-blue-dark)
+      border-color: var(--bal-color-light-blue-dark)
+    &:active,
+    &.is-active
+      background: var(--bal-color-blue-dark)
+      border-color: var(--bal-color-blue-dark)
+  &.is-text,
+  &.is-link
+    border-color: transparent
+  &.is-link
+    & > span::after
+      display: block
+      content: ""
+      height: 2px
+      width: 100%
+      background: var(--bal-color-blue)
+      margin-top: -2px
+    // States
+    &:hover,
+    &.is-hovered
+      background: transparent
+      border-color: transparent
+      color: var(--bal-color-light-blue-dark)
+      +fillSvg(var(--bal-color-light-blue-dark))
+    &:active,
+    &.is-active
+      background: transparent
+      border-color: transparent
+      color: var(--bal-color-blue-dark)
+      +fillSvg(var(--bal-color-blue-dark))
+  &.is-text
+    // States
+    &:hover,
+    &.is-hovered
+      background: var(--bal-color-light-blue)
+      border-color: var(--bal-color-light-blue)
+      color: var(--bal-color-light-blue-dark)
+      +fillSvg(var(--bal-color-light-blue-dark))
+    &:active,
+    &.is-active
+      background: var(--bal-color-light-blue)
+      border-color: var(--bal-color-light-blue)
+      color: var(--bal-color-blue-dark)
+      +fillSvg(var(--bal-color-blue-dark))
+  &.is-success
+    background: var(--bal-color-success-1)
+    border-color: var(--bal-color-success-4)
+    color: var(--bal-color-success-4)
+    +fillSvg(var(--bal-color-success-4))
+    // States
+    &:hover,
+    &.is-hovered
+      background: var(--bal-color-success-4)
+      border-color: var(--bal-color-success-4)
+      color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
+    &:active,
+    &.is-active
+      background: var(--bal-color-success-6)
+      border-color: var(--bal-color-success-6)
+      color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
+  &.is-warning
+    background: var(--bal-color-warning-1)
+    border-color: var(--bal-color-warning-5)
+    color: var(--bal-color-warning-5)
+    +fillSvg(var(--bal-color-warning-5))
+    // States
+    &:hover,
+    &.is-hovered
+      background: var(--bal-color-warning-5)
+      border-color: var(--bal-color-warning-5)
+      color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
+    &:active,
+    &.is-active
+      background: var(--bal-color-warning-6)
+      border-color: var(--bal-color-warning-6)
+      color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
+  &.is-danger
+    background: var(--bal-color-danger-1)
+    border-color: var(--bal-color-danger-4)
+    color: var(--bal-color-danger-4)
+    +fillSvg(var(--bal-color-danger-4))
+    // States
+    &:hover,
+    &.is-hovered
+      background: var(--bal-color-danger-4)
+      border-color: var(--bal-color-danger-4)
+      color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
+    &:active,
+    &.is-active
+      background: var(--bal-color-danger-6)
+      border-color: var(--bal-color-danger-6)
+      color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
+  &.is-inverted
+    background: transparent
+    border-color: var(--bal-color-white)
+    color: var(--bal-color-white)
+    +fillSvg(var(--bal-color-white))
+    // States
+    &:hover,
+    &.is-hovered
+      background: var(--bal-color-blue-3)
+      border-color: var(--bal-color-light-blue-3)
+      color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
+    &:focus-visible,
+    &.is-focused
+      &:not(:active)
+        @extend %focus-inverted-shadow
+    &:active,
+    &.is-active
+      background: var(--bal-color-blue-3)
+      border-color: var(--bal-color-light-blue-5)
+      color: var(--bal-color-white)
+      +fillSvg(var(--bal-color-white))
+    &.is-primary
+      background: var(--bal-color-white)
+      border-color: var(--bal-color-white)
+      color: var(--bal-color-blue)
+      +fillSvg(var(--bal-color-blue))
+      // States
+      &:hover,
+      &.is-hovered
+        background: var(--bal-color-light-blue-2)
+        border-color: var(--bal-color-light-blue-2)
+        color: var(--bal-color-blue)
+        +fillSvg(var(--bal-color-blue))
+      &:active,
+      &.is-active
+        background: var(--bal-color-light-blue-5)
+        border-color: var(--bal-color-light-blue-5)
+        color: var(--bal-color-white)
+        +fillSvg(var(--bal-color-white))
+    &.is-link,
+    &.is-text
+      background: transparent
+      border-color: transparent
+      color: var(--bal-color-white)
+      & > span::after
+        background: var(--bal-color-white)
+      // States
+      &:hover,
+      &.is-hovered
+        background: transparent
+        border-color: transparent
+        color: var(--bal-color-light-blue-2)
+        & > span::after
+          background: var(--bal-color-light-blue-2)
+      &:active,
+      &.is-active
+        background: transparent
+        border-color: transparent
+        color: var(--bal-color-info-3)
+        & > span::after
+          background: var(--bal-color-info-3)
+  &.is-light
+    background: var(--bal-color-blue-3)
+    border-color: var(--bal-color-blue-3)
+    color: var(--bal-color-white)
+    +fillSvg(var(--bal-color-white))
+    // States
+    &:hover,
+    &.is-hovered
+      background: var(--bal-color-light-blue-2)
+      border-color: var(--bal-color-light-blue-2)
+      color: var(--bal-color-blue)
+      +fillSvg(var(--bal-color-blue))
+    &:focus-visible,
+    &.is-focused
+      &:not(:active)
+        @extend %focus-inverted-shadow
+    &:active,
+    &.is-active
+      background: var(--bal-color-white)
+      border-color: var(--bal-color-white)
+      color: var(--bal-color-blue)
+      +fillSvg(var(--bal-color-blue))
+  // Disabled
+  &.is-disabled.is-inverted,
+  &.is-disabled,
+  &.is-inverted:disabled,
+  &:disabled
+    @extend %disabled
+    background: var(--bal-color-grey)
+    border-color: var(--bal-color-grey)
+    color: var(--bal-color-grey-dark)
+    +fillSvg(var(--bal-color-grey-dark))
+    opacity: 1
+    & > span::after
+      display: none
+      content: none
+
+.buttons
+  align-items: center
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+  .button
+    margin-bottom: 0.5rem
+    &:not(:last-child):not(.is-fullwidth)
+      +ltr-property("margin", 0.5rem)
+  &:last-child
+    margin-bottom: -0.5rem
+  &:not(:last-child)
+    margin-bottom: 1rem
+  // Sizes
+  &.are-small
+    .button:not(.is-normal):not(.is-medium):not(.is-large)
+      +button-small
+  &.has-addons
+    .button
+      &:not(:first-child)
+        border-bottom-left-radius: 0
+        border-top-left-radius: 0
+      &:not(:last-child)
+        border-bottom-right-radius: 0
+        border-top-right-radius: 0
+        +ltr-property("margin", -1px)
+      &:last-child
+        +ltr-property("margin", 0)
+      &:hover,
+      &.is-hovered
+        z-index: 2
+      &:focus,
+      &.is-focused,
+      &:active,
+      &.is-active,
+      &.is-selected
+        z-index: 3
+        &:hover
+          z-index: 4
+      &.is-expanded
+        flex-grow: 1
+        flex-shrink: 1
+  &.is-centered
+    justify-content: center
+    &:not(.has-addons)
+      .button:not(.is-fullwidth)
+        margin-left: 0.25rem
+        margin-right: 0.25rem
+  &.is-right
+    justify-content: flex-end
+    &:not(.has-addons)
+      .button:not(.is-fullwidth)
+        margin-left: 0.25rem
+        margin-right: 0.25rem

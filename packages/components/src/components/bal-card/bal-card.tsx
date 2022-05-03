@@ -37,12 +37,17 @@ export class BalCard {
   @Prop() selected = false
 
   /**
+   * If `true` the card uses 100% of the available height.
+   */
+  @Prop() fullheight = false
+
+  /**
    * Defines the color of the card.
    */
   @Prop() color: Props.BalCardColor = 'white'
 
   get colorTypeClass(): string {
-    return isEmpty(this.color) ? '' : `has-background-${this.color}`
+    return isEmpty(this.color) ? '' : `is-${this.inverted ? 'blue' : this.color}`
   }
 
   render() {
@@ -50,13 +55,13 @@ export class BalCard {
       <Host
         class={{
           'bal-card': true,
-          [`${this.colorTypeClass}`]: true,
-          'has-border': this.border,
-          'is-inverted': this.inverted,
-          'has-shadow': !this.flat,
-          'is-clickable': this.clickable,
-          'is-selected': this.selected,
-          'has-radius-large': !this.square,
+          [`bal-card--${this.colorTypeClass}`]: true,
+          'bal-card--has-border': this.border,
+          'bal-card--is-flat': this.flat,
+          'bal-card--is-clickable': this.clickable,
+          'bal-card--is-selected': this.selected,
+          'bal-card--is-square': this.square,
+          'bal-card--has-fullheight': this.fullheight,
         }}
       >
         <slot></slot>

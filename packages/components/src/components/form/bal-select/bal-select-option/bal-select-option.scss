@@ -49,11 +49,11 @@
 
   &:hover,
   &.is-focused {
-    background: $grey-1;
+    background: $grey-2;
   }
 
   &.is-selected {
-    background: $blue-0;
+    background: $blue-1;
 
     .label {
       font-weight: $weight-bold;

@@ -14,8 +14,10 @@ export class DocApp {
 
   render() {
     return (
-      <Host role="application" class={{ 'bal-app': true }}>
-        <slot></slot>
+      <Host role="application">
+        <main class="bal-app">
+          <slot></slot>
+        </main>
       </Host>
     )
   }

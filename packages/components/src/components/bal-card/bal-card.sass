@@ -1,0 +1,147 @@
+// @use 'sass:math'
+
+=card-spacing($spacing: 1.25rem)
+  & > :not(bal-badge):not(bal-tag):first-child
+    padding-top: $spacing
+  & > :not(bal-badge):not(bal-tag):last-child
+    padding-bottom: $spacing
+  & > bal-badge + bal-card-title,
+  & > bal-badge + bal-card-content,
+  & > bal-tag + bal-card-title,
+  & > bal-tag + bal-card-content,
+  & > bal-card-title + bal-card-content,
+  & > bal-card-subtitle + bal-card-content,
+  & > bal-card-actions,
+  & > bal-card-button
+    padding-top: $spacing
+  & > bal-accordion
+    padding-bottom: 0 !important
+
++block(card)
+  position: static
+  display: block
+  background: transparent
+  box-shadow: var(--bal-shadow)
+  border-radius: var(--bal-radius-large)
+  // Colors
+  +modifier(is-white)
+    background: var(--bal-color-white)
+  +modifier(is-blue)
+    background: var(--bal-color-blue)
+  +modifier(is-primary)
+    background: var(--bal-color-blue)
+  +modifier(is-info)
+    background: var(--bal-color-blue)
+  +modifier(is-success)
+    background: var(--bal-color-success)
+  +modifier(is-warning)
+    background: var(--bal-color-warning)
+  +modifier(is-danger)
+    background: var(--bal-color-danger)
+  +modifier(is-grey)
+    background: var(--bal-color-grey)
+  +modifier(is-red)
+    background: var(--bal-color-red)
+  +modifier(is-yellow)
+    background: var(--bal-color-yellow)
+  +modifier(is-purple)
+    background: var(--bal-color-purple)
+  +modifier(is-green)
+    background: var(--bal-color-green)
+  +modifier(is-red-light)
+    background: var(--bal-color-red-light)
+  +modifier(is-yellow-light)
+    background: var(--bal-color-yellow-light)
+  +modifier(is-purple-light)
+    background: var(--bal-color-purple-light)
+  +modifier(is-green-light)
+    background: var(--bal-color-green-light)
+  // Modifier
+  +modifier(has-fullheight)
+    &,
+    .bal-card-content,
+    .bal-card-content > .is-flex
+      height: 100%
+  +modifier(has-border)
+    border: 2px dashed var(--bal-color-grey)
+  +modifier(is-flat)
+    box-shadow: none
+  +modifier(is-square)
+    border-radius: 0
+  +modifier(is-selected)
+    background: var(--bal-color-blue-2)
+  +modifier(is-clickable)
+    cursor: pointer
+    transition: transform 0.15s ease-in-out
+    &:active,
+    &:hover
+      box-shadow: var(--bal-shadow-large)
+      transform: translate3d(0, -2px, 0)
+  // spacing
+  +card-spacing
+  +desktop
+    +card-spacing(1.5rem)
+  // tag placment
+  & > .bal-tag
+    position: absolute
+    left: 1rem
+    top: -1rem
+    +desktop
+      left: 1.5rem
+
++block(card-title)
+  display: block
+  position: static
+  .bal-tag-group,
+  .bal-button-group,
+  .field.is-grouped
+    margin-top: 8px
+  +tablet
+    .bal-tag-group
+      display: inline-flex
+      vertical-align: bottom
+  +desktop
+    .title
+      display: flex
+      gap: 8px
+      width: 100%
+      align-items: flex-start
+      justify-content: flex-start
+    .bal-tag-group,
+    .bal-button-group,
+    .field.is-grouped
+      display: inline-flex
+      margin-top: 0
+    .bal-button-group,
+    .field.is-grouped
+      flex: 1
+      margin-top: -7px
+    .bal-tag-group
+      margin-top: 5px
+
++block(card-subtitle)
+  display: block
+  position: static
+
++block(card-content)
+  display: block
+  position: static
+  word-break: break-word
+  font-family: var(--bal-font-family-text)
+  font-size: var(--bal-size-normal)
+  line-height: var(--bal-line-height-normal)
+
++block(card-actions)
+  display: block
+  position: static
+
++block(card-button)
+  display: block
+  position: static
+
+// @deprecated
+// use the prop fullheight instead
+.column bal-card.has-height-auto,
+.column bal-card.has-height-auto bal-card-content,
+.column bal-card.has-height-auto bal-card-content > .is-flex
+  height: 100%

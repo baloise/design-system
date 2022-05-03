@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist-transpiled",
+    "declarationDir": "dist/types",
+    "jsx": "react"
+  },
+  "include": ["src/tokens.ts"],
+  "exclude": ["node_modules"]
+}

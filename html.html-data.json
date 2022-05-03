@@ -1,0 +1,15 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "bal-icon",
+      "description": "My button. You should use it as in `<my-button type='alert'></mybutton>`.",
+      "references": [
+        {
+          "name": "Bootstrap buttons",
+          "url": "https://getbootstrap.com/docs/4.0/components/buttons/"
+        }
+      ]
+    }
+  ]
+}

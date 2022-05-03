@@ -60,7 +60,7 @@ export class Text {
             'is-small': this.size === 'small',
             'is-lead': this.size === 'lead',
             'is-bold': this.bold,
-            'is-heading': this.heading,
+            'is-family-title': this.heading,
             'm-0': true,
           }}
         >

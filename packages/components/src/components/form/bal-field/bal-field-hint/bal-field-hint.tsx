@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core'
+import { BEM } from '../../../../utils/bem'
 
 @Component({
   tag: 'bal-field-hint',
@@ -22,9 +23,20 @@ export class FieldHint {
   @Prop() small = false
 
   render() {
+    const block = BEM.block('field-hint')
     return (
-      <Host>
-        <bal-hint closeLabel={this.closeLabel} small={this.small}>
+      <Host
+        class={{
+          ...block.class(),
+        }}
+      >
+        <bal-hint
+          class={{
+            ...block.element('hint').class(),
+          }}
+          closeLabel={this.closeLabel}
+          small={this.small}
+        >
           {this.subject ? <bal-hint-title>{this.subject}</bal-hint-title> : ''}
           <bal-hint-text>
             <slot></slot>

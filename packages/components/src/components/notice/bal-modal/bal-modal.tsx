@@ -266,30 +266,52 @@ export class Modal implements OverlayInterface {
         data-testid={this.dataTestId}
         tabindex="-1"
         class={{
+          'bal-modal': true,
+          'bal-modal--is-closable': this.isClosable,
+          'bal-modal--is-active': this.presented,
           ...getClassMap(this.cssClass),
-          [`modal-interface-${this.interface}`]: true,
-          'is-closable': this.isClosable,
         }}
         style={{
           '--bal-width': `${this.modalWidth}px`,
         }}
       >
         <div
-          ref={el => (this.modalBackgroundElement = el)}
           class={{
-            'modal': true,
-            'is-clipped': true,
-            'is-active': this.presented,
+            'bal-modal__background': true,
+            'is-hidden': !this.hasBackdrop,
+          }}
+        ></div>
+        <div
+          class={{
+            'bal-modal__container': true,
           }}
         >
           <div
             class={{
-              'modal-background': true,
+              'bal-modal__content': true,
+              [`bal-modal__content--has-spacing-${this.space}`]: true,
+            }}
+          >
+            <slot></slot>
+          </div>
+        </div>
+
+        {/* <div
+          ref={el => (this.modalBackgroundElement = el)}
+          class={{
+            'bal-modal__inner': true,
+            'bal-modal__inner--is-clipped': true,
+            'bal-modal__inner--is-active': this.presented,
+          }}
+        >
+          <div
+            class={{
+              'bal-modal__background': true,
               'is-hidden': !this.hasBackdrop,
             }}
           ></div>
-          <div class="modal-container">
-            <div class="modal-content">
+          <div class="bal-modal__container">
+            <div class="bal-modal__content">
               <div
                 ref={el => (this.modalContentElement = el)}
                 class={{
@@ -301,7 +323,7 @@ export class Modal implements OverlayInterface {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </Host>
     )
   }

@@ -38,29 +38,18 @@ export class Heading {
   @Prop() inverted = false
 
   get fontSize(): string {
-    if (this.level === 'display') {
-      return `is-size-display`
-    }
+    const isHeading = (size: string) => size.startsWith('h')
+    const parseDisplay = (size: string) => (size === 'display' ? 'display-1' : size)
+    const parseSize = (size: string) => (isHeading(size) ? size.replace('h', '') : parseDisplay(size))
+    const formatSize = (size: string) => `is-size-${parseSize(size)}`
 
-    if (this.visualLevel) {
-      const size = `${this.visualLevel}`
-      return `is-size-${size.replace('h', '')}`
-    }
-
-    const size = `${this.level}`
-    return `is-size-${size.replace('h', '')}`
+    return formatSize(this.visualLevel ? this.visualLevel : this.level)
   }
 
   get fontColor(): string {
-    if (this.inverted) {
-      return `has-text-white`
-    }
+    const parseColor = (color: string) => (color !== '' ? `has-text-${color}` : '')
 
-    if (this.color !== '') {
-      return `has-text-${this.color}`
-    }
-
-    return ''
+    return parseColor(this.inverted ? 'white' : this.color)
   }
 
   margins(spacingLevel: number) {
@@ -80,6 +69,8 @@ export class Heading {
   get spacing(): string {
     switch (this.level) {
       case 'display':
+      case 'display-1':
+      case 'display-2':
         return this.margins(4)
       case 'h1':
         return this.margins(3)
@@ -96,7 +87,7 @@ export class Heading {
   }
 
   render() {
-    const Heading = this.level === 'display' ? 'h1' : this.level
+    const Heading = this.level.startsWith('display') ? 'h1' : this.level
 
     return (
       <Host class={{ [this.spacing]: true }}>

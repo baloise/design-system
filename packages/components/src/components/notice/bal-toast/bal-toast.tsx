@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Method, Element, State, Event, EventEmitter } from '@stencil/core'
+import { Component, Host, h, Prop, Method, Element, Event, EventEmitter } from '@stencil/core'
 import { Props } from '../../../props'
 
 @Component({
@@ -9,8 +9,6 @@ export class Toast {
 
   timer!: NodeJS.Timer
   toastId = `bal-toast-${toastIds++}`
-
-  @State() animationClass = 'fadeInDown'
 
   /**
    * The theme type of the toast. Given by bulma our css framework.
@@ -67,17 +65,17 @@ export class Toast {
     if (this.color === '') {
       return ''
     }
-    return `is-${this.color}`
+    return `bal-toast__inner--is-${this.color}`
   }
 
   render() {
     return (
-      <Host id={this.toastId}>
-        <div role="alert" onClick={() => this.close()} class={`toast ${this.animationClass} ${this.colorType} p-4`}>
-          <bal-text class="toast-message" space="none" innerHTML={this.message}>
+      <Host id={this.toastId} class="bal-toast">
+        <div role="alert" onClick={() => this.close()} class={`bal-toast__inner ${this.colorType} p-4`}>
+          <span class="bal-toast__label" innerHTML={this.message}>
             <slot />
-          </bal-text>
-          <bal-close class="close" size="medium" background={false} inverted={false}></bal-close>
+          </span>
+          <bal-close class="bal-toast__close" size="" inverted={false}></bal-close>
         </div>
       </Host>
     )
