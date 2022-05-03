@@ -208,7 +208,7 @@ export const AccordionList = args => ({
   components: { ...component.components, BalIcon, BalListItemAccordionHead, BalListItemAccordionBody },
   setup: () => ({ args }),
   template: `<bal-list v-bind="args">
-  <bal-list-item accordion>
+  <bal-list-item accordion accordion-open>
     <bal-list-item-accordion-head>
       <bal-list-item-icon>
         <bal-icon name="account"></bal-icon>

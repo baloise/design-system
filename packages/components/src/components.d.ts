@@ -1014,6 +1014,10 @@ export namespace Components {
          */
         "accordion": boolean;
         /**
+          * If `true` the list accordion is open
+         */
+        "accordionOpen": boolean;
+        /**
           * If `true` the list item shows that it is clickable
          */
         "clickable": boolean;
@@ -3615,6 +3619,10 @@ declare namespace LocalJSX {
           * If `true` the list item can be used as a accordion
          */
         "accordion"?: boolean;
+        /**
+          * If `true` the list accordion is open
+         */
+        "accordionOpen"?: boolean;
         /**
           * If `true` the list item shows that it is clickable
          */

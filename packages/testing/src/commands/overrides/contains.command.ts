@@ -57,7 +57,7 @@ Cypress.Commands.overwrite('contains', (originalFn: any, element: any, content, 
   }
 
   if (isModal(element)) {
-    return command('.modal-card')
+    return command('.bal-modal__content')
   }
 
   if (isDatepicker(element)) {
