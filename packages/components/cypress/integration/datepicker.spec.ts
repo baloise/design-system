@@ -74,6 +74,7 @@ describe('Datepicker', () => {
       cy.getByTestId('basic')
         .setProperty('min', formatDateString(past))
         .setProperty('max', formatDateString(future))
+        .setProperty('value', formatDateString(today))
         .balDatepickerToggle()
         .balDatepickerIsOpen()
         .balDatepickerIsDateInRange(today)
