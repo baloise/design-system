@@ -32,7 +32,7 @@ describe('bal-checkbox', () => {
     expect(balChangeEvent).toHaveReceivedEventTimes(0)
   })
 
-  it('should fire a click event', async () => {
+  it.skip('should fire a click event', async () => {
     await nativeInputElement.click()
     await page.waitForChanges()
 
