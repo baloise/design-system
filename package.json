@@ -45,7 +45,7 @@
     "build:post:react__": "npm --prefix packages/components-react run build",
     "build:post:angular": "npm --prefix packages/components-angular run build",
     "build:post:vue____": "npm --prefix packages/components-vue run build",
-    "build:docs": "npm run build:pre && npm run build:components && npm run build:post:table__ && npm --prefix packages/components run build:docs",
+    "build:docs": "npm run build:pre && npm run build:css && npm run build:components && npm run build:post:table__ && npm --prefix packages/components run build:docs",
     "build:components:docs": "node .build/banner.js build:components && npm --prefix packages/components run build",
     "==================== TEST ====================": "================================",
     "test": "npm run test:components",
