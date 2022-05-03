@@ -1,5 +1,6 @@
 @charset "utf-8";
 
-@import 'node_modules/@baloise/design-system-next-css/scss/baloise-design-system.sass';
-
-@import 'global.core.scss';
+@import 'global.utilities';
+@import 'global.base';
+@import 'global.core';
+@import 'global.helpers';

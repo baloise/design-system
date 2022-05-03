@@ -2,6 +2,7 @@
 // The order of the imports is important to override the variables of the css framework bulma
 //
 
+//
 // optimized with SASS & BEM
 @import '../../components/bal-icon/bal-icon';
 @import '../../components/bal-spinner/bal-spinner';
@@ -19,12 +20,11 @@
 @import '../../components/notice/bal-notification/bal-notification';
 @import '../../components/notice/bal-sheet/bal-sheet';
 @import '../../components/notice/bal-modal/bal-modal';
+@import '../../components/form/bal-field/bal-field';
+@import '../../components/form/bal-file-upload/bal-file-upload';
 
-// @import 'dropdown.vars.scss';
-
-// @import 'node_modules/bulma/sass/components/dropdown.sass';
-
-// TODO: needs to be changed to SASS and BEM
+//
+// TODO: needs to be changed to SASS and BEM and reduce bulma code
 @import '../../components/bal-data/bal-data';
 @import '../../components/bal-popover/bal-popover';
 @import '../../components/bal-footer/bal-footer';
@@ -35,18 +35,15 @@
 @import '../../components/bal-stage/bal-stage';
 @import '../../components/bal-table/bal-table';
 @import '../../components/bal-tabs/bal-tabs';
-// @import '../../components/form/bal-checkbox/bal-checkbox';
-// @import '../../components/form/bal-datepicker/bal-datepicker';
-// @import '../../components/form/bal-field/bal-field';
-// @import '../../components/form/bal-file-upload/bal-file-upload';
-// @import '../../components/form/bal-input/bal-input';
-// @import '../../components/form/bal-number-input/bal-number-input';
-// @import '../../components/form/bal-input-stepper/bal-input-stepper';
-// @import '../../components/form/bal-input-group/bal-input-group';
-// @import '../../components/form/bal-radio/bal-radio';
-// @import '../../components/form/bal-select/bal-select';
-// @import '../../components/form/bal-slider/bal-slider';
-// @import '../../components/form/bal-textarea/bal-textarea';
-// @import '../../components/form/bal-timeinput/bal-timeinput';
 
-// @import 'dropdown.scss';
+@import '../../components/form/bal-input-group/bal-input-group';
+@import '../../components/form/bal-checkbox/bal-checkbox';
+@import '../../components/form/bal-datepicker/bal-datepicker';
+@import '../../components/form/bal-input/bal-input';
+@import '../../components/form/bal-number-input/bal-number-input';
+@import '../../components/form/bal-input-stepper/bal-input-stepper';
+@import '../../components/form/bal-textarea/bal-textarea';
+@import '../../components/form/bal-slider/bal-slider';
+@import '../../components/form/bal-timeinput/bal-timeinput';
+@import '../../components/form/bal-radio/bal-radio';
+@import '../../components/form/bal-select/bal-select';

@@ -62,7 +62,7 @@
   --bal-color-light-blue-3: #56a7f5;
   --bal-color-light-blue-4: #6672cc;
   --bal-color-light-blue-5: #0014aa;
-  --bal-color-light-blue-6: #000739;
+  --bal-color-light-blue-6: #000a55;
   --bal-color-purple-1: #f9f3ff;
   --bal-color-purple-2: #e1d9ff;
   --bal-color-purple-3: #b8b2ff;
@@ -1621,6 +1621,7 @@ fieldset[disabled] .select select:hover {
   padding-left: 1em;
   padding-right: 1em;
   white-space: nowrap;
+  gap: 0.5rem;
 }
 
 .file-cta {

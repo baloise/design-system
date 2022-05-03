@@ -2,7 +2,7 @@ import { Component, h, ComponentInterface, Host, Element, Listen } from '@stenci
 
 @Component({
   tag: 'bal-doc-tabs',
-  styleUrl: 'bal-doc-tabs.scss',
+  styleUrl: 'bal-doc-tabs.sass',
 })
 export class DocTabs implements ComponentInterface {
   @Element() el!: HTMLElement
@@ -30,7 +30,7 @@ export class DocTabs implements ComponentInterface {
 
   render() {
     return (
-      <Host>
+      <Host class="bal-doc-tabs">
         <slot></slot>
       </Host>
     )

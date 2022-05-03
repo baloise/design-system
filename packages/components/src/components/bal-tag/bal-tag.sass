@@ -1,4 +1,5 @@
 +block(tag)
+  +unselectable
   position: static
   display: inline-flex
   align-items: center
@@ -48,9 +49,13 @@
     background: var(--bal-color-yellow-light)
   +modifier(is-green-light)
     background: var(--bal-color-green-light)
+  //
   // tag label
   +element(label)
     font-weight: $weight-bold !important
+    display: inline-flex
+    align-items: center
+    gap: .25rem
     // sizes
     +modifier(is-small)
       font-size: var(--bal-size-small) !important

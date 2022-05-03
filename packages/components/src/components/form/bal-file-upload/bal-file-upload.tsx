@@ -255,10 +255,10 @@ export class FileUpload {
 
   render() {
     const FileList = () => (
-      <bal-card flat border class="mt-4" style={{ display: this.files.length ? 'block' : 'none' }}>
-        <bal-list border size="large" class="p-0">
+      <bal-card flat class="mt-4" style={{ display: this.files.length ? 'block' : 'none' }}>
+        <bal-list disabled={this.disabled || this.loading || this.readonly} border size="large" class="p-0">
           {this.files.map((file, index) => (
-            <bal-list-item>
+            <bal-list-item disabled={this.disabled || this.loading || this.readonly}>
               <bal-list-item-icon>
                 <bal-icon name="document"></bal-icon>
               </bal-list-item-icon>
@@ -269,7 +269,11 @@ export class FileUpload {
                 </bal-list-item-subtitle>
               </bal-list-item-content>
               <bal-list-item-icon right class="file-remove clickable" onClick={() => this.removeFile(index)}>
-                <bal-icon size="small" name="trash" color="danger"></bal-icon>
+                <bal-icon
+                  size="small"
+                  name="trash"
+                  color={this.disabled || this.loading || this.readonly ? 'grey' : 'danger'}
+                ></bal-icon>
               </bal-list-item-icon>
             </bal-list-item>
           ))}
@@ -281,18 +285,15 @@ export class FileUpload {
       <Host
         class={{
           'bal-file-upload': true,
-          'is-invalid': this.invalid,
-          'is-disabled': this.disabled || this.readonly || this.loading,
         }}
       >
-        <div class="file is-normal is-boxed is-centered">
-          <label
-            class={[
-              'file-label',
-              this.isOver ? 'is-hovered' : '',
-              this.disabled || this.loading || this.readonly ? 'is-disabled' : '',
-            ].join(' ')}
-          >
+        <div
+          class={{
+            'file': true,
+            'is-disabled': this.disabled || this.readonly || this.loading,
+          }}
+        >
+          <label class={['file-label', this.disabled || this.loading || this.readonly ? 'is-disabled' : ''].join(' ')}>
             <input
               class="file-input"
               type="file"
@@ -311,7 +312,11 @@ export class FileUpload {
             ) : (
               <span class="file-cta">
                 <span class="file-icon">
-                  <bal-icon name="upload" size="medium"></bal-icon>
+                  <bal-icon
+                    name="upload"
+                    size="medium"
+                    color={this.disabled || this.loading || this.readonly ? 'grey' : 'blue'}
+                  ></bal-icon>
                 </span>
                 <span class="file-label">{this.label}</span>
               </span>

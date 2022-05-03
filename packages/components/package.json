@@ -57,7 +57,7 @@
     "test:e2e:watch": "stencil test --e2e --watchAll --config stencil.test.config.ts",
     "log": "stencil build --config stencil.log.config.ts",
     "www": "stencil build --config stencil.test.config.ts",
-    "serve2": "stencil build --config stencil.test.config.ts --dev --serve --watch",
+    "serve:dev": "stencil build --config stencil.test.config.ts --dev --serve --watch",
     "serve": "stencil build --config stencil.test.config.ts --prod --serve --watch",
     "cy:build": "npm run www",
     "cy:start": "node ./web-server.js",

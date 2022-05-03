@@ -1,7 +1,0 @@
-@import 'node_modules/bulma/sass/grid/columns.sass';
-@import '../utilities/mixins.scss';
-
-.columns,
-.columns:not(:last-child) {
-  margin-bottom: 0 !important;
-}

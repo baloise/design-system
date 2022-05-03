@@ -21,26 +21,16 @@ export class FieldControl {
    */
   @Prop() loading = false
 
-  /**
-   * If `true` the component gets a invalid style.
-   */
-  @Prop() invalid = false
-
-  /**
-   * If `true` the field can be used on blue background.
-   */
-  @Prop() inverted = false
-
   get buildIconLeftTemplate() {
     if (this.iconLeft) {
-      return <bal-icon name={this.iconLeft} color="info" class="is-left" size="small" inverted={this.inverted} />
+      return <bal-icon name={this.iconLeft} color="info" class="is-left" size="small" />
     }
     return ''
   }
 
   get buildIconRightTemplate() {
     if (this.iconRight) {
-      return <bal-icon name={this.iconRight} color="info" class="is-right" size="small" inverted={this.inverted} />
+      return <bal-icon name={this.iconRight} color="info" class="is-right" size="small" />
     }
     return ''
   }
@@ -49,6 +39,7 @@ export class FieldControl {
     return (
       <Host
         class={{
+          'bal-field-control': true,
           'control': true,
           'has-icons-left': !!this.iconLeft,
           'has-icons-right': !!this.iconRight || this.loading,

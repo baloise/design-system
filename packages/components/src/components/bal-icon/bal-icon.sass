@@ -2,8 +2,7 @@
   width: $size
   max-height: $size
 
-bal-icon,
-.bal-icon
++block(icon)
   display: flex
   justify-content: center
   align-items: center
@@ -11,42 +10,42 @@ bal-icon,
   pointer-events: visible
   +iconSize(1.5rem)
   +fillSvg(var(--bal-color-blue))
-  &.is-inline
+  //
+  // modifiers
+  +modifier(is-inline)
     display: inline-flex
-  .bal-icon-inner
+  //
+  // inner element
+  +element(inner)
     display: block
     position: static
     +iconSize(1.5rem)
-  &.turn .bal-icon-inner
-    transform: rotate(180deg)
-  &.is-xsmall,
-  &.is-xsmall .bal-icon-inner
+    +modifier(is-turn)
+      transform: rotate(180deg)
+  //
+  // sizes
+  +modifier(is-xsmall)
     width: 0.625rem
-  &.is-small,
-  &.is-small .bal-icon-inner
+  +modifier(is-small)
     +iconSize(1rem)
-  &.is-medium,
-  &.is-medium .bal-icon-inner
+  +modifier(is-medium)
     +iconSize(2rem)
-  &.is-large,
-  &.is-large .bal-icon-inner
+  +modifier(is-large)
     +iconSize(3rem)
-  &.is-xlarge,
-  &.is-xlarge .bal-icon-inner
+  +modifier(is-xlarge)
     +iconSize(4rem)
-  &.is-grey
+  //
+  // colors
+  +modifier(is-grey)
     +fillSvg(var(--bal-color-grey-dark))
-  &.is-success
+  +modifier(is-success)
     +fillSvg(var(--bal-color-success))
-  &.is-warning
+  +modifier(is-warning)
     +fillSvg(var(--bal-color-warning))
-  &.is-danger
+  +modifier(is-danger)
     +fillSvg(var(--bal-color-danger))
-  &.is-white,
-  &.is-inverted
+  +modifiers(is-white, is-inverted)
     +fillSvg(var(--bal-color-white))
-  &.is-white.is-inverted
-    +fillSvg(var(--bal-color-blue))
 
 .icon-text
   align-items: flex-start

@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Props } from "./types";
 import { Props as Props1 } from "./props";
+import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
@@ -497,7 +498,11 @@ export namespace Components {
     interface BalDocApp {
     }
     interface BalDocBanner {
+        "status": string;
         "subtitle": string;
+    }
+    interface BalDocBannerStatus {
+        "context": BannerStatusContext[];
     }
     interface BalDocColor {
         "background": boolean;
@@ -556,13 +561,9 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * If `true` the component gets a invalid style.
+          * If `true` the component gets a invalid red style.
          */
         "invalid": boolean;
-        /**
-          * If `true` the field can be used on blue background.
-         */
-        "inverted": boolean;
         /**
           * If `true` a loading spinner is visible at the end of the input
          */
@@ -571,6 +572,10 @@ export namespace Components {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
+        /**
+          * If `true` the component gets a valid green style.
+         */
+        "valid": boolean;
     }
     interface BalFieldControl {
         /**
@@ -581,14 +586,6 @@ export namespace Components {
           * Baloise icon for the right side of the input
          */
         "iconRight": string;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid": boolean;
-        /**
-          * If `true` the field can be used on blue background.
-         */
-        "inverted": boolean;
         /**
           * If `true` a loading spinner is visible at the end of the input
          */
@@ -610,9 +607,21 @@ export namespace Components {
     }
     interface BalFieldLabel {
         /**
-          * If `true` the component gets a invalid style.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the component gets a invalid red style.
          */
         "invalid": boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
+        /**
+          * If `true` the component gets a valid green style.
+         */
+        "valid": boolean;
     }
     interface BalFieldMessage {
         /**
@@ -620,9 +629,21 @@ export namespace Components {
          */
         "color": Props.BalFieldMessageColor;
         /**
-          * If `true` the component gets a invalid style.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled": boolean;
+        /**
+          * If `true` the component gets a invalid red style.
          */
         "invalid": boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly": boolean;
+        /**
+          * If `true` the component gets a valid green style.
+         */
+        "valid": boolean;
     }
     interface BalFileUpload {
         /**
@@ -2011,6 +2032,12 @@ declare global {
         prototype: HTMLBalDocBannerElement;
         new (): HTMLBalDocBannerElement;
     };
+    interface HTMLBalDocBannerStatusElement extends Components.BalDocBannerStatus, HTMLStencilElement {
+    }
+    var HTMLBalDocBannerStatusElement: {
+        prototype: HTMLBalDocBannerStatusElement;
+        new (): HTMLBalDocBannerStatusElement;
+    };
     interface HTMLBalDocColorElement extends Components.BalDocColor, HTMLStencilElement {
     }
     var HTMLBalDocColorElement: {
@@ -2471,6 +2498,7 @@ declare global {
         "bal-datepicker": HTMLBalDatepickerElement;
         "bal-doc-app": HTMLBalDocAppElement;
         "bal-doc-banner": HTMLBalDocBannerElement;
+        "bal-doc-banner-status": HTMLBalDocBannerStatusElement;
         "bal-doc-color": HTMLBalDocColorElement;
         "bal-doc-download": HTMLBalDocDownloadElement;
         "bal-doc-github": HTMLBalDocGithubElement;
@@ -3056,7 +3084,11 @@ declare namespace LocalJSX {
     interface BalDocApp {
     }
     interface BalDocBanner {
+        "status"?: string;
         "subtitle"?: string;
+    }
+    interface BalDocBannerStatus {
+        "context"?: BannerStatusContext[];
     }
     interface BalDocColor {
         "background"?: boolean;
@@ -3115,13 +3147,9 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * If `true` the component gets a invalid style.
+          * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
-        /**
-          * If `true` the field can be used on blue background.
-         */
-        "inverted"?: boolean;
         /**
           * If `true` a loading spinner is visible at the end of the input
          */
@@ -3130,6 +3158,10 @@ declare namespace LocalJSX {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true` the component gets a valid green style.
+         */
+        "valid"?: boolean;
     }
     interface BalFieldControl {
         /**
@@ -3140,14 +3172,6 @@ declare namespace LocalJSX {
           * Baloise icon for the right side of the input
          */
         "iconRight"?: string;
-        /**
-          * If `true` the component gets a invalid style.
-         */
-        "invalid"?: boolean;
-        /**
-          * If `true` the field can be used on blue background.
-         */
-        "inverted"?: boolean;
         /**
           * If `true` a loading spinner is visible at the end of the input
          */
@@ -3169,9 +3193,21 @@ declare namespace LocalJSX {
     }
     interface BalFieldLabel {
         /**
-          * If `true` the component gets a invalid style.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true` the component gets a valid green style.
+         */
+        "valid"?: boolean;
     }
     interface BalFieldMessage {
         /**
@@ -3179,9 +3215,21 @@ declare namespace LocalJSX {
          */
         "color"?: Props.BalFieldMessageColor;
         /**
-          * If `true` the component gets a invalid style.
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
+        /**
+          * If `true` the component gets a invalid red style.
          */
         "invalid"?: boolean;
+        /**
+          * If `true` the element can not mutated, meaning the user can not edit the control.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true` the component gets a valid green style.
+         */
+        "valid"?: boolean;
     }
     interface BalFileUpload {
         /**
@@ -4537,6 +4585,7 @@ declare namespace LocalJSX {
         "bal-datepicker": BalDatepicker;
         "bal-doc-app": BalDocApp;
         "bal-doc-banner": BalDocBanner;
+        "bal-doc-banner-status": BalDocBannerStatus;
         "bal-doc-color": BalDocColor;
         "bal-doc-download": BalDocDownload;
         "bal-doc-github": BalDocGithub;
@@ -4637,6 +4686,7 @@ declare module "@stencil/core" {
             "bal-datepicker": LocalJSX.BalDatepicker & JSXBase.HTMLAttributes<HTMLBalDatepickerElement>;
             "bal-doc-app": LocalJSX.BalDocApp & JSXBase.HTMLAttributes<HTMLBalDocAppElement>;
             "bal-doc-banner": LocalJSX.BalDocBanner & JSXBase.HTMLAttributes<HTMLBalDocBannerElement>;
+            "bal-doc-banner-status": LocalJSX.BalDocBannerStatus & JSXBase.HTMLAttributes<HTMLBalDocBannerStatusElement>;
             "bal-doc-color": LocalJSX.BalDocColor & JSXBase.HTMLAttributes<HTMLBalDocColorElement>;
             "bal-doc-download": LocalJSX.BalDocDownload & JSXBase.HTMLAttributes<HTMLBalDocDownloadElement>;
             "bal-doc-github": LocalJSX.BalDocGithub & JSXBase.HTMLAttributes<HTMLBalDocGithubElement>;

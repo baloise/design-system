@@ -36,9 +36,9 @@ bal-radio.bal-radio:not(.bal-select-button) {
     contain: layout style;
 
     display: flex;
-    align-self: baseline;
     align-items: center;
-    justify-content: flex-start;
+    align-self: center;
+    justify-content: center;
     text-align: left;
 
     min-height: 24px;

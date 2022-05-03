@@ -91,12 +91,12 @@ const Template = args => ({
   },
   setup: () => ({ args }),
   template: `
-  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :invalid="args.invalid">
     <bal-field-label>Label</bal-field-label>
     <bal-field-control>
     <bal-input v-bind="args" v-model="args.value"></bal-input>
     </bal-field-control>
-    <bal-field-message :color="args.invalid ? 'danger' : 'hint'" v-if="args.hasFieldMessage">Field Message</bal-field-message>
+    <bal-field-message :invalid="args.invalid" v-if="args.hasFieldMessage">Field Message</bal-field-message>
   </bal-field>`,
 })
 

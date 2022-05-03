@@ -3,6 +3,7 @@ import * as balIcons from '@baloise/design-system-next-icons'
 import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
 import { Props } from '../../props'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-icon',
@@ -58,20 +59,24 @@ export class Icon {
 
   render() {
     const color = ['white', 'blue', 'grey', 'danger', 'warning', 'success'].includes(this.color) ? this.color : 'blue'
+
+    const block = BEM.block('icon')
+
     return (
       <Host
         class={{
-          'bal-icon': true,
-          [`is-${this.size}`]: !!this.size,
-          'is-inverted': this.inverted,
-          [`is-${color}`]: true,
-          'is-inline': this.inline,
+          ...block.class(),
+          ...block.modifier('is-inverted').class(this.inverted),
+          ...block.modifier('is-inline').class(this.inline),
+          ...block.modifier(`is-${this.size}`).class(!!this.size),
+          ...block.modifier(`is-${color}`).class(),
         }}
       >
         <div
           class={{
-            'bal-icon-inner': true,
-            [`turn`]: this.turn,
+            ...block.element('inner').class(),
+            ...block.element('inner').modifier('turn').class(this.turn),
+            ...block.modifier(`is-${this.size}`).class(!!this.size),
           }}
           innerHTML={this.svgContent}
         ></div>

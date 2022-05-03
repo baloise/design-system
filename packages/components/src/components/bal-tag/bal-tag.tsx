@@ -1,4 +1,5 @@
-import { Component, EventEmitter, h, Host, Prop, Event } from '@stencil/core'
+import { Component, EventEmitter, h, Host, Prop, Event, Element } from '@stencil/core'
+import { inheritAttributes } from '../../helpers/helpers'
 import { Props } from '../../props'
 
 @Component({
@@ -7,6 +8,10 @@ import { Props } from '../../props'
   shadow: false,
 })
 export class Tag {
+  @Element() el!: HTMLElement
+
+  private inheritedAttributes: { [k: string]: any } = {}
+
   /**
    * The theme type of the tag. Given by bulma our css framework.
    */
@@ -39,6 +44,10 @@ export class Tag {
    */
   @Event() balCloseClick!: EventEmitter<MouseEvent>
 
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'title'])
+  }
+
   render() {
     return (
       <Host
@@ -47,6 +56,7 @@ export class Tag {
           [`bal-tag--is-${this.size}`]: this.size !== '',
           [`bal-tag--is-${this.color}${this.light ? '-light' : ''}`]: this.color !== '',
         }}
+        {...this.inheritedAttributes}
       >
         <span
           class={{
