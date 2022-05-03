@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "@baloise/design-system-next-components": "10.10.8",
+    "@baloise/design-system-next-css": "10.10.8",
     "lodash.isnil": "^4.0.0"
   },
   "peerDependencies": {

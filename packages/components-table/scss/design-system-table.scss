@@ -1,4 +1,4 @@
-@import 'node_modules/@baloise/design-system-next-components/src/styles/global.utilities.scss';
+@import 'node_modules/@baloise/design-system-next-css/scss/baloise-design-system.utilities.sass';
 @import 'node_modules/ag-grid-community/dist/styles/mixins/_ag-theme-params.scss';
 @import 'node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss';
 @import 'node_modules/ag-grid-community/src/styles/ag-grid.scss';
@@ -6,7 +6,7 @@
 .ag-theme-alpine {
   @include ag-theme-alpine(
     (
-      header-background-color: $white-bis,
+      header-background-color: $grey-1,
       borders: false,
       borders-critical: true,
       border-color: $blue,
@@ -15,7 +15,7 @@
       row-border-color: $grey-2,
       selected-row-background-color: $blue-1,
       odd-row-background-color: null,
-      row-hover-color: $white-bis,
+      row-hover-color: $grey-1,
       range-selection-border-color: $primary,
       checkbox-border-radius: 4px,
       checkbox-checked-color: $blue,
