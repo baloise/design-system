@@ -76,8 +76,8 @@ export const defineContainer = <Props>(
       if (vnode.el) {
         const eventsNames = Array.isArray(modelUpdateEvent) ? modelUpdateEvent : [modelUpdateEvent];
         eventsNames.forEach((eventName: string) => {
-          vnode.el.addEventListener(eventName.toLowerCase(), (e: Event) => {
-            modelPropValue = (e?.target as any)[modelProp];
+          vnode.el.addEventListener(eventName.toLowerCase(), (e: CustomEvent<any>) => {
+            modelPropValue = e?.detail
             emit(UPDATE_VALUE_EVENT, modelPropValue);
 
             /**
@@ -88,11 +88,30 @@ export const defineContainer = <Props>(
              * native web component, but the v-model will
              * not have been updated yet.
              */
+             let emittedValue = e.detail
+             if (e.detail?.value) {
+               emittedValue = e.detail.value
+             }
             if (externalModelUpdateEvent) {
-              emit(externalModelUpdateEvent, e);
+              emit(externalModelUpdateEvent, emittedValue);
             }
           });
         });
+
+        const componentEvents = componentProps.filter(p => p.startsWith('bal')).filter(e => e !== modelUpdateEvent)
+        if (componentEvents && componentEvents.length > 0) {
+          componentEvents.forEach(componentEvent => {
+            if (vnode.el) {
+              vnode.el.addEventListener(componentEvent, (event: CustomEvent<any>) => {
+                let emittedValue = event.detail
+                if (event.detail?.value) {
+                  emittedValue = event.detail.value
+                }
+                emit(componentEvent, emittedValue)
+              })
+            }
+          })
+        }
       }
     };
 
