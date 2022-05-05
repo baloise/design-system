@@ -1,6 +1,7 @@
 import { Component, EventEmitter, h, Host, Prop, Event, Element } from '@stencil/core'
 import { inheritAttributes } from '../../helpers/helpers'
 import { Props } from '../../props'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-tag',
@@ -49,26 +50,35 @@ export class Tag {
   }
 
   render() {
+    const block = BEM.block('tag')
+    const elLabel = block.element('label')
+    const hasSize = this.size !== ''
+    const sizeClass = `is-${this.size}`
+    const hasColor = this.color !== ''
+    const colorClass = `is-${this.color}${this.light ? '-light' : ''}`
+
     return (
       <Host
         class={{
-          'bal-tag': true,
-          [`bal-tag--is-${this.size}`]: this.size !== '',
-          [`bal-tag--is-${this.color}${this.light ? '-light' : ''}`]: this.color !== '',
+          ...block.class(),
+          ...block.modifier(sizeClass).class(hasSize),
+          ...block.modifier(colorClass).class(hasColor),
         }}
         {...this.inheritedAttributes}
       >
         <span
           class={{
-            'bal-tag__label': true,
-            [`bal-tag__label--is-${this.size}`]: this.size !== '',
-            [`bal-tag__label--is-${this.color}${this.light ? '-light' : ''}`]: this.color !== '',
+            ...elLabel.class(),
+            ...elLabel.modifier(sizeClass).class(hasSize),
+            ...elLabel.modifier(colorClass).class(hasColor),
           }}
         >
           <slot />
         </span>
         <bal-close
-          class="bal-tag__close"
+          class={{
+            ...block.element('close').class(),
+          }}
           style={{
             display: this.closable ? 'flex' : 'none',
           }}

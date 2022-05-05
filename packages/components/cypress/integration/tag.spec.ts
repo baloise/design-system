@@ -24,7 +24,12 @@ describe('Tag', () => {
         cy.getByTestId('tag').testA11y()
       })
 
-      testColorA11y(['danger', 'info', 'primary', 'success', 'warning'])
+      testColorA11y(['primary', 'grey', 'info', 'success', 'warning', 'danger', 'purple', 'green', 'red', 'yellow'])
+
+      describe('light version', () => {
+        before(() => cy.getByTestId('tag').setProperty('light', true))
+        testColorA11y(['primary', 'grey', 'info', 'success', 'warning', 'danger', 'purple', 'green', 'red', 'yellow'])
+      })
     })
   })
 })

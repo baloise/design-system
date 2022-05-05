@@ -3,17 +3,17 @@
   position: static
   display: inline-flex
   align-items: center
-  background-color: var(--bal-color-blue)
-  border-radius: var(--bal-radius-rounded)
-  color: var(--bal-color-white)
-  font-size: var(--bal-size-small) !important
-  font-family: var(--bal-font-family-text)
+  justify-content: center
   height: 2rem
   max-height: 2rem
-  justify-content: center
   line-height: 1.5
   padding-left: 0.75rem
   padding-right: 0.75rem
+  background-color: var(--bal-color-primary)
+  color: var(--bal-color-primary-inverted)
+  border-radius: var(--bal-radius-rounded)
+  font-family: var(--bal-font-family-text)
+  font-size: var(--bal-size-small) !important
   white-space: nowrap
   // sizes
   +modifier(is-small)
@@ -26,13 +26,14 @@
   +modifier(is-grey)
     background: var(--bal-color-grey)
   +modifier(is-success)
-    background: var(--bal-color-success)
+    background: var(--bal-color-success-4)
   +modifier(is-info)
-    background: var(--bal-color-info)
+    background: var(--bal-color-info-4)
   +modifier(is-warning)
     background: var(--bal-color-warning)
+    color: var(--bal-color-blue)
   +modifier(is-danger)
-    background: var(--bal-color-danger)
+    background: var(--bal-color-danger-4)
   +modifier(is-purple)
     background: var(--bal-color-purple)
   +modifier(is-red)
@@ -63,8 +64,33 @@
       font-size: var(--bal-size-medium) !important
     +modifier(is-large)
       font-size: var(--bal-size-large) !important
-    +modifiers(is-grey, is-purple, is-red, is-green, is-yellow, is-purple-light, is-red-light, is-green-light, is-yellow-light)
-      color: var(--bal-color-blue)
+    // colors
+    +modifier(is-grey)
+      color: var(--bal-color-grey-inverted)
+    +modifier(is-success)
+      color: var(--bal-color-success-4-inverted)
+    +modifier(is-info)
+      color: var(--bal-color-info-4-inverted)
+    +modifier(is-warning)
+      color: var(--bal-color-warning-inverted)
+    +modifier(is-danger)
+      color: var(--bal-color-danger-4-inverted)
+    +modifier(is-purple)
+      color: var(--bal-color-purple-inverted)
+    +modifier(is-red)
+      color: var(--bal-color-red-inverted)
+    +modifier(is-yellow)
+      color: var(--bal-color-yellow-inverted)
+    +modifier(is-green)
+      color: var(--bal-color-green-inverted)
+    +modifier(is-purple-light)
+      color: var(--bal-color-purple-light-inverted)
+    +modifier(is-red-light)
+      color: var(--bal-color-red-light-inverted)
+    +modifier(is-yellow-light)
+      color: var(--bal-color-yellow-light-inverted)
+    +modifier(is-green-light)
+      color: var(--bal-color-green-light-inverted)
   //
   // close button
   +element(close)
