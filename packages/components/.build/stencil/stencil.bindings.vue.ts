@@ -61,7 +61,5 @@ export const VueGenerator = (
     componentModels: vueComponentModels,
     excludeComponents,
     customElementsDir: 'dist/components'
-    // proxiesDir,
-    // includeUtils: false,
   })
 
