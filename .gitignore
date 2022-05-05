@@ -131,3 +131,5 @@ packages/icons/docs/icons.zip
 packages/components/docs/**
 docs/
 packages/components/cypress/videos
+packages/components-vue/src/proxies.ts
+packages/components-vue/src/vue-component-lib/utils.ts
