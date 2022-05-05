@@ -1,4 +1,3 @@
-// import { ComponentModelConfig, vueOutputTarget } from '@baloise/vue-output-target'
 import { ComponentModelConfig, vueOutputTarget } from '@stencil/vue-output-target'
 
 export const vueComponentModels: ComponentModelConfig[] = [

@@ -1,9 +1,9 @@
 const fs = require('fs')
 const { pascalCase } = require('change-case')
-const libaryLib = require('../../components/.build/components.lib')
+const libraryLib = require('../../components/.build/components.lib')
 
 async function main() {
-  const docsComponents = await libaryLib.components()
+  const docsComponents = await libraryLib.components()
   const tags = []
   docsComponents.forEach(c => {
     if (c.tag !== 'bal-app' && !c.tag.startsWith('bal-doc')) {
@@ -17,7 +17,7 @@ async function main() {
     `import { App } from 'vue'`,
     `import {`,
     ...importNames.map(n => `  ${n},`),
-    `} from './proxies/index'`,
+    `} from './proxies'`,
     ``,
     `export const applyComponents = (app: App) => {`,
     ...defineComponents,
@@ -25,7 +25,7 @@ async function main() {
     ``,
   ]
 
-  // fs.writeFileSync('src/components.generated.ts', finalText.join('\n'))
+  fs.writeFileSync('src/components.generated.ts', finalText.join('\n'))
 }
 
 main()
