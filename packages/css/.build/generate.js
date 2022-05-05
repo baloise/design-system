@@ -27,10 +27,13 @@ async function generateBackgroundColors() {
   for (const color in colors) {
     lines.push(`.has-background-${color}`)
     lines.push(`  background: var(--bal-color-${color}) !important`)
+    lines.push(`.has-background-${color}-inverted`)
+    lines.push(`  background: var(--bal-color-${color}-inverted) !important`)
     lines.push(`.has-fill-${color}`)
     lines.push(`  fill: var(--bal-color-${color}) !important`)
     lines.push(`  @include fillSvg(var(--bal-color-${color}))`)
-    lines.push(``)
+    lines.push(`.has-text-${color}-inverted`)
+    lines.push(`  color: var(--bal-color-${color}-inverted) !important`)
   }
 
   await file.write(path.join(SASS_PATH, 'color.background.helpers.sass'), [...lines, ''].join('\n'))
@@ -134,14 +137,13 @@ async function generateTypography() {
   const spacing = BaloiseDesignToken.spacing
   const lines = []
 
-  function createCssClasses(key, fontSize, lineHeight, space) {
-    return `.title.is-${key},
-.title.is-size-${key},
-.subtitle.is-${key},
-.subtitle.is-size-${key},
-.is-size-${key}
-  +typography(${fontSize}, ${lineHeight}, ${space})
-`
+  function createCssClasses(key, fontSize, lineHeight, space, indent = '') {
+    return `${indent}.title.is-${key},
+${indent}.title.is-size-${key},
+${indent}.subtitle.is-${key},
+${indent}.subtitle.is-size-${key},
+${indent}.is-size-${key}
+  ${indent}+typography(${fontSize}, ${lineHeight}, ${space})`
   }
 
   for (const k in sizes.mobile) {
@@ -151,21 +153,23 @@ async function generateTypography() {
   }
 
   if (Object.keys(sizes.tablet).length > 0) {
+    lines.push('')
     lines.push('+tablet')
     for (const k in sizes.tablet) {
       const s = sizes.tablet[k]
       const space = spacing.tablet[s.spacing]
-      lines.push(createCssClasses(k, s.fontSize, s.lineHeight, space))
+      lines.push(createCssClasses(k, s.fontSize, s.lineHeight, space, '  '))
     }
     lines.push('')
   }
 
   if (Object.keys(sizes.desktop).length > 0) {
+    lines.push('')
     lines.push('+desktop')
     for (const k in sizes.desktop) {
       const s = sizes.desktop[k]
       const space = spacing.desktop[s.spacing]
-      lines.push(createCssClasses(k, s.fontSize, s.lineHeight, space))
+      lines.push(createCssClasses(k, s.fontSize, s.lineHeight, space, '  '))
     }
     lines.push('')
   }

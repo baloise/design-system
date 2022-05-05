@@ -6,85 +6,85 @@ const tokens = {
     gap: '1rem',
   },
   color: {
-    'white': { hex: '#ffffff' },
-    'black': { hex: '#000000' },
+    'white': { hex: '#ffffff', inverted: 'primary' },
+    'black': { hex: '#000000', inverted: 'primary-inverted' },
 
-    'grey-1': { hex: '#fafafa' },
-    'grey-2': { hex: '#f6f6f6' },
-    'grey-3': { hex: '#e8e8e8' },
-    'grey-4': { hex: '#b6b6b6' },
-    'grey-5': { hex: '#747474' },
-    'grey-6': { hex: '#313131' },
+    'grey-1': { hex: '#fafafa', inverted: 'primary' },
+    'grey-2': { hex: '#f6f6f6', inverted: 'primary' },
+    'grey-3': { hex: '#e8e8e8', inverted: 'primary' },
+    'grey-4': { hex: '#b6b6b6', inverted: 'primary' },
+    'grey-5': { hex: '#747474', inverted: 'primary-inverted' },
+    'grey-6': { hex: '#313131', inverted: 'primary-inverted' },
 
-    'blue-1': { hex: '#e5e7f0' }, // blue -0.10
-    'blue-2': { hex: '#b3b6d4' }, // #293485
-    'blue-3': { hex: '#656ea8' },
-    'blue-4': { hex: '#293485' },
-    'blue-5': { hex: '#000d6e' },
-    'blue-6': { hex: '#000739' },
+    'blue-1': { hex: '#e5e7f0', inverted: 'primary' }, // blue -0.10
+    'blue-2': { hex: '#b3b6d4', inverted: 'primary' }, // #293485
+    'blue-3': { hex: '#656ea8', inverted: 'primary' },
+    'blue-4': { hex: '#293485', inverted: 'primary-inverted' },
+    'blue-5': { hex: '#000d6e', inverted: 'primary-inverted' },
+    'blue-6': { hex: '#000739', inverted: 'primary-inverted' },
 
-    'light-blue-1': { hex: '#e5f1fe' }, // blue 3 70%
-    'light-blue-2': { hex: '#a7d1fa' }, // blue 3
-    'light-blue-3': { hex: '#56a7f5' },
-    'light-blue-4': { hex: '#6672cc' },
-    'light-blue-5': { hex: '#0014aa' }, // hover blue
-    'light-blue-6': { hex: '#000a55' },
+    'light-blue-1': { hex: '#e5f1fe', inverted: 'primary' }, // blue 3 70%
+    'light-blue-2': { hex: '#a7d1fa', inverted: 'primary' }, // blue 3
+    'light-blue-3': { hex: '#56a7f5', inverted: 'primary' },
+    'light-blue-4': { hex: '#6672cc', inverted: 'primary-inverted' },
+    'light-blue-5': { hex: '#0014aa', inverted: 'primary-inverted' }, // hover blue
+    'light-blue-6': { hex: '#000a55', inverted: 'primary-inverted' },
 
-    'purple-1': { hex: '#f9f3ff' },
-    'purple-2': { hex: '#e1d9ff' },
-    'purple-3': { hex: '#b8b2ff' },
-    'purple-4': { hex: '#be82fa' },
-    'purple-5': { hex: '#9f52cc' },
-    'purple-6': { hex: '#6c2273' },
+    'purple-1': { hex: '#f9f3ff', inverted: 'primary' },
+    'purple-2': { hex: '#e1d9ff', inverted: 'primary' },
+    'purple-3': { hex: '#b8b2ff', inverted: 'primary' },
+    'purple-4': { hex: '#be82fa', inverted: 'primary-inverted' },
+    'purple-5': { hex: '#9f52cc', inverted: 'primary-inverted' },
+    'purple-6': { hex: '#6c2273', inverted: 'primary-inverted' },
 
-    'green-1': { hex: '#e9fbf7' },
-    'green-2': { hex: '#cbf2ec' },
-    'green-3': { hex: '#94e3d4' },
-    'green-4': { hex: '#21d9ac' },
-    'green-5': { hex: '#00b28f' },
-    'green-6': { hex: '#1b5951' },
+    'green-1': { hex: '#e9fbf7', inverted: 'primary' },
+    'green-2': { hex: '#cbf2ec', inverted: 'primary' },
+    'green-3': { hex: '#94e3d4', inverted: 'primary' },
+    'green-4': { hex: '#21d9ac', inverted: 'primary-inverted' },
+    'green-5': { hex: '#00b28f', inverted: 'primary-inverted' },
+    'green-6': { hex: '#1b5951', inverted: 'primary-inverted' },
 
-    'yellow-1': { hex: '#fff9e8' },
-    'yellow-2': { hex: '#ffecbc' },
-    'yellow-3': { hex: '#fae052' },
-    'yellow-4': { hex: '#ffbe19' },
-    'yellow-5': { hex: '#fa9319' },
-    'yellow-6': { hex: '#b24a00' },
+    'yellow-1': { hex: '#fff9e8', inverted: 'primary' },
+    'yellow-2': { hex: '#ffecbc', inverted: 'primary' },
+    'yellow-3': { hex: '#fae052', inverted: 'primary' },
+    'yellow-4': { hex: '#ffbe19', inverted: 'primary-inverted' },
+    'yellow-5': { hex: '#fa9319', inverted: 'primary-inverted' },
+    'yellow-6': { hex: '#b24a00', inverted: 'primary-inverted' },
 
-    'red-1': { hex: '#ffeef1' },
-    'red-2': { hex: '#ffd7d7' },
-    'red-3': { hex: '#ffaca6' },
-    'red-4': { hex: '#ff596f' },
-    'red-5': { hex: '#d9304c' },
-    'red-6': { hex: '#99172d' },
+    'red-1': { hex: '#ffeef1', inverted: 'primary' },
+    'red-2': { hex: '#ffd7d7', inverted: 'primary' },
+    'red-3': { hex: '#ffaca6', inverted: 'primary' },
+    'red-4': { hex: '#ff596f', inverted: 'primary-inverted' },
+    'red-5': { hex: '#d9304c', inverted: 'primary-inverted' },
+    'red-6': { hex: '#99172d', inverted: 'primary-inverted' },
 
-    'info-1': { hex: '#e8f1fb' },
-    'info-2': { hex: '#a4c9ed' },
-    'info-3': { hex: '#60a0e0' },
-    'info-4': { hex: '#1c77d2' },
-    'info-5': { hex: '#155ba3' },
-    'info-6': { hex: '#0e457b' },
+    'info-1': { hex: '#e8f1fb', inverted: 'primary' },
+    'info-2': { hex: '#a4c9ed', inverted: 'primary' },
+    'info-3': { hex: '#60a0e0', inverted: 'primary' },
+    'info-4': { hex: '#1c77d2', inverted: 'primary-inverted' },
+    'info-5': { hex: '#155ba3', inverted: 'primary-inverted' },
+    'info-6': { hex: '#0e457b', inverted: 'primary-inverted' },
 
-    'success-1': { hex: '#e8f3ec' },
-    'success-2': { hex: '#a1cfb3' },
-    'success-3': { hex: '#5bab7a' },
-    'success-4': { hex: '#168741' },
-    'success-5': { hex: '#116b34' },
-    'success-6': { hex: '#0b5227' },
+    'success-1': { hex: '#e8f3ec', inverted: 'primary' },
+    'success-2': { hex: '#a1cfb3', inverted: 'primary' },
+    'success-3': { hex: '#5bab7a', inverted: 'primary' },
+    'success-4': { hex: '#168741', inverted: 'primary-inverted' },
+    'success-5': { hex: '#116b34', inverted: 'primary-inverted' },
+    'success-6': { hex: '#0b5227', inverted: 'primary-inverted' },
 
-    'warning-1': { hex: '#fff9e8' },
-    'warning-2': { hex: '#ffe5a3' },
-    'warning-3': { hex: '#ffd25e' },
-    'warning-4': { hex: '#ffbe19' },
-    'warning-5': { hex: '#f99319' },
-    'warning-6': { hex: '#c97612' },
+    'warning-1': { hex: '#fff9e8', inverted: 'primary' },
+    'warning-2': { hex: '#ffe5a3', inverted: 'primary' },
+    'warning-3': { hex: '#ffd25e', inverted: 'primary' },
+    'warning-4': { hex: '#ffbe19', inverted: 'primary' },
+    'warning-5': { hex: '#f99319', inverted: 'primary-inverted' },
+    'warning-6': { hex: '#c97612', inverted: 'primary-inverted' },
 
-    'danger-1': { hex: '#fce8e6' },
-    'danger-2': { hex: '#f7a299' },
-    'danger-3': { hex: '#f05d4d' },
-    'danger-4': { hex: '#ea1800' },
-    'danger-5': { hex: '#cb1501' },
-    'danger-6': { hex: '#a01100' },
+    'danger-1': { hex: '#fce8e6', inverted: 'primary' },
+    'danger-2': { hex: '#f7a299', inverted: 'primary' },
+    'danger-3': { hex: '#f05d4d', inverted: 'primary' },
+    'danger-4': { hex: '#ea1800', inverted: 'primary-inverted' },
+    'danger-5': { hex: '#cb1501', inverted: 'primary-inverted' },
+    'danger-6': { hex: '#a01100', inverted: 'primary-inverted' },
   },
   breakpoint: {
     tablet: '769px',
@@ -114,6 +114,8 @@ const tokens = {
       '6': '1.5rem',
       '7': '2rem',
       '8': '3rem',
+      '9': '3.5rem',
+      '10': '6rem',
     },
     tablet: {
       '0': '0',
@@ -125,6 +127,8 @@ const tokens = {
       '6': '1.5rem',
       '7': '2.5rem',
       '8': '3.5rem',
+      '9': '4.5rem',
+      '10': '7rem',
     },
     desktop: {
       '0': '0',
@@ -136,17 +140,17 @@ const tokens = {
       '6': '2rem',
       '7': '3rem',
       '8': '4rem',
+      '9': '6rem',
+      '10': '8rem',
     },
   },
   border: {
     width: '2px',
     colors: {
-      blue: 'blue',
+      primary: 'primary',
       normal: 'grey-3',
       hover: 'grey-3',
-      active: 'blue',
-      // 'focus': 'purple-6',
-      // 'focus-inverted': 'yellow-3',
+      active: 'primary',
       warning: 'warning-5',
       success: 'success-4',
       danger: 'danger-4',
@@ -241,6 +245,7 @@ const tokens = {
       desktop: {},
     },
     colors: {
+      'primary': 'primary',
       'blue': 'blue',
       'black': 'black',
       'normal': 'blue',
@@ -250,8 +255,8 @@ const tokens = {
       'active': 'blue-6',
       'white': 'white',
       'blue-light': 'blue-3',
-      'hint': 'blue-3',
-      'help': 'blue-3',
+      'hint': 'primary-3',
+      'help': 'primary-3',
       'success': 'success-4',
       'valid': 'success-4',
       'danger': 'danger-4',
@@ -267,6 +272,18 @@ const tokens = {
  * Aliases
  *
  ***********************************************************/
+tokens.color['primary-1'] = tokens.color['blue-1']
+tokens.color['primary-2'] = tokens.color['blue-2']
+tokens.color['primary-3'] = tokens.color['blue-3']
+tokens.color['primary-4'] = tokens.color['blue-4']
+tokens.color['primary-5'] = tokens.color['blue-5']
+tokens.color['primary-6'] = tokens.color['blue-6']
+
+tokens.color['primary'] = tokens.color['primary-5']
+tokens.color['primary-inverted'] = tokens.color['white']
+tokens.color['primary-light'] = tokens.color['primary-1']
+tokens.color['primary-dark'] = tokens.color['primary-6']
+
 tokens.color['grey-light'] = tokens.color['grey-1']
 tokens.color['grey-dark'] = tokens.color['grey-5']
 tokens.color['grey'] = tokens.color['grey-3']
@@ -275,8 +292,8 @@ tokens.color['blue-light'] = tokens.color['blue-1']
 tokens.color['blue-dark'] = tokens.color['blue-6']
 tokens.color['blue'] = tokens.color['blue-5']
 
-tokens.color['blue-hover'] = tokens.color['light-blue-5']
-tokens.color['blue-active'] = tokens.color['blue-6']
+tokens.color['primary-hover'] = tokens.color['light-blue-5']
+tokens.color['primary-active'] = tokens.color['primary-6']
 
 tokens.color['light-blue'] = tokens.color['light-blue-1']
 tokens.color['light-blue-dark'] = tokens.color['light-blue-5']
@@ -298,17 +315,6 @@ tokens.color['yellow'] = tokens.color['yellow-3']
 tokens.color['red-light'] = tokens.color['red-1']
 tokens.color['red-dark'] = tokens.color['red-6']
 tokens.color['red'] = tokens.color['red-3']
-
-tokens.color['primary-1'] = tokens.color['blue-1']
-tokens.color['primary-2'] = tokens.color['blue-2']
-tokens.color['primary-3'] = tokens.color['blue-3']
-tokens.color['primary-4'] = tokens.color['blue-4']
-tokens.color['primary-5'] = tokens.color['blue-5']
-tokens.color['primary-6'] = tokens.color['blue-6']
-
-tokens.color['primary-light'] = tokens.color['blue-1']
-tokens.color['primary'] = tokens.color['blue-5']
-tokens.color['primary-dark'] = tokens.color['blue-6']
 
 tokens.color['info-light'] = tokens.color['info-1']
 tokens.color['info'] = tokens.color['info-3']
@@ -415,6 +421,7 @@ export interface BaloiseDesignTokenColors {
 
 export interface BaloiseDesignTokenColor {
   description?: string
+  inverted?: string
   rgba?: string
   hex: string
 }

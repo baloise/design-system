@@ -10,10 +10,10 @@ $weight-medium: 500 !default
 $weight-semibold: 600 !default
 $weight-bold: 700 !default
 
-$link: $blue !default
-$link-hover: $blue !default
-$text: $blue !default
-$text-invert: $white !default
+$link: $primary !default
+$link-hover: $primary !default
+$text: $primary !default
+$text-invert: $primary-inverted !default
 $text-light: $blue-4 !default
 $text-strong: $blue !default
 
@@ -27,3 +27,14 @@ $size-large: $size-3 !default
 $size-medium: $size-4 !default
 $size-normal: $size-5 !default
 $size-small: $size-6 !default
+
+:root
+  --bal-family-primary: #{$font-family-text}
+  --bal-family-secondary: #{$font-family-text}
+  --bal-link: #{$tablet}
+  --bal-link: #{$primary}
+  --bal-link-hover: #{$primary}
+  --bal-text: #{$primary}
+  --bal-text-invert: #{$primary-inverted}
+  --bal-text-light: #{$blue-4}
+  --bal-text-strong: #{$blue}

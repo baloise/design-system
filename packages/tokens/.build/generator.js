@@ -46,6 +46,14 @@ function generateSassVariables() {
       sassVar(`border-${color}`, `$${borderColors[color]}`)
       cssVar(`color-border-${color}`, `border-${color}`)
     }
+
+    for (const color in colors) {
+      if(colors[color].inverted) {
+        const invertedColor = colors[colors[color].inverted]
+        sassVar(`${color}-inverted`, invertedColor.hex)
+        cssVar(`color-${color}-inverted`, `${color}-inverted`)
+      }
+    }
   }
 
   function generateBreakpoint() {
