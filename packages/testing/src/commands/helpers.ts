@@ -74,9 +74,6 @@ export const selectors = {
   tag: {
     text: 'bal-text',
   },
-  heading: {
-    content: '.data-test-heading',
-  },
   card: {
     title: 'bal-heading',
   },

@@ -63,7 +63,7 @@ describe('Datepicker', () => {
     })
   })
 
-  describe('range', () => {
+  describe.only('range', () => {
     it('should have a min and max date', () => {
       const today = new Date(2022, 3, 16)
       const future = addWeeks(today, 1)
@@ -74,6 +74,7 @@ describe('Datepicker', () => {
       cy.getByTestId('basic')
         .setProperty('min', formatDateString(past))
         .setProperty('max', formatDateString(future))
+        .setProperty('value', formatDateString(today))
         .balDatepickerToggle()
         .balDatepickerIsOpen()
         .balDatepickerIsDateInRange(today)
