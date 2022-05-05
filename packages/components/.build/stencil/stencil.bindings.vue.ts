@@ -1,4 +1,5 @@
-import { ComponentModelConfig, vueOutputTarget } from '@baloise/vue-output-target'
+// import { ComponentModelConfig, vueOutputTarget } from '@baloise/vue-output-target'
+import { ComponentModelConfig, vueOutputTarget } from '@stencil/vue-output-target'
 
 export const vueComponentModels: ComponentModelConfig[] = [
   {
@@ -53,10 +54,15 @@ export const VueGenerator = (
   ],
 ) =>
   vueOutputTarget({
+    includeImportCustomElements: true,
+    includePolyfills: false,
+    includeDefineCustomElements: false,
+    proxiesFile: '../components-vue/src/proxies.ts',
     componentCorePackage,
-    proxiesDir,
     componentModels: vueComponentModels,
-    includeUtils: false,
     excludeComponents,
+    customElementsDir: 'dist/components'
+    // proxiesDir,
+    // includeUtils: false,
   })
 

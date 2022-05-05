@@ -103,6 +103,7 @@
     "@stencil/postcss": "^2.1.0",
     "@stencil/react-output-target": "^0.3.1",
     "@stencil/sass": "^1.5.2",
+    "@stencil/vue-output-target": "^0.6.0",
     "@storybook/addon-a11y": "^6.4.19",
     "@storybook/addon-docs": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
