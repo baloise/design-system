@@ -34,5 +34,6 @@ packages/components-react/src/components.ts
 packages/components-react/src/react-component-lib
 packages/components-angular/src/directives/
 packages/components-angular/src/overlays
-
+packages/components-vue/src/proxies.ts
 packages/stencil-vite-fix
+packages/components-vue/.build/template/utils.ts
