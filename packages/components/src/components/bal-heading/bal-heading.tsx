@@ -83,9 +83,8 @@ export class Heading {
       <Host>
         <Heading
           class={{
-            'data-test-heading': true,
-            'title': this.subtitle === false,
-            'subtitle': this.subtitle === true,
+            title: this.subtitle === false,
+            subtitle: this.subtitle === true,
             [this.spacing]: true,
             [this.fontSize]: true,
             [this.fontColor]: true,
