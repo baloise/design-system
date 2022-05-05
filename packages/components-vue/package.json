@@ -50,6 +50,7 @@
     "@types/lodash.upperfirst": "^4.3.7",
     "ag-grid-community": "^26.0.0",
     "change-case": "^4.1.2",
+    "copyfiles": "^2.4.1",
     "lodash.camelcase": "^4.3.0",
     "lodash.upperfirst": "^4.3.1",
     "rimraf": "^3.0.2",
@@ -63,8 +64,7 @@
   },
   "gitHead": "942fb79c8ff2fb991d815f91ffee0bb95ea6756f",
   "dependencies": {
-    "@baloise/design-system-components": "10.10.8",
-    "copyfiles": "^2.4.1"
+    "@baloise/design-system-components": "10.10.8"
   },
   "vetur": {
     "tags": "dist/vetur/tags.json",
