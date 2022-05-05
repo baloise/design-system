@@ -54,7 +54,7 @@ Cypress.Commands.add('testA11y', { prevSubject: 'element' }, (subject, options =
 
       cy.task('table', violationData)
     },
-    true, // skip a11y failures
+    false, // skip a11y failures
   )
 })
 
@@ -91,7 +91,11 @@ Cypress.Commands.add('setProperty', { prevSubject: 'element' }, (subject, attr: 
     displayName: 'setProp',
     message: `${attr}="${value}"`,
   })
-  return cy.wrapComponent(subject, { log: false }).invoke({ log: false }, 'attr', attr, value).waitForComponents()
+  return cy
+    .wrapComponent(subject, { log: false })
+    .invoke({ log: false }, 'attr', attr, value)
+    .waitForComponents()
+    .wait(1, { log: false })
 })
 
 Cypress.Commands.add('hasProperty', { prevSubject: 'element' }, (subject, attr: string, value: any) => {
@@ -111,5 +115,9 @@ Cypress.Commands.add('removeProperty', { prevSubject: 'element' }, (subject, att
     displayName: 'removeProp',
     message: attr,
   })
-  return cy.wrapComponent(subject, { log: false }).invoke({ log: false }, 'removeAttr', attr).waitForComponents()
+  return cy
+    .wrapComponent(subject, { log: false })
+    .invoke({ log: false }, 'removeAttr', attr)
+    .waitForComponents()
+    .wait(1, { log: false })
 })
