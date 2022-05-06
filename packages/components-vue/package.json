@@ -23,11 +23,10 @@
     "bulma-css"
   ],
   "scripts": {
-    "build": "npm run build:clean && npm run build:vite && npm run build:utils && npm run build:components && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
+    "build": "npm run build:clean && npm run build:vite && npm run build:utils && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
     "build:clean": "rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p .",
     "build:bundle": "rollup --config rollup.config.js",
-    "build:components": "node ./.build/components.js",
     "build:web-types": "node ./.build/web-types.js",
     "build:vetur": "node ./.build/vetur.js",
     "build:vite": "baloiseStencilViteFix",
