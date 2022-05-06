@@ -1,7 +1,7 @@
 import { Plugin } from 'vue'
 import { BalConfig, initialize } from '@baloise/design-system-components'
 import { applyDirectives } from './directives'
-// import { applyComponents } from './components.generated'
+import { applyComponents } from './components.generated'
 import { BalApp } from './components/BalApp'
 
 interface BaloiseDesignSystemVueConfig {
@@ -20,7 +20,7 @@ export const BaloiseDesignSystem: Plugin = {
     applyDirectives(app)
 
     app.component('bal-app', BalApp)
-    // applyComponents(app)
+    applyComponents(app)
   },
 }
 

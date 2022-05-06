@@ -25,7 +25,7 @@ async function main() {
     ``,
   ]
 
-  // fs.writeFileSync('src/components.generated.ts', finalText.join('\n'))
+  fs.writeFileSync('src/components.generated.ts', finalText.join('\n'))
 }
 
 main()
