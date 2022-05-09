@@ -13,6 +13,10 @@ bal-field {
     label[for] {
       cursor: pointer;
     }
+
+    label.is-regular {
+      font-weight: $weight-normal;
+    }
   }
 
   bal-field-label,
