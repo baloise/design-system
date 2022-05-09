@@ -1,6 +1,7 @@
 interface ControllerShape<Opts, HTMLElm> {
   create(options: Opts): Promise<HTMLElm>
   dismiss(data?: any, role?: string, id?: string): Promise<boolean>
+  dismissAll(data?: any, role?: string): Promise<void>
   getTop(): Promise<HTMLElm | undefined>
 }
 
@@ -19,6 +20,13 @@ export class OverlayBaseController<Opts, Overlay> implements ControllerShape<Opt
    */
   dismiss(data?: any, role?: string, id?: string) {
     return this.ctrl.dismiss(data, role, id)
+  }
+
+  /**
+   * When `id` is not provided, it dismisses the top overlay.
+   */
+  dismissAll(data?: any, role?: string) {
+    return this.ctrl.dismissAll(data, role)
   }
 
   /**

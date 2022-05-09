@@ -46,7 +46,7 @@ export abstract class BalNoticeController {
     this.queueLimit = queueLimit
   }
 
-  async clearAll(): Promise<void> {
+  async dismissAll(): Promise<void> {
     const elements = this.container?.querySelectorAll(this.options.tag)
     if (elements) {
       const closingQueue = []
@@ -58,6 +58,14 @@ export abstract class BalNoticeController {
       }
       await Promise.all(closingQueue)
     }
+  }
+
+  /**
+   * @deprecated use dismissAll instead
+   */
+  async clearAll(): Promise<void> {
+    console.warn('[DEPRECATED] - use dismissAll() instead')
+    return this.dismissAll()
   }
 
   private findClone(options: BalNoticeOptions): HTMLNoticeElement | undefined {
