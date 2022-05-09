@@ -24,8 +24,8 @@ import {
   validateAfterBlur,
 } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
-
 import { BalOptionValue } from './utils/bal-option.type'
+import { Props } from '../../../props'
 
 export interface BalOptionController extends BalOptionValue {
   id: string
@@ -64,6 +64,11 @@ export class Select {
    * If `true` the component gets a invalid style.
    */
   @Prop() invalid = false
+
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() filter: Props.BalSelectFilter = 'includes'
 
   /**
    * The tabindex of the control.
@@ -130,6 +135,11 @@ export class Select {
    * Defines if the select is in a loading state.
    */
   @Prop() loading = false
+
+  /**
+   * If `true` the filtering is done outside the component.
+   */
+  @Prop() remote = false
 
   /**
    * Selected option values. Could also be passed as a string, which gets transformed.
@@ -300,9 +310,11 @@ export class Select {
       }
     }
     this.options = new Map(options)
-    this.syncNativeInput()
-    if (this.didInit) {
-      this.validateAfterBlur()
+    if (!this.remote) {
+      this.syncNativeInput()
+      if (this.didInit) {
+        this.validateAfterBlur()
+      }
     }
   }
 
@@ -384,11 +396,16 @@ export class Select {
    ********************************************************/
 
   private get optionArray() {
-    return Array.from(this.options, ([_, value]) => value).filter(option => {
-      if (this.typeahead) {
+    const options = Array.from(this.options, ([_, value]) => value)
+    if (!this.typeahead || this.remote) {
+      return options
+    }
+
+    return options.filter(option => {
+      if (this.filter === 'includes') {
         return includes(option.textContent, this.inputValue)
       }
-      return true
+      return startsWith(option.textContent, this.inputValue)
     })
   }
 
@@ -615,7 +632,7 @@ export class Select {
   }
 
   private syncNativeInput() {
-    if (!this.multiple) {
+    if (!this.multiple && !this.remote) {
       if (length(this.rawValue) > 0) {
         const valuesArray = getValues(this.rawValue)
         let label = findLabelByValue(this.options, valuesArray[0])
