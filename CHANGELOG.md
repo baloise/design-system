@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.11.0](https://github.com/baloise/design-system/compare/v10.10.8...v10.11.0) (2022-05-10)
+
+
+### Features
+
+* **field:** add weight prop ([4649a6c](https://github.com/baloise/design-system/commit/4649a6cca223a5d0b083b5742e6d439a57cf088e))
+* **modal:** add dismissAll function ([b4e935a](https://github.com/baloise/design-system/commit/b4e935aeab9cb283a68c2f32741b5468c5adf8d6))
+* **select:** add remote solution and adds starts with filter ([1db5cd7](https://github.com/baloise/design-system/commit/1db5cd7200072ac9dd3ea9a18cb4176be1d81d9a))
+
+
+### Bug Fixes
+
+* **button:** set flex 1 for expanded buttons ([1068613](https://github.com/baloise/design-system/commit/10686134f65d592d00be1927aa05710ed16e40e9))
+* **field:** only set field props when defined to child components ([117326b](https://github.com/baloise/design-system/commit/117326b5d7ba74a977b9d6601f36df5c2ba66484))
+* **form:** wait for next tick when setting focus ([a4d742e](https://github.com/baloise/design-system/commit/a4d742ee3c1611ddc2c1e31a542ba21b510ea123))
+* **select:** updateRawValue can handle objects ([33957af](https://github.com/baloise/design-system/commit/33957af3dd89ff3d1a067718fb3e7072a41cb26c))
+* **testing:** adjust text and heading contains command ([d8035d3](https://github.com/baloise/design-system/commit/d8035d3c0da6ceb761c893839740b4c9bfb6bccd))
+* **testing:** adjust text and heading contains command ([646204c](https://github.com/baloise/design-system/commit/646204c956087861750e08e28685f17a88a1b6be))
+* **vue:** reduce payload ([8f36f8d](https://github.com/baloise/design-system/commit/8f36f8d10a7b1af438a7e2bc6e6ece84bedfcb05))
+* **vue:** reduce payload ([7a216a2](https://github.com/baloise/design-system/commit/7a216a276c4a061e93c7042724f1ea9a30f15328))
+* **vue:** register components ([854c353](https://github.com/baloise/design-system/commit/854c3530718609bbbbdb4bab3e2bc7d4371eca11))
+* **vue:** try to reduce payload ([b994637](https://github.com/baloise/design-system/commit/b994637382f3eb164540a217a0a12688ab6bdcac))
+* **vue:** use stencil output ([6815b8f](https://github.com/baloise/design-system/commit/6815b8f66645a84335ab34b5ac2f69c9d8a1c67e))
+* **vue:** use stencil output ([ab16e1a](https://github.com/baloise/design-system/commit/ab16e1a256e5af8bcc55dd2e274c4afa5a6cc527))
+
+
+
 ### [10.10.8](https://github.com/baloise/design-system/compare/v10.10.7...v10.10.8) (2022-04-28)
 
 
