@@ -1,4 +1,4 @@
-import { ComponentModelConfig, vueOutputTarget } from '@stencil/vue-output-target'
+import { ComponentModelConfig, vueOutputTarget } from '@baloise/vue-output-target'
 
 export const vueComponentModels: ComponentModelConfig[] = [
   {
@@ -32,7 +32,7 @@ export const vueComponentModels: ComponentModelConfig[] = [
 
 export const VueGenerator = (
   componentCorePackage = '@baloise/design-system-components',
-  proxiesDir = '../components-vue/src/proxies',
+  proxiesFile = '../components-vue/src/proxies.ts',
   excludeComponents = [
     'bal-doc-app',
     'bal-doc-banner',
@@ -56,7 +56,7 @@ export const VueGenerator = (
     includeImportCustomElements: true,
     includePolyfills: false,
     includeDefineCustomElements: false,
-    proxiesFile: '../components-vue/src/proxies.ts',
+    proxiesFile,
     componentCorePackage,
     componentModels: vueComponentModels,
     excludeComponents,

@@ -23,14 +23,13 @@
     "bulma-css"
   ],
   "scripts": {
-    "build": "npm run build:clean && npm run build:vite && npm run build:utils && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
+    "build": "npm run build:clean && npm run build:vite && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
     "build:clean": "rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p .",
     "build:bundle": "rollup --config rollup.config.js",
     "build:web-types": "node ./.build/web-types.js",
     "build:vetur": "node ./.build/vetur.js",
     "build:vite": "baloiseStencilViteFix",
-    "build:utils": "copyfiles --flat .build/template/utils.ts src/vue-component-lib",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
   "main": "./dist/index.esm.js",

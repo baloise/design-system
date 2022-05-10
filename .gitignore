@@ -132,4 +132,5 @@ packages/components/docs/**
 docs/
 packages/components/cypress/videos
 packages/components-vue/src/proxies.ts
-packages/components-vue/src/vue-component-lib/utils.ts
+packages/components-vue/src/vue-component-lib
+packages/components/.storybook/vue
