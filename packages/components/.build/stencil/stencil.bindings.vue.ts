@@ -32,7 +32,7 @@ export const vueComponentModels: ComponentModelConfig[] = [
 
 export const VueGenerator = (
   componentCorePackage = '@baloise/design-system-components',
-  proxiesDir = '../components-vue/src/proxies',
+  proxiesFile = '../components-vue/src/proxies.ts',
   excludeComponents = [
     'bal-doc-app',
     'bal-doc-banner',
@@ -53,10 +53,13 @@ export const VueGenerator = (
   ],
 ) =>
   vueOutputTarget({
+    includeImportCustomElements: true,
+    includePolyfills: false,
+    includeDefineCustomElements: false,
+    proxiesFile,
     componentCorePackage,
-    proxiesDir,
     componentModels: vueComponentModels,
-    includeUtils: false,
     excludeComponents,
+    customElementsDir: 'dist/components'
   })
 
