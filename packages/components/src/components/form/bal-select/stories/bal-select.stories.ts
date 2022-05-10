@@ -9,6 +9,7 @@ import {
 } from '../../../../../.storybook/vue/components'
 import { marvelHeros } from './bal-select.templates.ts'
 import docs from './bal-select.docs.mdx'
+import { ref } from 'vue'
 
 const balFieldArgTypes = stencilArgType(BalField)
 
@@ -105,6 +106,99 @@ Typeahead.args = {
 }
 Typeahead.parameters = {
   ...component.sourceCode(Typeahead),
+  controls: { exclude: excludedControls },
+}
+
+export const TypeaheadRemote = args => ({
+  components: { ...component.components },
+  setup: () => {
+    const cantons = [
+      'Zürich',
+      'Bern/Berne',
+      'Luzern',
+      'Uri',
+      'Schwyz',
+      'Unterwalden',
+      'Glarus',
+      'Zug',
+      'Freiburg/Fribourg',
+      'Solothurn',
+      'Basel-Stadt',
+      'Basel-Land',
+      'Schaffhausen',
+      'Appenzell',
+      'SanktGallen',
+      'Graubünden',
+      'Aargau',
+      'Thurgau',
+      'Ticino',
+      'Vaud',
+      'Wallis',
+      'Neuchâtel',
+      'Genève',
+      'Jura',
+    ]
+
+    const options = ref<string[]>([])
+    const loading = ref<boolean>(false)
+
+    function debounce(func, timeout = 300) {
+      let timer
+      return (...args) => {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          func.apply(this, args)
+        }, timeout)
+      }
+    }
+
+    let mockedApiCallTimeoutId
+    const mockedApiCall = (search: string, timeout = 1000): Promise<string[]> => {
+      return new Promise(resolve => {
+        if (mockedApiCallTimeoutId) {
+          clearTimeout(mockedApiCallTimeoutId)
+        }
+        mockedApiCallTimeoutId = setTimeout(() => {
+          const response = cantons.filter(e => {
+            return (e || '').toLowerCase().startsWith((search || '').toLowerCase())
+          })
+          resolve(response)
+        }, timeout)
+      })
+    }
+
+    const onChange = async (event: CustomEvent<string>) => {
+      const search = event.detail
+      options.value = await mockedApiCall(search, 0)
+    }
+
+    const onInput = debounce(async (event: CustomEvent<string>) => {
+      const search = event.detail
+      loading.value = true
+      options.value = await mockedApiCall(search)
+      loading.value = false
+    })
+
+    return { args, onInput, options, loading, onChange }
+  },
+  template: `
+  <bal-field :disabled="args.disabled" :readonly="args.readonly" :inverted="args.inverted" :invalid="args.invalid">
+  <bal-field-label>Canton</bal-field-label>
+  <bal-field-control :loading="loading">
+    <bal-select v-bind="args" v-model="args.value" @bal-input="onInput($event)" @bal-change="onChange($event)">
+      <bal-select-option v-for="o in options" :label="o" :value="o" v-html="o"></bal-select-option>
+    </bal-select>
+  </bal-field-control>
+</bal-field>`,
+})
+TypeaheadRemote.args = {
+  typeahead: true,
+  remote: true,
+  loading: true,
+  placeholder: 'Try finding your canton',
+}
+TypeaheadRemote.parameters = {
+  ...component.sourceCode(TypeaheadRemote),
   controls: { exclude: excludedControls },
 }
 

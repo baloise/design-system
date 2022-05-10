@@ -27,6 +27,8 @@ export namespace Props {
 
   export type BalCloseSize = 'small' | 'large' | 'medium' | ''
 
+  export type BalSelectFilter = 'includes' | 'starts-with'
+
   export type BalHeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue'
 
@@ -85,6 +87,7 @@ export namespace Props {
 
   export type BalDatepickerCallback = (dateString: string) => boolean
 
+  export type BalFieldLabelWeight = 'bold' | 'regular'
   export type BalFieldMessageColor = '' | 'success' | 'warning' | 'danger'
 
   export type BalRadioGroupInterface = 'radio' | 'select-button'

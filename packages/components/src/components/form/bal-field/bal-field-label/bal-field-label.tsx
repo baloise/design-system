@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop, Element } from '@stencil/core'
+import { Props } from '../../../..'
 
 @Component({
   tag: 'bal-field-label',
@@ -19,6 +20,11 @@ export class FieldLabel {
    */
   @Prop() invalid = false
 
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() weight: Props.BalFieldLabelWeight = 'bold'
+
   componentDidLoad() {
     if (this.element) {
       this.parentBalFieldElement = this.element.closest('bal-field')
@@ -37,7 +43,12 @@ export class FieldLabel {
   render() {
     return (
       <Host>
-        <label class="label">
+        <label
+          class={{
+            'label': true,
+            'is-regular': this.weight === 'regular',
+          }}
+        >
           <slot></slot>
           {this.required === true ? ' *' : ''}
         </label>

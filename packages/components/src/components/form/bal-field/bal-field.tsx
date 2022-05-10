@@ -9,55 +9,62 @@ export class Field {
   /**
    * If `true` the component gets a invalid style.
    */
-  @Prop() invalid = false
+  @Prop() invalid?: boolean = undefined
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled = false
+  @Prop() disabled?: boolean = undefined
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly = false
+  @Prop() readonly?: boolean = undefined
 
   /**
    * If `true` the field can be used on blue background.
    */
-  @Prop() inverted = false
+  @Prop() inverted?: boolean = undefined
 
   /**
    * If `true` a loading spinner is visible at the end of the input
    */
-  @Prop() loading = false
+  @Prop() loading?: boolean = undefined
 
   private formControlElement = ['bal-field-control']
   private inputElements = ['bal-input', 'bal-textarea', 'bal-select', 'bal-datepicker']
   private formElements = [...this.formControlElement, 'bal-field-label', 'bal-field-message']
 
+  private updateProps(selectors: string[], key: string) {
+    const value = (this as any)[key]
+    if (value !== undefined) {
+      this.notifyComponents<any>(selectors, input => (input[key] = value))
+    }
+  }
+
   @Watch('invalid')
   invalidHandler() {
-    this.notifyComponents<{ invalid: boolean }>([...this.inputElements, ...this.formElements], input => {
-      input.invalid = this.invalid
-    })
+    this.updateProps([...this.inputElements, ...this.formElements], 'invalid')
   }
 
   @Watch('readonly')
+  readonlyHandler() {
+    this.updateProps([...this.inputElements, ...this.formControlElement], 'readonly')
+  }
+
   @Watch('disabled')
+  disabledHandler() {
+    this.updateProps([...this.inputElements, ...this.formControlElement], 'disabled')
+  }
+
   @Watch('loading')
+  loadingHandler() {
+    this.updateProps([...this.inputElements, ...this.formControlElement], 'loading')
+  }
+
   @Watch('inverted')
-  restHandler() {
-    this.notifyComponents<{
-      readonly: boolean
-      disabled: boolean
-      loading: boolean
-      inverted: boolean
-    }>([...this.inputElements, ...this.formControlElement], input => {
-      input.readonly = this.readonly
-      input.disabled = this.disabled
-      input.loading = this.loading
-      input.inverted = this.inverted
-    })
+  invertedHandler() {
+    this.updateProps([...this.inputElements, ...this.formControlElement], 'inverted')
   }
 
   private notifyComponents<T>(selectors: string[], callback: (component: T) => void) {
@@ -67,21 +74,24 @@ export class Field {
 
   componentWillLoad() {
     this.invalidHandler()
-    this.restHandler()
+    this.readonlyHandler()
+    this.disabledHandler()
+    this.loadingHandler()
+    this.invertedHandler()
   }
 
   render() {
     return (
       <Host
         class={{
-          'is-invalid': this.invalid,
+          'is-invalid': this.invalid === true,
         }}
       >
         <div
           class={{
             'form': true,
-            'is-inverted': this.inverted,
-            'is-disabled': this.disabled || this.readonly,
+            'is-inverted': this.inverted === true,
+            'is-disabled': this.disabled === true || this.readonly === true,
           }}
         >
           <slot></slot>
