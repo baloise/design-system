@@ -11,12 +11,12 @@ import { Meta } from '@storybook/addon-docs'
 
 # Migration from 8.x to 9.x
 
-The following workflow walks through the steps of migrating.
+The following workflow walks you through the migration steps.
 Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
 
 ## Tabs, Accordion and Popover
 
-The components tabs, accordion and popover can be use with two-way binding (ngModel or v-model).
+The components `tabs`, `accordion` and `popover` now can be used with two-way bindings (ngModel or v-model).
 
 ```html
 <!-- angular -->
@@ -31,19 +31,20 @@ value = ref('tab-a')
 
 ## Dropdown / Popover
 
-bal-dropdown is renamed to bal-popover.
+`bal-dropdown` has been renamed as bal-popover.
 
 ## Hint
 
-Renamed the methods open and close to present and dismiss.
+Method `open` has been renamed as `present`.
+Method `close` has been renamed as `dismiss`.
 
 ## Form fields
 
-All the fields are set as expanded. All the expanded attributes in the form section can be removed.
+All fields are set as expanded. All expanded attributes in the form section can be removed.
 
 ## Modal
 
-The bal-modal-footer and bal-modal-actions are removed due the adjusting the scroll behavior.
+The `bal-modal-footer` and `bal-modal-actions` have been removed due the adjustment of the scroll behavior.
 
 ```html
 <!-- - old -->
