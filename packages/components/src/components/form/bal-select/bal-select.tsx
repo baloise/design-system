@@ -401,12 +401,11 @@ export class Select {
       return options
     }
 
-    return options.filter(option => {
-      if (this.filter === 'includes') {
-        return includes(option.textContent, this.inputValue)
-      }
-      return startsWith(option.textContent, this.inputValue)
-    })
+    return options.filter(option =>
+      this.filter === 'includes'
+        ? includes(option.textContent, this.inputValue)
+        : startsWith(option.textContent, this.inputValue),
+    )
   }
 
   private hasOptions() {

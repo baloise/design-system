@@ -23,7 +23,7 @@ export class OverlayBaseController<Opts, Overlay> implements ControllerShape<Opt
   }
 
   /**
-   * When `id` is not provided, it dismisses the top overlay.
+   * Dismisses all overlays
    */
   dismissAll(data?: any, role?: string) {
     return this.ctrl.dismissAll(data, role)
