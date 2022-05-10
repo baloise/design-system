@@ -1,6 +1,6 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import isString from 'lodash.isstring'
+import isArray from 'lodash.isarray'
 import { findItemLabel } from '../../../helpers/helpers'
 import {
   areArraysEqual,
@@ -323,9 +323,11 @@ export class Select {
    */
   @Method()
   async setFocus() {
-    if (this.inputElement && !this.disabled) {
-      this.inputElement.focus()
-    }
+    setTimeout(() => {
+      if (this.inputElement && !this.disabled) {
+        this.inputElement.focus()
+      }
+    })
   }
 
   /**
@@ -566,10 +568,10 @@ export class Select {
     if (isNil(this.value)) {
       this.rawValue = []
     } else {
-      if (isString(this.value)) {
-        this.rawValue = [this.value]
-      } else {
+      if (isArray(this.value)) {
         this.rawValue = [...this.value.filter(v => !isNil(v))]
+      } else {
+        this.rawValue = [this.value]
       }
     }
   }
