@@ -41,10 +41,10 @@ export const BalComponentStory = (story: BalComponentStoryOptions): BalComponent
     ...story.argTypes,
   }
 
-  const components = { [toPascalCase(story.component.name)]: story.component, ...story.subcomponents }
+  const components = { [story.component.name]: story.component, ...story.subcomponents }
   return {
     story: {
-      title: story.title || `Components/${toPascalCase(story.component.name).substring(3)}`,
+      title: story.title || `Components/${story.component.name.substring(3)}`,
       component: story.component,
       subcomponents: story.subcomponents || {},
       argTypes,
