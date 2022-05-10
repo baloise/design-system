@@ -72,7 +72,7 @@
   "dependencies": {
     "@baloise/design-system-fonts": "10.10.8",
     "@baloise/design-system-icons": "10.10.8",
-    "@baloise/web-app-utils": "^3.3.3",
+    "@baloise/web-app-utils": "^3.4.0",
     "@popperjs/core": "^2.11.4",
     "@stencil/core": "^2.14.2",
     "@types/big.js": "^6.1.3",
