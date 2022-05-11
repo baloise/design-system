@@ -1608,19 +1608,21 @@ export namespace Components {
          */
         "color": Props.BalStageColor;
         /**
-          * Defines the height of the stage section.
+          * If true the Baloise Shape is set
          */
-        "rounded": boolean;
+        "hasShape"?: boolean | undefined;
         /**
-          * Defines the height of the stage section.
+          * sets text color to white for images and dark backgrounds (optional)
          */
-        "size": Props.BalStageSize;
+        "inverted": undefined | boolean;
+    }
+    interface BalStageBackLink {
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href": string;
     }
     interface BalStageBody {
-        /**
-          * If `true` the inner container uses the compact layout.
-         */
-        "compact": boolean;
     }
     interface BalStageFoot {
     }
@@ -2402,6 +2404,12 @@ declare global {
         prototype: HTMLBalStageElement;
         new (): HTMLBalStageElement;
     };
+    interface HTMLBalStageBackLinkElement extends Components.BalStageBackLink, HTMLStencilElement {
+    }
+    var HTMLBalStageBackLinkElement: {
+        prototype: HTMLBalStageBackLinkElement;
+        new (): HTMLBalStageBackLinkElement;
+    };
     interface HTMLBalStageBodyElement extends Components.BalStageBody, HTMLStencilElement {
     }
     var HTMLBalStageBodyElement: {
@@ -2563,6 +2571,7 @@ declare global {
         "bal-snackbar": HTMLBalSnackbarElement;
         "bal-spinner": HTMLBalSpinnerElement;
         "bal-stage": HTMLBalStageElement;
+        "bal-stage-back-link": HTMLBalStageBackLinkElement;
         "bal-stage-body": HTMLBalStageBodyElement;
         "bal-stage-foot": HTMLBalStageFootElement;
         "bal-stage-head": HTMLBalStageHeadElement;
@@ -4251,19 +4260,21 @@ declare namespace LocalJSX {
          */
         "color"?: Props.BalStageColor;
         /**
-          * Defines the height of the stage section.
+          * If true the Baloise Shape is set
          */
-        "rounded"?: boolean;
+        "hasShape"?: boolean | undefined;
         /**
-          * Defines the height of the stage section.
+          * sets text color to white for images and dark backgrounds (optional)
          */
-        "size"?: Props.BalStageSize;
+        "inverted"?: undefined | boolean;
+    }
+    interface BalStageBackLink {
+        /**
+          * Specifies the URL of the page the link goes to
+         */
+        "href": string;
     }
     interface BalStageBody {
-        /**
-          * If `true` the inner container uses the compact layout.
-         */
-        "compact"?: boolean;
     }
     interface BalStageFoot {
     }
@@ -4654,6 +4665,7 @@ declare namespace LocalJSX {
         "bal-snackbar": BalSnackbar;
         "bal-spinner": BalSpinner;
         "bal-stage": BalStage;
+        "bal-stage-back-link": BalStageBackLink;
         "bal-stage-body": BalStageBody;
         "bal-stage-foot": BalStageFoot;
         "bal-stage-head": BalStageHead;
@@ -4755,6 +4767,7 @@ declare module "@stencil/core" {
             "bal-snackbar": LocalJSX.BalSnackbar & JSXBase.HTMLAttributes<HTMLBalSnackbarElement>;
             "bal-spinner": LocalJSX.BalSpinner & JSXBase.HTMLAttributes<HTMLBalSpinnerElement>;
             "bal-stage": LocalJSX.BalStage & JSXBase.HTMLAttributes<HTMLBalStageElement>;
+            "bal-stage-back-link": LocalJSX.BalStageBackLink & JSXBase.HTMLAttributes<HTMLBalStageBackLinkElement>;
             "bal-stage-body": LocalJSX.BalStageBody & JSXBase.HTMLAttributes<HTMLBalStageBodyElement>;
             "bal-stage-foot": LocalJSX.BalStageFoot & JSXBase.HTMLAttributes<HTMLBalStageFootElement>;
             "bal-stage-head": LocalJSX.BalStageHead & JSXBase.HTMLAttributes<HTMLBalStageHeadElement>;
