@@ -43,7 +43,7 @@ const isMobile = (win: Window) => {
 
 const isTablet = (win: Window) => {
   const width = win.innerWidth
-  return width > 767 && width < 1400
+  return width > 767 && width < 1024
 }
 
 const isDesktop = (win: Window) => !isMobile(win) && !isTablet(win)
