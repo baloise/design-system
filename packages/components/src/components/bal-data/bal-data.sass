@@ -1,0 +1,62 @@
++block(data)
+  position: relative
+  display: flex
+  flex-direction: column
+  max-width: 100%
+  width: 100%
+  outline: none
+  text-decoration: none
+  overflow-wrap: break-word
+  white-space: normal
+  +modifier(*)
+    display: flex
+    flex: 1 1
+    flex-wrap: wrap
+  +block(data-item)
+    display: flex
+    flex: 1 1
+    min-height: 48px
+    justify-content: flex-start
+    align-items: center
+    flex-wrap: wrap
+    padding: 16px 0
+    +block(data-label)
+      position: relative;
+      display: block;
+      color: $blue;
+      flex: 1 1;
+      flex-basis: 100%;
+
+      font-family: $family-primary;
+      font-weight: $weight-bold;
+      font-size: $size-small;
+      line-height: $size-normal;
+      +block(hint)
+        margin-left: 8px;
+        position: absolute;
+        top: -3px;
+
+  +block(data-value)
+    display: block
+    flex: 1 1
+    flex-basis: 100%
+    margin-top: 4px
+    min-height: 24px
+
+    font-family: $family-primary
+    font-weight: $weight-normal
+    font-size: $size-normal
+    line-height: $size-normal
+    +modifier(div)
+      font-family: $family-primary;
+      font-weight: $weight-normal;
+      font-size: $size-normal;
+      line-height: 1.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+      padding-bottom: 2px;
+      +modifier(ul)
+        margin-bottom: 0 !important;
+
