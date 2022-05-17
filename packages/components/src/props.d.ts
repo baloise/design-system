@@ -41,6 +41,7 @@ export namespace Props {
     | 'yellow-light'
     | 'purple-light'
     | 'green-light'
+    | 'grey-light'
 
   export type BalCloseSize = 'small' | 'large' | 'medium' | ''
 
