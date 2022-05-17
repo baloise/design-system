@@ -74,9 +74,6 @@ export const selectors = {
   tag: {
     text: '.bal-tag__label',
   },
-  heading: {
-    content: '.data-test-heading',
-  },
   card: {
     title: 'bal-heading',
   },
@@ -129,7 +126,6 @@ export const wrapCommand = (
       .wrapComponent(element as any, { log: false })
       .find(selector, { log: false })
       .then($el => {
-        console.log($el)
         Cypress.log({
           type: 'parent',
           $el,

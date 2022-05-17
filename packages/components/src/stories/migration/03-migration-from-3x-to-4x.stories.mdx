@@ -11,12 +11,12 @@ import { Meta } from '@storybook/addon-docs'
 
 # Migration from 3.x to 4.x
 
-The following workflow walks through the steps of migrating from version 3.x to 4.x.
+The following workflow walks you through the migration steps.
 Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
 
 ## Card
 
-We removed the deprecated props `padded` and `padding`. Use the prop `spacing`.
+The deprecated props `padded` and `padding` have been removed. Use the prop `spacing`.
 
 ```html
 <!-- - old -->
@@ -39,28 +39,28 @@ We removed the deprecated props `padded` and `padding`. Use the prop `spacing`.
 
 ## CSS helper classes
 
-- `has-no-margin` use now `m-0`
-- `has-no-margin-top` use now `mt-0`
-- `has-no-margin-bottom` use now `mb-0`
-- `has-no-padding` use now `p-0`
-- `has-no-padding-top` use now `pt-0`
-- `has-no-padding-bottom` use now `pb-0`
-- `has-margin-top` use now `mt-4`
-- `has-large-margin-top` use now `mt-7`
-- `has-margin-bottom` use now `mb-4`
-- `has-large-margin-bottom` use now `mb-7`
-- `has-padding-top` use now `pt-4`
-- `has-large-padding-top` use now `pt-7`
-- `has-padding-bottom` use now `pb-4`
-- `has-large-padding-bottom` use now `pb-7`
-- `is-padded` use now `px-4`
-- `has-padding` use now `px-4`
-- `has-large-padding` use now `px-7`
+- replace `has-no-margin` with `m-0`
+- replace `has-no-margin-top` with `mt-0`
+- replace `has-no-margin-bottom` with `mb-0`
+- replace `has-no-padding` with `p-0`
+- replace `has-no-padding-top` with `pt-0`
+- replace `has-no-padding-bottom` with `pb-0`
+- replace `has-margin-top` with `mt-4`
+- replace `has-large-margin-top` with `mt-7`
+- replace `has-margin-bottom` with `mb-4`
+- replace `has-large-margin-bottom` with `mb-7`
+- replace `has-padding-top` with `pt-4`
+- replace `has-large-padding-top` with `pt-7`
+- replace `has-padding-bottom` with `pb-4`
+- replace `has-large-padding-bottom` with `pb-7`
+- replace `is-padded` with `px-4`
+- replace `has-padding` with `px-4`
+- replace `has-large-padding` with `px-7`
 
 ## Spacing
 
-We created responsive spacing helper and get rid off the large ones.
-So `9-16` can be replaces with `8`.
+responsive spacing helpers have been created the large ones have been removed.
+So `9-16` can be replaced with `8`.
 
 [Go to the spacing chapter](?path=/docs/design-spacing--paddings)
 

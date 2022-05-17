@@ -3,8 +3,7 @@
   "compilerOptions": {
     "noUnusedParameters": false,
     "outDir": "dist-transpiled",
-    "declarationDir": "dist/types",
-    "jsx": "react"
+    "declarationDir": "dist/types"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"],

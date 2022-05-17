@@ -46,9 +46,11 @@ export const inputListenOnClick = <Value>(component: FormInput<Value>, event: UI
 }
 
 export const inputSetFocus = <Value>(component: FormInput<Value>): void => {
-  if (component.nativeInput) {
-    component.nativeInput.focus()
-  }
+  setTimeout(() => {
+    if (component.nativeInput) {
+      component.nativeInput.focus()
+    }
+  })
 }
 
 export const inputHandleHostClick = <Value>(component: FormInput<Value>, event: MouseEvent) => {
