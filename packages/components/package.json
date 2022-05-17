@@ -31,6 +31,7 @@
     "dist/",
     "loader/",
     "src/styles/",
+    "src/components/**/*.sass",
     "src/components/**/*.scss"
   ],
   "scripts": {
@@ -68,6 +69,8 @@
     "cy:visual:actual": "cypress run --browser chrome --env type=actual --config testFiles=\"visual/*spec.ts\""
   },
   "dependencies": {
+    "@baloise/design-system-next-tokens": "10.10.9",
+    "@baloise/design-system-next-fonts": "10.10.9",
     "@baloise/design-system-next-css": "10.10.9",
     "@baloise/design-system-next-icons": "10.10.9",
     "@baloise/web-app-utils": "^3.4.0",

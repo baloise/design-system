@@ -59,6 +59,8 @@
   "dependencies": {
     "@baloise/design-system-next-components": "10.10.9",
     "@baloise/design-system-next-css": "10.10.9",
+    "@baloise/design-system-next-tokens": "10.10.9",
+    "@baloise/design-system-next-fonts": "10.10.9",
     "lodash.isnil": "^4.0.0"
   },
   "peerDependencies": {
