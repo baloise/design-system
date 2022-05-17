@@ -31,6 +31,7 @@
     "dist/",
     "loader/",
     "src/styles/",
+    "src/components/**/*.sass",
     "src/components/**/*.scss"
   ],
   "scripts": {
