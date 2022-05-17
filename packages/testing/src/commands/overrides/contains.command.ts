@@ -2,13 +2,10 @@ import {
   isAccordion,
   isButton,
   isNumberInput,
-  isCardTitle,
   isCheckbox,
-  isHeading,
   isInput,
   isRadio,
   isTag,
-  isText,
   isTextarea,
   isModal,
   isDatepicker,
@@ -46,14 +43,6 @@ Cypress.Commands.overwrite('contains', (originalFn: any, element: any, content, 
 
   if (isTag(element)) {
     return command(selectors.tag.text)
-  }
-
-  if (isHeading(element) || isCardTitle(element)) {
-    return command(selectors.heading.content)
-  }
-
-  if (isText(element)) {
-    return command('span')
   }
 
   if (isModal(element)) {

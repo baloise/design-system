@@ -19,7 +19,7 @@ export const config: Config = {
       type: 'docs-json',
       file: './generated/components.json',
     },
-    VueGenerator('../../..', './.storybook/vue/components', []),
+    VueGenerator('../..', './.storybook/vue/components.ts', []),
     {
       type: 'www',
       dir: 'public',

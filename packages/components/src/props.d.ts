@@ -41,11 +41,14 @@ export namespace Props {
     | 'yellow-light'
     | 'purple-light'
     | 'green-light'
+    | 'grey-light'
 
   export type BalCloseSize = 'small' | 'large' | 'medium' | ''
 
   export type BalHeadingLevel = 'display' | 'display-1' | 'display-2' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue' | 'white'
+
+  export type BalSelectFilter = 'includes' | 'starts-with'
 
   export type BalHintPlacement = 'left' | 'right'
   export type BalIconColor = 'blue' | 'success' | 'danger' | 'warning' | 'white' | 'grey' | '' | string
@@ -127,6 +130,7 @@ export namespace Props {
 
   export type BalDatepickerCallback = (dateString: string) => boolean
 
+  export type BalFieldLabelWeight = 'bold' | 'regular'
   export type BalFieldMessageColor = '' | 'success' | 'warning' | 'danger'
 
   export type BalRadioGroupInterface = 'radio' | 'select-button'

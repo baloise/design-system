@@ -9,7 +9,7 @@ export class Field {
   /**
    * If `true` the component gets a invalid red style.
    */
-  @Prop() invalid = false
+  @Prop() invalid?: boolean = undefined
 
   /**
    * If `true` the component gets a valid green style.
@@ -19,53 +19,52 @@ export class Field {
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
    */
-  @Prop() disabled = false
+  @Prop() disabled?: boolean = undefined
 
   /**
    * If `true` the element can not mutated, meaning the user can not edit the control.
    */
-  @Prop() readonly = false
+  @Prop() readonly?: boolean = undefined
 
   /**
    * If `true` a loading spinner is visible at the end of the input
    */
-  @Prop() loading = false
+  @Prop() loading?: boolean = undefined
 
   private formControlElement = ['bal-field-control']
   private inputElements = ['bal-input', 'bal-textarea', 'bal-select', 'bal-datepicker', 'bal-checkbox', 'bal-radio']
   private formElements = [...this.formControlElement, 'bal-field-label', 'bal-field-message']
 
+  private updateProps(selectors: string[], key: string) {
+    const value = (this as any)[key]
+    if (value !== undefined) {
+      this.notifyComponents<any>(selectors, input => (input[key] = value))
+    }
+  }
+
   @Watch('valid')
+  validHandler() {
+    this.updateProps([...this.inputElements, ...this.formElements], 'valid')
+  }
+
   @Watch('invalid')
-  validationHandler() {
-    this.notifyComponents<{ valid: boolean; invalid: boolean }>(
-      [...this.inputElements, ...this.formElements],
-      input => {
-        input.invalid = this.invalid
-        input.valid = this.valid
-      },
-    )
+  invalidHandler() {
+    this.updateProps([...this.inputElements, ...this.formElements], 'invalid')
   }
 
   @Watch('readonly')
+  readonlyHandler() {
+    this.updateProps([...this.inputElements, ...this.formControlElement], 'readonly')
+  }
+
   @Watch('disabled')
-  usageHandler() {
-    this.notifyComponents<{
-      readonly: boolean
-      disabled: boolean
-    }>([...this.inputElements, ...this.formElements], input => {
-      input.readonly = this.readonly
-      input.disabled = this.disabled
-    })
+  disabledHandler() {
+    this.updateProps([...this.inputElements, ...this.formControlElement], 'disabled')
   }
 
   @Watch('loading')
   loadingHandler() {
-    this.notifyComponents<{
-      loading: boolean
-    }>([...this.inputElements, ...this.formControlElement], input => {
-      input.loading = this.loading
-    })
+    this.updateProps([...this.inputElements, ...this.formControlElement], 'loading')
   }
 
   private notifyComponents<T>(selectors: string[], callback: (component: T) => void) {
@@ -74,8 +73,10 @@ export class Field {
   }
 
   componentWillLoad() {
-    this.validationHandler()
-    this.usageHandler()
+    this.invalidHandler()
+    this.validHandler()
+    this.readonlyHandler()
+    this.disabledHandler()
     this.loadingHandler()
   }
 
@@ -90,23 +91,5 @@ export class Field {
         <slot></slot>
       </Host>
     )
-    // return (
-    //   <Host
-    //     class={{
-    //       'is-invalid': this.invalid,
-    //       'is-disabled': this.disabled,
-    //     }}
-    //   >
-    //     <div
-    //       class={{
-    //         'form': true,
-    //         'is-inverted': this.inverted,
-    //         'is-disabled': this.disabled || this.readonly,
-    //       }}
-    //     >
-    //       <slot></slot>
-    //     </div>
-    //   </Host>
-    // )
   }
 }

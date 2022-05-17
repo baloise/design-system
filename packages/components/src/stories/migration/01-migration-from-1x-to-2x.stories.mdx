@@ -11,7 +11,7 @@ import { Meta } from '@storybook/addon-docs'
 
 # Migration from 1.x to 2.x
 
-The following workflow walks through the steps of migrating from version 1.x to 2.x.
+The following workflow walks you through the migration steps.
 Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
 
 ## Preparations
@@ -22,15 +22,16 @@ Did you use utility functions like?
 - `filters/pipes`
 - `validations`
 
-If **No** than you can easily migrate to the new version, but if **Yes** than go to the installation guide.
+If **No** you can easily migrate to the new version, but if **Yes** go to the installation guide.
 
-Those utility function have been moved to [baloise/web-app-utils repo](https://github.com/baloise/web-app-utils). With the goal to have all utility functions at one place and to reduce the complexity of the Design System.
+Those utility functions have been moved to [baloise/web-app-utils repo](https://github.com/baloise/web-app-utils).
+This was done to have all utility functions in one place and to reduce the complexity of the Design System.
 
 ## Installation
 
-Fist we need to install the missing util packages there for follow the installation guide of the [baloise/web-app-utils documentation](https://github.com/baloise/web-app-utils).
+First you need to install the missing util packages. Therefore, follow the installation guide of the [baloise/web-app-utils documentation](https://github.com/baloise/web-app-utils).
 
-After the installation update the Design System to 2.x version and replace the import statements, which still use utility functions from the `@baloise/design-system-components` package.
+After the installation update the Design System to version 2.x and replace the import statements, which still use utility functions from the package `@baloise/design-system-components`.
 
 ### Example Utils
 

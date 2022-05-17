@@ -20,17 +20,16 @@
     "bulma-css"
   ],
   "scripts": {
-    "build": "npm run build:clean && npm run build:vite && npm run build:components && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
+    "build": "npm run build:clean && npm run build:vite && npm run build:compile && npm run build:bundle && npm run build:web-types && npm run build:vetur",
     "build:clean": "rimraf dist && rimraf dist-transpiled",
     "build:compile": "tsc -p .",
     "build:bundle": "rollup --config rollup.config.js",
-    "build:components": "node ./.build/components.js",
     "build:web-types": "node ./.build/web-types.js",
     "build:vetur": "node ./.build/vetur.js",
     "build:vite": "baloiseStencilViteFix",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.esm.js",
   "module": "./dist/index.esm.js",
   "types": "./dist/types/index.d.ts",
   "files": [
@@ -42,17 +41,18 @@
     "@baloise/stencil-vite-fix": "9.2.3",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.3",
-    "@types/lodash.camelcase": "^4.3.6",
-    "@types/lodash.upperfirst": "^4.3.6",
+    "@types/lodash.camelcase": "^4.3.7",
+    "@types/lodash.upperfirst": "^4.3.7",
     "ag-grid-community": "^26.0.0",
     "change-case": "^4.1.2",
+    "copyfiles": "^2.4.1",
     "lodash.camelcase": "^4.3.0",
     "lodash.upperfirst": "^4.3.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "typescript": "^4.3.5",
-    "vue": "^3.2.4"
+    "vue": "^3.2.33"
   },
   "peerDependencies": {
     "vue": ">=3.0.5"
