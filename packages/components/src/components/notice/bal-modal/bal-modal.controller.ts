@@ -1,3 +1,4 @@
+import { getOverlays } from './../../../helpers/overlays'
 import { componentOnReady, getAppRoot } from '../../../helpers/helpers'
 import { getOverlay } from '../../../helpers/overlays'
 import { ModalOptions } from './bal-modal.type'
@@ -21,6 +22,14 @@ export class BalModalController {
       })
     }
     return Promise.resolve() as any
+  }
+
+  async dismissAll(data?: any, role?: string): Promise<void> {
+    const overlays = getOverlays(document, this.tag)
+    if (overlays.length < 1) {
+      return Promise.reject('overlay does not exist')
+    }
+    await Promise.all(overlays.map(o => o.dismiss(data, role)))
   }
 
   dismiss(data?: any, role?: string, id?: string): Promise<boolean> {

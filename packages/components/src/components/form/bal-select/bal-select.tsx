@@ -1,6 +1,6 @@
 import { Component, h, Host, State, Prop, Watch, EventEmitter, Event, Method, Element, Listen } from '@stencil/core'
 import isNil from 'lodash.isnil'
-import isString from 'lodash.isstring'
+import isArray from 'lodash.isarray'
 import { findItemLabel } from '../../../helpers/helpers'
 import {
   areArraysEqual,
@@ -24,8 +24,8 @@ import {
   validateAfterBlur,
 } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
-
 import { BalOptionValue } from './utils/bal-option.type'
+import { Props } from '../../../props'
 
 export interface BalOptionController extends BalOptionValue {
   id: string
@@ -64,6 +64,11 @@ export class Select {
    * If `true` the component gets a invalid style.
    */
   @Prop() invalid = false
+
+  /**
+   * If `true` the component gets a invalid style.
+   */
+  @Prop() filter: Props.BalSelectFilter = 'includes'
 
   /**
    * The tabindex of the control.
@@ -131,6 +136,11 @@ export class Select {
    * Defines if the select is in a loading state.
    */
   @Prop() loading = false
+
+  /**
+   * If `true` the filtering is done outside the component.
+   */
+  @Prop() remote = false
 
   /**
    * Selected option values. Could also be passed as a string, which gets transformed.
@@ -301,9 +311,11 @@ export class Select {
       }
     }
     this.options = new Map(options)
-    this.syncNativeInput()
-    if (this.didInit) {
-      this.validateAfterBlur()
+    if (!this.remote) {
+      this.syncNativeInput()
+      if (this.didInit) {
+        this.validateAfterBlur()
+      }
     }
   }
 
@@ -312,9 +324,11 @@ export class Select {
    */
   @Method()
   async setFocus() {
-    if (this.inputElement && !this.disabled) {
-      this.inputElement.focus()
-    }
+    setTimeout(() => {
+      if (this.inputElement && !this.disabled) {
+        this.inputElement.focus()
+      }
+    })
   }
 
   /**
@@ -385,12 +399,16 @@ export class Select {
    ********************************************************/
 
   private get optionArray() {
-    return Array.from(this.options, ([_, value]) => value).filter(option => {
-      if (this.typeahead) {
-        return includes(option.textContent, this.inputValue)
-      }
-      return true
-    })
+    const options = Array.from(this.options, ([_, value]) => value)
+    if (!this.typeahead || this.remote) {
+      return options
+    }
+
+    return options.filter(option =>
+      this.filter === 'includes'
+        ? includes(option.textContent, this.inputValue)
+        : startsWith(option.textContent, this.inputValue),
+    )
   }
 
   private hasOptions() {
@@ -551,10 +569,10 @@ export class Select {
     if (isNil(this.value)) {
       this.rawValue = []
     } else {
-      if (isString(this.value)) {
-        this.rawValue = [this.value]
-      } else {
+      if (isArray(this.value)) {
         this.rawValue = [...this.value.filter(v => !isNil(v))]
+      } else {
+        this.rawValue = [this.value]
       }
     }
   }
@@ -618,7 +636,7 @@ export class Select {
   }
 
   private syncNativeInput() {
-    if (!this.multiple) {
+    if (!this.multiple && !this.remote) {
       if (length(this.rawValue) > 0) {
         const valuesArray = getValues(this.rawValue)
         let label = findLabelByValue(this.options, valuesArray[0])

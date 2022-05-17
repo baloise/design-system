@@ -130,3 +130,6 @@ packages/icons/docs/icons.json
 packages/icons/docs/icons.zip
 packages/components/cypress/videos
 packages/css/css
+packages/components-vue/src/proxies.ts
+packages/components-vue/src/vue-component-lib
+packages/components/.storybook/vue

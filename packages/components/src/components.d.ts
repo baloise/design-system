@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Props } from "./types";
 import { Props as Props1 } from "./props";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
+import { Props as Props2 } from ".";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
@@ -559,19 +560,19 @@ export namespace Components {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
         /**
           * If `true` the component gets a invalid red style.
          */
-        "invalid": boolean;
+        "invalid"?: boolean;
         /**
           * If `true` a loading spinner is visible at the end of the input
          */
-        "loading": boolean;
+        "loading"?: boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
-        "readonly": boolean;
+        "readonly"?: boolean;
         /**
           * If `true` the component gets a valid green style.
          */
@@ -622,6 +623,10 @@ export namespace Components {
           * If `true` the component gets a valid green style.
          */
         "valid": boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "weight": Props.BalFieldLabelWeight;
     }
     interface BalFieldMessage {
         /**
@@ -1402,6 +1407,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "filter": Props.BalSelectFilter;
+        /**
           * Sets the focus on the input element
          */
         "getValue": () => Promise<string[] | undefined>;
@@ -1449,6 +1458,10 @@ export namespace Components {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
+        /**
+          * If `true` the filtering is done outside the component.
+         */
+        "remote": boolean;
         /**
           * Defines the height of the popover list.
          */
@@ -3221,6 +3234,10 @@ declare namespace LocalJSX {
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "weight"?: Props.BalFieldLabelWeight;
     }
     interface BalFieldMessage {
         /**
@@ -4026,6 +4043,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "filter"?: Props.BalSelectFilter;
+        /**
           * @deprecated Enables the slide in animation for the option items.
          */
         "hasMovement"?: boolean;
@@ -4093,6 +4114,10 @@ declare namespace LocalJSX {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true` the filtering is done outside the component.
+         */
+        "remote"?: boolean;
         /**
           * Defines the height of the popover list.
          */

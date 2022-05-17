@@ -137,9 +137,11 @@ export class Slider {
    */
   @Method()
   async setFocus() {
-    if (this.nativeInput) {
-      this.nativeInput.focus()
-    }
+    setTimeout(() => {
+      if (this.nativeInput) {
+        this.nativeInput.focus()
+      }
+    })
   }
 
   /**

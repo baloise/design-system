@@ -33,14 +33,17 @@ export const vueComponentModels: ComponentModelConfig[] = [
 
 export const VueGenerator = (
   componentCorePackage = '@baloise/design-system-next-components',
-  proxiesDir = '../components-vue/src/proxies',
+  proxiesFile = '../components-vue/src/proxies.ts',
   excludeComponents = docComponents,
 ) =>
   vueOutputTarget({
+    includeImportCustomElements: true,
+    includePolyfills: false,
+    includeDefineCustomElements: false,
+    proxiesFile,
     componentCorePackage,
-    proxiesDir,
     componentModels: vueComponentModels,
-    includeUtils: false,
     excludeComponents,
+    customElementsDir: 'dist/components'
   })
 
