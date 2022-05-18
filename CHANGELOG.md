@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.11.1](https://github.com/baloise-incubator/design-system/compare/v10.11.0...v10.11.1) (2022-05-18)
+
+
+### Bug Fixes
+
+* **spinner:** animation assets ([bc963aa](https://github.com/baloise-incubator/design-system/commit/bc963aa839d0b91b0452c21a140733fcdacda242))
+
+
+
 ## [10.11.0](https://github.com/baloise-incubator/design-system/compare/v10.10.9...v10.11.0) (2022-05-17)
 
 
