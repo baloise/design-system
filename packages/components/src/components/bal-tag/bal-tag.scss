@@ -84,6 +84,7 @@ bal-tag.tag {
 }
 
 bal-card {
+  position: relative;
   & > bal-tag {
     position: absolute;
     left: 16px;
