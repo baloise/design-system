@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Event, EventEmitter, Element, Watch } from '@stencil/core'
+import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core'
 import { Props } from '../../../props'
 
 @Component({
@@ -28,14 +28,6 @@ export class ListItem {
   @Prop() accordion = false
 
   /**
-   * If `true` the list accordion is open
-   */
-  @Prop() accordionOpen = false
-  @Watch('accordionOpen')
-  accordionHandler() {
-    this.updateState(this.accordionOpen)
-  }
-  /**
    * Specifies the URL of the page the link goes to
    */
   @Prop() href = ''
@@ -56,9 +48,6 @@ export class ListItem {
       accordionHead.addEventListener('balAccordionChange', (event: CustomEvent<boolean>) =>
         this.updateState(event.detail),
       )
-    }
-    if (this.accordionOpen) {
-      this.accordionHandler()
     }
   }
 

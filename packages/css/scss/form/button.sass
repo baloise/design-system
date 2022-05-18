@@ -21,8 +21,8 @@
   justify-content: center
   padding: 12px 24px
   min-height: 48px
-  text-align: center
-  white-space: nowrap
+  text-align: left
+  word-break: break-word
   outline: none
   z-index: 0
   box-sizing: border-box
@@ -43,10 +43,8 @@
     justify-content: center
     margin-top: -3px
   .icon-left
-    margin-left: -4px
     margin-right: 8px
   .icon-right
-    margin-right: -4px
     margin-left: 8px
   // Modifiers
   &.is-fullwidth
@@ -116,14 +114,9 @@
   &.is-text,
   &.is-link
     border-color: transparent
-  &.is-link
-    & > span::after
-      display: block
-      content: ""
-      height: 2px
-      width: 100%
-      background: var(--bal-color-blue)
-      margin-top: -2px
+    text-decoration: underline
+    text-underline-offset: 4px
+    text-decoration-thickness: 2px
     // States
     &:hover,
     &.is-hovered
@@ -250,23 +243,17 @@
       background: transparent
       border-color: transparent
       color: var(--bal-color-white)
-      & > span::after
-        background: var(--bal-color-white)
       // States
       &:hover,
       &.is-hovered
         background: transparent
         border-color: transparent
         color: var(--bal-color-light-blue-2)
-        & > span::after
-          background: var(--bal-color-light-blue-2)
       &:active,
       &.is-active
         background: transparent
         border-color: transparent
         color: var(--bal-color-info-3)
-        & > span::after
-          background: var(--bal-color-info-3)
   &.is-light
     background: var(--bal-color-blue-3)
     border-color: var(--bal-color-blue-3)
