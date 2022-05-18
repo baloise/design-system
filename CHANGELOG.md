@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.11.2](https://github.com/baloise-incubator/design-system/compare/v10.11.1...v10.11.2) (2022-05-18)
+
+
+### Bug Fixes
+
+* **link:** adjust underline thickness ([adc52ef](https://github.com/baloise-incubator/design-system/commit/adc52ef11433eb07ff27aff90998eb092774ca1a))
+* **link:** is-link only active on a elements withou ([36eb9c8](https://github.com/baloise-incubator/design-system/commit/36eb9c89f11f43d8db3f68b59c72e198bc5b22ab))
+* **list:** fix open prop ([5529b07](https://github.com/baloise-incubator/design-system/commit/5529b07702f1bb5ad94703c62ae96095b598b33c))
+
+
+
 ### [10.11.1](https://github.com/baloise-incubator/design-system/compare/v10.11.0...v10.11.1) (2022-05-18)
 
 
