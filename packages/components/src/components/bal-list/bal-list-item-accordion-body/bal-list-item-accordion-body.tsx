@@ -20,7 +20,7 @@ export class ListItemAccordionBody {
     this.calcContentHeight()
   }
 
-  componentWillRender() {
+  componentDidRender() {
     this.calcContentHeight()
   }
 

@@ -1019,10 +1019,6 @@ export namespace Components {
          */
         "accordion": boolean;
         /**
-          * If `true` the list accordion is open
-         */
-        "accordionOpen": boolean;
-        /**
           * If `true` the list item shows that it is clickable
          */
         "clickable": boolean;
@@ -1050,6 +1046,10 @@ export namespace Components {
         "open": boolean;
     }
     interface BalListItemAccordionHead {
+        /**
+          * If `true` the list accordion is open
+         */
+        "accordionOpen": boolean;
     }
     interface BalListItemContent {
     }
@@ -3646,10 +3646,6 @@ declare namespace LocalJSX {
          */
         "accordion"?: boolean;
         /**
-          * If `true` the list accordion is open
-         */
-        "accordionOpen"?: boolean;
-        /**
           * If `true` the list item shows that it is clickable
          */
         "clickable"?: boolean;
@@ -3681,6 +3677,10 @@ declare namespace LocalJSX {
         "open"?: boolean;
     }
     interface BalListItemAccordionHead {
+        /**
+          * If `true` the list accordion is open
+         */
+        "accordionOpen"?: boolean;
         /**
           * Emitted when the accordion state is changed
          */
