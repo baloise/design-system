@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.11.1](https://github.com/baloise/design-system/compare/v10.11.0...v10.11.1) (2022-05-18)
+
+
+### Bug Fixes
+
+* **tag:** add relative position on bal-card element ([064623a](https://github.com/baloise/design-system/commit/064623abb918d1534c62f4c8abfb3d9110e912aa))
+
+
+
 ## [10.11.0](https://github.com/baloise/design-system/compare/v10.10.8...v10.11.0) (2022-05-10)
 
 
