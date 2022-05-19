@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.11.3](https://github.com/baloise-incubator/design-system/compare/v10.11.2...v10.11.3) (2022-05-19)
+
+
+### Bug Fixes
+
+* **button:** adjust height for long texts ([2262756](https://github.com/baloise-incubator/design-system/commit/2262756faa8ea72a649e60518acd13a6090441ac))
+
+
+
 ### [10.11.2](https://github.com/baloise-incubator/design-system/compare/v10.11.1...v10.11.2) (2022-05-18)
 
 
