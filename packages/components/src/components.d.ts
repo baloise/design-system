@@ -574,6 +574,10 @@ export namespace Components {
          */
         "readonly"?: boolean;
         /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required": boolean;
+        /**
           * If `true` the component gets a valid green style.
          */
         "valid": boolean;
@@ -619,6 +623,10 @@ export namespace Components {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
+        /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required": boolean;
         /**
           * If `true` the component gets a valid green style.
          */
@@ -3185,6 +3193,10 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required"?: boolean;
+        /**
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
@@ -3230,6 +3242,10 @@ declare namespace LocalJSX {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required"?: boolean;
         /**
           * If `true` the component gets a valid green style.
          */

@@ -7,6 +7,12 @@ export class Field {
   @Element() element!: HTMLElement
 
   /**
+   * If `true` the form control needs to be filled. If it is set to
+   * `false` an optional label is added to the label..
+   */
+  @Prop() required = true
+
+  /**
    * If `true` the component gets a invalid red style.
    */
   @Prop() invalid?: boolean = undefined
@@ -42,6 +48,11 @@ export class Field {
     }
   }
 
+  @Watch('required')
+  requiredHandler() {
+    this.updateProps([...this.inputElements, 'bal-field-label'], 'required')
+  }
+
   @Watch('valid')
   validHandler() {
     this.updateProps([...this.inputElements, ...this.formElements], 'valid')
@@ -73,6 +84,7 @@ export class Field {
   }
 
   componentWillLoad() {
+    this.requiredHandler()
     this.invalidHandler()
     this.validHandler()
     this.readonlyHandler()
