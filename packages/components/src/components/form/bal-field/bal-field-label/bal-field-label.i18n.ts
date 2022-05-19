@@ -6,7 +6,7 @@ interface I18nFieldLabel {
 
 export const i18nFieldLabel: I18n<I18nFieldLabel> = {
   de: {
-    optional: ' (Optional)',
+    optional: ' (optional)',
   },
   en: {
     optional: ' (optional)',
