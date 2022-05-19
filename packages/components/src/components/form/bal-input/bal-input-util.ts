@@ -30,7 +30,7 @@ export function formatClaim(value: string): string {
 /**
  *
  * @param value: input number
- * @output 00/0.000.000
+ * @output 99/1.234.567-1
  * @private
  */
 export function formatPolicy(value: string): string {
@@ -38,10 +38,10 @@ export function formatPolicy(value: string): string {
     return ''
   }
   let newValue = `${value}`.trim()
-  if (newValue[0] !== '0') {
-    newValue = `0${value}`
-  }
-  return formatOffer(newValue)
+  const parts = [newValue.substring(0, 9), newValue.substring(9, 10)].filter(val => val.length > 0)
+  newValue = formatOffer(parts[0])
+
+  return parts[1] ? `${newValue}-${parts[1]}` : newValue
 }
 
 /**
@@ -72,6 +72,6 @@ export function formatOffer(value: string): string {
       return `${parts[0]}/${parts[1]}.${parts[2]}.${parts[3]}`
   }
 }
-export const MAX_LENGTH_CONTRACT_NUMBER = 9
+export const MAX_LENGTH_CONTRACT_NUMBER = 10
 export const MAX_LENGTH_OFFER_NUMBER = 9
 export const MAX_LENGTH_CLAIM_NUMBER = 11
