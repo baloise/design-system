@@ -59,8 +59,8 @@ describe('bal-input-util testing:', () => {
   })
   describe('formatPolicy', () => {
     test('full entry:', () => {
-      const result = formatPolicy('98765432')
-      expect(result).toStrictEqual('09/8.765.432')
+      const result = formatPolicy('9087654321')
+      expect(result).toStrictEqual('90/8.765.432-1')
     })
     test('empty:', () => {
       const result = formatPolicy('')
@@ -70,13 +70,13 @@ describe('bal-input-util testing:', () => {
       const result = formatPolicy('098765432')
       expect(result).toStrictEqual('09/8.765.432')
     })
-    test('9 characters without starting 0:', () => {
+    test('9 characters:', () => {
       const result = formatPolicy('987654327')
-      expect(result).toStrictEqual('09/8.765.432')
+      expect(result).toStrictEqual('98/7.654.327')
     })
-    test('10 characters without starting 0:', () => {
-      const result = formatPolicy('0987654327')
-      expect(result).toStrictEqual('09/8.765.432')
+    test('11 characters', () => {
+      const result = formatPolicy('90876543278')
+      expect(result).toStrictEqual('90/8.765.432-7')
     })
   })
 })
