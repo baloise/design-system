@@ -6,18 +6,20 @@ import { BEM } from '../../../utils/bem'
 })
 export class HintText {
   render() {
-    const block = BEM.block('hint-text')
+    const block = BEM.block('hint')
     const elContent = block.element('content')
+    const elText = elContent.element('text')
+    const elTextField = elText.element('field')
 
     return (
       <Host
         class={{
-          ...block.class(),
+          ...elText.class(),
         }}
       >
         <p
           class={{
-            ...elContent.class(),
+            ...elTextField.class(),
           }}
         >
           <slot></slot>

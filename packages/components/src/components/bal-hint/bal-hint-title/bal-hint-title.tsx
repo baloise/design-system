@@ -6,18 +6,19 @@ import { BEM } from '../../../utils/bem'
 })
 export class HintTitle {
   render() {
-    const block = BEM.block('hint-title')
-    const elHeading = block.element('heading')
+    const block = BEM.block('hint')
+    const elContent = block.element('content')
+    const elTitle = elContent.element('title')
+    const elHeading = elTitle.element('heading')
 
     return (
       <Host
         class={{
-          ...block.class(),
+          ...elTitle.class(),
         }}
       >
         <bal-heading
           class={{
-            ...block.class(),
             ...elHeading.class(),
           }}
           level="h4"

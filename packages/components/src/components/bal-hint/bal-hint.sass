@@ -49,22 +49,22 @@
         +tablet
           display: none !important
 
-+block(hint-title)
-  display: block
-  font-family: var(--bal-family-primary)
+    +element(text)
+      display: block
+      font-family: var(--bal-family-primary)
+      margin-bottom: 24px
 
-  +element(heading)
-    & > .title
-      margin-top: 0
+      +element(content)
+        font-weight: initial
+        font-family: var(--bal-family-primary)
+        &:last-child 
+          margin-bottom: 0 !important
+
+    +element(title)
+      display: block
       font-family: var(--bal-family-primary)
 
-+block(hint-text)
-  display: block
-  font-family: var(--bal-family-primary)
-  margin-bottom: 24px
-
-  +element(content)
-    font-weight: initial
-    font-family: var(--bal-family-primary)
-    &:last-child 
-      margin-bottom: 0 !important
+      +element(heading)
+        & > .title
+          margin-top: 0
+          font-family: var(--bal-family-primary)
