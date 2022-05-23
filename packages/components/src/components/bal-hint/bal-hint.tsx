@@ -156,13 +156,9 @@ export class Hint implements BalConfigObserver {
           <bal-button-group
             class={{
               ...elButtons.class(),
-              //'buttons': true,
               ...elButtons.modifier(rowReverseClass).class(hasRowReverse),
-              //'is-row-reverse': true,
-              // 'mt-5': true, ?? Why we need this?
+              // 'mt-5': true,
               ...elButtons.modifier(hiddenDesktopClass).class(hasHiddenDesktop),
-              //'is-hidden-desktop': this.small,
-              buttons: true, // why??
             }}
           >
             <bal-button class="data-test-hint-close" color="info" onClick={() => this.dismiss()}>
@@ -174,7 +170,3 @@ export class Hint implements BalConfigObserver {
     )
   }
 }
-
-// QUESTIONS:
-// 1. Why we need mt-5 on buttons group when we override it in css?
-// 2. Buttons group margin bottom?
