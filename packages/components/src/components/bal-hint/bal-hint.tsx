@@ -115,9 +115,9 @@ export class Hint implements BalConfigObserver {
     const sizeClass = 'is-small'
     const hasPlacement = true
     const placementClass = `is-placed-${this.placement}`
-    const elLabel = block.element('content')
+    const elContent = block.element('content')
     const elIcon = block.element('icon')
-    const elButtons = elLabel.element('buttons')
+    const elButtons = elContent.element('buttons')
     const rowReverseClass = 'is-row-reverse'
     const hasRowReverse = true
     const hiddenDesktopClass = 'is-hidden-desktop'
@@ -145,8 +145,8 @@ export class Hint implements BalConfigObserver {
 
         <div
           class={{
-            ...elLabel.class(),
-            ...elLabel.modifier(placementClass).class(hasPlacement),
+            ...elContent.class(),
+            ...elContent.modifier(placementClass).class(hasPlacement),
             'data-test-hint-content': true,
             'p-5': true,
           }}
