@@ -4,6 +4,9 @@ $modal-content-margin-mobile: 24px !default
 $modal-content-spacing-mobile: 160px !default
 $modal-content-spacing-tablet: 48px !default
 
+:root
+  --bal-modal-width: #{$modal-content-width}
+
 +block(modal)
   @extend %overlay
   align-items: center
@@ -55,7 +58,7 @@ $modal-content-spacing-tablet: 48px !default
     // responsiveness
     +from($modal-breakpoint)
       margin: 3rem auto
-      width: $modal-content-width
+      width: var(--bal-modal-width)
     // spacing
     padding: 1rem
     .bal-modal__header
