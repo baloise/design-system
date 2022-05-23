@@ -1,7 +1,7 @@
 import { deepReady } from '@baloise/design-system-components'
 
-Cypress.Commands.overwrite<any>('visit', (originalFn, url) => {
-  originalFn(url as any)
+Cypress.Commands.add<any>('visitBalApp', (url: string, options) => {
+  cy.visit(url, options)
   cy.get('bal-app,bal-doc-app,.bal-app', { log: false })
     .first({ log: false })
     .then($app => {
