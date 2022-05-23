@@ -8,7 +8,7 @@
     cursor: pointer
     &:hover,
     &:focus
-      fill: var(--bal-color-blue)
+      fill: var(--bal-color-primary)
 
   +element(content)
     position: fixed
@@ -68,91 +68,3 @@
     font-family: var(--bal-family-primary)
     &:last-child 
       margin-bottom: 0 !important
-
-// bal-hint {
-//   display: inline-block;
-//   position: relative;
-// }
-
-// bal-icon[role='button'] {
-//   user-select: none;
-//   cursor: pointer;
-
-//   &:hover,
-//   &:focus {
-//     fill: $blue-6;
-//   }
-// }
-
-// .bal-hint-content {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   min-height: 100%;
-//   z-index: 100;
-//   background: $grey-2;
-//   border-radius: 0;
-//   display: flex;
-//   flex-direction: column;
-
-//   bal-button-group {
-//     margin-top: auto !important;
-//   }
-// }
-
-// @include tablet() {
-//   .bal-hint-content {
-//     position: absolute;
-//     border-radius: $radius-large;
-//     margin-left: 32px;
-//     top: -32px;
-//     bottom: initial;
-//     left: initial;
-//     right: initial;
-//     box-shadow: $shadow;
-//     min-height: auto;
-//     min-width: 320px;
-//   }
-
-//   bal-hint.is-small .buttons {
-//     display: none !important;
-//   }
-
-//   bal-hint.is-placed-left {
-//     .bal-hint-content {
-//       right: 40px;
-//     }
-//   }
-// }
-
-// @include desktop() {
-//   .bal-hint-content {
-//     min-width: 464px;
-//   }
-// }
-
-// bal-hint-title {
-//   display: block;
-//   font-family: $family-primary;
-
-//   .title {
-//     margin-top: 0;
-//     font-family: $family-primary;
-//   }
-// }
-
-// bal-hint-text {
-//   display: block;
-//   font-family: $family-primary;
-//   margin-bottom: 24px;
-
-//   p {
-//     font-weight: initial;
-//     font-family: $family-primary;
-
-//     &:last-child {
-//       margin-bottom: 0 !important;
-//     }
-//   }
-// }

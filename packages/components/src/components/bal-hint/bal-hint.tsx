@@ -157,7 +157,6 @@ export class Hint implements BalConfigObserver {
             class={{
               ...elButtons.class(),
               ...elButtons.modifier(rowReverseClass).class(hasRowReverse),
-              // 'mt-5': true,
               ...elButtons.modifier(hiddenDesktopClass).class(hasHiddenDesktop),
             }}
           >
