@@ -1,6 +1,6 @@
 import { deepReady } from '@baloise/design-system-components'
 
-Cypress.Commands.add<any>('visitBalApp', (url: string, options) => {
+Cypress.Commands.add('visitBalApp', (url: string, options: any) => {
   cy.visit(url, options)
   cy.get('bal-app,bal-doc-app,.bal-app', { log: false })
     .first({ log: false })
