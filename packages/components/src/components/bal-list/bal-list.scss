@@ -47,6 +47,12 @@
 
 .bal-list-item {
   position: relative;
+  & > a,
+  & > div,
+  & > button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
 }
 
 .bal-list-item a {
@@ -78,11 +84,12 @@
 }
 
 .bal-list.has-size-large {
-  .bal-list-item,
   .bal-list-item > a,
   .bal-list-item > div,
   .bal-list-item > button {
     min-height: 72px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 }
 

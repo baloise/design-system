@@ -39,9 +39,20 @@ export const Basic = args => ({
   template: `<bal-list v-bind="args">
   <bal-list-item>
     <bal-list-item-content>
-      <bal-list-item-title>Single-line item</bal-list-item-title>
+      <bal-list-item-title>Title</bal-list-item-title>
     </bal-list-item-content>
   </bal-list-item>
+  <bal-list-item>
+  <bal-list-item-content>
+    <bal-list-item-title>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta laudantium voluptatum veritatis nisi,
+      neque deserunt repellat quae tempore, ea facere, eaque magni vero incidunt iusto voluptates?
+      Minus quis temporibus consequatur? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+      Dicta laudantium voluptatum veritatis nisi, neque deserunt repellat quae tempore, ea facere,
+      eaque magni vero incidunt iusto voluptates? Minus quis temporibus consequatur?
+    </bal-list-item-title>
+  </bal-list-item-content>
+</bal-list-item>
   <bal-list-item>
     <bal-list-item-content>
       <bal-list-item-title>Two-line item</bal-list-item-title>
