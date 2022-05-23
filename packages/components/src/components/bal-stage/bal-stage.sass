@@ -1,0 +1,83 @@
+.bal-stage
+  position: relative
+
+  .bal-stage-content
+    position: relative
+    display: block
+    overflow: hidden
+
+    .bal-stage-body
+      display: flex
+      align-items: center
+      padding: 4rem 0
+      +desktop
+        min-height: 400px
+        align-items: flex-end
+        padding: 6rem 0
+
+    +modifier(is-purple)
+      .bal-stage-body
+        background: var(--bal-color-purple-3)
+    +modifier(is-green)
+      .bal-stage-body
+        background: var(--bal-color-green-3)
+    +modifier(is-red)
+      .bal-stage-body
+        background: var(--bal-color-red-3)
+    +modifier(is-yellow)
+      .bal-stage-body
+        background: var(--bal-color-yellow-3)
+    +modifier(is-inverted)
+      .bal-stage-body
+        background: var(--bal-color-primary-5)
+        h1
+          color: var(--bal-color-white)
+        h2
+          color: var(--bal-color-white)
+        a
+          color: var(--bal-color-white)
+          +fillSvg(var(--bal-color-white))
+
+    .bal-stage-image
+      overflow: hidden
+      img
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        min-height: 100%
+        min-width: 100%
+        
+    .bal-stage-back-link a
+      display: inline-flex
+      align-items: center
+      font-family: var(--bal-font-family-title)
+      font-weight: 700
+      opacity: 1
+      transition: opacity .2s ease-in
+      &:hover
+        opacity: .5
+        
+  // !! Placeholder Styling - will be replaced when shape is implemented !! //
+  .bal-stage-shape
+    div
+      position: absolute
+      text-align: center
+      font-size: 0.5rem
+      bottom: -22px
+      right: 1rem
+      width: 66px
+      height: 66px
+      background: var(--bal-color-primary-5) 
+      color: var(--bal-color-white)
+
+      +tablet
+        bottom: -40px
+        width: 120px
+        height: 120px
+
+      +desktop
+        bottom: -66px
+        right: 2rem
+        width: 198px
+        height: 198px

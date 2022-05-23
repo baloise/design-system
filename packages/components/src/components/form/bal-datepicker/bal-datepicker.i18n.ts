@@ -1,6 +1,14 @@
-import { I18n } from './bal-datepicker.type'
+import { I18n } from '../../../types'
 
-export const i18nDate: I18n = {
+interface I18nDate {
+  months: string[]
+  monthsShort: string[]
+  weekdays: string[]
+  weekdaysShort: string[]
+  weekdaysMin: string[]
+}
+
+export const i18nDate: I18n<I18nDate> = {
   de: {
     months: 'Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split('_'),
     monthsShort: 'Jan._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.'.split('_'),

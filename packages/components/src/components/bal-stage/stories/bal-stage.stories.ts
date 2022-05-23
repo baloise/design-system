@@ -8,7 +8,8 @@ const component = BalComponentStory({
   docs,
   args: {
     color: 'red',
-    size: 'medium',
+    inverted: false,
+    hasShape: true,
   },
 })
 
@@ -19,8 +20,8 @@ export const Basic = args => ({
   setup: () => ({ args }),
   template: `<bal-stage v-bind="args">
   <bal-stage-body>
-    <bal-heading space="none">Title</bal-heading>
-    <bal-heading space="none" subtitle level="h2">Subtitle</bal-heading>
+    <bal-heading class="mb-2" space="none">Title</bal-heading>
+    <bal-heading space="none" subtitle level="h2" visual-level="h1">Subtitle</bal-heading>
   </bal-stage-body>
 </bal-stage>`,
 })
@@ -33,9 +34,25 @@ export const StageWithImage = args => ({
   template: `<bal-stage v-bind="args">
   <bal-stage-image src="https://www.baloise.ch/.imaging/mte/baloise-theme/1920/dam/baloise-ch/magazin/privatkunden/header/fahrzeuge-reisen/Skipass-versichern.jpg/jcr:content/Skipass%20versichern.jpg"></bal-stage-image>
   <bal-stage-body>
-    <bal-heading space="none">Title Title</bal-heading>
+    <bal-stage-back-link href="#">Link</bal-stage-back-link>
+    <bal-heading class="mb-2" space="none">Title</bal-heading>
+    <bal-heading space="none" subtitle level="h2" visual-level="h1">Additional Subheadline</bal-heading>
   </bal-stage-body>
 </bal-stage>`,
 })
 StageWithImage.args = {}
 StageWithImage.parameters = { ...component.sourceCode(StageWithImage) }
+
+export const StageWithBackLink = args => ({
+  components: { ...component.components },
+  setup: () => ({ args }),
+  template: `<bal-stage v-bind="args">
+  <bal-stage-body>
+    <bal-stage-back-link href="#">Link</bal-stage-back-link>
+    <bal-heading class="mb-2" space="none">Title</bal-heading>
+    <bal-heading space="none" subtitle level="h2" visual-level="h1">Subtitle</bal-heading>
+  </bal-stage-body>
+</bal-stage>`,
+})
+StageWithBackLink.args = {}
+StageWithBackLink.parameters = { ...component.sourceCode(StageWithBackLink) }

@@ -145,13 +145,13 @@ export const TeaserCards = args => ({
           <div class="is-flex is-justify-content-start is-flex-direction-column">
             <bal-heading level="h4" space="bottom">Info Card</bal-heading>
             <bal-text class="mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </bal-text>
             <bal-button-group position="center" class="mt-auto">
               <bal-button expanded>Button</bal-button>
             </bal-button-group>
           </div>
-          </bal-card-content>
+        </bal-card-content>
       </bal-card>
     </div>
     <div class="column is-half">
@@ -163,7 +163,7 @@ export const TeaserCards = args => ({
               <a class="is-link">Show All</a>
             </div>
             <bal-list border size="large" class="mb-4">
-            <bal-list-item clickable href="www.baloise.com" target="_blank">
+              <bal-list-item clickable href="www.baloise.com" target="_blank">
                 <bal-list-item-content>
                     <bal-list-item-title>External Link</bal-list-item-title>
                     <bal-list-item-subtitle>Description</bal-list-item-subtitle>
@@ -171,22 +171,22 @@ export const TeaserCards = args => ({
                 <bal-list-item-icon right>
                     <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
                 </bal-list-item-icon>
-            </bal-list-item>
-            <bal-list-item disabled clickable href="http://www.baloise.com" target="_blank">
+              </bal-list-item>
+              <bal-list-item disabled clickable href="http://www.baloise.com" target="_blank">
                 <bal-list-item-content>
-                    <bal-list-item-title>Disabled Link</bal-list-item-title>
-                    <bal-list-item-subtitle>Description</bal-list-item-subtitle>
+                  <bal-list-item-title>Disabled Link</bal-list-item-title>
+                  <bal-list-item-subtitle>Description</bal-list-item-subtitle>
                 </bal-list-item-content>
                 <bal-list-item-icon right>
-                    <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
+                  <bal-icon name="nav-go-right" size="xsmall"></bal-icon>
                 </bal-list-item-icon>
-            </bal-list-item>
-        </bal-list>
+              </bal-list-item>
+            </bal-list>
             <bal-button-group position="center" class="mt-auto">
               <bal-button expanded outlined color="info">Button</bal-button>
             </bal-button-group>
           </div>
-          </bal-card-content>
+        </bal-card-content>
       </bal-card>
     </div>
     <div class="column is-half">
@@ -197,14 +197,52 @@ export const TeaserCards = args => ({
             <bal-input-group>
               <bal-icon size="small" name="search"></bal-icon>
               <bal-input placeholder="Placeholder"></bal-input>
-              </bal-input-group>
-              <bal-button-group position="center" class="mt-auto">
-                <bal-button expanded outlined color="info" class="mt-4">Search</bal-button>
-              </bal-button-group>
+            </bal-input-group>
+            <bal-button-group position="center" class="mt-auto">
+              <bal-button expanded outlined color="info" class="mt-4">Search</bal-button>
+            </bal-button-group>
           </div>
-          </bal-card-content>
+        </bal-card-content>
       </bal-card>
     </div>
+    <div class="column is-half">
+      <bal-card fullheight>
+        <bal-card-content>
+          <bal-data horizontal>
+            <bal-data-item>
+              <img class="is-2by3" src="https://unsplash.it/191/288">
+            </bal-data-item>
+            <bal-data-item>
+              <div class="is-flex is-flex-direction-column" style="height: 100%;">
+                <bal-heading level="h4" space="bottom">Contact Card</bal-heading>
+                <bal-text class="mt-auto" size="small">Contact role</bal-text>
+              </div>
+            </bal-data-item>
+          </bal-data>
+        </bal-card-content>
+      </bal-card>
+    </div>
+    <div class="column is-half">
+  <bal-card fullheight>
+    <bal-card-content>
+      <bal-data horizontal>
+        <bal-data-item>
+          <img class="is-2by3" src="https://unsplash.it/191/288">
+        </bal-data-item>
+        <bal-data-item>
+          <div class="is-flex is-flex-direction-column" style="height: 100%;">
+            <bal-heading level="h4" space="bottom">Contact Card</bal-heading>
+            <bal-text size="small">Contact role</bal-text>
+            <div class="mt-auto">
+              <bal-text size="small" space="none">Contact</bal-text>
+              <bal-button color="link" flat={true} iconPosition="left" icon="message" href="https://www.google.com" target="_blank">Very veeeeery veeeeeeeery long text</bal-button>
+            </div>
+          </div>
+        </bal-data-item>
+      </bal-data>
+    </bal-card-content>
+  </bal-card>
+</div>
   </div>
 </div>
 `,

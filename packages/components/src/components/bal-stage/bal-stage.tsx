@@ -10,33 +10,39 @@ export class Stage implements ComponentInterface {
   /**
    * Defines the background color of the stage section
    */
-  @Prop() color: Props.BalStageColor = 'blue'
+  @Prop() color: Props.BalStageColor = 'white'
 
   /**
-   * Defines the height of the stage section.
+   * If true the Baloise Shape is set
    */
-  @Prop() size: Props.BalStageSize = ''
+  @Prop() hasShape?: boolean | undefined = undefined
 
   /**
-   * Defines the height of the stage section.
+   * sets text color to white for images and dark backgrounds (optional)
    */
-  @Prop() rounded = false
+  @Prop() inverted: undefined | boolean = undefined
 
   render() {
     return (
-      <Host>
+      <Host
+        class={{
+          'bal-stage': true,
+        }}
+      >
         <section
           class={{
-            'hero': true,
-            'has-background': true,
-            'has-radius-large': this.rounded,
-            'is-info': this.color === 'blue',
-            [`is-${this.size}`]: this.size !== '',
-            [`is-${this.color}`]: true,
+            'bal-stage-content': true,
+            [`bal-stage-content--is-${this.color}`]: true,
+            'bal-stage-content--is-inverted': this.inverted === true || this.color === 'blue',
           }}
         >
           <slot></slot>
         </section>
+        {this.hasShape && (
+          <div class="bal-stage-shape container">
+            <div>Shape Placeholder</div>
+          </div>
+        )}
       </Host>
     )
   }

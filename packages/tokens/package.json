@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-tokens",
-  "version": "10.10.9",
+  "version": "10.11.3",
   "description": "The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -28,12 +28,12 @@
     "build:bundle": "rollup --config rollup.config.js",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
-  "main": "./dist/tokens.js",
-  "module": "./dist/tokens.esm.js",
-  "types": "./dist/types/tokens.d.ts",
+  "main": "dist/tokens.js",
+  "module": "dist/tokens.esm.js",
+  "types": "dist/types/tokens.d.ts",
+  "style": "dist/tokens.css",
   "files": [
-    "dist/",
-    "svg/"
+    "dist/"
   ],
   "license": "Apache-2.0",
   "devDependencies": {

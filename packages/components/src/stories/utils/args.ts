@@ -108,8 +108,8 @@ export const withContent = () => ({
   },
 })
 
-export const stencilArgType = (component: { name: string }, allowedProps?: string[]): any => {
-  const componentJson = findComponent(component.name)
+export const stencilArgType = (component: { name: string; displayName: string }, allowedProps?: string[]): any => {
+  const componentJson = findComponent(component.displayName)
   if (!componentJson) {
     return {}
   }

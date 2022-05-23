@@ -1,7 +1,7 @@
 import docs from './bal-app.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
-import { BalApp } from '../../../../.storybook/vue/components/bal-app'
 import {
+  BalApp,
   BalCard,
   BalCardTitle,
   BalCardSubtitle,

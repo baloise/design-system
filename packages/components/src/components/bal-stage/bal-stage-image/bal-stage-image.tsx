@@ -13,8 +13,12 @@ export class StageImage implements ComponentInterface {
 
   render() {
     return (
-      <Host class="hero-background has-opacity-80">
-        <img class="has-opacity-80" src={this.src} />
+      <Host
+        class={{
+          'bal-stage-image': true,
+        }}
+      >
+        <img src={this.src} />
       </Host>
     )
   }

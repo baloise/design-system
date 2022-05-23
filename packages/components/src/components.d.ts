@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Props } from "./types";
 import { Props as Props1 } from "./props";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
+import { Props as Props2 } from ".";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
@@ -559,19 +560,23 @@ export namespace Components {
         /**
           * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
         /**
           * If `true` the component gets a invalid red style.
          */
-        "invalid": boolean;
+        "invalid"?: boolean;
         /**
           * If `true` a loading spinner is visible at the end of the input
          */
-        "loading": boolean;
+        "loading"?: boolean;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
-        "readonly": boolean;
+        "readonly"?: boolean;
+        /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required": boolean;
         /**
           * If `true` the component gets a valid green style.
          */
@@ -619,9 +624,17 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required": boolean;
+        /**
           * If `true` the component gets a valid green style.
          */
         "valid": boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "weight": Props.BalFieldLabelWeight;
     }
     interface BalFieldMessage {
         /**
@@ -690,6 +703,10 @@ export namespace Components {
           * If `true` multiple file upload is possible.
          */
         "multiple": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -854,7 +871,7 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '00/0.000.000' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
          */
         "mask"?: Props.BalInputMask;
         /**
@@ -1014,10 +1031,6 @@ export namespace Components {
          */
         "accordion": boolean;
         /**
-          * If `true` the list accordion is open
-         */
-        "accordionOpen": boolean;
-        /**
           * If `true` the list item shows that it is clickable
          */
         "clickable": boolean;
@@ -1045,6 +1058,10 @@ export namespace Components {
         "open": boolean;
     }
     interface BalListItemAccordionHead {
+        /**
+          * If `true` the list accordion is open
+         */
+        "accordionOpen": boolean;
     }
     interface BalListItemContent {
     }
@@ -1402,6 +1419,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "filter": Props.BalSelectFilter;
+        /**
           * Sets the focus on the input element
          */
         "getValue": () => Promise<string[] | undefined>;
@@ -1449,6 +1470,10 @@ export namespace Components {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
+        /**
+          * If `true` the filtering is done outside the component.
+         */
+        "remote": boolean;
         /**
           * Defines the height of the popover list.
          */
@@ -1608,13 +1633,13 @@ export namespace Components {
          */
         "color": Props.BalStageColor;
         /**
-          * Defines the height of the stage section.
+          * If true the Baloise Shape is set
          */
-        "rounded": boolean;
+        "hasShape"?: boolean | undefined;
         /**
-          * Defines the height of the stage section.
+          * sets text color to white for images and dark backgrounds (optional)
          */
-        "size": Props.BalStageSize;
+        "inverted": undefined | boolean;
     }
     interface BalStageBackLink {
         /**
@@ -1623,10 +1648,6 @@ export namespace Components {
         "href": string;
     }
     interface BalStageBody {
-        /**
-          * If `true` the inner container uses the compact layout.
-         */
-        "compact": boolean;
     }
     interface BalStageFoot {
     }
@@ -3176,6 +3197,10 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required"?: boolean;
+        /**
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
@@ -3222,9 +3247,17 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required"?: boolean;
+        /**
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
+        /**
+          * If `true` the component gets a invalid style.
+         */
+        "weight"?: Props.BalFieldLabelWeight;
     }
     interface BalFieldMessage {
         /**
@@ -3289,6 +3322,10 @@ declare namespace LocalJSX {
           * If `true` multiple file upload is possible.
          */
         "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
         /**
           * Triggers when a file is added or removed.
          */
@@ -3453,7 +3490,7 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '00/0.000.000' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
          */
         "mask"?: Props.BalInputMask;
         /**
@@ -3633,10 +3670,6 @@ declare namespace LocalJSX {
          */
         "accordion"?: boolean;
         /**
-          * If `true` the list accordion is open
-         */
-        "accordionOpen"?: boolean;
-        /**
           * If `true` the list item shows that it is clickable
          */
         "clickable"?: boolean;
@@ -3668,6 +3701,10 @@ declare namespace LocalJSX {
         "open"?: boolean;
     }
     interface BalListItemAccordionHead {
+        /**
+          * If `true` the list accordion is open
+         */
+        "accordionOpen"?: boolean;
         /**
           * Emitted when the accordion state is changed
          */
@@ -4030,6 +4067,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If `true` the component gets a invalid style.
+         */
+        "filter"?: Props.BalSelectFilter;
+        /**
           * @deprecated Enables the slide in animation for the option items.
          */
         "hasMovement"?: boolean;
@@ -4097,6 +4138,10 @@ declare namespace LocalJSX {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true` the filtering is done outside the component.
+         */
+        "remote"?: boolean;
         /**
           * Defines the height of the popover list.
          */
@@ -4264,13 +4309,13 @@ declare namespace LocalJSX {
          */
         "color"?: Props.BalStageColor;
         /**
-          * Defines the height of the stage section.
+          * If true the Baloise Shape is set
          */
-        "rounded"?: boolean;
+        "hasShape"?: boolean | undefined;
         /**
-          * Defines the height of the stage section.
+          * sets text color to white for images and dark backgrounds (optional)
          */
-        "size"?: Props.BalStageSize;
+        "inverted"?: undefined | boolean;
     }
     interface BalStageBackLink {
         /**
@@ -4279,10 +4324,6 @@ declare namespace LocalJSX {
         "href": string;
     }
     interface BalStageBody {
-        /**
-          * If `true` the inner container uses the compact layout.
-         */
-        "compact"?: boolean;
     }
     interface BalStageFoot {
     }

@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State, EventEmitter, Event } from '@stencil/core'
+import { Component, Host, h, Element, EventEmitter, Event, Prop, Watch } from '@stencil/core'
 
 @Component({
   tag: 'bal-list-item-accordion-head',
@@ -8,12 +8,23 @@ import { Component, Host, h, Element, State, EventEmitter, Event } from '@stenci
 export class ListItemAccordionHead {
   @Element() el!: HTMLElement
 
-  @State() isAccordionOpen = false
+  /**
+   * If `true` the list accordion is open
+   */
+  @Prop() accordionOpen = false
+  @Watch('accordionOpen')
+  accordionOpenHandler() {
+    this.balAccordionChange.emit(this.accordionOpen)
+  }
 
   /**
    * Emitted when the accordion state is changed
    */
   @Event() balAccordionChange!: EventEmitter<boolean>
+
+  connectedCallback() {
+    this.balAccordionChange.emit(this.accordionOpen)
+  }
 
   getClosestListItem(): HTMLBalListItemElement | null {
     return this.el.closest('bal-list-item')
@@ -22,8 +33,8 @@ export class ListItemAccordionHead {
   clickHandler() {
     const listItem = this.getClosestListItem()
     if (listItem) {
-      this.isAccordionOpen = !this.isAccordionOpen
-      this.balAccordionChange.emit(this.isAccordionOpen)
+      this.accordionOpen = !this.accordionOpen
+      this.balAccordionChange.emit(this.accordionOpen)
     }
   }
 
@@ -32,7 +43,7 @@ export class ListItemAccordionHead {
       <Host
         class={{
           'bal-list-item-accordion-head bal-list-item': true,
-          'is-open': this.isAccordionOpen,
+          'is-open': this.accordionOpen,
         }}
         onClick={() => this.clickHandler()}
       >

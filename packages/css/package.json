@@ -1,6 +1,6 @@
 {
   "name": "@baloise/design-system-next-css",
-  "version": "10.10.9",
+  "version": "10.11.3",
   "description": "The Baloise Design System is an open source project for styling awesome web applications that follow the Baloise corporate styling guidelines.",
   "repository": {
     "type": "git",
@@ -20,28 +20,27 @@
     "bulma-css"
   ],
   "scripts": {
-    "build": "npm run build:clean && npm run build:scss && npm run build:css && npm run build:css:min",
+    "build": "npm run build:clean && npm run build:scss && npm run build:css",
     "serve": "npm run serve:fonts && npm run serve:http",
     "serve:fonts": "copyfiles --flat node_modules/@baloise/design-system-next-fonts/lib/* assets/fonts",
     "serve:http": "http-server --cors -c-1",
     "build:clean": "rimraf css && rimraf scss/generated",
-    "build:scss": "node ./.build/generate.js",
-    "build:css": "sass ./scss/baloise-design-system.sass ./css/baloise-design-system.css",
-    "build:css:min": "sass ./scss/baloise-design-system.sass ./css/baloise-design-system.min.css --style compressed",
+    "build:scss": "node .build/generate.js",
+    "build:css": "node .build/sass",
     "update:registry": "sed -i -e \"s#nexus.balgroupit.com/repository/npm#registry.npmjs.org#g\" package-lock.json\n"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.esm.js",
-  "types": "./dist/types/index.d.ts",
+  "main": "scss/baloise-design-system.sass",
+  "style": "css/baloise-design-system.min.css",
   "files": [
-    "dist/",
     "css/",
     "scss/"
   ],
   "license": "Apache-2.0",
+  "dependencies": {
+    "@baloise/design-system-next-fonts": "10.11.3",
+    "@baloise/design-system-next-tokens": "10.11.3"
+  },
   "devDependencies": {
-    "@baloise/design-system-next-fonts": "10.10.9",
-    "@baloise/design-system-next-tokens": "10.10.9",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.3",
     "bulma": "^0.9.3",
