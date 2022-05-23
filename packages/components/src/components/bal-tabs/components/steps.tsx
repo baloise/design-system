@@ -31,7 +31,7 @@ export const StepList: FunctionalComponent<TabProps> = ({ value, tabs, onSelectT
             <span class="step-index">{stepIndex(tab, index)}</span>
             <span class="step-label">{tab.label}</span>
           </a>
-          <span class="bubble" style={{ display: tab.hasBubble ? 'inline' : 'none' }}></span>
+          <span class="bubble" style={{ display: tab.bubble ? 'inline' : 'none' }}></span>
         </li>
       ))}
     </ul>

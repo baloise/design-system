@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch } from '@stencil/core'
+import { Component, Host, h, Element, State, Event, EventEmitter, Method, Prop, Watch, Listen } from '@stencil/core'
 import { debounceEvent } from '../../helpers/helpers'
 import { BalTabOption } from './bal-tab.type'
 import { watchForTabs } from './utils/watch-tabs'
@@ -6,6 +6,10 @@ import { TabList } from './components/tabs'
 import { OStepList } from './components/o-steps'
 import { StepList } from './components/steps'
 import { Props } from '../../props'
+import { BEM } from '../../utils/bem'
+import { isPlatform } from '../../'
+import { Platforms } from '../../types'
+import { getPlatforms } from '../../'
 
 @Component({
   tag: 'bal-tabs',
@@ -22,6 +26,7 @@ export class Tabs {
   @State() lineHeight = 0
   @State() lineOffsetTop = 0
   @State() isReady = false
+  @State() platform: Platforms[] = ['mobile']
 
   /**
    * Defines the layout of the tabs.
@@ -29,9 +34,19 @@ export class Tabs {
   @Prop() interface: Props.BalTabsInterface = 'tabs'
 
   /**
+   * Defines the layout of the tabs.
+   */
+  @Prop() iconPosition: Props.BalTabsIconPosition = 'horizontal'
+
+  /**
    * If `true` the field expands over the whole width.
    */
   @Prop() expanded = false
+
+  /**
+   * If `true` the tabs is a block element and uses 100% of the width
+   */
+  @Prop() fullwidth = false
 
   /**
    * If `true` the tabs or steps can be clicked.
@@ -39,19 +54,9 @@ export class Tabs {
   @Prop() clickable = true
 
   /**
-   * If `true` a action button is added to the right
-   */
-  @Prop() action = false
-
-  /**
    * If `true` a light border is shown for the tabs.
    */
   @Prop() border = false
-
-  /**
-   * Label for the action button
-   */
-  @Prop() actionLabel = 'Action'
 
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `balChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
@@ -67,6 +72,11 @@ export class Tabs {
    * If `true` tabs are align vertically on the mobile.
    */
   @Prop() verticalOnMobile = false
+
+  /**
+   * If `true` the tabs are shown as a select component on mobile
+   */
+  @Prop() selectOnMobile = false
 
   @Watch('debounce')
   protected debounceChanged() {
@@ -90,13 +100,14 @@ export class Tabs {
    */
   @Event({ eventName: 'balChange' }) balChange!: EventEmitter<string>
 
-  /**
-   * Emitted when the action button has clicked
-   */
-  @Event({ eventName: 'balActionClick' })
-  actionHasClicked!: EventEmitter<MouseEvent>
+  @Listen('resize', { target: 'window' })
+  async resizeHandler() {
+    this.platform = getPlatforms()
+    this.moveLine(this.getTargetElement(this.value))
+  }
 
   connectedCallback() {
+    this.platform = getPlatforms()
     this.debounceChanged()
     this.updateTabs()
 
@@ -157,7 +168,8 @@ export class Tabs {
     }
   }
 
-  private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
+  // private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
+  private async onSelectTab(event: MouseEvent | CustomEvent, tab: BalTabOption) {
     if (tab.prevent || tab.disabled || !this.clickable) {
       event.preventDefault()
       event.stopPropagation()
@@ -175,29 +187,13 @@ export class Tabs {
     if (element) {
       const listElement = element.closest('li')
 
-      if (this.vertical) {
+      if (this.vertical || (isPlatform('mobile') && this.verticalOnMobile)) {
         if (listElement?.clientHeight !== undefined) {
-          this.lineHeight = listElement.clientHeight - 8
+          this.lineHeight = listElement.clientHeight - 16
         }
 
         if (listElement?.offsetTop !== undefined) {
-          this.lineOffsetTop = listElement.offsetTop + 4
-        }
-      } else if (this.verticalOnMobile) {
-        if (listElement?.clientHeight !== undefined) {
-          this.lineHeight = listElement.clientHeight - 8
-        }
-
-        if (listElement?.offsetTop !== undefined) {
-          this.lineOffsetTop = listElement.offsetTop + 4
-        }
-
-        if (listElement?.clientWidth !== undefined) {
-          this.lineWidth = listElement.clientWidth - 32
-        }
-
-        if (listElement?.offsetLeft !== undefined) {
-          this.lineOffsetLeft = listElement.offsetLeft + 16
+          this.lineOffsetTop = listElement.offsetTop + 8
         }
       } else {
         if (listElement?.clientWidth !== undefined) {
@@ -221,18 +217,20 @@ export class Tabs {
   }
 
   render() {
+    const block = BEM.block('tabs')
     const Tabs = this.interface === 'o-steps' ? OStepList : this.interface === 'steps' ? StepList : TabList
     return (
       <Host
         class={{
-          'bal-tabs': this.interface === 'tabs' || this.interface === 'tabs-sub' || this.interface === 'navbar',
-          'bal-steps': this.interface === 'steps',
-          'bal-o-steps': this.interface === 'o-steps',
-          'is-sub-navigation': this.interface === 'tabs-sub',
-          'is-navbar-tabs': this.interface === 'navbar',
-          'is-ready': this.isReady,
-          'is-vertical': this.vertical,
-          'is-vertical-on-mobile': this.verticalOnMobile,
+          ...block.class(),
+          ...block.modifier('fullwidth').class(this.expanded || this.fullwidth),
+          // 'bal-tabs': this.interface === 'tabs' || this.interface === 'tabs-sub' || this.interface === 'navbar',
+          // 'bal-steps': this.interface === 'steps',
+          // 'bal-o-steps': this.interface === 'o-steps',
+          // 'is-sub-navigation': this.interface === 'tabs-sub',
+          // 'is-navbar-tabs': this.interface === 'navbar',
+          // 'is-vertical': this.vertical,
+          // 'is-vertical-on-mobile': this.verticalOnMobile,
         }}
         data-value={this.tabsOptions
           .filter(t => this.isTabActive(t))
@@ -249,9 +247,11 @@ export class Tabs {
           border={this.border}
           expanded={this.expanded}
           clickable={this.clickable}
-          action={this.action}
-          actionLabel={this.actionLabel}
-          onActionClick={e => this.actionHasClicked.emit(e)}
+          isReady={this.isReady}
+          iconPosition={this.iconPosition}
+          // action={this.action}
+          // actionLabel={this.actionLabel}
+          // onActionClick={e => this.actionHasClicked.emit(e)}
           onSelectTab={(e, t) => this.onSelectTab(e, t)}
           lineWidth={this.lineWidth}
           lineOffsetLeft={this.lineOffsetLeft}
@@ -259,6 +259,7 @@ export class Tabs {
           lineOffsetTop={this.lineOffsetTop}
           vertical={this.vertical}
           verticalOnMobile={this.verticalOnMobile}
+          selectOnMobile={this.selectOnMobile}
         ></Tabs>
         <slot></slot>
       </Host>

@@ -1,18 +1,58 @@
 import { FunctionalComponent, h } from '@stencil/core'
+import { BEM } from '../../../utils/bem'
 import { TabItemProps } from '../bal-tab.type'
 
-export const TabItem: FunctionalComponent<TabItemProps> = ({ href, label, onSelectTab }) => {
-  if (href) {
-    return (
-      <a href={href} aria-current="page" onClick={e => onSelectTab(e)}>
-        {label}
-      </a>
-    )
-  } else {
-    return (
-      <a aria-current="page" onClick={e => onSelectTab(e)}>
-        {label}
-      </a>
-    )
+const buttonEl = BEM.block('tabs').element('tabs').element('item').element('button')
+
+export const TabItem: FunctionalComponent<TabItemProps> = ({
+  icon,
+  expanded,
+  disabled,
+  href,
+  label,
+  vertical,
+  verticalOnMobile,
+  iconPosition,
+  bubble,
+  onSelectTab,
+}) => {
+  const cssClasses = {
+    ...buttonEl.class(),
+    ...buttonEl.modifier('vertical').class(vertical),
+    ...buttonEl.modifier('vertical-on-mobile').class(verticalOnMobile),
+    ...buttonEl.modifier('fullwidth').class(expanded),
+    ...buttonEl.modifier('disabled').class(disabled),
+    ...buttonEl.modifier(`icon-${iconPosition}`).class(true),
+    ...buttonEl.modifier('icon').class(icon !== undefined),
   }
+
+  let hrefAttribute = {}
+  if (href) {
+    hrefAttribute = {
+      href,
+    }
+  }
+
+  const bubbleString = bubble === true || bubble === false ? '' : bubble
+
+  return (
+    <a class={cssClasses} {...hrefAttribute} aria-current="page" onClick={e => onSelectTab(e)}>
+      <bal-icon
+        class={{ ...buttonEl.element('icon').class() }}
+        name={icon}
+        size="small"
+        style={{ display: icon ? 'flex' : 'none' }}
+      ></bal-icon>
+      <span>
+        {label}
+        <bal-badge
+          position="tabs"
+          size={bubbleString === '' ? 'small' : ''}
+          style={{ display: bubble ? 'flex' : 'none' }}
+        >
+          {bubbleString}
+        </bal-badge>
+      </span>
+    </a>
+  )
 }

@@ -82,6 +82,7 @@ export namespace Props {
   export type BalStageSize = 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight'
 
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar'
+  export type BalTabsIconPosition = 'horizontal' | 'vertical'
 
   export type BalTagColor =
     | 'blue'

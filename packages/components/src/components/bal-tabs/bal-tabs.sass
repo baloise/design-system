@@ -1,0 +1,457 @@
++block(tabs)
+  display: inline-block
+  position: static
+  +modifier(fullwidth)
+    display: block
+    flex: 1
+    width: 100%
+
+  +element(tabs)
+    +overflow-touch
+    +unselectable
+    align-items: stretch
+    display: flex
+    font-size: $size-normal
+    justify-content: space-between
+    overflow: hidden
+    overflow-x: auto
+    white-space: nowrap
+    position: relative
+    ul
+      align-items: center
+      display: flex
+      flex-grow: 1
+      flex-shrink: 0
+      justify-content: flex-start
+    +modifier(vertical)
+      ul
+        flex-direction: column
+        align-items: flex-start
+    +modifier(vertical-on-mobile)
+      +mobile
+        ul
+          flex-direction: column
+          align-items: flex-start
+
+    // tab items
+    +element(item)
+      display: flex
+      padding: 0
+      justify-content: center
+      align-items: center
+      display: flex
+      +modifier(fullwidth)
+        flex-grow: 1
+        flex-basis: 0
+      +modifier(vertical)
+        flex-grow: 1
+        flex-basis: 0
+        width: 100%
+        justify-content: flex-start
+      +modifier(vertical-on-mobile)
+        +mobile
+          flex-grow: 1
+          flex-basis: 0
+          width: 100%
+          justify-content: flex-start
+
+      +element(button)
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        font-family: var(--bal-font-family-title)
+        font-weight: 700
+        gap: .25rem
+        padding: .5rem
+        flex-grow: 1
+        flex-basis: 0
+        width: 100%
+        span
+          display: flex
+          gap: 4px
+        &:hover
+          color: var(--bal-color-light-blue-dark)
+          +fillSvg(var(--bal-color-light-blue-dark))
+        &:active
+          color: var(--bal-color-blue-dark)
+          +fillSvg(var(--bal-color-blue-dark))
+        +tablet
+          gap: .5rem
+          padding: 1rem
+          +modifier(icon-horizontal)
+            flex-direction: row
+        +modifier(disabled)
+          color: var(--bal-color-text-disabled)
+          cursor: default
+          .bal-icon
+            +fillSvg(var(--bal-color-text-disabled))
+          &:hover, &:focus, &:active
+            color: var(--bal-color-text-disabled)
+            .bal-icon
+              +fillSvg(var(--bal-color-text-disabled))
+        +modifier(fullwidth)
+          flex-grow: 1
+          flex-basis: 0
+        +modifier(vertical)
+          justify-content: flex-start
+          padding: .5rem 1rem
+        .bal-icon
+          margin-top: -1px
+
+    +element(border)
+      position: absolute
+      background: var(--bal-color-border-normal)
+      border-radius: var(--bal-radius-small)
+      height: 2px
+      width: 100%
+      bottom: 0
+      +modifier(vertical)
+        height: auto
+        width: 2px
+        top: 8px
+        bottom: 8px
+        left: 0
+      +modifier(vertical-on-mobile)
+        +mobile
+          height: auto
+          width: 2px
+          top: 8px
+          bottom: 8px
+          left: 0
+
+    +element(line)
+      position: absolute
+      background: var(--bal-color-primary)
+      border-radius: var(--bal-radius-small)
+      height: 2px
+      bottom: 0
+      +modifier(ready)
+        transition: 0.8s
+      +modifier(vertical)
+        height: auto
+        width: 2px
+        top: 0
+        left: 0
+      +modifier(vertical-on-mobile)
+        +mobile
+          height: auto
+          width: 2px
+          top: 0
+          left: 0
+
+// bal-tabs.bal-tabs {
+//   .tabs {
+//     margin: 0 !important;
+//     position: relative;
+
+//     & > ul {
+//       margin: 0;
+//       padding: 0;
+//     }
+
+//     .selected-tab-line {
+//       height: 3px;
+//       bottom: 0;
+//       background: $blue;
+//       position: absolute;
+//       z-index: 1;
+//       border-radius: 10px;
+//     }
+
+//     .line {
+//       width: 100%;
+//       height: 2px;
+//       background: $grey-2;
+//       position: absolute;
+//       bottom: 0;
+//     }
+
+//     & > ul > li {
+//       position: relative;
+//       padding-top: 8px;
+//       padding-bottom: 8px;
+
+//       @include tablet() {
+//         &.is-right {
+//           position: absolute;
+//           right: 40px;
+//         }
+//       }
+
+//       span.bubble {
+//         background: $danger;
+//         height: 8px;
+//         width: 8px;
+//         border-radius: 50%;
+//         position: absolute;
+//         display: block;
+//         top: 12px;
+//         right: 4px;
+//       }
+
+//       & > a {
+//         min-height: 48px !important;
+//         padding: 16px;
+//         line-height: 1.2;
+//         text-decoration: none;
+
+//         color: $text-light;
+//         font-family: $title-family;
+//         font-weight: bold;
+//         font-size: 16px;
+//         line-height: 1.125;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//       }
+
+//       &.is-active > a {
+//         color: $blue;
+//       }
+
+//       & > a:hover {
+//         color: $blue;
+//       }
+
+//       &.is-disabled > a,
+//       &.is-disabled > a:hover {
+//         color: $blue;
+//         cursor: default;
+//         opacity: 0.5;
+//       }
+//     }
+//   }
+//   &.is-ready {
+//     .selected-tab-line {
+//       transition: 0.4s;
+//     }
+//   }
+// }
+
+// bal-tabs.bal-tabs.is-sub-navigation {
+//   .tabs {
+//     & > ul > li {
+//       padding-top: 0;
+//       padding-bottom: 0;
+
+//       &.is-right {
+//         display: none !important;
+//       }
+
+//       span.bubble {
+//         height: 8px;
+//         width: 8px;
+//         top: 12px;
+//         right: 4px;
+//       }
+
+//       & > a {
+//         min-height: 48px;
+//         padding: 16px !important;
+//         font-size: 16px !important;
+//       }
+//     }
+
+//     .bottom-line {
+//       width: 100%;
+//       height: 3px;
+//       border-bottom: 2px solid $grey-2;
+//     }
+//   }
+// }
+
+// bal-tab-item {
+//   display: block;
+//   position: static;
+// }
+
+// @import './bal-o-steps';
+
+// bal-tabs.bal-tabs.is-vertical {
+//   .tabs {
+//     margin: 0 !important;
+//     position: relative;
+
+//     & > ul {
+//       margin: 0;
+//       padding: 0;
+
+//       align-items: center;
+//       border-bottom-color: #b3b6d4;
+//       border-bottom-style: solid;
+//       border-bottom-width: 0;
+//       display: flex;
+//       flex-grow: unset;
+//       flex-shrink: 0;
+//       justify-content: flex-start;
+//       flex-direction: column;
+
+//       li {
+//         padding-top: 0;
+//         padding-bottom: 0;
+
+//         & > a {
+//           min-height: 24px !important;
+//           height: 24px !important;
+//         }
+
+//         bal-badge {
+//           right: 4px !important;
+//           top: 4px !important;
+//         }
+//       }
+//     }
+
+//     .selected-tab-vertical-line {
+//       width: 3px;
+//       left: 0;
+//       background: $blue;
+//       position: absolute;
+//       z-index: 1;
+//       border-radius: 10px;
+//     }
+
+//     .line {
+//       width: 3px;
+//       height: 100%;
+//       background: $grey-2;
+//       position: absolute;
+//       bottom: 0;
+//     }
+//   }
+
+//   &.is-ready {
+//     .selected-tab-vertical-line {
+//       transition: 0.8s;
+//     }
+//   }
+// }
+
+// bal-tabs.bal-tabs.is-sub-navigation.is-vertical {
+//   .tabs {
+//     & > ul > li {
+//       &.is-right {
+//         display: none !important;
+//       }
+
+//       & > a {
+//         min-height: 24px !important;
+//         height: 24px !important;
+//         padding: 16px !important;
+//         font-size: 16px !important;
+//       }
+
+//       bal-badge {
+//         right: 4px !important;
+//         top: 4px !important;
+//       }
+//     }
+
+//     .bottom-line {
+//       width: 100%;
+//       height: 3px;
+//       border-bottom: 2px solid $grey-2;
+//     }
+//   }
+// }
+
+// bal-tabs.bal-tabs.is-vertical-on-mobile {
+//   @include mobile() {
+//     .tabs {
+//       margin: 0 !important;
+//       position: relative;
+
+//       .selected-tab-line {
+//         display: none !important;
+//       }
+
+//       & > ul {
+//         margin: 0;
+//         padding: 0;
+
+//         align-items: center;
+//         border-bottom-color: #b3b6d4;
+//         border-bottom-style: solid;
+//         border-bottom-width: 0;
+//         display: flex;
+//         flex-grow: unset;
+//         flex-shrink: 0;
+//         justify-content: flex-start;
+//         flex-direction: column;
+
+//         li {
+//           padding-top: 0;
+//           padding-bottom: 0;
+
+//           & > a {
+//             min-height: 24px !important;
+//             height: 24px !important;
+//           }
+
+//           bal-badge {
+//             right: 4px !important;
+//             top: 4px !important;
+//           }
+//         }
+//       }
+
+//       .selected-tab-vertical-line {
+//         width: 3px;
+//         left: 0;
+//         background: $blue;
+//         position: absolute;
+//         z-index: 1;
+//         border-radius: 10px;
+//       }
+
+//       .line {
+//         width: 3px;
+//         height: 100%;
+//         background: $grey-2;
+//         position: absolute;
+//         bottom: 0;
+//       }
+//     }
+
+//     &.is-ready {
+//       .selected-tab-vertical-line {
+//         transition: 0.8s;
+//       }
+//     }
+//   }
+// }
+
+// bal-tabs.bal-tabs.is-sub-navigation.is-vertical-on-mobile {
+//   @include mobile() {
+//     .tabs {
+//       .selected-tab-line {
+//         display: none !important;
+//       }
+
+//       & > ul > li {
+//         &.is-right {
+//           display: none !important;
+//         }
+
+//         & > a {
+//           min-height: 24px !important;
+//           height: 24px !important;
+//           padding: 16px !important;
+//           font-size: 16px !important;
+//         }
+
+//         bal-badge {
+//           right: 4px !important;
+//           top: 4px !important;
+//         }
+//       }
+
+//       .bottom-line {
+//         width: 100%;
+//         height: 3px;
+//         border-bottom: 2px solid $grey-2;
+//       }
+//     }
+//   }
+// }

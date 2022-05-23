@@ -1655,7 +1655,7 @@ export namespace Components {
         /**
           * If `true` a small red bubble is added to the tab.
          */
-        "bubble": boolean;
+        "bubble": boolean | string;
         /**
           * If `true` the tab is disabled.
          */
@@ -1676,6 +1676,10 @@ export namespace Components {
           * Link to path.
          */
         "href": string;
+        /**
+          * Tab icon not available for the steps.
+         */
+        "icon"?: string;
         /**
           * Label for the tab.
          */
@@ -1701,14 +1705,6 @@ export namespace Components {
     }
     interface BalTabs {
         /**
-          * If `true` a action button is added to the right
-         */
-        "action": boolean;
-        /**
-          * Label for the action button
-         */
-        "actionLabel": string;
-        /**
           * If `true` a light border is shown for the tabs.
          */
         "border": boolean;
@@ -1725,6 +1721,14 @@ export namespace Components {
          */
         "expanded": boolean;
         /**
+          * If `true` the tabs is a block element and uses 100% of the width
+         */
+        "fullwidth": boolean;
+        /**
+          * Defines the layout of the tabs.
+         */
+        "iconPosition": Props.BalTabsIconPosition;
+        /**
           * Defines the layout of the tabs.
          */
         "interface": Props.BalTabsInterface;
@@ -1732,6 +1736,10 @@ export namespace Components {
           * Go to tab with the given value
          */
         "select": (tab: BalTabOption) => Promise<void>;
+        /**
+          * If `true` the tabs are shown as a select component on mobile
+         */
+        "selectOnMobile": boolean;
         "value"?: string;
         /**
           * If `true` tabs are align vertically.
@@ -4319,7 +4327,7 @@ declare namespace LocalJSX {
         /**
           * If `true` a small red bubble is added to the tab.
          */
-        "bubble"?: boolean;
+        "bubble"?: boolean | string;
         /**
           * If `true` the tab is disabled.
          */
@@ -4337,13 +4345,17 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
+          * Tab icon not available for the steps.
+         */
+        "icon"?: string;
+        /**
           * Label for the tab.
          */
         "label"?: string;
         /**
           * Emitted when the link element has clicked
          */
-        "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalNavigate"?: (event: CustomEvent<MouseEvent | CustomEvent>) => void;
         /**
           * Tell's if the linking is done by a router.
          */
@@ -4361,14 +4373,6 @@ declare namespace LocalJSX {
     }
     interface BalTabs {
         /**
-          * If `true` a action button is added to the right
-         */
-        "action"?: boolean;
-        /**
-          * Label for the action button
-         */
-        "actionLabel"?: string;
-        /**
           * If `true` a light border is shown for the tabs.
          */
         "border"?: boolean;
@@ -4385,17 +4389,25 @@ declare namespace LocalJSX {
          */
         "expanded"?: boolean;
         /**
+          * If `true` the tabs is a block element and uses 100% of the width
+         */
+        "fullwidth"?: boolean;
+        /**
+          * Defines the layout of the tabs.
+         */
+        "iconPosition"?: Props.BalTabsIconPosition;
+        /**
           * Defines the layout of the tabs.
          */
         "interface"?: Props.BalTabsInterface;
         /**
-          * Emitted when the action button has clicked
-         */
-        "onBalActionClick"?: (event: CustomEvent<MouseEvent>) => void;
-        /**
           * Emitted when the changes has finished.
          */
         "onBalChange"?: (event: CustomEvent<string>) => void;
+        /**
+          * If `true` the tabs are shown as a select component on mobile
+         */
+        "selectOnMobile"?: boolean;
         "value"?: string;
         /**
           * If `true` tabs are align vertically.

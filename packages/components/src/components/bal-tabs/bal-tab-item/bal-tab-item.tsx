@@ -32,7 +32,7 @@ export class TabItem {
   /**
    * If `true` a small red bubble is added to the tab.
    */
-  @Prop() bubble = false
+  @Prop() bubble: boolean | string = false
 
   /**
    * If `true` the tab is disabled.
@@ -55,9 +55,14 @@ export class TabItem {
   @Prop() prevent = false
 
   /**
+   * Tab icon not available for the steps.
+   */
+  @Prop() icon?: string = undefined
+
+  /**
    * Emitted when the link element has clicked
    */
-  @Event() balNavigate!: EventEmitter<MouseEvent>
+  @Event() balNavigate!: EventEmitter<MouseEvent | CustomEvent>
 
   /**
    * Options of the tab like label, value etc.
@@ -78,13 +83,14 @@ export class TabItem {
   get options() {
     return {
       value: this.value,
+      icon: this.icon,
       label: this.label,
       href: this.href,
       active: this.active,
       disabled: this.disabled,
       done: this.done,
       failed: this.failed,
-      hasBubble: this.bubble,
+      bubble: this.bubble,
       prevent: this.prevent,
       navigate: this.balNavigate,
     }
