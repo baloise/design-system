@@ -38,12 +38,12 @@ const detectPlatforms = (win: Window) => (Object.keys(PLATFORMS_MAP) as Platform
 
 const isMobile = (win: Window) => {
   const width = win.innerWidth
-  return width < 768
+  return width <= 768
 }
 
 const isTablet = (win: Window) => {
   const width = win.innerWidth
-  return width > 767 && width < 1024
+  return width > 768 && width < 1024
 }
 
 const isDesktop = (win: Window) => !isMobile(win) && !isTablet(win)
