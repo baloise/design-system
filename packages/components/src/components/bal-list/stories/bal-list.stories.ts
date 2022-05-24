@@ -33,6 +33,8 @@ const component = BalComponentStory({
 
 export default component.story
 
+const excludedControls = ['inverted']
+
 export const Basic = args => ({
   components: { ...component.components, BalIcon },
   setup: () => ({ args }),
@@ -76,7 +78,7 @@ Basic.args = {
   border: true,
   size: '',
 }
-Basic.parameters = { ...component.sourceCode(Basic) }
+Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
 
 export const NativeList = args => ({
   components: { ...component.components },
@@ -107,7 +109,7 @@ export const NativeList = args => ({
 NativeList.args = {
   border: true,
 }
-NativeList.parameters = { ...component.sourceCode(NativeList) }
+NativeList.parameters = { ...component.sourceCode(NativeList), controls: { exclude: excludedControls } }
 
 export const LinkedList = args => ({
   components: { ...component.components, BalIcon },
@@ -137,7 +139,7 @@ LinkedList.args = {
   border: true,
   size: 'large',
 }
-LinkedList.parameters = { ...component.sourceCode(LinkedList) }
+LinkedList.parameters = { ...component.sourceCode(LinkedList), controls: { exclude: excludedControls } }
 
 export const DownloadList = args => ({
   components: { ...component.components, BalIcon },
@@ -213,7 +215,7 @@ DownloadList.args = {
   border: true,
   size: 'large',
 }
-DownloadList.parameters = { ...component.sourceCode(DownloadList) }
+DownloadList.parameters = { ...component.sourceCode(DownloadList), controls: { exclude: excludedControls } }
 
 export const AccordionList = args => ({
   components: { ...component.components, BalIcon, BalListItemAccordionHead, BalListItemAccordionBody },
@@ -256,4 +258,4 @@ AccordionList.args = {
   border: true,
   size: 'large',
 }
-AccordionList.parameters = { ...component.sourceCode(AccordionList) }
+AccordionList.parameters = { ...component.sourceCode(AccordionList), controls: { exclude: excludedControls } }
