@@ -164,12 +164,7 @@ const tokens = {
     familyText: 'BaloiseCreateText, Arial, sans-serif',
     sizes: {
       mobile: {
-        'display-1': {
-          fontSize: '3rem',
-          lineHeight: '3.5rem',
-          spacing: '3',
-        },
-        'display-2': {
+        'display': {
           fontSize: '3rem',
           lineHeight: '3.5rem',
           spacing: '3',
@@ -211,14 +206,9 @@ const tokens = {
         },
       },
       tablet: {
-        'display-1': {
+        'display': {
           fontSize: '5rem',
           lineHeight: '6rem',
-          spacing: '3',
-        },
-        'display-2': {
-          fontSize: '3.5rem',
-          lineHeight: '4rem',
           spacing: '3',
         },
         '1': {
