@@ -21,7 +21,8 @@ bal-field {
 
   bal-field-label,
   bal-field-control,
-  bal-field-message {
+  bal-field-message,
+  .bal-field__message {
     position: relative;
     display: block;
   }
@@ -36,7 +37,8 @@ bal-field {
     }
   }
 
-  bal-field-control + bal-field-message {
+  bal-field-control + bal-field-message,
+  bal-field-control + .bal-field__message {
     margin-top: -32px !important;
   }
 
@@ -45,11 +47,13 @@ bal-field {
     top: -5px;
   }
 
-  bal-field-message {
+  bal-field-message,
+  .bal-field__message {
     width: 100%;
   }
 
   bal-field-label label,
+  .bal-field__message,
   bal-field-message {
     display: flex !important;
     justify-content: space-between;
