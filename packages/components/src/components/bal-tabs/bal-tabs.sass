@@ -94,8 +94,14 @@
           flex-grow: 1
           flex-basis: 0
         +modifier(vertical)
+          align-items: flex-start
           justify-content: flex-start
           padding: .5rem 1rem
+        +modifier(vertical-on-mobile)
+          +mobile
+            align-items: flex-start
+            justify-content: flex-start
+            padding: .5rem 1rem
         .bal-icon
           margin-top: -1px
 
