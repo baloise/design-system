@@ -1,6 +1,7 @@
 import { Component, Host, h, Method, State, Prop, Element, Listen } from '@stencil/core'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../config'
 import { Props } from '../../props'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-hint',
@@ -109,30 +110,54 @@ export class Hint implements BalConfigObserver {
   }
 
   render() {
+    const block = BEM.block('hint')
+    const hasSize = this.small
+    const sizeClass = 'is-small'
+    const hasPlacement = true
+    const placementClass = `is-placed-${this.placement}`
+    const elContent = block.element('content')
+    const elIcon = block.element('icon')
+    const elButtons = elContent.element('buttons')
+    const rowReverseClass = 'is-row-reverse'
+    const hasRowReverse = true
+    const hiddenDesktopClass = 'is-hidden-desktop'
+    const hasHiddenDesktop = this.small
+
     return (
       <Host
         class={{
-          'bal-hint': true,
-          [`is-placed-${this.placement}`]: true,
-          'is-small': this.small,
+          ...block.class(),
+          ...block.modifier(placementClass).class(hasPlacement),
+          ...block.modifier(sizeClass).class(hasSize),
         }}
         data-visible={this.isActive}
       >
         <bal-icon
-          class="data-test-hint-trigger"
+          class={{
+            ...elIcon.class(),
+            'data-test-hint-trigger': true,
+          }}
           role="button"
           name="info-circle"
           size="small"
           onClick={() => this.toggle()}
         ></bal-icon>
 
-        <div class="bal-hint-content data-test-hint-content p-5" style={{ display: this.isActive ? 'flex' : 'none' }}>
+        <div
+          class={{
+            ...elContent.class(),
+            ...elContent.modifier(placementClass).class(hasPlacement),
+            'data-test-hint-content': true,
+            'p-5': true,
+          }}
+          style={{ display: this.isActive ? 'flex' : 'none' }}
+        >
           <slot></slot>
           <bal-button-group
             class={{
-              'buttons is-row-reverse': true,
-              'mt-5': true,
-              'is-hidden-desktop': this.small,
+              ...elButtons.class(),
+              ...elButtons.modifier(rowReverseClass).class(hasRowReverse),
+              ...elButtons.modifier(hiddenDesktopClass).class(hasHiddenDesktop),
             }}
           >
             <bal-button class="data-test-hint-close" color="info" onClick={() => this.dismiss()}>
