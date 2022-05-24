@@ -1,3 +1,6 @@
+@use "sass:map"
+@use "sass:string"
+
 =overflow-touch
   -webkit-overflow-scrolling: touch
 
@@ -112,11 +115,67 @@
   #{$prop}-top: $top
   #{$prop}-bottom: $bottom
 
-=margin($top, $end: $top, $bottom: $top, $start: $end)
-  +property(margin, $top, $end, $bottom, $start)
+=margin($level: 2, $position: '')
+  +spacing(margin, $level, $position)
 
-=padding($top, $end: $top, $bottom: $top, $start: $end)
-  +property(padding, $top, $end, $bottom, $start)
+=padding($level: 2, $position: '')
+  +spacing(padding, $level, $position)
+
+=spacing($prop: 'margin', $level: 2, $position: '')
+  $key: string.quote(#{$level})
+  $value: map.get($spacing-values, $key)
+  $value-tablet: map.get($spacing-values-tablet, $key)
+  $value-desktop: map.get($spacing-values-desktop, $key)
+
+  @if $position == ''
+    #{$prop}: $value
+    +tablet
+      #{$prop}: $value-tablet
+    +desktop
+      #{$prop}: $value-desktop
+  @else if $position == 'y'
+    #{$prop}-top: $value
+    #{$prop}-bottom: $value
+    +tablet
+      #{$prop}-top: $value-tablet
+      #{$prop}-bottom: $value-tablet
+    +desktop
+      #{$prop}-top: $value-desktop
+      #{$prop}-bottom: $value-desktop
+  @else if $position == 'x'
+    #{$prop}-left: $value
+    #{$prop}-right: $value
+    +tablet
+      #{$prop}-left: $value-tablet
+      #{$prop}-right: $value-tablet
+    +desktop
+      #{$prop}-left: $value-desktop
+      #{$prop}-right: $value-desktop
+  @else if $position == 'l'
+    #{$prop}-left: $value
+    +tablet
+      #{$prop}-left: $value-tablet
+    +desktop
+      #{$prop}-left: $value-desktop
+  @else if $position == 'r'
+    #{$prop}-right: $value
+    +tablet
+      #{$prop}-right: $value-tablet
+    +desktop
+      #{$prop}-right: $value-desktop
+  @else if $position == 't'
+    #{$prop}-top: $value
+    +tablet
+      #{$prop}-top: $value-tablet
+    +desktop
+      #{$prop}-top: $value-desktop
+  @else if $position == 'b'
+    #{$prop}-bottom: $value
+    +tablet
+      #{$prop}-bottom: $value-tablet
+    +desktop
+      #{$prop}-bottom: $value-desktop
+
 
 =property-horizontal($prop, $start, $end: $start)
   @if $start == 0 and $end == 0
