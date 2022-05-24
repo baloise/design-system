@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.11.3](https://github.com/baloise/design-system/compare/v10.11.2...v10.11.3) (2022-05-24)
+
+
+### Bug Fixes
+
+* **field:** add css class for messages ([42f8d98](https://github.com/baloise/design-system/commit/42f8d98404af820fb359c6719febe03b599817cb))
+
+
+
 ### [10.11.2](https://github.com/baloise/design-system/compare/v10.11.1...v10.11.2) (2022-05-24)
 
 
