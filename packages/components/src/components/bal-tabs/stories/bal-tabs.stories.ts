@@ -60,26 +60,6 @@ Mobile.parameters = {
   controls: { exclude: ['clickable'] },
 }
 
-export const SubNavigation = args => ({
-  components: { ...component.components },
-  setup: () => ({ args }),
-  template: `<bal-tabs v-bind="args" v-model="args.value">
-  <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
-  <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
-  <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
-  <bal-tab-item disabled value="tab-d" label="Tab D">Content of Tab D</bal-tab-item>
-</bal-tabs>`,
-})
-SubNavigation.args = {
-  value: 'tab-b',
-  expanded: false,
-  interface: 'tabs-sub',
-}
-SubNavigation.parameters = {
-  ...component.sourceCode(SubNavigation),
-  controls: { exclude: ['clickable', 'action', 'actionLabel'] },
-}
-
 export const Steps = args => ({
   components: { ...component.components },
   setup: () => ({ args }),
@@ -99,5 +79,7 @@ Steps.args = {
 }
 Steps.parameters = {
   ...component.sourceCode(Steps),
-  controls: { exclude: ['expanded', 'action', 'actionLabel', 'vertical', 'verticalOnMobile', 'border'] },
+  controls: {
+    exclude: ['expanded', 'selectOnMobile', 'iconPosition', 'fullwidth', 'vertical', 'verticalOnMobile', 'border'],
+  },
 }

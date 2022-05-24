@@ -3,7 +3,6 @@ import { debounceEvent } from '../../helpers/helpers'
 import { BalTabOption } from './bal-tab.type'
 import { watchForTabs } from './utils/watch-tabs'
 import { TabList } from './components/tabs'
-import { OStepList } from './components/o-steps'
 import { StepList } from './components/steps'
 import { Props } from '../../props'
 import { BEM } from '../../utils/bem'
@@ -138,11 +137,7 @@ export class Tabs {
   }
 
   componentDidRender() {
-    setTimeout(() => {
-      if (this.interface === 'tabs' || this.interface === 'tabs-sub') {
-        this.moveLine(this.getTargetElement(this.value))
-      }
-    }, 0)
+    this.moveLine(this.getTargetElement(this.value))
   }
 
   /**
@@ -184,27 +179,31 @@ export class Tabs {
   }
 
   private moveLine(element: HTMLElement) {
-    if (element) {
-      const listElement = element.closest('li')
+    setTimeout(() => {
+      if (this.interface === 'tabs' || this.interface === 'tabs-sub') {
+        if (element) {
+          const listElement = element.closest('li')
 
-      if (this.vertical || (isPlatform('mobile') && this.verticalOnMobile)) {
-        if (listElement?.clientHeight !== undefined) {
-          this.lineHeight = listElement.clientHeight - 16
-        }
+          if (this.vertical || (isPlatform('mobile') && this.verticalOnMobile)) {
+            if (listElement?.clientHeight !== undefined) {
+              this.lineHeight = listElement.clientHeight - 16
+            }
 
-        if (listElement?.offsetTop !== undefined) {
-          this.lineOffsetTop = listElement.offsetTop + 8
-        }
-      } else {
-        if (listElement?.clientWidth !== undefined) {
-          this.lineWidth = listElement.clientWidth - 32
-        }
+            if (listElement?.offsetTop !== undefined) {
+              this.lineOffsetTop = listElement.offsetTop + 8
+            }
+          } else {
+            if (listElement?.clientWidth !== undefined) {
+              this.lineWidth = listElement.clientWidth - 32
+            }
 
-        if (listElement?.offsetLeft !== undefined) {
-          this.lineOffsetLeft = listElement.offsetLeft + 16
+            if (listElement?.offsetLeft !== undefined) {
+              this.lineOffsetLeft = listElement.offsetLeft + 16
+            }
+          }
         }
       }
-    }
+    }, 0)
   }
 
   private getTargetElement(value?: string) {
@@ -218,12 +217,14 @@ export class Tabs {
 
   render() {
     const block = BEM.block('tabs')
-    const Tabs = this.interface === 'o-steps' ? OStepList : this.interface === 'steps' ? StepList : TabList
+    const isSteps = this.interface === 'steps' || this.interface === 'o-steps'
+    const Tabs = isSteps ? StepList : TabList
+
     return (
       <Host
         class={{
           ...block.class(),
-          ...block.modifier('fullwidth').class(this.expanded || this.fullwidth),
+          ...block.modifier('fullwidth').class(this.expanded || this.fullwidth || isSteps),
           // 'bal-tabs': this.interface === 'tabs' || this.interface === 'tabs-sub' || this.interface === 'navbar',
           // 'bal-steps': this.interface === 'steps',
           // 'bal-o-steps': this.interface === 'o-steps',

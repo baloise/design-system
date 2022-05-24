@@ -91,6 +91,7 @@ export class TabItem {
       done: this.done,
       failed: this.failed,
       bubble: this.bubble,
+      passed: false,
       prevent: this.prevent,
       navigate: this.balNavigate,
     }

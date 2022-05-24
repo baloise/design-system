@@ -326,6 +326,9 @@ tokens.color['valid'] = tokens.color['success-light']
 tokens.color['invalid'] = tokens.color['danger-light']
 tokens.color['disabled'] = tokens.color['grey-2']
 
+tokens.color['background'] = tokens.color['white']
+tokens.color['background-light'] = tokens.color['grey-light']
+
 tokens.typography.sizes.mobile['large'] = tokens.typography.sizes.mobile['3']
 tokens.typography.sizes.mobile['medium'] = tokens.typography.sizes.mobile['4']
 tokens.typography.sizes.mobile['normal'] = tokens.typography.sizes.mobile['5']
