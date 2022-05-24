@@ -1,8 +1,4 @@
 $modal-breakpoint: $tablet !default
-$modal-content-width: 640px !default
-$modal-content-margin-mobile: 24px !default
-$modal-content-spacing-mobile: 160px !default
-$modal-content-spacing-tablet: 48px !default
 
 +block(modal)
   @extend %overlay
@@ -55,7 +51,8 @@ $modal-content-spacing-tablet: 48px !default
     // responsiveness
     +from($modal-breakpoint)
       margin: 3rem auto
-      width: $modal-content-width
+      // --bal-width is deprecated and will be removed in the next major release
+      width: var(--bal-modal-width, var(--bal-width, 640px))
     // spacing
     padding: 1rem
     .bal-modal__header

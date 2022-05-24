@@ -222,6 +222,27 @@ export const TeaserCards = args => ({
         </bal-card-content>
       </bal-card>
     </div>
+    <div class="column is-half">
+  <bal-card fullheight>
+    <bal-card-content>
+      <bal-data horizontal>
+        <bal-data-item>
+          <img class="is-2by3" src="https://unsplash.it/191/288">
+        </bal-data-item>
+        <bal-data-item>
+          <div class="is-flex is-flex-direction-column" style="height: 100%;">
+            <bal-heading level="h4" space="bottom">Contact Card</bal-heading>
+            <bal-text size="small">Contact role</bal-text>
+            <div class="mt-auto">
+              <bal-text size="small" space="none">Contact</bal-text>
+              <bal-button color="link" flat={true} iconPosition="left" icon="message" href="https://www.google.com" target="_blank">Very veeeeery veeeeeeeery long text</bal-button>
+            </div>
+          </div>
+        </bal-data-item>
+      </bal-data>
+    </bal-card-content>
+  </bal-card>
+</div>
   </div>
 </div>
 `,

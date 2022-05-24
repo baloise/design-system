@@ -574,6 +574,10 @@ export namespace Components {
          */
         "readonly"?: boolean;
         /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required": boolean;
+        /**
           * If `true` the component gets a valid green style.
          */
         "valid": boolean;
@@ -619,6 +623,10 @@ export namespace Components {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
+        /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required": boolean;
         /**
           * If `true` the component gets a valid green style.
          */
@@ -695,6 +703,10 @@ export namespace Components {
           * If `true` multiple file upload is possible.
          */
         "multiple": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -859,7 +871,7 @@ export namespace Components {
          */
         "inverted": boolean;
         /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '00/0.000.000' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
          */
         "mask"?: Props.BalInputMask;
         /**
@@ -3193,6 +3205,10 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required"?: boolean;
+        /**
           * If `true` the component gets a valid green style.
          */
         "valid"?: boolean;
@@ -3238,6 +3254,10 @@ declare namespace LocalJSX {
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly"?: boolean;
+        /**
+          * If `true` the form control needs to be filled. If it is set to `false` an optional label is added to the label..
+         */
+        "required"?: boolean;
         /**
           * If `true` the component gets a valid green style.
          */
@@ -3310,6 +3330,10 @@ declare namespace LocalJSX {
           * If `true` multiple file upload is possible.
          */
         "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
         /**
           * Triggers when a file is added or removed.
          */
@@ -3474,7 +3498,7 @@ declare namespace LocalJSX {
          */
         "inverted"?: boolean;
         /**
-          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '00/0.000.000' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
+          * Mask of the input field. It defines what the user can enter and how the format looks like. Currently, only for Switzerland formatted. Formatting for 'contract-number': '99/1.234.567-1' Formatting for 'claim-number': ('73/001217/16.9') Formatting for 'offer-number': ('98/7.654.321')
          */
         "mask"?: Props.BalInputMask;
         /**

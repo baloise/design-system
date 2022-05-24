@@ -33,15 +33,28 @@ const component = BalComponentStory({
 
 export default component.story
 
+const excludedControls = ['inverted']
+
 export const Basic = args => ({
   components: { ...component.components, BalIcon },
   setup: () => ({ args }),
   template: `<bal-list v-bind="args">
   <bal-list-item>
     <bal-list-item-content>
-      <bal-list-item-title>Single-line item</bal-list-item-title>
+      <bal-list-item-title>Title</bal-list-item-title>
     </bal-list-item-content>
   </bal-list-item>
+  <bal-list-item>
+  <bal-list-item-content>
+    <bal-list-item-title>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta laudantium voluptatum veritatis nisi,
+      neque deserunt repellat quae tempore, ea facere, eaque magni vero incidunt iusto voluptates?
+      Minus quis temporibus consequatur? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+      Dicta laudantium voluptatum veritatis nisi, neque deserunt repellat quae tempore, ea facere,
+      eaque magni vero incidunt iusto voluptates? Minus quis temporibus consequatur?
+    </bal-list-item-title>
+  </bal-list-item-content>
+</bal-list-item>
   <bal-list-item>
     <bal-list-item-content>
       <bal-list-item-title>Two-line item</bal-list-item-title>
@@ -65,7 +78,7 @@ Basic.args = {
   border: true,
   size: '',
 }
-Basic.parameters = { ...component.sourceCode(Basic) }
+Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
 
 export const NativeList = args => ({
   components: { ...component.components },
@@ -96,7 +109,7 @@ export const NativeList = args => ({
 NativeList.args = {
   border: true,
 }
-NativeList.parameters = { ...component.sourceCode(NativeList) }
+NativeList.parameters = { ...component.sourceCode(NativeList), controls: { exclude: excludedControls } }
 
 export const LinkedList = args => ({
   components: { ...component.components, BalIcon },
@@ -126,7 +139,7 @@ LinkedList.args = {
   border: true,
   size: 'large',
 }
-LinkedList.parameters = { ...component.sourceCode(LinkedList) }
+LinkedList.parameters = { ...component.sourceCode(LinkedList), controls: { exclude: excludedControls } }
 
 export const DownloadList = args => ({
   components: { ...component.components, BalIcon },
@@ -202,7 +215,7 @@ DownloadList.args = {
   border: true,
   size: 'large',
 }
-DownloadList.parameters = { ...component.sourceCode(DownloadList) }
+DownloadList.parameters = { ...component.sourceCode(DownloadList), controls: { exclude: excludedControls } }
 
 export const AccordionList = args => ({
   components: { ...component.components, BalIcon, BalListItemAccordionHead, BalListItemAccordionBody },
@@ -245,4 +258,4 @@ AccordionList.args = {
   border: true,
   size: 'large',
 }
-AccordionList.parameters = { ...component.sourceCode(AccordionList) }
+AccordionList.parameters = { ...component.sourceCode(AccordionList), controls: { exclude: excludedControls } }

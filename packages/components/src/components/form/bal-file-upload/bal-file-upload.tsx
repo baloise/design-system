@@ -7,6 +7,8 @@ import { FileUploadRejectedFile, FileUploadRejectionReason } from './bal-file-up
   tag: 'bal-file-upload',
 })
 export class FileUpload {
+  private uploadId = `bal-upload-${UploadIds++}`
+
   @Element() element!: HTMLElement
   fileInput!: HTMLInputElement
   bundleSize = 0
@@ -20,6 +22,11 @@ export class FileUpload {
       this.files = this.value
     }
   }
+
+  /**
+   * The name of the control, which is submitted with the form data.
+   */
+  @Prop() name: string = this.uploadId
 
   /**
    * Label of the drop area.
@@ -297,7 +304,7 @@ export class FileUpload {
             <input
               class="file-input"
               type="file"
-              name="resume"
+              name={this.name}
               multiple={this.multiple}
               disabled={this.disabled || this.loading}
               readonly={this.readonly}
@@ -328,3 +335,5 @@ export class FileUpload {
     )
   }
 }
+
+let UploadIds = 0

@@ -19,6 +19,7 @@ import {
   BalDatepicker,
   BalSelectOption,
 } from '../../../../../.storybook/vue/components'
+import { configArgTypes, configDefaultArgs, reduceConfigArgs, setConfig } from '../../../../stories/utils/config'
 
 const component = BalComponentStory({
   title: 'Components/Form/Field',
@@ -30,6 +31,7 @@ const component = BalComponentStory({
     BalFieldMessage,
   },
   docs,
+  status: 'stable',
   argTypes: {
     hasFieldMessage: {
       description: 'Show a hint or validation message below the control',
@@ -37,8 +39,10 @@ const component = BalComponentStory({
         category: 'custom',
       },
     },
+    ...configArgTypes,
   },
   args: {
+    ...configDefaultArgs,
     hasFieldMessage: true,
   },
 })
@@ -47,7 +51,12 @@ export default component.story
 
 export const Basic = args => ({
   components: { ...component.components, BalInput },
-  setup: () => ({ args }),
+  setup: () => {
+    setConfig(args)
+    return {
+      args: reduceConfigArgs(args),
+    }
+  },
   template: `<bal-field v-bind="args">
   <bal-field-label required>Firstname</bal-field-label>
   <bal-field-control>
@@ -61,7 +70,12 @@ Basic.parameters = { ...component.sourceCode(Basic) }
 
 export const Addon = args => ({
   components: { ...component.components, BalButton, BalInput },
-  setup: () => ({ args }),
+  setup: () => {
+    setConfig(args)
+    return {
+      args: reduceConfigArgs(args),
+    }
+  },
   template: `<bal-field v-bind="args">
   <bal-field-label required>Search</bal-field-label>
   <bal-field-control>
