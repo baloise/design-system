@@ -77,6 +77,12 @@
     </h2>
     <h4>mladenplaninicic</h4>
   </a>
+  <a href="https://github.com/NoraKurzbein" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/16286177?v=4" alt="NoraKurzbein" style="width: 64px;">
+    </h2>
+    <h4>NoraKurzbein</h4>
+  </a>
   <a href="https://github.com/Flapmax" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/47270471?v=4" alt="Flapmax" style="width: 64px;">
@@ -100,12 +106,6 @@
       <img src="https://avatars.githubusercontent.com/u/14329350?v=4" alt="mk-it-easy" style="width: 64px;">
     </h2>
     <h4>mk-it-easy</h4>
-  </a>
-  <a href="https://github.com/NoraKurzbein" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/16286177?v=4" alt="NoraKurzbein" style="width: 64px;">
-    </h2>
-    <h4>NoraKurzbein</h4>
   </a>
   <a href="https://github.com/gagarine" class="feature">
     <h2>
