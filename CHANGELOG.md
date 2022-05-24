@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.11.2](https://github.com/baloise/design-system/compare/v10.11.1...v10.11.2) (2022-05-24)
+
+
+### Bug Fixes
+
+* **bal-input:** contract has now 10 digits and for contacts with 9 digits use offer-number mask ([293837b](https://github.com/baloise/design-system/commit/293837bca2a3a352990d8d86a51dd470d559b707))
+* **testing:** change visit command to visitBalApp ([348bd4f](https://github.com/baloise/design-system/commit/348bd4f1925c9af100e3dc98cc57a3bcbd3e0415))
+
+
+
 ### [10.11.1](https://github.com/baloise/design-system/compare/v10.11.0...v10.11.1) (2022-05-18)
 
 
