@@ -1,4 +1,5 @@
 import { Component, h, Host } from '@stencil/core'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navbar-menu-end',
@@ -7,11 +8,11 @@ import { Component, h, Host } from '@stencil/core'
 })
 export class NavbarMenuEnd {
   render() {
+    const menuEndEl = BEM.block('navbar').element('menu').element('end')
+
     return (
-      <Host class="navbar-end">
-        <div class="navbar-item">
-          <slot></slot>
-        </div>
+      <Host class={{ ...menuEndEl.class() }}>
+        <slot></slot>
       </Host>
     )
   }

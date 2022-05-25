@@ -1,4 +1,5 @@
-import { Component, h, Host } from '@stencil/core'
+import { Component, h, Host, Prop } from '@stencil/core'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navbar-menu-start',
@@ -6,9 +7,16 @@ import { Component, h, Host } from '@stencil/core'
   shadow: false,
 })
 export class NavbarMenuStart {
+  /**
+   * TODO: describe
+   */
+  @Prop() interface: 'app' | 'simple' | 'meta' | 'stage' = 'app'
+
   render() {
+    const menuStartEl = BEM.block('navbar').element('menu').element('start')
+
     return (
-      <Host class="navbar-start">
+      <Host class={{ ...menuStartEl.class(), ...menuStartEl.modifier(this.interface).class() }}>
         <slot></slot>
       </Host>
     )

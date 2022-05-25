@@ -1080,6 +1080,10 @@ export namespace Components {
           * Defines the color of the logo.
          */
         "color": Props.BalLogoColor;
+        /**
+          * Defines the size of the logo.
+         */
+        "size": Props.BalLogoSize;
     }
     interface BalModal {
         "close": () => Promise<void>;
@@ -1142,23 +1146,24 @@ export namespace Components {
     }
     interface BalNavbar {
         /**
-          * It `true` the component uses the whole width
+          * TODO: describe
          */
-        "expanded": boolean;
+        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
-          * @deprecated It `true` the navbar has a white background. Always use the blue header.
+          * TODO: describe
+         */
+        "interface": 'app' | 'simple' | 'meta' | 'stage';
+        /**
+          * It `true` the navbar has a white background. Always use the blue header.
          */
         "light": boolean;
-        /**
-          * @deprecated It `true` the burger button is hidden. Use simple on the navbar-brand component.
-         */
-        "noBurger": boolean;
     }
     interface BalNavbarBrand {
         /**
           * Link of the logo / title.
          */
         "href": string;
+        "interface": 'app' | 'simple' | 'meta' | 'stage';
         /**
           * If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
@@ -1170,6 +1175,10 @@ export namespace Components {
     interface BalNavbarMenuEnd {
     }
     interface BalNavbarMenuStart {
+        /**
+          * TODO: describe
+         */
+        "interface": 'app' | 'simple' | 'meta' | 'stage';
     }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
@@ -1744,6 +1753,10 @@ export namespace Components {
           * Defines the layout of the tabs.
          */
         "interface": Props.BalTabsInterface;
+        /**
+          * If `true` the field expands over the whole width.
+         */
+        "inverted": boolean;
         /**
           * Go to tab with the given value
          */
@@ -3735,6 +3748,10 @@ declare namespace LocalJSX {
           * Defines the color of the logo.
          */
         "color"?: Props.BalLogoColor;
+        /**
+          * Defines the size of the logo.
+         */
+        "size"?: Props.BalLogoSize;
     }
     interface BalModal {
         /**
@@ -3795,23 +3812,24 @@ declare namespace LocalJSX {
     }
     interface BalNavbar {
         /**
-          * It `true` the component uses the whole width
+          * TODO: describe
          */
-        "expanded"?: boolean;
+        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
-          * @deprecated It `true` the navbar has a white background. Always use the blue header.
+          * TODO: describe
+         */
+        "interface"?: 'app' | 'simple' | 'meta' | 'stage';
+        /**
+          * It `true` the navbar has a white background. Always use the blue header.
          */
         "light"?: boolean;
-        /**
-          * @deprecated It `true` the burger button is hidden. Use simple on the navbar-brand component.
-         */
-        "noBurger"?: boolean;
     }
     interface BalNavbarBrand {
         /**
           * Link of the logo / title.
          */
         "href"?: string;
+        "interface"?: 'app' | 'simple' | 'meta' | 'stage';
         /**
           * Emitted when the link element has clicked
          */
@@ -3826,6 +3844,10 @@ declare namespace LocalJSX {
     interface BalNavbarMenuEnd {
     }
     interface BalNavbarMenuStart {
+        /**
+          * TODO: describe
+         */
+        "interface"?: 'app' | 'simple' | 'meta' | 'stage';
     }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';
@@ -4424,6 +4446,10 @@ declare namespace LocalJSX {
           * Defines the layout of the tabs.
          */
         "interface"?: Props.BalTabsInterface;
+        /**
+          * If `true` the field expands over the whole width.
+         */
+        "inverted"?: boolean;
         /**
           * Emitted when the changes has finished.
          */

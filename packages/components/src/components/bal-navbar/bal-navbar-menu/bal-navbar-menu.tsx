@@ -1,4 +1,5 @@
 import { Component, h, Host, Method, State } from '@stencil/core'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-navbar-menu',
@@ -17,8 +18,15 @@ export class NavbarMenu {
   }
 
   render() {
+    const menuEl = BEM.block('navbar').element('menu')
+
     return (
-      <Host class={'navbar-menu' + (this.isMenuActive ? ' is-active' : '')}>
+      <Host
+        class={{
+          ...menuEl.class(),
+          ...menuEl.modifier('active').class(this.isMenuActive),
+        }}
+      >
         <slot></slot>
       </Host>
     )

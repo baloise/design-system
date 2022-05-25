@@ -22,6 +22,8 @@ export const TabList: FunctionalComponent<TabProps> = ({
   vertical,
   verticalOnMobile,
   selectOnMobile,
+  context,
+  inverted,
 }) => {
   if (isPlatform('mobile') && selectOnMobile) {
     const onChange = (event: CustomEvent<string | string[] | undefined>) => {
@@ -67,6 +69,9 @@ export const TabList: FunctionalComponent<TabProps> = ({
           >
             <TabItem
               icon={tab.icon}
+              active={tab.value === value}
+              inverted={inverted}
+              context={context}
               vertical={vertical}
               verticalOnMobile={verticalOnMobile}
               expanded={expanded}
@@ -77,7 +82,6 @@ export const TabList: FunctionalComponent<TabProps> = ({
               bubble={tab.bubble}
               onSelectTab={e => onSelectTab(e, tab)}
             ></TabItem>
-            {/* <bal-badge size="small" position="tabs" class={{ 'is-hidden': !tab.hasBubble }}></bal-badge> */}
           </li>
         ))}
       </ul>
@@ -96,6 +100,7 @@ export const TabList: FunctionalComponent<TabProps> = ({
         lineWidth={lineWidth}
         lineOffsetTop={lineOffsetTop}
         lineHeight={lineHeight}
+        inverted={inverted}
         isReady={isReady}
       ></TabLine>
     </div>
@@ -110,6 +115,7 @@ export const TabLine: FunctionalComponent<TabLineProps> = ({
   lineOffsetLeft,
   lineHeight,
   lineOffsetTop,
+  inverted,
 }) => {
   const tabLineEl = tabsEl.element('line')
   let style = {}
@@ -131,10 +137,10 @@ export const TabLine: FunctionalComponent<TabLineProps> = ({
         ...tabLineEl.class(),
         ...tabLineEl.modifier('ready').class(isReady),
         ...tabLineEl.modifier('vertical').class(vertical),
+        ...tabLineEl.modifier('inverted').class(inverted),
         ...tabLineEl.modifier('vertical-on-mobile').class(verticalOnMobile),
       }}
       style={style}
-      // style={{ display: vertical ? 'none' : 'block', left: `${lineOffsetLeft || 0}px`, width: `${lineWidth || 0}px` }}
     ></div>
   )
 }

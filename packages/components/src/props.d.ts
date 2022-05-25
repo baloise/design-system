@@ -14,6 +14,7 @@ export namespace Props {
     | 'warning'
     | 'danger'
     | 'link'
+    | 'light'
     | 'primary-light'
     | 'info-light'
   export type BalButtonType = 'button' | 'reset' | 'submit'
@@ -59,6 +60,7 @@ export namespace Props {
   export type BalListBackground = 'light' | 'color' | 'dark'
 
   export type BalLogoColor = 'blue' | 'white'
+  export type BalLogoSize = 'small' | 'normal'
   export type BalLogoBrand = 'group' | 'soba' | 'insurance'
 
   export type BalPopoverPlacement =
@@ -81,7 +83,7 @@ export namespace Props {
   export type BalStageColor = 'blue' | 'white' | 'purple' | 'green' | 'red' | 'yellow'
   export type BalStageSize = 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight'
 
-  export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar'
+  export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'
 
   export type BalTagColor =

@@ -43,6 +43,11 @@ export class Tabs {
   @Prop() expanded = false
 
   /**
+   * If `true` the field expands over the whole width.
+   */
+  @Prop() inverted = false
+
+  /**
    * If `true` the tabs is a block element and uses 100% of the width
    */
   @Prop() fullwidth = false
@@ -186,7 +191,7 @@ export class Tabs {
 
   private moveLine(element: HTMLElement) {
     setTimeout(() => {
-      if (this.interface === 'tabs' || this.interface === 'tabs-sub') {
+      if (this.interface !== 'steps' && this.interface !== 'o-steps') {
         if (element) {
           const listElement = element.closest('li')
 
@@ -230,14 +235,8 @@ export class Tabs {
       <Host
         class={{
           ...block.class(),
+          ...block.modifier(`context-${this.interface}`).class(),
           ...block.modifier('fullwidth').class(this.expanded || this.fullwidth || isSteps),
-          // 'bal-tabs': this.interface === 'tabs' || this.interface === 'tabs-sub' || this.interface === 'navbar',
-          // 'bal-steps': this.interface === 'steps',
-          // 'bal-o-steps': this.interface === 'o-steps',
-          // 'is-sub-navigation': this.interface === 'tabs-sub',
-          // 'is-navbar-tabs': this.interface === 'navbar',
-          // 'is-vertical': this.vertical,
-          // 'is-vertical-on-mobile': this.verticalOnMobile,
         }}
         data-value={this.tabsOptions
           .filter(t => this.isTabActive(t))
@@ -250,15 +249,14 @@ export class Tabs {
       >
         <Tabs
           value={this.value}
+          context={this.interface}
+          inverted={this.inverted}
           tabs={this.tabsOptions}
           border={this.border}
           expanded={this.expanded}
           clickable={this.clickable}
           isReady={this.isReady}
           iconPosition={this.iconPosition}
-          // action={this.action}
-          // actionLabel={this.actionLabel}
-          // onActionClick={e => this.actionHasClicked.emit(e)}
           onSelectTab={(e, t) => this.onSelectTab(e, t)}
           lineWidth={this.lineWidth}
           lineOffsetLeft={this.lineOffsetLeft}

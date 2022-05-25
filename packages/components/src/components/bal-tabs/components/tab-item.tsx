@@ -15,14 +15,20 @@ export const TabItem: FunctionalComponent<TabItemProps> = ({
   verticalOnMobile,
   iconPosition,
   bubble,
+  active,
+  context,
+  inverted,
   onSelectTab,
 }) => {
   const cssClasses = {
     ...buttonEl.class(),
+    ...buttonEl.modifier(`context-${context}`).class(),
     ...buttonEl.modifier('vertical').class(vertical),
     ...buttonEl.modifier('vertical-on-mobile').class(verticalOnMobile),
     ...buttonEl.modifier('fullwidth').class(expanded),
     ...buttonEl.modifier('disabled').class(disabled),
+    ...buttonEl.modifier('inverted').class(inverted),
+    ...buttonEl.modifier('active').class(active),
     ...buttonEl.modifier(`icon-${iconPosition}`).class(true),
     ...buttonEl.modifier('icon').class(icon !== undefined),
   }

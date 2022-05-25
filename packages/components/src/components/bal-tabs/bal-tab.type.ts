@@ -13,10 +13,12 @@ export interface BalTabOption {
   passed: boolean
   bubble: boolean | string
   prevent: boolean
+  context?: Props.BalTabsInterface
   navigate: EventEmitter<MouseEvent | CustomEvent>
 }
 
 export interface TabLineProps {
+  inverted: boolean
   isReady: boolean
   vertical: boolean
   verticalOnMobile: boolean
@@ -32,8 +34,10 @@ export interface TabProps {
   border: boolean
   clickable: boolean
   isReady: boolean
+  inverted: boolean
   iconPosition: Props.BalTabsIconPosition
   tabs: BalTabOption[]
+  context: Props.BalTabsInterface
   onSelectTab: (event: MouseEvent | CustomEvent, tab: BalTabOption) => void
   lineWidth?: number
   lineOffsetLeft?: number
@@ -46,6 +50,8 @@ export interface TabProps {
 
 export interface TabItemProps {
   icon: string | undefined
+  active: boolean
+  inverted: boolean
   vertical: boolean
   verticalOnMobile: boolean
   expanded: boolean
@@ -53,6 +59,7 @@ export interface TabItemProps {
   bubble: boolean | string
   href: string | undefined
   label: string | undefined
+  context: Props.BalTabsInterface
   iconPosition: Props.BalTabsIconPosition
   onSelectTab: (event: MouseEvent | CustomEvent) => void
 }
