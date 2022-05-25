@@ -20,7 +20,7 @@ import {
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
 import { inheritAttributes, isDescendant } from '../../../helpers/helpers'
-import { Props } from '../../../props'
+import { Props, Events } from '../../../types'
 
 @Component({
   tag: 'bal-checkbox',
@@ -85,7 +85,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<boolean>
+  @Event() balChange!: EventEmitter<Events.BalCheckboxChangeDetail>
 
   /**
    * Emitted when the toggle has focus.

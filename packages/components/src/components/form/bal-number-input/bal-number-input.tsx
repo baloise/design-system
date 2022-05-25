@@ -23,6 +23,7 @@ import {
   detachComponentToConfig,
 } from '../../../config'
 import { NUMBER_KEYS, ACTION_KEYS, isCtrlOrCommandKey } from '../../../constants/keys.constant'
+import { Events } from '../../../events'
 import {
   FormInput,
   getInputTarget,
@@ -121,12 +122,12 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<number | undefined>
+  @Event() balInput!: EventEmitter<Events.BalInputNumberInputDetail>
 
   /**
    * Emitted when the value has changed.
    */
-  @Event() balChange!: EventEmitter<number | undefined>
+  @Event() balChange!: EventEmitter<Events.BalInputNumberChangeDetail>
 
   /**
    * Emitted when the input loses focus.

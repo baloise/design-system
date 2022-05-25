@@ -8,7 +8,7 @@ import {
   detachComponentToConfig,
 } from '../../'
 import { logos } from './logos'
-import { Props } from '../../props'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-logo',

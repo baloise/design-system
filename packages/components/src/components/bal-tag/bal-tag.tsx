@@ -1,5 +1,5 @@
 import { Component, EventEmitter, h, Host, Prop, Event } from '@stencil/core'
-import { Props } from '../../props'
+import { Props, Events } from '../../types'
 
 @Component({
   tag: 'bal-tag',
@@ -36,7 +36,7 @@ export class Tag {
   /**
    * Emitted when the input got clicked.
    */
-  @Event() balCloseClick!: EventEmitter<MouseEvent>
+  @Event() balCloseClick!: EventEmitter<Events.BalTagCloseClickDetail>
 
   get colorCssClass(): string {
     return this.color !== '' ? `is-${this.color}` : 'default'
