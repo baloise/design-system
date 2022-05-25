@@ -89,7 +89,6 @@ export class Tabs {
     this.tabs.forEach(t => t.setActive(t.value === this.value))
 
     if (this.didInit && newValue !== oldValue) {
-      this.balChange.emit(newValue)
       this.isReady = true
     }
   }
@@ -174,6 +173,9 @@ export class Tabs {
       tab.navigate.emit(event)
       if (this.clickable) {
         await this.select(tab)
+        if (tab.value !== this.value) {
+          this.balChange.emit(tab.value)
+        }
       }
     }
   }

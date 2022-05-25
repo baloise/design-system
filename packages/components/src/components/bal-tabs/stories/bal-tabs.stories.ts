@@ -4,7 +4,7 @@ import { BalTabs, BalTabItem } from '../../../../.storybook/vue/components'
 
 const component = BalComponentStory({
   component: BalTabs,
-  status: 'beta',
+  status: 'stable',
   subcomponents: { BalTabItem },
   docs,
 })
