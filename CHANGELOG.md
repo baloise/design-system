@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.12.0](https://github.com/baloise/design-system/compare/v10.11.3...v10.12.0) (2022-05-25)
+
+
+### Features
+
+* add event types for the main events ([fe13251](https://github.com/baloise/design-system/commit/fe1325158592f310def478a319756edd3740d8ac))
+
+
+### Bug Fixes
+
+* **vue:** pass emitted events ([6287435](https://github.com/baloise/design-system/commit/6287435eb0aa5a4cedcfeec8203a53882514ad35))
+
+
+
 ### [10.11.3](https://github.com/baloise/design-system/compare/v10.11.2...v10.11.3) (2022-05-24)
 
 
