@@ -704,6 +704,10 @@ export namespace Components {
          */
         "multiple": boolean;
         /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
         "readonly": boolean;
@@ -3318,6 +3322,10 @@ declare namespace LocalJSX {
           * If `true` multiple file upload is possible.
          */
         "multiple"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
         /**
           * Triggers when a file is added or removed.
          */

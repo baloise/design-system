@@ -10,6 +10,7 @@ import {
   updateBalLanguage,
   BalRegion,
 } from '../../config'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-footer',
@@ -71,24 +72,58 @@ export class Footer implements BalConfigObserver {
   }
 
   render() {
+    const block = BEM.block('footer')
+    const elFooterInner = block.element('footer-inner')
+    const elContainer = elFooterInner.element('container')
+    const elFooterLinksContainer = elFooterInner.element('footer-links-container')
+    const elLegalLinks = elFooterLinksContainer.element('legal-links')
+    const elLanguageLinks = elFooterLinksContainer.element('language-links')
+
     return (
-      <Host>
+      <Host
+        class={{
+          ...block.class(),
+        }}
+      >
         <footer
           class={{
             footer: true,
+            ...elFooterInner.class(),
           }}
         >
           <slot></slot>
-          <div class="container footer-links-container">
-            <div class="legal-links pt-4" style={{ display: this.hideLinks ? 'none' : 'flex' }}>
+          <div
+            class={{
+              container: true,
+              ...elContainer.class(),
+              ...elFooterLinksContainer.class(),
+            }}
+          >
+            <div
+              class={{
+                ...elLegalLinks.class(),
+                'pt-4': true,
+              }}
+              style={{ display: this.hideLinks ? 'none' : 'flex' }}
+            >
               {this.links.map(link => (
-                <a class="is-link is-inverted pr-4" href={link.link}>
+                <a
+                  class={{
+                    'is-link': true,
+                    'is-inverted': true,
+                    'pr-4': true,
+                  }}
+                  href={link.link}
+                >
                   {link.label}
                 </a>
               ))}
             </div>
             <div
-              class="language-links pt-4"
+              class={{
+                ...elLanguageLinks.class(),
+                'pt-4': true,
+              }}
               style={{
                 display: this.hideLanguageSelection || this.allowedLanguages.length <= 1 ? 'none' : 'flex',
               }}
