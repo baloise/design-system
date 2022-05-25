@@ -69,8 +69,6 @@ export class Heading {
   get spacing(): string {
     switch (this.level) {
       case 'display':
-      case 'display-1':
-      case 'display-2':
         return this.margins(4)
       case 'h1':
         return this.margins(3)

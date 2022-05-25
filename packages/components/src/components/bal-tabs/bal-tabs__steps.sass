@@ -1,0 +1,119 @@
++block(tabs)
+
+  +element(steps)
+    +overflow-touch
+    +unselectable
+    display: flex
+    list-style: none
+
+    +element(item)
+      flex-basis: 1rem
+      flex-grow: 1
+      flex-shrink: 1
+      position: relative
+      &:not(:last-child):after
+        content: ' '
+        display: block
+        position: absolute
+        height: 2px
+        left: 50%
+        right: -50%
+        top: 50%
+        background-color: var(--bal-color-border-normal)
+        border-radius: var(--bal-radius-rounded)
+        margin-left: 10px
+        margin-right: 20px
+        +tablet
+          top: 1rem
+          margin-left: 22px
+          margin-right: 24px
+      +modifier(passed)
+        &:not(:last-child):after
+          background-color: var(--bal-color-border-primary)
+
+      +element(button)
+        text-decoration: none !important
+        display: flex
+        flex-direction: column
+        gap: 8px
+        cursor: default
+        +modifier(clickable)
+          cursor: pointer
+        +modifier(disabled)
+          +unselectable
+          cursor: default
+
+        +element(index)
+          height: 22px
+          width: 22px
+          +tablet
+            height: 30px
+            width: 30px
+          position: relative
+          left: calc(50% - 1rem)
+          display: flex
+          align-items: center
+          justify-content: center
+          overflow: hidden
+          z-index: 5
+          font-weight: 700
+          border-radius: 50%
+          border: 2px solid var(--bal-color-border-normal)
+          background: var(--bal-color-background)
+          color: var(--bal-color-background-inverted)
+          +modifier(active)
+            border-color: var(--bal-color-primary)
+            background: var(--bal-color-primary)
+            color: var(--bal-color-primary-inverted)
+          +modifier(disabled)
+            border-color: var(--bal-color-disabled)
+            background: var(--bal-color-disabled)
+          +modifier(done)
+            border-color: var(--bal-color-primary)
+            background-color: var(--bal-color-primary)
+            background: var(--bal-color-primary)
+            color: var(--bal-color-primary-inverted)
+          +modifier(failed)
+            border-color: var(--bal-color-danger)
+            background-color: var(--bal-color-danger)
+            background: var(--bal-color-danger)
+            color: var(--bal-color-white)
+          +element(icon)
+            margin-top: -2px
+          +element(label)
+            margin: 0
+            font-weight: 700
+            font-family: var(--bal-font-family-title)
+            color: var(--bal-color-primary)
+            font-size: var(--bal-size-small)
+            +modifiers(active, passed, done)
+              color: var(--bal-color-primary-inverted)
+            +modifier(disabled)
+              color: var(--bal-color-text-disabled)
+            +modifier(failed)
+              color: var(--bal-color-white)
+              +tablet
+                font-size: 1.2rem
+
+        +element(label)
+          display: none
+          color: var(--bal-color-text-hint)
+          +modifier(done)
+            color: var(--bal-color-text-primary)
+          +modifier(active)
+            color: var(--bal-color-text-primary)
+          +modifier(failed)
+            color: var(--bal-color-text-danger)
+          +modifier(disabled)
+            color: var(--bal-color-text-disabled)
+          +tablet
+            display: block
+            font-family: $title-family
+            font-weight: 700
+            text-align: center
+            width: 100%
+
+            // margin-top: 2rem
+            // margin-left: 0.5em
+            // margin-right: 0.5em
+            // padding-top: 0.2em

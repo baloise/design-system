@@ -11,6 +11,10 @@ declare namespace Cypress {
      */
     balTabsFindItems(options?: Partial<Loggable>): Chainable<JQuery>
     /**
+     * Returns the label of the tab item.
+     */
+    balTabsFindLabel(options?: Partial<Loggable>): Chainable<JQuery>
+    /**
      * Assert that the tab has the given item.
      */
     balTabsShouldHaveItems(

@@ -45,7 +45,7 @@ export namespace Props {
 
   export type BalCloseSize = 'small' | 'large' | 'medium' | ''
 
-  export type BalHeadingLevel = 'display' | 'display-1' | 'display-2' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  export type BalHeadingLevel = 'display' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   export type BalHeadingColor = 'primary' | 'info' | 'success' | 'warning' | 'danger' | '' | 'blue' | 'white'
 
   export type BalSelectFilter = 'includes' | 'starts-with'
@@ -82,6 +82,7 @@ export namespace Props {
   export type BalStageSize = 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight'
 
   export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar'
+  export type BalTabsIconPosition = 'horizontal' | 'vertical'
 
   export type BalTagColor =
     | 'blue'

@@ -1,30 +1,46 @@
-import { app } from '../support/app'
+import { testOnPlatforms } from '../../../testing/src'
 
 describe('Tabs', () => {
-  const page = app.getTabsPage()
+  testOnPlatforms(['mobile', 'desktop'], platform => {
+    beforeEach(() => cy.page('/components/bal-tabs/test/bal-tabs.cy.html'))
 
-  it('should select Tab B', () => {
-    page.open()
-    cy.get(page.tabs).select('Tab B').should('have.value', 'Tab B')
-    cy.get(page.tabs).select('Tab A').should('not.have.value', 'Tab B')
-  })
+    it('should have content', () => {
+      cy.getByTestId('tabs').spyEvent('balChange')
+      cy.getByTestId('tabs').should('have.value', 'Tab C')
+      cy.getByTestId('tabs').select('Tab B').should('have.value', 'Tab B')
+      cy.get('@balChange').should('have.been.calledOnce')
+    })
 
-  it('should disable Tab D', () => {
-    page.open()
-    cy.get(page.tabs).balTabsFindItems().last().should('have.value', 'Tab D')
-    cy.get(page.tabs).balTabsFindItems().last().should('be.disabled')
-  })
+    it('should disable Tab D', () => {
+      cy.getByTestId('tabs').spyEvent('balChange')
+      cy.getByTestId('tabs').balTabsFindItems().last().should('have.value', 'Tab D')
+      cy.getByTestId('tabs').balTabsFindItems().last().should('be.disabled')
+      cy.get('@balChange').should('not.have.been.called')
+    })
 
-  it('should have Action as button label', () => {
-    page.open()
-    cy.get(page.tabs).balTabsFindActionButton().contains('Action')
-  })
+    describe('Steps', () => {
+      it('should have states', () => {
+        cy.getByTestId('steps').balTabsFindItems().first().balTabItemShouldHaveState('done')
+        cy.getByTestId('steps').balTabsFindItems().eq(1).balTabItemShouldHaveState('failed')
+        cy.getByTestId('steps').balTabsFindItems().eq(2).balTabItemShouldHaveState('active')
+        cy.getByTestId('steps').balTabsFindItems().last().balTabItemShouldHaveState('disabled')
+      })
 
-  it('should check step status', () => {
-    page.open()
-    cy.get(page.steps).balTabsFindItems().first().balTabItemShouldHaveState('done')
-    cy.get(page.steps).balTabsFindItems().eq(1).balTabItemShouldHaveState('active')
-    cy.get(page.steps).balTabsFindItems().eq(2).balTabItemShouldHaveState('failed')
-    cy.get(page.steps).balTabsFindItems().last().balTabItemShouldHaveState('disabled')
+      it('should have labels on desktop and on mobile they should be hidden', () => {
+        if (platform === 'mobile') {
+          cy.getByTestId('steps')
+            .balTabsFindItems()
+            .first()
+            .balTabsFindLabel()
+            .contains('Tab A')
+            .should('not.be.visible')
+        } else {
+          cy.getByTestId('steps').balTabsFindItems().first().balTabsFindLabel().contains('Tab A').should('be.visible')
+          cy.getByTestId('steps').balTabsFindItems().eq(1).contains('Tab B')
+          cy.getByTestId('steps').balTabsFindItems().eq(2).contains('Tab C')
+          cy.getByTestId('steps').balTabsFindItems().last().contains('Tab D')
+        }
+      })
+    })
   })
 })

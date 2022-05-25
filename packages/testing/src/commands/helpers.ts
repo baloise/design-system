@@ -162,13 +162,13 @@ export const areComponentsReady = ($el: any) => {
   return Promise.all(queue)
 }
 
-export const testOnPlatforms = (platforms: Platforms[], fn: any) => {
+export const testOnPlatforms = (platforms: Platforms[], fn: (platform: Platforms) => Promise<void> | void) => {
   for (let index = 0; index < platforms.length; index++) {
     const platform = platforms[index]
 
     context(`on ${platform}`, () => {
       beforeEach(() => cy.platform(platform))
-      fn()
+      fn(platform)
     })
   }
 }

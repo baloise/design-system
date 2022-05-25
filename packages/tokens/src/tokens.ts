@@ -164,12 +164,7 @@ const tokens = {
     familyText: 'BaloiseCreateText, Arial, sans-serif',
     sizes: {
       mobile: {
-        'display-1': {
-          fontSize: '3rem',
-          lineHeight: '3.5rem',
-          spacing: '3',
-        },
-        'display-2': {
+        'display': {
           fontSize: '3rem',
           lineHeight: '3.5rem',
           spacing: '3',
@@ -211,14 +206,9 @@ const tokens = {
         },
       },
       tablet: {
-        'display-1': {
+        'display': {
           fontSize: '5rem',
           lineHeight: '6rem',
-          spacing: '3',
-        },
-        'display-2': {
-          fontSize: '3.5rem',
-          lineHeight: '4rem',
           spacing: '3',
         },
         '1': {
@@ -336,10 +326,14 @@ tokens.color['valid'] = tokens.color['success-light']
 tokens.color['invalid'] = tokens.color['danger-light']
 tokens.color['disabled'] = tokens.color['grey-2']
 
+tokens.color['background'] = tokens.color['white']
+tokens.color['background-light'] = tokens.color['grey-light']
+
 tokens.typography.sizes.mobile['large'] = tokens.typography.sizes.mobile['3']
 tokens.typography.sizes.mobile['medium'] = tokens.typography.sizes.mobile['4']
 tokens.typography.sizes.mobile['normal'] = tokens.typography.sizes.mobile['5']
 tokens.typography.sizes.mobile['small'] = tokens.typography.sizes.mobile['6']
+tokens.typography.sizes.mobile['xsmall'] = tokens.typography.sizes.mobile['7']
 tokens.typography.sizes.tablet['large'] = tokens.typography.sizes.tablet['3']
 tokens.typography.sizes.tablet['medium'] = tokens.typography.sizes.tablet['4']
 

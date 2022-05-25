@@ -1,39 +1,100 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { BalTabOption, TabProps } from '../bal-tab.type'
+import { isPlatform } from '../../..'
+import { BEM } from '../../../utils/bem'
+import { TabProps } from '../bal-tab.type'
 
-const stepIndex = (tab: BalTabOption, index: number): string => {
-  if (tab.failed) {
-    return '!'
-  }
-  if (tab.done) {
-    return ''
-  }
-  return <span style={{ marginTop: '-2px' }}>{index + 1}</span>
-}
+const stepsEl = BEM.block('tabs').element('steps')
+const stepItemEl = stepsEl.element('item')
+const stepItemButtonEl = stepItemEl.element('button')
+const stepItemButtonIndexEl = stepItemButtonEl.element('index')
+const stepItemButtonIndexLabelEl = stepItemButtonIndexEl.element('label')
+const stepItemButtonLabelEl = stepItemButtonEl.element('label')
 
-export const StepList: FunctionalComponent<TabProps> = ({ value, tabs, onSelectTab }) => (
-  <div class={['tabs is-fullwidth'].join(' ')}>
-    <ul>
+export const StepList: FunctionalComponent<TabProps> = ({ value, clickable, tabs, onSelectTab }) => {
+  let hasPassed = true
+  tabs = tabs
+    .map(tab => ({ ...tab, active: tab.value === value }))
+    .map(tab => {
+      if (tab.active) {
+        hasPassed = false
+      }
+      return { ...tab, passed: hasPassed }
+    })
+
+  return (
+    <ul
+      class={{
+        ...stepsEl.class(),
+      }}
+    >
       {tabs.map((tab, index) => (
         <li
           class={{
-            'is-active': tab.value === value,
-            'is-disabled': tab.disabled,
-            'is-done': tab.done,
-            'is-failed': tab.failed,
+            ...stepItemEl.class(),
+            ...stepItemEl.modifier('active').class(tab.active),
+            ...stepItemEl.modifier('passed').class(tab.passed),
+            ...stepItemEl.modifier('disabled').class(tab.disabled),
+            ...stepItemEl.modifier('done').class(tab.done),
+            ...stepItemEl.modifier('failed').class(tab.failed),
+            ...stepItemEl.modifier('clickable').class(clickable && !tab.disabled),
             'data-test-tab-item': true,
           }}
           data-label={tab.label}
           data-value={tab.value}
           data-index={index}
         >
-          <a onClick={(event: MouseEvent) => onSelectTab(event, tab)}>
-            <span class="step-index">{stepIndex(tab, index)}</span>
-            <span class="step-label">{tab.label}</span>
+          <a
+            class={{
+              ...stepItemButtonEl.class(),
+              ...stepItemButtonEl.modifier('disabled').class(tab.disabled),
+              ...stepItemButtonEl.modifier('clickable').class(clickable && !tab.disabled),
+            }}
+            onClick={(event: MouseEvent) => onSelectTab(event, tab)}
+          >
+            <span
+              class={{
+                ...stepItemButtonIndexEl.class(),
+                ...stepItemButtonIndexEl.modifier('done').class(tab.done),
+                ...stepItemButtonIndexEl.modifier('active').class(tab.active),
+                ...stepItemButtonIndexEl.modifier('failed').class(tab.failed),
+                ...stepItemButtonIndexEl.modifier('disabled').class(tab.disabled),
+              }}
+            >
+              <bal-icon
+                class={{
+                  ...stepItemButtonIndexEl.element('icon').class(),
+                }}
+                style={{ display: tab.done ? 'block' : 'none' }}
+                size={isPlatform('mobile') ? 'xsmall' : 'small'}
+                color="white"
+                name="check"
+              ></bal-icon>
+              <span
+                class={{
+                  ...stepItemButtonIndexLabelEl.class(),
+                  ...stepItemButtonIndexLabelEl.modifier('failed').class(tab.failed),
+                  ...stepItemButtonIndexLabelEl.modifier('active').class(tab.active),
+                  ...stepItemButtonIndexLabelEl.modifier('disabled').class(tab.disabled),
+                }}
+                style={{ display: !tab.done ? 'block' : 'none' }}
+              >
+                {tab.failed ? '!' : index + 1}
+              </span>
+            </span>
+            <span
+              class={{
+                ...stepItemButtonLabelEl.class(),
+                ...stepItemButtonLabelEl.modifier('done').class(tab.done),
+                ...stepItemButtonLabelEl.modifier('active').class(tab.active),
+                ...stepItemButtonLabelEl.modifier('failed').class(tab.failed),
+                ...stepItemButtonLabelEl.modifier('disabled').class(tab.disabled),
+              }}
+            >
+              {tab.label}
+            </span>
           </a>
-          <span class="bubble" style={{ display: tab.hasBubble ? 'inline' : 'none' }}></span>
         </li>
       ))}
     </ul>
-  </div>
-)
+  )
+}

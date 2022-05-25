@@ -18,19 +18,15 @@ export const isPlatform: IsPlatformSignature = (
   return getPlatforms(winOrPlatform).includes(platform!)
 }
 
-export const setupPlatforms = (win: any = window) => {
-  if (typeof win === 'undefined') {
+export const setupPlatforms = (win = {} as any) => {
+  if (typeof (window as any) === 'undefined') {
     return []
   }
 
+  win = window
   win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 
-  let platforms: Platforms[] | undefined | null = win.BaloiseDesignSystem.platforms
-  if (platforms == null) {
-    platforms = win.BaloiseDesignSystem.platforms = detectPlatforms(win)
-    platforms.forEach(p => win.document.documentElement.classList.add(`is-plt-${p}`))
-  }
-
+  const platforms: Platforms[] | undefined | null = (win.BaloiseDesignSystem.platforms = detectPlatforms(win))
   return platforms
 }
 

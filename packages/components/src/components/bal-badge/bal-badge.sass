@@ -8,13 +8,12 @@
   border-radius: var(--bal-radius-rounded)
   width: 1.5rem
   height: 1.5rem
-  // @deprecated // size
-  // +modifier(has-size-small)
-  //   width: .5rem
-  //   height: .5rem
-  // +modifier(has-size-large)
-  //   width: 2rem
-  //   height: 2rem
+  +modifier(has-size-small)
+    width: .75rem
+    height: .75rem
+  +modifier(has-size-large)
+    width: 2rem
+    height: 2rem
   // colors
   +modifier(is-danger)
     background: var(--bal-color-danger)
@@ -23,14 +22,16 @@
   +modifier(is-success)
     background: var(--bal-color-success)
   // position
-  +modifiers(has-position-card, has-position-button, has-position-tabs)
+  +modifiers(has-position-card, has-position-button)
     position: absolute
     right: -0.5rem
     top: -0.5rem
+  +modifier(has-position-tabs)
+    margin-top: -4px
   // label
   +element(label)
     font-weight: $weight-bold !important
     font-family: var(--bal-font-family-text) !important
-    font-size: var(--bal-size-small) !important
+    font-size: var(--bal-size-xsmall) !important
     color: var(--bal-color-white)
     line-height: 1.5rem !important

@@ -153,10 +153,10 @@ const shouldAndAndCommand = (
         return originalFn(element, 'not.have.attr', 'data-label', key, value)
 
       case 'be.disabled':
-        return originalFn(element, 'have.class', 'is-disabled', key, value)
+        return originalFn(element.find('a', { log: false }), 'have.attr', 'aria-disabled', 'true')
 
       case 'not.be.disabled':
-        return originalFn(element, 'not.have.class', 'is-disabled', key, value)
+        return originalFn(element.find('a', { log: false }), 'not.have.attr', 'aria-disabled', 'false')
     }
   }
 
