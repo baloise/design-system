@@ -25,7 +25,7 @@ import {
 } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 import { BalOptionValue } from './utils/bal-option.type'
-import { Props } from '../../../props'
+import { Props, Events } from '../../../types'
 
 export interface BalOptionController extends BalOptionValue {
   id: string
@@ -177,7 +177,7 @@ export class Select {
   /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<string | string[] | undefined>
+  @Event() balChange!: EventEmitter<Events.BalSelectChangeDetail>
 
   /**
    * Emitted when the input got clicked.

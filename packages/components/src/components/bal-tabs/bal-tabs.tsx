@@ -5,7 +5,7 @@ import { watchForTabs } from './utils/watch-tabs'
 import { TabList } from './components/tabs'
 import { OStepList } from './components/o-steps'
 import { StepList } from './components/steps'
-import { Props } from '../../props'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-tabs',

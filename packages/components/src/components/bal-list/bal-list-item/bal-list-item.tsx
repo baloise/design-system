@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Event, EventEmitter } from '@stencil/core'
-import { Props } from '../../../props'
+import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-list-item',

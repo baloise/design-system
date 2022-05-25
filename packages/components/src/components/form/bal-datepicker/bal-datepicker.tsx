@@ -63,7 +63,7 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
-import { Props } from '../../../props'
+import { Props, Events } from '../../../types'
 
 @Component({
   tag: 'bal-datepicker',
@@ -214,12 +214,12 @@ export class Datepicker implements ComponentInterface, BalConfigObserver, FormIn
   /**
    * Emitted when a option got selected.
    */
-  @Event() balChange!: EventEmitter<string | undefined>
+  @Event() balChange!: EventEmitter<Events.BalDatepickerChangeDetail>
 
   /**
    * Emitted when a keyboard input occurred.
    */
-  @Event() balInput!: EventEmitter<string | undefined>
+  @Event() balInput!: EventEmitter<Events.BalDatepickerInputDetail>
 
   /**
    * Emitted when the input loses focus.

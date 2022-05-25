@@ -77,6 +77,12 @@
     </h2>
     <h4>mladenplaninicic</h4>
   </a>
+  <a href="https://github.com/svene" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/51710?v=4" alt="svene" style="width: 64px;">
+    </h2>
+    <h4>svene</h4>
+  </a>
   <a href="https://github.com/NoraKurzbein" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/16286177?v=4" alt="NoraKurzbein" style="width: 64px;">
@@ -112,12 +118,6 @@
       <img src="https://avatars.githubusercontent.com/u/164074?v=4" alt="gagarine" style="width: 64px;">
     </h2>
     <h4>gagarine</h4>
-  </a>
-  <a href="https://github.com/svene" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/51710?v=4" alt="svene" style="width: 64px;">
-    </h2>
-    <h4>svene</h4>
   </a>
   <a href="https://github.com/tschneichel" class="feature">
     <h2>

@@ -2,7 +2,7 @@ import { Component, h, Host, Prop } from '@stencil/core'
 import * as balIcons from '@baloise/design-system-icons'
 import upperFirst from 'lodash.upperfirst'
 import camelCase from 'lodash.camelcase'
-import { Props } from '../../props'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-icon',

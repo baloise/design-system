@@ -1,5 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
-import { Props } from '../../props'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-stage',

@@ -5,11 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Props } from "./types";
-import { Props as Props1 } from "./props";
-import { Props as Props2 } from ".";
+import { Events, Props } from "./types";
+import { Props as Props1 } from ".";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+import { Events as Events1 } from "./events";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -2502,7 +2502,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the accordion has opened or closed
          */
-        "onBalChange"?: (event: CustomEvent<boolean>) => void;
+        "onBalChange"?: (event: CustomEvent<Events.BalAccordionChangeDetail>) => void;
         /**
           * BalIcon of the open trigger button
          */
@@ -2772,7 +2772,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<boolean>) => void;
+        "onBalChange"?: (event: CustomEvent<Events.BalCheckboxChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -2806,7 +2806,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<any[]>) => void;
+        "onBalChange"?: (event: CustomEvent<Events.BalCheckboxGroupChangeDetail>) => void;
         /**
           * If `true`, the user cannot interact with the radios.
          */
@@ -2942,7 +2942,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
+        "onBalChange"?: (event: CustomEvent<Events.BalDatepickerChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -2954,7 +2954,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
+        "onBalInput"?: (event: CustomEvent<Events.BalDatepickerInputDetail>) => void;
         /**
           * The text to display when the select is empty.
          */
@@ -3354,7 +3354,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
+        "onBalChange"?: (event: CustomEvent<Events.BalInputChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3366,7 +3366,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
+        "onBalInput"?: (event: CustomEvent<Events.BalInputInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -3446,11 +3446,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<number | undefined>) => void;
+        "onBalChange"?: (event: CustomEvent<Events.BalInputStepperChangeDetail>) => void;
         /**
           * Emitted when the input value has changed.
          */
-        "onBalInput"?: (event: CustomEvent<number | undefined>) => void;
+        "onBalInput"?: (event: CustomEvent<Events.BalInputStepperInputDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -3662,7 +3662,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<number | undefined>) => void;
+        "onBalChange"?: (event: CustomEvent<Events.BalInputNumberChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3674,7 +3674,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<number | undefined>) => void;
+        "onBalInput"?: (event: CustomEvent<Events.BalInputNumberInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
@@ -3738,7 +3738,7 @@ declare namespace LocalJSX {
         /**
           * Listen when the popover opens or closes. Returns the current value.
          */
-        "onBalChange"?: (event: CustomEvent<boolean>) => void;
+        "onBalChange"?: (event: CustomEvent<Events.BalPopoverChangeDetail>) => void;
         "onBalPopoverPrepare"?: (event: CustomEvent<string>) => void;
         /**
           * If `true` the field spans over the whole width.
@@ -3799,7 +3799,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<boolean>) => void;
+        "onBalChange"?: (event: CustomEvent<Events.BalRadioChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -3837,7 +3837,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checked property has changed.
          */
-        "onBalChange"?: (event: CustomEvent<number | string | boolean>) => void;
+        "onBalChange"?: (event: CustomEvent<Events.BalRadioGroupChangeDetail>) => void;
         /**
           * If `true` the element can not mutated, meaning the user can not edit the control.
          */
@@ -3911,7 +3911,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a option got selected.
          */
-        "onBalChange"?: (event: CustomEvent<string | string[] | undefined>) => void;
+        "onBalChange"?: (event: CustomEvent<Events.BalSelectChangeDetail>) => void;
         /**
           * Emitted when the input got clicked.
          */
@@ -4009,7 +4009,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed.
          */
-        "onBalChange"?: (event: CustomEvent<string | number | null>) => void;
+        "onBalChange"?: (event: CustomEvent<Events.BalSliderChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -4230,7 +4230,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input got clicked.
          */
-        "onBalCloseClick"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBalCloseClick"?: (event: CustomEvent<Events.BalTagCloseClickDetail>) => void;
         /**
           * The size of the tag element
          */
@@ -4309,7 +4309,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input value has changed..
          */
-        "onBalChange"?: (event: CustomEvent<string | undefined>) => void;
+        "onBalChange"?: (event: CustomEvent<Events.BalTextareaChangeDetail>) => void;
         /**
           * Emitted when the input has clicked.
          */
@@ -4321,7 +4321,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a keyboard input occurred.
          */
-        "onBalInput"?: (event: CustomEvent<string | undefined>) => void;
+        "onBalInput"?: (event: CustomEvent<Events.BalTextareaInputDetail>) => void;
         /**
           * Emitted when a keyboard key has pressed.
          */
