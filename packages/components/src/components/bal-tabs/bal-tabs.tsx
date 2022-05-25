@@ -152,13 +152,17 @@ export class Tabs {
   }
 
   private async updateTabs() {
-    await Promise.all(this.tabs.map(value => value.getOptions())).then(tabsOptions => {
-      this.tabsOptions = tabsOptions
-    })
-    const activeTabs = this.tabsOptions.filter(t => t.active)
-    if (activeTabs.length > 0) {
-      const firstActiveTab = activeTabs[0]
-      this.value = firstActiveTab.value
+    try {
+      await Promise.all(this.tabs.map(value => value.getOptions())).then(tabsOptions => {
+        this.tabsOptions = tabsOptions
+      })
+      const activeTabs = this.tabsOptions.filter(t => t.active)
+      if (activeTabs.length > 0) {
+        const firstActiveTab = activeTabs[0]
+        this.value = firstActiveTab.value
+      }
+    } catch (e) {
+      console.warn('[WARN] - Could not read tab options')
     }
   }
 
@@ -172,9 +176,9 @@ export class Tabs {
     if (!tab.disabled) {
       tab.navigate.emit(event)
       if (this.clickable) {
-        await this.select(tab)
         if (tab.value !== this.value) {
           this.balChange.emit(tab.value)
+          await this.select(tab)
         }
       }
     }

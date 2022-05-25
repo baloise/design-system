@@ -19,6 +19,23 @@ Cypress.Commands.add(
 )
 
 Cypress.Commands.add(
+  'balTabsFindLabel',
+  {
+    prevSubject: true,
+  },
+  (subject, options) => {
+    const o = wrapOptions(options)
+    return cy
+      .wrapComponent(subject, o)
+      .find('.bal-tabs__steps__item__button__label', o)
+      .then($el => {
+        log('balTabsFindLabel', '', $el, options)
+        return $el
+      })
+  },
+)
+
+Cypress.Commands.add(
   'balTabsShouldHaveItems',
   {
     prevSubject: true,
@@ -43,24 +60,6 @@ Cypress.Commands.add(
   (subject, state = 'done', options) => {
     log('balTabItemShouldHaveState', '', subject, options)
     const o = wrapOptions(options)
-    return cy.wrapComponent(subject, o).should('have.class', `is-${state}`)
-  },
-)
-
-Cypress.Commands.add(
-  'balTabsFindActionButton',
-  {
-    prevSubject: true,
-  },
-  (subject, options) => {
-    const o = wrapOptions(options)
-    return cy
-      .wrapComponent(subject, o)
-      .find(selectors.tabs.action, o)
-      .then($el => {
-        log('balTabsFindActionButton', '', $el, options)
-        return $el
-      })
-      .waitForComponents(o)
+    return cy.wrapComponent(subject, o).should('have.class', `bal-tabs__steps__item--${state}`)
   },
 )

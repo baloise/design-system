@@ -1,3 +1,4 @@
+import { hasClass } from './../helpers'
 import {
   isAccordion,
   isButton,
@@ -51,6 +52,10 @@ Cypress.Commands.overwrite('contains', (originalFn: any, element: any, content, 
 
   if (isDatepicker(element)) {
     return command(selectors.datepicker.input)
+  }
+
+  if (hasClass(element, 'bal-tabs__steps__item')) {
+    return command(element.find('.bal-tabs__steps__item__button__label'))
   }
 
   return originalFn(element, content, options)

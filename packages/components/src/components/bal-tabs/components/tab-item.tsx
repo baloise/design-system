@@ -1,4 +1,5 @@
 import { FunctionalComponent, h } from '@stencil/core'
+import { isPlatform } from '../../../'
 import { BEM } from '../../../utils/bem'
 import { TabItemProps } from '../bal-tab.type'
 
@@ -34,9 +35,16 @@ export const TabItem: FunctionalComponent<TabItemProps> = ({
   }
 
   const bubbleString = bubble === true || bubble === false ? '' : bubble
+  const labelString = isPlatform('mobile') ? '' : label
 
   return (
-    <a class={cssClasses} {...hrefAttribute} aria-current="page" onClick={e => onSelectTab(e)}>
+    <a
+      class={cssClasses}
+      {...hrefAttribute}
+      aria-disabled={`${disabled}`}
+      aria-current="page"
+      onClick={e => onSelectTab(e)}
+    >
       <bal-icon
         class={{ ...buttonEl.element('icon').class() }}
         name={icon}
@@ -44,7 +52,7 @@ export const TabItem: FunctionalComponent<TabItemProps> = ({
         style={{ display: icon ? 'flex' : 'none' }}
       ></bal-icon>
       <span>
-        {label}
+        {labelString}
         <bal-badge
           position="tabs"
           size={bubbleString === '' ? 'small' : ''}
