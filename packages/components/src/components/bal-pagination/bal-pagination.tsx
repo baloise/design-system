@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, State, Watch, Method, Event, EventEmitter } from '@stencil/core'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-pagination',
@@ -131,13 +132,37 @@ export class Pagination {
     const mobileItems = this.getItems()
     const tabletItems = this.getItems(this.pageRange)
 
+    const block = BEM.block('pagination')
+    const elNav = block.element('nav')
+    const elPaginationPrevious = elNav.element('pagination-previous')
+    const elPaginationNext = elNav.element('pagination-next')
+    const elPaginationList = elNav.element('pagination-list')
+    // const hiddenMobileClass = 'is-hidden-mobile'
+    // const hasHiddenMobile = true
+    // const hiddenTabletClass = 'is-hidden-tablet'
+    // const hasHiddenTablet = true
+
     return (
-      <Host>
-        <nav class="pagination" role="navigation" aria-label="pagination">
+      <Host
+        class={{
+          ...block.class(),
+        }}
+      >
+        <nav
+          class={{
+            pagination: true,
+            ...elNav.class(),
+          }}
+          role="navigation"
+          aria-label="pagination"
+        >
           <bal-button
             square
             color="text"
-            class="pagination-previous"
+            class={{
+              // 'pagination-previous': true,
+              ...elPaginationPrevious.class(),
+            }}
             disabled={this._value < 2}
             onClick={() => this.previous()}
           >
@@ -146,14 +171,35 @@ export class Pagination {
           <bal-button
             square
             color="text"
-            class="pagination-next"
+            class={{
+              // 'pagination-next': true,
+              ...elPaginationNext.class(),
+            }}
             disabled={this._value === this.totalPages}
             onClick={() => this.next()}
           >
             <bal-icon name="nav-go-right" size="small" />
           </bal-button>
-          <ul class="pagination-list is-hidden-mobile">{tabletItems}</ul>
-          <ul class="pagination-list is-hidden-tablet">{mobileItems}</ul>
+          <ul
+            class={{
+              // 'pagination-list': true,
+              ...elPaginationList.class(),
+              'is-hidden-mobile': true,
+              // ...elNav.modifier(hiddenMobileClass).class(hasHiddenMobile),
+            }}
+          >
+            {tabletItems}
+          </ul>
+          <ul
+            class={{
+              // 'pagination-list': true,
+              ...elPaginationList.class(),
+              'is-hidden-tablet': true,
+              // ...elNav.modifier(hiddenTabletClass).class(hasHiddenTablet),
+            }}
+          >
+            {mobileItems}
+          </ul>
         </nav>
       </Host>
     )
