@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-data-item',
@@ -10,8 +11,10 @@ export class DataItem {
   @Prop() disabled = false
 
   render() {
+    const block = BEM.block('data-item')
+
     return (
-      <Host class={['bal-data-item', this.disabled ? 'is-disabled' : ''].join(' ')}>
+      <Host class={{ ...block.class(), 'is-disabled': this.disabled }}>
         <slot></slot>
       </Host>
     )
