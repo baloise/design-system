@@ -8,6 +8,12 @@
   text-decoration: none
   overflow-wrap: break-word
   white-space: normal
+  // Do we really want to do this?
+  +modifier(has-border)
+    +block(data)
+      +element(data-item)
+        border-bottom: 23px solid var(--bal-color-grey-2)
+    //.bal-data__data-item
 
   +element(data-item)
     display: flex
@@ -17,6 +23,8 @@
     align-items: center
     flex-wrap: wrap
     padding: 16px 0
+
+
     +element(data-label)
       position: relative
       display: block
@@ -34,9 +42,6 @@
         top: -3px
 
 
-  +modifier(has-border)
-    +element(data-item)
-      border-bottom: 1px solid var(--bal-color-grey-2)
   +element(data-value)
     display: block
     flex: 1 1

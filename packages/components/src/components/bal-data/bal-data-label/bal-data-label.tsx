@@ -12,7 +12,7 @@ export class DataLabel {
 
   render() {
     return (
-      <Host class={{ ...BEM.block('data').element('data-item').class() }}>
+      <Host class={{ ...BEM.block('data').element('data-label').class() }}>
         <slot></slot>
         {this.required ? '*' : ''}
       </Host>
