@@ -8,6 +8,7 @@
   text-decoration: none
   overflow-wrap: break-word
   white-space: normal
+
   +element(data-item)
     display: flex
     flex: 1 1
@@ -23,23 +24,29 @@
       flex: 1 1
       flex-basis: 100%
 
-      font-family: $family-primary
+      font-family: var(--bal-family-primary)
       font-weight: $weight-bold
-      font-size: $size-small
-      line-height: $size-normal
+      font-size: var(--bal-size-small)
+      line-height: var(--bal-size-normal)
       +element(hint)
         margin-left: 8px
         position: absolute
         top: -3px
 
-  +block(data-value)
+
+  +modifier(has-border)
+    +element(data-item)
+      border-bottom: 1px solid var(--bal-color-grey-2)
+  +element(data-value)
     display: block
     flex: 1 1
     flex-basis: 100%
     margin-top: 4px
     min-height: 24px
 
-    font-family: $family-primary
-    font-weight: $weight-normal
-    font-size: $size-normal
-    line-height: $size-normal
+    font-family: var(--bal-family-primary)
+    font-weight: $weight-bold
+    font-size: var(--bal-size-small)
+    line-height: var(--bal-size-normal)
++tablet
+  +block(data)

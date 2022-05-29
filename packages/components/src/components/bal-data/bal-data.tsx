@@ -19,7 +19,13 @@ export class Data {
     const block = BEM.block('data')
 
     return (
-      <Host class={{ ...block.class(), 'has-border': this.border, 'is-horizontal': this.horizontal }}>
+      <Host
+        class={{
+          ...block.class(),
+          ...block.modifier('has-border').class(this.border),
+          ...block.modifier('is-horizontal').class(this.horizontal),
+        }}
+      >
         <slot></slot>
       </Host>
     )

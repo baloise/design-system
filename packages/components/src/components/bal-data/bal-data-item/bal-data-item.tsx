@@ -11,10 +11,15 @@ export class DataItem {
   @Prop() disabled = false
 
   render() {
-    const block = BEM.block('data-item')
+    const element = BEM.block('data').element('data-item')
 
     return (
-      <Host class={{ ...block.class(), 'is-disabled': this.disabled }}>
+      <Host
+        class={{
+          ...element.class(),
+          ...element.modifier('is-disabled').class(this.disabled),
+        }}
+      >
         <slot></slot>
       </Host>
     )
