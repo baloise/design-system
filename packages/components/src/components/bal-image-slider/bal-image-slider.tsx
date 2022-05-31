@@ -7,7 +7,6 @@ import { Component, h, ComponentInterface, Host, Element, State } from '@stencil
 export class ImageSlider implements ComponentInterface {
   @Element() host!: HTMLBalImageSliderElement
   @State() slideIndex = 0
-  @State() slideWidth = 288
   private images!: NodeListOf<HTMLImageElement>
   private imageContainer!: HTMLDivElement
 
@@ -15,30 +14,15 @@ export class ImageSlider implements ComponentInterface {
     this.imageContainer = this.host.querySelector('[slot="images"]') as HTMLDivElement
     this.imageContainer.classList.add('bal-image-slider__image-container')
     this.images = this.imageContainer?.querySelectorAll(':scope > img') as NodeListOf<HTMLImageElement>
-
-    for (let i = 0; i < this.images.length; i++) {
-      this.images[i].classList.add('bal-image-slider__slider-item')
-    }
-  }
-
-  private getSlideWidth = () => {
-    const viewPort = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-
-    if (viewPort <= 768) {
-      this.slideWidth = 288
-    } else if (viewPort > 768 && viewPort < 1408) {
-      this.slideWidth = 670
-    } else {
-      this.slideWidth = 1400
-    }
   }
 
   private setSlide = (slide: number) => {
+    const slideWidth = this.images[0].clientWidth
     if (slide >= 0 && slide !== this.images.length) {
       this.slideIndex = slide
       this.imageContainer.style.transitionDuration = '1.2s'
       this.imageContainer.style.transitionTimingFunction = 'cubic-bezier(0.23, 0.93, 0.13, 1)'
-      this.imageContainer.style.transform = `translate(-${this.slideIndex * this.slideWidth}px)`
+      this.imageContainer.style.transform = `translate(-${this.slideIndex * slideWidth}px)`
     } else {
       return
     }
@@ -63,10 +47,6 @@ export class ImageSlider implements ComponentInterface {
         </bal-text>
       )
     }
-  }
-
-  componentWillRender() {
-    this.getSlideWidth()
   }
 
   render() {
