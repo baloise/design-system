@@ -41,6 +41,7 @@ import {
 import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
 import { getDecimalSeparator } from '../../../utils/number.util'
 import { formatInputValue } from './bal-input.utils'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-number-input',
@@ -294,11 +295,14 @@ export class NumberInput implements ComponentInterface, BalConfigObserver, FormI
       label.htmlFor = this.inputId
     }
 
+    const block = BEM.block('number-input')
+
     return (
       <Host
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
+          ...block.class(),
           'is-disabled': this.disabled || this.readonly,
         }}
       >
