@@ -16,6 +16,10 @@ export class ImageSlider implements ComponentInterface {
     this.images = this.imageContainer?.querySelectorAll(':scope > img') as NodeListOf<HTMLImageElement>
   }
 
+  /**
+   * Set the slide to switch to
+   * @param {number} slide :Set to switch to.
+   */
   private setSlide = (slide: number) => {
     const slideWidth = this.images[0].clientWidth
     if (slide >= 0 && slide !== this.images.length) {
@@ -28,6 +32,11 @@ export class ImageSlider implements ComponentInterface {
     }
   }
 
+  /**
+   * Returns the controls for the slider based on the total number of the slides
+   * > 5 = number control
+   * < 5 = dots control
+   */
   private getControls = () => {
     if (this.images.length <= 5) {
       const dots = []
