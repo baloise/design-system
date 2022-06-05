@@ -99,7 +99,7 @@
     "@baloise/angular-output-target": "^1.2.8",
     "@baloise/react-output-target": "^0.4.8",
     "@baloise/stencil-vite-fix": "10.12.0",
-    "@baloise/vue-output-target": "^0.9.7-beta.1",
+    "@baloise/vue-output-target": "^0.9.7",
     "@etchteam/storybook-addon-status": "^4.2.0",
     "@stencil/postcss": "^2.1.0",
     "@stencil/sass": "^1.5.2",
