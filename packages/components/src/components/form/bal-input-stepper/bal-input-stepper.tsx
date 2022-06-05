@@ -102,6 +102,16 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
    */
   @Event() balInput!: EventEmitter<Events.BalInputStepperInputDetail>
 
+  /**
+   * Emitted when the input value has increased.
+   */
+  @Event() balIncrease!: EventEmitter<Events.BalInputStepperChangeDetail>
+
+  /**
+   * Emitted when the input value has decreased.
+   */
+  @Event() balDecrease!: EventEmitter<Events.BalInputStepperChangeDetail>
+
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {
     inputListenOnClick(this, event)
@@ -139,6 +149,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
       this.value = newValue
       this.balInput.emit(newValue)
       this.balChange.emit(newValue)
+      this.balIncrease.emit(newValue)
     }
   }
 
@@ -148,6 +159,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
       this.value = newValue
       this.balInput.emit(newValue)
       this.balChange.emit(newValue)
+      this.balDecrease.emit(newValue)
     }
   }
 

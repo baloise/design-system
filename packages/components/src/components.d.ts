@@ -3472,6 +3472,14 @@ declare namespace LocalJSX {
          */
         "onBalChange"?: (event: CustomEvent<Events.BalInputStepperChangeDetail>) => void;
         /**
+          * Emitted when the input value has decreased.
+         */
+        "onBalDecrease"?: (event: CustomEvent<Events.BalInputStepperChangeDetail>) => void;
+        /**
+          * Emitted when the input value has increased.
+         */
+        "onBalIncrease"?: (event: CustomEvent<Events.BalInputStepperChangeDetail>) => void;
+        /**
           * Emitted when the input value has changed.
          */
         "onBalInput"?: (event: CustomEvent<Events.BalInputStepperInputDetail>) => void;
