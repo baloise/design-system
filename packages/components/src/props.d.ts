@@ -1,6 +1,8 @@
 export namespace Props {
   export type BalAccordionColor = 'primary' | 'info'
 
+  export type BalFormColSize = 'fullwidth' | 'half' | 'one-third' | 'two-thirds' | 'one-quarter' | 'three-quarters'
+
   export type BalBadgeSize = 'small' | 'large' | ''
   export type BalBadgeColor = 'danger' | 'warning' | 'success'
   export type BalBadgePosition = 'card' | 'button' | 'tabs' | ''
