@@ -26,6 +26,7 @@ import {
 } from '../../../helpers/form-input.helpers'
 import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
 import { Props } from '../../../props'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-textarea',
@@ -252,17 +253,22 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
       label.htmlFor = this.inputId
     }
 
+    const block = BEM.block('textarea')
+    const elTextarea = block.element('textarea')
+
     return (
       <Host
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
           'is-disabled': this.disabled || this.readonly,
+          ...block.class(),
         }}
       >
         <textarea
           class={{
             'textarea': true,
+            ...elTextarea.class(),
             'is-inverted': this.inverted,
             'is-disabled': this.disabled || this.readonly,
             'is-danger': this.invalid,
