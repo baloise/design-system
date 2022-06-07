@@ -73,11 +73,12 @@ export class Footer implements BalConfigObserver {
 
   render() {
     const block = BEM.block('footer')
-    const elFooterInner = block.element('footer-inner')
+    const elFooterInner = block.element('footer-inner') // remove footer
     const elContainer = elFooterInner.element('container')
-    const elFooterLinksContainer = elFooterInner.element('footer-links-container')
+    const elFooterLinksContainer = elFooterInner.element('footer-links-container') // remove footer
     const elLegalLinks = elFooterLinksContainer.element('legal-links')
     const elLanguageLinks = elFooterLinksContainer.element('language-links')
+    // remove bulma from sass
 
     return (
       <Host
