@@ -12,18 +12,47 @@ import readme from '../readme.md'
   <a href="#testing">Testing</a>
 </bal-doc-tabs>
 
-<bal-doc-lead>Todo add some description to the component and its purpose</bal-doc-lead>
+<bal-doc-lead>
+  Component takes a list of images passed to it and turns them into a slider.
+  <br />
+  -if 5 or fewer images are passed, the component will display dots style controls
+  <br />
+  -if 6 or more images are passed, the component will display numbered style controls
+</bal-doc-lead>
 
 <Canvas withSource="open">
   <Story id="components-image-slider--basic" />
 </Canvas>
 
 <bal-doc-app>
-  <bal-button-group class="mb-6" position="center">
-    <a class="button is-primary" href="?path=/story/components-image-slider--basic">
-      Go to playground (Canvas)
-    </a>
-  </bal-button-group>
+  <bal-heading level="h4" space="bottom">
+    Basic - with 3 images added.
+  </bal-heading>
+  <bal-image-slider>
+    <div slot="images">
+      <img src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI" />
+      <img src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I" />
+      <img src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw" />
+    </div>
+  </bal-image-slider>
+</bal-doc-app>
+
+<bal-doc-app>
+  <bal-heading level="h4" space="bottom">
+    Numbers - with 8 images added.
+  </bal-heading>
+  <bal-image-slider>
+    <div slot="images">
+      <img src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI" />
+      <img src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I" />
+      <img src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw" />
+      <img src="https://i.picsum.photos/id/655/1280/720.jpg?hmac=hXgGrMmXgMWk4vzfN_ytAgDqAvgZ6kMi-izJ785jRNM" />
+      <img src="https://i.picsum.photos/id/1066/1280/720.jpg?hmac=ccSBWaWM3h_3guS9T5hxEUd8Ni9rIcY9EUZ6FqOfO94" />
+      <img src="https://i.picsum.photos/id/883/1280/720.jpg?hmac=IcmbdOKDeeNZnShxhaXaPe29llC1cM6swwXc8I83MB8" />
+      <img src="https://i.picsum.photos/id/545/1280/720.jpg?hmac=BDz2Mrx1JyKMp9Atqvy1MtMFxmYO-xXmYmiku5XMDVs" />
+      <img src="https://i.picsum.photos/id/115/1280/720.jpg?hmac=GOG9AmYyg9CR0FiDq-hEVsqLBO9rLH93kliNgEcHaG8" />
+    </div>
+  </bal-image-slider>
 </bal-doc-app>
 
 ## Component Api
