@@ -93,6 +93,10 @@ export namespace Components {
          */
         "download"?: string;
         /**
+          * The type of button.
+         */
+        "elementType": Props.BalButtonElementType;
+        /**
           * If `true` the button has a full width
          */
         "expanded": boolean;
@@ -157,10 +161,6 @@ export namespace Components {
          */
         "topRounded": undefined | boolean;
         /**
-          * The type of button.
-         */
-        "type": Props.BalButtonType;
-        /**
           * The value of the button, which is submitted with the form data.
          */
         "value"?: string | number;
@@ -221,6 +221,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * The type of button.
+         */
+        "elementType": Props.BalCardButtonElementType;
+        /**
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
@@ -240,10 +244,6 @@ export namespace Components {
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target": Props.BalCardButtonTarget;
-        /**
-          * The type of button.
-         */
-        "type": Props.BalCardButtonType;
     }
     interface BalCardContent {
     }
@@ -2684,6 +2684,10 @@ declare namespace LocalJSX {
          */
         "download"?: string;
         /**
+          * The type of button.
+         */
+        "elementType"?: Props.BalButtonElementType;
+        /**
           * If `true` the button has a full width
          */
         "expanded"?: boolean;
@@ -2764,10 +2768,6 @@ declare namespace LocalJSX {
          */
         "topRounded"?: undefined | boolean;
         /**
-          * The type of button.
-         */
-        "type"?: Props.BalButtonType;
-        /**
           * The value of the button, which is submitted with the form data.
          */
         "value"?: string | number;
@@ -2828,6 +2828,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * The type of button.
+         */
+        "elementType"?: Props.BalCardButtonElementType;
+        /**
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
@@ -2847,10 +2851,6 @@ declare namespace LocalJSX {
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target"?: Props.BalCardButtonTarget;
-        /**
-          * The type of button.
-         */
-        "type"?: Props.BalCardButtonType;
     }
     interface BalCardContent {
     }
