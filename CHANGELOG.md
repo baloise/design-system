@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.13.0](https://github.com/baloise/design-system/compare/v10.12.0...v10.13.0) (2022-06-07)
+
+
+### Features
+
+* **form-gird:** add form grid component ([99de015](https://github.com/baloise/design-system/commit/99de015619b13c3dc4af98a41e6599c8c51708d1))
+* **input-stepper:** add increase and decrease event ([11a186c](https://github.com/baloise/design-system/commit/11a186c56c2b231a6530e58fff99f4ad58d3d578))
+
+
+### Bug Fixes
+
+* **vue:** add data-testid prop type ([b2c761a](https://github.com/baloise/design-system/commit/b2c761ad0a60ac75c0889c417e1bac32d216eb8d))
+
+
+
 ## [10.12.0](https://github.com/baloise/design-system/compare/v10.11.3...v10.12.0) (2022-05-25)
 
 
