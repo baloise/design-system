@@ -148,9 +148,9 @@ export const Meta = args => ({
       </bal-tabs>
     </bal-navbar-menu-start>
     <bal-navbar-menu-end>
-      <bal-button square color="light" icon="location" size="small"></bal-button>
-      <bal-button square color="light" icon="search" size="small"></bal-button>
-      <bal-button square color="light" icon="account" size="small"></bal-button>
+      <bal-button square color="light" inverted icon="location" size="small"></bal-button>
+      <bal-button square color="light" inverted icon="search" size="small"></bal-button>
+      <bal-button square color="light" inverted icon="account" size="small"></bal-button>
     </bal-navbar-menu-end>
   </bal-navbar-menu>
 </bal-navbar>`,
@@ -177,9 +177,9 @@ export const Stage = args => ({
       </bal-tabs>
     </bal-navbar-menu-start>
     <bal-navbar-menu-end>
-      <bal-button square color="light" icon="location" size="small"></bal-button>
-      <bal-button square color="light" icon="search" size="small"></bal-button>
-      <bal-button square color="light" icon="account" size="small"></bal-button>
+      <bal-button square color="light" inverted icon="location" size="small"></bal-button>
+      <bal-button square color="light" inverted icon="search" size="small"></bal-button>
+      <bal-button square color="light" inverted icon="account" size="small"></bal-button>
     </bal-navbar-menu-end>
   </bal-navbar-menu>
 </bal-navbar>
