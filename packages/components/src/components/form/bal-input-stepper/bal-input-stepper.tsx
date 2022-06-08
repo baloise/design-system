@@ -25,6 +25,7 @@ import {
   defaultConfig,
   detachComponentToConfig,
 } from '../../../config'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-input-stepper',
@@ -158,15 +159,27 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
       label.htmlFor = this.inputId
     }
 
+    const block = BEM.block('input-stepper')
+    const elInput = block.element('input')
+    const elInner = block.element('inner')
+    const elText = elInner.element('text')
+
     return (
       <Host
         aria-disabled={this.disabled ? 'true' : null}
         class={{
-          'is-disabled': this.disabled || this.readonly,
-          'is-invalid': this.invalid,
+          ...block.class(),
         }}
       >
-        <div class="is-flex fg-1 is-justify-content-center is-align-items-center">
+        <div
+          class={{
+            'is-flex': true,
+            'fg-1': true,
+            'is-justify-content-center': true,
+            'is-align-items-center': true,
+            ...elInner.class(),
+          }}
+        >
           <bal-button
             size="small"
             square
@@ -176,7 +189,14 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
             disabled={this.disabled || this.readonly || this.value <= this.min}
             onClick={_ => this.decrease()}
           ></bal-button>
-          <bal-text space="none" color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : ''} bold>
+          <bal-text
+            space="none"
+            color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : ''}
+            bold
+            class={{
+              ...elText.class(),
+            }}
+          >
             {formatLocaleNumber(`${this.language}-${this.region}`, this.value)}
           </bal-text>
           <bal-button
@@ -190,6 +210,9 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
           ></bal-button>
         </div>
         <input
+          class={{
+            ...elInput.class(),
+          }}
           type="text"
           value={this.value}
           name={this.name}
