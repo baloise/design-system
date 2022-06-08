@@ -1,5 +1,3 @@
-@import 'bal-footer.vars.scss'
-
 +block(footer)
     +unselectable
     display: block
@@ -8,6 +6,9 @@
     +element(inner)
         position: relative
         font-family: var(--bal-family-primary)
+        background-color: var(--bal-color-blue) !important
+        color: var(--bal-color-white)
+        padding: var(--bal-space-7) !important
 
         +element(links-container)
             display: flex
