@@ -254,7 +254,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
     }
 
     const block = BEM.block('textarea')
-    const elTextarea = block.element('textarea')
+    const elNative = block.element('native')
 
     return (
       <Host
@@ -266,7 +266,7 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
       >
         <textarea
           class={{
-            ...elTextarea.class(),
+            ...elNative.class(),
             'textarea': true,
             'is-inverted': this.inverted,
             'is-disabled': this.disabled || this.readonly,
