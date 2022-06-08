@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { PlatformSrcSet, Props } from "./types";
+import { Props } from "./types";
 import { Props as Props1 } from "./props";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
 import { Props as Props2 } from ".";
@@ -1637,13 +1637,13 @@ export namespace Components {
          */
         "hasShape": boolean;
         /**
+          * src-set string for the css background-image
+         */
+        "images"?: string;
+        /**
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted": undefined | boolean;
-        /**
-          * source set for the css background-image
-         */
-        "srcSet"?: PlatformSrcSet;
     }
     interface BalStageBackLink {
         /**
@@ -1652,6 +1652,10 @@ export namespace Components {
         "href": string;
     }
     interface BalStageBody {
+        /**
+          * class to set the container width
+         */
+        "containerClass": string;
     }
     interface BalStageFoot {
     }
@@ -4312,13 +4316,13 @@ declare namespace LocalJSX {
          */
         "hasShape"?: boolean;
         /**
+          * src-set string for the css background-image
+         */
+        "images"?: string;
+        /**
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted"?: undefined | boolean;
-        /**
-          * source set for the css background-image
-         */
-        "srcSet"?: PlatformSrcSet;
     }
     interface BalStageBackLink {
         /**
@@ -4327,6 +4331,10 @@ declare namespace LocalJSX {
         "href": string;
     }
     interface BalStageBody {
+        /**
+          * class to set the container width
+         */
+        "containerClass"?: string;
     }
     interface BalStageFoot {
     }

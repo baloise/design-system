@@ -40,12 +40,8 @@ export const StageWithImage = args => ({
 })
 StageWithImage.args = {
   hasShape: true,
-  srcSet: {
-    mobile: 'https://via.placeholder.com/320x180',
-    tablet: 'https://via.placeholder.com/769x250',
-    desktop:
-      'https://www.baloise.ch/.imaging/mte/baloise-theme/1920/dam/baloise-ch/magazin/privatkunden/header/fahrzeuge-reisen/Skipass-versichern.jpg/jcr:content/Skipass%20versichern.jpg',
-  },
+  images:
+    'https://via.placeholder.com/320x180 mobile, https://via.placeholder.com/769x250 tablet, https://www.baloise.ch/.imaging/mte/baloise-theme/1920/dam/baloise-ch/magazin/privatkunden/header/fahrzeuge-reisen/Skipass-versichern.jpg/jcr:content/Skipass%20versichern.jpg desktop',
 }
 StageWithImage.parameters = { ...component.sourceCode(StageWithImage) }
 

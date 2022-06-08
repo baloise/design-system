@@ -10,6 +10,8 @@ export class Stage implements ComponentInterface {
   @Element() el!: HTMLElement
 
   @State() viewPort: Platforms = 'mobile'
+  @State() imageSrc: PlatformSrcSet = {}
+
   /**
    * Defines the background color of the stage section
    */
@@ -26,29 +28,43 @@ export class Stage implements ComponentInterface {
   @Prop() inverted: undefined | boolean = undefined
 
   /**
-   * source set for the css background-image
+   * src-set string for the css background-image
    */
-  @Prop() srcSet?: PlatformSrcSet
+  @Prop() images?: string
+
+  setImageSrc() {
+    const images = this.images?.split(',')
+    let srcObj = {}
+    images?.forEach(image => {
+      const string = image.trim()
+      const key = string.substring(string.indexOf(' ') + 1)
+      const value = string.substring(0, string.indexOf(' '))
+      srcObj = { ...srcObj, ...{ [key]: value } }
+    })
+    this.imageSrc = srcObj
+    this.viewPort = 'mobile'
+  }
 
   getImageSrc() {
-    if (isPlatform('mobile') && this.srcSet?.mobile) {
+    if (isPlatform('mobile') && 'mobile' in this.imageSrc) {
       this.viewPort = 'mobile'
-    } else if (isPlatform('tablet') && this.srcSet?.tablet) {
+    } else if (isPlatform('tablet') && 'tablet' in this.imageSrc) {
       this.viewPort = 'tablet'
-    } else if (isPlatform('desktop') && this.srcSet?.desktop) {
+    } else if (isPlatform('desktop') && 'desktop' in this.imageSrc) {
       this.viewPort = 'desktop'
     }
   }
 
   @Listen('resize', { target: 'window' })
   async resizeHandler() {
-    if (this.srcSet) {
+    if (this.images) {
       this.getImageSrc()
     }
   }
 
   componentDidLoad() {
-    if (this.srcSet) {
+    if (this.images) {
+      this.setImageSrc()
       this.getImageSrc()
     }
   }
@@ -58,15 +74,15 @@ export class Stage implements ComponentInterface {
       <Host
         class={{
           'bal-stage': true,
-          'has-background-image': !!this.srcSet,
+          'has-background-image': !!this.images,
           'has-shape': this.hasShape,
         }}
-        style={this.srcSet ? { '--bal-background-image': `url('${this.srcSet[this.viewPort]}')` } : {}}
+        style={this.imageSrc ? { '--bal-background-image': `url('${this.imageSrc[this.viewPort]}')` } : {}}
       >
         <section
           class={{
             'bal-stage-content': true,
-            [`bal-stage-content--is-${this.color}`]: this.color && !this.srcSet,
+            [`bal-stage-content--is-${this.color}`]: this.color && !this.images,
             'bal-stage-content--is-inverted': this.inverted === true || this.color === 'blue',
           }}
         >
