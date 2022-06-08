@@ -161,15 +161,13 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
 
     const block = BEM.block('input-stepper')
     const elInput = block.element('input')
-    const elWrapper = block.element('wrapper')
-    const elText = elWrapper.element('text')
+    const elInner = block.element('inner')
+    const elText = elInner.element('text')
 
     return (
       <Host
         aria-disabled={this.disabled ? 'true' : null}
         class={{
-          'is-disabled': this.disabled || this.readonly,
-          'is-invalid': this.invalid,
           ...block.class(),
         }}
       >
@@ -179,7 +177,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
             'fg-1': true,
             'is-justify-content-center': true,
             'is-align-items-center': true,
-            ...elWrapper.class(),
+            ...elInner.class(),
           }}
         >
           <bal-button
