@@ -156,7 +156,6 @@ export const log = (displayName: string, message: any = '', $el: any, options?: 
 }
 
 export const areComponentsReady = ($el: any) => {
-  console.log('areComponentsReady', $el)
   const queue = []
   for (let index = 0; index < $el.length; index++) {
     const element = $el[index]
