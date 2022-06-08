@@ -23,7 +23,6 @@ export class Table implements ComponentInterface {
           ...block.class(),
           'ag-theme-alpine': true,
           ...block.modifier(fullwidthClass).class(hasFullwidth),
-          // 'is-fullwidth': this.expanded,
         }}
       >
         <slot></slot>
