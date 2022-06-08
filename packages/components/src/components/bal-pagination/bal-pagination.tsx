@@ -134,13 +134,9 @@ export class Pagination {
 
     const block = BEM.block('pagination')
     const elNav = block.element('nav')
-    const elPaginationPrevious = elNav.element('pagination-previous')
-    const elPaginationNext = elNav.element('pagination-next')
-    const elPaginationList = elNav.element('pagination-list')
-    // const hiddenMobileClass = 'is-hidden-mobile'
-    // const hasHiddenMobile = true
-    // const hiddenTabletClass = 'is-hidden-tablet'
-    // const hasHiddenTablet = true
+    const elPrevious = elNav.element('previous')
+    const elNext = elNav.element('next')
+    const elList = elNav.element('list')
 
     return (
       <Host
@@ -150,7 +146,6 @@ export class Pagination {
       >
         <nav
           class={{
-            pagination: true,
             ...elNav.class(),
           }}
           role="navigation"
@@ -160,8 +155,7 @@ export class Pagination {
             square
             color="text"
             class={{
-              // 'pagination-previous': true,
-              ...elPaginationPrevious.class(),
+              ...elPrevious.class(),
             }}
             disabled={this._value < 2}
             onClick={() => this.previous()}
@@ -172,8 +166,7 @@ export class Pagination {
             square
             color="text"
             class={{
-              // 'pagination-next': true,
-              ...elPaginationNext.class(),
+              ...elNext.class(),
             }}
             disabled={this._value === this.totalPages}
             onClick={() => this.next()}
@@ -182,20 +175,16 @@ export class Pagination {
           </bal-button>
           <ul
             class={{
-              // 'pagination-list': true,
-              ...elPaginationList.class(),
+              ...elList.class(),
               'is-hidden-mobile': true,
-              // ...elNav.modifier(hiddenMobileClass).class(hasHiddenMobile),
             }}
           >
             {tabletItems}
           </ul>
           <ul
             class={{
-              // 'pagination-list': true,
-              ...elPaginationList.class(),
+              ...elList.class(),
               'is-hidden-tablet': true,
-              // ...elNav.modifier(hiddenTabletClass).class(hasHiddenTablet),
             }}
           >
             {mobileItems}
