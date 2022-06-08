@@ -73,12 +73,11 @@ export class Footer implements BalConfigObserver {
 
   render() {
     const block = BEM.block('footer')
-    const elFooterInner = block.element('footer-inner') // remove footer
-    const elContainer = elFooterInner.element('container')
-    const elFooterLinksContainer = elFooterInner.element('footer-links-container') // remove footer
-    const elLegalLinks = elFooterLinksContainer.element('legal-links')
-    const elLanguageLinks = elFooterLinksContainer.element('language-links')
-    // remove bulma from sass
+    const elInner = block.element('inner')
+    const elContainer = elInner.element('container')
+    const elLinksContainer = elInner.element('links-container')
+    const elLegalLinks = elLinksContainer.element('legal-links')
+    const elLanguageLinks = elLinksContainer.element('language-links')
 
     return (
       <Host
@@ -89,7 +88,7 @@ export class Footer implements BalConfigObserver {
         <footer
           class={{
             footer: true,
-            ...elFooterInner.class(),
+            ...elInner.class(),
           }}
         >
           <slot></slot>
@@ -97,7 +96,7 @@ export class Footer implements BalConfigObserver {
             class={{
               container: true,
               ...elContainer.class(),
-              ...elFooterLinksContainer.class(),
+              ...elLinksContainer.class(),
             }}
           >
             <div

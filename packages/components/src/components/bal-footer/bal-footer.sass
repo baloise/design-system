@@ -1,22 +1,15 @@
-// Footer
-// ------------------------------------------------
-//
-// A simple responsive footer which can include anything: lists, headings, columns, icons, buttons, etc.
-// https://bulma.io/documentation/layout/footer/
-
 @import 'bal-footer.vars.scss'
-@import 'node_modules/bulma/sass/layout/footer.sass'
 
 +block(footer)
     +unselectable
     display: block
     position: static
 
-    +element(footer-inner)
+    +element(inner)
         position: relative
         font-family: $family-primary
 
-        +element(footer-links-container)
+        +element(links-container)
             display: flex
             justify-content: space-between
             flex-wrap: wrap
