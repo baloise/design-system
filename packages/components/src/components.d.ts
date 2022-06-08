@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Props } from "./types";
+import { PlatformSrcSet, Props } from "./types";
 import { Props as Props1 } from "./props";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
 import { Props as Props2 } from ".";
@@ -93,6 +93,10 @@ export namespace Components {
          */
         "download"?: string;
         /**
+          * The type of button.
+         */
+        "elementType": Props.BalButtonElementType;
+        /**
           * If `true` the button has a full width
          */
         "expanded": boolean;
@@ -157,10 +161,6 @@ export namespace Components {
          */
         "topRounded": undefined | boolean;
         /**
-          * The type of button.
-         */
-        "type": Props.BalButtonType;
-        /**
           * The value of the button, which is submitted with the form data.
          */
         "value"?: string | number;
@@ -221,6 +221,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * The type of button.
+         */
+        "elementType": Props.BalCardButtonElementType;
+        /**
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
@@ -240,10 +244,6 @@ export namespace Components {
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target": Props.BalCardButtonTarget;
-        /**
-          * The type of button.
-         */
-        "type": Props.BalCardButtonType;
     }
     interface BalCardContent {
     }
@@ -1635,11 +1635,15 @@ export namespace Components {
         /**
           * If true the Baloise Shape is set
          */
-        "hasShape"?: boolean | undefined;
+        "hasShape": boolean;
         /**
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted": undefined | boolean;
+        /**
+          * source set for the css background-image
+         */
+        "srcSet"?: PlatformSrcSet;
     }
     interface BalStageBackLink {
         /**
@@ -1652,12 +1656,6 @@ export namespace Components {
     interface BalStageFoot {
     }
     interface BalStageHead {
-    }
-    interface BalStageImage {
-        /**
-          * Source of the background image.
-         */
-        "src": string;
     }
     interface BalTabItem {
         /**
@@ -2461,12 +2459,6 @@ declare global {
         prototype: HTMLBalStageHeadElement;
         new (): HTMLBalStageHeadElement;
     };
-    interface HTMLBalStageImageElement extends Components.BalStageImage, HTMLStencilElement {
-    }
-    var HTMLBalStageImageElement: {
-        prototype: HTMLBalStageImageElement;
-        new (): HTMLBalStageImageElement;
-    };
     interface HTMLBalTabItemElement extends Components.BalTabItem, HTMLStencilElement {
     }
     var HTMLBalTabItemElement: {
@@ -2608,7 +2600,6 @@ declare global {
         "bal-stage-body": HTMLBalStageBodyElement;
         "bal-stage-foot": HTMLBalStageFootElement;
         "bal-stage-head": HTMLBalStageHeadElement;
-        "bal-stage-image": HTMLBalStageImageElement;
         "bal-tab-item": HTMLBalTabItemElement;
         "bal-table": HTMLBalTableElement;
         "bal-tabs": HTMLBalTabsElement;
@@ -2693,6 +2684,10 @@ declare namespace LocalJSX {
          */
         "download"?: string;
         /**
+          * The type of button.
+         */
+        "elementType"?: Props.BalButtonElementType;
+        /**
           * If `true` the button has a full width
          */
         "expanded"?: boolean;
@@ -2773,10 +2768,6 @@ declare namespace LocalJSX {
          */
         "topRounded"?: undefined | boolean;
         /**
-          * The type of button.
-         */
-        "type"?: Props.BalButtonType;
-        /**
           * The value of the button, which is submitted with the form data.
          */
         "value"?: string | number;
@@ -2837,6 +2828,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * The type of button.
+         */
+        "elementType"?: Props.BalCardButtonElementType;
+        /**
           * Specifies the URL of the page the link goes to
          */
         "href"?: string;
@@ -2856,10 +2851,6 @@ declare namespace LocalJSX {
           * Specifies where to display the linked URL. Only applies when an `href` is provided.
          */
         "target"?: Props.BalCardButtonTarget;
-        /**
-          * The type of button.
-         */
-        "type"?: Props.BalCardButtonType;
     }
     interface BalCardContent {
     }
@@ -4319,11 +4310,15 @@ declare namespace LocalJSX {
         /**
           * If true the Baloise Shape is set
          */
-        "hasShape"?: boolean | undefined;
+        "hasShape"?: boolean;
         /**
           * sets text color to white for images and dark backgrounds (optional)
          */
         "inverted"?: undefined | boolean;
+        /**
+          * source set for the css background-image
+         */
+        "srcSet"?: PlatformSrcSet;
     }
     interface BalStageBackLink {
         /**
@@ -4336,12 +4331,6 @@ declare namespace LocalJSX {
     interface BalStageFoot {
     }
     interface BalStageHead {
-    }
-    interface BalStageImage {
-        /**
-          * Source of the background image.
-         */
-        "src"?: string;
     }
     interface BalTabItem {
         /**
@@ -4730,7 +4719,6 @@ declare namespace LocalJSX {
         "bal-stage-body": BalStageBody;
         "bal-stage-foot": BalStageFoot;
         "bal-stage-head": BalStageHead;
-        "bal-stage-image": BalStageImage;
         "bal-tab-item": BalTabItem;
         "bal-table": BalTable;
         "bal-tabs": BalTabs;
@@ -4832,7 +4820,6 @@ declare module "@stencil/core" {
             "bal-stage-body": LocalJSX.BalStageBody & JSXBase.HTMLAttributes<HTMLBalStageBodyElement>;
             "bal-stage-foot": LocalJSX.BalStageFoot & JSXBase.HTMLAttributes<HTMLBalStageFootElement>;
             "bal-stage-head": LocalJSX.BalStageHead & JSXBase.HTMLAttributes<HTMLBalStageHeadElement>;
-            "bal-stage-image": LocalJSX.BalStageImage & JSXBase.HTMLAttributes<HTMLBalStageImageElement>;
             "bal-tab-item": LocalJSX.BalTabItem & JSXBase.HTMLAttributes<HTMLBalTabItemElement>;
             "bal-table": LocalJSX.BalTable & JSXBase.HTMLAttributes<HTMLBalTableElement>;
             "bal-tabs": LocalJSX.BalTabs & JSXBase.HTMLAttributes<HTMLBalTabsElement>;

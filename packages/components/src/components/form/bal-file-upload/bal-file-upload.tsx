@@ -197,6 +197,8 @@ export class FileUpload {
       if (filesAdded.length > 0) {
         this.balFilesAddedEmitter.emit(filesAdded)
       }
+
+      this.setFileList()
     }
   }
 
@@ -249,6 +251,7 @@ export class FileUpload {
       this.files = [...list]
       this.balChangeEventEmitter.emit(this.files)
       this.balFilesRemovedEmitter.emit(removedFiles)
+      this.setFileList()
     }
   }
 
@@ -256,8 +259,13 @@ export class FileUpload {
     if (this.fileInput?.files) {
       const files = this.fileInput.files
       this.handleFiles(files)
-      this.fileInput.value = ''
     }
+  }
+
+  setFileList = () => {
+    const fileList = new DataTransfer()
+    this.files.forEach(el => fileList.items.add(el))
+    this.fileInput.files = fileList.files
   }
 
   render() {

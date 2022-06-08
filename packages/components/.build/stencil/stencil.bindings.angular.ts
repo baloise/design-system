@@ -71,7 +71,6 @@ export const AngularGenerator = () =>
           'bal-stage-body',
           'bal-stage-foot',
           'bal-stage-head',
-          'bal-stage-image',
         ],
       },
       'bal-list': {
