@@ -261,14 +261,13 @@ export class Textarea implements ComponentInterface, FormInput<string | undefine
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
-          'is-disabled': this.disabled || this.readonly,
           ...block.class(),
         }}
       >
         <textarea
           class={{
-            'textarea': true,
             ...elTextarea.class(),
+            'textarea': true,
             'is-inverted': this.inverted,
             'is-disabled': this.disabled || this.readonly,
             'is-danger': this.invalid,
