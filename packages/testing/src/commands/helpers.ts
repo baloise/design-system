@@ -138,7 +138,7 @@ export const wrapCommand = (
         }
         fn($el)
       })
-      .wrapComponent(element as any, { log: false })
+    // .wrapComponent(element as any, { log: false })
   }
 }
 
