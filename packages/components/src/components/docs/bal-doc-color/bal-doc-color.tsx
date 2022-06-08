@@ -18,7 +18,6 @@ export class BalDocColor {
   render() {
     const subject = this.subject !== '' ? this.subject : this.color
     const scssVars = this.scssVars !== '' ? this.scssVars : `$${this.color}`
-    console.log(scssVars, this.scssVars, this.color)
     return (
       <Host class="bal-app">
         <div class="has-radius-large has-shadow">

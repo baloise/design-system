@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script type="module" src="/build/design-system-next-components.esm.js"></script>
+    <script nomodule src="/build/design-system-next-components.js"></script>
+  </head>
+  <body>
+    <bal-doc-app>
+      <main class="container py-5">
+        <bal-tabs data-testid="tabs" value="tab-c">
+          <bal-tab-item value="tab-a" label="Tab A">Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B">Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="Tab C" bubble>Content of Tab C</bal-tab-item>
+          <bal-tab-item value="tab-d" label="Tab D" disabled>Content of Tab D</bal-tab-item>
+        </bal-tabs>
+
+        <hr class="lined" />
+
+        <bal-tabs data-testid="steps" value="tab-c" interface="steps">
+          <bal-tab-item value="tab-a" label="Tab A" done>Content of Tab A</bal-tab-item>
+          <bal-tab-item value="tab-b" label="Tab B" failed>Content of Tab B</bal-tab-item>
+          <bal-tab-item value="tab-c" label="Tab C">Content of Tab C</bal-tab-item>
+          <bal-tab-item value="tab-d" label="Tab D" disabled>Content of Tab D</bal-tab-item>
+        </bal-tabs>
+      </main>
+    </bal-doc-app>
+  </body>
+</html>

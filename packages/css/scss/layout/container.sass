@@ -13,8 +13,14 @@
     padding-left: $gap
     padding-right: $gap
     width: 100%
+  &.is-detail-page
+    max-width: 680px !important
   &.is-compact
     max-width: 832px !important
+  &.is-blog-page
+    max-width: 920px !important
+  &.is-wide
+    max-width: 1400px !important
   +tablet
     padding-left: math.div($container-offset, 2)
     padding-right: math.div($container-offset, 2)

@@ -5,6 +5,12 @@ interface IsPlatformSignature {
   (win: Window, plt: Platforms): boolean
 }
 
+export interface PlatformSrcSet {
+  mobile?: string
+  tablet?: string
+  desktop?: string
+}
+
 export const getPlatforms = (win?: any) => setupPlatforms(win)
 
 export const isPlatform: IsPlatformSignature = (
@@ -18,19 +24,15 @@ export const isPlatform: IsPlatformSignature = (
   return getPlatforms(winOrPlatform).includes(platform!)
 }
 
-export const setupPlatforms = (win: any = window) => {
-  if (typeof win === 'undefined') {
+export const setupPlatforms = (win = {} as any) => {
+  if (typeof (window as any) === 'undefined') {
     return []
   }
 
+  win = window
   win.BaloiseDesignSystem = win.BaloiseDesignSystem || {}
 
-  let platforms: Platforms[] | undefined | null = win.BaloiseDesignSystem.platforms
-  if (platforms == null) {
-    platforms = win.BaloiseDesignSystem.platforms = detectPlatforms(win)
-    platforms.forEach(p => win.document.documentElement.classList.add(`is-plt-${p}`))
-  }
-
+  const platforms: Platforms[] | undefined | null = (win.BaloiseDesignSystem.platforms = detectPlatforms(win))
   return platforms
 }
 
@@ -38,12 +40,12 @@ const detectPlatforms = (win: Window) => (Object.keys(PLATFORMS_MAP) as Platform
 
 const isMobile = (win: Window) => {
   const width = win.innerWidth
-  return width < 768
+  return width <= 768
 }
 
 const isTablet = (win: Window) => {
   const width = win.innerWidth
-  return width > 767 && width < 1024
+  return width > 768 && width < 1024
 }
 
 const isDesktop = (win: Window) => !isMobile(win) && !isTablet(win)
