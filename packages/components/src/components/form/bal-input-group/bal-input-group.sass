@@ -1,0 +1,216 @@
+// @import './bal-input-group.mixins.scss';
+
+// bal-input-group,
+// .bal-input-group {
+//   position: relative;
+//   display: flex;
+//   width: 100%;
+//   align-items: center;
+//   gap: 4px;
+//   border: 2px solid $grey-2;
+//   border-radius: $radius;
+//   background: $white;
+
+//   .input {
+//     min-height: 44px;
+//     border: none;
+//     border-radius: 0;
+//     padding-left: 0;
+//     padding-right: 0;
+//     padding-bottom: calc(0.5em - 2px);
+//     padding-top: calc(0.5em - 2px);
+//   }
+
+//   .bal-select__slot {
+//     border: none !important;
+//   }
+
+//   bal-icon {
+//     min-width: 48px;
+//   }
+
+//   & > *:first-child.bal-input {
+//     .input {
+//       padding-left: calc(0.75em - 1px);
+//     }
+//   }
+
+//   & > *:last-child.bal-input {
+//     .input {
+//       padding-right: calc(0.75em - 1px);
+//     }
+//   }
+
+//   & > *:first-child.input {
+//     padding-left: calc(0.75em - 1px);
+//   }
+
+//   & > *:last-child.input {
+//     padding-right: calc(0.75em - 1px);
+//   }
+
+//   & > *:last-child.tag {
+//     margin-right: calc(0.75em - 1px);
+//   }
+
+//   & > *:first-child.tag {
+//     margin-left: calc(0.75em - 1px);
+//   }
+
+//   &.is-hovered,
+//   &:hover {
+//     &,
+//     .input {
+//       background: $grey-1;
+//     }
+//   }
+
+//   &.is-danger {
+//     &,
+//     .input {
+//       border-color: $danger-dark;
+//       background: $danger-1;
+//     }
+
+//     svg {
+//       g,
+//       path,
+//       circle {
+//         fill: $danger-dark;
+//       }
+//     }
+//   }
+
+//   @include inputGroupTheme('danger', $danger-1, $danger-dark);
+//   @include inputGroupTheme('success', $success-1, $success-dark);
+//   @include inputGroupTheme('warning', $warning-1, $warning-dark);
+//   @include inputGroupTheme('disabled', $grey-2, $grey-5);
+
+//   &.is-disabled {
+//     &,
+//     .input {
+//       cursor: default !important;
+//       pointer-events: none !important;
+//       user-select: none !important;
+
+//       color: $grey-5;
+
+//       ::placeholder {
+//         color: $grey-5;
+//       }
+//     }
+
+//     .tag {
+//       background-color: $grey-5;
+
+//       span {
+//         color: $white;
+//       }
+
+//       .delete {
+//         display: none !important;
+//       }
+//     }
+//   }
+
+//   &:not(.is-disabled) {
+//     &:focus-within {
+//       border-color: $blue;
+//     }
+//   }
+// }
+
+@import './bal-input-group.mixins.scss'
+
++block(input-group)
+  +unselectable
+  position: relative
+  display: flex
+  width: 100%
+  align-items: center
+  gap: 4px
+  border: 2px solid $grey-2
+  border-radius: $radius
+  background: $white
+
+  .input 
+    min-height: 44px
+    border: none
+    border-radius: 0
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: calc(0.5em - 2px)
+    padding-top: calc(0.5em - 2px)
+
+  .bal-select__slot
+    border: none !important
+
+  +element(icon)
+    min-width: 48px
+
+  & > *:first-child.bal-input 
+    .input
+      padding-left: calc(0.75em - 1px)
+
+  & > *:last-child.bal-input
+    .input
+      padding-right: calc(0.75em - 1px)
+
+  & > *:first-child.input
+    padding-left: calc(0.75em - 1px)
+
+  & > *:last-child.input
+    padding-right: calc(0.75em - 1px)
+
+  & > *:last-child.tag
+    margin-right: calc(0.75em - 1px)
+
+  & > *:first-child.tag
+    margin-left: calc(0.75em - 1px)
+  
+  &.is-hovered,
+  &:hover
+    &,
+    .input
+      background: $grey-1
+
+  &.is-danger
+    &,
+    .input
+      border-color: $danger-dark
+      background: $danger-1
+
+    svg
+      g,
+      path,
+      circle
+        fill: $danger-dark
+  
+  @include inputGroupTheme('danger', $danger-1, $danger-dark)
+  @include inputGroupTheme('success', $success-1, $success-dark)
+  @include inputGroupTheme('warning', $warning-1, $warning-dark)
+  @include inputGroupTheme('disabled', $grey-2, $grey-5)
+
+  &.is-disabled
+    &,
+    .input
+      cursor: default !important
+      pointer-events: none !important
+      user-select: none !important
+      color: $grey-5
+
+      ::placeholder
+        color: $grey-5
+
+    .tag
+      background-color: $grey-5
+
+      span
+        color: $white
+
+      .delete
+        display: none !important
+
+  &:not(.is-disabled)
+    &:focus-within
+      border-color: $blue
