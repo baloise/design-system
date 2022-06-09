@@ -10,9 +10,8 @@ a.is-link:not(.button)
     text-decoration: underline
     color: var(--bal-color-light-blue-dark)
     +fillSvg(var(--bal-color-light-blue-dark))
-  &:focus
-    &:not(:active)
-      @extend %focus-shadow
+  &:focus-visible
+    @extend %focus-shadow
   &:active,
   &:visited
     text-decoration: underline
@@ -25,10 +24,8 @@ a.is-link:not(.button)
       text-decoration: underline
       color: var(--bal-color-light-blue-2)
       +fillSvg(var(--bal-color-light-blue-2))
-    &:focus,
     &:focus-visible
-      &:not(:active)
-        @extend %focus-inverted-shadow
+      @extend %focus-inverted-shadow
     &:active,
     &:visited
       text-decoration: underline
