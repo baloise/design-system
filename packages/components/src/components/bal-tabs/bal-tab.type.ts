@@ -18,10 +18,10 @@ export interface BalTabOption {
 }
 
 export interface TabLineProps {
+  context?: Props.BalTabsInterface
   inverted: boolean
   isReady: boolean
-  vertical: boolean
-  verticalOnMobile: boolean
+  vertical: boolean | 'mobile' | 'tablet'
   lineWidth?: number
   lineOffsetLeft?: number
   lineHeight?: number
@@ -43,8 +43,7 @@ export interface TabProps {
   lineOffsetLeft?: number
   lineHeight?: number
   lineOffsetTop?: number
-  vertical: boolean
-  verticalOnMobile: boolean
+  vertical: boolean | 'mobile' | 'tablet'
   selectOnMobile: boolean
 }
 
@@ -52,8 +51,7 @@ export interface TabItemProps {
   icon: string | undefined
   active: boolean
   inverted: boolean
-  vertical: boolean
-  verticalOnMobile: boolean
+  vertical: boolean | 'mobile' | 'tablet'
   expanded: boolean
   disabled: boolean
   bubble: boolean | string

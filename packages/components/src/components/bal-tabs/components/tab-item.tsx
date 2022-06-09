@@ -1,5 +1,4 @@
 import { FunctionalComponent, h } from '@stencil/core'
-import { isPlatform } from '../../../'
 import { BEM } from '../../../utils/bem'
 import { TabItemProps } from '../bal-tab.type'
 
@@ -12,7 +11,6 @@ export const TabItem: FunctionalComponent<TabItemProps> = ({
   href,
   label,
   vertical,
-  verticalOnMobile,
   iconPosition,
   bubble,
   active,
@@ -23,8 +21,9 @@ export const TabItem: FunctionalComponent<TabItemProps> = ({
   const cssClasses = {
     ...buttonEl.class(),
     ...buttonEl.modifier(`context-${context}`).class(),
-    ...buttonEl.modifier('vertical').class(vertical),
-    ...buttonEl.modifier('vertical-on-mobile').class(verticalOnMobile),
+    ...buttonEl.modifier('vertical').class(vertical == true),
+    ...buttonEl.modifier('vertical-on-mobile').class(vertical === 'mobile'),
+    ...buttonEl.modifier('vertical-on-tablet').class(vertical === 'tablet'),
     ...buttonEl.modifier('fullwidth').class(expanded),
     ...buttonEl.modifier('disabled').class(disabled),
     ...buttonEl.modifier('inverted').class(inverted),
@@ -33,7 +32,9 @@ export const TabItem: FunctionalComponent<TabItemProps> = ({
     ...buttonEl.modifier('icon').class(icon !== undefined),
   }
 
-  let hrefAttribute = {}
+  let hrefAttribute = {
+    href: 'javascript:;',
+  }
   if (href) {
     hrefAttribute = {
       href,
@@ -41,7 +42,7 @@ export const TabItem: FunctionalComponent<TabItemProps> = ({
   }
 
   const bubbleString = bubble === true || bubble === false ? '' : bubble
-  const labelString = isPlatform('mobile') ? '' : label
+  const labelString = label
 
   return (
     <a

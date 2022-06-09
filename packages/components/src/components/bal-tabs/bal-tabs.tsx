@@ -70,12 +70,7 @@ export class Tabs {
   /**
    * If `true` tabs are align vertically.
    */
-  @Prop() vertical = false
-
-  /**
-   * If `true` tabs are align vertically on the mobile.
-   */
-  @Prop() verticalOnMobile = false
+  @Prop() vertical: boolean | 'mobile' | 'tablet' = false
 
   /**
    * If `true` the tabs are shown as a select component on mobile
@@ -152,6 +147,15 @@ export class Tabs {
     this.value = tab.value
   }
 
+  /**
+   * @internal
+   * Rerenders the line to mark the active tab.
+   */
+  @Method()
+  async renderLine() {
+    this.moveLine(this.getTargetElement(this.value), 100)
+  }
+
   private get tabs(): HTMLBalTabItemElement[] {
     return Array.from(this.el.querySelectorAll('bal-tab-item'))
   }
@@ -171,7 +175,6 @@ export class Tabs {
     }
   }
 
-  // private async onSelectTab(event: MouseEvent, tab: BalTabOption) {
   private async onSelectTab(event: MouseEvent | CustomEvent, tab: BalTabOption) {
     if (tab.prevent || tab.disabled || !this.clickable) {
       event.preventDefault()
@@ -189,32 +192,39 @@ export class Tabs {
     }
   }
 
-  private moveLine(element: HTMLElement) {
+  private moveLine(element: HTMLElement, timeout = 0) {
     setTimeout(() => {
       if (this.interface !== 'steps' && this.interface !== 'o-steps') {
         if (element) {
           const listElement = element.closest('li')
 
-          if (this.vertical || (isPlatform('mobile') && this.verticalOnMobile)) {
+          const isMobile = isPlatform('mobile')
+          const isTablet = isPlatform('tablet')
+          const isVertical = this.vertical === true
+          const isNavbarTablet = this.interface === 'navbar' && (isMobile || isTablet)
+          const isVerticalMobile = isMobile && (this.vertical === 'mobile' || this.vertical === 'tablet')
+          const isVerticalTablet = (isMobile || isTablet) && this.vertical === 'tablet'
+
+          if (isVertical || isVerticalMobile || isVerticalTablet || isNavbarTablet) {
             if (listElement?.clientHeight !== undefined) {
-              this.lineHeight = listElement.clientHeight - 16
+              this.lineHeight = listElement.clientHeight - 8
             }
 
             if (listElement?.offsetTop !== undefined) {
-              this.lineOffsetTop = listElement.offsetTop + 8
+              this.lineOffsetTop = listElement.offsetTop + 4
             }
           } else {
             if (listElement?.clientWidth !== undefined) {
-              this.lineWidth = listElement.clientWidth - 32
+              this.lineWidth = listElement.clientWidth - (this.expanded ? 0 : 32)
             }
 
             if (listElement?.offsetLeft !== undefined) {
-              this.lineOffsetLeft = listElement.offsetLeft + 16
+              this.lineOffsetLeft = listElement.offsetLeft + (this.expanded ? 0 : 16)
             }
           }
         }
       }
-    }, 0)
+    }, timeout)
   }
 
   private getTargetElement(value?: string) {
@@ -262,8 +272,7 @@ export class Tabs {
           lineOffsetLeft={this.lineOffsetLeft}
           lineHeight={this.lineHeight}
           lineOffsetTop={this.lineOffsetTop}
-          vertical={this.vertical}
-          verticalOnMobile={this.verticalOnMobile}
+          vertical={this.interface === 'navbar' ? 'tablet' : this.vertical}
           selectOnMobile={this.selectOnMobile}
         ></Tabs>
         <slot></slot>

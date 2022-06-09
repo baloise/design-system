@@ -1,4 +1,5 @@
 import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
+import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -13,13 +14,18 @@ export class Navbar {
   @Prop() light = false
 
   /**
-   * TODO: describe
+   * Defines the type of navbar. App is used for almost every web applications
+   * like the portal app. For our sales funnel we recommend to use the simple navbar.
+   * Meta and main are used for the website.
    */
-  @Prop() interface: 'app' | 'simple' | 'meta' | 'stage' = 'app'
+  @Prop() interface: Props.BalNavbarInterface = 'app'
 
   @Watch('interface')
   interfaceHandler() {
-    this.updateProps(['bal-navbar-brand', 'bal-navbar-menu-start'], 'interface')
+    this.updateProps(
+      ['bal-navbar-brand', 'bal-navbar-menu', 'bal-navbar-menu-start', 'bal-navbar-menu-end'],
+      'interface',
+    )
   }
 
   /**
@@ -42,12 +48,11 @@ export class Navbar {
     const components = this.element.querySelectorAll<Element>(selectors.join(', '))
     components.forEach(c => callback(c as any))
   }
-
   render() {
     const navbarEl = BEM.block('navbar')
 
     return (
-      <Host class={{ ...navbarEl.class(), ...navbarEl.modifier(this.interface).class() }}>
+      <Host class={{ ...navbarEl.class(), ...navbarEl.modifier(`context-${this.interface}`).class() }}>
         <nav
           role="navigation"
           aria-label="main navigation"

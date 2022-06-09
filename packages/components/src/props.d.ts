@@ -59,6 +59,8 @@ export namespace Props {
   export type BalListSize = 'large' | ''
   export type BalListBackground = 'light' | 'color' | 'dark'
 
+  export type BalNavbarInterface = 'app' | 'simple' | 'meta' | 'main'
+
   export type BalLogoColor = 'blue' | 'white'
   export type BalLogoSize = 'small' | 'normal'
   export type BalLogoBrand = 'group' | 'soba' | 'insurance'
