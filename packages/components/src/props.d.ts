@@ -16,12 +16,12 @@ export namespace Props {
     | 'link'
     | 'primary-light'
     | 'info-light'
-  export type BalButtonType = 'button' | 'reset' | 'submit'
+  export type BalButtonElementType = 'button' | 'reset' | 'submit'
   export type BalButtonSize = 'small' | ''
   export type BalButtonTarget = '_blank' | ' _parent' | '_self' | '_top'
 
   export type BalCardActionsPosition = 'right' | 'center' | ''
-  export type BalCardButtonType = BalButtonType
+  export type BalCardButtonElementType = BalButtonElementType
   export type BalCardButtonTarget = BalButtonTarget
   export type BalCardColor =
     | 'white'

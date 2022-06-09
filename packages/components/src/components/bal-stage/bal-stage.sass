@@ -15,6 +15,13 @@
         align-items: flex-end
         padding: 6rem 0
 
+      .container > *
+        max-width: calc(100% - 66px)
+        +tablet
+          max-width: calc(100% - 120px)
+        +desktop
+          max-width: calc(100% - 198px)
+
     +modifier(is-purple)
       .bal-stage-body
         background: var(--bal-color-purple-3)
@@ -38,16 +45,6 @@
           color: var(--bal-color-white)
           +fillSvg(var(--bal-color-white))
 
-    .bal-stage-image
-      overflow: hidden
-      img
-        position: absolute
-        top: 50%
-        left: 50%
-        transform: translate(-50%, -50%)
-        min-height: 100%
-        min-width: 100%
-        
     .bal-stage-back-link a
       display: inline-flex
       align-items: center
@@ -57,27 +54,37 @@
       transition: opacity .2s ease-in
       &:hover
         opacity: .5
-        
+
   // !! Placeholder Styling - will be replaced when shape is implemented !! //
   .bal-stage-shape
     div
       position: absolute
       text-align: center
       font-size: 0.5rem
-      bottom: -22px
+      bottom: 0
       right: 1rem
       width: 66px
       height: 66px
-      background: var(--bal-color-primary-5) 
+      background: var(--bal-color-primary-5)
       color: var(--bal-color-white)
 
       +tablet
-        bottom: -40px
         width: 120px
         height: 120px
 
       +desktop
-        bottom: -66px
         right: 2rem
         width: 198px
         height: 198px
+
+.has-background-image
+  .bal-stage-body
+    background: no-repeat center/cover var(--bal-background-image)
+
+.has-shape
+  section
+    margin-bottom: 22px
+    +tablet
+      margin-bottom: 40px
+    +desktop
+      margin-bottom: 66px
