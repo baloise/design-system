@@ -81,10 +81,7 @@ export class NavbarBrand {
         }}
       >
         <a href={this.href} onClick={(event: MouseEvent) => this.balNavigate.emit(event)}>
-          <bal-logo
-            size={this.isDesktop ? 'normal' : 'small'}
-            color={this.interface === 'main' ? 'blue' : 'white'}
-          ></bal-logo>
+          <bal-logo size={this.isDesktop ? 'normal' : 'small'} color={'blue'}></bal-logo>
         </a>
         <span class={{ ...navbarBrandEl.element('title').class() }}>
           <slot></slot>

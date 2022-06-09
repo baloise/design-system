@@ -33,7 +33,7 @@ const component = BalComponentStory({
 
 export default component.story
 
-const excludedControls = ['noBurger', 'light']
+const excludedControls = []
 
 export const Basic = args => ({
   components: {
@@ -121,9 +121,8 @@ Basic.parameters = {
   controls: { exclude: excludedControls },
 }
 
-// no burger and no start
 export const Simple = args => ({
-  components: { ...component.components, BalLogo, BalText, BalButton },
+  components: { ...component.components, BalLogo, BalText, BalButton, BalButtonGroup },
   setup: () => ({ args }),
   template: `<bal-navbar v-bind="args">
   <bal-navbar-brand>Simple Header</bal-navbar-brand>
@@ -145,87 +144,5 @@ Simple.args = {
 Simple.parameters = {
   layout: 'fullscreen',
   ...component.sourceCode(Basic),
-  controls: { exclude: excludedControls },
-}
-
-export const Meta = args => ({
-  components: { ...component.components, BalLogo, BalText, BalButton },
-  setup: () => ({ args }),
-  template: `<bal-navbar v-bind="args">
-  <bal-navbar-menu>
-    <bal-navbar-menu-start>
-      <bal-tabs interface="meta" inverted>
-        <bal-tab-item value="tab-a" label="Tab A"></bal-tab-item>
-        <bal-tab-item value="tab-b" label="Tab B"></bal-tab-item>
-        <bal-tab-item value="tab-c" label="Tab C"></bal-tab-item>
-      </bal-tabs>
-    </bal-navbar-menu-start>
-    <bal-navbar-menu-end>
-      <bal-button-group>
-        <bal-button square color="light" inverted icon="location" size="small"></bal-button>
-        <bal-button square color="light" inverted icon="search" size="small"></bal-button>
-        <bal-button square color="light" inverted icon="account" size="small"></bal-button>
-      </bal-button-group>
-    </bal-navbar-menu-end>
-  </bal-navbar-menu>
-</bal-navbar>`,
-})
-Meta.args = {
-  interface: 'meta',
-}
-Meta.parameters = {
-  layout: 'fullscreen',
-  ...component.sourceCode(Meta),
-  controls: { exclude: excludedControls },
-}
-
-export const Main = args => ({
-  components: { ...component.components, BalLogo, BalButton },
-  setup: () => ({ args }),
-  template: `
-<bal-navbar interface="meta">
-  <bal-navbar-menu>
-    <bal-navbar-menu-start>
-      <span class="has-text-white is-bold">Portal v2.0.4</span>
-    </bal-navbar-menu-start>
-    <bal-navbar-menu-end>
-      <bal-button-group>
-        <bal-button square color="light" inverted icon="location" size="small"></bal-button>
-        <bal-button square color="light" inverted icon="search" size="small"></bal-button>
-        <bal-button color="light" inverted icon="account" size="small">Andreas</bal-button>
-      </bal-button-group>
-    </bal-navbar-menu-end>
-  </bal-navbar-menu>
-</bal-navbar>
-<div class="has-background-green pb-8">
-  <bal-navbar v-bind="args">
-    <bal-navbar-brand></bal-navbar-brand>
-    <bal-navbar-menu>
-      <bal-navbar-menu-start>
-        <bal-tabs interface="navbar">
-          <bal-tab-item value="tab-a" label="Tab A"></bal-tab-item>
-          <bal-tab-item value="tab-b" label="Tab B"></bal-tab-item>
-          <bal-tab-item value="tab-c" label="Tab C"></bal-tab-item>
-        </bal-tabs>
-      </bal-navbar-menu-start>
-      <bal-navbar-menu-end>
-        <bal-button-group>
-          <bal-button icon="account" color="info">Action</bal-button>
-        </bal-button-group>
-      </bal-navbar-menu-end>
-    </bal-navbar-menu>
-  </bal-navbar>
-  <main class="container mt-5">
-    <h1 class="title is-1">Welcome to the Portal</h1>
-  </main>
-</div>
-`,
-})
-Main.args = {
-  interface: 'main',
-}
-Main.parameters = {
-  layout: 'fullscreen',
-  ...component.sourceCode(Main),
   controls: { exclude: excludedControls },
 }
