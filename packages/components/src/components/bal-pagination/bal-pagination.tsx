@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, State, Watch, Method, Event, EventEmitter } from '@stencil/core'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-pagination',
@@ -131,13 +132,31 @@ export class Pagination {
     const mobileItems = this.getItems()
     const tabletItems = this.getItems(this.pageRange)
 
+    const block = BEM.block('pagination')
+    const elNav = block.element('nav')
+    const elPrevious = elNav.element('pagination-previous')
+    const elNext = elNav.element('pagination-next')
+    const elList = elNav.element('pagination-list')
+
     return (
-      <Host>
-        <nav class="pagination" role="navigation" aria-label="pagination">
+      <Host
+        class={{
+          ...block.class(),
+        }}
+      >
+        <nav
+          class={{
+            ...elNav.class(),
+          }}
+          role="navigation"
+          aria-label="pagination"
+        >
           <bal-button
             square
             color="text"
-            class="pagination-previous"
+            class={{
+              ...elPrevious.class(),
+            }}
             disabled={this._value < 2}
             onClick={() => this.previous()}
           >
@@ -146,14 +165,30 @@ export class Pagination {
           <bal-button
             square
             color="text"
-            class="pagination-next"
+            class={{
+              ...elNext.class(),
+            }}
             disabled={this._value === this.totalPages}
             onClick={() => this.next()}
           >
             <bal-icon name="nav-go-right" size="small" />
           </bal-button>
-          <ul class="pagination-list is-hidden-mobile">{tabletItems}</ul>
-          <ul class="pagination-list is-hidden-tablet">{mobileItems}</ul>
+          <ul
+            class={{
+              ...elList.class(),
+              'is-hidden-mobile': true,
+            }}
+          >
+            {tabletItems}
+          </ul>
+          <ul
+            class={{
+              ...elList.class(),
+              'is-hidden-tablet': true,
+            }}
+          >
+            {mobileItems}
+          </ul>
         </nav>
       </Host>
     )

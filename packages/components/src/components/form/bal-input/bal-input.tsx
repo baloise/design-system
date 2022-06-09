@@ -452,7 +452,6 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
         aria-disabled={this.disabled ? 'true' : null}
         class={{
           ...block.class(),
-          'is-disabled': this.disabled || this.readonly,
         }}
       >
         <input
