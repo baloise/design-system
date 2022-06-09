@@ -87,7 +87,7 @@ export class Footer implements BalConfigObserver {
       >
         <footer
           class={{
-            footer: true,
+            // footer: true,
             ...elInner.class(),
           }}
         >
