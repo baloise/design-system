@@ -134,9 +134,9 @@ export class Pagination {
 
     const block = BEM.block('pagination')
     const elNav = block.element('nav')
-    const elPrevious = elNav.element('previous')
-    const elNext = elNav.element('next')
-    const elList = elNav.element('list')
+    const elPrevious = elNav.element('pagination-previous')
+    const elNext = elNav.element('pagination-next')
+    const elList = elNav.element('pagination-list')
 
     return (
       <Host
