@@ -15,7 +15,7 @@ export class Button implements ComponentInterface {
   /**
    * The type of button.
    */
-  @Prop() type: Props.BalButtonType = 'button'
+  @Prop() elementType: Props.BalButtonElementType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
@@ -230,11 +230,11 @@ export class Button implements ComponentInterface {
   }
 
   render() {
-    const { type, download, href, rel, target, name, value } = this
+    const { elementType, download, href, rel, target, name, value } = this
     const TagType = this.href === undefined ? 'button' : 'a'
     const attrs =
       TagType === 'button'
-        ? { type, name, value }
+        ? { type: elementType, name, value }
         : {
             download,
             href,
@@ -272,7 +272,7 @@ export class Button implements ComponentInterface {
       >
         <TagType
           {...attrs}
-          type={this.type}
+          type={this.elementType}
           class={this.buttonCssClass}
           part="native"
           disabled={this.disabled}

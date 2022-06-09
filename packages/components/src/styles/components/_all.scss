@@ -23,7 +23,9 @@
 @import '../../components/form/bal-field/bal-field';
 @import '../../components/form/bal-file-upload/bal-file-upload';
 @import '../../components/bal-tabs/bal-tabs';
-@import '../../components/form/bal-input/bal-input';
+@import '../../components/form/bal-input-stepper/bal-input-stepper';
+@import '../../components/form/bal-textarea/bal-textarea';
+@import '../../components/bal-pagination/bal-pagination';
 
 //
 // TODO: needs to be changed to SASS and BEM and reduce bulma code
@@ -33,16 +35,14 @@
 @import '../../components/bal-hint/bal-hint';
 @import '../../components/bal-list/bal-list';
 @import '../../components/bal-navbar/bal-navbar';
-@import '../../components/bal-pagination/bal-pagination';
 @import '../../components/bal-stage/bal-stage';
 @import '../../components/bal-table/bal-table';
 
 @import '../../components/form/bal-input-group/bal-input-group';
 @import '../../components/form/bal-checkbox/bal-checkbox';
 @import '../../components/form/bal-datepicker/bal-datepicker';
+@import '../../components/form/bal-input/bal-input';
 @import '../../components/form/bal-number-input/bal-number-input';
-@import '../../components/form/bal-input-stepper/bal-input-stepper';
-@import '../../components/form/bal-textarea/bal-textarea';
 @import '../../components/form/bal-slider/bal-slider';
 @import '../../components/form/bal-timeinput/bal-timeinput';
 @import '../../components/form/bal-radio/bal-radio';
