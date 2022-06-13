@@ -84,7 +84,7 @@ export const Basic = args => ({
     <bal-navbar-menu-end>
       <bal-button-group>
       <bal-popover v-model="isActive">
-        <bal-button bal-popover-trigger color="light" inverted  icon="web" size="small" @click="toggle()">
+        <bal-button bal-popover-trigger color="light" inverted  icon="web" @click="toggle()">
             DE
         </bal-button>
         <bal-popover-content class="p-2">
@@ -107,7 +107,7 @@ export const Basic = args => ({
           </bal-list>
         </bal-popover-content>
       </bal-popover>
-      <bal-button href="tel://00800 24 800 800" color="light" inverted icon="call" size="small">00800 24 800 800</bal-button>
+      <bal-button href="tel://00800 24 800 800" color="light" inverted icon="call">00800 24 800 800</bal-button>
       </bal-button-group>
     </bal-navbar-menu-end>
   </bal-navbar-menu>
@@ -171,7 +171,7 @@ export const Simple = args => ({
   <bal-navbar-menu>
     <bal-navbar-menu-end>
       <bal-popover v-model="isActive">
-        <bal-button bal-popover-trigger :square="square" color="light" inverted  icon="web" size="small" @click="toggle()">
+        <bal-button bal-popover-trigger :square="square" color="light" inverted  icon="web" @click="toggle()">
           <span class="is-hidden-mobile">DE</span>
         </bal-button>
         <bal-popover-content class="p-2">
@@ -194,7 +194,7 @@ export const Simple = args => ({
           </bal-list>
         </bal-popover-content>
       </bal-popover>
-      <bal-button :square="square" href="tel://00800 24 800 800" color="light" inverted icon="call" size="small">
+      <bal-button :square="square" href="tel://00800 24 800 800" color="light" inverted icon="call">
         <span class="is-hidden-mobile">00800 24 800 800</span>
       </bal-button>
     </bal-navbar-menu-end>

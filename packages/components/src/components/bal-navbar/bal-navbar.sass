@@ -2,34 +2,14 @@
   +unselectable
   position: relative
   display: block
-  +modifiers(context-app, context-simple, context-meta)
+  +modifiers(context-app, context-simple)
     background: var(--bal-color-primary)
-  +modifiers(context-app, context-simple, context-main)
+  +modifiers(context-app, context-simple)
     height: 64px
     max-height: 64px
     +desktop
       height: 80px
       max-height: 80px
-  +modifier(context-main)
-    +desktop
-      height: 96px
-      max-height: 96px
-  +modifier(context-meta)
-    display: none
-    +desktop
-      display: block
-    height: 48px
-    max-height: 48px
-  +modifier(context-main)
-    +desktop
-      padding-top: 1rem
-    nav
-      box-shadow: var(--bal-shadow)
-      background: var(--bal-color-white)
-      +desktop
-        border-radius: var(--bal-radius-large)
-        padding-left: 2rem
-        padding-right: 2rem
   nav
     display: flex
     height: 100%
@@ -78,7 +58,7 @@
         display: block
         background: var(--bal-color-white)
 
-    +modifiers(context-app, context-main, context-meta)
+    +modifiers(context-app)
       +touch
         padding: 1rem
         overflow-y: auto
@@ -124,14 +104,12 @@
       gap: .5rem
       +modifier(context-simple)
         > .field
-          // flex-grow: 0
           flex-shrink: 0
           justify-content: flex-end
           align-items: center
       > .field
         flex: 1
         +desktop
-          // flex-grow: 0
           flex-shrink: 0
           justify-content: flex-end
           align-items: center
