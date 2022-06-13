@@ -1,5 +1,6 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
 import { Props } from '../../types'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-close',
@@ -18,16 +19,18 @@ export class Close implements ComponentInterface {
   @Prop() inverted = false
 
   render() {
+    const blockEl = BEM.block('close')
+    const buttonEl = blockEl.element('button')
+
     return (
-      <Host class="bal-close">
+      <Host class={{ ...blockEl.class() }}>
         <button
           type="button"
-          tabIndex={-1}
           aria-label="close"
           class={{
-            // 'delete': true,
-            'is-inverted': this.inverted,
-            [`is-${this.size}`]: this.size !== '',
+            ...buttonEl.class(),
+            ...buttonEl.modifier('inverted').class(this.inverted),
+            ...buttonEl.modifier(`size-${this.size}`).class(this.size !== ''),
           }}
         ></button>
       </Host>
