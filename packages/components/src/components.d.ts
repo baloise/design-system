@@ -166,6 +166,10 @@ export namespace Components {
     }
     interface BalButtonGroup {
         /**
+          * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
+         */
+        "direction": Props.BalButtonGroupDirection;
+        /**
           * The value of the button, which is submitted with the form data.
          */
         "position": Props.BalButtonGroupPosition;
@@ -2893,6 +2897,10 @@ declare namespace LocalJSX {
         "value"?: string | number;
     }
     interface BalButtonGroup {
+        /**
+          * `auto` will position the button items vertical and full width. `row` will force that the buttons are also horizontal on mobile.
+         */
+        "direction"?: Props.BalButtonGroupDirection;
         /**
           * The value of the button, which is submitted with the form data.
          */
