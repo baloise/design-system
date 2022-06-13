@@ -1,4 +1,5 @@
 import { Component, h, Prop, Host, ComponentInterface, Element } from '@stencil/core'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-table',
@@ -12,11 +13,16 @@ export class Table implements ComponentInterface {
   @Prop() expanded = false
 
   render() {
+    const block = BEM.block('table')
+    const fullwidthClass = 'is-fullwidth'
+    const hasFullwidth = this.expanded
+
     return (
       <Host
         class={{
+          ...block.class(),
           'ag-theme-alpine': true,
-          'is-fullwidth': this.expanded,
+          ...block.modifier(fullwidthClass).class(hasFullwidth),
         }}
       >
         <slot></slot>
