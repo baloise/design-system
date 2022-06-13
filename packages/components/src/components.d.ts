@@ -1772,6 +1772,10 @@ export namespace Components {
          */
         "color": Props.BalTagColor;
         /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled": boolean;
+        /**
           * If `true` a light version of the color is displayed
          */
         "light": boolean;
@@ -4451,6 +4455,10 @@ declare namespace LocalJSX {
           * The theme type of the tag. Given by bulma our css framework.
          */
         "color"?: Props.BalTagColor;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+         */
+        "disabled"?: boolean;
         /**
           * If `true` a light version of the color is displayed
          */

@@ -29,6 +29,11 @@ export class Tag {
   @Prop() closable = false
 
   /**
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   */
+  @Prop() disabled = false
+
+  /**
    * If `true` a light version of the color is displayed
    */
   @Prop() light = false
@@ -59,10 +64,12 @@ export class Tag {
 
     return (
       <Host
+        aria-disabled={this.disabled ? 'true' : null}
         class={{
           ...block.class(),
           ...block.modifier(sizeClass).class(hasSize),
           ...block.modifier(colorClass).class(hasColor),
+          'is-disabled': this.disabled,
         }}
         {...this.inheritedAttributes}
       >
@@ -71,6 +78,7 @@ export class Tag {
             ...elLabel.class(),
             ...elLabel.modifier(sizeClass).class(hasSize),
             ...elLabel.modifier(colorClass).class(hasColor),
+            'is-disabled': this.disabled,
           }}
         >
           <slot />
