@@ -48,6 +48,8 @@
       align-items: center
     +element(title)
       display: none
+      & > bal-logo
+        display: none
       +tablet
         display: inline-block
         font-size: 1rem
@@ -116,7 +118,6 @@
         justify-content: flex-start
 
     +element(end)
-      position: relative
       display: flex
       justify-content: flex-end
       align-items: center

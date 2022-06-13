@@ -1,4 +1,4 @@
-import { ref, watchEffect } from 'vue'
+import { onMounted, onUnmounted, ref, watchEffect } from 'vue'
 import docs from './bal-navbar.docs.mdx'
 import { BalComponentStory } from '../../../stories/utils'
 import {
@@ -20,6 +20,7 @@ import {
   BalTabs,
   BalTabItem,
 } from '../../../../.storybook/vue/components'
+import { isPlatform } from '../../../../dist'
 
 const component = BalComponentStory({
   component: BalNavbar,
@@ -106,7 +107,7 @@ export const Basic = args => ({
           </bal-list>
         </bal-popover-content>
       </bal-popover>
-      <bal-button color="light" inverted icon="call" size="small">0800 123 12 12</bal-button>
+      <bal-button href="tel://00800 24 800 800" color="light" inverted icon="call" size="small">00800 24 800 800</bal-button>
       </bal-button-group>
     </bal-navbar-menu-end>
   </bal-navbar-menu>
@@ -122,18 +123,80 @@ Basic.parameters = {
 }
 
 export const Simple = args => ({
-  components: { ...component.components, BalLogo, BalText, BalButton, BalButtonGroup },
-  setup: () => ({ args }),
+  components: {
+    ...component.components,
+    BalLogo,
+    BalText,
+    BalButton,
+    BalButtonGroup,
+    BalPopover,
+    BalPopoverContent,
+    BalList,
+    BalListItem,
+    BalListItemContent,
+    BalListItemTitle,
+    BalTabs,
+    BalTabItem,
+  },
+  setup: () => {
+    const isActive = ref(true)
+    const myActiveTab = ref('tab-a')
+    const square = ref(isPlatform('mobile'))
+
+    const toggle = () => {
+      isActive.value = !isActive.value
+    }
+
+    watchEffect(() => {
+      isActive.value = args.value
+    })
+
+    onMounted(() => window.addEventListener('resize', onResize))
+    onUnmounted(() => window.removeEventListener('resize', onResize))
+
+    function onResize() {
+      square.value = isPlatform('mobile')
+    }
+
+    return {
+      args,
+      square,
+      isActive,
+      toggle,
+      myActiveTab,
+    }
+  },
   template: `<bal-navbar v-bind="args">
   <bal-navbar-brand>Simple Header</bal-navbar-brand>
   <bal-navbar-menu>
-    <bal-navbar-menu-start>
-    </bal-navbar-menu-start>
     <bal-navbar-menu-end>
-      <bal-button class="is-hidden-mobile" color="light" inverted icon="web" size="small">DE</bal-button>
-      <bal-button class="is-hidden-tablet" color="light" inverted icon="web" size="small" square></bal-button>
-      <bal-button class="is-hidden-mobile" color="light" inverted icon="call" size="small">0800 123 12 12</bal-button>
-      <bal-button class="is-hidden-tablet" color="light" inverted icon="call" size="small" square></bal-button>
+      <bal-popover v-model="isActive">
+        <bal-button bal-popover-trigger :square="square" color="light" inverted  icon="web" size="small" @click="toggle()">
+          <span class="is-hidden-mobile">DE</span>
+        </bal-button>
+        <bal-popover-content class="p-2">
+          <bal-list border>
+            <bal-list-item clickable>
+              <bal-list-item-content>
+                <bal-list-item-title>English</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item clickable>
+              <bal-list-item-content>
+                <bal-list-item-title>Français</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+            <bal-list-item clickable>
+              <bal-list-item-content>
+                <bal-list-item-title>Italiano</bal-list-item-title>
+              </bal-list-item-content>
+            </bal-list-item>
+          </bal-list>
+        </bal-popover-content>
+      </bal-popover>
+      <bal-button :square="square" href="tel://00800 24 800 800" color="light" inverted icon="call" size="small">
+        <span class="is-hidden-mobile">00800 24 800 800</span>
+      </bal-button>
     </bal-navbar-menu-end>
   </bal-navbar-menu>
 </bal-navbar>`,
