@@ -20,8 +20,9 @@ export const TabList: FunctionalComponent<TabProps> = ({
   lineHeight,
   lineOffsetTop,
   vertical,
-  verticalOnMobile,
   selectOnMobile,
+  context,
+  inverted,
 }) => {
   if (isPlatform('mobile') && selectOnMobile) {
     const onChange = (event: CustomEvent<string | string[] | undefined>) => {
@@ -45,8 +46,9 @@ export const TabList: FunctionalComponent<TabProps> = ({
     <div
       class={{
         ...tabsEl.class(),
-        ...tabsEl.modifier('vertical').class(vertical),
-        ...tabsEl.modifier('vertical-on-mobile').class(verticalOnMobile),
+        ...tabsEl.modifier('vertical').class(vertical === true),
+        ...tabsEl.modifier('vertical-on-mobile').class(vertical === 'mobile'),
+        ...tabsEl.modifier('vertical-on-tablet').class(vertical === 'tablet'),
       }}
     >
       <ul>
@@ -57,8 +59,9 @@ export const TabList: FunctionalComponent<TabProps> = ({
               ...tabItemEl.modifier('active').class(tab.value === value),
               ...tabItemEl.modifier('disabled').class(tab.disabled),
               ...tabItemEl.modifier('fullwidth').class(expanded),
-              ...tabItemEl.modifier('vertical').class(vertical),
-              ...tabItemEl.modifier('vertical-on-mobile').class(verticalOnMobile),
+              ...tabItemEl.modifier('vertical').class(vertical === true),
+              ...tabItemEl.modifier('vertical-on-mobile').class(vertical === 'mobile'),
+              ...tabItemEl.modifier('vertical-on-tablet').class(vertical === 'tablet'),
               'data-test-tab-item': true,
             }}
             data-label={tab.label}
@@ -67,8 +70,10 @@ export const TabList: FunctionalComponent<TabProps> = ({
           >
             <TabItem
               icon={tab.icon}
+              active={tab.value === value}
+              inverted={inverted}
+              context={context}
               vertical={vertical}
-              verticalOnMobile={verticalOnMobile}
               expanded={expanded}
               iconPosition={iconPosition}
               disabled={tab.disabled}
@@ -77,25 +82,35 @@ export const TabList: FunctionalComponent<TabProps> = ({
               bubble={tab.bubble}
               onSelectTab={e => onSelectTab(e, tab)}
             ></TabItem>
-            {/* <bal-badge size="small" position="tabs" class={{ 'is-hidden': !tab.hasBubble }}></bal-badge> */}
           </li>
         ))}
       </ul>
       <div
         class={{
           ...tabsEl.element('border').class(),
-          ...tabsEl.element('border').modifier('vertical').class(vertical),
-          ...tabsEl.element('border').modifier('vertical-on-mobile').class(verticalOnMobile),
+          ...tabsEl
+            .element('border')
+            .modifier('vertical')
+            .class(vertical === true),
+          ...tabsEl
+            .element('border')
+            .modifier('vertical-on-mobile')
+            .class(vertical === 'mobile'),
+          ...tabsEl
+            .element('border')
+            .modifier('vertical-on-tablet')
+            .class(vertical === 'tablet'),
         }}
         style={{ display: border ? 'block' : 'none' }}
       ></div>
       <TabLine
+        context={context}
         vertical={vertical}
-        verticalOnMobile={verticalOnMobile}
         lineOffsetLeft={lineOffsetLeft}
         lineWidth={lineWidth}
         lineOffsetTop={lineOffsetTop}
         lineHeight={lineHeight}
+        inverted={inverted}
         isReady={isReady}
       ></TabLine>
     </div>
@@ -104,16 +119,25 @@ export const TabList: FunctionalComponent<TabProps> = ({
 
 export const TabLine: FunctionalComponent<TabLineProps> = ({
   vertical,
-  verticalOnMobile,
   isReady,
   lineWidth,
   lineOffsetLeft,
   lineHeight,
   lineOffsetTop,
+  inverted,
+  context,
 }) => {
   const tabLineEl = tabsEl.element('line')
   let style = {}
-  if (vertical || (isPlatform('mobile') && verticalOnMobile)) {
+  const isMobile = isPlatform('mobile')
+  const isTablet = isPlatform('tablet')
+  const isNavbarTablet = context === 'navbar' && (isMobile || isTablet)
+
+  const isVertical = vertical === true
+  const isVerticalMobile = isMobile && (vertical === 'mobile' || vertical === 'tablet')
+  const isVerticalTablet = (isMobile || isTablet) && vertical === 'tablet'
+
+  if (isVertical || isVerticalMobile || isVerticalTablet || isNavbarTablet) {
     style = {
       top: `${lineOffsetTop || 0}px`,
       height: `${lineHeight || 0}px`,
@@ -125,16 +149,19 @@ export const TabLine: FunctionalComponent<TabLineProps> = ({
     }
   }
 
+  console.log('render line')
   return (
     <div
       class={{
         ...tabLineEl.class(),
         ...tabLineEl.modifier('ready').class(isReady),
-        ...tabLineEl.modifier('vertical').class(vertical),
-        ...tabLineEl.modifier('vertical-on-mobile').class(verticalOnMobile),
+        ...tabLineEl.modifier(`context-${context}`).class(),
+        ...tabLineEl.modifier('inverted').class(inverted),
+        ...tabLineEl.modifier('vertical').class(vertical === true),
+        ...tabLineEl.modifier('vertical-on-mobile').class(vertical === 'mobile'),
+        ...tabLineEl.modifier('vertical-on-tablet').class(vertical === 'tablet'),
       }}
       style={style}
-      // style={{ display: vertical ? 'none' : 'block', left: `${lineOffsetLeft || 0}px`, width: `${lineWidth || 0}px` }}
     ></div>
   )
 }

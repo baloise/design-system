@@ -25,7 +25,7 @@ import {
   inputSetFocus,
 } from '../../../helpers/form-input.helpers'
 import { debounceEvent, findItemLabel, inheritAttributes } from '../../../helpers/helpers'
-import { Props } from '../../../props'
+import { Props } from '../../../types'
 import { BEM } from '../../../utils/bem'
 
 @Component({

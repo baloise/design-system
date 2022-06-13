@@ -1,6 +1,6 @@
 import { Component, Host, h, Method, State, Prop, Element, Listen } from '@stencil/core'
 import { attachComponentToConfig, BalConfigObserver, BalConfigState, detachComponentToConfig } from '../../config'
-import { Props } from '../../props'
+import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
 @Component({

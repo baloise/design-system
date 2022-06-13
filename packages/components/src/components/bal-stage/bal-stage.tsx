@@ -1,5 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop, State, Listen } from '@stencil/core'
-import { Props } from '../../props'
+import { Props } from '../../types'
 import { isPlatform } from '../../'
 import { Platforms, PlatformSrcSet } from '../../types'
 

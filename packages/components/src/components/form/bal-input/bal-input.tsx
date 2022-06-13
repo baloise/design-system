@@ -26,7 +26,7 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
-import { Props } from '../../../props'
+import { Props } from '../../../types'
 import {
   formatClaim,
   formatOffer,

@@ -6,9 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Props } from "./types";
-import { Props as Props1 } from "./props";
 import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal-doc-banner-status";
-import { Props as Props2 } from ".";
+import { Props as Props1 } from ".";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
@@ -1080,6 +1079,10 @@ export namespace Components {
           * Defines the color of the logo.
          */
         "color": Props.BalLogoColor;
+        /**
+          * Defines the size of the logo.
+         */
+        "size": Props.BalLogoSize;
     }
     interface BalModal {
         "close": () => Promise<void>;
@@ -1142,34 +1145,38 @@ export namespace Components {
     }
     interface BalNavbar {
         /**
-          * It `true` the component uses the whole width
+          * TODO: describe
          */
-        "expanded": boolean;
+        "container": 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
-          * @deprecated It `true` the navbar has a white background. Always use the blue header.
+          * Defines the type of navbar. App is used for almost every web applications like the portal app. For our sales funnel we recommend to use the simple navbar. Meta and main are used for the website.
+         */
+        "interface": Props.BalNavbarInterface;
+        /**
+          * It `true` the navbar has a white background. Always use the blue header.
          */
         "light": boolean;
-        /**
-          * @deprecated It `true` the burger button is hidden. Use simple on the navbar-brand component.
-         */
-        "noBurger": boolean;
     }
     interface BalNavbarBrand {
         /**
           * Link of the logo / title.
          */
         "href": string;
+        "interface": Props.BalNavbarInterface;
         /**
-          * If `true` the navbar does not have a mobil version. Only shows logo and an app title.
+          * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
         "simple": boolean;
     }
     interface BalNavbarMenu {
+        "interface": Props.BalNavbarInterface;
         "toggle": (isMenuActive: boolean) => Promise<void>;
     }
     interface BalNavbarMenuEnd {
+        "interface": Props.BalNavbarInterface;
     }
     interface BalNavbarMenuStart {
+        "interface": Props.BalNavbarInterface;
     }
     interface BalNotices {
         "interface": 'toast' | 'snackbar';
@@ -1747,6 +1754,11 @@ export namespace Components {
          */
         "interface": Props.BalTabsInterface;
         /**
+          * If `true` the field expands over the whole width.
+         */
+        "inverted": boolean;
+        "renderLine": () => Promise<void>;
+        /**
           * Go to tab with the given value
          */
         "select": (tab: BalTabOption) => Promise<void>;
@@ -1758,11 +1770,7 @@ export namespace Components {
         /**
           * If `true` tabs are align vertically.
          */
-        "vertical": boolean;
-        /**
-          * If `true` tabs are align vertically on the mobile.
-         */
-        "verticalOnMobile": boolean;
+        "vertical": boolean | 'mobile' | 'tablet';
     }
     interface BalTag {
         /**
@@ -3730,6 +3738,10 @@ declare namespace LocalJSX {
           * Defines the color of the logo.
          */
         "color"?: Props.BalLogoColor;
+        /**
+          * Defines the size of the logo.
+         */
+        "size"?: Props.BalLogoSize;
     }
     interface BalModal {
         /**
@@ -3790,37 +3802,41 @@ declare namespace LocalJSX {
     }
     interface BalNavbar {
         /**
-          * It `true` the component uses the whole width
+          * TODO: describe
          */
-        "expanded"?: boolean;
+        "container"?: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '';
         /**
-          * @deprecated It `true` the navbar has a white background. Always use the blue header.
+          * Defines the type of navbar. App is used for almost every web applications like the portal app. For our sales funnel we recommend to use the simple navbar. Meta and main are used for the website.
+         */
+        "interface"?: Props.BalNavbarInterface;
+        /**
+          * It `true` the navbar has a white background. Always use the blue header.
          */
         "light"?: boolean;
-        /**
-          * @deprecated It `true` the burger button is hidden. Use simple on the navbar-brand component.
-         */
-        "noBurger"?: boolean;
     }
     interface BalNavbarBrand {
         /**
           * Link of the logo / title.
          */
         "href"?: string;
+        "interface"?: Props.BalNavbarInterface;
         /**
           * Emitted when the link element has clicked
          */
         "onBalNavigate"?: (event: CustomEvent<MouseEvent>) => void;
         /**
-          * If `true` the navbar does not have a mobil version. Only shows logo and an app title.
+          * @deprecated Use interface on bal-navbar instead. If `true` the navbar does not have a mobil version. Only shows logo and an app title.
          */
         "simple"?: boolean;
     }
     interface BalNavbarMenu {
+        "interface"?: Props.BalNavbarInterface;
     }
     interface BalNavbarMenuEnd {
+        "interface"?: Props.BalNavbarInterface;
     }
     interface BalNavbarMenuStart {
+        "interface"?: Props.BalNavbarInterface;
     }
     interface BalNotices {
         "interface"?: 'toast' | 'snackbar';
@@ -4422,6 +4438,10 @@ declare namespace LocalJSX {
          */
         "interface"?: Props.BalTabsInterface;
         /**
+          * If `true` the field expands over the whole width.
+         */
+        "inverted"?: boolean;
+        /**
           * Emitted when the changes has finished.
          */
         "onBalChange"?: (event: CustomEvent<string>) => void;
@@ -4433,11 +4453,7 @@ declare namespace LocalJSX {
         /**
           * If `true` tabs are align vertically.
          */
-        "vertical"?: boolean;
-        /**
-          * If `true` tabs are align vertically on the mobile.
-         */
-        "verticalOnMobile"?: boolean;
+        "vertical"?: boolean | 'mobile' | 'tablet';
     }
     interface BalTag {
         /**

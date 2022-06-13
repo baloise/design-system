@@ -25,7 +25,7 @@ import {
 } from './utils/utils'
 import { watchForOptions } from './utils/watch-options'
 import { BalOptionValue } from './utils/bal-option.type'
-import { Props } from '../../../props'
+import { Props } from '../../../types'
 
 export interface BalOptionController extends BalOptionValue {
   id: string

@@ -3,6 +3,9 @@
 +block(tabs)
   display: inline-block
   position: static
+  +modifiers(context-meta, context-navbar)
+    +desktop
+      margin-left: -1rem
   +modifier(fullwidth)
     display: block
     flex: 1
@@ -11,14 +14,12 @@
   +element(tabs)
     +overflow-touch
     +unselectable
+    position: relative
     align-items: stretch
     display: flex
     font-size: $size-normal
     justify-content: space-between
-    overflow: hidden
-    overflow-x: auto
     white-space: nowrap
-    position: relative
     ul
       align-items: center
       display: flex
@@ -31,6 +32,11 @@
         align-items: flex-start
     +modifier(vertical-on-mobile)
       +mobile
+        ul
+          flex-direction: column
+          align-items: flex-start
+    +modifier(vertical-on-tablet)
+      +touch
         ul
           flex-direction: column
           align-items: flex-start
@@ -56,8 +62,15 @@
           flex-basis: 0
           width: 100%
           justify-content: flex-start
+      +modifier(vertical-on-tablet)
+        +touch
+          flex-grow: 1
+          flex-basis: 0
+          width: 100%
+          justify-content: flex-start
 
       +element(button)
+        position: relative
         display: flex
         flex-direction: column
         justify-content: center
@@ -65,12 +78,19 @@
         font-family: var(--bal-font-family-title)
         font-weight: 700
         gap: .25rem
-        padding: .5rem
+        padding: 1rem
         flex-grow: 1
         flex-basis: 0
         width: 100%
+        outline: none !important
+        border-radius: var(--bal-radius-small)
+        z-index: 1
+        &:focus-visible
+          &:not(:active)
+            @extend %focus-shadow
         span
           display: flex
+          position: relative
           gap: 4px
         &:hover
           color: var(--bal-color-light-blue-dark)
@@ -78,11 +98,35 @@
         &:active
           color: var(--bal-color-blue-dark)
           +fillSvg(var(--bal-color-blue-dark))
-        +tablet
+        +modifier(icon-horizontal)
+          flex-direction: row
+        +touch
           gap: .5rem
           padding: 1rem
           +modifier(icon-horizontal)
-            flex-direction: row
+            flex-direction: column
+        +modifier(inverted)
+          color: var(--bal-color-primary-inverted)
+          +fillSvg(var(--bal-color-primary-inverted))
+          &:hover
+            color: var(--bal-color-light-blue-2)
+            +fillSvg(var(--bal-color-light-blue-2))
+          &:active
+            color: var(--bal-color-info-3)
+            +fillSvg(var(--bal-color-info-3))
+          &:focus-visible
+            &:not(:active)
+              @extend %focus-inverted-shadow
+        +modifier(context-navbar)
+          +touch
+            color: var(--bal-color-primary)
+            +fillSvg(var(--bal-color-primary))
+            &:hover
+              color: var(--bal-color-light-blue-dark)
+              +fillSvg(var(--bal-color-light-blue-dark))
+            &:active
+              color: var(--bal-color-blue-dark)
+              +fillSvg(var(--bal-color-blue-dark))
         +modifier(disabled)
           color: var(--bal-color-text-disabled)
           cursor: default
@@ -104,8 +148,30 @@
             align-items: flex-start
             justify-content: flex-start
             padding: .5rem 1rem
+        +modifier(vertical-on-tablet)
+          +touch
+            align-items: flex-start
+            justify-content: flex-start
+            padding: .5rem 1rem
+        +modifier(icon)
+          +mobile
+            gap: 0
+            font-size: var(--bal-size-xsmall)
+          +touch
+            gap: .25rem
+            padding: .5rem
         .bal-icon
           margin-top: -1px
+        +modifier(context-navbar)
+          +desktop
+            height: 80px
+        +modifier(context-meta)
+          height: 48px
+          font-size: 14px
+          font-family: var(--bal-font-family-text)
+          font-weight: 400
+          &.bal-tabs__tabs__item__button--active
+            font-weight: 700
 
     +element(border)
       position: absolute
@@ -117,15 +183,22 @@
       +modifier(vertical)
         height: auto
         width: 2px
-        top: 8px
-        bottom: 8px
+        top: 4px
+        bottom: 4px
         left: 0
       +modifier(vertical-on-mobile)
         +mobile
           height: auto
           width: 2px
-          top: 8px
-          bottom: 8px
+          top: 4px
+          bottom: 4px
+          left: 0
+      +modifier(vertical-on-tablet)
+        +touch
+          height: auto
+          width: 2px
+          top: 4px
+          bottom: 4px
           left: 0
 
     +element(line)
@@ -134,6 +207,11 @@
       border-radius: var(--bal-radius-small)
       height: 2px
       bottom: 0
+      +modifier(inverted)
+        background: var(--bal-color-primary-inverted)
+      +modifier(context-navbar)
+        +touch
+          background: var(--bal-color-primary)
       +modifier(ready)
         transition: 0.8s
       +modifier(vertical)
@@ -143,6 +221,12 @@
         left: 0
       +modifier(vertical-on-mobile)
         +mobile
+          height: auto
+          width: 2px
+          top: 0
+          left: 0
+      +modifier(vertical-on-tablet)
+        +touch
           height: auto
           width: 2px
           top: 0
