@@ -4,7 +4,7 @@ import { attachComponent, detachComponent } from '../../../helpers/framework-del
 import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady, wait } from '../../../helpers/helpers'
 import { getClassMap } from '../../../helpers/theme'
-import { Props } from '../../../props'
+import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-modal',

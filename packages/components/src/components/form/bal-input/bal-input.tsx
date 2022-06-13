@@ -26,7 +26,7 @@ import {
   inputSetFocus,
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
-import { Props } from '../../../props'
+import { Props } from '../../../types'
 import {
   formatClaim,
   formatOffer,
@@ -37,6 +37,7 @@ import {
 } from './bal-input-util'
 import isNil from 'lodash.isnil'
 import { ACTION_KEYS, isCtrlOrCommandKey, NUMBER_KEYS } from '../../../constants/keys.constant'
+import { BEM } from '../../../utils/bem'
 @Component({
   tag: 'bal-input',
 })
@@ -443,13 +444,14 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
       inputProps = { pattern: this.pattern }
     }
 
+    const block = BEM.block('input')
+
     return (
       <Host
         onClick={this.handleClick}
         aria-disabled={this.disabled ? 'true' : null}
         class={{
-          'bal-input': true,
-          'is-disabled': this.disabled || this.readonly,
+          ...block.class(),
         }}
       >
         <input

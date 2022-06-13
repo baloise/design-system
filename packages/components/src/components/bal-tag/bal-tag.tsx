@@ -1,6 +1,6 @@
 import { Component, EventEmitter, h, Host, Prop, Event, Element } from '@stencil/core'
 import { inheritAttributes } from '../../helpers/helpers'
-import { Props } from '../../props'
+import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
 @Component({

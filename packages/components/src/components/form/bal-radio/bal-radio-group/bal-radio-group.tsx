@@ -13,7 +13,7 @@ import {
 } from '@stencil/core'
 import { stopEventBubbling } from '../../../../helpers/form-input.helpers'
 import { findItemLabel, inheritAttributes, isDescendant } from '../../../../helpers/helpers'
-import { Props } from '../../../../props'
+import { Props } from '../../../../types'
 
 @Component({
   tag: 'bal-radio-group',

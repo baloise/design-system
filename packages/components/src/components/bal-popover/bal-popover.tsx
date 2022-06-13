@@ -1,7 +1,7 @@
 import { Component, h, Host, Listen, Method, Prop, Watch, Element, Event, EventEmitter } from '@stencil/core'
 import { createPopper, Instance } from '@popperjs/core'
 import { debounceEvent } from '../../helpers/helpers'
-import { Props } from '../../props'
+import { Props } from '../../types'
 
 @Component({
   tag: 'bal-popover',
