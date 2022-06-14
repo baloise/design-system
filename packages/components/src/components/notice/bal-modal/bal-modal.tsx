@@ -37,7 +37,7 @@ export class Modal implements OverlayInterface {
   /**
    * Defines the space/padding of the modal
    */
-  @Prop() space: Props.BalModalSpace = 'small'
+  @Prop() space: Props.BalModalSpace = ''
 
   /**
    * If `true`, a backdrop will be displayed behind the modal.
@@ -48,11 +48,6 @@ export class Modal implements OverlayInterface {
    * If `true`, the modal can be closed with the escape key or the little close button.
    */
   @Prop() isClosable = true
-
-  /**
-   * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
-   */
-  @Prop() interface: Props.BalModalInterface = 'light'
 
   /**
    * The component to display inside of the modal.
