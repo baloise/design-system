@@ -1,5 +1,13 @@
 $modal-breakpoint: $tablet !default
 
+=modalPadding($size: 1rem)
+  padding: $size
+  .bal-modal__header
+    padding-bottom: $size
+  .bal-modal__header__close
+      right: $size
+      top: $size
+
 +block(modal)
   @extend %overlay
   align-items: center
@@ -9,13 +17,13 @@ $modal-breakpoint: $tablet !default
   overflow: hidden
   position: fixed
   z-index: 40
-  // modifiers
   +modifier(is-active)
     display: flex
-  // background overlay
+
   +element(background)
     @extend %overlay
     background-color: rgba($blue-dark, .8)
+
   +element(header)
     +element(title)
       padding-right: 2.5rem
@@ -28,6 +36,7 @@ $modal-breakpoint: $tablet !default
       max-width: 2rem
       min-height: 2rem
       max-height: 2rem
+
   +element(container)
     position: fixed
     top: 0
@@ -40,6 +49,7 @@ $modal-breakpoint: $tablet !default
     padding: .5rem
     +from($modal-breakpoint)
       padding: 0
+
   +element(content)
     overflow: none
     position: relative
@@ -48,30 +58,32 @@ $modal-breakpoint: $tablet !default
     flex-direction: column
     background: var(--bal-color-white)
     border-radius: var(--bal-radius-large)
+    //
     // responsiveness
     +from($modal-breakpoint)
       margin: 3rem auto
       // --bal-width is deprecated and will be removed in the next major release
       width: var(--bal-modal-width, var(--bal-width, 640px))
+    //
     // spacing
-    padding: 1rem
-    .bal-modal__header
-      padding-bottom: 1rem
+    +modalPadding(1rem)
+    +tablet
+      +modalPadding(1.5rem)
+    +desktop
+      +modalPadding(2.5rem)
+    //
+    // sizes
     +modifier(has-spacing-small)
-      padding: 1.5rem
-      .bal-modal__header
-        padding-bottom: 1.5rem
-      .bal-modal__header__close
-        right: 20px
-        top: 24px
+      +tablet
+        +modalPadding(1rem)
+      +desktop
+        +modalPadding(1rem)
     +modifier(has-spacing-medium)
-      padding: 2rem
-      .bal-modal__header
-        padding-bottom: 2rem
-    +modifier(has-spacing-large)
-      padding: 2.5rem
-      .bal-modal__header
-        padding-bottom: 2.5rem
+      +tablet
+        +modalPadding(1.5rem)
+      +desktop
+        +modalPadding(1.5rem)
+
   +element(body)
     & > bal-button-group
       padding-top: 1rem

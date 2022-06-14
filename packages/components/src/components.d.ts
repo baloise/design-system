@@ -173,6 +173,10 @@ export namespace Components {
           * The value of the button, which is submitted with the form data.
          */
         "position": Props.BalButtonGroupPosition;
+        /**
+          * If `true` the flex direction is used in reverse on mobile.
+         */
+        "reverse": boolean;
     }
     interface BalCard {
         /**
@@ -1114,10 +1118,6 @@ export namespace Components {
           * If `true`, a backdrop will be displayed behind the modal.
          */
         "hasBackdrop": boolean;
-        /**
-          * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
-         */
-        "interface": Props.BalModalInterface;
         /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */
@@ -2918,6 +2918,10 @@ declare namespace LocalJSX {
           * The value of the button, which is submitted with the form data.
          */
         "position"?: Props.BalButtonGroupPosition;
+        /**
+          * If `true` the flex direction is used in reverse on mobile.
+         */
+        "reverse"?: boolean;
     }
     interface BalCard {
         /**
@@ -3893,10 +3897,6 @@ declare namespace LocalJSX {
           * If `true`, a backdrop will be displayed behind the modal.
          */
         "hasBackdrop"?: boolean;
-        /**
-          * Defines the look of the modal. The card interface should be used for scrollable content in the modal.
-         */
-        "interface"?: Props.BalModalInterface;
         /**
           * If `true`, the modal can be closed with the escape key or the little close button.
          */

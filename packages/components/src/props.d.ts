@@ -120,7 +120,7 @@ export namespace Props {
     | ''
 
   export type BalModalInterface = 'light' | 'card'
-  export type BalModalSpace = 'small' | 'medium' | 'large'
+  export type BalModalSpace = 'small' | '' | 'medium'
   export type ComponentProps = { [key: string]: any }
   // eslint-disable-next-line
   export type ComponentRef = Function | HTMLElement | string | null
