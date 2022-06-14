@@ -52,7 +52,7 @@
     "ag-grid-community": "^26.0.0",
     "autoprefixer": "^10.3.2",
     "bulma": "^0.9.3",
-    "postcss": "^8.3.6",
+    "postcss": "^8.4.14",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.3",
     "rollup-plugin-peer-deps-external": "^2.2.4",
