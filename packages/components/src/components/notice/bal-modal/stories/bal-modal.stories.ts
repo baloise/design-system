@@ -20,6 +20,8 @@ const component = BalComponentStory({
 
 export default component.story
 
+const excludedControls = ['component', 'componentProps', 'cssClass']
+
 export const Basic = args => ({
   components: { ...component.components, BalButton, BalButtonGroup },
   setup: () => {
@@ -45,7 +47,7 @@ export const Basic = args => ({
   <bal-modal-header>Modal Title</bal-modal-header>
   <bal-modal-body>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing?</p>
-    <bal-button-group position="right">
+    <bal-button-group position="right" reverse>
       <bal-button color="text" @click="closeModal()">Cancel</bal-button>
       <bal-button color="primary" @click="closeModal()">Okay</bal-button>
     </bal-button-group>
@@ -54,7 +56,7 @@ export const Basic = args => ({
 <bal-button @click="openModal()" class="m-4">Trigger a Modal</bal-button>`,
 })
 Basic.args = {}
-Basic.parameters = { ...component.sourceCode(Basic) }
+Basic.parameters = { ...component.sourceCode(Basic), controls: { exclude: excludedControls } }
 
 export const WithInput = args => ({
   components: { ...component.components, BalButton, BalButtonGroup },
@@ -88,7 +90,7 @@ export const WithInput = args => ({
         </bal-field-control>
       </bal-field>
     </form>
-    <bal-button-group position="right">
+    <bal-button-group position="right" reverse>
       <bal-button color="text" @click="closeModal()">Cancel</bal-button>
       <bal-button color="primary" @click="closeModal()">Okay</bal-button>
     </bal-button-group>
@@ -97,7 +99,7 @@ export const WithInput = args => ({
 <bal-button @click="openModal()" class="m-4">Trigger a Modal</bal-button>`,
 })
 WithInput.args = {}
-WithInput.parameters = { ...component.sourceCode(WithInput) }
+WithInput.parameters = { ...component.sourceCode(WithInput), controls: { exclude: excludedControls } }
 
 export const LargeContent = args => ({
   components: { ...component.components, BalButton, BalButtonGroup },
@@ -151,7 +153,7 @@ export const LargeContent = args => ({
     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
     dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum¨
     </p>
-    <bal-button-group position="right">
+    <bal-button-group position="right" reverse>
       <bal-button color="text" @click="closeModal()">Cancel</bal-button>
       <bal-button color="primary" @click="closeModal()">Okay</bal-button>
     </bal-button-group>
@@ -160,4 +162,4 @@ export const LargeContent = args => ({
 <bal-button @click="openModal()" class="m-4">Trigger a Modal</bal-button>`,
 })
 LargeContent.args = {}
-LargeContent.parameters = { ...component.sourceCode(LargeContent) }
+LargeContent.parameters = { ...component.sourceCode(LargeContent), controls: { exclude: excludedControls } }
