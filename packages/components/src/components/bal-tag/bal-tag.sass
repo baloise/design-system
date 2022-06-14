@@ -9,11 +9,8 @@
   line-height: 1.5
   padding-left: 0.75rem
   padding-right: 0.75rem
-  background-color: var(--bal-color-primary)
-  color: var(--bal-color-primary-inverted)
+  background-color: var(--bal-color-grey)
   border-radius: var(--bal-radius-rounded)
-  font-family: var(--bal-font-family-text)
-  font-size: var(--bal-size-small) !important
   white-space: nowrap
   // sizes
   +modifier(is-small)
@@ -23,6 +20,8 @@
   +modifier(is-large)
     height: 3rem
   // colors
+  +modifier(is-primary)
+    background: var(--bal-color-primary)
   +modifier(is-grey)
     background: var(--bal-color-grey)
   +modifier(is-success)
@@ -53,6 +52,8 @@
   //
   // tag label
   +element(label)
+    font-family: var(--bal-font-family-text)
+    color: var(--bal-color-grey-inverted)
     font-weight: $weight-bold !important
     display: inline-flex
     align-items: center
@@ -65,6 +66,8 @@
     +modifier(is-large)
       font-size: var(--bal-size-large) !important
     // colors
+    +modifier(is-primary)
+      color: var(--bal-color-primary-inverted)
     +modifier(is-grey)
       color: var(--bal-color-grey-inverted)
     +modifier(is-success)
