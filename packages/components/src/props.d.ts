@@ -6,6 +6,8 @@ export namespace Props {
   export type BalBadgePosition = 'card' | 'button' | 'tabs' | ''
 
   export type BalButtonGroupPosition = 'right' | 'center' | ''
+  export type BalButtonGroupDirection = 'auto' | 'row' | 'column'
+
   export type BalButtonColor =
     | 'text'
     | 'primary'
@@ -14,14 +16,15 @@ export namespace Props {
     | 'warning'
     | 'danger'
     | 'link'
+    | 'light'
     | 'primary-light'
     | 'info-light'
-  export type BalButtonType = 'button' | 'reset' | 'submit'
+  export type BalButtonElementType = 'button' | 'reset' | 'submit'
   export type BalButtonSize = 'small' | ''
   export type BalButtonTarget = '_blank' | ' _parent' | '_self' | '_top'
 
   export type BalCardActionsPosition = 'right' | 'center' | ''
-  export type BalCardButtonType = BalButtonType
+  export type BalCardButtonElementType = BalButtonElementType
   export type BalCardButtonTarget = BalButtonTarget
   export type BalCardColor =
     | 'white'
@@ -58,7 +61,10 @@ export namespace Props {
   export type BalListSize = 'large' | ''
   export type BalListBackground = 'light' | 'color' | 'dark'
 
+  export type BalNavbarInterface = 'app' | 'simple'
+
   export type BalLogoColor = 'blue' | 'white'
+  export type BalLogoSize = 'small' | 'normal'
   export type BalLogoBrand = 'group' | 'soba' | 'insurance'
 
   export type BalPopoverPlacement =
@@ -81,7 +87,7 @@ export namespace Props {
   export type BalStageColor = 'blue' | 'white' | 'purple' | 'green' | 'red' | 'yellow'
   export type BalStageSize = 'small' | '' | 'medium' | 'large' | 'halfheight' | 'fullheight'
 
-  export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar'
+  export type BalTabsInterface = 'tabs' | 'tabs-sub' | 'steps' | 'o-steps' | 'navbar' | 'meta'
   export type BalTabsIconPosition = 'horizontal' | 'vertical'
 
   export type BalTagColor =

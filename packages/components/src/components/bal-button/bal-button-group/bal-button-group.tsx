@@ -10,12 +10,19 @@ export class ButtonGroup implements ComponentInterface {
    */
   @Prop() position: Props.BalButtonGroupPosition = ''
 
+  /**
+   * `auto` will position the button items vertical and full width.
+   * `row` will force that the buttons are also horizontal on mobile.
+   */
+  @Prop() direction: Props.BalButtonGroupDirection = 'auto'
+
   render() {
     return (
       <Host
         class={{
           'field': true,
           'is-grouped': true,
+          [`has-direction-${this.direction}`]: true,
           'is-grouped-right': this.position === 'right',
           'is-grouped-centered': this.position === 'center',
         }}

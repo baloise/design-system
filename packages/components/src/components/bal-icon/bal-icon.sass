@@ -1,4 +1,4 @@
-=iconSize($size: 1.5rem)
+=iconSize($size: 1rem)
   width: $size
   max-height: $size
 
@@ -8,7 +8,7 @@
   align-items: center
   position: static
   pointer-events: visible
-  +iconSize(1.5rem)
+  +iconSize(1rem)
   +fillSvg(var(--bal-color-blue))
   //
   // modifiers
@@ -19,17 +19,19 @@
   +element(inner)
     display: block
     position: static
-    +iconSize(1.5rem)
+    +iconSize(1rem)
     +modifier(is-turn)
       transform: rotate(180deg)
+    & > svg
+      vertical-align: top
   //
   // sizes
   +modifier(is-xsmall)
-    width: 0.625rem
+    +iconSize(0.625rem)
   +modifier(is-small)
-    +iconSize(1rem)
+    +iconSize(0.75rem)
   +modifier(is-medium)
-    +iconSize(2rem)
+    +iconSize(1.5rem)
   +modifier(is-large)
     +iconSize(3rem)
   +modifier(is-xlarge)
@@ -58,7 +60,7 @@
   &.is-small
     line-height: 1.75rem
   &.is-medium
-    line-height: 2rem
+    line-height: 1.5rem
   &.is-large
     line-height: 3rem
   &.is-xlarge

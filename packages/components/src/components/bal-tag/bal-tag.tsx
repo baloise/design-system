@@ -1,6 +1,6 @@
 import { Component, EventEmitter, h, Host, Prop, Event, Element } from '@stencil/core'
 import { inheritAttributes } from '../../helpers/helpers'
-import { Props } from '../../props'
+import { Props } from '../../types'
 import { BEM } from '../../utils/bem'
 
 @Component({
@@ -92,7 +92,7 @@ export class Tag {
             display: this.closable && !this.disabled ? 'flex' : 'none',
           }}
           size={this.size}
-          inverted={['blue', 'primary', 'info', 'success', 'warning', 'danger', ''].includes(this.color) && !this.light}
+          inverted={['blue', 'primary', 'info', 'success', 'warning', 'danger'].includes(this.color) && !this.light}
           onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
         ></bal-close>
       </Host>

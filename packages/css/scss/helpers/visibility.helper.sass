@@ -18,6 +18,18 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
   +desktop
     .is-#{$display}-desktop
       display: #{$display} !important
+  +desktop-only
+    .is-#{$display}-desktop-only
+      display: #{$display} !important
+  +widescreen
+    .is-#{$display}-widescreen
+      display: #{$display} !important
+  +widescreen-only
+    .is-#{$display}-widescreen-only
+      display: #{$display} !important
+  +fullhd
+    .is-#{$display}-fullhd
+      display: #{$display} !important
 
 .is-hidden
   display: none !important
@@ -52,6 +64,22 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
   .is-hidden-desktop
     display: none !important
 
++desktop-only
+  .is-hidden-desktop-only
+    display: none !important
+
++widescreen
+  .is-hidden-widescreen
+    display: none !important
+
++widescreen-only
+  .is-hidden-widescreen-only
+    display: none !important
+
++fullhd
+  .is-hidden-fullhd
+    display: none !important
+
 .is-invisible
   visibility: hidden !important
 
@@ -73,4 +101,20 @@ $displays: 'block' 'flex' 'inline' 'inline-block' 'inline-flex'
 
 +desktop
   .is-invisible-desktop
+    visibility: hidden !important
+
++desktop-only
+  .is-invisible-desktop-only
+    visibility: hidden !important
+
++widescreen
+  .is-invisible-widescreen
+    visibility: hidden !important
+
++widescreen-only
+  .is-invisible-widescreen-only
+    visibility: hidden !important
+
++fullhd
+  .is-invisible-fullhd
     visibility: hidden !important

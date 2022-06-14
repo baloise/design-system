@@ -1,44 +1,65 @@
-import { Component, Element, h, Host, Prop } from '@stencil/core'
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core'
+import { Props } from '../../types'
+import { BEM } from '../../utils/bem'
 
 @Component({
   tag: 'bal-navbar',
 })
 export class Navbar {
-  @Element() el!: HTMLElement
+  @Element() element!: HTMLElement
 
   /**
-   * @deprecated
    * It `true` the navbar has a white background. Always use the blue header.
    */
   @Prop() light = false
 
   /**
-   * @deprecated
-   * It `true` the burger button is hidden. Use simple on the navbar-brand component.
+   * Defines the type of navbar. App is used for almost every web applications
+   * like the portal app. For our sales funnel we recommend to use the simple navbar.
+   * Meta and main are used for the website.
    */
-  @Prop() noBurger = false
+  @Prop() interface: Props.BalNavbarInterface = 'app'
+
+  @Watch('interface')
+  interfaceHandler() {
+    this.updateProps(
+      ['bal-navbar-brand', 'bal-navbar-menu', 'bal-navbar-menu-start', 'bal-navbar-menu-end'],
+      'interface',
+    )
+  }
 
   /**
-   * It `true` the component uses the whole width
+   * TODO: describe
    */
-  @Prop() expanded = false
+  @Prop() container: 'fluid' | 'detail-page' | 'compact' | 'blog-page' | 'wide' | '' = ''
 
+  componentWillLoad() {
+    this.interfaceHandler()
+  }
+
+  private updateProps(selectors: string[], key: string) {
+    const value = (this as any)[key]
+    if (value !== undefined) {
+      this.notifyComponents<any>(selectors, input => (input[key] = value))
+    }
+  }
+
+  private notifyComponents<T>(selectors: string[], callback: (component: T) => void) {
+    const components = this.element.querySelectorAll<Element>(selectors.join(', '))
+    components.forEach(c => callback(c as any))
+  }
   render() {
+    const navbarEl = BEM.block('navbar')
+
     return (
-      <Host
-        class={{ 'no-burger': this.noBurger }}
-        style={{
-          position: 'relative',
-        }}
-      >
+      <Host class={{ ...navbarEl.class(), ...navbarEl.modifier(`context-${this.interface}`).class() }}>
         <nav
-          class={{
-            'navbar': true,
-            'is-spaced': !this.expanded,
-            'is-primary': true,
-          }}
           role="navigation"
           aria-label="main navigation"
+          class={{
+            container: true,
+            [`is-${this.container}`]: this.container !== '',
+          }}
         >
           <slot></slot>
         </nav>

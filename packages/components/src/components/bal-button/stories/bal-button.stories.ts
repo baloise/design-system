@@ -21,17 +21,7 @@ const component = BalComponentStory({
 
 export default component.story
 
-const excludedControls = [
-  'bottomRounded',
-  'download',
-  'isActive',
-  'name',
-  'rel',
-  'target',
-  'topRounded',
-  'type',
-  'value',
-]
+const excludedControls = ['bottomRounded', 'download', 'isActive', 'name', 'rel', 'target', 'topRounded', 'value']
 
 const Template = args => ({
   components: { ...component.components },

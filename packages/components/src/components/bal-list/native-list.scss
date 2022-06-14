@@ -24,6 +24,8 @@ ul.is-list li {
 }
 
 ul.is-list.has-bullet-circle li {
+  list-style: none;
+
   &::marker {
     content: none;
   }
@@ -64,6 +66,8 @@ ul.is-list.has-bullet-circle.has-bullet-purple li {
 }
 
 ul.is-list.has-bullet-check li {
+  list-style: none;
+
   &::marker {
     content: none;
   }

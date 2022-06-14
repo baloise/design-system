@@ -4,7 +4,7 @@ import { attachComponent, detachComponent } from '../../../helpers/framework-del
 import { OverlayEventDetail, OverlayInterface } from './bal-modal.type'
 import { deepReady, wait } from '../../../helpers/helpers'
 import { getClassMap } from '../../../helpers/theme'
-import { Props } from '../../../props'
+import { Props } from '../../../types'
 
 @Component({
   tag: 'bal-modal',
@@ -247,12 +247,18 @@ export class Modal implements OverlayInterface {
   }
 
   private setModalActiveOnBody() {
+    if (document && document.documentElement && !document.documentElement.classList.contains('bal-modal-active')) {
+      document.documentElement.classList.add('bal-modal-active')
+    }
     if (document && document.body && !document.body.classList.contains('bal-modal-active')) {
       document.body.classList.add('bal-modal-active')
     }
   }
 
   private unsetModalActiveOnBody() {
+    if (document && document.documentElement) {
+      document.documentElement.classList.remove('bal-modal-active')
+    }
     if (document && document.body) {
       document.body.classList.remove('bal-modal-active')
     }
@@ -295,35 +301,6 @@ export class Modal implements OverlayInterface {
             <slot></slot>
           </div>
         </div>
-
-        {/* <div
-          ref={el => (this.modalBackgroundElement = el)}
-          class={{
-            'bal-modal__inner': true,
-            'bal-modal__inner--is-clipped': true,
-            'bal-modal__inner--is-active': this.presented,
-          }}
-        >
-          <div
-            class={{
-              'bal-modal__background': true,
-              'is-hidden': !this.hasBackdrop,
-            }}
-          ></div>
-          <div class="bal-modal__container">
-            <div class="bal-modal__content">
-              <div
-                ref={el => (this.modalContentElement = el)}
-                class={{
-                  'has-background-white has-shadow has-radius-large no-border modal-card modal-wrapper': true,
-                  [`has-space-${this.space}`]: true,
-                }}
-              >
-                <slot></slot>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </Host>
     )
   }

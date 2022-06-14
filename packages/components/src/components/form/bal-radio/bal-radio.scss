@@ -37,7 +37,6 @@ bal-radio.bal-radio:not(.bal-select-button) {
 
     display: flex;
     align-items: center;
-    align-self: center;
     justify-content: center;
     text-align: left;
 
@@ -56,22 +55,20 @@ bal-radio.bal-radio:not(.bal-select-button) {
     display: inline-block;
     position: absolute;
     left: 0;
-    top: 0;
     height: 24px;
     width: 24px;
     border-radius: 50%;
   }
 
-  input[type='radio'] + label:before {
+  input[type='radio'] + label::before {
     content: '';
     border: 2px solid $blue;
   }
 
-  input[type='radio'] + label:after {
+  input[type='radio'] + label::after {
     content: none;
     background: $white;
     transform: scale(0.25);
-    top: 0;
     left: 0;
   }
 
@@ -83,7 +80,7 @@ bal-radio.bal-radio:not(.bal-select-button) {
     content: '';
   }
 
-  input[type='radio']:hover:not(.is-disabled) + label:before {
+  input[type='radio']:hover:not(.is-disabled) + label::before {
     border-color: $blue;
   }
 
@@ -92,18 +89,18 @@ bal-radio.bal-radio:not(.bal-select-button) {
     cursor: default;
   }
 
-  input[type='radio'].is-disabled + label:before {
+  input[type='radio'].is-disabled + label::before {
     cursor: default;
     background: $grey-2;
     border-color: $grey-2;
   }
 
-  input[type='radio']:checked.is-disabled + label:after {
+  input[type='radio']:checked.is-disabled + label::after {
     cursor: default;
     background: $grey-5;
   }
 
-  input[type='radio']:focus-visible + label:before {
+  input[type='radio']:focus-visible + label::before {
     box-shadow: $white 0 0 0 2px, $purple-dark 0 0 0 5px !important;
   }
 }

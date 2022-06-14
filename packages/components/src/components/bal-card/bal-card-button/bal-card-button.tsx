@@ -13,7 +13,7 @@ export class CardButton {
   /**
    * The type of button.
    */
-  @Prop() type: Props.BalCardButtonType = 'button'
+  @Prop() elementType: Props.BalCardButtonElementType = 'button'
 
   /**
    * If `true`, the user cannot interact with the button.
@@ -50,7 +50,7 @@ export class CardButton {
           bottom-rounded
           icon={this.icon}
           iconRight={this.iconRight}
-          type={this.type}
+          elementType={this.elementType}
           disabled={this.disabled}
           href={this.href}
           target={this.target}

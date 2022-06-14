@@ -89,6 +89,8 @@ const tokens = {
   breakpoint: {
     tablet: '769px',
     desktop: '1024px',
+    widescreen: '1440px',
+    fullhd: '1920px',
   },
   radius: {
     none: { value: '0' },
@@ -201,7 +203,7 @@ const tokens = {
         },
         '7': {
           fontSize: '0.75rem',
-          lineHeight: '1rem',
+          lineHeight: '1.25rem',
           spacing: '1',
         },
       },
@@ -332,8 +334,7 @@ tokens.color['background-light'] = tokens.color['grey-light']
 tokens.typography.sizes.mobile['large'] = tokens.typography.sizes.mobile['3']
 tokens.typography.sizes.mobile['medium'] = tokens.typography.sizes.mobile['4']
 tokens.typography.sizes.mobile['normal'] = tokens.typography.sizes.mobile['5']
-tokens.typography.sizes.mobile['small'] = tokens.typography.sizes.mobile['6']
-tokens.typography.sizes.mobile['xsmall'] = tokens.typography.sizes.mobile['7']
+tokens.typography.sizes.mobile['small'] = tokens.typography.sizes.mobile['7']
 tokens.typography.sizes.tablet['large'] = tokens.typography.sizes.tablet['3']
 tokens.typography.sizes.tablet['medium'] = tokens.typography.sizes.tablet['4']
 

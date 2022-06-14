@@ -1,7 +1,7 @@
 .label
   color: var(--bal-color-blue)
   display: block
-  font-size: var(--bal-size-6)
+  font-size: var(--bal-size-5)
   font-weight: $weight-bold
   &:not(:last-child)
     margin-bottom: 4px
@@ -17,7 +17,7 @@
 .help
   display: block
   margin-top: 2px
-  font-size: var(--bal-size-7)
+  font-size: var(--bal-size-small)
   color: var(--bal-color-text-help)
   &.is-danger
     color: var(--bal-color-text-danger)
@@ -164,7 +164,7 @@
   margin-right: 8px
 
 +mobile()
-  .field.is-grouped
+  .field.has-direction-auto.is-grouped
     flex-wrap: wrap
     flex-direction: column
     .control

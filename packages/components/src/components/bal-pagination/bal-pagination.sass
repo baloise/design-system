@@ -1,0 +1,32 @@
++block(pagination)
+  +unselectable
+  display: block
+
+  +element(nav)
+    align-items: center
+    display: flex
+    justify-content: center
+    text-align: center
+
+    +element(pagination-previous)
+      order: 1
+    
+    +element(pagination-next)
+      order: 3
+
+    +element(pagination-list)
+      order: 2
+      width: unset
+      align-items: center
+      display: flex
+      justify-content: center
+      text-align: center
+      gap: 4px
+      padding-left: 8px
+      padding-right: 8px
+
+      +tablet
+        gap: 8px
+
+      +desktop
+        gap: 8px

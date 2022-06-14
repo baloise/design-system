@@ -5,6 +5,15 @@ interface IsPlatformSignature {
   (win: Window, plt: Platforms): boolean
 }
 
+export interface PlatformSrcSet {
+  mobile?: string
+  tablet?: string
+  touch?: string
+  desktop?: string
+  widescreen?: string
+  fullhd?: string
+}
+
 export const getPlatforms = (win?: any) => setupPlatforms(win)
 
 export const isPlatform: IsPlatformSignature = (
@@ -42,10 +51,25 @@ const isTablet = (win: Window) => {
   return width > 768 && width < 1024
 }
 
-const isDesktop = (win: Window) => !isMobile(win) && !isTablet(win)
+const isTouch = (win: Window) => isMobile(win) || isTablet(win)
+
+const isDesktop = (win: Window) => !isTouch(win)
+
+const isWideScreen = (win: Window) => {
+  const width = win.innerWidth
+  return width > 1439 && width < 1920
+}
+
+const isFullHD = (win: Window) => {
+  const width = win.innerWidth
+  return width > 1919
+}
 
 const PLATFORMS_MAP = {
   mobile: isMobile,
   tablet: isTablet,
+  touch: isTouch,
   desktop: isDesktop,
+  widescreen: isWideScreen,
+  fullhd: isFullHD,
 }

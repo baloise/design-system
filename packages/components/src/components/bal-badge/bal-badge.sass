@@ -28,10 +28,15 @@
     top: -0.5rem
   +modifier(has-position-tabs)
     margin-top: -4px
+    position: absolute
+    right: -26px
+    &.bal-badge--has-size-small
+      right: -16px
+
   // label
   +element(label)
     font-weight: $weight-bold !important
     font-family: var(--bal-font-family-text) !important
-    font-size: var(--bal-size-xsmall) !important
+    font-size: var(--bal-size-small) !important
     color: var(--bal-color-white)
     line-height: 1.5rem !important
