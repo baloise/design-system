@@ -61,6 +61,8 @@ export class Tag {
     const sizeClass = `is-${this.size}`
     const hasColor = this.color !== ''
     const colorClass = `is-${this.color}${this.light ? '-light' : ''}`
+    const disabledClass = 'is-disabled'
+    const hasDisabled = this.disabled
 
     return (
       <Host
@@ -69,7 +71,7 @@ export class Tag {
           ...block.class(),
           ...block.modifier(sizeClass).class(hasSize),
           ...block.modifier(colorClass).class(hasColor),
-          'is-disabled': this.disabled,
+          ...block.modifier(disabledClass).class(hasDisabled),
         }}
         {...this.inheritedAttributes}
       >
@@ -78,7 +80,6 @@ export class Tag {
             ...elLabel.class(),
             ...elLabel.modifier(sizeClass).class(hasSize),
             ...elLabel.modifier(colorClass).class(hasColor),
-            'is-disabled': this.disabled,
           }}
         >
           <slot />
@@ -88,7 +89,7 @@ export class Tag {
             ...block.element('close').class(),
           }}
           style={{
-            display: this.closable ? 'flex' : 'none',
+            display: this.closable && !this.disabled ? 'flex' : 'none',
           }}
           size={this.size}
           inverted={['blue', 'primary', 'info', 'success', 'warning', 'danger', ''].includes(this.color) && !this.light}

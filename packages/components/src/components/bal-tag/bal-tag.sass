@@ -15,6 +15,16 @@
   font-family: var(--bal-font-family-text)
   font-size: var(--bal-size-small) !important
   white-space: nowrap
+
+  +modifier(is-disabled)
+    cursor: default
+    pointer-events: none
+    user-select: none
+    background-color: var(--bal-color-grey-dark)
+    border-color: var(--bal-color-grey-dark)
+    box-shadow: none
+    color: var(--bal-color-white)
+
   // sizes
   +modifier(is-small)
     height: 1.5rem

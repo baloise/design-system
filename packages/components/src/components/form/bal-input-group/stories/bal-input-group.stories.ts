@@ -44,9 +44,9 @@ export const Basic = args => ({
   </bal-input-group>
 
   <bal-input-group v-bind="args" class="mb-4">
-    <bal-tag closable>Tag</bal-tag>
-    <bal-tag closable>Tag</bal-tag>
-    <bal-tag closable>Tag</bal-tag>
+    <bal-tag closable :disabled="args.disabled">Tag</bal-tag>
+    <bal-tag closable :disabled="args.disabled">Tag</bal-tag>
+    <bal-tag closable :disabled="args.disabled">Tag</bal-tag>
     <bal-input placeholder="Enter text here" v-model="args.value" :disabled="args.disabled" :invalid="args.invalid"></bal-input>
     <bal-icon name="date" :class="args.disabled ? '' : is-clickable"></bal-icon>
   </bal-input-group>
