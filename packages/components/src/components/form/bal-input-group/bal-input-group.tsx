@@ -24,13 +24,17 @@ export class InputGroup implements ComponentInterface {
 
   render() {
     const block = BEM.block('input-group')
+    const dangerClass = 'is-danger'
+    const hasDanger = this.invalid
+    const disabledClass = 'is-disabled'
+    const hasDisabled = this.disabled || this.readonly
 
     return (
       <Host
         class={{
           ...block.class(),
-          'is-danger': this.invalid,
-          'is-disabled': this.disabled || this.readonly,
+          ...block.modifier(dangerClass).class(hasDanger),
+          ...block.modifier(disabledClass).class(hasDisabled),
         }}
       >
         <slot></slot>

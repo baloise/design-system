@@ -52,7 +52,7 @@
     .input
       background: var(--bal-color-grey-1)
 
-  &.is-danger
+  +modifier(is-danger)
     &,
     .input
       border-color: $danger-dark
@@ -69,7 +69,7 @@
   @include inputGroupTheme('warning', var(--bal-color-warning-1), var(--bal-color-warning-dark))
   @include inputGroupTheme('disabled', var(--bal-color-grey-2), var(--bal-color-grey-5))
 
-  &.is-disabled
+  +modifier(is-disabled)
     &,
     .input
       cursor: default
@@ -89,6 +89,6 @@
       .delete
         display: none
 
-  &:not(.is-disabled)
+  &:not(.bal-input-group--is-disabled)
     &:focus-within
       border-color: var(--bal-color-primary)
