@@ -12,6 +12,19 @@
   background-color: var(--bal-color-grey)
   border-radius: var(--bal-radius-rounded)
   white-space: nowrap
+
+  +modifier(is-disabled)
+    cursor: default
+    pointer-events: none
+    user-select: none
+    background-color: var(--bal-color-grey-dark)
+    border-color: var(--bal-color-grey-dark)
+    box-shadow: none
+    color: var(--bal-color-white)
+
+    & > span 
+      color: var(--bal-color-white)
+
   // sizes
   +modifier(is-small)
     height: 1.5rem

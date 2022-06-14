@@ -29,6 +29,11 @@ export class Tag {
   @Prop() closable = false
 
   /**
+   * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+   */
+  @Prop() disabled = false
+
+  /**
    * If `true` a light version of the color is displayed
    */
   @Prop() light = false
@@ -56,13 +61,17 @@ export class Tag {
     const sizeClass = `is-${this.size}`
     const hasColor = this.color !== ''
     const colorClass = `is-${this.color}${this.light ? '-light' : ''}`
+    const disabledClass = 'is-disabled'
+    const hasDisabled = this.disabled
 
     return (
       <Host
+        aria-disabled={this.disabled ? 'true' : null}
         class={{
           ...block.class(),
           ...block.modifier(sizeClass).class(hasSize),
           ...block.modifier(colorClass).class(hasColor),
+          ...block.modifier(disabledClass).class(hasDisabled),
         }}
         {...this.inheritedAttributes}
       >
@@ -80,7 +89,7 @@ export class Tag {
             ...block.element('close').class(),
           }}
           style={{
-            display: this.closable ? 'flex' : 'none',
+            display: this.closable && !this.disabled ? 'flex' : 'none',
           }}
           size={this.size}
           inverted={['blue', 'primary', 'info', 'success', 'warning', 'danger'].includes(this.color) && !this.light}

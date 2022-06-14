@@ -1,4 +1,5 @@
 import { Component, h, ComponentInterface, Host, Element, Prop } from '@stencil/core'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-input-group',
@@ -22,12 +23,18 @@ export class InputGroup implements ComponentInterface {
   @Prop() readonly = false
 
   render() {
+    const block = BEM.block('input-group')
+    const dangerClass = 'is-danger'
+    const hasDanger = this.invalid
+    const disabledClass = 'is-disabled'
+    const hasDisabled = this.disabled || this.readonly
+
     return (
       <Host
         class={{
-          'bal-input-group': true,
-          'is-danger': this.invalid,
-          'is-disabled': this.disabled || this.readonly,
+          ...block.class(),
+          ...block.modifier(dangerClass).class(hasDanger),
+          ...block.modifier(disabledClass).class(hasDisabled),
         }}
       >
         <slot></slot>

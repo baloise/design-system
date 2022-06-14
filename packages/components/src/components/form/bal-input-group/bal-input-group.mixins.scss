@@ -1,5 +1,5 @@
 @mixin inputGroupTheme($name, $light, $dark) {
-  &.is-#{$name} {
+  &.bal-input-group--is-#{$name} {
     &,
     .input {
       border-color: $dark;
