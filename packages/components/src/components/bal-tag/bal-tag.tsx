@@ -83,7 +83,7 @@ export class Tag {
             display: this.closable ? 'flex' : 'none',
           }}
           size={this.size}
-          inverted={['blue', 'primary', 'info', 'success', 'warning', 'danger', ''].includes(this.color) && !this.light}
+          inverted={['blue', 'primary', 'info', 'success', 'warning', 'danger'].includes(this.color) && !this.light}
           onClick={(event: MouseEvent) => this.balCloseClick.emit(event)}
         ></bal-close>
       </Host>

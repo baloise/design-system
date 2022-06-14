@@ -25,3 +25,27 @@
 =desktop
   @media screen and (min-width: $desktop)
     @content
+
+=desktop-only
+  @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px)
+    @content
+
+=until-widescreen
+  @media screen and (max-width: $widescreen - 1px)
+    @content
+
+=widescreen
+  @media screen and (min-width: $widescreen)
+    @content
+
+=widescreen-only
+  @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px)
+    @content
+
+=until-fullhd
+  @media screen and (max-width: $fullhd - 1px)
+    @content
+
+=fullhd
+  @media screen and (min-width: $fullhd)
+    @content
