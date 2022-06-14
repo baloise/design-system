@@ -89,6 +89,8 @@ const tokens = {
   breakpoint: {
     tablet: '769px',
     desktop: '1024px',
+    widescreen: '1440px',
+    fullhd: '1920px',
   },
   radius: {
     none: { value: '0' },
