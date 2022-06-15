@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.13.1](https://github.com/baloise/design-system/compare/v10.13.0...v10.13.1) (2022-06-15)
+
+
+### Features
+
+* **form-gird:** add form grid component ([99de015](https://github.com/baloise/design-system/commit/99de015619b13c3dc4af98a41e6599c8c51708d1))
+* **input-stepper:** add increase and decrease event ([11a186c](https://github.com/baloise/design-system/commit/11a186c56c2b231a6530e58fff99f4ad58d3d578))
+
+
+### Bug Fixes
+
+* **popover:** handlePopoverPrepare uses event now ([aaee8a8](https://github.com/baloise/design-system/commit/aaee8a8a8e59b7d923e560db65275ac462727621))
+* **select:** stop click event bubbeling ([df25293](https://github.com/baloise/design-system/commit/df25293c6cd3cf878bda08b8471c0ae77a3ca86e))
+* **testing:** do not assume that an element exist when it was used ([d1f516c](https://github.com/baloise/design-system/commit/d1f516cc28bd290b29a7eaeca1edfd27cc96cb92))
+* **vue:** add data-testid prop type ([b2c761a](https://github.com/baloise/design-system/commit/b2c761ad0a60ac75c0889c417e1bac32d216eb8d))
+
+## 10.12.0 (2022-05-25)
+
+
+
 ## [10.13.0](https://github.com/baloise/design-system/compare/v10.12.0...v10.13.0) (2022-06-07)
 
 
