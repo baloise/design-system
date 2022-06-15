@@ -9,11 +9,6 @@
     justify-content: flex-start
     flex-wrap: wrap
 
-  +modifier(is-vertical)
-    +element(wrapper)
-      bal-checkbox
-        display: flex
-
   &:not(.bal-checkbox-group--is-vertical) > .bal-checkbox-group__wrapper
     margin-left: -12px
     margin-right: -12px
@@ -21,4 +16,8 @@
     bal-checkbox // change this
       margin-left: 12px
       margin-right: 12px
+
+  &.bal-checkbox-group--is-vertical > .bal-checkbox-group__wrapper // check this
+    bal-checkbox
+      display: flex
   
