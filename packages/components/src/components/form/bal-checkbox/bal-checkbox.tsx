@@ -21,6 +21,7 @@ import {
 } from '../../../helpers/form-input.helpers'
 import { inheritAttributes, isDescendant } from '../../../helpers/helpers'
 import { Props } from '../../../types'
+//import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-checkbox',
@@ -173,6 +174,9 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   }
 
   render() {
+    //const block = BEM.block('checkbox')
+    // const elLabel = block.element('label')
+
     return (
       <Host
         role="checkbox"
@@ -187,6 +191,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           'is-focused': this.hasFocus,
           'bal-checkbox': this.interface === 'checkbox',
           'bal-switch': this.interface === 'switch',
+          //...block.class(),
         }}
         {...this.inheritedAttributes}
       >
