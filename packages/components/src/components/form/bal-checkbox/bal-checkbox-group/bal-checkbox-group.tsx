@@ -192,6 +192,7 @@ export class CheckboxGroup implements ComponentInterface {
         <div
           class={{
             ...elWrapper.class(),
+            ...block.modifier(verticalClass).class(hasVertical),
           }}
         >
           <slot></slot>

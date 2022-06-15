@@ -21,7 +21,7 @@ import {
 } from '../../../helpers/form-input.helpers'
 import { inheritAttributes, isDescendant } from '../../../helpers/helpers'
 import { Props } from '../../../types'
-//import { BEM } from '../../../utils/bem'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-checkbox',
@@ -174,8 +174,11 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   }
 
   render() {
-    //const block = BEM.block('checkbox')
-    // const elLabel = block.element('label')
+    const type = this.interface === 'checkbox' ? 'checkbox' : 'switch'
+    const block = BEM.block(type)
+    const flatClass = 'is-flat'
+    const hasFlat = this.flat
+    const elLabel = block.element('label')
 
     return (
       <Host
@@ -185,18 +188,17 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
         aria-hidden={this.disabled ? 'true' : null}
         aria-focused={this.hasFocus ? 'true' : null}
         class={{
-          'is-flat': this.flat,
-          'is-inverted': this.inverted,
+          ...block.class(),
+          ...block.modifier(flatClass).class(hasFlat),
+          // 'is-inverted': this.inverted, remove it
           'is-disabled': this.disabled || this.readonly,
           'is-focused': this.hasFocus,
-          'bal-checkbox': this.interface === 'checkbox',
-          'bal-switch': this.interface === 'switch',
-          //...block.class(),
         }}
         {...this.inheritedAttributes}
       >
         <input
           class={{
+            // add element
             'is-disabled': this.disabled || this.readonly,
             'is-disabled-hidden': this.hidden,
             'data-test-checkbox-input': true,
@@ -217,6 +219,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
         />
         <label
           class={{
+            ...elLabel.class(),
             'option-label': true,
             'is-disabled': this.disabled || this.readonly,
             'data-test-checkbox-label': true,

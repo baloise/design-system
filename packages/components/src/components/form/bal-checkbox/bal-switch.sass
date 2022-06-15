@@ -1,0 +1,77 @@
++block(switch)
+  +unselectable
+  input[type='checkbox']
+    outline: 0
+    user-select: none
+    display: inline-block
+    position: absolute
+    opacity: 0
+    vertical-align: baseline
+
+  input[type='checkbox'] + label
+    @include font-smoothing()
+    @include margin(0)
+
+    position: relative
+    padding-left: 3rem
+    line-height: 1.5rem
+    contain: layout style
+
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    text-align: left
+
+    min-height: 1.5rem
+    cursor: pointer
+    -webkit-user-select: none
+     -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    color: $blue
+    font-family: var(--bal-family-primary)
+
+  input[type='checkbox'] + label::before
+    border-radius: 1.5rem
+    position: absolute
+    display: block
+    top: 0
+    left: 0
+    width: 2.5rem
+    height: 1.5rem
+    border: 1.6px solid transparent
+    background: var(--bal-color-blue-light)
+    content: ''
+    transition: all 0.25s ease-out
+
+  input[type='checkbox'] + label::after
+    border-radius: 50%
+    display: block
+    position: absolute
+    top: 0.25rem
+    left: 0.25rem
+    width: 1rem
+    height: 1rem
+    transform: translate3d(0, 0, 0)
+    background: var(--bal-color-primary)
+    transition: all 0.25s ease-out
+    content: ''
+
+  input[type='checkbox'] + label:hover::after
+    background: var(--bal-color-light-blue-dark)
+
+  input[type='checkbox']:checked + label::before
+    background: var(--bal-color-success-6)
+
+  input[type='checkbox']:checked + label::after
+    left: 1.25rem
+    background: var(--bal-color-white)
+
+  input[type='checkbox']:checked + label:hover::before
+    background: var(--bal-color-success-5)
+
+  input[type='checkbox'] + label:disabled::before
+    background: var(--bal-color-grey-2)
+
+  input[type='checkbox'] + label:disabled::after
+    background: var(--bal-color-grey-5)
