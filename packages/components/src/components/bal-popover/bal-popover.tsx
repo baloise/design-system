@@ -65,7 +65,8 @@ export class Popover {
   @Event() balPopoverPrepare!: EventEmitter<string>
 
   @Listen('balPopoverPrepare', { target: 'body' })
-  handlePopoverPrepare(popoverId: string) {
+  handlePopoverPrepare(event: CustomEvent<string>) {
+    const popoverId = event.detail
     if (this.popoverId !== popoverId) {
       this.dismiss()
     }

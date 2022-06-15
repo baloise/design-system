@@ -41,7 +41,7 @@
     "@angular/platform-browser": ">=10.2.4",
     "zone.js": ">=0.8.26"
   },
-  "gitHead": "942fb79c8ff2fb991d815f91ffee0bb95ea6756f",
+  "gitHead": "df90f3fa5195dbd86fc976cee801397e0d72a51b",
   "devDependencies": {
     "@angular/common": "^10.2.5",
     "@angular/compiler": "^10.2.5",

@@ -125,6 +125,7 @@ export const wrapCommand = (
   return (selector: string) => {
     return cy
       .wrapComponent(element as any, { log: false })
+      .waitForComponents()
       .find(selector, { log: false })
       .then($el => {
         Cypress.log({
