@@ -1,5 +1,6 @@
 import { Component, h, Host, Element, Prop, EventEmitter, Event, Listen, Method, Watch } from '@stencil/core'
 import isNil from 'lodash.isnil'
+import { Events } from '../../../types'
 import { debounceEvent } from '../../../helpers/helpers'
 
 @Component({
@@ -100,7 +101,7 @@ export class Slider {
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<string | number | null>
+  @Event() balChange!: EventEmitter<Events.BalSliderChangeDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {

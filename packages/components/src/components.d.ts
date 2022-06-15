@@ -10,6 +10,7 @@ import { BannerStatusContext } from "./components/docs/bal-doc-banner-status/bal
 import { Props as Props1 } from ".";
 import { FileUploadRejectedFile } from "./components/form/bal-file-upload/bal-file-upload.type";
 import { OverlayEventDetail } from "./components/notice/bal-modal/bal-modal.type";
+import { Events as Events1 } from "./events";
 import { BalTabOption } from "./components/bal-tabs/bal-tab.type";
 export namespace Components {
     interface BalAccordion {
@@ -740,6 +741,11 @@ export namespace Components {
           * @deprecated The languages in which the links will appear.
          */
         "locale": 'en' | 'de' | 'fr' | 'it' | '';
+    }
+    interface BalFormCol {
+        "size": Props.BalFormColSize;
+    }
+    interface BalFormGrid {
     }
     interface BalHeading {
         /**
@@ -2325,6 +2331,18 @@ declare global {
         prototype: HTMLBalFooterElement;
         new (): HTMLBalFooterElement;
     };
+    interface HTMLBalFormColElement extends Components.BalFormCol, HTMLStencilElement {
+    }
+    var HTMLBalFormColElement: {
+        prototype: HTMLBalFormColElement;
+        new (): HTMLBalFormColElement;
+    };
+    interface HTMLBalFormGridElement extends Components.BalFormGrid, HTMLStencilElement {
+    }
+    var HTMLBalFormGridElement: {
+        prototype: HTMLBalFormGridElement;
+        new (): HTMLBalFormGridElement;
+    };
     interface HTMLBalHeadingElement extends Components.BalHeading, HTMLStencilElement {
     }
     var HTMLBalHeadingElement: {
@@ -2692,6 +2710,8 @@ declare global {
         "bal-field-message": HTMLBalFieldMessageElement;
         "bal-file-upload": HTMLBalFileUploadElement;
         "bal-footer": HTMLBalFooterElement;
+        "bal-form-col": HTMLBalFormColElement;
+        "bal-form-grid": HTMLBalFormGridElement;
         "bal-heading": HTMLBalHeadingElement;
         "bal-hint": HTMLBalHintElement;
         "bal-hint-text": HTMLBalHintTextElement;
@@ -3512,6 +3532,11 @@ declare namespace LocalJSX {
           * @deprecated The languages in which the links will appear.
          */
         "locale"?: 'en' | 'de' | 'fr' | 'it' | '';
+    }
+    interface BalFormCol {
+        "size"?: Props.BalFormColSize;
+    }
+    interface BalFormGrid {
     }
     interface BalHeading {
         /**
@@ -4834,6 +4859,8 @@ declare namespace LocalJSX {
         "bal-field-message": BalFieldMessage;
         "bal-file-upload": BalFileUpload;
         "bal-footer": BalFooter;
+        "bal-form-col": BalFormCol;
+        "bal-form-grid": BalFormGrid;
         "bal-heading": BalHeading;
         "bal-hint": BalHint;
         "bal-hint-text": BalHintText;
@@ -4936,6 +4963,8 @@ declare module "@stencil/core" {
             "bal-field-message": LocalJSX.BalFieldMessage & JSXBase.HTMLAttributes<HTMLBalFieldMessageElement>;
             "bal-file-upload": LocalJSX.BalFileUpload & JSXBase.HTMLAttributes<HTMLBalFileUploadElement>;
             "bal-footer": LocalJSX.BalFooter & JSXBase.HTMLAttributes<HTMLBalFooterElement>;
+            "bal-form-col": LocalJSX.BalFormCol & JSXBase.HTMLAttributes<HTMLBalFormColElement>;
+            "bal-form-grid": LocalJSX.BalFormGrid & JSXBase.HTMLAttributes<HTMLBalFormGridElement>;
             "bal-heading": LocalJSX.BalHeading & JSXBase.HTMLAttributes<HTMLBalHeadingElement>;
             "bal-hint": LocalJSX.BalHint & JSXBase.HTMLAttributes<HTMLBalHintElement>;
             "bal-hint-text": LocalJSX.BalHintText & JSXBase.HTMLAttributes<HTMLBalHintTextElement>;

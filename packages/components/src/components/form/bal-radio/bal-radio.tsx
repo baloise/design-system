@@ -21,7 +21,7 @@ import {
   stopEventBubbling,
 } from '../../../helpers/form-input.helpers'
 import { isDescendant } from '../../../helpers/helpers'
-import { Props } from '../../../types'
+import { Props, Events } from '../../../types'
 
 @Component({
   tag: 'bal-radio',
@@ -104,7 +104,7 @@ export class Radio implements ComponentInterface, FormInput<any> {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<boolean>
+  @Event() balChange!: EventEmitter<Events.BalRadioChangeDetail>
 
   /**
    * Emitted when the input has clicked.

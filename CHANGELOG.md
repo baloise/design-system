@@ -5,13 +5,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### [10.12.3](https://github.com/baloise-incubator/design-system/compare/v10.12.2...v10.12.3) (2022-06-14)
 
+### Bug Fixes
 
-### Features
+- **popover:** handlePopoverPrepare uses event now ([aaee8a8](https://github.com/baloise/design-system/commit/aaee8a8a8e59b7d923e560db65275ac462727621))
+- **select:** stop click event bubbeling ([df25293](https://github.com/baloise/design-system/commit/df25293c6cd3cf878bda08b8471c0ae77a3ca86e))
+- **testing:** do not assume that an element exist when it was used ([d1f516c](https://github.com/baloise/design-system/commit/d1f516cc28bd290b29a7eaeca1edfd27cc96cb92))
 
 * added documentation ([7c9f329](https://github.com/baloise-incubator/design-system/commit/7c9f329a5ed767141f5df6c307f05de41c6cfa0e))
 
+### Features
 
-### Bug Fixes
+- **form-gird:** add form grid component ([99de015](https://github.com/baloise/design-system/commit/99de015619b13c3dc4af98a41e6599c8c51708d1))
+- **input-stepper:** add increase and decrease event ([11a186c](https://github.com/baloise/design-system/commit/11a186c56c2b231a6530e58fff99f4ad58d3d578))
 
 * **button:** add direction prop to change mobile behaviour . Closes [#96](https://github.com/baloise-incubator/design-system/issues/96) ([a852fb1](https://github.com/baloise-incubator/design-system/commit/a852fb10942301e8ae0e1d887a2660871c49c503))
 * **button:** rename type to element-type closes [#75](https://github.com/baloise-incubator/design-system/issues/75) ([a7ebb57](https://github.com/baloise-incubator/design-system/commit/a7ebb57c2910a970319a78ebb97c5972b5232190))
@@ -27,6 +32,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### [10.12.1](https://github.com/baloise-incubator/design-system/compare/v10.12.0...v10.12.1) (2022-06-03)
 
+## [10.12.0](https://github.com/baloise/design-system/compare/v10.11.3...v10.12.0) (2022-05-25)
 
 ### Features
 
@@ -34,6 +40,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * cleanup and comments ([72c6975](https://github.com/baloise-incubator/design-system/commit/72c697502be162b880c35aeb8d99270971c1b6a0))
 * made slider auto resize ([e7ced4e](https://github.com/baloise-incubator/design-system/commit/e7ced4e193b63ca8a5f56f09385dade488179b7b))
 
+- add event types for the main events ([fe13251](https://github.com/baloise/design-system/commit/fe1325158592f310def478a319756edd3740d8ac))
 
 ### Bug Fixes
 
@@ -53,6 +60,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **container:** add new classes for max-width ([71f85de](https://github.com/baloise-incubator/design-system/commit/71f85def8318e683ee88cbecf5cadf89710b1f05))
 * **css:** add sass mixins for space rules ([a160895](https://github.com/baloise-incubator/design-system/commit/a160895f8d019ffe5f149e3b8d101bff4a168b5e))
 
+### [10.11.3](https://github.com/baloise/design-system/compare/v10.11.2...v10.11.3) (2022-05-24)
 
 ### Bug Fixes
 
@@ -91,6 +99,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **navbar:** add first rebranded draft ([c3f447e](https://github.com/baloise-incubator/design-system/commit/c3f447e8e064ddaa90046685e0229309716e6666))
 
+- **bal-input:** contract has now 10 digits and for contacts with 9 digits use offer-number mask ([293837b](https://github.com/baloise/design-system/commit/293837bca2a3a352990d8d86a51dd470d559b707))
+- **testing:** change visit command to visitBalApp ([348bd4f](https://github.com/baloise/design-system/commit/348bd4f1925c9af100e3dc98cc57a3bcbd3e0415))
+
+### [10.11.1](https://github.com/baloise/design-system/compare/v10.11.0...v10.11.1) (2022-05-18)
 
 ### Bug Fixes
 
@@ -115,8 +127,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **container:** add new classes for max-width ([71f85de](https://github.com/baloise-incubator/design-system/commit/71f85def8318e683ee88cbecf5cadf89710b1f05))
 * **css:** add sass mixins for space rules ([a160895](https://github.com/baloise-incubator/design-system/commit/a160895f8d019ffe5f149e3b8d101bff4a168b5e))
 
+### Features
 
-### Bug Fixes
+- **field:** add weight prop ([4649a6c](https://github.com/baloise/design-system/commit/4649a6cca223a5d0b083b5742e6d439a57cf088e))
+- **modal:** add dismissAll function ([b4e935a](https://github.com/baloise/design-system/commit/b4e935aeab9cb283a68c2f32741b5468c5adf8d6))
+- **select:** add remote solution and adds starts with filter ([1db5cd7](https://github.com/baloise/design-system/commit/1db5cd7200072ac9dd3ea9a18cb4176be1d81d9a))
 
 * [#43](https://github.com/baloise-incubator/design-system/issues/43) fix policy format to be the one needed by aperto ([09180de](https://github.com/baloise-incubator/design-system/commit/09180de67fa6e15da466aff5539b395f7b4b4c0a))
 * **bal-field-hint:** fix position of the hint icon ([0d5e0c1](https://github.com/baloise-incubator/design-system/commit/0d5e0c1917700270ccebcf2952ed7858e086dfca))
@@ -1018,6 +1033,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.3.0](https://github.com/baloise-incubator/design-system/compare/v10.0.1...v10.3.0) (2022-02-23)
 
+### [10.10.8](https://github.com/baloise/design-system/compare/v10.10.7...v10.10.8) (2022-04-28)
 
 ### Features
 
@@ -1631,109 +1647,113 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.9.0](https://github.com/baloise/design-system/compare/v10.8.4...v10.9.0) (2022-04-12)
 
+### [10.10.6](https://github.com/baloise/design-system/compare/v10.10.5...v10.10.6) (2022-04-25)
 
 ### Bug Fixes
 
-* initialize for ssr ([b68a1ee](https://github.com/baloise/design-system/commit/b68a1ee694fbd3a5f637be2317900d3b65a4cac9))
-* **slider:** css width calculation and add ticks ([973bb91](https://github.com/baloise/design-system/commit/973bb91d49d65499d107c8e195aa75aee4e78bb7))
+- **slider:** css width calculation and add ticks ([973bb91](https://github.com/baloise/design-system/commit/973bb91d49d65499d107c8e195aa75aee4e78bb7))
 
 ### [10.10.5](https://github.com/baloise/design-system/compare/v10.10.2...v10.10.5) (2022-04-22)
 
-
 ### Bug Fixes
 
-* **datepicker:** adjust nl translations ([95a93d9](https://github.com/baloise/design-system/commit/95a93d9620b7dbc56354631a3d6250fde0065333))
-* **footer:** the footer links will only load for CH regions ([b86cc2f](https://github.com/baloise/design-system/commit/b86cc2f540cac2b717456844288bb6007080ac0d))
-* **footer:** the footer links will only load for CH regions ([cdeca7b](https://github.com/baloise/design-system/commit/cdeca7bf745cf741b8bdd550068c876d563a746e))
+- **datepicker:** adjust nl translations ([95a93d9](https://github.com/baloise/design-system/commit/95a93d9620b7dbc56354631a3d6250fde0065333))
+- **footer:** the footer links will only load for CH regions ([b86cc2f](https://github.com/baloise/design-system/commit/b86cc2f540cac2b717456844288bb6007080ac0d))
+- **footer:** the footer links will only load for CH regions ([cdeca7b](https://github.com/baloise/design-system/commit/cdeca7bf745cf741b8bdd550068c876d563a746e))
 
 ### [10.10.2](https://github.com/baloise/design-system/compare/v10.10.1...v10.10.2) (2022-04-21)
 
-
 ### Bug Fixes
 
-* **footer:** fetch links from all domains ([e2e120e](https://github.com/baloise/design-system/commit/e2e120ed6b0939794af85ee313cbfe1eb9e8c052))
-* **footer:** version of web-app-utils for fetching the baloise data from the correct URLs ([241f37b](https://github.com/baloise/design-system/commit/241f37b919af594210e0bf293086b923481b3057))
-* **integration:** update lock ([12fbb96](https://github.com/baloise/design-system/commit/12fbb964428e51ee0480df7c68589283e03bbfa5))
-* **tag:** add group component to BalTagModule ([db1eb99](https://github.com/baloise/design-system/commit/db1eb99ee06fe560cd9a1a43b86714fa041f1245))
+- **footer:** fetch links from all domains ([e2e120e](https://github.com/baloise/design-system/commit/e2e120ed6b0939794af85ee313cbfe1eb9e8c052))
+- **footer:** version of web-app-utils for fetching the baloise data from the correct URLs ([241f37b](https://github.com/baloise/design-system/commit/241f37b919af594210e0bf293086b923481b3057))
+- **integration:** update lock ([12fbb96](https://github.com/baloise/design-system/commit/12fbb964428e51ee0480df7c68589283e03bbfa5))
+- **tag:** add group component to BalTagModule ([db1eb99](https://github.com/baloise/design-system/commit/db1eb99ee06fe560cd9a1a43b86714fa041f1245))
 
 ### 10.10.1 (2022-04-21)
 
+### [10.10.7](https://github.com/baloise/design-system/compare/v10.10.6...v10.10.7) (2022-04-28)
 
+### Bug Fixes
+
+- initialize for ssr ([b68a1ee](https://github.com/baloise/design-system/commit/b68a1ee694fbd3a5f637be2317900d3b65a4cac9))
+- **slider:** css width calculation and add ticks ([973bb91](https://github.com/baloise/design-system/commit/973bb91d49d65499d107c8e195aa75aee4e78bb7))
+
+### [10.10.5](https://github.com/baloise/design-system/compare/v10.10.2...v10.10.5) (2022-04-22)
+
+### Bug Fixes
+
+- **datepicker:** adjust nl translations ([95a93d9](https://github.com/baloise/design-system/commit/95a93d9620b7dbc56354631a3d6250fde0065333))
+- **footer:** the footer links will only load for CH regions ([b86cc2f](https://github.com/baloise/design-system/commit/b86cc2f540cac2b717456844288bb6007080ac0d))
+- **footer:** the footer links will only load for CH regions ([cdeca7b](https://github.com/baloise/design-system/commit/cdeca7bf745cf741b8bdd550068c876d563a746e))
+
+### [10.10.2](https://github.com/baloise/design-system/compare/v10.10.1...v10.10.2) (2022-04-21)
+
+### Bug Fixes
+
+- **footer:** fetch links from all domains ([e2e120e](https://github.com/baloise/design-system/commit/e2e120ed6b0939794af85ee313cbfe1eb9e8c052))
+- **footer:** version of web-app-utils for fetching the baloise data from the correct URLs ([241f37b](https://github.com/baloise/design-system/commit/241f37b919af594210e0bf293086b923481b3057))
+- **integration:** update lock ([12fbb96](https://github.com/baloise/design-system/commit/12fbb964428e51ee0480df7c68589283e03bbfa5))
+- **tag:** add group component to BalTagModule ([db1eb99](https://github.com/baloise/design-system/commit/db1eb99ee06fe560cd9a1a43b86714fa041f1245))
+
+### 10.10.1 (2022-04-21)
 
 ### [10.10.6](https://github.com/baloise/design-system/compare/v10.10.5...v10.10.6) (2022-04-25)
 
-
 ### Bug Fixes
 
-* **datepicker:** adjust nl translations ([95a93d9](https://github.com/baloise/design-system/commit/95a93d9620b7dbc56354631a3d6250fde0065333))
-* **footer:** the footer links will only load for CH regions ([b86cc2f](https://github.com/baloise/design-system/commit/b86cc2f540cac2b717456844288bb6007080ac0d))
-* **footer:** the footer links will only load for CH regions ([cdeca7b](https://github.com/baloise/design-system/commit/cdeca7bf745cf741b8bdd550068c876d563a746e))
-* **slider:** css width calculation and add ticks ([973bb91](https://github.com/baloise/design-system/commit/973bb91d49d65499d107c8e195aa75aee4e78bb7))
+- **datepicker:** adjust nl translations ([95a93d9](https://github.com/baloise/design-system/commit/95a93d9620b7dbc56354631a3d6250fde0065333))
+- **footer:** the footer links will only load for CH regions ([b86cc2f](https://github.com/baloise/design-system/commit/b86cc2f540cac2b717456844288bb6007080ac0d))
+- **footer:** the footer links will only load for CH regions ([cdeca7b](https://github.com/baloise/design-system/commit/cdeca7bf745cf741b8bdd550068c876d563a746e))
+- **slider:** css width calculation and add ticks ([973bb91](https://github.com/baloise/design-system/commit/973bb91d49d65499d107c8e195aa75aee4e78bb7))
 
 ### [10.10.2](https://github.com/baloise/design-system/compare/v10.10.1...v10.10.2) (2022-04-21)
 
-
 ### Bug Fixes
 
-* **footer:** fetch links from all domains ([e2e120e](https://github.com/baloise/design-system/commit/e2e120ed6b0939794af85ee313cbfe1eb9e8c052))
-* **footer:** version of web-app-utils for fetching the baloise data from the correct URLs ([241f37b](https://github.com/baloise/design-system/commit/241f37b919af594210e0bf293086b923481b3057))
-* **integration:** update lock ([12fbb96](https://github.com/baloise/design-system/commit/12fbb964428e51ee0480df7c68589283e03bbfa5))
-* **tag:** add group component to BalTagModule ([db1eb99](https://github.com/baloise/design-system/commit/db1eb99ee06fe560cd9a1a43b86714fa041f1245))
+- **footer:** fetch links from all domains ([e2e120e](https://github.com/baloise/design-system/commit/e2e120ed6b0939794af85ee313cbfe1eb9e8c052))
+- **footer:** version of web-app-utils for fetching the baloise data from the correct URLs ([241f37b](https://github.com/baloise/design-system/commit/241f37b919af594210e0bf293086b923481b3057))
+- **integration:** update lock ([12fbb96](https://github.com/baloise/design-system/commit/12fbb964428e51ee0480df7c68589283e03bbfa5))
+- **tag:** add group component to BalTagModule ([db1eb99](https://github.com/baloise/design-system/commit/db1eb99ee06fe560cd9a1a43b86714fa041f1245))
 
 ### 10.10.1 (2022-04-21)
-
-
 
 ### [10.10.5](https://github.com/baloise/design-system/compare/v10.10.4...v10.10.5) (2022-04-22)
 
 **Note:** Version bump only for package root
 
-
-
-
-
 ### [10.10.4](https://github.com/baloise/design-system/compare/v10.10.3...v10.10.4) (2022-04-22)
-
 
 ### Bug Fixes
 
-* **footer:** the footer links will only load for CH regions ([b86cc2f](https://github.com/baloise/design-system/commit/b86cc2f540cac2b717456844288bb6007080ac0d))
-* **footer:** the footer links will only load for CH regions ([cdeca7b](https://github.com/baloise/design-system/commit/cdeca7bf745cf741b8bdd550068c876d563a746e))
+- **footer:** the footer links will only load for CH regions ([b86cc2f](https://github.com/baloise/design-system/commit/b86cc2f540cac2b717456844288bb6007080ac0d))
+- **footer:** the footer links will only load for CH regions ([cdeca7b](https://github.com/baloise/design-system/commit/cdeca7bf745cf741b8bdd550068c876d563a746e))
 
 ### [10.10.2](https://github.com/baloise/design-system/compare/v10.10.1...v10.10.2) (2022-04-21)
 
-
 ### Bug Fixes
 
-* **footer:** fetch links from all domains ([e2e120e](https://github.com/baloise/design-system/commit/e2e120ed6b0939794af85ee313cbfe1eb9e8c052))
-* **footer:** version of web-app-utils for fetching the baloise data from the correct URLs ([241f37b](https://github.com/baloise/design-system/commit/241f37b919af594210e0bf293086b923481b3057))
-* **integration:** update lock ([12fbb96](https://github.com/baloise/design-system/commit/12fbb964428e51ee0480df7c68589283e03bbfa5))
+- **footer:** fetch links from all domains ([e2e120e](https://github.com/baloise/design-system/commit/e2e120ed6b0939794af85ee313cbfe1eb9e8c052))
+- **footer:** version of web-app-utils for fetching the baloise data from the correct URLs ([241f37b](https://github.com/baloise/design-system/commit/241f37b919af594210e0bf293086b923481b3057))
+- **integration:** update lock ([12fbb96](https://github.com/baloise/design-system/commit/12fbb964428e51ee0480df7c68589283e03bbfa5))
 
 ### 10.10.1 (2022-04-21)
-
-
 
 ### [10.10.3](https://github.com/baloise/design-system/compare/v10.10.2...v10.10.3) (2022-04-22)
 
-
 ### Bug Fixes
 
-* **footer:** fetch links from all domains ([e2e120e](https://github.com/baloise/design-system/commit/e2e120ed6b0939794af85ee313cbfe1eb9e8c052))
-* **footer:** version of web-app-utils for fetching the baloise data from the correct URLs ([241f37b](https://github.com/baloise/design-system/commit/241f37b919af594210e0bf293086b923481b3057))
-* **integration:** update lock ([12fbb96](https://github.com/baloise/design-system/commit/12fbb964428e51ee0480df7c68589283e03bbfa5))
+- **footer:** fetch links from all domains ([e2e120e](https://github.com/baloise/design-system/commit/e2e120ed6b0939794af85ee313cbfe1eb9e8c052))
+- **footer:** version of web-app-utils for fetching the baloise data from the correct URLs ([241f37b](https://github.com/baloise/design-system/commit/241f37b919af594210e0bf293086b923481b3057))
+- **integration:** update lock ([12fbb96](https://github.com/baloise/design-system/commit/12fbb964428e51ee0480df7c68589283e03bbfa5))
 
 ### 10.10.1 (2022-04-21)
 
-
-
 ### [10.10.2](https://github.com/baloise/design-system/compare/v10.10.1...v10.10.2) (2022-04-21)
-
 
 ### Bug Fixes
 
-* **tag:** add group component to BalTagModule ([db1eb99](https://github.com/baloise/design-system/commit/db1eb99ee06fe560cd9a1a43b86714fa041f1245))
-
-
+- **tag:** add group component to BalTagModule ([db1eb99](https://github.com/baloise/design-system/commit/db1eb99ee06fe560cd9a1a43b86714fa041f1245))
 
 ### [10.10.1](https://github.com/baloise/design-system/compare/v10.10.0...v10.10.1) (2022-04-21)
 

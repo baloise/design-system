@@ -2,6 +2,7 @@ import { Component, h, Host, Listen, Method, Prop, Watch, Element, Event, EventE
 import { createPopper, Instance } from '@popperjs/core'
 import { debounceEvent } from '../../helpers/helpers'
 import { Props } from '../../types'
+import { Events } from '../../events'
 
 @Component({
   tag: 'bal-popover',
@@ -56,16 +57,16 @@ export class Popover {
   /**
    * Listen when the popover opens or closes. Returns the current value.
    */
-  @Event({ eventName: 'balChange' }) balChange!: EventEmitter<boolean>
+  @Event() balChange!: EventEmitter<Events.BalPopoverChangeDetail>
 
   /**
    * @internal - Use this to close unused popovers.
    */
-  @Event({ eventName: 'balPopoverPrepare' })
-  balPopoverPrepare!: EventEmitter<string>
+  @Event() balPopoverPrepare!: EventEmitter<string>
 
   @Listen('balPopoverPrepare', { target: 'body' })
-  handlePopoverPrepare(popoverId: string) {
+  handlePopoverPrepare(event: CustomEvent<string>) {
+    const popoverId = event.detail
     if (this.popoverId !== popoverId) {
       this.dismiss()
     }
