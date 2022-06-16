@@ -48,7 +48,7 @@ export const ContactFormTemplate = `
         <bal-field class="column is-half py-0">
           <bal-field-label>Canton</bal-field-label>
           <bal-field-control>
-            <bal-select placeholder="select your canton" name="canton">
+            <bal-select placeholder="select your canton" name="canton" multiple>
               <bal-select-option value="AG" label="AG">AG</bal-select-option>
               <bal-select-option value="BS" label="BS">BS</bal-select-option>
               <bal-select-option value="BL" label="BL">BL</bal-select-option>
@@ -76,7 +76,7 @@ export const ContactFormTemplate = `
       </section>
     </bal-card-content>
     <bal-card-actions position="right">
-      <bal-button type="submit" color="primary">Submit</bal-button>
+      <bal-button element-type="submit" color="primary">Submit</bal-button>
       <bal-button color="link">Cancel</bal-button>
     </bal-card-actions>
   </bal-card>

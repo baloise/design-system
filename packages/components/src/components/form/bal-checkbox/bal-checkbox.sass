@@ -1,14 +1,17 @@
 @import './bal-checkbox-group/bal-checkbox-group'
 
-+blocks(checkbox, switch)
++block(switch)
   +unselectable
   position: relative
   display: inline-flex
   justify-content: flex-start
   align-items: center
   outline: none
-  min-width: 1.5rem
-  min-height: 1.5rem
+  min-width: 24px
+  min-height: 48px
+
+  +modifier(is-flat)
+    min-height: 1.5rem
 
 +block(checkbox)
   +unselectable
@@ -100,16 +103,13 @@
     -o-transform: rotate(45deg)
     -webkit-transform: rotate(45deg)
     transform: rotate(45deg)
-    
-  // +element(input)
-  //   &:not(:disabled) + label:hover
 
-  input[type='checkbox']:not(:disabled) + label:hover
+  input[type='checkbox']:not(.bal-checkbox__input--is-disabled) + label:hover
     &::before
       background: var(--bal-color-grey-1)
       border-color: var(--bal-color-light-blue-dark)
 
-  input[type='checkbox']:checked:not(:disabled) + label:hover
+  input[type='checkbox']:checked:not(.bal-checkbox__input--is-disabled) + label:hover
     &::before
       border-color: var(--bal-color-light-blue-dark)
       background: var(--bal-color-light-blue-dark)
@@ -120,17 +120,17 @@
   input[type='checkbox']:checked + label::after
     content: ''
 
-  input[type='checkbox']:disabled + label
+  input[type='checkbox'].bal-checkbox__input--is-disabled + label
     cursor: default
 
-  input[type='checkbox']:disabled + label:before
+  input[type='checkbox'].bal-checkbox__input--is-disabled + label:before
     background: var(--bal-color-grey-2)
     border-color: var(--bal-color-grey-2)
 
-  input[type='checkbox']:checked:disabled + label:before
+  input[type='checkbox']:checked.bal-checkbox__input--is-disabled + label:before
     background: var(--bal-color-grey-2)
 
-  input[type='checkbox']:checked:disabled + label:after
+  input[type='checkbox']:checked.bal-checkbox__input--is-disabled + label:after
     border-color: var(--bal-color-grey-5)
 
   input[type='checkbox']:focus-visible + label::before

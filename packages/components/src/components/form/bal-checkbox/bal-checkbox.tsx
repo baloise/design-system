@@ -179,6 +179,9 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
     const flatClass = 'is-flat'
     const hasFlat = this.flat
     const elLabel = block.element('label')
+    const elInput = block.element('input')
+    const disabledClass = 'is-disabled'
+    const hasDisabled = this.disabled || this.readonly
 
     return (
       <Host
@@ -190,17 +193,16 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
         class={{
           ...block.class(),
           ...block.modifier(flatClass).class(hasFlat),
-          // 'is-inverted': this.inverted, remove it
-          'is-disabled': this.disabled || this.readonly,
-          'is-focused': this.hasFocus,
+          ...block.modifier(disabledClass).class(hasDisabled),
+          'is-focused': this.hasFocus, // remove it
         }}
         {...this.inheritedAttributes}
       >
         <input
           class={{
-            // add element
-            'is-disabled': this.disabled || this.readonly,
-            'is-disabled-hidden': this.hidden,
+            ...elInput.class(),
+            ...elInput.modifier(disabledClass).class(hasDisabled),
+            'is-disabled-hidden': this.hidden, // remove class -- select needs to work when hidden prop is on
             'data-test-checkbox-input': true,
           }}
           type="checkbox"
@@ -220,8 +222,8 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
         <label
           class={{
             ...elLabel.class(),
-            'option-label': true,
-            'is-disabled': this.disabled || this.readonly,
+            ...elLabel.modifier(disabledClass).class(hasDisabled),
+            'option-label': true, // ??
             'data-test-checkbox-label': true,
           }}
           htmlFor={this.inputId}
@@ -230,7 +232,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
             inline
             color={this.disabled || this.readonly ? 'grey' : this.invalid ? 'danger' : 'primary'}
             class={{
-              'has-padding-left': !this.labelHidden,
+              'has-padding-left': !this.labelHidden, // ??
             }}
           >
             <slot></slot>

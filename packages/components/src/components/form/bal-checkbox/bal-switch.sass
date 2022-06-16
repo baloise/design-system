@@ -13,8 +13,8 @@
     @include margin(0)
 
     position: relative
-    padding-left: 3rem
-    line-height: 1.5rem
+    padding-left: 48px
+    line-height: 24px
     contain: layout style
 
     display: flex
@@ -22,7 +22,7 @@
     justify-content: flex-start
     text-align: left
 
-    min-height: 1.5rem
+    min-height: 24px
     cursor: pointer
     -webkit-user-select: none
      -moz-user-select: none
@@ -32,13 +32,13 @@
     font-family: var(--bal-family-primary)
 
   input[type='checkbox'] + label::before
-    border-radius: 1.5rem
+    border-radius: 24px
     position: absolute
     display: block
     top: 0
     left: 0
-    width: 2.5rem
-    height: 1.5rem
+    width: 40px
+    height: 24px
     border: 1.6px solid transparent
     background: var(--bal-color-blue-light)
     content: ''
@@ -48,10 +48,10 @@
     border-radius: 50%
     display: block
     position: absolute
-    top: 0.25rem
-    left: 0.25rem
-    width: 1rem
-    height: 1rem
+    top: 4px
+    left: 4px
+    width: 16px
+    height: 16px
     transform: translate3d(0, 0, 0)
     background: var(--bal-color-primary)
     transition: all 0.25s ease-out
@@ -64,14 +64,14 @@
     background: var(--bal-color-success-6)
 
   input[type='checkbox']:checked + label::after
-    left: 1.25rem
+    left: 20px
     background: var(--bal-color-white)
 
   input[type='checkbox']:checked + label:hover::before
     background: var(--bal-color-success-5)
 
-  input[type='checkbox'] + label:disabled::before
+  input[type='checkbox'] + label.bal-switch__label--is-disabled::before
     background: var(--bal-color-grey-2)
 
-  input[type='checkbox'] + label.is-disabled::after
+  input[type='checkbox'] + label.bal-switch__label--is-disabled::after
     background: var(--bal-color-grey-5)
