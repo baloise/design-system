@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.13.2](https://github.com/baloise/design-system/compare/v10.13.1...v10.13.2) (2022-06-16)
+
+
+### Bug Fixes
+
+* **modal:** remove promise rejection when no overlay exists bc promise should only be rejected when an error appears during dismiss of an existing overlay ([15671a3](https://github.com/baloise/design-system/commit/15671a37ab9f99635cf4eedddfac617df78a0d8e))
+
+
+
 ### [10.13.1](https://github.com/baloise/design-system/compare/v10.13.0...v10.13.1) (2022-06-15)
 
 ### Bug Fixes
