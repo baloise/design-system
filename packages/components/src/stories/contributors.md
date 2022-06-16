@@ -95,6 +95,12 @@
     </h2>
     <h4>Flapmax</h4>
   </a>
+  <a href="https://github.com/m4rc0z" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/20516386?v=4" alt="m4rc0z" style="width: 64px;">
+    </h2>
+    <h4>m4rc0z</h4>
+  </a>
   <a href="https://github.com/aymenfurter" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/20464460?v=4" alt="aymenfurter" style="width: 64px;">
@@ -106,6 +112,12 @@
       <img src="https://avatars.githubusercontent.com/u/12724432?v=4" alt="khanhnp" style="width: 64px;">
     </h2>
     <h4>khanhnp</h4>
+  </a>
+  <a href="https://github.com/baldummy" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/66624124?v=4" alt="baldummy" style="width: 64px;">
+    </h2>
+    <h4>baldummy</h4>
   </a>
   <a href="https://github.com/mk-it-easy" class="feature">
     <h2>
@@ -130,12 +142,6 @@
       <img src="https://avatars.githubusercontent.com/u/39954544?v=4" alt="jochenpilger" style="width: 64px;">
     </h2>
     <h4>jochenpilger</h4>
-  </a>
-  <a href="https://github.com/m4rc0z" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/20516386?v=4" alt="m4rc0z" style="width: 64px;">
-    </h2>
-    <h4>m4rc0z</h4>
   </a>
   <a href="https://github.com/whvneo" class="feature">
     <h2>
