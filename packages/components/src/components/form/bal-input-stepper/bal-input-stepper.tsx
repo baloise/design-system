@@ -26,6 +26,7 @@ import {
   detachComponentToConfig,
 } from '../../../config'
 import { BEM } from '../../../utils/bem'
+import { Events } from '../../../types'
 
 @Component({
   tag: 'bal-input-stepper',
@@ -95,12 +96,22 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balChange!: EventEmitter<number | undefined>
+  @Event() balChange!: EventEmitter<Events.BalInputStepperChangeDetail>
 
   /**
    * Emitted when the input value has changed.
    */
-  @Event() balInput!: EventEmitter<number | undefined>
+  @Event() balInput!: EventEmitter<Events.BalInputStepperInputDetail>
+
+  /**
+   * Emitted when the input value has increased.
+   */
+  @Event() balIncrease!: EventEmitter<Events.BalInputStepperChangeDetail>
+
+  /**
+   * Emitted when the input value has decreased.
+   */
+  @Event() balDecrease!: EventEmitter<Events.BalInputStepperChangeDetail>
 
   @Listen('click', { capture: true, target: 'document' })
   listenOnClick(event: UIEvent) {
@@ -139,6 +150,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
       this.value = newValue
       this.balInput.emit(newValue)
       this.balChange.emit(newValue)
+      this.balIncrease.emit(newValue)
     }
   }
 
@@ -148,6 +160,7 @@ export class InputStepper implements ComponentInterface, BalConfigObserver, Form
       this.value = newValue
       this.balInput.emit(newValue)
       this.balChange.emit(newValue)
+      this.balDecrease.emit(newValue)
     }
   }
 

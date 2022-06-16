@@ -101,7 +101,7 @@
     "@babel/core": "^7.17.8",
     "@baloise/angular-output-target": "^1.2.8",
     "@baloise/react-output-target": "^0.4.8",
-    "@baloise/stencil-vite-fix": "10.11.0",
+    "@baloise/stencil-vite-fix-next": "^10.12.3",
     "@baloise/vue-output-target": "^0.9.6",
     "@etchteam/storybook-addon-status": "^4.2.0",
     "@stencil/postcss": "^2.1.0",
@@ -160,5 +160,5 @@
     "vue-loader": "^16.8.3",
     "workbox-build": "^4.3.1"
   },
-  "gitHead": "942fb79c8ff2fb991d815f91ffee0bb95ea6756f"
+  "gitHead": "df90f3fa5195dbd86fc976cee801397e0d72a51b"
 }

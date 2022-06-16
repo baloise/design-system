@@ -13,7 +13,7 @@ import {
 } from '@stencil/core'
 import { stopEventBubbling } from '../../../../helpers/form-input.helpers'
 import { findItemLabel, inheritAttributes, isDescendant } from '../../../../helpers/helpers'
-import { Props } from '../../../../types'
+import { Props, Events } from '../../../../types'
 
 @Component({
   tag: 'bal-radio-group',
@@ -90,7 +90,7 @@ export class RadioGroup implements ComponentInterface {
   /**
    * Emitted when the checked property has changed.
    */
-  @Event() balChange!: EventEmitter<number | string | boolean>
+  @Event() balChange!: EventEmitter<Events.BalRadioGroupChangeDetail>
 
   @Listen('balChange', { capture: true, target: 'document' })
   listenOnClick(ev: UIEvent) {

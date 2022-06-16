@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core'
 import { debounceEvent } from '../../helpers/helpers'
+import { Events } from '../../types'
 
 @Component({
   tag: 'bal-accordion',
@@ -55,7 +56,7 @@ export class Accordion {
   /**
    * Emitted when the accordion has opened or closed
    */
-  @Event() balChange!: EventEmitter<boolean>
+  @Event() balChange!: EventEmitter<Events.BalAccordionChangeDetail>
 
   connectedCallback() {
     this.debounceChanged()
