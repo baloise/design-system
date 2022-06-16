@@ -1,3 +1,5 @@
+@import '../../styles/global.scss';
+
 bal-product-slider {
   position: static;
   display: block;
@@ -6,7 +8,6 @@ bal-product-slider {
 .bal-product-slider__container {
   position: relative;
   width: 100%;
-  max-width: 1400px;
   height: 140px;
   margin-top: 20px;
 }
@@ -14,7 +15,6 @@ bal-product-slider {
 .bal-product-slider_viewport-container {
   position: absolute;
   overflow: hidden;
-  max-width: 1400px;
   top: 0;
   left: 0;
   bottom: 0;
@@ -35,6 +35,8 @@ bal-product-slider {
   height: 140px;
   margin-left: 20px;
   text-align: center;
+  background-color: #e9fbf7;
+  border-radius: 12px;
 }
 
 .bal-product-slider__product-image {
@@ -42,45 +44,23 @@ bal-product-slider {
   height: 70px;
 }
 
-.bal-product-slider__control-left {
-  position: absolute;
-  top: 50px;
-
-  z-index: 1000;
-  height: 48px;
+.bal-product-slider__control-container {
+  position: relative;
   width: 48px;
-  border-radius: 50%;
-  display: inline-block;
-  cursor: pointer;
-  background-color: #000d6e;
-
-  &.inactive {
-    opacity: 40%;
-  }
+  height: 48px;
+  align-items: center;
 }
 
-.bal-product-slider__control-container {
-  position: absolute;
-  top: 57px;
-  width: 48px;
-  height: 140px;
-
-  &.left {
-    left: 0;
-    margin-left: -1px;
-    background: linear-gradient(90deg, #fff 16%, rgba(255, 255, 255, 0) 100%);
-  }
-
-  &.right {
-    right: 0;
-    margin-right: -1px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fff 84%);
-  }
+.bal-product-slider__control-container-box {
+  display: flex;
+  justify-content: space-between;
+  width: 128px;
+  margin: auto;
 }
 
 .bal-product-slider__control {
   position: absolute;
-  top: 50px;
+  top: 42px;
   z-index: 1000;
   height: 48px;
   width: 48px;
@@ -100,4 +80,51 @@ bal-product-slider {
 .custom-color svg path,
 .custom-color svg circle {
   fill: white !important;
+}
+
+@include tablet() {
+  .bal-product-slider__product-item {
+    background-color: inherit;
+  }
+
+  .bal-product-slider__control-container {
+    position: absolute;
+    height: 140px;
+    top: 72px;
+
+    &.left {
+      left: 0;
+      margin-left: -1px;
+      background: linear-gradient(90deg, #fff 16%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    &.right {
+      right: 0;
+      margin-right: -1px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fff 84%);
+    }
+  }
+}
+
+@include desktop() {
+  .bal-product-slider__product-item {
+    background-color: inherit;
+  }
+
+  .bal-product-slider__control-container {
+    position: absolute;
+    top: 72px;
+
+    &.left {
+      left: 0;
+      margin-left: -1px;
+      background: linear-gradient(90deg, #fff 16%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    &.right {
+      right: 0;
+      margin-right: -1px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fff 84%);
+    }
+  }
 }

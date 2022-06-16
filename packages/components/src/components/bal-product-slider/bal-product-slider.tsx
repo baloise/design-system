@@ -22,9 +22,6 @@ export class ProductSlider implements ComponentInterface {
    * @param {number} slide :Set to switch to.
    */
   private setSlide = (slide: number) => {
-    console.log('slide :>> ', slide)
-    console.log('this.slideIndex :>> ', this.slideIndex)
-    console.log('this.lastSlide :>> ', this.lastSlide)
     if (slide >= 0 && slide <= this.lastSlide + 1) {
       this.slideIndex = slide > this.lastSlide ? this.lastSlide : slide
       this.productContainer.style.transitionDuration = '1.2s'
@@ -62,27 +59,29 @@ export class ProductSlider implements ComponentInterface {
             <slot name="images"></slot>
           </div>
         </div>
-        <div class="bal-product-slider__control-container left">
-          <bal-button
-            class={`bal-product-slider__control left custom-color ${this.slideIndex > 0 ? '' : 'inactive'}`}
-            onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - 2 : 0)}
-            color="link"
-            size="small"
-            icon="caret-left"
-            flat={true}
-          />
-        </div>
-        <div class="bal-product-slider__control-container right">
-          <bal-button
-            class={`bal-product-slider__control right custom-color ${
-              this.slideIndex < this.lastSlide ? '' : 'inactive'
-            }`}
-            onClick={() => this.setSlide(this.slideIndex + 2)}
-            color="link"
-            size="small"
-            icon="caret-right"
-            flat={true}
-          />
+        <div class="bal-product-slider__control-container-box">
+          <div class="bal-product-slider__control-container left">
+            <bal-button
+              class={`bal-product-slider__control left custom-color ${this.slideIndex > 0 ? '' : 'inactive'}`}
+              onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - 2 : 0)}
+              color="link"
+              size="small"
+              icon="caret-left"
+              flat={true}
+            />
+          </div>
+          <div class="bal-product-slider__control-container right">
+            <bal-button
+              class={`bal-product-slider__control right custom-color ${
+                this.slideIndex < this.lastSlide ? '' : 'inactive'
+              }`}
+              onClick={() => this.setSlide(this.slideIndex + 2)}
+              color="link"
+              size="small"
+              icon="caret-right"
+              flat={true}
+            />
+          </div>
         </div>
       </Host>
     )

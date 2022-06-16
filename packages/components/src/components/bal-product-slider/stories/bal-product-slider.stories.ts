@@ -15,46 +15,6 @@ export const Basic = args => ({
   setup: () => ({ args }),
   template: `
   <bal-product-slider>
-    <div slot="tabs">
-    <bal-tabs border fullwidth interface="tabs" select-on-mobile value="tab-b">
-        <bal-tab-item value="tab-a" label="Tab A"/>
-        <bal-tab-item value="tab-b" label="Tab B"/>
-        <bal-tab-item value="tab-c" label="Tab C"/>
-        <bal-tab-item value="tab-d" label="Tab D"/>
-    </bal-tabs>
-    </div>
-    <div slot="images">
-        <img src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI" />
-        <img src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I" />
-        <img src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw" />
-    </div>
-  </bal-product-slider>`,
-})
-Basic.args = {}
-Basic.parameters = { ...component.sourceCode(Basic) }
-
-export const Dots = args => ({
-  components: { ...component.components },
-  setup: () => ({ args }),
-  template: `
-  <bal-product-slider>
-    <div slot="images">
-      <img src="https://i.picsum.photos/id/703/1280/720.jpg?hmac=sICuW9WVQ1Ul6j4mTHDPbj43bHqe062gU35Blq2V-MI" />
-      <img src="https://i.picsum.photos/id/295/1280/720.jpg?hmac=qld217fiBmNfVt-eV0ffFBz9FRbZlVicvA7wqjNwx2I" />
-      <img src="https://i.picsum.photos/id/480/1280/720.jpg?hmac=AaBd7JFxQz7hmKf-OpMx8cC1NiqPC-ZbA6Wk4GGQLzw" />
-      <img src="https://i.picsum.photos/id/655/1280/720.jpg?hmac=hXgGrMmXgMWk4vzfN_ytAgDqAvgZ6kMi-izJ785jRNM" />
-      <img src="https://i.picsum.photos/id/1066/1280/720.jpg?hmac=ccSBWaWM3h_3guS9T5hxEUd8Ni9rIcY9EUZ6FqOfO94" />
-    </div>
-  </bal-product-slider>`,
-})
-Dots.args = {}
-Dots.parameters = { ...component.sourceCode(Basic) }
-
-export const Numbers = args => ({
-  components: { ...component.components },
-  setup: () => ({ args }),
-  template: `
-  <bal-product-slider>
   <div slot="tabs">
     <bal-tabs border fullwidth interface="tabs" select-on-mobile value="tab-a">
         <bal-tab-item value="tab-a" label="Tab A"/>
@@ -131,5 +91,5 @@ export const Numbers = args => ({
   </div>
   </bal-product-slider>`,
 })
-Numbers.args = {}
-Numbers.parameters = { ...component.sourceCode(Basic) }
+Basic.args = {}
+Basic.parameters = { ...component.sourceCode(Basic) }
