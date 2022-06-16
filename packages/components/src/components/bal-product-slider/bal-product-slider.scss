@@ -59,9 +59,28 @@ bal-product-slider {
   }
 }
 
+.bal-product-slider__control-container {
+  position: absolute;
+  top: 57px;
+  width: 48px;
+  height: 140px;
+
+  &.left {
+    left: 0;
+    margin-left: -1px;
+    background: linear-gradient(90deg, #fff 16%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  &.right {
+    right: 0;
+    margin-right: -1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fff 84%);
+  }
+}
+
 .bal-product-slider__control {
   position: absolute;
-  top: 110px;
+  top: 50px;
   z-index: 1000;
   height: 48px;
   width: 48px;
@@ -70,14 +89,6 @@ bal-product-slider {
   cursor: pointer;
   background-color: #000d6e;
   padding-top: 8px;
-
-  &.left {
-    left: 0;
-  }
-
-  &.right {
-    right: 0;
-  }
 
   &.inactive {
     opacity: 40%;

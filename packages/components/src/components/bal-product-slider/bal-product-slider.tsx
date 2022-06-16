@@ -7,13 +7,14 @@ import { Component, h, ComponentInterface, Host, Element, State, Listen } from '
 export class ProductSlider implements ComponentInterface {
   @Element() host!: HTMLBalProductSliderElement
   @State() slideIndex = 0
+  @State() lastSlide = 0
   private images!: NodeListOf<HTMLImageElement>
   private productContainer!: HTMLDivElement
 
   connectedCallback() {
     this.productContainer = this.host.querySelector('[slot="images"]') as HTMLDivElement
     this.productContainer.classList.add('bal-product-slider__product-container')
-    this.images = this.productContainer?.querySelectorAll(':scope > img') as NodeListOf<HTMLImageElement>
+    this.images = this.productContainer?.querySelectorAll(':scope > div') as NodeListOf<HTMLImageElement>
   }
 
   /**
@@ -21,11 +22,11 @@ export class ProductSlider implements ComponentInterface {
    * @param {number} slide :Set to switch to.
    */
   private setSlide = (slide: number) => {
-    // const slideWidth = 190
-    console.log('this.slideIndex :>> ', this.slideIndex)
     console.log('slide :>> ', slide)
-    if (slide >= 0 && slide !== this.images.length) {
-      this.slideIndex = slide
+    console.log('this.slideIndex :>> ', this.slideIndex)
+    console.log('this.lastSlide :>> ', this.lastSlide)
+    if (slide >= 0 && slide <= this.lastSlide + 1) {
+      this.slideIndex = slide > this.lastSlide ? this.lastSlide : slide
       this.productContainer.style.transitionDuration = '1.2s'
       this.productContainer.style.transitionTimingFunction = 'cubic-bezier(0.23, 0.93, 0.13, 1)'
       this.productContainer.style.transform = `translate(-${this.slideIndex * 180}px)`
@@ -34,12 +35,23 @@ export class ProductSlider implements ComponentInterface {
     }
   }
 
+  /**
+   * Change tab event
+   * @param {CustomEvent} event :onBalChange event fired
+   */
   @Listen('balChange')
   onBalChange(event: CustomEvent<string>) {
-    console.log('event :>> ', event)
+    for (let i = 0; i <= this.images.length; i++) {
+      if (this.images[i].dataset.category === event.detail) {
+        this.setSlide(i <= this.lastSlide ? i : this.lastSlide)
+        break
+      }
+    }
   }
 
   render() {
+    this.lastSlide = Math.ceil(this.images.length - this.host.offsetWidth / 180)
+
     return (
       <Host>
         <div>
@@ -50,24 +62,28 @@ export class ProductSlider implements ComponentInterface {
             <slot name="images"></slot>
           </div>
         </div>
-        <bal-button
-          class={`bal-product-slider__control left custom-color ${this.slideIndex > 0 ? '' : 'inactive'}`}
-          onClick={() => this.setSlide(this.slideIndex - 2)}
-          color="link"
-          size="small"
-          icon="caret-left"
-          flat={true}
-        />
-        <bal-button
-          class={`bal-product-slider__control right custom-color ${
-            this.slideIndex < this.images.length ? '' : 'inactive'
-          }`}
-          onClick={() => this.setSlide(this.slideIndex + 2)}
-          color="link"
-          size="small"
-          icon="caret-right"
-          flat={true}
-        />
+        <div class="bal-product-slider__control-container left">
+          <bal-button
+            class={`bal-product-slider__control left custom-color ${this.slideIndex > 0 ? '' : 'inactive'}`}
+            onClick={() => this.setSlide(this.slideIndex > 1 ? this.slideIndex - 2 : 0)}
+            color="link"
+            size="small"
+            icon="caret-left"
+            flat={true}
+          />
+        </div>
+        <div class="bal-product-slider__control-container right">
+          <bal-button
+            class={`bal-product-slider__control right custom-color ${
+              this.slideIndex < this.lastSlide ? '' : 'inactive'
+            }`}
+            onClick={() => this.setSlide(this.slideIndex + 2)}
+            color="link"
+            size="small"
+            icon="caret-right"
+            flat={true}
+          />
+        </div>
       </Host>
     )
   }
