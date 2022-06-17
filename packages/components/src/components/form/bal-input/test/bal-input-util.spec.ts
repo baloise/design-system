@@ -28,7 +28,7 @@ describe('bal-input-util testing:', () => {
     })
     test('claim number with a sign postfix correctly X', () => {
       const result = formatClaim('7300772816X')
-      expect(result).toStrictEqual('73/001217/16.X')
+      expect(result).toStrictEqual('73/007728/16.X')
     })
   })
   describe('formatOffer', () => {
