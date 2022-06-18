@@ -1,3 +1,4 @@
+// Do not use px just REM !!! except for borders
 .bal-data {
   position: relative;
   display: flex;
@@ -9,6 +10,7 @@
   overflow-wrap: break-word;
   white-space: normal;
 
+  // angular fix - we need it !
   & > * {
     display: flex;
     flex: 1 1;
@@ -47,8 +49,8 @@
       display: block;
       flex: 1 1;
       flex-basis: 100%;
-      margin-top: 4px;
-      min-height: 24px;
+      margin-top: 4px; // -> convert to REM 0.25
+      min-height: 24px; // 1.5
 
       font-family: $family-primary;
       font-weight: $weight-normal;
@@ -108,6 +110,9 @@
     & > div > bal-input input.input {
       flex: 1;
     }
+    //     & > div > bal-input {
+    //      flex: 1;
+    //    }
 
     &.is-editable {
       .bal-data-value-btn {
@@ -123,6 +128,7 @@
 
 @include tablet() {
   .bal-data {
+    // ?? angular creates new comoponent which we need modify, can not change it :(
     & > * {
       flex-wrap: no-wrap;
     }

@@ -8,13 +8,26 @@
   text-decoration: none
   overflow-wrap: break-word
   white-space: normal
-  // Do we really want to do this?
-  +modifier(has-border)
-    +block(data)
-      +element(data-item)
-        border-bottom: 23px solid var(--bal-color-grey-2)
-    //.bal-data__data-item
 
+  // angular fix - we need it !
+  & > *
+    display: flex
+    flex: 1 1
+    flex-wrap: wrap
+
+  +element(data-item)
+    +modifier(has-border)
+        border-bottom: 2px solid var(--bal-color-grey-2)
+
+  // Do we really want to do this?
+  //+modifier(has-border)
+  //  +block(data)
+  //    +element(data-item)
+  //      border-bottom: 23px solid var(--bal-color-grey-2)
+    //.bal-data__data-item
+    +element(data-item)
+      +modifier(has-border)
+        border-bottom: 23px solid var(--bal-color-grey-2)
   +element(data-item)
     display: flex
     flex: 1 1
@@ -42,6 +55,7 @@
         top: -3px
 
 
+
   +element(data-value)
     display: block
     flex: 1 1
@@ -53,5 +67,4 @@
     font-weight: $weight-bold
     font-size: var(--bal-size-small)
     line-height: var(--bal-size-normal)
-+tablet
-  +block(data)
+

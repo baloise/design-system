@@ -10,6 +10,11 @@ export class DataItem {
    */
   @Prop() disabled = false
 
+  /**
+   * If `true` a bottom border is added to the data-item.
+   */
+  @Prop() border = false
+
   render() {
     const element = BEM.block('data').element('data-item')
 
@@ -18,6 +23,7 @@ export class DataItem {
         class={{
           ...element.class(),
           ...element.modifier('is-disabled').class(this.disabled),
+          ...element.modifier('has-border').class(this.border),
         }}
       >
         <slot></slot>
