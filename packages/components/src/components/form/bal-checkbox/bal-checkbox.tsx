@@ -78,6 +78,11 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
   @Prop() readonly = false
 
   /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop() required = false
+
+  /**
    * If `true`, the value will not be send with a form submit
    */
   @Prop() hidden = false
@@ -199,6 +204,7 @@ export class Checkbox implements ComponentInterface, FormInput<any> {
           type="checkbox"
           id={this.inputId}
           name={this.name}
+          required={this.required}
           tabindex={-1}
           checked={this.checked}
           value={this.value}
