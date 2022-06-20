@@ -55,7 +55,7 @@ With the help of the `BalModalService` we are able to close the modal.
 
 ```typescript
 import { Component, Input } from '@angular/core'
-import { BalModalService } from '@baloise/design-system-components-angular'
+import { BalModalService } from '@baloise/design-system-next-components-angular'
 
 @Component({
   selector: 'app-modal',
@@ -84,7 +84,7 @@ From the main component we can easily create a modal with the `BalModalService`.
 
 ```typescript
 import { Component } from '@angular/core'
-import { BalModalService } from '@baloise/design-system-components-angular'
+import { BalModalService } from '@baloise/design-system-next-components-angular'
 import { ModalComponent } from './modal.component'
 
 @Component({
@@ -127,7 +127,12 @@ With the help of the `balModalController.dismiss()` we are able to close the mod
 ```html
 <script setup lang="ts">
   import { defineProps } from 'vue'
-  import { balModalController, BalModalHeader, BalModalBody, BalButton } from '@baloise/design-system-components-vue'
+  import {
+    balModalController,
+    BalModalHeader,
+    BalModalBody,
+    BalButton,
+  } from '@baloise/design-system-next-components-vue'
 
   defineProps({
     firstName: { type: String },
@@ -155,7 +160,7 @@ From the main component we can easily create a modal with the `balModalControlle
 
 ```html
 <script setup lang="ts">
-  import { balModalController, BalButton } from '@baloise/design-system-components-vue'
+  import { balModalController, BalButton } from '@baloise/design-system-next-components-vue'
   import MyModal from '@/components/MyModal.vue'
 
   const openModal = async () => {
