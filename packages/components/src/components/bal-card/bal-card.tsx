@@ -42,6 +42,11 @@ export class BalCard {
   @Prop() fullheight = false
 
   /**
+   * Defines the space of the card content.
+   */
+  @Prop() space: Props.BalCardSpace = ''
+
+  /**
    * Defines the color of the card.
    */
   @Prop() color: Props.BalCardColor = 'white'
@@ -56,6 +61,7 @@ export class BalCard {
         class={{
           'bal-card': true,
           [`bal-card--${this.colorTypeClass}`]: true,
+          [`bal-card--is-${this.space}`]: this.space !== '',
           'bal-card--has-border': this.border,
           'bal-card--is-flat': this.flat,
           'bal-card--is-clickable': this.clickable,

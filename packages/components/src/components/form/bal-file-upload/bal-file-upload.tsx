@@ -49,6 +49,11 @@ export class FileUpload {
   @Prop() disabled = false
 
   /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop() required = false
+
+  /**
    * If `true` the component gets a invalid style.
    */
   @Prop() invalid = false
@@ -316,6 +321,7 @@ export class FileUpload {
               multiple={this.multiple}
               disabled={this.disabled || this.loading}
               readonly={this.readonly}
+              required={this.required}
               accept={this.accept}
               onChange={this.onChange}
               ref={el => (this.fileInput = el as HTMLInputElement)}

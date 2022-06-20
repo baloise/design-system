@@ -209,6 +209,10 @@ export namespace Components {
          */
         "selected": boolean;
         /**
+          * Defines the space of the card content.
+         */
+        "space": Props.BalCardSpace;
+        /**
           * If `true` the card loses its border radius.
          */
         "square": boolean;
@@ -2972,6 +2976,10 @@ declare namespace LocalJSX {
           * If `true` the card gets a light background to indicate a selection.
          */
         "selected"?: boolean;
+        /**
+          * Defines the space of the card content.
+         */
+        "space"?: Props.BalCardSpace;
         /**
           * If `true` the card loses its border radius.
          */

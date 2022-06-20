@@ -118,6 +118,11 @@ export class Select {
   @Prop() readonly = false
 
   /**
+   * If `true`, the user must fill in a value before submitting a form.
+   */
+  @Prop() required = false
+
+  /**
    * @deprecated  Set this to `true` when the component is placed on a dark background.
    * Set this to `true` when the component is placed on a dark background.
    */
@@ -765,7 +770,7 @@ export class Select {
           'is-inverted': this.inverted,
         }}
       >
-        <select class="is-hidden" name={this.name} multiple={this.multiple}>
+        <select class="is-hidden" name={this.name} multiple={this.multiple} required={this.required}>
           {valuesArray.map((value: string) => (
             <option value={value} selected>
               {value}

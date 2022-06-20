@@ -28,6 +28,7 @@ export namespace Props {
   export type BalCardActionsPosition = 'right' | 'center' | ''
   export type BalCardButtonElementType = BalButtonElementType
   export type BalCardButtonTarget = BalButtonTarget
+  export type BalCardSpace = 'small' | '' | 'medium' | 'large'
   export type BalCardColor =
     | 'white'
     | 'primary'
