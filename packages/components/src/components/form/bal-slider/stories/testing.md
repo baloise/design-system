@@ -7,7 +7,7 @@ The Baloise Design System provides a collection of custom cypress commands for o
 <!-- START: human documentation -->
 
 ```typescript
-import { byTestId } from '@baloise/design-system-testing'
+import { byTestId } from '@baloise/design-system-nest-testing'
 
 describe('Slider', () => {
   const slider = byTestId('my-slider') // [data-testid="my-slider"]

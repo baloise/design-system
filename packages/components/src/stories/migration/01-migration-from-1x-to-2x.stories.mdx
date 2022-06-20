@@ -31,13 +31,13 @@ This was done to have all utility functions in one place and to reduce the compl
 
 First you need to install the missing util packages. Therefore, follow the installation guide of the [baloise/web-app-utils documentation](https://github.com/baloise/web-app-utils).
 
-After the installation update the Design System to version 2.x and replace the import statements, which still use utility functions from the package `@baloise/design-system-components`.
+After the installation update the Design System to version 2.x and replace the import statements, which still use utility functions from the package `@baloise/design-system-next-components`.
 
 ### Example Utils
 
 ```typescript
 // - old
-import { year, month, isoString } from '@baloise/design-system-components'
+import { year, month, isoString } from '@baloise/design-system-next-components'
 
 // + new
 import { year, month, isoString } from '@baloise/web-app-utils'
@@ -54,7 +54,7 @@ import { Component } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 
 // - old
-import { BalValidators } from '@baloise/design-system-components-angular'
+import { BalValidators } from '@baloise/design-system-next-components-angular'
 
 // + new
 import { BalValidators } from '@baloise/web-app-validators-angular'

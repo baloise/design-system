@@ -29,7 +29,7 @@ $font-path: 'assets/fonts';
 $blue: yellow;
 
 // import of the main stylesheet
-@import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
+@import 'node_modules/@baloise/design-system-next-components/src/styles/global.scss';
 ```
 
 To be able to have two different themes create two separate stylesheets. Lets call the first one blue.scss and the other yellow.scss.
@@ -40,11 +40,11 @@ It is important that at the end we have 2 css files.
 ```scss
 $font-path: '~assets/fonts';
 
-@import 'node_modules/@baloise/design-system-components/src/styles/global.base';
-@import 'node_modules/@baloise/design-system-components/src/styles/global.utilities';
+@import 'node_modules/@baloise/design-system-next-components/src/styles/global.base';
+@import 'node_modules/@baloise/design-system-next-components/src/styles/global.utilities';
 
 .app-bg-blue {
-  @import 'node_modules/@baloise/design-system-components/src/styles/global.core';
+  @import 'node_modules/@baloise/design-system-next-components/src/styles/global.core';
 }
 ```
 
@@ -57,11 +57,11 @@ $font-path: '~assets/fonts';
 $blue: #fcc419;
 $cyan: #ff922b;
 
-@import 'node_modules/@baloise/design-system-components/src/styles/global.base';
-@import 'node_modules/@baloise/design-system-components/src/styles/global.utilities';
+@import 'node_modules/@baloise/design-system-next-components/src/styles/global.base';
+@import 'node_modules/@baloise/design-system-next-components/src/styles/global.utilities';
 
 .app-bg-yellow {
-  @import 'node_modules/@baloise/design-system-components/src/styles/global.core';
+  @import 'node_modules/@baloise/design-system-next-components/src/styles/global.core';
 }
 ```
 

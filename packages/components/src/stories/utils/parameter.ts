@@ -69,7 +69,7 @@ const vueCode = (templateSource: string, argTypes = {}, args = {}, comps = []): 
   return `<script setup lang="ts">
 import {
 ${comps.map(c => `  ${c},`).join('\n')}
-} from '@baloise/design-system-components-vue'
+} from '@baloise/design-system-next-components-vue'
 </script>
 <template>
   ${source}

@@ -39,12 +39,12 @@ Rename the `.css` files to `.scss` and adjust there import statement.
 Use npm to install the React proxy library.
 
 ```bash
-npm install @baloise/design-system-components-react
+npm install @baloise/design-system-next-components-react
 ```
 
 ## Install Fonts
 
-The font package is included in the `@baloise/design-system-components` package and also in the proxy libraries.
+The font package is included in the `@baloise/design-system-next-components` package and also in the proxy libraries.
 
 Next step is to provide the fonts to our web application. To do so we recommend the tool [copyfiles](https://www.npmjs.com/package/copyfiles) (opens new window) to copy the font files into your asset folder.
 
@@ -59,7 +59,7 @@ Place the downloaded fonts into a folder in the public area. Configure the path 
 ```scss
 // change scss variable before importing the design system
 
-@import 'node_modules/@baloise/design-system-components/src/styles/global.scss';
+@import 'node_modules/@baloise/design-system-next-components/src/styles/global.scss';
 
 // add custom application styles here after the design system
 ```
@@ -72,7 +72,7 @@ Then we add the defined script copy:fonts in our postinstall script. Every time 
 ```json
 "scripts": {
   "postinstall": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-fonts/lib/* public/assets/fonts"
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/design-system-next-fonts/lib/* public/assets/fonts"
 }
 ```
 
@@ -85,7 +85,7 @@ Add the `BalApp` to your root element. Within this component we are able to use 
 
 ```typescript
 import React from 'react'
-import { BalApp, useBaloiseDesignSystem } from '@baloise/design-system-components-react'
+import { BalApp, useBaloiseDesignSystem } from '@baloise/design-system-next-components-react'
 import './App.scss'
 
 function App() {
