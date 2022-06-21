@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.13.3](https://github.com/baloise/design-system/compare/v10.13.2...v10.13.3) (2022-06-21)
+
+
+### Bug Fixes
+
+* **#632:** enable X to be entered as last character in claim number ([26606b5](https://github.com/baloise/design-system/commit/26606b5bd19ce72128bbe14df61db53bd81727b7)), closes [#632](https://github.com/baloise/design-system/issues/632)
+
+
+
 ### [10.13.2](https://github.com/baloise/design-system/compare/v10.13.1...v10.13.2) (2022-06-16)
 
 
