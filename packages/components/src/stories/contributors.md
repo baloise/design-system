@@ -83,6 +83,12 @@
     </h2>
     <h4>svene</h4>
   </a>
+  <a href="https://github.com/m4rc0z" class="feature">
+    <h2>
+      <img src="https://avatars.githubusercontent.com/u/20516386?v=4" alt="m4rc0z" style="width: 64px;">
+    </h2>
+    <h4>m4rc0z</h4>
+  </a>
   <a href="https://github.com/NoraKurzbein" class="feature">
     <h2>
       <img src="https://avatars.githubusercontent.com/u/16286177?v=4" alt="NoraKurzbein" style="width: 64px;">
@@ -94,12 +100,6 @@
       <img src="https://avatars.githubusercontent.com/u/47270471?v=4" alt="Flapmax" style="width: 64px;">
     </h2>
     <h4>Flapmax</h4>
-  </a>
-  <a href="https://github.com/m4rc0z" class="feature">
-    <h2>
-      <img src="https://avatars.githubusercontent.com/u/20516386?v=4" alt="m4rc0z" style="width: 64px;">
-    </h2>
-    <h4>m4rc0z</h4>
   </a>
   <a href="https://github.com/aymenfurter" class="feature">
     <h2>
