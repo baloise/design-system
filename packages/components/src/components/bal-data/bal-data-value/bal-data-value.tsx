@@ -47,7 +47,7 @@ export class DataValue {
   }
 
   render() {
-    const element = BEM.block('data').element('data-value')
+    const element = BEM.block('data-value')
     return (
       <Host
         class={{

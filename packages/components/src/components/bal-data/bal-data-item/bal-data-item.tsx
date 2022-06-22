@@ -16,7 +16,7 @@ export class DataItem {
   @Prop() border = false
 
   render() {
-    const element = BEM.block('data').element('data-item')
+    const element = BEM.block('data-item')
 
     return (
       <Host

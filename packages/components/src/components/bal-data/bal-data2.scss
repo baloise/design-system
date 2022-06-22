@@ -125,10 +125,9 @@
     }
   }
 }
-
 @include tablet() {
   .bal-data {
-    // ?? angular creates new comoponent which we need modify, can not change it :(
+    // ?? angular creates new component which we need modify, can not change it :(
     & > * {
       flex-wrap: no-wrap;
     }
