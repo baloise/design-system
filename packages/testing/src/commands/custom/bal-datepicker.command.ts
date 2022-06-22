@@ -1,6 +1,13 @@
-import { formatDateString } from '@baloise/web-app-utils'
 import { getYear, getMonth } from 'date-fns'
 import { log, wrapOptions } from '../helpers'
+
+const formatDateString = (date: Date) => {
+  const day = `${date.getDate()}`
+  const month = `${date.getDate()}`
+  const pad = (text: string) => (text.length === 1 ? `0${text}` : text)
+
+  return `${date.getFullYear()}-${pad(month)}-${pad(day)}`
+}
 
 const selectorDayBox = (date: Date) => `[data-date="${formatDateString(date)}"]`
 
