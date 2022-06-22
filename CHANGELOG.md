@@ -1228,6 +1228,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **angular:** component based modules instead of one ([5395696](https://github.com/baloise-incubator/design-system/commit/5395696d3d659928a67bebfff216615a9bf6a98a))
 
+### [10.13.1](https://github.com/baloise/design-system/compare/v10.13.0...v10.13.1) (2022-06-15)
 
 ### Bug Fixes
 
@@ -1244,6 +1245,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * add internationalization ([d50e3ca](https://github.com/baloise-incubator/design-system/commit/d50e3ca7462b8991ce0c3941f0465e262679795a))
 * **config:** add date and number formats to global config ([8e2b9d0](https://github.com/baloise-incubator/design-system/commit/8e2b9d09dca8fcbc63d918ccc83e1e5873952bed))
 
+- **form-gird:** add form grid component ([99de015](https://github.com/baloise/design-system/commit/99de015619b13c3dc4af98a41e6599c8c51708d1))
+- **input-stepper:** add increase and decrease event ([11a186c](https://github.com/baloise/design-system/commit/11a186c56c2b231a6530e58fff99f4ad58d3d578))
 
 ### Bug Fixes
 
@@ -1259,8 +1262,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### [10.10.3](https://github.com/baloise-incubator/design-system/compare/v10.10.2...v10.10.3) (2022-04-28)
 
+### Features
 
-### Bug Fixes
+- add event types for the main events ([fe13251](https://github.com/baloise/design-system/commit/fe1325158592f310def478a319756edd3740d8ac))
 
 * **button:** long labels break [#32](https://github.com/baloise-incubator/design-system/issues/32) ([55de801](https://github.com/baloise-incubator/design-system/commit/55de801120d4e5cf10d4ff68d91b5bcf15a042c5))
 * **card:** add flat transparent story ([2c31c09](https://github.com/baloise-incubator/design-system/commit/2c31c096464891b24dfce34124a0687262c26d2a))
@@ -1269,6 +1273,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **text:** small line-height [#29](https://github.com/baloise-incubator/design-system/issues/29) ([7834f5c](https://github.com/baloise-incubator/design-system/commit/7834f5c7527c85db868e5bd4ed47ad91123cf135))
 
 
+### [10.11.3](https://github.com/baloise/design-system/compare/v10.11.2...v10.11.3) (2022-05-24)
 
 ### [10.10.2](https://github.com/baloise-incubator/design-system/compare/v10.9.2...v10.10.2) (2022-04-25)
 
@@ -1452,6 +1457,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **i18n:** onBalConfigChange ([87af016](https://github.com/baloise-incubator/design-system/commit/87af0165b49352befbc26b68cd29239ac4f5c514))
 * **list:** add native ul & ol styles ([3f3f375](https://github.com/baloise-incubator/design-system/commit/3f3f375f11baa0cb431504657baa2df041f851a4))
 
+### [10.11.2](https://github.com/baloise/design-system/compare/v10.11.1...v10.11.2) (2022-05-24)
 
 ### Bug Fixes
 
@@ -1473,6 +1479,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **angular:** component based modules instead of one ([5395696](https://github.com/baloise-incubator/design-system/commit/5395696d3d659928a67bebfff216615a9bf6a98a))
 
+### [10.11.1](https://github.com/baloise/design-system/compare/v10.11.0...v10.11.1) (2022-05-18)
 
 ### Bug Fixes
 
@@ -1489,6 +1496,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * add internationalization ([d50e3ca](https://github.com/baloise-incubator/design-system/commit/d50e3ca7462b8991ce0c3941f0465e262679795a))
 * **config:** add date and number formats to global config ([8e2b9d0](https://github.com/baloise-incubator/design-system/commit/8e2b9d09dca8fcbc63d918ccc83e1e5873952bed))
 
+- **field:** add weight prop ([4649a6c](https://github.com/baloise/design-system/commit/4649a6cca223a5d0b083b5742e6d439a57cf088e))
+- **modal:** add dismissAll function ([b4e935a](https://github.com/baloise/design-system/commit/b4e935aeab9cb283a68c2f32741b5468c5adf8d6))
+- **select:** add remote solution and adds starts with filter ([1db5cd7](https://github.com/baloise/design-system/commit/1db5cd7200072ac9dd3ea9a18cb4176be1d81d9a))
 
 ### Bug Fixes
 
@@ -1500,7 +1510,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### 9.0.6 (2022-01-25)
 
+### Bug Fixes
 
+- **testing:** set waitForComponents to optional ([a1e33c7](https://github.com/baloise/design-system/commit/a1e33c79b69f87ff5327eac6218b6f5d28fc082e))
 
 ### [10.9.2](https://github.com/baloise-incubator/design-system/compare/v10.9.1...v10.9.2) (2022-04-20)
 
@@ -1509,6 +1521,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **icons:** add social icons¨ ([1655121](https://github.com/baloise-incubator/design-system/commit/1655121a44ee0d1802b839b4d610cd1299578777))
 
+### Bug Fixes
+
+- **slider:** css width calculation and add ticks ([973bb91](https://github.com/baloise/design-system/commit/973bb91d49d65499d107c8e195aa75aee4e78bb7))
+
+### [10.10.5](https://github.com/baloise/design-system/compare/v10.10.2...v10.10.5) (2022-04-22)
 
 ### Bug Fixes
 
@@ -1691,7 +1708,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **i18n:** onBalConfigChange ([87af016](https://github.com/baloise-incubator/design-system/commit/87af0165b49352befbc26b68cd29239ac4f5c514))
 * **list:** add native ul & ol styles ([3f3f375](https://github.com/baloise-incubator/design-system/commit/3f3f375f11baa0cb431504657baa2df041f851a4))
 
-
 ### Bug Fixes
 
 * **button:** adjust spacing for mobile ([ec73ebd](https://github.com/baloise-incubator/design-system/commit/ec73ebd97910470788dae08497ebc5c32dd71bad))
@@ -1703,6 +1719,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### [9.2.2](https://github.com/baloise-incubator/design-system/compare/v9.0.7...v9.2.2) (2022-02-03)
 
+### [10.10.7](https://github.com/baloise/design-system/compare/v10.10.6...v10.10.7) (2022-04-28)
 
 ### ⚠ BREAKING CHANGES
 
@@ -1712,6 +1729,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **angular:** component based modules instead of one ([5395696](https://github.com/baloise-incubator/design-system/commit/5395696d3d659928a67bebfff216615a9bf6a98a))
 
+### Bug Fixes
 
 ### Bug Fixes
 
@@ -1812,7 +1830,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **integration:** update lock ([12fbb96](https://github.com/baloise/design-system/commit/12fbb964428e51ee0480df7c68589283e03bbfa5))
 - **tag:** add group component to BalTagModule ([db1eb99](https://github.com/baloise/design-system/commit/db1eb99ee06fe560cd9a1a43b86714fa041f1245))
 
-### 10.10.1 (2022-04-21)
+### [10.10.2](https://github.com/baloise/design-system/compare/v10.10.1...v10.10.2) (2022-04-21)
 
 ### [10.10.5](https://github.com/baloise/design-system/compare/v10.10.4...v10.10.5) (2022-04-22)
 
@@ -1825,7 +1843,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **footer:** the footer links will only load for CH regions ([b86cc2f](https://github.com/baloise/design-system/commit/b86cc2f540cac2b717456844288bb6007080ac0d))
 - **footer:** the footer links will only load for CH regions ([cdeca7b](https://github.com/baloise/design-system/commit/cdeca7bf745cf741b8bdd550068c876d563a746e))
 
-### [10.10.2](https://github.com/baloise/design-system/compare/v10.10.1...v10.10.2) (2022-04-21)
+### 10.10.1 (2022-04-21)
 
 ### Bug Fixes
 

@@ -344,11 +344,30 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
           break
         }
         case 'claim-number': {
-          this.inputValue = input.value.replace(/\D/g, '')
+          this.inputValue = input.value.replace(/[^\dX]/g, '')
+          const inputParts = [
+            this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER - 1),
+            this.inputValue.substring(MAX_LENGTH_CLAIM_NUMBER - 1, MAX_LENGTH_CLAIM_NUMBER),
+            this.inputValue.substring(MAX_LENGTH_CLAIM_NUMBER),
+          ].filter(val => val.length > 0)
+          switch (inputParts.length) {
+            case 1:
+              this.inputValue = `${inputParts[0].replace(/\D/g, '')}`
+              break
+            case 2:
+              this.inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}`
+              break
+            default:
+              this.inputValue = `${inputParts[0].replace(/\D/g, '')}${inputParts[1]}${inputParts[2]?.replace(
+                /\D/g,
+                '',
+              )}`
+          }
           if (this.inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
             this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
           }
           input.value = formatClaim(this.inputValue)
+
           if (cursorPositionStart < this.inputValue.length) {
             input.setSelectionRange(cursorPositionStart, cursorPositionEnd)
           }
@@ -376,13 +395,21 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
     }
   }
 
-  private getAllowedKeys() {
+  private getMaskAllowedKeys() {
     return [...NUMBER_KEYS, ...ACTION_KEYS]
   }
 
   private onKeydown = (event: KeyboardEvent) => {
     if (this.mask !== undefined && !isNil(event) && !isCtrlOrCommandKey(event)) {
-      if (!this.getAllowedKeys().includes(event.key)) {
+      if (
+        !(
+          this.getMaskAllowedKeys().includes(event.key) ||
+          (this.mask === 'claim-number' &&
+            event.key === 'X' &&
+            this.inputValue &&
+            this.inputValue.length >= MAX_LENGTH_CLAIM_NUMBER - 1)
+        )
+      ) {
         // do not trigger next event -> on input
         return stopEventBubbling(event)
       }
