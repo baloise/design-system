@@ -107,7 +107,6 @@ export const DataTypes = args => ({
       <bal-data-item>
         <bal-data-label>List Value</bal-data-label>
         <bal-data-value multiline>
-        <!-- TODO -> move from here to be automatically added in css -->
           <ul class="is-list ml-4">
             <li>Value 1</li>
             <li>Value 2</li>

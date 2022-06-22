@@ -19,7 +19,6 @@ export class Data {
 
   @Watch('border')
   borderHandler() {
-    console.log('border handler')
     this.updateProps([...this.inputElements], 'border')
   }
 

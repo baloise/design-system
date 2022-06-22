@@ -34,7 +34,7 @@
 +block(data-label)
   position: relative
   display: block
-  color: $blue
+  color: var(--bal-color-blue)
   flex: 1 1
   flex-basis: 100%
 
@@ -59,6 +59,7 @@
   font-weight: $weight-bold
   font-size: var(--bal-size-small)
   line-height: var(--bal-size-normal)
+
   &,
   & > div
     font-family: var(--bal-family-primary)
@@ -74,15 +75,14 @@
     > ul
       margin-bottom: 0 !important
 
-  &.is-multiline
+  .bal-data-value-btn
+    display: none
+  +modifier(is-multiline)
     &,
     & > div
       white-space: normal
 
-  .bal-data-value-btn
-    display: none
-
-.bal-data:not(bal-data--is-horizontal)
+.bal-data:not(.bal-data--is-horizontal)
   +block(data-value)
     display: flex
     justify-content: center
@@ -92,7 +92,7 @@
       flex: 1
     & > div > bal-input input.input
       flex: 1
-    &.is-editable
+    +modifier(is-editable)
       .bal-data-value-btn
         display: block
     & > bal-button
@@ -103,21 +103,21 @@
     // ?? angular creates new component which we need modify, can not change it :(
     & > *
       flex-wrap: no-wrap
-  +block(data-item)
-    flex-wrap: no-wrap
-    padding: 8px 0
+    +block(data-item)
+      flex-wrap: no-wrap
+      padding: 8px 0
+      +block(data-label)
+        flex-basis: 0
+      +block(data-value)
+        flex-basis: 0
+
+  .bal-data:not(.bal-data--is-horizontal)
     +block(data-label)
-      flex-basis: 0
+      font-size: var(--bal-size-normal)
     +block(data-value)
-      flex-basis: 0
+      margin-top: 2px
 
-  .bal-data:not(.is-horizontal)
-      .bal-data-label
-        font-size: var(--bal-size-normal)
-      .bal-data-value
-        margin-top: 2px
-
-  .bal-data.is-horizontal
+  .bal-data.bal-data--is-horizontal
     flex-direction: row
     gap: 8px
 
@@ -136,7 +136,7 @@
       +block(data-value)
         min-height: 100%
 
-        +blocks(data-label, data-value)
-          flex-basis: 100%
-          width: 100%
-          align-self: flex-start
+      +blocks(data-label, data-value)
+        flex-basis: 100%
+        width: 100%
+        align-self: flex-start
