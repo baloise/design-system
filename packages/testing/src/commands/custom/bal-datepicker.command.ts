@@ -3,7 +3,7 @@ import { log, wrapOptions } from '../helpers'
 
 const formatDateString = (date: Date) => {
   const day = `${date.getDate()}`
-  const month = `${date.getDate()}`
+  const month = `${date.getMonth() + 1}`
   const pad = (text: string) => (text.length === 1 ? `0${text}` : text)
 
   return `${date.getFullYear()}-${pad(month)}-${pad(day)}`
