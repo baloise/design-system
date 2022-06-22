@@ -21,7 +21,9 @@
           max-width: calc(100% - 120px)
         +desktop
           max-width: calc(100% - 198px)
-
+    +modifier(is-blue)
+      .bal-stage-body
+        background: var(--bal-color-primary-5)
     +modifier(is-purple)
       .bal-stage-body
         background: var(--bal-color-purple-3)
@@ -36,7 +38,6 @@
         background: var(--bal-color-yellow-3)
     +modifier(is-inverted)
       .bal-stage-body
-        background: var(--bal-color-primary-5)
         h1
           color: var(--bal-color-white)
         h2
@@ -57,25 +58,12 @@
 
   // !! Placeholder Styling - will be replaced when shape is implemented !! //
   .bal-stage-shape
-    div
+    bal-shape
       position: absolute
-      text-align: center
-      font-size: 0.5rem
       bottom: 0
       right: 1rem
-      width: 66px
-      height: 66px
-      background: var(--bal-color-primary-5)
-      color: var(--bal-color-white)
-
-      +tablet
-        width: 120px
-        height: 120px
-
       +desktop
         right: 2rem
-        width: 198px
-        height: 198px
 
 .has-background-image
   .bal-stage-body

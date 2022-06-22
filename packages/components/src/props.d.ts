@@ -234,4 +234,16 @@ export namespace Props {
     | 'impp'
     | 'url'
     | 'photo'
+
+  export type BalShapeVariation = '1' | '2' | '3'
+  export type BalShapeColor =
+    | 'green'
+    | 'green-light'
+    | 'red'
+    | 'red-light'
+    | 'purple'
+    | 'purple-light'
+    | 'tangerine'
+    | 'tangerine-light'
+  export type BalShapeRotation = '0' | '90' | '180' | '270'
 }
