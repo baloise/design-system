@@ -95,8 +95,8 @@
 
 .bal-list-item.is-list-item-clickable {
   bal-list-item-accordion-head,
-  a,
-  button {
+  a:not(.is-link),
+  button:not(.button) {
     cursor: pointer;
     pointer-events: inherit;
   }
@@ -104,8 +104,8 @@
 
 .bal-list:not(.is-disabled):not(.is-on-background-dark) .bal-list-item.is-list-item-clickable {
   bal-list-item-accordion-head,
-  a,
-  button {
+  a:not(.is-link),
+  button:not(.button) {
     &:hover {
       .bal-list-item-title h5,
       .bal-list-item-subtitle p {
@@ -165,8 +165,8 @@
 
 .bal-list:not(.is-disabled).is-on-background-dark .bal-list-item.is-list-item-clickable {
   bal-list-item-accordion-head,
-  a,
-  button {
+  a:not(.is-link),
+  button:not(.button) {
     &:hover {
       .bal-list-item-title h5,
       .bal-list-item-subtitle p {
@@ -211,8 +211,8 @@
 .bal-list.is-disabled {
   &,
   .bal-list-item,
-  .bal-list-item a,
-  .bal-list-item button {
+  .bal-list-item a:not(.is-link),
+  .bal-list-item button:not(.button) {
     cursor: default !important;
     pointer-events: none !important;
     user-select: none !important;
@@ -223,8 +223,8 @@
   padding-bottom: 2px;
 
   & > div:after,
-  a:after,
-  button:after {
+  a:not(.is-link):after,
+  button:not(.button):after {
     content: '';
     height: 2px;
     width: 100%;
@@ -240,21 +240,21 @@
   .bal-list-item,
   .bal-list-item.is-disabled {
     & > div:after,
-    a:after,
-    button:after {
+    a:not(.is-link):after,
+    button:not(.button):after {
       background: $grey-2;
     }
   }
 
   .bal-list-item:not(.is-disabled).is-list-item-clickable {
     & > div:hover:after,
-    a:hover:after,
-    button:hover:after {
+    a:not(.is-link):hover:after,
+    button:not(.button):hover:after {
       background: $blue-5;
     }
     & > div:active:after,
-    a:active:after,
-    button:active:after {
+    a:not(.is-link):active:after,
+    button:not(.button):active:after {
       background: $blue-5;
     }
   }
@@ -262,16 +262,16 @@
   &.is-on-background-color {
     .bal-list-item {
       & > div:after,
-      a:after,
-      button:after {
+      a:not(.is-link):after,
+      button:not(.button):after {
         background: $blue;
       }
     }
 
     .bal-list-item.is-disabled {
       & > div:after,
-      a:after,
-      button:after {
+      a:not(.is-link):after,
+      button:not(.button):after {
         background: $blue-4;
       }
     }
@@ -280,29 +280,29 @@
   &.is-on-background-dark {
     .bal-list-item {
       & > div:after,
-      a:after,
-      button:after {
+      a:not(.is-link):after,
+      button:not(.button):after {
         background: $blue-4;
       }
     }
 
     .bal-list-item.is-disabled {
       & > div:after,
-      a:after,
-      button:after {
+      a:not(.is-link):after,
+      button:not(.button):after {
         background: $blue-4;
       }
     }
 
     .bal-list-item:not(.is-disabled).is-list-item-clickable {
       & > div:hover:after,
-      a:hover:after,
-      button:hover:after {
+      a:not(.is-link):hover:after,
+      button:not(.button):hover:after {
         background: $light-blue-2;
       }
       & > div:active:after,
-      a:active:after,
-      button:active:after {
+      a:not(.is-link):active:after,
+      button:not(.button):active:after {
         background: $light-blue-4;
       }
     }
@@ -311,8 +311,8 @@
 
 .bal-list:not(.is-on-background-dark) .bal-list-item.is-disabled {
   &,
-  a,
-  button {
+  a:not(.is-link),
+  button:not(.button) {
     .bal-list-item-title h5,
     .bal-list-item-subtitle p {
       color: $grey-5 !important;
@@ -331,8 +331,8 @@
 
 .bal-list:not(.is-disabled):not(.is-on-background-dark) .bal-list-item.is-disabled {
   &,
-  a,
-  button {
+  a:not(.is-link),
+  button:not(.button) {
     &,
     &:hover,
     &:active {
@@ -356,8 +356,8 @@
 .bal-list:not(.is-disabled).is-on-background-color .bal-list-item.is-disabled,
 .bal-list:not(.is-disabled).is-on-background-dark .bal-list-item.is-disabled {
   &,
-  a,
-  button {
+  a:not(.is-link),
+  button:not(.button) {
     &,
     &:hover,
     &:active {
