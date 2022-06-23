@@ -88,6 +88,12 @@ function generateSassVariables() {
 
   function generateTypography() {
     const typography = BaloiseDesignToken.typography
+    const weights = typography.weights
+    for (const k in weights) {
+      sassVar(`weight-${k}`, weights[k])
+      cssVar(`weight-${k}`)
+    }
+
     const sizes = typography.sizes
 
     sassVar(`font-family-title`, typography.familyTitle)

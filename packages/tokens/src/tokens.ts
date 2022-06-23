@@ -164,77 +164,168 @@ const tokens = {
   typography: {
     familyTitle: 'BaloiseCreateHeadline, Arial, sans-serif',
     familyText: 'BaloiseCreateText, Arial, sans-serif',
+    weights: {
+      bold: 700,
+      regular: 400,
+      light: 300,
+    },
     sizes: {
       mobile: {
-        'display': {
+        'xxxxx-large': {
           fontSize: '3rem',
           lineHeight: '3.5rem',
-          spacing: '3',
+          spacing: '4',
         },
-        '1': {
+        'xxxx-large': {
           fontSize: '2rem',
           lineHeight: '2.5rem',
-          spacing: '3',
+          spacing: '2',
         },
-        '2': {
+        'xxx-large': {
           fontSize: '1.75rem',
           lineHeight: '2rem',
           spacing: '2',
         },
-        '3': {
+        'xx-large': {
           fontSize: '1.5rem',
           lineHeight: '2rem',
           spacing: '2',
         },
-        '4': {
+        'x-large': {
           fontSize: '1.25rem',
           lineHeight: '1.5rem',
           spacing: '2',
         },
-        '5': {
+        'large': {
+          fontSize: '1.125rem',
+          lineHeight: '1.5rem',
+          spacing: '2',
+        },
+        'medium': {
           fontSize: '1rem',
           lineHeight: '1.5rem',
           spacing: '2',
         },
-        '6': {
+        'normal': {
+          fontSize: '1rem',
+          lineHeight: '1.5rem',
+          spacing: '2',
+        },
+        'small': {
           fontSize: '0.875rem',
           lineHeight: '1rem',
-          spacing: '1',
+          spacing: '2',
         },
-        '7': {
+        'x-small': {
           fontSize: '0.75rem',
           lineHeight: '1.25rem',
           spacing: '1',
         },
       },
       tablet: {
-        'display': {
+        'xxxxx-large': {
           fontSize: '5rem',
           lineHeight: '6rem',
-          spacing: '3',
+          spacing: '4',
         },
-        '1': {
+        'xxxx-large': {
           fontSize: '3rem',
           lineHeight: '3.5rem',
           spacing: '2',
         },
-        '2': {
+        'xxx-large': {
           fontSize: '2.5rem',
           lineHeight: '3rem',
           spacing: '2',
         },
-        '3': {
+        'xx-large': {
           fontSize: '2rem',
           lineHeight: '2.5rem',
           spacing: '2',
         },
-        '4': {
+        'x-large': {
           fontSize: '1.5rem',
           lineHeight: '2rem',
           spacing: '2',
         },
+        'large': {
+          fontSize: '1.25rem',
+          lineHeight: '1.75rem',
+          spacing: '2',
+        },
+        'medium': {
+          fontSize: '1.125rem',
+          lineHeight: '1.5rem',
+          spacing: '2',
+        },
+        'normal': {
+          fontSize: '1rem',
+          lineHeight: '1.5rem',
+          spacing: '2',
+        },
+        'small': {
+          fontSize: '0.875rem',
+          lineHeight: '1rem',
+          spacing: '2',
+        },
+        'x-small': {
+          fontSize: '0.75rem',
+          lineHeight: '1.25rem',
+          spacing: '1',
+        },
       },
-      desktop: {},
+      desktop: {
+        'xxxxx-large': {
+          fontSize: '5rem',
+          lineHeight: '6rem',
+          spacing: '4',
+        },
+        'xxxx-large': {
+          fontSize: '3rem',
+          lineHeight: '3.5rem',
+          spacing: '2',
+        },
+        'xxx-large': {
+          fontSize: '2.5rem',
+          lineHeight: '3rem',
+          spacing: '2',
+        },
+        'xx-large': {
+          fontSize: '2rem',
+          lineHeight: '2.5rem',
+          spacing: '2',
+        },
+        'x-large': {
+          fontSize: '1.5rem',
+          lineHeight: '2rem',
+          spacing: '2',
+        },
+        'large': {
+          fontSize: '1.25rem',
+          lineHeight: '1.75rem',
+          spacing: '2',
+        },
+        'medium': {
+          fontSize: '1.125rem',
+          lineHeight: '1.5rem',
+          spacing: '2',
+        },
+        'normal': {
+          fontSize: '1rem',
+          lineHeight: '1.5rem',
+          spacing: '2',
+        },
+        'small': {
+          fontSize: '0.875rem',
+          lineHeight: '1.5rem',
+          spacing: '2',
+        },
+        'x-small': {
+          fontSize: '0.75rem',
+          lineHeight: '1.25rem',
+          spacing: '1',
+        },
+      },
     },
     colors: {
       'primary': 'primary',
@@ -331,12 +422,41 @@ tokens.color['disabled'] = tokens.color['grey-2']
 tokens.color['background'] = tokens.color['white']
 tokens.color['background-light'] = tokens.color['grey-light']
 
-tokens.typography.sizes.mobile['large'] = tokens.typography.sizes.mobile['3']
-tokens.typography.sizes.mobile['medium'] = tokens.typography.sizes.mobile['4']
-tokens.typography.sizes.mobile['normal'] = tokens.typography.sizes.mobile['5']
-tokens.typography.sizes.mobile['small'] = tokens.typography.sizes.mobile['7']
-tokens.typography.sizes.tablet['large'] = tokens.typography.sizes.tablet['3']
-tokens.typography.sizes.tablet['medium'] = tokens.typography.sizes.tablet['4']
+//
+// Legacy
+tokens.typography.sizes.mobile['display'] = tokens.typography.sizes.mobile['xxxxx-large']
+tokens.typography.sizes.mobile['1'] = tokens.typography.sizes.mobile['xxxx-large']
+tokens.typography.sizes.mobile['2'] = tokens.typography.sizes.mobile['xxx-large']
+tokens.typography.sizes.mobile['3'] = tokens.typography.sizes.mobile['xx-large']
+tokens.typography.sizes.mobile['4'] = tokens.typography.sizes.mobile['x-large']
+tokens.typography.sizes.mobile['5'] = tokens.typography.sizes.mobile['normal']
+tokens.typography.sizes.mobile['6'] = tokens.typography.sizes.mobile['small']
+tokens.typography.sizes.mobile['7'] = tokens.typography.sizes.mobile['x-small']
+
+tokens.typography.sizes.tablet['display'] = tokens.typography.sizes.tablet['xxxxx-large']
+tokens.typography.sizes.tablet['1'] = tokens.typography.sizes.tablet['xxxx-large']
+tokens.typography.sizes.tablet['2'] = tokens.typography.sizes.tablet['xxx-large']
+tokens.typography.sizes.tablet['3'] = tokens.typography.sizes.tablet['xx-large']
+tokens.typography.sizes.tablet['4'] = tokens.typography.sizes.tablet['x-large']
+tokens.typography.sizes.tablet['5'] = tokens.typography.sizes.tablet['normal']
+tokens.typography.sizes.tablet['6'] = tokens.typography.sizes.tablet['small']
+tokens.typography.sizes.tablet['7'] = tokens.typography.sizes.tablet['x-small']
+
+tokens.typography.sizes.desktop['display'] = tokens.typography.sizes.desktop['xxxxx-large']
+tokens.typography.sizes.desktop['1'] = tokens.typography.sizes.desktop['xxxx-large']
+tokens.typography.sizes.desktop['2'] = tokens.typography.sizes.desktop['xxx-large']
+tokens.typography.sizes.desktop['3'] = tokens.typography.sizes.desktop['xx-large']
+tokens.typography.sizes.desktop['4'] = tokens.typography.sizes.desktop['x-large']
+tokens.typography.sizes.desktop['5'] = tokens.typography.sizes.desktop['normal']
+tokens.typography.sizes.desktop['6'] = tokens.typography.sizes.desktop['small']
+tokens.typography.sizes.desktop['7'] = tokens.typography.sizes.desktop['x-small']
+
+// tokens.typography.sizes.mobile['large'] = tokens.typography.sizes.mobile['l']
+// tokens.typography.sizes.mobile['medium'] = tokens.typography.sizes.mobile['m']
+// tokens.typography.sizes.mobile['normal'] = tokens.typography.sizes.mobile['normal']
+// tokens.typography.sizes.mobile['small'] = tokens.typography.sizes.mobile['s']
+// tokens.typography.sizes.tablet['large'] = tokens.typography.sizes.tablet['3']
+// tokens.typography.sizes.tablet['medium'] = tokens.typography.sizes.tablet['4']
 
 /************************************************************
  * Export

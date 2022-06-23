@@ -112,6 +112,10 @@
   &.is-text,
   &.is-link
     border-color: transparent
+  &.is-link
+    border: none
+    padding-left: 0
+    padding-right: 0
     text-decoration: underline
     text-underline-offset: 4px
     text-decoration-thickness: 2px
@@ -310,6 +314,10 @@
     & > span::after
       display: none
       content: none
+  &.is-link
+    background: transparent !important
+  &.is-link.is-inverted
+    color: var(--bal-color-grey)
 
 .buttons
   align-items: center
