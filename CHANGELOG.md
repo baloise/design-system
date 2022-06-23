@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.13.4](https://github.com/baloise/design-system/compare/v10.13.3...v10.13.4) (2022-06-23)
+
+
+### Bug Fixes
+
+* **testing:** update deps ([e55e44d](https://github.com/baloise/design-system/commit/e55e44ddc17b503f1a99275dd6070130cfc4bc81))
+* **testing:** update deps ([3c55606](https://github.com/baloise/design-system/commit/3c556061cc87f26cd971ee9669a1d46445ebc4dc))
+* **testing:** update deps ([9da47f5](https://github.com/baloise/design-system/commit/9da47f588acd266e55d1662b092c48f2e274ba94))
+
+
+
 ### [10.13.3](https://github.com/baloise/design-system/compare/v10.13.2...v10.13.3) (2022-06-21)
 
 
