@@ -54,12 +54,12 @@
   "files": [
     "dist/"
   ],
-  "main": "dist/bundles/baloise-design-system-components-angular.umd.js",
-  "module": "dist/fesm2015/baloise-design-system-components-angular.js",
-  "es2015": "dist/fesm2015/baloise-design-system-components-angular.js",
-  "esm2015": "dist/esm2015/baloise-design-system-components-angular.js",
-  "fesm2015": "dist/fesm2015/baloise-design-system-components-angular.js",
-  "typings": "dist/baloise-design-system-components-angular.d.ts",
-  "metadata": "dist/baloise-design-system-components-angular.metadata.json",
+  "main": "dist/bundles/baloise-design-system-next-components-angular.umd.js",
+  "module": "dist/fesm2015/baloise-design-system-next-components-angular.js",
+  "es2015": "dist/fesm2015/baloise-design-system-next-components-angular.js",
+  "esm2015": "dist/esm2015/baloise-design-system-next-components-angular.js",
+  "fesm2015": "dist/fesm2015/baloise-design-system-next-components-angular.js",
+  "typings": "dist/baloise-design-system-next-components-angular.d.ts",
+  "metadata": "dist/baloise-design-system-next-components-angular.metadata.json",
   "sideEffects": false
 }
