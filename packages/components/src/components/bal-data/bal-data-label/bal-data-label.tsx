@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core'
+import { BEM } from '../../../utils/bem'
 
 @Component({
   tag: 'bal-data-label',
@@ -11,7 +12,7 @@ export class DataLabel {
 
   render() {
     return (
-      <Host class="bal-data-label">
+      <Host class={{ ...BEM.block('data-label').class() }}>
         <slot></slot>
         {this.required ? '*' : ''}
       </Host>

@@ -390,6 +390,10 @@ export namespace Components {
     }
     interface BalDataItem {
         /**
+          * If `true` a bottom border is added to the data-item.
+         */
+        "border": boolean;
+        /**
           * If `true` the item gets a lighter font color.
          */
         "disabled": boolean;
@@ -3205,6 +3209,10 @@ declare namespace LocalJSX {
         "horizontal"?: boolean;
     }
     interface BalDataItem {
+        /**
+          * If `true` a bottom border is added to the data-item.
+         */
+        "border"?: boolean;
         /**
           * If `true` the item gets a lighter font color.
          */
