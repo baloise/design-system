@@ -170,7 +170,189 @@ const tokens = {
       light: 300,
     },
     sizes: {
-      mobile: {
+      'xxxxx-large': {
+        figmaName: 'display',
+        mobile: {
+          fontSize: '3rem',
+          lineHeight: '3.5rem',
+          spacing: '4',
+        },
+        tablet: {
+          fontSize: '5rem',
+          lineHeight: '6rem',
+          spacing: '4',
+        },
+        desktop: {
+          fontSize: '5rem',
+          lineHeight: '6rem',
+          spacing: '4',
+        },
+      },
+      'xxxx-large': {
+        figmaName: 'h1',
+        mobile: {
+          fontSize: '2rem',
+          lineHeight: '2.5rem',
+          spacing: '2',
+        },
+        tablet: {
+          fontSize: '3rem',
+          lineHeight: '3.5rem',
+          spacing: '2',
+        },
+        desktop: {
+          fontSize: '3rem',
+          lineHeight: '3.5rem',
+          spacing: '2',
+        },
+      },
+      'xxx-large': {
+        figmaName: 'h2',
+        mobile: {
+          fontSize: '1.75rem',
+          lineHeight: '2rem',
+          spacing: '2',
+        },
+        tablet: {
+          fontSize: '2.5rem',
+          lineHeight: '3rem',
+          spacing: '2',
+        },
+        desktop: {
+          fontSize: '2.5rem',
+          lineHeight: '3rem',
+          spacing: '2',
+        },
+      },
+      'xx-large': {
+        figmaName: 'h3',
+        mobile: {
+          fontSize: '1.5rem',
+          lineHeight: '2rem',
+          spacing: '2',
+        },
+        tablet: {
+          fontSize: '2rem',
+          lineHeight: '2.5rem',
+          spacing: '2',
+        },
+        desktop: {
+          fontSize: '2rem',
+          lineHeight: '2.5rem',
+          spacing: '2',
+        },
+      },
+      'x-large': {
+        figmaName: 'h4',
+        mobile: {
+          fontSize: '1.25rem',
+          lineHeight: '2rem',
+          spacing: '2',
+        },
+        tablet: {
+          fontSize: '1.5rem',
+          lineHeight: '2rem',
+          spacing: '2',
+        },
+        desktop: {
+          fontSize: '1.5rem',
+          lineHeight: '2rem',
+          spacing: '2',
+        },
+      },
+      'large': {
+        figmaName: 'lead-text',
+        mobile: {
+          fontSize: '1.125rem',
+          lineHeight: '2rem',
+          spacing: '2',
+        },
+        tablet: {
+          fontSize: '1.125rem',
+          lineHeight: '2rem',
+          spacing: '2',
+        },
+        desktop: {
+          fontSize: '1.5rem',
+          lineHeight: '2rem',
+          spacing: '2',
+        },
+      },
+      'medium': {
+        figmaName: 'block-text',
+        mobile: {
+          fontSize: '1rem',
+          lineHeight: '1.5rem',
+          spacing: '2',
+        },
+        tablet: {
+          fontSize: '1.125rem',
+          lineHeight: '2rem',
+          spacing: '2',
+        },
+        desktop: {
+          fontSize: '1.125rem',
+          lineHeight: '2rem',
+          spacing: '2',
+        },
+      },
+      'normal': {
+        figmaName: 'normal',
+        mobile: {
+          fontSize: '1rem',
+          lineHeight: '1.5rem',
+          spacing: '1',
+        },
+        tablet: {
+          fontSize: '1rem',
+          lineHeight: '1.5rem',
+          spacing: '1',
+        },
+        desktop: {
+          fontSize: '1rem',
+          lineHeight: '1.5rem',
+          spacing: '1',
+        },
+      },
+      'small': {
+        figmaName: 'small-text',
+        mobile: {
+          fontSize: '0.875rem',
+          lineHeight: '1.125rem',
+          spacing: '1',
+        },
+        tablet: {
+          fontSize: '0.875rem',
+          lineHeight: '1.125rem',
+          spacing: '1',
+        },
+        desktop: {
+          fontSize: '0.875rem',
+          lineHeight: '1.125rem',
+          spacing: '1',
+        },
+      },
+      'x-small': {
+        figmaName: 'x-small-text',
+        mobile: {
+          fontSize: '0.75rem',
+          lineHeight: '1rem',
+          spacing: '1',
+        },
+        tablet: {
+          fontSize: '0.75rem',
+          lineHeight: '1rem',
+          spacing: '1',
+        },
+        desktop: {
+          fontSize: '0.75rem',
+          lineHeight: '1rem',
+          spacing: '1',
+        },
+      },
+    },
+    /*
+      'mobile': {
         'xxxxx-large': {
           fontSize: '3rem',
           lineHeight: '3.5rem',
@@ -222,7 +404,7 @@ const tokens = {
           spacing: '1',
         },
       },
-      tablet: {
+      'tablet': {
         'xxxxx-large': {
           fontSize: '5rem',
           lineHeight: '6rem',
@@ -274,7 +456,7 @@ const tokens = {
           spacing: '1',
         },
       },
-      desktop: {
+      'desktop': {
         'xxxxx-large': {
           fontSize: '5rem',
           lineHeight: '6rem',
@@ -326,7 +508,8 @@ const tokens = {
           spacing: '1',
         },
       },
-    },
+
+    },*/
     colors: {
       'primary': 'primary',
       'blue': 'blue',
@@ -424,39 +607,14 @@ tokens.color['background-light'] = tokens.color['grey-light']
 
 //
 // Legacy
-tokens.typography.sizes.mobile['display'] = tokens.typography.sizes.mobile['xxxxx-large']
-tokens.typography.sizes.mobile['1'] = tokens.typography.sizes.mobile['xxxx-large']
-tokens.typography.sizes.mobile['2'] = tokens.typography.sizes.mobile['xxx-large']
-tokens.typography.sizes.mobile['3'] = tokens.typography.sizes.mobile['xx-large']
-tokens.typography.sizes.mobile['4'] = tokens.typography.sizes.mobile['x-large']
-tokens.typography.sizes.mobile['5'] = tokens.typography.sizes.mobile['normal']
-tokens.typography.sizes.mobile['6'] = tokens.typography.sizes.mobile['small']
-tokens.typography.sizes.mobile['7'] = tokens.typography.sizes.mobile['x-small']
-
-tokens.typography.sizes.tablet['display'] = tokens.typography.sizes.tablet['xxxxx-large']
-tokens.typography.sizes.tablet['1'] = tokens.typography.sizes.tablet['xxxx-large']
-tokens.typography.sizes.tablet['2'] = tokens.typography.sizes.tablet['xxx-large']
-tokens.typography.sizes.tablet['3'] = tokens.typography.sizes.tablet['xx-large']
-tokens.typography.sizes.tablet['4'] = tokens.typography.sizes.tablet['x-large']
-tokens.typography.sizes.tablet['5'] = tokens.typography.sizes.tablet['normal']
-tokens.typography.sizes.tablet['6'] = tokens.typography.sizes.tablet['small']
-tokens.typography.sizes.tablet['7'] = tokens.typography.sizes.tablet['x-small']
-
-tokens.typography.sizes.desktop['display'] = tokens.typography.sizes.desktop['xxxxx-large']
-tokens.typography.sizes.desktop['1'] = tokens.typography.sizes.desktop['xxxx-large']
-tokens.typography.sizes.desktop['2'] = tokens.typography.sizes.desktop['xxx-large']
-tokens.typography.sizes.desktop['3'] = tokens.typography.sizes.desktop['xx-large']
-tokens.typography.sizes.desktop['4'] = tokens.typography.sizes.desktop['x-large']
-tokens.typography.sizes.desktop['5'] = tokens.typography.sizes.desktop['normal']
-tokens.typography.sizes.desktop['6'] = tokens.typography.sizes.desktop['small']
-tokens.typography.sizes.desktop['7'] = tokens.typography.sizes.desktop['x-small']
-
-// tokens.typography.sizes.mobile['large'] = tokens.typography.sizes.mobile['l']
-// tokens.typography.sizes.mobile['medium'] = tokens.typography.sizes.mobile['m']
-// tokens.typography.sizes.mobile['normal'] = tokens.typography.sizes.mobile['normal']
-// tokens.typography.sizes.mobile['small'] = tokens.typography.sizes.mobile['s']
-// tokens.typography.sizes.tablet['large'] = tokens.typography.sizes.tablet['3']
-// tokens.typography.sizes.tablet['medium'] = tokens.typography.sizes.tablet['4']
+tokens.typography.sizes['display'] = tokens.typography.sizes['xxxxx-large']
+tokens.typography.sizes['1'] = tokens.typography.sizes['xxxx-large']
+tokens.typography.sizes['2'] = tokens.typography.sizes['xxx-large']
+tokens.typography.sizes['3'] = tokens.typography.sizes['xx-large']
+tokens.typography.sizes['4'] = tokens.typography.sizes['x-large']
+tokens.typography.sizes['5'] = tokens.typography.sizes['normal']
+tokens.typography.sizes['6'] = tokens.typography.sizes['small']
+tokens.typography.sizes['7'] = tokens.typography.sizes['x-small']
 
 /************************************************************
  * Export
@@ -501,22 +659,18 @@ export interface BaloiseDesignTokens {
       [key: string]: string
     }
     sizes: {
-      mobile: {
-        [key: string]: {
+      [key: string]: {
+        mobile: {
           fontSize: string
           lineHeight: string
           spacing: string
         }
-      }
-      tablet: {
-        [key: string]: {
+        tablet: {
           fontSize: string
           lineHeight: string
           spacing: string
         }
-      }
-      desktop: {
-        [key: string]: {
+        desktop: {
           fontSize: string
           lineHeight: string
           spacing: string
