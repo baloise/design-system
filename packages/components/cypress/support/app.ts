@@ -12,6 +12,7 @@ import { ToastPage } from './pages/toast.page'
 import { SnackbarPage } from './pages/snackbar.page'
 import { PaginationPage } from './pages/pagination.page'
 import { SliderPage } from './pages/slider.page'
+import { ProductSliderPage } from './pages/product-slider.page'
 import { HintPage } from './pages/hint.page'
 import { TextareaPage } from './pages/textarea.page'
 
@@ -31,6 +32,7 @@ export class App {
   getSnackbarPage = () => new SnackbarPage()
   getPaginationPage = () => new PaginationPage()
   getSliderPage = () => new SliderPage()
+  getProductSliderPage = () => new ProductSliderPage()
   getHintPage = () => new HintPage()
 }
 
