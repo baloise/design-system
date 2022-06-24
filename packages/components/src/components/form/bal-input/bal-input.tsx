@@ -339,7 +339,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
           break
         }
         case 'claim-number': {
-          this.inputValue = input.value.replace(/[^\dX]/g, '')
+          this.inputValue = input.value.replace(/[^\dxX]/g, '')
           const inputParts = [
             this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER - 1),
             this.inputValue.substring(MAX_LENGTH_CLAIM_NUMBER - 1, MAX_LENGTH_CLAIM_NUMBER),
@@ -358,8 +358,8 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
                 '',
               )}`
           }
-          if (this.inputValue.length > MAX_LENGTH_CLAIM_NUMBER) {
-            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER)
+          if (this.inputValue.length >= MAX_LENGTH_CLAIM_NUMBER) {
+            this.inputValue = this.inputValue.substring(0, MAX_LENGTH_CLAIM_NUMBER).toUpperCase()
           }
           input.value = formatClaim(this.inputValue)
 
@@ -400,7 +400,7 @@ export class Input implements ComponentInterface, FormInput<string | undefined> 
         !(
           this.getMaskAllowedKeys().includes(event.key) ||
           (this.mask === 'claim-number' &&
-            event.key === 'X' &&
+            (event.key === 'X' || event.key === 'x') &&
             this.inputValue &&
             this.inputValue.length >= MAX_LENGTH_CLAIM_NUMBER - 1)
         )
